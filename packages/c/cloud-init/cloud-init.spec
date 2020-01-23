@@ -18,40 +18,33 @@
 %global configver 0.7
 
 Name:           cloud-init
-Version:        19.2
+Version:        19.4
 Release:        0
-License:        GPL-3.0 and AGPL-3.0
+License:        GPL-3.0
 Summary:        Cloud node initialization tool
 Url:            http://launchpad.net/cloud-init/
 Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
-
+Patch0:         0001-Make-tests-work-with-Python-3.8-139.patch
 # FIXME 
 # python2 disables SIGPIPE, causing broken pipe errors in shell scripts (bsc#903449)
 Patch20:        cloud-init-python2-sigpipe.patch
 Patch21:        cloud-init-template-py2.patch
 Patch29:        datasourceLocalDisk.patch
 Patch34:        cloud-init-tests-set-exec.patch
-# FIXME no proposed solution
-Patch38:        cloud-init-sysconf-path.patch
-# FIXME (lp# 1800854)
-Patch41:        cloud-init-static-net.patch
 # FIXME (lp#1801364)
 Patch42:        cloud-init-ostack-metadat-dencode.patch
 # FIXME (lp#1812117)
 Patch43:        cloud-init-write-routes.patch
-# FIXME (lp#1817368) expected in 19.3
-Patch47:        cloud-init-trigger-udev.patch
-# FIXME (lp#1843634) expected in 19.3
-Patch50:        cloud-init-noresolv-merge-no-dns-data.diff
-# FIXME expected in 19.3
-Patch51:        cloud-init-after-wicked.patch
 # FIXME (lp#1849296)
 Patch52:        cloud-init-break-resolv-symlink.patch
-# FIXME (lp#1849378) expected in 19.3
-Patch53:        cloud-init-renderer-detect.patch
-Patch54:        cloud-init-proper-ipv6-setting.patch
+# FIXME (lp#1858808)
+Patch55:        cloud-init-mix-static-dhcp.patch
+# FIXME no proposed solution
+Patch56:        cloud-init-sysconf-path.patch
+# FIXME (lp#1860164)
+Patch57:        cloud-init-no-tempnet-oci.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -184,22 +177,19 @@ Documentation and examples for cloud-init tools
 
 %prep
 %setup -q
+%patch0 -p1
 %if 0%{?suse_version} < 1315
 %patch20
 %patch21 
 %endif
 %patch29 -p0
 %patch34
-%patch38
-%patch41
 %patch42
 %patch43
-%patch47
-%patch50 -p1
-%patch51 -p1
 %patch52
-%patch53
-%patch54
+%patch55 -p0
+%patch56
+%patch57
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315
@@ -236,9 +226,14 @@ done
 mkdir -p %{buildroot}%{_localstatedir}/lib/cloud
 # move documentation
 mkdir -p %{buildroot}%{_defaultdocdir}
-mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{docdir}
+mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_defaultdocdir}
+# man pages
+mkdir -p %{buildroot}%{_mandir}/man1
+mv doc/man/* %{buildroot}%{_mandir}/man1
 # copy the LICENSE
-cp LICENSE %{buildroot}%{docdir}
+mkdir -p %{buildroot}%{_defaultlicensedir}/%{name}
+cp LICENSE %{buildroot}%{_defaultlicensedir}/%{name}
+cp LICENSE-GPLv3 %{buildroot}%{_defaultlicensedir}/%{name}
 # Set the distribution indicator
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -287,8 +282,7 @@ popd
 
 %files
 %defattr(-,root,root)
-# do not mark as doc or we get conflicts with the doc package
-%{docdir}/LICENSE
+%license LICENSE LICENSE-GPLv3
 %{_bindir}/cloud-id
 %{_bindir}/cloud-init
 %{_bindir}/cloud-init-per
@@ -297,6 +291,7 @@ popd
 %config(noreplace) %{_sysconfdir}/cloud/templates
 %{_sysconfdir}/dhcp/dhclient-exit-hooks.d/hook-dhclient
 %{_sysconfdir}/NetworkManager/dispatcher.d/hook-network-manager
+%{_mandir}/man*/*
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
@@ -352,9 +347,7 @@ popd
 %files doc
 %defattr(-,root,root)
 %{docdir}/examples/*
-%{docdir}/README
 %{docdir}/*.txt
-#%{docdir}/*.rst
 %dir %{docdir}/examples
 
 #%files test

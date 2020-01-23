@@ -809,4 +809,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>753049</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>3092e11ac52d5140bd486d4e4a4e38d9</srcmd5>
+    <version>19.4</version>
+    <time>1579792110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cloud-init-no-tempnet-oci.patch (bsc#1161132, bsc#1161133)
+  + Do not attempt to configure an ephemeral network on OCI. We
+    boot off iSCSI and the network is up. Just read the data.
+
+- Add patch to build properly with python 3.8:
+  * 0001-Make-tests-work-with-Python-3.8-139.patch
+
+- Update to version 19.4
+  + Remove patches included upstream:
+    - cloud-init-after-wicked.patch
+    - cloud-init-noresolv-merge-no-dns-data.diff
+    - cloud-init-renderer-detect.patch
+    - cloud-init-trigger-udev.patch
+  + Removed patches merged with cloud-init-mix-static-dhcp.patch
+    - cloud-init-proper-ipv6-setting.patch
+    - cloud-init-static-net.patch
+  + Added cloud-init-mix-static-dhcp.patch (bsc#1157894)
+  + Forward port cloud-init-sysconf-path.patch
+  + doc: specify _ over - in cloud config modules
+  + [Joshua Powers] (LP: #1293254)
+  + tools: Detect python to use via env in migrate-lp-user-to-github
+  + [Adam Dobrawy]
+  + Partially revert &quot;fix unlocking method on FreeBSD&quot; (#116)
+  + tests: mock uid when running as root (#113)
+  + [Joshua Powers] (LP: #1856096)
+  + cloudinit/netinfo: remove unused getgateway (#111)
+  + docs: clear up apt config sections (#107) [Joshua Powers] (LP: #1832823)
+  + doc: add kernel command line option to user data (#105)
+  + [Joshua Powers] (LP: #1846524)
+  + config/cloud.cfg.d: update README [Joshua Powers] (LP: #1855006)</comment>
+    <requestid>765394</requestid>
+  </revision>
 </revisionlist>

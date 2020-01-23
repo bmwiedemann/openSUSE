@@ -1,0 +1,25 @@
+--- cloudinit/sources/DataSourceOracle.py.orig
++++ cloudinit/sources/DataSourceOracle.py
+@@ -189,11 +189,17 @@ class DataSourceOracle(sources.DataSourc
+ 
+         # network may be configured if iscsi root.  If that is the case
+         # then read_initramfs_config will return non-None.
+-        if _is_iscsi_root():
+-            data = self.crawl_metadata()
+-        else:
+-            with dhcp.EphemeralDHCPv4(net.find_fallback_nic()):
+-                data = self.crawl_metadata()
++        #if _is_iscsi_root():
++        #    data = self.crawl_metadata()
++        #else:
++        #    with dhcp.EphemeralDHCPv4(net.find_fallback_nic()):
++        #        data = self.crawl_metadata()
++        #
++        # The detection of the configured network for iscsi boot is
++        # distribution dependent and of course only implemented for
++        # Debian/Ubuntu. We know the network is up as we are booting from
++        # iscsi. Skip the BS and just read the damn data
++        data = self.crawl_metadata()
+ 
+         self._crawled_metadata = data
+         vdata = data['2013-10-17']

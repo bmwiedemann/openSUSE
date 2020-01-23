@@ -1,0 +1,104 @@
+From c5a7d7979c036f6dc6823f429c6b6820f7f74241 Mon Sep 17 00:00:00 2001
+From: Conrad Hoffmann <1226676+bitfehler@users.noreply.github.com>
+Date: Wed, 8 Jan 2020 15:18:48 +0100
+Subject: [PATCH] Make tests work with Python 3.8 (#139)
+
+* Make DistroChecker test work with Python 3.8
+
+In Python 3.8, `platform.linux_distribution` has been removed. This was
+anticipated, and the cloud-init code uses its own
+`util.get_linux_distro` instead, which works fine w/o
+`platform.linux_distribution`. However, these tests still try to mock
+the platform function, which fails if it doesn't exist (Python 3.8).
+Instead, mock the new function here, as this is a test for code that
+depends on it rather than the function itself.
+
+* Make GetLinuxDistro tests work with Python 3.8
+
+In Python 3.8, `platform.dist` was removed, so allow mock to create the
+function by setting `create=True`.
+
+* Make linter happy in Python 3.8
+
+Suppress E1101(no-member) as this function was removed.
+---
+ cloudinit/analyze/tests/test_boot.py | 8 ++++----
+ cloudinit/tests/test_util.py         | 6 +++---
+ cloudinit/util.py                    | 4 ++--
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/cloudinit/analyze/tests/test_boot.py b/cloudinit/analyze/tests/test_boot.py
+index 706e2cc0..f4001c14 100644
+--- a/cloudinit/analyze/tests/test_boot.py
++++ b/cloudinit/analyze/tests/test_boot.py
+@@ -12,17 +12,17 @@ class TestDistroChecker(CiTestCase):
+     @mock.patch('cloudinit.util.system_info', return_value={'dist': ('', '',
+                                                                      ''),
+                                                             'system': ''})
+-    @mock.patch('platform.linux_distribution', return_value=('', '', ''))
++    @mock.patch('cloudinit.util.get_linux_distro', return_value=('', '', ''))
+     @mock.patch('cloudinit.util.is_FreeBSD', return_value=False)
+-    def test_blank_distro(self, m_sys_info, m_linux_distribution, m_free_bsd):
++    def test_blank_distro(self, m_sys_info, m_get_linux_distro, m_free_bsd):
+         self.assertEqual(err_code, dist_check_timestamp())
+ 
+     @mock.patch('cloudinit.util.system_info', return_value={'dist': ('', '',
+                                                                      '')})
+-    @mock.patch('platform.linux_distribution', return_value=('', '', ''))
++    @mock.patch('cloudinit.util.get_linux_distro', return_value=('', '', ''))
+     @mock.patch('cloudinit.util.is_FreeBSD', return_value=True)
+     def test_freebsd_gentoo_cant_find(self, m_sys_info,
+-                                      m_linux_distribution, m_is_FreeBSD):
++                                      m_get_linux_distro, m_is_FreeBSD):
+         self.assertEqual(err_code, dist_check_timestamp())
+ 
+     @mock.patch('cloudinit.util.subp', return_value=(0, 1))
+diff --git a/cloudinit/tests/test_util.py b/cloudinit/tests/test_util.py
+index 64ed82ea..be100646 100644
+--- a/cloudinit/tests/test_util.py
++++ b/cloudinit/tests/test_util.py
+@@ -523,7 +523,7 @@ class TestGetLinuxDistro(CiTestCase):
+         self.assertEqual(
+             ('opensuse-tumbleweed', '20180920', platform.machine()), dist)
+ 
+-    @mock.patch('platform.dist')
++    @mock.patch('platform.dist', create=True)
+     def test_get_linux_distro_no_data(self, m_platform_dist, m_path_exists):
+         """Verify we get no information if os-release does not exist"""
+         m_platform_dist.return_value = ('', '', '')
+@@ -531,7 +531,7 @@ class TestGetLinuxDistro(CiTestCase):
+         dist = util.get_linux_distro()
+         self.assertEqual(('', '', ''), dist)
+ 
+-    @mock.patch('platform.dist')
++    @mock.patch('platform.dist', create=True)
+     def test_get_linux_distro_no_impl(self, m_platform_dist, m_path_exists):
+         """Verify we get an empty tuple when no information exists and
+         Exceptions are not propagated"""
+@@ -540,7 +540,7 @@ class TestGetLinuxDistro(CiTestCase):
+         dist = util.get_linux_distro()
+         self.assertEqual(('', '', ''), dist)
+ 
+-    @mock.patch('platform.dist')
++    @mock.patch('platform.dist', create=True)
+     def test_get_linux_distro_plat_data(self, m_platform_dist, m_path_exists):
+         """Verify we get the correct platform information"""
+         m_platform_dist.return_value = ('foo', '1.1', 'aarch64')
+diff --git a/cloudinit/util.py b/cloudinit/util.py
+index 9d9d5c72..830c8e54 100644
+--- a/cloudinit/util.py
++++ b/cloudinit/util.py
+@@ -635,8 +635,8 @@ def get_linux_distro():
+     else:
+         dist = ('', '', '')
+         try:
+-            # Will be removed in 3.7
+-            dist = platform.dist()  # pylint: disable=W1505
++            # Was removed in 3.8
++            dist = platform.dist()  # pylint: disable=W1505,E1101
+         except Exception:
+             pass
+         finally:
+-- 
+2.24.1
+
