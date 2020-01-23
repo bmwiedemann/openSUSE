@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-Whois-RIPE
-Version:        2.007
+Version:        2.007001
 Release:        0
 %define cpan_name Net-Whois-RIPE
 Summary:        Pure-Perl implementation of the RIPE Database client
