@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>676929</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8d6dd49da2fd172cefdf21f84d44d04</srcmd5>
+    <version>0.4.1+git.20200102</version>
+    <time>1579791329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1+git.20200102:
+  * DB: Add Threadripper (Castle Peak)
+  * Fix compilation on non-x86/ARM architectures.
+  * Add support for get_total_cpus on Haiku.
+  * Some typo fixes in human readable text.
+  * Add Xeon CLX (Cascade lake-based) using data from PR #129
+  * add support to feature intel avx512_vnni
+  * AARCH64 stub
+  * Ignore convert_instlatx64 binary
+  * add Hygon Dhyana C86 7seris test file
+  * Add Hygon Dhyana detect support
+- Switch to _service</comment>
+    <requestid>766548</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libcpuid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,34 +18,31 @@
 
 %define so_ver  14
 Name:           libcpuid
-Version:        0.4.1
+Version:        0.4.1+git.20200102
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/anrieff/libcpuid
-Source0:        https://github.com/anrieff/libcpuid/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python2-base
-ExclusiveArch:  %{ix86} x86_64
 
 %description
 Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
 
 %package tools
 Summary:        Tools based on %{name}
-Group:          Hardware/Other
 
 %description tools
 This package provides tools based on %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{so_ver} = %{version}
 
 %description devel
@@ -56,10 +53,10 @@ on the project's site (http://libcpuid.sourceforge.net/)
 
 %package -n %{name}%{so_ver}
 Summary:        Library providing CPU identification for x86
-Group:          System/Libraries
 
 %description -n %{name}%{so_ver}
-Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
+Libcpuid provides CPU identification for the x86 (and x86_64)
+architectures.
 
 %prep
 %setup -q
@@ -68,7 +65,7 @@ Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
 autoreconf -fiv
 %configure \
   --enable-static=no
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 23 10:08:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.1+git.20200102:
+  * DB: Add Threadripper (Castle Peak)
+  * Fix compilation on non-x86/ARM architectures.
+  * Add support for get_total_cpus on Haiku.
+  * Some typo fixes in human readable text.
+  * Add Xeon CLX (Cascade lake-based) using data from PR #129
+  * add support to feature intel avx512_vnni
+  * AARCH64 stub
+  * Ignore convert_instlatx64 binary
+  * add Hygon Dhyana C86 7seris test file
+  * Add Hygon Dhyana detect support
+- Switch to _service
+
+-------------------------------------------------------------------
 Fri Feb 15 13:00:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summaries.
