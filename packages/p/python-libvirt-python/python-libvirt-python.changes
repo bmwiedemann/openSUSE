@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 19:33:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to 6.0.0
+  - Add all new APIs and constants in libvirt 6.0.0
+  - Revert commit b22e4f24 to retain python2 support a bit longer
+    on SUSE
+    revert-b22e4f24.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 23:33:10 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - Update to 5.10.0

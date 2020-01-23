@@ -293,4 +293,18 @@ file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
   - Add all new APIs and constants in libvirt 5.10.0</comment>
     <requestid>753077</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8489ed58d826d9ef48cabd9912c76931</srcmd5>
+    <version>6.0.0</version>
+    <time>1579792071</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.0.0.
+
+- Update to 6.0.0
+  - Add all new APIs and constants in libvirt 6.0.0
+  - Revert commit b22e4f24 to retain python2 support a bit longer
+    on SUSE
+    revert-b22e4f24.patch</comment>
+    <requestid>765097</requestid>
+  </revision>
 </revisionlist>

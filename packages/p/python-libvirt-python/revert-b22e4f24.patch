@@ -1,0 +1,855 @@
+commit 5d143f0c339ce1b05b43cba9b45a549a0f225463
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Thu Jan 16 15:34:22 2020 -0700
+
+    Revert "Drop support for python 2"
+    
+    This reverts commit b22e4f2441078aec048b9503fde2b45e78710ce1.
+    
+    On SUSE, we'll keep python2 binding for a bit longer.
+
+Index: libvirt-python-6.0.0/examples/consolecallback.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/consolecallback.py
++++ libvirt-python-6.0.0/examples/consolecallback.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # consolecallback - provide a persistent console that survives guest reboots
+ 
+ import sys, os, logging, libvirt, tty, termios, atexit
+Index: libvirt-python-6.0.0/examples/dominfo.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/dominfo.py
++++ libvirt-python-6.0.0/examples/dominfo.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # dominfo - print some information about a domain
+ 
+ import libvirt
+Index: libvirt-python-6.0.0/examples/domipaddrs.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/domipaddrs.py
++++ libvirt-python-6.0.0/examples/domipaddrs.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # domipaddrs - print domain interfaces along with their MAC and IP addresses
+ 
+ import libvirt
+Index: libvirt-python-6.0.0/examples/domrestore.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/domrestore.py
++++ libvirt-python-6.0.0/examples/domrestore.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # domstart - make sure a given domU is running, if not start it
+ 
+ import libvirt
+Index: libvirt-python-6.0.0/examples/domsave.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/domsave.py
++++ libvirt-python-6.0.0/examples/domsave.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # domstart - make sure a given domU is running, if not start it
+ 
+ import libvirt
+Index: libvirt-python-6.0.0/examples/domstart.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/domstart.py
++++ libvirt-python-6.0.0/examples/domstart.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # domstart - make sure a given domU is running, if not start it
+ 
+ import libvirt
+Index: libvirt-python-6.0.0/examples/esxlist.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/esxlist.py
++++ libvirt-python-6.0.0/examples/esxlist.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # esxlist - list active domains of an ESX host and print some info.
+ #           also demonstrates how to use the libvirt.openAuth() method
+ 
+Index: libvirt-python-6.0.0/examples/event-test.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/event-test.py
++++ libvirt-python-6.0.0/examples/event-test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ #
+ #
+ #
+Index: libvirt-python-6.0.0/examples/guest-vcpus/guest-vcpu-daemon.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/guest-vcpus/guest-vcpu-daemon.py
++++ libvirt-python-6.0.0/examples/guest-vcpus/guest-vcpu-daemon.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ 
+ import libvirt
+ import threading
+Index: libvirt-python-6.0.0/examples/guest-vcpus/guest-vcpu.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/guest-vcpus/guest-vcpu.py
++++ libvirt-python-6.0.0/examples/guest-vcpus/guest-vcpu.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ 
+ import libvirt
+ import sys
+Index: libvirt-python-6.0.0/examples/nodestats.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/nodestats.py
++++ libvirt-python-6.0.0/examples/nodestats.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # Print some host NUMA node statistics
+ #
+ # Authors:
+Index: libvirt-python-6.0.0/examples/topology.py
+===================================================================
+--- libvirt-python-6.0.0.orig/examples/topology.py
++++ libvirt-python-6.0.0/examples/topology.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ # Parse topology information from the capabilities XML and use
+ # them to calculate host topology
+ #
+Index: libvirt-python-6.0.0/generator.py
+===================================================================
+--- libvirt-python-6.0.0.orig/generator.py
++++ libvirt-python-6.0.0/generator.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ #
+ # generate python wrappers from the XML API description
+ #
+Index: libvirt-python-6.0.0/libvirt-lxc-override.c
+===================================================================
+--- libvirt-python-6.0.0.orig/libvirt-lxc-override.c
++++ libvirt-python-6.0.0/libvirt-lxc-override.c
+@@ -4,13 +4,13 @@
+  *           entry points where an automatically generated stub is
+  *           unpractical
+  *
+- * Copyright (C) 2012-2019 Red Hat, Inc.
++ * Copyright (C) 2012-2013 Red Hat, Inc.
+  *
+  * Daniel Veillard <veillard@redhat.com>
+  */
+ 
+ /* Horrible kludge to work around even more horrible name-space pollution
+-   via Python.h.  That file includes /usr/include/python3.x/pyconfig*.h,
++   via Python.h.  That file includes /usr/include/python2.5/pyconfig*.h,
+    which has over 180 autoconf-style HAVE_* definitions.  Shame on them.  */
+ #undef HAVE_PTHREAD_H
+ 
+@@ -21,10 +21,18 @@
+ #include "libvirt-utils.h"
+ #include "build/libvirt-lxc.h"
+ 
+-#ifndef __CYGWIN__
++#if PY_MAJOR_VERSION > 2
++# ifndef __CYGWIN__
+ extern PyObject *PyInit_libvirtmod_lxc(void);
+-#else
++# else
+ extern PyObject *PyInit_cygvirtmod_lxc(void);
++# endif
++#else
++# ifndef __CYGWIN__
++extern void initlibvirtmod_lxc(void);
++# else
++extern void initcygvirtmod_lxc(void);
++# endif
+ #endif
+ 
+ #if 0
+@@ -99,13 +107,14 @@ static PyMethodDef libvirtLxcMethods[] =
+     {NULL, NULL, 0, NULL}
+ };
+ 
++#if PY_MAJOR_VERSION > 2
+ static struct PyModuleDef moduledef = {
+     PyModuleDef_HEAD_INIT,
+-#ifndef __CYGWIN__
++# ifndef __CYGWIN__
+     "libvirtmod_lxc",
+-#else
++# else
+     "cygvirtmod_lxc",
+-#endif
++# endif
+     NULL,
+     -1,
+     libvirtLxcMethods,
+@@ -116,11 +125,11 @@ static struct PyModuleDef moduledef = {
+ };
+ 
+ PyObject *
+-#ifndef __CYGWIN__
++# ifndef __CYGWIN__
+ PyInit_libvirtmod_lxc
+-#else
++# else
+ PyInit_cygvirtmod_lxc
+-#endif
++# endif
+ (void)
+ {
+     PyObject *module;
+@@ -132,3 +141,25 @@ PyInit_cygvirtmod_lxc
+ 
+     return module;
+ }
++#else /* ! PY_MAJOR_VERSION > 2 */
++void
++# ifndef __CYGWIN__
++initlibvirtmod_lxc
++# else
++initcygvirtmod_lxc
++# endif
++(void)
++{
++    if (virInitialize() < 0)
++        return;
++
++    /* initialize the python extension module */
++    Py_InitModule((char *)
++# ifndef __CYGWIN__
++                  "libvirtmod_lxc",
++# else
++                  "cygvirtmod_lxc",
++# endif
++                  libvirtLxcMethods);
++}
++#endif /* ! PY_MAJOR_VERSION > 2 */
+Index: libvirt-python-6.0.0/libvirt-override.c
+===================================================================
+--- libvirt-python-6.0.0.orig/libvirt-override.c
++++ libvirt-python-6.0.0/libvirt-override.c
+@@ -4,13 +4,13 @@
+  *           entry points where an automatically generated stub is
+  *           unpractical
+  *
+- * Copyright (C) 2005-2019 Red Hat, Inc.
++ * Copyright (C) 2005, 2007-2015 Red Hat, Inc.
+  *
+  * Daniel Veillard <veillard@redhat.com>
+  */
+ 
+ /* Horrible kludge to work around even more horrible name-space pollution
+-   via Python.h.  That file includes /usr/include/python3.x/pyconfig*.h,
++   via Python.h.  That file includes /usr/include/python2.5/pyconfig*.h,
+    which has over 180 autoconf-style HAVE_* definitions.  Shame on them.  */
+ #undef HAVE_PTHREAD_H
+ 
+@@ -25,10 +25,18 @@
+ #include "build/libvirt.h"
+ #include "libvirt-utils.h"
+ 
+-#ifndef __CYGWIN__
++#if PY_MAJOR_VERSION > 2
++# ifndef __CYGWIN__
+ extern PyObject *PyInit_libvirtmod(void);
+-#else
++# else
+ extern PyObject *PyInit_cygvirtmod(void);
++# endif
++#else
++# ifndef __CYGWIN__
++extern void initlibvirtmod(void);
++# else
++extern void initcygvirtmod(void);
++# endif
+ #endif
+ 
+ #if 0
+@@ -10628,13 +10636,14 @@ static PyMethodDef libvirtMethods[] = {
+     {NULL, NULL, 0, NULL}
+ };
+ 
++#if PY_MAJOR_VERSION > 2
+ static struct PyModuleDef moduledef = {
+     PyModuleDef_HEAD_INIT,
+-#ifndef __CYGWIN__
++# ifndef __CYGWIN__
+     "libvirtmod",
+-#else
++# else
+     "cygvirtmod",
+-#endif
++# endif
+     NULL,
+     -1,
+     libvirtMethods,
+@@ -10645,11 +10654,11 @@ static struct PyModuleDef moduledef = {
+ };
+ 
+ PyObject *
+-#ifndef __CYGWIN__
++# ifndef __CYGWIN__
+ PyInit_libvirtmod
+-#else
++# else
+ PyInit_cygvirtmod
+-#endif
++# endif
+ (void)
+ {
+     PyObject *module;
+@@ -10661,3 +10670,25 @@ PyInit_cygvirtmod
+ 
+     return module;
+ }
++#else /* ! PY_MAJOR_VERSION > 2 */
++void
++# ifndef __CYGWIN__
++initlibvirtmod
++# else
++initcygvirtmod
++# endif
++(void)
++{
++    if (virInitialize() < 0)
++        return;
++
++    /* initialize the python extension module */
++    Py_InitModule((char *)
++# ifndef __CYGWIN__
++                  "libvirtmod",
++# else
++                  "cygvirtmod",
++# endif
++                  libvirtMethods);
++}
++#endif /* ! PY_MAJOR_VERSION > 2 */
+Index: libvirt-python-6.0.0/libvirt-qemu-override.c
+===================================================================
+--- libvirt-python-6.0.0.orig/libvirt-qemu-override.c
++++ libvirt-python-6.0.0/libvirt-qemu-override.c
+@@ -4,13 +4,13 @@
+  *           entry points where an automatically generated stub is
+  *           unpractical
+  *
+- * Copyright (C) 2011-2019 Red Hat, Inc.
++ * Copyright (C) 2011-2014 Red Hat, Inc.
+  *
+  * Daniel Veillard <veillard@redhat.com>
+  */
+ 
+ /* Horrible kludge to work around even more horrible name-space pollution
+-   via Python.h.  That file includes /usr/include/python3.x/pyconfig*.h,
++   via Python.h.  That file includes /usr/include/python2.5/pyconfig*.h,
+    which has over 180 autoconf-style HAVE_* definitions.  Shame on them.  */
+ #undef HAVE_PTHREAD_H
+ 
+@@ -21,10 +21,18 @@
+ #include "libvirt-utils.h"
+ #include "build/libvirt-qemu.h"
+ 
+-#ifndef __CYGWIN__
++#if PY_MAJOR_VERSION > 2
++# ifndef __CYGWIN__
+ extern PyObject *PyInit_libvirtmod_qemu(void);
+-#else
++# else
+ extern PyObject *PyInit_cygvirtmod_qemu(void);
++# endif
++#else
++# ifndef __CYGWIN__
++extern void initlibvirtmod_qemu(void);
++# else
++extern void initcygvirtmod_qemu(void);
++# endif
+ #endif
+ 
+ #if 0
+@@ -343,13 +351,14 @@ static PyMethodDef libvirtQemuMethods[]
+     {NULL, NULL, 0, NULL}
+ };
+ 
++#if PY_MAJOR_VERSION > 2
+ static struct PyModuleDef moduledef = {
+     PyModuleDef_HEAD_INIT,
+-#ifndef __CYGWIN__
++# ifndef __CYGWIN__
+     "libvirtmod_qemu",
+-#else
++# else
+     "cygvirtmod_qemu",
+-#endif
++# endif
+     NULL,
+     -1,
+     libvirtQemuMethods,
+@@ -360,11 +369,11 @@ static struct PyModuleDef moduledef = {
+ };
+ 
+ PyObject *
+-#ifndef __CYGWIN__
++# ifndef __CYGWIN__
+ PyInit_libvirtmod_qemu
+-#else
++# else
+ PyInit_cygvirtmod_qemu
+-#endif
++# endif
+ (void)
+ {
+     PyObject *module;
+@@ -376,3 +385,25 @@ PyInit_cygvirtmod_qemu
+ 
+     return module;
+ }
++#else /* ! PY_MAJOR_VERSION > 2 */
++void
++# ifndef __CYGWIN__
++initlibvirtmod_qemu
++# else
++initcygvirtmod_qemu
++# endif
++(void)
++{
++    if (virInitialize() < 0)
++        return;
++
++    /* initialize the python extension module */
++    Py_InitModule((char *)
++# ifndef __CYGWIN__
++                  "libvirtmod_qemu",
++# else
++                  "cygvirtmod_qemu",
++# endif
++                  libvirtQemuMethods);
++}
++#endif /* ! PY_MAJOR_VERSION > 2 */
+Index: libvirt-python-6.0.0/libvirt-utils.c
+===================================================================
+--- libvirt-python-6.0.0.orig/libvirt-utils.c
++++ libvirt-python-6.0.0/libvirt-utils.c
+@@ -1,7 +1,7 @@
+ /*
+  * libvirt-utils.c: misc helper APIs for python binding
+  *
+- * Copyright (C) 2013-2019 Red Hat, Inc.
++ * Copyright (C) 2013 Red Hat, Inc.
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -274,7 +274,11 @@ setPyVirTypedParameter(PyObject *info,
+                        int nparams)
+ {
+     PyObject *key, *value;
++#if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION <= 4
++    int pos = 0;
++#else
+     Py_ssize_t pos = 0;
++#endif
+     virTypedParameterPtr temp = NULL, ret = NULL;
+     Py_ssize_t size;
+     ssize_t i;
+@@ -412,6 +416,13 @@ virPyDictToTypedParamOne(virTypedParamet
+                 type = VIR_TYPED_PARAM_LLONG;
+             else
+                 type = VIR_TYPED_PARAM_ULLONG;
++#if PY_MAJOR_VERSION < 3
++        } else if (PyInt_Check(value)) {
++            if (PyInt_AS_LONG(value) < 0)
++                type = VIR_TYPED_PARAM_LLONG;
++            else
++                type = VIR_TYPED_PARAM_ULLONG;
++#endif
+         } else if (PyFloat_Check(value)) {
+             type = VIR_TYPED_PARAM_DOUBLE;
+         }
+@@ -509,7 +520,11 @@ virPyDictToTypedParams(PyObject *dict,
+ {
+     PyObject *key;
+     PyObject *value;
++#if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION <= 4
++    int pos = 0;
++#else
+     Py_ssize_t pos = 0;
++#endif
+     virTypedParameterPtr params = NULL;
+     int n = 0;
+     int max = 0;
+Index: libvirt-python-6.0.0/libvirt-utils.h
+===================================================================
+--- libvirt-python-6.0.0.orig/libvirt-utils.h
++++ libvirt-python-6.0.0/libvirt-utils.h
+@@ -139,7 +139,11 @@ int virReallocN(void *ptrptr, size_t siz
+ void virFree(void *ptrptr) ATTRIBUTE_NONNULL(1);
+ 
+ 
+-# define libvirt_PyString_Check PyUnicode_Check
++# if PY_MAJOR_VERSION > 2
++#  define libvirt_PyString_Check PyUnicode_Check
++# else
++#  define libvirt_PyString_Check PyString_Check
++# endif
+ 
+ 
+ #define VIR_N_ELEMENTS(array) (sizeof(array) / sizeof(*(array)))
+Index: libvirt-python-6.0.0/sanitytest.py
+===================================================================
+--- libvirt-python-6.0.0.orig/sanitytest.py
++++ libvirt-python-6.0.0/sanitytest.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ 
+ import sys
+ import lxml
+Index: libvirt-python-6.0.0/setup.py
+===================================================================
+--- libvirt-python-6.0.0.orig/setup.py
++++ libvirt-python-6.0.0/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python
+ 
+ from distutils.core import setup, Extension, Command
+ from distutils.command.build import build
+@@ -17,10 +17,6 @@ import re
+ import shutil
+ import time
+ 
+-if sys.version_info[0] != 3:
+-    print("libvirt-python requires Python 3.x to build")
+-    sys.exit(1)
+-
+ MIN_LIBVIRT = "0.9.11"
+ MIN_LIBVIRT_LXC = "1.0.2"
+ 
+@@ -346,7 +342,7 @@ setup(name = 'libvirt-python',
+       description = 'The libvirt virtualization API python binding',
+       long_description =
+         '''The libvirt-python package provides a module that permits applications
+-written in the Python 3.x programming language to call the interface
++written in the Python programming language to call the interface
+ supplied by the libvirt library, to manage the virtualization capabilities
+ of recent versions of Linux (and other OSes).''',
+       license = 'LGPLv2+',
+@@ -367,6 +363,7 @@ of recent versions of Linux (and other O
+           "Intended Audience :: Developers",
+           "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
+           "Programming Language :: Python",
++          "Programming Language :: Python :: 2",
+           "Programming Language :: Python :: 3",
+       ]
+ )
+Index: libvirt-python-6.0.0/typewrappers.c
+===================================================================
+--- libvirt-python-6.0.0.orig/typewrappers.c
++++ libvirt-python-6.0.0/typewrappers.c
+@@ -2,88 +2,141 @@
+  * types.c: converter functions between the internal representation
+  *          and the Python objects
+  *
+- * Copyright (C) 2005-2019 Red Hat, Inc.
++ * Copyright (C) 2005, 2007, 2012 Red Hat, Inc.
+  *
+  * Daniel Veillard <veillard@redhat.com>
+  */
+ 
+ /* Horrible kludge to work around even more horrible name-space pollution
+- * via Python.h.  That file includes /usr/include/python3.x/pyconfig*.h,
+- * which has over 180 autoconf-style HAVE_* definitions.  Shame on them.  */
++ *    via Python.h.  That file includes /usr/include/python2.5/pyconfig*.h,
++ *       which has over 180 autoconf-style HAVE_* definitions.  Shame on them.  */
+ #undef HAVE_PTHREAD_H
+ 
+ #include "typewrappers.h"
+ #include "libvirt-utils.h"
+ 
++#ifndef Py_CAPSULE_H
++typedef void(*PyCapsule_Destructor)(void *, void *);
++#endif
++
+ static PyObject *
+ libvirt_buildPyObject(void *cobj,
+                       const char *name,
+                       PyCapsule_Destructor destr)
+ {
+-    return PyCapsule_New(cobj, name, destr);
++    PyObject *ret;
++
++#ifdef Py_CAPSULE_H
++    ret = PyCapsule_New(cobj, name, destr);
++#else
++    ret = PyCObject_FromVoidPtrAndDesc(cobj, (void *) name, destr);
++#endif /* _TEST_CAPSULE */
++
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_intWrap(int val)
+ {
+-    return PyLong_FromLong((long) val);
++    PyObject *ret;
++#if PY_MAJOR_VERSION > 2
++    ret = PyLong_FromLong((long) val);
++#else
++    ret = PyInt_FromLong((long) val);
++#endif
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_uintWrap(uint val)
+ {
+-    return PyLong_FromLong((long) val);
++    PyObject *ret;
++#if PY_MAJOR_VERSION > 2
++    ret = PyLong_FromLong((long) val);
++#else
++    ret = PyInt_FromLong((long) val);
++#endif
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_longWrap(long val)
+ {
+-    return PyLong_FromLong(val);
++    PyObject *ret;
++    ret = PyLong_FromLong(val);
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_ulongWrap(unsigned long val)
+ {
+-    return PyLong_FromLong(val);
++    PyObject *ret;
++    ret = PyLong_FromLong(val);
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_longlongWrap(long long val)
+ {
+-    return PyLong_FromLongLong(val);
++    PyObject *ret;
++    ret = PyLong_FromLongLong(val);
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_ulonglongWrap(unsigned long long val)
+ {
+-    return PyLong_FromUnsignedLongLong(val);
++    PyObject *ret;
++    ret = PyLong_FromUnsignedLongLong(val);
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_charPtrSizeWrap(char *str, Py_ssize_t size)
+ {
++    PyObject *ret;
++
+     if (str == NULL) {
+         return VIR_PY_NONE;
+     }
+-    return PyBytes_FromStringAndSize(str, size);
++#if PY_MAJOR_VERSION > 2
++    ret = PyBytes_FromStringAndSize(str, size);
++#else
++    ret = PyString_FromStringAndSize(str, size);
++#endif
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_charPtrWrap(char *str)
+ {
++    PyObject *ret;
++
+     if (str == NULL) {
+         return VIR_PY_NONE;
+     }
+-    return PyUnicode_FromString(str);
++#if PY_MAJOR_VERSION > 2
++    ret = PyUnicode_FromString(str);
++#else
++    ret = PyString_FromString(str);
++#endif
++    return ret;
+ }
+ 
+ PyObject *
+ libvirt_constcharPtrWrap(const char *str)
+ {
++    PyObject *ret;
++
+     if (str == NULL) {
+         return VIR_PY_NONE;
+     }
+-    return PyUnicode_FromString(str);
++#if PY_MAJOR_VERSION > 2
++    ret = PyUnicode_FromString(str);
++#else
++    ret = PyString_FromString(str);
++#endif
++    return ret;
+ }
+ 
+ PyObject *
+@@ -110,7 +163,11 @@ libvirt_intUnwrap(PyObject *obj,
+      * to C long type directly. If it is of PyLong_Type, PyInt_AsLong
+      * will call PyLong_AsLong() to deal with it automatically.
+      */
++#if PY_MAJOR_VERSION > 2
+     long_val = PyLong_AsLong(obj);
++#else
++    long_val = PyInt_AsLong(obj);
++#endif
+     if ((long_val == -1) && PyErr_Occurred())
+         return -1;
+ 
+@@ -139,7 +196,11 @@ libvirt_uintUnwrap(PyObject *obj,
+         return -1;
+     }
+ 
++#if PY_MAJOR_VERSION > 2
+     long_val = PyLong_AsLong(obj);
++#else
++    long_val = PyInt_AsLong(obj);
++#endif
+     if ((long_val == -1) && PyErr_Occurred())
+         return -1;
+ 
+@@ -208,7 +269,14 @@ libvirt_longlongUnwrap(PyObject *obj,
+         return -1;
+     }
+ 
++#if PY_MAJOR_VERSION == 2
++    /* If obj is of PyInt_Type, PyLong_AsLongLong
++     * will call PyInt_AsLong() to handle it automatically.
++     */
++    if (PyInt_Check(obj) || PyLong_Check(obj))
++#else
+     if (PyLong_Check(obj))
++#endif
+         llong_val = PyLong_AsLongLong(obj);
+     else
+         PyErr_SetString(PyExc_TypeError, "an integer is required");
+@@ -231,7 +299,21 @@ libvirt_ulonglongUnwrap(PyObject *obj,
+         return -1;
+     }
+ 
++#if PY_MAJOR_VERSION == 2
++    /* The PyLong_AsUnsignedLongLong doesn't check the type of
++     * obj, only accept argument of PyLong_Type, so we check it instead.
++     */
++    if (PyInt_Check(obj)) {
++        long long llong_val = PyInt_AsLong(obj);
++        if (llong_val < 0)
++            PyErr_SetString(PyExc_OverflowError,
++                            "negative Python int cannot be converted to C unsigned long long");
++        else
++            ullong_val = llong_val;
++    } else if (PyLong_Check(obj)) {
++#else
+     if (PyLong_Check(obj)) {
++#endif
+         ullong_val = PyLong_AsUnsignedLongLong(obj);
+     } else {
+         PyErr_SetString(PyExc_TypeError, "an integer is required");
+@@ -285,7 +367,9 @@ int
+ libvirt_charPtrUnwrap(PyObject *obj,
+                       char **str)
+ {
++#if PY_MAJOR_VERSION > 2
+     PyObject *bytes;
++#endif
+     const char *ret;
+     *str = NULL;
+     if (!obj) {
+@@ -293,15 +377,21 @@ libvirt_charPtrUnwrap(PyObject *obj,
+         return -1;
+     }
+ 
++#if PY_MAJOR_VERSION > 2
+     if (!(bytes = PyUnicode_AsUTF8String(obj)))
+         return -1;
+     ret = PyBytes_AsString(bytes);
++#else
++    ret = PyString_AsString(obj);
++#endif
+     if (ret) {
+         *str = strdup(ret);
+         if (!*str)
+             PyErr_NoMemory();
+     }
++#if PY_MAJOR_VERSION > 2
+     Py_DECREF(bytes);
++#endif
+     return ret && *str ? 0 : -1;
+ }
+ 
+@@ -310,6 +400,10 @@ libvirt_charPtrSizeUnwrap(PyObject *obj,
+                           char **str,
+                           Py_ssize_t *size)
+ {
++    int ret;
++#if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION <= 4
++    int isize;
++#endif
+     *str = NULL;
+     *size = 0;
+     if (!obj) {
+@@ -317,7 +411,18 @@ libvirt_charPtrSizeUnwrap(PyObject *obj,
+         return -1;
+     }
+ 
+-    return PyBytes_AsStringAndSize(obj, str, size);
++#if PY_MAJOR_VERSION > 2
++    ret = PyBytes_AsStringAndSize(obj, str, size);
++#else
++# if PY_MINOR_VERSION <= 4
++    ret = PyString_AsStringAndSize(obj, str, &isize);
++    *size = isize;
++# else
++    ret = PyString_AsStringAndSize(obj, str, size);
++# endif
++#endif
++
++    return ret;
+ }
+ 
+ PyObject *
+Index: libvirt-python-6.0.0/typewrappers.h
+===================================================================
+--- libvirt-python-6.0.0.orig/typewrappers.h
++++ libvirt-python-6.0.0/typewrappers.h
+@@ -22,6 +22,11 @@
+ # define ATTRIBUTE_UNUSED
+ #endif
+ 
++/* Work around really old python.  */
++#if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION < 5
++typedef ssize_t Py_ssize_t;
++#endif
++
+ #if !LIBVIR_CHECK_VERSION(4, 5, 0)
+ typedef struct _virNWFilterBinding *virNWFilterBindingPtr;
+ #endif
