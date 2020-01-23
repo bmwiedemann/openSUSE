@@ -1,7 +1,7 @@
 #
 # spec file for package pam_passwdqc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,15 @@ BuildRequires:  pam-devel
 Requires:       pam
 Recommends:     passwdqc
 Provides:       pam-modules:/%_lib/security/pam_passwdqc.so
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Simple Password Strength Checking Module
 License:        BSD-3-Clause
 Group:          System/Libraries
-Source0:        www.openwall.com/passwdqc/passwdqc-%{version}.tar.gz
-Source1:        baselibs.conf
+Source0:        https://www.openwall.com/passwdqc/passwdqc-%{version}.tar.gz
+Source1:        https://www.openwall.com/passwdqc/passwdqc-%{version}.tar.gz.sign
+Source2:        passwdqc.keyring
+Source3:        baselibs.conf
 Source50:       dlopen.sh
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -69,7 +71,6 @@ Group:          Productivity/Networking/Diagnostic
 %description -n passwdqc
 The pwqcheck program checks passphrase quality using the libpasswdqc library.
 The pwqgen program generates a random passphrase using the libpasswdqc library.
-
 
 %prep
 %setup -n passwdqc-%{version}
