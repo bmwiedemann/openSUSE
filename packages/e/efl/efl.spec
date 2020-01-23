@@ -1,7 +1,7 @@
 #
 # spec file for package efl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 %else
 %define xine_present 1
 %endif
-%ifarch %ix86 x86_64 %{arml} ppc
+%ifarch %ix86 x86_64 aarch64 %{arml} ppc ppc64le
 %if !0%{?suse_version} || 0%{?is_opensuse}
 %define luajit_present 1
 %endif
@@ -110,7 +110,11 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
+%if 0%{?luajit_present}
 BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  pkgconfig(lua5.1)
+%endif
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
@@ -136,7 +140,9 @@ BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-lang
+%if 0%{?luajit_present}
 Recommends:     elua = %{version}
+%endif
 Provides:       ecore = %{version}
 Obsoletes:      ecore < %{version}
 Provides:       edje-utils = %{version}
@@ -247,7 +253,11 @@ Requires:       pkgconfig(libpulse)
 Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(libudev)
+%if 0%{?luajit_present}
 Requires:       pkgconfig(luajit)
+%else
+Requires:       pkgconfig(lua5.1)
+%endif
 Requires:       pkgconfig(openssl)
 Requires:       pkgconfig(pixman-1)
 Requires:       pkgconfig(sdl)
@@ -739,6 +749,10 @@ export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDE
     -Dwl=true \
     -Dopengl=es-egl \
 %endif
+%if !0%{?luajit_present}
+    -Delua=false \
+    -Dlua-interpreter=lua \
+%endif
 %if %{build_examples}
     -Dbuild-examples=true \
 %else
@@ -980,8 +994,10 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_libdir}/libelput.so.*
 %endif
 
+%if 0%{?luajit_present}
 %files -n lib%{?mageia:%{?_bit}}elua%{sover}
 %{_libdir}/libelua.so.*
+%endif
 
 %files -n lib%{?mageia:%{?_bit}}eet%{sover}
 %{_libdir}/libeet.so.*
@@ -1063,7 +1079,9 @@ gtk-update-icon-cache %{_datadir}/icons/Enlightenment-X-dark &> /dev/null || :
 %{_includedir}/eldbus-1/
 %{_includedir}/elementary-1
 %{_includedir}/elocation-1/
+%if 0%{?luajit_present}
 %{_includedir}/elua-1/
+%endif
 %{_includedir}/edje-1/
 %{_includedir}/eet-1/
 %{_includedir}/eeze-1/

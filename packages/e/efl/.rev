@@ -351,4 +351,12 @@ Also includes sleep_walkers full set of changes to build wayland support for fac
 </comment>
     <requestid>761069</requestid>
   </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>10b2d0af05027da8b0b3e3e81e78c0c5</srcmd5>
+    <version>unknown</version>
+    <time>1579791251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766433</requestid>
+  </revision>
 </revisionlist>

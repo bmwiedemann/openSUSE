@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 09:17:44 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Use luajit only if available
+
+-------------------------------------------------------------------
 Fri Nov  8 03:45:02 UTC 2019 - Simon Lees <simonf.lees@suse.com>
 
 - 1.23 Release
