@@ -1,7 +1,7 @@
 #
 # spec file for package ethtool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -39,7 +39,7 @@ network interfaces.  See the man page for more details.
 %setup -q
 
 %build
-export CFLAGS="%optflags -W -Wall -Wstrict-prototypes -Wformat-security -Wpointer-arith -Wno-unused-parameter -Wno-missing-field-initializers"
+export CFLAGS="%optflags -W -Wall -Wstrict-prototypes -Wformat-security -Wpointer-arith -Wno-missing-field-initializers"
 %configure
 make %{?_smp_mflags}
 
