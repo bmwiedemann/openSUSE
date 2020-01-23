@@ -1,7 +1,7 @@
 #
 # spec file for package shorewall
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.3.4
+Version:        5.2.3.5
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only

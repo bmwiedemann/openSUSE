@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 23 07:27:41 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix minor 5.2.3.5
+  + A typo in the FTP documentation has been corrected.
+  + The recommended mss setting when using IPSec with ipcomp
+    has been corrected.
+  + A number of incorrect links in the manpages have been
+    corrected.
+  + The 'bypass' option is now allowed when specifying an
+    NFQUEUE policy. Previously, specifying that option resulted
+    in an error.
+  + Corrected IPv6 Address Range parsing.
+  + Previously, such ranges were required to be of the form
+    [<addr1>-<addr2>] rather than the more standard form
+    [<addr1>]-[<addr2>]. In the snat file (and in nat actions),
+    the latter form was actually flagged as an error while in
+    other contexts, it resulted in a less obvious error being
+    raised.
+  + The manpages have been updated to refer to
+    https://shorewall.org rather than http://www.shorewall.org.
+- Refresh spec file
+
+-------------------------------------------------------------------
 Wed Sep  4 16:35:45 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix minor 5.2.3.4

@@ -1985,4 +1985,12 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment></comment>
     <requestid>730211</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>bad1377ffa0c1c86be613d984535a80c</srcmd5>
+    <version>5.2.3.5</version>
+    <time>1579791333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766579</requestid>
+  </revision>
 </revisionlist>
