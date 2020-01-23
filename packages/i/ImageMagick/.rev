@@ -2458,4 +2458,21 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=37368).</comment>
     <requestid>764191</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>74111bba086d155689bb9e38dde65f57</srcmd5>
+    <version>7.0.9.17</version>
+    <time>1579792230</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.17
+  * Allow larger negative interline spacing (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=37391).
+  * Conditional compile for huge xml pages for RSVG delegate library.
+  * Put &quot;width&quot; property in the PNG namespace (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1833).
+  * -combine -colorspace sRGB no longer returns grayscale output (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1835).
+  * Support Jzazbz colorspace (contributed by snibgo @
+    http://im.snibgo.com/jzazbz.htm).</comment>
+    <requestid>765988</requestid>
+  </revision>
 </revisionlist>
