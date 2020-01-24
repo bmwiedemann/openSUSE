@@ -397,4 +397,12 @@
   of already existing texlive filesystem</comment>
     <requestid>764960</requestid>
   </revision>
+  <revision rev="41" vrev="44">
+    <srcmd5>4fc738d2f162e26b115cb208e9448e7e</srcmd5>
+    <version>unknown</version>
+    <time>1579872069</time>
+    <user>dimstar_suse</user>
+    <comment>- Overwrite not wanted symbolic links on ls-R files</comment>
+    <requestid>766273</requestid>
+  </revision>
 </revisionlist>

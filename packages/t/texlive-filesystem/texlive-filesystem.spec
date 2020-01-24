@@ -15395,6 +15395,7 @@ for dir in	%{_texmfconfdir}	\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
+    test ! -h ${dir}/ls-R || rm -vf ${dir}/ls-R
     test -e ${dir}/ls-R || continue
     test "$(stat --format '%U:%G' ${dir}/ls-R)" != %{nobody}:%{texgrp}  || continue
     chown %{nobody}:%{texgrp} ${dir}/ls-R || error=1
@@ -15411,7 +15412,7 @@ for dir in	%{_texmfconfdir}	\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
-    test ! -e ${dir}/ls-R || continue
+    test ! -e ${dir}/ls-R -o -h ${dir}/ls-R || continue
     tmp=$(mktemp ${dir}/ls-R.XXXXXX) || error=1
     test $error = 0 || continue
     mv ${tmp} ${dir}/ls-R || error=1
