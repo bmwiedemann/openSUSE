@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 22:12:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use docbook-utils-minimal for manpage generation, avoids
+  texlive dependency.
+
+-------------------------------------------------------------------
 Mon Oct 29 21:07:04 UTC 2018 - Tony Jones <tonyj@suse.com>
 
 - Handle empty event name gracefully on ppc.

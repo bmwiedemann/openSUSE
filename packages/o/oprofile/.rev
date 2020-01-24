@@ -364,4 +364,12 @@
   New patch: oprofile-handle-empty-event-name-spec-gracefully-for-ppc.patch (forwarded request 645374 from jones_tony)</comment>
     <requestid>645375</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>68df25c9aa5aef993d6c9cfd5d0eb945</srcmd5>
+    <version>1.3.0</version>
+    <time>1579867953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766714</requestid>
+  </revision>
 </revisionlist>

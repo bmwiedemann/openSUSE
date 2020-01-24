@@ -34,7 +34,7 @@ Patch3:         %{name}-handle-empty-event-name-spec-gracefully-for-ppc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
-BuildRequires:  docbook-utils
+BuildRequires:  docbook-utils-minimal
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
