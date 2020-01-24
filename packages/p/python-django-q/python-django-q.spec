@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-q
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,7 @@ This package provides a multiprocessing distributed task queue for Django.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/django_q/tests
 
 %check
 # start redis server
