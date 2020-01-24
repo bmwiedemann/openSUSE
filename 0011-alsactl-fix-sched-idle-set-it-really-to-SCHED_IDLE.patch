@@ -1,0 +1,41 @@
+From 34e373d0b12d96353c49c3dcd73ec52eee11484a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 3 Dec 2019 13:53:25 +0100
+Subject: [PATCH 11/26] alsactl: fix --sched-idle (set it really to SCHED_IDLE)
+
+Reported-by: tommy <tommy@kelsos.ptp>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/Makefile.am | 2 ++
+ alsactl/alsactl.c   | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/alsactl/Makefile.am b/alsactl/Makefile.am
+index aaaf74ee1e18..e9ab2eb28bbf 100644
+--- a/alsactl/Makefile.am
++++ b/alsactl/Makefile.am
+@@ -7,6 +7,8 @@ man_MANS += alsactl_init.7
+ endif
+ EXTRA_DIST=alsactl.1 alsactl_init.xml
+ 
++AM_CFLAGS = -D_GNU_SOURCE
++
+ alsactl_SOURCES=alsactl.c state.c lock.c utils.c init_parse.c daemon.c \
+                 monitor.c
+ 
+diff --git a/alsactl/alsactl.c b/alsactl/alsactl.c
+index 94cae239d1f2..dfb1db7f4a83 100644
+--- a/alsactl/alsactl.c
++++ b/alsactl/alsactl.c
+@@ -161,7 +161,7 @@ static void do_nice(int use_nice, int sched_idle)
+ 	if (sched_idle) {
+ 		if (sched_getparam(0, &sched_param) >= 0) {
+ 			sched_param.sched_priority = 0;
+-			if (!sched_setscheduler(0, SCHED_RR, &sched_param))
++			if (!sched_setscheduler(0, SCHED_IDLE, &sched_param))
+ 				error("sched_setparam failed: %s", strerror(errno));
+ 		} else {
+ 			error("sched_getparam failed: %s", strerror(errno));
+-- 
+2.16.4
+

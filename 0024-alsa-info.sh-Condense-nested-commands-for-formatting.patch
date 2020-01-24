@@ -1,0 +1,47 @@
+From f93d491a08c7a5c34642aac166d0329c27eaa502 Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:09 -0500
+Subject: [PATCH 24/26] alsa-info.sh: Condense nested commands for formatting
+ upload result
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index 7560b0d5338e..8b4745b68958 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -858,19 +858,15 @@ echo ""
+ 
+ fi # dialog
+ 
+-# See if tput is available, and use it if it is.
+-if [ -n "$TPUT" ]; then
+-	if [[ -z $PASTEBIN ]]; then
+-		FINAL_URL=$(tput setaf 1; grep "SUCCESS:" $TEMPDIR/wget.tmp | cut -d ' ' -f 2 ; tput sgr0)
+-	else
+-		FINAL_URL=$(tput setaf 1; grep "SUCCESS:" $TEMPDIR/wget.tmp | sed -n 's/.*\:\([0-9]\+\).*/http:\/\/pastebin.ca\/\1/p'; tput sgr0)
+-	fi
++if [ -z "$PASTEBIN" ]; then
++	FINAL_URL=$(grep "SUCCESS:" $TEMPDIR/wget.tmp | cut -d ' ' -f 2)
+ else
+-	if [[ -z $PASTEBIN ]]; then
+-		FINAL_URL=$(grep "SUCCESS:" $TEMPDIR/wget.tmp | cut -d ' ' -f 2)
+-	else
+-		FINAL_URL=$(grep "SUCCESS:" $TEMPDIR/wget.tmp | sed -n 's/.*\:\([0-9]\+\).*/http:\/\/pastebin.ca\/\1/p')
+-	fi
++	FINAL_URL=$(grep "SUCCESS:" $TEMPDIR/wget.tmp | sed -n 's/.*\:\([0-9]\+\).*/http:\/\/pastebin.ca\/\1/p')
++fi
++
++# See if tput is available, and use it if it is.
++if [ -x "$TPUT" ]; then
++	FINAL_URL=$(tput setaf 1; printf '%s' "$FINAL_URL"; tput sgr0)
+ fi
+ 
+ # Output the URL of the uploaded file.	
+-- 
+2.16.4
+

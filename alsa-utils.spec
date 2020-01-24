@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define do_autoreconf 1
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           alsa-utils
 Version:        1.2.1
@@ -28,10 +29,35 @@ Source:         ftp://ftp.alsa-project.org/pub/utils/alsa-utils-%{version}.tar.b
 Source1:        01beep.conf
 Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
+Patch1:         0001-treewide-sys-poll-to-poll.patch
+Patch2:         0002-treewide-Fix-wrong-formats-on-32-bit.patch
+Patch3:         0003-treewide-Fix-printf-formats.patch
+Patch4:         0004-aplay-Adjust-buffer-sizes-to-fix-snprintf-warnings.patch
+Patch5:         0005-aplay-Limit-VUMeter-progress-bar-to-100-for-negative.patch
+Patch6:         0006-alsactl-sysfs-add-sys-kernel-uevent_seqnum-check-to-.patch
+Patch7:         0007-alsaucm-use-the-first-sound-card-use-case-name-hw-CA.patch
+Patch8:         0008-alsaucm-add-text-dump-command.patch
+Patch9:         0009-alsaucm-add-json-dump-command.patch
+Patch10:        0010-alsaucm-dump-fix-the-prefixed.patch
+Patch11:        0011-alsactl-fix-sched-idle-set-it-really-to-SCHED_IDLE.patch
+Patch12:        0012-configure-Fix-linking-of-alsatplg-with-the-older-lib.patch
+Patch13:        0013-alsatplg-add-n-normalize-option.patch
+Patch14:        0014-alsatplg-add-s-sort-and-fix-memory-leaks.patch
+Patch15:        0015-alsatplg-fix-another-small-leak-in-normalize_config.patch
+Patch16:        0016-alsa-info.sh-Consolidate-PCI-device-output.patch
+Patch17:        0017-alsa-info.sh-Read-from-proc-modules-and-sort-the-res.patch
+Patch18:        0018-alsa-info.sh-Simplify-iteration-over-cards-when-call.patch
+Patch19:        0019-alsa-info.sh-Use-existing-function-to-print-ALSA-con.patch
+Patch20:        0020-alsa-info.sh-Exit-script-after-writing-information-t.patch
+Patch21:        0021-alsa-info.sh-Replace-gauge-with-infobox-for-upload-d.patch
+Patch22:        0022-alsa-info.sh-Remove-progress-spinner-during-upload-w.patch
+Patch23:        0023-alsa-info.sh-Condense-nested-commands-for-file-uploa.patch
+Patch24:        0024-alsa-info.sh-Condense-nested-commands-for-formatting.patch
+Patch25:        0025-alsa-info.sh-Perform-test-for-wget-earlier.patch
+Patch26:        0026-alsa-info.sh-Warn-after-actual-upload-failure-do-not.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
 BuildRequires:  alsa-topology-devel
-BuildRequires:  automake
 BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  ncurses-devel
@@ -40,6 +66,9 @@ BuildRequires:  python3-docutils
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+%if 0%{?do_autoreconf}
+BuildRequires:  automake
+%endif
 Requires:       alsa
 # for alsa-info.sh
 Requires:       dialog
@@ -62,6 +91,32 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
 # fix stupid automake's automatic action
@@ -71,6 +126,7 @@ sed -i -e's/EXTRA_DIST= config.rpath /EXTRA_DIST=/' Makefile.am
 %build
 export AUTOMAKE_JOBS="%{?_smp_mflags}"
 %if 0%{?do_autoreconf}
+gettextize -c -f --no-changelog
 autoreconf -fi
 %endif
 %configure --with-curses=ncursesw \

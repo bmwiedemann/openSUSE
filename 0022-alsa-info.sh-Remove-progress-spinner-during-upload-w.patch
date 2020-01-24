@@ -1,0 +1,42 @@
+From 1ebe877b8d89c74e76efd47f2a4dba6cfccf86af Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:07 -0500
+Subject: [PATCH 22/26] alsa-info.sh: Remove progress spinner during upload
+ without dialog
+
+The spinner did not actually provide information about the status
+of the file upload, and caused other problems: it would repeatedly
+spawn new pgrep processes (without a delay between them), and it
+blocked the script if any wget process was running on the system.
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index a02864d0a69d..9bc8c38a7ac6 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -857,16 +857,7 @@ else
+ 	wget -O - --tries=5 --timeout=60 --post-file=$FILE http://pastebin.ca/quiet-paste.php?api=$PASTEBINKEY &>$TEMPDIR/wget.tmp &
+ fi
+ 
+-#Progess spinner for wget transfer.
+-i=1
+-sp="/-\|"
+-echo -n ' '
+-while pgrep wget &>/dev/null
+-do
+-	echo -en "\b${sp:i++%${#sp}:1}"
+-done
+-
+-echo -e "\b Done!"
++echo -e " Done!"
+ echo ""
+ 
+ fi # dialog
+-- 
+2.16.4
+

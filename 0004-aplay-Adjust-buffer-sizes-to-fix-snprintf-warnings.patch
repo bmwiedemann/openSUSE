@@ -1,0 +1,81 @@
+From ac82b651676303e0689b1c23ad72aaf7b264ce5f Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Wed, 20 Nov 2019 10:19:20 -0800
+Subject: [PATCH 04/26] aplay: Adjust buffer sizes to fix snprintf warnings
+
+It also reduces compiled size slightly.
+
+aplay.c: In function 'capture':
+aplay.c:3055:34: error: '-01' directive output may be truncated writing 3
+bytes into a region of size between 1 and 4097 [-Werror=format-truncation=
+]
+ 3055 |    snprintf(namebuf, namelen, "%s-01", buf);
+      |                                  ^~~
+aplay.c:3055:4: note: 'snprintf' output between 4 and 4100 bytes into a
+destination of size 4097
+ 3055 |    snprintf(namebuf, namelen, "%s-01", buf);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+aplay.c:3053:34: error: '-01.' directive output may be truncated writing 4
+bytes into a region of size between 1 and 4097 [-Werror=format-truncation=
+]
+ 3053 |    snprintf(namebuf, namelen, "%s-01.%s", buf, s);
+      |                                  ^~~~
+aplay.c:3053:4: note: 'snprintf' output 5 or more bytes (assuming 4101)
+into a destination of size 4097
+ 3053 |    snprintf(namebuf, namelen, "%s-01.%s", buf, s);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+aplay.c:3065:34: error: '%02i' directive output may be truncated writing
+between 2 and 10 bytes into a region of size between 0 and 4096 [-Werror=
+format-truncation=]
+ 3065 |   snprintf(namebuf, namelen, "%s-%02i", buf, filecount);
+      |                                  ^~~~
+aplay.c:3065:30: note: directive argument in the range [1, 2147483647]
+ 3065 |   snprintf(namebuf, namelen, "%s-%02i", buf, filecount);
+      |                              ^~~~~~~~~
+aplay.c:3065:3: note: 'snprintf' output between 4 and 4108 bytes into a
+destination of size 4097
+ 3065 |   snprintf(namebuf, namelen, "%s-%02i", buf, filecount);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+aplay.c:3063:34: error: '%02i' directive output may be truncated writing
+between 2 and 10 bytes into a region of size between 0 and 4096 [-Werror=
+format-truncation=]
+ 3063 |   snprintf(namebuf, namelen, "%s-%02i.%s", buf, filecount, s);
+      |                                  ^~~~
+aplay.c:3063:30: note: directive argument in the range [1, 2147483647]
+ 3063 |   snprintf(namebuf, namelen, "%s-%02i.%s", buf, filecount, s);
+      |                              ^~~~~~~~~~~~
+aplay.c:3063:3: note: 'snprintf' output 5 or more bytes (assuming 4109)
+into a destination of size 4097
+ 3063 |   snprintf(namebuf, namelen, "%s-%02i.%s", buf, filecount, s);
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ aplay/aplay.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 72fa5676172f..78adee2fa380 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -3015,7 +3015,7 @@ static int new_capture_file(char *name, char *namebuf, size_t namelen,
+ 			    int filecount)
+ {
+ 	char *s;
+-	char buf[PATH_MAX+1];
++	char buf[PATH_MAX-10];
+ 	time_t t;
+ 	struct tm *tmp;
+ 
+@@ -3122,7 +3122,7 @@ static void capture(char *orig_name)
+ 	int tostdout=0;		/* boolean which describes output stream */
+ 	int filecount=0;	/* number of files written */
+ 	char *name = orig_name;	/* current filename */
+-	char namebuf[PATH_MAX+1];
++	char namebuf[PATH_MAX+2];
+ 	off64_t count, rest;		/* number of bytes to capture */
+ 	struct stat statbuf;
+ 
+-- 
+2.16.4
+

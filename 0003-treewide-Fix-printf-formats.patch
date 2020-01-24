@@ -1,0 +1,174 @@
+From 80fd81f4a8647fe2b62a02db9a497d2a7639d9e3 Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Tue, 19 Nov 2019 20:28:55 -0800
+Subject: [PATCH 03/26] treewide: Fix printf formats
+
+Found with cppcheck
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsactl/init_parse.c  |  4 ++--
+ alsaloop/pcmjob.c     | 10 +++++-----
+ amixer/amixer.c       |  6 +++---
+ aplay/aplay.c         |  2 +-
+ axfer/subcmd-list.c   |  2 +-
+ axfer/xfer-libffado.c |  2 +-
+ axfer/xfer-options.c  |  2 +-
+ 7 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/alsactl/init_parse.c b/alsactl/init_parse.c
+index 562e67459c15..c048fd3e18b8 100644
+--- a/alsactl/init_parse.c
++++ b/alsactl/init_parse.c
+@@ -187,7 +187,7 @@ static int init_space(struct space **space, int card)
+ 		return -ENOMEM;
+ 	res->ctl_id_changed = ~0;
+ 	res->linenum = -1;
+-	sprintf(device, "hw:%u", card);
++	sprintf(device, "hw:%d", card);
+ 	err = snd_hctl_open(&res->ctl_handle, device, 0);
+ 	if (err < 0)
+ 		goto error;
+@@ -734,7 +734,7 @@ dbvalue:
+ 			elem = snd_hctl_elem_next(elem);
+ 		}
+ 		snd_ctl_elem_id_free(id);
+-		sprintf(res, "%u", index);
++		sprintf(res, "%d", index);
+ 		dbg("do_ctl_count found %s controls", res);
+ 		return res;
+ 	}
+diff --git a/alsaloop/pcmjob.c b/alsaloop/pcmjob.c
+index 29d1aba85811..b252486b2f6d 100644
+--- a/alsaloop/pcmjob.c
++++ b/alsaloop/pcmjob.c
+@@ -120,7 +120,7 @@ static int setparams_stream(struct loopback_handle *lhandle,
+ 	}
+ 	err = snd_pcm_hw_params_set_rate_resample(handle, params, lhandle->resample);
+ 	if (err < 0) {
+-		logit(LOG_CRIT, "Resample setup failed for %s (val %i): %s\n", lhandle->id, lhandle->resample, snd_strerror(err));
++		logit(LOG_CRIT, "Resample setup failed for %s (val %u): %s\n", lhandle->id, lhandle->resample, snd_strerror(err));
+ 		return err;
+ 	}
+ 	err = snd_pcm_hw_params_set_access(handle, params, lhandle->access);
+@@ -135,13 +135,13 @@ static int setparams_stream(struct loopback_handle *lhandle,
+ 	}
+ 	err = snd_pcm_hw_params_set_channels(handle, params, lhandle->channels);
+ 	if (err < 0) {
+-		logit(LOG_CRIT, "Channels count (%i) not available for %s: %s\n", lhandle->channels, lhandle->id, snd_strerror(err));
++		logit(LOG_CRIT, "Channels count (%u) not available for %s: %s\n", lhandle->channels, lhandle->id, snd_strerror(err));
+ 		return err;
+ 	}
+ 	rrate = lhandle->rate_req;
+ 	err = snd_pcm_hw_params_set_rate_near(handle, params, &rrate, 0);
+ 	if (err < 0) {
+-		logit(LOG_CRIT, "Rate %iHz not available for %s: %s\n", lhandle->rate_req, lhandle->id, snd_strerror(err));
++		logit(LOG_CRIT, "Rate %uHz not available for %s: %s\n", lhandle->rate_req, lhandle->id, snd_strerror(err));
+ 		return err;
+ 	}
+ 	rrate = 0;
+@@ -152,7 +152,7 @@ static int setparams_stream(struct loopback_handle *lhandle,
+ 	    !lhandle->loopback->src_enable &&
+ #endif
+ 	    (int)rrate != lhandle->rate) {
+-		logit(LOG_CRIT, "Rate does not match (requested %iHz, got %iHz, resample %i)\n", lhandle->rate, rrate, lhandle->resample);
++		logit(LOG_CRIT, "Rate does not match (requested %uHz, got %uHz, resample %u)\n", lhandle->rate, rrate, lhandle->resample);
+ 		return -EINVAL;
+ 	}
+ 	lhandle->pitch = (double)lhandle->rate_req / (double)lhandle->rate;
+@@ -1613,7 +1613,7 @@ __again:
+ 	if (count > loop->play->buffer_size)
+ 		count = loop->play->buffer_size;
+ 	if (err != count) {
+-		logit(LOG_CRIT, "%s: initial playback fill error (%i/%i/%i)\n", loop->id, err, (int)count, loop->play->buffer_size);
++		logit(LOG_CRIT, "%s: initial playback fill error (%i/%i/%u)\n", loop->id, err, (int)count, loop->play->buffer_size);
+ 		err = -EIO;
+ 		goto __error;
+ 	}
+diff --git a/amixer/amixer.c b/amixer/amixer.c
+index f7f31f0167fb..928f7c5d6482 100644
+--- a/amixer/amixer.c
++++ b/amixer/amixer.c
+@@ -465,7 +465,7 @@ static void decode_tlv(unsigned int spaces, unsigned int *tlv, unsigned int tlv_
+ 	size = tlv[idx++];
+ 	tlv_size -= 2 * sizeof(unsigned int);
+ 	if (size > tlv_size) {
+-		printf("TLV size error (%i, %i, %i)!\n", type, size, tlv_size);
++		printf("TLV size error (%u, %u, %u)!\n", type, size, tlv_size);
+ 		return;
+ 	}
+ 	switch (type) {
+@@ -576,7 +576,7 @@ static void decode_tlv(unsigned int spaces, unsigned int *tlv, unsigned int tlv_
+ 		break;
+ #endif
+ 	default:
+-		printf("unk-%i-", type);
++		printf("unk-%u-", type);
+ 		while (size > 0) {
+ 			printf("0x%08x,", tlv[idx++]);
+ 			size -= sizeof(unsigned int);
+@@ -611,7 +611,7 @@ static int show_control(const char *space, snd_hctl_elem_t *elem,
+ 	}
+ 	count = snd_ctl_elem_info_get_count(info);
+ 	type = snd_ctl_elem_info_get_type(info);
+-	printf("%s; type=%s,access=%s,values=%i", space, control_type(info), control_access(info), count);
++	printf("%s; type=%s,access=%s,values=%u", space, control_type(info), control_access(info), count);
+ 	switch (type) {
+ 	case SND_CTL_ELEM_TYPE_INTEGER:
+ 		printf(",min=%li,max=%li,step=%li\n", 
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 52410684b47e..72fa5676172f 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -3346,7 +3346,7 @@ static void playbackv(char **names, unsigned int count)
+ 		}
+ 		alloced = 1;
+ 	} else if (count != channels) {
+-		error(_("You need to specify %d files"), channels);
++		error(_("You need to specify %u files"), channels);
+ 		prg_exit(EXIT_FAILURE);
+ 	}
+ 
+diff --git a/axfer/subcmd-list.c b/axfer/subcmd-list.c
+index e22628cbedb0..359f73f701a7 100644
+--- a/axfer/subcmd-list.c
++++ b/axfer/subcmd-list.c
+@@ -31,7 +31,7 @@ static int dump_device(snd_ctl_t *handle, const char *id, const char *name,
+ 	       snd_pcm_info_get_name(info));
+ 
+ 	count = snd_pcm_info_get_subdevices_count(info);
+-	printf("  Subdevices: %i/%i\n",
++	printf("  Subdevices: %i/%u\n",
+ 	       snd_pcm_info_get_subdevices_avail(info), count);
+ 
+ 	for (i = 0; i < count; ++i) {
+diff --git a/axfer/xfer-libffado.c b/axfer/xfer-libffado.c
+index a37cce68d209..6db835d6a9fa 100644
+--- a/axfer/xfer-libffado.c
++++ b/axfer/xfer-libffado.c
+@@ -440,7 +440,7 @@ static int xfer_libffado_pre_process(struct xfer_context *xfer,
+ 	}
+ 	if (*samples_per_frame != channels) {
+ 		fprintf(stderr,
+-			"The number of samples per frame should be %i.\n",
++			"The number of samples per frame should be %u.\n",
+ 			channels);
+ 		return -EINVAL;
+ 	}
+diff --git a/axfer/xfer-options.c b/axfer/xfer-options.c
+index 352d126660a5..3740b166565d 100644
+--- a/axfer/xfer-options.c
++++ b/axfer/xfer-options.c
+@@ -238,7 +238,7 @@ static int validate_options(struct xfer_context *xfer)
+ 		xfer->frames_per_second *= 1000;
+ 	if (xfer->frames_per_second < 2000 ||
+ 	    xfer->frames_per_second > 192000) {
+-		fprintf(stderr, "bad speed value '%i'\n", val);
++		fprintf(stderr, "bad speed value '%u'\n", val);
+ 		return -EINVAL;
+ 	}
+ 
+-- 
+2.16.4
+

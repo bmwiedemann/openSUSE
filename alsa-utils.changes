@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 21 15:57:03 CET 2020 - tiwai@suse.de
+
+- Backport upstream patches:
+  A few portability fixes, alsaucm fixes and extensions, alsatplg
+  minor fixes, alsa-info.sh extensions:
+  0001-treewide-sys-poll-to-poll.patch
+  0002-treewide-Fix-wrong-formats-on-32-bit.patch
+  0003-treewide-Fix-printf-formats.patch
+  0004-aplay-Adjust-buffer-sizes-to-fix-snprintf-warnings.patch
+  0005-aplay-Limit-VUMeter-progress-bar-to-100-for-negative.patch
+  0006-alsactl-sysfs-add-sys-kernel-uevent_seqnum-check-to-.patch
+  0007-alsaucm-use-the-first-sound-card-use-case-name-hw-CA.patch
+  0008-alsaucm-add-text-dump-command.patch
+  0009-alsaucm-add-json-dump-command.patch
+  0010-alsaucm-dump-fix-the-prefixed.patch
+  0011-alsactl-fix-sched-idle-set-it-really-to-SCHED_IDLE.patch
+  0012-configure-Fix-linking-of-alsatplg-with-the-older-lib.patch
+  0013-alsatplg-add-n-normalize-option.patch
+  0014-alsatplg-add-s-sort-and-fix-memory-leaks.patch
+  0015-alsatplg-fix-another-small-leak-in-normalize_config.patch
+  0016-alsa-info.sh-Consolidate-PCI-device-output.patch
+  0017-alsa-info.sh-Read-from-proc-modules-and-sort-the-res.patch
+  0018-alsa-info.sh-Simplify-iteration-over-cards-when-call.patch
+  0019-alsa-info.sh-Use-existing-function-to-print-ALSA-con.patch
+  0020-alsa-info.sh-Exit-script-after-writing-information-t.patch
+  0021-alsa-info.sh-Replace-gauge-with-infobox-for-upload-d.patch
+  0022-alsa-info.sh-Remove-progress-spinner-during-upload-w.patch
+  0023-alsa-info.sh-Condense-nested-commands-for-file-uploa.patch
+  0024-alsa-info.sh-Condense-nested-commands-for-formatting.patch
+  0025-alsa-info.sh-Perform-test-for-wget-earlier.patch
+  0026-alsa-info.sh-Warn-after-actual-upload-failure-do-not.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 16:51:55 CET 2019 - tiwai@suse.de
 
 - Remove empty man8 dirs (used for removed alsaconf.8)

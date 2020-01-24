@@ -1,0 +1,69 @@
+From 86b1f80e24b68ce8153874e6ac851fa2b90c43b5 Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:02 -0500
+Subject: [PATCH 17/26] alsa-info.sh: Read from /proc/modules and sort the
+ result
+
+Sorting the list of loaded modules makes it much easier to compare
+two alsa-info.txt files, even if they are both from the same system
+(since the order actually changes after each reboot).
+
+lsmod just formats the contents of /proc/modules. After this script
+calls lsmod, it strips everything but module names from the output.
+This same result can be obtained just as easily by reading directly
+from /proc/modules; then there is no need to remove the header line
+printed by lsmod before sorting the output.
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index 8fc69972f9f3..ed1d9e248405 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -35,7 +35,7 @@ BGTITLE="ALSA-Info v $SCRIPT_VERSION"
+ PASTEBINKEY="C9cRIO8m/9y8Cs0nVs0FraRx7U0pHsuc"
+ 
+ WGET=$(which wget 2>/dev/null | sed 's|^[^/]*||' 2>/dev/null)
+-REQUIRES="mktemp grep pgrep whereis ping awk date uname cat dmesg amixer alsactl"
++REQUIRES="mktemp grep pgrep whereis ping awk date uname cat sort dmesg amixer alsactl"
+ 
+ #
+ # Define some simple functions
+@@ -131,11 +131,11 @@ withaplay() {
+ 	echo "" >> $FILE
+ }
+ 
+-withlsmod() {
++withmodules() {
+ 	echo "!!All Loaded Modules" >> $FILE
+ 	echo "!!------------------" >> $FILE
+ 	echo "" >> $FILE
+-	lsmod | awk '{print $1}' >> $FILE
++	awk '{print $1}' < /proc/modules | sort >> $FILE
+ 	echo "" >> $FILE
+ 	echo "" >> $FILE
+ }
+@@ -254,7 +254,7 @@ withall() {
+ 	withaplay
+ 	withamixer
+ 	withalsactl
+-	withlsmod
++	withmodules
+ 	withsysfs
+ 	withdmesg
+ 	WITHALL="no"
+@@ -366,7 +366,6 @@ information about your ALSA installation and sound related hardware.
+ 
+   dmesg
+   lspci
+-  lsmod
+   aplay
+   amixer
+   alsactl
+-- 
+2.16.4
+

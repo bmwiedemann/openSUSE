@@ -1,0 +1,55 @@
+From ad49ee756bbc355aa2cf7e9931c81fde17a50913 Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:08 -0500
+Subject: [PATCH 23/26] alsa-info.sh: Condense nested commands for file upload
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index 9bc8c38a7ac6..7560b0d5338e 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -828,15 +828,19 @@ then
+ 
+ if [[ -n $DIALOG ]]
+ then
++	dialog --backtitle "$BGTITLE" --infobox "Uploading information to $WWWSERVICE ..." 6 70
++else
++	echo -n "Uploading information to $WWWSERVICE ..."
++fi
+ 
+ if [[ -z $PASTEBIN ]]; then
+-	dialog --backtitle "$BGTITLE" --infobox "Uploading information to www.alsa-project.org ..." 6 70
+ 	wget -O - --tries=5 --timeout=60 --post-file=$FILE "http://www.alsa-project.org/cardinfo-db/" &>$TEMPDIR/wget.tmp || echo "Upload failed; exit"
+ else
+-	dialog --backtitle "$BGTITLE" --infobox "Uploading information to www.pastebin.ca ..." 6 70
+ 	wget -O - --tries=5 --timeout=60 --post-file=$FILE "http://pastebin.ca/quiet-paste.php?api=$PASTEBINKEY&encrypt=t&encryptpw=blahblah" &>$TEMPDIR/wget.tmp || echo "Upload failed; exit"
+ fi
+ 
++if [ -n "$DIALOG" ]; then
++
+ dialog --backtitle "$BGTITLE" --title "Information uploaded" --yesno "Would you like to see the uploaded information?" 5 100 
+ DIALOG_EXIT_CODE=$?
+ if [ $DIALOG_EXIT_CODE = 0 ]; then
+@@ -849,14 +853,6 @@ clear
+ # no dialog
+ else
+ 
+-if [[ -z $PASTEBIN ]]; then
+-	echo -n "Uploading information to www.alsa-project.org ... " 
+-	wget -O - --tries=5 --timeout=60 --post-file=$FILE http://www.alsa-project.org/cardinfo-db/ &>$TEMPDIR/wget.tmp &
+-else
+-	echo -n "Uploading information to www.pastebin.ca ... " 
+-	wget -O - --tries=5 --timeout=60 --post-file=$FILE http://pastebin.ca/quiet-paste.php?api=$PASTEBINKEY &>$TEMPDIR/wget.tmp &
+-fi
+-
+ echo -e " Done!"
+ echo ""
+ 
+-- 
+2.16.4
+

@@ -1,0 +1,74 @@
+From 66e9a816093c7d8fbdfbc407062daabe89825b35 Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Tue, 19 Nov 2019 20:28:54 -0800
+Subject: [PATCH 02/26] treewide: Fix wrong formats on 32-bit
+
+uint64_t evaluates to unsigned long long on 32-bit, not unsigned long.
+Use the proper formats.
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ axfer/container.c       | 7 ++++---
+ axfer/subcmd-transfer.c | 4 +++-
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/axfer/container.c b/axfer/container.c
+index 7da97c671927..566acd058636 100644
+--- a/axfer/container.c
++++ b/axfer/container.c
+@@ -13,6 +13,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <fcntl.h>
++#include <inttypes.h>
+ 
+ static const char *const cntr_type_labels[] = {
+ 	[CONTAINER_TYPE_PARSER] = "parser",
+@@ -356,10 +357,10 @@ int container_context_pre_process(struct container_context *cntr,
+ 		fprintf(stderr, "  frames/second: %u\n",
+ 			cntr->frames_per_second);
+ 		if (cntr->type == CONTAINER_TYPE_PARSER) {
+-			fprintf(stderr, "  frames: %lu\n",
++			fprintf(stderr, "  frames: %" PRIu64 "\n",
+ 				*frame_count);
+ 		} else {
+-			fprintf(stderr, "  max frames: %lu\n",
++			fprintf(stderr, "  max frames: %" PRIu64 "\n",
+ 				*frame_count);
+ 		}
+ 	}
+@@ -427,7 +428,7 @@ int container_context_post_process(struct container_context *cntr,
+ 	assert(frame_count);
+ 
+ 	if (cntr->verbose && cntr->handled_byte_count > 0) {
+-		fprintf(stderr, "  Handled bytes: %lu\n",
++		fprintf(stderr, "  Handled bytes: %" PRIu64 "\n",
+ 			cntr->handled_byte_count);
+ 	}
+ 
+diff --git a/axfer/subcmd-transfer.c b/axfer/subcmd-transfer.c
+index 3ca745a6d7a1..8746e6f494d2 100644
+--- a/axfer/subcmd-transfer.c
++++ b/axfer/subcmd-transfer.c
+@@ -11,6 +11,7 @@
+ #include "misc.h"
+ 
+ #include <signal.h>
++#include <inttypes.h>
+ 
+ struct context {
+ 	struct xfer_context xfer;
+@@ -389,7 +390,8 @@ static int context_process_frames(struct context *ctx,
+ 
+ 	if (!ctx->xfer.quiet) {
+ 		fprintf(stderr,
+-			"%s: Expected %lu frames, Actual %lu frames\n",
++			"%s: Expected %" PRIu64 "frames, "
++			"Actual %" PRIu64 "frames\n",
+ 			snd_pcm_stream_name(direction), expected_frame_count,
+ 			*actual_frame_count);
+ 		if (ctx->interrupted) {
+-- 
+2.16.4
+
