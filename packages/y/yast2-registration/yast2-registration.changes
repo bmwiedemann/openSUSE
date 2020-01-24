@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:58:16 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support to perform online package searches through all the
+  available modules/extensions (jsc#SLE-9109).
+- 4.2.28
+
+-------------------------------------------------------------------
+Wed Jan 22 14:57:55 CET 2020 - schubi@suse.de
+- Using tag $os_release_version in the control.xml file
+  (entry <full_system_media_name>) which will be replaced by the
+  value of VERSION in /etc/os-release. (improvement for fate#325834)
+- 4.2.27
+
+-------------------------------------------------------------------
 Wed Jan 15 12:44:24 CET 2020 - schubi@suse.de
 
 - AY: Providing a "retry" button if a request timed out.

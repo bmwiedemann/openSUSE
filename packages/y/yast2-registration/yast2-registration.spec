@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.2.26
+Version:        4.2.28
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -27,8 +27,8 @@ Url:            https://github.com/yast/yast-registration
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
-# Y2Packager::ProductControlProduct
-BuildRequires:  yast2 >= 4.2.22
+# Y2Packager::Product#version_version
+BuildRequires:  yast2 >= 4.2.59
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-slp >= 3.1.9
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
@@ -38,8 +38,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.5
 BuildRequires:  yast2-packager >= 4.2.37
 BuildRequires:  yast2-update >= 3.1.36
 
-# Y2Packager::ProductControlProduct
-Requires:       yast2 >= 4.2.22
+# Y2Packager::Product#version_version
+Requires:       yast2 >= 4.2.59
 # "dupAllowVendorChange" option in Pkg.SetSolverFlags()
 Requires:       yast2-pkg-bindings >= 3.1.34
 # N_() method
