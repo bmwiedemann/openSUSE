@@ -738,4 +738,12 @@
     <comment></comment>
     <requestid>766391</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>98243d3a1d66c4d5c1bad16a1adef1c9</srcmd5>
+    <version>2.26.3</version>
+    <time>1579875491</time>
+    <user>dimstar_suse</user>
+    <comment>Add security fixes into changes (forwarded request 766686 from mgorse)</comment>
+    <requestid>766889</requestid>
+  </revision>
 </revisionlist>
