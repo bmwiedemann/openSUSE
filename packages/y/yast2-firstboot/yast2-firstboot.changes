@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:56:58 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fix packaging error (bsc#1161224)
+- 4.2.10
+
+-------------------------------------------------------------------
 Tue Jan 14 11:02:28 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Don't use deprecated Progress.on
