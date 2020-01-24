@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses-pkg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libyui-ncurses-pkg
-Version:        2.50.2
+Version:        2.50.4
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
@@ -36,7 +36,7 @@ BuildRequires:  pkg-config
 
 %define libyui_ncurses_devel_version    libyui-ncurses-devel >= 2.54.0
 BuildRequires:  %{libyui_ncurses_devel_version}
-%define libzypp_devel_version           libzypp-devel >= 15.11.0
+%define libzypp_devel_version           libzypp-devel >= 17.21.0
 BuildRequires:  %{libzypp_devel_version}
 
 Url:            http://github.com/libyui/
@@ -63,6 +63,9 @@ Obsoletes:      %(echo `seq -s " " -f "libyui-ncurses-pkg%.f" $(expr %{so_versio
 
 Provides:       libyui_pkg
 Supplements:    packageand(libyui-ncurses:yast2-packager)
+
+# Selectable::hasRetracted()
+Requires:       libzypp >= 17.21.0
 
 Url:            http://github.com/libyui/
 Summary:        Libyui - yast2 package selector widget for the ncurses UI
