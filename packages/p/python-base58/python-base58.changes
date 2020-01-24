@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Jan 24 09:52:54 UTC 2020 - d0p1 <contact@d0p1.eu>
+
+- update to 2.0.0 (drop python 2 support)
+
+-------------------------------------------------------------------
+Wed Nov 20 14:54:57 UTC 2019 - d0p1 <contact@d0p1.eu>
+
+- Fix test.
+- Using source from github (because of missing files like COPYING in pypi package). 
+
+-------------------------------------------------------------------
+Wed Nov 20 11:37:42 UTC 2019 - d0p1 <contact@d0p1.eu>
+
+-  Initial package.
