@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:04:04 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- don't use /bin/systemctl compat symlink (bsc#1160890)
+- 4.2.10
+
+-------------------------------------------------------------------
 Mon Jan 13 12:22:00 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - convert old init.d to systemd (jsc#SLE-10976)
