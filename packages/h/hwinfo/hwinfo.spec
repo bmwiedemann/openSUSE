@@ -1,7 +1,7 @@
 #
 # spec file for package hwinfo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkg-config
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 %if 0%{?rhel_version} == 0
 BuildRequires:  perl-XML-Writer
@@ -36,7 +36,7 @@ Summary:        Hardware Library
 # Until migration to github this should be correct url
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://gitorious.org/opensuse/hwinfo
+URL:            http://gitorious.org/opensuse/hwinfo
 Version:        21.68
 Release:        0
 Source:         %{name}-%{version}.tar.xz

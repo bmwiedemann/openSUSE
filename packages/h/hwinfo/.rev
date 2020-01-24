@@ -1252,4 +1252,13 @@
     <comment>submitted by snwint via jenkins</comment>
     <requestid>764237</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>885c66f6981300a120b4512cd80412a1</srcmd5>
+    <version>21.68</version>
+    <time>1579871444</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavor. (forwarded request 766569 from dimstar)</comment>
+    <requestid>766622</requestid>
+  </revision>
 </revisionlist>
