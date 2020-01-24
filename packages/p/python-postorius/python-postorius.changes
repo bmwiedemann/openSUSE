@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:44:42 UTC 2020 - pgajdos@suse.com
+
+- the pytest issue in 15 will be fixed on python rpm macros level
+
+-------------------------------------------------------------------
 Fri Jan 17 11:03:31 UTC 2020 - pgajdos@suse.com
 
 - %check correctly also for 15

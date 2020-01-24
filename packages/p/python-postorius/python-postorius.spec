@@ -66,13 +66,8 @@ A web user interface for GNU Mailman
 %check
 pushd example_project
 export PYTHONPATH='../src'
-%if 0%{suse_version} > 1500
+export LANG=C.UTF-8
 %pytest ..
-%else
-LANG=C.UTF-8
-# to take PYTHONPATH in the account
-%python_exec -m pytest -v ..
-%endif
 popd
 
 %files %{python_files}
