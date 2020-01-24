@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 12:41:07 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- don't use /bin/systemctl compat symlink (bsc#1160890)
+- 4.2.3
+
+-------------------------------------------------------------------
 Mon Jan 13 13:35:12 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - replace rcsymlink by direct systemd call (jsc#SLE-10976)
