@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 21 18:28:32 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.0.1 (bsc#1160745)
+  Changes:
+  - Retry up to three times when a live guest migration is detected
+  Bug fixes:
+  - Attribute qc_num_ziip_threads in CEC layer was not correctly set.
+  - Do not account zIIPs in layer QC_LAYER_TYPE_ZOS_ZCX_SERVER for
+    qc_num_cpu_* attributes.
+  - qc_dump: Handle non-writable /tmp
+
+-------------------------------------------------------------------
 Wed Nov 20 00:43:26 UTC 2019 - Mark Post <mpost@suse.com>
 
 - Upgraded to verson 2.0.0 (jsc#SLE-7867)

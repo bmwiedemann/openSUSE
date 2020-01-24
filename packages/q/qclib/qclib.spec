@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2017-2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2017-2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qclib
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
