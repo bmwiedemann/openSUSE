@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 23 12:53:29 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- don't use /bin/systemctl compat symlink (bsc#1160890)
+- 4.2.29
+
+-------------------------------------------------------------------
+Wed Jan 22 13:44:48 CET 2020 - schubi@suse.de
+- Using tag $os_release_version in the control.xml file
+  (entry <self_update_url>) which will be replaced by the
+  value of VERSION in /etc/os-release. (improvement for fate#325834)
+- 4.2.28
+
+-------------------------------------------------------------------
 Wed Jan 15 10:22:58 CET 2020 - aschnell@suse.com
 
 - use udevadm in /usr/bin instead of /sbin (bsc#1160890)
