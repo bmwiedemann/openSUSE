@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-calmjs.types
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Types for the calmjs framework
 License:        MIT
