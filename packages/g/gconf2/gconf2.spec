@@ -45,7 +45,6 @@ Patch7:         gconf2-fdatasync.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
-BuildRequires:  libidl-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  polkit-devel
 # for 2to3

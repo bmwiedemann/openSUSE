@@ -537,4 +537,12 @@
 - Remove huge Changelog (commit log), the NEWS file is sufficient. (forwarded request 746101 from StefanBruens)</comment>
     <requestid>746226</requestid>
   </revision>
+  <revision rev="74" vrev="16">
+    <srcmd5>563a40dd7ea4ac4dd2e2b99304b65eb8</srcmd5>
+    <version>3.2.6</version>
+    <time>1579872037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766119</requestid>
+  </revision>
 </revisionlist>
