@@ -20,12 +20,12 @@
 %define skip_python2 1
 
 Name:           calibre
-Version:        4.8.0
+Version:        4.9.1
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
 Group:          Productivity/Other
-Url:            https://calibre-ebook.com
+URL:            https://calibre-ebook.com
 Source0:        https://download.calibre-ebook.com/%{version}/calibre-%{version}.tar.xz
 Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.sig
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring

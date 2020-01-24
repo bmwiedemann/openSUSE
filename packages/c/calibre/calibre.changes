@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:47:40 UTC 2020 - ecsos@opensuse.org
+
+- Update to 4.9.1
+  * Bug Fixes:
+    - title: "version 4.9.1 fixes a couple of regressions in 4.9.0
+      with Check Book reporting false positives and an error when 
+      using the source editing view in the comments editor"
+  * Improved Recipes:
+    - Liberty Times
+
+-------------------------------------------------------------------
+Thu Jan 23 11:08:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.9.0
+  * New features:
+    - improved search functionality
+    - Edit book: The Check book function has a new, improved
+      CSS checker with support for CSS 3
+    - Edit book: Add an "Open with" action to the context menu
+      of the files browser to easily open files with external
+      programs.
+    - Viewer toolbar: Add button to easily change color schemes
+  * Bug gixes:
+    - Comments editor: Fix inserted blank paragraph being rendered
+      as two lines.
+    - PDF Output: Fix conversion of files containing <canvas> 
+      elements failing.
+    - Viewer: Fix failure to open some books that contain 
+      unparseable URLs.
+    - Viewer: Fix data displayed in side margins getting moved out
+      of position when mouse hovers over side margin.
+    - Book details panel: When right clicking to save the cover,
+      replace invalid characters in the suggested filename
+    - Fix harmless error popup when adding SSL key/certificate in
+      server settings
+    - Dark mode: Fix colors in remove all formats except dialog
+  
+-------------------------------------------------------------------
 Thu Jan  9 12:13:29 UTC 2020 - Eric Schirra ecsos@opensuse.org
 
 - Calibre now running with python3
