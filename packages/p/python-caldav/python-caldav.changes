@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 24 09:52:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.6.2
+  * caldav/lib/error.py - ProppatchError was not defined, ref https://github.com/python-caldav/caldav/issues/54.  
+    Also added a common base class DAVError, and made sure the error 
+    referenced in #54 will never reappear, even if new methods are 
+    added to DAVClient.
+  * caldav/elements/cdav.py - fixing a retention problem - the 
+    timezone fixes done recently was not compatible with python 2.7 nor 3.5.
+  * setup.py - reintroducing dependencies pytz and tzlocal - but only for old python versions
+  * README.md - proper documentation of the dual licensing, ref 
+    https://github.com/python-caldav/caldav/issues/60
+  * caldav/objects.py - fixes (or workarounds?) that solves real-world 
+    issues with iCloud and MS Exchange.  Ref https://github.com/python-caldav/caldav/pull/56
+
+-------------------------------------------------------------------
 Thu Apr 25 06:44:50 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - version update to 0.6.1
