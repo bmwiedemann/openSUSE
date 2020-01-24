@@ -781,4 +781,13 @@
     <user>dimstar_suse</user>
     <comment>- Rescue CD size limitation: block glib2-lang.</comment>
   </revision>
+  <revision rev="94" vrev="94">
+    <srcmd5>d53eede6cae82c18726de84755505182</srcmd5>
+    <version>unknown</version>
+    <time>1579856078</time>
+    <user>dimstar_suse</user>
+    <comment>- Just as we had gcc8 ignored from the Rescue CD, we can also drop
+  gcc9: when the distro changed the default, we missed adjusting
+  this space-saver here.</comment>
+  </revision>
 </revisionlist>

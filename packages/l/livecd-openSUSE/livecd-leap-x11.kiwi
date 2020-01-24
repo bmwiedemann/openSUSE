@@ -489,6 +489,8 @@
     <ignore name="MozillaFirefox"/>
     <package name="aaa_base" replaces="gcc8"/>
     <ignore name="gcc8"/>
+    <package name="aaa_base" replaces="gcc9"/>
+    <ignore name="gcc9"/>
     <package name="aaa_base" replaces="vim-data"/>
     <ignore name="vim-data"/>
     <package name="aaa_base" replaces="tcpdump"/>

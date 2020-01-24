@@ -44,6 +44,7 @@ buildignore fprintd
 buildignore accountsservice
 buildignore MozillaFirefox
 buildignore gcc8
+buildignore gcc9
 buildignore vim-data
 buildignore tcpdump
 
