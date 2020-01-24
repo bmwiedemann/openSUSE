@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-builder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,6 @@
 # Update this on every major/minor bump
 %define basever 3.34
 
-# sysprof support is a nice to have, but sysprof is under security review and not available yet
-%bcond_with sysprof
-
 Name:           gnome-builder
 Version:        3.34.1
 Release:        0
@@ -34,13 +31,15 @@ Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
 Source0:        https://download.gnome.org/sources/gnome-builder/%{basever}/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM gnome-builder-meson-fixes.patch -- Fix build with new meson
+Patch0:         gnome-builder-meson-fixes.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  libvala-devel
 BuildRequires:  llvm-clang-devel >= 3.5
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(enchant-2)
@@ -64,10 +63,8 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.21.0
-%if %{with sysprof}
 BuildRequires:  pkgconfig(sysprof-3)
 BuildRequires:  pkgconfig(sysprof-ui-3)
-%endif
 BuildRequires:  pkgconfig(template-glib-1.0) >= 3.28.0
 BuildRequires:  pkgconfig(vapigen) >= 0.30.0.55
 BuildRequires:  pkgconfig(vte-2.91) >= 0.40.2
@@ -154,9 +151,6 @@ This package provides the vala-pack plugin for %{name}.
 	-Ddocs=true \
 	-Dhelp=true \
 	-Dnetwork_tests=false \
-%if %{without sysprof}
-        -Dplugin_sysprof=false \
-%endif
 	%{nil}
 %meson_build
 

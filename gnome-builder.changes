@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 13:37:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-builder-meson-fixes.patch: Fix build with new meson
+  0.52 and newer.
+- Enable sysprof again.
+
+-------------------------------------------------------------------
 Wed Oct 16 07:48:45 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable sysprof for the time being: sysprof is still under
