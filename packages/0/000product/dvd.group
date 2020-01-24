@@ -4933,6 +4933,8 @@
     <package name="sysfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="sysprof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="sysprof-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="system-config-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-config-printer-applet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-config-printer-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5635,8 +5637,6 @@
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <!-- patterns-media-rest_dvd uninstallable: nothing provides pattern() = apparmor_opt needed by patterns-media-rest_dvd-20170319-23.3.i586-->
-    <package name="sysprof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="sysprof-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">

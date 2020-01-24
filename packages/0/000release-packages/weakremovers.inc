@@ -23396,6 +23396,7 @@ Provides: weakremover(wine-staging-nine-32bit)
 Provides: weakremover(wine-staging-nine-devel-32bit)
 %endif
 # factory:non-oss
+Provides: weakremover(bladeRF-fpga-firmware)
 Provides: weakremover(bladeRF-fx3-firmware)
 Provides: weakremover(libunrar5_6_8)
 Provides: weakremover(libunrar5_7_1)

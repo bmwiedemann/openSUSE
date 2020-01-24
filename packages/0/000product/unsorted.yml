@@ -5651,7 +5651,7 @@ unsorted:
   - installation-images-MicroOS: [x86_64] 
   - installation-images-debuginfodeps-Kubic: [x86_64] 
   - installation-images-debuginfodeps-MicroOS: [x86_64] 
-  - installation-images-debuginfodeps-openSUSE: [i586] 
+  - installation-images-debuginfodeps-openSUSE 
   - installation-images-extras 
   - installation-images-openSUSE 
   - instlux 
@@ -24818,10 +24818,8 @@ unsorted:
   - syslog-ng-smtp 
   - syslog-ng-sql 
   - syslogd 
-  - sysprof: [x86_64] 
   - sysprof-capture-devel-static 
   - sysprof-devel 
-  - sysprof-lang: [x86_64] 
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 

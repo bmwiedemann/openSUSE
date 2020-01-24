@@ -5223,6 +5223,8 @@
       <repopackage name="sysfsutils"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
+      <repopackage name="sysprof"/>
+      <repopackage name="sysprof-lang"/>
       <repopackage name="system-config-printer"/>
       <repopackage name="system-config-printer-applet"/>
       <repopackage name="system-config-printer-common"/>
