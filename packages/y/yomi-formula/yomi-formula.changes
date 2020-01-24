@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:12:38 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1579090265.ecae64c:
+  * suseconnect: include only if regcode is present
+
+-------------------------------------------------------------------
+Tue Jan 14 16:15:31 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1579018449.c2c32c4:
+  * metadata: add help sections and unify names
+
+-------------------------------------------------------------------
+Mon Jan 13 16:51:20 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1578933940.1fcc9f3:
+  * metadata: fix target typo
+  * suseconnet: fix mapping check
+  * autoyast2yomi: initial version of the conversion tool
+  * run_tests: support test of external scripts
+  * monitor: adjust some spaces
+  * bootloader: add timeout parameter
+  * bootloader: drop grub2_console, add terminal and serial_command
+  * bootloader: move theme parameter from config
+  * bootloader: add gfxmode parameter
+  * reboot: add halt and shutdown modes
+  * tests: remove the unit level
+  * Change copyright attribution to SUSE LLC
+  * suseconnect: support local regcodes for modules
+  * init: drop namespace for the check
+  * network: support non-persisten naming
+  * pillar: add SLE pillar example
+  * metadata: add suseconnect section
+  * software: integrate suseconnect states
+  * suseconnect: add SUSEConnect state module
+  * suseconnect: add SUSEConnect execution module
+  * bootloader: do not depend on product name for branding
+
+-------------------------------------------------------------------
 Tue Oct 29 09:56:22 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Change /usr/share/yomi to root:root, but readable for others

@@ -1,7 +1,7 @@
 #
 # spec file for package yomi-formula
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define fdir  %{_datadir}/salt-formulas
 
 Name:           yomi-formula
-Version:        0.0.1+git.1570614306.1a4ae0f
+Version:        0.0.1+git.1579090265.ecae64c
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
