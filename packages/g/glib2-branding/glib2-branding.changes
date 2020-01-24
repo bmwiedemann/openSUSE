@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 08:53:34 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Update .gschema.override.in: 
+  + Delete unused settings-daemon.plugins.power keys.
+  + Set sleep-inactive-ac-timeout, sleep-inactive-battery-timeout to
+    0 for SLE to be consistent with old versions (bsc#1158497).
+
+-------------------------------------------------------------------
 Tue Oct 29 15:31:01 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Add super+f1 key binding for help to match GNOME default.

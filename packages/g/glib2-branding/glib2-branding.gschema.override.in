@@ -54,14 +54,10 @@ tap-to-click = true
 ignore-paths = ['/boot/efi']
 
 [org.gnome.settings-daemon.plugins.power]
-## Enable Energy Star compliant default configuration
-sleep-inactive-battery-type = "suspend"
-## To complete Energy Star compliant default configuration, you should enable this too:
-## (disabled by default because suspending is not working fine in all cases)
-# sleep-inactive-ac = true
-# sleep-inactive-ac-timeout = 1200
-# sleep-inactive-battery = true
-# sleep-inactive-battery-timeout = 1200
+@@IF_SLE@@## Energy Star compliant configuration is disabled for SLE from vendor level
+@@IF_SLE@@## The recommended way to enable this is via GNOME Control Center, dconf-editor or gsettings
+@@IF_SLE@@sleep-inactive-ac-timeout = 0
+@@IF_SLE@@sleep-inactive-battery-timeout = 0
 
 [org.gnome.settings-daemon.plugins.xsettings]
 ## the PackageKit gtk+ module is too spammy, fdo#23917
