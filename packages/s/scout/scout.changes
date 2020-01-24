@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 15 07:57:56 UTC 2020 - bwiedemann@suse.com
+
+- Update to version 0.2.3+20200115.5b1005a:
+  * Bump version to 0.2.3
+  * Return success if found
+  * Update docs
+  * cnf: allow to install found package
+  * Translated using Weblate (Finnish, Estonian, Norwegian Nynorsk)
+
+-------------------------------------------------------------------
 Thu Jun 13 11:38:57 UTC 2019 - bwiedemann@suse.com
 
 - Update to version 0.2.2+20190613.e6c2668:

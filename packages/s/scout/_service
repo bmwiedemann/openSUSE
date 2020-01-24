@@ -2,7 +2,8 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/openSUSE/scout.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">0.2.2+%cd.%h</param>
+    <param name="versionformat">0.2.3+%cd.%h</param>
+    <param name="revision">v0.2.3</param>
     <param name="submodules">enable</param>
     <param name="changesgenerate">enable</param>
   </service>
