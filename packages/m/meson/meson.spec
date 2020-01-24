@@ -1,7 +1,7 @@
 #
 # spec file for package meson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@
 %endif
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
-%bcond_with setuptools
+%bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.51.2
+Version:        0.53.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            http://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
-Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
+Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.sig
 Source2:        meson.keyring
 # PATCH-FIX-OPENSUSE meson-suse-ify-macros.patch dimstar@opensuse.org -- Make the macros non-RedHat specific: so far there are no separate {C,CXX,F}FLAGS.
 Patch0:         meson-suse-ify-macros.patch
@@ -49,7 +49,10 @@ Patch3:         meson-suse-fix-llvm-3.8.patch
 Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
-Patch6:         gcc9-sanitizer.patch
+# PATCH-FIX-UPSTREAM meson-pkgconf-libdir.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/pull/6458
+Patch6:         meson-pkgconf-libdir.patch
+# PATCH-FIX-UPSREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
+Patch7:         meson-testsuite-boost.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -108,6 +111,8 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  java-headless
 BuildRequires:  libboost_log-devel
+BuildRequires:  libboost_python-devel
+BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
@@ -166,6 +171,9 @@ This package provides support for meson.build files in Vim.
 %patch5 -p1
 %endif
 %patch6 -p1
+(cd "test cases/frameworks/1 boost"
+%patch7 -p0
+)
 
 # Remove static boost tests from "test cases/frameworks/1 boost/".
 sed -i "/static/d" test\ cases/frameworks/1\ boost/meson.build
@@ -190,7 +198,6 @@ rm -rf test\ cases/failing/85\ gtest\ dependency\ with\ version
 %if !%{with test}
 %python3_build
 %else
-# FIXME: you should use %%meson macros
 # Ensure we have no mesonbuild / meson in CWD, thus guaranteeing we use meson in $PATH
 rm -r meson.py mesonbuild
 %endif

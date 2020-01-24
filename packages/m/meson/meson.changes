@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:48:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.0:
+  + A new module for filesystem operations.
+  + meson dist --include-subprojects.
+  + Added new Meson templates for Dlang, Rust, Objective-C
+  + Add a new summary() function
+  + Generic Overrider for Dynamic Linker selection
+  + fortran_std option
+  + python.dependency() embed kwarg
+  + Scalapack
+  + Search directories for find_program()
+  + Source tags targets
+  + Dictionary entry using string variable as key
+  + Improved CMake subprojects support
+  + compiler.get_linker_id()
+  + CUDA dependency
+  + Added global option to disable C++ RTTI
+  + Introspection API changes
+- Add meson-testsuite-boost.patch: Fix detection of boost_python
+  names. This is apparently inconsistent accross distros.
+- Add meson-pkgconf-libdir.patch: pkgconf does not honor /usr/lib
+  as 'system directory' on biarch systems.
+
+-------------------------------------------------------------------
+Sat Nov 30 12:25:34 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.52.1:
+  + linkers: Concatenate -L and the directory.
+  + Remove duplicated object files in static libraries.
+  + Revert "Add `-Wl,-rpath-link` for secondary dependencies".
+- Drop meson-testsuite.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Oct 24 09:39:45 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Do not buildrequires rust-std, it is already required by rust.
@@ -7,6 +41,32 @@ Thu Oct 24 09:39:45 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 Mon Oct 21 11:26:06 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Do not buildrequires mono(csharp) or mono-core on SLE.
+
+-------------------------------------------------------------------
+Mon Oct  7 09:56:54 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.52.0:
+  + Gettext targets are ignored if gettext is not installed.
+  + Support taking environment values from a dictionary.
+  + Enhancements to the pkg_config_path argument.
+  + The meson test program now accepts an additional "--gdb-path"
+    argument to specify the GDB binary.
+  + Splitting of Compiler.get_function_attribute('visibility').
+  + Compiler and dynamic linker representation split.
+  + Enhancements to the source_set module.
+  + added --only test(s) option to run_project_tests.py.
+  + Experimental Webassembly support via Emscripten.
+  + Version check in find_program().
+  + Improved support for static libraries.
+  + Enhancements to the kconfig module.
+  + Enhancements to configure_file().
+  + Projects args can be set separately for build and host machines
+    (potentially breaking change).
+  + Dist is now a top level command.
+- Rebase meson-test-installed-bin.patch and meson-distutils.patch.
+- Drop gcc9-sanitizer.patch: no longer needed.
+- Add meson-testsuite.patch: linkers: Concatenate -L and the
+  directory.
 
 -------------------------------------------------------------------
 Tue Aug 27 11:08:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>

@@ -1,11 +1,13 @@
---- a/run_tests.py
-+++ b/run_tests.py
-@@ -104,18 +104,10 @@ def get_meson_script():
+Index: meson-0.53.0/run_tests.py
+===================================================================
+--- meson-0.53.0.orig/run_tests.py
++++ meson-0.53.0/run_tests.py
+@@ -134,18 +134,10 @@ def get_meson_script():
      Also used by run_unittests.py to determine what meson to run when not
      running in-process (which is the default).
      '''
 -    # Is there a meson.py next to the mesonbuild currently in use?
--    mesonbuild_dir = Path(mesonbuild.__file__).resolve().parent.parent
+-    mesonbuild_dir = Path(mesonmain.__file__).resolve().parent.parent
 -    meson_script = mesonbuild_dir / 'meson.py'
 -    if meson_script.is_file():
 -        return str(meson_script)
@@ -21,7 +23,7 @@
  
  def get_backend_args_for_dir(backend, builddir):
      '''
-@@ -296,12 +288,12 @@ def main():
+@@ -363,12 +355,12 @@ def main():
              else:
                  env['PYTHONPATH'] = temp_dir
          if not cross:
@@ -37,6 +39,6 @@
 +            #returncode += subprocess.call(cmd, env=env)
 +            #if options.failfast and returncode != 0:
 +            #    return returncode
-             cmd = mesonlib.python_command + ['run_unittests.py', '-v']
-             if options.failfast:
-                 cmd += ['--failfast']
+             if no_unittests:
+                 print('Skipping all unit tests.')
+                 returncode = 0
