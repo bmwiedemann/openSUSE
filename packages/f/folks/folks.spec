@@ -1,7 +1,7 @@
 #
 # spec file for package folks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
 Source:         https://download.gnome.org/sources/folks/0.13/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM folks-meson-0.53.patch dimstar@opensuse.org -- https://gitlab.gnome.org/GNOME/folks/issues/119
+Patch0:         folks-meson-0.53.patch
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.49
@@ -56,7 +58,6 @@ Summary:        Library to create metacontacts from multiple sources
 # We assume that future -data packages remain backwards compatible
 Group:          System/Libraries
 Requires:       libfolks-data >= %{version}
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
 %description -n libfolks%{soversion}

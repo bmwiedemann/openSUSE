@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 23 12:13:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend folks-lang: the -lang package has respective
+  supplements to have smarter decision when to be installed.
+
+-------------------------------------------------------------------
+Thu Jan 23 12:03:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add folks-meson-0.53.patch: Fix build with meson 0.53.
+  py_installation.dependency() is not meant to check if python
+  modules are present, but add a dependency on python.
+
+-------------------------------------------------------------------
 Fri Sep  6 02:05:31 UTC 2019 - luke@ljones.dev
 
 - Disable lto in build due to lto causing segfault in Geary.

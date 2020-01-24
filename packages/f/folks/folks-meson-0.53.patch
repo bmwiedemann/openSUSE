@@ -1,0 +1,12 @@
+Index: folks-0.13.1/meson.build
+===================================================================
+--- folks-0.13.1.orig/meson.build
++++ folks-0.13.1/meson.build
+@@ -126,7 +126,6 @@ if bluez_backend_enabled
+   # Needed for the BlueZ tests
+   pymod = import('python')
+   py_installation = pymod.find_installation('python3')
+-  python_dbusmock = py_installation.dependency('dbusmock')
+ endif
+ 
+ if import_tool_enabled
