@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 09:02:55 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix return code of CLI "show" command (bsc#1143193)
+- 4.2.4
+
+-------------------------------------------------------------------
 Mon Dec 30 16:11:40 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - fix crash with undefined method mkdir (bsc#1158421)

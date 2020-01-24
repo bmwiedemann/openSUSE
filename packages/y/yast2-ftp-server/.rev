@@ -503,4 +503,12 @@
     <comment>submit new version 4.2.3</comment>
     <requestid>760062</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>fbe5cbe60beda18b24c0077fb8946de7</srcmd5>
+    <version>4.2.4</version>
+    <time>1579871417</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.4</comment>
+    <requestid>766608</requestid>
+  </revision>
 </revisionlist>

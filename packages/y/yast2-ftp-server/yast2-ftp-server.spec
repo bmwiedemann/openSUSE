@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ftp-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ftp-server
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 Summary:        YaST2 - FTP configuration
 License:        GPL-2.0-only
@@ -27,14 +27,14 @@ Url:            https://github.com/yast/yast-ftp-server
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
-# Yast2::Systemd::Service
-BuildRequires:  yast2 >= 4.1.3
+# Yast2::CommandLine readonly parameter
+BuildRequires:  yast2 >= 4.2.57
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
-# Yast2::Systemd::Service
-Requires:       yast2 >= 4.1.3
+# Yast2::CommandLine readonly parameter
+Requires:       yast2 >= 4.2.57
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 BuildArch:      noarch
