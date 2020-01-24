@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 24 08:21:10 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Add option -qalc-binary to specify the name or path to the qalc binary
+  * Document comma & space seperator options in README
+  * Delete items from history file (#34) 
+  * Added version check in configure.ac (#28)
+
+-------------------------------------------------------------------
 Wed Apr 24 08:53:23 UTC 2019 - mvetter@suse.com
 
 - Update to 1.5:
