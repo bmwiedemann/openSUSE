@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 23 16:47:02 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for the option to enable the online search
+  feature in the package selector (jsc#SLE-9109).
+- 4.2.9
+
+-------------------------------------------------------------------
+Thu Jan 23 12:03:31 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Allow integer as initial item status (part of bsc#1084674)
+- 4.2.8
+
+-------------------------------------------------------------------
 Wed Dec 18 14:56:39 CET 2019 - aschnell@suse.com
 
 - handle sort key in parser for table item (bsc#1140018)
