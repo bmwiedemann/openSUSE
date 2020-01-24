@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Tue Jan 21 03:10:17 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.10.3
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.10.3  (released January 20, 2020)
+  
+      Set things cleared via PQclear to NULL as soon as possible, to remove race conditions.
+      [Greg Sabino Mullane]
+      [RT #131522]
+  
+  
+  Version 3.10.2  (released January 17, 2020)
+  
+    - Adjust tests to pass on 32-bit machines
+      [Greg Sabino Mullane]
+      [RT #131482]
+  
+  
+  Version 3.10.1  (released January 13, 2020)
+  
+    - Prevent double-free memory errors
+      [Greg Sabino Mullane]
+      [RT #130681]
+  
+    - Fix crash when pg_error_field is called
+      [Greg Sabino Mullane]
+      [RT #130721]
+  
+    - Update the list of Postgres reserved words in quote.c
+
+-------------------------------------------------------------------
+Wed Sep  4 07:41:45 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.10.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+-------------------------------------------------------------------
+Tue Aug 20 07:37:38 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- remove disable-attr.patch as longer needed
+
+-------------------------------------------------------------------
+Fri Aug 16 05:04:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.9.1
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.9.1, released August 15, 2019
+  
+      Bugfix for pg_error_field: make sure we do not feed null to newSVpv,
+      handle older versions of Postgres better.
+      [Greg Sabino Mullane]
+
+-------------------------------------------------------------------
+Wed Aug 14 05:06:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.9.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.9.0, released August 13, 2019
+  
+    - ShowErrorStatement works for "quickexec" do() calls
+      [Dmitry Karasik]
+      [RT #120268]
+      [Github issue #44]
+  
+    - Add :pg_limits to add constants such as PG_MAX_SMALLINT
+      [Greg Sabino Mullane]
+      [Github issue #51]
+  
+    - Add $dbh->pg_error_field() function
+      [Greg Sabino Mullane]
+  
+    - Fix failing tests due to incorrect 'initdb' check
+      [Greg Sabino Mullane]
+      [Github issue #54]
+      [RT #130279]
+
+-------------------------------------------------------------------
+Tue Jul 16 09:18:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.8.1
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.8.1, released July 6, 2019
+  
+    - Fix encoding of SQL_VARBINARY type in $dbh->quote() function
+      [Pali]
+  
+    - Fix E'' string escape handling on architectures with unsigned chars
+      [Github issue #46]
+  
+    - Minor fix to allow DBD::Pg to connect to PGbouncer's internal 'pgbouncer' database.
+      [Greg Sabino Mullane]
+      [Github issue #47]
+  
+    - Fix so table_info test works on non-empty databases
+      [Matt Buchanan]
+      [CPAN ticket #127906]
+
+-------------------------------------------------------------------
+Fri Apr 26 05:05:14 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.8.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.8.0, released April 25, 2019
+  
+    - Increase minimum supported PostgreSQL version to 8.0
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Add support for foreign tables in table_info() and column_info()
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Return the current database name as TABLE_CAT in info methods
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Handle backslash-escaped quotes in E'' strings
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Fix typo in Makefile.PL
+      [CPAN ticket #127097]
+  
+    - Fix parsing of PostgreSQL versions >= 10 on Debian/Ubuntu
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Fix client_min_messages=FATAL test when PostgreSQL caps it to ERROR
+      [Dagfinn Ilmari Mannsåker]
+      [CPAN ticket #128529]
+  
+    - Fix ->ping error detection on PostgreSQL 12
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Adjust tests for new pg_ctl output
+      [Erik Rijkers    er at xs4all.nl]
+      [CPAN ticket #128966]
+  
+    - Adjust tests for removal of WITH OIDS in PostgreSQL 12
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Fix support for PostgreSQL versions back to 8.0
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Remove usage of deprecated pg_attrdef.adsrc and pg_constraint.consrc columns
+      [Dagfinn Ilmari Mannsåker]
+  
+    - Fix typo in pg_placeholder_colons example
+      (Github issue #41)
+  
+    - Support GENERATED ... AS IDENTITY columns in last_insert_id()
+      [Dagfinn Ilmari Mannsåker]
+
+-------------------------------------------------------------------
 Tue Feb 26 18:21:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - apply disable-attr.patch to disable broken test:
