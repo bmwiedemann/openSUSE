@@ -1,7 +1,7 @@
 #
 # spec file for package spectre-meltdown-checker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,11 @@ Release:        0
 Summary:        Spectre & Meltdown Vulnerability Checker
 License:        GPL-3.0-only
 Group:          Productivity/Security
-Url:            https://github.com/speed47/spectre-meltdown-checker
+URL:            https://github.com/speed47/spectre-meltdown-checker
 Source:         https://github.com/speed47/spectre-meltdown-checker/archive/v%version.tar.gz
 Source1:        https://www.gnu.org/licenses/gpl-3.0-standalone.html
+# for readelf
+Requires:       binutils
 ExclusiveArch:  %ix86 x86_64
 
 %description

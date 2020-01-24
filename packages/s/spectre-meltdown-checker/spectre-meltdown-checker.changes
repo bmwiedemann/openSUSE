@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 24 11:52:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo (s/Require:/Requires:/).
+
+-------------------------------------------------------------------
+Thu Jan 16 16:32:47 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- added requires binutils, as the script calls "readelf"
+
+-------------------------------------------------------------------
 Wed Dec 11 07:37:50 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - version 0.43

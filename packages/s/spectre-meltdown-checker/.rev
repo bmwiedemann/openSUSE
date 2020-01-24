@@ -98,4 +98,12 @@
 - upstream tarball no longer includes license, use the gpl 3 standalone html for it</comment>
     <requestid>755736</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ee37dfa8a094c362be31a0aa9f0b99d2</srcmd5>
+    <version>0.43</version>
+    <time>1579871506</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo (s/Require:/Requires:/). (forwarded request 766868 from dimstar)</comment>
+    <requestid>766875</requestid>
+  </revision>
 </revisionlist>
