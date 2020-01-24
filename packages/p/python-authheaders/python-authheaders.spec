@@ -28,9 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/a/authheaders/aut
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module cffi}
-%endif
 Requires:       python-authres >= 1.0.1
 Requires:       python-dkimpy >= 0.7.1
 Requires:       python-dnspython

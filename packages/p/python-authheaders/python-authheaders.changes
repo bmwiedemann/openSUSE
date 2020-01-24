@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 14:58:46 UTC 2020 - pgajdos@suse.com
+
+- do not require python-cffi for 15, it will be required by
+  python-PyNaCl
+
+-------------------------------------------------------------------
 Fri Jan 10 17:54:29 UTC 2020 - pgajdos@suse.com
 
 - fix build in SLE-15: set en_US.UTF-8 encoding
