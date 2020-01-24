@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:34:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.7
+  * Add new sort argument to simplify() to optionally not sort when 
+    simplifying expressions (e.g. not applying "commutativity").
+  * Add new argument to tokenizer to optionally accept extra 
+    characters in symbol tokens.
+
+-------------------------------------------------------------------
 Tue Sep 10 07:14:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

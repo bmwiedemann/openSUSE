@@ -1,7 +1,7 @@
 #
 # spec file for package python-boolean.py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-boolean.py
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Module to define boolean algebras and create/parse boolean expressions
 License:        BSD-2-Clause
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
