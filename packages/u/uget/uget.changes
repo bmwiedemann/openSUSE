@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:32:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.3:
+  + add parser for YouTube recently changed field.
+
+- Update to 2.2.2:
+  + use quicksort to sort downloads.
+  + backup torrent and metalink files.
+  + curl plug-in: handle duplicate files with double extensions.
+
+-------------------------------------------------------------------
 Mon Apr 30 21:51:40 UTC 2018 - jengelh@inai.de
 
 - Ensure neutrality of description.

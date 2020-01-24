@@ -17,13 +17,13 @@
 
 
 Name:           uget
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        Download Manager with a GTK+ user interface
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 Url:            http://ugetdm.com
-Source:         http://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/%{version}/%{name}-%{version}.tar.gz
+Source:         http://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/%{version}/%{name}-%{version}-1.tar.gz
 BuildRequires:  intltool
 %if 0%{?WITH_APPINDICATOR}
 BuildRequires:  pkgconfig(appindicator3-0.1)

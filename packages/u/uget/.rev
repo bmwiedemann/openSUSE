@@ -393,4 +393,17 @@
 - Replace %__-type macro indirections. (forwarded request 602652 from jengelh)</comment>
     <requestid>602994</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>cd303f2458079e993b589b5c0a304268</srcmd5>
+    <version>2.2.3</version>
+    <time>1579867976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  + add parser for YouTube recently changed field.
+- Update to 2.2.2:
+  + use quicksort to sort downloads.
+  + backup torrent and metalink files.
+  + curl plug-in: handle duplicate files with double extensions. (forwarded request 766568 from polslinux)</comment>
+    <requestid>766614</requestid>
+  </revision>
 </revisionlist>
