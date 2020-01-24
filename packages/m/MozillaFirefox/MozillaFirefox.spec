@@ -19,8 +19,8 @@
 
 # changed with every update
 %define major          72
-%define mainver        %major.0.1
-%define orig_version   72.0.1
+%define mainver        %major.0.2
+%define orig_version   72.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -324,8 +324,14 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch101 -p1
 %patch102 -p1
 %endif # only_print_mozconfig
+# Save config.sub to restore it (for aarch64/ppc64le) later, as it is checked with a checksum
+cp ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub.save
+cp ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess.save
 
 %build
+# Restore config.sub file
+mv ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub.save ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub
+mv ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess.save ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"

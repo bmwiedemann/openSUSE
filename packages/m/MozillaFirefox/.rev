@@ -4215,4 +4215,23 @@
   from start wrapper and changed the RPM macro to the</comment>
     <requestid>762071</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>8426f00ee56a988c81038639274514a1</srcmd5>
+    <version>72.0.2</version>
+    <time>1579871475</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 72.0.2
+  * Various stability fixes
+  * Fixed issues opening files with spaces in their path (bmo#1601905)
+  * Fixed a hang opening about:logins when a master password is set
+    (bmo#1606992)
+  * Fixed a web compatibility issue with CSS Shadow Parts which
+    shipped in Firefox 72 (bmo#1604989)
+  * Fixed inconsistent playback performance for fullscreen 1080p
+    videos on some systems (bmo#1608485)
+
+- Fix build for aarch64/ppc64le (do not update config.sub file
+  for libbacktrace)</comment>
+    <requestid>766431</requestid>
+  </revision>
 </revisionlist>
