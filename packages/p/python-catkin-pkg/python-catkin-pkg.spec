@@ -1,7 +1,7 @@
 #
 # spec file for package python-catkin-pkg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-catkin-pkg
-Version:        0.4.13
+Version:        0.4.15
 Release:        0
 Summary:        Catkin package library
 License:        BSD-3-Clause
