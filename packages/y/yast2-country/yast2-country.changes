@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:21:01 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix exit codes for CLI for language, timezone and keyboard
+  (bsc#1160928)
+- 4.2.17
+
+-------------------------------------------------------------------
+Thu Jan 23 12:45:13 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- don't use /bin/systemctl compat symlink (bsc#1160890)
+- 4.2.16
+
+-------------------------------------------------------------------
+Mon Jan 20 16:35:45 CET 2020 - schubi@suse.de
+
+- Keyboard definition in the AY configuration file: Alias AND
+  keymap name is supported (bsc#1159541).
+- Reporting a warning if the defined keymap has not been found.
+- 4.2.15
+
+-------------------------------------------------------------------
 Thu Jan  2 15:13:06 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Do not crash when unknown keymap is set on system (bsc#1159286)
