@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-pkg-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define parent libyui-qt-pkg
 %define so_version 11
 Name:           %{parent}-doc
-Version:        2.47.0
+Version:        2.47.2
 Release:        0
 Summary:        Libyui-qt-pkg documentation
 License:        LGPL-2.1-only OR LGPL-3.0-only
