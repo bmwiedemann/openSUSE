@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 23 09:16:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not try to read an ifcfg-* file that does not exist
+  (bsc#1161234).
+
+-------------------------------------------------------------------
+Wed Jan 22 16:43:21 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Do not crash if install.inf contains an IP address that cannot
+  be resolved to a name (bsc#1161217)
+- 4.2.47
+
+-------------------------------------------------------------------
+Tue Jan 21 07:24:03 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- bsc#1156986
+  - Fix crash when logging that an interface is not connected or
+    is not bridgeable when proposing the virtualization config.
+- 4.2.46
+
+-------------------------------------------------------------------
 Wed Jan 15 09:55:05 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - bsc#1158025
