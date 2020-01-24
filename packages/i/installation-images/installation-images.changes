@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Jan 21 10:00:04 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#352
+- s390x: I/O device pre-configuration (jsc#SLE-7396)
+- 14.453
+
+--------------------------------------------------------------------
 Mon Jan 13 11:52:50 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#350
