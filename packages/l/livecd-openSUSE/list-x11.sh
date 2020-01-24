@@ -1,3 +1,4 @@
+buildignore NetworkManager-lang
 buildignore PackageKit
 buildignore samba-libs
 buildignore release-notes-openSUSE
@@ -43,8 +44,6 @@ buildignore avahi
 buildignore fprintd
 buildignore accountsservice
 buildignore MozillaFirefox
-buildignore gcc8
-buildignore gcc9
 buildignore vim-data
 buildignore tcpdump
 

@@ -790,4 +790,11 @@
   gcc9: when the distro changed the default, we missed adjusting
   this space-saver here.</comment>
   </revision>
+  <revision rev="95" vrev="95">
+    <srcmd5>9b9206d086daeba3fa9f13516cd02dac</srcmd5>
+    <version>unknown</version>
+    <time>1579856920</time>
+    <user>dimstar_suse</user>
+    <comment>- Rescue CD size limitation: block NetworkManager-lang.</comment>
+  </revision>
 </revisionlist>

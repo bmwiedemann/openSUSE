@@ -1,9 +1,7 @@
 -------------------------------------------------------------------
 Fri Jan 24 08:53:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
-- Just as we had gcc8 ignored from the Rescue CD, we can also drop
-  gcc9: when the distro changed the default, we missed adjusting
-  this space-saver here.
+- Rescue CD size limitation: block NetworkManager-lang.
 
 -------------------------------------------------------------------
 Fri Jan 17 08:43:37 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
