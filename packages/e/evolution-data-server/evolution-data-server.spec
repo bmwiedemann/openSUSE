@@ -53,7 +53,6 @@ BuildRequires:  intltool
 BuildRequires:  krb5-devel
 BuildRequires:  libgdata-devel
 BuildRequires:  libgweather-devel >= 3.10
-BuildRequires:  libidl-devel
 BuildRequires:  libsoup-devel >= 2.42
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  nss-shared-helper-devel
