@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:45:22 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.9.0.
+
+  WARNING: As of this release, Synapse no longer supports versions of SQLite
+  before 3.11, and will refuse to start when configured to use an older
+  version. Administrators are recommended to migrate their database to Postgres
+  (see instructions here).
+
+  WARNING: If your Synapse deployment uses workers, note that the reverse-proxy
+  configurations for the synapse.app.media_repository,
+  synapse.app.federation_reader and synapse.app.event_creator workers have
+  changed, with the addition of a few paths (see the updated configurations
+  here). Existing configurations will continue to work.
+
+  + Allow admin to create or modify a user.
+  + Add new quarantine media admin APIs to quarantine by media ID or by user
+    who uploaded the media.
+  + Add a new admin API to list and filter rooms on the server.
+  + Add org.matrix.e2e_cross_signing to unstable_features in /versions.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Fri Jan 10 13:41:50 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.8.0.
