@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:07:42 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.0.8
+- Bugs fixed:
+  * Editing split memo when there is only one split does not update
+    the record memo (kde#326212)
+  * In German, the dialog uses "share" if it is actually shares
+    and/or bonds (i.e. securities) (kde#361865)
+  * No documentation available for csv exporter (kde#395052)
+  * Opening Balances in forecast are wrong (kde#398982)
+  * SKR03 account template does not contain a flag for an opening
+    balance account (kde#399364)
+  * Tags within Split transaction not reporting correctly
+    (kde#406403)
+  * Investment doesn't show correct value after switching
+    investments (kde#411015)
+  * No display of transactions in the tags view when tags are
+    specified in a split (kde#412429)
+  * Problem with Web addresses at financial institutions
+    (kde#413325)
+  * Reconciliation of Credit Card (kde#413555)
+  * Investments - Edit and New investments - Unable to display
+    online source list for Finance::Quote (kde#414333)
+  * Incorrect "opening balance" in daily and weekly "Investment
+    Worth Graph" (kde#414932)
+  * Changing status of an investment transaction clears bank ID
+    (kde#415257)
+  * False detection of a matching investment cash dividend
+    transaction (kde#415409)
+  * The character < as part of a matched transaction which was
+    imported causes load to fail (kde#415548)
+  * Networth by month shows incorrect values for investment
+    (kde#415668)
+  * Creating multiple tags in a row does not correctly adjust the
+    name (kde#415793)
+  * AppImage is missing the account/category templates (kde#416052)
+  * Changed name of loan account is not saved (kde#416269)
+  * Investment reports show incorrect annualized return percentage
+    (kde#416274)
+  * Add a recuring transaction - loss of input if we forget the
+    source account (kde#416410)
+- Enhancements:
+  * No support for check forms with split protocol (kde#415411)
+
+-------------------------------------------------------------------
 Sat Jan 11 18:28:04 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Allow build with alkimia >= 8.0 again, the latest 8.0.3 can be

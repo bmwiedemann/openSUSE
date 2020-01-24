@@ -554,4 +554,12 @@
     <comment></comment>
     <requestid>763511</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f96ed980d4e3ebd3140168997ac739c6</srcmd5>
+    <version>5.0.8</version>
+    <time>1579867980</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.0.8</comment>
+    <requestid>766769</requestid>
+  </revision>
 </revisionlist>

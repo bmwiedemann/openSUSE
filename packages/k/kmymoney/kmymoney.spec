@@ -1,7 +1,7 @@
 #
 # spec file for package kmymoney
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           kmymoney
-Version:        5.0.7
+Version:        5.0.8
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -78,7 +78,7 @@ BuildRequires:  cmake(Qt5Svg) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5Xml) >= 5.6.0
-BuildRequires:  cmake(aqbanking) >= 5.99.32
+BuildRequires:  cmake(aqbanking) >= 6.0.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
@@ -121,7 +121,7 @@ Development files and headers need to build software using KMyMoney.
 %else
 %cmake_kf5 -d build
 %endif
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
