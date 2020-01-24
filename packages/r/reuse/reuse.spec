@@ -1,7 +1,7 @@
 #
 # spec file for package reuse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Free Software Foundation Europe e.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           reuse
-Version:        0.7.0
+Version:        0.8.0
 Release:        1%{?dist}
 Summary:        A tool for compliance with the REUSE recommendations
 License:        GPL-3.0-or-later AND CC-BY-SA-4.0 AND Apache-2.0 AND CC0-1.0
 Group:          Development/Languages/Python
-Url:            https://git.fsfe.org/reuse/reuse
+URL:            https://git.fsfe.org/reuse/reuse
 Source:         https://files.pythonhosted.org/packages/source/r/reuse/reuse-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -39,6 +39,7 @@ BuildRequires:  python3-license-expression
 BuildRequires:  python3-pytest
 BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
 Requires:       python3 >= 3.6
 Requires:       python3-Jinja2
 Requires:       python3-binaryornot

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 23 16:17:07 UTC 2020 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
+
+- Update to version 0.8.0:
+  + Performance improved with multiprocessing
+  + New translations added for various different languages.
+  + Can no longer lint subdirectories; must specify root with --root.
+  + addheader supports many more file types.
+  + Deprecated licenses are now recognised.
+
+-------------------------------------------------------------------
 Thu Nov 28 13:43:38 UTC 2019 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
 
 - Update to version 0.7.0:

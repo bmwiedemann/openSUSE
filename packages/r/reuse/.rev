@@ -86,4 +86,18 @@
 </comment>
     <requestid>751629</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb1acb68974de76c52aec5ac6528f4bc</srcmd5>
+    <version>0.8.0</version>
+    <time>1579867929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0:
+  + Performance improved with multiprocessing
+  + New translations added for various different languages.
+  + Can no longer lint subdirectories; must specify root with --root.
+  + addheader supports many more file types.
+  + Deprecated licenses are now recognised.
+</comment>
+    <requestid>766673</requestid>
+  </revision>
 </revisionlist>
