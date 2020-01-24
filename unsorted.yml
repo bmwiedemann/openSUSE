@@ -1894,6 +1894,7 @@ unsorted:
   - containerd-kubic 
   - containerd-kubic-ctr 
   - containers-systemd 
+  - containment-rpm-docker 
   - contractor 
   - converseen 
   - converseen-lang 
@@ -5650,7 +5651,7 @@ unsorted:
   - installation-images-MicroOS: [x86_64] 
   - installation-images-debuginfodeps-Kubic: [x86_64] 
   - installation-images-debuginfodeps-MicroOS: [x86_64] 
-  - installation-images-debuginfodeps-openSUSE 
+  - installation-images-debuginfodeps-openSUSE: [i586] 
   - installation-images-extras 
   - installation-images-openSUSE 
   - instlux 
@@ -9075,7 +9076,7 @@ unsorted:
   - libgloox17 
   - libgloox17-32bit: [x86_64] 
   - libglpk40 
-  - libglslang-suse8 
+  - libglslang-suse9 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -16829,6 +16830,8 @@ unsorted:
   - perl-XML-XPathEngine 
   - perl-XMLRPC-Lite 
   - perl-XSLoader 
+  - perl-YAML-LibYAML-API 
+  - perl-YAML-PP 
   - perl-YAML-Syck 
   - perl-YAML-Tiny 
   - perl-aliased 
@@ -17592,7 +17595,6 @@ unsorted:
   - python-designateclient-doc 
   - python-devel 
   - python-dfVFS 
-  - python-dialog 
   - python-djvulibre-doc 
   - python-doc 
   - python-doc-pdf 
@@ -18483,7 +18485,6 @@ unsorted:
   - python2-devpi-client 
   - python2-devpi-common 
   - python2-devpi-server 
-  - python2-dfdatetime 
   - python2-dfwinreg 
   - python2-dialite 
   - python2-dicttoxml 
@@ -20564,6 +20565,7 @@ unsorted:
   - python3-barbicanclient 
   - python3-baron 
   - python3-base-32bit: [x86_64] 
+  - python3-base58 
   - python3-bashate 
   - python3-bcc 
   - python3-bcolz 
@@ -22619,6 +22621,7 @@ unsorted:
   - python3-warlock 
   - python3-watchdog 
   - python3-watchdog-doc 
+  - python3-watchman 
   - python3-watermark 
   - python3-wcwidth 
   - python3-web.py 
@@ -24815,10 +24818,10 @@ unsorted:
   - syslog-ng-smtp 
   - syslog-ng-sql 
   - syslogd 
-  - sysprof 
+  - sysprof: [x86_64] 
   - sysprof-capture-devel-static 
   - sysprof-devel 
-  - sysprof-lang 
+  - sysprof-lang: [x86_64] 
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
@@ -33273,7 +33276,6 @@ unsorted:
   - warzone2100 
   - warzone2100-data 
   - watchman 
-  - watchman-python 
   - wavemon 
   - wavpack 
   - wavpack-devel 
