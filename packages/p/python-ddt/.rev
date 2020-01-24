@@ -56,4 +56,13 @@
   * Merge pull request #68 from datadriventests/fix-docstring-behavior</comment>
     <requestid>682478</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>567f3c4913a7d0318a1704b8d326e587</srcmd5>
+    <version>1.2.2</version>
+    <time>1579872066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.2:
+  * use mock only when it is really needed</comment>
+    <requestid>766250</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ddt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-ddt
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/txels/ddt
 Source:         https://files.pythonhosted.org/packages/source/d/ddt/ddt-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -31,8 +31,10 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 # /SECTION
 %python_subpackages
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:35:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.2:
+  * use mock only when it is really needed
+
+-------------------------------------------------------------------
 Thu Mar  7 14:07:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2.1:
