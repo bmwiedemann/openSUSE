@@ -555,4 +555,12 @@
     <comment>submit new version 4.2.74</comment>
     <requestid>765339</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0677f1e0e71a3dc3de33ff7af8dd2bb0</srcmd5>
+    <version>4.2.77</version>
+    <time>1579871458</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.77</comment>
+    <requestid>766664</requestid>
+  </revision>
 </revisionlist>
