@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 23 23:16:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.01.24
+  * 24video: add support for 24video.vip
+  * nbc: add support for nbc multi network URLs
+
+-------------------------------------------------------------------
 Tue Jan 14 19:22:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 2020.01.25
+- Update to release 2020.01.15
   *  scrippsnetworks: add support for www.discovery.com videos
   * twitter: add support for promo_video_website cards
   * vodplatform: add support for embed.kwikmotion.com domain
