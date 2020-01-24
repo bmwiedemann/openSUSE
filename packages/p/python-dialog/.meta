@@ -1,7 +1,0 @@
-<package name="python-dialog" project="openSUSE:Factory">
-  <title>A Python interface to the Unix dialog utility</title>
-  <description>A Python interface to the Unix dialog utility, designed to provide an
-easy, pythonic and as complete as possible way to use the dialog
-features from Python code.</description>
-  <devel project="devel:languages:python" package="python-dialog"/>
-</package>
