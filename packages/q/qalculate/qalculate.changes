@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:21:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.7.0
+  * New functions: bernoulli(), erfi(), fresnels(), fresnelc()
+  * Improved zeta(), with exact values for negative and even
+    integers, support for all real values, and optional second
+    argument for calculation of Hurwitz zeta
+  * Support for complex numbers in Ei(), li(), Si(), Ci(),
+    Shi(), and Chi()
+  * Support for all branches and complex numbers in lambertw()
+  * Extended argument support in Li()
+  * Add base units (or local currency) for unit conversion when
+    units are missing in original expression (e.g. 5 to
+    ft = 5 m to ft)
+  * Belarusian ruble (BYN)
+  * Improvements and fixes for integrals
+  * Fix crash when used in Cantor (caused by conflict with
+    Poppler library)
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
 Fri Nov 29 02:30:19 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 3.6.0
