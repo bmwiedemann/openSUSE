@@ -26,4 +26,14 @@
 - Update vendor.tar.gz</comment>
     <requestid>743814</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01ab4e44c11574eead4131181d6da87b</srcmd5>
+    <version>0.13.0</version>
+    <time>1579872059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0
+  - Add job filter
+- Update vendor.tar.gz</comment>
+    <requestid>766236</requestid>
+  </revision>
 </revisionlist>
