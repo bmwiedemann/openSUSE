@@ -1,7 +1,7 @@
 #
 # spec file for package mosquitto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Source4:        README-conf-d
 Source5:        README-ca_certificates
 Source6:        README-certs
 Patch0:         mosquitto-1.4.1_apparmor.patch
+Patch1:         mosquitto-1.6.8-config.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcares-devel
@@ -121,6 +122,7 @@ Client for Mosquitto.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 find misc -type f -exec chmod a-x "{}" "+"
 
 %build
