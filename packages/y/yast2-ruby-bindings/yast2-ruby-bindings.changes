@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:04:11 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Added a COPYING file with the GPL license (bsc#1161470)
+- 4.2.8
+
+-------------------------------------------------------------------
 Fri Jan  3 15:02:24 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix previous fix to really set exit code in ruby wrapper
