@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ntp-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ntp-client
-Version:        4.2.6
+Version:        4.2.7
 Release:        0
 Summary:        YaST2 - NTP Client Configuration
 License:        GPL-2.0-or-later
@@ -83,8 +83,8 @@ fi
 # jsc#SLE-9113
 if [ -f /etc/cron.d/suse-ntp_synchronize ]; then
   /usr/bin/erb timeout=$(grep -o '[[:digit:]]\+' /etc/cron.d/suse-ntp_synchronize) /usr/share/YaST2/data/yast-timesync.timer.erb > /etc/systemd/system/yast-timesync.timer
-  /bin/systemctl enable yast-timesync.timer
-  /bin/systemctl start yast-timesync.timer
+  /usr/bin/systemctl enable yast-timesync.timer
+  /usr/bin/systemctl start yast-timesync.timer
   rm /etc/cron.d/suse-ntp_synchronize
 fi
 
