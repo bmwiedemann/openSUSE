@@ -1,7 +1,7 @@
 #
 # spec file for package glslang
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 # lname needs a bump for every change in commit (_service)
-%define version_unconverted 7.13.3496
-%define lname libglslang-suse8
+%define version_unconverted 8.13.3559+git20
+%define lname libglslang-suse9
 
 Name:           glslang
-Version:        7.13.3496
+Version:        8.13.3559+git20
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -102,13 +102,13 @@ ln -s libglslang.so "$b/%_libdir/libOSDependent.so"
 
 %files -n %lname
 %defattr(-,root,root)
-%_libdir/*.so.suse8*
+%_libdir/*.so.suse9*
 
 %files devel
 %defattr(-,root,root)
 %_bindir/gls*
 %_bindir/spirv*
-%_prefix/lib/cmake/
+%_libdir/cmake/
 %_libdir/*resource*.so
 %_libdir/libHLSL.so
 %_libdir/libOGLCompiler.so

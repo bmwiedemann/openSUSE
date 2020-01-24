@@ -1,7 +1,7 @@
 #
 # spec file for package alsa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,38 @@ Patch28:        0028-topology-more-coding-fixes.patch
 Patch29:        0029-Fix-alsa-sound-.h-for-external-programs.patch
 Patch30:        0030-type_compat-Add-missing-__s64-and-__u64-definitions-.patch
 Patch31:        0031-uapi-Move-typedefs-from-uapi-to-sound.patch
+Patch32:        0032-Update-the-attributes.m4-macro-file-from-xine.patch
+Patch33:        0033-topology-avoid-to-use-the-atoi-directly-when-expecte.patch
+Patch34:        0034-topology-use-snd_config_get_bool-instead-own-impleme.patch
+Patch35:        0035-topology-fix-tplg_get_integer-handle-errno-ERANGE.patch
+Patch36:        0036-topology-add-tplg_get_unsigned-function.patch
+Patch37:        0037-topology-convert-builder-to-use-the-mallocated-memor.patch
+Patch38:        0038-topology-add-binary-output-from-the-builder.patch
+Patch39:        0039-topology-parser-recode-tplg_parse_config.patch
+Patch40:        0040-topology-add-snd_tplg_load-remove-snd_tplg_build_bin.patch
+Patch41:        0041-topology-move-the-topology-element-table-from-builde.patch
+Patch42:        0042-topology-add-parser-to-the-tplg_table.patch
+Patch43:        0043-topology-add-snd_tplg_save.patch
+Patch44:        0044-topology-add-snd_tplg_create-with-flags.patch
+Patch45:        0045-topology-add-snd_tplg_version-function.patch
+Patch46:        0046-topology-cleanup-the-SNDERR-calls.patch
+Patch47:        0047-topology-dapm-fix-the-SNDERR-Undefined.patch
+Patch48:        0048-topology-fix-the-unitialized-tuples.patch
+Patch49:        0049-topology-implement-shorter-hexa-uuid-00-00-parser.patch
+Patch50:        0050-topology-fix-the-TPLG_DEBUG-compilation.patch
+Patch51:        0051-topology-fix-the-ops-parser-accept-integer-hexa-valu.patch
+Patch52:        0052-topology-fix-the-wrong-memory-access-object-realloc.patch
+Patch53:        0053-topology-implement-snd_tplg_decode.patch
+Patch54:        0054-topology-move-the-elem-list-delete-to-tplg_elem_free.patch
+Patch55:        0055-topology-unify-the-log-mechanism.patch
+Patch56:        0056-topology-tplg_dbg-cleanups.patch
+Patch57:        0057-topology-cosmetic-changes-functions.patch
+Patch58:        0058-mixer-Fix-memory-leak-for-more-than-16-file-descript.patch
+Patch59:        0059-Quote-strings-containing-or-when-saving-an-alsa-conf.patch
+Patch60:        0060-ucm-fix-the-configuration-directory-longname-for-ucm.patch
+Patch61:        0061-ucm-split-conf_file_name-and-conf_dir_name.patch
+Patch62:        0062-ucm-remove-MAX_FILE-definition-and-use-correct-PATH_.patch
+Patch63:        0063-topology-remove-MAX_FILE-definition-and-use-correct-.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -194,6 +226,38 @@ This package contains the library for ALSA topology support.
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch43 -p1
+%patch44 -p1
+%patch45 -p1
+%patch46 -p1
+%patch47 -p1
+%patch48 -p1
+%patch49 -p1
+%patch50 -p1
+%patch51 -p1
+%patch52 -p1
+%patch53 -p1
+%patch54 -p1
+%patch55 -p1
+%patch56 -p1
+%patch57 -p1
+%patch58 -p1
+%patch59 -p1
+%patch60 -p1
+%patch61 -p1
+%patch62 -p1
+%patch63 -p1
 %patch101 -p1
 
 %build
@@ -279,7 +343,7 @@ cp %{_sourcedir}/README* %{buildroot}%{_docdir}/%{name}
 cp COPYING %{buildroot}%{_docdir}/%{name}
 %endif
 mkdir -p %{buildroot}%{_docdir}/%{name}/alsa-lib
-cp ChangeLog INSTALL TODO MEMORY-LEAK %{buildroot}%{_docdir}/%{name}/alsa-lib
+cp ChangeLog TODO MEMORY-LEAK NOTES %{buildroot}%{_docdir}/%{name}/alsa-lib
 cp doc/asoundrc.txt %{buildroot}%{_docdir}/%{name}/alsa-lib
 
 %post

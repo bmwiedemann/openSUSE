@@ -1,7 +1,7 @@
 #
 # spec file for package ldb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
 Url:            https://ldb.samba.org/
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later
@@ -76,8 +76,8 @@ LDB is an LDAP-like embedded database.
 %package -n libldb2
 Summary:        An LDAP-like embedded database
 Group:          System/Libraries
-Provides:       libldb1 = %{version}
-Obsoletes:      libldb1 < %{version}
+Provides:       libldb1
+Obsoletes:      libldb1
 
 %description -n libldb2
 LDB is an LDAP-like embedded database.

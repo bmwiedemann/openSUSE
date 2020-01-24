@@ -1,0 +1,35 @@
+From 712fbacf160f899582a9adc3f30f297211b063bb Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 27 Dec 2019 19:32:03 +0100
+Subject: [PATCH 47/63] topology: dapm - fix the SNDERR() - Undefined
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/dapm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index f61fe07157ac..88bddca3c08e 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -230,7 +230,7 @@ int tplg_build_routes(snd_tplg_t *tplg)
+ 					SND_TPLG_TYPE_MIXER, elem->index) &&
+ 			!tplg_elem_lookup(&tplg->enum_list, route->control,
+ 					SND_TPLG_TYPE_ENUM, elem->index)) {
+-				SNDERR("Undefined mixer/enum control '%s'",
++				SNDERR("undefined mixer/enum control '%s'",
+ 				       route->control);
+ 			}
+ 		}
+@@ -243,7 +243,7 @@ int tplg_build_routes(snd_tplg_t *tplg)
+ 		}
+ 		if (!tplg_elem_lookup(&tplg->widget_list, route->source,
+ 			SND_TPLG_TYPE_DAPM_WIDGET, SND_TPLG_INDEX_ALL)) {
+-			SNDERR("Undefined source widget/stream '%s'",
++			SNDERR("undefined source widget/stream '%s'",
+ 			       route->source);
+ 		}
+ 
+-- 
+2.16.4
+

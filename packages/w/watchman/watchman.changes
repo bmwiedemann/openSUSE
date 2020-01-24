@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 23 14:51:22 UTC 2020 - matthias.gerstner@suse.com
+
+- add Conflicts to fix
+
+  ```
+  found conflict of python3-watchman-1.4.0-20.1.x86_64 with watchman-python-1.3.0-3.6.x86_64
+    /usr/bin/watchman-make
+    /usr/bin/watchman-wait
+  ```
+
+-------------------------------------------------------------------
+Wed Jan 22 09:25:43 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- spec-cleaned
+- removed python2 bindings
+- enabled python3 bindings as python3-watchman
+
+-------------------------------------------------------------------
 Tue Jun 12 07:37:59 UTC 2018 - matthias.gerstner@suse.com
 
 - watchman_4.7.0_makefile-am.diff: dropped, included in tarball by now

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,9 @@
 %ifarch x86_64
 %define longarch x86_64
 %endif
+%ifarch riscv64
+%define longarch riscv64
+%endif
 %ifarch s390 s390x
 %define sysname ibm
 %endif
@@ -52,14 +55,14 @@
 %ifarch %{ix86}
 %define sysname deb9
 %endif
-%ifarch ppc64 ppc64le %{arm} aarch64
+%ifarch ppc64 ppc64le %{arm} aarch64 riscv64
 %define sysname unknown
 %endif
 
 Name:           ghc-bootstrap
 Version:        8.6.5
 Release:        0
-Url:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
+URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
@@ -86,7 +89,7 @@ BuildRequires:  binutils-gold
 Requires:       binutils-gold
 Requires:       llvm6-devel
 %endif
-%ifarch s390x
+%ifarch s390x riscv64
 BuildRequires:  libffi-devel
 Requires:       libffi-devel
 %endif
@@ -95,7 +98,7 @@ Requires:       libncurses5
 # This package is not meant to be used outside OBS
 Requires:       this-is-only-for-build-envs
 
-ExclusiveArch:  %{ix86} ppc64 ppc64le x86_64 s390x aarch64 %{arm}
+ExclusiveArch:  %{ix86} ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
 Provides:       ghc-bootstrap-devel
 
 AutoReq:        off

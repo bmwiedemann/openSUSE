@@ -1,7 +1,7 @@
 #
 # spec file for package cage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,11 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://www.hjdskes.nl/projects/cage/
 Source:         https://github.com/Hjdskes/cage/archive/v%{version}.tar.gz
+Patch0:         cage-0.1.1-new-wlroots.patch
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
-BuildRequires:  wlroots-devel >= 0.6
+BuildRequires:  wlroots-devel >= 0.9.1
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -37,6 +38,7 @@ A Wayland Kiosk.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson

@@ -1,0 +1,37 @@
+From 8e22df3aec9190518a23818be7690ac345f0bc20 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Timur=20Krist=C3=B3f?= <timur.kristof@gmail.com>
+Date: Tue, 21 Jan 2020 16:12:16 +0100
+Subject: [PATCH] gallium: Fix a couple of multiple definition warnings.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Timur Kristóf <timur.kristof@gmail.com>
+Reviewed-by: Marek Olšák <marek.olsak@amd.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/merge_requests/3488>
+---
+ src/gallium/auxiliary/target-helpers/drm_helper_public.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/gallium/auxiliary/target-helpers/drm_helper_public.h b/src/gallium/auxiliary/target-helpers/drm_helper_public.h
+index 82dfe9e2575..ab0fc8d1b1a 100644
+--- a/src/gallium/auxiliary/target-helpers/drm_helper_public.h
++++ b/src/gallium/auxiliary/target-helpers/drm_helper_public.h
+@@ -4,10 +4,10 @@
+ struct pipe_screen;
+ struct pipe_screen_config;
+ 
+-const char *iris_driconf_xml;
+-const char *radeonsi_driconf_xml;
+-const char *v3d_driconf_xml;
+-const char *virgl_driconf_xml;
++extern const char *iris_driconf_xml;
++extern const char *radeonsi_driconf_xml;
++extern const char *v3d_driconf_xml;
++extern const char *virgl_driconf_xml;
+ 
+ struct pipe_screen *
+ pipe_i915_create_screen(int fd, const struct pipe_screen_config *config);
+-- 
+2.16.4
+

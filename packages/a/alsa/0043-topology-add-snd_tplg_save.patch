@@ -1,0 +1,3141 @@
+From aa1bac2d04bd1fb4ccae96a1136e60454298a710 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 16 Dec 2019 14:26:31 +0100
+Subject: [PATCH 43/63] topology: add snd_tplg_save()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/topology.h        |  15 ++
+ src/conf.c                |  17 ++
+ src/topology/Makefile.am  |   3 +-
+ src/topology/channel.c    |  45 ++++
+ src/topology/ctl.c        | 201 ++++++++++++++-
+ src/topology/dapm.c       | 209 ++++++++++-----
+ src/topology/data.c       | 601 ++++++++++++++++++++++++++++++++++---------
+ src/topology/elem.c       |  18 ++
+ src/topology/ops.c        |  92 +++++++
+ src/topology/parser.c     |   4 +
+ src/topology/pcm.c        | 505 +++++++++++++++++++++++++++++++-----
+ src/topology/save.c       | 632 ++++++++++++++++++++++++++++++++++++++++++++++
+ src/topology/text.c       |  19 ++
+ src/topology/tplg_local.h |  58 ++++-
+ 14 files changed, 2162 insertions(+), 257 deletions(-)
+ create mode 100644 src/topology/save.c
+
+diff --git a/include/topology.h b/include/topology.h
+index c9f4ffea27de..69aa5ed733e3 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -1124,6 +1124,21 @@ int snd_tplg_set_manifest_data(snd_tplg_t *tplg, const void *data, int len);
+  */
+ int snd_tplg_set_version(snd_tplg_t *tplg, unsigned int version);
+ 
++/*
++ * Flags for the snd_tplg_save()
++ */
++#define SND_TPLG_SAVE_SORT	(1<<0)	/*!< sort identifiers */
++#define SND_TPLG_SAVE_GROUPS	(1<<1)	/*!< create the structure by group index */
++#define SND_TPLG_SAVE_NOCHECK	(1<<16)	/*!< unchecked output for debugging */
++
++/**
++ * \brief Save the topology to the text configuration string.
++ * \param tplg Topology instance.
++ * \param dst A pointer to string with result (malloc).
++ * \return Zero on success, otherwise a negative error code
++ */
++int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags);
++
+ /* \} */
+ 
+ #ifdef __cplusplus
+diff --git a/src/conf.c b/src/conf.c
+index 3e753b266b8d..c4db9f21a15e 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -874,6 +874,21 @@ static int get_nonwhite(input_t *input)
+ 	}
+ }
+ 
++static inline int get_hexachar(input_t *input)
++{
++	int c, num = 0;
++
++	c = get_char(input);
++	if (c >= '0' && c <= '9') num |= (c - '0') << 4;
++	else if (c >= 'a' && c <= 'f') num |= (c - 'a') << 4;
++	else if (c >= 'A' && c <= 'F') num |= (c - 'A') << 4;
++	c = get_char(input);
++	if (c >= '0' && c <= '9') num |= (c - '0') << 0;
++	else if (c >= 'a' && c <= 'f') num |= (c - 'a') << 0;
++	else if (c >= 'A' && c <= 'F') num |= (c - 'A') << 0;
++	return c;
++}
++
+ static int get_quotedchar(input_t *input)
+ {
+ 	int c;
+@@ -891,6 +906,8 @@ static int get_quotedchar(input_t *input)
+ 		return '\r';
+ 	case 'f':
+ 		return '\f';
++	case 'x':
++		return get_hexachar(input);
+ 	case '0': case '1': case '2': case '3':
+ 	case '4': case '5': case '6': case '7':
+ 	{
+diff --git a/src/topology/Makefile.am b/src/topology/Makefile.am
+index 9dc472d62fac..a850ec4c195c 100644
+--- a/src/topology/Makefile.am
++++ b/src/topology/Makefile.am
+@@ -27,7 +27,8 @@ libatopology_la_SOURCES =\
+ 	text.c \
+ 	channel.c \
+ 	ops.c \
+-	elem.c
++	elem.c \
++	save.c
+ 
+ noinst_HEADERS = tplg_local.h
+ 
+diff --git a/src/topology/channel.c b/src/topology/channel.c
+index 4569eb31e0c5..b54a10c89379 100644
+--- a/src/topology/channel.c
++++ b/src/topology/channel.c
+@@ -73,6 +73,18 @@ static int lookup_channel(const char *c)
+ 	return -EINVAL;
+ }
+ 
++const char *tplg_channel_name(int type)
++{
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(channel_map); i++) {
++		if (channel_map[i].id == type)
++			return channel_map[i].name;
++	}
++
++	return NULL;
++}
++
+ /* Parse a channel mapping. */
+ int tplg_parse_channel(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		       void *private)
+@@ -123,3 +135,36 @@ int tplg_parse_channel(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	tplg->channel_idx++;
+ 	return 0;
+ }
++
++int tplg_save_channels(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		       struct snd_soc_tplg_channel *channel,
++		       unsigned int count, char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_channel *c;
++	const char *s;
++	unsigned int index;
++	int err;
++
++	if (count == 0)
++		return 0;
++	err = tplg_save_printf(dst, pfx, "channel {\n");
++	for (index = 0; err >= 0 && index < count; index++) {
++		c = channel + index;
++		s = tplg_channel_name(c->id);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\t%u", c->id);
++		else
++			err = tplg_save_printf(dst, pfx, "\t%s", s);
++		if (err >= 0)
++			err = tplg_save_printf(dst, NULL, " {\n");
++		if (err >= 0)
++			err = tplg_save_printf(dst, pfx, "\t\treg %d\n", c->reg);
++		if (err >= 0 && c->shift > 0)
++			err = tplg_save_printf(dst, pfx, "\t\tshift %u\n", c->shift);
++		if (err >= 0)
++			err = tplg_save_printf(dst, pfx, "\t}\n");
++	}
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 539329cd661f..979cc1b035f1 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -28,15 +28,16 @@ struct ctl_access_elem {
+ };
+ 
+ /* CTL access strings and codes */
++/* place the multi-bit values on top - like read_write - for save */
+ static const struct ctl_access_elem ctl_access[] = {
++	{"read_write", SNDRV_CTL_ELEM_ACCESS_READWRITE},
++	{"tlv_read_write", SNDRV_CTL_ELEM_ACCESS_TLV_READWRITE},
+ 	{"read", SNDRV_CTL_ELEM_ACCESS_READ},
+ 	{"write", SNDRV_CTL_ELEM_ACCESS_WRITE},
+-	{"read_write", SNDRV_CTL_ELEM_ACCESS_READWRITE},
+ 	{"volatile", SNDRV_CTL_ELEM_ACCESS_VOLATILE},
+ 	{"timestamp", SNDRV_CTL_ELEM_ACCESS_TIMESTAMP},
+ 	{"tlv_read", SNDRV_CTL_ELEM_ACCESS_TLV_READ},
+ 	{"tlv_write", SNDRV_CTL_ELEM_ACCESS_TLV_WRITE},
+-	{"tlv_read_write", SNDRV_CTL_ELEM_ACCESS_TLV_READWRITE},
+ 	{"tlv_command", SNDRV_CTL_ELEM_ACCESS_TLV_COMMAND},
+ 	{"inactive", SNDRV_CTL_ELEM_ACCESS_INACTIVE},
+ 	{"lock", SNDRV_CTL_ELEM_ACCESS_LOCK},
+@@ -103,6 +104,46 @@ int parse_access(snd_config_t *cfg,
+ 	return err;
+ }
+ 
++/* Save Access */
++static int tplg_save_access(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			    struct snd_soc_tplg_ctl_hdr *hdr, char **dst,
++			    const char *pfx)
++{
++	const char *last;
++	unsigned int j, count, access, cval;
++	int err;
++
++	if (hdr->access == 0)
++		return 0;
++
++	access = hdr->access;
++	for (j = 0, count = 0, last = NULL; j < ARRAY_SIZE(ctl_access); j++) {
++		cval = ctl_access[j].value;
++		if ((access & cval) == cval) {
++			access &= ~cval;
++			last = ctl_access[j].name;
++			count++;
++		}
++	}
++	if (count == 1)
++		return tplg_save_printf(dst, pfx, "access.0 %s\n", last);
++	err = tplg_save_printf(dst, pfx, "access [\n");
++	if (err < 0)
++		return err;
++	access = hdr->access;
++	for (j = 0; j < ARRAY_SIZE(ctl_access); j++) {
++		cval = ctl_access[j].value;
++		if ((access & cval) == cval) {
++			err = tplg_save_printf(dst, pfx, "\t%s\n",
++					       ctl_access[j].name);
++			if (err < 0)
++				return err;
++			access &= ~cval;
++		}
++	}
++	return tplg_save_printf(dst, pfx, "]\n");
++}
++
+ /* copy referenced TLV to the mixer control */
+ static int copy_tlv(struct tplg_elem *elem, struct tplg_elem *ref)
+ {
+@@ -358,6 +399,37 @@ int tplg_parse_tlv(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return err;
+ }
+ 
++/* save TLV data */
++int tplg_save_tlv(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		  struct tplg_elem *elem,
++		  char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_ctl_tlv *tlv = elem->tlv;
++	struct snd_soc_tplg_tlv_dbscale *scale;
++	int err;
++
++	if (tlv->type != SNDRV_CTL_TLVT_DB_SCALE) {
++		SNDERR("unknown TLV type");
++		return -EINVAL;
++	}
++
++	scale = &tlv->scale;
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "\tscale {\n");
++	if (err >= 0 && scale->min)
++		err = tplg_save_printf(dst, pfx, "\t\tmin %i\n", scale->min);
++	if (err >= 0 && scale->step > 0)
++		err = tplg_save_printf(dst, pfx, "\t\tstep %i\n", scale->step);
++	if (err >= 0 && scale->mute > 0)
++		err = tplg_save_printf(dst, pfx, "\t\tmute %i\n", scale->mute);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "\t}\n");
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse Control Bytes */
+ int tplg_parse_control_bytes(snd_tplg_t *tplg,
+ 			     snd_config_t *cfg,
+@@ -430,7 +502,7 @@ int tplg_parse_control_bytes(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -485,6 +557,49 @@ int tplg_parse_control_bytes(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
++/* save control bytes */
++int tplg_save_control_bytes(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			    struct tplg_elem *elem,
++			    char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_bytes_control *be = elem->bytes_ext;
++	char pfx2[16];
++	int err;
++
++	if (!be)
++		return 0;
++
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err < 0)
++		return err;
++	if (err >= 0 && elem->index > 0)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n", elem->index);
++	if (err >= 0 && be->base > 0)
++		err = tplg_save_printf(dst, pfx, "\tbase %u\n", be->base);
++	if (err >= 0 && be->num_regs > 0)
++		err = tplg_save_printf(dst, pfx, "\tnum_regs %u\n", be->num_regs);
++	if (err >= 0 && be->max > 0)
++		err = tplg_save_printf(dst, pfx, "\tmax %u\n", be->max);
++	if (err >= 0 && be->mask > 0)
++		err = tplg_save_printf(dst, pfx, "\tmask %u\n", be->mask);
++	if (err >= 0)
++		err = tplg_save_ops(tplg, &be->hdr, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_ext_ops(tplg, be, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_access(tplg, &be->hdr, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_TLV,
++				     "tlv", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse Control Enums. */
+ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	void *private ATTRIBUTE_UNUSED)
+@@ -559,7 +674,7 @@ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		}
+ 
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -582,6 +697,42 @@ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save control eunm */
++int tplg_save_control_enum(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			   struct tplg_elem *elem,
++			   char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_enum_control *ec = elem->enum_ctrl;
++	char pfx2[16];
++	int err;
++
++	if (!ec)
++		return 0;
++
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err < 0)
++		return err;
++	if (err >= 0 && elem->index > 0)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n", elem->index);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_TEXT,
++				     "texts", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_channels(tplg, ec->channel, ec->num_channels,
++					 dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_ops(tplg, &ec->hdr, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_access(tplg, &ec->hdr, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse Controls.
+  *
+  * Mixer control. Supports multiple channels.
+@@ -683,7 +834,7 @@ int tplg_parse_control_mixer(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -709,6 +860,46 @@ int tplg_parse_control_mixer(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
++int tplg_save_control_mixer(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			    struct tplg_elem *elem, char **dst,
++			    const char *pfx)
++{
++	struct snd_soc_tplg_mixer_control *mc = elem->mixer_ctrl;
++	char pfx2[16];
++	int err;
++
++	if (!mc)
++		return 0;
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err < 0)
++		return err;
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	if (err >= 0 && elem->index > 0)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n", elem->index);
++	if (err >= 0)
++		err = tplg_save_channels(tplg, mc->channel, mc->num_channels,
++					 dst, pfx2);
++	if (err >= 0 && mc->max > 0)
++		err = tplg_save_printf(dst, pfx, "\tmax %u\n", mc->max);
++	if (err >= 0 && mc->invert > 0)
++		err = tplg_save_printf(dst, pfx, "\tinvert 1\n", mc->max);
++	if (err >= 0 && mc->invert > 0)
++		err = tplg_save_printf(dst, pfx, "\tinvert 1\n", mc->max);
++	if (err >= 0)
++		err = tplg_save_ops(tplg, &mc->hdr, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_access(tplg, &mc->hdr, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_TLV,
++				     "tlv", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+ 		struct snd_tplg_ctl_template *t)
+ {
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index ad7092107896..2bdacedca125 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -43,7 +43,6 @@ static const struct map_elem widget_map[] = {
+ 	{"effect", SND_SOC_TPLG_DAPM_EFFECT},
+ 	{"siggen", SND_SOC_TPLG_DAPM_SIGGEN},
+ 	{"src", SND_SOC_TPLG_DAPM_SRC},
+-	{"asrc", SND_SOC_TPLG_DAPM_ASRC},
+ 	{"encoder", SND_SOC_TPLG_DAPM_ENCODER},
+ 	{"decoder", SND_SOC_TPLG_DAPM_DECODER},
+ };
+@@ -60,70 +59,16 @@ static int lookup_widget(const char *w)
+ 	return -EINVAL;
+ }
+ 
+-static int tplg_parse_dapm_mixers(snd_config_t *cfg, struct tplg_elem *elem)
++static const char *get_widget_name(unsigned int type)
+ {
+-	snd_config_iterator_t i, next;
+-	snd_config_t *n;
+-	const char *value = NULL;
+-
+-	tplg_dbg(" DAPM Mixer Controls: %s\n", elem->id);
+-
+-	snd_config_for_each(i, next, cfg) {
+-		n = snd_config_iterator_entry(i);
+-
+-		/* get value */
+-		if (snd_config_get_string(n, &value) < 0)
+-			continue;
+-
+-		tplg_ref_add(elem, SND_TPLG_TYPE_MIXER, value);
+-		tplg_dbg("\t\t %s\n", value);
+-	}
+-
+-	return 0;
+-}
+-
+-static int tplg_parse_dapm_enums(snd_config_t *cfg, struct tplg_elem *elem)
+-{
+-	snd_config_iterator_t i, next;
+-	snd_config_t *n;
+-	const char *value = NULL;
+-
+-	tplg_dbg(" DAPM Enum Controls: %s\n", elem->id);
+-
+-	snd_config_for_each(i, next, cfg) {
+-		n = snd_config_iterator_entry(i);
+-
+-		/* get value */
+-		if (snd_config_get_string(n, &value) < 0)
+-			continue;
+-
+-		tplg_ref_add(elem, SND_TPLG_TYPE_ENUM, value);
+-		tplg_dbg("\t\t %s\n", value);
+-	}
+-
+-	return 0;
+-}
+-
+-static int tplg_parse_dapm_bytes(snd_config_t *cfg, struct tplg_elem *elem)
+-{
+-	snd_config_iterator_t i, next;
+-	snd_config_t *n;
+-	const char *value = NULL;
+-
+-	tplg_dbg(" DAPM Bytes Controls: %s\n", elem->id);
+-
+-	snd_config_for_each(i, next, cfg) {
+-		n = snd_config_iterator_entry(i);
+-
+-		/* get value */
+-		if (snd_config_get_string(n, &value) < 0)
+-			continue;
++	unsigned int i;
+ 
+-		tplg_ref_add(elem, SND_TPLG_TYPE_BYTES, value);
+-		tplg_dbg("\t\t %s\n", value);
++	for (i = 0; i < ARRAY_SIZE(widget_map); i++) {
++		if ((unsigned int)widget_map[i].id == type)
++			return widget_map[i].name;
+ 	}
+ 
+-	return 0;
++	return NULL;
+ }
+ 
+ /* move referenced controls to the widget */
+@@ -340,7 +285,7 @@ struct tplg_elem *tplg_elem_new_route(snd_tplg_t *tplg, int index)
+ 
+ #define LINE_SIZE	1024
+ 
+-/* line is defined as '"source, control, sink"' */
++/* line is defined as '"sink, control, source"' */
+ static int tplg_parse_line(const char *text,
+ 			   struct snd_soc_tplg_dapm_graph_elem *line)
+ {
+@@ -470,6 +415,77 @@ int tplg_parse_dapm_graph(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save DAPM graph */
++int tplg_save_dapm_graph(snd_tplg_t *tplg, int index, char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_dapm_graph_elem *route;
++	struct list_head *pos;
++	struct tplg_elem *elem;
++	int err, first = 1, old_index = -1;
++	unsigned block = -1, count = 0;
++
++	list_for_each(pos, &tplg->route_list) {
++		elem = list_entry(pos, struct tplg_elem, list);
++		if (!elem->route || elem->type != SND_TPLG_TYPE_DAPM_GRAPH)
++			continue;
++		if (index >= 0 && elem->index != index)
++			continue;
++		count++;
++	}
++	if (count == 0)
++		return 0;
++	err = tplg_save_printf(dst, pfx, "SectionGraph {\n");
++	list_for_each(pos, &tplg->route_list) {
++		elem = list_entry(pos, struct tplg_elem, list);
++		if (!elem->route || elem->type != SND_TPLG_TYPE_DAPM_GRAPH)
++			continue;
++		if (index >= 0 && elem->index != index)
++			continue;
++		if (old_index != elem->index) {
++			if (old_index >= 0) {
++				err = tplg_save_printf(dst, pfx, "\t\t]\n");
++				if (err < 0)
++					return err;
++				err = tplg_save_printf(dst, pfx, "\t}\n");
++				if (err < 0)
++					return err;
++			}
++			old_index = elem->index;
++			block++;
++			first = 1;
++			err = tplg_save_printf(dst, pfx, "\tset%u {\n", block);
++			if (err >= 0)
++				err = tplg_save_printf(dst, pfx, "\t\tindex %u\n",
++						       elem->index);
++			if (err < 0)
++				return err;
++		}
++		if (first) {
++			first = 0;
++			err = tplg_save_printf(dst, pfx, "\t\tlines [\n", elem->index);
++			if (err < 0)
++				return err;
++		}
++		route = elem->route;
++		err = tplg_save_printf(dst, pfx, "\t\t\t'%s, %s, %s'\n",
++					route->sink, route->control,
++					route->source);
++		if (err < 0)
++			return err;
++	}
++
++	if (!first) {
++		if (err >= 0)
++			err = tplg_save_printf(dst, pfx, "\t\t]\n");
++		if (err >= 0)
++			err = tplg_save_printf(dst, pfx, "\t}\n");
++	}
++
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* DAPM Widget */
+ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 			   snd_config_t *cfg, void *private ATTRIBUTE_UNUSED)
+@@ -595,7 +611,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "enum") == 0) {
+-			err = tplg_parse_dapm_enums(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_ENUM);
+ 			if (err < 0)
+ 				return err;
+ 
+@@ -603,7 +619,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "mixer") == 0) {
+-			err = tplg_parse_dapm_mixers(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_MIXER);
+ 			if (err < 0)
+ 				return err;
+ 
+@@ -611,7 +627,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "bytes") == 0) {
+-			err = tplg_parse_dapm_bytes(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_BYTES);
+ 			if (err < 0)
+ 				return err;
+ 
+@@ -619,7 +635,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -629,6 +645,66 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
++/* save DAPM widget */
++int tplg_save_dapm_widget(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			  struct tplg_elem *elem,
++			  char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_dapm_widget *widget = elem->widget;
++	const char *s;
++	char pfx2[16];
++	int err;
++
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && elem->index)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n",
++				       elem->index);
++	if (err >= 0) {
++		s = get_widget_name(widget->id);
++		if (s)
++			err = tplg_save_printf(dst, pfx, "\ttype %s\n", s);
++		else
++			err = tplg_save_printf(dst, pfx, "\ttype %u\n",
++					       widget->id);
++	}
++	if (err >= 0 && widget->sname[0])
++		err = tplg_save_printf(dst, pfx, "\tstream_name '%s'\n",
++				       widget->sname);
++	if (err >= 0 && widget->reg)
++		err = tplg_save_printf(dst, pfx, "\tno_pm 1\n");
++	if (err >= 0 && widget->shift)
++		err = tplg_save_printf(dst, pfx, "\tshift %u\n",
++				       widget->shift);
++	if (err >= 0 && widget->invert)
++		err = tplg_save_printf(dst, pfx, "\tinvert %u\n",
++				       widget->invert);
++	if (err >= 0 && widget->subseq)
++		err = tplg_save_printf(dst, pfx, "\tsubseq %u\n",
++				       widget->subseq);
++	if (err >= 0 && widget->event_type)
++		err = tplg_save_printf(dst, pfx, "\tevent_type %u\n",
++				       widget->event_type);
++	if (err >= 0 && widget->event_flags)
++		err = tplg_save_printf(dst, pfx, "\tevent_flags %u\n",
++				       widget->event_flags);
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_ENUM,
++				     "enum", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_MIXER,
++				     "mixer", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_BYTES,
++				     "bytes", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ int tplg_add_route(snd_tplg_t *tplg, struct snd_tplg_graph_elem *t, int index)
+ {
+ 	struct tplg_elem *elem;
+@@ -744,7 +820,6 @@ int tplg_add_widget_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 		default:
+ 			SNDERR("error: widget %s: invalid type %d for ctl %d\n",
+ 				wt->name, ct->type, i);
+-			ret = -EINVAL;
+ 			break;
+ 		}
+ 
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 9807445e8c37..11cd73f5ed6e 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -21,6 +21,10 @@
+ #include "tplg_local.h"
+ #include <ctype.h>
+ 
++#define UUID_FORMAT "\
++0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, \
++0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x"
++
+ /* Get private data buffer of an element */
+ struct snd_soc_tplg_private *get_priv_data(struct tplg_elem *elem)
+ {
+@@ -64,6 +68,96 @@ struct snd_soc_tplg_private *get_priv_data(struct tplg_elem *elem)
+ 	return priv;
+ }
+ 
++/* Parse references for the element, either a single data section
++ * or a list of data sections.
++ */
++int tplg_parse_refs(snd_config_t *cfg, struct tplg_elem *elem,
++		    unsigned int type)
++{
++	snd_config_type_t cfg_type;
++	snd_config_iterator_t i, next;
++	snd_config_t *n;
++	const char *val = NULL;
++	int err, count;
++
++	cfg_type = snd_config_get_type(cfg);
++
++	/* refer to a single data section */
++	if (cfg_type == SND_CONFIG_TYPE_STRING) {
++		if (snd_config_get_string(cfg, &val) < 0)
++			return -EINVAL;
++
++		tplg_dbg("\tref data: %s\n", val);
++		err = tplg_ref_add(elem, type, val);
++		if (err < 0)
++			return err;
++		return 1;
++	}
++
++	if (cfg_type != SND_CONFIG_TYPE_COMPOUND) {
++		SNDERR("error: compound type expected for %s", elem->id);
++		return -EINVAL;
++	}
++
++	/* refer to a list of data sections */
++	count = 0;
++	snd_config_for_each(i, next, cfg) {
++		const char *val;
++
++		n = snd_config_iterator_entry(i);
++		if (snd_config_get_string(n, &val) < 0)
++			continue;
++
++		tplg_dbg("\tref data: %s\n", val);
++		err = tplg_ref_add(elem, type, val);
++		if (err < 0)
++			return err;
++		count++;
++	}
++
++	return count;
++}
++
++/* save references */
++int tplg_save_refs(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		   struct tplg_elem *elem, unsigned int type,
++		   const char *id, char **dst, const char *pfx)
++{
++	struct tplg_ref *ref, *last;
++	struct list_head *pos;
++	int err, count;
++
++	count = 0;
++	last = NULL;
++	list_for_each(pos, &elem->ref_list) {
++		ref = list_entry(pos, struct tplg_ref, list);
++		if (ref->type == type) {
++			last = ref;
++			count++;
++		}
++	}
++
++	if (count == 0)
++		return 0;
++
++	if (count == 1)
++		return tplg_save_printf(dst, pfx, "%s '%s'\n", id, last->id);
++
++	err = tplg_save_printf(dst, pfx, "%s [\n", id);
++	if (err < 0)
++		return err;
++	list_for_each(pos, &elem->ref_list) {
++		ref = list_entry(pos, struct tplg_ref, list);
++		if (ref->type == type) {
++			err = tplg_save_printf(dst, pfx, "\t'%s'\n", ref->id);
++			if (err < 0)
++				return err;
++		}
++	}
++
++	return tplg_save_printf(dst, pfx, "]\n");
++}
++
+ /* Get Private data from a file. */
+ static int tplg_parse_data_file(snd_config_t *cfg, struct tplg_elem *elem)
+ {
+@@ -140,58 +234,98 @@ err:
+ static void dump_priv_data(struct tplg_elem *elem)
+ {
+ 	struct snd_soc_tplg_private *priv = elem->data;
+-	unsigned int i, j = 0;
++	unsigned int i;
+ 
+ 	tplg_dbg(" elem size = %d, priv data size = %d\n",
+ 		elem->size, priv->size);
+ 
+ 	for (i = 0; i < priv->size; i++) {
+-		if (j++ % 8 == 0)
++		if (i > 0 && (i % 16) == 0)
+ 			tplg_dbg("\n");
+ 
+-		tplg_dbg(" 0x%x", *p++);
++		tplg_dbg(" %02x:", *p++);
+ 	}
+ 
+ 	tplg_dbg("\n\n");
+ }
+ 
++static inline int check_nibble(unsigned char c)
++{
++	return (c >= '0' && c <= '9') ||
++	       (c >= 'a' && c <= 'f') ||
++	       (c >= 'A' && c <= 'F');
++}
++
+ /* get number of hex value elements in CSV list */
+ static int get_hex_num(const char *str)
+ {
+-	int commas = 0, values = 0, len = strlen(str);
+-	const char *end = str + len;
++	int delims, values, len = strlen(str);
++	const char *s, *end = str + len;
++
++	/* check "aa:bb:00" syntax */
++	s = str;
++	delims = values = 0;
++	while (s < end) {
++		/* skip white space */
++		if (isspace(*s)) {
++			s++;
++			continue;
++		}
++		/* find delimeters */
++		if (*s == ':') {
++			delims++;
++			s++;
++			continue;
++		}
++		/* check 00 hexadecimal value */
++		if (s + 1 <= end) {
++			if (check_nibble(s[0]) && check_nibble(s[1])) {
++				values++;
++			} else {
++				goto format2;
++			}
++			s++;
++		}
++		s++;
++	}
++	goto end;
+ 
++format2:
+ 	/* we expect "0x0, 0x0, 0x0" */
+-	while (str < end) {
++	s = str;
++	delims = values = 0;
++	while (s < end) {
+ 
+ 		/* skip white space */
+-		if (isspace(*str)) {
+-			str++;
++		if (isspace(*s)) {
++			s++;
+ 			continue;
+ 		}
+ 
+ 		/* find delimeters */
+-		if (*str == ',') {
+-			commas++;
+-			str++;
++		if (*s == ',') {
++			delims++;
++			s++;
+ 			continue;
+ 		}
+ 
+ 		/* find 0x[0-9] values */
+-		if (*str == '0' && str + 2 <= end) {
+-			if (str[1] == 'x' && str[2] >= '0' && str[2] <= 'f') {
++		if (*s == '0' && s + 2 <= end) {
++			if (s[1] == 'x' && check_nibble(s[2])) {
++				if (check_nibble(s[3]))
++					s++;
+ 				values++;
+-				str += 3;
+-			} else {
+-				str++;
++				s += 2;
+ 			}
++			s++;
+ 		}
+ 
+-		str++;
++		s++;
+ 	}
+ 
++end:
+ 	/* there should always be one less comma than value */
+-	if (values -1 != commas)
++	if (values - 1 != delims)
+ 		return -EINVAL;
+ 
+ 	return values;
+@@ -547,6 +681,71 @@ static int build_tuples(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 	return 0;
+ }
+ 
++struct tuple_type {
++	unsigned int type;
++	const char *name;
++	unsigned int size;
++};
++
++static struct tuple_type tuple_types[] = {
++	{
++		.type = SND_SOC_TPLG_TUPLE_TYPE_UUID,
++		.name = "uuid",
++		.size = 4,
++	},
++	{
++		.type = SND_SOC_TPLG_TUPLE_TYPE_STRING,
++		.name = "string",
++		.size = 6,
++	},
++	{
++		.type = SND_SOC_TPLG_TUPLE_TYPE_BOOL,
++		.name = "bool",
++		.size = 4,
++	},
++	{
++		.type = SND_SOC_TPLG_TUPLE_TYPE_BYTE,
++		.name = "byte",
++		.size = 4,
++	},
++	{
++		.type = SND_SOC_TPLG_TUPLE_TYPE_SHORT,
++		.name = "short",
++		.size = 5,
++	},
++	{
++		.type = SND_SOC_TPLG_TUPLE_TYPE_WORD,
++		.name = "word",
++		.size = 4
++	},
++};
++
++static int get_tuple_type(const char *name)
++{
++	struct tuple_type *t;
++	unsigned int i;
++
++	/* skip initial index for sorting */
++	while ((*name >= '0' && *name <= '9') || *name == '_')
++		name++;
++	for (i = 0; i < ARRAY_SIZE(tuple_types); i++) {
++		t = &tuple_types[i];
++		if (strncasecmp(t->name, name, t->size) == 0)
++			return t->type;
++	}
++	return -EINVAL;
++}
++
++static const char *get_tuple_type_name(unsigned int type)
++{
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(tuple_types); i++)
++		if (tuple_types[i].type == type)
++			return tuple_types[i].name;
++	return NULL;
++}
++
+ static int parse_tuple_set(snd_config_t *cfg,
+ 	struct tplg_tuple_set **s)
+ {
+@@ -554,28 +753,17 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 	snd_config_t *n;
+ 	const char *id, *value;
+ 	struct tplg_tuple_set *set;
+-	unsigned int type, num_tuples = 0;
++	unsigned int num_tuples = 0;
+ 	struct tplg_tuple *tuple;
+ 	unsigned int tuple_val;
+-	int ival;
++	int type, ival;
+ 
+ 	snd_config_get_id(cfg, &id);
+ 
+-	if (strncmp(id, "uuid", 4) == 0)
+-		type = SND_SOC_TPLG_TUPLE_TYPE_UUID;
+-	else if (strncmp(id, "string", 5) == 0)
+-		type = SND_SOC_TPLG_TUPLE_TYPE_STRING;
+-	else if (strncmp(id, "bool", 4) == 0)
+-		type = SND_SOC_TPLG_TUPLE_TYPE_BOOL;
+-	else if (strncmp(id, "byte", 4) == 0)
+-		type = SND_SOC_TPLG_TUPLE_TYPE_BYTE;
+-	else if (strncmp(id, "short", 5) == 0)
+-		type = SND_SOC_TPLG_TUPLE_TYPE_SHORT;
+-	else if (strncmp(id, "word", 4) == 0)
+-		type = SND_SOC_TPLG_TUPLE_TYPE_WORD;
+-	else {
+-		SNDERR("error: invalid tuple type '%s'\n", id);
+-		return -EINVAL;
++	type = get_tuple_type(id);
++	if (type < 0) {
++		SNDERR("error: invalid tuple type '%s'", id);
++		return type;
+ 	}
+ 
+ 	snd_config_for_each(i, next, cfg)
+@@ -664,6 +852,84 @@ err:
+ 	return -EINVAL;
+ }
+ 
++/* save tuple set */
++static int tplg_save_tuple_set(struct tplg_vendor_tuples *tuples,
++			       unsigned int set_index,
++			       char **dst, const char *pfx)
++{
++	struct tplg_tuple_set *set;
++	struct tplg_tuple *tuple;
++	const char *s, *fmt;
++	char buf[32];
++	unsigned int i;
++	int err;
++
++	set = tuples->set[set_index];
++	if (set->num_tuples == 0)
++		return 0;
++	s = get_tuple_type_name(set->type);
++	if (s == NULL)
++		return -EINVAL;
++	if (tuples->num_sets < 10)
++		fmt = "%u_";
++	else if (tuples->num_sets < 100)
++		fmt = "%02u_";
++	else if (tuples->num_sets < 1000)
++		fmt = "%03u_";
++	else
++		return -EINVAL;
++	if (set->num_tuples > 1) {
++		snprintf(buf, sizeof(buf), "tuples.%s%%s {\n", fmt);
++		err = tplg_save_printf(dst, NULL, buf, set_index, s);
++		if (err < 0)
++			return err;
++	}
++	for (i = 0; i < set->num_tuples; i++) {
++		tuple = &set->tuple[i];
++		if (set->num_tuples == 1) {
++			snprintf(buf, sizeof(buf), "tuples.%s%%s.'%%s' ", fmt);
++			err = tplg_save_printf(dst, NULL, buf,
++					       set_index, s, tuple->token);
++		} else {
++			err = tplg_save_printf(dst, pfx, "\t'%s' ",
++					       tuple->token);
++		}
++		switch (set->type) {
++		case SND_SOC_TPLG_TUPLE_TYPE_UUID:
++			err = tplg_save_printf(dst, NULL, "'" UUID_FORMAT "'\n",
++					       tuple->uuid[0], tuple->uuid[1],
++					       tuple->uuid[2], tuple->uuid[3],
++					       tuple->uuid[4], tuple->uuid[5],
++					       tuple->uuid[6], tuple->uuid[7],
++					       tuple->uuid[8], tuple->uuid[9],
++					       tuple->uuid[10], tuple->uuid[11],
++					       tuple->uuid[12], tuple->uuid[13],
++					       tuple->uuid[14], tuple->uuid[15]);
++			break;
++		case SND_SOC_TPLG_TUPLE_TYPE_STRING:
++			err = tplg_save_printf(dst, NULL, "'%s'\n",
++					       tuple->string);
++			break;
++		case SND_SOC_TPLG_TUPLE_TYPE_BOOL:
++		case SND_SOC_TPLG_TUPLE_TYPE_BYTE:
++		case SND_SOC_TPLG_TUPLE_TYPE_SHORT:
++			err = tplg_save_printf(dst, NULL, "%u\n", tuple->value);
++			break;
++		case SND_SOC_TPLG_TUPLE_TYPE_WORD:
++			tplg_nice_value_format(buf, sizeof(buf), tuple->value);
++			err = tplg_save_printf(dst, NULL, "%s\n", buf);
++			break;
++		default:
++			return -EINVAL;
++		}
++		if (err < 0)
++			return err;
++	}
++	if (set->num_tuples > 1)
++		return tplg_save_printf(dst, pfx, "}\n");
++	return 0;
++}
++
+ static int parse_tuple_sets(snd_config_t *cfg,
+ 	struct tplg_vendor_tuples *tuples)
+ {
+@@ -710,87 +976,24 @@ static int parse_tuple_sets(snd_config_t *cfg,
+ 	return 0;
+ }
+ 
+-/* Parse tuples references for a data element, either a single tuples section
+- * or a list of tuples sections.
+- */
+-static int parse_tuples_refs(snd_config_t *cfg,
+-	struct tplg_elem *elem)
+-{
+-	snd_config_type_t  type;
+-	snd_config_iterator_t i, next;
+-	snd_config_t *n;
+-	const char *val = NULL;
+-
+-	type = snd_config_get_type(cfg);
+-
+-	/* refer to a single tuples section */
+-	if (type == SND_CONFIG_TYPE_STRING) {
+-		if (snd_config_get_string(cfg, &val) < 0)
+-			return -EINVAL;
+-		tplg_dbg("\ttuples: %s\n", val);
+-		return tplg_ref_add(elem, SND_TPLG_TYPE_TUPLE, val);
+-	}
+-
+-	if (type != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound type expected for %s", elem->id);
+-		return -EINVAL;
+-	}
+-
+-	/* refer to a list of data sections */
+-	snd_config_for_each(i, next, cfg) {
+-		const char *val;
+-
+-		n = snd_config_iterator_entry(i);
+-		if (snd_config_get_string(n, &val) < 0)
+-			continue;
+-
+-		tplg_dbg("\ttuples: %s\n", val);
+-		tplg_ref_add(elem, SND_TPLG_TYPE_TUPLE, val);
+-	}
+-
+-	return 0;
+-}
+-
+-/* Parse private data references for the element, either a single data section
+- * or a list of data sections.
+- */
+-int tplg_parse_data_refs(snd_config_t *cfg,
+-	struct tplg_elem *elem)
++/* save tuple sets */
++int tplg_save_tuple_sets(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			 struct tplg_elem *elem,
++			 char **dst, const char *pfx)
+ {
+-	snd_config_type_t  type;
+-	snd_config_iterator_t i, next;
+-	snd_config_t *n;
+-	const char *val = NULL;
+-
+-	type = snd_config_get_type(cfg);
+-
+-	/* refer to a single data section */
+-	if (type == SND_CONFIG_TYPE_STRING) {
+-		if (snd_config_get_string(cfg, &val) < 0)
+-			return -EINVAL;
+-
+-		tplg_dbg("\tdata: %s\n", val);
+-		return tplg_ref_add(elem, SND_TPLG_TYPE_DATA, val);
+-	}
+-
+-	if (type != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound type expected for %s", elem->id);
+-		return -EINVAL;
+-	}
+-
+-	/* refer to a list of data sections */
+-	snd_config_for_each(i, next, cfg) {
+-		const char *val;
+-
+-		n = snd_config_iterator_entry(i);
+-		if (snd_config_get_string(n, &val) < 0)
+-			continue;
++	struct tplg_vendor_tuples *tuples = elem->tuples;
++	unsigned int i;
++	int err = 0;
+ 
+-		tplg_dbg("\tdata: %s\n", val);
+-		tplg_ref_add(elem, SND_TPLG_TYPE_DATA, val);
++	for (i = 0; i < tuples->num_sets; i++) {
++		err = tplg_save_printf(dst, pfx, "");
++		if (err < 0)
++			break;
++		err = tplg_save_tuple_set(tuples, i, dst, pfx);
++		if (err < 0)
++			break;
+ 	}
+-
+-	return 0;
++	return err;
+ }
+ 
+ /* Parse vendor tokens
+@@ -844,6 +1047,31 @@ int tplg_parse_tokens(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save vendor tokens */
++int tplg_save_tokens(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		     struct tplg_elem *elem,
++		     char **dst, const char *pfx)
++{
++	struct tplg_vendor_tokens *tokens = elem->tokens;
++	unsigned int i;
++	int err;
++
++	if (!tokens || tokens->num_tokens == 0)
++		return 0;
++
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err < 0)
++		return err;
++	for (i = 0; err >= 0 && i < tokens->num_tokens; i++)
++		err = tplg_save_printf(dst, pfx, "\t'%s' %u\n",
++				       tokens->token[i].id,
++				       tokens->token[i].value);
++	err = tplg_save_printf(dst, pfx, "}\n");
++	if (err < 0)
++		return err;
++	return 0;
++}
++
+ /* Parse vendor tuples.
+  */
+ int tplg_parse_tuples(snd_tplg_t *tplg, snd_config_t *cfg,
+@@ -890,6 +1118,29 @@ int tplg_parse_tuples(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save vendor tuples */
++int tplg_save_tuples(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		     struct tplg_elem *elem,
++		     char **dst, const char *pfx)
++{
++	char pfx2[16];
++	int err;
++
++	if (!elem->tuples)
++		return 0;
++
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_TOKEN,
++				     "tokens", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_tuple_sets(tplg, elem, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return 0;
++}
++
+ /* Free handler of tuples */
+ void tplg_free_tuples(void *obj)
+ {
+@@ -944,7 +1195,7 @@ int tplg_parse_manifest_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -954,6 +1205,51 @@ int tplg_parse_manifest_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save manifest data */
++int tplg_save_manifest_data(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			    struct tplg_elem *elem, char **dst,
++			    const char *pfx)
++{
++	struct list_head *pos;
++	struct tplg_ref *ref;
++	int err, index, count;
++
++	/* for each ref in this manifest elem */
++	count = 0;
++	list_for_each(pos, &elem->ref_list) {
++		ref = list_entry(pos, struct tplg_ref, list);
++		if (ref->type != SND_TPLG_TYPE_DATA)
++			continue;
++		count++;
++	}
++	if (count > 1) {
++		err = tplg_save_printf(dst, NULL, "'%s'.data [\n", elem->id);
++		if (err < 0)
++			return err;
++	}
++	index = 0;
++	list_for_each(pos, &elem->ref_list) {
++		ref = list_entry(pos, struct tplg_ref, list);
++		if (ref->type != SND_TPLG_TYPE_DATA)
++			continue;
++		if (count == 1) {
++			err = tplg_save_printf(dst, NULL, "'%s'.data.%u '%s'\n",
++					       elem->id, index, ref->id);
++		} else {
++			err = tplg_save_printf(dst, pfx, "\t'%s'\n", ref->id);
++			if (err < 0)
++				return err;
++		}
++		index++;
++	}
++	if (count > 1) {
++		err = tplg_save_printf(dst, pfx, "]\n");
++		if (err < 0)
++			return err;
++	}
++	return 0;
++}
++
+ /* merge private data of manifest */
+ int tplg_build_manifest_data(snd_tplg_t *tplg)
+ {
+@@ -1064,7 +1360,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		}
+ 
+ 		if (strcmp(id, "tuples") == 0) {
+-			err = parse_tuples_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_TUPLE);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -1083,6 +1379,81 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return err;
+ }
+ 
++/* save data element */
++int tplg_save_data(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		   struct tplg_elem *elem,
++		   char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_private *priv = elem->data;
++	struct list_head *pos;
++	struct tplg_ref *ref;
++	char pfx2[16];
++	unsigned int i, count;
++	int err;
++
++	count = 0;
++	if (priv && priv->size > 0)
++		count++;
++	list_for_each(pos, &elem->ref_list) {
++		ref = list_entry(pos, struct tplg_ref, list);
++		if (ref->type == SND_TPLG_TYPE_TUPLE)
++			count++;
++	}
++	if (elem->vendor_type > 0)
++		count++;
++
++	if (count > 1) {
++		err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++		if (err >= 0)
++			err = tplg_save_printf(dst, NULL, "");
++	} else {
++		err = tplg_save_printf(dst, NULL, "'%s'.", elem->id);
++	}
++	if (err >= 0 && priv && priv->size > 0) {
++		if (count > 1) {
++			err = tplg_save_printf(dst, pfx, "");
++			if (err < 0)
++				return err;
++		}
++		if (priv->size > 8) {
++			err = tplg_save_printf(dst, NULL, "bytes\n");
++			if (err >= 0)
++				err = tplg_save_printf(dst, pfx, "\t'");
++		} else {
++			err = tplg_save_printf(dst, NULL, "bytes '");
++		}
++		if (err < 0)
++			return err;
++		for (i = 0; i < priv->size; i++) {
++			if (i > 0 && (i % 8) == 0) {
++				err = tplg_save_printf(dst, NULL, ":\n");
++				if (err < 0)
++					return err;
++				err = tplg_save_printf(dst, pfx, "\t ");
++				if (err < 0)
++					return err;
++			}
++			err = tplg_save_printf(dst, NULL, "%s%02x",
++					       (i % 8) == 0 ? "" : ":",
++					       (unsigned char)priv->data[i]);
++			if (err < 0)
++				return err;
++		}
++		err = tplg_save_printf(dst, NULL, "'\n");
++	}
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_TUPLE,
++				     "tuples", dst,
++				     count > 1 ? pfx2 : NULL);
++	if (err >= 0 && elem->vendor_type > 0)
++		err = tplg_save_printf(dst, pfx, "type %u",
++				       elem->vendor_type);
++	if (err >= 0 && count > 1)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Find a referenced data element and copy its data to the parent
+  * element's private data buffer.
+  * An element can refer to multiple data sections. Data of these sections
+diff --git a/src/topology/elem.c b/src/topology/elem.c
+index e79a68b71a91..89aed1fc0449 100644
+--- a/src/topology/elem.c
++++ b/src/topology/elem.c
+@@ -30,6 +30,7 @@ struct tplg_table tplg_table[] = {
+ 		.size  = sizeof(struct snd_soc_tplg_manifest),
+ 		.enew  = 1,
+ 		.parse = tplg_parse_manifest_data,
++		.save  = tplg_save_manifest_data,
+ 	},
+ 	{
+ 		.name  = "control mixer",
+@@ -41,6 +42,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_control_mixer,
++		.save  = tplg_save_control_mixer,
+ 	},
+ 	{
+ 		.name  = "control enum",
+@@ -52,6 +54,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_control_enum,
++		.save  = tplg_save_control_enum,
+ 	},
+ 	{
+ 		.name  = "control extended (bytes)",
+@@ -63,6 +66,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_control_bytes,
++		.save  = tplg_save_control_bytes,
+ 	},
+ 	{
+ 		.name  = "dapm widget",
+@@ -74,6 +78,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_dapm_widget,
++		.save  = tplg_save_dapm_widget,
+ 	},
+ 	{
+ 		.name  = "pcm",
+@@ -85,6 +90,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_pcm,
++		.save  = tplg_save_pcm,
+ 	},
+ 	{
+ 		.name  = "physical dai",
+@@ -96,6 +102,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_dai,
++		.save  = tplg_save_dai,
+ 	},
+ 	{
+ 		.name  = "be",
+@@ -108,6 +115,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_link,
++		.save  = tplg_save_link,
+ 	},
+ 	{
+ 		.name  = "cc",
+@@ -119,6 +127,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_cc,
++		.save  = tplg_save_cc,
+ 	},
+ 	{
+ 		.name  = "route (dapm graph)",
+@@ -128,6 +137,7 @@ struct tplg_table tplg_table[] = {
+ 		.tsoc  = SND_SOC_TPLG_TYPE_DAPM_GRAPH,
+ 		.build = 1,
+ 		.parse = tplg_parse_dapm_graph,
++		.gsave = tplg_save_dapm_graph,
+ 	},
+ 	{
+ 		.name  = "private data",
+@@ -138,6 +148,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_data,
++		.save  = tplg_save_data,
+ 	},
+ 	{
+ 		.name  = "text",
+@@ -147,6 +158,7 @@ struct tplg_table tplg_table[] = {
+ 		.size  = sizeof(struct tplg_texts),
+ 		.enew  = 1,
+ 		.parse = tplg_parse_text,
++		.save  = tplg_save_text,
+ 	},
+ 	{
+ 		.name  = "tlv",
+@@ -156,6 +168,7 @@ struct tplg_table tplg_table[] = {
+ 		.size  = sizeof(struct snd_soc_tplg_ctl_tlv),
+ 		.enew  = 1,
+ 		.parse = tplg_parse_tlv,
++		.save  = tplg_save_tlv,
+ 	},
+ 	{
+ 		.name  = "stream config",
+@@ -172,6 +185,7 @@ struct tplg_table tplg_table[] = {
+ 		.size  = sizeof(struct snd_soc_tplg_stream_caps),
+ 		.enew  = 1,
+ 		.parse = tplg_parse_stream_caps,
++		.save  = tplg_save_stream_caps,
+ 	},
+ 	{
+ 		.name  = "token",
+@@ -180,6 +194,7 @@ struct tplg_table tplg_table[] = {
+ 		.type  = SND_TPLG_TYPE_TOKEN,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_tokens,
++		.save  = tplg_save_tokens,
+ 	},
+ 	{
+ 		.name  = "tuple",
+@@ -189,6 +204,7 @@ struct tplg_table tplg_table[] = {
+ 		.free  = tplg_free_tuples,
+ 		.enew  = 1,
+ 		.parse = tplg_parse_tuples,
++		.save  = tplg_save_tuples,
+ 	},
+ 	{
+ 		.name  = "hw config",
+@@ -198,6 +214,7 @@ struct tplg_table tplg_table[] = {
+ 		.size  = sizeof(struct snd_soc_tplg_hw_config),
+ 		.enew  = 1,
+ 		.parse = tplg_parse_hw_config,
++		.save  = tplg_save_hw_config,
+ 	}
+ };
+ 
+@@ -394,6 +411,7 @@ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ 	tplg_elem_insert(elem, list);
+ 	obj_size = tptr->size;
+ 	elem->free = tptr->free;
++	elem->table = tptr;
+ 
+ 	/* create new object too if required */
+ 	if (obj_size > 0) {
+diff --git a/src/topology/ops.c b/src/topology/ops.c
+index 073acdcb1453..ad72ef1b2cb6 100644
+--- a/src/topology/ops.c
++++ b/src/topology/ops.c
+@@ -45,6 +45,18 @@ static int lookup_ops(const char *c)
+ 	return strtol(c, NULL, 0);
+ }
+ 
++const char *tplg_ops_name(int type)
++{
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(control_map); i++) {
++		if (control_map[i].id == type)
++			return control_map[i].name;
++	}
++
++	return NULL;
++}
++
+ /* Parse Control operations. Ops can come from standard names above or
+  * bespoke driver controls with numbers >= 256
+  */
+@@ -84,6 +96,46 @@ int tplg_parse_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save control operations */
++int tplg_save_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		  struct snd_soc_tplg_ctl_hdr *hdr, char **dst,
++		  const char *pfx)
++{
++	const char *s;
++	int err;
++
++	if (hdr->ops.info + hdr->ops.get + hdr->ops.put == 0)
++		return 0;
++	err = tplg_save_printf(dst, pfx, "ops.0 {\n");
++	if (err >= 0 && hdr->ops.info > 0) {
++		s = tplg_ops_name(hdr->ops.info);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\tinfo %u\n",
++					       hdr->ops.info);
++		else
++			err = tplg_save_printf(dst, pfx, "\tinfo %s\n", s);
++	}
++	if (err >= 0 && hdr->ops.get > 0) {
++		s = tplg_ops_name(hdr->ops.get);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\tget %u\n",
++					       hdr->ops.get);
++		else
++			err = tplg_save_printf(dst, pfx, "\tget %s\n", s);
++	}
++	if (err >= 0 && hdr->ops.put > 0) {
++		s = tplg_ops_name(hdr->ops.put);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\tput %u\n",
++					       hdr->ops.put);
++		else
++			err = tplg_save_printf(dst, pfx, "\tput %s\n", s);
++	}
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse External Control operations. Ops can come from standard names above or
+  * bespoke driver controls with numbers >= 256
+  */
+@@ -121,3 +173,43 @@ int tplg_parse_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 
+ 	return 0;
+ }
++
++/* save external control operations */
++int tplg_save_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		      struct snd_soc_tplg_bytes_control *be,
++		      char **dst, const char *pfx)
++{
++	const char *s;
++	int err;
++
++	if (be->ext_ops.info + be->ext_ops.get + be->ext_ops.put == 0)
++		return 0;
++	err = tplg_save_printf(dst, pfx, "extops.0 {\n");
++	if (err >= 0 && be->ext_ops.info > 0) {
++		s = tplg_ops_name(be->ext_ops.info);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\tinfo %u\n",
++					       be->ext_ops.info);
++		else
++			err = tplg_save_printf(dst, pfx, "\tinfo %s\n", s);
++	}
++	if (err >= 0 && be->ext_ops.get > 0) {
++		s = tplg_ops_name(be->ext_ops.get);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\tget %u\n",
++					       be->ext_ops.get);
++		else
++			err = tplg_save_printf(dst, pfx, "\tget %s\n", s);
++	}
++	if (err >= 0 && be->ext_ops.put > 0) {
++		s = tplg_ops_name(be->ext_ops.put);
++		if (s == NULL)
++			err = tplg_save_printf(dst, pfx, "\tput %u\n",
++					       be->ext_ops.put);
++		else
++			err = tplg_save_printf(dst, pfx, "\tput %s\n", s);
++	}
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 11202769391c..de5edd1b6591 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -71,6 +71,8 @@ int tplg_get_unsigned(snd_config_t *n, unsigned *val, int base)
+ 		err = snd_config_get_integer(n, &lval);
+ 		if (err < 0)
+ 			return err;
++		if (lval < 0 && lval >= INT_MIN)
++			lval = UINT_MAX + lval + 1;
+ 		if (lval < 0 || lval > UINT_MAX)
+ 			return -ERANGE;
+ 		*val = lval;
+@@ -79,6 +81,8 @@ int tplg_get_unsigned(snd_config_t *n, unsigned *val, int base)
+ 		err = snd_config_get_integer64(n, &llval);
+ 		if (err < 0)
+ 			return err;
++		if (llval < 0 && llval >= INT_MIN)
++			llval = UINT_MAX + llval + 1;
+ 		if (llval < 0 || llval > UINT_MAX)
+ 			return -ERANGE;
+ 		*val = llval;
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index 9b87549cabbd..d09fbe42f5da 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -345,6 +345,13 @@ static int get_rate_value(const char* name)
+ 	return SND_PCM_RATE_UNKNOWN;
+ }
+ 
++static const char *get_rate_name(int rate)
++{
++	if (rate >= 0 && rate <= SND_PCM_RATE_LAST)
++		return snd_pcm_rate_names[rate];
++	return NULL;
++}
++
+ static int split_rate(struct snd_soc_tplg_stream_caps *caps, char *str)
+ {
+ 	char *s = NULL;
+@@ -527,6 +534,80 @@ int tplg_parse_stream_caps(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
++/* save stream caps */
++int tplg_save_stream_caps(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			  struct tplg_elem *elem,
++			  char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_stream_caps *sc = elem->stream_caps;
++	const char *s;
++	unsigned int i;
++	int err, first;
++
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && sc->formats) {
++		err = tplg_save_printf(dst, pfx, "\tformats '");
++		first = 1;
++		for (i = 0; err >= 0 && i < SND_PCM_FORMAT_LAST; i++) {
++			if (sc->formats & (1ULL << i)) {
++				s = snd_pcm_format_name(i);
++				err = tplg_save_printf(dst, NULL, "%s%s",
++						       !first ? ", " : "", s);
++				first = 0;
++			}
++		}
++		if (err >= 0)
++			err = tplg_save_printf(dst, NULL, "'\n");
++	}
++	if (err >= 0 && sc->rates) {
++		err = tplg_save_printf(dst, pfx, "\trates '");
++		first = 1;
++		for (i = 0; err >= 0 && i < SND_PCM_RATE_LAST; i++) {
++			if (sc->rates & (1ULL << i)) {
++				s = get_rate_name(i);
++				err = tplg_save_printf(dst, NULL, "%s%s",
++						       !first ? ", " : "", s);
++				first = 0;
++			}
++		}
++		if (err >= 0)
++			err = tplg_save_printf(dst, NULL, "'\n");
++	}
++	if (err >= 0 && sc->rate_min)
++		err = tplg_save_printf(dst, pfx, "\trate_min %u\n",
++				       sc->rate_min);
++	if (err >= 0 && sc->rate_max)
++		err = tplg_save_printf(dst, pfx, "\trate_max %u\n",
++				       sc->rate_max);
++	if (err >= 0 && sc->channels_min)
++		err = tplg_save_printf(dst, pfx, "\tchannels_min %u\n",
++				       sc->channels_min);
++	if (err >= 0 && sc->channels_max)
++		err = tplg_save_printf(dst, pfx, "\tchannels_max %u\n",
++				       sc->channels_max);
++	if (err >= 0 && sc->periods_min)
++		err = tplg_save_printf(dst, pfx, "\tperiods_min %u\n",
++				       sc->periods_min);
++	if (err >= 0 && sc->periods_max)
++		err = tplg_save_printf(dst, pfx, "\tperiods_max %u\n",
++				       sc->periods_max);
++	if (err >= 0 && sc->period_size_min)
++		err = tplg_save_printf(dst, pfx, "\tperiod_size_min %u\n",
++				       sc->period_size_min);
++	if (err >= 0 && sc->period_size_max)
++		err = tplg_save_printf(dst, pfx, "\tperiod_size_max %u\n",
++				       sc->period_size_max);
++	if (err >= 0 && sc->buffer_size_min)
++		err = tplg_save_printf(dst, pfx, "\tbuffer_size_min %u\n",
++				       sc->buffer_size_min);
++	if (err >= 0 && sc->buffer_size_max)
++		err = tplg_save_printf(dst, pfx, "\tbuffer_size_max %u\n",
++				       sc->buffer_size_max);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse the caps and config of a pcm stream */
+ static int tplg_parse_streams(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			      snd_config_t *cfg, void *private)
+@@ -598,6 +679,61 @@ static int tplg_parse_streams(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	return 0;
+ }
+ 
++/* Save the caps and config of a pcm stream */
++int tplg_save_streams(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		      struct tplg_elem *elem,
++		      char **dst, const char *pfx)
++{
++	static const char *stream_ids[2] = {
++		"playback",
++		"capture"
++	};
++	static unsigned int stream_types[2] = {
++		SND_SOC_TPLG_STREAM_PLAYBACK,
++		SND_SOC_TPLG_STREAM_CAPTURE
++	};
++	struct snd_soc_tplg_stream_caps *caps;
++	unsigned int streams[2], stream;
++	const char *s;
++	int err;
++
++	switch (elem->type) {
++	case SND_TPLG_TYPE_PCM:
++		streams[0] = elem->pcm->playback;
++		streams[1] = elem->pcm->capture;
++		caps = elem->pcm->caps;
++		break;
++	case SND_TPLG_TYPE_DAI:
++		streams[0] = elem->dai->playback;
++		streams[1] = elem->dai->capture;
++		caps = elem->dai->caps;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	for (stream = 0; stream < 2; stream++) {
++		if (streams[stream] == 0)
++			continue;
++		if (!caps)
++			continue;
++		s = caps[stream_types[stream]].name;
++		if (s[0] == '\0')
++			continue;
++		err = tplg_save_printf(dst, pfx, "pcm.%s {\n", stream_ids[stream]);
++		if (err < 0)
++			return err;
++		err = tplg_save_printf(dst, pfx, "\tcapabilities '%s'\n", s);
++		if (err < 0)
++			return err;
++		err = tplg_save_printf(dst, pfx, "}\n");
++		if (err < 0)
++			return err;
++	}
++
++	return 0;
++}
++
+ /* Parse name and id of a front-end DAI (ie. cpu dai of a FE DAI link) */
+ static int tplg_parse_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			     snd_config_t *cfg, void *private)
+@@ -633,6 +769,19 @@ static int tplg_parse_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	return 0;
+ }
+ 
++/* Save the caps and config of a pcm stream */
++int tplg_save_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		     struct tplg_elem *elem,
++		     char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_pcm *pcm = elem->pcm;
++	int err = 0;
++
++	if (pcm->dai_id > 0)
++		err = tplg_save_printf(dst, pfx, "dai.0.id %u\n", pcm->dai_id);
++	return err;
++}
++
+ /* parse a flag bit of the given mask */
+ static int parse_flag(snd_config_t *n, unsigned int mask_in,
+ 		      unsigned int *mask, unsigned int *flags)
+@@ -652,6 +801,32 @@ static int parse_flag(snd_config_t *n, unsigned int mask_in,
+ 	return 0;
+ }
+ 
++static int save_flags(unsigned int flags, unsigned int mask,
++		      char **dst, const char *pfx)
++{
++	static unsigned int flag_masks[3] = {
++		SND_SOC_TPLG_LNK_FLGBIT_SYMMETRIC_RATES,
++		SND_SOC_TPLG_LNK_FLGBIT_SYMMETRIC_CHANNELS,
++		SND_SOC_TPLG_LNK_FLGBIT_SYMMETRIC_SAMPLEBITS,
++	};
++	static const char *flag_ids[3] = {
++		"symmetric_rates",
++		"symmetric_channels",
++		"symmetric_sample_bits",
++	};
++	unsigned int i;
++	int err = 0;
++
++	for (i = 0; err >= 0 && i < ARRAY_SIZE(flag_masks); i++) {
++		if (mask & flag_masks[i]) {
++			unsigned int v = (flags & flag_masks[i]) ? 1 : 0;
++			err = tplg_save_printf(dst, pfx, "%s %u\n",
++					       flag_ids[i], v);
++		}
++	}
++	return err;
++}
++
+ /* Parse PCM (for front end DAI & DAI link) in text conf file */
+ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		   void *private ATTRIBUTE_UNUSED)
+@@ -748,7 +923,7 @@ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		/* private data */
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -758,6 +933,40 @@ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save PCM */
++int tplg_save_pcm(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		  struct tplg_elem *elem,
++		  char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_pcm *pcm = elem->pcm;
++	char pfx2[16];
++	int err;
++
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && elem->index)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n",
++				       elem->index);
++	if (err >= 0 && pcm->pcm_id)
++		err = tplg_save_printf(dst, pfx, "\tid %u\n",
++				       pcm->pcm_id);
++	if (err >= 0 && pcm->compress)
++		err = tplg_save_printf(dst, pfx, "\tcompress 1\n");
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	if (err >= 0)
++		err = tplg_save_fe_dai(tplg, elem, dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_streams(tplg, elem, dst, pfx2);
++	if (err >= 0)
++		err = save_flags(pcm->flags, pcm->flag_mask, dst, pfx);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse physical DAI */
+ int tplg_parse_dai(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		   void *private ATTRIBUTE_UNUSED)
+@@ -766,7 +975,7 @@ int tplg_parse_dai(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	struct tplg_elem *elem;
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+-	const char *id, *val = NULL;
++	const char *id;
+ 	int err;
+ 
+ 	elem = tplg_elem_new_common(tplg, cfg, NULL, SND_TPLG_TYPE_DAI);
+@@ -851,11 +1060,9 @@ int tplg_parse_dai(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		/* private data */
+ 		if (strcmp(id, "data") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
+-				return -EINVAL;
+-
+-			tplg_ref_add(elem, SND_TPLG_TYPE_DATA, val);
+-			tplg_dbg("\t%s: %s\n", id, val);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
++			if (err < 0)
++				return err;
+ 			continue;
+ 		}
+ 	}
+@@ -863,55 +1070,55 @@ int tplg_parse_dai(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save DAI */
++int tplg_save_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		  struct tplg_elem *elem,
++		  char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_dai *dai = elem->dai;
++	char pfx2[16];
++	int err;
++
++	if (!dai)
++		return 0;
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && elem->index)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n",
++				       elem->index);
++	if (err >= 0 && dai->dai_id)
++		err = tplg_save_printf(dst, pfx, "\tid %u\n",
++				       dai->dai_id);
++	if (err >= 0 && dai->playback)
++		err = tplg_save_printf(dst, pfx, "\tplayback %u\n",
++				       dai->playback);
++	if (err >= 0 && dai->capture)
++		err = tplg_save_printf(dst, pfx, "\tcapture %u\n",
++				       dai->capture);
++	if (err >= 0)
++		err = tplg_save_streams(tplg, elem, dst, pfx2);
++	if (err >= 0)
++		err = save_flags(dai->flags, dai->flag_mask, dst, pfx);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* parse physical link runtime supported HW configs in text conf file */
+ static int parse_hw_config_refs(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 				snd_config_t *cfg,
+ 				struct tplg_elem *elem)
+ {
+ 	struct snd_soc_tplg_link_config *link = elem->link;
+-	snd_config_type_t  type;
+-	snd_config_iterator_t i, next;
+-	snd_config_t *n;
+-	const char *id, *val = NULL;
+-
+-	if (snd_config_get_id(cfg, &id) < 0)
+-		return -EINVAL;
+-	type = snd_config_get_type(cfg);
+-
+-	/* refer to a single HW config */
+-	if (type == SND_CONFIG_TYPE_STRING) {
+-		if (snd_config_get_string(cfg, &val) < 0)
+-			return -EINVAL;
+-
+-		link->num_hw_configs = 1;
+-		return tplg_ref_add(elem, SND_TPLG_TYPE_HW_CONFIG, val);
+-	}
+-
+-	if (type != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound type expected for %s", id);
+-		return -EINVAL;
+-	}
+-
+-	/* refer to a list of HW configs */
+-	snd_config_for_each(i, next, cfg) {
+-		const char *val;
+-		int err;
+-
+-		n = snd_config_iterator_entry(i);
+-		if (snd_config_get_string(n, &val) < 0)
+-			continue;
+-
+-		if (link->num_hw_configs >= SND_SOC_TPLG_HW_CONFIG_MAX) {
+-			SNDERR("error: exceed max hw configs for link %s", id);
+-			return -EINVAL;
+-		}
+-
+-		link->num_hw_configs++;
+-		err = tplg_ref_add(elem, SND_TPLG_TYPE_HW_CONFIG, val);
+-		if (err < 0)
+-			return err;
+-	}
++	int err;
+ 
++	err = tplg_parse_refs(cfg, elem, SND_TPLG_TYPE_HW_CONFIG);
++	if (err < 0)
++		return err;
++	link->num_hw_configs = err;
+ 	return 0;
+ }
+ 
+@@ -1007,7 +1214,7 @@ int tplg_parse_link(snd_tplg_t *tplg,
+ 
+ 		/* private data */
+ 		if (strcmp(id, "data") == 0) {
+-			err = tplg_parse_data_refs(n, elem);
++			err = tplg_parse_refs(n, elem, SND_TPLG_TYPE_DATA);
+ 			if (err < 0)
+ 				return err;
+ 			continue;
+@@ -1017,6 +1224,44 @@ int tplg_parse_link(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
++/* save physical link */
++int tplg_save_link(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		   struct tplg_elem *elem,
++		   char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_link_config *link = elem->link;
++	char pfx2[16];
++	int err;
++
++	if (!link)
++		return 0;
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && elem->index)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n",
++				       elem->index);
++	if (err >= 0 && link->id)
++		err = tplg_save_printf(dst, pfx, "\tid %u\n",
++				       link->id);
++	if (err >= 0 && link->stream_name[0])
++		err = tplg_save_printf(dst, pfx, "\tstream_name '%s'\n",
++				       link->stream_name);
++	if (err >= 0 && link->default_hw_config_id)
++		err = tplg_save_printf(dst, pfx, "\tdefault_hw_conf_id %u\n",
++				       link->default_hw_config_id);
++	if (err >= 0)
++		err = save_flags(link->flags, link->flag_mask, dst, pfx);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_HW_CONFIG,
++				     "hw_configs", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_refs(tplg, elem, SND_TPLG_TYPE_DATA,
++				     "data", dst, pfx2);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* Parse cc */
+ int tplg_parse_cc(snd_tplg_t *tplg,
+ 	snd_config_t *cfg, void *private ATTRIBUTE_UNUSED)
+@@ -1059,36 +1304,95 @@ int tplg_parse_cc(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
+-static int get_audio_hw_format(const char *val)
++/* save CC */
++int tplg_save_cc(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		   struct tplg_elem *elem,
++		   char **dst, const char *pfx)
+ {
+-	if (!strlen(val))
+-		return -EINVAL;
+-
+-	if (!strcmp(val, "I2S"))
+-		return SND_SOC_DAI_FORMAT_I2S;
++	struct snd_soc_tplg_link_config *link = elem->link;
++	char pfx2[16];
++	int err;
+ 
+-	if (!strcmp(val, "RIGHT_J"))
+-		return SND_SOC_DAI_FORMAT_RIGHT_J;
++	if (!link)
++		return 0;
++	snprintf(pfx2, sizeof(pfx2), "%s\t", pfx ?: "");
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && elem->index)
++		err = tplg_save_printf(dst, pfx, "\tindex %u\n",
++				       elem->index);
++	if (err >= 0 && link->id)
++		err = tplg_save_printf(dst, pfx, "\tid %u\n",
++				       link->id);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
+ 
+-	if (!strcmp(val, "LEFT_J"))
+-		return SND_SOC_DAI_FORMAT_LEFT_J;
++struct audio_hw_format {
++	unsigned int type;
++	const char *name;
++};
+ 
+-	if (!strcmp(val, "DSP_A"))
+-		return SND_SOC_DAI_FORMAT_DSP_A;
++static struct audio_hw_format audio_hw_formats[] = {
++	{
++		.type = SND_SOC_DAI_FORMAT_I2S,
++		.name = "I2S",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_RIGHT_J,
++		.name = "RIGHT_J",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_LEFT_J,
++		.name = "LEFT_J",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_DSP_A,
++		.name = "DSP_A",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_DSP_B,
++		.name = "DSP_B",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_AC97,
++		.name = "AC97",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_AC97,
++		.name = "AC97",
++	},
++	{
++		.type = SND_SOC_DAI_FORMAT_PDM,
++		.name = "PDM",
++	},
++};
+ 
+-	if (!strcmp(val, "DSP_B"))
+-		return SND_SOC_DAI_FORMAT_DSP_B;
++static int get_audio_hw_format(const char *val)
++{
++	unsigned int i;
+ 
+-	if (!strcmp(val, "AC97"))
+-		return SND_SOC_DAI_FORMAT_AC97;
++	if (val[0] == '\0')
++		return -EINVAL;
+ 
+-	if (!strcmp(val, "PDM"))
+-		return SND_SOC_DAI_FORMAT_PDM;
++	for (i = 0; i < ARRAY_SIZE(audio_hw_formats); i++)
++		if (strcasecmp(audio_hw_formats[i].name, val) == 0)
++			return audio_hw_formats[i].type;
+ 
+ 	SNDERR("error: invalid audio HW format %s\n", val);
+ 	return -EINVAL;
+ }
+ 
++static const char *get_audio_hw_format_name(unsigned int type)
++{
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(audio_hw_formats); i++)
++		if (audio_hw_formats[i].type == type)
++			return audio_hw_formats[i].name;
++	return NULL;
++}
++
+ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 			 void *private ATTRIBUTE_UNUSED)
+ {
+@@ -1299,6 +1603,71 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	return 0;
+ }
+ 
++/* save hw config */
++int tplg_save_hw_config(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++			struct tplg_elem *elem,
++			char **dst, const char *pfx)
++{
++	struct snd_soc_tplg_hw_config *hc = elem->hw_cfg;
++	int err;
++
++	err = tplg_save_printf(dst, NULL, "'%s' {\n", elem->id);
++	if (err >= 0 && hc->id)
++		err = tplg_save_printf(dst, pfx, "\tid %u\n",
++				       hc->id);
++	if (err >= 0 && hc->fmt)
++		err = tplg_save_printf(dst, pfx, "\tformat '%s'\n",
++				       get_audio_hw_format_name(hc->fmt));
++	if (err >= 0 && hc->bclk_master)
++		err = tplg_save_printf(dst, pfx, "\tbclk '%s'\n",
++				       hc->bclk_master == SND_SOC_TPLG_BCLK_CS ?
++						"codec_slave" : "codec_master");
++	if (err >= 0 && hc->bclk_rate)
++		err = tplg_save_printf(dst, pfx, "\tbclk_freq %u\n",
++				       hc->bclk_rate);
++	if (err >= 0 && hc->invert_bclk)
++		err = tplg_save_printf(dst, pfx, "\tbclk_invert 1\n");
++	if (err >= 0 && hc->fsync_master)
++		err = tplg_save_printf(dst, pfx, "\tfsync_master '%s'\n",
++				       hc->fsync_master == SND_SOC_TPLG_FSYNC_CS ?
++						"codec_slave" : "codec_master");
++	if (err >= 0 && hc->fsync_rate)
++		err = tplg_save_printf(dst, pfx, "\tfsync_freq %u\n",
++				       hc->fsync_rate);
++	if (err >= 0 && hc->invert_fsync)
++		err = tplg_save_printf(dst, pfx, "\tfsync_invert 1\n");
++	if (err >= 0 && hc->mclk_rate)
++		err = tplg_save_printf(dst, pfx, "\tmclk_freq %u\n",
++				       hc->mclk_rate);
++	if (err >= 0 && hc->mclk_direction)
++		err = tplg_save_printf(dst, pfx, "\tmclk '%s'\n",
++				       hc->mclk_direction == SND_SOC_TPLG_MCLK_CI ?
++						"codec_mclk_in" : "codec_mclk_out");
++	if (err >= 0 && hc->clock_gated)
++		err = tplg_save_printf(dst, pfx, "\tpm_gate_clocks 1\n");
++	if (err >= 0 && hc->tdm_slots)
++		err = tplg_save_printf(dst, pfx, "\ttdm_slots %u\n",
++				       hc->tdm_slots);
++	if (err >= 0 && hc->tdm_slot_width)
++		err = tplg_save_printf(dst, pfx, "\ttdm_slot_width %u\n",
++				       hc->tdm_slot_width);
++	if (err >= 0 && hc->tx_slots)
++		err = tplg_save_printf(dst, pfx, "\ttx_slots %u\n",
++				       hc->tx_slots);
++	if (err >= 0 && hc->rx_slots)
++		err = tplg_save_printf(dst, pfx, "\trx_slots %u\n",
++				       hc->rx_slots);
++	if (err >= 0 && hc->tx_channels)
++		err = tplg_save_printf(dst, pfx, "\ttx_channels %u\n",
++				       hc->tx_channels);
++	if (err >= 0 && hc->rx_channels)
++		err = tplg_save_printf(dst, pfx, "\trx_channels %u\n",
++				       hc->rx_channels);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "}\n");
++	return err;
++}
++
+ /* copy stream object */
+ static void tplg_add_stream_object(struct snd_soc_tplg_stream *strm,
+ 				struct snd_tplg_stream_template *strm_tpl)
+diff --git a/src/topology/save.c b/src/topology/save.c
+new file mode 100644
+index 000000000000..0498911f67d5
+--- /dev/null
++++ b/src/topology/save.c
+@@ -0,0 +1,632 @@
++/*
++  Copyright(c) 2019 Red Hat Inc.
++  All rights reserved.
++
++  This library is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as
++  published by the Free Software Foundation; either version 2.1 of
++  the License, or (at your option) any later version.
++
++  This program is distributed in the hope that it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++  GNU Lesser General Public License for more details.
++
++  Authors: Jaroslav Kysela <perex@perex.cz>
++*/
++
++#include "list.h"
++#include "tplg_local.h"
++
++#define SAVE_ALLOC_SHIFT	(13)	/* 8192 bytes */
++
++int tplg_save_printf(char **dst, const char *pfx, const char *fmt, ...)
++{
++	va_list va;
++	char buf[1024], *s;
++	size_t n, l, t, pl;
++
++	if (pfx == NULL)
++		pfx = "";
++
++	va_start(va, fmt);
++	n = vsnprintf(buf, sizeof(buf), fmt, va);
++	va_end(va);
++
++	if (n >= sizeof(buf))
++		return -EOVERFLOW;
++
++	pl = strlen(pfx);
++	l = *dst ? strlen(*dst) : 0;
++	t = l + pl + n + 1;
++	/* allocate chunks */
++	if (*dst == NULL ||
++	    (l >> SAVE_ALLOC_SHIFT) != (t >> SAVE_ALLOC_SHIFT)) {
++		s = realloc(*dst, ((t >> SAVE_ALLOC_SHIFT) + 1) <<
++							SAVE_ALLOC_SHIFT);
++		if (s == NULL) {
++			free(*dst);
++			*dst = NULL;
++			return -ENOMEM;
++		}
++	} else {
++		s = *dst;
++	}
++
++	if (pl > 0)
++		strcpy(s + l, pfx);
++	strcpy(s + l + pl, buf);
++	*dst = s;
++	return 0;
++}
++
++int tplg_nice_value_format(char *dst, size_t dst_size, unsigned int value)
++{
++	if ((value % 1000) != 0) {
++		if (value > 0xfffffff0)
++			return snprintf(dst, dst_size, "%d", (int)value);
++		if (value >= 0xffff0000)
++			return snprintf(dst, dst_size, "0x%x", value);
++	}
++	return snprintf(dst, dst_size, "%u", value);
++}
++
++static int tplg_pprint_integer(snd_config_t *n, char **ret)
++{
++	long lval;
++	int err, type;
++	char buf[16];
++
++	type = snd_config_get_type(n);
++	if (type == SND_CONFIG_TYPE_INTEGER) {
++		err = snd_config_get_integer(n, &lval);
++		if (err < 0)
++			return err;
++		if (lval < INT_MIN || lval > UINT_MAX)
++			return snd_config_get_ascii(n, ret);
++	} else if (type == SND_CONFIG_TYPE_INTEGER64) {
++		long long llval;
++		err = snd_config_get_integer64(n, &llval);
++		if (err < 0)
++			return err;
++		if (llval < INT_MIN || llval > UINT_MAX)
++			return snd_config_get_ascii(n, ret);
++		lval = llval;
++	}
++	err = tplg_nice_value_format(buf, sizeof(buf), (unsigned int)lval);
++	if (err < 0)
++		return err;
++	*ret = strdup(buf);
++	if (*ret == NULL)
++		return -ENOMEM;
++	return 0;
++}
++
++static int tplg_check_array_item(const char *id, int index)
++{
++	const char *p;
++	long int val;
++
++	for (p = id; *p; p++) {
++		if (*p < '0' || *p > '9')
++			return 0;
++	}
++
++	errno = 0;
++	val = strtol(id, NULL, 10);
++	return errno == 0 && val == index;
++}
++
++static int _compar(const void *a, const void *b)
++{
++	const snd_config_t *c1 = *(snd_config_t **)a;
++	const snd_config_t *c2 = *(snd_config_t **)b;
++	const char *id1, *id2;
++	if (snd_config_get_id(c1, &id1)) return 0;
++	if (snd_config_get_id(c2, &id2)) return 0;
++	return strcmp(id1, id2);
++}
++
++static snd_config_t *sort_config(const char *id, snd_config_t *src)
++{
++	snd_config_t *dst, **a;
++	snd_config_iterator_t i, next;
++	int index, array, count;
++
++	if (snd_config_get_type(src) != SND_CONFIG_TYPE_COMPOUND) {
++
++		if (snd_config_copy(&dst, src) >= 0)
++			return dst;
++		return NULL;
++	}
++	count = 0;
++	snd_config_for_each(i, next, src)
++		count++;
++	a = malloc(sizeof(dst) * count);
++	if (a == NULL)
++		return NULL;
++	index = array = 0;
++	snd_config_for_each(i, next, src) {
++		snd_config_t *s = snd_config_iterator_entry(i);
++		const char *id2;
++		a[index++] = s;
++		if (array < 0)
++			continue;
++		if (snd_config_get_id(s, &id2)) {
++			free(a);
++			return NULL;
++		}
++		if (array >= 0 && tplg_check_array_item(id2, array))
++			array++;
++		else
++			array = -1;
++	}
++	if (array < 0)
++		qsort(a, count, sizeof(a[0]), _compar);
++	if (snd_config_make_compound(&dst, id, count == 1)) {
++		free(a);
++		return NULL;
++	}
++	for (index = 0; index < count; index++) {
++		snd_config_t *s = a[index];
++		const char *id2;
++		if (snd_config_get_id(s, &id2)) {
++			snd_config_delete(dst);
++			free(a);
++			return NULL;
++		}
++		s = sort_config(id2, s);
++		if (s == NULL || snd_config_add(dst, s)) {
++			if (s)
++				snd_config_delete(s);
++			snd_config_delete(dst);
++			free(a);
++			return NULL;
++		}
++	}
++	free(a);
++	return dst;
++}
++
++static int tplg_check_quoted(const unsigned char *p)
++{
++	for ( ; *p != '\0'; p++) {
++		switch (*p) {
++		case ' ':
++		case '=':
++		case ';':
++		case ',':
++		case '.':
++		case '{':
++		case '}':
++		case '\'':
++		case '"':
++			return 1;
++		default:
++			if (*p <= 31 || *p >= 127)
++				return 1;
++
++		}
++	}
++	return 0;
++}
++
++static int tplg_save_quoted(char **dst, const char *str)
++{
++	static const char nibble[16] = "0123456789abcdef";
++	unsigned char *p, *d, *t;
++	int c;
++
++	d = t = alloca(strlen(str) * 5 + 1 + 1);
++	for (p = (unsigned char *)str; *p != '\0'; p++) {
++		c = *p;
++		switch (c) {
++		case '\n':
++			*t++ = '\\';
++			*t++ = 'n';
++			break;
++		case '\t':
++			*t++ = '\\';
++			*t++ = 't';
++			break;
++		case '\v':
++			*t++ = '\\';
++			*t++ = 'v';
++			break;
++		case '\b':
++			*t++ = '\\';
++			*t++ = 'b';
++			break;
++		case '\r':
++			*t++ = '\\';
++			*t++ = 'r';
++			break;
++		case '\f':
++			*t++ = '\\';
++			*t++ = 'f';
++			break;
++		case '\'':
++			*t++ = '\\';
++			*t++ = c;
++			break;
++		default:
++			if (c >= 32 && c <= 126) {
++				*t++ = c;
++			} else {
++				*t++ = '\\';
++				*t++ = 'x';
++				*t++ = nibble[(c >> 4) & 0x0f];
++				*t++ = nibble[(c >> 0) & 0x0f];
++			}
++			break;
++		}
++	}
++	*t = '\0';
++	return tplg_save_printf(dst, NULL, "'%s'", d);
++}
++
++static int tplg_save_string(char **dst, const char *str, int id)
++{
++	const unsigned char *p = (const unsigned char *)str;
++
++	if (!p || !*p)
++		return tplg_save_printf(dst, NULL, "''");
++
++	if (!id && ((*p >= '0' && *p <= '9') || *p == '-'))
++		return tplg_save_quoted(dst, str);
++
++	if (tplg_check_quoted(p))
++		return tplg_save_quoted(dst, str);
++
++	return tplg_save_printf(dst, NULL, "%s", str);
++}
++
++static int save_config(char **dst, int level, const char *delim, snd_config_t *src)
++{
++	snd_config_iterator_t i, next;
++	snd_config_t *s;
++	const char *id;
++	char *pfx;
++	unsigned int count;
++	int type, err, quoted, array;
++
++	if (delim == NULL)
++		delim = "";
++
++	type = snd_config_get_type(src);
++	if (type != SND_CONFIG_TYPE_COMPOUND) {
++		char *val;
++		if (type == SND_CONFIG_TYPE_INTEGER ||
++		    type == SND_CONFIG_TYPE_INTEGER64) {
++			err = tplg_pprint_integer(src, &val);
++		} else {
++			err = snd_config_get_ascii(src, &val);
++		}
++		if (err < 0)
++			return err;
++		if (type == SND_CONFIG_TYPE_STRING) {
++			/* hexa array pretty print */
++			id = strchr(val, '\n');
++			if (id) {
++				err = tplg_save_printf(dst, NULL, "\n");
++				if (err < 0)
++					goto retval;
++				for (id++; *id == '\t'; id++) {
++					err = tplg_save_printf(dst, NULL, "\t");
++					if (err < 0)
++						goto retval;
++				}
++				delim = "";
++			}
++			err = tplg_save_printf(dst, NULL, "%s'%s'\n", delim, val);
++		} else {
++			err = tplg_save_printf(dst, NULL, "%s%s\n", delim, val);
++		}
++retval:
++		free(val);
++		return err;
++	}
++
++	count = 0;
++	quoted = 0;
++	array = 0;
++	s = NULL;
++	snd_config_for_each(i, next, src) {
++		s = snd_config_iterator_entry(i);
++		err = snd_config_get_id(s, &id);
++		if (err < 0)
++			return err;
++		if (!quoted && tplg_check_quoted((unsigned char *)id))
++			quoted = 1;
++		if (array >= 0 && tplg_check_array_item(id, array))
++			array++;
++		else
++			array = -1;
++		count++;
++	}
++	if (count == 0)
++		return 0;
++
++	if (count == 1) {
++		err = snd_config_get_id(s, &id);
++		if (err >= 0 && level > 0)
++			err = tplg_save_printf(dst, NULL, ".");
++		if (err >= 0)
++			err = tplg_save_string(dst, id, 1);
++		if (err >= 0)
++			err = save_config(dst, level, " ", s);
++		return err;
++	}
++
++	pfx = alloca(level + 1);
++	memset(pfx, '\t', level);
++	pfx[level] = '\0';
++
++	if (level > 0) {
++		err = tplg_save_printf(dst, NULL, "%s%s\n", delim,
++				       array >= 0 ? "[" : "{");
++		if (err < 0)
++			return err;
++	}
++
++	snd_config_for_each(i, next, src) {
++		s = snd_config_iterator_entry(i);
++		const char *id;
++		err = snd_config_get_id(s, &id);
++		if (err < 0)
++			return err;
++		err = tplg_save_printf(dst, pfx, "");
++		if (err < 0)
++			return err;
++		if (array < 0) {
++			delim = " ";
++			if (quoted) {
++				err = tplg_save_quoted(dst, id);
++			} else {
++				err = tplg_save_string(dst, id, 1);
++				if (err < 0)
++					return err;
++			}
++		} else {
++			delim = "";
++		}
++		err = save_config(dst, level + 1, delim, s);
++		if (err < 0)
++			return err;
++	}
++
++	if (level > 0) {
++		pfx[level - 1] = '\0';
++		err = tplg_save_printf(dst, pfx, "%s\n",
++				       array >= 0 ? "]" : "}");
++		if (err < 0)
++			return err;
++	}
++
++	return 0;
++}
++
++static int tplg_save(snd_tplg_t *tplg, char **dst, int gindex, const char *prefix)
++{
++	struct tplg_table *tptr;
++	struct tplg_elem *elem;
++	struct list_head *list, *pos;
++	char pfx2[16];
++	unsigned int index;
++	int err, count;
++
++	snprintf(pfx2, sizeof(pfx2), "%s\t", prefix ?: "");
++
++	/* write all blocks */
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		list = (struct list_head *)((void *)tplg + tptr->loff);
++
++		/* count elements */
++		count = 0;
++		list_for_each(pos, list) {
++			elem = list_entry(pos, struct tplg_elem, list);
++			if (gindex >= 0 && elem->index != gindex)
++				continue;
++			if (tptr->save == NULL && tptr->gsave == NULL) {
++				SNDERR("unable to create %s block (no callback)",
++				       tptr->id);
++				err = -ENXIO;
++				goto _err;
++			}
++			if (tptr->save)
++				count++;
++		}
++
++		if (count == 0)
++			continue;
++
++		if (count > 1) {
++			err = tplg_save_printf(dst, prefix, "%s {\n",
++					       elem->table ?
++						elem->table->id : "_NOID_");
++		} else {
++			err = tplg_save_printf(dst, prefix, "%s.",
++					       elem->table ?
++						elem->table->id : "_NOID_");
++		}
++
++		if (err < 0)
++			goto _err;
++
++		list_for_each(pos, list) {
++			elem = list_entry(pos, struct tplg_elem, list);
++			if (gindex >= 0 && elem->index != gindex)
++				continue;
++			if (count > 1) {
++				err = tplg_save_printf(dst, pfx2, "");
++				if (err < 0)
++					goto _err;
++			}
++			err = tptr->save(tplg, elem, dst, count > 1 ? pfx2 : prefix);
++			if (err < 0) {
++				SNDERR("failed to save %s elements: %s",
++				       tptr->id, snd_strerror(-err));
++				goto _err;
++			}
++		}
++		if (count > 1) {
++			err = tplg_save_printf(dst, prefix, "}\n");
++			if (err < 0)
++				goto _err;
++		}
++	}
++
++	/* save globals */
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		if (tptr->gsave) {
++			err = tptr->gsave(tplg, gindex, dst, prefix);
++			if (err < 0)
++				goto _err;
++		}
++	}
++
++	return 0;
++
++_err:
++	free(*dst);
++	*dst = NULL;
++	return err;
++}
++
++static int tplg_index_compar(const void *a, const void *b)
++{
++	const int *a1 = a, *b1 = b;
++	return *a1 - *b1;
++}
++
++static int tplg_index_groups(snd_tplg_t *tplg, int **indexes)
++{
++	struct tplg_table *tptr;
++	struct tplg_elem *elem;
++	struct list_head *list, *pos;
++	unsigned int index, j, count, size;
++	int *a, *b;
++
++	count = 0;
++	size = 16;
++	a = malloc(size * sizeof(a[0]));
++
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		list = (struct list_head *)((void *)tplg + tptr->loff);
++		list_for_each(pos, list) {
++			elem = list_entry(pos, struct tplg_elem, list);
++			for (j = 0; j < count; j++) {
++				if (a[j] == elem->index)
++					break;
++			}
++			if (j < count)
++				continue;
++			if (count + 1 >= size) {
++				size += 8;
++				b = realloc(a, size * sizeof(a[0]));
++				if (b == NULL) {
++					free(a);
++					return -ENOMEM;
++				}
++				a = b;
++			}
++			a[count++] = elem->index;
++		}
++	}
++	a[count] = -1;
++
++	qsort(a, count, sizeof(a[0]), tplg_index_compar);
++
++	*indexes = a;
++	return 0;
++}
++
++int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags)
++{
++	snd_input_t *in;
++	snd_config_t *top, *top2;
++	char *dst2;
++	int *indexes, *a;
++	int err;
++
++	assert(tplg);
++	assert(dst);
++	*dst = NULL;
++
++	if (flags & SND_TPLG_SAVE_GROUPS) {
++		err = tplg_index_groups(tplg, &indexes);
++		if (err < 0)
++			return err;
++		for (a = indexes; err >= 0 && *a >= 0; a++) {
++			err = tplg_save_printf(dst, NULL,
++					       "IndexGroup.%d {\n",
++					       *a);
++			if (err >= 0)
++				err = tplg_save(tplg, dst, *a, "\t");
++			if (err >= 0)
++				err = tplg_save_printf(dst, NULL, "}\n");
++		}
++		free(indexes);
++	} else {
++		err = tplg_save(tplg, dst, -1, NULL);
++	}
++
++	if (err < 0)
++		goto _err;
++
++	if (flags & SND_TPLG_SAVE_NOCHECK)
++		return 0;
++
++	/* always load configuration - check */
++	err = snd_input_buffer_open(&in, *dst, strlen(*dst));
++	if (err < 0) {
++		SNDERR("could not create input buffer");
++		goto _err;
++	}
++
++	err = snd_config_top(&top);
++	if (err < 0) {
++		snd_input_close(in);
++		goto _err;
++	}
++
++	err = snd_config_load(top, in);
++	snd_input_close(in);
++	if (err < 0) {
++		SNDERR("could not load configuration");
++		snd_config_delete(top);
++		goto _err;
++	}
++
++	if (flags & SND_TPLG_SAVE_SORT) {
++		top2 = sort_config(NULL, top);
++		if (top2 == NULL) {
++			SNDERR("could not sort configuration");
++			snd_config_delete(top);
++			err = -EINVAL;
++			goto _err;
++		}
++		snd_config_delete(top);
++		top = top2;
++	}
++
++	dst2 = NULL;
++	err = save_config(&dst2, 0, NULL, top);
++	snd_config_delete(top);
++	if (err < 0) {
++		SNDERR("could not save configuration");
++		goto _err;
++	}
++
++	free(*dst);
++	*dst = dst2;
++	return 0;
++
++_err:
++	free(*dst);
++	*dst = NULL;
++	return err;
++}
+diff --git a/src/topology/text.c b/src/topology/text.c
+index f301a4ded727..e9386e7df492 100644
+--- a/src/topology/text.c
++++ b/src/topology/text.c
+@@ -89,3 +89,22 @@ int tplg_parse_text(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 	return err;
+ }
++
++/* save text data */
++int tplg_save_text(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		   struct tplg_elem *elem,
++		   char **dst, const char *pfx)
++{
++	struct tplg_texts *texts = elem->texts;
++	unsigned int i;
++	int err;
++
++	if (!texts || texts->num_items == 0)
++		return 0;
++	err = tplg_save_printf(dst, pfx, "'%s'.values [\n", elem->id);
++	for (i = 0; err >= 0 && i < texts->num_items; i++)
++		err = tplg_save_printf(dst, pfx, "\t'%s'\n", texts->items[i][0]);
++	if (err >= 0)
++		err = tplg_save_printf(dst, pfx, "]\n");
++	return err;
++}
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index bea88ba35608..42a3aa96ba0e 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -37,6 +37,7 @@
+ 
+ struct tplg_ref;
+ struct tplg_elem;
++struct tplg_table;
+ 
+ typedef enum _snd_pcm_rates {
+ 	SND_PCM_RATE_UNKNOWN = -1,
+@@ -147,6 +148,8 @@ struct tplg_vendor_tuples {
+ /* topology element */
+ struct tplg_elem {
+ 
++	struct tplg_table *table;
++
+ 	char id[SNDRV_CTL_ELEM_ID_NAME_MAXLEN];
+ 
+ 	int index;
+@@ -209,6 +212,10 @@ struct tplg_table {
+ 	unsigned enew: 1;
+ 	void (*free)(void *);
+ 	int (*parse)(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
++	int (*save)(snd_tplg_t *tplg, struct tplg_elem *elem,
++		    char **dst, const char *prefix);
++	int (*gsave)(snd_tplg_t *tplg, int index,
++		     char **dst, const char *prefix);
+ };
+ 
+ extern struct tplg_table tplg_table[];
+@@ -250,7 +257,8 @@ int tplg_build_pcm_dai(snd_tplg_t *tplg, unsigned int type);
+ int tplg_copy_data(snd_tplg_t *tplg, struct tplg_elem *elem,
+ 		   struct tplg_ref *ref);
+ 
+-int tplg_parse_data_refs(snd_config_t *cfg, struct tplg_elem *elem);
++int tplg_parse_refs(snd_config_t *cfg, struct tplg_elem *elem,
++		    unsigned int type);
+ 
+ int tplg_ref_add(struct tplg_elem *elem, int type, const char* id);
+ int tplg_ref_add_elem(struct tplg_elem *elem, struct tplg_elem *elem_ref);
+@@ -269,9 +277,11 @@ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ int tplg_get_integer(snd_config_t *n, int *val, int base);
+ int tplg_get_unsigned(snd_config_t *n, unsigned *val, int base);
+ 
++const char *tplg_channel_name(int type);
+ int tplg_parse_channel(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	snd_config_t *cfg, void *private);
+ 
++const char *tplg_ops_name(int type);
+ int tplg_parse_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	snd_config_t *cfg, void *private);
+ int tplg_parse_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+@@ -299,3 +309,49 @@ int tplg_build_links(snd_tplg_t *tplg, unsigned int type);
+ int tplg_add_link_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+ int tplg_add_pcm_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+ int tplg_add_dai_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
++
++int tplg_nice_value_format(char *dst, size_t dst_size, unsigned int value);
++
++int tplg_save_printf(char **dst, const char *prefix, const char *fmt, ...);
++int tplg_save_refs(snd_tplg_t *tplg, struct tplg_elem *elem, unsigned int type,
++		   const char *id, char **dst, const char *pfx);
++int tplg_save_channels(snd_tplg_t *tplg, struct snd_soc_tplg_channel *channel,
++		       unsigned int channel_count, char **dst, const char *pfx);
++int tplg_save_ops(snd_tplg_t *tplg, struct snd_soc_tplg_ctl_hdr *hdr,
++		  char **dst, const char *pfx);
++int tplg_save_ext_ops(snd_tplg_t *tplg, struct snd_soc_tplg_bytes_control *be,
++		      char **dst, const char *pfx);
++int tplg_save_manifest_data(snd_tplg_t *tplg, struct tplg_elem *elem,
++			    char **dst, const char *pfx);
++int tplg_save_control_mixer(snd_tplg_t *tplg, struct tplg_elem *elem,
++			    char **dst, const char *pfx);
++int tplg_save_control_enum(snd_tplg_t *tplg, struct tplg_elem *elem,
++			   char **dst, const char *pfx);
++int tplg_save_control_bytes(snd_tplg_t *tplg, struct tplg_elem *elem,
++			    char **dst, const char *pfx);
++int tplg_save_tlv(snd_tplg_t *tplg, struct tplg_elem *elem,
++		  char **dst, const char *pfx);
++int tplg_save_data(snd_tplg_t *tplg, struct tplg_elem *elem,
++		   char **dst, const char *pfx);
++int tplg_save_text(snd_tplg_t *tplg, struct tplg_elem *elem,
++		   char **dst, const char *pfx);
++int tplg_save_tokens(snd_tplg_t *tplg, struct tplg_elem *elem,
++		     char **dst, const char *pfx);
++int tplg_save_tuples(snd_tplg_t *tplg, struct tplg_elem *elem,
++		     char **dst, const char *pfx);
++int tplg_save_dapm_graph(snd_tplg_t *tplg, int index,
++			 char **dst, const char *pfx);
++int tplg_save_dapm_widget(snd_tplg_t *tplg, struct tplg_elem *elem,
++			  char **dst, const char *pfx);
++int tplg_save_link(snd_tplg_t *tplg, struct tplg_elem *elem,
++		   char **dst, const char *pfx);
++int tplg_save_cc(snd_tplg_t *tplg, struct tplg_elem *elem,
++		 char **dst, const char *pfx);
++int tplg_save_pcm(snd_tplg_t *tplg, struct tplg_elem *elem,
++		  char **dst, const char *pfx);
++int tplg_save_hw_config(snd_tplg_t *tplg, struct tplg_elem *elem,
++			char **dst, const char *pfx);
++int tplg_save_stream_caps(snd_tplg_t *tplg, struct tplg_elem *elem,
++			  char **dst, const char *pfx);
++int tplg_save_dai(snd_tplg_t *tplg, struct tplg_elem *elem,
++		  char **dst, const char *pfx);
+-- 
+2.16.4
+

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 21 15:45:15 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  fixes / corrections for sof-hda-dsp, es8316, chtrt5645 and
+  broadwell-rt286:
+  0001-sof-hda-dsp-Fix-the-Dmic0-CaptureMixerElem-for-v1.4..patch
+  0002-sof-hda-dsp-Use-more-strict-names-according-latest-u.patch
+  0003-README-remove-topologies-note.patch
+  0004-bytcht-es8316-Fix-missing-including-of-HeadPhones.co.patch
+  0005-ucm2-fix-the-verb-path-in-chtrt5645-chtrt5645-dmic2..patch
+  0006-broadwell-rt286-add-support-for-hardware-volume-conf.patch
+
+-------------------------------------------------------------------
+Fri Nov 29 20:45:11 CET 2019 - tiwai@suse.de
+
+- Update to alsa-ucm-conf 1.2.1.2:
+  More UCM2 adaptions, SOF fixes / improvements, details found at
+    https://www.alsa-project.org/wiki/Changes_v1.2.1.1_v1.2.1.2
+
+-------------------------------------------------------------------
 Fri Nov 15 17:56:20 CET 2019 - tiwai@suse.de
 
 - New package, split from alsa-lib since v1.2.1

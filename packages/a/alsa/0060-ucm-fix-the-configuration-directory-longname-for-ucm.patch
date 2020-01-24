@@ -1,0 +1,32 @@
+From b34715004f4a1aabb85c5b9f03ba9f200638ee97 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 15 Jan 2020 09:41:05 +0100
+Subject: [PATCH 60/63] ucm: fix the configuration directory (longname) for
+ ucm2
+
+The new ucm2 expects that the longname directory is shared with
+the driver directory. Fix that for 'Syntax 2'.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/parser.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index d61124a343e1..b3970a13bf73 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -1649,7 +1649,9 @@ __longname:
+ 
+ 		if (err == 0) {
+ 			/* got device-specific file that matches the card long name */
+-			snd_strlcpy(uc_mgr->conf_file_name, longname, sizeof(uc_mgr->conf_file_name));
++			if (uc_mgr->conf_format < 2)
++				snd_strlcpy(uc_mgr->conf_file_name, longname,
++					    sizeof(uc_mgr->conf_file_name));
+ 			goto __parse;
+ 		}
+ 	}
+-- 
+2.16.4
+

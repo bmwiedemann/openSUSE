@@ -61,7 +61,6 @@ Requires:       python-zope.configuration
 Requires:       python-zope.event
 Requires:       python-zope.interface
 %if 0%{?suse_version} <= 1500
-Requires:       python-cffi
 Requires:       python-importlib_resources
 %endif
 Provides:       mailman = %{version}
@@ -94,7 +93,6 @@ BuildRequires:  %{python_module zope.configuration}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.interface}
 %if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module importlib_resources}
 %endif
 %endif
@@ -129,9 +127,8 @@ sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 
 %check
 %if %{with test}
-%if 0%{?suse_version} <= 1500
-export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
+%if 0%{?suse_version} <= 1500
 # mailman.rest.tests.test_wsgiapp.TestSupportedContentType
 # AssertionError: 'application/json; charset=UTF-8' != 'application/json'
 rm src/mailman/rest/tests/test_wsgiapp.py

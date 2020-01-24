@@ -1,0 +1,75 @@
+From adeb572487081f4f88318583d6eefb0ea1b61361 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 6 Dec 2019 11:12:39 +0100
+Subject: [PATCH 2/6] sof-hda-dsp: Use more strict names according latest
+ use-case.h
+
+Also remove ConflictinDevice section from the digital microphone.
+Those paths are independent.
+
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/7
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HiFi.conf | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 500cbae82a43..5c7236d7bd02 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -6,7 +6,7 @@ SectionVerb {
+ 	]
+ }
+ 
+-SectionDevice."Headphones" {
++SectionDevice."Headphones1" {
+ 	Comment "Headphones"
+ 
+ 	EnableSequence [
+@@ -87,8 +87,9 @@ If.monomic {
+ 		Control "name='Input Source'"
+ 		ControlEnum "Headphone Mic"
+ 	}
++	After.SectionDevice "Mic"
+ 	True {
+-		SectionDevice."HeadphonesMic" {
++		SectionDevice."Headphones2" {
+ 			Comment "Headphones Stereo Microphone"
+ 
+ 			ConflictingDevice [
+@@ -106,7 +107,7 @@ If.monomic {
+ 			}
+ 		}
+ 
+-		SectionDevice."HeadsetMic" {
++		SectionDevice."Headset" {
+ 			Comment "Headset Mono Microphone"
+ 
+ 			EnableSequence [
+@@ -121,7 +122,7 @@ If.monomic {
+ 		}
+ 	}
+ 	False {
+-		SectionDevice."HeadphonesMic" {
++		SectionDevice."Headphones2" {
+ 			Comment "Headphones Stereo Microphone"
+ 
+ 			Value {
+@@ -133,13 +134,9 @@ If.monomic {
+ 	}
+ }
+ 
+-SectionDevice."DigitalMic" {
++SectionDevice."Mic" {
+ 	Comment "Digital Microphone"
+ 
+-	ConflictingDevice [
+-		"HeadsetMic"
+-	]
+-
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId},6"
+-- 
+2.16.4
+

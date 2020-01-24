@@ -460,4 +460,12 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>758121</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2ddfd471e9d9aeaa4203d554e3fc3f2d</srcmd5>
+    <version>2.0.8</version>
+    <time>1579867764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766398</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 22 13:55:03 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 4.4.2:
+  * LP#1835708: ElementInclude incorrectly rejected repeated 
+    non-recursive includes as recursive.
+  * Remove patch lxml-libxml-2.9.10.patch which is now upstream
+
+-------------------------------------------------------------------
 Sun Nov 17 14:25:04 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add lxml-libxml-2.9.10.patch: Fix build against libxml 2.9.10.

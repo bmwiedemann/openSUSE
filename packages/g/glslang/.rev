@@ -154,4 +154,12 @@
     <comment>- Update to release 7.13.3496</comment>
     <requestid>746193</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fabc387c0b3339ff3ff985d694d1c49d</srcmd5>
+    <version>8.13.3559+git20</version>
+    <time>1579867677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 8.13.3559+git20 (b0ada803)</comment>
+    <requestid>766381</requestid>
+  </revision>
 </revisionlist>

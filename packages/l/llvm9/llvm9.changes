@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 15 14:34:50 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Undo spec-cleaner changes that we don't want.
+  * Reintroduce blank lines in configuration.
+  * Use packageand syntax that works for older versions of RPM.
+  * Don't use %{_bindir} on left-hand side of sed replacements.
+
+-------------------------------------------------------------------
 Sat Jan 11 20:14:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - riscv-eh-frame-fixup.patch: Remove changesets that alter the libLLVM ABI

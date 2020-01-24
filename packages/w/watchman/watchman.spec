@@ -1,7 +1,7 @@
 #
 # spec file for package watchman
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,45 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define docdir %{_defaultdocdir}/watchman 
+%define docdir %{_defaultdocdir}/watchman
 %define rundir /run/watchman
 Name:           watchman
+Version:        4.9.0
+Release:        0
+Summary:        A file watching service
+# the thirdparty code is partially MIT-licensed or at least some such
+License:        Apache-2.0 AND MIT
+Group:          System/Monitoring
+URL:            https://facebook.github.io/watchman/
+Source0:        https://github.com/facebook/watchman/archive/v%{version}.tar.gz
+# tmpfiles.d configuration for statedir
+Source1:        watchman.conf
+Source2:        watchman@.service
+Source3:        watchman@.socket
+# prevent the build system overwriting the autotools docdir in a hard-coded way
+Patch0:         %{name}_4.7.0_makefile-am.diff
+Patch1:         0001-Replaced-memset-calls-with-appopriate-C-11-init-or-a.patch
+Patch2:         0002-Re-worked-replacement-of-memset-with-proper-init-to-.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
-BuildRequires:  python
+BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre16)
+BuildRequires:  pkgconfig(libpcrecpp)
+BuildRequires:  pkgconfig(libpcreposix)
 Requires:       pcre
-%{?systemd_requires}
-Version:        4.9.0
-Release:        0
-Url:            https://facebook.github.io/watchman/
-Summary:        A file watching service
-# the thirdparty code is partially MIT-licensed or at least some such
-License:        Apache-2.0 AND MIT
-Group:          System/Monitoring
-Source0:        https://github.com/facebook/watchman/archive/v%version.tar.gz
-# tmpfiles.d configuration for statedir
-Source1:        watchman.conf
-Source2:        watchman@.service
-Source3:        watchman@.socket
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# prevent the build system overwriting the autotools docdir in a hard-coded way
-Patch0:         %{name}_4.7.0_makefile-am.diff
-Patch1:         0001-Replaced-memset-calls-with-appopriate-C-11-init-or-a.patch
-Patch2:         0002-Re-worked-replacement-of-memset-with-proper-init-to-.patch
+# TODO: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
+%{?systemd_requires}
 
 %description
 Watchman exists to watch files and record when they change. It can also trigger
@@ -65,20 +69,22 @@ is unsure.
 state of the tree
 * You can subscribe to file changes that occur in a root
 
-%package python
+%package -n python3-watchman
+Version:        1.4.0
+Release:        0
 Summary:        A python package for talking to the watchman service
 # from python/setup.py
-License:        MIT
+License:        BSD-3-Clause
 Group:          System/Monitoring
-Version:        1.3.0
-Release:        0
-Requires:       python
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+Requires:       python3-base
+Conflicts:      watchman-python < %{version}
 
 # NOTE: the additional scripts like watchman-make are written in python. I
 # guess those scripts don't justify another subpackage, so I add them as a
 # bargain to the python bindings.
-%description python
+%description -n python3-watchman
 Provides Python bindings for directly talking to the watchman service from
 within Python.
 
@@ -153,23 +159,23 @@ Additionally, some Python tools that are part of watchman will be installed.
 # https://lists.fedoraproject.org/pipermail/scm-commits/2010-September/496900.html
 #
 # So let's build everything with no strict aliasing then
-export CFLAGS="%optflags -fno-strict-aliasing"
-export CXXFLAGS="%optflags -Wno-format-truncation"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -Wno-format-truncation"
 %configure \
 	--without-ruby \
 	--enable-statedir=%{rundir} \
-	--docdir=%{docdir} # see Patch0, docs should be placed in the packages subdir
+	--docdir=%docdir # see Patch0, docs should be placed in the packages subdir
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 
 %define build_tmpfiles %{buildroot}%{_tmpfilesdir}
 %define build_tmpfile_conf %{build_tmpfiles}/%{name}.conf
 # don't package this installed state directory, we just need to configure with
 # --enable-statedir for the code to be compiled with support for it, otherwise
 # watchman falls back to using statedirs in /tmp.
-rm -rf $RPM_BUILD_ROOT/%{rundir}
+rm -rf %{buildroot}/%{rundir}
 # install the tmpfiles.d file instead for creating the statedir during runtime
 # with sticky bit as expected by watchman
 install -d -m 0755 %{build_tmpfiles}
@@ -180,10 +186,10 @@ install -D -m 444 %{SOURCE2} %{build_unitdir}/%{name}@.service
 install -D -m 444 %{SOURCE3} %{build_unitdir}/%{name}@.socket
 
 %define tmpfile_conf %{_tmpfilesdir}/%{name}.conf
+
 %files
-%defattr(-,root,root)
-%doc %{docdir}
-%_bindir/watchman
+%doc %docdir
+%{_bindir}/watchman
 # explicitly own this dir, otherwise SLE12-SP2 build breaks? should actually
 # be owned by the filesystem package.
 %if 0%{?sle_version} <= 120200
@@ -197,12 +203,11 @@ install -D -m 444 %{SOURCE3} %{build_unitdir}/%{name}@.socket
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}@.socket
 
-%files python
-%defattr(-,root,root)
-%{python_sitearch}
+%files -n python3-watchman
+%{python3_sitearch}
 # additional python tools for working with watchman, not strictly part of the
 # python bindings, actually
-%_bindir/watchman-*
+%{_bindir}/watchman-*
 
 %pre
 %service_add_pre %{name}@.socket %{name}@.service

@@ -1,0 +1,209 @@
+From fe6425af751a768a2ba6cf7d430a85553d3b84f6 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 15 Jan 2020 10:31:56 +0100
+Subject: [PATCH 61/63] ucm: split conf_file_name and conf_dir_name
+
+With ucm2, the file name might differ from the directory
+name. Also, allocate those fields.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/main.c      |  7 ++++---
+ src/ucm/parser.c    | 37 ++++++++++++++++++++++++++-----------
+ src/ucm/ucm_local.h |  4 ++--
+ src/ucm/ucm_subs.c  |  2 +-
+ src/ucm/utils.c     |  4 ++++
+ 5 files changed, 37 insertions(+), 17 deletions(-)
+
+diff --git a/src/ucm/main.c b/src/ucm/main.c
+index 61922f10b7c7..23e15bd8dacb 100644
+--- a/src/ucm/main.c
++++ b/src/ucm/main.c
+@@ -1700,12 +1700,13 @@ int snd_use_case_get(snd_use_case_mgr_t *uc_mgr,
+ 	        err = 0;
+ 	} else if (strcmp(identifier, "_file") == 0) {
+ 		/* get the conf file name of the opened card */
+-		if ((uc_mgr->card_name == NULL)
+-		    || (uc_mgr->conf_file_name[0] == '\0')) {
++		if ((uc_mgr->card_name == NULL) ||
++		    (uc_mgr->conf_file_name == NULL) ||
++		    (uc_mgr->conf_file_name[0] == '\0')) {
+ 			err = -ENOENT;
+ 			goto __end;
+ 		}
+-		*value = strndup(uc_mgr->conf_file_name, MAX_FILE);
++		*value = strdup(uc_mgr->conf_file_name);
+ 		if (*value == NULL) {
+ 			err = -ENOMEM;
+ 			goto __end;
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index b3970a13bf73..1bfde0be327d 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -124,6 +124,16 @@ static void configuration_filename(snd_use_case_mgr_t *uc_mgr,
+ 	configuration_filename2(fn, fn_len, 2, dir, file, suffix);
+ }
+ 
++/*
++ * Replace mallocated string
++ */
++static char *replace_string(char **dst, const char *value)
++{
++	free(*dst);
++	*dst = strdup(value);
++	return *dst;
++}
++
+ /*
+  * Parse string
+  */
+@@ -1186,7 +1196,7 @@ static int parse_verb_file(snd_use_case_mgr_t *uc_mgr,
+ 
+ 	/* open Verb file for reading */
+ 	configuration_filename(uc_mgr, filename, sizeof(filename),
+-			       uc_mgr->conf_file_name, file, "");
++			       uc_mgr->conf_dir_name, file, "");
+ 	err = uc_mgr_config_load(uc_mgr->conf_format, filename, &cfg);
+ 	if (err < 0) {
+ 		uc_error("error: failed to open verb file %s : %d",
+@@ -1404,16 +1414,16 @@ static int parse_master_file(snd_use_case_mgr_t *uc_mgr, snd_config_t *cfg)
+ 	if (uc_mgr->conf_format >= 2) {
+ 		err = snd_config_search(cfg, "Syntax", &n);
+ 		if (err < 0) {
+-			uc_error("Syntax field not found in %s", uc_mgr->conf_file_name);
++			uc_error("Syntax field not found in %s", uc_mgr->conf_dir_name);
+ 			return -EINVAL;
+ 		}
+ 		err = snd_config_get_integer(n, &l);
+ 		if (err < 0) {
+-			uc_error("Syntax field is invalid in %s", uc_mgr->conf_file_name);
++			uc_error("Syntax field is invalid in %s", uc_mgr->conf_dir_name);
+ 			return err;
+ 		}
+ 		if (l < 2 || l > SYNTAX_VERSION_MAX) {
+-			uc_error("Incompatible syntax %d in %s", l, uc_mgr->conf_file_name);
++			uc_error("Incompatible syntax %d in %s", l, uc_mgr->conf_dir_name);
+ 			return -EINVAL;
+ 		}
+ 		/* delete this field to avoid strcmp() call in the loop */
+@@ -1561,8 +1571,9 @@ static int get_by_card(snd_use_case_mgr_t *mgr, const char *ctl_name, char *long
+ 		return err;
+ 
+ 	_name = snd_ctl_card_info_get_name(info);
++	if (replace_string(&mgr->conf_dir_name, _name) == NULL)
++		return -ENOMEM;
+ 	_long_name = snd_ctl_card_info_get_longname(info);
+-	snd_strlcpy(mgr->conf_file_name, _name, sizeof(mgr->conf_file_name));
+ 	snd_strlcpy(longname, _long_name, MAX_CARD_LONG_NAME);
+ 
+ 	return 0;
+@@ -1585,7 +1596,7 @@ static int load_master_config(snd_use_case_mgr_t *uc_mgr,
+ 		if (getenv(ALSA_CONFIG_UCM2_VAR) || !getenv(ALSA_CONFIG_UCM_VAR)) {
+ 			uc_mgr->conf_format = 2;
+ 			configuration_filename(uc_mgr, filename, sizeof(filename),
+-					       uc_mgr->conf_file_name, card_name, ".conf");
++					       uc_mgr->conf_dir_name, card_name, ".conf");
+ 			if (access(filename, R_OK) == 0)
+ 				goto __load;
+ 		}
+@@ -1608,6 +1619,9 @@ __load:
+ 		return err;
+ 	}
+ 
++	if (replace_string(&uc_mgr->conf_file_name, card_name) == NULL)
++		return -ENOMEM;
++
+ 	return 0;
+ }
+ 
+@@ -1632,7 +1646,8 @@ int uc_mgr_import_master_config(snd_use_case_mgr_t *uc_mgr)
+ 	char longname[MAX_CARD_LONG_NAME];
+ 	int err;
+ 
+-	snd_strlcpy(uc_mgr->conf_file_name, uc_mgr->card_name, sizeof(uc_mgr->conf_file_name));
++	if (replace_string(&uc_mgr->conf_dir_name, uc_mgr->card_name) == NULL)
++		return -ENOMEM;
+ 
+ 	if (strncmp(name, "hw:", 3) == 0) {
+ 		err = get_by_card(uc_mgr, name, longname);
+@@ -1650,14 +1665,14 @@ __longname:
+ 		if (err == 0) {
+ 			/* got device-specific file that matches the card long name */
+ 			if (uc_mgr->conf_format < 2)
+-				snd_strlcpy(uc_mgr->conf_file_name, longname,
+-					    sizeof(uc_mgr->conf_file_name));
++				snd_strlcpy(uc_mgr->conf_dir_name, longname,
++					    sizeof(uc_mgr->conf_dir_name));
+ 			goto __parse;
+ 		}
+ 	}
+ 
+ 	/* standard path */
+-	err = load_master_config(uc_mgr, uc_mgr->conf_file_name, &cfg, 0);
++	err = load_master_config(uc_mgr, uc_mgr->conf_dir_name, &cfg, 0);
+ 	if (err < 0)
+ 		goto __error;
+ 
+@@ -1673,7 +1688,7 @@ __parse:
+ 
+ __error:
+ 	uc_mgr_free_ctl_list(uc_mgr);
+-	uc_mgr->conf_file_name[0] = '\0';
++	uc_mgr->conf_dir_name[0] = '\0';
+ 	return err;
+ }
+ 
+diff --git a/src/ucm/ucm_local.h b/src/ucm/ucm_local.h
+index ba9615078ef8..63e0f3bf1697 100644
+--- a/src/ucm/ucm_local.h
++++ b/src/ucm/ucm_local.h
+@@ -187,7 +187,6 @@ struct use_case_verb {
+ 	/* verb transition list */
+ 	struct list_head transition_list;
+ 
+-	/* hardware devices that can be used with this use case */
+ 	struct list_head device_list;
+ 
+ 	/* component device list */
+@@ -205,7 +204,8 @@ struct use_case_verb {
+  */
+ struct snd_use_case_mgr {
+ 	char *card_name;
+-	char conf_file_name[MAX_CARD_LONG_NAME];
++	char *conf_file_name;
++	char *conf_dir_name;
+ 	char *comment;
+ 	int conf_format;
+ 
+diff --git a/src/ucm/ucm_subs.c b/src/ucm/ucm_subs.c
+index 90e395f0ab6f..d931f603ddd7 100644
+--- a/src/ucm/ucm_subs.c
++++ b/src/ucm/ucm_subs.c
+@@ -31,7 +31,7 @@
+ 
+ static char *rval_conf_name(snd_use_case_mgr_t *uc_mgr)
+ {
+-	if (uc_mgr->conf_file_name[0])
++	if (uc_mgr->conf_file_name && uc_mgr->conf_file_name[0])
+ 		return strdup(uc_mgr->conf_file_name);
+ 	return NULL;
+ }
+diff --git a/src/ucm/utils.c b/src/ucm/utils.c
+index cde1d672e7b4..daa568c16a30 100644
+--- a/src/ucm/utils.c
++++ b/src/ucm/utils.c
+@@ -441,7 +441,11 @@ void uc_mgr_free_verb(snd_use_case_mgr_t *uc_mgr)
+ 	uc_mgr_free_sequence(&uc_mgr->default_list);
+ 	uc_mgr_free_value(&uc_mgr->value_list);
+ 	free(uc_mgr->comment);
++	free(uc_mgr->conf_dir_name);
++	free(uc_mgr->conf_file_name);
+ 	uc_mgr->comment = NULL;
++	uc_mgr->conf_dir_name = NULL;
++	uc_mgr->conf_file_name = NULL;
+ 	uc_mgr->active_verb = NULL;
+ 	INIT_LIST_HEAD(&uc_mgr->active_devices);
+ 	INIT_LIST_HEAD(&uc_mgr->active_modifiers);
+-- 
+2.16.4
+

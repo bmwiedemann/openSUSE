@@ -1,0 +1,208 @@
+From d52eaba63dfe1d845663a4cd1bf676fafc43874a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 15 Dec 2019 16:03:29 +0100
+Subject: [PATCH 40/63] topology: add snd_tplg_load() remove
+ snd_tplg_build_bin_file()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/topology.h    | 16 ++++-----
+ src/topology/parser.c | 96 ++++++++++++++++++---------------------------------
+ 2 files changed, 41 insertions(+), 71 deletions(-)
+
+diff --git a/include/topology.h b/include/topology.h
+index c9ef554a610f..c9f4ffea27de 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -784,25 +784,23 @@ snd_tplg_t *snd_tplg_new(void);
+ void snd_tplg_free(snd_tplg_t *tplg);
+ 
+ /**
+- * \brief Parse and build topology text file into binary file.
++ * \brief Load topology from the text buffer.
+  * \param tplg Topology instance.
+- * \param infile Topology text input file to be parsed
+- * \param outfile Binary topology output file.
++ * \param buf Text buffer.
++ * \param size Text buffer size in bytes.
+  * \return Zero on success, otherwise a negative error code
+  */
+-int snd_tplg_build_file(snd_tplg_t *tplg, const char *infile,
+-			const char *outfile);
++int snd_tplg_load(snd_tplg_t *tplg, const char *buf, size_t size);
+ 
+ /**
+  * \brief Parse and build topology text file into binary file.
+  * \param tplg Topology instance.
+  * \param infile Topology text input file to be parsed
+- * \param bin Binary topology output buffer (malloc).
+- * \param size Binary topology output buffer size in bytes.
++ * \param outfile Binary topology output file.
+  * \return Zero on success, otherwise a negative error code
+  */
+-int snd_tplg_build_bin_file(snd_tplg_t *tplg, const char *infile,
+-			    void **bin, size_t *size);
++int snd_tplg_build_file(snd_tplg_t *tplg, const char *infile,
++			const char *outfile);
+ 
+ /**
+  * \brief Enable verbose reporting of binary file output
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 82af7cc518d8..ed864d3223c4 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -259,52 +259,30 @@ static int tplg_parse_config(snd_tplg_t *tplg, snd_config_t *cfg)
+ 	return 0;
+ }
+ 
+-static int tplg_load_config(const char *file, snd_config_t **cfg)
++static int tplg_load_config(snd_tplg_t *tplg, snd_input_t *in)
+ {
+-	FILE *fp;
+-	snd_input_t *in;
+ 	snd_config_t *top;
+ 	int ret;
+ 
+-	fp = fopen(file, "r");
+-	if (fp == NULL) {
+-		SNDERR("error: could not open configuration file %s",
+-			file);
+-		return -errno;
+-	}
+-
+-	ret = snd_input_stdio_attach(&in, fp, 1);
+-	if (ret < 0) {
+-		fclose(fp);
+-		SNDERR("error: could not attach stdio %s", file);
+-		return ret;
+-	}
+ 	ret = snd_config_top(&top);
+ 	if (ret < 0)
+-		goto err;
++		return ret;
+ 
+ 	ret = snd_config_load(top, in);
+ 	if (ret < 0) {
+-		SNDERR("error: could not load configuration file %s",
+-			file);
+-		goto err_load;
++		SNDERR("error: could not load configuration");
++		snd_config_delete(top);
++		return ret;
+ 	}
+ 
+-	ret = snd_input_close(in);
++	ret = tplg_parse_config(tplg, top);
++	snd_config_delete(top);
+ 	if (ret < 0) {
+-		in = NULL;
+-		goto err_load;
++		SNDERR("error: failed to parse topology");
++		return ret;
+ 	}
+ 
+-	*cfg = top;
+ 	return 0;
+-
+-err_load:
+-	snd_config_delete(top);
+-err:
+-	if (in)
+-		snd_input_close(in);
+-	return ret;
+ }
+ 
+ static int tplg_build_integ(snd_tplg_t *tplg)
+@@ -350,26 +328,20 @@ static int tplg_build_integ(snd_tplg_t *tplg)
+ 	return err;
+ }
+ 
+-static int tplg_load(snd_tplg_t *tplg, const char *infile)
++int snd_tplg_load(snd_tplg_t *tplg, const char *buf, size_t size)
+ {
+-	snd_config_t *cfg = NULL;
+-	int err = 0;
+-
+-	err = tplg_load_config(infile, &cfg);
+-	if (err < 0) {
+-		SNDERR("error: failed to load topology file %s\n",
+-			infile);
+-		return err;
+-	}
++	snd_input_t *in;
++	int err;
+ 
+-	err = tplg_parse_config(tplg, cfg);
++	err = snd_input_buffer_open(&in, buf, size);
+ 	if (err < 0) {
+-		SNDERR("error: failed to parse topology\n");
++		SNDERR("error: could not create input buffer");
+ 		return err;
+ 	}
+ 
+-	snd_config_delete(cfg);
+-	return 0;
++	err = tplg_load_config(tplg, in);
++	snd_input_close(in);
++	return err;
+ }
+ 
+ static int tplg_build(snd_tplg_t *tplg)
+@@ -394,26 +366,30 @@ int snd_tplg_build_file(snd_tplg_t *tplg,
+ 			const char *infile,
+ 			const char *outfile)
+ {
++	FILE *fp;
++	snd_input_t *in;
+ 	int err;
+ 
+-	err = tplg_load(tplg, infile);
+-	if (err < 0)
+-		return err;
+-
+-	return snd_tplg_build(tplg, outfile);
+-}
++	fp = fopen(infile, "r");
++	if (fp == NULL) {
++		SNDERR("error: could not open configuration file %s",
++		       infile);
++		return -errno;
++	}
+ 
+-int snd_tplg_build_bin_file(snd_tplg_t *tplg,
+-			    const char *infile,
+-			    void **bin, size_t *size)
+-{
+-	int err;
++	err = snd_input_stdio_attach(&in, fp, 1);
++	if (err < 0) {
++		fclose(fp);
++		SNDERR("error: could not attach stdio %s", infile);
++		return err;
++	}
+ 
+-	err = tplg_load(tplg, infile);
++	err = tplg_load_config(tplg, in);
++	snd_input_close(in);
+ 	if (err < 0)
+ 		return err;
+ 
+-	return snd_tplg_build_bin(tplg, bin, size);
++	return snd_tplg_build(tplg, outfile);
+ }
+ 
+ int snd_tplg_add_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+@@ -476,10 +452,6 @@ int snd_tplg_build_bin(snd_tplg_t *tplg,
+ {
+ 	int err;
+ 
+-	err = tplg_build(tplg);
+-	if (err < 0)
+-		return err;
+-
+ 	err = tplg_build(tplg);
+ 	if (err < 0)
+ 		return err;
+-- 
+2.16.4
+

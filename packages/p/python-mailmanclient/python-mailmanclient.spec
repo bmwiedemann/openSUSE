@@ -47,9 +47,7 @@ mailmanclient -- Python bindings for Mailman REST API
 %setup -q -n mailmanclient-%{version}
 
 %build
-%if 0%{?suse_version} <= 1500
 export LC_ALL=C.UTF-8
-%endif
 %python_build
 
 %install
@@ -62,9 +60,7 @@ export LC_ALL=C.UTF-8
 #   File "/usr/lib64/python3.7/logging/handlers.py", line 933, in emit
 #     self.socket.send(msg)
 # OSError: [Errno 9] Bad file descriptor
-%if 0%{?suse_version} <= 1500
 export LC_ALL=C.UTF-8
-%endif
 %pytest -k 'not using.rst'
 
 %files %{python_files}

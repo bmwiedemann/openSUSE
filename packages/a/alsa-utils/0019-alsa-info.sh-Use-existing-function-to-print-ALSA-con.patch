@@ -1,0 +1,54 @@
+From de5ce14163dbc1337075de1f5d632fd49865a338 Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:04 -0500
+Subject: [PATCH 19/26] alsa-info.sh: Use existing function to print ALSA
+ configuration files
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 27 +--------------------------
+ 1 file changed, 1 insertion(+), 26 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index e1067d42f9f8..bf353deceb7d 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -710,33 +710,8 @@ if [ -n "$1" ]; then
+ 			WITHALL="no"
+ 			;;
+ 		--with-configs)
++			withconfigs
+ 			WITHALL="no"
+-			if [[ -e $HOME/.asoundrc ]] || [[ -e /etc/asound.conf ]]
+-			then
+-				echo "!!ALSA configuration files" >> $FILE
+-				echo "!!------------------------" >> $FILE
+-				echo "" >> $FILE
+-
+-				#Check for ~/.asoundrc
+-				if [[ -e $HOME/.asoundrc ]]
+-				then
+-					echo "!!User specific config file ($HOME/.asoundrc)" >> $FILE
+-					echo "" >> $FILE
+-					cat $HOME/.asoundrc >> $FILE
+-					echo "" >> $FILE
+-					echo "" >> $FILE
+-				fi
+-
+-				#Check for /etc/asound.conf
+-				if [[ -e /etc/asound.conf ]]
+-				then
+-					echo "!!System wide config file (/etc/asound.conf)" >> $FILE
+-					echo "" >> $FILE
+-					cat /etc/asound.conf >> $FILE
+-					echo "" >> $FILE
+-					echo "" >> $FILE
+-				fi
+-			fi
+ 			;;
+ 		--stdout)
+ 			UPLOAD="no"
+-- 
+2.16.4
+

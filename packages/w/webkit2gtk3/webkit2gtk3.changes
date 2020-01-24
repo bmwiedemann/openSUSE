@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:44:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.26.3:
+  + Fix issues while trying to play a video on NextCloud.
+  + Make sure the GL video sink uses a valid WebKit shared GL
+    context.
+  + Fix vertical alignment of text containing arabic diacritics.
+  + Fix build with icu 65.1.
+  + Fix page loading errors with websites using HSTS.
+  + Fix web process crash when displaying a KaTeX formula.
+  + Fix several crashes and rendering issues.
+- Drop webkit2gtk3-icu-build-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Dec 19 21:50:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Start using webkitgtk default gigacage malloc via passing
+  USE_SYSTEM_MALLOC=OFF to cmake.
+
+-------------------------------------------------------------------
 Thu Dec 19 15:36:37 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit-process.patch: use single web process for evolution

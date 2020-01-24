@@ -1,0 +1,876 @@
+From f42b2c088a23e1c6156c0d5710efd7689b8c15be Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 20 Dec 2019 23:48:40 +0100
+Subject: [PATCH 46/63] topology: cleanup the SNDERR() calls
+
+- remove the wrong new lines
+- remove error/warning prefixes (error is error)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/builder.c | 16 +++++++--------
+ src/topology/channel.c |  2 +-
+ src/topology/ctl.c     | 36 +++++++++++++++-------------------
+ src/topology/dapm.c    | 40 +++++++++++++++++--------------------
+ src/topology/data.c    | 53 +++++++++++++++++++++++++-------------------------
+ src/topology/parser.c  | 33 +++++++++++++++----------------
+ src/topology/pcm.c     | 29 +++++++++++++--------------
+ src/topology/text.c    |  2 +-
+ 8 files changed, 99 insertions(+), 112 deletions(-)
+
+diff --git a/src/topology/builder.c b/src/topology/builder.c
+index cadb55830809..74c44405e653 100644
+--- a/src/topology/builder.c
++++ b/src/topology/builder.c
+@@ -65,8 +65,8 @@ static ssize_t write_block_header(snd_tplg_t *tplg, unsigned int type,
+ 
+ 	/* make sure file offset is aligned with the calculated HDR offset */
+ 	if (tplg->bin_pos != tplg->next_hdr_pos) {
+-		SNDERR("error: New header is at offset 0x%zx but file"
+-			" offset 0x%zx is %s by %ld bytes\n",
++		SNDERR("New header is at offset 0x%zx but file"
++			" offset 0x%zx is %s by %ld bytes",
+ 			tplg->next_hdr_pos, tplg->bin_pos,
+ 			tplg->bin_pos > tplg->next_hdr_pos ? "ahead" : "behind",
+ 			labs(tplg->bin_pos - tplg->next_hdr_pos));
+@@ -108,7 +108,7 @@ static int write_elem_block(snd_tplg_t *tplg,
+ 			ret = write_block_header(tplg, tplg_type, elem->vendor_type,
+ 				tplg->version, elem->index, block_size, count);
+ 			if (ret < 0) {
+-				SNDERR("error: failed to write %s block %d\n",
++				SNDERR("failed to write %s block %d",
+ 					obj_name, ret);
+ 				return ret;
+ 			}
+@@ -148,7 +148,7 @@ static int write_elem_block(snd_tplg_t *tplg,
+ 
+ 	/* make sure we have written the correct size */
+ 	if (total_size != size) {
+-		SNDERR("error: size mismatch. Expected %zu wrote %zu\n",
++		SNDERR("size mismatch. Expected %zu wrote %zu",
+ 			size, total_size);
+ 		return -EIO;
+ 	}
+@@ -221,7 +221,7 @@ static ssize_t write_manifest_data(snd_tplg_t *tplg)
+ 		tplg->version, 0,
+ 		sizeof(tplg->manifest) + tplg->manifest.priv.size, 1);
+ 	if (ret < 0) {
+-		SNDERR("error: failed to write manifest block\n");
++		SNDERR("failed to write manifest block");
+ 		return ret;
+ 	}
+ 
+@@ -266,7 +266,7 @@ int tplg_write_data(snd_tplg_t *tplg)
+ 	/* write manifest */
+ 	ret = write_manifest_data(tplg);
+ 	if (ret < 0) {
+-		SNDERR("failed to write manifest %d\n", ret);
++		SNDERR("failed to write manifest %d", ret);
+ 		return ret;
+ 	}
+ 
+@@ -286,7 +286,7 @@ int tplg_write_data(snd_tplg_t *tplg)
+ 		ret = write_elem_block(tplg, list, size,
+ 				       tptr->tsoc, tptr->name);
+ 		if (ret < 0) {
+-			SNDERR("failed to write %s elements: %s\n",
++			SNDERR("failed to write %s elements: %s",
+ 						tptr->name, snd_strerror(-ret));
+ 			return ret;
+ 		}
+@@ -295,7 +295,7 @@ int tplg_write_data(snd_tplg_t *tplg)
+ 	verbose(tplg, "total size is 0x%zx/%zd\n", tplg->bin_pos, tplg->bin_pos);
+ 
+ 	if (total_size != tplg->bin_pos) {
+-		SNDERR("total size mismatch (%zd != %zd)\n",
++		SNDERR("total size mismatch (%zd != %zd)",
+ 		       total_size, tplg->bin_pos);
+ 		return -EINVAL;
+ 	}
+diff --git a/src/topology/channel.c b/src/topology/channel.c
+index b54a10c89379..110775a8053d 100644
+--- a/src/topology/channel.c
++++ b/src/topology/channel.c
+@@ -104,7 +104,7 @@ int tplg_parse_channel(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 	channel_id = lookup_channel(id);
+ 	if (channel_id < 0) {
+-		SNDERR("error: invalid channel %s\n", id);
++		SNDERR("invalid channel %s", id);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 979cc1b035f1..03874b27c76f 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -94,7 +94,7 @@ int parse_access(snd_config_t *cfg,
+ 		if (strcmp(id, "access") == 0) {
+ 			err = parse_access_values(n, hdr);
+ 			if (err < 0) {
+-				SNDERR("error: failed to parse access");
++				SNDERR("failed to parse access");
+ 				return err;
+ 			}
+ 			continue;
+@@ -187,8 +187,8 @@ static int tplg_build_mixer_control(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (!ref->elem) {
+-			SNDERR("error: cannot find '%s' referenced by"
+-				" control '%s'\n", ref->id, elem->id);
++			SNDERR("cannot find '%s' referenced by"
++				" control '%s'", ref->id, elem->id);
+ 			return -EINVAL;
+ 		} else if (err < 0)
+ 			return err;
+@@ -236,8 +236,8 @@ static int tplg_build_enum_control(snd_tplg_t *tplg,
+ 				return err;
+ 		}
+ 		if (!ref->elem) {
+-			SNDERR("error: cannot find '%s' referenced by"
+-				" control '%s'\n", ref->id, elem->id);
++			SNDERR("cannot find '%s' referenced by"
++				" control '%s'", ref->id, elem->id);
+ 			return -EINVAL;
+ 		}
+ 	}
+@@ -341,10 +341,8 @@ static int tplg_parse_tlv_dbscale(snd_config_t *cfg, struct tplg_elem *elem)
+ 		n = snd_config_iterator_entry(i);
+ 
+ 		/* get ID */
+-		if (snd_config_get_id(n, &id) < 0) {
+-			SNDERR("error: cant get ID\n");
++		if (snd_config_get_id(n, &id) < 0)
+ 			return -EINVAL;
+-		}
+ 
+ 		/* get value */
+ 		if (tplg_get_integer(n, &val, 0))
+@@ -360,7 +358,7 @@ static int tplg_parse_tlv_dbscale(snd_config_t *cfg, struct tplg_elem *elem)
+ 		else if (strcmp(id, "mute") == 0)
+ 			scale->mute = val;
+ 		else
+-			SNDERR("error: unknown key %s\n", id);
++			SNDERR("unknown id '%s'", id);
+ 	}
+ 
+ 	return 0;
+@@ -389,7 +387,7 @@ int tplg_parse_tlv(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		if (strcmp(id, "scale") == 0) {
+ 			err = tplg_parse_tlv_dbscale(n, elem);
+ 			if (err < 0) {
+-				SNDERR("error: failed to DBScale");
++				SNDERR("failed to DBScale");
+ 				return err;
+ 			}
+ 			continue;
+@@ -651,8 +649,7 @@ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		if (strcmp(id, "channel") == 0) {
+ 			if (ec->num_channels >= SND_SOC_TPLG_MAX_CHAN) {
+-				SNDERR("error: too many channels %s\n",
+-					elem->id);
++				SNDERR("too many channels %s", elem->id);
+ 				return -EINVAL;
+ 			}
+ 
+@@ -779,8 +776,7 @@ int tplg_parse_control_mixer(snd_tplg_t *tplg,
+ 
+ 		if (strcmp(id, "channel") == 0) {
+ 			if (mc->num_channels >= SND_SOC_TPLG_MAX_CHAN) {
+-				SNDERR("error: too many channels %s\n",
+-					elem->id);
++				SNDERR("too many channels %s", elem->id);
+ 				return -EINVAL;
+ 			}
+ 
+@@ -933,7 +929,7 @@ static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+ 		struct snd_soc_tplg_tlv_dbscale *scale;
+ 
+ 		if (!tlvt) {
+-			SNDERR("error: missing TLV data\n");
++			SNDERR("missing TLV data");
+ 			return -EINVAL;
+ 		}
+ 
+@@ -952,7 +948,7 @@ static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+ 
+ 		/* TODO: add support for other TLV types */
+ 		default:
+-			SNDERR("error: unsupported TLV type %d\n", tlv->type);
++			SNDERR("unsupported TLV type %d", tlv->type);
+ 			break;
+ 		}
+ 	}
+@@ -971,7 +967,7 @@ int tplg_add_mixer(snd_tplg_t *tplg, struct snd_tplg_mixer_template *mixer,
+ 	tplg_dbg(" Control Mixer: %s\n", mixer->hdr.name);
+ 
+ 	if (mixer->hdr.type != SND_SOC_TPLG_TYPE_MIXER) {
+-		SNDERR("error: invalid mixer type %d\n", mixer->hdr.type);
++		SNDERR("invalid mixer type %d", mixer->hdr.type);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1039,7 +1035,7 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ 	tplg_dbg(" Control Enum: %s\n", enum_ctl->hdr.name);
+ 
+ 	if (enum_ctl->hdr.type != SND_SOC_TPLG_TYPE_ENUM) {
+-		SNDERR("error: invalid enum type %d\n", enum_ctl->hdr.type);
++		SNDERR("invalid enum type %d", enum_ctl->hdr.type);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1113,7 +1109,7 @@ int tplg_add_bytes(snd_tplg_t *tplg, struct snd_tplg_bytes_template *bytes_ctl,
+ 	tplg_dbg(" Control Bytes: %s\n", bytes_ctl->hdr.name);
+ 
+ 	if (bytes_ctl->hdr.type != SND_SOC_TPLG_TYPE_BYTES) {
+-		SNDERR("error: invalid bytes type %d\n", bytes_ctl->hdr.type);
++		SNDERR("invalid bytes type %d", bytes_ctl->hdr.type);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1157,7 +1153,7 @@ int tplg_add_bytes(snd_tplg_t *tplg, struct snd_tplg_bytes_template *bytes_ctl,
+ 	if (be->hdr.access & SNDRV_CTL_ELEM_ACCESS_TLV_CALLBACK) {
+ 		if ((be->hdr.access & SNDRV_CTL_ELEM_ACCESS_TLV_READWRITE)
+ 			!= SNDRV_CTL_ELEM_ACCESS_TLV_READWRITE) {
+-			SNDERR("error: Invalid TLV bytes control access 0x%x\n",
++			SNDERR("Invalid TLV bytes control access 0x%x",
+ 				be->hdr.access);
+ 			tplg_elem_free(elem);
+ 			return -EINVAL;
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index d6c15fc1dfaa..f61fe07157ac 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -154,8 +154,7 @@ static int tplg_build_widget(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 		}
+ 
+ 		if (!ref->elem) {
+-			SNDERR("error: cannot find '%s'"
+-				" referenced by widget '%s'\n",
++			SNDERR("cannot find '%s' referenced by widget '%s'",
+ 				ref->id, elem->id);
+ 			return -EINVAL;
+ 		}
+@@ -179,8 +178,7 @@ int tplg_build_widgets(snd_tplg_t *tplg)
+ 
+ 		elem = list_entry(pos, struct tplg_elem, list);
+ 		if (!elem->widget || elem->type != SND_TPLG_TYPE_DAPM_WIDGET) {
+-			SNDERR("error: invalid widget '%s'\n",
+-				elem->id);
++			SNDERR("invalid widget '%s'", elem->id);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -207,8 +205,7 @@ int tplg_build_routes(snd_tplg_t *tplg)
+ 		elem = list_entry(pos, struct tplg_elem, list);
+ 
+ 		if (!elem->route || elem->type != SND_TPLG_TYPE_DAPM_GRAPH) {
+-			SNDERR("error: invalid route '%s'\n",
+-				elem->id);
++			SNDERR("invalid route '%s'", elem->id);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -218,14 +215,13 @@ int tplg_build_routes(snd_tplg_t *tplg)
+ 
+ 		/* validate sink */
+ 		if (strlen(route->sink) <= 0) {
+-			SNDERR("error: no sink\n");
++			SNDERR("no sink");
+ 			return -EINVAL;
+ 
+ 		}
+ 		if (!tplg_elem_lookup(&tplg->widget_list, route->sink,
+ 			SND_TPLG_TYPE_DAPM_WIDGET, SND_TPLG_INDEX_ALL)) {
+-			SNDERR("warning: undefined sink widget/stream '%s'\n",
+-				route->sink);
++			SNDERR("undefined sink widget/stream '%s'", route->sink);
+ 		}
+ 
+ 		/* validate control name */
+@@ -234,21 +230,21 @@ int tplg_build_routes(snd_tplg_t *tplg)
+ 					SND_TPLG_TYPE_MIXER, elem->index) &&
+ 			!tplg_elem_lookup(&tplg->enum_list, route->control,
+ 					SND_TPLG_TYPE_ENUM, elem->index)) {
+-				SNDERR("warning: Undefined mixer/enum control '%s'\n",
+-					route->control);
++				SNDERR("Undefined mixer/enum control '%s'",
++				       route->control);
+ 			}
+ 		}
+ 
+ 		/* validate source */
+ 		if (strlen(route->source) <= 0) {
+-			SNDERR("error: no source\n");
++			SNDERR("no source");
+ 			return -EINVAL;
+ 
+ 		}
+ 		if (!tplg_elem_lookup(&tplg->widget_list, route->source,
+ 			SND_TPLG_TYPE_DAPM_WIDGET, SND_TPLG_INDEX_ALL)) {
+-			SNDERR("warning: Undefined source widget/stream '%s'\n",
+-				route->source);
++			SNDERR("Undefined source widget/stream '%s'",
++			       route->source);
+ 		}
+ 
+ 		/* add graph to manifest */
+@@ -300,7 +296,7 @@ static int tplg_parse_line(const char *text,
+ 
+ 	len = strlen(buf);
+ 	if (len <= 2) {
+-		SNDERR("error: invalid route \"%s\"\n", buf);
++		SNDERR("invalid route \"%s\"", buf);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -309,7 +305,7 @@ static int tplg_parse_line(const char *text,
+ 		if (buf[i] == ',')
+ 			goto second;
+ 	}
+-	SNDERR("error: invalid route \"%s\"\n", buf);
++	SNDERR("invalid route \"%s\"", buf);
+ 	return -EINVAL;
+ 
+ second:
+@@ -323,7 +319,7 @@ second:
+ 			goto done;
+ 	}
+ 
+-	SNDERR("error: invalid route \"%s\"\n", buf);
++	SNDERR("invalid route \"%s\"", buf);
+ 	return -EINVAL;
+ 
+ done:
+@@ -378,7 +374,7 @@ int tplg_parse_dapm_graph(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	int index = -1;
+ 
+ 	if (snd_config_get_type(cfg) != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound is expected for dapm graph definition\n");
++		SNDERR("compound is expected for dapm graph definition");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -401,13 +397,13 @@ int tplg_parse_dapm_graph(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		if (strcmp(id, "lines") == 0) {
+ 			if (index < 0) {
+-				SNDERR("error: failed to parse dapm graph %s, missing index\n",
++				SNDERR("failed to parse dapm graph %s, missing index",
+ 					graph_id);
+ 				return -EINVAL;
+ 			}
+ 			err = tplg_parse_routes(tplg, n, index);
+ 			if (err < 0) {
+-				SNDERR("error: failed to parse dapm graph %s\n",
++				SNDERR("failed to parse dapm graph %s",
+ 					graph_id);
+ 				return err;
+ 			}
+@@ -528,7 +524,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 
+ 			widget_type = lookup_widget(val);
+ 			if (widget_type < 0){
+-				SNDERR("Widget '%s': Unsupported widget type %s\n",
++				SNDERR("widget '%s': Unsupported widget type %s",
+ 					elem->id, val);
+ 				return -EINVAL;
+ 			}
+@@ -821,7 +817,7 @@ int tplg_add_widget_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 			break;
+ 
+ 		default:
+-			SNDERR("error: widget %s: invalid type %d for ctl %d\n",
++			SNDERR("widget %s: invalid type %d for ctl %d",
+ 				wt->name, ct->type, i);
+ 			break;
+ 		}
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 11cd73f5ed6e..f00ed3011869 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -61,7 +61,7 @@ struct snd_soc_tplg_private *get_priv_data(struct tplg_elem *elem)
+ 		priv = &elem->pcm->priv;
+ 		break;
+ 	default:
+-		SNDERR("error: '%s': no support for private data for type %d\n",
++		SNDERR("'%s': no support for private data for type %d",
+ 			elem->id, elem->type);
+ 	}
+ 
+@@ -95,7 +95,7 @@ int tplg_parse_refs(snd_config_t *cfg, struct tplg_elem *elem,
+ 	}
+ 
+ 	if (cfg_type != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound type expected for %s", elem->id);
++		SNDERR("compound type expected for %s", elem->id);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -183,8 +183,7 @@ static int tplg_parse_data_file(snd_config_t *cfg, struct tplg_elem *elem)
+ 
+ 	fp = fopen(filename, "r");
+ 	if (fp == NULL) {
+-		SNDERR("error: invalid data file path '%s'\n",
+-			filename);
++		SNDERR("invalid data file path '%s'", filename);
+ 		return -errno;
+ 	}
+ 
+@@ -192,12 +191,12 @@ static int tplg_parse_data_file(snd_config_t *cfg, struct tplg_elem *elem)
+ 	size = ftell(fp);
+ 	fseek(fp, 0L, SEEK_SET);
+ 	if (size <= 0) {
+-		SNDERR("error: invalid data file size %zu\n", size);
++		SNDERR("invalid data file size %zu", size);
+ 		ret = -EINVAL;
+ 		goto err;
+ 	}
+ 	if (size > TPLG_MAX_PRIV_SIZE) {
+-		SNDERR("error: data file too big %zu\n", size);
++		SNDERR("data file too big %zu", size);
+ 		ret = -EINVAL;
+ 		goto err;
+ 	}
+@@ -350,7 +349,7 @@ static int get_uuid(const char *str, unsigned char *uuid_le)
+ 		if ((errno == ERANGE && val == ULONG_MAX)
+ 			|| (errno != 0 && val == 0)
+ 			|| (val > UCHAR_MAX)) {
+-			SNDERR("error: invalid value for uuid\n");
++			SNDERR("invalid value for uuid");
+ 			ret = -EINVAL;
+ 			goto out;
+ 		}
+@@ -365,7 +364,7 @@ static int get_uuid(const char *str, unsigned char *uuid_le)
+ 	}
+ 
+ 	if (values < 16) {
+-		SNDERR("error: less than 16 integers for uuid\n");
++		SNDERR("less than 16 integers for uuid");
+ 		ret = -EINVAL;
+ 	}
+ 
+@@ -446,7 +445,7 @@ static int tplg_parse_data_hex(snd_config_t *cfg, struct tplg_elem *elem,
+ 
+ 	num = get_hex_num(value);
+ 	if (num <= 0) {
+-		SNDERR("error: malformed hex variable list %s\n", value);
++		SNDERR("malformed hex variable list %s", value);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -454,7 +453,7 @@ static int tplg_parse_data_hex(snd_config_t *cfg, struct tplg_elem *elem,
+ 	priv = elem->data;
+ 
+ 	if (size > TPLG_MAX_PRIV_SIZE) {
+-		SNDERR("error: data too big %d\n", size);
++		SNDERR("data too big %d", size);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -492,7 +491,7 @@ static int get_token_value(const char *token_id,
+ 			return tokens->token[i].value;
+ 	}
+ 
+-	SNDERR("error: cannot find token id '%s'\n", token_id);
++	SNDERR("cannot find token id '%s'", token_id);
+ 	return -1;
+ }
+ 
+@@ -579,7 +578,7 @@ static int copy_tuples(struct tplg_elem *elem,
+ 			* tuple_set->num_tuples;
+ 		size += set_size;
+ 		if (size > TPLG_MAX_PRIV_SIZE) {
+-			SNDERR("error: data too big %d\n", size);
++			SNDERR("data too big %d", size);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -662,13 +661,13 @@ static int build_tuples(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 				ref->id, SND_TPLG_TYPE_TUPLE, elem->index);
+ 		tuples = ref->elem;
+ 		if (!tuples) {
+-			SNDERR("error: cannot find tuples %s\n", ref->id);
++			SNDERR("cannot find tuples %s", ref->id);
+ 			return -EINVAL;
+ 		}
+ 
+ 		tokens = get_tokens(tplg, tuples);
+ 		if (!tokens) {
+-			SNDERR("error: cannot find token for %s\n", ref->id);
++			SNDERR("cannot find token for %s", ref->id);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -762,7 +761,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 
+ 	type = get_tuple_type(id);
+ 	if (type < 0) {
+-		SNDERR("error: invalid tuple type '%s'", id);
++		SNDERR("invalid tuple type '%s'", id);
+ 		return type;
+ 	}
+ 
+@@ -819,7 +818,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 		case SND_SOC_TPLG_TUPLE_TYPE_WORD:
+ 			ival = tplg_get_unsigned(n, &tuple_val, 0);
+ 			if (ival < 0) {
+-				SNDERR("error: tuple %s: %s\n", id, snd_strerror(ival));
++				SNDERR("tuple %s: %s", id, snd_strerror(ival));
+ 				goto err;
+ 			}
+ 
+@@ -829,7 +828,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 					&& tuple_val > USHRT_MAX)
+ 				|| (type == SND_SOC_TPLG_TUPLE_TYPE_BYTE
+ 					&& tuple_val > UCHAR_MAX)) {
+-				SNDERR("error: tuple %s: invalid value\n", id);
++				SNDERR("tuple %s: invalid value", id);
+ 				goto err;
+ 			}
+ 
+@@ -941,7 +940,7 @@ static int parse_tuple_sets(snd_config_t *cfg,
+ 
+ 	if (snd_config_get_type(cfg) != SND_CONFIG_TYPE_COMPOUND) {
+ 		if (snd_config_get_id(cfg, &id) >= 0)
+-			SNDERR("error: compound type expected for %s", id);
++			SNDERR("compound type expected for %s", id);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -959,8 +958,8 @@ static int parse_tuple_sets(snd_config_t *cfg,
+ 	snd_config_for_each(i, next, cfg) {
+ 		n = snd_config_iterator_entry(i);
+ 		if (snd_config_get_type(n) != SND_CONFIG_TYPE_COMPOUND) {
+-			SNDERR("error: compound type expected for %s, is %d",
+-			id, snd_config_get_type(n));
++			SNDERR("compound type expected for %s, is %d",
++			       id, snd_config_get_type(n));
+ 			return -EINVAL;
+ 		}
+ 
+@@ -1169,7 +1168,7 @@ int tplg_parse_manifest_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	int err;
+ 
+ 	if (!list_empty(&tplg->manifest_list)) {
+-		SNDERR("error: already has manifest data\n");
++		SNDERR("already has manifest data");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1326,7 +1325,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		if (strcmp(id, "file") == 0) {
+ 			err = tplg_parse_data_file(n, elem);
+ 			if (err < 0) {
+-				SNDERR("error: failed to parse data file\n");
++				SNDERR("failed to parse data file");
+ 				return err;
+ 			}
+ 			continue;
+@@ -1335,7 +1334,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		if (strcmp(id, "bytes") == 0) {
+ 			err = tplg_parse_data_hex(n, elem, 1);
+ 			if (err < 0) {
+-				SNDERR("error: failed to parse data bytes\n");
++				SNDERR("failed to parse data bytes");
+ 				return err;
+ 			}
+ 			continue;
+@@ -1344,7 +1343,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		if (strcmp(id, "shorts") == 0) {
+ 			err = tplg_parse_data_hex(n, elem, 2);
+ 			if (err < 0) {
+-				SNDERR("error: failed to parse data shorts\n");
++				SNDERR("failed to parse data shorts");
+ 				return err;
+ 			}
+ 			continue;
+@@ -1353,7 +1352,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		if (strcmp(id, "words") == 0) {
+ 			err = tplg_parse_data_hex(n, elem, 4);
+ 			if (err < 0) {
+-				SNDERR("error: failed to parse data words\n");
++				SNDERR("failed to parse data words");
+ 				return err;
+ 			}
+ 			continue;
+@@ -1470,8 +1469,8 @@ int tplg_copy_data(snd_tplg_t *tplg, struct tplg_elem *elem,
+ 	ref_elem = tplg_elem_lookup(&tplg->pdata_list,
+ 				     ref->id, SND_TPLG_TYPE_DATA, elem->index);
+ 	if (!ref_elem) {
+-		SNDERR("error: cannot find data '%s' referenced by"
+-		" element '%s'\n", ref->id, elem->id);
++		SNDERR("cannot find data '%s' referenced by"
++		       " element '%s'", ref->id, elem->id);
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 1eaa24bd42f5..5a5dd14f2bdd 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -122,7 +122,7 @@ int tplg_parse_compound(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		return -EINVAL;
+ 
+ 	if (snd_config_get_type(cfg) != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound type expected for %s", id);
++		SNDERR("compound type expected for %s", id);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -131,7 +131,7 @@ int tplg_parse_compound(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		n = snd_config_iterator_entry(i);
+ 
+ 		if (snd_config_get_type(cfg) != SND_CONFIG_TYPE_COMPOUND) {
+-			SNDERR("error: compound type expected for %s, is %d",
++			SNDERR("compound type expected for %s, is %d",
+ 				id, snd_config_get_type(cfg));
+ 			return -EINVAL;
+ 		}
+@@ -155,7 +155,7 @@ static int tplg_parse_config(snd_tplg_t *tplg, snd_config_t *cfg)
+ 	int err;
+ 
+ 	if (snd_config_get_type(cfg) != SND_CONFIG_TYPE_COMPOUND) {
+-		SNDERR("error: compound type expected at top level");
++		SNDERR("compound type expected at top level");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -180,7 +180,7 @@ static int tplg_parse_config(snd_tplg_t *tplg, snd_config_t *cfg)
+ 		}
+ 
+ 		if (parser == NULL) {
+-			SNDERR("error: unknown section %s\n", id);
++			SNDERR("unknown section %s", id);
+ 			continue;
+ 		}
+ 
+@@ -202,7 +202,7 @@ static int tplg_load_config(snd_tplg_t *tplg, snd_input_t *in)
+ 
+ 	ret = snd_config_load(top, in);
+ 	if (ret < 0) {
+-		SNDERR("error: could not load configuration");
++		SNDERR("could not load configuration");
+ 		snd_config_delete(top);
+ 		return ret;
+ 	}
+@@ -210,7 +210,7 @@ static int tplg_load_config(snd_tplg_t *tplg, snd_input_t *in)
+ 	ret = tplg_parse_config(tplg, top);
+ 	snd_config_delete(top);
+ 	if (ret < 0) {
+-		SNDERR("error: failed to parse topology");
++		SNDERR("failed to parse topology");
+ 		return ret;
+ 	}
+ 
+@@ -267,7 +267,7 @@ int snd_tplg_load(snd_tplg_t *tplg, const char *buf, size_t size)
+ 
+ 	err = snd_input_buffer_open(&in, buf, size);
+ 	if (err < 0) {
+-		SNDERR("error: could not create input buffer");
++		SNDERR("could not create input buffer");
+ 		return err;
+ 	}
+ 
+@@ -282,13 +282,13 @@ static int tplg_build(snd_tplg_t *tplg)
+ 
+ 	err = tplg_build_integ(tplg);
+ 	if (err < 0) {
+-		SNDERR("error: failed to check topology integrity\n");
++		SNDERR("failed to check topology integrity");
+ 		return err;
+ 	}
+ 
+ 	err = tplg_write_data(tplg);
+ 	if (err < 0) {
+-		SNDERR("error: failed to write data %d\n", err);
++		SNDERR("failed to write data %d", err);
+ 		return err;
+ 	}
+ 	return 0;
+@@ -304,15 +304,14 @@ int snd_tplg_build_file(snd_tplg_t *tplg,
+ 
+ 	fp = fopen(infile, "r");
+ 	if (fp == NULL) {
+-		SNDERR("error: could not open configuration file %s",
+-		       infile);
++		SNDERR("could not open configuration file %s", infile);
+ 		return -errno;
+ 	}
+ 
+ 	err = snd_input_stdio_attach(&in, fp, 1);
+ 	if (err < 0) {
+ 		fclose(fp);
+-		SNDERR("error: could not attach stdio %s", infile);
++		SNDERR("could not attach stdio %s", infile);
+ 		return err;
+ 	}
+ 
+@@ -346,7 +345,7 @@ int snd_tplg_add_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 	case SND_TPLG_TYPE_CC:
+ 		return tplg_add_link_object(tplg, t);
+ 	default:
+-		SNDERR("error: invalid object type %d\n", t->type);
++		SNDERR("invalid object type %d", t->type);
+ 		return -EINVAL;
+ 	};
+ }
+@@ -362,18 +361,18 @@ int snd_tplg_build(snd_tplg_t *tplg, const char *outfile)
+ 
+ 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+ 	if (fd < 0) {
+-		SNDERR("error: failed to open %s err %d\n", outfile, -errno);
++		SNDERR("failed to open %s err %d", outfile, -errno);
+ 		return -errno;
+ 	}
+ 	r = write(fd, tplg->bin, tplg->bin_size);
+ 	close(fd);
+ 	if (r < 0) {
+ 		err = -errno;
+-		SNDERR("error: write error: %s\n", strerror(errno));
++		SNDERR("write error: %s", strerror(errno));
+ 		return err;
+ 	}
+ 	if ((size_t)r != tplg->bin_size) {
+-		SNDERR("error: partial write (%zd != %zd)\n", r, tplg->bin_size);
++		SNDERR("partial write (%zd != %zd)", r, tplg->bin_size);
+ 		return -EIO;
+ 	}
+ 	return 0;
+@@ -437,7 +436,7 @@ snd_tplg_t *snd_tplg_create(int flags)
+ 	snd_tplg_t *tplg;
+ 
+ 	if (!is_little_endian()) {
+-		SNDERR("error: cannot support big-endian machines\n");
++		SNDERR("cannot support big-endian machines");
+ 		return NULL;
+ 	}
+ 
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index d09fbe42f5da..bc3070816867 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -116,8 +116,8 @@ static int build_pcm(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 				return err;
+ 		}
+ 		if (!ref->elem) {
+-			SNDERR("error: cannot find '%s' referenced by"
+-				" PCM '%s'\n", ref->id, elem->id);
++			SNDERR("cannot find '%s' referenced by"
++				" PCM '%s'", ref->id, elem->id);
+ 			return -EINVAL;
+ 		}
+ 	}
+@@ -137,7 +137,7 @@ int tplg_build_pcms(snd_tplg_t *tplg, unsigned int type)
+ 
+ 		elem = list_entry(pos, struct tplg_elem, list);
+ 		if (elem->type != type) {
+-			SNDERR("error: invalid elem '%s'\n", elem->id);
++			SNDERR("invalid elem '%s'", elem->id);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -196,7 +196,7 @@ int tplg_build_dais(snd_tplg_t *tplg, unsigned int type)
+ 
+ 		elem = list_entry(pos, struct tplg_elem, list);
+ 		if (elem->type != type) {
+-			SNDERR("error: invalid elem '%s'\n", elem->id);
++			SNDERR("invalid elem '%s'", elem->id);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -251,8 +251,8 @@ static int build_link(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 			ref->elem = tplg_elem_lookup(&tplg->hw_cfg_list,
+ 				ref->id, SND_TPLG_TYPE_HW_CONFIG, elem->index);
+ 			if (!ref->elem) {
+-				SNDERR("error: cannot find HW config '%s'"
+-				" referenced by link '%s'\n",
++				SNDERR("cannot find HW config '%s'"
++				" referenced by link '%s'",
+ 				ref->id, elem->id);
+ 				return -EINVAL;
+ 			}
+@@ -320,7 +320,7 @@ static int split_format(struct snd_soc_tplg_stream_caps *caps, char *str)
+ 	while ((s != NULL) && (i < SND_SOC_TPLG_MAX_FORMATS)) {
+ 		format = snd_pcm_format_value(s);
+ 		if (format == SND_PCM_FORMAT_UNKNOWN) {
+-			SNDERR("error: unsupported stream format %s\n", s);
++			SNDERR("unsupported stream format %s", s);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -363,7 +363,7 @@ static int split_rate(struct snd_soc_tplg_stream_caps *caps, char *str)
+ 		rate = get_rate_value(s);
+ 
+ 		if (rate == SND_PCM_RATE_UNKNOWN) {
+-			SNDERR("error: unsupported stream rate %s\n", s);
++			SNDERR("unsupported stream rate %s", s);
+ 			return -EINVAL;
+ 		}
+ 
+@@ -758,7 +758,7 @@ static int tplg_parse_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 
+ 		if (strcmp(id, "id") == 0) {
+ 			if (tplg_get_unsigned(n, &pcm->dai_id, 0)) {
+-				SNDERR("error: invalid fe dai ID\n");
++				SNDERR("invalid fe dai ID");
+ 				return -EINVAL;
+ 			}
+ 
+@@ -1379,7 +1379,7 @@ static int get_audio_hw_format(const char *val)
+ 		if (strcasecmp(audio_hw_formats[i].name, val) == 0)
+ 			return audio_hw_formats[i].type;
+ 
+-	SNDERR("error: invalid audio HW format %s\n", val);
++	SNDERR("invalid audio HW format %s", val);
+ 	return -EINVAL;
+ }
+ 
+@@ -1452,8 +1452,7 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 				/* For backwards capability,
+ 				 * "master" == "codec is slave"
+ 				 */
+-				SNDERR("warning: deprecated bclk value '%s'\n",
+-				       val);
++				SNDERR("deprecated bclk value '%s'", val);
+ 
+ 				hw_cfg->bclk_master = SND_SOC_TPLG_BCLK_CS;
+ 			} else if (!strcmp(val, "codec_slave")) {
+@@ -1490,8 +1489,7 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 				/* For backwards capability,
+ 				 * "master" == "codec is slave"
+ 				 */
+-				SNDERR("warning: deprecated fsync value '%s'\n",
+-				       val);
++				SNDERR("deprecated fsync value '%s'", val);
+ 
+ 				hw_cfg->fsync_master = SND_SOC_TPLG_FSYNC_CS;
+ 			} else if (!strcmp(val, "codec_slave")) {
+@@ -1535,8 +1533,7 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 				/* For backwards capability,
+ 				 * "master" == "for codec, mclk is input"
+ 				 */
+-				SNDERR("warning: deprecated mclk value '%s'\n",
+-				       val);
++				SNDERR("deprecated mclk value '%s'", val);
+ 
+ 				hw_cfg->mclk_direction = SND_SOC_TPLG_MCLK_CI;
+ 			} else if (!strcmp(val, "codec_mclk_in")) {
+diff --git a/src/topology/text.c b/src/topology/text.c
+index e9386e7df492..6dbf22305fd3 100644
+--- a/src/topology/text.c
++++ b/src/topology/text.c
+@@ -38,7 +38,7 @@ static int parse_text_values(snd_config_t *cfg, struct tplg_elem *elem)
+ 		n = snd_config_iterator_entry(i);
+ 
+ 		if (j == SND_SOC_TPLG_NUM_TEXTS) {
+-			tplg_dbg("error: text string number exceeds %d\n", j);
++			tplg_dbg("text string number exceeds %d\n", j);
+ 			return -ENOMEM;
+ 		}
+ 
+-- 
+2.16.4
+

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:56:53 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to 8.1.0:
+    * Bug fixes
+        :func:`partition` works with pred=None again. (thanks 
+        to MSeifert04)
+    * New itertools
+        :func:`sample` (thanks to tommyod)
+        :func:`nth_or_last` (thanks to d-ryzhikov)
+    * Changes to existing itertools:
+        The implementation for :func:`divide` was improved.  
+
+-------------------------------------------------------------------
 Fri Dec 20 19:18:54 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.0.2:

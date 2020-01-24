@@ -147,4 +147,12 @@ Add support for ppc64le.</comment>
   * needed for ghc-bootstrap-helpers</comment>
     <requestid>766206</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f9fbac9636f133b2203600b862f2dad8</srcmd5>
+    <version>8.6.5</version>
+    <time>1579867799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766526</requestid>
+  </revision>
 </revisionlist>

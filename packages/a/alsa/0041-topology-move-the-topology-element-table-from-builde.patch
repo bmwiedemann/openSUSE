@@ -1,0 +1,464 @@
+From 4f076f5b69a873418ecb826a4198e4d95a3a2a6f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 15 Dec 2019 16:15:29 +0100
+Subject: [PATCH 41/63] topology: move the topology element table from builder
+ to elem
+
+- use offsetof() for the lists
+- add other info to describe the elements
+- use the table in the element constructor
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/builder.c    |  98 ++++----------------
+ src/topology/ctl.c        |   7 +-
+ src/topology/elem.c       | 232 ++++++++++++++++++++++++++++++++--------------
+ src/topology/tplg_local.h |  15 +++
+ 4 files changed, 199 insertions(+), 153 deletions(-)
+
+diff --git a/src/topology/builder.c b/src/topology/builder.c
+index 40943b56e4aa..cadb55830809 100644
+--- a/src/topology/builder.c
++++ b/src/topology/builder.c
+@@ -236,83 +236,20 @@ static ssize_t write_manifest_data(snd_tplg_t *tplg)
+ 
+ int tplg_write_data(snd_tplg_t *tplg)
+ {
+-	struct wtable {
+-		const char *name;
+-		struct list_head *list;
+-		int type;
+-		int tsoc;
+-	} *wptr, wtable[] = {
+-		{
+-			.name = "control mixer",
+-			.list = &tplg->mixer_list,
+-			.type = SND_TPLG_TYPE_MIXER,
+-			.tsoc = SND_SOC_TPLG_TYPE_MIXER,
+-		},
+-		{
+-			.name = "control enum",
+-			.list = &tplg->enum_list,
+-			.type = SND_TPLG_TYPE_ENUM,
+-			.tsoc = SND_SOC_TPLG_TYPE_ENUM,
+-		},
+-		{
+-			.name = "control extended (bytes)",
+-			.list = &tplg->bytes_ext_list,
+-			.type = SND_TPLG_TYPE_BYTES,
+-			.tsoc = SND_SOC_TPLG_TYPE_BYTES,
+-		},
+-		{
+-			.name = "dapm widget",
+-			.list = &tplg->widget_list,
+-			.type = SND_TPLG_TYPE_DAPM_WIDGET,
+-			.tsoc = SND_SOC_TPLG_TYPE_DAPM_WIDGET,
+-		},
+-		{
+-			.name = "pcm",
+-			.list = &tplg->pcm_list,
+-			.type = SND_TPLG_TYPE_PCM,
+-			.tsoc = SND_SOC_TPLG_TYPE_PCM,
+-		},
+-		{
+-			.name = "physical dai",
+-			.list = &tplg->dai_list,
+-			.type = SND_TPLG_TYPE_DAI,
+-			.tsoc = SND_SOC_TPLG_TYPE_DAI,
+-		},
+-		{
+-			.name = "be",
+-			.list = &tplg->be_list,
+-			.type = SND_TPLG_TYPE_BE,
+-			.tsoc = SND_SOC_TPLG_TYPE_BACKEND_LINK,
+-		},
+-		{
+-			.name = "cc",
+-			.list = &tplg->cc_list,
+-			.type = SND_TPLG_TYPE_CC,
+-			.tsoc = SND_SOC_TPLG_TYPE_CODEC_LINK,
+-		},
+-		{
+-			.name = "route (dapm graph)",
+-			.list = &tplg->route_list,
+-			.type = SND_TPLG_TYPE_DAPM_GRAPH,
+-			.tsoc = SND_SOC_TPLG_TYPE_DAPM_GRAPH,
+-		},
+-		{
+-			.name = "private data",
+-			.list = &tplg->pdata_list,
+-			.type = SND_TPLG_TYPE_DATA,
+-			.tsoc = SND_SOC_TPLG_TYPE_PDATA,
+-		},
+-	};
+-
++	struct tplg_table *tptr;
++	struct list_head *list;
+ 	ssize_t ret;
+ 	size_t total_size, size;
+ 	unsigned int index;
+ 
+ 	/* calculate total size */
+ 	total_size = calc_manifest_size(tplg);
+-	for (index = 0; index < ARRAY_SIZE(wtable); index++) {
+-		wptr = &wtable[index];
+-		size = calc_real_size(wptr->list);
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		if (!tptr->build)
++			continue;
++		list = (struct list_head *)((void *)tplg + tptr->loff);
++		size = calc_real_size(list);
+ 		total_size += size;
+ 	}
+ 
+@@ -334,20 +271,23 @@ int tplg_write_data(snd_tplg_t *tplg)
+ 	}
+ 
+ 	/* write all blocks */
+-	for (index = 0; index < ARRAY_SIZE(wtable); index++) {
+-		wptr = &wtable[index];
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		if (!tptr->build)
++			continue;
++		list = (struct list_head *)((void *)tplg + tptr->loff);
+ 		/* calculate the block size in bytes for all elems in this list */
+-		size = calc_block_size(wptr->list);
++		size = calc_block_size(list);
+ 		if (size == 0)
+ 			continue;
+ 		verbose(tplg, "block size for type %s (%d:%d) is 0x%zx/%zd\n",
+-						wptr->name, wptr->type,
+-						wptr->tsoc, size, size);
+-		ret = write_elem_block(tplg, wptr->list, size,
+-				       wptr->tsoc, wptr->name);
++						tptr->name, tptr->type,
++						tptr->tsoc, size, size);
++		ret = write_elem_block(tplg, list, size,
++				       tptr->tsoc, tptr->name);
+ 		if (ret < 0) {
+ 			SNDERR("failed to write %s elements: %s\n",
+-						wptr->name, snd_strerror(-ret));
++						tptr->name, snd_strerror(-ret));
+ 			return ret;
+ 		}
+ 	}
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 9190efefb575..539329cd661f 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -284,18 +284,13 @@ static int tplg_parse_tlv_dbscale(snd_config_t *cfg, struct tplg_elem *elem)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+-	struct snd_soc_tplg_ctl_tlv *tplg_tlv;
++	struct snd_soc_tplg_ctl_tlv *tplg_tlv = elem->tlv;
+ 	struct snd_soc_tplg_tlv_dbscale *scale;
+ 	const char *id = NULL;
+ 	int val;
+ 
+ 	tplg_dbg(" scale: %s\n", elem->id);
+ 
+-	tplg_tlv = calloc(1, sizeof(*tplg_tlv));
+-	if (!tplg_tlv)
+-		return -ENOMEM;
+-
+-	elem->tlv = tplg_tlv;
+ 	tplg_tlv->size = sizeof(struct snd_soc_tplg_ctl_tlv);
+ 	tplg_tlv->type = SNDRV_CTL_TLVT_DB_SCALE;
+ 	scale = &tplg_tlv->scale;
+diff --git a/src/topology/elem.c b/src/topology/elem.c
+index f2076f7958aa..92ca7da4c4aa 100644
+--- a/src/topology/elem.c
++++ b/src/topology/elem.c
+@@ -20,6 +20,154 @@
+ #include "list.h"
+ #include "tplg_local.h"
+ 
++struct tplg_table tplg_table[] = {
++	{
++		.name  = "manifest",
++		.loff  = offsetof(snd_tplg_t, manifest_list),
++		.type  = SND_TPLG_TYPE_MANIFEST,
++		.tsoc  = SND_SOC_TPLG_TYPE_MANIFEST,
++		.size  = sizeof(struct snd_soc_tplg_manifest),
++		.enew  = 1,
++	},
++	{
++		.name  = "control mixer",
++		.loff  = offsetof(snd_tplg_t, mixer_list),
++		.type  = SND_TPLG_TYPE_MIXER,
++		.tsoc  = SND_SOC_TPLG_TYPE_MIXER,
++		.size  = sizeof(struct snd_soc_tplg_mixer_control),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "control enum",
++		.loff  = offsetof(snd_tplg_t, enum_list),
++		.type  = SND_TPLG_TYPE_ENUM,
++		.tsoc  = SND_SOC_TPLG_TYPE_ENUM,
++		.size  = sizeof(struct snd_soc_tplg_enum_control),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "control extended (bytes)",
++		.loff  = offsetof(snd_tplg_t, bytes_ext_list),
++		.type  = SND_TPLG_TYPE_BYTES,
++		.tsoc  = SND_SOC_TPLG_TYPE_BYTES,
++		.size  = sizeof(struct snd_soc_tplg_bytes_control),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "dapm widget",
++		.loff  = offsetof(snd_tplg_t, widget_list),
++		.type  = SND_TPLG_TYPE_DAPM_WIDGET,
++		.tsoc  = SND_SOC_TPLG_TYPE_DAPM_WIDGET,
++		.size  = sizeof(struct snd_soc_tplg_dapm_widget),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "pcm",
++		.loff  = offsetof(snd_tplg_t, pcm_list),
++		.type  = SND_TPLG_TYPE_PCM,
++		.tsoc  = SND_SOC_TPLG_TYPE_PCM,
++		.size  = sizeof(struct snd_soc_tplg_pcm),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "physical dai",
++		.loff  = offsetof(snd_tplg_t, dai_list),
++		.type  = SND_TPLG_TYPE_DAI,
++		.tsoc  = SND_SOC_TPLG_TYPE_DAI,
++		.size  = sizeof(struct snd_soc_tplg_dai),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "be",
++		.loff  = offsetof(snd_tplg_t, be_list),
++		.type  = SND_TPLG_TYPE_BE,
++		.tsoc  = SND_SOC_TPLG_TYPE_BACKEND_LINK,
++		.size  = sizeof(struct snd_soc_tplg_link_config),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "cc",
++		.loff  = offsetof(snd_tplg_t, cc_list),
++		.type  = SND_TPLG_TYPE_CC,
++		.tsoc  = SND_SOC_TPLG_TYPE_CODEC_LINK,
++		.size  = sizeof(struct snd_soc_tplg_link_config),
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "route (dapm graph)",
++		.loff  = offsetof(snd_tplg_t, route_list),
++		.type  = SND_TPLG_TYPE_DAPM_GRAPH,
++		.tsoc  = SND_SOC_TPLG_TYPE_DAPM_GRAPH,
++		.build = 1,
++	},
++	{
++		.name  = "private data",
++		.loff  = offsetof(snd_tplg_t, pdata_list),
++		.type  = SND_TPLG_TYPE_DATA,
++		.tsoc  = SND_SOC_TPLG_TYPE_PDATA,
++		.build = 1,
++		.enew  = 1,
++	},
++	{
++		.name  = "text",
++		.loff  = offsetof(snd_tplg_t, text_list),
++		.type  = SND_TPLG_TYPE_TEXT,
++		.size  = sizeof(struct tplg_texts),
++		.enew  = 1,
++	},
++	{
++		.name  = "tlv",
++		.loff  = offsetof(snd_tplg_t, tlv_list),
++		.type  = SND_TPLG_TYPE_TLV,
++		.size  = sizeof(struct snd_soc_tplg_ctl_tlv),
++		.enew  = 1,
++	},
++	{
++		.name  = "stream config",
++		.loff  = offsetof(snd_tplg_t, pcm_config_list),
++		.type  = SND_TPLG_TYPE_STREAM_CONFIG,
++		.size  = sizeof(struct snd_soc_tplg_stream),
++		.enew  = 1,
++	},
++	{
++		.name  = "stream capabilities",
++		.loff  = offsetof(snd_tplg_t, pcm_caps_list),
++		.type  = SND_TPLG_TYPE_STREAM_CAPS,
++		.size  = sizeof(struct snd_soc_tplg_stream_caps),
++		.enew  = 1,
++	},
++	{
++		.name  = "token",
++		.loff  = offsetof(snd_tplg_t, token_list),
++		.type  = SND_TPLG_TYPE_TOKEN,
++		.enew  = 1,
++	},
++	{
++		.name  = "tuple",
++		.loff  = offsetof(snd_tplg_t, tuple_list),
++		.type  = SND_TPLG_TYPE_TUPLE,
++		.free  = tplg_free_tuples,
++		.enew  = 1,
++	},
++	{
++		.name  = "hw config",
++		.loff  = offsetof(snd_tplg_t, hw_cfg_list),
++		.type  = SND_TPLG_TYPE_HW_CONFIG,
++		.size  = sizeof(struct snd_soc_tplg_hw_config),
++		.enew  = 1,
++	}
++};
++
++unsigned int tplg_table_items = ARRAY_SIZE(tplg_table);
++
+ int tplg_ref_add(struct tplg_elem *elem, int type, const char* id)
+ {
+ 	struct tplg_ref *ref;
+@@ -152,9 +300,12 @@ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ 				       const char *name,
+ 				       enum snd_tplg_type type)
+ {
++	struct tplg_table *tptr;
+ 	struct tplg_elem *elem;
++	struct list_head *list;
+ 	const char *id;
+ 	int obj_size = 0;
++	unsigned index;
+ 	void *obj;
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+@@ -191,79 +342,24 @@ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ 	} else if (name != NULL)
+ 		snd_strlcpy(elem->id, name, SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+ 
+-	switch (type) {
+-	case SND_TPLG_TYPE_DATA:
+-		tplg_elem_insert(elem, &tplg->pdata_list);
+-		break;
+-	case SND_TPLG_TYPE_MANIFEST:
+-		tplg_elem_insert(elem, &tplg->manifest_list);
+-		obj_size = sizeof(struct snd_soc_tplg_manifest);
+-		break;
+-	case SND_TPLG_TYPE_TEXT:
+-		tplg_elem_insert(elem, &tplg->text_list);
+-		obj_size = sizeof(struct tplg_texts);
+-		break;
+-	case SND_TPLG_TYPE_TLV:
+-		tplg_elem_insert(elem, &tplg->tlv_list);
+-		elem->size = sizeof(struct snd_soc_tplg_ctl_tlv);
+-		break;
+-	case SND_TPLG_TYPE_BYTES:
+-		tplg_elem_insert(elem, &tplg->bytes_ext_list);
+-		obj_size = sizeof(struct snd_soc_tplg_bytes_control);
+-		break;
+-	case SND_TPLG_TYPE_ENUM:
+-		tplg_elem_insert(elem, &tplg->enum_list);
+-		obj_size = sizeof(struct snd_soc_tplg_enum_control);
+-		break;
+-	case SND_TPLG_TYPE_MIXER:
+-		tplg_elem_insert(elem, &tplg->mixer_list);
+-		obj_size = sizeof(struct snd_soc_tplg_mixer_control);
+-		break;
+-	case SND_TPLG_TYPE_DAPM_WIDGET:
+-		tplg_elem_insert(elem, &tplg->widget_list);
+-		obj_size = sizeof(struct snd_soc_tplg_dapm_widget);
+-		break;
+-	case SND_TPLG_TYPE_STREAM_CONFIG:
+-		tplg_elem_insert(elem, &tplg->pcm_config_list);
+-		obj_size = sizeof(struct snd_soc_tplg_stream);
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		if (!tptr->enew)
++			continue;
++		if ((int)type != tptr->type)
++			continue;
+ 		break;
+-	case SND_TPLG_TYPE_STREAM_CAPS:
+-		tplg_elem_insert(elem, &tplg->pcm_caps_list);
+-		obj_size = sizeof(struct snd_soc_tplg_stream_caps);
+-		break;
+-	case SND_TPLG_TYPE_PCM:
+-		tplg_elem_insert(elem, &tplg->pcm_list);
+-		obj_size = sizeof(struct snd_soc_tplg_pcm);
+-		break;
+-	case SND_TPLG_TYPE_DAI:
+-		tplg_elem_insert(elem, &tplg->dai_list);
+-		obj_size = sizeof(struct snd_soc_tplg_dai);
+-		break;
+-	case SND_TPLG_TYPE_BE:
+-	case SND_TPLG_TYPE_LINK:
+-		tplg_elem_insert(elem, &tplg->be_list);
+-		obj_size = sizeof(struct snd_soc_tplg_link_config);
+-		break;
+-	case SND_TPLG_TYPE_CC:
+-		tplg_elem_insert(elem, &tplg->cc_list);
+-		obj_size = sizeof(struct snd_soc_tplg_link_config);
+-		break;
+-	case SND_TPLG_TYPE_TOKEN:
+-		tplg_elem_insert(elem, &tplg->token_list);
+-		break;
+-	case SND_TPLG_TYPE_TUPLE:
+-		tplg_elem_insert(elem, &tplg->tuple_list);
+-		elem->free = tplg_free_tuples;
+-		break;
+-	case SND_TPLG_TYPE_HW_CONFIG:
+-		tplg_elem_insert(elem, &tplg->hw_cfg_list);
+-		obj_size = sizeof(struct snd_soc_tplg_hw_config);
+-		break;
+-	default:
++	}
++	if (index >= tplg_table_items) {
+ 		free(elem);
+ 		return NULL;
+ 	}
+ 
++	list = (struct list_head *)((void *)tplg + tptr->loff);
++	tplg_elem_insert(elem, list);
++	obj_size = tptr->size;
++	elem->free = tptr->free;
++
+ 	/* create new object too if required */
+ 	if (obj_size > 0) {
+ 		obj = calloc(1, obj_size);
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index 77a681897a85..0987898f8336 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -196,6 +196,21 @@ struct map_elem {
+ 	int id;
+ };
+ 
++/* mapping table */
++struct tplg_table {
++	const char *name;
++	off_t loff;
++	size_t size;
++	int type;
++	int tsoc;
++	unsigned build: 1;
++	unsigned enew: 1;
++	void (*free)(void *);
++};
++
++extern struct tplg_table tplg_table[];
++extern unsigned int tplg_table_items;
++
+ int tplg_parse_compound(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	int (*fcn)(snd_tplg_t *, snd_config_t *, void *),
+ 	void *private);
+-- 
+2.16.4
+

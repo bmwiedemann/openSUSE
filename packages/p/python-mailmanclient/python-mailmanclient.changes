@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 14:56:37 UTC 2020 - pgajdos@suse.com
+
+- removing 15 conditionals, LANG definition will be removed
+  later anyway
+
+-------------------------------------------------------------------
 Thu Jan 16 11:06:44 UTC 2020 - pgajdos@suse.com
 
 - be able to build also for 15

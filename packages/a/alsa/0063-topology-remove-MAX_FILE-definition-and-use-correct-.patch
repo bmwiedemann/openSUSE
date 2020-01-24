@@ -1,0 +1,40 @@
+From fbe1ac4a09933f527aff860aad035586367f21b4 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 15 Jan 2020 10:41:35 +0100
+Subject: [PATCH 63/63] topology: remove MAX_FILE definition and use correct
+ PATH_MAX
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/data.c       | 2 +-
+ src/topology/tplg_local.h | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/topology/data.c b/src/topology/data.c
+index b63e98cd7282..5742b35773f6 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -163,7 +163,7 @@ static int tplg_parse_data_file(snd_config_t *cfg, struct tplg_elem *elem)
+ {
+ 	struct snd_soc_tplg_private *priv = NULL;
+ 	const char *value = NULL;
+-	char filename[MAX_FILE];
++	char filename[PATH_MAX];
+ 	char *env = getenv(ALSA_CONFIG_TPLG_VAR);
+ 	FILE *fp;
+ 	size_t size, bytes_read;
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index e061db755ed2..5ace0d1919e1 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -29,7 +29,6 @@
+ #define tplg_dbg(fmt, arg...) do { } while (0)
+ #endif
+ 
+-#define MAX_FILE		256
+ #define TPLG_MAX_PRIV_SIZE	(1024 * 128)
+ 
+ /** The name of the environment variable containing the tplg directory */
+-- 
+2.16.4
+

@@ -1,0 +1,20 @@
+From 42b15d5d4adc8b462ed004811a2ed7078b2ef2b3 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 6 Dec 2019 11:15:37 +0100
+Subject: [PATCH 3/6] README: remove topologies note
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 635d5e9de1d4..9c4e3503148e 100644
+--- a/README.md
++++ b/README.md
+@@ -1,2 +1,2 @@
+ # alsa-ucm-conf
+-ALSA Use Case Manager configuration (and topologies)
++ALSA Use Case Manager configuration
+-- 
+2.16.4
+

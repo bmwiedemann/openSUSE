@@ -1,0 +1,44 @@
+From 0793ef064a97afd0b1335af0d187ede227b90582 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 20 Dec 2019 21:28:30 +0100
+Subject: [PATCH 45/63] topology: add snd_tplg_version() function
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/topology.h    | 6 ++++++
+ src/topology/parser.c | 5 +++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/include/topology.h b/include/topology.h
+index 63c13a9885e9..37bced1a4434 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -775,6 +775,12 @@ enum snd_tplg_type {
+ #define SND_TPLG_CREATE_VERBOSE		(1<<0)	/*!< Verbose output */
+ #define SND_TPLG_CREATE_DAPM_NOSORT	(1<<1)	/*!< Do not sort DAPM objects by index */
+ 
++/**
++ * \brief Return the version of the topology library.
++ * \return A static string with the version number.
++ */
++const char *snd_tplg_version(void);
++
+ /**
+  * \brief Create a new topology parser instance.
+  * \return New topology parser instance
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 8f810f751533..1eaa24bd42f5 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -503,3 +503,8 @@ void snd_tplg_free(snd_tplg_t *tplg)
+ 
+ 	free(tplg);
+ }
++
++const char *snd_tplg_version(void)
++{
++	return SND_LIB_VERSION_STR;
++}
+-- 
+2.16.4
+

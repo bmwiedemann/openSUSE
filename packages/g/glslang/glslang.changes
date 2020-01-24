@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 19 11:38:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 8.13.3559+git20 (b0ada803)
+  * SPIR-V: Aggressively prune unreachable merge, continue target.
+  * INTEL_shader_integer_functions2: Add basic extension
+    tracking, add compiler front-end support, add SPIR-V
+    generation.
+  * Add support for ARB_sample_shading, ARB_texture_multisample,
+    ARB_uniform_buffer_object, ARB_gpu_shader_fp64.
+  * SPV/Vulkan: Add support for Vulkan 1.2, which defaults to
+    SPIR-V 1.5.
+
+-------------------------------------------------------------------
 Thu Nov  7 08:25:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.13.3496

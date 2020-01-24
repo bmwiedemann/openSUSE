@@ -1,7 +1,7 @@
 #
 # spec file for package python-swapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-swapper
-Version:        1.1.1
+Version:        1.1.2.post1
 Release:        0
 Summary:        The unofficial Django swappable models API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wq/django-swappable-models
 Source:         https://files.pythonhosted.org/packages/source/s/swapper/swapper-%{version}.tar.gz
-BuildRequires:  %{python_module Django1 >= 1.6}
+BuildRequires:  %{python_module Django >= 1.6}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django1 >= 1.6
+Requires:       python-Django >= 1.6
 BuildArch:      noarch
 %python_subpackages
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:50:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 20.0.0
+  * New module pathutils
+  * add strutils.unwrap_text which does what you think to wrapped text
+  * iterutils.chunked to work with the bytes type
+  * funcutils.format_invocation for formatting simple function calls func(pos1, pos2, kw_k=kw_v)
+  * A bunch of small fixes and enhancements.
+  * many more in upstream CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Mar  9 08:12:17 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite, using GitHub as sdist

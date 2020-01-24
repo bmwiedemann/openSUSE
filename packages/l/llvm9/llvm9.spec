@@ -22,16 +22,19 @@
 # Integer version used by update-alternatives
 %define _uaver  901
 %define _socxx  1
+
 %ifarch x86_64 aarch64 %arm
 %bcond_without libcxx
 %else
 %bcond_with libcxx
 %endif
+
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp
 %else
 %bcond_with openmp
 %endif
+
 # LLVM currently doesn't build with Gold on ppc
 # Gold is not supported on riscv64
 %ifarch ppc riscv64
@@ -39,27 +42,33 @@
 %else
 %bcond_without gold
 %endif
+
 %ifarch x86_64
 %bcond_without lldb
+
 %if 0%{?suse_version} > 1320
 # lldb python breaks with swig < 3.0.11
 %bcond_without lldb_python
 %else
 %bcond_with lldb_python
 %endif
+
 %else
 %bcond_with lldb
 %bcond_with lldb_python
 %endif
+
 %ifarch %{arm} x86_64 %{ix86} ppc64le s390x
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
 %endif
+
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
 %bcond_without pyclang
+
 Name:           llvm9
 Version:        9.0.1
 Release:        0
@@ -397,7 +406,7 @@ of the C++ standard library, targeting C++11.
 %package        vim-plugins
 Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
-Supplements:    (llvm%{_sonum} and vim)
+Supplements:    packageand(llvm%{_sonum}:vim)
 Conflicts:      vim-plugin-llvm < %{version}
 Provides:       vim-plugin-llvm = %{version}
 BuildArch:      noarch
@@ -408,7 +417,7 @@ This package contains vim plugins for LLVM like syntax highlighting.
 %package        emacs-plugins
 Summary:        Emacs plugins for LLVM
 Group:          Productivity/Text/Editors
-Supplements:    (llvm%{_sonum} and emacs)
+Supplements:    packageand(llvm%{_sonum}:emacs)
 Conflicts:      emacs-llvm < %{version}
 Provides:       emacs-llvm = %{version}
 BuildArch:      noarch
@@ -1015,7 +1024,7 @@ EOF
 for script in %{buildroot}%{_bindir}/{{clang-{format,tidy}-diff,git-clang-format,\
 hmaptool,run-clang-tidy}-%{_relver},{ccc,c++}-analyzer,scan-{build,view},opt-{diff,stats,viewer}} \
         %{buildroot}%{python3_sitelib}/optrecord.py; do
-    sed -i '1s|%{_bindir}/env *|%{_bindir}/|;1s|%{_bindir}/python$|%{_bindir}/python3|' $script
+    sed -i '1s|/usr/bin/env *|%{_bindir}/|;1s|/usr/bin/python$|%{_bindir}/python3|' $script
 done
 
 # Remove executable bit where not needed.

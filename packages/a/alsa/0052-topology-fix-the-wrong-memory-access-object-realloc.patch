@@ -1,0 +1,36 @@
+From 0ba4d6d9c0ae4576f35724d2a5735990f09ceeb0 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 1 Jan 2020 19:10:20 +0100
+Subject: [PATCH 52/63] topology: fix the wrong memory access (object realloc)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/pcm.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index 8e5afbe6ea72..bd72895971f5 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -252,8 +252,8 @@ static int build_link(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 				ref->id, SND_TPLG_TYPE_HW_CONFIG, elem->index);
+ 			if (!ref->elem) {
+ 				SNDERR("cannot find HW config '%s'"
+-				" referenced by link '%s'",
+-				ref->id, elem->id);
++				       " referenced by link '%s'",
++				       ref->id, elem->id);
+ 				return -EINVAL;
+ 			}
+ 
+@@ -267,6 +267,7 @@ static int build_link(snd_tplg_t *tplg, struct tplg_elem *elem)
+ 			err = tplg_copy_data(tplg, elem, ref);
+ 			if (err < 0)
+ 				return err;
++			link = elem->link; /* realloc */
+ 			break;
+ 
+ 		default:
+-- 
+2.16.4
+

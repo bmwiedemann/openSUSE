@@ -1014,19 +1014,33 @@ Macros:
 # END RUST STUFF
 
 # Default to Java 11
-Prefer: java-11-openjdk java-11-openjdk-devel java-11-openjdk-javadoc java-11-openjdk-headless
-# Fall back to Java 10, if there was no java 11 option
-Prefer: java-10-openjdk java-10-openjdk-devel java-10-openjdk-javadoc java-10-openjdk-headless
-# Fall back to Java 9, if there was no java 10 option
-Prefer: java-9-openjdk java-9-openjdk-devel java-9-openjdk-javadoc java-9-openjdk-headless
-# Prefer java 8 if java 9 was no option
-Prefer: java-1_8_0-openjdk java-1_8_0-openjdk-devel java-1_8_0-openjdk-javadoc java-1_8_0-openjdk-headless
-# And then fall back to java 7 if needed
-Prefer: java-1_7_0-openjdk java-1_7_0-openjdk-devel java-1_7_0-openjdk-javadoc java-1_7_0-openjdk-headless
-# And then fall back to java 7 bootstrap if needed
-Prefer: java-1_7_0-bootstrap java-1_7_0-bootstrap-devel java-1_7_0-bootstrap-javadoc java-1_7_0-bootstrap-headless
-Prefer: -java-12-openjdk java-12-openjdk-devel java-12-openjdk-javadoc java-12-openjdk-headless
-Substitute: java2-devel-packages java-devel
+Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-openjdk-javadoc
+%ifarch s390x
+Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
+%endif
+Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless
+Prefer: java-13-openjdk-devel java-13-openjdk java-13-openjdk-headless
+Prefer: java-12-openjdk-devel java-12-openjdk java-12-openjdk-headless
+Prefer: java-10-openjdk-devel java-10-openjdk java-10-openjdk-headless
+Prefer: java-9-openjdk-devel java-9-openjdk java-9-openjdk-headless
+Prefer: java-1_7_0-openjdk-devel java-1_7_0-openjdk java-1_7_0-openjdk-headless
+Prefer: java-1_7_0-bootstrap-devel java-1_7_0-bootstrap java-1_7_0-bootstrap-headless
+Prefer: java-1_6_0-openjdk-devel java-1_6_0-openjdk java-1_6_0-openjdk-headless
+Prefer: java-1_5_0-gcj-compat-devel java-1_5_0-gcj-compat
+
+#Prefer: java-11-openjdk java-11-openjdk-devel java-11-openjdk-javadoc java-11-openjdk-headless
+## Fall back to Java 10, if there was no java 11 option
+#Prefer: java-10-openjdk java-10-openjdk-devel java-10-openjdk-javadoc java-10-openjdk-headless
+## Fall back to Java 9, if there was no java 10 option
+#Prefer: java-9-openjdk java-9-openjdk-devel java-9-openjdk-javadoc java-9-openjdk-headless
+## Prefer java 8 if java 9 was no option
+#Prefer: java-1_8_0-openjdk java-1_8_0-openjdk-devel java-1_8_0-openjdk-javadoc java-1_8_0-openjdk-headless
+## And then fall back to java 7 if needed
+#Prefer: java-1_7_0-openjdk java-1_7_0-openjdk-devel java-1_7_0-openjdk-javadoc java-1_7_0-openjdk-headless
+## And then fall back to java 7 bootstrap if needed
+#Prefer: java-1_7_0-bootstrap java-1_7_0-bootstrap-devel java-1_7_0-bootstrap-javadoc java-1_7_0-bootstrap-headless
+#Prefer: -java-12-openjdk java-12-openjdk-devel java-12-openjdk-javadoc java-12-openjdk-headless
+#Substitute: java2-devel-packages java-devel
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit

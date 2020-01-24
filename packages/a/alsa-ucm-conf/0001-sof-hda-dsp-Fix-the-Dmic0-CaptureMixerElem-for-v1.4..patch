@@ -1,0 +1,27 @@
+From 2882eb5085db58b60ff6dd0f61912d32ccbdf911 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 5 Dec 2019 17:46:53 +0100
+Subject: [PATCH 1/6] sof-hda-dsp: Fix the Dmic0 CaptureMixerElem for v1.4.1
+ firmware
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index f1c81a1b4f53..500cbae82a43 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -162,7 +162,7 @@ SectionDevice."DigitalMic" {
+ 				Control "name='Dmic0 Capture Switch'"
+ 			}
+ 			True {
+-				CaptureMixerElem "Dmic0 Capture"
++				CaptureMixerElem "Dmic0"
+ 				CaptureVolume "Dmic0 Capture Volume"
+ 				CaptureSwitch "Dmic0 Capture Switch"
+ 			}
+-- 
+2.16.4
+

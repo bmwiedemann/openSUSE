@@ -1,0 +1,296 @@
+From 39fb37fef5bd3b3fa7a63e06a5f0a147197fddb9 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 14 Dec 2019 19:13:53 +0100
+Subject: [PATCH 37/63] topology: convert builder to use the mallocated memory
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/builder.c    | 88 +++++++++++++++++++++++++++++++++++++----------
+ src/topology/parser.c     | 74 ++++++++++++++++-----------------------
+ src/topology/tplg_local.h |  5 +--
+ 3 files changed, 103 insertions(+), 64 deletions(-)
+
+diff --git a/src/topology/builder.c b/src/topology/builder.c
+index 1a22a453695a..40943b56e4aa 100644
+--- a/src/topology/builder.c
++++ b/src/topology/builder.c
+@@ -29,7 +29,7 @@ static void verbose(snd_tplg_t *tplg, const char *fmt, ...)
+ 		return;
+ 
+ 	va_start(va, fmt);
+-	fprintf(stdout, "0x%6.6zx/%6.6zd - ", tplg->out_pos, tplg->out_pos);
++	fprintf(stdout, "0x%6.6zx/%6.6zd - ", tplg->bin_pos, tplg->bin_pos);
+ 	vfprintf(stdout, fmt, va);
+ 	va_end(va);
+ }
+@@ -37,18 +37,11 @@ static void verbose(snd_tplg_t *tplg, const char *fmt, ...)
+ /* write a block, track the position */
+ static ssize_t twrite(snd_tplg_t *tplg, void *data, size_t data_size)
+ {
+-	ssize_t r = write(tplg->out_fd, data, data_size);
+-	if (r != (ssize_t)data_size) {
+-		if (r < 0) {
+-			SNDERR("error: unable to write: %s", strerror(errno));
+-			return -errno;
+-		}
+-		tplg->out_pos += r;
+-		SNDERR("error: unable to write (partial)");
++	if (tplg->bin_pos + data_size > tplg->bin_size)
+ 		return -EIO;
+-	}
+-	tplg->out_pos += r;
+-	return r;
++	memcpy(tplg->bin + tplg->bin_pos, data, data_size);
++	tplg->bin_pos += data_size;
++	return data_size;
+ }
+ 
+ /* write out block header to output file */
+@@ -71,12 +64,12 @@ static ssize_t write_block_header(snd_tplg_t *tplg, unsigned int type,
+ 	hdr.count = count;
+ 
+ 	/* make sure file offset is aligned with the calculated HDR offset */
+-	if (tplg->out_pos != tplg->next_hdr_pos) {
++	if (tplg->bin_pos != tplg->next_hdr_pos) {
+ 		SNDERR("error: New header is at offset 0x%zx but file"
+ 			" offset 0x%zx is %s by %ld bytes\n",
+-			tplg->next_hdr_pos, tplg->out_pos,
+-			tplg->out_pos > tplg->next_hdr_pos ? "ahead" : "behind",
+-			labs(tplg->out_pos - tplg->next_hdr_pos));
++			tplg->next_hdr_pos, tplg->bin_pos,
++			tplg->bin_pos > tplg->next_hdr_pos ? "ahead" : "behind",
++			labs(tplg->bin_pos - tplg->next_hdr_pos));
+ 		return -EINVAL;
+ 	}
+ 
+@@ -163,6 +156,41 @@ static int write_elem_block(snd_tplg_t *tplg,
+ 	return 0;
+ }
+ 
++static size_t calc_manifest_size(snd_tplg_t *tplg)
++{
++	return sizeof(struct snd_soc_tplg_hdr) +
++	       sizeof(tplg->manifest) +
++	       tplg->manifest.priv.size;
++}
++
++static size_t calc_real_size(struct list_head *base)
++{
++	struct list_head *pos;
++	struct tplg_elem *elem, *elem_next;
++	size_t size = 0;
++
++	list_for_each(pos, base) {
++
++		elem = list_entry(pos, struct tplg_elem, list);
++
++		/* compound elems have already been copied to other elems */
++		if (elem->compound_elem)
++			continue;
++
++		if (elem->size <= 0)
++			continue;
++
++		size += elem->size;
++
++		elem_next = list_entry(pos->next, struct tplg_elem, list);
++
++		if ((pos->next == base) || (elem_next->index != elem->index))
++			size += sizeof(struct snd_soc_tplg_hdr);
++	}
++
++	return size;
++}
++
+ static size_t calc_block_size(struct list_head *base)
+ {
+ 	struct list_head *pos;
+@@ -277,9 +305,27 @@ int tplg_write_data(snd_tplg_t *tplg)
+ 	};
+ 
+ 	ssize_t ret;
+-	size_t size;
++	size_t total_size, size;
+ 	unsigned int index;
+ 
++	/* calculate total size */
++	total_size = calc_manifest_size(tplg);
++	for (index = 0; index < ARRAY_SIZE(wtable); index++) {
++		wptr = &wtable[index];
++		size = calc_real_size(wptr->list);
++		total_size += size;
++	}
++
++	/* allocate new binary output */
++	free(tplg->bin);
++	tplg->bin = malloc(total_size);
++	tplg->bin_pos = 0;
++	tplg->bin_size = total_size;
++	if (tplg->bin == NULL) {
++		tplg->bin_size = 0;
++		return -ENOMEM;
++	}
++
+ 	/* write manifest */
+ 	ret = write_manifest_data(tplg);
+ 	if (ret < 0) {
+@@ -306,7 +352,13 @@ int tplg_write_data(snd_tplg_t *tplg)
+ 		}
+ 	}
+ 
+-	verbose(tplg, "total size is 0x%zx/%zd\n", tplg->out_pos, tplg->out_pos);
++	verbose(tplg, "total size is 0x%zx/%zd\n", tplg->bin_pos, tplg->bin_pos);
++
++	if (total_size != tplg->bin_pos) {
++		SNDERR("total size mismatch (%zd != %zd)\n",
++		       total_size, tplg->bin_pos);
++		return -EINVAL;
++	}
+ 
+ 	return 0;
+ }
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index f56ad97e42b9..98a9f9e9deac 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -393,50 +393,29 @@ static int tplg_build_integ(snd_tplg_t *tplg)
+ 	return err;
+ }
+ 
+-int snd_tplg_build_file(snd_tplg_t *tplg, const char *infile,
+-	const char *outfile)
++int snd_tplg_build_file(snd_tplg_t *tplg,
++			const char *infile,
++			const char *outfile)
+ {
+ 	snd_config_t *cfg = NULL;
+ 	int err = 0;
+ 
+-	tplg->out_fd =
+-		open(outfile, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+-	if (tplg->out_fd < 0) {
+-		SNDERR("error: failed to open %s err %d\n",
+-			outfile, -errno);
+-		return -errno;
+-	}
+-
+ 	err = tplg_load_config(infile, &cfg);
+ 	if (err < 0) {
+ 		SNDERR("error: failed to load topology file %s\n",
+ 			infile);
+-		goto out_close;
++		return err;
+ 	}
+ 
+ 	err = tplg_parse_config(tplg, cfg);
+ 	if (err < 0) {
+ 		SNDERR("error: failed to parse topology\n");
+-		goto out;
+-	}
+-
+-	err = tplg_build_integ(tplg);
+-	if (err < 0) {
+-		SNDERR("error: failed to check topology integrity\n");
+-		goto out;
+-	}
+-
+-	err = tplg_write_data(tplg);
+-	if (err < 0) {
+-		SNDERR("error: failed to write data %d\n", err);
+-		goto out;
++		return err;
+ 	}
+ 
+-out:
+ 	snd_config_delete(cfg);
+-out_close:
+-	close(tplg->out_fd);
+-	return err;
++
++	return snd_tplg_build(tplg, outfile);
+ }
+ 
+ int snd_tplg_add_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+@@ -468,31 +447,38 @@ int snd_tplg_add_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 
+ int snd_tplg_build(snd_tplg_t *tplg, const char *outfile)
+ {
+-	int err;
+-
+-	tplg->out_fd =
+-		open(outfile, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+-	if (tplg->out_fd < 0) {
+-		SNDERR("error: failed to open %s err %d\n",
+-			outfile, -errno);
+-		return -errno;
+-	}
++	int fd, err;
++	ssize_t r;
+ 
+ 	err = tplg_build_integ(tplg);
+ 	if (err < 0) {
+ 		SNDERR("error: failed to check topology integrity\n");
+-		goto out;
++		return err;
+ 	}
+ 
+ 	err = tplg_write_data(tplg);
+ 	if (err < 0) {
+ 		SNDERR("error: failed to write data %d\n", err);
+-		goto out;
++		return err;
+ 	}
+ 
+-out:
+-	close(tplg->out_fd);
+-	return err;
++	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
++	if (fd < 0) {
++		SNDERR("error: failed to open %s err %d\n", outfile, -errno);
++		return -errno;
++	}
++	r = write(fd, tplg->bin, tplg->bin_size);
++	close(fd);
++	if (r < 0) {
++		err = -errno;
++		SNDERR("error: write error: %s\n", strerror(errno));
++		return err;
++	}
++	if ((size_t)r != tplg->bin_size) {
++		SNDERR("error: partial write (%zd != %zd)\n", r, tplg->bin_size);
++		return -EIO;
++	}
++	return 0;
+ }
+ 
+ int snd_tplg_set_manifest_data(snd_tplg_t *tplg, const void *data, int len)
+@@ -571,8 +557,8 @@ snd_tplg_t *snd_tplg_new(void)
+ 
+ void snd_tplg_free(snd_tplg_t *tplg)
+ {
+-	if (tplg->manifest_pdata)
+-		free(tplg->manifest_pdata);
++	free(tplg->bin);
++	free(tplg->manifest_pdata);
+ 
+ 	tplg_elem_free_list(&tplg->tlv_list);
+ 	tplg_elem_free_list(&tplg->widget_list);
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index e16c78d49709..87e6c9a517de 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -60,8 +60,9 @@ typedef enum _snd_pcm_rates {
+ 
+ struct snd_tplg {
+ 	/* out file */
+-	int out_fd;
+-	size_t out_pos;
++	unsigned char *bin;
++	size_t bin_pos;
++	size_t bin_size;
+ 
+ 	int verbose;
+ 	unsigned int version;
+-- 
+2.16.4
+

@@ -1,0 +1,91 @@
+From c765615bce7903a0f3e3d5e7826483708398c184 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 31 Dec 2019 15:27:58 +0100
+Subject: [PATCH 51/63] topology: fix the ops parser (accept integer/hexa
+ values)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/ops.c | 36 +++++++++++++++++++++++++-----------
+ 1 file changed, 25 insertions(+), 11 deletions(-)
+
+diff --git a/src/topology/ops.c b/src/topology/ops.c
+index ad72ef1b2cb6..2885c7814604 100644
+--- a/src/topology/ops.c
++++ b/src/topology/ops.c
+@@ -67,6 +67,7 @@ int tplg_parse_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED, snd_config_t *cfg,
+ 	snd_config_t *n;
+ 	struct snd_soc_tplg_ctl_hdr *hdr = private;
+ 	const char *id, *value;
++	int ival;
+ 
+ 	tplg_dbg("\tOps\n");
+ 	hdr->size = sizeof(*hdr);
+@@ -80,17 +81,23 @@ int tplg_parse_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED, snd_config_t *cfg,
+ 			continue;
+ 
+ 		/* get value - try strings then ints */
+-		if (snd_config_get_string(n, &value) < 0)
+-			continue;
++		if (snd_config_get_type(n) == SND_CONFIG_TYPE_STRING) {
++			if (snd_config_get_string(n, &value) < 0)
++				continue;
++			ival = lookup_ops(value);
++		} else {
++			if (tplg_get_integer(n, &ival, 0))
++				continue;
++		}
+ 
+ 		if (strcmp(id, "info") == 0)
+-			hdr->ops.info = lookup_ops(value);
++			hdr->ops.info = ival;
+ 		else if (strcmp(id, "put") == 0)
+-			hdr->ops.put = lookup_ops(value);
++			hdr->ops.put = ival;
+ 		else if (strcmp(id, "get") == 0)
+-			hdr->ops.get = lookup_ops(value);
++			hdr->ops.get = ival;
+ 
+-		tplg_dbg("\t\t%s = %s\n", id, value);
++		tplg_dbg("\t\t%s = %d\n", id, ival);
+ 	}
+ 
+ 	return 0;
+@@ -146,6 +153,7 @@ int tplg_parse_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	snd_config_t *n;
+ 	struct snd_soc_tplg_bytes_control *be = private;
+ 	const char *id, *value;
++	int ival;
+ 
+ 	tplg_dbg("\tExt Ops\n");
+ 
+@@ -158,15 +166,21 @@ int tplg_parse_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			continue;
+ 
+ 		/* get value - try strings then ints */
+-		if (snd_config_get_string(n, &value) < 0)
+-			continue;
++		if (snd_config_get_type(n) == SND_CONFIG_TYPE_STRING) {
++			if (snd_config_get_string(n, &value) < 0)
++				continue;
++			ival = lookup_ops(value);
++		} else {
++			if (tplg_get_integer(n, &ival, 0))
++				continue;
++		}
+ 
+ 		if (strcmp(id, "info") == 0)
+-			be->ext_ops.info = lookup_ops(value);
++			be->ext_ops.info = ival;
+ 		else if (strcmp(id, "put") == 0)
+-			be->ext_ops.put = lookup_ops(value);
++			be->ext_ops.put = ival;
+ 		else if (strcmp(id, "get") == 0)
+-			be->ext_ops.get = lookup_ops(value);
++			be->ext_ops.get = ival;
+ 
+ 		tplg_dbg("\t\t%s = %s\n", id, value);
+ 	}
+-- 
+2.16.4
+

@@ -1,7 +1,7 @@
 #
 # spec file for package python-boltons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-boltons
-Version:        19.1.0
+Version:        20.0.0
 Release:        0
 Summary:        The "Boltons" utility package for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/mahmoud/boltons
-Source:         https://github.com/mahmoud/boltons/archive/19.1.0.tar.gz#/boltons-%{version}.tar.gz
+URL:            https://github.com/mahmoud/boltons
+Source:         https://github.com/mahmoud/boltons/archive/%{version}.tar.gz#/boltons-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,7 +48,7 @@ http://boltons.readthedocs.org.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 %license LICENSE

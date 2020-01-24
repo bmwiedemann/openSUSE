@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:04:12 UTC 2020 - pgajdos@suse.com
+
+- do not require python-cffi, it will be required by
+  python-PyNaCl
+
+-------------------------------------------------------------------
 Tue Jan 14 12:55:34 UTC 2020 - pgajdos@suse.com
 
 - be able to run test on 15

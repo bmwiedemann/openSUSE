@@ -1,0 +1,109 @@
+From b336aea507b80493cdae439f09f710eec4bcd4ae Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 20 Dec 2019 14:59:00 +0100
+Subject: [PATCH 44/63] topology: add snd_tplg_create() with flags
+
+Add SND_TPLG_CREATE_VERBOSE and SND_TPLG_CREATE_DAPM_NOSORT
+flags for the special operations.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/topology.h        | 10 ++++++++++
+ src/topology/dapm.c       |  5 ++++-
+ src/topology/parser.c     | 10 +++++++++-
+ src/topology/tplg_local.h |  1 +
+ 4 files changed, 24 insertions(+), 2 deletions(-)
+
+diff --git a/include/topology.h b/include/topology.h
+index 69aa5ed733e3..63c13a9885e9 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -771,12 +771,22 @@ enum snd_tplg_type {
+ /** Fit for all user cases */
+ #define SND_TPLG_INDEX_ALL  0
+ 
++/** Flags for the snd_tplg_create */
++#define SND_TPLG_CREATE_VERBOSE		(1<<0)	/*!< Verbose output */
++#define SND_TPLG_CREATE_DAPM_NOSORT	(1<<1)	/*!< Do not sort DAPM objects by index */
++
+ /**
+  * \brief Create a new topology parser instance.
+  * \return New topology parser instance
+  */
+ snd_tplg_t *snd_tplg_new(void);
+ 
++/**
++ * \brief Create a new topology parser instance.
++ * \return New topology parser instance
++ */
++snd_tplg_t *snd_tplg_create(int flags);
++
+ /**
+  * \brief Free a topology parser instance.
+  * \param tplg Topology parser instance
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index 2bdacedca125..d6c15fc1dfaa 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -268,7 +268,10 @@ struct tplg_elem *tplg_elem_new_route(snd_tplg_t *tplg, int index)
+ 		return NULL;
+ 
+ 	elem->index = index;
+-	tplg_elem_insert(elem, &tplg->route_list);
++	if (tplg->dapm_sort)
++		tplg_elem_insert(elem, &tplg->route_list);
++	else
++		list_add_tail(&elem->list, &tplg->route_list);
+ 	strcpy(elem->id, "line");
+ 	elem->type = SND_TPLG_TYPE_DAPM_GRAPH;
+ 	elem->size = sizeof(*line);
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index de5edd1b6591..8f810f751533 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -432,7 +432,7 @@ static bool is_little_endian(void)
+ 	return false;
+ }
+ 
+-snd_tplg_t *snd_tplg_new(void)
++snd_tplg_t *snd_tplg_create(int flags)
+ {
+ 	snd_tplg_t *tplg;
+ 
+@@ -445,6 +445,9 @@ snd_tplg_t *snd_tplg_new(void)
+ 	if (!tplg)
+ 		return NULL;
+ 
++	tplg->verbose = !!(flags & SND_TPLG_CREATE_VERBOSE);
++	tplg->dapm_sort = (flags & SND_TPLG_CREATE_DAPM_NOSORT) == 0;
++
+ 	tplg->manifest.size = sizeof(struct snd_soc_tplg_manifest);
+ 
+ 	INIT_LIST_HEAD(&tplg->tlv_list);
+@@ -469,6 +472,11 @@ snd_tplg_t *snd_tplg_new(void)
+ 	return tplg;
+ }
+ 
++snd_tplg_t *snd_tplg_new(void)
++{
++	return snd_tplg_create(0);
++}
++
+ void snd_tplg_free(snd_tplg_t *tplg)
+ {
+ 	free(tplg->bin);
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index 42a3aa96ba0e..74b3a55cada4 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -66,6 +66,7 @@ struct snd_tplg {
+ 	size_t bin_size;
+ 
+ 	int verbose;
++	unsigned int dapm_sort: 1;
+ 	unsigned int version;
+ 
+ 	/* runtime state */
+-- 
+2.16.4
+

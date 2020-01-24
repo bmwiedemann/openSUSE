@@ -1,0 +1,30 @@
+From f77a269370af917585df59d8c21c89bca07b5b73 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 3 Dec 2019 20:51:56 +0100
+Subject: [PATCH 12/26] configure: Fix linking of alsatplg with the older libs
+
+BugLink: https://github.com/alsa-project/alsa-utils/issues/33
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ configure.ac | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index a4a2dd4480f7..4bee49be81ba 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -70,6 +70,11 @@ AM_CONDITIONAL(HAVE_TOPOLOGY, test "$have_topology" = "yes")
+ AM_CONDITIONAL(HAVE_SAMPLERATE, test "$have_samplerate" = "yes")
+ AM_CONDITIONAL(HAVE_FFADO, test "$have_ffado" = "yes")
+ 
++# old libasound with the topology routines in the main library
++if test "x$have_topology" = "xyes" -a "x$ALSA_TOPOLOGY_LIBS" = "x"; then
++  ALSA_TOPOLOGY_LIBS="$ALSA_LIBS"
++fi
++
+ dnl Use tinyalsa
+ alsabat_backend_tiny=
+ AC_ARG_ENABLE(alsabat_backend_tiny,
+-- 
+2.16.4
+

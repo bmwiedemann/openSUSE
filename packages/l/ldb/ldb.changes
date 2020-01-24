@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 17:28:23 UTC 2020 - David Mulder <david.mulder@suse.com>
+
+ldb: Release ldb 2.0.8
+  + Upgrade waf to version 2.0.18 to match the rest of Samba 4.11.x
+    (bso#13846)
+
+-------------------------------------------------------------------
+Fri Jan 17 16:43:19 UTC 2020 - David Mulder <dmulder@suse.com>
+
+- libldb1 fails to migrate to libldb2 when libldb2 version is less
+  than libldb1 version; (bsc#1160341)
+
+-------------------------------------------------------------------
 Thu Dec 19 09:46:41 UTC 2019 - Noel Power <nopower@suse.com>
 
 - Add obsolete ldb1 directive to baselibs.conf

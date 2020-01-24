@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>707387</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e069c9587715bed4b48a16e0564228be</srcmd5>
+    <version>0.1.1</version>
+    <time>1579867903</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cage-0.1.1-new-wlroots.patch: make it work with newer wlroots</comment>
+    <requestid>766649</requestid>
+  </revision>
 </revisionlist>

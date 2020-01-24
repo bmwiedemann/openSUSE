@@ -1,0 +1,28 @@
+From a78dd1bd1e9b47c2aee9b1e066de515b6854695a Mon Sep 17 00:00:00 2001
+From: Bertware <bert.marcelis@outlook.com>
+Date: Mon, 13 Jan 2020 10:21:33 +0100
+Subject: [PATCH 59/63] Quote strings containing [ or ] when saving an alsa
+ config
+
+Signed-off-by: Bert Marcelis <bert.marcelis@outlook.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/conf.c b/src/conf.c
+index c4db9f21a15e..50d0403452a0 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -1531,6 +1531,8 @@ static void string_print(char *str, int id, snd_output_t *out)
+ 	case '.':
+ 	case '{':
+ 	case '}':
++	case '[':
++	case ']':
+ 	case '\'':
+ 	case '"':
+ 		goto quoted;
+-- 
+2.16.4
+

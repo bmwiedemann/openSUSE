@@ -1,0 +1,25 @@
+From 74f2a0f0884df7b9f2d08d07456a3bc37d1a512e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 13 Jan 2020 13:36:55 +0100
+Subject: [PATCH 5/6] ucm2: fix the verb path in chtrt5645/chtrt5645-dmic2.conf
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtrt5645/chtrt5645-dmic2.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/chtrt5645/chtrt5645-dmic2.conf b/ucm2/chtrt5645/chtrt5645-dmic2.conf
+index 9bbebfaa66cf..2ea095ca5261 100644
+--- a/ucm2/chtrt5645/chtrt5645-dmic2.conf
++++ b/ucm2/chtrt5645/chtrt5645-dmic2.conf
+@@ -1,6 +1,6 @@
+ Syntax 2
+ Comment "Intel SoC Audio Device"
+ SectionUseCase."HiFi" {
+-	File "../LENOVO-80XF-LenovoMIIX320_10ICR-LNVNB161216/HiFi.conf"
++	File "HiFi-dmic2.conf"
+ 	Comment "Default"
+ }
+-- 
+2.16.4
+

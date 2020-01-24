@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -89,7 +89,8 @@ developing applications that use %{name}.
 
 %build
 # wipe bogus FETCH
-sed -i~ '/FETCH/d;232,+7d' configure.ac
+grep -n FETCH configure.ac
+sed -i~ '/FETCH/d;246,+7d' configure.ac
 diff -u "$_"~ "$_" && exit 1
 export DUNE=$(type -P dune)
 export CPPO=$(type -P cppo)
@@ -108,6 +109,7 @@ dune_release_pkgs='opam,opam-client,opam-core,opam-format,opam-installer,opam-re
 %files -f %{name}.files
 %doc CHANGES
 %{_bindir}/opam
+%{_mandir}/man*/*
 
 %files devel -f %{name}.files.devel
 

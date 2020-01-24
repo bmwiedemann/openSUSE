@@ -3938,4 +3938,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>764253</requestid>
   </revision>
+  <revision rev="365" vrev="237">
+    <srcmd5>6badafb916019031659b1f16610eba2f</srcmd5>
+    <version>unknown</version>
+    <time>1579867647</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patch
+  U_0002-r600-Move-get_pic_param-to-radeon_vce.c.patch
+  U_0003-radeon-Move-si_get_pic_param-to-radeon_vce.c.patch
+  U_0004-radeon-Fix-multiple-definition-error-with-radeon_deb.patch
+  U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
+  U_0006-nouveau-nvc0-add-extern-keyword-to-nvc0_miptree_vtbl.patch
+  * fixes build with gcc10 using -fno-common as default now (boo#1160578)</comment>
+    <requestid>766379</requestid>
+  </revision>
 </revisionlist>

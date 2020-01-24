@@ -1,0 +1,173 @@
+From bee8d4fcaa52d00950d035ec561513c2b9e7cac7 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 14 Dec 2019 19:20:02 +0100
+Subject: [PATCH 38/63] topology: add binary output from the builder
+
+- snd_tplg_build_bin()
+- snd_tplg_build_bin_file()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/topology.h    | 22 +++++++++++++-
+ src/topology/parser.c | 79 ++++++++++++++++++++++++++++++++++++++++++---------
+ 2 files changed, 87 insertions(+), 14 deletions(-)
+
+diff --git a/include/topology.h b/include/topology.h
+index 27da7308dd62..c9ef554a610f 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -791,7 +791,18 @@ void snd_tplg_free(snd_tplg_t *tplg);
+  * \return Zero on success, otherwise a negative error code
+  */
+ int snd_tplg_build_file(snd_tplg_t *tplg, const char *infile,
+-	const char *outfile);
++			const char *outfile);
++
++/**
++ * \brief Parse and build topology text file into binary file.
++ * \param tplg Topology instance.
++ * \param infile Topology text input file to be parsed
++ * \param bin Binary topology output buffer (malloc).
++ * \param size Binary topology output buffer size in bytes.
++ * \return Zero on success, otherwise a negative error code
++ */
++int snd_tplg_build_bin_file(snd_tplg_t *tplg, const char *infile,
++			    void **bin, size_t *size);
+ 
+ /**
+  * \brief Enable verbose reporting of binary file output
+@@ -1089,6 +1100,15 @@ int snd_tplg_add_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+  */
+ int snd_tplg_build(snd_tplg_t *tplg, const char *outfile);
+ 
++/**
++ * \brief Build all registered topology data into memory.
++ * \param tplg Topology instance.
++ * \param bin Binary topology output buffer (malloc).
++ * \param size Binary topology output buffer size in bytes.
++ * \return Zero on success, otherwise a negative error code
++ */
++int snd_tplg_build_bin(snd_tplg_t *tplg, void **bin, size_t *size);
++
+ /**
+  * \brief Attach private data to topology manifest.
+  * \param tplg Topology instance.
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 98a9f9e9deac..861565b734ad 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -393,9 +393,7 @@ static int tplg_build_integ(snd_tplg_t *tplg)
+ 	return err;
+ }
+ 
+-int snd_tplg_build_file(snd_tplg_t *tplg,
+-			const char *infile,
+-			const char *outfile)
++static int tplg_load(snd_tplg_t *tplg, const char *infile)
+ {
+ 	snd_config_t *cfg = NULL;
+ 	int err = 0;
+@@ -414,10 +412,53 @@ int snd_tplg_build_file(snd_tplg_t *tplg,
+ 	}
+ 
+ 	snd_config_delete(cfg);
++	return 0;
++}
++
++static int tplg_build(snd_tplg_t *tplg)
++{
++	int err;
++
++	err = tplg_build_integ(tplg);
++	if (err < 0) {
++		SNDERR("error: failed to check topology integrity\n");
++		return err;
++	}
++
++	err = tplg_write_data(tplg);
++	if (err < 0) {
++		SNDERR("error: failed to write data %d\n", err);
++		return err;
++	}
++	return 0;
++}
++
++int snd_tplg_build_file(snd_tplg_t *tplg,
++			const char *infile,
++			const char *outfile)
++{
++	int err;
++
++	err = tplg_load(tplg, infile);
++	if (err < 0)
++		return err;
+ 
+ 	return snd_tplg_build(tplg, outfile);
+ }
+ 
++int snd_tplg_build_bin_file(snd_tplg_t *tplg,
++			    const char *infile,
++			    void **bin, size_t *size)
++{
++	int err;
++
++	err = tplg_load(tplg, infile);
++	if (err < 0)
++		return err;
++
++	return snd_tplg_build_bin(tplg, bin, size);
++}
++
+ int snd_tplg_add_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ {
+ 	switch (t->type) {
+@@ -450,17 +491,9 @@ int snd_tplg_build(snd_tplg_t *tplg, const char *outfile)
+ 	int fd, err;
+ 	ssize_t r;
+ 
+-	err = tplg_build_integ(tplg);
+-	if (err < 0) {
+-		SNDERR("error: failed to check topology integrity\n");
+-		return err;
+-	}
+-
+-	err = tplg_write_data(tplg);
+-	if (err < 0) {
+-		SNDERR("error: failed to write data %d\n", err);
++	err = tplg_build(tplg);
++	if (err < 0)
+ 		return err;
+-	}
+ 
+ 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+ 	if (fd < 0) {
+@@ -481,6 +514,26 @@ int snd_tplg_build(snd_tplg_t *tplg, const char *outfile)
+ 	return 0;
+ }
+ 
++int snd_tplg_build_bin(snd_tplg_t *tplg,
++		       void **bin, size_t *size)
++{
++	int err;
++
++	err = tplg_build(tplg);
++	if (err < 0)
++		return err;
++
++	err = tplg_build(tplg);
++	if (err < 0)
++		return err;
++
++	*bin = tplg->bin;
++	*size = tplg->bin_size;
++	tplg->bin = NULL;
++	tplg->bin_size = tplg->bin_pos = 0;
++	return 0;
++}
++
+ int snd_tplg_set_manifest_data(snd_tplg_t *tplg, const void *data, int len)
+ {
+ 	if (len <= 0)
+-- 
+2.16.4
+

@@ -52,4 +52,21 @@
     	subscriptions would be serially dispatched and block the disk IO thread.</comment>
     <requestid>617742</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8227c9501e0afe46600b7b442fac9755</srcmd5>
+    <version>unknown</version>
+    <time>1579867790</time>
+    <user>dimstar_suse</user>
+    <comment>- add Conflicts to fix
+  ```
+  found conflict of python3-watchman-1.4.0-20.1.x86_64 with watchman-python-1.3.0-3.6.x86_64
+    /usr/bin/watchman-make
+    /usr/bin/watchman-wait
+  ```
+
+- spec-cleaned
+- removed python2 bindings
+- enabled python3 bindings as python3-watchman</comment>
+    <requestid>766763</requestid>
+  </revision>
 </revisionlist>

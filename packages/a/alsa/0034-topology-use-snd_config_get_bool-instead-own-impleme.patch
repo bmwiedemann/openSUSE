@@ -1,0 +1,207 @@
+From 5925a6d870331c631f85ed4e18a8c5e6459b3c36 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 14 Dec 2019 13:50:04 +0100
+Subject: [PATCH 34/63] topology: use snd_config_get_bool() instead own
+ implementation
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/ctl.c  |  9 +++------
+ src/topology/dapm.c |  9 ++++-----
+ src/topology/data.c | 15 ++++++++++++---
+ src/topology/pcm.c  | 29 +++++++++++++++--------------
+ 4 files changed, 34 insertions(+), 28 deletions(-)
+
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index e1896f46c576..9190efefb575 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -657,13 +657,10 @@ int tplg_parse_control_mixer(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "invert") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
+ 				return -EINVAL;
+-
+-			if (strcmp(val, "true") == 0)
+-				mc->invert = 1;
+-			else if (strcmp(val, "false") == 0)
+-				mc->invert = 0;
++			mc->invert = ival;
+ 
+ 			tplg_dbg("\t%s: %d\n", id, mc->invert);
+ 			continue;
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index c6fd793d0d72..ad7092107896 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -479,8 +479,7 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+ 	const char *id, *val = NULL;
+-	int widget_type, err;
+-	int ival;
++	int widget_type, err, ival;
+ 
+ 	elem = tplg_elem_new_common(tplg, cfg, NULL, SND_TPLG_TYPE_DAPM_WIDGET);
+ 	if (!elem)
+@@ -531,11 +530,11 @@ int tplg_parse_dapm_widget(snd_tplg_t *tplg,
+ 		}
+ 
+ 		if (strcmp(id, "no_pm") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
+ 				return -EINVAL;
+ 
+-			if (strcmp(val, "true") == 0)
+-				widget->reg = -1;
++			widget->reg = ival ? -1 : 0;
+ 
+ 			tplg_dbg("\t%s: %s\n", id, val);
+ 			continue;
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 0edfe54f3383..6b1337b39bad 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -557,6 +557,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 	unsigned int type, num_tuples = 0;
+ 	struct tplg_tuple *tuple;
+ 	unsigned long int tuple_val;
++	int ival;
+ 
+ 	snd_config_get_id(cfg, &id);
+ 
+@@ -607,25 +608,33 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 
+ 		switch (type) {
+ 		case SND_SOC_TPLG_TUPLE_TYPE_UUID:
++			if (snd_config_get_string(n, &value) < 0)
++				continue;
+ 			if (get_uuid(value, tuple->uuid) < 0)
+ 				goto err;
+ 			break;
+ 
+ 		case SND_SOC_TPLG_TUPLE_TYPE_STRING:
++			if (snd_config_get_string(n, &value) < 0)
++				continue;
+ 			snd_strlcpy(tuple->string, value,
+ 				SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+ 			tplg_dbg("\t\t%s = %s\n", tuple->token, tuple->string);
+ 			break;
+ 
+ 		case SND_SOC_TPLG_TUPLE_TYPE_BOOL:
+-			if (strcmp(value, "true") == 0)
+-				tuple->value = 1;
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
++				continue;
++			tuple->value = ival;
+ 			tplg_dbg("\t\t%s = %d\n", tuple->token, tuple->value);
+ 			break;
+ 
+ 		case SND_SOC_TPLG_TUPLE_TYPE_BYTE:
+ 		case SND_SOC_TPLG_TUPLE_TYPE_SHORT:
+ 		case SND_SOC_TPLG_TUPLE_TYPE_WORD:
++			if (snd_config_get_string(n, &value) < 0)
++				continue;
+ 			errno = 0;
+ 			/* no support for negative value */
+ 			tuple_val = strtoul(value, NULL, 0);
+@@ -1012,7 +1021,7 @@ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+-	const char *id, *val = NULL;
++	const char *id;
+ 	int err = 0, ival;
+ 	struct tplg_elem *elem;
+ 
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index d6c52b4752ee..6364e24f3c43 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -669,8 +669,8 @@ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	struct tplg_elem *elem;
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+-	const char *id, *val = NULL;
+-	int err;
++	const char *id;
++	int err, ival;
+ 
+ 	elem = tplg_elem_new_common(tplg, cfg, NULL, SND_TPLG_TYPE_PCM);
+ 	if (!elem)
+@@ -709,11 +709,11 @@ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		}
+ 
+ 		if (strcmp(id, "compress") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
+ 				return -EINVAL;
+ 
+-			if (strcmp(val, "true") == 0)
+-				pcm->compress = 1;
++			pcm->compress = ival;
+ 
+ 			tplg_dbg("\t%s: %s\n", id, val);
+ 			continue;
+@@ -1107,7 +1107,7 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+ 	const char *id, *val = NULL;
+-	int ret;
++	int ret, ival;
+ 
+ 	elem = tplg_elem_new_common(tplg, cfg, NULL, SND_TPLG_TYPE_HW_CONFIG);
+ 	if (!elem)
+@@ -1178,11 +1178,11 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		if (strcmp(id, "bclk_invert") == 0 ||
+ 		    strcmp(id, "invert_bclk") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
+ 				return -EINVAL;
+ 
+-			if (!strcmp(val, "true"))
+-				hw_cfg->invert_bclk = true;
++			hw_cfg->invert_bclk = ival;
+ 			continue;
+ 		}
+ 
+@@ -1209,11 +1209,11 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		if (strcmp(id, "fsync_invert") == 0 ||
+ 		    strcmp(id, "invert_fsync") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
+ 				return -EINVAL;
+ 
+-			if (!strcmp(val, "true"))
+-				hw_cfg->invert_fsync = true;
++			hw_cfg->invert_fsync = ival;
+ 			continue;
+ 		}
+ 
+@@ -1254,10 +1254,11 @@ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 		if (strcmp(id, "pm_gate_clocks") == 0 ||
+ 		    strcmp(id, "clock_gated") == 0) {
+-			if (snd_config_get_string(n, &val) < 0)
++			ival = snd_config_get_bool(n);
++			if (ival < 0)
+ 				return -EINVAL;
+ 
+-			if (!strcmp(val, "true"))
++			if (ival)
+ 				hw_cfg->clock_gated =
+ 					SND_SOC_TPLG_DAI_CLK_GATE_GATED;
+ 			else
+-- 
+2.16.4
+

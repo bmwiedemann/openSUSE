@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 08:57:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on non-x86 architectures
+- Add _constraints to avoid build failures
+
+-------------------------------------------------------------------
 Sun Jan  5 07:58:23 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - Update to version 1.1:

@@ -1,0 +1,331 @@
+From 4a0efdc87355d5789876e20b9530dc85224ad281 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 15 Dec 2019 17:24:50 +0100
+Subject: [PATCH 42/63] topology: add parser to the tplg_table
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/elem.c       | 35 ++++++++++++++++++
+ src/topology/parser.c     | 90 +++++------------------------------------------
+ src/topology/tplg_local.h |  3 ++
+ 3 files changed, 47 insertions(+), 81 deletions(-)
+
+diff --git a/src/topology/elem.c b/src/topology/elem.c
+index 92ca7da4c4aa..e79a68b71a91 100644
+--- a/src/topology/elem.c
++++ b/src/topology/elem.c
+@@ -23,112 +23,139 @@
+ struct tplg_table tplg_table[] = {
+ 	{
+ 		.name  = "manifest",
++		.id    = "SectionManifest",
+ 		.loff  = offsetof(snd_tplg_t, manifest_list),
+ 		.type  = SND_TPLG_TYPE_MANIFEST,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_MANIFEST,
+ 		.size  = sizeof(struct snd_soc_tplg_manifest),
+ 		.enew  = 1,
++		.parse = tplg_parse_manifest_data,
+ 	},
+ 	{
+ 		.name  = "control mixer",
++		.id    = "SectionControlMixer",
+ 		.loff  = offsetof(snd_tplg_t, mixer_list),
+ 		.type  = SND_TPLG_TYPE_MIXER,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_MIXER,
+ 		.size  = sizeof(struct snd_soc_tplg_mixer_control),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_control_mixer,
+ 	},
+ 	{
+ 		.name  = "control enum",
++		.id    = "SectionControlEnum",
+ 		.loff  = offsetof(snd_tplg_t, enum_list),
+ 		.type  = SND_TPLG_TYPE_ENUM,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_ENUM,
+ 		.size  = sizeof(struct snd_soc_tplg_enum_control),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_control_enum,
+ 	},
+ 	{
+ 		.name  = "control extended (bytes)",
++		.id    = "SectionControlBytes",
+ 		.loff  = offsetof(snd_tplg_t, bytes_ext_list),
+ 		.type  = SND_TPLG_TYPE_BYTES,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_BYTES,
+ 		.size  = sizeof(struct snd_soc_tplg_bytes_control),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_control_bytes,
+ 	},
+ 	{
+ 		.name  = "dapm widget",
++		.id    = "SectionWidget",
+ 		.loff  = offsetof(snd_tplg_t, widget_list),
+ 		.type  = SND_TPLG_TYPE_DAPM_WIDGET,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_DAPM_WIDGET,
+ 		.size  = sizeof(struct snd_soc_tplg_dapm_widget),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_dapm_widget,
+ 	},
+ 	{
+ 		.name  = "pcm",
++		.id    = "SectionPCM",
+ 		.loff  = offsetof(snd_tplg_t, pcm_list),
+ 		.type  = SND_TPLG_TYPE_PCM,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_PCM,
+ 		.size  = sizeof(struct snd_soc_tplg_pcm),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_pcm,
+ 	},
+ 	{
+ 		.name  = "physical dai",
++		.id    = "SectionDAI",
+ 		.loff  = offsetof(snd_tplg_t, dai_list),
+ 		.type  = SND_TPLG_TYPE_DAI,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_DAI,
+ 		.size  = sizeof(struct snd_soc_tplg_dai),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_dai,
+ 	},
+ 	{
+ 		.name  = "be",
++		.id    = "SectionBE",
++		.id2   = "SectionLink",
+ 		.loff  = offsetof(snd_tplg_t, be_list),
+ 		.type  = SND_TPLG_TYPE_BE,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_BACKEND_LINK,
+ 		.size  = sizeof(struct snd_soc_tplg_link_config),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_link,
+ 	},
+ 	{
+ 		.name  = "cc",
++		.id    = "SectionCC",
+ 		.loff  = offsetof(snd_tplg_t, cc_list),
+ 		.type  = SND_TPLG_TYPE_CC,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_CODEC_LINK,
+ 		.size  = sizeof(struct snd_soc_tplg_link_config),
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_cc,
+ 	},
+ 	{
+ 		.name  = "route (dapm graph)",
++		.id = "SectionGraph",
+ 		.loff  = offsetof(snd_tplg_t, route_list),
+ 		.type  = SND_TPLG_TYPE_DAPM_GRAPH,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_DAPM_GRAPH,
+ 		.build = 1,
++		.parse = tplg_parse_dapm_graph,
+ 	},
+ 	{
+ 		.name  = "private data",
++		.id    = "SectionData",
+ 		.loff  = offsetof(snd_tplg_t, pdata_list),
+ 		.type  = SND_TPLG_TYPE_DATA,
+ 		.tsoc  = SND_SOC_TPLG_TYPE_PDATA,
+ 		.build = 1,
+ 		.enew  = 1,
++		.parse = tplg_parse_data,
+ 	},
+ 	{
+ 		.name  = "text",
++		.id    = "SectionText",
+ 		.loff  = offsetof(snd_tplg_t, text_list),
+ 		.type  = SND_TPLG_TYPE_TEXT,
+ 		.size  = sizeof(struct tplg_texts),
+ 		.enew  = 1,
++		.parse = tplg_parse_text,
+ 	},
+ 	{
+ 		.name  = "tlv",
++		.id    = "SectionTLV",
+ 		.loff  = offsetof(snd_tplg_t, tlv_list),
+ 		.type  = SND_TPLG_TYPE_TLV,
+ 		.size  = sizeof(struct snd_soc_tplg_ctl_tlv),
+ 		.enew  = 1,
++		.parse = tplg_parse_tlv,
+ 	},
+ 	{
+ 		.name  = "stream config",
+@@ -139,30 +166,38 @@ struct tplg_table tplg_table[] = {
+ 	},
+ 	{
+ 		.name  = "stream capabilities",
++		.id    = "SectionPCMCapabilities",
+ 		.loff  = offsetof(snd_tplg_t, pcm_caps_list),
+ 		.type  = SND_TPLG_TYPE_STREAM_CAPS,
+ 		.size  = sizeof(struct snd_soc_tplg_stream_caps),
+ 		.enew  = 1,
++		.parse = tplg_parse_stream_caps,
+ 	},
+ 	{
+ 		.name  = "token",
++		.id    = "SectionVendorTokens",
+ 		.loff  = offsetof(snd_tplg_t, token_list),
+ 		.type  = SND_TPLG_TYPE_TOKEN,
+ 		.enew  = 1,
++		.parse = tplg_parse_tokens,
+ 	},
+ 	{
+ 		.name  = "tuple",
++		.id    = "SectionVendorTuples",
+ 		.loff  = offsetof(snd_tplg_t, tuple_list),
+ 		.type  = SND_TPLG_TYPE_TUPLE,
+ 		.free  = tplg_free_tuples,
+ 		.enew  = 1,
++		.parse = tplg_parse_tuples,
+ 	},
+ 	{
+ 		.name  = "hw config",
++		.id    = "SectionHWConfig",
+ 		.loff  = offsetof(snd_tplg_t, hw_cfg_list),
+ 		.type  = SND_TPLG_TYPE_HW_CONFIG,
+ 		.size  = sizeof(struct snd_soc_tplg_hw_config),
+ 		.enew  = 1,
++		.parse = tplg_parse_hw_config,
+ 	}
+ };
+ 
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index ed864d3223c4..11202769391c 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -142,87 +142,11 @@ int tplg_parse_compound(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ static int tplg_parse_config(snd_tplg_t *tplg, snd_config_t *cfg)
+ {
+-	static struct _parser {
+-		const char *id;
+-		int (*parser)(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+-	} *p, parsers[] = {
+-		{
+-			.id = "SectionTLV",
+-			.parser = tplg_parse_tlv
+-		},
+-		{
+-			.id = "SectionControlMixer",
+-			.parser = tplg_parse_control_mixer
+-		},
+-		{
+-			.id = "SectionControlEnum",
+-			.parser = tplg_parse_control_enum
+-		},
+-		{
+-			.id = "SectionControlBytes",
+-			.parser = tplg_parse_control_bytes
+-		},
+-		{
+-			.id = "SectionWidget",
+-			.parser = tplg_parse_dapm_widget
+-		},
+-		{
+-			.id = "SectionPCMCapabilities",
+-			.parser = tplg_parse_stream_caps
+-		},
+-		{
+-			.id = "SectionPCM",
+-			.parser = tplg_parse_pcm
+-		},
+-		{
+-			.id = "SectionDAI",
+-			.parser = tplg_parse_dai
+-		},
+-		{
+-			.id = "SectionHWConfig",
+-			.parser = tplg_parse_hw_config
+-		},
+-		{
+-			.id = "SectionLink",
+-			.parser = tplg_parse_link
+-		},
+-		{
+-			.id = "SectionBE",
+-			.parser = tplg_parse_link
+-		},
+-		{
+-			.id = "SectionCC",
+-			.parser = tplg_parse_cc
+-		},
+-		{
+-			.id = "SectionGraph",
+-			.parser = tplg_parse_dapm_graph
+-		},
+-		{
+-			.id = "SectionText",
+-			.parser = tplg_parse_text
+-		},
+-		{
+-			.id = "SectionData",
+-			.parser = tplg_parse_data
+-		},
+-		{
+-			.id = "SectionVendorTokens",
+-			.parser = tplg_parse_tokens
+-		},
+-		{
+-			.id = "SectionVendorTuples",
+-			.parser = tplg_parse_tuples
+-		},
+-		{
+-			.id = "SectionManifest",
+-			.parser = tplg_parse_manifest_data
+-		},
+-	};
+ 	int (*parser)(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+ 	const char *id;
++	struct tplg_table *p;
+ 	unsigned int idx;
+ 	int err;
+ 
+@@ -239,10 +163,14 @@ static int tplg_parse_config(snd_tplg_t *tplg, snd_config_t *cfg)
+ 			continue;
+ 
+ 		parser = NULL;
+-		for (idx = 0; idx < ARRAY_SIZE(parsers); idx++) {
+-			p = &parsers[idx];
+-			if (strcmp(id, p->id) == 0) {
+-				parser = p->parser;
++		for (idx = 0; idx < tplg_table_items; idx++) {
++			p = &tplg_table[idx];
++			if (p->id && strcmp(id, p->id) == 0) {
++				parser = p->parse;
++				break;
++			}
++			if (p->id2 && strcmp(id, p->id2) == 0) {
++				parser = p->parse;
+ 				break;
+ 			}
+ 		}
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index 0987898f8336..bea88ba35608 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -199,6 +199,8 @@ struct map_elem {
+ /* mapping table */
+ struct tplg_table {
+ 	const char *name;
++	const char *id;
++	const char *id2;
+ 	off_t loff;
+ 	size_t size;
+ 	int type;
+@@ -206,6 +208,7 @@ struct tplg_table {
+ 	unsigned build: 1;
+ 	unsigned enew: 1;
+ 	void (*free)(void *);
++	int (*parse)(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+ };
+ 
+ extern struct tplg_table tplg_table[];
+-- 
+2.16.4
+

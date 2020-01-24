@@ -1,0 +1,172 @@
+From 14e43a11873d14ec6f16967c83629237ef44ac38 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 14 Dec 2019 14:05:49 +0100
+Subject: [PATCH 36/63] topology: add tplg_get_unsigned() function
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/data.c       | 19 +++++--------------
+ src/topology/parser.c     | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ src/topology/pcm.c        | 13 ++-----------
+ src/topology/tplg_local.h |  1 +
+ 4 files changed, 55 insertions(+), 25 deletions(-)
+
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 6b1337b39bad..9807445e8c37 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -556,7 +556,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 	struct tplg_tuple_set *set;
+ 	unsigned int type, num_tuples = 0;
+ 	struct tplg_tuple *tuple;
+-	unsigned long int tuple_val;
++	unsigned int tuple_val;
+ 	int ival;
+ 
+ 	snd_config_get_id(cfg, &id);
+@@ -598,10 +598,6 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 		if (snd_config_get_id(n, &id) < 0)
+ 			continue;
+ 
+-		/* get value */
+-		if (snd_config_get_string(n, &value) < 0)
+-			continue;
+-
+ 		tuple = &set->tuple[set->num_tuples];
+ 		snd_strlcpy(tuple->token, id,
+ 				SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+@@ -633,14 +629,9 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 		case SND_SOC_TPLG_TUPLE_TYPE_BYTE:
+ 		case SND_SOC_TPLG_TUPLE_TYPE_SHORT:
+ 		case SND_SOC_TPLG_TUPLE_TYPE_WORD:
+-			if (snd_config_get_string(n, &value) < 0)
+-				continue;
+-			errno = 0;
+-			/* no support for negative value */
+-			tuple_val = strtoul(value, NULL, 0);
+-			if ((errno == ERANGE && tuple_val == ULONG_MAX)
+-				|| (errno != 0 && tuple_val == 0)) {
+-				SNDERR("error: tuple %s:strtoul fail\n", id);
++			ival = tplg_get_unsigned(n, &tuple_val, 0);
++			if (ival < 0) {
++				SNDERR("error: tuple %s: %s\n", id, snd_strerror(ival));
+ 				goto err;
+ 			}
+ 
+@@ -654,7 +645,7 @@ static int parse_tuple_set(snd_config_t *cfg,
+ 				goto err;
+ 			}
+ 
+-			tuple->value = (unsigned int) tuple_val;
++			tuple->value = tuple_val;
+ 			tplg_dbg("\t\t%s = 0x%x\n", tuple->token, tuple->value);
+ 			break;
+ 
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 667c8d45517b..f56ad97e42b9 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -55,6 +55,53 @@ int tplg_get_integer(snd_config_t *n, int *val, int base)
+ 	}
+ }
+ 
++/*
++ * Get unsigned integer value
++ */
++int tplg_get_unsigned(snd_config_t *n, unsigned *val, int base)
++{
++	const char *str;
++	long lval;
++	long long llval;
++	unsigned long uval;
++	int err;
++
++	switch (snd_config_get_type(n)) {
++	case SND_CONFIG_TYPE_INTEGER:
++		err = snd_config_get_integer(n, &lval);
++		if (err < 0)
++			return err;
++		if (lval < 0 || lval > UINT_MAX)
++			return -ERANGE;
++		*val = lval;
++		return err;
++	case SND_CONFIG_TYPE_INTEGER64:
++		err = snd_config_get_integer64(n, &llval);
++		if (err < 0)
++			return err;
++		if (llval < 0 || llval > UINT_MAX)
++			return -ERANGE;
++		*val = llval;
++		return err;
++	case SND_CONFIG_TYPE_STRING:
++		err = snd_config_get_string(n, &str);
++		if (err < 0)
++			return err;
++		errno = 0;
++		uval = strtoul(str, NULL, base);
++		if (errno == ERANGE && uval == ULONG_MAX)
++			return -ERANGE;
++		if (errno && uval == 0)
++			return -EINVAL;
++		if (uval > UINT_MAX)
++			return -ERANGE;
++		*val = uval;
++		return 0;
++	default:
++		return -EINVAL;
++	}
++}
++
+ /*
+  * Parse compound
+  */
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index 6364e24f3c43..9b87549cabbd 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -606,8 +606,7 @@ static int tplg_parse_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	struct snd_soc_tplg_pcm *pcm = elem->pcm;
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+-	const char *id, *value = NULL;
+-	unsigned long int id_val;
++	const char *id;
+ 
+ 	snd_config_get_id(cfg, &id);
+ 	tplg_dbg("\t\tFE DAI %s:\n", id);
+@@ -622,19 +621,11 @@ static int tplg_parse_fe_dai(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			continue;
+ 
+ 		if (strcmp(id, "id") == 0) {
+-			if (snd_config_get_string(n, &value) < 0)
+-				continue;
+-			errno = 0;
+-			/* no support for negative value */
+-			id_val = strtoul(value, NULL, 0);
+-			if ((errno == ERANGE && id_val == ULONG_MAX)
+-				|| (errno != 0 && id_val == 0)
+-				|| id_val > UINT_MAX) {
++			if (tplg_get_unsigned(n, &pcm->dai_id, 0)) {
+ 				SNDERR("error: invalid fe dai ID\n");
+ 				return -EINVAL;
+ 			}
+ 
+-			pcm->dai_id = (int) id_val;
+ 			tplg_dbg("\t\t\tindex: %d\n", pcm->dai_id);
+ 		}
+ 	}
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index 991e0b4121bd..e16c78d49709 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -281,6 +281,7 @@ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ 	snd_config_t *cfg, const char *name, enum snd_tplg_type type);
+ 
+ int tplg_get_integer(snd_config_t *n, int *val, int base);
++int tplg_get_unsigned(snd_config_t *n, unsigned *val, int base);
+ 
+ int tplg_parse_channel(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	snd_config_t *cfg, void *private);
+-- 
+2.16.4
+

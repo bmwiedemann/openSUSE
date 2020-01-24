@@ -1,0 +1,67 @@
+From e9e3c3a27d4faad0000a10386da471227b0644d8 Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:05 -0500
+Subject: [PATCH 20/26] alsa-info.sh: Exit script after writing information to
+ stdout
+
+The '--stdout' option is mutually exclusive with uploading the file.
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index bf353deceb7d..372d7ae3d692 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -349,9 +349,7 @@ case "$1" in
+ 		;;
+ 	--stdout)
+ 		DIALOG=""
+-		UPLOAD="no"
+ 		WELCOME="no"
+-		TOSTDOUT="yes"
+ 		;;
+ esac
+ done
+@@ -720,6 +718,7 @@ if [ -n "$1" ]; then
+ 			fi
+ 			cat $FILE
+ 			rm $FILE
++			exit
+ 			;;
+ 		--about)
+ 			echo "Written/Tested by the following users of #alsa on irc.freenode.net:"
+@@ -793,10 +792,8 @@ fi
+ 
+ if [ "$UPLOAD" = "no" ]; then
+ 
+-	if [ -z "$TOSTDOUT" ]; then
+-		mv -f $FILE $NFILE || exit 1
+-		KEEP_OUTPUT="yes"
+-	fi
++	mv -f $FILE $NFILE || exit 1
++	KEEP_OUTPUT="yes"
+ 
+ 	if [[ -n $DIALOG ]]
+ 	then
+@@ -815,11 +812,9 @@ if [ "$UPLOAD" = "no" ]; then
+ 			echo "Your ALSA information is in $NFILE"
+ 			echo ""
+ 		else
+-			if [ -z "$TOSTDOUT" ]; then
+-				echo ""
+-				echo "Your ALSA information is in $NFILE"
+-				echo ""
+-			fi
++			echo ""
++			echo "Your ALSA information is in $NFILE"
++			echo ""
+ 		fi
+ 	fi
+ 
+-- 
+2.16.4
+

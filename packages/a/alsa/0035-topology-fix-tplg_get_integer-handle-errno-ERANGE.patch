@@ -1,0 +1,39 @@
+From 1047a5f3c0d39a3b0579db027f52d7facdf44077 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 14 Dec 2019 13:52:18 +0100
+Subject: [PATCH 35/63] topology: fix tplg_get_integer() - handle errno ==
+ ERANGE
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/parser.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 7e657809307d..667c8d45517b 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -36,14 +36,19 @@ int tplg_get_integer(snd_config_t *n, int *val, int base)
+ 		if (err < 0)
+ 			return err;
+ 		if (lval < INT_MIN || lval > INT_MAX)
+-			return -EINVAL;
++			return -ERANGE;
+ 		*val = lval;
+ 		return err;
+ 	case SND_CONFIG_TYPE_STRING:
+ 		err = snd_config_get_string(n, &str);
+ 		if (err < 0)
+ 			return err;
++		errno = 0;
+ 		*val = strtol(str, NULL, base);
++		if (errno == ERANGE)
++			return -ERANGE;
++		if (errno && *val == 0)
++			return -EINVAL;
+ 		return 0;
+ 	default:
+ 		return -EINVAL;
+-- 
+2.16.4
+

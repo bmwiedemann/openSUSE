@@ -1,0 +1,2375 @@
+From b6c9afb4f59bb678dc834028680d579f47dc273b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 15 Dec 2019 15:24:57 +0100
+Subject: [PATCH 53/63] topology: implement snd_tplg_decode
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/topology.h        |  14 +-
+ src/topology/Makefile.am  |   3 +-
+ src/topology/ctl.c        | 450 ++++++++++++++++++++++++++++++++++++++++------
+ src/topology/dapm.c       | 253 ++++++++++++++++++++++++--
+ src/topology/data.c       | 440 ++++++++++++++++++++++++++++++++++++++++++++-
+ src/topology/decoder.c    | 136 ++++++++++++++
+ src/topology/elem.c       |  80 +++++++++
+ src/topology/parser.c     |  20 ++-
+ src/topology/pcm.c        | 396 ++++++++++++++++++++++++++++++++++------
+ src/topology/save.c       |   3 +
+ src/topology/tplg_local.h |  71 +++++++-
+ 11 files changed, 1727 insertions(+), 139 deletions(-)
+ create mode 100644 src/topology/decoder.c
+
+diff --git a/include/topology.h b/include/topology.h
+index 37bced1a4434..1f52e66ea7b0 100644
+--- a/include/topology.h
++++ b/include/topology.h
+@@ -885,7 +885,10 @@ struct snd_tplg_ctl_template {
+ 	const char *name;	/*!< Control name */
+ 	int access;		/*!< Control access */
+ 	struct snd_tplg_io_ops_template ops;	/*!< operations */
+-	struct snd_tplg_tlv_template *tlv; /*!< non NULL means we have TLV data */
++	union {
++		struct snd_tplg_tlv_template *tlv; /*!< non NULL means we have TLV data */
++		struct snd_tplg_tlv_dbscale_template *tlv_scale; /*!< scale TLV data */
++	};
+ };
+ 
+ /** \struct snd_tplg_mixer_template
+@@ -1155,6 +1158,15 @@ int snd_tplg_set_version(snd_tplg_t *tplg, unsigned int version);
+  */
+ int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags);
+ 
++/**
++ * \brief Decode the binary topology contents.
++ * \param tplg Topology instance.
++ * \param bin Binary topology input buffer.
++ * \param size Binary topology input buffer size.
++ * \return Zero on success, otherwise a negative error code
++ */
++int snd_tplg_decode(snd_tplg_t *tplg, void *bin, size_t size, int dflags);
++
+ /* \} */
+ 
+ #ifdef __cplusplus
+diff --git a/src/topology/Makefile.am b/src/topology/Makefile.am
+index a850ec4c195c..12d1d4455883 100644
+--- a/src/topology/Makefile.am
++++ b/src/topology/Makefile.am
+@@ -28,7 +28,8 @@ libatopology_la_SOURCES =\
+ 	channel.c \
+ 	ops.c \
+ 	elem.c \
+-	save.c
++	save.c \
++	decoder.c
+ 
+ noinst_HEADERS = tplg_local.h
+ 
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 03874b27c76f..24d437aa4a2e 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -621,8 +621,9 @@ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	tplg->channel_idx = 0;
+ 
+ 	/* set channel reg to default state */
+-	for (j = 0; j < SND_SOC_TPLG_MAX_CHAN; j++)
++	for (j = 0; j < SND_SOC_TPLG_MAX_CHAN; j++) {
+ 		ec->channel[j].reg = -1;
++	}
+ 
+ 	tplg_dbg(" Control Enum: %s\n", elem->id);
+ 
+@@ -896,9 +897,14 @@ int tplg_save_control_mixer(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 	return err;
+ }
+ 
+-static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+-		struct snd_tplg_ctl_template *t)
++static int init_ctl_hdr(snd_tplg_t *tplg,
++			struct tplg_elem *parent,
++			struct snd_soc_tplg_ctl_hdr *hdr,
++			struct snd_tplg_ctl_template *t)
+ {
++	struct tplg_elem *elem;
++	int err;
++
+ 	hdr->size = sizeof(struct snd_soc_tplg_ctl_hdr);
+ 	hdr->type = t->type;
+ 
+@@ -924,7 +930,7 @@ static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+ 		&& !(hdr->access & SNDRV_CTL_ELEM_ACCESS_TLV_CALLBACK)) {
+ 
+ 		struct snd_tplg_tlv_template *tlvt = t->tlv;
+-		struct snd_soc_tplg_ctl_tlv *tlv = &hdr->tlv;
++		struct snd_soc_tplg_ctl_tlv *tlv;
+ 		struct snd_tplg_tlv_dbscale_template *scalet;
+ 		struct snd_soc_tplg_tlv_dbscale *scale;
+ 
+@@ -933,6 +939,17 @@ static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+ 			return -EINVAL;
+ 		}
+ 
++		elem = tplg_elem_new_common(tplg, NULL, parent->id,
++					    SND_TPLG_TYPE_TLV);
++		if (!elem)
++			return -ENOMEM;
++
++		tlv = elem->tlv;
++
++		err = tplg_ref_add(parent, SND_TPLG_TYPE_TLV, parent->id);
++		if (err < 0)
++			return err;
++
+ 		tlv->size = sizeof(struct snd_soc_tplg_ctl_tlv);
+ 		tlv->type = tlvt->type;
+ 
+@@ -957,10 +974,10 @@ static int init_ctl_hdr(struct snd_soc_tplg_ctl_hdr *hdr,
+ }
+ 
+ int tplg_add_mixer(snd_tplg_t *tplg, struct snd_tplg_mixer_template *mixer,
+-	struct tplg_elem **e)
++		   struct tplg_elem **e)
+ {
+-	struct snd_soc_tplg_private *priv = mixer->priv;
+ 	struct snd_soc_tplg_mixer_control *mc;
++	struct snd_soc_tplg_private *priv;
+ 	struct tplg_elem *elem;
+ 	int ret, i, num_channels;
+ 
+@@ -979,7 +996,7 @@ int tplg_add_mixer(snd_tplg_t *tplg, struct snd_tplg_mixer_template *mixer,
+ 	/* init new mixer */
+ 	mc = elem->mixer_ctrl;
+ 	mc->size = elem->size;
+-	ret =  init_ctl_hdr(&mc->hdr, &mixer->hdr);
++	ret = init_ctl_hdr(tplg, elem, &mc->hdr, &mixer->hdr);
+ 	if (ret < 0) {
+ 		tplg_elem_free(elem);
+ 		return ret;
+@@ -1000,25 +1017,20 @@ int tplg_add_mixer(snd_tplg_t *tplg, struct snd_tplg_mixer_template *mixer,
+ 	for (i = 0; i < num_channels; i++) {
+ 		struct snd_tplg_channel_elem *channel = &mixer->map->channel[i];
+ 
+-		mc->channel[i].size = channel->size;
++		mc->channel[i].size = sizeof(mc->channel[0]);
+ 		mc->channel[i].reg = channel->reg;
+ 		mc->channel[i].shift = channel->shift;
+ 		mc->channel[i].id = channel->id;
+ 	}
+ 
+ 	/* priv data */
+-	if (priv) {
+-		mc = realloc(mc, elem->size + priv->size);
+-		if (!mc) {
+-			tplg_elem_free(elem);
+-			return -ENOMEM;
+-		}
+-
+-		elem->mixer_ctrl = mc;
+-		elem->size += priv->size;
+-		mc->priv.size = priv->size;
+-		memcpy(mc->priv.data, priv->data,  priv->size);
+-        }
++	priv = mixer->priv;
++	if (priv && priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, priv,
++				    sizeof(*priv) + priv->size);
++		if (ret < 0)
++			return ret;
++	}
+ 
+ 	if (e)
+ 		*e = elem;
+@@ -1026,11 +1038,12 @@ int tplg_add_mixer(snd_tplg_t *tplg, struct snd_tplg_mixer_template *mixer,
+ }
+ 
+ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+-	struct tplg_elem **e)
++		  struct tplg_elem **e)
+ {
+ 	struct snd_soc_tplg_enum_control *ec;
++	struct snd_soc_tplg_private *priv;
+ 	struct tplg_elem *elem;
+-	int ret, i, num_items;
++	int ret, i, num_items, num_channels;
+ 
+ 	tplg_dbg(" Control Enum: %s\n", enum_ctl->hdr.name);
+ 
+@@ -1046,7 +1059,7 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ 
+ 	ec = elem->enum_ctrl;
+ 	ec->size = elem->size;
+-	ret = init_ctl_hdr(&ec->hdr, &enum_ctl->hdr);
++	ret = init_ctl_hdr(tplg, elem, &ec->hdr, &enum_ctl->hdr);
+ 	if (ret < 0) {
+ 		tplg_elem_free(elem);
+ 		return ret;
+@@ -1058,6 +1071,22 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ 	ec->mask = enum_ctl->mask;
+ 	ec->count = enum_ctl->items;
+ 
++	/* set channel reg to default state */
++	for (i = 0; i < SND_SOC_TPLG_MAX_CHAN; i++)
++		ec->channel[i].reg = -1;
++
++	num_channels = enum_ctl->map ? enum_ctl->map->num_channels : 0;
++	ec->num_channels = num_channels;
++
++	for (i = 0; i < num_channels; i++) {
++		struct snd_tplg_channel_elem *channel = &enum_ctl->map->channel[i];
++
++		ec->channel[i].size = sizeof(ec->channel[0]);
++		ec->channel[i].reg = channel->reg;
++		ec->channel[i].shift = channel->shift;
++		ec->channel[i].id = channel->id;
++	}
++
+ 	if (enum_ctl->texts != NULL) {
+ 		for (i = 0; i < num_items; i++) {
+ 			if (enum_ctl->texts[i] != NULL)
+@@ -1077,21 +1106,13 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ 		}
+ 	}
+ 
+-	if (enum_ctl->priv != NULL) {
+-		ec = realloc(ec,
+-			elem->size + enum_ctl->priv->size);
+-		if (!ec) {
+-			tplg_elem_free(elem);
+-			return -ENOMEM;
+-		}
+-
+-		elem->enum_ctrl = ec;
+-		elem->size += enum_ctl->priv->size;
+-
+-		memcpy(ec->priv.data, enum_ctl->priv->data,
+-			enum_ctl->priv->size);
+-
+-		ec->priv.size = enum_ctl->priv->size;
++	/* priv data */
++	priv = enum_ctl->priv;
++	if (priv && priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, priv,
++				    sizeof(*priv) + priv->size);
++		if (ret < 0)
++			return ret;
+ 	}
+ 
+ 	if (e)
+@@ -1100,9 +1121,10 @@ int tplg_add_enum(snd_tplg_t *tplg, struct snd_tplg_enum_template *enum_ctl,
+ }
+ 
+ int tplg_add_bytes(snd_tplg_t *tplg, struct snd_tplg_bytes_template *bytes_ctl,
+-	struct tplg_elem **e)
++		   struct tplg_elem **e)
+ {
+ 	struct snd_soc_tplg_bytes_control *be;
++	struct snd_soc_tplg_private *priv;
+ 	struct tplg_elem *elem;
+ 	int ret;
+ 
+@@ -1120,7 +1142,7 @@ int tplg_add_bytes(snd_tplg_t *tplg, struct snd_tplg_bytes_template *bytes_ctl,
+ 
+ 	be = elem->bytes_ext;
+ 	be->size = elem->size;
+-	ret = init_ctl_hdr(&be->hdr, &bytes_ctl->hdr);
++	ret = init_ctl_hdr(tplg, elem, &be->hdr, &bytes_ctl->hdr);
+ 	if (ret < 0) {
+ 		tplg_elem_free(elem);
+ 		return ret;
+@@ -1133,20 +1155,13 @@ int tplg_add_bytes(snd_tplg_t *tplg, struct snd_tplg_bytes_template *bytes_ctl,
+ 	be->ext_ops.put = bytes_ctl->ext_ops.put;
+ 	be->ext_ops.get = bytes_ctl->ext_ops.get;
+ 
+-	if (bytes_ctl->priv != NULL) {
+-		be = realloc(be,
+-			elem->size + bytes_ctl->priv->size);
+-		if (!be) {
+-			tplg_elem_free(elem);
+-			return -ENOMEM;
+-		}
+-		elem->bytes_ext = be;
+-		elem->size += bytes_ctl->priv->size;
+-
+-		memcpy(be->priv.data, bytes_ctl->priv->data,
+-			bytes_ctl->priv->size);
+-
+-		be->priv.size = bytes_ctl->priv->size;
++	/* priv data */
++	priv = bytes_ctl->priv;
++	if (priv && priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, priv,
++				    sizeof(*priv) + priv->size);
++		if (ret < 0)
++			return ret;
+ 	}
+ 
+ 	/* check on TLV bytes control */
+@@ -1184,3 +1199,330 @@ int tplg_add_bytes_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ {
+ 	return tplg_add_bytes(tplg, t->bytes_ctl, NULL);
+ }
++
++int tplg_decode_control_mixer1(snd_tplg_t *tplg,
++			       struct list_head *heap,
++			       struct snd_tplg_mixer_template *mt,
++			       size_t pos,
++			       void *bin, size_t size)
++{
++	struct snd_soc_tplg_mixer_control *mc = bin;
++	struct snd_tplg_channel_map_template *map;
++	struct snd_tplg_tlv_dbscale_template *db;
++	int i;
++
++	if (size < sizeof(*mc)) {
++		SNDERR("mixer: small size %d", size);
++		return -EINVAL;
++	}
++
++	tplg_dv(tplg, pos, "mixer: size %d TLV size %d private size %d",
++			   mc->size, mc->hdr.tlv.size, mc->priv.size);
++	if (size != mc->size + mc->priv.size) {
++		SNDERR("mixer: unexpected element size %d", size);
++		return -EINVAL;
++	}
++
++	memset(mt, 0, sizeof(*mt));
++	mt->hdr.type = mc->hdr.type;
++	mt->hdr.name = mc->hdr.name;
++	mt->hdr.access = mc->hdr.access;
++	mt->hdr.ops.get = mc->hdr.ops.get;
++	mt->hdr.ops.put = mc->hdr.ops.put;
++	mt->hdr.ops.info = mc->hdr.ops.info;
++	mt->min = mc->min;
++	mt->max = mc->max;
++	mt->platform_max = mc->platform_max;
++	tplg_dv(tplg, pos, "mixer: name '%s' access 0x%x",
++		mt->hdr.name, mt->hdr.access);
++	if (mc->num_channels > 0) {
++		map = tplg_calloc(heap, sizeof(*map));
++		map->num_channels = mc->num_channels;
++		for (i = 0; i < map->num_channels; i++) {
++			map->channel[i].reg = mc->channel[i].reg;
++			map->channel[i].shift = mc->channel[i].shift;
++			map->channel[i].id = mc->channel[i].id;
++		}
++		mt->map = map;
++	}
++	if (mc->hdr.tlv.size == 0) {
++		/* nothing */
++	} else if (mc->hdr.tlv.size == sizeof(struct snd_soc_tplg_ctl_tlv)) {
++		if (mc->hdr.tlv.type != SNDRV_CTL_TLVT_DB_SCALE) {
++			SNDERR("mixer: unknown TLV type %d",
++			       mc->hdr.tlv.type);
++			return -EINVAL;
++		}
++		db = tplg_calloc(heap, sizeof(*db));
++		if (db == NULL)
++			return -ENOMEM;
++		mt->hdr.tlv_scale = db;
++		db->hdr.type = mc->hdr.tlv.type;
++		db->min = mc->hdr.tlv.scale.min;
++		db->step = mc->hdr.tlv.scale.step;
++		db->mute = mc->hdr.tlv.scale.mute;
++		tplg_dv(tplg, pos, "mixer: dB scale TLV: min %d step %d mute %d",
++			db->min, db->step, db->mute);
++	} else {
++		SNDERR("mixer: wrong TLV size %d", mc->hdr.tlv.size);
++		return -EINVAL;
++	}
++
++	mt->priv = &mc->priv;
++	tplg_dv(tplg, pos + offsetof(struct snd_soc_tplg_mixer_control, priv),
++		"mixer: private start");
++	return 0;
++}
++
++int tplg_decode_control_mixer(snd_tplg_t *tplg,
++			      size_t pos,
++			      struct snd_soc_tplg_hdr *hdr,
++			      void *bin, size_t size)
++{
++	struct list_head heap;
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_mixer_template mt;
++	struct snd_soc_tplg_mixer_control *mc;
++	size_t size2;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++next:
++	if (size < sizeof(*mc)) {
++		SNDERR("mixer: small size %d", size);
++		return -EINVAL;
++	}
++	INIT_LIST_HEAD(&heap);
++	mc = bin;
++	size2 = mc->size + mc->priv.size;
++	if (size2 > size) {
++		SNDERR("mixer: wrong element size (%d, priv %d)",
++		       mc->size, mc->priv.size);
++		return -EINVAL;
++	}
++
++	err = tplg_decode_control_mixer1(tplg, &heap, &mt, pos, bin, size2);
++	if (err >= 0) {
++		t.mixer = &mt;
++		err = snd_tplg_add_object(tplg, &t);
++	}
++	tplg_free(&heap);
++	if (err < 0)
++		return err;
++
++	bin += size2;
++	size -= size2;
++	pos += size2;
++
++	if (size > 0)
++		goto next;
++
++	return 0;
++}
++
++int tplg_decode_control_enum1(snd_tplg_t *tplg,
++			      struct list_head *heap,
++			      struct snd_tplg_enum_template *et,
++			      size_t pos,
++			      void *bin, size_t size)
++{
++	struct snd_soc_tplg_enum_control *ec = bin;
++	struct snd_tplg_channel_map_template cmt;
++	int i;
++
++	if (size < sizeof(*ec)) {
++		SNDERR("enum: small size %d", size);
++		return -EINVAL;
++	}
++
++	tplg_dv(tplg, pos, "enum: size %d private size %d",
++			   ec->size, ec->priv.size);
++	if (size != ec->size + ec->priv.size) {
++		SNDERR("enum: unexpected element size %d", size);
++		return -EINVAL;
++	}
++	if (ec->num_channels > SND_TPLG_MAX_CHAN ||
++	    ec->num_channels > SND_SOC_TPLG_MAX_CHAN) {
++		SNDERR("enum: unexpected channel count %d", ec->num_channels);
++		return -EINVAL;
++	}
++	if (ec->items > SND_SOC_TPLG_NUM_TEXTS) {
++		SNDERR("enum: unexpected texts count %d", ec->items);
++		return -EINVAL;
++	}
++
++	memset(et, 0, sizeof(*et));
++	et->hdr.type = ec->hdr.type;
++	et->hdr.name = ec->hdr.name;
++	et->hdr.access = ec->hdr.access;
++	et->hdr.ops.get = ec->hdr.ops.get;
++	et->hdr.ops.put = ec->hdr.ops.put;
++	et->hdr.ops.info = ec->hdr.ops.info;
++	et->mask = ec->mask;
++
++	if (ec->items > 0) {
++		et->items = ec->items;
++		et->texts = tplg_calloc(heap, sizeof(char *) * ec->items);
++		if (!et->texts)
++			return -ENOMEM;
++		for (i = 0; ec->items; i++) {
++			unsigned int j = i * sizeof(int) * ENUM_VAL_SIZE;
++			et->texts[i] = ec->texts[i];
++			et->values[i] = (int *)&ec->values[j];
++		}
++	}
++
++	et->map = &cmt;
++	memset(&cmt, 0, sizeof(cmt));
++	cmt.num_channels = ec->num_channels;
++	for (i = 0; i < cmt.num_channels; i++) {
++		struct snd_tplg_channel_elem *channel = &cmt.channel[i];
++		tplg_dv(tplg, pos + ((void *)&ec->channel[i] - (void *)ec),
++			"enum: channel size %d", ec->channel[i].size);
++		channel->reg = ec->channel[i].reg;
++		channel->shift = ec->channel[i].shift;
++		channel->id = ec->channel[i].id;
++	}
++
++	et->priv = &ec->priv;
++	return 0;
++}
++
++int tplg_decode_control_enum(snd_tplg_t *tplg,
++			     size_t pos,
++			     struct snd_soc_tplg_hdr *hdr,
++			     void *bin, size_t size)
++{
++	struct list_head heap;
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_enum_template et;
++	struct snd_soc_tplg_enum_control *ec;
++	size_t size2;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++next:
++	if (size < sizeof(*ec)) {
++		SNDERR("enum: small size %d", size);
++		return -EINVAL;
++	}
++	INIT_LIST_HEAD(&heap);
++	ec = bin;
++	size2 = ec->size + ec->priv.size;
++	if (size2 > size) {
++		SNDERR("enum: wrong element size (%d, priv %d)",
++		       ec->size, ec->priv.size);
++		return -EINVAL;
++	}
++
++	err = tplg_decode_control_enum1(tplg, &heap, &et, pos, bin, size);
++	if (err >= 0) {
++		t.enum_ctl = &et;
++		err = snd_tplg_add_object(tplg, &t);
++	}
++	tplg_free(&heap);
++	if (err < 0)
++		return err;
++
++	bin += size2;
++	size -= size2;
++	pos += size2;
++
++	if (size > 0)
++		goto next;
++
++	return 0;
++}
++
++int tplg_decode_control_bytes1(snd_tplg_t *tplg,
++			       struct snd_tplg_bytes_template *bt,
++			       size_t pos,
++			       void *bin, size_t size)
++{
++	struct snd_soc_tplg_bytes_control *bc = bin;
++
++	if (size < sizeof(*bc)) {
++		SNDERR("bytes: small size %d", size);
++		return -EINVAL;
++	}
++
++	tplg_dv(tplg, pos, "control bytes: size %d private size %d",
++		bc->size, bc->priv.size);
++	if (size != bc->size + bc->priv.size) {
++		SNDERR("bytes: unexpected element size %d", size);
++		return -EINVAL;
++	}
++
++	memset(bt, 0, sizeof(*bt));
++	bt->hdr.type = bc->hdr.type;
++	bt->hdr.name = bc->hdr.name;
++	bt->hdr.access = bc->hdr.access;
++	bt->hdr.ops.get = bc->hdr.ops.get;
++	bt->hdr.ops.put = bc->hdr.ops.put;
++	bt->hdr.ops.info = bc->hdr.ops.info;
++	bt->max = bc->max;
++	bt->mask = bc->mask;
++	bt->base = bc->base;
++	bt->num_regs = bc->num_regs;
++	bt->ext_ops.get = bc->ext_ops.get;
++	bt->ext_ops.put = bc->ext_ops.put;
++	bt->ext_ops.info = bc->ext_ops.info;
++	tplg_dv(tplg, pos, "control bytes: name '%s' access 0x%x",
++		bt->hdr.name, bt->hdr.access);
++
++	bt->priv = &bc->priv;
++	return 0;
++}
++
++int tplg_decode_control_bytes(snd_tplg_t *tplg,
++			      size_t pos,
++			      struct snd_soc_tplg_hdr *hdr,
++			      void *bin, size_t size)
++{
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_bytes_template bt;
++	struct snd_soc_tplg_bytes_control *bc;
++	size_t size2;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++next:
++	if (size < sizeof(*bc)) {
++		SNDERR("bytes: small size %d", size);
++		return -EINVAL;
++	}
++	bc = bin;
++	size2 = bc->size + bc->priv.size;
++	if (size2 > size) {
++		SNDERR("bytes: wrong element size (%d, priv %d)",
++		       bc->size, bc->priv.size);
++		return -EINVAL;
++	}
++
++	err = tplg_decode_control_bytes1(tplg, &bt, pos, bin, size);
++	if (err < 0)
++		return err;
++
++	t.bytes_ctl = &bt;
++	err = snd_tplg_add_object(tplg, &t);
++	if (err < 0)
++		return err;
++
++	bin += size2;
++	size -= size2;
++	pos += size2;
++
++	if (size > 0)
++		goto next;
++
++	return 0;
++}
+diff --git a/src/topology/dapm.c b/src/topology/dapm.c
+index 88bddca3c08e..9fab2d92c150 100644
+--- a/src/topology/dapm.c
++++ b/src/topology/dapm.c
+@@ -420,19 +420,39 @@ int tplg_save_dapm_graph(snd_tplg_t *tplg, int index, char **dst, const char *pf
+ 	struct snd_soc_tplg_dapm_graph_elem *route;
+ 	struct list_head *pos;
+ 	struct tplg_elem *elem;
+-	int err, first = 1, old_index = -1;
+-	unsigned block = -1, count = 0;
++	int err, first, old_index;
++	unsigned block, count;
++	const char *fmt;
+ 
++	old_index = -1;
++	block = 0;
++	count = 0;
+ 	list_for_each(pos, &tplg->route_list) {
+ 		elem = list_entry(pos, struct tplg_elem, list);
+ 		if (!elem->route || elem->type != SND_TPLG_TYPE_DAPM_GRAPH)
+ 			continue;
+ 		if (index >= 0 && elem->index != index)
+ 			continue;
++		if (old_index != elem->index) {
++			block++;
++			old_index = elem->index;
++		}
+ 		count++;
+ 	}
+ 	if (count == 0)
+ 		return 0;
++	if (block < 10) {
++		fmt = "\tset%u {\n";
++	} else if (block < 100) {
++		fmt = "\tset%02u {\n";
++	} else if (block < 1000) {
++		fmt = "\tset%03u {\n";
++	} else {
++		return -EINVAL;
++	}
++	old_index = -1;
++	block = -1;
++	first = 1;
+ 	err = tplg_save_printf(dst, pfx, "SectionGraph {\n");
+ 	list_for_each(pos, &tplg->route_list) {
+ 		elem = list_entry(pos, struct tplg_elem, list);
+@@ -452,7 +472,7 @@ int tplg_save_dapm_graph(snd_tplg_t *tplg, int index, char **dst, const char *pf
+ 			old_index = elem->index;
+ 			block++;
+ 			first = 1;
+-			err = tplg_save_printf(dst, pfx, "\tset%u {\n", block);
++			err = tplg_save_printf(dst, pfx, fmt, block);
+ 			if (err >= 0)
+ 				err = tplg_save_printf(dst, pfx, "\t\tindex %u\n",
+ 						       elem->index);
+@@ -771,20 +791,14 @@ int tplg_add_widget_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 	w->event_flags = wt->event_flags;
+ 	w->event_type = wt->event_type;
+ 
+-	if (wt->priv != NULL) {
+-		w = realloc(w,
+-			elem->size + wt->priv->size);
+-		if (!w) {
++	/* add private data */
++	if (wt->priv != NULL && wt->priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, wt->priv,
++				    sizeof(*wt->priv) + wt->priv->size);
++		if (ret < 0) {
+ 			tplg_elem_free(elem);
+-			return -ENOMEM;
++			return ret;
+ 		}
+-
+-		elem->widget = w;
+-		elem->size += wt->priv->size;
+-
+-		memcpy(w->priv.data, wt->priv->data,
+-			wt->priv->size);
+-		w->priv.size = wt->priv->size;
+ 	}
+ 
+ 	/* add controls to the widget's reference list */
+@@ -836,3 +850,212 @@ int tplg_add_widget_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 
+ 	return 0;
+ }
++
++/* decode dapm widget from the binary input */
++int tplg_decode_dapm_widget(snd_tplg_t *tplg,
++			    size_t pos,
++			    struct snd_soc_tplg_hdr *hdr,
++			    void *bin, size_t size)
++{
++	struct list_head heap;
++	struct snd_soc_tplg_dapm_widget *w;
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_widget_template *wt;
++	struct snd_tplg_mixer_template *mt;
++	struct snd_tplg_enum_template *et;
++	struct snd_tplg_bytes_template *bt;
++	struct snd_soc_tplg_ctl_hdr *chdr;
++	struct snd_soc_tplg_mixer_control *mc;
++	struct snd_soc_tplg_enum_control *ec;
++	struct snd_soc_tplg_bytes_control *bc;
++	size_t size2;
++	unsigned int index;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++next:
++	INIT_LIST_HEAD(&heap);
++	w = bin;
++
++	if (size < sizeof(*w)) {
++		SNDERR("dapm widget: small size %d", size);
++		return -EINVAL;
++	}
++	if (sizeof(*w) != w->size) {
++		SNDERR("dapm widget: unknown element size %d (expected %zd)",
++		       w->size, sizeof(*w));
++		return -EINVAL;
++	}
++	if (w->num_kcontrols > 16) {
++		SNDERR("dapm widget: too many kcontrols %d",
++		       w->num_kcontrols);
++		return -EINVAL;
++	}
++
++	tplg_dv(tplg, pos, "dapm widget: size %d private size %d kcontrols %d",
++		w->size, w->priv.size, w->num_kcontrols);
++
++	wt = tplg_calloc(&heap, sizeof(*wt) + sizeof(void *) * w->num_kcontrols);
++	if (wt == NULL)
++		return -ENOMEM;
++	wt->id = w->id;
++	wt->name = w->name;
++	wt->sname = w->sname;
++	wt->reg = w->reg;
++	wt->shift = w->shift;
++	wt->mask = w->mask;
++	wt->subseq = w->subseq;
++	wt->invert = w->invert;
++	wt->ignore_suspend = w->ignore_suspend;
++	wt->event_flags = w->event_flags;
++	wt->event_type = w->event_type;
++
++	tplg_dv(tplg, pos, "dapm widget: name '%s' sname '%s'", wt->name, wt->sname);
++
++	if (sizeof(*w) + w->priv.size > size) {
++		SNDERR("dapm widget: wrong private data size %d",
++		       w->priv.size);
++		return -EINVAL;
++	}
++
++	tplg_dv(tplg, pos + offsetof(struct snd_soc_tplg_dapm_widget, priv),
++		"dapm widget: private start");
++
++	wt->priv = &w->priv;
++	bin += sizeof(*w) + w->priv.size;
++	size -= sizeof(*w) + w->priv.size;
++	pos += sizeof(*w) + w->priv.size;
++
++	for (index = 0; index < w->num_kcontrols; index++) {
++		chdr = bin;
++		switch (chdr->type) {
++		case SND_SOC_TPLG_TYPE_MIXER:
++			mt = tplg_calloc(&heap, sizeof(*mt));
++			if (mt == NULL) {
++				err = -ENOMEM;
++				goto retval;
++			}
++			wt->ctl[index] = (void *)mt;
++			wt->num_ctls++;
++			mc = bin;
++			size2 = mc->size + mc->priv.size;
++			tplg_dv(tplg, pos, "kcontrol mixer size %zd", size2);
++			if (size2 > size) {
++				SNDERR("dapm widget: small mixer size %d",
++				       size2);
++				err = -EINVAL;
++				goto retval;
++			}
++			err = tplg_decode_control_mixer1(tplg, &heap, mt, pos,
++							 bin, size2);
++			break;
++		case SND_SOC_TPLG_TYPE_ENUM:
++			et = tplg_calloc(&heap, sizeof(*mt));
++			if (et == NULL) {
++				err = -ENOMEM;
++				goto retval;
++			}
++			wt->ctl[index] = (void *)et;
++			wt->num_ctls++;
++			ec = bin;
++			size2 = ec->size + ec->priv.size;
++			tplg_dv(tplg, pos, "kcontrol enum size %zd", size2);
++			if (size2 > size) {
++				SNDERR("dapm widget: small enum size %d",
++				       size2);
++				err = -EINVAL;
++				goto retval;
++			}
++			err = tplg_decode_control_enum1(tplg, &heap, et, pos,
++							bin, size2);
++			break;
++		case SND_SOC_TPLG_TYPE_BYTES:
++			bt = tplg_calloc(&heap, sizeof(*bt));
++			if (bt == NULL) {
++				err = -ENOMEM;
++				goto retval;
++			}
++			wt->ctl[index] = (void *)bt;
++			wt->num_ctls++;
++			bc = bin;
++			size2 = bc->size + bc->priv.size;
++			tplg_dv(tplg, pos, "kcontrol bytes size %zd", size2);
++			if (size2 > size) {
++				SNDERR("dapm widget: small bytes size %d",
++				       size2);
++				err = -EINVAL;
++				goto retval;
++			}
++			err = tplg_decode_control_bytes1(tplg, bt, pos,
++							 bin, size2);
++			break;
++		default:
++			SNDERR("dapm widget: wrong control type %d",
++			       chdr->type);
++			err = -EINVAL;
++			goto retval;
++		}
++		if (err < 0)
++			goto retval;
++		bin += size2;
++		size -= size2;
++		pos += size2;
++	}
++
++	t.widget = wt;
++	err = snd_tplg_add_object(tplg, &t);
++	tplg_free(&heap);
++	if (err < 0)
++		return err;
++	if (size > 0)
++		goto next;
++	return 0;
++
++retval:
++	tplg_free(&heap);
++	return err;
++}
++
++/* decode dapm link from the binary input */
++int tplg_decode_dapm_graph(snd_tplg_t *tplg,
++			   size_t pos,
++			   struct snd_soc_tplg_hdr *hdr,
++			   void *bin, size_t size)
++{
++	struct snd_soc_tplg_dapm_graph_elem *g;
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_graph_template *gt;
++	struct snd_tplg_graph_elem *ge;
++	size_t asize;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++	asize = sizeof(*gt) + (size / sizeof(*g)) * sizeof(*ge);
++	gt = alloca(asize);
++	memset(gt, 0, asize);
++	for (ge = gt->elem; size > 0; ge++) {
++		g = bin;
++		if (size < sizeof(*g)) {
++			SNDERR("dapm graph: small size %d", size);
++			return -EINVAL;
++		}
++		ge->src = g->source;
++		ge->ctl = g->control;
++		ge->sink = g->sink;
++		gt->count++;
++		tplg_dv(tplg, pos, "dapm graph: src='%s' ctl='%s' sink='%s'",
++			ge->src, ge->ctl, ge->sink);
++		bin += sizeof(*g);
++		size -= sizeof(*g);
++		pos += sizeof(*g);
++	}
++
++	t.graph = gt;
++	return snd_tplg_add_object(tplg, &t);
++}
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 7b4bdccde602..64563920a4e2 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -566,7 +566,7 @@ static bool has_tuples(struct tplg_elem *elem)
+ }
+ 
+ /* get size of a tuple element from its type */
+-static unsigned int get_tuple_size(int type)
++unsigned int tplg_get_tuple_size(int type)
+ {
+ 	switch (type) {
+ 
+@@ -602,7 +602,7 @@ static int copy_tuples(struct tplg_elem *elem,
+ 	for (i = 0; i < tuples->num_sets ; i++) {
+ 		tuple_set = tuples->set[i];
+ 		set_size = sizeof(struct snd_soc_tplg_vendor_array)
+-			+ get_tuple_size(tuple_set->type)
++			+ tplg_get_tuple_size(tuple_set->type)
+ 			* tuple_set->num_tuples;
+ 		size += set_size;
+ 		if (size > TPLG_MAX_PRIV_SIZE) {
+@@ -1250,6 +1250,9 @@ int tplg_save_manifest_data(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 			continue;
+ 		count++;
+ 	}
++	if (count == 0)
++		return tplg_save_printf(dst, NULL,
++					"'%s'.comment 'empty'\n", elem->id);
+ 	if (count > 1) {
+ 		err = tplg_save_printf(dst, NULL, "'%s'.data [\n", elem->id);
+ 		if (err < 0)
+@@ -1557,3 +1560,436 @@ int tplg_build_data(snd_tplg_t *tplg)
+ 
+ 	return 0;
+ }
++
++/* decode manifest data */
++int tplg_decode_manifest_data(snd_tplg_t *tplg,
++			      size_t pos,
++			      struct snd_soc_tplg_hdr *hdr,
++			      void *bin, size_t size)
++{
++	struct snd_soc_tplg_manifest *m = bin;
++	struct tplg_elem *elem;
++	size_t off;
++
++	if (hdr->index != 0) {
++		SNDERR("manifest - wrong index %d", hdr->index);
++		return -EINVAL;
++	}
++
++	if (sizeof(*m) > size) {
++		SNDERR("manifest - wrong size %zd (minimal %zd)",
++		       size, sizeof(*m));
++		return -EINVAL;
++	}
++
++	if (m->size != sizeof(*m)) {
++		SNDERR("manifest - wrong sructure size %d", m->size);
++		return -EINVAL;
++	}
++
++	off = offsetof(struct snd_soc_tplg_manifest, priv);
++	if (off + m->priv.size > size) {
++		SNDERR("manifest - wrong private size %d", m->priv.size);
++		return -EINVAL;
++	}
++
++	tplg->manifest = *m;
++
++	bin += off;
++	size -= off;
++	pos += off;
++
++	elem = tplg_elem_new_common(tplg, NULL, "manifest",
++				    SND_TPLG_TYPE_MANIFEST);
++	if (!elem)
++		return -ENOMEM;
++
++	tplg_dv(tplg, pos, "manifest: private size %d", size);
++	return tplg_add_data(tplg, elem, bin, size);
++}
++
++int tplg_add_token(snd_tplg_t *tplg, struct tplg_elem *parent,
++		   unsigned int token,
++		   char str_ref[SNDRV_CTL_ELEM_ID_NAME_MAXLEN])
++{
++	struct tplg_elem *elem;
++	struct tplg_token *t;
++	struct tplg_vendor_tokens *tokens;
++	unsigned int i;
++	size_t size;
++
++	elem = tplg_elem_lookup(&tplg->token_list, parent->id,
++				SND_TPLG_TYPE_TOKEN, parent->index);
++	if (elem == NULL) {
++		elem = tplg_elem_new_common(tplg, NULL, parent->id,
++					    SND_TPLG_TYPE_TOKEN);
++		if (!elem)
++			return -ENOMEM;
++	}
++
++	tokens = elem->tokens;
++	if (tokens) {
++		for (i = 0; i < tokens->num_tokens; i++) {
++			t = &tokens->token[i];
++			if (t->value == token)
++				goto found;
++		}
++		size = sizeof(*tokens) +
++		       (tokens->num_tokens + 1) * sizeof(struct tplg_token);
++		tokens = realloc(tokens, size);
++	} else {
++		size = sizeof(*tokens) + 1 * sizeof(struct tplg_token);
++		tokens = calloc(1, size);
++	}
++
++	if (!tokens)
++		return -ENOMEM;
++
++	memset(&tokens->token[tokens->num_tokens], 0, sizeof(struct tplg_token));
++	elem->tokens = tokens;
++	t = &tokens->token[tokens->num_tokens];
++	tokens->num_tokens++;
++	snprintf(t->id, sizeof(t->id), "token%u", token);
++	t->value = token;
++found:
++	snd_strlcpy(str_ref, t->id, SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
++	return 0;
++}
++
++static int tplg_verify_tuple_set(snd_tplg_t *tplg, size_t pos,
++				 const void *bin, size_t size)
++{
++	const struct snd_soc_tplg_vendor_array *va;
++	unsigned int j;
++
++	va = bin;
++	if (size < sizeof(*va) || size < va->size) {
++		tplg_dv(tplg, pos, "tuple set verify: wrong size %d", size);
++		return -EINVAL;
++	}
++
++	switch (va->type) {
++	case SND_SOC_TPLG_TUPLE_TYPE_UUID:
++	case SND_SOC_TPLG_TUPLE_TYPE_STRING:
++	case SND_SOC_TPLG_TUPLE_TYPE_BOOL:
++	case SND_SOC_TPLG_TUPLE_TYPE_BYTE:
++	case SND_SOC_TPLG_TUPLE_TYPE_WORD:
++	case SND_SOC_TPLG_TUPLE_TYPE_SHORT:
++		break;
++	default:
++		tplg_dv(tplg, pos, "tuple set verify: unknown array type %d", va->type);
++		return -EINVAL;
++	}
++
++	j = tplg_get_tuple_size(va->type) * va->num_elems;
++	if (j + sizeof(*va) != va->size) {
++		tplg_dv(tplg, pos, "tuple set verify: wrong vendor array size %d "
++			"(expected %d for %d count %d)",
++			va->size, j + sizeof(*va), va->type, va->num_elems);
++		return -EINVAL;
++	}
++
++	if (va->num_elems > 4096) {
++		tplg_dv(tplg, pos, "tuple set verify: tuples overflow %d", va->num_elems);
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static int tplg_decode_tuple_set(snd_tplg_t *tplg,
++				 size_t pos,
++				 struct tplg_elem *parent,
++				 struct tplg_tuple_set **_set,
++				 const void *bin, size_t size)
++{
++	const struct snd_soc_tplg_vendor_array *va;
++	struct tplg_tuple_set *set;
++	struct tplg_tuple *tuple;
++	unsigned int j;
++	int err;
++
++	va = bin;
++	if (size < sizeof(*va) || size < va->size) {
++		SNDERR("tuples: wrong size %d", size);
++		return -EINVAL;
++	}
++
++	switch (va->type) {
++	case SND_SOC_TPLG_TUPLE_TYPE_UUID:
++	case SND_SOC_TPLG_TUPLE_TYPE_STRING:
++	case SND_SOC_TPLG_TUPLE_TYPE_BOOL:
++	case SND_SOC_TPLG_TUPLE_TYPE_BYTE:
++	case SND_SOC_TPLG_TUPLE_TYPE_WORD:
++	case SND_SOC_TPLG_TUPLE_TYPE_SHORT:
++		break;
++	default:
++		SNDERR("tuples: unknown array type %d", va->type);
++		return -EINVAL;
++	}
++
++	j = tplg_get_tuple_size(va->type) * va->num_elems;
++	if (j + sizeof(*va) != va->size) {
++		SNDERR("tuples: wrong vendor array size %d "
++		       "(expected %d for %d count %d)",
++		       va->size, j + sizeof(*va), va->type, va->num_elems);
++		return -EINVAL;
++	}
++
++	if (va->num_elems > 4096) {
++		SNDERR("tuples: tuples overflow %d", va->num_elems);
++		return -EINVAL;
++	}
++
++	set = calloc(1, sizeof(*set) + va->num_elems * sizeof(struct tplg_tuple));
++	if (!set)
++		return -ENOMEM;
++
++	set->type = va->type;
++	set->num_tuples = va->num_elems;
++
++	tplg_dv(tplg, pos, "tuple set: type %d (%s) tuples %d size %d", set->type,
++		get_tuple_type_name(set->type), set->num_tuples, va->size);
++	for (j = 0; j < set->num_tuples; j++) {
++		tuple = &set->tuple[j];
++		switch (va->type) {
++		case SND_SOC_TPLG_TUPLE_TYPE_UUID:
++			err = tplg_add_token(tplg, parent, va->uuid[j].token,
++					     tuple->token);
++			if (err < 0)
++				goto retval;
++			memcpy(tuple->uuid, va->uuid[j].uuid,
++			       sizeof(va->uuid[j].uuid));
++			break;
++		case SND_SOC_TPLG_TUPLE_TYPE_STRING:
++			err = tplg_add_token(tplg, parent, va->string[j].token,
++					     tuple->token);
++			if (err < 0)
++				goto retval;
++			snd_strlcpy(tuple->string, va->string[j].string,
++				    sizeof(tuple->string));
++			break;
++		case SND_SOC_TPLG_TUPLE_TYPE_BOOL:
++		case SND_SOC_TPLG_TUPLE_TYPE_BYTE:
++		case SND_SOC_TPLG_TUPLE_TYPE_WORD:
++		case SND_SOC_TPLG_TUPLE_TYPE_SHORT:
++			err = tplg_add_token(tplg, parent, va->value[j].token,
++					     tuple->token);
++			if (err < 0)
++				goto retval;
++			tuple->value = va->value[j].value;
++			break;
++		}
++	}
++
++	*_set = set;
++	return 0;
++
++retval:
++	free(set);
++	return err;
++}
++
++/* verify tuples from the binary input */
++static int tplg_verify_tuples(snd_tplg_t *tplg, size_t pos,
++			      const void *bin, size_t size)
++{
++	const struct snd_soc_tplg_vendor_array *va;
++	int err;
++
++	if (size < sizeof(*va)) {
++		tplg_dv(tplg, pos, "tuples: small size %d", size);
++		return -EINVAL;
++	}
++
++next:
++	va = bin;
++	if (size < sizeof(*va)) {
++		tplg_dv(tplg, pos, "tuples: unexpected vendor arry size %d", size);
++		return -EINVAL;
++	}
++
++	err = tplg_verify_tuple_set(tplg, pos, va, va->size);
++	if (err < 0)
++		return err;
++
++	bin += va->size;
++	size -= va->size;
++	pos += va->size;
++	if (size > 0)
++		goto next;
++
++	return 0;
++}
++
++/* add tuples from the binary input */
++static int tplg_decode_tuples(snd_tplg_t *tplg,
++			      size_t pos,
++			      struct tplg_elem *parent,
++			      struct tplg_vendor_tuples *tuples,
++			      const void *bin, size_t size)
++{
++	const struct snd_soc_tplg_vendor_array *va;
++	struct tplg_tuple_set *set;
++	int err;
++
++	if (size < sizeof(*va)) {
++		SNDERR("tuples: small size %d", size);
++		return -EINVAL;
++	}
++
++next:
++	va = bin;
++	if (size < sizeof(*va)) {
++		SNDERR("tuples: unexpected vendor arry size %d", size);
++		return -EINVAL;
++	}
++
++	if (tuples->num_sets >= tuples->alloc_sets) {
++		SNDERR("tuples: index overflow (%d)", tuples->num_sets);
++		return -EINVAL;
++	}
++
++	err = tplg_decode_tuple_set(tplg, pos, parent, &set, va, va->size);
++	if (err < 0)
++		return err;
++	tuples->set[tuples->num_sets++] = set;
++
++	bin += va->size;
++	size -= va->size;
++	pos += va->size;
++	if (size > 0)
++		goto next;
++
++	return 0;
++}
++
++/* decode private data */
++int tplg_add_data(snd_tplg_t *tplg,
++		  struct tplg_elem *parent,
++		  const void *bin, size_t size)
++{
++	const struct snd_soc_tplg_private *tp;
++	const struct snd_soc_tplg_vendor_array *va;
++	struct tplg_elem *elem = NULL, *elem2 = NULL;
++	struct tplg_vendor_tuples *tuples = NULL;
++	char id[SNDRV_CTL_ELEM_ID_NAME_MAXLEN];
++	char suffix[16];
++	size_t pos = 0, off;
++	int err, num_tuples = 0, block = 0;
++
++	if (size == 0)
++		return 0;
++
++	off = offsetof(struct snd_soc_tplg_private, array);
++
++next:
++	tp = bin;
++	if (off + size < tp->size) {
++		SNDERR("data: unexpected element size %d", size);
++		return -EINVAL;
++	}
++
++	if (tplg_verify_tuples(tplg, pos, tp->array, tp->size) < 0) {
++		if (tuples) {
++			err = tplg_ref_add(elem, SND_TPLG_TYPE_TOKEN, parent->id);
++			if (err < 0)
++				return err;
++			err = tplg_ref_add(elem2, SND_TPLG_TYPE_TUPLE, id);
++			if (err < 0)
++				return err;
++			err = tplg_ref_add(parent, SND_TPLG_TYPE_DATA, id);
++			if (err < 0)
++				return err;
++			tuples = NULL;
++		}
++		tplg_dv(tplg, pos, "add bytes: size %d", tp->size);
++		snprintf(suffix, sizeof(suffix), "data%u", block++);
++		err = tplg_add_data_bytes(tplg, parent, suffix, tp->array, tp->size);
++	} else {
++		if (!tuples) {
++			snprintf(id, sizeof(id), "%.30s:tuple%d", parent->id, (block++) & 0xffff);
++			elem = tplg_elem_new_common(tplg, NULL, id, SND_TPLG_TYPE_TUPLE);
++			if (!elem)
++				return -ENOMEM;
++
++			elem2 = tplg_elem_new_common(tplg, NULL, id, SND_TPLG_TYPE_DATA);
++			if (!elem2)
++				return -ENOMEM;
++
++			tuples = calloc(1, sizeof(*tuples));
++			if (!tuples)
++				return -ENOMEM;
++			elem->tuples = tuples;
++
++			tuples->alloc_sets = (size / sizeof(*va)) + 1;
++			tuples->set = calloc(1, tuples->alloc_sets * sizeof(void *));
++			if (!tuples->set) {
++				tuples->alloc_sets = 0;
++				return -ENOMEM;
++			}
++		}
++		tplg_dv(tplg, pos, "decode tuples: size %d", tp->size);
++		err = tplg_decode_tuples(tplg, pos, parent, tuples, tp->array, tp->size);
++		num_tuples++;
++	}
++	if (err < 0)
++		return err;
++
++	bin += off + tp->size;
++	size -= off + tp->size;
++	pos += off + tp->size;
++	if (size > 0)
++		goto next;
++
++	if (tuples && elem && elem2) {
++		err = tplg_ref_add(elem, SND_TPLG_TYPE_TOKEN, parent->id);
++		if (err < 0)
++			return err;
++		err = tplg_ref_add(elem2, SND_TPLG_TYPE_TUPLE, id);
++		if (err < 0)
++			return err;
++		err = tplg_ref_add(parent, SND_TPLG_TYPE_DATA, id);
++		if (err < 0)
++			return err;
++	}
++
++	return 0;
++}
++
++/* add private data - bytes */
++int tplg_add_data_bytes(snd_tplg_t *tplg, struct tplg_elem *parent,
++			const char *suffix, const void *bin, size_t size)
++{
++	struct snd_soc_tplg_private *priv;
++	struct tplg_elem *elem;
++	char id[SNDRV_CTL_ELEM_ID_NAME_MAXLEN];
++
++	if (suffix)
++		snprintf(id, sizeof(id), "%.30s:%.12s", parent->id, suffix);
++	else
++		snd_strlcpy(id, parent->id, sizeof(id));
++	elem = tplg_elem_new_common(tplg, NULL, id, SND_TPLG_TYPE_DATA);
++	if (!elem)
++		return -ENOMEM;
++
++	priv = malloc(sizeof(*priv) + size);
++	if (!priv)
++		return -ENOMEM;
++	memcpy(priv->data, bin, size);
++	priv->size = size;
++	elem->data = priv;
++
++	return tplg_ref_add(parent, SND_TPLG_TYPE_DATA, id);
++}
++
++/* decode data from the binary input */
++int tplg_decode_data(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
++		     size_t pos ATTRIBUTE_UNUSED,
++		     struct snd_soc_tplg_hdr *hdr ATTRIBUTE_UNUSED,
++		     void *bin ATTRIBUTE_UNUSED,
++		     size_t size ATTRIBUTE_UNUSED)
++{
++	SNDERR("data type not expected");
++	return -EINVAL;
++}
+diff --git a/src/topology/decoder.c b/src/topology/decoder.c
+new file mode 100644
+index 000000000000..2d6a8969756a
+--- /dev/null
++++ b/src/topology/decoder.c
+@@ -0,0 +1,136 @@
++/*
++  Copyright (c) 2019 Red Hat Inc.
++  All rights reserved.
++
++  This library is free software; you can redistribute it and/or modify
++  it under the terms of the GNU Lesser General Public License as
++  published by the Free Software Foundation; either version 2.1 of
++  the License, or (at your option) any later version.
++
++  This program is distributed in the hope that it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++  GNU Lesser General Public License for more details.
++
++  Authors: Jaroslav Kysela <perex@perex.cz>
++*/
++
++#include "list.h"
++#include "tplg_local.h"
++
++/* verbose output detailing each object size and file position */
++void tplg_dv(snd_tplg_t *tplg, size_t pos, const char *fmt, ...)
++{
++	va_list va;
++
++	if (!tplg->verbose)
++		return;
++
++	va_start(va, fmt);
++	fprintf(stdout, "D0x%6.6zx/%6.6zd - ", pos, pos);
++	vfprintf(stdout, fmt, va);
++	va_end(va);
++	putc('\n', stdout);
++}
++
++int tplg_decode_template(snd_tplg_t *tplg,
++			 size_t pos,
++			 struct snd_soc_tplg_hdr *hdr,
++			 snd_tplg_obj_template_t *t)
++{
++	int type;
++
++	type = tplg_get_type(hdr->type);
++	tplg_dv(tplg, pos, "template: asoc type %d library type %d", hdr->type, type);
++	if (type < 0)
++		return type;
++
++	memset(t, 0, sizeof(*t));
++	t->type = type;
++	t->index = hdr->index;
++	t->version = hdr->version;
++	t->vendor_type = hdr->vendor_type;
++	tplg_dv(tplg, pos, "template: index %d version %d vendor_type %d",
++		hdr->index, hdr->version, hdr->vendor_type);
++	return 0;
++}
++
++int snd_tplg_decode(snd_tplg_t *tplg, void *bin, size_t size, int dflags)
++{
++	struct snd_soc_tplg_hdr *hdr;
++	struct tplg_table *tptr;
++	size_t pos;
++	void *b = bin;
++	unsigned int index;
++	int err;
++
++	if (dflags != 0)
++		return -EINVAL;
++	if (tplg == NULL || bin == NULL)
++		return -EINVAL;
++	while (1) {
++		pos = b - bin;
++		if (size == pos) {
++			tplg_dv(tplg, pos, "block: success (total %zd)", size);
++			return 0;
++		}
++		if (size - pos < sizeof(*hdr)) {
++			tplg_dv(tplg, pos, "block: small size");
++			SNDERR("incomplete header data to decode");
++			return -EINVAL;
++		}
++		hdr = b;
++		if (hdr->magic != SND_SOC_TPLG_MAGIC) {
++			SNDERR("bad block magic %08x", hdr->magic);
++			return -EINVAL;
++		}
++
++		tplg_dv(tplg, pos, "block: abi %d size %d payload size %d",
++			hdr->abi, hdr->size, hdr->payload_size);
++		if (hdr->abi != SND_SOC_TPLG_ABI_VERSION) {
++			SNDERR("unsupported ABI version %d", hdr->abi);
++			return -EINVAL;
++		}
++		if (hdr->size != sizeof(*hdr)) {
++			SNDERR("header size mismatch");
++			return -EINVAL;
++		}
++
++		if (size - pos < hdr->size + hdr->payload_size) {
++			SNDERR("incomplete payload data to decode");
++			return -EINVAL;
++		}
++
++		if (hdr->payload_size < 8) {
++			SNDERR("wrong payload size %d", hdr->payload_size);
++			return -EINVAL;
++		}
++
++		/* first block must be manifest */
++		if (b == bin) {
++			if (hdr->type != SND_SOC_TPLG_TYPE_MANIFEST) {
++				SNDERR("first block must be manifest (value %d)", hdr->type);
++				return -EINVAL;
++			}
++			err = snd_tplg_set_version(tplg, hdr->version);
++			if (err < 0)
++				return err;
++		}
++
++		pos += hdr->size;
++		for (index = 0; index < tplg_table_items; index++) {
++			tptr = &tplg_table[index];
++			if (tptr->tsoc == (int)hdr->type)
++				break;
++		}
++		if (index >= tplg_table_items || tptr->decod == NULL) {
++			SNDERR("unknown block type %d", hdr->type);
++			return -EINVAL;
++		}
++		tplg_dv(tplg, pos, "block: type %d - %s", hdr->type, tptr->name);
++		err = tptr->decod(tplg, pos, hdr, b + hdr->size, hdr->payload_size);
++		if (err < 0)
++			return err;
++		b += hdr->size + hdr->payload_size;
++	}
++}
+diff --git a/src/topology/elem.c b/src/topology/elem.c
+index 89aed1fc0449..ed5b5f13054f 100644
+--- a/src/topology/elem.c
++++ b/src/topology/elem.c
+@@ -31,6 +31,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_manifest_data,
+ 		.save  = tplg_save_manifest_data,
++		.decod = tplg_decode_manifest_data,
+ 	},
+ 	{
+ 		.name  = "control mixer",
+@@ -43,6 +44,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_control_mixer,
+ 		.save  = tplg_save_control_mixer,
++		.decod = tplg_decode_control_mixer,
+ 	},
+ 	{
+ 		.name  = "control enum",
+@@ -55,6 +57,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_control_enum,
+ 		.save  = tplg_save_control_enum,
++		.decod = tplg_decode_control_enum,
+ 	},
+ 	{
+ 		.name  = "control extended (bytes)",
+@@ -67,6 +70,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_control_bytes,
+ 		.save  = tplg_save_control_bytes,
++		.decod = tplg_decode_control_bytes,
+ 	},
+ 	{
+ 		.name  = "dapm widget",
+@@ -79,6 +83,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_dapm_widget,
+ 		.save  = tplg_save_dapm_widget,
++		.decod = tplg_decode_dapm_widget,
+ 	},
+ 	{
+ 		.name  = "pcm",
+@@ -91,6 +96,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_pcm,
+ 		.save  = tplg_save_pcm,
++		.decod = tplg_decode_pcm,
+ 	},
+ 	{
+ 		.name  = "physical dai",
+@@ -103,6 +109,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_dai,
+ 		.save  = tplg_save_dai,
++		.decod = tplg_decode_dai,
+ 	},
+ 	{
+ 		.name  = "be",
+@@ -116,6 +123,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_link,
+ 		.save  = tplg_save_link,
++		.decod = tplg_decode_link,
+ 	},
+ 	{
+ 		.name  = "cc",
+@@ -128,6 +136,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_cc,
+ 		.save  = tplg_save_cc,
++		.decod = tplg_decode_cc,
+ 	},
+ 	{
+ 		.name  = "route (dapm graph)",
+@@ -138,6 +147,7 @@ struct tplg_table tplg_table[] = {
+ 		.build = 1,
+ 		.parse = tplg_parse_dapm_graph,
+ 		.gsave = tplg_save_dapm_graph,
++		.decod = tplg_decode_dapm_graph,
+ 	},
+ 	{
+ 		.name  = "private data",
+@@ -149,6 +159,7 @@ struct tplg_table tplg_table[] = {
+ 		.enew  = 1,
+ 		.parse = tplg_parse_data,
+ 		.save  = tplg_save_data,
++		.decod = tplg_decode_data,
+ 	},
+ 	{
+ 		.name  = "text",
+@@ -220,6 +231,17 @@ struct tplg_table tplg_table[] = {
+ 
+ unsigned int tplg_table_items = ARRAY_SIZE(tplg_table);
+ 
++int tplg_get_type(int asoc_type)
++{
++	unsigned int index;
++
++	for (index = 0; index < tplg_table_items; index++)
++		if (tplg_table[index].tsoc == asoc_type)
++			return tplg_table[index].type;
++	SNDERR("uknown asoc type %d", asoc_type);
++	return -EINVAL;
++}
++
+ int tplg_ref_add(struct tplg_elem *elem, int type, const char* id)
+ {
+ 	struct tplg_ref *ref;
+@@ -331,6 +353,36 @@ struct tplg_elem *tplg_elem_lookup(struct list_head *base, const char* id,
+ 	return NULL;
+ }
+ 
++/* find an element by type */
++struct tplg_elem *tplg_elem_type_lookup(snd_tplg_t *tplg,
++					enum snd_tplg_type type)
++{
++	struct tplg_table *tptr;
++	struct list_head *pos, *list;
++	struct tplg_elem *elem;
++	unsigned int index;
++
++	for (index = 0; index < tplg_table_items; index++) {
++		tptr = &tplg_table[index];
++		if (!tptr->enew)
++			continue;
++		if ((int)type != tptr->type)
++			continue;
++		break;
++	}
++	if (index >= tplg_table_items)
++		return NULL;
++
++	list = (struct list_head *)((void *)tplg + tptr->loff);
++
++	/* return only first element */
++	list_for_each(pos, list) {
++		elem = list_entry(pos, struct tplg_elem, list);
++		return elem;
++	}
++	return NULL;
++}
++
+ /* insert a new element into list in the ascending order of index value */
+ void tplg_elem_insert(struct tplg_elem *elem_p, struct list_head *list)
+ {
+@@ -428,3 +480,31 @@ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ 	elem->type = type;
+ 	return elem;
+ }
++
++struct tplg_alloc {
++	struct list_head list;
++	void *data[0];
++};
++
++void *tplg_calloc(struct list_head *heap, size_t size)
++{
++	struct tplg_alloc *a;
++
++	a = calloc(1, sizeof(*a) + size);
++	if (a == NULL)
++		return NULL;
++	list_add_tail(&a->list, heap);
++	return a->data;
++}
++
++void tplg_free(struct list_head *heap)
++{
++	struct list_head *pos, *npos;
++	struct tplg_alloc *a;
++
++	list_for_each_safe(pos, npos, heap) {
++		a = list_entry(pos, struct tplg_alloc, list);
++		list_del(&a->list);
++		free(a);
++	}
++}
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index 5a5dd14f2bdd..d7783a93ab6b 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -396,17 +396,21 @@ int snd_tplg_build_bin(snd_tplg_t *tplg,
+ 
+ int snd_tplg_set_manifest_data(snd_tplg_t *tplg, const void *data, int len)
+ {
++	struct tplg_elem *elem;
++
++	elem = tplg_elem_type_lookup(tplg, SND_TPLG_TYPE_MANIFEST);
++	if (elem == NULL) {
++		elem = tplg_elem_new_common(tplg, NULL, "manifest",
++					    SND_TPLG_TYPE_MANIFEST);
++		if (!elem)
++			return -ENOMEM;
++		tplg->manifest.size = elem->size;
++	}
++
+ 	if (len <= 0)
+ 		return 0;
+ 
+-	tplg->manifest.priv.size = len;
+-
+-	tplg->manifest_pdata = malloc(len);
+-	if (!tplg->manifest_pdata)
+-		return -ENOMEM;
+-
+-	memcpy(tplg->manifest_pdata, data, len);
+-	return 0;
++	return tplg_add_data_bytes(tplg, elem, NULL, data, len);
+ }
+ 
+ int snd_tplg_set_version(snd_tplg_t *tplg, unsigned int version)
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index bd72895971f5..4e04a6bc3d78 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -1679,11 +1679,20 @@ static void tplg_add_stream_object(struct snd_soc_tplg_stream *strm,
+ 	strm->channels = strm_tpl->channels;
+ }
+ 
+-static void tplg_add_stream_caps(struct snd_soc_tplg_stream_caps *caps,
+-	struct snd_tplg_stream_caps_template *caps_tpl)
++static int tplg_add_stream_caps(snd_tplg_t *tplg,
++				struct snd_tplg_stream_caps_template *caps_tpl)
+ {
+-	snd_strlcpy(caps->name, caps_tpl->name,
+-		SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
++	struct snd_soc_tplg_stream_caps *caps;
++	struct tplg_elem *elem;
++
++	elem = tplg_elem_new_common(tplg, NULL, caps_tpl->name,
++				    SND_TPLG_TYPE_STREAM_CAPS);
++	if (!elem)
++		return -ENOMEM;
++
++	caps = elem->stream_caps;
++
++	snd_strlcpy(caps->name, caps_tpl->name, SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+ 
+ 	caps->formats = caps_tpl->formats;
+ 	caps->rates = caps_tpl->rates;
+@@ -1698,15 +1707,17 @@ static void tplg_add_stream_caps(struct snd_soc_tplg_stream_caps *caps,
+ 	caps->buffer_size_min = caps_tpl->buffer_size_min;
+ 	caps->buffer_size_max = caps_tpl->buffer_size_max;
+ 	caps->sig_bits = caps_tpl->sig_bits;
++	return 0;
+ }
+ 
+ /* Add a PCM element (FE DAI & DAI link) from C API */
+ int tplg_add_pcm_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ {
+ 	struct snd_tplg_pcm_template *pcm_tpl = t->pcm;
+-	struct snd_soc_tplg_pcm *pcm, *_pcm;
++	struct snd_soc_tplg_private *priv;
++	struct snd_soc_tplg_pcm *pcm;
+ 	struct tplg_elem *elem;
+-	int i;
++	int ret, i;
+ 
+ 	tplg_dbg("PCM: %s, DAI %s\n", pcm_tpl->pcm_name, pcm_tpl->dai_name);
+ 
+@@ -1732,8 +1743,13 @@ int tplg_add_pcm_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 	pcm->compress = pcm_tpl->compress;
+ 
+ 	for (i = 0; i < 2; i++) {
+-		if (pcm_tpl->caps[i])
+-			tplg_add_stream_caps(&pcm->caps[i], pcm_tpl->caps[i]);
++		if (!pcm_tpl->caps[i] || !pcm_tpl->caps[i]->name)
++			continue;
++		ret = tplg_add_stream_caps(tplg, pcm_tpl->caps[i]);
++		if (ret < 0)
++			return ret;
++		snd_strlcpy(pcm->caps[i].name, pcm_tpl->caps[i]->name,
++			    sizeof(pcm->caps[i].name));
+ 	}
+ 
+ 	pcm->flag_mask = pcm_tpl->flag_mask;
+@@ -1744,22 +1760,12 @@ int tplg_add_pcm_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 		tplg_add_stream_object(&pcm->stream[i], &pcm_tpl->stream[i]);
+ 
+ 	/* private data */
+-	if (pcm_tpl->priv != NULL && pcm_tpl->priv->size) {
+-		tplg_dbg("\t priv data size %d\n", pcm_tpl->priv->size);
+-		_pcm = realloc(pcm,
+-			elem->size + pcm_tpl->priv->size);
+-		if (!_pcm) {
+-			tplg_elem_free(elem);
+-			return -ENOMEM;
+-		}
+-
+-		pcm = _pcm;
+-		elem->pcm = pcm;
+-		elem->size += pcm_tpl->priv->size;
+-
+-		memcpy(pcm->priv.data, pcm_tpl->priv->data,
+-			pcm_tpl->priv->size);
+-		pcm->priv.size = pcm_tpl->priv->size;
++	priv = pcm_tpl->priv;
++	if (priv && priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, priv,
++				    sizeof(*priv) + priv->size);
++		if (ret < 0)
++			return ret;
+ 	}
+ 
+ 	return 0;
+@@ -1810,9 +1816,11 @@ static int set_link_hw_config(struct snd_soc_tplg_hw_config *cfg,
+ int tplg_add_link_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ {
+ 	struct snd_tplg_link_template *link_tpl = t->link;
+-	struct snd_soc_tplg_link_config *link, *_link;
++	struct snd_soc_tplg_link_config *link;
++	struct snd_soc_tplg_private *priv;
+ 	struct tplg_elem *elem;
+ 	unsigned int i;
++	int ret;
+ 
+ 	if (t->type != SND_TPLG_TYPE_LINK && t->type != SND_TPLG_TYPE_BE
+ 	    && t->type != SND_TPLG_TYPE_CC)
+@@ -1854,21 +1862,12 @@ int tplg_add_link_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 	link->flags = link_tpl->flags;
+ 
+ 	/* private data */
+-	if (link_tpl->priv != NULL && link_tpl->priv->size) {
+-		_link = realloc(link,
+-			elem->size + link_tpl->priv->size);
+-		if (!_link) {
+-			tplg_elem_free(elem);
+-			return -ENOMEM;
+-		}
+-
+-		link = _link;
+-		elem->link = link;
+-		elem->size += link_tpl->priv->size;
+-
+-		memcpy(link->priv.data, link_tpl->priv->data,
+-			link_tpl->priv->size);
+-		link->priv.size = link_tpl->priv->size;
++	priv = link_tpl->priv;
++	if (priv && priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, priv,
++				    sizeof(*priv) + priv->size);
++		if (ret < 0)
++			return ret;
+ 	}
+ 
+ 	return 0;
+@@ -1877,14 +1876,15 @@ int tplg_add_link_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ int tplg_add_dai_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ {
+ 	struct snd_tplg_dai_template *dai_tpl = t->dai;
+-	struct snd_soc_tplg_dai *dai, *_dai;
++	struct snd_soc_tplg_dai *dai;
++	struct snd_soc_tplg_private *priv;
+ 	struct tplg_elem *elem;
+-	int i;
++	int ret, i;
+ 
+ 	tplg_dbg("DAI %s\n", dai_tpl->dai_name);
+ 
+ 	elem = tplg_elem_new_common(tplg, NULL, dai_tpl->dai_name,
+-		SND_TPLG_TYPE_DAI);
++				    SND_TPLG_TYPE_DAI);
+ 	if (!elem)
+ 		return -ENOMEM;
+ 
+@@ -1900,8 +1900,13 @@ int tplg_add_dai_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 	dai->capture = dai_tpl->capture;
+ 
+ 	for (i = 0; i < 2; i++) {
+-		if (dai_tpl->caps[i])
+-			tplg_add_stream_caps(&dai->caps[i], dai_tpl->caps[i]);
++		if (!dai_tpl->caps[i] || !dai_tpl->caps[i]->name)
++			continue;
++		ret = tplg_add_stream_caps(tplg, dai_tpl->caps[i]);
++		if (ret < 0)
++			return ret;
++		snd_strlcpy(dai->caps[i].name, dai_tpl->caps[i]->name,
++			    sizeof(dai->caps[i].name));
+ 	}
+ 
+ 	/* flags */
+@@ -1909,22 +1914,299 @@ int tplg_add_dai_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 	dai->flags = dai_tpl->flags;
+ 
+ 	/* private data */
+-	if (dai_tpl->priv != NULL) {
+-		_dai = realloc(dai,
+-			elem->size + dai_tpl->priv->size);
+-		if (!_dai) {
+-			tplg_elem_free(elem);
+-			return -ENOMEM;
++	priv = dai_tpl->priv;
++	if (priv && priv->size > 0) {
++		ret = tplg_add_data(tplg, elem, priv,
++				    sizeof(*priv) + priv->size);
++		if (ret < 0)
++			return ret;
++	}
++
++	return 0;
++}
++
++/* decode pcm from the binary input */
++int tplg_decode_pcm(snd_tplg_t *tplg,
++		    size_t pos,
++		    struct snd_soc_tplg_hdr *hdr,
++		    void *bin, size_t size)
++{
++	struct snd_soc_tplg_pcm *pcm;
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_pcm_template *pt;
++	struct snd_tplg_stream_caps_template caps[2], *cap;
++	struct snd_tplg_stream_template *stream;
++	unsigned int i;
++	size_t asize;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++	asize = sizeof(*pt) + SND_SOC_TPLG_STREAM_CONFIG_MAX * sizeof(*stream);
++	pt = alloca(asize);
++
++next:
++	memset(pt, 0, asize);
++	pcm = bin;
++
++	if (size < sizeof(*pcm)) {
++		SNDERR("pcm: small size %d", size);
++		return -EINVAL;
++	}
++	if (sizeof(*pcm) != pcm->size) {
++		SNDERR("pcm: unknown element size %d (expected %zd)",
++		       pcm->size, sizeof(*pcm));
++		return -EINVAL;
++	}
++	if (pcm->num_streams > SND_SOC_TPLG_STREAM_CONFIG_MAX) {
++		SNDERR("pcm: wrong number of streams %d", pcm->num_streams);
++		return -EINVAL;
++	}
++	if (sizeof(*pcm) + pcm->priv.size > size) {
++		SNDERR("pcm: wrong private data size %d", pcm->priv.size);
++		return -EINVAL;
++	}
++
++	tplg_dv(tplg, pos, "pcm: size %d private size %d streams %d",
++		pcm->size, pcm->priv.size, pcm->num_streams);
++
++	pt->pcm_name = pcm->pcm_name;
++	tplg_dv(tplg, pos, "pcm: pcm_name '%s'", pt->pcm_name);
++	pt->dai_name = pcm->dai_name;
++	tplg_dv(tplg, pos, "pcm: dai_name '%s'", pt->dai_name);
++	pt->pcm_id = pcm->pcm_id;
++	pt->dai_id = pcm->dai_id;
++	tplg_dv(tplg, pos, "pcm: pcm_id %d dai_id %d", pt->pcm_id, pt->dai_id);
++	pt->playback = pcm->playback;
++	pt->capture = pcm->capture;
++	pt->compress = pcm->compress;
++	tplg_dv(tplg, pos, "pcm: playback %d capture %d compress",
++		pt->playback, pt->capture, pt->compress);
++	pt->num_streams = pcm->num_streams;
++	pt->flag_mask = pcm->flag_mask;
++	pt->flags = pcm->flags;
++	for (i = 0; i < pcm->num_streams; i++) {
++		stream = &pt->stream[i];
++		if (pcm->stream[i].size != sizeof(pcm->stream[0])) {
++			SNDERR("pcm: unknown stream structure size %d",
++			       pcm->stream[i].size);
++			return -EINVAL;
++		}
++		stream->name = pcm->stream[i].name;
++		tplg_dv(tplg, pos + offsetof(struct snd_soc_tplg_pcm, stream[i]),
++			"stream %d: '%s'", i, stream->name);
++		stream->format = pcm->stream[i].format;
++		stream->rate = pcm->stream[i].rate;
++		stream->period_bytes = pcm->stream[i].period_bytes;
++		stream->buffer_bytes = pcm->stream[i].buffer_bytes;
++		stream->channels = pcm->stream[i].channels;
++	}
++	for (i = 0; i < 2; i++) {
++		if (i == 0 && !pcm->playback)
++			continue;
++		if (i == 1 && !pcm->capture)
++			continue;
++		cap = &caps[i];
++		pt->caps[i] = cap;
++		if (pcm->caps[i].size != sizeof(pcm->caps[0])) {
++			SNDERR("pcm: unknown caps structure size %d",
++			       pcm->caps[i].size);
++			return -EINVAL;
+ 		}
++		cap->name = pcm->caps[i].name;
++		tplg_dv(tplg, pos + offsetof(struct snd_soc_tplg_pcm, caps[i]),
++			"caps %d: '%s'", i, cap->name);
++		cap->formats = pcm->caps[i].formats;
++		cap->rates = pcm->caps[i].rates;
++		cap->rate_min = pcm->caps[i].rate_min;
++		cap->rate_max = pcm->caps[i].rate_max;
++		cap->channels_min = pcm->caps[i].channels_min;
++		cap->channels_max = pcm->caps[i].channels_max;
++		cap->periods_min = pcm->caps[i].periods_min;
++		cap->periods_max = pcm->caps[i].periods_max;
++		cap->period_size_min = pcm->caps[i].period_size_min;
++		cap->period_size_max = pcm->caps[i].period_size_max;
++		cap->buffer_size_min = pcm->caps[i].buffer_size_min;
++		cap->buffer_size_max = pcm->caps[i].buffer_size_max;
++		cap->sig_bits = pcm->caps[i].sig_bits;
++	}
++
++	tplg_dv(tplg, pos + offsetof(struct snd_soc_tplg_pcm, priv),
++		"pcm: private start");
++	pt->priv = &pcm->priv;
++
++	bin += sizeof(*pcm) + pcm->priv.size;
++	size -= sizeof(*pcm) + pcm->priv.size;
++	pos += sizeof(*pcm) + pcm->priv.size;
++
++	t.pcm = pt;
++	err = snd_tplg_add_object(tplg, &t);
++	if (err < 0)
++		return err;
++
++	if (size > 0)
++		goto next;
++
++	return 0;
++}
++
++/* decode dai from the binary input */
++int tplg_decode_dai(snd_tplg_t *tplg,
++		    size_t pos,
++		    struct snd_soc_tplg_hdr *hdr,
++		    void *bin, size_t size)
++{
++	SNDERR("not implemented");
++	return -ENXIO;
++}
++
++/* decode cc from the binary input */
++int tplg_decode_cc(snd_tplg_t *tplg,
++		   size_t pos,
++		   struct snd_soc_tplg_hdr *hdr,
++		   void *bin, size_t size)
++{
++	SNDERR("not implemented");
++	return -ENXIO;
++}
++
++/* decode link from the binary input */
++int tplg_decode_link(snd_tplg_t *tplg,
++		     size_t pos,
++		     struct snd_soc_tplg_hdr *hdr,
++		     void *bin, size_t size)
++{
++	struct snd_soc_tplg_link_config *link;
++	snd_tplg_obj_template_t t;
++	struct snd_tplg_link_template lt;
++	struct snd_tplg_stream_template streams[SND_SOC_TPLG_STREAM_CONFIG_MAX];
++	struct snd_tplg_stream_template *stream;
++	struct snd_tplg_hw_config_template hws[SND_SOC_TPLG_HW_CONFIG_MAX];
++	struct snd_tplg_hw_config_template *hw;
++	unsigned int i, j;
++	int err;
++
++	err = tplg_decode_template(tplg, pos, hdr, &t);
++	if (err < 0)
++		return err;
++
++next:
++	memset(&lt, 0, sizeof(lt));
++	memset(streams, 0, sizeof(streams));
++	memset(hws, 0, sizeof(hws));
++	link = bin;
+ 
+-		dai = _dai;
+-		dai->priv.size = dai_tpl->priv->size;
++	if (size < sizeof(*link)) {
++		SNDERR("link: small size %d", size);
++		return -EINVAL;
++	}
++	if (sizeof(*link) != link->size) {
++		SNDERR("link: unknown element size %d (expected %zd)",
++		       link->size, sizeof(*link));
++		return -EINVAL;
++	}
++	if (link->num_streams > SND_SOC_TPLG_STREAM_CONFIG_MAX) {
++		SNDERR("link: wrong number of streams %d", link->num_streams);
++		return -EINVAL;
++	}
++	if (link->num_hw_configs > SND_SOC_TPLG_HW_CONFIG_MAX) {
++		SNDERR("link: wrong number of streams %d", link->num_streams);
++		return -EINVAL;
++	}
++	if (sizeof(*link) + link->priv.size > size) {
++		SNDERR("link: wrong private data size %d", link->priv.size);
++		return -EINVAL;
++	}
+ 
+-		elem->dai = dai;
+-		elem->size += dai->priv.size;
+-		memcpy(dai->priv.data, dai_tpl->priv->data,
+-		       dai->priv.size);
++	tplg_dv(tplg, pos, "link: size %d private size %d streams %d "
++		"hw_configs %d",
++		link->size, link->priv.size, link->num_streams,
++		link->num_hw_configs);
++
++	lt.id = link->id;
++	lt.name = link->name;
++	tplg_dv(tplg, pos, "link: name '%s'", lt.name);
++	lt.stream_name = link->stream_name;
++	tplg_dv(tplg, pos, "link: stream_name '%s'", lt.stream_name);
++	lt.num_streams = link->num_streams;
++	lt.num_hw_configs = link->num_hw_configs;
++	lt.default_hw_config_id = link->default_hw_config_id;
++	lt.flag_mask = link->flag_mask;
++	lt.flags = link->flags;
++	for (i = 0; i < link->num_streams; i++) {
++		stream = &streams[i];
++		if (link->stream[i].size != sizeof(link->stream[0])) {
++			SNDERR("link: unknown stream structure size %d",
++			       link->stream[i].size);
++			return -EINVAL;
++		}
++		stream->name = link->stream[i].name;
++		tplg_dv(tplg,
++			pos + offsetof(struct snd_soc_tplg_link_config, stream[i]),
++			"stream %d: '%s'", i, stream->name);
++		stream->format = link->stream[i].format;
++		stream->rate = link->stream[i].rate;
++		stream->period_bytes = link->stream[i].period_bytes;
++		stream->buffer_bytes = link->stream[i].buffer_bytes;
++		stream->channels = link->stream[i].channels;
+ 	}
++	lt.stream = streams;
++	for (i = 0; i < link->num_hw_configs; i++) {
++		hw = &hws[i];
++		if (link->hw_config[i].size != sizeof(link->hw_config[0])) {
++			SNDERR("link: unknown hw_config structure size %d",
++			       link->hw_config[i].size);
++			return -EINVAL;
++		}
++		hw->id = link->hw_config[i].id;
++		hw->fmt = link->hw_config[i].fmt;
++		hw->clock_gated = link->hw_config[i].clock_gated;
++		hw->invert_bclk = link->hw_config[i].invert_bclk;
++		hw->invert_fsync = link->hw_config[i].invert_fsync;
++		hw->bclk_master = link->hw_config[i].bclk_master;
++		hw->fsync_master = link->hw_config[i].fsync_master;
++		hw->mclk_direction = link->hw_config[i].mclk_direction;
++		hw->mclk_rate = link->hw_config[i].mclk_rate;
++		hw->bclk_rate = link->hw_config[i].bclk_rate;
++		hw->fsync_rate = link->hw_config[i].fsync_rate;
++		hw->tdm_slots = link->hw_config[i].tdm_slots;
++		hw->tdm_slot_width = link->hw_config[i].tdm_slot_width;
++		hw->tx_slots = link->hw_config[i].tx_slots;
++		hw->rx_slots = link->hw_config[i].rx_slots;
++		hw->tx_channels = link->hw_config[i].tx_channels;
++		if (hw->tx_channels > SND_SOC_TPLG_MAX_CHAN) {
++			SNDERR("link: wrong tx channels %d", hw->tx_channels);
++			return -EINVAL;
++		}
++		for (j = 0; j < hw->tx_channels; j++)
++			hw->tx_chanmap[j] = link->hw_config[i].tx_chanmap[j];
++		hw->rx_channels = link->hw_config[i].rx_channels;
++		if (hw->rx_channels > SND_SOC_TPLG_MAX_CHAN) {
++			SNDERR("link: wrong rx channels %d", hw->tx_channels);
++			return -EINVAL;
++		}
++		for (j = 0; j < hw->rx_channels; j++)
++			hw->rx_chanmap[j] = link->hw_config[i].rx_chanmap[j];
++	}
++	lt.hw_config = hws;
++
++	tplg_dv(tplg, pos + offsetof(struct snd_soc_tplg_pcm, priv),
++		"link: private start");
++	lt.priv = &link->priv;
++
++	bin += sizeof(*link) + link->priv.size;
++	size -= sizeof(*link) + link->priv.size;
++	pos += sizeof(*link) + link->priv.size;
++
++	t.link = &lt;
++	err = snd_tplg_add_object(tplg, &t);
++	if (err < 0)
++		return err;
++
++	if (size > 0)
++		goto next;
+ 
+ 	return 0;
+ }
+diff --git a/src/topology/save.c b/src/topology/save.c
+index 0498911f67d5..c6eabc49a7d5 100644
+--- a/src/topology/save.c
++++ b/src/topology/save.c
+@@ -577,6 +577,9 @@ int snd_tplg_save(snd_tplg_t *tplg, char **dst, int flags)
+ 	if (err < 0)
+ 		goto _err;
+ 
++	if (*dst == NULL)
++		return -EINVAL;
++
+ 	if (flags & SND_TPLG_SAVE_NOCHECK)
+ 		return 0;
+ 
+diff --git a/src/topology/tplg_local.h b/src/topology/tplg_local.h
+index 74b3a55cada4..22fc5fba48b9 100644
+--- a/src/topology/tplg_local.h
++++ b/src/topology/tplg_local.h
+@@ -142,7 +142,8 @@ struct tplg_tuple_set {
+ };
+ 
+ struct tplg_vendor_tuples {
+-	unsigned int  num_sets;
++	unsigned int num_sets;
++	unsigned int alloc_sets;
+ 	struct tplg_tuple_set **set;
+ };
+ 
+@@ -217,11 +218,19 @@ struct tplg_table {
+ 		    char **dst, const char *prefix);
+ 	int (*gsave)(snd_tplg_t *tplg, int index,
+ 		     char **dst, const char *prefix);
++	int (*decod)(snd_tplg_t *tplg, size_t pos,
++		     struct snd_soc_tplg_hdr *hdr,
++		     void *bin, size_t size);
+ };
+ 
+ extern struct tplg_table tplg_table[];
+ extern unsigned int tplg_table_items;
+ 
++void *tplg_calloc(struct list_head *heap, size_t size);
++void tplg_free(struct list_head *heap);
++
++int tplg_get_type(int asoc_type);
++
+ int tplg_parse_compound(snd_tplg_t *tplg, snd_config_t *cfg,
+ 	int (*fcn)(snd_tplg_t *, snd_config_t *, void *),
+ 	void *private);
+@@ -246,6 +255,7 @@ int tplg_parse_link(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+ int tplg_parse_cc(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+ int tplg_parse_hw_config(snd_tplg_t *tplg, snd_config_t *cfg, void *priv);
+ 
++unsigned int tplg_get_tuple_size(int type);
+ void tplg_free_tuples(void *obj);
+ 
+ int tplg_build_data(snd_tplg_t *tplg);
+@@ -272,6 +282,8 @@ struct tplg_elem *tplg_elem_lookup(struct list_head *base,
+ 				const char* id,
+ 				unsigned int type,
+ 				int index);
++struct tplg_elem *tplg_elem_type_lookup(snd_tplg_t *tplg,
++					enum snd_tplg_type type);
+ struct tplg_elem* tplg_elem_new_common(snd_tplg_t *tplg,
+ 	snd_config_t *cfg, const char *name, enum snd_tplg_type type);
+ 
+@@ -291,6 +303,10 @@ int tplg_parse_ext_ops(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ struct tplg_elem *lookup_pcm_dai_stream(struct list_head *base,
+ 	const char* id);
+ 
++int tplg_add_data(snd_tplg_t *tplg, struct tplg_elem *parent,
++		  const void *bin, size_t size);
++int tplg_add_data_bytes(snd_tplg_t *tplg, struct tplg_elem *parent,
++			const char *suffix, const void *bin, size_t size);
+ int tplg_add_mixer_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+ int tplg_add_enum_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+ int tplg_add_bytes_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t);
+@@ -356,3 +372,56 @@ int tplg_save_stream_caps(snd_tplg_t *tplg, struct tplg_elem *elem,
+ 			  char **dst, const char *pfx);
+ int tplg_save_dai(snd_tplg_t *tplg, struct tplg_elem *elem,
+ 		  char **dst, const char *pfx);
++
++void tplg_dv(snd_tplg_t *tplg, size_t pos, const char *fmt, ...);
++int tplg_decode_template(snd_tplg_t *tplg,
++			 size_t pos,
++			 struct snd_soc_tplg_hdr *hdr,
++			 snd_tplg_obj_template_t *t);
++int tplg_decode_manifest_data(snd_tplg_t *tplg, size_t pos,
++			      struct snd_soc_tplg_hdr *hdr,
++			      void *bin, size_t size);
++int tplg_decode_control_mixer1(snd_tplg_t *tplg,
++			       struct list_head *heap,
++			       struct snd_tplg_mixer_template *mt,
++			       size_t pos,
++			       void *bin, size_t size);
++int tplg_decode_control_mixer(snd_tplg_t *tplg, size_t pos,
++			      struct snd_soc_tplg_hdr *hdr,
++			      void *bin, size_t size);
++int tplg_decode_control_enum1(snd_tplg_t *tplg,
++			      struct list_head *heap,
++			      struct snd_tplg_enum_template *et,
++			      size_t pos,
++			      void *bin, size_t size);
++int tplg_decode_control_enum(snd_tplg_t *tplg, size_t pos,
++			     struct snd_soc_tplg_hdr *hdr,
++			     void *bin, size_t size);
++int tplg_decode_control_bytes1(snd_tplg_t *tplg,
++			       struct snd_tplg_bytes_template *bt,
++			       size_t pos,
++			       void *bin, size_t size);
++int tplg_decode_control_bytes(snd_tplg_t *tplg, size_t pos,
++			      struct snd_soc_tplg_hdr *hdr,
++			      void *bin, size_t size);
++int tplg_decode_data(snd_tplg_t *tplg, size_t pos,
++		     struct snd_soc_tplg_hdr *hdr,
++		     void *bin, size_t size);
++int tplg_decode_dapm_graph(snd_tplg_t *tplg, size_t pos,
++			   struct snd_soc_tplg_hdr *hdr,
++			   void *bin, size_t size);
++int tplg_decode_dapm_widget(snd_tplg_t *tplg, size_t pos,
++			    struct snd_soc_tplg_hdr *hdr,
++			    void *bin, size_t size);
++int tplg_decode_link(snd_tplg_t *tplg, size_t pos,
++		     struct snd_soc_tplg_hdr *hdr,
++		     void *bin, size_t size);
++int tplg_decode_cc(snd_tplg_t *tplg, size_t pos,
++		   struct snd_soc_tplg_hdr *hdr,
++		   void *bin, size_t size);
++int tplg_decode_pcm(snd_tplg_t *tplg, size_t pos,
++		    struct snd_soc_tplg_hdr *hdr,
++		    void *bin, size_t size);
++int tplg_decode_dai(snd_tplg_t *tplg, size_t pos,
++		    struct snd_soc_tplg_hdr *hdr,
++		    void *bin, size_t size);
+-- 
+2.16.4
+

@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-tools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define version_unconverted 2019.5
+%define version_unconverted 2020.1~git24
 %define lname libSPIRV-Tools-suse15
 
 Name:           spirv-tools
-Version:        2019.5
+Version:        2020.1~git24
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0

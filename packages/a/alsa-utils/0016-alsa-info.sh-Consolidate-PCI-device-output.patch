@@ -1,0 +1,45 @@
+From 11e083d81c330539f0f170bb238a17b1c2e0cb4d Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:01 -0500
+Subject: [PATCH 16/26] alsa-info.sh: Consolidate PCI device output
+
+Include numeric IDs and subsystem info in the PCI device output,
+without placing them in a separate section.
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index cf7ad8979a6f..8fc69972f9f3 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -455,7 +455,9 @@ fi
+ cat /proc/asound/modules 2>/dev/null | awk '{ print $2 }' > $TEMPDIR/alsamodules.tmp
+ cat /proc/asound/cards > $TEMPDIR/alsacards.tmp
+ if [[ ! -z "$LSPCI" ]]; then
+-  lspci | grep -i "multi\|audio">$TEMPDIR/lspci.tmp
++	for class in 0401 0402 0403; do
++		lspci -vvnn -d "::$class" | sed -n '/^[^\t]/,+1p'
++	done > $TEMPDIR/lspci.tmp
+ fi
+ 
+ #Check for HDA-Intel cards codec#*
+@@ -585,12 +587,6 @@ echo "" >> $FILE
+ cat $TEMPDIR/lspci.tmp >> $FILE
+ echo "" >> $FILE
+ echo "" >> $FILE
+-echo "!!Advanced information - PCI Vendor/Device/Subsystem ID's" >> $FILE
+-echo "!!-------------------------------------------------------" >> $FILE
+-echo "" >> $FILE
+-lspci -vvn |grep -A1 040[1-3] >> $FILE
+-echo "" >> $FILE
+-echo "" >> $FILE
+ fi
+ 
+ if [ "$SNDOPTIONS" ]
+-- 
+2.16.4
+

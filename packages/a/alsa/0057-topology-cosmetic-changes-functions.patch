@@ -1,0 +1,201 @@
+From b20b400e2f598c86abaf697d66396cecd49b3e14 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 3 Jan 2020 22:56:48 +0100
+Subject: [PATCH 57/63] topology: cosmetic changes (functions)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/builder.c |  3 ++-
+ src/topology/ctl.c     |  5 +++--
+ src/topology/data.c    | 17 +++++++++--------
+ src/topology/parser.c  |  4 ++--
+ src/topology/pcm.c     | 16 ++++++++--------
+ 5 files changed, 24 insertions(+), 21 deletions(-)
+
+diff --git a/src/topology/builder.c b/src/topology/builder.c
+index 7af5de084d84..15757668d7d4 100644
+--- a/src/topology/builder.c
++++ b/src/topology/builder.c
+@@ -71,7 +71,8 @@ static ssize_t write_block_header(snd_tplg_t *tplg, unsigned int type,
+ }
+ 
+ static int write_elem_block(snd_tplg_t *tplg,
+-	struct list_head *base, size_t size, int tplg_type, const char *obj_name)
++			    struct list_head *base, size_t size,
++			    int tplg_type, const char *obj_name)
+ {
+ 	struct list_head *pos, *sub_pos, *sub_base;
+ 	struct tplg_elem *elem, *elem_next;
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index 41dc2ddbb826..b78f1c54be05 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -600,7 +600,7 @@ int tplg_save_control_bytes(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 
+ /* Parse Control Enums. */
+ int tplg_parse_control_enum(snd_tplg_t *tplg, snd_config_t *cfg,
+-	void *private ATTRIBUTE_UNUSED)
++			    void *private ATTRIBUTE_UNUSED)
+ {
+ 	struct snd_soc_tplg_enum_control *ec;
+ 	struct tplg_elem *elem;
+@@ -736,7 +736,8 @@ int tplg_save_control_enum(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+  * Mixer control. Supports multiple channels.
+  */
+ int tplg_parse_control_mixer(snd_tplg_t *tplg,
+-	snd_config_t *cfg, void *private ATTRIBUTE_UNUSED)
++			     snd_config_t *cfg,
++			     void *private ATTRIBUTE_UNUSED)
+ {
+ 	struct snd_soc_tplg_mixer_control *mc;
+ 	struct tplg_elem *elem;
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 37c4591987db..b63e98cd7282 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -516,7 +516,7 @@ static int tplg_parse_data_hex(snd_config_t *cfg, struct tplg_elem *elem,
+ 
+ /* get the token integer value from its id */
+ static int get_token_value(const char *token_id,
+-	struct tplg_vendor_tokens *tokens)
++			   struct tplg_vendor_tokens *tokens)
+ {
+ 	unsigned int i;
+ 
+@@ -589,7 +589,8 @@ unsigned int tplg_get_tuple_size(int type)
+ 
+ /* Add a tuples object to the private buffer of its parent data element */
+ static int copy_tuples(struct tplg_elem *elem,
+-	struct tplg_vendor_tuples *tuples, struct tplg_vendor_tokens *tokens)
++		       struct tplg_vendor_tuples *tuples,
++		       struct tplg_vendor_tokens *tokens)
+ {
+ 	struct snd_soc_tplg_private *priv = elem->data, *priv2;
+ 	struct tplg_tuple_set *tuple_set;
+@@ -781,7 +782,7 @@ static const char *get_tuple_type_name(unsigned int type)
+ }
+ 
+ static int parse_tuple_set(snd_config_t *cfg,
+-	struct tplg_tuple_set **s)
++			   struct tplg_tuple_set **s)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+@@ -965,7 +966,7 @@ static int tplg_save_tuple_set(struct tplg_vendor_tuples *tuples,
+ }
+ 
+ static int parse_tuple_sets(snd_config_t *cfg,
+-	struct tplg_vendor_tuples *tuples)
++			    struct tplg_vendor_tuples *tuples)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+@@ -1033,7 +1034,7 @@ int tplg_save_tuple_sets(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ /* Parse vendor tokens
+  */
+ int tplg_parse_tokens(snd_tplg_t *tplg, snd_config_t *cfg,
+-	void *private ATTRIBUTE_UNUSED)
++		      void *private ATTRIBUTE_UNUSED)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+@@ -1109,7 +1110,7 @@ int tplg_save_tokens(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ /* Parse vendor tuples.
+  */
+ int tplg_parse_tuples(snd_tplg_t *tplg, snd_config_t *cfg,
+-	void *private ATTRIBUTE_UNUSED)
++		      void *private ATTRIBUTE_UNUSED)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+@@ -1193,7 +1194,7 @@ void tplg_free_tuples(void *obj)
+ /* Parse manifest's data references
+  */
+ int tplg_parse_manifest_data(snd_tplg_t *tplg, snd_config_t *cfg,
+-	void *private ATTRIBUTE_UNUSED)
++			     void *private ATTRIBUTE_UNUSED)
+ {
+ 	struct snd_soc_tplg_manifest *manifest;
+ 	struct tplg_elem *elem;
+@@ -1341,7 +1342,7 @@ int tplg_build_manifest_data(snd_tplg_t *tplg)
+  * words, tuples.
+  */
+ int tplg_parse_data(snd_tplg_t *tplg, snd_config_t *cfg,
+-	void *private ATTRIBUTE_UNUSED)
++		    void *private ATTRIBUTE_UNUSED)
+ {
+ 	snd_config_iterator_t i, next;
+ 	snd_config_t *n;
+diff --git a/src/topology/parser.c b/src/topology/parser.c
+index d7783a93ab6b..436e48416a43 100644
+--- a/src/topology/parser.c
++++ b/src/topology/parser.c
+@@ -110,8 +110,8 @@ int tplg_get_unsigned(snd_config_t *n, unsigned *val, int base)
+  * Parse compound
+  */
+ int tplg_parse_compound(snd_tplg_t *tplg, snd_config_t *cfg,
+-	int (*fcn)(snd_tplg_t *, snd_config_t *, void *),
+-	void *private)
++			int (*fcn)(snd_tplg_t *, snd_config_t *, void *),
++			void *private)
+ {
+ 	const char *id;
+ 	snd_config_iterator_t i, next;
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index da88783f2b09..61159d33357c 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -1124,8 +1124,8 @@ static int parse_hw_config_refs(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ }
+ 
+ /* Parse a physical link element in text conf file */
+-int tplg_parse_link(snd_tplg_t *tplg,
+-	snd_config_t *cfg, void *private ATTRIBUTE_UNUSED)
++int tplg_parse_link(snd_tplg_t *tplg, snd_config_t *cfg,
++		    void *private ATTRIBUTE_UNUSED)
+ {
+ 	struct snd_soc_tplg_link_config *link;
+ 	struct tplg_elem *elem;
+@@ -1264,8 +1264,8 @@ int tplg_save_link(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ }
+ 
+ /* Parse cc */
+-int tplg_parse_cc(snd_tplg_t *tplg,
+-	snd_config_t *cfg, void *private ATTRIBUTE_UNUSED)
++int tplg_parse_cc(snd_tplg_t *tplg, snd_config_t *cfg,
++		  void *private ATTRIBUTE_UNUSED)
+ {
+ 	struct snd_soc_tplg_link_config *link;
+ 	struct tplg_elem *elem;
+@@ -1307,8 +1307,8 @@ int tplg_parse_cc(snd_tplg_t *tplg,
+ 
+ /* save CC */
+ int tplg_save_cc(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+-		   struct tplg_elem *elem,
+-		   char **dst, const char *pfx)
++		 struct tplg_elem *elem,
++		 char **dst, const char *pfx)
+ {
+ 	struct snd_soc_tplg_link_config *link = elem->link;
+ 	char pfx2[16];
+@@ -1668,7 +1668,7 @@ int tplg_save_hw_config(snd_tplg_t *tplg ATTRIBUTE_UNUSED,
+ 
+ /* copy stream object */
+ static void tplg_add_stream_object(struct snd_soc_tplg_stream *strm,
+-				struct snd_tplg_stream_template *strm_tpl)
++				   struct snd_tplg_stream_template *strm_tpl)
+ {
+ 	snd_strlcpy(strm->name, strm_tpl->name,
+ 		SNDRV_CTL_ELEM_ID_NAME_MAXLEN);
+@@ -1773,7 +1773,7 @@ int tplg_add_pcm_object(snd_tplg_t *tplg, snd_tplg_obj_template_t *t)
+ 
+ /* Set link HW config from C API template */
+ static int set_link_hw_config(struct snd_soc_tplg_hw_config *cfg,
+-			struct snd_tplg_hw_config_template *tpl)
++			      struct snd_tplg_hw_config_template *tpl)
+ {
+ 	unsigned int i;
+ 
+-- 
+2.16.4
+

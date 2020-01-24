@@ -1,0 +1,48 @@
+From 3c740d90490abe64c86c667934ba5d990817b873 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 20 Nov 2019 13:20:39 +0100
+Subject: [PATCH 06/26] alsactl: sysfs - add /sys/kernel/uevent_seqnum check to
+ init
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/init_sysfs.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/alsactl/init_sysfs.c b/alsactl/init_sysfs.c
+index 5c789b61b0e5..57ef615a2c76 100644
+--- a/alsactl/init_sysfs.c
++++ b/alsactl/init_sysfs.c
+@@ -34,6 +34,8 @@ static int sysfs_init(void)
+ 	const char *env;
+ 	char sysfs_test[PATH_SIZE];
+ 
++	INIT_LIST_HEAD(&attr_list);
++
+ 	env = getenv("SYSFS_PATH");
+ 	if (env) {
+ 		strlcpy(sysfs_path, env, sizeof(sysfs_path));
+@@ -43,13 +45,16 @@ static int sysfs_init(void)
+ 	dbg("sysfs_path='%s'", sysfs_path);
+ 
+ 	strlcpy(sysfs_test, sysfs_path, sizeof(sysfs_test));
+-	strlcat(sysfs_test, "/kernel/uevent_helper", sizeof(sysfs_test));
++	strlcat(sysfs_test, "/kernel/uevent_seqnum", sizeof(sysfs_test));
+ 	if (access(sysfs_test, F_OK)) {
+-		error("sysfs path '%s' is invalid\n", sysfs_path);
+-		return -errno;
++		strlcpy(sysfs_test, sysfs_path, sizeof(sysfs_test));
++		strlcat(sysfs_test, "/kernel/uevent_helper", sizeof(sysfs_test));
++		if (access(sysfs_test, F_OK)) {
++			error("sysfs path '%s' is invalid", sysfs_path);
++			return -errno;
++		}
+ 	}
+ 
+-	INIT_LIST_HEAD(&attr_list);
+ 	return 0;
+ }
+ 
+-- 
+2.16.4
+

@@ -1,0 +1,44 @@
+From c9dc401264ad3c0b621f52e8098e7c1661c50cea Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Wed, 20 Nov 2019 11:13:55 -0800
+Subject: [PATCH 05/26] aplay: Limit VUMeter progress bar to 100 for negative
+ as well
+
+While the progress bar cannot be negative, GCC concludes that it can be
+and assumes tmp can be written past the end. Fixes this GCC warning:
+
+aplay.c:1747:18: warning: '%02d' directive writing between 2 and 11 bytes
+ into a region of size 4 [-Wformat-overflow=]
+ 1747 |    sprintf(tmp, "%02d%%", maxperc[c]);
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ aplay/aplay.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 78adee2fa380..1a887e412aae 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -54,6 +54,8 @@
+ #include "formats.h"
+ #include "version.h"
+ 
++#define ABS(a)  (a) < 0 ? -(a) : (a)
++
+ #ifdef SND_CHMAP_API_VERSION
+ #define CONFIG_SUPPORT_CHMAP	1
+ #endif
+@@ -1741,7 +1743,7 @@ static void print_vu_meter_stereo(int *perc, int *maxperc)
+ 			line[bar_length + 6 + 1 + p] = '+';
+ 		else
+ 			line[bar_length - p - 1] = '+';
+-		if (maxperc[c] > 99)
++		if (ABS(maxperc[c]) > 99)
+ 			sprintf(tmp, "MAX");
+ 		else
+ 			sprintf(tmp, "%02d%%", maxperc[c]);
+-- 
+2.16.4
+

@@ -17,4 +17,13 @@
   * Test on Python 3.7 and drop Python 2.6 and 3.3.</comment>
     <requestid>720178</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75b011bdea31ff80bb5b476af9c518c2</srcmd5>
+    <version>1.1.2.post1</version>
+    <time>1579867795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.2.post1:
+  * Fix working with newer djangos</comment>
+    <requestid>766665</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,39 @@
+From cb88813ff71226af5d16f8853d186ff7c572dbe0 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 3 Jan 2020 22:07:11 +0100
+Subject: [PATCH 54/63] topology: move the elem->list delete to
+ tplg_elem_free()
+
+The tplg_elem_free() is called in the error path from many places
+and it is expected that the element object will be unregistered
+from the tplg structure, too.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/elem.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/topology/elem.c b/src/topology/elem.c
+index ed5b5f13054f..cbd7f4b636c1 100644
+--- a/src/topology/elem.c
++++ b/src/topology/elem.c
+@@ -301,6 +301,8 @@ struct tplg_elem *tplg_elem_new(void)
+ 
+ void tplg_elem_free(struct tplg_elem *elem)
+ {
++	list_del(&elem->list);
++
+ 	tplg_ref_free_list(&elem->ref_list);
+ 
+ 	/* free struct snd_tplg_ object,
+@@ -323,7 +325,6 @@ void tplg_elem_free_list(struct list_head *base)
+ 
+ 	list_for_each_safe(pos, npos, base) {
+ 		elem = list_entry(pos, struct tplg_elem, list);
+-		list_del(&elem->list);
+ 		tplg_elem_free(elem);
+ 	}
+ }
+-- 
+2.16.4
+

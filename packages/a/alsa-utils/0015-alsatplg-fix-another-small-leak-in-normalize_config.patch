@@ -1,0 +1,26 @@
+From 10db898d9b97f0a8d3093405ad5b4aa4ed53801d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 13 Dec 2019 10:44:36 +0100
+Subject: [PATCH 15/26] alsatplg: fix another small leak in normalize_config()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ topology/topology.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/topology/topology.c b/topology/topology.c
+index c12be7806929..bc5797c5f14f 100644
+--- a/topology/topology.c
++++ b/topology/topology.c
+@@ -98,6 +98,8 @@ static snd_config_t *normalize_config(const char *id, snd_config_t *src, int sor
+ 		}
+ 		s = normalize_config(id2, s, sort);
+ 		if (s == NULL || snd_config_add(dst, s)) {
++			if (s)
++				snd_config_delete(s);
+ 			snd_config_delete(dst);
+ 			free(a);
+ 			return NULL;
+-- 
+2.16.4
+

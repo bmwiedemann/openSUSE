@@ -1,0 +1,66 @@
+From 1482d1f254fe42d83d904e52c911df8693b62653 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 29 Dec 2019 20:05:14 +0100
+Subject: [PATCH 50/63] topology: fix the TPLG_DEBUG compilation
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/channel.c | 2 +-
+ src/topology/data.c    | 5 ++++-
+ src/topology/pcm.c     | 2 +-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/topology/channel.c b/src/topology/channel.c
+index 110775a8053d..390c3f164e97 100644
+--- a/src/topology/channel.c
++++ b/src/topology/channel.c
+@@ -129,7 +129,7 @@ int tplg_parse_channel(snd_tplg_t *tplg, snd_config_t *cfg,
+ 		else if (strcmp(id, "shift") == 0)
+ 			channel->shift = value;
+ 
+-		tplg_dbg("\t\t%s = %s\n", id, value);
++		tplg_dbg("\t\t%s = %d\n", id, value);
+ 	}
+ 
+ 	tplg->channel_idx++;
+diff --git a/src/topology/data.c b/src/topology/data.c
+index 1ddd3c509e64..7b4bdccde602 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -230,9 +230,11 @@ err:
+ 	return ret;
+ }
+ 
+-static void dump_priv_data(struct tplg_elem *elem)
++static void dump_priv_data(struct tplg_elem *elem ATTRIBUTE_UNUSED)
+ {
++#ifdef TPLG_DEBUG
+ 	struct snd_soc_tplg_private *priv = elem->data;
++	unsigned char *p = (unsigned char *)priv->data;
+ 	unsigned int i;
+ 
+ 	tplg_dbg(" elem size = %d, priv data size = %d\n",
+@@ -246,6 +248,7 @@ static void dump_priv_data(struct tplg_elem *elem)
+ 	}
+ 
+ 	tplg_dbg("\n\n");
++#endif
+ }
+ 
+ static inline int check_nibble(unsigned char c)
+diff --git a/src/topology/pcm.c b/src/topology/pcm.c
+index bc3070816867..8e5afbe6ea72 100644
+--- a/src/topology/pcm.c
++++ b/src/topology/pcm.c
+@@ -881,7 +881,7 @@ int tplg_parse_pcm(snd_tplg_t *tplg, snd_config_t *cfg,
+ 
+ 			pcm->compress = ival;
+ 
+-			tplg_dbg("\t%s: %s\n", id, val);
++			tplg_dbg("\t%s: %d\n", id, ival);
+ 			continue;
+ 		}
+ 
+-- 
+2.16.4
+

@@ -1,0 +1,40 @@
+From 068dd55717d4e020849e4dd12610d16968cf49be Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Sat, 21 Dec 2019 00:32:03 -0500
+Subject: [PATCH 18/26] alsa-info.sh: Simplify iteration over cards when
+ calling amixer
+
+Read card names directly from individual procfs files, and pass them
+to amixer using the '-c' option.
+
+Signed-off-by: David Ward <david.ward@ll.mit.edu>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsa-info/alsa-info.sh | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index ed1d9e248405..e1067d42f9f8 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -144,12 +144,12 @@ withamixer() {
+         echo "!!Amixer output" >> $FILE
+         echo "!!-------------" >> $FILE
+         echo "" >> $FILE
+-	for i in $(grep "]: " /proc/asound/cards | awk -F ' ' '{ print $1 }') ; do
+-		CARD_NAME=$(grep "^ *$i " $TEMPDIR/alsacards.tmp | awk '{ print $2 }')
+-		echo "!!-------Mixer controls for card $i $CARD_NAME]" >> $FILE
++	for f in /proc/asound/card*/id; do
++		[ -f "$f" ] && read -r CARD_NAME < "$f" || continue
++		echo "!!-------Mixer controls for card $CARD_NAME" >> $FILE
+ 		echo "" >>$FILE
+-		amixer -c$i info >> $FILE 2>&1
+-		amixer -c$i >> $FILE 2>&1
++		amixer -c "$CARD_NAME" info >> $FILE 2>&1
++		amixer -c "$CARD_NAME" >> $FILE 2>&1
+ 		echo "" >> $FILE
+ 	done
+ 	echo "" >> $FILE
+-- 
+2.16.4
+

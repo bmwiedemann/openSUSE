@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        https://download.gnome.org/sources/epiphany/3.34/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM epiphany-fix-compile-warning.patch -- sync-utils: use getrandom() to generate randomness
+Patch0:         epiphany-fix-compile-warning.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.42.0
@@ -58,7 +60,6 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.25.1
 BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.25.1
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
-Recommends:     %{name}-lang
 Recommends:     ca-certificates
 
 %description

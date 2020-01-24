@@ -38,6 +38,11 @@ BuildRequires:  libraqm-devel
 %if 0%{?suse_version} && 0%{?is_opensuse}
 BuildRequires:  mcpp-devel
 %endif
+%ifnarch %ix86 x86_64
+BuildRequires:  Mesa-libEGL-devel
+BuildRequires:  Mesa-libGLESv2-devel
+BuildRequires:  Mesa-libGLESv3-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -59,7 +64,6 @@ BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-data = %{version}
 Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
-ExclusiveArch:  %{ix86} x86_64
 
 %description
 SuperTuxKart is a Free 3d kart racing game.

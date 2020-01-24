@@ -1,0 +1,25 @@
+From 07d779143bfd24448034cd55945b46c46407247c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 28 Dec 2019 10:18:34 +0100
+Subject: [PATCH 48/63] topology: fix the unitialized tuples
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/topology/data.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/topology/data.c b/src/topology/data.c
+index f00ed3011869..4e43fcc9d5a7 100644
+--- a/src/topology/data.c
++++ b/src/topology/data.c
+@@ -601,6 +601,7 @@ static int copy_tuples(struct tplg_elem *elem,
+ 		elem->data = priv;
+ 
+ 		array = (struct snd_soc_tplg_vendor_array *)(priv->data + off);
++		memset(array, 0, set_size);
+ 		array->size = set_size;
+ 		array->type = tuple_set->type;
+ 		array->num_elems = tuple_set->num_tuples;
+-- 
+2.16.4
+

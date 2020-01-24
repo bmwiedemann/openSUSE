@@ -1,0 +1,68 @@
+From 929f8f4d9e89c7751e6a6f15c1915349a2851c97 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Wed, 22 Jan 2020 16:11:58 -0600
+Subject: [PATCH] sync-utils: use getrandom() to generate randomness
+
+GCC complains that we ignore the return value from fread(), which is
+important for error checking.
+
+This is easy to fix, but might as well switch to getrandom() while we're
+at it, since this is the nice/modern way to get randomness.
+
+Note: requires glibc 2.25 or a newish FreeBSD.
+---
+ lib/ephy-sync-utils.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/lib/ephy-sync-utils.c b/lib/ephy-sync-utils.c
+index 6c8a37a85..4ae56220b 100644
+--- a/lib/ephy-sync-utils.c
++++ b/lib/ephy-sync-utils.c
+@@ -23,12 +23,14 @@
+ 
+ #include "ephy-settings.h"
+ 
++#include <errno.h>
+ #include <glib/gi18n.h>
+ #include <inttypes.h>
+ #include <json-glib/json-glib.h>
+ #include <libsoup/soup.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <sys/random.h>
+ 
+ static const char hex_digits[] = "0123456789abcdef";
+ 
+@@ -165,21 +167,24 @@ ephy_sync_utils_base64_urlsafe_decode (const char *text,
+  * This is mainly required by Nettle's RSA support.
+  * From Nettle's documentation: random_ctx and random is a randomness generator.
+  * random(random_ctx, length, dst) should generate length random octets and store them at dst.
+- * We don't really use random_ctx, since we have /dev/urandom available.
++ * We don't use random_ctx.
+  */
+ void
+ ephy_sync_utils_generate_random_bytes (void   *random_ctx,
+                                        gsize   num_bytes,
+                                        guint8 *out)
+ {
+-  FILE *fp;
++  gssize ret;
+ 
+   g_assert (num_bytes > 0);
+   g_assert (out);
+ 
+-  fp = fopen ("/dev/urandom", "r");
+-  fread (out, sizeof (guint8), num_bytes, fp);
+-  fclose (fp);
++  do {
++    ret = getrandom (out, num_bytes, 0);
++  } while (ret < (gssize)num_bytes && errno == EINTR);
++
++  if (ret != (gssize)num_bytes)
++    g_error ("Failed to generate randomness: %s", g_strerror (errno));
+ }
+ 
+ char *
+-- 
+2.24.1
+

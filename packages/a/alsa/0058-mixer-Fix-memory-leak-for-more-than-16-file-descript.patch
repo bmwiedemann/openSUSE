@@ -1,0 +1,29 @@
+From 14ad963e192f101246e9b559d3b3fd41268330fb Mon Sep 17 00:00:00 2001
+From: David Fries <David@Fries.net>
+Date: Tue, 7 Jan 2020 09:18:10 -0600
+Subject: [PATCH 58/63] mixer: Fix memory leak for more than 16 file descriptor
+ case
+
+Signed-off-by: David Fries <David@Fries.net>
+Reviewed-by: Takashi Iwai <tiwai@suse.de>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/mixer/mixer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/mixer/mixer.c b/src/mixer/mixer.c
+index 8205647449d2..b1af99456c8d 100644
+--- a/src/mixer/mixer.c
++++ b/src/mixer/mixer.c
+@@ -767,7 +767,7 @@ int snd_mixer_wait(snd_mixer_t *mixer, int timeout)
+ 	if (count < 0)
+ 		return count;
+ 	if ((unsigned int) count > sizeof(spfds) / sizeof(spfds[0])) {
+-		pfds = malloc(count * sizeof(*pfds));
++		pfds = alloca(count * sizeof(*pfds));
+ 		if (!pfds)
+ 			return -ENOMEM;
+ 		err = snd_mixer_poll_descriptors(mixer, pfds, 
+-- 
+2.16.4
+

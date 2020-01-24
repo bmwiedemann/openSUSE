@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lxml
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-%{version}.pdf
-# PATCH-FIX-UPSTREAM lxml-libxml-2.9.10.patch dimstar@opensuse.org -- Fix build against libxml 2.9.10
-Patch0:         lxml-libxml-2.9.10.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
@@ -73,7 +71,6 @@ This package contains header files needed to use lxml's C API.
 
 %prep
 %setup -q -n lxml-%{version}
-%patch0 -p1
 cp %{SOURCE1} .
 
 # remove generated files

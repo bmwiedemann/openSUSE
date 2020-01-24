@@ -1,0 +1,87 @@
+From 5e6df5ae4ba587ba324dd97b7bd8af9f8159f59a Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Tue, 19 Nov 2019 20:28:53 -0800
+Subject: [PATCH 01/26] treewide: sys/poll to poll
+
+Fixes warning on musl:
+
+warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ amidi/amidi.c               | 2 +-
+ amixer/amixer.c             | 2 +-
+ aplay/aplay.c               | 2 +-
+ seq/aplaymidi/arecordmidi.c | 2 +-
+ seq/aseqdump/aseqdump.c     | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/amidi/amidi.c b/amidi/amidi.c
+index b6e05e159031..c6268e4c2ccd 100644
+--- a/amidi/amidi.c
++++ b/amidi/amidi.c
+@@ -31,7 +31,7 @@
+ #include <signal.h>
+ #include <sys/timerfd.h>
+ #include <sys/types.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+diff --git a/amixer/amixer.c b/amixer/amixer.c
+index ad9c482e87e4..f7f31f0167fb 100644
+--- a/amixer/amixer.c
++++ b/amixer/amixer.c
+@@ -28,7 +28,7 @@
+ #include <errno.h>
+ #include <assert.h>
+ #include <alsa/asoundlib.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <stdint.h>
+ #include "amixer.h"
+ #include "../alsamixer/volume_mapping.h"
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 274bbce33dd2..52410684b47e 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -44,7 +44,7 @@
+ #include <assert.h>
+ #include <termios.h>
+ #include <signal.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <sys/uio.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>
+diff --git a/seq/aplaymidi/arecordmidi.c b/seq/aplaymidi/arecordmidi.c
+index f3db65ee8b91..604cd0d29722 100644
+--- a/seq/aplaymidi/arecordmidi.c
++++ b/seq/aplaymidi/arecordmidi.c
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ #include <signal.h>
+ #include <getopt.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <alsa/asoundlib.h>
+ #include "aconfig.h"
+ #include "version.h"
+diff --git a/seq/aseqdump/aseqdump.c b/seq/aseqdump/aseqdump.c
+index 790454020259..578e06fbcb22 100644
+--- a/seq/aseqdump/aseqdump.c
++++ b/seq/aseqdump/aseqdump.c
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ #include <signal.h>
+ #include <getopt.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <alsa/asoundlib.h>
+ #include "aconfig.h"
+ #include "version.h"
+-- 
+2.16.4
+

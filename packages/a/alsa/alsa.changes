@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jan 21 15:49:49 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  more topology fixes, a memory leak fix in mixer API, alsactl
+  string handling fix, UCM config fixes:
+  0032-Update-the-attributes.m4-macro-file-from-xine.patch
+  0033-topology-avoid-to-use-the-atoi-directly-when-expecte.patch
+  0034-topology-use-snd_config_get_bool-instead-own-impleme.patch
+  0035-topology-fix-tplg_get_integer-handle-errno-ERANGE.patch
+  0036-topology-add-tplg_get_unsigned-function.patch
+  0037-topology-convert-builder-to-use-the-mallocated-memor.patch
+  0038-topology-add-binary-output-from-the-builder.patch
+  0039-topology-parser-recode-tplg_parse_config.patch
+  0040-topology-add-snd_tplg_load-remove-snd_tplg_build_bin.patch
+  0041-topology-move-the-topology-element-table-from-builde.patch
+  0042-topology-add-parser-to-the-tplg_table.patch
+  0043-topology-add-snd_tplg_save.patch
+  0044-topology-add-snd_tplg_create-with-flags.patch
+  0045-topology-add-snd_tplg_version-function.patch
+  0046-topology-cleanup-the-SNDERR-calls.patch
+  0047-topology-dapm-fix-the-SNDERR-Undefined.patch
+  0048-topology-fix-the-unitialized-tuples.patch
+  0049-topology-implement-shorter-hexa-uuid-00-00-parser.patch
+  0050-topology-fix-the-TPLG_DEBUG-compilation.patch
+  0051-topology-fix-the-ops-parser-accept-integer-hexa-valu.patch
+  0052-topology-fix-the-wrong-memory-access-object-realloc.patch
+  0053-topology-implement-snd_tplg_decode.patch
+  0054-topology-move-the-elem-list-delete-to-tplg_elem_free.patch
+  0055-topology-unify-the-log-mechanism.patch
+  0056-topology-tplg_dbg-cleanups.patch
+  0057-topology-cosmetic-changes-functions.patch
+  0058-mixer-Fix-memory-leak-for-more-than-16-file-descript.patch
+  0059-Quote-strings-containing-or-when-saving-an-alsa-conf.patch
+  0060-ucm-fix-the-configuration-directory-longname-for-ucm.patch
+  0061-ucm-split-conf_file_name-and-conf_dir_name.patch
+  0062-ucm-remove-MAX_FILE-definition-and-use-correct-PATH_.patch
+  0063-topology-remove-MAX_FILE-definition-and-use-correct-.patch
+- Remove INSTALL document, add NOTES instead
+
+-------------------------------------------------------------------
 Fri Dec 20 16:54:25 CET 2019 - tiwai@suse.de
 
 - Upstream fixes, including the alsa-tools build breakage:

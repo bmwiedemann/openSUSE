@@ -692,4 +692,12 @@ See LICENSES.TXT - test.py is GPL licensed (aggregation) (forwarded request 8071
     <comment></comment>
     <requestid>749144</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>59a0dab9de35f07c7f8962000cfe8df8</srcmd5>
+    <version>4.4.2</version>
+    <time>1579867578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766341</requestid>
+  </revision>
 </revisionlist>

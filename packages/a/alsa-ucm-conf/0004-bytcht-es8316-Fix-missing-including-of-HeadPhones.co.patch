@@ -1,0 +1,51 @@
+From e852e235102b6132e7c873c2ff00bf3e01237af0 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Mon, 6 Jan 2020 14:11:59 +0100
+Subject: [PATCH 4/6] bytcht-es8316: Fix missing including of HeadPhones.conf
+ after ucm2 conversion
+
+The conversion to ucm2 format missed adding an include for:
+
+codecs/es8316/HeadPhones.conf
+
+Leading to no sound on the headphones output, this commit adds the missing
+include fixing this.
+
+Cc: youling 257 <youling257@gmail.com>
+Reported-by: youling 257 <youling257@gmail.com>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/bytcht-es8316/HiFi-Components.conf | 2 ++
+ ucm2/bytcht-es8316/HiFi-LongName.conf   | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/ucm2/bytcht-es8316/HiFi-Components.conf b/ucm2/bytcht-es8316/HiFi-Components.conf
+index 314d35517c01..c40bd491bac9 100644
+--- a/ucm2/bytcht-es8316/HiFi-Components.conf
++++ b/ucm2/bytcht-es8316/HiFi-Components.conf
+@@ -20,6 +20,8 @@ If.mono {
+ 	}
+ }
+ 
++<codecs/es8316/HeadPhones.conf>
++
+ If.in1 {
+ 	Condition {
+ 		Type String
+diff --git a/ucm2/bytcht-es8316/HiFi-LongName.conf b/ucm2/bytcht-es8316/HiFi-LongName.conf
+index ea7d1c35c58a..03cf17b54cda 100644
+--- a/ucm2/bytcht-es8316/HiFi-LongName.conf
++++ b/ucm2/bytcht-es8316/HiFi-LongName.conf
+@@ -20,6 +20,8 @@ If.mono {
+ 	}
+ }
+ 
++<codecs/es8316/HeadPhones.conf>
++
+ If.in1 {
+ 	Condition {
+ 		Type String
+-- 
+2.16.4
+

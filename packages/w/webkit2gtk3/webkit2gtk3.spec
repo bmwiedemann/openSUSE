@@ -1,7 +1,7 @@
 #
 # spec file for package webkit2gtk3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.26.2
+Version:        2.26.3
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -43,10 +43,8 @@ Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE webkit2gtk3-fdo-soname.patch mgorse@suse.com -- don't call dlopen with an unversioned soname.
 Patch0:         webkit2gtk3-fdo-soname.patch
-# PATCh-FIX-UPSTREAM webkit2gtk3-icu-build-fix.patch mgorse@suse.com -- fix build with icu 65.1.
-Patch1:         webkit2gtk3-icu-build-fix.patch
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
-Patch2:         webkit-process.patch
+Patch1:         webkit-process.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -274,9 +272,8 @@ A small test browswer from webkit, useful for testing features.
 %prep
 %setup -n webkitgtk-%{version}
 %patch0 -p1
-%patch1 -p1
 %if 0%{?suse_version} <= 1500
-%patch2 -p1
+%patch1 -p1
 %endif
 
 %build
@@ -324,7 +321,7 @@ export PYTHON=%{_bindir}/python3
 %ifarch armv6hl ppc ppc64 ppc64le riscv64 s390 s390x
   -DENABLE_JIT=OFF \
 %endif
-  -DUSE_SYSTEM_MALLOC=ON \
+  -DUSE_SYSTEM_MALLOC=OFF \
 
 %ninja_build -j $max_link_jobs
 

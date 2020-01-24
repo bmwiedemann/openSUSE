@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-drivers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -129,7 +129,12 @@ Patch2:         n_add-Mesa-headers-again.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
-
+Patch61:        U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patch
+Patch62:        U_0002-r600-Move-get_pic_param-to-radeon_vce.c.patch
+Patch63:        U_0003-radeon-Move-si_get_pic_param-to-radeon_vce.c.patch
+Patch64:        U_0004-radeon-Fix-multiple-definition-error-with-radeon_deb.patch
+Patch65:        U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
+Patch66:        U_0006-nouveau-nvc0-add-extern-keyword-to-nvc0_miptree_vtbl.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -466,8 +471,8 @@ applications using the OpenGL|ES 3.x APIs.
 
 %package -n libOSMesa8
 Summary:        Mesa Off-screen rendering extension
-Group:          System/Libraries
 # Wrongly named package shipped .so.8
+Group:          System/Libraries
 Obsoletes:      libOSMesa9 < %{version}
 Provides:       libOSMesa9 = %{version}
 
@@ -583,8 +588,8 @@ programs against the GBM library.
 
 %package -n Mesa-libd3d
 Summary:        Mesa Direct3D9 state tracker
-Group:          System/Libraries
 # Manually provide d3d library (bnc#918294)
+Group:          System/Libraries
 %ifarch x86_64 s390x ppc64 ppc64le aarch64 riscv64
 Provides:       d3dadapter9.so.1()(64bit)
 %else
@@ -735,6 +740,12 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch2 -p1
 %patch54 -p1
 %patch58 -p1
+%patch61 -p1
+%patch62 -p1
+%patch63 -p1
+%patch64 -p1
+%patch65 -p1
+%patch66 -p1
 
 # Remove requires to libglvnd/libglvnd-devel from baselibs.conf when
 # disabling libglvnd build; ugly ...

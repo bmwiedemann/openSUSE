@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 23 03:07:07 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.002011
+   see /usr/share/doc/packages/perl-Data-Perl/Changes
+
+  0.002011  2020-01-22 13:33:30+00:00 Europe/London
+    - pod cleanups
+    - update Changes file which was missed out in last release
+  
+  0.002010  2020-01-22 13:28:03+00:00 Europe/London
+    - adds head and tail methods for Array
+    - @tobyink is now maintainer
+
+-------------------------------------------------------------------
 Mon Sep 15 12:56:30 UTC 2014 - coolo@suse.com
 
 - initial package 0.002009
