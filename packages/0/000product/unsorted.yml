@@ -2398,6 +2398,8 @@ unsorted:
   - dogtail 
   - doh 
   - dolphin-devel 
+  - dolphin-emu: [x86_64] 
+  - dolphin-emu-lang: [x86_64] 
   - dolphin-plugins 
   - dolphin-plugins-lang 
   - dom2-core-tests 
@@ -3630,9 +3632,6 @@ unsorted:
   - geronimo-specs-pom 
   - geronimo-stax-1_0-api 
   - geronimo-ws-metadata-2_0-api 
-  - getdata 
-  - getdata-devel 
-  - getdata-doc 
   - getdp 
   - getdp-devel 
   - getdp-doc 
@@ -6643,6 +6642,8 @@ unsorted:
   - kpeople5-32bit: [x86_64] 
   - kpeople5-devel 
   - kpeople5-devel-32bit: [x86_64] 
+  - kpeoplevcard 
+  - kpeoplevcard-devel 
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
@@ -8761,7 +8762,6 @@ unsorted:
   - libexttextcat-tools 
   - libf2c0 
   - libf2fs_format6 
-  - libf95getdata7 
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
@@ -8823,7 +8823,6 @@ unsorted:
   - libfftw3_omp3 
   - libfftw3_omp3-32bit: [x86_64] 
   - libfftw3_threads3-32bit: [x86_64] 
-  - libfgetdata6 
   - libfguid-devel 
   - libfguid1 
   - libfife0_4_2 
@@ -9026,8 +9025,6 @@ unsorted:
   - libgepub-0_6-0 
   - libgepub-devel 
   - libgerbv1 
-  - libgetdata++7 
-  - libgetdata8 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
@@ -10255,12 +10252,12 @@ unsorted:
   - libnetcdf15-openmpi2-32bit: [x86_64] 
   - libnetcdf15-openmpi3 
   - libnetcdf15-openmpi3-32bit: [x86_64] 
-  - libnetcdf_4_7_1-gnu-hpc 
-  - libnetcdf_4_7_1-gnu-mpich-hpc 
-  - libnetcdf_4_7_1-gnu-mvapich2-hpc 
-  - libnetcdf_4_7_1-gnu-openmpi1-hpc 
-  - libnetcdf_4_7_1-gnu-openmpi2-hpc 
-  - libnetcdf_4_7_1-gnu-openmpi3-hpc 
+  - libnetcdf_4_7_3-gnu-hpc 
+  - libnetcdf_4_7_3-gnu-mpich-hpc 
+  - libnetcdf_4_7_3-gnu-mvapich2-hpc 
+  - libnetcdf_4_7_3-gnu-openmpi1-hpc 
+  - libnetcdf_4_7_3-gnu-openmpi2-hpc 
+  - libnetcdf_4_7_3-gnu-openmpi3-hpc 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -10605,8 +10602,6 @@ unsorted:
   - libpangomm-1_4-1-32bit: [x86_64] 
   - libpangomm-2_44-1 
   - libpangomm-2_44-1-32bit: [x86_64] 
-  - libpangox-1_0-0 
-  - libpangox-1_0-0-32bit: [x86_64] 
   - libpano-devel 
   - libpano-utils 
   - libpano13-3 
@@ -12160,7 +12155,7 @@ unsorted:
   - libwim15 
   - libwkhtmltox0 
   - libwlc0 
-  - libwlroots4 
+  - libwlroots5 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -14346,25 +14341,25 @@ unsorted:
   - netcdf-openmpi3 
   - netcdf-openmpi3-devel 
   - netcdf-openmpi3-devel-static 
-  - netcdf_4_7_1-gnu-hpc 
-  - netcdf_4_7_1-gnu-hpc-devel 
-  - netcdf_4_7_1-gnu-hpc-devel-data 
-  - netcdf_4_7_1-gnu-hpc-devel-static 
-  - netcdf_4_7_1-gnu-mpich-hpc 
-  - netcdf_4_7_1-gnu-mpich-hpc-devel 
-  - netcdf_4_7_1-gnu-mpich-hpc-devel-static 
-  - netcdf_4_7_1-gnu-mvapich2-hpc 
-  - netcdf_4_7_1-gnu-mvapich2-hpc-devel 
-  - netcdf_4_7_1-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_7_1-gnu-openmpi1-hpc 
-  - netcdf_4_7_1-gnu-openmpi1-hpc-devel 
-  - netcdf_4_7_1-gnu-openmpi1-hpc-devel-static 
-  - netcdf_4_7_1-gnu-openmpi2-hpc 
-  - netcdf_4_7_1-gnu-openmpi2-hpc-devel 
-  - netcdf_4_7_1-gnu-openmpi2-hpc-devel-static 
-  - netcdf_4_7_1-gnu-openmpi3-hpc 
-  - netcdf_4_7_1-gnu-openmpi3-hpc-devel 
-  - netcdf_4_7_1-gnu-openmpi3-hpc-devel-static 
+  - netcdf_4_7_3-gnu-hpc 
+  - netcdf_4_7_3-gnu-hpc-devel 
+  - netcdf_4_7_3-gnu-hpc-devel-data 
+  - netcdf_4_7_3-gnu-hpc-devel-static 
+  - netcdf_4_7_3-gnu-mpich-hpc 
+  - netcdf_4_7_3-gnu-mpich-hpc-devel 
+  - netcdf_4_7_3-gnu-mpich-hpc-devel-static 
+  - netcdf_4_7_3-gnu-mvapich2-hpc 
+  - netcdf_4_7_3-gnu-mvapich2-hpc-devel 
+  - netcdf_4_7_3-gnu-mvapich2-hpc-devel-static 
+  - netcdf_4_7_3-gnu-openmpi1-hpc 
+  - netcdf_4_7_3-gnu-openmpi1-hpc-devel 
+  - netcdf_4_7_3-gnu-openmpi1-hpc-devel-static 
+  - netcdf_4_7_3-gnu-openmpi2-hpc 
+  - netcdf_4_7_3-gnu-openmpi2-hpc-devel 
+  - netcdf_4_7_3-gnu-openmpi2-hpc-devel-static 
+  - netcdf_4_7_3-gnu-openmpi3-hpc 
+  - netcdf_4_7_3-gnu-openmpi3-hpc-devel 
+  - netcdf_4_7_3-gnu-openmpi3-hpc-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -15587,8 +15582,6 @@ unsorted:
   - pangomm-doc 
   - pangomm1_4-devel 
   - pangomm1_4-doc 
-  - pangox-compat 
-  - pangox-devel 
   - panini 
   - pantheon-wallpapers-branding-upstream 
   - paper-icon-theme 
@@ -16728,7 +16721,6 @@ unsorted:
   - perl-Test-TempDir-Tiny 
   - perl-Test-Time 
   - perl-Test-Trap 
-  - perl-Test-Unit 
   - perl-Test-Unit-Lite 
   - perl-Test-UseAllModules 
   - perl-Test-WWW-Mechanize 
@@ -16855,7 +16847,6 @@ unsorted:
   - perl-forks 
   - perl-gdal 
   - perl-genders 
-  - perl-getdata 
   - perl-homedir 
   - perl-indirect 
   - perl-libintl-perl 
@@ -17616,7 +17607,6 @@ unsorted:
   - python-funcsigs 
   - python-gcs-oauth2-boto-plugin 
   - python-gdbm 
-  - python-getdata 
   - python-gevent-doc 
   - python-gexiv2 
   - python-glanceclient-doc 
@@ -33200,7 +33190,6 @@ unsorted:
   - vocal-lang 
   - vodovod 
   - voikkospell 
-  - vokoscreen 
   - vokoscreenNG 
   - volk 
   - volk-devel 
