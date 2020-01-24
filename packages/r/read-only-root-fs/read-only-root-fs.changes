@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 17:35:13 UTC 2020 - iforster@suse.com
+
+- Update to version 1.0+git20200121.5ed8d15:
+  * Always mount /root during initrd [boo#1161264]
+
+-------------------------------------------------------------------
 Tue Dec 03 10:14:40 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Update to version 1.0+git20191203.3f7cc07:

@@ -92,4 +92,14 @@
   * Workaround /var being RO during systemd-journal-flush (boo#1156421)</comment>
     <requestid>753160</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e45d16888143eecb1fc9e18339f0f860</srcmd5>
+    <version>1.0+git20200121.5ed8d15</version>
+    <time>1579872044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200121.5ed8d15:
+  * Always mount /root during initrd [boo#1161264]
+</comment>
+    <requestid>766129</requestid>
+  </revision>
 </revisionlist>
