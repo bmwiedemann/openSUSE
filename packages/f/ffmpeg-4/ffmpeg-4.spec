@@ -97,7 +97,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Library for working with various multimedia formats
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
