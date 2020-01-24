@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:56:36 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Avoided crash when libstorage-ng provides a non-UTF string as
+  partition id (bsc#1161442).
+- 4.2.77
+
+-------------------------------------------------------------------
+Tue Jan 21 12:11:46 UTC 2020 - aschnell@suse.com
+
+- added warning before resizing block devices which were probed
+  empty (related to bsc#1159318)
+- 4.2.76
+
+-------------------------------------------------------------------
+Tue Jan 21 11:34:31 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Guided Setup: enforced a consistent width for both password
+  fields (bsc#1161202)
+- 4.2.75
+
+-------------------------------------------------------------------
 Fri Jan 17 14:54:37 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Partitioner: make it possible to directly work with devices
