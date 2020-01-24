@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 23 18:32:54 UTC 2020 - marix@marix.org
+
+- Update to version 1.5:
+  * Introduce a new pidfd based set of D-Bus APIs.
+  * Dynamically change governor on integrated GPUs for improved
+    performance.
+  * Various other fixes and improvements.
+
+-------------------------------------------------------------------
 Tue Jul 23 11:19:07 UTC 2019 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 1.4

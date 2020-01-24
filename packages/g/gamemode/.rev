@@ -43,4 +43,16 @@
     <comment></comment>
     <requestid>717991</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8289c3ec4713bdfff57b27b53f25ae92</srcmd5>
+    <version>1.5</version>
+    <time>1579867945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5:
+  * Introduce a new pidfd based set of D-Bus APIs.
+  * Dynamically change governor on integrated GPUs for improved
+    performance.
+  * Various other fixes and improvements.</comment>
+    <requestid>766697</requestid>
+  </revision>
 </revisionlist>
