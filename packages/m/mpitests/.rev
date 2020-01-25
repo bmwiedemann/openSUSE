@@ -65,4 +65,12 @@
     <comment>- openmpi was renamed into openmpi1</comment>
     <requestid>738816</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f7cf494cf6c13175c374e9d4c1f209a8</srcmd5>
+    <version>3.2</version>
+    <time>1579955002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766916</requestid>
+  </revision>
 </revisionlist>

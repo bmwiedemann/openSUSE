@@ -1,7 +1,7 @@
 #
 # spec file for package mpitests
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ Group:          Development/Languages/Other
 %endif
 Version:        3.2
 Release:        0
-Url:            http://www.openfabrics.org/downloads.htm
+URL:            http://www.openfabrics.org/downloads.htm
 Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-%{osu_ver}.tar.gz
 Source1:        https://github.com/intel/mpi-benchmarks/archive/v%{imb_ver}.tar.gz#/IMB_2018_Update1.tgz
 Source3:        mpitests-runtests.sh
@@ -76,6 +76,21 @@ BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildRequires:  mpitests = %{version}
 Requires:       mpitests = %{version}
+%endif
+
+# openmpi was renamed to openmpi1 in Factory so only enable openmpi1 there
+# and openmpi everywhere else
+%if "%{flavor}" == "openmpi"
+%if 0%{?suse_version} > 1500
+# Disable for Factory
+ExclusiveArch:  do_not_build
+%endif
+%endif
+%if "%{flavor}" == "openmpi1"
+%if 0%{?suse_version} <= 1500
+# Disable for everything but Factory
+ExclusiveArch:  do_not_build
+%endif
 %endif
 
 %if "%{flavor}" == "mvapich2"
@@ -133,13 +148,15 @@ ExcludeArch:    ppc64
 %endif
 
 %if "%{flavor}" == "openmpi3" || "%{flavor}" == "openmpi3-gnu-hpc"
-%if !0%{?is_opensuse}
-#OpenMPI3 is not available in SLE, so do not build these flavors unless
+%if 0%{!?is_opensuse} && 0%{?sle_version} < 150200
+#OpenMPI3 is not available in SLE < 15-SP2, so do not build these flavors unless
 #with openmpi3 is set
 %bcond_with mpitests_openmpi3
+%else
+%bcond_without mpitests_openmpi3
+%endif
 %if %{without mpitests_openmpi3}
 ExclusiveArch:  do_not_build
-%endif
 %endif
 ExcludeArch:    ppc64
 %endif
