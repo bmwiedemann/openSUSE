@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 23 06:58:20 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.96
+  * Bug fixes:
+    [CVE-2019-1010048, boo#1141777]
+    [CVE-2019-14296, boo#1143839]
+    [CVE-2019-20021, boo#1159833]
+    [CVE-2019-20053, boo#1159920]
+    [CVE-2018-11243 partially - ticket 206 ONLY, boo#1094138]
+
+-------------------------------------------------------------------
 Tue Oct 30 09:54:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias from description.
