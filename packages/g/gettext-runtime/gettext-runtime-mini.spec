@@ -1,7 +1,7 @@
 #
-# spec file for package gettext-runtime-mini
+# spec file for package gettext-runtime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 %define pacname gettext
-# datadir was not changed in 0.19.8.1 patch release
-%define dataversion 0.19.8
+# datadir was not changed in 0.20.1 patch release
+%define dataversion 0.20
 %bcond_without mini
 
 Name:           gettext-runtime-mini
-Version:        0.19.8.1
+Version:        0.20.1
 Release:        0
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 # To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
 #BuildRequires: fdupes
 %if %{without mini}
@@ -34,7 +33,6 @@ BuildRequires:  libcroco-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  perl-libintl-perl
 BuildRequires:  tcl
-BuildRequires:  xz
 # bug437293
 %ifarch ppc64
 Obsoletes:      gettext-64bit
@@ -54,29 +52,25 @@ Provides:       gettext-runtime = %{version}
 Summary:        Tools for Native Language Support (NLS)
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            http://www.gnu.org/software/gettext/
+URL:            http://www.gnu.org/software/gettext/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
+Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz
 Source1:        gettext-rpmlintrc
 Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        baselibs.conf
-Source5:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
+Source5:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz.sig
 Source6:        %name.keyring
 Patch:          gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
 Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
-# PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de 
+# PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
 Patch6:         gettext-dont-test-gnulib.patch
-Patch9:         gettext-needlessly_init_vars.patch
-# PATCH-FIX-UPSTREAM https://savannah.gnu.org/bugs/?49654 -- bmwiedemann@opensuse.org
-Patch10:        msgfmt-remove-pot-creation-date.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
-# PATCH-FIX-SUSE Bug boo#1106843 
-Patch12:        msgfmt-reset-msg-length-after-remove.patch
+# PATCH-FIX-SUSE Bug boo#1106843
 Patch13:        reproducible.patch
 
 %description
@@ -92,6 +86,7 @@ Summary:        Tools for Native Language Support (NLS)
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
+Requires:       xz
 %if %{without mini}
 Requires(post): info
 Requires(preun): info
@@ -133,6 +128,28 @@ BuildArch:      noarch
 This subpackage contains the HTML version of the gettext documentation
 as well as project examples.
 
+%if %{without mini}
+%package     -n libtextstyle0
+Summary:        Provides textstyling for console output
+License:        LGPL-2.1-or-later
+Group:          Development/Tools/Other
+
+%description -n libtextstyle0
+GNU libtextstyle provides an easy way to add styling to programs that produce output to a console or terminal emulator window.
+It does this in a way that allows the end user to customize the styling using the industry standard, namely Cascading Style Sheets (CSS).
+
+
+
+%package     -n libtextstyle-devel
+Summary:        Devel package for libtextstyle
+License:        LGPL-2.1-or-later
+Group:          Development/Tools/Other
+Requires:       libtextstyle0 = %{version}
+
+%description -n libtextstyle-devel
+This package provides headers and static libraries for libtextstyle
+%endif
+
 %prep
 %setup -q -n %{pacname}-%{version}
 %patch
@@ -141,23 +158,25 @@ as well as project examples.
 %patch4
 %patch5
 %patch6 -p1
-%patch9
-%patch10 -p1
 %patch11 -p1
-%patch12 -p0
 %patch13 -p1
 
 %build
 %define _lto_cflags %{nil}
-# expect a couple "You should update your `aclocal.m4' by running aclocal."
-autoreconf -fiv
 #sh autogen.sh
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 export CXXFLAGS="$CFLAGS -Dgcc_is_lint"
+export LDFLAGS="-lm"
 %if 0%{?qemu_user_space_build:1}
   OPTS="--disable-openmp"
 %endif
-%configure --enable-shared $OPTS
+%configure --disable-static $OPTS
+%if %{with mini}
+# Link statically to libtextstyle from libgettextlib.so
+export CFLAGS="${CFLAGS} -fPIC"
+export CXXFLAGS="${CXXFLAGS} -fPIC"
+(cd libtextstyle; %configure --enable-static --disable-shared ${OPTS})
+%endif
 make %{?_smp_mflags} GMSGFMT=../src/msgfmt V=1
 # use texinfo.tex supplied by the system (texinfo)
 # make -C gettext-tools/doc gettext.pdf
@@ -165,14 +184,14 @@ make %{?_smp_mflags} GMSGFMT=../src/msgfmt V=1
 %install
 %define my_docdir %{_defaultdocdir}/%{name}
 export LC_CTYPE=ISO-8859-15
-make install DESTDIR=%{buildroot} docdir=%{my_docdir}
+%make_install docdir=%{my_docdir}
 cp -pr AUTHORS NEWS README*	%{buildroot}/%{my_docdir}
 mkdir -p %{buildroot}/usr/share/emacs/site-lisp
 install -m 644 %SOURCE2 %{buildroot}/usr/share/emacs/site-lisp
-install -m 644 gettext-tools/misc/po-compat.el %{buildroot}/usr/share/emacs/site-lisp
-install -m 644 gettext-tools/misc/po-mode.el %{buildroot}/usr/share/emacs/site-lisp
-install -m 644 gettext-tools/misc/start-po.el %{buildroot}/usr/share/emacs/site-lisp
-#make -C gettext-tools/doc docdir=%{buildroot}/%{my_docdir} install-pdf
+install -m 644 gettext-tools/emacs/po-compat.el %{buildroot}/usr/share/emacs/site-lisp
+install -m 644 gettext-tools/emacs/po-mode.el %{buildroot}/usr/share/emacs/site-lisp
+install -m 644 gettext-tools/emacs/start-po.el %{buildroot}/usr/share/emacs/site-lisp
+#make -C gettext-tools/doc docdir=%%{buildroot}/%%{my_docdir} install-pdf
 if [ -e %{buildroot}/%{_libdir}/preloadable_libintl.so ];then
 	chmod 755 %{buildroot}/%{_libdir}/preloadable_libintl.so
 fi
@@ -183,7 +202,15 @@ rm -rf %{buildroot}/%_datadir/locale/en@{bold,}quot
 #remove unwanted stuff
 rm -f %{buildroot}/usr/share/doc/packages/gettext/README.{mingw,vms,woe32}
 rm -f %_datadir/%name/gettext.jar
-#find %{buildroot} -maxdepth 2 -name '*html' | xargs rm -f
+rm -f %{buildroot}/%_libdir/libtextstyle.la
+%if %{with mini}
+	rm -f %{buildroot}/usr/include/textstyle.h
+	rm -rf %{buildroot}/usr/include/textstyle
+	rm -rf %{buildroot}/usr/share/doc/packages/gettext-runtime-mini/libtextstyle_*.html
+	rm -f %{buildroot}/%_libdir/libtextstyle.a
+	rm  -f %{buildroot}/%{_infodir}/libtextstyle.info
+%endif
+#find %%{buildroot} -maxdepth 2 -name '*html' -delete
 # hardlink the dupes in the documentation:
 cd %{buildroot}/%{my_docdir}/examples
 sh %{SOURCE3}
@@ -197,7 +224,7 @@ echo ".so man3/dgettext.3" > dcgettext.3
 
 %if %{without mini}
 %check
-# s390s fails this test, 
+# s390s fails this test,
 # Starting test_recursive_lock ...test-lock: pthread_mutex_lock.c:66: __pthread_mutex_lock: Assertion `mutex->__data.__owner == 0' failed.
 
 # These fails randomly, remove them from Makefile
@@ -217,9 +244,6 @@ make check || {
 }
 %endif
 
-%clean
-rm -rf %{buildroot}
-
 %post -p /sbin/ldconfig
 
 %postun  -p /sbin/ldconfig
@@ -231,6 +255,11 @@ rm -rf %{buildroot}
 %preun -n gettext-tools%{?with_mini:-mini}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gettext.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/autosprintf.info.gz
+
+%if %{without mini}
+%post   -n libtextstyle0 -p /sbin/ldconfig
+%postun -n libtextstyle0 -p /sbin/ldconfig
+%endif
 
 %files -f gettext-runtime.lang
 %defattr(-,root,root)
@@ -292,7 +321,6 @@ rm -rf %{buildroot}
 %_libdir/preloadable_libintl.so
 %_libdir/gettext
 %_datadir/%pacname/config.rpath
-%_datadir/%pacname/intl
 %_datadir/%pacname/po
 %_datadir/%pacname/projects
 %_datadir/%pacname/gettext.h
@@ -300,7 +328,7 @@ rm -rf %{buildroot}
 %_datadir/%pacname/javaversion.class
 %_datadir/%pacname/styles
 %_datadir/%pacname/archive.dir.tar.xz
-%_datadir/aclocal/*
+%_datadir/aclocal
 %dir %{_datadir}/%{pacname}-%{dataversion}
 %{_datadir}/%{pacname}-%{dataversion}/its
 
@@ -315,5 +343,23 @@ rm -rf %{buildroot}
 %doc %_docdir/%name/tutorial*.html
 %doc %_docdir/%name/xgettext*.html
 %doc %_docdir/%name/recode-sr-latin.1.html
+
+%if %{without mini}
+%files -n libtextstyle0
+%defattr(-,root,root)
+%_libdir/libtextstyle.so.0
+%_libdir/libtextstyle.so.0.0.0
+
+%files -n libtextstyle-devel
+%defattr(-,root,root)
+%dir %_includedir/textstyle
+%_includedir/textstyle.h
+%_includedir/textstyle/stdbool.h
+%_includedir/textstyle/version.h
+%_includedir/textstyle/woe32dll.h
+%_libdir/libtextstyle.so
+%doc %_docdir/gettext-runtime%{?with_mini:-mini}/libtextstyle*.html
+%doc %_infodir/libtextstyle.info.gz
+%endif
 
 %changelog

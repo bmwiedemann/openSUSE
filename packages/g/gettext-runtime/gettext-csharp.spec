@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-csharp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,26 +26,24 @@ BuildRequires:  libxml2-devel
 BuildRequires:  mono-devel
 BuildRequires:  perl-libintl-perl
 BuildRequires:  tcl
-BuildRequires:  xz
 Requires:       mono
-Url:            http://www.gnu.org/software/gettext/
-Version:        0.19.8.1
+URL:            http://www.gnu.org/software/gettext/
+Version:        0.20.1
 Release:        0
 Summary:        Native Language Support (NLS) for C#
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source:         http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
+Source:         http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz
 Source1:        gettext-rpmlintrc
 Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
-Source4:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
+Source4:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz.sig
 Source5:        %name.keyring
 Patch:          gettext-0.12.1-sigfpe.patch
 Patch2:         gettext-0.12.1-gettextize.patch
 Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
-Patch9:         gettext-needlessly_init_vars.patch
 
 %if 0%{?fedora_version} || 0%{?centos_version} <= 600 || 0%{?scilin_version} <= 600 || 0%{?rhel_version} <= 600
 %global debug_package %{nil}
@@ -79,15 +77,14 @@ reliably than 'resgen'.
 %patch2
 %patch4
 %patch5
-%patch9
 
 %build
-export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
+export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint -lm"
 export CXXFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 # expect a couple "You should update your `aclocal.m4' by running aclocal."
 #autoreconf -fiv
 #sh autogen.sh
-%configure --enable-shared --enable-csharp 
+%configure --enable-shared --enable-csharp
 make %{?_smp_mflags} GMSGFMT=../src/msgfmt V=1
 
 %install

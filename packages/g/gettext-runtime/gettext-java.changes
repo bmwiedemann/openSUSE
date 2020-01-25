@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 11 13:12:37 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Updated to version 0.20.1
+  + msgfmt now eliminates the POT-Creation-Date header field from .mo files.
+  + update-po target in Makefile.in.in now uses msgmerge --previous.
+  + msgmerge now has an option --for-msgfmt, that produces a PO file meant
+    for use by msgfmt only.  This option saves processing time, in particular
+    by omitting fuzzy matching that is not useful in this situation.
+  + The .pot file in a 'po' directory is now erased by "make maintainer-clean".
+  + It is now possible to override xgettext options from the po/Makefile.in.in
+    through options in XGETTEXT_OPTIONS (declared in po/Makevars).
+  + The --intl option of the gettextize program (deprecated since 2010) is
+    no longer available. Instead of including the intl sources in your package,
+    we suggest making the libintl library an optional prerequisite of your
+    package. This will simplify the build system of your package.
+  + Accordingly, the Autoconf macro AM_GNU_GETTEXT_INTL_SUBDIR is gone as well.
+  + Java:
+    * xgettext now supports UTF-8 encoded .properties files (a new feature
+      of Java 9).
+    * The build system and tools now support Java 9, 10, and 11. On the
+      other hand, support for old versions of Java (Java 5 and older,
+      GCJ 4.2.x and older) has been dropped.
+- Rebased gettext-po-mode.diff 
+- Removed gettext-needlessly_init_vars.patch (now in upstream)
+- Removed gettext-0.19.8.1-jdk9.patch (now in upstream)
+
+-------------------------------------------------------------------
 Mon May 14 19:45:56 UTC 2018 - antoine.belvire@opensuse.org
 
 - Remove prereq on info: No info page installed.

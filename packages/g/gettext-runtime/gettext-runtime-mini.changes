@@ -1,7 +1,101 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:35:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libtextstyle0 to baselibs.conf: gettext-runtime-32bit has a
+  dependency on it, so we also need the library built as -32bit.
+
+-------------------------------------------------------------------
+Sat Dec 21 17:23:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add missing Requires: libtextstyle0 in corresponding devel package,
+  drop gettext-runtime Requires.
+- Skip creation of shared libtextstyle in -mini flavor.
+- Statically link to libtextstyle in -mini flavor, fixes
+  broken bootstrap of gettext.
+
+-------------------------------------------------------------------
+Tue Dec 17 10:16:04 UTC 2019 - Christian Vögl <cvoegl@suse.de>
+
+- Add -lm to LDFLAGS (boo#1138806)
+
+-------------------------------------------------------------------
+Tue Nov 26 16:04:25 UTC 2019 - Christian Vögl <cvoegl@suse.de>
+
+- Added xz to requires (boo#1141380)
+- The previous update to 0.20.1 also fixes (boo#1113719)
+
+-------------------------------------------------------------------
+Wed Oct 30 19:05:13 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove autoreconf call (not required), and drop the no longer
+  required libtool build dependency.
+
+-------------------------------------------------------------------
+Fri Aug 23 16:56:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Heed SLPP by placing libtextstyle.so.0 in the right package.
+- Drop documentation from libtextstyle0, no one will read it there.
+- Drop static library.
+- Remove pointless ldconfig calls for libtextstyle-devel.
+- Avoid pointless sh invocation of libtextstyle0 scriptlets.
+- Avoid unnecessary |xargs rm.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
 Thu Jun 20 09:56:30 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1138806).
+
+-------------------------------------------------------------------
+Tue Jun 11 12:34:24 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
+
+- Updatetd to 0.20.1
+  + msgfmt now eliminates the POT-Creation-Date header field from .mo files.
+  + update-po target in Makefile.in.in now uses msgmerge --previous.
+  + msgmerge now has an option --for-msgfmt, that produces a PO file meant
+    for use by msgfmt only.  This option saves processing time, in particular
+    by omitting fuzzy matching that is not useful in this situation.
+  + The .pot file in a 'po' directory is now erased by "make maintainer-clean".
+  + It is now possible to override xgettext options from the po/Makefile.in.in
+    through options in XGETTEXT_OPTIONS (declared in po/Makevars).
+  + The --intl option of the gettextize program (deprecated since 2010) is
+    no longer available. Instead of including the intl sources in your package,
+    we suggest making the libintl library an optional prerequisite of your
+    package. This will simplify the build system of your package.
+  + Accordingly, the Autoconf macro AM_GNU_GETTEXT_INTL_SUBDIR is gone as well.
+  + C, C++:
+    *  xgettext now supports strings in u8"..." syntax, as specified in C11
+       and C++11.
+    *  xgettext now supports 'p'/'P' exponent markers in number tokens, as
+       specified in C99 and C++17.
+  + C++:
+    *  xgettext now supports single-quotes in number tokens, as specified in
+       C++14. 
+  + Shell:
+    *  The programs 'gettext', 'ngettext' now support a --context argument.
+    *  gettext.sh contains new function eval_pgettext and eval_npgettext
+       for producing translations of messages with context.
+  + Perl:
+    * Native support for context functions (pgettext, dpgettext, dcpgettext,
+      npgettext, dnpgettext, dcnpgettext).
+    * better detection of question mark and slash as operators (as opposed 
+      to regular expression delimiters).
+  + Scheme:
+    * xgettext now parses the syntax for specialized byte vectors (#u8(...),
+      #vu8(...), etc.) correctly.
+  + Pascal:
+    * xgettext can now extract strings from .rsj files, produced by the
+      Free Pascal compiler version 3.0.0 or newer.
+  + Vala:
+    * xgettext now parses escape sequences in strings more accurately.
+  + JavaScript:
+    *  xgettext now parses template literals correctly.
+- Rebased gettext-dont-test-gnulib.patch
+- Removed gettext-needlessly_init_vars.patch (now in upstream)
+- Rebased gettext-po-mode.diff
+- Removed msgfmt-remove-pot-creation-date.patch (now in upstream)
+- Removed msgfmt-reset-msg-length-after-remove.patch (now in upstream)
+- Removed parts of reproducible.patch (now in upstream)
 
 -------------------------------------------------------------------
 Sat May 25 11:53:33 UTC 2019 - Marcus Meissner <meissner@suse.com>
