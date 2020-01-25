@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 08:17:00 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mvapich2 2.3.3 (jsc#SLE-8544)
+  - See CHANGELOG for fixes and new features
+
+-------------------------------------------------------------------
 Fri Sep  6 08:10:21 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mvapich2 2.3.2 (jsc#SLE-8544)

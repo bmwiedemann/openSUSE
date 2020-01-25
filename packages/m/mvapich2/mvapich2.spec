@@ -1,7 +1,7 @@
 #
 # spec file for package mvapich2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mvapich2
-%define vers  2.3.2
-%define _vers 2_3_2
+%define vers  2.3.3
+%define _vers 2_3_3
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -157,7 +157,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 Version:        %{vers}
 Release:        0
-Source0:        mvapich2-%{version}.tar.gz
+Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-%{version}.tar.gz
 Source1:        mpivars.sh
 Source2:        mpivars.csh
 Source3:        macros.hpc-mvapich2
@@ -170,7 +170,7 @@ Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch5:         0001-Drop-real128.patch
-Url:            http://mvapich.cse.ohio-state.edu/overview/mvapich2/
+URL:            http://mvapich.cse.ohio-state.edu/overview/mvapich2/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if %{without skip_hpc_build}
