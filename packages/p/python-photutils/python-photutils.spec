@@ -1,7 +1,7 @@
 #
 # spec file for package python-photutils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
+Patch0:         0001-aperture-mask-test-assert-almost-equal.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13}
 BuildRequires:  %{python_module setuptools}
@@ -55,6 +56,7 @@ and performing photometry of astronomical sources.
 
 %prep
 %setup -q -n photutils-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
