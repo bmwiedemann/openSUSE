@@ -1,7 +1,7 @@
 #
 # spec file for package python-textile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
+%define skip_python2 1
 Name:           python-textile
-Version:        3.0.4
+Version:        4.0.0
 Release:        0
 Summary:        Textile processing for python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/textile/python-textile
+URL:            http://github.com/textile/python-textile
 Source:         https://files.pythonhosted.org/packages/source/t/textile/textile-%{version}.tar.gz
 Requires:       python-Pillow
-Requires:       python-html5lib >= 0.999999999
+Requires:       python-html5lib >= 1.0.1
 Requires:       python-six
 Recommends:     python-regex
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 %if %{with test}
-# not needed as the test requires internet connection
-#BuildRequires:  %%{python_module Pillow}
-BuildRequires:  %{python_module html5lib >= 0.999999999}
+BuildRequires:  %{python_module html5lib >= 1.0.1}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module regex >= 1.0}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

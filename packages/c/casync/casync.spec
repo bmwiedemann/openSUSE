@@ -1,7 +1,7 @@
 #
 # spec file for package casync
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,15 @@ Release:        0
 Summary:        Content Addressable Data Synchronization Tool
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/File-Sharing
-Url:            https://github.com/systemd/casync
-#Source0:        https://github.com/systemd/casync/archive/v%{version}/%%{name}-%%{version}.tar.gz
+URL:            https://github.com/systemd/casync
+#Source0:        https://github.com/systemd/casync/archive/v%%{version}/%%{name}-%%{version}.tar.gz
 Source0:        https://github.com/systemd/casync/archive/%{revision}.zip#/%{name}-%{version}.zip
 # PATH-FIX-OPENSUSE compiler_error_nonnull.patch -- fix for nonnull gcc error, see https://github.com/systemd/casync/issues/83
 Patch0:         compiler_error_nonnull.patch
 BuildRequires:  cmake
 BuildRequires:  diffutils
 BuildRequires:  gcc >= 5
+BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libudev-devel

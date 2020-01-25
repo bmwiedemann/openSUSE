@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-stomp.py
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Python STOMP client
 License:        Apache-2.0

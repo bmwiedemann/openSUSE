@@ -54,4 +54,12 @@
  * Add facility for PrintingListener to write to log rather than print statements</comment>
     <requestid>761142</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>baa802d9a80edfad3026adc651643be2</srcmd5>
+    <version>5.0.1</version>
+    <time>1579955135</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>767035</requestid>
+  </revision>
 </revisionlist>
