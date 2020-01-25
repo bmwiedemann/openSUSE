@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 25 02:20:06 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.0:
+  * Release v3.52.0
+  * Hide xdebug command for non-PHP projects
+  * xdebug command formatting tweaks
+  * feat(env): add e:xdebug command (#887)
+  * Avoid word-wrapping closing tag in error message API token help
+  * Improve argument quoting in db:size (refactoring RemoteHost a little)
+  * Windows: update README
+  * Windows: improve PATH install process
+  * Downplay unknown shell type message when setting up autocompletion
+  * Windows: use \ in the path of main user-facing directories
+  * Windows: create .bat executable for easier installation
+  * Windows-compatible quotes on dev build page
+  * Windows: fix local server for browser login
+  * Windows: fix opening URLs
+
+-------------------------------------------------------------------
 Fri Jan 17 20:44:18 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.51.3:
