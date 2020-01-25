@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 24 10:38:06 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1579790259.c018d5dc2:
+  * Workaround api request in ObsRsync Plugin
+  * Remove dead code
+  * Use uppercase variables in OpenQA::Utils to make their scope immediately obvious
+  * Replace compose_job_overview_search_args and param_hash methods with helpers
+  * Move mark_job_linked function into the correct resultset
+  * Move job_group_and_parents function into the correct resultset
+  * Use :DEFAULT instead of importing twice
+  * Replace global variables in OpenQA::Utils with functions
+  * Remove unused export
+  * Do not export variables from OpenQA::Utils anymore
+  * Add OpenQA::App as a singleton container, replacing $OpenQA::Utils::app
+  * Move worker specific code from OpenQA::Setup into OpenQA::Worker::App
+  * Just use Mojolicious as a base class instead of trying to reinvent it
+  * Parse Snapshot number in ObsRsync plugin
+  * Add silent reload of dashboard contents for fullscreen mode
+  * Dependency cron 200123
+  * Add dependency to client so asset download via SSL works
+  * load_templates: fail early if host is unreachable
+  * Log asset download error to autoinst log file
+  * Fix asset status test so it works when the cache file does not exist
+  * Dependency cron 200122
+  * Support batches in ObsRsync Plugin (#2653)
+  * Use new format to store job module details
+  * Set text mime in ObsRsync download
+  * Use is_admin_js helper in asset table template
+  * Show cached assets also when cleanup is ongoing
+  * Add CLI tool to validate a job template YAML file
+  * Fix ObsRsync mutex leak on errors
+
+-------------------------------------------------------------------
 Tue Jan 21 06:50:09 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1579529599.e032e3659:
