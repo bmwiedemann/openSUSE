@@ -152,7 +152,7 @@ tar -C r -xzf $PWD/install.tar.gz usr/lib/sysimage/rpm/Packages
 tar -C r -xzf $PWD/install.tar.gz var/lib/rpm/Packages
 %endif
 rpm --root $PWD/r -qa --qf '%%{size} %%{name}\n' | sort -n > "$APPXNAME.packages.sizes"
-rpm --root $PWD/r -qa --qf '%%{name}|%%{epoch}|%%{version}|%%{release}|%%{arch}|%%{disturl}\n' | sort > "$APPXNAME.packages"
+rpm --root $PWD/r -qa --qf '%%{name}|%%{epoch}|%%{version}|%%{release}|%%{arch}|%%{disturl}|%%{license}\n' | sort > "$APPXNAME.packages"
 rm -rf r
 
 echo -n "### APPX size: "
