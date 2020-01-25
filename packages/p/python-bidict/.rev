@@ -41,4 +41,12 @@
   * Fix a regression introduced by the memory optimizations added in 0.15.0 which caused deepcopied and unpickled bidicts to have their inverses set incorrectly. #94</comment>
     <requestid>730687</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a52a0fd2f2bc1bb655681e589e12799f</srcmd5>
+    <version>0.19.0</version>
+    <time>1579955107</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>766972</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 17 16:50:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.19.0
+  * Drop support for Python 2 as promised in v0.18.2.
+  * Deprecate bidict.OVERWRITE and bidict.IGNORE. A UserWarning will now be emitted if these are used.
+  * Rename DuplicationPolicy to OnDupAction (and implement it via an Enum).
+  * No longer use __all__ in bidict’s __init__.py.
+  * Improve validation of names passed to namedbidict().
+
+-------------------------------------------------------------------
 Fri Sep 13 11:22:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.18.2:
