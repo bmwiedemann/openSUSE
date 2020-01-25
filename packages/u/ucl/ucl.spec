@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.oberhumer.com/opensource/ucl/
 Source0:        http://www.oberhumer.com/opensource/ucl/download/ucl-%{version}.tar.gz
+Patch1:         upx-207.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -53,7 +54,7 @@ Obsoletes:      %{libname}-devel < %{version}
 Headers and other development files for UCL library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -std=c90"
