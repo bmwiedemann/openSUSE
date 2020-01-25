@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:03:51 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.2.10:
+  * ppc64le: fix dependency of papr_scm
+    (bsc#1142152, ltc#176292, FATE#327775).
+
+-------------------------------------------------------------------
 Wed Jan 15 20:46:40 UTC 2020 - mwilck@suse.com
 
 - Update to version 15.2.9:

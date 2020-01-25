@@ -318,4 +318,14 @@
     <comment></comment>
     <requestid>764809</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0de5b836a7ba2e06dee1c913fff44d66</srcmd5>
+    <version>15.2.10</version>
+    <time>1579954979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.2.10:
+  * ppc64le: fix dependency of papr_scm
+    (bsc#1142152, ltc#176292, FATE#327775).</comment>
+    <requestid>765872</requestid>
+  </revision>
 </revisionlist>
