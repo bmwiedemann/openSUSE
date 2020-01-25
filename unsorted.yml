@@ -10337,6 +10337,9 @@ unsorted:
   - libnss_usrfiles2-32bit: [x86_64] 
   - libnsssharedhelper0 
   - libnsssharedhelper0-32bit: [x86_64] 
+  - libnsync-devel 
+  - libnsync1 
+  - libnsync_cpp1 
   - libntfs-3g-devel 
   - libntirpc-devel: [x86_64] 
   - libntirpc3_2: [x86_64] 
@@ -11748,6 +11751,8 @@ unsorted:
   - libtevent-util-devel 
   - libtexlua53-5 
   - libtexluajit2 
+  - libtextstyle-devel 
+  - libtextstyle0-32bit: [x86_64] 
   - libthai-devel 
   - libtheora-devel 
   - libtheora0-32bit: [x86_64] 
@@ -14022,21 +14027,21 @@ unsorted:
   - mvapich2-psm2-gnu-hpc-devel: [x86_64] 
   - mvapich2-psm2-gnu-hpc-doc: [x86_64] 
   - mvapich2-psm2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm2_2_3_2-gnu-hpc: [x86_64] 
-  - mvapich2-psm2_2_3_2-gnu-hpc-devel: [x86_64] 
-  - mvapich2-psm2_2_3_2-gnu-hpc-devel-static: [x86_64] 
-  - mvapich2-psm2_2_3_2-gnu-hpc-doc: [x86_64] 
-  - mvapich2-psm2_2_3_2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm_2_3_2-gnu-hpc 
-  - mvapich2-psm_2_3_2-gnu-hpc-devel 
-  - mvapich2-psm_2_3_2-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_2-gnu-hpc-doc 
-  - mvapich2-psm_2_3_2-gnu-hpc-macros-devel 
-  - mvapich2_2_3_2-gnu-hpc 
-  - mvapich2_2_3_2-gnu-hpc-devel 
-  - mvapich2_2_3_2-gnu-hpc-devel-static 
-  - mvapich2_2_3_2-gnu-hpc-doc 
-  - mvapich2_2_3_2-gnu-hpc-macros-devel 
+  - mvapich2-psm2_2_3_3-gnu-hpc: [x86_64] 
+  - mvapich2-psm2_2_3_3-gnu-hpc-devel: [x86_64] 
+  - mvapich2-psm2_2_3_3-gnu-hpc-devel-static: [x86_64] 
+  - mvapich2-psm2_2_3_3-gnu-hpc-doc: [x86_64] 
+  - mvapich2-psm2_2_3_3-gnu-hpc-macros-devel: [x86_64] 
+  - mvapich2-psm_2_3_3-gnu-hpc 
+  - mvapich2-psm_2_3_3-gnu-hpc-devel 
+  - mvapich2-psm_2_3_3-gnu-hpc-devel-static 
+  - mvapich2-psm_2_3_3-gnu-hpc-doc 
+  - mvapich2-psm_2_3_3-gnu-hpc-macros-devel 
+  - mvapich2_2_3_3-gnu-hpc 
+  - mvapich2_2_3_3-gnu-hpc-devel 
+  - mvapich2_2_3_3-gnu-hpc-devel-static 
+  - mvapich2_2_3_3-gnu-hpc-doc 
+  - mvapich2_2_3_3-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
   - mxml-devel 
@@ -18272,7 +18277,6 @@ unsorted:
   - python2-betamax 
   - python2-betamax-matchers 
   - python2-bibtexparser 
-  - python2-bidict 
   - python2-billiard 
   - python2-binary 
   - python2-binaryornot 
@@ -19369,7 +19373,6 @@ unsorted:
   - python2-pymavlink 
   - python2-pymediainfo 
   - python2-pymemcache 
-  - python2-pymisp 
   - python2-pymod2pkg 
   - python2-pymol 
   - python2-pymongo 
@@ -19845,7 +19848,6 @@ unsorted:
   - python2-text-unidecode 
   - python2-textX 
   - python2-textfsm 
-  - python2-textile 
   - python2-texttable 
   - python2-textwrap3 
   - python2-thespian 
