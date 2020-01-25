@@ -3,6 +3,7 @@ use strict;
 {
 my $pkg=shift;
 die "usage: $0 PKGNAME" unless $pkg;
+die "invalid pkg" unless $pkg =~ m/^[a-zA-Z0-9._+-]*$/;
 
 my @rsync=qw"rsync -a
   --max-size=999000k
