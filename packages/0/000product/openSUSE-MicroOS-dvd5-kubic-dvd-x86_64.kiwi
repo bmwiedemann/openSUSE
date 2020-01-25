@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200124" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200125" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200124</productvar>
+      <productvar name="VERSION">20200125</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200124,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200125,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200124/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200125/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -241,7 +241,6 @@
       <repopackage name="libconfig11" arch="x86_64"/>
       <repopackage name="libcontainers-common" arch="x86_64"/>
       <repopackage name="libcrack2"/>
-      <repopackage name="libcroco-0_6-3" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcurl4" arch="x86_64"/>
@@ -384,6 +383,7 @@
       <repopackage name="libtasn1-6"/>
       <repopackage name="libtdb1" arch="x86_64"/>
       <repopackage name="libtevent0" arch="x86_64"/>
+      <repopackage name="libtextstyle0" arch="x86_64"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
       <repopackage name="libudev1"/>

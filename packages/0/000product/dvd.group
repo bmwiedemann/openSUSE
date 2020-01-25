@@ -2832,6 +2832,7 @@
     <package name="libtemplate_glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libtevent-util0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libthai-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libthai0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtheora0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
