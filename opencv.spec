@@ -67,6 +67,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(zlib)
 Provides:       opencv-qt5 = %{version}
 Obsoletes:      opencv-qt5 < %{version}
@@ -211,7 +212,7 @@ rm -f doc/packaging.txt
 %endif
 %ifarch x86_64
       -DCPU_BASELINE=SSE2 \
-      -DCPU_DISPATCH=SSE3,SSE4_1,SSE4_2,FP16,FMA3,AVX,AVX2 \
+      -DCPU_DISPATCH=SSE3,SSE4_1,SSE4_2,FP16,FMA3,AVX,AVX2,AVX512_ICL \
 %endif
 %ifarch %{arm}
 %ifarch armv7l armv7hl
