@@ -13,7 +13,7 @@ Index: etc/login.defs
  
  #
  # Delay in seconds before being allowed another attempt after a login failure
-@@ -32,6 +30,15 @@ CONSOLE		/etc/securetty
+@@ -47,6 +45,15 @@ CONSOLE		/etc/securetty
  #CONSOLE	console:tty01:tty02:tty03:tty04
  
  #
@@ -29,7 +29,7 @@ Index: etc/login.defs
  # If defined, all su(1) activity is logged to this file.
  #
  #SULOG_FILE	/var/log/sulog
-@@ -79,11 +86,14 @@ ENV_PATH	/bin:/usr/bin
+@@ -94,11 +101,14 @@ ENV_PATH	/bin:/usr/bin
  ENV_ROOTPATH	/sbin:/bin:/usr/sbin:/usr/bin
  #ENV_SUPATH	/sbin:/bin:/usr/sbin:/usr/bin
  
@@ -46,7 +46,7 @@ Index: etc/login.defs
  ALWAYS_SET_PATH	no
  
  #
-@@ -123,6 +133,11 @@ PASS_WARN_AGE	7
+@@ -138,6 +148,11 @@ PASS_WARN_AGE	7
  #
  # Min/max values for automatic uid selection in useradd(8)
  #
@@ -58,7 +58,7 @@ Index: etc/login.defs
  UID_MIN			 1000
  UID_MAX			60000
  # System accounts
-@@ -136,6 +151,11 @@ SUB_UID_COUNT		    65536
+@@ -151,6 +166,11 @@ SUB_UID_COUNT		    65536
  #
  # Min/max values for automatic gid selection in groupadd(8)
  #
@@ -70,7 +70,7 @@ Index: etc/login.defs
  GID_MIN			 1000
  GID_MAX			60000
  # System accounts
-@@ -165,7 +185,6 @@ LOGIN_TIMEOUT		60
+@@ -180,7 +200,6 @@ LOGIN_TIMEOUT		60
  CHFN_RESTRICT		rwh
  
  #
@@ -78,7 +78,7 @@ Index: etc/login.defs
  # If set to "yes", new passwords will be encrypted using the MD5-based
  # algorithm compatible with the one used by recent releases of FreeBSD.
  # It supports passwords of unlimited length and longer salt strings.
-@@ -180,7 +199,6 @@ CHFN_RESTRICT		rwh
+@@ -195,7 +214,6 @@ CHFN_RESTRICT		rwh
  #MD5_CRYPT_ENAB	no
  
  #
@@ -86,14 +86,3 @@ Index: etc/login.defs
  # If set to MD5, MD5-based algorithm will be used for encrypting password
  # If set to SHA256, SHA256-based algorithm will be used for encrypting password
  # If set to SHA512, SHA512-based algorithm will be used for encrypting password
-@@ -208,8 +226,8 @@ CHFN_RESTRICT		rwh
- # If only one of the MIN or MAX values is set, then this value will be used.
- # If MIN > MAX, the highest value will be used.
- #
--# SHA_CRYPT_MIN_ROUNDS 5000
--# SHA_CRYPT_MAX_ROUNDS 5000
-+#SHA_CRYPT_MIN_ROUNDS 5000
-+#SHA_CRYPT_MAX_ROUNDS 5000
- 
- #
- # Should login be allowed if we can't cd to the home directory?

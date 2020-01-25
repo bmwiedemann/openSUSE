@@ -491,4 +491,41 @@
     <comment></comment>
     <requestid>736424</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a4c101dd80f3c2c763d97e0027674fe9</srcmd5>
+    <version>4.8</version>
+    <time>1579954960</time>
+    <user>dimstar_suse</user>
+    <comment>- Set 0755 for chpasswd, groupadd, groupdel, groupmod, newusers,
+  useradd, userdel, usermod explicitly.
+
+- bsc#1160729: Make valid shell check only a warning
+  * Add shadow-4.8-shell-check.patch
+
+- Update to 4.8:
+  * Initial optional bcrypt support.
+  * Make build/install of 'su' optional.
+  * Fix for vipw not resuming correctly when suspended
+  * Sync password field descriptions in manpages
+  * Check for valid shell argument in useradd
+  * Allow translation of new strings through POTFILES.in
+  * Migrate to itstool for translations
+  * Migrate to new SELinux api
+  * Support --enable-vendordir
+  * pwck: Only check homedir if set and not a system user
+  * Support nonstandard usernames
+  * sget{pw,gr}ent: check for data at EOL
+  * Add YYY-MM-DD support in chage
+  * Fix failing chmod calls for suidubins
+  * Fix --sbindir and --bindir for binary installations
+  * Fix LASTLOG_UID_MAX in login.defs
+  * Fix configure error with dash
+- Remove because upstreamed:
+  * libeconf.patch
+  * shadow-usermod-variable.patch
+- Rebase:
+  * shadow-login_defs-unused-by-pam.patch
+  * chkname-regex.patch</comment>
+    <requestid>765745</requestid>
+  </revision>
 </revisionlist>

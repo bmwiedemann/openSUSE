@@ -20,7 +20,7 @@ Index: etc/login.defs
  # Enable display of unknown usernames when login(1) failures are recorded.
  #
  LOG_UNKFAIL_ENAB	no
-@@ -27,34 +22,6 @@ LOG_UNKFAIL_ENAB	no
+@@ -27,11 +22,6 @@ LOG_UNKFAIL_ENAB	no
  LOG_OK_LOGINS		no
  
  #
@@ -29,6 +29,13 @@ Index: etc/login.defs
 -LASTLOG_ENAB		yes
 -
 -#
+ # Limit the highest user ID number for which the lastlog entries should
+ # be updated.
+ #
+@@ -41,29 +31,6 @@ LASTLOG_ENAB		yes
+ #LASTLOG_UID_MAX
+ 
+ #
 -# Enable checking and display of mailbox status upon login.
 -#
 -# Disable if the shell startup files already check for mail
@@ -55,7 +62,7 @@ Index: etc/login.defs
  # Enable "syslog" logging of su(1) activity - in addition to sulog file logging.
  # SYSLOG_SG_ENAB does the same for newgrp(1) and sg(1).
  #
-@@ -82,46 +49,12 @@ MOTD_FILE	/etc/motd
+@@ -91,46 +58,12 @@ MOTD_FILE	/etc/motd
  #MOTD_FILE	/etc/motd:/usr/lib/news/news-motd
  
  #
@@ -102,7 +109,7 @@ Index: etc/login.defs
  # If defined, file which inhibits all the usual chatter during the login
  # sequence.  If a full pathname, then hushed mode will be enabled if the
  # user's name or shell are found in the file.  If not a full pathname, then
-@@ -131,21 +64,6 @@ HUSHLOGIN_FILE	.hushlogin
+@@ -140,21 +73,6 @@ HUSHLOGIN_FILE	.hushlogin
  #HUSHLOGIN_FILE	/etc/hushlogins
  
  #
@@ -124,7 +131,7 @@ Index: etc/login.defs
  # *REQUIRED*  The default PATH settings, for superuser and normal users.
  #
  # (they are minimal, add the rest in the shell startup files)
-@@ -171,17 +89,13 @@ TTYPERM		0600
+@@ -180,17 +98,13 @@ TTYPERM		0600
  #
  #	ERASECHAR	Terminal ERASE character ('\010' = backspace).
  #	KILLCHAR	Terminal KILL character ('\025' = CTRL/U).
@@ -142,7 +149,7 @@ Index: etc/login.defs
  
  # Default initial "umask" value used by login(1) on non-PAM enabled systems.
  # Default "umask" value for pam_umask(8) on PAM enabled systems.
-@@ -197,28 +111,13 @@ UMASK		022
+@@ -206,28 +120,13 @@ UMASK		022
  #
  #	PASS_MAX_DAYS	Maximum number of days a password may be used.
  #	PASS_MIN_DAYS	Minimum number of days allowed between password changes.
@@ -171,7 +178,7 @@ Index: etc/login.defs
  # Min/max values for automatic uid selection in useradd(8)
  #
  UID_MIN			 1000
-@@ -255,28 +154,6 @@ LOGIN_RETRIES		5
+@@ -264,28 +163,6 @@ LOGIN_RETRIES		5
  LOGIN_TIMEOUT		60
  
  #
@@ -200,7 +207,7 @@ Index: etc/login.defs
  # Which fields may be changed by regular users using chfn(1) - use
  # any combination of letters "frwh" (full name, room number, work
  # phone, home phone).  If not defined, no changes are allowed.
-@@ -285,13 +162,6 @@ CHFN_AUTH		yes
+@@ -294,13 +171,6 @@ CHFN_AUTH		yes
  CHFN_RESTRICT		rwh
  
  #
@@ -214,8 +221,8 @@ Index: etc/login.defs
  # Only works if compiled with MD5_CRYPT defined:
  # If set to "yes", new passwords will be encrypted using the MD5-based
  # algorithm compatible with the one used by recent releases of FreeBSD.
-@@ -336,29 +206,12 @@ CHFN_RESTRICT		rwh
- # SHA_CRYPT_MAX_ROUNDS 5000
+@@ -361,29 +231,12 @@ CHFN_RESTRICT		rwh
+ #BCRYPT_MAX_ROUNDS 13
  
  #
 -# List of groups to add to the user's supplementary group set

@@ -1,7 +1,7 @@
 #
 # spec file for package shadow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 %endif
 
 Name:           shadow
-Version:        4.7
+Version:        4.8
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -61,12 +61,12 @@ Patch7:         shadow-4.1.5.1-logmsg.patch
 Patch13:        shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
 Patch14:        shadow-login_defs-suse.patch
+# PATCH-FIX-UPSTREAM shadow-4.8-selinux-include.patch mvetter@suse.com -- https://github.com/shadow-maint/shadow/pull/200
+Patch15:        shadow-4.8-selinux-include.patch
+# PATCH-FEATURE mvetter@suse.com -- bsc#1160729 https://github.com/shadow-maint/shadow/pull/210
+Patch16:        shadow-4.8-shell-check.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch20:        disable_new_audit_function.patch
-# PATCH-FIX-UPSTREAM shadow-usermod-variable.patch https://github.com/shadow-maint/shadow/pull/170 sbrabec@suse.com -- Fix variable name.
-Patch21:        shadow-usermod-variable.patch
-# PATCH-FEATURE-UPSTREAM libeconf.patch https://github.com/shadow-maint/shadow/pull/180 kukuk@suse.com -- Add support for a vendor directory and libeconf
-Patch22:        libeconf.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -110,11 +110,11 @@ group accounts.
 %patch7
 %patch13
 %patch14
+%patch15 -p1
+%patch16 -p1
 %if 0%{?suse_version} < 1330
 %patch20 -p1
 %endif
-%patch21 -p1
-%patch22 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -312,18 +312,18 @@ done
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
 %{_bindir}/lastlog
 %{_bindir}/sg
-%{_sbindir}/groupadd
-%{_sbindir}/groupdel
-%{_sbindir}/groupmod
+%attr(0755,root,root) %{_sbindir}/groupadd
+%attr(0755,root,root) %{_sbindir}/groupdel
+%attr(0755,root,root) %{_sbindir}/groupmod
 %{_sbindir}/grpck
 %{_sbindir}/pwck
-%{_sbindir}/useradd
-%{_sbindir}/userdel
-%{_sbindir}/usermod
+%attr(0755,root,root) %{_sbindir}/useradd
+%attr(0755,root,root) %{_sbindir}/userdel
+%attr(0755,root,root) %{_sbindir}/usermod
 %{_sbindir}/pwconv
 %{_sbindir}/pwunconv
-%{_sbindir}/chpasswd
-%{_sbindir}/newusers
+%attr(0755,root,root) %{_sbindir}/chpasswd
+%attr(0755,root,root) %{_sbindir}/newusers
 %{_sbindir}/vipw
 %{_sbindir}/vigr
 %verify(not md5 size mtime) %config(noreplace) %{_sbindir}/useradd.local

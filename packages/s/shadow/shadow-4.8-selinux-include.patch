@@ -1,0 +1,12 @@
+Index: shadow-4.8/lib/selinux.c
+===================================================================
+--- shadow-4.8.orig/lib/selinux.c
++++ shadow-4.8/lib/selinux.c
+@@ -31,6 +31,7 @@
+ 
+ #ifdef WITH_SELINUX
+ 
++#include <stdio.h>
+ #include "defines.h"
+ 
+ #include <selinux/selinux.h>

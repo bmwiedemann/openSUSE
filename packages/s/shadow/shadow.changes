@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jan 20 10:36:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Set 0755 for chpasswd, groupadd, groupdel, groupmod, newusers,
+  useradd, userdel, usermod explicitly.
+
+-------------------------------------------------------------------
+Thu Jan 16 12:54:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1160729: Make valid shell check only a warning
+  * Add shadow-4.8-shell-check.patch
+
+-------------------------------------------------------------------
+Tue Dec 17 12:43:01 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.8:
+  * Initial optional bcrypt support.
+  * Make build/install of 'su' optional.
+  * Fix for vipw not resuming correctly when suspended
+  * Sync password field descriptions in manpages
+  * Check for valid shell argument in useradd
+  * Allow translation of new strings through POTFILES.in
+  * Migrate to itstool for translations
+  * Migrate to new SELinux api
+  * Support --enable-vendordir
+  * pwck: Only check homedir if set and not a system user
+  * Support nonstandard usernames
+  * sget{pw,gr}ent: check for data at EOL
+  * Add YYY-MM-DD support in chage
+  * Fix failing chmod calls for suidubins
+  * Fix --sbindir and --bindir for binary installations
+  * Fix LASTLOG_UID_MAX in login.defs
+  * Fix configure error with dash
+- Remove because upstreamed:
+  * libeconf.patch
+  * shadow-usermod-variable.patch
+- Rebase:
+  * shadow-login_defs-unused-by-pam.patch
+  * chkname-regex.patch
+  * shadow-util-linux.patch
+  * shadow-login_defs-comments.patch
+- Add shadow-4.8-selinux-include.patch
+  See https://github.com/shadow-maint/shadow/pull/200
+
+-------------------------------------------------------------------
 Mon Oct  7 09:50:30 CEST 2019 - kukuk@suse.de
 
 - libeconf.patch: Add support for libeconf and /usr/etc for

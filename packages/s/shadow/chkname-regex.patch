@@ -2,7 +2,7 @@ Index: etc/login.defs
 ===================================================================
 --- etc/login.defs.orig
 +++ etc/login.defs
-@@ -274,3 +274,11 @@ USERGROUPS_ENAB yes
+@@ -299,3 +299,11 @@ USERGROUPS_ENAB yes
  # missing.
  #
  #FORCE_SHADOW    yes
@@ -18,7 +18,7 @@ Index: lib/getdef.c
 ===================================================================
 --- lib/getdef.c.orig
 +++ lib/getdef.c
-@@ -77,6 +77,7 @@ struct itemdef {
+@@ -80,6 +80,7 @@ struct itemdef {
  
  #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
  static struct itemdef def_table[] = {
@@ -30,7 +30,7 @@ Index: libmisc/chkname.c
 ===================================================================
 --- libmisc/chkname.c.orig
 +++ libmisc/chkname.c
-@@ -43,30 +43,57 @@
+@@ -43,8 +43,11 @@
  #ident "$Id$"
  
  #include <ctype.h>
@@ -40,13 +40,15 @@ Index: libmisc/chkname.c
 +#include "getdef.h"
 +#include <stdio.h>
  
- static bool is_valid_name (const char *name)
- {
+ int allow_bad_names = false;
+ 
+@@ -54,24 +57,46 @@ static bool is_valid_name (const char *n
+ 		return true;
+ 	}
+ 
 -	/*
 -	 * User/group names must match [a-z_][a-z0-9_-]*[$]
 -	 */
--	if (('\0' == *name) ||
--	    !((('a' <= *name) && ('z' >= *name)) || ('_' == *name))) {
 +	const char *class;
 +	regex_t reg;
 +	int result;
@@ -79,7 +81,9 @@ Index: libmisc/chkname.c
 +		   fprintf (stderr, _("Can't compile regular expression: %s\n"),
 +		   buffer);
 +		   } */
-+
+ 
+-	if (('\0' == *name) ||
+-	    !((('a' <= *name) && ('z' >= *name)) || ('_' == *name))) {
 +		regfree(&reg);
  		return false;
  	}
@@ -98,7 +102,4 @@ Index: libmisc/chkname.c
 +		return false;
  	}
  
-+	regfree(&reg);
  	return true;
- }
- 

@@ -16,7 +16,7 @@ Index: etc/login.defs
  #
  #	$Id$
  #
-@@ -17,15 +19,8 @@ FAIL_DELAY		3
+@@ -17,9 +19,8 @@ FAIL_DELAY		3
  LOG_UNKFAIL_ENAB	no
  
  #
@@ -24,16 +24,10 @@ Index: etc/login.defs
 +# Enable "syslog" logging of  newgrp(1) and sg(1) activity.
  #
 -LOG_OK_LOGINS		no
--
--#
--# Enable "syslog" logging of su(1) activity - in addition to sulog file logging.
--# SYSLOG_SG_ENAB does the same for newgrp(1) and sg(1).
--#
--SYSLOG_SU_ENAB		yes
- SYSLOG_SG_ENAB		yes
  
  #
-@@ -63,12 +58,33 @@ MOTD_FILE	/etc/motd
+ # Limit the highest user ID number for which the lastlog entries should
+@@ -72,12 +73,33 @@ MOTD_FILE	/etc/motd
  HUSHLOGIN_FILE	.hushlogin
  #HUSHLOGIN_FILE	/etc/hushlogins
  
@@ -69,7 +63,7 @@ Index: etc/login.defs
  
  #
  # Terminal permissions
-@@ -84,19 +100,6 @@ ENV_PATH	PATH=/bin:/usr/bin
+@@ -93,19 +115,6 @@ ENV_PATH	PATH=/bin:/usr/bin
  TTYGROUP	tty
  TTYPERM		0600
  
@@ -93,7 +87,7 @@ Index: lib/getdef.c
 ===================================================================
 --- lib/getdef.c.orig
 +++ lib/getdef.c
-@@ -77,6 +77,7 @@ struct itemdef {
+@@ -80,6 +80,7 @@ struct itemdef {
  
  #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
  static struct itemdef def_table[] = {
@@ -101,7 +95,7 @@ Index: lib/getdef.c
  	{"CHARACTER_CLASS", NULL},
  	{"CHFN_RESTRICT", NULL},
  	{"CONSOLE_GROUPS", NULL},
-@@ -85,6 +86,7 @@ static struct itemdef def_table[] = {
+@@ -88,6 +89,7 @@ static struct itemdef def_table[] = {
  	{"DEFAULT_HOME", NULL},
  	{"ENCRYPT_METHOD", NULL},
  	{"ENV_PATH", NULL},
@@ -109,7 +103,7 @@ Index: lib/getdef.c
  	{"ENV_SUPATH", NULL},
  	{"ERASECHAR", NULL},
  	{"FAIL_DELAY", NULL},
-@@ -95,6 +97,7 @@ static struct itemdef def_table[] = {
+@@ -98,6 +100,7 @@ static struct itemdef def_table[] = {
  	{"KILLCHAR", NULL},
  	{"LASTLOG_UID_MAX", NULL},
  	{"LOGIN_RETRIES", NULL},
