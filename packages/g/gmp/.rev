@@ -482,4 +482,12 @@ discover that breaks ...
   (boo#1138809). (forwarded request 712734 from marxin)</comment>
     <requestid>712776</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d2756ac9dffaf2213e4587e9d74b3e79</srcmd5>
+    <version>6.2.0</version>
+    <time>1579954955</time>
+    <user>dimstar_suse</user>
+    <comment>GMP 6.2.0 (forwarded request 765643 from AndreasStieger)</comment>
+    <requestid>765689</requestid>
+  </revision>
 </revisionlist>
