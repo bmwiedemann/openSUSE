@@ -390,4 +390,12 @@
  * Reload current image(s) when receiving SIGUSR1 or SIGUSR2</comment>
     <requestid>745482</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>feaa20fdc913613b54bcfc743271f3a7</srcmd5>
+    <version>3.3</version>
+    <time>1579955082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766942</requestid>
+  </revision>
 </revisionlist>

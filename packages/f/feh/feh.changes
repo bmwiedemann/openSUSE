@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 23 12:22:03 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- update to 3.3
+  * New option --class allows setting the X11 class hint per feh
+    instance
+  * Improve handling of NULL returns from Imlib2 calls
+  * Fix compilation with libcurl < v7.32
+- feh-makefile_optflags.patch: Adapt patch to feh 3.3
+
+-------------------------------------------------------------------
 Tue Nov  5 12:40:12 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.2.1

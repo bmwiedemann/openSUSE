@@ -1,7 +1,7 @@
 #
 # spec file for package feh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.2.1
+Version:        3.3
 Release:        0
 Summary:        X11 image viewer
 License:        MIT AND LGPL-2.0-or-later
