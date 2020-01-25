@@ -1,5 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan 19 12:00:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.131
+  * Expand the extendingvulkan-extensions-extensiondependencies,
+    Extension Dependencies section
+  * Change the etext:VK_QUERY_SCOPE_* tokens in the
+    VkPerformanceCounterScopeKHR to aliases of new
+    VK_PERFORMANCE_COUNTER_SCOPE_* tokens, following the naming
+    conventions for enumerants.
+  * Move "NV" extension pipe stages in
+    elink:VkShaderStageFlagBits so they are not included in
+    enmae:VK_SHADER_STAGE_ALL_GRAPHICS.
+
+-------------------------------------------------------------------
 Thu Dec 12 19:04:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
 - Update to release 1.1.130
   * Mark VkPipelineExecutableInternalRepresentationKHR as
     `returnedonly`.
