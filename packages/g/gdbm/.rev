@@ -317,4 +317,14 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
   * Improved error checking</comment>
     <requestid>645670</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0f0a20c2ec338c06416d20259203d04e</srcmd5>
+    <version>1.18.1</version>
+    <time>1579954985</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  Build with -no-common, [bsc#1160872]
+  + gdbm-no-common.patch</comment>
+    <requestid>766024</requestid>
+  </revision>
 </revisionlist>

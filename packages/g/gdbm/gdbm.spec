@@ -1,7 +1,7 @@
 #
 # spec file for package gdbm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source2:        baselibs.conf
 Source4:        %{name}.keyring
 # PATCH-FIX-SUSE: remove the build date from src/version.c
 Patch4:         gdbm-no-build-date.patch
+# Build with -no-common, [bsc#1160872] (mail to gray@gnu.org)
+Patch5:         gdbm-no-common.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  readline-devel
@@ -105,6 +107,7 @@ to develop applications that require these.
 %prep
 %setup -q
 %patch4 -p1
+%patch5 -p1
 
 %build
 
