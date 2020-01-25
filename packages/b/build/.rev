@@ -1167,4 +1167,29 @@ Stephan Kulow (2):
 - fix ccache setup of non-dotted compiler versions</comment>
     <requestid>761596</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>2802358856bc9408fde51fff8ad2f7df</srcmd5>
+    <version>20200124.1</version>
+    <time>1579954993</time>
+    <user>dimstar_suse</user>
+    <comment>- fix SLE 15 configurations
+- Fix dist autodetection for sle15-sp2
+
+- Fix crash when using preinstall dependency expansion in OBS
+- build-vm-kvm: use /boot/kernel.obs.build and /boot/initrd.obs.build
+  as fallback regardless of the platform to have a global fallback
+  kernel to use for distros that do not use the &quot;kernel-obs-build&quot;
+  package to provide the guests kernel and initrd as the system
+  binaries are not reliable for use in a guest system
+- use abuild user if $NOROOTFORBUILD is set.
+
+- fix createrepo existens check for appimager and docker builds
+  in chroot
+- support to use virt-make-fs for ext3 VM builds
+
+- Arch Linux zstd format support
+- fix testbuild fail with latest rpm in SP2 and Leap 15.2
+- do not retry automatically on disk full error</comment>
+    <requestid>766951</requestid>
+  </revision>
 </revisionlist>
