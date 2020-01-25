@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,6 @@
 %define with_systemd 1
 %define _name   dbus
 %define _libname libdbus-1-3
-# Temporary code to disable service restart on update sflees@suse.de boo#1020301
-%global _backup %{_sysconfdir}/sysconfig/services.rpmbak.%{name}-%{version}-%{release}
 
 %bcond_without selinux
 Name:           dbus-1
@@ -35,6 +33,7 @@ Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.ta
 Source2:        dbus-1.keyring
 Source3:        baselibs.conf
 Source4:        dbus-1.desktop
+Source5:        messagebus.conf
 Patch0:         feature-suse-log-deny.patch
 # PATCH-FIX-OPENSUSE coolo@suse.de -- force a feature configure won't accept without x11 in buildrequires
 Patch1:         feature-suse-do-autolaunch.patch
@@ -48,17 +47,19 @@ BuildRequires:  libexpat-devel >= 2.1.0
 BuildRequires:  libtool
 BuildRequires:  permissions
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires(post): %{_libname} = %{version}
 Requires(post): update-alternatives
 Requires(pre):  permissions
-Requires(pre):  shadow
 Requires(preun): update-alternatives
 Provides:       dbus-launch
 %if %{with selinux}
 BuildRequires:  libselinux-devel
 %endif
+%sysusers_requires
 
 %package -n %{_libname}
 Summary:        Library package for D-Bus
@@ -140,6 +141,10 @@ export V=1
     --with-systemduserunitdir=%{_userunitdir} \
     --without-x
 make %{?_smp_mflags}
+# The original dbus sysusers config does not create our account,
+# overwrite it with our user definition
+cp %{SOURCE5} bus/sysusers.d/dbus.conf
+%sysusers_generate_pre %{SOURCE5} messagebus
 
 doxygen -u && doxygen
 ./cleanup-man-pages.sh
@@ -195,11 +200,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{_libname} -p /sbin/ldconfig
 %postun -n %{_libname} -p /sbin/ldconfig
-%pre
-getent group messagebus >/dev/null || \
-	%{_sbindir}/groupadd -r messagebus
-getent passwd messagebus >/dev/null || \
-	%{_sbindir}/useradd -r -s %{_bindir}/false -c "User for D-Bus" -d /run/dbus -g messagebus messagebus
+
+%pre -f messagebus.pre
 %service_add_pre dbus.service dbus.socket
 
 %post
@@ -228,14 +230,6 @@ fi
 
 %postun
 %service_del_postun_without_restart dbus.service dbus.socket
-
-%posttrans
-# See comments in pre
-if [ -s "%{_backup}" ]; then
-   mv -f %{_backup} %{_sysconfdir}/sysconfig/services
-elif [ -e "%{_backup}" ]; then
-   rm -f %{_sysconfdir}/sysconfig/services
-fi
 
 %files
 %dir %{_localstatedir}/lib/dbus
