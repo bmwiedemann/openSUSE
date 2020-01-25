@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jan 24 17:31:18 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Remove special OHPC compatibility macro: these settings should
+  be applied univerally.
+- Add a Recommends for mariadb to slurm-slurmdbd: it is recommened
+  to run the database on the same machine as the daemon.
+
+-------------------------------------------------------------------
+Fri Jan 24 11:47:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+- Use systemd_ordering instead of systemd_requires: systemd is
+  never a strict requirement; but in case the system is scheduled
+  for installation together with systemd, we want systemd to be
+  installed prior to slurm.
+
+-------------------------------------------------------------------
+Thu Jan 23 17:44:29 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- start slurmdbd after mariadb (bsc#1161716)
+
+-------------------------------------------------------------------
 Mon Jan 13 15:41:48 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Fix base_ver for SLE 15 SP2.

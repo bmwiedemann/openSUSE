@@ -58,11 +58,6 @@ ExclusiveArch:  do_not_build
 %{bcond_with pmix}
 %endif
 
-# For anything newer than Leap 42.1 and SLE-12-SP1 build compatible to OpenHPC.
-%if 0%{suse_version} > 1320 || 0%{?sle_version} >= 120200
-%define OHPC_BUILD 1
-%endif
-
 %if 0%{?suse_version} >= 1220 || 0%{?sle_version} >= 120000
  %define with_systemd 1
 %endif
@@ -187,7 +182,7 @@ BuildRequires:  libssh2-devel
 BuildRequires:  rrdtool-devel
 %if 0%{?with_systemd}
 %{?systemd_requires}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %else
 Requires(post):         %insserv_prereq %fillup_prereq
 %endif
@@ -324,13 +319,16 @@ Group:          Productivity/Clustering/Computing
 Requires:       %{name}-config = %{version}
 Requires:       %{name}-plugins = %{version}
 Requires:       %{name}-sql = %{version}
+%if 0%{?suse_version} > 1310
+Recommends:     mariadb
+%endif
 %if 0%{?have_boolean_deps}
 Recommends:     (%{name}-munge = %version if munge)
 %else
 Recommends:     %{name}-munge = %version
 %endif
 %if 0%{?with_systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 Requires(post):         %insserv_prereq %fillup_prereq
 %endif
@@ -449,7 +447,7 @@ Recommends:     (%{name}-munge = %version if munge)
 Recommends:     %{name}-munge = %version
 %endif
 %if 0%{?with_systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 Requires(post):         %insserv_prereq %fillup_prereq
 %endif
@@ -469,7 +467,7 @@ Requires(pre):  pwdutils
 Requires(pre):  shadow
 %endif
 %if 0%{?with_systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
 %endif
 %{?upgrade:Provides: %{pname}-config = %{version}}
 %{?upgrade:Conflicts: %{pname}-config}
@@ -569,7 +567,7 @@ install -D -m644 etc/cgroup.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/cg
 install -D -m644 etc/layouts.d.power.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power.conf.example
 install -D -m644 etc/layouts.d.power_cpufreq.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power_cpufreq.conf.example
 install -D -m644 etc/layouts.d.unit.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
-install -D -m644 etc/slurm.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf%{?OHPC_BUILD:.example}
+install -D -m644 etc/slurm.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf.example
 install -D -m600 etc/slurmdbd.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
 install -D -m600 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/slurmdbd.conf.example
 install -D -m755 contribs/sjstat %{buildroot}%{_bindir}/sjstat
@@ -577,7 +575,6 @@ install -D -m755 contribs/sgather/sgather %{buildroot}%{_bindir}/sgather
 
 cp contribs/pam_slurm_adopt/README ../README.pam_slurm_adopt
 cp  contribs/pam/README ../README.pam_slurm
-%if 0%{?OHPC_BUILD}
 # change slurm.conf for our needs
 head -n -2 %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf.example | grep -v ReturnToService > %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 sed -i 's#\(StateSaveLocation=\).*#\1%_localstatedir/lib/slurm#'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
@@ -604,12 +601,14 @@ sed -i -e "s@PidFile=.*@PidFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
  %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
 # manage local state dir and a remote states save location
 mkdir -p %{buildroot}/%_localstatedir/lib/slurm
+%if 0%{?with_systemd}
 sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmctld.pid@" \
  -e "s@After=.*@After=network.target munge.service remote-fs.target@" \
  %{buildroot}/%{_unitdir}/slurmctld.service
 sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmd.pid@" \
  %{buildroot}/%{_unitdir}/slurmd.service
 sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
+       -e 's@After=\(.*\)@After=\1 mariadb.service@' \
  %{buildroot}/%{_unitdir}/slurmdbd.service
 %endif
 
@@ -1181,12 +1180,12 @@ exit 0
 %dir %{_sysconfdir}/%{pname}
 %dir %{_sysconfdir}/%{pname}/layouts.d
 %config(noreplace) %{_sysconfdir}/%{pname}/slurm.conf
-%{?OHPC_BUILD:%config %{_sysconfdir}/%{pname}/slurm.conf.example}
+%config %{_sysconfdir}/%{pname}/slurm.conf.example
 %config(noreplace) %{_sysconfdir}/%{pname}/cgroup.conf
 %config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/power.conf.example
 %config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/power_cpufreq.conf.example
 %config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
-%{?OHPC_BUILD:%attr(0755, %slurm_u, %slurm_g) %_localstatedir/lib/slurm}
+%attr(0755, %slurm_u, %slurm_g) %_localstatedir/lib/slurm
 %{?with_systemd:%{_tmpfilesdir}/%{pname}.conf}
 %dir %attr(0755, %slurm_u, %slurm_g)%{_localstatedir}/spool/slurm
 %config(noreplace) %{_sysconfdir}/logrotate.d/slurm*
