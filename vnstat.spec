@@ -22,7 +22,7 @@
 %bcond_with systemd
 %endif
 Name:           vnstat
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
