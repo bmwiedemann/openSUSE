@@ -1,7 +1,7 @@
 #
 # spec file for package sed
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sed
-Version:        4.7
+Version:        4.8
 Release:        0
 Summary:        A Stream-Oriented Non-Interactive Text Editor
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source1:        https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 # PATCH-FIX-SLE sed-dont_close_twice.patch bnc@880817 tcech@suse.cz -- Fix double close.
 Patch0:         sed-dont_close_twice.patch
-Patch1:         disable-null-ptr-argument.patch
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
 Requires(post): %{install_info_prereq}
@@ -46,7 +45,6 @@ occurrences of a string within a file.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat-security
@@ -56,7 +54,7 @@ export LDFLAGS="-pie"
   --without-included-regex
 %if 0%{?do_profiling}
   make %{?_smp_mflags} CFLAGS="$CFLAGS %{cflags_profile_generate}" V=1
-  make CFLAGS="$CFLAGS %{cflags_profile_generate}" check
+  make %{?_smp_mflags} CFLAGS="$CFLAGS %{cflags_profile_generate}" check
   make %{?_smp_mflags} clean
   make %{?_smp_mflags} CFLAGS="$CFLAGS %{cflags_profile_feedback}" V=1
 %else
