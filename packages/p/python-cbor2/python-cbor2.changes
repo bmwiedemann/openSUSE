@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 24 13:45:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 5.0.1
+  * Fix deprecation warning on python 3.7, 3.8
+  * BACKWARD INCOMPATIBLE CBOR does not have a bare DATE type, 
+    encoding dates as datetimes is disabled by default
+  * few major changes in the API, see docs/versionhistory.rst
+  * Optional Pure C implementation by waveform80 that functions 
+    identically to the pure Python implementation
+  * Drop Python 3.3 and 3.4 support from the build process
+  * Added support for encoding and decoding IPv4 and IPv6 addresses
+
+-------------------------------------------------------------------
 Tue Feb 19 02:42:46 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v4.1.2
