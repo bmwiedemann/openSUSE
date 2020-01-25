@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 17 13:06:18 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to release 20200116
+  many changes in Changelog: many new flags added.
+  Also added support for Cyrix MediaGX, Matisse B0 stepping,
+  Hygon CPUs.
+  [cpuid-20200116.src.tar.gz]
+
+-------------------------------------------------------------------
 Sat May 19 23:47:56 UTC 2018 - jengelh@inai.de
 
 - Update to new upstream release 20180519
