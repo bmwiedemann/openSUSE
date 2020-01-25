@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pymisp
-Version:        2.4.119.1
+Version:        2.4.120
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -27,6 +28,7 @@ URL:            https://github.com/MISP/PyMISP
 Source:         https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-%{version}.tar.gz
 # Internal script for generating changelog
 Source1:        changelog.sh
+Patch0:         https://github.com/MISP/PyMISP/commit/acaf56b88832edaa8801b1dbcc6281a43867e532.patch#/fix-tests-template-version.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -76,6 +78,7 @@ Examples and HTML documentation for %{name}.
 
 %prep
 %setup -q -n pymisp-%{version}
+%patch0 -p1
 find pymisp examples -name "*.py" -type f -exec sed -i '1s/^#!.*//' '{}' \+
 
 %build
@@ -91,8 +94,6 @@ popd
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
-# Requires internet access and a MISP-instance
-rm tests/test.py
 %python_exec setup.py test
 
 %files %{python_files}

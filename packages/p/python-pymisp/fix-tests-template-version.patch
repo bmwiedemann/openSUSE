@@ -1,0 +1,45 @@
+From acaf56b88832edaa8801b1dbcc6281a43867e532 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Vinot?= <raphael@vinot.info>
+Date: Fri, 17 Jan 2020 15:20:56 +0100
+Subject: [PATCH] fix: Bump template_version in test cases
+
+---
+ tests/mispevent_testfiles/event_obj_attr_tag.json  | 2 +-
+ tests/mispevent_testfiles/event_obj_def_param.json | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/mispevent_testfiles/event_obj_attr_tag.json b/tests/mispevent_testfiles/event_obj_attr_tag.json
+index aa15b830..42d544de 100644
+--- a/tests/mispevent_testfiles/event_obj_attr_tag.json
++++ b/tests/mispevent_testfiles/event_obj_attr_tag.json
+@@ -30,7 +30,7 @@
+       "name": "file",
+       "sharing_group_id": "0",
+       "template_uuid": "688c46fb-5edb-40a3-8273-1af7923e2215",
+-      "template_version": "18",
++      "template_version": "19",
+       "uuid": "a"
+     },
+     {
+diff --git a/tests/mispevent_testfiles/event_obj_def_param.json b/tests/mispevent_testfiles/event_obj_def_param.json
+index 2f6dd2b3..d80cf95e 100644
+--- a/tests/mispevent_testfiles/event_obj_def_param.json
++++ b/tests/mispevent_testfiles/event_obj_def_param.json
+@@ -30,7 +30,7 @@
+       "name": "file",
+       "sharing_group_id": "0",
+       "template_uuid": "688c46fb-5edb-40a3-8273-1af7923e2215",
+-      "template_version": "18",
++      "template_version": "19",
+       "uuid": "a"
+     },
+     {
+@@ -55,7 +55,7 @@
+       "name": "file",
+       "sharing_group_id": "0",
+       "template_uuid": "688c46fb-5edb-40a3-8273-1af7923e2215",
+-      "template_version": "18",
++      "template_version": "19",
+       "uuid": "b"
+     }
+   ]
