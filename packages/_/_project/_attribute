@@ -68,7 +68,7 @@
   boo#1153562: '20200121'
   boo#1153568: '20191204'
   boo#1154311: '20191018'
-  boo#1154582: '20200123'
+  boo#1154582: '20200124'
   boo#1155162: '20191104'
   boo#1155408: '20191114'
   boo#1155511: '20200114'
@@ -93,7 +93,7 @@
   boo#1160721: '20200111'
   boo#1160869: '20200119'
   boo#1161249: '20200123'
-  boo#1161365: '20200123'
+  boo#1161365: '20200124'
   boo#1161399: '20200121'
   boo#1161687: '20200123'
   bsc#1114673: '20191202'
@@ -102,7 +102,7 @@
   bsc#1131301: '20190424'
   bsc#1133369: '20190424'
   bsc#1151148: '20190917'
-  bsc#1158994: '20200123'
+  bsc#1158994: '20200124'
   bsc#1159185: '20200103'
   gh#os-autoinst/openQA#2159: '20190705'
   gh#os-autoinst/os-autoinst-distri-opensuse#7166: '20190430'
@@ -214,7 +214,7 @@
   poo#62060: '20200123'
   poo#62168: '20200123'
   poo#62375: '20200123'
-  poo#62591: '20200123'
+  poo#62591: '20200124'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -412,7 +412,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20200124'
 published: '20200123'
 publishing: '20200123'
 testing: '20200124'
