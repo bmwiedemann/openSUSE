@@ -17,7 +17,7 @@
 
 
 Name:           rkward
-Version:        0.7.0b
+Version:        0.7.1
 Release:        0
 Summary:        Graphical frontend for R language
 License:        GPL-2.0-only
@@ -26,12 +26,6 @@ Summary(fr):    Interface graphique pour le langage R
 
 Url:            http://rkward.sourceforge.net/ 
 Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-compilation.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Another-missing-include-file.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         Another-include-file-fix.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -78,21 +72,19 @@ intégration dans les suites bureautiques.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %cmake_kf5 -d build -- -DNO_R_XML=1
 %make_jobs
 
 %install
-cd build
-%makeinstall
+%makeinstall -C build
 
 %suse_update_desktop_file -n org.kde.rkward
 
 %find_lang %{name}
 
-%files -f build/%{name}.lang
+%files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc README TODO AUTHORS
 %doc %{_kf5_mandir}/man1/rkward.1.gz
@@ -102,10 +94,8 @@ cd build
 %doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/menu_hierarchy_example.png
 %doc %{_kf5_sharedir}/doc/HTML/en/rkwardplugins/t_test_plugin_example.png
 %license COPYING
-%{_libdir}/R/library/rkward/
-%{_libdir}/R/library/rkwardtests/
 %{_kf5_applicationsdir}/org.kde.rkward.desktop
-%{_kf5_applicationsdir}/org.kde.rkward-open.desktop
+%{_kf5_appstreamdir}/org.kde.rkward.appdata.xml
 %{_kf5_sharedir}/icons/hicolor/16x16/apps/rkward.png
 %{_kf5_sharedir}/icons/hicolor/22x22/apps/rkward.png
 %{_kf5_sharedir}/icons/hicolor/32x32/apps/rkward.png
@@ -128,23 +118,17 @@ cd build
 %{_kf5_sharedir}/katepart5/syntax/rkward.xml
 %endif
 %{_kf5_sharedir}/mime/packages/vnd.rkward.r.xml
-%{_kf5_kxmlguidir}/rkward/
 
 # language files
 
 %dir %{_kf5_sharedir}/rkward/po/
-%lang(bs)  %{_kf5_sharedir}/rkward/po/bs/
 %lang(ca)  %{_kf5_sharedir}/rkward/po/ca/
-%lang(cs)  %{_kf5_sharedir}/rkward/po/cs/
-%lang(de)  %{_kf5_sharedir}/rkward/po/de/
 %lang(es)  %{_kf5_sharedir}/rkward/po/es/
 %lang(gl)  %{_kf5_sharedir}/rkward/po/gl/
-%lang(ja)  %{_kf5_sharedir}/rkward/po/ja/
 %lang(nl)  %{_kf5_sharedir}/rkward/po/nl/
 %lang(pl)  %{_kf5_sharedir}/rkward/po/pl/
 %lang(pt)  %{_kf5_sharedir}/rkward/po/pt/
 %lang(pt_BR)  %{_kf5_sharedir}/rkward/po/pt_BR/
-%lang(sk)  %{_kf5_sharedir}/rkward/po/sk/
 %lang(sv)  %{_kf5_sharedir}/rkward/po/sv/
 %lang(uk)  %{_kf5_sharedir}/rkward/po/uk/
 %lang(x-test) %{_kf5_sharedir}/rkward/po/x-test/

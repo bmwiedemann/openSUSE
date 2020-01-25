@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jan 24 10:55:32 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- upstream release 0.7.1
+
+- New features and improvements
+  * Code hinting in script editor windows has been reworked, and now also completes argument names
+  * Instead of installing rkward R packages at build time, install them at runtime, when needed
+  * Add new commandline option "–r-executable=auto" for auto-detection of R installation
+  * element in save file mode gains checkbox to control overwriting of existing files
+  * Add command-line option –autoreuse to avoid shipping two separate .desktop files
+  * <select> elements in plugin dialogs can be set to accept only a single selection
+  * New R functions rk.capture.output() and and rk.end.capture.output()
+  * Allow to reference current script file in plugins
+  * Add various live-preview options for R scripts, including a preview of R markdown rendering
+  * Make it possible to "link" to specific settings pages from the internal documentation
+  * Slightly less confusing output in case a package is installed from require(), such as in many plugins
+  * Remove a bit of unused empty space around the main area of plugin dialogs
+  * Expand root level objects (esp. data.frames) by default in plugin object lists. Add button to toggle back to collapsed.
+  * Allow Tab-key to advance to the next row of data in data editor
+  * Do not attempt object name hinting behind empty quoted strings or spaces.
+  * rk.show.question() gains a parameter to allow setting a default button other than "yes"
+  * new function rk.askYesNo() combines the functionality of askYesNo() (R >= 3.5.0) with rk.show.question() and is the default option for askYesNo() calls
+  * Compile in ui definitions, instead of providing them as separate files
+  * Offer R_LIBS_USER, instead of ~/.rkward/library as standard library installation location
+  * Support R version placeholder (%v) in custom library locations.
+  * File browser tool window follows changes in current working directory (while showing current working directory)
+  * Show focus indication in highlighted item color (usually blue), instead of hardcoded red
+
+- Bug fixes
+  * Fixed: Underscore (_) was not accepted in names of newly created data.frames
+  * Fixed: <browser> element could not be set to not required
+  * Fixed: max.print option was not saved, correctly, when set from RKWard settings
+  * Fixed: RKWard icon was missing for the "enhances RKWard" column in package installation dialog
+  * Fixed a layout issue in plugins using <stretch>-elements that would sometimes also render top-left aligned UI-elements unusable.
+  * Fix highlighting of "trailing" rows and columns in data editor
+  * Fixed: Loading existing workspace from startup dialog failed silently.
+  * Support handling of help:/ pages (e.g. RKWard plugins documentation) inside the RKWard help window, again.
+  * Fix printing of strings with R 3.5.0 on Windows in the console
+  * On Mac, do not attempt to start DBus, if it is already running
+  * Fix most compiler warnings
+  * File tool window gains button to switch to current working directory
+  * Fix a crash when closing a plugin dialog with an active plot preview
+  * Do not throw an error on objects that return non-numeric/non-scalar dim()
+
+- Drop patches merged upstream:
+  * Fix-compilation.patch
+  * Another-missing-include-file.patch
+  * Another-include-file-fix.patch
+
+-------------------------------------------------------------------
 Fri Nov  1 09:13:16 UTC 2019 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - moved COPYING to %license line 
