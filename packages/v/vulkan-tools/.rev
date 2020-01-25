@@ -95,4 +95,12 @@
     <comment>- Update to release 1.1.130</comment>
     <requestid>756644</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>270513236074bc61d198310d43f66a1d</srcmd5>
+    <version>1.2.131</version>
+    <time>1579955026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.131</comment>
+    <requestid>766385</requestid>
+  </revision>
 </revisionlist>
