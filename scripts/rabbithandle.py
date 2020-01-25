@@ -2,10 +2,13 @@
 # use opensuserabbit.py | rabbithandle.py
 import json
 import os
+import osc.conf
 import subprocess
 import sys
 import time
+from osc.core import get_request
 
+osc.conf.get_config()
 obsbase='https://build.opensuse.org'
 outdir='packages'
 count=0
@@ -26,6 +29,10 @@ for line in sys.stdin:
     info = 'Update '+package+' to rev '+change['rev']
     if 'requestid' in change:
         info += ' via SR '+change['requestid']+"\n\n"+obsbase+'/request/show/'+change['requestid']+"\n"
+        rqobj = get_request(osc.conf.config['apiurl'], change['requestid'])
+        user2 = rqobj.creator
+        if user2 != change['user']:
+            change['user'] = user2 + ' + ' + change['user']
     else:
         info += "\n\n"+obsbase+'/package/rdiff/'+change['project']+'/'+package+'?linkrev=base&rev='+change['rev']+"\n";
     info += 'by user '+change['user']+"\n"
