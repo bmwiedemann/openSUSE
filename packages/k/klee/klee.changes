@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan 24 07:34:10 UTC 2020 - jslaby@suse.com
+
+- Update to version 2.0+20200119:
+  * Remove statistics limit from istats.
+  * Fix handling of debug information for functions
+  * Update objdump script to support python3
+  * Fixed documentation for command line argument link-llvm-lib
+  * Assume assembly.ll is local to the run.istats file
+  * Remove unnecessary std::move's that prevent copy elision
+  * [optimize-array] Fix value transformation
+  * [optimize-array] Fix hole index in buildMixedSelectExpr
+  * [optimize-array] Fix hash collisions
+  * [optimize-array] Hash collision test
+  * [optimize-array] Fix update list read order
+  * [Searchers] Remove weight from es, add nurs_depth
+  * Move merging related code from Executor into MergingSearcher
+  * Implement @llvm.is.constant() intrinsic handling and add a test for it.
+  * [expr-visitor] Remove unnecessary allocation
+  * Handle llvm.objectsize explicitly
+  * Added test for 3-argument main.
+  * Allow main with 3 arguments
+  * Most libc++ tests require uclibc; add missing REQUIRES statements or remove dependency.
+  * Core: Executor, remove unused variable
+  * Do not modify strings if they are read-only.
+  * Mark all constant global memory objects as constant
+  * [test] Fix  missing includes
+  * runtime: fix for glibc 2.30
+  * Remove the duplicated check for DebugInfoIntrinsic
+- Remove 0001-runtime-workaround-for-glibc-2.30.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Nov 04 06:50:43 UTC 2019 - jslaby@suse.com
 
 - switch to llvm 9

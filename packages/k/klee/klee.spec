@@ -1,7 +1,7 @@
 #
 # spec file for package klee
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define llvm_version_minor 0
 %define llvm_version %{llvm_version_major}
 
-%define version_unconverted 2.0+20191031
+%define version_unconverted 2.0+20200119
 
 %ifarch %{ix86} x86_64
 %define with_uclibc 1
@@ -32,14 +32,13 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.0+20191031
+Version:        2.0+20200119
 Release:        0
-Url:            http://klee.github.io/
+URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm-mirror/llvm/release_%{llvm_version_major}%{llvm_version_minor}/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm-mirror/llvm/release_%{llvm_version_major}%{llvm_version_minor}/utils/FileCheck/FileCheck.cpp
-Patch0:         0001-runtime-workaround-for-glibc-2.30.patch
 
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
@@ -52,7 +51,8 @@ BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  ninja
-BuildRequires:  python3-base
+# tests need sqlite3
+BuildRequires:  python3
 BuildRequires:  python3-lit
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tabulate
@@ -107,7 +107,7 @@ sed -i '1s@/usr/bin/env python3*@/usr/bin/python3@' \
 	-DKLEE_UCLIBC_PATH=%{_libdir}/klee-uclibc/ \
 %endif
 	-DBUILD_SHARED_LIBS:BOOL=OFF
-%make_jobs
+%cmake_build
 
 %check
 %ifarch x86_64
