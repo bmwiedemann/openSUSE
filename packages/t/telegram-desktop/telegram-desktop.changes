@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jan 24 17:48:01 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.8
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Thu Jan 23 16:51:20 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.7
+  * Create three new kinds of polls.
+  * See who voted for what in polls with visible votes.
+  * Vote for several options in polls that allow multiple answers.
+  * Guess the correct answer in quiz-style polls.
+  * Explore various ways of combining the different poll options.
+  * Add polls from the '...' menu in any group or channel.
+  * Use bots like @quizbot to create quizzes with several questions
+    and media attachments.
+  * Schedule messages to be sent when your recipient comes online
+    (only works if you know their online status).
+- Clean up spec file
+
+-------------------------------------------------------------------
+Wed Jan 22 10:24:14 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.6
+  * Bug fixes and other minor improvements.
+- Removed 0005-Use-system-wide-fonts.patch and
+  0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch,
+  option to use system fonts added upstream
+
+-------------------------------------------------------------------
+Fri Jan 17 20:12:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.4
+  * Bug fixes and other minor improvements.
+- Removed patches, option to use distribution libraries
+  added upstream:
+  * 0001-Dynamic-linking-system-libs.patch
+  * 0002-Dynamic-linking-system-qt.patch
+  * 0004-gtk3.patch
+- Added patches for dependencies not available from repos:
+  * 0001-use-bundled-range.patch
+  * 0002-use-bundled-rlottie.patch
+
+-------------------------------------------------------------------
 Thu Jan 16 01:47:32 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Upgrade to 1.9.3

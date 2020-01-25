@@ -16,20 +16,15 @@
 #
 
 
-# We need at least gcc8 or higher to build
-%if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
-%bcond_without  gcc8
-%else
-%bcond_with     gcc8
-%endif
-
 # Disable LTO on TW due to build failures
 %if 0%{?suse_version} > 01500
 %define _lto_cflags %{nil}
 %endif
 
+%define __builder ninja
+
 Name:           telegram-desktop
-Version:        1.9.3
+Version:        1.9.8
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -38,23 +33,17 @@ URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 # curl https://codeload.github.com/ericniebler/range-v3/zip/master -o range-v3-master.zip
 Source1:        range-v3-master.zip
-Patch0:         0000-gtk2-default.patch 
-Patch1:         0001-Dynamic-linking-system-libs.patch 
-Patch2:         0002-Dynamic-linking-system-qt.patch 
-Patch3:         0004-gtk3.patch 
-Patch4:         0005-Use-system-wide-fonts.patch 
-Patch5:         0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch
+Patch0:         0000-gtk2-default.patch
+Patch1:         0001-use-bundled-range.patch
+Patch2:         0002-use-bundled-rlottie.patch
+BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
-%if %{with gcc8}
-BuildRequires:  gcc8-c++
-%else
 BuildRequires:  gcc-c++
-%endif
-BuildRequires:  enchant-devel
 BuildRequires:  glibc-devel
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -62,6 +51,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtimageformats-devel
+BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -146,63 +136,37 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
-%if %{with gcc8}
-export CC=/usr/bin/gcc-8
-export CXX=/usr/bin/g++-8
-%endif
+%limit_build -m 2048
 
-cmake -B build -G Ninja . \
+%cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
       -DTDESKTOP_API_ID=340630 \
       -DTDESKTOP_API_HASH=98a22f733eac40f1bd187a30d19271de \
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
-      -DDESKTOP_APP_USE_SYSTEM_LIBS=ON \
+      -DDESKTOP_APP_USE_PACKAGED=ON \
+      -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
+      -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_DISABLE_AUTOUPDATE=ON \
-      -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
-      -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
+      -DTDESKTOP_LAUNCHER_BASENAME=%{name} \
       -DDESKTOP_APP_SPECIAL_TARGET=""
 
-ninja -C build
+%cmake_build
 
 %install
-# Install binary
-install -dm755 %{buildroot}%{_bindir}
-install -m755 build/bin/Telegram %{buildroot}%{_bindir}/%{name}
+%cmake_install
 
-# Install desktop file
-install -d %{buildroot}%{_datadir}/applications
-desktop-file-install \
-    --dir %{buildroot}%{_datadir}/applications \
-    --add-category InstantMessaging \
-    lib/xdg/telegramdesktop.desktop
-
-# Install protocol
-install -d %{buildroot}%{_datadir}/kservices5
-install -m644 lib/xdg/tg.protocol \
-        %{buildroot}%{_datadir}/kservices5/tg.protocol
-
-# Install icons
-for icon_size in 16 32 48 64 128 256 512; do
-    icon_dir="%{buildroot}%{_datadir}/icons/hicolor/${icon_size}x${icon_size}/apps"
-    install -d "${icon_dir}"
-    install -m644 "Telegram/Resources/art/icon${icon_size}.png" \
-            "${icon_dir}/telegram.png"
-done
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 %files
-%license LICENSE
-%doc README.md
+%license LICENSE LEGAL
+%doc README.md changelog.txt
 %{_bindir}/%{name}
-%{_datadir}/applications/telegramdesktop.desktop
-%dir %{_datadir}/kservices5
-%{_datadir}/kservices5/tg.protocol
-%{_datadir}/icons/hicolor/*/apps/telegram.png
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/metainfo/*.appdata.xml
 
 %changelog
