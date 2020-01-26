@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
-Url:            https://www.freecadweb.org/
+URL:            https://www.freecadweb.org/
 %if %{build_tar_ball}
 Source0:        %{name}-%version.tar.xz
 %endif
@@ -41,6 +41,10 @@ Source2:        FreeCADCmd.sh
 Source3:        FreeCAD_shared_mimeinfo
 # PATCH-FIX-UPSTREAM 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch -- Fix build with shiboken2/pyside2 >= 5.12.1
 Patch1:         0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
+# PATCH-FIX-UPSTREAM 0002-fix-compile.patch
+Patch2:         0002-fix-compile.patch
+# PATCH-FIX-OPENSUSE qt-5.14.patch
+Patch3:         0003-qt-5.14.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

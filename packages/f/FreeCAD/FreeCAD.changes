@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jan 25 11:03:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- make 0003-qt-5.14.patch do what it is advertising
+  * fix conditional in order to locate rcc/uic properly
+
+-------------------------------------------------------------------
+Fri Jan 24 09:02:08 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to current 0.18 branch:
+  * fixes #0004182: Segfault when clicking constraints from a different viewport [skip ci]
+  * See discussion https://forum.freecadweb.org/viewtopic.php?f=3&t=41879
+  * fixes #0004233: Access violation and file corruption on undo duplicate sketch
+  * FEM: py3 fix in selection widget
+  * FEM: selection widgets, add some error prints
+  * FEM: equations, fix reset edit mode
+  * [AddonManager] 0.18 Improve Non GitPython Error..
+  * ...Handling. Previous output when clicking Macros tab caused errors in Report View with no Macros loaded at all.
+  * fix encoding problem when clicking a link on StartPage if application is installed into a directory with non-ASCII characters
+  * [Arch] ArchMaterial 0.18 Fix Crash
+
+
+-------------------------------------------------------------------
+Thu Jan 23 16:41:29 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- fix build with new gcc and Qt 5.14
+  (0002-fix-compile.patch 0003-qt-5.14.patch)
+
+-------------------------------------------------------------------
 Wed Oct 30 16:06:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - Update to final 0.18.4

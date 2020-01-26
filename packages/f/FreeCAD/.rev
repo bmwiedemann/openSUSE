@@ -196,4 +196,12 @@
   * pre-select name filter in import/export file dialog</comment>
     <requestid>744271</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>57e1e3975afa7b8fe8c15cc3d18cd8be</srcmd5>
+    <version>0.18.4</version>
+    <time>1580080914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767343</requestid>
+  </revision>
 </revisionlist>
