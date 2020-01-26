@@ -61,7 +61,6 @@ BuildRequires:  pkgconfig(libsecret-1) >= 0.11
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang
 %if 0%{?suse_version} < 1315
 BuildRequires:  pkgconfig(webkit2gtk-3.0)
 %else
