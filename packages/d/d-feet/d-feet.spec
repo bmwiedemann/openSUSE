@@ -17,7 +17,7 @@
 
 
 Name:           d-feet
-Version:        0.3.14
+Version:        0.3.15
 Release:        0
 Summary:        Graphical D-Bus Debugger
 License:        GPL-2.0-or-later
@@ -28,14 +28,15 @@ Source0:        http://download.gnome.org/sources/d-feet/0.3/%{name}-%{version}.
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.4
-Recommends:     %{name}-lang
-BuildArch:      noarch
+### FIXME ###
+#BuildArch:      noarch
 
 %description
 D-Feet is a graphical D-Bus debugger.  D-Bus is an RPC library used on
@@ -49,13 +50,13 @@ programs and invoke methods on those objects.
 
 %build
 export PYTHON=%{_bindir}/python3
-%configure \
-	--libdir=/unused-in-noarch \
-	--disable-tests \
+%meson \
+	-Dtests=false \
 	%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
@@ -65,12 +66,13 @@ export PYTHON=%{_bindir}/python3
 %doc AUTHORS README
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
-%{python3_sitelib}/dfeet/
+### FIXME ### we should be able to use noarch as before, but meson refuses my advances :-(
+#%%{python3_sitelib}/dfeet/
+%{_libdir}/python3.*/site-packages/dfeet/
 %{_datadir}/%{name}/
 %{_datadir}/applications/org.gnome.dfeet.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.dfeet.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/icons/HighContrast/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.dfeet.appdata.xml
 

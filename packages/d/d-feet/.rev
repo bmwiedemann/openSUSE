@@ -553,4 +553,12 @@
 </comment>
     <requestid>663087</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cc614f7deff5fafbcaa9fd1c601c6bd5</srcmd5>
+    <version>0.3.15</version>
+    <time>1580080980</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767332</requestid>
+  </revision>
 </revisionlist>

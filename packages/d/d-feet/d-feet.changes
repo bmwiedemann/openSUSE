@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:06:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Sat Aug 10 19:10:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.15:
+  + Restructure menus to follow GNOME 3.32 menu guidelines.
+  + New app icon as part of the GNOME 3.32 icon redesign.
+  + Add OARS content-rating data.
+  + New Meson-based build system.
+  + Updated translations.
+- Add meson BuildRequires and macros following upstreams port.
+- No longer build as NoArch, FIXME added to spec.
+
+-------------------------------------------------------------------
 Wed Jan  2 16:37:27 UTC 2019 - bwiedemann@suse.com
 
 - Do not have useless arch-dependent libdir in noarch package
