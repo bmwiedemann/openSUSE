@@ -1,20 +1,21 @@
-Index: sxiv-25/Makefile
+Index: sxiv-26/Makefile
 ===================================================================
---- sxiv-25.orig/Makefile	2019-01-26 14:54:40.000000000 +0100
-+++ sxiv-25/Makefile	2019-10-13 16:45:00.384870829 +0200
-@@ -16,8 +16,9 @@
+--- sxiv-26.orig/Makefile	2020-01-23 15:37:18.890637361 +0100
++++ sxiv-26/Makefile	2020-01-23 15:39:24.990140641 +0100
+@@ -16,9 +16,9 @@
  HAVE_LIBEXIF = 1
  
  cflags = -std=c99 -Wall -pedantic $(CFLAGS)
--cppflags = -I. $(CPPFLAGS) -D_XOPEN_SOURCE=700 -DHAVE_GIFLIB=$(HAVE_GIFLIB) \
--  -DHAVE_LIBEXIF=$(HAVE_LIBEXIF) -I/usr/include/freetype2
+-cppflags = -I. $(CPPFLAGS) -D_XOPEN_SOURCE=700 \
+-  -DHAVE_GIFLIB=$(HAVE_GIFLIB) -DHAVE_LIBEXIF=$(HAVE_LIBEXIF) \
+-  -I/usr/include/freetype2 -I$(PREFIX)/include/freetype2
 +cppflags = -I. $(CPPFLAGS) -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" \
 +   -DHAVE_GIFLIB=$(HAVE_GIFLIB) -DHAVE_LIBEXIF=$(HAVE_LIBEXIF) \
 +   -I/usr/include/freetype2
  
  lib_exif_0 =
  lib_exif_1 = -lexif
-@@ -76,6 +77,7 @@
+@@ -77,6 +77,7 @@
  	mkdir -p $(DESTDIR)$(PREFIX)/share/sxiv/exec
  	cp exec/* $(DESTDIR)$(PREFIX)/share/sxiv/exec/
  	chmod 755 $(DESTDIR)$(PREFIX)/share/sxiv/exec/*
@@ -22,10 +23,10 @@ Index: sxiv-25/Makefile
  
  uninstall:
  	@echo "REMOVE bin/sxiv"
-@@ -84,4 +86,5 @@
+@@ -85,4 +86,6 @@
  	rm -f $(DESTDIR)$(MANPREFIX)/man1/sxiv.1
  	@echo "REMOVE share/sxiv/"
  	rm -rf $(DESTDIR)$(PREFIX)/share/sxiv
--
 +	@echo "REMOVE share/applications/sxiv.desktop"
 +	rm -f $(DESTDIR)$(PREFIX)/share/applications/sxiv.desktop
+ 
