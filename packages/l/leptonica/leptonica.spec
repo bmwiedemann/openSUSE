@@ -1,7 +1,7 @@
 #
 # spec file for package leptonica
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major   5
 
 Name:           leptonica
-Version:        1.78.0
+Version:        1.79.0
 Release:        0
 Summary:        Library for image processing and image analysis applications
 License:        BSD-2-Clause
@@ -32,12 +32,10 @@ BuildRequires:  gnuplot
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
-%if 0%{?suse_version} > 1310
-BuildRequires:  pkgconfig(libopenjp2)
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -81,8 +79,17 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_bindir}/{*gen,*reg,*test*}
 
+# Just symlinks. Linked to liblept.so.* and to the missing liblept.la.
+# We don't need, I guess.
+rm -f %{buildroot}%{_libdir}/libleptonica.so
+rm -f %{buildroot}%{_libdir}/libleptonica.la
+
+# Something related to cmake build. Not use at the moment.
+rm -fr %{buildroot}%{_libdir}/cmake/
+
 %check
-make %{?_smp_mflags} check
+# Don't run multiple jobs: some tests failed somehow.
+make check
 
 %post -n liblept%{major} -p /sbin/ldconfig
 
