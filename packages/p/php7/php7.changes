@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:08:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.2: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.2
+
+-------------------------------------------------------------------
 Wed Dec 18 13:35:41 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.1: This is a security release which also contains

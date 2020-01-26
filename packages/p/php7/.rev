@@ -826,4 +826,13 @@
   - php-fpm-service-fails-to-start.patch (forwarded request 757875 from adkorte)</comment>
     <requestid>757892</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>669482aecc8852f512a26aa6d813bd41</srcmd5>
+    <version>7.4.2</version>
+    <time>1580080872</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.2: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.2 (forwarded request 766570 from adkorte)</comment>
+    <requestid>766583</requestid>
+  </revision>
 </revisionlist>
