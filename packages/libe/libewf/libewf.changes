@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 26 04:11:53 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+- update to libewf-20140808
+        * 2014 is the stable branch. 20140808 was released Dec 25, 2019
+        * update libyal packages to Jan 2019 versions
+        * Added deflate and adler32 fallback implementations
+        * Removed dependency on libcstring and libcsystem
+        * Added Python 3 support for pyewf
+- add %sosuffix variable and set it to 2
+- update URL and Source fields to current web locations
+- use separate libyal packages, not internal copies
+
+-------------------------------------------------------------------
+Fri Jan 17 14:05:36 CET 2020 - Matej Cepl <mcepl@suse.com>
+- Switch on building of python3 bindings, and make building of
+  python2 bindings conditional (default off).
+
+-------------------------------------------------------------------
 Fri Apr 19 23:14:04 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Use the built in version of libcpath

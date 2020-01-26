@@ -1,7 +1,7 @@
 #
 # spec file for package libewf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,44 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define lname	libewf2
-%define timestamp 20140608
+%define modname	libewf
+%define timestamp 20140808
+%define sosuffix 2
+%bcond_with python2
+
 Name:           libewf
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library for the Expert Witness Compression Format (EWF)
-License:        LGPL-3.0+ and GFDL-1.3+
+License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            http://code.google.com/p/libewf/
-#DL-URL:        https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/libewf-20140608.tar.gz
-Source:         %{name}-%{timestamp}.tar.gz
+URL:            https://github.com/libyal/lib
+Source:         https://github.com/libyal/libewf-legacy/releases/download/20140808/%{name}-%{timestamp}.tar.gz
+Source1:        https://github.com/libyal/libewf-legacy/releases/download/20140808/%{name}-%{timestamp}.tar.gz.asc
 Source2:        http://downloads.sf.net/libewf/mount_ewf-20090113.py
 Source3:        Expert_Witness_Compression_Format_EWF.pdf
 Source4:        Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  fuse-devel
 # Needed for language translation support
 BuildRequires:  gettext
-BuildRequires:  pkg-config
+BuildRequires:  git
+BuildRequires:  libopenssl-devel
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+%if %{with python2}
 BuildRequires:  python-devel
+%endif
+BuildRequires:  python3-devel
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bzip2) >= 1.0
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libcaes) >= 20120425
@@ -54,18 +67,15 @@ BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
 # build fails if libyal package from OBS is used
-# verified 1/10/2015
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
-#BuildRequires:  pkgconfig(libcerror) >= 20120425
-#BuildRequires:  pkgconfig(libcdata) >= 20120425
-#BuildRequires:  pkgconfig(libbfio) >= 20120426
-#BuildRequires:  pkgconfig(libcsystem) >= 20120425
-#BuildRequires:  pkgconfig(libfcache) >= 20120405
-#BuildRequires:  pkgconfig(libfdata)
-#BuildRequires:  pkgconfig(libsmraw) >= 20120630
-#BuildRequires:  pkgconfig(libodraw) >= 20120630
-# verified 4/19/2019  -  libewf hasn't been updated in 5 years and it depends on old versions of libyal. :(
-#BuildRequires:  pkgconfig(libcpath) >= 20120701
+# verified 1/25/2020
+BuildRequires:  pkgconfig(libbfio) >= 20120426
+BuildRequires:  pkgconfig(libcdata) >= 20120425
+BuildRequires:  pkgconfig(libcerror) >= 20120425
+BuildRequires:  pkgconfig(libcpath) >= 20120701
+BuildRequires:  pkgconfig(libfcache) >= 20120405
+BuildRequires:  pkgconfig(libfdata)
+BuildRequires:  pkgconfig(libodraw) >= 20120630
+BuildRequires:  pkgconfig(libsmraw) >= 20120630
 # these packages not yet released by upstream
 #BuildRequires:  pkgconfig(libmfdata) >= 20120425
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -77,12 +87,12 @@ EnCase format (EWF-E01). libewf allows you to read and write media
 information within the EWF files. libewf allows to read files created
 by EnCase 1 to 6, linen and FTK Imager.
 
-%package -n %{lname}
+%package -n %{modname}%{sosuffix}
 Summary:        Library to support the Expert Witness Compression Format
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %{modname}%{sosuffix}
 libewf is a library for support of the Expert Witness Compression
 Format (EWF). It supports both the SMART format (EWF-S01) and the
 EnCase format (EWF-E01). libewf allows you to read and write media
@@ -91,7 +101,7 @@ by EnCase 1 to 6, linen and FTK Imager.
 
 %package tools
 Summary:        Utilities for the Expert Witness Compression Format (EWF)
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Filesystems
 Requires:       fuse
 Requires:       python-fuse >= 0.2
@@ -106,9 +116,9 @@ It contains tools to acquire, verify and export EWF files.
 
 %package devel
 Summary:        Development files for libewf, an Expert Witness Compression Format library
-License:        LGPL-3.0+ and GFDL-1.3+
+License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %{modname}%{sosuffix} = %{version}
 
 %description devel
 libewf is a library for support of the Expert Witness Compression
@@ -120,11 +130,12 @@ by EnCase 1 to 6, linen and FTK Imager.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
+%if %{with python2}
 %package -n python2-%{name}
 Summary:        Python 2 bindings for libewf, an Expert Witness Compression format library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       %{lname} = %{version}
+Requires:       %{modname}%{sosuffix} = %{version}
 BuildRequires:  pkgconfig(python2)
 Provides:       python-%{name} = %{version}
 Obsoletes:      python-%{name} < 20140608
@@ -132,52 +143,56 @@ Obsoletes:      python-%{name} < 20140608
 %description -n python2-%{name}
 Python 2 binding for libewf, which can create and read EnCase forensic
 images.
+%endif
 
+# We can eventually split python* packages into separate packages
+# python setup.py build should work according to
+# https://github.com/libyal/libewf/wiki/Building#using-setuppy
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libewf, an Expert Witness Compression format library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       %{lname} = %{version}
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(python3)
+Requires:       %{modname}%{sosuffix} = %{version}
 
 %description -n python3-%{name}
 Python 3 binding for libewf, which can create and read EnCase forensic
 images.
 
 %prep
-%setup -q -n libewf-%{timestamp}
+%setup -q -n %{name}-%{timestamp}
 %patch1 -p1
 cp "%{SOURCE3}" "%{SOURCE4}" .
 
 %build
 #export CFLAGS="%optflags -fno-strict-aliasing"
-%configure --disable-static \
+%configure --disable-static --disable-rpath \
   --enable-wide-character-type \
-  --enable-python --enable-python3
-
-#Remove rpath from libtool
-#sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-#sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-
-# clean unused-direct-shlib-dependencies
-#sed -i -e 's! -shared ! -Wl,--as-needed\0!g' libtool
+  --enable-python3 \
+%if %{with python2}
+  --enable-python2 
+%endif
 
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 install -Dpm0755 "%{SOURCE2}" "%{buildroot}/sbin/mount.ewf"
 ln -s mount.ewf "%{buildroot}/sbin/umount.ewf"
 
-%post   -n %{lname} -p /sbin/ldconfig
+%check
+make check 
 
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %{modname}%{sosuffix} -p /sbin/ldconfig
+%postun -n %{modname}%{sosuffix} -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %{modname}%{sosuffix}
 %defattr(-,root,root)
-%doc AUTHORS COPYING NEWS ChangeLog
+%license COPYING
+%doc AUTHORS NEWS ChangeLog
 %{_libdir}/libewf.so.*
 
 %files tools
@@ -197,7 +212,8 @@ ln -s mount.ewf "%{buildroot}/sbin/umount.ewf"
 
 %files devel
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %doc *.pdf
 %{_includedir}/libewf.h
 %{_includedir}/libewf/
@@ -205,14 +221,17 @@ ln -s mount.ewf "%{buildroot}/sbin/umount.ewf"
 %{_libdir}/pkgconfig/libewf.pc
 %{_mandir}/man3/libewf.3*
 
+%if %{with python2}
 %files -n python2-%{name}
 %defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %{python_sitearch}/pyewf.so
+%endif
 
-# this is a skeleton package with no actual binary.  Upstream doesn't have python3 support in stable
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
+%{python3_sitearch}/*.so
 
 %changelog
