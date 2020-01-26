@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.0
 BuildRequires:  pkgconfig(gtksourceviewmm-3.0) >= 3.0
 BuildRequires:  pkgconfig(vte-2.91) >= 0.28
 Requires:       gdb
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 %if 0%{?scm_bootstrap}
 BuildRequires:  gnome-common
