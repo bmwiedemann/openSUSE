@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
 BuildRequires:  pkgconfig(pangoft2) >= 0.28
-Recommends:     %{name}-lang
 Provides:       girl
 Obsoletes:      girl
 
