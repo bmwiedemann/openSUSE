@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(pango) >= 1.24.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.24.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 Recommends:     %{name}-doc
-Recommends:     %{name}-lang
 Recommends:     ghostscript-fonts-std
 Recommends:     liberation-fonts
 # gnumeric uses a ghelp: URI to launch the help application. Let's recommend to have an app that can handle it (bnc#719679)
