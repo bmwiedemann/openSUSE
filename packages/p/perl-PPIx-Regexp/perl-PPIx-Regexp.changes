@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 03:09:32 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.068
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.068		2020-01-21	T. R. Wyant
+      Expose PPIx::Regexp::Util::is_ppi_regexp_element()
+  
+      explain() on [[=x=]] now calls it a Character Equivalence.
+      It's still a PPIx::Regexp::Token::CharClass::POSIX::Unknown (and
+      therefore an error), though.
+
+-------------------------------------------------------------------
 Mon Sep 23 12:18:26 UTC 2019 - FSchreiner@suse.com
 
 - fixed control characters in changelog file
