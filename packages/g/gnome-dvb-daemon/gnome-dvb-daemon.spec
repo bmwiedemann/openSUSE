@@ -56,7 +56,6 @@ Requires:       %{name} = %{version}
 # package because that's where the translatable strings live. We could change
 # the name of the lang package, but the .mo files are named gnome-dvb-daemon,
 # so it's better this way.
-Recommends:     %{name}-lang
 # For tuning data
 Recommends:     dvb
 Provides:       python-gnomedvb = %{version}
