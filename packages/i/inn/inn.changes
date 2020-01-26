@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 16:56:14 CET 2020 - mls@suse.de
+
+- change user to news before touching files in /var/log/news
+  [bnc#1154302] [CVE-2019-3692]
+
+-------------------------------------------------------------------
 Tue Sep 10 11:51:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use -ffat-lto-objects when building static libraries.

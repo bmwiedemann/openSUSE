@@ -288,4 +288,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>- Use -ffat-lto-objects when building static libraries. (forwarded request 729850 from cgiboudeaux)</comment>
     <requestid>730143</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>2fdd226394472b0f51672cea4785d5a4</srcmd5>
+    <version>2.6.2</version>
+    <time>1580080952</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>766962</requestid>
+  </revision>
 </revisionlist>

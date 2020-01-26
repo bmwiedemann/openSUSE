@@ -1,7 +1,7 @@
 #
 # spec file for package inn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -257,14 +257,13 @@ test -f var/log/news && mv var/log/news var/log/news.bak
 exit 0
 
 %post
-mkdir -p var/log/news
-touch var/log/news/news.notice
-touch var/log/news/news.err
-touch var/log/news/news.crit
-touch var/log/news/news
-touch var/log/news/inn.status
-touch var/log/news/innfeed.status
-chown news:news var/log/news/news.notice var/log/news/news.err var/log/news/news.crit var/log/news/news var/log/news/inn.status var/log/news/innfeed.status
+runuser -u news -g news touch \
+    var/log/news/news.notice \
+    var/log/news/news.err \
+    var/log/news/news.crit \
+    var/log/news/news \
+    var/log/news/inn.status \
+    var/log/news/innfeed.status
 if test -e usr/lib/news/bin/control/version -o -e usr/lib/news/bin/inndstart ; then
     rm -f etc/news/inn.conf.OLD
     rm -f etc/news/newsfeeds.OLD
