@@ -1,7 +1,7 @@
 #
 # spec file for package most
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define bugfix	1
 Name:           most
-Version:        5.1.0
+Version:        pre5.2
 Release:        0
 Summary:        File viewer and pager
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://www.jedsoft.org/most/
-Source:         https://www.jedsoft.org/snapshots/%{name}-%{version}.tar.gz
+Source:         https://www.jedsoft.org/snapshots/%{name}-%{version}-%{bugfix}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  slang-devel
 
@@ -32,7 +33,7 @@ Most is a paging program.
 It supports multiple windows and can scroll left and right.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-%{bugfix}
 
 %build
 %configure --prefix=%{_prefix}
