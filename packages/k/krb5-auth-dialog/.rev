@@ -211,4 +211,12 @@
     <comment>t-u-u / boo#1086036 (forwarded request 589293 from dimstar)</comment>
     <requestid>589984</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>4f286350de1436ac6f86384ab3691405</srcmd5>
+    <version>3.26.1</version>
+    <time>1580081041</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767374</requestid>
+  </revision>
 </revisionlist>

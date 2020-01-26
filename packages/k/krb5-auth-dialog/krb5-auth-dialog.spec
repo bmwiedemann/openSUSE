@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
-Recommends:     %{name}-lang
 
 %description
 krb5-auth-dialog is a tray applet that monitors and refreshes your
