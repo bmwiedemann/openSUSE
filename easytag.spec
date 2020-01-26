@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(taglib_c) >= 1.6.0
 BuildRequires:  pkgconfig(vorbis) >= 1.0.1
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(wavpack) >= 4.40
-Recommends:     %{name}-lang
 
 %description
 EasyTAG is a utility for viewing and editing tags for MP3, MP2, MP4/AAC, FLAC, Ogg Vorbis,
