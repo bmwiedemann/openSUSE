@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
-Recommends:     %{name}-lang
 
 %description
 GNOME Gmail Notifier is an application that provides periodic updates
