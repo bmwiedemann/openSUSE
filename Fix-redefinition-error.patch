@@ -1,0 +1,18 @@
+diff -Nur deepin-system-monitor-1.5.2/src/hashqstring.h deepin-system-monitor-1.5.2-new/src/hashqstring.h
+--- deepin-system-monitor-1.5.2/src/hashqstring.h	2020-01-25 20:16:33.431149900 +0800
++++ deepin-system-monitor-1.5.2-new/src/hashqstring.h	2020-01-25 20:32:22.865333300 +0800
+@@ -27,6 +27,7 @@
+ #include <QString>
+ #include <string>
+ 
++#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+ namespace std {
+     template<> struct hash<QString>
+     {
+@@ -36,5 +37,6 @@
+             }
+     };
+ }
++#endif
+ 
+ #endif // HASHQSTRING_H
