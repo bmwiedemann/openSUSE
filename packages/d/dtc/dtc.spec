@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/dgibson/dtc
 Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.gz
 Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.sign
 Source2:        baselibs.conf
+Patch0:         dtc-no-common-conflict.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
@@ -71,6 +72,7 @@ Python binding part.
 
 %prep
 %setup -q
+%patch0
 
 %build
 export EXTRA_CFLAGS="%{optflags}"

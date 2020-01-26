@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:54:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add dtc-no-common-conflict.patch (bsc#1160388)
+
+-------------------------------------------------------------------
 Sun Dec  8 09:18:44 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use %make_build and recpect %optflags.
