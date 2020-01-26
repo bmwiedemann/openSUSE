@@ -69,7 +69,6 @@ Requires:       postgresql-server
 Requires:       python3-glom
 # Glom verifies fot gi.repository.Gda Python Module (bnc#772551)
 Requires:       typelib(Gda)
-Recommends:     %{name}-lang
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_python3-devel
 %else
