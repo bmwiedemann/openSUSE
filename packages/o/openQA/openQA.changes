@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 26 18:37:58 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1579943557.88a382a14:
+  * Dependency cron 200125
+  * Simplify job#done
+  * Add test in openqa-clone-custom-git-refspec for trailing '/'
+  * t: Cover all current features of openqa-clone-custom-git-refspec
+
+-------------------------------------------------------------------
 Fri Jan 24 10:38:06 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1579790259.c018d5dc2:
