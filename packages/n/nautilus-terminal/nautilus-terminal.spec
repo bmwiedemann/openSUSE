@@ -35,7 +35,6 @@ Requires:       nautilus
 Recommends:     python-xdg
 BuildArch:      noarch
 %if %{have_lang}
-Recommends:     %{name}-lang
 %endif
 
 %description
