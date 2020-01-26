@@ -1,7 +1,7 @@
 #
 # spec file for package neovim-gtk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define binname nvim-gtk
 
 Name:           neovim-gtk
-Version:        0.2.0+git.1575188169.31fd179
+Version:        0.2.0+git.1579960262.0af8952
 Release:        0
 Summary:        GTK UI for Neovim
 License:        GPL-3.0-only

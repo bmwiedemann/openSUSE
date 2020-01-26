@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 25 23:01:54 UTC 2020 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.2.0+git.1579960262.0af8952:
+  * fix build
+  * Fix mouse selection while dragging with leftclick, fixes #185
+
+-------------------------------------------------------------------
 Wed Dec 04 23:32:43 UTC 2019 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 0.2.0+git.1575188169.31fd179:
