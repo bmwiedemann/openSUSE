@@ -98,4 +98,14 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750272</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5cb2fa2139d4804898c0bf0a255cfd05</srcmd5>
+    <version>3.8.0</version>
+    <time>1580080823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 3.8.0:
+  * Make Django's assertion helpers available in pytest_django.asserts (#709).
+  * Report django-configurations setting (#791)</comment>
+    <requestid>766504</requestid>
+  </revision>
 </revisionlist>
