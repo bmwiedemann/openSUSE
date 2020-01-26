@@ -122,4 +122,14 @@
   * reproducible.patch</comment>
     <requestid>682846</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1bf39a0a7380e545bc2dd73893e5d726</srcmd5>
+    <version>3.4.1+git651137b</version>
+    <time>1580081067</time>
+    <user>dimstar_suse</user>
+    <comment>- Add up_to_HEAD.patch patch containing all commits until
+  651137b (to fix gh#gdabah/distorm#124, among other issues) and
+  test new setup.py.</comment>
+    <requestid>767508</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 26 18:05:59 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add up_to_HEAD.patch patch containing all commits until
+  651137b (to fix gh#gdabah/distorm#124, among other issues) and
+  test new setup.py.
+
+-------------------------------------------------------------------
 Fri Mar  8 13:26:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.4.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-distorm3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname distorm3
+%define lastversion 3.4.1
 Name:           python-%{modname}
-Version:        3.4.1
+Version:        3.4.1+git651137b
 Release:        0
 Summary:        Disassembler Library For x86/AMD64
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/gdabah/distorm
-Source:         https://files.pythonhosted.org/packages/source/d/distorm3/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/distorm3/%{modname}-%{lastversion}.tar.gz
+# To solve gh#gdabah/distorm#124, among other problems
+Patch0:         up_to_HEAD.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +42,8 @@ returns a binary structure which describes it rather than static
 text.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n %{modname}-%{lastversion}
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"
