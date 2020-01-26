@@ -356,4 +356,12 @@
     <comment>New stable rel (forwarded request 692807 from iznogood)</comment>
     <requestid>693281</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>adb46eccae24ab0b9400fe84cb78a3fd</srcmd5>
+    <version>3.6.0</version>
+    <time>1580081025</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767366</requestid>
+  </revision>
 </revisionlist>

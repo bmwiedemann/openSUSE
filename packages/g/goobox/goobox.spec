@@ -29,7 +29,7 @@ Source0:        https://download.gnome.org/sources/goobox/3.6/%{name}-%{version}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(libdiscid)
 BuildRequires:  pkgconfig(libmusicbrainz5) >= 5.0.0
 BuildRequires:  pkgconfig(libnotify) >= 0.4.3
 BuildRequires:  pkgconfig(sm)
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description
