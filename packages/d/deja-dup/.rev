@@ -473,4 +473,12 @@ So preferably for 13.1 as well.</comment>
     <comment>New upstream release</comment>
     <requestid>766125</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>551f95ab95ed346bbc2c148b76690cc0</srcmd5>
+    <version>40.6</version>
+    <time>1580080984</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767334</requestid>
+  </revision>
 </revisionlist>

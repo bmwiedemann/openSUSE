@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 0.6.5
-Recommends:     %{name}-lang
 Recommends:     duplicity >= 0.6.25
 Recommends:     python-boto
 Recommends:     python-cloudfiles

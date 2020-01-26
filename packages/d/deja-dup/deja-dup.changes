@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:06:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Thu Jan 16 09:08:54 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add meson version to spec file 
