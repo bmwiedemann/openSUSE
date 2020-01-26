@@ -95,7 +95,6 @@ BuildRequires:  libsmbclient-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  libtheora-devel >= 1.0
 BuildRequires:  libtool
-BuildRequires:  libudev-devel >= 142
 BuildRequires:  libv4l-devel
 BuildRequires:  libvorbis-devel >= 1.1
 BuildRequires:  libvpx-devel >= 1.5.0
@@ -108,6 +107,7 @@ BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  posix_cc
 BuildRequires:  schroedinger-devel >= 1.0.10
+BuildRequires:  pkgconfig(libudev) >= 142
 #BuildRequires:  slang-devel
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
