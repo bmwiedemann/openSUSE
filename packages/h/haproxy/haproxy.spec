@@ -72,7 +72,7 @@ BuildRequires:  pcre-devel
 BuildRequires:  zlib-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(libsystemd)
