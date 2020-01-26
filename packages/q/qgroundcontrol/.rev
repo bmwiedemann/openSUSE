@@ -173,4 +173,16 @@
   * require Qt 5.11 or higher</comment>
     <requestid>737405</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d4f9bf2e683bb4cb15672d953c089d3</srcmd5>
+    <version>3.6.0~pre.1579852764.2702289a8</version>
+    <time>1580080890</time>
+    <user>dimstar_suse</user>
+    <comment>- update to current 3.6 pre-release code to support Qt 5.14
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through -mini flavors. Also drop the conditional
+  BR, since the same symbol is also requried unconditionaly.</comment>
+    <requestid>766791</requestid>
+  </revision>
 </revisionlist>

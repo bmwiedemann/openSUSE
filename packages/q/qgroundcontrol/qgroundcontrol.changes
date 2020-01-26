@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 24 09:53:04 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to current 3.6 pre-release code to support Qt 5.14
+
+-------------------------------------------------------------------
+Thu Dec 19 15:24:19 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through -mini flavors. Also drop the conditional
+  BR, since the same symbol is also requried unconditionaly.
+
+-------------------------------------------------------------------
 Fri Oct 11 07:35:32 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - update to 3.6 pre-release

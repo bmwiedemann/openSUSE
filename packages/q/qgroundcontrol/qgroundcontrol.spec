@@ -1,7 +1,7 @@
 #
 # spec file for package qgroundcontrol
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qgroundcontrol
-Version:        3.6.0~pre.1570775458.0d1bb4844
+Version:        3.6.0~pre.1579852764.2702289a8
 Release:        0
 Summary:        An operator control unit / ground control software for micro air vehicles
 License:        GPL-3.0-only
 Group:          Other
-Url:            http://www.qgroundcontrol.org/
+URL:            http://www.qgroundcontrol.org/
 Source0:        qgroundcontrol-%{version}.tar.xz
 Patch2:         fix-install.patch
 # ModemManager has the broken design to grab any serial port first
@@ -36,7 +36,6 @@ BuildRequires:  python2
 BuildRequires:  systemd-devel
 %else
 BuildRequires:  libqt5-qtlocation-private-headers-devel
-BuildRequires:  libudev-devel
 %endif
 
 BuildRequires:  pkgconfig(Qt5Charts)
@@ -60,8 +59,8 @@ BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libsndfile-devel
-BuildRequires:  libudev-devel
 BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(libudev)
 # is not building atm
 #BuildRequires:  libxbee3-devel
 BuildRequires:  fdupes
