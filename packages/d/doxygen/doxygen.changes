@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 17:31:41 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible-sort.patch to make html output reproducible
+  in spite of ASLR (boo#1062303)
+
+-------------------------------------------------------------------
 Fri Jan 10 09:14:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Use modern cmake macros

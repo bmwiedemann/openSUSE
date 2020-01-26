@@ -40,6 +40,7 @@ Patch6:         doxygen-llvm-libs.patch
 Patch7:         PR_7193_fix_blank_file_patterns.patch
 # PATCH-FIX-UPSTREAM Including external tag files with TOC produces a broken index.qhp
 Patch8:         0001-issue-7248-Including-external-tag-files-with-TOC-pro.patch
+Patch9:         reproducible-sort.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -72,6 +73,7 @@ as well.
 %endif
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %cmake \

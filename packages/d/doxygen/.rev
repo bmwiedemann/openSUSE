@@ -864,4 +864,12 @@
 - Use modern cmake macros (forwarded request 762640 from pluskalm)</comment>
     <requestid>762643</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>0a9fd3c2224c4b3a1687522ecba17ad6</srcmd5>
+    <version>1.8.16</version>
+    <time>1580080820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766491</requestid>
+  </revision>
 </revisionlist>
