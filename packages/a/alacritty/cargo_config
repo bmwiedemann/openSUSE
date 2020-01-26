@@ -8,7 +8,7 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/rust-windowing/winit"]
 git = "https://github.com/rust-windowing/winit"
-branch = "master"
+rev = "d1c6506865c7bddbb5fb4d80a613e43ddc1370b5"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]

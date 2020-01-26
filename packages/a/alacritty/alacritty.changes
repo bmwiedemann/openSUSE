@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:56:44 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 0.4.1
+  * Adapt cargo config
+- Packaging:
+  * Added compatibility logo variants for environments which can't
+  render the default SVG
+- Added:
+  * Terminal escape bindings with combined modifiers for Delete and
+  Insert
+  * Colored emojis on Linux/BSD
+  * Value randr for WINIT_HIDPI_FACTOR, to ignore Xft.dpi and scale
+  based on screen dimensions
+- Changed:
+  * The enable_experimental_conpty_backend config option has been
+  replaced with winpty_backend
+- Fixed:
+  * URLs not truncated with non-matching single quote
+  * Absolute file URLs (file:///home) not recognized because of
+  leading /
+  * Clipboard escape OSC 52 not working with empty clipboard
+  parameter
+  * Incorrect window size on X11 when waking up from suspend
+  * Width of Unicode 11/12 emojis
+  * Performance bottleneck when clearing colored rows
+  * Crash on clear when scrolled up in history
+  * Entire screen getting underlined/stroke out when running clear
+  * Slow startup on some Wayland compositors
+  * Resize cursor not showing up on Wayland
+  * Maximized windows spawning behind system panel on Gnome Wayland
+- Removed:
+  * Support for 8-bit C1 escape sequences
+
+-------------------------------------------------------------------
 Mon Dec 30 03:35:40 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Update to 0.4.0
