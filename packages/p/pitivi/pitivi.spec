@@ -50,7 +50,6 @@ Requires:       python3-matplotlib-gtk3
 Requires:       python3-numpy
 # We need a minimal version of the GES-1.0 package, so we have to specify it manually
 Requires:       typelib-1_0-GES-1_0 >= 1.4.0
-Recommends:     %{name}-lang
 # Pitivi can use the Frei0r plugins, and since this enables lots of effects, we
 # really want that by default if possible
 Recommends:     frei0r-plugins
