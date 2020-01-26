@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.7.6
+Version:        2.7.7
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -166,7 +166,7 @@ popd
   %{_bindir}/ibus write-cache --system &>/dev/null || :
 
 %files -f %{name}.lang
-%doc AUTHORS COPYING README
+%doc AUTHORS COPYING README README.html README.md
 %{_bindir}/emoji-picker
 %{_datadir}/%{name}
 %dir %{_datadir}/metainfo
