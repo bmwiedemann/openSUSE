@@ -32,7 +32,7 @@ BuildRequires:  perl-forks
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appstream-glib)
-BuildRequires:  pkgconfig(fwupd)
+BuildRequires:  pkgconfig(fwupd) >= 1.2.10
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
