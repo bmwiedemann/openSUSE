@@ -38,7 +38,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
-Recommends:     %{name}-lang
 %lang_package
 
 %description
