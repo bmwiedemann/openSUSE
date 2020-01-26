@@ -1,0 +1,62 @@
+From d4980443755f5df63b6a13f662df169797f2684f Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Wed, 15 Jan 2020 22:50:10 +0200
+Subject: Fix QRegularExpression::wildcardToRegularExpression() usage
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Summary:
+It turns out that QRegularExpression::wildcardToRegularExpression() returns
+an anchored (with \A and \z) pattern, so using anchoredPattern() in such
+cases would actually anchor the pattern twice, which is obviously wrong.
+Thanks to Mikołaj Płomieński (blaze) for catching it in
+https://phabricator.kde.org/D26205#594891
+
+Test Plan: make && ctest
+
+Reviewers: #frameworks, apol, dfaure
+
+Reviewed By: apol
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D26707
+---
+ src/api/KWallet/kwallet.cpp                    | 3 +--
+ src/runtime/kwalletd/backend/kwalletbackend.cc | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/api/KWallet/kwallet.cpp b/src/api/KWallet/kwallet.cpp
+index d21c488..7d4940f 100644
+--- a/src/api/KWallet/kwallet.cpp
++++ b/src/api/KWallet/kwallet.cpp
+@@ -176,8 +176,7 @@ public:
+         attrs[KSS_ATTR_ENTRYFOLDER] = folder;
+         KSecretsService::SearchCollectionItemsJob *searchItemsJob = secretsCollection->searchItems(attrs);
+         if (searchItemsJob->exec()) {
+-            const QRegularExpression re(QRegularExpression::anchoredPattern(
+-                                          QRegularExpression::wildcardToRegularExpression(key)));
++            const QRegularExpression re(QRegularExpression::wildcardToRegularExpression(key));
+             const auto list = searchItemsJob->items();
+             QRegularExpressionMatch match;
+             for (KSecretsService::SearchCollectionItemsJob::Item item : list) {
+diff --git a/src/runtime/kwalletd/backend/kwalletbackend.cc b/src/runtime/kwalletd/backend/kwalletbackend.cc
+index 3681724..f30f887 100644
+--- a/src/runtime/kwalletd/backend/kwalletbackend.cc
++++ b/src/runtime/kwalletd/backend/kwalletbackend.cc
+@@ -530,8 +530,7 @@ QList<Entry *> Backend::readEntryList(const QString &key)
+         return rc;
+     }
+ 
+-    QRegularExpression re(QRegularExpression::anchoredPattern(
+-                           QRegularExpression::wildcardToRegularExpression(key)));
++    QRegularExpression re(QRegularExpression::wildcardToRegularExpression(key));
+ 
+     const EntryMap &map = _entries[_folder];
+     QRegularExpressionMatch match;
+-- 
+cgit v1.1
+

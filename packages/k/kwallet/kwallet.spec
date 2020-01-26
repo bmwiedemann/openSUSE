@@ -36,6 +36,10 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/kwallet-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM - https://phabricator.kde.org/D26707 - Fix QRegularExpression::wildcardToRegularExpression() usage
+Patch1:         d4980443755f5df63b6a13f662df169797f2684f.patch
+# PATCH-FIX-UPSTREAM - https://phabricator.kde.org/D26734 - Revert readEntryList() to use QRegExp::Wildcard
+Patch2:         02ab54ea6fe8b61a4e474070061d6e41aebc71a0.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
@@ -136,6 +140,7 @@ Development files.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build
