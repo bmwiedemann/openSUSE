@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.4.0.2
+Version:        6.4.0.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -129,7 +129,7 @@ BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
 # genbrk binary is required
 BuildRequires:  icu
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  junit4
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
@@ -575,7 +575,7 @@ Requires:       gcc-c++
 Requires:       make
 Requires:       ucpp
 Requires:       zip
-Recommends:     java-devel
+Recommends:     java-devel >= 1.8
 Provides:       libreoffice-ure-devel = %{version}
 Obsoletes:      libreoffice-ure-devel < %{version}
 
@@ -634,10 +634,10 @@ Requires:       libreoffice-pyuno = %{version}
 Requires(pre):  libreoffice = %{version}
 # the watchWindow extension is written in java
 %ifarch %{ix86}
-Requires:       jre-32 >= 1.6
+Requires:       jre-32 >= 1.8
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 1.6
+Requires:       jre-64 >= 1.8
 %endif
 
 %description calc-extensions
@@ -654,10 +654,10 @@ Requires:       libreoffice-writer = %{version}
 Requires(pre):  libreoffice = %{version}
 # the wiki extension is written in java
 %ifarch %{ix86}
-Requires:       jre-32 >= 1.6
+Requires:       jre-32 >= 1.8
 %endif
 %ifarch x86_64 aarch64 ppc64le
-Requires:       jre-64 >= 1.6
+Requires:       jre-64 >= 1.8
 %endif
 
 %description writer-extensions
