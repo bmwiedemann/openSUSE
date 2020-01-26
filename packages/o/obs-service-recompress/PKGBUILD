@@ -1,12 +1,12 @@
 pkgname=obs-service-recompress
-pkgver=0.3.1+git20170704.59bf231
+pkgver=0.4.0+git20200123.696d003
 pkgrel=0
 pkgdesc="An OBS source service: Recompress files"
 arch=('i686' 'x86_64')
 url="https://www.github.com/openSUSE/obs-service-recompress"
 license=('GPL-2.0+' 'GPL-2.0')
 groups=('base-devel')
-depends=('python')
+depends=('gzip', 'bzip2', 'xz', 'zstd')
 source=(obs-service-recompress-${pkgver}.tar.gz)
 md5sums=('SKIP')
 
