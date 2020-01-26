@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 23 16:27:48 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.1.2
+  + XML: Improved format of written XML documents, simplified code.
+  + DB: Fixed a bug in GWEN_DB_WriteVarValueToBuffer()
+    Was not handling "name" as full path.
+  + Fixed a bug (created files had no file access rights: #178).
+
+-------------------------------------------------------------------
 Fri Jan 17 13:16:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Temporarily change the source URL until the tag is sync'ed to the github mirror.

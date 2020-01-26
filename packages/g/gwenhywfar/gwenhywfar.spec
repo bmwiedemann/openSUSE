@@ -24,14 +24,13 @@
 %define _name gwenhywfar
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
-Source:         https://www.aquamaniac.de/rdm/attachments/download/233/%{name}-%{version}.tar.gz
-#Source:        https://github.com/aqbanking/gwenhywfar/archive/%%{_version}.tar.gz#/%%{_name}-%%{_version}.tar.gz
+Source:         https://github.com/aqbanking/gwenhywfar/archive/%{_version}.tar.gz#/%{_name}-%{_version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # For doc graphs

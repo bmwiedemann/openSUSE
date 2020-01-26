@@ -859,4 +859,12 @@
     <comment>Update to 5.1.1</comment>
     <requestid>765275</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c8e2c4c8c4df7a4116b1b41036a59dbe</srcmd5>
+    <version>5.1.2</version>
+    <time>1580081084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767521</requestid>
+  </revision>
 </revisionlist>
