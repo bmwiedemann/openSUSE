@@ -182,4 +182,12 @@ http://forums.opensuse.org/showthread.php?t=490812 (forwarded request 201415 fro
     <comment>Revert commit, fix boo#1069789 I hope (forwarded request 596505 from iznogood)</comment>
     <requestid>596947</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>62b4e882412d5a3de966f543f5100c1d</srcmd5>
+    <version>2.4.3</version>
+    <time>1580080987</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767348</requestid>
+  </revision>
 </revisionlist>
