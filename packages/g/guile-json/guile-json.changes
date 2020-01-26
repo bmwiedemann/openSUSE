@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 13 21:51:46 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Make guile-json-rpmlintrc compatible with Guile 3.0 
+
+-------------------------------------------------------------------
+Mon Sep 16 08:09:32 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 3.2.0:
+  * Fix writing empty objects to JSON (e.g. (scm->json-string '())).
+  * Complex numbers, inf and nan are not allowed anymore as valid numbers
+    when building JSON. 
+
+-------------------------------------------------------------------
+Mon Jul 22 10:46:31 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 3.1.0 (changes since 1.2.0):
+  * Breaking compability to version 1.x and 2.x
+  * JSON objects are now defined as alists (instead of hash tables)
+    and JSON arrays are now defined as vectors (instead of lists).
+    Both of these changes are mainly to use types that have read syntax.
+    This will simplify things for the user when defining JSON objects 
+    which is probably the most common case. 
+  * Added unit tests.
+  * scm->json and scm->json-string now support an additional key
+    argument #:unicode.
+- filter more messages in rpmlintrc
+- require guile >= 2.0.10 because it implements srfi-43
+- run test suite
+
+-------------------------------------------------------------------
 Fri Aug 24 12:07:57 UTC 2018 - jbrielmaier@suse.de
 
 - bump to 1.2.0

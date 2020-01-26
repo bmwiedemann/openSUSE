@@ -61,4 +61,12 @@ JSON module for guile language, dependency for Guix</comment>
     <comment></comment>
     <requestid>631507</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0aeedf8bb6205aeab67a39a3fe1d4621</srcmd5>
+    <version>3.2.0</version>
+    <time>1580080961</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>767040</requestid>
+  </revision>
 </revisionlist>

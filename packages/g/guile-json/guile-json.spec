@@ -1,7 +1,7 @@
 #
 # spec file for package guile-json
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           guile-json
-Version:        1.2.0
+Version:        3.2.0
 Release:        0
 Summary:        JSON module for Guile
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Other
-Url:            https://savannah.nongnu.org/projects/guile-json/
+URL:            https://savannah.nongnu.org/projects/guile-json/
 Source0:        http://download.savannah.gnu.org/releases/guile-json/%{name}-%{version}.tar.gz
 Source1:        http://download.savannah.gnu.org/releases/guile-json/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.nongnu.org/people/viewgpg.php?user_id=11331#/%{name}.keyring
 Source1000:     guile-json-rpmlintrc
-BuildRequires:  guile-devel >= 2.0.0
-Requires:       guile >= 2.0.0
+BuildRequires:  guile-devel >= 2.0.10
+Requires:       guile >= 2.0.10
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,6 +47,9 @@ are the main features:
 %build
 %configure
 make %{?_smp_mflags}
+
+%check
+make %{?_smp_mflags} check
 
 %install
 make install %{_smp_mflags} DESTDIR=%{buildroot}
