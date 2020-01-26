@@ -227,4 +227,12 @@
     <comment>spec-cleaner (forwarded request 581193 from dimstar)</comment>
     <requestid>582694</requestid>
   </revision>
+  <revision rev="32" vrev="13">
+    <srcmd5>ad06b876997e04f11490c5aca66b83a0</srcmd5>
+    <version>0.1.12</version>
+    <time>1580081063</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767387</requestid>
+  </revision>
 </revisionlist>

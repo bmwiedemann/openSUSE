@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig(dbus-sharp-glib-1.0)
 Requires:       dbus-1-glib >= %{dbus_min_version}
 Requires:       dbus-1-x11 >= %{dbus_min_version}
 Requires:       mono-data-sqlite
-Recommends:     %{name}-lang
 Provides:       tasky = %{version}
 Obsoletes:      tasky < %{version}
 
