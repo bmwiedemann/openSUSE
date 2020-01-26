@@ -25,7 +25,6 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
 Source:         http://downloads.sourceforge.net/project/grisbi/grisbi%20stable/1.0.x/%{name}-%{version}.tar.bz2
-
 BuildRequires:  cunit-devel
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -66,6 +65,18 @@ rm %{buildroot}%{_datadir}/mime-info/grisbi.{keys,mime}
 
 %check
 make %{?_smp_mflags} check
+
+%if 0%{?suse_version} < 1330
+%post
+%desktop_database_post
+%icon_theme_cache_post
+%mime_database_post
+
+%postun
+%desktop_database_postun
+%icon_theme_cache_postun
+%mime_database_postun
+%endif
 
 %files
 %license COPYING

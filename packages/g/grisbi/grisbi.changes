@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 14 01:14:50 UTC 2018 - luc14n0@linuxmail.org
+
+- Add conditionalized post(un) scriptlets to run desktop_database,
+  icon_theme_cache and mime_database for suse_version < 1330.
+
+-------------------------------------------------------------------
 Tue Jun 12 16:14:26 UTC 2018 - bjorn.lie@gmail.com
 
 - Disable optional pkgconfig(libgoffice-0.8) BuildRequires, we do
