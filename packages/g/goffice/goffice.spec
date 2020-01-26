@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(pango) >= 1.24.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.24.0
-Recommends:     %{name}-lang
 
 %description
 GOffice is a GLib/GTK+ set of document-centric objects and utilities.
@@ -60,7 +59,6 @@ save documents, undo and redo.
 %package -n libgoffice-0_10-10
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # To make lang package installable
 Provides:       %{name} = %{version}
 
