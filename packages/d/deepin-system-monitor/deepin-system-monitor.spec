@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-system-monitor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,14 @@
 Name:           deepin-system-monitor
 Version:        1.5.2
 Release:        0
-Summary:        A more user-friendly system monitor
+Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
 Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-appdata.xml
+# PATCH-FIX-UPSTEAM Fix-redefinition-error.patch hillwood@opensuse.org - Fix redefinition of 'struct std::hash<QString>' error
+Patch0:         Fix-redefinition-error.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  dtkcore
@@ -59,6 +61,7 @@ Deepin Desktop.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i 's/lrelease/lrelease-qt5/g' translations/translate_generation.sh
 
 %build
@@ -74,7 +77,8 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
 %defattr(-,root,root,-)
-%doc README.md LICENSE
+%doc README.md CHANGELOG.md
+%license LICENSE COPYING
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
