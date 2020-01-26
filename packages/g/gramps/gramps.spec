@@ -42,7 +42,6 @@ Requires:       python3-cairo
 Requires:       python3-gobject >= 3.12.0
 Requires:       python3-gobject-Gdk
 Requires:       xdg-utils
-Recommends:     %{name}-lang
 Recommends:     graphviz
 Recommends:     ghostscript
 Recommends:     python3-Pillow

@@ -500,4 +500,12 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment></comment>
     <requestid>766512</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>448c99191447e12330c1dd92d13663c4</srcmd5>
+    <version>5.1.2</version>
+    <time>1580081031</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767368</requestid>
+  </revision>
 </revisionlist>
