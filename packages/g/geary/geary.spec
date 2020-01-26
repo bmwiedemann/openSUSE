@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(sqlite3) >= 3.7.4
 BuildRequires:  pkgconfig(vapigen) >= 0.22.1
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.10.0
 BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.10.0
-Recommends:     %{name}-lang
 
 %description
 Geary is a email reader for GNOME.
