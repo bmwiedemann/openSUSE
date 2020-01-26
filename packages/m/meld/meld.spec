@@ -43,7 +43,6 @@ BuildRequires:  update-desktop-files
 Requires:       patch
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
-Recommends:     %{name}-lang
 # Suggest various vcs that meld can handle
 Suggests:       bzr
 Suggests:       cvs
