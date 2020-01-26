@@ -748,4 +748,12 @@
     <comment></comment>
     <requestid>761230</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>b62025c9f2c643ef1f46bc822552095e</srcmd5>
+    <version>3.4.4</version>
+    <time>1580081057</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767384</requestid>
+  </revision>
 </revisionlist>

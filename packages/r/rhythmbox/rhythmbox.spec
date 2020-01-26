@@ -64,7 +64,6 @@ Requires:       gstreamer-plugins-good
 # For python plugins
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-ugly
 Recommends:     media-player-info
 
