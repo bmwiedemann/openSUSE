@@ -1,7 +1,7 @@
 #
 # spec file for package mstflint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define extra_version -5
+%define extra_version -2
 
 Name:           mstflint
-Version:        4.11.0
+Version:        4.13.3
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
 License:        GPL-2.0-only OR BSD-2-Clause
 Group:          System/Console
-Url:            http://www.openfabrics.org
+URL:            http://www.openfabrics.org
 Obsoletes:      mstflint-devel < %{version}
 Source:         https://github.com/Mellanox/mstflint/releases/download/v%{version}%{extra_version}/mstflint-%{version}%{extra_version}.tar.gz
 Patch1:         Remove-date-time-info-from-build.patch
@@ -62,6 +62,7 @@ make %{?_smp_mflags} CFLAGS="%{optflags} -I. -fno-exceptions"
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 rm -rf %{buildroot}%{_includedir}/mstflint
 rm -rf  %{buildroot}%{_libdir}/mstflint/*.a
+rm -rf  %{buildroot}%{_libdir}/*.a
 rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 
 %files
@@ -78,6 +79,7 @@ rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 %{_bindir}/mstmwrite
 %{_bindir}/mstprivhost
 %{_bindir}/mstregdump
+%{_bindir}/mstresourcedump
 %{_bindir}/mstvpd
 %{_bindir}/mstfwtrace
 %{_mandir}/man1/*.1%{ext_man}
