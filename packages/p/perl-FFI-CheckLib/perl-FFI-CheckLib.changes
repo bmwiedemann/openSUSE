@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 23 03:08:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.26      2020-01-22 05:54:02 -0700
+    - Name check on alien option is always done, even if the Alien is already
+      loaded (gh#21)
+    - Remove dependency on Module::Load (gh#21)
+
+-------------------------------------------------------------------
 Tue Nov 19 10:34:38 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update spec file
