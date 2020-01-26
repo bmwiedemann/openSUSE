@@ -51,9 +51,9 @@ Requires:       libpcsclite1 = %{version}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  libudev-devel
 BuildRequires:  polkit-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libudev)
 %{?systemd_requires}
 
 %description

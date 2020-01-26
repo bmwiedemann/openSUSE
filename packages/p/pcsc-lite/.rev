@@ -634,4 +634,12 @@
     <comment></comment>
     <requestid>762879</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>532062d769d9933620d460d3393e0656</srcmd5>
+    <version>1.8.26</version>
+    <time>1580080884</time>
+    <user>dimstar_suse</user>
+    <comment>help build chain</comment>
+    <requestid>766600</requestid>
+  </revision>
 </revisionlist>
