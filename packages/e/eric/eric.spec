@@ -1,7 +1,8 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2010 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +18,16 @@
 
 
 %define distname eric6
+%define distver  20.01
 
 Name:           eric
-Version:        19.12
+Version:        20.1
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://eric-ide.python-projects.org/
-Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/%{version}/%{distname}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/%{distver}/%{distname}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python3-qscintilla-qt5
 BuildRequires:  python3-qt5

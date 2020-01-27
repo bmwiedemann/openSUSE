@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 26 19:00:13 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix source URL
+
+-------------------------------------------------------------------
+Sun Jan 26 13:32:22 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 20.01:
+  - bug fixes
+  - MicroPython
+    -- added entries to the ESP menu to show the Chip ID, Flash ID and
+       MAC Address
+    -- added entries to the ESP menu to backup and restore a firmware
+  - Web Browser
+    -- added support for viewing PDF documents inside the web browser
+       (requires PyQt/Qt 5.13 or better)
+
+-------------------------------------------------------------------
 Sun Dec  8 10:16:03 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Update ro version 19.12
+- Update to version 19.12
    -  bug fixes
    -  MicroPython
      -  added a menu entry to show the local and device time side-by-side
