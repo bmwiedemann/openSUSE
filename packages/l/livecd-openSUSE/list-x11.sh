@@ -1,4 +1,5 @@
 buildignore NetworkManager-lang
+buildignore NetworkManager-applet-lang
 buildignore PackageKit
 buildignore samba-libs
 buildignore release-notes-openSUSE
@@ -17,6 +18,9 @@ buildignore evince-lang
 buildignore hexchat-lang
 buildignore nano-lang
 buildignore zenity-lang
+buildignore gsettings-desktop-schema-lang
+buildignore gvfs-lang
+buildignore libgphoto2-6-lang
 buildignore alsa
 buildignore alsa-firmware
 buildignore alsa-plugins

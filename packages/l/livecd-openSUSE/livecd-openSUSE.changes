@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:19:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Rescue CD size limitation: block more -lang files
+  (NetworkManager-applet, gvfs, gsettings-desktop-schemas and
+  libgphoto2-6).
+
+-------------------------------------------------------------------
 Fri Jan 24 08:53:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Rescue CD size limitation: block NetworkManager-lang.
