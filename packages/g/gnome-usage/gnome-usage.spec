@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.10
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
-Recommends:     %{name}-lang
 
 %description
 GNOME Usage is a program to view information about the use of system
