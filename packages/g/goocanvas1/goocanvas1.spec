@@ -51,7 +51,6 @@ object into a canvas item or model).
 %package -n libgoocanvas3
 Summary:        A cairo-based canvas widget for GTK+
 Group:          System/Libraries
-Recommends:     libgoocanvas3-lang
 Provides:       goocanvas = %{version}
 Obsoletes:      goocanvas < %{version}
 
