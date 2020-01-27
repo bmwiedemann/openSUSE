@@ -1,0 +1,70 @@
+diff --git a/package/CMakeLists.txt b/package/CMakeLists.txt
+index 43476de..70fd54e 100644
+--- a/package/CMakeLists.txt
++++ b/package/CMakeLists.txt
+@@ -2,14 +2,11 @@
+ find_program(LSB_RELEASE_EXECUTABLE NAMES lsb_release)
+ 
+ if (LSB_RELEASE_EXECUTABLE)
+-    execute_process(COMMAND lsb_release -c -s OUTPUT_VARIABLE CODENAME        OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    execute_process(COMMAND lsb_release -i -s OUTPUT_VARIABLE DISTRIBUTOR_ID  OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    execute_process(COMMAND lsb_release -r -s OUTPUT_VARIABLE RELEASE         OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+     # default to debian...
+     string(TOLOWER ${DISTRIBUTOR_ID} DISTRIBUTOR_ID)
+     if (NOT CPACK_GENERATOR)
+-        if (DISTRIBUTOR_ID STREQUAL "fedora")
++        if (DISTRIBUTOR_ID STREQUAL "opensuse")
+             set(CPACK_GENERATOR "RPM")
+         else()
+             set(CPACK_GENERATOR "DEB")
+@@ -31,7 +28,7 @@ if (LSB_RELEASE_EXECUTABLE)
+     if (${CMAKE_SIZEOF_VOID_P} EQUAL 4)
+         set(CPACK_SYSTEM_NAME "i386")
+     else()
+-        if (DISTRIBUTOR_ID STREQUAL "fedora")
++        if (DISTRIBUTOR_ID STREQUAL "opensuse")
+             set(CPACK_SYSTEM_NAME "x86_64")
+         else()
+             set(CPACK_SYSTEM_NAME "amd64")
+@@ -86,10 +83,6 @@ if (LSB_RELEASE_EXECUTABLE)
+         set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE   ${PROJECT_SOURCE_DIR}/package/postinst)
+         set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE ${PROJECT_SOURCE_DIR}/package/postrm)
+ 
+-        install(FILES ${PROJECT_SOURCE_DIR}/README.md DESTINATION /usr/share/doc/${CPACK_PACKAGE_NAME})
+-        install(FILES ${PROJECT_SOURCE_DIR}/AUTHORS   DESTINATION /usr/share/doc/${CPACK_PACKAGE_NAME})
+-        install(FILES ${PROJECT_SOURCE_DIR}/COPYING   DESTINATION /usr/share/licences/${CPACK_PACKAGE_NAME})
+-
+         list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION /usr/share/applications)
+         list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION /usr/share/metainfo)
+         list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION /usr/share/licences)
+diff --git a/src/radiotray-ng/extras/scripts/rt2rtng b/src/radiotray-ng/extras/scripts/rt2rtng
+index 2bf53ba..ab8536c 100755
+--- a/src/radiotray-ng/extras/scripts/rt2rtng
++++ b/src/radiotray-ng/extras/scripts/rt2rtng
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # Copyright 2017-2019 Edward G. Bruck <ed.bruck1@gmail.com>
+ #
+diff --git a/src/radiotray-ng/extras/scripts/rtng-search b/src/radiotray-ng/extras/scripts/rtng-search
+index 21febab..1751956 100755
+--- a/src/radiotray-ng/extras/scripts/rtng-search
++++ b/src/radiotray-ng/extras/scripts/rtng-search
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # Copyright 2019 Edward G. Bruck <ed.bruck1@gmail.com>
+ #
+diff --git a/src/radiotray-ng/extras/scripts/rtng2xml b/src/radiotray-ng/extras/scripts/rtng2xml
+index 2fefb24..591bdd9 100755
+--- a/src/radiotray-ng/extras/scripts/rtng2xml
++++ b/src/radiotray-ng/extras/scripts/rtng2xml
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # Copyright 2019 Edward G. Bruck <ed.bruck1@gmail.com>
+ #
