@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(gusb) >= 0.2.7
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.10
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(udisks2)
-Recommends:     %{name}-lang
 
 %description
 GNOME MultiWriter can be used to write an ISO file to multiple USB devices
