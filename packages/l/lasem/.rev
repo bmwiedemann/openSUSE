@@ -77,4 +77,12 @@
     <comment>New stable rel (forwarded request 705493 from iznogood)</comment>
     <requestid>705585</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f52a0ea37519ea34846b4f53aa10162f</srcmd5>
+    <version>0.4.4</version>
+    <time>1580152562</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767184 from dimstar)</comment>
+    <requestid>767447</requestid>
+  </revision>
 </revisionlist>

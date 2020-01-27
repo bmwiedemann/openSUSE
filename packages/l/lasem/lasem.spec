@@ -48,7 +48,6 @@ math or an SVG file to either PNG, PDF or an SVG image.
 %package -n liblasem-0_4-4
 Summary:        MathML and SVG rendering library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 
 %description -n liblasem-0_4-4
 Lasem is a library for rendering SVG and MathML, implementing a DOM like API.
