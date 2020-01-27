@@ -28,7 +28,6 @@ Source0:        https://download.gnome.org/sources/gnome-getting-started-docs/3.
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
 Requires:       yelp
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description

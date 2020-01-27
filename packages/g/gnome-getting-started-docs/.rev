@@ -184,4 +184,12 @@
   + Updated translations. (forwarded request 743599 from iznogood)</comment>
     <requestid>743770</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>bfc10d61821b39ef2cc44edef11138c7</srcmd5>
+    <version>3.34.1</version>
+    <time>1580152447</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767133 from dimstar)</comment>
+    <requestid>767401</requestid>
+  </revision>
 </revisionlist>
