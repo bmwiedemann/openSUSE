@@ -46,7 +46,6 @@ BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libical) >= 3.0.5
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.17
 BuildRequires:  pkgconfig(rest-0.7)
-Recommends:     %{name}-lang
 
 %description
 GNOME To Do is a application to manage your personal tasks. It
