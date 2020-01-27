@@ -29,9 +29,8 @@
 #   export USE_VENDORED_LIBEV="no"
 #   %endif
 # ## used by gem2rpm
-# :post_install: |-
-#   # delete custom files here or do other fancy stuff
-#   install -D -m 0644 %{S:1} %{buildroot}%{_bindir}/gem2rpm-opensuse
+:post_install: |-
+  find %{buildroot}/%{_libdir}/ruby/gems \( -name .dockerignore -o -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name .yardopts -o -name .yardopts_guide -o -name .yardopts_i18n -o -name .github \) | xargs rm -rf
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)

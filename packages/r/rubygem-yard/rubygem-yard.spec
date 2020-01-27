@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-yard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-yard
-Version:        0.9.20
+Version:        0.9.24
 Release:        0
 %define mod_name yard
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://yardoc.org
+URL:            http://yardoc.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 # MANUAL
@@ -63,6 +63,9 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
   --symlink-binaries \
   --doc-files="CHANGELOG.md LEGAL LICENSE README.md" \
   -f
+# MANUAL
+find %{buildroot}/%{_libdir}/ruby/gems \( -name .dockerignore -o -name .gitignore -o -name .travis.yml -o -name .rspec -o -name .rubocop.yml -o -name .yardopts -o -name .yardopts_guide -o -name .yardopts_i18n -o -name .github \) | xargs rm -rf
+# /MANUAL
 
 %gem_packages
 
