@@ -1,0 +1,110 @@
+From 7d7dd2334fc58af5d9859475d86d30b65944b53e Mon Sep 17 00:00:00 2001
+From: Andy Wingo <wingo@igalia.com>
+Date: Mon, 15 Oct 2018 16:45:29 +0200
+Subject: Use stdint types
+
+* guile-cairo/guile-cairo-vector-types.c (scm_from_cairo_text_clusters):
+(scm_fill_cairo_text_clusters): Use wchar_t.
+* guile-cairo/guile-cairo.c: Use uint8_t and uint64_t.  Include string.h.
+---
+ guile-cairo/guile-cairo-vector-types.c |  6 +++---
+ guile-cairo/guile-cairo.c              | 16 +++++++++-------
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/guile-cairo/guile-cairo-vector-types.c b/guile-cairo/guile-cairo-vector-types.c
+index 9545ee7..9be9928 100644
+--- a/guile-cairo/guile-cairo-vector-types.c
++++ b/guile-cairo/guile-cairo-vector-types.c
+@@ -1,5 +1,5 @@
+ /* guile-cairo
+- * Copyright (C) 2007, 2011 Andy Wingo <wingo at pobox dot com>
++ * Copyright (C) 2007, 2011, 2018 Andy Wingo <wingo at pobox dot com>
+  *
+  * guile-cairo-vector-types.c: Cairo for Guile
+  *
+@@ -233,7 +233,7 @@ scm_from_cairo_text_clusters (SCM str, cairo_text_cluster_t *clusters,
+ #if SCM_NEEDS_COMPAT (2, 0, 0)
+           num_bytes--;
+ #else
+-          scm_t_wchar c = SCM_CHAR (scm_c_string_ref (str, n++));
++          wchar_t c = SCM_CHAR (scm_c_string_ref (str, n++));
+           
+           if (c < 0x80)
+             num_bytes -= 1;
+@@ -290,7 +290,7 @@ scm_fill_cairo_text_clusters (SCM str, SCM scm,
+ #if SCM_NEEDS_COMPAT (2, 0, 0)
+           num_bytes++;
+ #else
+-          scm_t_wchar c = SCM_CHAR (scm_c_string_ref (str, n++));
++          wchar_t c = SCM_CHAR (scm_c_string_ref (str, n++));
+           
+           if (c < 0x80)
+             num_bytes += 1;
+diff --git a/guile-cairo/guile-cairo.c b/guile-cairo/guile-cairo.c
+index ae97f3d..4136915 100644
+--- a/guile-cairo/guile-cairo.c
++++ b/guile-cairo/guile-cairo.c
+@@ -1,5 +1,5 @@
+ /* guile-cairo
+- * Copyright (C) 2007, 2011, 2012, 2014 Andy Wingo <wingo at pobox dot com>
++ * Copyright (C) 2007, 2011, 2012, 2014, 2018 Andy Wingo <wingo at pobox dot com>
+  *
+  * guile-cairo.c: Cairo for Guile
+  *
+@@ -18,6 +18,8 @@
+  * <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <string.h>
++
+ #include <libguile.h>
+ 
+ #include <cairo.h>
+@@ -2429,13 +2431,13 @@ SCM_DEFINE_PUBLIC (scm_cairo_image_surface_create_for_data, "cairo-image-surface
+                    "")
+ {
+   size_t data_len;
+-  scm_t_uint8 *data_ptr;
++  uint8_t *data_ptr;
+   cairo_format_t iformat;
+   int iwidth, iheight, istride;
+   cairo_surface_t *surf;
+ 
+   data_len = scm_c_bytevector_length (data);
+-  data_ptr = (scm_t_uint8 *) SCM_BYTEVECTOR_CONTENTS (data);
++  data_ptr = (uint8_t *) SCM_BYTEVECTOR_CONTENTS (data);
+   iformat = scm_to_cairo_format (format);
+   iwidth = scm_to_int (width);
+   iheight = scm_to_int (height);
+@@ -2470,8 +2472,8 @@ SCM_DEFINE_PUBLIC (scm_cairo_image_surface_create_for_data, "cairo-image-surface
+                             (iformat, iwidth))),
+                SCM_EOL);
+ 
+-  if ((scm_t_uint64) data_len
+-      != ((scm_t_uint64) iheight) * ((scm_t_uint64) istride))
++  if ((uint64_t) data_len
++      != ((uint64_t) iheight) * ((uint64_t) istride))
+     scm_error (scm_from_utf8_symbol ("cairo-error"),
+                NULL,
+                "Data side and image dimensions do not match",
+@@ -2529,7 +2531,7 @@ SCM_DEFINE_PUBLIC (scm_cairo_image_surface_set_data, "cairo-image-surface-set-da
+   size_t len;
+   unsigned char *ptr;
+   size_t data_len;
+-  scm_t_uint8 *data_ptr;
++  uint8_t *data_ptr;
+ 
+   csurf = scm_to_cairo_surface (surf);
+   height = cairo_image_surface_get_height (csurf);
+@@ -2544,7 +2546,7 @@ SCM_DEFINE_PUBLIC (scm_cairo_image_surface_set_data, "cairo-image-surface-set-da
+                SCM_EOL, SCM_EOL);
+   
+   data_len = scm_c_bytevector_length (data);
+-  data_ptr = (scm_t_uint8 *) SCM_BYTEVECTOR_CONTENTS (data);
++  data_ptr = (uint8_t *) SCM_BYTEVECTOR_CONTENTS (data);
+ 
+   len = ((size_t) height) * ((size_t) stride);
+   if (len != data_len)
+-- 
+cgit v1.2.1
+

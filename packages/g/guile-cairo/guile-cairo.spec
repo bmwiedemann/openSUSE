@@ -1,7 +1,7 @@
 #
 # spec file for package guile-cairo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Development/Libraries/Other
 URL:            https://www.nongnu.org/guile-cairo/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}.tar.gz.sig
+# PATCH-FIX-UPSTREAM: Use stdint types -- 7d7dd23
+Patch0:         use-stdint-types.patch
 BuildRequires:  cairo-devel >= 1.10.0
 BuildRequires:  guile-devel
 Requires(post): %{install_info_prereq}
@@ -54,6 +56,7 @@ Files required to build software using Guile Cairo bindings.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
