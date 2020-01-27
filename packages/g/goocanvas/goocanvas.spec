@@ -59,7 +59,6 @@ applications that want to make use of libgoocanvas.
 Summary:        A Cairo-based canvas widget for GTK+
 # Needed to make lang package installable
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
 %description -n libgoocanvas-2_0-9
