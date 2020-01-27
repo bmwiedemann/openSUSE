@@ -123,7 +123,6 @@ This package provides graphical tools:
 %package 5_0-4
 Summary:        GNU Data Access (GDA) Library
 Group:          System/Libraries
-Recommends:     %{name}-5_0-4-lang
 Recommends:     %{name}-5_0-bdb = %{version}
 
 %description 5_0-4

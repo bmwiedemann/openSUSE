@@ -687,4 +687,12 @@ file is not available on the system.
     <comment></comment>
     <requestid>732879</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>eeda93231ee642d9dd91bf8b4e138833</srcmd5>
+    <version>5.2.9</version>
+    <time>1580152598</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767187 from dimstar)</comment>
+    <requestid>767449</requestid>
+  </revision>
 </revisionlist>
