@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(cairo) >= 1.4
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
-Recommends:     %{name}-lang
 
 %description
 Hitori is played with a grid of squares or cells, and each cell contains a number.
