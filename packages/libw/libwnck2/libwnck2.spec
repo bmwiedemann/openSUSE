@@ -46,7 +46,6 @@ write task lists, pagers, and similar GNOME programs.
 %package -n libwnck-1-22
 Summary:        Window Navigator Construction Kit (Library Package)
 Group:          Development/Libraries/GNOME
-Recommends:     %{name}-lang
 # To make lang package installable
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
