@@ -85,4 +85,12 @@
     <comment>Disregard the pom parent</comment>
     <requestid>689050</requestid>
   </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>b0f08245df91dfc6fc340a99d85107a4</srcmd5>
+    <version>2.6</version>
+    <time>1580152601</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767556</requestid>
+  </revision>
 </revisionlist>

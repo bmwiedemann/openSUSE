@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-lang
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,12 +30,15 @@ Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{sho
 Patch0:         fix_StopWatchTest_for_slow_systems.patch
 Patch1:         0002-Fix-FastDateFormat-for-Java-7-behaviour.patch
 BuildRequires:  ant
-BuildRequires:  ant-junit
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 # Java 8 is the last version that can build with source and target level 1.4
 BuildConflicts: java-devel >= 1.9
+BuildConflicts: java-headless >= 1.9
+# Avoid building with OpenJ9 on supported platforms; to prevent build cycle
+BuildConflicts: java-devel-openj9
+BuildConflicts: java-headless-openj9
 Provides:       %{short_name} = %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
@@ -72,12 +75,12 @@ sed -i 's/\r//' *.txt *.html
 %build
 export OPT_JAR_LIST=`cat %{_sysconfdir}/ant.d/junit`
 export CLASSPATH=
-ant \
+%{ant} \
     -Dcompile.source=1.4 -Dcompile.target=1.4 \
     -Djunit.jar=$(build-classpath junit4) \
     -Dfinal.name=%{short_name} \
     -Djdk.javadoc=%{_javadocdir}/java \
-    test dist
+    jar javadoc
 
 %install
 # jars
