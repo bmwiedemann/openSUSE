@@ -1,0 +1,11 @@
+diff -urEbw liblxqt-0.14.1/lxqtpowermanager.cpp liblxqt-0.14.1.new/lxqtpowermanager.cpp
+--- liblxqt-0.14.1/lxqtpowermanager.cpp	2019-02-24 01:13:58.000000000 +0100
++++ liblxqt-0.14.1.new/lxqtpowermanager.cpp	2020-01-27 10:41:19.505077141 +0100
+@@ -32,6 +32,7 @@
+ #include <QApplication>
+ #include <QDesktopWidget>
+ #include <QtDebug>
++#include <QFile>
+ #include "lxqttranslator.h"
+ #include "lxqtglobals.h"
+ #include "lxqtsettings.h"

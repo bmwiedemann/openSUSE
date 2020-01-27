@@ -252,4 +252,13 @@
 - Move translation from lxqt-l10n into package</comment>
     <requestid>678875</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bd33f51905c4e199465ca9dc21aa207d</srcmd5>
+    <version>0.14.1</version>
+    <time>1580152678</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1161365: Add includes for QFile
+- Add liblxqt-0.14.1-fix-qt-5.14.patch</comment>
+    <requestid>767629</requestid>
+  </revision>
 </revisionlist>

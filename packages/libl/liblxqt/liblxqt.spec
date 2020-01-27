@@ -1,7 +1,7 @@
 #
 # spec file for package liblxqt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,6 +26,7 @@ Url:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         liblxqt-0.14.1-fix-qt-5.14.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -76,6 +77,7 @@ applications that want to make use of liblxqt.
 
 %prep
 %setup -q -n liblxqt-%{version}
+%patch0 -p1
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
