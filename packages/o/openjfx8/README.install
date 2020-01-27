@@ -1,0 +1,18 @@
+This package installs JavaFX in a JDK/JRE-independent way. It is up to each
+JDK/JRE to make use of it correctly. In general, you want to symlink the
+shared object and the jar into somehwere where the JDK/JRE can find it.
+
+The process looks something like this:
+openjfx_dir=/usr/lib/jvm/openjfx8
+
+jdk_files=$(find $openjfx_dir/{bin,lib} -type f -print)
+for file in $jdk_files; do
+  relative=${file#$openjfx_dir/}
+  ln -sfv "$openjfx_dir/$relative" "/usr/lib/jvm/java/$relative"
+done
+
+jre_files=$(find $openjfx_dir/rt -type f -print)
+for file in $jre_files; do
+  relative=${file#$openjfx_dir/rt/}
+  ln -sfv "$openjfx_dir/rt/$relative" "/usr/lib/jvm/jre/$relative"
+done

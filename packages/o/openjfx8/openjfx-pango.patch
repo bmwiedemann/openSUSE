@@ -1,0 +1,12 @@
+diff -urEbwB rt-8u202-b07/modules/graphics/src/main/native-font/pango.c rt-8u202-b07.new/modules/graphics/src/main/native-font/pango.c
+--- rt-8u202-b07/modules/graphics/src/main/native-font/pango.c	2018-12-10 17:30:22.000000000 +0100
++++ rt-8u202-b07.new/modules/graphics/src/main/native-font/pango.c	2019-11-21 10:20:04.857402219 +0100
+@@ -225,7 +225,7 @@
+         if (text) {
+ //            rc = (jboolean)FcConfigAppFontAddFile(arg0, text);
+             if (fp) {
+-                rc = (jboolean)((jboolean (*)(void *, const char *))fp)(arg0, text);
++                rc = (jboolean)((jboolean (*)(void *, const char *))fp)((void *)arg0, text);
+             }
+             (*env)->ReleaseStringUTFChars(env, arg1, text);
+         }
