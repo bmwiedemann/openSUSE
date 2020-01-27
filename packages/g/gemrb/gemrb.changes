@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:50:59 UTC 2020 - Jaka Kranjc <registracije+factory@lynxlynx.info>
+
+- update to 0.8.6
+- use the main renderer while the OpenGL one remains experimental
+* new features:
+   - more audio, especially in bg1 and pst
+   - sndchann.2da support
+   - using bags in stores, NPC breaking points, worldmap travel in pst
+* improved features:
+   - better megamod and detectable spells compatibility
+   - iwd2 and pst levelup, infopoints, gui feedback, dualclassing, ranges
+   - verbal constants, (tobex) opcodes, falling, paperdolls, projectiles
+   - pst area animations, multipalette animations
+   - bugfixes
+
+-------------------------------------------------------------------
 Fri Aug 31 06:30:59 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - use OpenGL GLVND driver

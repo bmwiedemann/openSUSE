@@ -31,4 +31,24 @@
     <comment></comment>
     <requestid>632862</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a0599bda7583158d42c93ed4fe64e48</srcmd5>
+    <version>0.8.6</version>
+    <time>1580152749</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.6
+- use the main renderer while the OpenGL one remains experimental
+* new features:
+   - more audio, especially in bg1 and pst
+   - sndchann.2da support
+   - using bags in stores, NPC breaking points, worldmap travel in pst
+* improved features:
+   - better megamod and detectable spells compatibility
+   - iwd2 and pst levelup, infopoints, gui feedback, dualclassing, ranges
+   - verbal constants, (tobex) opcodes, falling, paperdolls, projectiles
+   - pst area animations, multipalette animations
+   - bugfixes
+</comment>
+    <requestid>767817</requestid>
+  </revision>
 </revisionlist>

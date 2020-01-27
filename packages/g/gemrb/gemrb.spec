@@ -1,7 +1,7 @@
 #
 # spec file for package gemrb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gemrb
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Game engine made with pre-rendered background
 License:        GPL-2.0-or-later
@@ -33,7 +33,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glew)
+# reenable once OpenGL rendering stops being experimental (same for the cmake flags below)
+# BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(openal)
@@ -60,8 +61,8 @@ rm -Rf CMakeCache.txt CMakeFiles/
     -DPLUGIN_DIR=%{_libdir}/gemrb/plugins \
     -DDISABLE_WERROR=1 \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL="true" \
-    -DOPENGL_BACKEND=OpenGL \
-    -DOpenGL_GL_PREFERENCE=GLVND
+#    -DOPENGL_BACKEND=OpenGL \
+#    -DOpenGL_GL_PREFERENCE=GLVND
 %make_jobs
 
 %install
