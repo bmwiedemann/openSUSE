@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
-Recommends:     %{name}-lang
 # Package was renamed to gnome-mahjongg, following upstreams name change during 3.6 development.
 Obsoletes:      mahjongg < %{version}
 Provides:       mahjongg = %{version}
