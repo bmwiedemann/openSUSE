@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(sm)
-Recommends:     %{name}-lang
 Conflicts:      gnome-utils < 3.3.1
 %glib2_gsettings_schema_requires
 
