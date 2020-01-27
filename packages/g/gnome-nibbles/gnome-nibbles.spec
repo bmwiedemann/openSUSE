@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(libgnome-games-support-1)
-Recommends:     %{name}-lang
 
 %description
 Nibbles is a worm game for GNOME. The player controls a 2D worm while
