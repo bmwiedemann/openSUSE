@@ -34,7 +34,6 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
-Recommends:     %{name}-lang
 
 %description
 Tali is like Yahtzee, or like poker with dice. The player rolls dice
