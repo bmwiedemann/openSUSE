@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(sqlite3) >= 3.5
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 Requires:       gstreamer-plugins-base
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-good
 Recommends:     gstreamer-plugins-ugly
