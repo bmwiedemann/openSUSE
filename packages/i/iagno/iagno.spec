@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
-Recommends:     %{name}-lang
 
 %description
 Iagno is the two player strategy game of Othello, which is also known
