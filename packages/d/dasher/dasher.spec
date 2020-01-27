@@ -43,7 +43,6 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xtst)
 Recommends:     %{name}-data-recommended
-Recommends:     %{name}-lang
 Suggests:       %{name}-data-extras
 %{gconf_schemas_prereq}
 
