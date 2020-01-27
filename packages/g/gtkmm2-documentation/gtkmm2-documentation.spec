@@ -30,7 +30,6 @@ BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(giomm-2.4)
 BuildRequires:  pkgconfig(gtkmm-2.4)
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description

@@ -80,4 +80,12 @@
     <comment>spec-cleaner (forwarded request 581174 from dimstar)</comment>
     <requestid>582773</requestid>
   </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>1a1f3fd7dbf57a7ad7f4ef394116d321</srcmd5>
+    <version>2.24.1</version>
+    <time>1580152538</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767172 from dimstar)</comment>
+    <requestid>767436</requestid>
+  </revision>
 </revisionlist>
