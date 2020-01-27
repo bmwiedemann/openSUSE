@@ -269,4 +269,13 @@
   * Only translations was changed</comment>
     <requestid>680437</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>acac775ba73f4534423b450635d767a8</srcmd5>
+    <version>0.14.1</version>
+    <time>1580152670</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1161365: Fix build
+- Add buildrequire for glib</comment>
+    <requestid>767620</requestid>
+  </revision>
 </revisionlist>
