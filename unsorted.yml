@@ -13130,6 +13130,8 @@ unsorted:
   - mathjax-winchrome-fonts 
   - mathjax-winie6-fonts 
   - mathml-dtd 
+  - mathomatic 
+  - mathomatic-devel 
   - matio-tools 
   - matomo 
   - matrix-quaternion 
@@ -18913,7 +18915,6 @@ unsorted:
   - python2-libarchive 
   - python2-libarchive-c 
   - python2-libbde 
-  - python2-libewf 
   - python2-libfsntfs 
   - python2-libfvde 
   - python2-libfwnt 
