@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
 BuildRequires:  pkgconfig(libgnome-games-support-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
 Requires(pre):  pwdutils
-Recommends:     %{name}-lang
 
 %description
 Robots is a graphical version of the original text based robots game,
