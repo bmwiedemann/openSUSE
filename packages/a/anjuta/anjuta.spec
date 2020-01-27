@@ -64,7 +64,6 @@ Requires:       gettext
 # libgda-sqlite is needed by the symbol-db plugin. See bnc#624924.
 Requires:       libgda-sqlite
 Requires:       libtool
-Recommends:     %{name}-lang
 %ifnarch ia64 s390 s390x aarch64 ppc64le
 BuildRequires:  valgrind-devel
 %endif
