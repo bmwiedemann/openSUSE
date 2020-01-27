@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libdiscid) >= 0.4.0
 BuildRequires:  pkgconfig(libmusicbrainz5)
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-ugly
 %glib2_gsettings_schema_requires
 
