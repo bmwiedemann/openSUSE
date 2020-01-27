@@ -43,7 +43,6 @@ features typical of a source editor.
 %package -n libgtksourceview-2_0-0
 Summary:        GTK+ Source Editing Widget
 Group:          System/GUI/GNOME
-Recommends:     %{name}-lang = %{version}
 # This is needed to make lang package installable.
 Provides:       %{name} = %{version}
 
