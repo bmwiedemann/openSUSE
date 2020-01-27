@@ -480,4 +480,12 @@
     <comment>spec-cleaner (forwarded request 581111 from dimstar)</comment>
     <requestid>582748</requestid>
   </revision>
+  <revision rev="70" vrev="20">
+    <srcmd5>b0f4895bb22551b751f519ae824ac692</srcmd5>
+    <version>3.0.0</version>
+    <time>1580152502</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767154 from dimstar)</comment>
+    <requestid>767419</requestid>
+  </revision>
 </revisionlist>

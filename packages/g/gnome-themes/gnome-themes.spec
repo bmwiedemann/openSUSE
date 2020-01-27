@@ -32,7 +32,6 @@ BuildRequires:  gtk3-devel
 BuildRequires:  icon-naming-utils
 BuildRequires:  intltool
 BuildRequires:  translation-update-upstream
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
