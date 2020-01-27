@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        2.12.20
+Version:        2.12.22
 Release:        0
 Summary:        LaTeX Editor
 License:        GPL-2.0-only AND GPL-3.0-only AND Apache-2.0 AND MPL-1.1

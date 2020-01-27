@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:18:25 UTC 2020 - info@ebner-markus.de
+- Update to version 2.12.22
+  * fixes garbled symbols in OSX
+  * fixes crash when changing magic language comment and pdf search path handling.
+  * last release supporting Qt4
+
+-------------------------------------------------------------------
 Wed Jan 15 14:40:13 UTC 2020 - info@ebner-markus.de
 
 - Update to version 2.12.20
   * fixes a problem with replacing when search highlight is activated
-  * last release supporting Qt4
 
 -------------------------------------------------------------------
 Wed Jan 8 11:57:25 UTC 2020 - info@ebner-markus.de
