@@ -52,8 +52,7 @@ cp %{SOURCE1} .
 %build
 %if %{do_profiling}
   c++ %{optflags} %{cflags_profile_generate} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
-  ./qpress -m %{SOURCE0}
-  rm ./qpress
+  ./qpress -o *.cpp | ./qpress -dio > /dev/null
   c++ %{optflags} %{cflags_profile_feedback} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
 %else
   c++ %{optflags} -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread

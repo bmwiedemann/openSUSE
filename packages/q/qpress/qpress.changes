@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 26 12:42:48 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make profile guided optimization deterministic (boo#1040589)
+- Train using uncompressed data
+
+-------------------------------------------------------------------
 Fri Jan 10 13:09:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
