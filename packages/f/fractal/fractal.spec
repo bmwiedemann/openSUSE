@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango) >= 1.34
 BuildRequires:  pkgconfig(pangocairo) >= 1.34
-Recommends:     %{name}-lang
 
 %description
 Fractal is a Matrix messaging app for GNOME written in Rust. Its
