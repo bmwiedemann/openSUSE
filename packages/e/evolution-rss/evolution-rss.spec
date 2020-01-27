@@ -56,7 +56,6 @@ Evolution as a RSS Reader.
 %package -n %{_name}
 Summary:        Evolution Plugin for RSS Feeds Support
 Group:          Productivity/Networking/Email/Clients
-Recommends:     %{_name}-lang
 Provides:       %{name} = %{version}
 
 %description -n %{_name}
