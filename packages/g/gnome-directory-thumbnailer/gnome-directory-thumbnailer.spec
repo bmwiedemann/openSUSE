@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.35.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 2.2.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-Recommends:     %{name}-lang
 
 %description
 GNOME thumbnailer to generate thumbnails for directories.
