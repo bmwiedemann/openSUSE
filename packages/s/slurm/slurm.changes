@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:42:55 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix a missed systemd_requires -> systemd_ordering conversion.
+
+-------------------------------------------------------------------
 Fri Jan 24 17:31:18 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Remove special OHPC compatibility macro: these settings should

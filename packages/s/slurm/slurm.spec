@@ -181,7 +181,7 @@ BuildRequires:  liblz4-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  rrdtool-devel
 %if 0%{?with_systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
 BuildRequires:  pkgconfig(systemd)
 %else
 Requires(post):         %insserv_prereq %fillup_prereq

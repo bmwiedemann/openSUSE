@@ -507,4 +507,12 @@
   to run the database on the same machine as the daemon. (forwarded request 767005 from eeich)</comment>
     <requestid>767017</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>b0294e5b04421b88fd97e97471b5b6e7</srcmd5>
+    <version>19.05.5</version>
+    <time>1580152630</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a missed systemd_requires -&gt; systemd_ordering conversion.</comment>
+    <requestid>767593</requestid>
+  </revision>
 </revisionlist>
