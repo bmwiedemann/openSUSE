@@ -36,7 +36,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libgtop-2.0)
-Recommends:     %{name}-lang
 # For dig
 Recommends:     bind-utils
 # For ping and tracepath
