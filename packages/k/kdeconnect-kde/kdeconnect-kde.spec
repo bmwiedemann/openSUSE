@@ -1,7 +1,7 @@
 #
 # spec file for package kdeconnect-kde
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kdeconnect-kde
-Version:        1.3.5
+Version:        1.4
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -40,9 +40,14 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5People)
+BuildRequires:  cmake(KF5PeopleVCard)
+BuildRequires:  cmake(KF5PulseAudioQt)
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(Qca-qt5)
+BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(dbus-1)
@@ -51,6 +56,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 Requires:       sshfs
 Recommends:     %{name}-lang = %{version}
+Recommends:     kpeoplevcard
 Conflicts:      kdeconnect-kde4
 
 %description
@@ -66,6 +72,16 @@ Current feature list:
 Please note you will need to install KDE Connect on Android for this app to work:
 https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp or
 https://f-droid.org/en/packages/org.kde.kdeconnect_tp/
+
+%package zsh-completion
+Summary:        ZSH completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH command line completion support for %{name}.
 
 %lang_package
 
@@ -83,7 +99,7 @@ for translation_file in kdeconnect-{cli,core,fileitemaction,kcm,kded,kio,nautilu
     %find_lang $translation_file %{name}.lang
 done
 
-%if %{suse_version} < 1550
+%if 0%{?suse_version} < 1550
 # susefirewall config file
 install -D -m 0644 %{SOURCE100} \
     %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
@@ -92,20 +108,31 @@ install -D -m 0644 %{SOURCE100} \
 install -D -m 0644 %{SOURCE101} \
     %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
 
+%suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.app.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop Network RemoteAccess
+%suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect_open.desktop Network RemoteAccess
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_kdeconnect
+
 %files
 %license COPYING
 %doc README*
-%if %{suse_version} < 1550
+%if 0%{?suse_version} < 1550
 %config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 %endif
+%dir %{_datadir}/Thunar
+%dir %{_datadir}/contractor
 %dir %{_datadir}/nautilus-python
 %dir %{_libexecdir}/firewalld
 %dir %{_libexecdir}/firewalld/services
+%{_datadir}/Thunar/sendto/
+%{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/nautilus-python/extensions/
 %{_libexecdir}/firewalld/services/%{name}.xml
 %{_kf5_libdir}/libkdeconnect*.so.*
@@ -113,16 +140,19 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_applicationsdir}/*.desktop
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_iconsdir}/hicolor/*/apps/kdeconnect.*
+%{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
 %{_kf5_libdir}/libexec/
 %{_kf5_servicesdir}/
 %{_kf5_notifydir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/plasma/
 %{_kf5_qmldir}/
+%{_kf5_bindir}/kdeconnect-app
 %{_kf5_bindir}/kdeconnect-cli
 %{_kf5_bindir}/kdeconnect-handler
 %{_kf5_bindir}/kdeconnect-indicator
+%{_kf5_bindir}/kdeconnect-settings
+%{_kf5_bindir}/kdeconnect-sms
 %{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
 %{_kf5_configdir}/autostart/org.kde.kdeconnect.daemon.desktop
 %{_kf5_iconsdir}/hicolor/*/status/*
