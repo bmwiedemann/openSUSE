@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyeapi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyeapi
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Python Client for eAPI
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/arista-eosplus/pyeapi
-Source:         https://files.pythonhosted.org/packages/source/p/pyeapi/pyeapi-%{version}.tar.gz
+Source:         https://github.com/arista-eosplus/pyeapi/archive/v%{version}.tar.gz#/pyeapi-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pytest}
