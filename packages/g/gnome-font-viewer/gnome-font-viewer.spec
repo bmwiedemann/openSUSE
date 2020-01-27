@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
-Recommends:     %{name}-lang
 Conflicts:      gnome-utils < 3.3.1
 
 %description
