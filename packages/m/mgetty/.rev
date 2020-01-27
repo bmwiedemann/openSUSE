@@ -258,4 +258,14 @@
   bsc#1041290</comment>
     <requestid>502806</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>2cd49893e0929ce2c9f5030f5cb11c4b</srcmd5>
+    <version>1.1.37</version>
+    <time>1580152650</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed permission handling of faxq-helper.
+  - It is fax:trusted       4750 in &quot;secure&quot; mode.
+  - Also is being checked and set correctly now. (forwarded request 767615 from msmeissn)</comment>
+    <requestid>767625</requestid>
+  </revision>
 </revisionlist>

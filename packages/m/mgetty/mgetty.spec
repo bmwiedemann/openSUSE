@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           mgetty
 Version:        1.1.37
 Release:        0
 Summary:        Mgetty Listens for Data, Fax, or Voice Calls on a Serial Line
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Fax
 Url:            http://mgetty.greenie.net/
 Source0:        ftp://mgetty.greenie.net/pub/mgetty/source/1.1/%{name}%{version}-Jun05.tar.gz
@@ -141,10 +141,10 @@ chown fax:uucp %{_localstatedir}/log/sendfax.log
 chmod 664 %{_localstatedir}/log/sendfax.log
 
 %post -n sendfax
-%set_permissions  %{_localstatedir}/spool/fax/outgoing
+%set_permissions  %{_localstatedir}/spool/fax/outgoing {_prefix}/lib/mgetty+sendfax/faxq-helper
 
 %verifyscript -n sendfax
-%verify_permissions -e %{_localstatedir}/spool/fax/outgoing
+%verify_permissions -e %{_localstatedir}/spool/fax/outgoing -e {_prefix}/lib/mgetty+sendfax/faxq-helper
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
@@ -266,7 +266,7 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %{_bindir}/faxspool
 %{_sbindir}/faxrunqd
 %{_sbindir}/sendfax
-%attr(4711,fax,root) %{_prefix}/lib/mgetty+sendfax/faxq-helper
+%attr(4750,fax,trusted) %verify(not mode group) %{_prefix}/lib/mgetty+sendfax/faxq-helper
 %{_prefix}/lib/mgetty+sendfax/cour25.pbm
 %{_prefix}/lib/mgetty+sendfax/cour25n.pbm
 %{_mandir}/man1/fax.1%{ext_man}

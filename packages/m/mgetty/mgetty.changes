@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 07:13:28 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Fixed permission handling of faxq-helper.
+  - It is fax:trusted       4750 in "secure" mode.
+  - Also is being checked and set correctly now.
+
+-------------------------------------------------------------------
 Wed Jun  7 16:23:52 CEST 2017 - sbrabec@suse.com
 
 - Update to version 1.1.37:
