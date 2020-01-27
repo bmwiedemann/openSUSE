@@ -28,7 +28,6 @@ Source:         https://download.gnome.org/sources/gnome-devel-docs/3.32/%{name}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
