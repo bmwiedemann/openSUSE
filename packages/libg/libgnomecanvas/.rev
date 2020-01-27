@@ -272,4 +272,12 @@
     <comment>Drop glade, and modernize spec (forwarded request 722105 from iznogood)</comment>
     <requestid>723064</requestid>
   </revision>
+  <revision rev="40" vrev="19">
+    <srcmd5>ae69c73667d1565892aa25f7ed83004d</srcmd5>
+    <version>2.30.3</version>
+    <time>1580152566</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767191 from dimstar)</comment>
+    <requestid>767453</requestid>
+  </revision>
 </revisionlist>

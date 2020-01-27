@@ -42,7 +42,6 @@ libraries.
 %package -n libgnomecanvas-2-0
 Summary:        An Add-On for the GNOME User Interface Libraries
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 #
