@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 Requires:       typelib-1_0-Peas-1_0
 # ./gitg-3.16.1/gitg/gitg-plugins-engine.vala:			repo.require("PeasGtk", "1.0", 0);
 Requires:       typelib-1_0-PeasGtk-1_0
-Recommends:     %{name}-lang
 
 %description
 gitg is a GitX clone for GNOME/gtk+. It aims at being a small, fast and
