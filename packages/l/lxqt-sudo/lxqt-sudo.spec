@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-sudo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,6 +32,7 @@ BuildRequires:  lxqt-build-tools-devel >= 0.5.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 Requires:       sudo
 Recommends:     %{name}-lang
