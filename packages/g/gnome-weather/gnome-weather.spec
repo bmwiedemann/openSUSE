@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.25.91
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description

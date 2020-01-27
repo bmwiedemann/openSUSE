@@ -286,4 +286,12 @@
     <comment>- Stop using arch-specific libdir again (boo#1109687). (forwarded request 746359 from mgorse)</comment>
     <requestid>747634</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>feafd88d3e7f76710aaf4342df746c02</srcmd5>
+    <version>3.34.0</version>
+    <time>1580152522</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767160 from dimstar)</comment>
+    <requestid>767425</requestid>
+  </revision>
 </revisionlist>
