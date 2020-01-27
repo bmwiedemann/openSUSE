@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:52:34 UTC 2020 - okurz@suse.com
+
+- Update to version 1.16.0:
+  * Fix error on repeated test modules when reading out details from soft-fail bugrefs
+  * Fix failed assertion on build with only incompletes
+  * Rely only on POSIX 'command -v' rather than non-standard which
+  * In the bug reminder comment explain options to prevent further reminders
+
+-------------------------------------------------------------------
 Mon Sep 30 21:06:47 UTC 2019 - okurz@suse.com
 
 - Update to version 1.15.0:
