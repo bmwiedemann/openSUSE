@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
-Recommends:     %{name}-lang
 
 %description
 The object of Four-in-a-Row is to place four pieces in a vertical,
