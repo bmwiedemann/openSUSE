@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 # py3atspi is a virtual name that is provided by the default at-spi stack
 Requires:       py3atspi
 Requires:       python3-gobject-Gdk
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
