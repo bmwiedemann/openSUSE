@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 27 10:14:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1161365: Add lxqt-config-0.14.1-sort.patch
+- Add buildreq on glib
+
+-------------------------------------------------------------------
 Mon Feb 25 10:26:06 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.1:

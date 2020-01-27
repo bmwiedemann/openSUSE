@@ -1,0 +1,177 @@
+From 7fcce18595fcd689bad6a6d470b2371de3dd7ae9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Pereira?= <luis.artur.pereira@gmail.com>
+Date: Wed, 11 Dec 2019 12:52:02 +0000
+Subject: [PATCH] Remove deprecated qSort
+
+Use std::sort instead.
+---
+ lxqt-config-file-associations/applicationchooser.cpp | 5 ++++-
+ lxqt-config-file-associations/mimetypeviewer.cpp     | 3 ++-
+ lxqt-config-locale/localeconfig.cpp                  | 4 +++-
+ lxqt-config-monitor/fastmenu.cpp                     | 4 +++-
+ lxqt-config-monitor/monitorwidget.cpp                | 4 ++--
+ src/qcategorizedview/qcategorizedview.cpp            | 6 ++++--
+ 6 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/lxqt-config-file-associations/applicationchooser.cpp b/lxqt-config-file-associations/applicationchooser.cpp
+index 6522652b..96d36690 100644
+--- a/lxqt-config-file-associations/applicationchooser.cpp
++++ b/lxqt-config-file-associations/applicationchooser.cpp
+@@ -32,6 +32,9 @@
+ #include <QTimer>
+ 
+ #include <XdgDesktopFile>
++
++#include <algorithm>
++
+ #include "applicationchooser.h"
+ 
+ Q_DECLARE_METATYPE(XdgDesktopFile*)
+@@ -118,7 +121,7 @@ void ApplicationChooser::fillApplicationListWidget()
+             XdgDesktopFileCache::getAllFiles() :
+             XdgDesktopFileCache::getApps(mt.name());
+ 
+-        qSort(applications.begin(), applications.end(), lessThan);
++        std::sort(applications.begin(), applications.end(), lessThan);
+ 
+         QTreeWidgetItem* headingItem = new QTreeWidgetItem(widget.applicationTreeWidget);
+         headingItem->setExpanded(true);
+diff --git a/lxqt-config-file-associations/mimetypeviewer.cpp b/lxqt-config-file-associations/mimetypeviewer.cpp
+index 7d99dc2a..e6c4bc0b 100644
+--- a/lxqt-config-file-associations/mimetypeviewer.cpp
++++ b/lxqt-config-file-associations/mimetypeviewer.cpp
+@@ -38,6 +38,7 @@
+ #include <XdgDirs>
+ #include <LXQt/Settings>
+ 
++#include <algorithm>
+ 
+ #include "mimetypeviewer.h"
+ #include "ui_mimetypeviewer.h"
+@@ -65,7 +66,7 @@ void MimetypeViewer::loadAllMimeTypes()
+     QMimeDatabase db;
+     QList<QMimeType> mimetypes = db.allMimeTypes();
+ 
+-    qSort(mimetypes.begin(), mimetypes.end(), mimeTypeLessThan);
++    std::sort(mimetypes.begin(), mimetypes.end(), mimeTypeLessThan);
+     for (const QMimeType &mt : qAsConst(mimetypes)) {
+         const QString mimetype = mt.name();
+         const int i = mimetype.indexOf(QLatin1Char('/'));
+diff --git a/lxqt-config-locale/localeconfig.cpp b/lxqt-config-locale/localeconfig.cpp
+index f91e24c6..f4d22f35 100644
+--- a/lxqt-config-locale/localeconfig.cpp
++++ b/lxqt-config-locale/localeconfig.cpp
+@@ -41,6 +41,8 @@
+ #include <QDateTime>
+ #include <QMessageBox>
+ 
++#include <algorithm>
++
+ const static QString lcLang = QStringLiteral("LANG");
+ 
+ const static QString lcNumeric = QStringLiteral("LC_NUMERIC");
+@@ -94,7 +96,7 @@ bool countryLessThan(const QLocale & c1, const QLocale & c2)
+ void LocaleConfig::load()
+ {
+     QList<QLocale> allLocales = QLocale::matchingLocales(QLocale::AnyLanguage, QLocale::AnyScript, QLocale::AnyCountry);
+-    qSort(allLocales.begin(), allLocales.end(), countryLessThan);
++    std::sort(allLocales.begin(), allLocales.end(), countryLessThan);
+     for(QComboBox * combo : qAsConst(m_combos))
+     {
+         initCombo(combo, allLocales);
+diff --git a/lxqt-config-monitor/fastmenu.cpp b/lxqt-config-monitor/fastmenu.cpp
+index 1b28cd98..b1658167 100644
+--- a/lxqt-config-monitor/fastmenu.cpp
++++ b/lxqt-config-monitor/fastmenu.cpp
+@@ -25,6 +25,8 @@
+ #include <KScreen/Mode>
+ #include <KScreen/SetConfigOperation>
+ 
++#include <algorithm>
++
+ enum Options
+ {
+ 	None=0, Extended=1, Unified=2, OnlyFirst=3, OnlySecond=4
+@@ -111,7 +113,7 @@ void FastMenu::unified()
+         commonSizes = sizes;
+     }
+     // Select the bigest common size
+-    qSort(commonSizes.begin(), commonSizes.end(), sizeBiggerThan);
++    std::sort(commonSizes.begin(), commonSizes.end(), sizeBiggerThan);
+     if(commonSizes.isEmpty())
+         return;
+     QSize commonSize = commonSizes[0];
+diff --git a/lxqt-config-monitor/monitorwidget.cpp b/lxqt-config-monitor/monitorwidget.cpp
+index 2c304013..dede5e6d 100644
+--- a/lxqt-config-monitor/monitorwidget.cpp
++++ b/lxqt-config-monitor/monitorwidget.cpp
+@@ -24,7 +24,7 @@
+ #include <QDialogButtonBox>
+ #include <KScreen/EDID>
+ 
+-
++#include <algorithm>
+ 
+ QString modeToString(KScreen::ModePtr mode)
+ {
+@@ -88,7 +88,7 @@ MonitorWidget::MonitorWidget(KScreen::OutputPtr output, KScreen::ConfigPtr confi
+ 
+     // Sort modes by size
+     modeList = noDuplicateModes.values();
+-    qSort(modeList.begin(), modeList.end(), sizeBiggerThan);
++    std::sort(modeList.begin(), modeList.end(), sizeBiggerThan);
+ 
+     // Add each mode to the list
+     for (const KScreen::ModePtr &mode : qAsConst(modeList))
+diff --git a/src/qcategorizedview/qcategorizedview.cpp b/src/qcategorizedview/qcategorizedview.cpp
+index 7f288cc5..a0809e4c 100644
+--- a/src/qcategorizedview/qcategorizedview.cpp
++++ b/src/qcategorizedview/qcategorizedview.cpp
+@@ -40,6 +40,8 @@
+ #include <QScrollBar>
+ #include <QPaintEvent>
+ 
++#include <algorithm>
++
+ #include "qcategorydrawer.h"
+ #include "qcategorizedsortfilterproxymodel.h"
+ 
+@@ -328,7 +330,7 @@ void QCategorizedView::Private::rowsInserted(const QModelIndex &parent, int star
+         const QModelIndex firstAffectedCategory = blocks[category].firstIndex;
+         //BEGIN: order for marking as alternate those blocks that are alternate
+         QList<Block> blockList = blocks.values();
+-        qSort(blockList.begin(), blockList.end(), Block::lessThan);
++        std::sort(blockList.begin(), blockList.end(), Block::lessThan);
+         QList<int> firstIndexesRows;
+         for (const Block &block : qAsConst(blockList)) {
+             firstIndexesRows << block.firstIndex.row();
+@@ -1335,7 +1337,7 @@ void QCategorizedView::rowsAboutToBeRemoved(const QModelIndex &parent,
+     {
+         //BEGIN: order for marking as alternate those blocks that are alternate
+         QList<Private::Block> blockList = d->blocks.values();
+-        qSort(blockList.begin(), blockList.end(), Private::Block::lessThan);
++        std::sort(blockList.begin(), blockList.end(), Private::Block::lessThan);
+         QList<int> firstIndexesRows;
+         for (const Private::Block &block : qAsConst(blockList)) {
+             firstIndexesRows << block.firstIndex.row();
+From cd7de12f2ebe5a2ad03c2086da4c3b5317a4506e Mon Sep 17 00:00:00 2001
+From: Chih-Hsuan Yen <yan12125@gmail.com>
+Date: Sun, 15 Dec 2019 09:32:55 +0800
+Subject: [PATCH] Fix building with Qt 5.14
+
+---
+ lxqt-config-input/touchpaddevice.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lxqt-config-input/touchpaddevice.cpp b/lxqt-config-input/touchpaddevice.cpp
+index 31adbe5f..41690c2c 100644
+--- a/lxqt-config-input/touchpaddevice.cpp
++++ b/lxqt-config-input/touchpaddevice.cpp
+@@ -21,6 +21,7 @@
+ #include <cmath>
+ #include <QDebug>
+ #include <QX11Info>
++#include <QUrl>
+ #include <libudev.h>
+ #include <LXQt/Settings>
+ #include <X11/Xatom.h>

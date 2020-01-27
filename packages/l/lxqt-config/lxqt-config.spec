@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-config
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,6 +26,7 @@ URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        lxqt-config.keyring
+Patch0:         lxqt-config-0.14.1-sort.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,6 +43,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xdg) >= 1.3.0
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 BuildRequires:  pkgconfig(x11)
@@ -62,6 +64,7 @@ System Configuration and Control Center for LXQt
 
 %prep
 %setup -q
+%patch0 -p1
 # Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
 #find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 
