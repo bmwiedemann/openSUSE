@@ -1,7 +1,7 @@
 #
 # spec file for package quassel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Distributed IRC client
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Networking/IRC
-URL:            http://quassel-irc.org/
+URL:            https://quassel-irc.org/
 Source:         http://%{name}-irc.org/pub/%{name}-%{realver}.tar.bz2
 Source1:        service.%{name}core
 Source2:        sysconfig.%{name}core
@@ -35,6 +35,8 @@ Source3:        logrotate.%{name}core
 Source5:        quassel-rpmlintrc
 # PATCH-FIX-SUSE: Set the correct libraries and compiler flags in order to use qglobal.h in check_cxx_source_compiles function
 Patch0:         quassel-set-required-libs-and-flags.patch
+# PATCH-FIX-UPSTREAM: Fix build with Qt 5.14
+Patch1:         0001-common-Disable-enum-type-stream-operators-for-Qt-5.1.patch
 BuildRequires:  cmake >= 2.8.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -149,7 +151,7 @@ This contains common parts shared by %{name} and %{name}-client.
 
 %prep
 %setup -q -n %{name}-%{realver}
-%patch0 -p1
+%autopatch -p1
 
 %build
 FAKE_BUILDDATE=$(LC_ALL=C date -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
