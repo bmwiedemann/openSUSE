@@ -1,0 +1,11 @@
+--- rt-11.0.6+2/settings.gradle	2020-01-15 16:05:47.000000000 +0100
++++ rt-11.0.6+2/settings.gradle	2020-01-17 10:26:30.653142117 +0100
+@@ -39,7 +39,7 @@
+ 
+ // Stable publishing behavior is the default in gradle 5.x.
+ // This setting enables it in gradle 4.8 to help with the transition.
+-enableFeaturePreview('STABLE_PUBLISHING')
++// enableFeaturePreview('STABLE_PUBLISHING')
+ 
+ def closedDir = file("../rt-closed")
+ def buildClosed = closedDir.isDirectory()

@@ -1,0 +1,46 @@
+--- a/build.gradle	Wed Jan 15 16:07:02 2020 +0100
++++ b/build.gradle	Wed Jan 22 11:08:21 2020 +0100
+@@ -336,7 +336,7 @@
+ defineProperty("JAVAC", cygpathExe("$JDK_HOME/bin/javac"))
+ defineProperty("JAVADOC", cygpathExe("$JDK_HOME/bin/javadoc"))
+ defineProperty("JMOD", cygpathExe("$JDK_HOME/bin/jmod"))
+-defineProperty("JDK_DOCS", "https://docs.oracle.com/javase/10/docs/api/")
++defineProperty("JDK_DOCS", "file:///usr/share/javadoc/java")
+ defineProperty("JDK_JMODS", cygpath(System.getenv("JDK_JMODS")) ?: cygpath(System.getenv("JDK_HOME") + "/jmods"))
+ 
+ defineProperty("javaRuntimeVersion", System.getProperty("java.runtime.version"))
+@@ -503,10 +503,10 @@
+ //
+ 
+ // The following properties should be left alone by developers and set only from Hudson.
+-defineProperty("HUDSON_JOB_NAME", "not_hudson")
++defineProperty("HUDSON_JOB_NAME", "whatever")
+ defineProperty("HUDSON_BUILD_NUMBER","0000")
+ defineProperty("PROMOTED_BUILD_NUMBER", "0")
+-defineProperty("MILESTONE_FCS", "false")
++defineProperty("MILESTONE_FCS", "true")
+ ext.IS_MILESTONE_FCS = Boolean.parseBoolean(MILESTONE_FCS)
+ 
+ // The following properties define the product name for Oracle JDK and OpenJDK
+@@ -541,8 +541,10 @@
+ defineProperty("RELEASE_VERSION", relVer)
+ defineProperty("RELEASE_VERSION_PADDED", "${jfxReleaseMajorVersion}.${jfxReleaseMinorVersion}.${jfxReleaseSecurityVersion}.${jfxReleasePatchVersion}")
+ 
+-def buildDate = new java.util.Date()
+-def buildTimestamp = new java.text.SimpleDateFormat("yyyy-MM-dd-HHmmss").format(buildDate)
++def buildDate = new java.util.Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")))
++def dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd-HHmmss")
++dateFormat.setTimeZone(java.util.TimeZone.getTimeZone("UTC"))
++def buildTimestamp = dateFormat.format(buildDate)
+ defineProperty("BUILD_TIMESTAMP", buildTimestamp)
+ def relSuffix = ""
+ def relOpt = ""
+@@ -555,7 +557,7 @@
+ defineProperty("RELEASE_SUFFIX", relSuffix)
+ defineProperty("RELEASE_VERSION_SHORT", "${RELEASE_VERSION}${RELEASE_SUFFIX}")
+ defineProperty("RELEASE_VERSION_LONG", "${RELEASE_VERSION_SHORT}+${PROMOTED_BUILD_NUMBER}${relOpt}")
+-defineProperty("MAVEN_VERSION", IS_MILESTONE_FCS ? "${RELEASE_VERSION_SHORT}" : "${RELEASE_VERSION_LONG}")
++defineProperty("MAVEN_VERSION", "${RELEASE_VERSION}")
+ 
+ // Check whether the COMPILE_TARGETS property has been specified (if so, it was done by
+ // the user and not by this script). If it has not been defined then default

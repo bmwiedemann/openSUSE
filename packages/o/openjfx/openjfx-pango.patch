@@ -1,0 +1,11 @@
+--- rt-11.0.6+2/modules/javafx.graphics/src/main/native-font/pango.c	2020-01-15 16:05:47.000000000 +0100
++++ rt-11.0.6+2/modules/javafx.graphics/src/main/native-font/pango.c	2020-01-17 10:13:40.784597380 +0100
+@@ -225,7 +225,7 @@
+         if (text) {
+ //            rc = (jboolean)FcConfigAppFontAddFile(arg0, text);
+             if (fp) {
+-                rc = (jboolean)((jboolean (*)(void *, const char *))fp)(arg0, text);
++                rc = (jboolean)((jboolean (*)(void *, const char *))fp)((void *)arg0, text);
+             }
+             (*env)->ReleaseStringUTFChars(env, arg1, text);
+         }
