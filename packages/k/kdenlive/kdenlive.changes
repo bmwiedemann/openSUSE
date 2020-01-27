@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 26 16:55:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-crash-on-new-project-with-Qt-5.14.patch to fix a crash
+  when loading projects (kde#416766, boo#1161548)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:00:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1

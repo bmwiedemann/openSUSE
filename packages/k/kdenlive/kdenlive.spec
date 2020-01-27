@@ -35,6 +35,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Patch0:         0001-Fix-crash-on-new-project-with-Qt-5.14.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -114,6 +115,7 @@ work.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake_kf5 -d build
