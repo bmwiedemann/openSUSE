@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
