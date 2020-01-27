@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 25 18:30:16 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.1.0 - 2020-01-25
+  * Add ORDER BY clause to aggregate functions
+  * Add support for Python 3.8
+  * Add distinct on Select
+
+-------------------------------------------------------------------
 Mon Oct  1 08:59:59 UTC 2018 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.0.0

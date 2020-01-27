@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define base_name python-sql
 Name:           python-%{base_name}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause
