@@ -1,0 +1,124 @@
+From c9ec69850428e599fba282c32e51868b815e3019 Mon Sep 17 00:00:00 2001
+From: Chih-Hsuan Yen <yan12125@gmail.com>
+Date: Sun, 15 Dec 2019 09:33:12 +0800
+Subject: [PATCH] Fix building with Qt 5.14
+
+---
+ daemon/core.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/daemon/core.cpp b/daemon/core.cpp
+index 1be64ec..53bdf7b 100644
+--- a/daemon/core.cpp
++++ b/daemon/core.cpp
+@@ -33,6 +33,7 @@
+ #include <QTimer>
+ #include <QDBusConnectionInterface>
+ #include <QDBusServiceWatcher>
++#include <QFile>
+ 
+ #include <cstddef>
+ #include <cstdlib>
+From 4169bbc9a8d64683fb028b1e87253379afc14cff Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Pereira?= <luis.artur.pereira@gmail.com>
+Date: Thu, 12 Dec 2019 16:04:38 +0000
+Subject: [PATCH] Remove obsolete qBinaryFind
+
+Use std::lower_bound instead.
+---
+ config/default_model.cpp | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/config/default_model.cpp b/config/default_model.cpp
+index 852971e..360d708 100644
+--- a/config/default_model.cpp
++++ b/config/default_model.cpp
+@@ -29,6 +29,8 @@
+ #include "default_model.h"
+ #include "actions.h"
+ 
++#include <algorithm>
++
+ 
+ DefaultModel::DefaultModel(Actions *actions, const QColor &grayedOutColour, const QFont &highlightedFont, const QFont &italicFont, const QFont &highlightedItalicFont, QObject *parent)
+     : QAbstractTableModel(parent)
+@@ -223,7 +225,7 @@ void DefaultModel::actionAdded(qulonglong id)
+         if (result.first)
+         {
+             QList<qulonglong> keys = mContent.keys();
+-            int row = qBinaryFind(keys, mContent.lowerBound(id).key()) - keys.constBegin();
++            int row = std::lower_bound(keys.constBegin(), keys.constEnd(), mContent.lowerBound(id).key()) - keys.constBegin();
+ 
+             beginInsertRows(QModelIndex(), row, row);
+ 
+@@ -237,7 +239,7 @@ void DefaultModel::actionAdded(qulonglong id)
+             {
+                 if (id != siblingId)
+                 {
+-                    int siblingRow = qBinaryFind(keys, siblingId) - keys.constBegin();
++                    int siblingRow = std::lower_bound(keys.constBegin(), keys.constEnd(), siblingId) - keys.constBegin();
+                     emit dataChanged(index(siblingRow, 1), index(siblingRow, 1));
+                 }
+             }
+@@ -250,7 +252,7 @@ void DefaultModel::actionEnabled(qulonglong id, bool enabled)
+     if (mContent.contains(id))
+     {
+         QList<qulonglong> keys = mContent.keys();
+-        int row = qBinaryFind(keys, id) - keys.constBegin();
++        int row = std::lower_bound(keys.constBegin(), keys.constEnd(), id) - keys.constBegin();
+ 
+         mContent[id].enabled = enabled;
+ 
+@@ -266,7 +268,7 @@ void DefaultModel::actionModified(qulonglong id)
+         if (result.first)
+         {
+             QList<qulonglong> keys = mContent.keys();
+-            int row = qBinaryFind(keys, id) - keys.constBegin();
++            int row = std::lower_bound(keys.constBegin(), keys.constEnd(), id) - keys.constBegin();
+ 
+             if (mContent[id].shortcut != result.second.shortcut)
+             {
+@@ -274,12 +276,12 @@ void DefaultModel::actionModified(qulonglong id)
+                 mShortcuts[mContent[id].shortcut].remove(id);
+                 for(qulonglong siblingId : qAsConst(mShortcuts[mContent[id].shortcut]))
+                 {
+-                    int siblingRow = qBinaryFind(keys, siblingId) - keys.constBegin();
++                    int siblingRow = std::lower_bound(keys.constBegin(), keys.constEnd(), siblingId) - keys.constBegin();
+                     emit dataChanged(index(siblingRow, 1), index(siblingRow, 1));
+                 }
+                 for(qulonglong siblingId : qAsConst(mShortcuts[result.second.shortcut]))
+                 {
+-                    int siblingRow = qBinaryFind(keys, siblingId) - keys.constBegin();
++                    int siblingRow = std::lower_bound(keys.constBegin(), keys.constEnd(), siblingId) - keys.constBegin();
+                     emit dataChanged(index(siblingRow, 1), index(siblingRow, 1));
+                 }
+             }
+@@ -296,8 +298,8 @@ void DefaultModel::actionsSwapped(qulonglong id1, qulonglong id2)
+     if (mContent.contains(id1) && mContent.contains(id2))
+     {
+         QList<qulonglong> keys = mContent.keys();
+-        int row1 = qBinaryFind(keys, id1) - keys.constBegin();
+-        int row2 = qBinaryFind(keys, id2) - keys.constBegin();
++        int row1 = std::lower_bound(keys.constBegin(), keys.constEnd(), id1) - keys.constBegin();
++        int row2 = std::lower_bound(keys.constBegin(), keys.constEnd(), id2) - keys.constBegin();
+ 
+         // swap
+         GeneralActionInfo tmp = mContent[id1];
+@@ -314,7 +316,7 @@ void DefaultModel::actionRemoved(qulonglong id)
+     if (mContent.contains(id))
+     {
+         QList<qulonglong> keys = mContent.keys();
+-        int row = qBinaryFind(keys, id) - keys.constBegin();
++        int row = std::lower_bound(keys.constBegin(), keys.constEnd(), id) - keys.constBegin();
+ 
+         beginRemoveRows(QModelIndex(), row, row);
+ 
+@@ -327,7 +329,7 @@ void DefaultModel::actionRemoved(qulonglong id)
+ 
+         for(qulonglong siblingId : qAsConst(mShortcuts[shortcut]))
+         {
+-            int siblingRow = qBinaryFind(keys, siblingId) - keys.constBegin();
++            int siblingRow = std::lower_bound(keys.constBegin(), keys.constEnd(), siblingId) - keys.constBegin();
+             emit dataChanged(index(siblingRow, 1), index(siblingRow, 1));
+         }
+     }

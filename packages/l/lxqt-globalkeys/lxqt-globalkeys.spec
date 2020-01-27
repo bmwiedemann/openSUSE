@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-globalkeys
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later
 URL:            https://www.lxqt.org
 Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Patch0:         lxqt-globalkeys-0.14.1-fix-qt.5.14.patch
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
@@ -32,6 +33,7 @@ BuildRequires:  lxqt-build-tools-devel >= 0.6.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(lxqt) >= 0.14.1
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
@@ -68,6 +70,7 @@ UI system libraries for lxqt-globalkeys
 
 %prep
 %setup -q
+%patch0 -p1
 # Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
 #find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 
