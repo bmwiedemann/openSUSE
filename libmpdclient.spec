@@ -1,7 +1,7 @@
 #
 # spec file for package libmpdclient
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_name 2
 Name:           libmpdclient
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
 License:        BSD-3-Clause
@@ -54,8 +54,7 @@ MPD (Music Player Daemon).
 %setup -q
 
 %build
-%meson \
-    -D documentation=false
+%meson -D documentation=false
 %meson_build
 
 %install
@@ -74,7 +73,7 @@ rm -r %{buildroot}%{_datadir}/doc
 %doc NEWS
 %{_includedir}/mpd
 %{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/libmpdclient.pc
+%{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/vala
 
 %changelog
