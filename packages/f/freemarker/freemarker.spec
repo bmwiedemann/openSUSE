@@ -1,7 +1,7 @@
 #
 # spec file for package freemarker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,10 +37,11 @@ Patch5:         no-javarebel.patch
 Patch6:         enable-jdom.patch
 # Fix compatibility with javacc 7
 Patch7:         javacc-7.patch
-BuildRequires:  ant fdupes
+BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-parent
 BuildRequires:  aqute-bnd
+BuildRequires:  fdupes
 BuildRequires:  glassfish-jsp-api
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  hamcrest
@@ -54,6 +55,9 @@ BuildRequires:  log4j-over-slf4j
 BuildRequires:  slf4j
 BuildRequires:  xalan-j2 >= 2.7.0
 BuildConflicts: java-devel >= 9
+BuildConflicts: java-devel-openj9
+BuildConflicts: java-headless >= 9
+BuildConflicts: java-headless-openj9
 BuildArch:      noarch
 %if %{without jp_minimal}
 BuildRequires:  dom4j
