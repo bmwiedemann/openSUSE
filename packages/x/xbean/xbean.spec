@@ -1,7 +1,7 @@
 #
 # spec file for package xbean
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,22 +22,25 @@ Release:        0
 Summary:        Java plugin based web server
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://geronimo.apache.org/xbean/
+URL:            https://geronimo.apache.org/xbean/
 Source0:        http://repo2.maven.org/maven2/org/apache/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
 # Fix dependency on xbean-asm4-shaded to original objectweb-asm
 Patch0:         0001-Unshade-ASM.patch
 Patch2:         0003-Port-to-QDox-2.0.patch
 BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  log4j12
 BuildRequires:  objectweb-asm >= 5
 BuildRequires:  slf4j
 BuildRequires:  unzip
 # The code uses sun.misc.URLClassloader
 BuildConflicts: java-devel >= 9
+BuildConflicts: java-headless >= 9
+# Avoid build cycles
+BuildConflicts: java-devel-openj9
+BuildConflicts: java-headless-openj9
 Requires:       objectweb-asm >= 5
 Requires:       slf4j
 BuildArch:      noarch

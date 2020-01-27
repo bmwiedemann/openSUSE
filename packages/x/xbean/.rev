@@ -31,4 +31,12 @@
     <comment>Remove references to parent form pom files + avoid version-less dependencies</comment>
     <requestid>735441</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>465a6f1be6d95ed1e04246812781a49b</srcmd5>
+    <version>4.5</version>
+    <time>1580152604</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767563</requestid>
+  </revision>
 </revisionlist>
