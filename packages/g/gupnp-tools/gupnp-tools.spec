@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.5.5
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
 BuildRequires:  pkgconfig(uuid)
-Recommends:     %{name}-lang
 
 %description
 GUPnP Tools are free replacements of Intel UPnP tools that use GUPnP.
