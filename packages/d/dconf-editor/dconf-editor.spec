@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.55.1
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.7
 BuildRequires:  pkgconfig(libxml-2.0)
-Recommends:     %{name}-lang
 
 %description
 dconf is a low-level configuration system. Its main purpose is to
