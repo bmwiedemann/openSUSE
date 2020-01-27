@@ -30,7 +30,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(giomm-2.4) >= 2.50.0
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.24.0
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
