@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rb-inotify
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rb-inotify
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 %define mod_name rb-inotify
 %define mod_full_name %{mod_name}-%{version}
