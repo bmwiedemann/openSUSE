@@ -1,7 +1,7 @@
 From 281a613295988be038f61b4198b6f513aad9f963 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 13 Jan 2020 11:27:06 +0100
-Subject: [PATCH 4/9] Unbundle mathjax and pandoc
+Subject: [PATCH 04/10] Unbundle mathjax and pandoc
 
 Use find_file() & find_program() functions to find the dependencies in the
 dependencies/ subdirectory first. If they are not there, use the system paths
@@ -71,5 +71,5 @@ index 1fd7718254..b0a9515fb9 100644
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
             DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
 -- 
-2.24.1
+2.25.0
 

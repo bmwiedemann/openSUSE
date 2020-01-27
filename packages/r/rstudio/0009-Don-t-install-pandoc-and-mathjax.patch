@@ -1,7 +1,7 @@
 From 7a76822069916fb2f9d733fed925c46603dc3a6e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 14 Jan 2020 14:20:40 +0100
-Subject: [PATCH 9/9] Don't install pandoc and mathjax
+Subject: [PATCH 09/10] Don't install pandoc and mathjax
 
 Because we use the system wide version, there's no need to waste time installing
 the files.
@@ -35,5 +35,5 @@ index b0a9515fb9..77ec70ab2c 100644
     # file(GLOB RMARKDOWN_PACKAGE "${RSTUDIO_DEPENDENCIES_DIR}/common/rmarkdown*.tar.gz")
     # install(FILES ${RMARKDOWN_PACKAGE}
 -- 
-2.24.1
+2.25.0
 

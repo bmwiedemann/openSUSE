@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:27:43 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add rstudio-server and rstudio-desktop subpackages
+
+- Rebase patches:
+  * 0001-First-pass-at-Boost-1.70-support.patch
+  * 0002-Bump-bundled-gwt-version.patch
+  * 0003-Remove-boost-signals-from-the-required-Boost-librari.patch
+  * 0004-Unbundle-mathjax-and-pandoc.patch
+  * 0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
+  * 0006-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
+  * 0007-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
+  * 0008-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+  * 0009-Don-t-install-pandoc-and-mathjax.patch
+  * 0010-Fix-rstudio-exec-path.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 08:48:05 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
+
+- Added 0010-Fix-rstudio-exec-path.patch:
+  Fix an issue with R-Studio when being executed in an AppImage
+  scope due to the use of absolute path.
+
+-------------------------------------------------------------------
 Tue Jan 14 15:57:38 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Set RStudio versions properly via ENV variables

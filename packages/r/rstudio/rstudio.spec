@@ -18,22 +18,19 @@
 
 %global bundled_gwt_version 2.8.2
 %global bundled_gin_version 2.1.2
-
 # !no longer bundled!
 # but upstream expects them in specific locations, so we keep these macros around
 %global bundled_mathjax_version 2.6.1
 %global bundled_mathjax_short_version 26
-
 %global rstudio_version_major 1
 %global rstudio_version_minor 2
 %global rstudio_version_patch 5033
 # commit of the tag belonging to %%{version}
 %global rstudio_git_revision_hash 330255ddec489e7a147ace3e8a9a3e4157d8d5ad
-
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
-Summary:        R-Studio Desktop
+Summary:        RStudio base package
 # R-Studio: AGPL 3.0
 # GWT: Apache License 2.0
 # gin: Apache License 2.0
@@ -41,7 +38,6 @@ Summary:        R-Studio Desktop
 License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only
 URL:            https://github.com/%{name}/
 Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
-
 # these appear to have been taken from Chromium's source code, see:
 # https://raw.githubusercontent.com/rstudio/rstudio/master/dependencies/tools/sync-hunspell-dictionaries
 # upstream source:
@@ -53,7 +49,6 @@ Source1:        https://s3.amazonaws.com/%{name}-dictionaries/core-dictionaries.
 Source2:        https://s3.amazonaws.com/%{name}-buildtools/gwt-%{bundled_gwt_version}.zip
 Source3:        https://s3.amazonaws.com/%{name}-buildtools/gin-%{bundled_gin_version}.zip
 Source99:       %{name}-rpmlintrc
-
 Patch0:         0003-Remove-boost-signals-from-the-required-Boost-librari.patch
 Patch1:         0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
 Patch2:         0002-Bump-bundled-gwt-version.patch
@@ -67,7 +62,7 @@ Patch6:         0007-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
 Patch7:         0008-Remove-PauseChanged-related-handler-from-DownloadHel.patch
 # shorten the installation time a bit by not installing mathjax
 Patch8:         0009-Don-t-install-pandoc-and-mathjax.patch
-
+Patch9:         0010-Fix-rstudio-exec-path.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
 BuildRequires:  ant
@@ -77,12 +72,11 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+BuildRequires:  ghc-pandoc-citeproc
 BuildRequires:  glibc-devel
-BuildRequires:  java
-BuildRequires:  memory-constraints
 # for dir ownership of /usr/share/icons/hicolor/*
 BuildRequires:  hicolor-icon-theme
-
+BuildRequires:  java
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
@@ -95,20 +89,13 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(uuid)
-
-BuildRequires:  ghc-pandoc-citeproc
 BuildRequires:  make
 BuildRequires:  mathjax
+BuildRequires:  memory-constraints
 BuildRequires:  pam-devel
 BuildRequires:  pandoc
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(zlib)
-
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -128,23 +115,54 @@ BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
-
-Provides:       bundled(gin) = %{bundled_gin_version}
-Provides:       bundled(gwt) = %{bundled_gwt_version}
-
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(zlib)
 Requires:       R-base
 Requires:       R-core-libs
 Requires:       ghc-pandoc-citeproc
 Requires:       mathjax
 Requires:       pandoc
+Suggests:       rstudio-desktop
+Suggests:       rstudio-server
+Provides:       bundled(gin) = %{bundled_gin_version}
+Provides:       bundled(gwt) = %{bundled_gwt_version}
 
 %description
-RStudio is a set of integrated tools designed to help you be more productive
-with R.
+This package provides the common files of RStudio Desktop and RStudio server.
 
-It includes a console, syntax-highlighting editor that supports direct code
-execution, and a variety of robust tools for plotting, viewing history,
-debugging and managing your workspace.
+%package        desktop
+Summary:        Integrated development environment for the R programming language
+%requires_eq    %{name}
+
+%description    desktop
+RStudio is an integrated development environment (IDE) for the R programming
+language. Some of its features include:
+
+- Customizable workbench with all of the tools required to work with R in one
+  place (console, source, plots, workspace, help, history, etc.).
+- Syntax highlighting editor with code completion.
+- Execute code directly from the source editor (line, selection, or file).
+- Full support for authoring Sweave and TeX documents.
+
+%package        server
+Summary:        Access RStudio via a web browser running on a remote server
+%requires_eq    %{name}
+
+%description    server
+RStudio Server enables you to provide a browser-based interface (the RStudio
+IDE) to a version of R running on a remote Linux server. Deploying R and RStudio
+on a server has a number of benefits, including:
+
+- The ability to access your R workspace from any computer in any location
+- Easy sharing of code, data, and other files with colleagues
+- Allowing multiple users to share access to the more powerful compute resources
+  (memory, processors, etc.) available on a well-equipped server
+- Centralized installation and configuration of R, R packages, TeX, and other
+  supporting libraries
 
 %prep
 %autosetup -N
@@ -153,6 +171,7 @@ debugging and managing your workspace.
 %patch2 -p1
 %patch4 -p1
 %patch8 -p1
+%patch9 -p1
 
 # TW & Leap 15.2 specific patches
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
@@ -182,7 +201,7 @@ export RSTUDIO_VERSION_MINOR=%{rstudio_version_minor}
 export RSTUDIO_VERSION_PATCH=%{rstudio_version_patch}
 export RSTUDIO_GIT_REVISION_HASH=%{rstudio_git_revision_hash}
 export GIT_COMMIT=%{rstudio_git_revision_hash}
-%cmake -DRSTUDIO_TARGET=Desktop -DCMAKE_BUILD_TYPE=Release -DRSTUDIO_BOOST_SIGNALS_VERSION=2 -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/rstudio
+%cmake -DRSTUDIO_TARGET=Desktop -DRSTUDIO_SERVER=TRUE -DCMAKE_BUILD_TYPE=Release -DRSTUDIO_BOOST_SIGNALS_VERSION=2 -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/%{name}
 
 # dirty hack:
 # gwtc compilation runs via make -> ant -> java and something in that chain
@@ -194,14 +213,17 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
 # is not enough to OOM the machine. We don't add an addional make call here,
 # because the gwt compilation is *always* re-run on make (i.e. it will run again
 # in %%cmake_install), so adding that would be a waste of resources.
-%make_build rstudio rsession rpostback rstudio-core rstudio-monitor rstudio-r rstudio-session-workers diagnostics
+%make_build rstudio rsession rpostback rstudio-core rstudio-monitor rstudio-r rstudio-session-workers diagnostics rserver rserver-pam
 
 %install
 # fun fact: this recompiles gwt…
 %cmake_install
 
+# create /usr/bin/rstudio-desktop, /usr/bin/rserver, /usr/bin/rserver-pam
 install -d -m 0755 %{buildroot}%{_bindir}
-ln -s %{_libexecdir}/%{name}/bin/%{name} %{buildroot}%{_bindir}/%{name}
+for binary in %{name} rserver rserver-pam; do
+    ln -s %{_libexecdir}/%{name}/bin/${binary} %{buildroot}%{_bindir}/${binary}
+done
 
 # symlink the location where the bundled mathjax should be to
 # /usr/share/javascript/mathjax as mathjax-%%{bundled_mathjax_short_version}
@@ -225,7 +247,7 @@ rm %{buildroot}%{_libexecdir}/%{name}/{INSTALL,COPYING,NOTICE,README.md,SOURCE}
 BASH_PATH=$(which bash)
 for f in postback/askpass-passthrough postback/rpostback-askpass postback/rpostback-editfile postback/rpostback-gitssh postback/rpostback-pdfviewer r-ldpath rstudio-backtrace.sh; do
     full_path=%{buildroot}%{_libexecdir}/%{name}/bin/$f
-    sed -i.orig 's:^#\!/usr/bin/env\s\+bash\s\?$:#\!'"${BASH_PATH}"':' $full_path
+    sed -i.orig 's:^#\!%{_bindir}/env\s\+bash\s\?$:#\!'"${BASH_PATH}"':' $full_path
     touch -r $full_path.orig $full_path
     rm $full_path.orig
 done
@@ -233,12 +255,18 @@ done
 %files
 %license COPYING
 %doc NOTICE README.md
+%{_libexecdir}/rstudio
+
+%files desktop
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/hicolor/*/mimetypes/*
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/pixmaps/%{name}.png
+
+%files server
+%{_bindir}/rserver
+%{_bindir}/rserver-pam
 
 %changelog
