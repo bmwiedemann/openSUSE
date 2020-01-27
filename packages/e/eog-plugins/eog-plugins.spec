@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libgdata)
 BuildRequires:  pkgconfig(libpeas-1.0)
 Requires:       eog
-Recommends:     %{name}-lang
 Suggests:       eog-plugin-exif-display
 Suggests:       eog-plugin-exif-export-to-folder
 Suggests:       eog-plugin-exif-fit-to-width
