@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(manette-0.2)
-Recommends:     %{name}-lang
 
 %description
 Quadrapassel is a version of Tetris, the classic game of interlocking
