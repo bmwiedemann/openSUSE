@@ -39,7 +39,6 @@ gnome-debug, gnome-build, and anjuta2.
 %package -n libgdl-3-5
 Summary:        Gnome Devtool Libraries
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Provides:       gdl = %{version}
 Obsoletes:      gdl < %{version}
 
