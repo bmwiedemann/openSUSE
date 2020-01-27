@@ -54,6 +54,7 @@ BuildRequires:  libtool
 BuildRequires:  libv4l-devel >= 0.8.4
 BuildRequires:  libvorbis-devel
 BuildRequires:  lirc-devel
+BuildRequires:  perl
 BuildRequires:  readline-devel
 BuildRequires:  speex-devel
 BuildRequires:  update-desktop-files
@@ -92,9 +93,9 @@ BuildRequires:  SDL-devel
 BuildRequires:  libjack-devel
 %endif
 BuildRequires:  libmodplug-devel
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
-%define abiversion 2.7
+%define abiversion 2.8
 Summary:        Video Player with Plug-Ins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
@@ -106,8 +107,8 @@ Source1:        baselibs.conf
 
 Patch0:         xine-lib-libdvdread_udf.diff
 Patch1:         xine-lib-v4l-2.6.38.patch
-Patch2:         xine-lib-contrib.patch
-Patch3:         xine-lib-alsa.patch
+#Patch2:         xine-lib-contrib.patch
+#Patch3:         xine-lib-alsa.patch
 # Add theora FOURCC to libxine I found an avi container that xine wouldn't play.
 Patch4:         xine-lib-theora.patch
 # This should be fixed upstream, but this patch will not work for them.
@@ -115,9 +116,9 @@ Patch4:         xine-lib-theora.patch
 # include wand/MagickWand.h for ImageMagick-6 and MagickWand/MagickWand.h for
 # ImageMagick-7. Including wand/MagickWand.h will work for us also for
 # ImageMagick-7, because we package wand/ symlink to ./MagickWand/MagickWand.h
-Patch8:         xine-lib-ImageMagick7.patch
+#Patch8:         xine-lib-ImageMagick7.patch
 # PATCH-FIX-UPSTREAM xine-lib-a52dec.patch davejplater@gmail.com -- Change in a52dec api.
-Patch6:         xine-lib-a52dec.patch
+#Patch6:         xine-lib-a52dec.patch
 
 %description
 <p>Great video and multimediaplayer, supports DVD, MPEG, AVI, DivX, VCD, Quicktime ...</p><p>You need a frontend for xine-lib like <a href=http://packman.links2linux.de/package/xine-ui>xine-ui</a>, <a href=http://packman.links2linux.de/package/gxine>gxine</a>, <a href=http://packman.links2linux.de/package/kaffeine>kaffeine</a> or <a href=http://packman.links2linux.de/package/totem>totem</a>.</p><p>Since 1-rc6 the package number is reduced, all you may miss, is in the base package</p><p>If you want to play css encrypted Video-DVD's, you need to install <a href=http://packman.links2linux.de/package/libdvdcss2>libdvdcss</a>.</p>
@@ -394,20 +395,19 @@ EOF
 # NOTE: the perl do_nukeentry has stopped working with the latest perl
 # I've left it here hoping someone will fix it. Thanks
 # Don't forget to remove xine-lib-nukefaadetc.patch when the perl scripts are functioning again.
-%if 1 == 0
+
 do_nukeentry() {
 for d in $1 ; do
   perl -i -e 'undef $/; $_=<>; for $e (qw|'"$2"'|) { s|(?<=[^-a-zA-Z0-9_./])'"$3"'$e'"$4"'(?=[^-a-zA-Z0-9_./])||g }; print' ${d}
 done
 }
-%else
-do_nukeentry() {
+
+do_nukeentrynp() {
 for i in ${2};do
   cat ${1}|grep -v ${i} >${1}n;mv ${1}n ${1}
 done
 }
 
-%endif
 # $1: files $2: entries $3: prefix $4: postfix
 do_nukeline() {
 for d in $1 ; do
@@ -427,10 +427,11 @@ popd >/dev/null
 # combined/ffmpeg
 echo 1>&2 "Crippling..."
 
-c_subdirs="faad planar dxr3 asf dmx_video libdts libfaad libffmpeg libspucc libspudec libspudvb libw32dll input/vcd"
+c_subdirs="faad planar dxr3 asf dmx_video libdts libfaad libffmpeg libspucc libspudec libspudvb libw32dll"
 c_demuxers="group_video.c demux_elem.c xineplug_dmx_asf.la asfheader.h asfheader.c demux_asf.c xineplug_dmx_mpeg.la demux_mpeg.c xineplug_dmx_mpeg_block.la demux_mpeg_block.c xineplug_dmx_mpeg_ts.la demux_ts.c xineplug_dmx_mpeg_elem.la demux_elem.c xineplug_dmx_mpeg_pes.la demux_mpeg_pes.c xineplug_dmx_yuv4mpeg2.la demux_yuv4mpeg2.c"
-c_input="xineplug_inp_mms.la input_mms.c mms.c mmsh.c ../demuxers/asfheader.c mms.h mmsh.h   xineplug_inp_vcdo.la input_vcd.c   vcd"
+c_input="xineplug_inp_mms.la input_mms.c mms.c mmsh.c ../demuxers/asfheader.c mms.h mmsh.h"
 c_libxineadec="xineplug_decode_gsm610.la xineplug_decode_nsf.la gsm610.c nsf.c  gsm610 nosefart"
+c_post="planar pp_module PLANAR"
 
 do_nukeentry src/Makefile.am             "$c_subdirs"
 do_nukeentry configure.ac                "$c_subdirs" "src/" "/[a-zA-Z0-9_./]*Makefile"
@@ -445,9 +446,9 @@ do_remove    src/input                   "$c_input"
 #do_remove    src/audio_dec               "$c_audiodec"
 #do_nukeentry src/combined/Makefile.am    "ffmpeg"
 #do_remove    src/combined                "ffmpeg"
-do_nukeentry src/post/Makefile.am         "planar"
+do_nukeentrynp src/post/Makefile.am       "$c_post"
 #do_nukeline  src/post/planar/planar.c    "pp_init_plugin pp_special_info"
-do_remove    src/post/planar              "*"
+do_remove    src/post                     "planar"
 sed -i 's@libfaad@@g' contrib/Makefile.am
 %endif
 
@@ -460,10 +461,13 @@ test -x "$(type -p gcc-7)" && export CC="$_"
 test -x "$(type -p gcc-8)" && export CC="$_"
 echo 'AC_DEFUN([AC_REQUIRE_AUX_FILE])dnl' >> acinclude.m4
 
-if [ ! -f configure ]; then
-   NO_CONFIGURE=1 ./autogen.sh
-fi
-AUTOPOINT=true autoreconf -fi
+#rm -f configure
+#if [ ! -f configure ]; then
+./autogen.sh noconfig
+#else
+#AUTOPOINT=true autoreconf -fi
+#fi
+
 %configure \
 	--disable-rpath \
 	--docdir=%{_defaultdocdir}/xine \
@@ -480,6 +484,8 @@ AUTOPOINT=true autoreconf -fi
 	--disable-vdpau \
 	--disable-dxr3 \
 	--disable-asf \
+%else
+        --enable-dxr3 \
 %endif
 %ifarch %{ix86}
 	--with-w32-path=/usr/lib/win32 \
@@ -504,14 +510,21 @@ rm -f files
 %ifarch %{ix86}
   mkdir -p %{buildroot}/usr/lib/win32
 %endif
+%if %{with distributable}
+rm -rf %{buildroot}%{_libdir}/xine/plugins/%{abiversion}/post
+rm -f %{buildroot}%{_libdir}/xine/plugins/%{abiversion}/xineplug_dmx_video.so
+%endif
 #
 # big plugin sorting
-#
+ #
 cat > plugins << EOF
 # these plugins do not have legal problems
+xineplug_tls_gnutls
 xineplug_ao_out_alsa
 xineplug_ao_out_oss
 xineplug_vo_out_fb
+xineplug_vo_gl_egl_x11
+xineplug_vo_gl_glx
 xineplug_vo_out_opengl
 xineplug_vo_out_opengl2
 xineplug_vo_out_xshm
@@ -523,6 +536,7 @@ xineplug_decode_mad
 xineplug_decode_a52
 %if %{without distributable}
 xineplug_vo_out_vdpau
+xineplug_vo_gl_egl_wl
 %endif
 xineplug_inp_dvb
 xineplug_inp_dvd
@@ -535,6 +549,7 @@ xineplug_inp_pvr
 xineplug_inp_rtp
 #New in 1.2.7
 xineplug_decode_rawvideo
+xineplug_decode_libpng
 %if %{without distributable}
 xineplug_decode_vdpau
 post/xineplug_post_audio_filters
@@ -625,9 +640,7 @@ xineplug_decode_gsm610
 xineplug_decode_qt
 xineplug_decode_w32dll
 %endif
-xineplug_decode_dxr3_video
-xineplug_vo_out_dxr3
-xineplug_decode_dxr3_spu
+xineplug_dxr3
 xineplug_vo_out_vaapi
 # unfortunately using external ffmpeg links the planar post
 # processing plugin against ffmpeg libs
@@ -662,9 +675,6 @@ rm -rf %{buildroot}%{_libdir}/xine/plugins/%{abiversion}/{vidix,mime.types}
 rm -f  %{buildroot}%{_libdir}/libxine*
 %endif
 rm -rf %{buildroot}%{_mandir}/man5
-
-%clean
-rm -rf %{buildroot}
 
 %if %{without onlynondistributable}
 

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Jan 26 14:11:29 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 1.2.10 and remove incorporated patches:
+  xine-lib-contrib.patch, xine-lib-alsa.patch, xine-lib-a52dec.patch
+  and xine-lib-ImageMagick7.patch.
+- Upstream changes:
+  *Add (xcb)xv yuy2 emulation.
+  *Add libavcodec v58 compatibility.
+  *Add avio seek support.
+  *Add libdav1d, libaom and lavc AV1 video decoders.
+  *Add libvpx multithreading.
+  *Add libpng decoder.
+  *Add a52 double and fixed point modes.
+  *Add Opus audio support to ogg demuxer.
+  *Add AV1 video support to matroska demuxer.
+  *Add ivf demuxer.
+  *Add mpeg-ts split payload support.
+  *Add TLS support using gnutls or OpenSSL.
+  *Add ftp input plugin (ftp://) with TLS support (ftpes://)
+  *Add tls:// input plugin (raw TLS over TCP).
+  *Add libnfs NFS input plugin.
+  *Add ftp/http seek support.
+  *Add scp forward seek support.
+  *Add mp4 http streaming support (plain and fragment modes).
+  *Add HLS streaming support.
+  *Add HTTP 1.1 support.
+  *Add OpenGL EGL and Wayland support.
+  *Add side stream feature.
+  *Optimize OSD.
+  *Optimize output layers.
+  *Optimize decoder threads.
+  *Optimize event handling.
+  *Optimize stream info.
+  *Optimize TCP/TLS/HTTP network input.
+  *Optimize network buffering control.
+  *Alsa/oss startup optimization.
+  *Optimize input_stdin_fifo.
+  *Optimize internal liba52.
+  *Optimize user seek.
+  *Better support for audio out drivers that cannot resume after pause.
+  *Better support for mpeg pts jumps.
+  *Better bluray seek.
+  *XML parser fixes.
+  *Fix midstream audio mode switch.
+  *Fix FLAC audio playback via ffmpeg.
+  *Fix ffmpeg mpeg1/2 video.
+  *Fix/optimize mpeg, mpeg-ts, qt, flv, matroska, real & asf demuxers.
+  *Fix network seek.
+  *Fix/optimize audio CD.
+  *Fix DVD (occasional crashes, damaged video after a DVD had been
+   played).
+  *Fix opengl2 freeze after X server failure.
+  *Fix tvtime deinterlacer crash.
+  *Fix/optimize overlay.
+  *Fix/optimize old VDR plugin.
+  *Fix xine-ui freeze when opening a playlist while paused.
+  *Security fixes.
+  *More error handling instead of aborting.
+
+-------------------------------------------------------------------
 Sat Apr 13 20:02:32 UTC 2019 - olaf@aepfle.de
 
 - Package xineplug_post_tvtime also on arm64
