@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24
-Recommends:     %{name}-lang
 # gnome-tetravex used to be called 'gnotravex' and was part of gnome-games until 3.7.x
 Obsoletes:      gnotravex < %{version}
 Obsoletes:      gnotravex-lang < %{version}
