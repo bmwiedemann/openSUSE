@@ -48,7 +48,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(pygobject-3.0)
 Requires:       python3-gobject-Gdk
-Recommends:     %{name}-lang
 
 %description
 Alacarte is a simple freedesktop.org compliant menu editor for GNOME
