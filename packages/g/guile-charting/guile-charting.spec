@@ -1,7 +1,7 @@
 #
 # spec file for package guile-charting
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,8 +24,13 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
 URL:            https://wingolog.org/projects/guile-charting/
 Source0:        https://wingolog.org/pub/guile-charting/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE: allow build with Guile 3.0
+Patch0:         add-guile-3.0-support.patch
 BuildRequires:  guile-cairo-devel
 BuildRequires:  guile-devel
+# Required for Patch0
+BuildRequires:  autoconf
+BuildRequires:  automake
 
 %description
 Guile-Charting is a library to create charts and graphs in Guile. It
@@ -33,8 +38,11 @@ is thus far a hack.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
+aclocal
+autoconf
 %configure
 make
 

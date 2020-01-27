@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:28:16 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Add patch:
+  * add-guile-3.0-support.patch: Allow build with Guile 3.0. To
+    regenerate aclocal.m4 and configure we need autoconf and automake. 
+
+-------------------------------------------------------------------
 Mon Apr  9 06:32:25 UTC 2018 - jbrielmaier@suse.de
 
 - remove empty TODO file (fixes rpmlint warning)
