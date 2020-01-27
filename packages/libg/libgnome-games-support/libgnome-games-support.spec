@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.2
-Recommends:     %{name}-lang
 
 %description
 libgnome-games-support is a small library intended for internal use by
