@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:29:44 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 4.0.3
+
+  # Fixed
+
+    * Fixed 2.7 deprecations and warnings (GH-167). [Thanks @BrianHawley]
+
+-------------------------------------------------------------------
 Tue Nov 12 15:03:01 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.0.1
