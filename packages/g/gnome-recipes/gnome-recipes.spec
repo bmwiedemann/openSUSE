@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(rest-0.7)
-Recommends:     %{name}-lang = %{version}
 
 %description
 GNOME Recipes is an easy-to-use application that will help you to discover what to cook
