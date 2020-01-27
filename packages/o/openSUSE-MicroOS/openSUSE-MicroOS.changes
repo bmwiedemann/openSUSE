@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:03:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use net.ifnames=0 everywhere
+- Remove explicit swiotlb and cma assignments from RPi cmdline
+  as the defaults are better meanwhile (bsc#1160308)
+- Do the same for Pine64 as likely the same
+- "console=tty" has to be "console=tty0"
+
+-------------------------------------------------------------------
+Mon Jan 27 10:01:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable lzo compression for armv7, which was disabled by
+  mistake in previous commit
+
+-------------------------------------------------------------------
 Mon Jan 20 08:27:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - remove lzo compression for aarch64 (temporary workaround for kernel 5.4) 
