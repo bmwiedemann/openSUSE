@@ -270,4 +270,12 @@
     <comment>t-u-u / boo#1086036 (forwarded request 589356 from dimstar)</comment>
     <requestid>590043</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>3e1543b2ab8db145cd1f8f73738eb10e</srcmd5>
+    <version>3.26.0</version>
+    <time>1580152400</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767097 from dimstar)</comment>
+    <requestid>767338</requestid>
+  </revision>
 </revisionlist>

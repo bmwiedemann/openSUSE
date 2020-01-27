@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(libanjuta-3.0) >= %{_major_minor}.0
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       anjuta
 Requires:       gsettings-desktop-schemas
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description
