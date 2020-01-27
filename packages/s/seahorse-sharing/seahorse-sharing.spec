@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(sm)
-Recommends:     %{name}-lang
 Enhances:       seahorse
 
 %description
