@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
+BuildRequires:  pkgconfig(glib-2.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{name}-lang
