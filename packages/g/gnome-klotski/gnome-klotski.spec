@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.0
 BuildRequires:  pkgconfig(libgnome-games-support-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(vapigen)
-Recommends:     %{name}-lang
 
 %description
 Klotski is a puzzle game of which the objective is to get the
