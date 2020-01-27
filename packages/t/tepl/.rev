@@ -48,4 +48,12 @@
     <comment>new stable rel (forwarded request 750075 from iznogood)</comment>
     <requestid>750929</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>43d3152dd2ba4016cec71a4f95d842f0</srcmd5>
+    <version>4.2.1</version>
+    <time>1580152588</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767224 from dimstar)</comment>
+    <requestid>767484</requestid>
+  </revision>
 </revisionlist>

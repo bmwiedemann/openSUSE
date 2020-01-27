@@ -43,7 +43,6 @@ editors and IDEs. It is a continuation/rename of Gtef.
 %package -n libtepl-%{lib_ver}
 Summary:        A text editor framework
 Group:          System/Libraries
-Recommends:     %{name}-%{api_ver}-lang
 Provides:       tepl-%{api_ver} = %{version}
 
 %description -n libtepl-%{lib_ver}
