@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
 BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-Recommends:     %{name}-lang
 Supplements:    nautilus
 
 %description
