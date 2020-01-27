@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %endif
 
 Name:           sbd
-Version:        1.4.0+20191029.695f9ca
+Version:        1.4.1+20200113.4b617a1
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
