@@ -33,4 +33,12 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
     <comment></comment>
     <requestid>720103</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>02c3b920997dfbb451632846680e68ec</srcmd5>
+    <version>1.2.12</version>
+    <time>1580152384</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767087 from dimstar)</comment>
+    <requestid>767326</requestid>
+  </revision>
 </revisionlist>

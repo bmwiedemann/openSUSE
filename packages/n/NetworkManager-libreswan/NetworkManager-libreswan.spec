@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
 Requires:       /usr/sbin/ipsec
-Recommends:     %{name}-lang
 Provides:       NetworkManager-openswan = %{version}
 Obsoletes:      NetworkManager-openswan < %{version}
 
