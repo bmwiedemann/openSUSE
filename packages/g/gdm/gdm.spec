@@ -114,7 +114,6 @@ Requires:       xdm
 PreReq:         pwdutils
 Requires(post): dconf
 Requires(pre):  group(video)
-Recommends:     %{name}-lang
 Recommends:     iso-codes
 # accessibility
 Recommends:     orca
