@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan 28 03:50:08 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 0.16.0:
+  * A new Marks feature that allows highlighting and scrolling to
+    arbitrary text in the terminal window.
+  * hints kitten: Allow pressing ctrl+shift+p>n to quickly open the
+    selected file at the selected line in vim or a configurable
+    editor (#2268)
+  * Allow having more than one full height window in the tall
+    layout (#2276)
+  * Allow choosing OpenType features for individual fonts via the
+    font_features option. (#2248)
+  * Wayland: Fix a freeze in rare circumstances when having
+    multiple OS Windows (#2307 and #1722)
+  * Wayland: Fix window titles being set to very long strings on
+    the order of 8KB causing a crash (#1526)
+  * Add an option force_ltr to turn off the display of text in RTL
+    scripts in right-to-left order (#2293)
+  * Allow opening new tabs/windows before the current tab/window as
+    well as after it with the launch --location option.
+  * Add a resize_in_steps option that can be used to resize the OS
+    window in steps as large as character cells (#2131)
+  * When triple-click+dragging to select multiple lines, extend the
+    selection of the first line to match the rest on the left
+    (#2284)
+  * Fix a segfault when using kitty --debug-config with maps
+    (#2270)
+  * goto_tab now maps numbers larger than the last tab to the last
+    tab (#2291)
+  * Fix URL detection not working for urls of the form
+    scheme:///url (#2292)
+  * When windows are semi-transparent and all contain graphics,
+    correctly render them. (#2310)
+
+-------------------------------------------------------------------
 Fri Dec 27 11:14:53 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.1:
