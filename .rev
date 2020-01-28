@@ -938,4 +938,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment>New stable release (forwarded request 750469 from iznogood)</comment>
     <requestid>750947</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>54cc3f7853a2bc51914cdb8984418c47</srcmd5>
+    <version>0.58.3</version>
+    <time>1580205197</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767230 from dimstar)</comment>
+    <requestid>767490</requestid>
+  </revision>
 </revisionlist>

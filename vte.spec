@@ -61,7 +61,6 @@ emulation settings.
 Summary:        Terminal Emulator Library
 License:        LGPL-2.0-only
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Needed to make lang package installable (and because we used to
 # have a vte package earlier).
 Provides:       %{name} = %{version}
