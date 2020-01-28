@@ -663,4 +663,12 @@ Note this warning (not new), should we care?
 </comment>
     <requestid>754062</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>af760ad94dea6fb109452fda57002b6d</srcmd5>
+    <version>1.4.4</version>
+    <time>1580204853</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767104 from dimstar)</comment>
+    <requestid>767346</requestid>
+  </revision>
 </revisionlist>

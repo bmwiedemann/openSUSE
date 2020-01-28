@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:06:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Wed Dec  4 10:15:30 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Add add-spyderx.patch for datacolor SpyderX supprot (will be in version 1.4.5)

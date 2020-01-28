@@ -60,7 +60,6 @@ BuildRequires:  pkgconfig(vapigen)
 Requires:       argyllcms
 Requires:       colord-color-profiles
 Requires(pre):  pwdutils
-Recommends:     %{name}-lang
 %{?systemd_requires}
 
 %description
