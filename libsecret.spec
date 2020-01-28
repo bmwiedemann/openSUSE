@@ -53,7 +53,6 @@ secrets. It communicates with the "Secret Service" using DBus.
 Summary:        Library for accessing the Secret Service API
 Group:          System/Libraries
 %if %{have_lang}
-Recommends:     %{name}-lang
 # To make the lang package happy
 Provides:       %{name} = %{version}
 %endif
