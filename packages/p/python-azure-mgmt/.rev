@@ -92,4 +92,31 @@
     <comment></comment>
     <requestid>764092</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>7eced604e2eaac28b6d5ef1f793bbcb9</srcmd5>
+    <version>4.0.0</version>
+    <time>1580205427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version numbers for component packages in Requires
+  + python-azure-mgmt-advisor &gt;= 3.0.0
+  + python-azure-mgmt-cdn &gt;= 4.0.0
+  + python-azure-mgmt-containerservice &gt;= 8.2.0
+  + python-azure-mgmt-datamigration &gt;= 4.0.0
+  + python-azure-mgmt-deploymentmanager &gt;= 0.2.0
+  + python-azure-mgmt-frontdoor &gt;= 0.3.
+  + python-azure-mgmt-hanaonazure &gt;= 0.12.0
+  + python-azure-mgmt-hdinsight &gt;= 1.4.0
+  + python-azure-mgmt-imagebuilder &gt;= 0.3.0
+  + python-azure-mgmt-iotcentral &gt;= 2.0.0
+  + python-azure-mgmt-iothub &gt;= 0.10.0
+  + python-azure-mgmt-kusto &gt;= 0.5.0
+  + python-azure-mgmt-media &gt;= 2.1.0
+  + python-azure-mgmt-netapp &gt;= 0.8.0
+  + python-azure-mgmt-network &gt;= 9.0.0
+  + python-azure-mgmt-recoveryservicesbackup &gt;= 0.6.0
+  + python-azure-mgmt-storagecache &gt;= 0.2.0
+  + python-azure-mgmt-storagesync &gt;= 0.2.0
+  + python-azure-mgmt-web &gt;= 0.44.0</comment>
+    <requestid>767870</requestid>
+  </revision>
 </revisionlist>
