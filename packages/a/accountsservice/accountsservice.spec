@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libsystemd) >= 186
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
-Recommends:     %{name}-lang
 %{?systemd_ordering}
 
 %description
