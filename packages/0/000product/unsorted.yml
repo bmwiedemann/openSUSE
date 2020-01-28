@@ -2961,7 +2961,7 @@ unsorted:
   - fftw3-gnu-mvapich2-hpc-devel 
   - fftw3-gnu-openmpi1-hpc-devel 
   - fftw3-gnu-openmpi2-hpc-devel 
-  - fftw3-gnu-openmpi3-hpc-devel: [x86_64] 
+  - fftw3-gnu-openmpi3-hpc-devel 
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
   - fftw3-threads-devel 
@@ -2975,8 +2975,8 @@ unsorted:
   - fftw3_3_3_8-gnu-openmpi1-hpc-devel-static 
   - fftw3_3_3_8-gnu-openmpi2-hpc-devel 
   - fftw3_3_3_8-gnu-openmpi2-hpc-devel-static 
-  - fftw3_3_3_8-gnu-openmpi3-hpc-devel: [x86_64] 
-  - fftw3_3_3_8-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - fftw3_3_3_8-gnu-openmpi3-hpc-devel 
+  - fftw3_3_3_8-gnu-openmpi3-hpc-devel-static 
   - fhourstones 
   - fhs 
   - fife-devel 
@@ -6643,7 +6643,6 @@ unsorted:
   - kpeople5-32bit: [x86_64] 
   - kpeople5-devel 
   - kpeople5-devel-32bit: [x86_64] 
-  - kpeoplevcard 
   - kpeoplevcard-devel 
   - kphotoalbum 
   - kphotoalbum-lang 
@@ -7197,7 +7196,6 @@ unsorted:
   - libKF5Plotting5-32bit: [x86_64] 
   - libKF5Prison5-32bit: [x86_64] 
   - libKF5Pty5-32bit: [x86_64] 
-  - libKF5PulseAudioQt2 
   - libKF5Purpose5-32bit: [x86_64] 
   - libKF5PurposeWidgets5-32bit: [x86_64] 
   - libKF5QGpgme5 
@@ -8812,13 +8810,13 @@ unsorted:
   - libfftw3-gnu-mvapich2-hpc 
   - libfftw3-gnu-openmpi1-hpc 
   - libfftw3-gnu-openmpi2-hpc 
-  - libfftw3-gnu-openmpi3-hpc: [x86_64] 
+  - libfftw3-gnu-openmpi3-hpc 
   - libfftw3_3_3_8-gnu-hpc 
   - libfftw3_3_3_8-gnu-mpich-hpc 
   - libfftw3_3_3_8-gnu-mvapich2-hpc 
   - libfftw3_3_3_8-gnu-openmpi1-hpc 
   - libfftw3_3_3_8-gnu-openmpi2-hpc 
-  - libfftw3_3_3_8-gnu-openmpi3-hpc: [x86_64] 
+  - libfftw3_3_3_8-gnu-openmpi3-hpc 
   - libfftw3_mpi3 
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
@@ -15204,6 +15202,15 @@ unsorted:
   - openhpi-devel 
   - openjade 
   - openjade-devel 
+  - openjfx 
+  - openjfx-devel 
+  - openjfx-javadoc 
+  - openjfx-jmods 
+  - openjfx-src 
+  - openjfx8 
+  - openjfx8-devel 
+  - openjfx8-javadoc 
+  - openjfx8-src 
   - openjpeg 
   - openjpeg-devel 
   - openjpeg-devel-32bit: [x86_64] 
@@ -15269,7 +15276,7 @@ unsorted:
   - openmpi_1_10_7-gnu-hpc-devel-static 
   - openmpi_1_10_7-gnu-hpc-docs 
   - openmpi_1_10_7-gnu-hpc-macros-devel 
-  - openmpi_1_10_7-gnu-hpc-testsuite: [x86_64] 
+  - openmpi_1_10_7-gnu-hpc-testsuite 
   - openmpi_2_1_6-gnu-hpc 
   - openmpi_2_1_6-gnu-hpc-devel 
   - openmpi_2_1_6-gnu-hpc-devel-static 
@@ -22913,6 +22920,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
+  - radiotray-ng 
   - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
@@ -23134,6 +23142,8 @@ unsorted:
   - rst2html5 
   - rstart 
   - rstudio 
+  - rstudio-desktop 
+  - rstudio-server 
   - rsvg-convert 
   - rsvndump 
   - rsvndump-lang 
@@ -23262,6 +23272,7 @@ unsorted:
   - ruby2.6-rubygem-bcrypt-testsuite 
   - ruby2.6-rubygem-bcrypt_pbkdf-doc 
   - ruby2.6-rubygem-bcrypt_pbkdf-testsuite 
+  - ruby2.6-rubygem-benchmark-doc 
   - ruby2.6-rubygem-bindata-doc 
   - ruby2.6-rubygem-bindata-testsuite 
   - ruby2.6-rubygem-bindex-doc 
