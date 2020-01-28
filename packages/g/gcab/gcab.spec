@@ -32,7 +32,6 @@ BuildRequires:  vala >= 0.14
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.4
-Recommends:     %{name}-lang
 
 %description
 gcab is a tool and library for manipulating cabinet files.
