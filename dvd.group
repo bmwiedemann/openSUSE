@@ -773,8 +773,6 @@
     <package name="gnome-shell-classic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-classic-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-extension-desktop-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-shell-extensions-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-shell-extensions-common-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-bijiben" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-contacts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -801,7 +799,6 @@
     <package name="gnome-tweaks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-tweaks-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-user-docs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-user-docs-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-user-share" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-user-share-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-version" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3944,16 +3941,18 @@
     <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-devel -->
     <package name="postgresql-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="postgresql-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql10" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10 -->
     <package name="postgresql10-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10-contrib -->
     <package name="postgresql10-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10-devel -->
     <package name="postgresql10-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql10-contrib -->
-    <package name="postgresql11" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
-    <package name="postgresql11-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql11-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-devel -->
-    <package name="postgresql11-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="postgresql11-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql12" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
+    <package name="postgresql12-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql12-devel" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-devel -->
+    <package name="postgresql12-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="postgresql12-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql12-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
