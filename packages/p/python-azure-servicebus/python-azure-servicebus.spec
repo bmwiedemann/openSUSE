@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-servicebus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-servicebus
-Version:        0.50.1
+Version:        0.50.2
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
+URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-servicebus/azure-servicebus-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -31,10 +31,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-common >= 1.1.5
+Requires:       python-azure-common < 2.0.0
+Requires:       python-azure-common >= 1.1
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests
-Requires:       python-uamqp >= 1.1.0
+Requires:       python-uamqp < 2.0.0
+Requires:       python-uamqp >= 1.2.5
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -42,9 +44,12 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This is the Microsoft Azure Service Bus Runtime Client Library.
+This is the Microsoft Azure Service Bus Client Library.
+This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
-This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
+Microsoft Azure Service Bus supports a set of cloud-based, message-oriented
+middleware technologies including reliable message queuing and durable
+publish/subscribe messaging.
 
 %prep
 %setup -q -n azure-servicebus-%{version}
