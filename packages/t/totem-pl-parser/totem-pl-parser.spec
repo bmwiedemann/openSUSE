@@ -1,7 +1,7 @@
 #
 # spec file for package totem-pl-parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,13 +34,12 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
-BuildRequires:  pkgconfig(glib-2.0) >= 2.31.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libarchive) >= 3.0
 BuildRequires:  pkgconfig(libquvi-0.9) >= 0.9.1
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       libquvi-scripts
-Recommends:     %{name}-lang
 
 %description
 totem-pl-parser is a GObject-based library to parse a host of
