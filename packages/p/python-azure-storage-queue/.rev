@@ -23,4 +23,21 @@
     <comment>- Update Python Azure SDK to latest version (forwarded request 735269 from glaubitz)</comment>
     <requestid>735763</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6bbb6a1bfd54af2979bc4f6a9c5d44e</srcmd5>
+    <version>12.1.0</version>
+    <time>1580205423</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.1.0
+  + For detailed information about changes see the
+    HISTORY.md file provided with this package
+- Add unzip to BuildRequires
+- Add missing HISTORY.md to %files section
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py
+- Update %description from README.md (forwarded request 767760 from glaubitz)</comment>
+    <requestid>767848</requestid>
+  </revision>
 </revisionlist>
