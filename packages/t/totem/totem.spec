@@ -70,7 +70,6 @@ BuildRequires:  pkgconfig(x11)
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       iso-codes
-Recommends:     %{name}-lang
 # Required for cluttersink
 Recommends:     gstreamer-plugin-cluttergst3
 Recommends:     gstreamer-plugins-bad
