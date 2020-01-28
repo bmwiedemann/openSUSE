@@ -42,7 +42,6 @@ word opens a menu of suggested replacements.
 %package -n libgtkspell0
 Summary:        GTK2 Spell Checker Interface Library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Needed to make lang package installable
 Provides:       gtkspell = %{version}
 # SLPP applied during development of 12.1. gtkspell last shipped in 11.4

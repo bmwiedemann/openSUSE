@@ -245,4 +245,12 @@
     <comment>spec-cleaner (forwarded request 581203 from dimstar)</comment>
     <requestid>582794</requestid>
   </revision>
+  <revision rev="36" vrev="22">
+    <srcmd5>85f04b869ddcbd101c950f51cef0a7f8</srcmd5>
+    <version>2.0.16</version>
+    <time>1580205071</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767176 from dimstar)</comment>
+    <requestid>767439</requestid>
+  </revision>
 </revisionlist>
