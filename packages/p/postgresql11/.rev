@@ -49,4 +49,20 @@
 - Use FAT LTO objects in order to provide proper static library.</comment>
     <requestid>723108</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eccf1b78f61e631ec633d5c3479f5a43</srcmd5>
+    <version>11.6</version>
+    <time>1580204753</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.6:
+  https://www.postgresql.org/about/news/1994/
+  https://www.postgresql.org/docs/11/release-11-6.html
+
+- add requires to the server-devel package for the libs that are
+  returned by pg_config --libs
+
+- disable building of the libraries here. Will now be provided from
+  the 12.0 package</comment>
+    <requestid>766658</requestid>
+  </revision>
 </revisionlist>

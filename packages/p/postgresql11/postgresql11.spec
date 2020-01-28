@@ -58,7 +58,7 @@
 %if "@BUILD_FLAVOR@" == "libs"
 Name:           %pgname-libs
 %define buildmain 0
-%define buildlibs 1
+%define buildlibs 0
 %define builddevel 1
 %else
 Name:           %pgname
@@ -112,7 +112,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        11.5
+Version:        11.6
 Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
 Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2.sha256
@@ -258,6 +258,19 @@ Provides:       postgresql-server-devel-exclusive = %pgmajor
 Conflicts:      postgresql-server-devel-exclusive < %pgmajor
 %if %{with llvm}
 Requires:       clang-devel
+%endif
+Requires:       libxslt-devel
+Requires:       openssl-devel
+Requires:       pam-devel
+Requires:       readline-devel
+Requires:       zlib-devel
+%if 0%{?suse_version} == 1110
+Requires:       krb5-devel
+%else
+Requires:       pkgconfig(krb5)
+%endif
+%if %{with selinux}
+Requires:       libselinux-devel
 %endif
 
 %description server-devel
