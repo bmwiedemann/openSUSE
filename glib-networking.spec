@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig(libproxy-1.0) >= 0.3.1
 BuildRequires:  pkgconfig(systemd)
 # org.gnome.system.proxy schema is used
 Requires:       gsettings-desktop-schemas
-Recommends:     %{name}-lang = %{version}
 Supplements:    %{gio_real_package}
 %{glib2_gio_module_requires}
 

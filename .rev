@@ -542,4 +542,12 @@ a newer version not fitting</comment>
     <comment></comment>
     <requestid>761234</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>7f629a47799fb1a1d0e19fcec7afe89e</srcmd5>
+    <version>2.62.3</version>
+    <time>1580204952</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767123 from dimstar)</comment>
+    <requestid>767391</requestid>
+  </revision>
 </revisionlist>
