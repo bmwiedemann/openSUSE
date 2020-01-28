@@ -73,7 +73,6 @@ BuildRequires:  libsmbclient-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  samba
 Requires:       desktop-file-utils
-Recommends:     %{name}-lang
 #
 Obsoletes:      gnome-vfs-extras
 Provides:       gnome-vfs-extras
