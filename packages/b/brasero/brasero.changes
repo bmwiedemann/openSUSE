@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:05:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Mon Sep 16 10:45:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable building of gtk-doc, it fails with newer (1.32) versions

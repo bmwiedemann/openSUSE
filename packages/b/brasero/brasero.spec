@@ -69,7 +69,6 @@ Requires:       cdrdao
 Requires:       gstreamer >= 0.11.02
 Requires:       gstreamer-plugins-base >= 0.11.92
 Requires:       gstreamer-plugins-good >= 0.11.92
-Recommends:     %{name}-lang
 Provides:       brasero-doc = 0.9.1
 Obsoletes:      brasero-doc < 0.9.1
 Provides:       gnomebaker = 0.6.1
@@ -105,7 +104,6 @@ Brasero is an application for the GNOME Desktop to write CD/DVDs.
 %package -n libbrasero-burn3-1
 Summary:        Brasero composition utility function library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # The obsoletes IS technically wrong. But as libbrasero-utils was
 # not split from the main package, is required to have a smooth
 # upgrade possibility.
@@ -130,7 +128,6 @@ libbrasero-burn library.
 %package -n libbrasero-media3-1
 Summary:        Brasero media utility function library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 
 %description -n libbrasero-media3-1
 Brasero is an application for the GNOME Desktop to write CD/DVDs.
@@ -151,7 +148,6 @@ libbrasero-media library.
 %package -n libbrasero-utils3-1
 Summary:        Brasero miscellaneous utility function library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 
 %description -n libbrasero-utils3-1
 Brasero is an application to burn CD/DVDs for the GNOME Desktop. It is
