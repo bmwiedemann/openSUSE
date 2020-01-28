@@ -46,7 +46,6 @@ data.
 %package 1_0-2
 Summary:        Easy Publish and Consume Library
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
 # For lang package to be installable:
 Provides:       %{name} = %{version}
 
