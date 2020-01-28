@@ -39,7 +39,6 @@ Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       openconnect
 Requires(pre):  pwdutils
-Recommends:     %{name}-lang
 ExcludeArch:    s390 s390x
 
 %description
