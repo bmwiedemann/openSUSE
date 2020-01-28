@@ -1058,6 +1058,7 @@ unsorted:
   - bazel0.24: [x86_64] 
   - bazel0.29: [x86_64] 
   - bazel1.2: [x86_64] 
+  - bazel2.0: [x86_64] 
   - bb 
   - bbe 
   - bbswitch 
@@ -3636,8 +3637,6 @@ unsorted:
   - getdp 
   - getdp-devel 
   - getdp-doc 
-  - getmail 
-  - getmail-doc 
   - gettext-csharp 
   - gettext-its-gtk3 
   - gettext-its-gtk4 
@@ -4542,6 +4541,8 @@ unsorted:
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
   - gnome-shell-extension-terminus 
+  - gnome-shell-extensions-common 
+  - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-gnome-calendar 
@@ -4567,6 +4568,7 @@ unsorted:
   - gnome-todo-lang 
   - gnome-usage 
   - gnome-usage-lang 
+  - gnome-user-docs-lang 
   - gnome-vfs2 
   - gnome-vfs2-32bit: [x86_64] 
   - gnome-vfs2-devel 
@@ -5325,7 +5327,6 @@ unsorted:
   - herbstluftwm-examples 
   - herbstluftwm-fish-completion 
   - herbstluftwm-zsh-completion 
-  - hercules 
   - heroes-tron 
   - hevea 
   - hex 
@@ -5379,9 +5380,6 @@ unsorted:
   - hping-doc 
   - hplip-devel 
   - hplip-scan-utils 
-  - hpx 
-  - hpx-devel 
-  - hpx-devel-static 
   - hspec-discover 
   - hsqldb 
   - hsqldb-demo 
@@ -5838,10 +5836,6 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
-  - java-1_8_0-openjfx 
-  - java-1_8_0-openjfx-devel 
-  - java-1_8_0-openjfx-javadoc 
-  - java-1_8_0-openjfx-src 
   - java-atk-wrapper 
   - java-binfmt-misc 
   - java-cup 
@@ -9474,7 +9468,6 @@ unsorted:
   - libhmac1 
   - libhowl0 
   - libhpdf2_3_0 
-  - libhpx1 
   - libhs5 
   - libhssi-io1: [x86_64] 
   - libhtp-devel 
@@ -14451,6 +14444,8 @@ unsorted:
   - nlopt-devel 
   - nm-tray 
   - nm-tray-lang 
+  - nmap-parse-output 
+  - nmap-parse-output-bash-completion 
   - nmapsi4 
   - nmcli-dmenu 
   - nmh 
@@ -17242,7 +17237,6 @@ unsorted:
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
-  - postgresql-llvmjit 
   - postgresql-plperl 
   - postgresql-plpython 
   - postgresql-pltcl 
@@ -17258,6 +17252,10 @@ unsorted:
   - postgresql10-pltcl 
   - postgresql10-test 
   - postgresql10-timescaledb 
+  - postgresql11 
+  - postgresql11-contrib 
+  - postgresql11-devel 
+  - postgresql11-docs 
   - postgresql11-llvmjit 
   - postgresql11-pg_cron 
   - postgresql11-pg_cron-llvmjit 
@@ -17267,9 +17265,15 @@ unsorted:
   - postgresql11-plr 
   - postgresql11-plr-doc 
   - postgresql11-pltcl 
+  - postgresql11-server 
   - postgresql11-server-devel 
   - postgresql11-test 
   - postgresql11-timescaledb 
+  - postgresql12-plperl 
+  - postgresql12-plpython 
+  - postgresql12-pltcl 
+  - postgresql12-server-devel 
+  - postgresql12-test 
   - postgresql94 
   - postgresql94-contrib 
   - postgresql94-devel 
@@ -17729,7 +17733,6 @@ unsorted:
   - python-paramiko-doc 
   - python-peppercorn-doc 
   - python-pisock 
-  - python-plaso 
   - python-plist 
   - python-ply-doc 
   - python-polib-doc 
@@ -18144,6 +18147,7 @@ unsorted:
   - python2-azure-core 
   - python2-azure-cosmos 
   - python2-azure-datalake-store 
+  - python2-azure-devops 
   - python2-azure-eventgrid 
   - python2-azure-functions-devops-build 
   - python2-azure-graphrbac 
@@ -20448,6 +20452,7 @@ unsorted:
   - python3-azure-core 
   - python3-azure-cosmos 
   - python3-azure-datalake-store 
+  - python3-azure-devops 
   - python3-azure-eventgrid 
   - python3-azure-functions-devops-build 
   - python3-azure-graphrbac 
@@ -25131,6 +25136,7 @@ unsorted:
   - testdisk 
   - testng 
   - testng-javadoc 
+  - testssl.sh 
   - tetrinet-server 
   - tevent-man 
   - texamator 
@@ -32566,7 +32572,6 @@ unsorted:
   - trojita 
   - trousers 
   - trousers-devel 
-  - trustedgrub 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
   - truth 
@@ -33180,7 +33185,6 @@ unsorted:
   - virtualbox-websrv 
   - viruskiller 
   - visio2svg-conv 
-  - visualjackm 
   - vit 
   - vitetris 
   - vkd3d-devel 
@@ -33976,7 +33980,6 @@ unsorted:
   - zeitgeist-devel 
   - zerobranestudio 
   - zerofree: [i586] 
-  - zeroinstall-injector 
   - zeromq-devel 
   - zhu3d 
   - zile 
