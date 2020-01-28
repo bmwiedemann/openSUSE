@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-Recommends:     %{name}-lang
 
 %description
 Swell Foop is a puzzle game, of which the objective is to clear the
