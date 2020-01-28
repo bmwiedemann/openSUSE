@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vte-2.91) >= 0.58.0
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
-Recommends:     %{name}-lang
 
 %description
 This package provides the GNOME terminal emulator application.

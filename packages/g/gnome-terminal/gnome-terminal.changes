@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:12:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Tue Nov 19 05:51:44 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
 
 - Remove migration support between gconf and dconf since it was
