@@ -1,7 +1,7 @@
 #
 # spec file for package hbci4java
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Office/Finance
 Version:        2.5.12.hibiscus.2.6.18
 Release:        0
-Url:            https://github.com/willuhn/hbci4java
+URL:            https://github.com/willuhn/hbci4java
 Source:         https://github.com/willuhn/hibiscus/raw/V_2_6_18_BUILD_361/lib.src/hbci4java-2.5.12-src.zip
 # extracted from https://github.com/willuhn/hbci4java
 Source1:        build.xml
@@ -34,6 +34,7 @@ Patch2:         signed-char.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ant
 BuildRequires:  gcc-c++
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  unzip
 
 %description

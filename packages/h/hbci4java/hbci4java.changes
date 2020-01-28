@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 06:11:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Require java-devel >= 1.8 in order to support nativeheaders
+  directive
+
+-------------------------------------------------------------------
 Mon Mar  5 09:11:07 UTC 2018 - schwab@suse.de
 
 - signed-char.patch: fix conflicting char signedness
