@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.27.90
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
-Recommends:     %{name}-lang
 Suggests:       apache2-mod_dnssd
 Suggests:       apache2-prefork
 Suggests:       apache2-worker
