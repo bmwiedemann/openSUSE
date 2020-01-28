@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.4
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
-Recommends:     %{name}-lang
 Obsoletes:      %{name}-doc <= 3.28.0
 
 %description
