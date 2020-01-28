@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(libpipewire-0.2) >= 0.2.6
 BuildRequires:  pkgconfig(libportal)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
-Recommends:     %{name}-lang
 
 %description
 A portal frontend service for Flatpak and possibly other desktop containment frameworks.
