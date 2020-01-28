@@ -800,4 +800,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736618</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>d0a691adf3fb9bff462ae98e7502d22e</srcmd5>
+    <version>3.34.0</version>
+    <time>1580205214</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767235 from dimstar)</comment>
+    <requestid>767495</requestid>
+  </revision>
 </revisionlist>

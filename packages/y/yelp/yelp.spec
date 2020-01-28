@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(yelp-xsl) >= 3.31.90
 Requires:       docbook_4
 # We need the stylesheets from yelp-xsl
 Requires:       yelp-xsl
-Recommends:     %{name}-lang
 Provides:       suse_help_viewer
 
 %description
