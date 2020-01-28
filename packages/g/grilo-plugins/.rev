@@ -381,4 +381,12 @@
   (bsc#1158231 glgo#GNOME/grilo-plugins#61). (forwarded request 754663 from mgorse)</comment>
     <requestid>754976</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>3c1526d6fdbd197123cd9b6dd18938b6</srcmd5>
+    <version>0.3.10</version>
+    <time>1580205056</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767164 from dimstar)</comment>
+    <requestid>767429</requestid>
+  </revision>
 </revisionlist>

@@ -63,7 +63,6 @@ BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
 BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.3.0
-Recommends:     %{name}-lang
 # Recommend gupnp-plugin-dleyna (UPnP support)
 Recommends:     gupnp-plugin-dleyna
 %if 0%{?is_opensuse}

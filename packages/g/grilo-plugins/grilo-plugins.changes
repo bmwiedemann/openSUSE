@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:13:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Fri Dec  6 04:39:29 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
 
 - Add tracker-fix-crash-if-chromaprint-plugin-not-installed.patch:
