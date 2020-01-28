@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 26 03:10:47 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-String-RewritePrefix/Changes
+
+  0.008     2020-01-25 16:10:30-05:00 America/New_York
+            more tests (thanks, Olivier Mengué!)
+            warn when rewriting an empty list in scalar context (thanks, Olivier Mengué!)
+
+-------------------------------------------------------------------
 Tue Nov 26 07:35:13 UTC 2013 - coolo@suse.com
 
 - updated to 0.007
