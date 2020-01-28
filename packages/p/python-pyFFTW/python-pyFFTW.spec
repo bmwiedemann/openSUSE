@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyFFTW
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ License:        GPL-2.0-or-later AND BSD-3-Clause
 Group:          Development/Languages/Python
 Url:            http://hgomersall.github.com/pyFFTW/
 Source:         https://files.pythonhosted.org/packages/source/p/pyFFTW/pyFFTW-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/pyFFTW/pyFFTW/pull/265.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.6}
@@ -60,6 +61,7 @@ repository.
 
 %prep
 %setup -q -n pyFFTW-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
