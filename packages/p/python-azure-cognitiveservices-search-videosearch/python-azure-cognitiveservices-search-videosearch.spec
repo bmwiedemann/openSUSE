@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-cognitiveservices-search-videosearch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-search-videosearch
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Video Search Client Library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
+URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-search-videosearch/azure-cognitiveservices-search-videosearch-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
@@ -49,7 +49,7 @@ BuildArch:      noarch
 %description
 This is the Microsoft Azure Cognitive Services Video Search Client Library.
 
-This package has been tested with Python 2.7, 3.4, 3.5 and 3.6.
+This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
 %setup -q -n azure-cognitiveservices-search-videosearch-%{version}
