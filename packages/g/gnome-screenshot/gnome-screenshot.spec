@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
-Recommends:     %{name}-lang
 Conflicts:      gnome-utils < 3.3.1
 
 %description

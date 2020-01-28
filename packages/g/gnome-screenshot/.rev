@@ -307,4 +307,12 @@
   + Updated translations. (forwarded request 738461 from iznogood)</comment>
     <requestid>738537</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>fc5abb69f17a3db8b705a8ee38b22031</srcmd5>
+    <version>3.34.0</version>
+    <time>1580205018</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767146 from dimstar)</comment>
+    <requestid>767411</requestid>
+  </revision>
 </revisionlist>
