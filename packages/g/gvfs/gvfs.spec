@@ -68,7 +68,6 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udisks2) >= 1.97
-Recommends:     %{name}-lang
 Recommends:     gvfs-backends
 Recommends:     gvfs-common
 Recommends:     gvfs-fuse
