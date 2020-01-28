@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.5
 # Requires the xdg-desktop-portal service to be available
 Requires:       xdg-desktop-portal
-Recommends:     %{name}-lang
 # Users of GTK+ 3.0 and flatpak would enjoy this integration
 Supplements:    (gtk3 and (flatpak or snapd))
 %if 0%{?suse_version} >= 1330
