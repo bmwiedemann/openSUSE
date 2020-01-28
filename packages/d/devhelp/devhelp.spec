@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.20
 
-Recommends:     %{name}-lang
 Suggests:       emacs-plugin-devhelp
 Suggests:       gedit-plugin-devhelp
 Suggests:       vim-plugin-devhelp

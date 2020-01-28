@@ -660,4 +660,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736503</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>228d0c7a3bf42664b7f2724d8123a9de</srcmd5>
+    <version>3.34.0</version>
+    <time>1580204864</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767108 from dimstar)</comment>
+    <requestid>767355</requestid>
+  </revision>
 </revisionlist>
