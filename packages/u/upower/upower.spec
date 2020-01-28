@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 BuildRequires:  pkgconfig(libplist) >= 0.12
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(systemd)
-Recommends:     %{name}-lang
 %{?systemd_requires}
 
 %description
