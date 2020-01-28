@@ -1,7 +1,36 @@
+# By default the /@name@ Alias is enabled for all vhosts.
+# To disable the /@name@ Alias, run
+#     a2enflag -d @name@ && rcapache2 restart
+# This will make /@name@ unavailable on any vhosts.
+#
+# If you want to have the /@name@ Alias only on a specific
+# vhost, add the Alias to the config of that vhost.
+
+<IfDefine @name@>
+    <IfModule mod_alias.c>
+        Alias /@name@ @ap_docroot@/@name@
+    </IfModule>
+</IfDefine>
+
 <Directory @ap_docroot@/@name@>
 
     Options FollowSymLinks
     AllowOverride None
+
+    <IfVersion < 2.4>
+        Order Allow,Deny
+        Allow from all
+    </IfVersion>
+
+    <IfVersion >= 2.4>
+        <IfModule !mod_access_compat.c>
+            Require all granted
+        </IfModule>
+        <IfModule mod_access_compat.c>
+            Order Allow,Deny
+            Allow from all
+        </IfModule>
+    </IfVersion>
 
     <IfModule mod_php5.c>
         Include @ap_sysconfdir@/conf.d/@name@.inc

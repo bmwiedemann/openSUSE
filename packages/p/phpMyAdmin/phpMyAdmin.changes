@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 21 21:24:30 UTC 2020 - chris@computersalat.de
+
+- fix for boo#1092345
+  * change ap_docroot from /srv/www/htdocs to /usr/share
+    work is based on changes provided by ecsos@opensuse.org
+    if phpMyAdmin.conf for apache was changed by local admin, we will
+    create a backup and replace the original file with the new version
+    sorry admins, but you need to apply your changes again
+  * needed Alias /phpMyAdmin is an enabled APACHE_SERVER_FLAGS default
+    for more info have a look into /etc/apache2/conf.d/phpMyAdmin.conf
+- cleanup tmp/twig on
+  * uninstall
+  * ap_docroot change
+
+-------------------------------------------------------------------
 Wed Jan  8 14:26:20 UTC 2020 - chris@computersalat.de
 
 - update to 4.9.4 (2020-01-07)

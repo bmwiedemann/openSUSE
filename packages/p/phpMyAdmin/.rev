@@ -1386,4 +1386,12 @@ CVE-2014-8958 [boo#906485]</comment>
     <comment>fix for boo#1160456 (PMASA-2020-1, CVE-2020-5504) (forwarded request 761879 from computersalat)</comment>
     <requestid>761881</requestid>
   </revision>
+  <revision rev="163" vrev="2">
+    <srcmd5>2eb340eca61626334230539cbeff7b22</srcmd5>
+    <version>4.9.4</version>
+    <time>1580205249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766405</requestid>
+  </revision>
 </revisionlist>

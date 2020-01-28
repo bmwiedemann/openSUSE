@@ -19,7 +19,8 @@
 %define apxs %{_sbindir}/apxs2
 %define ap_sysconfdir %(%{apxs} -q SYSCONFDIR)
 %define ap_serverroot %(%{apxs} -q PREFIX)
-%define ap_docroot %(%{apxs} -q PREFIX)/htdocs
+%define ap_docroot_old %{ap_serverroot}/htdocs
+%define ap_docroot %{_datadir}
 %define pma_config %{_sysconfdir}/%{name}/config.inc.php
 %if 0%{?suse_version}
 %define ap_usr wwwrun
@@ -164,6 +165,20 @@ sed -i -e "s,@ap_docroot@,%{ap_docroot},g" -e "s,@name@,%{name},g" \
 %fdupes %{buildroot}%{ap_docroot}/%{name}/libraries
 %fdupes %{buildroot}%{ap_docroot}/%{name}/themes
 
+%pre
+# removing tmp/twig before ap_docroot change
+# a new one will be created anyway in new ap_docroot (like after a clean install)
+if [ -d "%{ap_docroot_old}/%{name}/tmp" ]; then
+  echo "removing %{ap_docroot_old}/%{name}/tmp for ap_docroot change"
+  rm -rf "%{ap_docroot_old}/%{name}/tmp" || :
+fi
+
+%preun
+if [ $1 -eq 0 ]; then
+  echo "removing %{ap_docroot}/%{name}/tmp for clean uninstall"
+  rm -rf "%{ap_docroot}/%{name}/tmp" || :
+fi
+
 %post
 # on `rpm -ivh` PARAM is 1
 # on `rpm -Uvh` PARAM is 2
@@ -174,14 +189,44 @@ sed -i -e "s,@FQDN@,$(cat %{_sysconfdir}/HOSTNAME)," \
 if [ -x %{_sbindir}/a2enmod ]; then
   a2enmod -q version || a2enmod version
   # get installed php_version (5 or 7)
+  # ap_mpm=$(awk '/Server MPM/ {print $3}' <<<$(start_apache2 -V))
+  # php_version=$(awk -F[." "] '/cli/ {print $2}' <<< $(php -v))
   php_version=$(php -v | sed -n 's/^PHP\ \([[:digit:]]\+\)\..*$/\1/p')
   if [[ -n ${php_version} ]] && start_apache2 -V | grep -q prefork; then
     a2enmod -q "php${php_version}" || a2enmod "php${php_version}"
   fi
 fi
+# enable phpMyAdmin flag
+if [ -x %{_sbindir}/a2enflag ]; then
+  flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
+  if [ $flag_find -eq 0 ]; then
+    a2enflag %{name}
+  fi
+fi
+# We changed ap_docroot from %{ap_docroot_old} to %{ap_docroot} (/srv/www/htdocs to /usr/share)
+# If someone did 'manually' change the config file it won't be replaced by rpm
+# Hence we backup the existing and place the new one
+find=0
+find=$(grep -cw %{ap_sysconfdir}/conf.d/%{name}.conf -e "%{ap_docroot_old}/%{name}") || :
+if [ $find -gt 0 ]; then
+ap_date="$(date '+%Y%m%d-%H%M')"
+echo "creating backup of %{ap_sysconfdir}/conf.d/%{name}.conf to %{ap_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}"
+cp -a %{ap_sysconfdir}/conf.d/%{name}.conf %{ap_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}
+echo "copying %{ap_sysconfdir}/conf.d/%{name}.conf.rpmnew to %{ap_sysconfdir}/conf.d/%{name}.conf"
+cp -a %{ap_sysconfdir}/conf.d/%{name}.conf.rpmnew %{ap_sysconfdir}/conf.d/%{name}.conf
+fi
+%restart_on_update apache2
 #systemctl try-restart apache2 &>/dev/null
 
-#%%postun
+%postun
+# disable phpMyAdmin flag
+if [ -x %{_sbindir}/a2enflag ]; then
+  flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
+  if [ $flag_find -eq 1 ]; then
+    a2enflag -d %{name}
+  fi
+fi
+%restart_on_update apache2
 #systemctl try-restart apache2 &>/dev/null
 
 %files -f FILELIST
