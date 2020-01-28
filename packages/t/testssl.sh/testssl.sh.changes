@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Thu Jan 23 20:42:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0
+  * Full support of TLS 1.3, shows also drafts supported
+  * Extended protocol downgrade checks
+  * ROBOT check
+  * Better TLS extension support
+  * Better OpenSSL 1.1.1 and higher versions support as well as
+    LibreSSL >3
+  * DNS over Proxy and other proxy improvements
+  * Decoding of unencrypted BIG IP cookies
+  * Initial client certificate support
+  * Warning of 825 day limit for certificates issued after
+    2018/3/1
+  * Socket timeouts (--connect-timeout)
+  * IDN/IDN2 servername/URI + emoji support, supposed
+    libidn/idn2 is installed and DNS resolver is recent)support
+  * Initial support for certificate compression
+  * Better JSON output: renamed IDs and findings shorter/better
+    parsable, also includes certficate
+  * JSON output now valid also for non-responding servers
+  * Testing now per default 370 ciphers
+  * Further improving the robustness of TLS sockets (sending
+    and parsing)
+  * Support of supplying timeout value for openssl connect
+    -- useful for batch/mass scanning
+  * File input for serial or parallel mass testing can be also in
+    nmap grep(p)able (-oG) format
+  * LOGJAM: now checking also for DH and FFDHE groups (TLS 1.2)
+  * PFS: Display of elliptical curves supported, DH and FFDHE
+    groups (TLS 1.2 + TLS 1.3)
+  * Check for session resumption (Ticket, ID)
+  * TLS Robustness check GREASE and more
+  * Server preference distinguishes between TLS 1.3 and lower
+    protocols
+  * Mark TLS 1.0 and TLS 1.1 as deprecated
+  * Does a few startup checks which make later tests easier and
+    faster (determine_optimal_\*())
+  * Expect-CT header detection
+  * --phone-out does certificate revocation checks via OCSP
+    (LDAP+HTTP) and with CRL
+  * --phone-out checks whether the private key has been
+    compromised via https://pwnedkeys.com/
+  * Missing SAN warning
+  * Added support for private CAs
+  * Way better handling of connectivity problems (counting those,
+    if threshold exceeded -> bye)
+  * Fixed TCP fragmentation
+  * Added --ids-friendly switch
+  * Exit codes better: 0 for running without error, 1+n for small
+    errors, >240 for major errors.
+  * Better error msg suppression (not fully installed OpenSSL)
+  * Better parsing of HTTP headers & better output of longer HTTP
+    headers
+  * Display more HTTP security headers
+  * HTTP Basic Auth support for HTTP header
+  * experimental "eTLS" detection
+  * Dockerfile and repo @ docker hub with that file (see above)
+  * Java Root CA store added
+  * Better support for XMPP via STARTTLS & faster
+  * Certificate check for to-name in stream of XMPP
+  * Support for NNTP and LMTP via STARTTLS, fixes for MySQL and
+    PostgresQL
+  * Support for SNI and STARTTLS
+  * More robustness for any STARTTLS protocol (fall back to
+    plaintext while in TLS caused problems)
+  * Renegotiation checks improved, also no false potive for Node.js
+    anymore
+  * Major update of client simulations with self-collected
+    up-to-date data
+  * Update of CA certificate stores
+  * Lots of bug fixes
+  * More travis/CI checks -- still place for improvements
+  * Bigger man page review
+- specfile cleanup
+- Add testssl.sh.rpmlintrc
+
+-------------------------------------------------------------------
+Wed Dec 11 21:11:28 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to testssl.sh 2.9.96 (aka 3.0rc6)
+  * Socket timeouts (--connect-timeout)
+  * IDN/IDN2 servername support
+  * pwnedkeys.com support
+  * Initial support for certificate compression
+  * Initial client certificate support
+  * Better indentation for HTTP header outputs
+  * Better parsing of HTTP headers
+  * Penalize absence of TLS 1.2 anymore if server supports TLS 1.3 only
+  * Several improvements related to protocol determination and downgrade responses
+  * Some logic related using TLS 1.3 aware OpenSSL binaries more or less automagically
+  * Internal improvements to server preference checks
+  * Lots of internal and some speed improvements in "pre-flight checks" (comes before outputting any test)
+  * Mark TLS 1.0 and TLS 1.1 as deprecated
+  * Support newer OpenSSL/LibreSSL versions
+  * Improved detection of wrong user input when file was supplied for --csv,--json and --html
+  * Update client handshakes with newer client data and deprecate other clients
+  * Regression in CAA RR fixed
+  * Session resumption fixes
+  * Session ticket fixes
+  * Fixes for STARTTLS MySQL and PostgreSQL
+  * Unit tests for (almost) every STARTTLS protocol supported
+  * A lot of minor fixes 
+
+-------------------------------------------------------------------
+Sat Apr 27 09:55:54 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to testssl.sh 2.9.95 (aka 3.0rc5)
+  * Modernized client handshakes
+  * Further code sanitizing
+  * Fixes in CSV files and JSON files creation and some ACE
+    loadbalancer related improvements
+  * Fix session tickets and resumption
+  * OpenSSL 1.1.1 fixes
+  * Darwin OpenSSL binary
+  * Updated certificate store
+  * Add SSLv2 to SWEET
+- update testssl.sh-2.9.92-set-install-dir.patch to
+  testssl.sh-2.9.95-set-install-dir.patch
+
+-------------------------------------------------------------------
+Tue Feb 19 10:43:36 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to testssl.sh 2.9.94 (aka 3.0rc4)
+  * Documentation fixes and additions 
+  * Add new openssl helper binaries
+  * Bug fix: Scan continues if one of multiple IP addresses per
+    hostname has a problem 
+  * "eTLS" detection ("visibility information")
+  * Minimize initial warning "doesn't seem to be a TLS/SSL enabled
+    server" by using sockets
+  * Several improvement for SSLv2 only servers
+  * Handle different cipher preference < TLS 1.3 vs. TLS 1.3
+  * Clarify & improve Standard Cipher check (potentially breaking
+    change)
+  * Improve SWEET32 test
+  * Finding certificates is faster and independent on openssl 
+
+-------------------------------------------------------------------
+Sat Dec  1 15:58:11 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to testssl.sh 2.9.93 (aka 3.0rc3)
+  * add SSLv2 ciphers *total ciphers now being tested for: 370)
+  * updated client simulation data
+  * TLS 1.3 improvements
+  * STARTTLS NNTP support
+  * STARTTLS XMPP faster and more reliable
+  * include DH groups (primes) in pfs section
+  * Fix TCP fragmentation under remaining OS: FreeBSD / Mac OS X
+  * further bugfixes and clarifications
+
+-------------------------------------------------------------------
+Wed Nov 28 09:52:06 UTC 2018 - Matthias Fehring <buschmann23@opensuse.org>
+
+- initial package version 2.9.92 (aka 3.0rc2)
