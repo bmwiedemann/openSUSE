@@ -32,6 +32,8 @@ Source2:        obs.png
 Source3:        opensusesoftware.png
 # PATCH-FIX-UPSTREAM
 Patch0:         Add-missing-include-in-last-qt5.14.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix-crash-when-KWallet-is-not-available.patch
 BuildRequires:  cmake(KF5Crash) >= 5.54.0
 BuildRequires:  cmake(KF5CoreAddons) >= 5.54.0
 BuildRequires:  cmake(KF5KIO) >= 5.54.0
