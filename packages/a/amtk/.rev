@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>729409</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b822ac1c4f487ebedb9266f1f998f1f7</srcmd5>
+    <version>5.0.2</version>
+    <time>1580204788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.2:
+  + Small maintenance stuff.
+  + Updated translations. (forwarded request 767025 from iznogood)</comment>
+    <requestid>767320</requestid>
+  </revision>
 </revisionlist>
