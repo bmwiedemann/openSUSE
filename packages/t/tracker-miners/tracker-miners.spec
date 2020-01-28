@@ -64,7 +64,6 @@ BuildRequires:  pkgconfig(tracker-miner-2.0) >= 2.2.0
 BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.2.0
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 BuildRequires:  pkgconfig(vorbisfile) >= 0.22
-Recommends:     %{name}-lang
 # The schema files moved from libtracker-common to tracker-miners
 Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too
