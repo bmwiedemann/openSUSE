@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:17:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Thu Jan  9 08:58:08 UTC 2020 - olaf@aepfle.de
 
 - Usage of g_canonicalize_filename requires glib 2.58

@@ -63,7 +63,6 @@ Features:
 Summary:        HTTP client/server library for GNOME
 Group:          Development/Libraries/GNOME
 Requires:       glib-networking >= 2.27.90
-Recommends:     %{name}-lang
 # For NTLM single sign on
 Suggests:       samba-winbind
 # Needed for smooth upgrades and to make the lang package installable
