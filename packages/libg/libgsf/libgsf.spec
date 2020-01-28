@@ -45,7 +45,6 @@ with structured file formats.
 %package tools
 Summary:        Tools from libgsf, a structured file formats handling library
 Group:          Productivity/Office/Other
-Recommends:     %{name}-lang
 
 %description tools
 The libgsf library is an extensible I/O abstraction library for dealing
@@ -61,7 +60,6 @@ This package provides a thumbnailer for office files.
 %package 1-114
 Summary:        I/O library for dealing with structured file formats
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # To make lang package installable
 Provides:       %{name} = %{version}
 # With libgsf 1.14.22 (first in 12.2), gnome-vfs and bonobo support got dropped, so no more gnome package.
