@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-storagesync
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-storagesync
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Microsoft Azure Storage Sync Client Library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
+URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-storagesync/azure-mgmt-storagesync-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
@@ -31,13 +32,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-azure-common < 2.0.0
+Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.5.0
 Requires:       python-msrestazure < 1.0.0
 Requires:       python-msrestazure >= 0.4.32
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-common < 2.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -50,7 +51,7 @@ This is the Microsoft Azure Storage Sync Client Library.
 Azure Resource Manager (ARM) is the next generation of management APIs that
 replace the old Azure Service Management (ASM).
 
-This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
+This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
 %setup -q -n azure-mgmt-storagesync-%{version}
@@ -75,4 +76,5 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/storagesync
 %{python_sitelib}/azure_mgmt_storagesync-*.egg-info
+
 %changelog

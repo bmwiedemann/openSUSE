@@ -7,4 +7,16 @@
     <comment>- New Python Azure ADK component package</comment>
     <requestid>735767</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5c8b8ee65451ff14db47e7f365d7593</srcmd5>
+    <version>0.2.0</version>
+    <time>1580205411</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update %description from README.rst (forwarded request 767755 from glaubitz)</comment>
+    <requestid>767843</requestid>
+  </revision>
 </revisionlist>
