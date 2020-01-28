@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.2.0
 Requires:       pptp
 %requires_eq    ppp
-Recommends:     %{name}-lang
 
 %description
 NetworkManager-pptp provides VPN support to NetworkManager for PPTP.
