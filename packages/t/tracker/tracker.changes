@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:20:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Tue Nov 26 15:46:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable test suite / %check section.

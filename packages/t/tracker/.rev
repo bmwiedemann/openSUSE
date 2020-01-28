@@ -1028,4 +1028,12 @@
     <comment>- Enable test suite / %check section. (forwarded request 751073 from dimstar)</comment>
     <requestid>751358</requestid>
   </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>e55ea8a54d2d77385cf71b89c89fadc7</srcmd5>
+    <version>2.3.1</version>
+    <time>1580205187</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767227 from dimstar)</comment>
+    <requestid>767487</requestid>
+  </revision>
 </revisionlist>

@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.40
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 BuildRequires:  pkgconfig(uuid)
-Recommends:     %{name}-lang
 # We want to index files by default, if possible
 Recommends:     %{name}-miner-files
 # gnome-panel-applet-tracker (aka tracker-search-bar) was removed with tracker 0.16.0
