@@ -51,7 +51,6 @@ BuildRequires:  polkit-devel
 BuildRequires:  python3-tools
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang = %{version}
 # gconf-sanity-check was dropped by upstream in GConf 3.2.6
 Obsoletes:      gconf-sanity-check < %{version}
 
