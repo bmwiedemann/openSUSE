@@ -34,7 +34,6 @@ BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
-Recommends:     %{name}-lang
 # Default fonts in the schemas
 Recommends:     cantarell-fonts
 Recommends:     adobe-sourcecodepro-fonts
