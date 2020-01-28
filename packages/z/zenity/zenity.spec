@@ -1,7 +1,7 @@
 #
 # spec file for package zenity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,6 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libnotify) >= 0.6.1
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.8.1
-Recommends:     %{name}-lang
 
 %description
 Zenity is a basic rewrite of gdialog, without the pain involved of
@@ -56,6 +54,7 @@ translation-update-upstream
 
 %build
 %configure \
+	--disable-webkitgtk \
 	%{nil}
 %make_build
 

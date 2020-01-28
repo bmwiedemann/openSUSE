@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 24 19:29:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(webkit2gtk-4.0) BuildRequires and pass
+  --disable-webkitgtk to configure, no longer build webkitgtk
+  support.
+- Drop zenity-lang Recommends, not needed as -lang supplements
+  takes care of it.
+
+-------------------------------------------------------------------
 Thu Sep 26 12:55:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add zenity-Fix-segfault-on-multiple-lists.patch: src/forms.c: Fix
