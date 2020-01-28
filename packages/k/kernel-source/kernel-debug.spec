@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.4
-%define patchversion 5.4.13
+%define patchversion 5.4.14
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.4.13
+Version:        5.4.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5cf5394
+Release:        <RELEASE>.gfc4ea7a
 %else
 Release:        0
 %endif
@@ -107,7 +107,9 @@ Provides:       multiversion(kernel)
 # owned by multiple packages now. The dependency is not correct wrt openSUSE
 # 11.2 - 11.4, but we primarily care about the supported upgrade path.
 Obsoletes:      %name-base < 3.1
+%if ("%build_flavor" != "kvmsmall") && ("%build_flavor" != "azure")
 Recommends: kernel-firmware
+%endif
 # The following is copied to the -base subpackage as well
 # BEGIN COMMON DEPS
 Requires(pre):  coreutils awk
@@ -172,10 +174,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5cf5394811b9a6d0d2325bd34aa811e3db842ef2
-Provides:       kernel-srchash-5cf5394811b9a6d0d2325bd34aa811e3db842ef2
+Provides:       kernel-%build_flavor-base-srchash-fc4ea7a80b3635a53f6e0ec89f89204d49646c59
+Provides:       kernel-srchash-fc4ea7a80b3635a53f6e0ec89f89204d49646c59
 # END COMMON DEPS
-Provides:       %name-srchash-5cf5394811b9a6d0d2325bd34aa811e3db842ef2
+Provides:       %name-srchash-fc4ea7a80b3635a53f6e0ec89f89204d49646c59
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28

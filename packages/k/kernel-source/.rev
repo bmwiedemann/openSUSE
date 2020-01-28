@@ -4947,4 +4947,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.4.13 &amp; snd_hda and rtw88 fixes</comment>
     <requestid>765678</requestid>
   </revision>
+  <revision rev="523" vrev="1">
+    <srcmd5>32f6c58dcec92f10b8c5003632c0434f</srcmd5>
+    <version>5.4.14</version>
+    <time>1580204735</time>
+    <user>dimstar_suse</user>
+    <comment>5.3.14 &amp; intel ASoC fix</comment>
+    <requestid>766758</requestid>
+  </revision>
 </revisionlist>

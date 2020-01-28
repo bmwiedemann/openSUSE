@@ -1,7 +1,0 @@
-<services>
-<service name="verify_file" mode="localonly">
-  <param name="verifier">sha256</param>
-  <param name="checksum">f3a99fe74564237d12ca8d4582e113c067c9205b5ab640f72b4e8447606a99c1</param>
-  <param name="file">getmail-5.14.tar.gz</param>
-</service>
-</services>
