@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:49:03 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- 1.55: Ignore more tokens on matching
+
+-------------------------------------------------------------------
+Thu Jan 23 16:00:47 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- 1.54: Add BagOfPatterns to calculcate closest pattern
+
+-------------------------------------------------------------------
 Tue Jan 14 08:03:32 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - 1.53: Return all characters of last line

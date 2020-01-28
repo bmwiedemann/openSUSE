@@ -17,7 +17,7 @@
 
 
 Name:           perl-Spooky-Patterns-XS
-Version:        1.53
+Version:        1.55
 Release:        0
 %define cpan_name Spooky-Patterns-XS
 Summary:        Spooky::Patterns::XS Perl module
