@@ -63,7 +63,6 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %package viewer
 Summary:        Viewer for Crypto Files
 Group:          Productivity/Security
-Recommends:     %{name}-lang
 
 %description viewer
 This packages provides the viewer for crypto files on the GNOME desktop.
@@ -97,7 +96,6 @@ Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 Requires:       %{name}-prompter >= %{version}
 Recommends:     %{name}-ask-pass
-Recommends:     %{name}-lang
 Recommends:     %{name}-viewer = %{version}
 # To make lang package installable
 Provides:       %{name} = %{version}
@@ -142,7 +140,6 @@ key stores.
 %package -n libgck-1-0
 Summary:        GObject library to access PKCS#11 modules
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Small hack, to help gnome-keyring subpackage containing gck
 # modules have a proper dependency, without having to care about
 # the soname.

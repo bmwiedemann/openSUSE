@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:07:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Thu Nov 28 09:57:41 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix usage of libexecdir instead of prefix/lib where applicable.
