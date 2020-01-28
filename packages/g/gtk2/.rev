@@ -1269,4 +1269,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
   gtk2-immodule-tigrigna-32bit can be upgraded from old version. (forwarded request 757485 from fcrozat)</comment>
     <requestid>757536</requestid>
   </revision>
+  <revision rev="175" vrev="3">
+    <srcmd5>5793edef1913ccc50921b41ef292d60c</srcmd5>
+    <version>2.24.32+67</version>
+    <time>1580205064</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767168 from dimstar)</comment>
+    <requestid>767433</requestid>
+  </revision>
 </revisionlist>
