@@ -42,7 +42,6 @@ word opens a menu of suggested replacements.
 %package -n libgtkspell3-3-0
 Summary:        GTK3 Spell Checker Interface Library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Needed to make lang package installable
 Provides:       gtkspell3 = %{version}
 

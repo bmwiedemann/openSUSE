@@ -128,4 +128,12 @@
     <comment> (forwarded request 649932 from iznogood)</comment>
     <requestid>650155</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>843b802783194fb7c1727f41f0655a4f</srcmd5>
+    <version>3.0.10</version>
+    <time>1580205075</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767177 from dimstar)</comment>
+    <requestid>767440</requestid>
+  </revision>
 </revisionlist>
