@@ -26,7 +26,6 @@ Url:            http://libiptcdata.sourceforge.net/
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig
 Requires:       libiptcdata0
-Recommends:     %{name}-lang
 
 %description
 libiptcdata is a library for parsing, editing, and saving IPTC
