@@ -20,21 +20,17 @@
 
 
 %define _waf_ver 2.0.9
-%define _mbc_ver 3.3.18
-%define _mpv_ver 0.31.0+git.1577540072.01de2a9bd5
 %define lname   libmpv1
 Name:           mpv
-Version:        %{_mpv_ver}
+Version:        0.32.0+git.1580083289.cbfcd3e703
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://mpv.io/
-Source:         %{name}-%{_mpv_ver}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Source1:        https://waf.io/waf-%{_waf_ver}
 Source2:        %{name}.changes
-# mpv-bash-completion is licensed with GPL-3.0+
-Source3:        https://github.com/2ion/mpv-bash-completion/archive/%{_mbc_ver}.tar.gz#/mpv-bash-completion-%{_mbc_ver}.tar.gz
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
 BuildRequires:  bash
@@ -138,35 +134,21 @@ mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
 of video file formats, audio and video codecs, and subtitle types.
 
 %package bash-completion
-Version:        %{_mbc_ver}
-Release:        0
 Summary:        Bash Completion for %{name}
-License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
-Requires:       %{name} = %{_mpv_ver}
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 Recommends:     xrandr
 Supplements:    (mpv and bash)
 BuildArch:      noarch
 
 %description bash-completion
-A Bash completion script for the mpv video player. It features
-  * Completion for all --options,
-  * Type-based completion for --option arguments for choices, flags,
-    integers and floats,
-  * Completion for upper/lower bounds for integer- and float-type
-    argument ranges where applicable,
-  * Completion of filter lists as arguments to --vf and --af style
-    options as well as completion of filter parameters while composing
-    filter lists,
-  * Similarly, parameter completion for video and audio outputs (--vo, --ao),
-  * Regular file name completion.
+Bash command line completion support for %{name}.
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
-License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
-Requires:       %{name} = %{_mpv_ver}
+Requires:       %{name} = %{version}
 Supplements:    (mpv and zsh)
 BuildArch:      noarch
 
@@ -175,9 +157,8 @@ ZSH command line completion support for %{name}.
 
 %package devel
 Summary:        A library to link together with mpv player
-License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{_mpv_ver}
+Requires:       %{lname} = %{version}
 
 %description devel
 mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
@@ -187,7 +168,6 @@ This package contains all the development files.
 
 %package -n %{lname}
 Summary:        A library to link together with mpv player
-License:        GPL-2.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
@@ -198,7 +178,7 @@ This package contains a library that can other apps use to utilize the mpv
 features.
 
 %prep
-%setup -q -a 3
+%setup -q
 %patch0 -p1
 
 # As we downloaded specific waf version we need to put and prepare it in place.
@@ -208,7 +188,7 @@ chmod a+x waf
 # I hate UNKNOWN so lets put decent info there.
 MODIFIED="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE2}")"
 DATE="$(date -d "$MODIFIED" "+%%b %%e %%Y")"
-sed -i "s|UNKNOWN|$DATE|g;s|VERSION|\"%{_mpv_ver}\"|g" common/version.c
+sed -i "s|UNKNOWN|$DATE|g;s|VERSION|\"%{version}\"|g" common/version.c
 
 %build
 # SDL: disable as it is pointless to have on Linux, it is Windows/OS X fallback.
@@ -247,17 +227,8 @@ python3 ./waf configure \
 
 python3 ./waf build --verbose %{?_smp_mflags}
 
-pushd mpv-bash-completion-%{_mbc_ver}
-export MPV_BASHCOMPGEN_MPV_CMD=../build/mpv
-make %{?_smp_mflags}
-popd
-
 %install
 python3 ./waf --destdir=%{buildroot} install
-
-pushd mpv-bash-completion-%{_mbc_ver}
-%make_install
-popd
 
 install -D -m 0644 etc/input.conf %{buildroot}%{_sysconfdir}/%{name}/input.conf
 install -D -m 0644 etc/mpv.conf %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
@@ -298,8 +269,6 @@ sed -i -e '1d' %{buildroot}%{_datadir}/bash-completion/completions/mpv
 %{_datadir}/zsh/site-functions/_mpv
 
 %files bash-completion
-%license mpv-bash-completion-%{_mbc_ver}/LICENSE
-%doc mpv-bash-completion-%{_mbc_ver}/README.mkd
 %{_datadir}/bash-completion/completions/mpv
 
 %files -n %{lname}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:04:54 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.1580083289.cbfcd3e703:
+  * See https://github.com/mpv-player/mpv/compare/01de2a9bd5..cbfcd3e703
+    for the complete changelog.
+  * mpv now generates its own bash-completion file
+
+-------------------------------------------------------------------
 Sat Jan 18 11:33:05 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Run spec-cleaner

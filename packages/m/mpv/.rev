@@ -694,4 +694,15 @@
 </comment>
     <requestid>765455</requestid>
   </revision>
+  <revision rev="66" vrev="44">
+    <srcmd5>39c2e0210cb3e05aa0c7ccdcdd992c1e</srcmd5>
+    <version>0.32.0+git.1580083289.cbfcd3e703</version>
+    <time>1580205270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.1580083289.cbfcd3e703:
+  * See https://github.com/mpv-player/mpv/compare/01de2a9bd5..cbfcd3e703
+    for the complete changelog.
+  * mpv now generates its own bash-completion file</comment>
+    <requestid>767600</requestid>
+  </revision>
 </revisionlist>
