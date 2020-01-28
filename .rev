@@ -342,4 +342,12 @@
     <comment>New stable rel (forwarded request 638552 from iznogood)</comment>
     <requestid>638692</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>e38444fe37220d0048d20f5866f4e370</srcmd5>
+    <version>1.4.4</version>
+    <time>1580205085</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767183 from dimstar)</comment>
+    <requestid>767446</requestid>
+  </revision>
 </revisionlist>

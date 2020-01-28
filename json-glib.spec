@@ -45,7 +45,6 @@ JSON data streams.
 Summary:        Library for JavaScript Object Notation format
 # To make lang subpackage installable
 Group:          Development/Libraries/C and C++
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
 %description -n libjson-glib-1_0-0
