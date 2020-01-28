@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-recoveryservicesbackup
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Microsoft Azure Recovery Services Backup Management Client Library
 License:        MIT
@@ -51,7 +51,7 @@ This is the Microsoft Azure Recovery Services Backup Management Client Library.
 Azure Resource Manager (ARM) is the next generation of management APIs that
 replace the old Azure Service Management (ASM).
 
-This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
+This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
 %setup -q -n azure-mgmt-recoveryservicesbackup-%{version}
