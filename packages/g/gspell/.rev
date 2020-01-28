@@ -151,4 +151,14 @@
     <comment></comment>
     <requestid>729411</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1f045ed53300e1b58884a2662538ea15</srcmd5>
+    <version>1.8.3</version>
+    <time>1580204792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.3:
+  + Small maintenance stuff.
+  + Updated translations. (forwarded request 767026 from iznogood)</comment>
+    <requestid>767321</requestid>
+  </revision>
 </revisionlist>
