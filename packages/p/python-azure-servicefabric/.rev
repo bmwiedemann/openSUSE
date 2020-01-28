@@ -47,4 +47,15 @@
     <comment>- Resubmit with corrected changelog entry</comment>
     <requestid>735801</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0045f846dd0fa5a4631e7463d71cd98c</srcmd5>
+    <version>7.0.0.0</version>
+    <time>1580205419</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 767758 from glaubitz)</comment>
+    <requestid>767846</requestid>
+  </revision>
 </revisionlist>
