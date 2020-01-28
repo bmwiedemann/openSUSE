@@ -54,7 +54,6 @@ BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.9
 # Disable telepathy by default, following upstream, NOTE pass -Dtelepathy=true to meson if you reenable this.
 #BuildRequires:  pkgconfig(telepathy-glib) >= 0.22.0
-Recommends:     %{name}-lang
 
 %description
 The integraded address book for GNOME.
