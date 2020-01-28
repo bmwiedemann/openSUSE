@@ -726,4 +726,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Scripted push from {project}</comment>
     <requestid>736527</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>0f4c02085891e33afab6d21935a5590a</srcmd5>
+    <version>3.34.0</version>
+    <time>1580204957</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767125 from dimstar)</comment>
+    <requestid>767393</requestid>
+  </revision>
 </revisionlist>

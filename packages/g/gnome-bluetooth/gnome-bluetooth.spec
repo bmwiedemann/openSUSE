@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libudev)
 # Require bluez (mandatory, as per readme, bnc#622946)
 Requires:       bluez >= 5
-Recommends:     %{name}-lang
 
 %description
 A set of graphical utilities to setup, monitor and use Bluetooth devices.
