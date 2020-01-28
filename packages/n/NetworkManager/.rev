@@ -1620,4 +1620,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment></comment>
     <requestid>763362</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>330a7ab03a1c28d7d1cec027f6ec7749</srcmd5>
+    <version>1.22.4</version>
+    <time>1580204795</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767083 from dimstar)</comment>
+    <requestid>767322</requestid>
+  </revision>
 </revisionlist>

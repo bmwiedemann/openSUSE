@@ -103,7 +103,6 @@ Requires:       mozilla-nss
 Requires:       sysconfig-netconfig >= 0.80.5
 Requires:       wpa_supplicant >= 0.6.4
 %requires_eq    ppp
-Recommends:     %{name}-lang
 Recommends:     dnsmasq
 Recommends:     iptables
 Recommends:     org.freedesktop.ModemManager
