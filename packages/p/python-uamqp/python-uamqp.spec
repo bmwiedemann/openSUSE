@@ -1,7 +1,7 @@
 #
 # spec file for package python-uamqp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uamqp
-Version:        1.2.2
+Version:        1.2.5
 Release:        0
 Summary:        AMQP 10 Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-uamqp-python
+URL:            https://github.com/Azure/azure-uamqp-python
 Source:         https://files.pythonhosted.org/packages/source/u/uamqp/uamqp-%{version}.tar.gz
 Patch1:         u_strip-werror.patch
 BuildRequires:  %{python_module devel}
