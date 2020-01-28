@@ -36,7 +36,6 @@ BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 Requires:       libxslt
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description

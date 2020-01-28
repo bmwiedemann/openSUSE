@@ -423,4 +423,12 @@
     <comment>- Trim filler wording from description. Update summaries. (forwarded request 725704 from jengelh)</comment>
     <requestid>726444</requestid>
   </revision>
+  <revision rev="60" vrev="15">
+    <srcmd5>9a6887c7fe56cc065be9eeefd066231e</srcmd5>
+    <version>0.20.10</version>
+    <time>1580204994</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767131 from dimstar)</comment>
+    <requestid>767399</requestid>
+  </revision>
 </revisionlist>
