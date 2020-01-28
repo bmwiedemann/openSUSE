@@ -71,7 +71,6 @@ pretty pictures.
 Summary:        An object oriented GL/GLES Abstraction/Utility Layer
 Group:          System/Libraries
 Requires:       Mesa
-Recommends:     %{name}-lang = %{version}
 # To make the lang package installable
 Provides:       %{name} = %{version}
 
