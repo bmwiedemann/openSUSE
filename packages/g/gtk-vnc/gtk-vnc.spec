@@ -104,7 +104,6 @@ libgvncpulse library.
 Summary:        A GTK widget for VNC clients
 License:        LGPL-2.1-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/X11
-Recommends:     %{name}-lang
 # Needed to make lang package installable (and because we used to
 # have a gtk-vnc package earlier).
 Provides:       %{name} = %{version}

@@ -415,4 +415,12 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
 - Use sed hack to enable install of gncviewer.</comment>
     <requestid>722098</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>113ad730c7ae09c3965e3739f4ddaf52</srcmd5>
+    <version>1.0.0</version>
+    <time>1580205058</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767167 from dimstar)</comment>
+    <requestid>767432</requestid>
+  </revision>
 </revisionlist>
