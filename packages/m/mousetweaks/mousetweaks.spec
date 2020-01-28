@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xtst)
-Recommends:     %{name}-lang
 
 %description
 The Mousetweaks package provides mouse accessibility enhancements for
