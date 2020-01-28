@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Thu Jan 23 20:07:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.5.1
+- Add patch:
+  * nmap-parse-output-fix-paths.patch
