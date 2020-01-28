@@ -35,7 +35,6 @@ BuildRequires:  translation-update-upstream
 Requires:       gsettings-desktop-schemas
 Requires:       pam
 Requires(pre):  permissions
-Recommends:     %{name}-lang = %{version}
 # Ensure that gnomesu always gets installed
 Supplements:    packageand(xdg-utils:gnome-session)
 
