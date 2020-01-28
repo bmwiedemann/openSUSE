@@ -51,7 +51,6 @@ various sources using a single API.
 Summary:        Framework for browsing and searching media content
 # Needed for the -lang package to be installable
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Without plugins, grilo is useless
 Recommends:     grilo-plugins
 Provides:       %{name} = %{version}
