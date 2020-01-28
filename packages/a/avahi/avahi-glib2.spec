@@ -108,7 +108,6 @@ BuildRequires:  pkgconfig(systemd)
 #Requires:       dbus-1
 Requires:       nss-mdns
 Requires(pre):  pwdutils
-Recommends:     %{_name}-lang
 #
 # mDNSResponder was used for <= 10.2:
 Provides:       mDNSResponder = 107.5
@@ -537,7 +536,6 @@ rm -rf %{buildroot}%{_sysconfdir}/init.d/
 %if !%{build_core}
 cd ..
 %make_build install-pkgconfigDATA DESTDIR=%{buildroot}
-
 %endif
 %if %{build_core}
 # do not remove this unless you plan to fix _all_ the references to

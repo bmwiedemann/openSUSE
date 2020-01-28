@@ -965,4 +965,12 @@
     <comment></comment>
     <requestid>761956</requestid>
   </revision>
+  <revision rev="130" vrev="11">
+    <srcmd5>3ae16dc10bb3ff6b56b5384fd2b14340</srcmd5>
+    <version>0.7</version>
+    <time>1580204836</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767098 from dimstar)</comment>
+    <requestid>767339</requestid>
+  </revision>
 </revisionlist>

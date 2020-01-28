@@ -110,7 +110,6 @@ BuildRequires:  pkgconfig(systemd)
 #Requires:       dbus-1
 Requires:       nss-mdns
 Requires(pre):  pwdutils
-Recommends:     %{_name}-lang
 #
 # mDNSResponder was used for <= 10.2:
 Provides:       mDNSResponder = 107.5
