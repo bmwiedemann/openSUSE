@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 18 02:23:45 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to version 0.12.0:
+  + Include a test for glgo#GNOME/shotwell!94.
+  + Disable autoptr test when not running on GCC/Clang.
+  + Revert symbol hiding script.
+  + Improve building the vapi using meson's vala support.
+  + Add canary test for glgo#GNOME/gexiv2!27.
+  + Promote gexiv2-dump to a tool.
+  + Documentation fixes.
+  + flake8 fixes for python code.
+  + Bugs fixed: glgo#GNOME/gexiv2!27.
+
+-------------------------------------------------------------------
 Tue Jan  8 19:37:55 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.11.0:

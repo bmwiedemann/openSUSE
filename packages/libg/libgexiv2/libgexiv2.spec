@@ -21,13 +21,13 @@
 %bcond_without python2
 %bcond_without python3
 Name:           libgexiv2
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gexiv2
-Source0:        https://ftp.gnome.org/pub/gnome/sources/gexiv2/0.11/%{tarname}-%{version}.tar.xz
+Source0:        https://ftp.gnome.org/pub/gnome/sources/gexiv2/0.12/%{tarname}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  %{python_module devel}
