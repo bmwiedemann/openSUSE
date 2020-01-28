@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(systemd)
 # Disable telepathy support and pass --without-telepathy to configure
 #BuildRequires:  pkgconfig(telepathy-glib) >= 0.18.0
 BuildRequires:  pkgconfig(xtst)
-Recommends:     %{name}-lang
 
 %description
 A VNC Server for GNOME
