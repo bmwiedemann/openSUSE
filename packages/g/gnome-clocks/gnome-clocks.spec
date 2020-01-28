@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(gsound) >= 0.98
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.27.2
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
-Recommends:     %{name}-lang
 
 %description
 A nice simple app to show the time, date, and alarms.
