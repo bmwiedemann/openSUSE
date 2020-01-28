@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault-keys
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-keyvault-keys
-Version:        4.0.0b3
+Version:        4.0.0.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Keys Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-keys/azure-keyvault-keys-%{version}.zip
+URL:            https://github.com/Azure/azure-sdk-for-python
+Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-keys/azure-keyvault-keys-4.0.0.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -31,12 +32,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-azure-common < 2.0.0
+Requires:       python-azure-common >= 1.1
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-common < 2.0.0
 Requires:       python-cryptography >= 2.1.4
+Requires:       python-msrest >= 0.5.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -55,10 +56,10 @@ Azure Key Vault helps solve the following problems:
    manage, and deploy public and private SSL/TLS certificates
 
 %prep
-%setup -q -n azure-keyvault-keys-%{version}
+%setup -q -n azure-keyvault-keys-4.0.0
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-keys-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-keys-4.0.0
 %python_build
 
 %install
@@ -77,4 +78,5 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %license LICENSE.txt
 %{python_sitelib}/azure/keyvault/keys
 %{python_sitelib}/azure_keyvault_keys-*.egg-info
+
 %changelog
