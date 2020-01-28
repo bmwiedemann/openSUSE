@@ -1795,4 +1795,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment></comment>
     <requestid>766120</requestid>
   </revision>
+  <revision rev="209" vrev="3">
+    <srcmd5>be0db5503bd151caeb7fccb2c6456c33</srcmd5>
+    <version>3.34.3</version>
+    <time>1580204887</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767112 from dimstar)</comment>
+    <requestid>767367</requestid>
+  </revision>
 </revisionlist>

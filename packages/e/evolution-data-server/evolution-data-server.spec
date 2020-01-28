@@ -76,7 +76,6 @@ BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.11.91
 Requires:       mozilla-nss
-Recommends:     %{name}-lang = %{version}
 # typelib-1_0-ECalendar-1_2 was dropped with e-d-s 3.7.3 due to libical not being introspecatble.
 Obsoletes:      typelib-1_0-ECalendar-1_2 <= %{version}
 
