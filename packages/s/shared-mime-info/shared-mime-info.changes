@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:19:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Wed Nov 20 20:46:39 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop no longer required PreReq's, obsolete with switch to file

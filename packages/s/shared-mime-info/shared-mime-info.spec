@@ -35,7 +35,6 @@ BuildRequires:  translation-update-upstream
 # libgio-2_0-0 Requires: shared-mime-info, but this can't exist yet. We explicitly ignore this dependency here.
 #!BuildIgnore:  shared-mime-info
 # needed by update-mime-database
-Recommends:     %{name}-lang
 Provides:       %{name}-devel = %{version}-%{release}
 
 %description
