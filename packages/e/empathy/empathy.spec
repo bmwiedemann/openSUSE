@@ -78,7 +78,6 @@ Requires:       iso-codes
 Requires:       telepathy-gabble
 Requires:       telepathy-logger
 Requires:       telepathy-mission-control
-Recommends:     %{name}-lang
 Recommends:     geoclue2
 Recommends:     telepathy-haze
 Recommends:     telepathy-idle
