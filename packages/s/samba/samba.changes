@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Jan 21 16:55:36 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix nmbstatus not reporting detailed information about workgroups;
+  (bsc#1159464);
+- Fix querying all names registered within broadcast area; (bso#8927);
+
+-------------------------------------------------------------------
+Tue Jan 21 16:31:07 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to samab 4.11.5
+  + CVE-2019-14902: Replication of ACLs down subtree on
+    AD Directory is not automatic; (bso#12497); (bsc#1160850).
+  + CVE-2019-19344: Fix  server crash with
+    dns zone scavenging = yes; (bso#14050); (bsc#1160852).
+  + CVE-2019-14907: server-side crash after charset conversion
+    failure (eg during NTLMSSP processing); (bso#14208);
+    (bsc#1160888).
+
+- Update to samba 4.11.4
+   + Ensure SMB1 cli_qpathinfo2() doesn't return an inode number;
+     (bso#14161).
+   + Ensure we don't call cli_RNetShareEnum() on an SMB1
+     connection; (bso#14174).
+   + NT_STATUS_ACCESS_DENIED becomes EINVAL when using SMB2 in
+     SMBC_opendir_ctx; (bso#14176).
+   + SMB2 - Ensure we use the correct session_id if encrypting
+     an interim response; (bso#14189).
+   + Prevent smbd crash after invalid SMB1 negprot; (bso#14205).
+   + printing: Fix %J substition; (bso#13745).
+   + Remove now unneeded call to cmdline_messaging_context();
+     (bso#13925).
+   + Fix incomplete conversion of former parametric options;
+     (bso#14069).
+   + Fix sync dosmode fallback in async dosmode codepath;
+     (bso#14070).
+   + vfs_fruit returns capped resource fork length; (bso#14171).
+   + libnet_join: Add SPNs for additional-dns-hostnames entries;
+     (bso#14116).
+   + smbd: Increase a debug level; (bso#14211).
+   + Prevent azure ad connect from reporting discovery errors
+     reference-value-not-ldap-conformant; (bso#14153).
+   + krb5_plugin: Fix developer build with newer heimdal system
+     library; (bso#14179).
+   + replace: Only link libnsl and libsocket if required;
+     (bso#14168);
+   + ctdb: Incoming queue can be orphaned causing communication;
+     breakdown; (bso#14175).
+   + ldb: Release ldb 2.0.8. Cross-compile will not take
+     cross-answers or cross-execute; (bso#13846).
+   + heimdal-build: Avoid hard-coded /usr/include/heimdal in
+     asn1_compile-generated code; (bso#13856).
+
+-------------------------------------------------------------------
+Fri Dec 20 17:59:01 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Fix Ceph snapshot root relative path handling; (bso#14216); (bsc#1141320).
+
+-------------------------------------------------------------------
 Tue Dec 10 09:57:23 UTC 2019 - Noel Power <nopower@suse.com>
 
 - Update to samba 4.11.3
