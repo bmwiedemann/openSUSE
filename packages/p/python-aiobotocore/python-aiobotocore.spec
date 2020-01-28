@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiobotocore
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-aiobotocore
-Version:        0.10.0
+Version:        0.11.1
 Release:        0
-License:        Apache-2.0
 Summary:        Async client for aws services
-Url:            https://github.com/aio-libs/aiobotocore
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/aio-libs/aiobotocore
 Source:         https://files.pythonhosted.org/packages/source/a/aiobotocore/aiobotocore-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.3.1}
-BuildRequires:  %{python_module botocore >= 1.12.49}
+BuildRequires:  %{python_module botocore >= 1.13.14}
 BuildRequires:  %{python_module wrapt >= 1.10.10}
 # /SECTION
 Requires:       python-aiohttp >= 3.3.1
-Requires:       python-botocore >= 1.12.49
+Requires:       python-async_generator >= 1.10
+Requires:       python-botocore >= 1.13.14
 Requires:       python-wrapt >= 1.10.10
-Recommends:     python-awscli >= 1.16.59
-Recommends:     python-boto3 >= 1.9.49
+Recommends:     awscli >= 1.16.278
+Recommends:     python-boto3 >= 1.10.14
 BuildArch:      noarch
 
 %python_subpackages
@@ -57,7 +59,7 @@ Async Python client for aws services.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc CHANGES.txt README.rst
+%doc CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/*
 
