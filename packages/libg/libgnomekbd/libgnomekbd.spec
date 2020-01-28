@@ -41,7 +41,6 @@ GNOME keyboard library and utility.
 %package -n gnomekbd-tools
 Summary:        GNOME Keyboard tools
 Group:          System/GUI/GNOME
-Recommends:     %{name}-lang
 Conflicts:      %{name} < 3.26.1
 
 %description -n gnomekbd-tools
