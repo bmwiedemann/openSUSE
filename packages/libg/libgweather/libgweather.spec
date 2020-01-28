@@ -45,7 +45,6 @@ This is a library to download weather information from online sources.
 Summary:        Auxiliary schema data for libgweather
 Group:          Development/Libraries/GNOME
 Requires:       libgweather-3-16 = %{version}
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 Provides:       libgweather-data = %{version}
