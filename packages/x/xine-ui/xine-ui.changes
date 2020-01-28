@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jan 28 06:51:56 UTC 2020 - wbauer@tmo.at
+
+- Update xine-ui-crippled-LOCAL.diff to fix a crash when changing
+  the skin
+
+-------------------------------------------------------------------
+Sun Jan 26 18:49:43 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.99.12
+  * Make XLockDisplay use user switchable.
+  * Faster seek.
+  * Optimize text rendering.
+  * Add utf pixmap support.
+  * Add animated logo.
+  * Update splash.
+  * Fix build with libxine <= 1.2.9.
+- Changes in 0.99.11:
+  * Offer all autoplay/autodir input plugins.
+  * Dont treat hls as playlist.
+  * Play ftp:/ mrls instead of downloading.
+  * Update german translation.
+  * Fix mrl browser background.
+  * Fix user agent.
+  * Fix libjpeg detection.
+  * Fix linking with caca.
+  * Fix memory and resource leaks.
+  * Fix crashes.
+  * Fix lirc build.
+  * Code cleanup and "dust removal".
+- Rebase xine-ui-crippled-LOCAL.diff and greatly simplify it by
+  removing all whitespace changes
+- Rebase xine-ui-AUTOMAKE.diff
+
+-------------------------------------------------------------------
 Fri Mar  2 20:16:32 UTC 2018 - crrodriguez@opensuse.org
 
 - Use system's default libpng library, not libpng12 

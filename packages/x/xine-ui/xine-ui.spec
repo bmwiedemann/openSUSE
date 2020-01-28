@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(xxf86vm)
 Summary:        Video player with plugins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
-Version:        0.99.10
+Version:        0.99.12
 Release:        0
 Url:            http://xine.sourceforge.net
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -172,6 +172,7 @@ done
 %{_datadir}/icons/hicolor/*/apps/xine.png
 %dir %{_datadir}/xine
 %dir %{_datadir}/xine/skins
+%{_datadir}/xine/skins/xine-ui_logo.mpg
 %{_datadir}/xine/skins/xine-ui_logo.png
 %{_datadir}/xine/skins/xine-ui_logo-crippled.png
 %{_datadir}/xine/skins/xine_splash.png

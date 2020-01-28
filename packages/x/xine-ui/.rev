@@ -269,4 +269,12 @@
     <comment></comment>
     <requestid>582167</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>090bf879071ce41a90e509684a73cc9f</srcmd5>
+    <version>0.99.12</version>
+    <time>1580205471</time>
+    <user>dimstar_suse</user>
+    <comment>fix  crash</comment>
+    <requestid>767928</requestid>
+  </revision>
 </revisionlist>
