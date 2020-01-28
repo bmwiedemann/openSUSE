@@ -55,7 +55,6 @@ to access the common Google services, and has full asynchronous support.
 %package -n libgdata%{_sover}
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Needed for the lang package to be installable:
 Provides:       %{name} = %{version}
 
