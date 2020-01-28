@@ -102,7 +102,6 @@ BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 Requires:       zenity
-Recommends:     %{name}-lang
 Provides:       windowmanager
 # Obsolete the now private typelib.
 Obsoletes:      typelib-1_0-Meta-3_0
