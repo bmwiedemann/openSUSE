@@ -411,6 +411,10 @@ Prefer: lightdm-gtk-greeter
 # Apache requires a MPM - we pick prefork
 Prefer: apache2:apache2-prefork
 
+# azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
+# Use the real package name
+Prefer: python3-vsts
+
 # for symbol syslog (syslogd is best as it has the least dependencies)
 Prefer: syslogd
 
