@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-network
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-network
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        Microsoft Azure Network Management Client Library
 License:        MIT
@@ -51,7 +51,7 @@ This is the Microsoft Azure Network Management Client Library.
 Azure Resource Manager (ARM) is the next generation of management APIs that
 replace the old Azure Service Management (ASM).
 
-This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
+This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
 %setup -q -n azure-mgmt-network-%{version}
