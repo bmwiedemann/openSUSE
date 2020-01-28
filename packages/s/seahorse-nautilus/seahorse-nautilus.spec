@@ -45,7 +45,6 @@ and decryption of OpenPGP files using GnuPG.
 %package -n nautilus-extension-seahorse
 Summary:        Extension for nautilus which allows encryption and decryption of files
 Group:          Productivity/Security
-Recommends:     %{name}-lang
 Supplements:    packageand(seahorse:nautilus)
 # For people looking for the upstream name, and to make lang package
 # installable
