@@ -34,7 +34,6 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-user-dirs
 Requires:       xdg-user-dirs
-Recommends:     %{name}-lang
 
 %description
 A companion to xdg-user-dirs that integrates it into the Gnome desktop
