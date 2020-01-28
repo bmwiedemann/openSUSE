@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 17:44:14 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- kata-agent: add patch agent_memory-hotplug-probe.patch to address
+  memory hotplug issue when running with SUSE kernel 
+  (https://github.com/kata-containers/agent/issues/712)
+
+-------------------------------------------------------------------
 Mon Jan 20 15:39:58 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 1.10.0:

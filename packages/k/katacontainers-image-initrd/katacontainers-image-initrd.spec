@@ -52,6 +52,8 @@ Group:          System/Management
 URL:            https://github.com/kata-containers/osbuilder
 Source0:        osbuilder-%{version}.tar.xz
 Source1:        agent-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM agent_memory-hotplug-probe.patch https://github.com/kata-containers/agent/issues/712
+Patch0:         agent_memory-hotplug-probe.patch
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 BuildRequires:  dracut
 BuildRequires:  fdupes
@@ -65,6 +67,9 @@ used to run containers.
 
 %prep
 %setup -q -n osbuilder-%{version} -b1
+pushd ../agent-%{version}
+%patch0 -p1
+popd
 
 %build
 export GOPATH=$HOME/go
