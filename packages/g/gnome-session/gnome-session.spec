@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %{name}-core = %{version}
 Requires:       %{name}-default-session = %{version}
-Recommends:     %{name}-lang
 # gnome-session-wayland not recommended by default yet: causes various issues:
 # qemu's default video mode is 'cirrus', which stays black with GNOME Wayland
 # YaST cannot be started without additional tricks

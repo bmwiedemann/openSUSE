@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:11:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Fri Nov 29 12:37:15 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Refresh gnome-session-s390-not-require-g-s-d_wacom.patch for
