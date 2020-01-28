@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>751417</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d03439f9e1373b27585131e5f29e985</srcmd5>
+    <version>0.8.0</version>
+    <time>1580205391</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.8.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update %description from README.rst (forwarded request 767749 from glaubitz)</comment>
+    <requestid>767838</requestid>
+  </revision>
 </revisionlist>
