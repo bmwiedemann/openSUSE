@@ -50,7 +50,6 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-louis
 Requires:       python3-speechd
-Recommends:     %{name}-lang
 Recommends:     brltty >= 3.9
 BuildArch:      noarch
 
