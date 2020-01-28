@@ -31,7 +31,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.27.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.5
 BuildRequires:  pkgconfig(x11)
-Recommends:     %{name}-lang
 Provides:       dbus(org.freedesktop.Notifications)
 
 %description
