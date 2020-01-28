@@ -32,7 +32,6 @@ BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  polkit-devel >= 0.97
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang = %{version}
 Supplements:    packageand(polkit:gnome-session)
 Supplements:    packageand(polkit:lxsession)
 Supplements:    packageand(polkit:xfce4-session)

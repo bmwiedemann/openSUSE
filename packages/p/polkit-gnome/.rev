@@ -213,4 +213,12 @@
     <comment>cleaned (forwarded request 581347 from dimstar)</comment>
     <requestid>582856</requestid>
   </revision>
+  <revision rev="29" vrev="12">
+    <srcmd5>e32248ab24f9aa58556e436a014c362e</srcmd5>
+    <version>0.105</version>
+    <time>1580205167</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767213 from dimstar)</comment>
+    <requestid>767473</requestid>
+  </revision>
 </revisionlist>
