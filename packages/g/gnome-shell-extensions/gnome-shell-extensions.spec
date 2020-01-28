@@ -60,7 +60,6 @@ additional and optional functionality to GNOME Shell.
 Summary:        Common files for GNOME Shell extensions
 Group:          System/GUI/GNOME
 Requires:       gnome-shell
-Recommends:     %{name}-common-lang
 # Obsoletes for metapackage and extensions from gnome-shell-extensions that we used to package
 Obsoletes:      gnome-shell-extension-alternate-tab < %{version}
 Obsoletes:      gnome-shell-extension-apps-menu < %{version}
@@ -86,7 +85,6 @@ Summary:        A collection of extensions for Gnome-shell classic
 Group:          System/GUI/GNOME
 Requires:       gnome-shell-classic-session
 Requires:       gnome-shell-extension-desktop-icons
-Recommends:     %{name}-common-lang
 BuildArch:      noarch
 
 %description -n gnome-shell-classic
