@@ -33,7 +33,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
 BuildRequires:  translation-update-upstream
-Recommends:     %{name}-lang
 
 %description
 The GNOME Keyring is a program that keep password and other secrets
@@ -43,7 +42,6 @@ integrate with the GNOME Keyring system.
 %package -n libgnome-keyring0
 Summary:        Library to integrate with the GNOME Keyring
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Recommends:     gnome-keyring
 # To make the lang package happy
 Provides:       %{name} = %{version}
