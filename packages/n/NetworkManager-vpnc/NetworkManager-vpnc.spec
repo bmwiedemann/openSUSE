@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(libsecret-1)
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.2.0
 Requires:       vpnc
-Recommends:     %{name}-lang
 ExcludeArch:    s390
 
 %description
