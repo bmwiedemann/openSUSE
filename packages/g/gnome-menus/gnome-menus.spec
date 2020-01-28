@@ -33,7 +33,6 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.29.15
 Requires:       %{name}-branding = %{version}
-Recommends:     %{name}-lang
 
 %description
 The package contains an implementation of the draft "Desktop Menu
