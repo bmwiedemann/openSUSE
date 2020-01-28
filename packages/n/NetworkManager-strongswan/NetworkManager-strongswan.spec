@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(libsecret-1)
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       strongswan-nm >= 5.6.2
-Recommends:     %{name}-lang
 ExcludeArch:    s390 s390x
 
 %description
