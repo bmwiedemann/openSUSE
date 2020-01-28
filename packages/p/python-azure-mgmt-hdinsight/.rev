@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>761681</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a114508ec6193a9894bf8635f80cc34a</srcmd5>
+    <version>1.4.0</version>
+    <time>1580205369</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update %description from setup.py (forwarded request 767743 from glaubitz)</comment>
+    <requestid>767832</requestid>
+  </revision>
 </revisionlist>
