@@ -78,7 +78,6 @@ Requires:       ostree >= 2018.9
 Requires:       xdg-dbus-proxy >= 0.1.0
 Requires:       xdg-desktop-portal >= 0.10
 Requires:       user(flatpak)
-Recommends:     %{name}-lang = %{version}
 # Remove after openSUSE Leap 42 is out of scope
 Provides:       xdg-app = %{version}
 Obsoletes:      xdg-app < %{version}
