@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jan 27 17:01:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 43.0.0
+  New features and enhancements:
+  * MKVToolNix GUI: using one of the command line options
+    `--info`, `--edit-headers` or `--edit-chapters` will make
+    the GUI select the corresponding tool on startup even if no
+    further file name is given. Implements #2723.
+  * MKVToolNix GUI: multiplexer: added a setting in the
+    preferences for changing the location of the MediaInfo
+    executable for when the user accidentally selected the wrong
+    one.
+  Bug fixes:
+  * mkvmerge: AVC/h.264 parser: the order of the NALUs before
+    each key frame was sometimes wrong: mkvmerge wrote SPS & PPS
+    after SEI NALUs. Now SPS & PPS NALUs are always written
+   before the other NALUs. Patch by Torsten Hauska. Part of the
+   implementation of #2709 and part of the fix of #2250.
+  * mkvmerge: AVC/h.264 parser: when additional SPS or PPS NALUs
+    (with IDs that haven't been seen so far) are found
+    mid-stream, mkvmerge will prepend all following key frames
+    with all current valid SPS & PPS NALUs (just like when SPS &
+    PPS NALUs are overwritten mid-stream). Part of the fix of
+    #2250.
+  * mkvmerge: MPEG TS reader: fixed detection of MPEG-1/2 video
+    tracks consisting of very few frames. Fixes #2732.
+  * mkvmerge: Ogg Opus reader: fixed the handling of Ogg Opus
+    streams that contain a just one Ogg page (`mkvmerge` aborted
+    with an exception). Fixes #2722.
+  * MKVToolNix GUI: multiplexer: dragging & dropping XML files
+    with chapters or tags to the GUI's window was broken in v42.
+    Instead of adding the file names to the appropriate input
+    boxes the GUI was running mkvmerge for file identification
+    purposes which then failed. Fixes #2718.
+
+-------------------------------------------------------------------
 Thu Jan  2 14:25:15 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 42.0.0
