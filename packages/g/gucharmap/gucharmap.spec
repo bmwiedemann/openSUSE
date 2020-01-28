@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 Recommends:     %{name}-doc
-Recommends:     %{name}-lang
 
 %description
 Gucharmap is a featureful unicode character map.
