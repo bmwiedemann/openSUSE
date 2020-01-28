@@ -57,11 +57,10 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.6
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
-BuildRequires:  pkgconfig(pango) >= 1.28.3
+BuildRequires:  pkgconfig(pango) >= 1.44.4
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 BuildRequires:  pkgconfig(x11)
 Requires:       tracker-miner-files
-Recommends:     %{name}-lang
 Recommends:     gvfs
 
 %description
