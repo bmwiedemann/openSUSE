@@ -60,7 +60,6 @@ graphical user interfaces. It uses OpenGL (or GLES) for rendering.
 %package -n libclutter-1_0-0
 Summary:        Library for creating dynamic graphical user interfaces
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
 # To make the lang package installable
 Provides:       %{name} = %{version}
 # This is technically wrong, but we need this for smooth upgrades so that

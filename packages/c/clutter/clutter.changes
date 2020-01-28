@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:06:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Wed Apr 24 09:38:03 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133118).
