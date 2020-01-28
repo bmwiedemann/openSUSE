@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jan 22 14:02:54 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- ack 3.3.1:
+  * Fix some regexes that would be shown as invalid when used with
+    the -Q option. Since the -Q tells ack to treat the regex as a
+    literal, this shouldn't be possible (GH #294)
+
+- includes changes from 3.3.0:
+  * Improve error message when the regex passed is invalid
+  * Add new file and directory exclusions
+  * Reorganize --help menu
+  * Output message when using --show-types without -f or -g if it
+    will have no effect
+  * Improve error message when ack gets passed two options that
+    can't be used together
+  * Fix the behavior of --break and --heading
+  * Warn when option pairs don't make sense to use together
+  * Fix required minimum version of Getopt::Long module (GH #287)
+  * Line number and filename separators in --passthru mode now work
+    the same as in context (-A/-B/-C) mode (GH #291)
+
+- Rebase patches:
+  * ack-add_spec.patch
+  * ack-ignore-osc.patch
+
+-------------------------------------------------------------------
 Sat Nov 23 11:32:01 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.2.0:

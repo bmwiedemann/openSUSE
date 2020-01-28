@@ -7,15 +7,11 @@ References: https://github.com/petdance/ack2/pull/490
 Add rpm/.spec to known file types
 
 ---
- ConfigDefault.pm |    3 +++
- 1 file changed, 3 insertions(+)
-
-Index: ack-2.14/lib/App/Ack/ConfigDefault.pm
-===================================================================
---- ack-2.14.orig/lib/App/Ack/ConfigDefault.pm	2014-09-04 22:19:55.000000000 +0100
-+++ ack-2.14/lib/App/Ack/ConfigDefault.pm	2014-09-04 22:20:35.000000000 +0100
-@@ -342,6 +342,9 @@ sub _options_block {
- # http://docutils.sourceforge.net/rst.html
+diff -Pdru ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm ack-v3.3.1/lib/App/Ack/ConfigDefault.pm
+--- ack-v3.3.1.orig/lib/App/Ack/ConfigDefault.pm	2020-01-22 14:49:59.116748125 +0100
++++ ack-v3.3.1/lib/App/Ack/ConfigDefault.pm	2020-01-22 14:51:46.072490906 +0100
+@@ -392,6 +392,9 @@
+ # https://docutils.sourceforge.io/rst.html
  --type-add=rst:ext:rst
  
 +# RPM
