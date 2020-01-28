@@ -48,7 +48,6 @@ there are no users logged in.
 %package -n libcolord-gtk1
 Summary:        System Daemon for Managing Color Devices -- GTK Integration Library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Suggests:       colord
 # for the -lang package to be installable
 Provides:       %{name} = %{version}
