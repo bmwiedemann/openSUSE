@@ -65,7 +65,6 @@ Requires:       iso-codes
 Requires:       mobile-broadband-provider-info
 Requires:       nma-data
 Requires:       timezone
-Recommends:     %{name}-lang
 Recommends:     NetworkManager-connection-editor
 Provides:       NetworkManager-client
 # NetworkManager-gnome was last used in openSUSE Leap 42.2.
