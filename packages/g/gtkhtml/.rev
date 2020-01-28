@@ -323,4 +323,12 @@ Recommended for 12.3</comment>
     <comment></comment>
     <requestid>582675</requestid>
   </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>18919d411c400c7aebc25482c2ef5315</srcmd5>
+    <version>4.10.0</version>
+    <time>1580205066</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767170 from dimstar)</comment>
+    <requestid>767434</requestid>
+  </revision>
 </revisionlist>

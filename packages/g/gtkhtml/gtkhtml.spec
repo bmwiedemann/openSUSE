@@ -54,7 +54,6 @@ being developed independently.
 %package -n libgtkhtml-%{_gtkhtml_api}-%{_gtkhtml_major}
 Summary:        Lightweight HTML rendering/printing/editing engine
 Group:          System/Libraries
-Recommends:     %{name}-%{_gtkhtml_api}-lang
 # For the lang package to be installable
 Provides:       %{name} = %{version}
 Provides:       %{name}-%{_gtkhtml_api} = %{version}
