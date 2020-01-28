@@ -48,7 +48,6 @@ Clutter GTK+ enables the use of GTK+ with Clutter.
 %package -n libclutter-gtk-1_0-0
 Summary:        GTK+ integration for Clutter
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # To make lang package installable
 Provides:       %{name} = %{version}
 
