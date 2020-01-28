@@ -88,7 +88,6 @@ Requires:       python3-cupshelpers
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-smbc
-Recommends:     %{name}-common-lang
 Recommends:     cups-pk-helper
 # As soon as this package is installed, it makes sense to have the
 # autoconfiguration too
