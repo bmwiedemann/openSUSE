@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>751415</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab0b69b6aa65469d83c4df4b6a6251e5</srcmd5>
+    <version>3.0.0rc8</version>
+    <time>1580205354</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0rc8
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 767737 from glaubitz)</comment>
+    <requestid>767797</requestid>
+  </revision>
 </revisionlist>
