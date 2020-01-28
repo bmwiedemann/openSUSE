@@ -58,7 +58,6 @@ every application the chance to assume its own extensibility.
 Summary:        GObject-based Plugin Engine
 # We provide %%{name} to make the lang package installable
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Recommends:     %{name}-loader-python3
 Provides:       %{name} = %{version}
 # The gjs loader is officially no longer supported upstream (removed from git).

@@ -332,4 +332,12 @@
     <comment></comment>
     <requestid>764791</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>782b75841180ca2c3c429d2855d11ca3</srcmd5>
+    <version>1.24.1</version>
+    <time>1580205122</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767199 from dimstar)</comment>
+    <requestid>767461</requestid>
+  </revision>
 </revisionlist>
