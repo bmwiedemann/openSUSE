@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:07:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Tue Jan 14 11:23:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update dependencies required by flatpak 1.6.0 .
