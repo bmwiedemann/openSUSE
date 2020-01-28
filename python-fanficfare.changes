@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 20 20:38:40 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.15.0:
+  - Remove site nfacommunity.com, parked domain, last worked
+    Dec2018.
+  - Remove site fannation.shades-of-moonlight.com, parked domain,
+    last worked Dec2018.
+  - Kludge fix for incorrect HTTP response 500 code from
+    trekfanfiction.net.
+  - trekfanfiction.net uses utf8 now
+  - Make sure storyUrl has &->& and then change it back for
+    Calibre. Matches how authorUrl is handled(in all_metadata).
+    Closes #460 for adapter_sugarquillnet .
+  - adapter_sugarquillnet change chapter text td to div. Issue
+    #460
+  - Update adapter_alternatehistorycom for XenForo2. Issue #457
+  - Order custom columns in config page.
+  - Add -U/--update-epub-always option to CLI.
+  - Don't do URL quoting on file: URLs. Fix for spaces->+
+    breaking default cover.
+  - Catch ',' in front of 'Thread' in forum titles.
+  - Reduce minimum_calibre_version to v2.85.1, last of 2 series.
+  - Changes for Python3 compatibility, thanks eschwartz!
+
+-------------------------------------------------------------------
 Fri Jan 10 22:15:59 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.14.0:
