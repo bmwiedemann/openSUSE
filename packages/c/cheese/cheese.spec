@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.4
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(x11)
 Requires:       gnome-video-effects
-Recommends:     %{name}-lang
 Recommends:     yelp
 
 %description
