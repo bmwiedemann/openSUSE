@@ -94,4 +94,12 @@
     <comment>New stable release (forwarded request 705702 from iznogood)</comment>
     <requestid>705804</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7db499d944e98636bb9e5c8552217aad</srcmd5>
+    <version>0.3.6</version>
+    <time>1580205110</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767194 from dimstar)</comment>
+    <requestid>767456</requestid>
+  </revision>
 </revisionlist>

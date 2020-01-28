@@ -41,7 +41,6 @@ bindings.
 %package -n libgovirt2
 Summary:        GObject based oVirt bindings
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # To make the lang package installable
 Provides:       %{name} = %{version}
 
