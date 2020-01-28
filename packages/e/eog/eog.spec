@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.4
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 0.7.4
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(shared-mime-info) >= 0.20
-Recommends:     %{name}-lang
 
 %description
 Eye of GNOME (eog) is a simple graphics viewer for the GNOME desktop
