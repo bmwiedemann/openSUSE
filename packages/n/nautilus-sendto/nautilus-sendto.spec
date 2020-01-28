@@ -32,7 +32,6 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.25.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.7
-Recommends:     %{name}-lang
 Obsoletes:      nautilus-sendto-devel < %{version}
 Obsoletes:      nautilus-sendto-plugin-evolution < %{version}
 Obsoletes:      nautilus-sendto-plugin-pidgin < %{version}

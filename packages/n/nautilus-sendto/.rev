@@ -428,4 +428,12 @@
   package features set. (forwarded request 587910 from fcrozat)</comment>
     <requestid>587954</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>cf3d03748cfa5eb29d36e76af81b9833</srcmd5>
+    <version>3.8.6</version>
+    <time>1580205152</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767209 from dimstar)</comment>
+    <requestid>767470</requestid>
+  </revision>
 </revisionlist>
