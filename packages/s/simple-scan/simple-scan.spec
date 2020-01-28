@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.5
 BuildRequires:  pkgconfig(zlib)
 Requires:       xdg-utils
-Recommends:     %{name}-lang
 
 %description
 Simple Scan is an easy-to-use application, designed to let users connect

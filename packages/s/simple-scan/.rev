@@ -546,4 +546,12 @@
     <comment>New stable release (forwarded request 750268 from iznogood)</comment>
     <requestid>750962</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>ba87eade187f35794a2be345f4697bc4</srcmd5>
+    <version>3.34.2</version>
+    <time>1580204926</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767385</requestid>
+  </revision>
 </revisionlist>
