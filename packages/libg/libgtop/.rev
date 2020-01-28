@@ -421,4 +421,12 @@
     <comment></comment>
     <requestid>689503</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>00a202e525f2b67ff4d1283f8f0410e6</srcmd5>
+    <version>2.40.0</version>
+    <time>1580205115</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767196 from dimstar)</comment>
+    <requestid>767458</requestid>
+  </revision>
 </revisionlist>

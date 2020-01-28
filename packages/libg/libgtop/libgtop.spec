@@ -44,7 +44,6 @@ from /dev/kmem.
 %package -n libgtop-2_0-%{sover}
 Summary:        System status information library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Needed to make lang package installable
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
