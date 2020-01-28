@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(gck-1) >= 3.3.4
 BuildRequires:  pkgconfig(gcr-3) >= 3.27.90
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 Requires:       libgck-modules-gnome-keyring = %{version}
-Recommends:     %{name}-lang
 Recommends:     %{name}-pam
 Provides:       dbus(org.freedesktop.secrets)
 Provides:       dbus(org.gnome.keyring)

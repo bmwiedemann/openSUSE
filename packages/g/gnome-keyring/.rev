@@ -1014,4 +1014,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment>Scripted push from {project}</comment>
     <requestid>736543</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>8fec78e62666170d925c4e44fbc5316c</srcmd5>
+    <version>3.34.0</version>
+    <time>1580205002</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767135 from dimstar)</comment>
+    <requestid>767402</requestid>
+  </revision>
 </revisionlist>
