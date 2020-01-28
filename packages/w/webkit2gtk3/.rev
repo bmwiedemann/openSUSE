@@ -746,4 +746,12 @@
     <comment>Add security fixes into changes (forwarded request 766686 from mgorse)</comment>
     <requestid>766889</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>b4f7778d79b4c3904a5f6cbb7873b80f</srcmd5>
+    <version>2.26.3</version>
+    <time>1580205199</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767231 from dimstar)</comment>
+    <requestid>767491</requestid>
+  </revision>
 </revisionlist>

@@ -141,7 +141,6 @@ Requires:       webkit2gtk-4_0-injected-bundles
 %if 0%{?suse_version} > 1510
 Requires:       xdg-dbus-proxy
 %endif
-Recommends:     %{_pkgname_no_slpp}-lang
 Provides:       %{_pkgname_no_slpp} = %{version}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2
 
