@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(nss)
 Requires:       NetworkManager >= 1.8.0
 Requires:       xl2tpd
 %requires_eq    ppp
-Recommends:     %{name}-lang
 Recommends:     strongswan
 
 %description
