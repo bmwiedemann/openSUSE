@@ -48,7 +48,6 @@ features typical of a source editor.
 %package -n libgtksourceview-3_0-1
 Summary:        GTK+ Source Editing Widget
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
 Provides:       gtksourceview = %{version}
 Obsoletes:      gtksourceview < %{version}
 

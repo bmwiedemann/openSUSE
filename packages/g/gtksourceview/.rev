@@ -859,4 +859,12 @@
     <comment>New stable rel (forwarded request 701235 from iznogood)</comment>
     <requestid>701611</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>c25a94bb27d6358566998bec1488843b</srcmd5>
+    <version>3.24.11</version>
+    <time>1580205068</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767173 from dimstar)</comment>
+    <requestid>767437</requestid>
+  </revision>
 </revisionlist>
