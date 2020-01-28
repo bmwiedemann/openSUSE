@@ -171,4 +171,12 @@
 - Modernize spec-file by calling spec-cleaner</comment>
     <requestid>583018</requestid>
   </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>eeae65b1da4b7313a06e99b0947e9eca</srcmd5>
+    <version>3.12.2</version>
+    <time>1580205089</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767186 from dimstar)</comment>
+    <requestid>767448</requestid>
+  </revision>
 </revisionlist>

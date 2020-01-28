@@ -51,7 +51,6 @@ Group:          System/Libraries
 # Need some schema from gnome-keyring
 Requires:       %{name}-data
 Requires:       gnome-keyring
-Recommends:     %{name}-lang
 # The library talks to seahorse-daemon
 Recommends:     seahorse-daemon
 # To make lang package installable
