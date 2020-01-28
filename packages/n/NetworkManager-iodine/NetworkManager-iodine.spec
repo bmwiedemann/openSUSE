@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(libnma) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-1)
 Requires:       NetworkManager >= 1.1.0
 Requires:       iodine >= 0.6.0rc1
-Recommends:     %{name}-lang
 Supplements:    packageand(NetworkManager:iodine)
 
 %description
