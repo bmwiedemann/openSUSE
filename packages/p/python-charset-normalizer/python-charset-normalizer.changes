@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:09:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.3.4
+  * Improvement/Bugfix : False positive when searching for successive upper, lower char. (ProbeChaos)
+  * Improvement : Noticeable better detection for jp
+  * Bugfix : Passing zero-length bytes to from_bytes
+  * Improvement : Expose version in package
+  * Bugfix : Division by zero
+  * Improvement : Prefers unicode (utf-8) when detected
+  * Apparently dropped Python2 silently
+
+-------------------------------------------------------------------
 Fri Oct  4 08:52:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.3.0

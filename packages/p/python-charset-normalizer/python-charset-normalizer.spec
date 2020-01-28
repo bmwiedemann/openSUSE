@@ -1,7 +1,7 @@
 #
 # spec file for package python-charset-normalizer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# https://github.com/Ousret/charset_normalizer/issues/1
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        1.3.0
+Version:        1.3.4
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
@@ -36,6 +35,7 @@ Requires:       python-dragonmapper
 Requires:       python-loguru
 Requires:       python-zhon
 Suggests:       python-requests-html
+Suggests:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PrettyTable}
