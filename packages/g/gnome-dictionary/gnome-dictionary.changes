@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:09:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Wed Apr 17 11:46:38 UTC 2019 - olaf@aepfle.de
 
 - Conflict with libgdict-1_0-6 because this pkg contained files which

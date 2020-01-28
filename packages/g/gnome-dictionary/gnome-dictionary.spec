@@ -35,7 +35,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
-Recommends:     %{name}-lang
 Conflicts:      gnome-utils < 3.3.1
 # libgdict is no longer a public library, and thus no external tool can make use of the data
 # Merge the package back into the main package, obsoleting libgdict-data
