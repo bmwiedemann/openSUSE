@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.8.0
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.12.0
-Recommends:     %{name}-lang
 
 %description
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
@@ -48,7 +47,6 @@ and the GNOME desktop environment.
 %package -n libgladeui-2-6
 Summary:        Core library of the GLADE User Interface Builder
 Group:          System/Libraries
-Recommends:     %{name}-lang
 
 %description -n libgladeui-2-6
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
