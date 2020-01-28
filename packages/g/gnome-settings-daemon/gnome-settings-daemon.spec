@@ -98,7 +98,6 @@ BuildRequires:  pkgconfig(xkbfile)
 Requires:       gsettings-desktop-schemas
 # g-s-d uses the pkexec binary
 Requires:       polkit
-Recommends:     %{name}-lang
 # For housekeeping plugin, that uses the nautilus dbus service
 Recommends:     nautilus
 %if %{with wacom}

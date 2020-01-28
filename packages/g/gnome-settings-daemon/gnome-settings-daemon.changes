@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:11:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Mon Jan 13 07:39:37 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Drop gnome-settings-daemon-sle-configure-timeout-blank.patch:
