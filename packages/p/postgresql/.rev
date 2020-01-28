@@ -421,4 +421,17 @@
 - Fix installation of bash_profile for SLE11 (pre systemd).</comment>
     <requestid>735633</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0cf061056ddaf7612379574034e0ee9f</srcmd5>
+    <version>12</version>
+    <time>1580204739</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a mistake in the creation of /var/lib/pgsql/.bash_profile
+  with the tmpfiles mechanism (bsc#1159335).
+
+- Sync ownership of /run/postgresql in the file list with tmpfiles.
+
+- bump to 12</comment>
+    <requestid>766656</requestid>
+  </revision>
 </revisionlist>

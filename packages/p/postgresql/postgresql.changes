@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 17 10:27:02 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Fix a mistake in the creation of /var/lib/pgsql/.bash_profile
+  with the tmpfiles mechanism (bsc#1159335).
+
+-------------------------------------------------------------------
+Thu Nov 14 12:36:59 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Sync ownership of /run/postgresql in the file list with tmpfiles.
+
+-------------------------------------------------------------------
+Tue Oct 22 13:08:50 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump to 12
+
+-------------------------------------------------------------------
 Mon Oct  7 08:26:39 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Use the correct content for .bash_profile (boo#1153168).

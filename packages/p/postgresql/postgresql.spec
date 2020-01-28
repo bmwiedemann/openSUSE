@@ -32,7 +32,7 @@ Name:           postgresql
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        11
+Version:        12
 Release:        0
 Url:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -268,7 +268,6 @@ echo "This is a dummy package to provide a dependency on the default PostgreSQL 
 
 %install
 mkdir -p %buildroot/var/lib/pgsql/
-mkdir -p %buildroot/var/run/postgresql
 
 install -m755 -d %buildroot%{_fillupdir}
 install -m644 %{S:1} %buildroot%{_fillupdir}/sysconfig.postgresql
@@ -326,6 +325,14 @@ fi
 %post server
 %fillup_only -n postgresql
 %if %{with systemd}
+PROFILE="/var/lib/pgsql/.bash_profile"
+if test -r "$PROFILE" && test "`cat $PROFILE`" = "/usr/share/postgresql/bash_profile"
+then
+	# Correct a mistake in /usr/lib/tmpfiles.d/postgresql.conf
+	# that created /var/lib/pgsql/.bash_profile with invalid
+	# content (bsc#1159335).
+	rm "$PROFILE"
+fi
 %tmpfiles_create %_tmpfilesdir/postgresql.conf
 %service_add_post postgresql.service
 %endif
@@ -393,10 +400,10 @@ fi
 %_tmpfilesdir/postgresql.conf
 %_unitdir/
 /usr/share/postgresql/postgresql-script
-%ghost %dir %attr(1775,root,root) /run/postgresql
+%ghost %dir %attr(1775,postgres,postgres) /run/postgresql
 %else
 %config /etc/init.d/postgresql
-%dir %attr(1775,root,root) /var/run/postgresql
+%dir %attr(1775,postgres,postgres) /var/run/postgresql
 %endif
 
 %files test
