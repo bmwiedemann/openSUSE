@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 27 20:27:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-cognitiveservices-language-spellcheck >= 2.0.0
+  + python-azure-cognitiveservices-search-customimagesearch >= 0.2.0
+  + python-azure-cognitiveservices-search-customsearch >= 0.3.0
+  + python-azure-cognitiveservices-search-entitysearch >= 2.0.0
+  + python-azure-cognitiveservices-search-imagesearch >= 2.0.0
+  + python-azure-cognitiveservices-search-newssearch >= 2.0.0
+  + python-azure-cognitiveservices-search-videosearch >= 2.0.0
+  + python-azure-cognitiveservices-search-websearch >= 2.0.0
+  + python-azure-cognitiveservices-vision-computervision >= 0.5.0
+  + python-azure-cognitiveservices-vision-customvision >= 1.0.0
+  + python-azure-keyvault >= 4.0.0
+  + python-azure-servicefabric >= 7.0.0.0
+  + python-azure-storage-blob >= 12.1.0
+  + python-azure-storage-queue >= 12.1.0
+
+-------------------------------------------------------------------
 Fri Oct  4 12:21:02 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires
