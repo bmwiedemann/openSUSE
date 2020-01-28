@@ -28,7 +28,6 @@ Source0:        https://download.gnome.org/sources/gnome-user-docs/3.34/%{name}-
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
 Requires:       yelp
-Recommends:     %{name}-lang
 Supplements:    gnome-session
 BuildArch:      noarch
 
