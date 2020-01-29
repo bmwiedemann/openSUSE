@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-Syck
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-Syck
-Version:        1.31
+Version:        1.32
 Release:        0
 %define cpan_name YAML-Syck
 Summary:        Perl YAML loader and dumper
@@ -43,7 +43,7 @@ backward-compatibility with 'YAML.pm'.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -DI_STDLIB -DI_STRING"
@@ -59,7 +59,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes COMPATIBILITY
+%doc Changes COMPATIBILITY README.md
 %license COPYING
 
 %changelog

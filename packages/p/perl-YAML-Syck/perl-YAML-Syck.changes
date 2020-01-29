@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 28 03:16:46 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+
+  [Changes for 1.32 - 2020-01-27]
+  
+  **** INTERFACE CHANGE ****
+  * Change default for LoadBlessed to false
+  
+  * Remove YAML::Syck tests which parse META.yml
+  * Switch to github actions for testing
+  * Remove 'use vars' from code in favor of our
+
+-------------------------------------------------------------------
 Fri Nov  9 00:45:14 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias from summary.
