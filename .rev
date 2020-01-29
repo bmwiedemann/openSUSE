@@ -435,4 +435,12 @@
     <comment></comment>
     <requestid>730077</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>40e58407813ae47b805db3bdbad9fbd8</srcmd5>
+    <version>3.22.10</version>
+    <time>1580330426</time>
+    <user>dimstar_suse</user>
+    <comment>As it builds now - let's forward it</comment>
+    <requestid>767860</requestid>
+  </revision>
 </revisionlist>
