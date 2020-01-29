@@ -1,7 +1,7 @@
 #
 # spec file for package x86info
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           x86info
-Version:        1.30+git.20180323
+Version:        1.31+git.20200121
 Release:        0
 Summary:        Tool to show x86 CPU Information
 License:        GPL-2.0-only

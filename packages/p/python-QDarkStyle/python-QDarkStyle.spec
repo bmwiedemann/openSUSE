@@ -1,7 +1,7 @@
 #
 # spec file for package python-QDarkStyle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define         X_display         ":98"
 Name:           python-QDarkStyle
-Version:        2.6.8
+Version:        2.8
 Release:        0
 Summary:        A dark stylesheet for Python and Qt applications
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/ColinDuquesnoy/QDarkStyleSheet
-Source:         https://github.com/ColinDuquesnoy/QDarkStyleSheet/archive/%{version}.tar.gz#/QDarkStyle-%{version}.tar.gz
-BuildRequires:  %{python_module QtPy}
+URL:            https://github.com/ColinDuquesnoy/QDarkStyleSheet
+Source:         https://github.com/ColinDuquesnoy/QDarkStyleSheet/archive/v%{version}.tar.gz#/QDarkStyle-%{version}.tar.gz
+BuildRequires:  %{python_module QtPy >= 1.7}
+BuildRequires:  %{python_module helpdev}
+BuildRequires:  %{python_module pyside2}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pyside2
+BuildRequires:  xorg-x11-server-Xvfb
+Requires:       python-QtPy >= 1.7
+Requires:       python-helpdev
 Requires:       python-setuptools
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -43,33 +48,36 @@ QDarkStyle is a dark stylesheet for Python and Qt applications.
 
 %prep
 %setup -q -n QDarkStyleSheet-%{version}
-sed -i '1{\,^#!%{_bindir}/env python,d}' qdarkstyle/*.py
+sed -i '1{\,^#!%{_bindir}/env python,d}' qdarkstyle/*.py qdarkstyle/utils/*.py
 
 %build
 %python_build
 
 %check
-pushd script
 export LANG=C.UTF-8
-python3 process_ui.py
-python3 process_qrc.py
+export DISPLAY=%{X_display}
+export PYTHONDONTWRITEBYTECODE=1
+Xvfb %{X_display} >& Xvfb.log &
+trap "kill $! || true" EXIT
+sleep 10
+%{python_expand export PYTHON_PATH=%{buildroot}%{$python_sitelib}
 
-python3 ../example/example.py --qt_from=pyqt5 --test
-python3 ../example/example.py --qt_from=pyqt5 --test --no_dark
+$python example/example.py --qt_from=pyqt5 --test
+$python example/example.py --qt_from=pyqt5 --test --no_dark
 
-python3 ../example/example.py --qt_from=pyside2 --test
-python3 ../example/example.py --qt_from=pyside2 --test --no_dark
-popd
+$python example/example.py --qt_from=pyside2 --test
+$python example/example.py --qt_from=pyside2 --test --no_dark
+}
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc AUTHORS.md CHANGES.md README.md
-%license LICENSE.md
-%python3_only %{_bindir}/qdarkstyle
+%doc AUTHORS.rst CHANGES.rst README.rst
+%license LICENSE.rst
+%{_bindir}/qdarkstyle
 %{python_sitelib}/qdarkstyle
-%{python_sitelib}/QDarkStyle-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/QDarkStyle-*.egg-info
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 27 21:53:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.31.1:
+  * Revert changes to the data layout for an internal data structure
+
+-------------------------------------------------------------------
+Thu Jan 23 18:58:04 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.31.0:
+  * add support for generated columns
+  * various fixes and improvements
+- drop upstreamed patches:
+  * 8a39167bd2-Further-improvements-to-LEFT-JOIN.patch
+  * fix_dir_exists_on_btrfs.patch
+  * 7833feecfe-Prevent-SQLite-from-bad-NULL-assumption.patch
+  * 548082dfab-Improvements-to-the-LEFT-JOIN.patch
+  * sqlite3-avoid-truncation-error.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 14:29:39 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix regression found when running python-Django/Djano1 testsuite:

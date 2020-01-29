@@ -1,0 +1,26 @@
+From 4fbba802d7b1d852acbffeb735196560f1ac39b7 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Fri, 17 Jan 2020 20:59:02 +0100
+Subject: [PATCH] Kconfig: add btrfs to distro boot
+
+Some distributions use btrfs as the default file system.
+Enable btrfs support by default when using distro boot for all
+architectures but riscv, as it breaks compilation due to size problems.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Kconfig b/Kconfig
+index 92fc4fc135..b61ebf22f6 100644
+--- a/Kconfig
++++ b/Kconfig
+@@ -93,6 +93,7 @@ config DISTRO_DEFAULTS
+ 	select HUSH_PARSER
+ 	select SUPPORT_RAW_INITRD
+ 	select SYS_LONGHELP
++	imply CMD_BTRFS if !RISCV && !MIPS
+ 	imply CMD_MII if NET
+ 	imply USB_STORAGE
+ 	imply USE_BOOTCOMMAND

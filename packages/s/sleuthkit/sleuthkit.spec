@@ -1,7 +1,7 @@
 #
 # spec file for package sleuthkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sosuffix 13
+%define sosuffix 19
 
 Name:           sleuthkit
-Version:        4.6.7
+Version:        4.8.0
 Release:        0
 Summary:        Tools for file system and volume forensic analysis
 License:        CPL-1.0 AND IPL-1.0 AND GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  libtool
 
 # libewf - Newer versions are plain BSD (older are BSD with advertising)
-BuildRequires:  libewf-devel = 0~20140608
+BuildRequires:  libewf-devel = 0~20140808
 
 Requires:       file
 Requires:       libtsk%sosuffix = %{version}
@@ -133,6 +133,7 @@ cp --archive bindings %{buildroot}/%{_datadir}/sleuthkit/bindings
 %{_bindir}/mmcat
 %{_bindir}/mmls
 %{_bindir}/mmstat
+%{_bindir}/pstat
 %{_bindir}/sigfind
 %{_bindir}/sorter
 %{_bindir}/usnjls

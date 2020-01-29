@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap-helpers
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,12 @@ Release:        0
 Summary:        Dependencies to build ghc
 License:        BSD-3-Clause AND BSD-2-Clause
 URL:            https://build.opensuse.org/project/show/devel:languages:haskell
-Source:         helpers.tar.gz
-ExclusiveArch:  x86_64
+Source:         alex-3.2.5.tar.gz
+Source1:        happy-1.19.12.tar.gz
+BuildRequires:  ghc-bootstrap
+# This package is not meant to be used outside OBS
+Requires:       this-is-only-for-build-envs
+
 Conflicts:      alex
 Conflicts:      happy
 
@@ -31,24 +35,37 @@ Conflicts:      happy
 Prebuild alex and happy for ghc-8.8+ build
 
 Don't use outside GHC-8.8+ build
+% ' Help EMACS syntax highlighting
 
 %prep
-%setup -q
+%setup -q -c -a0 -a1
 
 %build
+pushd alex-3.2.5
+/opt/bin/ghc Setup.hs -o cabal
+./cabal configure --prefix=%{_prefix}
+./cabal build
+popd
+
+pushd happy-1.19.12
+/opt/bin/ghc Setup.hs -o cabal
+./cabal configure --prefix=%{_prefix}
+./cabal build
+popd
 
 %install
-cp -R * %{buildroot}/
-rm -Rf %{buildroot}%{_datadir}/doc/*
-rm -Rf %{buildroot}/usr/share/man/
-rm -Rf %{buildroot}/usr/share/licenses/
+pushd alex-3.2.5
+./cabal copy --destdir=%{buildroot}
+popd
+
+pushd happy-1.19.12
+./cabal copy --destdir=%{buildroot}
+popd
 
 %files
 %{_bindir}/alex
 %{_bindir}/happy
-%dir %{_datadir}/happy-1.19.12/
-%dir %{_datadir}/alex-3.2.5/
-%{_datadir}/alex-3.2.5/*
-%{_datadir}/happy-1.19.12/*
+%{_datadir}/*ghc*
+%{_datadir}/doc/*ghc*
 
 %changelog

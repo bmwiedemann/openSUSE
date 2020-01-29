@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:29:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to latest version 2.0.28
+  * Fixed a number of potential buffer overruns by appending a NUL
+    character to strncpy'd strings.
+  * switched from editline to readline
+  * some variable and function renaming to avoid leading
+    underscores
+  * more changes, no documentation available (ChangeLog file
+    is unchanged!)
+  * Two patches now obsolete.
+  [OpenIPMI-2.0.25..HEAD_git.diff,
+   0003-Apply-OpenIPMI-2.0.21-nobundle.patch.patch,
+   OpenIPMI-2.0.28.tar.gz]
+
+-------------------------------------------------------------------
 Sun Mar 17 10:14:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Remove em dashes from summaries.

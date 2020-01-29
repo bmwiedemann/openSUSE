@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jan 28 08:38:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball to get tests and license
+- Run the tests
+
+-------------------------------------------------------------------
+Tue Jan 28 08:20:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec cleaner
+- Add patch to work with python 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
+Sat Jan 25 14:53:04 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial version for package

@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %bcond_with libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Other
 URL:            https://www.scummvm.org/
 Source:         https://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-AUDIO-Really-Fix-Compilation-Against-Fluidsynth-v2.1.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -79,6 +81,8 @@ These engines are in a worse state, but allow to play extra games.
 
 %prep
 %setup -q
+%patch0 -p1
+
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure
@@ -106,16 +110,9 @@ make %{?_smp_mflags}
 %install
 %make_install
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %files
 %defattr(0644,root,root,0755)
+%license COPYING*
 %attr(0755,-,-) %{_bindir}/scummvm
 %{_datadir}/scummvm
 %{_mandir}/man6/scummvm.6*

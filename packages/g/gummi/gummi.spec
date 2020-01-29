@@ -1,7 +1,7 @@
 #
 # spec file for package gummi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           gummi
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Simple LaTeX editor
 License:        MIT
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://github.com/alexandervdm/gummi
 Source0:        https://github.com/alexandervdm/gummi/releases/download/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gummi-implicit-fortify-decl.patch gh#alexandervdm/gummi#124 badshah400@gmail.com -- Include string.h header to avoid using implicit definitions of strlen function; patch sent upstream
-Patch0:         gummi-implicit-fortify-decl.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -47,7 +45,6 @@ simplicity in mind, but is useful for both novice and advanced LaTeX writers.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure

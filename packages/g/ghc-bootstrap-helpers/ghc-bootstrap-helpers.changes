@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:08:42 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
+
+- improve packaging and avoid rpmlint warning 
+
+-------------------------------------------------------------------
+Fri Jan 17 18:57:31 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
+
+- build happy and alex form source using ghc-bootstrap
+
+-------------------------------------------------------------------
 Sun Dec 29 13:00:54 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - initial commit 

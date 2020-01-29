@@ -1,7 +1,7 @@
-Index: OpenIPMI-2.0.24/swig/OpenIPMI.i
+Index: OpenIPMI-2.0.28/swig/OpenIPMI.i
 ===================================================================
---- OpenIPMI-2.0.24.orig/swig/OpenIPMI.i
-+++ OpenIPMI-2.0.24/swig/OpenIPMI.i
+--- OpenIPMI-2.0.28.orig/swig/OpenIPMI.i
++++ OpenIPMI-2.0.28/swig/OpenIPMI.i
 @@ -3123,6 +3123,7 @@ init_glib(void)
      init_lang();
  #endif
@@ -10,10 +10,10 @@ Index: OpenIPMI-2.0.24/swig/OpenIPMI.i
  #else
      return ENOSYS;
  #endif
-@@ -3160,6 +3161,7 @@ init_tcl(void)
-     swig_os_hnd->set_log_handler(swig_os_hnd, openipmi_swig_vlog);
-     ipmi_init(swig_os_hnd);
-     ipmi_cmdlang_init(swig_os_hnd);
+@@ -3138,6 +3139,7 @@ init_glib12(void)
+     init_lang();
+ #endif
+     swig_os_hnd = init_glib_shim("12");
 +    return 0;
  #else
      return ENOSYS;

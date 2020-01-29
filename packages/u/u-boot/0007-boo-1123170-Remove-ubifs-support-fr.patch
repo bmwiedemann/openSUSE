@@ -1,4 +1,4 @@
-From e9bcf78e73609a32d15699f0a6bc2e0cd9e08b0d Mon Sep 17 00:00:00 2001
+From 98e9215b94ac8e2e5a8d545ad05b2ff0f9429bcc Mon Sep 17 00:00:00 2001
 From: Guillaume GARDET <guillaume.gardet@free.fr>
 Date: Tue, 29 Jan 2019 11:38:12 +0100
 Subject: [PATCH] boo#1123170: Remove ubifs support from omap3_beagle to keep a
@@ -10,7 +10,7 @@ Subject: [PATCH] boo#1123170: Remove ubifs support from omap3_beagle to keep a
  2 files changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/configs/omap3_beagle_defconfig b/configs/omap3_beagle_defconfig
-index bf49de4704..90ae0c3b90 100644
+index ed7cb8f2ff..03dc3b27d4 100644
 --- a/configs/omap3_beagle_defconfig
 +++ b/configs/omap3_beagle_defconfig
 @@ -38,7 +38,6 @@ CONFIG_CMD_FS_UUID=y
@@ -21,7 +21,7 @@ index bf49de4704..90ae0c3b90 100644
  # CONFIG_ISO_PARTITION is not set
  # CONFIG_SPL_EFI_PARTITION is not set
  CONFIG_SPL_PARTITION_UUIDS=y
-@@ -72,6 +71,7 @@ CONFIG_SYS_NAND_BUSWIDTH_16BIT=y
+@@ -73,6 +72,7 @@ CONFIG_SYS_NAND_BUSWIDTH_16BIT=y
  CONFIG_SYS_NAND_U_BOOT_LOCATIONS=y
  CONFIG_SYS_NAND_U_BOOT_OFFS=0x80000
  CONFIG_SPL_NAND_SIMPLE=y
@@ -30,14 +30,14 @@ index bf49de4704..90ae0c3b90 100644
  CONFIG_DM_SPI=y
  CONFIG_OMAP3_SPI=y
 diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
-index e8c60838b7..99cd59d40e 100644
+index bc8aa7adf5..ee1d36003e 100644
 --- a/include/configs/omap3_beagle.h
 +++ b/include/configs/omap3_beagle.h
-@@ -83,7 +83,6 @@
+@@ -82,7 +82,6 @@
  #define BOOT_TARGET_DEVICES(func) \
  	func(MMC, mmc, 0) \
  	func(LEGACY_MMC, legacy_mmc, 0) \
 -	func(UBIFS, ubifs, 0) \
  	func(NAND, nand, 0)
  
- #else /* !CONFIG_NAND */
+ #else /* !CONFIG_MTD_RAW_NAND */

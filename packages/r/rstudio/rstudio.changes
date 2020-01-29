@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 28 08:44:50 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix Requires to actually require the rstudio base package
+
+-------------------------------------------------------------------
 Mon Jan 27 13:27:43 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add rstudio-server and rstudio-desktop subpackages

@@ -1,11 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 28 12:46:52 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Update to 4.8.0:
+     * added APFS support which required significant changes
+     * added pool logic as required for APFS
+     * fixes to the logical imager support
+     * various other fixes
+- Update to 4.7.0
+     * improvements to the logical imager
+     * feature enhancements in support of autopsy release
+- added pstat tool  
+
+-------------------------------------------------------------------
+Tue Jan 28 11:31:43 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update libewf buildrequires from 20140608 to 20140808
+     * libewf 20140608 is from the stable branch
+     * libewf 20140808 is the latest stable branch release
+
+-------------------------------------------------------------------
 Mon Aug 19 02:22:48 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 -Update to 4.6.7:
 	* First release of new logical imager tool
 	* VHD image writer fixes for out of space scenarios 
 -Update to 4.6.6:
-	* Acquisition deteails are set in DB for E01 files
+	* Acquisition details are set in DB for E01 files
 	* Fix NTFS decompression issue (from Joe Sylve)
 	* Image reading fix when cache fails (Joe Sylve)
 	* Fix HFS+ issue with large catalog files (Joe Sylve)

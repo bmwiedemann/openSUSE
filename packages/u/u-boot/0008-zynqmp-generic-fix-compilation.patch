@@ -1,4 +1,4 @@
-From c34095d98fe8d6422ea8a71e8f1df9e5a7caf2c0 Mon Sep 17 00:00:00 2001
+From 115e64c42f32f158728ef1747b707adbb61d8bd2 Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Tue, 5 Mar 2019 18:09:04 +0100
 Subject: [PATCH] zynqmp: generic: fix compilation

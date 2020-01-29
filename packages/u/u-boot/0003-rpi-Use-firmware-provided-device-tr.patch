@@ -1,4 +1,4 @@
-From 79010f19df5787e201b2c9e7c6f54d70ac5c2ef6 Mon Sep 17 00:00:00 2001
+From 741743044fdc2008ea45ac7f271daa567c4dd9f0 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Wed, 21 Feb 2018 17:41:13 +0100
 Subject: [PATCH] rpi: Use firmware provided device tree
@@ -28,7 +28,7 @@ Signed-off-by: Guillaume Gardet <guillaume.gardet@free.fr>
  5 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
-index fe5a7763a6..ed7f9381e9 100644
+index 75c6c9c447..6e7fe71bbf 100644
 --- a/configs/rpi_0_w_defconfig
 +++ b/configs/rpi_0_w_defconfig
 @@ -17,7 +17,7 @@ CONFIG_CMD_GPIO=y
@@ -41,7 +41,7 @@ index fe5a7763a6..ed7f9381e9 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
-index bf331c0ad0..52e3c3b234 100644
+index 4e8204ef88..b5b7a08698 100644
 --- a/configs/rpi_2_defconfig
 +++ b/configs/rpi_2_defconfig
 @@ -17,7 +17,7 @@ CONFIG_CMD_GPIO=y
@@ -54,7 +54,7 @@ index bf331c0ad0..52e3c3b234 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
-index c2417a0ec9..191962f0f7 100644
+index d50953287c..4b9f61b2b2 100644
 --- a/configs/rpi_3_32b_defconfig
 +++ b/configs/rpi_3_32b_defconfig
 @@ -18,7 +18,7 @@ CONFIG_CMD_GPIO=y
@@ -67,7 +67,7 @@ index c2417a0ec9..191962f0f7 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
-index 4fa682539c..03a2356d3d 100644
+index c0c0955131..ce7813fb1f 100644
 --- a/configs/rpi_3_defconfig
 +++ b/configs/rpi_3_defconfig
 @@ -18,7 +18,7 @@ CONFIG_CMD_GPIO=y
@@ -80,7 +80,7 @@ index 4fa682539c..03a2356d3d 100644
  CONFIG_ENV_FAT_INTERFACE="mmc"
  CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
 diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
-index 2c04b3334e..bf00d8b669 100644
+index 2f4c7da6dc..063ec9f196 100644
 --- a/configs/rpi_defconfig
 +++ b/configs/rpi_defconfig
 @@ -17,7 +17,7 @@ CONFIG_CMD_GPIO=y

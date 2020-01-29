@@ -13,8 +13,8 @@ set -e
 
 GIT_TREE=git://github.com/openSUSE/u-boot.git
 GIT_LOCAL_TREE=~/git/u-boot-opensuse
-GIT_BRANCH=tumbleweed-2019.10
-GIT_UPSTREAM_TAG=v2019.10
+GIT_BRANCH=tumbleweed-2020.01
+GIT_UPSTREAM_TAG=v2020.01
 GIT_DIR=/dev/shm/u-boot-factory-git-dir
 CMP_DIR=/dev/shm/u-boot-factory-cmp-dir
 

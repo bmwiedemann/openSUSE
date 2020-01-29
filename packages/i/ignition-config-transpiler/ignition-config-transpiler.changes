@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 28 12:16:44 UTC 2020 - kukuk@suse.de
+
+- Update to version 0.4.0+git20200124.846a5a4:
+  * news: add news for 0.4.0
+  * base/v0_2_exp: translate filesystem.mountOptions field
+  * go.mod: bump Ignition to 2.1.1
+  * docs: fix versions for 1.1.0-experimental
+  * build*: use vendored dependencies
+  * test: don't gofmt vendored packages
+  * vendor: vendor dependencies
+  * {docs,release-checklist}: add Quay tag pointing to latest release
+  * release-checklist: fix caps
+  * news: add news for 0.3.0
+
+-------------------------------------------------------------------
 Sat Jan 18 20:51:27 UTC 2020 - kukuk@suse.de
 
 - Update to version 0.2.0+git20191111.daeb3de:

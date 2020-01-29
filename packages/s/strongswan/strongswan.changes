@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan 26 08:54:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace %__-type macro indirections. Update homepage URL to https.
+
+-------------------------------------------------------------------
+Mon Jan  6 22:06:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.8.2:
+  * The systemd service units have changed their name.
+    "strongswan" is now "strongswan-starter", and
+    "strongswan-swanctl" is now "strongswan".
+    After installation, you need to `systemctl disable` the old
+    name and `systemctl enable`+start the new one.
+  * Fix CVE-2018-17540, CVE-2018-16151 and CVE-2018-16152.
+  * boo#1109845 and boo#1107874.
+- Please check included NEWS file for info on what other changes
+  that have been done in versions 5.8.2, 5.8.1 5.8.0, 5.7.2, 5.7.1
+  and 5.7.0.
+- Rebase strongswan_ipsec_service.patch.
+- Disable patches that need rebase or dropping:
+  * strongswan_modprobe_syslog.patch
+  * 0006-fix-compilation-error-by-adding-stdint.h.patch
+- Add conditional pkgconfig(libsystemd) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
 Wed Jun  6 22:14:57 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 5.6.3 (CVE-2018-10811, boo#1093536,

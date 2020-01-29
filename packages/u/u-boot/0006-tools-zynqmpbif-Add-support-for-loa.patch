@@ -1,4 +1,4 @@
-From dc7797478604d41d2f002f885cd2a8cd3d22fd19 Mon Sep 17 00:00:00 2001
+From 8ee3e6d2312ebdd3868520fb528249816c3cb975 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Thu, 26 Apr 2018 13:30:32 +0200
 Subject: [PATCH] tools: zynqmpbif: Add support for load=after
@@ -34,7 +34,7 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  1 file changed, 15 insertions(+)
 
 diff --git a/tools/zynqmpbif.c b/tools/zynqmpbif.c
-index 8c47107c7b..591bec8e59 100644
+index 82ce0ac1a5..b4302fa67e 100644
 --- a/tools/zynqmpbif.c
 +++ b/tools/zynqmpbif.c
 @@ -42,6 +42,7 @@ enum bif_flag {

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-foldl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %global pkg_name foldl
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Composable, streaming, and efficient left folds
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-comonad-devel
@@ -42,6 +42,9 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-builder-devel
 BuildRequires:  ghc-vector-devel
+%if %{with tests}
+BuildRequires:  ghc-doctest-devel
+%endif
 
 %description
 This library provides strict left folds that stream in constant memory, and you
@@ -61,13 +64,15 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

@@ -1,7 +1,7 @@
 #
 # spec file for package strongswan
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           strongswan
-Version:        5.6.3
+Version:        5.8.2
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -64,8 +64,7 @@ Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://www.strongswan.org/
-Requires:       strongswan-ipsec = %{version}
+URL:            https://www.strongswan.org/
 Source0:        http://download.strongswan.org/strongswan-%{upstream_version}.tar.bz2
 Source1:        http://download.strongswan.org/strongswan-%{upstream_version}.tar.bz2.sig
 Source2:        %{name}.init.in
@@ -76,6 +75,7 @@ Source5:        %{name}.keyring
 Source6:        fipscheck.sh.in
 Source7:        fips-enforce.conf
 %endif
+# Needs rebase
 Patch1:         %{name}_modprobe_syslog.patch
 Patch2:         %{name}_ipsec_service.patch
 %if %{with fipscheck}
@@ -84,6 +84,7 @@ Patch3:         %{name}_fipscheck.patch
 Patch4:         %{name}_fipsfilter.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
+# Needs rebase
 Patch6:         0006-fix-compilation-error-by-adding-stdint.h.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
@@ -112,6 +113,7 @@ BuildRequires:  pkgconfig(libnm)
 %endif
 %if %{with systemd}
 %{?systemd_requires}
+BuildRequires:  pkgconfig(libsystemd)
 %endif
 BuildRequires:  iptables
 %if %{with systemd}
@@ -126,6 +128,7 @@ BuildRequires:  automake
 BuildRequires:  fipscheck
 %endif
 BuildRequires:  libtool
+Requires:       strongswan-ipsec = %{version}
 
 %description
 StrongSwan is an IPsec-based VPN solution for Linux.
@@ -159,9 +162,9 @@ StrongSwan is an IPsec-based VPN solution for Linux.
 This package triggers the installation of both, IKEv1 and IKEv2 daemons.
 
 %package doc
-BuildArch:      noarch
 Summary:        Documentation for strongSwan
 Group:          Documentation/Man
+BuildArch:      noarch
 
 %description doc
 StrongSwan is an IPsec-based VPN solution for Linux.
@@ -254,7 +257,8 @@ and the load testing plugin for IKEv2 daemon.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
-%patch1 -p1
+# Needs rebase, file it patches no longer exists.
+#patch1 -p1
 %patch2 -p1
 %if %{with fipscheck}
 %patch3 -p1
@@ -262,7 +266,8 @@ and the load testing plugin for IKEv2 daemon.
 #patch4 -p1
 %endif
 %patch5 -p1
-%patch6 -p1
+# Needs rebase.
+#patch6 -p1
 sed -e 's|@libexecdir@|%_libexecdir|g'    \
      < %{_sourcedir}/strongswan.init.in \
      > strongswan.init
@@ -288,6 +293,7 @@ autoreconf --force --install
 	--with-resolv-conf=%{_rundir}/%{name}/resolv.conf \
 	--with-piddir=%{_rundir}/%{name} \
 %if %{with systemd}
+	--enable-systemd \
 	--with-systemdsystemunitdir=%{_unitdir} \
 %endif
 	--enable-pkcs11 \
@@ -442,7 +448,7 @@ install -c -m644 TODO NEWS README COPYING LICENSE \
 install -c -m644 %{_sourcedir}/README.SUSE \
 		 %{buildroot}/%{strongswan_docdir}/
 %if %{with systemd}
-%{__install} -d -m 0755 %{buildroot}%{_tmpfilesdir}
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 echo 'd %{_rundir}/%{name} 0770 root root' > %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %endif
 %if %{with fipscheck}
@@ -477,7 +483,7 @@ install -c -m644 %{_sourcedir}/fips-enforce.conf \
 %post libs0
 /sbin/ldconfig
 %{?tmpfiles_create:%tmpfiles_create %{_tmpfilesdir}/%{name}.conf}
-%{!?tmpfiles_create:test -d %{_rundir}/%{name} || %{__mkdir_p} %{_rundir}/%{name}}
+%{!?tmpfiles_create:test -d %{_rundir}/%{name} || mkdir -p %{_rundir}/%{name}}
 
 %postun libs0 -p /sbin/ldconfig
 
@@ -551,9 +557,11 @@ fi
 %dir %{_sysconfdir}/ipsec.d/ocspcerts
 %dir %attr(700,root,root) %{_sysconfdir}/ipsec.d/private
 %if %{with systemd}
+%{_unitdir}/strongswan-starter.service
 %{_unitdir}/strongswan.service
-%{_sysconfdir}/dbus-1/system.d/nm-strongswan-service.conf
+%{_datadir}/dbus-1/system.d/nm-strongswan-service.conf
 %{_sbindir}/rcstrongswan
+%{_sbindir}/charon-systemd
 %else
 %config %{_sysconfdir}/init.d/ipsec
 %{_sbindir}/rcipsec
@@ -574,6 +582,7 @@ fi
 %if %{with test}
 %{_libexecdir}/ipsec/conftest
 %endif
+%{_libexecdir}/ipsec/xfrmi
 %{_libexecdir}/ipsec/duplicheck
 %{_libexecdir}/ipsec/pool
 %{_libexecdir}/ipsec/scepclient
@@ -583,6 +592,7 @@ fi
 %{_libexecdir}/ipsec/_imv_policy
 %{_libexecdir}/ipsec/imv_policy_manager
 %dir %{strongswan_plugins}
+%{strongswan_plugins}/libstrongswan-drbg.so
 %{strongswan_plugins}/libstrongswan-stroke.so
 %{strongswan_plugins}/libstrongswan-updown.so
 
@@ -609,6 +619,9 @@ fi
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon.conf
+%if %{with systemd}
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-systemd.conf
+%endif
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-logging.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/imcv.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pki.conf
@@ -621,6 +634,7 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/aes.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/counters.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/curve25519.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/drbg.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/vici.conf
 %if %{with afalg}
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/af-alg.conf
@@ -856,6 +870,7 @@ fi
 %{strongswan_templates}/config/plugins/des.conf
 %{strongswan_templates}/config/plugins/dhcp.conf
 %{strongswan_templates}/config/plugins/dnskey.conf
+%{strongswan_templates}/config/plugins/drbg.conf
 %{strongswan_templates}/config/plugins/duplicheck.conf
 %{strongswan_templates}/config/plugins/eap-aka-3gpp2.conf
 %{strongswan_templates}/config/plugins/eap-aka.conf
@@ -931,6 +946,9 @@ fi
 %{strongswan_templates}/config/plugins/xcbc.conf
 %{strongswan_templates}/config/plugins/curve25519.conf
 %{strongswan_templates}/config/plugins/vici.conf
+%if %{with systemd}
+%{strongswan_templates}/config/strongswan.d/charon-systemd.conf
+%endif
 %{strongswan_templates}/config/strongswan.d/charon-logging.conf
 %{strongswan_templates}/config/strongswan.d/charon.conf
 %{strongswan_templates}/config/strongswan.d/imcv.conf

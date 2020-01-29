@@ -1,0 +1,845 @@
+From f7f2956544c8c09e18d73ef53e3742120a352870 Mon Sep 17 00:00:00 2001
+From: Thierry Reding <treding@nvidia.com>
+Date: Mon, 15 Apr 2019 11:32:39 +0200
+Subject: [PATCH] ARM: tegra: Add NVIDIA Jetson Nano Developer Kit support
+
+v5: https://www.mail-archive.com/u-boot@lists.denx.de/msg322738.html
+The Jetson Nano Developer Kit is a Tegra X1 based development board. It
+is similar to Jetson TX1 but it is not pin compatible. It features 4 GB
+of LPDDR4, an SPI NOR flash for early boot firmware and an SD card slot
+used for storage.
+
+HDMI 2.0 or DP 1.2 are available for display, four USB ports (3 USB 2.0
+and 1 USB 3.0) can be used to attach a variety of peripherals and a PCI
+Ethernet controller provides onboard network connectivity.
+
+A 40-pin header on the board can be used to extend the capabilities and
+exposed interfaces of the Jetson Nano.
+
+[Yousaf]: fix build. add fdtfile in environment.
+
+Signed-off-by: Thierry Reding <treding@nvidia.com>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ arch/arm/dts/Makefile                         |   3 +-
+ arch/arm/dts/tegra210-p3450-0000.dts          | 135 +++++++++
+ arch/arm/mach-tegra/tegra210/Kconfig          |   7 +
+ board/nvidia/p3450-0000/Kconfig               |  12 +
+ board/nvidia/p3450-0000/MAINTAINERS           |   6 +
+ board/nvidia/p3450-0000/Makefile              |   8 +
+ board/nvidia/p3450-0000/p3450-0000.c          | 198 +++++++++++++
+ .../p3450-0000/pinmux-config-p3450-0000.h     | 265 ++++++++++++++++++
+ configs/p3450-0000_defconfig                  |  55 ++++
+ include/configs/p3450-0000.h                  |  37 +++
+ 10 files changed, 725 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/dts/tegra210-p3450-0000.dts
+ create mode 100644 board/nvidia/p3450-0000/Kconfig
+ create mode 100644 board/nvidia/p3450-0000/MAINTAINERS
+ create mode 100644 board/nvidia/p3450-0000/Makefile
+ create mode 100644 board/nvidia/p3450-0000/p3450-0000.c
+ create mode 100644 board/nvidia/p3450-0000/pinmux-config-p3450-0000.h
+ create mode 100644 configs/p3450-0000_defconfig
+ create mode 100644 include/configs/p3450-0000.h
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 0127a91a82..ae93b71660 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -179,7 +179,8 @@ dtb-$(CONFIG_TEGRA) += tegra20-harmony.dtb \
+ 	tegra210-e2220-1170.dtb \
+ 	tegra210-p2371-0000.dtb \
+ 	tegra210-p2371-2180.dtb \
+-	tegra210-p2571.dtb
++	tegra210-p2571.dtb \
++	tegra210-p3450-0000.dtb
+ 
+ dtb-$(CONFIG_ARCH_MVEBU) +=			\
+ 	armada-3720-db.dtb			\
+diff --git a/arch/arm/dts/tegra210-p3450-0000.dts b/arch/arm/dts/tegra210-p3450-0000.dts
+new file mode 100644
+index 0000000000..d45ee9afc0
+--- /dev/null
++++ b/arch/arm/dts/tegra210-p3450-0000.dts
+@@ -0,0 +1,135 @@
++/dts-v1/;
++
++#include "tegra210.dtsi"
++
++/ {
++	model = "NVIDIA Jetson Nano Developer Kit";
++	compatible = "nvidia,p3450-0000", "nvidia,tegra210";
++
++	chosen {
++		stdout-path = &uarta;
++	};
++
++	aliases {
++		ethernet = "/pcie@1003000/pci@2,0/ethernet@0,0";
++		i2c0 = "/i2c@7000d000";
++		i2c2 = "/i2c@7000c400";
++		i2c3 = "/i2c@7000c500";
++		i2c4 = "/i2c@7000c700";
++		sdhci0 = "/sdhci@700b0000";
++		spi0 = "/spi@70410000";
++		usb0 = "/usb@7d000000";
++	};
++
++	memory {
++		reg = <0x0 0x80000000 0x0 0xc0000000>;
++	};
++
++	pcie@1003000 {
++		status = "okay";
++
++		pci@1,0 {
++			status = "okay";
++		};
++
++		pci@2,0 {
++			status = "okay";
++
++			ethernet@0,0 {
++				reg = <0x000000 0 0 0 0>;
++				local-mac-address = [ 00 00 00 00 00 00 ];
++			};
++		};
++	};
++
++	serial@70006000 {
++		status = "okay";
++	};
++
++	padctl@7009f000 {
++		pinctrl-0 = <&padctl_default>;
++		pinctrl-names = "default";
++
++		padctl_default: pinmux {
++			xusb {
++				nvidia,lanes = "otg-1", "otg-2";
++				nvidia,function = "xusb";
++				nvidia,iddq = <0>;
++			};
++
++			usb3 {
++				nvidia,lanes = "pcie-5", "pcie-6";
++				nvidia,function = "usb3";
++				nvidia,iddq = <0>;
++			};
++
++			pcie-x1 {
++				nvidia,lanes = "pcie-0";
++				nvidia,function = "pcie-x1";
++				nvidia,iddq = <0>;
++			};
++
++			pcie-x4 {
++				nvidia,lanes = "pcie-1", "pcie-2",
++					       "pcie-3", "pcie-4";
++				nvidia,function = "pcie-x4";
++				nvidia,iddq = <0>;
++			};
++
++			sata {
++				nvidia,lanes = "sata-0";
++				nvidia,function = "sata";
++				nvidia,iddq = <0>;
++			};
++		};
++	};
++
++	sdhci@700b0000 {
++		status = "okay";
++		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) GPIO_ACTIVE_LOW>;
++		power-gpios = <&gpio TEGRA_GPIO(Z, 3) GPIO_ACTIVE_HIGH>;
++		bus-width = <4>;
++	};
++
++	i2c@7000c400 {
++		status = "okay";
++		clock-frequency = <400000>;
++	};
++
++	i2c@7000c500 {
++		status = "okay";
++		clock-frequency = <400000>;
++	};
++
++	i2c@7000c700 {
++		status = "okay";
++		clock-frequency = <400000>;
++	};
++
++	i2c@7000d000 {
++		status = "okay";
++		clock-frequency = <400000>;
++	};
++
++	spi@70410000 {
++		status = "okay";
++	};
++
++	usb@7d000000 {
++		status = "okay";
++		dr_mode = "peripheral";
++	};
++
++	clocks {
++		compatible = "simple-bus";
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		clk32k_in: clock@0 {
++			compatible = "fixed-clock";
++			reg = <0>;
++			#clock-cells = <0>;
++			clock-frequency = <32768>;
++		};
++	};
++};
+diff --git a/arch/arm/mach-tegra/tegra210/Kconfig b/arch/arm/mach-tegra/tegra210/Kconfig
+index 3637473051..97ed8e05f4 100644
+--- a/arch/arm/mach-tegra/tegra210/Kconfig
++++ b/arch/arm/mach-tegra/tegra210/Kconfig
+@@ -35,6 +35,12 @@ config TARGET_P2571
+ 	help
+ 	  P2571 is a P2530 married to a P1963 I/O board
+ 
++config TARGET_P3450_0000
++	bool "NVIDIA Jetson Nano Developer Kit"
++	select BOARD_LATE_INIT
++	help
++	  P3450-0000 is a P3448 CPU board married to a P3449 I/O board.
++
+ endchoice
+ 
+ config SYS_SOC
+@@ -44,5 +50,6 @@ source "board/nvidia/e2220-1170/Kconfig"
+ source "board/nvidia/p2371-0000/Kconfig"
+ source "board/nvidia/p2371-2180/Kconfig"
+ source "board/nvidia/p2571/Kconfig"
++source "board/nvidia/p3450-0000/Kconfig"
+ 
+ endif
+diff --git a/board/nvidia/p3450-0000/Kconfig b/board/nvidia/p3450-0000/Kconfig
+new file mode 100644
+index 0000000000..7a08cd8867
+--- /dev/null
++++ b/board/nvidia/p3450-0000/Kconfig
+@@ -0,0 +1,12 @@
++if TARGET_P3450_0000
++
++config SYS_BOARD
++	default "p3450-0000"
++
++config SYS_VENDOR
++	default "nvidia"
++
++config SYS_CONFIG_NAME
++	default "p3450-0000"
++
++endif
+diff --git a/board/nvidia/p3450-0000/MAINTAINERS b/board/nvidia/p3450-0000/MAINTAINERS
+new file mode 100644
+index 0000000000..40700066bf
+--- /dev/null
++++ b/board/nvidia/p3450-0000/MAINTAINERS
+@@ -0,0 +1,6 @@
++P3450-0000 BOARD
++M:	Tom Warren <twarren@nvidia.com>
++S:	Maintained
++F:	board/nvidia/p3450-0000/
++F:	include/configs/p3450-0000.h
++F:	configs/p3450-0000_defconfig
+diff --git a/board/nvidia/p3450-0000/Makefile b/board/nvidia/p3450-0000/Makefile
+new file mode 100644
+index 0000000000..993c506d82
+--- /dev/null
++++ b/board/nvidia/p3450-0000/Makefile
+@@ -0,0 +1,8 @@
++#
++# (C) Copyright 2018
++# NVIDIA Corporation <www.nvidia.com>
++#
++# SPDX-License-Identifier:     GPL-2.0+
++#
++
++obj-y	+= p3450-0000.o
+diff --git a/board/nvidia/p3450-0000/p3450-0000.c b/board/nvidia/p3450-0000/p3450-0000.c
+new file mode 100644
+index 0000000000..c7aa76a14e
+--- /dev/null
++++ b/board/nvidia/p3450-0000/p3450-0000.c
+@@ -0,0 +1,198 @@
++/*
++ * (C) Copyright 2018
++ * NVIDIA Corporation <www.nvidia.com>
++ *
++ * SPDX-License-Identifier:     GPL-2.0+
++ */
++
++#include <common.h>
++#include <env.h>
++#include <fdtdec.h>
++#include <i2c.h>
++#include <linux/libfdt.h>
++#include <pca953x.h>
++#include <asm/arch-tegra/cboot.h>
++#include <asm/arch/gpio.h>
++#include <asm/arch/pinmux.h>
++#include "../p2571/max77620_init.h"
++#include "pinmux-config-p3450-0000.h"
++
++void pin_mux_mmc(void)
++{
++	struct udevice *dev;
++	uchar val;
++	int ret;
++
++	/* Turn on MAX77620 LDO2 to 3.3V for SD card power */
++	debug("%s: Set LDO2 for VDDIO_SDMMC_AP power to 3.3V\n", __func__);
++	ret = i2c_get_chip_for_busnum(0, MAX77620_I2C_ADDR_7BIT, 1, &dev);
++	if (ret) {
++		printf("%s: Cannot find MAX77620 I2C chip\n", __func__);
++		return;
++	}
++	/* 0xF2 for 3.3v, enabled: bit7:6 = 11 = enable, bit5:0 = voltage */
++	val = 0xF2;
++	ret = dm_i2c_write(dev, MAX77620_CNFG1_L2_REG, &val, 1);
++	if (ret)
++		printf("i2c_write 0 0x3c 0x27 failed: %d\n", ret);
++
++	/* Disable LDO4 discharge */
++	ret = dm_i2c_read(dev, MAX77620_CNFG2_L4_REG, &val, 1);
++	if (ret) {
++		printf("i2c_read 0 0x3c 0x2c failed: %d\n", ret);
++	} else {
++		val &= ~BIT(1); /* ADE */
++		ret = dm_i2c_write(dev, MAX77620_CNFG2_L4_REG, &val, 1);
++		if (ret)
++			printf("i2c_write 0 0x3c 0x2c failed: %d\n", ret);
++	}
++
++	/* Set MBLPD */
++	ret = dm_i2c_read(dev, MAX77620_CNFGGLBL1_REG, &val, 1);
++	if (ret) {
++		printf("i2c_write 0 0x3c 0x00 failed: %d\n", ret);
++	} else {
++		val |= BIT(6); /* MBLPD */
++		ret = dm_i2c_write(dev, MAX77620_CNFGGLBL1_REG, &val, 1);
++		if (ret)
++			printf("i2c_write 0 0x3c 0x00 failed: %d\n", ret);
++	}
++}
++
++/*
++ * Routine: pinmux_init
++ * Description: Do individual peripheral pinmux configs
++ */
++void pinmux_init(void)
++{
++	pinmux_clear_tristate_input_clamping();
++
++	gpio_config_table(p3450_0000_gpio_inits,
++			  ARRAY_SIZE(p3450_0000_gpio_inits));
++
++	pinmux_config_pingrp_table(p3450_0000_pingrps,
++				   ARRAY_SIZE(p3450_0000_pingrps));
++
++	pinmux_config_drvgrp_table(p3450_0000_drvgrps,
++				   ARRAY_SIZE(p3450_0000_drvgrps));
++}
++
++#ifdef CONFIG_PCI_TEGRA
++int tegra_pcie_board_init(void)
++{
++	struct udevice *dev;
++	uchar val;
++	int ret;
++
++	/* Turn on MAX77620 LDO1 to 1.05V for PEX power */
++	debug("%s: Set LDO1 for PEX power to 1.05V\n", __func__);
++	ret = i2c_get_chip_for_busnum(0, MAX77620_I2C_ADDR_7BIT, 1, &dev);
++	if (ret) {
++		printf("%s: Cannot find MAX77620 I2C chip\n", __func__);
++		return -1;
++	}
++	/* 0xCA for 1.05v, enabled: bit7:6 = 11 = enable, bit5:0 = voltage */
++	val = 0xCA;
++	ret = dm_i2c_write(dev, MAX77620_CNFG1_L1_REG, &val, 1);
++	if (ret)
++		printf("i2c_write 0 0x3c 0x25 failed: %d\n", ret);
++
++	return 0;
++}
++#endif /* PCI */
++
++static void ft_mac_address_setup(void *fdt)
++{
++	const void *cboot_fdt = (const void *)cboot_boot_x0;
++	uint8_t mac[ETH_ALEN], local_mac[ETH_ALEN];
++	const char *path;
++	int offset, err;
++
++	err = cboot_get_ethaddr(cboot_fdt, local_mac);
++	if (err < 0)
++		memset(local_mac, 0, ETH_ALEN);
++
++	path = fdt_get_alias(fdt, "ethernet");
++	if (!path)
++		return;
++
++	debug("ethernet alias found: %s\n", path);
++
++	offset = fdt_path_offset(fdt, path);
++	if (offset < 0) {
++		printf("ethernet alias points to absent node %s\n", path);
++		return;
++	}
++
++	if (is_valid_ethaddr(local_mac)) {
++		err = fdt_setprop(fdt, offset, "local-mac-address", local_mac,
++				  ETH_ALEN);
++		if (!err)
++			debug("Local MAC address set: %pM\n", local_mac);
++	}
++
++	if (eth_env_get_enetaddr("ethaddr", mac)) {
++		if (memcmp(local_mac, mac, ETH_ALEN) != 0) {
++			err = fdt_setprop(fdt, offset, "mac-address", mac,
++					  ETH_ALEN);
++			if (!err)
++				debug("MAC address set: %pM\n", mac);
++		}
++	}
++}
++
++static int ft_copy_carveout(void *dst, const void *src, const char *node)
++{
++	struct fdt_memory fb;
++	int err;
++
++	err = fdtdec_get_carveout(src, node, "memory-region", 0, &fb);
++	if (err < 0) {
++		if (err != -FDT_ERR_NOTFOUND)
++			printf("failed to get carveout for %s: %d\n", node,
++			       err);
++
++		return err;
++	}
++
++	err = fdtdec_set_carveout(dst, node, "memory-region", 0, "framebuffer",
++				  &fb);
++	if (err < 0) {
++		printf("failed to set carveout for %s: %d\n", node, err);
++		return err;
++	}
++
++	return 0;
++}
++
++static void ft_carveout_setup(void *fdt)
++{
++	const void *cboot_fdt = (const void *)cboot_boot_x0;
++	static const char * const nodes[] = {
++		"/host1x@50000000/dc@54200000",
++		"/host1x@50000000/dc@54240000",
++	};
++	unsigned int i;
++	int err;
++
++	for (i = 0; i < ARRAY_SIZE(nodes); i++) {
++		printf("copying carveout for %s...\n", nodes[i]);
++
++		err = ft_copy_carveout(fdt, cboot_fdt, nodes[i]);
++		if (err < 0) {
++			if (err != -FDT_ERR_NOTFOUND)
++				printf("failed to copy carveout for %s: %d\n",
++				       nodes[i], err);
++
++			continue;
++		}
++	}
++}
++
++int ft_board_setup(void *fdt, bd_t *bd)
++{
++	ft_mac_address_setup(fdt);
++	ft_carveout_setup(fdt);
++
++	return 0;
++}
+diff --git a/board/nvidia/p3450-0000/pinmux-config-p3450-0000.h b/board/nvidia/p3450-0000/pinmux-config-p3450-0000.h
+new file mode 100644
+index 0000000000..722da49735
+--- /dev/null
++++ b/board/nvidia/p3450-0000/pinmux-config-p3450-0000.h
+@@ -0,0 +1,265 @@
++/*
++ * Copyright (c) 2019, NVIDIA CORPORATION. All rights reserved.
++ *
++ * SPDX-License-Identifier: GPL-2.0+
++ */
++
++/*
++ * THIS FILE IS AUTO-GENERATED - DO NOT EDIT!
++ *
++ * To generate this file, use the tegra-pinmux-scripts tool available from
++ * https://github.com/NVIDIA/tegra-pinmux-scripts
++ * Run "board-to-uboot.py p3450-0000".
++ */
++
++#ifndef _PINMUX_CONFIG_P3450_0000_H_
++#define _PINMUX_CONFIG_P3450_0000_H_
++
++#define GPIO_INIT(_port, _gpio, _init)			\
++	{						\
++		.gpio	= TEGRA_GPIO(_port, _gpio),	\
++		.init	= TEGRA_GPIO_INIT_##_init,	\
++	}
++
++static const struct tegra_gpio_config p3450_0000_gpio_inits[] = {
++	/*        port, pin, init_val */
++	GPIO_INIT(A,    5,   IN),
++	GPIO_INIT(A,    6,   OUT1),
++	GPIO_INIT(B,    4,   IN),
++	GPIO_INIT(B,    5,   IN),
++	GPIO_INIT(B,    6,   IN),
++	GPIO_INIT(B,    7,   IN),
++	GPIO_INIT(C,    0,   IN),
++	GPIO_INIT(C,    1,   IN),
++	GPIO_INIT(C,    2,   IN),
++	GPIO_INIT(C,    3,   IN),
++	GPIO_INIT(C,    4,   IN),
++	GPIO_INIT(E,    6,   IN),
++	GPIO_INIT(G,    2,   IN),
++	GPIO_INIT(G,    3,   IN),
++	GPIO_INIT(H,    0,   OUT0),
++	GPIO_INIT(H,    2,   IN),
++	GPIO_INIT(H,    3,   OUT0),
++	GPIO_INIT(H,    4,   OUT0),
++	GPIO_INIT(H,    5,   IN),
++	GPIO_INIT(H,    6,   IN),
++	GPIO_INIT(H,    7,   OUT0),
++	GPIO_INIT(I,    0,   OUT0),
++	GPIO_INIT(I,    1,   IN),
++	GPIO_INIT(I,    2,   OUT0),
++	GPIO_INIT(J,    4,   IN),
++	GPIO_INIT(J,    5,   IN),
++	GPIO_INIT(J,    6,   IN),
++	GPIO_INIT(J,    7,   IN),
++	GPIO_INIT(S,    5,   IN),
++	GPIO_INIT(S,    7,   OUT0),
++	GPIO_INIT(T,    0,   OUT0),
++	GPIO_INIT(V,    0,   IN),
++	GPIO_INIT(V,    1,   IN),
++	GPIO_INIT(X,    3,   OUT1),
++	GPIO_INIT(X,    4,   IN),
++	GPIO_INIT(X,    5,   IN),
++	GPIO_INIT(X,    6,   IN),
++	GPIO_INIT(Y,    1,   IN),
++	GPIO_INIT(Y,    2,   IN),
++	GPIO_INIT(Z,    0,   IN),
++	GPIO_INIT(Z,    2,   IN),
++	GPIO_INIT(Z,    3,   OUT0),
++	GPIO_INIT(BB,   0,   IN),
++	GPIO_INIT(CC,   4,   IN),
++	GPIO_INIT(DD,   0,   IN),
++};
++
++#define PINCFG(_pingrp, _mux, _pull, _tri, _io, _od, _e_io_hv)	\
++	{							\
++		.pingrp		= PMUX_PINGRP_##_pingrp,	\
++		.func		= PMUX_FUNC_##_mux,		\
++		.pull		= PMUX_PULL_##_pull,		\
++		.tristate	= PMUX_TRI_##_tri,		\
++		.io		= PMUX_PIN_##_io,		\
++		.od		= PMUX_PIN_OD_##_od,		\
++		.e_io_hv	= PMUX_PIN_E_IO_HV_##_e_io_hv,	\
++		.lock		= PMUX_PIN_LOCK_DEFAULT,	\
++	}
++
++static const struct pmux_pingrp_config p3450_0000_pingrps[] = {
++	/*     pingrp,               mux,        pull,   tri,      e_input, od,      e_io_hv */
++	PINCFG(PEX_L0_RST_N_PA0,     PE0,        NORMAL, NORMAL,   OUTPUT,  DISABLE, HIGH),
++	PINCFG(PEX_L0_CLKREQ_N_PA1,  PE0,        NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(PEX_WAKE_N_PA2,       PE,         NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(PEX_L1_RST_N_PA3,     PE1,        NORMAL, NORMAL,   OUTPUT,  DISABLE, HIGH),
++	PINCFG(PEX_L1_CLKREQ_N_PA4,  PE1,        NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(SATA_LED_ACTIVE_PA5,  DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PA6,                  DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(DAP1_FS_PB0,          RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(DAP1_DIN_PB1,         RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(DAP1_DOUT_PB2,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(DAP1_SCLK_PB3,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SPI2_MOSI_PB4,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI2_MISO_PB5,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI2_SCK_PB6,         DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI2_CS0_PB7,         DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI1_MOSI_PC0,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI1_MISO_PC1,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI1_SCK_PC2,         DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI1_CS0_PC3,         DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI1_CS1_PC4,         DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SPI4_SCK_PC5,         RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SPI4_CS0_PC6,         RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SPI4_MOSI_PC7,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SPI4_MISO_PD0,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART3_TX_PD1,         UARTC,      NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART3_RX_PD2,         UARTC,      NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(UART3_RTS_PD3,        UARTC,      UP,     NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART3_CTS_PD4,        UARTC,      UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DMIC1_CLK_PE0,        I2S3,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DMIC1_DAT_PE1,        I2S3,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DMIC2_CLK_PE2,        I2S3,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DMIC2_DAT_PE3,        I2S3,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DMIC3_CLK_PE4,        RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(DMIC3_DAT_PE5,        RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PE6,                  DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PE7,                  PWM3,       NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(GEN3_I2C_SCL_PF0,     I2C3,       NORMAL, NORMAL,   INPUT,   DISABLE, NORMAL),
++	PINCFG(GEN3_I2C_SDA_PF1,     I2C3,       NORMAL, NORMAL,   INPUT,   DISABLE, NORMAL),
++	PINCFG(UART2_TX_PG0,         UARTB,      NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART2_RX_PG1,         UARTB,      DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(UART2_RTS_PG2,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(UART2_CTS_PG3,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(WIFI_EN_PH0,          DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(WIFI_RST_PH1,         RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(WIFI_WAKE_AP_PH2,     DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(AP_WAKE_BT_PH3,       DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(BT_RST_PH4,           DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(BT_WAKE_AP_PH5,       DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PH6,                  DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(AP_WAKE_NFC_PH7,      DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(NFC_EN_PI0,           DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(NFC_INT_PI1,          DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(GPS_EN_PI2,           DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(GPS_RST_PI3,          RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART4_TX_PI4,         UARTD,      NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART4_RX_PI5,         UARTD,      NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(UART4_RTS_PI6,        UARTD,      NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART4_CTS_PI7,        UARTD,      UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(GEN1_I2C_SDA_PJ0,     I2C1,       NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(GEN1_I2C_SCL_PJ1,     I2C1,       NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(GEN2_I2C_SCL_PJ2,     I2C2,       NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(GEN2_I2C_SDA_PJ3,     I2C2,       NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(DAP4_FS_PJ4,          DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP4_DIN_PJ5,         DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP4_DOUT_PJ6,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP4_SCLK_PJ7,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PK0,                  RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK1,                  RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK2,                  RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK3,                  RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK4,                  RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK5,                  RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK6,                  RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PK7,                  RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PL0,                  RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PL1,                  RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SDMMC1_CLK_PM0,       SDMMC1,     NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC1_CMD_PM1,       SDMMC1,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC1_DAT3_PM2,      SDMMC1,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC1_DAT2_PM3,      SDMMC1,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC1_DAT1_PM4,      SDMMC1,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC1_DAT0_PM5,      SDMMC1,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC3_CLK_PP0,       SDMMC3,     NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC3_CMD_PP1,       SDMMC3,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC3_DAT3_PP2,      SDMMC3,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC3_DAT2_PP3,      SDMMC3,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC3_DAT1_PP4,      SDMMC3,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(SDMMC3_DAT0_PP5,      SDMMC3,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(CAM1_MCLK_PS0,        EXTPERIPH3, NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CAM2_MCLK_PS1,        EXTPERIPH3, NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CAM_I2C_SCL_PS2,      I2CVI,      NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(CAM_I2C_SDA_PS3,      I2CVI,      NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(CAM_RST_PS4,          RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CAM_AF_EN_PS5,        DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(CAM_FLASH_EN_PS6,     RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CAM1_PWDN_PS7,        DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CAM2_PWDN_PT0,        DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CAM1_STROBE_PT1,      RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART1_TX_PU0,         UARTA,      NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART1_RX_PU1,         UARTA,      NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(UART1_RTS_PU2,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(UART1_CTS_PU3,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(LCD_BL_PWM_PV0,       DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(LCD_BL_EN_PV1,        DEFAULT,    NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(LCD_RST_PV2,          RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(LCD_GPIO1_PV3,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(LCD_GPIO2_PV4,        PWM1,       NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(AP_READY_PV5,         RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(TOUCH_RST_PV6,        RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(TOUCH_CLK_PV7,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(MODEM_WAKE_AP_PX0,    RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(TOUCH_INT_PX1,        RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(MOTION_INT_PX2,       RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(ALS_PROX_INT_PX3,     DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(TEMP_ALERT_PX4,       DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(BUTTON_POWER_ON_PX5,  DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(BUTTON_VOL_UP_PX6,    DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(BUTTON_VOL_DOWN_PX7,  RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(BUTTON_SLIDE_SW_PY0,  RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(BUTTON_HOME_PY1,      DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(LCD_TE_PY2,           DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PWR_I2C_SCL_PY3,      I2CPMU,     NORMAL, NORMAL,   INPUT,   DISABLE, NORMAL),
++	PINCFG(PWR_I2C_SDA_PY4,      I2CPMU,     NORMAL, NORMAL,   INPUT,   DISABLE, NORMAL),
++	PINCFG(CLK_32K_OUT_PY5,      RSVD2,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PZ0,                  DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PZ1,                  SDMMC1,     UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PZ2,                  DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PZ3,                  DEFAULT,    NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PZ4,                  RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PZ5,                  SOC,        UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP2_FS_PAA0,         I2S2,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP2_SCLK_PAA1,       I2S2,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP2_DIN_PAA2,        I2S2,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DAP2_DOUT_PAA3,       I2S2,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(AUD_MCLK_PBB0,        DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(DVFS_PWM_PBB1,        CLDVFS,     NORMAL, TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(DVFS_CLK_PBB2,        RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(GPIO_X1_AUD_PBB3,     RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(GPIO_X3_AUD_PBB4,     RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(HDMI_CEC_PCC0,        CEC,        NORMAL, NORMAL,   INPUT,   DISABLE, HIGH),
++	PINCFG(HDMI_INT_DP_HPD_PCC1, DP,         NORMAL, NORMAL,   INPUT,   DISABLE, NORMAL),
++	PINCFG(SPDIF_OUT_PCC2,       RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SPDIF_IN_PCC3,        RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(USB_VBUS_EN0_PCC4,    DEFAULT,    UP,     NORMAL,   INPUT,   DISABLE, NORMAL),
++	PINCFG(USB_VBUS_EN1_PCC5,    RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, NORMAL),
++	PINCFG(DP_HPD0_PCC6,         DP,         NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(PCC7,                 RSVD0,      DOWN,   TRISTATE, OUTPUT,  DISABLE, NORMAL),
++	PINCFG(SPI2_CS1_PDD0,        DEFAULT,    DOWN,   NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(QSPI_SCK_PEE0,        QSPI,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(QSPI_CS_N_PEE1,       QSPI,       NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(QSPI_IO0_PEE2,        QSPI,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(QSPI_IO1_PEE3,        QSPI,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(QSPI_IO2_PEE4,        QSPI,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(QSPI_IO3_PEE5,        QSPI,       NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(CORE_PWR_REQ,         CORE,       NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CPU_PWR_REQ,          RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(PWR_INT_N,            PMI,        UP,     NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(CLK_32K_IN,           CLK,        NORMAL, NORMAL,   INPUT,   DISABLE, DEFAULT),
++	PINCFG(JTAG_RTCK,            JTAG,       NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(CLK_REQ,              RSVD1,      DOWN,   TRISTATE, OUTPUT,  DISABLE, DEFAULT),
++	PINCFG(SHUTDOWN,             SHUTDOWN,   NORMAL, NORMAL,   OUTPUT,  DISABLE, DEFAULT),
++};
++
++#define DRVCFG(_drvgrp, _slwf, _slwr, _drvup, _drvdn, _lpmd, _schmt, _hsm) \
++	{						\
++		.drvgrp = PMUX_DRVGRP_##_drvgrp,	\
++		.slwf   = _slwf,			\
++		.slwr   = _slwr,			\
++		.drvup  = _drvup,			\
++		.drvdn  = _drvdn,			\
++		.lpmd   = PMUX_LPMD_##_lpmd,		\
++		.schmt  = PMUX_SCHMT_##_schmt,		\
++		.hsm    = PMUX_HSM_##_hsm,		\
++	}
++
++static const struct pmux_drvgrp_config p3450_0000_drvgrps[] = {
++};
++
++#endif /* PINMUX_CONFIG_P3450_0000_H */
+diff --git a/configs/p3450-0000_defconfig b/configs/p3450-0000_defconfig
+new file mode 100644
+index 0000000000..3a95028279
+--- /dev/null
++++ b/configs/p3450-0000_defconfig
+@@ -0,0 +1,55 @@
++CONFIG_ARM=y
++CONFIG_TEGRA=y
++CONFIG_SYS_TEXT_BASE=0x80080000
++CONFIG_TEGRA210=y
++CONFIG_TARGET_P3450_0000=y
++CONFIG_NR_DRAM_BANKS=2
++CONFIG_OF_SYSTEM_SETUP=y
++CONFIG_OF_BOARD_SETUP=y
++CONFIG_CONSOLE_MUX=y
++CONFIG_SYS_STDIO_DEREGISTER=y
++CONFIG_SYS_PROMPT="Tegra210 (P3450-0000) # "
++# CONFIG_CMD_IMI is not set
++CONFIG_CMD_DFU=y
++# CONFIG_CMD_FLASH is not set
++CONFIG_CMD_GPIO=y
++CONFIG_CMD_I2C=y
++CONFIG_CMD_MMC=y
++CONFIG_CMD_PCI=y
++CONFIG_CMD_SF=y
++CONFIG_CMD_SPI=y
++CONFIG_CMD_USB=y
++CONFIG_CMD_USB_MASS_STORAGE=y
++# CONFIG_CMD_SETEXPR is not set
++# CONFIG_CMD_NFS is not set
++CONFIG_CMD_EXT4_WRITE=y
++CONFIG_OF_LIVE=y
++CONFIG_DEFAULT_DEVICE_TREE="tegra210-p3450-0000"
++CONFIG_DFU_MMC=y
++CONFIG_DFU_RAM=y
++CONFIG_DFU_SF=y
++CONFIG_SYS_I2C_TEGRA=y
++CONFIG_SPI_FLASH=y
++CONFIG_SF_DEFAULT_MODE=0
++CONFIG_SF_DEFAULT_SPEED=24000000
++CONFIG_SPI_FLASH_WINBOND=y
++CONFIG_RTL8169=y
++CONFIG_PCI=y
++CONFIG_DM_PCI=y
++CONFIG_DM_PCI_COMPAT=y
++CONFIG_PCI_TEGRA=y
++CONFIG_SYS_NS16550=y
++CONFIG_TEGRA114_SPI=y
++CONFIG_USB=y
++CONFIG_DM_USB=y
++CONFIG_USB_EHCI_HCD=y
++CONFIG_USB_EHCI_TEGRA=y
++CONFIG_USB_GADGET=y
++CONFIG_USB_GADGET_MANUFACTURER="NVIDIA"
++CONFIG_USB_GADGET_VENDOR_NUM=0x0955
++CONFIG_USB_GADGET_PRODUCT_NUM=0x701a
++CONFIG_CI_UDC=y
++CONFIG_USB_GADGET_DOWNLOAD=y
++CONFIG_USB_HOST_ETHER=y
++CONFIG_USB_ETHER_ASIX=y
++# CONFIG_ENV_IS_IN_MMC is not set
+diff --git a/include/configs/p3450-0000.h b/include/configs/p3450-0000.h
+new file mode 100644
+index 0000000000..7fc21820a7
+--- /dev/null
++++ b/include/configs/p3450-0000.h
+@@ -0,0 +1,37 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * (C) Copyright 2018-2019 NVIDIA Corporation. All rights reserved.
++ */
++
++#ifndef _P3450_0000_H
++#define _P3450_0000_H
++
++#include <linux/sizes.h>
++
++#include "tegra210-common.h"
++
++/* High-level configuration options */
++#define CONFIG_TEGRA_BOARD_STRING	"NVIDIA P3450-0000"
++
++/* Board-specific serial config */
++#define CONFIG_TEGRA_ENABLE_UARTA
++
++/* Only MMC1/PXE/DHCP for now, add USB back in later when supported */
++#define BOOT_TARGET_DEVICES(func) \
++	func(MMC, mmc, 0) \
++	func(PXE, pxe, na) \
++	func(DHCP, dhcp, na)
++
++/* SPI */
++#define CONFIG_SPI_FLASH_SIZE		(4 << 20)
++
++#include "tegra-common-usb-gadget.h"
++#include "tegra-common-post.h"
++
++/* Crystal is 38.4MHz. clk_m runs at half that rate */
++#define COUNTER_FREQUENCY	19200000
++
++#define BOARD_EXTRA_ENV_SETTINGS \
++        "fdtfile=tegra210-p3450-0000.dtb\0"
++
++#endif /* _P3450_0000_H */

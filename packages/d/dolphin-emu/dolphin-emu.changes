@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jan 28 11:36:03 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1580163603.57f4837e4d:
+  * DolphinQt/GCMemcardManager: Make use of QLatin1Char within GetErrorMessagesForErrorCode()
+  * DolphinQt/GCMemcardManager: Mark string as translatable within GetErrorMessagesForErrorCode()
+  * DolphinQt/GameConfigWidget: Remove unimplemented EditUserConfig() member function
+  * DolphinQt/GameConfigEdit: Remove unimplemented SetReadOnly() member function
+  * DolphinQt/MainWindow: Surround prototype of OnSignal() with relevant ifdef
+  * DolphinQt/NetPlayDialog: Remove unimplemented SetGame() prototype
+  * VertexLoaderX64: Don't use PDEP on AMD Zen
+  * Jit64: Don't use PEXT in DoubleToSingle on AMD Zen
+  * x64CPUDetect: Add flag for slow PDEP/PEXT on AMD Zen
+  * x64CPUDetect: Add detection for AMD Zen architecture
+  * DolphinQt/TASCheckBox: Mark GetValue() as const
+  * Translation resources sync with Transifex
+  * Common/Analytics: Replace mutex with shared_mutex and minor cleanups.
+  * VolumeVerifier: Report read errors to the user
+  * IOS/ES: Remove now unnecessary title sorting hack
+  * UnitTests/FS: Improve deletion test
+  * Tools: Add a small Python tool to print FSTs
+  * UnitTests/FS: Add ReadDirectory ordering test (issue 10234)
+  * UnitTests/FS: Fix file rename tests
+  * UnitTests/FS: Add path validity and splitting tests
+  * UnitTests/FS: Add metadata tests
+  * IOS/FS: Actually implement SetMetadata
+  * IOS/FS: Implement GetMetadata properly and remove GID hack
+  * IOS/FS: Implement ReadDirectory properly and remove sorting hack
+  * IOS/FS: Implement Rename properly
+  * IOS/FS: Implement Delete properly
+  * IOS/FS: Implement CreateFile and CreateDir properly
+  * Core: Fix a few misuses of FS::CreateDirectory
+  * IOS/FS: Implement Format properly
+  * IOS/FS: Make sure FS root directory exists
+  * IOS/FS: Move /tmp clearing back to the IPC interface
+  * IOS/FS: Add base FST functions
+  * IOS/FS: Move path validity check functions
+  * VideoCommon/OSD: Process OSD messages even when they are disabled.
+  * InputCommon: Make "Cursor" inputs aware of the rendered aspect ratio.
+  * Add Dolphin version and current video backend to shader compilation logs
+  * Common/Core: Minor rvalue reference related cleanups.
+  * VideoCommon/TextureConversionShader: Make use of fmt where applicable
+  * VideoCommon/TextureConversionShader: Convert over to using ShaderCode
+  * x64Emitter: Remove unused macros
+  * X64Emitter: Remove obsolete TODO
+  * x64Emitter: Refactor OpArg::WriteRest
+  * x64Emitter: Avoid 8-bit displacement when possible
+  * x64Emitter: Unit test memory addressing modes
+  * WiimoteEmu: Nunchuk and Classic Controller calibration accuracy improvements.
+  * Core/WiimoteReal: Make wiimote source type an enum class and add Get/SetWiimoteSource functions. Add connected real Wii Remotes to a pool when a slot is not available.
+  * Qt/RenderWidget: Account for devicePixelRatio when auto-adjusting window size
+  * Jit64AsmCommon: Use PEXT in GenConvertDoubleToSingle
+  * Jit64AsmCommon: Make ConvertDoubleToSingle use RSCRATCH as output
+  * UnitTests/Jit64Common: Test GenConvertDoubleToSingle
+  * Jit64: Make DoubleToSingle a common asm routine
+
+-------------------------------------------------------------------
 Thu Jan 23 09:06:08 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1579717236.ea9b96370d:

@@ -1,7 +1,7 @@
 #
 # spec file for package libsmbios
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Hardware/Other
 URL:            https://github.com/dell/libsmbios
 Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  chrpath
@@ -121,19 +122,20 @@ This package contains the headers and .a files necessary to compile new client
 programs against libsmbios.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fvi
 export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
 %configure \
-    --disable-static \
-    --enable-nls \
-    --enable-python \
-    --enable-as-needed \
-    --enable-doxygen
-make %{?_smp_mflags}
+	--disable-static \
+	--enable-nls \
+	--enable-python \
+	--enable-as-needed \
+	--enable-doxygen \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -171,8 +173,11 @@ make %{?_smp_mflags} check
 %license COPYING-GPL COPYING-OSL
 %license src/bin/getopts_LICENSE.txt
 %{_libdir}/libsmbios_c.so.*
+%{_datadir}/locale/en/
 
 %files lang -f %{name}.lang
+# english locale should be in the main package
+%exclude %{_datadir}/locale/en
 
 %files -n libsmbios-devel
 %{_includedir}/smbios

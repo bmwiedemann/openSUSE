@@ -189,4 +189,12 @@ There are a couple known attacker inducible crashes identified in 4.4.2.  Upstre
     <comment>Upgrade to v4.6.7</comment>
     <requestid>724426</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d5bd855e9c06a2ca7b06dde8f30ea8bb</srcmd5>
+    <version>4.8.0</version>
+    <time>1580300210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768030</requestid>
+  </revision>
 </revisionlist>

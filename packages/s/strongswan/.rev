@@ -701,4 +701,14 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>624096</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>35eecc4dab859c61d8869a303036567e</srcmd5>
+    <version>5.8.2</version>
+    <time>1580299850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.2:
+  * Fix CVE-2018-17540, CVE-2018-16151 and CVE-2018-16152.
+  * boo#1109845 and boo#1107874.</comment>
+    <requestid>767305</requestid>
+  </revision>
 </revisionlist>

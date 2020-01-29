@@ -1,7 +1,7 @@
 #
 # spec file for package OpenIPMI
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 
 Name:           OpenIPMI
-Version:        2.0.25
+Version:        2.0.28
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later
@@ -43,11 +43,11 @@ Source2:        ipmi.service
 Source3:        openipmi-helper
 Source4:        bootstrap
 Source99:       OpenIPMI-rpmlintrc
-Patch0:         OpenIPMI-2.0.25..HEAD_git.diff
+# Patch0:         OpenIPMI-2.0.25..HEAD_git.diff
 Patch1:         OpenIPMI-prefer_perl_vendor.patch
 Patch2:         fix-conversions.patch
 # PATCH-FIX-UPSTREAM do not use bundled libedit
-Patch3:         0003-Apply-OpenIPMI-2.0.21-nobundle.patch.patch
+# Patch3:         0003-Apply-OpenIPMI-2.0.21-nobundle.patch.patch
 # PATCH-FIX-UPSTREAM detect tinfo from ncurses properly
 Patch4:         openipmi-tinfo.patch
 # link with ncurses

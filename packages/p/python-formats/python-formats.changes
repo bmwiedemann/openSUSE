@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat Jan 25 22:29:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Package license file
+- Run testsuite
+- Remove not unneeded dependencies
+
+-------------------------------------------------------------------
+Wed Oct 18 18:49:17 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- adjusted spec to comply with singlespec convention
+
+-------------------------------------------------------------------
+Tue Sep  6 11:27:37 UTC 2016 - mardnh@gmx.de
+
+- initial package, version 0.1.1
+

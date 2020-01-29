@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 28 08:57:49 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 0.9.1
+  * Do not guess type of cell if directive is not alone
+  * Add support for Python 3.8
+  * Support file-magic as fallback to python-magic
+
+-------------------------------------------------------------------
 Wed Jul 31 09:24:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Run tests

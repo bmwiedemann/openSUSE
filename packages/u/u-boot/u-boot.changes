@@ -1,7 +1,69 @@
 -------------------------------------------------------------------
+Wed Jan 29 09:28:32 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.01
+  Add support for Jetson Nano.
+  Enable btrfs by default. (jsc#SLE-10302)
+  Add network support for RPi4 (jsc#SLE-7276)
+* Patches added:
+  0010-ARM-tegra-Add-NVIDIA-Jetson-Nano-De.patch
+  0011-net-Add-support-for-Broadcom-GENETv.patch
+  0012-rpi4-Update-memory-map-to-accommoda.patch
+  0013-rpi4-Enable-GENET-Ethernet-controll.patch
+  0014-Kconfig-add-btrfs-to-distro-boot.patch
+  0015-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0016-configs-am335x_evm-disable-BTRFS.patch
+
+-------------------------------------------------------------------
 Wed Jan 22 08:09:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Package u-boot.img instead of u-boot.bin for snow and spring
+
+-------------------------------------------------------------------
+Fri Jan 10 10:45:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix firefly-rk3288 and tinker-rk3288 by using TPL instead of SPL
+  (SPL too big)
+
+-------------------------------------------------------------------
+Fri Jan 10 09:53:50 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix mx6qsabrelite build
+
+-------------------------------------------------------------------
+Tue Jan  7 08:32:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2020.01:
+  * Now requires python 3.5+ (2.x support dropped)
+  * Add Orange Pi Zero Plus 2 support
+  * Platfrom fixes: atmel, fsl, imx, Marvell, RPi, rockchip, sunxi, TI
+  * EFI fixes
+  * I2C fixes
+  * MMC fixes
+  * SPI fixes
+  * USB fixes
+- Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.01
+  * Patches dropped:
+    0009-libfdt-fdt_address_cells-and-fdt_si.patch
+    0010-libfdt-return-correct-value-if-size.patch
+    0011-libfdt-Allow-size-cells-of-0.patch
+    0012-dm-Fix-default-address-cells-return.patch
+    0013-arm-arm11-allow-unaligned-memory-ac.patch
+    0014-fdt-fix-bcm283x-dm-pre-reloc-defini.patch
+    0015-arm-dts-bcm283x-Rename-U-Boot-file.patch
+    0016-drivers-bcm283x-Set-pre-location-fl.patch
+    0017-pinctrl-bcm283x-Add-compatible-for-.patch
+    0018-rpi-push-fw_dtb_pointer-in-the-.dat.patch
+    0019-ARM-bcm283x-Move-BCM283x_BASE-to-a-.patch
+    0020-ARM-bcm283x-Set-rpi_bcm283x_base-at.patch
+    0021-ARM-bcm283x-Set-memory-map-at-run-t.patch
+    0022-ARM-defconfig-add-unified-config-fo.patch
+    0023-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+    0024-rpi-fix-dram-bank-initialization.patch
+    0025-rpi-Enable-DRAM-bank-initialization.patch
+    0026-ARM-defconfig-Fix-32bit-config-for-.patch
+  * Patches added:
+    0009-boo-1144161-Remove-nand-mtd-spi-dfu.patch
 
 -------------------------------------------------------------------
 Fri Dec 20 11:08:03 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>

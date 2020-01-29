@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jan 28 08:31:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the tarball fetching
+
+-------------------------------------------------------------------
+Sat Jan 25 14:40:40 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable python2 as build dependency pyside is only available on python3
+- update to version 2.8:
+ -  Fix tooltip giant rectangle #174
+ -  Fix QTextEdit wihout borders inside frame #188
+ -  Fix PyQt5 issuies on dropbown #191
+ -  Fix combo box with icons #169
+ -  Fix QToolbBar vertical handle #210
+ -  Fix pane tab labelcropped on activation #199
+ -  Enhance vertical/horiontal lines #184
+ -  Enhance tool button size and spacing #181, #183, #202
+ -  Enhance buttons and inputs with focus, blue border #194, #211
+ -  Enhance QSplitter #207
+ -  Removed QStatusBar vertical lines #205
+- update to version 2.7:
+ -  Remove utils from import in qdarkstyle, #170
+ -  Fix border colors in tool button #176
+ -  Fix scroll area and stacked with 2px padding, #159
+ -  Fix backgroung submenu color, #179
+ -  Fix extra border aside header's arrow indicator, #180
+ -  Fix menu right arrrow indicator
+ -  Fix slide bars colors, #150
+ -  Fix QLabels problems, #163, #139
+ -  Fix problems with example settings using PySide2 and --no\_dark #167
+ -  Provide SVG files for all images, standard names and sizes, fix images, #149
+ -  Improve images and add high resolution images, #140
+ -  Improve docs
+ -  Add check to scripts for generating images, #137
+ -  Fix tox and travis scripts #76
+ -  Provide docs in RTD, part of #160
+ -  Add helpdev depedency for reports and checks, #147
+ -  Update authors and maintainers
+
+-------------------------------------------------------------------
 Thu May 23 12:14:36 UTC 2019 - pgajdos@suse.com
 
 - version update to 2.6.8

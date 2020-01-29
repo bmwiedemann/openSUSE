@@ -136,7 +136,7 @@ This package provides the common files of RStudio Desktop and RStudio server.
 
 %package        desktop
 Summary:        Integrated development environment for the R programming language
-%requires_eq    %{name}
+Requires:       %{name} = %{version}-%{release}
 
 %description    desktop
 RStudio is an integrated development environment (IDE) for the R programming
@@ -150,7 +150,7 @@ language. Some of its features include:
 
 %package        server
 Summary:        Access RStudio via a web browser running on a remote server
-%requires_eq    %{name}
+Requires:       %{name} = %{version}-%{release}
 
 %description    server
 RStudio Server enables you to provide a browser-based interface (the RStudio

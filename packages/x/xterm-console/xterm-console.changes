@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Jan 28 12:26:32 UTC 2020 - okurz@suse.com
+
+- Update to version 1.0:
+  * Change package to use upstream on
+    https://github.com/os-autoinst/xterm_console
+  * Change to noarch as there are only scripts
+  * Delete old pre-SLE11 cruft
+  * Cleanup spec-file (delete unused symbol; simplify)
+
+-------------------------------------------------------------------
+Mon Jun 25 13:21:00 UTC 2018 - slindomansilla@suse.com
+
+- Use supplemments to os-autoinst
+
+  When using svirt backend (s390x, XEN), xterm-console is needed.
+  It is expected the use of this backend only on special cases,
+  so this package is not added as required. But it may help to
+  mark it as supplement os os-autoinst.
+
+-------------------------------------------------------------------
+Wed Apr 29 08:55:11 UTC 2015 - coolo@suse.com
+
+- remove nonexistant +itc option
+
+-------------------------------------------------------------------
+* Mon Apr 27 2015 - froh@suse.de
+
+- initial version

@@ -17,7 +17,7 @@
 
 
 Name:           ignition-config-transpiler
-Version:        0.2.0+git20191111.daeb3de
+Version:        0.4.0+git20200124.846a5a4
 Release:        0
 Summary:        Tool to convert a yaml config file into a Ignition configuration
 License:        Apache-2.0

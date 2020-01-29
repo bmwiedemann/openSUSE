@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 12:09:03 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200128.8bd11b00:
+  * Notify the obs_rsync plugin already when the scheduler is finished
+
+-------------------------------------------------------------------
 Mon Jan 20 16:18:59 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200120.1be035c9:

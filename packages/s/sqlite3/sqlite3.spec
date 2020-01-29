@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,17 @@
 
 %bcond_with icu
 %define oname sqlite
-%define tarversion 3300100
+%define tarversion 3310100
 Name:           sqlite3
-Version:        3.30.1
+Version:        3.31.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
 Group:          Productivity/Databases/Servers
 URL:            http://www.sqlite.org/
-Source0:        http://www.sqlite.org/2019/sqlite-src-%{tarversion}.zip
+Source0:        http://www.sqlite.org/2020/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        http://www.sqlite.org/2019/sqlite-doc-%{tarversion}.zip
-# PATCH-FIX-UPSTREAM -- Fix errors with NULL
-Patch0:         7833feecfe-Prevent-SQLite-from-bad-NULL-assumption.patch
-# PATCH-FIX-UPSTREAM -- Fix errors in LEFT JOIN
-Patch1:         548082dfab-Improvements-to-the-LEFT-JOIN.patch
-# PATCH-FIX-UPSTREAM -- Fix errors in LEFT JOIN
-Patch2:         8a39167bd2-Further-improvements-to-LEFT-JOIN.patch
-# PATCH-FIX-UPSTREAM -- Fix incorrect check of stat.size for directories
-Patch3:         fix_dir_exists_on_btrfs.patch
-# PATCH-FIX-OPENSUSE -- Fix error introduced by rounding and truncation, mostly visible on x86 / 80 bit floats
-Patch4:         sqlite3-avoid-truncation-error.patch
+Source2:        http://www.sqlite.org/2020/sqlite-doc-%{tarversion}.zip
 BuildRequires:  automake
 %if %{with icu}
 BuildRequires:  libicu-devel
@@ -117,11 +107,6 @@ other documentation found on sqlite.org. The files can be found in
 
 %prep
 %setup -q -n sqlite-src-%{tarversion} -a2
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
-%patch4 -p0
 
 rm -v sqlite-doc-%{tarversion}/releaselog/current.html
 ln -sv `echo %{version} | sed "s/\./_/g"`.html sqlite-doc-%{tarversion}/releaselog/current.html

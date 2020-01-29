@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:44:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move /usr/share/locale/en from the -lang package to the main
+  package: English is installed on all systems. This avoids
+  libsmbios-lang being triggered for installation on english-only
+  systems.
+- Modernize spec.
+
+-------------------------------------------------------------------
 Wed Nov 21 13:49:06 UTC 2018 - Enno Gotthold <egotthold@suse.com>
 
 - Fixed build through adding a recrompress at buildtime and changing the

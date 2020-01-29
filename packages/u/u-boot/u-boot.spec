@@ -22,6 +22,7 @@
 %define mvebu_spl 0
 %define x_loader 0
 %define rockchip_spl 0
+%define rockchip_tpl 0
 %define rockchip_idb 0
 %define sunxi_spl 0
 %define arndale_spl 0
@@ -49,7 +50,7 @@
 %endif
 %if "%target" == "firefly-rk3288" || "%target" == "tinker-rk3288"
 %define is_armv7 1
-%define rockchip_spl 1
+%define rockchip_tpl 1
 %define soc_name "rk3288"
 %if "%target" == "firefly-rk3288"
 %define rkimages rksd rkimage
@@ -103,9 +104,13 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "mx53loco" || "%target" == "mx6qsabrelite"
+%if "%target" == "mx53loco"
 %define is_armv7 1
 %define binext .imx
+%endif
+%if "%target" == "mx6qsabrelite"
+%define is_armv7 1
+%define binext -dtb.imx
 %endif
 %if "%target" == "mx6cuboxi" || "%target" == "udoo" || "%target" == "udooneo"
 %define imx6_spl 1
@@ -127,7 +132,7 @@
 %if  "%target" == "dragonboard410c" || "%target" == "dragonboard820c"
 %define is_armv8 1
 %endif
-%if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "poplar"
+%if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "p3450-0000" || "%target" == "poplar"
 %define is_armv8 1
 %endif
 %if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpgeneric" || "%target" == "xilinxzynqmpzcu102rev10"
@@ -152,7 +157,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2019.10
+%define archive_version 2020.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -184,7 +189,7 @@ ExclusiveArch:  do_not_build
 %endif
 %bcond_with uboot_atf
 %bcond_with uboot_atf_pine64
-Version:        2019.10
+Version:        2020.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -204,24 +209,14 @@ Patch0005:      0005-zynqmp-Add-generic-target.patch
 Patch0006:      0006-tools-zynqmpbif-Add-support-for-loa.patch
 Patch0007:      0007-boo-1123170-Remove-ubifs-support-fr.patch
 Patch0008:      0008-zynqmp-generic-fix-compilation.patch
-Patch0009:      0009-libfdt-fdt_address_cells-and-fdt_si.patch
-Patch0010:      0010-libfdt-return-correct-value-if-size.patch
-Patch0011:      0011-libfdt-Allow-size-cells-of-0.patch
-Patch0012:      0012-dm-Fix-default-address-cells-return.patch
-Patch0013:      0013-arm-arm11-allow-unaligned-memory-ac.patch
-Patch0014:      0014-fdt-fix-bcm283x-dm-pre-reloc-defini.patch
-Patch0015:      0015-arm-dts-bcm283x-Rename-U-Boot-file.patch
-Patch0016:      0016-drivers-bcm283x-Set-pre-location-fl.patch
-Patch0017:      0017-pinctrl-bcm283x-Add-compatible-for-.patch
-Patch0018:      0018-rpi-push-fw_dtb_pointer-in-the-.dat.patch
-Patch0019:      0019-ARM-bcm283x-Move-BCM283x_BASE-to-a-.patch
-Patch0020:      0020-ARM-bcm283x-Set-rpi_bcm283x_base-at.patch
-Patch0021:      0021-ARM-bcm283x-Set-memory-map-at-run-t.patch
-Patch0022:      0022-ARM-defconfig-add-unified-config-fo.patch
-Patch0023:      0023-boo-1144161-Remove-nand-mtd-spi-dfu.patch
-Patch0024:      0024-rpi-fix-dram-bank-initialization.patch
-Patch0025:      0025-rpi-Enable-DRAM-bank-initialization.patch
-Patch0026:      0026-ARM-defconfig-Fix-32bit-config-for-.patch
+Patch0009:      0009-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+Patch0010:      0010-ARM-tegra-Add-NVIDIA-Jetson-Nano-De.patch
+Patch0011:      0011-net-Add-support-for-Broadcom-GENETv.patch
+Patch0012:      0012-rpi4-Update-memory-map-to-accommoda.patch
+Patch0013:      0013-rpi4-Enable-GENET-Ethernet-controll.patch
+Patch0014:      0014-Kconfig-add-btrfs-to-distro-boot.patch
+Patch0015:      0015-configs-Re-sync-with-CONFIG_DISTRO_.patch
+Patch0016:      0016-configs-am335x_evm-disable-BTRFS.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -231,7 +226,7 @@ BuildRequires:  flex
 # u-boot-clearfog (tools/kwbimage.c) needs openssl to build
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(sdl)
 Conflicts:      u-boot-loader
@@ -408,6 +403,13 @@ for t in %{rkimages}; do
     ./tools/mkimage -n %soc_name -d spl/u-boot-spl.bin -T $t u-boot-spl.$t || exit 1
 done
 %endif
+%if %rockchip_tpl == 1
+for t in %{rkimages}; do
+    ./tools/mkimage -n %soc_name -d tpl/u-boot-tpl.bin -T $t u-boot-tpl.$t || exit 1
+    cat spl/u-boot-spl-dtb.bin >> u-boot-tpl.$t
+
+done
+%endif
 %endif
 
 %install
@@ -464,6 +466,12 @@ install -D -m 0644 u-boot-spl.kwb %{buildroot}%{uboot_dir}/u-boot-spl.kwb
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 for t in %{rkimages}; do
     install -D -m 0644 u-boot-spl.$t %{buildroot}%{uboot_dir}/u-boot-spl.$t
+done
+%endif
+%if %rockchip_tpl == 1
+install -D -m 0644 tpl/u-boot-tpl.bin %{buildroot}%{uboot_dir}/u-boot-tpl.bin
+for t in %{rkimages}; do
+    install -D -m 0644 u-boot-tpl.$t %{buildroot}%{uboot_dir}/u-boot-tpl.$t
 done
 %endif
 %if %rockchip_idb == 1

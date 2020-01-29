@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jan  9 03:03:11 UTC 2020 - psimons@suse.com
+
+- Update tls to version 1.5.3.
+  ## Version 1.5.3
+
+  - Additional verification regarding EC signatures
+    [#412](https://github.com/vincenthz/hs-tls/pull/412)
+  - Fixing ALPN
+    [#411](https://github.com/vincenthz/hs-tls/pull/411)
+  - Check SSLv3 padding length
+    [#410](https://github.com/vincenthz/hs-tls/pull/410)
+  - Exposing getClientCertificateChain
+    [#407](https://github.com/vincenthz/hs-tls/pull/407)
+  - Extended Master Secret
+    [#406](https://github.com/vincenthz/hs-tls/pull/406)
+  - Brushing up the documentation
+    [#404](https://github.com/vincenthz/hs-tls/pull/404)
+    [#408](https://github.com/vincenthz/hs-tls/pull/408)
+  - Improving tests
+    [#403](https://github.com/vincenthz/hs-tls/pull/403)
+  - Avoid calling onServerNameIndication twice with HRR
+    [#402](https://github.com/vincenthz/hs-tls/pull/402)
+  - Enable X448 and FFDHE groups
+    [#401](https://github.com/vincenthz/hs-tls/pull/401)
+  - Refactoring
+    [#400](https://github.com/vincenthz/hs-tls/pull/400)
+    [#399](https://github.com/vincenthz/hs-tls/pull/399)
+
+-------------------------------------------------------------------
 Fri Nov  8 16:15:03 UTC 2019 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete group attributes.
