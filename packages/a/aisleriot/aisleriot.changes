@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 16 14:09:03 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 3.22.10:
+  * Switch to the meson build system.
+  * remove intltool marks from AppData file.
+  * Update translations.
+  * Fix reshuffling.
+  * Some fixes and cleanups.
+- Add patch:
+  * add-guile-3.0-support.patch: Allows building with Guile 3.0.
+- Switch download link, as release is not on download.gnome.org
+- New build requires: gcc-c++, meson and pkgconfig(libxml-2.0)
+- Remove no longer needed dependencies: intltool
+- Switch to meson build system, build with the defaults and remove
+  hack for configure script
+- Install README.md
+- Don't install ChangeLog anymore, as it got removed
+- sol.appdata.xml was renamed to sol.metainfo.xml
+
+-------------------------------------------------------------------
 Wed Sep 11 07:27:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.22.9:

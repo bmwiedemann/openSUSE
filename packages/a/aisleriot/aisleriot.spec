@@ -1,7 +1,7 @@
 #
 # spec file for package aisleriot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,21 @@
 
 
 Name:           aisleriot
-Version:        3.22.9
+Version:        3.22.10
 Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Card
 URL:            https://wiki.gnome.org/Apps/Aisleriot
-Source0:        https://download.gnome.org/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
-
+Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM allow buidl with Guile 3.0 -- 4c79d5b0
+Patch0:         add-guile-3.0-support.patch
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  guile-devel
-BuildRequires:  intltool
 # Needed to get lsb data
 BuildRequires:  lsb-release
+BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -38,6 +40,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       guile
 
 %description
@@ -61,27 +64,20 @@ This package provides extra themes for Aisleriot.
 %autosetup -p1
 
 %build
-# Hack up configure. This allows us not having to rely on openSUSE-release, which is a daily changing package
-sed -i 's:DISTRO="unknown":DISTRO="opensuse":' configure
-%configure \
-    --disable-schemas-install \
-    --disable-static \
-    --enable-sound \
-    --with-guile=auto \
-    --with-platform=gtk-only \
-    --with-gtk=3.0 \
+%meson \
+    -Dtheme_kde=false \
     %{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 %fdupes -s %{buildroot}%{_datadir}/help
 %suse_update_desktop_file -N "AisleRiot" -G "Solitaire" sol
 %find_lang %{name} %{?no_lang_C}
 
 %files
 %license COPYING.GFDL
-%doc AUTHORS ChangeLog
+%doc AUTHORS README.md
 %if 0%{?suse_version} <= 1140
 %doc %dir %{_datadir}/help
 %doc %dir %{_datadir}/help/C
@@ -89,7 +85,7 @@ sed -i 's:DISTRO="unknown":DISTRO="opensuse":' configure
 %doc %{_datadir}/help/C/aisleriot/
 %{_bindir}/sol
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/sol.appdata.xml
+%{_datadir}/metainfo/sol.metainfo.xml
 %{_datadir}/applications/sol.desktop
 %{_datadir}/aisleriot/
 %dir %{_libdir}/aisleriot
