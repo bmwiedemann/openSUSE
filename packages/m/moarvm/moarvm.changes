@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 23 07:41:02 CET 2020 - nine@detonation.org
+
+- update to version 2020.01.1
+
++ [105d09d62] Fix NativeCall libraries losing state during repossession
++ [7b8ed6308,a3ec7f315,921c8de84,9d053b8e9,8ac8afcc2,611532317,0995f19b9,fce208cb1,72941ee22,
+   9166ea591,61ac671ea] Fix several more compiler warnings
+
+- Remove moarvm-fix-segfaults-in-openssl.diff as the issue has been fixed upstream
+
+-------------------------------------------------------------------
 Mon Jan  6 19:44:55 CET 2020 - nine@detonation.org
 
 - Add moarvm-fix-segfaults-in-openssl.diff fixing segfaulty regression
