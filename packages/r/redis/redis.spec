@@ -1,7 +1,7 @@
 #
 # spec file for package redis
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,6 @@ install -m 0750 -d \
 
 install -Dpm 0755 src/%{name}-benchmark  %{buildroot}%{_bindir}/%{name}-benchmark
 install -Dpm 0755 src/%{name}-cli        %{buildroot}%{_bindir}/%{name}-cli
-install -Dpm 0755 src/%{name}-trib.rb    %{buildroot}%{_bindir}/%{name}-trib.rb
 
 install -Dpm 0755 src/%{name}-server     %{buildroot}%{_sbindir}/%{name}-server
 
