@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:43:42 CET 2020 - nine@detonation.org
+
+- update to version 2020.01
+  + A big overhaul of role applying rules and behavior or submethods, constructors
+    and destructors. Class attributes and methods are now prioritized over those from roles
+  + Smartmatching typed Arrays against same-typed Positionals now returns True
+  + DateTime class now accepts picosecond precision
+  + Make default degree for hyper/batch utilize number of CPU cores better
+  + $*ARGFILES special variable now defaults to $*IN if no arguments
+  + An attempt to use methods index, indiced, contains on a List now gives a warning
+  + Fix leaking file handles when loading modules
+  + Fix missing dependency information when precompiling large dependency trees
+  + Fixed relocatability of bundled native libraries
+  + Fix "expected IO::Handle:D but got IO::Handle" in parallel test runs
+  + Fix hang when initializing Int with a type object
+  + Lots of semantics bug fixes
+  + Add Version type coercer to Str
+  + Add Supply.repeated, Supply.decode($encoding), Supply.first, Supply.collate,
+    Supply.encode($encoding = "utf8"), Supply.comb, Supply.split, Supply.lines(:nl-in<foo>)
+    methods
+  + Add new is built attribute trait
+  + Allow Supply.head(*-3) to be synonym of Supply.tail(3)
+  + RAKUDO_POD_DECL_BLOCK_USER_FORMAT env var for retaining formatting of Pod6 leading
+    declarator blocks
+  + Add aliases: $*RAKU variable, Raku language in EVAL, RAKU_EXCEPTIONS_HANDLER env variable
+  + Add :$match named parameter to comb subroutine when called
+    on Cool object when the $matcher argument is a Regex
+  + Add log2 subroutine and method
+  + Allowed colon syntax on $.foo method, making $.foo: 42 work
+- Remove no longer needed rakudo-buildroot-fix.diff - fixed upstream
+
+-------------------------------------------------------------------
 Sun Dec 01 15:35:00 CET 2019 - nine@detonation.org
 
 - Backport fix for buildroot in packaged files in rakudo-buildroot-fix.diff

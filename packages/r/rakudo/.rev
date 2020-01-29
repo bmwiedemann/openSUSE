@@ -477,4 +477,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment></comment>
     <requestid>752703</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>043e432eb79d7ab3a1b791f4c0fb8eca</srcmd5>
+    <version>2020.01</version>
+    <time>1580300310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768042</requestid>
+  </revision>
 </revisionlist>
