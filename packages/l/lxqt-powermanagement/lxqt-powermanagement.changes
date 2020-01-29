@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 27 10:31:11 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1161365: Fix build
+- Add buildrequire for glib
+
+-------------------------------------------------------------------
 Mon Mar 11 21:33:19 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - Requires: upower added
