@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2452,7 +2452,6 @@ unsorted:
   - drbdmanage 
   - drc 
   - drc-doc 
-  - dreampie 
   - driverctl 
   - dropbox-cli 
   - drops 
@@ -3757,7 +3756,7 @@ unsorted:
   - ghc-blaze-markup 
   - ghc-blaze-markup-devel 
   - ghc-bootstrap 
-  - ghc-bootstrap-helpers: [x86_64] 
+  - ghc-bootstrap-helpers 
   - ghc-byteable 
   - ghc-byteable-devel 
   - ghc-bytestring 
@@ -6148,7 +6147,6 @@ unsorted:
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
   - jupyter-jupyter_console 
-  - jupyter-jupyter_console-doc 
   - jupyter-jupyter_contrib_core 
   - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_dashboards 
@@ -6179,7 +6177,6 @@ unsorted:
   - jupyter-nbinteract 
   - jupyter-nbpresent 
   - jupyter-notebook 
-  - jupyter-notebook-doc 
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
@@ -11822,7 +11819,7 @@ unsorted:
   - libtrilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
-  - libtsk13 
+  - libtsk19 
   - libtsm-devel 
   - libtsm4 
   - libtspi1 
@@ -15386,10 +15383,6 @@ unsorted:
   - orage 
   - orage-doc 
   - orage-lang 
-  - orbit2 
-  - orbit2-32bit: [x86_64] 
-  - orbit2-devel 
-  - orbit2-doc 
   - orc 
   - orc-doc 
   - orcania-devel 
@@ -15402,6 +15395,7 @@ unsorted:
   - orthanc-devel 
   - orthanc-dicomweb 
   - orthanc-doc 
+  - orthanc-mysql 
   - orthanc-postgresql 
   - orthanc-source 
   - orthanc-webviewer 
@@ -17966,7 +17960,6 @@ unsorted:
   - python2-Pympler 
   - python2-Pyphen 
   - python2-Pyro4 
-  - python2-QDarkStyle 
   - python2-QR-Code-generator 
   - python2-Qt.py 
   - python2-QtAwesome 
@@ -18304,7 +18297,6 @@ unsorted:
   - python2-binary 
   - python2-binaryornot 
   - python2-bindep 
-  - python2-binplist 
   - python2-biopython 
   - python2-biplist 
   - python2-bitstring 
@@ -18515,6 +18507,7 @@ unsorted:
   - python2-dfwinreg 
   - python2-dialite 
   - python2-dicttoxml 
+  - python2-diff-match-patch 
   - python2-diff_match_patch 
   - python2-digitalocean 
   - python2-dill 
@@ -18681,6 +18674,7 @@ unsorted:
   - python2-fluidity-sm 
   - python2-flup 
   - python2-forbiddenfruit 
+  - python2-formats 
   - python2-freetype-py 
   - python2-freezegun 
   - python2-freezerclient 
@@ -18775,6 +18769,7 @@ unsorted:
   - python2-hawkauthlib 
   - python2-hdf5storage 
   - python2-heatclient 
+  - python2-helpdev 
   - python2-hetzner 
   - python2-hexdump 
   - python2-hiredis 
@@ -20863,6 +20858,7 @@ unsorted:
   - python3-dfwinreg 
   - python3-dialite 
   - python3-dicttoxml 
+  - python3-diff-match-patch 
   - python3-diff_match_patch 
   - python3-digitalocean 
   - python3-dill 
@@ -21092,6 +21088,7 @@ unsorted:
   - python3-flufl.testing 
   - python3-flup 
   - python3-forbiddenfruit 
+  - python3-formats 
   - python3-freetype-py 
   - python3-freezegun 
   - python3-freezerclient 
@@ -21198,6 +21195,7 @@ unsorted:
   - python3-hawkey 
   - python3-hdf5storage 
   - python3-heatclient 
+  - python3-helpdev 
   - python3-hetzner 
   - python3-hetznercloud 
   - python3-hexdump 
@@ -33104,8 +33102,6 @@ unsorted:
   - ved 
   - vegastrike 
   - vegastrike-data: [x86_64] 
-  - vegastrike-extra: [x86_64] 
-  - vegastrike-speech: [x86_64] 
   - velocity 
   - velocity-demo 
   - velocity-javadoc 
@@ -33807,6 +33803,7 @@ unsorted:
   - xtables-addons-kmp-pae: [i586] 
   - xtables-geoip 
   - xteddy 
+  - xterm-console 
   - xtexit 
   - xtrx-tools 
   - xtrx-usb-udev 
