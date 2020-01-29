@@ -1,0 +1,9 @@
+--- /dev/null	2020-01-25 08:09:49.736009393 +0100
++++ diff-match-patch-20181111/diff_match_patch/tests/run_all.py	2020-01-25 15:33:14.805205323 +0100
+@@ -0,0 +1,6 @@
++import sys
++
++if sys.version_info < (3, ):
++    from .diff_match_patch_test_py2 import *
++else:
++    from .diff_match_patch_test import *
