@@ -28,14 +28,14 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.53.0
+Version:        0.53.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            http://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
-Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.sig
+Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
 Source2:        meson.keyring
 # PATCH-FIX-OPENSUSE meson-suse-ify-macros.patch dimstar@opensuse.org -- Make the macros non-RedHat specific: so far there are no separate {C,CXX,F}FLAGS.
 Patch0:         meson-suse-ify-macros.patch
@@ -49,10 +49,8 @@ Patch3:         meson-suse-fix-llvm-3.8.patch
 Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM meson-pkgconf-libdir.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/pull/6458
-Patch6:         meson-pkgconf-libdir.patch
 # PATCH-FIX-UPSREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
-Patch7:         meson-testsuite-boost.patch
+Patch6:         meson-testsuite-boost.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -170,9 +168,8 @@ This package provides support for meson.build files in Vim.
 %if !%{with setuptools}
 %patch5 -p1
 %endif
-%patch6 -p1
 (cd "test cases/frameworks/1 boost"
-%patch7 -p0
+%patch6 -p0
 )
 
 # Remove static boost tests from "test cases/frameworks/1 boost/".

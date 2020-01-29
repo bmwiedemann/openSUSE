@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 24 13:16:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.1:
+  + Use python3 in some tests which were still using python.
+  + test_pkgconfig_gen_deps: set
+    PKG_CONFIG_SYSTEM_LIBRARY_PATH=/usr/lib. pkgconf automatically
+    prunes "system library paths" from its output.
+  + compilers: Derive CompilerArgs from collections instead of
+    typing.
+- Drop meson-pkgconf-libdir.patch: fixed upstream.
+- Rebase meson-testsuite-boost.patch.
+
+-------------------------------------------------------------------
 Wed Jan  8 11:48:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.53.0:
