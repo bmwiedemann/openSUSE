@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 28 01:01:39 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.5.0
+ * #245: Monitor backups with PagerDuty hook integration. See the
+   documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#pagerduty-hook
+ * #255: Add per-action hooks: "before_prune", "after_prune",
+   "before_check", and "after_check".
+ * #274: Add ~/.config/borgmatic.d as another configuration
+   directory default.
+ * #277: Customize Healthchecks log level via borgmatic
+   "--monitoring-verbosity" flag.
+ * #280: Change "exclude_if_present" option to support multiple
+   filenames that indicate a directory should be excluded from
+   backups, rather than just a single filename.
+ * #284: Backup to a removable drive or intermittent server via
+   "soft failure" feature. See the documentation for more
+   information:
+   https://torsion.org/borgmatic/docs/how-to/backup-to-a-removable-drive-or-an-intermittent-server/
+ * #287: View consistency check progress via "--progress" flag for
+   "check" action. For "create" and "prune" actions, no longer list
+   files or show detailed stats at any verbosities by default. You
+   can opt back in with "--files" or "--stats" flags. For "list"
+   and "info" actions, show repository names even at verbosity 0.
+
+-------------------------------------------------------------------
 Wed Jan 22 10:33:11 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.4.2
