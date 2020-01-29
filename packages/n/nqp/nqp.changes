@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:39:21 CET 2020 - nine@detonation.org
+
+- update to version 2020.01
+  * Fix "Decoder may not be used concurrently" errors with concurrent EVAL
+  * Give HLL/Actions|Grammar a "raku" method
+  * Add NQPAttribute.is_built method
+  * Add NQPAttribute.is_bound method
+  * Change references of HLL language to 'Raku'
+  * Remove HLL dependency
+  * Fix various compiler warnings
+
+-------------------------------------------------------------------
 Fri Nov 29 09:36:46 CET 2019 - nine@detonation.org
 
 - update to version 2019.11

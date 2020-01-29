@@ -1,7 +1,7 @@
 #
 # spec file for package nqp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           nqp
-Version:        2019.11
+Version:        2020.01
 Release:        1.1
 Summary:        Not Quite Perl
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            http://rakudo.org/
 Source:         nqp-%{version}.tar.gz
-BuildRequires:  moarvm-devel >= 2019.11
-Requires:       moarvm >= 2019.11
+BuildRequires:  moarvm-devel >= 2020.01
+Requires:       moarvm >= 2020.01
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
