@@ -1,7 +1,7 @@
 #
 # spec file for package applet-window-buttons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define qt5_version 5.9
 
 Name:           applet-window-buttons
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Plasma 5 applet to show window buttons in panels
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://github.com/psifidotos/applet-window-buttons
-Source:         https://github.com/psifidotos/applet-window-buttons/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/psifidotos/applet-window-buttons/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kconfig-devel >= %{kf5_version}
