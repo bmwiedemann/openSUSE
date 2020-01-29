@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 28 16:04:17 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix the RPATH which is broken because of an invalid cmake macro
+  * Correct fix for (boo#1160739)
+  * CMake fix: https://build.opensuse.org/request/show/764183
+- Fix version number in Debian/Ubuntu builds
+
+-------------------------------------------------------------------
 Mon Jan 13 06:20:20 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Move libdarktable.so to %_libdir (boo#1160739)

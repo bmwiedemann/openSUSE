@@ -1,10 +1,10 @@
-Format: 3.0 (native)
+Format: 3.0 (quilt)
 Source: darktable
 Section: graphics
 Priority: optional
 Binary: darktable darktable-tools-basecurve darktable-tools-noise
 Architecture: any-amd64 any-arm64
-Version: 0
+Version: 3.0.0-1.1
 Homepage: http://www.darktable.org/
 Build-Depends: cmake,
                debhelper (>= 10),

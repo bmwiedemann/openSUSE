@@ -216,6 +216,7 @@ rm -rf src/external/lua/
 
 %build
 %define cmake_options \\\
+   -DCMAKE_INSTALL_LIBDIR=%{_lib} \\\
    -DCMAKE_SKIP_RPATH:BOOL=OFF \\\
    -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
    -DCMAKE_INSTALL_LIBEXECDIR="%{_libexecdir}" \\\
@@ -257,7 +258,7 @@ pushd %{_target_platform}
   -DDONT_USE_INTERNAL_LUA=ON \
   %ifarch aarch64
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
-  %endif  
+  %endif
   %{cmake_options} ..
 make %{_smp_mflags} VERBOSE=1
 
@@ -267,7 +268,6 @@ make %{_smp_mflags} VERBOSE=1
 %if 0%{?suse_version}
 # suse branch
 %cmake_install
-mv %{buildroot}%{_libdir}/darktable/libdarktable.so %{buildroot}%{_libdir}
 %suse_update_desktop_file darktable
 #/ suse branch
 %else
@@ -275,6 +275,7 @@ mv %{buildroot}%{_libdir}/darktable/libdarktable.so %{buildroot}%{_libdir}
 %make_install -C %{_target_platform}
 #/ fedora branch
 %endif
+
 %find_lang darktable
 
 cp -av %{S:1} %{S:2} %{S:3} %{S:4} doc/TODO \
@@ -313,7 +314,6 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %{_bindir}/darktable-cmstest
 %{_bindir}/darktable-rs-identify
 %{_libdir}/darktable
-%{_libdir}/libdarktable.so
 %{_datadir}/applications/darktable.desktop
 %{_datadir}/darktable
 %exclude %{_datadir}/%{pkg_name}/tools/basecurve/
