@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -21,24 +21,20 @@
 
 
 Name:           sonic-visualiser
-Version:        4.0
+Version:        4.0.1
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.sonicvisualiser.org/
-Source:         https://code.soundsoftware.ac.uk/attachments/download/2580/%{name}-%{version}.tar.gz
-Source2:        %{name}.xml
+Source:         https://code.soundsoftware.ac.uk/attachments/download/2607/%{name}-%{version}.tar.gz
+Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
-Patch2:         sonic-visualiser-system-dataquay.patch
+Patch0:         sonic-visualiser-system-dataquay.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
-%if 0%{suse_version} < 1500
-BuildRequires:  gcc7-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ladspa
 BuildRequires:  libqt5-qtbase-devel >= 5.2
@@ -51,7 +47,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(capnp)
-%if 0%{?BUILD_ORIG} || 0%{?suse_version} >= 1500
+%if 0%{?BUILD_ORIG}
 BuildRequires:  pkgconfig(dataquay) >= 0.9
 %endif
 BuildRequires:  pkgconfig(fftw3)
@@ -119,18 +115,16 @@ With Sonic Visualiser you can:
 
 %prep
 %setup -q
-%if 0%{?BUILD_ORIG} || 0%{?suse_version} >= 1500
-%patch2 -p1
+%if 0%{?BUILD_ORIG}
+%patch0 -p1
 %endif
 # required with capnproto 0.7.0
 for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; done
 
+# Don't use -Werror on releases
+find . -name configure -o -name "*.pro" -o -name "*.pri" -exec sed -i s'# -Werror##g' {} \;
+
 %build
-%if 0%{suse_version} < 1500
-# gcc 4.8.5 is too old
-export CC=gcc-7
-export CXX=g++-7
-%endif
 export LC_ALL=en_US.UTF-8
 %configure
 make %{?_smp_mflags}
@@ -153,7 +147,7 @@ install -Dm 644 icons/sv-icon.svg %{buildroot}/%{_datadir}/icons/hicolor/scalabl
 ln -s sonic-visualiser.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/sv-icon.svg
 
 # mime types
-install -Dm 644 %{SOURCE2} %{buildroot}%{_datadir}/mime/packages/%{name}.xml
+install -Dm 644 %{SOURCE1} %{buildroot}%{_datadir}/mime/packages/%{name}.xml
 install -Dm 644 x-sonicvisualiser.desktop %{buildroot}/%{_datadir}/mimelnk/application/x-sonicvisualiser.desktop
 install -Dm 644 x-sonicvisualiser-layer.desktop %{buildroot}/%{_datadir}/mimelnk/application/x-sonicvisualiser-layer.desktop
 
@@ -161,13 +155,9 @@ install -Dm 644 x-sonicvisualiser-layer.desktop %{buildroot}/%{_datadir}/mimelnk
 %suse_update_desktop_file -i %{name} AudioVideo Audio Music
 
 %post
-%desktop_database_post
-%icon_theme_cache_post
 %{_bindir}/update-mime-database %{_datadir}/mime &> /dev/null || :
 
 %postun
-%desktop_database_postun
-%icon_theme_cache_postun
 %{_bindir}/update-mime-database %{_datadir}/mime &> /dev/null || :
 
 %files
