@@ -1252,7 +1252,6 @@
       <repopackage name="kernel-source"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
-      <repopackage name="keyutils-devel"/>
       <repopackage name="kf5-kcm-fcitx"/>
       <repopackage name="kf5-kcm-fcitx-icons"/>
       <repopackage name="kfilemetadata5"/>
@@ -1390,7 +1389,6 @@
       <repopackage name="kqtquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-client"/>
-      <repopackage name="krb5-devel"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -1701,7 +1699,6 @@
       <repopackage name="libebtc0"/>
       <repopackage name="libecal-2_0-1"/>
       <repopackage name="libeconf0"/>
-      <repopackage name="libecpg6"/>
       <repopackage name="libedata-book-1_2-26"/>
       <repopackage name="libedata-cal-2_0-1"/>
       <repopackage name="libedataserver-1_2-24"/>
@@ -2866,7 +2863,6 @@
       <repopackage name="libvdpau_r600"/>
       <repopackage name="libvdpau_radeonsi"/>
       <repopackage name="libvdpau_va_gl1"/>
-      <repopackage name="libverto-devel"/>
       <repopackage name="libverto1"/>
       <repopackage name="libvidstab1_1"/>
       <repopackage name="libvirglrenderer1"/>
@@ -3992,17 +3988,11 @@
       <repopackage name="postfix-doc"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-devel"/>
       <repopackage name="postgresql-docs"/>
       <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
-      <repopackage name="postgresql10"/>
-      <repopackage name="postgresql10-contrib"/>
-      <repopackage name="postgresql10-devel"/>
-      <repopackage name="postgresql10-server"/>
       <repopackage name="postgresql12"/>
       <repopackage name="postgresql12-contrib"/>
-      <repopackage name="postgresql12-devel"/>
       <repopackage name="postgresql12-docs"/>
       <repopackage name="postgresql12-llvmjit"/>
       <repopackage name="postgresql12-server"/>

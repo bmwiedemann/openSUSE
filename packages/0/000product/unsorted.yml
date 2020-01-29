@@ -6387,6 +6387,7 @@ unsorted:
   - keybinder-devel 
   - keybinder-lua 
   - keychain 
+  - keyutils-devel 
   - keyutils-devel-32bit: [x86_64] 
   - kf5-filesystem 
   - kf5-mediainfo 
@@ -6657,6 +6658,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
   - krb5-mini-devel 
@@ -8632,6 +8634,7 @@ unsorted:
   - libecm1 
   - libeconf-devel 
   - libecore1 
+  - libecpg6 
   - libecpg6-32bit: [x86_64] 
   - libecryptfs1 
   - libecryptfs1-32bit: [x86_64] 
@@ -12008,6 +12011,7 @@ unsorted:
   - libvdpau_va_gl1-32bit: [x86_64] 
   - libventrilo3-0 
   - libventrilo3-devel 
+  - libverto-devel 
   - libverto-devel-32bit: [x86_64] 
   - libverto-glib-devel 
   - libverto-glib1 
@@ -17237,11 +17241,15 @@ unsorted:
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
+  - postgresql-devel 
   - postgresql-plperl 
   - postgresql-plpython 
   - postgresql-pltcl 
   - postgresql-server-devel 
   - postgresql-test 
+  - postgresql10 
+  - postgresql10-contrib 
+  - postgresql10-devel 
   - postgresql10-docs 
   - postgresql10-pg_cron 
   - postgresql10-pgagent 
@@ -17250,6 +17258,7 @@ unsorted:
   - postgresql10-plr 
   - postgresql10-plr-doc 
   - postgresql10-pltcl 
+  - postgresql10-server 
   - postgresql10-test 
   - postgresql10-timescaledb 
   - postgresql11 
@@ -17269,6 +17278,7 @@ unsorted:
   - postgresql11-server-devel 
   - postgresql11-test 
   - postgresql11-timescaledb 
+  - postgresql12-devel 
   - postgresql12-plperl 
   - postgresql12-plpython 
   - postgresql12-pltcl 
