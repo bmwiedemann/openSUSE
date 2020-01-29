@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 29 10:18:06 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix build with python 3.6 by specifying UTF8 locale.
+
+-------------------------------------------------------------------
+Thu Jan 23 14:02:25 UTC 2020 - enzokiel@kabelmail.de
+
+- update to version 3.8.2
+  * New:
+    + Catalan, Portuguese and Ukrainian translations.
+  * Fixed:
+    + Crash when removing M4A atoms.
+
+-------------------------------------------------------------------
 Mon Dec 23 18:48:07 UTC 2019 - enzokiel@kabelmail.de
 
 - update to version 3.8.1

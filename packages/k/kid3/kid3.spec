@@ -1,7 +1,7 @@
 #
 # spec file for package kid3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,24 @@
 
 
 Name:           kid3
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Efficient ID3 Tag Editor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Url:            http://kid3.sourceforge.net/
-# WARNING: The source url is a moving target, leave it blank
-Source0:        %{name}-%{version}.tar.gz
-Source1:        %{name}-%{version}.tar.gz.asc
-BuildRequires:  docbook-xsl-stylesheets
+Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz.asc
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
-BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(ogg)
-BuildRequires:  pkgconfig(taglib) >= 1.4
-BuildRequires:  pkgconfig(vorbis)
-Requires:       %{name}-core = %{version}
-Requires:       xdg-utils
-# kid3 and kid3-qt can exist together on a system but the user will have two packages with the same functionality.
-Conflicts:      kid3-qt = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavresample)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libchromaprint)
-BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  kf5-filesystem
+BuildRequires:  libxslt-tools
+BuildRequires:  python3 >= 3.6
+BuildRequires:  readline-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  config(docbook-xsl-stylesheets)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -57,11 +45,22 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  libxslt-tools
+BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavresample)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libchromaprint)
+BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(taglib) >= 1.4
+BuildRequires:  pkgconfig(vorbis)
+Requires:       %{name}-core = %{version}
 Requires:       libxslt-tools
+Requires:       xdg-utils
+# kid3 and kid3-qt can exist together on a system but the user will have two packages with the same functionality.
+Conflicts:      kid3-qt = %{version}
 
 %description
 f you want to easily tag multiple MP3, Ogg/Vorbis, Opus, DSF, FLAC,
@@ -178,7 +177,7 @@ This package contains common libraries and data files used by kid3, kid3-qt, and
 %lang_package -n %{name}-core
 
 %prep
-%setup -q -n kid3-%{version}
+%autosetup -p1
 
 %build
 options+="-DWITH_LIBDIR=%{_lib}/kid3 -DWITH_PLUGINSDIR=%{_lib}/kid3/plugins "
@@ -186,8 +185,10 @@ options+="-DWITH_CHROMAPRINT_FFMPEG=ON -DWITH_FFMPEG=ON -DWITH_GSTREAMER=ON "
 options+="-DWITH_DOCDIR=share/doc/packages/kid3-qt "
 options+="-DCMAKE_SKIP_RPATH=ON -DWITH_QMLDIR=%{_lib}/qt5/qml/kid3 "
 %cmake_kf5 -d build -- $options
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
-%make_jobs
+LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 %make_jobs
 
 %install
 %kf5_makeinstall -C build
@@ -206,30 +207,11 @@ EOF
 
 rm %{buildroot}%{_libdir}/kid3/libkid3-*.so
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
-%post qt
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun qt
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %post core -p /sbin/ldconfig
 
 %postun core -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %dir %{_datadir}/metainfo
 %{_kf5_bindir}/kid3
 %{_kf5_iconsdir}/hicolor/*/apps/kid3.*
@@ -238,7 +220,6 @@ rm %{buildroot}%{_libdir}/kid3/libkid3-*.so
 %{_kf5_appstreamdir}/net.sourceforge.kid3.appdata.xml
 
 %files qt
-%defattr(-,root,root,-)
 %dir %{_datadir}/metainfo
 %{_datadir}/applications/net.sourceforge.kid3-qt.desktop
 %{_datadir}/metainfo/net.sourceforge.kid3-qt.appdata.xml
@@ -246,16 +227,16 @@ rm %{buildroot}%{_libdir}/kid3/libkid3-*.so
 %{_datadir}/icons/hicolor/*/apps/kid3-qt.*
 %{_mandir}/man1/kid3-qt.1%{ext_man}
 %{_mandir}/de/man1/kid3-qt.1%{ext_man}
+%{_mandir}/pt/man1/kid3-qt.1%{ext_man}
 
 %files cli
-%defattr(-,root,root,-)
 %{_bindir}/kid3-cli
 %{_mandir}/man1/kid3-cli.1%{ext_man}
 %{_mandir}/de/man1/kid3-cli.1%{ext_man}
+%{_mandir}/pt/man1/kid3-cli.1%{ext_man}
 
 %files core
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog README kid3.lsm
+%doc AUTHORS ChangeLog README
 %license COPYING LICENSE
 %{_libdir}/kid3/
 %{_libdir}/qt5/qml/kid3/
@@ -263,18 +244,17 @@ rm %{buildroot}%{_libdir}/kid3/libkid3-*.so
 %{_datadir}/dbus-1/interfaces/net.sourceforge.Kid3.xml
 %{_mandir}/man1/kid3.1%{ext_man}
 %{_mandir}/de/man1/kid3.1%{ext_man}
+%{_mandir}/pt/man1/kid3.1%{ext_man}
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_kf5_htmldir}/de/kid3/
 %doc %{_kf5_htmldir}/en/kid3/
+%doc %{_kf5_htmldir}/pt/kid3/
 
 %files qt-doc
-%defattr(-,root,root,-)
 %{_docdir}/kid3-qt/
 
 %files -n %{name}-core-lang -f %{name}-core.lang
-%defattr(-,root,root,-)
 %dir %{_datadir}/kid3
 %dir %{_datadir}/kid3/translations
 
