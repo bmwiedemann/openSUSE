@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 10:40:26 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.1
+  * Add the virtual_host_mask parameter (gcp uses 32 mask) 
+
+-------------------------------------------------------------------
 Wed Jan 22 10:52:20 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 
 - Version 0.3.0
