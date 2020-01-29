@@ -2,11 +2,11 @@
  main.c |    8 +-------
  1 file changed, 1 insertion(+), 7 deletions(-)
 
-Index: b/main.c
+Index: crash-7.2.7/main.c
 ===================================================================
---- a/main.c
-+++ b/main.c
-@@ -1164,12 +1164,6 @@ setup_environment(int argc, char **argv)
+--- crash-7.2.7.orig/main.c
++++ crash-7.2.7/main.c
+@@ -1169,12 +1169,6 @@ setup_environment(int argc, char **argv)
  	pc->flags |= READLINE;
  	pc->editing_mode = "no_mode";
  
@@ -19,7 +19,7 @@ Index: b/main.c
  
  	/*
  	 *  Resolve $HOME .rc file first, then the one in the local directory.
-@@ -1219,7 +1213,7 @@ setup_environment(int argc, char **argv)
+@@ -1224,7 +1218,7 @@ setup_environment(int argc, char **argv)
  	}
  
  	if (STREQ(pc->editing_mode, "no_mode"))

@@ -22,11 +22,11 @@ Signed-off-by: Takao Indoh <indou.takao@jp.fujitsu.com>
  symbols.c |    3 +++
  1 file changed, 3 insertions(+)
 
-Index: b/symbols.c
+Index: crash-7.2.7/symbols.c
 ===================================================================
---- a/symbols.c
-+++ b/symbols.c
-@@ -1151,6 +1151,9 @@ symname_hash_install(struct syment *spn)
+--- crash-7.2.7.orig/symbols.c
++++ crash-7.2.7/symbols.c
+@@ -1157,6 +1157,9 @@ symname_hash_install(struct syment *spn)
  			}
  		}
  	}

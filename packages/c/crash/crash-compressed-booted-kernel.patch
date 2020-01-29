@@ -9,11 +9,11 @@ Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
  filesys.c |   26 ++++++++++++++++++++++----
  1 file changed, 22 insertions(+), 4 deletions(-)
 
-Index: b/filesys.c
+Index: crash-7.2.7/filesys.c
 ===================================================================
---- a/filesys.c
-+++ b/filesys.c
-@@ -582,6 +582,7 @@ static int
+--- crash-7.2.7.orig/filesys.c
++++ crash-7.2.7/filesys.c
+@@ -581,6 +581,7 @@ static int
  find_booted_kernel(void)
  {
  	char kernel[BUFSIZE];
@@ -21,7 +21,7 @@ Index: b/filesys.c
  	char buffer[BUFSIZE];
  	char **searchdirs;
  	int i, preferred, wrapped;
-@@ -631,16 +632,24 @@ find_booted_kernel(void)
+@@ -630,16 +631,24 @@ find_booted_kernel(void)
  			sprintf(kernel, "%s%s", searchdirs[i], dp->d_name);
  
  			if (mount_point(kernel) ||
@@ -50,7 +50,7 @@ Index: b/filesys.c
  			if (found)
  				break;
  	        }
-@@ -660,10 +669,19 @@ find_booted_kernel(void)
+@@ -659,10 +668,19 @@ find_booted_kernel(void)
  			if (CRASHDEBUG(1))
  				fprintf(fp, "find_booted_kernel: found: %s\n", 
  					pc->namelist);

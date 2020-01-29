@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 17:41:20 UTC 2020 - David Mair <dmair@suse.com>
+
+- Upgrade source tarball to version 7.2.7 to support currently used
+  kernel versions.
+- drop the following patch that is obsoleted by souce upgrade:
+  * crash-allow-kmem-section-is-early.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 19:39:11 UTC 2019 - David Mair <dmair@suse.com>
 
 - Added commit c0371f6ee2cae31ec9f506bbd231ab8fbe334c13 - Fix to

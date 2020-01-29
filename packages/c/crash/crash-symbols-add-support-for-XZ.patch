@@ -12,11 +12,11 @@ Signed-off-by: Jiri Slaby <jslaby@suse.cz>
  symbols.c | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
 
-Index: b/symbols.c
+Index: crash-7.2.7/symbols.c
 ===================================================================
---- a/symbols.c
-+++ b/symbols.c
-@@ -3597,6 +3597,7 @@ is_compressed_kernel(char *file, char **
+--- crash-7.2.7.orig/symbols.c
++++ crash-7.2.7/symbols.c
+@@ -3603,6 +3603,7 @@ is_compressed_kernel(char *file, char **
  
  #define GZIP  (1)
  #define BZIP2 (2)
@@ -24,7 +24,7 @@ Index: b/symbols.c
  
  #define FNAME (1 << 3)
  
-@@ -3646,6 +3647,19 @@ is_compressed_kernel(char *file, char **
+@@ -3652,6 +3653,19 @@ is_compressed_kernel(char *file, char **
  		type = BZIP2;
  	}
  
@@ -44,7 +44,7 @@ Index: b/symbols.c
  	if (!type)
  		return FALSE;
  
-@@ -3681,6 +3695,12 @@ is_compressed_kernel(char *file, char **
+@@ -3687,6 +3701,12 @@ is_compressed_kernel(char *file, char **
  			"/bin/bunzip2" : "/usr/bin/bunzip2",
  			file, tempname);
  		break;

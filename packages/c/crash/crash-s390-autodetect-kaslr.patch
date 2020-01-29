@@ -4,11 +4,11 @@ configured with CONFIG_RANDOMIZE_BASE=y (KASLR).  Without the patch,
 the "--kaslr=<offset>" command line option is required.
 (anderson@redhat.com)
 ---
-Index: b/symbols.c
+Index: crash-7.2.7/symbols.c
 ===================================================================
---- a/symbols.c
-+++ b/symbols.c
-@@ -612,6 +612,12 @@ kaslr_init(void)
+--- crash-7.2.7.orig/symbols.c
++++ crash-7.2.7/symbols.c
+@@ -618,6 +618,12 @@ kaslr_init(void)
  		st->_stext_vmlinux = UNINITIALIZED;
  	}
  

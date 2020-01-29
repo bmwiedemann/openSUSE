@@ -14,11 +14,11 @@ Acked-by: Bernhard Walle <bwalle@suse.de>
  task.c   |   11 +++++++++++
  3 files changed, 27 insertions(+), 1 deletion(-)
 
-Index: b/defs.h
+Index: crash-7.2.7/defs.h
 ===================================================================
---- a/defs.h
-+++ b/defs.h
-@@ -739,6 +739,7 @@ struct kernel_table {
+--- crash-7.2.7.orig/defs.h
++++ crash-7.2.7/defs.h
+@@ -741,6 +741,7 @@ struct kernel_table {
  		ulong p2m_missing;
  	} pvops_xen;
  	int highest_irq;
@@ -26,7 +26,7 @@ Index: b/defs.h
  #define IKCONFIG_AVAIL	0x1	/* kernel contains ikconfig data */
  #define IKCONFIG_LOADED	0x2	/* ikconfig data is currently loaded */
  	int ikconfig_flags;
-@@ -6878,6 +6879,13 @@ extern struct lkcd_environment *lkcd;
+@@ -6885,6 +6886,13 @@ extern struct lkcd_environment *lkcd;
  
  #endif  /* LKCD_COMMON */
  
@@ -40,10 +40,10 @@ Index: b/defs.h
  /*
   *  gdb_interface.c
   */
-Index: b/kernel.c
+Index: crash-7.2.7/kernel.c
 ===================================================================
---- a/kernel.c
-+++ b/kernel.c
+--- crash-7.2.7.orig/kernel.c
++++ crash-7.2.7/kernel.c
 @@ -297,6 +297,12 @@ kernel_init()
  
  	verify_version();
@@ -57,7 +57,7 @@ Index: b/kernel.c
  	if (symbol_exists("__per_cpu_offset")) {
  		if (LKCD_KERNTYPES())
  			i = get_cpus_possible();
-@@ -5549,7 +5555,7 @@ get_uptime(char *buf, ulonglong *j64p)
+@@ -5603,7 +5609,7 @@ get_uptime(char *buf, ulonglong *j64p)
  
  	if (symbol_exists("jiffies_64")) {
  		get_symbol_data("jiffies_64", sizeof(ulonglong), &jiffies_64);
@@ -66,7 +66,7 @@ Index: b/kernel.c
  			wrapped = (jiffies_64 & 0xffffffff00000000ULL);
  			if (wrapped) {
  				wrapped -= 0x100000000ULL;
-@@ -6145,6 +6151,7 @@ no_cpu_flags:
+@@ -6199,6 +6205,7 @@ no_cpu_flags:
  			fprintf(fp, "            p2m_mid_missing: %lx\n", kt->pvops_xen.p2m_mid_missing);
  		fprintf(fp, "                p2m_missing: %lx\n", kt->pvops_xen.p2m_missing);
  	}
@@ -74,10 +74,10 @@ Index: b/kernel.c
  }
  
  /*
-Index: b/task.c
+Index: crash-7.2.7/task.c
 ===================================================================
---- a/task.c
-+++ b/task.c
+--- crash-7.2.7.orig/task.c
++++ crash-7.2.7/task.c
 @@ -4611,6 +4611,12 @@ start_time_timespec(void)
  	default:
  		break;

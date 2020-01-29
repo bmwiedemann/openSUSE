@@ -1,7 +1,7 @@
 #
 # spec file for package crash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,11 +57,11 @@ Name:           crash
 %endif
 %endif
 %endif
-Url:            http://people.redhat.com/anderson/
+URL:            http://people.redhat.com/anderson/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GPL-3.0-or-later AND GFDL-1.2-only
 Group:          Development/Tools/Debuggers
-Version:        7.2.6
+Version:        7.2.7
 Release:        0
 Source:         %{name}-%{version}.tar.gz
 Source2:        crash_whitepaper-%{whitepaper_version}.tar.bz2
@@ -88,7 +88,6 @@ Patch13:        %{name}-patch-gdb.patch
 Patch15:        %{name}_enable_snappy_support.patch
 Patch16:        eppic-support-arm64.patch
 Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
-Patch22:        %{name}-allow-kmem-section-is-early.patch
 Patch23:        %{name}-symbols-add-support-for-XZ.patch
 Patch24:        %{name}-s390-autodetect-kaslr.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
@@ -286,7 +285,6 @@ Authors:
 %patch11 -p1
 %patch13 -p1
 %patch21 -p1
-%patch22 -p1
 %patch23 -p1
 %patch24 -p1
 %if %{have_snappy}
