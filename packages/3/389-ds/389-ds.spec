@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,6 @@
 #  to ENABLE the option, with means to DISABLE it.
 %if (0%{is_opensuse} > 0) || (0%{?sle_version} > 150100)
 %bcond_without lib389
-# Temporarily disable rust due to a broken library.
 %bcond_with rust
 %else
 %bcond_with    lib389
@@ -48,7 +47,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.2.5~git0.d52700340
+Version:        1.4.3.1~git0.a08202a5b
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -57,6 +56,7 @@ URL:            https://pagure.io/389-ds-base
 Source:         389-ds-base-%{version}.tar.bz2
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
+Source3:        vendor.tar.gz
 Source9:        %{name}-rpmlintrc
 # 389-ds does not support i686
 ExcludeArch:    %ix86
@@ -236,6 +236,17 @@ uses the facilities provided by NSS.
 
 %prep
 %setup -q -a 1 -n %{name}-base-%{version}
+%setup -q -n %{name}-base-%{version} -D -T -a 3
+
+rm -rf .cargo
+mkdir .cargo
+cat >.cargo/config <<EOF
+[source.crates-io]
+registry = 'https://github.com/rust-lang/crates.io-index'
+replace-with = 'vendored-sources'
+[source.vendored-sources]
+directory = './vendor'
+EOF
 
 %build
 # Make sure python3 is used in shebangs
@@ -261,7 +272,7 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   %endif
   --with-selinux \
   %if %{with rust}
-  --enable-rust \
+  --enable-rust-offline \
   %endif
   %if %{with lib389}
   --disable-perl \
@@ -385,9 +396,6 @@ exit 0
 %{_libdir}/dirsrv/plugins/*.so
 %{_libdir}/dirsrv/python/*.py
 %{_libdir}/dirsrv/*.so.*
-%if %{with rust}
-%{_libdir}/dirsrv/librsds.so
-%endif
 %exclude %{_mandir}/man1/ldap-agent*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
@@ -533,9 +541,11 @@ exit 0
 %doc src/lib389/README*
 %{_sbindir}/dsconf
 %{_sbindir}/dscreate
-%{_sbindir}/dscontainer
 %{_sbindir}/dsctl
 %{_sbindir}/dsidm
+%{_sbindir}/dscontainer
+# %dir %{_prefix}/libexec/dirsrv
+# %{_prefix}/libexec/dirsrv/dscontainer
 %{_mandir}/man8/dsconf.8.gz
 %{_mandir}/man8/dscreate.8.gz
 %{_mandir}/man8/dsctl.8.gz

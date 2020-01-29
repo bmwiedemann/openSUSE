@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 20 02:36:11 UTC 2020 - 389-ds-maintainer@suse.de
+
+- Update to version 1.4.3.1~git0.a08202a5b:
+  * Bump version to 1.4.3.1
+  * Ticket 50798 - incorrect bytes in format string
+  * Issue 50545 - Add the new replication monitor functionality to UI
+  * Issue 50806 - Fix minor issues in lib389 health checks
+  * Issue: 50690 - Port Password Storage test cases from TET to python3 part 1
+  * Issue 49761 - Fix CI test suite issues
+  * Issue 49761 - Fix CI test suite issues
+  * Issue 50754 - Add Restore Change Log option to CLI
+  * Issue: 48055 -  CI test - automember_plugin(part2)
+  * Ticket 50667 - dsctl -l did not respect PREFIX
+  * Issue 50780 - More CLI fixes
+  * Ticket 50649 - lib389 without defaults.inf
+  * Issue 50780 - Fix UI issues
+  * Ticket 50727 - correct mistaken options in filter validation patch
+  * Issue 50779 - lib389 - conflict compare fails for DN's with spaces
+  * Set branch version to 1.4.3.0
+  * Ticket #49761 - Fix CI test suite issues
+  * Issue 50499 - Fix npm audit issues
+  * Issue 50774 - Account.enroll_certificate() should not check for DS version
+  * Issue 50771 - 1.4.2.5 doesn't compile due to error ModuleNotFoundError: No module named 'pkg_resources.extern'
+  * Issue 50758 - Need to enable CLI arg completion
+  * Ticket 50709: Several memory leaks reported by Valgrind for 389-ds 1.3.9.1-10
+  * Issue: 50690 - Port Password Storage test cases from TET to python3(create required types in password_plugins)
+  * Issue: 48851 - Investigate and port TET matching rules filter tests(last test cases for match index)
+  * Issue 50761 - Parametrized tests are missing ':parametrized' value
+
+-------------------------------------------------------------------
 Wed Dec 11 01:24:48 UTC 2019 - 389-ds-maintainer@suse.de
 
 - Update to version 1.4.2.5~git0.d52700340:
