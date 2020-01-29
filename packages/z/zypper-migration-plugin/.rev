@@ -96,4 +96,14 @@
 </comment>
     <requestid>633463</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97152fdd064d4f4520f7af2fc61fda28</srcmd5>
+    <version>0.12.1580220831.7102be8</version>
+    <time>1580300388</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.12.1580220831.7102be8
+- check if snapper is configured (jira#SLE-10175)
+</comment>
+    <requestid>768069</requestid>
+  </revision>
 </revisionlist>

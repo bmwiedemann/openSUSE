@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:31:24 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
+
+- version 0.12.1580220831.7102be8
+- check if snapper is configured (jira#SLE-10175)
+
+-------------------------------------------------------------------
 Wed Sep  5 10:59:58 UTC 2018 - nadvornik@suse.com
 
 - version 0.12.1536145027.be6a3dd
