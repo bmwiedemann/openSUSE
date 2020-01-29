@@ -18,7 +18,7 @@
 
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.01.1
+Version:        20.01.3
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -72,8 +72,8 @@ install -D -m 0644 data/io.github.wxmaxima_developers.wxMaxima.svg %{buildroot}%
 rm %{buildroot}%{_datadir}/pixmaps/*
 
 # REMOVE README.md AND COPYING FILES INSTALLED BY mak install, WE INCLUDE THEM BY USING %%doc
-rm %{buildroot}%{_datadir}/%{name}/README.md
-rm %{buildroot}%{_datadir}/%{name}/COPYING
+rm %{buildroot}%{_datadir}/%{tarname}/README*
+rm %{buildroot}%{_datadir}/%{tarname}/COPYING
 
 %suse_update_desktop_file io.github.wxmaxima_developers.wxMaxima
 
