@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:20:29 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.5
+  * fix fake Xinerama errors with unicode monitor names
+  * fix av-sync backport for python2 servers
+  * fix errors when the dbus submodule is not installed
+  * fix RFB server key handling
+  * fix exit code for unsupported sockets
+  * fix tray title with openssh and plink SSH backends
+  * fix 'xpra upgrade'
+  * fix focus problems with OR windows
+  * fix wrong client info shown in 'xpra top'
+  * fix 'xpra top' error that scrambled the output, flickering
+  * fix X11 keyboard query against secondary screens
+  * skip trying to load X11 components on non-X11 platforms
+  * allow F11 through to the browser to make it easier to go
+    fullscreen
+  * prevent sshfp dns errors from causing ssh connection failures
+  * obscure passwords from log files
+  * remove duplicated attribute from xpra info
+  * remove unused loggers
+  * expose av-sync and webcam client capabilities
+  * better wayland mode detection
+  * add more missing files to MANIFEST
+  * add v4l2 codec files to clean target
+  * add logging to gtk display cleanup
+
+- Refreshed xpra-paths.patch to update systemctl location
+
+-------------------------------------------------------------------
 Mon Dec 23 13:44:02 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0.4
