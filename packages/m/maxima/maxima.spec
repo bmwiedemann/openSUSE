@@ -1,7 +1,7 @@
 #
 # spec file for package maxima
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,20 +28,16 @@
 %define gcl_flags --disable-gcl
 
 Name:           maxima
-Version:        5.43.0
+Version:        5.43.2
 Release:        0
 %define major_version 5.43
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://maxima.sourceforge.net/
+URL:            http://maxima.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
 Source1:        maxima-rpmlintrc
-## SECTION Manually include texi sources missed by upstream tarball (https://sourceforge.net/p/maxima/bugs/3558/)
-Source2:        https://sourceforge.net/p/maxima/code/ci/5e38cb/tree/doc/info/de/include-maxima.de.texi?format=raw#/include-maxima.de.texi 
-Source3:        https://sourceforge.net/p/maxima/code/ci/5e38cb/tree/doc/info/pt/include-maxima.texi.in?format=raw#/include-maxima.texi.in
-# /SECTION
 %if 0%{?suse_version}
 PreReq:         %install_info_prereq
 %endif
@@ -176,8 +172,6 @@ Maxima Brazilian Portuguese language support (in UTF-8).
 
 %prep
 %setup -q
-cp %{SOURCE2} doc/info/de/
-cp %{SOURCE3} doc/info/pt/
 
 %build
 %configure  %{?sbcl_flags:} %{?cmucl_flags:} %{?gcl_flags:} %{?clisp_flags:} \
@@ -219,6 +213,15 @@ gzip %{buildroot}%{_mandir}/*/*
 %fdupes %{buildroot}/%{_datadir}/
 
 %suse_update_desktop_file net.sourceforge.maxima.xmaxima
+
+# REMOVE SOME BACKUP FILES INSTALLED BY MISTAKE
+rm %{buildroot}%{_datadir}/%{name}/%{version}/share/draw/gnuplot.lisp.orig \
+   %{buildroot}%{_datadir}/%{name}/%{version}/share/finance/finance.mac.orig \
+   %{buildroot}%{_datadir}/%{name}/%{version}/share/vector/vect.mac.orig
+
+# REMOVE UNNECESSARY BINARY AND DEVEL FILE
+rm %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double-quote \
+   %{buildroot}%{_datadir}/%{name}/%{version}/share/test_encodings/escape-double-quote.c
 
 # FIXME CHECKS TAKE TOO LONG AND TIME-OUT
 #%%check
