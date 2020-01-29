@@ -17,7 +17,7 @@
 
 
 Name:           perl-Template-Toolkit
-Version:        3.006
+Version:        3.007
 Release:        0
 %define cpan_name Template-Toolkit
 Summary:        Template Processing System
