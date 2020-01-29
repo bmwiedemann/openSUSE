@@ -939,4 +939,12 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>764105</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>0939bdc630a3acf6d647d3dc6ac901e0</srcmd5>
+    <version>2.0.20</version>
+    <time>1580300297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768201</requestid>
+  </revision>
 </revisionlist>
