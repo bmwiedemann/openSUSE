@@ -1,0 +1,30 @@
+From b15caf51a61628e4e5de0539beb3a35b34310369 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 28 Jan 2020 16:06:33 +0100
+Subject: [PATCH 2/3] udev rules: more software devices to ignore
+
+Additional subdirectories under /sys/devices that don't contain
+nodes usable for vpdupdate.
+---
+ 90-vpdupdate.rules | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/90-vpdupdate.rules b/90-vpdupdate.rules
+index 43eb75b..d906ffa 100644
+--- a/90-vpdupdate.rules
++++ b/90-vpdupdate.rules
+@@ -13,6 +13,11 @@ SUBSYSTEM=="enclosure", GOTO="vpd_end"
+ # See SysFSTreeCollector::isDevice()
+ ENV{DEVTYPE}=="partition", GOTO="vpd_end"
+ 
++# More devices that aren't covered by VPD
++DEVPATH=="/devices/uprobe/*", GOTO="vpd_end"
++DEVPATH=="/devices/kprobe/*", GOTO="vpd_end"
++DEVPATH=="/devices/rbd/*", GOTO="vpd_end"
++
+ LABEL="vpd_update"
+ RUN+="/bin/touch /run/run.vpdupdate"
+ LABEL="vpd_end"
+-- 
+2.25.0
+

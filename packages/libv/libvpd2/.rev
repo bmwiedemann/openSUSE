@@ -247,4 +247,12 @@
 - Use %license macro</comment>
     <requestid>666411</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>1e309de89c721c8e53e8428a405eceba</srcmd5>
+    <version>2.2.6</version>
+    <time>1580300351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768097</requestid>
+  </revision>
 </revisionlist>

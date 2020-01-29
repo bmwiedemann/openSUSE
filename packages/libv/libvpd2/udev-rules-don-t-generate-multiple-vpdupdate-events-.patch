@@ -1,0 +1,45 @@
+From 3ec780310cca88698fccbf4fb0de20d822ecf88e Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 28 Jan 2020 16:07:43 +0100
+Subject: [PATCH 3/3] udev rules: don't generate multiple vpdupdate events for
+ SCSI/NVMe
+
+lsvpd lists SCSI devices, not partitions or block devices. Currently,
+addition of e.g. /dev/sda will generate events for a "scsi_device",
+"scsi_disk", "bsg", and "block" device, plus events for partitions,
+and every event will trigger a "touch /run/run.vpdupdate" command,
+where touching the file once would be obviously sufficient. Add rules
+that touch vpdupdate for SCSI hosts and devices, but not for the
+additional sysfs nodes.
+
+Similar reasoning for NVMe.
+---
+ 90-vpdupdate.rules | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/90-vpdupdate.rules b/90-vpdupdate.rules
+index d906ffa..ea4c901 100644
+--- a/90-vpdupdate.rules
++++ b/90-vpdupdate.rules
+@@ -18,6 +18,18 @@ DEVPATH=="/devices/uprobe/*", GOTO="vpd_end"
+ DEVPATH=="/devices/kprobe/*", GOTO="vpd_end"
+ DEVPATH=="/devices/rbd/*", GOTO="vpd_end"
+ 
++SUBSYSTEM=="scsi_device", GOTO="vpd_update"
++SUBSYSTEM=="scsi_host", GOTO="vpd_update"
++# Don't generate extra events, we have one for the scsi_device already
++# This rule also skips SCSI block device uevents
++# (but the corresponding scsi_device will have triggered vpdupdate).
++SUBSYSTEMS=="scsi*", GOTO="vpd_end"
++
++# virtual NVMe devices (NVMeoF) are skipped because of the rule above
++SUBSYSTEM=="nvme", GOTO="vpd_update"
++SUBSYSTEM=="nvme-subsystem", GOTO="vpd_update"
++SUBSYSTEMS=="nvme*", GOTO="vpd_end"
++
+ LABEL="vpd_update"
+ RUN+="/bin/touch /run/run.vpdupdate"
+ LABEL="vpd_end"
+-- 
+2.25.0
+
