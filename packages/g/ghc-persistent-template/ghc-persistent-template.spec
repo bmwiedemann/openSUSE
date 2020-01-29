@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent-template
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name persistent-template
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.7.3
+Version:        2.8.0.1
 Release:        0
 Summary:        Type-safe, non-relational, multi-backend persistence
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  ghc-persistent-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-th-lift-instances-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 %if %{with tests}
