@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 29 02:38:33 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1580150954.a98528363:
+  * Improve build info in ObsRsync UI (#2694)
+  * Adjust parsing of project state in ObsRsync Plugin
+  * t: Add more test strings
+  * t: Fix typos in full-stack
+  * Fix "Use of uninitialized value in numeric ne (!=)" in worker
+  * Fix "Can't use an undefined value as an ARRAY reference" in worker
+  * openqa-clone-custom-git-refspec: Provide option parsing with help text
+  * Add retry script for testing with flag STABILITY_TEST
+  * Slightly simplify JobModules
+  * Replace references of "TRAVIS" with a generic term or CircleCI in cpanfile and tests
+  * Treat all previously unstable tests as stable after proof of stability
+  * t: Extract method for ajax/animation handling
+  * Stabilize t/ui/14-dashboard-parents.t by relying on "collapsed" only
+
+-------------------------------------------------------------------
 Sun Jan 26 18:37:58 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1579943557.88a382a14:
