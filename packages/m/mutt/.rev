@@ -1022,4 +1022,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>766208</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>61133ecd63e459faa6070a09ce94a108</srcmd5>
+    <version>1.13.3</version>
+    <time>1580300317</time>
+    <user>dimstar_suse</user>
+    <comment>- Add version check, that is if installed mutt version does not
+  fit the installing version then do notify message 
+
+- Add a notify message about behaviour/variable changes to inform
+  users about these (thanks to Roger Whittaker)</comment>
+    <requestid>768052</requestid>
+  </revision>
 </revisionlist>

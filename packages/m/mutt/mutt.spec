@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,8 +61,11 @@ BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  w3m
 URL:            http://www.mutt.org
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(postun): /usr/bin/rm
+Requires(post): /usr/bin/mkdir
+Requires(post): /usr/bin/cat
+Requires(pre):  /usr/bin/zcat
+Requires(pre):  /usr/bin/grep
 Recommends:     hunspell
 Provides:       muttssl
 Obsoletes:      muttssl
@@ -124,6 +127,8 @@ enhancements.
 Summary:        Additional Documentation about Mutt
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
+Requires(post): %install_info_prereq
+Requires(preun): %install_info_prereq
 Recommends:     perl(Expect)
 Provides:       %{name}:%{_docdir}/%name/COPYRIGHT
 BuildArch:      noarch
@@ -272,23 +277,38 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/skel/.muttrc
 install -D -m 644 %{SOURCE9} %{buildroot}%{_datadir}/%name/mailcap
 rm -vf %{buildroot}%{_docdir}/%name/manual.txt
 install -D -m 644 doc/manual.txt.gz %{buildroot}%{_docdir}/%name/
+
 %if 0%{?suse_version}
 %suse_update_desktop_file mutt
 %endif
 
-%if 0%{?suse_version} > 1130
+%pre
+if test $1 -gt 1 -a -e %{_docdir}/%name/manual.txt.gz
+then
+    zcat %{_docdir}/%name/manual.txt.gz |  grep -F 'version %{version}' > /run/mutt-version
+fi
+
 %post
 %mime_database_post
+if test -f /run/mutt-version -a ! -s /run/mutt-version
+then
+    mkdir -p %{_localstatedir}/adm/update-messages
+    cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify <<-'EOF'
+	With %{name}-%{version} some variables and the behaviour changes:
+	   $send_multipart_alternative changes to run in batch mode on ask-yes.
+	   $write_bcc changes to default off
+	EOF
+fi
 
 %postun
 %mime_database_postun
+rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 
 %post doc
 %install_info --info-dir=%{_infodir} "%{_infodir}/mutt.info.gz"
 
 %preun doc
 %install_info_delete --info-dir=%{_infodir} "%{_infodir}/mutt.info.gz"
-%endif
 
 %files
 %defattr(-,root,root)

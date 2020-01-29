@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:42:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add version check, that is if installed mutt version does not
+  fit the installing version then do notify message 
+
+-------------------------------------------------------------------
+Tue Jan 28 10:13:24 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add a notify message about behaviour/variable changes to inform
+  users about these (thanks to Roger Whittaker)
+
+-------------------------------------------------------------------
 Tue Jan 14 14:53:05 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mutt 1.13.3 (2020-01-07):
