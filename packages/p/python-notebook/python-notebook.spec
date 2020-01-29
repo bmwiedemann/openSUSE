@@ -16,27 +16,34 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define doc_ver 5.7.6
 %define         skip_python2 1
-Name:           python-notebook
-Version:        6.0.2
+Name:           python-notebook%{psuffix}
+Version:        6.0.3
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
-Source1:        https://media.readthedocs.org/pdf/jupyter-notebook/%{doc_ver}/jupyter-notebook.pdf
-Source2:        https://media.readthedocs.org/htmlzip/jupyter-notebook/%{doc_ver}/jupyter-notebook.zip
 Source100:      python-notebook-rpmlintrc
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+%if !%{with test}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-notebook-filesystem
-BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
+%endif
 Requires:       jupyter-notebook = %{version}
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
@@ -56,7 +63,7 @@ Suggests:       %{name}-latex
 Provides:       python-jupyter_notebook = %{version}
 Obsoletes:      python-jupyter_notebook < %{version}
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module Send2Trash}
@@ -77,7 +84,7 @@ BuildRequires:  %{python_module terminado >= 0.8.1}
 BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
 BuildRequires:  pandoc
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -112,6 +119,8 @@ Requires:       jupyter-nbformat
 Requires:       jupyter-notebook-filesystem
 Requires:       python3-notebook = %{version}
 Conflicts:      python3-jupyter_notebook < 5.7.8
+Provides:       jupyter-notebook-doc = %{version}
+Obsoletes:      jupyter-notebook-doc < %{version}
 
 %description -n jupyter-notebook
 The Jupyter HTML notebook is a web-based notebook environment for
@@ -146,27 +155,14 @@ interactive computing.
 
 This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 
-%package     -n jupyter-notebook-doc
-Summary:        Documentation for Jupyter's notebook
-Group:          Documentation/Other
-Provides:       %{python_module jupyter_notebook-doc = %{version}}
-Provides:       %{python_module notebook-doc = %{version}}
-Obsoletes:      %{python_module jupyter_notebook-doc < %{version}}
-
-%description -n jupyter-notebook-doc
-Documentation and help files for Jupyter's notebook.
-
 %prep
 %setup -q -n notebook-%{version}
-unzip %{SOURCE2} -d docs
-mv docs/jupyter-notebook-* docs/html
-rm docs/html/.buildinfo
-%fdupes docs/html/
 
 %build
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -178,18 +174,15 @@ for x in 16 24 32 48 64 128 256 512 ; do
     mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/apps/
     cp docs/resources/ipynb.iconset/icon_${x}x${x}.png %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/apps/JupyterNotebook.png
 done
+%endif
 
-mkdir -p %{buildroot}%{_docdir}/jupyter-notebook/
-
-cp -r %{SOURCE1} %{buildroot}%{_docdir}/jupyter-notebook/
-cp -r docs/html %{buildroot}%{_docdir}/jupyter-notebook/
-
-%fdupes %{buildroot}%{_docdir}/jupyter-notebook/html/
-
+%if %{with test}
 %check
 export LANG=en_US.UTF-8
 %python_expand nosetests-%{$python_bin_suffix} -v --exclude-dir notebook/tests/selenium
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
@@ -215,11 +208,6 @@ export LANG=en_US.UTF-8
 
 %files -n jupyter-notebook-latex
 %license LICENSE
-
-%files -n jupyter-notebook-doc
-%license LICENSE
-%dir %{_docdir}/jupyter-notebook/
-%{_docdir}/jupyter-notebook/jupyter-notebook.pdf
-%{_docdir}/jupyter-notebook/html/
+%endif
 
 %changelog
