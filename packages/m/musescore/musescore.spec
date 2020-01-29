@@ -1,7 +1,7 @@
 #
 # spec file for package musescore
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %define         rname mscore
-%define         version_lesser 3.3
+%define         version_lesser 3.4
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.3.4
+Version:        3.4.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0
@@ -36,8 +36,10 @@ Source1:        %{rname}.desktop
 Patch0:         correct-revision.patch
 # PATCH-FIX-OPENSUSE: really use qmake-qt5
 Patch1:         use-qtmake-qt5.patch
-# PATC-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
+# PATCH-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
 Patch2:         use-system-qtwebengine-files.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-fix-299654-Crash-on-startup-with-Qt-5.14.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -99,8 +101,7 @@ BuildArch:      noarch
 Additional fonts for use by the MuseScore music notation program.
 
 %prep
-%setup -q -n MuseScore-%{version}
-%autopatch -p1
+%autosetup -p1 -n MuseScore-%{version}
 
 # fix EOL encoding
 sed 's/\r$//' fonts/bravura/OFL-FAQ.txt > tmpfile
@@ -148,9 +149,6 @@ install -d -m 755 %{buildroot}%docdir
 install -p -m 644 thirdparty/beatroot/COPYING         %{buildroot}%docdir/COPYING.beatroot
 install -p -m 644 thirdparty/beatroot/README.txt      %{buildroot}%docdir/README.txt.beatroot
 install -p -m 644 thirdparty/intervaltree/README      %{buildroot}%docdir/README.intervaltree
-install -p -m 644 thirdparty/kQOAuth/COPYING          %{buildroot}%docdir/COPYING.kQOAuth
-install -p -m 644 thirdparty/kQOAuth/README           %{buildroot}%docdir/README.kQOAuth
-install -p -m 644 thirdparty/kQOAuth/README.md        %{buildroot}%docdir/README.md.kQOAuth
 install -p -m 644 thirdparty/ofqf/README.md           %{buildroot}%docdir/README.md.ofqf
 install -p -m 644 thirdparty/rtf2html/ChangeLog       %{buildroot}%docdir/ChangeLog.rtf2html
 install -p -m 644 thirdparty/rtf2html/COPYING.LESSER  %{buildroot}%docdir/COPYING.LESSER.rtf2html

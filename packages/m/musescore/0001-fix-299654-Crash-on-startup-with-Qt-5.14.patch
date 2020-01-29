@@ -1,0 +1,45 @@
+From a56c93dbd5e16f7775c0982b38f3f1387921f20e Mon Sep 17 00:00:00 2001
+From: Joachim Schmitz <jojo@schmitz-digital.de>
+Date: Tue, 21 Jan 2020 10:09:02 +0100
+Subject: [PATCH] fix #299654: Crash on startup with Qt 5.14
+
+due to a failed assertion deep in Qt code
+---
+ mscore/workspace.cpp | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/mscore/workspace.cpp b/mscore/workspace.cpp
+index 055c74c..de4ad21 100644
+--- a/mscore/workspace.cpp
++++ b/mscore/workspace.cpp
+@@ -823,9 +823,10 @@ void Workspace::read(XmlReader& e)
+                   QMenuBar* mb = mscore->menuBar();
+                   const QObjectList menus(mb->children()); // need a copy
+                   for (QObject* m : menus) {
+-                        if (qobject_cast<QMenu*>(m)) {
+-                              m->setParent(nullptr);
+-                              m->deleteLater();
++                        QMenu* menu = qobject_cast<QMenu*>(m);
++                        if (menu) {
++                              menu->setParent(nullptr);
++                              menu->deleteLater();
+                               }
+                         }
+                   mb->clear();
+@@ -931,9 +932,10 @@ void Workspace::readGlobalMenuBar()
+                               QMenuBar* mb = mscore->menuBar();
+                               const QObjectList menus(mb->children()); // need a copy
+                               for (QObject* m : menus) {
+-                                    if (qobject_cast<QMenu*>(m)) {
+-                                          m->setParent(nullptr);
+-                                          m->deleteLater();
++                                    QMenu* menu = qobject_cast<QMenu*>(m);
++                                    if (menu) {
++                                          menu->setParent(nullptr);
++                                          menu->deleteLater();
+                                           }
+                                     }
+                               mb->clear();
+-- 
+2.25.0
+

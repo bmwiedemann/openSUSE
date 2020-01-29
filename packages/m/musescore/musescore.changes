@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:41:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.4.1. Changes since 3.3.4:
+  * MuseScore crashed after closing a menu bar pop-up window
+    if no score is opened
+  * Audio glitches on note input and playback happened on
+    macOS and other platforms
+  * Parts corruption happened on timewise delete of individual beats
+  * Crash happened when undoing "Beam middle" setting on a single note
+  * Pedal lines alignment applied to the whole system, not individual
+    staff
+  * "Don't play trill" option silenced the note playback
+  * Slurs on small staves were displaced in some cases
+  * Barline handles were drawn incorrectly after dragging one
+  * Strings in the Part dialogue were ambiguous
+  * Y Offset value of fretboards didn't restore after undoing
+    the values being changed from Edit Mode
+  * Replacing a note with an accidental left the accidental
+    on the new note
+  * Adding Intervals (above/below) didn't take into consideration
+    the accidental toggle state
+  * Multiple chord symbols attached to same note didn't copy as
+    part of the range
+  * Strings in fret diagrams without "X" or "O" displayed as "?" on Linux
+  * MuseScore crashed when changing a triplet's rest's duration
+  * Images attached to rests weren't imported from MuseScore 2
+  * Tremolo Bar dialog had multiple UX issues
+  * AppImage: system printers weren't available in the print dialog
+- Check https://musescore.org/fr/handbook/developers-handbook/release-notes
+  for the complete list of changes.
+- Update correct-revision.patch
+- Update use-system-qtwebengine-files.patch
+- Add upstream patch 0001-fix-299654-Crash-on-startup-with-Qt-5.14.patch
+
+-------------------------------------------------------------------
 Wed Dec  4 19:59:11 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.3.4:
