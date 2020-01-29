@@ -1,0 +1,41 @@
+From 0db8cd8772155f8f6f412c754b15552c5f244a0b Mon Sep 17 00:00:00 2001
+From: Kitsune Ral <Kitsune-Ral@users.sf.net>
+Date: Sat, 2 Nov 2019 16:20:57 +0900
+Subject: [PATCH] Compatibility with Qt 5.14
+
+---
+ lib/converters.h | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/lib/converters.h b/lib/converters.h
+index af2be64..b06b414 100644
+--- a/lib/converters.h
++++ b/lib/converters.h
+@@ -37,6 +37,7 @@ template <typename T>
+ using optional = std::experimental::optional<T>;
+ #endif
+ 
++#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
+ // Enable std::unordered_map<QString, T>
+ namespace std
+ {
+@@ -44,14 +45,12 @@ namespace std
+     {
+         size_t operator()(const QString& s) const Q_DECL_NOEXCEPT
+         {
+-            return qHash(s
+-#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+-                         , uint(qGlobalQHashSeed())
+-#endif
++                         return qHash(s, uint(qGlobalQHashSeed())
+                          );
+         }
+     };
+ }
++#endif
+ 
+ class QVariant;
+ 
+-- 
+2.25.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package libqmatrixclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 #
 %define soname libQMatrixClient
 %define soversion 0_5_1
+%define sname libQuotient
 
 Name:           libqmatrixclient
-Version:        0.5.1.2
+Version:        0.5.2
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/QMatrixClient/libqmatrixclient
-Source0:        https://github.com/QMatrixClient/libqmatrixclient/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/quotient-im/libQuotient/
+Source0:        https://github.com/quotient-im/libQuotient/archive/%{version}/%{name}-%{version}.tar.gz
+# Old SourceUrl for documentation.
+#Source0:        https://github.com/QMatrixClient/libqmatrixclient/archive/%%{version}/%%{name}-%%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Compatibility-with-Qt-5.14.patch
 BuildRequires:  cmake
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core) >= 5.6
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 Library for Qt-based Matrix chat clients. It is required by
@@ -62,14 +67,17 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%setup -q -n %{sname}-%{version}
+%patch0 -p1
 
 %build
 %if 0%{?suse_version} < 1500
 export CC="gcc-7"
 export CXX="g++-7"
 %endif
-%cmake
+%cmake \
+   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
+   -DBUILD_SHARED_LIBS=ON
 
 %install
 %cmake_install
@@ -91,23 +99,7 @@ mkdir -p %{buildroot}%{_datadir}/QMatrixClient
 %{_libdir}/pkgconfig/QMatrixClient.pc
 %{_libdir}/libQMatrixClient.so
 %{_libdir}/cmake/QMatrixClient/
-%dir %{_includedir}/csapi
-%dir %{_includedir}/csapi/definitions
-%dir %{_includedir}/csapi/definitions/wellknown
-%dir %{_includedir}/application-service
-%dir %{_includedir}/application-service/definitions
-%dir %{_includedir}/identity
-%dir %{_includedir}/identity/definitions
-%dir %{_includedir}/jobs
-%dir %{_includedir}/events
-%{_includedir}/*.h
-%{_includedir}/application-service/definitions/*.h
-%{_includedir}/csapi/*.h
-%{_includedir}/csapi/definitions/*h
-%{_includedir}/csapi/definitions/wellknown/*h
-%{_includedir}/events/*.h
-%{_includedir}/identity/definitions/*.h
-%{_includedir}/jobs/*.h
+%{_includedir}/%{name}
 %{_bindir}/qmc-example
 
 %changelog

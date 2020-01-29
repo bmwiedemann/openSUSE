@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 29 09:01:29 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.5.2
+  This is the last version of libqmatrixclient.
+  Only for quaternion and other packages wich need that.
+  Problem is that libqmatrixclient was renamed, but quaternion from
+  same developer use still old libnames.
+- Add 0001-Compatibility-with-Qt-5.14.patch from upstream.
+
+-------------------------------------------------------------------
 Thu Apr 18 14:10:46 UTC 2019 - ecsos@opensuse.org
 
 - Update to 0.5.1.2
@@ -9,6 +19,7 @@ Thu Apr 18 14:10:46 UTC 2019 - ecsos@opensuse.org
     state.
   - Jobs abandoned due to Connection being deleted no more cause 
     crashes.
+- Run spec-cleaner.
 
 -------------------------------------------------------------------
 Sat Apr  6 12:25:50 UTC 2019 - ecsos@opensuse.org
