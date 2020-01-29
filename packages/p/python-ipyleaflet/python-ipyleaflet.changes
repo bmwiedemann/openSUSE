@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 28 16:03:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.1
+  * Update environment.yml
+  * Allow passing a TileLayer as basemap
+  * Add Here basemaps
+- Update to 0.12.0
+  * Add zoom_control_instance default value
+  * Move to modern javascript
+
+-------------------------------------------------------------------
 Wed Jan 15 16:03:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.11.7
