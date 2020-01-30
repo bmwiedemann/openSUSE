@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Tue Jan 28 14:19:00 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#28
+- update README to explain about library versions
+- adjust code to compile with older C standards
+- 3.1
+
+--------------------------------------------------------------------
+Mon Jan 27 17:38:19 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#27
+- rework (i)div and (i)mul instructions
+- fix typo
+- add (i)div opcode tests
+- rework (i)mul instructions to set flags correctly
+- add (i)mul tests
+- 3.0
+
+--------------------------------------------------------------------
 Fri Jan 17 12:32:27 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/libx86emu#17

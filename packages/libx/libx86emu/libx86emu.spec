@@ -22,7 +22,7 @@ BuildRequires:  xz
 Summary:        An x86 emulation library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        2.6
+Version:        3.1
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Url:            https://github.com/wfeldt/libx86emu
@@ -32,18 +32,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 An x86 emulation library with focus on usage and
 execution logging functions.
 
-%package -n     libx86emu2
+%package -n     libx86emu3
 Summary:        An x86 emulation library
 Group:          System/Libraries
 
-%description -n libx86emu2
+%description -n libx86emu3
 An x86 emulation library with focus on usage and
 execution logging functions.
 
 %package -n     libx86emu-devel
 Summary:        Development files for libx86emu
 Group:          Development/Libraries/C and C++
-Requires:       libx86emu2 = %version
+Requires:       libx86emu3 = %version
 
 %description -n libx86emu-devel
 An x86 emulation library with focus on usage and
@@ -61,15 +61,19 @@ make LIBDIR=%{_libdir}
 install -d -m 755 %{buildroot}%{_libdir}
 %make_install LIBDIR=%{_libdir}
 
-%post -n libx86emu2 -p /sbin/ldconfig
+%post -n libx86emu3 -p /sbin/ldconfig
 
-%postun -n libx86emu2 -p /sbin/ldconfig
+%postun -n libx86emu3 -p /sbin/ldconfig
 
-%files -n libx86emu2
+%files -n libx86emu3
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 %doc README.md
+%if %suse_version >= 1500
 %license LICENSE*
+%else
+%doc LICENSE*
+%endif
 
 %files -n libx86emu-devel
 %defattr(-,root,root)
