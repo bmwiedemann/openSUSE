@@ -336,4 +336,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>5.14.0</comment>
     <requestid>757457</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>885d05683643d0d02d4dfaf901e70834</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373568</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768126</requestid>
+  </revision>
 </revisionlist>
