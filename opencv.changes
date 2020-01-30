@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 21 11:38:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop Jasper (i.e jpeg2k) support (boo#1130404, boo#1144260)
+  JasPer is unmaintained, CVEs are not being addressed (some issues
+  received patches submitted to the upstream github project, but are
+  not being merged, other CVEs are considered unfixable). openSUSE
+  follows other distros in dropping JasPer now (much later than
+  most others, incl. Debian).
+
+-------------------------------------------------------------------
 Mon Jan 20 23:22:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add webp build dependency to use system libwebp instead of bundled
