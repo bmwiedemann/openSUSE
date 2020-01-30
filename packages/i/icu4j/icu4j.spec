@@ -1,7 +1,7 @@
 #
 # spec file for package icu4j
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,7 +38,7 @@ Patch1:         improve-osgi-manifest.patch
 Patch2:         icu4j-63.1-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-javadoc
+BuildRequires:  java-devel
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -110,7 +110,6 @@ echo "jar.impl.version.string=%{version}.0" >> build.properties
 %build
 ant \
     -Dicu4j.javac.source=1.6 -Dicu4j.javac.target=1.6 \
-    -Dj2se.apidoc=%{_javadocdir}/java -Dicu4j.api.doc.jdk.link=%{_javadocdir}/java \
     jar docs
 
 %install

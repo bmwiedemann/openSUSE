@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 10:56:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Remove build-dependency on java-javadoc, since it is not
+  necessary with this version.
+
+-------------------------------------------------------------------
 Wed Feb 13 12:42:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
