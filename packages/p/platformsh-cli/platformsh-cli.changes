@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 29 16:30:45 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.1:
+  * Release v3.52.1
+  * Update dependencies (Symfony -> 3.4.37)
+  * Update client (oauth2 compatibility)
+  * Suggest SSH to the Git server to test the connection in 'get' command (#898)
+  * Pipe to command in db:size to avoid quoting issues on Windows (#899)
+
+-------------------------------------------------------------------
 Sat Jan 25 02:20:06 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.52.0:
