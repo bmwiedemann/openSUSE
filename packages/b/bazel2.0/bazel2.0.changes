@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 08:25:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
 Mon Jan  6 17:26:46 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Initial release
