@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:46:11 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.1.4
+  * Fix pickle issues when using inline matplotlib backend
+  * Fix an error during kernel shutdown
+  * Fix compatibility issues with Python 3.8
+  * Remove some dead code
+
+-------------------------------------------------------------------
 Tue Nov 12 17:03:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 5.1.3
