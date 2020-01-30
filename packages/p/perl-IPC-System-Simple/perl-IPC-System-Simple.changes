@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 26 03:07:34 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-IPC-System-Simple/Changes
+
+  1.26      2020-01-25 02:00:45+00:00 UTC
+  
+  1.26      2020-01-24 20:47 America/NewYork
+          * BUILD: Update FAIL_POSIX warning message
+            Per:  https://github.com/pjf/ipc-system-simple/pull/28.  Thanks to scop.
+  
+          * TEST: t/07_taint.t: Use executable name as source of taintedness
+            Addresses https://github.com/pjf/ipc-system-simple/issues/21
+            Thanks to Petr Písař.
+  
+          * OTHER: Typographic corrections:
+            rt.cpan.org 60211; leonerd++
+            rt.cpan.org 86403; dsteinbrunner++
+  
+            Add Travis configuration.
+  
+  1.26-TRIAL      2020-01-24 03:43:20 GMT
+            TRIAL release only
+
+-------------------------------------------------------------------
 Mon Nov 25 07:39:36 UTC 2013 - coolo@suse.com
 
 - updated to 1.25
