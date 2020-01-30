@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:25:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove not used Pre/Post requires
+
+-------------------------------------------------------------------
 Wed Jul 24 13:13:56 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

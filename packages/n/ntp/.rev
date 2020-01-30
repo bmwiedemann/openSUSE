@@ -1136,4 +1136,12 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment></comment>
     <requestid>720097</requestid>
   </revision>
+  <revision rev="123" vrev="6">
+    <srcmd5>994d184bd95d715beab04023540158ac</srcmd5>
+    <version>4.2.8p13</version>
+    <time>1580373517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768084</requestid>
+  </revision>
 </revisionlist>

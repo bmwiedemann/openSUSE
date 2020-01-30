@@ -74,10 +74,7 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       /bin/logger
 Requires:       timezone
 Requires(pre):  %fillup_prereq
-Requires(pre):  %{_bindir}/chkconfig
-Requires(pre):  %{_bindir}/diff
-Requires(pre):  %{_bindir}/grep
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Requires(post): /usr/bin/base64
 Requires(post): /usr/bin/gawk
 Suggests:       logrotate
