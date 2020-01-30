@@ -1,3 +1,25 @@
+--------------------------------------------------------------------
+Wed Jan 29 09:47:24 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#210
+- For bsc#1161701, Moved the logic to retrieve the platform name
+  into a subroutine, and moved the invocation of it until after the
+  call to lxrc_add_parts so that the squashfs files have been
+  loopback mounted. Move the definition for the platform variable
+  outside the ifdef. Replace a direct assignment to platform with a
+  call to str_copy.
+- Modified the startup message from "1996-2019" to "1996-2020"
+- 7.0.9
+
+--------------------------------------------------------------------
+Fri Jan 24 16:07:04 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#209
+- rework 'extend' command to log and report an error if linuxrc
+  unexpectedly crashes (bsc#1158996)
+- Append RPM_OPT_FLAGS to CFLAGS.
+- 7.0.8
+
 -------------------------------------------------------------------
 Tue Jan  7 10:59:38 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
