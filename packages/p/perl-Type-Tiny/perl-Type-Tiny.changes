@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 30 03:17:25 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.008004
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008004	2020-01-29
+  
+   [ Bug Fixes ]
+   - When possible, inject `package Type::Tiny` in generated inline code that
+     has an appropriate lexical scope to insert it into. This will (mostly)
+     avoid inline code mistakenly using overridden versions of CORE::
+     functions.
+   - to_TypeTiny will now cowardly refuse to inline Moose types if they have
+     anything in their inline environment.
+
+-------------------------------------------------------------------
 Tue Jan 14 03:14:39 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.008003
