@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?is_opensuse} && (0%{?sle_version} >= 150100 || 0%{?suse_version} > 1500)
+%bcond_without zchunk
+%else
+%bcond_with zchunk
+%endif
+
 Name:           libzypp
-Version:        17.21.0
+Version:        17.22.0
 Release:        0
 Url:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
@@ -71,7 +77,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 
-BuildRequires:  libsolv-devel >= 0.7.10
+BuildRequires:  libsolv-devel >= 0.7.11
 %if 0%{?suse_version} >= 1100
 BuildRequires:  libsolv-tools
 %requires_eq    libsolv-tools
@@ -127,6 +133,10 @@ BuildRequires:  rubygem(asciidoctor)
 %else
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
+%endif
+
+%if %{with zchunk}
+BuildRequires:  libzck-devel
 %endif
 
 %description
@@ -220,6 +230,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DLIB=%{_lib} \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SKIP_RPATH=1 \
+      %{?with_zchunk:-DENABLE_ZCHUNK_COMPRESSION=1} \
       ${EXTRA_CMAKE_OPTIONS} \
       ..
 make %{?_smp_mflags} VERBOSE=1
