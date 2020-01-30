@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  valgrind
+BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.48
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.9
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
@@ -49,7 +50,6 @@ features typical of a source editor.
 %package -n libgtksourceview-4-0
 Summary:        GTK+ Source Editing Widget
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
 Provides:       %{name} = %{version}
 
 %description -n libgtksourceview-4-0

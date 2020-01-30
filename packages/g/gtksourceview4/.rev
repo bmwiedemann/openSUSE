@@ -128,4 +128,12 @@ Hi legal / babelworx -- you already reviewed this ok in previous sr (sr#452943),
     <comment>Scripted push from {project}</comment>
     <requestid>736580</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>95d4835b73ba3b5a528d3191be324bd5</srcmd5>
+    <version>4.4.0</version>
+    <time>1580373489</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767175 from dimstar)</comment>
+    <requestid>768002</requestid>
+  </revision>
 </revisionlist>
