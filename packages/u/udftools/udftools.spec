@@ -28,7 +28,7 @@ BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
 BuildRequires:  glibc
 BuildRequires:  libtool
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Provides:       udf = %{version}
 Obsoletes:      udf < %{version}
 
