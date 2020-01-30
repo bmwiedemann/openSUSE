@@ -1,7 +1,7 @@
 #
 # spec file for package netcfg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,20 +61,24 @@ must be installed for all network programs.
 cp %{SOURCE16} .
 
 %install
-mkdir -p %{buildroot}/etc
-for i in hostname aliases defaultdomain exports ftpusers host.conf hosts hosts.allow hosts.deny hosts.equiv hosts.lpd netgroup networks protocols services.bz2 ethers ethertypes; do
-  install $RPM_SOURCE_DIR/$i %{buildroot}/etc
+mkdir -p %{buildroot}%{_sysconfdir}
+for i in hostname aliases defaultdomain exports ftpusers host.conf hosts hosts.allow hosts.deny hosts.equiv hosts.lpd netgroup ethertypes; do
+  install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
 done
-bunzip2 %{buildroot}%{_sysconfdir}/services.bz2
-patch -p0 %{buildroot}%{_sysconfdir}/services < $RPM_SOURCE_DIR/services-suse.diff
-rm -f %{buildroot}%{_sysconfdir}/services.orig
+mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}
+for i in networks protocols services.bz2 ethers; do
+  install $RPM_SOURCE_DIR/$i %{buildroot}%{_prefix}%{_sysconfdir}
+done
+bunzip2 %{buildroot}%{_prefix}%{_sysconfdir}/services.bz2
+patch -p0 %{buildroot}%{_prefix}%{_sysconfdir}/services < $RPM_SOURCE_DIR/services-suse.diff
+rm -f %{buildroot}%{_prefix}%{_sysconfdir}/services.orig
 
 %files
 %defattr(644,root,root,755)
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hostname
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/aliases
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/defaultdomain
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/ethers
+%verify(not md5 size mtime)                    %{_distconfdir}/ethers
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/exports
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/ftpusers
 %config(noreplace) %{_sysconfdir}/host.conf
@@ -84,9 +88,9 @@ rm -f %{buildroot}%{_sysconfdir}/services.orig
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.equiv
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.lpd
 %config(noreplace) %{_sysconfdir}/netgroup
-%config(noreplace) %{_sysconfdir}/networks
-%config(noreplace) %{_sysconfdir}/protocols
-%config(noreplace) %{_sysconfdir}/services
+%{_distconfdir}/networks
+%{_distconfdir}/protocols
+%{_distconfdir}/services
 %config(noreplace) %{_sysconfdir}/ethertypes
 %license COPYING
 
