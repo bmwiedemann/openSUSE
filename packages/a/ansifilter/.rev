@@ -108,4 +108,14 @@ Created in 2007 and actively maintained and enhanced since then.</comment>
   * CLI: fixed -e argument description.</comment>
     <requestid>748009</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ea7cba4538abee2cbc7f4278249bb1e</srcmd5>
+    <version>2.16</version>
+    <time>1580373718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16:
+  * CLI: Added --ignore-csi option to improve UTF-8 input handling.
+- Remove obsolete macros.</comment>
+    <requestid>768442</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ansifilter
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without gui
 Name:           ansifilter
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
@@ -41,10 +41,6 @@ Summary:        ANSI Terminal Escape Code Converter - Qt GUI
 Group:          Development/Tools/Other
 BuildRequires:  libqt5-qtbase-devel
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} < 1330
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-%endif
 
 %description gui
 This package provides a Qt Graphical User Interface to run %{name}.
@@ -79,14 +75,6 @@ make \
 %endif
 
 rm %{buildroot}%{_docdir}/%{name}/INSTALL
-
-%if %{with gui} && 0%{?suse_version} < 1330
-%post gui
-%desktop_database_post
-
-%postun gui
-%desktop_database_postun
-%endif
 
 %files
 %dir %{_docdir}/%{name}
