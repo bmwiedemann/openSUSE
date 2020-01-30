@@ -1,7 +1,7 @@
 #
 # spec file for package perl-TheSchwartz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-TheSchwartz
-Version:        1.14
+Version:        1.15
 Release:        0
 %define cpan_name TheSchwartz
 Summary:        Reliable job queue
@@ -63,7 +63,7 @@ all the mail for that domain once it connects to that domain's mail server.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
