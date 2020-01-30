@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 28 03:15:43 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.81
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.81 Mon 27 Jan 2020 11:05:46 PM CET
+   - Breaking Change: Set $YAML::XS::LoadBlessed default to false to make it
+     more secure
+
+-------------------------------------------------------------------
 Thu Aug 29 10:34:07 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Remove perl-YAML-LibYAML-no-plan.patch (not used anymore)
