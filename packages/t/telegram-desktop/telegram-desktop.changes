@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:58:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.9
+  * Bug fixes and other minor improvements.
+- Removed 0002-use-bundled-rlottie.patch,
+  there's a cmake switch for this
+- Add cmake version requirement
+
+-------------------------------------------------------------------
 Fri Jan 24 17:48:01 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 1.9.8

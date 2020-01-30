@@ -24,7 +24,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        1.9.8
+Version:        1.9.9
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -35,10 +35,9 @@ Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%
 Source1:        range-v3-master.zip
 Patch0:         0000-gtk2-default.patch
 Patch1:         0001-use-bundled-range.patch
-Patch2:         0002-use-bundled-rlottie.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
@@ -135,7 +134,6 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
 
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %limit_build -m 2048
@@ -148,6 +146,7 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
       -DDESKTOP_APP_USE_PACKAGED=ON \
       -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
+      -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_DISABLE_AUTOUPDATE=ON \
