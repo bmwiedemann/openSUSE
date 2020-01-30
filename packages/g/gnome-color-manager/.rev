@@ -519,4 +519,14 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 695586 from dimstar)</comment>
     <requestid>695754</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>d41c631e65f6cc69f161081cf45e9cd5</srcmd5>
+    <version>3.32.0</version>
+    <time>1580373045</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace docbook-utils with docbook-utils-minimal BuildRequires
+  for manpage generation, avoids texlive dependency.
+</comment>
+    <requestid>766711</requestid>
+  </revision>
 </revisionlist>

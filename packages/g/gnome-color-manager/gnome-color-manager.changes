@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 22:07:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace docbook-utils with docbook-utils-minimal BuildRequires
+  for manpage generation, avoids texlive dependency.
+
+-------------------------------------------------------------------
 Fri Mar  8 12:14:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0:

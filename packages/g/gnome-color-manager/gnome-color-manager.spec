@@ -26,7 +26,7 @@ Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-color-manager
 Source:         https://download.gnome.org/sources/gnome-color-manager/3.32/%{name}-%{version}.tar.xz
 
-BuildRequires:  docbook-utils
+BuildRequires:  docbook-utils-minimal
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.46.0
