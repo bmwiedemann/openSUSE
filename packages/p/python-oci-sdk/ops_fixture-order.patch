@@ -1,0 +1,75 @@
+Author: Sean Marlow <sean.marlow@suse.com>
+Date: 2019-12-11
+Source: https://github.com/oracle/oci-python-sdk/issues/196
+
+Index: oci-python-sdk-2.6.2/tests/unit/test_basic_api_calls.py
+===================================================================
+--- oci-python-sdk-2.6.2.orig/tests/unit/test_basic_api_calls.py
++++ oci-python-sdk-2.6.2/tests/unit/test_basic_api_calls.py
+@@ -5,7 +5,7 @@ import oci
+ import pytest
+ 
+ 
+-def test_identity_list_users(identity, config):
++def test_identity_list_users(config, identity):
+     response = identity.list_users(config["tenancy"])
+ 
+     assert response is not None
+@@ -31,7 +31,7 @@ def test_vcn_list_instances(compute, con
+     assert response.request_id is not None
+ 
+ 
+-def test_limit(identity, config):
++def test_limit(config, identity):
+     response = identity.list_users(config["tenancy"], limit=1)
+ 
+     assert response is not None
+Index: oci-python-sdk-2.6.2/tests/unit/test_waiters.py
+===================================================================
+--- oci-python-sdk-2.6.2.orig/tests/unit/test_waiters.py
++++ oci-python-sdk-2.6.2/tests/unit/test_waiters.py
+@@ -108,7 +108,7 @@ def test_wait_multiple_states(virtual_ne
+     assert total_time < 60 * 5
+ 
+ 
+-def test_invalid_operation(identity, config):
++def test_invalid_operation(config, identity):
+     # Create User
+     request = oci.identity.models.CreateUserDetails()
+     request.compartment_id = config["tenancy"]
+@@ -131,7 +131,7 @@ def test_invalid_operation(identity, con
+         oci.wait_until(identity, response, 'not a real property', 'test')
+ 
+ 
+-def test_already_in_state(identity, config):
++def test_already_in_state(config, identity):
+     description = 'test user'
+     request = oci.identity.models.CreateUserDetails()
+     request.compartment_id = config["tenancy"]
+@@ -151,7 +151,7 @@ def test_already_in_state(identity, conf
+     identity.delete_user(user_id)
+ 
+ 
+-def test_wait_time_exceeded(identity, config):
++def test_wait_time_exceeded(config, identity):
+     description = 'test user'
+     request = oci.identity.models.CreateUserDetails()
+     request.compartment_id = config["tenancy"]
+@@ -182,7 +182,7 @@ def test_property_and_eval_function_prov
+     assert str(ve.value) == 'If an evaluate_response function is provided, then the property argument cannot also be provided'
+ 
+ 
+-def test_eval_function_lambda(identity, config):
++def test_eval_function_lambda(config, identity):
+     user_id = None
+     try:
+         description = 'test user'
+@@ -206,7 +206,7 @@ def test_eval_function_lambda(identity,
+             identity.delete_user(user_id)
+ 
+ 
+-def test_eval_function_func_ref(identity, config):
++def test_eval_function_func_ref(config, identity):
+     user_id = None
+     try:
+         description = 'test user'

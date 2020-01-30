@@ -1,0 +1,290 @@
+-------------------------------------------------------------------
+Wed Jan 29 21:31:17 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update Url in spec to point to the upstream GitHub project.
+
+-------------------------------------------------------------------
+Fri Jan 17 19:35:25 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Add missing requirements. PyJWT, requests, httpsig_cffi,
+  and six are required for tests and runtime.
+
+-------------------------------------------------------------------
+Sun Jan 12 18:12:21 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.9.0
+  + Support for optionally specifying the corporate proxy field when
+    creating Exadata infrastructure in the Database service
+  + Support for maintenance windows, and rescheduling maintenance runs,
+    on autonomous container databases in the Database service
+  + Provide example on how to use key_content for python SDK configuration
+  + Field ``host_name`` in ``NodeDetails`` from database
+    service is changed from optional to required
+
+-------------------------------------------------------------------
+Wed Jan  8 11:58:32 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.8.0
+  + Support for the API Gateway service
+  + Support for the OS Management service
+  + Support for the Marketplace service
+  + Support for "default"-type vaults in the Key Management service
+  + Support for bringing your own keys in the Key Management service
+  + Support for cross-region backups of boot volumes in the Block Storage service
+  + Support for top-level TSIG keys in the DNS service
+  + Support for resizing virtual machine instances to different shapes in the Compute service
+  + Support for management configuration of cloud agents in the Compute service
+  + Support for launching node pools using image IDs in the Container Engine for Kubernetes service
+  + Removed support for v1 auth tokens in kubeconfig files in the
+    CreateClusterKubeconfigContentDetails class of the Container Engine for Kubernetes service
+  + Removed the IDCS access token requirement on the delete deleteOceInstance operation in the
+    Content and Experience service, which is why the DeleteOceInstanceDetails class was removed
+  + Set compartment_id as a required parameter in list_stream_pools for streaming service
+- from version 2.7.1
+  + Support for etags on results of the List Objects API in the Object Storage service
+  + Support for OCIDs on buckets in the Object Storage service
+  + Support for content-disposition and cache-control headers
+    on objects in the Object Storage service
+  + Support for recovering deleted compartments in the Identity service
+  + Support for sharing volumes across multiple instances in the Block Storage service
+  + Support for connect harnesses and stream pools in the Streaming service
+  + Support for associating file storage mount targets with network
+    security groups in the File Storage service
+  + Support for calling Oracle Cloud Infrastructure services in the uk-gov-london-1 region
+  + Add default connection timeout(10s) and read timeout(60s) for Python SDK client
+  + Add contents table to client documentation
+  + Fix the issue of the second style of pagination
+- from version 2.7.0
+  + Support for maintenance windows on autonomous databases in the Database service
+  + Support for getting the compute units (OCPUs) of an Exadata autonomous
+    transaction processing - dedicated resource in the Database service
+  + Create database home from VM_CLUSTER_BACKUP is removed from Database Service
+- from version 2.6.5
+  + Support for four-byte autonomous system numbers (ASNs) on FastConnect
+    resources in the Networking service
+  + Support for choosing fault domains when creating instance pools in the Compute service
+  + Support for allowing connections from only specific VCNs to autonomous
+    data warehouse and autonomous transaction processing instances in the Database service
+  + Support for Streaming Client Non-Regional
+- from version 2.6.4
+  + Support for access to APEX and SQL Dev features on autonomous transaction processing
+    and autonomous data warehouse resources in the Database service
+  + Support for registering / deregistering autonomous transaction processing and
+    autonomous data warehouse resources with Data Safe in the Database service
+  + Support for redirecting HTTP / HTTPS request URIs to different URIs in the Load Balancing service
+  + Support for specifying compartments on options APIs in the Container Engine for Kubernetes service
+  + Support for volume performance units on block volumes in the Block Storage service
+- from version 2.6.3
+  + Support for the Analytics Cloud service
+  + Support for the Integration Cloud service
+  + Support for IKE versions in IPSec connections in the Virtual Networking service
+  + Support for getting a stack's Terraform state in the Resource Manager service
+- Add patch to add compatibility with older version of pytest
+  + ops_fixture-order.patch
+- Adjust BuildRequires and Requires to reduce them to the actual dependencies
+
+-------------------------------------------------------------------
+Mon Nov  4 14:18:24 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.6.2
+  + Support for wallet rotation operations on Autonomous Databases in the Database service
+  + Support for adding and removing image shape compatibility entries in the Compute service
+  + Support for managing redirects in the Web Application Acceleration and Security service
+  + Support for migrating zones from the Dyn HTTP Redirect Service
+    to Oracle Cloud Infrastructure in the DNS service
+- from version 2.6.1
+  + Support for the Digital Assistant service
+  + Support for work requests on Instance Pool operations in the Compute service
+- from version 2.6.0
+  + Support for the new schema for events in the Audit service
+  + Support for entitlements in the Data Transfer service
+  + Support for custom scheduled backup policies on volumes in the Block Storage service
+  + Support for specifying the network type when launching virtual
+    machine instances in the Compute service
+  + Support for Monitoring service integration in the Health Checks service
+  + The tenant_id parameter is now id (Id of the Transfer Application Entitlement)
+    for get_transfer_appliance_entitlement in TransferApplianceEntitlementClient
+  + The topic_attributes_details parameter is now required for update_topic
+    in NotificationControlPlaneClient
+  + The Audit service version was bumped to 20190901, use older version of Python SDK for Audit service version 20160918
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
+Fri Oct  4 13:13:59 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.5.2
+  + Support for required tags in the Identity service
+  + Support for work requests on tagging operations in the Identity service
+  + Support for enumerated tag values in the Identity service
+  + Support for moving dynamic routing gateway resources across
+    compartments in the Networking service
+  + Support for migrating zones from Dyn managed DNS to OCI in the DNS service
+  + Support for fast provisioning for virtual machine databases in the Database service
+- from version 2.5.1
+  + Support for selecting the Terraform version to use in the Resource Manager service
+  + Support for bucket re-encryption in the Object Storage service
+  + Support for enabling / disabling bucket-level events in the Object Storage service
+- from version 2.5.0
+  + Support for importing state files in the Resource Manager service
+  + Support for Exadata Cloud at Customer in the Database service
+  + Support for free tier resources and system tags in the Load Balancing service
+  + Support for free tier resources and system tags in the Compute service
+  + Support for free tier resources and system tags in the Block Storage service
+  + Support for free tier and system tags on autonomous databases in the Database service
+  + The availability_domain parameter is now a kwarg for
+    list_db_system_shapes in DatabaseClient
+  + The model CreateDbHomeWithDbSystemIdBase was renamed CreateDbHomeBase
+    and the parameter db_system_id was removed
+  + The parameter create_db_home_with_db_system_id_details for create_db_home in
+    DatabaseClient changed from CreateDbHomeWithDbSystemIdBase to CreateDbHomeBase
+
+-------------------------------------------------------------------
+Tue Sep 10 19:40:14 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.4.0
+  + Support for specifying the autoBackupWindow field for
+    scheduling backups in the Database service
+  + Support for network security groups on autonomous Exadata
+    infrastructure in the Database service
+  + Support for Kubernetes secrets encryption in customer clusters,
+    regional subnets, and cluster authentication for instance
+    principals in the Container Engine for Kubernetes service
+  + Support for the Oracle Content and Experience service
+  + The etag header has been removed from the response for
+    NotificationControlPlaneClient.change_topic_compartment
+    and NotificationDataPlaneClient.change_subscription_compartment
+- from version 2.3.3
+  + Support for the Sydney (SYD) region
+  + Support for managing cluster networks in the Compute Autoscaling service
+  + Support for tracking asynchronous operations via work
+    requests in the Database service
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
+Wed Aug 28 09:51:46 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.2
+  + Support for the Sao Paulo (GRU) region
+  + Support for dedicated virtual machine hosts in the Compute service
+  + Support for resource groups in metrics and alarms in the Monitoring service
+- Add patch to relax Python dependencies in requirements.txt and setup.py
+  + ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
+Mon Aug 26 08:08:36 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.1
+  + Support for the Limits service
+  + Support for archiving to Object Storage in the Streaming service
+  + Support for etags on resources in the Streaming service
+  + Support for Key Management service (KMS) encryption of file
+    systems in the File Storage service
+  + Support for moving public IP, DHCP, local peering gateway, internet
+    gateway, network security group, and DRG attachment resources across
+    compartments in the Networking service
+  + Support for multi-origin, basic cache, certificate mapping, and OCI
+    Monitoring service integration in the Web Application Acceleration
+    and Security service
+
+-------------------------------------------------------------------
+Fri Aug 16 12:11:53 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.0
+  + Support for the Data Transfer service
+  + Support for the Zurich (ZRH) region
+  + oci.waas.WafLog.timestamp type changed from str to datetime
+  + oci.waas.models.Certificate.issuer_name type changed from
+    oci.waas.models.CertificateSubjectName to oci.waas.models.CerticateIssuerName
+  + "PURGE_WAAS_POLICY" removed as option for oci.waas.models.WorkRequest.operation_type
+  + "PURGE_WAAS_POLICY" removed as option for oci.waas.models.WorkRequestSummary.operation_type
+- from version 2.2.21
+  + Support for IPv6 load balancers in the Load Balancing service
+  + Support for IPv6 on VCN and FastConnect resources in the Networking service
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
+Fri Aug  2 22:00:51 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.20
+  + Support for the Mumbai (BOM) region
+  + Support for the Events service
+  + Support for moving streams across compartments in the Streaming service
+  + Support for moving FastConnect resources across
+    compartments in the Networking service
+  + Support for moving policies across compartments in the
+    Web Application Acceleration and Security service
+  + Support for tagging FastConnect resources in the Networking service
+- from version 2.2.19
+  + Support for moving resources across compartments in the Database service
+  + Support for moving resources across compartments in the Health Checks service
+  + Support for moving alarms across compartments in the Monitoring service
+  + Support for creating instance configurations from
+    running instances in the Compute service
+  + Support for setting up budget alerts for cost tracking tags in the Budgets service
+- from version 2.2.18
+  + Support for the Functions service
+  + Support for the Quotas service
+  + Support for moving resources across compartments in the DNS service
+  + Support for moving instances across compartments in the Compute service
+  + Support for moving keys and vaults across compartments in the Key Management service
+  + Support for moving topics and subscriptions across
+    compartments in the Notifications service
+  + Support for moving load balancers across compartments in the Load Balancing service
+  + Support for specifying permitted REST methods in load
+    balancer rule sets in the Load Balancing service
+  + Support for configuring cookie session persistence in
+    backend sets in the Load Balancing service
+  + Support for ACL rules in rule sets in the Load Balancing service
+  + Support for move compartment tree in the Identity service
+  + Support for specifying and returning a KMS key in
+    backup operations in the Block Storage service
+  + Support for transit routing in the Networking service
+  + Support for authenticating via Resource Principals. An example of how to
+    use resource principals is available on GitHub. This authentication method
+    is only supported within the Functions service at this time.
+- Remove bogus python-configparser2 dependency from BuildRequires
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
+Tue Jul 16 05:53:50 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.17
+  + Support for network security groups in the Load Balancing service
+  + Support for network security groups in Core Services
+  + Support for network security groups on database systems in the Database service
+  + Support for creating autonomous transaction processing and autonomous
+    data warehouse previews in the Database service
+  + Support for getting the load balancer attachments
+    of instance pools in the Compute service
+  + Support for moving resources across compartments in the Resource Manager service
+  + Support for moving VCN resources across compartments in the Networking service
+- from version 2.2.16
+  + Support for moving images, instance configurations, and
+    instance pools across compartments in Core Services
+  + Support for moving autoscaling configurations across compartments
+    in the Compute Autoscaling service
+  + Fixed a bug where the Streaming service's endpoints in Tokyo, Seoul,
+    and future regions were not reachable from the SDK
+
+-------------------------------------------------------------------
+Mon Jul  1 12:37:45 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.15
+  + Support for moving senders across compartments in the Email service
+  + Support for moving NAT gateway resources across compartments in Core Services
+
+-------------------------------------------------------------------
+Mon Jun 24 21:24:17 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.14
+  + Support for moving service gateway resources
+    across compartments in Core Services
+  + Support for moving block storage resources
+    across compartments in Core Services
+  + Support for key deletion in the Key Management service
+
+-------------------------------------------------------------------
+Wed Jun 19 11:20:59 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 2.2.13
