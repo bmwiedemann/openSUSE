@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:52:34 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.2:
+  * Allow multiple clusters to set useAllDevices (#4692)
+  * Operator start all mons before checking quorum if they are all down (#4531)
+  * Ability to disable the crash controller (#4533)
+  * Document monitoring options for the cluster CR (#4698)
+  * Apply node topology labels to PV-backed OSDs in upgrade from v1.1 (#4616)
+  * Update examples to Ceph version v14.2.6 (#4653)
+  * Allow integration tests in minimal config to run on multiple K8s versions (#4674)
+  * Wrong pod name and hostname shown in alert CephMonHighNumberOfLeaderChanges (#4665)
+  * Set hostname properly in the CRUSH map for non-portable OSDs on PVCs (#4658)
+  * Update OpenShift example manifest to watch all namespaces for clusters (#4668)
+  * Use min_size defaults set by Ceph instead of overriding with Rook's defaults (#4638)
+  * CSI driver handling of upgrade from OCP 4.2 to OCP 4.3 (#4650-1)
+  * Add support for the k8s 1.17 failure domain labels (#4626)
+  * Add option to the cluster CR to continue upgrade even with unclean PGs (#4617)
+  * Add K8s 1.11 back to the integration tests as the minimum version (#4673)
+  * Fixed replication factor flag and the master addresses (#4625)
+
+-------------------------------------------------------------------
 Wed Jan  8 14:33:13 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update to v1.2.1:

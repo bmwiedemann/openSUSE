@@ -3,7 +3,7 @@
 set -xEeuo pipefail
 
 ROOK_REPO="github.com/rook/rook"
-ROOK_REV="v1.2.1"
+ROOK_REV="v1.2.2"
 
 if ! command -V go;
 then
