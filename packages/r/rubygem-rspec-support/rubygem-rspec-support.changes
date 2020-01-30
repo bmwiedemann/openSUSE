@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:01:58 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.9.2
+
+  * Remove unneeded eval. (Matijs van Zuijlen, #394)
+
+-------------------------------------------------------------------
 Tue Nov 12 14:48:40 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.9.0
