@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if %{python3_version_nodots} > 34
+%if 0%{?suse_version} >= 1500 || %{python3_version_nodots} > 34
 %define skip_python3 1
 %endif
 Name:           python-typing
@@ -32,9 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if 0%{?suse_version} > 1320
 BuildRequires:  python3-testsuite
-%endif
 %python_subpackages
 
 %description

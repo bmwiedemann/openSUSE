@@ -90,4 +90,12 @@
 - Remove merged patch test-sys-executable.patch</comment>
     <requestid>729746</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>43f51057e539497efa6f2eb9a47bd324</srcmd5>
+    <version>3.7.4.1</version>
+    <time>1580373273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767571</requestid>
+  </revision>
 </revisionlist>
