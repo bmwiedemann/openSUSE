@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vapigen) >= 0.16
-Recommends:     %{name}-lang
 
 %description
 Gradio is a native GTK application. It lets you browse, search and find radio
