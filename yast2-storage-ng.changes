@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 29 10:00:18 UTC 2020 - Christopher Hofmann <cwh@suse.com>
+
+- Added package requirement for UF_PLAIN_ENCRYPTION (bsc#1160773)
+- 4.2.80
+
+-------------------------------------------------------------------
+Tue Jan 28 20:20:50 CET 2020 - aschnell@suse.com
+
+- also mask swap units in mask-systemd-units (bsc#1152545)
+- 4.2.79
+
+-------------------------------------------------------------------
+Fri Jan 24 14:08:28 CET 2020 - aschnell@suse.com
+
+- reduce min height of dialogs (bsc#1161651)
+- drop noatime, acl and xattr options in "Fstab Options" dialog
+  (bsc#1135723)
+- change mount by method to combobox in "Fstab Options" dialog
+  (bsc#1135723)
+- 4.2.78
+
+-------------------------------------------------------------------
 Thu Jan 23 15:56:36 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Avoided crash when libstorage-ng provides a non-UTF string as
