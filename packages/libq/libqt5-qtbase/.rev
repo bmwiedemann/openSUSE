@@ -2139,4 +2139,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * Was probably fixed upstream a loooong time ago (QTBUG-44568)</comment>
     <requestid>759684</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>102fc16450a085504f570bc8f8ea69de</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373522</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768104</requestid>
+  </revision>
 </revisionlist>

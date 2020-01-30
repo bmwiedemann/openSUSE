@@ -36,16 +36,16 @@
 %endif
 
 Name:           libqt5-qtbase
-Version:        5.14.0
+Version:        5.14.1
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.14.0
-%define so_version 5.14.0
-%define tar_version qtbase-everywhere-src-5.14.0
+%define real_version 5.14.1
+%define so_version 5.14.1
+%define tar_version qtbase-everywhere-src-5.14.1
 Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
@@ -65,12 +65,6 @@ Patch21:        0001-Revert-Blacklist-nouveau-and-llvmpipe-for-multithrea.patch
 Patch22:        0002-Revert-qtlite-Fix-build-libs-with-no-feature-regular.patch
 Patch23:        0003-Revert-White-list-more-recent-Mesa-version-for-multi.patch
 Patch24:        fix-fixqt4headers.patch
-# Revert to restore compatibility with akonadi and possibly other applications
-Patch30:        0001-Revert-Always-escape-the-table-names-when-creating-t.patch
-# Reverts to avoid text rendering bug (QTBUG-80982)
-Patch40:      0001-Revert-Fix-text-rendering-regression-on-semi-transpa.patch
-Patch41:      0002-Revert-Fix-crash-with-gamma-corrected-text-blending-.patch
-Patch42:      0003-Revert-Handle-transparent-pen-color-in-fast-text-pat.patch
 # patches 1000-2000 and above from upstream 5.14 branch #
 # patches 2000-3000 and above from upstream 5.15/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
