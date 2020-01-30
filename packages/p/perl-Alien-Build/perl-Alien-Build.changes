@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 28 03:07:02 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.96
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.96      2020-01-27 09:05:36 -0700
+    - Production release identical to 1.95_01
+  
+  1.95_01   2020-01-25 19:57:31 -0700
+    - Reduced prereqs to Alien::Base::Wrapper down to Perl 5.6
+      (the rest of Alien-Build still requires 5.8) (gh#156)
+    - Remove dep on Module::Load (gh#155)
+
+-------------------------------------------------------------------
 Tue Dec 17 03:07:25 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.94

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-Build
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Build
-Version:        1.94
+Version:        1.96
 Release:        0
 %define cpan_name Alien-Build
 Summary:        Build external dependencies for use in CPAN
@@ -38,12 +38,8 @@ BuildRequires:  perl(File::Which) >= 1.10
 BuildRequires:  perl(File::chdir)
 BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Module::Load)
 BuildRequires:  perl(Path::Tiny) >= 0.077
 BuildRequires:  perl(Test2::API) >= 1.302096
-BuildRequires:  perl(Test2::Mock) >= 0.000060
-BuildRequires:  perl(Test2::Require) >= 0.000060
-BuildRequires:  perl(Test2::Require::Module) >= 0.000060
 BuildRequires:  perl(Test2::V0) >= 0.000060
 BuildRequires:  perl(Text::ParseWords) >= 3.26
 Requires:       perl(Capture::Tiny) >= 0.17
@@ -55,7 +51,6 @@ Requires:       perl(File::Which) >= 1.10
 Requires:       perl(File::chdir)
 Requires:       perl(JSON::PP)
 Requires:       perl(List::Util) >= 1.33
-Requires:       perl(Module::Load)
 Requires:       perl(Path::Tiny) >= 0.077
 Requires:       perl(Test2::API) >= 1.302096
 Requires:       perl(Text::ParseWords) >= 3.26
