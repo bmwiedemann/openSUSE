@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:27:42 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.6.0
+  * Avoid using umask() since it's not thread-safe.
+  * Set close-on-exec flag when opening files.
+  * Do not accept empty files as valid zip archives any longer.
+  * Add support for XZ compressed files (using liblzma).
+  * Add support for cancelling while closing zip archives.
+  * Add support for setting the time in the on-disk format.
+- modified patches
+  % pkgconfig.patch (refreshed)
+- deleted patches
+  - libzip-ocloexec.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Mar 12 16:43:53 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.5.2

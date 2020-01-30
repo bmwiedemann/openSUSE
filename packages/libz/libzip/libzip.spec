@@ -1,7 +1,7 @@
 #
 # spec file for package libzip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           libzip
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -26,8 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://libzip.org/
 Source0:        https://libzip.org/download/libzip-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE: close on exec, upstream is aware
-Patch1:         libzip-ocloexec.patch
 Patch2:         pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes

@@ -1,13 +1,13 @@
-Index: libzip-1.5.0/CMakeLists.txt
+Index: libzip-1.6.0/CMakeLists.txt
 ===================================================================
---- libzip-1.5.0.orig/CMakeLists.txt
-+++ libzip-1.5.0/CMakeLists.txt
-@@ -229,7 +229,7 @@ ADD_SUBDIRECTORY(examples)
+--- libzip-1.6.0.orig/CMakeLists.txt	2020-01-24 12:03:14.000000000 +0100
++++ libzip-1.6.0/CMakeLists.txt	2020-01-27 11:28:56.794806888 +0100
+@@ -329,7 +329,7 @@ ENDIF()
  SET(prefix ${CMAKE_INSTALL_PREFIX})
  SET(exec_prefix \${prefix})
  SET(bindir \${exec_prefix}/${CMAKE_INSTALL_BINDIR})
 -SET(libdir \${exec_prefix}/${CMAKE_INSTALL_LIBDIR})
 +SET(libdir ${CMAKE_INSTALL_LIBDIR})
  SET(includedir \${prefix}/${CMAKE_INSTALL_INCLUDEDIR})
- IF(BZIP2_FOUND)
-   SET(LIBS "${LIBS} -lbz2")
+ IF(CMAKE_SYSTEM_NAME MATCHES BSD)
+   SET(PKG_CONFIG_RPATH "-Wl,-R\${libdir}")

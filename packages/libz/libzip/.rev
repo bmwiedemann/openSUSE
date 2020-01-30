@@ -375,4 +375,22 @@
   * Add nullability annotations.</comment>
     <requestid>684542</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2c3789c46eec5360285cb64bb5e01ee7</srcmd5>
+    <version>1.6.0</version>
+    <time>1580373313</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.6.0
+  * Avoid using umask() since it's not thread-safe.
+  * Set close-on-exec flag when opening files.
+  * Do not accept empty files as valid zip archives any longer.
+  * Add support for XZ compressed files (using liblzma).
+  * Add support for cancelling while closing zip archives.
+  * Add support for setting the time in the on-disk format.
+- modified patches
+  % pkgconfig.patch (refreshed)
+- deleted patches
+  - libzip-ocloexec.patch (upstreamed)</comment>
+    <requestid>767661</requestid>
+  </revision>
 </revisionlist>
