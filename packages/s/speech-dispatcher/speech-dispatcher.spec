@@ -1,7 +1,7 @@
 #
 # spec file for package speech-dispatcher
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,10 @@ Name:           speech-dispatcher
 Version:        0.9.1
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
-# Almost all files are under GPLv2+, however src/c/clients/spdsend/spdsend.h is
-# licensed under GPLv2, which makes %%{_bindir}/spdsend GPLv2.
+# The API and bindings are LGPL-2.1-or-later, other parts are
+# either GPL-2.0-or-later or LGPL-2.1-or-later
 Summary:        Device independent layer for speech synthesis
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://devel.freebsoft.org/speechd
 Source0:        https://download-mirror.savannah.gnu.org/releases/speechd/%{name}-%{version}.tar.gz
@@ -40,6 +40,7 @@ Source99:       baselibs.conf
 BuildRequires:  %{espeakdev}
 BuildRequires:  alsa-devel
 BuildRequires:  dotconf-devel
+BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 BuildRequires:  libao-devel
@@ -48,13 +49,11 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  texinfo
 BuildRequires:  pkgconfig(systemd)
 Requires:       python3-speechd
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
-Recommends:     %{espeak}
-Recommends:     speech-dispatcherd-module-espeak
+Recommends:     speech-dispatcher-module-espeak
 Suggests:       festival
 Suggests:       logrotate
 Provides:       speechd = %{version}
@@ -77,6 +76,7 @@ tricky aspects of the speech subsystem.
 
 %package configure
 Summary:        Configuration tool for Speech Dispatcher
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 Requires:       python3-xdg
@@ -97,6 +97,7 @@ Dispatcher.
 
 %package module-espeak
 Summary:        ESpeak module for Speech Dispatcher
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 Supplements:    packageand(%{name}:%{espeak})
@@ -115,6 +116,7 @@ This package contains the espeak module.
 
 %package -n libspeechd2
 Summary:        Device independent layer for speech synthesis - Client library
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Recommends:     %{name}
 
@@ -130,6 +132,7 @@ tricky aspects of the speech subsystem.
 
 %package -n libspeechd-devel
 Summary:        Device independent layer for speech synthesis - Development files
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 Requires:       libspeechd2 = %{version}
 Provides:       %{name}-devel = %{version}
@@ -148,6 +151,7 @@ tricky aspects of the speech subsystem.
 
 %package -n python3-speechd
 Summary:        Device independent layer for speech synthesis - Python Bindings
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 Requires:       %{name} >= %{version}
 
@@ -195,10 +199,13 @@ rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
 rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ivona.conf
 # Remove config files that we don't need a second time
 # but then user can not create its own configuration, because here is default, while in /etc is system-wide
-# %{__rm} -r %{buildroot}%{_datadir}/speech-dispatcher/conf/
+# %%{__rm} -r %%{buildroot}%%{_datadir}/speech-dispatcher/conf/
 # Remove %{_infodir}/dir file
 rm %{buildroot}%{_infodir}/dir
 %find_lang %{name}
+
+# Deduplicate python bytecode
+%fdupes %{buildroot}%{python3_sitearch}/speechd*
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -224,7 +231,7 @@ rm %{buildroot}%{_infodir}/dir
 
 %files -f %{name}.lang
 %doc AUTHORS ANNOUNCE NEWS README.md
-%license COPYING.LGPL
+%license COPYING.LGPL COPYING.GPL-2 COPYING.GPL-3
 %dir %{_sysconfdir}/speech-dispatcher/
 %dir %{_sysconfdir}/speech-dispatcher/clients
 %dir %{_sysconfdir}/speech-dispatcher/modules
@@ -237,7 +244,7 @@ rm %{buildroot}%{_infodir}/dir
 %{_datadir}/sounds/speech-dispatcher/
 %dir %{_libdir}/speech-dispatcher
 %{_libdir}/speech-dispatcher/spd_*.so
-# When adding a module, also stop removing its config file in %install
+# When adding a module, also stop removing its config file in %%install
 %dir %{_libdir}/speech-dispatcher-modules
 %{_libdir}/speech-dispatcher-modules/sd_cicero
 %{_libdir}/speech-dispatcher-modules/sd_dummy

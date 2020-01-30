@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:28:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove texlive-texinfo build dependency. The tarball contains
+  the info files, and even without plain makeinfo would be sufficient.
+- Correct license for library and python bindings, these are
+  LGPL-2.1-or-later since version 0.8.2.
+- Correct typo in Recommends: speech-dispatcher-module-espeak
+
+-------------------------------------------------------------------
 Tue Oct 22 14:42:09 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Drop -ibmtts package for now. It requires a third-party library
