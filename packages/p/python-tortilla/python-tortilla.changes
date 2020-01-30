@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Jan 24 20:44:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.0
+- Convert to singlespec
+- Run testsuite
+
+-------------------------------------------------------------------
+Thu Oct 12 18:45:52 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- update to 0.4.2
+  - Formatting code to make it more PEP-8 compliant
+  - Simplify py2/3 compatibility code (remove compat module)
+  - Enable/disable httpretty in setUp/tearDown methods in tests
+    to make it works with all kind of test runners (like PyCharm
+    test runner or nose)
+  - Refactor run_from_ipython() implementation to make it pass
+    static code analysis test (warns for missing __IPYTHON__)
+  - Fix an issue with delay code when it was called for the first
+    time and self._last_request_time is None
+
+-------------------------------------------------------------------
+Tue Sep  6 11:11:50 UTC 2016 - mardnh@gmx.de
+
+- initial package, version 0.4.1
+
