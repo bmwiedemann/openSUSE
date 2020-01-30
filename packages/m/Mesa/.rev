@@ -3952,4 +3952,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fixes build with gcc10 using -fno-common as default now (boo#1160578)</comment>
     <requestid>766379</requestid>
   </revision>
+  <revision rev="366" vrev="238">
+    <srcmd5>c43b7be938a4065b16b8adf788fa8646</srcmd5>
+    <version>unknown</version>
+    <time>1580373484</time>
+    <user>dimstar_suse</user>
+    <comment>- require llvm9 (jsc#IBM-369, jsc#SLE-7452)</comment>
+    <requestid>767994</requestid>
+  </revision>
 </revisionlist>

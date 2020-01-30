@@ -215,11 +215,11 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %endif
 %if 0%{with_llvm}
-BuildRequires:  llvm-devel >= 8.0.0
+BuildRequires:  llvm9-devel
 %endif
 
 %if 0%{with_opencl}
-BuildRequires:  clang-devel
+BuildRequires:  clang9-devel
 BuildRequires:  libclc
 %endif
 
@@ -733,7 +733,7 @@ programs against the XA state tracker.
 rm -rf docs/README.{VMS,WIN32,OS2}
 
 %if 0%{with_llvm}
-%if %{pkg_vcmp llvm-devel >= 9.0}
+%if %{pkg_vcmp llvm9-devel >= 9.0}
 %patch1 -p1
 %endif
 %endif

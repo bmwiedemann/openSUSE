@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 15:31:52 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- require llvm9 (jsc#IBM-369, jsc#SLE-7452) 
+
+-------------------------------------------------------------------
 Wed Jan 22 13:47:07 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patch
