@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-0-tss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
 Group:          Productivity/Security
-Url:            https://github.com/tpm2-software/tpm2-tss
+URL:            https://github.com/tpm2-software/tpm2-tss
 Source0:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz
 Source2:        baselibs.conf
 BuildRequires:  doxygen
@@ -30,7 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Requires(pre):  shadow
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -180,7 +180,8 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 
 %files
 %defattr(-,root,root)
-%doc *.md LICENSE
+%doc *.md
+%license LICENSE
 %{_mandir}/man3/*
 %{_mandir}/man7/tss2-*
 %{_udevrulesdir}/%{udev_rule_file}

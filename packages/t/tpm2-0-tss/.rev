@@ -303,4 +303,13 @@ into the same staging project.</comment>
     - Fixed HMAC generation for policy sessions (forwarded request 759944 from mnhauke)</comment>
     <requestid>760375</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5ad480ea7667f84cdced6b6322558490</srcmd5>
+    <version>2.3.2</version>
+    <time>1580373183</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavor. (forwarded request 766910 from dimstar)</comment>
+    <requestid>767595</requestid>
+  </revision>
 </revisionlist>
