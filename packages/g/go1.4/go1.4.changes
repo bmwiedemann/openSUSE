@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 13:43:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildREquire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavor.
+
+-------------------------------------------------------------------
 Mon Mar 11 12:53:10 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc9-rsp-clobber.patch in order to fix bsc#1121397.

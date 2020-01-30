@@ -82,4 +82,13 @@
     <comment></comment>
     <requestid>686159</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ae6e32203cb93ab3e858d8a649b16242</srcmd5>
+    <version>1.4.3</version>
+    <time>1580373147</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildREquire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavor. (forwarded request 766898 from dimstar)</comment>
+    <requestid>766964</requestid>
+  </revision>
 </revisionlist>

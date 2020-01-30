@@ -1,7 +1,7 @@
 #
 # spec file for package go1.4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Go
-Url:            http://golang.org
+URL:            http://golang.org
 Source0:        http://golang.org/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
 Source3:        macros.go
@@ -95,7 +95,7 @@ Obsoletes:      go-devel < go%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 x86_64 %arm
 %if 0%{?suse_version} >= 1210
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %endif
 %if 0%{?suse_version} >= 1100
 BuildRequires:  fdupes
@@ -128,7 +128,7 @@ Go examples and documentation.
 Summary:        Go runtime race detector
 License:        NCSA OR MIT
 Group:          Development/Languages/Other
-Url:            https://compiler-rt.llvm.org/
+URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
 ExclusiveArch:  %{tsan_arch}
