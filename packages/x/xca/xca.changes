@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 29 22:19:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * Most notable improvements:
+    + Support concurrent database access
+    + Support ODBC database driver
+  A detailled changelog can be found here:
+  http://hohnstaedt.de/xca/index.php/software/changelog
+
+-------------------------------------------------------------------
 Mon Jan 20 20:13:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Run spec-cleaner

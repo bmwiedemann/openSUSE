@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xca
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        An RSA key and certificate management tool
-Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
+Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
 URL:            https://sourceforge.net/projects/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-desktop.patch
