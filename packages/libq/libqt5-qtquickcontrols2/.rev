@@ -137,4 +137,12 @@
     <comment>5.14.0</comment>
     <requestid>757470</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2952cfc530009ae24efe261fdc19c0bd</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373549</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768116</requestid>
+  </revision>
 </revisionlist>
