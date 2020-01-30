@@ -1,7 +1,7 @@
 #
 # spec file for package geronimo-specs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,9 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit >= 3.8.1
 BuildConflicts: java-devel >= 11
+BuildConflicts: java-headless >= 11
+BuildConflicts: java-devel-openj9
+BuildConflicts: java-headless-openj9
 BuildArch:      noarch
 
 %description

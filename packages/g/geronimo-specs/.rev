@@ -231,4 +231,12 @@ Hope everyone find this sattisfactory now.</comment>
     <comment>Fix build with new rpm</comment>
     <requestid>755693</requestid>
   </revision>
+  <revision rev="33" vrev="36">
+    <srcmd5>ed722012ec14299a17ef4455a7785fcd</srcmd5>
+    <version>1.2</version>
+    <time>1580373208</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767559</requestid>
+  </revision>
 </revisionlist>
