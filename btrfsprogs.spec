@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsprogs
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define udev_with_btrfs_builtin 190
-%define udev_version %(rpm -q --queryformat %%{VERSION} udev)
+%define udev_version %(pkg-config --modversion udev)
 %define package_udev_rules %{udev_version} >= %{udev_with_btrfs_builtin}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
@@ -74,7 +74,7 @@ BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1310
 BuildRequires:  suse-module-tools
 %endif
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} == 1310
 BuildRequires:  libudev-devel
 %endif

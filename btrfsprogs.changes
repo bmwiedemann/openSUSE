@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:00:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: Allow OBS to
+  shortcut through the -mini flavor.
+- Use pkg-config --modversion udev to identify the current udev
+  version. This is more portable and supports the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Dec  4 00:00:00 CET 2019 - dsterba@suse.cz
 
 - Update to 5.4

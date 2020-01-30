@@ -978,4 +978,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- Update to 5.4 (forwarded request 754069 from dsterba)</comment>
     <requestid>754071</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>5f250d9efd5e868231562b24a3f60277</srcmd5>
+    <version>5.4</version>
+    <time>1580373039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766699</requestid>
+  </revision>
 </revisionlist>
