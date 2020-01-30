@@ -1,7 +1,7 @@
 #
 # spec file for package scotch
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,6 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "serial"
-%undefine suffix
-%undefine mpi_family
 %bcond_with hpc
 %endif
 
