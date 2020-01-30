@@ -1,7 +1,7 @@
 #
 # spec file for package biosdevname
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Udev helper for naming devices per BIOS names
 License:        GPL-2.0-only
 Group:          System/Base
-Url:            https://github.com/dell/%{name}
+URL:            https://github.com/dell/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         ignore-broken-BIOSes
 Patch2:         whitelist-dell
@@ -32,13 +32,13 @@ Patch4:         biosdevname-pic.patch
 Patch5:         biosdevname-dom0.patch
 Patch6:         dmidecode-prevent-infinite-recursion.patch
 BuildRequires:  automake
-# to figure out how to name/location of the rules file
-BuildRequires:  libudev-devel
 BuildRequires:  pciutils-devel
 BuildRequires:  pkg-config
 BuildRequires:  sed
 BuildRequires:  suse-module-tools
 BuildRequires:  zlib-devel
+# to figure out how to name/location of the rules file
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
 Requires(postun): coreutils

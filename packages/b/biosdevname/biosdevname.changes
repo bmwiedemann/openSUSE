@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:57:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Wed May 23 11:32:02 UTC 2018 - josef.moellers@suse.com
 
 - Prevent infinite recursion in dmidecode.c::smbios_setslot by
