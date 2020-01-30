@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 23 22:47:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove docbook-toys build dependency, db2html is just an unused
+  leftover in the configure script, only xsltproc is required.
+  Removes build dependency on texlive-jadetex and some more.
+
+-------------------------------------------------------------------
 Tue Mar 20 16:22:09 UTC 2018 - mimi.vx@gmail.com
 
 - spec-cleaned

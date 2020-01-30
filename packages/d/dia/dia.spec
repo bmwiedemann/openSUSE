@@ -1,7 +1,7 @@
 #
 # spec file for package dia
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,8 @@ Release:        0
 Summary:        A Diagram Creation Program
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://live.gnome.org/Dia
-Source0:        http://download.gnome.org/sources/dia/0.97/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Dia
+Source0:        https://download.gnome.org/sources/dia/0.97/%{name}-%{version}.tar.xz
 Source1:        font-test-japanese.dia
 Source2:        font-test-czech.dia
 Source3:        font-test-german-euro.dia
@@ -38,7 +38,6 @@ Patch17:        dia-remove-datetime.patch
 Patch20:        dia-libemf-64bit.patch
 # PATCH-FIX-OPENSUSE dia-enable-html-doc.patch mgorse@suse.com -- Always enable html docs if xsltproc present.
 Patch23:        dia-enable-html-doc.patch
-BuildRequires:  docbook-toys
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -46,8 +45,8 @@ BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  libEMF-devel
 BuildRequires:  libtool
+BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
-BuildRequires:  sgml-skel
 BuildRequires:  swig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -100,7 +99,6 @@ autoreconf -f -i
 intltoolize --force
 %configure\
 	--disable-static\
-	--enable-db2html\
 	--disable-gnome\
 	--with-cairo\
 	--with-swig \

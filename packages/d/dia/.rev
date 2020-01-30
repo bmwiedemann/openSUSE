@@ -345,4 +345,14 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment></comment>
     <requestid>592382</requestid>
   </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>7e2c0e9b053be36f8dcb874311accfee</srcmd5>
+    <version>0.97.3</version>
+    <time>1580373086</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove docbook-toys build dependency, db2html is just an unused
+  leftover in the configure script, only xsltproc is required.
+  Removes build dependency on texlive-jadetex and some more. (forwarded request 766713 from StefanBruens)</comment>
+    <requestid>766890</requestid>
+  </revision>
 </revisionlist>
