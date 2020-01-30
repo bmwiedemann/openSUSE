@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jan 17 17:35:15 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: libgcrypt DSA PQG parameter generation: Missing value [bsc#1161219]
+- FIPS: libgcrypt DSA PQG verification incorrect results [bsc#1161215]
+- FIPS: libgcrypt RSA siggen/keygen: 4k not supported [bsc#1161220]
+  * Add patch from Fedora libgcrypt-1.8.4-fips-keygen.patch
+
+-------------------------------------------------------------------
+Wed Dec 11 10:18:23 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: RSA/DSA/ECDSA are missing hashing operation [bsc#1155337]
+  * Add libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
+
+-------------------------------------------------------------------
+Wed Nov 27 14:01:01 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix tests in FIPS mode:
+  * Fix tests: basic benchmark bench-slope pubkey t-cv25519 t-secmem
+  * Add patch libgcrypt-fix-tests-fipsmode.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 18:48:20 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix test dsa-rfc6979 in FIPS mode:
+  * Disable tests in elliptic curves with 192 bits which are not
+    recommended in FIPS mode
+  * Add patch libgcrypt-dsa-rfc6979-test-fix.patch
+
+-------------------------------------------------------------------
+Tue Nov 12 11:05:02 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- CMAC AES and TDES FIPS self-tests:
+  * CMAC AES self test missing [bsc#1155339]
+  * CMAC TDES self test missing [bsc#1155338]
+- Add libgcrypt-CMAC-AES-TDES-selftest.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 14:17:48 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libgcrypt 1.8.5:

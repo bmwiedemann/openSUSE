@@ -680,4 +680,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>727334</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>a777333b17c425c902803b28a88fcb35</srcmd5>
+    <version>1.8.5</version>
+    <time>1580373074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766879</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libgcrypt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,15 @@ Patch46:        libgcrypt-CVE-2019-12904-GCM-Prefetch.patch
 Patch47:        libgcrypt-CVE-2019-12904-GCM.patch
 Patch48:        libgcrypt-CVE-2019-12904-AES.patch
 Patch49:        libgcrypt-1.8.4-fips_ctor_skip_integrity_check.patch
+#PATCH-FIX-SUSE bsc#1155338 bsc#1155338 FIPS: CMAC AES and TDES self tests missing
+Patch50:        libgcrypt-CMAC-AES-TDES-selftest.patch
+#PATCH-FIX-SUSE Fix test in FIPS mode
+Patch51:        libgcrypt-dsa-rfc6979-test-fix.patch
+Patch52:        libgcrypt-fix-tests-fipsmode.patch
+#PATCH-FIX-SUSE bsc#1155337 FIPS: RSA/DSA/ECDSA are missing hashing operation
+Patch53:        libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
+#PATCH-FIX-SUSE bsc#1161220 FIPS: libgcrypt RSA siggen/keygen: 4k not supported
+Patch54:        libgcrypt-1.8.4-fips-keygen.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.25
