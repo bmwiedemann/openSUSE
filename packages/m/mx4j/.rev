@@ -222,4 +222,12 @@
     <comment>build against the new log4j12/log4j12-mini combo</comment>
     <requestid>734253</requestid>
   </revision>
+  <revision rev="32" vrev="33">
+    <srcmd5>7b85afaeb65ceb196433ade74e49d239</srcmd5>
+    <version>3.0.2</version>
+    <time>1580373286</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767574</requestid>
+  </revision>
 </revisionlist>

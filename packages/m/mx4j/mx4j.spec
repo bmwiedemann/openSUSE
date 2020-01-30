@@ -1,7 +1,7 @@
 #
 # spec file for package mx4j
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ BuildRequires:  update-alternatives
 BuildRequires:  xalan-j2
 BuildRequires:  xerces-j2
 BuildConflicts: java-devel >= 11
+BuildConflicts: java-devel-openj9
 Requires:       apache-commons-logging >= 1.0.1
 Requires:       axis >= 1.1
 Requires:       bcel >= 5.0
@@ -160,20 +161,20 @@ pushd %{buildroot}%{_javadir}/%{name}
    done
 popd
 
-install -d -m 755 $RPM_BUILD_ROOT%{_mavenpomdir}
-install -pm 644 %{name}-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}.pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+install -pm 644 %{name}-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}.pom
 %add_maven_depmap JPP.%{name}-%{name}.pom %{name}/%{name}.jar
-install -pm 644 %{name}-jmx-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-jmx.pom
+install -pm 644 %{name}-jmx-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-jmx.pom
 %add_maven_depmap JPP.%{name}-%{name}-jmx.pom %{name}/%{name}-jmx.jar
-install -pm 644 %{name}-remote-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-remote.pom
+install -pm 644 %{name}-remote-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-remote.pom
 %add_maven_depmap JPP.%{name}-%{name}-remote.pom %{name}/%{name}-remote.jar
-install -pm 644 %{name}-tools-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-tools.pom
+install -pm 644 %{name}-tools-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-tools.pom
 %add_maven_depmap JPP.%{name}-%{name}-tools.pom %{name}/%{name}-tools.jar
-install -pm 644 %{name}-impl-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-impl.pom
+install -pm 644 %{name}-impl-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-impl.pom
 %add_maven_depmap JPP.%{name}-%{name}-impl.pom %{name}/%{name}-impl.jar
-install -pm 644 %{name}-rimpl-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-rimpl.pom
+install -pm 644 %{name}-rimpl-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-rimpl.pom
 %add_maven_depmap JPP.%{name}-%{name}-rimpl.pom %{name}/%{name}-rimpl.jar
-install -pm 644 %{name}-rjmx-%{version}.pom $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-rjmx.pom
+install -pm 644 %{name}-rjmx-%{version}.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}-rjmx.pom
 %add_maven_depmap JPP.%{name}-%{name}-rjmx.pom %{name}/%{name}-rjmx.jar
 
 # alternatives
