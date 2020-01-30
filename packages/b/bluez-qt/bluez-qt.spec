@@ -41,13 +41,13 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  udev
 BuildRequires:  cmake(Qt5Core) >= 5.11.0
 BuildRequires:  cmake(Qt5DBus) >= 5.11.0
 BuildRequires:  cmake(Qt5Gui) >= 5.11.0
 BuildRequires:  cmake(Qt5Network) >= 5.11.0
 BuildRequires:  cmake(Qt5Qml) >= 5.11.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  pkgconfig(udev)
 
 %description
 Async Bluez wrapper library.
