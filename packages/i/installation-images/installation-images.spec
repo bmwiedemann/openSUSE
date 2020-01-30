@@ -327,6 +327,7 @@ BuildRequires:  haveged
 BuildRequires:  hdparm
 BuildRequires:  hex
 BuildRequires:  hfsutils
+BuildRequires:  hostname
 BuildRequires:  icewm-lite
 BuildRequires:  icmpinfo
 BuildRequires:  indic-fonts
@@ -606,7 +607,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.453
+Version:        14.454
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

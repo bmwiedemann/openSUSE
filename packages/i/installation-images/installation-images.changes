@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri Jan 24 16:01:12 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#355
+- don't bind-mount / in rescue system (bsc#1160449)
+- 14.454
+
+--------------------------------------------------------------------
+Fri Jan 24 16:00:45 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#353
+- remove net-tools and net-tools-deprecated
+- remove obsolete net-tools package
+
+--------------------------------------------------------------------
 Tue Jan 21 10:00:04 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#352
