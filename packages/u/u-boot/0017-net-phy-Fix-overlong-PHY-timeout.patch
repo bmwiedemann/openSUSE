@@ -1,0 +1,33 @@
+From 55cefec93c8fae1ad5bd0f2f892785610c142d91 Mon Sep 17 00:00:00 2001
+From: Andre Przywara <andre.przywara@arm.com>
+Date: Fri, 3 Jan 2020 22:08:47 +0000
+Subject: [PATCH] net: phy: Fix overlong PHY timeout
+
+Commit 27c3f70f3b50 ("net: phy: Increase link up delay in
+genphy_update_link()") increased the per-iteration waiting time from
+1ms to 50ms, without adjusting the timeout counter. This lead to the
+timeout increasing from the typical 4 seconds to over three minutes.
+
+Adjust the timeout counter evaluation by that factor of 50 to bring the
+timeout back to the intended value.
+
+Signed-off-by: Andre Przywara <andre.przywara@arm.com>
+Reviewed-by: Stefan Roese <sr@denx.de>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ drivers/net/phy/phy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
+index 80a7664e49..5cf9c165b6 100644
+--- a/drivers/net/phy/phy.c
++++ b/drivers/net/phy/phy.c
+@@ -244,7 +244,7 @@ int genphy_update_link(struct phy_device *phydev)
+ 			/*
+ 			 * Timeout reached ?
+ 			 */
+-			if (i > PHY_ANEG_TIMEOUT) {
++			if (i > (PHY_ANEG_TIMEOUT / 50)) {
+ 				printf(" TIMEOUT !\n");
+ 				phydev->link = 0;
+ 				return -ETIMEDOUT;

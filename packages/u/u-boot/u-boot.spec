@@ -217,6 +217,7 @@ Patch0013:      0013-rpi4-Enable-GENET-Ethernet-controll.patch
 Patch0014:      0014-Kconfig-add-btrfs-to-distro-boot.patch
 Patch0015:      0015-configs-Re-sync-with-CONFIG_DISTRO_.patch
 Patch0016:      0016-configs-am335x_evm-disable-BTRFS.patch
+Patch0017:      0017-net-phy-Fix-overlong-PHY-timeout.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:43:44 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.01
+* Patches added:
+  0017-net-phy-Fix-overlong-PHY-timeout.patch
+
+-------------------------------------------------------------------
 Wed Jan 29 09:28:32 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.01

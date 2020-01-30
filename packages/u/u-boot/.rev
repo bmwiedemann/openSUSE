@@ -1467,4 +1467,12 @@ boundary checks.
     0009-boo-1144161-Remove-nand-mtd-spi-dfu.patch</comment>
     <requestid>768266</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>6b799f9a5df9fd7dbc8f3af8c26c8199</srcmd5>
+    <version>2020.01</version>
+    <time>1580420213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768556</requestid>
+  </revision>
 </revisionlist>
