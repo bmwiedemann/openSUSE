@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:42:22 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200123:
+  * Locales: Update Spanish translations es_ES. (#3203)
+  * gsdx-hw: Remove GSC_DemonStone crc hack.
+  * gsdx-gui: Add an option in hw hacks to control the half bottom detection.
+  * gsdx-hw: Split half screen/bottom detection in 3 levels.
+  * Locales: Update Traditional Chinese (zh_TW) translations. (#3216)
+  * Locales: Polish localization fix. (#3222)
+  * gsdx-d3d11: Remove unused m_rt_ss sampler.
+
+-------------------------------------------------------------------
+Fri Jan 17 19:38:11 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200117:
+  * Locale: Update Japanese translations ja_JP. (#3204)
+  * Locales: Update Polish language translations pl_PL. (#3213)
+  * Locales: Updated the Turkish(tr_TR) translation with the missing string. (#3217)
+  * locales: Refresh locales to include missing string
+  * pcsx2:gui: Make the presets tooltip translatable again
+  * Locales: Updated Turkish translations for PCSX2(tr_TR). (#3208)
+  * Update locale files to current set of translatable strings (#3158)
+  * pcsx2: Quickfix for translatable string not being picked up by xgettext
+
+-------------------------------------------------------------------
+Tue Jan 14 22:16:30 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200114:
+  * gsdx-hw: Add some missing game regions to crc list.
+
+-------------------------------------------------------------------
 Sun Jan 05 22:02:13 UTC 2020 - pousaduarte@gmail.com
 
 - Update to version 1.5.0~git20200105:
