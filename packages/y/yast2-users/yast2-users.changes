@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 24 15:43:42 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix return code for `yast2 users list` and `yast2 users show`
+  (bsc#1143516)
+- 4.2.8
+
+-------------------------------------------------------------------
 Thu Jan 16 09:46:36 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Disable block device selector in WSL (boo#1154238)
