@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:55:32 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200122 (git commit 1eb2408c6fea):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * nvidia: add TU102/TU104/TU106 signed firmware
+
+-------------------------------------------------------------------
 Mon Jan 20 08:33:56 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200114 (git commit 9c340bd1bdab):
