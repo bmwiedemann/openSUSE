@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 29 10:59:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable zstd support
+
+-------------------------------------------------------------------
 Wed May 23 15:06:59 UTC 2018 - wbauer@tmo.at
 
 - Add Fix-compile-on-32bit.patch to make it build on 32bit

@@ -39,4 +39,12 @@
   * fix-build.patch</comment>
     <requestid>611714</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e7165a6afac3134a3da35fe336c4de61</srcmd5>
+    <version>1.1.0</version>
+    <time>1580373692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768322</requestid>
+  </revision>
 </revisionlist>
