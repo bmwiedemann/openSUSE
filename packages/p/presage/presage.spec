@@ -1,7 +1,7 @@
 #
 # spec file for package presage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,13 @@
 %global pname %{sname}
 %endif
 
-%define py_ver %(python -c "import sys; v=sys.version_info[:2]; print '%%d.%%d'%%v" 2>/dev/null || echo PYTHON-NOT-FOUND)
 Name:           %pname
 Version:        0.9.1
 Release:        0
 Summary:        Intelligent predictive text entry platform (tools and demos)
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
-Url:            http://presage.sourceforge.net
+URL:            http://presage.sourceforge.net
 Source:         http://ncu.dl.sourceforge.net/project/%{sname}/%{sname}/%{version}/%{sname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM jzheng@suse.com - fix ncurese builds in openSUSE
 Patch0:         presage-0.8.9-ncurses_flag.patch
@@ -47,6 +46,8 @@ Patch5:         presage-0.9.1-gcc6.patch
 # PATCH-FIX-UPSTREAM doxygen no longer ships with the FreeSans font
 Patch6:         presage-0.9.1-doxygen-no-freesans.patch
 Patch7:         presage-buildcycle.diff
+# PATCH-FIX-UPSTREAM port python binding to python3
+Patch8:         presage-0.9.1-python3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -61,19 +62,21 @@ BuildRequires:  graphviz-gd
 BuildRequires:  pkgconfig
 # Documentation End
 %else
+BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  help2man
 BuildRequires:  libcmuclmtk-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
-BuildRequires:  python-atspi
-BuildRequires:  python-devel
-BuildRequires:  python-gtk-devel
-BuildRequires:  python-xlib
+BuildRequires:  python3-atspi
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject-devel
+BuildRequires:  python3-xlib
 BuildRequires:  swig
 %if 0%{?suse_version}
 BuildRequires:  dbus-1-glib-devel
-BuildRequires:  dbus-1-python-devel
 BuildRequires:  libcppunit-devel
+BuildRequires:  python3-dbus-python
 BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 %else
@@ -108,7 +111,7 @@ This package contains the header files needed to compile applications or shared 
 %package -n libpresage1
 Summary:        Intelligent predictive text entry platform (shared library)
 Group:          System/Libraries
-Requires:       presage-data = %{version}
+Requires:       presage-data
 
 %description -n libpresage1
 Presage is an intelligent predictive text entry platform.
@@ -130,40 +133,46 @@ Presage is an intelligent predictive text entry platform.
 
 This package contains the sample statistical data files and abbreviation files needed by presage.
 
-%package -n python-presage
+%package -n python3-presage
 Summary:        Intelligent predictive text entry platform (Python binding)
-Group:          System/Libraries
-%py_requires
+Group:          Development/Languages/Python
+Provides:       python-presage = %{version}-%{release}
+Obsoletes:      python-presage < %{version}-%{release}
 
-%description -n python-presage
+%description -n python3-presage
 Presage is an intelligent predictive text entry platform.
 
 This package provides the Python binding for libpresage.
 
 This package contains the Python extension module for libpresage.
 
-%package -n dbus-1-presage
+%package -n python3-dbus-presage
 Summary:        Intelligent predictive text entry platform (dbus service)
-Group:          System/Libraries
+Group:          Development/Languages/Python
+Requires:       python3-dbus-python
+Requires:       python3-presage
+Provides:       dbus-1-presage = %{version}-%{release}
+Obsoletes:      dbus-1-presage < %{version}-%{release}
 
-%description -n dbus-1-presage
+%description -n python3-dbus-presage
 Presage is an intelligent predictive text entry platform.
 
 This package contains the presage D-Bus service.
 
 This package also contains a simple demonstration program that uses the D-Bus service.
 
-%package -n python-presagemate
+%package -n python3-presagemate
 Summary:        Universial predictive text companion
 Group:          Productivity/Text/Utilities
-Requires:       python-atspi
-Requires:       python-gtk
-Requires:       python-presage
-Requires:       python-xlib
+Requires:       python3-atspi
+Requires:       python3-gobject
+Requires:       python3-presage
+Requires:       python3-xlib
+Provides:       python-presagemate = %{version}-%{release}
+Obsoletes:      python-presagemate < %{version}-%{release}
 BuildArch:      noarch
-%py_requires
 
-%description -n python-presagemate
+%description -n python3-presagemate
 Pypresagemate is a universal predictive text companion. Pypresagemate works alongside any AT-SPI aware application. The Assistive Technology Service Provider Interface (AT-SPI) is a toolkit-neutral way of providing accessibility facilities in applications. Pypresagemate works in the background by tracking what keystrokes are typed and displaying predictions in its window. When a prediction is selected, text is sent to the active application.
 
 %package -n gprompter
@@ -175,15 +184,16 @@ gprompter is a cross-platform predictive text editor, based on presage, the inte
 
 gprompter displays predictions in a contextual pop-up box as each letter is typed. Predictions can be easily selected and inserted in the document.
 
-%package -n pyprompter
+%package -n python3-pyprompter
 Summary:        Intelligent predictive wxPython text editor
 Group:          Productivity/Text/Editors
-Requires:       python-presagemate
-Requires:       python-wxWidgets
+Requires:       python3-presage
+Requires:       python3-wxPython
+Provides:       pyprompter = %{version}-%{release}
+Obsoletes:      pyprompter < %{version}-%{release}
 BuildArch:      noarch
-%py_requires
 
-%description -n pyprompter
+%description -n python3-pyprompter
 This package contains the wxPython predictive text editor pyprompter.
 
 pyprompter is a cross-platform predictive text editor.
@@ -213,6 +223,7 @@ find . -type f -exec sed -i  's/\r//g' "{}" \;
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 echo "[D-BUS Service]" > apps/dbus/org.gnome.presage.service.in
 echo "Name=org.gnome.presage.beta" >> apps/dbus/org.gnome.presage.service.in
 echo "Exec={bindir}/presage_dbus_service --start" >> apps/dbus/org.gnome.presage.service.in
@@ -226,6 +237,7 @@ autoreconf -fi
 make -C doc %{?_smp_mflags}
 %else
 export LIBS+="-lm -lgmodule-2.0"
+export PYTHON="/usr/bin/python3"
 %configure
 make %{?_smp_mflags}
 %endif
@@ -243,14 +255,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %if 0%{?suse_version}
 
-pushd %{buildroot}%{python_sitelib}/prompter/
-%py_compile .
+pushd %{buildroot}%{python3_sitelib}/prompter/
+%py3_compile -O .
 popd
-pushd %{buildroot}%{python_sitearch}/
-%py_compile .
+pushd %{buildroot}%{python3_sitearch}/
+%py3_compile -O .
 popd
 
-sed -i -e '1 s#/usr/bin/env.*python#/usr/bin/python2#' %{buildroot}%{_bindir}/presage_dbus_*
+sed -i -e '1 s#/usr/bin/env.*python#/usr/bin/python3#' %{buildroot}%{_bindir}/presage_dbus_*
 
 %suse_update_desktop_file gprompter Utility DesktopUtility
 %suse_update_desktop_file pyprompter Utility DesktopUtility
@@ -285,12 +297,13 @@ fdupes -n -q -r %{buildroot}
 %{_mandir}/man1/presage_simulator.1%{ext_man}
 %{_mandir}/man1/text2ngram.1%{ext_man}
 
-%files -n dbus-1-presage
+%files -n python3-dbus-presage
+%dir %{python3_sitelib}/__pycache__/
 %{_bindir}/presage_dbus_python_demo
 %{_bindir}/presage_dbus_service
-%{python_sitelib}/presage_dbus_service.py
-%{python_sitelib}/presage_dbus_service.pyc
-%{python_sitelib}/presage_dbus_service.pyo
+%{python3_sitelib}/presage_dbus_service.py
+%{python3_sitelib}/__pycache__/presage_dbus_service.*.pyc
+#%{python3_sitelib}/__pycache__/presage_dbus_service.*.pyo
 %{_datadir}/dbus-1/services/org.gnome.presage.service
 %{_mandir}/man1/presage_dbus_python_demo.1%{ext_man}
 %{_mandir}/man1/presage_dbus_service.1%{ext_man}
@@ -302,13 +315,13 @@ fdupes -n -q -r %{buildroot}
 %files -n presage-data
 %config %{_sysconfdir}/presage.xml
 %{_datadir}/presage
-%exclude %{_datadir}/presage/html
+#%exclude %{_datadir}/presage/html
 %exclude %{_datadir}/presage/getting_started.txt
 %exclude %{_datadir}/presage/python_binding.txt
 
-%files -n python-presagemate
+%files -n python3-presagemate
 %{_bindir}/pypresagemate
-%{python_sitelib}/presagemate
+%{python3_sitelib}/presagemate
 
 %files -n libpresage-devel
 %{_includedir}/presageCallback.h
@@ -316,21 +329,22 @@ fdupes -n -q -r %{buildroot}
 %{_includedir}/presage.h
 %{_libdir}/libpresage.so
 
-%files -n python-presage
+%files -n python3-presage
+%dir %{python3_sitearch}/__pycache__/
 %{_bindir}/presage_python_demo
-%{python_sitearch}/_presage.so
-%{python_sitearch}/presage.py
-%{python_sitearch}/presage.pyc
+%{python3_sitearch}/_presage*.so
+%{python3_sitearch}/presage.py
+%{python3_sitearch}/__pycache__/presage.*.pyc
 %if 0%{?fedora}
-%{python_sitearch}/presage.pyo
+%{python3_sitearch}/__pycache__/presage.*.pyo
 %endif
 %{_mandir}/man1/presage_python_demo.1%{ext_man}
-%{python_sitearch}/python_presage-0.9.1-py%{py_ver}.egg-info
+%{python3_sitearch}/python_presage-0.9.1-py%{py3_ver}.egg-info
 
-%files -n pyprompter
+%files -n python3-pyprompter
 %{_bindir}/pyprompter
-%{python_sitelib}/prompter
-%{python_sitelib}/pyprompter-0.9.1-py%{py_ver}.egg-info
+%{python3_sitelib}/prompter
+%{python3_sitelib}/pyprompter-0.9.1-py%{py3_ver}.egg-info
 %{_datadir}/applications/pyprompter.desktop
 %{_datadir}/icons/hicolor/scalable/apps/pyprompter.svg
 %{_mandir}/man1/pyprompter.1%{ext_man}
