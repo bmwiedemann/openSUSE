@@ -1,13 +1,41 @@
 -------------------------------------------------------------------
+Tue Jan 28 16:37:45 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.2.6
+  * Fix set volume on moved to handle wheel mouse on desktop
+  * Fix resync track position after sleeping for the Sailfish app
+  *Minor graphical improvements
+
+-------------------------------------------------------------------
+Sun Jan 19 10:47:49 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.2.5
+  * Fix on share index finished the library could not be reloaded
+  * Minor graphical improvements for the Sailfish app
+
+-------------------------------------------------------------------
+Thu Jan 16 20:43:15 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.2.4
+  * Minor fixes
+  * Update translations for 4.2.0
+  * All controls are asynchonous
+  * Fix for playlist editing (drag/move and delete)
+  * Preview release for SailfishOS 3.2 using native framework
+    Silica 1.0
+  * GUI improvements and cleanup
+  * Better dragging of volumes (multi zones)
+
+-------------------------------------------------------------------
 Sun Dec 15 21:01:59 UTC 2019 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 4.1.0
-  * Allow to seek position for local file (also it fixes the pause/play for local files)
+  * Allow to seek position for local file (also it fixes the
+    pause/play for local files)
   * Allow to stream local media m4a
   * Improves the GUI performances
   * Minor fixes
 - Add %license and %doc to spec file
-
 
 -------------------------------------------------------------------
 Sun Dec 15 09:46:52 UTC 2019 - Bo Simonsen <bosim@opensuse.org>
