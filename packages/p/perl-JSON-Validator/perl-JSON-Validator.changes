@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 29 03:18:54 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.18
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.18 2020-01-29T10:18:09+0900
+   - Fix validating constants that are null or the empty string
+     Contributor: Karen Etheridge
+
+-------------------------------------------------------------------
 Mon Dec 30 03:07:46 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.17
