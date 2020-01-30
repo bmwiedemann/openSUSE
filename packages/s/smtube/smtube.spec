@@ -1,7 +1,7 @@
 #
 # spec file for package smtube
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_with restricted
 Name:           smtube
-Version:        19.6.0
+Version:        20.1.0
 Release:        0
 Summary:        Small YouTube Browser
 License:        GPL-2.0-or-later
