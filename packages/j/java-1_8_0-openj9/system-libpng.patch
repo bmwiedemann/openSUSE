@@ -1,0 +1,111 @@
+--- jdk8/common/autoconf/libraries.m4	2014-09-26 08:45:01.057310067 +0200
++++ jdk8/common/autoconf/libraries.m4	2014-09-26 08:46:38.602049970 +0200
+@@ -679,6 +679,47 @@
+ 
+   ###############################################################################
+   #
++  # Check for the png library
++  #
++
++  AC_ARG_WITH(libpng, [AS_HELP_STRING([--with-libpng],
++     [use libpng from build system or OpenJDK source (system, bundled) @<:@bundled@:>@])])
++
++  AC_CHECK_LIB(png, png_sig_cmp,
++               [ LIBPNG_FOUND=yes ],
++               [ LIBPNG_FOUND=no ])
++
++  AC_MSG_CHECKING([for which libpng to use])
++
++  # default is bundled
++  DEFAULT_LIBPNG=bundled
++
++  #
++  # if user didn't specify, use DEFAULT_LIBPNG
++  #
++  if test "x${with_libpng}" = "x"; then
++      with_libpng=${DEFAULT_libpng}
++  fi
++
++
++  if test "x${with_libpng}" = "xbundled"; then
++      USE_EXTERNAL_LIBPNG=false
++      AC_MSG_RESULT([bundled])
++  elif test "x${with_libpng}" = "xsystem"; then
++      if test "x${LIBPNG_FOUND}" = "xyes"; then
++          USE_EXTERNAL_LIBPNG=true
++          AC_MSG_RESULT([system])
++      else
++          AC_MSG_RESULT([system not found])
++          AC_MSG_ERROR([--with-libpng=system specified, but no libpng found!])
++      fi
++  else
++      AC_MSG_ERROR([Invalid value of --with-libpng: ${with_libpng}, use 'system' or 'bundled'])
++  fi
++  AC_SUBST(USE_EXTERNAL_LIBPNG)
++
++  ###############################################################################
++  #
+   # Check for the zlib library
+   #
+ 
+--- jdk8/common/autoconf/spec.gmk.in	2014-09-26 08:45:01.057310067 +0200
++++ jdk8/common/autoconf/spec.gmk.in	2014-09-26 08:46:38.603049945 +0200
+@@ -555,6 +555,7 @@
+ ENABLE_JFR=@ENABLE_JFR@
+ ENABLE_INTREE_EC=@ENABLE_INTREE_EC@
+ USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
++USE_EXTERNAL_LIBPNG:=@USE_EXTERNAL_LIBPNG@
+ USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
+ USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
+ LIBZIP_CAN_USE_MMAP:=@LIBZIP_CAN_USE_MMAP@
+--- jdk8/jdk/make/lib/Awt2dLibraries.gmk	2014-09-26 08:45:00.475323552 +0200
++++ jdk8/jdk/make/lib/Awt2dLibraries.gmk	2014-09-26 08:46:38.603049945 +0200
+@@ -1211,7 +1211,6 @@
+ ifndef BUILD_HEADLESS_ONLY
+   LIBSPLASHSCREEN_DIRS := \
+     $(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg \
+-    $(JDK_TOPDIR)/src/share/native/sun/awt/libpng \
+     $(JDK_TOPDIR)/src/share/native/sun/awt/splashscreen
+ 
+   ifeq ($(USE_EXTERNAL_LIBGIF), true)
+@@ -1228,6 +1227,13 @@
+     LIBJPEG_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg
+   endif
+ 
++  ifeq ($(USE_EXTERNAL_LIBPNG), true)
++    LIBPNG_LDFLAGS := -lpng
++  else
++    LIBSPLASHSCREEN_DIRS += $(JDK_TOPDIR)/src/share/native/sun/awt/image/libpng
++    LIBPNG_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/sun/awt/libpng
++  endif
++
+   ifneq ($(OPENJDK_TARGET_OS), macosx)
+     LIBSPLASHSCREEN_DIRS += $(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/awt/splashscreen
+   else
+@@ -1291,12 +1297,12 @@
+       LANG := C, \
+       OPTIMIZATION := LOW, \
+       CFLAGS := $(LIBSPLASHSCREEN_CFLAGS) $(CFLAGS_JDKLIB) \
+-                $(GIFLIB_CFLAGS) $(LIBJPEG_CFLAGS), \
++                $(GIFLIB_CFLAGS) $(LIBJPEG_CFLAGS) $(LIBPNG_CFLAGS), \
+       MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libsplashscreen/mapfile-vers, \
+       LDFLAGS := $(LDFLAGS_JDKLIB) \
+           $(call SET_SHARED_LIBRARY_ORIGIN), \
+       LDFLAGS_SUFFIX := $(LIBSPLASHSCREEN_LDFLAGS_SUFFIX) $(LIBZ) \
+-                        $(GIFLIB_LDFLAGS) $(LIBJPEG_LDFLAGS), \
++                        $(GIFLIB_LDFLAGS) $(LIBJPEG_LDFLAGS) $(LIBPNG_LDFLAGS), \
+       LDFLAGS_SUFFIX_solaris := -lc, \
+       VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
+       RC_FLAGS := $(RC_FLAGS) \
+--- jdk8/jdk/src/share/native/sun/awt/splashscreen/splashscreen_png.c	2014-09-26 08:45:00.414324966 +0200
++++ jdk8/jdk/src/share/native/sun/awt/splashscreen/splashscreen_png.c	2014-09-26 08:46:38.603049945 +0200
+@@ -25,8 +25,7 @@
+ 
+ #include "splashscreen_impl.h"
+ 
+-#include "../libpng/png.h"
+-
++#include <png.h>
+ #include <setjmp.h>
+ 
+ #define SIG_BYTES 8

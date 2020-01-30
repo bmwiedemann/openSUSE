@@ -1,0 +1,90 @@
+--- a/jdk/src/share/native/com/sun/java/util/jar/pack/bands.cpp	2020-01-22 11:12:33.000000000 +0100
++++ b/jdk/src/share/native/com/sun/java/util/jar/pack/bands.cpp	2020-01-27 17:06:13.010809355 +0100
+@@ -288,7 +288,7 @@
+   { e_##name,  #name, /*debug only*/ \
+     cspec, ix }
+ 
+-const band_init all_band_inits[] = {
++const band_init all_band_inits[BAND_LIMIT+1] = {
+ //BAND_INIT(archive_magic, BYTE1_spec, 0),
+ //BAND_INIT(archive_header, UNSIGNED5_spec, 0),
+ //BAND_INIT(band_headers, BYTE1_spec, 0),
+@@ -448,14 +448,8 @@
+   BAND_INIT(file_modtime, DELTA5_spec, 0),
+   BAND_INIT(file_options, UNSIGNED5_spec, 0),
+ //BAND_INIT(file_bits, BYTE1_spec, 0),
+-#ifndef PRODUCT
+-  { 0, 0, 0, 0 }
+-#else
+-  { 0, 0 }
+-#endif
++  { 0, NULL, 0, 0 }
+ };
+-#define NUM_BAND_INITS \
+-        (sizeof(all_band_inits)/sizeof(all_band_inits[0]))
+ 
+ band* band::makeBands(unpacker* u) {
+   band* tmp_all_bands = U_NEW(band, BAND_LIMIT);
+--- a/jdk/src/share/native/sun/java2d/opengl/OGLContext.c	2020-01-22 11:12:33.000000000 +0100
++++ b/jdk/src/share/native/sun/java2d/opengl/OGLContext.c	2020-01-27 17:06:13.010809355 +0100
+@@ -38,6 +38,8 @@
+ #include "GraphicsPrimitiveMgr.h"
+ #include "Region.h"
+ 
++#include "jvm.h"
++
+ /**
+  * The following methods are implemented in the windowing system (i.e. GLX
+  * and WGL) source files.
+--- a/jdk/src/solaris/native/sun/awt/awt_Font.c	2020-01-22 11:12:33.000000000 +0100
++++ b/jdk/src/solaris/native/sun/awt/awt_Font.c	2020-01-27 17:06:13.010809355 +0100
+@@ -454,6 +454,7 @@
+         int32_t i, size;
+         char *fontsetname = NULL;
+         char *nativename = NULL;
++        Boolean doFree = FALSE;
+         jobjectArray componentFonts = NULL;
+         jobject peer = NULL;
+         jobject fontDescriptor = NULL;
+@@ -493,8 +494,10 @@
+ 
+             if (!JNU_IsNull(env, fontDescriptorName)) {
+                 nativename = (char *) JNU_GetStringPlatformChars(env, fontDescriptorName, NULL);
++                doFree = TRUE;
+             } else {
+                 nativename = "";
++                doFree = FALSE;
+             }
+ 
+             fdata->flist[i].xlfd = malloc(strlen(nativename)
+@@ -502,7 +505,7 @@
+             jio_snprintf(fdata->flist[i].xlfd, strlen(nativename) + 10,
+                          nativename, size * 10);
+ 
+-            if (nativename != NULL && nativename != "")
++            if (nativename != NULL && doFree)
+                 JNU_ReleaseStringPlatformChars(env, fontDescriptorName, (const char *) nativename);
+ 
+             /*
+--- a/jdk/src/solaris/native/sun/java2d/x11/X11SurfaceData.c	2020-01-22 11:12:33.000000000 +0100
++++ b/jdk/src/solaris/native/sun/java2d/x11/X11SurfaceData.c	2020-01-27 17:06:13.010809355 +0100
+@@ -545,7 +545,7 @@
+     xsdo->cData = xsdo->configData->color_data;
+ 
+     XShared_initSurface(env, xsdo, depth, width, height, drawable);
+-    xsdo->xrPic = NULL;
++    xsdo->xrPic = None;
+ #endif /* !HEADLESS */
+ }
+ 
+--- a/jdk/src/solaris/native/sun/xawt/XToolkit.c	2020-01-22 11:12:33.000000000 +0100
++++ b/jdk/src/solaris/native/sun/xawt/XToolkit.c	2020-01-27 17:06:13.010809355 +0100
+@@ -723,7 +723,7 @@
+     if (pollFds[0].revents) {
+         // Events in X pipe
+         update_poll_timeout(TIMEOUT_EVENTS);
+-        PRINT2("performPoll(): TIMEOUT_EVENTS curPollTimeout = %ld \n", curPollTimeout);
++        PRINT2("performPoll(): TIMEOUT_EVENTS curPollTimeout = %d \n", curPollTimeout);
+     }
+     return TRUE;
+ 
