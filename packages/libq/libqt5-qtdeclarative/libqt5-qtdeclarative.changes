@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:14:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.14.1/?h=v5.14.1
+
+-------------------------------------------------------------------
 Thu Jan 23 09:45:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Only force-enable the QML JIT for 32-bit x86
