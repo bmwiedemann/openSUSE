@@ -52,16 +52,16 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.14.0
+Version:        5.14.1
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.14.0
-%define so_version 5.14.0
-%define tar_version qtwebengine-everywhere-src-5.14.0
+%define real_version 5.14.1
+%define so_version 5.14.1
+%define tar_version qtwebengine-everywhere-src-5.14.1
 Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6

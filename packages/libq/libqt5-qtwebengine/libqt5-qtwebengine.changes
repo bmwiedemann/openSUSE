@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:14:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.14.1/?h=v5.14.1
+
+-------------------------------------------------------------------
 Mon Jan 20 15:00:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable valgrind on %arm due to boo#1130395

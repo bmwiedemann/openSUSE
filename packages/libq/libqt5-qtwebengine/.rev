@@ -542,4 +542,12 @@
     <comment>- Disable valgrind on %arm due to boo#1130395</comment>
     <requestid>765994</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f5ed924cd9cdf7dd02ca41a496399bb0</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373592</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768137</requestid>
+  </revision>
 </revisionlist>
