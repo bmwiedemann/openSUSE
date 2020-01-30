@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Fri Jan 17 22:56:58 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version update to 6.1.2 (released January 14 2020i by Oracle)
+
+  18 Vulnerabilities fixed: CVE-2020-2674 CVE-2020-2682 CVE-2020-2698 CVE-2020-2701 CVE-2020-2702 CVE-2020-2726
+			    CVE-2020-2681 CVE-2020-2689 CVE-2020-2690 CVE-2020-2691 CVE-2020-2692 CVE-2020-2703
+			    CVE-2020-2704 CVE-2020-2705 CVE-2020-2725 CVE-2020-2678 CVE-2020-2727 CVE-2020-2693
+			    See bsc#1161050
+  File "fixes_for_leap15.2.patch" added to fix build for Leap 15.2.
+  File "vbox_fix_for_gcc7.patch" is deleted - fixed upstream.
+  File "fixes_for_5.4.patch" is deleted - fixed upstream.
+  Exclude 32-bit builds
+  Update so the openSUSE Leap 42.3 builds OK.
+
+  As announced earlier by Oracle, 32-bit builds are no longer supported.
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  Virtualization core: fixed performance issue observed with Windows XP guests on AMD hosts (6.0.0 regression; bug #19152)
+  Virtualization core: consistent IBRS/IBPB CPUID feature reporting, avoids crash of NetBSD 9.0 RC1 installer (bug #19146)
+  GUI: fixed updating of runtime info
+  GUI: in Display settings, do not show "2D video acceleration" checkbox if it is meaningless for the selected graphics adapter
+  Audio: fixed audio input handling when VRDE is enabled
+  Audio: fixed crash in the HDA emulation when using multi-speaker configurations
+  Storage: fixed use of encrypted disks with snapshots involved (6.1.0 regression; bug #19160)
+  Storage: improve performance of virtio-scsi
+  Storage: read-only support for compressed clusters in QCOW2 images
+  Linux host: Support Linux 5.5 (guest additions not yet)
+  Windows guest: accelerate 2D video decoding (scaling and color space conversion) if the VM is configured to use VBoxSVGA with 3D enabled
+  Windows guest: fix guest additions installer to upgrade the mouse filter driver reliably
+  Windows guest: when uninstalling older Guest Additions with old 3D support enabled try restoring original Direct3D files
+  Linux guest: improve resize and multi-monitor handling for VMs using VMSVGA (known remaining issue: do not disable a monitor "in the middle", causes confusion)
+
+-------------------------------------------------------------------
+Tue Dec 24 21:59:07 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version update to 6.1.0 (released December 10 2019 by Oracle)
+  - Fixes bsc#1132102.
+  - Removed file "set_graphics_type.patch" as the problem is fixed upstream.
+
+  This is a major update. The following major new features were added:
+
+  - Implemented support for importing a virtual machine from Oracle Cloud Infrastructure
+  - Extended support for exporting a virtual machine to Oracle Cloud Infrastructure, allowing the creation
+	of multiple virtual machines without re-uploading. Also added option to export a VM to the cloud using the more efficient
+	variant "paravirtialized", and to specify free-form tags for cloud images
+  - Virtualization core: Support for nested hardware-virtualization on Intel CPUs (starting with 5th generation Core i,
+	codename Broadwell), so far tested only with guest running VirtualBox
+  - Graphics: New style 3D support (with VBoxSVGA and VMSVGA) remains, old style 3D support (with VBoxVGA) has been completely removed
+  - Shared Clipboard: Implemented experimental support for file transfers (Windows hosts/guests only at the moment).
+	Needs to be enabled via VBoxManage (disabled by default). In addition, the following items were fixed and/or added:
+
+  In addition, the following items were fixed and/or added:
+
+  - Virtualization core: Drop recompiler, i.e. running VMs now needs a CPU supporting hardware virtualization
+  - Runtime: Works now on hosts with many CPUs (limit now 1024)
+  - Appliance and Cloud Import: Add field for defining firmware type (not part of OVF spec and thus manual in the Appliance case,
+	for OCI it is automatically taken from the instance information)
+  - GUI: Improved the VISO creation and file manager dialogs
+  - GUI: Virtual machine list of VirtualBox Manager was improved. Machine groups are now more obvious visually and VM
+	search functionality has been improved. Global Tools element can now be pinned in place, to avoid scrolling it with rest of machine list
+  - GUI: Virtual machine details pane is now extended with embedded editors for selected VM attributes, allowing user to edit them
+	on-the-fly byi clicking corresponding hyper-links without opening VM settings dialog
+  - GUI: Details pane provides more complete information
+  - GUI: Internal medium enumeration routines were optimized to reduce the load and optimize the performance in cases when
+	user have lots of media registered. Also, we again allowed to add existing media (and create new) via Virtual Media Manager
+  - GUI: More consistent medium selection (both showing known images and allowing to select using the file picker)
+  - GUI: VM storage settings page was adjusted a bit in usability regard. User is now allowed to change controller bus type
+	and can move attachments between the controllers by using drag and drop
+  - GUI: Storage and Network settings pages bug-fixes and usability optimization
+  - GUI: Added a new soft (virtual) keyboard enabling arbitrary keyboard input to guests, including multimedia keys
+  - GUI: Fixed crash in cloud related wizards when accessibility functionality was enabled
+  - GUI: Show VM CPU load as part of status bar CPU indicator
+  - GUI: Improved and extended the Session Information dialog
+  - GUI: Fixed/improved mouse pointer scaling
+  - GUI: Some issues related to mouse integration cursor scaling were addressed (bug #14366), more to go
+  - GUI: Fix and unify geometry save/restore in various dialogs
+  - GUI: Added the missing restriction options for disabling new functionality such as the VISO creator
+  - GUI: Popup messages mouse click fix
+  - Graphics: Remove 3D support for VBoxVGA (old one deprecated with 6.0)
+  - Graphics: Additional texture format support on Windows host
+  - Graphics: Improved fix for flickering on Windows host
+  - Input: Added support for horizontal scrolling in the PS/2 mouse device using the IntelliMouse Explorer protocol.
+	Note that this support is automatically used by Linux guests but not by Windows guests
+  - vboximg-mount: Experimental support for direct read-only access to NTFS, FAT and ext2/3/4 filesystems inside a disk
+	image without the need for support on the host
+  - vboximg-mount: Now also available on Linux host
+  - Storage: Experimental support for virtio-scsi, for both hard disks and optical drives (including boot support in BIOS)
+  - Storage: For optical drive emulation fix empty host drive crash
+  - USB: Improvements for EHCI controller implementation
+  - USB: Filter can now specify port path, uniquely identifying a port in a system
+  - NAT: Fix TFTP OACK response, send only if request has options
+  - NAT Network: Use non-blocking sockets on Linux for accepted incoming connections (port forwarding)
+  - PCnet-ISA: Added new network adapter type, currently CLI only
+  - Audio: Allow changing the host audio backend while the VM is in saved state
+  - ACPI: Report NVMe controller
+  - VGA: Improve hardware and BIOS compatibility
+  - VBoxSVGA/VMSVGA: Support YUV2 and related texture formats with hosts using OpenGL (macOS and Linux),
+	 which accelerates video playback when 3D is enabled by delegating the color space conversion to the host GPU
+  - VBoxSVGA/VMSVGA: Several drawing fixes for the 3D case
+  - VMSVGA 3D: Fixed OpenGL compressed textures
+  - VBoxManage: More cloud functionality coverage, e.g. starting a cloud instance
+  - VBoxManage: As part of the guest control feature support moving multiple source files/directories to a target directory
+  - Guest Control/VBoxManage: Added support for specifying multiple sources when renaming guest files
+  - VBoxManage: Show "unrestricted guest" and "nested HW virtualization" CPU features when listing the host information
+  - API: Reduce the amount of leftovers from Move VM function
+  - Shared Clipboard: Implemented experimental support for file transfers for Linux hosts on Windows guests (disabled by default)
+  - SMBIOS: Store system UUID in little endian format which is the default for new VMs, while existing VMs stick to the old VirtualBox
+	 behavior of storing them in big endian format for backwards compatibility to avoid breaking the activation status of Windows VMs
+  - VBoxSDL frontend: Fixed running on Windows hosts
+  - Linux host: Improve vboxweb systemd service dependency information
+  - Linux host: Drop PCI passthrough, the current code is too incomplete (cannot handle PCIe devices at all), i.e. not useful enough
+  - Linux host and guest: Support Linux 5.4 (bug #18945)
+  - Linux host and guest: Force disabling of kernel module signing during build (user can do it afterwards)
+  - Windows Guest Additions: Many fixes for drawing problems in the driver for VBoxSVGA
+  - Windows Guest Additions: Fixes for legacy VBoxVGA adapter, restore previously working cases
+  - Windows Guest Additions: Restore VHWA functionality for VBoxSVGA
+  - Windows guest: DXVA implementation for WDDM driver
+  - Documentation: Updated supported host operating systems, added few new manual pages (more to come later)
+  - EFI: Switch to newer firmware code base and add NVRAM support, should improve compatibility with OSes significantly
+  - EFI: Added support for booting from APFS
+  - EFI: Added support for non-standard SATA and NVMe boot device paths created by OS X
+
+Tue Dec 24 01:49:21 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
+
+  - Turn build of vboxvideo back on just in case VB is used with an older kernel,
+	and make the necessary fixes for kernel v5.5.
+
+-------------------------------------------------------------------
 Wed Dec 18 19:47:16 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix build for kernel 5.5. Added file "fixes_for_5.5.patch".

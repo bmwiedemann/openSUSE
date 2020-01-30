@@ -9,8 +9,8 @@ SOURCE="/usr/src/kernel-modules/virtualbox/src"
 LOGFILE="/var/log/virtualbox.log"
 INCLUDE="/lib/modules/`uname -r`/build/include"
 #
-# Test if vboxpci module loaded. If it is, skip everything else
-loaded=$(lsmod | grep vboxpci)
+# Test if vboxdrv module loaded. If it is, skip everything else
+loaded=$(lsmod | grep vboxdrv)
 if [ -n "$loaded" ] ; then
 	echo "Kernel modules are loaded, unload them via"
 	echo "systemctl stop vboxdrv.service if you wish to rebuild them."
@@ -53,7 +53,7 @@ if [ "$?" -ne 0 ] ; then
 	exit 1
 fi
 depmod -a
-modprobe -av vboxnetflt vboxnetadp vboxpci
+modprobe -av vboxnetflt vboxnetadp
 popd > /dev/null 2>&1
 echo "Kernel modules are installed and loaded."
 exit 0

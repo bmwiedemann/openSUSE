@@ -1,7 +1,7 @@
 #
 # spec file for package virtualbox
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,8 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 %define _vbox_instdir  %{_libexecdir}/virtualbox
 %define _udevrulesdir /usr/lib/udev/rules.d
 Name:           virtualbox
-# ********* If the VB version exceeds 6.0.x, notify the libvirt maintainer!!
-Version:        6.0.14
+# ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
+Version:        6.1.2
 Release:        0
 Summary:        VirtualBox is an Emulator
 License:        GPL-2.0-or-later
@@ -98,8 +98,6 @@ Patch9:         vbox-deprec-gsoap-service-proxies.diff
 #fix failed linking process during build - this patch is just quick workaround
 Patch10:        vbox-gsoapssl-deps.diff
 #PATCH-FIX-OPENSUSE implement messagebox (VBoxPermissionMessage app), which is displayed, when user
-# Set graphics adapter type to VBoxVGA boo#1151896
-Patch98:        set_graphics_type.patch
 #try to start VirtualBox and is not member of vboxusers group
 Patch99:        vbox-permissions_warning.diff
 #PATCH-FIX-OPENSUSE Do not include build dates on binaries, makes build-compare happier
@@ -129,8 +127,6 @@ Patch111:       fix_conflict_between_host_and_guest.patch
 Patch112:       modify_for_4_8_bo_move.patch
 # Remove all mention of _smp_mflags
 Patch113:       vbox_remove_smp_mflags.patch
-# Allow use of gcc7
-Patch115:       vbox_fix_for_gcc7.patch
 # Fix for missing include needed for server 1.19
 Patch116:       Fix_for_server_1.19.patch
 # Fix invalid use of internal headers
@@ -149,14 +145,12 @@ Patch128:       fix_lib_search.patch
 Patch130:       fixes_for_Leap42.3.patch
 # Fixes for Qt5.13 on 32-bit systems
 Patch132:       fixes_for_qt5.13.patch
-#endif
-# Fixes for API changes in kernel 5.4
-Patch133:       fixes_for_5.4.patch
+# Fixes for openSUSE Leap 15.2
+Patch133:       fixes_for_leap15.2.patch
 # Fixes for API changes in kernel 5.5
 Patch134:       fixes_for_5.5.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
-BuildRequires:  %{python_module devel}
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  SDL-devel
 BuildRequires:  acpica
@@ -181,7 +175,7 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  kbuild >= 0.1.9998svn3101
-BuildRequires:  kernel-syms
+#BuildRequires:  kernel-syms
 BuildRequires:  libcap-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libelf-devel
@@ -217,7 +211,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xextproto)
@@ -242,7 +235,7 @@ Provides:       %{name}-ose = %{version}
 Obsoletes:      %{name}-ose < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %(sed -e '/^Provides: multiversion(kernel)/d' %{_libexecdir}/rpm/kernel-module-subpackage > %{_builddir}/virtualbox-kmp-template)
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  x86_64
 %ifarch amd64 x86_64 ia32e em64t
 BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++-32bit
@@ -425,7 +418,6 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch98 -p1
 %patch99 -p1
 %patch100 -p1
 %patch101 -p1
@@ -441,7 +433,6 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch111 -p1
 %patch112 -p1
 %patch113 -p1
-%patch115 -p1
 %patch116 -p1
 %patch118 -p1
 %patch120 -p1
@@ -449,7 +440,6 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch123 -p1
 %patch125 -p1
 %patch128 -p1
-echo "sle_version " %{?sle_version}", is_opensuse " %{?is_opensuse}", suse_version " %{?suse_version}
 # Adjustments that are version dependent
 %if 0%{?sle_version} == 120300 && 0%{?is_opensuse} 
 # Patch for Leap 42.3
@@ -464,7 +454,6 @@ echo "sle_version " %{?sle_version}", is_opensuse " %{?is_opensuse}", suse_versi
 
 # make VB UI background colors look sane again
 %patch999 -p1
-echo "sle_version $(0%{?sle_version})" 
 
 #copy user manual
 cp %{SOURCE1} UserManual.pdf
@@ -544,12 +533,11 @@ install -D -m 644 "COPYING" "%{buildroot}%{_datadir}/licenses/LICENSE.vnc"
 
 #
 # build kernel modules for guest and host (check novel-kmp package as example)
-# host  modules : vboxdrv,vboxnetflt,vboxnetadp,vboxpci
+# host  modules : vboxdrv,vboxnetflt,vboxnetadp
 # guest modules : vboxguest,vboxsf vboxvideo (for Leap 15.1 and older)
 echo "build kernel modules"
-#%if 0%{?suse_version} < 1550
-for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp,pci} \
-           out/linux.*/release/bin/additions/src/vbox{guest,sf}; do
+for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
+           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -570,8 +558,7 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp,pci} \
 
 	# copy vboxdrv (for host) module symbols which are used by vboxnetflt and vboxnetadp km's:
 	if [ "$module_name" = "vboxnetflt" -o \
-	     "$module_name" = "vboxnetadp" -o \
-	     "$module_name" = "vboxpci" ] ; then
+	     "$module_name" = "vboxnetadp" ] ; then
 	    cp $PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers	\
 		  $PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
@@ -599,9 +586,6 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
 install -d -m 755 %{buildroot}%{_datadir}/pixmaps
-%if 0%{?sle_version} != 120300 
-install -d -m 755 %{buildroot}%{_datadir}/metainfo
-%endif
 install -d -m 755 %{buildroot}%{_datadir}/applications
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 install -d -m 755 %{buildroot}%{_vbox_instdir}/components
@@ -625,11 +609,7 @@ export INSTALL_MOD_DIR=extra
 export INITRD_IN_POSTTRANS=1
 export KMP_NEEDS_MKINITRD=0
 #to install modules we use here similar steps like in build phase, go through all the modules :
-#%if 0%{?suse_version} < 1550
-for module_name in vbox{drv,netflt,pci,netadp,guest,sf,video}
-#%else
-#for module_name in vbox{drv,netflt,pci,netadp,guest,sf}
-#%endif
+for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do
 	#and through the all flavors
 	for flavor in %{flavors_to_build}; do
@@ -658,12 +638,6 @@ pushd out/linux.*/release/bin/additions/
 #VBoxClient daemon (support for clipboard,autoresize,seamless windows)
 install -m 755 VBoxClient	%{buildroot}%{_bindir}
 popd
-# VBoxOGL* libs for guest-x11 subpackage
-install -m 644 out/linux.*/release/bin/additions/VBoxOGL*.so \
-						%{buildroot}%{_libdir}
-# VBoxEGL* libs for guest-x11 subpackage
-install -m 755 out/linux.*/release/bin/additions/VBoxEGL*.so \
-						%{buildroot}%{_libdir}
 # install init script which start VBoxClient daemon (support for clipboard,autoresize,seamless windows)
 install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
@@ -684,7 +658,8 @@ install -m 755 VBoxBalloonCtrl			%{buildroot}%{_vbox_instdir}
 install -m 755 webtest				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxDTrace			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxDbg.so			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxSDL.so			%{buildroot}%{_vbox_instdir}
+install -m 755 VBoxDbg.so			%{buildroot}%{_vbox_instdir}
+install -m 755 UICommon.so			%{buildroot}%{_vbox_instdir}
 # create links to vbox tools in PATH - they could be usefull for controlling vbox from command line
 ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
@@ -706,8 +681,8 @@ ln -s %{_vbox_instdir}/VirtualBoxVM		%{buildroot}%{_vbox_instdir}/VirtualBox
 install -m 755 VBoxEFI*.fd			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSysInfo.sh			%{buildroot}%{_vbox_instdir}
 install -m 644 *.so		 		%{buildroot}%{_vbox_instdir}
-install -m 644 *.rc 				%{buildroot}%{_vbox_instdir}
 install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
+rm components/VBoxREM.so
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
@@ -730,7 +705,6 @@ install -m 644 %{SOURCE2}			%{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 %endif
 
 # create a menu entry
-mkdir -p %{buildroot}%{_datadir}/pixmaps
 install -m 644 out/linux.*/release/bin/VBox.png %{buildroot}%{_datadir}/pixmaps/virtualbox.png
 # install config with session shutdown defs
 install -m 644 %{SOURCE4}			%{buildroot}%{_sysconfdir}/default/virtualbox
@@ -964,14 +938,11 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxHeadless.so
 %{_vbox_instdir}/VBoxNetDHCP.so
 %{_vbox_instdir}/VBoxNetNAT.so
-%{_vbox_instdir}/VBoxREM*.so
 %{_vbox_instdir}/VBoxRT.so
 %{_vbox_instdir}/VBoxSharedFolders.so
 %{_vbox_instdir}/VBoxVMM.so
 %{_vbox_instdir}/VBoxXPCOMC.so
 %{_vbox_instdir}/VBoxXPCOM.so
-%{_vbox_instdir}/VBoxDDRC.rc
-%{_vbox_instdir}/VMMRC.rc
 %{_vbox_instdir}/VBox*.r0
 %{_vbox_instdir}/VMMR0.r0
 %{_vbox_instdir}/VBoxEFI*.fd
@@ -986,6 +957,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxDragAndDropSvc.so
 %{_vbox_instdir}/VBoxVMMPreload.so
 #todo:double check - if this file should be assigned to the host side
+%{_vbox_instdir}/UICommon.so
 %{_vbox_instdir}/VBoxHostChannel.so
 %dir %{_vbox_instdir}/components
 %{_vbox_instdir}/components/*.so
@@ -1005,10 +977,10 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_sbindir}/rcvboxautostart
 /sbin/vboxconfig
 %{_vbox_instdir}/VBoxCreateUSBNode.sh
-%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VBoxNetNAT
-%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VBoxNetDHCP
-%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VBoxNetAdpCtl
-%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VBoxHeadless
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetNAT
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetDHCP
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetAdpCtl
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxHeadless
 %dir %{_sysconfdir}/vbox
 %attr(1775,root,vboxusers) %{_sysconfdir}/vbox
 %config %attr(644,root,vboxusers) %{_sysconfdir}/vbox/vbox.cfg
@@ -1020,8 +992,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSUIDMessage
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxUSB_DevRules
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBox6
-%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VirtualBoxVM
-%verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VBoxSDL
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBoxVM
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSDL
 %{_vbox_instdir}/VirtualBox
 #wrapper script is in bindir
 %attr(0755,root,root) %{_bindir}/VirtualBox
@@ -1031,13 +1003,11 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxTestOGL
 #qm's translations
 %{_datadir}/virtualbox/nls
-%{_vbox_instdir}/VBoxGlobal.so
 %{_vbox_instdir}/VBoxSVGA3D.so
 %{_vbox_instdir}/VirtualBoxVM.so
 %{_vbox_instdir}/VBoxDbg.so
 %{_bindir}/VBoxSDL
 %{_vbox_instdir}/VBoxSDL.so
-%{_vbox_instdir}/VBoxSharedCrOpenGL.so
 %{_vbox_instdir}/VBoxKeyboard.so
 %{_vbox_instdir}/VBoxSharedClipboard.so
 %{_datadir}/pixmaps/virtualbox.png
@@ -1053,8 +1023,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_libdir}/xorg/modules/input
 %dir %{_libdir}/dri/
 %{_bindir}/VBoxClient
-%{_libdir}/VBoxOGL*.so
-%{_libdir}/VBoxEGL*.so
 %{_sysconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
 %files guest-tools

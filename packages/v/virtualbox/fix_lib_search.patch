@@ -19,23 +19,3 @@ Index: VirtualBox-6.0.12/configure
          if test_compile "$LIBQT5 $LIBPTHREAD $I_INCQT5 $FLGQT5" qt5 qt5 nofatal &&
              test_execute_path "`L_to_PATH "$LIBQT5"`" nofatal; then
            foundqt5=1 # no pkg-config, Qt directory
-Index: VirtualBox-6.0.12/src/VBox/Additions/common/crOpenGL/Makefile.kmk
-===================================================================
---- VirtualBox-6.0.12.orig/src/VBox/Additions/common/crOpenGL/Makefile.kmk
-+++ VirtualBox-6.0.12/src/VBox/Additions/common/crOpenGL/Makefile.kmk
-@@ -224,15 +224,7 @@ VBoxOGL_LIBS.win += \
- 	$(PATH_STAGE_LIB)/additions/VBoxCrHgsmi$(VBOX_SUFF_LIB)
- 
- if1of ($(KBUILD_TARGET), linux solaris freebsd)
-- ifdef VBOX_USE_SYSTEM_GL_HEADERS
-   VBoxOGL_LIBS += Xcomposite Xdamage Xfixes Xext
-- else
--  VBoxOGL_LIBS += \
-- 	$(PATH_STAGE_LIB)/libXcomposite.so \
-- 	$(PATH_STAGE_LIB)/libXdamage.so \
-- 	$(PATH_STAGE_LIB)/libXfixes.so \
-- 	$(PATH_STAGE_LIB)/libXext.so
-- endif
-  ifdef VBoxOGL_FAKEDRI
-   ifeq ($(KBUILD_TARGET), freebsd)
-     VBoxOGL_LIBS += \

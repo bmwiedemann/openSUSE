@@ -1,0 +1,109 @@
+Index: VirtualBox-6.1.0_RC1/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+===================================================================
+--- VirtualBox-6.1.0_RC1.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
++++ VirtualBox-6.1.0_RC1/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+@@ -73,6 +73,10 @@
+ #define VBOXNETFLT_OS_SPECFIC 1
+ #include "../VBoxNetFltInternal.h"
+ 
++# if CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 2
++#  define OPENSUSE_152
++# endif
++
+ typedef struct VBOXNETFLTNOTIFIER {
+     struct notifier_block Notifier;
+     PVBOXNETFLTINS pThis;
+@@ -924,13 +928,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+     for (i = 0; i < skb_shinfo(pBuf)->nr_frags; i++)
+     {
+         skb_frag_t *pFrag = &skb_shinfo(pBuf)->frags[i];
+-# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++# if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)) || defined(OPENSUSE_152)
+         pSG->aSegs[iSeg].cb = pFrag->bv_len;
+         pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
+-# else /* < KERNEL_VERSION(5, 4, 0) */
++# else /* < KERNEL_VERSION(5, 4, 0) */
+         pSG->aSegs[iSeg].cb = pFrag->size;
+         pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->page_offset;
+-# endif /* >= KERNEL_VERSION(5, 4, 0) */
++# endif /* >= KERNEL_VERSION(5, 4, 0) */
+         Log6((" %p", pSG->aSegs[iSeg].pv));
+         pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
+         Assert(iSeg <= pSG->cSegsAlloc);
+@@ -945,13 +949,13 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+         for (i = 0; i < skb_shinfo(pFragBuf)->nr_frags; i++)
+         {
+             skb_frag_t *pFrag = &skb_shinfo(pFragBuf)->frags[i];
+-# if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++# if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)) || defined(OPENSUSE_152)
+             pSG->aSegs[iSeg].cb = pFrag->bv_len;
+             pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
+-# else /* < KERNEL_VERSION(5, 4, 0) */
++# else /* < KERNEL_VERSION(5, 4, 0) */
+             pSG->aSegs[iSeg].cb = pFrag->size;
+             pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->page_offset;
+-# endif /* >= KERNEL_VERSION(5, 4, 0) */
++# endif /* >= KERNEL_VERSION(5, 4, 0) */
+             Log6((" %p", pSG->aSegs[iSeg].pv));
+             pSG->aSegs[iSeg++].Phys = NIL_RTHCPHYS;
+             Assert(iSeg <= pSG->cSegsAlloc);
+Index: VirtualBox-6.1.0_RC1/src/VBox/Additions/linux/drm/vbox_drv.c
+===================================================================
+--- VirtualBox-6.1.0_RC1.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-6.1.0_RC1/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -307,11 +307,13 @@ static void vbox_master_drop(struct drm_
+ static struct drm_driver driver = {
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
+ 	.driver_features =
+-	    DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ |
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
++	    DRIVER_PRIME |
++#endif
+ # if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0) && !defined(RHEL_81)
+ 	    DRIVER_IRQ_SHARED |
+ # endif /* < KERNEL_VERSION(5, 1, 0) && !defined(RHEL_81) */
+-	    DRIVER_PRIME,
++	    DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
+ #else /* >= KERNEL_VERSION(5, 4, 0) */
+         .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
+ #endif /* < KERNEL_VERSION(5, 4, 0) */
+Index: VirtualBox-6.1.0_RC1/src/VBox/Additions/linux/drm/vbox_main.c
+===================================================================
+--- VirtualBox-6.1.0_RC1.orig/src/VBox/Additions/linux/drm/vbox_main.c
++++ VirtualBox-6.1.0_RC1/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -626,8 +626,12 @@ static inline u64 vbox_bo_mmap_offset(st
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0) && !defined(RHEL_70)
+ 	return bo->bo.addr_space_offset;
+ #else
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
++	return drm_vma_node_offset_addr(&bo->bo.base.vma_node);
++#else
+ 	return drm_vma_node_offset_addr(&bo->bo.vma_node);
+ #endif /* >= KERNEL_VERSION(5, 4, 0) */
++#endif
+ }
+ 
+ int
+Index: VirtualBox-6.1.0_RC1/include/iprt/cdefs.h
+===================================================================
+--- VirtualBox-6.1.0_RC1.orig/include/iprt/cdefs.h
++++ VirtualBox-6.1.0_RC1/include/iprt/cdefs.h
+@@ -1173,14 +1173,15 @@
+  * Tell the compiler that we're falling through to the next case in a switch.
+  * @sa RT_FALL_THRU  */
+ #if RT_GNUC_PREREQ(7, 0)
+-# define RT_FALL_THROUGH()      __attribute__((__fallthrough__))
++# define FALL_THROUGH		__attribute__((__fallthrough__))
+ #else
+-# define RT_FALL_THROUGH()      (void)0
++# define FALL_THROUGH      (void)0
+ #endif
+ /** @def RT_FALL_THRU
+  * Tell the compiler that we're falling thru to the next case in a switch.
+  * @sa RT_FALL_THROUGH */
+-#define RT_FALL_THRU()          RT_FALL_THROUGH()
++#define RT_FALL_THRU()          FALL_THROUGH
++#define RT_FALL_THROUGH()	FALL_THROUGH
+ 
+ 
+ /** @def RT_IPRT_FORMAT_ATTR

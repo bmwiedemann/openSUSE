@@ -244,9 +244,6 @@ start_drv()
     if ! $MODPROBE vboxnetadp > /dev/null 2>&1; then
         failure "modprobe vboxnetadp failed. Please use 'dmesg' to find out why"
     fi
-    if ! $MODPROBE vboxpci > /dev/null 2>&1; then
-        failure "modprobe vboxpci failed. Please use 'dmesg' to find out why"
-    fi
     # Create the /dev/vboxusb directory if the host supports that method
     # of USB access.  The USB code checks for the existance of that path.
     if grep -q usb_device /proc/devices; then
@@ -260,11 +257,6 @@ stop_drv()
 {
     begin_msg "Stopping VirtualBox services" console
 
-    if running vboxpci; then
-        if ! rmmod vboxpci 2>/dev/null; then
-            failure "Cannot unload module vboxpci"
-        fi
-    fi
     if running vboxnetadp; then
         if ! rmmod vboxnetadp 2>/dev/null; then
             failure "Cannot unload module vboxnetadp"
@@ -293,10 +285,9 @@ cleanup_vb()
         # we are sure they were ours, i.e. they had our modules in beforehand.
         if    test -e "${i}/extra/vboxdrv.ko" \
            || test -e "${i}/extra/vboxnetadp.ko" \
-           || test -e "${i}/extra/vboxnetflt.ko" \
-           || test -e "${i}/extra/vboxpci.ko"; then
+           || test -e "${i}/extra/vboxnetflt.ko"; then
             rm -f "${i}/extra/vboxdrv.ko" "${i}/extra/vboxnetadp.ko" \
-                  "${i}/extra/vboxnetflt.ko" "${i}/extra/vboxpci.ko"
+                  "${i}/extra/vboxnetflt.ko"
             # Remove the kernel version folder if it was empty except for us.
             test   "`echo ${i}/extra/* ${i}/extra/.?* ${i}/* ${i}/.?*`" \
                  = "${i}/extra/* ${i}/extra/.. ${i}/extra ${i}/.." &&
@@ -323,9 +314,6 @@ dmnstatus()
             if running vboxnetadp; then
                 str="$str, vboxnetadp"
             fi
-        fi
-        if running vboxpci; then
-            str="$str, vboxpci"
         fi
         echo "VirtualBox kernel modules ($str) are loaded."
         for i in $SHUTDOWN_USERS; do
