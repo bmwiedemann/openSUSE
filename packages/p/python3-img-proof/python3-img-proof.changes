@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 21 18:44:21 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v4.6.0 (2020-01-21)
+  + Implement Oracle Cloud class (oci).
+  + Edit sap license test to handle 12SP5.
+  + Skip kernel test if not a latest image version.
+  + Generate man pages in build with click-man.
+
+-------------------------------------------------------------------
 Mon Oct 28 20:52:00 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v4.5.1 (2019-10-28)
