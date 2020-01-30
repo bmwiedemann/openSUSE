@@ -551,4 +551,28 @@
   operations.</comment>
     <requestid>749120</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5fad8f6bc2a63d8eb705e76bb10605e3</srcmd5>
+    <version>9.1.1</version>
+    <time>1580373292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.1.1
+  * fix-qdf is rewritten in C++
+  * Added options --is-encrypted and --requires-password for testing
+    whether a file is encrypted or requires a password other than
+    the supplied (or empty) password.
+  * Added encrypt key to JSON options. With the exception of the
+    reconstructed user password for older encryption formats,
+    this provides the same information as --show-encryption but in
+    a consistent, parseable format. See output of qpdf --json-help
+    for details.
+  * In QDF mode, be sure not to write more than one XRef stream to a
+    file, even when --preserve-unreferenced is used. fix-qdf
+    assumes that there is only one XRef stream, and that it appears
+    at the end of the file.
+  * When externalizing inline images, properly handle images whose
+    color space is a reference to an object in the page's resource
+    dictionary.</comment>
+    <requestid>767599</requestid>
+  </revision>
 </revisionlist>

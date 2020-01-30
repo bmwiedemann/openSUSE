@@ -1,7 +1,7 @@
 #
 # spec file for package qpdf
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_version 26
 Name:           qpdf
-Version:        9.1.0
+Version:        9.1.1
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -94,9 +94,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/html
 mv %{buildroot}%{_docdir}/%{name}/*.{css,html,pdf} %{buildroot}%{_docdir}/%{name}/html
-
-# Fix the shebang
-sed -i '1 s,#!.*,#!/usr/bin/perl,' %{buildroot}%{_bindir}/fix-qdf
 
 %post -n libqpdf%{so_version} -p /sbin/ldconfig
 %postun -n libqpdf%{so_version} -p /sbin/ldconfig
