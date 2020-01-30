@@ -87,4 +87,12 @@
     <comment>- Update to release 1.1.130</comment>
     <requestid>756645</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>24d4a86b03f75f08122539b60d447d10</srcmd5>
+    <version>1.2.131</version>
+    <time>1580373711</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>768406</requestid>
+  </revision>
 </revisionlist>
