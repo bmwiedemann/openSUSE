@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 27 18:33:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add "which" to Requires
+  * Fixes boo#1161850
+
+-------------------------------------------------------------------
 Tue Jan 14 20:02:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Version bump 1.20. No upstream changelog, see

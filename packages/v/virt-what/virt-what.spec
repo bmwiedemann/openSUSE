@@ -27,6 +27,7 @@ Source0:        https://people.redhat.com/~rjones/%{name}/files/%{name}-%{versio
 Source1:        https://people.redhat.com/~rjones/%{name}/files/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Requires:       util-linux
+Requires:       which
 %ifarch %{ix86} x86_64 aarch64 %arm
 Requires:       dmidecode
 %endif
