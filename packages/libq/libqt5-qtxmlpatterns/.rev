@@ -349,4 +349,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>5.14.0</comment>
     <requestid>757453</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>877551e86f8f96c8ff66a0c64612b9c2</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373587</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768136</requestid>
+  </revision>
 </revisionlist>
