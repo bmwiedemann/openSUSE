@@ -443,4 +443,12 @@
   * Even if we are not affected add fix for CVE-2019-19555</comment>
     <requestid>754322</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>03739567e4b4cf48f90f10ce1a837dc8</srcmd5>
+    <version>3.2.7b</version>
+    <time>1580373503</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>768027</requestid>
+  </revision>
 </revisionlist>

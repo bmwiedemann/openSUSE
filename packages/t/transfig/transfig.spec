@@ -1,7 +1,7 @@
 #
 # spec file for package transfig
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,9 @@ Patch1:         CVE-2019-19555.patch
 Patch2:         transfig.3.2.5-binderman.dif
 Patch3:         transfig.3.2.5d-mediaboxrealnb.dif
 Patch4:         transfig-fix-afl.patch
+Patch5:         CVE-2019-19746.patch
+Patch6:         c379fe.patch
+Patch7:         CVE-2019-19797.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
@@ -101,6 +104,9 @@ find -type f | xargs -r chmod a-x,go-w
 %patch2 -p0 -b .bm
 %patch3 -p0 -b .mbox
 %patch4 -p1 -b .afl
+%patch5 -p0 -b .sec2
+%patch6 -p0 -b .sec3
+%patch7 -p0 -b .sec4
 %patch43 -p2 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
 %patch45 -p1 -b .p45
