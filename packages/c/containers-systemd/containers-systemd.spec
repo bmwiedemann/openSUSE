@@ -20,7 +20,7 @@
 %define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-mariadb.service container-nginx.service
 
 Name:           containers-systemd
-Version:        0.0+git20200122.8276c03
+Version:        0.0+git20200124.e3c2408
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
