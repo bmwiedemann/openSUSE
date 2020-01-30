@@ -27,6 +27,7 @@ Source0:        http://git.nomeata.de/?p=darcs-mirror-pam-dbus.debian.git;a=snap
 Source1:        pam_dbus.8
 Source2:        pam_dbus-rpmlintrc
 Patch0:         pam_dbus-0.2.1.3.dif
+Patch1:         py3port.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dbus-1-devel
@@ -34,12 +35,12 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dbus-1-python
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
+BuildRequires:  gobject-introspection
 BuildRequires:  libtool
 BuildRequires:  pam-devel
-Requires:       python
-Requires:       python-base
-Requires:       python-gtk
-Requires:       python-notify
+Requires:       python3
+Requires:       python3-base
+Requires:       python3-notify2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -51,6 +52,7 @@ in (typically local) user to accept or deny the authentication request.
 test -h %{name}-%{version} || ln -sf darcs-mirror-pam-dbus.debian-%{commit} %{name}-%{version}
 %setup -q -D
 %patch0
+%patch1
 sed -ri '/^PAM_MODDIR/{ s@/lib/@/%{_lib}/@p }' configure.ac
 autoreconf -fis
 

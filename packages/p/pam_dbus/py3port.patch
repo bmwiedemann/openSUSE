@@ -1,0 +1,63 @@
+---
+ handlers/pam-dbus-notify |   22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+--- handlers/pam-dbus-notify	2014-01-15 00:36:52.000000000 +0100
++++ handlers/pam-dbus-notify	2020-01-29 12:53:20.116433175 +0100
+@@ -1,14 +1,16 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+-import pygtk
+-import gtk
+-import gobject
++import gi
++gi.require_version('Gtk', '3.0')
++from gi.repository import Gtk
+ 
+ import dbus
+ import dbus.service
+-import dbus.glib
+ 
+-import pynotify
++from dbus.mainloop.glib import DBusGMainLoop
++DBusGMainLoop(set_as_default=True)
++
++import notify2
+ 
+ # list of Notifications around, kept to prevent the garbage collector to handle them.
+ ns = []
+@@ -23,7 +25,7 @@ def notify_cb(n, action, pam_cb):
+     ns.remove(n)
+ 
+ # Initializite pynotify
+-if not pynotify.init("pam-dbus"):
++if not notify2.init("pam-dbus"):
+     sys.exit(1)
+ 
+ # dbus object to answer the request
+@@ -36,7 +38,7 @@ class PamDbusAnswer(dbus.service.Object)
+                           async_callbacks=('ret_cb', 'error_cb'))
+      def MayLogin(self, service, user, rhost, ruser, ret_cb, error_cb):
+ 
+-         n = pynotify.Notification("Login request","Someone " + 
++         n = notify2.Notification("Login request","Someone " + 
+                             ("named %s " % ruser if ruser else "") +
+                             "tries to log in via %s " % service + 
+                             ("from %s " % rhost if rhost else "") + 
+@@ -49,7 +51,7 @@ class PamDbusAnswer(dbus.service.Object)
+          n.connect("closed",lambda n: notify_cb(n,"closed", ret_cb))
+ 
+          if not n.show():
+-             print "Failed to send notification"
++             print("Failed to send notification")
+              sys.exit(1)
+ 
+          ns.append(n)
+@@ -58,5 +60,5 @@ system_bus = dbus.SystemBus()
+ name = dbus.service.BusName("de.nomeata.pam_dbus", bus=system_bus)
+ object = PamDbusAnswer(name)
+ 
+-gtk.main()
++Gtk.main()
+ 

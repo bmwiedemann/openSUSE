@@ -15,4 +15,13 @@
     <comment>1</comment>
     <requestid>513006</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6f75b057ff5398a545815ccafc30c591</srcmd5>
+    <version>0.2.1.3</version>
+    <time>1580373703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch py3port.patch
+  * First try to port pam_dbus to python3 (forwarded request 768320 from WernerFink)</comment>
+    <requestid>768321</requestid>
+  </revision>
 </revisionlist>
