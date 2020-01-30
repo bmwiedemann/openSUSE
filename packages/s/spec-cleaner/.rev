@@ -673,4 +673,12 @@
   * Exclude all pom_ macros from bracketing</comment>
     <requestid>748641</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>720d88e5e8cfb0e6ded85c012a6bbc2a</srcmd5>
+    <version>1.1.8</version>
+    <time>1580420233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768720</requestid>
+  </revision>
 </revisionlist>

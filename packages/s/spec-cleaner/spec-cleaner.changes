@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:00:42 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.1.8 bsc#1099674:
+  * Change libexecdir substitution to do /usr/libexec to %{_libexecdir}
+  * Exclude apache_rex_check from bracketing
+  * Add testscase for boolean dependencies that gets mangled currently
+  * Do not remove -p0 from autosetup
+  * Use %make_build if possible issue
+  * Teach spec-cleaner to not break the %elif* macros added with
+    rpm 4.15
+  * Fixup the nested boolean dependencies
+  * Fixup whitespace reported by flake8
+  * Set explicit urllib timeout issue
+  * Replace more stuff for %make build
+
+-------------------------------------------------------------------
 Thu Nov 14 10:44:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.7 bsc#1099674:
