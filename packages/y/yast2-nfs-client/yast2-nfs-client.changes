@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:41:17 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- fix return code for cli `yast2 nfs list` (bsc#1150070)
+- Add error message when delete failed due to not found entry
+- 4.2.6
+
+-------------------------------------------------------------------
 Fri Jan 17 12:49:20 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Delegates mount/unmount actions to yast2-storage-ng.
