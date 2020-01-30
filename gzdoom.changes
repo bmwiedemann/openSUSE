@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 29 17:43:59 UTC 2020 - Michael Scafidi <raptir@gmail.com>
+
+- Update to release 4.3.3
+  * fixed resetting of music volume after closing dialogue
+  * exposed Level.MusicVolume to ZScript
+  * fixed calling a function on string CVar
+  * added ability to filter VM disassembly dump
+  * add check for unity version of Nerve.wad
+  * infrastructure in place in case Nerve.wad changes again, this can be extended
+  * customized invulnerability colormap does not interfere with Powerup.ColorMap
+  * precache a few sounds being referenced in common game code.
+  * define misc/secret for Hexen, too. By now there are some mods defining secrets for the game so this sound should be present there.
+  * Implement special colormap support for softpoly
+  * Softpoly: Fix broken fixed camera light for walls
+  * make nosave standalone CVar flag, alongside server and user
+  * implemented screenshots in softpoly backend
+
+-------------------------------------------------------------------
 Sun Jan 19 11:03:29 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.3.2
