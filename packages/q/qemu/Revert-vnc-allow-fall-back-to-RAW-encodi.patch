@@ -1,0 +1,69 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Tue, 21 Jan 2020 07:02:10 +0100
+Subject: Revert "vnc: allow fall back to RAW encoding"
+
+Git-commit: 0780ec7be82dd4781e9fd216b5d99a125882ff5a
+
+This reverts commit de3f7de7f4e257ce44cdabb90f5f17ee99624557.
+
+Remove VNC optimization to reencode framebuffer update as raw if it's
+smaller than the default encoding.
+
+QEMU's implementation was naive and didn't account for the ZLIB z_stream
+mutating with each compression.  Because of the mutation, simply
+resetting the output buffer's offset wasn't sufficient to "rewind" the
+operation.  The mutated z_stream would generate future zlib blocks which
+referred to symbols in past blocks which weren't sent.  This would lead
+to artifacting.
+
+Considering that ZRLE is never larger than raw and even though ZLIB can
+occasionally be fractionally larger than raw, the overhead of
+implementing this optimization correctly isn't worth it.
+
+Signed-off-by: Cameron Esfahani <dirty@apple.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ ui/vnc.c | 20 ++------------------
+ 1 file changed, 2 insertions(+), 18 deletions(-)
+
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 87b8045afec2b7d52983914dbc08..f94b3a257ee3add364a0b0bd5101 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -898,8 +898,6 @@ int vnc_raw_send_framebuffer_update(VncState *vs, int x, int y, int w, int h)
+ int vnc_send_framebuffer_update(VncState *vs, int x, int y, int w, int h)
+ {
+     int n = 0;
+-    bool encode_raw = false;
+-    size_t saved_offs = vs->output.offset;
+ 
+     switch(vs->vnc_encoding) {
+         case VNC_ENCODING_ZLIB:
+@@ -922,24 +920,10 @@ int vnc_send_framebuffer_update(VncState *vs, int x, int y, int w, int h)
+             n = vnc_zywrle_send_framebuffer_update(vs, x, y, w, h);
+             break;
+         default:
+-            encode_raw = true;
++            vnc_framebuffer_update(vs, x, y, w, h, VNC_ENCODING_RAW);
++            n = vnc_raw_send_framebuffer_update(vs, x, y, w, h);
+             break;
+     }
+-
+-    /* If the client has the same pixel format as our internal buffer and
+-     * a RAW encoding would need less space fall back to RAW encoding to
+-     * save bandwidth and processing power in the client. */
+-    if (!encode_raw && vs->write_pixels == vnc_write_pixels_copy &&
+-        12 + h * w * VNC_SERVER_FB_BYTES <= (vs->output.offset - saved_offs)) {
+-        vs->output.offset = saved_offs;
+-        encode_raw = true;
+-    }
+-
+-    if (encode_raw) {
+-        vnc_framebuffer_update(vs, x, y, w, h, VNC_ENCODING_RAW);
+-        n = vnc_raw_send_framebuffer_update(vs, x, y, w, h);
+-    }
+-
+     return n;
+ }
+ 

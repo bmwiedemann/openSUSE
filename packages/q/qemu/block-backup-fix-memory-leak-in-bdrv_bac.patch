@@ -1,0 +1,47 @@
+From: Eiichi Tsukata <devel@etsukata.com>
+Date: Mon, 23 Dec 2019 18:06:32 +0900
+Subject: block/backup: fix memory leak in bdrv_backup_top_append()
+
+Git-commit: fb574de81bfdd71fdb0315105a3a7761efb68395
+
+bdrv_open_driver() allocates bs->opaque according to drv->instance_size.
+There is no need to allocate it and overwrite opaque in
+bdrv_backup_top_append().
+
+Reproducer:
+
+  $ QTEST_QEMU_BINARY=./x86_64-softmmu/qemu-system-x86_64 valgrind -q --leak-check=full tests/test-replication -p /replication/secondary/start
+  ==29792== 24 bytes in 1 blocks are definitely lost in loss record 52 of 226
+  ==29792==    at 0x483AB1A: calloc (vg_replace_malloc.c:762)
+  ==29792==    by 0x4B07CE0: g_malloc0 (in /usr/lib64/libglib-2.0.so.0.6000.7)
+  ==29792==    by 0x12BAB9: bdrv_open_driver (block.c:1289)
+  ==29792==    by 0x12BEA9: bdrv_new_open_driver (block.c:1359)
+  ==29792==    by 0x1D15CB: bdrv_backup_top_append (backup-top.c:190)
+  ==29792==    by 0x1CC11A: backup_job_create (backup.c:439)
+  ==29792==    by 0x1CD542: replication_start (replication.c:544)
+  ==29792==    by 0x1401B9: replication_start_all (replication.c:52)
+  ==29792==    by 0x128B50: test_secondary_start (test-replication.c:427)
+  ...
+
+Fixes: 7df7868b9640 ("block: introduce backup-top filter driver")
+Signed-off-by: Eiichi Tsukata <devel@etsukata.com>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/backup-top.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/block/backup-top.c b/block/backup-top.c
+index 818d3f26b48da425ba061e21887f..64e9e4f576ab27889fb4c0d8aa0a 100644
+--- a/block/backup-top.c
++++ b/block/backup-top.c
+@@ -196,7 +196,7 @@ BlockDriverState *bdrv_backup_top_append(BlockDriverState *source,
+     }
+ 
+     top->total_sectors = source->total_sectors;
+-    top->opaque = state = g_new0(BDRVBackupTopState, 1);
++    state = top->opaque;
+ 
+     bdrv_ref(target);
+     state->target = bdrv_attach_child(top, target, "target", &child_file, errp);

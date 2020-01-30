@@ -1,0 +1,76 @@
+From: Cornelia Huck <cohuck@redhat.com>
+Date: Thu, 16 Jan 2020 13:10:35 +0100
+Subject: s390x: adapter routes error handling
+
+Git-commit: 3c5fd8074335c67777d9391b84f97070c35d9c63
+
+If the kernel irqchip has been disabled, we don't want the
+{add,release}_adapter_routes routines to call any kvm_irqchip_*
+interfaces, as they may rely on an irqchip actually having been
+created. Just take a quick exit in that case instead. If you are
+trying to use irqfd without a kernel irqchip, we will fail with
+an error.
+
+Also initialize routes->gsi[] with -1 in the virtio-ccw handling,
+to make sure we don't trip over other errors, either. (Nobody
+else uses the gsi array in that structure.)
+
+Fixes: d426d9fba8ea ("s390x/virtio-ccw: wire up irq routing and irqfds")
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Message-Id: <20200117111147.5006-1-cohuck@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/intc/s390_flic_kvm.c | 8 ++++++++
+ hw/s390x/virtio-ccw.c   | 4 ++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
+index c9ee80eaae02dea3a46bbaf82d4a..98cc15868374034d9d18b539dc42 100644
+--- a/hw/intc/s390_flic_kvm.c
++++ b/hw/intc/s390_flic_kvm.c
+@@ -331,6 +331,10 @@ static int kvm_s390_add_adapter_routes(S390FLICState *fs,
+     int ret, i;
+     uint64_t ind_offset = routes->adapter.ind_offset;
+ 
++    if (!kvm_gsi_routing_enabled()) {
++        return -ENOSYS;
++    }
++
+     for (i = 0; i < routes->num_routes; i++) {
+         ret = kvm_irqchip_add_adapter_route(kvm_state, &routes->adapter);
+         if (ret < 0) {
+@@ -358,6 +362,10 @@ static void kvm_s390_release_adapter_routes(S390FLICState *fs,
+ {
+     int i;
+ 
++    if (!kvm_gsi_routing_enabled()) {
++        return;
++    }
++
+     for (i = 0; i < routes->num_routes; i++) {
+         if (routes->gsi[i] >= 0) {
+             kvm_irqchip_release_virq(kvm_state, routes->gsi[i]);
+diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+index 6580ce5907dd0b3c87bae8e04923..13f57e7b67f18c644dee4c292fdf 100644
+--- a/hw/s390x/virtio-ccw.c
++++ b/hw/s390x/virtio-ccw.c
+@@ -697,6 +697,7 @@ static void virtio_ccw_device_realize(VirtioCcwDevice *dev, Error **errp)
+     CCWDeviceClass *ck = CCW_DEVICE_GET_CLASS(ccw_dev);
+     SubchDev *sch;
+     Error *err = NULL;
++    int i;
+ 
+     sch = css_create_sch(ccw_dev->devno, errp);
+     if (!sch) {
+@@ -717,6 +718,9 @@ static void virtio_ccw_device_realize(VirtioCcwDevice *dev, Error **errp)
+     ccw_dev->sch = sch;
+     dev->indicators = NULL;
+     dev->revision = -1;
++    for (i = 0; i < ADAPTER_ROUTES_MAX_GSI; i++) {
++        dev->routes.gsi[i] = -1;
++    }
+     css_sch_build_virtual_schib(sch, 0, VIRTIO_CCW_CHPID_TYPE);
+ 
+     trace_virtio_ccw_new_device(

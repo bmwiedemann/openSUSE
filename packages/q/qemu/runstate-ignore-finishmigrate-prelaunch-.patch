@@ -1,0 +1,61 @@
+From: Laurent Vivier <lvivier@redhat.com>
+Date: Fri, 29 Nov 2019 12:51:32 +0100
+Subject: runstate: ignore finishmigrate -> prelaunch transition
+
+Git-commit: ddad81bd28de665475a87693a93e6cf5d6fd8bab
+
+Commit 1bd71dce4bf2 tries to prevent a finishmigrate -> prelaunch
+transition by exiting at the beginning of the main_loop_should_exit()
+function if the state is already finishmigrate.
+
+As the finishmigrate state is set in the migration thread it can
+happen concurrently to the function. The migration thread and the
+function are normally protected by the iothread mutex and thus the
+state should no evolve between the start of the function and its end.
+
+Unfortunately during the function life the lock is released by
+pause_all_vcpus() just before the point we need to be sure we are
+not in finishmigrate state and if the migration thread is waiting
+for the lock it will take the opportunity to change the state
+to finishmigrate.
+
+The only way to be sure we are not in the finishmigrate state when
+we need is to check the state after the pause_all_vcpus() function.
+
+Fixes: 1bd71dce4bf2 ("runstate: ignore exit request in finish migrate state")
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Signed-off-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ vl.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/vl.c b/vl.c
+index 6a65a64bfd647afcf539145f9cf9..bf0a6345d2394ad25adfe53c4006 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1745,9 +1745,6 @@ static bool main_loop_should_exit(void)
+     RunState r;
+     ShutdownCause request;
+ 
+-    if (runstate_check(RUN_STATE_FINISH_MIGRATE)) {
+-        return false;
+-    }
+     if (preconfig_exit_requested) {
+         if (runstate_check(RUN_STATE_PRECONFIG)) {
+             runstate_set(RUN_STATE_PRELAUNCH);
+@@ -1776,8 +1773,13 @@ static bool main_loop_should_exit(void)
+         pause_all_vcpus();
+         qemu_system_reset(request);
+         resume_all_vcpus();
++        /*
++         * runstate can change in pause_all_vcpus()
++         * as iothread mutex is unlocked
++         */
+         if (!runstate_check(RUN_STATE_RUNNING) &&
+-                !runstate_check(RUN_STATE_INMIGRATE)) {
++                !runstate_check(RUN_STATE_INMIGRATE) &&
++                !runstate_check(RUN_STATE_FINISH_MIGRATE)) {
+             runstate_set(RUN_STATE_PRELAUNCH);
+         }
+     }

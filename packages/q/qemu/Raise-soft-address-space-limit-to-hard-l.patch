@@ -16,7 +16,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+)
 
 diff --git a/vl.c b/vl.c
-index 6a65a64bfd647afcf539145f9cf9..57e68fdc4526b7156af155be933f 100644
+index bf0a6345d2394ad25adfe53c4006..68de8184f91c6ef3903859c70526 100644
 --- a/vl.c
 +++ b/vl.c
 @@ -33,6 +33,7 @@
@@ -27,7 +27,7 @@ index 6a65a64bfd647afcf539145f9cf9..57e68fdc4526b7156af155be933f 100644
  #include "sysemu/seccomp.h"
  #include "sysemu/tcg.h"
  
-@@ -2861,6 +2862,7 @@ int main(int argc, char **argv, char **envp)
+@@ -2863,6 +2864,7 @@ int main(int argc, char **argv, char **envp)
      char *dir, **dirs;
      BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
      QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
@@ -35,7 +35,7 @@ index 6a65a64bfd647afcf539145f9cf9..57e68fdc4526b7156af155be933f 100644
  
      os_set_line_buffering();
  
-@@ -2872,6 +2874,16 @@ int main(int argc, char **argv, char **envp)
+@@ -2874,6 +2876,16 @@ int main(int argc, char **argv, char **envp)
  
      qemu_mutex_lock_iothread();
  

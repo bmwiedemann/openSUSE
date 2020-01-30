@@ -1,0 +1,36 @@
+From: Richard Henderson <richard.henderson@linaro.org>
+Date: Fri, 17 Jan 2020 14:09:31 +0000
+Subject: target/arm: Set ISSIs16Bit in make_issinfo
+
+Git-commit: 1a1fbc6cbb34c26d43d8360c66c1d21681af14a9
+
+During the conversion to decodetree, the setting of
+ISSIs16Bit got lost.  This causes the guest os to
+incorrectly adjust trapping memory operations.
+
+Cc: qemu-stable@nongnu.org
+Fixes: 46beb58efbb8a2a32 ("target/arm: Convert T16, load (literal)")
+Reported-by: Jeff Kubascik <jeff.kubascik@dornerworks.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20200117004618.2742-3-richard.henderson@linaro.org
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/arm/translate.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 4d5d4bd8886c138196cec746f0e7..24e3d6619b202c78835dc068a2ce 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -8552,6 +8552,9 @@ static ISSInfo make_issinfo(DisasContext *s, int rd, bool p, bool w)
+     /* ISS not valid if writeback */
+     if (p && !w) {
+         ret = rd;
++        if (s->base.pc_next - s->pc_curr == 2) {
++            ret |= ISSIs16Bit;
++        }
+     } else {
+         ret = ISSInvalid;
+     }

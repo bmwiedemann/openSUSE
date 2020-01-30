@@ -87,7 +87,7 @@
 %define summary_string Machine emulator and virtualizer
 %endif
 
-%bcond_without system_membarrier
+%bcond_with system_membarrier
 
 %define qemuver 4.2.0
 %define srcver  4.2.0
@@ -165,48 +165,60 @@ Patch00034:     virtio-net-delete-also-control-queue-whe.patch
 Patch00035:     intel_iommu-a-fix-to-vtd_find_as_from_bu.patch
 Patch00036:     target-i386-Add-new-bit-definitions-of-M.patch
 Patch00037:     target-i386-Add-missed-features-to-Coope.patch
-Patch00038:     XXX-dont-dump-core-on-sigabort.patch
-Patch00039:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00040:     qemu-cvs-gettimeofday.patch
-Patch00041:     qemu-cvs-ioctl_debug.patch
-Patch00042:     qemu-cvs-ioctl_nodirection.patch
-Patch00043:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00044:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00045:     linux-user-binfmt-support-host-binaries.patch
-Patch00046:     linux-user-Fake-proc-cpuinfo.patch
-Patch00047:     linux-user-use-target_ulong.patch
-Patch00048:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00049:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00050:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00051:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00052:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00053:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00054:     linux-user-properly-test-for-infinite-ti.patch
-Patch00055:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00056:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00057:     increase-x86_64-physical-bits-to-42.patch
-Patch00058:     vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch
-Patch00059:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00060:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00061:     Switch-order-of-libraries-for-mpath-supp.patch
-Patch00062:     Make-installed-scripts-explicitly-python.patch
-Patch00063:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00064:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00065:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00066:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00067:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00068:     Conditionalize-ui-bitmap-installation-be.patch
-Patch00069:     tests-change-error-message-in-test-162.patch
-Patch00070:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
-Patch00071:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
-Patch00072:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00073:     configure-only-populate-roms-if-softmmu.patch
-Patch00074:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00075:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00076:     tests-Disable-some-block-tests-for-now.patch
-Patch00077:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00078:     roms-Makefile-enable-cross-compile-for-b.patch
-Patch00079:     hw-i386-disable-smbus-migration-for-xenf.patch
+Patch00038:     hw-i386-pc-fix-regression-in-parsing-vga.patch
+Patch00039:     migration-test-ppc64-fix-FORTH-test-prog.patch
+Patch00040:     target-arm-Return-correct-IL-bit-in-merg.patch
+Patch00041:     target-arm-Set-ISSIs16Bit-in-make_issinf.patch
+Patch00042:     runstate-ignore-finishmigrate-prelaunch-.patch
+Patch00043:     migration-Rate-limit-inside-host-pages.patch
+Patch00044:     m68k-Fix-regression-causing-Single-Step-.patch
+Patch00045:     Revert-vnc-allow-fall-back-to-RAW-encodi.patch
+Patch00046:     vnc-prioritize-ZRLE-compression-over-ZLI.patch
+Patch00047:     target-i386-kvm-initialize-feature-MSRs-.patch
+Patch00048:     s390x-adapter-routes-error-handling.patch
+Patch00049:     XXX-dont-dump-core-on-sigabort.patch
+Patch00050:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00051:     qemu-cvs-gettimeofday.patch
+Patch00052:     qemu-cvs-ioctl_debug.patch
+Patch00053:     qemu-cvs-ioctl_nodirection.patch
+Patch00054:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00055:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00056:     linux-user-binfmt-support-host-binaries.patch
+Patch00057:     linux-user-Fake-proc-cpuinfo.patch
+Patch00058:     linux-user-use-target_ulong.patch
+Patch00059:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00060:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00061:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00062:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00063:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00064:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00065:     linux-user-properly-test-for-infinite-ti.patch
+Patch00066:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00067:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00068:     increase-x86_64-physical-bits-to-42.patch
+Patch00069:     vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch
+Patch00070:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00071:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00072:     Switch-order-of-libraries-for-mpath-supp.patch
+Patch00073:     Make-installed-scripts-explicitly-python.patch
+Patch00074:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00075:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00076:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00077:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00078:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00079:     Conditionalize-ui-bitmap-installation-be.patch
+Patch00080:     tests-change-error-message-in-test-162.patch
+Patch00081:     hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch
+Patch00082:     hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch
+Patch00083:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00084:     configure-only-populate-roms-if-softmmu.patch
+Patch00085:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00086:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00087:     tests-Disable-some-block-tests-for-now.patch
+Patch00088:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00089:     roms-Makefile-enable-cross-compile-for-b.patch
+Patch00090:     iscsi-Cap-block-count-from-GET-LBA-STATU.patch
+Patch00091:     block-backup-fix-memory-leak-in-bdrv_bac.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -360,8 +372,8 @@ BuildRequires:  python3-base
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
 BuildRequires:  spice-protocol-devel >= 0.12.3
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %if %{kvm_available}
 BuildRequires:  pkgconfig(udev)
 %endif
@@ -810,7 +822,7 @@ Requires(post): udev
 Supplements:    modalias(acpi*:QEMU0002%3A*)
 Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00005853d00000001sv*sd*bc*sc*i*)
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description guest-agent
 This package contains the QEMU guest agent. It is installed in the linux guest
@@ -993,6 +1005,18 @@ This package provides a service file for starting and stopping KSM.
 %patch00077 -p1
 %patch00078 -p1
 %patch00079 -p1
+%patch00080 -p1
+%patch00081 -p1
+%patch00082 -p1
+%patch00083 -p1
+%patch00084 -p1
+%patch00085 -p1
+%patch00086 -p1
+%patch00087 -p1
+%patch00088 -p1
+%patch00089 -p1
+%patch00090 -p1
+%patch00091 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

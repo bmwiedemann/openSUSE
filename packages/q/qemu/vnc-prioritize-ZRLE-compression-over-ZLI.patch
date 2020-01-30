@@ -1,0 +1,59 @@
+From: Cameron Esfahani <dirty@apple.com>
+Date: Mon, 20 Jan 2020 21:00:52 -0800
+Subject: vnc: prioritize ZRLE compression over ZLIB
+
+Git-commit: 557ba0e57200014bd4f453f6516f02b61bdfc782
+
+In my investigation, ZRLE always compresses better than ZLIB so
+prioritize ZRLE over ZLIB, even if the client hints that ZLIB is
+preferred.
+
+zlib buffer is always reset in zrle_compress_data(), so using offset to
+calculate next_out and avail_out is useless.
+
+Signed-off-by: Cameron Esfahani <dirty@apple.com>
+Message-Id: <b5d129895d08a90d0a2a6183b95875bacfa998b8.1579582674.git.dirty@apple.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ ui/vnc-enc-zrle.c |  4 ++--
+ ui/vnc.c          | 11 +++++++++--
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/ui/vnc-enc-zrle.c b/ui/vnc-enc-zrle.c
+index 17fd28a2e2b078bd135496e75c6b..b4f71e32cfe8ca3dd645103f999d 100644
+--- a/ui/vnc-enc-zrle.c
++++ b/ui/vnc-enc-zrle.c
+@@ -98,8 +98,8 @@ static int zrle_compress_data(VncState *vs, int level)
+     /* set pointers */
+     zstream->next_in = vs->zrle->zrle.buffer;
+     zstream->avail_in = vs->zrle->zrle.offset;
+-    zstream->next_out = vs->zrle->zlib.buffer + vs->zrle->zlib.offset;
+-    zstream->avail_out = vs->zrle->zlib.capacity - vs->zrle->zlib.offset;
++    zstream->next_out = vs->zrle->zlib.buffer;
++    zstream->avail_out = vs->zrle->zlib.capacity;
+     zstream->data_type = Z_BINARY;
+ 
+     /* start encoding */
+diff --git a/ui/vnc.c b/ui/vnc.c
+index f94b3a257ee3add364a0b0bd5101..70bd8bf05d163e2ef0911c3b19fd 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -2077,8 +2077,15 @@ static void set_encodings(VncState *vs, int32_t *encodings, size_t n_encodings)
+             break;
+ #endif
+         case VNC_ENCODING_ZLIB:
+-            vs->features |= VNC_FEATURE_ZLIB_MASK;
+-            vs->vnc_encoding = enc;
++            /*
++             * VNC_ENCODING_ZRLE compresses better than VNC_ENCODING_ZLIB.
++             * So prioritize ZRLE, even if the client hints that it prefers
++             * ZLIB.
++             */
++            if ((vs->features & VNC_FEATURE_ZRLE_MASK) == 0) {
++                vs->features |= VNC_FEATURE_ZLIB_MASK;
++                vs->vnc_encoding = enc;
++            }
+             break;
+         case VNC_ENCODING_ZRLE:
+             vs->features |= VNC_FEATURE_ZRLE_MASK;

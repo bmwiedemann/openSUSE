@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jan 28 16:24:31 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Stop using system membarriers (ie switch from --enable-membarrier
+  to --disable-membarrier). This is a blocker for using qemu in the
+  context of containers (boo#1130134 jsc#SLE-11089)
+- Drop this recently added patch - in consultation with upstream it
+  was decided it needed to be solved a different way (bsc#1159755)
+  hw-i386-disable-smbus-migration-for-xenf.patch
+- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  block-backup-fix-memory-leak-in-bdrv_bac.patch
+  iscsi-Cap-block-count-from-GET-LBA-STATU.patch
+  s390x-adapter-routes-error-handling.patch
+  target-i386-kvm-initialize-feature-MSRs-.patch
+
+-------------------------------------------------------------------
+Fri Jan 24 19:50:50 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  hw-i386-pc-fix-regression-in-parsing-vga.patch
+  m68k-Fix-regression-causing-Single-Step-.patch
+  migration-Rate-limit-inside-host-pages.patch
+  migration-test-ppc64-fix-FORTH-test-prog.patch
+  Revert-vnc-allow-fall-back-to-RAW-encodi.patch
+  runstate-ignore-finishmigrate-prelaunch-.patch
+  target-arm-Return-correct-IL-bit-in-merg.patch
+  target-arm-Set-ISSIs16Bit-in-make_issinf.patch
+  vnc-prioritize-ZRLE-compression-over-ZLI.patch
+
+-------------------------------------------------------------------
+Fri Jan 24 14:59:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+- Use systemd_ordering in place of systemd_requires: systemd is
+  never a strict requirement for qemu; but when installing qemu on
+  a systemd-managed system, we want system to be present first.
+
+-------------------------------------------------------------------
 Tue Jan 14 18:10:53 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix xenfv migration from xen host with pre-v4.0 qemu (bsc#1159755)

@@ -1,0 +1,55 @@
+From: Laurent Vivier <lvivier@redhat.com>
+Date: Tue, 7 Jan 2020 17:34:37 +0100
+Subject: migration-test: ppc64: fix FORTH test program
+
+Git-commit: 16c5c6928ff53bd95e6504301ef6c285501531e7
+
+Commit e51e711b1bef has moved the initialization of start_address and
+end_address after the definition of the command line argument,
+where the nvramrc is initialized, and thus the loop is between 0 and 0
+rather than 1 MiB and 100 MiB.
+
+It doesn't affect the result of the test if all the tests are run in
+sequence because the two first tests don't run the loop, so the
+values are correctly initialized when we actually need them.
+
+But it hangs when we ask to run only one test, for instance:
+
+    QTEST_QEMU_BINARY=ppc64-softmmu/qemu-system-ppc64 \
+    tests/migration-test -m=quick -p /ppc64/migration/validate_uuid_error
+
+Fixes: e51e711b1bef ("tests/migration: Add migration-test header file")
+Cc: wei@redhat.com
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Message-Id: <20200107163437.52139-1-lvivier@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/migration-test.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/migration-test.c b/tests/migration-test.c
+index ebd77a581affd8872138f6f36d5e..d79980fbe39dfaa3fa89999ee64f 100644
+--- a/tests/migration-test.c
++++ b/tests/migration-test.c
+@@ -614,6 +614,8 @@ static int test_migrate_start(QTestState **from, QTestState **to,
+         end_address = S390_TEST_MEM_END;
+     } else if (strcmp(arch, "ppc64") == 0) {
+         extra_opts = use_shmem ? get_shmem_opts("256M", shmem_path) : NULL;
++        start_address = PPC_TEST_MEM_START;
++        end_address = PPC_TEST_MEM_END;
+         cmd_src = g_strdup_printf("-machine accel=%s,vsmt=8 -m 256M -nodefaults"
+                                   " -name source,debug-threads=on"
+                                   " -serial file:%s/src_serial"
+@@ -630,8 +632,6 @@ static int test_migrate_start(QTestState **from, QTestState **to,
+                                   accel, tmpfs, uri,
+                                   extra_opts ? extra_opts : "", opts_dst);
+ 
+-        start_address = PPC_TEST_MEM_START;
+-        end_address = PPC_TEST_MEM_END;
+     } else if (strcmp(arch, "aarch64") == 0) {
+         init_bootfile(bootpath, aarch64_kernel, sizeof(aarch64_kernel));
+         extra_opts = use_shmem ? get_shmem_opts("150M", shmem_path) : NULL;

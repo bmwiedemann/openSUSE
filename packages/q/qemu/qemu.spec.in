@@ -87,7 +87,7 @@
 %define summary_string Machine emulator and virtualizer
 %endif
 
-%bcond_without system_membarrier
+%bcond_with system_membarrier
 
 INSERT_VERSIONING
 %define srcname qemu
@@ -259,8 +259,8 @@ BuildRequires:  python3-base
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
 BuildRequires:  spice-protocol-devel >= 0.12.3
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %if %{kvm_available}
 BuildRequires:  pkgconfig(udev)
 %endif
@@ -709,7 +709,7 @@ Requires(post): udev
 Supplements:    modalias(acpi*:QEMU0002%3A*)
 Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00005853d00000001sv*sd*bc*sc*i*)
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description guest-agent
 This package contains the QEMU guest agent. It is installed in the linux guest
