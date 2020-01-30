@@ -827,4 +827,16 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment></comment>
     <requestid>758500</requestid>
   </revision>
+  <revision rev="93" vrev="21">
+    <srcmd5>ab41fb3400dcf318aa19d71cb369996d</srcmd5>
+    <version>8.15.2</version>
+    <time>1580397599</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch 8.15.2.mci.p0
+  * If sendmail tried to reuse an SMTP session which had already been
+    closed by the server, then the connection cache could have invalid
+    information about the session.  One possible consequence was that
+    STARTTLS was not used even if offered.</comment>
+    <requestid>768562</requestid>
+  </revision>
 </revisionlist>

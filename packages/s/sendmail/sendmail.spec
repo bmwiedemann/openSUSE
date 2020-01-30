@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,6 +106,8 @@ Source7:        sendmail-client.systemd
 Patch0:         sendmail-8.15.2.dif
 # PATCH-FIX-OPENSUSE: if select(2) is interrupted the timeout become undefined
 Patch1:         sendmail-8.14.7-select.dif
+# PATCH-FIX-UPSTREAM: SMTP session reuse bugfix (boo#1162204)
+Patch2:         8.15.2.mci.p0
 # PATCH-FIX-UPSTREAM: Detect shared libraries
 Patch4:         sendmail-8.14.8-m4header.patch
 # PATCH-FIX-DEBIAN: systemd socket activation support for libmilter
@@ -208,6 +210,7 @@ processed mail on to the MTA (e.g. sendmail).
 %prep
 %setup -n sendmail-%{version}
 %patch1 -p0 -b .select
+%patch2 -p0 -b .reuse
 %patch4 -p0 -b .m4head
 %patch5 -p1 -b .fdmilt
 if pkg-config --atleast-version=1.1.0 openssl; then
