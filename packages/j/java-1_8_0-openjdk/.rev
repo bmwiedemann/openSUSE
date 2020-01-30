@@ -546,4 +546,12 @@
     <comment>January 2020 CPU</comment>
     <requestid>765990</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>a14e668c3f60075e66bea2e991c12e37</srcmd5>
+    <version>1.8.0.242</version>
+    <time>1580373317</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9</comment>
+    <requestid>767663</requestid>
+  </revision>
 </revisionlist>

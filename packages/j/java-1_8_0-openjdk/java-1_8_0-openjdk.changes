@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:41:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- On platform where OpenJ9 exists, avoid building with it in order
+  to prevent build cycles
+
+-------------------------------------------------------------------
 Tue Jan 21 06:40:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u242 (icedtea 3.15.0) (January 2020 CPU,

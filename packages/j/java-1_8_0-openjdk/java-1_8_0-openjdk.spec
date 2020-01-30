@@ -248,6 +248,7 @@ Provides:       jre1.8.x
 %if %{with bootstrap}
 BuildRequires:  java-devel >= 1.7
 BuildConflicts: java-devel >= 1.9
+buildConflicts: java-devel-openj9
 %else
 BuildRequires:  %{name}-devel
 %endif
