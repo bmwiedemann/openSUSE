@@ -95,6 +95,10 @@ Substitute: dmz-icon-theme-cursors dmz-icon-theme-cursors insserv-compat
 %endif
 Prefer: installation-images-openSUSE installation-images-debuginfodeps-openSUSE
 
+# Packages that need netcfg will also require libnss_usrfiles2, as a few files moved from /etc to /usr/etc
+# Since not all packages care, we only add it where needed (instead of preinstall)
+Substitute: netcfg netcfg libnss_usrfiles2
+
 # switch to kiwi v8
 Prefer: python3-kiwi
 Conflict: python3-kiwi:libsystemd0-mini
