@@ -1,7 +1,7 @@
 #
 # spec file for package QR-Code-generator
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ License:        MIT
 URL:            https://github.com/nayuki/QR-Code-generator
 Source:         https://github.com/nayuki/QR-Code-generator/archive/v%{version}.tar.gz
 Patch0:         cflags.patch
-Patch1:         0001-Do-not-append-to-C-XX-FLAGS-but-just-set-them-if-not.patch
 Patch2:         0002-Make-use-of-fPIC-parameter-when-building.patch
 Patch3:         0003-Generate-both-shared-and-static-libraries.patch
 Patch4:         0004-Create-install-targets-for-C-and-CPP.patch
@@ -41,6 +40,15 @@ BuildRequires:  python-rpm-macros
 This project aims to be the best, clearest QR Code generator library in multiple languages.
 The primary goals are flexible options and absolute correctness.
 Secondary goals are compact implementation size and good documentation comments.
+
+%if 0%{?suse_version} < 1500
+# this is hack to make rpm happy as %python_subpackage does not work
+%package -n python-%{name}
+Summary:        QR Code generator python bindings
+
+%description -n python-%{name}
+QR Code generator python2 bindings
+%endif
 
 %package devel
 Summary:        Development files for QR code generator
