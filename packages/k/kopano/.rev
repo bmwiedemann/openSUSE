@@ -186,4 +186,12 @@
     <comment>- Update to release 9.0.2</comment>
     <requestid>757645</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a4745ab1105c39b153e7e6971f77f0cc</srcmd5>
+    <version>10.0.1</version>
+    <time>1580373715</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>768418</requestid>
+  </revision>
 </revisionlist>

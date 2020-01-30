@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 17:43:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.1
+  * common: avoid computing log messages that will not get
+    shown [KC-1674]
+  * freebusy: fix crash in RecurrenceState::Exception instantiation
+  * client: IDN support [KC-1659]
+  * In config files, fractional values can now be used
+    for sizes ("0.5G").
+
+-------------------------------------------------------------------
 Mon Dec 16 16:18:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.2

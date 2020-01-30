@@ -1,12 +1,12 @@
 Format: 1.0
 Source: kopano
 Architecture: any all
-Version: 9.0.2-0
+Version: 10.0.1-0
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Kopano Development <development@kopano.io>
 Homepage: https://kopano.com
 Standards-Version: 3.9.4
-# You need to update both kopano.dsc and debian.control (*sigh* - Debian)
+# You need to update both .dsc and debian.control (*sigh* - Debian)
 Build-Depends:
  autoconf (>= 2.59),
  automake (>= 1:1.10) | automake1.10,
@@ -17,14 +17,14 @@ Build-Depends:
  dh-systemd (>= 1.5),
  dts4debian [amd64],
  fakeroot,
- g++ (>= 4.8),
+ g++ (>= 6),
  gettext,
  gsoap (>= 2.8.49),
  libcurl3-dev | libcurl4-openssl-dev,
  libdb++-dev,
  libgoogle-perftools-dev,
  libhx-dev (>= 1.10),
- libical-dev,
+ libical3-dev | libical-dev,
  libicu-dev,
  libjsoncpp-dev (>= 1.4.0),
  libkrb5-dev,
@@ -44,7 +44,7 @@ Build-Depends:
  lsb-release,
  m4,
  openssl,
- php-dev | php7.3-dev | php7.2-dev | php7.1-dev | php7.0-dev | php5-dev,
+ php-dev | php7.3-dev | php7.2-dev | php7.1-dev | php7.0-dev,
  pkg-config (>= 0.18),
  python3-dev,
  python3-setuptools,

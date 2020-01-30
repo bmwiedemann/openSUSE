@@ -1,7 +1,7 @@
 #
 # spec file for package kopano
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Kopano B.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 9.0.2
+%define version_unconverted 10.0.1
 
 Name:           kopano
-Version:        9.0.2
+Version:        10.0.1
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
