@@ -285,7 +285,7 @@ install -D -m 644 doc/manual.txt.gz %{buildroot}%{_docdir}/%name/
 %pre
 if test $1 -gt 1 -a -e %{_docdir}/%name/manual.txt.gz
 then
-    zcat %{_docdir}/%name/manual.txt.gz |  grep -F 'version %{version}' > /run/mutt-version
+    zcat %{_docdir}/%name/manual.txt.gz |  grep -F 'version %{version}' > /run/mutt-version || :
 fi
 
 %post

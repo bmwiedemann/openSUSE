@@ -1034,4 +1034,12 @@
   users about these (thanks to Roger Whittaker)</comment>
     <requestid>768052</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>7a84411bf6e60844bc4778de683b8ecf</srcmd5>
+    <version>1.13.3</version>
+    <time>1580397619</time>
+    <user>dimstar_suse</user>
+    <comment>- Be aware that it might be that the version is not found (boo#1162245)</comment>
+    <requestid>768746</requestid>
+  </revision>
 </revisionlist>
