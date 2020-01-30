@@ -1,7 +1,7 @@
-Index: YaST2/firstboot-wsl.xml
+Index: yast2-firstboot-wsl/firstboot-wsl.xml
 ===================================================================
---- YaST2.orig/firstboot-wsl.xml
-+++ YaST2/firstboot-wsl.xml
+--- yast2-firstboot-wsl.orig/firstboot-wsl.xml
++++ yast2-firstboot-wsl/firstboot-wsl.xml
 @@ -20,8 +20,8 @@
  	If the variable is missing (commented), the check box won't appear.
  
@@ -12,7 +12,7 @@ Index: YaST2/firstboot-wsl.xml
  
  	<!-- The default value of "Automatic Login" checkbox -->
  	<enable_autologin config:type="boolean">false</enable_autologin>
-@@ -84,11 +84,12 @@
+@@ -55,11 +55,12 @@
              <modules  config:type="list">
                  <module>
                      <label>Network Autosetup</label>
@@ -26,7 +26,7 @@ Index: YaST2/firstboot-wsl.xml
  		    <!-- step for configuration of both language and keyboard layout (fate#306296) -->
                      <name>firstboot_language_keyboard</name>
                  </module>
-@@ -123,7 +124,7 @@
+@@ -94,7 +95,7 @@
                      <enabled config:type="boolean">false</enabled>
                  </module>
                  <module>
@@ -35,7 +35,7 @@ Index: YaST2/firstboot-wsl.xml
                      <name>firstboot_ssh</name>
                  </module>
                  <module>
-@@ -138,7 +139,7 @@
+@@ -109,7 +110,7 @@
                   </module>
                  <module>
                      <label>Time and Date</label>
@@ -44,7 +44,7 @@ Index: YaST2/firstboot-wsl.xml
                      <name>firstboot_timezone</name>
                  </module>
                  <module>
-@@ -184,6 +185,13 @@
+@@ -155,6 +156,13 @@
                      <enable_next>no</enable_next>
                  </module>
                  <module>
@@ -57,8 +57,8 @@ Index: YaST2/firstboot-wsl.xml
 +                <module>
                      <label>Finish Setup</label>
                      <name>inst_congratulate</name>
-                 </module>
-@@ -192,10 +200,10 @@
+                     <enable_back>no</enable_back>
+@@ -165,10 +173,10 @@
          </workflow>
      </workflows>
      <texts>
