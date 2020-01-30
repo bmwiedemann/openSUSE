@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 29 14:26:12 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix random building problems (bsc#1162122).
+- 4.2.30
+
+-------------------------------------------------------------------
+Tue Jan 28 16:19:45 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improves the online search mechanism (jsc#SLE-9109):
+  - Do not crash when a package does not belong to an addon.
+  - Display dependencies when enabling a module/extension.
+  - Handle multiple packages with the same name properly.
+  - Show an error when a package cannot be selected for
+    installation.
+  - After selecting a package, unselect the addon if it is not
+    needed anymore.
+  - Forces a minimal number of characters before performing the
+    search.
+  - Removes the 'Back' button.
+- 4.2.29
+
+-------------------------------------------------------------------
 Thu Jan 23 11:58:16 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add support to perform online package searches through all the
