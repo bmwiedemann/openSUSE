@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:16:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.4.0
+  * Python 3.4 drop
+  * Replace deprecated PyMongo methods usage
+  * Avoid serializing datetime
+  * fixed call for null args
+  * Fix termination of asyncloop
+  * Python 3.8
+  * Fix a race condition when publishing a very large chord header
+- Drop unneeded patch pytest5.patch
+- Reapplied unpin-pytest.patch
+
+-------------------------------------------------------------------
 Tue Nov 19 11:00:58 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - use %pytest macro
