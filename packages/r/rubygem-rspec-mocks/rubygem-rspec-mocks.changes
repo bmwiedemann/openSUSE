@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:24:39 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.9.1
+
+  # Bug Fixes:
+
+  * Trigger RSpec::Mocks.configuration.verifying_double_callbacks when
+    using allow_any_instance_of or expect_any_instance_of (Daniel Orner, #1309)
+
+-------------------------------------------------------------------
 Tue Nov 12 14:47:37 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.9.0
