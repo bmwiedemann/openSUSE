@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,9 +55,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libudev-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  m17n-lib-devel
+BuildRequires:  pkgconfig(libudev)
 %if %{with mailutils}
 BuildRequires:  mailutils
 BuildRequires:  mailutils-devel
@@ -102,7 +102,7 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
-Url:            http://www.gnu.org/software/emacs/
+URL:            http://www.gnu.org/software/emacs/
 Version:        26.3
 Release:        0
 Summary:        GNU Emacs Base Package

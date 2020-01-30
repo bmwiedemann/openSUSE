@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:02:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Mon Sep  9 08:35:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to emacs version 26.3
