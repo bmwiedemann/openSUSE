@@ -21,8 +21,11 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+# optionally build with test coverage reporting
+%bcond_with coverage
+
 Name:           snapper
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         snapper-%{version}.tar.bz2
@@ -77,6 +80,9 @@ BuildRequires:  json-c-devel
 %else
 BuildRequires:  libjson-c-devel
 %endif
+%if %{with coverage}
+BuildRequires:  lcov
+%endif
 Requires:       diffutils
 Requires:       libsnapper5 = %version
 %if 0%{?suse_version}
@@ -95,12 +101,22 @@ This package contains snapper, a tool for filesystem snapshot management.
 %setup
 
 %build
+%if %{with coverage}
+# optimized code may confuse the coverage measurement, turn it off
+# -fPIC is mysteriously needed on Fedora.
+export CFLAGS="-g3 -fPIC"
+export CXXFLAGS="-g3 -fPIC"
+%else
 export CFLAGS="%{optflags} -DNDEBUG"
 export CXXFLAGS="%{optflags} -DNDEBUG"
+%endif
 
 autoreconf -fi
 %configure \
 	--docdir="%{_defaultdocdir}/snapper"				\
+%if %{with coverage}
+	--enable-coverage \
+%endif
 %if 0%{?suse_version} <= 1310
 	--disable-rollback							\
 %endif
