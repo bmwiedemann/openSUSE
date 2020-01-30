@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:18:05 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Upgrade to runc v1.0.0~rc10. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc10
+- Drop upstreamed patches:
+  - CVE-2019-19921.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 03:02:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update CVE-2019-19921 patch to match upstream PR.

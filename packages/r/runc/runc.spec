@@ -24,7 +24,7 @@
 # Package-wide golang version
 %define go_version 1.10
 %define go_tool go
-%define _version 1.0.0-rc9
+%define _version 1.0.0-rc10
 %define project github.com/opencontainers/runc
 
 # enable libseccomp for sle >= sle12sp2
@@ -41,7 +41,7 @@
 %endif
 
 Name:           runc
-Version:        1.0.0~rc9
+Version:        1.0.0~rc10
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -51,8 +51,6 @@ Source0:        https://github.com/opencontainers/runc/releases/download/v%{_ver
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
-# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2207.
-Patch1:         CVE-2019-19921.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  golang(API) = %{go_version}
@@ -87,8 +85,6 @@ Test package for runc. It contains the source code and the tests.
 
 %prep
 %setup -q -n %{name}-%{_version}
-# CVE-2019-19921
-%patch1 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
