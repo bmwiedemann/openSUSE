@@ -1036,4 +1036,15 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>741877</requestid>
   </revision>
+  <revision rev="116" vrev="13">
+    <srcmd5>9f439363e194ab8482010071177c2d65</srcmd5>
+    <version>4.3.5</version>
+    <time>1580373025</time>
+    <user>dimstar_suse</user>
+    <comment>- Change remaining systemd requires to weak dependencies, too.
+- Don't require net-tools with SLE15 or newer, it does not contain
+  anything anymore we need
+- Get ride of coreutils dependency (forwarded request 766200 from kukuk)</comment>
+    <requestid>766216</requestid>
+  </revision>
 </revisionlist>

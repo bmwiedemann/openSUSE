@@ -1,7 +1,7 @@
 #
 # spec file for package dhcp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,7 +102,9 @@ Group:          Productivity/Networking/Boot/Servers
 Requires:       insserv-compat
 %endif
 Requires:       dhcp = %{version}
+%if 0%{?suse_version} < 1500
 Requires:       net-tools
+%endif
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
 %systemd_ordering
@@ -114,7 +116,6 @@ Requires(pre):  group(nogroup)
 Summary:        ISC DHCP Client
 Group:          Productivity/Networking/Boot/Clients
 Requires:       %{_bindir}/getent
-Requires:       %{_bindir}/touch
 Requires:       dhcp = %{version}
 Requires:       iproute2
 Requires:       iputils
@@ -128,9 +129,11 @@ Requires:       net-tools
 Summary:        ISC DHCP Relay Agent
 Group:          Productivity/Networking/Boot/Servers
 Requires:       dhcp = %{version}
+%if 0%{?suse_version} < 1500
 Requires:       net-tools
+%endif
 Requires(post): %fillup_prereq
-%systemd_requires
+%systemd_ordering
 
 %package devel
 Summary:        Header Files and Libraries for dhcpctl API
@@ -444,9 +447,9 @@ fi
 
 %post client
 test -e %{_localstatedir}/lib/dhcp/dhclient.leases   || \
-  touch %{_localstatedir}/lib/dhcp/dhclient.leases
+  echo -n > %{_localstatedir}/lib/dhcp/dhclient.leases
 test -e %{_localstatedir}/lib/dhcp6/dhclient6.leases || \
-  touch %{_localstatedir}/lib/dhcp6/dhclient6.leases
+  echo -n > %{_localstatedir}/lib/dhcp6/dhclient6.leases
 
 %files
 %license LICENSE
