@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5279,12 +5279,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5280,12 +5280,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5294,7 +5297,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5295,7 +5298,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5334,7 +5337,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5335,7 +5338,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5343,23 +5346,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5344,23 +5347,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5368,7 +5371,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5369,7 +5372,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5378,18 +5381,18 @@ CF_EOF
+@@ -5379,18 +5382,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5409,9 +5412,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5410,9 +5413,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5431,6 +5434,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5432,6 +5435,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -151,7 +151,7 @@
  done
 --- configure
 +++ configure	2019-11-11 09:30:23.210670661 +0000
-@@ -5590,7 +5590,7 @@ echo $ECHO_N "checking for an rpath opti
+@@ -5596,7 +5596,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -160,7 +160,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -14076,12 +14076,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14082,12 +14082,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -178,7 +178,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -14091,7 +14094,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14097,7 +14100,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -187,7 +187,7 @@
  CF_EOF
  fi
  
-@@ -14131,7 +14134,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14137,7 +14140,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -196,7 +196,7 @@
  CF_EOF
  fi
  
-@@ -14140,23 +14143,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14146,23 +14149,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -226,7 +226,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -14165,7 +14168,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14171,7 +14174,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -235,7 +235,7 @@
  							then
  								continue
  							fi
-@@ -14175,18 +14178,18 @@ CF_EOF
+@@ -14181,18 +14184,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -257,7 +257,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14206,9 +14209,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14212,9 +14215,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -270,7 +270,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -14228,6 +14231,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14234,6 +14237,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -278,7 +278,7 @@
  	;;
  esac
  done
-@@ -25371,6 +25375,7 @@ if test "$with_termlib" != no ; then
+@@ -25378,6 +25382,7 @@ if test "$with_termlib" != no ; then
  		TINFO_LDFLAGS="-L${LIB_DIR}"
  		SHLIB_LIST="$SHLIB_LIST -l${TINFO_LIB_SUFFIX}"
  	fi
@@ -359,8 +359,8 @@
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
 +++ misc/gen-pkgconfig.in	2019-11-15 13:14:38.635601252 +0000
-@@ -84,6 +84,9 @@ do
- 	-l*) # LIBS is handled specially below
+@@ -88,6 +88,9 @@ do
+ 	-specs*) # ignore linker specs-files which were used to build library
  		continue
  		;;
 +	-Wl,--hash-size=*) # ignore hash as gold linker can not do
@@ -369,7 +369,7 @@
  	-Wl,-z,*) # ignore flags used to manipulate shared image
  		continue
  		;;
-@@ -127,6 +130,7 @@ do
+@@ -131,6 +134,7 @@ do
  	LIBS="-l$name"
  
  	desc="ncurses @NCURSES_MAJOR@.@NCURSES_MINOR@"
@@ -377,7 +377,7 @@
  	reqs=
  
  	if [ $name = $MAIN_LIBRARY ]; then
-@@ -137,9 +141,11 @@ do
+@@ -141,9 +145,11 @@ do
  		desc="$desc terminal interface library"
  	elif expr $name : ".*${CXX_NAME}.*" >/dev/null ; then
  		reqs="$PANEL_LIBRARY${suffix}, $MENU_LIBRARY${suffix}, $FORM_LIBRARY${suffix}, $MAIN_LIBRARY${suffix}"
@@ -389,7 +389,7 @@
  		desc="$desc add-on library"
  	fi
  
-@@ -149,6 +155,8 @@ do
+@@ -153,6 +159,8 @@ do
  	   [ $NEED_TINFO != yes ] ; then
  		[ -n "$reqs" ] && reqs="$reqs, "
  		reqs="${reqs}${SUB_LIBRARY}${suffix}"
@@ -795,7 +795,7 @@
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/curses.priv.h
 +++ ncurses/curses.priv.h	2019-11-11 09:30:23.214670585 +0000
-@@ -2248,6 +2248,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
+@@ -2244,6 +2244,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
  extern NCURSES_EXPORT(char *) _nc_tracemouse (SCREEN *, MEVENT const *);
  extern NCURSES_EXPORT(char *) _nc_trace_mmask_t (SCREEN *, mmask_t);
  extern NCURSES_EXPORT(int) _nc_access (const char *, int);

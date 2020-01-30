@@ -1,7 +1,7 @@
 #
 # spec file for package ncurses
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -602,13 +602,10 @@ mv tack-* tack
     rm -vf %{root}%{_libdir}/pkgconfig/tic.pc
     rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
     mv -vf %{root}%{_libdir}/pkgconfig/*.pc pc/
-    sed -ri 's@^(Requires.private: ).*@\1panelw, menuw, formw, ncursesw, tinfo@' \
-								pc/ncurses++w.pc
-    sed -ri 's@^(Requires.private: ).*@\1ncursesw, tinfo@'      pc/{form,menu,panel}w.pc
-    sed -ri 's@^(Libs.private: .*)@\1 -lncursesw -ltinfo -ldl@' pc/{form,menu,panel}w.pc
-
+    sed -ri 's@^(Requires.private:).*@\1@'  pc/*.pc
     sh %{S:6} --cflags "$(pkg-config --cflags ncursesw)" --libs "$(pkg-config --libs ncursesw)" \
 	%{root}%{_bindir}/ncursesw6-config
+
     #
     # Some tests
     #
@@ -629,11 +626,13 @@ mv tack-* tack
     # Make the test suite for ncursesw6
     #
     pushd test
-	CFLAGS="$CFLAGS -I%{root}%{_incdir}" LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
+	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/" \
+	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
+	LIBS="$LDFLAGS" \
 	./configure --with-ncursesw --enable-widec --prefix=$PWD
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
-	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed'
-	make install TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed'
+	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+	make install TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
 	mv bin binw
 	make distclean
     popd
@@ -689,18 +688,15 @@ mv tack-* tack
 	test -e "$pc" || break
 	base=${pc%%.pc}
 	base=${base##*/}
-	sed -ri 's@^(includedir=).*@\1%{_incdir}/ncurses5/ncurses@' "$pc"
+	sed -ri '\@includedir=@i\
+includedir5=%{_incdir}/ncurses5' "$pc"
+	sed -ri 's@^(includedir=).*@\1${includedir5}/ncurses@' "$pc"
 	sed -ri 's@^(libdir=).*@\1%{_libdir}/ncurses5@' "$pc"
 	sed -ri 's@^(Libs: )(.*)@\1-L${libdir}\2@' "$pc"
 	mv -f $pc pc/${base}5.pc
+	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
+	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
     done
-    sed -ri 's@^(Requires.private: ).*@\1panel5, menu5, form5, ncurses5, tinfo5@' \
-								pc/ncurses++5.pc
-    sed -ri 's@^(Requires.private: ).*@\1ncurses5, tinfo5@'     pc/{form,menu,panel}5.pc
-    sed -ri 's@^(Libs.private: .*)@\1 -lncurses -ltinfo -ldl@'  pc/{form,menu,panel}5.pc
-    sed -ri 's@^(Requires.private: ).*@\1tinfo5@'               pc/tic5.pc
-    sed -ri 's@^(Libs.private: .*)@\1 -ltinfo@'                 pc/tic5.pc
-
     sh %{S:6} --cflags "$(pkg-config --cflags ncurses5)" --libs "$(pkg-config --libs ncurses5)" \
 	%{root}%{_bindir}/ncurses5-config
 
@@ -750,13 +746,7 @@ mv tack-* tack
 	sh ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
     popd
     mv -f %{root}%{_libdir}/pkgconfig/*.pc pc/
-    sed -ri 's@^(Requires.private: ).*@\1panel, menu, form, ncurses, tinfo@' \
-								pc/ncurses++.pc
-    sed -ri 's@^(Requires.private: ).*@\1ncurses, tinfo@'       pc/{form,menu,panel}.pc
-    sed -ri 's@^(Libs.private: .*)@\1 -lncurses -ltinfo -ldl@'  pc/{form,menu,panel}.pc
-    sed -ri 's@^(Requires.private: ).*@\1tinfo@'                pc/tic.pc
-    sed -ri 's@^(Libs.private: .*)@\1 -ltinfo@'                 pc/tic.pc
-
+    sed -ri 's@^(Requires.private:).*@\1@' pc/*.pc
     sh %{S:6} --cflags "$(pkg-config --cflags ncurses)" --libs "$(pkg-config --libs ncurses)" \
 	%{root}%{_bindir}/ncurses6-config
     #
@@ -769,11 +759,13 @@ mv tack-* tack
     # Make the test suite for ncurses6
     #
     pushd test
-	CFLAGS="$CFLAGS -I%{root}%{_incdir}" LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
+	CFLAGS="$CFLAGS -I%{root}%{_incdir}ncurses/ -I%{root}%{_incdir}/" \
+	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
+	LIBS="$LDFLAGS" \
 	./configure --with-ncurses --disable-widec --prefix=$PWD
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
-	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed'
-	make install TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed'
+	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+	make install TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
 	make distclean
     popd
 %endif
@@ -835,16 +827,15 @@ mv tack-* tack
 	test -e "$pc" || break
 	base=${pc%%.pc}
 	base=${base##*/}
-	sed -ri 's@^(includedir=).*@\1%{_incdir}/ncurses5/ncursesw@' "$pc"
+	sed -ri '\@includedir=@i\
+includedir5=%{_incdir}/ncurses5' "$pc"
+	sed -ri 's@^(includedir=).*@\1${includedir5}/ncursesw@' "$pc"
 	sed -ri 's@^(libdir=).*@\1%{_libdir}/ncurses5@' "$pc"
 	sed -ri 's@^(Libs: )(.*)@\1-L${libdir}\2@' "$pc"
 	mv -f $pc pc/${base}5.pc
+	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
+	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
     done
-    sed -ri 's@^(Requires.private: ).*@\1panelw5, menuw5, formw5, ncursesw5, tinfo5@' \
-								pc/ncurses++w5.pc
-    sed -ri 's@^(Requires.private: ).*@\1ncursesw5, tinfo5@'    pc/{form,menu,panel}w5.pc
-    sed -ri 's@^(Libs.private: .*)@\1 -lncursesw -ltinfo -ldl@' pc/{form,menu,panel}w5.pc
-
     sh %{S:6} --cflags "$(pkg-config --cflags ncursesw5)" --libs "$(pkg-config --libs ncursesw5)" \
 	%{root}%{_bindir}/ncursesw5-config
 

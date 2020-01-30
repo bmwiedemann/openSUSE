@@ -17,10 +17,10 @@ ed=
 declare -i line=0
 
 if test -r run_cmd.sh ; then
-    function tc { sh run_cmd.sh $BUILD_TIC -U -C -r ${1+"$@"}; }
+    function tc { sh run_cmd.sh $BUILD_TIC -0 -U -C -r ${1+"$@"}; }
     function ic { sh run_cmd.sh $BUILD_INFOCMP -A $TERMINFO ${1+"$@"}; }
 else
-    function tc { $BUILD_TIC -U -C -r ${1+"$@"}; }
+    function tc { $BUILD_TIC -0 -U -C -r ${1+"$@"}; }
     function ic { $BUILD_INFOCMP -A $TERMINFO ${1+"$@"}; }
 fi
 
@@ -45,35 +45,35 @@ for l in $(grep '^linux' $TERMCAP); do
 
     entry="$(tc $tmp2 | grep -v '^#')"
 
-    new=$(echo "$entry" | sed -e '/:a[el]=.*/a\
-	:ac=' | sed -e "s/\t:ac=/${acsc//\\/\\\\}\\\\/")
+    new=$(echo "$entry" | sed -e '\:a[el]=.*a\
+	:ac=' | sed -e "s\t:ac=${acsc//\\/\\\\}\\\\")
     new=$(echo "$new" | sed -e '/:a[el]=.*/i\
-	:S2=' | sed -e "s/\t:S2=/${mpch//\\/\\\\}\\\\/")
-    new=$(echo "$new" | sed -e '/:s.=.*/i\
-	:\.\.sa=' | sed -e "s/\t:\.\.sa=/${sgr//\\/\\\\}\\\\/")
+	:S2=' | sed -e "s\t:S2=${mpch//\\/\\\\}\\\\")
+    new=$(echo "$new" | sed -e '\:s.=.*i\
+	:\.\.sa=' | sed -e "s\t:\.\.sa=${sgr//\\/\\\\}\\\\")
 
     if test "${#new}" -gt 1024 ; then
-	new=$(echo "$entry" | sed -e '/\t:a[el]=.*/a\
-	:ac=' | sed -e "s/\t:ac=/${acsc//\\/\\\\}\\\\/")
+	new=$(echo "$entry" | sed -e '\\t:a[el]=.*a\
+	:ac=' | sed -e "s\t:ac=${acsc//\\/\\\\}\\\\")
 	new=$(echo "$new" | sed -e '/\t:a[el]=.*/i\
-	:S2=' | sed -e "s/\t:S2=/${mpch//\\/\\\\}\\\\/")
+	:S2=' | sed -e "s\t:S2=${mpch//\\/\\\\}\\\\")
     fi
 
     if test "${#new}" -gt 1024 ; then
-	new=$(echo "$entry" | sed -e '/\t:a[el]=.*/i\
-	:S2=' | sed -e "s/\t:S2=/${mpch//\\/\\\\}\\\\/")
+	new=$(echo "$entry" | sed -e '\\t:a[el]=.*i\
+	:S2=' | sed -e "s\t:S2=${mpch//\\/\\\\}\\\\")
     fi
 
     if test "${#new}" -gt 1024 ; then
 	new="$entry"
     fi
 
-    line=$(grep -n "${l//\\/\\\\}" ${TERMCAP##*/}.new| sed 's/:.*//')
+    line=$(grep -n "${l//\\/\\\\}" ${TERMCAP##*/}.new| sed 's:.*')
     : $((line--))
     echo "$entry" > $tmp1
     echo "$new"   > $tmp2
 
-    ed=$(diff -e $tmp1 $tmp2| sed "s/^\([0-9]\+a\)/$line\n+\1/")
+    ed=$(diff -e $tmp1 $tmp2| sed "s^\([0-9]\+a\)$line\n+\1")
 
     ed ${TERMCAP##*/}.new &> /dev/null <<-EOF
 	${ed}

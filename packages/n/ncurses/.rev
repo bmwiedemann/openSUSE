@@ -2684,4 +2684,12 @@
   + add &quot;xterm-mono&quot; to help packagers (report by Sven Joachim) -TD</comment>
     <requestid>748916</requestid>
   </revision>
+  <revision rev="165" vrev="25">
+    <srcmd5>c767a7240a1fe1e0ac375fab56124d16</srcmd5>
+    <version>6.1</version>
+    <time>1580373656</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>764223</requestid>
+  </revision>
 </revisionlist>

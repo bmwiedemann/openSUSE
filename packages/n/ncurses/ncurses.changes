@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:12:06 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200104
+  + modify a couple of macros in aclocal.m4 to allow autoconf 2.69 to
+    "work", to help illustrate discussion in
+    https://invisible-island.net/autoconf/my-autoconf.html
+  + fix some warnings from autoheader-252
+- Correct include path for ncursesw5 and co
+
+-------------------------------------------------------------------
+Sun Dec 29 09:21:53 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191228
+  + in gen-pkgconfig.in, move the RPATH_LIST and PRIVATE_LIBS assignments
+    past the various prefix/libdir assignments, to allow for using those
+    symbols, e.g., as done via CF_SHARED_OPTS.
+  + improve ncurses*-config and pc-files by filtering out linker-specs.
+  + modify test-package to more closely match Fedora's configuration
+    for PIE/PIC feature and debug-packages.
+
+-------------------------------------------------------------------
+Thu Dec 26 14:15:16 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191221
+  + correct pathname used in Ada95 sample programs for explain.txt, to
+    work with test-packages.
+  + improve tracemunch:
+    + keep track of TERMINAL* values
+    + if tracing was first turned on after initialization, attempt to
+      show distinct screen, window and terminal names anyway.
+  + ensure that GCC_NORETURN is defined in term.h, because the prototype
+    for exit_terminfo() uses it (report by Werner Fink).
+- Remove patch workaround-20191214.patch as fixed upstream
+
+-------------------------------------------------------------------
+Wed Dec 18 09:25:48 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add temporary patch workaround-20191214.patch to add missed
+  declaration of GCC_NORETURN in term.h
+
+-------------------------------------------------------------------
+Tue Dec 17 09:03:41 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Addd missing space between two include options for ABI 5
+  package configuration 
+
+-------------------------------------------------------------------
+Mon Dec 16 10:15:37 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Also remove private requirements as (lib)tinfo are binary
+  compatible with normal and wide version of (lib)ncurses
+
+-------------------------------------------------------------------
+Mon Dec 16 09:09:31 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191214
+  + add exit_curses() and exit_terminfo() to replace internal symbols for
+    leak-checking.
+- Let helper script handle.linux call sed command smart
+
+-------------------------------------------------------------------
+Thu Dec 12 06:37:06 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191207
+  + fix a few warnings for test-package builds
+  + add curses_trace(), to replace trace().
+
+-------------------------------------------------------------------
+Mon Dec  2 08:39:17 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191130
+  + add portability section to curs_getcchar manpage (prompted by
+    discussion with Nick Black).
+  + improve portability discussion of ACS characters in curs_addch
+    manpage.
+  + improve typography for double-quotes in manpages.
+
+-------------------------------------------------------------------
+Mon Nov 25 09:47:00 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191123
+  + fix typo for MinGW rpm test-package.
+  + workaround in rpm specs for NFS problems in Fedora 31.
+
+-------------------------------------------------------------------
+Mon Nov 18 07:52:56 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20191116
+  + modify ncurses/Makefile.in to fix a case where Debian/testing changes
+    to the ld --as-needed configuration broke ncurses-examples test
+    packages.
+  + drop library-dependency on psapi for MinGW port, since win_driver.c
+    defines PSAPI_VERSION to 2, making it use GetProcessImageFileName
+    from kernel32.dll (prompted by patch by Simon Sobish, cf: 20140503).
+
+-------------------------------------------------------------------
 Fri Nov 15 13:15:43 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Do not add has size to linker flags of any pkg-config
