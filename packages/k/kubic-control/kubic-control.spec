@@ -38,6 +38,7 @@ Requires:       cilium-k8s-yaml
 Requires:       etcdctl
 Requires:       flannel-k8s-yaml
 Requires:       hello-kubic-k8s-yaml >= 1.3
+Requires:       kubernetes-client
 Requires:       kubicctl
 Requires:       kured-k8s-yaml
 Requires:       kustomize
