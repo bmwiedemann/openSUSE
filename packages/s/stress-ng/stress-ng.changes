@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jan 29 20:22:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.18
+  * stress-urandom: handle ENOTTY errors on ioctl() on older
+    kernels
+- Update to version 0.10.17
+  * stress-dev: add blocked device open sanity check
+  * stress-cpu: add lowest common multiple sanity check on gcd
+    computation
+  * stress-clock: exercise clock_getres on a /dev/ptp0 clockid
+  * stress-clock: exercise /dev/ptp0 on linux
+  * stress-tmpfs: add MAP_HUGETLB mmap option and reduce sleep time
+  * stress-mmap: remove duplicated no_mem_retries increment
+  * stress-membarrier: exercise more membarrier commands
+  * stress-fcntl: exercise F_SETOWN, F_SETOWN_EX and F_GETOWN_EX
+    more
+  * stress-exec: create and try to execute a garbage executable
+  * stress-stream: fix failure message logging
+  * stress-shm: add some more shm exercising on shm fd
+  * stress-ramfs: rename mount point directory to mnt
+  * stress-af-alg: add helpers to lookup hash types by name or type
+  * stress-af-alg: remove ptr + 2 occurrences
+  * stress-msg: exercise MSG_COPY if it is available
+  * stress-aio-linux: ignore EINVAL on io submits for fdsync or
+    fsync commands
+  * stress-brk: silently ignore brk on a specific address failures
+  * stress-sysfs: disable ROM test as this is causing some issues
+  * stress-mq: use 0..127 priority levels chosen at random
+  * stress-quota: add CAP_SYS_ADMIN prechecks before running the
+    stressor
+  * stress-sysfs: skip over /sysfs kernel debug interfaces
+
+-------------------------------------------------------------------
 Sat Jan 11 18:31:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.16
