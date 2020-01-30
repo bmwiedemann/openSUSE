@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:35:20 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't overwrite the default English license for add-on modules
+  with the translated license of the current installation language
+  (bsc#1160806)
+- 4.2.47
+
+-------------------------------------------------------------------
+Mon Jan 27 13:57:31 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Move y2packager/repository.rb to the yast2.rpm
+  (related to bsc#1159433)
+- 4.2.46
+
+-------------------------------------------------------------------
+Fri Jan 17 14:21:38 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Enable the online_search if system is registered (jsc#SLE-9109).
+- 4.2.45
+
+-------------------------------------------------------------------
 Thu Jan 10 15:03:31 UTC 2020 - schubi@suse.de
 
 - Do not refresh package installation overview if the medium has
