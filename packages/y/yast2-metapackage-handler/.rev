@@ -357,4 +357,19 @@
     <comment>submit new version 4.1.0</comment>
     <requestid>679888</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ff590392c32d25fbb5159de0ec0307cd</srcmd5>
+    <version>4.1.1</version>
+    <time>1580373611</time>
+    <user>dimstar_suse</user>
+    <comment>- remove obsolete patch 103.diff
+- remove obsolete patch SLE.diff
+
+- rewrite YMP file parsing (bsc#1138638)
+- fix YMP schema definitions
+- add YMP examples
+- remove perl dependency
+- 4.1.1</comment>
+    <requestid>766789</requestid>
+  </revision>
 </revisionlist>
