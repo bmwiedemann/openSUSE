@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2015 openSUSE_user1
 #
 # All modifications and additions to the file contributed by third parties
@@ -105,6 +105,9 @@ done
        -DOPENMW_RESOURCE_FILES="%{_datadir}/%{name}/resources/" \
        -DUSE_SYSTEM_TINYXML="ON" \
        -DDESIRED_QT_VERSION=5 \
+       -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
+       -DCMAKE_CXX_VISIBILITY_PRESET=hidden \
+       -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
 
 make %{?_smp_mflags} VERBOSE=1
 
