@@ -9,7 +9,7 @@ Type=oneshot
 Nice=19
 IOSchedulingClass=idle
 ExecStartPre=/bin/rm -f /boot/do_purge_kernels
-ExecStart=/usr/bin/zypper purge-kernels
+ExecStart=/usr/bin/zypper -n purge-kernels
 
 [Install]
 WantedBy=multi-user.target

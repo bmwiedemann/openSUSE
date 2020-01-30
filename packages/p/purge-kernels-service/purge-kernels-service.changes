@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:45:26 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix zypper asking for confirmation in service (boo#1161620).
+
+-------------------------------------------------------------------
 Mon Jan 20 12:02:24 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix dracut version in conflicts.
