@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 21:26:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop bogus python(2)-qt5 runtime dependencies, python is only
+  required for the build system.
+- Remove unused python3-rdflib build dependency.
+
+-------------------------------------------------------------------
 Sun May 19 12:43:29 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.2

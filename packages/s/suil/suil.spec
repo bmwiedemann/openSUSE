@@ -44,7 +44,6 @@ BuildRequires:  gtk3-devel >= 3.14.0
 BuildRequires:  lv2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  python3-rdflib
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.1.0
 
 %description
@@ -81,7 +80,6 @@ Module plugin for:
 Summary:        Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 Group:          System/Libraries
 Requires:       libsuil-0-0 = %{version}
-Requires:       python-qt5
 Supplements:    packageand(libQt5Widgets5:lv2)
 
 %description -n suil-plugin-qt5-in-gtk2
@@ -126,7 +124,6 @@ Module plugin for:
 Summary:        Shared object for Qt5 hosts displaying X11 LV2 GUIs
 Group:          System/Libraries
 Requires:       libsuil-0-0 = %{version}
-Requires:       python-qt5
 Supplements:    packageand(libQt5Widgets5:lv2)
 
 %description -n suil-plugin-x11-in-qt5
