@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:04:36 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Add apparmor-abstractions as required runtime dependency to
+  have `tunables/global` available.
+
+-------------------------------------------------------------------
 Mon Jan 13 11:13:59 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Add: 0001-clarify-container-prune-force.patch to fix the --force

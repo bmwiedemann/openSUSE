@@ -55,6 +55,7 @@ BuildRequires:  golang(API) >= 1.12
 #!BuildIgnore: gcc-PIE
 %endif
 Requires:       apparmor-parser
+Requires:       apparmor-abstractions
 Requires:       cni
 Requires:       cni-plugins
 Requires:       conmon

@@ -431,4 +431,12 @@
     <comment></comment>
     <requestid>763947</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>af1897cf7e83495d1003eb53a6c2d18f</srcmd5>
+    <version>1.7.0</version>
+    <time>1580373129</time>
+    <user>dimstar_suse</user>
+    <comment>Add apparmor-abstractions as required runtime dependency</comment>
+    <requestid>766926</requestid>
+  </revision>
 </revisionlist>
