@@ -68,6 +68,7 @@ Source6:        get_build.py
 Patch0:         Revert-libnes-Remove-libnes-from-rdma-core.patch
 Patch1:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
 Patch2:         Revert-Update-kernel-headers.patch
+Patch3:         disable-rdma-interface-renaming.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -412,6 +413,7 @@ easy, object-oriented access to IB verbs.
 %patch0
 %patch1
 %patch2
+%patch3
 
 %build
 

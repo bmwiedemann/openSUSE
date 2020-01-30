@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 15:02:50 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add disable-rdma-interface-renaming.patch to disable interface renaming which causes
+  mvapich2 to fail (bsc#1161794)
+
+-------------------------------------------------------------------
 Fri Jan 10 07:40:35 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v27.0 (bsc#1160338)

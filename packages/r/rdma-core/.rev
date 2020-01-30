@@ -425,4 +425,12 @@
 - Disable pyverbs build for older releases that do not have python3-Cython &gt;= 0.25</comment>
     <requestid>763851</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>287f9fc217c58779fb88e07a4986f974</srcmd5>
+    <version>27.0</version>
+    <time>1580373135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766959</requestid>
+  </revision>
 </revisionlist>
