@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:14:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.24:
+  + Retry msgsnd() if interrupted by a signal.
+  + Detect and handle message queue and semaphore id collision.
+- Skip tar test: the test is unstable and keeps on randomly
+  failing (add fakeroot-drop-tartest.patch).
+
+-------------------------------------------------------------------
 Tue Sep 10 13:17:38 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

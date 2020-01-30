@@ -1,0 +1,12 @@
+Index: fakeroot-1.24/test/Makefile.am
+===================================================================
+--- fakeroot-1.24.orig/test/Makefile.am
++++ fakeroot-1.24/test/Makefile.am
+@@ -9,7 +9,6 @@ TESTS =						\
+   t.no_ld_preload				\
+   t.no_ld_preload_link				\
+   t.option					\
+-  t.tar						\
+   t.touchinstall				\
+   t.truereturn \
+   t.xattr

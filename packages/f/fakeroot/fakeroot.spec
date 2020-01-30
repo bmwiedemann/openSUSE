@@ -1,7 +1,7 @@
 #
 # spec file for package fakeroot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           fakeroot
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://fakeroot.alioth.debian.org/
-Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.xz#/%{name}-%{version}.tar.xz
+Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         %{name}-1.20-lib32.patch
 Patch2:         %{name}-1.20-eglibc-fts-without-LFS.patch
@@ -31,16 +31,17 @@ Patch2:         %{name}-1.20-eglibc-fts-without-LFS.patch
 Patch3:         %{name}-1.21-hide-dlsym-error.patch
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
 Patch4:         %{name}-1.21-fix-shell-in-fakeroot
+Patch5:         fakeroot-drop-tartest.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite
-BuildRequires:  group(sys)
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  libtool
 BuildRequires:  po4a
 BuildRequires:  sharutils
+BuildRequires:  group(sys)
 BuildRequires:  user(daemon)
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
