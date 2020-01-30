@@ -1,0 +1,111 @@
+commit 395e2e87d7d4a28e4574de5960210b40a7c5ea0d
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Sat Jan 25 19:35:50 2020 +0100
+
+    adjust abstractions/base and nameservice for /usr/etc/ move
+    
+    References: http://bugzilla.opensuse.org/show_bug.cgi?id=1161756
+
+diff --git a/profiles/apparmor.d/abstractions/base b/profiles/apparmor.d/abstractions/base
+index cecb126f..6288da76 100644
+--- a/profiles/apparmor.d/abstractions/base
++++ b/profiles/apparmor.d/abstractions/base
+@@ -23,9 +23,9 @@
+   /dev/log                       w,
+   /dev/random                    r,
+   /dev/urandom                   r,
+-  /etc/locale/**                 r,
+-  /etc/locale.alias              r,
+-  /etc/localtime                 r,
++  /{usr/,}etc/locale/**          r,
++  /{usr/,}etc/locale.alias       r,
++  /{usr/,}etc/localtime          r,
+   /usr/share/locale-bundle/**    r,
+   /usr/share/locale-langpack/**  r,
+   /usr/share/locale/**           r,
+@@ -48,14 +48,14 @@
+   /usr/lib/@{multiarch}/gconv/gconv-modules* mr,
+ 
+   # used by glibc when binding to ephemeral ports
+-  /etc/bindresvport.blacklist    r,
++  /{usr/,}etc/bindresvport.blacklist    r,
+ 
+   # ld.so.cache and ld are used to load shared libraries; they are best
+   # available everywhere
+-  /etc/ld.so.cache               mr,
+-  /etc/ld.so.conf                r,
+-  /etc/ld.so.conf.d/{,*.conf}    r,
+-  /etc/ld.so.preload             r,
++  /{usr/,}etc/ld.so.cache               mr,
++  /{usr/,}etc/ld.so.conf                r,
++  /{usr/,}etc/ld.so.conf.d/{,*.conf}    r,
++  /{usr/,}etc/ld.so.preload             r,
+   /{usr/,}lib{,32,64}/ld{,32,64}-*.so   mr,
+   /{usr/,}lib/@{multiarch}/ld{,32,64}-*.so    mr,
+   /{usr/,}lib/tls/i686/{cmov,nosegneg}/ld-*.so     mr,
+diff --git a/profiles/apparmor.d/abstractions/nameservice b/profiles/apparmor.d/abstractions/nameservice
+index ec639cda..4024ba1e 100644
+--- a/profiles/apparmor.d/abstractions/nameservice
++++ b/profiles/apparmor.d/abstractions/nameservice
+@@ -13,16 +13,16 @@
+   # looking up users by name or id, groups by name or id, hosts by name
+   # or IP, etc. These operations may be performed through files, dns,
+   # NIS, NIS+, LDAP, hesiod, wins, etc. Allow them all here.
+-  /etc/group              r,
+-  /etc/host.conf          r,
+-  /etc/hosts              r,
+-  /etc/nsswitch.conf      r,
+-  /etc/gai.conf           r,
+-  /etc/passwd             r,
+-  /etc/protocols          r,
++  /{usr/,}etc/group          r,
++  /{usr/,}etc/host.conf      r,
++  /{usr/,}etc/hosts          r,
++  /{usr/,}etc/nsswitch.conf  r,
++  /{usr/,}etc/gai.conf       r,
++  /{usr/,}etc/passwd         r,
++  /{usr/,}etc/protocols      r,
+ 
+   # libtirpc (used for NIS/YP login) needs this
+-  /etc/netconfig r,
++  /{usr/,}etc/netconfig r,
+ 
+   # When using libnss-extrausers, the passwd and group files are merged from
+   # an alternate path
+@@ -36,15 +36,15 @@
+   /var/lib/sss/mc/passwd  r,
+   /var/lib/sss/pipes/nss  rw,
+ 
+-  /etc/resolv.conf        r,
++  /{usr/,}etc/resolv.conf r,
+   # On systems where /etc/resolv.conf is managed programmatically, it is
+   # a symlink to /{,var/}run/(whatever program is managing it)/resolv.conf.
+   /{,var/}run/{resolvconf,NetworkManager,systemd/resolve,connman,netconfig}/resolv.conf r,
+-  /etc/resolvconf/run/resolv.conf r,
++  /{usr/,}etc/resolvconf/run/resolv.conf r,
+   /{,var/}run/systemd/resolve/stub-resolv.conf r,
+ 
+-  /etc/samba/lmhosts      r,
+-  /etc/services           r,
++  /{usr/,}etc/samba/lmhosts  r,
++  /{usr/,}etc/services       r,
+   # db backend
+   /var/lib/misc/*.db      r,
+   # The Name Service Cache Daemon can cache lookups, sometimes leading
+@@ -60,14 +60,14 @@
+   # they are available
+   /{usr/,}lib{,32,64}/libnss_*.so*      mr,
+   /{usr/,}lib/@{multiarch}/libnss_*.so*      mr,
+-  /etc/default/nss               r,
++  /{usr/,}etc/default/nss               r,
+ 
+   # avahi-daemon is used for mdns4 resolution
+   /{,var/}run/avahi-daemon/socket rw,
+ 
+   # libnl-3-200 via libnss-gw-name
+   @{PROC}/@{pid}/net/psched r,
+-  /etc/libnl-*/classid r,
++  /{usr/,}etc/libnl-*/classid r,
+ 
+   # nis
+   #include <abstractions/nis>

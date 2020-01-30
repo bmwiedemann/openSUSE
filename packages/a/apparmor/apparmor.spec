@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011-2019 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -76,6 +76,9 @@ Patch8:         usr-etc-abstractions-authentification.diff
 
 # fix building libapparmor python bindings with python 3.8. Based on https://gitlab.com/apparmor/apparmor/merge_requests/430 but patching configure directly to avoid needing BuildRequires: aclocal
 Patch9:         libapparmor-python3.8.diff
+
+# update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447)
+Patch10:        ./usr-etc-abstractions-base-nameservice.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -369,6 +372,7 @@ SubDomain.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 %define _lto_cflags %{nil}
