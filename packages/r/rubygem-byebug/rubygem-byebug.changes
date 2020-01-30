@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 27 12:39:40 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 11.1.1
+
+### Fixed
+
+* [#635](https://github.com/deivid-rodriguez/byebug/pull/635): usage
+  on Fedora 31 or any other `byebug` installation performed by a
+  `rubygems` copy customized by setting `Gem.install_extension_in_lib` to false.
+
+-------------------------------------------------------------------
 Mon Mar 18 12:02:58 UTC 2019 - manuel <mschnitzer@suse.com>
 
 - updated to version 11.0.1
