@@ -1,7 +1,7 @@
 #
 # spec file for package python-pick
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pick
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Curses-based interactive selection list module
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wong2/pick
 # https://github.com/wong2/pick/issues/28
-Source0:        https://github.com/wong2/pick/archive/v%{version}.tar.gz
+Source0:        https://github.com/wong2/pick/archive/v%{version}.tar.gz#/pick-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +53,7 @@ interactive selection list in the terminal.
 
 %files %{python_files}
 %license LICENSE
-%doc README.md
+%doc README.rst
 %{python_sitelib}/*
 
 %changelog

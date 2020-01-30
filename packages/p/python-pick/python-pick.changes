@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 30 07:22:14 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.6.6
+  * Fix for error _curses.error: use_default_colors() returned
+    ERR
+  * Updated Python test matrix
+  * Rename multi_select to multiselect
+  * Make print a function in the readme
+  * Update README and convert it to RST for PyPI
+
+- Dropped group tag
+
+-------------------------------------------------------------------
 Mon Jun  3 09:03:40 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - turn the testsuite on
