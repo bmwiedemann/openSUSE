@@ -207,4 +207,13 @@
     <comment></comment>
     <requestid>768271</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>583d188beb61b613e5f3ea90e6bb87a1</srcmd5>
+    <version>3.8.2</version>
+    <time>1580373690</time>
+    <user>dimstar_suse</user>
+    <comment>Use plain python to refer to a specific version of python
+</comment>
+    <requestid>768315</requestid>
+  </revision>
 </revisionlist>

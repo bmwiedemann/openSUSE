@@ -29,7 +29,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-tools
-BuildRequires:  python3 >= 3.6
+BuildRequires:  python >= 3.6
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5DocTools)

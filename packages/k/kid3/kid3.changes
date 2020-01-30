@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 29 12:26:58 UTC 2020 - olaf@aepfle.de
+
+- Use plain python to refer to a specific version of python
+
+-------------------------------------------------------------------
 Wed Jan 29 10:18:06 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with python 3.6 by specifying UTF8 locale.
