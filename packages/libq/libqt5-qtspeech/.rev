@@ -123,4 +123,12 @@
     <comment>5.14.0</comment>
     <requestid>757458</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5ed51cbd3db156051b2545bb3e637717</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373566</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768125</requestid>
+  </revision>
 </revisionlist>
