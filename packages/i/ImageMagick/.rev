@@ -2475,4 +2475,19 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     http://im.snibgo.com/jzazbz.htm).</comment>
     <requestid>765988</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>51b886e0de8c3c5b28d5be8afc386b96</srcmd5>
+    <version>7.0.9.19</version>
+    <time>1580373328</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.19
+  * Alpha draw primitive no longer returns a parser exception.
+  * Support 32-bit tiled TIFF images.
+  * New -connected-component options (reference
+    https://imagemagick.org/script/connected-components.php).
+  * Make PNG creation reproducible (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1270).
+  * Refactor uninitialize variable patch for -fx &quot;while(,)&quot; expression.</comment>
+    <requestid>767667</requestid>
+  </revision>
 </revisionlist>

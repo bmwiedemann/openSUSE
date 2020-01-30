@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:53:07 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.19
+  * Alpha draw primitive no longer returns a parser exception.
+  * Support 32-bit tiled TIFF images.
+  * New -connected-component options (reference
+    https://imagemagick.org/script/connected-components.php).
+  * Make PNG creation reproducible (reference
+    https://github.com/ImageMagick/ImageMagick/pull/1270).
+  * Refactor uninitialize variable patch for -fx "while(,)" expression.
+
+-------------------------------------------------------------------
 Tue Jan 21 07:53:45 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.9.17
