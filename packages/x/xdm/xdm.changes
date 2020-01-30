@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 08:14:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require insserv-compat: /usr/lib/X11/display-manager sources
+  /etc/rc.status, which is part of insserv-compat. Without this
+  present, display-manager fails to start up.
+
+-------------------------------------------------------------------
 Mon Aug 19 14:52:14 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - pam.d/xdm{,-np}: added pam_keyinit.so (boo#1144063)
@@ -8,7 +15,7 @@ Thu Mar 28 14:03:43 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
   * reverse applied in order to fix greeter again; related to our
-    heavily adjusted xdm Xresources (boo#1130321) 
+    heavily adjusted xdm Xresources (boo#1130321)
 
 -------------------------------------------------------------------
 Sun Mar  3 09:39:22 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>

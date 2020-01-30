@@ -1,7 +1,7 @@
 #
 # spec file for package xdm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Release:        0
 Summary:        X Display Manager
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 Source1:        xdm.tar.bz2
 Source2:        HOWTO.xdm
@@ -72,6 +72,7 @@ BuildRequires:  pkgconfig(xtrans)
 BuildRequires:  firewall-macros
 %endif
 Requires:       /sbin/pidof
+Requires:       insserv-compat
 Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole

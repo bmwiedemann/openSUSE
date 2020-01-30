@@ -755,4 +755,12 @@
     <comment>- pam.d/xdm{,-np}: added pam_keyinit.so (boo#1144063)</comment>
     <requestid>724603</requestid>
   </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>8b4850e27e4ebb68130b6b488e730fac</srcmd5>
+    <version>1.1.12</version>
+    <time>1580373475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767981</requestid>
+  </revision>
 </revisionlist>
