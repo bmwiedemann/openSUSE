@@ -1,7 +1,7 @@
 #
 # spec file for package sharutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,7 @@ chmod +w src/scripts.x
 mkdir -p ../bin
 ln -snf /bin/true ../bin/compress
 PATH=$PWD/../bin:$PATH
+%global optflags %{optflags} -fcommon
 %configure \
 	--with-openssl
 
