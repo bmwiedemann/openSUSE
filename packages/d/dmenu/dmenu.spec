@@ -1,7 +1,7 @@
 #
 # spec file for package dmenu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dmenu
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        A generic and efficient menu for X
 License:        MIT
 Group:          System/GUI/Other
-Url:            http://tools.suckless.org/dmenu/
+URL:            http://tools.suckless.org/dmenu/
 Source:         http://dl.suckless.org/tools/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Patch0:         dmenu-optflags.patch

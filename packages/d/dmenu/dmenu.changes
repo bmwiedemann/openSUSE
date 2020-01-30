@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:47:06 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- bump to 4.9
+  for complete list of changes see
+  see https://git.suckless.org/dmenu/log/?h=4.9&qt=range&q=4.8..4.9
+- dmenu-optflags.patch: Adapt patch to dmenu 4.9
+
+-------------------------------------------------------------------
 Sun Apr 15 00:12:26 UTC 2018 - gutaper@gmail.com
 
 - bump to 4.8
