@@ -51,7 +51,6 @@ Patch3:         opencv-includedir.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
-BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  memory-constraints
@@ -232,6 +231,7 @@ rm -f doc/packaging.txt
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
       -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
+      -DWITH_JASPER=OFF \
 
 make %{?_smp_mflags} VERBOSE=1
 
