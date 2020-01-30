@@ -68,6 +68,8 @@
 %bcond_with oprofile
 %bcond_with valgrind
 %bcond_without pyclang
+%bcond_without polly
+%bcond_without lld
 
 Name:           llvm9
 Version:        9.0.1
@@ -127,7 +129,7 @@ Patch32:        llvm-riscv64-fix-cffi.diff
 Patch33:        D60657-riscv-pcrel_lo.diff
 # Backport of .eh_frame related RISC-V fixes (D61584, D63404, D66419)
 Patch34:        riscv-eh-frame-fixup.patch
-# PATCH-FIX-OPENSUSE polly-pthread.patch -- Make sure -lpthread is linked after libPollly
+# PATCH-FIX-OPENSUSE polly-pthread.patch -- Make sure -lpthread is linked after libPolly (related to GCC#55394)
 Patch35:        polly-pthread.patch
 # PATCH-FEATURE_UPSTREAM compiler-rt-move-fdp.patch -- Move FuzzedDataProvider to include
 Patch36:        compiler-rt-move-fdp.patch
@@ -186,7 +188,9 @@ Requires:       libstdc++-devel
 Requires:       libtool
 Requires:       llvm%{_sonum}-LTO-devel
 Requires:       llvm%{_sonum}-gold
+%if %{with polly}
 Requires:       llvm%{_sonum}-polly-devel
+%endif
 Requires:       pkgconfig
 Conflicts:      llvm-devel-provider < %{version}
 Conflicts:      cmake(LLVM)
@@ -231,7 +235,7 @@ Recommends:     clang%{_sonum}-checker
 Recommends:     clang%{_sonum}-doc
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
-%if %{with cxx}
+%if %{with libcxx}
 Requires:       libc++%{_socxx}
 %endif
 
@@ -300,7 +304,6 @@ This package contains the clang (C language) frontend for LLVM.
 %package -n clang%{_sonum}-doc
 Summary:        Documentation for Clang
 Group:          Documentation/HTML
-Requires:       clang%{_sonum} = %{version}
 Conflicts:      clang-doc-provider < %{version}
 # The docs used to be contained in the devel package.
 Conflicts:      clang6-devel
@@ -531,6 +534,7 @@ pretty printers for the C++ standard library.
 
 %endif
 
+%if %{with polly}
 %package polly
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
 Group:          Development/Languages/Other
@@ -555,6 +559,7 @@ Provides:       llvm-polly-devel-provider = %{version}
 
 %description polly-devel
 This package contains the development files for Polly.
+%endif
 
 %prep
 %setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -a 51 -n llvm-%{version}.src
@@ -629,8 +634,12 @@ popd
 mv clang-%{version}.src tools/clang
 mv compiler-rt-%{version}.src projects/compiler-rt
 mv clang-tools-extra-%{version}.src tools/clang/tools/extra
+%if %{with lld}
 mv lld-%{version}.src tools/lld
+%endif
+%if %{with polly}
 mv polly-%{version}.src tools/polly
+%endif
 
 %if %{with lldb}
 mv lldb-%{version}.src tools/lldb
@@ -963,7 +972,10 @@ binfiles=( bugpoint dsymutil hmaptool llc lli \
 %if %{with lldb}
            lldb lldb-argdumper lldb-instr lldb-mi lldb-server lldb-vscode \
 %endif
-           ld.lld lld lld-link ld64.lld wasm-ld )
+%if %{with lld}
+           ld.lld lld lld-link ld64.lld wasm-ld \
+%endif
+	   )
 manfiles=( bugpoint dsymutil llc lli \
            llvm-addr2line llvm-ar llvm-as llvm-bcanalyzer llvm-build llvm-cov llvm-cxxfilt llvm-cxxmap llvm-diff \
            llvm-dis llvm-dwarfdump llvm-exegesis llvm-extract llvm-lib llvm-link llvm-lipo llvm-mca \
@@ -1118,10 +1130,12 @@ rm -rf ./stage1 ./build
 %postun -n libc++abi-devel -p /sbin/ldconfig
 %endif
 
+%if %{with polly}
 %post polly -p /sbin/ldconfig
 %postun polly -p /sbin/ldconfig
 %post polly-devel -p /sbin/ldconfig
 %postun polly-devel -p /sbin/ldconfig
+%endif
 
 %post
 %{_sbindir}/update-alternatives \
@@ -1266,6 +1280,7 @@ if [ ! -f %{_bindir}/clang-%{_relver} ] ; then
     %{_sbindir}/update-alternatives --remove clang %{_bindir}/clang-%{_relver}
 fi
 
+%if %{with lld}
 %post -n lld%{_sonum}
 %{_sbindir}/update-alternatives \
    --install %{_bindir}/lld lld %{_bindir}/lld-%{_relver} %{_uaver} \
@@ -1278,6 +1293,7 @@ fi
 if [ ! -f %{_bindir}/lld-%{_relver} ] ; then
     %{_sbindir}/update-alternatives --remove lld %{_bindir}/lld-%{_relver}
 fi
+%endif
 
 %if %{with lldb}
 %post -n lldb%{_sonum}
@@ -1821,6 +1837,7 @@ fi
 %{_docdir}/python-clang/
 %endif
 
+%if %{with lld}
 %files -n lld%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
 %{_bindir}/ld.lld
@@ -1838,6 +1855,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/lld
 %ghost %{_sysconfdir}/alternatives/lld-link
 %ghost %{_sysconfdir}/alternatives/wasm-ld
+%endif
 
 %if %{with lldb}
 %files -n lldb%{_sonum}
@@ -1880,6 +1898,7 @@ fi
 %{_libdir}/liblldbIntelFeatures.so
 %endif
 
+%if %{with polly}
 %files polly
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/LLVMPolly.so
@@ -1888,5 +1907,6 @@ fi
 %license CREDITS.TXT LICENSE.TXT
 %{_includedir}/polly
 %{_libdir}/cmake/polly
+%endif
 
 %changelog

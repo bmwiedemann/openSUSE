@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:03:55 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add polly and lld build conditionals, remove excessive Requires
+  to clang from docs.  Fix conditional for libc++ use.
+  [jsc#SLE-7400, jsc#SLE-7614, jsc#SLE-7452, jsc#SLE-8920, jsc#SLE-7390,
+   jsc#SLE-7587]
+
+-------------------------------------------------------------------
 Wed Jan 15 14:34:50 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Undo spec-cleaner changes that we don't want.
