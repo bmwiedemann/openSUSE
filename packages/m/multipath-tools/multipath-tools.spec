@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,12 +70,12 @@ BuildRequires:  libaio-devel
 %if 0%{?with_libdmmp} == 1
 BuildRequires:  libjson-c-devel
 %endif
-BuildRequires:  libudev-devel
 BuildRequires:  liburcu-devel
 BuildRequires:  readline-devel
-BuildRequires:  udev
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 # For regenerate_initrd_posttrans macro
 BuildRequires:  suse-module-tools
 # For regenerate-initrd-posttrans
@@ -100,11 +100,11 @@ availability of the map devices.
 # and it loads prioritizers (to be fixed) and checkers.
 %package -n libmpath0
 Summary:        Libraries for multipath-tools
-License:        GPL-2.0-only AND LGPL-2.1-only AND LGPL-2.0-or-later
-Group:          System/Libraries
 # This is for libmpathcmd, which is useless without multipathd.
 # No hard dependency here - we don't want to pull in all dependencies
 # of multipath-tools.
+License:        GPL-2.0-only AND LGPL-2.1-only AND LGPL-2.0-or-later
+Group:          System/Libraries
 Recommends:     multipath-tools
 Conflicts:      multipath-tools < 0.8.0
 

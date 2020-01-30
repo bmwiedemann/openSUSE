@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:05:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig((lib)?udev) instead of (lib)?udev: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Thu Jan 16 12:11:54 UTC 2020 - mwilck@suse.com
 
 - Update to version 0.8.3+10+suse.86684b9:
