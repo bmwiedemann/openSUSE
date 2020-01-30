@@ -69,4 +69,13 @@
   * Allow for idna encoded domains</comment>
     <requestid>754542</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe498c1c57b8afa78dbe2b38f75a1507</srcmd5>
+    <version>0.14.2</version>
+    <time>1580373173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.2:
+  * Made domain validation case-insensitive</comment>
+    <requestid>766993</requestid>
+  </revision>
 </revisionlist>
