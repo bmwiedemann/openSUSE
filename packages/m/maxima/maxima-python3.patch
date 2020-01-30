@@ -1,0 +1,26 @@
+Index: maxima-5.43.2/doc/info/build_html.sh.in
+===================================================================
+--- maxima-5.43.2.orig/doc/info/build_html.sh.in
++++ maxima-5.43.2/doc/info/build_html.sh.in
+@@ -46,7 +46,7 @@ do
+   echo "filenamebase = \"$filenamebase\""
+   cat $f
+ done | @AWK@ '!/^@c / && !/^@c$/ && (/^@deffn/ || /^@defvr/ || /^@end deffn/ || /^@end defvr/ || /@category/ || /@node/ || /^filenamebase/)' | @SED@ -f @abs_srcdir@/extract_categories1.sed | @AWK@ -f @abs_srcdir@/extract_categories1.awk > make-categories.py 
+-python make-categories.py 
++@PYTHON@ make-categories.py
+ @SED@ -e 's/^@bye/@node Documentation Categories, , Function and Variable Index\n@chapter Documentation Categories/' @abs_srcdir@/maxima.texi > maxima.texi 
+ ( for f in Category-*.texi; do echo '@include' $f; done ; echo @bye ) >> maxima.texi 
+ 
+Index: maxima-5.43.2/share/draw/vtk.lisp
+===================================================================
+--- maxima-5.43.2.orig/share/draw/vtk.lisp
++++ maxima-5.43.2/share/draw/vtk.lisp
+@@ -3114,7 +3114,7 @@
+ 
+     ;; pull in requiered packages
+     (format cmdstorage "~a~%~a~%~%~a~%~a~%~%~a~%~%"
+-      "#!/usr/bin/env python"
++      "#!/usr/bin/python3"
+       "# -*- coding: UTF-8 -*-"
+       "import vtk"
+       "import sys"

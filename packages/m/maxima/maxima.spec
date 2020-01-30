@@ -38,13 +38,15 @@ URL:            http://maxima.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
 Source1:        maxima-rpmlintrc
+# PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
+Patch0:         maxima-python3.patch
 %if 0%{?suse_version}
 PreReq:         %install_info_prereq
 %endif
 BuildRequires:  bash-completion
 BuildRequires:  gzip
 BuildRequires:  makeinfo
-BuildRequires:  python
+BuildRequires:  python3
 Requires:       gnuplot
 Requires:       maxima_exec
 Requires:       plotutils
@@ -172,6 +174,7 @@ Maxima Brazilian Portuguese language support (in UTF-8).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure  %{?sbcl_flags:} %{?cmucl_flags:} %{?gcl_flags:} %{?clisp_flags:} \
