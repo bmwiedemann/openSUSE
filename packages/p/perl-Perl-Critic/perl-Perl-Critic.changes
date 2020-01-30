@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 25 03:09:34 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.138
+   see /usr/share/doc/packages/perl-Perl-Critic/Changes
+
+  1.138 Fri Jan 24 15:50:34 CST 2020
+  
+      Stable release.  No changes since 1.137_01.
+  
+  
+  1.137_01 Thu Jan 23 16:44:57 CST 2020
+  
+      [Fixes]
+      RequireCheckingReturnValueOfEval didn't count returning the result of an
+      eval as checking it.  Now it does.  However, it's only if you "return eval
+      { ... }".  It still doesn't handle the case of "return ( eval {} )".
+      Thanks, Tom Wyant. (GH #324)
+  
+      ProhibitPunctuationVars would get confused and think that the expression
+      qr/SOME$/ was using the $/ special variable.  Thanks, Tom Wyan. (GH #843)
+
+-------------------------------------------------------------------
 Thu Nov 28 03:04:39 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.136

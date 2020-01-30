@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Critic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Perl-Critic
-Version:        1.136
+Version:        1.138
 Release:        0
 %define cpan_name Perl-Critic
 Summary:        Critique Perl source code for best-practices
@@ -47,6 +47,7 @@ BuildRequires:  perl(PPI::Token::Quote::Single) >= 1.265
 BuildRequires:  perl(PPI::Token::Whitespace) >= 1.265
 BuildRequires:  perl(PPIx::QuoteLike)
 BuildRequires:  perl(PPIx::Regexp) >= 0.027
+BuildRequires:  perl(PPIx::Regexp::Util) >= 0.068
 BuildRequires:  perl(PPIx::Utilities::Node) >= 1.001
 BuildRequires:  perl(PPIx::Utilities::Statement) >= 1.001
 BuildRequires:  perl(Perl::Tidy)
@@ -75,6 +76,7 @@ Requires:       perl(PPI::Token::Quote::Single) >= 1.265
 Requires:       perl(PPI::Token::Whitespace) >= 1.265
 Requires:       perl(PPIx::QuoteLike)
 Requires:       perl(PPIx::Regexp) >= 0.027
+Requires:       perl(PPIx::Regexp::Util) >= 0.068
 Requires:       perl(PPIx::Utilities::Node) >= 1.001
 Requires:       perl(PPIx::Utilities::Statement) >= 1.001
 Requires:       perl(Perl::Tidy)
@@ -116,7 +118,7 @@ from http://www.activestate.com.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
