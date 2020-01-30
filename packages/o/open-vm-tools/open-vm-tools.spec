@@ -1,7 +1,7 @@
 #
 # spec file for package open-vm-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -70,7 +70,7 @@ Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Emulators/PC
-Url:            https://github.com/vmware/open-vm-tools
+URL:            https://github.com/vmware/open-vm-tools
 Source:         %{tarname}-%{version}-%{bldnum}.tar.gz
 Source1:        vmtoolsd
 Source2:        vmtoolsd.service
@@ -144,7 +144,7 @@ BuildRequires:  xml-security-c-devel
 %endif
 # vmhgfs is always built so fuse is no longer optional
 BuildRequires:  fuse-devel
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 %if 0%( pkg-config --exists 'udev > 190' && echo '1' ) == 01
 %define _udevrulesdir /usr/lib/udev/rules.d
 %else
@@ -164,7 +164,7 @@ ExclusiveArch:  %ix86 x86_64
 Patch0:         fix-leaks-Aliases-MappedAliases.patch
 Patch1:         gcc9-static-inline.patch
 
-%systemd_requires
+%systemd_ordering
 
 %description
 Open Virtual Machine Tools (open-vm-tools) are the open source

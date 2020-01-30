@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:55:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavor.
+- Use systemd_ordering in place of systemd_requires: systemd is
+  never strictly required to run open-vm-tools.
+
+-------------------------------------------------------------------
 Fri Oct 11 11:47:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gcc9-static-inline.patch: Fix static inline when building
