@@ -19,11 +19,11 @@
 %define qt5_snapshot 0
 %define libname libQt5WaylandCompositor5
 %define base_name libqt5
-%define real_version 5.14.0
-%define so_version 5.14.0
-%define tar_version qtwayland-everywhere-src-5.14.0
+%define real_version 5.14.1
+%define so_version 5.14.1
+%define tar_version qtwayland-everywhere-src-5.14.1
 Name:           libqt5-qtwayland
-Version:        5.14.0
+Version:        5.14.1
 Release:        0
 Summary:        Qt 5 Wayland Addon
 # The wayland compositor files are GPL-3.0-or-later
@@ -32,8 +32,6 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Avoid-animating-single-frame-cursors.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       fix-return-nonvoid-function.patch
 BuildRequires:  fdupes
