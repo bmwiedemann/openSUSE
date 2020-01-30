@@ -1,7 +1,7 @@
 #
 # spec file for package procdump
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           procdump
-Version:        1.0.1
+Version:        1.1
 Release:        0
 Summary:        Process coredump emitter using performance triggers
 License:        MIT
-Group:          Development/Tools/Debuggers
 URL:            https://github.com/Microsoft/ProcDump-for-Linux
 Source0:        https://github.com/Microsoft/ProcDump-for-Linux/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(zlib)
