@@ -1,7 +1,7 @@
 #
 # spec file for package quiterss
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           quiterss
-Version:        0.19.2
+Version:        0.19.3
 Release:        0
 Summary:        RSS/Atom aggregator
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/News/Utilities
 URL:            https://www.quiterss.org
 Source:         https://quiterss.org/files/%{version}/QuiteRSS-%{version}-src.tar.gz
 Source99:       %{name}-rpmlintrc
