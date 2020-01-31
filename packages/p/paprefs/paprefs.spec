@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(sigc++-2.0)
 Requires:       pulseaudio-module-gsettings
-Recommends:     %{name}-lang
 
 %description
 PulseAudio Preferences (paprefs) is a simple GTK based configuration

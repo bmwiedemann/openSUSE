@@ -271,4 +271,12 @@ Minor tweak fix, also for 13.1.</comment>
     <comment></comment>
     <requestid>718465</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>9fbb90483eeffdea8524b258e80a0e4a</srcmd5>
+    <version>1.1</version>
+    <time>1580511389</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768627 from dimstar)</comment>
+    <requestid>768688</requestid>
+  </revision>
 </revisionlist>
