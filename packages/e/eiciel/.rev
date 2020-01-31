@@ -297,4 +297,12 @@
     <comment></comment>
     <requestid>639460</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>8e9dafebf9c05bb30156d237c57514a8</srcmd5>
+    <version>0.9.12.1</version>
+    <time>1580511342</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768580 from dimstar)</comment>
+    <requestid>768661</requestid>
+  </revision>
 </revisionlist>

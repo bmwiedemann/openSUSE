@@ -38,7 +38,6 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.0.0
-Recommends:     %{name}-lang
 
 %description
 Eiciel allows you to visually edit file ACL entries. You can add and
