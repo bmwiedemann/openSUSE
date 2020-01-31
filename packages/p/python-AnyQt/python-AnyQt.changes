@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:01:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop building python2-AnyQt. There are no user in factory.
+
+-------------------------------------------------------------------
 Wed Mar  6 18:32:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - qtwebengine is now a separate package
