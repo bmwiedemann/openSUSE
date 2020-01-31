@@ -1,0 +1,130 @@
+From 953e3bd640b79ff621ba2b4cc7215581916ddb99 Mon Sep 17 00:00:00 2001
+From: Bill Dodd <billdodd@gmail.com>
+Date: Wed, 29 Jan 2020 17:18:25 -0600
+Subject: [PATCH] remove urlparse2 dependncy
+
+---
+ requirements.txt              |  4 ++--
+ setup.py                      | 12 +++++++++---
+ src/redfish/ris/rmc_helper.py |  5 +++--
+ tests/ris/test_rmc_helper.py  | 29 +++++++++++++++++++++++++++++
+ tox.ini                       |  8 ++++++++
+ 5 files changed, 51 insertions(+), 7 deletions(-)
+ create mode 100644 tests/ris/test_rmc_helper.py
+
+diff --git a/requirements.txt b/requirements.txt
+index 060d85f..fba487f 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,4 +1,4 @@
+-jsonpatch
++jsonpatch<=1.24 ; python_version == '3.4'
++jsonpatch ; python_version >= '3.5' or python_version == '2.7'
+ jsonpath_rw
+ jsonpointer
+-urlparse2
+\ No newline at end of file
+diff --git a/setup.py b/setup.py
+index 344e597..c5ea3b7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -24,8 +24,14 @@ setup(name='redfish',
+       packages=find_packages('src'),
+       package_dir={'': 'src'},
+       install_requires=[
+-          'jsonpatch',
+           'jsonpath_rw',
+           'jsonpointer',
+-          'urlparse2',
+-      ])
++      ],
++      extras_require={
++          ':python_version == "3.4"': [
++              'jsonpatch<=1.24'
++          ],
++          ':python_version >= "3.5" or python_version == "2.7"': [
++              'jsonpatch'
++          ]
++      })
+diff --git a/src/redfish/ris/rmc_helper.py b/src/redfish/ris/rmc_helper.py
+index e633a49..5e7b5dc 100644
+--- a/src/redfish/ris/rmc_helper.py
++++ b/src/redfish/ris/rmc_helper.py
+@@ -12,9 +12,10 @@ import json
+ import errno
+ import logging
+ import hashlib
+-import urlparse2
+ import redfish.rest
+ 
++from six.moves.urllib.parse import urlparse
++
+ from .ris import (RisMonolith)
+ from .sharedtypes import (JSONEncoder)
+ from .config import (AutoConfigParser)
+@@ -146,7 +147,7 @@ class RmcClient(object):
+ 
+     def get_cache_dirname(self):
+         """The rest client's current base URL converted to path"""
+-        parts = urlparse2.urlparse(self.get_base_url())
++        parts = urlparse(self.get_base_url())
+         pathstr = '%s/%s' % (parts.netloc, parts.path)
+         return pathstr.replace('//', '/')
+ 
+diff --git a/tests/ris/test_rmc_helper.py b/tests/ris/test_rmc_helper.py
+new file mode 100644
+index 0000000..dbf4a29
+--- /dev/null
++++ b/tests/ris/test_rmc_helper.py
+@@ -0,0 +1,29 @@
++# Copyright Notice:
++# Copyright 2020 DMTF. All rights reserved.
++# License: BSD 3-Clause License. For full text see link:
++#     https://github.com/DMTF/Redfish-Protocol-Validator/blob/master/LICENSE.md
++
++import unittest
++try:
++    from unittest import mock
++except ImportError:
++    import mock
++
++from redfish.ris import rmc_helper
++
++
++class RmcHelper(unittest.TestCase):
++    def setUp(self):
++        super(RmcHelper, self).setUp()
++
++    @mock.patch('redfish.rest.v1.HttpClient')
++    def test_get_cache_dirname(self, mock_http_client):
++        url = 'http://example.com'
++        helper = rmc_helper.RmcClient(url=url, username='oper', password='xyz')
++        mock_http_client.return_value.get_base_url.return_value = url
++        dir_name = helper.get_cache_dirname()
++        self.assertEqual(dir_name, 'example.com/')
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/tox.ini b/tox.ini
+index 986f141..b1b8a84 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -14,6 +14,14 @@ commands =
+     --with-timer \
+     --with-coverage --cover-erase --cover-package=src
+ 
++[testenv:py27]
++deps =
++    coverage
++    fixtures
++    mock
++    nose
++    nose-timer
++
+ [testenv:pep8]
+ basepython = python3.6
+ deps = flake8
+-- 
+2.25.0
+

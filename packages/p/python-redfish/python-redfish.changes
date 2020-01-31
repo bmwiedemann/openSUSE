@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Thu Jan 30 21:40:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.1.4
+- Add patch:
+  * 0001-remove-urlparse2-dependncy.patch
