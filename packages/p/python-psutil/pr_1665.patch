@@ -1,0 +1,61 @@
+From df417c78f9b91fa19e3dd04645d584f572dac4de Mon Sep 17 00:00:00 2001
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 17 Jan 2020 10:27:04 +0900
+Subject: [PATCH 1/2] Future-proof disk_ui_counters on Linux.
+
+Kernel 5.5 added 2 more fields to /proc/diskstats, requiring another
+change after the one for 4.18, which recently added 4 fields.
+
+At this point in time, the meaning of the existing fields is unlikely to
+change, and psutil is not using any of the newer ones. By considering
+18 fields and more to have the current layout, psutil will continue to
+work as newer kernels add more fields.
+---
+ psutil/_pslinux.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/psutil/_pslinux.py b/psutil/_pslinux.py
+index c681439d4..673475116 100644
+--- a/psutil/_pslinux.py
++++ b/psutil/_pslinux.py
+@@ -1066,6 +1066,7 @@ def read_procfs():
+         # "3    1   hda1 8 8 8 8"
+         # 4.18+ has 4 fields added:
+         # "3    0   hda 8 8 8 8 8 8 8 8 8 8 8 0 0 0 0"
++        # 5.5 has 2 more fields.
+         # See:
+         # https://www.kernel.org/doc/Documentation/iostats.txt
+         # https://www.kernel.org/doc/Documentation/ABI/testing/procfs-diskstats
+@@ -1080,7 +1081,7 @@ def read_procfs():
+                 reads = int(fields[2])
+                 (reads_merged, rbytes, rtime, writes, writes_merged,
+                     wbytes, wtime, _, busy_time, _) = map(int, fields[4:14])
+-            elif flen == 14 or flen == 18:
++            elif flen == 14 or flen >= 18
+                 # Linux 2.6+, line referring to a disk
+                 name = fields[2]
+                 (reads, reads_merged, rbytes, rtime, writes, writes_merged,
+
+From ae5532a70b653435adbf8c7e86c3baa0bd3f90dc Mon Sep 17 00:00:00 2001
+From: Giampaolo Rodola <g.rodola@gmail.com>
+Date: Fri, 17 Jan 2020 12:32:05 +0100
+Subject: [PATCH 2/2] fix typo
+
+---
+ psutil/_pslinux.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/psutil/_pslinux.py b/psutil/_pslinux.py
+index 673475116..d8f8ed5c8 100644
+--- a/psutil/_pslinux.py
++++ b/psutil/_pslinux.py
+@@ -1081,7 +1081,7 @@ def read_procfs():
+                 reads = int(fields[2])
+                 (reads_merged, rbytes, rtime, writes, writes_merged,
+                     wbytes, wtime, _, busy_time, _) = map(int, fields[4:14])
+-            elif flen == 14 or flen >= 18
++            elif flen == 14 or flen >= 18:
+                 # Linux 2.6+, line referring to a disk
+                 name = fields[2]
+                 (reads, reads_merged, rbytes, rtime, writes, writes_merged,
+

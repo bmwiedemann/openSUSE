@@ -1,7 +1,7 @@
 #
 # spec file for package python-psutil
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch0:         pr_1364.patch
 Patch1:         skip-test-missing-warnings.patch
 Patch2:         skip-flaky-i586.patch
 Patch3:         skip-obs.patch
+Patch4:         pr_1665.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,6 +60,7 @@ A graphical interface that lets you easily analyze and introspect unaltered runn
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # Remove shebangs
 sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.py,_psposix.py,_pssunos.py,_pswindows.py}
