@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(xdamage)
 %if %{build_applet}
 BuildRequires:  pkgconfig(libpanelapplet-4.0)
 %endif
-Recommends:     %{name}-lang
 %if %{build_applet}
 %glib2_gsettings_schema_requires
 %endif
