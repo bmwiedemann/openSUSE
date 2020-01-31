@@ -59,7 +59,6 @@ platforms.
 %package -n libinfinity-1_0-0
 Summary:        Implementation of the Infinote collaborative editing protocol
 Group:          Development/Libraries/GNOME
-Recommends:     %{name}-lang
 # Needed to make lang package installable
 Provides:       %{name} = %{version}
 

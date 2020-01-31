@@ -273,4 +273,12 @@
 - Replace references to /var/adm/fillup-templates with new (forwarded request 649239 from dimstar)</comment>
     <requestid>649252</requestid>
   </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>084d5a38a2e018a0fe568e98a50773f9</srcmd5>
+    <version>0.7.1</version>
+    <time>1580511396</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768637 from dimstar)</comment>
+    <requestid>768693</requestid>
+  </revision>
 </revisionlist>
