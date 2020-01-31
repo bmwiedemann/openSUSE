@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(keybinder-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(rest-0.7)
 BuildRequires:  pkgconfig(zeitgeist-2.0)
-Recommends:     %{name}-lang
 
 %description
 Synapse is a semantic launcher written in Vala that you can use to start
