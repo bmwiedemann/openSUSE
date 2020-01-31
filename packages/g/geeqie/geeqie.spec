@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(lcms2)
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
-Recommends:     %{name}-lang
 %if 0%{?suse_version} >= 1330
 BuildRequires:  pkgconfig(lua5.1)
 %endif
