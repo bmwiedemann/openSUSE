@@ -1,7 +1,7 @@
 #
 # spec file for package mate-panel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(NetworkManager)
 BuildRequires:  pkgconfig(dconf) >= 0.13.4
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50

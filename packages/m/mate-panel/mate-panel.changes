@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 14:40:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(NetworkManager) BuildRequires: the build system
+  never references this symbol.
+
+-------------------------------------------------------------------
 Wed Sep 25 11:25:24 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Remove build require on libxml2-python as it's not required. There
