@@ -180,4 +180,12 @@
     <comment>1</comment>
     <requestid>332689</requestid>
   </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>0f0497861f3cbfb637046767b8c8f642</srcmd5>
+    <version>0.6.2</version>
+    <time>1580511397</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768638 from dimstar)</comment>
+    <requestid>768694</requestid>
+  </revision>
 </revisionlist>

@@ -38,7 +38,6 @@ BuildRequires:  libglade2-devel
 BuildRequires:  pkg-config
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Depend on x86 instruction set.
 ExclusiveArch:  %ix86 x86_64
