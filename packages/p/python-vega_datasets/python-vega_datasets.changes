@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 28 20:17:49 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.8.0
+  * Include all data from vega-datasets v1.29.0
+  * Add ohlc to local datasets
+- Drop upstream-included fix_pandas_0_25.patch
+
+-------------------------------------------------------------------
 Wed Jul 31 21:04:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Add fix_pandas_0_25.patch
