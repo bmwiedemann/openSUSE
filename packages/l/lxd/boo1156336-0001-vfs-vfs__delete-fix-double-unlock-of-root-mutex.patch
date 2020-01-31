@@ -1,0 +1,47 @@
+From 13548f8bdb309d18801de9febb8f5829b6b9ae55 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Fri, 31 Jan 2020 20:57:47 +1100
+Subject: [PATCH] vfs: vfs__delete: fix double-unlock of &root->mutex
+
+vfs__delete_contents would unlock the passed &root->mutex, but all of
+its callers would then also unlock the passed &root->mutex. It turns out
+that this works on most architectures without issue, but apparently on
+some Intel CPUs with TSX enabled this will trigger a general protection
+fault[1,2].
+
+This was the cause of a very frustrating bug where LXD would segfault on
+start-up[3].
+
+[1]: https://lwn.net/Articles/534758/
+[2]: https://software.intel.com/en-us/forums/intel-isa-extensions/topic/675036
+[3]: https://bugzilla.opensuse.org/show_bug.cgi?id=1156336
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ src/vfs.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/vfs.c b/src/vfs.c
+index 3a4c205a1d4a..443a6ad3b980 100644
+--- a/src/vfs.c
++++ b/src/vfs.c
+@@ -619,7 +619,6 @@ static int vfs__delete_content(struct root *root, const char *filename)
+ 	/* Check that there are no consumers of this file. */
+ 	if (content->refcount > 0) {
+ 		root->error = EBUSY;
+-		pthread_mutex_unlock(&root->mutex);
+ 		rc = SQLITE_IOERR_DELETE;
+ 		goto err;
+ 	}
+@@ -630,8 +629,6 @@ static int vfs__delete_content(struct root *root, const char *filename)
+ 	/* Reset the file content slot. */
+ 	*(root->contents + content_index) = NULL;
+ 
+-	pthread_mutex_unlock(&root->mutex);
+-
+ 	return SQLITE_OK;
+ 
+ err:
+-- 
+2.25.0
+

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:16:27 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Backport https://github.com/canonical/dqlite/pull/207 to fix boo#1156336.
+  + boo1156336-0001-vfs-vfs__delete-fix-double-unlock-of-root-mutex.patch
+
+-------------------------------------------------------------------
+Fri Jan 31 00:33:47 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.20. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-20-has-been-released/6673
+  boo#1162299
+  + Server side support of API collections
+  + New unix-hotplug device type
+  + Support for standby cluster members
+- Update packaging to use GOPATH="_dist" rather than trying to move everything
+  to vendor/. This is the recommended approach by upstream (and makes our
+  specfile marginally less horrific).
+
+-------------------------------------------------------------------
 Fri Jan 17 05:17:53 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 3.19. The full upstream changelog is available from:

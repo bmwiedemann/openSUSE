@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        3.19
+Version:        3.20
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -38,10 +38,13 @@ Source100:      %{name}.service
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
+# FIX-UPSTREAM: Backport of https://github.com/canonical/dqlite/pull/207. boo#1156336
+Patch100:       boo1156336-0001-vfs-vfs__delete-fix-double-unlock-of-root-mutex.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
+BuildRequires:  libudev-devel
 BuildRequires:  patchelf
 BuildRequires:  pkg-config
 BuildRequires:  rsync
@@ -87,29 +90,13 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
-
-# If there is a vendor/ move it to _dist/src/.
-if [ -d vendor ]
-then
-	cp -at _dist/src vendor/*
-	rm -rf vendor/
-fi
-# Move _dist/src (which is LXD's variant of vendoring) to vendor/.
-mv -v _dist/src vendor
-
-# For some reason, some vendored packages have stored their vendored sources
-# within their source tree inside the vendor tree (?!). So we need to
-# workaround this, even though it's probably a bug in LXD packaging.
-for vendor in $(find vendor/* -type d -name vendor)
-do
-	rsync -a "$vendor/" vendor/
-	rm -rf "$vendor/"
-done
+# boo#1156336
+%patch100 -d _dist/deps/dqlite -p1
 
 # Create fake "go mod"-like import paths. This is going to be really fun to
 # maintain but it's unfortunately necessary because openSUSE doesn't have nice
 # "go mod" support in OBS...
-ln -s . vendor/github.com/cpuguy83/go-md2man/v2
+ln -s . _dist/src/github.com/cpuguy83/go-md2man/v2
 
 %build
 # Make sure any leftover go build caches are gone.
@@ -187,6 +174,9 @@ readarray -t mainpkgs \
 	<<<"$(go list -f '{{.Name}}:{{.ImportPath}}' %{import_path}/... | \
 	      awk -F: '$1 == "main" { print $2 }' | \
 	      grep -Ev '^github.com/lxc/lxd/(test|shared)')"
+
+# _dist/src is effectively an old-school "vendor/" tree, so add it to GOPATH.
+export GOPATH="$GOPATH:$PKGDIR/_dist"
 
 # And now we can finally build LXD and all of the related binaries.
 mkdir bin
