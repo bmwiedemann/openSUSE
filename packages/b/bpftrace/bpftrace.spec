@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         install-man-dir.patch
+# FIX-UPSTREAM: Backport of https://github.com/iovisor/bpftrace/pull/1121. boo#1162312
+Patch1:         boo1162312-cmake-use-_LIBRARIES-when-testing-for-libbfd-version.patch
+BuildRequires:  binutils
+BuildRequires:  binutils-devel
 BuildRequires:  bison
 BuildRequires:  clang
 BuildRequires:  clang-devel
@@ -59,16 +63,25 @@ easily modified to allow for different types of debugging.
 %prep
 %setup -q
 %patch0 -p1
+# boo#1162312
+%patch1 -p1
 
 # Correct the #!-line to avoid rpmlint warnings.
 find tools -name '*.bt' -type f \
 	-exec sed -i '1s|^#!%{_bindir}/env bpftrace|#!%{_bindir}/bpftrace|' '{}' ';'
 
 %build
+# Find libbfd.so and libopcodes.so. This is necessary because binutils gives
+# these libraries very strange names which CMake cannot find. See boo#1162312.
+LIBBFD="$(find "%{_libdir}" -type f -name 'libbfd*.so*')"
+LIBOPCODES="$(find "%{_libdir}" -type f -name 'libopcodes*.so*')"
+
 %define _lto_cflags %{nil}
 export CC="clang"
 export CXX="clang++"
 %cmake \
+	-DLIBBFD_LIBRARIES="${LIBBFD}" \
+	-DLIBOPCODES_LIBRARIES="${LIBOPCODES}" \
 	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
 	-DBUILD_TESTING:BOOL=OFF

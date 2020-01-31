@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 31 09:19:26 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Fix builds on Leap 15.1. This requires quite a bit of trickery related to
+  binutils (see boo#1162312), but it's nothing too hard.
+- Added patch to workaround boo#1162312.
+  + boo1162312-cmake-use-_LIBRARIES-when-testing-for-libbfd-version.patch
+
+-------------------------------------------------------------------
 Thu Nov 21 20:49:17 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.3

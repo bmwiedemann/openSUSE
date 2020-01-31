@@ -1,0 +1,38 @@
+From 87f1a5ce8a098d89ccfc0c2b3124c8fc45041725 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Fri, 31 Jan 2020 20:09:08 +1100
+Subject: [PATCH] cmake: use *_LIBRARIES when testing for libbfd version
+
+On openSUSE, binutils has really strangely named libbfd and libopcodes
+libraries[1]. This is fine (we can define *_LIBRARIES variables), but the
+result is that the LIBBFD_DISASM_FOUR_ARGS_SIGNATURE test will always
+fail because CHECK_CXX_SOURCE_COMPILES cannot find the right libraries.
+
+The fix is simple -- just use *_LIBRARIES for CMAKE_REQUIRED_LIBRARIES.
+We need to find_library(LibOpcodes) for that test, but that isn't too
+bad because CMake caches the result.
+
+[1]: https://bugzilla.suse.com/show_bug.cgi?id=1162312
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ cmake/FindLibBfd.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/FindLibBfd.cmake b/cmake/FindLibBfd.cmake
+index d8b7bf1e2c6b..c659d46e313e 100644
+--- a/cmake/FindLibBfd.cmake
++++ b/cmake/FindLibBfd.cmake
+@@ -61,7 +61,8 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(LibBfd "Please install the libbfd development
+ mark_as_advanced(LIBBFD_INCLUDE_DIRS LIBBFD_LIBRARIES)
+ 
+ if(${LIBBFD_FOUND})
+-SET(CMAKE_REQUIRED_LIBRARIES bfd opcodes)
++find_package(LibOpcodes)
++SET(CMAKE_REQUIRED_LIBRARIES ${LIBBFD_LIBRARIES} ${LIBOPCODES_LIBRARIES})
+ INCLUDE(CheckCXXSourceCompiles)
+ CHECK_CXX_SOURCE_COMPILES("
+ #include <string.h>
+-- 
+2.25.0
+
