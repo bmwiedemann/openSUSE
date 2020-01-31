@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-datamatrix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-python-datamatrix
-Version:        0.10.12
+Version:        0.10.15
 Release:        0
-License:        GPL-3.0-or-later
 Summary:        A python library to work with tabular data
-Url:            https://github.com/smathot/python-datamatrix
+License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/smathot/python-datamatrix
 Source:         https://github.com/smathot/python-datamatrix/archive/release/%{version}.tar.gz#/python-datamatrix-release-%{version}.tar.gz
 BuildRequires:  %{python_module fastnumbers}
 BuildRequires:  %{python_module json_tricks}

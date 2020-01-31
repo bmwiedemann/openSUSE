@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 17:28:19 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.15
+  * Upgrade old-style DataMatrix objects during memoization
+  * Add shape property to DataMatrix  
+
+-------------------------------------------------------------------
 Wed Oct 30 19:33:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Use noun statement for summary.
