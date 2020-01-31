@@ -57,7 +57,6 @@ Summary:        Smart MUltipleXed Irc - Engine Library
 Group:          Productivity/Networking/IRC
 Requires:       mono-data-sqlite
 Recommends:     %{name}-engine-irc
-Recommends:     %{name}-engine-lang
 Recommends:     %{name}-engine-twitter
 Recommends:     %{name}-engine-xmpp
 
@@ -69,7 +68,6 @@ IRC client for advanced users, targeting the GNOME desktop.
 Summary:        Smart MUltipleXed Irc - Campfire Engine
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine = %{version}
-Recommends:     %{name}-engine-campfire-lang
 
 %description engine-campfire
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -79,7 +77,6 @@ IRC client for advanced users, targeting the GNOME desktop.
 Summary:        Smart MUltipleXed Irc - IRC Engine
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine = %{version}
-Recommends:     %{name}-engine-irc-lang
 
 %description engine-irc
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -89,7 +86,6 @@ IRC client for advanced users, targeting the GNOME desktop.
 Summary:        Smart MUltipleXed Irc - Jabber Engine
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine = %{version}
-Recommends:     %{name}-engine-jabbr-lang
 
 %description engine-jabbr
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -99,7 +95,6 @@ IRC client for advanced users, targeting the GNOME desktop.
 Summary:        Smart MUltipleXed Irc - Twitter Engine
 Group:          Productivity/Networking/Other
 Requires:       %{name}-engine = %{version}
-Recommends:     %{name}-engine-twitter-lang
 
 %description engine-twitter
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -118,7 +113,6 @@ XMPP client for advanced users, targeting the GNOME desktop.
 Summary:        Smart MUltipleXed Irc - Frontend Library
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine = %{version}
-Recommends:     %{name}-frontend-lang
 
 %description frontend
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -129,7 +123,6 @@ Summary:        Smart MUltipleXed Irc - GNOME Frontend
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-frontend = %{version}
 Requires:       mono-locale-extras
-Recommends:     %{name}-frontend-gnome-lang
 
 %description frontend-gnome
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -140,7 +133,6 @@ Summary:        Smart MUltipleXed Irc - IRC Library for GNOME Frontend
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine-irc = %{version}
 Requires:       %{name}-frontend-gnome = %{version}
-Recommends:     %{name}-frontend-gnome-irc-lang
 Supplements:    packageand(%{name}-frontend-gnome:%{name}-engine-irc)
 
 %description frontend-gnome-irc
@@ -152,7 +144,6 @@ Summary:        Smart MUltipleXed Irc - TWITTER Library for GNOME Frontend
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine-twitter = %{version}
 Requires:       %{name}-frontend-gnome = %{version}
-Recommends:     %{name}-frontend-gnome-twitter-lang
 Supplements:    packageand(%{name}-frontend-gnome:%{name}-engine-twitter)
 
 %description frontend-gnome-twitter
@@ -185,7 +176,6 @@ This package provides the stfl (Structured Terminal Forms Library) based fronten
 Summary:        Smart MUltipleXed Irc - Structured Terminal Form Frontend
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-frontend = %{version}
-Recommends:     %{name}-message-buffer-lang
 
 %description message-buffer
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
@@ -195,7 +185,6 @@ IRC client for advanced users.
 Summary:        Smart MUltipleXed Irc - Server
 Group:          Productivity/Networking/IRC
 Requires:       %{name}-engine = %{version}
-Recommends:     %{name}-server-lang
 
 %description server
 Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform
