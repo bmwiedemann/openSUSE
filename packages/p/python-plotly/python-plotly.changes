@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 30 17:27:22 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.5.0
+  + Updated
+    * Updated Plotly.js to version 1.52.1.
+    * Plotly Express uses the new `legend.title` attribute and so now has shorter trace `name`s
+    * The heuristic used by `px.parallel_categories` to determine which columns of the data frame to draw has been changed and made more configurable with the `dimensions_max_cardinality` argument
+    * The `simple_white` colorbar styling has been streamlined
+    * The `jupyterlab-plotly` and `plotlywidget` JupyterLab extensions should now share code when installed together, resulting in smaller JupyterLab vendor bundle sizes
+  + Fixed
+    * Plotly Express `category_orders` are now respected independent of the contents of the data set
+    * `go.Scattergl` symbols now accept numeric specification
+    * `px.scatter` trendline coefficients are now more readable
+    * Built-in cyclical color scales now all have identical start and end points
+  + Added
+    * `px.sunburst` and `px.treemap` now accept a `path` argument for passing
+      columns of a rectangular dataframe to build the charts
+    * `px.choropleth` now accepts a user-supplied `geojson` attribute
+    * `px.choropleth` and `px.choropleth_mapbox` now accept `featureidkey` to specify the GeoJSON field to use to match `locations`
+    * `px.choropleth` and `px.choropleth_mapbox` now accept discrete color
+    * `px.bar_polar` now accepts continuous color
+    * New `layout.uniformtext` attribute allows for automatic standardization of font sizes across bar-like and hierarchical traces.
+
+-------------------------------------------------------------------
 Fri Dec 13 00:25:52 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.4.1:
