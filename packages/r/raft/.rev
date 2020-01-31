@@ -31,4 +31,12 @@
     <comment>raft 0.9.16</comment>
     <requestid>761282</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b38c469941cf0cc7b41736d15f13857d</srcmd5>
+    <version>0.9.17</version>
+    <time>1580511522</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.9.17</comment>
+    <requestid>769107</requestid>
+  </revision>
 </revisionlist>
