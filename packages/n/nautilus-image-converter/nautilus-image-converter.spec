@@ -36,7 +36,6 @@ BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  nautilus-devel
 Recommends:     ImageMagick
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

@@ -43,4 +43,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>84442e23771f9d0502ca5934e98ed791</srcmd5>
+    <version>0.3.0</version>
+    <time>1580511384</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768624 from dimstar)</comment>
+    <requestid>768685</requestid>
+  </revision>
 </revisionlist>
