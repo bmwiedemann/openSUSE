@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 13:43:29 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Update to 0.1.4
+- Fix the tests for py3 further (patch submitted upstream)
+- Only build for py3, since upstream marked this as py3 compatible
+
+-------------------------------------------------------------------
 Tue Nov  5 09:09:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix py3 testsuite execution:

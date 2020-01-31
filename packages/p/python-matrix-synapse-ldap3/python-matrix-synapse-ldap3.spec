@@ -17,20 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python3 1
+# There is no longer python2-matrix-synapse, skip python2
+%define skip_python2 1
 %define         github_user matrix-org
 %define         short_name matrix-synapse-ldap3
 Name:           python-%{short_name}
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        An LDAP3 auth provider for Synapse
 License:        Apache-2.0
 URL:            https://github.com/matrix-org/matrix-synapse-ldap3
-Source:         https://github.com/%{github_user}/%{short_name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/%{github_user}/%{short_name}/archive/v%{version}/%{short_name}-%{version}.tar.gz
 # https://github.com/matrix-org/matrix-synapse-ldap3/issues/73
 Patch0:         py3compat.patch
 BuildRequires:  %{python_module Twisted >= 15.1}
 BuildRequires:  %{python_module ldap3 >= 0.9.5}
+BuildRequires:  %{python_module matrix-synapse}
 BuildRequires:  %{python_module ldaptor}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pydenticon}

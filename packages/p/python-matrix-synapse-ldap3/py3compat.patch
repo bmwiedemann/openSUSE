@@ -1,16 +1,40 @@
-Index: matrix-synapse-ldap3-0.1.3/tests/__init__.py
-===================================================================
---- matrix-synapse-ldap3-0.1.3.orig/tests/__init__.py
-+++ matrix-synapse-ldap3-0.1.3/tests/__init__.py
-@@ -5,7 +5,10 @@ from twisted.python.components import re
+From da7389b0dda73db54c9614e7f5ae9cecb4b2d19a Mon Sep 17 00:00:00 2001
+From: Stasiek Michalski <stasiek@michalski.cc>
+Date: Wed, 29 Jan 2020 14:34:50 +0100
+Subject: [PATCH] Fix tests on Python 3
+
+---
+ tests/__init__.py | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/tests/__init__.py b/tests/__init__.py
+index e9e8987..111d651 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -5,12 +5,15 @@
  from ldaptor.inmemory import fromLDIFFile
  from ldaptor.interfaces import IConnectedLDAPEntry
  from ldaptor.protocols.ldap.ldapserver import LDAPServer
 -from cStringIO import StringIO
 +try:
-+    from cStringIO import StringIO
++    from cStringIO import StringIO as BytesIO
 +except ImportError:
-+    from io import StringIO
++    from io import BytesIO
  
  from ldap_auth_provider import LdapAuthProvider
  
+ 
+-LDIF = """\
++LDIF = b"""\
+ dn: dc=org
+ dc: org
+ objectClass: dcObject
+@@ -51,7 +54,7 @@
+ 
+ @defer.inlineCallbacks
+ def _create_db():
+-    f = StringIO(LDIF)
++    f = BytesIO(LDIF)
+     db = yield fromLDIFFile(f)
+     f.close()
+     defer.returnValue(db)
