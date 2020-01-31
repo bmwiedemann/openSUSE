@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 31 07:54:53 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200131.38632736:
+  * dashboard: Add openQA results
+  * Add the same link to openqa than what is on obs_factory
+  * Dashboard: link the product package
+
+-------------------------------------------------------------------
+Thu Jan 30 21:03:49 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200130.1ad5de89:
+  * dashboard: Output the time in UTC
+
+-------------------------------------------------------------------
+Thu Jan 30 20:53:26 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200130.cb660d72:
+  * Add timestamp to the page for update info
+  * Add versions to the dashboard
+
+-------------------------------------------------------------------
+Thu Jan 30 16:08:31 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200130.063dd72a:
+  * One more fix for the dashboard generator config
+
+-------------------------------------------------------------------
+Thu Jan 30 16:04:36 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200130.1335e55b:
+  * Fix indentation of gocd config
+
+-------------------------------------------------------------------
 Thu Jan 30 15:59:35 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200130.02d3038b:
