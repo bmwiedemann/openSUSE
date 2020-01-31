@@ -48,7 +48,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(lua) >= 5.2
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
