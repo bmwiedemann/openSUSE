@@ -45,7 +45,6 @@ Requires:       gedit
 # For gvfs-open
 Requires:       gvfs
 Requires:       rubber
-Recommends:     %{name}-lang
 # Nice, and needed to make lang package installable
 Provides:       %{name} = %{version}
 %glib2_gsettings_schema_requires
