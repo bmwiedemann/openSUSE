@@ -708,4 +708,17 @@ expose the tor-related ports.</comment>
   *  fixes many smaller bugs present in previous series</comment>
     <requestid>761967</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>ae12d08d13f4945be647eca2a21fbe5e</srcmd5>
+    <version>0.4.2.6</version>
+    <time>1580511455</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.2.6
+  * Correct how we use libseccomp
+  * Fix crash when reloading logging configuration while the
+    experimental sandbox is enabled
+  * Avoid a possible crash when logging an assertion
+    about mismatched magic numbers</comment>
+    <requestid>769011</requestid>
+  </revision>
 </revisionlist>
