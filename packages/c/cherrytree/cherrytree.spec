@@ -34,7 +34,6 @@ BuildRequires:  update-desktop-files
 Requires:       python-gtk
 Requires:       python-gtksourceview
 Requires:       python-xml
-Recommends:     %{name}-lang
 BuildArch:      noarch
 # For password-protected format
 %if 0%{?suse_version} > 1500

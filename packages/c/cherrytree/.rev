@@ -541,4 +541,12 @@
     <comment>Updated to version 0.38.9, add python-xml to requires as well as run spec-cleaner. (forwarded request 750652 from malcolmlewis)</comment>
     <requestid>750966</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>57b0ff57e2f0fa104cd6f29922572acc</srcmd5>
+    <version>0.38.9</version>
+    <time>1580511338</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768574 from dimstar)</comment>
+    <requestid>768658</requestid>
+  </revision>
 </revisionlist>
