@@ -58,4 +58,12 @@
   use an abolute path for icon.</comment>
     <requestid>282202</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e12bde51dbb486c0a45651f4a5654f9d</srcmd5>
+    <version>0.5.4</version>
+    <time>1580511375</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768614 from dimstar)</comment>
+    <requestid>768679</requestid>
+  </revision>
 </revisionlist>
