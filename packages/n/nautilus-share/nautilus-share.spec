@@ -31,7 +31,6 @@ BuildRequires:  libtool
 BuildRequires:  nautilus-devel
 BuildRequires:  translation-update-upstream
 Requires:       samba >= 3.0.23
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
