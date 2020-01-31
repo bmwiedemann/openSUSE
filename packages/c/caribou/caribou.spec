@@ -49,7 +49,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 Requires:       python3-atspi
 Requires:       python3-xml
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description

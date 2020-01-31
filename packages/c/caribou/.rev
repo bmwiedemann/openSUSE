@@ -301,4 +301,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 583634 from dimstar)</comment>
     <requestid>584796</requestid>
   </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>56f2af298b66fdd0aed2ea7c22139532</srcmd5>
+    <version>0.4.21</version>
+    <time>1580511404</time>
+    <user>dimstar_suse</user>
+    <comment>Remove -lang recommends (forwarded request 768701 from dimstar)</comment>
+    <requestid>768714</requestid>
+  </revision>
 </revisionlist>
