@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.16.2
 BuildRequires:  pkgconfig(libqrencode) >= 3.1
-Recommends:     %{name}-lang
 
 %description
 Nuntius is a daemon that connects to another Nuntius app running on
