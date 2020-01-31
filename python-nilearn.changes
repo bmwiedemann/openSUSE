@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:59:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.1
+  + ENHANCEMENTS
+    * html pages use the user-provided plot title, if any, as their title
+  + Fixes
+    * Fetchers for developmental_fmri and localizer datasets resolve URLs correctly.
+
+-------------------------------------------------------------------
 Mon Jan  6 15:55:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.6.0

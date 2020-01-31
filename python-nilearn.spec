@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nilearn
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Statistical learning tool for neuroimaging
-Url:            http://nilearn.github.io
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/nilearn/nilearn
 Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
