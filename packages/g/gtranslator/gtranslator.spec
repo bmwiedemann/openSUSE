@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 Requires:       gsettings-desktop-schemas
 Requires:       iso-codes
 Requires:       libgda-5_0-sqlite
-Recommends:     %{name}-lang
 Obsoletes:      gtranslator-devel <= 2.91.7
 
 %description
