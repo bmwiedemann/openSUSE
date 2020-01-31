@@ -1,28 +1,22 @@
-Index: sarg-2.3.10/configure.in
-===================================================================
---- sarg-2.3.10.orig/configure.in
-+++ sarg-2.3.10/configure.in
-@@ -40,24 +40,6 @@ if test "$have_extra_warnings" = "no" ;
-     CFLAGS="${saved_CFLAGS}"
- fi
+--- a/configure.ac	2020-01-30 12:57:19.792005766 -0500
++++ b/configure.ac	2020-01-30 12:57:37.639866180 -0500
+@@ -50,20 +50,6 @@ AS_IF([test "$have_extra_warnings" = "no
+ # Don't compare signs as it is a mess
+ CFLAGS="${CFLAGS} -Wno-sign-compare"
  
 -AC_MSG_CHECKING([for implicit-function-declaration error flag in $CC])
 -saved_CFLAGS="${CFLAGS}"
 -CFLAGS="${CFLAGS} -Werror=implicit-function-declaration"
 -AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_implicit_function_declaration="yes"],[have_implicit_function_declaration="no"])
 -AC_MSG_RESULT($have_implicit_function_declaration)
--if test "$have_implicit_function_declaration" = "no" ; then
--    CFLAGS="${saved_CFLAGS}"
--fi
+-AS_IF([test "$have_implicit_function_declaration" = "no"],[CFLAGS="${saved_CFLAGS}"])
 -
 -AC_MSG_CHECKING([for format error flag in $CC])
 -saved_CFLAGS="${CFLAGS}"
 -CFLAGS="${CFLAGS} -Werror=format"
 -AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_error_format="yes"],[have_error_format="no"])
 -AC_MSG_RESULT($have_error_format)
--if test "$have_error_format" = "no" ; then
--    CFLAGS="${saved_CFLAGS}"
--fi
+-AS_IF([test "$have_error_format" = "no"],[CFLAGS="${saved_CFLAGS}"])
 -
  case "$host" in
     *-solaris*)

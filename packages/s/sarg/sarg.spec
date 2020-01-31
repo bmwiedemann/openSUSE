@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           sarg
-Version:        2.3.10
+Version:        2.4.0
 Release:        0
 Summary:        Squid Analysis Report Generator
 License:        GPL-2.0-or-later
@@ -39,11 +39,10 @@ Source7:        cron.monthly.sarg
 Source8:        sarg-reports.1.gz
 Source9:        sarg-apache.conf
 Source10:       platform_suse.gif
-# PATCH-FIX-UPSTREAM sarg-2.3.1-config.patch
-Patch0:         sarg-2.3.1-config.patch
-Patch1:         sarg-2.3.2-limits_h.diff
+# PATCH-FIX-UPSTREAM sarg-2.4.0-config.patch
+Patch0:         sarg-2.4.0-config.patch
 # PATCH-FIX-OPENSUSE do not build with werror
-Patch2:         sarg-no-werror.patch
+Patch1:         sarg-2.4.0-no-werror.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gd-devel
@@ -62,15 +61,12 @@ sites, and times.
 
 %prep
 %setup -q
-%patch0
-%patch1
-%patch2 -p1
+%patch0 -p1
+%patch1 -p1
 cp %{SOURCE2} .
 
 %build
 chmod a+x user_limit_block
-# gettext in soruce < gettext in distro
-sed -i -e 's|AM_GNU_GETTEXT_VERSION(\[0.18\])|AM_GNU_GETTEXT_VERSION(\[0.19\])|g' configure.in
 cp %{_datadir}/gettext/po/Makefile.in.in po
 autoreconf -fvi
 %configure \

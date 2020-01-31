@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:45:38 UTC 2020 - Thomas Abraham <tabraham@suse.com>
+
+- Update to sarg-2.4.0 
+  - Update translation
+  - Useragent report is produced if information is available.
+  - Don't abort if DNS resolution is failing to resolve a host IP address.
+  - xz compressed log files are supported.
+  - Compressed redirector logs are now supported.
+  - Filter converted and split logs using -t command line option.
+  - Add many new buffer overflow checks.
+  - Use random temporary directory name by default.
+
+- removed sarg-2.3.2-limits_h.diff (deprecated)
+- sarg-no-werror.patch migrated and renamed to sarg-2.4.0-no-werror.patch
+- sarg-2.3.1-config.patch migrated and renamed to sarg-2.4.0-config.patch
+
+-------------------------------------------------------------------
 Tue Aug 20 11:56:00 CEST 2019 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]
