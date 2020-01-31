@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        GPL-3.0-only AND CC-BY-SA-4.0 AND CC-BY-SA-3.0 AND CC-BY-3.0
 Group:          Amusements/Games/Action/Arcade
-Url:            http://endless-sky.github.io/
+URL:            http://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE fix-data-path.patch -- Fix installation path of data
@@ -55,9 +55,13 @@ find some friendly aliens whose culture is more civilized than your own...
 %patch0 -p1
 
 %build
-scons
+export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden"
+export CFLAGS="%optflags -fvisibility=hidden"
+scons PREFIX=%{_prefix} DESTDIR=%{buildroot}
 
 %install
+export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden"
+export CFLAGS="%optflags -fvisibility=hidden"
 scons install PREFIX=%{_prefix} DESTDIR=%{buildroot}
 
 mkdir -p %{buildroot}%{_bindir}

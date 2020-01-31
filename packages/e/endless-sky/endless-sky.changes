@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:16:34 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Respect %optflags, fix debuginfo generation.
+
+-------------------------------------------------------------------
 Sun Oct 06 20:00:00 MDT 2019 - buckyballreaction@gmail.com
 
 - Update to 0.9.10
