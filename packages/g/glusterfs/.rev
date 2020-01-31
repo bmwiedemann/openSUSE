@@ -225,4 +225,12 @@
     <comment>Resubmit without CVE entries -  that SR was actually ready to be checked in - let's do a changes only SR post-checkin</comment>
     <requestid>763706</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4c052a6f1428d7a5ac52f948f87135c0</srcmd5>
+    <version>7.1</version>
+    <time>1580511343</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>768521</requestid>
+  </revision>
 </revisionlist>

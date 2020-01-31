@@ -62,6 +62,15 @@ Sat Jan 19 06:52:11 UTC 2019 - seanlew@opensuse.org
 - Update to new upstream version 5.3 (4.0 is EOL)
   * 5.3 brings hundreds of improvements, see complete relnote at
    https://docs.gluster.org/en/latest/release-notes/5.0/
+  * Fixed a number of bugs:
+    CVE-2018-1088, CVE-2018-1112 [boo#1090084],
+    CVE-2018-10904 [boo#1107018], CVE-2018-10907 [boo#1107019],
+    CVE-2018-10911 [boo#1107020], CVE-2018-10913 [boo#1107021],
+    CVE-2018-10914 [boo#1107022], CVE-2018-10923 [boo#1107023],
+    CVE-2018-10924 [boo#1107024], CVE-2018-10926 [boo#1107025],
+    CVE-2018-10927 [boo#1107026], CVE-2018-10928 [boo#1107027],
+    CVE-2018-10928 [boo#1107027], CVE-2018-10929 [boo#1107028],
+    CVE-2018-10930 [boo#1107029], boo#1105776 .
 - Remove patches no longer needed in 5.x:
   * 0001-build-restore-ability-to-control-verbosity-settings.patch
   * glusterfs-tirpc.diff
