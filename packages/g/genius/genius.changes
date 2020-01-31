@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:10:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Tue Jul  9 19:17:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop rarian-scrollkeeper-compat BuildRequires and stop passing

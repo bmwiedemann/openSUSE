@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(gtk+-2.0) >= 2.20.0
 BuildRequires:  pkgconfig(gtksourceview-2.0) >= 0.3.0
 BuildRequires:  pkgconfig(pango) >= 1.22.0
 BuildRequires:  pkgconfig(x11)
-Recommends:     %{name}-lang
 
 %description
 Genius is a general purpose calculator program similar in some aspects
