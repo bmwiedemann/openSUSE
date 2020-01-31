@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015-2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 3.6
 Name:           gnuhealth-client
-Version:        %{majorver}.5
+Version:        %{majorver}.6
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only

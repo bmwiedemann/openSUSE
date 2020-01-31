@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 07:57:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.6
+  * Fix bug #57682: GTK Client - CLI is activated when pressing Shift+Z
+  * Add GNU Health shortcuts to the help window
+
+-------------------------------------------------------------------
 Thu Jan  2 15:47:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - update frl plugin to 3.6.1
