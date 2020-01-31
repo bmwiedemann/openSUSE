@@ -1,7 +1,7 @@
 #
 # spec file for package scidavis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Quentin Denis <quentin@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@ Patch0:         0001-Adapt-scidavis-for-openSUSE.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  liborigin-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python2-qt5-devel
+BuildRequires:  python3-qt5-devel
 BuildRequires:  qwt-devel
 BuildRequires:  qwtplot3d-devel
 BuildRequires:  zlib-devel
@@ -43,9 +43,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(muparser)
-%if 0%{?suse_version} > 1220
 BuildRequires:  glu-devel
-%endif
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -63,7 +61,9 @@ QtiPlot, Labplot and Gnuplot.
 %patch0 -p1
 
 %build
-%qmake5 CONFIG+=python\
+export PYTHON=python3
+%qmake5 CONFIG+=python \
+  CONFIG+=liborigin \
 %if "%{_lib}" == "lib64"
   64BITS=1
 %endif
@@ -81,6 +81,9 @@ cp %{name}/translations/%{name}_*.qm %{buildroot}%{_datadir}/%{name}/translation
 # Remove unneeded files.
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
+# mimelnk is deprecated in favor of %{_datadir}/mime/packages/ for a long time
+rm -Rf %{buildroot}%{_datadir}/mimelnk
+
 %files lang -f %{name}.lang
 %dir %{_datadir}/scidavis
 %dir %{_datadir}/scidavis/translations
@@ -95,14 +98,11 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %dir %{_datadir}/icons/locolor/22x22/apps
 %dir %{_datadir}/icons/locolor/32x32
 %dir %{_datadir}/icons/locolor/32x32/apps
-%dir %{_datadir}/mimelnk
-%dir %{_datadir}/mimelnk/application/
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.*
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/mimelnk/application/x-sciprj.desktop
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations
 %{_libdir}/%{name}/

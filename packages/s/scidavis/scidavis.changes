@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 21:55:24 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use python3 Qt5 bindings instead of python2.
+- Actually build with liborigin support.
+- Remove deprecated mimelnk.
+
+-------------------------------------------------------------------
 Wed Apr 17 15:02:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.25
