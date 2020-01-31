@@ -1,7 +1,7 @@
 #
 # spec file for package terminology
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define e_branding_version 0.1
 %endif
 Name:           terminology
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        EFL based terminal emulator
 License:        BSD-2-Clause AND OFL-1.1
