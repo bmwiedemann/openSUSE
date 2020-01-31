@@ -1,24 +1,37 @@
-commit 23ce8fc7ebcf63b986027d7fcd792fd521c43800
-Author: Thomas Renninger <trenn@suse.com>
-Date:   Mon Dec 2 11:50:39 2019 +0100
+From: Thomas Renninger <trenn@suse.de>
+Subject: cpupower: Revert library ABI changes from commit ae2917093fb60bdc1ed3e
+References: bsc#1162142
+Patch-Mainline: 
+Git-commit: 41ddb7e1f79693d904502ae9bea609837973eff8
+Git-repo: git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git
 
-    Revert library ABI changes from commit ae2917093fb60bdc1ed3e
-    
-    Commit ae2917093fb60bdc1ed3e modified the library function:
-    
-    struct cpufreq_available_frequencies
-    *cpufreq_get_available_frequencies(unsigned int cpu)
-    
-    to
-    struct cpufreq_frequencies
-    *cpufreq_get_frequencies(const char *type, unsigned int cpu)
-    
-    This patch recovers the old API and implements the new functionality
-    in a newly introduce method:
-    struct cpufreq_boost_frequencies
-    *cpufreq_get_available_frequencies(unsigned int cpu)
+Commit ae2917093fb6 ("tools/power/cpupower: Display boost frequency
+separately") modified the library function:
 
-diff --git a/tools/power/cpupower/lib/cpufreq.c b/tools/power/cpupower/lib/cpufreq.c
+struct cpufreq_available_frequencies
+*cpufreq_get_available_frequencies(unsigned int cpu)
+
+to
+struct cpufreq_frequencies
+*cpufreq_get_frequencies(const char *type, unsigned int cpu)
+
+This patch recovers the old API and implements the new functionality
+in a newly introduce method:
+struct cpufreq_boost_frequencies
+*cpufreq_get_available_frequencies(unsigned int cpu)
+
+This one should get merged into stable kernels back to 5.0 when
+the above had been introduced.
+
+Fixes: ae2917093fb6 ("tools/power/cpupower: Display boost frequency separately")
+
+Cc: stable@vger.kernel.org
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+
+
+Signed-off-by:  <trenn@suse.com>
+diff --git a/lib/cpufreq.c b/lib/cpufreq.c
 index 2f55d4d23446..6e04304560ca 100644
 --- a/lib/cpufreq.c
 +++ b/lib/cpufreq.c
@@ -129,7 +142,7 @@ index 2f55d4d23446..6e04304560ca 100644
  static struct cpufreq_affected_cpus *sysfs_get_cpu_list(unsigned int cpu,
  							const char *file)
  {
-diff --git a/tools/power/cpupower/lib/cpufreq.h b/tools/power/cpupower/lib/cpufreq.h
+diff --git a/lib/cpufreq.h b/lib/cpufreq.h
 index a55f0d19215b..95f4fd9e2656 100644
 --- a/lib/cpufreq.h
 +++ b/lib/cpufreq.h
@@ -169,7 +182,7 @@ index a55f0d19215b..95f4fd9e2656 100644
  
  
  /* determine affected CPUs
-diff --git a/tools/power/cpupower/utils/cpufreq-info.c b/tools/power/cpupower/utils/cpufreq-info.c
+diff --git a/utils/cpufreq-info.c b/utils/cpufreq-info.c
 index e63cf55f81cf..6efc0f6b1b11 100644
 --- a/utils/cpufreq-info.c
 +++ b/utils/cpufreq-info.c

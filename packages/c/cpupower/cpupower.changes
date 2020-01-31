@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 30 13:25:05 UTC 2020 - trenn@suse.de
+
+- Add mainline patch with proper patch header and filename:
+D libcpupower_fix_api_cpufreq_get_frequencies_breakage.patch
+A cpupower-Revert-library-ABI-changes-from-commit-ae2917093fb60bdc1ed3e.patch
+- Fix manpage (bsc#1162142)
+A Correction-to-manpage-of-cpupower.patch
+
+-------------------------------------------------------------------
 Thu Nov 28 13:56:32 UTC 2019 - trenn@suse.de
 
 - Update intel-speed-select to latest 5.5-rc1 kernel version

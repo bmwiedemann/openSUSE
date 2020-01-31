@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Author: Thomas Renninger <trenn@suse.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,8 @@ Source5:        Makefile.intel-speed-select
 Patch1:         cpupower_rapl.patch
 Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
-Patch4:         libcpupower_fix_api_cpufreq_get_frequencies_breakage.patch
+Patch4:         cpupower-Revert-library-ABI-changes-from-commit-ae2917093fb60bdc1ed3e.patch
+Patch5:         Correction-to-manpage-of-cpupower.patch
 
 #turbostat patches
 Patch22:        turbostat_makefile_fix_asm_header.patch
@@ -96,6 +97,7 @@ powersave module.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 cd ../turbostat-%{tsversion}
 %patch22 -p1
