@@ -58,7 +58,6 @@ Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Recommends:     %{name}-data
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description

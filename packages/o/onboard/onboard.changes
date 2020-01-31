@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:14:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Wed Apr 10 06:55:26 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
 
 - Remove required python3-virtkey which has been not used since

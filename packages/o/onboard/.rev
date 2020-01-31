@@ -45,4 +45,12 @@
   it (fate#326794). (forwarded request 692786 from yfjiang)</comment>
     <requestid>693280</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>03884a64c7c46f267af90341b1df5af5</srcmd5>
+    <version>1.4.1</version>
+    <time>1580511388</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768626 from dimstar)</comment>
+    <requestid>768687</requestid>
+  </revision>
 </revisionlist>
