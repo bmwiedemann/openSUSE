@@ -24,4 +24,12 @@
     <comment></comment>
     <requestid>704654</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9c264f28c67668864133b5f3906293af</srcmd5>
+    <version>0.4</version>
+    <time>1580511485</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for using logind mode for recent distributions (forwarded request 768528 from dancermak)</comment>
+    <requestid>769065</requestid>
+  </revision>
 </revisionlist>

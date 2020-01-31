@@ -1,0 +1,41 @@
+From 4e815152fb366972ca24ce17d3d25f337a3b01b9 Mon Sep 17 00:00:00 2001
+From: Christian Kellner <christian@kellner.me>
+Date: Sun, 26 Jan 2020 13:15:40 +0100
+Subject: [PATCH 4/4] Use non-suid permissions when logind is used
+
+When systemd-logind and its D-Bus API is used to actual change the
+brightness of devices the binary does not have to be suid, which is
+desired for security reasons.
+---
+ Makefile | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 22ff475..fcd746a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,16 +11,17 @@ INSTALL_UDEV_RULES = 1
+ INSTALL_UDEV_1 = install_udev_rules
+ UDEVDIR ?= /lib/udev/rules.d
+ 
++MODE_0 = 4711
++MODE_1 = 0755
++MODE = ${MODE_${INSTALL_UDEV_RULES}}
++
+ ifdef ENABLE_SYSTEMD
+ 	CFLAGS += ${shell pkg-config --cflags libsystemd}
+ 	LDLIBS += ${shell pkg-config --libs libsystemd}
+ 	CPPFLAGS += -DENABLE_SYSTEMD
++	MODE = 0755
+ endif
+ 
+-MODE_0 = 4711
+-MODE_1 = 0755
+-MODE = ${MODE_${INSTALL_UDEV_RULES}}
+-
+ all: brightnessctl brightnessctl.1
+ 
+ install: all ${INSTALL_UDEV_${INSTALL_UDEV_RULES}}
+-- 
+2.25.0
+
