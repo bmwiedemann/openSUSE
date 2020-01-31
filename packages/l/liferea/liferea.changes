@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:14:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Mon Jan 13 10:50:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add export WEBKIT_DISABLE_COMPOSITING_MODE=1 as workaround for

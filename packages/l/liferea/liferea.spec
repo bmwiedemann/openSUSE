@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(pango) >= 1.4.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 Requires:       dbus-1 >= 0.30
-Recommends:     %{name}-lang
 
 %description
 Liferea is an abbreviation for Linux Feed Reader. It is a news
