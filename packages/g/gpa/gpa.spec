@@ -33,7 +33,6 @@ BuildRequires:  gtk2-devel >= 2.10.0
 BuildRequires:  libassuan-devel >= 2.4.2
 BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang
 
 %description
 Gnu Privacy Assistant (GPA) is a graphical user interface for Gnu

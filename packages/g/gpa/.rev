@@ -230,4 +230,12 @@
     <comment>gpa 0.10.0 (forwarded request 642953 from AndreasStieger)</comment>
     <requestid>643841</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a0f67eb567a49e0ecb198d8c13f0b893</srcmd5>
+    <version>0.10.0</version>
+    <time>1580511370</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768609 from dimstar)</comment>
+    <requestid>768675</requestid>
+  </revision>
 </revisionlist>
