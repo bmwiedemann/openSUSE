@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.30
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.0
 BuildRequires:  pkgconfig(vte-2.91) >= 0.26
-Recommends:     %{name}-lang
 Requires:       git-core >= 1.5
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
