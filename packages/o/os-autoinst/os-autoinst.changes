@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:37:41 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1580337089.6f2b5c86:
+  * t: Cut 18-qemu-options.t runtime from 135s to 45s by configuring attempt interval
+  * Allow to configure no drives for drive-less systems
+
+-------------------------------------------------------------------
 Wed Jan 29 02:37:33 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1580119736.fd9ea32d:
