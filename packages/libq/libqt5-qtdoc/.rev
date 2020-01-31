@@ -320,4 +320,12 @@
     <comment>Update to 5.14.0</comment>
     <requestid>756363</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c51647154d0ef4e747ce740ebe430c23</srcmd5>
+    <version>5.14.1</version>
+    <time>1580511296</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768109</requestid>
+  </revision>
 </revisionlist>
