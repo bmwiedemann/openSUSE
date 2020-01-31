@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(atk) >= 1.0.0
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.10
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.3.8
-Recommends:     %{name}-lang
 
 %description
 GHex allows the user to load data from any file and to view and edit it

@@ -397,4 +397,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>715810</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>647df9b39f1c25aa3f63bc024bd2a1ee</srcmd5>
+    <version>3.18.4</version>
+    <time>1580511355</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768589 from dimstar)</comment>
+    <requestid>768667</requestid>
+  </revision>
 </revisionlist>
