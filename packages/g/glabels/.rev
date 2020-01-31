@@ -290,4 +290,12 @@
     <comment>New stable rel (forwarded request 602278 from iznogood)</comment>
     <requestid>602479</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>07f02c3f5532a15f24430d2ac8a9abf7</srcmd5>
+    <version>3.4.1</version>
+    <time>1580511358</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768591 from dimstar)</comment>
+    <requestid>768669</requestid>
+  </revision>
 </revisionlist>

@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig(librsvg-2.0) >= 2.39.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pango) >= 1.36.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.28.1
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description
