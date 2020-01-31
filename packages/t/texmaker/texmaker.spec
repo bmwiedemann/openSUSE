@@ -1,7 +1,7 @@
 #
 # spec file for package texmaker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           texmaker
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        LaTeX editor
 License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Frontends
-Url:            http://www.xm1math.net/texmaker/
+URL:            http://www.xm1math.net/texmaker/
 Source:         http://www.xm1math.net/texmaker/texmaker-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.7
@@ -69,8 +69,12 @@ find ./ -name ".qmake.stash" -delete -print
 %qmake5_install
 %fdupes %{buildroot}%{_datadir}/%{name}/
 
+# REMOVE DOC FILES PACKAGED ANYWAY USING %%doc
+rm %{buildroot}%{_datadir}/%{name}/{AUTHORS,COPYING,CHANGELOG.txt}
+
 %files
-%doc utilities/AUTHORS utilities/COPYING utilities/CHANGELOG.txt
+%doc utilities/AUTHORS utilities/CHANGELOG.txt
+%license utilities/COPYING
 %{_bindir}/texmaker
 %{_datadir}/applications/texmaker.desktop
 %{_datadir}/pixmaps/texmaker.png
