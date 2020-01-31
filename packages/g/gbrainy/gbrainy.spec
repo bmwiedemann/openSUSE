@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(gtk-sharp-3.0) >= 2.99.1
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(mono) >= 4.0.0
-Recommends:     %{name}-lang
 # For the help system to work, we require a ghelp:// URI handler.
 Recommends:     mimehandler(x-scheme-handler/ghelp)
 BuildArch:      noarch
