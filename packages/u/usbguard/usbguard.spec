@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global _hardened_build 1
 %define lname libusbguard0
 Name:           usbguard
-Version:        0.7.4
+Version:        0.7.6
 Release:        0
 Summary:        A tool for implementing USB device usage policy
 ## Not installed
 # src/ThirdParty/Catch: Boost Software License - Version 1.0
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-Url:            https://usbguard.github.io
+URL:            https://usbguard.github.io
 Source0:        https://github.com/USBGuard/usbguard/releases/download/usbguard-%{version}/usbguard-%{version}.tar.gz
-Source1:        https://github.com/USBGuard/usbguard/releases/download/usbguard-%{version}/usbguard-%{version}.tar.gz.sig
+Source1:        https://github.com/USBGuard/usbguard/releases/download/usbguard-%{version}/usbguard-%{version}.tar.gz.sum.asc
 Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
-Patch0:         usbguard-applet-qt_desktop_menu_categories.patch
-Patch1:         usbguard-pthread.patch
+Patch0:         usbguard-pthread.patch
 BuildRequires:  asciidoc
 BuildRequires:  aspell
 BuildRequires:  audit-devel
@@ -42,24 +41,17 @@ BuildRequires:  automake
 BuildRequires:  bash-completion-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libqb-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  pegtl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 #BuildRequires:  spdlog-static
 BuildRequires:  protobuf-devel
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
 
 %description
@@ -97,20 +89,9 @@ Requires:       %{name} = %{version}-%{release}
 The %{name}-tools package contains optional tools from the USBGuard
 software framework.
 
-%package        applet-qt
-Summary:        USBGuard Qt 5.x Applet
-Group:          System/Management
-Requires:       %{name} = %{version}-%{release}
-Obsoletes:      usbguard-applet-qt <= 0.3
-
-%description    applet-qt
-The %{name}-applet-qt package contains an optional Qt 5.x desktop applet
-for interacting with the USBGuard daemon component.
-
 %prep
 %setup -q -n usbguard-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 mkdir -p ./m4
@@ -121,7 +102,6 @@ autoreconf -i -s --no-recursive ./
     --with-bundled-catch \
     --with-bundled-pegtl \
     --enable-systemd \
-    --with-gui-qt=qt5 \
     --without-dbus \
     --disable-static
 
@@ -193,14 +173,5 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %{_bindir}/usbguard
 %{_bindir}/usbguard-rule-parser
 %{_mandir}/man1/usbguard.1%{?ext_man}
-
-%files applet-qt
-%{_bindir}/usbguard-applet-qt
-%{_mandir}/man1/usbguard-applet-qt.1%{?ext_man}
-%{_datadir}/applications/usbguard-applet-qt.desktop
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
-%{_datadir}/icons/hicolor/scalable/apps/usbguard-icon.svg
 
 %changelog

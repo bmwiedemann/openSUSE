@@ -56,4 +56,12 @@
 - added usbguard-pthread.patch</comment>
     <requestid>717525</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b67301225986653ab06203d6c76b1864</srcmd5>
+    <version>0.7.6</version>
+    <time>1580511452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768992</requestid>
+  </revision>
 </revisionlist>

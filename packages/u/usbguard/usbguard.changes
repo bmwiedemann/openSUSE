@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jan 30 18:26:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 0.7.6
+  + Added missing options in manpage usbguard-daemon(8)
+  + Extended the functionality of allow/block/reject commands
+    The command can handle rule as a param and not only its ID e.g.
+    in case of allow, command will allow each device that matches
+    provided rule
+  + Added debug info for malformed descriptors
+  + Changed default backend to uevent
+  + Fixed handling of add uevents during scanning
+    Now we are sure that the enumeration is completed before
+    processing any uevent we are trying to avoid a race where
+    the kernel is still enumerating the devices and send the
+    uevent while the parent is being authorised
+  + Silenced 'bind' and 'unbind' uevents
+- Remove PEGTL build dependency, the package already uses the
+  bundled version, and there is hardly any reason to unbundle
+  a template (header only) library.
+- Remove Qt5 build dependencies, Qt applet is a separate package.
+- Use pkgconfig(udev) instead of udev-devel to allow shortcut
+  via udev-mini.
+
+-------------------------------------------------------------------
+Mon Jul 22 09:54:57 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- update to 0.7.5
+  - Added daemon configuration option HidePII
+  - Added check to avoid conflict between ASAN and TSAN
+  - Added daemon configuration option for authorized_default
+  - Added devpath option to generate-policy
+  - Added # line comments to the rule grammar
+  - Added ImplicitPolicyTarget to get/set parameter methods
+  - Added option to filter rules by label when listing
+  - Added the label attribute to rule
+  - Added PropertyParameterChanged signal
+  - Added support for portX/connect_type attribute
+  - Added temporary option to append-rule
+  - Added versioning to DBus service
+  - Added optional LDAP support
+  - Fixed invalid return value in Rule::Attribute::setSolveEqualsOrdered
+  - Fixed KeyValueParser to validate keys only when known names are set
+  - Fixed uninitialized variables found by coverity
+  - Fixes and cleanups based on LGTM.com report
+  - Hardened systemd service
+  - Rename ListRules parameter 'query' to 'label'
+  - Skip empty lines in usbguard-rule-parser
+  - The proof-of-concept Qt applet was removed. It is going to be maintained
+    in a simplified form as a separate project.
+    Removed: usbguard-applet-qt_desktop_menu_categories.patch
+    Modified: usbguard-pthread.patch
+- Updated usbguard.keyring to add new gpg key for upstream: 5A2EC3932A983910
+
+-------------------------------------------------------------------
 Mon Jul 22 09:50:04 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - link against libpthread to make it build (bsc#1141377)
