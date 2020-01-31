@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 #BuildRequires:  pkgconfig(libgoffice-0.8)
 BuildRequires:  pkgconfig(libofx)
 BuildRequires:  pkgconfig(libxml-2.0)
-Recommends:     %{name}-lang
 
 %description
 Grisbi is a personal accounting application, aiming at providing the most
