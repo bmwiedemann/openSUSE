@@ -10844,14 +10844,17 @@ unsorted:
   - libptscotch-gnu-mvapich2-hpc 
   - libptscotch-gnu-openmpi1-hpc 
   - libptscotch-gnu-openmpi2-hpc 
+  - libptscotch-gnu-openmpi3-hpc 
   - libptscotch0-mpich 
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi1 
   - libptscotch0-openmpi2 
+  - libptscotch0-openmpi3 
   - libptscotch_6_0_9-gnu-mpich-hpc 
   - libptscotch_6_0_9-gnu-mvapich2-hpc 
   - libptscotch_6_0_9-gnu-openmpi1-hpc 
   - libptscotch_6_0_9-gnu-openmpi2-hpc 
+  - libptscotch_6_0_9-gnu-openmpi3-hpc 
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
@@ -17484,6 +17487,8 @@ unsorted:
   - ptscotch-gnu-openmpi1-hpc-devel 
   - ptscotch-gnu-openmpi2-hpc 
   - ptscotch-gnu-openmpi2-hpc-devel 
+  - ptscotch-gnu-openmpi3-hpc 
+  - ptscotch-gnu-openmpi3-hpc-devel 
   - ptscotch-mpich 
   - ptscotch-mpich-devel 
   - ptscotch-mpich-devel-static 
@@ -17496,10 +17501,14 @@ unsorted:
   - ptscotch-openmpi2 
   - ptscotch-openmpi2-devel 
   - ptscotch-openmpi2-devel-static 
+  - ptscotch-openmpi3 
+  - ptscotch-openmpi3-devel 
+  - ptscotch-openmpi3-devel-static 
   - ptscotch-parmetis-mpich-devel 
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi1-devel 
   - ptscotch-parmetis-openmpi2-devel 
+  - ptscotch-parmetis-openmpi3-devel 
   - ptscotch_6_0_9-gnu-mpich-hpc 
   - ptscotch_6_0_9-gnu-mpich-hpc-devel 
   - ptscotch_6_0_9-gnu-mpich-hpc-devel-static 
@@ -17512,6 +17521,9 @@ unsorted:
   - ptscotch_6_0_9-gnu-openmpi2-hpc 
   - ptscotch_6_0_9-gnu-openmpi2-hpc-devel 
   - ptscotch_6_0_9-gnu-openmpi2-hpc-devel-static 
+  - ptscotch_6_0_9-gnu-openmpi3-hpc 
+  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel 
+  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel-static 
   - pugixml-devel 
   - pulseaudio-equalizer 
   - pulseaudio-esound-compat 
