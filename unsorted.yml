@@ -1745,7 +1745,6 @@ unsorted:
   - cmpi-bindings-perl 
   - cmpi-bindings-pywbem 
   - cmpi-bindings-ruby 
-  - cmpi-pywbem-base 
   - cmrt-devel 
   - cmuclmtk 
   - cmus 
@@ -2202,7 +2201,6 @@ unsorted:
   - dbus-1-glib-devel-32bit: [x86_64] 
   - dbus-1-glib-doc 
   - dbus-1-mono 
-  - dbus-1-presage 
   - dbus-broker 
   - dbus-sharp 
   - dbus-sharp-devel 
@@ -2721,6 +2719,7 @@ unsorted:
   - erlang-wx 
   - erlang-wx-src 
   - espeak-devel 
+  - espeak-ng 
   - espeak-ng-compat 
   - espeak-ng-compat-devel 
   - espeak-ng-devel 
@@ -5379,6 +5378,8 @@ unsorted:
   - hping-doc 
   - hplip-devel 
   - hplip-scan-utils 
+  - hpx 
+  - hpx-devel 
   - hspec-discover 
   - hsqldb 
   - hsqldb-demo 
@@ -5828,6 +5829,13 @@ unsorted:
   - java-1_7_0-bootstrap 
   - java-1_7_0-bootstrap-devel 
   - java-1_7_0-bootstrap-headless 
+  - java-1_8_0-openj9: [x86_64] 
+  - java-1_8_0-openj9-accessibility: [x86_64] 
+  - java-1_8_0-openj9-demo: [x86_64] 
+  - java-1_8_0-openj9-devel: [x86_64] 
+  - java-1_8_0-openj9-headless: [x86_64] 
+  - java-1_8_0-openj9-javadoc: [x86_64] 
+  - java-1_8_0-openj9-src: [x86_64] 
   - java-1_8_0-openjdk 
   - java-1_8_0-openjdk-accessibility 
   - java-1_8_0-openjdk-demo 
@@ -7239,7 +7247,7 @@ unsorted:
   - libLTO8 
   - libLTO8-32bit: [x86_64] 
   - libLTO9-32bit: [x86_64] 
-  - libLimeSuite19_04-1 
+  - libLimeSuite20_01-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
@@ -9468,6 +9476,7 @@ unsorted:
   - libhmac1 
   - libhowl0 
   - libhpdf2_3_0 
+  - libhpx1 
   - libhs5 
   - libhssi-io1: [x86_64] 
   - libhtp-devel 
@@ -10835,17 +10844,14 @@ unsorted:
   - libptscotch-gnu-mvapich2-hpc 
   - libptscotch-gnu-openmpi1-hpc 
   - libptscotch-gnu-openmpi2-hpc 
-  - libptscotch-gnu-openmpi3-hpc 
   - libptscotch0-mpich 
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi1 
   - libptscotch0-openmpi2 
-  - libptscotch0-openmpi3 
   - libptscotch_6_0_9-gnu-mpich-hpc 
   - libptscotch_6_0_9-gnu-mvapich2-hpc 
   - libptscotch_6_0_9-gnu-openmpi1-hpc 
   - libptscotch_6_0_9-gnu-openmpi2-hpc 
-  - libptscotch_6_0_9-gnu-openmpi3-hpc 
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
@@ -12859,7 +12865,6 @@ unsorted:
   - luckybackup 
   - lugaru 
   - lugaru-data 
-  - lutris 
   - luvcview 
   - lv2 
   - lv2-devel 
@@ -16834,6 +16839,7 @@ unsorted:
   - perl-XML-SimpleObject-LibXML 
   - perl-XML-Structured 
   - perl-XML-Writer-String 
+  - perl-XML-XPath 
   - perl-XML-XPathEngine 
   - perl-XMLRPC-Lite 
   - perl-XSLoader 
@@ -17478,8 +17484,6 @@ unsorted:
   - ptscotch-gnu-openmpi1-hpc-devel 
   - ptscotch-gnu-openmpi2-hpc 
   - ptscotch-gnu-openmpi2-hpc-devel 
-  - ptscotch-gnu-openmpi3-hpc 
-  - ptscotch-gnu-openmpi3-hpc-devel 
   - ptscotch-mpich 
   - ptscotch-mpich-devel 
   - ptscotch-mpich-devel-static 
@@ -17492,14 +17496,10 @@ unsorted:
   - ptscotch-openmpi2 
   - ptscotch-openmpi2-devel 
   - ptscotch-openmpi2-devel-static 
-  - ptscotch-openmpi3 
-  - ptscotch-openmpi3-devel 
-  - ptscotch-openmpi3-devel-static 
   - ptscotch-parmetis-mpich-devel 
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi1-devel 
   - ptscotch-parmetis-openmpi2-devel 
-  - ptscotch-parmetis-openmpi3-devel 
   - ptscotch_6_0_9-gnu-mpich-hpc 
   - ptscotch_6_0_9-gnu-mpich-hpc-devel 
   - ptscotch_6_0_9-gnu-mpich-hpc-devel-static 
@@ -17512,9 +17512,6 @@ unsorted:
   - ptscotch_6_0_9-gnu-openmpi2-hpc 
   - ptscotch_6_0_9-gnu-openmpi2-hpc-devel 
   - ptscotch_6_0_9-gnu-openmpi2-hpc-devel-static 
-  - ptscotch_6_0_9-gnu-openmpi3-hpc 
-  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel 
-  - ptscotch_6_0_9-gnu-openmpi3-hpc-devel-static 
   - pugixml-devel 
   - pulseaudio-equalizer 
   - pulseaudio-esound-compat 
@@ -17546,7 +17543,6 @@ unsorted:
   - pyenv-fish-completion 
   - pyenv-zsh-completion 
   - pymilter-common 
-  - pyprompter 
   - pyradio 
   - pyspacewar 
   - pythia-devel 
@@ -17741,8 +17737,6 @@ unsorted:
   - python-ply-doc 
   - python-polib-doc 
   - python-praatio-doc 
-  - python-presage 
-  - python-presagemate 
   - python-py2pack-doc 
   - python-pybind11-devel 
   - python-pycadf-common 
@@ -18508,7 +18502,6 @@ unsorted:
   - python2-dialite 
   - python2-dicttoxml 
   - python2-diff-match-patch 
-  - python2-diff_match_patch 
   - python2-digitalocean 
   - python2-dill 
   - python2-dirtyjson 
@@ -19108,6 +19101,7 @@ unsorted:
   - python2-oauth2client-gce 
   - python2-oauthlib 
   - python2-objgraph 
+  - python2-oci-sdk 
   - python2-octaviaclient 
   - python2-odfpy 
   - python2-odorik 
@@ -19886,6 +19880,7 @@ unsorted:
   - python2-tornado4 
   - python2-tornado5 
   - python2-toro 
+  - python2-tortilla 
   - python2-towncrier 
   - python2-tox 
   - python2-tox-no-internet 
@@ -20640,10 +20635,6 @@ unsorted:
   - python3-bson 
   - python3-bugzilla 
   - python3-bugzillatools 
-  - python3-buku 
-  - python3-buku-bash-completion 
-  - python3-buku-fish-completion 
-  - python3-buku-zsh-completion 
   - python3-cPyparsing 
   - python3-caca 
   - python3-cached-property 
@@ -20821,6 +20812,7 @@ unsorted:
   - python3-datrie 
   - python3-dbf 
   - python3-dbfread 
+  - python3-dbus-presage 
   - python3-dbus-python-devel 
   - python3-ddg3 
   - python3-ddt 
@@ -20859,7 +20851,6 @@ unsorted:
   - python3-dialite 
   - python3-dicttoxml 
   - python3-diff-match-patch 
-  - python3-diff_match_patch 
   - python3-digitalocean 
   - python3-dill 
   - python3-dirtyjson 
@@ -21657,6 +21648,7 @@ unsorted:
   - python3-oauth2client-gce 
   - python3-oauthlib: [i586] 
   - python3-objgraph 
+  - python3-oci-sdk 
   - python3-oct2py 
   - python3-octave-kernel 
   - python3-octaviaclient 
@@ -21840,6 +21832,8 @@ unsorted:
   - python3-preggy 
   - python3-prelude-correlator 
   - python3-premailer 
+  - python3-presage 
+  - python3-presagemate 
   - python3-pretend 
   - python3-prewikka 
   - python3-proboscis 
@@ -21996,6 +21990,7 @@ unsorted:
   - python3-pyprel 
   - python3-pyprimes 
   - python3-pyproj 
+  - python3-pyprompter 
   - python3-pypsexec 
   - python3-pypuppetdb 
   - python3-pyqtgraph 
@@ -22533,6 +22528,7 @@ unsorted:
   - python3-tornado5 
   - python3-tornado6 
   - python3-toro 
+  - python3-tortilla 
   - python3-towncrier 
   - python3-tox 
   - python3-tox-no-internet 
@@ -22617,7 +22613,7 @@ unsorted:
   - python3-vim-vint 
   - python3-vine 
   - python3-virtkey 
-  - python3-virtualbox 
+  - python3-virtualbox: [x86_64] 
   - python3-virtualenv 
   - python3-virtualenv-clone 
   - python3-virtualenvwrapper 
@@ -24934,6 +24930,8 @@ unsorted:
   - tcpreplay 
   - tcpser 
   - tdb-tools 
+  - tdiff 
+  - tdiff-bash-completion 
   - tdom 
   - tdom-devel 
   - tea 
@@ -33180,14 +33178,14 @@ unsorted:
   - virt-v2v: [x86_64] 
   - virt-viewer 
   - virtme 
-  - virtualbox 
-  - virtualbox-devel 
-  - virtualbox-guest-desktop-icons 
-  - virtualbox-guest-source 
-  - virtualbox-host-source 
-  - virtualbox-qt 
-  - virtualbox-vnc 
-  - virtualbox-websrv 
+  - virtualbox: [x86_64] 
+  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-kmp-default 
+  - virtualbox-guest-desktop-icons: [x86_64] 
+  - virtualbox-guest-source: [x86_64] 
+  - virtualbox-host-source: [x86_64] 
+  - virtualbox-qt: [x86_64] 
+  - virtualbox-vnc: [x86_64] 
+  - virtualbox-websrv: [x86_64] 
   - viruskiller 
   - visio2svg-conv 
   - vit 
