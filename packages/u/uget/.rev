@@ -406,4 +406,12 @@
   + curl plug-in: handle duplicate files with double extensions. (forwarded request 766568 from polslinux)</comment>
     <requestid>766614</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>46655a67b28d2d701ca98e67d373b987</srcmd5>
+    <version>2.2.3</version>
+    <time>1580511400</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768642 from dimstar)</comment>
+    <requestid>768696</requestid>
+  </revision>
 </revisionlist>

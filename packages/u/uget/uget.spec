@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4
 BuildRequires:  pkgconfig(libnotify)
 Requires:       aria2
-Recommends:     %{name}-lang
 
 %description
 Uget is a download manager written with GTK+. It supports
