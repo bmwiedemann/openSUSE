@@ -48,7 +48,6 @@ BuildRequires:  pkgconfig(libcurl) >= 7.10.0
 BuildRequires:  pkgconfig(libdiscid) >= 0.2.2
 BuildRequires:  pkgconfig(libmusicbrainz5) >= 5.0.1
 BuildRequires:  pkgconfig(vorbisfile) >= 1.3.1
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description
