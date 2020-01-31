@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:38:53 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1580407290.340620ce0:
+  * Read all keys from ini section of none is defined
+  * Avoid hardcoded schema version in deployment test
+  * Fix old database migrations
+  * Fix old DB migrations by combining them into 76-77
+  * Set reason when stale job detection marks job as incomplete
+  * Pass the worker's reason for stopping a job to the web UI
+  * Improve test code for job duplication
+  * Show reason in info panel
+  * Allow passing a reason when marking a job as done
+  * Test all DB migrations from version 76 and not just the last 2
+
+-------------------------------------------------------------------
 Wed Jan 29 02:38:33 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1580150954.a98528363:
