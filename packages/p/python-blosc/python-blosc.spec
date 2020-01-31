@@ -1,7 +1,7 @@
 #
 # spec file for package python-blosc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-blosc
-Version:        1.8.1
+Version:        1.8.3
 Release:        0
 Summary:        Blosc data compressor for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://www.blosc.org/
+URL:            https://github.com/Blosc/python-blosc
 Source:         https://files.pythonhosted.org/packages/source/b/blosc/blosc-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  blosc-devel >= 1.9.0
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module nose}
@@ -52,11 +54,16 @@ Python.
 
 %build
 export CFLAGS="%{optflags}"
-%python_exec setup.py build_ext --inplace --blosc=%{_prefix}
-%python_exec setup.py build --blosc=%{_prefix}
+export BLOSC_DIR=%{_prefix}
+%python_exec setup.py build_clib
+%python_exec setup.py build_ext --inplace
+%python_build
 
 %install
-%python_exec setup.py install -O1 --skip-build --force --root=%{buildroot} --prefix=%{_prefix} --blosc=%{_prefix}
+export BLOSC_DIR=%{_prefix}
+# This is being installed in purelib instead of platlib
+# See: https://github.com/Blosc/python-blosc/issues/222
+%python_exec setup.py install -O1 --skip-build --force --root %{buildroot} --install-purelib=%{$python_sitearch}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -65,12 +72,11 @@ pushd empty
 %{python_expand export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c "import blosc; blosc.print_versions()"
-nosetests-%{$python_bin_suffix} blosc
+nosetests-%{$python_bin_suffix} %{buildroot}%{$python_sitearch}/blosc
 }
 popd
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc ANNOUNCE.rst README.rst RELEASE_NOTES.rst
 %license LICENSES/*.txt
 %{python_sitearch}/blosc-%{version}-py*.egg-info

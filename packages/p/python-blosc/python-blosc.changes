@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 30 16:30:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.8.3
+  * Add a missing pyproject.toml to MANIFEST.in. This allows
+    to install the necessary skbuild module.
+- Update to 1.8.2
+  * Use cmake internally to build the Python extension via the
+    scikit-build library. This seems enough to cope with the
+    conflicting types in using XGETBV when using a recent GCC
+    (>= 9.1) compiler.
+  * Include C-Blosc v1.17.1.
+
+-------------------------------------------------------------------
 Mon Jul 22 16:25:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.8.1
