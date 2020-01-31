@@ -128,4 +128,12 @@
     <comment>5.14.0</comment>
     <requestid>756990</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>16fd7e4a7e18126525690822abc335a8</srcmd5>
+    <version>5.14.1</version>
+    <time>1580511304</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768123</requestid>
+  </revision>
 </revisionlist>
