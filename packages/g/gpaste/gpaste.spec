@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
-Recommends:     %{name}-lang
 
 %description
 GPaste is a clipboard management daemon with DBus interface.
