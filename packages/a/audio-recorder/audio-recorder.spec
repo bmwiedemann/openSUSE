@@ -46,7 +46,6 @@ Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       gstreamer-plugins-ugly
-Recommends:     %{name}-lang
 
 %description
 Audio-recorder allows you to record music or audio to

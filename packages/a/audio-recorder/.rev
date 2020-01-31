@@ -98,4 +98,12 @@
 Updated source. (forwarded request 729546 from ukbeast89)</comment>
     <requestid>729729</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>372977b4a305979f3d0a25fb435e68ff</srcmd5>
+    <version>3.0.5</version>
+    <time>1580511331</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768570 from dimstar)</comment>
+    <requestid>768654</requestid>
+  </revision>
 </revisionlist>
