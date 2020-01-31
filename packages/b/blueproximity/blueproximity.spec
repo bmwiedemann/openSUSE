@@ -36,7 +36,6 @@ BuildRequires:  update-desktop-files
 Requires:       python-configobj >= 4.7.0
 Requires:       python-gtk >= 2.17
 Requires:       python-pybluez
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
