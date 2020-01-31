@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,36 +19,36 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-seaborn
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - fix_labels_rotation.patch - gh#mwaskom/seaborn/#1598 gh#mwaskom/seaborn/#1716
-Patch0:         fix_labels_rotation.patch
+# PATCH-FIX-UPSTREAM use_platform_int.patch - https://github.com/mwaskom/seaborn/pull/1952
+Patch0:         use_platform_int.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module fastcluster}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module matplotlib >= 2.1.2}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module pandas >= 0.22.0}
 BuildRequires:  %{python_module patsy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.0.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module statsmodels}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
-Requires:       python-matplotlib
-Requires:       python-numpy
-Requires:       python-pandas
-Requires:       python-scipy
+Requires:       python-matplotlib >= 2.1.2
+Requires:       python-numpy >= 1.13.3
+Requires:       python-pandas >= 0.22.0
+Requires:       python-scipy >= 1.0.1
 Requires:       python-six
 Recommends:     python-Pillow
 Recommends:     python-fastcluster
@@ -81,8 +81,7 @@ Some of the features that seaborn offers are:
   easily build complex visualizations
 
 %prep
-%setup -q -n seaborn-%{version}
-%patch0 -p1
+%autosetup -p1 -n seaborn-%{version}
 
 %build
 %python_build
@@ -92,20 +91,7 @@ Some of the features that seaborn offers are:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Exclude TestHeatmap.test_cbar_ticks, which fails in matplotlib 3
-# but doesn't seem to be a serious issue.
-# See https://github.com/mwaskom/seaborn/issues/1571
-# Tests fail due to unicode issues in test suite on python 2.7
-# See: https://github.com/mwaskom/seaborn/issues/1675
-# Exclude TestDendrogram.test_dendrogram_rotate and
-# TestHeatmap.test_heatmap_axes,
-# which fail in matplotlib 3.1.1 due to matplotlib bugs.
-# This should be fixed in the next matplotlib release.
-# See: https://github.com/mwaskom/seaborn/issues/1773
-export PYTHONPATH="%{buildroot}%{python3_sitelib}"
-# Tests broken in numpy 1.18
-# See: https://github.com/mwaskom/seaborn/issues/1917
-# pytest-%{python3_bin_suffix} seaborn -k "not test_cbar_ticks"
+%pytest seaborn
 
 %files %{python_files}
 %license LICENSE
