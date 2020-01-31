@@ -32,7 +32,6 @@ BuildRequires:  intltool
 BuildRequires:  libglade2-devel
 BuildRequires:  librsvg2-devel
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
