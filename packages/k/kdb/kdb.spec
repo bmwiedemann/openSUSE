@@ -25,6 +25,8 @@ License:        LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://community.kde.org/KDb
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-build-with-PostgreSQL-12.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libicu-devel
 BuildRequires:  libmysqlclient-devel
@@ -100,6 +102,7 @@ This package contains the SQLite3 driver for the Database connectivity and creat
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build
