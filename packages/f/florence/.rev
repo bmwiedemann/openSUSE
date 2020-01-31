@@ -68,4 +68,12 @@
     <comment></comment>
     <requestid>714373</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8f3d70c74c46b7da0bc570cb5a36e446</srcmd5>
+    <version>0.6.3</version>
+    <time>1580511345</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768581 from dimstar)</comment>
+    <requestid>768662</requestid>
+  </revision>
 </revisionlist>

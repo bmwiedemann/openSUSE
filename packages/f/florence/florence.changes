@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:09:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Tue Jul  9 20:16:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add florence-build-without-scrollkeeper.patch : Fix build without

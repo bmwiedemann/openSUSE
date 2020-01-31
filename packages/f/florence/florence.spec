@@ -55,7 +55,6 @@ Requires(post): desktop-file-utils
 Requires(post): glib2-tools
 Requires(postun): desktop-file-utils
 Requires(postun): glib2-tools
-Recommends:     %{name}-lang
 
 %description
 Florence is an extensible scalable virtual keyboard for X11.
