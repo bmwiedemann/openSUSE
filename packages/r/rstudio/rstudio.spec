@@ -27,6 +27,7 @@
 %global rstudio_version_patch 5033
 # commit of the tag belonging to %%{version}
 %global rstudio_git_revision_hash 330255ddec489e7a147ace3e8a9a3e4157d8d5ad
+
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -48,6 +49,7 @@ Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 Source1:        https://s3.amazonaws.com/%{name}-dictionaries/core-dictionaries.zip
 Source2:        https://s3.amazonaws.com/%{name}-buildtools/gwt-%{bundled_gwt_version}.zip
 Source3:        https://s3.amazonaws.com/%{name}-buildtools/gin-%{bundled_gin_version}.zip
+Source4:        %{name}-server-user.conf
 Source99:       %{name}-rpmlintrc
 Patch0:         0003-Remove-boost-signals-from-the-required-Boost-librari.patch
 Patch1:         0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
@@ -95,7 +97,10 @@ BuildRequires:  memory-constraints
 BuildRequires:  pam-devel
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
+%{?systemd_requires}
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -151,6 +156,7 @@ language. Some of its features include:
 %package        server
 Summary:        Access RStudio via a web browser running on a remote server
 Requires:       %{name} = %{version}-%{release}
+%sysusers_requires
 
 %description    server
 RStudio Server enables you to provide a browser-based interface (the RStudio
@@ -195,6 +201,8 @@ mkdir -p src/gwt/lib/gin/%{bundled_gin_version}
 unzip -d src/gwt/lib/gin/%{bundled_gin_version} %{SOURCE3}
 
 %build
+%sysusers_generate_pre %{SOURCE4} %{name}-server
+
 %limit_build -m 1500
 export RSTUDIO_VERSION_MAJOR=%{rstudio_version_major}
 export RSTUDIO_VERSION_MINOR=%{rstudio_version_minor}
@@ -219,11 +227,40 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
 # fun fact: this recompiles gwt…
 %cmake_install
 
+# sysuser for rstudio-server
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/
+
 # create /usr/bin/rstudio-desktop, /usr/bin/rserver, /usr/bin/rserver-pam
 install -d -m 0755 %{buildroot}%{_bindir}
 for binary in %{name} rserver rserver-pam; do
     ln -s %{_libexecdir}/%{name}/bin/${binary} %{buildroot}%{_bindir}/${binary}
 done
+
+# create required directories for rstudio-server (according to INSTALL):
+# * do not create /var/lock/rstudio-server as that is only for legacy init
+#   scripts
+# * do not create /var/run, that one is owned by the filesystem package and
+#   doesn't need to be Require'd.
+#   Also, the INSTALL appears to be wrong, it's only creating a
+#   rstudio-server.pid file there.
+# FIXME: await confirm from https://github.com/rstudio/rstudio/issues/6112
+for dir in log lib; do
+    mkdir -p %{buildroot}%{_localstatedir}/${dir}/%{name}-server
+done
+
+# install the systemd service file
+%define rserver_service %{name}-server.service
+install -D -m 0644 %{buildroot}%{_libexecdir}/%{name}/extras/systemd/%{name}-server.redhat.service \
+    %{buildroot}%{_unitdir}/%{rserver_service}
+# create link /usr/sbin/rcrstudio-server -> /usr/sbin/service
+mkdir -p %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-server
+
+# install the PAM module
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+install -m 0644 %{buildroot}%{_libexecdir}/%{name}/extras/pam/%{name} \
+    %{buildroot}%{_sysconfdir}/pam.d/%{name}
 
 # symlink the location where the bundled mathjax should be to
 # /usr/share/javascript/mathjax as mathjax-%%{bundled_mathjax_short_version}
@@ -239,6 +276,8 @@ done
 find %{buildroot}%{_libexecdir}/%{name} -name .gitignore -delete
 find %{buildroot}%{_libexecdir}/%{name} -name .Rbuildignore -delete
 rm %{buildroot}%{_libexecdir}/%{name}/{INSTALL,COPYING,NOTICE,README.md,SOURCE}
+# don't need the extras dir, as we took everything from that already
+rm -rf %{buildroot}%{_libexecdir}/%{name}/extras
 
 %fdupes -s %{buildroot}%{_libexecdir}/%{name}
 %fdupes -s %{buildroot}%{_datadir}
@@ -251,6 +290,18 @@ for f in postback/askpass-passthrough postback/rpostback-askpass postback/rpostb
     touch -r $full_path.orig $full_path
     rm $full_path.orig
 done
+
+%pre server -f rstudio-server.pre
+%service_add_pre %{rserver_service}
+
+%post server
+%service_add_post %{rserver_service}
+
+%preun server
+%service_del_preun %{rserver_service}
+
+%postun server
+%service_del_postun %{rserver_service}
 
 %files
 %license COPYING
@@ -268,5 +319,11 @@ done
 %files server
 %{_bindir}/rserver
 %{_bindir}/rserver-pam
+%dir %{_localstatedir}/log/%{name}-server
+%dir %{_localstatedir}/lib/%{name}-server
+%{_unitdir}/%{rserver_service}
+%{_sbindir}/rc%{name}-server
+%config %{_sysconfdir}/pam.d/%{name}
+%{_sysusersdir}/%{name}-server-user.conf
 
 %changelog

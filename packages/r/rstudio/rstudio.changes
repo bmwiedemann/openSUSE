@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:52:34 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix suse-missing-rclink warning
+
+-------------------------------------------------------------------
+Wed Jan 29 14:09:24 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add systemd & pam & user for rstudio-server
+
+-------------------------------------------------------------------
 Tue Jan 28 08:44:50 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Fix Requires to actually require the rstudio base package
