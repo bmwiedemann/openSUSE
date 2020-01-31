@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(gtk-sharp-3.0) >= 2.99.3
 BuildRequires:  pkgconfig(mono) >= 4.0
 Requires:       gstreamer-plugins-base
 Requires:       mono-core
-Recommends:     %{name}-lang
 
 %description
 Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports
