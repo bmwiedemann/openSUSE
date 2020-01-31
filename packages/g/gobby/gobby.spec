@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(libinfinity-0.7)
 BuildRequires:  pkgconfig(libxml++-2.6)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     %{name}-lang
 %if 0%{?favor_gtk2}
 BuildRequires:  pkgconfig(gtkmm-2.4)
 BuildRequires:  pkgconfig(gtksourceview-2.0)

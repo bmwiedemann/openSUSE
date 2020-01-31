@@ -339,4 +339,12 @@ No indication of GPL-2.0 &quot;only&quot; code and certainly no indication of ag
     <comment>1</comment>
     <requestid>527113</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>f523e7ddc0d65bd91d055002996f12ac</srcmd5>
+    <version>0.5.1+20170204.e5c2d14</version>
+    <time>1580511368</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768607 from dimstar)</comment>
+    <requestid>768674</requestid>
+  </revision>
 </revisionlist>

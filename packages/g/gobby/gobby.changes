@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:12:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Mon Sep 18 16:04:14 UTC 2017 - dimstar@opensuse.org
 
 - Drop update-alternative usage: we only have one version of gobby
