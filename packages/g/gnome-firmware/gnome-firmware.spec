@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://gitlab.gnome.org/hughsie/gnome-firmware-updater
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         do-not-call-gtk_init-manually.patch
+
 BuildRequires:  gobject-introspection
 BuildRequires:  help2man
 BuildRequires:  meson
@@ -38,7 +39,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xmlb)
-Recommends:     %{name}-lang = %{version}
+
 Provides:       gnome-firmware-updater = %{version}-%{release}
 Obsoletes:      gnome-firmware-updater < %{version}-%{release}
 Provides:       gnome-firmware-updater-lang = %{version}-%{release}
