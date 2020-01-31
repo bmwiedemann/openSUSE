@@ -33,7 +33,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26
-Recommends:     %{name}-lang
 # We need the %%mime_database_* macros
 %if 0%{?suse_version} < 1330
 BuildRequires:  shared-mime-info
