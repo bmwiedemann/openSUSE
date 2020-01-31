@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan 31 09:43:31 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 20191207:
+  * Features:
+    - compose: draw status bar with highlights
+  * Bug Fixes:
+    - crash opening notmuch mailbox
+    - crash in mutt_autocrypt_ui_recommendation
+    - Avoid negative allocation
+    - Mbox new mail
+    - Setting of DT_MAILBOX type variables from Lua
+    - imap: empty cmdbuf before connecting
+    - imap: select the mailbox on reconnect
+    - compose: fix attach message
+  * Build:
+    - make files conditional
+  * Code:
+    - enum-ify log levels
+    - fix function prototypes
+    - refactor virtual email lookups
+    - factor out global Context
+- Changes from 20191129:
+  * Features:
+    - Add raw mailsize expando (%cr)
+  * Bug Fixes:
+    - Avoid double question marks in bounce confirmation msg
+    - Fix bounce confirmation
+    - fix new-mail flags and behaviour
+    - fix: browser <descend-directory>
+    - fix ssl crash
+    - fix move to trash
+    - fix flickering
+    - Do not check hidden mailboxes for new mail
+    - Fix new_mail_command notifications
+    - fix crash in examine_mailboxes()
+    - fix crash in mutt_sort_threads()
+    - fix: crash after sending
+    - Fix crash in tunnel's conn_close
+    - fix fcc for deep dirs
+    - imap: fix crash when new mail arrives
+    - fix colour 'quoted9'
+    - quieten messages on exit
+    - fix: crash after failed mbox_check
+    - browser: default to a file/dir view when attaching a file
+  * Changed Config:
+    - Change $write_bcc to default off
+  * Docs:
+    - Add a bit more documentation about sending
+    - Clarify $write_bcc documentation.
+    - Update documentation for raw size expando
+    - docbook: set generate.consistent.ids to make generated html
+      reproducible
+  * Build:
+    - fix build/tests for 32-bit arches
+    - tests: fix test that would fail soon
+    - tests: fix context for failing idna tests
+
+-------------------------------------------------------------------
 Thu Nov 28 05:16:45 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 20191111:
