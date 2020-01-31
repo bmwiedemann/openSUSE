@@ -1,7 +1,7 @@
 #
 # spec file for package cxxtools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,15 @@ Release:        0
 Summary:        Collection of General-purpose C++ Classes
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://www.tntnet.org/cxxtools.html
-Source0:        http://www.tntnet.org/download/cxxtools-%{version}.tar.gz
+URL:            http://www.tntnet.org/cxxtools.html
+Source0:        https://github.com/maekitalo/cxxtools/archive/v%{version}.tar.gz
 Source1:        rpmlintrc
 # PATCH-FIX-UPSTREAM  cxxtools-2.2-iconvstream-return.diff https://sourceforge.net/p/cxxtools/bugs/4/ tommi@tntnet.org -- fix "no return" warning
 Patch0:         cxxtools-2.2-iconvstream-return.diff
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -157,6 +160,7 @@ It includes classes for:
 %patch0 -p1
 
 %build
+./autogen.sh
 %configure \
     --disable-static \
     --with-iconvstream=yes \
@@ -211,7 +215,8 @@ mkdir -p %{buildroot}/%{_datadir}/%{name}/
 
 %files devel
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/cxxtools-config
 %{_includedir}/cxxtools/
 %{_libdir}/*.so
