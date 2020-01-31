@@ -225,4 +225,12 @@
     <comment>It seems that we don't need python-libxml2 at all</comment>
     <requestid>733387</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>0511ea48444d7d0e2fdeff703c57e9ee</srcmd5>
+    <version>1.23.0</version>
+    <time>1580511519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769104</requestid>
+  </revision>
 </revisionlist>

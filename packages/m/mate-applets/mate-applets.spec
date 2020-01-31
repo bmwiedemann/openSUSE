@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(NetworkManager)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
