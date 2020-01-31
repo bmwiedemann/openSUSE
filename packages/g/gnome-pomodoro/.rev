@@ -146,4 +146,12 @@
   * Moved app-menu to main window (forwarded request 735559 from jubalh)</comment>
     <requestid>735604</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2e1d6a417b115ce317a52c72a8624206</srcmd5>
+    <version>0.16.0</version>
+    <time>1580511361</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768597 from dimstar)</comment>
+    <requestid>768671</requestid>
+  </revision>
 </revisionlist>

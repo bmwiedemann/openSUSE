@@ -51,7 +51,6 @@ Requires:       gnome-shell >= 3.16.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
 Requires:       hicolor-icon-theme
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base
 
 %description
