@@ -41,7 +41,6 @@ BuildRequires:  update-desktop-files
 Requires:       gstreamer-plugins-base >= 1.2.0
 Requires:       python3
 Requires:       python3-gobject
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-good
 BuildArch:      noarch

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:15:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Thu Feb  4 14:46:30 UTC 2016 - dimstar@opensuse.org
 
 - Add transmageddon-appdata-prjgroup.patch: Change project_group
