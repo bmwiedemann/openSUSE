@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:02:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded python dependency
+- Remove obsolete conditions
+- Drop fix_build_leap.diff
+
+-------------------------------------------------------------------
 Tue Jan  7 10:36:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1

@@ -917,4 +917,14 @@
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762477</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>4b7e71417dcc9f591d53f9ed1b4e3e2e</srcmd5>
+    <version>19.12.1</version>
+    <time>1580511426</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the unneeded python dependency
+- Remove obsolete conditions
+- Drop fix_build_leap.diff</comment>
+    <requestid>768871</requestid>
+  </revision>
 </revisionlist>

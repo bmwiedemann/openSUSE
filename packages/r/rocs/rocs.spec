@@ -32,7 +32,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Patch1:         fix_build_leap.diff
 BuildRequires:  extra-cmake-modules >= 1.7.0
 BuildRequires:  fdupes
 BuildRequires:  cmake(Grantlee5)
@@ -46,7 +45,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(Qt5Concurrent)
@@ -63,11 +61,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -107,9 +101,6 @@ to build software using Rocs.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1330
-%patch1 -p1
-%endif
 
 %build
 %ifarch ppc ppc64
