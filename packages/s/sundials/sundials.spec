@@ -1,7 +1,7 @@
 #
 # spec file for package sundials
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,6 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%if 0%{?is_opensuse} || 0%{?is_backports}
-%undefine DisOMPI1
-%undefine DisOMPI2
-%undefine DisOMPI3
-%else
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%undefine DisOMPI2
-%endif
-
 %define pname sundials
 
 %if 0%{?is_opensuse} || 0%{?is_backports}
@@ -43,11 +33,6 @@
 %if "%{flavor}" == ""
 %define package_name %{pname}
 ExclusiveArch:  do_not_build
-%endif
-
-%if "%{flavor}" == "serial"
-%undefine suffix
-%undefine mpi_flavor
 %endif
 
 %if "%{flavor}" == "mvapich2"
@@ -114,10 +99,10 @@ Name:           %{package_name}
 Version:        5.0.0
 Release:        0
 Summary:        Suite of nonlinear solvers
-License:        BSD-3-Clause
-Group:          System/Libraries
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
 # Check the file 'LICENSE' for details.
+License:        BSD-3-Clause
+Group:          System/Libraries
 URL:            https://computation.llnl.gov/projects/sundials/
 Source0:        https://computation.llnl.gov/projects/sundials/download/%{pname}-%{version}.tar.gz
 BuildRequires:  blas-devel
