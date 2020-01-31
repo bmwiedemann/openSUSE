@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 30 17:31:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.0.1
+  * Support for interactive legends
+  * Responsive chart width and height
+  * Bins responsive to selections
+  * New pivot transform
+  * New Regression transform
+  * New LOESS transform
+  * New density transform
+  * Image mark
+  * New default html renderer, directly compatible with Jupyter Notebook and
+    JupyterLab without the need for frontend extensions, as well as tools like
+    nbviewer and nbconvert, and related notebook environments such as Zeppelin,
+    Colab, Kaggle Kernels, and DataBricks.
+  * Support per-corner radius for bar marks
+  * Sort-by-field can now use the encoding name directly
+  * The rangeStep argument to :class:Scale and :meth:Chart.configure_scale is deprecated.
+    instead, use chart.properties(width={"step": rangeStep}) or
+    chart.configure_view(step=rangeStep).
+  * align, center, spacing, and columns are no longer valid chart properties, but
+    are moved to the encoding classes to which they refer.
+
+-------------------------------------------------------------------
 Sun Dec  1 19:16:00 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.3.0:
