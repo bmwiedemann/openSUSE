@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:46:16 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.2.7
+
+  IMPROVEMENTS:
+
+  - guest/opensuse: Check for basename hostname prior to setting hostname [GH-11170]
+  - host/linux: Check for modinfo in /sbin if it's not on PATH [GH-11178]
+  - core: Show guest name in hostname error message [GH-11175]
+  - provisioners/shell: Linux guests now support `reboot` option [GH-11194]
+  - darwin/nfs: Put each NFS export on its own line [GH-11216]
+  - contrib/bash: Add more completion flags to up command [GH-11223]
+  - provider/virtualbox: Add VirtualBox provider support for version 6.1.x [GH-11250]
+  - box/outdated: Allow to force check for box updates and ignore cached check [GH-11231]
+  - guest/alpine: Update apk cache when installing rsync [GH-11220]
+  - provider/virtualbox: Improve error message when machine folder is inaccessible [GH-11239]
+  - provisioner/ansible_local: Add pip install method for arch guests [GH-11265]
+  - communicators/winssh: Use Windows shell for `vagrant ssh -c` [GH-11258]
+
+  BUG FIXES:
+
+  - command/snapshot/save: Fix regression that prevented snapshot of all guests in environment [GH-11152]
+  - core: Update UI to properly retain newlines when adding prefix [GH-11126]
+  - core: Check if box update is available locally [GH-11188]
+  - core: Ensure Vagrant::Errors are loaded in file_checksum util [GH-11183]
+  - cloud/publish: Improve argument handling for missing arguments to command [GH-11184]
+  - core: Get latest version for current provider during outdated check [GH-11192]
+  - linux/nfs: avoid adding extra newlines to /etc/exports [GH-11201]
+  - guest/darwin: Fix VMware synced folders on APFS [GH-11267]
+  - guest/redhat: Ensure `nfs-server` is restarted when installing nfs client [GH-11212]
+  - core: Do not validate checksums if options are empty string [GH-11211]
+  - provider/docker: Enhance docker build method to match against buildkit output [GH-11205]
+  - provisioner/ansible_local: Don't prompt for input when installing Ansible on Ubuntu and Debian [GH-11191]
+  - provisioner/ansible_local: Ensure all guest caps accept all passed in arguments [GH-11265]
+  - host/windows: Fix regression that prevented port collisions from being detected [GH-11244]
+  - core/provisioner: Set top level provisioner name if set in a provisioner config [GH-11295]
+
+  Rebased patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+  * 0004-plugins-don-t-abuse-require_relative.patch.patch
+  * 0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0006-do-not-depend-on-wdm.patch
+  * 0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0008-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+  * 0010-Skip-failing-tests.patch
+
+  Dropped patches:
+  * 0011-Bump-rspec-its-dependency.patch
+    (upstreamed)
+  * 0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+    (rebased as 0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch)
+  * 0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
+    (upstreamed)
+  * 0014-Bump-rubyzip-version-to-fix-CVE-2019-16892.patch
+    (upstreamed)
+  * 0015-ARM-only-Disable-Subprocess-unit-test.patch
+    (rebased as 0012-Disable-Subprocess-unit-test.patch)
+  * 0016-Ensure-nfsd-call-is-mocked-up-in-BSD-NFS-test.patch
+    (upstreamed)
+
+  Added patches:
+  * 0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+  * 0012-Disable-Subprocess-unit-test.patch
+
+-------------------------------------------------------------------
 Thu Dec 19 11:22:33 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Add fix for failing unit test

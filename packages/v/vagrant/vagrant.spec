@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.6
+Version:        2.2.7
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -58,18 +58,9 @@ Patch7:         0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch8:         0008-Don-t-abuse-relative-paths-in-plugins.patch
 Patch9:         0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
 Patch10:        0010-Skip-failing-tests.patch
-# FIXME: merged, drop at next release after v2.2.6
-# https://github.com/hashicorp/vagrant/pull/10991
-Patch11:        0011-Bump-rspec-its-dependency.patch
-# FIXME: merged, drop at next release after v2.2.6
 # https://github.com/hashicorp/vagrant/pull/10945
-Patch12:        0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
-Patch13:        0013-Catch-NetworkNoInterfaces-error-in-docker-prepare_ne.patch
-# FIXME: upstream fix, drop at next release after v2.2.6
-Patch14:        0014-Bump-rubyzip-version-to-fix-CVE-2019-16892.patch
-Patch15:        0015-ARM-only-Disable-Subprocess-unit-test.patch
-# FIXME: upstream fix, drop at the next release after v2.2.6
-Patch16:        0016-Ensure-nfsd-call-is-mocked-up-in-BSD-NFS-test.patch
+Patch11:        0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+Patch12:        0012-Disable-Subprocess-unit-test.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -104,8 +95,8 @@ BuildRequires:  %{rubygem childprocess:0.6 }
 BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 #  s.add_dependency "erubis", "~> 2.7.0"
 BuildRequires:  %{rubygem erubis:2.7 }
-#  s.add_dependency "i18n", "~> 1.1.1"
-BuildRequires:  %{rubygem i18n:1.1 >= 1.1.1 }
+#  s.add_dependency "i18n", "~> 1.1"
+BuildRequires:  %{rubygem i18n:1 >= 1.1 }
 #  s.add_dependency "listen", "~> 3.1.5"
 BuildRequires:  %{rubygem listen:3.1 >= 3.1.5 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -142,7 +133,6 @@ BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.3 }
 BuildRequires:  %{rubygem rake:12.0 }
 #  s.add_development_dependency "rspec", "~> 3.5.0"
 BuildRequires:  %{rubygem rspec:3.5 }
-# FIXME: PATCHED
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
 #  s.add_dependency "ruby_dep", "<= 1.3.1"
@@ -188,8 +178,8 @@ Requires:       %{rubygem childprocess:0.6}
 Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 #  s.add_dependency "erubis", "~> 2.7.0"
 Requires:       %{rubygem erubis:2.7}
-#  s.add_dependency "i18n", "~> 1.1.1"
-Requires:       %{rubygem i18n:1.1 >= 1.1.1}
+#  s.add_dependency "i18n", "~> 1.1"
+Requires:       %{rubygem i18n:1 >= 1.1}
 #  s.add_dependency "listen", "~> 3.1.5"
 Requires:       %{rubygem listen >= 3.1.5}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -281,26 +271,7 @@ BuildArch:      noarch
 Optional dependency offering bash completion for vagrant
 
 %prep
-%setup -q -n %{mod_full_name}
-%patch1 -p 1
-%patch2 -p 1
-%patch3 -p 1
-%patch4 -p 1
-%patch5 -p 1
-%patch6 -p 1
-%patch7 -p 1
-%patch8 -p 1
-%patch9 -p 1
-%patch10 -p 1
-%patch11 -p 1
-%patch12 -p 1
-%patch13 -p 1
-%patch14 -p 1
-# disable the subprocess test only on ARM
-%ifarch %{arm} aarch64
-%patch15 -p 1
-%endif
-%patch16 -p 1
+%autosetup -p1 -n %{mod_full_name}
 
 cp %{SOURCE98} .
 
