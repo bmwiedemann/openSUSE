@@ -403,7 +403,6 @@
       <repopackage name="device-mapper"/>
       <repopackage name="dhcp"/>
       <repopackage name="dhcp-client"/>
-      <repopackage name="dhcp-doc"/>
       <repopackage name="dhcp-relay"/>
       <repopackage name="dhcp-server"/>
       <repopackage name="dhcp-tools"/>
@@ -428,7 +427,6 @@
       <repopackage name="dmraid"/>
       <repopackage name="dnsmasq"/>
       <repopackage name="docbook-dsssl-stylesheets"/>
-      <repopackage name="docbook-tdg"/>
       <repopackage name="docbook-xml-website"/>
       <repopackage name="docbook-xsl-stylesheets"/>
       <repopackage name="docbook5-xsl-stylesheets"/>
@@ -3370,7 +3368,6 @@
       <repopackage name="nss_ldap"/>
       <repopackage name="ntfs-3g"/>
       <repopackage name="ntfsprogs"/>
-      <repopackage name="ntp-doc"/>
       <repopackage name="numlockx"/>
       <repopackage name="nut"/>
       <repopackage name="nut-cgi"/>
@@ -3481,7 +3478,6 @@
       <repopackage name="patterns-base-transactional_base"/>
       <repopackage name="patterns-base-x11"/>
       <repopackage name="patterns-base-x11_enhanced"/>
-      <repopackage name="patterns-desktop-books"/>
       <repopackage name="patterns-desktop-imaging"/>
       <repopackage name="patterns-desktop-laptop"/>
       <repopackage name="patterns-desktop-multimedia"/>
@@ -3982,15 +3978,12 @@
       <repopackage name="popt-devel"/>
       <repopackage name="posix_cc"/>
       <repopackage name="postfix"/>
-      <repopackage name="postfix-doc"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-docs"/>
       <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql12"/>
       <repopackage name="postgresql12-contrib"/>
-      <repopackage name="postgresql12-docs"/>
       <repopackage name="postgresql12-llvmjit"/>
       <repopackage name="postgresql12-server"/>
       <repopackage name="pothana2000-fonts"/>
@@ -4044,7 +4037,6 @@
       <repopackage name="python-gobject2"/>
       <repopackage name="python-gtk"/>
       <repopackage name="python-ipaddress"/>
-      <repopackage name="python-lxml-doc"/>
       <repopackage name="python-qt5-utils"/>
       <repopackage name="python-rpm-generators"/>
       <repopackage name="python-rpm-macros"/>
@@ -4863,7 +4855,6 @@
       <repopackage name="salt-minion"/>
       <repopackage name="samba"/>
       <repopackage name="samba-client"/>
-      <repopackage name="samba-doc"/>
       <repopackage name="samba-libs"/>
       <repopackage name="samba-libs-python3"/>
       <repopackage name="samba-python3"/>
@@ -5469,7 +5460,6 @@
       <repopackage name="xmlstarlet"/>
       <repopackage name="xmlto"/>
       <repopackage name="xmodmap"/>
-      <repopackage name="xorg-docs"/>
       <repopackage name="xorg-x11-driver-video"/>
       <repopackage name="xorg-x11-essentials"/>
       <repopackage name="xorg-x11-fonts"/>
@@ -5627,8 +5617,6 @@
       <repopackage name="yast2-trans-sr"/>
       <repopackage name="yast2-trans-stats"/>
       <repopackage name="yast2-trans-sv"/>
-      <repopackage name="yast2-trans-ta"/>
-      <repopackage name="yast2-trans-th"/>
       <repopackage name="yast2-trans-tr"/>
       <repopackage name="yast2-trans-uk"/>
       <repopackage name="yast2-trans-vi"/>

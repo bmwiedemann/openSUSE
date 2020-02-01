@@ -403,7 +403,6 @@
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="dhcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="dhcp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dhcp-relay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
@@ -428,7 +427,6 @@
     <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dnsmasq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="docbook-dsssl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
-    <package name="docbook-tdg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="docbook-xml-website" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="docbook-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="docbook5-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
@@ -3325,7 +3323,6 @@
     <package name="nss_ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="ntfs-3g" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nut" supportstatus="unsupported"/> <!-- reason: dvd:nut -->
     <package name="nut-cgi" supportstatus="unsupported"/> <!-- reason: dvd:nut-cgi -->
@@ -3427,7 +3424,6 @@
     <package name="patterns-base-transactional_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="patterns-base-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-x11_enhanced" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="patterns-desktop-books" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-books -->
     <package name="patterns-desktop-imaging" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-desktop-laptop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="patterns-desktop-multimedia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3929,15 +3925,12 @@
     <package name="popt-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="posix_cc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="postfix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
-    <package name="postfix-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="postgresql" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="postgresql-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql12" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql12-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql12-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="postgresql12-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql12-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
@@ -3992,7 +3985,6 @@
     <package name="python-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-ipaddress" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="python-lxml-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-qt5-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-rpm-generators" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4809,7 +4801,6 @@
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
     <package name="samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="samba-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5415,7 +5406,6 @@
     <package name="xmlstarlet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="xmlto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="xmodmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="xorg-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xorg-x11-Xvnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-x11-Xvnc-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xorg-x11-driver-video" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5573,8 +5563,6 @@
     <package name="yast2-trans-sr" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-sr -->
     <package name="yast2-trans-stats" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-trans-sv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="yast2-trans-ta" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-ta -->
-    <package name="yast2-trans-th" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-th -->
     <package name="yast2-trans-tr" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-tr -->
     <package name="yast2-trans-uk" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-uk -->
     <package name="yast2-trans-vi" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-vi -->
