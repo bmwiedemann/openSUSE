@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 27 06:30:05 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.5 final
+- refresh configs
+- commit 002fd1a
+
+-------------------------------------------------------------------
+Fri Jan 24 09:18:17 CET 2020 - mkubecek@suse.cz
+
+- config: refresh
+  Only update headers.
+- commit 7193c66
+
+-------------------------------------------------------------------
+Thu Jan 23 21:33:01 CET 2020 - tiwai@suse.de
+
+- drm/i915/gt: Detect if we miss WaIdleLiteRestore (bsc#1161720).
+- commit 170524c
+
+-------------------------------------------------------------------
 Thu Jan 23 09:51:45 CET 2020 - jslaby@suse.cz
 
 - Linux 5.4.14 (bnc#1012628).
@@ -380,6 +400,32 @@ Thu Jan 23 09:51:45 CET 2020 - jslaby@suse.cz
 - commit fc4ea7a
 
 -------------------------------------------------------------------
+Wed Jan 22 19:22:24 CET 2020 - afaerber@suse.com
+
+- config: arm64: Update to 5.5-rc7
+- commit 4e17086
+
+-------------------------------------------------------------------
+Tue Jan 21 22:36:18 CET 2020 - tiwai@suse.de
+
+- Update config files: Update config files: adjust Intel ASoC audio items (bsc#1161463)
+  Adjust the Kconfigs for Intel ASoC SOF/SST drivers more appropriately.
+  Disable unrecommended items:
+  CONFIG_SND_SOC_INTEL_SKYLAKE_HDAUDIO_CODEC=n
+  CONFIG_SND_SST_ATOM_HIFI2_PLATFORM_PCI=n
+  CONFIG_SND_SOC_SOF_MERRIFIELD_SUPPORT=n
+  CONFIG_SND_SOC_INTEL_BYT_CHT_NOCODEC_MACH=n
+  Enable the other ones:
+  CONFIG_SND_SOC_INTEL_SKL_RT286_MACH=m
+  CONFIG_SND_SOC_INTEL_SKL_NAU88L25_SSM4567_MACH=m
+  CONFIG_SND_SOC_INTEL_SKL_NAU88L25_MAX98357A_MACH=m
+  CONFIG_SND_SOC_INTEL_BXT_DA7219_MAX98357A_MACH=m
+  CONFIG_SND_SOC_INTEL_BXT_RT298_MACH=m
+  CONFIG_SND_SOC_INTEL_GLK_DA7219_MAX98357A_MACH=m
+  CONFIG_SND_SOC_INTEL_SOF_CML_RT1011_RT5682_MACH=m
+- commit 1da7ef3
+
+-------------------------------------------------------------------
 Tue Jan 21 22:29:35 CET 2020 - tiwai@suse.de
 
 - Update config files: adjust Intel ASoC audio items (bsc#1161463)
@@ -415,7 +461,13 @@ Mon Jan 20 11:48:14 CET 2020 - tiwai@suse.de
 
 - ALSA: hda: Apply aligned MMIO access only conditionally
   (bsc#1161152).
-- commit 81fe0c3
+- commit e1a66d4
+
+-------------------------------------------------------------------
+Mon Jan 20 07:44:17 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.5-rc7
+- commit 3dbb847
 
 -------------------------------------------------------------------
 Sat Jan 18 08:09:46 CET 2020 - jslaby@suse.cz
@@ -778,7 +830,7 @@ Wed Jan 15 17:35:16 CET 2020 - tiwai@suse.de
 Wed Jan 15 12:44:51 CET 2020 - tiwai@suse.de
 
 - rtw88: fix potential NULL skb access in TX ISR (bsc#1160730).
-- commit 5cf5394
+- commit f123aae
 
 -------------------------------------------------------------------
 Wed Jan 15 10:29:49 CET 2020 - jslaby@suse.cz
@@ -930,10 +982,26 @@ Tue Jan 14 13:46:17 CET 2020 - tiwai@suse.de
 - commit cf0d366
 
 -------------------------------------------------------------------
+Tue Jan 14 09:28:21 CET 2020 - tiwai@suse.de
+
+- Update config files: enable forgotten configs for SOF (bsc#1160819)
+  The configs have been forgotten to be enabled:
+  CONFIG_SND_SOC_SOF_HDA_COMMON_HDMI_CODEC=y
+  CONFIG_SND_SOC_SOF_JASPERLAKE_SUPPORT=y
+  CONFIG_SND_SOC_SOF_JASPERLAKE=m
+- commit c542b01
+
+-------------------------------------------------------------------
 Mon Jan 13 21:16:42 CET 2020 - msuchanek@suse.de
 
 - rpm/kernel-binary.spec.in: Do not obsolete KMPs (boo#1126512).
 - commit cea1843
+
+-------------------------------------------------------------------
+Mon Jan 13 06:24:19 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.5-rc6
+- commit 6dccaaf
 
 -------------------------------------------------------------------
 Mon Jan 13 05:59:20 CET 2020 - jslaby@suse.cz
@@ -1214,6 +1282,13 @@ Mon Jan 13 05:59:20 CET 2020 - jslaby@suse.cz
 - Refresh
   patches.suse/V4-04-10-ARM-dts-bcm283x-Move-BCM2835-6-7-specific-to-bcm2835-common.dtsi.patch.
 - commit 2d02eb4
+
+-------------------------------------------------------------------
+Fri Jan 10 14:06:45 CET 2020 - nsaenzjulienne@suse.de
+
+- supported.conf: Enable mdio-bcm-unimac (bsc#1160310)
+  Needed in order for Raspberry Pi 4's ethernet port to work.
+- commit b949d3b
 
 -------------------------------------------------------------------
 Thu Jan  9 16:45:44 CET 2020 - jslaby@suse.cz
@@ -1552,11 +1627,32 @@ Thu Jan  9 16:44:46 CET 2020 - jslaby@suse.cz
 - commit 605842d
 
 -------------------------------------------------------------------
+Thu Jan  9 07:11:19 CET 2020 - mkubecek@suse.cz
+
+- supported.conf: sort
+  Fix order of entries in supported.conf file.
+- commit 581d935
+
+-------------------------------------------------------------------
 Wed Jan  8 16:29:35 CET 2020 - tiwai@suse.de
 
 - libertas: Fix two buffer overflows at parsing bss descriptor
   (CVE-2019-14896 bsc#1157157 CVE-2019-14897 bsc#1157155).
 - commit 434d4ff
+
+-------------------------------------------------------------------
+Wed Jan  8 16:22:55 CET 2020 - nsaenzjulienne@suse.de
+
+- supported.conf: enable Raspberry Pi cpufreq driver (bsc#1160461).
+  These drivers are required in order to enable CPU frequency scaling on
+  the Raspberry Pi family of boards.
+- commit 224f041
+
+-------------------------------------------------------------------
+Wed Jan  8 11:57:16 CET 2020 - tiwai@suse.de
+
+- rpm/kernel-docs.spec.in: pass PYTHON=python3 to fix build error (bsc#1160435)
+- commit 9b5299f
 
 -------------------------------------------------------------------
 Wed Jan  8 07:44:32 CET 2020 - mkubecek@suse.cz
@@ -1589,6 +1685,12 @@ Tue Jan  7 11:17:09 CET 2020 - tiwai@suse.de
 - USB: Fix: Don't skip endpoint descriptors with maxpacket=0
   (bsc#1159811).
 - commit 52394e7
+
+-------------------------------------------------------------------
+Mon Jan  6 06:28:20 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.5-rc5
+- commit 288dac0
 
 -------------------------------------------------------------------
 Sun Jan  5 09:46:16 CET 2020 - jslaby@suse.cz
@@ -2687,6 +2789,35 @@ Tue Dec 31 18:51:38 CET 2019 - jslaby@suse.cz
 - commit e7419a3
 
 -------------------------------------------------------------------
+Mon Dec 30 07:30:53 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.5-rc4
+- refresh
+  patches.suse/vfs-add-super_operations-get_inode_dev
+- commit 7e31c5e
+
+-------------------------------------------------------------------
+Sun Dec 29 17:18:15 CET 2019 - mkubecek@suse.cz
+
+- config: refresh
+  Refresh with a new gcc version.
+- commit 2d3adcc
+
+-------------------------------------------------------------------
+Sat Dec 28 19:16:51 CET 2019 - mbrugger@suse.com
+
+- arm64: Add Allwinner crypto modules to config
+  Enabel SUN4I and SUN8I based HW crypto blocks.
+- commit b496619
+
+-------------------------------------------------------------------
+Mon Dec 23 07:25:16 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.5-rc3
+- refresh configs
+- commit acd0797
+
+-------------------------------------------------------------------
 Sat Dec 21 12:09:26 CET 2019 - jslaby@suse.cz
 
 - Linux 5.4.6 (bnc#1012628).
@@ -2929,7 +3060,7 @@ Wed Dec 18 12:14:01 CET 2019 - msuchanek@suse.de
 Tue Dec 17 22:30:35 CET 2019 - jslaby@suse.cz
 
 - rpm/config.sh: set COMPRESS_VMLINUX to xz (bnc#1155921)
-- commit 88b236c
+- commit 7fe1f4a
 
 -------------------------------------------------------------------
 Tue Dec 17 22:28:44 CET 2019 - jslaby@suse.cz
@@ -3242,6 +3373,14 @@ Mon Dec 16 10:30:06 CET 2019 - bp@suse.de
 - commit c8b14a1
 
 -------------------------------------------------------------------
+Mon Dec 16 06:31:13 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.5-rc2
+- update configs
+  - CRYPTO_BLAKE2B=m
+- commit 5d7acaa
+
+-------------------------------------------------------------------
 Fri Dec 13 12:10:13 CET 2019 - jslaby@suse.cz
 
 - EDAC/ghes: Do not warn when incrementing refcount on 0
@@ -3415,6 +3554,12 @@ Fri Dec 13 11:56:09 CET 2019 - jslaby@suse.cz
 - commit 9f4d3b5
 
 -------------------------------------------------------------------
+Thu Dec 12 18:57:42 CET 2019 - nsaenzjulienne@suse.de
+
+- hwrng: iproc-rng200 - Add support for BCM2711 (jsc#SLE-7772).
+- commit 9e9a23d
+
+-------------------------------------------------------------------
 Wed Dec 11 17:24:32 CET 2019 - jroedel@suse.de
 
 - KVM: x86: Remove a spurious export of a static function
@@ -3429,6 +3574,112 @@ Wed Dec 11 11:51:37 CET 2019 - jroedel@suse.de
 - KVM: x86: fix out-of-bounds write in KVM_GET_EMULATED_CPUID
   (CVE-2019-19332) (CVE-2019-19332 bsc#1158827).
 - commit bdbc1dc
+
+-------------------------------------------------------------------
+Mon Dec  9 07:59:18 CET 2019 - mkubecek@suse.cz
+
+- Update to 5.5-rc1
+- eliminated 175 patches (114 stable, 61 other)
+- ARM configs need update
+- refresh
+  patches.suse/0001-usb-Add-Xen-pvUSB-protocol-description.patch
+  patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  patches.suse/linux-log2-h-add-roundup-rounddown_pow_two64-family-of-functions.patch
+  patches.suse/setuid-dumpable-wrongdir
+  patches.suse/supported-flag
+  patches.suse/supported-flag-external
+- new config options:
+  - Processor type and features
+    - X86_IOPL_IOPERM=y
+    - X86_UMIP=y
+  - Power management
+    - BYTCRC_PMIC_OPREGION=y
+    - CHTCRC_PMIC_OPREGION=y
+  - Networking
+    - TLS_TOE=n
+    - TIPC_CRYPTO=y
+    - NET_DSA_TAG_OCELOT=m
+    - NFC_PN532_UART=m
+  - Cryptographic API
+    - CRYPTO_CURVE25519=m
+    - CRYPTO_CURVE25519_X86=m
+    - CRYPTO_BLAKE2B=m
+    - CRYPTO_BLAKE2S=m
+    - CRYPTO_BLAKE2S_X86=m
+    - CRYPTO_LIB_BLAKE2S=m
+    - CRYPTO_LIB_CHACHA=m
+    - CRYPTO_LIB_CURVE25519=m
+    - CRYPTO_LIB_POLY1305=m
+    - CRYPTO_LIB_CHACHA20POLY1305=m
+    - CRYPTO_DEV_AMLOGIC_GXL=m
+  - Kernel hacking
+    - SYMBOLIC_ERRNAME=y
+    - TRACE_EVENT_INJECT=n
+    - KUNIT=n
+  - Kernel Testing and Coverage
+    - HYPERV_TESTING=n
+  - Networking drivers
+    - CAIF_DRIVERS=y
+    - NET_DSA_MSCC_FELIX=m
+    - DP83869_PHY=m
+  - Hardware Monitoring
+    - SENSORS_LTC2947_I2C=m
+    - SENSORS_LTC2947_SPI=m
+    - SENSORS_BEL_PFE=m
+    - SENSORS_TMP513=m
+  - Multimedia
+    - VIDEO_HI556=m
+    - VIDEO_IMX290=m
+  - Graphics
+    - DRM_DEBUG_DP_MST_TOPOLOGY_REFS=n
+    - DRM_AMD_DC_HDCP=y
+    - DRM_I915_HEARTBEAT_INTERVAL=2500
+    - DRM_I915_PREEMPT_TIMEOUT=640
+    - DRM_I915_SPIN_REQUEST=5
+    - DRM_I915_STOP_TIMEOUT=100
+    - DRM_I915_TIMESLICE_DURATION=1
+    - BACKLIGHT_QCOM_WLED=m
+    - FB_TFT=n
+  - Sound
+    - SND_SOC_INTEL_GLK_DA7219_MAX98357A_MACH=m
+    - SND_SOC_INTEL_SOF_CML_RT1011_RT5682_MACH=m
+    - SND_SOC_SOF_DEVELOPER_SUPPORT=n
+    - SND_SOC_SOF_JASPERLAKE_SUPPORT=y
+    - SND_SOC_SOF_HDA_COMMON_HDMI_CODEC=y
+    - SND_SOC_ADAU7118_HW=n
+    - SND_SOC_ADAU7118_I2C=n
+    - SND_SOC_TAS2562=n
+    - SND_SOC_TAS2770=n
+  - USB
+    - TYPEC_HD3SS3220=m
+  - Industrial I/O
+    - AD7292=n
+    - FXOS8700_I2C=n
+    - FXOS8700_SPI=n
+    - ADUX1020=n
+    - VEML6030=n
+    - LTC2983=n
+  - Misc drivers
+    - EFI_SOFT_RESERVE=y
+    - FW_CACHE=y
+    - TCG_TIS_SPI_CR50=y
+    - PTP_1588_CLOCK_IDTCM=m
+    - PINCTRL_TIGERLAKE=m
+    - PINCTRL_EQUILIBRIUM=m
+    - W1_SLAVE_DS2430=m
+    - SF_PDMA=m
+    - NVME_HWMON=y
+    - WFX=m
+    - SYSTEM76_ACPI=m
+    - CROS_EC_SENSORHUB=m
+    - DEV_DAX_HMEM=m
+  - ppc64(le):
+    - PPC_UV=n
+  - */debug:
+    - TRACE_EVENT_INJECT=y
+  - x86_64/debug:
+    - HYPERV_TESTING=y
+- commit 6af0b1c
 
 -------------------------------------------------------------------
 Thu Dec  5 16:48:24 CET 2019 - nsaenzjulienne@suse.de

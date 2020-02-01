@@ -6,7 +6,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
@@ -57,7 +56,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
@@ -78,7 +76,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
@@ -98,7 +95,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
@@ -122,7 +118,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
@@ -142,7 +137,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
@@ -162,7 +156,6 @@
 <package>kernel-debug</package>
 <package>kernel-default</package>
 <package>kernel-kvmsmall</package>
-<package>kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-vanilla</package>
 <package>kernel-zfcpdump</package>
