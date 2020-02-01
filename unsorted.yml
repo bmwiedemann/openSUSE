@@ -2292,6 +2292,7 @@ unsorted:
   - dh-autoreconf 
   - dh-make 
   - dhcp-devel 
+  - dhcp-doc 
   - dhewm3 
   - dhex 
   - dhtest 
@@ -2371,6 +2372,7 @@ unsorted:
   - dnstracer 
   - docbook-css-stylesheets 
   - docbook-simple 
+  - docbook-tdg 
   - docbook-toys 
   - docbook-utils 
   - docbook-utils-minimal 
@@ -14731,6 +14733,7 @@ unsorted:
   - ntl-devel 
   - ntl-doc 
   - ntp 
+  - ntp-doc 
   - ntpsec 
   - ntpsec-doc 
   - ntpsec-utils 
@@ -15690,6 +15693,7 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
+  - patterns-desktop-books 
   - patterns-devel-base-devel_basis-32bit 
   - patterns-devel-base-devel_kernel-32bit 
   - patterns-devel-java-devel_java 
@@ -17242,11 +17246,13 @@ unsorted:
   - poster 
   - postfish 
   - postfix-devel 
+  - postfix-doc 
   - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
   - postgresql-devel 
+  - postgresql-docs 
   - postgresql-plperl 
   - postgresql-plpython 
   - postgresql-pltcl 
@@ -17284,6 +17290,7 @@ unsorted:
   - postgresql11-test 
   - postgresql11-timescaledb 
   - postgresql12-devel 
+  - postgresql12-docs 
   - postgresql12-plperl 
   - postgresql12-plpython 
   - postgresql12-pltcl 
@@ -17690,6 +17697,7 @@ unsorted:
   - python-libteam 
   - python-lmiwbem 
   - python-logutils-doc 
+  - python-lxml-doc 
   - python-magnumclient-doc 
   - python-manilaclient-doc 
   - python-marisa 
@@ -24028,6 +24036,7 @@ unsorted:
   - samba-ad-dc-32bit: [x86_64] 
   - samba-ceph: [x86_64] 
   - samba-core-devel 
+  - samba-doc 
   - samba-dsdb-modules 
   - samba-krb-printing 
   - samba-libs-python3-32bit: [x86_64] 
@@ -33727,6 +33736,7 @@ unsorted:
   - xonsh 
   - xonsh-doc 
   - xorg-cf-files 
+  - xorg-docs 
   - xorg-scripts 
   - xorg-sgml-doctools 
   - xorg-x11 
@@ -33925,7 +33935,9 @@ unsorted:
   - yast2-trans-sq 
   - yast2-trans-sr-latin 
   - yast2-trans-sw 
+  - yast2-trans-ta 
   - yast2-trans-tg 
+  - yast2-trans-th 
   - yast2-trans-tk 
   - yast2-update-FACTORY 
   - yast2-usbauth 
