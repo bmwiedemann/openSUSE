@@ -160,8 +160,6 @@ dvd:
   - yast2-trans-sk
   - yast2-trans-sr
   - yast2-trans-sv
-  - yast2-trans-ta
-  - yast2-trans-th
   - yast2-trans-tr
   - yast2-trans-uk
   - yast2-trans-vi
@@ -170,7 +168,6 @@ dvd:
   - yast2-trans-zh_CN
   - yast2-trans-zh_TW
   - yast2-trans-zu
-  - patterns-desktop-books: [suggested]
   - patterns-server-kvm_server: [suggested]
   - patterns-base-minimal_base: [suggested]
   - patterns-yast-x11_yast: [suggested]
