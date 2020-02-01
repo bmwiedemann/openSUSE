@@ -1093,6 +1093,7 @@ unsorted:
   - belr-devel 
   - bemenu 
   - bemenu-devel 
+  - benchdnn: [x86_64] 
   - benchmark-devel 
   - benji 
   - berkeleydb 
@@ -3162,8 +3163,6 @@ unsorted:
   - freeipmi-ipmiseld 
   - freemarker 
   - freemarker-javadoc 
-  - freeorion 
-  - freeorion-data 
   - freeradius-client 
   - freeradius-client-devel 
   - freeradius-client-libs 
@@ -8560,6 +8559,7 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf2 
+  - libdnnl1: [x86_64] 
   - libdns1311-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
@@ -13601,6 +13601,8 @@ unsorted:
   - mkcomposecache 
   - mkdud 
   - mkelfImage 
+  - mkl-dnn-devel: [x86_64] 
+  - mkl-dnn-doc: [x86_64] 
   - mkosi: [x86_64] 
   - mksh 
   - mksusecd 
@@ -17820,7 +17822,6 @@ unsorted:
   - python-zope.i18nmessageid-doc 
   - python2-3to2 
   - python2-APScheduler 
-  - python2-AnyQt 
   - python2-Arpeggio 
   - python2-Automat 
   - python2-BTrees 
@@ -18039,7 +18040,6 @@ unsorted:
   - python2-alabaster 
   - python2-alembic 
   - python2-alsa 
-  - python2-altair 
   - python2-altgraph 
   - python2-amqp 
   - python2-amqpstorm 
@@ -19004,7 +19004,6 @@ unsorted:
   - python2-matplotlib-qt5 
   - python2-matplotlib-web 
   - python2-matplotlib-wx 
-  - python2-matrix-synapse-ldap3 
   - python2-maxminddb 
   - python2-mbstrdecoder 
   - python2-mccabe 
@@ -19617,6 +19616,7 @@ unsorted:
   - python2-rebulk 
   - python2-recommonmark 
   - python2-redbaron 
+  - python2-redfish 
   - python2-redis 
   - python2-rednose 
   - python2-regex 
@@ -21517,6 +21517,7 @@ unsorted:
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
   - python3-matrix-synapse 
+  - python3-matrix-synapse-ldap3 
   - python3-maxminddb 
   - python3-mbstrdecoder 
   - python3-mccabe 
@@ -22230,6 +22231,7 @@ unsorted:
   - python3-rebulk 
   - python3-recommonmark 
   - python3-redbaron 
+  - python3-redfish 
   - python3-rednose 
   - python3-regex 
   - python3-relatorio 
@@ -32994,7 +32996,6 @@ unsorted:
   - usbauth 
   - usbauth-notifier 
   - usbguard 
-  - usbguard-applet-qt 
   - usbguard-devel 
   - usbguard-tools 
   - usbprog 
@@ -34005,6 +34006,7 @@ unsorted:
   - zimg-devel 
   - zinc 
   - zinnia-devel 
+  - zipkin-api-source 
   - zipkin-cpp-opentracing-devel 
   - zipkin-cpp-opentracing-devel-static 
   - zita-convolver-devel 
