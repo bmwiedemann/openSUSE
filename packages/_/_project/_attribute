@@ -212,7 +212,7 @@
   poo#62030: '20200113'
   poo#62036: '20200126'
   poo#62045: '20200115'
-  poo#62060: '20200130'
+  poo#62060: '20200131'
   poo#62168: '20200128'
   poo#62375: '20200130'
   poo#62591: '20200131'
@@ -258,7 +258,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200131</value>
+    <value>20200201</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
