@@ -4963,4 +4963,11 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5</comment>
     <requestid>767957</requestid>
   </revision>
+  <revision rev="525" vrev="2">
+    <srcmd5>64dc782057cf3979e400a63c6c84f17c</srcmd5>
+    <version>5.4.14</version>
+    <time>1580650518</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 5.4; 5.5 seems to mess up badly with btrfs, killing disk space during QA runs (e.g. https://openqa.opensuse.org/tests/1161683#step/inkscape/14)</comment>
+  </revision>
 </revisionlist>

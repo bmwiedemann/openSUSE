@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-default
+# spec file for package kernel-lpae
 #
 # Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -27,7 +27,7 @@
 
 %include %_sourcedir/kernel-spec-macros
 
-%define build_flavor	default
+%define build_flavor	lpae
 %define build_default	("%build_flavor" == "default")
 %define build_vanilla	("%build_flavor" == "vanilla")
 
@@ -61,8 +61,8 @@
 %define install_vdso 0
 %endif
 
-Name:           kernel-default
-Summary:        The Standard Kernel
+Name:           kernel-lpae
+Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0
 Group:          System/Kernel
 Version:        5.4.14
@@ -178,58 +178,6 @@ Provides:       kernel-%build_flavor-base-srchash-fc4ea7a80b3635a53f6e0ec89f8920
 Provides:       kernel-srchash-fc4ea7a80b3635a53f6e0ec89f89204d49646c59
 # END COMMON DEPS
 Provides:       %name-srchash-fc4ea7a80b3635a53f6e0ec89f89204d49646c59
-%ifarch %ix86
-Provides:       kernel-smp = 2.6.17
-Obsoletes:      kernel-smp <= 2.6.17
-Provides:       kernel-trace = 3.13
-Obsoletes:      kernel-trace <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump = 2.6.28
-Obsoletes:      kernel-kdump <= 2.6.28
-%endif
-%ifarch s390x
-Provides:       kernel-trace = 3.13
-Obsoletes:      kernel-trace <= 3.13
-%endif
-%ifarch x86_64
-Provides:       kernel-smp = 2.6.17
-Obsoletes:      kernel-smp <= 2.6.17
-Provides:       kernel-trace = 3.13
-Obsoletes:      kernel-trace <= 3.13
-Provides:       kernel-bigsmp = 3.1
-Obsoletes:      kernel-bigsmp <= 3.1
-Provides:       kernel-desktop = 4.3
-Obsoletes:      kernel-desktop <= 4.3
-Provides:       kernel-xen = 4.4
-Obsoletes:      kernel-xen <= 4.4
-Provides:       kernel-ec2 = 4.4
-Obsoletes:      kernel-ec2 <= 4.4
-%endif
-%ifarch %ix86
-Provides:       kernel-trace-base = 3.13
-Obsoletes:      kernel-trace-base <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-base = 2.6.28
-Obsoletes:      kernel-kdump-base <= 2.6.28
-%endif
-%ifarch s390x
-Provides:       kernel-trace-base = 3.13
-Obsoletes:      kernel-trace-base <= 3.13
-%endif
-%ifarch x86_64
-Provides:       kernel-trace-base = 3.13
-Obsoletes:      kernel-trace-base <= 3.13
-Provides:       kernel-bigsmp-base = 3.1
-Obsoletes:      kernel-bigsmp-base <= 3.1
-Provides:       kernel-desktop-base = 4.3
-Obsoletes:      kernel-desktop-base <= 4.3
-Provides:       kernel-xen-base = 4.4
-Obsoletes:      kernel-xen-base <= 4.4
-Provides:       kernel-ec2-base = 4.4
-Obsoletes:      kernel-ec2-base <= 4.4
-%endif
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -305,7 +253,7 @@ Source113:      patches.kabi.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le s390x x86_64
+ExclusiveArch:  armv7hl
 %define kmp_target_cpu %_target_cpu
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
@@ -397,7 +345,8 @@ NoSource:       121
 %define supported_modules_check 0
 
 %description
-The standard kernel for both uniprocessor and multiprocessor systems.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 
 %source_timestamp
@@ -1108,7 +1057,7 @@ fi
 %defattr(-, root, root)
 
 %package extra
-Summary:        The Standard Kernel - Unsupported kernel modules
+Summary:        Kernel for LPAE enabled systems - Unsupported kernel modules
 Group:          System/Kernel
 Url:            http://www.kernel.org/
 Provides:       %name-extra_%_target_cpu = %version-%source_rel
@@ -1119,30 +1068,6 @@ Requires(pre):  coreutils awk
 Requires(post): modutils
 Requires(post): perl-Bootloader
 Requires(post): mkinitrd
-%ifarch %ix86
-Provides:       kernel-trace-extra = 3.13
-Obsoletes:      kernel-trace-extra <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-extra = 2.6.28
-Obsoletes:      kernel-kdump-extra <= 2.6.28
-%endif
-%ifarch s390x
-Provides:       kernel-trace-extra = 3.13
-Obsoletes:      kernel-trace-extra <= 3.13
-%endif
-%ifarch x86_64
-Provides:       kernel-trace-extra = 3.13
-Obsoletes:      kernel-trace-extra <= 3.13
-Provides:       kernel-bigsmp-extra = 3.1
-Obsoletes:      kernel-bigsmp-extra <= 3.1
-Provides:       kernel-desktop-extra = 4.3
-Obsoletes:      kernel-desktop-extra <= 4.3
-Provides:       kernel-xen-extra = 4.4
-Obsoletes:      kernel-xen-extra <= 4.4
-Provides:       kernel-ec2-extra = 4.4
-Obsoletes:      kernel-ec2-extra <= 4.4
-%endif
 %obsolete_rebuilds %name-extra
 Supplements:    packageand(product(SLED):%{name}_%_target_cpu)
 Supplements:    packageand(product(sle-we):%{name}_%_target_cpu)
@@ -1151,7 +1076,8 @@ Conflicts:      libc.so.6()(64bit)
 %endif
 
 %description extra
-The standard kernel for both uniprocessor and multiprocessor systems.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 This package contains additional modules not supported by Novell.
 
@@ -1204,30 +1130,6 @@ Supplements:    packageand(%name:kernel-devel%variant)
 %else
 Requires:       kernel-source-vanilla = %version-%source_rel
 Supplements:    packageand(%name:kernel-source-vanilla)
-%endif
-%ifarch %ix86
-Provides:       kernel-trace-devel = 3.13
-Obsoletes:      kernel-trace-devel <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-devel = 2.6.28
-Obsoletes:      kernel-kdump-devel <= 2.6.28
-%endif
-%ifarch s390x
-Provides:       kernel-trace-devel = 3.13
-Obsoletes:      kernel-trace-devel <= 3.13
-%endif
-%ifarch x86_64
-Provides:       kernel-trace-devel = 3.13
-Obsoletes:      kernel-trace-devel <= 3.13
-Provides:       kernel-bigsmp-devel = 3.1
-Obsoletes:      kernel-bigsmp-devel <= 3.1
-Provides:       kernel-desktop-devel = 4.3
-Obsoletes:      kernel-desktop-devel <= 4.3
-Provides:       kernel-xen-devel = 4.4
-Obsoletes:      kernel-xen-devel <= 4.4
-Provides:       kernel-ec2-devel = 4.4
-Obsoletes:      kernel-ec2-devel <= 4.4
 %endif
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
