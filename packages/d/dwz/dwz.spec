@@ -78,6 +78,7 @@ Patch2:         dwz-fix-die-no-multifile-propagation.patch
 Patch3:         dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
 Patch4:         dwz-fix-refd-NULL-assertion-in-write_die.patch
 Patch5:         dwz-fix-reference-from-pu-to-cu.patch
+Patch6:         dwz-fix-segfault-in-die_cu.patch
 
 %if %{build_main}
 %description
@@ -111,6 +112,7 @@ This package contains the testsuite results from DWZ.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"

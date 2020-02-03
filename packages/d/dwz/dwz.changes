@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 17:08:55 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix segfault in die_cu [swo#25456].
+  * dwz-fix-segfault-in-die_cu.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 06:30:58 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix reference from compilation unit to partial unit [swo#25398].
