@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyviz-comms
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,16 +13,17 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyviz-comms
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
-License:        BSD-3-Clause
 Summary:        Tool to launch jobs, organize the output, and dissect the results
-Url:            https://github.com/pyviz/pyviz_comms
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/pyviz/pyviz_comms
 Source0:        https://files.pythonhosted.org/packages/source/p/pyviz-comms/pyviz_comms-%{version}.tar.gz
 Source100:      python-pyviz-comms-rpmlintrc
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:25:12 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.7.3
+  * Add ability to register on_error and on_stdout handlers on Comms.
+
+-------------------------------------------------------------------
 Mon Apr 22 19:21:30 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.7.2
