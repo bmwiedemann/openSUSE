@@ -164,4 +164,12 @@
     <comment>  jsc#SLE-8604).</comment>
     <requestid>755674</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>c09886695534871421aec1ffbd703782</srcmd5>
+    <version>12.14.1</version>
+    <time>1580724872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769279</requestid>
+  </revision>
 </revisionlist>

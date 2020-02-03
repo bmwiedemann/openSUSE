@@ -6,18 +6,19 @@
     <memory>
       <size unit="G">9</size>
     </memory>
-    <physicalmemory>
-      <size unit="G">7</size>
-    </physicalmemory>
   </hardware>
   <overwrite>
     <conditions>
-      <arch>ppc64</arch>
+      <package>trilinos:documentation</package>
+      <package>trilinos:documentation-hpc</package>
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">22</size>
+        <size unit="G">8</size>
       </disk>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>
