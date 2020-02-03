@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        049+git118.a6090e2f
+Version:        049.1+git119.abf1a408
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -172,16 +172,23 @@ ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dra
 
 %post
 # check whether /var/run has been converted to a symlink
-[ -L /var/run ] || sed -i '/GRUB_CMDLINE_LINUX_DEFAULT.*/s/"$/ rd.convertfs"/' /etc/default/grub  || :
-[ -L /var/run ] || cat >>/etc/dracut.conf.d/05-convertfs.conf<<EOF
+if [ ! -L /var/run ]; then
+    grep -q '^[ 	]*GRUB_CMDLINE_LINUX_DEFAULT=.*rd.convertfs' /etc/default/grub || \
+    sed -i '/^[ 	]*GRUB_CMDLINE_LINUX_DEFAULT.*/s/"$/ rd.convertfs"/' /etc/default/grub  || :
+    if ! grep --no-message 'add_dracutmodules+=" convertfs "' /etc/dracut.conf.d/05-convertfs.conf; then
+        cat >>/etc/dracut.conf.d/05-convertfs.conf<<EOF
 add_dracutmodules+=" convertfs "
 EOF
+    fi
+fi
 #clean up after the conversion is done
-[ -L /var/run ] &&  sed -i '/GRUB_CMDLINE_LINUX_DEFAULT.*/s/rd.convertfs//' /etc/default/grub || :
-[ -L /var/run ] && sed -i '/add_dracutmodules+=" *convertfs *"/d' /etc/dracut.conf.d/05-convertfs.conf || :
-[ -d /var/lock.lockmove~ ] && rm -rf /var/lock.lockmove~ || :
-[ -d /var/run.runmove~ ] && rm -rf /var/run.runmove~ || :
-[ -s /etc/dracut.conf.d/05-convertfs.conf ] || rm -f /etc/dracut.conf.d/05-convertfs.conf || :
+if [ -L /var/run ] && [ -f /etc/dracut.conf.d/05-convertfs.conf ]; then
+    sed -i '/^[ 	]*GRUB_CMDLINE_LINUX_DEFAULT.*/s/rd.convertfs//' /etc/default/grub || :
+    [ -f /etc/dracut.conf.d/05-convertfs.conf ] && sed -i '/add_dracutmodules+="[ 	]*convertfs[ 	]*"/d' /etc/dracut.conf.d/05-convertfs.conf || :
+    [ -s /etc/dracut.conf.d/05-convertfs.conf ] || rm -f /etc/dracut.conf.d/05-convertfs.conf || :
+    [ -d /var/lock.lockmove~ ] && rm -rf /var/lock.lockmove~ || :
+    [ -d /var/run.runmove~ ] && rm -rf /var/run.runmove~ || :
+fi
 %{?regenerate_initrd_post}
 
 %post fips

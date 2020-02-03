@@ -3,7 +3,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/opensuse/dracut.git</param>
     <param name="revision">SUSE/049</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@.1+git@TAG_OFFSET@.%h</param>
     <param name="extract">suse/dracut.spec</param>
     <param name="extract">suse/README.susemaint</param>
     <param name="changesgenerate">enable</param>

@@ -1598,4 +1598,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * Remove purge-kernels scripts and service (jsc#SLE-10162)</comment>
     <requestid>764321</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>4fee008b1b536eef12ac83d9307cfcd1</srcmd5>
+    <version>049.1+git119.abf1a408</version>
+    <time>1580724682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049.1+git119.abf1a408:
+  * 30convertfs: adopt for SUSE (boo#1158777)</comment>
+    <requestid>768313</requestid>
+  </revision>
 </revisionlist>
