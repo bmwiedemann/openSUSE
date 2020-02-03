@@ -547,4 +547,12 @@
 - Version update to 1.10.40 (bsc#1075263)</comment>
     <requestid>761123</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c2c0527d12853dbea542aa3785e53913</srcmd5>
+    <version>1.14.9</version>
+    <time>1580724729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768866</requestid>
+  </revision>
 </revisionlist>

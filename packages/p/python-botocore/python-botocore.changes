@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:01:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.14.9
+  * api-change:``ecs``: Update ecs client to latest version
+  * api-change:``opsworkscm``: Update opsworkscm client to latest version
+  * api-change:``workspaces``: Update workspaces client to latest version
+  * api-change:``datasync``: Update datasync client to latest version
+  * api-change:``eks``: Update eks client to latest version
+- from version 1.14.8
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``iam``: Update iam client to latest version
+- from version 1.14.7
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``codepipeline``: Update codepipeline client to latest version
+  * api-change:``discovery``: Update discovery client to latest version
+  * api-change:``iotevents``: Update iotevents client to latest version
+  * api-change:``marketplacecommerceanalytics``: Update marketplacecommerceanalytics client to latest version
+- from version 1.14.6
+  * api-change:``lambda``: Update lambda client to latest version
+  * api-change:``application-insights``: Update application-insights client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``kms``: Update kms client to latest version
+  * api-change:``alexaforbusiness``: Update alexaforbusiness client to latest version
+- from version 1.14.5
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+  * api-change:``neptune``: Update neptune client to latest version
+  * api-change:``cloudhsmv2``: Update cloudhsmv2 client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+  * api-change:``batch``: Update batch client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+- from version 1.14.4
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``ds``: Update ds client to latest version
+- from version 1.14.3
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``organizations``: Update organizations client to latest version
+- from version 1.14.2
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.14.1
+  * api-change:``efs``: Update efs client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``backup``: Update backup client to latest version
+- from version 1.14.0
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``chime``: Update chime client to latest version
+  * api-change:``transfer``: Update transfer client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * feature:Python: Dropped support for Python 2.6 and 3.3.
+  * api-change:``workspaces``: Update workspaces client to latest version
+  * api-change:``rds``: Update rds client to latest version
+- from version 1.13.50
+  * api-change:``logs``: Update logs client to latest version
+- from version 1.13.49
+  * api-change:``fms``: Update fms client to latest version
+  * api-change:``translate``: Update translate client to latest version
+  * api-change:``ce``: Update ce client to latest version
+- from version 1.13.48
+  * api-change:``codebuild``: Update codebuild client to latest version
+  * api-change:``mgh``: Update mgh client to latest version
+  * api-change:``xray``: Update xray client to latest version
+- from version 1.13.47
+  * api-change:``comprehend``: Update comprehend client to latest version
+  * api-change:``mediapackage``: Update mediapackage client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.13.46
+  * api-change:``lex-models``: Update lex-models client to latest version
+  * api-change:``ecr``: Update ecr client to latest version
+  * api-change:``lightsail``: Update lightsail client to latest version
+  * api-change:``ce``: Update ce client to latest version
+- from version 1.13.45
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``health``: Update health client to latest version
+  * api-change:``detective``: Update detective client to latest version
+- from version 1.13.44
+  * api-change:``transcribe``: Update transcribe client to latest version
+  * api-change:``eks``: Update eks client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``devicefarm``: Update devicefarm client to latest version
+- from version 1.13.43
+  * api-change:``transcribe``: Update transcribe client to latest version
+  * api-change:``dlm``: Update dlm client to latest version
+  * api-change:``lex-models``: Update lex-models client to latest version
+  * api-change:``personalize-runtime``: Update personalize-runtime client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``codestar-connections``: Update codestar-connections client to latest version
+  * api-change:``gamelift``: Update gamelift client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.13.42
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``s3``: Update s3 client to latest version
+  * api-change:``resourcegroupstaggingapi``: Update resourcegroupstaggingapi client to latest version
+  * api-change:``cloudfront``: Update cloudfront client to latest version
+  * enhancement:``s3``: Add support for opting into using the us-east-1 regional endpoint.
+  * api-change:``opsworkscm``: Update opsworkscm client to latest version
+- from version 1.13.41
+  * api-change:``kinesisanalyticsv2``: Update kinesisanalyticsv2 client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+  * api-change:``iot``: Update iot client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.13.40
+  * api-change:``mq``: Update mq client to latest version
+  * api-change:``comprehendmedical``: Update comprehendmedical client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.13.39
+  * api-change:``codebuild``: Update codebuild client to latest version
+  * api-change:``detective``: Update detective client to latest version
+  * api-change:``sesv2``: Update sesv2 client to latest version
+- from version 1.13.38
+  * api-change:``accessanalyzer``: Update accessanalyzer client to latest version
+- from version 1.13.37
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.13.36
+  * api-change:``kendra``: Update kendra client to latest version
+- from version 1.13.35
+  * bugfix:s3: Add stricter validation to s3 control account id parameter.
+  * api-change:``quicksight``: Update quicksight client to latest version
+  * api-change:``kms``: Update kms client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``kafka``: Update kafka client to latest version
+- from version 1.13.34
+  * bugfix:s3: Fixed an issue where the request path was set incorrectly
+    if access point name was present in key path.
+- Refresh patches for new version
+  + hide_py_pckgmgmt.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 13:10:07 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.13.33
