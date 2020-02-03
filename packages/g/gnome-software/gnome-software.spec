@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-software
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,7 +90,8 @@ GNOME software store plugins.
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 
-%if !0%{?is_opensuse}
+%if 0%{?sle_version} == 150200
+#needed for both Leap and SLE
 #workaround until bsc#1157928 is resolved, otherwise SLES users get authentication popup all the time
 cat << EOF >> %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
 Hidden=true
@@ -124,7 +125,7 @@ EOF
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/glib-2.0/schemas/org.gnome.software.gschema.xml
-%if !0%{?is_opensuse}
+%if 0%{?sle_version} == 150200
 %{_datadir}/glib-2.0/schemas/00_org.gnome.software.gschema.override
 %endif
 %dir %{_datadir}/gnome-shell
