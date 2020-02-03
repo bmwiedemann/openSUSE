@@ -63,16 +63,12 @@ BuildRequires:  xz
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
 %if %{with_systemd}
-%{?systemd_requires}
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
+%systemd_ordering
 %else
 PreReq:         %fillup_prereq
 PreReq:         %insserv_prereq
-%endif
-%if %{with_systemd}
-BuildRequires:  systemd
-%endif
-%if %{with_systemd}
-BuildRequires:  pkgconfig(libsystemd)
 %endif
 
 %description

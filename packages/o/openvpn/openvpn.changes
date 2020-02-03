@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 24 11:22:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+- Use %systemd_ordering instead of systemd_requires: in fact,
+  systemd is not a hard requirement for openvpn. But in case a
+  system is being installed with systemd, we want systemd to be
+  there before  openvpn is being installed.
+
+-------------------------------------------------------------------
 Tue Jan  7 21:28:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.4.8:
