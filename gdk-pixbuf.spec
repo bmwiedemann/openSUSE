@@ -56,7 +56,6 @@ Summary:        An image loading library
 # Provide %%{name} to make the lang package installable
 Group:          System/Libraries
 Requires(post): gdk-pixbuf-query-loaders
-Recommends:     %{name}-lang = %{version}
 Conflicts:      gtk2 < 2.21.3
 Provides:       %{name} = %{version}
 
