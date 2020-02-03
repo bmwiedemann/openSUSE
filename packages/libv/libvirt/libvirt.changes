@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 30 22:05:24 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Fix several rpmlint warnings
+  72ed254b-drop-exec-perms-bashcompletion.patch
+
+-------------------------------------------------------------------
+Thu Jan 30 00:45:39 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- xen: Support setting credit2 scheduler parameters
+  849052ec-libxl-support-credit2.patch
+  bsc#1162160
+
+-------------------------------------------------------------------
+Wed Jan 29 20:56:13 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- xen: Inhibit libvirtd shutdown when domains are running
+  6c1dddaf-libxl-shutdown-inhibit.patch
+  bsc#1157100
+
+-------------------------------------------------------------------
 Wed Jan 15 19:27:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 6.0.0

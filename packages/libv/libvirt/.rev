@@ -3466,4 +3466,25 @@ py2 vs py3 crap. I just want to use python!
     <comment></comment>
     <requestid>764823</requestid>
   </revision>
+  <revision rev="298" vrev="2">
+    <srcmd5>a2bb9f9e28d71ef95e120dd9aa209040</srcmd5>
+    <version>6.0.0</version>
+    <time>1580724662</time>
+    <user>dimstar_suse</user>
+    <comment>Updated libvirt package for Factory that fixes several rpmlint
+warnings. SR#768836 sent to add 'sanlock' and 'libvirt' to
+StandardGroups in rpmlint package.
+
+- spec: Fix several rpmlint warnings
+  72ed254b-drop-exec-perms-bashcompletion.patch
+
+- xen: Support setting credit2 scheduler parameters
+  849052ec-libxl-support-credit2.patch
+  bsc#1162160
+
+- xen: Inhibit libvirtd shutdown when domains are running
+  6c1dddaf-libxl-shutdown-inhibit.patch
+  bsc#1157100</comment>
+    <requestid>769141</requestid>
+  </revision>
 </revisionlist>

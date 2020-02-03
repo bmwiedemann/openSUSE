@@ -56,7 +56,7 @@ Index: libvirt-6.0.0/src/libxl/libxl_driver.c
 ===================================================================
 --- libvirt-6.0.0.orig/src/libxl/libxl_driver.c
 +++ libvirt-6.0.0/src/libxl/libxl_driver.c
-@@ -6133,6 +6133,9 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6138,6 +6138,9 @@ libxlDomainMigratePerform3Params(virDoma
      const char *dname = NULL;
      const char *uri = NULL;
      int ret = -1;
@@ -66,7 +66,7 @@ Index: libvirt-6.0.0/src/libxl/libxl_driver.c
  
  #ifdef LIBXL_HAVE_NO_SUSPEND_RESUME
      virReportUnsupportedError();
-@@ -6149,6 +6152,18 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6154,6 +6157,18 @@ libxlDomainMigratePerform3Params(virDoma
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_DEST_NAME,
                                  &dname) < 0 ||
@@ -85,7 +85,7 @@ Index: libvirt-6.0.0/src/libxl/libxl_driver.c
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_URI,
                                  &uri) < 0)
-@@ -6163,11 +6178,11 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6168,11 +6183,11 @@ libxlDomainMigratePerform3Params(virDoma
  
      if ((flags & (VIR_MIGRATE_TUNNELLED | VIR_MIGRATE_PEER2PEER))) {
          if (libxlDomainMigrationSrcPerformP2P(driver, vm, dom->conn, dom_xml,

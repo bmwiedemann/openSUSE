@@ -1,0 +1,39 @@
+commit 6c1dddaf97b4ef70e27961c9f79b15c79a863ac5
+Author: Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+Date:   Sat Jan 18 03:37:42 2020 +0100
+
+    libxl: initialize shutdown inhibit callback
+    
+    The libxl driver already tries to call shutdown inhibit callback in the
+    right places, but only if it's set. That last part was missing,
+    resulting in premature shutdown when running libvirtd
+    --timeout=...
+    
+    Signed-off-by: Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+    Reviewed-by: Jim Fehlig <jfehlig@suse.com>
+
+Index: libvirt-6.0.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-6.0.0.orig/src/libxl/libxl_driver.c
++++ libvirt-6.0.0/src/libxl/libxl_driver.c
+@@ -648,8 +648,8 @@ libxlAddDom0(libxlDriverPrivatePtr drive
+ 
+ static int
+ libxlStateInitialize(bool privileged,
+-                     virStateInhibitCallback callback G_GNUC_UNUSED,
+-                     void *opaque G_GNUC_UNUSED)
++                     virStateInhibitCallback callback,
++                     void *opaque)
+ {
+     libxlDriverConfigPtr cfg;
+     char *driverConf = NULL;
+@@ -670,6 +670,9 @@ libxlStateInitialize(bool privileged,
+         return VIR_DRV_STATE_INIT_ERROR;
+     }
+ 
++    libxl_driver->inhibitCallback = callback;
++    libxl_driver->inhibitOpaque = opaque;
++
+     /* Allocate bitmap for vnc port reservation */
+     if (!(libxl_driver->reservedGraphicsPorts =
+           virPortAllocatorRangeNew(_("VNC"),

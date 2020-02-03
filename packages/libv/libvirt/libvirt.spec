@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -338,6 +338,9 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         6c1dddaf-libxl-shutdown-inhibit.patch
+Patch1:         849052ec-libxl-support-credit2.patch
+Patch2:         72ed254b-drop-exec-perms-bashcompletion.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -415,8 +418,7 @@ Requires:       numad
 # libvirtd depends on 'messagebus' service
 Requires:       dbus-1
 
-# libvirt is configured with paths to UEFI firmwares in %build,
-# hence add a dependency to the firmware packages
+# A KVM or Xen libvirt stack really does need UEFI firmware these days
 %ifarch x86_64
 Requires:       qemu-ovmf-x86_64
 %endif
@@ -833,7 +835,7 @@ Bash completion script stub.
 %package devel
 Summary:        Libraries, includes, etc. to compile with the libvirt library
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-client = %{version}-%{release}
+Requires:       %{name}-libs = %{version}-%{release}
 Suggests:       %{name}-doc = %{version}-%{release}
 Requires:       pkg-config
 
@@ -871,6 +873,9 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1240,7 +1245,7 @@ fi
 
 %pre daemon
 %{_bindir}/getent group libvirt >/dev/null || %{_sbindir}/groupadd -r libvirt
-%service_add_pre libvirtd.service virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket
+%service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %post daemon
 /sbin/ldconfig
@@ -1250,7 +1255,7 @@ fi
 %if %{with_firewalld}
 %firewalld_reload
 %endif
-%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
+%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 %{fillup_only -n libvirtd}
 %{fillup_only -n virtlockd}
 %{fillup_only -n virtlogd}
@@ -1264,7 +1269,7 @@ if ! grep -q -E '^\s*LIBVIRTD_ARGS=.*--timeout' %{_sysconfdir}/sysconfig/libvirt
 fi
 
 %preun daemon
-%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket
+%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %postun daemon
 /sbin/ldconfig
@@ -1275,7 +1280,7 @@ if test $1 -eq 0 ; then
     done
     /usr/bin/systemctl daemon-reload >/dev/null 2>&1 || :
 fi
-%service_del_postun libvirtd.service virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket
+%service_del_postun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %posttrans daemon
 # All connection drivers should be installed post transaction.
@@ -1339,17 +1344,17 @@ fi
 %postun daemon-driver-nwfilter
 %service_del_postun virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
 
-%pre daemon-driver-storage
+%pre daemon-driver-storage-core
 %service_add_pre virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
 
-%post daemon-driver-storage
+%post daemon-driver-storage-core
 %service_add_post virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
 %{fillup_only -n virtstoraged}
 
-%preun daemon-driver-storage
+%preun daemon-driver-storage-core
 %service_del_preun virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
 
-%postun daemon-driver-storage
+%postun daemon-driver-storage-core
 %service_del_postun virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
 
 %pre daemon-driver-interface

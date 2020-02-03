@@ -23,7 +23,7 @@ Index: libvirt-6.0.0/src/libxl/libxl_driver.c
 ===================================================================
 --- libvirt-6.0.0.orig/src/libxl/libxl_driver.c
 +++ libvirt-6.0.0/src/libxl/libxl_driver.c
-@@ -5275,6 +5275,96 @@ libxlDomainMemoryStats(virDomainPtr dom,
+@@ -5280,6 +5280,96 @@ libxlDomainMemoryStats(virDomainPtr dom,
  
  #undef LIBXL_SET_MEMSTAT
  
@@ -120,7 +120,7 @@ Index: libvirt-6.0.0/src/libxl/libxl_driver.c
  static int
  libxlDomainGetJobInfo(virDomainPtr dom,
                        virDomainJobInfoPtr info)
-@@ -6693,6 +6783,7 @@ static virHypervisorDriver libxlHypervis
+@@ -6698,6 +6788,7 @@ static virHypervisorDriver libxlHypervis
  #endif
      .nodeGetFreeMemory = libxlNodeGetFreeMemory, /* 0.9.0 */
      .nodeGetCellsFreeMemory = libxlNodeGetCellsFreeMemory, /* 1.1.1 */
