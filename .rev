@@ -639,4 +639,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>751581</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>4c4708b022f7451cf7475a88c5606db4</srcmd5>
+    <version>3.34.2</version>
+    <time>1580724711</time>
+    <user>dimstar_suse</user>
+    <comment>fixed</comment>
+    <requestid>768413</requestid>
+  </revision>
 </revisionlist>
