@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        20200117.8e39013
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
-Group:          Development/Tools/Other
 URL:            https://github.com/opensuse/python-rpm-macros
 Source:         python-rpm-macros-%{version}.tar.bz2
 # Fedora compatibility

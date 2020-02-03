@@ -264,4 +264,12 @@ prerequisite for new python submission</comment>
     <comment></comment>
     <requestid>766078</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b649d9fc33c2d1e0b4f718fe36f37c24</srcmd5>
+    <version>20200117.8e39013</version>
+    <time>1580724631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200117.8e39013 bsc#1161770:</comment>
+    <requestid>766863</requestid>
+  </revision>
 </revisionlist>
