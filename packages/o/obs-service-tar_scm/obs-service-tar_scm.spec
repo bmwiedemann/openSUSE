@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-tar_scm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with    obs_scm_testsuite
 %endif
 
-%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?rhel} >= 8
+%if 0%{?suse_version} >= 1315 || 0%{?fedora_version} >= 29
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -53,14 +53,14 @@
 %endif
 %endif
 
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version} || 0%{?rhel}
-%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?rhel} >= 8
+%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
+%if 0%{?fedora_version} >= 29 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
 %define pyyaml_package %{use_python}-PyYAML
 %else
 %define pyyaml_package PyYAML
 %endif
 
-%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800 || 0%{?rhel} >= 8
+%if 0%{?fedora_version} >= 24 || 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
 %define locale_package glibc-langpack-en
 %else
 %define locale_package glibc-common
@@ -90,13 +90,13 @@ Recommends:     obs-service-download_files                      \
 ######## END OF MACROS AND FUN ###################################
 
 Name:           obs-service-tar_scm
-%define version_unconverted 0.10.10.1566390389.9f923f8
-Version:        0.10.10.1566390389.9f923f8
+%define version_unconverted 0.10.11.1579870213.888e79c
+Version:        0.10.11.1579870213.888e79c
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            https://github.com/openSUSE/obs-service-tar_scm
+URL:            https://github.com/openSUSE/obs-service-tar_scm
 Source:         %{name}-%{version}.tar.gz
 
 # Fix build on Ubuntu by disabling mercurial tests, not applied in rpm

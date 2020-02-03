@@ -1217,4 +1217,12 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
     <comment></comment>
     <requestid>741502</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>c94c9770ca31453fa92958f0377c9b79</srcmd5>
+    <version>0.10.11.1579870213.888e79c</version>
+    <time>1580724654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>769085</requestid>
+  </revision>
 </revisionlist>

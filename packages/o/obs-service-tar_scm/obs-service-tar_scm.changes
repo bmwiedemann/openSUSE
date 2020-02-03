@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 24 15:46:08 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.11.1579870213.888e79c:
+  * Add testcase for appimage with empty build section
+  * Handle missing build entry in appimage.yml
+  * Fix --mirror argument position for git clone
+  * Re-enable compatibility with Python 2.6
+  * fix decoding for locale -a containg non-ASCII
+  * update_cache in git now does merge
+  * prefer local branch over remote
+  * added UnicodeDecodeError to exeption list in archive.py
+  * fetch rev explicitly if using CACHEDIRECTORY and rev could not be found
+  * tar_scm.service.in: Add example to match-tag.
+
+-------------------------------------------------------------------
 Tue Oct  1 10:12:16 UTC 2019 - Julio González Gil <jgonzalez@suse.com>
 
 - Fix building and installation for CentOS8, RHEL8 and RES8
