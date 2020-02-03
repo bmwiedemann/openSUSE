@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastremap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastremap
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Module to Remap, mask, renumber, and in-place transpose numpy arrays
 License:        LGPL-3.0-only
