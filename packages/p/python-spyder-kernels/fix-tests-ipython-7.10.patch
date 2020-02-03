@@ -1,0 +1,49 @@
+From ced5246e8f46e0e9f879026b016d2dbf8b206b33 Mon Sep 17 00:00:00 2001
+From: Quentin Peter <qaep2@cam.ac.uk>
+Date: Mon, 30 Dec 2019 19:41:48 +0100
+Subject: [PATCH] update test to work with ipython 7.10+
+
+---
+ spyder_kernels/console/tests/test_console_kernel.py | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/spyder_kernels/console/tests/test_console_kernel.py b/spyder_kernels/console/tests/test_console_kernel.py
+index 0335ae26..de5919e8 100644
+--- a/spyder_kernels/console/tests/test_console_kernel.py
++++ b/spyder_kernels/console/tests/test_console_kernel.py
+@@ -358,8 +358,6 @@ def test_output_from_c_libraries(kernel, capsys):
+ 
+ 
+ @flaky(max_runs=3)
+-@pytest.mark.skipif(IPython.__version__ >= '7.2.0',
+-                    reason="This problem was fixed in IPython 7.2+")
+ def test_cwd_in_sys_path():
+     """
+     Test that cwd stays as the first element in sys.path after the
+@@ -379,7 +377,7 @@ def test_cwd_in_sys_path():
+         value = ast.literal_eval(str_value)
+ 
+         # Assert the first value of sys_path is an empty string
+-        assert value[0] == ''
++        assert '' in value
+ 
+ 
+ @flaky(max_runs=3)
+@@ -509,7 +507,7 @@ def test_np_threshold(kernel):
+ a = np.array([123412341234.123412341234])
+ """)
+         client.get_shell_msg(block=True, timeout=TIMEOUT)
+-        
++
+         # Assert that NumPy threshold, suppress and formatter
+         # are the same as the ones set by the user
+         client.execute("""
+@@ -518,7 +516,7 @@ def test_np_threshold(kernel):
+ f = np.get_printoptions()['formatter']
+ """)
+         client.get_shell_msg(block=True, timeout=TIMEOUT)
+-        
++
+         # Check correct decimal format
+         client.inspect('a')
+         msg = client.get_shell_msg(block=True, timeout=TIMEOUT)
