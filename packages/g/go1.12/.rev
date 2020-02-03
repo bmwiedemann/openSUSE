@@ -1248,4 +1248,15 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
     <comment>- go1.12.15 (released 2020/01/09) includes fixes to the runtime and the net/http package (forwarded request 762912 from jfkw)</comment>
     <requestid>762913</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>62379b26dc0e8d62d3c00059b5975b0d</srcmd5>
+    <version>1.12.16</version>
+    <time>1580724703</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.12.16 (released 2020/01/28) includes two security fixes to
+  the crypto/x509 package.
+  * go#36839 crypto/x509, x/crypto/cryptobyte: panic in certificate parsing
+  * go#36836 crypto/x509: certificate validation bypass on Windows 10 (forwarded request 768362 from jfkw)</comment>
+    <requestid>768367</requestid>
+  </revision>
 </revisionlist>
