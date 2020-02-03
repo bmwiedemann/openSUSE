@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-google-auth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pydata-google-auth
-Version:        0.1.3
+Version:        0.2.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        PyData helpers for authenticating to Google APIs
-Url:            https://github.com/pydata/pydata-google-auth
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/pydata/pydata-google-auth
 Source:         https://github.com/pydata/pydata-google-auth/archive/%{version}.tar.gz#/pydata-google-auth-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module google-auth-oauthlib}
+BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module google-auth}
-BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  python-mock
 # /SECTION
 Requires:       python-google-auth
@@ -55,7 +56,7 @@ to Google APIs.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest tests/unit
 
 %files %{python_files}
 %doc README.rst
