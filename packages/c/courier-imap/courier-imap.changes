@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:23:15 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.0.8
+  * Update documentation in the imapd and pop3d ssl config flies.
+- update to 5.0.7
+  * pop3dserver.c (do_retr): Use the new MIME_UNICODE_MESSAGE_TYPE
+    setting to set the type of the wrapped MIME attachment.
+- update to 5.0.6
+  * pop3dserver.c: Fix parsing of pop3d file cache, on some
+    architectures.
+  * tcpd/libcouriertls.c: Ignore unreadable cert files.
+- update to 5.0.5
+  * fetch.c: Send an alert about a Unicode messages to a non-Unicode
+    client at most once per IMAP session.
+- update to 5.0.4
+  * pop3dserver.c: Deal with MS Outlook's broken implementation of
+    RFC 6856.
+- update to 5.0.3
+  * pop3dserver.c (calcsize): Fix spurious flagging of non-UTF8
+    messages as UTF-8.
+    To fix existing mailboxes with erroneously-flagged messages. In
+    each mailbox, if its existing courierpop3dsizelist file starts with
+    /3 [followed by additional data]
+    Only if the first line in courierpop3dsizelist starts with /3, then
+    execute:
+    perl -p -i -e 's/:\d+$/:0/' courierpop3dsizelist
+  * pop3dserver.c (readpop3dlist): Be able to update
+    courierpop3dsizelist from version 2 to 3 in place.
+    (do_retr): Instead of returning an ERR to a non-Unicode client,
+    handle Unicode messages by wrapping them as an attachment.
+- update to 5.0.2
+  * configure.ac: Additional changes to how Unicode messages are
+    handled with non-Unicode clients: disclaim all warranties, still
+    report an error, but provide the raw message content, as is.
+- update to 5.0.1
+  * Provide an substitute message to IMAP clients that did not enable
+    UTF-8.
+  * couriertls: additional fixes.
+  * couriertls: option to use a separate file for the SSL certificate's
+    private key, as an alternative to the combined keyfile+certificate.
+- update to 5.0.0
+  * pop3dserver.c: update Courier-IMAP to support UTF8 POP3. Update
+    version of the courierpop3dsizelist cache file.
+  * courier-imap, sqwebmail: update Courier-IMAP to support UTF8 IMAP.
+    Convert maildir folders to use UTF-8 for folder names. Add
+    --checkutf8 and --convutf8 options to maildirmake to convert
+    pre-UTF8 maildirs to UTF8 maildirs, a mandatory upgrade procedure.
+  * waitlib/configure.ac: Fix typo.
+  * libs/tcpd/starttls.c (main): Add -user option. Additional fixes
+    to startup script to have couriertls drop root privileges.
+  * libs/tcpd/tlsclient.h: add username option, used in couriertls_start
+    to set the child process's uid and gid.
+  * imaplogin.c (starttls): Set username option for couriertls
+  * pop3login.c (starttls): Set username option for couriertls
+  * imapd-ssl.dist, pop3d-ssl.dist: Use separate imap and pop3 session
+    cache files. Startup script: remove/set ownership and permsission
+    on the imap and pop3 session cache files.
+  * libs/tcpd/libcouriergnutls.c: Remove usage of deprecated OpenPGP
+    API. Tag the "Unexpected SSL connection shutdown" with the "DEBUG"
+    label just like the OpenSSL version does.
+  * libs/tcpd/starttls.c: If TCPREMOTEIP is set, prepend it to error
+    messages.
+- delete reproducible.patch (upstreamed)
+- add courier-imap.keyring for source verification
+- cleanup spec
+
+-------------------------------------------------------------------
 Fri Jul 19 09:50:17 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 services, since SuSEfirewall2 has been replaced by
