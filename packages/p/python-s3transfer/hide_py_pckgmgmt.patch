@@ -1,6 +1,6 @@
-diff -Nru s3transfer-0.2.0.orig/setup.py s3transfer-0.2.0/setup.py
---- s3transfer-0.2.0.orig/setup.py	2019-02-07 00:14:54.000000000 +0100
-+++ s3transfer-0.2.0/setup.py	2019-02-13 13:26:03.879007918 +0100
+diff -Nru s3transfer-0.3.2.orig/setup.py s3transfer-0.3.2/setup.py
+--- s3transfer-0.3.2.orig/setup.py	2020-01-23 20:10:38.000000000 +0100
++++ s3transfer-0.3.2/setup.py	2020-01-27 17:03:58.370465807 +0100
 @@ -10,15 +10,15 @@
  VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
  
@@ -30,12 +30,12 @@ diff -Nru s3transfer-0.2.0.orig/setup.py s3transfer-0.2.0/setup.py
      include_package_data=True,
 -    install_requires=requires,
 -    extras_require={
--        ':python_version=="2.6" or python_version=="2.7"': [
+-        ':python_version=="2.7"': [
 -            'futures>=2.2.0,<4.0.0']
 -    },
 +    # install_requires=requires,
 +    # extras_require={
-+    #     ':python_version=="2.6" or python_version=="2.7"': [
++    #     ':python_version=="2.7"': [
 +    #         'futures>=2.2.0,<4.0.0']
 +    # },
      license="Apache License 2.0",

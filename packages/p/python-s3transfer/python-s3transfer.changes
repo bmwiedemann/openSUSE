@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:10:36 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.2
+  * bugfix:s3: Fixes boto/botocore`#1916 <https://github.com/boto/botocore/issues/1916>`__
+- from version 0.3.1
+  * enhancement:TransferManager: Expose client and config properties
+  * enhancement:Tags: Add support for Tagging and TaggingDirective
+- from version 0.3.0
+  * feature:Python: Dropped support for Python 2.6 and 3.3.
+- Refresh patches for new version
+  + hide_py_pckgmgmt.patch
+
+-------------------------------------------------------------------
 Wed Jun 12 11:58:09 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.1 (bsc#1146853)
