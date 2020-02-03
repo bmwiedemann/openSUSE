@@ -261,16 +261,11 @@ ExclusiveArch:  do_not_build
 ExclusiveArch:  do_not_build
 %endif
 
-# OBS workaround: limit the number of parallel processes to 4 on 8G RAM (see _constraints)
-%if %(echo %{?_smp_mflags} | sed -e "s/.*-j\([[:digit:]]\+\).*/\\1/") > 4
-%global _smp_mflags %(echo %{?_smp_mflags} | sed -e "s/\\(.*-j\\)[[:digit:]]\\+\\(.*\\)/\\14\\2/")
-%endif
-
 %{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
 
 # For compatibility package names
-%if "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1"
+%if "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1" || 0%{?suse_version} >= 1550
 %define mpi_ext %{?mpi_ver}
 %endif
 
@@ -316,6 +311,7 @@ BuildRequires:  hwloc-devel
 %if %{with qt}
 BuildRequires:  libqt4-devel
 %endif
+BuildRequires:  memory-constraints
 BuildRequires:  swig > 2.0.0
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -472,6 +468,7 @@ needed for development.
 %patch0 -p1
 
 %build
+%limit_build -m 4000
 # Fix this once boost is available as a HPC version
 # move this to the non-hpc section
 BOOST_INC=%{_incdir}/boost
