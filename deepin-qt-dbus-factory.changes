@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 16:00:20 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Migrate to python3, add migrate-to-python3.patch 
+
+-------------------------------------------------------------------
 Tue Jul 16 14:02:58 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.1.6 

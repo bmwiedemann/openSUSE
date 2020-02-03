@@ -1,0 +1,34 @@
+diff -Nur dde-qt-dbus-factory-1.1.6/libdframeworkdbus/generate_code.py dde-qt-dbus-factory-1.1.6-new/libdframeworkdbus/generate_code.py
+--- dde-qt-dbus-factory-1.1.6/libdframeworkdbus/generate_code.py	2019-06-19 17:15:56.000000000 +0800
++++ dde-qt-dbus-factory-1.1.6-new/libdframeworkdbus/generate_code.py	2020-01-31 00:17:18.273338000 +0800
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python
+ 
+-from __future__ import print_function
++
+ import os
+ import glob
+ import subprocess
+@@ -52,8 +52,8 @@
+ 
+         print("generating the pri file...")
+         pwdfy = lambda x: "$$PWD/%s" % x
+-        sources = map(pwdfy, sorted(glob.glob1(generated_dir, "*.cpp")))
+-        headers = map(pwdfy, sorted(glob.glob1(generated_dir, "*.h")))
++        sources = list(map(pwdfy, sorted(glob.glob1(generated_dir, "*.cpp"))))
++        headers = list(map(pwdfy, sorted(glob.glob1(generated_dir, "*.h"))))
+         pri.write("HEADERS += %s\n" % " ".join(headers))
+         pri.write("SOURCES += %s" % " ".join(sources))
+         print("done.")
+diff -Nur dde-qt-dbus-factory-1.1.6/libdframeworkdbus/libdframeworkdbus.pro dde-qt-dbus-factory-1.1.6-new/libdframeworkdbus/libdframeworkdbus.pro
+--- dde-qt-dbus-factory-1.1.6/libdframeworkdbus/libdframeworkdbus.pro	2019-06-19 17:15:56.000000000 +0800
++++ dde-qt-dbus-factory-1.1.6-new/libdframeworkdbus/libdframeworkdbus.pro	2020-01-31 00:14:04.776764306 +0800
+@@ -86,7 +86,7 @@
+     types/dockrect.cpp \
+     types/intstring.cpp
+ 
+-!system(python $$PWD/generate_code.py): error("Failed to generate code")
++!system(python3 $$PWD/generate_code.py): error("Failed to generate code")
+ include(generated/generated.pri)
+ 
+ isEmpty(LIB_INSTALL_DIR) {
