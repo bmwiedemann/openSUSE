@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 28 20:38:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.2:
+  + Chromium:
+    - Present alerts upon window activation.
+    - Improve presentation of list items with markers, including
+      handling a change in the accessibility tree.
+  + Web: Prevent repetition of lines during SayAll for web content.
+  + Mouse Review: Ensure we present tooltip for non-focused
+    objects.
+  + General:
+    - Fix regression in binding commands with the Orca modifier
+      plus Shift.
+    - Work around missing object:state-changed:focused event from
+      GtkTable.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:18:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
