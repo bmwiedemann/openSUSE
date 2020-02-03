@@ -1,7 +1,7 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,23 @@
 
 %define major_ver 5.6
 
+%if 0%{?suse_version} <= 1500
+%bcond_with    pugixml
+%else
+%bcond_without pugixml
+%endif
+# Need unrelased version > 1.4.0 with e.g. gl2psTextOptColorBL
+%bcond_with    gl2ps
+# Need patched version with HPDF_SHADING
+%bcond_with    haru
+
 Name:           paraview
 Version:        5.6.2
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
-Url:            https://www.paraview.org
+URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{major_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
@@ -40,31 +50,38 @@ Patch3:         paraview-do-not-install-missing-vtk-doxygen-dir.patch
 Patch4:         paraview-find-qhelpgenerator-qt5.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking
 Patch8:         fix-libharu-missing-m.patch
-# PATCH-FIX-OPENSUSE fix-libhdf5-missing-m.patch -- missing libraries for linking
-Patch9:         fix-libhdf5-missing-m.patch
+# PATCH-FIX-OPENSUSE bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking
+Patch10:        bundled_exodusii_add_missing_libpthread.patch
+# PATCH-FIX-OPENSUSE -- Missing libogg symbols
+Patch11:        0001-Add-libogg-to-IOMovie-target-link-libraries.patch
+# PATCH-FIX-OPENSUSE 0001-Allow-compilation-on-GLES-platforms.patch VTK issue #17113 stefan.bruens@rwth-aachen.de -- Fix building with Qt GLES builds
+Patch12:        0001-Allow-compilation-on-GLES-platforms.patch
 BuildRequires:  Mesa-devel
-BuildRequires:  boost-devel
+BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.3
-BuildRequires:  desktop-file-utils
+BuildRequires:  double-conversion-devel
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gnuplot
 BuildRequires:  graphviz
+BuildRequires:  hdf5-devel
+BuildRequires:  libboost_graph-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libexpat-devel
+%if %{with haru}
+BuildRequires:  libharu-devel > 2.3.0
+%endif
 BuildRequires:  libjpeg-devel
+BuildRequires:  libnetcdf_c++-devel
 BuildRequires:  libpqxx-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python-Sphinx
+BuildRequires:  python-Twisted
 BuildRequires:  python-devel
 BuildRequires:  python-matplotlib
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(xt)
-%py_requires
-BuildRequires:  fdupes
 BuildRequires:  python-qt5-devel
-BuildRequires:  python-twisted
-BuildRequires:  python-zope.interface
+BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  wget
 BuildRequires:  zlib-devel
@@ -73,22 +90,28 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
+BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(eigen3) >= 2.91.0
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(jsoncpp) >= 0.7.0
+BuildRequires:  pkgconfig(liblz4) >= 1.7.3
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(netcdf)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(protobuf) >= 2.6.0
+%if %{with pugixml}
+BuildRequires:  pkgconfig(pugixml)
+%endif
+BuildRequires:  pkgconfig(theora)
+BuildRequires:  pkgconfig(xt)
 Requires:       gnuplot
 Requires:       graphviz
-Requires:       python
-Requires:       python-base
-Requires:       python-twisted
-Requires:       python-zope.interface
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
-# FIXME: Remove when builds for 32-bit are fixed; they currently fail due to offt definition issues in ThirdParty/cgns/vtkcgns/src/adf/ADF_internals.c
-ExcludeArch:    %ix86
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python-Twisted
+Requires:       python-qt5
 
 %description
 ParaView is a data analysis and visualization application for
@@ -117,14 +140,13 @@ for ParaView or to embed ParaView Catalyst in a simulation program.
 %patch3 -p1
 %patch4 -p1
 %patch8 -p1
-%patch9 -p1
+#%%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-
-# Prepare for gcc 4.9.0: work around gcc 4.9.0 regression
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61294
-sed -i -e 's/-Wl,--fatal-warnings//' VTK/CMake/vtkCompilerExtraFlags.cmake
 
 export CC='gcc'
 export CXX='g++'
@@ -142,27 +164,30 @@ export CXX='g++'
         -DPARAVIEW_BUILD_QT_GUI:BOOL=ON \
         -DPARAVIEW_BUILD_PLUGIN_SLACTools:BOOL=ON \
         -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
+        -DPARAVIEW_ENABLE_WEB:BOOL=ON \
         -DVTK_WRAP_PYTHON:BOOL=ON \
         -DVTK_WRAP_PYTHON_SIP:BOOL=ON \
         -DVTK_OPENGL_HAS_OSMESA:BOOL=OFF \
+        -DVTK_USE_SYSTEM_LIBRARIES:BOOL=ON \
         -DVTK_USE_SYSTEM_EXPAT:BOOL=ON \
         -DVTK_USE_SYSTEM_FREETYPE:BOOL=ON \
+        -DVTK_USE_SYSTEM_GL2PS:BOOL=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
+        -DVTK_USE_SYSTEM_LIBHARU:BOOL=%{?with_haru:ON}%{!?with_haru:OFF} \
         -DVTK_USE_SYSTEM_JPEG:BOOL=ON \
         -DVTK_USE_SYSTEM_PNG:BOOL=ON \
         -DVTK_USE_SYSTEM_TIFF:BOOL=ON \
         -DVTK_USE_SYSTEM_LZMA:BOOL=ON \
-        -DVTK_USE_SYSTEM_ZLIB:BOOL=ON \
-        -DVTK_USE_SYSTEM_ZOPE:BOOL=ON \
+        -DVTK_USE_SYSTEM_PEGTL:BOOL=OFF \
+        -DVTK_USE_SYSTEM_PUGIXML:BOOL=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+        -DVTK_USE_SYSTEM_QTTESTING:BOOL=OFF \
         -DVTK_USE_SYSTEM_TWISTED:BOOL=ON \
-        -DVTK_USE_SYSTEM_GL2PS:BOOL=OFF \
+        -DVTK_USE_SYSTEM_XDMF2:BOOL=OFF \
+        -DVTK_USE_SYSTEM_ZLIB:BOOL=ON \
         -DBUILD_DOCUMENTATION:BOOL=ON \
         -DBUILD_EXAMPLES:BOOL=OFF \
         -DBUILD_TESTING:BOOL=OFF \
         -DQtTesting_INSTALL_NO_DEVELOPMENT:BOOL=ON \
         -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON
-
-# FIXME: TURN ON WHEN UPDATED GL2PS > 1.3.9 IS RELEASED
-#       -DVTK_USE_SYSTEM_GL2PS:BOOL=ON \
 
 # FIXME: CAUSES ERRORS WITH THE IN-APP PYTHON SHELL WHICH STILL LOOKS FOR PY MODULES IN THE DEFAULT DIR %%{_libdir}/%%{name}/site-packages
 #       -DVTK_INSTALL_PYTHON_MODULE_DIR:PATH="%%{python_sitearch}/%%{name}" \
@@ -189,19 +214,13 @@ install -Dm0644 %{S:3} %{buildroot}%{_datadir}/%{name}-%{major_ver}/doc/Guide.pd
 
 %fdupes %{buildroot}/
 
-%post
-/sbin/ldconfig
-%icon_theme_cache_post
-%desktop_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%icon_theme_cache_postun
-%desktop_database_postun
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
-%doc License_v1.2.txt
+%license License_v1.2.txt
 
 %exclude %{_bindir}/smTest*
 %exclude %{_bindir}/vtk*

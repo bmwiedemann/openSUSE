@@ -207,4 +207,31 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>732252</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c1583421960c6020d0813265b38d6208</srcmd5>
+    <version>5.6.2</version>
+    <time>1580724825</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop fix-libhdf5-missing-m.patch: No longer needed.
+- Drop unused python-zope BuildRequires
+- Replace Qt5WebKit BuildRequires with Qt5WebEngine
+- Unbundle several dependencies, use system libraries:
+  * double-conversion
+  * CGNS
+  * Eigen3
+  * GLEW
+  * HDF5
+  * JsonCPP
+  * liblz4
+  * netcdf
+  * protobuf
+  * PugiXML
+  * Ogg/Theora
+- Add several patches from VTK package:
+  * bundled_exodusii_add_missing_libpthread.patch
+  * 0001-Add-libogg-to-IOMovie-target-link-libraries.patch
+  * 0001-Allow-compilation-on-GLES-platforms.patch
+</comment>
+    <requestid>769139</requestid>
+  </revision>
 </revisionlist>
