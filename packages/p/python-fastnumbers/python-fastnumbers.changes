@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:50:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.0
+  + Added
+    * Support and tests for Python 3.8
+    * Text to highlight that `fastnumbers` is not always faster that native Python
+    * `on_fail` option that is identical to `key`, but has a more descriptive name
+    * Windows testing to Travis-CI
+    * Code quality checks to Travis-CI
+    * Deployment from Travis-CI
+    * RELEASING.md
+  + Changed
+    * Cleaned up all test code so that it no longer includes unused code
+      and also conformes to flake8/black
+    * Near-complete re-write of the README, hopefully to make the functionality
+      of `fastnumbers` clearer, to support better navigation, and to better
+      highlight caveats.
+    * Made all named options keyword-only except for `default`
+  + Deprecated
+    * `key` function (it will forever remain allowed, but is "hidden" and cannot
+      be given with `on_fail`)
+  + Fixed
+    * Bug where the `coerce` option of `real()` was ignored
+    * Improved testing reproducibility by pinning all test dependencies
+  + Removed
+    * Support for Python 2.7 and Python 3.4
+    * Appveyor service
+
+
+-------------------------------------------------------------------
 Mon Aug 26 01:04:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix spurious test failure
