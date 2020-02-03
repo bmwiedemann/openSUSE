@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 25 08:32:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.8.4
+  * zbc_device_is_zoned() does not use a device real path as
+    given by zbc_realpath(), causing problems with symbolic
+    links.
+  * Better handling of sense data reporting feature on ATA
+    drives: some drives do not accept setting this feature
+    causing zbc_open(). to fail. Fix this by testing first if the
+    feature is already enabled instead of blindly setting it.
+  * Fix zbc_write_zone tool not writing any data to a zone due to
+    a loop control error.
+
+-------------------------------------------------------------------
 Thu Dec 12 17:10:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.8.3

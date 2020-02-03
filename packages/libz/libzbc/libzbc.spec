@@ -1,7 +1,7 @@
 #
 # spec file for package libzbc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libzbc
-%define lname   libzbc-5_8_3
-Version:        5.8.3
+%define lname   libzbc-5_8_4
+Version:        5.8.4
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
