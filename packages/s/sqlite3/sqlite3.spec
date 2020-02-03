@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,10 @@ URL:            http://www.sqlite.org/
 Source0:        http://www.sqlite.org/2020/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        http://www.sqlite.org/2020/sqlite-doc-%{tarversion}.zip
+# PATCH-FIX-UPSTREAM -- Fix errors on s390
+Patch0:         04885763c4cd00cb-s390-compatibility.patch
+# PATCH-FIX-UPSTREAM -- Fix FTS test failures on big endian archs
+Patch1:         b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch
 BuildRequires:  automake
 %if %{with icu}
 BuildRequires:  libicu-devel
@@ -107,6 +111,8 @@ other documentation found on sqlite.org. The files can be found in
 
 %prep
 %setup -q -n sqlite-src-%{tarversion} -a2
+%patch0 -p0
+%patch1 -p0
 
 rm -v sqlite-doc-%{tarversion}/releaselog/current.html
 ln -sv `echo %{version} | sed "s/\./_/g"`.html sqlite-doc-%{tarversion}/releaselog/current.html

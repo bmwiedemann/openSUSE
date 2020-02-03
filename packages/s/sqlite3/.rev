@@ -1253,4 +1253,15 @@
     <comment></comment>
     <requestid>768037</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>bec6199361d33e961051165d6a20f094</srcmd5>
+    <version>3.31.1</version>
+    <time>1580724684</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a regression on ppc64be and s390x, found by the fuzzing
+  tests, add 04885763c4cd00cb-s390-compatibility.patch.
+- Adapt some FTS tests to work on big endian archs:
+  b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch (forwarded request 768317 from StefanBruens)</comment>
+    <requestid>768339</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 29 12:59:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix a regression on ppc64be and s390x, found by the fuzzing
+  tests, add 04885763c4cd00cb-s390-compatibility.patch.
+- Adapt some FTS tests to work on big endian archs:
+  b20503aaf5b6595a-adapt-FTS-tests-for-big-endian.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 21:53:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SQLite 3.31.1:
