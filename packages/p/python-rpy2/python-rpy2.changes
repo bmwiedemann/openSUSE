@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:31:13 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.2.5
+  * Delimit multi-line expressions with parenthesis rather than backslash.
+  * Use Rf_initEmbeddedR(), remove setup_Rmainloop() (not necessary, it seems).
+- Update to 3.2.4
+  * Fix ABI mode
+- Update to 3.2.3
+  * Backport fix for segfault when parsing.
+  
+-------------------------------------------------------------------
 Wed Nov 27 16:05:54 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 3.2.2
