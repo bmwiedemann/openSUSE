@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:43:03 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.1.0
+  * CMSlicer now uses ColourMap3 and ColourMap3LPSlider and
+    view_module changed in all clases so they work in the Jupyter Notebook
+
+-------------------------------------------------------------------
 Tue Jan  8 19:32:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - initial version
