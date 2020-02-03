@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:34:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.6
+  * Added a --token option to the girder-client command line
+    interface to allow users to specify a pre-created authentication
+    token.
+  * Added a --retry option to the girder-client command line
+    interface to retry connection and certain error responses.
+  * Added a --verbose option to the girder-client command line
+    interface to increase the verbosity of information dumped to
+    stderr.
+
+-------------------------------------------------------------------
 Tue Nov 19 21:05:23 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.0.5
