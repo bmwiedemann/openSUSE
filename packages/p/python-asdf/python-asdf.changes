@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:36:45 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.5.1
+  * Fix bug in test causing failure when test suite is run against
+    an installed asdf package.
+- Update to 2.5.0
+  * Added asdf-standard 1.4.0 to the list of supported versions.
+  * Fix load_schema LRU cache memory usage issue
+  * Add convenience method for fetching the default resolver
+  * ``SpecItem`` and ``Spec`` were deprecated  in ``semantic_version``
+    and were replaced with ``SimpleSpec``.
+  * Pinned the minimum required ``semantic_version`` to 2.8.
+  * Fix bug causing segfault after update of a memory-mapped file.
+- Drop upstream-included allow_recent_semantic_version.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 15:12:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.4.2

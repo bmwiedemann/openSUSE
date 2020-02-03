@@ -1,7 +1,7 @@
 #
 # spec file for package python-asdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-asdf
-Version:        2.4.2
+Version:        2.5.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-3-Clause AND BSD-2-Clause
 URL:            https://github.com/spacetelescope/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM allow_recent_semantic_version.patch -- https://github.com/spacetelescope/asdf/pull/715
-Patch0:         allow_recent_semantic_version.patch
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10
@@ -62,7 +60,6 @@ Python implementation of the ASDF Standard.
 
 %prep
 %setup -q -n asdf-%{version}
-%autopatch -p1
 sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
 sed -i 's/\r$//' asdf/tests/data/example_schema.json
 chmod a-x asdf/tests/data/example_schema.json
