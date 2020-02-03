@@ -199,4 +199,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767200 from dimstar)</comment>
     <requestid>767462</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>22fa4723c4316c90adda8f4c6a03aac5</srcmd5>
+    <version>0.20.1</version>
+    <time>1580724673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768245</requestid>
+  </revision>
 </revisionlist>
