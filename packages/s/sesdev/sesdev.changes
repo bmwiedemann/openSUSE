@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Sat Feb  1 09:56:19 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.1+1580550501.gd6782ab:
+  + changes from upstream SHA1 d6782abc3002a5a8ec299b1897ad6166a786bafa:
+    * Revamp --num-disks handling (PR #65)
+    * doc: globally change 'rjfd' to 'SUSE' (PR #66)
+    * ceph_bootstrap_deployment: "ceph-bootstrap -ldebug deploy" (PR #68)
+    * checkin.sh: use NoSource
+    * spec:
+      = drop Group
+      = streamline %autosetup
+      = fix Fedora conditional
+
+-------------------------------------------------------------------
+Wed Jan 29 12:57:17 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.1+1580302614.g0e79816: 
+  + upstream 1.1.1 release (2020-01-29)
+    * Octopus and SES7 deployment with ceph-bootstrap (PR #28)
+    * Implement --repo-priority / --no-repo-priority (PR #19)
+    * Add option for predefined libvirt networks (PR #39)
+    * qa: initial qa integration (PR #46)
+    * When deploying ses5 with explicit --roles, do not add openattic (PR #23)
+    * Enable display of manpages (PR #33)
+    * ceph_bootstrap_deployment.sh: Also set -e (PR #35)
+    * vagrant: generate random serial number for each attached disk (PR #50)
+    * ceph_bootstrap_deployment: ensure minions are responding (PR #52)
+    * Add node info to SSH tunnel command (PR #27)
+    * Display amount of deployed VMs in status output (PR #31)
+    * Enable linter via travis (PR #38)
+    * ceph-bootstrap: 'ceph-salt-formula' moved to 'ceph-bootstrap' (PR #44)
+    * ceph_bootstrap: use "ceph-bootstrap deploy" command to run ceph-salt formula (PR #62)
+
+-------------------------------------------------------------------
+Wed Nov 27 09:53:22 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 1.1.0+1574848386.g395e92f:
+  + Add Github Action to publish to OBS (PR #10).
+  + SUMA deployment in `octopus` version (PR #14).
+  + Handle Ctrl+C on deployment creation (PR #8).
+  + seslib: fixed 100% cpu usage when deploying cluster (PR #16).
+  + Updated README.md on how to use an editable Python venv (PR #15).
+  + cli: `list` subcommand now shows the version of each deployment (PR #12).
+  + octopus and ses7 versions now use the OBS repo
+    filesystems:ceph:master:upstream that is updated in a daily basis (PR #13).
+
+-------------------------------------------------------------------
+Fri Nov 15 10:59:38 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 1.0.3+1573815567.g0a8bfe0:
+  + README instructions about libvirt configuration.
+  + CLI subcommand `info` replaced by `show`.
+  + fix typo in `sesdev start --help` command.
+
+-------------------------------------------------------------------
+Fri Nov 15 09:29:26 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+-Update to 1.0.2+1573810156.g0c0dc21:
+ + fix missing libvirt engine jinja template in setup.py.
+
+-------------------------------------------------------------------
+Thu Nov 14 19:15:45 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 1.0.1+1573758931.gfcc2a87:
+  + fix missing jinja templates in setup.py
+
+-------------------------------------------------------------------
+Thu Nov 14 16:30:39 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 1.0.0+1573749027.g0e3c988
+  + This version adds:
+    * `--libvirt-(user|storage-pool)` options to CLI.
+    * `--stop-before-deepsea-stage` option to CLI.
+    * `--cpus` option to CLI.
+    * `--ram` option to CLI.
+    * `--disk-size` option to CLI.
+    * `--repo` option to CLI.
+    * `--vagrant-box` option to CLI.
+    * openSUSE Leap 15.2 distro.
+    * SLES-15-SP2 distro.
+    * SES7 deployment based on SLES-15-SP2 (no Ceph cluster deployment yet).
+    * SES5 deployment based on SLES-12-SP3.
+    * SES6 deployment based on SLES-15-SP1.
+    * Octopus deployment based on Leap 15.2 (DeepSea is working 90%).
+    * Installation instructions to the README.md.
+    * openATTIC service tunneling support.
+    * Deployment description with `sesdev info <deployment_id>`.
+  + This version changes:
+    * Use `libvirt_use_ssh` instead of `libvirt_use_ssl` to configure SSH
+      access.
+    * Vagrantfile template refactoring to support different deployment tools.
+    * Currently only DeepSea is implemented.
+    * Code refactoring to support other VM engines besides libvirt.
+    * CLI creation command changed to include the SES version we want to
+      deploy. Now the command looks like:
+      `sesdev create <version> [options] <deployment_id>`.
+    * List deployments now return the status and the name of the nodes in each
+      deployment.
+  + This version fixes:
+    * remove `qemu_use_session` vagrant-libvirt setting when packaging for
+      Fedora 29.
+    * Use `RSA#exportKey` method to work with version 3.4.6 of pycrytodomex.
+    * Fixed type of `stop-before-stage` setting.
+    * Fix ssh command when libvirt is located in the localhost.
+    * Fix accepting salt-keys step in deployment by polling `salt-key -L`.
+    * Fix deployment status when `vagrant up` was never run.
+    * Only create deployment directory and files after rendering Vagranfile
+      without errors.
+
+-------------------------------------------------------------------
+Thu Oct 31 09:42:34 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.2+1572514937.g763077e:
+  + seslib: remove proxycmd defined check
+
+-------------------------------------------------------------------
+Wed Oct 30 17:28:10 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.2+1572456477.g821bf75:
+  + added `--stop-before-deepsea-stage` option to CLI
+  + Fixed type of `stop-before-stage` setting
+  + Fix ssh command when libvirt is located in the localhost
+  + Fix accepting salt-keys step in deployment by polling salt-key -L
+
+-------------------------------------------------------------------
+Wed Oct 30 15:21:13 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.2+1572448838.g949e537:
+  + Use `RSA#exportKey` method to work with version 3.4.6 of pycrytodomex.
+
+-------------------------------------------------------------------
+Wed Oct 30 13:39:49 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.2+1572442776.g5642890:
+  + added `--libvirt-(user|storage-pool)` options to CLI.
+  + remove `qemu_use_session` vagrant-libvirt setting when packaging for
+    Fedora 29.
+
+-------------------------------------------------------------------
+Wed Oct 30 01:20:29 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.2+1572398417.g8502032:
+  + explicitly set `qemu_use_session = false` in Vagrantfile to always use a
+    system connection.
+  + openSUSE requires python3-setuptools to run sesdev.
+
+-------------------------------------------------------------------
+Wed Oct 30 00:36:54 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.1+1572395804.g50771b7:
+  + replaced `pycryptodome` library by `pycryptodomex`
+  + fixed library dependencies 
+
+-------------------------------------------------------------------
+Tue Oct 29 23:56:38 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.1+1572393386.g30bf7ee:
+  + add buildrequires python-rpm-macros for fedora in spec file
+
+-------------------------------------------------------------------
+Tue Oct 29 23:44:35 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.1+1572392665.gd519454:
+  + add buildrequires python3-rpm-macros for fedora in spec file 
+
+-------------------------------------------------------------------
+Tue Oct 29 23:08:05 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.1+1572390481.g4783094:
+  + added buildrequires fdupes to spec file
+
+-------------------------------------------------------------------
+Tue Oct 29 22:52:57 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.1+1572389564.g053fa8c:
+  + fix Fedora dependencies naming
+
+-------------------------------------------------------------------
+Tue Oct 29 22:35:26 UTC 2019 - Ricardo Dias <ricardo.dias@suse.com>
+
+- Update to 0.2.1+1572388507.g1a6c855:
+  + fix Fedora python rpm build macros in the specfile
+
+-------------------------------------------------------------------
+Tue Oct 29 22:03:08 UTC 2019 - Ricardo Dias <rdias@suse.com>
+
+- Initial commit, based on rjfd/sesdev.git branch "master",
+  SHA1 5ca48bdfcef62cfa552947c31007a6cb6ba5963a
+
