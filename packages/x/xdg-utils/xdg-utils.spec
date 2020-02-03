@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
 Group:          System/GUI/Other
-Url:            https://www.freedesktop.org/wiki/Software/xdg-utils/
+URL:            https://www.freedesktop.org/wiki/Software/xdg-utils/
 # http://portland.freedesktop.org/download/xdg-utils-%%{version}.tar.gz
 Source:         xdg-utils-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE install-some-more-scripts.diff jslaby@suse.cz
