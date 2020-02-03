@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:12:57 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.4
+  * Allow for hvplot returning dynamic layouts
+  * Make sure that ttl is numeric
+  * add intake-nested-yaml-catalog plugin 
+  * check_meta_flag -> verify_meta
+  * forgot to add pickle & json
+  * fix dask version constraint
+  * Don't replace "inteke" in remote server name
+  * Update intake/gui/source/defined_plots.py
+  * Use a generator for pagination.
+  * add address to log
+  * add server cli kwarg for address
+  * dask.bytes to fsspec
+  * don't check meta when merging dataframes
+  * pin fsspec >= 0.3.6
+  * return storage options if given
+  * update open_file link
+  * use the given encoder if not in the list
+  * verify kwarg and dask version check
+
+-------------------------------------------------------------------
 Tue Nov 19 20:55:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.5.3

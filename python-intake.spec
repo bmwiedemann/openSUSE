@@ -1,7 +1,7 @@
 #
 # spec file for package python-intake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-intake
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
@@ -35,6 +35,8 @@ Requires:       python-dask
 Requires:       python-dask-array
 Requires:       python-dask-bag >= 1.0
 Requires:       python-dask-dataframe
+Requires:       python-entrypoints
+Requires:       python-fsspec >= 0.3.6
 Requires:       python-holoviews
 Requires:       python-hvplot
 Requires:       python-ipywidgets >= 7.2
@@ -57,6 +59,8 @@ BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask-bag >= 1.0}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module entrypoints}
+BuildRequires:  %{python_module fsspec >= 0.3.6}
 BuildRequires:  %{python_module holoviews}
 BuildRequires:  %{python_module hvplot}
 BuildRequires:  %{python_module ipywidgets >= 7.2}
@@ -78,6 +82,9 @@ A plugin system for loading your data and making data catalogs.
 
 %prep
 %setup -q -n intake-%{version}
+sed -i -e '/^#!\//, 1d' intake/catalog/tests/test_persist.py
+sed -i -e '/^#!\//, 1d' intake/container/tests/__init__.py
+sed -i -e '/^#!\//, 1d' intake/container/tests/test_generics.py
 
 %build
 %python_build
