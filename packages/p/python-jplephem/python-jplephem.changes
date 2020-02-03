@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:00:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.12
+  * Replaced use of NumPy ``flip()`` with a reverse slice ``[::-1]`` after
+    discovering the function was a recent addition that some user installs
+    of NumPy do not support.
+- Update to 2.11
+  * Reverse the order in which Chebyshev polynomials are computed to
+    slightly increase speed, to simplify the code, and in one case
+    (comparing PCK output to NASA) to gain a partial digit of extra
+    precision.
+- Update to 2.10
+  * Document and release support for ``.bcp`` binary PCK kernel files
+    through the new ``jplephem.pck`` module.
+
+-------------------------------------------------------------------
 Thu Jan 10 00:31:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase for summary.

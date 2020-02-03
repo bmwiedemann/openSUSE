@@ -1,7 +1,7 @@
 #
 # spec file for package python-jplephem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jplephem
-Version:        2.9
+Version:        2.12
 Release:        0
 Summary:        Planet position predictor using a JPL ephemeris
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/brandon-rhodes/python-jplephem/
-Source:         https://files.pythonhosted.org/packages/source/j/jplephem/jplephem-%{version}.tar.gz
+URL:            https://github.com/brandon-rhodes/python-jplephem/
+Source:         https://github.com/brandon-rhodes/python-jplephem/archive/v%{version}.tar.gz#/python-jplephem-%{version}.tar.gz
 # Test files
 Source10:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de405.bsp
 Source11:       http://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/a_old_versions/de421.bsp
@@ -46,11 +46,11 @@ ephemeris for predicting the position and velocity of a planet or other
 Solar System body.  It only needs NumPy <http://www.numpy.org/>`.
 
 %prep
-%setup -q -n jplephem-%{version}
-cp %{SOURCE10} .
-cp %{SOURCE11} .
-cp %{SOURCE12} .
-cp %{SOURCE13} .
+%setup -q -n python-jplephem-%{version}
+cp %{SOURCE10} ci
+cp %{SOURCE11} ci
+cp %{SOURCE12} ci
+cp %{SOURCE13} ci
 
 %build
 %python_build
@@ -60,9 +60,15 @@ cp %{SOURCE13} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m jplephem.jpltest
+pushd ci
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -m jplephem.jpltest
+}
+popd
 
 %files %{python_files}
+%doc README.md
+%license LICENSE.txt
 %{python_sitelib}/*
 
 %changelog
