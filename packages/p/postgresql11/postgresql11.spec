@@ -435,6 +435,9 @@ find -name .gitignore -delete
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export PYTHON=python3
+%ifarch %arm
+export USE_ARMV8_CRC32C=0
+%endif
 PACKAGE_TARNAME=%pgname %configure \
         --bindir=%pgbindir \
         --libdir=%pglibdir \
