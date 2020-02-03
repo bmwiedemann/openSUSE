@@ -1,7 +1,7 @@
 #
 # spec file for package python-cauldron-notebook
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cauldron-notebook
-Version:        0.5.0
+Version:        1.0.2
 Release:        0
 Summary:        Scientific Analysis Environment
 License:        MIT
@@ -74,8 +74,9 @@ modeling and analysis in Python.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%pytest
+# Tests only work on git repo
+# %%check
+# %%pytest
 
 %files %{python_files}
 %doc README.rst

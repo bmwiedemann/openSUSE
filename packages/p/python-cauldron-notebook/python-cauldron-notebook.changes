@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:28:53 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.0.2
+  * Restores Python 3.5 compatibility for lower patches.
+  * Improves large file syncing between UI and kernels.
+- Update to 1.0.1
+  * Expanded color palette management in the plotter module,
+  * Simplified step testing with partial step matching in run_set(STEP_NAME),
+  * Fixes packaging of the UI in the pypi and conda packages.
+- Update to 1.0.0
+  * Major new release with a new web-based UI
+
+-------------------------------------------------------------------
 Tue Dec  3 20:56:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - initial version
