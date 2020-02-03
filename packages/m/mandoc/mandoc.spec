@@ -1,7 +1,7 @@
 #
 # spec file for package mandoc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,11 @@ Group:          Productivity/Publishing/Troff
 URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
 BuildRequires:  zlib-devel
-BuildRequires:  update-alternatives
 Provides:       man = %{version}
 Conflicts:      man
 Conflicts:      groff
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-
+Conflicts:      groff-full
+Conflicts:      makewhat
 
 %description
 The mandoc manpage compiler toolset (formerly called "mdocml")
@@ -57,78 +55,78 @@ export CFLAGS="%optflags"
 cp -fv %{buildroot}%{_bindir}/apropos %{_tmppath}/
 mv -fv %{_tmppath}/apropos %{buildroot}%{_sbindir}/makewhatis
 
-# create a dummy target for /etc/alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-for cmd in apropos man soelim ; do
-    mv %{buildroot}%{_bindir}/$cmd{,.mandoc}
-    ln -s -f %{_sysconfdir}/alternatives/$cmd %{buildroot}%{_bindir}/$cmd
-done
-
-mv %{buildroot}%{_sbindir}/makewhatis{,.mandoc}
-ln -s -f %{_sysconfdir}/alternatives/makewhatis %{buildroot}%{_sbindir}/makewhatis
-
-# sec 1
-for man in apropos man soelim whatis ; do
-    from=$(ls %{buildroot}%{_mandir}/man1/$man.1*)
-    to=$(echo $from|sed -e 's!\.1$!!')-mandoc.1
-    mv -v "$from" "$to"
-    ln -s -f %{_sysconfdir}/alternatives/$man.1 "$from"
-done
-# sec 7
-for man in eqn man mdoc roff tbl ; do
-    from=$(ls %{buildroot}%{_mandir}/man7/$man.7*)
-    to=$(echo $from|sed -e 's!\.7$!!')-mandoc.7
-    mv -v "$from" "$to"
-    ln -s -f %{_sysconfdir}/alternatives/$man.7 "$from"
-done
+# ghost
+: > %{buildroot}%{_mandir}/mandoc.db
 
 %post
-update-alternatives --install \
-   %{_bindir}/man man %{_bindir}/man.mandoc 1000 \
-   --slave %{_bindir}/apropos apropos %{_bindir}/apropos.mandoc \
-   --slave %{_bindir}/soelim soelim %{_bindir}/soelim.mandoc \
-   --slave %{_sbindir}/makewhatis makewhatis %{_sbindir}/makewhatis.mandoc \
-   --slave %{_mandir}/man1/apropos.1%{?ext_man} apropos.1%{?ext_man} %{_mandir}/man1/apropos-mandoc.1%{?ext_man} \
-   --slave %{_mandir}/man1/man.1%{?ext_man} man.1%{?ext_man} %{_mandir}/man1/man-mandoc.1%{?ext_man} \
-   --slave %{_mandir}/man1/soelim.1%{?ext_man} soelim.1%{?ext_man} %{_mandir}/man1/soelim-mandoc.1%{?ext_man} \
-   --slave %{_mandir}/man1/whatis.1%{?ext_man} whatis.1%{?ext_man} %{_mandir}/man1/whatis-mandoc.1%{?ext_man} \
-   --slave %{_mandir}/man7/eqn.7%{?ext_man} eqn.7%{?ext_man} %{_mandir}/man7/eqn-mandoc.7%{?ext_man} \
-   --slave %{_mandir}/man7/man.7%{?ext_man} man.7%{?ext_man} %{_mandir}/man7/man-mandoc.7%{?ext_man} \
-   --slave %{_mandir}/man7/mdoc.7%{?ext_man} mdoc.7%{?ext_man} %{_mandir}/man7/mdoc-mandoc.7%{?ext_man} \
-   --slave %{_mandir}/man7/roff.7%{?ext_man} roff.7%{?ext_man} %{_mandir}/man7/roff-mandoc.7%{?ext_man} \
-   --slave %{_mandir}/man7/tbl.7%{?ext_man} tbl.7%{?ext_man} %{_mandir}/man7/tbl-mandoc.7%{?ext_man}
+%{_sbindir}/makewhatis
 
+%filetriggerin -p <lua> -- %{_mandir}
+-- TODO: replace with rpm.execute after rpm 4.15
+function execute(path, ...)
+  local pid = posix.fork()
+  if pid == 0 then
+     posix.exec(path, ...)
+     io.write(path, ": exec failed: ", posix.errno(), "\n")
+     os.exit(1)
+  end
+  if not pid then
+     error(path .. ": fork failed: " .. posix.errno() .. "\n")
+  end
+  posix.wait(pid)
+end
+--
+-- no point registering individual files if we can call
+-- makewhatis in %%post to catch all if
+if posix.access("%{_mandir}/mandoc.db") then
+    file = rpm.next_file()
+    while file do
+        if string.match(file, "%{_mandir}/man[^/]+/[^/]+%{?ext_man}$") then
+            execute("%{_sbindir}/makewhatis", "-d", "%{_mandir}", file)
+        end
+        file = rpm.next_file()
+    end
+end
 
-%preun
-if [ $1 -eq 0 ] ; then
-   update-alternatives --remove man %{_bindir}/man.mandoc
-fi
+%filetriggerun -p <lua> -- %{_mandir}
+-- TODO: replace with rpm.execute after rpm 4.15
+function execute(path, ...)
+  local pid = posix.fork()
+  if pid == 0 then
+     posix.exec(path, ...)
+     io.write(path, ": exec failed: ", posix.errno(), "\n")
+     os.exit(1)
+  end
+  if not pid then
+     error(path .. ": fork failed: " .. posix.errno() .. "\n")
+  end
+  posix.wait(pid)
+end
+--
+if posix.access("%{_mandir}/mandoc.db") then
+    file = rpm.next_file()
+    while file do
+        if string.match(file, "%{_mandir}/man[^/]+/[^/]+%{?ext_man}$") then
+            execute("%{_sbindir}/makewhatis", "-u", "%{_mandir}", file)
+        end
+        file = rpm.next_file()
+    end
+end
 
 %files
 %license LICENSE
 %doc NEWS TODO
-%{_bindir}/apropos*
+%{_bindir}/apropos
 %{_bindir}/demandoc
-%{_bindir}/man*
-%{_bindir}/soelim*
+%{_bindir}/man
+%{_bindir}/mandoc
+%{_bindir}/soelim
 %{_bindir}/whatis
-%{_sbindir}/makewhatis*
+%{_sbindir}/makewhatis
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
 %{_mandir}/man7/*.7%{?ext_man}
 %{_mandir}/man8/*.8%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/man
-%ghost %{_sysconfdir}/alternatives/apropos
-%ghost %{_sysconfdir}/alternatives/soelim
-%ghost %{_sysconfdir}/alternatives/makewhatis
-%ghost %{_sysconfdir}/alternatives/apropos.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/man.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/soelim.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/whatis.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/eqn.7%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/man.7%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/mdoc.7%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/roff.7%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/tbl.7%{?ext_man}
+%ghost %{_mandir}/mandoc.db
 
 %changelog
