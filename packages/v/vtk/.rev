@@ -402,4 +402,18 @@
     <comment></comment>
     <requestid>746053</requestid>
   </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>a77eca5a87651c807e7647d8d7bc5602</srcmd5>
+    <version>8.2.0</version>
+    <time>1580724831</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmpi3 flavor.
+- Disable openmpi1 for SLE/Leap 15.2, openmpi3 for SLE &lt;= 15.1
+- Adjust disk _constraints.
+- Drop vtk-fix-file-contains-date-time.patch, GCC honors
+  SOURCE_DATE_EPOCH.
+- Drop unused netcdf-c++-devel BuildRequires.
+</comment>
+    <requestid>769140</requestid>
+  </revision>
 </revisionlist>

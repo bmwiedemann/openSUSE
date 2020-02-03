@@ -1,7 +1,7 @@
 #
 # spec file for package vtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,13 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+
+%if 0%{?sle_version} >= 150200
+%define DisOMPI1 ExclusiveArch:  do_not_build
+%endif
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
+%define DisOMPI3 ExclusiveArch:  do_not_build
+%endif
 
 %define pkgname vtk
 
@@ -39,6 +46,7 @@
 %endif
 
 %if "%{flavor}" == "openmpi"
+%{?DisOMPI1}
 %if 0%{?suse_version} >= 1550
 %define my_suffix  -openmpi1
 %define mpi_flavor  openmpi1
@@ -52,6 +60,13 @@
 %if "%{flavor}" == "openmpi2"
 %define my_suffix  -openmpi2
 %define mpi_flavor  openmpi2
+%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
+%endif
+
+%if "%{flavor}" == "openmpi3"
+%{?DisOMPI3}
+%define my_suffix  -openmpi3
+%define mpi_flavor  openmpi3
 %define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
 %endif
 
@@ -83,8 +98,6 @@ Source:         https://www.vtk.org/files/release/%{series}/VTK-%{version}.tar.g
 # FIXME See if packaging can be tweaked to accommodate python-vtk's devel files in a devel package later
 # We need to use the compat conditionals here to avoid Factory's source validator from tripping up
 Source99:       vtk-rpmlintrc
-# PATCH-FIX-UPSTREAM vtk-fix-file-contains-date-time.patch badshah400@gmail.com -- Fix file containing DATE and TIME
-Patch1:         vtk-fix-file-contains-date-time.patch
 # PATCH-FIX-OPENSUSE 0001-Allow-compilation-on-GLES-platforms.patch VTK issue #17113 stefan.bruens@rwth-aachen.de -- Fix building with Qt GLES builds
 Patch2:         0001-Allow-compilation-on-GLES-platforms.patch
 # PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking
@@ -112,12 +125,17 @@ BuildRequires:  hdf5-%{mpi_flavor}-devel
 %endif
 BuildRequires:  hdf5-devel
 BuildRequires:  java-devel
+BuildRequires:  libboost_graph-devel
+BuildRequires:  libboost_graph_parallel-devel
+BuildRequires:  libboost_serialization-devel
+%if %{with mpi}
+BuildRequires:  libboost_mpi-devel
+%endif
 %if %{with haru}
 BuildRequires:  libharu-devel > 2.3.0
 %endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmysqlclient-devel
-BuildRequires:  libnetcdf_c++-devel
 BuildRequires:  libtiff-devel
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}-devel
@@ -164,12 +182,6 @@ BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  libboost_graph-devel
-BuildRequires:  libboost_graph_parallel-devel
-%if %{with mpi}
-BuildRequires:  libboost_mpi-devel
-%endif
-BuildRequires:  libboost_serialization-devel
 
 %description
 VTK is a software system for image processing, 3D graphics, volume
@@ -332,7 +344,6 @@ languages.
 
 %prep
 %setup -q -n VTK-%{version}
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
