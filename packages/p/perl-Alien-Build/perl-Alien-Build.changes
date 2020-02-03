@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 31 03:08:19 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.98
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  1.98      2020-01-30 07:53:10 -0700
+    - Production release identical to 1.97_01
+  
+  1.97_01   2020-01-29 09:22:14 -0700
+    - Added OO interface to Alien::Base::Wrapper (gh#157, gh#158)
+    - Added mm_args2 method to Alien::Base::Wrapper (gh#157, gh#158)
+    - Added WriteMakefile function to Alien::Base::Wrapper (gh#157, gh#158)
+
+-------------------------------------------------------------------
 Tue Jan 28 03:07:02 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.96
