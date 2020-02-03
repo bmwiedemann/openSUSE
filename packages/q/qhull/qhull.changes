@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:07:11 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct name of the library package according to SLPP - the
+  current and older versions both packaged libqhull.so.7, but due
+  to the full version in the package name (libqhull7-7_3_2) it
+  was not considered an update of the old one (libqhull7-7_2_0).
+
+-------------------------------------------------------------------
 Fri Nov 29 01:55:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - updated to 2019.1 (7.3.2):

@@ -19,7 +19,6 @@
 %define sonum   7
 %define srcyear 2019
 %define srcver  7.3.2
-%define libver  7_3_2
 Name:           qhull
 Version:        2019.1
 Release:        0
@@ -43,11 +42,15 @@ Qhull does not support constrained Delaunay triangulations, triangulation of
 non-convex surfaces, mesh generation of non-convex objects, or medium-sized
 inputs in 9-D and higher.
 
-%package -n libqhull%{sonum}-%{libver}
+%package -n libqhull%{sonum}
 Summary:        Computing convex hulls, Delaunay triangulations and Voronoi diagrams
 Group:          System/Libraries
+# Bad naming of old packages, conflicts on the file level (libqhull.so.7)
+Obsoletes: libqhull%{sonum}-7_3_2 < %{version}-%{release}
+Provides:  libqhull%{sonum}-7_3_2 = %{version}-%{release}
+Obsoletes: libqhull%{sonum}-7_2_0 < %{version}
 
-%description -n libqhull%{sonum}-%{libver}
+%description -n libqhull%{sonum}
 Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram,
 halfspace intersection about a point, furthest-site Delaunay triangulation,
 and furthest-site Voronoi diagram. The source code runs in 2D
@@ -91,8 +94,8 @@ rm %{buildroot}%{_libdir}/*.a
 mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
 %endif
 
-%post -n libqhull%{sonum}-%{libver} -p /sbin/ldconfig
-%postun -n libqhull%{sonum}-%{libver} -p /sbin/ldconfig
+%post -n libqhull%{sonum} -p /sbin/ldconfig
+%postun -n libqhull%{sonum} -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
@@ -107,7 +110,7 @@ mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
 %{_bindir}/rbox
 %{_mandir}/man1/*
 
-%files -n libqhull%{sonum}-%{libver}
+%files -n libqhull%{sonum}
 %defattr(-,root,root)
 %license COPYING.txt
 %{_libdir}/libqhull.so.%{sonum}
