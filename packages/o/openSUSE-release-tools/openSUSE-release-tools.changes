@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 31 18:22:12 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200131.e3c26df9:
+  * Staging accept: No longer set the version in .product files on accept
+
+-------------------------------------------------------------------
+Fri Jan 31 13:05:35 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200131.ff898552:
+  * Unify the handling of standard and images repository
+
+-------------------------------------------------------------------
+Fri Jan 31 12:18:16 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200131.1f26d7bc:
+  * Dashboard: add ARM:Live
+
+-------------------------------------------------------------------
 Fri Jan 31 07:54:53 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200131.38632736:
