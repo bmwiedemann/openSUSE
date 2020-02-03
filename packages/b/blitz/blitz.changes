@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Fri Jan 31 16:41:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Remove BZ_FULLY64BIT=ON option from cmake to prevent warnings
+  during compilation saying "64-bit array dimensions not yet
+  implemented (-Wcpp)".
+
+-------------------------------------------------------------------
+Tue Dec 10 18:05:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.0.2
+  * added CMake build system (autotools build to be phased out in a next release)
+  * autotools-related fixes
+  * Python 3 compatibility in Makefiles and genstencils.py
+  * fixing compilation issue for BZ_DECLARE_FUNCTION (SF issue no. 51)
+  * fixing apparent typo-bug in expr.h (SF bug no. 59)
+  * some code cleanups (namespace related macros, etc)
+- Remove obsolete blitz-gcc47.patch
+- Add fix_cmake_file_dir.patch to make sure .cmake files are placed
+  in the correct directory.
+  From: https://github.com/blitzpp/blitz/pull/155
+
+-------------------------------------------------------------------
+Wed Dec  2 08:46:24 UTC 2015 - mpluskal@suse.com
+
+- Update project url
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 22 13:29:42 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-3.0 or BSD-3-Clause or Artistic-2.0
+  The Artistic-2.0 license is also a choice
+
+-------------------------------------------------------------------
+Thu Feb 21 06:48:50 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 0.10
+  * improved performance
+  * 64-bit compatibility
+  * thread safety
+  * utilizing careful data alignment
+- Update license to LGPL-3.0 or BSD-3-Clause according to LEGAL file
+
+-------------------------------------------------------------------
+Tue Jul 10 09:25:55 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 with new package layout
+
+-------------------------------------------------------------------
+Sat Jan 28 21:15:20 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+
+-------------------------------------------------------------------
+Wed Mar 23 20:24:40 UTC 2011 - badshah400@gmail.com
+
+- Require the correct version of libblitz0 library for blitz-devel
+  package 
+
+-------------------------------------------------------------------
+Wed Mar 23 01:08:20 UTC 2011 - badshah400@gmail.com
+
+- Initial package (following spec file from fedora) 
+
