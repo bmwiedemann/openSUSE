@@ -1,7 +1,7 @@
 #
 # spec file for package python-traits
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-traits
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        Explicitly typed attributes for Python
 # Images have different licenses. For image license breakdown check
@@ -28,7 +28,7 @@ Summary:        Explicitly typed attributes for Python
 # 3-clause license. Confirmed from upstream.
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only
 Group:          Development/Libraries/Python
-Url:            https://github.com/enthought/traits
+URL:            https://github.com/enthought/traits
 Source:         https://files.pythonhosted.org/packages/source/t/traits/traits-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}

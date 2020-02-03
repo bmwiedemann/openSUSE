@@ -51,4 +51,12 @@
   * Traits documenter no longer generates bad reST for traits whose definition spans multiple source lines. (#494)</comment>
     <requestid>717484</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47c24141e229613a9d3bc69863fdbaa4</srcmd5>
+    <version>5.2.0</version>
+    <time>1580724797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768822</requestid>
+  </revision>
 </revisionlist>
