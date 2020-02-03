@@ -22,10 +22,9 @@
 %define psuffix -test
 %bcond_without test
 %else
-%define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-flaky
+Name:           python-flaky%{?psuffix}
 Version:        3.6.1
 Release:        0
 Summary:        Plugin for nose or py.test that automatically reruns flaky tests

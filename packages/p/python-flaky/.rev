@@ -45,4 +45,12 @@
   * Reraise KeyboardInterrupt when running tests under pytest.</comment>
     <requestid>730399</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>eb4178706f7cd7151aeb8def651bac38</srcmd5>
+    <version>3.6.1</version>
+    <time>1580724736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768995</requestid>
+  </revision>
 </revisionlist>
