@@ -1,7 +1,7 @@
 #
 # spec file for package m4
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GNU m4
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
-Url:            https://www.gnu.org/software/m4/
+URL:            https://www.gnu.org/software/m4/
 Source0:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=m4&download=1#/%{name}.keyring
@@ -48,7 +48,14 @@ GNU m4 is an implementation of the traditional Unix macro processor.
 	gl_cv_func_isnanl_works=yes \
 	gl_cv_func_printf_directive_n=yes \
 	gl_cv_func_printf_infinite_long_double=yes
-make %{?_smp_mflags} V=1
+%if %{do_profiling}
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  make check %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
+  make %{?_smp_mflags} clean
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+%else
+  make %{?_smp_mflags} V=1
+%endif
 
 %check
 make %{?_smp_mflags} check
@@ -65,13 +72,12 @@ rm -rf %{buildroot}%{_infodir}/dir
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
-%defattr(-,root,root)
 %doc README NEWS THANKS TODO ChangeLog
 %license COPYING
 %{_bindir}/m4
 %{_infodir}/m4.info-1%{ext_info}
 %{_infodir}/m4.info-2%{ext_info}
-%{_infodir}/m4.info%{ext_info}
-%{_mandir}/man1/m4.1%{ext_man}
+%{_infodir}/m4.info%{?ext_info}
+%{_mandir}/man1/m4.1%{?ext_man}
 
 %changelog
