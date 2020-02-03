@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:02:50 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.3:
+  + Bugfixes
+    * Exception when handling merged cells with hyperlinks
+    * Problems when both lxml and defusedxml are installed
+    * CFVO with incorrect values cannot be processed
+- Update to 3.0.2:
+  + Bugfixes
+    * DeprecationError if both defusedxml and lxml are installed
+    * ws._current_row is higher than ws.max_row
+    * Border bottom style is not optional when it should be
+    * Empty cells in read-only, values-only mode are sometimes returned as ReadOnlyCells
+    * Cannot add page breaks to existing worksheets if none exist already
+  + Pull Requests
+    * Improvements to the documentation
+
+-------------------------------------------------------------------
 Tue Nov 19 20:37:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.0.1:
