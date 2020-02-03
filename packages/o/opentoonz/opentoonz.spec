@@ -1,7 +1,7 @@
 #
 # spec file for package opentoonz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,17 @@
 %global __requires_exclude ^(libcolorfx|libimage|libsound|libtif).*
 %global __provides_exclude ^(libcolorfx|libimage|libsound|libtif).*
 Name:           opentoonz
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        2D animation software
 # need to review license as site indicates: "modified BSD license"
 License:        BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opentoonz.github.io/e/
-Source0:        %{name}-v%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source3:        %{name}-rpmlintrc
 Patch1:         p_handle-no-return-in-nonvoid-function.patch
 Patch2:         p_add-zlo-to-cmake-include-path-suffixes.patch
-Patch3:         Fix-build-with-Qt-5_13.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -70,7 +69,7 @@ ExclusiveArch:  i586 x86_64
 2D animation software previously known as Toonz.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 # Remove all thirdparty except tiff which is patched.
 find thirdparty/* -maxdepth 0 ! -name "tiff-*" ! -name "lzo" ! -name "kiss_fft*" -type d -exec rm -r "{}" \;

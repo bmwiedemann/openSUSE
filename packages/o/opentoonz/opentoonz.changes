@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Feb 01 15:58:57 UTC 2020 - christophe@krop.fr
+
+- Update to v1.4.0. Check
+  https://github.com/opentoonz/opentoonz/releases/tag/v1.4.0 for
+  the full changelog.
+- Replace tar_scm with obs_scm in the _service file.
+
+-------------------------------------------------------------------
+Mon Jan 27 17:15:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.4.0rc. Check
+  https://github.com/opentoonz/opentoonz/releases/tag/v1.4.0rc for
+  the full changelog.
+  * New Guided Drawing/Autoinbetweening
+  * New XDTS File Support (Celsys and Toei Animation xsheet file format Import/Export)
+  * New Cache folder Replacement & Clear Cache Command
+  * New Camera Column in XSheet
+  * New Context Aware Toolbar
+  * New Create Blank Drawing command
+  * New Fx: Corridor Gradient Fx Iwa
+  * New Fx: Spin Gradient Fx Iwa
+  * New Geometry Tool Driven Motion Paths
+  * New (Initial) Korean Menu Translation
+  * New Level Settings Adjustment for Multiple Selections in XSheet/Timeline
+  * New Next/Previous Keyframe Shortcuts
+  * New Pencil Mode for Toonz Raster Eraser in Freehand and Polyline
+  * New Swap Colors Button for Gradient Fxs
+  * New Short Play Feature
+  * New Fill Tool for Raster Level
+  * Updated/Reorganized Menus
+- Refresh p_handle-no-return-in-nonvoid-function.patch
+- Drop Fix-build-with-Qt-5_13.patch. Fixed upstream
+
+-------------------------------------------------------------------
 Sat Oct 12 10:23:55 UTC 2019 - christophe@krop.fr
 
 - Update to version v1.3.0:

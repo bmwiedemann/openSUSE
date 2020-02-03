@@ -9,10 +9,10 @@ Subject: [PATCH] Handle no-return-in-nonvoid-function.
  2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp b/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp
-index 3f35abe..baa3c84 100644
+index 796543a5..80611535 100644
 --- a/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp
 +++ b/toonz/sources/image/ffmpeg/tiio_ffmpeg.cpp
-@@ -289,8 +289,8 @@ TRasterImageP Ffmpeg::getImage(int frameIndex) {
+@@ -301,8 +301,8 @@ TRasterImageP Ffmpeg::getImage(int frameIndex) {
        ret->yMirror();
        return TRasterImageP(ret);
      }
@@ -24,7 +24,7 @@ index 3f35abe..baa3c84 100644
  
  double Ffmpeg::getFrameRate() {
 diff --git a/toonz/sources/tnztools/trackertool.cpp b/toonz/sources/tnztools/trackertool.cpp
-index 33d8202..c36ac77 100644
+index 6a6f4494..d82bb2f5 100644
 --- a/toonz/sources/tnztools/trackertool.cpp
 +++ b/toonz/sources/tnztools/trackertool.cpp
 @@ -112,6 +112,7 @@ hook->setAPos(fid, hook->getBPos(fid));
@@ -35,6 +35,3 @@ index 33d8202..c36ac77 100644
    }
  
    TDataP pasteData(const TDataP &data) { return TDataP(); }
--- 
-2.9.3
-
