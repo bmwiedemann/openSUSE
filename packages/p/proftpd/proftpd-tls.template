@@ -7,19 +7,19 @@
 </IfModule>
 
 <IfModule mod_tls.c>
-    TLSEngine                  on
-    TLSLog                     /var/log/proftpd/tls.log
+    TLSEngine                   on
+    TLSLog                      /var/log/proftpd/tls.log
 
     # Support both SSLv3 and TLSv1, but they should not be used
     #  (known to be weak)
-    TLSProtocol                TLSv1.1 TLSv1.2
+    TLSProtocol                 TLSv1.1 TLSv1.2
 
     # Are clients required to use FTP over TLS when talking to this server?
-    TLSRequired                off
+    TLSRequired                 off
 
     # Server's RSA certificate
-    TLSRSACertificateFile      /etc/proftpd/ssl/proftpd.cert.pem
-    TLSRSACertificateKeyFile   /etc/proftpd/ssl/proftpd.key.pem
+    TLSRSACertificateFile       /etc/proftpd/ssl/proftpd.cert.pem
+    TLSRSACertificateKeyFile    /etc/proftpd/ssl/proftpd.key.pem
 
     # CA (or CA chain) to verify client certs 
     #TLSCACertificateFile        /etc/proftpd/ssl/proftpd.cacert.pem
@@ -28,15 +28,15 @@
     TLSCertificateChainFile     /etc/proftpd/ssl/proftpd.cacert.pem
 
     # Authenticate clients that want to use FTP over TLS?
-    TLSVerifyClient            off
+    TLSVerifyClient             off
 
     # Allow SSL/TLS renegotiations when the client requests them, but
     # do not force the renegotations.  Some clients do not support
     # SSL/TLS renegotiations; when mod_tls forces a renegotiation, these
     # clients will close the data connection, or there will be a timeout
     # on an idle data connection.
-    TLSRenegotiate none
+    TLSRenegotiate              none
 
     # Should Server request a Clients Certificate and send valid CA list ?
-    TLSOptions                 NoCertRequest NoSessionReuseRequired
+    TLSOptions                  NoSessionReuseRequired
 </IfModule>
