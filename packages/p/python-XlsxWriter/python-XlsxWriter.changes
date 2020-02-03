@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:38:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.2.7
+  * Fix for duplicate images being copied to an XlsxWriter file. Excel uses an
+    optimization where it only stores one copy of a repeated/duplicate image in
+    a workbook. XlsxWriter didn't do this which meant that the file size would
+    increase when then was a large number of repeated images. This release fixes
+    that issue and replicates Excel's behavior.
+  * Added documentation on :ref:`num_format_categories` and
+    :ref:`num_format_locale`.
+  * Added note to :func:`protect()` about how it is possible to encrypt an
+    XlsxWriter file using a third party, cross platform, open source tool called
+    `msoffice-crypt <https://github.com/herumi/msoffice>`_.
+- Update to version 1.2.6
+  * Added option to remove style from worksheet tables.
+- Update to version 1.2.5
+  * Added option to add hyperlinks to textboxes. See :ref:`textbox_hyperlink`.
+- Update to version 1.2.4
+  * Added option to link textbox text from a cell. See :ref:`textbox_textlink`.
+  * Added option to rotate text in a textbox. See
+    :ref:`textbox_formatting_rotation`.
+- Update to version 1.2.3
+  * Increased allowable worksheet url length from 255 to 2079 characters, as
+    supported in more recent versions of Excel. A lower or user defined limit
+    can be set via the ``max_url_length`` property in the :func:`Workbook`
+    constructor.
+  * Fixed several issues with hyperlinks in worksheet images.
+- Update to version 1.2.2
+  * Fixed Python 3.8.0 warnings.
+- Update to version 1.2.1
+  * Added the :func:`add_write_handler` method to allow user defined types to be
+    handled by the :func:`write` method. See :ref:`writing_user_types` for more
+    information.
+  * Add support for East Asian vertical fonts in charts.
+- Update to version 1.2.0
+  * Refactored exception handling around the workbook file :func:`close()`
+    method to allow exceptions to be caught and handled. See
+    :ref:`ex_check_close`. Also refactored the code to clean up temp files in
+    the event of an exception.
+  * Added the option to allow chart fonts to be rotated to 270 degrees
+    to give a stacked orientation. See :ref:`chart_fonts`.
+- Update to version 1.1.9
+  * Another fix for issues where zipfile.py raises "ZIP does not support
+    timestamps before 1980" exception.
+
+-------------------------------------------------------------------
 Sat Sep 14 06:44:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Use %pytest, as setup.py test invokes python which does not exist
