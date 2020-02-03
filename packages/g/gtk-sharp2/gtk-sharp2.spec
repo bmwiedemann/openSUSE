@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-sharp2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name gtk-sharp
 
 Name:           gtk-sharp2
-Url:            https://github.com/mono/gtk-sharp
+URL:            https://github.com/mono/gtk-sharp
 Summary:        .Net Language Bindings for GTK+
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/GNOME
 %ifarch ppc64
 Obsoletes:      gtk-sharp2-64bit
@@ -38,11 +38,13 @@ BuildRequires:  monodoc-core
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
 BuildRequires:  vte-devel
-Version:        2.12.41
+Version:        2.12.45
 Release:        0
-Source:         %{_name}-%{version}.tar.gz
+Source0:        https://download.mono-project.com/sources/gtk-sharp212/%{_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix "64bit-portability-issue" error at windowmanager.c:113
 Patch1:         fix-64bit-portability-issue.patch
+# PATCH-FIX-UPSTREAM gtk-sharp2-csharp8.patch dimstar@opensuse.org -- Fix build failure with mcs caused by C#8 changes in mcs
+Patch2:         gtk-sharp2-csharp8.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -50,7 +52,7 @@ This package contains Mono bindings for gtk+, gdk, atk, and pango.
 
 %package gapi
 Summary:        C Source Parser and C Generator
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/GNOME
 Requires:       perl-XML-LibXML
 Requires:       perl-XML-LibXML-Common
@@ -63,7 +65,7 @@ compile a project that uses it to bind such a library.
 
 %package -n gtk-sharp2-doc
 Summary:        Monodoc documentation for gtk-sharp2
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/GUI/GNOME
 
 %description -n gtk-sharp2-doc
@@ -71,7 +73,7 @@ This package contains the gtk-sharp2 documentation for monodoc.
 
 %package -n glib-sharp2
 Summary:        Mono bindings for glib
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/GUI/GNOME
 
 %description -n glib-sharp2
@@ -79,7 +81,7 @@ This package contains Mono bindings for glib.
 
 %package -n glade-sharp2
 Summary:        Mono bindings for glade
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/GUI/GNOME
 
 %description -n glade-sharp2
@@ -87,7 +89,7 @@ This package contains Mono bindings for glade.
 
 %package -n gtk-sharp2-complete
 Summary:        GTK+ and GNOME bindings for Mono (virtual package)
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/GUI/GNOME
 Requires:       glade-sharp2 = %{version}-%{release}
 Requires:       glib-sharp2 = %{version}-%{release}
@@ -105,9 +107,10 @@ package which depends on all gtk-sharp2 subpackages)
 %prep
 %setup -q -n %{_name}-%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
-NOCONFIGURE=yes ./bootstrap-2.12
+autoreconf -fiv
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 # That should come frmo mono-core now
 #export MONO_CAIRO_LIBS=$(pkg-config --libs mono-cairo | sed 's:2.0:4.5:')
