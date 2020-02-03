@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:38:16 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.0.1
+  * Fix pip installation.
+- Update to 4.0
+  * Changed minimum required Python version to 3.6.
+  * Changed minimum required Sphinx version to 1.7.
+  * Added a --parallel option for build_docs.
+  * Fix compatibility with setuptools 42.x.
+
+-------------------------------------------------------------------
 Wed Nov 20 20:13:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.2.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy-helpers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy-helpers
-Version:        3.2.2
+Version:        4.0.1
 Release:        0
 Summary:        Utilities for building and installing Astropy
 License:        BSD-3-Clause
@@ -27,13 +27,13 @@ URL:            https://github.com/astropy/astropy-helpers
 Source:         https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-%{version}.tar.gz
 Source100:      python-astropy-helpers-rpmlintrc
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 1.7}
 BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 1.7
 Requires:       python-numpy
 Requires:       python-numpydoc
 BuildArch:      noarch
