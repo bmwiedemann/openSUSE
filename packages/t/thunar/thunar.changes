@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 31 07:33:50 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.12
+  * NULL is the proper sentinel for g_object_new() (bxo#16310)
+  * Drop timer on finalize (bxo#15305)
+  * Store column width setting asynchronously and only once (bxo#15305)
+  * When move to trash fails, ask whether to delete files (bxo#15975)
+  * Ctrl+Mousewheel does not enlarge/shrink entries
+    (for detailed list view) (bxo#15936)
+  * Extra padding for Eject button when scrollbar is visible (bxo#15312)
+  * Use standard icon instead of custom
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Nov 16 14:20:05 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.8.11
