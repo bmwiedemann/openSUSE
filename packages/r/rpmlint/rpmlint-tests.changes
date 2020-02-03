@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:34:02 UTC 2020 - jsegitz@suse.de
+
+- Update to version 84.87+git20200130.c0de5f4:
+  * libzork4.spec: removed define for 'basename' in libzork4.spec. 
+    This causes build errors because 'basename' is a builtin and it's 
+    not used
+
+-------------------------------------------------------------------
+Thu Jan 30 08:06:14 UTC 2020 - jsegitz@suse.de
+
+- Update to version 84.87+git20200115.9339533:
+  * use uname -m instead of uname -i as the latter is not portable
+  * remove rpm directory upon make clean
+  * Support for different output based on architecture. For that create a
+    <NAME>.<ARCH>.ref file instead of <NAME>.ref E.g. debug.i386.ref
+  * verify that new permissions paths need whitelisting
+
+-------------------------------------------------------------------
 Fri Sep 20 13:22:14 UTC 2019 - mimi.vx@gmail.com
 
 - Update to version 84.87+git20190920.e27d431:

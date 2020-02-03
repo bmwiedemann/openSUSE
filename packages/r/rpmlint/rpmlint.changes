@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jan 31 09:52:39 UTC 2020 - matthias.gerstner@suse.com
+
+- Whitelist a batch of PAM modules that have been forgotted to be whitelisted
+  in the past, or have never been requested to be reviewed before
+  (bsc#1150178).
+  Since we want to add badness to the PAM warning in rpmlint we need to add
+  those entries to avoid build errors of existing packages in Factory.
+
+-------------------------------------------------------------------
+Thu Jan 30 16:18:29 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- config: add 'sanlock' to StandardGroups and StandardUsers
+- config: add 'libvirt' to StandardGroups
+
+-------------------------------------------------------------------
+Thu Jan 30 08:06:15 UTC 2020 - jsegitz@suse.de
+
+- Update to version master:
+  * CheckCronJobs: correct cronjob-unauthorized-file explanation
+  * Use named constants to check file modes
+  * CheckSUIDPermissions.py: check new permission paths
+
+-------------------------------------------------------------------
 Wed Dec 18 11:41:24 UTC 2019 - matthias.gerstner@suse.com
 
 - finally enable the new CheckCronJobs, the check is now available and should

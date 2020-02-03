@@ -148,6 +148,7 @@ setOption('StandardGroups', (
     'kvm',
     'ldap',
     'libstoragemgmt',
+    'libvirt',
     'lightdm',
     'lighttpd',
     'localham',
@@ -220,6 +221,7 @@ setOption('StandardGroups', (
     'root',
     'sabayon-admin',
     'salt',
+    'sanlock',
     'sapdb',
     'sddm',
     'sensu',
@@ -424,6 +426,7 @@ setOption('StandardUsers', (
     'sabayon-admin',
     'sahara',
     'salt',
+    'sanlock',
     'sapdb',
     'sddm',
     'sensu',
@@ -925,6 +928,19 @@ setOption("PAMModules.WhiteList", (
     "pam_pwquality.so",
     # lxc (bsc#1150519)
     "pam_cgfs.so",
+    # google-authenticator-libpam (bsc#1150524) - potential future removal candidate
+    "pam_google_authenticator.so",
+    # pam_u2f (bsc#1087061)
+    "pam_u2f.so",
+    # pam_kwallet (bsc#993806)
+    "pam_kwallet5.so",
+    # pam_dbus (bsc#1039709)
+    "pam_dbus.so",
+    # google-compute-engine (bsc#1146353)
+    "pam_oslogin_admin.so",
+    "pam_oslogin_login.so",
+    # fprintd (bsc#792095)
+    "pam_fprintd.so"
 ))
 
 # Output filters

@@ -2901,4 +2901,40 @@ bugzilla.opensuse.org/show_bug.cgi?id=939831 (forwarded request 330560 from aboe
   work in rpmlint-mini (bsc#1150175)</comment>
     <requestid>758973</requestid>
   </revision>
+  <revision rev="328" vrev="17">
+    <srcmd5>d6799808f2a8bd84de050407fed90c54</srcmd5>
+    <version>1.11</version>
+    <time>1580724725</time>
+    <user>dimstar_suse</user>
+    <comment>You need to stage rpmlint-mini with this, so that it rebuilds. Otherwise
+one of the tests in rpmlint-tests will fail. Or you just sent it through,
+will self heal once rpmlint-mini is rebuild
+
+- Update to version 84.87+git20200130.c0de5f4:
+  * libzork4.spec: removed define for 'basename' in libzork4.spec. 
+    This causes build errors because 'basename' is a builtin and it's 
+    not used
+
+- Update to version 84.87+git20200115.9339533:
+  * use uname -m instead of uname -i as the latter is not portable
+  * remove rpm directory upon make clean
+  * Support for different output based on architecture. For that create a
+    &lt;NAME&gt;.&lt;ARCH&gt;.ref file instead of &lt;NAME&gt;.ref E.g. debug.i386.ref
+  * verify that new permissions paths need whitelisting
+
+- Whitelist a batch of PAM modules that have been forgotted to be whitelisted
+  in the past, or have never been requested to be reviewed before
+  (bsc#1150178).
+  Since we want to add badness to the PAM warning in rpmlint we need to add
+  those entries to avoid build errors of existing packages in Factory.
+
+- config: add 'sanlock' to StandardGroups and StandardUsers
+- config: add 'libvirt' to StandardGroups
+
+- Update to version master:
+  * CheckCronJobs: correct cronjob-unauthorized-file explanation
+  * Use named constants to check file modes
+  * CheckSUIDPermissions.py: check new permission paths</comment>
+    <requestid>769026</requestid>
+  </revision>
 </revisionlist>
