@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:10:38 UTC 2020 - ohering@suse.de
+
+- bsc#1159755 - use fixed qemu-3.1 machine type for HVM
+  qemu4 introduced incompatible changes in pc-i440fx, which revealed
+  a design bug in 'xenfv'. Live migration from domUs started with
+  qemu versions prior qemu4 can not be received with qemu4+. 
+  libxl.lock-qemu-machine-for-hvm.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 09:19:31 MST 2020 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  5de65f84-gnttab-map-always-do-IOMMU-part.patch
+  5de65fc4-x86-avoid-HPET-use-on-certain-Intel.patch
+  5e15e03d-sched-fix-S3-resume-with-smt=0.patch
+  5e16fb6a-x86-clear-per-cpu-stub-page-info.patch
+  5e1da013-IRQ-u16-is-too-narrow-for-evtchn.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 11:43:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

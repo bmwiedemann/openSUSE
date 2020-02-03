@@ -1,0 +1,67 @@
+From: Olaf Hering <olaf@aepfle.de>
+Subject: libxl: lock qemu machine for hvm
+References: bsc#1159755
+
+libxl must not use 'xenfv' as qemu machine type because it maps just to
+'pc', which means 'the latest variant of pc-i440fx'. Each new qemu
+version will make slightly incompatible changes to this machine type,
+which makes it impossible to migrate a domU from one qemu to another.
+This happend to work until qemu-3, but broke with qemu-4:
+
+With qemu.git commit 7fccf2a06890e3bc3b30e29827ad3fb93fe88fea a new
+member smbus_no_migration_support was added, and enabled in two places.
+With qemu.git commit 4ab2f2a8aabfea95cc53c64e13b3f67960b27fdf the
+vmstate_acpi got new elements, which are conditionally filled. As a
+result, an incoming migration expected smbus related data unless smbus
+migration was disabled for a given MachineClass.
+
+Since qemu commit 7fccf2a06890e3bc3b30e29827ad3fb93fe88fea forgot to
+handle xenfv, live migration to receiving hosts using qemu-4.0 and later
+is broken.
+
+Start all new domUs with 'pc-i440fx-3.1' instead of 'xenfv'.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxl/libxl_dm.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+--- a/tools/libxl/libxl_dm.c
++++ b/tools/libxl/libxl_dm.c
+@@ -1751,23 +1751,20 @@ static int libxl__build_device_model_args_new(libxl__gc *gc,
+     for (i = 0; b_info->extra && b_info->extra[i] != NULL; i++)
+         flexarray_append(dm_args, b_info->extra[i]);
+ 
+-    flexarray_append(dm_args, "-machine");
+     switch (b_info->type) {
+     case LIBXL_DOMAIN_TYPE_PVH:
+     case LIBXL_DOMAIN_TYPE_PV:
++        flexarray_append(dm_args, "-machine");
+         flexarray_append(dm_args, "xenpv");
+         for (i = 0; b_info->extra_pv && b_info->extra_pv[i] != NULL; i++)
+             flexarray_append(dm_args, b_info->extra_pv[i]);
+         break;
+     case LIBXL_DOMAIN_TYPE_HVM:
+-        if (!libxl_defbool_val(b_info->u.hvm.xen_platform_pci)) {
+-            /* Switching here to the machine "pc" which does not add
+-             * the xen-platform device instead of the default "xenfv" machine.
+-             */
+-            machinearg = libxl__strdup(gc, "pc,accel=xen");
+-        } else {
+-            machinearg = libxl__strdup(gc, "xenfv");
++        if (libxl_defbool_val(b_info->u.hvm.xen_platform_pci)) {
++            flexarray_append(dm_args, "-device");
++            flexarray_append(dm_args, "xen-platform");
+         }
++        machinearg = libxl__strdup(gc, "pc-i440fx-3.1,accel=xen");
+         if (b_info->u.hvm.mmio_hole_memkb) {
+             uint64_t max_ram_below_4g = (1ULL << 32) -
+                 (b_info->u.hvm.mmio_hole_memkb << 10);
+@@ -1798,6 +1795,7 @@ static int libxl__build_device_model_args_new(libxl__gc *gc,
+             }
+         }
+ 
++        flexarray_append(dm_args, "-machine");
+         flexarray_append(dm_args, machinearg);
+         for (i = 0; b_info->extra_hvm && b_info->extra_hvm[i] != NULL; i++)
+             flexarray_append(dm_args, b_info->extra_hvm[i]);

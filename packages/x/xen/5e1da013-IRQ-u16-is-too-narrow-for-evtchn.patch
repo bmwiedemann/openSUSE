@@ -1,0 +1,32 @@
+# Commit 892b9dcebdb7f646657e11cfdd95a385107bbefa
+# Date 2020-01-14 12:03:47 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+IRQ: u16 is too narrow for an event channel number
+
+FIFO event channels allow ports up to 2^17, so we need to use a wider
+field in struct pirq. Move "masked" such that it may share the 8-byte
+slot with struct arch_pirq on 64-bit arches, rather than leaving a
+7-byte hole in all cases.
+
+Take the opportunity and also add a comment regarding "arch" placement
+within the structure.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/include/xen/irq.h
++++ b/xen/include/xen/irq.h
+@@ -127,9 +127,10 @@ struct vcpu;
+ 
+ struct pirq {
+     int pirq;
+-    u16 evtchn;
+-    bool_t masked;
++    evtchn_port_t evtchn;
+     struct rcu_head rcu_head;
++    bool masked;
++    /* Architectures may require this field to be last. */
+     struct arch_pirq arch;
+ };
+ 

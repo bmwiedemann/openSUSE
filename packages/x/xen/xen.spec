@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -108,8 +108,8 @@ BuildRequires:  ocaml-runtime
 BuildRequires:  acpica
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  xz-devel
+BuildRequires:  pkgconfig(systemd)
 %ifarch x86_64
 BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++
@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_04
+Version:        4.13.0_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -162,6 +162,11 @@ Source57:       xen-utils-0.1.tar.bz2
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         5de65f84-gnttab-map-always-do-IOMMU-part.patch
+Patch2:         5de65fc4-x86-avoid-HPET-use-on-certain-Intel.patch
+Patch3:         5e15e03d-sched-fix-S3-resume-with-smt=0.patch
+Patch4:         5e16fb6a-x86-clear-per-cpu-stub-page-info.patch
+Patch5:         5e1da013-IRQ-u16-is-too-narrow-for-evtchn.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -193,6 +198,7 @@ Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
 Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
+Patch468:       libxl.lock-qemu-machine-for-hvm.patch
 Patch469:       libxl.helper_done-crash.patch
 Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
@@ -356,6 +362,11 @@ Authors:
 %prep
 %setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
 # Upstream patches
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -387,6 +398,7 @@ Authors:
 %patch465 -p1
 %patch466 -p1
 %patch467 -p1
+%patch468 -p1
 %patch469 -p1
 %patch470 -p1
 # python3 conversion patches

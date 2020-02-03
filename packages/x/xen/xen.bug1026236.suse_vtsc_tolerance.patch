@@ -10,7 +10,7 @@ actually handle. The default is zero tolerance.
 
 --- a/xen/arch/x86/time.c
 +++ b/xen/arch/x86/time.c
-@@ -42,6 +42,9 @@
+@@ -43,6 +43,9 @@
  static char __initdata opt_clocksource[10];
  string_param("clocksource", opt_clocksource);
  
@@ -20,7 +20,7 @@ actually handle. The default is zero tolerance.
  unsigned long __read_mostly cpu_khz;  /* CPU clock frequency in kHz. */
  DEFINE_SPINLOCK(rtc_lock);
  unsigned long pit0_ticks;
-@@ -2193,6 +2196,7 @@ int tsc_set_info(struct domain *d,
+@@ -2223,6 +2226,7 @@ int tsc_set_info(struct domain *d,
  
      switch ( tsc_mode )
      {
@@ -28,7 +28,7 @@ actually handle. The default is zero tolerance.
      case TSC_MODE_DEFAULT:
      case TSC_MODE_ALWAYS_EMULATE:
          d->arch.vtsc_offset = get_s_time() - elapsed_nsec;
-@@ -2206,8 +2210,26 @@ int tsc_set_info(struct domain *d,
+@@ -2236,8 +2240,26 @@ int tsc_set_info(struct domain *d,
           * When a guest is created, gtsc_khz is passed in as zero, making
           * d->arch.tsc_khz == cpu_khz. Thus no need to check incarnation.
           */
@@ -52,7 +52,7 @@ actually handle. The default is zero tolerance.
 +
          if ( tsc_mode == TSC_MODE_DEFAULT && host_tsc_is_safe() &&
 -             (d->arch.tsc_khz == cpu_khz ||
-+             ( disable_vtsc ||
++             (disable_vtsc ||
                (is_hvm_domain(d) &&
                 hvm_get_tsc_scaling_ratio(d->arch.tsc_khz))) )
          {

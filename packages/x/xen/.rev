@@ -2395,4 +2395,12 @@
     <comment></comment>
     <requestid>761890</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>9ac012142019eedd61bbf2e417def7d6</srcmd5>
+    <version>4.13.0_06</version>
+    <time>1580724694</time>
+    <user>dimstar_suse</user>
+    <comment>Maintenance update with a few bug fixes.</comment>
+    <requestid>768357</requestid>
+  </revision>
 </revisionlist>
