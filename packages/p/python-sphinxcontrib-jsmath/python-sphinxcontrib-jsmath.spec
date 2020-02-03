@@ -22,10 +22,9 @@
 %define psuffix -test
 %bcond_without test
 %else
-%define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-sphinxcontrib-jsmath
+Name:           python-sphinxcontrib-jsmath%{?psuffix}
 Version:        1.0.1
 Release:        0
 Summary:        Sphinx extension which renders display math in HTML via JavaScript

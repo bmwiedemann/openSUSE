@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 31 01:54:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add required suffix to package name for test package. Although
+  no binary package is created, the OBS blocks any dependent
+  packages until also the test package has been built (Giveaway:
+  main and test flavor create the same .src.rpm)
+
+-------------------------------------------------------------------
 Thu Jun  6 12:26:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by sphinx
