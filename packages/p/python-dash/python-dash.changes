@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:09:44 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.8.0
+  + Added
+    * Two new functions to simplify usage handling URLs and pathnames: `app.get_relative_path` & `app.trim_relative_path`.
+  + Changed
+    * Simplify our build process.
+    * Error messages when providing an incorrect property to a component have been improved: they now specify the component type, library, version, and ID (if available).
+  + Fixed
+    * Fix no_update test to allow copies, such as those stored and retrieved from a cache.
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2

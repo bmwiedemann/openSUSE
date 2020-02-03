@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dash
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
-# For the license file
-%define tag     ff93d2c4331a576b445be87bb3b77576f18b030a
 Summary:        Python framework for building reactive web-apps
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://plot.ly/dash
+URL:            https://github.com/plotly/dash
 Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
