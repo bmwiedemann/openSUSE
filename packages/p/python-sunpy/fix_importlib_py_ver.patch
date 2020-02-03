@@ -1,0 +1,31 @@
+From 5c612e54aa58bec4aff1e56bd214d54cd630249e Mon Sep 17 00:00:00 2001
+From: Ole Streicher <olebole@debian.org>
+Date: Mon, 13 Jan 2020 14:14:05 +0100
+Subject: [PATCH] Fix Python version for requiring importlib_resources
+
+---
+ changelog/3683.trivial.rst | 1 +
+ setup.cfg                  | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/3683.trivial.rst
+
+diff --git a/changelog/3683.trivial.rst b/changelog/3683.trivial.rst
+new file mode 100644
+index 0000000000..ca72dc8693
+--- /dev/null
++++ b/changelog/3683.trivial.rst
+@@ -0,0 +1 @@
++Fix Python version for requiring importlib_resources
+diff --git a/setup.cfg b/setup.cfg
+index 6a7bf1381f..894e488d70 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -38,7 +38,7 @@ install_requires =
+   pandas
+   astropy>=3.1
+   parfive[ftp]
+-  importlib_resources;python_version<"3.8"
++  importlib_resources;python_version<"3.7"
+ 
+ [options.extras_require]
+ database = sqlalchemy

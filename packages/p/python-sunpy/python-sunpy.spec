@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-sunpy
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_importlib_py_ver.patch -- https://github.com/sunpy/sunpy/pull/3683
+Patch0:         fix_importlib_py_ver.patch
 Source100:      python-sunpy-rpmlintrc
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module asdf}
@@ -43,6 +45,7 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module suds-jurko}
+BuildRequires:  %{python_module drms}
 BuildRequires:  fdupes
 BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-rpm-macros
@@ -71,13 +74,18 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zeep}
 # /SECTION
+%if %{python3_version_nodots} < 37
+BuildRequires:  %{python_module importlib_resources}
+Requires:       python-importlib_resources
+%endif
 %python_subpackages
 
 %description
 SunPy is a Python library for solar physics data analysis.
 
 %prep
-%setup -q -n sunpy-%{version}
+%autosetup -p1 -n sunpy-%{version}
+sed -i -e '/^#!\//, 1d' sunpy/extern/appdirs.py
 chmod -x sunpy/data/test/cor1_20090615_000500_s4c1A.fts
 
 %build
