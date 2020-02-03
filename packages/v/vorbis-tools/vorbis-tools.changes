@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 31 23:41:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Thu Sep 24 17:46:49 CEST 2015 - tiwai@suse.de
 
 - Fix buffer overflow in aiff_open() (CVE-2015-6749, bsc#943795):

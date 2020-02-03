@@ -1,7 +1,7 @@
 #
 # spec file for package vorbis-tools
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           vorbis-tools
 Version:        1.4.0
 Release:        0
 Summary:        Ogg Vorbis Tools
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.xiph.org/
-Source0:        http://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.gz
+URL:            https://www.xiph.org/
+Source0:        https://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE warning-fixes.diff -- Fix rpm post-build-check failure for serious compiler warnings
 Patch0:         warning-fixes.diff
 # PATCH-FIX-OPENSUSE vorbis-tools-cflags.diff bnc#93888 -- Remove -fsigned-char option
@@ -49,7 +49,6 @@ BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkg-config
 BuildRequires:  speex-devel
-Recommends:     %{name}-lang = %{version}
 
 %description
 This package contains some tools for Ogg Vorbis:
@@ -72,6 +71,7 @@ Authors:
 
 
 %lang_package
+
 %prep
 %setup -q
 %patch0
@@ -105,7 +105,8 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}-%{version}/
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS CHANGES COPYING README
+%license COPYING
+%doc AUTHORS CHANGES README
 %doc ogg123/ogg123rc-example
 %{_bindir}/ogg123
 %{_bindir}/oggdec
