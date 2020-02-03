@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 18:54:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove no longer needed BuildRequires: KF5AkonadiMime (18.04),
+  Qt5WebEngineWidgets/Qt5WebEngine (17.12) and Grantlee (17.12). 
+  Add some previously implicit KF5 dependencies.
+
+-------------------------------------------------------------------
 Tue Jan  7 10:08:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1

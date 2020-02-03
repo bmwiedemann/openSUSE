@@ -18,7 +18,7 @@
 
 %define rname akonadi-contacts
 %define sonum   5
-%define kf5_version 5.60.0
+%define kf5_version 5.63.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
@@ -36,27 +36,25 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
+BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.6.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
 Recommends:     %{name}-lang
 Provides:       akonadi-contacts = %{version}
 Obsoletes:      akonadi-contacts < %{version}
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 This package provides a library used for handling personal contacts,
