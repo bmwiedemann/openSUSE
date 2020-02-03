@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-Pint
-Version:        0.9
+Version:        0.10.1
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
@@ -27,12 +28,16 @@ URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/P/Pint/Pint-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module uncertainties}
 BuildRequires:  fdupes
 BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
 Requires:       python-uncertainties
 Recommends:     python-numpy
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,11 +62,13 @@ the complete list without changing the source code.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# Test assumes 64bit arch
+# See: https://github.com/hgrecco/pint/issues/1006
+%pytest -k 'not test_result_type_numpy_func'
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS CHANGES README
+%doc AUTHORS CHANGES README.rst
 %{python_sitelib}/Pint-%{version}-py*.egg-info
 %{python_sitelib}/pint/
 

@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:13:22 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.1
+  * Fixed bug introduced in 0.10 that prevented creation of size-zero Quantities
+    from NumPy arrays by multiplication.
+  * Fixed several Sphinx issues. Fixed intersphinx hooks to all classes missing.
+  * Fixed __array__ signature to match numpy docs
+- Update to 0.10
+  * **BREAKING CHANGE**:
+    Boolean value of Quantities with offsets units is ambiguous, and so, now a ValueError
+    is raised when attempting to cast such a Quantity to boolean.
+  * **BREAKING CHANGE**:
+    `__array_ufunc__` has been implemented on `pint.Unit` to permit
+    multiplication/division by units on the right of ufunc-reliant array types (like
+    Sparse) with proper respect for the type casting hierarchy. However, until an
+    upstream issue with NumPy is resolved,
+    this breaks creation of Masked Array Quantities by multiplication on the right.
+  * Documentation on Pint's array type compatibility has been added to the NumPy support
+    page, including a graph of the duck array type casting hierarchy as understood by Pint
+    for N-dimensional arrays.
+  * Improved compatibility for downcast duck array types like Sparse.COO. A collection
+    of basic tests has been added.
+  * Improvements to wraps and check:
+    >  fail upon decoration (not execution) by checking wrapped function signature against
+          wraps/check arguments.
+          (might BREAK test code)
+    >  wraps only accepts strings and Units (not quantities) to avoid confusion with magnitude.
+          (might BREAK code not conforming to documentation)
+    >  when strict=True, strings that can be parsed to quantities are accepted as arguments.
+  * Add revolutions per second (rps)
+  * Improved compatibility for upcast types like xarray's DataArray or Dataset, to which
+    Pint Quantities now fully defer for arithmetic and NumPy operations. A collection of
+    basic tests for proper deferral has been added (for full integration tests, see
+    xarray's test suite). The list of upcast types is available at
+    `pint.compat.upcast_types` in the API.
+  * Moved docstrings to Numpy Docs
+  * Added tests for immutability of the magnitude's type under common operations
+  * Switched test configuration to pytest and added tests of Pint's matplotlib support.
+  * Deprecate array protocol fallback except where explicitly defined (`__array__`,
+    `__array_priority__`, `__array_function__`, `__array_ufunc__`). The fallback will
+    remain until the next minor version, or if the environment variable
+    `PINT_ARRAY_PROTOCOL_FALLBACK` is set to 0.
+  * Removed eval usage when creating UnitDefinition and PrefixDefinition from string.
+  * Added `fmt_locale` argument to registry.
+  * Better error message when Babel is not installed.
+  * It is now possible to redefine units within a context, and use pint for currency
+    conversions.
+  * NaN (any capitalization) in a definitions file is now treated as a number
+  * Added slinch to Avoirdupois group
+  * Fix bug where ureg.disable_contexts() would fail to fully disable throwaway contexts
+  * Use black, flake8, and isort on the project
+  * Auto-increase package version at every commit when pint is installed from the git tip,
+    e.g. pip install git+https://github.com/hgrecco/pint.git.
+  * Fix HTML (Jupyter Notebook) and LateX representation of some units
+  * Fixed the definition of RKM unit as gf / tex
+  * **BREAKING CHANGE**:
+    Implement NEP-18 <https://numpy.org/neps/nep-0018-array-function-protocol.html> for
+    Pint Quantities. Most NumPy functions that previously stripped units when applied to
+    Pint Quantities will now return Quantities with proper units (on NumPy v1.16 with
+    the array_function protocol enabled or v1.17+ by default) instead of ndarrays. Any
+    non-explictly-handled functions will now raise a "no implementation found" TypeError
+    instead of stripping units. The previous behavior is maintained for NumPy < v1.16 and
+    when the array_function protocol is disabled.
+  * Implementation of NumPy ufuncs has been refactored to share common utilities with
+    NumPy function implementations
+  * Pint Quantities now support the `@` matrix mulitiplication operator (on NumPy v1.16+),
+    as well as the `dot`, `flatten`, `astype`, and `item` methods.
+  * **BREAKING CHANGE**:
+    Fix crash when applying pprint to large sets of Units.
+    DefinitionSyntaxError is now a subclass of SyntaxError (was ValueError).
+    DimensionalityError and OffsetUnitCalculusError are now subclasses of TypeError (was
+    ValueError).
+  * All Exceptions can now be pickled and can be accessed from the top-level package.
+  * Mark regex as raw strings to avoid unnecessary warnings.
+  * Implement registry-based string preprocessing as list of callables.
+  * Context activation and deactivation is now instantaneous; drastically reduced memory
+    footprint of a context (it used to be ~1.6MB per context; now it's a few bytes)
+  * **BREAKING CHANGE**:
+    Drop support for Python < 3.6, numpy < 1.14, and uncertainties < 3.0;
+    if you still need them, please install pint 0.9.
+    Pint now adheres to NEP-29 <https://numpy.org/neps/nep-0029-deprecation_policy.html>
+    as a rolling dependencies version policy.
+  * Show proper code location of UnitStrippedWarning exception.
+  * Reimplement _Quantity.__iter__ to return an iterator.
+  * Add http://www.dimensionalanalysis.org/ to README
+  * Allow for user defined units formatting.
+  * Quantity, Unit, and Measurement are now accessible as top-level classes
+    (pint.Quantity, pint.Unit, pint.Measurement) and can be
+    instantiated without explicitly creating a UnitRegistry
+  * Contexts don't need to have a name anymore
+  * "Board feet" unit added top default registry
+  * New syntax to add aliases to already existing definitions
+  * copy.deepcopy() can now copy a UnitRegistry
+  * Enabled many tests in test_issues when numpy is not available
+  * Document the '_' symbols found in the definitions files
+  * Improve OffsetUnitCalculusError message.
+  * Atomic units for intensity and electric field.
+  * Allow np arrays of scalar quantities to be plotted.
+  * Updated gravitational constant to CODATA 2018.
+  * Update to new SI definition and CODATA 2018.
+  * Allow units with aliases but no symbol.
+  * Fix definition of dimensionless units and constants.
+  * Added RKM unit (used in textile industry).
+  * Remove __name__ method definition in BaseRegistry.
+  * Added t_force, short_ton_force and long_ton_force.
+  * Fixed error message of DefinitionSyntaxError
+  * Expanded the potential use of Decimal type to parsing.
+  * Fixed gram name to allow translation by babel.
+  * Default group should only have orphan units.
+  * Added custom constructors from_sequence and from_list.
+  * Add quantity formatting with ndarray.
+  * Add pint-pandas notebook docs
+  * Use µ as default abbreviation for micro.
+
+-------------------------------------------------------------------
 Sat Mar 30 19:36:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix funcsigs dependency
