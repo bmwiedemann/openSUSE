@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 29 19:37:53 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 3.55:
+  * Improved handling of empty files in xterm256 and truecolor
+    output (gl#saalen/highlight#147).
+  * Added EncodingHint attributes to filetypes.conf and language
+    definitions (gl#saalen/highlight#141).
+  * CLI: Allowed file paths as --theme and --syntax argument
+    (gl#saalen/highlight#145).
+  * GUI: Removed deprecated QTime API call.
+
+-------------------------------------------------------------------
 Mon Nov 11 19:43:49 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 3.54:

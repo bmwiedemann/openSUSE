@@ -501,4 +501,19 @@
 - Use lang_package macro for highlight-gui-lang declaration.</comment>
     <requestid>747436</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7a757422e45344f5fa8a1c2777d88917</srcmd5>
+    <version>3.55</version>
+    <time>1580724715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.55:
+  * Improved handling of empty files in xterm256 and truecolor
+    output (gl#saalen/highlight#147).
+  * Added EncodingHint attributes to filetypes.conf and language
+    definitions (gl#saalen/highlight#141).
+  * CLI: Allowed file paths as --theme and --syntax argument
+    (gl#saalen/highlight#145).
+  * GUI: Removed deprecated QTime API call.</comment>
+    <requestid>768443</requestid>
+  </revision>
 </revisionlist>
