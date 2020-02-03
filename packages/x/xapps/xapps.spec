@@ -1,7 +1,7 @@
 #
 # spec file for package xapps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define soname  libxapp
 %define sover   1
 Name:           xapps
-Version:        1.4.8
+Version:        1.6.10
 Release:        0
 Summary:        XApp library and common files
 License:        GPL-3.0-or-later
@@ -100,11 +100,19 @@ desktop environments and required to implement cross-DE solutions.
 This package includes files that are shared between several XApp
 applications (i18n files and configuration schemas).
 
+%package        mate
+Summary:        Mate status applet with HIDPI support
+License:        GPL-3.0-or-later
+Group:          System/GUI/Other
+Requires:       %{soname}%{sover} = %{version}
+
+%description    mate
+Mate status applet with HIDPI support
+
 %lang_package -n %{name}-common
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %meson \
@@ -162,6 +170,13 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %{_datadir}/icons/hicolor/*/actions/*.*
 %{_datadir}/icons/hicolor/*/categories/*.*
 %{_datadir}/glib-2.0/schemas/org.x.apps.*.xml
+
+%files mate
+%dir %{_datadir}/mate-panel/
+%dir %{_datadir}/mate-panel/applets/
+%{_prefix}/lib/xapps/
+%{_datadir}/dbus-1/services/org.mate.panel.applet.MateXAppStatusAppletFactory.service
+%{_datadir}/mate-panel/applets/org.x.MateXAppStatusApplet.mate-panel-applet
 
 %files common-lang -f xapp.lang
 

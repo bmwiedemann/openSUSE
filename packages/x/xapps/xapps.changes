@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:38:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.6.10
+  * xapp-status-icon.c: Sync the visible state of the fallback 
+    GtkStatusIcon when it is first created.
+  * xapp-status-icon.c: Fix the timeout duration for 
+    xapp_status_icon_any_monitors.
+- Changes in previous versions since 1.4.8
+  * xapp-icon-chooser-dialog.c: fix hidpi icon rendering and spacing.
+  * xapp-status-icon.c: Allow a primary-click to activate appindicator 
+    icons when they have set a 'secondary activate' target.  Otherwise, 
+    have primary open the menu as it ordinarily would.
+  * xapp-status-icon.c: Reposition the menu when part of it would end 
+    up below the workarea of the monitor.
+  * mate-xapp-status-applet.py: Call widget.show_all() before binding 
+    to the proxy's visible property.  The binding is one way only - 
+    local changes can override the state initially set by the proxy.
+  * mate-xapp-status-applet.py: Add a small margin at either end of 
+    the applet, and allow ctrl-right-clicks anywhere on it, so the user 
+    can bring up the About menu.
+  * mate-xapp-status-applet.py: Hardcode symbolic icons to 22px.
+  * Mate applet: Don't use a handle
+  * mate applet: fix configuring
+  * mate applet: fix regression in install location
+  * debian: fixup changed file locations
+  * mate-xapp-status-applet.py: handle a null icon name correctly.
+  * test-scripts: have xapp-status-applet sort icons in the same manner 
+    the real applets do (symbolic to the right, then by alpha process name).
+  * xapp-status-icon.c: Keep an account of button presses so an orphan 
+    release doesn't activate or pop up a menu.
+  * xapp-status-icon: Track and notify changes in types of support for 
+    the icon - notify when a status icon is picked up by a native applet, 
+    a traditional system tray, or is not being picked up by anything.
+  * xapp-status-icon.c: Replace g_enum_to_string with a custom function, 
+    this isn't available with lmde's glib.
+  * xapp-status-icon: Add a function to check for the existence of any 
+    active status applets.
+  * Implement XAppStatusIcon (gh#linuxmint/xapps#67)
+  * libxapp: cleanup compile warnings (gh#linuxmint/xapps#69)
+  * status icons: Add a monitor class for applets - XAppStatusIconMonitor, 
+    (gh#linuxmint/xapps#70)
+  * test-scripts: add a status-icon-via-libappindicator script.
+  * xapp-status-icon.c: Remove leftover debug line
+  * xapp-status-icon: When a menu is provided to XAppStatusIcon, handle 
+    positioning and showing it internally instead of requiring the application 
+    to do it.
+  * xapp-status-icon.c: Use G_ class macros to cleanup header file, fix 
+    xapp_status_icon_get_menu()  (copy/paste error).
+  * Add some useful build C-flags, fix test script exec bit.
+  * Add API reference in docs/reference/
+  * Set theme jekyll-theme-architect
+  * README: Add link to API reference
+  * xapp-status-icon.c: Emit 'activate' during fallback status icon activation.
+  * docs: Generate html automatically
+  * xapp-icon-chooser-dialog.c: Remove unused variable
+  * icon chooser dialog: add default_icon property
+  * icon chooser dialog: add *_add_custom_category () function
+  * Add a Mate status applet (gh#linuxmint/xapps#72)
+  * xapp-status-icon.c: Refactor event handling.
+  * xapp-icon-chooser-dialog.c: prevent segfault on non-existent icon name 
+    (gh#linuxmint/xapps#76)
+  * IconChooserButton: Add the ability to set the default category 
+    (gh#linuxmint/xapps#77)
+  * xapp-icon-chooser-button.c: add missing dispose method (gh#linuxmint/xapps#78)
+  * mate-xapp-status-applet.py: Make improvements to event handling and widget 
+    appearance during clicks.
+  * Add a custom install script for installing the generated header file.
+  * Add i18n for the mate applet.
+  * mate applet: Add an about window, use more appropriate install locations, move 
+    build replacement strings to a separate imported file.
+  * xapp-status-icon.c: During async ops, when checking for cancellation, use the 
+    error code, as the cancellable may have reset in the interim, but the code will
+    be correct.
+  * status icons: Support multiple icons from the same process.
+  * Revert "docs: Generate html automatically"
+  * Add a makedoc script to update docs/reference
+  * Update reference docs
+  * xapp-icon-chooser-dialog.c: color the symbolic icons properly and fix hidpi 
+    (gh#linuxmint/xapps#79)
+  * Update translations
+
+- Rebased xapps-void-return-no-return.patch
+- Added mate subpackage for new mate xapp applet
+
+
+-------------------------------------------------------------------
 Sun Jul 28 03:51:39 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update to version 1.4.8
