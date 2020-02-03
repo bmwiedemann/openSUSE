@@ -1,7 +1,7 @@
 #
 # spec file for package python-quantities
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-quantities
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
 URL:            https://github.com/python-quantities/python-quantities/
 Source:         https://github.com/python-quantities/python-quantities/archive/v%{version}.tar.gz#/python-quantities-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no_ufunc_clip.patch -- https://github.com/python-quantities/python-quantities/issues/158
-Patch0:         no_ufunc_clip.patch
 BuildRequires:  %{python_module numpy >= 1.8.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
