@@ -1,7 +1,7 @@
 #
 # spec file for package python-swifter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-swifter
-Version:        0.296
+Version:        0.300
 Release:        0
 Summary:        Tool to speed up pandas calculations
 License:        MIT
 URL:            https://github.com/jmcarpenter2/swifter
 Source:         https://github.com/jmcarpenter2/swifter/archive/%{version}.tar.gz#/swifter-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- use_current_exe.spec -- https://github.com/jmcarpenter2/swifter/pull/92
-Patch0:         use_current_exe.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,7 +54,6 @@ pandas dataframe or series in the fastest available manner
 
 %prep
 %setup -q -n swifter-%{version}
-%autopatch -p1
 
 %build
 %python_build
