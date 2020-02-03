@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 30 15:57:15 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.7.2
+  + New Features
+    * added liftering support to MFCC inversion. *Ayoub Malek*
+    * added `pathlib` support to `core.load`. *Stef van der Struijk*
+    * added "mu-law" compression and expansion (companding). *Brian McFee*
+  + Bug fixes
+    * fixed errors in dynamic time warping with `NaN` inputs and detection
+      of invalid warping paths. *Frank Zalkow, Brian McFee*
+    * fixed frame-length normalization in spectrogram-based RMS energy
+      calculation. *Shunsuke Hidaka*
+    * fixed the length of signals produced by `core.tone`. *Brian McFee*
+  + Documentation
+    * removed math formatting from documentation. *Vincent Lostanlen*
+    * corrected documentation for DTW. *Eric Semeniuc*
+    * corrected typos in time-frequency reassignment spectrogram
+      documentation. *Scott Seyfarth*
+    * removed `dct_type=None` as an option in MFCC documentation. *Brian McFee*
+  + Other changes
+    * expanded normalization modes in Mel basis construction. *Brian McFee*
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2
