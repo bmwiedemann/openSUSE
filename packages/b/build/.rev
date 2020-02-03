@@ -1192,4 +1192,22 @@ Stephan Kulow (2):
 - do not retry automatically on disk full error</comment>
     <requestid>766951</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>a29375ce0ef5219e9bc7cc7b01989955</srcmd5>
+    <version>20200131</version>
+    <time>1580724637</time>
+    <user>dimstar_suse</user>
+    <comment>- fix regression in &amp;&amp; operator handling of rpm spec file parser
+- Correctly expand macros defined with %global
+
+- 15.2 config: temporary revert gcrypt preinstall until distro has changed
+- factory config: ignore libxtables for iproute2, not needed for ip tool
+- Follow upstream rpm changes in regard to logical ops
+- Fix macro expansion of lines containing newlines
+- add missing header file to avoid compile warnings
+
+- support OBS-Milestone comment for kiwi
+- switch to preinstall expansion for factory</comment>
+    <requestid>769043</requestid>
+  </revision>
 </revisionlist>
