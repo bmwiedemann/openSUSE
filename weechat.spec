@@ -1,7 +1,7 @@
 #
 # spec file for package weechat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(tcl)
 Requires:       ca-certificates
 Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
-# without scripts it is bit annoying
+# without scripts it is a bit annoying
 Recommends:     %{name}-perl = %{version}
 Recommends:     %{name}-python = %{version}
 Obsoletes:      %{name}-guile
@@ -118,7 +118,7 @@ Summary:        Aspell and Enchant Spell-Checking Support for %{name}
 Group:          Productivity/Networking/IRC
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and enchant-2-backend-hunspell)
-Obsoletes:      %{name}-aspell < 2.6
+Obsoletes:      %{name}-aspell < %{version}
 Provides:       %{name}-aspell = %{version}
 
 %description spell
@@ -137,9 +137,12 @@ export CFLAGS="%{optflags}"
 # no-undefined for perl seem not to work as desired
 %cmake \
     -DLIBDIR="%{_libdir}" \
-    -DENABLE_PYTHON3=ON \
+    -DENABLE_PYTHON=ON \
     -DPYTHON_LIBRARY="%{_libdir}/libpython%{py3_ver}m.so" \
     -DENABLE_ENCHANT=ON \
+    -DENABLE_GUILE=OFF \
+    -DENABLE_JAVASCRIPT=OFF \
+    -DENABLE_PHP=OFF \
     -DCA_FILE=%{_sysconfdir}/ssl/ca-bundle.pem
 %make_jobs
 
