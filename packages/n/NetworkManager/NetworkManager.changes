@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:36:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.6:
+  + Various fixes for the internal DHCP client.
+  + Slave devices now do not get created/activated if master is
+    missing.
+  + Fixed 'startup-complete' bug where NetworkManager would reach
+    the network-online.target even when not all the connections had
+    been tried.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:04:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
