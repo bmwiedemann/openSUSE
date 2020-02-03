@@ -126,4 +126,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>754061</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>921de0bdebeac5b476adaffe1193b6ed</srcmd5>
+    <version>0.20.1</version>
+    <time>1580724679</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ectd support (no current etcd C-library available)</comment>
+    <requestid>768307</requestid>
+  </revision>
 </revisionlist>

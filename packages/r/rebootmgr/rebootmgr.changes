@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 29 12:40:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable ectd support (no current etcd C-library available)
+
+-------------------------------------------------------------------
 Wed Nov 27 13:59:47 UTC 2019 - Ignaz Forster <iforster@suse.com>
 
 - Fix %posttrans script returning an error code
