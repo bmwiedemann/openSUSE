@@ -1284,4 +1284,12 @@ Removal of SuSEfirewall2 service.
     <comment></comment>
     <requestid>762858</requestid>
   </revision>
+  <revision rev="151" vrev="51">
+    <srcmd5>fd117dc7ef1ca3e06da0bb13e4b4c8a3</srcmd5>
+    <version>unknown</version>
+    <time>1580724643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769032</requestid>
+  </revision>
 </revisionlist>
