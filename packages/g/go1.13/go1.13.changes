@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 29 00:18:21 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.7 (released 2020/01/28) includes two security fixes to
+  the crypto/x509 package.
+  * go#36838 crypto/x509, x/crypto/cryptobyte: panic in certificate parsing
+  * go#36835 crypto/x509: certificate validation bypass on Windows 10
+
+-------------------------------------------------------------------
 Fri Jan 10 08:25:35 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.13.6 (released 2020/01/09) includes fixes to the runtime
