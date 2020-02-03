@@ -1,7 +1,7 @@
 #
 # spec file for package python-imreg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-imreg
-Version:        2019.1.1
+Version:        2020.1.1
 Release:        0
 Summary:        FFT based image registration
 License:        BSD-3-Clause
@@ -28,12 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/i/imreg/imreg-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.11
-Requires:       python-scipy >= 1.0
+Requires:       python-numpy >= 1.14.5
+Requires:       python-scipy >= 1.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.11}
-BuildRequires:  %{python_module scipy >= 1.0}
+BuildRequires:  %{python_module numpy >= 1.14.5}
+BuildRequires:  %{python_module scipy >= 1.3}
 # /SECTION
 %python_subpackages
 
