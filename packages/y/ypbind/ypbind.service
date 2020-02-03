@@ -11,8 +11,7 @@ Type=notify
 NotifyAccess=all
 EnvironmentFile=-/etc/sysconfig/ypbind
 ExecStartPre=/usr/lib/ypbind/ypbind-systemd-pre
-ExecStartPost=/usr/lib/ypbind/ypbind-systemd-post
-ExecStart=/usr/lib/ypbind/ypbind-systemd-exec
+ExecStart=/usr/sbin/ypbind -n $YPBIND_OPTIONS
 ExecStopPost=/bin/sh -c "/bin/rm -f /var/yp/binding/* /var/run/ypbind.pid"
 ExecReload=/bin/kill -HUP $MAINPID
 

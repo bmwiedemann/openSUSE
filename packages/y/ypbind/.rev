@@ -441,4 +441,19 @@
   - check if libc provides already gettid()</comment>
     <requestid>719774</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>91b22f2cfe0c780afa06c98de299fd02</srcmd5>
+    <version>2.7.2</version>
+    <time>1580724755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.2
+  - change /run/yp.conf to /run/netconfig/yp.conf
+
+- ypbind-systemd-pre: fix path of second yp.conf
+
+- Update to version 2.7.1
+  - try /run/yp.conf if /etc/yp.conf does not exist
+  - strip down /etc/sysconfig/ypbind to a generic option list only</comment>
+    <requestid>769012</requestid>
+  </revision>
 </revisionlist>

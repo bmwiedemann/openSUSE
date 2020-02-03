@@ -21,12 +21,12 @@ if [ "$mydomain" = "(none)" -o "x$mydomain" = "x" ]; then
  	fi
 fi
 
-## If we don't have a /etc/yp.conf file, skip starting of
+## If we don't have a yp.conf file, skip starting of
 ## ypbind and return with "program not configured"
 ## if you add the -broadcast Option later, comment this out.
-if [ ! -f /etc/yp.conf -a "$YPBIND_BROADCAST" != "yes" ] ; then
+if [ ! -f /etc/yp.conf -a ! -f /run/netconfig/yp.conf -a "$YPBIND_BROADCAST" != "yes" ] ; then
 # Tell the user this has skipped
-  echo -n " . . . . . . . . . . ${attn}/etc/yp.conf not found${norm}"
+  echo -n " . . . . . . . . . . ${attn}yp.conf not found${norm}"
   exit 1
 fi
 

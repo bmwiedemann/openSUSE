@@ -16,7 +16,7 @@
 #
 
 Name:           ypbind
-Version:        2.6.1
+Version:        2.7.2
 Release:        0
 Summary:        NIS client daemon
 License:        GPL-2.0-only
@@ -25,9 +25,7 @@ URL:            https://github.com/thkukuk/ypbind-mt/
 Source:         %{name}-mt-%{version}.tar.xz
 Source2:        ypbind.service
 Source3:        ypbind-systemd-pre
-Source4:        ypbind-systemd-post
-Source5:        ypbind-systemd-exec
-Source6:        ypbind.conf
+Source4:        ypbind.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnsl) >= 1.0.1
 BuildRequires:  pkgconfig(libsystemd)
@@ -66,12 +64,10 @@ touch %{buildroot}%{_sysconfdir}/yp.conf
 install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/ypbind.service
 mkdir -p %{buildroot}%{_libexecdir}/ypbind
 install -m 755 %{SOURCE3} %{buildroot}%{_libexecdir}/ypbind/ypbind-systemd-pre
-install -m 755 %{SOURCE4} %{buildroot}%{_libexecdir}/ypbind/ypbind-systemd-post
-install -m 755 %{SOURCE5} %{buildroot}%{_libexecdir}/ypbind/ypbind-systemd-exec
 # create symlink for rcypbind
 ln -s /sbin/service %{buildroot}%{_sbindir}/rcypbind
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
-install -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/tmpfiles.d/
+install -m 644 %{SOURCE4} %{buildroot}%{_prefix}/lib/tmpfiles.d/
 
 %pre
 %service_add_pre ypbind.service
