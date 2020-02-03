@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyDOE2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyDOE2
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Design of experiments for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/clicumu/pyDOE2
+URL:            https://github.com/clicumu/pyDOE2
 Source:         https://files.pythonhosted.org/packages/source/p/pyDOE2/pyDOE2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
