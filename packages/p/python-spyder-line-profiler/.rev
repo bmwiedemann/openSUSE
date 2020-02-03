@@ -23,4 +23,12 @@
     <comment>- Skip py2 build as we want to remove python2 only spyder</comment>
     <requestid>746005</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec570ae9d3346ec1fe8d1384b7e72f43</srcmd5>
+    <version>0.2.0</version>
+    <time>1580724814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768884</requestid>
+  </revision>
 </revisionlist>
