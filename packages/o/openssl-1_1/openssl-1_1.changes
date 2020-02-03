@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Jan 28 12:14:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Support for CPACF enhancements - part 2 (crypto) [jsc#SLE-7575]
+- Add patches:
+  * openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
+  * openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 14:32:28 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Temporarily ignore broken OPENSSL_INIT_NO_ATEXIT due to our
+  layered FIPS initialization (bsc#1161789)
+  * openssl-fips-ignore_broken_atexit_test.patch
+
+-------------------------------------------------------------------
+Wed Jan 22 13:59:15 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Import FIPS patches from SLE-15
+  * openssl-fips-dont_run_FIPS_module_installed.patch
+  * openssl-fips_mode.patch
+  * openssl-ship_fips_standalone_hmac.patch
+  * openssl-fips-clearerror.patch
+  * openssl-fips-selftests_in_nonfips_mode.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 16:08:21 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Don't run FIPS power-up self-tests when the checksum files aren't
+  installed (bsc#1042392)
+  * add openssl-fips-run_selftests_only_when_module_is_complete.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 11:10:42 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Import FIPS patches from Fedora (bsc#1157702, jsc#SLE-9553)
+  * openssl-1.1.1-fips-crng-test.patch
+  * openssl-1.1.1-fips-post-rand.patch
+  * openssl-1.1.1-fips.patch
+  * openssl-1.1.0-issuer-hash.patch
+  * openssl-1.1.1-evp-kdf.patch
+  * openssl-1.1.1-ssh-kdf.patch replaces openssl-jsc-SLE-8789-backport_KDF.patch
+- keep EVP_KDF functions at version 1.1.1d for backward compatibility
+  * add openssl-keep_EVP_KDF_functions_version.patch
+
+-------------------------------------------------------------------
+Fri Dec 20 13:44:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Support for CPACF enhancements - part 1 (crypto) [bsc#1152695, jsc#SLE-7861]
+- Add patches:
+  * openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-environment.patch
+  * openssl-s390x-assembly-pack-add-support-for-pcc-and-kma-inst.patch
+  * openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-man-page.patch
+  * openssl-s390x-assembly-pack-update-OPENSSL_s390xcap-3.patch
+  * openssl-s390xcpuid.pl-fix-comment.patch
+  * openssl-assembly-pack-accelerate-scalar-multiplication.patch
+  * openssl-Enable-curve-spefific-ECDSA-implementations-via-EC_M.patch
+  * openssl-s390x-assembly-pack-accelerate-ECDSA.patch
+  * openssl-OPENSSL_s390xcap.pod-list-msa9-facility-bit-155.patch
+  * openssl-s390x-assembly-pack-cleanse-only-sensitive-fields.patch
+  * openssl-s390x-assembly-pack-fix-OPENSSL_s390xcap-z15-cpu-mas.patch
+  * openssl-s390x-assembly-pack-fix-msa3-stfle-bit-detection.patch
+  * openssl-Fix-9bf682f-which-broke-nistp224_method.patch
+
+-------------------------------------------------------------------
 Wed Dec 18 16:29:46 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Obsolete libopenssl-1_0_0-devel in order to avoid conflict upon

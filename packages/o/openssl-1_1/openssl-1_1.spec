@@ -50,10 +50,41 @@ Patch10:        0003-crypto-poly1305-asm-poly1305-s390x.pl-add-vx-code-pa.patch
 Patch11:        0004-s390x-assembly-pack-fix-formal-interface-bug-in-chac.patch
 Patch12:        0005-s390x-assembly-pack-import-chacha-from-cryptogams-re.patch
 Patch13:        0006-s390x-assembly-pack-import-poly-from-cryptogams-repo.patch
-Patch14:        openssl-jsc-SLE-8789-backport_KDF.patch
 # OpenSSL Security Advisory [6 December 2019] bsc#1158809 CVE-2019-1551
 # PATCH-FIX-UPSTREAM Integer overflow in RSAZ modular exponentiation on x86_64
 Patch15:        openssl-1_1-CVE-2019-1551.patch
+# PATCH-FIX-UPSTREAM bsc#1152695 jsc#SLE-7861 Support for CPACF enhancements - part 1 (crypto)
+Patch16:        openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-environment.patch
+Patch17:        openssl-s390x-assembly-pack-add-support-for-pcc-and-kma-inst.patch
+Patch18:        openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-man-page.patch
+Patch19:        openssl-s390x-assembly-pack-update-OPENSSL_s390xcap-3.patch
+Patch20:        openssl-s390xcpuid.pl-fix-comment.patch
+Patch21:        openssl-assembly-pack-accelerate-scalar-multiplication.patch
+Patch22:        openssl-Enable-curve-spefific-ECDSA-implementations-via-EC_M.patch
+Patch23:        openssl-s390x-assembly-pack-accelerate-ECDSA.patch
+Patch24:        openssl-OPENSSL_s390xcap.pod-list-msa9-facility-bit-155.patch
+Patch25:        openssl-s390x-assembly-pack-cleanse-only-sensitive-fields.patch
+Patch26:        openssl-s390x-assembly-pack-fix-OPENSSL_s390xcap-z15-cpu-mas.patch
+Patch27:        openssl-s390x-assembly-pack-fix-msa3-stfle-bit-detection.patch
+Patch28:        openssl-Fix-9bf682f-which-broke-nistp224_method.patch
+# FIPS patches
+Patch30:        openssl-1.1.1-fips.patch
+Patch31:        openssl-1.1.1-fips-post-rand.patch
+Patch32:        openssl-1.1.1-fips-crng-test.patch
+Patch33:        openssl-1.1.0-issuer-hash.patch
+Patch34:        openssl-fips-run_selftests_only_when_module_is_complete.patch
+Patch35:        openssl-ship_fips_standalone_hmac.patch
+Patch36:        openssl-fips_mode.patch
+Patch37:        openssl-1.1.1-evp-kdf.patch
+Patch38:        openssl-1.1.1-ssh-kdf.patch
+Patch39:        openssl-fips-dont_run_FIPS_module_installed.patch
+Patch40:        openssl-fips-selftests_in_nonfips_mode.patch
+Patch41:        openssl-fips-clearerror.patch
+Patch42:        openssl-fips-ignore_broken_atexit_test.patch
+Patch43:        openssl-keep_EVP_KDF_functions_version.patch
+# PATCH-FIX-UPSTREAM jsc#SLE-7575 Support for CPACF enhancements - part 2 (crypto)
+Patch44:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
+Patch45:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
 BuildRequires:  pkgconfig
 Conflicts:      ssl
 Provides:       ssl
@@ -71,8 +102,11 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl1_1
 Summary:        Secure Sockets and Transport Layer Security
+License:        OpenSSL
 Group:          Productivity/Networking/Security
 Recommends:     ca-certificates-mozilla
+# install libopenssl and libopenssl-hmac close together (bsc#1090765)
+Suggests:       libopenssl1_1-hmac = %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl1_1_0
 
@@ -84,6 +118,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl-1_1-devel
 Summary:        Development files for OpenSSL
+License:        OpenSSL
 Group:          Development/Libraries/C and C++
 Requires:       libopenssl1_1 = %{version}
 Recommends:     %{name} = %{version}
@@ -101,8 +136,23 @@ Obsoletes:      libopenssl-1_0_0-devel
 This subpackage contains header files for developing applications
 that want to make use of the OpenSSL C API.
 
+%package -n libopenssl1_1-hmac
+Summary:        HMAC files for FIPS-140-2 integrity checking of the openssl shared libraries
+License:        BSD-3-Clause
+Group:          Productivity/Networking/Security
+Requires:       libopenssl1_1 = %{version}-%{release}
+# Needed for clean upgrade from former openssl-1_1_0, boo#1081335
+Obsoletes:      libopenssl1_1_0-hmac
+# Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
+Obsoletes:      libopenssl-1_0_0-hmac
+
+%description -n libopenssl1_1-hmac
+The FIPS compliant operation of the openssl shared libraries is NOT
+possible without the HMAC hashes contained in this package!
+
 %package doc
 Summary:        Additional Package Documentation
+License:        OpenSSL
 Group:          Productivity/Networking/Security
 Conflicts:      openssl-doc
 Provides:       openssl-doc = %{version}
@@ -175,7 +225,6 @@ mv %{buildroot}/%{ssletcdir}/misc %{buildroot}/%{_datadir}/ssl/
 
 # avoid file conflicts with man pages from other packages
 #
-set +x
 pushd %{buildroot}/%{_mandir}
 # some man pages now contain spaces. This makes several scripts go havoc, among them /usr/sbin/Check.
 # replace spaces by underscores
@@ -199,13 +248,35 @@ for i in man?/*; do
 	esac
 done
 popd
-set -x
 
 # Do not install demo scripts executable under /usr/share/doc
 find demos -type f -perm /111 -exec chmod 644 {} \;
 
 # Place showciphers.c for %%doc macro
 cp %{SOURCE5} .
+
+# the hmac hashes:
+#
+# this is a hack that re-defines the __os_install_post macro
+# for a simple reason: the macro strips the binaries and thereby
+# invalidates a HMAC that may have been created earlier.
+# solution: create the hashes _after_ the macro runs.
+#
+# this shows up earlier because otherwise the %expand of
+# the macro is too late.
+# remark: This is the same as running
+#   openssl dgst -sha256 -hmac 'ppaksykemnsecgtsttplmamstKMEs'
+%{expand:%%global __os_install_post {%__os_install_post
+
+%{buildroot}%{_bindir}/fips_standalone_hmac \
+  %{buildroot}%{_libdir}/libssl.so.%{maj_min} > \
+    %{buildroot}%{_libdir}/.libssl.so.%{maj_min}.hmac
+
+%{buildroot}%{_bindir}/fips_standalone_hmac \
+  %{buildroot}%{_libdir}/libcrypto.so.%{maj_min} > \
+    %{buildroot}%{_libdir}/.libcrypto.so.%{maj_min}.hmac
+
+}}
 
 %post -n libopenssl1_1 -p /sbin/ldconfig
 %postun -n libopenssl1_1 -p /sbin/ldconfig
@@ -215,6 +286,10 @@ cp %{SOURCE5} .
 %{_libdir}/libssl.so.%{maj_min}
 %{_libdir}/libcrypto.so.%{maj_min}
 %{_libdir}/engines-%{maj_min}
+
+%files -n libopenssl1_1-hmac
+%{_libdir}/.libssl.so.%{maj_min}.hmac
+%{_libdir}/.libcrypto.so.%{maj_min}.hmac
 
 %files -n libopenssl-1_1-devel
 %{_includedir}/%{_rname}/
@@ -240,6 +315,7 @@ cp %{SOURCE5} .
 %dir %{_datadir}/ssl
 %{_datadir}/ssl/misc
 %{_bindir}/c_rehash
+%{_bindir}/fips_standalone_hmac
 %{_bindir}/%{_rname}
 
 %changelog

@@ -1,0 +1,14 @@
+Index: openssl-1.1.1d/crypto/o_init.c
+===================================================================
+--- openssl-1.1.1d.orig/crypto/o_init.c	2020-01-23 13:45:11.336633643 +0100
++++ openssl-1.1.1d/crypto/o_init.c	2020-01-23 13:45:21.316692954 +0100
+@@ -63,9 +63,6 @@ void __attribute__ ((constructor)) OPENS
+     if (done)
+         return;
+     done = 1;
+-    if (!FIPS_module_installed()) {
+-        return;
+-    }
+     init_fips_mode();
+ }
+ #endif
