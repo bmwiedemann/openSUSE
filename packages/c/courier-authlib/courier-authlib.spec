@@ -1,7 +1,7 @@
 #
 # spec file for package courier-authlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           courier-authlib
+Version:        0.69.1
+Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception
 Group:          Productivity/Networking/Email/Servers
-Version:        0.68.0
-Release:        0
-Url:            http://www.courier-mta.org/imap/
-Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}-%{version}.tar.bz2.sig
-Source2:        courier-authdaemon-rpmlintrc
-Source11:       courier-authdaemon.init
+URL:            https://www.courier-mta.org/imap/
+Source0:        https://downloads.sourceforge.net/project/courier/authlib/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sourceforge.net/project/courier/authlib/%{version}/%{name}-%{version}.tar.bz2.sig
+# Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%{name}.keyring
+Source2:        %{name}.keyring
+Source3:        courier-authdaemon-rpmlintrc
 Source12:       courier-authdaemon.service
 Source13:       courier-authlib.tmpfile
 Patch0:         %{name}-authdaemonrc.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-PreReq:         coreutils
 BuildRequires:  courier-unicode-devel >= 2.0
 BuildRequires:  expect
 BuildRequires:  gcc-c++
@@ -40,20 +39,15 @@ BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel >= 9.1
+BuildRequires:  pkgconfig(systemd)
 %if 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
-Requires:       expect
-
-%if 0%{?suse_version} >= 1210
-BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
-%define has_systemd 1
-%endif
 
 %description
 The Courier authentication library provides authentication services for
@@ -130,63 +124,41 @@ SQLite.
 %patch0
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -DLDAP_DEPRECATED=1"
+export CFLAGS="%{optflags} -DLDAP_DEPRECATED=1"
 %configure \
 	--libexecdir=%{_prefix}/lib \
 	--datadir=%{_datadir}/courier-imap \
 	--sharedstatedir=%{_sharedstatedir}/%{name} \
-%if 0%{?has_systemd}
-	--with-piddir=/run \
-%else
-	--with-piddir=/var/run \
-%endif
+	--with-piddir=%{_rundir} \
 	--disable-root-check \
 	--enable-unicode \
-%if 0%{?has_systemd}
-	--with-authdaemonvar=/run/%{name} \
-%else
-	--with-authdaemonvar=%{_localstatedir}/run/%{name} \
-%endif
+	--with-authdaemonvar=%{_rundir}/%{name} \
 	--host=%{_host} --build=%{_build} --target=%{_target_platform}
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 mv %{buildroot}%{_libdir}/%{name}/lib*.so* %{buildroot}%{_libdir}
 rm -f %{buildroot}/%{_libdir}/%{name}/*.{a,la}
 install -m 755 sysconftool %{buildroot}/%{_prefix}/lib/%{name}
 install -m 755 authmigrate %{buildroot}/%{_prefix}/lib/%{name}
-%if 0%{?has_systemd}
-install -D -m 0644 %{S:12} %{buildroot}/%{_unitdir}/courier-authdaemon.service
+install -D -m 0644 %{SOURCE12} %{buildroot}/%{_unitdir}/courier-authdaemon.service
 # systemd need to create a tmp dir: /run/courier-authlib
-install -D -m 0644 %{S:13} %{buildroot}/%{_prefix}/lib/tmpfiles.d/%{name}.conf
+install -d -m755 %{buildroot}%{_tmpfilesdir}
+install -D -m 0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -fs service %{buildroot}/%{_sbindir}/rccourier-authdaemon
-%else
-mkdir -p %{buildroot}/%{_sysconfdir}/init.d
-install -m 755 %{S:11} %{buildroot}/%{_sysconfdir}/init.d/courier-authdaemon
-ln -fs ../../%{_sysconfdir}/init.d/courier-authdaemon \
-  %{buildroot}%{_sbindir}/rccourier-authdaemon
-%endif
 
 %pre
-%if 0%{?has_systemd}
 %service_add_pre courier-authdaemon.service
-%endif
 
 %preun
 %if 0%{?suse_version}
 %stop_on_removal courier-authdaemon
 %endif
-%if 0%{?has_systemd}
 %service_del_preun courier-authdaemon.service
-%endif
 if [ "$1" = "0" ]; then
 	for i in socket pid pid.lock; do
-%if 0%{?has_systemd}
-		rm -f /run/%{name}/$i
-%else
-		rm -f %{_localstatedir}/run/%{name}/$i
-%endif
+		rm -f %{_rundir}/%{name}/$i
 	done
 fi
 
@@ -194,58 +166,31 @@ fi
 /sbin/ldconfig
 %{_prefix}/lib/%{name}/authmigrate >/dev/null
 %{_prefix}/lib/%{name}/sysconftool %{_sysconfdir}/authlib/*.dist >/dev/null
-
-%if 0%{?has_systemd}
 %service_add_post courier-authdaemon.service
-# Create our dirs immediatly, after a manual package install.
-# After a reboot systemd/aaa_base will take care.
-install -d /run/%{name}
-%else
-%if 0%{?suse_version}
-%{fillup_and_insserv -f courier-authdaemon}
-%endif
-install -d %{_localstatedir}/run/%{name}
-%endif
+%tmpfiles_create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %postun
 /sbin/ldconfig
-%if 0%{?has_systemd}
 %service_del_postun courier-authdaemon.service
-%else
-%if 0%{?suse_version}
-%restart_on_update courier-authdaemon
-%insserv_cleanup
-%endif
-%endif
 
 %post userdb -p /sbin/ldconfig
-
 %postun userdb -p /sbin/ldconfig
-
 %post ldap -p /sbin/ldconfig
-
 %postun ldap -p /sbin/ldconfig
-
 %post mysql -p /sbin/ldconfig
-
 %postun mysql -p /sbin/ldconfig
-
 %post pgsql -p /sbin/ldconfig
-
 %postun pgsql -p /sbin/ldconfig
-
 %post pipe -p /sbin/ldconfig
-
 %postun pipe -p /sbin/ldconfig
-
 %post sqlite -p /sbin/ldconfig
-
 %postun sqlite -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
 %doc README README*html
-%doc NEWS COPYING* AUTHORS ChangeLog authldap.schema
+%license COPYING*
+%doc NEWS AUTHORS ChangeLog authldap.schema
 %dir %{_sysconfdir}/authlib
 %config %{_sysconfdir}/authlib/*
 %{_sbindir}/authdaemond
@@ -254,12 +199,12 @@ install -d %{_localstatedir}/run/%{name}
 %{_sbindir}/authtest
 %{_sbindir}/courierlogger
 %{_sbindir}/rccourier-authdaemon
-%dir /usr/lib/%{name}
-/usr/lib/%{name}/authmigrate
-/usr/lib/%{name}/sysconftool
-/usr/lib/%{name}/authdaemond
-/usr/lib/%{name}/authsystem.passwd
-/usr/lib/%{name}/makedatprog
+%dir %{_prefix}/lib/%{name}
+%{_prefix}/lib/%{name}/authmigrate
+%{_prefix}/lib/%{name}/sysconftool
+%{_prefix}/lib/%{name}/authdaemond
+%{_prefix}/lib/%{name}/authsystem.passwd
+%{_prefix}/lib/%{name}/makedatprog
 %{_libdir}/libauthcustom.so
 %{_libdir}/libauthpam.so
 %{_libdir}/libcourierauth.so
@@ -267,14 +212,9 @@ install -d %{_localstatedir}/run/%{name}
 %{_libdir}/libcourierauthsasl.so
 %{_libdir}/libcourierauthsaslclient.so
 %{_mandir}/man1/*
-%if 0%{?has_systemd}
 %{_unitdir}/courier-authdaemon.service
 %{_prefix}/lib/tmpfiles.d/%{name}.conf
-%ghost %dir /run/%{name}
-%else
-%{_sysconfdir}/init.d/courier-authdaemon
-%ghost %dir %{_localstatedir}/run/%{name}
-%endif
+%ghost %dir %{_rundir}/%{name}
 
 %files devel
 %defattr(-,root,root,-)
