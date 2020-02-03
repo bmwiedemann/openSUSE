@@ -33,6 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{pythons}
 # /SECTION
 %python_subpackages
 
