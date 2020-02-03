@@ -1,7 +1,7 @@
 #
 # spec file for package python-praatio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-praatio
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        A library for working with praat
 License:        MIT
@@ -27,10 +27,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/timmahrt/praatIO
 Source0:        https://github.com/timmahrt/praatIO/archive/v%{version}.tar.gz#/praatIO-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     praat
+# SECTION test requirements
+BuildRequires:  %{python_module nose}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,9 +56,8 @@ use with praat.
 %prep
 %setup -q -n praatIO-%{version}
 # This file was from a different author, and its inclusion under MIT is not clear
+# See: https://github.com/timmahrt/praatIO/issues/16
 rm praatio/utilities/xsampa.py
-
-dos2unix examples/files/mary.TextGrid
 
 %build
 %python_build
@@ -69,9 +70,7 @@ dos2unix examples/files/mary.TextGrid
 # Reset examples after Python 2 test run
 cp -rp examples examples-orig
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-cd examples
-$python -m unittest test.io_tests test.integration_tests test.tg_tests
-cd ..
+nosetests-%{$python_bin_suffix} --exe
 if [ -d examples-orig ]; then
   rm -r examples
   mv examples-orig examples
