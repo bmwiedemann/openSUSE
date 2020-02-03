@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jan 20 10:39:18 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove patches which are not needed anymore:
+  * 0001-bazel-Remove-and-add-deps-in-WORKSPACE.patch
+  * 0002-Stackdriver-stats-Return-false-in-matcher-when-type-.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 11:18:31 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove all subpackages except source. Envoy-proxy needs
+  opencensus-cpp source tree to build and nothing else consomes
+  opencensus-cpp as a shared library.
+
+-------------------------------------------------------------------
+Thu Jan 09 14:16:25 UTC 2020 - mrostecki@opensuse.org
+
+- Update to version 0.4.0+git.20190924:
+  * Add OcAgentOptions override for service_name.
+  * Fix ocagent trace exporter.
+  * Stackdriver stats: resource must uniquely identify a timeseries.
+  * Make default Stackdriver exporter deadlines match opencensus-java.
+  * Fix switch fallthrough warnings.
+  * Add comments about why opencensus_task is added.
+  * Stackdriver stats: improve handling of builtin metrics.
+  * Simplify WORKSPACE file.
+  * Add default cases for view data switch.
+  * Fix BUILD nit: tag_key_test depends on absl/hash.
+  * Remove grpc_java, it's no longer needed by opencensus-proto.
+  * Get rules_apple and apple_support via grpc_deps.
+  * Rename io_opencensus_proto to opencensus_proto to match Envoy.
+  * Build fix.
+  * Make B3 parser more readable.
+  * Update benchmarking docs.
+  * Nit: use the constant.
+  * SpanImpl::name() has to grab a lock and copy the name.
+  * Switch from custom hash_mix to absl::Hash.
+  * Build fix: grpc needs build_bazel_apple_support.
+  * OcAgent: report errors, add to example, add docs.
+  * Add OcAgent Trace Exporter.
+  * Use StubInterface instead of Stub, for mocks.
+  * Add B3 propagation helpers.
+  * Build fix: provide a @bazel_version repository.
+  * Stackdriver stats exporter: make opencensus_task optional.
+  * Add com_google_googleapis to pin_deps.
+
+-------------------------------------------------------------------
 Mon Jan  6 13:14:27 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Add bazel-rules-swift-souce as dependency.
