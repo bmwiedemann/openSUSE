@@ -1143,6 +1143,11 @@ grep -v "%{_libdir}/libreoffice/program/libfirebird_sdbclo.so" file-lists/common
 mv tmplist file-lists/common_list.txt
 %endif
 
+# Remove the libanimcore from impress and put it to base (needed by draw too)
+grep -v "%{_libdir}/libreoffice/program/libanimcorelo.so" file-lists/impress_list.txt > tmplist
+mv tmplist file-lists/impress_list.txt
+echo "%{_libdir}/libreoffice/program/libanimcorelo.so" >> file-lists/common_list.txt
+
 ################
 # update desktop files
 builddir=`pwd`

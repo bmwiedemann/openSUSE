@@ -43,7 +43,6 @@ application.
 %package -n %{shlib}
 Summary:        Spell checker library for GTK+
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
 %description -n %{shlib}

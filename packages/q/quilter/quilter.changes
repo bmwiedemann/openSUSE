@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  2 10:32:56 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.0:
+  * Glib.Settings Move (#310)
+  * add new .POT file
+  * small change, last thing of 2019 (Vacation Mode for Me)
+  * preview font chooser always shown
+
+-------------------------------------------------------------------
 Mon Dec 23 17:49:17 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.0.5:

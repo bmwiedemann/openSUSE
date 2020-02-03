@@ -53,4 +53,12 @@
     <comment></comment>
     <requestid>717234</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b31cbc3ccd194dab6da32d35cfdbadbc</srcmd5>
+    <version>1.1.6</version>
+    <time>1580724976</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate to python3, add migrate-to-python3.patch (forwarded request 768840 from hillwood)</comment>
+    <requestid>768841</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,7 @@
 #
 # spec file for package r128gain
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,20 +18,20 @@
 
 
 Name:           r128gain
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Fast audio loudness (ReplayGain / R128) scanner & tagger
-License:        LGPL-2.0
+License:        LGPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/desbma/r128gain
 Source:         https://github.com/desbma/r128gain/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python3-future
 Requires:       python3-crcmod >= 1.7
 Requires:       python3-ffmpeg-python >= 0.2
-Requires:       python3-mutagen >= 1.38
+Requires:       python3-future
+Requires:       python3-mutagen >= 1.43
 Requires:       python3-tqdm >= 4.28.1
 BuildArch:      noarch
 

@@ -1284,4 +1284,12 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment>.</comment>
     <requestid>758955</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>c46d7e37f2fe5785a361f365a8d3afc1</srcmd5>
+    <version>9.0.1</version>
+    <time>1580725621</time>
+    <user>dimstar_suse</user>
+    <comment>Move clang-{format,include-fixer,rename}.{el,py} from llvm-*-plugins to clang, drop empty llvm-emacs-plugins. (forwarded request 768749 from aaronpuchert)</comment>
+    <requestid>768763</requestid>
+  </revision>
 </revisionlist>

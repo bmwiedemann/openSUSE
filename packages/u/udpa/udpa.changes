@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sun Feb  2 13:22:29 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fix regex for correcting Python scripts shebang.
+
+-------------------------------------------------------------------
+Thu Jan 16 15:13:58 UTC 2020 - Navin Kukreja <navin.kukreja@suse.com>
+
+- List udpa-rpmlintrc file in spec file
+
+-------------------------------------------------------------------
+Fri Jan 10 11:47:03 UTC 2020 - Navin Kukreja <navin.kukreja@suse.com>
+
+- Change initial version to 0.0.0+git28 as per package naming 
+guidelines for git snapshots
+
+-------------------------------------------------------------------
+Fri Jan 10 10:19:14 UTC 2020 - Navin Kukreja <navin.kukreja@suse.com>
+
+- change shebang from python to python3 
+
+-------------------------------------------------------------------
+Thu Jan  9 11:59:43 UTC 2020 - Navin Kukreja <navin.kukreja@suse.com>
+
+- Initial version 0.0.0 
+- NOTE: there is no releases on git 
+ 

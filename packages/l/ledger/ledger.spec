@@ -1,7 +1,7 @@
 #
 # spec file for package ledger
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ BuildRequires:  libboost_test-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  python
 BuildRequires:  utfcpp-devel
+Patch0:         ledger-cmakelists.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -45,7 +46,7 @@ their data there are few alternatives.
 
 %prep
 %setup -q
-
+%patch0  -p1
 %build
 %cmake -DBUILD_LIBRARY=OFF
 make %{?_smp_mflags}

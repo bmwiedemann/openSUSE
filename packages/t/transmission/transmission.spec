@@ -74,7 +74,6 @@ Requires:       %{name}-common = %{version}
 Requires:       canberra-gtk-play
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     %{name}-gtk-lang
 Provides:       %{name}-ui = %{version}
 
 %description gtk
@@ -91,7 +90,6 @@ Group:          Productivity/Networking/Other
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     %{name}-qt-lang
 Provides:       %{name}-ui = %{version}
 
 %description qt

@@ -563,4 +563,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment></comment>
     <requestid>713125</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>974157437123873301f74bec42a1ee4d</srcmd5>
+    <version>0.26.3</version>
+    <time>1580724971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769460</requestid>
+  </revision>
 </revisionlist>

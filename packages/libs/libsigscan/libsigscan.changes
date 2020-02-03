@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 17 23:22:35 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- update to 20191221
+    * Worked on Python wheel support
+    * Applied updates and changes for libcdata
+- introduced %{experimental_tag}
+- required for recent releases of python-dfVFS
+
+-------------------------------------------------------------------
 Wed Apr 17 22:36:16 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v20190103

@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>695351</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>05e28acfe57bead0f64d774a77840fab</srcmd5>
+    <version>0~20191221</version>
+    <time>1580724945</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest release 20191221.
+
+Required by recent python-dfVFS release</comment>
+    <requestid>769396</requestid>
+  </revision>
 </revisionlist>

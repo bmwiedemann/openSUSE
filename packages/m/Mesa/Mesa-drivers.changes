@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 29 22:56:19 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- require and check for llvm-devel >= 9 instead of llvm9-devel on
+  openSUSE
+
+-------------------------------------------------------------------
+Wed Jan 29 17:15:01 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- enabled build of gallium based llvmpipe driver for s390x
+  (related to jsc#IBM-369, jsc#SLE-7452)
+
+-------------------------------------------------------------------
+Wed Jan 29 14:59:10 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.3.3
+  * There's plenty of changes here, but intel, docs, radeonsi,
+    and aco are the biggest sets of changes.
+- supersedes U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
+
+-------------------------------------------------------------------
+Wed Jan 29 13:34:34 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- set optflags also for g++ compiler 
+
+-------------------------------------------------------------------
 Mon Jan 27 15:31:52 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - require llvm9 (jsc#IBM-369, jsc#SLE-7452) 

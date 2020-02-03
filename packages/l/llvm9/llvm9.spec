@@ -235,6 +235,7 @@ Recommends:     clang%{_sonum}-checker
 Recommends:     clang%{_sonum}-doc
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
+Provides:       llvm%{_sonum}-emacs-plugins
 %if %{with libcxx}
 Requires:       libc++%{_socxx}
 %endif
@@ -416,17 +417,6 @@ BuildArch:      noarch
 
 %description    vim-plugins
 This package contains vim plugins for LLVM like syntax highlighting.
-
-%package        emacs-plugins
-Summary:        Emacs plugins for LLVM
-Group:          Productivity/Text/Editors
-Supplements:    packageand(llvm%{_sonum}:emacs)
-Conflicts:      emacs-llvm < %{version}
-Provides:       emacs-llvm = %{version}
-BuildArch:      noarch
-
-%description    emacs-plugins
-This package contains Emacs plugins for LLVM like syntax highlighting.
 
 %package -n python3-clang
 Summary:        Python bindings for libclang
@@ -1715,6 +1705,7 @@ fi
 %endif
 %endif
 %{_datadir}/bash-completion/completions/clang.sh
+%{_datadir}/clang/
 
 %files -n clang%{_sonum}-checker
 %license CREDITS.TXT LICENSE.TXT
@@ -1814,21 +1805,10 @@ fi
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/libLTO.so
 
-%files emacs-plugins
-%license CREDITS.TXT LICENSE.TXT
-%dir %{_datadir}/clang/
-%{_datadir}/clang/clang-format.el
-%{_datadir}/clang/clang-include-fixer.el
-%{_datadir}/clang/clang-rename.el
-
 %files vim-plugins
 %license CREDITS.TXT LICENSE.TXT
 %doc utils/vim/README.vim
 %{_datadir}/vim/
-%dir %{_datadir}/clang/
-%{_datadir}/clang/clang-format.py
-%{_datadir}/clang/clang-rename.py
-%{_datadir}/clang/clang-include-fixer.py
 
 %if %{with pyclang}
 %files -n python3-clang

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Path-Tiny
-Version:        0.110
+Version:        0.112
 Release:        0
 %define cpan_name Path-Tiny
 Summary:        File path utility

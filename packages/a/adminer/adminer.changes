@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 31 16:54:17 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 4.7.6:
+  * Release 4.7.6
+  * Fix comparing IPs
+  * Update readme
+  * Add example for using SQLite with Editor
+  * PostgreSQL: Support exporting views
+  * Disallow connecting to ports > 65535 (bug #730)
+  * Display time of procedure execution
+  * Hide columns when rendering
+  * Speed up alter table form
+  * Fix clicking on non-input fields in alter table
+  * Editor: Fix focusing foreign key search in select
+  * MySQL: Always set foreign_key_checks in export
+
+-------------------------------------------------------------------
 Wed Nov 27 01:35:49 UTC 2019 - jimmy@boombatower.com
 
 - Update to version 4.7.5:

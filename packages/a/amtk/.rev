@@ -33,4 +33,12 @@
   + Updated translations. (forwarded request 767025 from iznogood)</comment>
     <requestid>767320</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>60f943857e6a985df72e520eee035e43</srcmd5>
+    <version>5.0.2</version>
+    <time>1580725612</time>
+    <user>dimstar_suse</user>
+    <comment>Remove -lang recommends (forwarded request 768700 from dimstar)</comment>
+    <requestid>768712</requestid>
+  </revision>
 </revisionlist>

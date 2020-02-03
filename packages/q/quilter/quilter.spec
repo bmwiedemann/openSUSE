@@ -17,7 +17,7 @@
 
 
 Name:           quilter
-Version:        2.0.5
+Version:        2.1.0
 Release:        0
 Summary:        Writing application
 License:        GPL-3.0-only

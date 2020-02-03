@@ -1,7 +1,7 @@
 #
 # spec file for package vokoscreenNG
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vokoscreenNG
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Screencast creator
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Other
-Url:            https://github.com/vkohaupt/vokoscreenNG
+URL:            https://github.com/vkohaupt/vokoscreenNG
 Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz
-BuildRequires:  pkgconfig
+BuildRequires:  gstreamer-devel
 BuildRequires:  libqt5-linguist
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
@@ -33,10 +34,9 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  gstreamer-devel
 
-Requires:       libQt5Core5 >= 5.9.4
 Requires:       gstreamer >= 1.12.5
+Requires:       libQt5Core5 >= 5.9.4
 Requires:       pulseaudio
 # Required for vorbis and opus audio
 Requires:       gstreamer-plugins-base

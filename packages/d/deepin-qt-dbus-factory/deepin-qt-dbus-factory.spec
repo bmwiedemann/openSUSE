@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-qt-dbus-factory
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/linuxdeepin/dde-qt-dbus-factory
 Source:         https://github.com/linuxdeepin/dde-qt-dbus-factory/archive/%{version}/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREA migrate-to-python3.patch hillwood@opensuse.org - migrate to python3
+Patch0:         migrate-to-python3.patch
 BuildRequires:  dtkcore
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-qtbase-devel
@@ -34,8 +36,7 @@ BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qttools-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+BuildRequires:  python3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -73,6 +74,7 @@ docs for libdbusextended(deepin-qt-dbus-factory).
 
 %prep
 %setup -q -n %{_name}-%{version}
+%patch0 -p1
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  2 07:30:21 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3:
+  * Fix video playback
+  * Updated translations
+  * Change user agent from curl to Mozilla
+  
+-------------------------------------------------------------------
 Thu Dec  5 17:36:41 UTC 2019 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2:

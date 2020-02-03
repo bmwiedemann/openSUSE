@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  2 15:39:58 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.1
+  * minor incompatible change: some symbols have been removed from *FEATURES*
+    based on a determination of which should be impermissible to examine
+    via #+ and #- reader macros in user-written code.
+  * optimization: DEFSTRUCT copiers including COPY-STRUCTURE are able to
+    stack-allocate the result when declared dynamic-extent.
+  * bug fix: loop analysis code more robust. In particular, loop nesting depth
+    is computed more accurately, improving the register allocation around
+    loops.
+- Refresh patches for new version
+  + fix-tests.patch
+
+-------------------------------------------------------------------
 Wed Jan  1 14:45:09 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.0.0

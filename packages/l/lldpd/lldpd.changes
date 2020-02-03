@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb  2 20:08:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.5:
+  Changes:
+  * Interface names are also matched for management addresses.
+  * On Linux, only register protocol handler for LLDP when only LLDP
+    is enabled.
+  * Stricter on LLDP incoming frames validation.
+  * Add support for VLAN-aware bridges for Linux (no range support).
+  * Add support for 802.3BT (no SNMP support).
+  * Add support for millisecond-grained tx-interval
+  * Use generic names for VLAN names, instead of interface names (eg
+    vlan100 instead of eth1.100).
+  Fix:
+  * Don't clear chassis TLV on shutdown LLDPDU.
+  * Don't require/display powerpairs for Dot3 power when device type
+    is PD.
+
+-------------------------------------------------------------------
 Wed Nov 13 19:47:21 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Correct License

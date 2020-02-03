@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:24:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Move the animation library to core package bsc#1162152
+
+-------------------------------------------------------------------
 Thu Jan 23 10:21:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.4.0.3:

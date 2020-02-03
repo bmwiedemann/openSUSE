@@ -1,7 +1,7 @@
 #
 # spec file for package xplayer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Release:        0
 Summary:        Generic media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
-Url:            https://github.com/linuxmint/xplayer
+URL:            https://github.com/linuxmint/xplayer
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM return no value in void function
+# PATCH-FIX-UPSTREAM return no value in void function
 Patch:          xplayer-2.2.1-return-no-value-in-void-function.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -40,7 +40,8 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  lirc-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-base
+BuildRequires:  python3-pylint
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.14.1
@@ -77,7 +78,6 @@ Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       iso-codes
-Requires:       python-gobject
 Requires:       xplayer-plugins
 Recommends:     %{name}-lang
 Recommends:     %{name}-plugins
@@ -91,15 +91,9 @@ BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.12
 %else
 Obsoletes:      %{name}-plugin-zeitgeist <= %{version}
 %endif
-%if 0%{?suse_version} >= 1500
 # Required for cluttersink.
 Requires:       gstreamer-plugin-cluttergst3
-Requires:       python2-gobject-Gdk
-%else
-# Required for cluttersink.
-Requires:       gstreamer-plugin-gstclutter-3_0
-Requires:       python-gobject-Gdk
-%endif
+Requires:       python3-gobject-Gdk
 
 %description
 xplayer is a media player based on GStreamer for the Cinnamon
@@ -110,19 +104,15 @@ seek and volume controls, and complete keyboard navigation.
 Summary:        Plugins for xplayer media player
 Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name} = %{version}
-Requires:       libpeas-loader-python
+Requires:       libpeas-loader-python3
 # Brasero plugin.
 Recommends:     brasero
 # BBC iPlayer plugin.
-Recommends:     python-beautifulsoup
+Recommends:     python3-beautifulsoup4
 # Gromit Annotation plugin.
 Suggests:       gromit
 %glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500
-Recommends:     python2-httplib2
-%else
-Recommends:     python-httplib2
-%endif
+Recommends:     python3-httplib2
 
 %description plugins
 xplayer is a media player based on GStreamer for the Cinnamon
@@ -161,11 +151,11 @@ This package contains files for development.
 %lang_package
 
 %prep
-%setup -q
-%patch -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
+export PYTHON=%{_bindir}/python3
 export BROWSER_PLUGIN_DIR=%{_libdir}/browser-plugins/
 %configure \
   --disable-static \

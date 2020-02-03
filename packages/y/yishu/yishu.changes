@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  2 10:35:48 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.1:
+  * Merge pull request #47 from RavetcoFX/master
+  * Add support for future dates
+  * Merge pull request #46 from meisenzahl/master
+  * Add Travis CI file for automated tests
+  * Merge pull request #45 from mirkobrombin/patch-1
+  * Merge pull request #44 from Vistaus/master
+
+-------------------------------------------------------------------
 Mon Jul 29 15:43:49 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.2.0:

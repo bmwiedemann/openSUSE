@@ -67,7 +67,6 @@ BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(pango)
 Requires:       ghostscript-fonts-std
 Requires:       xdg-utils
-Recommends:     %{name}-lang
 
 %description
 Dia is designed to be much like the commercial program 'Visio.' It can

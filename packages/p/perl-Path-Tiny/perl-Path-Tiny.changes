@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 30 03:14:53 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.112
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.112     2020-01-28 22:12:16-05:00 America/New_York
+  
+      - No changes from 0.111-TRIAL.
+  
+  0.111     2020-01-23 10:54:48-05:00 America/New_York (TRIAL RELEASE)
+  
+      - Another test fix on Windows, possibly due to a behavior change in
+        Cwd::getdcwd.
+
+-------------------------------------------------------------------
 Tue Jan 14 03:10:40 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.110

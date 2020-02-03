@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:03:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- remove python2 bindings 
+
+-------------------------------------------------------------------
 Tue Jan 16 16:08:41 UTC 2018 - kbabioch@suse.com
 
 - CVE-2016-8859.patch: Fix multiple integer overflows which allowed

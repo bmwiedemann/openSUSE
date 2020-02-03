@@ -86,4 +86,12 @@
   + Do not parse user-specified init-file twice</comment>
     <requestid>696489</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>feeca2470f54783fce813b4a1779f704</srcmd5>
+    <version>3.1.3</version>
+    <time>1580725632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769487</requestid>
+  </revision>
 </revisionlist>

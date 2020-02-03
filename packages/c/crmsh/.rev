@@ -1953,4 +1953,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>765101</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>702f9e83c8342dabe70d4105a3ab8e5e</srcmd5>
+    <version>4.2.0+git.1580544897.c42c9530</version>
+    <time>1580724959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769408</requestid>
+  </revision>
 </revisionlist>

@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 Requires:       %{libamtk} = %{version}
-Recommends:     %{name}-%{api_ver}-lang = %{version}
 
 %description
 “Actions, Menus and Toolbars Kit” or just AMTK is a basic

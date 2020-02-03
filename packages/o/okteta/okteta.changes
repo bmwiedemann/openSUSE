@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  3 06:09:12 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.26.3
+  * Added: CRC-64 algorithm for the checksum tool
+  * Improved: install knsrc file at new location with newer KF5
+    versions
+  * Improved: use more latest Qt API where possible
+  * Improved: translations
+  * Fixed: view profile managing dialog now properly sized default
+    marker column
+  * Fixed: store.kde.org access for structure definitions also
+    works without Plasma being installed
+
+-------------------------------------------------------------------
 Tue Jul  2 17:13:01 UTC 2019 - wbauer@tmo.at
 
 - Update to 0.26.2

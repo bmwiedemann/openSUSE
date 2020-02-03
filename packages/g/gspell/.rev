@@ -161,4 +161,12 @@
   + Updated translations. (forwarded request 767026 from iznogood)</comment>
     <requestid>767321</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6457d6bd46dd31a50da1ab59f7a4c839</srcmd5>
+    <version>1.8.3</version>
+    <time>1580725615</time>
+    <user>dimstar_suse</user>
+    <comment>Remove -lang recommends (forwarded request 768703 from dimstar)</comment>
+    <requestid>768716</requestid>
+  </revision>
 </revisionlist>

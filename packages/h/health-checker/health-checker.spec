@@ -17,7 +17,7 @@
 
 
 Name:           health-checker
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only

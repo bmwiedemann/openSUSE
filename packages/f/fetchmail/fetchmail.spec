@@ -42,14 +42,14 @@ BuildRequires:  openssl-devel
 BuildRequires:  opie
 BuildRequires:  postfix
 BuildRequires:  procmail
-BuildRequires:  pwdutils
 BuildRequires:  python3-base
+BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       logrotate
 Requires(pre):  %fillup_prereq
 Requires(pre):  coreutils
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 Suggests:       smtp_daemon
 Requires(pre):	group(daemon)
 %{?systemd_requires}

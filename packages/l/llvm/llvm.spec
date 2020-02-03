@@ -1,7 +1,7 @@
 #
 # spec file for package llvm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  clang%{_sonum}-devel = %{version}
 BuildRequires:  llvm%{_sonum} = %{version}
 BuildRequires:  llvm%{_sonum}-LTO-devel = %{version}
 BuildRequires:  llvm%{_sonum}-devel = %{version}
-BuildRequires:  llvm%{_sonum}-emacs-plugins = %{version}
 BuildRequires:  llvm%{_sonum}-gold = %{version}
 BuildRequires:  llvm%{_sonum}-vim-plugins = %{version}
 Requires:       llvm%{_sonum} = %{version}
@@ -103,6 +102,7 @@ Requires:       clang%{_sonum} = %{version}
 Recommends:     clang-doc
 Provides:       llvm-clang = %{version}
 Obsoletes:      llvm-clang < %{version}
+Provides:       llvm-emacs-plugins
 
 %description -n clang
 This package contains the clang (C language) frontend for LLVM.
@@ -196,20 +196,6 @@ This package is a dummy package that depends on the version of
 llvm-vim-plugins that openSUSE currently supports.  Packages that
 don't require a specific LLVM version should depend on this.
 
-%package        emacs-plugins
-Summary:        Emacs plugins for LLVM
-Group:          Productivity/Text/Editors
-Requires:       llvm%{_sonum}-emacs-plugins = %{version}
-Supplements:    packageand(llvm:emacs)
-BuildArch:      noarch
-
-%description    emacs-plugins
-This package contains Emacs plugins for LLVM like syntax highlighting.
-
-This package is a dummy package that depends on the version of
-llvm-emacs-plugins that openSUSE currently supports.  Packages that
-don't require a specific LLVM version should depend on this.
-
 %package -n lldb
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
@@ -290,9 +276,6 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %doc README
 
 %files LTO-devel
-%doc README
-
-%files emacs-plugins
 %doc README
 
 %files vim-plugins

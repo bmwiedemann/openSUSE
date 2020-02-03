@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 24 16:16:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 20200121
+- Remove include-examples-in-packages.patch as it is included
+  upstream.
+
+-------------------------------------------------------------------
+Sat Jan 18 17:44:38 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 20200117:
+  - switch from PyCrypto to cryptography.io (Hurrah!)
+  - test suite passes (gh#log2timeline/dfvfs#421)
+- add patch: include-examples-in-packages.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 22:02:07 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- update to 20190902
+  - back to Python singlespec and python3
+
+-------------------------------------------------------------------
 Thu Jan 11 21:53:23 UTC 2018 - Greg.Freemyer@gmail.com
 
 - update to v0~20171230

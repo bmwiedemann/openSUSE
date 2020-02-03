@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Feb 01 08:28:52 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1580544897.c42c9530:
+  * Low: unittest: add unit test to detect_cloud
+
+-------------------------------------------------------------------
+Fri Jan 31 11:01:45 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1580467952.1931808d:
+  * Low: utils: update detect_cloud pattern for aws
+
+-------------------------------------------------------------------
+Wed Jan 29 02:15:11 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1580263559.a2b0f500:
+  * scripts: python3.8 unittest compatibility
+
+-------------------------------------------------------------------
+Wed Jan 22 06:02:01 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1579603179.bf924b8b:
+  * Low: testcases: adjust testcases based on related upstream version
+  * Low: unittest: replace nose with pytest
+  * Low: replace configparser.SafeConfigParser as configparser.ConfigParser
+
+-------------------------------------------------------------------
+Mon Jan 20 11:04:22 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1579517638.06d53d8a:
+  * Low: doc: update configure.set documentation
+  * Low: behave: functional test for configure.set subcommand
+  * Feature: configure: make configure.set to update operation
+
+-------------------------------------------------------------------
 Mon Jan 13 10:32:18 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1578911004.c1a33535:

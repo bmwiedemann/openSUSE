@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-pyscss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,10 @@ Patch5:         django-2.0.patch
 Patch6:         crashing_templates.patch
 BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module django-compressor >= 1.3}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyScss >= 1.2.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module django_compressor >= 1.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-pathlib

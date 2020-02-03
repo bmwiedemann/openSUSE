@@ -1,7 +1,7 @@
 #
 # spec file for package okteta
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,13 @@
 #
 
 
+# for compatibility with Leap 15.1 which doesn't have this macro yet
+%{!?_kf5_knsrcfilesdir: %global _kf5_knsrcfilesdir %{_kf5_configdir}}
 %define Kasten_sover 4
 %define Okteta_sover 3
 %bcond_without lang
 Name:           okteta
-Version:        0.26.2
+Version:        0.26.3
 Release:        0
 Summary:        Hex Editor
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -154,9 +156,9 @@ Contains the development files for the Okteta Hex Editor.
 
 %files data
 %license COPYING*
-%config %{_kf5_configdir}/okteta-structures.knsrc
 %{_kf5_bindir}/struct2osd
 %{_kf5_configkcfgdir}/
+%{_kf5_knsrcfilesdir}/okteta-structures.knsrc
 %{_kf5_sharedir}/mime/packages/okteta.xml
 %{_kf5_sharedir}/okteta/
 

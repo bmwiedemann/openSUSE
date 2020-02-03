@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 19.3.2
+%define _version 19.3.3
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -110,7 +110,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        19.3.2
+Version:        19.3.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -133,7 +133,6 @@ Patch61:        U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patc
 Patch62:        U_0002-r600-Move-get_pic_param-to-radeon_vce.c.patch
 Patch63:        U_0003-radeon-Move-si_get_pic_param-to-radeon_vce.c.patch
 Patch64:        U_0004-radeon-Fix-multiple-definition-error-with-radeon_deb.patch
-Patch65:        U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
 Patch66:        U_0006-nouveau-nvc0-add-extern-keyword-to-nvc0_miptree_vtbl.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -215,7 +214,11 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %endif
 %if 0%{with_llvm}
+%if 0%{?is_opensuse}
+BuildRequires:  llvm-devel >= 9.0.0
+%else
 BuildRequires:  llvm9-devel
+%endif
 %endif
 
 %if 0%{with_opencl}
@@ -733,8 +736,14 @@ programs against the XA state tracker.
 rm -rf docs/README.{VMS,WIN32,OS2}
 
 %if 0%{with_llvm}
+%if 0%{?is_opensuse}
+%if %{pkg_vcmp llvm-devel >= 9.0}
+%patch1 -p1
+%endif
+%else
 %if %{pkg_vcmp llvm9-devel >= 9.0}
 %patch1 -p1
+%endif
 %endif
 %endif
 %patch2 -p1
@@ -744,7 +753,6 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch62 -p1
 %patch63 -p1
 %patch64 -p1
-%patch65 -p1
 %patch66 -p1
 
 # Remove requires to libglvnd/libglvnd-devel from baselibs.conf when
@@ -829,8 +837,8 @@ egl_platforms=x11,drm,surfaceless
             -Ddri-drivers=nouveau \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast \
   %else
-            -Ddri-drivers=swrast \
-            -Dgallium-drivers= \
+            -Ddri-drivers= \
+            -Dgallium-drivers=swrast \
   %endif
   %endif
   %endif
@@ -839,7 +847,8 @@ egl_platforms=x11,drm,surfaceless
             -Dgallium-drivers= \
 %endif
             -Db_ndebug=true \
-            -Dc_args="%{optflags}"
+            -Dc_args="%{optflags}" \
+            -Dcpp_args="%{optflags}"
 
 %meson_build
 

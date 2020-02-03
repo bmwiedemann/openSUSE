@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 29 19:26:21 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update spamassassin to 3.4.4
+  * In this release, there are bug fixes for two CVEs:
+    CVE-2020-1931 for Nefarious rule configuration (.cf) files can
+      be configured to run system commands with warnings.
+    CVE-2020-1930 for Nefarious rule configuration (.cf) files can
+      be configured to run system commands with sa-compile.
+  * Improvements to OLEVBMacro
+  * Fix for CRLF handling with SpamAssMilter & DKIM
+  * Small fix for a regexp to provide Perl 5.8.x compatability again
+  * Increased fns_extrachars default value to 50
+  * Fixed nosubject and maxhits tflags when sa-compile is used
+  * Limited the Bayes parsed token count
+  * Improvements to whitespace trimming
+
+-------------------------------------------------------------------
 Sat Dec 14 10:32:50 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - remove old (compiled) rules in /var/lib/spamassassin directory

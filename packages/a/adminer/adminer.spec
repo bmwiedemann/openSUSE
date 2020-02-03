@@ -1,7 +1,7 @@
 #
 # spec file for package adminer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Jimmy Berry <jimmy@boombatower.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,13 +22,13 @@
 %bcond_with mongodb
 %bcond_with mssql
 Name:           adminer
-Version:        4.7.5
+Version:        4.7.6
 Release:        0
 Summary:        Database management in a single PHP file
 License:        GPL-2.0-only OR Apache-2.0
 Group:          Productivity/Networking/Web/Frontends
 
-Url:            https://www.adminer.org/
+URL:            https://www.adminer.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-httpd.conf
 BuildArch:      noarch

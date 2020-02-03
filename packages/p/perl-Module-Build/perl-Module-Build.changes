@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 30 03:13:27 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.4231
+   see /usr/share/doc/packages/perl-Module-Build/Changes
+
+  0.4231 - Wed Jan 29 08:47:56 CET 2020
+  
+    - Released 0.42_30 without code changes
+  
+  0.42_30 - Wed Jul 31 13:15:39 CEST 2019
+  
+    - Add dependency on ExtUtils::PL2Bat
+
+-------------------------------------------------------------------
 Tue Apr 16 05:14:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.4229

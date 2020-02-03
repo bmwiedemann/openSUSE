@@ -83,4 +83,12 @@
    jsc#SLE-7587]</comment>
     <requestid>767824</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>53ea822ee57a78415ccb29aa80c92343</srcmd5>
+    <version>9.0.1</version>
+    <time>1580725623</time>
+    <user>dimstar_suse</user>
+    <comment>Move clang-{format,include-fixer,rename}.{el,py} from llvm-*-plugins to clang, drop empty llvm-emacs-plugins. (forwarded request 768749 from aaronpuchert)</comment>
+    <requestid>768764</requestid>
+  </revision>
 </revisionlist>

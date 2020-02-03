@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:09:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Thu Jan 23 22:47:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove docbook-toys build dependency, db2html is just an unused

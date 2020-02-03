@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jan 31 22:11:09 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- update to 2.7
+- New features
+  * core: add option weechat.look.nick_color_hash_salt to shuffle nick colors (issue #635)
+  * core: add different icons sizes (16x16 to 512x512) (issue #1347)
+  * core: add file weechat.desktop
+  * core: add reverse of string for screen in evaluation of expressions with "revscr:"
+  * core: add length of string (number of chars and on screen) in evaluation of expressions with "length:xxx" and "lengthscr:xxx"
+  * core: add calculation of expression in evaluation of expressions with "calc:xxx" (issue #997)
+  * core: add optional default path (evaluated) in completion "filename"
+  * core: add support of modifiers in evaluation of expressions with "modifier:name,data,string"
+  * api: add modifier "color_encode_ansi" (issue #528)
+  * api: add modifier "eval_path_home"
+  * irc: add filters on raw buffer (issue #1000)
+  * irc: add option irc.look.display_pv_warning_address to display a warning in private buffer if the remote nick address has changed (issue #892)
+  * irc: add server option "ssl_password" (issue #115, issue #1416)
+  * irc: add "user" in output of irc_message_parse (issue #136)
+  * irc: add options irc.color.message_kick and irc.color.reason_kick (issue #683, issue #684)
+  * logger: add option logger.file.color_lines (issue #528, issue #621)
+  * script: add options "-ol" and "-il" in command "/script list" to send translated string with list of scripts loaded, display "No scripts loaded" if no scripts are loaded
+  * xfer: add option xfer.file.download_temporary_suffix with default value ".part" (issue #1237)
+- Bug fixes
+  * core: set buffer name, short name and title only if the value has changed
+  * core: fix scrolling up in bare mode when switched to bare mode at the top of the buffer (issue #899, issue #978)
+  * core: optimize load of configuration files
+  * core: fix window separators not respecting window splits (issue #630)
+  * core: fix cursor mode info when prefix_align is none and with words split across lines (issue #610, issue #617, issue #619)
+  * core: add support of reverse video in ANSI color codes
+  * core: fixed segfault during excessive evaluation in function string_repeat (issue #1400)
+  * buflist: fix extra spaces between buffers when conditions are used to hide buffers (regression introduced in version 2.6) (issue #1403)
+  * irc: do not automatically open a channel with name "0" (issue #1429)
+  * irc: remove option irc.network.channel_encode, add server option "charset_message" to control which part of the IRC message is decoded/encoded to the target charset (issue #832)
+  * irc: use path from option xfer.file.upload_path to complete filename in command "/dcc send" (issue #60)
+  * logger: fix write in log file if it has been deleted or renamed (issue #123)
+  * python: send "bytes" instead of "str" to callbacks in Python 3 when the string is not UTF-8 valid (issue #1389)
+  * relay: send message "_buffer_title_changed" to clients only when the title is changed
+  * xfer: fix memory leak when a xfer is freed and when the plugin is unloaded
+- Tests
+  * unit: add tests on GUI color functions
+- Build
+  * core: fix build on Haiku (issue #1420)
+  * core: fix build on Alpine
+  * core: remove file FindTCL.cmake
+  * core: display an error on missing dependency in CMake (issue #916, issue #956)
+  * debian: disable Javascript plugin on Debian Sid and Ubuntu Eoan
+  * debian: build with Guile 2.2
+  * guile: add support of Guile 2.2, disable /guile eval (issue #1098)
+  * python: add detection of Python 3.8
+
+-------------------------------------------------------------------
 Fri Sep 13 09:18:32 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - update to 2.6

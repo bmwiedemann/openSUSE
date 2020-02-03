@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 22:33:02 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Move clang-{format,include-fixer,rename}.{el,py} files from
+  llvm-*-plugins to clang package. (boo#1161873)
+- Drop the now empty llvm-emacs-plugins package.
+
+-------------------------------------------------------------------
 Mon Jan 27 08:03:55 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add polly and lld build conditionals, remove excessive Requires

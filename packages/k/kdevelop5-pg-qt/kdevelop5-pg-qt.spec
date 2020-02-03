@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5-pg-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define rname kdevelop-pg-qt
 Name:           kdevelop5-pg-qt
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Supporting package for the additional plugins for Kdevelop5
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org/
 Source0:        https://download.kde.org/stable/kdevelop-pg-qt/%{version}/src/%{rname}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-build-with-Qt-5.14.patch
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flex
@@ -41,7 +39,6 @@ Supporting package for the additional plugins for Kdevelop5 Integrated Developme
 
 %prep
 %setup -q -n %{rname}-%{version}
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build

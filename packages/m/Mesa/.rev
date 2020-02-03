@@ -3960,4 +3960,23 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>- require llvm9 (jsc#IBM-369, jsc#SLE-7452)</comment>
     <requestid>767994</requestid>
   </revision>
+  <revision rev="367" vrev="239">
+    <srcmd5>7505e489720c374e4bd57654e19d0235</srcmd5>
+    <version>unknown</version>
+    <time>1580725603</time>
+    <user>dimstar_suse</user>
+    <comment>- require and check for llvm-devel &gt;= 9 instead of llvm9-devel on
+  openSUSE
+
+- enabled build of gallium based llvmpipe driver for s390x
+  (related to jsc#IBM-369, jsc#SLE-7452)
+
+- Update to version 19.3.3
+  * There's plenty of changes here, but intel, docs, radeonsi,
+    and aco are the biggest sets of changes.
+- supersedes U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
+
+- set optflags also for g++ compiler</comment>
+    <requestid>768651</requestid>
+  </revision>
 </revisionlist>

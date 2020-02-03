@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
@@ -113,7 +113,7 @@ ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %setup -q
 %patch0 -p1 -b install
 %patch1 -p1 -b sockets
-%patch2
+%patch2 -p1
 %patch3 -p1
 
 cp %{S:1} .

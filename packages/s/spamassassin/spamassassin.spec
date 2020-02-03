@@ -1,7 +1,7 @@
 #
 # spec file for package spamassassin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@
 
 %define ix_version 2.05
 %define spd_version 2.53
-%define sa_version 3.4.3
+%define sa_version 3.4.4
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
-%define rules_revision 1871124
+%define rules_revision 1873061
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}

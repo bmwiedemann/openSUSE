@@ -232,4 +232,12 @@
     <comment>- Update to new release (forwarded request 759015 from awissu)</comment>
     <requestid>759018</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bdf12e0c69c5a52f790d73a7769acf28</srcmd5>
+    <version>2.1.0</version>
+    <time>1580724897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 769347 from awissu)</comment>
+    <requestid>769348</requestid>
+  </revision>
 </revisionlist>
