@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:44:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-setuotools: /usr/bin/argparse-manpage does
+  from pkg_resources import load_entry_point.
+
+-------------------------------------------------------------------
 Fri Jan 17 12:37:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.3
