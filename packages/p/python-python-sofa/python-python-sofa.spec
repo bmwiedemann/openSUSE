@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-sofa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-sofa
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
-License:        MIT
 Summary:        Spatially Oriented Format for Acoustics (SOFA) API for Python
-Url:            http://github.com/spatialaudio/python-sofa/
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/spatialaudio/python-sofa/
 Source:         https://files.pythonhosted.org/packages/source/p/python-sofa/python-sofa-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module numpy}
