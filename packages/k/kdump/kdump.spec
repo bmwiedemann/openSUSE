@@ -1,7 +1,7 @@
 #
 # spec file for package kdump
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,14 @@
 
 # on systemd distros, rpm-build requires systemd-rpm-macros,
 # which in turn defines %systemd_requires
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 %define systemd_present %{defined systemd_requires}
 
-%define dracutlibdir %{_prefix}/lib/dracut
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
 
-%{!?_udevdir: %global _udevdir %(pkg-config --variable=udevdir udev)}
-%if "%{_udevdir}" == ""
-%if 0%{?suse_version} >= 1230
-%global _udevdir /usr/lib/udev
-%else
-%global _udevdir /lib/udev
-%endif
-%endif
-%define _udevrulesdir %{_udevdir}/rules.d
+%define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
 Version:        0.9.0
@@ -76,6 +66,7 @@ Patch27:        %{name}-Document-fence_kdump_send.patch
 Patch28:        %{name}-powerpc-no-reload-on-CPU-removal.patch
 Patch29:        %{name}-prefer-by-path-and-device-mapper.patch
 Patch30:        %{name}-calibrate-Update-values.patch
+Patch31:        %{name}-activate-udev-rules-late-during-boot.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -88,26 +79,27 @@ BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  udev
 BuildRequires:  zlib-devel
+#!BuildIgnore:  fop
 Requires:       curl
 Requires:       kexec-tools
 Requires:       makedumpfile
 Requires:       openssh
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
 PreReq:         coreutils
+PreReq:         dracut
 PreReq:         sed
 Recommends:     cifs-utils
 Recommends:     nfs-client
-#!BuildIgnore:  fop
 # update should detect the split-off from kexec-tools
 Provides:       kexec-tools:%{_initddir}/kdump
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390 ppc
 %if %{systemd_present}
 BuildRequires:  pkgconfig(systemd)
 %else
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %insserv_prereq
 %endif
-PreReq:         dracut
 %if %{systemd_present}
 %systemd_requires
 %endif
@@ -163,6 +155,7 @@ after a crash dump has occured.
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
+%patch31 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -171,31 +164,25 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
 make %{?_smp_mflags}
-cd -
 
 %check
 cd build
-make %{?_smp_mflags} test
+ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} 
 
 %install
-cd build
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
-cd -
-# move udev rules
-mkdir -p %{buildroot}/%{_udevrulesdir}
-mv %{buildroot}/%{_sysconfdir}/udev/rules.d/* %{buildroot}/%{_udevrulesdir}/
+DESTDIR=%{buildroot} make -C build %{?_smp_mflags} install
 # remove executable bit from non-binaries
 chmod -x %{buildroot}/lib/kdump/setup-kdump.functions
 # empty directory
-mkdir -p %{buildroot}/var/crash
+mkdir -p %{buildroot}%{_localstatedir}/crash
 
 # symlink for init script
 %if %{systemd_present}
 rm %{buildroot}%{_initddir}/boot.kdump
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rckdump
 %else
-rm %{buildroot}/usr/lib/systemd/system/kdump.service
-rm %{buildroot}/usr/lib/systemd/system/kdump-early.service
+rm %{buildroot}%{_prefix}/lib/systemd/system/kdump.service
+rm %{buildroot}%{_prefix}/lib/systemd/system/kdump-early.service
 ln -s ../..%{_initddir}/boot.kdump %{buildroot}%{_sbindir}/rckdump
 %endif
 
@@ -217,8 +204,8 @@ fi
 %service_add_post kdump.service
 %service_add_post kdump-early.service
 # ensure newly added kdump-early.service is-enabled matches prior state
-if [ -x /usr/bin/systemctl ] && /usr/bin/systemctl is-enabled kdump.service &>/dev/null ; then
-	/usr/bin/systemctl reenable kdump.service || :
+if [ -x %{_bindir}/systemctl ] && %{_bindir}/systemctl is-enabled kdump.service &>/dev/null ; then
+	%{_bindir}/systemctl reenable kdump.service || :
 fi
 %else
 %{fillup_and_insserv -n kdump boot.kdump}
@@ -227,9 +214,9 @@ if [ "$change_permission" = 1 ]; then
     chmod 0600 %{_sysconfdir}/sysconfig/kdump
 fi
 # if /var/log/dump is empty, make it a symlink to /var/crash
-if test -d /var/log/dump && rmdir /var/log/dump >/dev/null 2>&1 ||
-        ! test -d /var/log/dump ; then
-    ln -snf /var/crash /var/log/dump
+if test -d %{_localstatedir}/log/dump && rmdir %{_localstatedir}/log/dump >/dev/null 2>&1 ||
+        ! test -d %{_localstatedir}/log/dump ; then
+    ln -snf %{_localstatedir}/crash %{_localstatedir}/log/dump
 fi
 
 %preun
@@ -245,7 +232,7 @@ echo "Stopping kdump ..."
 # force regeneration of kdumprd
 touch %{_sysconfdir}/sysconfig/kdump
 # delete symbolic link
-rm /var/log/dump >/dev/null 2>&1 || true
+rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %if %{systemd_present}
 %service_del_postun kdump.service
 %service_del_postun kdump-early.service
@@ -261,7 +248,7 @@ rm /var/log/dump >/dev/null 2>&1 || true
 %else
 # filesystem before SLE12 SP3 lacks /usr/share/licenses
 %if 0%(test ! -d %{_defaultlicensedir} && echo 1)
-%define _defaultlicensedir %_defaultdocdir
+%define _defaultlicensedir %{_defaultdocdir}
 %endif
 %endif
 # End of compatibility cruft
@@ -272,17 +259,18 @@ rm /var/log/dump >/dev/null 2>&1 || true
 %doc ChangeLog README NEWS
 %{_sbindir}/kdumptool
 %{_sbindir}/mkdumprd
-%{_mandir}/man5/kdump.5%{ext_man}
-%{_mandir}/man7/kdump.7%{ext_man}
-%{_mandir}/man8/kdumptool.8%{ext_man}
-%{_mandir}/man8/mkdumprd.8%{ext_man}
+%{_mandir}/man5/kdump.5%{?ext_man}
+%{_mandir}/man7/kdump.7%{?ext_man}
+%{_mandir}/man8/kdumptool.8%{?ext_man}
+%{_mandir}/man8/mkdumprd.8%{?ext_man}
 %{_fillupdir}/sysconfig.kdump
 %dir %{dracutlibdir}
 %dir %{dracutlibdir}/modules.d
 %{dracutlibdir}/modules.d/99kdump/
 %dir /lib/kdump
 /lib/kdump/*
-%{_udevrulesdir}/70-kdump.rules
+%dir /usr/lib/kdump
+/usr/lib/kdump/70-kdump.rules
 %if %{systemd_present}
 %{_unitdir}/kdump.service
 %{_unitdir}/kdump-early.service

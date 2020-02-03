@@ -1,0 +1,45 @@
+From 3405c3b3b53f35459f425d7cf3c0ffaf759cade4 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 27 Jan 2020 17:30:24 +0100
+Subject: [PATCH] kdump: activate udev rules late during boot
+
+The kdump udev rule is very broad in scope and may slow down
+booting strongly, especially during the coldplug phase where
+"add" events for lots of CPU and memory devices have to be
+processed. Therefore, activate this rule (which has the purpose
+to support real hotplug rather than coldplug) late in the boot
+sequence.
+---
+ CMakeLists.txt     | 2 +-
+ init/kdump.service | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f16f532..03eb133 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -206,7 +206,7 @@ ADD_CUSTOM_TARGET(
+ INSTALL(FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/70-kdump.rules
+     DESTINATION
+-        /etc/udev/rules.d
++        /usr/lib/kdump
+ )
+ 
+ #
+diff --git a/init/kdump.service b/init/kdump.service
+index 997805f..fb19f84 100644
+--- a/init/kdump.service
++++ b/init/kdump.service
+@@ -5,6 +5,8 @@ After=local-fs.target network.service YaST2-Second-Stage.service YaST2-Firstboot
+ [Service]
+ Type=oneshot
+ ExecStart=/lib/kdump/load.sh --update
++ExecStartPost=-/usr/bin/cp /usr/lib/kdump/70-kdump.rules /run/udev/rules.d/70-kdump.rules
++ExecStopPost=-/usr/bin/rm -f /run/udev/rules.d/70-kdump.rules
+ ExecStop=/lib/kdump/unload.sh
+ RemainAfterExit=true
+ 
+-- 
+2.25.0
+
