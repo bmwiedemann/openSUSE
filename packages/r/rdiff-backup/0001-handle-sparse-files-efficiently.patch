@@ -1,0 +1,54 @@
+From bfdf13c3b7cd4649d588303df32b7c7f59bbc77e Mon Sep 17 00:00:00 2001
+From: Stefan Seyfried <seife@tuxbox-git.slipkontur.de>
+Date: Thu, 23 Jan 2020 20:02:31 +0100
+Subject: [PATCH] handle sparse files efficiently
+
+This patch is originally from Erich Wheeler, posted on the mailing list
+http://lists.gnu.org/archive/html/rdiff-backup-users/2011-01/msg00000.html
+I ported it forward, removed the "short reads" handling and amended it
+to work with GzipFile output.
+---
+ src/rdiff_backup/rpath.py | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/src/rdiff_backup/rpath.py b/src/rdiff_backup/rpath.py
+index f7a1168..5b23891 100644
+--- a/src/rdiff_backup/rpath.py
++++ b/src/rdiff_backup/rpath.py
+@@ -67,11 +67,32 @@ class RPathException(Exception):
+ def copyfileobj(inputfp, outputfp):
+     """Copies file inputfp to outputfp in blocksize intervals"""
+     blocksize = Globals.blocksize
++
++    sparse = False
++    """Negative seeks are not supported by GzipFile"""
++    compressed = False
++    if isinstance(outputfp, gzip.GzipFile):
++        compressed = True
++
+     while 1:
+         inbuf = inputfp.read(blocksize)
+         if not inbuf:
+             break
+-        outputfp.write(inbuf)
++
++        buflen = len(inbuf)
++        if not compressed and inbuf == b"\x00" * buflen:
++            outputfp.seek(buflen, os.SEEK_CUR)
++            # flag sparse=True, that we seek()ed, but have not written yet
++            # The filesize is wrong until we write
++            sparse = True
++        else:
++            outputfp.write(inbuf)
++            # We wrote, so clear sparse.
++            sparse = False
++
++    if sparse:
++        outputfp.seek(-1, os.SEEK_CUR)
++        outputfp.write(b"\x00")
+ 
+ 
+ def cmpfileobj(fp1, fp2):
+-- 
+2.24.1
+
