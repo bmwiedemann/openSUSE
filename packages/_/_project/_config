@@ -153,6 +153,7 @@ Preinstall: aaa_base attr bash coreutils diffutils
 Preinstall: filesystem fillup glibc grep
 Preinstall: libbz2-1 libgcc_s1 libncurses6 pam
 Preinstall: permissions rpm rpm-config-SUSE sed tar libz1 libselinux1
+Preinstall: libgcrypt20 libgpg-error0
 Preinstall: liblzma5 libcap2 libacl1 libattr1
 Preinstall: libpopt0 libelf1
 Preinstall: libpcre1 libzstd1
