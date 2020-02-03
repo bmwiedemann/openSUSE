@@ -390,4 +390,17 @@
     (fixes Ending.j2b)</comment>
     <requestid>736008</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b3dfbba2988fb24d4e630d1262c9f12b</srcmd5>
+    <version>0.4.11</version>
+    <time>1580724724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.11:
+  * The “date” metadata could contain a bogus date for some older IT files.
+  * Do not apply global volume ramping from initial global volume when seeking.
+  * MTM: Sample loop length was off by one.
+  * PSM: Sample loop length was off by one in most files.
+  * MOD: Fix initial instrument change with no note playing.</comment>
+    <requestid>768831</requestid>
+  </revision>
 </revisionlist>

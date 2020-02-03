@@ -1,7 +1,7 @@
 #
 # spec file for package libopenmpt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,8 @@
 %define libplug libmodplug1
 %define libopenmpt libopenmpt0
 %define libopenmpt_modplug libopenmpt_modplug1
-%bcond_without mpg123
 Name:           libopenmpt
-Version:        0.4.9
+Version:        0.4.11
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause
@@ -40,6 +39,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(flac++)
+BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
@@ -47,9 +47,6 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(zlib)
-%if %{with mpg123}
-BuildRequires:  pkgconfig(libmpg123)
-%endif
 
 %description
 libopenmpt is a C++ and C library to decode tracker music files
@@ -133,11 +130,7 @@ autoreconf -fvi
     --enable-libmodplug \
     --disable-doxygen-doc \
     --with-zlib \
-%if %{with mpg123}
     --with-mpg123 \
-%else
-    --without-mpg123 \
-%endif
     --with-ogg \
     --with-vorbis \
     --with-vorbisfile \
