@@ -1624,4 +1624,41 @@
 - libpe_status: Use CSS to style messages. (forwarded request 746348 from yan_gao)</comment>
     <requestid>746349</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>55cbb368a528417320326724cdf6c545</srcmd5>
+    <version>2.0.3+20200128.df6c286d9</version>
+    <time>1580724652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3+20200128.df6c286d9:
+- scheduler: ensure attenuated scores still have some effect
+- scheduler: ignore colocation constraints with 0 score
+
+- Update to version 2.0.3+20200127.cdf84f849:
+- libpe_status: Remove extra colons from operations output.
+- libpe_status: correctly check for implicit resource ID collision
+- libpe_status: Use the same message for headers and history.
+- get ready for implicit -fno-common with upcoming GCC 10 (bsc#1160410)
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+- Update to version 2.0.3+20200116.92a6f7e97:
+- controller: bump feature set for shutdown-lock
+- scheduler: clear resource history when appropriate
+- tools: for down nodes, crm_resource --refresh should clear CIB only
+- controller: allow CRM_OP_LRM_DELETE to clear CIB only
+- tools: crm_resource resource checks should show shutdown locks
+- scheduler: display when a resource is shutdown-locked to a node
+- controller: don't clear shutdown locks when node rejoins
+- controller: mark shutdown-locked resources in resource history
+- scheduler: respect shutdown locks when placing inactive resources
+- scheduler: respect shutdown locks when placing active resources
+- scheduler: add shutdown lock cluster options
+- tools: improve error checking for crm_resource cleanup/fail commands
+- tools: improve crm_resource &quot;why&quot; messages
+- controller: improve messages when deleting CIB resource history
+
+- Update to version 2.0.3+20200116.ea5b06fae:
+- rectify thinko possibly behind spurious &quot;process will not die&quot; msg (forwarded request 769083 from yan_gao)</comment>
+    <requestid>769084</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Wed Jan 29 09:53:57 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200128.df6c286d9:
+- scheduler: ensure attenuated scores still have some effect
+- scheduler: ignore colocation constraints with 0 score
+
+-------------------------------------------------------------------
+Tue Jan 28 16:09:11 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200127.cdf84f849:
+- libpe_status: Remove extra colons from operations output.
+- libpe_status: correctly check for implicit resource ID collision
+- libpe_status: Use the same message for headers and history.
+- get ready for implicit -fno-common with upcoming GCC 10 (bsc#1160410)
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 12:49:01 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200116.92a6f7e97:
+- controller: bump feature set for shutdown-lock
+- scheduler: clear resource history when appropriate
+- tools: for down nodes, crm_resource --refresh should clear CIB only
+- controller: allow CRM_OP_LRM_DELETE to clear CIB only
+- tools: crm_resource resource checks should show shutdown locks
+- scheduler: display when a resource is shutdown-locked to a node
+- controller: don't clear shutdown locks when node rejoins
+- controller: mark shutdown-locked resources in resource history
+- scheduler: respect shutdown locks when placing inactive resources
+- scheduler: respect shutdown locks when placing active resources
+- scheduler: add shutdown lock cluster options
+- tools: improve error checking for crm_resource cleanup/fail commands
+- tools: improve crm_resource "why" messages
+- controller: improve messages when deleting CIB resource history
+
+-------------------------------------------------------------------
+Tue Jan 21 11:10:05 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200116.ea5b06fae:
+- rectify thinko possibly behind spurious "process will not die" msg
+- tools: Adapt stonith_admin to new return codes.
+- libpacemaker: Fix handling of some operation return values.
+- tools: Re-enable CGI output from crm_mon.
+- tools: Correct sec vs. msec discrepancy in stonith_admin.
+- libpe_status: Update the maint mode message for HTML output.
+- libpe_status: Use a separate log formatter for cluster options.
+- tools: Move --watch-fencing to under "Additional Options".
+- libpacemaker: Convert to new return codes.
+- libpacemaker: Add higher level stonith functions.
+- tools: Handle request being NULL.
+- tools: Be sure to free the GError when done with it.
+
+-------------------------------------------------------------------
+Fri Jan 10 14:18:35 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200106.bc6f54495:
+- attrd: properly declare global variables as extern in header (bsc#1160410)
+- libcrmcommon: introduce new set of return codes
+
+-------------------------------------------------------------------
+Fri Jan 10 13:08:03 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200102.1e3b41f65:
+- controller: improve CIB status deletion messages
+- controller: improve join messages
+- fenced: Clearly log merged STONITH operations.
+- iso8601: Fix crm_time_parse_offset() to parse offset with plus sign.
+- libcrmcommon: correctly raise detail log line length
+- libcrmservice: handle child wait errors appropriately
+- libcrmservice: improve messages when waiting for child process
+
+-------------------------------------------------------------------
+Thu Dec 05 12:49:59 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20191203.d671faa22:
+- scheduler: make sure cluster-wide maintenance-mode=true overrides per-resource settings (bsc#1154881)
+- tools: Correct the crm_mon man page.
+- pengine: formatted output for log
+- libcrmcommon: Add a formatter for logs
+- tools: Use glib for cmdline handling in crm_diff.
+
+-------------------------------------------------------------------
+Tue Nov 26 09:10:34 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20191125.4b1f869f0 (Pacemaker-2.0.3):
+- libcrmcommon: memory leak when comparing time with invalid specification
+- scheduler: only add successfully unpacked members as group children
+- scheduler: include execution time when logging action failure
+- libcrmservice: use "error" instead of "unknown error"
+- tools: update blocked description in html output
+
+-------------------------------------------------------------------
+Mon Nov 11 09:59:07 UTC 2019 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20191108.e39096b5a:
+- tools: Print nodes_maintenance in crm_mon.
+- libcrmcommon: Use <h3> when outputting a nested list.
+- tools: Explain what happens if crm_mon.cgi is run.
+- libcrmcommon: Update formatted output help.
+- tools: Add a space to "CLUSTER OK: 5nodes online". (bsc#1158180)
+- scheduler: count disabled and blocked resources correctly
+- scheduler: simplify logging resource info
+- libpengine: Correct display of master resources.
+
+-------------------------------------------------------------------
 Thu Nov 07 10:57:29 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.2+20191106.eef56dcd6:
@@ -243,8 +350,8 @@ Fri Jul 12 13:54:03 UTC 2019 - Yan Gao <ygao@suse.com>
 - libcrmcommon: tweak ACL log messages
 - libcrmcommon: pengine: formatted output for xml
 - libstonithd: improve error checking when sending command
-- fencer: don't require API registration for list and status commands
-- fencer: improve error checking and log messages for API action requests
+- fencer: don't require API registration for list and status commands (bsc#1148236)
+- fencer: improve error checking and log messages for API action requests (bsc#1148236)
 - executor: don't cancel stonith monitors when device is not registered
 - executor: return error for stonith probes if stonith connection was lost
 - libcrmcommon: assert on ACL memory allocation errors
@@ -532,8 +639,8 @@ Fri Jan 11 15:57:23 UTC 2019 - ygao@suse.com
 Fri Jan 11 10:11:05 UTC 2019 - ygao@suse.com
 
 - Update to version 2.0.0+20190110.7bbbeb6f6:
-- tools: Clear all prefer constraints when performing a move
-- tools: Fix moving a resource with a lifetime constraint
+- tools: Clear all prefer constraints when performing a move (bsc#1155290)
+- tools: Fix moving a resource with a lifetime constraint (bsc#1155290)
 - attrd: check for alert changes after CIB is replaced
 - attrd: start new election if writer is lost
 - attrd: handle shutdown more cleanly

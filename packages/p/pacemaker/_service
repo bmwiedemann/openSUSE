@@ -8,9 +8,9 @@
     To update to a new release, change "revision" to the desired
     git commit hash and bump "version" if necessary
 
-    <param name="version">2.0.2</param>
+    <param name="version">2.0.3</param>
 -->
-    <param name="versionformat">2.0.2+%cd.%h</param>
+    <param name="versionformat">2.0.3+%cd.%h</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>

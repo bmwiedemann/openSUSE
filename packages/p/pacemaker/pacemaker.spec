@@ -76,7 +76,7 @@
 %endif
 
 Name:           pacemaker
-Version:        2.0.2+20191106.eef56dcd6
+Version:        2.0.3+20200128.df6c286d9
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary

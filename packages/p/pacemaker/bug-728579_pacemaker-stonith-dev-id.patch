@@ -4,11 +4,11 @@ Date:   Thu Sep 6 15:14:58 2012 +0800
 
     Medium: stonith: Expose IDs of stonith resources to stonith agents through "$CRM_meta_st_device_id" environment variable
 
-Index: pacemaker-2.0.2+20191014.81d51216d/daemons/fenced/fenced_commands.c
+Index: pacemaker-2.0.3+20200127.cdf84f849/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-2.0.2+20191014.81d51216d.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-2.0.2+20191014.81d51216d/daemons/fenced/fenced_commands.c
-@@ -905,6 +905,7 @@ build_device_from_xml(xmlNode * msg)
+--- pacemaker-2.0.3+20200127.cdf84f849.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-2.0.3+20200127.cdf84f849/daemons/fenced/fenced_commands.c
+@@ -901,6 +901,7 @@ build_device_from_xml(xmlNode * msg)
                   device->id, device->on_target_actions);
      }
  
@@ -16,11 +16,11 @@ Index: pacemaker-2.0.2+20191014.81d51216d/daemons/fenced/fenced_commands.c
      device->work = mainloop_add_trigger(G_PRIORITY_HIGH, stonith_device_dispatch, device);
      /* TODO: Hook up priority */
  
-Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
+Index: pacemaker-2.0.3+20200127.cdf84f849/lib/fencing/st_client.c
 ===================================================================
---- pacemaker-2.0.2+20191014.81d51216d.orig/lib/fencing/st_client.c
-+++ pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
-@@ -42,6 +42,7 @@ struct stonith_action_s {
+--- pacemaker-2.0.3+20200127.cdf84f849.orig/lib/fencing/st_client.c
++++ pacemaker-2.0.3+20200127.cdf84f849/lib/fencing/st_client.c
+@@ -38,6 +38,7 @@ struct stonith_action_s {
      char *action;
      char *victim;
      GHashTable *args;
@@ -28,7 +28,7 @@ Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
      int timeout;
      int async;
      void *userdata;
-@@ -600,6 +601,7 @@ stonith__destroy_action(stonith_action_t
+@@ -596,6 +597,7 @@ stonith__destroy_action(stonith_action_t
          }
          free(action->output);
          free(action->error);
@@ -36,7 +36,7 @@ Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
          free(action);
      }
  }
-@@ -669,6 +671,8 @@ stonith_action_create(const char *agent,
+@@ -665,6 +667,8 @@ stonith_action_create(const char *agent,
      if (device_args) {
          char buffer[512];
          const char *value = NULL;
@@ -45,7 +45,7 @@ Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
  
          snprintf(buffer, sizeof(buffer), "pcmk_%s_retries", _action);
          value = g_hash_table_lookup(device_args, buffer);
-@@ -676,6 +680,11 @@ stonith_action_create(const char *agent,
+@@ -672,6 +676,11 @@ stonith_action_create(const char *agent,
          if (value) {
              action->max_retries = atoi(value);
          }
@@ -57,7 +57,7 @@ Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
      }
  
      return action;
-@@ -813,6 +822,10 @@ internal_stonith_action_execute(stonith_
+@@ -809,6 +818,10 @@ internal_stonith_action_execute(stonith_
      svc_action->cb_data = (void *) action;
      set_bit(svc_action->flags, SVC_ACTION_NON_BLOCKED);
  
@@ -68,11 +68,11 @@ Index: pacemaker-2.0.2+20191014.81d51216d/lib/fencing/st_client.c
      /* keep retries from executing out of control and free previous results */
      if (is_retry) {
          free(action->output);
-Index: pacemaker-2.0.2+20191014.81d51216d/lib/services/services_linux.c
+Index: pacemaker-2.0.3+20200127.cdf84f849/lib/services/services_linux.c
 ===================================================================
---- pacemaker-2.0.2+20191014.81d51216d.orig/lib/services/services_linux.c
-+++ pacemaker-2.0.2+20191014.81d51216d/lib/services/services_linux.c
-@@ -30,6 +30,9 @@
+--- pacemaker-2.0.3+20200127.cdf84f849.orig/lib/services/services_linux.c
++++ pacemaker-2.0.3+20200127.cdf84f849/lib/services/services_linux.c
+@@ -28,6 +28,9 @@
  #include "crm/common/mainloop.h"
  #include "crm/services.h"
  
@@ -81,8 +81,8 @@ Index: pacemaker-2.0.2+20191014.81d51216d/lib/services/services_linux.c
 +
  #include "services_private.h"
  
- #if SUPPORT_CIBSECRETS
-@@ -189,6 +192,15 @@ static void
+ static void close_pipe(int fildes[]);
+@@ -405,6 +408,15 @@ static void
  add_action_env_vars(const svc_action_t *op)
  {
      void (*env_setter)(gpointer, gpointer, gpointer) = NULL;
