@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  1 03:20:42 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 4.009
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+
+  4.009 Fri January 31, 2020
+      * Update ppport.h for modern perls.
+  
+  4.008 Thurs January 30, 2020
+      * Fixup casting error for pedantic compilers in srl_compress.h
+      * Build fixes.
+
+-------------------------------------------------------------------
 Fri Aug 30 10:38:12 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Add custom_build in cpanspec.yml. make doesn't work here with -j...
