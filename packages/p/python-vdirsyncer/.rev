@@ -57,4 +57,12 @@
   * python-vdirsyncer-shift-deadline.patch</comment>
     <requestid>707748</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e3c236da357d765a68cec012127b98a0</srcmd5>
+    <version>0.16.7</version>
+    <time>1580842473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769764</requestid>
+  </revision>
 </revisionlist>

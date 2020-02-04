@@ -1,7 +1,7 @@
 #
 # spec file for package python-vdirsyncer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ Patch1:         python-vdirsyncer-shift-deadline.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 Requires:       python-atomicwrites >= 0.1.7
 Requires:       python-click >= 5.0
 Requires:       python-click-log >= 0.3
