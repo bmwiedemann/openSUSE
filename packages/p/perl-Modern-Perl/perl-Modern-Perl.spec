@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Modern-Perl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Modern-Perl
-Version:        1.20190727
+Version:        1.20200201
 Release:        0
 %define cpan_name Modern-Perl
 Summary:        Enable all of the features of Modern Perl with one import
