@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:54:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Sun Feb  2 12:48:21 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Fix bash-completion paths to match the binary names (and to avoid conflicts
+  with LXD). boo#1162426
+
+-------------------------------------------------------------------
 Mon Nov 11 23:26:49 UTC 2019 - Pavol Cupka <palica@liguros.net>
 
 - adding a patch to fix "Containers fail to start regression lxc 3.2"

@@ -66,12 +66,12 @@ BuildRequires:  fdupes
 BuildRequires:  docbook-utils
 BuildRequires:  docbook2x
 BuildRequires:  bash-completion
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       libcap-progs
 Requires:       lxcfs
 Requires:       lxcfs-hooks-lxc
 Requires:       rsync
-%{?systemd_requires}
+%{?systemd_ordering}
 # Needed to create openSUSE containers using template.
 Recommends:     build
 Recommends:     criu >= 2.0
@@ -179,10 +179,15 @@ install -D -m 0644 %{S:90} %{buildroot}%{_datadir}/%{name}/config/common.conf.d/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-net
 
-# Ensure we install the bash-completion to the correct place -- on some SLE
-# versions this is done for us by make_install, on others we need to do it
-# manually.
-install -D -m 0644 config/bash/lxc %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+# Install bash-completion. Note that we have to install a symlink for every
+# lxc-* command because bash-completion relies on the binary name to pick the
+# bash-completion script.
+install -D -m 0644 config/bash/lxc %{buildroot}%{_datadir}/bash-completion/completions/_%{name}
+for bin in $(find src/lxc/lxc-* -executable -print0 | xargs -n1 -0 basename)
+do
+	ln -s "_%{name}" "%{buildroot}%{_datadir}/bash-completion/completions/$bin"
+done
+# lxc installs bash-completion to the wrong location.
 rm -f %{buildroot}%{_sysconfdir}/bash_completion.d/%{name}
 
 # Clean up.
