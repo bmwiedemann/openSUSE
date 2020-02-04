@@ -32,4 +32,19 @@
     <comment>Add support for using logind mode for recent distributions (forwarded request 768528 from dancermak)</comment>
     <requestid>769065</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa35a7f9a11b34ab5a4e6ca0249bed0a</srcmd5>
+    <version>0.5.1</version>
+    <time>1580842541</time>
+    <user>dimstar_suse</user>
+    <comment>-  Upgrade to the recently released 0.5.1, which includes previously applied
+   patches
+Removed patches (adding this for the bot):
+   0001-Fixed-inconsistency-in-README-thanks-AJGQ.patch
+   0002-Support-the-new-SetBrightness-logind-API.patch
+   0003-Make-the-use-of-SetBrightness-dynamic.patch
+   0004-Use-non-suid-permissions-when-logind-is-used.patch
+</comment>
+    <requestid>769819</requestid>
+  </revision>
 </revisionlist>

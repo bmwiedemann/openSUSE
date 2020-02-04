@@ -25,20 +25,13 @@
 %global use_logind 0
 %endif
 Name:           brightnessctl
-Version:        0.4
+Version:        0.5.1
 Release:        0
 Summary:        Tool to read and control device brightness
 License:        MIT
 URL:            https://github.com/Hummer12007/%{name}
 Source:         %{URL}/archive/%{version}.tar.gz
-# required to resolve cherry pick conflicts
-# https://github.com/Hummer12007/brightnessctl/commit/aa6a71cd8206992a64269239f038dbf5f516e54a
-Patch0:         0001-Fixed-inconsistency-in-README-thanks-AJGQ.patch
-# https://github.com/Hummer12007/brightnessctl/pull/33
-Patch1:         0002-Support-the-new-SetBrightness-logind-API.patch
-Patch2:         0003-Make-the-use-of-SetBrightness-dynamic.patch
-# https://github.com/Hummer12007/brightnessctl/pull/41
-Patch3:         0004-Use-non-suid-permissions-when-logind-is-used.patch
+PreReq:         permissions
 BuildRequires:  gcc
 BuildRequires:  make
 %if %{use_logind}
@@ -53,9 +46,6 @@ A utility to read and control the display brightness.
 
 %prep
 %autosetup -N
-%if %{use_logind}
-%autopatch -p1
-%endif
 
 %build
 %if %{use_logind}
@@ -72,6 +62,13 @@ export CFLAGS="%{optflags}"
 %make_install INSTALL_UDEV_RULES=0 ENABLE_SYSTEMD=1 PREFIX=%{_prefix}
 %else
 %make_install UDEVDIR=%{_udevrulesdir}
+%endif
+
+%post
+%if 0%{?set_permissions:1}
+    %set_permissions %name
+%else
+    %run_permissions
 %endif
 
 %files

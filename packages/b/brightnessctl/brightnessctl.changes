@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb  2 21:10:59 UTC 2020 - R. Tyler Croy <rtyler@brokenco.de>
+
+-  Upgrade to the recently released 0.5.1, which includes previously applied
+   patches
+
+Removed patches (adding this for the bot):
+
+   0001-Fixed-inconsistency-in-README-thanks-AJGQ.patch
+   0002-Support-the-new-SetBrightness-logind-API.patch
+   0003-Make-the-use-of-SetBrightness-dynamic.patch
+   0004-Use-non-suid-permissions-when-logind-is-used.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 08:52:07 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add support for using logind mode for recent distributions
