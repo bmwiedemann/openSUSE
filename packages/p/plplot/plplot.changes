@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:40:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require libcsironn0 from the -devel package on
+  suse_version>=1550, where this is no longer built.
+
+-------------------------------------------------------------------
 Fri Dec 13 10:57:12 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - plplotqt-devel no longer Requires libqt4-devel, instead the

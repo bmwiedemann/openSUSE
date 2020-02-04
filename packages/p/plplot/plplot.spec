@@ -1,7 +1,7 @@
 #
 # spec file for package plplot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -169,7 +169,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{c_shlib} = %{version}
 Requires:       %{csirocsa_shlib} = %{version}
+%if 0%{?suse_version} < 1550
 Requires:       %{csironn_shlib} = %{version}
+%endif
 Requires:       %{qsastime_shlib} = %{version}
 Requires:       gcc-c++
 Requires:       pkgconfig
