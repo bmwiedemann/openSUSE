@@ -200,4 +200,41 @@
   * Fix crash when jid has no not part (#1153, #1193)</comment>
     <requestid>732851</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>418c39d39edec1e2adc6e8e6f25a9267</srcmd5>
+    <version>0.8.0</version>
+    <time>1580842351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * OMEMO fingerprint autocompletion now considers only the contact in question (@paulfariello) (#1068)
+  * Save and display oldest timestamp from delay tags (#1254)
+  * Change theme handling (#1077)
+  * /theme load themename not loads only the colours of a theme. So the users preferences don't get overwritten
+  * /theme full-load themename loads the whole theme including preferences (like omemo.char)
+  * Add gruvbox theme (@Misaflo) (#1259)
+  * XEP-0092: Include OS name in /software answer.
+  * See /os on|off
+  * Add option to notify about version request via XEP-0092 and XEP-0232 via adv.notify.discoversion
+  * setting in configuration file.
+  * Add option to display MUC name or JID in titlebar: /titlebar use [name|jid].
+  * Add /roster room use command to decide whether to display the MUC name or JID in the roster:
+    /roster room use name to use the name of the MUC in the roster list.
+    /roster room use jid to use the jid of the MUC in the roster list.
+  * Fix decryption failure for messages sent from Converse.js (@paulfariello) (#1253)
+  * Fix crash when OMEMO key is misconfigured (@paulfariello) (#1239)
+  * Use OMEMO for offline MUC members (@paulfariello) (#1242)
+  * Fix OMEMO 1on1 chats with psi+ (@svensp) (#1247)
+  * Save occupants and roster chars (#1244)
+  * Add support for downloading user avatars via XEP-0084 (#1240)
+  * See /avatar
+  * Add last read position marker trackbar (#1238)
+  * Dont print error message if a valid setting function is called (#1237)
+  * When printing configuration we often use the same command as setting but without any argument.
+  * So far ths displayed &quot;Invalid usage&quot;.
+  * Add support for XEP-0392 consistent color generation for nicks (@aaptel and @jubalh) (#1191)
+  * See /color, /occupants color, /roster color
+  * Call ncurses resize function before move function (#1235)
+  * Fix error when joining IRC via biboumi (#1230)</comment>
+    <requestid>769505</requestid>
+  </revision>
 </revisionlist>
