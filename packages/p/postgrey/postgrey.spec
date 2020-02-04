@@ -1,7 +1,7 @@
 #
 # spec file for package postgrey
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,8 @@ BuildArch:      noarch
 %if 0%{?suse_version}
 Suggests:       cron
 %if 0%{?suse_version} >= 1210
-BuildRequires:  systemd
-%systemd_requires
+BuildRequires:  pkgconfig(systemd)
+%systemd_ordering
 %endif
 Requires(post): %fillup_prereq
 %endif
