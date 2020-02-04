@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 03 17:08:04 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200203.fe919b2b:
+  * Added new images in 15-SP2 release tool config
+  * dashboard: add groupid to have proper link for aarch64, powerpc, s390x
+  * dashboard: fix openQA link
+
+-------------------------------------------------------------------
 Fri Jan 31 18:22:12 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200131.e3c26df9:
