@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 15:14:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Sun Mar 19 11:31:10 UTC 2017 - afaerber@suse.de
 
 - Drop deprecated --enable-ioutil and --enable-oocd_trace options

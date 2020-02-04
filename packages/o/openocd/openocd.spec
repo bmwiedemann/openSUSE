@@ -1,7 +1,7 @@
 #
 # spec file for package openocd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,9 +29,9 @@ Name:           openocd
 Version:        0.10.0
 Release:        0
 Summary:        Debugging, in-system programming and boundary-scan testing for embedded devices
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
-Url:            http://openocd.sourceforge.net/
+URL:            http://openocd.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sha1
@@ -48,10 +48,10 @@ BuildRequires:  libhidapi-devel
 BuildRequires:  libjaylink-devel
 %endif
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-compat-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkg-config >= 0.23
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 Requires:       %{name}-data = %{version}
