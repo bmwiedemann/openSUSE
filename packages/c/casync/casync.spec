@@ -35,13 +35,11 @@ BuildRequires:  gcc >= 5
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libudev-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  rsync
-BuildRequires:  udev
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libacl)
@@ -50,6 +48,7 @@ BuildRequires:  pkgconfig(liblzma) >= 5.1.0
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  x86_64
 
