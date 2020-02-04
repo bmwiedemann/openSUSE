@@ -1,7 +1,7 @@
 #
 # spec file for package libserialport
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname %{name}0
 Summary:        Handles OS-specific details when using serial ports
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 
 Name:           libserialport
 Version:        0.1.1
 Release:        0
-Url:            http://sigrok.org
+URL:            http://sigrok.org
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libudev)
 Source0:        http://sigrok.org/download/source/libserialport/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
