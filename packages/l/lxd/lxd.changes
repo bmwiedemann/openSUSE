@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  3 15:03:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: Allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Sat Feb  1 23:37:24 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Fix bash-completion by installing it to the correct path. boo#1162426
+
+-------------------------------------------------------------------
 Fri Jan 31 10:16:27 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Backport https://github.com/canonical/dqlite/pull/207 to fix boo#1156336.

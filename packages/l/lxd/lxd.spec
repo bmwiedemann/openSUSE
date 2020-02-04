@@ -44,11 +44,11 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
-BuildRequires:  libudev-devel
 BuildRequires:  patchelf
 BuildRequires:  pkg-config
 BuildRequires:  rsync
 BuildRequires:  golang(API) >= 1.10
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxc) >= 3.0.0
 # Needed to build the sqlite fork and dqlite.
 BuildRequires:  autoconf
@@ -292,7 +292,7 @@ done
 popd
 
 # bash-completion.
-install -D -m 0644 scripts/bash/lxd-client %{buildroot}%{_datadir}/bash-completion/completions/lxd-client
+install -D -m 0644 scripts/bash/lxd-client %{buildroot}%{_datadir}/bash-completion/completions/lxc
 
 # sysv-init and systemd setup.
 install -D -m 0644 %{S:100} %{buildroot}%{_unitdir}/%{name}.service
