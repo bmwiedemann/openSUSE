@@ -1,7 +1,7 @@
 #
 # spec file for package vhostmd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Release:        0
 Summary:        Virtual Host Metrics Daemon (vhostmd)
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
-Url:            https://github.com/vhostmd/vhostmd
+URL:            https://github.com/vhostmd/vhostmd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        vhostmd-%{version}.tar.bz2
 Patch0:         vhostmd-conf.patch
@@ -42,8 +42,8 @@ BuildRequires:  libvirt-devel
 BuildRequires:  libxml2
 BuildRequires:  libxml2-devel
 BuildRequires:  pkg-config
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %if %{with_xen}
 BuildRequires:  xen-devel
 %endif

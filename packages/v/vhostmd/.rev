@@ -263,4 +263,12 @@ regression introduced by the last update. See bsc#1152803 for details.
   bsc#1154838</comment>
     <requestid>743614</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>bcfbea62bf9891033014e84efe5cb11e</srcmd5>
+    <version>1.1</version>
+    <time>1580842447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769746</requestid>
+  </revision>
 </revisionlist>
