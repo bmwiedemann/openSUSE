@@ -1153,6 +1153,8 @@ unsorted:
   - bless-doc 
   - bliss 
   - bliss-devel 
+  - blitz-devel 
+  - blitz-doc 
   - blktests 
   - blktrace 
   - bloaty 
@@ -1562,7 +1564,6 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certstrap: [i586] 
-  - cetcd-devel 
   - cf-cli 
   - cf-cli-test 
   - cfengine 
@@ -7299,6 +7300,23 @@ unsorted:
   - libOyranosSynnefo-devel 
   - libOyranosSynnefo-devel-static 
   - libOyranosSynnefo1 
+  - libPocoCppParser63 
+  - libPocoCrypto63 
+  - libPocoData63 
+  - libPocoDataMySQL63 
+  - libPocoDataODBC63 
+  - libPocoDataSQLite63 
+  - libPocoEncodings63 
+  - libPocoFoundation63 
+  - libPocoJSON63 
+  - libPocoMongoDB63 
+  - libPocoNet63 
+  - libPocoNetSSL63 
+  - libPocoPDF63 
+  - libPocoRedis63 
+  - libPocoUtil63 
+  - libPocoXML63 
+  - libPocoZip63 
   - libPythonQt-Qt5-Python3-3 
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
@@ -7972,6 +7990,7 @@ unsorted:
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
   - libbliss-0_73 
+  - libblitz0 
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
   - libblockdev-devel 
@@ -10432,7 +10451,6 @@ unsorted:
   - libopenblas_serial-devel 
   - libopenblas_serial0 
   - libopencascade7 
-  - libopencensus-cpp0: [x86_64] 
   - libopencsg1 
   - libopencv3_4 
   - libopencv4_2 
@@ -10892,7 +10910,7 @@ unsorted:
   - libqgpgme-devel 
   - libqgpgme7-32bit: [x86_64] 
   - libqhexedit4 
-  - libqhull7-7_3_2 
+  - libqhull7 
   - libqimageblitz5-1 
   - libqimageblitz5-devel 
   - libqjack-devel 
@@ -11317,6 +11335,7 @@ unsorted:
   - librsync2 
   - librtaudio6 
   - librtmidi5 
+  - librtr0 
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
@@ -12118,6 +12137,7 @@ unsorted:
   - libvtk1 
   - libvtk1-openmpi1 
   - libvtk1-openmpi2 
+  - libvtk1-openmpi3 
   - libvulkan1 
   - libvulkan1-32bit: [x86_64] 
   - libvulkan_intel-32bit: [x86_64] 
@@ -12485,7 +12505,7 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_8_3 
+  - libzbc-5_8_4 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
@@ -12645,7 +12665,6 @@ unsorted:
   - llvm 
   - llvm-LTO-devel 
   - llvm-devel 
-  - llvm-emacs-plugins 
   - llvm-gold 
   - llvm-vim-plugins 
   - llvm6 
@@ -12687,7 +12706,6 @@ unsorted:
   - llvm9-devel 
   - llvm9-devel-32bit: [x86_64] 
   - llvm9-doc 
-  - llvm9-emacs-plugins 
   - llvm9-gold 
   - llvm9-opt-viewer 
   - llvm9-polly 
@@ -15178,8 +15196,7 @@ unsorted:
   - openbsc-bs11-utils 
   - openbsc-bsc-sccplite 
   - opencc-devel 
-  - opencensus-cpp-devel: [x86_64] 
-  - opencensus-cpp-source: [x86_64] 
+  - opencensus-cpp-source 
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
@@ -15641,8 +15658,8 @@ unsorted:
   - paranamer-javadoc 
   - paranamer-maven-plugin 
   - paranamer-parent 
-  - paraview: [x86_64] 
-  - paraview-devel: [x86_64] 
+  - paraview 
+  - paraview-devel 
   - paraviewdata 
   - parboiled 
   - parboiled-javadoc 
@@ -15904,7 +15921,6 @@ unsorted:
   - pencil 
   - pentaho-libxml-javadoc 
   - pentaho-reporting-flow-engine-javadoc 
-  - pepper 
   - percona-toolkit 
   - perf 
   - perftest 
@@ -17217,6 +17233,8 @@ unsorted:
   - pocketsphinx-devel 
   - pocl 
   - pocl-devel 
+  - poco-cpspc 
+  - poco-devel 
   - podman: [i586] 
   - podman-cni-config: [i586] 
   - podofo 
@@ -17816,7 +17834,6 @@ unsorted:
   - python-testtools-doc 
   - python-tooz-doc 
   - python-translationstring-doc 
-  - python-tre 
   - python-trollius 
   - python-vips 
   - python-volatility 
@@ -17928,7 +17945,6 @@ unsorted:
   - python2-PeakUtils 
   - python2-Pebble 
   - python2-Pillow-tk 
-  - python2-Pint 
   - python2-PrettyTable 
   - python2-Protego 
   - python2-PsyLab 
@@ -21696,6 +21712,7 @@ unsorted:
   - python3-openstackdocstheme 
   - python3-openstacksdk 
   - python3-openwsman 
+  - python3-opt-einsum 
   - python3-orange-canvas-core 
   - python3-orange-widget-base 
   - python3-ordered-namespace 
@@ -22652,6 +22669,7 @@ unsorted:
   - python3-vtk 
   - python3-vtk-openmpi1 
   - python3-vtk-openmpi2 
+  - python3-vtk-openmpi3 
   - python3-vulkan 
   - python3-vulture 
   - python3-w3lib 
@@ -23001,6 +23019,7 @@ unsorted:
   - rcs 
   - rdesktop 
   - rdiff 
+  - rdiff-backup 
   - rdma-core-devel 
   - rdma-core-devel-32bit: [x86_64] 
   - rdma-ndd 
@@ -23204,6 +23223,9 @@ unsorted:
   - rtl_433-devel 
   - rtmidi-devel 
   - rtorrent 
+  - rtr-tools 
+  - rtrlib-devel 
+  - rtrlib-devel-doc 
   - rttr-devel 
   - rttr-devel-doc 
   - rubber 
@@ -24270,6 +24292,7 @@ unsorted:
   - servletapi4 
   - servletapi4-javadoc 
   - servletapi5 
+  - sesdev 
   - setconf 
   - setools-console 
   - setools-gui 
@@ -32902,6 +32925,7 @@ unsorted:
   - udns 
   - udns-devel 
   - udp2raw-tunnel 
+  - udpa-source 
   - udpspeeder 
   - udtrace 
   - ufiformat 
@@ -33286,6 +33310,10 @@ unsorted:
   - vtk-openmpi2-devel-doc 
   - vtk-openmpi2-java 
   - vtk-openmpi2-qt 
+  - vtk-openmpi3-devel 
+  - vtk-openmpi3-devel-doc 
+  - vtk-openmpi3-java 
+  - vtk-openmpi3-qt 
   - vtk-qt 
   - vtkdata 
   - vulkan-devel 
@@ -33488,6 +33516,7 @@ unsorted:
   - xapian-core 
   - xapian-core-doc 
   - xapian-core-examples 
+  - xapps-mate 
   - xar 
   - xautolock 
   - xautomation 
