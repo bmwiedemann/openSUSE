@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyFFTW
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,26 +22,26 @@
 %else
 %bcond_with     test
 %endif
+
 Name:           python-pyFFTW
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        A pythonic wrapper around FFTW, the FFT library
 License:        GPL-2.0-or-later AND BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://hgomersall.github.com/pyFFTW/
-Source:         https://files.pythonhosted.org/packages/source/p/pyFFTW/pyFFTW-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/pyFFTW/pyFFTW/pull/265.patch
+URL:            https://github.com/pyFFTW/pyFFTW
+Source:         https://github.com/pyFFTW/pyFFTW/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.6}
-BuildRequires:  %{python_module scipy >= 0.12.0}
+BuildRequires:  %{python_module scipy >= 0.14.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.6
-Requires:       python-scipy >= 0.12.0
+Requires:       python-scipy >= 0.14.0
 
 %python_subpackages
 
@@ -61,7 +61,6 @@ repository.
 
 %prep
 %setup -q -n pyFFTW-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -84,7 +83,7 @@ $python setup.py clean
 %endif
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %{python_sitearch}/*
 
