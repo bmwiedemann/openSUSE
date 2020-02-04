@@ -1,7 +1,7 @@
 #
 # spec file for package istgt
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,18 +23,18 @@ Release:        0
 Summary:        Userspace iSCSI Target
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Other
-Url:            http://www.peach.ne.jp/archives/istgt/
+URL:            http://www.peach.ne.jp/archives/istgt/
 Source:         istgt-%{upstreamrel}.tar.gz
 Requires:       bash
 BuildRequires:  autoconf
 %define systemd_init 0
 %if 0%{?suse_version} >= 1300
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %define systemd_init 1
 %{?systemd_requires}
 %endif
 %if 0%{?fedora_version} >= 20
-BuildRequires: systemd-units
+BuildRequires:  systemd-units
 %define systemd_init 1
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
