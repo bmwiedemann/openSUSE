@@ -49,9 +49,9 @@ BuildRequires:  pkg-config
 BuildRequires:  ghostscript-core
 %endif
 BuildRequires:  asciidoc
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(systemd)
 Recommends:     simple-obfs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
