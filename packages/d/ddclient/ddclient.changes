@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:16:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use properly tmpfiles-create
+- Remove the systemd conditional
+- Fixup download url
+
+-------------------------------------------------------------------
+Sun Feb  2 08:26:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Replace pwdutils with shadow, former is gone long time ago
+
+-------------------------------------------------------------------
+Fri Jan 24 20:46:43 UTC 2020 - Manu Maier <mmanu84@outlook.de>
+
+- Upgrade to ddclient-3.9.1
+  * added support for Yandex.Mail for Domain DNS service
+  * added support for NearlyFreeSpeech.net
+  * added support for DNS Made Easy
+  * added systemd instructions
+  * added support for dondominio.com
+  * updated perl instruction
+  * updated fritzbox instructions
+  * fixed multidomain support for namecheap
+  * fixed support for Yandex
+
+-------------------------------------------------------------------
 Tue Dec 31 23:19:02 UTC 2019 - chris@computersalat.de
 
 - fix for boo#1127387

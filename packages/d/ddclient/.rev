@@ -352,4 +352,27 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment>fix for boo#1127387 (forwarded request 760192 from computersalat)</comment>
     <requestid>760193</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5acbe40207abead2c51d192a8315fc9f</srcmd5>
+    <version>3.9.1</version>
+    <time>1580842426</time>
+    <user>dimstar_suse</user>
+    <comment>- Use properly tmpfiles-create
+- Remove the systemd conditional
+- Fixup download url
+
+- Replace pwdutils with shadow, former is gone long time ago
+
+- Upgrade to ddclient-3.9.1
+  * added support for Yandex.Mail for Domain DNS service
+  * added support for NearlyFreeSpeech.net
+  * added support for DNS Made Easy
+  * added systemd instructions
+  * added support for dondominio.com
+  * updated perl instruction
+  * updated fritzbox instructions
+  * fixed multidomain support for namecheap
+  * fixed support for Yandex</comment>
+    <requestid>769612</requestid>
+  </revision>
 </revisionlist>
