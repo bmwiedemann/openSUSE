@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Feb  1 13:27:47 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.8.0
+  + New things:
+   - CAPI: GEOSBuildArea (#952, Even Rouault)
+   - CAPI: GEOSMakeValid (#952, Even Rouault)
+   - CAPI: GEOSPolygonize_valid (#727, Dan Baston)
+   - CAPI: GEOSCoverageUnion (Dan Baston)
+   - CAPI: GEOSCoordSeq_setXY, GEOSCoordSeq_setXYZ,
+           GEOSCoordSeq_getXY, GEOSCoordSeq_getXYZ (Dan Baston)
+   - CAPI: GEOSMinimumBoundingCircle (#735)
+   - CAPI: GEOSGeom_createPointFromXY (Dan Baston)
+  + Improvements:
+   - Improve overall performance by reducing of heap allocations (Dan Baston)
+   - Improve performance and robustness of GEOSPointOnSurface (Martin Davis)
+   - Improve performance of GEOSPolygonize for cases with many potential
+     holes (#748, Dan Baston)
+   - Support extended precision calculations (ttmath) and port JTS
+     improvements related to extended precision (Paul Ramsey, Mateusz Loskot)
+   - Improve performance of GEOSPolygonize for cases with many or complex
+     shells (Dan Baston, Martin Davis)
+   - Improve performance of Delaunay triangulations / Voronoi Diagrams
+     (Dan Baston)
+   - Improve performance of prepared geometry operations (Dan Baston)
+   - Improve robustness of Delaunay triangulations (Paul Ramsey, Martin Davis)
+   - Improve performance of unary union for lines (Dan Baston)
+   - Improve general predicate, overlay, and buffer performance (Dan
+     Baston, Paul Ramsey)
+   - Improve cascaded union performance (Paul Ramsey, Martin Davis)
+   - Allocate default GeometryFactory singleton on the stack (Sandro Mani)
+   - Harmonize XML tests with JTS and harmonize cmake/autoconf
+     test running (Paul Ramsey)
+   - CMake modernization (Mateusz Loskot, Paul Ramsey, Dan Baston)
+   - Return unique_ptr from most methods that produce a new geometry (Dan Baston)
+  + Changes:
+   - Constructive geometry functions in CAPI now preserve SRID
+     of input arguments in output (#896)
+- Packaging modernize a bit the spec (minimal)
+
+-------------------------------------------------------------------
 Wed Jun 12 14:09:59 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.7.2
@@ -12,7 +52,7 @@ Mon Feb 18 20:05:25 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Packaging:
   + refresh patch libruby with upstream debian for 3.7.1
-  + remove python as state upstream this not supported since 
+  + remove python as state upstream this not supported since
     version 3 (use Shapely or libgeos_c)
 - Update to version 3.7.1
   + Bug fixes / improvements
@@ -130,22 +170,22 @@ Mon May 29 12:40:48 UTC 2017 - mpluskal@suse.com
 Wed Dec  7 12:50:34 UTC 2016 - bruno@ioda-net.ch
 
 - Updated to 3.5.1 Bug fixes / improvements
-  + Fix CMake configuration to allow build from released sources 
+  + Fix CMake configuration to allow build from released sources
     package (#753)
-  + Fix memory leaks in single-sided buffers (#747), PlanarGraph 
+  + Fix memory leaks in single-sided buffers (#747), PlanarGraph
     and tests
-  + Fix GeometryEditor to correctly update factory of empty 
+  + Fix GeometryEditor to correctly update factory of empty
     geometries (#749)
   + Fix snapping of last segment of a closed linestring (#758)
   + Fix memory exhaustion case in isvalid (#757)
   + Fix Windows build with Visual Studio 2008 (#766)
   + Fix incorrect return from prepared multipoint intersects (#764)
-  + Fix build against GCC 3.5.0+ (#784) 
+  + Fix build against GCC 3.5.0+ (#784)
 
 -------------------------------------------------------------------
 Fri Jun 24 09:28:19 UTC 2016 - mpluskal@suse.com
 
-- Fix building with recent gcc 
+- Fix building with recent gcc
 
 -------------------------------------------------------------------
 Mon Nov  9 15:08:57 UTC 2015 - mpluskal@suse.com
@@ -209,7 +249,7 @@ Thu Oct  3 17:10:13 UTC 2013 - tzotsos@opensuse.org
 
 - Update to new release  3.4.2
 - Bug fixes / improvements since 3.3.8
-  - Use a double for PrecisionModel scale, avoiding overflows 
+  - Use a double for PrecisionModel scale, avoiding overflows
     should fix 32-bit regression failures (#652)
   - isnan workaround OS detection missing NetBSD, DragonFly, Sun nuance (#650)
   - Do not distribute platform.h and version.h, but install both (#601)
@@ -228,7 +268,7 @@ Thu Oct  3 17:10:13 UTC 2013 - tzotsos@opensuse.org
   - Add --cclibs, --static-clibs and --static-cclibs to geos-config (#497)
   - Early bail out of overlay exception if input is invalidation
   - New noding::GeometryNoder class
-  - Added BufferOp::setSingleSided 
+  - Added BufferOp::setSingleSided
   - Signature of most functions taking a Label changed to take it
     by reference rather than pointer.
   - Signature of most functions taking an IntersectionMatrix changed
@@ -236,11 +276,11 @@ Thu Oct  3 17:10:13 UTC 2013 - tzotsos@opensuse.org
   - GraphComponent::label is now a Label value (from a pointer)
   - NodedSegmentString takes ownership of CoordinateSenuence now
   - io::Writer's toString() returns by const ref, write() takes a const ref
-  - Unify prototypes of WKTReader and WKBReader constructor (#310) 
-  - GeometryCollection::computeEnvelopInternal and 
+  - Unify prototypes of WKTReader and WKBReader constructor (#310)
+  - GeometryCollection::computeEnvelopInternal and
     GeometryCollection::compareToSameClass are marked virtual (#478)
-  - A point interpolated from a line does not always intersect 
-    the same line (#323) 
+  - A point interpolated from a line does not always intersect
+    the same line (#323)
   - Port ConvexHull robustness fix from JTS-1.13 (#457)
   - Improve Overlay robustness by reducing input precision on topology
     exception and by refusing to accept unnoded output (#459)
@@ -310,7 +350,7 @@ Fri Jun  8 14:35:51 UTC 2012 - dassau@gbd-consult.de
 	- Envelope-based short-circuit for symDifference (#543)
 	- Fix support for PHP 5.4 (#513)
 	- Fix TopologyPreservingSimplifier invalid output on closed line (#508)
-	- Reduce calls to ptNotInList, greatly speeding up Polygonizer (#545) 
+	- Reduce calls to ptNotInList, greatly speeding up Polygonizer (#545)
 
 -------------------------------------------------------------------
 Fri Jan  6 09:12:00 UTC 2012 - otto.dassau@gmx.de
@@ -335,7 +375,7 @@ Fri Jan  6 09:12:00 UTC 2012 - otto.dassau@gmx.de
 -------------------------------------------------------------------
 Thu Jan  5 10:53:17 UTC 2012 - otto.dassau@gmx.de
 
-- Update to version 3.3.1 
+- Update to version 3.3.1
 
 -------------------------------------------------------------------
 Wed Aug 17 06:50:28 UTC 2011 - dassau@gbd-consult.de

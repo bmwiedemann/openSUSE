@@ -1,7 +1,7 @@
 #
 # spec file for package geos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_7_2
+%define uver	3_8_0
 Name:           geos
-Version:        3.7.2
+Version:        3.8.0
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
@@ -137,7 +137,7 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 
 %files devel
 %license COPYING
-%doc AUTHORS NEWS README.md TODO
+%doc AUTHORS NEWS README.md ChangeLog
 %{_mandir}/man1/%{name}-config.1%{ext_man}
 %{_bindir}/%{name}-config
 %{_includedir}/*
