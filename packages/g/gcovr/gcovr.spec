@@ -1,7 +1,7 @@
 #
 # spec file for package gcovr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,32 +18,31 @@
 
 
 Name:           gcovr
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        A code coverage report generator using GNU gcov
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://gcovr.com/
 Source0:        https://github.com/gcovr/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
-
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  python3-lxml
 BuildRequires:  python3-setuptools
-
+# for %%{_bindir}/gcov
+Requires:       gcc
+Requires:       python3-Jinja2
+BuildArch:      noarch
 # Only build the documentation on Tumbleweed, as
 # python3-sphinxcontrib-autoprogram has not yet landed in anything
 # else
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-sphinxcontrib-autoprogram
 %endif
-
-Requires:       %{_bindir}/gcov
-Requires:       python3-Jinja2
-
-BuildArch:      noarch
 
 %description
 Gcovr provides a utility for managing the use of the GNU gcov utility
@@ -56,7 +55,7 @@ human-readable summary reports, machine readable XML reports
 as a command-line alternative to the lcov utility, which runs gcov and
 generates an HTML-formatted report.
 
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 %package        doc
 Summary:        Documentation of gcovr
 Group:          Documentation/HTML
@@ -81,7 +80,7 @@ This package contains the documentation of gcovr.
 %install
 %py3_install
 
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 # the documentation can only be build **after** gcovr is installed
 # => need to set PATH, PYTHONPATH so that the installed binary & package are
 # found
@@ -89,7 +88,7 @@ This package contains the documentation of gcovr.
 # python2
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
 export PATH=%{buildroot}%{_bindir}:$PATH
-export PYTHON=%{__python3}
+export PYTHON=python3
 
 pushd .
 cd doc
@@ -100,13 +99,12 @@ install -D -p -m 0644 build/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 # html doc
 make html
-cd build
-for file in $(find html/ -type f); do
-    install -D -p -m 0644 $file %{buildroot}%{_docdir}/%{name}/$file
-done
+rm build/html/.buildinfo
 
 popd
 %endif
+
+%fdupes -s %{buildroot}%{python3_sitelib}
 
 %files
 %license LICENSE.txt
@@ -116,10 +114,10 @@ popd
 %{python3_sitelib}/%{name}*
 
 %if 0%{?suse_version} > 1500
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
-%files          doc
-%doc %{_docdir}/%{name}/html/
+%files doc
+%doc doc/build/html/*
 %endif
 
 %changelog

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Feb  3 08:43:34 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 4.2
+
+  Breaking changes:
+
+  - Dropped support for Python 3.4.
+  - Format flag parameters like :option:`--xml` or :option:`--html`
+    now take an optional output file name.
+    This potentially changes the interpretation of search paths.
+    In ``gcovr --xml foo``,
+    previous gcovr versions would search the ``foo`` directory for coverage data.
+    Now, gcovr will try to write the Cobertura report to the ``foo`` file.
+    To keep the old meaning, separate positional arguments like
+    ``gcovr --xml -- foo``.
+
+  Improvements and new features:
+
+  - :ref:`Configuration file <configuration>` support (experimental).
+    (:issue:`167`, :issue:`229`, :issue:`279`, :issue:`281`, :issue:`293`,
+    :issue:`300`, :issue:`304`)
+  - :ref:`JSON output <json_output>`. (:issue:`301`, :issue:`321`, :issue:`326`)
+  - :ref:`Combining tracefiles <combining_tracefiles>`
+    with :option:`gcovr --add-tracefile`.
+    (:issue:`10`, :issue:`326`)
+  - :ref:`SonarQube XML Output <sonarqube_xml_output>`. (:issue:`308`)
+  - Handle cyclic symlinks correctly during coverage data search.
+    (:issue:`284`)
+  - Simplification of :option:`--object-directory` heuristics.
+    (:issue:`18`, :issue:`273`, :issue:`280`)
+  - Exception-only code like a ``catch`` clause is now shown as uncovered.
+    (:issue:`283`)
+  - New :option:`--exclude-throw-branches` option
+    to exclude exception handler branches. (:issue:`283`)
+  - Support ``--root ..`` style invocation,
+    which might fix some CMake-related problems. (:issue:`294`)
+  - Fix wrong names in report
+    when source and build directories have similar names. (:issue:`299`)
+  - Stricter argument handling. (:issue:`267`)
+  - Reduce XML memory usage by moving to lxml.
+    (:issue:`1`, :issue:`118`, :issue:`307`)
+  - Can write :ref:`multiple reports <multiple output formats>` at the same time
+    by giving the output file name to the report format parameter.
+    Now, ``gcovr --html -o cov.html`` and ``gcovr --html cov.html``
+    are equivalent. (:issue:`291`)
+  - Override gcov locale properly. (:issue:`334`)
+  - Make gcov parser more robust when used with GCC 8. (:issue:`315`)
+
+  Known issues:
+
+  - The :option:`--keep` option only works when using existing gcov files
+    with :option:`-g`/:option:`--use-gcov-files`.
+    (:issue:`285`, :issue:`286`)
+  - Gcovr may get confused
+    when header files in different directories have the same name.
+    (:issue:`271`)
+  - Gcovr may not work when no en_US locale is available.
+    (:issue:`166`)
+
+  Documentation:
+
+  - :ref:`Exclusion marker <exclusion markers>` documentation.
+  - FAQ: :ref:`exception branches` (:issue:`283`)
+  - FAQ: :ref:`uncovered files not shown`
+    (:issue:`33`, :issue:`100`, :issue:`154`, :issue:`290`, :issue:`298`)
+
+  Internal changes:
+
+  - More tests. (:issue:`269`, :issue:`268`, :issue:`269`)
+  - Refactoring and removal of dead code. (:issue:`280`)
+  - New internal data model.
+
+
+-------------------------------------------------------------------
 Tue Feb  5 15:02:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove excessive hard requires.
