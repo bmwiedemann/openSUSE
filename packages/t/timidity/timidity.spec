@@ -1,7 +1,7 @@
 #
 # spec file for package timidity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 Version:        2.14.0
 Release:        0
-Url:            http://timidity.sourceforge.net/
+URL:            http://timidity.sourceforge.net/
 %define my_provides /tmp/my-provides
 BuildRequires:  alsa-devel
 BuildRequires:  automake
@@ -45,9 +45,9 @@ BuildRequires:  xaw3d
 BuildRequires:  xorg-x11
 Recommends:     fluid-soundfont-gm fluid-soundfont-gs
 BuildRequires:  fdupes
-BuildRequires:  systemd
 BuildRequires:  xaw3d-devel
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 PreReq:         %fillup_prereq
 Source:         TiMidity++-%{version}.tar.xz
 Source1:        timidity-patches.tar.bz2
