@@ -1,7 +1,7 @@
 #
 # spec file for package i3lock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -32,7 +32,6 @@ Source2:        i3lock-icon.png
 Source3:        xlock.sh
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
-BuildRequires:  libudev1
 BuildRequires:  make
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
