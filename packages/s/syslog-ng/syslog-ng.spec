@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
 Group:          System/Daemons
-Url:            http://syslog-ng.org/
+URL:            http://syslog-ng.org/
 Source0:        https://github.com/balabit/syslog-ng/releases/download/syslog-ng-%{version}/%{name}-%{version}.tar.gz
 Source1:        syslog-ng.sysconfig
 Source2:        syslog-ng.conf.default
@@ -77,7 +77,7 @@ Provides:       sysvinit(syslog)
 Conflicts:      otherproviders(syslog)
 Requires(pre):  %fillup_prereq
 Requires(pre):  syslog-service >= 2.0
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 
 %if %{with smtp}
 BuildRequires:  libesmtp-devel
