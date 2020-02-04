@@ -1993,4 +1993,12 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment></comment>
     <requestid>766579</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>8a3e1a14abdccd5eb42466366f6618a4</srcmd5>
+    <version>5.2.3.5</version>
+    <time>1580842489</time>
+    <user>dimstar_suse</user>
+    <comment>Shortcut through -mini (forwarded request 769718 from dimstar)</comment>
+    <requestid>769770</requestid>
+  </revision>
 </revisionlist>

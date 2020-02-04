@@ -46,8 +46,8 @@ Patch2:         shorewall-fillup-install.patch
 # PATCH-FIX-OPENSUSE Shorewall-lite (6) use of fillup template
 Patch3:         shorewall-lite-fillup-install.patch
 BuildRequires:  bash >= 4
-BuildRequires:  systemd
 BuildRequires:  perl(Digest::SHA)
+BuildRequires:  pkgconfig(systemd)
 Requires:       %{_sbindir}/service
 Requires:       %{name}-core = %{version}-%{release}
 Requires:       iproute2
@@ -58,7 +58,7 @@ PreReq:         %fillup_prereq
 Suggests:       xtables-addons
 Provides:       shoreline_firewall = %{version}-%{release}
 BuildArch:      noarch
-%{?systemd_requires}
+%{?systemd_ordering}
 %{perl_requires}
 
 %description
