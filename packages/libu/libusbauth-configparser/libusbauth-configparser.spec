@@ -1,7 +1,7 @@
 #
 # spec file for package libusbauth-configparser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017-2018 Stefan Koch <stefan.koch10@gmail.com>
 # Copyright (c) 2015 SUSE LLC. All Rights Reserved.
 # Author: Stefan Koch <skoch@suse.de>
@@ -31,7 +31,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
+BuildRequires:  pkgconfig(libudev)
 
 %description
 Library to read usbauth config file into data structures

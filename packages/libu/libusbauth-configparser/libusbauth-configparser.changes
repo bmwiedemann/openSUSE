@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:45:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libdev) instead of libudev-devel: allow
+  OBS to shortcut thhrough the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Feb 20 18:02:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use a full Source URL and original tarball.
