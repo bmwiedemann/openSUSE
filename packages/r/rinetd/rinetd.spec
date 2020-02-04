@@ -1,7 +1,7 @@
 #
 # spec file for package rinetd
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version} > 1220
 %define with_systemd 1
@@ -22,12 +23,12 @@
 %endif
 
 Name:           rinetd
-License:        GPL-2.0+
-Group:          Productivity/Networking/System
 Version:        0.62
 Release:        0
 Summary:        TCP Redirection Server
-Url:            http://www.boutell.com/rinetd/
+License:        GPL-2.0-or-later
+Group:          Productivity/Networking/System
+URL:            http://www.boutell.com/rinetd/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        rc.rinetd
 Source2:        logrotate.rinetd
@@ -37,8 +38,8 @@ Patch1:         rinetd-syslog.patch
 Patch2:         rinetd-conf.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{with_systemd}
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %else
 PreReq:         %fillup_prereq %insserv_prereq
 %endif
