@@ -155,4 +155,12 @@
     <comment>- fix handling of ,start= parameters (bsc#1133306)</comment>
     <requestid>704437</requestid>
   </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>8cbcfad863f929a978be3b9c91ede390</srcmd5>
+    <version>0.1</version>
+    <time>1580842288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768527</requestid>
+  </revision>
 </revisionlist>
