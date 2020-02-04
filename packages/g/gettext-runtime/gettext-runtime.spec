@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-runtime
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,9 +167,6 @@ This package provides headers and static libraries for libtextstyle
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 export CXXFLAGS="$CFLAGS -Dgcc_is_lint"
 export LDFLAGS="-lm"
-%if 0%{?qemu_user_space_build:1}
-  OPTS="--disable-openmp"
-%endif
 %configure --disable-static $OPTS
 %if %{with mini}
 # Link statically to libtextstyle from libgettextlib.so

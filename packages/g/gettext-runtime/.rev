@@ -680,4 +680,12 @@ Using build service only atm, any additional work might take a while again... (f
     <comment></comment>
     <requestid>765780</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>f261bbabd273fb1b2bbba9e770097eb4</srcmd5>
+    <version>0.20.1</version>
+    <time>1580842266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768034</requestid>
+  </revision>
 </revisionlist>

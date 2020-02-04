@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:26:21 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Don't disable openmp with qemu, the emulation works now
+
+-------------------------------------------------------------------
 Wed Jan 15 08:35:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libtextstyle0 to baselibs.conf: gettext-runtime-32bit has a
