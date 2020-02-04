@@ -1,7 +1,7 @@
 #
 # spec file for package clamtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,58 +13,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           clamtk
-Version:        5.27
+Version:        6.02
 Release:        0
 Summary:        GUI for the ClamAV Antivirus
 License:        GPL-1.0-or-later OR Artistic-1.0
 Group:          Productivity/Security
-Url:            https://github.com/dave-theunsub/clamtk
-Source:         https://bitbucket.org/davem_/clamtk/downloads/clamtk-%{version}.tar.xz
-Source1:        https://bitbucket.org/davem_/clamtk/downloads/clamtk-%{version}.tar.xz.asc
+URL:            https://github.com/dave-theunsub/clamtk
+Source:         https://bitbucket.org/davem_/clamtk-gtk3/downloads/clamtk-%{version}.tar.xz
+Source1:        https://bitbucket.org/davem_/clamtk-gtk3/downloads/clamtk-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch0:         clamtk-add_searchpath.patch
-BuildRequires:  desktop-file-utils
-# not actually needed, but to make the build fail if the dependencies
-# won't be available at runtime:
-BuildRequires:  perl(Cwd)
-BuildRequires:  perl(Date::Calc)
-BuildRequires:  perl(Digest::MD5)
-BuildRequires:  perl(Encode)
-BuildRequires:  perl(File::Basename)
-BuildRequires:  perl(File::Copy)
-## BuildRequires:  perl(File::Find::Rule)
-BuildRequires:  perl(File::Path)
-BuildRequires:  perl(Glib)
-BuildRequires:  perl(Gtk2) >= 1.241
-BuildRequires:  perl(Gtk2::SimpleList)
-#Obsoletes:      clamtk-kde
-# for Virustotal API:
 BuildRequires:  update-desktop-files
-BuildRequires:  zenity
-BuildRequires:  perl(JSON)
-BuildRequires:  perl(LWP::Protocol::https)
-BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Locale::gettext)
-BuildRequires:  perl(Net::DNS)
-BuildRequires:  perl(Text::CSV)
 Requires:       clamav >= 0.88
 Requires:       gnome-icon-theme
+Requires:       zenity
 Requires:       perl(Cwd)
 Requires:       perl(Digest::SHA)
 Requires:       perl(Encode)
 Requires:       perl(File::Basename)
 Requires:       perl(File::Copy)
-## Requires:       perl(File::Find::Rule)
-Requires:       zenity
 Requires:       perl(File::Path)
 Requires:       perl(Glib)
-Requires:       perl(Gtk2) >= 1.241
-Requires:       perl(Gtk2::SimpleList)
+Requires:       perl(Gtk3)
 Requires:       perl(JSON)
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::UserAgent)
@@ -72,12 +47,17 @@ Requires:       perl(Locale::gettext)
 Requires:       perl(Net::DNS)
 Requires:       perl(Text::CSV)
 Requires:       perl(Time::Piece)
+Requires:       typelib(Gdk) = 3.0
+Requires:       typelib(GdkPixbuf) = 2.0
+Requires:       typelib(GdkPixdata) = 2.0
+Requires:       typelib(Gtk) = 3.0
+Requires:       typelib(Pango) = 1.0
 Recommends:     clamav-db
 BuildArch:      noarch
 %{perl_requires}
 
 %description
-ClamTk is a GUI front-end for ClamAV using Gtk2-perl.
+ClamTk is a GUI front-end for ClamAV using Gtk3-perl.
 It is designed to be an easy-to-use, point and click virus scanner.
 
 %lang_package
@@ -94,12 +74,6 @@ rm clamtk.1.gz
 install -D -m 0755 clamtk %{buildroot}%{_bindir}/clamtk
 install -D -m 0644 images/clamtk.png %{buildroot}%{_datadir}/pixmaps/clamtk.png
 install -D -m 0644 clamtk.1 %{buildroot}%{_mandir}/man1/clamtk.1
-
-# Removed built-in help documentation until updated and translated. See upstream changelog 5.24
-#install -d %%{buildroot}%%{_datadir}/help/C/clamtk
-#install -d %%{buildroot}%%{_datadir}/help/C/clamtk/figures
-#install -D -m 0644 help/C/clamtk/*.page %%{buildroot}%%{_datadir}/help/C/clamtk/
-#install -D -m 0644 help/C/clamtk/figures/*.png %%{buildroot}%%{_datadir}/help/C/clamtk/figures/
 
 # install in the perl vendorlib location:
 install -d %{buildroot}/%{perl_vendorlib}/ClamTk
@@ -120,9 +94,8 @@ done
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc CHANGES DISCLAIMER LICENSE README.md
-# Removed built-in help documentation until updated and translated. See upstream changelog 5.24
-#%%{_datadir}/help/C/%%{name}/
+%license LICENSE
+%doc CHANGES DISCLAIMER README.md
 %{_bindir}/clamtk
 %{perl_vendorlib}/ClamTk
 %{_datadir}/pixmaps/clamtk.png
