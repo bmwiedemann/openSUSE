@@ -1,0 +1,29 @@
+--- tests/topotests/lib/topotest.py-orig	2019-12-10 23:17:14.241938136 -0300
++++ tests/topotests/lib/topotest.py	2019-12-10 23:17:27.978005193 -0300
+@@ -29,7 +29,10 @@
+ import sys
+ import functools
+ import glob
+-import StringIO
++try:
++    from StringIO import StringIO
++except ImportError:
++    from io import StringIO
+ import subprocess
+ import tempfile
+ import platform
+--- tests/topotests/lib/common_config.py-orig	2019-12-10 23:17:59.526550785 -0300
++++ tests/topotests/lib/common_config.py	2019-12-10 23:18:23.139134928 -0300
+@@ -28,7 +28,11 @@
+ from functools import wraps
+ from re import search as re_search
+ 
+-import StringIO
++try:
++    from StringIO import StringIO
++except ImportError:
++    from io import StringIO
++
+ import os
+ import ConfigParser
+ import traceback

@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Fri Jan 17 21:07:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix license tag
+
+-------------------------------------------------------------------
+Wed Jan 15 20:34:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Build with support for pcre, protobuf, rpki and zeromq by default
+
+-------------------------------------------------------------------
+Wed Jan 15 14:34:59 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file 
+
+-------------------------------------------------------------------
+Sun Jan 12 09:40:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix build-time dependencies
+- Remove superflous comments
+
+-------------------------------------------------------------------
+Wed Dec 11 23:18:06 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- fix_tests.patch: correct syntax for Python 3 imports in tests.
+- Enabling tests
+
+-------------------------------------------------------------------
+Wed Dec 11 02:37:42 UTC 2019 - erico.mendonca@suse.com
+
+- Update to version frr7.2:
+  * zebra: use correct state when installing evpn macs
+  * lib: set entry to xpath in if_update_to_new_vrf
+  * zebra: capture dplane plugin flags
+  * bgpd: Autocomplete neighbor for clear bgp
+  * ospfd,eigrpd: don't take address of packed struct member
+  * bgpd: Prevent crash in bgp_table_range_lookup
+  * bgpd: Fix memory leak in json output of show commands
+  * tests: Test if `distance bgp (1-255) (1-255) (1-255)` works
+  * bgpd: Reflect the distance in RIB when it is changed for an arbitrary afi/safi
+  * bfdd: fix multiple VRF handling
+
+-------------------------------------------------------------------
+Tue Dec 10 12:58:21 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Updating to version 7.2
+- Adding systemd scripts
+- Fixing build and permission issues
+
+-------------------------------------------------------------------
+Tue Jun 18 08:59:05 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.1
+
+-------------------------------------------------------------------
+Sat Feb  2 13:50:16 UTC 2019 - mardnh@gmx.de
+
+- Initial package, version 6.0.2
