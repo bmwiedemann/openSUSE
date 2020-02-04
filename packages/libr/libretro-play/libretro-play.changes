@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Mon Feb 03 08:48:37 UTC 2020 - i@guoyunhe.me
+
+- Exclude unrar sources for legal issues
+- Update to version 0~git20200125:
+  * cleanup
+  * capture screenshot directly from display framebuffer, at rendering resolution
+  * Fix color issues in iOS PsfPlayer UI.
+  * Various iOS UI fixes: - Fixed menu button placement for iPhone X layouts. - Fixed dark mode support.
+  * Some adjustments for iPhone X screen layout.
+  * Use TravisCI deploy v2.
+  * Add move overload to SendGSCall.
+  * rename windows libretro core, to distinguish between releases, note RA requires both to be named play_libretro.dll, however, that'd cause upload conflict
+  * fix libretro ios deploy
+  * libretro support elf loading.... this id currently duplicating code from BootablesProcesses
+  * Code style fixes.
+  * remove direct access to CMailBox in Android & DirectX GS
+  * fix libretro deploy
+  * fix android libretro build
+  * fix cmake path
+  * libretro: set lower audio buffer
+  * make mutex a class object
+  * Cleanup
+  * change to unix line endings
+  * libretro: cmake: add iOS suffix
+  * cleanup
+  * Update android libretro bash build scrip
+  * libretro: add _android.so suffix to shared library, its how retroarch expect the libraries to be named
+  * Libretro: Fix iOS build
+  * cleanup
+  * Libretro: update input to support bitmasking
+  * Update libretro.h
+  * Libretro: Audio: replace queue with buffer, remove audio mute option (thats handled by RA)
+  * Libretro: move audio processing to main thread
+  * Libretro: Remove audio dependencies
+  * poll button state on retro_run() thread... to avoid race condition, as these methods are not thread safe
+  * libretro: update supported format
+  * Disable early logs, set storage path for android
+  * Code style fixes.
+  * compile with PIC when building libretro cores... maybe enable it by default?
+  * Appveyor: Build an deploy Windows Libretro Core
+  * Travis: build libretro cores
+  * Fix iOS build
+  * Fix Android build
+  * Select correct OpenGL version
+  * Add Android Audio support
+  * Cleanup
+  * Prepare CMakeLists.txt for Android/iOS builds
+  * Update CMakelists.txt
+  * Prepare for non windows builds
+  * libretro: add save state support
+  * libretro: pass ram, for cheat system
+  * Cleanup: fix multiplier selection, set base resolution to PS2 default, use internal rendering resolution before rendering
+  * Initial Libretro implementation
+  * allow GS to run in non-/threaded mode
+
+-------------------------------------------------------------------
+Fri Oct 18 11:58:53 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Remove bundled boost and use system boost
+
+-------------------------------------------------------------------
+Tue Oct 15 09:38:18 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial version
