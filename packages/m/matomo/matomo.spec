@@ -1,7 +1,7 @@
 #
 # spec file for package matomo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,8 +60,8 @@ BuildRequires:  cron
 BuildRequires:  fdupes
 BuildRequires:  logrotate
 BuildRequires:  mariadb
-BuildRequires:  systemd
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(systemd)
 Requires:       apache2
 Requires:       logrotate
 Requires:       mod_php_any >= 5.5.9
