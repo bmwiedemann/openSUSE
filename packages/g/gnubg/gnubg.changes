@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 05:25:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to depending on python3.
+- Run spec-cleaner over the specfile.
+
+-------------------------------------------------------------------
 Thu Aug 16 10:29:34 UTC 2018 - jengelh@inai.de
 
 - Use noun phrase in summary.

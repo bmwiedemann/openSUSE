@@ -1,7 +1,7 @@
 #
 # spec file for package gnubg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2003 Achim Mueller, Germany.
 # Updated by Christopher Hofmann in 2010
 #
@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Backgammon game with analysis tools and neural network AI
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
-Url:            http://www.gnubg.org
+URL:            http://www.gnubg.org
 Source:         http://gnubg.org/media/sources/gnubg-release-%{version}-sources.tar.gz
 Source1:        %{name}.desktop
 BuildRequires:  autoconf
@@ -41,7 +41,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  libcanberra-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -56,7 +56,7 @@ BuildRequires:  update-desktop-files
 Recommends:     gnubg-databases = %{version}
 Recommends:     gnubg-sounds = %{version}
 Recommends:     gnubg-doc = %{version}
-Recommends:     python-MySQL-python
+Recommends:     python3-MySQL-python
 BuildRequires:  sqlite3-devel
 %endif
 %if 0%{?fedora}
