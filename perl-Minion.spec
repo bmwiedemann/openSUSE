@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Minion
-Version:        10.02
+Version:        10.04
 Release:        0
 %define cpan_name Minion
 Summary:        Job queue
@@ -30,8 +30,8 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Mojolicious) >= 8.12
-Requires:       perl(Mojolicious) >= 8.12
+BuildRequires:  perl(Mojolicious) >= 8.27
+Requires:       perl(Mojolicious) >= 8.27
 %{perl_requires}
 
 %description
