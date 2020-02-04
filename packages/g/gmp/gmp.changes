@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:46:57 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Remove broken packaged libgmp.a just containing LTO bytecode.
+
+-------------------------------------------------------------------
 Sun Jan 19 21:19:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GMP 6.2.0:

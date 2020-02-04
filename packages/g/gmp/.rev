@@ -490,4 +490,12 @@ discover that breaks ...
     <comment>GMP 6.2.0 (forwarded request 765643 from AndreasStieger)</comment>
     <requestid>765689</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>a162cd91ab2d93156949bb3cfb307087</srcmd5>
+    <version>6.2.0</version>
+    <time>1580842262</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove broken packaged libgmp.a just containing LTO bytecode.</comment>
+    <requestid>767589</requestid>
+  </revision>
 </revisionlist>

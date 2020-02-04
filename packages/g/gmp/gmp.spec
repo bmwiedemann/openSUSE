@@ -1,7 +1,7 @@
 #
 # spec file for package gmp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,7 @@ huge numbers (integer and floating point).
 %build
 export CFLAGS="%{optflags} -fexceptions"
 %configure \
+  --disable-static \
   --enable-cxx \
   --enable-fat
 make %{?_smp_mflags}
@@ -86,7 +87,6 @@ make %{?_smp_mflags} check
 %make_install
 rm %{buildroot}%{_libdir}/libgmp.la
 rm %{buildroot}%{_libdir}/libgmpxx.la
-rm %{buildroot}%{_libdir}/libgmpxx.a
 
 %post -n libgmp10 -p /sbin/ldconfig
 %post -n libgmpxx4 -p /sbin/ldconfig
@@ -109,7 +109,6 @@ rm %{buildroot}%{_libdir}/libgmpxx.a
 %doc AUTHORS README NEWS
 %doc demos
 %{_infodir}/gmp.info*%{ext_info}
-%{_libdir}/libgmp.a
 %{_libdir}/libgmp.so
 %{_libdir}/libgmpxx.so
 %{_includedir}/gmp.h
