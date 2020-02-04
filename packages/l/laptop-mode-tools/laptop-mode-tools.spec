@@ -1,7 +1,7 @@
 #
 # spec file for package laptop-mode-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        The Laptop Mode Tools
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://rickysarraf.github.io/laptop-mode-tools/
+URL:            http://rickysarraf.github.io/laptop-mode-tools/
 Source:         https://github.com/rickysarraf/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Patch0:         laptop-mode-1.53_conf.diff
@@ -33,9 +33,9 @@ Patch1:         laptop-mode-1.49-new-dirty-ratio-defaults.diff
 Patch2:         laptop-mode-1.53-moblin-enable-intel-hda-powersave.patch
 # PATCH-FIX-UPSTREAM laptop-mode-tools-1.72.2-fix-name-gui.patch -- gh#rickysarraf/laptop-mode-tools#124
 Patch3:         laptop-mode-tools-1.72.2-fix-name-gui.patch
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  udev
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 Suggests:       %{name}-gui
 BuildArch:      noarch
 %{?systemd_requires}
