@@ -77,4 +77,28 @@ kernel)</comment>
     + ubiformat: remove no-volume-table option</comment>
     <requestid>706319</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7d6443187583b685a465e031f6b7e50c</srcmd5>
+    <version>2.1.1</version>
+    <time>1580842439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1:
+  * Features:
+    - mkfs.ubifs: Add ZSTD compression
+  * Fixes:
+    + ubiformat: Dont ignore sequence number CLI option
+    + mkfs.ubifs: fix build without openssl
+    + mkfs.ubifs: fix regression when trying to store device special files
+    + mkfs.ubifs: fix description of favor_lzo
+    + unittests/test_lib: Include proper header for _IOC_SIZE
+    + unittests/libmtd_test: Include fcntl header
+    + unittests: Define the use of _GNU_SOURCE
+    + ubinize: Exit with non-zero exit code on error.
+    + mtd-tests: nandbiterrs: Fix issue that just insert error at bit 7
+    + ubi-tests: ubi_mkvol_request: Fully initialize 'struct ubi_mkvol_request req'
+    + ubi-tests: io_read: Filter invalid offset value before 'lseek' in io_read test
+    + ubi-tests: mkvol test: Checks return value 'ENOSPC' for 'ubi_mkvol'
+    + ubi-tests: fm_param: Replace 'fm_auto' with 'fm_autoconvert'</comment>
+    <requestid>769713</requestid>
+  </revision>
 </revisionlist>

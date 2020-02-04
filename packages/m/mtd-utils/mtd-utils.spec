@@ -1,7 +1,7 @@
 #
 # spec file for package mtd-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mtd-utils
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Tools for maintaining Memory Technology Devices
 License:        GPL-2.0-or-later
@@ -26,9 +26,10 @@ URL:            http://www.linux-mtd.infradead.org/
 Source0:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.bz2
 Source1:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
-BuildRequires:  libacl-devel
-BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
@@ -44,7 +45,7 @@ including JFFS2, M-Systems DiskOnChip devices, etc.
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

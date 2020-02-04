@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:22:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.1:
+  * Features:
+    - mkfs.ubifs: Add ZSTD compression
+  * Fixes:
+    + ubiformat: Dont ignore sequence number CLI option
+    + mkfs.ubifs: fix build without openssl
+    + mkfs.ubifs: fix regression when trying to store device special files
+    + mkfs.ubifs: fix description of favor_lzo
+    + unittests/test_lib: Include proper header for _IOC_SIZE
+    + unittests/libmtd_test: Include fcntl header
+    + unittests: Define the use of _GNU_SOURCE
+    + ubinize: Exit with non-zero exit code on error.
+    + mtd-tests: nandbiterrs: Fix issue that just insert error at bit 7
+    + ubi-tests: ubi_mkvol_request: Fully initialize 'struct ubi_mkvol_request req'
+    + ubi-tests: io_read: Filter invalid offset value before 'lseek' in io_read test
+    + ubi-tests: mkvol test: Checks return value 'ENOSPC' for 'ubi_mkvol'
+    + ubi-tests: fm_param: Replace 'fm_auto' with 'fm_autoconvert'
+
+-------------------------------------------------------------------
 Wed May 29 13:35:46 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.0:
