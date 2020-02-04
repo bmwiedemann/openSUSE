@@ -1,7 +1,7 @@
 #
-# spec file for package golang-org-x
+# spec file for package golang-org-x-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Release:        0
 Summary:        Additional toolsgraphy libraries
 License:        BSD-3-Clause
 Group:          Development/Languages/Golang
-Url:            https://%{provider_prefix}
+URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        godoc.service
@@ -41,8 +41,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  find
 BuildRequires:  golang-packaging
-BuildRequires:  systemd
 BuildRequires:  xz
+BuildRequires:  pkgconfig(systemd)
 %if 0%{?suse_version} > 1500
 BuildRequires:  golang(API) >= 1.11
 %endif

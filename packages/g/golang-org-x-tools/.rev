@@ -99,4 +99,12 @@
     <comment>- Fix name of the rpmlintrc file. (forwarded request 757903 from mrostecki)</comment>
     <requestid>759729</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>eb08f1f981162d067c5d437a21a779c5</srcmd5>
+    <version>1.12+git20190313.aa829657</version>
+    <time>1580842452</time>
+    <user>dimstar_suse</user>
+    <comment>Shortcut through -mini (forwarded request 769576 from dimstar)</comment>
+    <requestid>769755</requestid>
+  </revision>
 </revisionlist>
