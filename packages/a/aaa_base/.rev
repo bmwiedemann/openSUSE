@@ -3702,4 +3702,12 @@
     to support sapjvm and others (boo#1157794)</comment>
     <requestid>764921</requestid>
   </revision>
+  <revision rev="461" vrev="1">
+    <srcmd5>96729bc6136fb0e55d3f63d103361ca9</srcmd5>
+    <version>84.87+git20200128.8a17290</version>
+    <time>1580842277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768064</requestid>
+  </revision>
 </revisionlist>

@@ -23,22 +23,25 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20200116.59482ba
+Version:        84.87+git20200128.8a17290
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
 # want to pull in tons of dependencies
 Conflicts:      sysvinit-init
 Requires:       /bin/mktemp
-Requires:       /usr/bin/find
+Requires:       /usr/bin/cat
+Requires:       /usr/bin/date
+Requires:       /usr/bin/grep
+Requires:       /usr/bin/mv
+Requires:       /usr/bin/sed
 Requires:       /usr/bin/tput
-Requires:       /usr/bin/xargs
-Requires:       cpio
 Requires:       distribution-release
 Requires:       filesystem
 Recommends:     logrotate netcfg udev iputils iproute2 aaa_base-extras
-PreReq:         /usr/bin/sed /usr/bin/grep /bin/mv /bin/cat /bin/ls /bin/date
-Requires(post): fillup
+Requires(pre):  /usr/bin/rm
+Requires(post): fillup /usr/bin/chmod /usr/bin/chown
+
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
 Group:          System/Fhs
@@ -59,6 +62,8 @@ This package installs several important configuration files and central scripts.
 Summary:        SUSE Linux Base Package (recommended part)
 Group:          System/Fhs
 Requires:       %{name} = %{version}
+Requires:       /usr/bin/find
+Requires:       cpio
 Requires(post): fillup
 Provides:       aaa_base:/etc/DIR_COLORS
 
@@ -190,8 +195,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 # and /etc/permissions!
 %ghost %attr(0644,root,root) %verify(not md5 size mtime) /var/log/lastlog
 /etc/hushlogins
-/usr/bin/chkconfig
-/sbin/chkconfig
 /usr/bin/get_kernel_version
 /sbin/refresh_initrd
 /usr/sbin/refresh_initrd
@@ -200,7 +203,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /sbin/smart_agetty
 /usr/sbin/smart_agetty
 /usr/bin/filesize
-/usr/bin/mkinfodir
 /usr/bin/old
 /usr/bin/rpmlocate
 /usr/bin/safe-rm
@@ -209,7 +211,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/sbin/sysconf_addword
 /usr/share/man/man1/smart_agetty.1*
 /usr/share/man/man5/defaultdomain.5*
-/usr/share/man/man8/chkconfig.8*
 /usr/share/man/man8/safe-rm.8*
 /usr/share/man/man8/safe-rmdir.8*
 /usr/share/man/man8/service.8*

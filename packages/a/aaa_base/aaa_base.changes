@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:30:17 UTC 2020 - kukuk@suse.com
+
+- Adjust Requires/Requires(pre)/Requires(post)
+- Update to version 84.87+git20200128.8a17290:
+  * Move chkconfig to insserv-compat, as most functionality isn't supported anymore since we have different solutions with systemd.
+  * Remove /usr/bin/mkinfodir, not used anywhere anymore
+
+-------------------------------------------------------------------
 Thu Jan 16 10:22:27 UTC 2020 - ro@suse.com
 
 - Update to version 84.87+git20200116.59482ba:
