@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:13:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd|udev) instead of systemd and udev:
+  Allow OBS to shortcut through -mini flavors.
+- Name the rpmlintrc file according the policy: cryptctl-rpmlintrc.
+
+-------------------------------------------------------------------
 Thu Nov 23 13:44:21 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

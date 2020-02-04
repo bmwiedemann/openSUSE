@@ -84,4 +84,12 @@ Index: cryptctl.changes
     <comment></comment>
     <requestid>545076</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d37450107b70f58ba0bfec699dd4d3ec</srcmd5>
+    <version>2.3</version>
+    <time>1580842643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769963</requestid>
+  </revision>
 </revisionlist>

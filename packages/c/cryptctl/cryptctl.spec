@@ -1,7 +1,7 @@
 #
 # spec file for package cryptctl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,14 +25,14 @@ Name:           cryptctl
 Version:        2.3
 Release:        0
 Summary:        A utility for setting up LUKS-based disk encryption
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Management
-Url:            https://www.suse.com/products/sles-for-sap
+URL:            https://www.suse.com/products/sles-for-sap
 Source0:        %{name}-%{version}.tgz
-Source1:        rpmlintrc
+Source1:        %{name}-rpmlintrc
 BuildRequires:  go
-BuildRequires:  systemd
-BuildRequires:  udev
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 Requires:       btrfsprogs
 Requires:       cryptsetup
 Requires:       e2fsprogs
@@ -105,7 +105,7 @@ install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
 
 %files
 %defattr(-,root,root)
-%config %{_fillupdir}/*
+%{_fillupdir}/*
 %dir %{_localstatedir}/lib/%{name}
 %dir %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/%{name}/servertls
