@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Peek
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Data-Peek
-Version:        0.48
+Version:        0.49
 Release:        0
 %define cpan_name Data-Peek
 Summary:        Collection of low-level debug facilities
@@ -29,13 +29,13 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::NoWarnings)
-Requires:       perl(Test::More) >= 0.88
-Requires:       perl(Test::NoWarnings)
-Recommends:     perl(Data::Dumper) >= 2.167
+BuildRequires:  perl(Test::More) >= 0.9
+BuildRequires:  perl(Test::Warnings)
+Requires:       perl(Test::More) >= 0.9
+Requires:       perl(Test::Warnings)
+Recommends:     perl(Data::Dumper) >= 2.173
 Recommends:     perl(Perl::Tidy)
-Recommends:     perl(Test::More) >= 1.302125
+Recommends:     perl(Test::More) >= 1.302171
 %{perl_requires}
 
 %description
