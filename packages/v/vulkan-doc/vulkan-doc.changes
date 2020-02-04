@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:43:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 1.2.132
+  * Move and reword a NOTE in the <<extendingvulkan-extensions,
+    Extensions>> section.
+  * Change redundant description of application error when using
+    flink:vkMapMemory into a non-normative NOTE.
+  * Remove redundant valid usage statement for flink:vkCmdExecuteCommands.
+  * Remove redundant command buffer
+    ename:VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT language in
+    flink:vkCmdExecuteCommands valid usage statements.
+  * Add flink:vkBeginCommandBuffer valid usage statement to prevent
+    using a primary command buffer with both the
+    ename:VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT and
+    ename:VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT flags.
+  * Add slink:VkRenderPassBeginInfo valid usage statements for
+    pname:renderArea.
+  * Add missing valid usage statements for flink:vkCmdBeginRenderPass
+    when `VK_KHR_separate_depth_stencil_layouts` is enabled.
+  * Clarify the definition of "`transfer commands`" for
+    <<synchronization-pipeline-stages-transfer,
+    ename:VK_PIPELINE_STAGE_TRANSFER_BIT>>.
+  * Clarify VK_ATTACHMENT_STORE_OP_DONT_CARE and reorder render pass chapter.
+  * Clarify that <<pipelines-dynamic-state, Dynamic State>> can be set
+    before pipeline bind, and update valid usage statements accordingly.
+  * Clarify the behavior of floating-point divide by zero in the
+    <<spirvenv-precision-operation, Precision and Operation of SPIR-V
+    Instructions>> section.
+  * Add a valid usage statement to flink:vkCmdResetQueryPool which allows
+    not calling flink:vkCmdEndQuery if a prior flink:vmCmdResetQuery
+    command was called.
+  * Refactor specification of shader scopes into the new <<shaders-scope,
+    Scope>> section, and modify other references to this language
+    accordingly. Also describe quad invocation groups properly, with
+    derivative and quad group operations referencing the description, and
+    call out helper invocations as being able to become spontaneously
+    inactive. Simplify parts of the texturing chapter accordingly.
+  * Stop claiming that semaphore signals are ordered between different queue
+    commands in the <<synchronization-signal-operation-order>> section.
+  * Move a valid usage statement from slink:VkBindImagePlaneMemoryInfo to
+    flink:vkBindImageMemory2, where it can be determined.
+
+-------------------------------------------------------------------
 Sun Jan 19 12:00:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.131
