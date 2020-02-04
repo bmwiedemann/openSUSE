@@ -1,7 +1,7 @@
 #
 # spec file for package stlink
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        STM32 discovery line linux programmer
 License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
-Url:            https://github.com/texane/stlink
+URL:            https://github.com/texane/stlink
 Source0:        https://github.com/texane/stlink/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-deprecated-libusb-function.patch
 Patch0:         https://github.com/texane/stlink/commit/aaf8e9207581.patch#/fix-deprecated-libusb-function.patch
@@ -30,8 +30,8 @@ BuildRequires:  cmake
 BuildRequires:  gtk3-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  udev
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(udev)
 Requires:       udev
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
