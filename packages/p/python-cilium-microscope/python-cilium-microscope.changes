@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Mon Jan 27 19:41:59 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.2:
+  - Add option to resolve endpoint IDs to podnames
+  - Add JSON parser and make it default
+  - Add JSON trace parsing with labels
+  - Add trace json parsing
+  - Remove l7 processor output
+  - Add raw mode
+  - Add drop event json parser
+  - Add debug events json parsing
+  - Add capture json parser
+  - Add agent json parser
+  - Get rid of nested endpoint data
+  - Rename hex to hex_mode to avoid shadowing builtin
+  - Append ip or ip:port for all traces and drops
+  - Get src and dest from json instead of summary
+  - Rebase fixes for EndpointResolver
+  - Ep and id resolution moved to EndpointResolver
+  - Refactor get_eps_reps, fixes in parser/resolver
+  - Filter monitor events by ips
+  - Move endpoint id retrieval to resolver
+  - Add init identity to resolver
+  - docs: change image pull policy to IfNotPresent
+  - docs: add microscope image repository
+  - Fix reqs to make kubernetes client work in py3.7
+  - statusless endpoints handled
+- Convert SPEC file to singlespec Python style.
+- Rename package to python-cilium-microscope
+
+-------------------------------------------------------------------
+Sun Jul 29 11:01:34 UTC 2018 - jengelh@inai.de
+
+- Use noun phrasing in summary.
+
+-------------------------------------------------------------------
+Thu Jun 21 18:15:49 CEST 2018 - ndas@suse.de
+
+- Update to 1.0.1
+  https://github.com/cilium/microscope/releases
+
+-------------------------------------------------------------------
+Wed Feb 28 13:31:15 UTC 2018 - mrostecki@suse.com
+
+- Initial release
