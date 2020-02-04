@@ -1,7 +1,7 @@
 #
 # spec file for package evolution-rss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define _evo_errordir %(pkg-config --variable errordir evolution-shell-3.0)
 
 Name:           evolution-rss
-Version:        0.3.95+git.20171129
+Version:        0.3.96
 Release:        0
 Summary:        Evolution Plugin for RSS Feeds Support
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ URL:            http://gnome.eu.org/evo/index.php/Evolution_RSS_Reader_Plugin
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM evolution-rss-drop-gconf-for-good.patch -- Drop gconf2 for good.
 Patch:          evolution-rss-drop-gconf-for-good.patch
-# PATCH-FIX-UPSTREAM evolution-rss-use-unicode.patch -- Use Unicode in translatable strings, Remove markup from strings in UI files
-Patch1:         evolution-rss-use-unicode.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
@@ -81,7 +79,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{_name}
 %{_bindir}/evolution-import-rss
-%{_datadir}/appdata/evolution-rss.metainfo.xml
+%{_datadir}/metainfo/evolution-rss.metainfo.xml
 %{_datadir}/applications/evolution-rss.desktop
 %{_datadir}/evolution/ui/rss-html-rendering.ui
 %{_datadir}/evolution/ui/rss-main.ui

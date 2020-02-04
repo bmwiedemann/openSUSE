@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 31 19:06:58 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.3.96:
+  + Miscellaneous build fixes (multiple declarations of variables)
+  + Fix use-after-free under rss_ep_need_proxy_http()
+  + EMailFormatterRSS: Remove unneeded fetch of EWebView content
+  + Remove markup from strings in UI files
+  + Use Unicode in translatable strings
+  + Fix AppStream metainfo validation
+  + Don't use legacy path for AppStream metainfo file
+  + Replace Bugzilla by Gitlab URL in DOAP file
+  + Avoid crash when feed formatting is cancelled
+  + Updated translations.
+- Change _service file as we now have a proper upstream released
+  tag that we want to use.
+- Drop evolution-rss-use-unicode.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:07:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
