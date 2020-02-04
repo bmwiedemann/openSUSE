@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">mpv</param>
     <param name="versionprefix">0.32.0+git</param>
-    <param name="versionformat">%ct.%h</param>
+    <param name="versionformat">%ci.%h</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>

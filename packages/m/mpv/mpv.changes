@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 04 12:42:31 UTC 2020 - hpj@urpla.net
+
+- Update to version 0.32.0+git.20200203T191344.cbee577d0a:
+  * See https://github.com/mpv-player/mpv/compare/f304a79935..cbee577d0a
+    for the complete changelog.
+- switch time tag in version to (much more comprehensible) iso format
+
+-------------------------------------------------------------------
 Sun Feb 02 07:57:43 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.1580606151.f304a79935:
