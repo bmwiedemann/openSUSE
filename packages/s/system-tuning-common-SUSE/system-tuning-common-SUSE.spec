@@ -1,7 +1,7 @@
 #
 # spec file for package system-tuning-common-SUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@ Release:        0
 Summary:        SUSE specific udev tuning rules
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://github.com/openSUSE/system-tuning-SUSE
+URL:            https://github.com/openSUSE/system-tuning-SUSE
 Source0:        %{name}-%{version}.tar.xz
 Requires:       systemd
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
