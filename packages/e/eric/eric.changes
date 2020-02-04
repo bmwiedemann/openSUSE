@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:12:10 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 20.2:
+  - bug fixes
+  - remove source URL workaround (fixed upstream)
+
+-------------------------------------------------------------------
 Sun Jan 26 19:00:13 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - fix source URL
@@ -6,7 +13,7 @@ Sun Jan 26 19:00:13 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Sun Jan 26 13:32:22 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Update to version 20.01:
+- Update to version 20.1:
   - bug fixes
   - MicroPython
     -- added entries to the ESP menu to show the Chip ID, Flash ID and
