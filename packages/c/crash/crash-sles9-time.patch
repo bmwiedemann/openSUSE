@@ -14,10 +14,10 @@ Acked-by: Bernhard Walle <bwalle@suse.de>
  task.c   |   11 +++++++++++
  3 files changed, 27 insertions(+), 1 deletion(-)
 
-Index: crash-7.2.7/defs.h
+Index: b/defs.h
 ===================================================================
---- crash-7.2.7.orig/defs.h
-+++ crash-7.2.7/defs.h
+--- a/defs.h
++++ b/defs.h
 @@ -741,6 +741,7 @@ struct kernel_table {
  		ulong p2m_missing;
  	} pvops_xen;
@@ -26,7 +26,7 @@ Index: crash-7.2.7/defs.h
  #define IKCONFIG_AVAIL	0x1	/* kernel contains ikconfig data */
  #define IKCONFIG_LOADED	0x2	/* ikconfig data is currently loaded */
  	int ikconfig_flags;
-@@ -6885,6 +6886,13 @@ extern struct lkcd_environment *lkcd;
+@@ -6888,6 +6889,13 @@ extern struct lkcd_environment *lkcd;
  
  #endif  /* LKCD_COMMON */
  
@@ -40,10 +40,10 @@ Index: crash-7.2.7/defs.h
  /*
   *  gdb_interface.c
   */
-Index: crash-7.2.7/kernel.c
+Index: b/kernel.c
 ===================================================================
---- crash-7.2.7.orig/kernel.c
-+++ crash-7.2.7/kernel.c
+--- a/kernel.c
++++ b/kernel.c
 @@ -297,6 +297,12 @@ kernel_init()
  
  	verify_version();
@@ -57,7 +57,7 @@ Index: crash-7.2.7/kernel.c
  	if (symbol_exists("__per_cpu_offset")) {
  		if (LKCD_KERNTYPES())
  			i = get_cpus_possible();
-@@ -5603,7 +5609,7 @@ get_uptime(char *buf, ulonglong *j64p)
+@@ -5617,7 +5623,7 @@ get_uptime(char *buf, ulonglong *j64p)
  
  	if (symbol_exists("jiffies_64")) {
  		get_symbol_data("jiffies_64", sizeof(ulonglong), &jiffies_64);
@@ -66,7 +66,7 @@ Index: crash-7.2.7/kernel.c
  			wrapped = (jiffies_64 & 0xffffffff00000000ULL);
  			if (wrapped) {
  				wrapped -= 0x100000000ULL;
-@@ -6199,6 +6205,7 @@ no_cpu_flags:
+@@ -6213,6 +6219,7 @@ no_cpu_flags:
  			fprintf(fp, "            p2m_mid_missing: %lx\n", kt->pvops_xen.p2m_mid_missing);
  		fprintf(fp, "                p2m_missing: %lx\n", kt->pvops_xen.p2m_missing);
  	}
@@ -74,11 +74,11 @@ Index: crash-7.2.7/kernel.c
  }
  
  /*
-Index: crash-7.2.7/task.c
+Index: b/task.c
 ===================================================================
---- crash-7.2.7.orig/task.c
-+++ crash-7.2.7/task.c
-@@ -4611,6 +4611,12 @@ start_time_timespec(void)
+--- a/task.c
++++ b/task.c
+@@ -4631,6 +4631,12 @@ start_time_timespec(void)
  	default:
  		break;
  	}
@@ -91,7 +91,7 @@ Index: crash-7.2.7/task.c
  
  	tt->flags |= NO_TIMESPEC;
  
-@@ -4647,6 +4653,11 @@ convert_start_time(ulonglong start_time,
+@@ -4667,6 +4673,11 @@ convert_start_time(ulonglong start_time,
  	ulong tmp1, tmp2;
  	ulonglong wrapped;
  

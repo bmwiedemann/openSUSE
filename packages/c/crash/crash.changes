@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:50:22 UTC 2020 - David Mair <dmair@suse.com>
+
+- Upgraded the source to version 7.2.8. The previous version was
+  modified to support newer kernels used in SLE-15-SP2 but was not
+  complete.
+  * Includes a fix for kernels that contain:
+      e0703556644a531e50b5dc61b9f6ea83af5f6604
+    which introduces symbol namespaces. Without the change then
+    depending on architecture:
+     (1) the kernel module symbol list will contain garbage
+     (2) the session fails during initialization with a dump of
+         the internal buffer allocation stats followed by the
+         message "crash: cannot allocate any more memory"
+     (3) the session fails during initialization with a
+         segmentation violation (bsc#1162064)
+  * Includes the merge of the S390x patches since crash 7.2.7
+    (bsc#1156645/bsc#1161640)
+  * Source already includes XZ compressed module support, removed:
+      crash-symbols-add-support-for-XZ.patch
+  * Refreshed patches that were no longer aligned with source:
+      crash-allow-use-of-sadump-captured-KASLR-kernel.patch
+      crash-s390-autodetect-kaslr.patch
+      crash-sles9-time.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 17:41:20 UTC 2020 - David Mair <dmair@suse.com>
 
 - Upgrade source tarball to version 7.2.7 to support currently used
