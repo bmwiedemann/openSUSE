@@ -54,4 +54,19 @@ Changes to 345729: Fixed spec file to be conform with factory</comment>
 </comment>
     <requestid>685476</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ee2eae4dfbf526b5a5e27f0dce1587fa</srcmd5>
+    <version>0.41</version>
+    <time>1580842483</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed upstream fixed 59a530d9456351b244ba19b24b2c4bfeaa4207ad.patch
+- Update to 0.41
+  * Added support for &quot;Razer Deathadder 1800 edition/Korea PCBang&quot;
+  * Deactivate Lachesis 5600 support (issues)
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through -mini flavors.
+- BuildRequire python3-base instead of the full python3 package.
+</comment>
+    <requestid>770007</requestid>
+  </revision>
 </revisionlist>

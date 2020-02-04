@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  4 01:40:38 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Removed upstream fixed 59a530d9456351b244ba19b24b2c4bfeaa4207ad.patch
+- Update to 0.41
+  * Added support for "Razer Deathadder 1800 edition/Korea PCBang"
+  * Deactivate Lachesis 5600 support (issues)
+
+-------------------------------------------------------------------
+Mon Feb  3 16:08:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through -mini flavors.
+- BuildRequire python3-base instead of the full python3 package.
+
+-------------------------------------------------------------------
 Fri Mar 15 21:27:13 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.40

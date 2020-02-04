@@ -1,7 +1,7 @@
 #
 # spec file for package razercfg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           razercfg
-Version:        0.40
+Version:        0.41
 Release:        0
 Summary:        A Razer device configuration tool
 # Icons are http://creativecommons.org/licenses/by/4.0/
-License:        GPL-2.0+ and CC-BY-SA-4.0
+License:        GPL-2.0-or-later AND CC-BY-SA-4.0
 Group:          Hardware/Other
-Url:            http://bues.ch/cms/hacking/razercfg.html
-Source0:        http://bues.ch/razercfg/%{name}-%{version}.tar.bz2
-Source1:        http://bues.ch/razercfg/%{name}-%{version}.tar.bz2.asc
+URL:            https://bues.ch/cms/hacking/razercfg.html
+Source0:        https://bues.ch/razercfg/%{name}-%{version}.tar.bz2
+Source1:        https://bues.ch/razercfg/%{name}-%{version}.tar.bz2.asc
 Source98:       %{name}.keyring
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE razercfg-fix-install-in-libdir -- Install libraries in matching directories (e.g. lib64 for 64bit).
 # Reported upstream 21. July 2015
 Patch0:         razercfg-fix-install-in-libdir.patch
-# PATCH-FIX-UPSTREAM 59a530d9456351b244ba19b24b2c4bfeaa4207ad.patch -- https://github.com/mbuesch/razer/commit/59a530d9456351b244ba19b24b2c4bfeaa4207ad
-Patch1:         59a530d9456351b244ba19b24b2c4bfeaa4207ad.patch
-BuildRequires:  cmake >= 2.4
+BuildRequires:  cmake
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libusb-1_0-devel
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  udev
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(udev)
 Requires:       python3-qt5
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 Razercfg is the next generation Razer device configuration
@@ -52,7 +50,6 @@ Including commandline tool (razercfg) and QT GUI qrazercfg.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %cmake
@@ -80,6 +77,7 @@ LD_LIBRARY_PATH=./build/librazer/ help2man -N ./build/razerd/razerd > %{buildroo
 
 %post
 %service_add_post razerd.service
+%tmpfiles_create %_tmpfilesdir/razerd.conf
 %icon_theme_cache_post
 udevadm control --reload-rules 2>&1 > /dev/null || :
 /sbin/ldconfig
@@ -105,7 +103,9 @@ udevadm control --reload-rules 2>&1 > /dev/null || :
 %{_bindir}/qrazercfg-applet
 %{_libdir}/librazer.so.1
 %{_unitdir}/razerd.service
+%{_tmpfilesdir}/razerd.conf
 %{_udevrulesdir}/80-razer.rules
+%ghost %{_rundir}/razerd
 %{_datadir}/icons/hicolor/scalable/apps/razercfg*.svg
 %{_datadir}/applications/razercfg.desktop
 %{_mandir}/man1/razer*
