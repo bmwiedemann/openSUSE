@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel-appmenu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@ Release:        0
 Summary:        AppMenu plugin for xfce4-panel, mate-panel and vala-panel
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://gitlab.com/vala-panel-project/vala-panel-appmenu
+URL:            https://gitlab.com/vala-panel-project/vala-panel-appmenu
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bamf-daemon
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  pkgconfig
-BuildRequires:  systemd
 BuildRequires:  vala >= 0.24
 BuildRequires:  vala-cmake-modules
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
@@ -45,6 +44,7 @@ BuildRequires:  pkgconfig(libpeas-1.0) >= 1.2
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfconf-0)
+BuildRequires:  pkgconfig(systemd)
 %if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:  pkgconfig(vala-panel) >= 0.3.7
@@ -81,7 +81,7 @@ Summary:        Common files for appmenu-gtk{2,3}-module
 Group:          System/GUI/Other
 BuildArch:      noarch
 %glib2_gsettings_schema_requires
-%systemd_requires
+%systemd_ordering
 
 %description -n appmenu-gtk-module-common
 This package contains common data-files for appmenu-gtk{2,3}-module.
