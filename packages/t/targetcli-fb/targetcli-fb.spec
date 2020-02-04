@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/open-iscsi/%{name}
+URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.service
 BuildRequires:  %{python_module configshell-fb}
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module rtslib-fb}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       python-configshell-fb
 Requires:       python-dbus-python
 Requires:       python-rtslib-fb
@@ -53,7 +53,7 @@ BuildArch:      noarch
 Provides:       targetcli-rbd = %{version}
 Obsoletes:      targetcli-rbd < %{version}
 %endif
-%{?systemd_requires}
+%{?systemd_ordering}
 Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
 Patch3:         saveconfig-compress-the-backup-config-files
