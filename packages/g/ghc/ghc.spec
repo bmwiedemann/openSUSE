@@ -1,7 +1,7 @@
 #
 # spec file for package ghc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le riscv64 s390x
 BuildRequires:  binutils-devel
 BuildRequires:  gcc
 BuildRequires:  ghc-bootstrap >= 8.4
+BuildRequires:  ghc-bootstrap-helpers
 BuildRequires:  ghc-rpm-macros-extra
 BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
@@ -68,9 +69,11 @@ BuildRequires:  binutils-gold
 %endif
 %ifarch aarch64 %{arm} %{ix86} x86_64
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm7-devel
+BuildRequires:  llvm7
+Requires:       llvm7
 %else
-BuildRequires:  llvm-devel
+BuildRequires:  llvm
+Requires:       llvm
 %endif
 %endif
 %if %{undefined without_manual}
@@ -81,21 +84,14 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  libnuma-devel
 %endif
 
-# bogus requires
-%ifarch x86_64
-BuildRequires:  ghc-bootstrap-helpers
-%else
-BuildRequires:  alex
-BuildRequires:  happy
-%endif
-
 PreReq:         update-alternatives
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
+
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch
+# PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch ptrommler@icloud.com -- Fix/workaround an issue with unregisterised builds bootstrapped with GHC 8.4 and 8.6. Similar to upstream ticket #15913. 
 Patch6:         fix-unregisterised-v8.4-8.6.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
@@ -271,15 +267,15 @@ export CFLAGS="${CFLAGS:-%optflags}"
   --sharedstatedir=%{_sharedstatedir} --mandir=%{_mandir} \
   --with-system-libffi 
 
-%ifnarch s390 s390x riscv64
 %if 0%{?suse_version} >= 1500
+%ifarch unregisterised_archs
+%limit_build -m 8000
+%else
 %limit_build -m 2000
+%endif
 make %{?_smp_mflags}
 %else 
 make -j 2
-%endif
-%else
-make
 %endif
 
 %install
@@ -448,8 +444,6 @@ fi
 %{ghcdocbasedir}/users_guide
 %endif
 %{ghcdocbasedir}/libraries/gen_contents_index
-#%%{ghcdocbasedir}/libraries/hslogo-16.png
-#%%{ghcdocbasedir}/libraries/ocean.css
 %{ghcdocbasedir}/libraries/linuwial.css
 %{ghcdocbasedir}/libraries/quick-jump.css
 %{ghcdocbasedir}/libraries/prologue.txt

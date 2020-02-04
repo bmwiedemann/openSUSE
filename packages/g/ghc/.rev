@@ -771,4 +771,17 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>- Update _constraints for aarch64 (forwarded request 766005 from mimi_vx)</comment>
     <requestid>766008</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>e59c7f5a0a23b894044d7cf75b0e8f1f</srcmd5>
+    <version>8.8.2</version>
+    <time>1580842564</time>
+    <user>dimstar_suse</user>
+    <comment>- use ghc-bootstrap-helpers on all archs
+- lower build env requirements on riscv64 
+  * make sure we can build on smaller systems
+  * adjust parallelism so we don't hog big workers for almost a week
+  * many thanks to Stefan Bruens for pointing out the issue and
+    helping with the solution (forwarded request 769886 from mimi_vx)</comment>
+    <requestid>769887</requestid>
+  </revision>
 </revisionlist>

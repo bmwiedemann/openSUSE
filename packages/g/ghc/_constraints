@@ -13,9 +13,9 @@
       <arch>aarch64</arch>
     </conditions>
     <hardware>
-      <physicalmemory>
+      <memory>
         <size unit="G">10</size>
-      </physicalmemory>
+      </memory>
     </hardware>
   </overwrite>
   <overwrite>
@@ -23,9 +23,9 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <physicalmemory>
-        <size unit="G">20</size>
-      </physicalmemory>
+      <memory>
+        <size unit="G">17</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>
