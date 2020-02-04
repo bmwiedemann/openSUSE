@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-sfcb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Name:           sblim-sfcb
 Version:        1.4.9
 Release:        0
 %define srcversion 1.4.9
-Url:            http://sblim.sf.net/
+URL:            http://sblim.sf.net/
 Source0:        %{name}-%{srcversion}.tar.bz2
 Source1:        autoconfiscate.sh
 %if 0%{?suse_version}
@@ -112,8 +112,8 @@ Requires:       sysvinit-tools
 %endif
 %endif
 %if 0%{?has_systemd}
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 # for /usr/sbin/service
 Requires(pre):  aaa_base
 %endif

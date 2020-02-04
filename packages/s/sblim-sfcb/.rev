@@ -598,4 +598,12 @@ Bugs fixed:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>734765</requestid>
   </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>a0165f77461da062087c128f6b540a30</srcmd5>
+    <version>1.4.9</version>
+    <time>1580842444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769720</requestid>
+  </revision>
 </revisionlist>
