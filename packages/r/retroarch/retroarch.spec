@@ -1,7 +1,7 @@
 #
 # spec file for package retroarch
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  p7zip
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  systemd-devel
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -52,6 +51,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)
@@ -198,7 +198,6 @@ export CXXFLAGS="$CFLAGS"
     --enable-7zip \
     --enable-mmap
 make %{?_smp_mflags}
-
 
 %install
 %make_install
