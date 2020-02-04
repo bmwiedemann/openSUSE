@@ -1,7 +1,7 @@
 #
 # spec file for package python-yarl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yarl
-Version:        1.3.0
+Version:        1.4.2
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
@@ -30,15 +30,14 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module idna >= 2.0}
 # test requirements
+BuildRequires:  %{python_module multidict >= 4.0}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-multidict >= 4.0
 Requires:       python-idna >= 2.0
-%ifpython3
-Requires:       python3-multidict >= 4.0
-%endif
+Requires:       python-multidict >= 4.0
 %python_subpackages
 
 %description
@@ -55,7 +54,7 @@ export CFLAGS="%{optflags}"
 %python_install
 
 %check
-%python_exec setup.py test
+%pytest tests
 
 %files %{python_files}
 %license LICENSE

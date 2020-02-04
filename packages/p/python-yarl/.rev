@@ -97,4 +97,12 @@
  * Support PEP-561 (provide type hinting marker)</comment>
     <requestid>681093</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b066ec6f070fda49bbdc6c8317904d09</srcmd5>
+    <version>1.4.2</version>
+    <time>1580842412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769628</requestid>
+  </revision>
 </revisionlist>
