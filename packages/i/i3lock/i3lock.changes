@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:56:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libudev1 BuildRequires: buildrequiring a library (and not a
+  relevant devel package) can't ever be correct.
+
+-------------------------------------------------------------------
 Tue Oct 23 21:37:22 UTC 2018 - Avindra Goolcharan <aavindraa@gmail.com>
 
 - update to 2.11.1
