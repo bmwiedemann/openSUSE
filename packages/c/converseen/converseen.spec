@@ -1,7 +1,7 @@
 #
 # spec file for package converseen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           converseen
-Version:        0.9.8.0
+Version:        0.9.8.1
 Release:        0
 Summary:        Batch Image Conversion Tool
 License:        GPL-3.0-or-later
@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(MagickCore)
 BuildRequires:  pkgconfig(MagickWand)
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Converseen is a batch image conversion tool. Converseen allows you
@@ -55,9 +54,8 @@ With converseen you can:
 %lang_package
 
 %prep
-%setup -q
-cp -p README.md README
-chmod -x README COPYING
+%setup -q -n %{name}
+chmod -x README.md COPYING
 
 %build
 %cmake
@@ -108,17 +106,13 @@ done
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/%{name}
-%if 0%{?suse_version} && 0%{?suse_version} < 1320
-%dir %{_datadir}/appdata/
-%endif
-%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}.*
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
-%defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/loc/
 
