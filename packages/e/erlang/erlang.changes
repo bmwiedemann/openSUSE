@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  3 07:59:55 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.com>
+
+- Changes for 22.2.4:
+  * ssl: Enhance error handling, all ALERTS shall be handled
+    gracefully and not cause a crash.  
+  * ssl: Enhance alert logging, in some places the role
+    indication of the alert origin was missing. So the log
+    would say undefined instead of client or server.
+  * ssl: Two different optimizations did not work together and
+    resulted in the possible breakage of connections using
+    stream ciphers (that is RC4). Reworked the
+    implementation to avoid this.
+
+-------------------------------------------------------------------
 Fri Jan 24 08:08:38 UTC 2020 - matwey.kornilov@gmail.com
 
 - Changes for 22.2.3:
