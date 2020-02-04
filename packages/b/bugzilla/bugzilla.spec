@@ -1,7 +1,7 @@
 #
 # spec file for package bugzilla
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Source5:        %{name}-rpmlintrc
 Patch1:         fix_whine_error.patch
 BuildRequires:  apache
 BuildRequires:  fdupes
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       apache
 Requires:       apache2-mod_perl >= 1.999022
 #Recommonds:	Apache-SizeLimit
