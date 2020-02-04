@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:41:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 1.2.132
+  * Updated known-good files
+  * Generated new files using `generate_source.py`
+  * Updated VUIDs in validation code and tests
+
+-------------------------------------------------------------------
 Wed Jan 22 16:42:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.131
