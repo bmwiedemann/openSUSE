@@ -1,7 +1,7 @@
 #
 # spec file for package glpk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,14 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
   --enable-odbc \
   --enable-mysql \
   --disable-static
-make %{?_smp_mflags}
+%if %{do_profiling}
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  make check %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
+  make %{?_smp_mflags} clean
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+%else
+  make %{?_smp_mflags} V=1
+%endif
 
 %install
 %make_install

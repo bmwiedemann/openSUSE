@@ -215,4 +215,12 @@
     <comment></comment>
     <requestid>737995</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>f07619e2528cd765200adc144893c63c</srcmd5>
+    <version>4.65</version>
+    <time>1580842431</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable PGO during build</comment>
+    <requestid>769675</requestid>
+  </revision>
 </revisionlist>
