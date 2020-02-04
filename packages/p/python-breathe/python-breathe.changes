@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  2 16:00:02 UTC 2020 - aloisio@gmx.com
+
+- Update to version 4.14.1
+  * Use sphinx core instead of mathbase ext. #469
+  * Fix test failure for Sphinx >= 2.2.2. #472
+  version 4.14.0:
+  * Add events attribute to MockApp. #452
+  * Add bit field support for C/C++. #454
+  * Add alias and variable template support. #461
+
+-------------------------------------------------------------------
 Fri Sep 13 11:12:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.13.1:

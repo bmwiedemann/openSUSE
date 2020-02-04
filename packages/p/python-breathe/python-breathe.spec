@@ -1,7 +1,7 @@
 #
 # spec file for package python-breathe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-breathe
-Version:        4.13.1
+Version:        4.14.1
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/michaeljones/breathe
-Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz
+Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module mock}
