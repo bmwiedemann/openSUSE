@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  rrdtool-devel
 BuildRequires:  system-user-daemon
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 Requires:       system-user-daemon
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
