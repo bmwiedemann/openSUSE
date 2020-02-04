@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  1 03:19:23 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 4.009
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  4.009 Fri January 31, 2020
+      * Update ppport.h for modern perls.
+  
+  4.008 Thurs Jan 30, 2020
+      * Build fixes for modern perls.
+      * Pod fixes
+
+-------------------------------------------------------------------
 Fri Aug 30 10:34:26 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Add custom_build in cpanspec.yml. make doesn't work here with -j...
