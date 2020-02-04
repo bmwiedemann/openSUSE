@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  3 23:01:33 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Resolve protoype issue when invoking tracebacks (bsc#1161296)
+  Also dependent fix to handle GCC fallthrough
+
+  New patch: systemtap-fix-strict-prototypes-in-autoconf-stack-trace-save-regs.c.patch
+  New patch: systemtap-amend-fallback-comment-to-work-with-newer-gcc.patch
+
+-------------------------------------------------------------------
+Mon Jan 27 11:29:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace libebl-devel BuildRequires with libdw-devel: ebl is
+  being absorbed by libdw.
+
+-------------------------------------------------------------------
 Fri Dec  6 17:29:35 UTC 2019 - Tony Jones <tonyj@suse.com>
 
 - Update to version 4.2

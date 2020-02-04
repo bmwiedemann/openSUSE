@@ -799,4 +799,12 @@ Most projects for this reason don't even carry the generated configure script in
     <comment></comment>
     <requestid>754799</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>df6dbf57a5a71e7bb7d00b17113d0ba3</srcmd5>
+    <version>4.2</version>
+    <time>1580842297</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1161296 </comment>
+    <requestid>769807</requestid>
+  </revision>
 </revisionlist>

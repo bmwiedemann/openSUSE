@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,14 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
+Patch2:         systemtap-fix-strict-prototypes-in-autoconf-stack-trace-save-regs.c.patch
+Patch3:         systemtap-amend-fallback-comment-to-work-with-newer-gcc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
 BuildRequires:  libcap-devel
-BuildRequires:  libebl-devel
+BuildRequires:  libdw-devel
 BuildRequires:  mozilla-nspr-devel
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  mozilla-nss-tools
@@ -48,7 +50,6 @@ BuildRequires:  sqlite-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-dtrace = %{version}
 Requires:       %{name}-runtime = %{version}-%{release}
-Requires:       libebl1
 Obsoletes:      systemtap-client < 1.5
 
 %description
@@ -95,6 +96,8 @@ This package contains the support tools for static probes.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -fi

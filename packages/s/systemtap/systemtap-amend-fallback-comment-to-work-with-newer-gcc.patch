@@ -1,0 +1,27 @@
+From: Siddhesh Poyarekar <siddhesh@gotplt.org>
+Date: Mon Jan 27 12:56:22 2020 +0530
+Subject: Amend fallback comment to work with newer gcc
+Git-commit: eae455d2091cc67d1bfe1fa08430a368db64fb1e
+References: bsc#1161296
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+
+    Amend fallback comment to work with newer gcc
+    
+    Newer gcc does not recognize the fallthrough comment due to the text
+    following the fallthrough keyword.  The "see above" doesn't seem too
+    valuable, so this patch drops it to fix the build.
+
+diff --git a/runtime/unwind/unwind.h b/runtime/unwind/unwind.h
+index e5a5921ed..7fbe7cc61 100644
+--- a/runtime/unwind/unwind.h
++++ b/runtime/unwind/unwind.h
+@@ -160,7 +160,7 @@ static unsigned long read_ptr_sect(const u8 **pLoc, const void *end,
+ #else
+ 		BUILD_BUG_ON(sizeof(u32) != sizeof(value));
+ #endif
+-		/* fallthrough, see above. */
++		/* fallthrough */
+ 	case DW_EH_PE_absptr:
+ 		if (compat_task)
+ 		{

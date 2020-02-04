@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-docs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  automake
 BuildRequires:  fop
 BuildRequires:  gcc-c++
 BuildRequires:  latex2html
-BuildRequires:  libebl-devel
+BuildRequires:  libdw-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools

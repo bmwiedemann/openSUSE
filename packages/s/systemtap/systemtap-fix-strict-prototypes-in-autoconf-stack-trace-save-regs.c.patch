@@ -1,0 +1,21 @@
+From: Craig Ringer <craig.ringer@2ndquadrant.com>
+Date: Sun Dec 29 14:51:47 2019 -0500
+Subject: fix strict-prototypes in autoconf-stack-trace-save-regs.c
+Git-commit: 3d571c2ab5797b41d07b51a7bbff626270d1e263
+References: bsc#1161296
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+    PR25265: fix strict-prototypes nit autoconf-stack-trace-save-regs.c
+
+diff --git a/runtime/linux/autoconf-stack-trace-save-regs.c b/runtime/linux/autoconf-stack-trace-save-regs.c
+index 8bf33391f..1fd515f8f 100644
+--- a/runtime/linux/autoconf-stack-trace-save-regs.c
++++ b/runtime/linux/autoconf-stack-trace-save-regs.c
+@@ -1,6 +1,6 @@
+ #include <linux/stacktrace.h>
+ 
+-unsigned int foo ()
++unsigned int foo (void)
+ {
+         unsigned long e[10];
+         struct pt_regs* r = 0;
