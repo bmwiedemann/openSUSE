@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 17:17:07 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.9.3
+  * Fixed GitHub deprecation of access_token query parameter, now
+    using Authorization header
+
+-------------------------------------------------------------------
 Wed Jan 15 09:44:59 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.9.2

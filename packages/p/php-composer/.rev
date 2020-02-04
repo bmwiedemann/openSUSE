@@ -251,4 +251,15 @@
 </comment>
     <requestid>764583</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7c1c2565377e519e2f93319179d13ec3</srcmd5>
+    <version>1.9.3</version>
+    <time>1580842697</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.9.3
+  * Fixed GitHub deprecation of access_token query parameter, now
+    using Authorization header
+</comment>
+    <requestid>770057</requestid>
+  </revision>
 </revisionlist>
