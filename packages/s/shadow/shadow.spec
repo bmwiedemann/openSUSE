@@ -23,7 +23,7 @@
 %endif
 
 Name:           shadow
-Version:        4.8
+Version:        4.8.1
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -61,10 +61,6 @@ Patch7:         shadow-4.1.5.1-logmsg.patch
 Patch13:        shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
 Patch14:        shadow-login_defs-suse.patch
-# PATCH-FIX-UPSTREAM shadow-4.8-selinux-include.patch mvetter@suse.com -- https://github.com/shadow-maint/shadow/pull/200
-Patch15:        shadow-4.8-selinux-include.patch
-# PATCH-FEATURE mvetter@suse.com -- bsc#1160729 https://github.com/shadow-maint/shadow/pull/210
-Patch16:        shadow-4.8-shell-check.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch20:        disable_new_audit_function.patch
 BuildRequires:  audit-devel > 2.3
@@ -110,8 +106,6 @@ group accounts.
 %patch7
 %patch13
 %patch14
-%patch15 -p1
-%patch16 -p1
 %if 0%{?suse_version} < 1330
 %patch20 -p1
 %endif

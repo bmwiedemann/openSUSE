@@ -528,4 +528,24 @@
   * chkname-regex.patch</comment>
     <requestid>765745</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fc355fbc9212c26863406f09a504f70c</srcmd5>
+    <version>4.8.1</version>
+    <time>1580842258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.1:
+  * selinux: include stdio
+  * man: don't suggest making groupmems user-writeable
+  * Makefile: bail out on error in for loops
+  * Adding logging of SSH_ORIGINAL_COMMAND to nologin
+  * add new HOME_MODE login.defs option
+  * Add tty logging to useradd
+  * Useradd: make non-executable shell check only a warning
+  * Update Dutch translation
+  * user_busy: Do not mistake a regular user process for a namespaced one
+  * Revert &quot;Honor --sbindir and --bindir for binary installation&quot;
+- Remove shadow-4.8-shell-check.patch: included
+- Remove shadow-4.8-selinux-include.patch: upstreamed</comment>
+    <requestid>767297</requestid>
+  </revision>
 </revisionlist>

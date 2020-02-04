@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 24 08:09:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.8.1:
+  * selinux: include stdio
+  * man: don't suggest making groupmems user-writeable
+  * Makefile: bail out on error in for loops
+  * Adding logging of SSH_ORIGINAL_COMMAND to nologin
+  * add new HOME_MODE login.defs option
+  * Add tty logging to useradd
+  * Useradd: make non-executable shell check only a warning
+  * Update Dutch translation
+  * user_busy: Do not mistake a regular user process for a namespaced one
+  * Revert "Honor --sbindir and --bindir for binary installation"
+- Remove shadow-4.8-shell-check.patch: included
+- Remove shadow-4.8-selinux-include.patch: upstreamed
+
+-------------------------------------------------------------------
 Mon Jan 20 10:36:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Set 0755 for chpasswd, groupadd, groupdel, groupmod, newusers,
