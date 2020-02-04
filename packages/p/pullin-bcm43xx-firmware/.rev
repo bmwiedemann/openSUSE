@@ -17,4 +17,12 @@ without finding+reading+understanding+executing the relevant docs</comment>
     <comment>Mark .service file as non-executible (boo#1053657)</comment>
     <requestid>521112</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ed40791eec5a1944a00048447735fc97</srcmd5>
+    <version>1.0</version>
+    <time>1580842477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769767</requestid>
+  </revision>
 </revisionlist>
