@@ -36,4 +36,12 @@ should be accepted after, or in combination with that package.</comment>
     <comment></comment>
     <requestid>662540</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6cd812a4fa7add01d534121eb7ef4c81</srcmd5>
+    <version>2.11.0</version>
+    <time>1580842550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769871</requestid>
+  </revision>
 </revisionlist>

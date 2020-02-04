@@ -1,7 +1,7 @@
 #
 # spec file for package kbfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Encrypted remote storage based on Keybase identities
 License:        BSD-3-Clause AND LGPL-3.0-or-later
 Group:          Productivity/Security
-Url:            https://github.com/keybase/kbfs/
+URL:            https://github.com/keybase/kbfs/
 Source:         https://github.com/keybase/kbfs/archive/v%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.SUSE.git
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       keybase-client
