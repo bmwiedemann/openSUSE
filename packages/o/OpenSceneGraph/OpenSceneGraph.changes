@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:52:44 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace wrong Requires: SDL-devel in devel package with
+  pkgconfig(sdl2).
+- Remove architecture specific _constraints, there are no significant
+  differences in real life, avoids failures for other architectures
+  not covered.
+
+-------------------------------------------------------------------
 Fri Dec 13 08:38:57 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for ARM

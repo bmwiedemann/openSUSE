@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,6 @@ This package contains the shared libraries for OpenSceneGraph.
 %package -n libOpenSceneGraph-devel
 Summary:        OpenSceneGraph development files
 Group:          Development/Libraries/C and C++
-Requires:       SDL-devel
 Requires:       curl-devel
 Requires:       freeglut-devel
 Requires:       giflib-devel
@@ -112,6 +111,7 @@ Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(openal)
 Requires:       pkgconfig(poppler-glib)
+Requires:       pkgconfig(sdl2)
 Requires:       pkgconfig(xrandr)
 Conflicts:      libOpenSceneGraph1-devel
 
