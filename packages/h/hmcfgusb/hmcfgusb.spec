@@ -1,7 +1,7 @@
 #
 # spec file for package hmcfgusb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Andreas Vetter
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@ Source:         https://git.zerfleddert.de/hmcfgusb/releases/%{name}-%{version}.
 Source1:        hmland.service
 Source2:        sysconfig.hmland
 BuildRequires:  libusb-1_0-devel
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       logrotate
 Requires(pre):  %fillup_prereq
 
