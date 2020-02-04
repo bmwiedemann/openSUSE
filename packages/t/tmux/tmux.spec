@@ -1,7 +1,7 @@
 #
 # spec file for package tmux
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define _version 3.1-rc
 
 Name:           tmux
-Version:        3.0a
+Version:        3.1~rc1
 Release:        0
 Summary:        Terminal multiplexer
 License:        ISC AND BSD-3-Clause AND BSD-2-Clause
 Group:          System/Console
 URL:            https://tmux.github.io/
-Source0:        https://github.com/tmux/tmux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/tmux/tmux/releases/download/3.1/%{name}-%{_version}.tar.gz
 Source1:        bash_completion_tmux.sh
 # PATCH-FIX-OPENSUSE crrodriguez@opensuse.org -- Use /run/tmux instead of /tmp as the default socket path, this add some robustness against accidental deletion via systemd-tmpfiles-clean, tmpwatch, or similar
 Patch0:         tmux-socket-path.patch
@@ -51,7 +52,7 @@ moved between sessions and otherwise manipulated. Each session may be attached
 to (display and accept keyboard input from) multiple clients.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{_version}
 %patch0 -p1
 
 %build
