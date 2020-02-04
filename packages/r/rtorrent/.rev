@@ -54,4 +54,12 @@
     <comment>- Add missing %service_* scriptlets</comment>
     <requestid>724200</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0a180b839712c47537eec84e2d116dae</srcmd5>
+    <version>0.9.8</version>
+    <time>1580842311</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>769058</requestid>
+  </revision>
 </revisionlist>

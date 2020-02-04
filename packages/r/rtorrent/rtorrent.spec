@@ -48,6 +48,7 @@ BuildRequires:  gzip
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
 BuildRequires:  pkgconfig(libtorrent) >= 0.13.8
+Requires(pre):  shadow
 
 %description
 rTorrent is a console-based BitTorrent client. It aims to be a

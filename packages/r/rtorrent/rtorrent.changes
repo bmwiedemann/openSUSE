@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 12:13:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing require on useradd.
+
+-------------------------------------------------------------------
 Fri Aug 16 15:54:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing %service_* scriptlets
