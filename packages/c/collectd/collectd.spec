@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -117,12 +117,6 @@ BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libsigrok)
 %endif
 BuildRequires:  pkgconfig(dbi)
-BuildRequires:  pkgconfig(devmapper)
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gail)
-BuildRequires:  pkgconfig(gdk-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libart-2.0)
 BuildRequires:  pkgconfig(libatasmart)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libevent)

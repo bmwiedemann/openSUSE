@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 13:41:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Cleanup BuildRequires that are not actually in use:
+  pkgconfig(devmapper),  pkgconfig(freetype2), pkgconfig(gail),
+  pkgconfig(gdk-2.0),  pkgconfig(gtk+-2.0), pkgconfig(libart-2.0).
+
+-------------------------------------------------------------------
 Mon Nov 25 14:02:12 UTC 2019 - Christian Vögl <cvoegl@suse.de>
 
 - Update to 5.10.0 (jsc#SLE-9892)

@@ -298,4 +298,12 @@ Packaging :
     <comment></comment>
     <requestid>751118</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>eaa9b02e27a9c04a5d6b7ca4014da0b7</srcmd5>
+    <version>5.10.0</version>
+    <time>1580842341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769490</requestid>
+  </revision>
 </revisionlist>
