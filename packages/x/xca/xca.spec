@@ -17,7 +17,7 @@
 
 
 Name:           xca
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
