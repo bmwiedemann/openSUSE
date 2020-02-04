@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 03:14:03 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.007003
+   see /usr/share/doc/packages/perl-Net-Whois-RIPE/Changes
+
+  2.007003    2020-02-03
+              - Add List::Utils to the prerequisites (Kwalitee)
+              - Update copyright/authors/sponsor information
+              - Attempt to fix the undefined line bug
+
+-------------------------------------------------------------------
 Fri Jan 24 03:10:39 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.007002
