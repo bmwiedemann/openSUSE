@@ -1,7 +1,7 @@
 #
 # spec file for package vnstat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-Url:            http://humdi.net/vnstat
+URL:            http://humdi.net/vnstat
 Source:         http://humdi.net/vnstat/vnstat-%{version}.tar.gz
 Source98:       http://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
@@ -47,8 +47,8 @@ Requires:       /bin/ls
 Requires:       /bin/su
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{with systemd}
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %else
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
