@@ -1,0 +1,10 @@
+--- jdk10/src/java.instrument/share/native/libinstrument/JarFacade.c	2014-10-02 10:59:00.105666221 +0200
++++ jdk10/src/java.instrument/share/native/libinstrument/JarFacade.c	2014-10-02 11:59:03.355452975 +0200
+@@ -23,6 +23,7 @@
+  * questions.
+  */
+ 
++#include <ctype.h>
+ #include <string.h>
+ #include <stdlib.h>
+ 

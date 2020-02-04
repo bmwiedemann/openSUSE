@@ -1,0 +1,41 @@
+--- a/closed/OpenJ9.gmk
++++ b/closed/OpenJ9.gmk
+@@ -32,15 +32,15 @@ ifeq (,$(BUILD_ID))
+   BUILD_ID := 000000
+ endif
+ 
+-OPENJ9_SHA := $(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)
++OPENJ9_SHA := @OPENJ9_SHA@
+ ifeq (,$(OPENJ9_SHA))
+   $(error Could not determine OpenJ9 SHA)
+ endif
+ 
+ # Find OpenJ9 tag associated with current commit (suppressing stderr in case there is no such tag).
+-OPENJ9_TAG := $(shell git -C $(OPENJ9_TOPDIR) describe --exact-match HEAD 2>/dev/null)
++OPENJ9_TAG := @OPENJ9_TAG@
+ ifeq (,$(OPENJ9_TAG))
+-  OPENJ9_BRANCH := $(shell git -C $(OPENJ9_TOPDIR) rev-parse --abbrev-ref HEAD)
++  OPENJ9_BRANCH := @OPENJ9_BRANCH@
+   ifeq (,$(OPENJ9_BRANCH))
+     $(error Could not determine OpenJ9 branch)
+   endif
+@@ -49,7 +49,7 @@ else
+   OPENJ9_VERSION_STRING := $(OPENJ9_TAG)
+ endif
+ 
+-OPENJ9OMR_SHA := $(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)
++OPENJ9OMR_SHA := @OPENJ9OMR_SHA@
+ ifeq (,$(OPENJ9OMR_SHA))
+   $(error Could not determine OMR SHA)
+ endif
+--- a/closed/autoconf/custom-hook.m4
++++ b/closed/autoconf/custom-hook.m4
+@@ -436,7 +436,7 @@ AC_DEFUN_ONCE([OPENJ9_CHECK_NASM_VERSION],
+ 
+ AC_DEFUN_ONCE([OPENJDK_VERSION_DETAILS],
+ [
+-  OPENJDK_SHA=`git -C $TOPDIR rev-parse --short HEAD`
++  OPENJDK_SHA=@OPENJDK_SHA@
+ 
+   AC_SUBST(OPENJDK_SHA)
+ 

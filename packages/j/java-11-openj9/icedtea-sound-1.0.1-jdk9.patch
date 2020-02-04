@@ -1,0 +1,355 @@
+--- icedtea-sound-1.0.1/Makefile.am	Fri Jul 18 23:46:15 2014 +0100
++++ icedtea-sound-1.0.1/Makefile.am	Thu Nov 02 13:16:38 2017 +0100
+@@ -28,7 +28,6 @@
+ ICEDTEA_SOUND_JAVA_GENDIR = $(abs_top_builddir)/src/java
+ 
+ # Build directories
+-RUNTIME = $(SYSTEM_JDK_DIR)/jre/lib/rt.jar
+ ICEDTEA_SOUND_BUILDDIR = $(abs_top_builddir)/build
+ ICEDTEA_SOUND_NATIVE_BUILDDIR = $(ICEDTEA_SOUND_BUILDDIR)/native
+ ICEDTEA_SOUND_NATIVE_OBJECTS = \
+@@ -38,6 +37,7 @@
+ # Files
+ # Must use relative paths so as not to break make distcheck
+ ICEDTEA_SOUND_JAVA_SRCS = $(top_srcdir)/src/java/org/classpath/icedtea/*/*.java \
++	$(top_srcdir)/src/java/module-info.java \
+ 	$(top_builddir)/src/java/org/classpath/icedtea/Config.java
+ ICEDTEA_SOUND_SRCS = $(ICEDTEA_SOUND_JAVA_SRCS) \
+ 	$(top_srcdir)/src/java/META-INF/services/javax.sound.sampled.spi.MixerProvider \
+@@ -51,10 +51,15 @@
+ EXTRA_DIST = $(ICEDTEA_SOUND_SRCS)
+ 
+ # Flags
+-IT_LANGUAGE_SOURCE_VERSION=6
+-IT_CLASS_TARGET_VERSION=6
++IT_LANGUAGE_SOURCE_VERSION=10
++IT_CLASS_TARGET_VERSION=10
+ IT_JAVAC_SETTINGS=-g -encoding utf-8 $(JAVACFLAGS) $(MEMORY_LIMIT) $(PREFER_SOURCE)
+ IT_JAVACFLAGS=$(IT_JAVAC_SETTINGS) -source $(IT_LANGUAGE_SOURCE_VERSION) -target $(IT_CLASS_TARGET_VERSION)
++if ENABLE_WARNINGS
++IT_JAVACFLAGS+=-Xlint
++else
++IT_JAVACFLAGS+=-nowarn
++endif
+ IT_CFLAGS=$(CFLAGS) $(ARCHFLAG)
+ LDFLAGS+=-Xlinker -z -Xlinker defs
+ if ENABLE_DOCS
+@@ -62,7 +67,7 @@
+ JAVADOC_OPTS=-use -keywords -encoding UTF-8 -splitIndex \
+  -bottom '<font size="-1"> <a href="http://icedtea.classpath.org/bugzilla">Submit a bug or feature</a></font>'
+ if JAVADOC_SUPPORTS_J_OPTIONS
+-JAVADOC_MEM_OPTS=-J-Xmx1024m -J-Xms128m -J-XX:PermSize=32m -J-XX:MaxPermSize=160m
++JAVADOC_MEM_OPTS=-J-Xmx1024m -J-Xms128m
+ endif
+ endif
+ 
+@@ -80,8 +85,7 @@
+ install-exec-local: $(ICEDTEA_SOUND_NATIVE_BUILDDIR)/$(TARGET_NAME)
+ 	${mkinstalldirs} $(DESTDIR)$(libdir)
+ 	${INSTALL_PROGRAM} $(ICEDTEA_SOUND_NATIVE_BUILDDIR)/$(TARGET_NAME) \
+-	  $(DESTDIR)$(libdir)/$(LIBRARY_NAME)
+-	ln -sf $(LIBRARY_NAME) $(DESTDIR)$(libdir)/$(TARGET_NAME)
++	  $(DESTDIR)$(libdir)/
+ 
+ install-data-local: stamps/icedtea-sound-jar.stamp stamps/docs.stamp
+ 	${mkinstalldirs} $(DESTDIR)$(datadir)/$(PACKAGE_NAME)/
+@@ -112,9 +116,8 @@
+ 	touch $@
+ 
+ stamps/icedtea-sound-class.stamp:
+-	mkdir -p $(ICEDTEA_SOUND_CLASS_DIR)
+-	$(abs_top_builddir)/javac $(IT_JAVACFLAGS) -d $(ICEDTEA_SOUND_CLASS_DIR) \
+-	 -bootclasspath $(RUNTIME) $(ICEDTEA_SOUND_JAVA_SRCS)
++	mkdir -p $(ICEDTEA_SOUND_CLASS_DIR) $(ICEDTEA_SOUND_NATIVE_BUILDDIR)
++	$(JAVAC) $(IT_JAVACFLAGS) -h $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -d $(ICEDTEA_SOUND_CLASS_DIR) $(ICEDTEA_SOUND_JAVA_SRCS)
+ 	cp  -r $(ICEDTEA_SOUND_JAVA_SRCDIR)/META-INF $(ICEDTEA_SOUND_CLASS_DIR)
+ 	chmod -R ug+w $(ICEDTEA_SOUND_CLASS_DIR)/META-INF
+ 	mkdir -p stamps
+@@ -125,24 +128,7 @@
+ 	mkdir -p stamps
+ 	touch $@
+ 
+-stamps/icedtea-sound-headers.stamp: stamps/icedtea-sound-class.stamp
+-	mkdir -p $(ICEDTEA_SOUND_NATIVE_BUILDDIR)
+-	$(JAVAH) -d $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -classpath $(ICEDTEA_SOUND_CLASS_DIR) \
+-	  -J-Xbootclasspath/p:$(ICEDTEA_SOUND_CLASS_DIR) org.classpath.icedtea.pulseaudio.EventLoop ; \
+-	$(JAVAH) -d $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -classpath $(ICEDTEA_SOUND_CLASS_DIR) \
+-	  -J-Xbootclasspath/p:$(ICEDTEA_SOUND_CLASS_DIR) org.classpath.icedtea.pulseaudio.Stream ; \
+-	$(JAVAH) -d $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -classpath $(ICEDTEA_SOUND_CLASS_DIR) \
+-	  -J-Xbootclasspath/p:$(ICEDTEA_SOUND_CLASS_DIR) org.classpath.icedtea.pulseaudio.Operation; \
+-	$(JAVAH) -d $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -classpath $(ICEDTEA_SOUND_CLASS_DIR) \
+-	  -J-Xbootclasspath/p:$(ICEDTEA_SOUND_CLASS_DIR) org.classpath.icedtea.pulseaudio.PulseAudioSourcePort ; \
+-	$(JAVAH) -d $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -classpath $(ICEDTEA_SOUND_CLASS_DIR) \
+-	  -J-Xbootclasspath/p:$(ICEDTEA_SOUND_CLASS_DIR) org.classpath.icedtea.pulseaudio.PulseAudioTargetPort ; \
+-	$(JAVAH) -d $(ICEDTEA_SOUND_NATIVE_BUILDDIR) -classpath $(ICEDTEA_SOUND_CLASS_DIR) \
+-	  -J-Xbootclasspath/p:$(ICEDTEA_SOUND_CLASS_DIR) org.classpath.icedtea.pulseaudio.ContextEvent
+-	mkdir -p stamps
+-	touch $@
+-
+-$(ICEDTEA_SOUND_NATIVE_BUILDDIR)/%.o: $(ICEDTEA_SOUND_NATIVE_SRCDIR)/%.c stamps/icedtea-sound-headers.stamp
++$(ICEDTEA_SOUND_NATIVE_BUILDDIR)/%.o: $(ICEDTEA_SOUND_NATIVE_SRCDIR)/%.c stamps/icedtea-sound-class.stamp
+ 	$(CC) $(IT_CFLAGS) -fPIC -I$(SYSTEM_JDK_DIR)/include/linux -I$(SYSTEM_JDK_DIR)/include \
+ 	 -I$(ICEDTEA_SOUND_NATIVE_BUILDDIR) -o $@ -c $<
+ 
+--- icedtea-sound-1.0.1/acinclude.m4	Fri Jul 18 23:46:15 2014 +0100
++++ icedtea-sound-1.0.1/acinclude.m4	Thu Nov 02 13:16:38 2017 +0100
+@@ -129,63 +129,16 @@
+ AC_DEFUN([IT_FIND_COMPILER],
+ [
+   AC_REQUIRE([IT_FIND_JAVA])
+-  AC_REQUIRE([IT_FIND_ECJ_JAR])
+ 
+   IT_FIND_JAVAC
+-  IT_FIND_ECJ
+-  IT_USING_ECJ
+   
+-  if test "x${ECJ_JAR}" = "xno"; then
+-    if test "x${JAVAC}" = "x"; then
+-      AC_MSG_ERROR("No compiler or ecj JAR file was found.")
+-    fi
++  if test "x${JAVAC}" = "x"; then
++    AC_MSG_ERROR("No compiler found.")
+   fi
+ 
+-  AC_SUBST(ECJ)
+   AC_SUBST(JAVAC)
+ ])
+ 
+-AC_DEFUN_ONCE([IT_FIND_ECJ],
+-[
+-  ECJ_DEFAULT=/usr/bin/ecj
+-  AC_MSG_CHECKING([if an ecj binary was specified])
+-  AC_ARG_WITH([ecj],
+-	      [AS_HELP_STRING(--with-ecj,bytecode compilation with ecj)],
+-  [
+-    if test "x${withval}" = "xyes"; then
+-      ECJ=no
+-    else
+-      ECJ="${withval}"
+-    fi
+-  ],
+-  [ 
+-    ECJ=no
+-  ])
+-  AC_MSG_RESULT(${ECJ})
+-  if test "x${ECJ}" = "xno"; then
+-    ECJ=${ECJ_DEFAULT}
+-  fi
+-  AC_MSG_CHECKING([if $ECJ is a valid executable file])
+-  if test -x "${ECJ}" && test -f "${ECJ}"; then
+-    AC_MSG_RESULT([yes])
+-  else
+-    ECJ=""
+-    AC_PATH_PROG(ECJ, "ecj")
+-    if test -z "${ECJ}"; then
+-      AC_PATH_PROG(ECJ, "ecj-3.1")
+-    fi
+-    if test -z "${ECJ}"; then
+-      AC_PATH_PROG(ECJ, "ecj-3.2")
+-    fi
+-    if test -z "${ECJ}"; then
+-      AC_PATH_PROG(ECJ, "ecj-3.3")
+-    fi
+-    if test -z "${ECJ}"; then
+-      AC_PATH_PROG(ECJ, "ecj-3.4")
+-    fi
+-  fi
+-])
+-
+ AC_DEFUN_ONCE([IT_FIND_JAVAC],
+ [
+   AC_REQUIRE([IT_CHECK_FOR_JDK])
+@@ -260,74 +213,6 @@
+   AC_SUBST(JAVA)
+ ])
+ 
+-AC_DEFUN_ONCE([IT_FIND_ECJ_JAR],
+-[
+-  AC_MSG_CHECKING([for an ecj JAR file])
+-  AC_ARG_WITH([ecj-jar],
+-              [AS_HELP_STRING([--with-ecj-jar[[=PATH]]],specify location of an ECJ JAR file)],
+-  [
+-    if test -f "${withval}"; then
+-      ECJ_JAR="${withval}"
+-    fi
+-  ],
+-  [
+-    ECJ_JAR=
+-  ])
+-  if test -z "${ECJ_JAR}"; then
+-    for jar in /usr/share/java/eclipse-ecj.jar \
+-      /usr/share/java/ecj.jar \
+-      /usr/share/eclipse-ecj-3.{2,3,4,5}/lib/ecj.jar; do
+-        if test -e $jar; then
+-          ECJ_JAR=$jar
+-	  break
+-        fi
+-      done
+-      if test -z "${ECJ_JAR}"; then
+-        ECJ_JAR=no
+-      fi
+-  fi
+-  AC_MSG_RESULT(${ECJ_JAR})
+-  AC_SUBST(ECJ_JAR)
+-])
+-
+-AC_DEFUN_ONCE([IT_FIND_JAVAH],
+-[
+-  AC_REQUIRE([IT_CHECK_FOR_JDK])
+-  JAVAH_DEFAULT=${SYSTEM_JDK_DIR}/bin/javah
+-  AC_MSG_CHECKING([if a javah executable is specified])
+-  AC_ARG_WITH([javah],
+-              [AS_HELP_STRING([--with-javah[[=PATH]]],specify location of javah)],
+-  [
+-    if test "x${withval}" = "xyes"; then
+-      JAVAH=no
+-    else
+-      JAVAH="${withval}"
+-    fi
+-  ],
+-  [
+-    JAVAH=no
+-  ])
+-  AC_MSG_RESULT(${JAVAH})
+-  if test "x${JAVAH}" == "xno"; then
+-    JAVAH=${JAVAH_DEFAULT}
+-  fi
+-  AC_MSG_CHECKING([if $JAVAH is a valid executable file])
+-  if test -x "${JAVAH}" && test -f "${JAVAH}"; then
+-    AC_MSG_RESULT([yes])
+-  else
+-    AC_MSG_RESULT([no])
+-    JAVAH=""
+-    AC_PATH_PROG(JAVAH, "javah")
+-    if test -z "${JAVAH}"; then
+-      AC_PATH_PROG(JAVAH, "gjavah")
+-    fi
+-    if test -z "${JAVAH}"; then
+-      AC_MSG_ERROR("A Java header generator was not found.")
+-    fi
+-  fi
+-  AC_SUBST(JAVAH)
+-])
+-
+ AC_DEFUN_ONCE([IT_FIND_JAR],
+ [
+   AC_REQUIRE([IT_CHECK_FOR_JDK])
+@@ -457,7 +342,7 @@
+ [
+   AC_MSG_CHECKING([for a JDK home directory])
+   AC_ARG_WITH([jdk-home],
+-	      [AS_HELP_STRING([--with-jdk-home[[=PATH]]],
++             [AS_HELP_STRING([--with-jdk-home[[=PATH]]],
+                               [jdk home directory (default is first predefined JDK found)])],
+               [
+                 if test "x${withval}" = xyes
+@@ -474,50 +359,28 @@
+ 	        SYSTEM_JDK_DIR=
+               ])
+   if test -z "${SYSTEM_JDK_DIR}"; then
+-    AC_MSG_RESULT([not specified])
+-    if test "x${enable_bootstrap}" = "xyes"; then
+-      BOOTSTRAP_VMS="/usr/lib/jvm/java-gcj /usr/lib/jvm/gcj-jdk /usr/lib/jvm/cacao";
+-    fi
+-    ICEDTEA6_VMS="/usr/lib/jvm/icedtea-6 /usr/lib/jvm/icedtea6 /usr/lib/jvm/java-6-openjdk
+-    		  /usr/lib/jvm/java-1.6.0-openjdk.x86_64 /usr/lib64/jvm/java-1.6.0-openjdk
+-		  /usr/lib/jvm/java-1.6.0"
+-    ICEDTEA7_VMS="/usr/lib/jvm/icedtea-7 /usr/lib/jvm/icedtea7 /usr/lib/jvm/java-1.7.0-openjdk
+-    		  /usr/lib/jvm/java-1.7.0-openjdk.x86_64 /usr/lib64/jvm/java-1.7.0-openjdk
+-		  /usr/lib/jvm/java-1.7.0 /usr/lib/jvm/java-7-openjdk"
+-    for dir in ${BOOTSTRAP_VMS} ${ICEDTEA7_VMS} ${ICEDTEA6_VMS} \
+-    	       /usr/lib/jvm/java-openjdk /usr/lib/jvm/openjdk /usr/lib/jvm/java-icedtea \
+-	       /etc/alternatives/java_sdk_openjdk ; do
+-       AC_MSG_CHECKING([for ${dir}]);
++    for dir in /etc/alternatives/java_sdk \
++               /usr/lib/jvm/java-1.9.0-openjdk \
++               /usr/lib64/jvm/java-1.9.0-openjdk \
++               /usr/lib/jvm/icedtea9 \
++               /usr/lib64/jvm/icedtea9 \
++               /usr/lib/jvm/java-10-openjdk \
++               /usr/lib64/jvm/java-10-openjdk ; do
+        if test -d $dir; then
+-         SYSTEM_JDK_DIR=$dir ;
+-	 AC_MSG_RESULT([found]) ;
+-	 break ;
+-       else
+-         AC_MSG_RESULT([not found]) ;
++         SYSTEM_JDK_DIR=$dir
++         break
+        fi
+     done
+-  else
+-    AC_MSG_RESULT(${SYSTEM_JDK_DIR})
+   fi
+   if ! test -d "${SYSTEM_JDK_DIR}"; then
+-    AC_MSG_ERROR("A JDK home directory could not be found.")
++    AC_MSG_ERROR("A JDK home directory could not be found. ${SYSTEM_JDK_DIR}")
++  else
++    READ=`readlink -f ${SYSTEM_JDK_DIR}`
++    AC_MSG_RESULT(${SYSTEM_JDK_DIR} (link to ${READ}))
+   fi
+   AC_SUBST(SYSTEM_JDK_DIR)
+ ])
+ 
+-AC_DEFUN([IT_USING_ECJ],[
+-AC_CACHE_CHECK([if we are using ecj as javac], it_cv_ecj, [
+-if $JAVAC -version 2>&1| grep '^Eclipse' >&AS_MESSAGE_LOG_FD ; then
+-  it_cv_ecj=yes;
+-else
+-  it_cv_ecj=no;
+-fi
+-])
+-USING_ECJ=$it_cv_ecj
+-AC_SUBST(USING_ECJ)
+-AC_PROVIDE([$0])dnl
+-])
+-
+ dnl check that javac and java work
+ AC_DEFUN_ONCE([IT_CHECK_JAVA_AND_JAVAC_WORK],[
+   AC_REQUIRE([IT_FIND_JAVA])
+@@ -538,7 +401,7 @@
+     }
+ }]
+ EOF
+-  if $JAVAC -cp . $JAVACFLAGS -source 5 -target 5 $CLASS >&AS_MESSAGE_LOG_FD 2>&1; then
++  if $JAVAC -cp . $JAVACFLAGS -source 10 -target 10 $CLASS >&AS_MESSAGE_LOG_FD 2>&1; then
+     if $JAVA -classpath . $BYTECODE >&AS_MESSAGE_LOG_FD 2>&1; then
+       it_cv_jdk_works=yes;
+     else
+@@ -560,7 +423,7 @@
+ [
+   AC_MSG_CHECKING(whether to enable Java compiler warnings)
+   AC_ARG_ENABLE([warnings],
+-	      [AS_HELP_STRING(--enable-warnings,produce warnings from javac/ecj [[default=no]])],
++	      [AS_HELP_STRING(--enable-warnings,produce warnings from javac [[default=no]])],
+   [
+     ENABLE_WARNINGS="${enableval}"
+   ],
+@@ -570,5 +433,4 @@
+ 
+   AC_MSG_RESULT(${ENABLE_WARNINGS})
+   AM_CONDITIONAL(ENABLE_WARNINGS, test x"${ENABLE_WARNINGS}" = "xyes")
+-  AC_SUBST(ENABLE_WARNINGS)
+ ])
+--- icedtea-sound-1.0.1/configure.ac	Fri Jul 18 23:46:15 2014 +0100
++++ icedtea-sound-1.0.1/configure.ac	Thu Nov 02 13:16:38 2017 +0100
+@@ -43,10 +43,8 @@
+ IT_FIND_TOOL([ZIP], [zip])
+ 
+ IT_CHECK_JAVA_AND_JAVAC_WORK
+-IT_FIND_JAVAH
+ IT_FIND_JAR
+ IT_FIND_JAVADOC
+-AC_CONFIG_FILES([javac], [chmod +x javac])
+ 
+ IT_CHECK_ENABLE_WARNINGS
+ 
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ icedtea-sound-1.0.1/src/java/module-info.java	Thu Nov 02 13:16:38 2017 +0100
+@@ -0,0 +1,6 @@
++module icedtea.sound {
++    exports org.classpath.icedtea.pulseaudio;
++    requires java.desktop;
++    provides javax.sound.sampled.spi.MixerProvider
++        with org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider;
++}
