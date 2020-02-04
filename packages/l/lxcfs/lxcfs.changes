@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 15:02:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Thu Sep 19 09:53:15 UTC 2019 - Pavol Cupka <palica@liguros.net>
 
 - update to version 3.1.2 (released on the 24th of July 2019)

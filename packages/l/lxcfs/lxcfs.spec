@@ -1,7 +1,7 @@
 #
 # spec file for package lxcfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        FUSE filesystem for LXC
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://linuxcontainers.org/lxcfs
+URL:            https://linuxcontainers.org/lxcfs
 Source:         https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -38,8 +38,8 @@ BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
-BuildRequires:  systemd
 BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
 %description
