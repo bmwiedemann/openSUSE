@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  2 10:56:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.22
+  * relax account status check (compatibility with buypass.no)
+  * allow client challenge retry requests (RFC8555 sec. 7.1.6)
+  * pass -L flag to a2x in order to avoid depending on xmllint
+  * add wildcard clarification in manpage
+- Update to version 1.0.21
+  * Fixed uacme.sh: https://github.com/ndilieto/uacme/pull/12
+  * Added LFS support (AC_SYS_LARGEFILE)
+
+-------------------------------------------------------------------
 Sat Jan  4 12:37:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.0.20
