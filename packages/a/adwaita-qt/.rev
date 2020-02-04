@@ -32,4 +32,13 @@
   upstream. (forwarded request 735350 from iznogood)</comment>
     <requestid>735602</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55f3e54fc5b759f8ae377c1999b7a032</srcmd5>
+    <version>1.1.1</version>
+    <time>1580842597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+  * Stability fixes (forwarded request 769580 from hellcp)</comment>
+    <requestid>769943</requestid>
+  </revision>
 </revisionlist>

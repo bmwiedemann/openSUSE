@@ -23,15 +23,13 @@
 %bcond_with qt4
 %endif
 Name:           adwaita-qt
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/adwaita-qt
-Source0:        %{url}/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM adwaita-qt-upstream-fixes.patch -- Pull in latest fixes from upstream
-Patch0:         adwaita-qt-upstream-fixes.patch
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -46,7 +44,7 @@ Theme to let Qt applications fit nicely into GNOME desktop.
 %package -n adwaita-qt4
 Summary:        Adwaita Qt4 theme
 Group:          System/GUI/GNOME
-Supplements:    packageand(libqt4:gnome-session)
+Supplements:    (libqt4 and gnome-session)
 
 %description -n adwaita-qt4
 Adwaita theme variant for applications utilizing Qt4
@@ -54,7 +52,7 @@ Adwaita theme variant for applications utilizing Qt4
 %package -n adwaita-qt5
 Summary:        Adwaita Qt5 theme
 Group:          System/GUI/GNOME
-Supplements:    packageand(libQt5Core5:gnome-session)
+Supplements:    (libQt5Core5 and gnome-session)
 
 %description -n adwaita-qt5
 Adwaita theme variant for applications utilizing Qt5
@@ -66,7 +64,7 @@ Adwaita theme variant for applications utilizing Qt5
 %if %{with qt4}
 # Qt4 build and install
 %cmake -DUSE_QT4=ON
-make %{?_smp_mflags}
+%make_build
 cd ..
 %cmake_install
 %endif
@@ -74,7 +72,7 @@ cd ..
 # Qt5 build
 rm -rf build
 %cmake -DUSE_QT4=OFF
-make %{?_smp_mflags}
+%make_build
 
 %install
 # Qt5 install
@@ -82,7 +80,6 @@ make %{?_smp_mflags}
 
 %if %{with qt4}
 %files -n adwaita-qt4
-%defattr(-,root,root)
 %license LICENSE.LGPL2
 %doc README.md
 %dir %{_libdir}/qt4/plugins/styles
@@ -90,7 +87,6 @@ make %{?_smp_mflags}
 %endif
 
 %files -n adwaita-qt5
-%defattr(-,root,root)
 %license LICENSE.LGPL2
 %doc README.md
 %dir %{_libdir}/qt5/plugins/styles
