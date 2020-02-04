@@ -1,6 +1,7 @@
 #
 # spec file for package uacme
 #
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           uacme
-Version:        1.0.20
+Version:        1.0.22
 Release:        0
 Summary:        A minimal ACMEv2 client
 License:        GPL-3.0-or-later
