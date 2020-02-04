@@ -76,7 +76,7 @@ suseImportBuildKey
 #======================================
 # Enable sshd
 #--------------------------------------
-chkconfig sshd on
+systemctl enable sshd.service
 
 if [ -e /etc/cloud/cloud.cfg ]; then
         # not useful for cloud
@@ -97,7 +97,7 @@ fi
 
 # Enable firewalld if installed
 if [ -x /usr/sbin/firewalld ]; then
-        chkconfig firewalld on
+        systemctl enable firewalld.service
 fi
 
 # Set GRUB2 to boot graphically (bsc#1097428)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:55:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use systemctl instead of chkconfig
+
+-------------------------------------------------------------------
 Thu Jan  9 14:16:16 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Remove explicit swiotlb and cma assignments from RPi cmdline

@@ -48,4 +48,12 @@
   as the defaults are better meanwhile (bsc#1160308)</comment>
     <requestid>762238</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0822356d00e64851a44d01cd52de3801</srcmd5>
+    <version>84.87</version>
+    <time>1580842299</time>
+    <user>dimstar_suse</user>
+    <comment>- Use systemctl instead of chkconfig</comment>
+    <requestid>769883</requestid>
+  </revision>
 </revisionlist>
