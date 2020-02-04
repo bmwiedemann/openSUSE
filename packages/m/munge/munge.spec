@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,8 +55,8 @@ Requires(pre):  pwdutils
 Requires(pre):  shadow
 %endif
 %if 0%{?have_systemd}
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %endif
 Requires(post):     coreutils
