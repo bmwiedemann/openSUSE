@@ -324,4 +324,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>762247</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cf4e77e44b656a099d3e6e0887bde6d8</srcmd5>
+    <version>1.17.9</version>
+    <time>1580842310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.9
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.17.9/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Update Requires in spec file from setup.py</comment>
+    <requestid>768990</requestid>
+  </revision>
 </revisionlist>
