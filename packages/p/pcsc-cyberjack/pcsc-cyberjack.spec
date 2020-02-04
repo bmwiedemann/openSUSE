@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-cyberjack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %if %suse_version >= 1120
-%if %( echo `rpm -q --queryformat %%{version} udev` ) > 190
+%if %( pkg-config --modversion udev ) > 190
 %define _udevrulesdir /usr/lib/udev/rules.d
 %else
 %define _udevrulesdir /lib/udev/rules.d
@@ -50,7 +50,7 @@ BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 %if %suse_version >= 1120
 BuildRequires:  libusb-1_0-devel
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 %else
 BuildRequires:  hal-devel
 BuildRequires:  libusb-devel
