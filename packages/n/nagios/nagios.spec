@@ -1,7 +1,7 @@
 #
 # spec file for package nagios
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Release:        0
 Summary:        The Nagios Network Monitor
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://www.nagios.org/
+URL:            http://www.nagios.org/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rc%{name}
 Source2:        %{name}-exec-start-pre
@@ -84,9 +84,9 @@ BuildRequires:  pcre-devel
 BuildRequires:  unzip
 BuildRequires:  zlib-devel
 %if %{with systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Source100:      nagios_systemd
-%{?systemd_requires}
+%{?systemd_ordering}
 %endif
 Provides:       monitoring_daemon
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
