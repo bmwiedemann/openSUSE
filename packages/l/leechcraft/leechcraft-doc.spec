@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define LEECHCRAFT_VERSION 0.6.70-13588-g98cf733e94
+%define LEECHCRAFT_VERSION 0.6.70-13605-g8cd066ad6a
 
 Name:           leechcraft-doc
-Version:        0.6.70+git.13588.g98cf733e94
+Version:        0.6.70+git.13605.g8cd066ad6a
 Release:        0
 Summary:        Modular Internet Client Documentation
 License:        BSL-1.0
