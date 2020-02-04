@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:29:47 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Increase PowerPC disk size in _constraints to avoid build failure
+
+-------------------------------------------------------------------
 Mon Jan 27 13:18:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.14.1:

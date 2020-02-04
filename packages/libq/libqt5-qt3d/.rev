@@ -244,4 +244,12 @@
     <comment>Update to 5.14.1</comment>
     <requestid>768103</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>14f92f406093252740d88fb46daa30af</srcmd5>
+    <version>5.14.1</version>
+    <time>1580842335</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase PowerPC disk size in _constraints to avoid build failure</comment>
+    <requestid>769484</requestid>
+  </revision>
 </revisionlist>
