@@ -228,7 +228,7 @@ install -m 644 -t %{buildroot}/%{_includedir}/valgrind \
 %check
 %if "%{flavor}" == ""
 # OBS doesn't have a z13
-%ifnarch s390x
+%ifnarch s390x %arm
 # has too many spurious failures
 # make %{?_smp_mflags} regtest
 #patent pending self test

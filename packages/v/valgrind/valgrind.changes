@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:02:04 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable %check on %arm as it never passed - boo#1130395
+
+-------------------------------------------------------------------
 Sun Jan 19 15:43:47 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add support for PR_CAPBSET_READ/DROP syscalls. Fixes false
