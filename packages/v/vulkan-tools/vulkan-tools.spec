@@ -17,14 +17,15 @@
 
 
 Name:           vulkan-tools
-Version:        1.2.131
+Version:        1.1.132
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
 
-Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/v%version.tar.gz
+#Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/v%version.tar.gz
+Source:         Vulkan-Tools-%version.tar.xz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 7.13.3496

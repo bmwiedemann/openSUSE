@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 21:42:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.2.132
+  * vulkaninfo: use GPU version instead of instance
+  * vulkaninfo: remove duplicate flags/bitmasks
+  * vulkaninfo: erroneous presentation surfaces
+
+-------------------------------------------------------------------
 Sun Jan 19 12:05:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.131
