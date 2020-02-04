@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>752832</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e1e0b72f8f840eca01d01269f152857f</srcmd5>
+    <version>1.6.2.605</version>
+    <time>1580842424</time>
+    <user>dimstar_suse</user>
+    <comment>- Small packaging improvements</comment>
+    <requestid>769617</requestid>
+  </revision>
 </revisionlist>

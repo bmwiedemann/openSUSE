@@ -1,7 +1,7 @@
 #
 # spec file for package fatsort
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,10 @@ players don't sort files automatically but play them in the order they were
 transmitted to the device. FATSort can help here.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 install -Dpm 0755 -p src/%{name}   \
