@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.0
-Version:        5.0
+%define realver 5.1
+Version:        5.1
 Release:        0
 
 %if "%{flavor}" != ""
@@ -92,11 +92,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  sane-backends-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  valgrind-devel
+%if 0%{?suse_version} >= 1550
 %ifarch x86_64
 BuildRequires:  mingw64-cross-gcc
 %endif
 %ifarch %ix86
 BuildRequires:  mingw32-cross-gcc
+%endif
 %endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
@@ -124,9 +126,9 @@ Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 Url:            http://www.winehq.org/
-Source0:        https://dl.winehq.org/wine/source/5.0/%{projectname}-%{realver}.tar.xz
+Source0:        https://dl.winehq.org/wine/source/5.x/%{projectname}-%{realver}.tar.xz
 Source41:       wine.keyring
-Source42:       https://dl.winehq.org/wine/source/5.0/%{projectname}-%{realver}.tar.xz.sign
+Source42:       https://dl.winehq.org/wine/source/5.x/%{projectname}-%{realver}.tar.xz.sign
 Source2:        http://kegel.com/wine/wisotool
 Source3:        README.SUSE
 Source4:        wine.desktop
@@ -155,7 +157,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.0
+%define staging_version 5.1
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

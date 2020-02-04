@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:46:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.1 development release
+  - Support for using LLVM-MinGW as PE cross-compiler.
+  - Better reporting of error location in JScript and VBScript.
+  - Support for relocatable installation of the Winelib tools.
+  - Ellipse drawing in Direct2D.
+  - OLE monikers improvements.
+  - Various bug fixes.
+- update staging to 5.1 release
+
+-------------------------------------------------------------------
 Wed Jan 22 06:53:38 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.0 release

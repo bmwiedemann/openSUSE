@@ -3415,4 +3415,19 @@
     <comment>- build the PE format modules with the MingW cross compiler.</comment>
     <requestid>766494</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>9d858640c285e65012c6d6141aa53500</srcmd5>
+    <version>5.1</version>
+    <time>1580842376</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.1 development release
+  - Support for using LLVM-MinGW as PE cross-compiler.
+  - Better reporting of error location in JScript and VBScript.
+  - Support for relocatable installation of the Winelib tools.
+  - Ellipse drawing in Direct2D.
+  - OLE monikers improvements.
+  - Various bug fixes.
+- update staging to 5.1 release</comment>
+    <requestid>769572</requestid>
+  </revision>
 </revisionlist>
