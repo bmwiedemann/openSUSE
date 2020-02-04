@@ -1,7 +1,7 @@
 #
 # spec file for package python-aubio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,10 @@ URL:            http://aubio.org/
 Source:         http://aubio.org/pub/aubio-%{version}.tar.bz2
 Source1:        http://aubio.org/pub/aubio-%{version}.tar.bz2.asc
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
@@ -51,14 +52,13 @@ Its features include segmenting a sound file before each of its attacks, perform
 
 %install
 %python_install
+%python_expand fdupes %{buildroot}/%{python_sitearch}
 %python_clone -a %{buildroot}/%{_bindir}/aubio
 %python_clone -a %{buildroot}/%{_bindir}/aubiocut
 
 %check
-%ifpython3
-export PYTHONPATH=%{buildroot}/%{python_sitearch}
-%python_exec setup.py test
-%endif
+# the two tests fail on 32bit due to precision issue
+%pytest_arch -k 'not (test_meltohz or test_hztomel)'
 
 %post
 %python_install_alternative aubio

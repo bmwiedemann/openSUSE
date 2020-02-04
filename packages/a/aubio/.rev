@@ -187,4 +187,18 @@
     <comment></comment>
     <requestid>674878</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5f0c7557abf5c15d9be7df7a9e6ef762</srcmd5>
+    <version>0.4.9</version>
+    <time>1580842307</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in the python2 as a dependency since we can build
+  fine with python3
+
+- Skip two tests that fail to pass on 32bit machines
+
+- Fix the test execution
+- Run fdupes during install</comment>
+    <requestid>769954</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package aubio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,8 @@ BuildRequires:  libjack-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
-%if 0%{?suse_version} > 1320 || (0%{?suse_version} == 1315 && 0%{?is_opensuse})
+BuildRequires:  python3-base
+%if 0%{?suse_version} > 1315
 BuildRequires:  txt2man
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -82,16 +82,17 @@ This package includes the example programs for aubio library.
 
 %prep
 %setup -q
-sed -e "s,/lib,/%{_lib}," src/wscript_build > src/wscript_build.new
-diff -u src/wscript_build src/wscript_build.new || :
-mv src/wscript_build.new src/wscript_build
+# set proper library dir
+sed -i -e "s#/lib#/%{_lib}#" src/wscript_build
+# set python3 as testrunner
+sed -i -e 's#python\ ${SRC}#python3 ${SRC}#g' tests/wscript_build
 
 %build
-./waf configure --prefix=%{_prefix} --libdir=%{_libdir}
-./waf build
+python3 ./waf configure --prefix=%{_prefix} --libdir=%{_libdir}
+python3 ./waf build -v %{?_smp_mflags}
 
 %install
-./waf install --destdir=%{buildroot}
+python3 ./waf install --destdir=%{buildroot}
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -pR %{buildroot}%{_datadir}/doc/libaubio-doc/api %{buildroot}%{_docdir}/%{name}
 rm -rf %{buildroot}%{_datadir}/doc/libaubio-doc
@@ -112,7 +113,7 @@ rm -f %{buildroot}%{_libdir}/libaubio.a
 
 %files tools
 %doc %{_docdir}/%{name}
-%if 0%{?suse_version} > 1320 || (0%{?suse_version} == 1315 && 0%{?is_opensuse})
+%if 0%{?suse_version} > 1315
 %{_mandir}/man1/*
 %endif
 %{_bindir}/*

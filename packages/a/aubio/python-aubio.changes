@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 11:55:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip two tests that fail to pass on 32bit machines
+
+-------------------------------------------------------------------
+Thu Jan 30 13:08:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the test execution
+- Run fdupes during install
+
+-------------------------------------------------------------------
 Tue Feb 12 15:55:52 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.4.9:
