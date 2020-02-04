@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:52:24 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.5.1
+ * #289: Tired of looking up the latest successful archive name in
+   order to pass it to borgmatic actions? Me too. Now you can
+   specify "--archive latest" to all actions that accept an archive
+   flag.
+ * 290: Fix the "--stats" and "--files" flags so that they yield
+   output at verbosity 0.
+ * Reduce the default verbosity of borgmatic logs sent to
+   Healthchecks monitoring hook. Now, it's warnings and errors
+   only. You can increase the verbosity via the
+   "--monitoring-verbosity" flag.
+ * Add security policy documentation in SECURITY.md.
+
+-------------------------------------------------------------------
 Tue Jan 28 01:01:39 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.5.0
