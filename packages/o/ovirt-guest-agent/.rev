@@ -25,4 +25,12 @@
   as it has been fixed upstream</comment>
     <requestid>547114</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>134bf437178d169af022001ce6ac6dd0</srcmd5>
+    <version>1.0.14</version>
+    <time>1580842406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769677</requestid>
+  </revision>
 </revisionlist>

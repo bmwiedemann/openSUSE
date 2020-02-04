@@ -1,7 +1,7 @@
 #
 # spec file for package ovirt-guest-agent
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,18 +33,18 @@ Release:        %{release_version}%{?dist}
 Summary:        The oVirt Guest Agent
 License:        Apache-2.0
 Group:          System/Monitoring
-Url:            http://wiki.ovirt.org/wiki/Category:Ovirt_guest_agent
+URL:            http://wiki.ovirt.org/wiki/Category:Ovirt_guest_agent
 Source0:        http://resources.ovirt.org/pub/src/ovirt-guest-agent/ovirt-guest-agent-%{major_version}.tar.bz2
 
 %if 0%{?suse_version} >= 1210
 BuildRequires:  fdupes
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %endif
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-devel
 BuildRequires:  sudo
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Requires:       %{name}-common = %{version}-%{release}
 
 %package common
