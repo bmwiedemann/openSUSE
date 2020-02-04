@@ -1,7 +1,7 @@
 #
 # spec file for package dehydrated
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,8 +50,7 @@ Version:        0.6.5
 Release:        0
 Summary:        A client for signing certificates with an ACME server
 License:        MIT
-Group:          Productivity/Networking/Security
-Url:            https://github.com/lukas2511/dehydrated
+URL:            https://github.com/lukas2511/dehydrated
 Source0:        %{name}-%{version}.tar.gz
 Source1:        acme-challenge.conf.apache.in
 Source2:        acme-challenge.conf.nginx.in
@@ -90,7 +89,6 @@ BuildRequires:  generic-logos-httpd
 BuildRequires:  shadow
 %endif
 %if %{with systemd}
-BuildRequires:  systemd
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %else #with_systemd
@@ -124,7 +122,6 @@ Current features:
 
 %package %{_apache}
 Summary:        Apache Integration for dehydrated
-Group:          Productivity/Networking/Security
 Requires:       %{_apache}
 Requires:       %{name}
 Obsoletes:      letsencrypt.sh-%{_apache} < %{version}
@@ -139,7 +136,6 @@ This adds a configuration file for dehydrated's acme-challenge to Apache.
 %if %{with nginx}
 %package nginx
 Summary:        Nginx Integration for dehydrated
-Group:          Productivity/Networking/Security
 Requires:       %{name}
 Requires:       nginx
 Obsoletes:      letsencrypt.sh-nginx < %{version}
@@ -152,7 +148,6 @@ This adds a configuration file for dehydrated's acme-challenge to nginx.
 %if %{with lighttpd}
 %package lighttpd
 Summary:        Lighttpd Integration for dehydrated
-Group:          Productivity/Networking/Security
 Requires:       %{name}
 Requires:       lighttpd
 
