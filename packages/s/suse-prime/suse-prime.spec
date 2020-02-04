@@ -17,12 +17,12 @@
 
 
 Name:           suse-prime
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops
 License:        SUSE-Public-Domain
 Group:          System/X11/Utilities
-Url:            https://github.com/openSUSE/SUSEPrime
+URL:            https://github.com/openSUSE/SUSEPrime
 Source0:        https://github.com/openSUSE/SUSEPrime/archive/%{version}.tar.gz#/SUSEPrime-%{version}.tar.gz
 Recommends:     nvidia_driver
 Supplements:    modalias(nvidia_driver:pci:v00008086d*sv*sd*bc03sc*i*)
@@ -38,12 +38,12 @@ the feature provided by the nvidia-prime package in Ubuntu.
 %package bbswitch
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 Group:          System/X11/Utilities
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       bbswitch
 Conflicts:      suse-prime
 Conflicts:      suse-prime-alt
 BuildArch:      noarch
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description bbswitch
 A collection of shell scripts that makes it possible to use the

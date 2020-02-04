@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:46:46 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.6
+  * README.md: Updated documentation (issue#46)
+    + Removing dracut config file of nvidia's packages is no longer
+      needed. These packages have been updated since.
+    + Made config file installation more generic, so nobody tries
+      to install config files, which are already at the right
+      location when using suse-prime packages.
+    + DynamicPowerManagement specifics apply to 435.xxx and later, 
+      not only 435.xx. Made this clear ...
+
+-------------------------------------------------------------------
+Mon Feb  3 16:33:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Jan 15 10:51:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.5

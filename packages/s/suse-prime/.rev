@@ -410,4 +410,23 @@ Latest changes:
       &quot;user_logout_waiter&quot; section</comment>
     <requestid>764618</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e003a5e5613d2811a21a2530889b5e6e</srcmd5>
+    <version>0.7.6</version>
+    <time>1580842472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.6
+  * README.md: Updated documentation (issue#46)
+    + Removing dracut config file of nvidia's packages is no longer
+      needed. These packages have been updated since.
+    + Made config file installation more generic, so nobody tries
+      to install config files, which are already at the right
+      location when using suse-prime packages.
+    + DynamicPowerManagement specifics apply to 435.xxx and later, 
+      not only 435.xx. Made this clear ...
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.</comment>
+    <requestid>769981</requestid>
+  </revision>
 </revisionlist>
