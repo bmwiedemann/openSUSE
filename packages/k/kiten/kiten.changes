@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:03:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't use data files from the edict package, they are not
+  compatible (boo#1162654)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:00:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1

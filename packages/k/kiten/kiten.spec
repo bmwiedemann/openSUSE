@@ -33,7 +33,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  edict
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -55,7 +54,6 @@ Requires:       fonts-KanjiStrokeOrders
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 Recommends:     %{name}-lang
-Requires:       edict
 
 %description
 Kiten is a tool to learn Japanese.
@@ -110,9 +108,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  for i in edict kanjidic radkfile; do
-   test -e "%{_datadir}/edict/$i" && ln -fsv "%{_datadir}/edict/$i" "%{buildroot}/%{_datadir}/kiten/$i"
-  done
 
 %reconfigure_fonts_scriptlets -n fonts-KanjiStrokeOrders
 

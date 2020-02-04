@@ -919,4 +919,12 @@
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762368</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>e576a9ceb5611fa0e9294716f0787223</srcmd5>
+    <version>19.12.1</version>
+    <time>1580842683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770040</requestid>
+  </revision>
 </revisionlist>
