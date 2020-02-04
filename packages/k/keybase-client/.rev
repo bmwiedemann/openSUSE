@@ -93,4 +93,19 @@
     <comment></comment>
     <requestid>759770</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e494b9354f3fe16a8c7dabd16c8a0115</srcmd5>
+    <version>5.2.0</version>
+    <time>1580842312</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.2.0
+  * Bots: you can now install bots into your conversations. Kick
+    off a meeting with Google Meet Bot, watch for commits with
+    GitHub Bot, create new issues in JIRA, and more, all without
+    leaving Keybase.
+- Limit source file to the `go` subdirectory of the repository as
+  we only build the command line client and the GUI sources contain
+  files with problematic licenses.</comment>
+    <requestid>769870</requestid>
+  </revision>
 </revisionlist>

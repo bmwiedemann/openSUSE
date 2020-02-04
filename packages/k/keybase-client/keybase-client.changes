@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  3 22:22:05 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Upgrade to version 5.2.0
+  * Bots: you can now install bots into your conversations. Kick
+    off a meeting with Google Meet Bot, watch for commits with
+    GitHub Bot, create new issues in JIRA, and more, all without
+    leaving Keybase.
+- Limit source file to the `go` subdirectory of the repository as
+  we only build the command line client and the GUI sources contain
+  files with problematic licenses.
+
+-------------------------------------------------------------------
 Tue Dec 27 08:53:55 UTC 2019 - Stefan Weiberg <sweiberg@suse.com>
 
 - Upgrade to version 5.1.1

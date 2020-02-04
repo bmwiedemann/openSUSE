@@ -1,7 +1,7 @@
 #
 # spec file for package keybase-client
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019, Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           keybase-client
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Group:          Productivity/Security
 URL:            https://github.com/keybase/client/
 Source:         client-%{version}.tar.xz
 Source1:        README.SUSE
+Source2:        keybase.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
@@ -47,13 +48,13 @@ up keys for such accounts that people have created a proof for.
 %setup -q -n client-%{version}
 
 %build
-%goprep github.com/keybase/client
-%gobuild -tags production go/keybase
+%goprep github.com/keybase/client/go
+%gobuild -tags production keybase
 
 %install
 %goinstall
 %gofilelist
-install -D -m 644 packaging/linux/systemd/keybase.service %{buildroot}%{_userunitdir}/keybase.service
+install -D -m 644 -p %{SOURCE2} %{buildroot}%{_userunitdir}/keybase.service
 install -D -m 644 -p %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/README.SUSE
 %fdupes %{buildroot}/%{_prefix}
 
@@ -72,6 +73,6 @@ install -D -m 644 -p %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/README.SUSE
 %{_userunitdir}/keybase.service
 %{_docdir}/%{name}
 %{_docdir}/%{name}/README.SUSE
-%license go/LICENSE
+%license LICENSE
 
 %changelog
