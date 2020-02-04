@@ -1,7 +1,7 @@
 #
 # spec file for package tinc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,18 @@ Summary:        A virtual private network daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 
-Url:            http://www.tinc-vpn.org/
+URL:            http://www.tinc-vpn.org/
 Source0:        http://www.tinc-vpn.org/packages/%{name}-%{version}.tar.gz
 Patch0:         tinc-1.0.35-systemd-path-fix.patch
 
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 
 Requires(post):   info
 Requires(preun):  info
-%systemd_requires
+%systemd_ordering
 
 %description
 tinc is a Virtual Private Network (VPN) daemon that uses tunnelling
