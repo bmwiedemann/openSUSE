@@ -1,7 +1,7 @@
 #
 # spec file for package stunnel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 %if 0%{?suse_version} >= 1210
 
 %define has_systemd 1
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 
 %else
 
@@ -43,7 +43,7 @@ Release:        0
 Summary:        Universal SSL Tunnel
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://www.stunnel.org/
+URL:            http://www.stunnel.org/
 Source:         https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
 Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
 Source2:        stunnel.keyring
