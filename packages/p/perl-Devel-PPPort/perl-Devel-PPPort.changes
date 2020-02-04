@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Feb  1 03:15:06 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.57
+   see /usr/share/doc/packages/perl-Devel-PPPort/Changes
+
+   3.57 - 2020-01-31
+  
+   * Fix eval_sv for Perl versions prior to 5.6.0 (Pali)
+   * Fix t/ppphtest.t for Perl versions prior to 5.6.0 (Pali)
+   * Fix compilation of sv_setsv_flags when GCC extensions are not present (Pali)
+   * Fix SV_NOSTEAL on 5.7.2 (Karl Williamson)
+   * Fix multiple unit test issues (Craig A. Berry, Karl Williamson, Pali)
+   * Avoid generating warnings on early Perls (Karl Williamson)
+   * Backport memCHRs (Karl Williamson)
+   * Implement sv_setsv_flags() with SV_NOSTEAL and SV_GMAGIC flags for Perl versions < 5.7.3 (Pali)
+   * Implement UTF8f format and its UTF8fARG macro (Pali)
+
+-------------------------------------------------------------------
 Tue Nov 26 09:20:05 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.56
