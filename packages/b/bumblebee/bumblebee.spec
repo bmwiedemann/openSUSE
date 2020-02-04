@@ -1,7 +1,7 @@
 #
 # spec file for package bumblebee
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,12 +32,11 @@ BuildRequires:  help2man
 BuildRequires:  pciutils
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
-BuildRequires:  systemd
 BuildRequires:  xorg-x11-libX11-devel
+BuildRequires:  pkgconfig(systemd)
 Requires:       VirtualGL
 Requires:       pciutils
 Requires:       primus
-Requires:       pwdutils
 Requires:       shadow
 Requires:       sudo
 Requires:       xorg-x11-libX11

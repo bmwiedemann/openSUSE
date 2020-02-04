@@ -96,4 +96,12 @@
   * rpmlint filter for zero-size 10-dummy.conf</comment>
     <requestid>627830</requestid>
   </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>f98c65dc052c1f5e5f4f19b58f688f36</srcmd5>
+    <version>3.2.1</version>
+    <time>1580842386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769566</requestid>
+  </revision>
 </revisionlist>
