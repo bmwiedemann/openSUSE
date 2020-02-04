@@ -43,11 +43,11 @@ BuildRequires:  libhidapi-devel
 BuildRequires:  libserialport-devel >= 0.1.1
 BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libzip-devel >= 0.10
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glibmm-2.4)
+BuildRequires:  pkgconfig(libudev)
 
 %description
 libsigrok is a shared library written in C which provides the basic API
