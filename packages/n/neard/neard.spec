@@ -1,7 +1,7 @@
 #
 # spec file for package neard
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010-2012 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           neard
 Version:        0.15
 Release:        0
 Summary:        NFC for Linux
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Hardware/Mobile
-Url:            http://01.org/linux-nfc/
+URL:            http://01.org/linux-nfc/
 
 #Git-Clone:	git://git.kernel.org/pub/scm/network/nfc/neard
 Source:         https://www.kernel.org/pub/linux/network/nfc/neard-%{version}.tar.xz
@@ -33,12 +33,12 @@ Patch1:         neard-0.13-fix-dbus_send_destination_config.patch
 BuildRequires:  automake
 BuildRequires:  check-devel
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(dbus-1) >= 1.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
