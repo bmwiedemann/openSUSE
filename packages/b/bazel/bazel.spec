@@ -1,7 +1,7 @@
 #
 # spec file for package bazel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define bashcompdir %(pkg-config --variable=completionsdir bash-completion 2>/dev/null)
 Name:           bazel
-Version:        1.2
+Version:        2.0
 Release:        0
 Summary:        Tool for the automation of building and testing of software
 License:        Apache-2.0

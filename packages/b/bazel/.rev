@@ -371,4 +371,12 @@ If this SR looks good to you, please accept it together with:
     <comment></comment>
     <requestid>758583</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8000fa23be1725f774e29ab4096a4cf9</srcmd5>
+    <version>2.0</version>
+    <time>1580842612</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch bazel to default version 2.0. (forwarded request 767997 from mrostecki)</comment>
+    <requestid>767998</requestid>
+  </revision>
 </revisionlist>
