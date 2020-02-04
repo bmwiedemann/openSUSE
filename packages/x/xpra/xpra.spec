@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython >= 0.20.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
-BuildRequires:  systemd
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
@@ -50,6 +49,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
 BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  pkgconfig(pygtk-2.0)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
@@ -77,7 +77,7 @@ Requires(post): %fillup_prereq
 Recommends:     python3-dnspython
 Recommends:     python3-opencv
 Recommends:     python3-paramiko
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 Xpra is "screen for X": it allows you to run X programs, usually on a remote
