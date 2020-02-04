@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 15:17:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not attempt to build for i586: we require svrcore to build,
+  which is produced by 389-ds. This package in turn is not
+  supported/building for ix86.
+
+-------------------------------------------------------------------
 Fri Dec 22 08:14:37 UTC 2017 - dimstar@opensuse.org
 
 - Add mozldap-perl-5.24.patch: Fix build with perl 5.24.

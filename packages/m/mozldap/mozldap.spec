@@ -1,7 +1,7 @@
 #
 # spec file for package mozldap
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009-2011 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,9 @@ Name:           mozldap
 Version:        6.0.7
 Release:        0
 Summary:        Mozilla LDAP C SDK
-License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
+License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            https://wiki.mozilla.org/LDAP_C_SDK
+URL:            https://wiki.mozilla.org/LDAP_C_SDK
 Source0:        ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v%{version}/src/%{name}-%{version}.tar.gz
 Source200:      baselibs.conf
 # PATCH-FIX-UPSTREAM mozldap-6.0.7-support-tls1.1-and-later.patch - disable SSL3, support TLS1.1 and later
@@ -42,6 +42,8 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  svrcore-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# 389-ds does not support i686 - and svrcore-devel comes from 389-ds
+ExcludeArch:    %ix86
 
 %description
 The Mozilla LDAP C SDK is a set of libraries that allow applications to communicate with LDAP directory servers.
