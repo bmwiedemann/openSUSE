@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb  3 11:11:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use script from xtables-addons-3.8 for building
+
+-------------------------------------------------------------------
+Sat Feb  1 08:23:11 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update database files to 20200201
+
+-------------------------------------------------------------------
+Tue Jan  7 21:22:42 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Change database provider to DBIP (add xt_geoip_build script)
+- Update database files to 20200101
+
+-------------------------------------------------------------------
 Fri Dec 27 15:39:29 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update database files to 20191224

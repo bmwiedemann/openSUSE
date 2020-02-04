@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-geoip
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,42 @@
 #
 
 
+%define year    2020
+%define month   02
+
 Name:           xtables-geoip
-Version:        20191224
+Version:        %year%{month}01
 Release:        0
 Summary:        Geolocation database files for xt_geoip
-License:        CC-BY-SA-4.0
+License:        CC-BY-4.0
 Group:          Productivity/Networking/Security
-URL:            https://dev.maxmind.com/geoip/geoip2/geolite2/
-# Source:       https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV_%version.zip
-Source:         GeoLite2-Country-CSV_%version.zip
+URL:            https://db-ip.com/db/lite.php
+Source:         https://download.db-ip.com/free/dbip-country-lite-%year-%month.csv.gz
 Source4:        %name-rpmlintrc
+BuildRequires:  xtables-addons >= 3.8
 BuildArch:      noarch
-BuildRequires:  unzip
-BuildRequires:  xtables-addons >= 3.2
-#db format changed at that time
-Conflicts:      xtables-addons < 1.33
+#db format changed
+Conflicts:      xtables-addons < 3.2
 
 %description
 The package contains the GeoIP definition files (which IP addresses
 belong to which country) that are needed for Xtables-addons's
 xt_geoip module.
 
-This product includes GeoLite data created by MaxMind, available from
-http://maxmind.com/.
-
-Author(s):
-----------
-	The GeoIP data is from MaxMind.com.
+This product includes Country Lite data created by DBIP, available from
+https://db-ip.com/db/lite.php .
 Please do not contact them for errors with this package.
 
 %prep
-%setup -qn GeoLite2-Country-CSV_%version
+gunzip --stdout %{SOURCE0} > dbip-country-lite.csv
 
 %build
 
 %install
-b="%buildroot"
-mkdir -p "$b/%_datadir/xt_geoip"
-%_libexecdir/xtables-addons/xt_geoip_build -D "$b/%_datadir/xt_geoip/"
+install -d "%buildroot/%_datadir/xt_geoip"
+"%_libexecdir/xtables-addons/xt_geoip_build" -D "%buildroot/%_datadir/xt_geoip/"
 
 %files
-%defattr(-,root,root)
 %_datadir/xt_geoip/
 
 %changelog
