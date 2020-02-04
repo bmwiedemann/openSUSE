@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-ccid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if %( echo `rpm -q --queryformat %%{version} udev` ) > 190
+%if %( pkg-config --modversion udev ) > 190
 %define _udevrulesdir %{_libexecdir}/udev/rules.d
 %else
 %define _udevrulesdir /lib/udev/rules.d
@@ -29,7 +29,7 @@ Release:        0
 Summary:        PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
-Url:            https://ccid.apdu.fr/
+URL:            https://ccid.apdu.fr/
 Source:         https://ccid.apdu.fr/files/%{_name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Source2:        https://ccid.apdu.fr/files/%{_name}-%{version}.tar.bz2.asc
@@ -38,7 +38,7 @@ BuildRequires:  automake
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 # openSUSE package pcsc-lite 1.6.6 is the first one which creates the scard UID and GID:
 Requires:       pcsc-lite >= 1.6.6
 %define ifddir %(pkg-config libpcsclite --variable=usbdropdir)
