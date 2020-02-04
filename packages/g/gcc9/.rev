@@ -179,4 +179,13 @@ release expected in about a week.
   * Includes fix for [gcc#92154]</comment>
     <requestid>762615</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4a92c19237a32fa8cd6aa94b39cd4e93</srcmd5>
+    <version>9.2.1+git1022</version>
+    <time>1580842269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to releases/gcc-9 head (83f65674e78d97d27537361de1a9d74067ff228d).
+  * Includes fix for [gcc#92692]</comment>
+    <requestid>768061</requestid>
+  </revision>
 </revisionlist>
