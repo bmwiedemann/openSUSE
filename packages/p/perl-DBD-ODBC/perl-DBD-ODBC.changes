@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb  1 21:35:37 UTC 2020 - Markus Beth <markus.beth@web.de>
+
+- updated to 1.61
+   see /usr/share/doc/packages/perl-DBD-ODBC/Changes
+
+  1.61 2020-01-30
+
+    [BUG FIXES]
+
+    Fix 12blob.t test by pali
+    Fix searching for ODBC libraries in system by pali (#15)
+
+    [ENHANCEMENTS]
+
+    use PERL_NO_GET_CONTEXT for more performance by markusbeth (#13)
+
+    [MISCELLANEOUS]
+
+    Fix travis builds for older Perls by pali
+
+-------------------------------------------------------------------
 Thu Nov  8 06:11:11 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.60
