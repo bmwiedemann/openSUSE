@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           gpsbabel
 Version:        1.5.4
 Release:        0
 Summary:        Converts GPS waypoint, route and track data from one format type to another
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://www.gpsbabel.org/
+URL:            http://www.gpsbabel.org/
 Source:         %{name}-%{version}.tar.gz
 Source1:        http://www.gpsbabel.org/htmldoc-1.5.0/%{name}-1.5.0.pdf
 Source2:        %{name}.png
@@ -42,7 +42,6 @@ Patch7:         0007-Use-system-minizip.patch
 Patch8:         0008-Fix-QString-casting-build-failures.patch
 BuildRequires:  autoconf
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-devel
 BuildRequires:  minizip-devel
 BuildRequires:  pkgconfig
@@ -55,6 +54,7 @@ BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5WebKit)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
