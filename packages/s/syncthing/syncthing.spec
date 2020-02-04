@@ -27,8 +27,8 @@ Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}
 Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  go >= 1.8
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
 %description
