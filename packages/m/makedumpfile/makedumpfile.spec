@@ -1,7 +1,7 @@
 #
 # spec file for package makedumpfile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,19 +32,18 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.6.6
+Version:        1.6.7
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
 Group:          System/Kernel
-Url:            https://sourceforge.net/projects/makedumpfile/
+URL:            https://sourceforge.net/projects/makedumpfile/
 Source:         https://sourceforge.net/projects/makedumpfile/files/makedumpfile/%{version}/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 Patch1:         %{name}-override-libtinfo.patch
 Patch2:         %{name}-ppc64-VA-range-SUSE.patch
-Patch3:         %{name}-Increase-SECTION_MAP_LAST_BIT-to-4.patch
+Patch3:         %{name}-PN_XNUM.patch
 BuildRequires:  libdw-devel
-BuildRequires:  libebl-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
 BuildRequires:  lzo-devel

@@ -985,4 +985,21 @@ See README.static for an explanation why static linking is preferred for some li
     <comment></comment>
     <requestid>729000</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>314e41ff702e06e8d59f669c80ce3717</srcmd5>
+    <version>1.6.7</version>
+    <time>1580842284</time>
+    <user>dimstar_suse</user>
+    <comment>- makedumpfile-PN_XNUM.patch: Define PN_XNUM if missing.
+
+- Update to version 1.6.7:
+  + Makefile: remove -lebl from LIBS when no libebl.a.
+  + Fix compilation warnings on 32-bit system.
+  + Support newer kernels up to v5.4.
+- Drop makedumpfile-Increase-SECTION_MAP_LAST_BIT-to-4.patch: fixed
+  upstream.
+
+- Drop libebl-devel BuildRequires: ebl is being absorbed by libdw.</comment>
+    <requestid>768288</requestid>
+  </revision>
 </revisionlist>
