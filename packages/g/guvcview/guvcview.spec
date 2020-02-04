@@ -1,7 +1,7 @@
 #
 # spec file for package guvcview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2013 Marguerite Su <marguerite@opensuse.org>
 #
@@ -27,7 +27,7 @@ Release:        0
 Summary:        GTK+ UVC Viewer and Capturer
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Video/Players
-Url:            http://guvcview.sourceforge.net/
+URL:            http://guvcview.sourceforge.net/
 Source0:        https://sourceforge.net/projects/guvcview/files/source/guvcview-src-%{version}.tar.gz
 Source90:       pre_checkin.sh
 # PATCH-FIX-OPENSUSE guvcview-SUSE.patch -- use SUSE-specific paths
@@ -43,7 +43,6 @@ BuildRequires:  intltool
 BuildRequires:  libpng-devel
 BuildRequires:  libpulse-devel
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libv4l-devel
 BuildRequires:  pkg-config
@@ -51,6 +50,7 @@ BuildRequires:  portaudio-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(sdl2)
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

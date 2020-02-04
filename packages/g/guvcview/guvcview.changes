@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:51:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Tue Feb 12 18:24:24 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 2.0.6:

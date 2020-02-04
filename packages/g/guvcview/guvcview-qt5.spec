@@ -1,7 +1,7 @@
 #
 # spec file for package guvcview-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2013 Marguerite Su <marguerite@opensuse.org>
 #
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Qt5 UVC Viewer and Capturer
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Video/Players
-Url:            http://guvcview.sourceforge.net/
+URL:            http://guvcview.sourceforge.net/
 Source0:        https://sourceforge.net/projects/guvcview/files/source/guvcview-src-%{version}.tar.gz
 Source90:       pre_checkin.sh
 # PATCH-FIX-OPENSUSE guvcview-SUSE.patch -- use SUSE-specific paths
