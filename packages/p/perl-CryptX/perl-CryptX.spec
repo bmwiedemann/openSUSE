@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CryptX
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           perl-CryptX
-Version:        0.066
+Version:        0.067
 Release:        0
 %define cpan_name CryptX
-Summary:        Cryptographic toolkit (self-contained, no external libraries needed)
+Summary:        Cryptographic toolkit
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
@@ -32,9 +32,8 @@ BuildRequires:  perl-macros
 %{perl_requires}
 
 %description
-Cryptography in CryptX is based on https://github.com/libtom/libtomcrypt
-
-Available modules:
+Perl modules providing a cryptography based on at
+https://github.com/libtom/libtomcrypt library.
 
 * * Symmetric ciphers - see Crypt::Cipher and related modules
 
@@ -92,7 +91,8 @@ Crypt::Mac::Poly1305
 
 * * Public key cryptography
 
-Crypt::PK::RSA, Crypt::PK::DSA, Crypt::PK::ECC, Crypt::PK::DH
+Crypt::PK::RSA, Crypt::PK::DSA, Crypt::PK::ECC, Crypt::PK::DH,
+Crypt::PK::Ed25519, Crypt::PK::X25519
 
 * * Cryptographically secure random number generators - see Crypt::PRNG and
   related modules
