@@ -1,7 +1,7 @@
 #
 # spec file for package mozc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,16 +34,16 @@
 %define use_libprotobuf 0
 
 Name:           mozc
-Version:        2.18.2612.102
+Version:        2.23.2815.102
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/I18n/Japanese
 ExcludeArch:    ppc ppc64 s390 s390x
-Url:            https://github.com/google/mozc
+URL:            https://github.com/google/mozc
 # git clone https://github.com/google/mozc.git
 # cd mozc
-# git archive --prefix=mozc-$version/ 05464ea | tar xC ../
+# git archive --prefix=mozc-$version/ afb03ddf | tar xC ../
 # rm mozc-$version/src/third_party/*
 # rm mozc-$version/docker
 # tar cvJf mozc-$version.tar.xz mozc-$version
@@ -53,7 +53,7 @@ Source1:        README.SUSE
 # gyp is not included from 1.11.1522.102
 # License: BSD-3-Clause
 # git clone https://chromium.googlesource.com/external/gyp
-Source3:        gyp-940a15e.tar.xz
+Source3:        gyp-e87d37d.tar.xz
 #
 Source4:        ibus-setup-mozc-jp.desktop.in
 #
@@ -64,12 +64,10 @@ Source5:        japanese_usage_dictionary-r10.tar.xz
 # protobuf
 # License: BSD-3-Clause
 #
-# Use static protobuf lib because of the binary incopatibility problem
-# between GCC5 and LLVM
-#
-# git clone https://github.com/google/protobuf/
-# git archive --prefix protobuf/ v3.1.0 | xz > ../protobuf.tar.xz
-Source6:        protobuf.tar.xz
+# Use static protobuf, which is recommended when protobuf is used from a C++ application
+# Using protobuf >= 3.6 requires to update Mozc source
+# https://github.com/protocolbuffers/protobuf/archive/v3.5.2.tar.gz
+Source6:        protobuf-v3.5.2.tar.gz
 #
 # jigyosyo.zip and ken_all.zip are zip-code--address data provided by
 # Japan Post Co., Ltd.
@@ -80,7 +78,7 @@ Source11:       ken_all.zip
 %if %{with_fcitx}
 # add fcitx as mozc module
 # License: BSD-3-Clause
-Patch:          fcitx-mozc-2.18.2612.102.1.patch
+Patch:          fcitx-mozc-2.23.2815.102.1.patch
 Source21:       fcitx-mozc-icons.tar.gz
 %endif
 
@@ -110,7 +108,6 @@ Patch11:        add-Japanese-new-era-reiwa-to-date_rewriter.patch
 Patch12:        add-Japanese-new-era-reiwa-ligature-to-dict.patch
 
 BuildRequires:  ninja >= 1.4
-BuildRequires:  pkgconfig
 %if %{use_libprotobuf}
 BuildRequires:  protobuf-devel
 %endif
@@ -184,59 +181,65 @@ character-palette, handwriting tools.
 
 # extract fcitx-mozc
 %if %{with_fcitx}
-%patch -p2
+%patch -p1
 %endif
 
-%patch1 -p2
-%patch2 -p2
+%patch1 -p1
+%patch2 -p1
 
 cp %{SOURCE1} .
 
 # install third_party files
-pushd third_party
+cd src/third_party
 # gyp
 tar xvf %{SOURCE3}
 # japanese_usage_dictionary
 tar xvf %{SOURCE5}
 # protobuf
 %if ! %{use_libprotobuf}
-tar xvf %{SOURCE6}
+tar xvf %{SOURCE6} -C protobuf --strip-components 1
 %endif
-popd
+cd ../..
 
+cd src
 %patch6 -p1
-
 %patch7 -p1
+cd ..
 
-%patch8 -p2
+%patch8 -p1
 
-%patch9 -p2
+%patch9 -p1
 
 # patches to support new Japanese era, Reiwa
 %patch10 -p1
 %patch11 -p1
+cd src
 %patch12 -p1
+cd ..
 
 # fix installation path
 sed -e 's|@libdir@|%{_libdir}|g' %{SOURCE4} > ibus-setup-mozc-jp.desktop
 
 # prepare zip code dictionary
-pushd data/dictionary_oss
+cd src/data/dictionary_oss
 unzip %{SOURCE10}
 unzip %{SOURCE11}
 python ../../dictionary/gen_zip_code_seed.py --zip_code=KEN_ALL.CSV --jigyosyo=JIGYOSYO.CSV >> dictionary09.txt
-popd
+cd ../..
 
 %build
 %define target Release
+
 export QTDIR=%{_libdir}/qt5
 
 # -Wall from RPM_OPT_FLAGS overrides -Wno-* options from gyp.
 # gyp inserts -Wall to the head of release_extra_flags.
 flags=${RPM_OPT_FLAGS/-Wall/}
 
-export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} use_libzinnia=1 document_dir=%{document_dir} zinnia_model_file=%{zinnia_model_path} release_extra_cflags="'$flags'"'
+# disable Fcitx5 for now
+export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} use_libzinnia=1 document_dir=%{document_dir} zinnia_model_file=%{zinnia_model_path} release_extra_cflags="'$flags'" use_fcitx5=0'
 
+cd src
 python build_mozc.py gyp --server_dir=%{_libdir}/mozc
 python build_mozc.py build -c %{target} \
 	unix/ibus/ibus.gyp:ibus_mozc \
@@ -248,7 +251,7 @@ python build_mozc.py build -c %{target} \
 	gui/gui.gyp:mozc_tool \
 	renderer/renderer.gyp:mozc_renderer
 
-%define output_dir out_linux/%{target}
+%define output_dir src/out_linux/%{target}
 
 %install
 
@@ -257,16 +260,16 @@ install -m755 %{output_dir}/ibus_mozc %{buildroot}%{_libdir}/ibus-mozc/ibus-engi
 install -m755 -d %{buildroot}%{_datadir}/ibus/component
 install -m644 %{output_dir}/gen/unix/ibus/mozc.xml %{buildroot}%{_datadir}/ibus/component/mozc.xml
 install -m755 -d %{buildroot}%{_datadir}/ibus-mozc
-install -m644 data/images/unix/ime_product_icon_opensource-32.png %{buildroot}%{_datadir}/ibus-mozc/product_icon.png
-install -m644 data/images/unix/ui-tool.png %{buildroot}%{_datadir}/ibus-mozc/tool.png
-install -m644 data/images/unix/ui-properties.png %{buildroot}%{_datadir}/ibus-mozc/properties.png
-install -m644 data/images/unix/ui-dictionary.png %{buildroot}%{_datadir}/ibus-mozc/dictionary.png
-install -m644 data/images/unix/ui-direct.png %{buildroot}%{_datadir}/ibus-mozc/direct.png
-install -m644 data/images/unix/ui-hiragana.png %{buildroot}%{_datadir}/ibus-mozc/hiragana.png
-install -m644 data/images/unix/ui-katakana_half.png %{buildroot}%{_datadir}/ibus-mozc/katakana_half.png
-install -m644 data/images/unix/ui-katakana_full.png %{buildroot}%{_datadir}/ibus-mozc/katakana_full.png
-install -m644 data/images/unix/ui-alpha_half.png %{buildroot}%{_datadir}/ibus-mozc/alpha_half.png
-install -m644 data/images/unix/ui-alpha_full.png %{buildroot}%{_datadir}/ibus-mozc/alpha_full.png
+install -m644 src/data/images/unix/ime_product_icon_opensource-32.png %{buildroot}%{_datadir}/ibus-mozc/product_icon.png
+install -m644 src/data/images/unix/ui-tool.png %{buildroot}%{_datadir}/ibus-mozc/tool.png
+install -m644 src/data/images/unix/ui-properties.png %{buildroot}%{_datadir}/ibus-mozc/properties.png
+install -m644 src/data/images/unix/ui-dictionary.png %{buildroot}%{_datadir}/ibus-mozc/dictionary.png
+install -m644 src/data/images/unix/ui-direct.png %{buildroot}%{_datadir}/ibus-mozc/direct.png
+install -m644 src/data/images/unix/ui-hiragana.png %{buildroot}%{_datadir}/ibus-mozc/hiragana.png
+install -m644 src/data/images/unix/ui-katakana_half.png %{buildroot}%{_datadir}/ibus-mozc/katakana_half.png
+install -m644 src/data/images/unix/ui-katakana_full.png %{buildroot}%{_datadir}/ibus-mozc/katakana_full.png
+install -m644 src/data/images/unix/ui-alpha_half.png %{buildroot}%{_datadir}/ibus-mozc/alpha_half.png
+install -m644 src/data/images/unix/ui-alpha_full.png %{buildroot}%{_datadir}/ibus-mozc/alpha_full.png
 
 install -m755 -d %{buildroot}%{_datadir}/applications
 install -m644 ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup-mozc-jp.desktop
@@ -282,7 +285,7 @@ ln -s ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup
 
 %if %{with_fcitx}
 # Install Fcitx module
-for mofile in out_linux/Release/gen/unix/fcitx/po/*.mo
+for mofile in %{output_dir}/gen/unix/fcitx/po/*.mo
 do
 	filename=`basename $mofile`
 	lang=${filename/.mo/}
@@ -293,18 +296,18 @@ install -m755 -d %{buildroot}%{fcitx_inputmethod_dir}
 install -m755 -d %{buildroot}%{fcitx_icon_dir}
 install -m755 -d %{buildroot}%{fcitx_lib_dir}
 install -m 755 %{output_dir}/fcitx-mozc.so %{buildroot}%{fcitx_lib_dir}
-install -m 644 unix/fcitx/fcitx-mozc.conf %{buildroot}%{fcitx_addon_dir}
-install -m 644 unix/fcitx/mozc.conf %{buildroot}%{fcitx_inputmethod_dir}
-install -m 644 data/images/product_icon_32bpp-128.png %{buildroot}%{fcitx_icon_dir}/mozc.png
-install -m 644 data/images/unix/ui-alpha_full.png %{buildroot}%{fcitx_icon_dir}/mozc-alpha_full.png
-install -m 644 data/images/unix/ui-alpha_half.png %{buildroot}%{fcitx_icon_dir}/mozc-alpha_half.png
-install -m 644 data/images/unix/ui-direct.png %{buildroot}%{fcitx_icon_dir}/mozc-direct.png
-install -m 644 data/images/unix/ui-hiragana.png %{buildroot}%{fcitx_icon_dir}/mozc-hiragana.png
-install -m 644 data/images/unix/ui-katakana_full.png %{buildroot}%{fcitx_icon_dir}/mozc-katakana_full.png
-install -m 644 data/images/unix/ui-katakana_half.png %{buildroot}%{fcitx_icon_dir}/mozc-katakana_half.png
-install -m 644 data/images/unix/ui-dictionary.png %{buildroot}%{fcitx_icon_dir}/mozc-dictionary.png
-install -m 644 data/images/unix/ui-properties.png %{buildroot}%{fcitx_icon_dir}/mozc-properties.png
-install -m 644 data/images/unix/ui-tool.png %{buildroot}%{fcitx_icon_dir}/mozc-tool.png
+install -m 644 src/unix/fcitx/fcitx-mozc.conf %{buildroot}%{fcitx_addon_dir}
+install -m 644 src/unix/fcitx/mozc.conf %{buildroot}%{fcitx_inputmethod_dir}
+install -m 644 src/data/images/product_icon_32bpp-128.png %{buildroot}%{fcitx_icon_dir}/mozc.png
+install -m 644 src/data/images/unix/ui-alpha_full.png %{buildroot}%{fcitx_icon_dir}/mozc-alpha_full.png
+install -m 644 src/data/images/unix/ui-alpha_half.png %{buildroot}%{fcitx_icon_dir}/mozc-alpha_half.png
+install -m 644 src/data/images/unix/ui-direct.png %{buildroot}%{fcitx_icon_dir}/mozc-direct.png
+install -m 644 src/data/images/unix/ui-hiragana.png %{buildroot}%{fcitx_icon_dir}/mozc-hiragana.png
+install -m 644 src/data/images/unix/ui-katakana_full.png %{buildroot}%{fcitx_icon_dir}/mozc-katakana_full.png
+install -m 644 src/data/images/unix/ui-katakana_half.png %{buildroot}%{fcitx_icon_dir}/mozc-katakana_half.png
+install -m 644 src/data/images/unix/ui-dictionary.png %{buildroot}%{fcitx_icon_dir}/mozc-dictionary.png
+install -m 644 src/data/images/unix/ui-properties.png %{buildroot}%{fcitx_icon_dir}/mozc-properties.png
+install -m 644 src/data/images/unix/ui-tool.png %{buildroot}%{fcitx_icon_dir}/mozc-tool.png
 
 # fix mozc icons. they're too ugly that even lose face for openSUSE.
 cp -r %{SOURCE21} ./
@@ -324,9 +327,9 @@ install -m755 -d %{buildroot}%{_bindir}
 install -m755 %{output_dir}/mozc_emacs_helper %{buildroot}%{_bindir}
 # install only for emacs since xemacs is not supported
 install -m755 -d %{buildroot}%{_datadir}/emacs/site-lisp
-install -m644 unix/emacs/mozc.el %{buildroot}%{_datadir}/emacs/site-lisp/
+install -m644 src/unix/emacs/mozc.el %{buildroot}%{_datadir}/emacs/site-lisp/
 
-chmod 644 data/installer/credits_*.html
+chmod 644 src/data/installer/credits_*.html
 
 %if %{with_fcitx}
 %find_lang fcitx-mozc %no_lang_C
@@ -334,8 +337,7 @@ chmod 644 data/installer/credits_*.html
 
 %files
 %defattr(-, root, root)
-%doc data/installer/credits_en.html
-%doc data/installer/credits_ja.html
+%doc src/data/installer/credits_en.html
 %doc README.SUSE
 %dir %{_libdir}/mozc
 %{_libdir}/mozc/mozc_server
