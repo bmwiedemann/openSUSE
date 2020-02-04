@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Feb  3 06:47:51 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.5.0
+  * Improved C++ language support:
+    + Fix missing header guard warning for a standalone header
+      being always present
+    + Don't crash when signatures don't match in
+      AdaptSignatureAssistant
+    + Clazy: add configurable predefined checkset selections
+    + Clang-tidy: add configurable predefined checkset selections
+    + Don't get confused when encountering parse errors in default
+      args
+    + Fix ClangUtils::getDefaultArguments when encountering macros
+      (kde#369546)
+    + Skip clang-provided override items from code completion
+    + Unbreak move-into-source for non-class functions
+    + Lambda init captures are visited starting with clang 9.0.0
+    + Try a bit harder to find types for look-ahead completion
+  * Welcome page: remove background in active window when plugin is
+    disabled
+  * No longer install modeltest.h, not used externally and
+    deprecated
+  * Fix "invalid project name" hint not always showing
+  * Use default scheme option of KColorSchemeManager if available
+  * Read the global color scheme name from its file
+  * Fix qmljs comment parsing 
+  * Fix the comment formatting for some Doxygen variants
+  * Qmakebuilder: remove unused kcfg files
+  * Fix reformat for long strings
+  * Introduce shell-embedded message area, to avoid dialog windows
+  * Clazy, clang-tidy: share code via new private
+    KDevCompileAnalyzerCommon
+  * Make tar archives reproducible by setting Pax headers
+  * Kdevplatform: remove About data feature
+  * Support for rebasing
+  * Add a setting to disable the close buttons on tabs
+  * CMake: Show project name in showConfigureErrorMessage
+  * TemplatePreview: Enable word-wrap for messagebox and Lines
+    Policy Label
+  * Filetemplates: load and show tooltip for custom options
+  * Pass environment variables from process environment and set up
+    with flatpak environment
+  * Remove usage of columns argument in arch detection since old
+    LTS systems may not have that flag
+  * Pass the android toolchain file path to CMake as a local file
+    path not as a URI
+  * Formatter: Hide KTextEditor minimap for the formatter preview
+  * Shell: use KAboutPluginDialog in LoadedPluginsDialog
+  * Mention all fetch project sources in the documentation
+    (kde#392550)
+  * Script launcher: add env profile configure dialog button to
+    config UI (kde#410914)
+  * Cmake: FindClang: Detect llvm-project.git checkout
+
+-------------------------------------------------------------------
 Tue Jan  7 13:55:48 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.4.6

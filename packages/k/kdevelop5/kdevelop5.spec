@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 54
+%define libkdev_major 55
 Name:           kdevelop5
-Version:        5.4.6
+Version:        5.5.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -182,9 +182,9 @@ Provides translations to the package kdevplatform
   %kf5_makeinstall -C build
 
   names="kdevandroid kdevappwizard kdevastyle kdevbazaar kdevclang kdevclassbrowser \
-         kdevclangtidy kdevclazy kdevcmake kdevcmakebuilder kdevcodeutils kdevcontextbrowser \
-         kdevcppcheck kdevcustombuildsystem kdevcustomdefinesandincludes kdevcustommake \
-         kdevcustomscript kdevdebuggercommon kdevdocker kdevdocumentswitcher \
+         kdevclangtidy kdevclazy kdevcmake kdevcmakebuilder kdevcodeutils kdevcompileanalyzercommon \
+         kdevcontextbrowser kdevcppcheck kdevcustombuildsystem kdevcustomdefinesandincludes \
+         kdevcustommake kdevcustomscript kdevdebuggercommon kdevdocker kdevdocumentswitcher \
          kdevdocumentview kdevelop kdevexecute kdevexecuteplasmoid kdevexecutescript \
          kdevexternalscript kdevfilemanager kdevfiletemplates kdevflatpak kdevgdb \
          kdevghprovider kdevgit kdevgrepview kdevheaptrack kdevkdeprovider kdevkonsole kdevlldb \
@@ -229,9 +229,14 @@ Provides translations to the package kdevplatform
 %{_kf5_bindir}/kdevelop*
 %{_kf5_debugdir}/kdevelop.categories
 %{_kf5_iconsdir}/*/*/*/*
+%if %pkg_vcmp knewstuff-devel >= 5.57.0
+# It installs .knsrc files when built with knewstuff-devel >= 5.57.0
+%{_kf5_knsrcfilesdir}/*.knsrc
+%endif
 %{_kf5_libdir}/cmake/KDevelop/
+%{_kf5_libdir}/libKDevCMakeCommon.so.*
 %{_kf5_libdir}/libKDevClangPrivate.so.*
-%{_kf5_libdir}/libkdevcmakecommon.so
+%{_kf5_libdir}/libKDevCompileAnalyzerCommon.so.*
 %{_kf5_notifydir}/kdevelop.notifyrc
 %{_kf5_plasmadir}/
 %{_kf5_plugindir}/kdevplatform/
