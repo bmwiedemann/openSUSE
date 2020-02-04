@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:07:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0
+  * fix some typos (thanks @torstehu, #197)
+  * change how device rules are evaluated: lookup undecided rules on parent device (fixes issue with filters not applying to subdevices of a matched device, see #198)
+  * change builtin rules to not show loop devices with HintIgnore, see #181
+  * change how is_external attribute is compute: use the value from udisks directly (fixes issue with is_external property not behaving as expected, see #185)
+  * add 'skip' keyword for rules to skip evaluation of further rules on this device, and continue directly on the parent
+  * fix user commands that output non-utf8 data
+  * fix exception when using non-device parameters with DeviceCommand (e.g. in --notify-command)
+  * hotfix for automounting being broken since 2.0.0
+  * use importlib.resources directly on py3.7 and above, rather than requiring importlib_resources as additional dependency
+  * require python >= 3.5
+  * drop python2 support
+  * drop udisks1 support
+  * drop command line options corresponding to udisks version selection (-1, -2)
+  * use py35's async def functions -- improving stack traces upon exception
+  * internal refactoring and simplifications
+  * add "show password" checkbox in password dialog
+  * keep password dialog always on top
+  * fix stdin-based password prompts
+  * add russian translations (thanks @mr-GreyWolf)
+  * fixed deprecation warnings in setup.py (thanks @sealj553)
+
+
+-------------------------------------------------------------------
 Thu Jan 31 11:54:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use python macros for build and install to keep working under
