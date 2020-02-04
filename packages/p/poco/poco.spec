@@ -1,7 +1,7 @@
 #
 # spec file for package poco
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,12 @@ Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
 Group:          System/Libraries
-Url:            http://pocoproject.org
+URL:            https://pocoproject.org
 Source:         https://github.com/pocoproject/%{name}/archive/%{name}-%{version}-release.tar.gz
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  mysql-devel
-BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(expat)
@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 C++ class libraries and frameworks for building
@@ -244,6 +243,7 @@ network- and Internet-based applications.
 # ENABLE_APPACHECONNECTOR
 # ENABLE_SEVENZIP
 # ENABLE_PODOC
+%define __builder ninja
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="" \
     -DENABLE_CPPPARSER=ON \
@@ -268,7 +268,7 @@ network- and Internet-based applications.
 %endif
     -DFORCE_OPENSSL=ON \
     -DPOCO_UNBUNDLED=ON
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -280,126 +280,108 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %endif
 
 %files -n libPocoCrypto%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoCrypto.so.%{sover}
 
 %post   -n libPocoCrypto%{sover} -p /sbin/ldconfig
 %postun -n libPocoCrypto%{sover} -p /sbin/ldconfig
 
 %files -n libPocoCppParser%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoCppParser.so.%{sover}
 
 %post   -n libPocoCppParser%{sover} -p /sbin/ldconfig
 %postun -n libPocoCppParser%{sover} -p /sbin/ldconfig
 
 %files -n libPocoData%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoData.so.%{sover}
 
 %post   -n libPocoData%{sover} -p /sbin/ldconfig
 %postun -n libPocoData%{sover} -p /sbin/ldconfig
 
 %files -n libPocoDataMySQL%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoDataMySQL.so.%{sover}
 
 %post   -n libPocoDataMySQL%{sover} -p /sbin/ldconfig
 %postun -n libPocoDataMySQL%{sover} -p /sbin/ldconfig
 
 %files -n libPocoDataODBC%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoDataODBC.so.%{sover}
 
 %post   -n libPocoDataODBC%{sover} -p /sbin/ldconfig
 %postun -n libPocoDataODBC%{sover} -p /sbin/ldconfig
 
 %files -n libPocoDataSQLite%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoDataSQLite.so.%{sover}
 
 %post   -n libPocoDataSQLite%{sover} -p /sbin/ldconfig
 %postun -n libPocoDataSQLite%{sover} -p /sbin/ldconfig
 
 %files -n libPocoEncodings%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoEncodings.so.%{sover}
 
 %post   -n libPocoEncodings%{sover} -p /sbin/ldconfig
 %postun -n libPocoEncodings%{sover} -p /sbin/ldconfig
 
 %files -n libPocoFoundation%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoFoundation.so.%{sover}
 
 %post   -n libPocoFoundation%{sover} -p /sbin/ldconfig
 %postun -n libPocoFoundation%{sover} -p /sbin/ldconfig
 
 %files -n libPocoJSON%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoJSON.so.%{sover}
 
 %post   -n libPocoJSON%{sover} -p /sbin/ldconfig
 %postun -n libPocoJSON%{sover} -p /sbin/ldconfig
 
 %files -n libPocoMongoDB%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoMongoDB.so.%{sover}
 
 %post   -n libPocoMongoDB%{sover} -p /sbin/ldconfig
 %postun -n libPocoMongoDB%{sover} -p /sbin/ldconfig
 
 %files -n libPocoNet%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoNet.so.%{sover}
 
 %post   -n libPocoNet%{sover} -p /sbin/ldconfig
 %postun -n libPocoNet%{sover} -p /sbin/ldconfig
 
 %files -n libPocoNetSSL%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoNetSSL.so.%{sover}
 
 %post   -n libPocoNetSSL%{sover} -p /sbin/ldconfig
 %postun -n libPocoNetSSL%{sover} -p /sbin/ldconfig
 
 %files -n libPocoPDF%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoPDF.so.%{sover}
 
 %post   -n libPocoPDF%{sover} -p /sbin/ldconfig
 %postun -n libPocoPDF%{sover} -p /sbin/ldconfig
 
 %files -n libPocoRedis%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoRedis.so.%{sover}
 
 %post   -n libPocoRedis%{sover} -p /sbin/ldconfig
 %postun -n libPocoRedis%{sover} -p /sbin/ldconfig
 
 %files -n libPocoUtil%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoUtil.so.%{sover}
 
 %post   -n libPocoUtil%{sover} -p /sbin/ldconfig
 %postun -n libPocoUtil%{sover} -p /sbin/ldconfig
 
 %files -n libPocoXML%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoXML.so.%{sover}
 
 %post   -n libPocoXML%{sover} -p /sbin/ldconfig
 %postun -n libPocoXML%{sover} -p /sbin/ldconfig
 
 %files -n libPocoZip%{sover}
-%defattr(-,root,root)
 %{_libdir}/libPocoZip.so.%{sover}
 
 %post   -n libPocoZip%{sover} -p /sbin/ldconfig
 %postun -n libPocoZip%{sover} -p /sbin/ldconfig
 
 %files -n poco-devel
-%defattr(-,root,root)
 %license LICENSE
 %doc CHANGELOG CONTRIBUTORS NEWS README
 %{_includedir}/Poco
@@ -408,7 +390,6 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %{_libdir}/cmake/Poco/*.cmake
 
 %files -n poco-cpspc
-%defattr(-,root,root)
 %{_bindir}/cpspc
 %{_bindir}/f2cpsp
 
