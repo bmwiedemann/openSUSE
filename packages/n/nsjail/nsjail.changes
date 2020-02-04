@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:34:09 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Update to version 2.9. Notable changes:
+  * improved configs for some tools
+  * changed default RLIMIT_AS to 4GiB
+  * rudimentary support for cgroups2
+  * added option to ignore rlimits
+  * fixed setcwd() w/o CLONE_NEWNS
+
+-------------------------------------------------------------------
 Thu Jan  2 10:29:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable lto for building nsjail.
