@@ -1,7 +1,7 @@
 #
 # spec file for package synergy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,6 @@ BuildRequires:  curl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  mDNSResponder-devel
 BuildRequires:  pkgconfig
-BuildRequires:  systemd
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Network)
@@ -54,12 +53,13 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xtst)
 Provides:       %{synergy} = %{version}
 Obsoletes:      %{synergy} < %{version}
-%{?systemd_requires}
+%{?systemd_ordering}
 %if 0%{?suse_version} != 1315
 BuildRequires:  libcryptopp-devel
 Requires(pre):  %fillup_prereq
