@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 15:47:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Thu Jul 25 13:05:45 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

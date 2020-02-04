@@ -1,7 +1,7 @@
 #
 # spec file for package privoxy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Release:        0
 Summary:        The Internet Junkbuster - HTTP Proxy Server
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
-Url:            http://www.privoxy.org/
+URL:            http://www.privoxy.org/
 Source:         http://sourceforge.net/projects/ijbswa/files/Sources/%{version}%%20%%28stable%%29/%{name}-%{version}-stable-src.tar.gz
 Source2:        %{name}-3.0.16-init.suse
 Source3:        %{name}.service
@@ -53,12 +53,12 @@ Provides:       junkbuster = %{version}
 Obsoletes:      junkbuster < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{with_systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %endif
 %if %{with_systemd}
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{_sbindir}/useradd %{_sbindir}/groupadd
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq %insserv_prereq %{_sbindir}/useradd %{_sbindir}/groupadd
