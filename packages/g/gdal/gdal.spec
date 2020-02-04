@@ -26,7 +26,7 @@
 %bcond_with ecw5_support
 %bcond_with fgdb_support
 Name:           gdal
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain

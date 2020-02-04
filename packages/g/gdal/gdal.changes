@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb  1 08:52:49 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 3.0.4 bugfix release
+  + strongly recommended release for people creating GeoTIFF files
+  in EPSG:3857 / WebMercator projection with previous 3x version
+  + Changelog https://github.com/OSGeo/gdal/blob/v3.0.4/gdal/NEWS
+
+-------------------------------------------------------------------
 Wed Jan 22 08:05:11 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to version 3.0.3 bugfix release
