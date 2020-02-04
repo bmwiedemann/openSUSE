@@ -1,7 +1,7 @@
 #
 # spec file for package ipmiutil
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Andy Cress
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Summary:        Easy-to-use IPMI server management utilities
 License:        BSD-3-Clause
 Group:          System/Management
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Url:            http://ipmiutil.sourceforge.net
+URL:            http://ipmiutil.sourceforge.net
 Patch0:         warnings.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?sles_version} > 10
@@ -38,7 +38,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{!?_unitdir: %define _unitdir  /usr/lib/systemd/system}
 %define unit_dir  %{_unitdir}
 %if 0%{?req_systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %define systemd_fls %{_unitdir}
 %else
 %define systemd_fls %{_datadir}/%{name}
