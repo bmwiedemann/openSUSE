@@ -14,14 +14,9 @@
 test -f /.kconfig && . /.kconfig
 test -f /.profile && . /.profile
 
-set -euo pipefail
+set -euxo pipefail
 
 echo "Configure image: [$kiwi_iname]..."
-
-#======================================
-# Setup baseproduct link
-#--------------------------------------
-suseSetupProduct
 
 #======================================
 # Import repositories' keys
@@ -47,7 +42,8 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 #======================================
 # Remove locale files
 #--------------------------------------
-find /usr/share/locale -name '*.mo' -delete
+shopt -s globstar
+rm -f /usr/share/locale/**/*.mo
 
 # Remove zypp uuid (bsc#1098535)
 rm -f /var/lib/zypp/AnonymousUniqueId

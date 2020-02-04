@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  4 11:08:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop call of suseSetupProduct in config.sh, it needs find which
+  isn't installed anymore. Setting up baseproduct is done by the
+  release package's %post script already.
+- Replace find call in config.sh with glob expansion
+- Use set -x
+
+-------------------------------------------------------------------
 Thu Aug  8 08:45:26 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Remove wrong comment

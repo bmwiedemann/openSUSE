@@ -64,4 +64,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>723495</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b9434d30db0409c82242551c443af779</srcmd5>
+    <version>1.0.4</version>
+    <time>1580842301</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop call of suseSetupProduct in config.sh, it needs find which
+  isn't installed anymore. Setting up baseproduct is done by the
+  release package's %post script already.
+- Replace find call in config.sh with glob expansion
+- Use set -x</comment>
+    <requestid>769965</requestid>
+  </revision>
 </revisionlist>
