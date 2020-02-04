@@ -1,7 +1,7 @@
 #
 # spec file for package uhd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
 Group:          Hardware/Other
-Url:            http://ettus-apps.sourcerepo.com/redmine/ettus/projects/uhd/wiki
+URL:            http://ettus-apps.sourcerepo.com/redmine/ettus/projects/uhd/wiki
 Source0:        http://files.ettus.com/binaries/uhd_stable/uhd_%{src_ver}-release/uhd_%{version}-release.tar.gz
 Source1:        http://files.ettus.com/binaries/images/uhd-images_%{img_ver}-release.tar.xz
 # PATCH-FIX-OPENSUSE fix-for-armv6l-armv7l-build-failure.patch
@@ -35,10 +35,10 @@ Patch1:         uhd-fix-for-boost-1_66.patch
 Patch2:         uhd-fix-for-boost-1_67.patch
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_serialization-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 # WORKAROUND: force docutils to use python 2
@@ -58,9 +58,9 @@ BuildRequires:  pkg-config
 BuildRequires:  python-Mako >= 0.4
 BuildRequires:  python-cheetah >= 2.0.0
 BuildRequires:  python-devel >= 2.6
-BuildRequires:  udev
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(udev)
 Requires:       udev
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
