@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  3 06:48:08 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.5.0
+  * Fix uses of function call parameters after closures
+  * Add support for PHP 7.4's typed properties
+  * Support importing functions and constants from other namespaces
+    (kde#408609)
+  * Fix rename of a variable (kde#317879)
+  * Add support for "array of type"
+  * Add support for class constant visibility
+  * I18n: update message to new default
+
+-------------------------------------------------------------------
 Tue Jan  7 13:56:03 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.4.6
