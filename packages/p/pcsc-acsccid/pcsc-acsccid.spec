@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-acsccid
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Advanced Card Systems Ltd.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %if 0%{?suse_version} >= 1140
-%if %( echo `rpm -q --queryformat %%{version} udev` ) > 190
+%if %( pkg-config --modversion udev ) > 190
 %define _udevrulesdir /usr/lib/udev/rules.d
 %else
 %define _udevrulesdir /lib/udev/rules.d
@@ -40,11 +40,11 @@ BuildRequires:  libusb-1_0-devel >= %{libusb_ver}
 BuildRequires:  pcsc-lite-devel >= %{pcsc_lite_ver}
 BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1140
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 %endif
 Version:        1.1.8
 Release:        0
-Url:            http://acsccid.sourceforge.net/
+URL:            http://acsccid.sourceforge.net/
 Summary:        PCSC Driver for ACS CCID Based Smart Card Readers
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
