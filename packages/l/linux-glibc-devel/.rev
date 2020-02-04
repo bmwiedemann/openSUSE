@@ -580,4 +580,12 @@
     <comment>- Update to kernel headers 5.4 (forwarded request 752478 from Andreas_Schwab)</comment>
     <requestid>752479</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>56ef55c2d1febb69f44cd98ca22f72b1</srcmd5>
+    <version>5.5</version>
+    <time>1580842264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.5 (forwarded request 767804 from Andreas_Schwab)</comment>
+    <requestid>767805</requestid>
+  </revision>
 </revisionlist>
