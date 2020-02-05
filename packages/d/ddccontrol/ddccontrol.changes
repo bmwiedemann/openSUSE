@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:23:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Apr 11 10:36:44 UTC 2018 - mstaudt@suse.com
 
 - 90-ddccontrol-i2c.rules:

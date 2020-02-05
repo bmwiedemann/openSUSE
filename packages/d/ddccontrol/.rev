@@ -17,4 +17,12 @@
   Fixes (boo#1088935).</comment>
     <requestid>595582</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>488b694ce198189a28fb89d403cf4e17</srcmd5>
+    <version>0.4.2+20140105+git9d89d8c</version>
+    <time>1580928082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769618</requestid>
+  </revision>
 </revisionlist>
