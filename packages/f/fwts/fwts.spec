@@ -1,7 +1,7 @@
 #
 # spec file for package fwts
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        19.12.00
+Version:        20.01.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
