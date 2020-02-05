@@ -1,7 +1,7 @@
 #
 # spec file for package python-orange-widget-base
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-orange-widget-base
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
-License:        GPL-3.0+
 Summary:        Base Widget for Orange Canvas
-Url:            http://orange.biolab.si/
+License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/biolab/orange-widget-base/
 Source:         https://files.pythonhosted.org/packages/source/o/orange-widget-base/orange-widget-base-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-AnyQt
 Requires:       python-matplotlib
 Requires:       python-orange-canvas-core >= 0.1.8
