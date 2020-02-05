@@ -1,7 +1,7 @@
 #
 # spec file for package libgpiod
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Release:        0
 Summary:        Tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
+URL:            https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
 Source0:        https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/snapshot/libgpiod-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -42,7 +42,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %if %{with libgpiod_tests}
 BuildRequires:  kernel-devel >= 5.1
-BuildRequires:  libudev-devel
+BuildRequires:  pkgconfig(libudev)
 %else
 BuildRequires:  kernel-devel >= 4.8
 %endif
