@@ -1,9 +1,7 @@
 #
 # spec file for package python-pycha
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2016 Dr. Axel Braun
-# Copyright (c) 2017 Oliver Kurz
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,25 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%define         mod_name pycha
 Name:           python-pycha
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        A library for making charts with Python
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            http://bitbucket.org/lgs/%{mod_name}/
-Source:         https://pypi.io/packages/source/p/%{mod_name}/%{mod_name}-%{version}.tar.gz
+URL:            http://bitbucket.org/lgs/pycha/
+Source:         https://files.pythonhosted.org/packages/source/p/pycha/pycha-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  python-rpm-macros
+Requires:       python-cairocffi
+Requires:       python-six
+# SECTION test requirements
+BuildRequires:  %{python_module cairocffi}
+BuildRequires:  %{python_module six}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,7 +45,7 @@ PlotKit, both of which are written in JavaScript and are for client
 web programming. Pycha was developed for the server side.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%setup -q -n pycha-%{version}
 
 %build
 %python_build
