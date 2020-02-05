@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 20 03:15:51 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-Set-Object/Changes.pod
+
+  =head1 1.40, 2020-01-19
+  
+  =over
+  
+  =item *
+  
+  Fixed perl5.28 regressions (not cperl), for @$set args to other set functions.
+  (RT #131345). Fixed by adding missing SvGETMAGIC expansions to all args.
+  
+  =item *
+  
+  Bumped minimal required perl version to 5.8 for arrayref @$set behavior.
+  
+  =item *
+  
+  Fixed the smokers and some author tests.
+  
+  =back
+
+-------------------------------------------------------------------
 Tue Jan  9 07:13:27 UTC 2018 - coolo@suse.com
 
 - updated to 1.39
