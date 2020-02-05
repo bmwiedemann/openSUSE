@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  4 19:46:01 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.10:
+  * XPath union operation now is ~2x faster to compute and results
+    in a stable order that doesn't depend on pointer order.
+  * Add format_skip_control_chars formatting flag to skip
+    non-printable ASCII characters.
+  * Add format_attribute_single_quote formatting flag to use single
+    quotes for attribute values.
+  * Add Visual Studio .natvis files to improve debugging
+    experience.
+- Remove merged patches:
+  * pugixml-1.9-use-CMAKE_INSTALL_LIBDIR.patch.
+  * pugixml-1.9-install-pc-file.patch.
+
+-------------------------------------------------------------------
 Mon Mar 25 11:26:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.

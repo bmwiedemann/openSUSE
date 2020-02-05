@@ -1,7 +1,7 @@
 #
 # spec file for package pugixml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,14 @@
 
 %define _libname libpugixml1
 Name:           pugixml
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Light-weight C++ XML Processing Library
 License:        MIT
 Group:          System/Libraries
-Url:            http://pugixml.org/
+URL:            http://pugixml.org/
 Source0:        https://github.com/zeux/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         pugixml-config.patch
-# PATCH-FIX-UPSTREAM pugixml-1.9-install-pc-file.patch -- Always install pc file
-Patch2:         pugixml-1.9-install-pc-file.patch
-# PATCH-FIX-UPSTREAM pugixml-1.9-use-CMAKE_INSTALL_LIBDIR.patch -- Install pc file in proper libdir
-Patch3:         pugixml-1.9-use-CMAKE_INSTALL_LIBDIR.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -73,8 +69,7 @@ pugixml is a light-weight C++ XML processing library. It features:
 %autosetup -p1
 
 %build
-# CMAKE_INSTALL_LIBDIR is used as a relative path by upstream
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib}
+%cmake
 make %{?_smp_mflags}
 
 %install
