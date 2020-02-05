@@ -1,7 +1,7 @@
 #
 # spec file for package mmc-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 Name:           mmc-utils
-Version:        0.1+git.20190808
+Version:        0.1+git.20191004
 Release:        0
 Summary:        Tools for MMC/SD devices
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            http://git.kernel.org/cgit/linux/kernel/git/cjb/mmc-utils.git/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        https://www.gnu.org/licenses/gpl-2.0.txt
 
 %description
 Userspace tools for controlling and querying MMC/SD storage devices
 
 %prep
-%setup -q
+%autosetup
 cp %{SOURCE1} LICENSE.GPL-2.0
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}" CHECKFLAGS="-Wall -Wuninitialized -Wundef"
+%make_build CFLAGS="%{optflags}" CHECKFLAGS="-Wall -Wuninitialized -Wundef"
 
 %install
 %make_install prefix=%{_prefix}
