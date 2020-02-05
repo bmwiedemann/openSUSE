@@ -17,4 +17,12 @@
 - Trim irrelevant parts from descriptions</comment>
     <requestid>453163</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a07f82280236b5ca7bfbfb670d6f65ae</srcmd5>
+    <version>0.8.2</version>
+    <time>1580928093</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>769694</requestid>
+  </revision>
 </revisionlist>
