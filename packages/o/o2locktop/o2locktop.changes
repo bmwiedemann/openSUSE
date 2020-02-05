@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 26 05:31:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use better RPM category group.
+- Replace old $RPM_* shell vars by macros.
+- Avoid name repetition in summary.
+
+-------------------------------------------------------------------
 Tue Jul 30 05:45:33 UTC 2019 - ghe@suse.com
 
 - Update to version 1.0.10+git.1564463799.6f331ba:
@@ -14,8 +21,8 @@ Thu Jul 25 05:53:10 UTC 2019 - ghe@suse.com
   * Add the design document of o2locktop
   * Show the hang time when detect deadlock
   * Fix o2locktop becomes slow when handling lots of files (bsc#1134390)
-  
+
 -------------------------------------------------------------------
 Fri Feb 22 02:47:53 UTC 2019 - weikai.wang@suse.com
 
-- stable release version 1.0.0 
+- stable release version 1.0.0
