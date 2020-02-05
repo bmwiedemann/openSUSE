@@ -1,7 +1,7 @@
 #
 # spec file for package python-apsw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define tarver  3.28.0-r1
+%define tarver  3.30.1-r1
 Name:           python-apsw
-Version:        3.28.0_r1
+Version:        3.30.1_r1
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
 Group:          Development/Libraries/Python
 URL:            https://github.com/rogerbinns/apsw/
 Source:         https://github.com/rogerbinns/apsw/archive/%{tarver}.tar.gz
-Patch0:         0001-py3.8-avoid-invalid-escapes.patch
-Patch1:         0002-Skip-one-test-on-python3.8.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  pkgconfig
@@ -43,7 +41,6 @@ complete SQLite API into Python.
 
 %prep
 %setup -q -n apsw-%{tarver}
-%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
