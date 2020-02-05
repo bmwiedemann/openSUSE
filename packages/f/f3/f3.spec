@@ -1,7 +1,7 @@
 #
 # spec file for package f3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,10 @@ Release:        0
 Summary:        Fight Flash Fraud / Fight Fake Flash
 License:        GPL-3.0-only
 Group:          Hardware/Other
-Url:            http://oss.digirati.com.br/f3/
+URL:            http://oss.digirati.com.br/f3/
 Source:         https://github.com/AltraMayor/f3/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  libudev-devel
 BuildRequires:  parted-devel
+BuildRequires:  pkgconfig(libudev)
 
 %description
 This package contains tools for identifying fake flash drives (primarily USB
