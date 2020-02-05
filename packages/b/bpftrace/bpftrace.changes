@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 02:21:50 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to bpftrace 0.9.4.
+  * New calls: signal, override, strncmp.
+  * Support for attaching to `kprobes` at an offset.
+  * Support for struct bitfields.
+  See the upstream changelog for more details:
+    <https://github.com/iovisor/bpftrace/releases/tag/v0.9.4>
+
+-------------------------------------------------------------------
 Fri Jan 31 09:19:26 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Fix builds on Leap 15.1. This requires quite a bit of trickery related to
