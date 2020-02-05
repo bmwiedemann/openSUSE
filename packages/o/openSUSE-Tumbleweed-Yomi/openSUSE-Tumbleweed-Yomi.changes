@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 09:53:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use systemctl enable instead of chkconfig on.
+
+-------------------------------------------------------------------
 Thu Oct 10 12:08:06 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add SUSEConnect for product registering

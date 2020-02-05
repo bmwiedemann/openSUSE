@@ -81,7 +81,7 @@ suseImportBuildKey
 #======================================
 # Enable sshd
 #--------------------------------------
-chkconfig sshd on
+systemctl enable sshd
 
 # Enable jeos-firstboot
 mkdir -p /var/lib/YaST2
@@ -92,7 +92,7 @@ systemctl enable jeos-firstboot.service
 
 # Enable firewalld if installed
 if [ -x /usr/sbin/firewalld ]; then
-    chkconfig firewalld on
+    systemctl enable firewalld
 fi
 
 # Set GRUB2 to boot graphically (bsc#1097428)
