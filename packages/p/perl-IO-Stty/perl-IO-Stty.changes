@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 20 03:09:11 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.04
+   see /usr/share/doc/packages/perl-IO-Stty/Changes
+
+  0.04 Sat Jan 18 2020
+     - Switch to EU::MM
+     - Address a few deficiencies in the way how the stty() sub processes its arguments
+     - Enable testing on Github actions.
+  
+  0.03 Thu May 6 2010
+     - Re-vamp IO::Stty to modern layout
+     - stty.txt moved into POD for module
+     - stty.pl in docs. Die if no params passed to stty
+
+-------------------------------------------------------------------
 Tue Nov 30 19:20:22 UTC 2010 - coolo@novell.com
 
 - switch to perl_requires macro
