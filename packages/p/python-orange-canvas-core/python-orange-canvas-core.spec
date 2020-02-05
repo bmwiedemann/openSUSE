@@ -1,7 +1,7 @@
 #
 # spec file for package python-orange-canvas-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-orange-canvas-core
-Version:        0.1.9
+Version:        0.1.11
 Release:        0
-License:        GPL-3.0
 Summary:        Core component of Orange Canvas
-Url:            http://orange.biolab.si/
+License:        GPL-3.0-only
 Group:          Development/Languages/Python
+URL:            https://github.com/biolab/orange-canvas-core/
 Source:         https://files.pythonhosted.org/packages/source/o/orange-canvas-core/orange-canvas-core-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-AnyQt
 Requires:       python-CacheControl
 Requires:       python-commonmark
@@ -41,8 +42,8 @@ BuildRequires:  %{python_module CacheControl}
 BuildRequires:  %{python_module commonmark}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module requests}
 BuildRequires:  xorg-x11-server
 # /SECTION
 

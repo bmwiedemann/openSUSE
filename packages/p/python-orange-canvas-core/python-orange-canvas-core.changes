@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:02:52 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.1.11
+  * Remove use of QActionGroup(..., exclusive=...) calls
+  * Test with PyQt 5.14.0
+
+-------------------------------------------------------------------
 Fri Nov 22 20:01:33 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
