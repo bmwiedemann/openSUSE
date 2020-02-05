@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:53:08 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disable py2 build as deps are only for python 3 
+
+-------------------------------------------------------------------
 Mon Sep 16 14:16:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one failing test which is caused by django-pytest
