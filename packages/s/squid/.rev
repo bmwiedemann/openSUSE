@@ -763,4 +763,20 @@ from the squid 3.x changelog</comment>
 - old_nettle_compat.patch: refreshed</comment>
     <requestid>746661</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>a5e97871a5edf7648db26325ae73ed4d</srcmd5>
+    <version>4.10</version>
+    <time>1580928267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to squid 4.10:
+  * fixes a security issue allowing a remote client ability to cause
+    use a buffer overflow when squid is acting as reverse-proxy.
+    (CVE-2020-8449, CVE-2020-8450, bsc#1162687)
+  * fixes a security issue allowing for information disclosure in
+    FTP gateway (CVE-2019-12528, bsc#1162689)
+  * fixes a security issue in ext_lm_group_acl when processing
+    NTLM Authentication credentials. (CVE-2020-8517, bsc#1162691)
+  * improve cache handling with chunked responses</comment>
+    <requestid>770216</requestid>
+  </revision>
 </revisionlist>
