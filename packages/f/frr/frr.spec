@@ -29,14 +29,14 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        7.2
+Version:        7.2.1
 Release:        0
 Summary:        FRRouting Routing daemon
 License:        GPL-2.0-or-later and LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
-Source:         %{name}-%{name}%{version}.tar.xz
+Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
 Patch0:         fix_tests.patch
 BuildRequires:  %{python_module Sphinx}
@@ -149,7 +149,7 @@ The frr-devel package contains the header and object files necessary for
 developing OSPF-API and frr applications.
 
 %prep
-%setup -q -n %{name}-%{name}%{version}
+%setup -q -n %{name}-%{name}-%{version}
 %patch0
 
 %build
