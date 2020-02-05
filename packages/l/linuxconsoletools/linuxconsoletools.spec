@@ -1,7 +1,7 @@
 #
 # spec file for package linuxconsoletools
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ Patch0:         0001-Port-ffmvforce-to-SDL2-some-bugfixes.patch
 BuildRequires:  libSDL2-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  pkgconfig
-BuildRequires:  udev
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(udev)
 # moved in 13.2
 Provides:       input-utils = 2007.06.22
 Obsoletes:      input-utils < 2007.06.22
