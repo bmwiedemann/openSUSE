@@ -63,4 +63,12 @@
   * Explicitly disable empty-values and octal-values rules</comment>
     <requestid>744156</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>744b3427a63d51c0335aad378899e321</srcmd5>
+    <version>1.20.0</version>
+    <time>1580928110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770066</requestid>
+  </revision>
 </revisionlist>
