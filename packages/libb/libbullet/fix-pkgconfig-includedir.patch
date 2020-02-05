@@ -1,0 +1,12 @@
+diff -Naur a/bullet.pc.cmake b/bullet.pc.cmake
+--- a/bullet.pc.cmake	2019-12-20 19:26:32.000000000 -0500
++++ b/bullet.pc.cmake	2020-02-01 00:18:39.859704707 -0500
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ libdir=${exec_prefix}/@LIB_DESTINATION@
+-includedir=${prefix}/@INCLUDE_INSTALL_DIR@
++includedir=${prefix}/include/bullet
+ 
+ Name: bullet
+ Description: Bullet Continuous Collision Detection and Physics Library

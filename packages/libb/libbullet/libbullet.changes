@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  1 04:52:24 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Removed fix-pkgconfig-cflags.patch
+- Added fix-pkgconfig-includedir.patch
+- Update to v2.89 
+  * New implementation of volumetric deformable objects and cloth
+    based on the Finite Element Method
+  * Two-way coupling between deformabled and rigit/multi body
+    is achieved using a unified constraint solver
+
+-------------------------------------------------------------------
 Thu May 23 02:31:05 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
 
 - Update to release 2.88

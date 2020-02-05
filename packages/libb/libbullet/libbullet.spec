@@ -1,7 +1,7 @@
 #
 # spec file for package libbullet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define sover   2_88
+%define sover   2_89
 %define lname   libbullet%{sover}
 %define pdesc   Bullet is a Collision Detection and Rigid Body Dynamics Library.
 Name:           libbullet
-Version:        2.88
+Version:        2.89
 Release:        0
 Summary:        Bullet Continuous Collision Detection and Physics Library
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://pybullet.org/wordpress/
 Source:         https://github.com/bulletphysics/bullet3/archive/%{version}/bullet3-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-pkgconfig-cflags.patch gh#bulletphysics/bullet3#626
-Patch1:         fix-pkgconfig-cflags.patch
+# PATCH-FIX-OPENSUSE fix-pkgconfig-includedir.patch
+Patch1:         fix-pkgconfig-includedir.patch
 Patch2:         use-system-libs.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
