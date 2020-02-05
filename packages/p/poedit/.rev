@@ -427,4 +427,15 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
   * Misc. small fixes and visual improvements.</comment>
     <requestid>733929</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e45b41f7ad62f15e547b3bb87e4d02a6</srcmd5>
+    <version>2.3</version>
+    <time>1580928114</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 2.3:
+  * Improved pre-translation performance.
+  * Added support for XLIFF 1.0.
+  * Improved handling of punctuation in QA checks.</comment>
+    <requestid>770087</requestid>
+  </revision>
 </revisionlist>

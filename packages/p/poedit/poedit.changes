@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 18:34:31 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 2.3:
+  * Improved pre-translation performance.
+  * Added support for XLIFF 1.0.
+  * Improved handling of punctuation in QA checks.
+
+-------------------------------------------------------------------
 Sun Sep 29 17:44:39 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 2.2.4:
