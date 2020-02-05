@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:20:32 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- new upstream release 1.10.6
+  * Fix different boundary in headers and body when using headers()
+    after get()
+  * Removed phail.php script
+- new upstream release 1.10.5
+  * Make sure to not set Content-Transfer-Encoding on multipart messages
+  * Added support for calendar invitations with attachments/html/images
+
+-------------------------------------------------------------------
 Thu Dec  5 20:53:39 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - make package PHP version independent
