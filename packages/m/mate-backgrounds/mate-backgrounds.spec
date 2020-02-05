@@ -1,7 +1,7 @@
 #
 # spec file for package mate-backgrounds
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://mate-desktop.org/
 Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # set to _version when mate-common has an equal release
 BuildRequires:  mate-common >= 1.22
+BuildRequires:  meson
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
@@ -40,12 +41,11 @@ in mind.
 %setup -q
 
 %build
-NOCONFIGURE=1 mate-autogen
-%configure
-make %{?_smp_mflags} V=1
+%meson %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 
 %files

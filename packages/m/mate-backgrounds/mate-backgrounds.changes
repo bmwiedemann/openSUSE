@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:04:34 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Switch to meson build system. This makes the build green again.
+
+-------------------------------------------------------------------
 Wed Jul 17 13:42:21 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:
