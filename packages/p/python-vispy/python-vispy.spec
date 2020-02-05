@@ -1,7 +1,7 @@
 #
 # spec file for package python-vispy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  ext_deps
 Name:           python-vispy
-Version:        0.6.2
+Version:        0.6.4
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause
@@ -28,8 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/v/vispy/vispy-%{v
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros

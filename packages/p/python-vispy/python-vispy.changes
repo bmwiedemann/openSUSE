@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:10:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.6.4
+  + Enhancements
+    * Filter unnecessary QSocketNotifier warning when using QtConsole
+    * FIX: Nest triangle and skimage imports
+    * Switch to setuptools_scm version.py usage to avoid import overhead
+  + Fixed bugs
+    * Skip bad font in test_font
+- Update to 0.6.3
+  + Enhancements
+    * Improve AxisVisual visual by providing property getters and setters
+    * Fix MarkerVisual scaling when rotating in 3D space
+  + Fixed bugs
+    * Fix string formatting of array shape
+    * Fix texture alignment to use data itemsize
+    * Fix shader version handling in webgl backend
+    * Fix 2D mesh bounds IndexError when viewed in 3D
+    * Fix xaxis labels being wrong initially in PlotWidget
+    * Various bug fixes related to AxisVisual
+    * Fixed a bug in linking two flycameras
+  + Merged pull requests
+    * Fix additional numpy warnings when dealing with dtypes of size 1
+    
+-------------------------------------------------------------------
 Tue Nov 19 20:01:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.16.2
