@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:38:43 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1004
+  * Update Psi IM and Psi+ icons
+  * Decrease size of roster icons
+  * Set jid/nick/passw for mucjoindlg after it was fully initialized
+  * Allow setting email type in vcard
+  * Work with audio messages and options. (#491)
+  * Added cache for advanced flat options editor
+  * close jingle connection early on reading last byte
+  * Don't crash on moving file to cache failure
+  * Fixed sharing in private chat after hiding real jid in SIMS source
+  * Simplify file publishing code
+  * resize image shares previews on webkit version
+  * dirty hack to make early logout working again
+  * Fixed broken pep avatar request
+  * iris relinked
+- do not package already embedded images
+
+-------------------------------------------------------------------
 Fri Nov  1 06:37:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - update to 1.4.962

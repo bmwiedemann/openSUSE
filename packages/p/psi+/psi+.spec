@@ -1,7 +1,7 @@
 #
 # spec file for package psi+
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.4.962+0
+%define version_unconverted 1.4.1004+0
 
 Name:           psi+
-Url:            https://github.com/psi-plus
-Version:        1.4.962+0
+URL:            https://github.com/psi-plus
+Version:        1.4.1004+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -365,15 +365,13 @@ This plugin is designed to make it easy to download and install iconsets and
 other resources for Psi+.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake \
+	-DCHAT_TYPE=WEBENGINE \
 	-DENABLE_PLUGINS=ON
-
-#%%make_jobs won't work -- overriden by qmake's -- opencode it
-ninja -v %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -536,16 +534,7 @@ dos2unix ChangeLog.Psi+.txt
 %files data
 %defattr(-,root,root)
 %dir %{iconspath}/
-%dir %{iconspath}/activities
-%{iconspath}/activities/default
-%dir %{iconspath}/affiliations
-%{iconspath}/affiliations/default
-%dir %{iconspath}/clients
-%{iconspath}/clients/default
-%dir %{iconspath}/moods
-%{iconspath}/moods/default
 %dir %{iconspath}/roster
-%{iconspath}/roster/default
 %{iconspath}/roster/crystal-gadu.jisp
 %{iconspath}/roster/crystal-icq.jisp
 %{iconspath}/roster/crystal-roster.jisp
@@ -554,11 +543,6 @@ dos2unix ChangeLog.Psi+.txt
 %{iconspath}/roster/crystal-yahoo.jisp
 %{iconspath}/roster/stellar-1.jisp
 %{iconspath}/roster/README
-%dir %{iconspath}/system
-%{iconspath}/system/default
-%{iconspath}/system/README
-%dir %{iconspath}/emoticons
-%{iconspath}/emoticons/default
 %{_datadir}/psi-plus/client_icons.txt
 %{_datadir}/psi-plus/skins
 %{_datadir}/psi-plus/sound
