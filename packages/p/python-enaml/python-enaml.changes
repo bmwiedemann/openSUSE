@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:57:41 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.4
+  * Fix issue with validator fields, where clearing the error
+    state does not restore the original stylesheet
+  * Update Looper loop index when items are reordered
+  * widgets: add logic to track the members of a ButtonGroup
+  * Add button group widget
+  * qt: handle the absence of a pixmap when computing the aspect_ratio
+  * widgets: add sync_time attribute to Field
+
+-------------------------------------------------------------------
+Thu Jul 25 19:33:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.10.3
+  * implement import hooks using Python 3 interface
+  * make enaml-run exit immediately when pressing ^c
+  * add support for f-strings in enaml files on supported Python versions
+  * add support for declarative async function
+  * add a enaml-compileallcommand to generate pyc and enamlc files
+  * fix the tp_name value of all C extensions
+  * add pickle support for enaml's Color
+  * add support for tiling and cascading to MdiArea
+  * fix issue # 174 (MdiWindow not automatically shown when added)
+  * add minimal workbench documentation
+  * add support for font-stretch
+  * remove dependency on future to reduce import time
+  * add constraints to enforce image aspect ratio in ImageView
+  * improvements to the scintilla widget and live editor
+  * Multiple improvements to the documentation
+
+-------------------------------------------------------------------
 Wed May 16 16:19:03 UTC 2018 - toddrme2178@gmail.com
 
 - Update to 0.10.2
