@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  2 15:53:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Don't make python3-fityk Obsolete or Provide python-fityk (the
+  python2 version) so that users may continue using the installed
+  python2 version should they so wish.
+
+-------------------------------------------------------------------
+Thu Jan 30 07:11:58 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to building against Python 3.
+  + Rename python-fityk to python3-fityk.
+- Remove unknown option from configure arguments.
+- Drop usage of py_sitelib deprecated variable.
+- Run spec-cleaner over the spec file.
+
+-------------------------------------------------------------------
 Fri Feb  3 16:19:18 UTC 2017 - jengelh@inai.de
 
 - Direct-invoke ldconfig. Update RPM groups.
