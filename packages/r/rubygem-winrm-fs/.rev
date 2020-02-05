@@ -63,4 +63,11 @@
     <comment></comment>
     <requestid>770019</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>620023485c0de965d3eda701c6a844b4</srcmd5>
+    <version>1.3.2</version>
+    <time>1580927961</time>
+    <user>dimstar_suse</user>
+    <comment>https://openqa.opensuse.org/tests/1164864#step/add_box_virtualbox/27</comment>
+  </revision>
 </revisionlist>
