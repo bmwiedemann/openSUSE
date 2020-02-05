@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:37:57 UTC 2020 - trenn@suse.de
+
+- Add /etc/dbus-1/system.d directory to file section as done in other
+  packages (double checked with wicked) to avoid build error:
+  tuned-2.4.1-9.10.1.noarch.rpm: directories not owned by a package:
+     - /etc/dbus-1
+     - /etc/dbus-1/system.d
+
+-------------------------------------------------------------------
 Tue Nov 26 11:22:52 UTC 2019 - trenn@suse.de
 
 - Update to latest 2.22.0 release

@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -191,6 +191,8 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %endif
 
 %files
+%dir %_sysconfdir/dbus-1
+%dir %_sysconfdir/dbus-1/system.d
 %dir %{_sysconfdir}/modprobe.d
 %license COPYING
 %doc AUTHORS README
