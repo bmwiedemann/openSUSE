@@ -1,7 +1,7 @@
 #
 # spec file for package ocfs2-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Release:        0
 Summary:        Oracle Cluster File System 2 Core Tools
 License:        GPL-2.0-only
 Group:          System/Filesystems
-Url:            https://ocfs2.wiki.kernel.org/
+URL:            https://ocfs2.wiki.kernel.org/
 Source:         ocfs2-tools-%{version}.tar.gz
 Source1:        reflink.tar.bz2
 Patch001:       auto-setup-pcmk-stack-as-default-if-no-stack-is-setup.patch
@@ -74,7 +74,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(pre):  %fillup_prereq
-Requires:       /sbin/chkconfig
 Requires:       e2fsprogs
 Requires:       glib2 >= 2.2.3
 Requires:       libdlm
@@ -261,7 +260,8 @@ python -c "import compileall; compileall.compile_dir('%{buildroot}/%{py_sitedir}
 
 %files
 %defattr(-,root,root)
-%doc COPYING CREDITS MAINTAINERS
+%license COPYING
+%doc CREDITS MAINTAINERS
 %doc documentation/users_guide.txt
 %dir /usr/lib/udev
 %dir %{_udevrulesdir}
