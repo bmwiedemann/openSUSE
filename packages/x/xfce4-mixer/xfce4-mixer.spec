@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-mixer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch2:         no-full-debug-default-for-git.patch
 Patch3:         xfce4-mixer-alsa.patch
 Patch4:         xfce4-mixer-find-dbus.patch
 Patch5:         xfce4-mixer-libunique.patch
+Patch6:         xfce4-mixer-keybinder-3.0.patch
 %endif
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
@@ -48,7 +49,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(keybinder)
+BuildRequires:  pkgconfig(keybinder-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libxfce4panel-1.0)
 BuildRequires:  pkgconfig(libxfce4ui-1)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:05:00 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add xfce4-mixer-keybinder-3.0.patch to build against keybinder-3.0
+
+-------------------------------------------------------------------
 Thu Oct  3 12:02:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add xfce4-mixer-libunique.patch: Make libunique optional, patch
