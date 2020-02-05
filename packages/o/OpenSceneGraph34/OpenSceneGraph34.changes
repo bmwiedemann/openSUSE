@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:42:19 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace wrong Requires: SDL-devel in devel package with
+  pkgconfig(sdl2).
+- Replace PowerPC specific _constraints with ones for all
+  architectures, there are no differences in real life, avoids
+  failures for other architectures.
+
+-------------------------------------------------------------------
 Tue Dec 10 11:07:08 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1158895: Remove dependency on jasper (due to planned removal)

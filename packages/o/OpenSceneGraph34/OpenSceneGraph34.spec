@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSceneGraph34
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Summary:        3D graphics toolkit
 # Ticket opened to clear license situation: https://github.com/openscenegraph/OpenSceneGraph/issues/552
 License:        LGPL-2.1-only WITH WxWindows-exception-3.1
 Group:          Productivity/Graphics/Other
-Url:            http://openscenegraph.org/projects/osg
+URL:            http://openscenegraph.org/projects/osg
 Source0:        https://github.com/openscenegraph/%{sname}/archive/%{sname}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM 8e26ebd23ef9_Fixed_coverity_detected_defect_OOB_read.patch -- Fix out-of-bound-read, also required for the next patch to apply
@@ -110,7 +110,6 @@ This package contains the shared libraries for OpenSceneGraph.
 %package -n libOpenSceneGraph%{_osg_so_nr}-devel
 Summary:        OpenSceneGraph development files
 Group:          Development/Libraries/C and C++
-Requires:       SDL-devel
 Requires:       curl-devel
 Requires:       freeglut-devel
 Requires:       giflib-devel
@@ -123,6 +122,7 @@ Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(openal)
 Requires:       pkgconfig(poppler-glib)
+Requires:       pkgconfig(sdl2)
 Requires:       pkgconfig(xrandr)
 Conflicts:      libOpenSceneGraph1-devel
 Provides:       libOpenSceneGraph-devel = %{version}
