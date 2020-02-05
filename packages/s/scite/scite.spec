@@ -1,7 +1,7 @@
 #
 # spec file for package scite
 #
-# Copyright (c) 2016-2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,28 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define tar_ver 430
 Name:           scite
-Version:        3.7.5
+Version:        4.3.0
 Release:        0
-%define tar_ver 375
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
-Group:          Productivity/Text/Editors
-Url:            http://www.scintilla.org/SciTE.html
+URL:            https://www.scintilla.org/SciTE.html
 Source0:        http://download.sourceforge.net/scintilla/%{name}%{tar_ver}.tgz
 Source1:        %{name}.changes
 BuildRequires:  gcc-c++
-%if 0%{?favor_gtk2}
-BuildRequires:  gtk2-devel
-%else
-BuildRequires:  gtk3-devel
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(gail-3.0)
+BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(gdk-broadway-3.0)
+BuildRequires:  pkgconfig(gdk-wayland-3.0)
+BuildRequires:  pkgconfig(gdk-x11-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-broadway-3.0)
+BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
+BuildRequires:  pkgconfig(gtk+-wayland-3.0)
+BuildRequires:  pkgconfig(gtk+-x11-3.0)
 
 %description
 SciTE is a SCIntilla based Text Editor. Originally built to demonstrate
@@ -44,46 +48,22 @@ building and running programs.
 %prep
 %setup -q -c
 
-# Fix "Your file uses  __DATE and __TIME__ this causes the package to rebuild when not needed warning"
-# http://sourceforge.net/tracker/?func=detail&atid=102439&aid=3314371&group_id=2439 is WONTFIX.
-# We use the date from the changes file
-set_date_time=`date --date "@\`stat --format %Y %{S:1}\`" +"%B %Y %H:%M"`
-sed -i 's/wsci, \"    \" \_\_DATE\_\_ \" \" \_\_TIME\_\_ \"\\n"/wsci, \"'"$set_date_time"'\\n\"/g' scite/src/Credits.cxx
-
 %build
 export CXXFLAGS='%{optflags}'
 export CFLAGS='%{optflags}'
-
-%if 0%{?favor_gtk2}
-make %{?_smp_mflags} -C scintilla/gtk
-make %{?_smp_mflags} -C scite/gtk
-%else
-make GTK3=1 %{?_smp_mflags} -C scintilla/gtk
-make GTK3=1 %{?_smp_mflags} -C scite/gtk
-%endif
+%make_build GTK3=1 -C scintilla/gtk
+%make_build GTK3=1 -C scite/gtk
 
 %install
-%if 0%{?favor_gtk2}
-make DESTDIR=%{buildroot} -C scite/gtk install
-%else
 make GTK3=1 DESTDIR=%{buildroot} -C scite/gtk install
-%endif
 # Add the man page
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m 0644 scite/doc/scite.1 %{buildroot}%{_mandir}/man1/SciTE.1
 %suse_update_desktop_file -r SciTE GTK Development Utility Building TextEditor
 
-%if !0%{?sles_version}
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files
-%defattr(-,root,root)
-%doc scite/README scite/License.txt
+%license scite/License.txt
+%doc scite/README
 %{_bindir}/SciTE
 %{_datadir}/scite/
 %{_datadir}/pixmaps/Sci48M.png
