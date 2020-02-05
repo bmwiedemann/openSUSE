@@ -181,4 +181,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Update to new upstream release 7</comment>
     <requestid>725702</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>60e997d1f7d15739d70bef145bb099ab</srcmd5>
+    <version>8</version>
+    <time>1580928202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 8</comment>
+    <requestid>770252</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package weston
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   7
-%define realver	7.0.0
-Version:        7
+%define major   8
+%define realver	8.0.0
+Version:        8
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        MIT AND CC-BY-SA-3.0
@@ -31,8 +31,10 @@ URL:            https://wayland.freedesktop.org/
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
 Source:         https://wayland.freedesktop.org/releases/weston-%realver.tar.xz
 Source3:        %name.keyring
+Patch1:         0001-tests-test-runner-needs-wayland-client.patch
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake >= 1.11
+BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libxml2-tools
@@ -135,6 +137,8 @@ to develop plugins for Weston.
 %autosetup -n %name-%realver -p1
 
 %build
+echo "Workaround broken weston that fails to cope with -Wl,--no-undefined injected by meson/ninja"
+export LDFLAGS="%{?build_ldflags} -Wl,-z,undefs"
 %meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
 %ifarch %ix86 x86_64
 	-Dsimple-dmabuf-drm=intel \

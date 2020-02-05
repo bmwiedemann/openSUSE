@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 26 10:19:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 8
+  * DRM hardware planes should be used more effectively
+  * The DRM backend now supports HDCP
+  * Headless backend now supports OpenGL
+  * DRM backend can now be built without GBM
+  * EGL_KHR_partial_update is now used when available, reducing
+    memory bandwidth usage on some GPUs.
+- Add 0001-tests-test-runner-needs-wayland-client.patch
+
+-------------------------------------------------------------------
 Sat Aug 24 04:06:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 7
