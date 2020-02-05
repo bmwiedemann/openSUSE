@@ -41,4 +41,15 @@
   * pytest4.patch</comment>
     <requestid>730692</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>999e39ceba2fe61c2ef8671971bd7fb1</srcmd5>
+    <version>20.1.1</version>
+    <time>1580928224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.1
+- drop pytest4.patch
+ * new: moved time_ns and perf_counter_ns helper functions here
+ * drop support for python 3.4 and older</comment>
+    <requestid>770268</requestid>
+  </revision>
 </revisionlist>
