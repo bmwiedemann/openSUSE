@@ -104,4 +104,13 @@ factory)</comment>
 - Drop no longer needed lswh-logical-name-iface.patch</comment>
     <requestid>742629</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>23982407450f09665efaceda07ae4034</srcmd5>
+    <version>B.02.18+git.20190613</version>
+    <time>1580928146</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1162690:
+  * lshw-add-notime-option-to-manpage.patch</comment>
+    <requestid>770160</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,39 @@
+From 53d80a099d9b607f6104e4010f02d642decfa588 Mon Sep 17 00:00:00 2001
+From: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
+Date: Mon, 23 Dec 2019 11:59:39 +0530
+Subject: [PATCH] add notime option to manpage
+
+lshw man page and --help are not in sync and the 'notime' option 
+is not present in man page.
+
+This patch adds the option in the manpages.
+
+Signed-off-by: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
+---
+ src/lshw.1 | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/lshw.1 b/src/lshw.1
+index 79c3619..31ff77f 100644
+--- a/src/lshw.1
++++ b/src/lshw.1
+@@ -10,7 +10,7 @@ lshw \- list hardware
+ .sp
+ \fBlshw\fR [ \fB-X\fR ] 
+ .sp
+-\fBlshw\fR [ \fB [ -html ]  [ -short ]  [ -xml ]  [ -json ]  [ -businfo ] \fR ]  [ \fB-dump \fIfilename\fB\fR ]  [ \fB-class \fIclass\fB\fR\fI...\fR ]  [ \fB-disable \fItest\fB\fR\fI...\fR ]  [ \fB-enable \fItest\fB\fR\fI...\fR ]  [ \fB-sanitize\fR ]  [ \fB-numeric\fR ]  [ \fB-quiet\fR ] 
++\fBlshw\fR [ \fB [ -html ]  [ -short ]  [ -xml ]  [ -json ]  [ -businfo ] \fR ]  [ \fB-dump \fIfilename\fB\fR ]  [ \fB-class \fIclass\fB\fR\fI...\fR ]  [ \fB-disable \fItest\fB\fR\fI...\fR ]  [ \fB-enable \fItest\fB\fR\fI...\fR ]  [ \fB-sanitize\fR ]  [ \fB-numeric\fR ]  [ \fB-notime\fR ]  [ \fB-quiet\fR ] 
+ .SH "DESCRIPTION"
+ .PP
+ 
+@@ -74,6 +74,8 @@ Remove potentially sensitive information from output (IP addresses, serial numbe
+ .TP
+ \fB-numeric\fR
+ Also display numeric IDs (for PCI and USB devices).
++\fB-notime\fR
++exclude volatile attributes (timestamps) from output
+ .SH "BUGS"
+ .PP
+ \fBlshw\fR currently does not detect 
+-- 
+2.18.1

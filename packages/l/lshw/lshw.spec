@@ -1,7 +1,7 @@
 #
 # spec file for package lshw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ Source2:        lshw.png
 Patch1:         lshw-display-latest-version.patch
 Patch2:         lshw-help-man.patch
 Patch3:         lshw-modified-time.patch
+Patch4:         lshw-add-notime-option-to-manpage.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
@@ -79,13 +80,10 @@ included documentation or go to the lshw Web page,
 http://www.ezix.org/software/lshw.html
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
-make \
+%make_build \
   SBINDIR="%{_sbindir}" \
   RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing" \
   STRIP=touch \
@@ -119,10 +117,9 @@ rm -f %{buildroot}%{_datadir}/%{name}/pnpid.txt
 %doc README.md docs/TODO docs/Changelog docs/lshw.xsd
 %attr(0755,root,root) %{_sbindir}/lshw
 %dir %{_datadir}/lshw
-%{_mandir}/man1/lshw.1%{ext_man}
+%{_mandir}/man1/lshw.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %files gui
 %defattr(-,root,root,0755)
