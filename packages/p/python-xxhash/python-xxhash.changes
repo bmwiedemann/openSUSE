@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:26:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.3
+  * Upgrade xxHash to v0.7.2
+  * Python 3.8 wheels
+
+-------------------------------------------------------------------
 Wed Oct 30 12:26:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.4.2:
