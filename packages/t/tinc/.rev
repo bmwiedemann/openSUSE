@@ -44,4 +44,14 @@
     <comment></comment>
     <requestid>769912</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>96a6667d0770b6e2adbe695d29f56028</srcmd5>
+    <version>1.0.36</version>
+    <time>1580928169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tinc 1.0.36
+- Rename tinc-1.0.35-systemd-path-fix.patch to tinc-systemd-path-fix.patch
+</comment>
+    <requestid>770173</requestid>
+  </revision>
 </revisionlist>

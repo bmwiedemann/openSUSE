@@ -1,7 +1,7 @@
 #
 # spec file for package tinc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tinc
-Version:        1.0.35
+Version:        1.0.36
 Release:        1%{?dist}
 Summary:        A virtual private network daemon
 License:        GPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Productivity/Networking/Security
 
 URL:            http://www.tinc-vpn.org/
 Source0:        http://www.tinc-vpn.org/packages/%{name}-%{version}.tar.gz
-Patch0:         tinc-1.0.35-systemd-path-fix.patch
+Patch0:         tinc-systemd-path-fix.patch
 
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
