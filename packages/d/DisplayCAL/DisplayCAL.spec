@@ -41,7 +41,7 @@ Obsoletes:      dispcalGUI < 3.1.0.0
 Obsoletes:      dispcalGUI-0install < 3.1.0.0
 BuildRequires:  gcc
 BuildRequires:  python-devel
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
@@ -127,13 +127,13 @@ for path in list(paths):
 	path = path.strip(chr(0x22))
 	if os.path.basename(path) in executables:
 		paths.remove(chr(0x22) + path + chr(0x22))
-		paths.append('%attr(755, root, root) ' + chr(0x22) + path + chr(0x22))
+		paths.append('%%attr(755, root, root) ' + chr(0x22) + path + chr(0x22))
 	while True:
 		path = os.path.dirname(path)
 		if os.path.isdir(path):
 			break
 		else:
-			directory = '%dir ' + chr(0x22) + path + chr(0x22)
+			directory = '%%dir ' + chr(0x22) + path + chr(0x22)
 			if not directory in paths:
 				paths.append(directory)
 f = open('INSTALLED_FILES', 'w')

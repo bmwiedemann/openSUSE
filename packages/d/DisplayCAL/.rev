@@ -832,4 +832,12 @@
     <comment>Update to version 3.8.9.3</comment>
     <requestid>757086</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>ab4f87125543454d567ea22f83bca5f6</srcmd5>
+    <version>3.8.9.3</version>
+    <time>1580928264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770345</requestid>
+  </revision>
 </revisionlist>

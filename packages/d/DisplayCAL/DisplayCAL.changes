@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:14:45 UTC 2020 - olaf@aepfle.de
+
+- escape usage of % in rpm specfile
+
+-------------------------------------------------------------------
+Mon Feb  3 11:57:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Sat Dec 14 12:15:52 UTC 2019 - obs-packaging@displaycal.net
 
 - Update to 3.8.9.3:
