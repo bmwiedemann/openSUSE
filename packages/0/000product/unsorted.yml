@@ -1634,7 +1634,6 @@ unsorted:
   - cilium-docker: [x86_64] 
   - cilium-etcd-operator 
   - cilium-init: [x86_64] 
-  - cilium-microscope 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cimple 
@@ -2561,6 +2560,7 @@ unsorted:
   - edgar 
   - edgar-data 
   - edgar-lang 
+  - edict 
   - editorconfig 
   - editres 
   - edje 
@@ -3208,6 +3208,8 @@ unsorted:
   - frozen-bubble 
   - frozen-bubble-lang 
   - frozen-bubble-server 
+  - frr 
+  - frr-devel 
   - fs-check 
   - fs-uae 
   - fs-uae-arcade 
@@ -5814,6 +5816,14 @@ unsorted:
   - jasper 
   - jatl 
   - jatl-javadoc 
+  - java-11-openj9: [x86_64] 
+  - java-11-openj9-accessibility: [x86_64] 
+  - java-11-openj9-demo: [x86_64] 
+  - java-11-openj9-devel: [x86_64] 
+  - java-11-openj9-headless: [x86_64] 
+  - java-11-openj9-javadoc: [x86_64] 
+  - java-11-openj9-jmods: [x86_64] 
+  - java-11-openj9-src: [x86_64] 
   - java-11-openjdk-accessibility 
   - java-11-openjdk-demo 
   - java-11-openjdk-devel 
@@ -8924,6 +8934,13 @@ unsorted:
   - libfreeimageplus3 
   - libfreesrp0 
   - libfreexl1 
+  - libfrr0 
+  - libfrr_pb0 
+  - libfrrcares0 
+  - libfrrfpm_pb0 
+  - libfrrospfapiclient0 
+  - libfrrsnmp0 
+  - libfrrzmq0 
   - libfsapfs 
   - libfsapfs-devel 
   - libfsapfs1 
@@ -9041,7 +9058,7 @@ unsorted:
   - libgendersplusplus2 
   - libgeners0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos-3_7_2 
+  - libgeos-3_8_0 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-0_6-0 
@@ -11309,6 +11326,7 @@ unsorted:
   - libretro-gambatte 
   - libretro-gtk-0_14-0 
   - libretro-pcsx_rearmed 
+  - libretro-play 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -13782,9 +13800,9 @@ unsorted:
   - mozjs52-devel 
   - mozjs60 
   - mozjs60-devel 
-  - mozldap-devel 
-  - mozldap-libs 
-  - mozldap-tools 
+  - mozldap-devel: [x86_64] 
+  - mozldap-libs: [x86_64] 
+  - mozldap-tools: [x86_64] 
   - mozo 
   - mozo-lang 
   - mp 
@@ -18417,6 +18435,7 @@ unsorted:
   - python2-check-manifest 
   - python2-cheroot 
   - python2-chest 
+  - python2-cilium-microscope 
   - python2-cinderclient 
   - python2-ciscoconfparse 
   - python2-cl 
@@ -20663,6 +20682,7 @@ unsorted:
   - python3-bpython 
   - python3-bqplot 
   - python3-branca 
+  - python3-breathe 
   - python3-brewer2mpl 
   - python3-bsddb3 
   - python3-bsddb3-devel 
@@ -20732,6 +20752,7 @@ unsorted:
   - python3-check-manifest 
   - python3-cheroot 
   - python3-chest 
+  - python3-cilium-microscope 
   - python3-cinderclient 
   - python3-ciscoconfparse 
   - python3-cl 
@@ -24668,6 +24689,7 @@ unsorted:
   - sscape-ctl: [i586] 
   - ssdeep 
   - ssdp-responder 
+  - ssh-audit 
   - ssh-contact 
   - ssh-contact-client 
   - ssh-contact-service 
