@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Feb  4 20:17:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Move Python and Julia bindings for the public gmsh API to
+  separate packages.
+- Remove any references to the unmaintained, swig based
+  bindings.
+
+-------------------------------------------------------------------
+Mon Feb  3 22:37:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.5.2:
+  + periodic meshes now obey reorientation constraints
+  + physical group definitions now follow compound meshing
+    constraints
+  + small bug fixes and improvements
+- Update to 4.5.1:
+  + new Min and Max commands in .geo files
+  + Mesh.MinimumCirclePoints now behaves the same with all
+    geometry kernels
+  + fixed issue with UTF16-encoded home directories on Windows.
+- Update to 4.5.0:
+  + changed default 2D meshing algorithm to Frontal-Delaunay
+  + new compound Spline/BSpline commands
+  + new MeshSizeFromBoundary command
+  + new CGNS importer/exporter
+  + new X3D exporter for geometries and meshes
+  + improved surface mesh reclassification
+  + new separate option to govern curvature adapted meshes
+    (Mesh.MinimumElementsPerTwoPi and "-clcurv val")
+  + improved handling of anisotropic surface meshes in 3D Delaunay
+  + improved high-order periodic meshing
+  + improved 2D boolean unions
+  + file chooser type is now changeable at runtime
+  + FLTK GUI can now be created and destroyed at will through the api
+  + fixed regression in MeshAdapt for non-periodic surfaces with
+    singularities
+  + combining views now copies options
+  + added API support for mesh compounds, per-surface mesh algorithm
+    and mesh size from boundary
+  + renamed plugin AnalyseCurvedMesh to AnalyseMeshQuality
+  + fixed regression for built-in kernel BSplines on non-flat
+    geometries (Sphere, PolarSphere)
+  + small fixes and improvements.
+- Add 0001-Add-two-missing-header-includes-in-GModelIO_OCC.patch
+- Incompatible API changes:
+  + removed mesh/smooth (now handled by mesh/optimize like all
+    other mesh optimizers)
+  + renamed logger/time to logger/getWallTime and logger/cputime
+    to logger/getCpuTime
+  + new arguments to mesh/optimize, mesh/getElementProperties and
+    occ/healShapes
+  + added optional argument to mesh/classifySurfaces and view/combine.
+- Enable OpenMP support
+- Cleanup spec file:
+  + remove no longer relevant gmsh-3.0.5-doc-building.patch
+  + rename and rebase gmsh-3.0.5-add-shebang-to-onelib.patch to
+    gmsh-3.0.5-add-shebang-to-onelab.patch
+  + run fdupes over demos and tutorials.
+- Fix license, GPL-2.0-or-later, not GPL-2.0-only
+- Fix Source: URL
+- Reenable LTO, no more linker segfaults
+
+-------------------------------------------------------------------
+Mon Feb  3 04:11:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch python-devel BuildRequires to python3-devel.
+- Run spec-cleaner over the specfile.
+
+-------------------------------------------------------------------
 Sun Sep 15 03:07:57 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Override build host name to make package build reproducible (boo#1084909)

@@ -1,7 +1,7 @@
 #
 # spec file for package gmsh
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,40 +15,38 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define libver 4_4
+
+%define libver 4_5
 %bcond_with static_lib
-%bcond_with python_bindings
 %bcond_with pdf_doc
-
 Name:           gmsh
-Summary:        A three-dimensional finite element mesh generator
-License:        GPL-2.0
-Group:          Productivity/Scientific/Math
-Version:        4.4.1
+Version:        4.5.2
 Release:        0
-Url:            http://gmsh.info/
-Source0:        http://gmsh.info/src/gmsh-%{version}-source.tgz
-
+Summary:        A three-dimensional finite element mesh generator
+License:        GPL-2.0-or-later
+Group:          Productivity/Scientific/Math
+URL:            https://gmsh.info/
+Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
-#this isn't needed to correctly compile documentation on versions after Leap_42.3
-%if 0%{?suse_version} <= 120300
-Patch5:         gmsh-3.0.5-doc-building.patch
-%endif
-Patch6:         gmsh-3.0.5-add-shebang-to-onelib.patch
+Patch6:         gmsh-3.0.5-add-shebang-to-onelab.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.onelab.info/gmsh/gmsh/issues/739
 Patch7:         0001-Fix-ODR-violations-move-private-classes-into-anonymo.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.onelab.info/gmsh/gmsh/issues/740
 Patch8:         0002-Fix-two-definition-mismatches-in-contrib-mmg3d.patch
-
-BuildRequires:  bison
-BuildRequires:  cmake >= 2.8
-BuildRequires:  flex
-BuildRequires:  gcc-c++
+# PATCH-FIX-UPSTREAM -- https://gitlab.onelab.info/gmsh/gmsh/issues/741
+Patch9:         0001-Add-two-missing-header-includes-in-GModelIO_OCC.patch
 BuildRequires:  Mesa-devel
-BuildRequires:  glu-devel
+BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cgns-devel >= 3.4.0
+BuildRequires:  cmake >= 2.8
+BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  fltk-devel >= 1.1.7
+BuildRequires:  gcc-c++
 BuildRequires:  gl2ps-devel
+BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
@@ -57,19 +55,15 @@ BuildRequires:  libpng-devel
 BuildRequires:  makeinfo
 BuildRequires:  metis-devel
 BuildRequires:  oce-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
 %if %{with pdf_doc}
 BuildRequires:  texinfo-texlive
-%endif
-%if %{with python_bindings}
-BuildRequires:  swig
-BuildRequires:  python-devel
 %endif
 
 %description
 Gmsh is a 3D finite element grid generator with a build-in CAD engine
 and post-processor.
-
 
 %package -n libgmsh%{libver}
 Summary:        A three-dimensional finite element mesh generator
@@ -80,7 +74,6 @@ Gmsh is a 3D finite element grid generator with a build-in CAD engine
 and post-processor.
 
 This package contains the shared libraries.
-
 
 %package        devel
 Summary:        A three-dimensional finite element mesh generator
@@ -128,35 +121,60 @@ and post-processor.
 
 This package contains demos and tutorials.
 
+%package -n gmsh-julia
+Summary:        Julia API for the gmsh mesh generator
+Group:          Development/Libraries
+Requires:       julia
+Requires:       libgmsh%{libver}
+Suggests:       %{name}-demos
+Supplements:    packageand(julia:gmsh)
+
+%description  -n gmsh-julia
+Gmsh is a 3D finite element grid generator with a build-in CAD engine
+and post-processor.
+
+This package contains the public gmsh API for Julia.
+
+%package -n python3-gmsh
+Summary:        Python API for the gmsh mesh generator
+Group:          Development/Libraries
+Requires:       libgmsh%{libver}
+Suggests:       %{name}-demos
+Supplements:    packageand(python3-base:gmsh)
+
+%description  -n python3-gmsh
+Gmsh is a 3D finite element grid generator with a build-in CAD engine
+and post-processor.
+
+This package contains the public gmsh API for Python.
+
 %prep
-%setup  -q -n %{name}-%{version}-source
+%setup -q -n %{name}-%{version}-source
 %patch0 -p1
 %patch1 -p1
-%if 0%{?suse_version} <= 120300
-%patch5 -p1
-%endif
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
-%global _lto_cflags %{nil}
 %cmake \
   -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}/ \
   -DENABLE_BUILD_SHARED:BOOL=ON \
   -DENABLE_BUILD_DYNAMIC:BOOL=ON \
+  -DENABLE_OPENMP:BOOL=ON \
   -DENABLE_SYSTEM_CONTRIB:BOOL=ON \
   -DENABLE_BUILD_LIB:BOOL=%{?with static_lib:ON}%{!?with static_lib:OFF} \
   -DPACKAGER=OBS \
   -DGMSH_HOST=OBS \
 
 # build libs/binaries
-make %{?_smp_mflags} all
+%make_build all
 
 # build documentation
-make %{?_smp_mflags} info html
+%make_build info html
 %if %{with pdf_doc}
-make %{?_smp_mflags} pdf
+%make_build pdf
 %endif
 
 %install
@@ -170,6 +188,14 @@ mv doc/texinfo/gmsh.info %{buildroot}%{_infodir}
 
 chmod 755 %{buildroot}/%{_bindir}/*
 
+%fdupes %{buildroot}/%{_docdir}/%{name}/{demos,tutorial}
+
+# mv python API into python's search path, dito for julia
+mkdir -p %{buildroot}%{python3_sitelib}
+mv %{buildroot}%{_libdir}/gmsh.py %{buildroot}%{python3_sitelib}/gmsh.py
+mkdir -p %{buildroot}%{_datadir}/julia
+mv %{buildroot}%{_libdir}/gmsh.jl %{buildroot}%{_datadir}/julia/gmsh.jl
+
 %post -n libgmsh%{libver} -p /sbin/ldconfig
 
 %post
@@ -181,14 +207,19 @@ chmod 755 %{buildroot}/%{_bindir}/*
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
-%doc %{_mandir}/*/*
-%doc %{_infodir}/%{name}.*
+%{_mandir}/*/*
+%{_infodir}/%{name}.*
 %{_bindir}/*
 
 %files -n libgmsh%{libver}
 %{_libdir}/libgmsh.so.*
-%{_libdir}/gmsh.jl
-%{_libdir}/gmsh.py
+
+%files -n gmsh-julia
+%dir %{_datadir}/julia
+%{_datadir}/julia/gmsh.jl
+
+%files -n python3-gmsh
+%{python3_sitelib}/gmsh.py
 
 %files devel
 %{_includedir}/gmsh*

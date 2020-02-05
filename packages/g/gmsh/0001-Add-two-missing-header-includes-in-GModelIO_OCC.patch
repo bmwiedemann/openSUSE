@@ -1,0 +1,53 @@
+From 34f26bcd64bdd35f0a0b7d89d7358563ee7126f8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 4 Feb 2020 00:16:29 +0100
+Subject: [PATCH] Add two missing header includes in GModelIO_OCC
+
+Fixes the following two errors:
+
+/home/abuild/rpmbuild/BUILD/gmsh-4.5.2-source/Geo/GModelIO_OCC.cpp:1620:68:
+    error: invalid use of incomplete type 'class GeomPlate_PointConstraint'
+1620 |         new GeomPlate_PointConstraint(BRep_Tool::Pnt(vertex), 0, .1);
+     |                                                                    ^
+In file included from /usr/include/oce/GeomPlate_BuildPlateSurface.hxx:26,
+                 from /usr/include/oce/BRepFill_Filling.hxx:13,
+                 from /usr/include/oce/BRepOffsetAPI_MakeFilling.hxx:13,
+                 from /home/abuild/rpmbuild/BUILD/gmsh-4.5.2-source/Geo/GModelIO_OCC.cpp:44:
+/usr/include/oce/Handle_GeomPlate_PointConstraint.hxx:16:7: note: forward declaration of 'class GeomPlate_PointConstraint'
+  16 | class GeomPlate_PointConstraint;
+
+/home/abuild/rpmbuild/BUILD/gmsh-4.5.2-source/Geo/GModelIO_OCC.cpp:4542:54: error: invalid use of incomplete type 'class Poly_PolygonOnTriangulation'
+4542 |   const TColStd_Array1OfInteger &edgeVerts = edgepoly->Nodes();
+     |                                                      ^~
+In file included from /usr/include/oce/BRep_Tool.hxx:22,
+                 from /home/abuild/rpmbuild/BUILD/gmsh-4.5.2-source/Geo/OCCEdge.h:21,
+                 from /home/abuild/rpmbuild/BUILD/gmsh-4.5.2-source/Geo/GModelIO_OCC.cpp:11:
+/usr/include/oce/Handle_Poly_PolygonOnTriangulation.hxx:16:7: note: forward declaration of 'class Poly_PolygonOnTriangulation'
+  16 | class Poly_PolygonOnTriangulation;
+---
+ Geo/GModelIO_OCC.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Geo/GModelIO_OCC.cpp b/Geo/GModelIO_OCC.cpp
+index 2e30247..16d0951 100644
+--- a/Geo/GModelIO_OCC.cpp
++++ b/Geo/GModelIO_OCC.cpp
+@@ -59,6 +59,7 @@
+ #include <ElCLib.hxx>
+ #include <GProp_GProps.hxx>
+ #include <GeomPlate_BuildPlateSurface.hxx>
++#include <GeomPlate_PointConstraint.hxx>
+ #include <GeomAPI_Interpolate.hxx>
+ #include <Geom_BSplineCurve.hxx>
+ #include <Geom_BSplineSurface.hxx>
+@@ -73,6 +74,7 @@
+ #include <IGESControl_Reader.hxx>
+ #include <IGESControl_Writer.hxx>
+ #include <Interface_Static.hxx>
++#include <Poly_PolygonOnTriangulation.hxx>
+ #include <Poly_Triangulation.hxx>
+ #include <Poly_Triangle.hxx>
+ #include <STEPControl_Reader.hxx>
+-- 
+2.25.0
+
