@@ -1,7 +1,7 @@
 #
 # spec file for package hidapi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
 License:        GPL-3.0-or-later OR BSD-3-Clause
 Group:          System/Libraries
-Url:            https://github.com/libusb/hidapi
+URL:            https://github.com/libusb/hidapi
 Source:         https://github.com/libusb/hidapi/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE do_not_install_docs.patch -- don't let make install put files into /usr/share/doc/packages
 Patch0:         do_not_install_docs.patch
@@ -32,10 +32,10 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  make
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libudev)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
