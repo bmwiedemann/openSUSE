@@ -1,7 +1,7 @@
 #
 # spec file for package povray
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define maj_version 3.7
-%define min_version 0.0
+%define min_version 0.8
 Name:           povray
 Version:        %{maj_version}.%{min_version}
 Release:        0
-Summary:        Ray Tracer
-License:        AGPL-3.0 and CC-BY-SA-3.0
+Summary:        Persistence of Vision Raytracer
+License:        AGPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Graphics/Visualization/Raytracers
-Url:            http://www.povray.org
+URL:            http://www.povray.org
 Source:         https://github.com/POV-Ray/povray/archive/v%{version}.tar.gz
 Patch1:         povray-3.6.9.7-ini.patch
 Patch2:         povray-3.6.9.7-fix.patch
-# make boost link
-Patch4:         povray-3.6.9.7-boost-link.patch
 # PATCH-FIX-UPSTREAM bmwiedemann
 Patch5:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  xorg-x11-libX11-devel
@@ -51,7 +45,7 @@ BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     povray-doc
 
 %description
 The Persistence of Vision Ray tracer creates three-dimensional,
@@ -63,11 +57,17 @@ not a fast process by any means, (the generation of a complex image can
 take several hours) but it produces very high quality images with
 realistic reflections, shading, perspective, and other effects.
 
+%package doc
+Summary:        Documentation for POV-Ray
+Group:          Documenation/HTML
+
+%description doc
+This package contains the Povray documentation.
+
 %prep
 %setup -q
 %patch1
 %patch2
-%patch4
 %patch5 -p1
 
 # remove inline copies of shared libraries
@@ -82,13 +82,8 @@ dos2unix -k unix/scripts/*.sh
 
 %build
 ( cd unix && ./prebuild.sh )
-%ifarch %arm
-# work around ICE
-RPM_OPT_FLAGS="%{optflags} -O1"
-%endif
-CXXFLAGS="%{optflags} -fno-strict-aliasing -Wno-multichar -std=c++03" CFLAGS="$CXXFLAGS" \
-    %configure \
-    COMPILED_BY="SUSE LINUX GmbH, Nuernberg, Germany" \
+%configure \
+    COMPILED_BY=%{vendor} \
     --disable-strip \
     --disable-optimiz \
     --with-boost-libdir=%{_libdir}
@@ -101,12 +96,8 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} \
-     povdocdir=/deleteme \
+     povdocdir=%{_defaultdocdir}/povray \
      install
-
-# this only contains the AUTHORS and changelog files, not the actual
-# documentation
-rm -rf %{buildroot}/deleteme
 
 # fix wrong permissions
 chmod 755 %{buildroot}%{_datadir}/povray-%{maj_version}/scenes/camera/mesh_camera/bake.sh
@@ -114,13 +105,18 @@ chmod 755 %{buildroot}%{_datadir}/povray-%{maj_version}/scenes/camera/mesh_camer
 %fdupes %{buildroot}/%{_datadir}
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS LICENSE README.md changes.txt revision.txt
+%doc AUTHORS README.md changes.txt revision.txt
+%doc %{_defaultdocdir}/povray/{ChangeLog,NEWS}
+%license LICENSE
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/%{maj_version}
 %config(noreplace) %{_sysconfdir}/%{name}/%{maj_version}/%{name}.*
 %{_bindir}/povray
 %{_datadir}/povray-%{maj_version}
 %{_mandir}/man1/povray.1*
+%exclude %{_defaultdocdir}/povray/html
+
+%files doc
+%{_defaultdocdir}/povray/html
 
 %changelog

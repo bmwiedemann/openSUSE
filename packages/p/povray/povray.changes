@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:31:51 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to maintenance release 3.7.0.8
+  * Changes between 3.7.0.7 and 3.7.0.8
+    + Modify thread creation code to more easily address thread stack size issues
+      in Mac OS builds (requires Boost 1.50 or later to be effective).
+  * Changes between 3.7.0.6 and 3.7.0.7
+    + Fix configure script failing to properly handle `.` directory in
+      `C_INCLUDE_PATH` or `CPLUS_INCLUDE_PATH` (fixes GitHub issue #342,
+      "AX_FIX_INCORRECT_PATH is broken").
+  * Changes between 3.7.0.5 and 3.7.0.6
+    + Fix configure script failing to use -lboost_system with Boost 1.66
+      (fixes GitHub issue #341, "macOS build failure for 3.7.0.5").
+  * Changes between 3.7.0.4 and 3.7.0.5
+    + Fixed compatibility with systems defining `NULL` as `0` when using
+      `shared_ptr` from C++11 rather than boost/tr1 (GitHub issue #339).
+    + Fixed compatibility with systems not exposing `atof` in the global
+      namespace (reported in discussion about GitHub issue #317).
+    + Eliminated use of `register` keyword to silence warnings with C++11 (where
+      the keyword is deprecated) and improve compatibility with C++17 (where the
+      keyword is disallowed).
+  * Changes between 3.7.0.3 and 3.7.0.4
+    + Fixed minor error in Unix man page.
+    + Partially fixed incompatibility with Boost 1.65.0.
+  * Changes between 3.7.0.2 and 3.7.0.3
+    + Updated OpenEXR file handling code to be compatible with GNU C++ compiler
+      g++ 6.x (missed that code portion in 3.7.0.2).
+    + Fixed a bug discovered in bicubic patch code that could theoretically lead
+      to unpredictable behaviour. (To our knowledge, the official 3.7.0 Windows
+      binaries should be safe.)
+  * Changes between 3.7.0.1 and 3.7.0.2
+    + Updated the bundled boost library to version 1.62, as the version bundled
+      with the 3.7.0.1 source code (boost 1.59) turned out to have a bug that
+      would have caused POV-Ray for Windows to wake the computer from sleep mode
+      even when not currently rendering.
+    + Updated code to be compatible with GNU C++ compiler g++ 6.x (tested with
+      6.3.1).
+  * Changes between 3.7.0 and 3.7.0.1
+    + Updated the Unix build process to be compatible with modern versions of
+      Automake.
+    + Updated the Unix build process to automatically link the `boost_system`
+      library if required, to be compatible with modern versions of the boost
+      libraries.
+    + Updated the source code to eliminate conflicts with C++11.
+    + Updated the Unix-specific source code and build process to be compatible
+      with Mac OS X.
+- Drop obsolete povray-3.6.9.7-boost-link.patch
+- Correct License, with Povray 3.7.0 the license changed to
+  AGPL-3.0-or-later, see http://www.povray.org/download/
+- Package documentation
+
+-------------------------------------------------------------------
 Mon May 22 04:25:02 UTC 2017 - bwiedemann@suse.com
 
 - Add reproducible.patch to sort input files to make build reproducible
