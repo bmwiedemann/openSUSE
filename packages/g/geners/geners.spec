@@ -1,7 +1,7 @@
 #
 # spec file for package geners
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define shlib lib%{name}0
 Name:           geners
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        Generic Serialization for C++
 License:        X11
 Group:          Development/Libraries/C and C++
-Url:            http://geners.hepforge.org/
+URL:            http://geners.hepforge.org/
 Source:         http://www.hepforge.org/archive/geners/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
@@ -72,7 +72,8 @@ find %{buildroot} -name "*.la" -delete -print
 %{_libdir}/*.so.*
 
 %files devel
-%doc AUTHORS LICENSE NEWS README
+%doc AUTHORS NEWS README
+%license LICENSE
 %{_libdir}/*.so
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc
