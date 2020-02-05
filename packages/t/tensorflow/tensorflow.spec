@@ -1,7 +1,7 @@
 #
 # spec file for package tensorflow
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -222,7 +222,7 @@ Source44:       https://github.com/nanopb/nanopb/archive/f8ac463766281625ad71090
 Source45:       https://mirror.bazel.build/docs.python.org/2.7/_sources/license.rst.txt
 # Deps sources for Tensorflow-Lite (use same eigen, gemmlowp and abseil_cpp packages as non lite version)
 Source100:      https://github.com/google/googletest/archive/release-1.8.0.tar.gz
-Source101:      https://github.com/intel/ARM_NEON_2_x86_SSE/archive/master.zip
+Source101:      https://github.com/intel/ARM_NEON_2_x86_SSE/archive/master.zip#/ARM_NEON_2_x86_SSE-master.zip
 Source102:      http://github.com/google/farmhash/archive/816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz
 # Source103:      http://mirror.tensorflow.org/github.com/google/flatbuffers/archive/v1.11.0.tar.gz
 Source104:      http://www.kurims.kyoto-u.ac.jp/~ooura/fft.tgz
@@ -421,10 +421,7 @@ pwd
 %patch3 -p 1
 %patch4 -p 1
 %patch5 -p 1
-# grpc patches only needed for TW atm
-%if 0%{?suse_version} > 1500
 %patch6 -p 1
-%endif
 
 echo $MPI_DIR
 
@@ -455,7 +452,7 @@ popd
 
 %build
 %if !%{is_lite}
-%limit_build -m 6100
+%limit_build -m 6200
 %endif
 
 %if %{is_lite}
