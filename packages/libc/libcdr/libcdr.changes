@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  2 20:22:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 0.1.6
+  * Extend support to the newest CDR format versions
+    + Supports currently CDR 1 to 21, which is all released
+      versions to date
+
+-------------------------------------------------------------------
 Mon Oct  2 11:21:08 UTC 2017 - jengelh@inai.de
 
 - Trim build characteristics from description.
