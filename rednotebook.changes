@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Jan 24 10:38:18 UTC 2020 - max.oss.09@gmail.com
+- update to 2.16
+
+  + Add menu items for adding titles (#464, Paweł Żukowski).
+  + Upgrade msgfmt.py to version 1.2 (#470).
+
+-------------------------------------------------------------------
+Wed Jan 01 23:38:18 UTC 2020 - max.oss.09@gmail.com
+- update to 2.15
+  + Fix tray icon on Windows (#394).
+
+  2.14 (2019-11-17)
+  + Support entry reference links in exported HTML (#452, Paweł Żukowski).
+  + Add support for dark themes to cloud panel (#438).
+
+  2.13 (2019-11-07)
+  + Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski).
+  + Add option for controlling number of displayed tags (#456, Paweł Żukowski).
+  + Fix setting maximum number of displayed tags (#461).
+
+  2.12 (2019-11-02)
+  + Allow linking between days with dates like 2019-02-14 and `[named links 2019-02-14]` (#176, #444, Paweł Żukowski).
+  + Allow opening statistics dialog multiple times in one session (#370, #457, Paweł Żukowski).
+  + Warn about outdated backups every week by default.
+  + Increase default width of left panel to ensure that the calendar is fully visible (#376).
+
+  2.11.1 (2019-04-07)
+  + Always initialize spell checking whenever we switch text buffers (fixes #435).
+
+  2.11 (2019-03-26)
+  + Revert to GTK 3.18 stack on Windows (fixes #429 and #430).
+
+  2.10 (2019-03-24)
+  + Automatically push newest version to flathub.
+
+  2.9.1 (2019-03-20)
+  + Disable internal preview on Windows again since it sometimes crashes the app.
+
+  2.9 (2019-03-17)
+  + Use Python 3.6 and GTK 3.22 on Windows.
+  + Build Windows installer with Appveyor.
+
+  2.8.1 (2019-03-17)
+  + Load the correct template for a given weekday (fixes #416).
+  + Clear text buffers when opening a new journal (fixes #421).
+  + Minor bug fixes.
+
+  2.8 (2018-11-15)
+  + Support internal previews on Windows again (#369).
+
+  2.7.1 (2018-11-13)
+  + Never let search phrases end up in the main text field (fixes #401).
+  + Fix spell checking (fixes #412).
+
+  2.7 (2018-11-06)
+  + Use GtkSourceView for editor to obtain better undo/redo functionality (thanks @takluyver).
+  + When saving, update the list of tags in the auto-complete list for the search.
+  + Fix opening RedNotebook homepage from About dialog (#411).
+
+  2.6.1 (2018-08-21)
+  + Fix bug preventing new installations from starting up.
+
+  2.6 (2018-08-20)
+  + Move date format option to preferences dialog.
+  + Use date format option for date in titlebar.
+  + Remember selected date format for exports between sessions.
+  + Check remote info.py file for latest version number.
+  + Check for latest version in separate thread.
+
+  2.5 (2018-06-08)
+  + Restore instant search (search as you type).
+  + Add option for disabling instant search to preferences dialog.
+  + Disable undo/redo buttons in preview mode (fixes #103).
+  + Remove option to show/hide right-side tags panel from GUI (still present in configuration file).
+
+  2.4 (2018-03-07)
+  + Make search significantly faster by indexing all days.
+  + Allow searching for multiple words.
+  + Add AppVersion to InnoSetup file.
+  + Homepage: Switch to HTTPS.
+-------------------------------------------------------------------
 Sat Sep 30 18:33:30 UTC 2017 - zaitor@opensuse.org
 
 - Update to version 2.3:

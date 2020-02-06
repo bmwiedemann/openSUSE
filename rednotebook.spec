@@ -1,7 +1,7 @@
 #
 # spec file for package rednotebook
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rednotebook
-Version:        2.3
+Version:        2.16
 Release:        0
 Summary:        Graphical diary and journal
 # See note at the end of README: code is using some LGPL-3.0+ module, so the resulting work is GPL-3.0+.
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
-Url:            http://rednotebook.sourceforge.net/
+URL:            http://rednotebook.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/rednotebook/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -59,7 +59,8 @@ python3 setup.py install --prefix=%{_prefix} --exec-prefix=%{_prefix} --root=%{b
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc CHANGELOG LICENSE README.md
+%license LICENSE
+%doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.svg
