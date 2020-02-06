@@ -1,0 +1,16 @@
+--- a/src/commands/CmdDiagnostics.cpp
++++ b/src/commands/CmdDiagnostics.cpp
+@@ -126,11 +126,11 @@ int CmdDiagnostics (
+   out << "Build Features\n"
+ 
+   // Build date.
+-      << "          Built: " << __DATE__ << " " << __TIME__ << '\n'
++      << "          Built: yes" << '\n'
+ #ifdef HAVE_COMMIT
+       << "         Commit: " << COMMIT << '\n'
+ #endif
+-      << "          CMake: " << CMAKE_VERSION << '\n';
++      << "          CMake: 0" << '\n';
+ 
+   out << "     Build type: "
+ #ifdef CMAKE_BUILD_TYPE

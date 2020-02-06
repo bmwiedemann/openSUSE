@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Feb  6 09:57:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup specfile
+
+-------------------------------------------------------------------
+Thu Dec 26 15:42:22 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 1.2.0. Full changelog available at https://github.com/GothenburgBitFactory/timewarrior/blob/1.2.0/ChangeLog
+- Changed source url to GitHub
+
+-------------------------------------------------------------------
+Mon Mar 18 07:34:02 UTC 2019 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+-  Update to 1.1.1
+  - Taskwarrior integration hook now uses a project 'Home.Garden' as a single
+    tag 'Home.Garden' as well as individual 'Home', 'Garden' tags.
+  - Taskwarrior integration hook now stops the clock in more situations, such
+    as deleting or waiting a task.
+  - The 'tags' command now supports filters.
+  - New date names supported (see 'timew help date' or 'man timew').
+  - Timewarrior and Taskwarrior now use the same date handling.
+  - The 'continue' command can resume tracking by @id.
+  - When specifying a time without a date (e.g. '10:00am'), the day is assumed
+    to be today, and is no longer projected back in time.
+
+-------------------------------------------------------------------
+Wed Nov  9 17:49:22 UTC 2016 - olaf@aepfle.de
+
+- Initial version 1.0.0
+  timewarrior-build-compare.patch
+
