@@ -576,10 +576,11 @@ cp %{SOURCE11} %{buildroot}%{_mandir}/man1/%{progname}.1
 #
 mkdir -p %{buildroot}%{_datadir}/mozilla/extensions/%{firefox_appid}
 mkdir -p %{buildroot}%{_libdir}/mozilla/extensions/%{firefox_appid}
-mkdir -p %{buildroot}/usr/share/pixmaps/
-ln -sf %{progdir}/browser/chrome/icons/default/default128.png %{buildroot}/usr/share/pixmaps/%{progname}.png
-ln -sf %{progdir}/browser/chrome/icons/default/default128.png %{buildroot}/usr/share/pixmaps/%{progname}-gnome.png
 %if %branding
+# Install symbolic icon for GNOME
+mkdir -p %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/
+cp %{_builddir}/%{srcname}-%{orig_version}/browser/branding/official/content/identity-icons-brand.svg \
+   %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/%{progname}-symbolic.svg
 for size in 16 22 24 32 48 64 128 256; do
 %else
 for size in 16 32 48; do
@@ -693,7 +694,6 @@ exit 0
 %endif
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/mime/packages/%{progname}.xml
-%{_datadir}/pixmaps/firefox*
 %dir %{_datadir}/mozilla
 %dir %{_datadir}/mozilla/extensions
 %dir %{_datadir}/mozilla/extensions/%{firefox_appid}
