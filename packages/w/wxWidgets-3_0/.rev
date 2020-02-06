@@ -215,4 +215,12 @@ Ignore the build failure on x86_64 which was because of a worker failure.</comme
 - Update relax-abi.diff for new upstream patch.</comment>
     <requestid>621874</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>b702dbd1e32cc9755003b0f46369f4e2</srcmd5>
+    <version>3.0.4</version>
+    <time>1580990827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769486</requestid>
+  </revision>
 </revisionlist>
