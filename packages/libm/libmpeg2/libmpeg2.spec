@@ -1,7 +1,7 @@
 #
 # spec file for package libmpeg2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Disable SDL/Xv output in mpeg2dec, there are plenty of other tools
+%bcond_with video_out
 
 %define libname libmpeg2-0
 %define libconvertname libmpeg2convert0
@@ -23,9 +26,9 @@ Name:           libmpeg2
 Version:        0.5.1
 Release:        0
 Summary:        MPEG-2 Video Stream Decoder
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://libmpeg2.sourceforge.net/
+URL:            http://libmpeg2.sourceforge.net/
 Source:         http://libmpeg2.sourceforge.net/files/libmpeg2-%{version}.tar.gz
 Source99:       baselibs.conf
 
@@ -35,9 +38,11 @@ Patch2:         libmpeg2-0.5.1-global-symbol-test.patch
 
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+%if %{with video_out}
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
+%endif
 
 %description
 libmpeg2 is a library for decoding MPEG-1 and MPEG-2 video streams.
@@ -61,7 +66,6 @@ Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{libconvertname} = %{version}
 Requires:       %{libname} = %{version}
-Requires:       SDL-devel
 
 %description devel
 Include Files and Libraries mandatory for libmpeg2 Development
@@ -83,7 +87,11 @@ autoreconf -vi
 %configure \
 	--disable-static \
 	--disable-dependency-tracking \
+%if %{with video_out}
 	--enable-sdl \
+%else
+	--disable-sdl \
+%endif
 	%{nil}
 make %{?_smp_mflags}
 

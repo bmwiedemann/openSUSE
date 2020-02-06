@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:58:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove unnecessary Requires: SDL-devel from devel package.
+- Disable SDL and Xv output in mpeg2dec. There a plenty of better
+  video players. Removes X11 and SDL1 build dependency from
+  library package.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:56:58 UTC 2018 - bjorn.lie@gmail.com
 
 - Do a minor spec clean.
