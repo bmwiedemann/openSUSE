@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,6 @@ Requires:       libgstreamer-1_0-0 = %{version}
 # Core modules may depend on new enough libraries:
 Requires:       libgstreamer-1_0-0 >= %{version}
 Requires(pre):  permissions
-Recommends:     %{name}-lang = %{version}
 # Generic name, never used in SuSE:
 Provides:       gstreamer-doc = %{version}
 
