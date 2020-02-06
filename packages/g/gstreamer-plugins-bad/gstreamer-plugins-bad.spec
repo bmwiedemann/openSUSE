@@ -117,7 +117,6 @@ Requires(postun): glib2-tools
 #%%define gstreamer_plugins_bad_req %%(xzgrep --text "^GST.*_REQ" %%{S:0} | sort -u | sed 's/GST_REQ=/gstreamer >= /;s/GSTPB_REQ=/gstreamer-plugins-base >= /' | tr '\\n' ' ')
 #Requires:       %%gstreamer_plugins_bad_req
 # FIXME
-Recommends:     %{name}-lang
 Enhances:       gstreamer
 # Generic name, never used in SuSE:
 Provides:       gst-plugins-bad = %{version}
