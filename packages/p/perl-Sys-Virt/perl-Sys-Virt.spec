@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sys-Virt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Sys-Virt
-Version:        5.8.0
+Version:        6.0.0
 Release:        0
 %define cpan_name Sys-Virt
 Summary:        Represent and manage a libvirt hypervisor connection
 License:        GPL-2.0-or-later OR ClArtistic
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/Sys-Virt
+URL:            https://metacpan.org/release/Sys-Virt
 Source:         %{cpan_name}-v%{version}.tar.gz
 Patch0:         suse-set-migration-constraints.patch
 # Build
