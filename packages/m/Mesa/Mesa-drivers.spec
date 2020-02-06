@@ -126,6 +126,7 @@ Source6:        %{name}-rpmlintrc
 Source7:        Mesa.keyring
 Patch1:         n_opencl_dep_libclang.patch
 Patch2:         n_add-Mesa-headers-again.patch
+Patch3:         U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -747,6 +748,8 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %endif
 %endif
 %patch2 -p1
+# reverse apply since it caused a regression in rendering on s390x (bsc#1162252)
+%patch3 -p1 -R
 %patch54 -p1
 %patch58 -p1
 %patch61 -p1

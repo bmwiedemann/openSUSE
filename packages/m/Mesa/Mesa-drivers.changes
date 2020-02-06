@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 17:17:44 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
+  * reverse apply since it caused a regression in rendering on
+    s390x (bsc#1162252)
+
+-------------------------------------------------------------------
 Wed Jan 29 22:56:19 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - require and check for llvm-devel >= 9 instead of llvm9-devel on
