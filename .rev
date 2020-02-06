@@ -97,4 +97,12 @@
 - Add some missing dir-only markers in files section. (forwarded request 742222 from StefanBruens)</comment>
     <requestid>743079</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>004010810362e5e72e898406454fd115</srcmd5>
+    <version>1.9.7</version>
+    <time>1580990741</time>
+    <user>dimstar_suse</user>
+    <comment>Drop armv6l.patch to fix build on armv6 (forwarded request 769212 from Guillaume_G)</comment>
+    <requestid>769284</requestid>
+  </revision>
 </revisionlist>

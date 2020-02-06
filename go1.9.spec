@@ -1,7 +1,7 @@
 #
 # spec file for package go1.9
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,9 @@
 # nodebuginfo
 
 
-# strip will cause Go's .a archives to become invalid because strip appears to
-# reassemble the archive incorrectly. This is a known issue upstream
-# (https://github.com/golang/go/issues/17890), but we have to deal with it in
-# the meantime.
-%undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 # By default use go and not gccgo
 %define with_gccgo 0
-
 # The fallback boostrap method via go1.4 does not work for Factory because
 # of a known bug with binutils 2.27 https://github.com/golang/go/issues/16906.
 # Leap will work but we don't have go1.4 in there.
@@ -34,25 +27,23 @@
 # openSUSE Factory, Leap 15.x, SLE 15
 %define with_gccgo 1
 %endif
-
 # The fallback bootstrap method via go1.4 doesn't work
 # for aarch64 nor ppc64le because go 1.4 did not support that architecture.
 %ifarch aarch64 ppc64le ppc64 s390x
 %define with_gccgo 1
 %endif
-
 # By default we don't include tsan. It's only supported on amd64.
 %define tsan_arch x86_64
-
 # Go has precompiled versions of LLVM's compiler-rt inside their source code.
 # We cannot ship pre-compiled binaries so we have to recompile said source,
 # however they vendor specific commits from upstream. This value comes from
 # src/runtime/race/README (and we verify that it matches in check).
 # See boo#1052528 for more details.
 %define tsan_commit 68e1532492f9b3fce0e9024f3c31411105965b11
-
 %define go_api 1.9
-
+%ifarch ppc64
+%define with_shared 0
+%endif
 # shared library support
 %if "%{rpm_vercmp %{go_api} 1.5}" > "0"
 %if %{with_gccgo}
@@ -67,17 +58,13 @@
 %else
 %define with_shared 0
 %endif
-%ifarch ppc64
-%define with_shared 0
-%endif
-
 Name:           go1.9
 Version:        1.9.7
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-Url:            http://golang.org
+URL:            http://golang.org
 Source:         http://golang.org/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
 Source4:        README.SUSE
@@ -95,9 +82,6 @@ Patch3:         verbose-build.patch
 Patch4:         go-1.5-install-dont-reinstall-stdlibs.patch
 # PATCH-FIX-OPENSUSE enable writing tools outside $GOROOT/pkg/tool for packaging
 Patch5:         tools-packaging.patch
-# armv6l needs this patch for our build system
-# see https://groups.google.com/forum/#!topic/golang-nuts/MqKTX_XIOKE
-Patch6:         armv6l.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
@@ -105,7 +89,27 @@ Patch10:        gcc9-go.patch
 # PATCH-FIX-UPSTREAM (compiler-rt): Fix sanitizer build against latest glibc
 Patch100:       fix-sanitizer-build-against-latest-glibc.patch
 Patch101:       gcc9-rsp-clobber.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  fdupes
+#BNC#818502 debug edit tool of rpm fails on i586 builds
+BuildRequires:  rpm >= 4.11.1
+Requires:       gcc
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Recommends:     %{name}-doc = %{version}
+Provides:       go = %{version}
+Provides:       go-devel = go%{version}
+Provides:       go-devel-static = go%{version}
+Provides:       golang(API) = %{go_api}
+Obsoletes:      go-devel < go%{version}
+# go-vim/emacs were separate projects starting from 1.4
+Obsoletes:      go-emacs <= 1.3.3
+Obsoletes:      go-vim <= 1.3.3
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x
+# strip will cause Go's .a archives to become invalid because strip appears to
+# reassemble the archive incorrectly. This is a known issue upstream
+# (https://github.com/golang/go/issues/17890), but we have to deal with it in
+# the meantime.
+%undefine _build_create_debug
 # boostrap
 %if %{with_gccgo}
 %ifnarch s390 s390x
@@ -125,26 +129,10 @@ BuildRequires:  gcc7-go
 # no gcc-go
 BuildRequires:  go1.4
 %endif
-BuildRequires:  fdupes
-Recommends:     %{name}-doc = %{version}
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
 BuildRequires:  gcc-c++
 %endif
-#BNC#818502 debug edit tool of rpm fails on i586 builds
-BuildRequires:  rpm >= 4.11.1
-Requires(post):	update-alternatives
-Requires(postun):	update-alternatives
-Requires:       gcc
-Provides:       go = %{version}
-Provides:       go-devel = go%{version}
-Provides:       go-devel-static = go%{version}
-Provides:       golang(API) = %{go_api}
-Obsoletes:      go-devel < go%{version}
-# go-vim/emacs were separate projects starting from 1.4
-Obsoletes:      go-emacs <= 1.3.3
-Obsoletes:      go-vim <= 1.3.3
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x
 
 %description
 Go is an expressive, concurrent, garbage collected systems programming language
@@ -167,7 +155,7 @@ Go examples and documentation.
 %package race
 Summary:        Go runtime race detector
 Group:          Development/Languages/Other
-Url:            https://compiler-rt.llvm.org/
+URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
 ExclusiveArch:  %{tsan_arch}
@@ -191,9 +179,6 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%ifarch armv6hl
-%patch6 -p1
-%endif
 %if %{with_gccgo}
 %if 0%{?suse_version} == 1315
 # SLE12 or Leap 42.x
@@ -293,8 +278,8 @@ for ext in *.{go,c,h,s,S,py,syso}; do
   find src -name ${ext} -exec install -Dm644 \{\} %{buildroot}%{_datadir}/go/%{go_api}/\{\} \;
 done
 mkdir -p $GOROOT/src
-for i in $(ls %{buildroot}/usr/share/go/%{go_api}/src);do
-  ln -s /usr/share/go/%{go_api}/src/$i $GOROOT/src/$i
+for i in $(ls %{buildroot}%{_datadir}/go/%{go_api}/src);do
+  ln -s %{_datadir}/go/%{go_api}/src/$i $GOROOT/src/$i
 done
 # add lib files that are needed (such as the timezone database).
 install -d $GOROOT/lib
@@ -369,7 +354,7 @@ fi
 %doc %{_docdir}/go/%{go_api}/AUTHORS
 %doc %{_docdir}/go/%{go_api}/CONTRIBUTORS
 %doc %{_docdir}/go/%{go_api}/CONTRIBUTING.md
-%doc %{_docdir}/go/%{go_api}/LICENSE
+%license %{_docdir}/go/%{go_api}/LICENSE
 %doc %{_docdir}/go/%{go_api}/PATENTS
 %doc %{_docdir}/go/%{go_api}/README.md
 %doc %{_docdir}/go/%{go_api}/README.SUSE
