@@ -172,4 +172,32 @@
  * A big refactoring around contexts/values</comment>
     <requestid>759790</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>04c019d291393e242cb3473685437298</srcmd5>
+    <version>0.16.0</version>
+    <time>1580991568</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0
+- add delete.patch
+ * Added Script.get_context to get information where you currently are.
+ * Completions/type inference of Pytest fixtures.
+ * Tensorflow, Numpy and Pandas completions should now be about 4-10x faster after the first time they are used.
+ * Dict key completions are working now. e.g. d = {1000: 3}; d[10 will expand to 1000.
+ * Completion for “proxies” works now. These are classes that have a __getattr__(self, name) method that does a return getattr(x, name). after loading them initially.
+ * Goto on a function/attribute in a class now goes to the definition in its super class.
+ * Big Script API Changes:
+   + The line and column parameters of jedi.Script are now deprecated
+   + completions deprecated, use complete instead
+   + goto_assignments deprecated, use goto instead
+   + goto_definitions deprecated, use infer instead
+   + call_signatures deprecated, use get_signatures instead
+   + usages deprecated, use get_references instead
+   + jedi.names deprecated, use jedi.Script(...).get_names()
+ * BaseDefinition.goto_assignments renamed to BaseDefinition.goto
+ * Add follow_imports to Definition.goto. Now its signature matches Script.goto.
+ * Python 2 support deprecated. For this release it is best effort. Python 2 has reached the end of its life and now it’s just about a smooth transition. Bugs for Python 2 will not be fixed anymore and a third of the tests are already skipped.
+ * Removed settings.no_completion_duplicates. It wasn’t tested and nobody was probably using it anyway.
+ * Removed settings.use_filesystem_cache and settings.additional_dynamic_modules, they have no usage anymore. Pretty much nobody was probably using them.</comment>
+    <requestid>769953</requestid>
+  </revision>
 </revisionlist>

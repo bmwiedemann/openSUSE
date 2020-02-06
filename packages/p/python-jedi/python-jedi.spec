@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jedi
-Version:        0.15.2
+Version:        0.16.0
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Patch0:         unbundle.patch
+Patch1:         delete.patch
 BuildRequires:  %{python_module parso >= 0.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -54,6 +55,7 @@ implementation as a VIM plugin which uses Jedi's autocompletion.
 %prep
 %setup -q -n jedi-%{version}
 %patch0 -p1
+%patch1 -p1
 rm -Rf jedi/third_party
 
 %build
