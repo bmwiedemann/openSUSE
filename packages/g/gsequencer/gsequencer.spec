@@ -22,13 +22,13 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        3.0.4
+Version:        3.1.1
 Release:        0
 Summary:        Audio processing engine
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 Url:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.0.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.1.x/%{name}-%{version}.tar.gz
 BuildRequires:  cunit-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -78,7 +78,7 @@ export CPPFLAGS='-std=gnu99 -include errno.h -DAGS_CSS_FILENAME=\"'%{_datadir}'/
 %if %{with run_functional_tests}
     --enable-run-functional-tests \ 
 %endif
-    HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" GOBJECT_API_DOC="\.\.\/gobject" GTK_API_DOC="\.\.\/gtk3" LIBAGS_API_DOC="\.\.\/libags" LIBAGS_AUDIO_API_DOC="\.\.\/libags_audio" LIBAGS_GUI_API_DOC="\.\.\/libags_gui" --enable-introspection --disable-oss --enable-gtk-doc --enable-gtk-doc-html
+    HTMLHELP_XSL="/usr/share/xml/docbook/stylesheet/nwalsh/current/htmlhelp/htmlhelp.xsl" --disable-upstream-gtk-doc --enable-introspection --disable-oss --enable-gtk-doc --enable-gtk-doc-html
 
 %make_build all
 %make_build html
@@ -90,18 +90,6 @@ export CPPFLAGS='-std=gnu99 -include errno.h -DAGS_CSS_FILENAME=\"'%{_datadir}'/
 %make_install install-html-mkdir
 %make_install install-html-mkdir-links
 %make_install install-html
-mkdir -p %{buildroot}%{_datadir}/gtk-doc/html/libags
-mkdir -p %{buildroot}%{_datadir}/gtk-doc/html/libags_audio
-mkdir -p %{buildroot}%{_datadir}/gtk-doc/html/libags_gui
-mkdir -p %{buildroot}%{_datadir}/gtk-doc/html/libgsequencer
-mv %{buildroot}%{_datadir}/doc/libags-doc/api/* %{buildroot}%{_datadir}/gtk-doc/html/libags
-mv %{buildroot}%{_datadir}/doc/libags-audio-doc/api/* %{buildroot}%{_datadir}/gtk-doc/html/libags_audio
-mv %{buildroot}%{_datadir}/doc/libags-gui-doc/api/* %{buildroot}%{_datadir}/gtk-doc/html/libags_gui
-mv %{buildroot}%{_datadir}/doc/libgsequencer-doc/api/* %{buildroot}%{_datadir}/gtk-doc/html/libgsequencer
-rm -rf %{buildroot}%{_datadir}/doc/libags-doc/api/
-rm -rf %{buildroot}%{_datadir}/doc/libags-audio-doc/api/
-rm -rf %{buildroot}%{_datadir}/doc/libags-gui-doc/api/
-rm -rf %{buildroot}%{_datadir}/doc/libgsequencer-doc/api/
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc-base/
 mkdir -p %{buildroot}%{_datadir}/doc/packages

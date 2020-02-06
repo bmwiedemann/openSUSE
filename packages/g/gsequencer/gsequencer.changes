@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  5 17:37:18 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.1.1 implemented meta widgets of notation,
+  automation and wave editor.
+- implemented getter/setter functions of many properties.
+- implemented acoustic feedback of DSSI and LV2 recall.
+- fixed missing ref-count of AgsRecallDssi:count-beats-audio-run.
+- fixed automation editor not showing again after machine changed.
+- edited spec file to use --disabled-upstream-gtk-doc which causes
+  the makefile to install into standard directories.
+
+-------------------------------------------------------------------
 Fri Jan 17 08:10:16 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.0.4 migrated to Gtk3, added GObject-Introspection
