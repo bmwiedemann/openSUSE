@@ -1339,4 +1339,37 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   glibc supported NIS on its own.</comment>
     <requestid>763333</requestid>
   </revision>
+  <revision rev="148" vrev="6">
+    <srcmd5>94e59759f45f596f4f110c09997b9314</srcmd5>
+    <version>2.7.17</version>
+    <time>1580991526</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide python-testsuite from devel subkg to ease py2-&gt;py3
+  dependencies
+
+- Add python-2.7.17-switch-off-failing-SSL-tests.patch to switch
+  off tests coliding with the combination of modern Python and
+  ancient OpenSSL on SLE-12.
+
+- Provide python-testsuite from devel subkg to ease py2-&gt;py3
+  dependencies
+
+- Add python-2.7.17-switch-off-failing-SSL-tests.patch to switch
+  off tests coliding with the combination of modern Python and
+  ancient OpenSSL on SLE-12.
+
+- libnsl is required only on more recent SLEs and openSUSE, older
+  glibc supported NIS on its own.
+
+- Provide python-testsuite from devel subkg to ease py2-&gt;py3
+  dependencies
+
+- Add python-2.7.17-switch-off-failing-SSL-tests.patch to switch
+  off tests coliding with the combination of modern Python and
+  ancient OpenSSL on SLE-12.
+
+- libnsl is required only on more recent SLEs and openSUSE, older
+  glibc supported NIS on its own.</comment>
+    <requestid>769788</requestid>
+  </revision>
 </revisionlist>

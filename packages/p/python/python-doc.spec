@@ -83,6 +83,8 @@ Patch55:        bpo36302-sort-module-sources.patch
 # to /usr/local if executable is /usr/bin/python* and RPM build
 # is not detected to make pip and distutils install into separate location
 Patch56:        adapted-from-F00251-change-user-install-location.patch
+# Switch couple of tests failing on acient SLE-12
+Patch57:        python-2.7.17-switch-off-failing-SSL-tests.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc
 Provides:       pyth_ps
@@ -136,8 +138,12 @@ Python, and Macintosh Module Reference in PDF format.
 %patch40 -p1
 %endif
 %patch41 -p1
+%if %{suse_version} >= 1500
 %patch47 -p1
 %patch48 -p1
+%else
+%patch57 -p1
+%endif
 %patch49 -p1
 %patch50 -p1
 %patch51 -p1

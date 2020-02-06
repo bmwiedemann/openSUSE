@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  3 19:30:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Provide python-testsuite from devel subkg to ease py2->py3
+  dependencies
+
+-------------------------------------------------------------------
+Mon Jan 27 16:47:56 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add python-2.7.17-switch-off-failing-SSL-tests.patch to switch
+  off tests coliding with the combination of modern Python and
+  ancient OpenSSL on SLE-12.
+
+-------------------------------------------------------------------
+Fri Jan 10 16:01:57 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- libnsl is required only on more recent SLEs and openSUSE, older
+  glibc supported NIS on its own.
+
+-------------------------------------------------------------------
 Thu Jan  2 10:34:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add provides in gdbm subpackage to provide dbm symbols. This
