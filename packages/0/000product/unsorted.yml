@@ -1044,6 +1044,7 @@ unsorted:
   - bazel-compilation-database-source 
   - bazel-gazelle 
   - bazel-gazelle-source 
+  - bazel-platforms 
   - bazel-rules-apple-source 
   - bazel-rules-cc-source 
   - bazel-rules-foreign-cc-source 
@@ -4464,6 +4465,7 @@ unsorted:
   - gmsh-demos 
   - gmsh-devel 
   - gmsh-doc 
+  - gmsh-julia 
   - gmusicbrowser 
   - gmusicbrowser-lang 
   - gn 
@@ -7058,10 +7060,10 @@ unsorted:
   - libBox2D-devel-32bit: [x86_64] 
   - libBox2D2_3_1 
   - libBox2D2_3_1-32bit: [x86_64] 
-  - libBulletFileLoader2_88 
-  - libBulletInverseDynamicsUtils2_88 
-  - libBulletWorldImporter2_88 
-  - libBulletXmlWorldImporter2_88 
+  - libBulletFileLoader2_89 
+  - libBulletInverseDynamicsUtils2_89 
+  - libBulletWorldImporter2_89 
+  - libBulletXmlWorldImporter2_89 
   - libCGAL13 
   - libCGAL_Core13 
   - libCGAL_ImageIO14 
@@ -7072,7 +7074,7 @@ unsorted:
   - libColPack0 
   - libColPack0-32bit: [x86_64] 
   - libColorFull0 
-  - libConvexDecomposition2_88 
+  - libConvexDecomposition2_89 
   - libEMF-devel 
   - libEMF-utils 
   - libFAudio0 
@@ -7084,7 +7086,7 @@ unsorted:
   - libFS-devel-32bit: [x86_64] 
   - libFS6 
   - libFS6-32bit: [x86_64] 
-  - libGIMPACTUtils2_88 
+  - libGIMPACTUtils2_89 
   - libGLC-devel 
   - libGLC0 
   - libGLEW2_1-32bit: [x86_64] 
@@ -7106,7 +7108,7 @@ unsorted:
   - libGraphicsMagick-Q16-3 
   - libGraphicsMagick3-config 
   - libGraphicsMagickWand-Q16-2 
-  - libHACD2_88 
+  - libHACD2_89 
   - libHX-devel 
   - libHX-devel-32bit: [x86_64] 
   - libHYPRE-gnu-mpich-hpc 
@@ -8155,7 +8157,7 @@ unsorted:
   - libbtrfsutil1 
   - libbuffer0_3 
   - libbullet-devel 
-  - libbullet2_88 
+  - libbullet2_89 
   - libburn-devel 
   - libbuzztrax-core-devel 
   - libbuzztrax-core1 
@@ -9134,7 +9136,7 @@ unsorted:
   - libgmime-2_6-0-32bit: [x86_64] 
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4-32bit: [x86_64] 
-  - libgmsh4_4 
+  - libgmsh4_5 
   - libgnome-desktop-3-18-32bit: [x86_64] 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
@@ -12193,9 +12195,9 @@ unsorted:
   - libwebsockets-devel 
   - libwebsockets15 
   - libwebvfx1 
-  - libweston-7 
-  - libweston-7-0 
-  - libweston-desktop-7-0 
+  - libweston-8 
+  - libweston-8-0 
+  - libweston-desktop-8-0 
   - libwget-devel 
   - libwget0 
   - libwiiuse0 
@@ -17378,6 +17380,7 @@ unsorted:
   - pound 
   - pound-doc 
   - povray 
+  - povray-doc 
   - powdertoy 
   - powerd 
   - powerline 
@@ -17677,7 +17680,6 @@ unsorted:
   - python-faulthandler 
   - python-fedmsg-base 
   - python-fedmsg-doc 
-  - python-fityk 
   - python-flake8-doc 
   - python-flup-doc 
   - python-freezerclient-doc 
@@ -17954,6 +17956,7 @@ unsorted:
   - python2-Morfessor 
   - python2-MulticoreTSNE 
   - python2-OWSLib 
+  - python2-PGet 
   - python2-Parsley 
   - python2-Paste 
   - python2-PasteDeploy 
@@ -18581,7 +18584,6 @@ unsorted:
   - python2-django-contrib-comments 
   - python2-django-crispy-forms 
   - python2-django-environ 
-  - python2-django-invitations 
   - python2-django-jinja 
   - python2-django-js-asset 
   - python2-django-json-widget 
@@ -19815,6 +19817,7 @@ unsorted:
   - python2-soundcloud 
   - python2-sounddevice 
   - python2-soupsieve 
+  - python2-sox 
   - python2-spake2 
   - python2-spark_parser 
   - python2-speaklater 
@@ -19965,7 +19968,6 @@ unsorted:
   - python2-twython 
   - python2-txWS 
   - python2-txZMQ 
-  - python2-txaio 
   - python2-txt2tags 
   - python2-txtorcon 
   - python2-typing 
@@ -20228,6 +20230,7 @@ unsorted:
   - python3-Morfessor 
   - python3-MulticoreTSNE 
   - python3-OWSLib 
+  - python3-PGet 
   - python3-Parsley 
   - python3-Paste 
   - python3-PasteDeploy 
@@ -21099,6 +21102,7 @@ unsorted:
   - python3-fire 
   - python3-first 
   - python3-fissix 
+  - python3-fityk 
   - python3-fixtures 
   - python3-flake8 
   - python3-flake8-blind-except 
@@ -21190,6 +21194,7 @@ unsorted:
   - python3-gmconfig 
   - python3-gmpy 
   - python3-gmpy2 
+  - python3-gmsh 
   - python3-gnucash 
   - python3-gobject-Dee 
   - python3-gobject-devel 
@@ -22440,6 +22445,7 @@ unsorted:
   - python3-soundcloud 
   - python3-sounddevice 
   - python3-soupsieve 
+  - python3-sox 
   - python3-spake2 
   - python3-spark_parser 
   - python3-sparse 
@@ -23065,6 +23071,7 @@ unsorted:
   - redeclipse 
   - redeclipse-data 
   - redfish-finder 
+  - redfishtool 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
@@ -24693,6 +24700,7 @@ unsorted:
   - ssh-contact 
   - ssh-contact-client 
   - ssh-contact-service 
+  - ssh-tools 
   - sshguard 
   - sshpass 
   - sshuttle 
