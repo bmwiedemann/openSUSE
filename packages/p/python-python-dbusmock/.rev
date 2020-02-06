@@ -28,4 +28,12 @@
   - Fix tests for Python 3.8</comment>
     <requestid>741463</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a7759660aa8f7e7d192bbfdc2a8b975e</srcmd5>
+    <version>0.18.3</version>
+    <time>1580991551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769869</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dbusmock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Requires:       dbus-1-python
 Requires:       dbus-1-x11
+Requires:       python-dbus-python
 Requires:       python-gobject
 Provides:       python-dbusmock = %{version}
 BuildArch:      noarch

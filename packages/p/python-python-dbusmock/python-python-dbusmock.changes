@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:18:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-dbus-python: dbusmock can't work without this
+  module.
+
+-------------------------------------------------------------------
 Mon Oct 21 09:50:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.18.3:
