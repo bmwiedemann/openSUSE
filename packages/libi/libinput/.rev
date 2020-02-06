@@ -716,4 +716,12 @@ Peter Hutterer (3):
     <comment></comment>
     <requestid>760844</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>dc8985c2bf2fd4c8f6786e3c4af1f252</srcmd5>
+    <version>1.15.1</version>
+    <time>1580990802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.15.1</comment>
+    <requestid>769447</requestid>
+  </revision>
 </revisionlist>

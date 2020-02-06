@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  3 06:16:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.1
+  * A specific event sequence involving proximity timeouts and
+    eraser buttons could previously trigger invalid proximity
+    in/out sequences, leading to a crash in the clients.
+  * ALPS touchpads now automatically reduce the slot-count based
+    on the number of actually provided fingers. The kernel
+    hardcodes 5 but we don't always get 5 finger locations, so
+    now we adjust this down to match.
+
+-------------------------------------------------------------------
 Sat Jan  4 17:56:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove doxygen and graphviz BuildRequires, documentation has
