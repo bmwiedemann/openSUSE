@@ -451,7 +451,7 @@ for mpm in %{mpms_to_build}; do
 	mv include/ap_config_auto.h.new include/ap_config_auto.h
 	sed -i -e "s@%{_localstatedir}/run@%{runtimedir}@g" include/ap_config_layout.h
 
-	make CFLAGS="%{optflags} -fvisibility=hidden -fPIC -Wall -DDEFAULT_ERRORLOG='\"%{logfiledir}/error_log\"'" %{?_smp_mflags}
+	make CFLAGS="%{optflags} -fvisibility=hidden -fPIC -Wall -DDEFAULT_LISTENBACKLOG=APR_INT32_MAX -DDEFAULT_ERRORLOG='\"%{logfiledir}/error_log\"'" %{?_smp_mflags}
 	make DESTDIR=%{buildroot} install -j1
 
 	# show pathnames in config files

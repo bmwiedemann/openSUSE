@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 18:22:09 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- define DEFAULT_LISTENBACKLOG=APR_INT32_MAX. We want apache
+  to honour net.core.somaxconn sysctl as the mandatory limit. 
+  the old value of 511 was never used as until v5.4-rc6 it was 
+  clamped to 128, in current kernels the default limit is 4096. 
+  Cannot use the apr_socket_listen(.., -1) idiom because the function
+  expects a positive integer argument.
+
+-------------------------------------------------------------------
 Mon Jan 20 13:04:23 UTC 2020 - pgajdos@suse.com
 
 - apache2-devel now provides httpd-devel [bsc#1160100]

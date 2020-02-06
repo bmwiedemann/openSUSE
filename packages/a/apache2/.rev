@@ -1637,4 +1637,17 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- apache2-devel now provides httpd-devel [bsc#1160100]</comment>
     <requestid>765787</requestid>
   </revision>
+  <revision rev="165" vrev="8">
+    <srcmd5>4aed5dea31b5ab21f2ff22085d6290e1</srcmd5>
+    <version>2.4.41</version>
+    <time>1580990814</time>
+    <user>dimstar_suse</user>
+    <comment>- define DEFAULT_LISTENBACKLOG=APR_INT32_MAX. We want apache
+  to honour net.core.somaxconn sysctl as the mandatory limit. 
+  the old value of 511 was never used as until v5.4-rc6 it was 
+  clamped to 128, in current kernels the default limit is 4096. 
+  Cannot use the apr_socket_listen(.., -1) idiom because the function
+  expects a positive integer argument. (forwarded request 769110 from elvigia)</comment>
+    <requestid>769465</requestid>
+  </revision>
 </revisionlist>
