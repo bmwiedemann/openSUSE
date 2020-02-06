@@ -3115,4 +3115,12 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     a second Thunderbird window opened</comment>
     <requestid>767881</requestid>
   </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>03fd2e308fc6429ceafdf920e51e98a7</srcmd5>
+    <version>68.4.2</version>
+    <time>1580990763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769383</requestid>
+  </revision>
 </revisionlist>

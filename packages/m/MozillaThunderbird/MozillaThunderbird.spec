@@ -513,6 +513,10 @@ cat > %{buildroot}%{progdir}/defaults/pref/all-l10n.js << EOF
 pref("general.useragent.locale", "chrome://global/locale/intl.properties");
 EOF
 #
+# Install symbolic icon for GNOME
+mkdir -p %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/
+cp %{_builddir}/%{source_prefix}/comm/mail/branding/thunderbird/TB-symbolic.svg \
+   %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/%{progname}-symbolic.svg
 for size in 16 22 24 32 48 64 128; do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
   cp %{buildroot}%{progdir}/chrome/icons/default/default$size.png \
@@ -594,6 +598,7 @@ exit 0
 %{_datadir}/appdata/
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{progname}.png
+%{_datadir}/icons/hicolor/symbolic/apps/%{progname}-symbolic.svg
 %{_bindir}/%{progname}
 
 %if %localize
