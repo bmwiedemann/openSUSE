@@ -2,9 +2,9 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/garrigue/lablgtk.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">2.18.8</param>
-    <!-- 2.18.8 -->
-    <param name="revision">lablgtk2188</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <!-- 2.18.10 -->
+    <param name="revision">d66addf4e9dc5ed489e85529475645996afa68a8</param>
     <param name="filename">ocaml-lablgtk2</param>
 <param name="exclude">.cvsignore</param>
 <param name="exclude">applications</param>

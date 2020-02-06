@@ -16,7 +16,7 @@
 #
 
 
-Version:        2.18.8
+Version:        2.18.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 %global __ocaml_requires_opts -i GtkSourceView_types -i GtkSourceView2_types
