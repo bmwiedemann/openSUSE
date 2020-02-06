@@ -1,7 +1,7 @@
 #
 # spec file for package cacti
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@
 %define cacti_dir %{apache_datadir}/cacti
 %endif
 Name:           cacti
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
-Group:          System/Monitoring
 URL:            http://www.cacti.net/
 Source0:        http://www.cacti.net/downloads/%{name}-%{version}.tar.gz
 Source1:        %{name}.cron
@@ -84,7 +83,6 @@ well.
 
 %package doc
 Summary:        Documentation for Cacti
-Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 
 %description doc

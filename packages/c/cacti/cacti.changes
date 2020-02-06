@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  2 17:10:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.8:
+  * CVE-2019-17357: When viewing graphs, some input variables were
+    not properly checked (SQL injection possible) [boo#1158990]
+  * CVE-2019-17358: Unsafe deserialisation of data [boo#1158992]
+  * When using HTTPS, secure cookie to prevent potential weakness
+  * various bug fixes
+
+-------------------------------------------------------------------
+Thu Oct 17 15:13:04 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Mon Sep 30 05:52:15 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
 
 -Build version 1.2.7
