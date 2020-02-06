@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb  5 20:11:56 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 0.51:
+  * Fixed --font-file relative path handling.
+  * Fixed a bug in resolving the repository root directory from a
+    relative path.
+- Changes from version 0.50:
+  * Right mouse button rotation now pivots around the camera.
+  * Added --font-file option.
+  * Added --enable-font-file option to configure.
+  * Added --no-time-travel option.
+  * Added --dir-name-position option.
+  * Added --file-extension-fallback option.
+  * Added --user-show-filter option.
+  * Added --disable-input option.
+  * Added --loop-delay-seconds option.
+  * Added --font-scale option.
+  * Added filename, dirname and user font size options.
+  * Added workaround for FFMpeg error parsing Gource PPM video
+    output.
+  * Fixed a bug in the Mercurial log parser that caused changes to
+    be missed.
+  * Fixed file removal being cancelled by an action with an earlier
+    timestamp.
+  * Fixed a bug in the log file format detection that could result
+    in the wrong first entry being displayed for a custom log.
+  * Fixed a bug where automatically cycling through a config with
+    multiple repositories reset settings to their defaults.
+- Remove obsolete conditional from spec file.
+- Update URL.
+
+-------------------------------------------------------------------
 Mon Jul 16 14:15:19 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 0.49:

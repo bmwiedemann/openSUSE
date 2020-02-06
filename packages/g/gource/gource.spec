@@ -1,7 +1,7 @@
 #
 # spec file for package gource
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gource
-Version:        0.49
+Version:        0.51
 Release:        0
 Summary:        Software version control visualization tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
-Url:            http://gource.io/
+URL:            https://gource.io/
 Source:         https://github.com/acaudwell/Gource/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(SDL2_image) >= 2.0
@@ -35,11 +36,6 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(sdl2) >= 2.0
 Requires:       freefont
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_filesystem-devel
-%else
-BuildRequires:  boost-devel >= 1.46
-%endif
 
 %description
 Gource is a software version control visualization tool.
