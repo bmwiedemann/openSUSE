@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Feb  5 10:47:40 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.9.3 
+  * Fix gir
+  * Migrate to meson
+  * Update the date to 2020
+  * Use gio-2.32+
+  * Update api version to 3.0
+  * Update holiday
+  * Support DBus
+  * Use gtest
+  * Fix heavenly stems and earthly branches, and horoscope
+
+-------------------------------------------------------------------
+Thu May  5 07:39:41 UTC 2011 - ailin.nemui@gmail.com
+
+- new package: liblunar-date, version 2.4.0
+
