@@ -4278,4 +4278,41 @@ always built-in because vim has direct perl dependencies anyway.
   * When reusing a buffer listeners are not cleared. (Axel Forsman)</comment>
     <requestid>764661</requestid>
   </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>f662af95d3dd468ce9c74acbbad123ba</srcmd5>
+    <version>8.2.0200</version>
+    <time>1580990823</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed disable-unreliable-tests.patch and vim-7.3-help_tags.patch
+- Updated to version 8.2.0200, fixes the following problems
+  * Message test fails on some platforms. (Elimar Riesebieter)
+  * virtcol() does not check arguments to be valid, which may lead to a crash.
+  * filter() and map() on blob don't work.
+  * complete_info() does not work when CompleteDone is triggered.
+  * Compiler warnings for variable types.
+  * :mode no longer works for any system.
+  * Textprop test fails.
+  * Some buffer commands work in a popup window.
+  * Cannot list options one per line.
+  * Python3 ranges are not tested.
+  * Command line is not cleared when switching tabs and the command line
+  height differs.
+  * Script may be re-used when deleting and creating a new one.
+  * Invalid memory access with search command.
+  * Some map functionality not covered by tests.
+  * Bracketed paste can still cause invalid memory access. (Dominique Pelle)
+  * Stray ch_logfile() call.
+  * Crash when using win_execute() from a new tab.
+  * Memory leak when starting a job fails.
+  * No swift filetype detection.
+  * Possible to enter popup window with CTRL-W p. (John Devin)
+  * Coverity warning for possible use of NULL pointer.
+  * Some mapping code is not fully tested.
+  * Using #error for compilation errors should be OK now.
+  * Wrong indent when 'showbreak' and 'breakindent' are set and 'briopt'
+  includes &quot;sbr&quot;.
+  * Block Visual mode operators not correct when 'linebreak' set.
+  * Mapping related function in wrong source file.</comment>
+    <requestid>769482</requestid>
+  </revision>
 </revisionlist>

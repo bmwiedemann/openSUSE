@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:17:59 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Refreshed disable-unreliable-tests.patch and vim-7.3-help_tags.patch
+- Updated to version 8.2.0200, fixes the following problems
+  * Message test fails on some platforms. (Elimar Riesebieter)
+  * virtcol() does not check arguments to be valid, which may lead to a crash.
+  * filter() and map() on blob don't work.
+  * complete_info() does not work when CompleteDone is triggered.
+  * Compiler warnings for variable types.
+  * :mode no longer works for any system.
+  * Textprop test fails.
+  * Some buffer commands work in a popup window.
+  * Cannot list options one per line.
+  * Python3 ranges are not tested.
+  * Command line is not cleared when switching tabs and the command line
+  height differs.
+  * Script may be re-used when deleting and creating a new one.
+  * Invalid memory access with search command.
+  * Some map functionality not covered by tests.
+  * Bracketed paste can still cause invalid memory access. (Dominique Pelle)
+  * Stray ch_logfile() call.
+  * Crash when using win_execute() from a new tab.
+  * Memory leak when starting a job fails.
+  * No swift filetype detection.
+  * Possible to enter popup window with CTRL-W p. (John Devin)
+  * Coverity warning for possible use of NULL pointer.
+  * Some mapping code is not fully tested.
+  * Using #error for compilation errors should be OK now.
+  * Wrong indent when 'showbreak' and 'breakindent' are set and 'briopt'
+  includes "sbr".
+  * Block Visual mode operators not correct when 'linebreak' set.
+  * Mapping related function in wrong source file.
+  * Maintaining a Vim9 branch separately is more work.
+  * Cannot define python function when using :execute. (Yasuhiro Matsumoto)
+  * Detecting a script was already sourced is unreliable.
+  * Restoring ctrl_x_mode is not needed.
+  * Warning shows when listing version info.
+  * Reallocating the list of scripts is inefficient.
+  * Warnings from MinGW compiler. (John Marriott) Json test fails when
+  building without +float feature.
+  * Various typos in source files and tests.
+  * Vim9 script files not in list of distributed files.
+  * Triggering CompleteDone earlier is not backwards compatible. (Daniel
+  Hahler)
+  * Non-materialized range() list causes problems. (Fujiwara Takuya)
+  * Range test fails.
+  * Not recognizing .gv file as dot filetype.
+  * Balloon test fails in the GUI.
+  * Test hangs on MS-Windows console.
+  * Test_alot takes too long.
+  * Coverity warning for using NULL pointer.
+  * Coverity warning for using uninitialized variable.
+  * Coverity warning for ignoring return value.
+  * Coverity warning for assigning NULL to an option.
+  * Coverity warning for dead code.
+  * Coverity warning for ignoring return value.
+  * Coverity warning for using uninitialized buffer.
+  * Coverity warning for not restoring character.
+  * Various commands not completely tested.
+  * Crash when removing list element in map().
+  * Generating os headers does not work for Swedish.
+  * Memory leak in get_tags().
+  * With VTP the screen may not be restored properly.
+  * Still a few places where range() does not work.
+  * Test for wrapmargin fails if terminal is not 80 columns.
+  * Problems parsing :term arguments.
+  * Min() and max() materialize a range() list.
+  * Tests fail when the float feature is disabled.
+  * Blob test fails.
+  * Vim9 script: cannot use "if has()" to skip lines.
+  * A couple of tests may fail when features are missing.
+  * Reduntant code.
+  * Check commands don't work well with Vim9 script.
+  * cd() with NULL argument crashes.
+  * Kotlin files are not recognized.
+  * Cannot put a terminal in a popup window.
+  * Build failure without +terminal feature.
+  * Still build failure without +terminal feature.
+  * Some commands can cause problems in terminal popup.
+  * Some tests fail when run in the GUI.
+  * Blocking commands for a finished job in a popup window.
+  * Some Ex commands not sufficiently tested.
+  * No tests for y/n prompt.
+
+-------------------------------------------------------------------
 Wed Jan 15 12:54:34 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.0119, fixes the following problems
