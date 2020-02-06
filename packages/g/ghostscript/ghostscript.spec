@@ -1,7 +1,7 @@
 #
 # spec file for package ghostscript
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,9 @@ BuildRequires:  xorg-x11-devel
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  zlib-devel
 # Always check if latest version of penjpeg becomes compatible with ghostscript
-#BuildRequires:  pkgconfig(libopenjp2)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -321,6 +323,9 @@ rm -f Resource/Init/*.ps.orig
 rm -rf jpeg libpng tiff
 %else
 rm -rf freetype jpeg libpng tiff
+%endif
+%if 0%{?suse_version} >= 1550
+rm -rf openjpeg
 %endif
 # In contrast to the above we use lcms2 from SUSE since Ghostscript 9.23rc1
 # because that is what Ghostscript upstream recommends according to

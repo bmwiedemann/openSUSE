@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:26:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use system openjpeg2 on Tumbleweed/Factory.
+
+-------------------------------------------------------------------
 Mon Sep 23 08:24:49 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
 
 - Made ghostscript profile enforcing and limit it to the ghostscript
