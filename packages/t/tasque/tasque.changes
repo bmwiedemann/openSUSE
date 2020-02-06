@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:56:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(glib-sharp-2.0) and
+  pkgconfig(gtk-sharp-2.0) BuildRequires: configure has always been
+  checking for them, but we relied on them implicitily being pulled
+  in by something else.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:20:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
