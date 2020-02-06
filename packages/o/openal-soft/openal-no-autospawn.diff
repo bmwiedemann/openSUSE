@@ -1,14 +1,25 @@
-disable pulseaudio auto spawn as it is annoying
-Index: openal-soft-1.17.2/Alc/backends/pulseaudio.c
-===================================================================
---- openal-soft-1.17.2.orig/Alc/backends/pulseaudio.c
-+++ openal-soft-1.17.2/Alc/backends/pulseaudio.c
-@@ -1669,7 +1669,7 @@ static ALCboolean ALCpulseBackendFactory
-         pa_threaded_mainloop *loop;
+From b5911219a2770c0ceb982ee8c98e954b8c5a5f0e Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Tue, 4 Feb 2020 15:24:47 +0100
+Subject: [PATCH] Disable pulseaudio auto spawning
+
+---
+ alc/backends/pulseaudio.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/alc/backends/pulseaudio.cpp b/alc/backends/pulseaudio.cpp
+index be4e742c..376af844 100644
+--- a/alc/backends/pulseaudio.cpp
++++ b/alc/backends/pulseaudio.cpp
+@@ -1449,7 +1449,7 @@ bool PulseBackendFactory::init()
+ #endif /* HAVE_DYNLOAD */
  
-         pulse_ctx_flags = 0;
--        if(!GetConfigValueBool(NULL, "pulse", "spawn-server", 1))
-+        if(!GetConfigValueBool(NULL, "pulse", "spawn-server", 0))
-             pulse_ctx_flags |= PA_CONTEXT_NOAUTOSPAWN;
+     pulse_ctx_flags = PA_CONTEXT_NOFLAGS;
+-    if(!GetConfigValueBool(nullptr, "pulse", "spawn-server", 1))
++    if(!GetConfigValueBool(nullptr, "pulse", "spawn-server", 0))
+         pulse_ctx_flags |= PA_CONTEXT_NOAUTOSPAWN;
  
-         if((loop=pa_threaded_mainloop_new()) &&
+     try {
+-- 
+2.16.4
+

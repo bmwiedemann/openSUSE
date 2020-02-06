@@ -1,7 +1,7 @@
 #
 # spec file for package openal-soft
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openal-soft
-Version:        1.19.1
+Version:        1.20.1
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND MIT
@@ -33,8 +33,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libmysofa)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 OpenAL is an audio library designed in the spirit of the OpenGL API.
@@ -70,16 +71,18 @@ OpenAL is an audio library designed in the spirit of the OpenGL API.
 This subpackage contains libraries and header files for developing
 applications that want to make use of openal-soft.
 
-%package makehrtf
+%package makemhr
 Summary:        OpenAL Soft HRTF generation utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Conflicts:      openal-soft-devel < %{version}
+Provides:       makehrtf = %version-%release
 Provides:       openal-soft-devel:%{_bindir}/makehrtf
+Obsoletes:      makehrtf < %version
 
-%description makehrtf
+%description makemhr
 OpenAL is an audio library designed in the spirit of the OpenGL API.
-This package contains the makehrtf utility for creating head-related
+This package contains the makemhr utility for creating head-related
 transfer functions (HRTF).
 
 %package data
@@ -127,12 +130,15 @@ capture.
 %setup -q
 %patch0 -p1
 # License conflict with the rest of the stack, and we don't use it (Android backend)
-rm -v Alc/backends/opensl.c
+rm -v alc/backends/opensl.cpp
 
 %build
+# jack backend doesn't work due to missing jack_error_callback
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DALSOFT_CONFIG=ON \
+  -DALSOFT_DLOPEN=OFF \
+  -DALSOFT_BACKEND_JACK=OFF \
   -Wno-dev
 %make_jobs
 gcc -Wall %{optflags} -fPIC -DPIC -Wl,-soname,libopenal.so.0 -shared -Wl,--no-as-needed -L. -lopenal -o libopenal.so.0 %{SOURCE1}
@@ -154,8 +160,8 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %{_bindir}/altonegen
 %{_bindir}/alrecord
 
-%files makehrtf
-%{_bindir}/makehrtf
+%files makemhr
+%{_bindir}/makemhr
 
 %files data
 %license COPYING
@@ -164,8 +170,7 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %dir %{_datadir}/openal
 %{_datadir}/openal/alsoftrc.sample
 %dir %{_datadir}/openal/hrtf
-%{_datadir}/openal/hrtf/default-44100.mhr
-%{_datadir}/openal/hrtf/default-48000.mhr
+%{_datadir}/openal/hrtf/Default?HRTF.mhr
 %dir %{_datadir}/openal/presets
 %{_datadir}/openal/presets/3D7.1.ambdec
 %{_datadir}/openal/presets/hexagon.ambdec
