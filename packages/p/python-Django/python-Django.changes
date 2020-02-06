@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Wed Jan 15 14:25:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+Tue Feb  4 09:42:08 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.2.10
+- drop pyyaml53.patch
+ * fix boo#1161919 (CVE-2020 7471) Potential SQL injection via ``StringAgg(delimiter)``
+
+
+-------------------------------------------------------------------
+Wed Jan 15 15:08:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add pyyaml53.patch - fix tests with PyYAML 5.3
 
