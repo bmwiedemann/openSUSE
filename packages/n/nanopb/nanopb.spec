@@ -1,7 +1,7 @@
 #
 # spec file for package nanopb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,17 @@
 
 
 %define sover 0
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.3.9.4
+Version:        0.4.0
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
-Group:          Development/Libraries/C and C++
-Url:            https://jpa.kapsi.fi/nanopb/
-Source:         %{name}-%{version}.tar.xz
+URL:            https://jpa.kapsi.fi/nanopb/
+Source:         https://github.com/nanopb/nanopb/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  protobuf-devel
-BuildRequires:  python-devel
-BuildRequires:  python-rpm-macros
 
 %description
 Nanopb is a C implementation of Google's Protocol Buffers data format. It is
@@ -40,7 +36,6 @@ with tight (2-10 kB ROM, <1 kB RAM) memory constraints.
 
 %package -n libprotobuf-nanopb%{sover}
 Summary:        Shared library for nanopb
-Group:          System/Libraries
 
 %description -n libprotobuf-nanopb%{sover}
 Shared library for nanopb - a C implementation of Google's Protocol Buffers
@@ -48,7 +43,6 @@ data format.
 
 %package devel
 Summary:        Development files for nanopb
-Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-nanopb%{sover} = %{version}
 
 %description devel
@@ -57,7 +51,6 @@ data format.
 
 %package source
 Summary:        Source code of nanopb
-Group:          Development/Sources
 BuildArch:      noarch
 
 %description source
@@ -70,18 +63,18 @@ format.
 sed -i 's|/\* #define PB_FIELD_16BIT 1 \*/|#define PB_FIELD_16BIT 1|' ./pb.h
 
 %build
-%cmake -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
-%make_jobs
+# nanopb_BUILD_GENERATOR - requires python2
+%cmake \
+  -Dnanopb_BUILD_GENERATOR=OFF
+%cmake_build
 
 %install
 %cmake_install
-rm %{buildroot}%{python_sitelib}/nanopb_pb2.py
-rm %{buildroot}%{python_sitelib}/plugin_pb2.py
 
 mkdir -p %{buildroot}%{src_install_dir}
 tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 # Fix env-script-interpreter rpmlint error
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!/usr/bin/env python|#!/usr/bin/python|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python|' "{}" +
 # Add support for tag numbers > 255 and fields larger than 255 bytes.
 sed -i 's|/\* #define PB_FIELD_16BIT 1 \*/|#define PB_FIELD_16BIT 1|' %{buildroot}%{src_install_dir}/pb.h
 

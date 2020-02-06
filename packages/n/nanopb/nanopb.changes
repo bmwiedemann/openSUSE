@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 30 13:39:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- As we download the tags directly no need for services and we
+  can fetch it using URL paths
+- Do not build generators as those require python2 and we are
+  removing that from the dsitribution
+- Update to 0.4.0:
+  * Make nanopb_generator automatically compile .proto files (#462)
+  * Allow installing as Python package from pip (#460)
+  * Use protoc from grpcio-tools Python package if available (#463)
+  * Change proto3 message types to be optional (#308, #452)
+  * Add pb_decode_ex(), pb_encode_ex() functions.
+  * Automatically rebuild nanopb_pb2.py
+  * Use plugin.proto that comes with python-protobuf (#234)
+
+-------------------------------------------------------------------
 Tue Dec 17 13:41:21 UTC 2019 - mrostecki@opensuse.org
 
 - Update to version 0.3.9.4:
