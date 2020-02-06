@@ -75,17 +75,12 @@ Source5:        %{name}.keyring
 Source6:        fipscheck.sh.in
 Source7:        fips-enforce.conf
 %endif
-# Needs rebase
-Patch1:         %{name}_modprobe_syslog.patch
 Patch2:         %{name}_ipsec_service.patch
 %if %{with fipscheck}
 Patch3:         %{name}_fipscheck.patch
-# Patch4 needs rebase, file it patches no longer exists in tarball.
-Patch4:         %{name}_fipsfilter.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
-# Needs rebase
-Patch6:         0006-fix-compilation-error-by-adding-stdint.h.patch
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  curl-devel
@@ -257,17 +252,11 @@ and the load testing plugin for IKEv2 daemon.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
-# Needs rebase, file it patches no longer exists.
-#patch1 -p1
 %patch2 -p1
 %if %{with fipscheck}
 %patch3 -p1
-# Needs rebase, file it patches no longer exists.
-#patch4 -p1
 %endif
 %patch5 -p1
-# Needs rebase.
-#patch6 -p1
 sed -e 's|@libexecdir@|%_libexecdir|g'    \
      < %{_sourcedir}/strongswan.init.in \
      > strongswan.init

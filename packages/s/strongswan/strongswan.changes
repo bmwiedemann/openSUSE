@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 30 13:43:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop upstream fixed patches:
+  * strongswan_modprobe_syslog.patch
+  * strongswan_fipsfilter.patch
+  * 0006-fix-compilation-error-by-adding-stdint.h.patch
+
+-------------------------------------------------------------------
 Sun Jan 26 08:54:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace %__-type macro indirections. Update homepage URL to https.
