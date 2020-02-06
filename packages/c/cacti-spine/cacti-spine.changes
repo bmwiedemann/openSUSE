@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  2 17:03:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.8:
+  * works with cacti 1.2.8
+
+-------------------------------------------------------------------
+Thu Oct 17 15:13:16 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Mon Sep 30 05:57:17 UTC 2019 - David Liedke <liedke@rz.uni-mannheim.de>
 
 -Update to version 1.2.7

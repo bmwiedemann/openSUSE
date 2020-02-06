@@ -1,7 +1,7 @@
 #
 # spec file for package cacti-spine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           cacti-spine
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
-Url:            https://github.com/Cacti/spine
-Source:         https://github.com/Cacti/spine/archive/release/%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf
-BuildRequires:  automake
+Summary:        Threaded poller for Cacti written in C
+License:        LGPL-2.1-or-later
+URL:            https://www.cacti.net/spine_info.php
+Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
+BuildRequires:  dos2unix
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
@@ -31,32 +31,24 @@ BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 Requires:       cacti = %{version}
 Requires:       rrdtool
-Summary:        Threaded poller for Cacti written in C
-License:        LGPL-2.1-or-later
-Group:          System/Monitoring
 
 %description
 Spine is a supplemental poller for Cacti that makes use of pthreads to achieve
 excellent performance.
 
 %prep
-%setup -q -n spine-release-%{version}
+%setup -q
 
 %build
-libtoolize --force
-aclocal
-autoheader
-automake --force-missing --add-missing
-autoconf
-
+./bootstrap
 %configure
 make %{?_smp_mflags}
 
 %install
-%makeinstall
+%make_install
 
 %files
-%defattr(-, root, root, 0755)
+%license LICENSE
 %doc CHANGELOG README.md
 %config %{_sysconfdir}/spine.conf.dist
 %{_bindir}/spine
