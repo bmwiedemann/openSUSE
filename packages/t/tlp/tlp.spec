@@ -1,7 +1,7 @@
 #
 # spec file for package tlp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   TLP
 Name:           tlp
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -75,7 +75,8 @@ make %{?_smp_mflags} V=1 \
   TLP_WITH_ELOGIND=0           \
   TLP_NO_INIT=1                \
   TLP_ULIB=%{_libexecdir}/udev \
-  TLP_SYSD=%{_unitdir}
+  TLP_SYSD=%{_unitdir} \
+  TLP_SDSL=%{_unitdir}/system-sleep
 make install-man \
   DESTDIR=%{buildroot}
 make install-man-rdw \
@@ -100,10 +101,14 @@ done
 %files
 %license COPYING LICENSE
 %doc AUTHORS changelog README.md
-%config(noreplace) %{_sysconfdir}/default/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}.conf
+%dir %{_sysconfdir}/%{name}.d
+%config(noreplace) %{_sysconfdir}/%{name}.d/00-template.conf
+%{_sysconfdir}/%{name}.d/README
+%dir %{_unitdir}/system-sleep
+%{_unitdir}/system-sleep/tlp
 %{_bindir}/bluetooth
 %{_bindir}/run-on-*
-%{_bindir}/%{name}-*list
 %{_bindir}/%{name}-stat
 %{_bindir}/wifi
 %{_bindir}/wwan
