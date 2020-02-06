@@ -1,0 +1,27 @@
+libxl: Temporarily hardcode paths to ovmf firmwares
+
+This is a quick, hacky fix for bsc#1159793 until there is time to work on
+upstream support for firmware autoselection in the xen driver. Sadly, the
+upstream efforts to improve firmware handling in the qemu driver broke
+the firmware handling in the xen driver.
+
+Index: libvirt-6.0.0/src/libxl/libxl_conf.c
+===================================================================
+--- libvirt-6.0.0.orig/src/libxl/libxl_conf.c
++++ libvirt-6.0.0/src/libxl/libxl_conf.c
+@@ -1776,6 +1776,15 @@ libxlDriverConfigNew(void)
+         goto error;
+     }
+ 
++    /* Begin hack ---
++     * bsc#1159793: Until there is time to work on proper upstream support for
++     * firmware autoselection in the xen driver we'll go with this minimal fix.
++     */
++#define DEFAULT_LOADER_NVRAM "/usr/share/qemu/ovmf-x86_64-ms-4m.bin:/usr/share/qemu/ovmf-x86_64-ms-4m-vars.bin:/usr/share/qemu/ovmf-x86_64-ms.bin:/usr/share/qemu/ovmf-x86_64-ms-vars.bin"
++    /*
++     * --- End hack
++     */
++
+ #ifdef DEFAULT_LOADER_NVRAM
+     if (virFirmwareParseList(DEFAULT_LOADER_NVRAM,
+                              &cfg->firmwares,

@@ -251,8 +251,8 @@ BuildRequires:  rpcgen
 # For pool-build probing for existing pools
 BuildRequires:  libblkid-devel >= 2.17
 BuildRequires:  libpciaccess0-devel >= 0.10.9
-BuildRequires:  libudev-devel >= 145
 BuildRequires:  libyajl-devel
+BuildRequires:  pkgconfig(libudev) >= 145
 %if %{with_sanlock}
 BuildRequires:  sanlock-devel >= 2.4
 %endif
@@ -341,6 +341,7 @@ Source100:      %{name}-rpmlintrc
 Patch0:         6c1dddaf-libxl-shutdown-inhibit.patch
 Patch1:         849052ec-libxl-support-credit2.patch
 Patch2:         72ed254b-drop-exec-perms-bashcompletion.patch
+Patch3:         e092daac-prohib-parallel-tunneled-mig.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -367,6 +368,7 @@ Patch210:       qemu-apparmor-screenshot.patch
 Patch211:       libvirt-suse-netcontrol.patch
 Patch212:       lxc-wait-after-eth-del.patch
 Patch213:       suse-libxl-disable-autoballoon.patch
+Patch214:       suse-xen-ovmf-loaders.patch
 # SLES-Only patches
 %if ! 0%{?is_opensuse}
 Patch400:       virt-create-rootfs.patch
@@ -404,7 +406,7 @@ Requires:       modutils
 # for /sbin/ip & /sbin/tc
 Requires:       iproute
 Requires:       logrotate
-Requires:       udev >= 145
+Requires:       pkgconfig(udev) >= 145
 Recommends:     polkit >= 0.112
 %ifarch %ix86 x86_64 ia64
 # For virConnectGetSysinfo
@@ -876,6 +878,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -899,6 +902,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch211 -p1
 %patch212 -p1
 %patch213 -p1
+%patch214 -p1
 %if ! 0%{?is_opensuse}
 %patch400 -p1
 %endif

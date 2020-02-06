@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb  5 22:51:48 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- xen: Fix the list of supported ovmf firmwares
+  suse-xen-ovmf-loaders.patch
+  bsc#1159793
+
+-------------------------------------------------------------------
+Mon Feb  3 18:32:49 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- lib: Prohibit parallel connections with tunneled migration
+  e092daac-prohib-parallel-tunneled-mig.patch
+  jsc#SLE-6998
+
+-------------------------------------------------------------------
+Mon Feb  3 15:27:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig((lib)?udev) instead of (lib)?udev: allow
+  OBS to shortcut through -mini flavors.
+
+-------------------------------------------------------------------
 Thu Jan 30 22:05:24 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Fix several rpmlint warnings
