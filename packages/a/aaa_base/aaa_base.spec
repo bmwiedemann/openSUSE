@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20200128.8a17290
+Version:        84.87+git20200206.ed897a1
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -40,6 +40,7 @@ Requires:       distribution-release
 Requires:       filesystem
 Recommends:     logrotate netcfg udev iputils iproute2 aaa_base-extras
 Requires(pre):  /usr/bin/rm
+Requires(pre):  glibc >= 2.30
 Requires(post): fillup /usr/bin/chmod /usr/bin/chown
 
 Summary:        openSUSE Base Package

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 06 10:22:51 UTC 2020 - ro@suse.com
+
+- Update to version 84.87+git20200206.ed897a1:
+  * get_kernel_version: fix for current kernel on s390x (from azouhr)
+
+-------------------------------------------------------------------
+Thu Feb 06 08:15:37 UTC 2020 - kukuk@suse.com
+
+- Update to version 84.87+git20200206.8d74b0b:
+  * Fix services entry in /etc/nsswitch.conf [bsc#1162916]
+- Make sure glibc is recent enough else nsswitch.conf update
+  will fail
+
+-------------------------------------------------------------------
 Tue Jan 28 14:30:17 UTC 2020 - kukuk@suse.com
 
 - Adjust Requires/Requires(pre)/Requires(post)

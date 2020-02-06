@@ -3710,4 +3710,18 @@
     <comment></comment>
     <requestid>768064</requestid>
   </revision>
+  <revision rev="462" vrev="1">
+    <srcmd5>ecb8760ad558658ec24bc4cfd78b68cc</srcmd5>
+    <version>84.87+git20200206.ed897a1</version>
+    <time>1580990752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200206.ed897a1:
+  * get_kernel_version: fix for current kernel on s390x (from azouhr)
+
+- Update to version 84.87+git20200206.8d74b0b:
+  * Fix services entry in /etc/nsswitch.conf [bsc#1162916]
+- Make sure glibc is recent enough else nsswitch.conf update
+  will fail</comment>
+    <requestid>770505</requestid>
+  </revision>
 </revisionlist>
