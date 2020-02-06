@@ -203,7 +203,9 @@ Required: gcc-PIE
 # Support: pam-modules 
 
 # the basic stuff
-Support: perl build-mkbaselibs
+Support: perl
+# build-mkbaselibs used to be Support, but OBS handles that on its own
+# Prefer: build-mkbaselibs
 Prefer:  build-mkbaselibs
 Support: brp-check-suse
 Support: post-build-checks
