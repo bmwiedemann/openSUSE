@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:14:47 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.3.4:
+  - Bugfixes:
+    - #4570: Negative percentage and data to sync
+    - #5867: Progress bar not visible
+    - #6044: Clicking "Save" in options says "You have unsaved
+      changes" when changing automatic upgrade setting
+    - #6213: Tone down STUN logging a bit
+    - #6222: Connection Error on Listing More Locally Changed Files
+    - #6234: Docker image uses wrong path for default folder
+    - #6240: GUI: ignore patterns path is one row too low
+    - #6263: Panics due to database being closed
+
+-------------------------------------------------------------------
 Mon Feb  3 16:33:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
