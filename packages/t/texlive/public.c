@@ -1,5 +1,5 @@
 /*
- * Public	For user root run a specific program as user nobody
+ * Public	For user root run a specific program as user mktex
  *		for user root and others use group public and umask 0002
  *
  * Usage:	public -> [texhash|mktexlsr|mktexmf|mktexpk|mktextfm]
@@ -36,7 +36,10 @@
 #include <sys/stat.h>
 
 #ifndef TEXGRP
-# define TEXGRP "public"
+# define TEXGRP "mktex"
+#endif
+#ifndef TEXUSR
+# define TEXUSR "mktex"
 #endif
 #ifndef MKTEX
 # define "/usr/lib/mktex"
@@ -122,10 +125,10 @@ int main(int argc, char *argv[])
     if ((grp = getgrnam(TEXGRP)) == (struct group*)0)
 	goto err;
 
-    if (ruid == 0 || euid == 0) {   /* If user is root switch over to nobody:public */
+    if (ruid == 0 || euid == 0) {   /* If user is root switch over to mktex:mktex */
 	int initgrp = 0;
 
-	if ((pwd = getpwnam("nobody")) == (struct passwd*)0)
+	if ((pwd = getpwnam(TEXUSR)) == (struct passwd*)0)
 	    goto err;
 
 	if (ruid != pwd->pw_uid)

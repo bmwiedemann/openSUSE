@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:56:24 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Check passwd not group file for user mktex 
+
+-------------------------------------------------------------------
+Fri Jan 31 12:32:25 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Introduce a user mktex as replacement for user nobody (boo#1159740)
+
+-------------------------------------------------------------------
 Thu Jan 16 10:41:17 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Make patch suffix unique 

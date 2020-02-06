@@ -735,4 +735,14 @@
     <comment>Now we can submit it - would have been a shame to hold back a staging just for poppler. Thanks for waiting</comment>
     <requestid>765170</requestid>
   </revision>
+  <revision rev="62" vrev="65">
+    <srcmd5>8729a68b514113c8ed090328e8fb7c8e</srcmd5>
+    <version>unknown</version>
+    <time>1580990845</time>
+    <user>dimstar_suse</user>
+    <comment>- Check passwd not group file for user mktex 
+
+- Introduce a user mktex as replacement for user nobody (boo#1159740)</comment>
+    <requestid>770144</requestid>
+  </revision>
 </revisionlist>

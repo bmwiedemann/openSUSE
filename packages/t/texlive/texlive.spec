@@ -312,7 +312,9 @@ Obsoletes:      pdfjam < %{version}
 %define _appdefdir	%{_x11data}/app-defaults
 #
 %define texgrp		mktex
+%define texusr		mktex
 #%define texgid		505
+#%define texuid		505
 #
 %description
 After installing texlive and the package texlive-latex, find a large
@@ -3932,7 +3934,7 @@ fi
 
     # compile public
     mkdir -p ${prefix}/lib/mktex
-    $CC ${RPM_OPT_FLAGS} -DTEXGRP='"%{texgrp}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o ${prefix}/lib/mktex/public %{S:50}
+    $CC ${RPM_OPT_FLAGS} -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' -DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o ${prefix}/lib/mktex/public %{S:50}
 
     # install our own scripts
     mkdir -p ${prefix}/bin
@@ -4278,7 +4280,8 @@ fi
 %endif
 
 %pre kpathsea-bin
-%{_bindir}/getent group %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+%{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+%{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
 
 %post kpathsea-bin
 %if %{defined set_permissions}
@@ -4286,7 +4289,8 @@ fi
 %endif
 
 %pre
-%{_bindir}/getent group %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+%{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+%{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
 
 %post
 mkdir -p /var/run/texlive
