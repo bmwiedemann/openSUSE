@@ -352,4 +352,41 @@
     <comment>New upstream release</comment>
     <requestid>530190</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>30a65934be54e1465ab2ed27baef9b82</srcmd5>
+    <version>2.16</version>
+    <time>1580990871</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16
+  + Add menu items for adding titles (#464, Paweł Żukowski).
+  + Upgrade msgfmt.py to version 1.2 (#470).
+
+- update to 2.15
+  + Fix tray icon on Windows (#394).
+  2.14 (2019-11-17)
+  + Support entry reference links in exported HTML (#452, Paweł Żukowski).
+  + Add support for dark themes to cloud panel (#438).
+  2.13 (2019-11-07)
+  + Change unnamed date references from 2019-11-06 to [2019-11-06] (#458, #460, Paweł Żukowski).
+  + Add option for controlling number of displayed tags (#456, Paweł Żukowski).
+  + Fix setting maximum number of displayed tags (#461).
+  2.12 (2019-11-02)
+  + Allow linking between days with dates like 2019-02-14 and `[named links 2019-02-14]` (#176, #444, Paweł Żukowski).
+  + Allow opening statistics dialog multiple times in one session (#370, #457, Paweł Żukowski).
+  + Warn about outdated backups every week by default.
+  + Increase default width of left panel to ensure that the calendar is fully visible (#376).
+  2.11.1 (2019-04-07)
+  + Always initialize spell checking whenever we switch text buffers (fixes #435).
+  2.11 (2019-03-26)
+  + Revert to GTK 3.18 stack on Windows (fixes #429 and #430).
+  2.10 (2019-03-24)
+  + Automatically push newest version to flathub.
+  2.9.1 (2019-03-20)
+  + Disable internal preview on Windows again since it sometimes crashes the app.
+  2.9 (2019-03-17)
+  + Use Python 3.6 and GTK 3.22 on Windows.
+  + Build Windows installer with Appveyor.
+  2.8.1 (2019-03-17)</comment>
+    <requestid>770013</requestid>
+  </revision>
 </revisionlist>
