@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-good
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,7 +115,6 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xfixes)
 Requires:       gstreamer >= %{version}
 Requires:       gstreamer-plugins-base >= %{version}
-Recommends:     %{name}-lang
 Recommends:     %{name}-gtk
 Enhances:       gstreamer
 # Generic name, never used in SuSE: I wish it had been used I would have used it then I wouldn't have to keep copy pasting and actually type it.
