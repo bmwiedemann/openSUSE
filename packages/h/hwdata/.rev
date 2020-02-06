@@ -255,4 +255,13 @@
   * Updated pci, usb and vendor ids.</comment>
     <requestid>761483</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>acdbba2d8500ea53fa047709a0c99082</srcmd5>
+    <version>0.332</version>
+    <time>1580991501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.322:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>769537</requestid>
+  </revision>
 </revisionlist>
