@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  5 03:07:23 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.02      2020-02-04 13:12:49 -0700
+    - Production release identical to 2.01_01
+  
+  2.01_01   2020-02-03 10:51:43 -0700
+    - Prefer Decode::HTML if HTML::Parser is already installed and Mojolicious
+      or Mojo::DOM58 are not (gh#160)
+
+-------------------------------------------------------------------
+Mon Feb  3 03:08:13 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.00
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.00      2020-02-02 06:25:13 -0700
+    - Production release identical to 2.00
+  
+  1.99_01   2020-01-30 12:57:33 -0700
+    - Decode::Mojo plugin remembers which version of Mojo::DOM it is using (gh#159)
+
+-------------------------------------------------------------------
 Fri Jan 31 03:08:19 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.98
