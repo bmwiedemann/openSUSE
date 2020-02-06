@@ -429,4 +429,12 @@ Latest changes:
   shortcut through the -mini flavors.</comment>
     <requestid>769981</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7a3b91e000ba2b06c16ba543a470ca02</srcmd5>
+    <version>0.7.6</version>
+    <time>1580990979</time>
+    <user>dimstar_suse</user>
+    <comment>- changed copyright to SUSE LLC in specfile</comment>
+    <requestid>770518</requestid>
+  </revision>
 </revisionlist>
