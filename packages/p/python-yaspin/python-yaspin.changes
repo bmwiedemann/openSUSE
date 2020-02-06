@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:54:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.16.0
+  * Allow use inside zip bundled package
+  * Code improvements
+
+-------------------------------------------------------------------
 Mon Aug 12 10:29:31 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 15.0
