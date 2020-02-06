@@ -22,7 +22,7 @@
 %define skip_python3 1
 %endif
 Name:           python-Django1
-Version:        1.11.27
+Version:        1.11.28
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ Source99:       python-Django1-rpmlintrc
 Patch0:         django-sqlite-326.patch
 # PATCH-FIX-OPENSUSE bmwiedemann -- fix tests after 2028 - merged in Django master only
 Patch2:         fix2028.patch
-Patch3:         pyyaml53.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
@@ -94,7 +93,6 @@ echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 %setup -q -n Django-%{version}
 %patch0 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %python_build

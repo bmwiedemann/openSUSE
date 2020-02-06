@@ -1234,4 +1234,14 @@
     <comment>- add pyyaml53.patch - fix tests with new PyYAML 5.3</comment>
     <requestid>764709</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>914dd2b5d20bde494118a88a7c30f09b</srcmd5>
+    <version>1.11.28</version>
+    <time>1580991564</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.28
+- drop pyyaml53.patch
+ * fix boo#1161919 (CVE-2020-7471) Potential SQL injection via StringAgg(delimiter)</comment>
+    <requestid>769934</requestid>
+  </revision>
 </revisionlist>
