@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:37:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 1.2.132
+  * Improve 1.2 promoted extension fix
+  * Fix handling of promoted device extensions
+
+-------------------------------------------------------------------
 Sun Jan 19 12:03:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.131
