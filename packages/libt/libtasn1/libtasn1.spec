@@ -1,7 +1,7 @@
 #
 # spec file for package libtasn1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define somajor 6
 Name:           libtasn1
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        ASN.1 parsing library
 License:        LGPL-2.1-or-later AND GPL-3.0-only
@@ -64,16 +64,14 @@ http://www.gnutls.org
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-# see 49d6e3f0a4b5fd4da31228d23ae9efabef20c1ca
-rm %{buildroot}/%{_bindir}/corpus2array
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz

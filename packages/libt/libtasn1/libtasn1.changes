@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  2 23:00:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libtasn1 4.16.0:
+  * asn1_decode_simple_ber: added support for constructed definite
+    octet strings
+  * asn1_get_object_id_der: enhance the range of decoded OIDs
+  * asn1_object_id_der: New function
+
+-------------------------------------------------------------------
 Fri Nov 22 17:08:35 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libtasn1 4.15.0:
