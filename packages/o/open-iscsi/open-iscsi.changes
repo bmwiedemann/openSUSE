@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 31 21:39:48 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Bug fixes, including addig support for "-fno-common"
+  compiler option, 586 bug fixes, a bug fix for SHA1
+  handling, and other needed but small fixes (bsc#1160287),
+  updating:
+  * open-iscsi-SUSE-latest.diff.bz2
+
+-------------------------------------------------------------------
 Mon Nov 18 17:42:09 UTC 2019 - Lee Duncan <lduncan@suse.com>
 
 - Merged in latest upstream (2.1.0), including more fixes for
