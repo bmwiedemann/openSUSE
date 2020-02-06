@@ -28,4 +28,15 @@
   (e.g. bsc#1132101)</comment>
     <requestid>720236</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3bac8d2a05028db250675333dedda82e</srcmd5>
+    <version>0.4.3</version>
+    <time>1580991514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.3
+  - Changes in build process
+  - bug fixes
+- Refresh vendor.tar.xz</comment>
+    <requestid>769667</requestid>
+  </revision>
 </revisionlist>

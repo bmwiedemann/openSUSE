@@ -1,7 +1,7 @@
 #
 # spec file for package rakkess
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rakkess
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Utility to show an access matrix for k8s server resources
 License:        Apache-2.0
@@ -38,7 +38,7 @@ on a provided kubernetes cluster.
 
 %build
 # use vendor directory and build as position independent executeable
-sed -i -e 's|go build|go build -mod vendor -buildmode=pie|g' Makefile
+sed -i -e 's|go build -race|go build -mod vendor -buildmode=pie|g' Makefile
 %ifarch aarch64
 export GOARCH=arm64
 %endif
@@ -46,12 +46,12 @@ export GOARCH=arm64
 export GOARCH=%{_arch}
 export CGO_ENABLED=0 
 %endif
-PLATFORMS=linux make all VERSION=%{version}
+PLATFORMS=linux make dev VERSION=%{version}
 
 %install
 # Install the binary.
 mkdir -p %{buildroot}%{_bindir}/
-install -m 0755 out/rakkess-linux-* %{buildroot}%{_bindir}/rakkess
+install -m 0755 rakkess %{buildroot}%{_bindir}/rakkess
 
 %files
 %license LICENSE
