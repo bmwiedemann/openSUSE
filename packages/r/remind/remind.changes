@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Feb  1 11:46:46 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind-3.3.0
+- FIX: rem2ps: Add a %%PageBoundingBox: document structuring convention
+  comment.
+- FIX: rem2ps: Ignore unknown SPECIAL-type reminders.
+- IMPROVEMENT: In calendar mode ("-c" option), Remind automatically adjusts
+  the width of the calendar to fit the terminal window if standard output
+  is a TTY.
+- IMPROVEMENT: Add JSON-based output with "remind -pp" and "remind -ppp"
+  The JSON-based intermediate format preserves a lot more information
+  about the original reminder, allowing back-ends more insight into
+  the intent of the reminder, the recurrence used, etc.  See the documentation
+  in "man rem2ps"
+- IMPROVEMENT: TkRemind can "reverse-engineer" reminders that it creates
+  using the additional information in the "remind -pp" format, so it
+  doesn't create or use ugly comment blocks to delimit the reminders
+  it creates.
+- IMPROVEMENT: TkRemind: Add popup help to most buttons and controls.
+- NEW FEATURE: Add support for $DefaultColor system variable, suggested
+  by Tim Chase.
+- NEW FEATURE: The "-@[n][,m]" command-line option allows colored reminders
+  in Agenda Mode as well as in Calendar Mode.  It also adds support for
+  terminal emulators that can handle the xterm 256-color escape sequences
+  as well as the true 24-bit color escape sequences.
+- CHANGE: SPECIALs are now case-insensitive.  Before, only SPECIAL COLOR
+  would work.  Now you can use Special Color, special color, etc.
+  
+-------------------------------------------------------------------
 Sat Jan  4 10:11:59 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - defattr still needed to support SLE11-SP4 
