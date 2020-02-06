@@ -1,7 +1,7 @@
 #
 # spec file for package wireguard
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           wireguard
-Version:        0.0.20200128
+Version:        0.0.20200205
 Release:        0
 Summary:        Fast, modern, secure kernel VPN tunnel
 License:        GPL-2.0-only

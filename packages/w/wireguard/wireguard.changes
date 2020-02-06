@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  5 20:35:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20200205 
+  * allowedips: remove previously added list item when OOM fail
+  * noise: reject peers with low order public keys
+  * netns: ensure non-addition of peers with failed precomputation
+  * netns: tie socket waiting to target pid
+
+-------------------------------------------------------------------
 Tue Jan 28 16:28:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20200128
