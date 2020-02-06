@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 08:04:34 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.21
+  * Support additional connected components defines.
+  * Refresh cache morphology when writing MPC images.
+
+-------------------------------------------------------------------
 Mon Jan 27 11:53:07 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.9.19

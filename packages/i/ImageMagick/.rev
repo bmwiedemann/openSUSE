@@ -2490,4 +2490,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Refactor uninitialize variable patch for -fx &quot;while(,)&quot; expression.</comment>
     <requestid>767667</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>e9eb58c3b7a8250d8e0e71b64c2e47d2</srcmd5>
+    <version>7.0.9.21</version>
+    <time>1580990808</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.21
+  * Support additional connected components defines.
+  * Refresh cache morphology when writing MPC images.</comment>
+    <requestid>769461</requestid>
+  </revision>
 </revisionlist>
