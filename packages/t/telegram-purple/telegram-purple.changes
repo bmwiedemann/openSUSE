@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 16:46:04 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Upgrade to 1.4.2
+  - Support ancient glib (gh#501)
+  - Update translations
+  - Fix: Handle forwarded messages and captioned images better
+  - Fix: Handle replies better
+  - Fix: Images in own messages
+  - Fix: Remove *some* of the duplicate messages seen 
+
+-------------------------------------------------------------------
 Mon Mar 25 19:00:06 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 1.4.1:
