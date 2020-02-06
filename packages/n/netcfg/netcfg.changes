@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:52:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require libnss_usrfiles2 for /usr/etc [bnc#1162666]
+
+-------------------------------------------------------------------
 Tue Jan 28 20:15:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add host.conf with fixed comments, only remove libc 4/5

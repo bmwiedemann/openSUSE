@@ -45,6 +45,7 @@ Source101:      services-compare.sh
 Source102:      services-create.pl
 Source103:      services_UPDATING
 Patch0:         services-suse.diff
+Requires:       libnss_usrfiles2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
