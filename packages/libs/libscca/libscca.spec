@@ -1,7 +1,7 @@
 #
 # spec file for package libscca
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname	libscca1
-%define timestamp 	20170205
+%define timestamp 	20191222
 Name:           libscca
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library and tools to access the Windows Prefetch File (PF) format
-License:        LGPL-3.0+ and GFDL-1.3
+License:        LGPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libscca/wiki
+URL:            https://github.com/libyal/libscca/wiki
 Source:         https://github.com/libyal/libscca/releases/download/%{timestamp}/%{name}-alpha-%{timestamp}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20130317
 BuildRequires:  pkgconfig(libfvalue)
 BuildRequires:  pkgconfig(libfwnt)
 BuildRequires:  pkgconfig(libuna) >= 20120425
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library and tools to access the Windows Prefetch File (PF) format.
@@ -53,7 +52,7 @@ Note that this project currently only focuses on the analysis of the format.
 
 %package -n %{lname}
 Summary:        Library to access the Windows Prefetch File (PF) format
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
@@ -63,7 +62,7 @@ Note that this project currently only focuses on the analysis of the format.
 
 %package tools
 Summary:        Tools to access the Windows Prefetch File (PF) format
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 
 %description tools
@@ -73,7 +72,7 @@ Note that this project currently only focuses on the analysis of the format.
 
 %package devel
 Summary:        Development files for libscca
-License:        LGPL-3.0+ and GFDL-1.3+
+License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
@@ -85,21 +84,21 @@ applications that want to make use of %{name}.
 
 %package -n python2-%{name}
 Summary:        Python 2 bindings for libscca
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(python2)
 Requires:       %{lname} = %{version}
 Requires:       python
 Provides:       python-%{name} = %{version}
-Obsoletes:		python-%{name} <= 20170105
+Obsoletes:      python-%{name} <= 20170105
 
 %description -n python2-%{name}
 Python 2 binding for libscca, which can access the Windows Prefetch File (PF) format.
 
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libscca
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(python3)
@@ -114,8 +113,7 @@ Python 3 binding for libscca, which can access the Windows Prefetch File (PF) fo
 
 %build
 %configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
-#make %{?_smp_mflags}
-make # Parrallel make is not reliable for this small package, so don't use it.
+%make_build
 
 %install
 %make_install
@@ -125,31 +123,29 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%license COPYING
+%doc AUTHORS ChangeLog
 %{_libdir}/libscca.so.*
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/scca*
-%{_mandir}/man1/sccainfo.1*
+%{_mandir}/man1/sccainfo.1%{?ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libscca.h
 %{_includedir}/libscca/
 %{_libdir}/libscca.so
 %{_libdir}/pkgconfig/libscca.pc
-%{_mandir}/man3/libscca.3*
+%{_mandir}/man3/libscca.3%{?ext_man}
 
 %files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{python_sitearch}/pyscca.so
 
 %files -n python3-%{name}
-%defattr(-,root,root)
-%doc AUTHORS COPYING
+%license COPYING
+%doc AUTHORS
 %{python3_sitearch}/pyscca.so
 
 %changelog

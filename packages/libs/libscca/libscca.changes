@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 12:28:06 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20191222
+        * worked on python bindings
+        * changes to support libfdata changes
+
+-------------------------------------------------------------------
 Tue Jan  9 03:13:29 UTC 2018 - Greg.Freemyer@gmail.com
 
 - rename python-libscca to python2-libscca for consistency sake
