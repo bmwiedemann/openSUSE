@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  2 08:22:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require shadow instead of pwdutils: pwdutils has been absorbed
+  and replaced by shadow long ago.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:11:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use.

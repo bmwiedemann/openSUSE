@@ -973,4 +973,13 @@
     <comment>Eliminate the -lang recommends (forwarded request 767098 from dimstar)</comment>
     <requestid>767339</requestid>
   </revision>
+  <revision rev="131" vrev="12">
+    <srcmd5>d5657f6722f67ac2f75a2c5d5519d015</srcmd5>
+    <version>0.7</version>
+    <time>1580990747</time>
+    <user>dimstar_suse</user>
+    <comment>- Require shadow instead of pwdutils: pwdutils has been absorbed
+  and replaced by shadow long ago.</comment>
+    <requestid>769339</requestid>
+  </revision>
 </revisionlist>

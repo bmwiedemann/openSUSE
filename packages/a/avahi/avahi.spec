@@ -109,7 +109,7 @@ BuildRequires:  pkgconfig(systemd)
 #BuildRequires:  dbus-1-python
 #Requires:       dbus-1
 Requires:       nss-mdns
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 #
 # mDNSResponder was used for <= 10.2:
 Provides:       mDNSResponder = 107.5
