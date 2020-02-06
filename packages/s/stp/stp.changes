@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 30 09:45:21 UTC 2020 - jslaby@suse.com
+
+- Update to version 2.3.3+20200113:
+  * Fixing tests so build doesn't break
+  * Removing slow running tests
+  * Better support for python in build
+  * less bad model printing for arrays.
+  * Change reference to Minisat repo
+  * extra little one.
+  * Removing tests that take 1 minute to execute
+
+-------------------------------------------------------------------
 Thu Jan  9 14:11:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Python3 bindings subpackage should be named correctly
