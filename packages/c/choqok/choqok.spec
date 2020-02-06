@@ -1,7 +1,7 @@
 #
 # spec file for package choqok
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,43 +17,43 @@
 
 
 Name:           choqok
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Micro-Blogging Client for KDE
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
-URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/%{name}/1.6/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-build-with-Qt-5_13.patch
-BuildRequires:  attica-qt5-devel
+URL:            https://choqok.kde.org
+Source:         https://download.kde.org/stable/%{name}/1.7/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kcmutils-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdewebkit-devel
-BuildRequires:  kemoticons-devel
-BuildRequires:  kglobalaccel-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  pkgconfig
-BuildRequires:  qoauth-qt5-devel
-BuildRequires:  sonnet-devel
-BuildRequires:  telepathy-qt5-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(KF5Attica)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5Emoticons)
+BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Purpose)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WebKit)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qca-qt5)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5NetworkAuth)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(TelepathyQt5)
 
 %description
 A micro-blogging client for the K Desktop Environment.
@@ -71,7 +71,7 @@ The name comes from an ancient Persian word which means Sparrow.
 It currently supports twitter.com and identi.ca services.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
   %cmake_kf5 -d build
@@ -88,15 +88,13 @@ It currently supports twitter.com and identi.ca services.
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS changelog README TODO
-%dir %{_kf5_appstreamdir}
-%{_datadir}/config.kcfg/
-%{_datadir}/knotifications5/
+%doc AUTHORS changelog README
 %{_kf5_applicationsdir}/org.kde.choqok.desktop
 %{_kf5_appsdir}/choqok/
-%{_kf5_appsdir}/dbus-1
+%{_kf5_appsdir}/dbus-1/services/org.kde.choqok.service
 %{_kf5_appstreamdir}/org.kde.choqok.appdata.xml
 %{_kf5_bindir}/choqok
+%{_kf5_configkcfgdir}/
 %{_kf5_htmldir}/*
 %{_kf5_iconsdir}/hicolor/*/actions/retweet.*
 %{_kf5_iconsdir}/hicolor/*/apps/*
@@ -104,9 +102,11 @@ It currently supports twitter.com and identi.ca services.
 %{_kf5_libdir}/libchoqok.so.*
 %{_kf5_libdir}/libgnusocialapihelper.so.*
 %{_kf5_libdir}/libtwitterapihelper.so.*
+%{_kf5_notifydir}/
 %{_kf5_plugindir}/choqok_*.so
 %{_kf5_plugindir}/kcm_choqok_*.so
 %{_kf5_plugindir}/kf5/parts/
+%{_kf5_plugindir}/kf5/purpose/
 %{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_servicesdir}/choqok*
 %{_kf5_servicesdir}/konqchoqok.desktop

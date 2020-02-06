@@ -275,4 +275,15 @@
     <comment>Fix build with Qt5.13</comment>
     <requestid>722602</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>330e921f1e7bf38ea784df3d62c5945b</srcmd5>
+    <version>1.7.0</version>
+    <time>1580990951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0
+- Drop Fix-build-with-Qt-5_13.patch, merged upstream
+- Update BuildRequires, switch to cmake() style
+- Update URL (forwarded request 770458 from wolfi323)</comment>
+    <requestid>770471</requestid>
+  </revision>
 </revisionlist>
