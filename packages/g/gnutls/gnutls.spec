@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.6.11.1
+Version:        3.6.12
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
