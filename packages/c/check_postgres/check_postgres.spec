@@ -1,7 +1,7 @@
 #
 # spec file for package check_postgres
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           check_postgres
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
 Summary:        Postgres monitoring script
 License:        GPL-2.0-or-later
@@ -73,6 +73,7 @@ monitoring plugins way.
 %prep
 %setup -q
 install -m 0644 %{SOURCE1} nagios-commands-postgres.cfg
+sed -i 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' check_postgres.pl
 
 %build
 perl Makefile.PL

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  4 17:34:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.25.0
+  * Allow same_schema objects to be included or excluded with
+    --object and --skipobject
+  * Fix to allow mixing service names and other connection
+    parameters for same_schema
+
+-------------------------------------------------------------------
 Thu Mar 28 20:54:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.24.0
