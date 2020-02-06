@@ -17,12 +17,12 @@
 
 
 Name:           xfsdump
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        Administrative Utilities for the XFS File System
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://xfs.org
+Url:            https://xfs.wiki.kernel.org/
 Source0:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{version}.tar.sign
 Source2:        %{name}.keyring

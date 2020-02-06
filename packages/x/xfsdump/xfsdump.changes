@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 31 20:38:08 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.de>
+
+- Update to version 3.1.9:
+  - Fix build due to removed typedefs in xfsprogs
+  - Support fallocate in xfs_restore
+  - Many cosmetic cleanups
+
+-------------------------------------------------------------------
 Thu Jul 19 03:04:12 UTC 2018 - jeffm@suse.com
 
 - xfsdump: rename READ/WRITE macros in rmtlib (bsc#1093014).
