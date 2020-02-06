@@ -53,7 +53,7 @@ Source2:        runc.keyring
 Source3:        runc-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) = %{go_version}
+BuildRequires:  golang(API) >= %{go_version}
 %if 0%{?with_libseccomp}
 BuildRequires:  libseccomp-devel
 %endif
@@ -68,14 +68,13 @@ and has grown to become a separate project entirely.
 
 %package test
 Summary:        Test package for runc
-# Make sure we require go 1.7
 Group:          System/Management
-BuildRequires:  golang(API) = %{go_version}
-Requires:       go-go-md2man
-Requires:       libapparmor-devel
+BuildRequires:  golang(API) >= %{go_version}
 %if 0%{?with_libseccomp}
 BuildRequires:  libseccomp-devel
 %endif
+Requires:       go-go-md2man
+Requires:       libapparmor-devel
 Requires:       libselinux-devel
 Recommends:     criu
 BuildArch:      noarch
