@@ -326,7 +326,7 @@
       <repopackage name="libnl3-200" arch="x86_64"/>
       <repopackage name="libnpth0" arch="x86_64"/>
       <repopackage name="libnsl2"/>
-      <repopackage name="libnss_usrfiles2" arch="x86_64"/>
+      <repopackage name="libnss_usrfiles2"/>
       <repopackage name="libnuma1" arch="x86_64"/>
       <repopackage name="liboath0" arch="x86_64"/>
       <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
