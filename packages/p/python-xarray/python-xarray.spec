@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-xarray
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 URL:            https://github.com/pydata/xarray
 Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%{version}.tar.gz
-BuildRequires:  %{python_module numpy >= 1.14}
+BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module numpy-devel >= 1.14}
-BuildRequires:  %{python_module pandas >= 0.24}
+BuildRequires:  %{python_module pandas >= 0.25}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.14
-Requires:       python-pandas >= 0.24
-Recommends:     python-scipy
+Requires:       python-numpy >= 1.15
+Requires:       python-pandas >= 0.25
+Suggests:       python-dask >= 2.2
+Recommends:     python-scipy >= 1.3
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
 BuildArch:      noarch
@@ -57,6 +59,7 @@ The dataset is an in-memory representation of a netCDF file.
 
 %prep
 %setup -q -n xarray-%{version}
+chmod -x xarray/util/print_versions.py
 
 %build
 %python_build
