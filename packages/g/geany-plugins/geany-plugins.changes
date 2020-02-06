@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 19:00:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop geany-plugins-lang Requires: It should have been a
+  Recommends, and those are not needed anymore as Supplements: are
+  in place to take care of it.
+
+-------------------------------------------------------------------
 Sat Sep 28 17:48:43 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 1.36:

@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,6 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.27
 # Leaving it in place to remind us to enable for newer versions if upstream ports it.
 # See https://github.com/geany/geany-plugins/issues/655
 #BuildRequires:  pkgconfig(webkit-1.0) >= 1.1.18
-Requires:       %{name}-lang = %{version}
 Requires:       geany >= 1.26
 Requires:       lua
 Enhances:       geany
@@ -72,9 +71,9 @@ a lightweight IDE.
 
 %build
 %configure \
-    --docdir=%{_docdir}/%{name} \
-    %{nil}
-make %{?_smp_mflags}
+	--docdir=%{_docdir}/%{name} \
+	%{nil}
+%make_build
 
 %install
 %make_install
