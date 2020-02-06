@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-ugly
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,6 @@ BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
 BuildRequires:  pkgconfig(libmpeg2) >= 0.5.1
 Requires:       %{gstreamer_plugins_ugly_req}
-Recommends:     %{name}-lang
 Enhances:       gstreamer
 # Generic name, never used in SUSE:
 Provides:       gst-plugins-ugly = %{version}
