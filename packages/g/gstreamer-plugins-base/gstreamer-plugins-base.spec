@@ -104,7 +104,6 @@ BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig(wayland-egl) >= 1.0
 %endif
 Requires:       %{gstreamer_plugins_base_req}
-Recommends:     %{name}-lang
 Recommends:     PackageKit-gstreamer-plugin
 Supplements:    gstreamer
 # Generic name, never used in SuSE:
