@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test2-Suite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test2-Suite
-Version:        0.000127
+Version:        0.000129
 Release:        0
 %define cpan_name Test2-Suite
 Summary:        Distribution with a rich set of tools built upon the Test2

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Feb  1 03:22:30 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.000129
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000129  2020-01-31 08:33:46-08:00 America/Los_Angeles
+  
+      - José Joaquín Atria Improve error handling of mock->override with AUTOLOADed methods
+  
+  0.000128  2020-01-30 08:45:43-08:00 America/Los_Angeles
+  
+      - Nicolas R Import option to skip utf8 import
+      - Victoria Mihell-Hale Correct POD for Test2/Tools/Mock.pm's mocked() method
+      - Victoria Mihell-Hale Fix miscellaneous typos in Test2(/Tools)/Mock.pm POD
+      - Nicolas R Add GitHub actions
+      - Daniel Mita Fix PKG case for Test2::Tools::Target docs
+      - Daniel Mita Document target change in V0 and Bundle::Extended
+      - Daniel Mita Allow hashref to be used for Test2::Tools::Target
+
+-------------------------------------------------------------------
 Fri Nov  1 10:34:14 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.000127
