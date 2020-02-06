@@ -155,8 +155,9 @@ Prefix:         %{_bindir}
 %define _appdefdir	%{_x11data}/app-defaults
 #
 %define texgrp          mktex
-%define nobody          nobody
+%define texusr          mktex
 #define texgid          505
+#define texuid          505
 #
 %description
 The basic file system layout for TeX Live installation.
@@ -15293,11 +15294,11 @@ popd
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive.texlive) <<-EOF
 	%{_libexecdir}/mktex/public	root:%{texgrp}	2755
-	%{_texmfconfdir}/ls-R	   %{nobody}:%{texgrp}	0664
-	%{_fontcache}/ls-R	   %{nobody}:%{texgrp}	0664
-	%{_texmfvardir}/ls-R	   %{nobody}:%{texgrp}	0664
-	%{_texmfvardir}/dist/ls-R  %{nobody}:%{texgrp}	0664
-	%{_texmfvardir}/main/ls-R  %{nobody}:%{texgrp}	0664
+	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
+	%{_fontcache}/ls-R		root:%{texgrp}	0664
+	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
+	%{_texmfvardir}/dist/ls-R	root:%{texgrp}	0664
+	%{_texmfvardir}/main/ls-R	root:%{texgrp}	0664
 	%{_texmfvardir}/		root:root	1755
 	%{_texmfvardir}/dist/		root:root	1755
 	%{_texmfvardir}/main/		root:root	1755
@@ -15306,18 +15307,18 @@ popd
 	%{_texmfvardir}/fonts/dvips/	root:root	1755
 	%{_texmfvardir}/fonts/pdftex/	root:root	1755
 	%{_texmfcache}/			root:root	1755
-	%{_fontcache}/		   %{nobody}:%{texgrp}	1775
-	%{_fontcache}/pk/	   %{nobody}:%{texgrp}	1775
-	%{_fontcache}/source/	   %{nobody}:%{texgrp}	1775
-	%{_fontcache}/tfm/	   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/		   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/pk/	   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/source/	   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	1775
 	EOF
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive) <<-EOF
 	%{_libexecdir}/mktex/public	root:%{texgrp}	0755
-	%{_texmfconfdir}/ls-R	   %{nobody}:%{texgrp}	0664
-	%{_fontcache}/ls-R	   %{nobody}:%{texgrp}	0664
-	%{_texmfvardir}/ls-R	   %{nobody}:%{texgrp}	0664
-	%{_texmfvardir}/dist/ls-R  %{nobody}:%{texgrp}	0664
-	%{_texmfvardir}/main/ls-R  %{nobody}:%{texgrp}	0664
+	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
+	%{_fontcache}/ls-R		root:%{texgrp}	0664
+	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
+	%{_texmfvardir}/dist/ls-R	root:%{texgrp}	0664
+	%{_texmfvardir}/main/ls-R	root:%{texgrp}	0664
 	%{_texmfvardir}/		root:root	1755
 	%{_texmfvardir}/dist/		root:root	1755
 	%{_texmfvardir}/main/		root:root	1755
@@ -15326,10 +15327,10 @@ popd
 	%{_texmfvardir}/fonts/dvips/	root:root	1755
 	%{_texmfvardir}/fonts/pdftex/	root:root	1755
 	%{_texmfcache}/			root:root	1755
-	%{_fontcache}/		   %{nobody}:%{texgrp}	1775
-	%{_fontcache}/pk/	   %{nobody}:%{texgrp}	1775
-	%{_fontcache}/source/	   %{nobody}:%{texgrp}	1775
-	%{_fontcache}/tfm/	   %{nobody}:%{texgrp}	1775
+	%{_fontcache}/		   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/pk/	   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/source/	   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	1775
 	EOF
 
 %if %{with zypper_posttrans}
@@ -15386,7 +15387,8 @@ popd
 %endif
 
 %pre
-%{_bindir}/getent group %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+%{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
+%{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
 # the ls-R file on update
 error=0
 for dir in	%{_texmfconfdir}	\
@@ -15397,8 +15399,8 @@ for dir in	%{_texmfconfdir}	\
 do
     test ! -h ${dir}/ls-R || rm -vf ${dir}/ls-R
     test -e ${dir}/ls-R || continue
-    test "$(stat --format '%U:%G' ${dir}/ls-R)" != %{nobody}:%{texgrp}  || continue
-    chown %{nobody}:%{texgrp} ${dir}/ls-R || error=1
+    test "$(stat --format '%U:%G' ${dir}/ls-R)" != root:%{texgrp}  || continue
+    chown root:%{texgrp} ${dir}/ls-R || error=1
 done
 test $error = 0 || exit 1
 
@@ -15417,7 +15419,7 @@ do
     test $error = 0 || continue
     mv ${tmp} ${dir}/ls-R || error=1
     test $error = 0 || continue
-    chown %{nobody}:%{texgrp} ${dir}/ls-R || error=1
+    chgrp %{texgrp} ${dir}/ls-R || error=1
     test $error = 0 || continue
     chmod 0664 ${dir}/ls-R || error=1
     test $error = 0 || continue
@@ -26878,18 +26880,18 @@ rm -f /var/run/texlive/run-update
 %dir %attr(1755,root,root) %{_texmfvardir}/web2c/tex
 %dir %attr(1755,root,root) %{_texmfvardir}/web2c/xetex
 %dir %attr(1755,root,root) %{_texmfcache}
-%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}
-%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}/pk
-%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}/source
-%dir %attr(1775,%{nobody},%{texgrp}) %verify(not mode) %{_fontcache}/tfm
+%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}
+%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/pk
+%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/source
+%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/tfm
 %dir %{_texmfvardir}/md5
 %verify(link) %{_texmfmaindir}/ls-R
 %verify(link) %{_texmfdistdir}/ls-R
-%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfconfdir}/ls-R
-%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_fontcache}/ls-R
-%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/ls-R
-%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/dist/ls-R
-%ghost %config(noreplace) %attr(0664,%{nobody},%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/main/ls-R
+%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfconfdir}/ls-R
+%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_fontcache}/ls-R
+%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/ls-R
+%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/dist/ls-R
+%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/main/ls-R
 %{_fillupdir}/sysconfig.texlive
 %if %{with zypper_posttrans}
 /var/adm/update-scripts/%{name}-%{version}-%{release}-zypper
