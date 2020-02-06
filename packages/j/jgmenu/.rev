@@ -237,4 +237,15 @@
   * Update lithium theme to reflect introduction of apps module</comment>
     <requestid>765698</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>32ce74c16e0a8328c54d6e8319ae4211</srcmd5>
+    <version>4.0.2</version>
+    <time>1580990927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * sbuf.c: fix bug which could result in segfault.
+  * x11-ui.c: support unusual color-depths required by applications
+    such as x2go (issue #111).</comment>
+    <requestid>770386</requestid>
+  </revision>
 </revisionlist>

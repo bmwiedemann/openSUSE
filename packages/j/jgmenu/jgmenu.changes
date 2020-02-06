@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  5 19:18:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.2:
+  * sbuf.c: fix bug which could result in segfault.
+  * x11-ui.c: support unusual color-depths required by applications
+    such as x2go (issue #111).
+
+-------------------------------------------------------------------
 Mon Jan 20 08:18:18 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.1:
