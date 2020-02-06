@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:18:39 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to version 1.10.0
+Added
+  * New colors.webpage.prefers_color_scheme_dark setting which
+    allows forcing prefers-color-scheme: dark colors for websites
+    (QtWebEngine with Qt 5.14 or newer).
+  * New fonts.default_size setting which can be used to set a
+    bigger font size for all UI fonts.
+
+Changed
+  * The fonts.monospace setting has been removed and replaced by
+    fonts.default_family. The new default_family setting is
+    improved in various ways:
+    + It accepts a list of font families (or a single font family)
+      rather than a comma-separated string. As an example, instead
+      of fonts.monospace = "Courier, Monaco", use
+      fonts.default_family = ["Courier", "Monaco"].
+    + Since a list is now accepted as value, no quoting of font
+      names with spaces is required anymore. As an example,
+      instead of fonts.monospace = '"xos4 Terminus"', use
+      fonts.default_family = 'xos4 Terminus'.
+    + It is now empty by default rather than having a long list of
+      font names in the default config. When the value is empty,
+      the system's default monospaced font is used.
+  * If monospace is now used in a font value, it's used literally
+    and not replaced anymore. Instead, default_family is replaced
+    as explained above.
+  * The default content.headers.accept_language value now adds a
+    ;q=0.9 classifier which should make the value sent more
+    in-line with what other browsers do.
+  * The qute-pass userscript now has a new --mode gopass switch
+    which uses gopass rather than pass.
+  * The tox -e mkvenv (or mkvenv-pypi) way of installing
+    qutebrowser is now replaced by a mkvenv.py script. See the
+    updated link:install{outfilesuffix}#tox[install instructions]
+    for details.
+
+Fixed
+  * When quitting qutebrowser, components are now cleaned up
+    differently. This should fix certain (rare) segmentation
+    faults and exceptions when quitting, especially with the new
+    exit scheme introduced in in PyQt5 5.13.1.
+  * Added a workaround for per-domain settings (e.g. a JavaScript
+    whitelist) not being applied in some scenarios with Qt 5.13
+    and above.
+  * Added additional site-specific quirk for WhatsApp Web.
+  * The qute-pass userscript now works correctly when a
+    PASSWORD_STORE_DIR ending with a trailing slash is given.
+
+-------------------------------------------------------------------
 Thu Jan  9 22:24:07 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.9.0
