@@ -257,4 +257,16 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
     two time values (issues/94)</comment>
     <requestid>686298</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d303d518425da03f20e9895395917cfb</srcmd5>
+    <version>0.4.7</version>
+    <time>1580990930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.7:
+  * strptime mimics return code behaviour of dateconv
+  * use unsigned arithmetic for leap second conversion
+  * fix up ymds before adding days or business days
+  * drain prchunk if filled with many small lines</comment>
+    <requestid>770385</requestid>
+  </revision>
 </revisionlist>
