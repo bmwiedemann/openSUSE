@@ -581,13 +581,11 @@ sed -i 's#\(StateSaveLocation=\).*#\1%_localstatedir/lib/slurm#'  %{buildroot}/%
 sed -i 's#^\(SlurmdPidFile=\).*$#\1%{_localstatedir}/run/slurm/slurmd.pid#' %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 sed -i 's#^\(SlurmctldPidFile=\).*$#\1%{_localstatedir}/run/slurm/slurmctld.pid#' %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 sed -i 's#^\(SlurmdSpoolDir=\)/.*#\1%{_localstatedir}/spool/slurm#' %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
-%if 0%{?upgrade} || 0%{suse_version} > 1501
 sed -i -e '/^ControlMachine=/i# Ordered List of Control Nodes' \
     -e 's#ControlMachine=\(.*\)$#SlurmctldHost=\1(10.0.10.20)#' \
     -e 's#BackupController=.*#SlurmctldHost=linux1(10.0.10.21)#' \
     -e '/.*ControlAddr=.*/d' \
     -e '/.*BackupAddr=.*/d'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
-%endif
 cat >>%{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf <<EOF 
 # SUSE default configuration
 PropagateResourceLimitsExcept=MEMLOCK

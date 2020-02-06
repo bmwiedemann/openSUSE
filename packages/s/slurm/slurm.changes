@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:37:05 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- standard slurm.conf uses now also SlurmctldHost on all build 
+  targets (bsc#1162377)
+
+-------------------------------------------------------------------
 Mon Jan 27 08:42:55 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Fix a missed systemd_requires -> systemd_ordering conversion.

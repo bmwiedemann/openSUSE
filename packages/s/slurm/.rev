@@ -515,4 +515,13 @@
     <comment>- Fix a missed systemd_requires -&gt; systemd_ordering conversion.</comment>
     <requestid>767593</requestid>
   </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>03ff0bcb2a7a820dfa3ecf63d9310b79</srcmd5>
+    <version>19.05.5</version>
+    <time>1580990898</time>
+    <user>dimstar_suse</user>
+    <comment>- standard slurm.conf uses now also SlurmctldHost on all build 
+  targets (bsc#1162377)</comment>
+    <requestid>770336</requestid>
+  </revision>
 </revisionlist>
