@@ -1,7 +1,7 @@
 #
 # spec file for package ghc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -268,7 +268,7 @@ export CFLAGS="${CFLAGS:-%optflags}"
   --with-system-libffi 
 
 %if 0%{?suse_version} >= 1500
-%ifarch unregisterised_archs
+%ifarch %{unregisterised_archs}
 %limit_build -m 8000
 %else
 %limit_build -m 2000
