@@ -1,7 +1,7 @@
 #
 # spec file for package python-systemd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           python-systemd
 Version:        234
 Release:        0
 Summary:        Python wrappers for systemd functionality
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/systemd/python-systemd
+URL:            https://github.com/systemd/python-systemd
 Source:         https://github.com/systemd/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE iso-c-90.patch makes the building iso-c-90 compatible to allow building on SLE12 SP3
 Patch1:         iso-c-90.patch
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       systemd
 Suggests:       %{name}-doc
 # /SECTION
