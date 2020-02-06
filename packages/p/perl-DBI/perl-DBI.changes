@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  1 03:11:35 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.643
+   see /usr/share/doc/packages/perl-DBI/Changes
+
+-------------------------------------------------------------------
 Mon Sep 23 11:12:59 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix invalid utf-8 encoding in Changelogtext
