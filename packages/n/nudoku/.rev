@@ -47,4 +47,15 @@
   * Fix duplicate fields in sudoku generation (pr #28)</comment>
     <requestid>719806</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>abd01d7c20372d5aaaf1e4adb5df64e8</srcmd5>
+    <version>2.0.0</version>
+    <time>1580990963</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nudoku-2.0.0-unused-var.patch:
+  Remove unused variable. Fixes build on TW.
+- Add nudoku-2.0.0-gettext.patch:
+  Require gettext 0.20</comment>
+    <requestid>770470</requestid>
+  </revision>
 </revisionlist>

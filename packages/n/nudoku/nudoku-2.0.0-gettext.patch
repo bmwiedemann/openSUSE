@@ -1,0 +1,12 @@
+diff -urEbw nudoku-2.0.0/configure.ac nudoku-2.0.0.new/configure.ac
+--- nudoku-2.0.0/configure.ac	2019-07-30 12:06:33.000000000 +0200
++++ nudoku-2.0.0.new/configure.ac	2020-02-06 09:55:11.862170640 +0100
+@@ -52,7 +52,7 @@
+ 
+ # Set gettext files
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.19])
++AM_GNU_GETTEXT_VERSION([0.20])
+ 
+ # Checks for library functions.
+ AC_FUNC_MALLOC

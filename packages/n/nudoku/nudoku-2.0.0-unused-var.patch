@@ -1,0 +1,22 @@
+From a41e3535a9661bb56be6cda81731b691aed7c57e Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Thu, 6 Feb 2020 08:44:07 +0100
+Subject: [PATCH] Remove unused variable
+
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index ec9cd45..dc84676 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -454,7 +454,7 @@ int main(int argc, char *argv[])
+ 	bindtextdomain(PACKAGE, LOCALEDIR);
+ 	textdomain(PACKAGE);
+ #endif
+-	bool run = true, enable_highlights=false;
++	bool run = true;
+ 	int key, x, y, posx, posy;
+ 
+ 	parse_arguments(argc, argv);
