@@ -7,4 +7,15 @@
     <comment>Needed by python-Keras</comment>
     <requestid>652697</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>07677c38a9befd587325f88afbe0b96b</srcmd5>
+    <version>1.0.8</version>
+    <time>1581087510</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 1.0.8 which adds following new models
+  * Added ResNet101, ResNet152 variants of ResNet.
+  * Added ResNet50V2, ResNet101V2, ResNet152V2 variants of ResNet V2.
+  * Added ResNeXt50, ResNeXt101 variants of ResNeXt.</comment>
+    <requestid>771015</requestid>
+  </revision>
 </revisionlist>
