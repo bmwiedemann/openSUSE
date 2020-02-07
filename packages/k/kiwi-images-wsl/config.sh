@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019,2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +60,11 @@ rm -f /var/lib/zypp/AnonymousUniqueId
 
 # WSL specific tweaks
 # XXX: not sure what this is for. Was found in root.tar.bz2. Needs to be confirmed
-mkdir -p etc/apache2/conf.d
-echo AcceptFilter http none > etc/apache2/conf.d/wsl.conf
+#mkdir -p etc/apache2/conf.d
+#echo AcceptFilter http none > etc/apache2/conf.d/wsl.conf
+
+# workaround for broken wslfs (boo#1159195). Note that as of 2020-02-06 kiwi
+# resets /etc/fstab: https://github.com/OSInside/kiwi/issues/1329
+echo "tmpfs /var/tmp tmpfs defaults 0 0" >> /etc/fstab
 
 exit 0
