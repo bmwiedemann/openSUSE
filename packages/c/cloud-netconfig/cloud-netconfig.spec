@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-netconfig
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Network configuration scripts for %{csp_string}
 License:        GPL-3.0-or-later
@@ -49,7 +49,7 @@ Requires:       sysconfig
 BuildRequires:  sysconfig-netconfig
 Requires:       sysconfig-netconfig
 %endif
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Requires:       curl
 Requires:       udev
 %if 0%{?sles_version} == 11
@@ -89,6 +89,7 @@ ln -s /dev/null %{buildroot}/%{_sysconfdir}/udev/rules.d/75-persistent-net-gener
 
 %files -n %{base_name}%{flavor_suffix}
 %defattr(-,root,root)
+%config(noreplace) %{_sysconfdir}/default/cloud-netconfig
 %{_sysconfdir}/netconfig.d/cloud-netconfig
 %{_sysconfdir}/sysconfig/network/scripts/*
 %if 0%{?suse_version} >= 1315

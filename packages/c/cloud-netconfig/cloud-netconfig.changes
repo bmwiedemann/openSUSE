@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  4 17:31:29 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.4:
+  + copy routes from default routing table (bsc#1162705, bsc#1162707)
+  + make CLOUD_NETCONFIG_MANAGE default configurable
+
+-------------------------------------------------------------------
+Mon Feb  3 12:10:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Thu Nov 28 15:22:49 UTC 2019 - Joachim Gleissner <jgleissner@suse.com>
 
 - Removed obsolete Group tag from spec file
