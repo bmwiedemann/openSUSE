@@ -399,4 +399,41 @@
 </comment>
     <requestid>615930</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3db6350f1917d545c2e3850cc6f6eb76</srcmd5>
+    <version>5.7.0</version>
+    <time>1581087477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.7.0 (13 Sept 2019):
+  * Minor efficiency improvements to the SQL-backed dictionary.
+  * Incompatible change to the Exp traversal API.
+  * Remove the obsolete and unsupported &quot;corpus statistics&quot; code.
+  * Major performance improvement (3x-4x) for long sentences.
+  * Fix a bug that causes random results on 32-bit systems.
+  * Fix a bug that could cause missing linkages on some systems.
+- Changes from version 5.6.2 (24 June 2019):
+  * Bug-fix the SQL-backed dictionary.
+  * Add missing public symbol to shlib export list.
+  * English dict: additions of paraphrasing verbs.
+- Changes from version 5.6.1 (27 May 2019):
+  * Performance improvement (approx 20%) in expressions.
+  * Performance improvement (approx 10%) by disjunct/connectors pools.
+  * Performance improvement (4-10% for English) by faster power-pruning.
+  * Fix a bug in trailing connectors encoding (may cause bad linkages).
+  * Fix inability to form linkage when first word is disconnected.
+  * English dict: fix use of quotations with paraphrasing verbs.
+  * English dict: fix broken usage of &quot;have not&quot;.
+  * Performance improvement (approx 16%) for long sentences.
+  * Performance improvement (approx 20%) for long sentences.
+- Changes from version 5.6.0 (4 January 2019):
+  * Fix dict cost reading under user locales with comma decimal separator.
+  * Support using the pcre2 regex package (configured by default if available).
+  * Add &quot;-with-regexlib=pcre2|tre|regex|c&quot; to &quot;configure&quot;.
+  * Revise the manpage.
+  * Remove the experimental Viterbi code.
+  * Revise the SAT parser cost model to align it with the classic parser.
+  * Implement a strict check on connector name.
+  * Fix linkage_get_disjunct_*() when parse-option display_morphology is true.</comment>
+    <requestid>771556</requestid>
+  </revision>
 </revisionlist>

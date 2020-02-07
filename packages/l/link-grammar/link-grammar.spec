@@ -1,7 +1,7 @@
 #
 # spec file for package link-grammar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname liblink-grammar5
 Name:           link-grammar
-Version:        5.5.0
+Version:        5.7.0
 Release:        0
 Summary:        Syntactic parser and grammar checker
 License:        LGPL-2.1-only
 Group:          Productivity/Text/Spell
-URL:            http://www.abisource.com/projects/link-grammar/
-Source:         http://www.abisource.com/downloads/link-grammar/5.5.0/%{name}-%{version}.tar.gz
+URL:            https://www.abisource.com/projects/link-grammar/
+Source:         http://www.abisource.com/downloads/link-grammar/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  glibc-devel
-BuildRequires:  hunspell-devel
-BuildRequires:  libedit-devel
+BuildRequires:  minisat-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 Obsoletes:      perl-clinkgrammar < 5.4.3
 
 %description
@@ -97,15 +101,14 @@ Link Grammar.
 %setup -q
 
 %build
-# --enable-sat-solver and --enable-corpus-stats are still at the prototype stage
 %configure \
     --disable-static \
     --disable-java-bindings
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot} -type f "(" -name "*.a" -o -name "*.la" ")" -delete -print
+find %{buildroot}%{_libdir} -type f "(" -name "*.a" -o -name "*.la" ")" -delete -print
 find %{buildroot} ! -type d -size 0 -delete
 %fdupes %{buildroot}%{_prefix}
 
