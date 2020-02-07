@@ -204,7 +204,7 @@ Required: gcc-PIE
 
 # the basic stuff
 Support: perl
-# build-mkbaselibs used to be Support, but OBS handles that on its own
+Support: build-mkbaselibs
 # Prefer: build-mkbaselibs
 Prefer:  build-mkbaselibs
 Support: brp-check-suse
