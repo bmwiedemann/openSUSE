@@ -1,6 +1,7 @@
 #
 # spec file for package rav1e
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,13 +16,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           rav1e
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
+License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 
-License:        BSD-2-Clause
 URL:            https://github.com/xiph/rav1e
 #
 Source0:        https://github.com/xiph/rav1e/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -55,8 +57,8 @@ rav1e features:
 * Near real-time encoding at high speed levels
 
 %package -n librav1e0
-Summary: AV1 encoder library
-Group: System/Libraries
+Summary:        AV1 encoder library
+Group:          System/Libraries
 
 %description -n librav1e0
 rav1e is an AV1 video encoder libary. It is designed to eventually cover all
@@ -64,9 +66,9 @@ use cases, though in its current form it is most suitable for cases where
 libaom (the reference encoder) is too slow.
 
 %package devel
-Summary: Development files for rav1e
-Group: Development/Libraries/C and C++
-Requires: librav1e0 = %{version}
+Summary:        Development files for rav1e
+Group:          Development/Libraries/C and C++
+Requires:       librav1e0 = %{version}
 
 %description devel
 The rav1e-devel package contains libraries and header files for
