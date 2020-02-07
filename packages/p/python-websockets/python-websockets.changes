@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:45:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 8.1
+  * Added compatibility with Python 3.8.
+- drop upstreamed patch python38-support.patch
+
+-------------------------------------------------------------------
 Wed Oct 16 03:19:43 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add python38-support.patch from upstream that fixes build failures

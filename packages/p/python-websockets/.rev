@@ -81,4 +81,12 @@
   against Python 3.8.</comment>
     <requestid>738721</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0e7b801522b9918e0037d7589c596c4d</srcmd5>
+    <version>8.1</version>
+    <time>1581087262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770600</requestid>
+  </revision>
 </revisionlist>

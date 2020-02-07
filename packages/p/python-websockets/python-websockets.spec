@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-websockets
-Version:        8.0.2
+Version:        8.1
 Release:        0
 Summary:        An implementation of the WebSocket Protocol (RFC 6455)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz
-Patch0:         python38-support.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +44,6 @@ concurrent applications.
 
 %prep
 %setup -q -n websockets-%{version}
-%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"
