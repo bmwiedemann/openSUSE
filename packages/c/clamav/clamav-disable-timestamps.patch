@@ -37,8 +37,8 @@ Index: configure
  LIBCLAMAV_VERSION
 +ENABLE_TIMESTAMPS
  PACKAGE_VERSION_NUM
- EGREP
- GREP
+ ac_ct_AR
+ AR
 @@ -924,6 +925,7 @@ ac_user_opts='
  enable_mmap_for_cross_compiling
  enable_dependency_tracking
@@ -58,8 +58,8 @@ Index: configure
                            optimize for fast installation [default=yes]
 @@ -5927,6 +5931,26 @@ $as_echo "$ac_cv_safe_to_define___extens
  
-   $as_echo "#define _TANDEM_SOURCE 1" >>confdefs.h
  
+ $as_echo "#define PACKAGE PACKAGE_NAME" >>confdefs.h
 +# Check whether --enable-timestamps was given.
 +if test "${enable_timestamps+set}" = set; then :
 +  enableval=$enable_timestamps;
@@ -82,4 +82,4 @@ Index: configure
 +_ACEOF
  
  
- VERSION="0.102.1"
+ VERSION="0.102.2"

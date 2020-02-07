@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb  5 18:31:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.102.2
+  * CVE-2020-3123: A denial-of-service (DoS) condition may occur when
+    using the optional credit card data-loss-prevention (DLP) feature.
+    Improper bounds checking of an unsigned variable resulted in an
+    out-of-bounds read, which causes a crash.
+  * Significantly improved the scan speed of PDF files on Windows.
+  * Re-applied a fix to alleviate file access issues when scanning RAR
+    files in downstream projects that use libclamav where the scanning
+    engine is operating in a low-privilege process. This bug was originally
+    fixed in 0.101.2 and the fix was mistakenly omitted from 0.102.0.
+  * Fixed an issue where freshclam failed to update if the database version
+    downloaded is one version older than advertised. This situation may
+    occur after a new database version is published. The issue affected
+    users downloading the whole CVD database file.
+  * Changed the default freshclam ReceiveTimeout setting to 0 (infinite).
+    The ReceiveTimeout had caused needless database update failures for
+    users with slower internet connections.
+  * Correctly display the number of kilobytes (KiB) in progress bar and
+    reduced the size of the progress bar to accommodate 80-character width
+    terminals.
+  * Fixed an issue where running freshclam manually causes a daemonized
+    freshclam process to fail when it updates because the manual instance
+    deletes the temporary download directory. The freshclam temporary files
+    will now download to a unique directory created at the time of an update
+    instead of using a hardcoded directory created/destroyed at the program
+    start/exit.
+  * Fix for freshclam's OnOutdatedExecute config option.
+  * Fixes a memory leak in the error condition handling for the email
+    parser.
+  * Improved bound checking and error handling in ARJ archive parser.
+  * Improved error handling in PDF parser.
+  * Fix for memory leak in byte-compare signature handler.
+
+-------------------------------------------------------------------
 Tue Dec 24 10:49:25 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - The freshclam.service should not be started before the network is

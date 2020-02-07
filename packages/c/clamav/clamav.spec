@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define clamav_check --enable-check
 Name:           clamav
-Version:        0.102.1
+Version:        0.102.2
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -60,9 +60,9 @@ BuildRequires:  pwdutils
 BuildRequires:  python-devel
 BuildRequires:  sed
 BuildRequires:  sendmail-devel
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  %_bindir/awk
 Requires(pre):  %_sbindir/groupadd
 Requires(pre):  %_sbindir/useradd
