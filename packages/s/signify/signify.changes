@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  6 20:54:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 28
+  Added
+  * In verification mode (with -C) it is now possible to use the
+    -t command line flag to specify the key type.
+  * A copy of the regression tests from the OpenBSD CVS repository
+    is now included.
+  Changed
+  * Bumped version of libbsd to 0.10.0, which is the most recent
+    stable.
+  Fixed
+  * Ensure that release packages include the code for the libwaive/
+   submodule.
+
+-------------------------------------------------------------------
 Mon Nov  4 22:11:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 27
