@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuv
-Version:        1.31.0
+Version:        1.34.2
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT
@@ -29,9 +29,6 @@ Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
 # https://github.com/libuv/libuv/blob/v1.x/MAINTAINERS.md
 Source2:        %{name}.keyring
 Patch1:         fix_tests.patch
-# PATCH-FIX-UPSTREAM fno-common-build-errs.patch gh#libuv/libuv#2603 mcepl@suse.com
-# Builds with -fno-common fails in run_tests-test-poll-close-doesnt-corrupt-stack.c
-Patch2:         fno-common-build-errs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
