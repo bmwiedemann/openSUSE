@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-setuptools%{psuffix}
-Version:        41.6.0
+Version:        44.0.0
 Release:        0
 Summary:        Enhancements to distutils for building and distributing Python packages
 License:        Python-2.0 OR ZPL-2.0
@@ -35,6 +35,7 @@ URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.zip
 Source1:        psfl.txt
 Source2:        zpl.txt
+Source3:        testdata.tar.gz
 Patch0:         sort-for-reproducibility.patch
 Patch1:         importlib.patch
 BuildRequires:  %{python_module appdirs}
@@ -87,6 +88,7 @@ especially ones that have dependencies on other packages.
 
 %prep
 %setup -q -n setuptools-%{version}
+tar -xzvf %{SOURCE3}
 %patch0 -p1
 %patch1 -p1
 find . -type f -name "*.orig" -delete

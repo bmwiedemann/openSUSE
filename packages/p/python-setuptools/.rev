@@ -663,4 +663,40 @@
   * Fixed failing integration test triggered by 'long_description_content_type' in packaging.</comment>
     <requestid>748817</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1d6f5fc47a83b309539505944cc9d4b1</srcmd5>
+    <version>44.0.0</version>
+    <time>1581087131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 44.0.0
+- last version with python2 support
+- add testdata.tar.gz -&gt; missing data for testsuite
+ * Drop support for Python 3.4.
+ * include pyproject.toml in source distribution by default.
+     Projects relying on the previous behavior where pyproject.toml
+ * Setuptools once again declares 'setuptools' in the build-system.requires
+     and adds PEP 517 build support by declaring itself as the build-backend
+ * Fix support for easy_install's find-links option in setup.cfg
+ * Build dependencies (setup_requires and tests_require) now install transitive
+     dependencies indicated by extras.
+ * Mark the easy_install script and setuptools command as deprecated, and use
+     pip when available to fetch/build wheels for missing setup_requires/tests_require
+     requirements, with the following differences in behavior:
+       + support for python_requires
+       + better support for wheels (proper handling of priority with respect to PEP 425 tags)
+       + PEP 517/518 support
+       + eggs are not supported
+       + no support for the allow_hosts easy_install option (index_url/find_links are still honored)
+       + pip environment variables are honored (and take precedence over easy_install options)
+ * Removed the &quot;upload&quot; and &quot;register&quot; commands in favor of twine.
+ * Add support for the license_files option in setup.cfg to automatically
+    include multiple license files in a source distribution.
+ * Update handling of wheels compatibility tags: * add support for manylinux2010
+     * fix use of removed 'm' ABI flag in Python 3.8 on Windows
+ * Fix empty namespace package installation from wheel.
+ * Setuptools now exposes a new entry point hook &quot;setuptools.finalize_distribution_options&quot;,
+     enabling plugins like setuptools_scm to configure options on the distribution
+     at finalization time.</comment>
+    <requestid>769997</requestid>
+  </revision>
 </revisionlist>
