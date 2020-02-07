@@ -1,8 +1,8 @@
 #
 # spec file for package twin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2012-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           twin
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Textmode WINdow environment
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://sourceforge.net/projects/twin/
-Source0:        https://github.com/cosmos72/twin/archive/v0.8.0.tar.gz
+Source0:        https://github.com/cosmos72/twin/archive/v0.8.1.tar.gz
 Source1:        twin-rpmlintrc
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
@@ -42,6 +42,7 @@ desktop.
 
 %package -n libTutf1
 Version:        1.0.0
+Release:        0
 Summary:        Unicode/Charset conversion library for twin
 
 %description -n libTutf1
@@ -49,6 +50,7 @@ Unicode <-> charset conversion routines for twin.
 
 %package -n libTutf-devel
 Version:        1.0.0
+Release:        0
 Requires:       libTutf1 = %{version}
 Summary:        Unicode/Charset conversion library for twin
 
@@ -57,6 +59,7 @@ Unicode <-> charset conversion routines for twin.
 
 %package -n libTw5
 Version:        5.0.0
+Release:        0
 Summary:        Main library for twin
 
 %description -n libTw5
@@ -64,6 +67,7 @@ Main library for twin
 
 %package -n libTw-devel
 Version:        5.0.0
+Release:        0
 Summary:        Main library for twin
 Requires:       libTw5 = %{version}
 

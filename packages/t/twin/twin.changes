@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:24:11 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.1:
+  * Contact information updated.
+  * Fix some comparison between signed and unsigned expressions.
+  * Cleanup for C++ migration.
+
+-------------------------------------------------------------------
 Fri Nov 22 07:24:14 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Apply Shared Library Policy
