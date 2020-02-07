@@ -1,7 +1,7 @@
 #
 # spec file for package MultiMarkdown-6
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           MultiMarkdown-6
-Version:        6.4.0
+Version:        6.5.1
 Release:        0
 Summary:        Reference implementation of MultiMarkdown
 License:        MIT
 URL:            https://fletcherpenney.net/multimarkdown
 # We have to use tarball generated via _service as released ones are
 # missing submodules that are necessary for building
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes

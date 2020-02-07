@@ -51,4 +51,41 @@
 - Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>745490</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>198f9970f63a509a5f6dc26ad3b9a0cf</srcmd5>
+    <version>6.5.1</version>
+    <time>1581087202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.5.1:
+  * FIXED: Fix README version
+  * version bump
+  * FIXED: Fix error when pruning tokens
+  * FIXED: Fix array overflow with wide tables
+  * FIXED: Fix tests
+  * FIXED: Fix null dereference
+  * FIXED: Fix memory leak
+  * FIXED: Fix null dereference
+  * FIXED: Fix edge case in fenced code blocks
+  * FIXED: Use more definitive edge case fix
+  * FIXED: Fix metadata edge case
+  * FIXED: Fix typos
+  * FIXED: Ensure use of bash for creating AllTests.c
+  * FIXED: Fix edge case in block parsing
+  * FIXED: Fix edge case error in definition lists
+  * UPDATED: Shorten hash function for compiling speed since we are hashing shorter strings
+  * FIXED: Fix name mismatch of mmd6-default-metadata (Addresses #173)
+  * UPDATED: Update notes source text
+  * version bump; copyright bump
+  * FIXED: Fix test suite for new captions
+  * ADDED: Add title as short caption for figures and tables to be used in list of figures and list of tables.  Addresses #177 -- thanks, 	MArpogaus
+  * FIXED: Fix memory leak (#172) -- thanks Alfons
+  * UPDATED: Update cmake for xcode 11
+  * UPDATED: Tweak smart quote rules to avoid false positive matches when using double quote as inches mark
+  * FIXED: Fix two small potential errors
+  * UPDATED: Make astyle
+  * FIXED: Fix edge case with single item loose lists (fixes #174)
+  * FIXED: Update README template
+  * Fixes to README</comment>
+    <requestid>770559</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Thu Feb  6 12:28:22 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.5.1:
+  * FIXED: Fix README version
+  * version bump
+  * FIXED: Fix error when pruning tokens
+  * FIXED: Fix array overflow with wide tables
+  * FIXED: Fix tests
+  * FIXED: Fix null dereference
+  * FIXED: Fix memory leak
+  * FIXED: Fix null dereference
+  * FIXED: Fix edge case in fenced code blocks
+  * FIXED: Use more definitive edge case fix
+  * FIXED: Fix metadata edge case
+  * FIXED: Fix typos
+  * FIXED: Ensure use of bash for creating AllTests.c
+  * FIXED: Fix edge case in block parsing
+  * FIXED: Fix edge case error in definition lists
+  * UPDATED: Shorten hash function for compiling speed since we are hashing shorter strings
+  * FIXED: Fix name mismatch of mmd6-default-metadata (Addresses #173)
+  * UPDATED: Update notes source text
+  * version bump; copyright bump
+  * FIXED: Fix test suite for new captions
+  * ADDED: Add title as short caption for figures and tables to be used in list of figures and list of tables.  Addresses #177 -- thanks, 	MArpogaus
+  * FIXED: Fix memory leak (#172) -- thanks Alfons
+  * UPDATED: Update cmake for xcode 11
+  * UPDATED: Tweak smart quote rules to avoid false positive matches when using double quote as inches mark
+  * FIXED: Fix two small potential errors
+  * UPDATED: Make astyle
+  * FIXED: Fix edge case with single item loose lists (fixes #174)
+  * FIXED: Update README template
+  * Fixes to README
+  * Revert "remove build folder"
+  * remove build folder
+  * update README with instructions for Xcode
+  * FIXED: Fix regression
+  * ADDED: Add ASCII case detection
+  * UPDATED: Refactor header file inclusion
+  * UPDATED: Tidy code
+  * FIXED: Fix potential errors related to checking for metadata
+  * FIXED: Improve efficiency when checking for existence of metadata
+  * FIXED: Fix potential memory address error
+  * FIXED: Allow building libMMD has a child project for testing
+  * FIXED: Fix length of metadata if no trailing line ending
+  * UPDATED: Tidy code
+  * UPDATED: Tidy code
+  * FIXED: Improve BOM stripping
+  * UPDATED: reduce false-positive rate of metadata where first line contains colon but metadata is not intended
+  * UPDATED: Automatically disable libCurl on iOS
+  * UPDATED: remove reliance on version.h when testing
+  * UPDATED: Remove debug statement
+  * UPDATED: Add UTF-8 validity check function
+  * UPDATED: Fix main() when token pools disabled
+  * UPDATED: Update char.c
+  * UPDATED: Remove some old debugging statements that aren't necessary anymore
+  * FIXED: Fix filename
+  * UPDATED: Additional README comments about Xcode
+  * add how to build Xcode framework to README
+  * FIXED: Fix trim trailing whitespace
+  * UPDATED: Update astyle
+  * UPDATED: Add MARKUP token type
+  * UPDATED: Update astyle settings
+  * FIXED: Fix potential issue in d_string
+  * FIXED: Fix potential issue in d_string
+  * UPDATED: Remove i386 build architecture from default configuration
+  * ADDED: Add {{TOC:1}} and {{TOC:1-2}} options
+  * UPDATED: Silence warnings
+  * UPDATED: Apply astyle
+  * FIXED: Fix potential bug when reading OPML/ITMZ
+  * FIXED: Update Quick Start PDF
+  * FIXED: Clean up Quick Start guide
+  * FIXED: Update Quick Start PDF
+  * FIXED: Fix prior bad edits to quick start guide
+  * FIXED: Fix warning
+  * FIXED: Fix handling of hebrew language option
+  * UPDATED: Fix doxygen template
+  * UPDATED: Update advanced headers test suite
+  * ADDED: Add support for random header labels when not manually specified (Addresses #157)
+  * FIXED: Prevent line breaks in HTML/ODF attributes
+  * UPDATED: table id attribute should be on table not caption
+  * FIXED: Fix whitespace issues with headers with manual labels
+  * FIXED: Include .html for EPUB and .fodt for ODT when transcluding with wildcard extension
+  * UPDATED: Silence some Xcode warnings
+  * FIXED: Fix pointer dereference (fixes #152)
+  * UPDATED: Change convenience scripts for better POSIX compliance (implements #150) (Thanks, Ryan)
+  * UPDATED: Apply astyle
+  * FIXED: Ensure newline at end of header contents when importing from OPML/ITMZ
+  * FIXED: Fix CMake config for MacPorts (fixes #146)
+  * FIXED: Fix letterhead reference to memoir-footer. (Fixes #143)
+  * FIXED: Use C11 (had old C99 as well, but I suspect that wasn't actually used
+  * FIXED: Fix PATH in convenience scripts
+  * FIXED: Fix bugs in new zip extraction code
+  * Update mmd6-letterhead-leader.tex
+  * FIXED: Add byte for null terminator when extracting from zip archive
+  * FIXED: Update re2c scanners and prevent crash on certain documents with unexpected encoding
+  * ADDED: Add conversion from ITMZ routines
+  * UPDATED: Refactor XML parsing; improve OPML reading; add ITMZ (iThoughts) reading/writing (experimental feature); a few other small tweaks
+  * UPDATED: Update macOS deployment version to 10.6 for Mojave
+  * UPDATED: Don't require opening <?xml> in OPML
+  * UPDATED: Apply astyle
+  * UPDATED: Add OPML routines to libMultiMarkdown.h
+  * UPDATED: Update d_string
+
+-------------------------------------------------------------------
 Tue Nov  5 13:23:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Use modern macro for cmake
