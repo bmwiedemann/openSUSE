@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Feb  7 07:14:03 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- drop src/win* files as they contain weird license
+
+-------------------------------------------------------------------
+Thu Feb  6 06:57:18 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add _constraints (4G of RAM)
+
+-------------------------------------------------------------------
+Wed Feb 05 12:30:08 UTC 2020 - jslaby@suse.com
+
+- Update to version 2.32.1+git20200123.g83f952a4b:
+  * Promote the recommended FW to v5.12.2.100
+  * Re-enable back light compensation for the D465 - adding to this branch to not forget to merge
+  * fix possible bug in device-hid detection
+  * Add support for remove_static_node
+  * Update readme.md
+  * Add heuristic to drop UVC overflow frames with v4l kernel prior to v4.16
+  * use ts.global_ts for update
+  * chrono::abs() not supported on pre-c++17
+  * image time sync code update
+  * and much more...
+
+-------------------------------------------------------------------
+Thu Dec 12 13:00:55 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- initial commit
