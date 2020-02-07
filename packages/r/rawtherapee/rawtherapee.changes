@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb  6 11:08:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.8
+  * Automatically recover detail lost to lens blur (diffraction)
+    using the new Capture Sharpening tool, located in the “Raw” tab.
+    It takes place right after demosaicing, and as it works in
+    linear space it is not prone to haloing. Capture Sharpening in
+    combination with Post-Resize Sharpening allows for detailed
+    and crisp results.
+  * CR3 support: image data is decoded so you can process your raw files,
+    but metadata is not supported yet. If you have an ICC or DCP input
+    profile for your CR3-producing camera, you will need to point
+    RawTherapee to it manually
+    (Color tab > Color Management > Input Profile > Custom).
+  * Improvements of various camera models (new DCP dual-illuminant
+    input profiles, raw crops, white levels, etc.), speedups and
+    optimizations to various tools, better memory management,
+    various bug fixes. See the git log for details.
+
+- Remove shared libs from spec because it was building just a couple
+  of .a libs
+
+- Switched from -O2 to -O3, as suggested in the release notes
+
+-------------------------------------------------------------------
 Wed Sep 11 08:20:56 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 5.7
