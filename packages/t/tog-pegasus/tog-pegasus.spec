@@ -1,7 +1,7 @@
 #
 # spec file for package tog-pegasus
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -46,7 +46,7 @@ Summary:        OpenPegasus WBEM Services for Linux
 License:        MIT
 Group:          System/Daemons
 
-Url:            http://www.openpegasus.org
+URL:            http://www.openpegasus.org
 Source0:        https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-%{version}.tar.gz
 #  1: Description of security enhacements
 Source1:        README.SUSE.Security
@@ -155,9 +155,9 @@ BuildRequires:  openslp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 %if 0%{?has_systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %if 0%{?suse_version}
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 BuildRequires:  systemd-units
 Requires:       net-snmp-libs
