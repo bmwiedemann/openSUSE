@@ -1,7 +1,7 @@
 #
 # spec file for package filezilla
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           filezilla
-Version:        3.46.0
+Version:        3.46.3
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.19.1
+BuildRequires:  pkgconfig(libfilezilla) >= 0.19.3
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
@@ -120,7 +120,7 @@ autoreconf -fi
   --disable-manualupdatecheck \
   --disable-autoupdatecheck   \
   --with-dbus
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -129,7 +129,7 @@ make %{?_smp_mflags}
 %find_lang %{name}
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post
 %desktop_database_post
