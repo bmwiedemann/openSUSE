@@ -76,4 +76,13 @@
 </comment>
     <requestid>644001</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>1a615606abb1f6e30baf49bf97d99bfb</srcmd5>
+    <version>20170319</version>
+    <time>1581087453</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1159958: Use breeze icon theme
+  Paper doesn't have yast icons yet.</comment>
+    <requestid>770863</requestid>
+  </revision>
 </revisionlist>

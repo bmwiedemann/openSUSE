@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:24:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1159958: Use breeze icon theme
+  Paper doesn't have yast icons yet.
+
+-------------------------------------------------------------------
 Tue Oct 23 16:09:20 UTC 2018 - mvetter@suse.com
 
 - bsc#1112961: Require Paper icon theme
