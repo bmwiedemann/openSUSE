@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ BuildRequires:  python-pytest
 BuildRequires:  python-setuptools
 BuildRequires:  python-xml
 %endif
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Requires:       eject
 Requires:       grep
 Requires:       iptables
