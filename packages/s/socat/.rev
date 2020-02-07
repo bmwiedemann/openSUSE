@@ -310,4 +310,13 @@ See README (forwarded request 157221 from babelworx)</comment>
     <comment></comment>
     <requestid>692059</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>c59c64ca3bed8afb8050f5016dd5e545</srcmd5>
+    <version>1.7.3.3</version>
+    <time>1581087114</time>
+    <user>dimstar_suse</user>
+    <comment>- socat-common-fixes.patch: include tcpd.h where needed to fix
+  -fno-common bsc#1160293 (forwarded request 769978 from msmeissn)</comment>
+    <requestid>769984</requestid>
+  </revision>
 </revisionlist>

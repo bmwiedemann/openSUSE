@@ -1,7 +1,7 @@
 #
 # spec file for package socat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            http://www.dest-unreach.org/socat/
 Source:         http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 Source1:        %{name}.changes
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
+Patch2:         socat-common-fixes.patch
 BuildRequires:  iputils
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel
@@ -54,6 +55,7 @@ combination of two of these.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 sed 's|#! %{_bindir}/env bash|#!%{_bindir}/bash|' -i proxyecho.sh readline.sh
 
 %build
@@ -61,7 +63,7 @@ sed 's|#! %{_bindir}/env bash|#!%{_bindir}/bash|' -i proxyecho.sh readline.sh
 CL_DATE="$(awk -F " - " 'NR==2{print $1;}' %{SOURCE1})"
 test -n "$CL_DATE"
 export BUILD_DATE="$(LANG=C date --utc -d "${CL_DATE}" +"%{b} %{e} %{Y} %{T}")"
-export CFLAGS="%{optflags} -fno-strict-aliasing -DHAVE_SSLv23_client_method -DHAVE_SSLv23_server_method"
+export CFLAGS="%{optflags} -fno-strict-aliasing -DHAVE_SSLv23_client_method -DHAVE_SSLv23_server_method -fno-common"
 %configure
 make %{?_smp_mflags} all
 mkdir examples

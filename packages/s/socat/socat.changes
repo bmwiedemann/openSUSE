@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:41:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- socat-common-fixes.patch: include tcpd.h where needed to fix
+  -fno-common bsc#1160293
+
+-------------------------------------------------------------------
 Sat Apr  6 13:34:11 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.3.3:
