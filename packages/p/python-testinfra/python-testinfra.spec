@@ -1,7 +1,7 @@
 #
 # spec file for package python-testinfra
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testinfra
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/philpep/testinfra
 Source:         https://files.pythonhosted.org/packages/source/t/testinfra/testinfra-%{version}.tar.gz
+BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pywinrm}
 BuildRequires:  %{python_module salt}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4}
+BuildRequires:  %{python_module tornado < 5}
 BuildRequires:  ansible > 2.8
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -95,4 +95,19 @@
   * Fix an escape issue with ansible ssh args set inventory or configuration file</comment>
     <requestid>731296</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c7c05e0dd70310b4fc04090bae2f4cf5</srcmd5>
+    <version>4.0.0</version>
+    <time>1581087211</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.0
+ * drop python 2 support
+ * Add podman backend and module
+ * Add extras for backend dependencies
+ * various enhencements of kitchen integration documentation
+ * ansible backend now support &quot;password&quot; field from ansible inventory
+ * New backend &quot;openshift&quot;
+ * Fix Process module when working with long strings (username, ...)</comment>
+    <requestid>770550</requestid>
+  </revision>
 </revisionlist>
