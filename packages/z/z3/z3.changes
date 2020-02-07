@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 30 09:53:14 UTC 2020 - jslaby@suse.com
+
+- Update to version 4.8.7+git.20200129:
+  * change in the test lp.cpp and in a trace statement
+  * Add explicit instantiation of update_inf_cost_for_column_tableau.
+  * fix build
+  * speed up freedom interval computation
+  * return l_undef in get_phase() if lpvar is not available
+  * add filter to gcd test
+  * fix #2898
+  * correct handling of int terms in theory_lra
+  * fix the debug build
+  * and much more
+
+-------------------------------------------------------------------
 Thu Oct 10 08:15:48 UTC 2019 - jslaby@suse.com
 
 - Update to version 4.8.6+git.20191009:

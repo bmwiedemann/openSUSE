@@ -1,7 +1,7 @@
 #
 # spec file for package z3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define version_unconverted 4.8.6+git.20191009
+%define version_unconverted 4.8.7+git.20200129
 %define sover 4_8
 Name:           z3
-Version:        4.8.6+git.20191009
+Version:        4.8.7+git.20200129
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
@@ -74,16 +74,16 @@ Python bindings for the Z3 library.
 %build
 %define __builder ninja
 %cmake \
-  -DBUILD_LIBZ3_SHARED=true \
-  -DUSE_LIB_GMP=true \
-  -DBUILD_PYTHON_BINDINGS=true \
-  -DINSTALL_PYTHON_BINDINGS=true \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
-  -DENABLE_EXAMPLE_TARGETS=false \
+  -DZ3_BUILD_LIBZ3_SHARED=true \
+  -DZ3_USE_LIB_GMP=true \
+  -DZ3_BUILD_PYTHON_BINDINGS=true \
+  -DZ3_INSTALL_PYTHON_BINDINGS=true \
+  -DZ3_ENABLE_EXAMPLE_TARGETS=false \
 %if 0%{?suse_version} >= 1550
-  -DLINK_TIME_OPTIMIZATION=true
+  -DZ3_LINK_TIME_OPTIMIZATION=true
 %else
-  -DLINK_TIME_OPTIMIZATION=false
+  -DZ3_LINK_TIME_OPTIMIZATION=false
 %endif
 
 %make_jobs
