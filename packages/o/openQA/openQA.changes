@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 07 10:38:26 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1581058621.9523164cd:
+  * Dependency cron 200207
+  * Make help icon after search field fully clickable
+  * Consistently store gru job output as a note
+  * Only rebless jobs once
+  * load_templates: better error handling
+  * fetchneedles: Fix "no tracking information for the current branch" on self-repair
+  * Have openqa-clone-custom-git-refspec parse PR for test URLs
+  * Improve the format of execution time
+  * Add final linebreak to jobtemplate yaml
+  * Avoid re-scheduling accepted jobs before first status update
+  * Make scheduler fullstack test more stable
+  * Add test for aborting job during setup
+  * Consider worker no longer immediately offline when ws connection finishes
+  * Prevent passing the reason 'cancel' as it provides no extra information
+  * Prevent worker from overriding reason set by web UI
+  * Dependency cron 200205
+
+-------------------------------------------------------------------
 Wed Feb 05 02:38:00 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1580827995.3476c9f7b:
