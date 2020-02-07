@@ -1,9 +1,9 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index cba6972..3a79542 100644
+index cebc142..e3061cd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,8 +1,8 @@
- cmake_minimum_required(VERSION 2.8.0)
+@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 2.8.0)
+ option(RAW_VALUES_DEC "Display Raw Values in Decimal instead of Hex" OFF)
  project(CrazyDiskInfo CXX)
  add_executable(CrazyDiskInfo main.cpp)
 -set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
@@ -11,5 +11,7 @@ index cba6972..3a79542 100644
 +add_definitions(-Wall -std=c++11)
 +SET_TARGET_PROPERTIES(CrazyDiskInfo PROPERTIES OUTPUT_NAME crazydiskinfo)
  target_link_libraries(CrazyDiskInfo atasmart)
+-target_link_libraries(CrazyDiskInfo tinfow)
++#target_link_libraries(CrazyDiskInfo tinfow)
  target_link_libraries(CrazyDiskInfo ncursesw)
  INSTALL(TARGETS CrazyDiskInfo RUNTIME DESTINATION /usr/sbin)
