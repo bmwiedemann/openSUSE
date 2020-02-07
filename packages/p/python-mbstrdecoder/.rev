@@ -17,4 +17,12 @@
   * Fixes for python 3.8</comment>
     <requestid>718103</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20375939ee20c4df9bae68e1b32e1bad</srcmd5>
+    <version>0.8.3</version>
+    <time>1581087298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770662</requestid>
+  </revision>
 </revisionlist>

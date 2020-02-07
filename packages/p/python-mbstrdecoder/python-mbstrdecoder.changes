@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:43:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.3:
+  * Fix encoding detection failure
+  * Modify to get a stable result when repeatedly call
+  * Change chardet dependency from optional to mandatory
+  * Update extras_require
+
+-------------------------------------------------------------------
 Wed Jul 24 07:49:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.8.1:
