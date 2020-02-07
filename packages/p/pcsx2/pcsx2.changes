@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 31 08:52:42 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200127:
+  * onepad: Update to latest controller database.
+  * Locales: Update Dutch translations nl_NL. (#3224)
+  * gsdx-d3d11: Adjust anisotropic filtering handle.
+  * Locales: Polish localization/translation fixes. (#3223)
+
+-------------------------------------------------------------------
 Thu Jan 23 13:42:22 UTC 2020 - pousaduarte@gmail.com
 
 - Update to version 1.5.0~git20200123:
