@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-signedjson
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname signedjson
 Name:           python-%{modname}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python module to sign JSON with Ed25519 signatures
 License:        Apache-2.0

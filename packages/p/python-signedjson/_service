@@ -6,7 +6,7 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="url">git://github.com/matrix-org/python-signedjson.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.0.0</param>
+    <param name="revision">v1.1.0</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">okurz@suse.com</param>
   </service>
