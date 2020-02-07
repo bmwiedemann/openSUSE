@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 11:59:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
 Wed Apr  3 18:45:07 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
 - Enable aarch64 build (bsc#1131459)
