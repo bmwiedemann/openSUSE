@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,7 @@ This package contains convenience files for developers.
 %autosetup -p1
 
 %build
+export LANG=C.UTF-8
 %configure \
 	--enable-geoclue \
 	--enable-pipewire \
@@ -74,6 +75,7 @@ This package contains convenience files for developers.
 %make_build
 
 %install
+export LANG=C.UTF-8
 %make_install
 %find_lang %{name}
 

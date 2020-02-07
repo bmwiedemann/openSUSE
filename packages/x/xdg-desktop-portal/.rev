@@ -121,4 +121,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767232 from dimstar)</comment>
     <requestid>767492</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8fb4cb51ae9473958727c8575e6a0f7f</srcmd5>
+    <version>1.6.0</version>
+    <time>1581087066</time>
+    <user>dimstar_suse</user>
+    <comment>- Set encoding before building to fix a build error in SLE. (forwarded request 769508 from alarrosa)</comment>
+    <requestid>769942</requestid>
+  </revision>
 </revisionlist>
