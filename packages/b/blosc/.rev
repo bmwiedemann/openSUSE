@@ -154,4 +154,13 @@ I have fixed the issues from the previous submit requests.</comment>
     <comment></comment>
     <requestid>749894</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>167fdf124cbe43109c33d44d14f39cbd</srcmd5>
+    <version>1.17.1</version>
+    <time>1581087241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.1:
+  * BloscLZ codec updated to 2.0.0.</comment>
+    <requestid>770623</requestid>
+  </revision>
 </revisionlist>
