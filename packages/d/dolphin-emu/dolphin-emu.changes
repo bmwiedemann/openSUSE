@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 06 12:18:44 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1580849962.a205ecb446:
+  * Common: Amend includes to handle the upgrade to fmt
+  * Core: Amend includes to handle the upgrade to fmt
+  * VideoCommon: Amend formatting code to handle the upgrade to fmt
+  * Externals: Update fmt to 6.1.2
+  * Report use of DI interrupt mask commands as a game quirk
+  * WiimoteEmu: Fix default IMU accelerometer mappings.
+  * Fix assignment of DI interrupt mask ioctls
+  * Translation resources sync with Transifex
+  * Android: Fix typo in Skip Presenting Duplicate Frames setting name
+  * Vulkan: Treat VK_SUBOPTIMAL_KHR as VK_SUCCESS on Android
+  * Vulkan: Log when a swap chain resize is occurring
+  * IOS/FS: Fix CreateFullPath to not create directories that already exist
+  * WiiRoot: Fix CopySysmenuFilesToFS directory creation
+  * ButtonManager: Fix handling of empty device id.
+  * ControllerInterface/DSUClient: Eliminate m_accl/m_gyro state by accessing the pad data directly like every other input.
+
+-------------------------------------------------------------------
 Tue Jan 28 11:36:03 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1580163603.57f4837e4d:
