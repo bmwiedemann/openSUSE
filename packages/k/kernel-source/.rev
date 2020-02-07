@@ -4970,4 +4970,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <user>dimstar_suse</user>
     <comment>Revert to 5.4; 5.5 seems to mess up badly with btrfs, killing disk space during QA runs (e.g. https://openqa.opensuse.org/tests/1161683#step/inkscape/14)</comment>
   </revision>
+  <revision rev="526" vrev="1">
+    <srcmd5>1212c2ad30de8b159fc926b584f3327c</srcmd5>
+    <version>5.5.1</version>
+    <time>1581087027</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.1 with tentative btrfs fix</comment>
+    <requestid>769861</requestid>
+  </revision>
 </revisionlist>

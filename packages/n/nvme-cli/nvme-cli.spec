@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        1.9+git122.c5097d5
+Version:        1.10.1+git9.872e6b0
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ Url:            https://github.com/linux-nvme/nvme-cli
 Source:         %{name}-%{version}.tar.xz
 Source2:        nvme-cli-rpmlintrc
 # downstream patches:
-Patch101:       0101-nvme-add-iopolicy-rules-for-netapp.patch
 Patch102:       0102-nvme-cli-Add-script-to-determine-host-NQN.patch
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libuuid-devel
@@ -54,7 +53,6 @@ NVMe device for testing purposes. Do NOT use in a production environment.
 
 %prep
 %setup -q
-%patch101 -p1
 %patch102 -p1
 
 %build
@@ -63,17 +61,11 @@ make CFLAGS="%{optflags} -I." PREFIX=%{_prefix} USE_ASCIIDOCTOR=YesPlease %{?_sm
 sed -i '/make.*/d' regress
 
 %install
-make PREFIX=%{_prefix} DESTDIR=%{buildroot} install-bin install-man %{?_smp_mflags}
+make PREFIX=%{_prefix} DESTDIR=%{buildroot} UDEVRULESDIR=%{_udevrulesdir} install-bin install-man install-udev install-systemd %{?_smp_mflags}
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostnqn
 install -m 644 -D completions/bash-nvme-completion.sh %{buildroot}%{_datadir}/bash_completion/completions/nvme
-install -m 644 -D nvmf-autoconnect/systemd/nvmefc-boot-connections.service %{buildroot}%{_unitdir}/nvmefc-boot-connections.service
-install -m 644 -D nvmf-autoconnect/systemd/nvmf-connect@.service %{buildroot}%{_unitdir}/nvmf-connect@.service
-install -m 644 -D nvmf-autoconnect/systemd/nvmf-connect.target %{buildroot}%{_unitdir}/nvmf-connect.target
-install -m 644 -D nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules %{buildroot}%{_udevrulesdir}/70-nvmf-autoconnect.rules
-install -m 644 -D scripts/71-nvme-iopolicy-netapp-ONTAP.rules %{buildroot}%{_udevrulesdir}/71-nvme-iopolicy-netapp-ONTAP.rules
-install -m 644 -D scripts/71-nvme-iopolicy-netapp-E-Series.rules %{buildroot}%{_udevrulesdir}/71-nvme-iopolicy-netapp-E-Series.rules
 %ifarch x86_64 aarch64 i586
-install -m 744 -D scripts/det-hostnqn.sh %{buildroot}%{_sbindir}/nvme-det-hostnqn
+install -m 744 -D scripts/det-hostnqn.sh %{buildroot}%{_sbindir}/nvme-gen-hostnqn
 %endif
 # for subpackage nvme-cli-regress-script:
 install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress
@@ -86,7 +78,7 @@ install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress
 %post
 %ifarch x86_64 aarch64 i586
 if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
-	%{_sbindir}/nvme-det-hostnqn > %{_sysconfdir}/nvme/hostnqn
+	%{_sbindir}/nvme-gen-hostnqn > %{_sysconfdir}/nvme/hostnqn
 fi
 %endif
 if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
@@ -96,7 +88,7 @@ fi
 if [ ! -s %{_sysconfdir}/nvme/hostid ]; then
 	%{_bindir}/uuidgen > %{_sysconfdir}/nvme/hostid
 fi
-%service_add_post %services nvmefc-connect@.service
+%service_add_post %services nvmf-connect@.service
 
 %preun
 %service_del_preun -f %services
@@ -114,15 +106,15 @@ fi
 %doc README.md
 %{_sbindir}/nvme
 %ifarch x86_64 aarch64 i586
-%{_sbindir}/nvme-det-hostnqn
+%{_sbindir}/nvme-gen-hostnqn
 %endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
 %dir %{_datadir}/bash_completion
 %dir %{_datadir}/bash_completion/completions/
 %{_datadir}/bash_completion/completions/nvme
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
-%{_udevrulesdir}/71-nvme-iopolicy-netapp-ONTAP.rules
-%{_udevrulesdir}/71-nvme-iopolicy-netapp-E-Series.rules
+%{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules
+%{_unitdir}/nvmf-autoconnect.service
 %{_unitdir}/nvmefc-boot-connections.service
 %{_unitdir}/nvmf-connect@.service
 %{_unitdir}/nvmf-connect.target

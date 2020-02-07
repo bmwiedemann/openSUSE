@@ -1,7 +1,7 @@
 #
 # spec file for package libgovirt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           libgovirt
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        GObject based oVirt bindings
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://cgit.freedesktop.org/~teuf/govirt
-Source:         http://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/libgovirt
+Source0:        https://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
+
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -40,8 +41,8 @@ bindings.
 
 %package -n libgovirt2
 Summary:        GObject based oVirt bindings
-Group:          System/Libraries
 # To make the lang package installable
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 
 %description -n libgovirt2
@@ -75,12 +76,13 @@ bindings.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
-    --disable-static
-make %{?_smp_mflags}
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install

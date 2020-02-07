@@ -553,4 +553,41 @@ Now with build cycle removed.</comment>
     <comment></comment>
     <requestid>749478</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>87d477b7cf81203dafb99b93f2bbce17</srcmd5>
+    <version>20200201</version>
+    <time>1581087071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200201:
+  * gTLD autopull: 2020-02-01 (#952)
+  * gTLD autopull: 2020-01-31 (#951)
+  * Add WoltLab Cloud domains (#947)
+  * Add qbuser.com domain (#943)
+  * Added senseering domain (#946)
+  * Add u.channelsdvr.net to PSL (#950)
+  * Add discourse.team (#949)
+  * gTLD autopull: 2020-01-06 (#942)
+  * gTLD autopull: 2019-12-25 (#939)
+  * Urgent removal of eq.edu.au (#924)
+  * gTLD autopull: 2019-12-20 (#938)
+  * gTLD autopull: 2019-12-11 (#932)
+  * Added adobeaemcloud domains (#931)
+  * Add Observable domain: observableusercontent.com. (#914)
+  * Correct v.ua sorting
+  * add v.ua (#919)
+  * Add en-root.fr domain (#910)
+  * add Datawire private domain (#925)
+  * Add amsw.nl private domain to PSL (#929)
+  * Add *.on-k3s.io (#922)
+  * Add *.r.appspot.com to public suffix list (#920)
+  * Added gentapps.com (#916)
+  * Add oya.to (#908)
+  * Add Group 53, LLC Domains (#900)
+  * Add perspecta.cloud (#898)
+  * Add 0e.vc to PSL (#896)
+  * Add skygearapp.com (#892)
+  * Update Hostbip Section (#871)
+  * Add qcx.io and *.sys.qcx.io (#868)</comment>
+    <requestid>769951</requestid>
+  </revision>
 </revisionlist>

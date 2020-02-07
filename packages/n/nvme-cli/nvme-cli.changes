@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Jan 27 07:11:47 UTC 2020 - hare@suse.com
+
+- Update to version 1.10.1+git9.872e6b0:
+  * fabrics: fix connection args parsing
+  * nvmf-autoconnect.service
+  * Fix status displayed by vs-telemetry-controller-option wdc plugin command.
+  * Provide documentation for log page directory WDC plugin command
+  * Provide WDC plugin command to dump log page directory
+  * Tests: Hande string encoding and handling failures
+  * Makefile: use UDEVRULESDIR instead of UDEVDIR
+- Rename 'nvme-det-hostnqn' script to 'nvme-gen-hostnqn'
+
+-------------------------------------------------------------------
+Thu Jan 16 12:12:55 UTC 2020 - hare@suse.com
+
+- Update to version 1.10.1+git2.797ec65:
+  * Makefile: generate Dracut config according to UDEVDIR
+  * Add additional smart log critical warn decoding
+  * New tag for missing docs
+  * Add new wdc documentation
+  * Release v1.10
+  * Regen documentation
+  * Use asprintf for long names
+  * [NVME-CLI] Add documentation file for vs-error-reason-identifier WDC            plugin command. [NVME-CLI] Minor updates/corrections to the clear-fw-activate-history            and vs-fw-activate-history command help text.
+  * [NVME-CLI] Add support for WDC plugin command - vs-error-reason-identifier [NVME-CLI] Reverse enable/disable bit on the vs-telemetry-controller-option            WDC plugin command
+  * Fix systemd service script use of CONNECT_ARGS env var
+  * Shannon Plugin update.
+  * Doc/Makefile: Introduce 'quiet' build option
+  * Makefile: use 'quiet' compile
+  * Makefile: Use special variables
+  * micron: don't ignore 'system()' return value
+  * Fix libhugetlbfs flags
+  * Regenerate documentation
+  * Micron plugin updates
+  * README.md: Mention the buildroot package
+  * nvmf-autoconnect: add udev rules to set iopolicy for certain NetApp devices
+  * Fix intel json latency statistics output format
+  * intel: Add function lat-stats to cli Adds the lat-stats function to intel plugin. If lat-stats-tracking is enabled, lat-stats will print out latency statistics according to the user's desired format.
+  * [NVMe-CLI] Update documentation for telemetry data retrieval to vs-internal-log wdc plugin command.
+  * [NVMe-CLI] Add support to retrieve telemetry data in vs-internal-log
+  * [nvme-cli] Add documentation file for new  wdc plugin command - vs-telemetry-controller-option
+  * [nvme-cli] Add support for wdc plugin command - vs-telemetry-controller-option
+  * Fix typo (bulit -> built)
+  * Warn on admin-passthru opcode not matching read/write flag
+  * MAINT: Fix format compile warning error on 32 bit system
+  * nvme-cli: Check for sysfs interface before NVMe discovery
+  * Revert "Add Dera plugin extension."
+  * Revert "Add Dera plugin extension."
+  * Add Dera plugin extension. Add stat sub-command to retrieve Dera device status and additional SMART log.
+  * Add Dera plugin extension. Add stat sub-command to retrieve Dera device status and additional SMART log.
+  * Improve self test log command
+  * nvme-cli: Update err to 0 in get_telemetry_log
+  * fixup up self-test log when no test is in progress
+  * nvme-cli: Update err value to 0 in get_ns_id func.
+  * Add Dera plugin extension. Add stat sub-command to retrieve Dera device status and additional SMART log.
+  * nvme.c: create-ns arguments are added
+- Remove patch merged with upstream
+  * Delete 0101-nvme-add-iopolicy-rules-for-netapp.patch
+
+-------------------------------------------------------------------
 Tue Nov 19 14:49:40 CET 2019 - hare@suse.de
 
 - Add libhugetlbfs to the list of build requirements

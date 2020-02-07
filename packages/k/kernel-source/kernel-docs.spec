@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.4
-%define patchversion 5.4.14
+%define srcversion 5.5
+%define patchversion 5.5.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.4.14
+Version:        5.5.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfc4ea7a
+Release:        <RELEASE>.g1d61c83
 %else
 Release:        0
 %endif
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-fc4ea7a80b3635a53f6e0ec89f89204d49646c59
+Provides:       %name-srchash-1d61c83b92081ecc07b5d6d5a15e9d5a5776de14
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -252,11 +252,11 @@ cd linux-%srcversion
 export LANG=en_US
 %if %build_html
 mkdir -p html
-make %{?make_arg} O=$PWD/html htmldocs
+make %{?make_arg} O=$PWD/html PYTHON=python3 htmldocs
 %endif
 %if %build_pdf
 mkdir -p pdf
-make %{?make_arg} O=$PWD/pdf pdfdocs
+make %{?make_arg} O=$PWD/pdf PYTHON=python3 pdfdocs
 %endif
 
 %install

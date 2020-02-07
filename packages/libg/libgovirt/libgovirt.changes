@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 31 18:55:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.7:
+  + Use GTask API instead of deprecated GSimpleAsyncResult.
+  + Fixed issue preventing adding parameters to action.
+  + Prefer certificate from XML data instead of the command line.
+  + Added support for oVirt API v4.
+  + Initial support for building with meson, should be replacing
+    autotools in future release.
+  + Updated translations.
+- Update URL and modernize spec.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:16:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

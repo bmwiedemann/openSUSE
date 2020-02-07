@@ -1,7 +1,7 @@
 #
 # spec file for package ninja
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ninja
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0

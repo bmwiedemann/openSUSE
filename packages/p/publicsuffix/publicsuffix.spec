@@ -1,7 +1,7 @@
 #
 # spec file for package publicsuffix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 yaneti@declera.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           publicsuffix
-Version:        20191115
+Version:        20200201
 Release:        0
 Summary:        Cross-vendor public domain suffix database
 License:        MPL-2.0
 URL:            https://publicsuffix.org/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  psl-make-dafsa
 BuildArch:      noarch
 
@@ -36,7 +36,7 @@ cookies may and may not be set, protecting the user from being
 tracked across sites.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 psl-make-dafsa \
