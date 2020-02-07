@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -174,7 +174,7 @@ translation-update-upstream po %{name}
 
 %if %{with python_bindings}
 %files -n python3-gedit
-%{python3_sitearch}/gi/overrides/Gedit*
+%{python3_sitearch}/gi/
 %endif
 
 %files devel
