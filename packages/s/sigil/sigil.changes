@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:29:02 UTC 2020 - ecsos@opensuse.org
+
+- Update to 1.1.0
+  * New Features:
+    - Added Support for Dark Mode for Windows, Linux and macOSX
+    - Added new icons that work well under both Light and Dark 
+      modes
+    - Added ability to use Dark Mode for Preview 
+      (controlled by Preferences)
+    - Added Zoom Keys Ctrl +/- support to the Inspector
+      (for improved Accessibility)
+    - Added support for a second Clip bar with up to 20 additional
+      clips
+    - Select Special Character Dialog now support scrollbars
+    - Guide and Nav titles are now translated into ebook language
+      (if translations available)
+    - All Report Names have been shortened to allow larger font 
+      sizes for better Accessibility
+    - Added improved contrast icons
+    - Completely reworked all Sigil Preference Dialogs to make them
+      more screen/user friendly
+    - Added support for controlling Windows/Linux HighDPI settings
+    - Clips from the Clips QDockwidget window can now be used in 
+      CSS Tabs as well.
+    - The plugin interface has been extended to show current 
+      colorMode and primary colors
+  * Bug Fixes:
+    - Replaced deprecated QSignalMapper code with QActionGroups 
+      throughout Sigil’s code base (still more work to do there)
+    - Fixed bug in “open-with” on macOSX that did not allow .app 
+      files to be selected
+    - Soft hyphens characters are now handled properly by 
+      Spellchecking [PR from BeckyEbook]
+    - Fixed bug in ‘split at cursor” that created extra empty pages
+    - Fix bug in Insert Files from Disk
+    - Fixed same thread re-entrancy issues with tab 
+      creation / deletion code due to Qt signal/slot handling
+    - Fixed source code typos [PR from luzpaz]
+    - Fixed incorrect number of “times used” in Image Reports
+    - Fixed plugin font_iter() code to properly handle new Iana.org
+      font media types
+    - Broken links are no longer changed during ImportHTML 
+      (Add Existing…) operations
+    - Cover svg image “vh” “vw” fixup code now properly handles
+      empty headers on cover page
+    - GetBookpathByPathEnd() will now work properly and thereby
+      better handle detection of file name conflicts during imports
+    - Better handle file name info from Validation plugins
+    - Inserting Links now creates proper links for top of page of
+      the same file
+    - Fix ImportHTML when creating a new book to properly add 
+      an NCX if needed
+    - Include official QT backported fixes to Qt 5.12.6 to make it
+      more stable
+    - The nav will now properly handle internal links to top of 
+      page of the nav itself
+    - harden lxml xml processing with resolve_entities set to 
+      false for improved security
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Wed Dec 18 09:56:13 UTC 2019 - ecsos@opensuse.org
 
 - Update to 1.1.0

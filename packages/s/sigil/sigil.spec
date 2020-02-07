@@ -1,7 +1,7 @@
 #
 # spec file for package sigil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 %define sigil_doc_version 2019.09.03
-
 Name:           sigil
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
 Group:          Productivity/Other
-Url:            http://sigil-ebook.com/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://sigil-ebook.com/
 Source0:        https://github.com/Sigil-Ebook/Sigil/archive/%{version}.tar.gz
 Source1:        https://github.com/Sigil-Ebook/Sigil/raw/master/docs/Sigil_User_Guide_%{sigil_doc_version}.epub
 Source2:        %{name}.desktop
@@ -46,8 +44,25 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
 BuildRequires:  pcre-devel
+BuildRequires:  pkgconfig
+# not need for build, only check for exists
+# upstream use for python3-Pillow 5.4.1
+BuildRequires:  python3-Pillow
+BuildRequires:  python3-chardet >= 3.0.4
+BuildRequires:  python3-cssselect >= 1.0.3
+BuildRequires:  python3-cssutils >= 1.0.2
 # upstream use 3.7.2
 BuildRequires:  python3-devel >= 3.4
+BuildRequires:  python3-html5lib >= 1.0.1
+# upstream use for python3-lxml 4.2.6
+BuildRequires:  python3-lxml
+# upstream use for python3-qt5 5.12.3
+BuildRequires:  python3-qt5
+# upstream use for python3-regex 2018.11.12
+BuildRequires:  python3-regex
+# upstream use for python3-six 1.12.0
+BuildRequires:  python3-six
+BuildRequires:  python3-tk
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -62,22 +77,6 @@ BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
-# not need for build, only check for exists
-# upstream use for python3-Pillow 5.4.1
-BuildRequires:  python3-Pillow
-BuildRequires:  python3-chardet >= 3.0.4
-BuildRequires:  python3-cssselect >= 1.0.3
-BuildRequires:  python3-cssutils >= 1.0.2
-BuildRequires:  python3-html5lib >= 1.0.1
-# upstream use for python3-lxml 4.2.6
-BuildRequires:  python3-lxml
-# upstream use for python3-qt5 5.12.3
-BuildRequires:  python3-qt5
-# upstream use for python3-regex 2018.11.12
-BuildRequires:  python3-regex
-# upstream use for python3-six 1.12.0
-BuildRequires:  python3-six
-BuildRequires:  python3-tk
 Requires:       python3-Pillow
 Requires:       python3-chardet
 Requires:       python3-cssselect
@@ -98,12 +97,12 @@ specification and create a hierarchical Table of Contents.
 %prep
 %setup -q -n Sigil-%{version}
 %patch0 -p 1
-cp -v %{S:1} .
-cp -v %{S:2} .
+cp -v %{SOURCE1} .
+cp -v %{SOURCE2} .
 # rpmlint
 
 #FIXME MANUAL UPDATE OF DATE REQUIRED HERE!!!!
-# Fix "Your file uses  __DATE and __TIME__ this causes the package to rebuild 
+# Fix "Your file uses  __DATE and __TIME__ this causes the package to rebuild
 # when not needed warning"
 # http://sourceforge.net/tracker/?func=detail&atid=102439&aid=3314371&group_id=2439
 #
@@ -124,11 +123,12 @@ find . -type f -exec sed -i -e 's|#!\/usr\/bin\/env python|#!\/usr\/bin\/python3
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 
+# FIXME: you should use %%cmake macros
 cmake -G "Unix Makefiles" \
-   -DCMAKE_INSTALL_PREFIX=%_prefix \
+   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
    -DCMAKE_BUILD_TYPE=Release .
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -144,17 +144,17 @@ install -m644 -D src/Resource_Files/icon/app_icon_128.png %{buildroot}%{_datadir
 install -m644 -D src/Resource_Files/icon/app_icon_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/sigil.png
 install -m644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%suse_update_desktop_file %name
-%fdupes -s %buildroot
+%suse_update_desktop_file %{name}
+%fdupes -s %{buildroot}
 
-# fix rpmlint: non-executable-script 
+# fix rpmlint: non-executable-script
 pushd %{buildroot}%{_datadir}
-grep -lr "/usr/bin/python" | xargs chmod +x
+grep -lr "%{_bindir}/python" | xargs chmod +x
 popd
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog.txt README.md COPYING.txt Sigil_User_Guide_%{sigil_doc_version}.epub
+%license COPYING.txt
+%doc ChangeLog.txt README.md Sigil_User_Guide_%{sigil_doc_version}.epub
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/
@@ -170,16 +170,16 @@ popd
 %dir %{_datadir}/icons/hicolor/256x256/apps
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/pixmaps/*.png
-%dir %{_datadir}/%name
-%dir %{_datadir}/%name/translations
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/*
-%dir %{_datadir}/%name/*dictionaries
+%dir %{_datadir}/%{name}/*dictionaries
 %{_datadir}/%{name}/*dictionaries/*
 %{_datadir}/%{name}/examples
 %{_datadir}/%{name}/python3lib
 %{_datadir}/%{name}/polyfills
 %{_datadir}/%{name}/plugin_launchers
-%dir %{_libdir}/%name
+%dir %{_libdir}/%{name}
 %{_libdir}/%{name}/*
 
 %changelog
