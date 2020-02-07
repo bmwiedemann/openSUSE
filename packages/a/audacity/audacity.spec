@@ -1,7 +1,7 @@
 #
 # spec file for package audacity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,10 +102,7 @@ physical memory size can be edited.
 
 %prep
 %setup -q -n %{name}-Audacity-%{version}
-%patch0
-%patch1 -p0
-%patch3 -p0
-%patch2
+%autopatch -p1
 
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
 # Make sure we use the system versions.

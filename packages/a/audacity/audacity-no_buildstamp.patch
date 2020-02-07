@@ -1,7 +1,7 @@
-Index: src/AboutDialog.cpp
+Index: audacity-Audacity-2.3.3/src/AboutDialog.cpp
 ===================================================================
---- src/AboutDialog.cpp.orig	2019-11-15 01:28:15.000000000 +0200
-+++ src/AboutDialog.cpp	2019-11-25 12:08:49.331580095 +0200
+--- audacity-Audacity-2.3.3.orig/src/AboutDialog.cpp	2019-11-15 13:14:55.000000000 +0200
++++ audacity-Audacity-2.3.3/src/AboutDialog.cpp	2020-02-02 15:40:57.718746982 +0200
 @@ -65,7 +65,7 @@ hold information about one contributor t
  #ifdef REV_LONG
  #define REV_IDENT wxString( "[[https://github.com/audacity/audacity/commit/" )+ REV_LONG + "|" + wxString( REV_LONG ).Left(6) + "]] of " +  REV_TIME 
@@ -22,10 +22,10 @@ Index: src/AboutDialog.cpp
     AddBuildinfoRow(&informationStr, _("Commit Id:"), REV_IDENT );
  
     // Not translated in 2.3.1.
-Index: lib-src/portaudio-v19/qa/loopback/src/paqa.c
+Index: audacity-Audacity-2.3.3/lib-src/portaudio-v19/qa/loopback/src/paqa.c
 ===================================================================
---- lib-src/portaudio-v19/qa/loopback/src/paqa.c.orig	2019-11-15 01:28:15.000000000 +0200
-+++ lib-src/portaudio-v19/qa/loopback/src/paqa.c	2019-11-25 11:46:54.896516478 +0200
+--- audacity-Audacity-2.3.3.orig/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2019-11-15 13:14:55.000000000 +0200
++++ audacity-Audacity-2.3.3/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2020-02-02 15:40:57.718746982 +0200
 @@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
  	int justMath = 0;
      char *executableName = argv[0];

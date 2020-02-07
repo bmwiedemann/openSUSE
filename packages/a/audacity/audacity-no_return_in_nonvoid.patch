@@ -1,8 +1,8 @@
-Index: src/widgets/NumericTextCtrl.cpp
+Index: audacity-Audacity-2.3.3/src/widgets/NumericTextCtrl.cpp
 ===================================================================
---- src/widgets/NumericTextCtrl.cpp.orig	2018-09-20 16:35:07.000000000 +0200
-+++ src/widgets/NumericTextCtrl.cpp	2018-10-02 15:40:50.555227216 +0200
-@@ -551,6 +551,7 @@ static const BuiltinFormatString Bandwid
+--- audacity-Audacity-2.3.3.orig/src/widgets/NumericTextCtrl.cpp	2019-11-15 13:14:55.000000000 +0200
++++ audacity-Audacity-2.3.3/src/widgets/NumericTextCtrl.cpp	2020-02-02 15:41:21.663740215 +0200
+@@ -637,6 +637,7 @@ static const BuiltinFormatString Bandwid
           case NumericConverter::BANDWIDTH:
              return WXSIZEOF(BandwidthConverterFormats_);
        }
@@ -10,10 +10,10 @@ Index: src/widgets/NumericTextCtrl.cpp
     }
  }
  
-Index: lib-src/libnyquist/nyquist/xlisp/xlbfun.c
+Index: audacity-Audacity-2.3.3/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
 ===================================================================
---- lib-src/libnyquist/nyquist/xlisp/xlbfun.c.orig	2018-09-20 16:35:07.000000000 +0200
-+++ lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2018-10-02 15:35:59.076781229 +0200
+--- audacity-Audacity-2.3.3.orig/lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2019-11-15 13:14:55.000000000 +0200
++++ audacity-Audacity-2.3.3/lib-src/libnyquist/nyquist/xlisp/xlbfun.c	2020-02-02 15:41:21.663740215 +0200
 @@ -603,7 +603,10 @@ LVAL xcleanup(void)
  {
      xllastarg();

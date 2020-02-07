@@ -784,4 +784,14 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
     <comment>- Update to release 2.3.3</comment>
     <requestid>750720</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>8f0a10cea4615a1511b71f948c4588b9</srcmd5>
+    <version>2.3.3</version>
+    <time>1581087151</time>
+    <user>dimstar_suse</user>
+    <comment>It is essential that sr#769486 is accepted before this one otherwise the bug will persist.
+- Fix boo#1162418, caused by wxWidgets.
+</comment>
+    <requestid>769494</requestid>
+  </revision>
 </revisionlist>
