@@ -298,4 +298,13 @@
 - Update to version 1.0.17</comment>
     <requestid>754662</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0be77773b836950366f11b3d41c96882</srcmd5>
+    <version>1.0.19</version>
+    <time>1581087208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.19:
+  * regression tests: compatibility fix for PostgreSQL 12</comment>
+    <requestid>770551</requestid>
+  </revision>
 </revisionlist>

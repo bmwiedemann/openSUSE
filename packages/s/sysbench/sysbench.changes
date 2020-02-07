@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 12:15:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.19:
+  * regression tests: compatibility fix for PostgreSQL 12
+
+-------------------------------------------------------------------
 Fri Dec  6 11:53:30 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.18:
