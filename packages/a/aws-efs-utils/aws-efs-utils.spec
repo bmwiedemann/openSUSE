@@ -1,7 +1,7 @@
 #
 # spec file for package aws-efs-utils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,8 @@ BuildRequires:  python3-pytest-html >= 1.19.0
 BuildRequires:  python3-pytest-metadata >= 1.7.0
 BuildRequires:  python3-pytest-mock >= 1.11.2
 BuildRequires:  python3-six >= 1.11.0
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
 Requires:       python3
 Requires:       stunnel >= 4.56
