@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cmpi-ssh_service_profile
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,14 +24,14 @@ BuildRequires:  libtool
 BuildRequires:  sblim-cmpi-devel
 BuildRequires:  sblim-cmpiutil-devel
 BuildRequires:  sblim-sfcb
-Url:            http://www.omc-project.org
+URL:            http://www.omc-project.org
 # Increment the version every time the source code changes.
 Version:        1.0.0
 Release:        0
 Summary:        Instrumentation for DMTF SSH Service Profile.
+# This is necessary to build the RPM as a non-root user.
 License:        EPL-1.0
 Group:          System/Management
-# This is necessary to build the RPM as a non-root user.
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # "yes" is the default, but we put it here explicitly to avoid someone
 # setting it to "no"
@@ -41,8 +41,8 @@ Requires:       sblim-sfcb
 Source0:        sblim-cmpi-ssh_service_profile-%{version}.tar.gz
 Patch1:         bnc530329-pclose.patch
 %if 0%{?suse_version} >= 1210
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %endif
 
 %description
