@@ -2,12 +2,11 @@ Author: Sean Marlow <sean.marlow@suse.com>
 Date: 2019-12-11
 Source: https://github.com/oracle/oci-python-sdk/issues/196
 
-Index: oci-python-sdk-2.6.2/tests/unit/test_basic_api_calls.py
-===================================================================
---- oci-python-sdk-2.6.2.orig/tests/unit/test_basic_api_calls.py
-+++ oci-python-sdk-2.6.2/tests/unit/test_basic_api_calls.py
-@@ -5,7 +5,7 @@ import oci
- import pytest
+diff -Nru oci-python-sdk-2.10.3.orig/tests/unit/test_basic_api_calls.py oci-python-sdk-2.10.3/tests/unit/test_basic_api_calls.py
+--- oci-python-sdk-2.10.3.orig/tests/unit/test_basic_api_calls.py	2020-02-04 22:53:15.000000000 +0100
++++ oci-python-sdk-2.10.3/tests/unit/test_basic_api_calls.py	2020-02-07 12:48:24.663500407 +0100
+@@ -4,7 +4,7 @@
+ import oci
  
  
 -def test_identity_list_users(identity, config):
@@ -15,7 +14,7 @@ Index: oci-python-sdk-2.6.2/tests/unit/test_basic_api_calls.py
      response = identity.list_users(config["tenancy"])
  
      assert response is not None
-@@ -31,7 +31,7 @@ def test_vcn_list_instances(compute, con
+@@ -30,7 +30,7 @@
      assert response.request_id is not None
  
  
@@ -24,11 +23,54 @@ Index: oci-python-sdk-2.6.2/tests/unit/test_basic_api_calls.py
      response = identity.list_users(config["tenancy"], limit=1)
  
      assert response is not None
-Index: oci-python-sdk-2.6.2/tests/unit/test_waiters.py
-===================================================================
---- oci-python-sdk-2.6.2.orig/tests/unit/test_waiters.py
-+++ oci-python-sdk-2.6.2/tests/unit/test_waiters.py
-@@ -108,7 +108,7 @@ def test_wait_multiple_states(virtual_ne
+diff -Nru oci-python-sdk-2.10.3.orig/tests/unit/test_basic_api_calls.py.orig oci-python-sdk-2.10.3/tests/unit/test_basic_api_calls.py.orig
+--- oci-python-sdk-2.10.3.orig/tests/unit/test_basic_api_calls.py.orig	1970-01-01 01:00:00.000000000 +0100
++++ oci-python-sdk-2.10.3/tests/unit/test_basic_api_calls.py.orig	2020-02-04 22:53:15.000000000 +0100
+@@ -0,0 +1,40 @@
++# coding: utf-8
++# Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
++
++import oci
++
++
++def test_identity_list_users(identity, config):
++    response = identity.list_users(config["tenancy"])
++
++    assert response is not None
++    assert len(response.data) > 0
++    assert type(response.data[0]) is oci.identity.models.User
++    assert response.status == 200
++    assert response.request_id is not None
++
++
++def test_vcn_list_vcns(virtual_network, config):
++    response = virtual_network.list_vcns(config["tenancy"])
++
++    assert response is not None
++    assert response.status == 200
++    assert response.request_id is not None
++
++
++def test_vcn_list_instances(compute, config):
++    response = compute.list_instances(config["tenancy"])
++
++    assert response is not None
++    assert response.status == 200
++    assert response.request_id is not None
++
++
++def test_limit(identity, config):
++    response = identity.list_users(config["tenancy"], limit=1)
++
++    assert response is not None
++    assert len(response.data) == 1
++    assert type(response.data[0]) is oci.identity.models.User
++    assert response.status == 200
++    assert response.request_id is not None
+diff -Nru oci-python-sdk-2.10.3.orig/tests/unit/test_waiters.py oci-python-sdk-2.10.3/tests/unit/test_waiters.py
+--- oci-python-sdk-2.10.3.orig/tests/unit/test_waiters.py	2020-02-04 22:53:15.000000000 +0100
++++ oci-python-sdk-2.10.3/tests/unit/test_waiters.py	2020-02-07 12:48:24.663500407 +0100
+@@ -108,7 +108,7 @@
      assert total_time < 60 * 5
  
  
@@ -37,7 +79,7 @@ Index: oci-python-sdk-2.6.2/tests/unit/test_waiters.py
      # Create User
      request = oci.identity.models.CreateUserDetails()
      request.compartment_id = config["tenancy"]
-@@ -131,7 +131,7 @@ def test_invalid_operation(identity, con
+@@ -131,7 +131,7 @@
          oci.wait_until(identity, response, 'not a real property', 'test')
  
  
@@ -46,7 +88,7 @@ Index: oci-python-sdk-2.6.2/tests/unit/test_waiters.py
      description = 'test user'
      request = oci.identity.models.CreateUserDetails()
      request.compartment_id = config["tenancy"]
-@@ -151,7 +151,7 @@ def test_already_in_state(identity, conf
+@@ -151,7 +151,7 @@
      identity.delete_user(user_id)
  
  
@@ -55,7 +97,7 @@ Index: oci-python-sdk-2.6.2/tests/unit/test_waiters.py
      description = 'test user'
      request = oci.identity.models.CreateUserDetails()
      request.compartment_id = config["tenancy"]
-@@ -182,7 +182,7 @@ def test_property_and_eval_function_prov
+@@ -182,7 +182,7 @@
      assert str(ve.value) == 'If an evaluate_response function is provided, then the property argument cannot also be provided'
  
  
@@ -64,7 +106,7 @@ Index: oci-python-sdk-2.6.2/tests/unit/test_waiters.py
      user_id = None
      try:
          description = 'test user'
-@@ -206,7 +206,7 @@ def test_eval_function_lambda(identity,
+@@ -206,7 +206,7 @@
              identity.delete_user(user_id)
  
  

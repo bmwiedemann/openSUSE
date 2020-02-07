@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb  7 12:02:15 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.10.3
+  + Support for the Data Science service
+  + Support for calling Oracle Cloud Infrastructure services
+    in the ap-osaka-1 and ap-melbourne-1 regions
+- from version 2.10.2
+  + Support for the Application Migration service
+  + Support for the Data Flow service
+  + Support for the Data Catalog service
+  + Support for cross-shape Data Guard in the Database service
+  + Support for offline data export in the Data Transfer service
+- from version 2.10.1
+  + Support for getting DRG redundancy status in the Networking service
+  + Support for cloning autonomous databases from backups in the Database service
+- from version 2.10.0
+  + Support for a description field on route rules and security
+    rules in the Networking service
+  + Support for starting and stopping Digital Assistant instances
+    in the Digital Assistant service
+  + Support for shared database homes on Exadata, bare metal, and virtual
+    machine instances in the Database service
+  + Support for tracking a number of Database service operations
+    through the Work Requests service
+  + Field db_home_id in list_databases from database service is
+    changed from required to optional
+- Refresh patches for new version
+  + ops_fixture-order.patch
+  + ops_relax-python-depends.patch
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Wed Jan 29 21:31:17 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update Url in spec to point to the upstream GitHub project.
