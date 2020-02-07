@@ -981,4 +981,12 @@ Enable cycles-osl in build</comment>
     <comment>Remove conditional from Patch: statement</comment>
     <requestid>754268</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>6c2b06cb1e53134707a0a58aff7b8f04</srcmd5>
+    <version>2.81a</version>
+    <time>1581087329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770742</requestid>
+  </revision>
 </revisionlist>

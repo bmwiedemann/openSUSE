@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,9 +43,10 @@
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
 %define _version %(echo %{version} | cut -b 1-4)
+%define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.81
+Version:        2.81a
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -181,6 +182,9 @@ Requires:       python3-requests
 Requires:       python3-xml
 Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
+Provides:       %{name}-%{_suffix} = %{version}
+Obsoletes:      %{name}-%{_suffix} < %{version}
+Recommends:     %{name}-lang
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
