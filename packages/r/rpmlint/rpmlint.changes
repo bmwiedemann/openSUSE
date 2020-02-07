@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 06 10:06:37 UTC 2020 - malte.kraus@suse.com
+
+- Update to version master:
+  * CheckSUIDPermissions.py: fix permissions.d checks
+  * add a lint to catch insecure mixed file/directory ownership similar to CVE-2019-3689
+
+-------------------------------------------------------------------
+Thu Feb 06 10:06:36 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 84.87+git20200206.7e2b64f:
+  * permissions2: test that allowed permissions.d drop-ins work
+  * test for new file-parent-ownership-mismatch lint
+
+-------------------------------------------------------------------
 Fri Jan 31 09:52:39 UTC 2020 - matthias.gerstner@suse.com
 
 - Whitelist a batch of PAM modules that have been forgotted to be whitelisted
