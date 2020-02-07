@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  7 03:14:07 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.007004
+   see /usr/share/doc/packages/perl-Net-Whois-RIPE/Changes
+
+  2.007004    2020-02-06
+              - Improve tests to better handle network issues
+              - Improve tests to better cope with old Perl versions
+              - Update/sync authors/ownership data
+
+-------------------------------------------------------------------
 Tue Feb  4 03:14:03 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.007003
