@@ -53,4 +53,20 @@
   * fix-build-with-Qt-5.6.patch</comment>
     <requestid>742248</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>215cb7bffc4c94a0e25056b1d5b8c9e1</srcmd5>
+    <version>0.5.71</version>
+    <time>1581087268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.71. No changelog.
+- Drop upstream patches:
+  * 0001-Fix-compilation-with-latest-KCalCore-API-changes-Att.patch
+  * 0001-Fix-build-with-Boost-1.70.0.patch
+  * 0001-Look-for-AkonadiContact.patch
+  * 0001-Remove-the-delegation-feature.patch
+  * 0001-Fix-compilation-after-Collection-referenced-was-removed.patch
+  * 0001-Fix-linking-of-the-cuke-steps.patch
+  * 0001-Make-it-build-both-with-pre-and-post.patch</comment>
+    <requestid>770645</requestid>
+  </revision>
 </revisionlist>
