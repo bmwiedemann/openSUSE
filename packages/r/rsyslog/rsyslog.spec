@@ -1,7 +1,7 @@
 #
 # spec file for package rsyslog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -238,6 +238,7 @@ Source19:       NetworkManager.frule
 # PATCH-FIX-OPENSUSE rsyslog-unit.patch crrodriguez@opensuse.org Customize upstream systemd unit for openSUSE needs.
 Patch0:         rsyslog-unit.patch
 Patch1:         rsyslog-pgsql-pkg-config.patch
+Patch2:         0001-satisfy-gcc-flag-fno-common.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
@@ -570,6 +571,7 @@ This module provides an output module for TCL.
 %setup -q -a 14
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 #
 %if %{with systemd}
 for file in rsyslog-service-prepare; do

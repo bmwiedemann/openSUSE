@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 08:44:32 UTC 2020 - Thomas Blume <thomas.blume@suse.com>
+
+- avoid build error with gcc flag -fno-common (bsc#1160414)
+  * add 0001-satisfy-gcc-flag-fno-common.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 13:20:58 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
