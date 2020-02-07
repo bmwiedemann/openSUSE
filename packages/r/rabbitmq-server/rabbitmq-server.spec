@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-server
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-1.1
 Group:          System/Daemons
-Url:            http://www.rabbitmq.com/
+URL:            http://www.rabbitmq.com/
 Source:         https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz
 Source1:        rabbitmq-server.init
 # This comes from: http://hg.rabbitmq.com/rabbitmq-server/raw-file/2da625c0a436/packaging/common/rabbitmq-script-wrapper
@@ -76,8 +76,8 @@ Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
 %if 0%{?suse_version} > 1140
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %define have_systemd 1
 Requires:       socat
 %else
