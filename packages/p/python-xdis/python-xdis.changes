@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 12:27:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.2.2
+  * Add Python versions: 3.6.10, 3.7.6. 3.8.1
+  * Update 3.9-dev to 3.9.0alpha2
+  * Add interpolation of FUNCTION_CALL_{KW,EX} argument for 3.7-3.9
+  * Better output of complex type values
+  * Correct and clean up compiler flags.
+
+-------------------------------------------------------------------
 Tue Dec  3 14:27:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.1.3:
