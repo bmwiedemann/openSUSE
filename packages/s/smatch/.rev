@@ -89,4 +89,12 @@
   * and many more...</comment>
     <requestid>745111</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5c0f643f0b763be9bfe5d9eae3212bdc</srcmd5>
+    <version>20200127+git.2f013029</version>
+    <time>1581087160</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770522</requestid>
+  </revision>
 </revisionlist>

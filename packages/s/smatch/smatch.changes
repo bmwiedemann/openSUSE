@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:33:05 UTC 2020 - jslaby@suse.com
+
+- Update to version 20200127+git.2f013029:
+  * fresh_alloc: mark used data as unfresh
+  * fresh_alloc: export is_fresh_alloc() and is_fresh_alloc_var_sym()
+  * fresh_alloc: NULL pointers are not fresh
+  * mtag: export str_to_mtag()
+  * type: improve debug output for NULL types
+  * slist: fix __print_stree() debug output
+  * predefine "i386" if needed
+  * correct sparcv9 defines
+  * pre-define __unix__ and friends
+  * add necessary defined for sunos-derived systems
+  * define __PRAGMA_REDEFINE_EXTNAME
+  * and much more...
+
+-------------------------------------------------------------------
 Mon Nov 04 07:08:34 UTC 2019 - jslaby@suse.com
 
 - Update to version 20191028:
