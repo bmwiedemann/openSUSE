@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 31 23:48:25 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Tue Jan 21 11:28:05 UTC 2020 - Christian Vögl <cvoegl@suse.de>
 
 - Add -fcommon to optflags. This fixes (boo#1160292), and can be 

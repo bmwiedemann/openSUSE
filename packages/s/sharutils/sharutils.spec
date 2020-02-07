@@ -1,7 +1,7 @@
 #
 # spec file for package sharutils
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GNU shar utilities
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
-Url:            http://www.gnu.org/software/sharutils/
+URL:            http://www.gnu.org/software/sharutils/
 Source0:        ftp://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/sharutils/sharutils-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
@@ -33,7 +33,6 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  xz
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  coreutils
-Recommends:     %{name}-lang = %{version}
 Provides:       sharutil = %{version}
 Obsoletes:      sharutil < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
