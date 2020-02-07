@@ -49,7 +49,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  sblim-cmpi-devel
 BuildRequires:  sblim-sfcb
 %if 0%{?has_systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %endif
 # the %pre/%post scripts are sfcb specific currently
