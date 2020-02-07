@@ -1,0 +1,156 @@
+diff -urEbw lutris/docs/installers.rst lutris.new/docs/installers.rst
+--- lutris/docs/installers.rst	2019-09-24 03:01:26.000000000 +0200
++++ lutris.new/docs/installers.rst	2020-02-06 11:48:05.676733320 +0100
+@@ -974,8 +974,6 @@
+ 
+ ``killswitch`` (example: ``/dev/input/js0``)
+ 
+-``xboxdrv`` (example: ``--silent --type xbox360``)
+-
+ ``sdl_gamecontrollerconfig`` (example: ``$HOME/gamecontrollerdb.txt``)
+ 
+ ``xephyr`` (example: offm ``8bpp`` or ``16bpp``)
+diff -urEbw lutris/lutris/game.py lutris.new/lutris/game.py
+--- lutris/lutris/game.py	2019-11-18 04:17:07.000000000 +0100
++++ lutris.new/lutris/game.py	2020-02-06 11:49:24.169135793 +0100
+@@ -80,7 +80,6 @@
+         self.killswitch = None
+         self.state = self.STATE_IDLE
+         self.exit_main_loop = False
+-        self.xboxdrv_thread = None
+         self.game_runtime_config = {}
+         self.resolution_changed = False
+         self.compositor_disabled = False
+@@ -524,11 +523,6 @@
+         if system_config.get("disable_compositor"):
+             self.set_desktop_compositing(False)
+ 
+-        # xboxdrv setup
+-        xboxdrv_config = system_config.get("xboxdrv")
+-        if xboxdrv_config:
+-            self.xboxdrv_start(xboxdrv_config)
+-
+         prelaunch_command = system_config.get("prelaunch_command")
+         if system.path_exists(prelaunch_command):
+             self.prelaunch_executor = MonitoredCommand(
+@@ -569,36 +563,6 @@
+             self.timer.end()
+             self.playtime += self.timer.duration / 3600
+ 
+-    def xboxdrv_start(self, config):
+-        command = [
+-            "pkexec",
+-            "xboxdrv",
+-            "--daemon",
+-            "--detach-kernel-driver",
+-            "--dbus",
+-            "session",
+-            "--silent",
+-        ] + shlex.split(config)
+-        logger.debug("[xboxdrv] %s", " ".join(command))
+-        self.xboxdrv_thread = MonitoredCommand(command, include_processes=["xboxdrv"])
+-        self.xboxdrv_thread.stop_func = self.xboxdrv_stop
+-        self.xboxdrv_thread.start()
+-
+-    @staticmethod
+-    def reload_xpad():
+-        """Reloads the xpads module.
+-        The path is hardcoded because this script is allowed to be executed as
+-        root with a PolicyKit rule put in place by the packages.
+-        Note to packagers: If you don't intend to create a PolicyKit rule for
+-        this script then don't package it as calling it will fail.
+-        """
+-        if system.path_exists("/usr/share/lutris/bin/resetxpad"):
+-            os.system("pkexec /usr/share/lutris/bin/resetxpad")
+-
+-    def xboxdrv_stop(self):
+-        os.system("pkexec xboxdrvctl --shutdown")
+-        self.reload_xpad()
+-
+     def prelaunch_beat(self):
+         """Watch the prelaunch command"""
+         if self.prelaunch_executor and self.prelaunch_executor.is_running:
+@@ -635,9 +599,6 @@
+             return
+ 
+         logger.info("Stopping %s", self)
+-        if self.runner.system_config.get("xboxdrv"):
+-            logger.debug("Stopping xboxdrv")
+-            self.xboxdrv_thread.stop()
+         if self.game_thread:
+             jobs.AsyncCall(self.game_thread.stop, None)
+         self.stop_game()
+diff -urEbw lutris/lutris/sysoptions.py lutris.new/lutris/sysoptions.py
+--- lutris/lutris/sysoptions.py	2019-11-18 04:10:42.000000000 +0100
++++ lutris.new/lutris/sysoptions.py	2020-02-06 11:49:40.905221488 +0100
+@@ -360,17 +360,6 @@
+         ),
+     },
+     {
+-        "option": "xboxdrv",
+-        "type": "string",
+-        "label": "xboxdrv config",
+-        "advanced": True,
+-        "condition": system.find_executable("xboxdrv"),
+-        "help": (
+-            "Command line options for xboxdrv, a driver for XBOX 360 "
+-            "controllers. Requires the xboxdrv package installed."
+-        ),
+-    },
+-    {
+         "option": "sdl_gamecontrollerconfig",
+         "type": "string",
+         "label": "SDL2 gamepad mapping",
+diff -urEbw lutris/lutris/util/linux.py lutris.new/lutris/util/linux.py
+--- lutris/lutris/util/linux.py	2019-11-02 20:44:58.000000000 +0100
++++ lutris.new/lutris/util/linux.py	2020-02-06 11:49:54.801292608 +0100
+@@ -24,7 +24,6 @@
+         "optirun",
+         "primusrun",
+         "pvkrun",
+-        "xboxdrv",
+         "pulseaudio",
+         "lsi-steam",
+         "fuser",
+diff -urEbw lutris/lutris.spec lutris.new/lutris.spec
+--- lutris/lutris.spec	2019-11-21 02:51:16.000000000 +0100
++++ lutris.new/lutris.spec	2020-02-06 11:51:43.769849353 +0100
+@@ -40,7 +40,6 @@
+ BuildRequires:  update-desktop-files
+ # Needed to workaround "directories not owned by a package" issue
+ BuildRequires:  hicolor-icon-theme
+-BuildRequires:  polkit
+ BuildRequires:  python3-setuptools
+ Requires:       (python3-gobject-Gdk or python3-gobject)
+ Requires:       python3-PyYAML, cabextract, typelib-1_0-Gtk-3_0
+@@ -69,8 +68,6 @@
+ %endif
+ %endif
+ 
+-#!BuildIgnore: rpmlint-mini
+-
+ 
+ %description
+ Lutris is a gaming platform for GNU/Linux. Its goal is to make
+@@ -128,7 +125,6 @@
+ %{_datadir}/icons/hicolor/32x32/apps/lutris.png
+ %{_datadir}/icons/hicolor/48x48/apps/lutris.png
+ %{_datadir}/icons/hicolor/scalable/apps/lutris.svg
+-%{_datadir}/polkit-1/actions/*
+ %{python3_sitelib}/%{name}-*.egg-info
+ %{python3_sitelib}/%{name}/
+ 
+diff -urEbw lutris/README.rst lutris.new/README.rst
+--- lutris/README.rst	2019-09-24 03:01:26.000000000 +0200
++++ lutris.new/README.rst	2020-02-06 11:47:50.156653630 +0100
+@@ -106,7 +106,6 @@
+ * TOSEC database integration
+ * Management of personal game data (i.e. syncing games across devices using private cloud storage)
+ * Community features (friends list, chat, multiplayer game scheduling, etc.)
+-* Controller configuration GUI (with xboxdrv support)
+ 
+ Support the project
+ ===================
+Only in lutris/share/polkit-1/actions: net.lutris.resetxpad.policy
+Only in lutris/share/polkit-1/actions: net.lutris.xboxdrvctl.policy
+Only in lutris/share/polkit-1/actions: net.lutris.xboxdrv.policy
