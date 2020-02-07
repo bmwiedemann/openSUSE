@@ -1,7 +1,7 @@
 #
 # spec file for package python-radon
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-radon
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Code Metrics in Python
 License:        MIT
@@ -70,7 +70,7 @@ rm -r */lib/radon/tests
 %check
 export LANG=en_US.UTF-8
 # Exclusions because of gh#rubik/radon#183
-%pytest --strict -k 'not (test_visitor or test_mi_visit)'
+%pytest --strict
 
 %post
 %python_install_alternative radon

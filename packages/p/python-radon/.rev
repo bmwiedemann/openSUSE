@@ -65,4 +65,12 @@
     <comment>- Exclude some tests cases because of gh#rubik/radon#183</comment>
     <requestid>754479</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a077e61f2ae146af672a6897e1a2e5fe</srcmd5>
+    <version>4.1.0</version>
+    <time>1581087147</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770005</requestid>
+  </revision>
 </revisionlist>
