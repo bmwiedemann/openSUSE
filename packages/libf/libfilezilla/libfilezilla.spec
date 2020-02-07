@@ -1,7 +1,7 @@
 #
 # spec file for package libfilezilla
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define major		2
+%define major		3
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.19.1
+Version:        0.19.3
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -72,21 +72,18 @@ Requires:       %{libname} = %{version}-%{release}
 Files needed for development with %{name}.
 
 # Need %%lang_package expanded for an extra conflict with an old library package
-%package lang 
-Summary:        Translations for package %{name} 
+%package lang
+# FIXME: consider using %%lang_package macro
+Summary:        Translations for package %{name}
 # in libfilezilla 0.18.x, we wrongly shipped the languages files directly in the library package
-Group:          System/Localization 
+Group:          System/Localization
+Requires:       %{name} = %{version}
 Conflicts:      libfilezilla0 < 0.19
+Provides:       %{name}-lang-all = %{version}
+BuildArch:      noarch
 
-Requires:       %{name} = %{version} 
-
-Provides:       %{name}-lang-all = %{version} 
-BuildArch:      noarch 
-
-%description lang 
+%description lang
 Provides translations for the "%{name}" package.
-
-
 
 %prep
 %setup -q
@@ -95,10 +92,10 @@ Provides translations for the "%{name}" package.
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 pushd doc
-make %{?_smp_mflags} html
+%make_build html
 popd
 
 %install
@@ -109,7 +106,7 @@ mkdir -p %{buildroot}%{_docdir}/%{develname}
 cp -r doc/doxygen-doc/* %{buildroot}%{_docdir}/%{develname}/
 rm -f %{buildroot}%{_docdir}/%{develname}/latex/refman.tex
 %fdupes -s %{buildroot}%{_docdir}/%{develname}
-%find_lang %name
+%find_lang %{name}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

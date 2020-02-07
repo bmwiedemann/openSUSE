@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  7 11:16:30 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.19.3
+  * Bugfixes and minor changes:
+    - Rate limiting: Fix a divide by zero when distributing
+      overflow
+- Changes from 0.19.2
+  * New features:
+    - Rate limiting: Added debt repay mechanism to bucket removal
+  * Bugfixes and minor changes:
+    - *nix: Fix returned permissions in 
+      fz::local_filesys::get_file_info/get_next_file
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Sat Nov 30 14:13:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Split language files properly out into libfilezille-lang in order
@@ -396,4 +411,3 @@ Sun Feb 14 10:15:42 UTC 2016 - davejplater@gmail.com
 
 - Initial package created from PCLinuxOS src rpm
 - Needed for filezilla to build.
-
