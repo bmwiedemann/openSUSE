@@ -1,7 +1,7 @@
 #
 # spec file for package qgit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           qgit
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Graphical Git Repository Viewer
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
-Url:            https://github.com/tibirna/qgit
+URL:            https://github.com/tibirna/qgit
 Source:         https://github.com/tibirna/qgit/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.5.0
-Requires:       git-core >= 1.4.0
+BuildRequires:  cmake(Qt5Core) >= 5.6.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+Requires:       git-core >= 1.5.5
 
 %description
 QGit is a git GUI viewer built on Qt/C++.
@@ -61,14 +60,14 @@ picking single modified files.
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
 %files
 %license COPYING.rtf
-%doc README
+%doc README.adoc
 %{_bindir}/qgit
 %{_datadir}/applications/qgit.desktop
 %{_datadir}/icons/hicolor/48x48/apps/qgit.png
