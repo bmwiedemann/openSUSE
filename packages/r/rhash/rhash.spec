@@ -1,7 +1,7 @@
 #
 # spec file for package rhash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define major   0
 Name:           rhash
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        Recursive Hasher
-License:        MIT
+License:        0BSD
 URL:            https://github.com/rhash/RHash
 Source0:        https://github.com/rhash/RHash/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         rhash-uk.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 
@@ -73,7 +74,7 @@ This package includes LibRHash development files.
 %lang_package
 
 %prep
-%setup -q -n RHash-%{version}
+%autosetup -n RHash-%{version} -p1
 
 %build
 # repleace unwanted fomit-frame pointer with desirable optflags
@@ -95,7 +96,7 @@ sed -i "s|-fomit-frame-pointer|%{optflags}|g" configure
 %find_lang %{name} %{?no_lang_C}
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post -n librhash%{major} -p /sbin/ldconfig
 %postun -n librhash%{major} -p /sbin/ldconfig
@@ -107,7 +108,8 @@ make %{?_smp_mflags} test
 %{_bindir}/ed2k-link
 %{_bindir}/edonr256-hash
 %{_bindir}/edonr512-hash
-%{_bindir}/gost-hash
+%{_bindir}/gost12-256-hash
+%{_bindir}/gost12-512-hash
 %{_bindir}/has160-hash
 %{_bindir}/magnet-link
 %{_bindir}/rhash
@@ -118,7 +120,8 @@ make %{?_smp_mflags} test
 %{_mandir}/man1/ed2k-link.1%{?ext_man}
 %{_mandir}/man1/edonr256-hash.1%{?ext_man}
 %{_mandir}/man1/edonr512-hash.1%{?ext_man}
-%{_mandir}/man1/gost-hash.1%{?ext_man}
+%{_mandir}/man1/gost12-256-hash.1%{?ext_man}
+%{_mandir}/man1/gost12-512-hash.1%{?ext_man}
 %{_mandir}/man1/has160-hash.1%{?ext_man}
 %{_mandir}/man1/magnet-link.1%{?ext_man}
 %{_mandir}/man1/rhash.1%{?ext_man}
