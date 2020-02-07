@@ -439,8 +439,8 @@ CXXFLAGS=${CFLAGS}
 CFLAGS="$CFLAGS -fno-strict-aliasing"
 %endif
 %if 0%{?suse_version} >= 1330
-CFLAGS="$CFLAGS -fno-delete-null-pointer-checks -fno-lifetime-dse"
-CXXFLAGS="$CXXFLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
+CFLAGS="$CFLAGS -fno-delete-null-pointer-checks -fno-lifetime-dse -fcommon"
+CXXFLAGS="$CXXFLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fcommon"
 %endif
 export CFLAGS
 export CXXFLAGS

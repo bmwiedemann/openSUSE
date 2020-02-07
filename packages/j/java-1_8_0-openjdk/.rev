@@ -554,4 +554,12 @@
     <comment>Avoid building with OpenJ9</comment>
     <requestid>767663</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>fde70ef601a0c45829315dd0b7be1c6f</srcmd5>
+    <version>1.8.0.242</version>
+    <time>1581087084</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with gcc 10</comment>
+    <requestid>769970</requestid>
+  </revision>
 </revisionlist>

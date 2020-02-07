@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:27:11 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Add -fcommon to CFLAGS and CXXFLAGS to allow building with new
+  compilers (boo#1160398)
+
+-------------------------------------------------------------------
 Mon Jan 27 11:41:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - On platform where OpenJ9 exists, avoid building with it in order
