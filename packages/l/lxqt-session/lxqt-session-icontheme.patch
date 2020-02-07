@@ -5,7 +5,7 @@ diff -urEbwB lxqt-session-0.13.0/config/lxqt.conf lxqt-session-0.13.0.new/config
  [General]
  theme=frost
 -icon_theme=oxygen
-+icon_theme=Paper
++icon_theme=breeze
  single_click_activate=false
  tool_button_style=ToolButtonTextBesideIcon
  

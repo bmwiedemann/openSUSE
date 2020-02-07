@@ -28,8 +28,8 @@ Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 # FIX-OPENSUSE mvetter@suse.com bsc#1099800
 Patch0:         lxqt-0.13.0-xdg-config-dir.patch
-# mvetter@suse.com bsc#1112961 - Nicer icons - paper gets required by patterns-lxqt
-Patch1:         lxqt-session-papericontheme.patch
+# mvetter@suse.com bsc#1112961 bsc#1159958 - Nicer icons - theme gets required by patterns-lxqt
+Patch1:         lxqt-session-icontheme.patch
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
 Patch2:         lxqt-session-default_wm.patch
 BuildRequires:  cmake >= 3.0.2

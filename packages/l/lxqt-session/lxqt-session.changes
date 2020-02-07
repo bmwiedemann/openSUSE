@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:26:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1159958: Use breeze icon theme
+  Paper doesn't have yast icons yet.
+- Rename lxqt-session-papericontheme.patch to
+  lxqt-session-icontheme.patch 
+
+-------------------------------------------------------------------
 Mon Jan 27 10:31:11 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1161365: Fix build

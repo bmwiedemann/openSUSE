@@ -1249,4 +1249,15 @@ comply with openSUSE policy
 - Add buildrequire for glib</comment>
     <requestid>767621</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7982b1cb77b8e8800f44a835f74c2c78</srcmd5>
+    <version>0.14.1</version>
+    <time>1581087451</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1159958: Use breeze icon theme
+  Paper doesn't have yast icons yet.
+- Rename lxqt-session-papericontheme.patch to
+  lxqt-session-icontheme.patch</comment>
+    <requestid>770858</requestid>
+  </revision>
 </revisionlist>
