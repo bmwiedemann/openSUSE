@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb  5 21:38:42 UTC 2020 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.86
+  + enable various optimizations when using modern curl
+  + allow SSE-C keys to have NUL bytes
+  + add session token support
+  + allow large files on 32-bit systems like Raspberry Pi
+  + fix data corruption when external modification changes a cached object
+  + fix data corruption when opening a second fd to an unflushed file
+  + fix clock skew errors when writing large files
+  + allow concurrent metadata queries during data operations
+  + use server-side copy for partially modified files
+  + fix multiple concurrency issues
+  + add requester_pays support
+  + add symlink cache
+  + add intelligent_ia storage tier
+
+-------------------------------------------------------------------
 Tue Mar 12 22:30:34 UTC 2019 - Julio González Gil <julio@juliogonzalez.es>
 
 - Make COPYING file a license file
