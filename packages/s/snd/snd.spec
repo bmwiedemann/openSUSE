@@ -1,7 +1,7 @@
 #
 # spec file for package snd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %ifarch %ix86 x86_64 %ppc ppc64 ppc64le
 # The jack support has some inline assembly, but only for x86/ppc
@@ -37,13 +38,13 @@ BuildRequires:  update-desktop-files
 Summary:        Sound File Editor
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        19.5
+Version:        20.1
 Release:        0
 Requires:       ladspa
 Source:         ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-%{version}.tar.gz
 Source1:        snd.desktop
 Source2:        snd.png
-Url:            https://ccrma.stanford.edu/software/snd/
+URL:            https://ccrma.stanford.edu/software/snd/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
