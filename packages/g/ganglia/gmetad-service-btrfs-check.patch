@@ -1,0 +1,24 @@
+From 4a4e66bd4c1a5c47da86e34bba557289e72a0a97 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Thu, 6 Feb 2020 16:52:05 +0100
+Subject: [PATCH] gmetad service btrfs check
+
+---
+ gmetad/gmetad.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gmetad/gmetad.service.in b/gmetad/gmetad.service.in
+index 8234e90..8e12b69 100644
+--- a/gmetad/gmetad.service.in
++++ b/gmetad/gmetad.service.in
+@@ -5,6 +5,7 @@ After=network.target
+ [Service]
+ Type=forking
+ PIDFile=@runstatedir@/gmetad.pid
++ExecStartPre=@libdir@/ganglia/btrfs-subvol-test.sh @varstatedir@
+ ExecStart=@sbindir@/gmetad --pid-file=@runstatedir@/gmetad.pid
+ EnvironmentFile=-@envdir@/gmetad
+ 
+-- 
+2.24.1
+

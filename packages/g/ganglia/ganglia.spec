@@ -28,8 +28,10 @@ Release:        0
 URL:            http://ganglia.info/
 # The Release macro value is set in configure.in, please update it there.
 Source0:        http://downloads.sourceforge.net/ganglia/%{name}-%{version}.tar.gz
+Source1:        btrfs-subvol-test.sh
 # PATCH-FIX-OPENSUSE ganglia-3.7.1-no-private-apr.patch
 Patch1:         ganglia-3.7.2-no-private-apr.patch
+Patch2:         gmetad-service-btrfs-check.patch
 Patch3:         detect_aarch.patch
 Patch4:         add_unknown_arch.patch
 Patch5:         ganglia-0001-avoid-segfault-when-fd-leaked-and-reached-fd-number-.patch
@@ -139,6 +141,16 @@ well-defined XML format.
 This gmond modules support package provides the capability of loading
 gmetric/python modules via DSO at daemon start time instead of via gmetric.
 
+%package gmetad-skip-bcheck
+Summary:        Skips check for btrs root fs before gmond starts
+Group:          System/Monitoring
+Requires:       ganglia-gmetad
+
+%description gmetad-skip-bcheck
+Skips test for btrfs-root before gmond service start by touching a config file. 
+No needed if no btrfs-root is used or statedir is on seperare mount.
+Avoids potential data loss on rollback
+
 
 %package devel
 Summary:        Ganglia static libraries and header files
@@ -228,6 +240,12 @@ rm  %{buildroot}%{_libdir}/*.la
 #rc file needed by systemd
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcgmond
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcgmetad
+# copy check for btrs-root-fs
+cp -f %SOURCE1 %{buildroot}%{_libdir}/ganglia/
+cat > %{buildroot}%{_sysconfdir}/ganglia/no_btrfs_check <<EOF
+This file belongs to the package %name-gmond-skip-bcheck 
+skips the test for a btrfs root
+EOF
 
 %pre  gmetad
 %service_add_pre gmetad.service
@@ -311,6 +329,7 @@ fi
 %{_mandir}/man1/gmetad*1*
 %{_unitdir}/gmetad.service
 %{_sbindir}/rcgmetad
+%attr(0755,-,-) %{_libdir}/ganglia/btrfs-subvol-test.sh
 %config(noreplace) %{_sysconfdir}/%{name}/gmetad.conf
 
 %files gmond
@@ -348,6 +367,9 @@ fi
 %{_libdir}/ganglia/modpython.so*
 %config(noreplace) %{_sysconfdir}/%{name}/conf.d/modpython.conf
 %config(noreplace) %{_sysconfdir}/%{name}/conf.d/*.pyconf*
+
+%files gmetad-skip-bcheck
+%config %{_sysconfdir}/ganglia/no_btrfs_check
 
 %files devel
 %defattr(-,root,root,-)

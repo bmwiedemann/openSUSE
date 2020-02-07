@@ -84,4 +84,14 @@
     <comment>Shortcut through -mini (forwarded request 769575 from dimstar)</comment>
     <requestid>769583</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>edf2434ab6209bf45b5c71388c269274</srcmd5>
+    <version>3.7.2</version>
+    <time>1581087467</time>
+    <user>dimstar_suse</user>
+    <comment>- added check for btrfs root filesystem (bsc#1162886)
+  * added patch gmetad-service-btrfs-check.patch
+  * added source btrfs-subvol-test.sh</comment>
+    <requestid>770839</requestid>
+  </revision>
 </revisionlist>
