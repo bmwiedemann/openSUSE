@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 07 10:37:38 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1580905395.63af2f4f:
+  * virtio_console: Fix `no autodie` placement for fcntl(PIPE_SZ)
+  * Add "assert_still_screen" test API function
+
+-------------------------------------------------------------------
 Mon Feb 03 08:22:23 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1580718127.98503bd5:
