@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 10:44:43 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Need to set %{name}-lang as Recommends tag for library package. 
+
+-------------------------------------------------------------------
 Wed Feb  5 10:47:40 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2.9.3 
