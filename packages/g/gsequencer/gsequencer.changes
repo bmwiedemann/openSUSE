@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:50:51 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.1.2 fixed 64bit-portability-issue reported by
+  previous build on Leap 15.2.
+
+-------------------------------------------------------------------
 Wed Feb  5 17:37:18 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.1.1 implemented meta widgets of notation,
