@@ -31,7 +31,7 @@ Source4:        README-registry.SUSE
 BuildRequires:  go >= 1.11
 BuildRequires:  systemd-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64 s390x aarch64 armv7l armv7hl
+ExclusiveArch:  x86_64 s390x aarch64 armv7l armv7hl ppc64le
 
 %description
 The Docker toolset to pack, ship, store, and deliver content.
