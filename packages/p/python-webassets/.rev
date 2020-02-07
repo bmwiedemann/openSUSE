@@ -15,4 +15,12 @@
     <comment>- Adding locale variables, as some tests would fail due to unicode errors.</comment>
     <requestid>755459</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b13d1f6f79f7ec0f2d3fc4b73a4d9a7</srcmd5>
+    <version>2.0</version>
+    <time>1581087266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770616</requestid>
+  </revision>
 </revisionlist>
