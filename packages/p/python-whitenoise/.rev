@@ -25,4 +25,12 @@
   * Fix potential path traversal attack while running in autorefresh mode on Windows</comment>
     <requestid>717554</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e88319955197186953bd4838d74bcaf</srcmd5>
+    <version>5.0.1</version>
+    <time>1581087251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770587</requestid>
+  </revision>
 </revisionlist>

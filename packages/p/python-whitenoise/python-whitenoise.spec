@@ -1,7 +1,7 @@
 #
 # spec file for package python-whitenoise
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,25 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-whitenoise
-Version:        4.1.3
+Version:        5.0.1
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/evansd/whitenoise
-Source:         https://files.pythonhosted.org/packages/source/w/whitenoise/whitenoise-%{version}.tar.gz
+URL:            https://github.com/evansd/whitenoise
+Source:         https://github.com/evansd/whitenoise/archive/v%{version}.tar.gz#/whitenoise-%{version}.tar.gz
+BuildRequires:  %{python_module Brotli >= 1.0.0}
+BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-Brotli
+Suggests:       python-Brotli >= 1.0.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,6 +50,9 @@ Static file serving for WSGI applications.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst

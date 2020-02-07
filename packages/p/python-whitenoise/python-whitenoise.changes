@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:10:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.0.1
+  * remove Python 2 compatibility
+  * Fix incompatibility with Django 3.0
+  * Lots of improvements to the test suite
+  * Make tests more deterministic and easier to run outside of tox.
+- package GitHub tarball because of tests
+
+-------------------------------------------------------------------
 Mon Jul 22 11:38:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.1.3:
