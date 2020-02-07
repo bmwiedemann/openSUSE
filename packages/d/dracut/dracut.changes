@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 04 14:38:21 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 049.1+git120.dbfbfcb8:
+  * 95zfcp_rules/parse-zfcp.sh: remove rule existence check (bsc#1008352)
+
+-------------------------------------------------------------------
 Wed Jan 29 12:54:35 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 049.1+git119.abf1a408:

@@ -1607,4 +1607,13 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 30convertfs: adopt for SUSE (boo#1158777)</comment>
     <requestid>768313</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>5298144fff8b09e113fd2bf2aca0133d</srcmd5>
+    <version>049.1+git120.dbfbfcb8</version>
+    <time>1581087136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049.1+git120.dbfbfcb8:
+  * 95zfcp_rules/parse-zfcp.sh: remove rule existence check (bsc#1008352)</comment>
+    <requestid>769998</requestid>
+  </revision>
 </revisionlist>
