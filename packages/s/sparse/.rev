@@ -376,4 +376,12 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
   * llvm: fix sparsec breakage on recent cygwin version</comment>
     <requestid>745101</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b9b0864dd7106bd0540dd6e81de3d58d</srcmd5>
+    <version>0.6.1+20200129</version>
+    <time>1581087164</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770523</requestid>
+  </revision>
 </revisionlist>

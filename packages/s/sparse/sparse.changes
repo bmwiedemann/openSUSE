@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:30:14 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.6.1+20200129:
+  * domtree: domtree_build() creates extraneous bb->doms entries
+  * predefine "i386" if needed
+  * correct sparcv9 defines
+  * pre-define __unix__ and friends
+  * add necessary defined for sunos-derived systems
+  * define __PRAGMA_REDEFINE_EXTNAME
+  * allow to easily test if the OS is UNIX-like
+  * detect OS_UNIX as native OS
+  * add predefine_nostd()
+  * show_parse: avoid null pointer dereference in do_show_type()
+  * ptrlist: fix typos
+  * fix testcase with non-constant initializer
+  * and much more
+
+-------------------------------------------------------------------
 Mon Nov 04 08:06:46 UTC 2019 - jslaby@suse.com
 
 - Update to version 0.6.1+20191101:
