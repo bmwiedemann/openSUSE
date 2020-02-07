@@ -1,7 +1,7 @@
 #
 # spec file for package python-xhtml2pdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xhtml2pdf
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        PDF Generator Using HTML and CSS
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/xhtml2pdf/xhtml2pdf
 Source:         https://files.pythonhosted.org/packages/source/x/xhtml2pdf/xhtml2pdf-%{version}.tar.gz
+# leaving the requirements here as the tests will start working one day
 BuildRequires:  %{python_module Pillow >= 2.0}
 BuildRequires:  %{python_module PyPDF2 >= 1.26}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module html5lib >= 1.0}
-BuildRequires:  %{python_module httplib2 >= 0.7.6}
 BuildRequires:  %{python_module nose >= 1.3.3}
 BuildRequires:  %{python_module reportlab >= 3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 2.0
+Requires:       python-Pillow >= 2.0.0
 Requires:       python-PyPDF2 >= 1.26
 Requires:       python-html5lib >= 1.0
-Requires:       python-httplib2 >= 0.7.6
 Requires:       python-reportlab >= 3.0
 Requires:       python-six
 Conflicts:      python-pisa
@@ -63,7 +63,8 @@ able to generate PDF templates very quickly without learning new technologies.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# there are no test actually
+%check
+# as in setup.py: test_suite = "tests", They're not even working yet
 
 %files %{python_files}
 %license LICENSE.txt
