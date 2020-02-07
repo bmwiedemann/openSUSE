@@ -108,4 +108,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="867">
+    <srcmd5>e69ab228b52ed61720af2c0c3004e308</srcmd5>
+    <version>1.19</version>
+    <time>1581087179</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file:
+  * Follow latest SPDX license identifiers
+  * Trim obsolete parts (forwarded request 770540 from pluskalm)</comment>
+    <requestid>770546</requestid>
+  </revision>
 </revisionlist>

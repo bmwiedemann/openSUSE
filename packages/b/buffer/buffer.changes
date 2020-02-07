@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:22:40 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file:
+  * Follow latest SPDX license identifiers
+  * Trim obsolete parts
+
+-------------------------------------------------------------------
 Fri Sep 30 14:43:20 UTC 2011 - uli@suse.com
 
 - cross-build fix: use %__cc macro
