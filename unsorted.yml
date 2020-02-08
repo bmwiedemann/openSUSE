@@ -62,6 +62,7 @@ unsorted:
   - IccXML 
   - ImageMagick-config-7-upstream 
   - ImageMagick-devel 
+  - ImageMagick-devel-32bit: [x86_64] 
   - ImageMagick-doc 
   - J7Z 
   - J7Z-kf5 
@@ -71,11 +72,17 @@ unsorted:
   - LiE 
   - LiE-doc 
   - LibVNCServer-devel 
+  - Mesa-32bit: [x86_64] 
   - Mesa-KHR-devel 
   - Mesa-demo 
   - Mesa-devel 
+  - Mesa-dri-32bit: [x86_64] 
+  - Mesa-dri-nouveau-32bit: [x86_64] 
+  - Mesa-gallium-32bit: [x86_64] 
   - Mesa-libEGL-devel 
+  - Mesa-libEGL1-32bit: [x86_64] 
   - Mesa-libGL-devel 
+  - Mesa-libGL1-32bit: [x86_64] 
   - Mesa-libGLESv1_CM-devel 
   - Mesa-libGLESv1_CM1 
   - Mesa-libGLESv2-2 
@@ -84,8 +91,12 @@ unsorted:
   - Mesa-libOpenCL 
   - Mesa-libVulkan-devel 
   - Mesa-libd3d 
+  - Mesa-libd3d-32bit: [x86_64] 
   - Mesa-libd3d-devel 
+  - Mesa-libd3d-devel-32bit: [x86_64] 
   - Mesa-libglapi-devel 
+  - Mesa-libglapi-devel-32bit: [x86_64] 
+  - Mesa-libglapi0-32bit: [x86_64] 
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
@@ -420,7 +431,6 @@ unsorted:
   - alsa-devel 
   - alsa-devel-32bit: [x86_64] 
   - alsa-docs 
-  - alsa-oss-32bit: [x86_64] 
   - alsa-plugins-32bit: [x86_64] 
   - alsa-plugins-a52 
   - alsa-plugins-aaf 
@@ -429,7 +439,6 @@ unsorted:
   - alsa-plugins-lavrate 
   - alsa-plugins-maemo 
   - alsa-plugins-maemo-32bit: [x86_64] 
-  - alsa-plugins-pulse-32bit: [x86_64] 
   - alsa-plugins-samplerate 
   - alsa-plugins-samplerate-32bit: [x86_64] 
   - alsa-plugins-speex 
@@ -640,8 +649,7 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
-  - apulse 
-  - apulse-32bit: [x86_64] 
+  - apulse: [i586] 
   - aqbanking 
   - aqbanking-devel 
   - aqbanking-doc 
@@ -834,6 +842,7 @@ unsorted:
   - atril-lang 
   - atril-thumbnailer 
   - attica-qt5-devel 
+  - attica-qt5-devel-32bit: [x86_64] 
   - attractmode 
   - aubio-tools 
   - audacious 
@@ -1674,6 +1683,7 @@ unsorted:
   - clang6 
   - clang6-checker 
   - clang6-devel 
+  - clang6-devel-32bit: [x86_64] 
   - clang7 
   - clang7-checker 
   - clang7-devel 
@@ -2096,6 +2106,7 @@ unsorted:
   - cups-airprint 
   - cups-ddk 
   - cups-devel 
+  - cups-devel-32bit: [x86_64] 
   - cups-filters-devel 
   - cups-pdf 
   - cups-rpm-helper 
@@ -2188,7 +2199,6 @@ unsorted:
   - dbus-1-devel 
   - dbus-1-devel-32bit: [x86_64] 
   - dbus-1-devel-doc 
-  - dbus-1-glib-32bit: [x86_64] 
   - dbus-1-glib-devel 
   - dbus-1-glib-devel-32bit: [x86_64] 
   - dbus-1-glib-doc 
@@ -2828,6 +2838,8 @@ unsorted:
   - fcitx-anthy 
   - fcitx-devel 
   - fcitx-fbterm 
+  - fcitx-gtk2-32bit: [x86_64] 
+  - fcitx-gtk3-32bit: [x86_64] 
   - fcitx-hangul 
   - fcitx-kkc 
   - fcitx-m17n 
@@ -3127,12 +3139,13 @@ unsorted:
   - fplll 
   - fplll-devel 
   - fprintd-devel 
-  - fprintd-pam-32bit: [x86_64] 
   - fractal 
   - fractal-lang 
   - frame 
   - frame-devel 
   - frameworkintegration-devel 
+  - frameworkintegration-devel-32bit: [x86_64] 
+  - frameworkintegration-plugin-32bit: [x86_64] 
   - free-ttf-fonts 
   - freealut-devel 
   - freecell-solver 
@@ -3372,6 +3385,7 @@ unsorted:
   - gammu-smsd 
   - ganglia-devel 
   - ganglia-gmetad 
+  - ganglia-gmetad-skip-bcheck 
   - ganglia-gmond 
   - ganglia-gmond-modules-python 
   - ganglia-web 
@@ -3499,7 +3513,6 @@ unsorted:
   - gdk-pixbuf-devel-32bit: [x86_64] 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
-  - gdk-pixbuf-query-loaders-32bit: [x86_64] 
   - gdl-devel 
   - gdlmm-devel 
   - gdm-branding-upstream 
@@ -4497,7 +4510,6 @@ unsorted:
   - gnome-gmail-notifier-lang 
   - gnome-internet-radio-locator 
   - gnome-internet-radio-locator-lang 
-  - gnome-keyring-32bit: [x86_64] 
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
@@ -4771,7 +4783,9 @@ unsorted:
   - gperiodic 
   - gperiodic-lang 
   - gpgmepp5 
+  - gpgmepp5-32bit: [x86_64] 
   - gpgmepp5-devel 
+  - gpgmepp5-devel-32bit: [x86_64] 
   - gphoto 
   - gphotofs 
   - gpick 
@@ -4924,20 +4938,32 @@ unsorted:
   - gssproxy 
   - gst123 
   - gstreamer-1_0-plugins-buzztrax 
+  - gstreamer-32bit: [x86_64] 
   - gstreamer-devel 
   - gstreamer-doc 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
   - gstreamer-plugin-pipewire 
   - gstreamer-plugin-python 
+  - gstreamer-plugins-bad-32bit: [x86_64] 
   - gstreamer-plugins-bad-chromaprint 
+  - gstreamer-plugins-bad-chromaprint-32bit: [x86_64] 
   - gstreamer-plugins-bad-devel 
   - gstreamer-plugins-bad-doc 
   - gstreamer-plugins-bad-fluidsynth 
+  - gstreamer-plugins-bad-fluidsynth-32bit: [x86_64] 
+  - gstreamer-plugins-base-32bit: [x86_64] 
   - gstreamer-plugins-base-devel 
+  - gstreamer-plugins-base-devel-32bit: [x86_64] 
   - gstreamer-plugins-base-doc 
+  - gstreamer-plugins-farstream-32bit: [x86_64] 
+  - gstreamer-plugins-good-32bit: [x86_64] 
   - gstreamer-plugins-good-doc 
+  - gstreamer-plugins-good-extra-32bit: [x86_64] 
+  - gstreamer-plugins-good-jack-32bit: [x86_64] 
+  - gstreamer-plugins-libav-32bit: [x86_64] 
   - gstreamer-plugins-libav-doc 
+  - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-ugly-doc 
   - gstreamer-plugins-vaapi 
   - gstreamer-plugins-vaapi-doc 
@@ -4975,14 +5001,12 @@ unsorted:
   - gtk2-devel 
   - gtk2-devel-32bit: [x86_64] 
   - gtk2-engine-aurora 
-  - gtk2-engine-cleanice-32bit: [x86_64] 
   - gtk2-engine-clearlooks-32bit: [x86_64] 
   - gtk2-engine-crux-32bit: [x86_64] 
   - gtk2-engine-equinox 
   - gtk2-engine-glide-32bit: [x86_64] 
   - gtk2-engine-industrial-32bit: [x86_64] 
   - gtk2-engine-mist-32bit: [x86_64] 
-  - gtk2-engine-murrine-32bit: [x86_64] 
   - gtk2-engine-nimbus 
   - gtk2-engine-nimbus-32bit: [x86_64] 
   - gtk2-engine-oxygen 
@@ -5018,14 +5042,21 @@ unsorted:
   - gtk2-metatheme-yaru 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
-  - gtk2-theming-engine-adwaita-32bit: [x86_64] 
-  - gtk2-tools-32bit: [x86_64] 
   - gtk3-branding-upstream 
   - gtk3-devel 
+  - gtk3-devel-32bit: [x86_64] 
   - gtk3-devel-doc 
+  - gtk3-immodule-amharic-32bit: [x86_64] 
   - gtk3-immodule-broadway 
+  - gtk3-immodule-inuktitut-32bit: [x86_64] 
   - gtk3-immodule-multipress 
+  - gtk3-immodule-multipress-32bit: [x86_64] 
+  - gtk3-immodule-thai-32bit: [x86_64] 
+  - gtk3-immodule-tigrigna-32bit: [x86_64] 
+  - gtk3-immodule-vietnamese-32bit: [x86_64] 
   - gtk3-immodule-wayland 
+  - gtk3-immodule-wayland-32bit: [x86_64] 
+  - gtk3-immodule-xim-32bit: [x86_64] 
   - gtk3-metatheme-adapta 
   - gtk3-metatheme-ambiance 
   - gtk3-metatheme-ambiant-mate 
@@ -5043,8 +5074,10 @@ unsorted:
   - gtk3-metatheme-vertex 
   - gtk3-metatheme-yaru 
   - gtk3-metatheme-yuyo 
+  - gtk3-tools-32bit: [x86_64] 
   - gtk4-branding-upstream 
   - gtk4-devel 
+  - gtk4-devel-32bit: [x86_64] 
   - gtk4-lang 
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-plata 
@@ -5140,6 +5173,7 @@ unsorted:
   - guvcview-qt5 
   - guvcview-qt5-lang 
   - gv 
+  - gvfs-32bit: [x86_64] 
   - gvfs-devel 
   - gwenhywfar 
   - gwenhywfar-devel 
@@ -5440,6 +5474,7 @@ unsorted:
   - ibus-cangjie 
   - ibus-chewing 
   - ibus-devel 
+  - ibus-gtk3-32bit: [x86_64] 
   - ibus-hangul 
   - ibus-input-pad 
   - ibus-kkc 
@@ -5574,6 +5609,7 @@ unsorted:
   - imgp-zsh-completion 
   - imgvtopgm 
   - imhangul 
+  - imhangul-32bit: [x86_64] 
   - iml-devel 
   - imlib2 
   - imlib2-devel 
@@ -6197,9 +6233,13 @@ unsorted:
   - k3s-hyperkube 
   - kColorPicker-devel 
   - kImageAnnotator-devel 
+  - kaccounts-integration-32bit: [x86_64] 
   - kaccounts-integration-devel 
+  - kaccounts-integration-devel-32bit: [x86_64] 
   - kactivities-stats-devel 
+  - kactivities-stats-devel-32bit: [x86_64] 
   - kactivities5-devel 
+  - kactivities5-devel-32bit: [x86_64] 
   - kactivities5-tools 
   - kadu 
   - kadu-devel 
@@ -6233,10 +6273,12 @@ unsorted:
   - kapman 
   - kapman-lang 
   - karchive-devel 
+  - karchive-devel-32bit: [x86_64] 
   - kasumi 
   - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
+  - kauth-devel-32bit: [x86_64] 
   - kawaii-player 
   - kbackup 
   - kbackup-lang 
@@ -6250,19 +6292,27 @@ unsorted:
   - kblog-devel 
   - kblog-lang 
   - kbookmarks-devel 
+  - kbookmarks-devel-32bit: [x86_64] 
   - kbuild 
   - kcalendarcore-devel 
   - kcalutils-devel 
   - kcmutils-devel 
   - kcmutils-devel-32bit: [x86_64] 
   - kcodecs-devel 
+  - kcodecs-devel-32bit: [x86_64] 
   - kcompletion-devel 
+  - kcompletion-devel-32bit: [x86_64] 
   - kconfig-devel 
+  - kconfig-devel-32bit: [x86_64] 
   - kconfigwidgets-devel 
+  - kconfigwidgets-devel-32bit: [x86_64] 
   - kcontacts-devel 
+  - kcontacts-devel-32bit: [x86_64] 
   - kcoreaddons-devel 
+  - kcoreaddons-devel-32bit: [x86_64] 
   - kcov 
   - kcrash-devel 
+  - kcrash-devel-32bit: [x86_64] 
   - kdav-devel 
   - kdb-devel 
   - kdb-lang 
@@ -6270,6 +6320,7 @@ unsorted:
   - kdb-postgresql-driver 
   - kdb-sqlite3-driver 
   - kdbusaddons-devel 
+  - kdbusaddons-devel-32bit: [x86_64] 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kdebugsettings 
@@ -6280,7 +6331,9 @@ unsorted:
   - kdeclarative-tools 
   - kded-devel 
   - kdegames-carddecks-other 
+  - kdelibs4support-32bit: [x86_64] 
   - kdelibs4support-devel 
+  - kdelibs4support-devel-32bit: [x86_64] 
   - kdenlive 
   - kdenlive-lang 
   - kdepim-apps-libs-devel 
@@ -6293,6 +6346,7 @@ unsorted:
   - kdesignerplugin-devel 
   - kdesignerplugin-lang 
   - kdesu-devel 
+  - kdesu-devel-32bit: [x86_64] 
   - kdesvn 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
@@ -6309,8 +6363,10 @@ unsorted:
   - kdiff3-lang 
   - kdnssd 
   - kdnssd-framework-devel 
+  - kdnssd-framework-devel-32bit: [x86_64] 
   - kdnssd-lang 
   - kdoctools-devel 
+  - kdoctools-devel-32bit: [x86_64] 
   - kdstatemachineeditor-devel 
   - kdumpid 
   - kea 
@@ -6324,6 +6380,7 @@ unsorted:
   - keepassxc-lang 
   - kelbt 
   - kemoticons-devel 
+  - kemoticons-devel-32bit: [x86_64] 
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
@@ -6353,6 +6410,7 @@ unsorted:
   - keyutils-devel-32bit: [x86_64] 
   - kf5-filesystem 
   - kf5-mediainfo 
+  - kfilemetadata5-32bit: [x86_64] 
   - kfilemetadata5-devel 
   - kfind 
   - kfind-lang 
@@ -6361,15 +6419,19 @@ unsorted:
   - kfourinline 
   - kfourinline-lang 
   - kglobalaccel-devel 
+  - kglobalaccel-devel-32bit: [x86_64] 
   - kgpg 
   - kgpg-lang 
   - kguiaddons-devel 
+  - kguiaddons-devel-32bit: [x86_64] 
   - kholidays 
   - kholidays-devel 
   - khotkeys5-devel 
   - khtml-devel 
+  - khtml-devel-32bit: [x86_64] 
   - khunphan 
   - ki18n-devel 
+  - ki18n-devel-32bit: [x86_64] 
   - kicad 
   - kicad-doc 
   - kicad-doc-ca 
@@ -6421,6 +6483,7 @@ unsorted:
   - kicad-symbols 
   - kicad-templates 
   - kiconthemes-devel 
+  - kiconthemes-devel-32bit: [x86_64] 
   - kid3 
   - kid3-cli 
   - kid3-core 
@@ -6430,6 +6493,7 @@ unsorted:
   - kid3-qt-doc 
   - kidentitymanagement-devel 
   - kidletime-devel 
+  - kidletime-devel-32bit: [x86_64] 
   - kigo 
   - kigo-lang 
   - kile 
@@ -6441,10 +6505,15 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
+  - kimageformats-32bit: [x86_64] 
   - kimap-devel 
+  - kinit-32bit: [x86_64] 
   - kinit-devel 
   - kinput2 
+  - kio-32bit: [x86_64] 
+  - kio-core-32bit: [x86_64] 
   - kio-devel 
+  - kio-devel-32bit: [x86_64] 
   - kio-fuse 
   - kio-gdrive 
   - kio-gdrive-lang 
@@ -6461,7 +6530,9 @@ unsorted:
   - kirigami2-devel 
   - kismet-devel 
   - kitemmodels-devel 
+  - kitemmodels-devel-32bit: [x86_64] 
   - kitemviews-devel 
+  - kitemviews-devel-32bit: [x86_64] 
   - kiten-devel 
   - kitinerary-devel 
   - kitty 
@@ -6479,11 +6550,14 @@ unsorted:
   - kiwi-templates-JeOS 
   - kiwi-tools 
   - kjobwidgets-devel 
+  - kjobwidgets-devel-32bit: [x86_64] 
   - kjots 
   - kjots-lang 
   - kjs-devel 
+  - kjs-devel-32bit: [x86_64] 
   - kjs-devel-lang 
   - kjsembed-devel 
+  - kjsembed-devel-32bit: [x86_64] 
   - kkc-data 
   - klatexformula 
   - klatexformula-apidoc 
@@ -6503,6 +6577,7 @@ unsorted:
   - kmarkdownwebview-lang 
   - kmbox-devel 
   - kmediaplayer-devel 
+  - kmediaplayer-devel-32bit: [x86_64] 
   - kmime-devel 
   - kmix 
   - kmix-lang 
@@ -6515,6 +6590,7 @@ unsorted:
   - kmymoney-lang 
   - knewstuff-core-devel 
   - knewstuff-devel 
+  - knewstuff-devel-32bit: [x86_64] 
   - knewstuff-imports 
   - knewstuff-quick-devel 
   - knights 
@@ -6523,7 +6599,9 @@ unsorted:
   - knockd 
   - knot 
   - knotifications-devel 
+  - knotifications-devel-32bit: [x86_64] 
   - knotifyconfig-devel 
+  - knotifyconfig-devel-32bit: [x86_64] 
   - kochmorse 
   - kohsuke-pom 
   - kolor-manager 
@@ -6569,17 +6647,23 @@ unsorted:
   - kopano-webapp-webappmanual 
   - kopano-webapp-zdeveloper 
   - kopete-devel 
+  - kpackage-32bit: [x86_64] 
   - kpackage-devel 
+  - kpackage-devel-32bit: [x86_64] 
   - kpartloader 
   - kpartloader-lang 
   - kparts-devel 
+  - kparts-devel-32bit: [x86_64] 
+  - kpeople5-32bit: [x86_64] 
   - kpeople5-devel 
+  - kpeople5-devel-32bit: [x86_64] 
   - kpeoplevcard-devel 
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
   - kpkpass-devel 
   - kplotting-devel 
+  - kplotting-devel-32bit: [x86_64] 
   - kpmcore 
   - kpmcore-devel 
   - kpmcore-lang 
@@ -6587,6 +6671,7 @@ unsorted:
   - kproperty-devel 
   - kproperty-lang 
   - kpty-devel 
+  - kpty-devel-32bit: [x86_64] 
   - kquickcharts 
   - kquickcharts-devel 
   - kraft 
@@ -6612,14 +6697,19 @@ unsorted:
   - krita-devel 
   - krita-plugin-gmic 
   - kronometer 
+  - kross-32bit: [x86_64] 
   - kross-devel 
+  - kross-devel-32bit: [x86_64] 
   - kross-ruby 
   - krunner-devel 
+  - krunner-devel-32bit: [x86_64] 
   - krusader-doc 
   - kryo 
   - kryo-javadoc 
   - kscreenlocker-devel 
+  - kservice-32bit: [x86_64] 
   - kservice-devel 
+  - kservice-devel-32bit: [x86_64] 
   - ksh 
   - ksh-devel 
   - kshutdown 
@@ -6633,8 +6723,11 @@ unsorted:
   - kst-devel 
   - kstars 
   - kstars-lang 
+  - ktexteditor-32bit: [x86_64] 
   - ktexteditor-devel 
+  - ktexteditor-devel-32bit: [x86_64] 
   - ktextwidgets-devel 
+  - ktextwidgets-devel-32bit: [x86_64] 
   - ktimetracker 
   - ktimetracker-lang 
   - ktnef-devel 
@@ -6683,6 +6776,7 @@ unsorted:
   - kuiviewer 
   - kuiviewer-lang 
   - kunitconversion-devel 
+  - kunitconversion-devel-32bit: [x86_64] 
   - kup-client 
   - kup-server 
   - kupfer 
@@ -6691,6 +6785,7 @@ unsorted:
   - kurso-de-esperanto 
   - kvirc 
   - kwallet-devel 
+  - kwallet-devel-32bit: [x86_64] 
   - kwave 
   - kwave-lang 
   - kwayland-32bit: [x86_64] 
@@ -6699,14 +6794,17 @@ unsorted:
   - kwebkitpart 
   - kwebkitpart-lang 
   - kwidgetsaddons-devel 
+  - kwidgetsaddons-devel-32bit: [x86_64] 
   - kwin5-devel 
   - kwindowsystem-devel 
+  - kwindowsystem-devel-32bit: [x86_64] 
   - kwrite 
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
   - kxmlgui-devel-32bit: [x86_64] 
   - kxmlrpcclient5-devel 
+  - kxmlrpcclient5-devel-32bit: [x86_64] 
   - kyotocabinet 
   - labplot-kf5 
   - labplot-kf5-lang 
@@ -7013,7 +7111,6 @@ unsorted:
   - libHACD2_89 
   - libHX-devel 
   - libHX-devel-32bit: [x86_64] 
-  - libHX28-32bit: [x86_64] 
   - libHYPRE-gnu-mpich-hpc 
   - libHYPRE-gnu-mvapich2-hpc 
   - libHYPRE-gnu-openmpi1-hpc 
@@ -7056,24 +7153,88 @@ unsorted:
   - libImlib2-1 
   - libIrrlicht1_8 
   - libKDb3-4 
+  - libKF5Activities5-32bit: [x86_64] 
+  - libKF5ActivitiesStats1-32bit: [x86_64] 
+  - libKF5Archive5-32bit: [x86_64] 
+  - libKF5Attica5-32bit: [x86_64] 
+  - libKF5Auth5-32bit: [x86_64] 
+  - libKF5AuthCore5-32bit: [x86_64] 
+  - libKF5Baloo5-32bit: [x86_64] 
+  - libKF5BalooEngine5-32bit: [x86_64] 
   - libKF5Blog5 
+  - libKF5Bookmarks5-32bit: [x86_64] 
   - libKF5CalendarEvents5-32bit: [x86_64] 
   - libKF5CddbWidgets5 
+  - libKF5Codecs5-32bit: [x86_64] 
+  - libKF5Completion5-32bit: [x86_64] 
+  - libKF5ConfigCore5-32bit: [x86_64] 
+  - libKF5ConfigGui5-32bit: [x86_64] 
+  - libKF5ConfigWidgets5-32bit: [x86_64] 
+  - libKF5Contacts5-32bit: [x86_64] 
+  - libKF5CoreAddons5-32bit: [x86_64] 
+  - libKF5Crash5-32bit: [x86_64] 
+  - libKF5DBusAddons5-32bit: [x86_64] 
+  - libKF5DNSSD5-32bit: [x86_64] 
   - libKF5Declarative5-32bit: [x86_64] 
+  - libKF5DocTools5-32bit: [x86_64] 
+  - libKF5Emoticons5-32bit: [x86_64] 
+  - libKF5GlobalAccel5-32bit: [x86_64] 
+  - libKF5GuiAddons5-32bit: [x86_64] 
+  - libKF5I18n5-32bit: [x86_64] 
+  - libKF5IconThemes5-32bit: [x86_64] 
+  - libKF5IdleTime5-32bit: [x86_64] 
+  - libKF5ItemModels5-32bit: [x86_64] 
+  - libKF5ItemViews5-32bit: [x86_64] 
+  - libKF5JS5-32bit: [x86_64] 
+  - libKF5JSApi5-32bit: [x86_64] 
+  - libKF5JobWidgets5-32bit: [x86_64] 
   - libKF5JsEmbed5 
+  - libKF5JsEmbed5-32bit: [x86_64] 
   - libKF5JsEmbed5-lang 
   - libKF5KCMUtils5-32bit: [x86_64] 
+  - libKF5KDELibs4Support5-32bit: [x86_64] 
   - libKF5KDGantt2-5 
   - libKF5KGeoMap10_0_0 
+  - libKF5KHtml5-32bit: [x86_64] 
   - libKF5MediaPlayer5 
+  - libKF5MediaPlayer5-32bit: [x86_64] 
   - libKF5ModemManagerQt-devel 
   - libKF5NetworkManagerQt-devel 
+  - libKF5NetworkManagerQt-devel-32bit: [x86_64] 
+  - libKF5NetworkManagerQt6-32bit: [x86_64] 
+  - libKF5NewStuff5-32bit: [x86_64] 
+  - libKF5NewStuffCore5-32bit: [x86_64] 
+  - libKF5Notifications5-32bit: [x86_64] 
+  - libKF5NotifyConfig5-32bit: [x86_64] 
+  - libKF5Parts5-32bit: [x86_64] 
+  - libKF5Plasma5-32bit: [x86_64] 
+  - libKF5Plotting5-32bit: [x86_64] 
+  - libKF5Prison5-32bit: [x86_64] 
+  - libKF5Pty5-32bit: [x86_64] 
+  - libKF5Purpose5-32bit: [x86_64] 
+  - libKF5PurposeWidgets5-32bit: [x86_64] 
   - libKF5QGpgme5 
+  - libKF5QGpgme5-32bit: [x86_64] 
   - libKF5QuickAddons5-32bit: [x86_64] 
+  - libKF5Runner5-32bit: [x86_64] 
+  - libKF5Screen7-32bit: [x86_64] 
+  - libKF5Solid5-32bit: [x86_64] 
+  - libKF5SonnetCore5-32bit: [x86_64] 
+  - libKF5SonnetUi5-32bit: [x86_64] 
+  - libKF5Style5-32bit: [x86_64] 
+  - libKF5Su5-32bit: [x86_64] 
+  - libKF5SyntaxHighlighting5-32bit: [x86_64] 
+  - libKF5TextWidgets5-32bit: [x86_64] 
+  - libKF5ThreadWeaver5-32bit: [x86_64] 
+  - libKF5UnitConversion5-32bit: [x86_64] 
   - libKF5Vkontakte2 
+  - libKF5Wallet5-32bit: [x86_64] 
   - libKF5WebKit5 
+  - libKF5WidgetsAddons5-32bit: [x86_64] 
+  - libKF5WindowSystem5-32bit: [x86_64] 
   - libKF5XmlGui5-32bit: [x86_64] 
   - libKF5XmlRpcClient5 
+  - libKF5XmlRpcClient5-32bit: [x86_64] 
   - libKF5XmlRpcClient5-lang 
   - libKPimGAPIBlogger5 
   - libKPimGAPIDrive5 
@@ -7086,19 +7247,25 @@ unsorted:
   - libLASi2 
   - libLHAPDF-6_2_3 
   - libLLVM6 
+  - libLLVM6-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM8 
   - libLLVM8-32bit: [x86_64] 
   - libLLVM9-32bit: [x86_64] 
   - libLTO6 
+  - libLTO6-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO8 
   - libLTO8-32bit: [x86_64] 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_01-1 
+  - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
+  - libMagick++-devel-32bit: [x86_64] 
+  - libMagickCore-7_Q16HDRI7-32bit: [x86_64] 
+  - libMagickWand-7_Q16HDRI7-32bit: [x86_64] 
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
@@ -7106,7 +7273,9 @@ unsorted:
   - libOIS-1_3_0 
   - libOIS-devel 
   - libOSMesa-devel 
+  - libOSMesa-devel-32bit: [x86_64] 
   - libOSMesa8 
+  - libOSMesa8-32bit: [x86_64] 
   - libOgreMain-devel 
   - libOgreMain1_9_0 
   - libOgreMain1_9_0-plugins 
@@ -7205,43 +7374,67 @@ unsorted:
   - libQt5Bodymovin-private-headers-devel 
   - libQt5Bodymovin5 
   - libQt5Bootstrap-devel-static 
+  - libQt5Bootstrap-devel-static-32bit: [x86_64] 
   - libQt5Charts5 
   - libQt5Charts5-designer 
   - libQt5Charts5-devel 
   - libQt5Concurrent-devel 
+  - libQt5Concurrent-devel-32bit: [x86_64] 
+  - libQt5Concurrent5-32bit: [x86_64] 
   - libQt5Core-devel 
+  - libQt5Core-devel-32bit: [x86_64] 
   - libQt5Core-private-headers-devel 
+  - libQt5Core5-32bit: [x86_64] 
   - libQt5DBus-devel 
+  - libQt5DBus-devel-32bit: [x86_64] 
   - libQt5DBus-private-headers-devel 
+  - libQt5DBus5-32bit: [x86_64] 
   - libQt5DataVisualization5 
   - libQt5DataVisualization5-devel 
+  - libQt5Designer5-32bit: [x86_64] 
   - libQt5DesignerComponents5 
+  - libQt5DesignerComponents5-32bit: [x86_64] 
   - libQt5Gamepad5 
   - libQt5Gamepad5-32bit: [x86_64] 
   - libQt5Gui-devel 
+  - libQt5Gui-devel-32bit: [x86_64] 
   - libQt5Gui-private-headers-devel 
+  - libQt5Gui5-32bit: [x86_64] 
+  - libQt5Help5-32bit: [x86_64] 
   - libQt5HunspellInputMethod-private-headers-devel 
   - libQt5KmsSupport-devel-static 
   - libQt5KmsSupport-private-headers-devel 
+  - libQt5Location5-32bit: [x86_64] 
   - libQt5Multimedia5-32bit: [x86_64] 
   - libQt5Network-devel 
+  - libQt5Network-devel-32bit: [x86_64] 
   - libQt5Network-private-headers-devel 
+  - libQt5Network5-32bit: [x86_64] 
   - libQt5NetworkAuth5-32bit: [x86_64] 
   - libQt5Nfc5-32bit: [x86_64] 
   - libQt5OpenGL-devel 
+  - libQt5OpenGL-devel-32bit: [x86_64] 
   - libQt5OpenGL-private-headers-devel 
+  - libQt5OpenGL5-32bit: [x86_64] 
   - libQt5OpenGLExtensions-devel-static 
+  - libQt5OpenGLExtensions-devel-static-32bit: [x86_64] 
   - libQt5Pas-devel 
   - libQt5Pas1 
   - libQt5PlatformHeaders-devel 
   - libQt5PlatformSupport-devel-static 
+  - libQt5PlatformSupport-devel-static-32bit: [x86_64] 
   - libQt5PlatformSupport-private-headers-devel 
+  - libQt5Positioning5-32bit: [x86_64] 
+  - libQt5PositioningQuick5-32bit: [x86_64] 
   - libQt5PrintSupport-devel 
+  - libQt5PrintSupport-devel-32bit: [x86_64] 
   - libQt5PrintSupport-private-headers-devel 
+  - libQt5PrintSupport5-32bit: [x86_64] 
   - libQt5QuickControls2-devel 
   - libQt5QuickTemplates2-devel 
   - libQt5RemoteObjects5 
   - libQt5RemoteObjects5-32bit: [x86_64] 
+  - libQt5Script5-32bit: [x86_64] 
   - libQt5Scxml5 
   - libQt5Scxml5-32bit: [x86_64] 
   - libQt5Scxml5-imports 
@@ -7250,12 +7443,20 @@ unsorted:
   - libQt5SerialBus5-32bit: [x86_64] 
   - libQt5SerialPort5-32bit: [x86_64] 
   - libQt5Sql-devel 
+  - libQt5Sql-devel-32bit: [x86_64] 
   - libQt5Sql-private-headers-devel 
+  - libQt5Sql5-32bit: [x86_64] 
+  - libQt5Sql5-mysql-32bit: [x86_64] 
   - libQt5Sql5-postgresql 
+  - libQt5Sql5-postgresql-32bit: [x86_64] 
+  - libQt5Sql5-sqlite-32bit: [x86_64] 
   - libQt5Sql5-unixODBC 
+  - libQt5Sql5-unixODBC-32bit: [x86_64] 
   - libQt5Svg5-32bit: [x86_64] 
   - libQt5Test-devel 
+  - libQt5Test-devel-32bit: [x86_64] 
   - libQt5Test-private-headers-devel 
+  - libQt5Test5-32bit: [x86_64] 
   - libQt5TextToSpeech5-32bit: [x86_64] 
   - libQt5WaylandClient5-32bit: [x86_64] 
   - libQt5WaylandCompositor5-32bit: [x86_64] 
@@ -7272,15 +7473,20 @@ unsorted:
   - libQt5WebView5 
   - libQt5WebView5-imports 
   - libQt5Widgets-devel 
+  - libQt5Widgets-devel-32bit: [x86_64] 
   - libQt5Widgets-private-headers-devel 
+  - libQt5Widgets5-32bit: [x86_64] 
   - libQt5X11Extras5-32bit: [x86_64] 
   - libQt5Xdg3 
   - libQt5XdgIconLoader-devel 
   - libQt5XdgIconLoader3 
   - libQt5Xml-devel 
+  - libQt5Xml-devel-32bit: [x86_64] 
+  - libQt5Xml5-32bit: [x86_64] 
   - libQt5XmlPatterns5-32bit: [x86_64] 
   - libQtAV1 
   - libQtAVWidgets1 
+  - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
   - libRivet-3_1_0 
   - libSDL-1_2-0-32bit: [x86_64] 
@@ -7297,7 +7503,9 @@ unsorted:
   - libSDL2_image-devel 
   - libSDL2_image-devel-32bit: [x86_64] 
   - libSDL2_mixer-2_0-0 
+  - libSDL2_mixer-2_0-0-32bit: [x86_64] 
   - libSDL2_mixer-devel 
+  - libSDL2_mixer-devel-32bit: [x86_64] 
   - libSDL2_net-2_0-0 
   - libSDL2_net-2_0-0-32bit: [x86_64] 
   - libSDL2_net-devel 
@@ -7318,13 +7526,17 @@ unsorted:
   - libSDL_image-1_2-0-32bit: [x86_64] 
   - libSDL_image-devel 
   - libSDL_image-devel-32bit: [x86_64] 
+  - libSDL_mixer-1_2-0-32bit: [x86_64] 
   - libSDL_mixer-devel 
+  - libSDL_mixer-devel-32bit: [x86_64] 
   - libSDL_net-1_2-0 
   - libSDL_net-1_2-0-32bit: [x86_64] 
   - libSDL_net-devel 
   - libSDL_net-devel-32bit: [x86_64] 
   - libSDL_sound-1_0-1 
+  - libSDL_sound-1_0-1-32bit: [x86_64] 
   - libSDL_sound-devel 
+  - libSDL_sound-devel-32bit: [x86_64] 
   - libSDL_ttf-2_0-0 
   - libSDL_ttf-2_0-0-32bit: [x86_64] 
   - libSDL_ttf-devel 
@@ -7363,12 +7575,10 @@ unsorted:
   - libVFlib3-5 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
-  - libX11-6-32bit: [x86_64] 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
   - libXau-devel-32bit: [x86_64] 
-  - libXau6-32bit: [x86_64] 
   - libXaw-devel 
   - libXaw-devel-32bit: [x86_64] 
   - libXaw3d-devel 
@@ -7392,13 +7602,10 @@ unsorted:
   - libXcmX11-0 
   - libXcomposite-devel 
   - libXcomposite-devel-32bit: [x86_64] 
-  - libXcomposite1-32bit: [x86_64] 
   - libXcursor-devel 
   - libXcursor-devel-32bit: [x86_64] 
-  - libXcursor1-32bit: [x86_64] 
   - libXdamage-devel 
   - libXdamage-devel-32bit: [x86_64] 
-  - libXdamage1-32bit: [x86_64] 
   - libXdmcp-devel-32bit: [x86_64] 
   - libXdmcp6-32bit: [x86_64] 
   - libXevie-devel 
@@ -7406,9 +7613,7 @@ unsorted:
   - libXevie1 
   - libXevie1-32bit: [x86_64] 
   - libXext-devel-32bit: [x86_64] 
-  - libXext6-32bit: [x86_64] 
   - libXfixes-devel-32bit: [x86_64] 
-  - libXfixes3-32bit: [x86_64] 
   - libXfont-devel 
   - libXfont-devel-32bit: [x86_64] 
   - libXfont1-32bit: [x86_64] 
@@ -7420,13 +7625,10 @@ unsorted:
   - libXfontcache1-32bit: [x86_64] 
   - libXft-devel 
   - libXft-devel-32bit: [x86_64] 
-  - libXft2-32bit: [x86_64] 
   - libXi-devel 
   - libXi-devel-32bit: [x86_64] 
-  - libXi6-32bit: [x86_64] 
   - libXinerama-devel 
   - libXinerama-devel-32bit: [x86_64] 
-  - libXinerama1-32bit: [x86_64] 
   - libXiterm-devel 
   - libXiterm1 
   - libXm4 
@@ -7448,9 +7650,7 @@ unsorted:
   - libXprintUtil1-32bit: [x86_64] 
   - libXrandr-devel 
   - libXrandr-devel-32bit: [x86_64] 
-  - libXrandr2-32bit: [x86_64] 
   - libXrender-devel-32bit: [x86_64] 
-  - libXrender1-32bit: [x86_64] 
   - libXres-devel 
   - libXres-devel-32bit: [x86_64] 
   - libXss-devel 
@@ -7467,7 +7667,9 @@ unsorted:
   - libXvMC-devel-32bit: [x86_64] 
   - libXvMC1-32bit: [x86_64] 
   - libXvMC_nouveau 
+  - libXvMC_nouveau-32bit: [x86_64] 
   - libXvMC_r600 
+  - libXvMC_r600-32bit: [x86_64] 
   - libXvnc-devel 
   - libXxf86dga-devel 
   - libXxf86dga-devel-32bit: [x86_64] 
@@ -7496,11 +7698,11 @@ unsorted:
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
   - libaccounts-glib1-32bit: [x86_64] 
+  - libaccounts-qt5-1-32bit: [x86_64] 
   - libaccounts-qt5-devel 
   - libaccounts-qt5-doc 
   - libacl-devel 
   - libacl-devel-32bit: [x86_64] 
-  - libacl1-32bit: [x86_64] 
   - libacr38ucontrol0 
   - libada7 
   - libada7-32bit: [x86_64] 
@@ -7563,6 +7765,7 @@ unsorted:
   - liballegro_video5_2-devel 
   - libalure1 
   - libalut0 
+  - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libangelscript2_33_0 
   - libansilove-devel 
@@ -7591,7 +7794,7 @@ unsorted:
   - libapr-util1-dbd-pgsql 
   - libapr-util1-dbd-sqlite3 
   - libarchive-devel 
-  - libargon2-1-32bit: [x86_64] 
+  - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
   - libarm_compute16: [x86_64] 
@@ -7625,7 +7828,6 @@ unsorted:
   - libasm1-32bit: [x86_64] 
   - libasn1c-devel 
   - libasn1c1 
-  - libasound2-32bit: [x86_64] 
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
@@ -7640,7 +7842,6 @@ unsorted:
   - libasyncns0 
   - libatasmart-devel 
   - libathemecore1 
-  - libatk-1_0-0-32bit: [x86_64] 
   - libatk-bridge-2_0-0-32bit: [x86_64] 
   - libatkmm-1_6-1-32bit: [x86_64] 
   - libatkmm-2_30-1 
@@ -7703,6 +7904,7 @@ unsorted:
   - libayatana-appindicator3-1 
   - libayatana-appindicator3-devel 
   - libayatana-ido3-0_4-0 
+  - libayatana-ido3-0_4-0-32bit: [x86_64] 
   - libayatana-indicator-devel 
   - libayatana-indicator3-7 
   - libayatana-indicator3-devel 
@@ -7799,7 +8001,6 @@ unsorted:
   - libblitz0 
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
-  - libblkid1-32bit: [x86_64] 
   - libblockdev-devel 
   - libblosc1 
   - libbluetooth3-32bit: [x86_64] 
@@ -7961,7 +8162,6 @@ unsorted:
   - libbuzztrax-ic-devel 
   - libbuzztrax-ic1 
   - libbytesize-devel 
-  - libbz2-1-32bit: [x86_64] 
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
@@ -7980,7 +8180,6 @@ unsorted:
   - libcairo-gobject2-32bit: [x86_64] 
   - libcairo-script-interpreter2 
   - libcairo-script-interpreter2-32bit: [x86_64] 
-  - libcairo2-32bit: [x86_64] 
   - libcairomm-1_0-1-32bit: [x86_64] 
   - libcairomm-1_16-1 
   - libcairomm-1_16-1-32bit: [x86_64] 
@@ -7994,7 +8193,9 @@ unsorted:
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
+  - libcanberra-gtk3-0-32bit: [x86_64] 
   - libcanberra-gtk3-devel 
+  - libcanberra-gtk3-module-32bit: [x86_64] 
   - libcangjie-data 
   - libcangjie-devel 
   - libcangjie-tools 
@@ -8089,6 +8290,7 @@ unsorted:
   - libcinnamon-desktop-devel 
   - libcinnamon-desktop-lang 
   - libcinnamon-desktop4 
+  - libcinnamon-desktop4-32bit: [x86_64] 
   - libcinnamon-menu-3-0 
   - libcinnamon-menu-3-0-32bit: [x86_64] 
   - libcinnamon-menu-3-devel 
@@ -8103,6 +8305,7 @@ unsorted:
   - libck0 
   - libclFFT2: [x86_64] 
   - libclang6 
+  - libclang6-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang8 
@@ -8123,6 +8326,7 @@ unsorted:
   - libclucene-core1-32bit: [x86_64] 
   - libclucene-shared1-32bit: [x86_64] 
   - libclutter-1_0-0-32bit: [x86_64] 
+  - libclutter-gst-3_0-0-32bit: [x86_64] 
   - libclutter-gtk-1_0-0-32bit: [x86_64] 
   - libclzma-suse0 
   - libcmap4-32bit: [x86_64] 
@@ -8148,6 +8352,8 @@ unsorted:
   - libcob4 
   - libcodec2-0_8-32bit: [x86_64] 
   - libcogl-gles2-20 
+  - libcogl-pango20-32bit: [x86_64] 
+  - libcogl20-32bit: [x86_64] 
   - libcollectdclient-devel 
   - libcollectdclient1 
   - libcollection-devel 
@@ -8157,6 +8363,7 @@ unsorted:
   - libcolord-devel 
   - libcolord-gtk-devel 
   - libcolord-gtk1-32bit: [x86_64] 
+  - libcolord2-32bit: [x86_64] 
   - libcom_err-devel-32bit: [x86_64] 
   - libcom_err-devel-static 
   - libcompel1: [x86_64] 
@@ -8208,14 +8415,12 @@ unsorted:
   - libcrossc1-32bit: [x86_64] 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcryptmount0-32bit: [x86_64] 
   - libcrypto45 
   - libcrypto45-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_2_0 
   - libcryptopp8_2_0-32bit: [x86_64] 
   - libcryptsetup-devel 
-  - libcryptsetup12-32bit: [x86_64] 
   - libcryptsetup12-hmac-32bit: [x86_64] 
   - libcryptui-devel 
   - libcrystalhd-devel 
@@ -8259,6 +8464,7 @@ unsorted:
   - libcuneiform-devel 
   - libcuneiform1 
   - libcunit1 
+  - libcupsimage2-32bit: [x86_64] 
   - libcurl-devel 
   - libcurl-devel-32bit: [x86_64] 
   - libcurl-mini-devel 
@@ -8291,7 +8497,6 @@ unsorted:
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
   - libdatrie-devel 
-  - libdatrie1-32bit: [x86_64] 
   - libdav1d3-32bit: [x86_64] 
   - libdavix0 
   - libdazzle-devel 
@@ -8308,7 +8513,6 @@ unsorted:
   - libdbi-drivers-dbd-sqlite3 
   - libdbi3 
   - libdbi3-32bit: [x86_64] 
-  - libdbus-1-3-32bit: [x86_64] 
   - libdbus-c++-1-1 
   - libdbus-c++-1-1-32bit: [x86_64] 
   - libdbus-c++-api-docs 
@@ -8325,16 +8529,17 @@ unsorted:
   - libdbusmenu-gtk4 
   - libdbusmenu-jsonloader-devel 
   - libdbusmenu-jsonloader4 
+  - libdbusmenu-qt5-2-32bit: [x86_64] 
   - libdbusmenu-qt5-devel 
+  - libdbusmenu-qt5-devel-32bit: [x86_64] 
   - libdbusmenu-tools 
+  - libdc1394-25-32bit: [x86_64] 
   - libdc1394-devel 
   - libdc1394-tools 
-  - libdcerpc-binding0-32bit: [x86_64] 
   - libdcerpc-devel 
   - libdcerpc-samr-devel 
   - libdcerpc-samr0 
   - libdcerpc-samr0-32bit: [x86_64] 
-  - libdcerpc0-32bit: [x86_64] 
   - libdcmtk3_6 
   - libdconf1-32bit: [x86_64] 
   - libdd_opentracing0 
@@ -8346,7 +8551,6 @@ unsorted:
   - libdee-1_0-4 
   - libdevil-tools 
   - libdevmapper-event1_03-32bit: [x86_64] 
-  - libdevmapper1_03-32bit: [x86_64] 
   - libdframeworkdbus-devel 
   - libdframeworkdbus2 
   - libdhash-devel 
@@ -8362,7 +8566,9 @@ unsorted:
   - libdiscid0-32bit: [x86_64] 
   - libdjvulibre-devel 
   - libdlm-devel 
+  - libdmapsharing-3_0-2-32bit: [x86_64] 
   - libdmapsharing-4_0-3 
+  - libdmapsharing-4_0-3-32bit: [x86_64] 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
   - libdmmp-devel 
@@ -8382,6 +8588,7 @@ unsorted:
   - libdnnl1: [x86_64] 
   - libdns1311-32bit: [x86_64] 
   - libdns_sd 
+  - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-18_11: [x86_64] 
   - libdrm-devel-32bit: [x86_64] 
@@ -8412,6 +8619,7 @@ unsorted:
   - libdvbpsi7 
   - libdvbpsi7-32bit: [x86_64] 
   - libdvbv5-0 
+  - libdvbv5-0-32bit: [x86_64] 
   - libdvbv5-devel 
   - libdvdnav-devel 
   - libdvdnav4-32bit: [x86_64] 
@@ -8453,6 +8661,7 @@ unsorted:
   - libecholib1_3-devel 
   - libechonest-qt5-devel 
   - libechonest5-2_3 
+  - libechonest5-2_3-32bit: [x86_64] 
   - libecm1 
   - libeconf-devel 
   - libecore1 
@@ -8571,7 +8780,6 @@ unsorted:
   - libexoIIv2for-5_14_0 
   - libexodus-5_14_0 
   - libexpat-devel-32bit: [x86_64] 
-  - libexpat1-32bit: [x86_64] 
   - libexplain-devel 
   - libexplain51 
   - libext2fs-devel-32bit: [x86_64] 
@@ -8591,9 +8799,9 @@ unsorted:
   - libfallocate-devel 
   - libfallocate-devel-static 
   - libfallocate0 
-  - libfam0-gamin-32bit: [x86_64] 
   - libfann-devel 
   - libfann2 
+  - libfarstream-0_2-5-32bit: [x86_64] 
   - libfastjet0 
   - libfastjetcontribfragile 
   - libfastjson-devel 
@@ -8602,6 +8810,7 @@ unsorted:
   - libfbclient2-32bit: [x86_64] 
   - libfcache-devel 
   - libfcache1 
+  - libfcitx-4_2_9-32bit: [x86_64] 
   - libfdata-devel 
   - libfdata1 
   - libfdatetime-devel 
@@ -8618,7 +8827,6 @@ unsorted:
   - libffcall0 
   - libffi-devel 
   - libffi-devel-32bit: [x86_64] 
-  - libffi7-32bit: [x86_64] 
   - libffmpegthumbnailer-devel 
   - libffmpegthumbnailer4 
   - libffms2-4 
@@ -8650,7 +8858,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla2 
+  - libfilezilla3 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -8697,7 +8905,6 @@ unsorted:
   - libfolks-tracker25 
   - libfoma-hfst0 
   - libfoma0 
-  - libfontconfig1-32bit: [x86_64] 
   - libfontenc-devel-32bit: [x86_64] 
   - libfontenc1-32bit: [x86_64] 
   - libfonts-javadoc 
@@ -8707,6 +8914,7 @@ unsorted:
   - libfplll6 
   - libfpm_pb0 
   - libfprint-devel 
+  - libfprint0-32bit: [x86_64] 
   - libframe6 
   - libframe6-32bit: [x86_64] 
   - libfreebl3-32bit: [x86_64] 
@@ -8720,9 +8928,7 @@ unsorted:
   - libfreeimage3 
   - libfreeimageplus3 
   - libfreesrp0 
-  - libfreetype6-32bit: [x86_64] 
   - libfreexl1 
-  - libfribidi0-32bit: [x86_64] 
   - libfrr0 
   - libfrr_pb0 
   - libfrrcares0 
@@ -8787,6 +8993,8 @@ unsorted:
   - libgasnet-1_32_0 
   - libgavl-devel 
   - libgbm-devel 
+  - libgbm-devel-32bit: [x86_64] 
+  - libgbm1-32bit: [x86_64] 
   - libgcalc-1-0_0_0 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
@@ -8800,7 +9008,6 @@ unsorted:
   - libgcrypt-cavs 
   - libgcrypt-devel 
   - libgcrypt-devel-32bit: [x86_64] 
-  - libgcrypt20-32bit: [x86_64] 
   - libgcrypt20-hmac-32bit: [x86_64] 
   - libgd3-32bit: [x86_64] 
   - libgda-5_0-devel 
@@ -8827,7 +9034,6 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
-  - libgdk_pixbuf-2_0-0-32bit: [x86_64] 
   - libgdruntime76 
   - libgdruntime76-32bit: [x86_64] 
   - libgeany0 
@@ -8872,7 +9078,6 @@ unsorted:
   - libgimpui-2_0-0-32bit: [x86_64] 
   - libginac-devel 
   - libginac6 
-  - libgio-2_0-0-32bit: [x86_64] 
   - libgio-fam 
   - libgio-fam-32bit: [x86_64] 
   - libgiomm-2_4-1-32bit: [x86_64] 
@@ -8895,7 +9100,6 @@ unsorted:
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
-  - libglib-2_0-0-32bit: [x86_64] 
   - libglibmm-2_4-1-32bit: [x86_64] 
   - libglibmm-2_62-1 
   - libglibmm-2_62-1-32bit: [x86_64] 
@@ -8903,6 +9107,7 @@ unsorted:
   - libglom-1_32-0 
   - libglom-devel 
   - libgloox17 
+  - libgloox17-32bit: [x86_64] 
   - libglpk40 
   - libglslang-suse9 
   - libgltf-0_1-1 
@@ -8913,7 +9118,6 @@ unsorted:
   - libglue2-32bit: [x86_64] 
   - libglut3 
   - libglut3-32bit: [x86_64] 
-  - libglvnd-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
   - libglyr1-32bit: [x86_64] 
@@ -8924,8 +9128,6 @@ unsorted:
   - libgmime-2_6-0 
   - libgmime-2_6-0-32bit: [x86_64] 
   - libgmime-3_0-0-32bit: [x86_64] 
-  - libgmodule-2_0-0-32bit: [x86_64] 
-  - libgmp10-32bit: [x86_64] 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_5 
   - libgnome-desktop-3-18-32bit: [x86_64] 
@@ -8949,13 +9151,15 @@ unsorted:
   - libgnutls-dane-devel 
   - libgnutls-dane0: [i586] 
   - libgnutls-devel 
+  - libgnutls-devel-32bit: [x86_64] 
   - libgnutlsxx-devel 
   - libgnutlsxx28 
   - libgo11 
   - libgo11-32bit: [x86_64] 
   - libgo14 
   - libgo14-32bit: [x86_64] 
-  - libgobject-2_0-0-32bit: [x86_64] 
+  - libgoa-1_0-0-32bit: [x86_64] 
+  - libgoa-backend-1_0-1-32bit: [x86_64] 
   - libgoffice-0_10-10 
   - libgomp1-32bit: [x86_64] 
   - libgomp1-gcc7 
@@ -8974,14 +9178,15 @@ unsorted:
   - libgpaste11 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit: [x86_64] 
-  - libgpg-error0-32bit: [x86_64] 
   - libgpgme-devel 
   - libgpgme11-32bit: [x86_64] 
   - libgpgmepp-devel 
   - libgpgmepp6-32bit: [x86_64] 
   - libgphobos76 
   - libgphobos76-32bit: [x86_64] 
+  - libgphoto2-6-32bit: [x86_64] 
   - libgphoto2-devel 
+  - libgphoto2-devel-32bit: [x86_64] 
   - libgphoto2-devel-doc 
   - libgphoto2-doc 
   - libgpiod 
@@ -8999,7 +9204,6 @@ unsorted:
   - libgraphblas3 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
-  - libgraphite2-3-32bit: [x86_64] 
   - libgravatar-devel 
   - libgromacs4 
   - libgroove-devel 
@@ -9033,13 +9237,40 @@ unsorted:
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
+  - libgstadaptivedemux-1_0-0-32bit: [x86_64] 
+  - libgstallocators-1_0-0-32bit: [x86_64] 
+  - libgstapp-1_0-0-32bit: [x86_64] 
+  - libgstaudio-1_0-0-32bit: [x86_64] 
+  - libgstbadaudio-1_0-0-32bit: [x86_64] 
+  - libgstbasecamerabinsrc-1_0-0-32bit: [x86_64] 
+  - libgstcodecparsers-1_0-0-32bit: [x86_64] 
+  - libgstfft-1_0-0-32bit: [x86_64] 
+  - libgstgl-1_0-0-32bit: [x86_64] 
   - libgstinsertbin-1_0-0 
+  - libgstinsertbin-1_0-0-32bit: [x86_64] 
+  - libgstisoff-1_0-0-32bit: [x86_64] 
+  - libgstmpegts-1_0-0-32bit: [x86_64] 
+  - libgstpbutils-1_0-0-32bit: [x86_64] 
+  - libgstphotography-1_0-0-32bit: [x86_64] 
   - libgstplayer-1_0-0 
+  - libgstplayer-1_0-0-32bit: [x86_64] 
+  - libgstreamer-1_0-0-32bit: [x86_64] 
   - libgstreamerd-3-0 
   - libgstreamermm-1_0-1 
+  - libgstriff-1_0-0-32bit: [x86_64] 
+  - libgstrtp-1_0-0-32bit: [x86_64] 
+  - libgstrtsp-1_0-0-32bit: [x86_64] 
+  - libgstsctp-1_0-0-32bit: [x86_64] 
+  - libgstsdp-1_0-0-32bit: [x86_64] 
+  - libgsttag-1_0-0-32bit: [x86_64] 
+  - libgsturidownloader-1_0-0-32bit: [x86_64] 
+  - libgstvideo-1_0-0-32bit: [x86_64] 
+  - libgstwayland-1_0-0-32bit: [x86_64] 
+  - libgstwebrtc-1_0-0-32bit: [x86_64] 
   - libgthread-2_0-0-32bit: [x86_64] 
-  - libgtk-2_0-0-32bit: [x86_64] 
+  - libgtk-3-0-32bit: [x86_64] 
   - libgtk-4-0 
+  - libgtk-4-0-32bit: [x86_64] 
   - libgtk-frdp-0_1 
   - libgtk-layer-shell0 
   - libgtkd-3-0 
@@ -9056,6 +9287,7 @@ unsorted:
   - libgtkhtml-editor-4_0-0 
   - libgtkhtml-editor-4_0-0-32bit: [x86_64] 
   - libgtkmm-2_4-1-32bit: [x86_64] 
+  - libgtkmm-3_0-1-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-4_0-0 
@@ -9067,6 +9299,7 @@ unsorted:
   - libgtp6 
   - libgtpnl-devel 
   - libgtpnl0 
+  - libgudev-1_0-0-32bit: [x86_64] 
   - libgudev-1_0-devel 
   - libguess-devel 
   - libguess1-32bit: [x86_64] 
@@ -9125,7 +9358,6 @@ unsorted:
   - libharfbuzz-icu0-32bit: [x86_64] 
   - libharfbuzz-subset0 
   - libharfbuzz-subset0-32bit: [x86_64] 
-  - libharfbuzz0-32bit: [x86_64] 
   - libharminv3 
   - libharu-devel 
   - libhdf4 
@@ -9275,7 +9507,6 @@ unsorted:
   - libhmac-devel 
   - libhmac-tools 
   - libhmac1 
-  - libhogweed5-32bit: [x86_64] 
   - libhowl0 
   - libhpdf2_3_0 
   - libhpx1 
@@ -9333,10 +9564,10 @@ unsorted:
   - libidn-devel 
   - libidn-tools 
   - libidn12-32bit: [x86_64] 
-  - libidn2-0-32bit: [x86_64] 
   - libidn2-devel 
   - libidn2-tools 
   - libido3-0_1-0 
+  - libido3-0_1-0-32bit: [x86_64] 
   - libiec61883-0-32bit: [x86_64] 
   - libiec61883-devel 
   - libiec61883-tools 
@@ -9376,6 +9607,7 @@ unsorted:
   - libinotifytools0 
   - libinput-devel 
   - libinput-tools 
+  - libinput10-32bit: [x86_64] 
   - libinsighttoolkit4 
   - libinstpatch-1_0-1 
   - libinstpatch-1_0-1-32bit: [x86_64] 
@@ -9430,16 +9662,15 @@ unsorted:
   - libjackserver0 
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
-  - libjansson4-32bit: [x86_64] 
   - libjasper-devel 
   - libjasper4 
   - libjasper4-32bit: [x86_64] 
+  - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjaylink 
   - libjaylink-devel 
   - libjaylink0 
   - libjbig-devel 
   - libjbig-devel-32bit: [x86_64] 
-  - libjbig2-32bit: [x86_64] 
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjd0 
@@ -9448,7 +9679,6 @@ unsorted:
   - libjpeg62-32bit: [x86_64] 
   - libjpeg62-devel 
   - libjpeg62-devel-32bit: [x86_64] 
-  - libjpeg8-32bit: [x86_64] 
   - libjpeg8-devel 
   - libjpeg8-devel-32bit: [x86_64] 
   - libjpegxr0 
@@ -9463,13 +9693,13 @@ unsorted:
   - libjsmn0 
   - libjson-c-devel 
   - libjson-c-doc 
-  - libjson-c4-32bit: [x86_64] 
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
   - libkColorPicker0_1_0 
   - libkImageAnnotator0_1_0 
+  - libkaccounts1-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
   - libkate1-32bit: [x86_64] 
@@ -9489,6 +9719,9 @@ unsorted:
   - libkcutil0 
   - libkdcraw-devel 
   - libkdecoration2-devel 
+  - libkdecoration2-devel-32bit: [x86_64] 
+  - libkdecorations2-5-32bit: [x86_64] 
+  - libkdecorations2private6-32bit: [x86_64] 
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdstatemachineeditor_core1_2_7 
@@ -9565,6 +9798,8 @@ unsorted:
   - libksane-devel 
   - libksba-devel 
   - libkscreen2-devel 
+  - libkscreen2-devel-32bit: [x86_64] 
+  - libkscreen2-plugin-32bit: [x86_64] 
   - libksi-devel 
   - libksi1 
   - libksieve-devel 
@@ -9574,6 +9809,7 @@ unsorted:
   - libktpaccountskcminternal9 
   - libkvkontakte-devel 
   - libkvkontakte-lang 
+  - libkwalletbackend5-5-32bit: [x86_64] 
   - libkwnn0 
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
@@ -9586,7 +9822,9 @@ unsorted:
   - liblasem-0_4-4 
   - liblastfm-qt5-devel 
   - liblastfm5-1 
+  - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
+  - liblastfm_fingerprint5-1-32bit: [x86_64] 
   - liblaszip8 
   - liblaszip_api8 
   - liblayout-javadoc 
@@ -9604,7 +9842,6 @@ unsorted:
   - libldac2 
   - libldapcpp-devel 
   - libldb-devel 
-  - libldb2-32bit: [x86_64] 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -9649,7 +9886,10 @@ unsorted:
   - liblinphone9-32bit: [x86_64] 
   - libliquid-devel 
   - liblirc0 
+  - liblirc0-32bit: [x86_64] 
+  - liblirc_client0-32bit: [x86_64] 
   - liblirc_driver0 
+  - liblirc_driver0-32bit: [x86_64] 
   - liblittleb0 
   - liblldb6: [x86_64] 
   - liblldb7: [x86_64] 
@@ -9705,7 +9945,6 @@ unsorted:
   - liblscp6 
   - libltc-devel 
   - libltc11 
-  - libltdl7-32bit: [x86_64] 
   - liblttng-ust-ctl4 
   - liblttng-ust-python-agent0 
   - liblttng-ust0: [i586] 
@@ -9726,7 +9965,6 @@ unsorted:
   - liblxqt0 
   - liblz1 
   - liblz4-devel 
-  - liblzma5-32bit: [x86_64] 
   - liblzo2-2-32bit: [x86_64] 
   - libm17n0-32bit: [x86_64] 
   - libm4ri-0_0_20140914 
@@ -9770,6 +10008,7 @@ unsorted:
   - libmatekbd-devel 
   - libmatekbd-lang 
   - libmatekbd4 
+  - libmatekbd4-32bit: [x86_64] 
   - libmatemixer-devel 
   - libmatemixer-lang 
   - libmatemixer0 
@@ -9777,6 +10016,7 @@ unsorted:
   - libmateweather-devel 
   - libmateweather-lang 
   - libmateweather1 
+  - libmateweather1-32bit: [x86_64] 
   - libmatio-devel 
   - libmatio9 
   - libmatroska-devel 
@@ -9879,6 +10119,7 @@ unsorted:
   - libmodman-devel 
   - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
+  - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
   - libmodulemd-devel 
   - libmodulemd1 
@@ -9901,7 +10142,6 @@ unsorted:
   - libmount-devel 
   - libmount-devel-32bit: [x86_64] 
   - libmount-devel-static 
-  - libmount1-32bit: [x86_64] 
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
@@ -9918,11 +10158,13 @@ unsorted:
   - libmpd1-32bit: [x86_64] 
   - libmpdclient-devel 
   - libmpdclient2 
+  - libmpeg2-0-32bit: [x86_64] 
   - libmpeg2-devel 
   - libmpeg2convert0 
   - libmpeg2encpp-2_0-0-32bit: [x86_64] 
   - libmpfi0 
   - libmpfr6-32bit: [x86_64] 
+  - libmpg123-0-32bit: [x86_64] 
   - libmpir-devel 
   - libmpir23 
   - libmpirxx8 
@@ -10006,12 +10248,8 @@ unsorted:
   - libndpi3 
   - libndr-devel 
   - libndr-krb5pac-devel 
-  - libndr-krb5pac0-32bit: [x86_64] 
   - libndr-nbt-devel 
-  - libndr-nbt0-32bit: [x86_64] 
   - libndr-standard-devel 
-  - libndr-standard0-32bit: [x86_64] 
-  - libndr0-32bit: [x86_64] 
   - libneko2 
   - libnemo-extension1 
   - libneon-devel 
@@ -10020,7 +10258,6 @@ unsorted:
   - libnet-doc 
   - libnet9 
   - libnetapi-devel 
-  - libnetapi0-32bit: [x86_64] 
   - libnetcdf-cxx4-gnu-hpc 
   - libnetcdf-cxx4-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
@@ -10082,7 +10319,6 @@ unsorted:
   - libnetpbm11-32bit: [x86_64] 
   - libnettle-devel 
   - libnettle-devel-32bit: [x86_64] 
-  - libnettle7-32bit: [x86_64] 
   - libnewt0_52-32bit: [x86_64] 
   - libnextcloudsync-devel 
   - libnextcloudsync0 
@@ -10105,6 +10341,7 @@ unsorted:
   - libngspice0 
   - libnice 
   - libnice-devel 
+  - libnice10-32bit: [x86_64] 
   - libnilfs0 
   - libnilfscleaner0 
   - libnilfsgc0 
@@ -10127,7 +10364,6 @@ unsorted:
   - libnova-0_15-0 
   - libnova-devel 
   - libnscd-devel 
-  - libnscd1-32bit: [x86_64] 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
   - libnss_usrfiles2-32bit: [x86_64] 
@@ -10176,7 +10412,6 @@ unsorted:
   - libofx-devel 
   - libofx7 
   - libogg-devel 
-  - libogg0-32bit: [x86_64] 
   - liboggkate1-32bit: [x86_64] 
   - liboggz-devel 
   - liboggz-doc 
@@ -10210,6 +10445,8 @@ unsorted:
   - libopenCOLLADA-utils 
   - libopenEMS0 
   - libopenal0 
+  - libopenal0-32bit: [x86_64] 
+  - libopenal1-32bit: [x86_64] 
   - libopenbabel5-32bit: [x86_64] 
   - libopenblas-gnu-hpc 
   - libopenblas-gnu-hpc-devel 
@@ -10230,6 +10467,7 @@ unsorted:
   - libopencv4_2 
   - libopendkim10 
   - libopenhpi4 
+  - libopenjp2-7-32bit: [x86_64] 
   - libopenjpeg1 
   - libopenjpeg1-32bit: [x86_64] 
   - libopenlibm2 
@@ -10240,7 +10478,9 @@ unsorted:
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_4-gnu-hpc 
   - libopenmpt-devel 
+  - libopenmpt0-32bit: [x86_64] 
   - libopenmpt_modplug1 
+  - libopenmpt_modplug1-32bit: [x86_64] 
   - libopenobex2 
   - libopenraw-devel 
   - libopenraw1-32bit: [x86_64] 
@@ -10367,6 +10607,7 @@ unsorted:
   - libotr-devel 
   - libotr-tools 
   - libout123-0 
+  - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
   - libowncloudsync-devel 
   - libowncloudsync0 
@@ -10393,7 +10634,6 @@ unsorted:
   - libpamtest-devel 
   - libpamtest-devel-doc 
   - libpamtest0 
-  - libpango-1_0-0-32bit: [x86_64] 
   - libpangomm-1_4-1-32bit: [x86_64] 
   - libpangomm-2_44-1 
   - libpangomm-2_44-1-32bit: [x86_64] 
@@ -10492,6 +10732,7 @@ unsorted:
   - libphobos2-ldc86 
   - libphodav-2_0-0 
   - libphonenumber-devel 
+  - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
   - libphysfs1 
   - libpinyin-devel 
@@ -10501,7 +10742,6 @@ unsorted:
   - libpisock-devel 
   - libpisync-devel 
   - libpisync1 
-  - libpixman-1-0-32bit: [x86_64] 
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
@@ -10544,7 +10784,6 @@ unsorted:
   - libpng12-compat-devel-32bit: [x86_64] 
   - libpng12-devel 
   - libpng12-devel-32bit: [x86_64] 
-  - libpng16-16-32bit: [x86_64] 
   - libpng16-compat-devel 
   - libpng16-compat-devel-32bit: [x86_64] 
   - libpng16-devel 
@@ -10554,14 +10793,16 @@ unsorted:
   - libpocketsphinx1 
   - libpocl2 
   - libpodofo-devel 
+  - libpolkit-qt5-1-1-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
+  - libpolkit-qt5-1-devel-32bit: [x86_64] 
+  - libpolkit0-32bit: [x86_64] 
   - libpoppler-cpp0-32bit: [x86_64] 
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-devel 
   - libpoppler94-32bit: [x86_64] 
-  - libpopt0-32bit: [x86_64] 
   - libportal-devel 
   - libportal0 
   - libportaudio2-32bit: [x86_64] 
@@ -10662,7 +10903,10 @@ unsorted:
   - libqb-tests 
   - libqb-tools 
   - libqb20-32bit: [x86_64] 
+  - libqca-qt5-32bit: [x86_64] 
   - libqca-qt5-devel 
+  - libqca-qt5-devel-32bit: [x86_64] 
+  - libqca-qt5-plugins-32bit: [x86_64] 
   - libqcow-devel 
   - libqcow-tools 
   - libqcow1 
@@ -10680,6 +10924,7 @@ unsorted:
   - libqmmp-devel 
   - libqmmp-plugins 
   - libqmmp1 
+  - libqmmp1-32bit: [x86_64] 
   - libqoauth2 
   - libqobs-devel 
   - libqobs1 
@@ -10704,6 +10949,7 @@ unsorted:
   - libqt5-qtbase-common-devel 
   - libqt5-qtbase-devel 
   - libqt5-qtbase-examples 
+  - libqt5-qtbase-examples-32bit: [x86_64] 
   - libqt5-qtbase-platformtheme-xdgdesktopportal 
   - libqt5-qtbase-private-headers-devel 
   - libqt5-qtcanvas3d 
@@ -10717,6 +10963,7 @@ unsorted:
   - libqt5-qtdatavis3d-examples 
   - libqt5-qtdatavis3d-imports 
   - libqt5-qtdeclarative-devel 
+  - libqt5-qtdeclarative-devel-32bit: [x86_64] 
   - libqt5-qtdeclarative-examples 
   - libqt5-qtdeclarative-private-headers-devel 
   - libqt5-qtdeclarative-tools 
@@ -10731,6 +10978,7 @@ unsorted:
   - libqt5-qtimageformats-32bit: [x86_64] 
   - libqt5-qtimageformats-devel 
   - libqt5-qtlocation-devel 
+  - libqt5-qtlocation-devel-32bit: [x86_64] 
   - libqt5-qtlocation-examples 
   - libqt5-qtlocation-private-headers-devel 
   - libqt5-qtlottie 
@@ -10752,6 +11000,7 @@ unsorted:
   - libqt5-qtremoteobjects-private-headers-devel 
   - libqt5-qtremoteobjects-tools 
   - libqt5-qtscript-devel 
+  - libqt5-qtscript-devel-32bit: [x86_64] 
   - libqt5-qtscript-examples 
   - libqt5-qtscript-private-headers-devel 
   - libqt5-qtscxml-devel 
@@ -10784,7 +11033,9 @@ unsorted:
   - libqt5-qtsvg-examples 
   - libqt5-qtsvg-private-headers-devel 
   - libqt5-qttools 
+  - libqt5-qttools-32bit: [x86_64] 
   - libqt5-qttools-devel 
+  - libqt5-qttools-devel-32bit: [x86_64] 
   - libqt5-qttools-doc 
   - libqt5-qttools-example-plugins 
   - libqt5-qttools-examples 
@@ -10820,6 +11071,7 @@ unsorted:
   - libqt5-qtxmlpatterns-imports-32bit: [x86_64] 
   - libqt5-qtxmlpatterns-private-headers-devel 
   - libqt5keychain1 
+  - libqt5keychain1-32bit: [x86_64] 
   - libqt5keychain1-lang 
   - libqt5xdg-devel 
   - libqtcurve-cairo1 
@@ -10850,6 +11102,7 @@ unsorted:
   - libqxmpp-devel 
   - libqxmpp-doc 
   - libqxmpp2 
+  - libqxmpp2-32bit: [x86_64] 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -10900,6 +11153,10 @@ unsorted:
   - libreadline6 
   - libreadline6-32bit: [x86_64] 
   - libreadline8-32bit: [x86_64] 
+  - librealsense 
+  - librealsense-devel 
+  - librealsense-examples 
+  - librealsense2 
   - librecad 
   - librecad-parts 
   - librecode0 
@@ -11102,20 +11359,14 @@ unsorted:
   - libsam4 
   - libsam4-32bit: [x86_64] 
   - libsamba-credentials-devel 
-  - libsamba-credentials0-32bit: [x86_64] 
   - libsamba-errors-devel 
-  - libsamba-errors0-32bit: [x86_64] 
   - libsamba-hostconfig-devel 
-  - libsamba-hostconfig0-32bit: [x86_64] 
   - libsamba-passdb-devel 
-  - libsamba-passdb0-32bit: [x86_64] 
   - libsamba-policy-devel 
   - libsamba-policy-python3-devel 
   - libsamba-policy0-python3-32bit: [x86_64] 
   - libsamba-util-devel 
-  - libsamba-util0-32bit: [x86_64] 
   - libsamdb-devel 
-  - libsamdb0-32bit: [x86_64] 
   - libsaml-devel 
   - libsaml10 
   - libsamplerate-devel 
@@ -11210,6 +11461,7 @@ unsorted:
   - libserialport-devel 
   - libserialport0 
   - libsfml2-2_5 
+  - libsfml2-2_5-32bit: [x86_64] 
   - libsfst-hfst0 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
@@ -11235,6 +11487,7 @@ unsorted:
   - libsignal-protocol-c2 
   - libsignon-glib-devel 
   - libsignon-glib2 
+  - libsignon-qt5-1-32bit: [x86_64] 
   - libsignon-qt5-devel 
   - libsignon-qt5-docs 
   - libsigrok-data 
@@ -11262,10 +11515,8 @@ unsorted:
   - libsmbclient-devel 
   - libsmbclient0-32bit: [x86_64] 
   - libsmbconf-devel 
-  - libsmbconf0-32bit: [x86_64] 
   - libsmbios-devel 
   - libsmbldap-devel 
-  - libsmbldap2-32bit: [x86_64] 
   - libsmdev-devel 
   - libsmdev-tools 
   - libsmdev1 
@@ -11490,11 +11741,11 @@ unsorted:
   - libtaginfo1 
   - libtaginfo1-32bit: [x86_64] 
   - libtalloc-devel 
-  - libtalloc2-32bit: [x86_64] 
   - libtar 
   - libtar-devel 
   - libtar1 
   - libtasn1-devel 
+  - libtasn1-devel-32bit: [x86_64] 
   - libtbb2 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -11502,7 +11753,6 @@ unsorted:
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
   - libtdb-devel 
-  - libtdb1-32bit: [x86_64] 
   - libtdsodbc0 
   - libteam-devel 
   - libteam-tools 
@@ -11510,11 +11760,15 @@ unsorted:
   - libtecla_r1 
   - libteec1 
   - libtelepathy-farstream3 
+  - libtelepathy-farstream3-32bit: [x86_64] 
   - libtelepathy-glib0-32bit: [x86_64] 
   - libtelepathy-logger-qt5 
   - libtelepathy-qt5-0 
+  - libtelepathy-qt5-0-32bit: [x86_64] 
   - libtelepathy-qt5-farstream0 
+  - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service0 
+  - libtelepathy-qt5-service0-32bit: [x86_64] 
   - libtepl-4-0 
   - libteredo5 
   - libtermkey-devel 
@@ -11523,14 +11777,11 @@ unsorted:
   - libtestshade1_10 
   - libtevent-devel 
   - libtevent-util-devel 
-  - libtevent-util0-32bit: [x86_64] 
-  - libtevent0-32bit: [x86_64] 
   - libtexlua53-5 
   - libtexluajit2 
   - libtextstyle-devel 
   - libtextstyle0-32bit: [x86_64] 
   - libthai-devel 
-  - libthai0-32bit: [x86_64] 
   - libtheora-devel 
   - libtheora0-32bit: [x86_64] 
   - libtheoradec1-32bit: [x86_64] 
@@ -11545,7 +11796,6 @@ unsorted:
   - libtidyp-devel 
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
-  - libtiff5-32bit: [x86_64] 
   - libtiger-devel 
   - libtiger5 
   - libtiled1 
@@ -11652,6 +11902,7 @@ unsorted:
   - libucs0: [x86_64] 
   - libuct-devel: [x86_64] 
   - libuct0: [x86_64] 
+  - libudev-devel-32bit: [x86_64] 
   - libudev-mini-devel 
   - libudev-mini1 
   - libudf0 
@@ -11681,14 +11932,16 @@ unsorted:
   - libunibreak3 
   - libunicap-devel 
   - libunicap2 
+  - libunicap2-32bit: [x86_64] 
   - libuninameslist-devel 
   - libuninameslist0 
   - libunique1-devel 
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
-  - libunistring2-32bit: [x86_64] 
   - libunity-devel 
   - libunity-gtk-parser-devel 
+  - libunity-gtk2-parser0-32bit: [x86_64] 
+  - libunity-gtk3-parser0-32bit: [x86_64] 
   - libunity-tools 
   - libunity9 
   - libunity9-32bit: [x86_64] 
@@ -11708,7 +11961,10 @@ unsorted:
   - liburing1 
   - liburiparser1 
   - liburiparser1-32bit: [x86_64] 
+  - libusb-0_1-4-32bit: [x86_64] 
+  - libusb-1_0-0-32bit: [x86_64] 
   - libusb-1_0-devel 
+  - libusb-1_0-devel-32bit: [x86_64] 
   - libusb-compat-devel 
   - libusb3380-0 
   - libusb3380-devel 
@@ -11735,13 +11991,18 @@ unsorted:
   - libutempter0-32bit: [x86_64] 
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
-  - libuuid1-32bit: [x86_64] 
   - libuv-devel 
   - libuwac0-0 
   - libv3270-5_2 
   - libv3270-devel 
+  - libv4l-32bit: [x86_64] 
   - libv4l-devel 
+  - libv4l-devel-32bit: [x86_64] 
+  - libv4l1-0-32bit: [x86_64] 
+  - libv4l2-0-32bit: [x86_64] 
   - libv4l2rds0 
+  - libv4l2rds0-32bit: [x86_64] 
+  - libv4lconvert0-32bit: [x86_64] 
   - libva-devel 
   - libva-devel-32bit: [x86_64] 
   - libva-drm2-32bit: [x86_64] 
@@ -11775,6 +12036,10 @@ unsorted:
   - libvdpau-devel 
   - libvdpau-devel-32bit: [x86_64] 
   - libvdpau1-32bit: [x86_64] 
+  - libvdpau_nouveau-32bit: [x86_64] 
+  - libvdpau_r300-32bit: [x86_64] 
+  - libvdpau_r600-32bit: [x86_64] 
+  - libvdpau_radeonsi-32bit: [x86_64] 
   - libvdpau_trace1 
   - libvdpau_trace1-32bit: [x86_64] 
   - libvdpau_va_gl1-32bit: [x86_64] 
@@ -11811,6 +12076,7 @@ unsorted:
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc: [i586] 
   - libvirt-devel 
+  - libvirt-devel-32bit: [x86_64] 
   - libvirt-doc 
   - libvirt-glib-devel 
   - libvirt-lock-sanlock 
@@ -11849,9 +12115,7 @@ unsorted:
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
-  - libvorbis0-32bit: [x86_64] 
   - libvorbisenc2-32bit: [x86_64] 
-  - libvorbisfile3-32bit: [x86_64] 
   - libvoro++0 
   - libvotca_csg5 
   - libvotca_ctp5 
@@ -11882,8 +12146,12 @@ unsorted:
   - libvtk1-openmpi2 
   - libvtk1-openmpi3 
   - libvulkan1 
+  - libvulkan1-32bit: [x86_64] 
+  - libvulkan_intel-32bit: [x86_64] 
+  - libvulkan_radeon-32bit: [x86_64] 
   - libwacom-devel 
   - libwacom-tools 
+  - libwacom2-32bit: [x86_64] 
   - libwaffle-1-0 
   - libwapcaplet-devel 
   - libwapcaplet0 
@@ -11894,12 +12162,12 @@ unsorted:
   - libwayland-server0-32bit: [x86_64] 
   - libwaylandpp0 
   - libwbclient-devel 
-  - libwbclient0-32bit: [x86_64] 
   - libwbxml2-1 
   - libwbxml2-devel 
   - libwcs6 
   - libwebcam-devel 
   - libwebcam0 
+  - libwebkit2gtk-4_0-37-32bit: [x86_64] 
   - libwebp-devel 
   - libwebp-devel-32bit: [x86_64] 
   - libwebp-tools 
@@ -11964,30 +12232,45 @@ unsorted:
   - libwtdbopostgres4_2_0 
   - libwv-1_2-4 
   - libwv2-4 
+  - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
+  - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_net-suse3_1_3 
+  - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_xml-suse3_1_3 
+  - libwx_gtk2u_adv-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_adv-suse3_1_3 
   - libwx_gtk2u_aui-suse-nostl3_0_4 
+  - libwx_gtk2u_aui-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_aui-suse3_1_3 
+  - libwx_gtk2u_core-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_core-suse3_1_3 
   - libwx_gtk2u_gl-suse-nostl3_0_4 
+  - libwx_gtk2u_gl-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_gl-suse3_1_3 
+  - libwx_gtk2u_html-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_html-suse3_1_3 
   - libwx_gtk2u_media-suse-nostl3_0_4 
+  - libwx_gtk2u_media-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_media-suse3_1_3 
   - libwx_gtk2u_propgrid-suse-nostl3_0_4 
+  - libwx_gtk2u_propgrid-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_propgrid-suse3_1_3 
   - libwx_gtk2u_qa-suse3_0_4 
+  - libwx_gtk2u_qa-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_qa-suse3_1_3 
   - libwx_gtk2u_ribbon-suse-nostl3_0_4 
   - libwx_gtk2u_ribbon-suse3_0_4 
+  - libwx_gtk2u_ribbon-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_ribbon-suse3_1_3 
   - libwx_gtk2u_richtext-suse-nostl3_0_4 
+  - libwx_gtk2u_richtext-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_richtext-suse3_1_3 
   - libwx_gtk2u_stc-suse-nostl3_0_4 
+  - libwx_gtk2u_stc-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_stc-suse3_1_3 
   - libwx_gtk2u_xrc-suse-nostl3_0_4 
+  - libwx_gtk2u_xrc-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_xrc-suse3_1_3 
   - libwx_gtk3u_adv-suse3_1_3 
   - libwx_gtk3u_aui-suse3_1_3 
@@ -12058,11 +12341,9 @@ unsorted:
   - libxcb-randr0-32bit: [x86_64] 
   - libxcb-record0-32bit: [x86_64] 
   - libxcb-render-util0-32bit: [x86_64] 
-  - libxcb-render0-32bit: [x86_64] 
   - libxcb-res0-32bit: [x86_64] 
   - libxcb-screensaver0-32bit: [x86_64] 
   - libxcb-shape0-32bit: [x86_64] 
-  - libxcb-shm0-32bit: [x86_64] 
   - libxcb-sync1-32bit: [x86_64] 
   - libxcb-util1-32bit: [x86_64] 
   - libxcb-xf86dri0-32bit: [x86_64] 
@@ -12074,7 +12355,6 @@ unsorted:
   - libxcb-xtest0-32bit: [x86_64] 
   - libxcb-xv0-32bit: [x86_64] 
   - libxcb-xvmc0-32bit: [x86_64] 
-  - libxcb1-32bit: [x86_64] 
   - libxclass-0_9_2 
   - libxcrypt-devel-32bit: [x86_64] 
   - libxcrypt-devel-static 
@@ -12122,7 +12402,6 @@ unsorted:
   - libxml++26-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
-  - libxml2-2-32bit: [x86_64] 
   - libxml2-devel-32bit: [x86_64] 
   - libxml2-doc 
   - libxmlb-devel 
@@ -12153,7 +12432,9 @@ unsorted:
   - libxmp4 
   - libxosd2 
   - libxplayer-plparser-mini18 
+  - libxplayer-plparser-mini18-32bit: [x86_64] 
   - libxplayer-plparser18 
+  - libxplayer-plparser18-32bit: [x86_64] 
   - libxshmfence-devel 
   - libxshmfence1-32bit: [x86_64] 
   - libxslt-devel 
@@ -12227,8 +12508,10 @@ unsorted:
   - libz3-4_8 
   - libzapojit-devel 
   - libzbar-devel 
+  - libzbar0-32bit: [x86_64] 
   - libzbarqt-devel 
   - libzbarqt0 
+  - libzbarqt0-32bit: [x86_64] 
   - libzbc-5_8_4 
   - libzbc-devel 
   - libzbc-gui 
@@ -12393,7 +12676,9 @@ unsorted:
   - llvm-vim-plugins 
   - llvm6 
   - llvm6-LTO-devel 
+  - llvm6-LTO-devel-32bit: [x86_64] 
   - llvm6-devel 
+  - llvm6-devel-32bit: [x86_64] 
   - llvm6-emacs-plugins 
   - llvm6-gold 
   - llvm6-opt-viewer 
@@ -12614,6 +12899,7 @@ unsorted:
   - lunar-date-devel 
   - lunar-date-doc 
   - lunar-date-lang 
+  - lutris 
   - luvcview 
   - lv2 
   - lv2-devel 
@@ -13529,9 +13815,15 @@ unsorted:
   - mpfr-devel-32bit: [x86_64] 
   - mpg123 
   - mpg123-devel 
+  - mpg123-devel-32bit: [x86_64] 
   - mpg123-jack 
+  - mpg123-jack-32bit: [x86_64] 
+  - mpg123-openal-32bit: [x86_64] 
   - mpg123-portaudio 
+  - mpg123-portaudio-32bit: [x86_64] 
+  - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
+  - mpg123-sdl-32bit: [x86_64] 
   - mpi-selector 
   - mpiP-gnu-mpich-hpc 
   - mpiP-gnu-mpich-hpc-doc 
@@ -14458,7 +14750,9 @@ unsorted:
   - nsjail: [x86_64] 
   - nsnake 
   - nss-myhostname 
+  - nss-myhostname-32bit: [x86_64] 
   - nss-mymachines 
+  - nss-mymachines-32bit: [x86_64] 
   - nss-pam-ldapd 
   - nss-pam-ldapd-32bit: [x86_64] 
   - nss-resolve 
@@ -14540,6 +14834,8 @@ unsorted:
   - ocaml-benchmark 
   - ocaml-benchmark-devel 
   - ocaml-brlapi 
+  - ocaml-cairo 
+  - ocaml-cairo-devel 
   - ocaml-calendar 
   - ocaml-calendar-devel 
   - ocaml-camlp4 
@@ -14587,6 +14883,8 @@ unsorted:
   - ocaml-lablgl-devel 
   - ocaml-lablgtk2 
   - ocaml-lablgtk2-devel 
+  - ocaml-lablgtk3 
+  - ocaml-lablgtk3-devel 
   - ocaml-labltk 
   - ocaml-labltk-devel 
   - ocaml-libguestfs: [x86_64] 
@@ -14889,6 +15187,7 @@ unsorted:
   - openafs-kernel-source 
   - openafs-server 
   - openal-soft-devel 
+  - openal-soft-devel-32bit: [x86_64] 
   - openal-soft-makemhr 
   - openal-soft-tools 
   - openarena: [x86_64] 
@@ -15239,14 +15538,17 @@ unsorted:
   - oxygen5-icon-theme-scalable 
   - oxygen5-lang 
   - oxygen5-style 
+  - oxygen5-style-32bit: [x86_64] 
   - oyranos 
   - oyranos-monitor 
   - oyranos-profile-graph 
   - oyranos-qcmsevents 
   - oyranos-ui-fltk 
   - p0f 
+  - p11-kit-32bit: [x86_64] 
   - p11-kit-devel 
   - p11-kit-nss-trust 
+  - p11-kit-nss-trust-32bit: [x86_64] 
   - p11-kit-server 
   - p7zip-doc 
   - p8-platform-devel 
@@ -15305,7 +15607,6 @@ unsorted:
   - pam_kwallet-common 
   - pam_mktemp 
   - pam_mktemp-32bit: [x86_64] 
-  - pam_mount-32bit: [x86_64] 
   - pam_oath 
   - pam_p11 
   - pam_p11-32bit: [x86_64] 
@@ -16679,6 +16980,7 @@ unsorted:
   - phonon4qt5-backend-vlc 
   - phonon4qt5-backend-vlc-lang 
   - phonon4qt5-devel 
+  - phonon4qt5-devel-32bit: [x86_64] 
   - phoronix-test-suite 
   - photoqt 
   - photorec 
@@ -16802,7 +17104,10 @@ unsorted:
   - plasma-applet-weather-widget-lang 
   - plasma-browser-integration: [i586] 
   - plasma-browser-integration-lang: [i586] 
+  - plasma-framework-32bit: [x86_64] 
+  - plasma-framework-components-32bit: [x86_64] 
   - plasma-framework-devel 
+  - plasma-framework-devel-32bit: [x86_64] 
   - plasma-mycroft 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -17122,6 +17427,7 @@ unsorted:
   - primus-32bit: [x86_64] 
   - printer-driver-brlaser 
   - prison-qt5-devel 
+  - prison-qt5-devel-32bit: [x86_64] 
   - privoxy-doc 
   - procdump 
   - procmeter 
@@ -17277,7 +17583,9 @@ unsorted:
   - pumpa 
   - pure-ftpd 
   - purge-kernels-service 
+  - purpose-32bit: [x86_64] 
   - purpose-devel 
+  - purpose-devel-32bit: [x86_64] 
   - putty 
   - pv 
   - pw3270 
@@ -17295,6 +17603,7 @@ unsorted:
   - pyspacewar 
   - pythia-devel 
   - pythia-doc 
+  - python-32bit: [x86_64] 
   - python-Babel-doc 
   - python-Cheetah 
   - python-Genshi-doc 
@@ -19592,7 +19901,6 @@ unsorted:
   - python2-test-server 
   - python2-testfixtures 
   - python2-testflo 
-  - python2-testinfra 
   - python2-testpath 
   - python2-testrepository 
   - python2-testresources 
@@ -19733,7 +20041,6 @@ unsorted:
   - python2-whatthepatch 
   - python2-wheel 
   - python2-whichcraft 
-  - python2-whitenoise 
   - python2-wikipedia 
   - python2-wiring 
   - python2-wolframalpha 
@@ -23767,17 +24074,16 @@ unsorted:
   - samba-ad-dc 
   - samba-ad-dc-32bit: [x86_64] 
   - samba-ceph: [x86_64] 
-  - samba-client-32bit: [x86_64] 
   - samba-core-devel 
   - samba-doc 
   - samba-dsdb-modules 
   - samba-krb-printing 
-  - samba-libs-32bit: [x86_64] 
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
-  - samba-winbind-32bit: [x86_64] 
   - samplicator 
+  - sane-backends-32bit: [x86_64] 
   - sane-backends-devel 
+  - sane-backends-devel-32bit: [x86_64] 
   - sanlk-reset 
   - sanlock 
   - sanlock-devel 
@@ -23917,6 +24223,7 @@ unsorted:
   - scilab-modules-doc-lang: [x86_64] 
   - scilab-tests: [x86_64] 
   - scim 
+  - scim-32bit: [x86_64] 
   - scim-anthy 
   - scim-bridge 
   - scim-bridge-gtk2 
@@ -23925,7 +24232,9 @@ unsorted:
   - scim-chewing 
   - scim-devel 
   - scim-gtk 
+  - scim-gtk-32bit: [x86_64] 
   - scim-gtk3 
+  - scim-gtk3-32bit: [x86_64] 
   - scim-hangul 
   - scim-input-pad 
   - scim-lang 
@@ -24058,9 +24367,11 @@ unsorted:
   - signify 
   - signing-party 
   - signon-plugin-oauth2-devel 
+  - signon-plugins-32bit: [x86_64] 
   - signon-plugins-devel 
   - signon-plugins-docs 
   - signond-docs 
+  - signond-libs-32bit: [x86_64] 
   - signond-libs-devel 
   - signpost-commonshttp4 
   - signpost-core 
@@ -24253,12 +24564,14 @@ unsorted:
   - solarwolf_we 
   - solfege 
   - solid-devel 
+  - solid-devel-32bit: [x86_64] 
   - solo-udev 
   - something-for-reddit 
   - sonatype-oss-parent 
   - sonatype-plugins-parent 
   - sonic-visualiser 
   - sonnet-devel 
+  - sonnet-devel-32bit: [x86_64] 
   - sonobuoy 
   - sopwith 
   - sord 
@@ -24570,6 +24883,7 @@ unsorted:
   - synergy 
   - synnefo 
   - syntax-highlighting-devel 
+  - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
   - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
@@ -24709,6 +25023,7 @@ unsorted:
   - telepathy-logger-qt5-devel 
   - telepathy-mission-control-devel 
   - telepathy-qt5-devel 
+  - telepathy-qt5-devel-32bit: [x86_64] 
   - telepathy-rakia 
   - telepathy-rakia-devel 
   - telepathy-sipe 
@@ -32117,6 +32432,7 @@ unsorted:
   - thessalonica-tempora-lgc-ttf-fonts 
   - thessalonica-theano-ttf-fonts 
   - threadweaver-devel 
+  - threadweaver-devel-32bit: [x86_64] 
   - thrift 
   - thttpd 
   - thunar-devel 
@@ -33111,12 +33427,16 @@ unsorted:
   - wimlib-devel 
   - wimtools 
   - wine 
+  - wine-32bit: [x86_64] 
   - wine-devel 
+  - wine-devel-32bit: [x86_64] 
   - wine-gecko 
   - wine-nine-standalone 
   - wine-nine-standalone-32bit: [x86_64] 
   - wine-staging 
+  - wine-staging-32bit: [x86_64] 
   - wine-staging-devel 
+  - wine-staging-devel-32bit: [x86_64] 
   - winetricks 
   - winpr2-devel 
   - winrs 
@@ -33177,9 +33497,11 @@ unsorted:
   - wxMaxima 
   - wxQt-3_2-devel 
   - wxWidgets-3_0-devel 
+  - wxWidgets-3_0-devel-32bit: [x86_64] 
   - wxWidgets-3_0-docs 
   - wxWidgets-3_0-nostl-devel 
   - wxWidgets-3_0-plugin-sound_sdlu-3_0 
+  - wxWidgets-3_0-plugin-sound_sdlu-3_0-32bit: [x86_64] 
   - wxWidgets-3_2-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
   - wxWidgets-docs 
