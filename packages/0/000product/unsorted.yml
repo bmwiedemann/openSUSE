@@ -6356,6 +6356,7 @@ unsorted:
   - kdevelop5-plugin-python3-lang 
   - kdevplatform-devel 
   - kdewebkit-devel 
+  - kdewebkit-devel-32bit: [x86_64] 
   - kdgantt2 
   - kdgantt2-devel 
   - kdiagram-devel 
@@ -7230,6 +7231,7 @@ unsorted:
   - libKF5Vkontakte2 
   - libKF5Wallet5-32bit: [x86_64] 
   - libKF5WebKit5 
+  - libKF5WebKit5-32bit: [x86_64] 
   - libKF5WidgetsAddons5-32bit: [x86_64] 
   - libKF5WindowSystem5-32bit: [x86_64] 
   - libKF5XmlGui5-32bit: [x86_64] 
@@ -9803,7 +9805,9 @@ unsorted:
   - libksi-devel 
   - libksi1 
   - libksieve-devel 
+  - libksysguard5-32bit: [x86_64] 
   - libksysguard5-devel 
+  - libksysguard5-devel-32bit: [x86_64] 
   - libktoblzcheck1 
   - libktorrent-devel 
   - libktpaccountskcminternal9 
@@ -11053,7 +11057,9 @@ unsorted:
   - libqt5-qtwebchannel-devel-32bit: [x86_64] 
   - libqt5-qtwebchannel-examples 
   - libqt5-qtwebchannel-private-headers-devel 
+  - libqt5-qtwebengine-32bit: [x86_64] 
   - libqt5-qtwebengine-devel 
+  - libqt5-qtwebengine-devel-32bit: [x86_64] 
   - libqt5-qtwebengine-examples 
   - libqt5-qtwebengine-private-headers-devel 
   - libqt5-qtwebsockets-devel 
@@ -17127,6 +17133,7 @@ unsorted:
   - plasma5-sdk 
   - plasma5-sdk-lang 
   - plasma5-workspace-devel 
+  - plasma5-workspace-libs-32bit: [x86_64] 
   - plasma5-workspace-wallpapers 
   - plasmaengineexplorer5 
   - plater 
