@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/mgba.git</param>
+              <param name="changesrevision">0f797cc097f29f8bd38518562a372e4b6d1b2224</param></service></servicedata>

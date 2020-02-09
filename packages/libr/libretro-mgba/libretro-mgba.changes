@@ -1,0 +1,446 @@
+-------------------------------------------------------------------
+Fri Feb 07 15:07:23 UTC 2020 - i@guoyunhe.me
+
+- Remove mgba.libretro which is provided in libretro-core-info package
+- Update to version 0~git20200206:
+  * Add 'fast' variants of interframe blending methods
+  * Add optional interframe blending
+  * Libretro: Add Italian core options translation
+  * Travis: Fix osx deps
+  * GB Serialize: Fix timing bug loading channel 4 timing
+  * Qt: Fix non-SDL build (fixes #1656)
+  * Switch: Make OpenGL scale adjustable while running
+  * Util: Fix crash reading invalid ELFs
+  * Core: Fix race condition initializing thread proxy
+  * Minor jni build file tweaks
+  * Libretro: Reduce distance to fork
+  * Libretro: Fix PS2 nonsense
+  * Libretro: Fix build
+  * Fix Haiku build
+  * (tvOS) support building
+  * Update 'libretro_core_options.h' to v1.3 format
+  * Turkish Language Support
+  * Clean up core options
+  * Add missing file
+  * Update core options
+  * bump libretro version to match upstream v0.8
+  * Tupfile for super-repositories
+  * Fix libretro cmake support
+  * Add libretro jni build scripts
+  * Fix crash when changing options in GB/GBC emulation modes
+  * Fix building in debug mode
+  * Add optional colour correction
+  * Cleanup
+  * Revert "Merge remote-tracking branch 'upstream/0.7'"
+  * Fix merge conflicts & Bump to 0.7.1
+  * Update libretro.c
+  * Revert "attempt to fix audio crackles"
+  * attempt to fix audio crackles
+  * 3DS: Re-enable LTO
+  * 3DS: Ensure core 2 can be used for threaded renderer (fixes #1371)
+  * Vita: Improved frame drawing speed
+  * GB Timer: Fix timing adjustments when writing to TAC (fixes #1340)
+  * Qt: Fix crash in sprite viewer magnification (fixes #1362)
+  * CMake: Fix .deb imagemagick dependencies
+  * CMake: Add missing link directories (fixes #1358)
+  * Qt: Fix saved scale not getting set on resize (fixes #1074)
+  * Qt: Fix overrides getting discarded (fixes #1354)
+  * GB Video: Fix more window edge cases (fixes #1346)
+  * GB Video: Fix window y changing mid-window (fixes #1345)
+  * GBA DMA: Fix DMA0-2 lengths (fixes #1344)
+  * GBA Video: Fix scanline cache with scale factor change edge cases
+  * Qt: Support switching webcams
+  * Qt: Improve camera initialization
+  * LR35902: Fix disassembly of several CB-prefix instructions
+  * add -DHAVE_LOCALE to aarch64 makefile (#138)
+  * Add PS2 support
+  * GB I/O: Alternate fix for #1329 that doesn't break tests
+  * GB I/O: Filter IE top bits properly (fixes #1329)
+  * GB Video: Delay LYC STAT check (fixes #1331)
+  * added a8a35
+  * Qt: Fix load recent from archive (fixes #1325)
+  * libnx: port gyro orientation fix
+  * Qt: Minor about screen fixes
+  * Qt: Update static build info
+  * Qt: Fix build on macOS
+  * Qt: Add missing HEVC NVENC option (fixes #1323)
+  * Qt: More app metadata fixes
+  * All: Bump version
+  * CHANGES: Update for 0.7.1
+  * Res: Update patrons for February
+  * PSP2: Fix file descriptors dying on suspend (fixes #1123)
+  * GBA DMA: Fix invalid DMA handling (fixes #1301)
+  * Qt: Updated Italian translation (by Vecna)
+  * 3DS: Work around menu freezing (fixes #1294)
+  * GBA: Fix video timing when skipping BIOS (fixes #1318)
+  * Qt: Fix quick load recent accidentally saving (fixes #1309)
+  * GBA Video: Fix enabling layers in non-tile modes (fixes #1317)
+  * GB, GBA Serialize: Fix loading two states in a row
+  * Qt: Fix window icon on X11
+  * GBA DMA: Fix DMA start/end timing
+  * GBA DMA: Fix Display Start DMAs
+  * Python: Make sure GB link object isn't GC'd before GB object
+  * Python: Fix crash when deleting files owned by library
+  * GB: Fix crash when accessing SRAM if no save loaded and cartridge has no SRAM
+  * Qt: Fix color picking in sprite view (fixes #1307)
+  * GBA SIO: Prevent writing read-only multiplayer bits
+  * Switch: Fix gyroscope orientation (fixes #1300)
+  * Qt: Fix audio context holding onto closed game controller
+  * Wii: Saturate joystick values
+  * Wii: Remove duplicate bindings
+  * GB Serialize: Fix loading states with negative pixel x (fixes #1293)
+  * GBA Memory: Various AGBPrint fixes
+  * Qt: Fix tile and sprite views not always displaying at first
+  * Switch: Fix final cleanup (fixes #1283)
+  * Bump to 0.7.0
+  * GBA Video: Improve sprite cycle counting (fixes #1274)
+  * GBA Video: Remove redundant checks
+  * CMake: Bump version
+  * CHANGES: Update for 0.7.0
+  * README: Update copyright date
+  * Qt: Fix crash when closing window while game running
+  * Core: Improve handling failures in mCoreSaveStateNamed function (#1272)
+  * Switch: Fix perf-main for new console API
+  * GB MBC: Fix MBC30 SRAM
+  * Qt: AudioProcessor::m_context can be null
+  * Qt: Ensure FATAL logs reach log view
+  * GBA: Fix GB Player features
+  * GBA BIOS: BitUnPack improvements
+  * libnx: gyro/tilt support
+  * Res: Improve modeling of AGB/AGS screen in shaders
+  * Switch: Adapt to egl changes
+  * Libretro: Fix adding codes with hooks
+  * SDL: Fix handling of invalid gamepads (fixes #1239)
+  * SDL: Support fullscreen mode when using the SDL1 software renderer
+  * Qt: Fix non-SQLite build (fixes #1254)
+  * GB Audio: Skip frame if enabled when clock is high
+  * SDL: Fix auto-detection of SDL version
+  * GBA I/O: SOUNDCNT_HI is readable when sound is off
+  * Build rules for Genode platform
+  * GB Video: Changing LYC while LCDC off doesn't affect STAT (fixes #1224)
+  * Core: Reroot timing list when (de)scheduling
+  * Debugger: Readability improvements (fixes #1238)
+  * GBA Savedata: Fix EEPROM writing codepath when savetype is not EEPROM
+  * Doc: Update German README translation
+  * Doc: Update MSYS2 build instructions in the README file
+  * Updated cross-makefiles
+  * Switch: Screen stretching options
+  * CMake: Fix libswresample version dependencies (fixes #1229)
+  * README: Update
+  * GBA Hardware: Fix RTC handshake transition (fixes #1134)
+  * All: Update .gitignore
+  * Fixed A7A7 build
+  * Added A7A7
+  * Core: Remember to deinit proxy ring FIFO
+  * GB MBC: Fix MBC1 initialization
+  * All: Partial warnings burndown
+  * Qt: Minor memory view tweaks
+  * Qt: Grab focus when game starts (fixes #804)
+  * Qt: Fix mapping analog triggers (fixes #495)
+  * Update to match coding style
+  * Small hack to allow loading 32mb roms on Wii Retroarch port.
+  * PSP2: Fix tearing issues (fixes #1211)
+  * PSP2: Simplify frame limiter code
+  * Python: Fix syntax error
+  * Python: Experimental audio API
+  * Python: Minor API improvements
+  * Update Makefile.rules
+  * Libretro: Fix root issue for config crash
+  * [LIBNX] Initial Port
+  * Bump to 0.7-b1
+  * Set HAVE_VFS_FD = 0 for PSP
+  * Rename core/serialize to src/core/core-serialize.c - for statically linked cores, object files need to be uniquely named
+  * Define HAVE_LOCALE for ARMv7 and Aarch64
+  * Define HAVE_LOCALE for WiiU and Linux
+  * remove HAVE_LOCALE
+  * Add src/core/serialize.c
+  * Buildfix
+  * Add HAVE_LOCALE for OSX
+  * Fix Makefile.common to build with the regular Makefile or with cross-mk
+  * Updated cross-makefiles
+  * Use 0.7-WIP instead, it's not a official release yet
+  * Add more PSP ifdefs
+  * Add PSP ifdef
+  * PS3 build should finally work again
+  * Add zlib include dir
+  * Define HAVE_CRC32 for statically linked targets
+  * Update
+  * Don't build in crc32 for statically linked targets
+  * libretro: Fix makefile error
+  * libretro: Sync to 0.7
+  * GB Audio: Make audio unsigned with bias (fixes #749)
+  * GBA: Fix SharkPort saves for EEPROM games
+  * GBA Hardware: More RTC fixes
+  * GB Timer: Fix low bit of DIV resetting
+  * GBA Hardware: RTC accuracy improvements
+  * GBA: Fix some GBA ROM misdetection (fixes #978)
+  * Wii: Fix screen tear when unpausing
+  * PSP2: Fix RingFIFO misuse causing bad audio
+  * Doc: Fix package name for ntldd-git
+  * Windows: Package script
+  * PSP2: Use system enter key by default
+  * 3DS: Change takeover title to AR Games (fixes #965)
+  * Add savetype overrides for e-Reader
+  * Removing -DHAVE_LOCALE for Haiku allows build
+  * memory: Use same allocation for switch as for 3DS.
+  * Makefile.libretro: Add Switch target.
+  * GBA Memory: Partially revert fec4c0644 (fixes #840)
+  * FFmpeg: Fix build with newer lavc (fixes #966)
+  * CMake: Fix lzma include dir
+  * 3DS: Scale font based on glyph heights (fixes #961)
+  * GBA I/O: Fix writing to DISPCNT CGB flag (fixes #902)
+  * CMake: Enforce -pthread for C++ (fixes #909)
+  * Core: Fix ROM patches not being unloaded when disabled (fixes #962)
+  * remove unnecessary newline
+  * add frameskip core option from upstream commit 6f5ec7d
+  * PSP2: Better truncate
+  * GBA Memory: Fix copy-on-write memory leak
+  * GB MBC: Fix MBC2 saves (fixes #954)
+  * 3DS: Fix opening files in directory names with trailing slashes
+  * GUI: Minor logging and directory fixes
+  * GBA BIOS: Fix incorrect exit condition in LZ77
+  * Python: Fix installation issues
+  * GBA Audio: Increase PSG volume (fixes #932)
+  * GB Video: Improved window implementation
+  * LR35902: Fix watchpoints not reporting new value
+  * Fix small issue with ps3 build.
+  * GBA Video: Fix force-alignment on 256 color linear objs
+  * GBA DMA: Add misalign warnings
+  * Qt: Make some debug view text selectable
+  * Qt: Fix fast forward toggle disable state (fixes #946)
+  * Libretro: Some compatibility fixes
+  * All: Support building on PPC Mac
+  * Libretro: Thin out fork
+  * All: Support building on PPC Mac
+  * Test: Fix build
+  * Qt: Fix build with Qt 5.10
+  * Qt: Fix locale being set to English on settings save (fixes #906)
+  * 3DS: Add xml file for app takeover (fixes #891)
+  * Qt: Fix Qt 5.10-induced bitrot
+  * Fix undefined symbols when loading the library
+  * GBA Cheats: Fix bad merge
+  * Fix undefined symbols when compiling libretro core as debug build
+  * Travis: Axe macOS GCC build
+  * GBA Cheats: More fixes
+  * GBA Cheats: More minor fixes
+  * GBA Cheats: Fix slide codes not initializing properly
+  * GB Memory: HDMAs should not start when LCD is off (fixes #310)
+  * GB MBC: Remove erroneous bank 0 wrapping
+  * GBA Savedata: Fix crash when resizing flash
+  * GBA: Improve multiboot image detection
+  * GBA Memory: Slightly simplify prefetch logic
+  * GBA Video: OBJWIN can change blend params after OBJ is drawn (fixes #921)
+  * GBA Cheats: Fix PARv3 slide codes (fixes #919)
+  * Fix PARv3 If-AND code types (fixes #913) (#914)
+  * GB Video: Only trigger STAT write IRQs when screen is on (fixes #912)
+  * GBA: Add override so aging cart EEPROM works
+  * GBA DMA: ROM reads are forced to increment
+  * GBA Video: Force align 256-color tiles
+  * Use -std=gnu99 for PS3 instead of -std=c99
+  * Util: Get rid of _to16Bit
+  * Bump to 0.6.1
+  * Res: Update patrons for October
+  * CMake: Update patch level
+  * Update CHANGES for 0.6.1
+  * Qt: Hide mouse immediately when loading
+  * Test: Fix test suite post-Cheats
+  * GBA Cheats: Fix PARv3 multiline blocks (fixes #889)
+  * GBA Cheats: Slightly improve PARv3 detection
+  * Use -DDISABLE_THREADING in all ports, see #73
+  * Makefile.libretro: -DDISABLE_THREADING for Vita
+  * GBA Cheats: Improve detection of raw cheats
+  * GB Video: Fix read mode when enabling LCD
+  * VFS: Make VFile.truncate work growing files on PSV (fixes #885)
+  * GBA Savedata: Fix size of SRAM saves (fixes #883)
+  * Qt: Allow overrides to be saved before a game is loaded
+  * Use uname -s in Makefile
+  * Cleanup system platform in Makefile
+  * Support for iOS arm64 build by @yoshisuga
+  * GBA I/O: Fix reading from a few invalid I/O registers (fixes #876)
+  * GBA Video: Fix broken sprite blending hack (fixes #532)
+  * GBA: Fix keypad IRQs not firing when extra buttons are pressed
+  * SDL: Fix potential race condition when pressing keys (fixes #872)
+  * GBA Savedata: Fix 512 byte EEPROM saving as 8kB (fixes #877)
+  * CMake: Fix CPack dependencies for libpng 1.6
+  * Libretro: Clean up old logging code
+  * GBA BIOS: Use core's VRAM variable instead of renderer's
+  * GBA: Detect hardware for Pokémon FireRed ROM hacks
+  * GB Audio: Fix NRx2 writes while active (fixes #866)
+  * GB, GBA: Fix sync to video with frameskip
+  * 3DS: Improve graphics pipeline, framelimiting
+  * 3DS: Minor fixes for GPU issues, detect usable cores better
+  * 3DS: Transition to using RenderTarget
+  * 3DS: Support debug libs
+  * Fix issues with PS3 build
+  * Another buildfix
+  * Fix this rule
+  * small fix on src/gba/core.c
+  * GB Memory: Actually load latch time from savestate
+  * GB Memory: Fix HDMA count starting in mode 0 (fixes #855)
+  * GB Video: Fix potential hang when ending mode 0
+  * Qt: Fix sprite export pausing game indefinitely (fixes #841)
+  * Qt: Fix timezone issues with time overrides
+  * GB, GBA Savedata: Fix savestate-related save overwriting (fixes #834)
+  * GB: Clean up startup messages
+  * GB Serialize: Fix deserializing video STAT
+  * GB MBC: Fix RTC loading when file size is off
+  * GB MBC: Fix RTC initialization (fixes #825)
+  * GB Test: Fix tests
+  * GB, GBA: Fix crashes when attempting to identify null VFiles
+  * SDL: Fix 2.0.5 build on macOS under some circumstances
+  * GB Memory: Prevent accessing empty SRAM (fixes #831)
+  * Qt: Fix LOG argument order
+  * GB Core: Fix palette loading when loading a foreign config
+  * GB Video: Fix 16-bit screenshots (fixes #826)
+  * GB MBC: Fix SRAM sizes 4 and 5
+  * GB Memory: Initialize peripheral pointers
+  * GB MBC: Pocket Cam memory should be accessible without enabling
+  * Qt: Fix command line debugger closing second game
+  * GBA: Reset active region as needed when loading a ROM
+  * Qt: Don't rebuild library view if style hasn't changed
+  * Python: Fix importing .gb or .gba before .core
+  * Bump to 0.6.0.
+  * All: Minor text fixes
+  * Qt: Fix screen background improperly stretching
+  * SDL: Fix cheats not loading
+  * All: Minor text fixes
+  * SDL: Fix showing version number (fixes #794)
+  * Qt: Updated Spanish translation
+  * All: Update CHANGES for 0.6.0
+  * Core: Fix exiting rewind thread
+  * All: Use more GNUInstallDirs & don't install shaders if no GL.
+  * All: Do not install hicolor icons on Haiku.
+  * Qt: Fix SDL < 2 build.
+  * Qt: Fix Software renderer not handling alpha bits properly
+  * Qt: Fix GL-less build (fixes #788)
+  * Core: Fix rewinding getting out of sync (fixes #791)
+  * Qt: Properly ship Qt translations
+  * GBA Timer: Fix count-up timing overflowing timer 3
+  * SDL: Remove writing back obtained samples (fixes #768)
+  * GB Audio: Fix zombie mode bit masking
+  * GB Audio: Fix incorrect channel 4 iteration
+  * GBA Memory: Call crash callbacks regardless of if hard crash is enabled
+  * Qt: Dismiss game crashing/failing dialogs when a new game loads
+  * GB Serialize: Add MBC state serialization
+  * GB Serialize: Fix timer serialization
+  * Qt: Fix patch loading in a way that works in Qt pre-5.4
+  * Qt: Fix shader selector on Ubuntu (fixes #767)
+  * All: Partially revert datadir change
+  * Qt: Fix patch loading while a game is running
+  * GBA SIO: Improve SIO Normal dummy driver (fixes #520)
+  * Qt: Actually load the libraryStyle setting.
+  * Qt: Move shader settings into main settings window
+  * Qt: Update German GUI translation
+  * PSP2: Use custom localtime_r since newlib version is broken (fixes #560)
+  * PSP2: Update toolchain to use vita.cmake
+  * Qt: Minor text fixes
+  * Qt: Fix translation initialization (fixes #776)
+  * Qt: Update German GUI translation
+  * Qt: Fix initializing locale
+  * Qt: Italian translation (by theheroGAC)
+  * GB Video: Fix LYC regression
+  * Qt: Hopefully fix datadir this time
+  * Bump to 0.6-b1
+  * Android-21 has locale_t defined, set appropriate define for arm64-v8a
+  * Add install and unintall rules
+  * Makefile cleanup.
+  * Fix git hash.
+  * Fix build.
+  * (ngc/wii/wiiu) define HAVE_LOCALE. fixes a crash on game load (when compiled with dkp r29). silence some warning with -D_GNU_SOURCE.
+  * Better error handling
+  * (ngc/Wii/WiiU) buildfix for devkitpro r29. (cont).
+  * (ngc/Wii/WiiU) buildfix for devkitpro r29.
+  * Makefile.common cleanups.
+  * Add android fixes for other architectures.
+  * Try fix Android build.
+  * Update Makefile.android_armeabi-v7a
+  * Update Makefile.android_armeabi-v7a
+  * Update Makefile.android_armeabi-v7a
+  * Fix input descriptors and xcode broken tabs
+  * Add l and r turbos,fix spacing
+  * Add turbo A/B buttons
+  * Add wiiu target
+  * Fix merge & build.
+  * RETRODEFS is defined in Makefile.common (try fix android build).
+  * Bump to 0.5.0.
+  * Add ctru-heap for 3DS
+  * Buildfixes
+  * Get this at least compiling again
+  * Makefile cleanup and simplify ARM stuff.
+  * Backport vanfanel rpi3 platform from libretro fork repo.
+  * Let's show the core version.
+  * Updates, fix Makefile build, try fix Cmake build.
+  * Add this file to the build.
+  * Fix merge.
+  * Fix merge.
+  * ad837ce properly reapplied (Export the RAM).
+  * Ops, missing these files in the build.
+  * add a missing define
+  * add a missing define
+  * add a missing define
+  * Rebase again, 8570482.
+  * 3DS: update FS to latest api.
+  * Revert "Set audio samples to 128 for Wii/Gamecube"
+  * Set audio samples to 128 for Wii/Gamecube
+  * Libretro: (ctr/3ds) build fix.
+  * Libretro: (ctr/3ds) build fix for ctrulib/great-refactor
+  * added HAVE_NEON flag to enable building of src/util/arm-algo.S - without commented out ifeq this time - should fix #17 but not break non NEON builds as #18 did.
+  * Revert "added HAVE_NEON flag to enable building of src/util/arm-algo.S"
+  * Add iOS 9 rules
+  * added HAVE_NEON flag to enable building of src/util/arm-algo.S
+  * (CTR/3DS) use linearAlloc for renderer.outputBuffer
+  * (libretro) use libretro/memory.c for the ctr platform.
+  * Fix missing include.
+  * build fix.
+  * style nit.
+  * output audio once per frame to reduce fluctuations in frame time.
+  * (CTR/3DS) add target
+  * build fix.
+  * (Libretro) Add Vita target
+  * Makefile buildfix
+  * Build fix for libretro. The core had been broken for few days.
+  * (Vita) Add target - not finished
+  * (libretro) Explicitly set core reported aspect ratio to 3:2
+  * Fix build fail that's been here for the last three days.
+  * Export the RAM.
+  * Why is the default case returning early?
+  * makefiles fixes
+  * updated included makefile names
+  * updated to latest cross-makefiles
+  * Change product names
+  * Set CORE_DIR correctly for android-armeabi_v7a
+  * (Wii) Buildfix
+  * Don't try to link against 32-bit ARM-only _to16bit on __aarch64__
+  * Start making it work for Android
+  * Start adding makefiles for Android
+  * (OSX) Lower requirements to OSX 10.1
+  * Fix emscripten compiling.
+  * (PS3) Workaround missing localtime_r
+  * Add define
+  * Remove strings.h include in src/util/common.h - don't try to include signal.h on PS3
+  * Update Makefile.common - Wii and PS3 will both use vfs-file.c instead of vfs-fd.c
+  * Make libretro/memory.c PS3/Wii-compatible
+  * (gba/interface.h) Add buildfix
+  * Omit lockstep.c and some other Makefile.common cleanups
+  * Omit rr/ files
+  * Omit gba/supervisor/cli.c and gba/supervisor/rr.c
+  * Backwards compatibility patches for GCC 4.0.1 so that it compiles, links and runs on PowerPC Mac (OSX 10.5). Anon unions no-go, anon structs in unions no-go too.
+  * remove a libretro specific hack that is not needed anymore
+  * replace undeclared identifier binaryName with PROJECT_NAME and remove version.h so further referenced constants from version.c (which we don't generate) will be picked up at build time, rather than failing due to missing symbold at library load time.
+  * [libretro] build fixes
+  * [libretro] build fixes
+  * [libretro] build fixes
+  * [libretro] build fixes
+  * (PSP) add missing include path.
+  * All: Update CHANGES
+  * GBA Memory: Fix I cycles that had been moved to ARM7 core
+  * GBA: Fix timer initialization
+  * Create special version of memory.c for libretro
+  * (iOS) Fix build - to16Bit ARM routine not iOS ABI-compatible
+  * Libretro changes
+
+-------------------------------------------------------------------
+Wed Sep 13 11:54:10 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170908.24fb0a5b (no proper
+  versioning done by upstream).
