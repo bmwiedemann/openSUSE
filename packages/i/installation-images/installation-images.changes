@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Thu Feb 6 12:20:32 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#357
+- move gconv files into initrd (bsc#1161701)
+- netcfg has moved files to /usr/etc
+- 14.456
+
+--------------------------------------------------------------------
+Mon Feb 3 10:19:15 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#356
+- remove explicit dependency on openssl package
+- mount /proc in chroot environment during image build (bsc#1160594)
+- fix package version comparing
+- 14.455
+
+--------------------------------------------------------------------
 Fri Jan 24 16:01:12 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#355
