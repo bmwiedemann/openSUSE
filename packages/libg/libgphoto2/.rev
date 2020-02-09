@@ -1350,4 +1350,12 @@
     * Various crashes fixed that were found during AFL fuzzing the USB drivers</comment>
     <requestid>713857</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>e929114488b7d6455cd34bb590fedda0</srcmd5>
+    <version>2.5.23</version>
+    <time>1581278549</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer recommend -lang: supplements are in use. (forwarded request 770107 from iznogood)</comment>
+    <requestid>770135</requestid>
+  </revision>
 </revisionlist>

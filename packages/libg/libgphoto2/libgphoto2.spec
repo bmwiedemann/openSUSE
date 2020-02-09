@@ -55,12 +55,10 @@ Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%vers
 Source2:        %name.keyring
 Source3:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Recommends:     %name-%major-lang = %version
 
 %package -n libgphoto2-%major
 Summary:        A Digital Camera Library
 Group:          System/Libraries
-Recommends:     %name-%major-lang = %version
 Requires(pre):  /sbin/ldconfig
 Requires(post): /sbin/ldconfig
 Requires(post): udev
