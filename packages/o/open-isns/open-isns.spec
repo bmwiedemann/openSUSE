@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,11 @@ Name:           open-isns
 Summary:        Partial Implementation of iSNS iSCSI registration
 License:        LGPL-2.1-or-later
 Group:          System/Kernel
-Version:        0.99
+Version:        0.100
 Release:        0
 Source:         %{name}-%{version}.tar.xz
+Patch1:         %{name}-updates.diff.bz2
+Patch2:         %{name}-fix-586-time.patch
 Url:            https://github.com/open-iscsi/%{name}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -55,6 +57,8 @@ Files to develop an application using the open-isns library.
 
 %prep
 %setup -n %{name}-%{version}
+%patch1 -p1
+%patch2 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
