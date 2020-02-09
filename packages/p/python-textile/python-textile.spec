@@ -20,7 +20,7 @@
 %bcond_without test
 %define skip_python2 1
 Name:           python-textile
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Textile processing for python
 License:        BSD-3-Clause
