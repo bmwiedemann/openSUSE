@@ -524,4 +524,18 @@
     <comment></comment>
     <requestid>766541</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1245a02aa19b2575ca72883269aaa68e</srcmd5>
+    <version>1.17.8</version>
+    <time>1581277645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.8
+  * Feature: variables support in the &quot;grpc_pass&quot; directive.
+  * Bugfix: a timeout might occur while handling pipelined requests
+    in an SSL connection; the bug had appeared in 1.17.5.
+  * Bugfix: in the &quot;debug_points&quot; directive when using HTTP/2.
+    Thanks to Daniil Bondarev.
+</comment>
+    <requestid>769945</requestid>
+  </revision>
 </revisionlist>

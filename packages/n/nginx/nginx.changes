@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  2 01:03:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.17.8
+  * Feature: variables support in the "grpc_pass" directive.
+  * Bugfix: a timeout might occur while handling pipelined requests
+    in an SSL connection; the bug had appeared in 1.17.5.
+  * Bugfix: in the "debug_points" directive when using HTTP/2.
+    Thanks to Daniil Bondarev.
+
+-------------------------------------------------------------------
 Tue Jan 21 16:35:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use systemd_ordering instead of systemd_requires, nginx is useable
