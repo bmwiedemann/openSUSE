@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 30 18:18:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.8.1:
+  * Too many changes to list here, see
+    https://github.com/taocpp/PEGTL/releases
+  * This is API incompatible to version 1.x, but no package
+    has a build dependency on the old version, while usbguard and
+    Paraview require 2.6.0 and 2.4.0 at least.
+
+-------------------------------------------------------------------
 Sat Sep  9 08:02:26 UTC 2017 - jengelh@inai.de
 
 - Replace old RPM shell vars by macros. Trim description of SRPM.
