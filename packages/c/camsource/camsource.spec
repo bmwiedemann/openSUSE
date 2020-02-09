@@ -1,7 +1,7 @@
 #
 # spec file for package camsource
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,12 +26,13 @@ BuildRequires:  libv4l-devel >= 0.8.4
 Version:        0.7.1
 Release:        0
 Summary:        Camsource Grabs Images from a Video4Linux Device
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Graphics
-Url:            http://camsource.sourceforge.net
+URL:            http://camsource.sourceforge.net
 Source:         camsource-%{version}.tar.gz
 Source1:        camsource-rpmlintrc
 Patch0:         camsource-no_implicit_decls.diff
+Patch1:         camsource-v4l-conf-video_window-overwrite.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -53,6 +54,7 @@ displaying it via HTTP or FTP upload.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 chmod ugo+x configure
 
 %build

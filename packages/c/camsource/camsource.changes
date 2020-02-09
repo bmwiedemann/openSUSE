@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  7 21:07:50 UTC 2020 - David Mair <dmair@suse.com>
+
+- The camsource v4l1 module has logic errors opening the video
+  device that incorrectly perform a channel set when a grab window
+  set (frame size, fps, etc) is intended. The error handling from
+  the invalid channel set causes the configuration frame size and
+  fps settings to be discarded and replaced with the current
+  settings active on the video device. The result is that running a
+  v4l(1/2) application on a given camera before using camsource on
+  the same camera means camsource has the grab window attributes
+  from the other application not the one specified in camsource
+  configuration
+- camsource-v4l-conf-video_window-overwrite.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 14:38:20 UTC 2015 - meissner@suse.com
 
 - updated to final 0.7.1 version

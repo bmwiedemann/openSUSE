@@ -183,4 +183,22 @@ The more cleanest fix for bnc#714439 is proposed.
 - camsource-no_implicit_decls.diff: refreshed</comment>
     <requestid>315842</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>6abec3d32eb95ad82103875e1a6cf358</srcmd5>
+    <version>0.7.1</version>
+    <time>1581277723</time>
+    <user>dimstar_suse</user>
+    <comment>- The camsource v4l1 module has logic errors opening the video
+  device that incorrectly perform a channel set when a grab window
+  set (frame size, fps, etc) is intended. The error handling from
+  the invalid channel set causes the configuration frame size and
+  fps settings to be discarded and replaced with the current
+  settings active on the video device. The result is that running a
+  v4l(1/2) application on a given camera before using camsource on
+  the same camera means camsource has the grab window attributes
+  from the other application not the one specified in camsource
+  configuration
+- camsource-v4l-conf-video_window-overwrite.patch (forwarded request 772215 from dmair)</comment>
+    <requestid>772316</requestid>
+  </revision>
 </revisionlist>
