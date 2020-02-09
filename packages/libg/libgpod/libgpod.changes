@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 22:44:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Tue Jan 14 15:46:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable python2 module: switch bcond_without python2 to _with

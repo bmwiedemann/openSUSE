@@ -68,7 +68,6 @@ playlists stored on an iPod, modify them, and save them back to the iPod.
 %package -n %{libsoname}
 Summary:        Library to Manipulate Songs and Playlists Stored on an iPod
 Group:          System/Libraries
-Recommends:     %{name}-lang
 # Add provides for installability of lang package
 Provides:       %{name} = %{version}
 
