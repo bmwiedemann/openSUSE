@@ -162,4 +162,12 @@
     <comment>- Update to snapshot 8.13.3559+git20 (b0ada803)</comment>
     <requestid>766381</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>dddd478740a3a793cc8dbd6363225b8f</srcmd5>
+    <version>8.13.3559+git20</version>
+    <time>1581278497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769517</requestid>
+  </revision>
 </revisionlist>

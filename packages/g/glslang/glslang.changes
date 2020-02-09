@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:09:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix build when _lto_cflags is not defined (as in SLE/Leap)
+
+-------------------------------------------------------------------
 Sun Jan 19 11:38:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 8.13.3559+git20 (b0ada803)
