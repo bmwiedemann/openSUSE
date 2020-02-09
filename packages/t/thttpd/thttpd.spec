@@ -1,7 +1,7 @@
 #
 # spec file for package thttpd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Small and simple webserver
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Servers
-Url:            http://www.acme.com/software/thttpd/
+URL:            http://www.acme.com/software/thttpd/
 Source:         http://www.acme.com/software/thttpd/%{name}-%{version}.tar.gz
 Source1:        %{name}-initd.script
 Source2:        %{name}.service
@@ -60,8 +60,8 @@ Conflicts:      apache2-example-pages
 Conflicts:      apache2-utils
 Provides:       http_daemon
 %if %{with_systemd}
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %else
 Requires(post): %fillup_prereq
 Requires(post): %insserv_prereq
