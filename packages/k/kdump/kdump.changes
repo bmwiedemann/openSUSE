@@ -5,6 +5,15 @@ Mon Jan 27 16:35:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
   kdump udev rules late during boot (bsc#1154837)
 
 -------------------------------------------------------------------
+Fri Jan 24 13:45:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use BuildRequire(udev) instead of udev: allow OBS to shortcut
+  through the -mini flavors.
+- Use systemd_ordering instead of systemd_requires: systemd is not
+  a strict requirement, but if the system is going to use it, we
+  want it to beinstalled prior to kdump.
+
+-------------------------------------------------------------------
 Tue Dec 17 10:00:30 UTC 2019 - Petr Tesařík <ptesarik@suse.com>
 
 - kdump-calibrate-Update-values.patch: calibrate: Update values

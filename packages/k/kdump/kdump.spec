@@ -17,7 +17,7 @@
 
 
 # on systemd distros, rpm-build requires systemd-rpm-macros,
-# which in turn defines %systemd_requires
+# which in turn defines %%systemd_requires
 %define systemd_present %{defined systemd_requires}
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -77,8 +77,8 @@ BuildRequires:  libesmtp-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
-BuildRequires:  udev
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
 Requires:       curl
 Requires:       kexec-tools
@@ -101,7 +101,7 @@ BuildRequires:  pkgconfig(systemd)
 PreReq:         %insserv_prereq
 %endif
 %if %{systemd_present}
-%systemd_requires
+%systemd_ordering
 %endif
 
 %description
@@ -194,7 +194,7 @@ ln -s ../..%{_initddir}/boot.kdump %{buildroot}%{_sbindir}/rckdump
 
 %post
 # change only permission if the file exists before /etc/sysconfig/kdump
-# has been created from %{_fillupdir}/sysconfig.kdump
+# has been created from %%{_fillupdir}/sysconfig.kdump
 change_permission=0
 if [ ! -f %{_sysconfdir}/sysconfig/kdump ] ; then
     change_permission=1
@@ -242,7 +242,7 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %endif
 
 # Compatibility cruft
-# there is no %license prior to SLE12
+# there is no %%license prior to SLE12
 %if %{undefined _defaultlicensedir}
 %define license %doc
 %else
