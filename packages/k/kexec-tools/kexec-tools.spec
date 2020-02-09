@@ -34,6 +34,8 @@ Patch5:         %{name}-add-variant-helper-functions.patch
 Patch6:         %{name}-arm64-kexec-allocate-memory-space-avoiding-reserved-regions.patch
 Patch7:         %{name}-arm64-kdump-deal-with-resource-entries-in-proc-iomem.patch
 Patch8:         %{name}-build-multiboot2-for-i386.patch
+Patch9:         %{name}-video-capability.patch
+Patch10:        %{name}-SYS_getrandom.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -64,6 +66,8 @@ the loaded kernel after it panics.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 autoreconf -fvi

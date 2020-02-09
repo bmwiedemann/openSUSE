@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:35:18 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Fix build errors on old distributions
+  * kexec-tools-video-capability.patch
+  * kexec-tools-SYS_getrandom.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 06:02:42 UTC 2020 - Chester Lin <clin@suse.com>
 
 - Fix compiling errors of multiboot2_x86_* functions for i586

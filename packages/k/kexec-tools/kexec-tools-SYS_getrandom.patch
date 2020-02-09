@@ -1,0 +1,25 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Define SYS_getrandom if needed
+Upstream: never, build fix for SLE12
+
+SLE12 did not provide a definition for SYS_getrandom.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ kexec/arch/arm64/kexec-arm64.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- a/kexec/arch/arm64/kexec-arm64.c
++++ b/kexec/arch/arm64/kexec-arm64.c
+@@ -34,6 +34,11 @@
+ #include "mem_regions.h"
+ #include "arch/options.h"
+ 
++#ifndef __NR_getrandom
++#define __NR_getrandom 278
++__SYSCALL(__NR_getrandom, sys_getrandom)
++#endif
++
+ #define ROOT_NODE_ADDR_CELLS_DEFAULT 1
+ #define ROOT_NODE_SIZE_CELLS_DEFAULT 1
+ 

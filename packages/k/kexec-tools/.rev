@@ -947,4 +947,12 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>768201</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>642add5cf9c39ac18476cb6018606fa9</srcmd5>
+    <version>2.0.20</version>
+    <time>1581278561</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770156</requestid>
+  </revision>
 </revisionlist>
