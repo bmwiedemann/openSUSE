@@ -1,7 +1,7 @@
 #
 # spec file for package system-users
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Source15:       system-user-nobody.conf
 Source16:       system-user-upsd.conf
 Source17:       system-user-uuidd.conf
 Source19:       system-user-tftp.conf
+Source20:       system-user-tss.conf
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildArch:      noarch
@@ -197,6 +198,14 @@ Group:          System/Fhs
 %description -n system-user-tftp
 This package provides the system account and group 'tftp'.
 
+%package -n system-user-tss
+Summary:        System user and group tss
+Group:          System/Fhs
+%{sysusers_requires}
+
+%description -n system-user-tss
+This package provides the system account and group 'tss'.
+
 %prep
 %setup -q -c -T
 
@@ -218,6 +227,7 @@ This package provides the system account and group 'tftp'.
 %sysusers_generate_pre %{SOURCE16} upsd
 %sysusers_generate_pre %{SOURCE17} uuidd
 %sysusers_generate_pre %{SOURCE19} tftp
+%sysusers_generate_pre %{SOURCE20} tss
 
 %install
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -231,6 +241,7 @@ mkdir -p %{buildroot}%{_localstatedir}/run/uuidd
 mkdir -p %{buildroot}/srv/ftp
 mkdir -p %{buildroot}%{_localstatedir}/lib/nobody
 mkdir -p %{buildroot}/srv/tftpboot
+mkdir -p %{buildroot}/var/lib/tpm
 install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-uucp.conf
 install -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/system-user-games.conf
 install -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/system-user-bin.conf
@@ -248,6 +259,7 @@ install -m 644 %{SOURCE15} %{buildroot}%{_sysusersdir}/system-user-nobody.conf
 install -m 644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-upsd.conf
 install -m 644 %{SOURCE17} %{buildroot}%{_sysusersdir}/system-user-uuidd.conf
 install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/system-user-tftp.conf
+install -m 644 %{SOURCE20} %{buildroot}%{_sysusersdir}/system-user-tss.conf
 
 %pre -n system-user-uucp -f uucp.pre
 %pre -n system-user-games -f games.pre
@@ -269,6 +281,7 @@ install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/system-user-tftp.conf
 %pre -n system-user-upsd -f upsd.pre
 %pre -n system-user-uuidd -f uuidd.pre
 %pre -n system-user-tftp -f tftp.pre
+%pre -n system-user-tss -f tss.pre
 
 %files -n system-user-uucp
 %defattr(-,root,root)
@@ -346,5 +359,10 @@ install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/system-user-tftp.conf
 %defattr(-,root,root)
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
 %{_sysusersdir}/system-user-tftp.conf
+
+%files -n system-user-tss
+%defattr(-,root,root)
+%dir %attr(0755,root,root) /var/lib/tpm
+%{_sysusersdir}/system-user-tss.conf
 
 %changelog
