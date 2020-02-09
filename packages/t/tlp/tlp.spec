@@ -18,7 +18,7 @@
 
 %define _name   TLP
 Name:           tlp
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

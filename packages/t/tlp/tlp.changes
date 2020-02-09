@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:07:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.3.1
+  * default CPU_ENERGY_PERF_POLICY_ON_BAT=power too aggressive (issue#460)
+
+-------------------------------------------------------------------
 Tue Feb  4 13:29:00 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 - Update to 1.3.0
   * New configuration scheme
