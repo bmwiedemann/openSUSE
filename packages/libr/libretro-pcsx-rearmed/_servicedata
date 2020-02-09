@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/pcsx_rearmed.git</param>
+              <param name="changesrevision">ace1989f734ee7234a6ca12c5f19c5bdfd1fdef2</param></service></servicedata>
