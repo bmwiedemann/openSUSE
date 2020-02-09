@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sat Feb 08 12:59:23 UTC 2020 - i@guoyunhe.me
+
+- Remove gambatte.libretro which is now provided by libretro-core-info package
+- Update to version 0~git20200207:
+  * Add optional LCD ghosting effect
+  * Do not add pointers to memory map if they are not available
+  * (MSVC 2017) Buildfix
+  * Update
+  * Update
+  * Update
+  * Update
+  * Update Makefile
+  * Add internal colour palettes from TheWolfBunny (https://www.deviantart.com/thewolfbunny/gallery/69987002/game-boy-palettes) + update libretro_core_options to v1.3
+  * (tvOS) Compile using tvOS SDK
+  * libretro: fix wiiu compile
+  * libretro: allow mingw cross compiling
+  * Add core option sublabels
+  * Fix GBC memory map and add IO port range for cheevos
+  * Correct bitmask button mapping
+  * libretro: jni: Switch stl to c++ in preparation for ndk r20
+  * Update -add new RETRO_ENVIRONMENT_GET_INPUT_BITMASKS
+  * Fix cheats for libretro
+  * Update GBC memory map
+  * Do not drop memory descriptor when SRAM is absent
+  * Map static GBC RAM bank descriptors
+  * Map banked RAM, not bank 1 RAM, for libretro
+  * Revert banked RAM size to a fixed 0x1000
+  * Update GBC colour correction using results from Pokefan531's latest research (https://forums.libretro.com/t/real-gba-and-ds-phat-colors/1540/174)
+  * update Makefile
+  * Add optional 'accurate' frame mixing mode
+  * Add optional frame mixing
+  * Backport HuC3 mapper support from https://github.com/Dabomstew/gambatte-speedrun
+  * Fix save states
+  * Fixed Override
+  * Added A7A7
+  * Add optional 'dark filter' (a.k.a. eye saver, for use with games with white backgrounds)
+  * Add the option to only apply colour correction when running a GBC game or using a GBC colour palette
+  * Add 'accurate' colour correction method derived from Pokefan531's gbc-colour shader
+  * Add palettes for original Game Boy, Game Boy Pocket and Game Boy Light
+  * Add SGB palettes
+  * alter memory descriptors to accommodate bankswitched RAM size
+  * Convert bzero to memset and bcopy to memmove.
+  * libnx port
+  * Disable retro_get_memory_* before ROM is loaded
+  * MSVC build fix
+  * UWP build fix
+  * Label Rename Redux Act 2
+  * Edit Up/Down core option title to include left/right
+  * Add 'up/down allowed' core option
+  * Update libretro-common code
+  * Refactor android jni makefiles
+  * Fix android jni compile with clang
+  * msvc: add debug flag to linker
+  * add msvc2003 target
+  * add msvc2003 target
+  * Fix compilation for Xbox OG
+  * Allow build on Haiku target
+  * Updates to libretro-common
+  * Add Switch target
+  * Update
+  * Markdown
+  * Appveyor CI
+  * Link MSVCR statically
+  * Update
+  * Cleanups
+  * Update
+  * Updates
+  * add 3ds to travis build
+  * add travis build script
+  * Swap these conditions, otherwise Darwin gets matched as win & fails build (thanks endrift to point out)
+  * Update
+  * remove msvc solution files
+  * Add include dir for MSVC 2003
+  * Update xbox/xbox360 targets
+
+-------------------------------------------------------------------
 Wed Sep 13 06:56:32 UTC 2017 - aplazas@suse.com
 
 - Update to version 0~20170829.f020a1f:

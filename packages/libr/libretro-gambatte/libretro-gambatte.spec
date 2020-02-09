@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-gambatte
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libretro-gambatte
-Version:        0~20170829.f020a1f
+Version:        0~git20200207
 Release:        0
-Summary:        Game Boy Emulator for Retro-based frontends
-License:        GPL-2.0
-Group:          Amusements/Games/Other
-Url:            https://github.com/libretro/gambatte-libretro
-Source:         gambatte-libretro-%{version}.tar.xz
-Source1:        gambatte.libretro
+Summary:        Gambatte libretro core for GameBoy Color emulation
+License:        GPL-2.0-only
+URL:            http://www.retroarch.com
+Source:         %{name}-%{version}.tar.xz
+
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  make
 
 %description
-This package contains a libretro port of the Gambatte emulator.
-It can be used by various frontends to load Game Boy / Game Boy Color games.
+Gambatte is an accuracy-focused, open-source, cross-platform Game Boy Color
+emulator written in C++. It is based on hundreds of corner case hardware tests,
+as well as previous documentation and reverse engineering efforts. This package
+is for RetroArch/Libretro front-end.
 
 %prep
-%setup -q -n gambatte-libretro-%{version}
+%setup -q
 
 %build
-make %{?_smp_mflags} prefix=%{_prefix} core_installdir=%{_libdir}/libretro/
+make
 
 %install
-make DESTDIR=%{buildroot} install prefix=%{_prefix} core_installdir=%{_libdir}/libretro/
-mkdir -p %{buildroot}%{_libdir}/libretro/
-install -m644 -p %{SOURCE1} %{buildroot}%{_libdir}/libretro/
+mkdir -p %{buildroot}%{_libdir}/libretro
+cp gambatte_libretro.so %{buildroot}%{_libdir}/libretro
 
 %files
-%defattr(-,root,root)
-%doc COPYING
 %dir %{_libdir}/libretro
-%{_libdir}/libretro/gambatte.libretro
 %{_libdir}/libretro/gambatte_libretro.so
 
 %changelog
