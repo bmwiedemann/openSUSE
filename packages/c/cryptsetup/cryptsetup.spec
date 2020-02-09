@@ -1,7 +1,7 @@
 #
 # spec file for package cryptsetup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@ Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.0-or-later
 Group:          System/Base
-Url:            https://gitlab.com/cryptsetup/cryptsetup/
-Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.1/cryptsetup-%{version}.tar.xz
+URL:            https://gitlab.com/cryptsetup/cryptsetup/
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-%{version}.tar.xz
 # GPG signature of the uncompressed tarball.
-Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.1/cryptsetup-%{version}.tar.sign
+Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 BuildRequires:  device-mapper-devel

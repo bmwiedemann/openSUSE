@@ -899,4 +899,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment></comment>
     <requestid>755886</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>265de0421d995b987f165279a7d4d905</srcmd5>
+    <version>2.3.0</version>
+    <time>1581278538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770054</requestid>
+  </revision>
 </revisionlist>

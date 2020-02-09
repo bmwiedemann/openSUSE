@@ -1,3 +1,60 @@
+-------------------------------------------------------------------
+Tue Feb  4 07:59:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3.0 (include release notes for 2.2.0)
+  * BITLK (Windows BitLocker compatible) device access
+  * Veritysetup now supports activation with additional PKCS7 signature
+    of root hash through --root-hash-signature option.
+  * Integritysetup now calculates hash integrity size according to algorithm
+    instead of requiring an explicit tag size.
+  * Integritysetup now supports fixed padding for dm-integrity devices.
+  * A lot of fixes to online LUKS2 reecryption.
+  * Add crypt_resume_by_volume_key() function to libcryptsetup.
+    If a user has a volume key available, the LUKS device can be resumed
+    directly using the provided volume key.
+    No keyslot derivation is needed, only the key digest is checked.
+  * Implement active device suspend info.
+    Add CRYPT_ACTIVATE_SUSPENDED bit to crypt_get_active_device() flags
+    that informs the caller that device is suspended (luksSuspend).
+  * Allow --test-passphrase for a detached header.
+    Before this fix, we required a data device specified on the command
+    line even though it was not necessary for the passphrase check.
+  * Allow --key-file option in legacy offline encryption.
+    The option was ignored for LUKS1 encryption initialization.
+  * Export memory safe functions.
+    To make developing of some extensions simpler, we now export
+    functions to handle memory with proper wipe on deallocation.
+  * Fail crypt_keyslot_get_pbkdf for inactive LUKS1 keyslot.
+  * Add optional global serialization lock for memory hard PBKDF.
+  * Abort conversion to LUKS1 with incompatible sector size that is
+    not supported in LUKS1.
+  * Report error (-ENOENT) if no LUKS keyslots are available. User can now
+    distinguish between a wrong passphrase and no keyslot available.
+  * Fix a possible segfault in detached header handling (double free).
+  * Add integritysetup support for bitmap mode introduced in Linux kernel 5.2.
+  * The libcryptsetup now keeps all file descriptors to underlying device
+    open during the whole lifetime of crypt device context to avoid excessive
+    scanning in udev (udev run scan on every descriptor close).
+  * The luksDump command now prints more info for reencryption keyslot
+    (when a device is in-reencryption).
+  * New --device-size parameter is supported for LUKS2 reencryption.
+  * New --resume-only parameter is supported for LUKS2 reencryption.
+  * The repair command now tries LUKS2 reencryption recovery if needed.
+  * If reencryption device is a file image, an interactive dialog now
+    asks if reencryption should be run safely in offline mode
+    (if autodetection of active devices failed).
+  * Fix activation through a token where dm-crypt volume key was not
+    set through keyring (but using old device-mapper table parameter mode).
+  * Online reencryption can now retain all keyslots (if all passphrases
+    are provided). Note that keyslot numbers will change in this case.
+  * Allow volume key file to be used if no LUKS2 keyslots are present.
+  * Print a warning if online reencrypt is called over LUKS1 (not supported).
+  * Fix TCRYPT KDF failure in FIPS mode.
+  * Remove FIPS mode restriction for crypt_volume_key_get.
+  * Reduce keyslots area size in luksFormat when the header device is too small.
+  * Make resize action accept --device-size parameter (supports units suffix).
+
+-------------------------------------------------------------------
 Thu Oct 17 11:55:51 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Create a weak dependency cycle between libcryptsetup and
