@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:58:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 4.0.2
+  * Remove Python2 support
+  * Add Python 3.8 TravisCI support
+  * Correct mock imports
+
+-------------------------------------------------------------------
 Sun Nov  3 14:00:28 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.1
