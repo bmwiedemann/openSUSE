@@ -9957,7 +9957,6 @@ unsorted:
   - libluabind0_9_1 
   - libluajit-5_1-2-32bit: [x86_64] 
   - liblucene++0 
-  - liblunar-date-3_0-1 
   - liblur3 
   - liblxc-devel 
   - liblxc1 
@@ -11320,6 +11319,8 @@ unsorted:
   - libretro-database 
   - libretro-gambatte 
   - libretro-gtk-0_14-0 
+  - libretro-mgba 
+  - libretro-pcsx-rearmed 
   - libretro-pcsx_rearmed 
   - libretro-play 
   - librevenge-devel 
@@ -12901,10 +12902,10 @@ unsorted:
   - luckybackup 
   - lugaru 
   - lugaru-data 
-  - lunar-date 
+  - lunar-calendar-devel 
+  - lunar-calendar-doc 
   - lunar-date-devel 
   - lunar-date-doc 
-  - lunar-date-lang 
   - lutris 
   - luvcview 
   - lv2 
@@ -15939,6 +15940,7 @@ unsorted:
   - pegdown 
   - pegdown-javadoc 
   - pegtl-devel 
+  - pegtl-devel-doc 
   - peksystray 
   - pen 
   - pencil 
@@ -19876,6 +19878,7 @@ unsorted:
   - python2-structlog 
   - python2-subgrab 
   - python2-subliminal 
+  - python2-subprocrunner 
   - python2-subst 
   - python2-suds-jurko 
   - python2-suntime 
@@ -19970,6 +19973,7 @@ unsorted:
   - python2-txZMQ 
   - python2-txt2tags 
   - python2-txtorcon 
+  - python2-typepy 
   - python2-typing 
   - python2-typing_extensions 
   - python2-tzlocal 
@@ -20002,7 +20006,6 @@ unsorted:
   - python2-validate_email 
   - python2-validators 
   - python2-varlink 
-  - python2-vcrpy 
   - python2-vcs 
   - python2-vcversioner 
   - python2-vega_datasets 
@@ -22507,6 +22510,7 @@ unsorted:
   - python3-structlog 
   - python3-subgrab 
   - python3-subliminal 
+  - python3-subprocrunner 
   - python3-subscene-api 
   - python3-subst 
   - python3-suds-jurko 
@@ -22629,6 +22633,7 @@ unsorted:
   - python3-txaio 
   - python3-txt2tags 
   - python3-txtorcon 
+  - python3-typepy 
   - python3-tzlocal 
   - python3-u-msgpack-python 
   - python3-ua-parser 
@@ -22814,6 +22819,8 @@ unsorted:
   - q5go 
   - qactus 
   - qalculate 
+  - qalculate-gtk 
+  - qalculate-gtk-lang 
   - qbittorrent 
   - qbittorrent-nox 
   - qbs 
@@ -24918,6 +24925,7 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
+  - system-user-tss 
   - system-user-uuidd 
   - systemd-coredump 
   - systemd-devel 
@@ -32869,6 +32877,7 @@ unsorted:
   - typelib-1_0-LibvirtGObject-1_0 
   - typelib-1_0-LibvirtSandbox-1_0 
   - typelib-1_0-LightDM-1 
+  - typelib-1_0-LunarCalendar-3_0 
   - typelib-1_0-LunarDate-3_0 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 

@@ -2378,6 +2378,8 @@
       <repopackage name="liblua5_1-5"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="libluajit-5_1-2"/>
+      <repopackage name="liblunar-calendar-3_0-1"/>
+      <repopackage name="liblunar-date-3_0-1"/>
       <repopackage name="liblvm2cmd2_03"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblz4-1-32bit" arch="x86_64"/>
@@ -3298,6 +3300,11 @@
       <repopackage name="lua53"/>
       <repopackage name="lua53-luasocket"/>
       <repopackage name="luit"/>
+      <repopackage name="lunar-calendar"/>
+      <repopackage name="lunar-calendar-gtk3-module"/>
+      <repopackage name="lunar-calendar-lang"/>
+      <repopackage name="lunar-date"/>
+      <repopackage name="lunar-date-lang"/>
       <repopackage name="lv"/>
       <repopackage name="lvm2"/>
       <repopackage name="lynx"/>
