@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sat Feb  8 13:52:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7.0:
+  + Configurable keyboard shortcuts
+  + New functions: bernoulli(), erfi(), fresnels(), fresnelc()
+  + Improved zeta(), with exact values for negative and even
+    integers, support for all real values, and optional second
+    argument for calculation of Hurwitz zeta
+  + Support for complex numbers in Ei(), li(), Si(), Ci(), Shi(),
+    and Chi()
+  + Support for all branches and complex numbers in lambertw()
+  + Extended argument support in Li()
+  + Add base units (or local currency) for unit conversion when
+    units are missing in original expression (e.g. 5 to ft = 5 m
+    to ft)
+  + Improvements and fixes for integrals
+  + Fix crash when used in Cantor (caused by conflict with Poppler
+    library)
+  + Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
+Wed Sep  4 17:19:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix Source url so the tarball gets a nice name-version format.
+- Use autosetup and make_build macros.
+
+-------------------------------------------------------------------
+Fri Jun 28 08:37:39 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- added full URL to the source and _service
+
+-------------------------------------------------------------------
+Wed Jun 19 08:22:56 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- release version 3.2.0
+
+-------------------------------------------------------------------
+Wed Jun 19 07:03:45 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- Git version
