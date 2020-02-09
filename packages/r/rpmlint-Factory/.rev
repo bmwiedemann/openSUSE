@@ -393,4 +393,15 @@ rpmlint, rpmlint-Factory and rpmlint-tests need to go in together</comment>
     <comment></comment>
     <requestid>749900</requestid>
   </revision>
+  <revision rev="52" vrev="97">
+    <srcmd5>31719682abdf290ead676509d620fb2a</srcmd5>
+    <version>1.0</version>
+    <time>1581278474</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept after 769026, otherwise rpmlint will cause build failures
+
+- Add badness for unauthorized PAM modules that didn't receive a review
+  (bsc#1150178).</comment>
+    <requestid>769033</requestid>
+  </revision>
 </revisionlist>
