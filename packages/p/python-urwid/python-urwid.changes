@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  7 15:15:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.1.0
+  * Add support for Python 3.7 and 3.8, drop support for Python 3.3
+  * Add 24-bit (true color) support.
+  * Fix crash on click-Esc & Esc-click
+  * Break rather than raising exception on shard calculation bug.
+  * Fix EOF detection for the Terminal widget on Python 3
+  * Many more features and fixes
+
+-------------------------------------------------------------------
 Mon Oct 14 14:49:05 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
