@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  7 21:05:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * Fix ending ncurses colors in rosterwin
+  * Fix segfault when consistent nick colors where never in config (#1236)
+  * Improve /clear behaviour to also clear the buffer. So a redraw doesn't bring
+  * the content back.
+  * Use unique IDs in stanzas when requesting avatars
+
+-------------------------------------------------------------------
 Mon Feb  3 10:27:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:

@@ -237,4 +237,17 @@
   * Fix error when joining IRC via biboumi (#1230)</comment>
     <requestid>769505</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ce25b91b23f06777f0b4a3cab84b8410</srcmd5>
+    <version>0.8.1</version>
+    <time>1581277708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix ending ncurses colors in rosterwin
+  * Fix segfault when consistent nick colors where never in config (#1236)
+  * Improve /clear behaviour to also clear the buffer. So a redraw doesn't bring
+  * the content back.
+  * Use unique IDs in stanzas when requesting avatars</comment>
+    <requestid>772212</requestid>
+  </revision>
 </revisionlist>

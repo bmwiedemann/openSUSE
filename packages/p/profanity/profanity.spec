@@ -1,7 +1,7 @@
 #
 # spec file for package profanity
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           profanity
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://profanity-im.github.io
+URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
 BuildRequires:  glib2-devel >= 2.26
