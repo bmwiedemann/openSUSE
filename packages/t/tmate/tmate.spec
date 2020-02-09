@@ -1,7 +1,7 @@
 #
 # spec file for package tmate
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,12 @@ URL:            https://www.tmate.io
 Source:         https://github.com/tmate-io/tmate/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libevent-devel
 BuildRequires:  libmsgpack-devel >= 1.1.0
 BuildRequires:  libmsgpackc-devel >= 1.1.0
-BuildRequires:  libopenssl-devel
-BuildRequires:  libssh-devel >= 0.6.1
-BuildRequires:  ncurses-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(libssh) >= 0.6.1
+BuildRequires:  pkgconfig(tinfo)
 
 %description
 Tmate is a fork of tmux providing an instant pairing solution.
@@ -45,16 +43,15 @@ Tmate is a fork of tmux providing an instant pairing solution.
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 ./autogen.sh
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %files
-%defattr(-,root,root)
 %doc CHANGES FAQ README-tmux README.md
 %license COPYING
 %{_bindir}/tmate
-%{_mandir}/man1/tmate.1*
+%{_mandir}/man1/tmate.1%{?ext_man}
 
 %changelog

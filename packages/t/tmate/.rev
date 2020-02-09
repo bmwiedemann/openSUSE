@@ -44,4 +44,12 @@ sharing capabilities.</comment>
 </comment>
     <requestid>749378</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>487f1710900c10e757bc395ca1b486ac</srcmd5>
+    <version>2.4.0</version>
+    <time>1581277678</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup spec</comment>
+    <requestid>772110</requestid>
+  </revision>
 </revisionlist>
