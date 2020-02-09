@@ -1,7 +1,7 @@
 #
-# spec file for package R
+# spec file for package R-Rcpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,20 @@
 %global packname  Rcpp
 %global rlibdir   %{_libdir}/R/library
 Name:           R-%{packname}
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Seamless R and C++ Integration
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/Other
 URL:            https://cran.r-project.org/package=%{packname}
 Source:         https://cran.r-project.org/src/contrib/%{packname}_%{version}.tar.gz
 Source1:        R-Rcpp-rpmlintrc
+#BuildRequires:  R-RUnit
 BuildRequires:  R-base-devel >= 3.0.0
-BuildRequires:  R-inline
-BuildRequires:  R-knitr
+#BuildRequires:  R-inline
+#BuildRequires:  R-knitr
 BuildRequires:  R-methods
-BuildRequires:  R-rbenchmark
-BuildRequires:  R-rmarkdown
-BuildRequires:  R-RUnit
+#BuildRequires:  R-rbenchmark
+#BuildRequires:  R-rmarkdown
 BuildRequires:  R-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -66,7 +65,6 @@ Balamuta (2017, <doi:10.7287/peerj.preprints.3188v1>); see
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       R-base-devel
 
@@ -75,7 +73,6 @@ Development files and headers needed to build software using %{name}.
 
 %package        doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
 Requires:       %{name} = %{version}
 
 %description    doc
@@ -103,9 +100,9 @@ rm -f %{buildroot}%{rlibdir}/R.css
 %fdupes %{buildroot}%{rlibdir}/%{packname}
 
 %check
-export LANG=en_US.UTF-8
-export _R_CHECK_FORCE_SUGGESTS_=false
-%{_bindir}/R CMD check %{packname}
+#export LANG=en_US.UTF-8
+#export _R_CHECK_FORCE_SUGGESTS_=false
+#%{_bindir}/R CMD check %{packname}
 
 %files
 %dir %{rlibdir}/%{packname}

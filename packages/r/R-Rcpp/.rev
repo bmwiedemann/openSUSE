@@ -27,4 +27,12 @@
 - Tidy spec (forwarded request 727411 from jayvdb)</comment>
     <requestid>727603</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>850085c90028803fc68fac4fca7500cd</srcmd5>
+    <version>1.0.3</version>
+    <time>1581277768</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>772336</requestid>
+  </revision>
 </revisionlist>
