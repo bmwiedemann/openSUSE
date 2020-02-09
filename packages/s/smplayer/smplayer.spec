@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(xext)
 # Either mpv >= 0.6.2 or MPlayer >= 1.0rc4_r32607.
 Requires:       mpv >= 0.6.2
 Recommends:     smplayer-lang
