@@ -1,7 +1,7 @@
 #
 # spec file for package xrdp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          System/X11/Utilities
-Url:            https://github.com/neutrinolabs/xrdp
+URL:            https://github.com/neutrinolabs/xrdp
 Source0:        https://github.com/neutrinolabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/neutrinolabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        xrdp.keyring
@@ -121,8 +121,9 @@ sh ./bootstrap
 %configure \
    --enable-ipv6 \
    --enable-painter \
-   --with-systemdsystemunitdir=%{_unitdir}
-make %{?_smp_mflags}
+   --with-systemdsystemunitdir=%{_unitdir} \
+   --enable-vsock
+make %{?_smp_mflags} V=1
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
