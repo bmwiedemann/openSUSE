@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:52:11 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3:
+  * Added option: ``--stadfa``.
+  * Added warning: ``-Wsentinel-in-midrule``.
+  * Added generic API primitives:
+    + ``YYSTAGPD``
+    + ``YYMTAGPD``
+  * Added configurations:
+    + ``re2c:sentinel = 0;``
+    + ``re2c:define:YYSTAGPD = "YYSTAGPD";``
+    + ``re2c:define:YYMTAGPD = "YYMTAGPD";``
+  * Worked on reproducible builds
+
+-------------------------------------------------------------------
 Wed Aug 14 15:37:39 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.1:
