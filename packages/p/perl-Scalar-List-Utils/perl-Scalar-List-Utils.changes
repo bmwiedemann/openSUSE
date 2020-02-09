@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  3 03:15:24 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.54 -- 2020-02-02 15:47
+  	[CHANGES]
+  	 * Added List::Util::reductions (RT128237)
+  	 * Added List::Util::sample (RT131535)
+  	 * Recognise $List::Util::RAND as a source of randomness for sampling
+  	   functions (RT131536)
+  
+  	[BUGFIXES]
+  	 * Document the difference between ref() and reftype() on precompiled
+  	   qr// regexps (RT127963)
+  	 * Various improvements to List::Util::uniqnum() to handle stringified
+  	   Inf and NaN, negative zero
+  	 * Detect platform NV size and number of digits required to calculate
+  	   uniqueness
+
+-------------------------------------------------------------------
 Fri Oct 25 09:48:59 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.53
