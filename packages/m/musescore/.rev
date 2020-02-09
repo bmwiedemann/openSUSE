@@ -214,4 +214,22 @@
     <comment></comment>
     <requestid>768170</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>68eda3452f907a4808bcec11fc45a546</srcmd5>
+    <version>3.4.2</version>
+    <time>1581277666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.2:
+  * Telemetry dialog was not accessible for visually impaired people
+  * Drum input palette worked incorrectly due to the changes
+    involving single click behaviour
+  * MuseScore crashed when pressing numbers/letters in a different
+    voice when inputting tabs
+  * Hidden pedal items were no longer displayed
+  * &quot;L&quot; letter could not be typed when entering text
+- Remove 0001-fix-299654-Crash-on-startup-with-Qt-5.14.patch (part
+  of tarball now)
+- update correct-revision.patch</comment>
+    <requestid>772108</requestid>
+  </revision>
 </revisionlist>
