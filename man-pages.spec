@@ -32,6 +32,8 @@ Patch3:         %{name}_gai.conf-reference.patch
 Patch5:         %{name}-tty_ioctl.patch
 # [bsc#1154701]
 Patch6:         man-pages-tcp_fack.patch
+# [bsc#1162464]
+Patch7:         man-pages-somaxconn-default-value.patch
 BuildRequires:  fdupes
 Supplements:    packageand(man:patterns-base-documentation)
 BuildArch:      noarch
@@ -53,6 +55,7 @@ only).
 %patch3
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 find -name "*.orig" | xargs rm -fv
 
 %build

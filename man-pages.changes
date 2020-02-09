@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:36:58 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  [bsc#1162464]
+  + man-pages-somaxconn-default-value.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 11:31:23 UTC 2020 - pgajdos@suse.com
 
 - do not install man7/bpf-helpers.7 as it is already part of
