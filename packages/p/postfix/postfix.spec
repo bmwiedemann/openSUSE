@@ -1,7 +1,7 @@
 #
 # spec file for package postfix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,12 +53,12 @@
 %bcond_with    libnsl
 %endif
 Name:           postfix
-Version:        3.4.8
+Version:        3.4.9
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
 Group:          Productivity/Networking/Email/Servers
-Url:            http://www.postfix.org
+URL:            http://www.postfix.org
 Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz
 Source2:        %{name}-SuSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
@@ -183,7 +183,7 @@ PostgreSQL.
 %build
 unset AUXLIBS AUXLIBS_LDAP AUXLIBS_PCRE AUXLIBS_MYSQL AUXLIBS_PGSQL AUXLIBS_SQLITE AUXLIBS_CDB
 
-export CCARGS="${CCARGS} %{optflags} -Wno-comments -Wno-missing-braces -fPIC"
+export CCARGS="${CCARGS} %{optflags} -fcommon -Wno-comments -Wno-missing-braces -fPIC"
 %ifarch s390 s390x ppc
 export CCARGS="${CCARGS} -fsigned-char"
 %endif
