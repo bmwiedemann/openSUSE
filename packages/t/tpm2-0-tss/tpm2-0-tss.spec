@@ -31,7 +31,22 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(udev)
-Requires(pre):  shadow
+# The same user is employed by trousers (and was employed by the old
+# resourcemgr shipped with the tpm2-0-tss package):
+#
+# trousers just needs those accounts for dropping privileges to. The service
+# starts as root and uses set*id to drop to tss, after the tpm device has been
+# opened.
+#
+# tpm2-abrmd has no set*id handling and thus requires /dev/tpm to be owned
+# by the tss user. Therefore we also need to install a udev rule file.
+#
+# trousers was here first and created the user like this, also giving it a
+# home in /var/lib/tpm. I don't think the home directory is used by either of
+# the packages ATM. Trousers is keeping state there, but the directory is
+# owned by root and files are opened before dropping privileges. The passwd
+# entry seems not to be evaluated.
+Requires:       user(tss)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -125,29 +140,6 @@ protocol exposed by the Microsoft software TPM2 simulator.
 
 %prep
 %setup -q -n tpm2-tss-%{version}
-
-%pre
-# the same user is employed by trousers (and was employed by the old
-# resourcemgr shipped with the tpm2-0-tss package):
-#
-# trousers just needs those accounts for dropping privileges to. The service
-# starts as root and uses set*id to drop to tss, after the tpm device has been
-# opened.
-#
-# tpm2-abrmd has no set*id handling and thus requires /dev/tpm to be owned
-# by the tss user. Therefore we also need to install a udev rule file.
-#
-# trousers was here first and created the user like this, also giving it a
-# home in /var/lib/tpm. I don't think the home directory is used by any of
-# both packages ATM. Trousers is keeping state there, but the directory is
-# owned by root and files are opened before dropping privileges. The passwd
-# entry seems not to be evaluated.
-#
-# so I guess we can share the account between the two packages for now.
-%_bindir/getent group tss >/dev/null || %{_sbindir}/groupadd -g 98 tss
-%_bindir/getent passwd tss >/dev/null || \
-	%{_sbindir}/useradd -u 98 -o -g tss -s /bin/false -c "TSS daemon" \
-	-d %{_localstatedir}/lib/tpm tss
 
 %build
 %configure --disable-static --with-udevrulesdir=%{_udevrulesdir}

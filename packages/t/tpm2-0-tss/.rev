@@ -312,4 +312,14 @@ into the same staging project.</comment>
   shortcut through the -mini flavor. (forwarded request 766910 from dimstar)</comment>
     <requestid>767595</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>059386a05cf82f031747fb4aebf48c2c</srcmd5>
+    <version>2.3.2</version>
+    <time>1581278478</time>
+    <user>dimstar_suse</user>
+    <comment>- Use system-users for tss user creation (boo#1162360).
+
+This should be handled together with sr#769061</comment>
+    <requestid>769069</requestid>
+  </revision>
 </revisionlist>
