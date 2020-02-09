@@ -466,7 +466,7 @@ rm -fv libsiconv/shlsiconv.mk
 # - To enable verbosity, use with CC=cc LDCC=cc DYNLD=cc.
 # - Not fully parallel safe, so stick to default.
 #
-mycf="%optflags -fno-strict-aliasing -fno-omit-frame-pointer -fPIC -finput-charset=ISO-8859-1"
+mycf="%optflags -fno-strict-aliasing -fno-omit-frame-pointer -fPIC -finput-charset=ISO-8859-1 -fcommon"
 gmake RUNPATH="" LINKMODE=dynamic COPTOPT="$mycf" LDOPTX="" SCCS_BIN_PRE="" SCCS_HELP_PRE="" config all
 
 %install

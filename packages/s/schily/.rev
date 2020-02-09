@@ -229,4 +229,12 @@
     <comment>- Update to release 2019.12.05</comment>
     <requestid>763520</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>1f1086b63288cec68451dd704ebf8528</srcmd5>
+    <version>unknown</version>
+    <time>1581278543</time>
+    <user>dimstar_suse</user>
+    <comment>- Set -fcommon [boo#1160291].</comment>
+    <requestid>770063</requestid>
+  </revision>
 </revisionlist>

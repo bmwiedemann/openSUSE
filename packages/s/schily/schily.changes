@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:54:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Set -fcommon [boo#1160291].
+
+-------------------------------------------------------------------
 Sun Jan 12 00:42:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2019.12.05
