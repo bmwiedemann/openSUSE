@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 03:07:29 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 4.46
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.46 2020-02-03
+  
+      [ DOCUMENTATION ]
+      - Document support for SameSite=None cookies (GH #238)
+
+-------------------------------------------------------------------
 Tue Jan 14 03:07:14 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 4.45
