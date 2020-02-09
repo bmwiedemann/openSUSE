@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:14:37 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.10.2 (bugfix)
+- Drop usptreamed patch:
+  * qgis-3.8.3-reproducible.patch
+  * a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
+  * Fix-build-with-txt2tags-3.3.patch
+- Fix build on Leap 15.1 (fix grass folder)
+
+-------------------------------------------------------------------
 Thu Jan  2 10:18:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch Fix-build-with-txt2tags-3.3.patch

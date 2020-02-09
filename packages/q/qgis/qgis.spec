@@ -17,9 +17,8 @@
 
 
 %bcond_without grass
-
 Name:           qgis
-Version:        3.10.0
+Version:        3.10.2
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -29,11 +28,6 @@ Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
-# PATCH-FIX-UPSTREAM fix randomness in desktop file translations
-Patch0:         qgis-3.8.3-reproducible.patch
-Patch1:         a07d915d7bf9c7c54b2047f8819ba2aae6669f35.patch
-# PATCH-FIX-UPSTREAM fix build with recent txt2tags versions
-Patch2:         Fix-build-with-txt2tags-3.3.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -41,16 +35,13 @@ BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  flex >= 2.5.6
 BuildRequires:  geos-devel >= 3.4
-%if %{with grass}
-BuildRequires:  grass-devel >= 7.2
-%endif
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libQt5Sql5-mysql
 BuildRequires:  libQt5Sql5-postgresql
-BuildRequires:  libexiv2-devel
 # Add the 3 main db we should access
 # also have them in requires
 BuildRequires:  libQt5Sql5-sqlite
+BuildRequires:  libexiv2-devel
 BuildRequires:  libqscintilla_qt5-devel
 BuildRequires:  libspatialindex-devel
 BuildRequires:  ocl-icd-devel
@@ -141,13 +132,15 @@ Recommends:     gpsbabel
 Conflicts:      qgis-ltr
 Conflicts:      qgis-master
 Obsoletes:      qgis2
+%if %{with grass}
+BuildRequires:  grass-devel >= 7.2
+%endif
 
 %package devel
 Summary:        Development Libraries for QGIS
 Group:          Development/Libraries/C and C++
 Requires:       python3-qt5-devel
 Requires:       qgis = %{version}
-
 %if %{with grass}
 %package plugin-grass
 Summary:        GRASS Support Libraries for QGIS
@@ -200,7 +193,11 @@ export PATH=$PATH:$QTDIR/bin
 %if %{with grass}
   -DWITH_GRASS=TRUE \
   -DWITH_GRASS7=TRUE \
+%if 0%{?suse_version} > 1500
   -DGRASS_PREFIX7=`cat %{_sysconfdir}/GRASSDIR` \
+%else
+  -DGRASS_PREFIX7=%{_libdir}/grass78 \
+%endif
 %endif
   -DWITH_QSPATIALITE=TRUE \
   -DWITH_SERVER=TRUE \
