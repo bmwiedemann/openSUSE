@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  4 03:09:09 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.10.4
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  
+  Version 3.10.4  (released February 3, 2020)
+  
+    - Allow localtime from Time::Piece to be used directly as a bind value again.
+      This applies to all "magical" arrays.
+      [Greg Sabino Mullane]
+      [Github issue #63]
+  
+    - Force tests to NOT run in parallel.
+      [Greg Sabino Mullane]
+      [RT #130834]
+
+-------------------------------------------------------------------
 Tue Jan 21 03:10:17 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.10.3
