@@ -96,7 +96,6 @@ Requires:       udev >= 146
 Requires(post): %fillup_prereq
 Requires(pre):  group(audio)
 Requires(pre):  shadow
-Recommends:     %{name}-lang
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
 Conflicts:      kernel < 2.6.31

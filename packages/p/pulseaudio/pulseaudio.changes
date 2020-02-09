@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 07:36:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Thu Dec 19 14:37:37 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
