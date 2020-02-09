@@ -22,7 +22,7 @@
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
 %define maxcriversion 1.18
 Name:           kubernetes
-Version:        %{baseversion}.0
+Version:        %{baseversion}.2
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0

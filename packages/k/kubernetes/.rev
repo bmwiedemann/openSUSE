@@ -475,4 +475,12 @@
     <comment>1.17 with fixes</comment>
     <requestid>764079</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d8d2c35017f04f667615150d2c0f868f</srcmd5>
+    <version>1.17.2</version>
+    <time>1581278514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770037</requestid>
+  </revision>
 </revisionlist>

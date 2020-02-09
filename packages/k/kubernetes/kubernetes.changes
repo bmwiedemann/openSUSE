@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb 04 15:04:34 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.17.2:
+  * [1.17] No-op whitespace fix to CHANGELOG-1.17 to trigger a new 1.17 build
+  * Add/Update CHANGELOG-1.17.md for v1.17.1.
+  * Drop version from static openapi json file
+  * Update to golang@1.13.5
+  * Revert reflector changes from PR #83520 from 1.17
+  * Fix IPv6 addresses lost issue in pure ipv6 vsphere environment
+  * Fix unit test to run in non-gce environments
+  * fix: azure disk could not mounted on Standard_DC4s/DC2s instances
+  * Use legacyscheme's types rather than testapi ones
+  * Fix nil pointer dereference in the azure provider
+  * Add unit test for extended ipv4 service IP range
+  * Revert "remove ipallocator in favor of k/utils net package"
+  * It fixes a bug where AAD token obtained by kubectl is incompatible with on-behalf-of flow and oidc.
+  * Allocate map when out points to nil map
+  * fix: azure data disk should use same key as os disk by default
+  * Check FileInfo against nil during walk of container dir path
+  * Add UID precondition to kubelet pod status patch updates
+  * Add cache for VMSS.
+  * Fix build break - Hyperkube image needs kubelet/kubectl
+  * Include cloud/gcp in e2e.test
+  * Do not swallow timeout in manageReplicas
+  * Sync the status of static Pods
+  * Increase Burst limit for discovery client
+  * Update v1.17.0 CHANGELOG to match final draft
+  * Fix LoadBalancer rule checking so that no unexpected LoadBalancer updates are made
+  * Fix broken SELinux detection
+  * Add/Update CHANGELOG-1.17.md for v1.17.0.
+  * Kubernetes version v1.17.1-beta.0 openapi-spec file updates
+  * Deflake kubectl custom printing test
+  * Move hostdns.conf out of cni directory.
+
+-------------------------------------------------------------------
 Mon Jan 13 15:30:53 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add kubeadm-opensuse-flexvolume.patch so kubeadm uses same path as kubelet (bsc#1084766) 
