@@ -17,7 +17,7 @@
 
 
 Name:           libqt5-creator
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -31,7 +31,7 @@ Group:          Development/Tools/IDE
 Url:            https://www.qt.io/ide/
 %define major_ver 4.11
 %define qt5_version 5.11.0
-%define tar_version 4.11.0
+%define tar_version 4.11.1
 # Change back from 'development_releases' to 'official_releases' for 4.11.0
 Source:         https://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
