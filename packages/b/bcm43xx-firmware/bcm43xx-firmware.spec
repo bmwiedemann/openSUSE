@@ -1,7 +1,7 @@
 #
 # spec file for package bcm43xx-firmware
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,10 +47,10 @@ Source4309:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom
 Source4356:     brcmfmac4356-pcie.txt
 Source4559:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C0.hcd
 # Owns /lib/firmware/brcm and potentially conflicts
-BuildRequires:  kernel-firmware
+BuildRequires:  kernel-firmware-brcm
 # Owns /etc/modprobe.d
 BuildRequires:  suse-module-tools
-Requires:       kernel-firmware
+Requires:       kernel-firmware-brcm
 # BCM4356 PCI
 Supplements:    modalias(pci:v000014E4d000043ECsv*sd*bc*sc*i*)
 # Raspberry Pi 3 Model B

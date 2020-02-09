@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 07:52:50 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- just depend on splitted brcm firmware package and not all
+
+-------------------------------------------------------------------
 Wed Jan  1 21:41:37 UTC 2020 - Manu Maier <mmanu84@outlook.de>
 
 - Dropped brcmfmac43455-sdio.raspberrypi,4-model-b.txt (in
