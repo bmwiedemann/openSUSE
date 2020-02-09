@@ -1,0 +1,44 @@
+From: Gert Wollny <gert.wollny@collabora.com>
+Date: Mon, 13 Jan 2020 10:03:19 +0100
+Subject: [PATCH] vrend: Don't free resource struct in
+ _resource_allocate_texture
+
+Git-commit: 522b610a826f6de58c560cbb38fa8dfc65ae3c42
+References: boo#1162521, CVE-2020-8003
+
+The structure is allocated outside this function and also deleted there
+if texture creation failes or it is asserted that it doesn't fail
+for intermediate blitting textures. Therefore, don't free the struct inside
+this function when allocation fails.
+
+Closes #154
+
+Signed-off-by: Gert Wollny <gert.wollny@collabora.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/vrend_renderer.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/vrend_renderer.c b/src/vrend_renderer.c
+index edc195f..a054bad 100644
+--- a/src/vrend_renderer.c
++++ b/src/vrend_renderer.c
+@@ -6460,7 +6460,6 @@ static int vrend_renderer_resource_allocate_texture(struct vrend_resource *gr,
+       } else {
+          vrend_printf( "missing GL_OES_EGL_image_external extensions\n");
+          glBindTexture(gr->target, 0);
+-         FREE(gr);
+          return EINVAL;
+       }
+    } else {
+@@ -6471,7 +6470,6 @@ static int vrend_renderer_resource_allocate_texture(struct vrend_resource *gr,
+       if (internalformat == 0) {
+          vrend_printf("unknown format is %d\n", pr->format);
+          glBindTexture(gr->target, 0);
+-         FREE(gt);
+          return EINVAL;
+       }
+ 
+-- 
+2.25.0
+

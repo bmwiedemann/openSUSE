@@ -1,0 +1,32 @@
+From: Lepton Wu <lepton@chromium.org>
+Date: Wed, 29 Jan 2020 14:26:16 -0800
+Subject: [PATCH] vrend: Don't switch to ctx0 when deleting ctx0
+
+Git-commit: 039baad8cd600f4f4e35389b10c1196f742d0fa0
+
+This causes use after free.
+
+Signed-off-by: Lepton Wu <lepton@chromium.org>
+Reviewed-by: David Riley <davidriley@chromium.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/vrend_renderer.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/vrend_renderer.c b/src/vrend_renderer.c
+index db82a8c..6d24363 100644
+--- a/src/vrend_renderer.c
++++ b/src/vrend_renderer.c
+@@ -5972,7 +5972,8 @@ bool vrend_destroy_context(struct vrend_context *ctx)
+ 
+    LIST_FOR_EACH_ENTRY_SAFE(sub, tmp, &ctx->sub_ctxs, head)
+       vrend_destroy_sub_context(sub);
+-   vrend_renderer_force_ctx_0();
++   if(ctx->ctx_id)
++      vrend_renderer_force_ctx_0();
+ 
+    vrend_object_fini_ctx_table(ctx->res_hash);
+ 
+-- 
+2.25.0
+

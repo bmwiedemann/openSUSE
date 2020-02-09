@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:46:04 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Avoid potential DoS in texture allocation (CVE-2020-8003
+  boo#1162521)
+  vrend-Don-t-free-resource-struct-in-_resource_alloca.patch
+- Avoid potential DoS if grid launched without prior Compute Shader
+  (CVE-2020-8002 boo#1162519)
+  vrend-Don-t-try-launching-a-grid-if-no-CS-is-availab.patch
+- Avoid deleting wrong object, in use by others
+  vrend-Use-the-original-context-to-delete-objects.patch
+- Avoid potential use after free when deleting context
+  vrend-Don-t-switch-to-ctx0-when-deleting-ctx0.patch
+
+-------------------------------------------------------------------
 Mon Jan  6 16:57:48 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update package to 0.8.1
