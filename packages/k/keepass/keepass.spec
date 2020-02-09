@@ -1,7 +1,7 @@
 #
 # spec file for package keepass
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name KeePass
 
 Name:           keepass
-Version:        2.42.1
+Version:        2.44
 Release:        0
 Summary:        Password Manager
 License:        GPL-2.0-or-later
