@@ -61,7 +61,12 @@ ls | sed '/^build$/d' | xargs cp -at build/src/github.com/%{name}/%{name}
 cp -a vendor build/vendor/src
 
 pushd build/src/github.com/%{name}/%{name}/
+# build and install stcli which has no dedicated target and can not be built with -no-upgrade
 go run build.go -version v%{version} install all
+# build and install syncthing without automatic updates
+go run build.go -no-upgrade -version v%{version} install
+# build and install strelaysrv without automatic updates
+go run build.go -no-upgrade -version v%{version} install strelaysrv
 popd
 
 %install
