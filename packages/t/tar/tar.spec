@@ -1,7 +1,7 @@
 #
 # spec file for package tar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        GNU implementation of ((t)ape (ar)chiver)
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
-Url:            https://www.gnu.org/software/tar/
+URL:            https://www.gnu.org/software/tar/
 Source0:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/tar/%{name}-%{version}.tar.bz2.sig
 # http://wwwkeys.pgp.net:11371/pks/lookup?op=get&search=0x3602B07F55D0C732
@@ -44,7 +44,6 @@ BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
 Requires(pre):  info
-Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-rmt = %{version}
 Recommends:     mt
 Recommends:     xz
