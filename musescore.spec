@@ -21,7 +21,7 @@
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0
@@ -38,8 +38,6 @@ Patch0:         correct-revision.patch
 Patch1:         use-qtmake-qt5.patch
 # PATCH-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
 Patch2:         use-system-qtwebengine-files.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-fix-299654-Crash-on-startup-with-Qt-5.14.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
