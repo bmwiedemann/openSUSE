@@ -327,4 +327,12 @@
     <comment>- Drop the unneeded python2 requirement.</comment>
     <requestid>764360</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>75d932bc0832fe3b634cdc08480e619e</srcmd5>
+    <version>19.12.2</version>
+    <time>1581367680</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771606</requestid>
+  </revision>
 </revisionlist>
