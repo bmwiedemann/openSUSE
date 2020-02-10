@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:38:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.2
+- Changes since 19.12.1:
+  * Fix support for compose key in foldertreewidget
+  * Fix support for dead keys in foldertreewidget filtering
+  * Fix: Bug 415850 - "Move message to folder" dialog does not accept certain characters (kde#415850)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:36:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1
