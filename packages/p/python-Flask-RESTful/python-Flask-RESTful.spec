@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-RESTful
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-RESTful
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        Framework for creating REST APIs
 License:        BSD-3-Clause
