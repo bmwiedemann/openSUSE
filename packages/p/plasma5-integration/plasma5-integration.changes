@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Don't set a new palette if the application has a custom color scheme set
+  * Use setIconProvider instead of setPixmapProvider for KHistoryComboBox
+  * Use URL with transport encryption
+  * Avoid side effects during menu initialization
+  * Make it compiles without deprecated methods
+  * [KDEPlatformSystemTrayIcon] Recreate deleted menu (kde#365105)
+  * port old style connects
+  * Add KDEClangFormat cmake support
+  * Fix issue when there is no WidgetStyle value in kdeglobals
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:37 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
