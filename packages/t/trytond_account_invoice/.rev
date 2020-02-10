@@ -90,4 +90,12 @@
     <comment>bugfix release</comment>
     <requestid>762863</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>66051f4cf06fe3e2b8afa459ef7d2f16</srcmd5>
+    <version>5.0.7</version>
+    <time>1581367994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>772531</requestid>
+  </revision>
 </revisionlist>
