@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailimporter
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Mail import functionality for KDE PIM
 License:        GPL-2.0-or-later
@@ -35,11 +35,11 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
@@ -47,13 +47,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -69,6 +62,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libKF5MailImporter5 = %{version}
 Requires:       libKF5MailImporterAkonadi5 = %{version}
+Requires:       cmake(KF5Archive)
 
 %description devel
 This package provides the development headers of the mailimporter library.
@@ -104,7 +98,7 @@ used by KDE PIM applications to import data from other mail formats
 %build
 %cmake_kf5 -d build
 
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
