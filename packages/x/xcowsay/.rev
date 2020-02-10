@@ -25,4 +25,25 @@
     <comment></comment>
     <requestid>694171</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a1a2fbde868f1d0b3aaacd56bd5f9a0</srcmd5>
+    <version>1.5</version>
+    <time>1581367997</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.5
+Changes:
+    * Updated from Gtk2/GDK to Gtk3/Cairo. Note that because of the removal
+      of the `gtk_widget_shape_combine_mask' API that xcowsay used for
+      transparency, we now rely on the alpha channel of the window and a
+      compositing window manager for this.
+    * As a side effect of this, the bubble is now anti-aliased, fixing a
+      long-standing issue.
+    * Unfortunately running xcowsay without a compositor is no longer
+      supported. If this affects you please continue to use 1.4 as there are
+      no functional changes in 1.5.
+    * The cow position is more random (thanks to Tony Finch).
+- Update souce link to use tarball from github
+</comment>
+    <requestid>772576</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xcowsay
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xcowsay
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Tool that displays a cow and message on the X11 desktop
 License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
-URL:            http://www.doof.me.uk/xcowsay/
-Source:         http://www.nickg.me.uk/files/xcowsay-%{version}.tar.gz
+URL:            https://www.doof.me.uk/xcowsay/
+Source:         https://github.com/nickg/xcowsay/releases/download/v1.5/xcowsay-%{version}.tar.gz
 Source1:        xcowsay.desktop
 Source2:        xcowsay.svg
 Source3:        xcowhelp.desktop
@@ -31,6 +31,7 @@ Source4:        xcowhelp.svg
 Source5:        xcowhelp
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 Requires:       fortune
@@ -59,7 +60,7 @@ xcowsay includes all these amazing features:
 
 %build
 %configure --enable-dbus
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
