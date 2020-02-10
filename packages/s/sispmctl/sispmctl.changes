@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Feb  6 13:08:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Split devel files to devel subpkg
+- Remove unused source file
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan 27 14:39:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 4.2
+- Fix spec file
+
+-------------------------------------------------------------------
+Tue Oct  9 14:22:05 UTC 2018 - Matthias Brugger <mbrugger@suse.com>
+
+- add tool based on 
+  064850d ("src/sispm_ctl.c: show correct replaced outlet number")
+ 
