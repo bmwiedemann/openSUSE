@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgapi
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -158,7 +158,7 @@ to develop KDE PIM applications.
 # workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
 %define _lto_cflags %{nil}
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
