@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-communications
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,13 @@
 
 %define octpkg  communications
 Name:           octave-forge-%{octpkg}
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Digital Communications for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM communications-octave-4.2.patch -- Octave 4.2 fix from MEX-Octave
-Patch1:         communications-octave-4.2.patch
-# PATCH-FIX-UPSTREAM communications-octave-4.2-cxxflags.patch -- Octave 4.2 fix from MEX-Octave
-Patch2:         communications-octave-4.2-cxxflags.patch
-# PATCH-FIX-OPENSUSE 0001-Update-deprecated-functions-includes.patch -- Octave 5.1
-Patch3:         0001-Update-deprecated-functions-includes.patch
-BuildRequires:  automake
+URL:            https://octave.sourceforge.io/%{octpkg}/index.html
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
@@ -46,13 +39,7 @@ This is part of the Octave-Forge project.
 %prep
 %setup -q -c %{name}-%{version}
 pushd %{octpkg}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 sed -i -e '1 s@usr/bin/env *perl@usr/bin/perl@' doc/*.pl
-popd
-pushd %{octpkg}-%{version}/src
-autoreconf -fi
 popd
 %octave_pkg_src
 

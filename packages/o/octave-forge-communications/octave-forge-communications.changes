@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  9 07:15:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.2.2
+  * The communications package is now compatible with Octave 4.4 and 5.
+- Drop upstream/obsolete patches:
+  * communications-octave-4.2.patch
+  * communications-octave-4.2-cxxflags.patch
+  * 0001-Update-deprecated-functions-includes.patch
+
+-------------------------------------------------------------------
 Wed Mar 13 14:05:25 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Octave 5.1, add 0001-Update-deprecated-functions-includes.patch
