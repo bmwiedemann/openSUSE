@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:36:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.2
+- No code change since 19.12.1
+- Update build requirements
+
+-------------------------------------------------------------------
 Tue Jan 28 18:54:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove no longer needed BuildRequires: KF5AkonadiMime (18.04),
-  Qt5WebEngineWidgets/Qt5WebEngine (17.12) and Grantlee (17.12). 
+  Qt5WebEngineWidgets/Qt5WebEngine (17.12) and Grantlee (17.12).
   Add some previously implicit KF5 dependencies.
 
 -------------------------------------------------------------------

@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-contact
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -43,13 +43,17 @@ BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(KF5Prison) >= %{kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{kf5_version}
+BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
 Recommends:     %{name}-lang
@@ -96,6 +100,7 @@ Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5Contacts)
+Requires:       cmake(Qt5Widgets) >= 5.12.0
 Obsoletes:      akonadi-contacts-devel < %{version}
 Provides:       akonadi-contacts-devel = %{version}
 
@@ -110,7 +115,7 @@ to develop KDE PIM applications.
 
 %build
 %cmake_kf5 -d build -- -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-%make_jobs
+%cmake_build
 
 %install
   %kf5_makeinstall -C build
