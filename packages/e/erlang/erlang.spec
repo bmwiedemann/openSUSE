@@ -28,7 +28,7 @@
 %{!?make_build:%{expand: %%global make_build %%{__make} %%{?_smp_mflags}}}
 
 Name:           erlang
-Version:        22.2.4
+Version:        22.2.5
 Release:        0
 # not set up to be built with position independend executable support
 #!BuildIgnore:	gcc-PIE
