@@ -678,4 +678,12 @@
     <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
     <requestid>762009</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>797594382e34befc2048aa638869d754</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367934</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
+    <requestid>772265</requestid>
+  </revision>
 </revisionlist>
