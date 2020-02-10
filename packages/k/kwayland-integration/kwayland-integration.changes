@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * [windowsystem] Fix compilation with no-deprecated build of KWindowSystem
+  * kwayland-integration: fix compilation with no-deprecated build of kwindowsystem
+  * Remove duplicated check for StaysOnTop, same value as KeepAbove.
+  * Port deprecated enum
+  * It's already in ecm
+  * Add KDEClangFormat cmake support
+  * Don't commit the wl_surface from outside Qt code
+  * [KWindowSystem] in icon() return realistic icon size
+  * We depend against 5.62 now
+  * Remove support for KWin's QPA plugin for KWindowSystem
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
