@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * fix var name in sa_len branch
+  * do not disable getifaddrs use because of sa_len availablility (kde#313892,kde#277208)
+  * remove all platform conditionals not pertaining to linux or *bsd
+  * one feature_summary call (in the main file) is enough thank you very much
+  * tooltipmanager: use qstyle wakeup delay instead of hardcoding (kde#393722)
+  * override picutils' error logger; it has an exit() call (kde#382979)
+  * parse xorg version for nicer display (kde#344038)
+  * do not show "copy in english" when using C as locale (kde#403368)
+  * find org.kde.kirigami as runtime dependency (kde#403011)
+  * do not needlessly run through Solid::Device::allDevices (kde#399746)
+  * remove uselss boilerplate line
+  * make sure Solid::Battery is not deleted from QML (kde#413003)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Fix compile without deprecated methods
+  * Port away from deprecated KIconLoader::SmallIcon
+  * Fix link: ui.html -> menus.html
+  * Use URL with transport encryption
+  * Add missing override
+  * This method is never used (and use a deprecated methods)
+  * Add KDEClangFormat cmake support
+  * [energy kcm] Fix Technology values
+  * [energy KCM] Add battery Technology
+  * Port some deprecated methods
+  * Port QLayout::setMargins
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
