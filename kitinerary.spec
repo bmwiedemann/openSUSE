@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -84,7 +84,7 @@ to build programs that use the kitinerary library.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
