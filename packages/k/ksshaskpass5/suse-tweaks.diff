@@ -1,9 +1,10 @@
-diff -urB ksshaskpass/CMakeLists.txt new/CMakeLists.txt
---- ksshaskpass/CMakeLists.txt	2014-11-14 14:43:03.239674828 +0100
-+++ new/CMakeLists.txt	2014-11-14 14:55:55.783702339 +0100
-@@ -44,7 +44,7 @@ target_link_libraries(ksshaskpass
-     KF5::WidgetsAddons
- )
+Index: ksshaskpass-5.15.80git.20191107T081431~7521a9a/CMakeLists.txt
+===================================================================
+--- ksshaskpass-5.15.80git.20191107T081431~7521a9a.orig/CMakeLists.txt	2019-11-07 08:14:31.000000000 +0100
++++ ksshaskpass-5.15.80git.20191107T081431~7521a9a/CMakeLists.txt	2019-11-08 07:32:28.729193180 +0100
+@@ -49,7 +49,7 @@
+ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
  
 -install(TARGETS ksshaskpass DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS})
 +install(TARGETS ksshaskpass DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/ssh)
