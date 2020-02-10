@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Drop kconf_update module, handled by kde-gtk-config now
+
+-------------------------------------------------------------------
+Thu Feb  6 14:52:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * [GTK3] Fix Chromium maximized maximize button
+  * [GTK3] Fix treeview hover colour (kde#414263)
+  * [GTK3] Improve Electron menubar legibility (kde#413915)
+  * Revert "[GTK3] Revert checkbox recolouring"
+  * [GTK3] Add styles for libhandy widgets
+  * Fix compatibility of build_theme.sh with Dash
+  * [GTK3] Fix menu bugs
+- Drop patches, now upstream:
+  * 0001-Revert-GTK3-Revert-checkbox-recolouring.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

@@ -19,28 +19,24 @@
 
 %define _name   breeze
 Name:           breeze-gtk
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/breeze-gtk
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz
+Source:         breeze-gtk-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz.sig
+Source1:        breeze-gtk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM (in master)
-Patch1:         0001-Revert-GTK3-Revert-checkbox-recolouring.patch
 BuildRequires:  breeze5-style
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  kf5-filesystem
 BuildRequires:  python3-cairo
 BuildRequires:  sassc
-BuildRequires:  cmake(Qt5Core)
 
 %description
 A GTK+ theme created to match with the new Plasma 5 Breeze theme.
@@ -85,7 +81,7 @@ A GTK+ theme created to match with the new Plasma 5 Breeze theme.
 
 %build
 %cmake_kf5
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %kf5_makeinstall
@@ -96,11 +92,7 @@ make %{?_smp_mflags}
 %doc README.md
 %{_datadir}/themes/Breeze*/
 %exclude %{_datadir}/themes/Breeze*/gtk-*/
-%dir %{_kf5_sharedir}/kconf_update/
 %dir %{_kf5_sharedir}/themes/Breeze*/assets/
-%{_kf5_sharedir}/kconf_update/*%{_name}*
-%dir %{_kf5_libdir}/kconf_update_bin/
-%{_kf5_libdir}/kconf_update_bin/*%{_name}*
 
 %files -n gtk2-metatheme-%{_name}
 %{_datadir}/themes/Breeze*/gtk-2.0/
