@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdcraw
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
@@ -62,7 +62,7 @@ programs.
 
 %build
   %cmake_kf5 -d build -- -DENABLE_LCMS2=true -DENABLE_RAWSPEED=true
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
