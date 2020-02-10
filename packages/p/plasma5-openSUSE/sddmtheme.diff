@@ -21,10 +21,10 @@ diff --git a/breeze/theme.conf b/breeze-openSUSE/theme.conf
 index 35c2a13..4d0709a 100644
 --- a/breeze/theme.conf
 +++ b/breeze-openSUSE/theme.conf
-@@ -2,5 +2,5 @@
+@@ -4,5 +4,5 @@
  type=image
  color=#1d99f3
  fontSize=10
--background=/usr/share/wallpapers/Next/contents/images/5120x2880.png
+-background=/usr/share/wallpapers/Next/contents/images/5120x2880.jpg
 +background=components/artwork/1920x1080.jpg
  needsFullUserModel=false
