@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Add a convenience property to retrieve the size of the decorated client
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Fix git builds against Qt 5.14
+  * Fixup deprecated use of QWeakPointer::data
+  * Add KDEClangFormat cmake support
+  * Port old style connects in QSignalSpy
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

@@ -663,4 +663,30 @@
     <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
     <requestid>761990</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>faf388fbc66892f620dccd02e22146d2</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Add a convenience property to retrieve the size of the decorated client
+
+- Replace %make_jobs with %cmake_build
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Fix git builds against Qt 5.14
+  * Fixup deprecated use of QWeakPointer::data
+  * Add KDEClangFormat cmake support
+  * Port old style connects in QSignalSpy</comment>
+    <requestid>772612</requestid>
+  </revision>
 </revisionlist>
