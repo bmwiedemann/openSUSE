@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Plasma 5.18 min Qt version is 5.12
+  * Remove endl at the end of qDebug
+  * Port to QRandomGenerator
+  * QMultiHash::insertMulti is deprecated. Use directly ::insert
+  * Speed up sending request to ksysguardd
+  * Don't use nullptr as flag value
+  * Use URL with transport encryption
+  * Add translations for new memory sensors
+  * Add KDEClangFormat cmake support
+  * Fix minor issues found by EBN
+  * Add version
+  * Now we depend against kf5.62
+  * Fix minor typos
+  * Fix compile for freebsd on CI as it doesn't use qtwebengine 5.13 with qt
+  * The real fix is to change #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0) to
+  * Revert "Port some deprecated methods"
+  * Remove deprecated method
+  * Port some deprecated methods
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
