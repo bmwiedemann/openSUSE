@@ -1,7 +1,7 @@
 #
 # spec file for package ipmctl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Utility for managing Intel Optane DC persistent memory modules
 License:        BSD-3-Clause
 Group:          System/Management
-Url:            https://github.com/intel/ipmctl
+URL:            https://github.com/intel/ipmctl
 %if "%{vgit}" == ""
 Source:         https://github.com/intel/ipmctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 %else
@@ -50,9 +50,9 @@ BuildRequires:  python
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libndctl) >= 58.2
+BuildRequires:  pkgconfig(systemd)
 # for SafeC
 BuildRequires:  autoconf
 BuildRequires:  automake
