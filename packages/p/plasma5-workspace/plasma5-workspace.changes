@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * tooltips always have normal color group
+  * Fix typo
+  * [Notifications] Don't dodge notification popups
+  * [Notifications] Fixup setSourceModel
+  * [SNI] Fix race condition in item registration (kde#416652)
+  * [Notifications] Fix typo
+  * Shut up
+  * [System Tray] Initially set correct category for plasmoids (kde#416947)
+  * [Task Manager] Remove strict URL handling (kde#385727)
+  * [context menu] Remove last traces of "Lock Widgets" action from UI (kde#416578)
+  * Remove unused includes
+  * Port plasma-workspace to autoconfig.kde.org
+  * [sddm-theme] Fix broken wallpaper loading
+  * [Notifications] Fix action button size
+  * search for a default wallpaper in lookandfeel
+  * [startkde] Export LC_TIME again (kde#416670)
+  * [Notifications] Set transient parent for file menu (kde#387597)
+  * [SystemTray] Fix model update in settings (missing icon) (kde#416400)
+  * [SystemTray] Remove scrollbar paddings
+  * Runner/Windows make the window finding more reliable (kde#414804)
+  * Kicker/RecentDocuments display place's icon when resource matches one
+  * [Notifications] When there is only a reply action, show reply field right away
+  * [Notifications] Send reply text as targeted signal
+  * Also disable automatic scaling on Qt >= 5.14 (kde#415421)
+  * add includes needed for compiling with qt 5.13
+- Drop patches, now upstream:
+  * 0001-Set-QT_AUTO_SCREEN_SCALE_FACTOR-0-for-Qt-5.14-as-wel.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Tue Jan 21 08:47:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- knewstuff-imports is needed for several KCMs
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:21 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Add-suffix-to-the-wayland-session-s-name.patch
+  * lazy-sddm-theme.patch
+- Refresh patches:
+  * 0001-Use-qdbus-qt5.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 12:10:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix/workaround scaling issues Qt 5.14.0 (kde#415421, boo#1160624):

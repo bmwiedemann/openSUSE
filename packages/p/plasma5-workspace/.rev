@@ -1292,4 +1292,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * 0001-Set-QT_AUTO_SCREEN_SCALE_FACTOR-0-for-Qt-5.14-as-wel.patch</comment>
     <requestid>764278</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>b2c515e982862fa26c30f82893fbb491</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367931</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
+    <requestid>772262</requestid>
+  </revision>
 </revisionlist>

@@ -27,15 +27,15 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -44,13 +44,8 @@ Source4:        plasmafullwayland.desktop
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch503:       0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
-# PATCH-FIX-UPSTREAM (once sddm part merged)
-Patch504:       0001-Add-suffix-to-the-wayland-session-s-name.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
-# PATCH-FIX-OPENSUSE
-Patch507:       lazy-sddm-theme.patch
-Patch508:       0001-Set-QT_AUTO_SCREEN_SCALE_FACTOR-0-for-Qt-5.14-as-wel.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -137,6 +132,7 @@ Requires:       kded
 Requires:       kdelibs4support
 Requires:       kglobalaccel5 >= %{_plasma5_version}
 Requires:       kinit
+Requires:       kquickcharts
 Requires:       kscreen5 >= %{_plasma5_version}
 Requires:       kscreenlocker >= %{_plasma5_version}
 Requires:       kwin5 >= %{_plasma5_version}
@@ -151,6 +147,8 @@ Requires:       milou5 >= %{_plasma5_version}
 Requires:       gmenudbusmenuproxy >= %{_plasma5_version}
 Recommends:     oxygen5-sounds >= %{_plasma5_version}
 Requires:       solid-imports
+# Used by KCMs
+Requires:       knewstuff-imports
 Requires:       xembedsniproxy >= %{_plasma5_version}
 # startkde and startplasma call these
 Requires:       awk
@@ -296,8 +294,8 @@ Plasma 5 session with Wayland from a display manager.
 %autopatch -p1
 
 %build
-  %cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=xdm -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -412,14 +410,14 @@ fi
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.klipper.desktop
-%{_kf5_applicationsdir}/plasma-windowed.desktop
 %{_kf5_applicationsdir}/org.kde.plasmashell.desktop
 %{_kf5_applicationsdir}/org.kde.systemmonitor.desktop
+%{_kf5_applicationsdir}/plasma-windowed.desktop
 %{_kf5_configkcfgdir}/freespacenotifier.kcfg
-%{_kf5_sharedir}/dbus-1/services/org.kde.krunner.service
-%{_kf5_sharedir}/dbus-1/services/org.kde.baloorunner.service
-%{_kf5_sharedir}/dbus-1/services/org.kde.plasma.Notifications.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.LogoutPrompt.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.baloorunner.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.krunner.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.plasma.Notifications.service
 %{_kf5_sharedir}/desktop-directories/
 %{_kf5_sharedir}/kconf_update/
 %dir %{_kf5_htmldir}
