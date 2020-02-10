@@ -1,7 +1,7 @@
 #
 # spec file for package kphotoalbum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           kphotoalbum
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            http://www.kphotoalbum.org/
-Source:         http://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+URL:            https://www.kphotoalbum.org/
+Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch:          Fix-crash-when-associating-a-tag-with-an-area.patch
 BuildRequires:  cmake >= 3.2.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libexiv2-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  phonon4qt5-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -43,9 +44,11 @@ BuildRequires:  cmake(KF5KDcraw)
 BuildRequires:  cmake(KF5KGeoMap)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kipi)
+BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets) >= 5.9.0
@@ -63,6 +66,7 @@ an image from a special place, or even both.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build

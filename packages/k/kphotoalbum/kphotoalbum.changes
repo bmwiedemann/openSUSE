@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb 10 08:54:45 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.6
+  * Change: Don't build with remote interface by default.
+    The companion app has not been available for Android for a
+    while now.
+    This feature will either be removed in the future, or the
+    Android app will be re-published.
+  * Bugfix: Make theme files translatable (kde#406144)
+  * Bugfix: Prevent invalid tag id in index.xml when renaming tags
+    under some circumstances. When invalid ids already are present
+    in an index.xml file, automatically repair if possible, or alert
+    the user that manual repair is needed. (kde#415415)
+  * Bugfix: Deeply nested tag groups are now displayed correctly in
+    the tag groups settings page
+  * Enhancement: Huge performance improvements when tagging a large
+    number of images
+  * Enhancement: Performance improvements for thumbnail view
+  * Feature: Support for using purpose plugins
+  * Feature: Show newly added tagged areas in the annotation
+    dialog's fullscreen preview
+  * Feature: Add filter to thumbnail view, allowing filtering by
+    token or rating
+  * Feature: Make it possible to hide the search bar and the filter
+    toolbar
+- Add Fix-crash-when-associating-a-tag-with-an-area.patch to fix a
+  crash when associating tags with image areas (kde#417360)
+
+-------------------------------------------------------------------
 Mon Apr 29 10:45:23 UTC 2019 - wbauer@tmo.at
 
 - Update to 5.5
