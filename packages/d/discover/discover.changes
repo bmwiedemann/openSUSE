@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Only show app's release date and omit the time of day (which is never set anyway)
+  * Telemetry is disabled by default
+  * appstream: improve screenshots display
+  * packagekit: fix opening files on archlinux
+  * packagekit: don't show where the package will be installed (kde#400044)
+  * fix build for older Qt to 5.14.0
+  * forgot file
+  * appstream: support appstream uri alt ids (kde#416283)
+  * utils: prefer using stl than custom functions
+  * feedback: fix opening the plasma feedback configure dialog (kde#416349)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:19:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

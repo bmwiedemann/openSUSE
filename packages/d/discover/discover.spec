@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           discover
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 Url:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -130,7 +130,7 @@ user to install them using Discover.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
