@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-music-player
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013-2019 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2013-2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           deepin-music-player
-Version:        3.1.18
+Version:        5.0.1
 Release:        0
 Summary:        Deepin Music Player
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://github.com/linuxdeepin/deepin-music
+URL:            https://github.com/linuxdeepin/deepin-music
 Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/deepin-music-%{version}.tar.gz
 # Fix boo#1131464
 Source1:        %{name}-rpmlintrc
@@ -48,8 +48,9 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue)
 BuildRequires:  pkgconfig(taglib)
+BuildRequires:  pkgconfig(xext)
 Provides:       deepin-music
-Recommends:     %{name}-lang = %{version}-%{release}
+Recommends:     deepin-music-libnetease-meta-search = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -111,8 +112,11 @@ Requires:       libmpris-qt5-1 = %{version}-%{release}
 The libmpris-devel package contains the header files and developer
 docs for libmpris.
 
+%lang_package
+
 %prep
 %setup -q -n deepin-music-%{version}
+
 sed -i '/%1/s|lib|%{_lib}|' src/music-player/core/pluginmanager.cpp
 sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \
 src/plugin/netease-meta-search/netease-meta-search.pro
@@ -123,6 +127,7 @@ sed -i 's/^\[\([^D].*$\)/\[X-\1/' src/music-player/data/deepin-music.desktop
 sed -i 's/ Shortcut /-Shortcut-/' src/music-player/data/deepin-music.desktop
 # Enable netease plugin
 sed -i 's/#SUBDIRS/SUBDIRS/' src/plugin/plugin.pro
+sed -i 's|share/$${TARGET}|share/deepin-music|' src/music-player/install.pri
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
@@ -142,6 +147,7 @@ make %{?_smp_mflags}
 
 # Remove invalid developement files.
 rm -rf %{buildroot}%{_libdir}/libdmusic.so
+rm -rf %{buildroot}%{_datadir}/translations
 
 %suse_update_desktop_file -r deepin-music Player AudioVideo
 %fdupes %{buildroot}%{_prefix}
@@ -164,7 +170,6 @@ rm -rf %{buildroot}%{_libdir}/libdmusic.so
 %license LICENSE  COPYING
 %{_bindir}/deepin-music
 %{_datadir}/applications/deepin-music.desktop
-%{_datadir}/deepin-music
 %{_datadir}/dman
 %{_datadir}/icons/hicolor/scalable/apps/deepin-music.svg
 
@@ -202,5 +207,9 @@ rm -rf %{buildroot}%{_libdir}/libdmusic.so
 %dir %{_libdir}/qt5/mkspecs/features/
 %{_libdir}/qt5/mkspecs/features/mpris-qt5.prf
 %{_includedir}/MprisQt/
+
+%files lang
+%defattr(-,root,root,-)
+%{_datadir}/deepin-music
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 10 09:09:00 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Need pkgconfig(xext) while build on Leap 15.2
+
+-------------------------------------------------------------------
+Sun Aug  4 12:09:31 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.1
+  * Fix avoid show another window
+  * init music app connection after init player
+  * changed the player init order
+  * able to use libav via ENABLE_LIBAV
+  * Update translations
+
+-------------------------------------------------------------------
 Sat Jun 15 08:30:20 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.1.18
