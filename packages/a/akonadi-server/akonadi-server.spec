@@ -17,12 +17,12 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.60.0
+%define kf5_version 5.63.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -34,15 +34,13 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
-BuildRequires:  cmake >= 3.0.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libxml2
-BuildRequires:  libxslt
-BuildRequires:  libxslt-devel
+BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  mariadb
 BuildRequires:  postgresql-devel
@@ -51,20 +49,21 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  cmake(KAccounts)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DesignerPlugin)
-BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
-BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
@@ -80,7 +79,6 @@ Provides:       akonadi5 = %{version}
 # Needed for users of unstable repositories
 Obsoletes:      akonadi < %{version}
 Obsoletes:      akonadi-runtime < %{version}
-Recommends:     %{name}-lang
 # FIXME: Check if it's worth it
 Recommends:     kaccounts-integration
 Recommends:     kaccounts-providers
@@ -147,13 +145,16 @@ Requires:       libKF5AkonadiCore5 = %{version}
 Requires:       libKF5AkonadiWidgets5 = %{version}
 Requires:       libboost_headers-devel
 Requires:       cmake(KF5Completion)
+Requires:       cmake(KF5Config)
+Requires:       cmake(KF5ConfigWidgets)
+Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(KF5ItemModels)
-Requires:       cmake(KF5JobWidgets)
-Requires:       cmake(KF5KDELibs4Support)
-Requires:       cmake(KF5Service)
-Requires:       cmake(KF5Solid)
 Requires:       cmake(KF5XmlGui)
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5DBus)
 Requires:       cmake(Qt5Network)
+Requires:       cmake(Qt5Widgets)
+Requires:       cmake(Qt5Xml)
 Conflicts:      libakonadiprotocolinternals-devel
 Obsoletes:      akonadi-devel < %{version}
 Obsoletes:      libKF5AkonadiPrivate-devel < %{version}
@@ -170,7 +171,7 @@ service.
 
 %build
   %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir} -DINSTALL_APPARMOR=FALSE
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build

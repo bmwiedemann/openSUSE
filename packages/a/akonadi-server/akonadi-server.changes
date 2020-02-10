@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:36:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.2
+- No code change since 19.12.1
+
+-------------------------------------------------------------------
+Tue Feb  4 18:31:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Align build dependencies with the ones from CMakeLists.txt,
+  same for -devel and KF5AkonadiConfig.cmake.
+- Remove libxslt-devel, only xstlproc (libxml2-tools) is required.
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Tue Jan  7 10:08:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1
