@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:15:29 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.0.0
+  * Removed unlicensed xsampa.py file, along with associated utility sppas_util.py (originally added in Ver 3.4)
+    If you are not directly importing either of those files, you can upgrade without changing your code
+
+-------------------------------------------------------------------
 Thu Jan 30 15:14:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.8.1

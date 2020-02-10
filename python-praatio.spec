@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-praatio
-Version:        3.8.1
+Version:        4.0.0
 Release:        0
 Summary:        A library for working with praat
 License:        MIT
@@ -55,9 +55,7 @@ use with praat.
 
 %prep
 %setup -q -n praatIO-%{version}
-# This file was from a different author, and its inclusion under MIT is not clear
-# See: https://github.com/timmahrt/praatIO/issues/16
-rm praatio/utilities/xsampa.py
+sed -i 's/\r$//' examples/files/mary.TextGrid
 
 %build
 %python_build
