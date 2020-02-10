@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 10 12:34:39 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 3.3.1
+  * Fixed echo write error on Linux kernel 5.4
+  * Other minor bug fixes
+
+-------------------------------------------------------------------
+Thu Oct 17 12:45:52 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sun Apr 21 12:35:20 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 3.3.0
