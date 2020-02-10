@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [wallpapers] Use more high-quality JPEGs for Next
+  * Revert "Work around an issue with changing the wallpaper's filetype"
+  * Work around an issue with changing the wallpaper's filetype
+  * Replace Ice Cold with Volna for Plasma 5.18
+  * [Breeze Cursors] Add some more cursor names
+  * Center only during drawing, not the hit rects (kde#416348)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:19:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
