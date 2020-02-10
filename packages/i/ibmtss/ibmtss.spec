@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 #
 %define suite ibmtss
-%define libversion 0
-%define libversion_full 0.0.1
+%define libversion 1
+%define libversion_full 1.3.0
 %define libname libibmtss
 %define libpkgname %{libname}%{libversion}
 
 Name:           ibmtss
-Version:        1470
+Epoch:          1
+Version:        1.3.0
 Release:        0
 Summary:        IBM's TPM 2.0 TSS
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://sourceforge.net/projects/ibmtpm20tss
 Source:         https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
+Source1:        90-tpm-ibmtss.rules
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
-Recommends:     %{name}-base = %{version}
 
 %description
 This is a user space TCG Software Stack (TSS) for TPM 2.0. It
@@ -49,6 +50,7 @@ apps, rapid prototyping, education, and debugging.
 %package -n %{libpkgname}
 Summary:        Shared library for IBM's TPM 2.0 TSS
 Group:          System/Libraries
+Recommends:     %{name}-base = %{version}
 
 %description -n %{libpkgname}
 Shared library for IBM's TPM 2.0 TSS tools
@@ -57,6 +59,7 @@ Shared library for IBM's TPM 2.0 TSS tools
 Summary:        IBM's TPM 2.0 TSS shared files
 Group:          Productivity/Security
 BuildArch:      noarch
+Requires(post): user(tss)
 
 %description base
 Includes IBM's TPM 2.0 TSS certificates and policy files.
@@ -85,19 +88,18 @@ kill "$tpm_server" || :
 [ "$testfailed" -eq 0 ]
 
 %install
+install -m 644 -D -t %{buildroot}%{_prefix}/lib/udev/rules.d/ %{SOURCE1}
 cd utils
 %make_install
 
 mkdir -p %{buildroot}/%{_datadir}/%{suite}
 cp -a policies certificates %{buildroot}/%{_datadir}/%{suite}
 
-rm -f  %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -name .cvsignore | xargs rm -v
 
-for i in %{buildroot}/%{_mandir}/man1/tsstss*.1 ; do
-	mv -v $i $(echo $i | sed -e s,/tsstss,/tss,)
-done
-
+%post base
+%_bindir/udevadm trigger -s tpm -s tpmrm || :
 %post   -n %{libpkgname} -p /sbin/ldconfig
 %postun -n %{libpkgname} -p /sbin/ldconfig
 
@@ -114,6 +116,7 @@ done
 %files base
 %license LICENSE
 %{_datadir}/%{suite}
+%{_prefix}/lib/udev/rules.d/*
 
 %files devel
 %license LICENSE
