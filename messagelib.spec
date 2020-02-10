@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Source2:        applications.keyring
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
 Patch1:         0002-Initialize-variable.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-Bug-416369-attachments-lost-draft-message.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
@@ -53,6 +51,7 @@ BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5Gravatar)
 BuildRequires:  cmake(KF5I18n)
@@ -60,6 +59,8 @@ BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
@@ -127,7 +128,7 @@ This package contains source headers for messagelib.
 
 %build
 %cmake_kf5 -d build -- -DMESSAGEVIEWER_USE_QTWEBENGINE=TRUE -DQTWEBENGINE_SUPPORT_OPTION=TRUE
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
