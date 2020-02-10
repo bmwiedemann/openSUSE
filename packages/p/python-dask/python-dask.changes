@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:45:22 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.10.1:
+  * Fix Pandas 1.0 version comparison (:pr:`5851`) Tom Augspurger
+  * Fix typo in distributed diagnostics documentation (:pr:`5841`)
+    Gerrit Holl
+
+- changes from version 2.10.0:
+  * Support for pandas 1.0's new BooleanDtype and StringDtype
+    (:pr:`5815`) Tom Augspurger
+  * Compatibility with pandas 1.0's API breaking changes and
+    deprecations (:pr:`5792`) Tom Augspurger
+  * Fixed non-deterministic tokenization of some extension-array
+    backed pandas objects (:pr:`5813`) Tom Augspurger
+  * Fixed handling of dataclass class objects in collections
+    (:pr:`5812`) Matteo De Wint
+  * Fixed resampling with tz-aware dates when one of the endpoints
+    fell in a non-existent time (:pr:`5807`) dfonnegra
+  * Delay initial Zarr dataset creation until the computation occurs
+    (:pr:`5797`) Chris Roat
+  * Use parquet dataset statistics in more cases with the pyarrow
+    engine (:pr:`5799`) Richard J Zamora
+  * Fixed exception in groupby.std() when some of the keys were large
+    integers (:pr:`5737`) H. Thomson Comer
+
+-------------------------------------------------------------------
 Sat Jan 18 19:16:38 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.9.2:
