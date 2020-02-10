@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksmtp
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -73,7 +73,7 @@ to build programs that use the KSMTP library.
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
