@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:13:13 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.2
+  + Fixes:
+    * Popup creation
+    * DrawControl creation
+  + New features and improvements
+    * Smoother URL changes on GridLayers
+    * ScaleControl
+    * Documentation improvements
+    * WMSLayer: Listen for dynamic changes on parameters
+
+-------------------------------------------------------------------
 Tue Jan 28 16:03:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.12.1

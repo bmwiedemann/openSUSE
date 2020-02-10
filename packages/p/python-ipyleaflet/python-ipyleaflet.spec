@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyleaflet
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
@@ -82,7 +82,7 @@ cp %{buildroot}%{python3_sitelib}/ipyleaflet-%{version}.dist-info/LICENSE .
 
 %files -n jupyter-ipyleaflet
 %license LICENSE
-%{_jupyter_nb_notebook_confdir}/jupyter-leaflet.json
+%config %{_jupyter_nb_notebook_confdir}/jupyter-leaflet.json
 %{_jupyter_nbextension_dir}/jupyter-leaflet/
 
 %changelog
