@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:37:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.2
+- Changes since 19.12.1:
+  * Remove the extra comma
+  * Google provider: limit requested OAuth scopes
+- Dropped patches, now upstream:
+  * 0001-Google-provider-limit-requested-OAuth-scopes.patch
+
+-------------------------------------------------------------------
 Mon Jan 13 14:11:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix Google accounts:

@@ -455,4 +455,12 @@
     <comment>Add upstream patch to fix Google accounts integration.</comment>
     <requestid>764047</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d7259438d6762b40d8957d99a18cf60d</srcmd5>
+    <version>19.12.2</version>
+    <time>1581367679</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771605</requestid>
+  </revision>
 </revisionlist>
