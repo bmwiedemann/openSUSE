@@ -357,4 +357,14 @@ SPDX format (forwarded request 109060 from babelworx)</comment>
   installation/update of the trousers package.</comment>
     <requestid>750985</requestid>
   </revision>
+  <revision rev="43" vrev="8">
+    <srcmd5>5bbacd700d8f93f1dcef5087a103d3e3</srcmd5>
+    <version>0.3.14</version>
+    <time>1581367977</time>
+    <user>dimstar_suse</user>
+    <comment>- Use system-users for tss user creation (boo#1162360).
+
+Should be handled together with sr#769061</comment>
+    <requestid>769067</requestid>
+  </revision>
 </revisionlist>

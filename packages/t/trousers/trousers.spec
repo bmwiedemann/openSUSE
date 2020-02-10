@@ -1,7 +1,7 @@
 #
 # spec file for package trousers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        TSS (TCG Software Stack) access daemon for a TPM chip
 License:        BSD-3-Clause
 Group:          Productivity/Security
-Url:            http://trousers.sourceforge.net/
+URL:            http://trousers.sourceforge.net/
 Source0:        http://downloads.sf.net/trousers/%{name}-%{version}.tar.gz
 Source1:        tcsd.service
 Source2:        baselibs.conf
@@ -35,7 +35,7 @@ BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 # for 'stat' for the hack in %pretrans
 BuildRequires:  coreutils
-Requires(pre):  shadow
+Requires(pre):  user(tss)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -110,10 +110,6 @@ rm -v %{buildroot}/%{_lib}/libtspi.{so,la}
 mv -v %{buildroot}/%{_lib}/*.a %{buildroot}%{_libdir}
 
 %pre
-%_bindir/getent group tss >/dev/null || %{_sbindir}/groupadd -g 98 tss || :
-%_bindir/getent passwd tss >/dev/null || \
-	%{_sbindir}/useradd -u 98 -o -g tss -s /bin/false -c "TSS daemon" \
-	-d %{tpmstatedir} tss || :
 %service_add_pre tcsd.service
 
 %pretrans
