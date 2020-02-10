@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.63.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail-account-wizard
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,14 +33,15 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  gettext-devel
-BuildRequires:  update-desktop-files
+BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Kross)
@@ -49,6 +50,7 @@ BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5PimCommon)
@@ -56,7 +58,6 @@ BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
@@ -81,7 +82,7 @@ An application which assists you with the configuration of accounts in KMail.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
