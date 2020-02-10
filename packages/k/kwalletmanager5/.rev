@@ -449,4 +449,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762441</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>61128514c2680464f95d149adf24f6bd</srcmd5>
+    <version>19.12.2</version>
+    <time>1581367795</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771751</requestid>
+  </revision>
 </revisionlist>
