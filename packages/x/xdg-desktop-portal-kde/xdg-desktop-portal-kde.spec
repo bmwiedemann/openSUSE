@@ -25,24 +25,27 @@
 
 %define kf5_version 5.50.0
 Name:           xdg-desktop-portal-kde
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz
+Source:         xdg-desktop-portal-kde-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz.sig
+Source1:        xdg-desktop-portal-kde-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  libQt5PrintSupport-private-headers-devel
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
+BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
@@ -50,6 +53,7 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.11.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 %if %{with screencast}
 BuildRequires:  pkgconfig(epoxy)
@@ -75,7 +79,7 @@ A Qt/KF5 backend implementation for xdg-desktop-portal
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %make_install -C build
@@ -85,12 +89,13 @@ A Qt/KF5 backend implementation for xdg-desktop-portal
 
 %files
 %license COPYING
-%{_libdir}/libexec/xdg-desktop-portal-kde
-%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.kde.service
+%dir %{_kf5_sharedir}/xdg-desktop-portal
+%dir %{_kf5_sharedir}/xdg-desktop-portal/portals
 %{_kf5_applicationsdir}/org.freedesktop.impl.portal.desktop.kde.desktop
-%dir %{_datadir}/xdg-desktop-portal
-%dir %{_datadir}/xdg-desktop-portal/portals
-%{_datadir}/xdg-desktop-portal/portals/kde.portal
+%{_kf5_libdir}/libexec/xdg-desktop-portal-kde
+%{_kf5_sharedir}/dbus-1/services/org.freedesktop.impl.portal.desktop.kde.service
+%{_kf5_sharedir}/xdg-desktop-portal/portals/kde.portal
+%{_kf5_sharedir}/xdg-desktop-portal-kde
 
 %if %{with lang}
 %files lang -f %{name}.lang
