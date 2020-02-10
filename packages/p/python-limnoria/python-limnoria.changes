@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:33:25 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 2020-01-31:
+  + RSS: If ids are missing, use <link> as id.
+  + RSS: Show a meaningful error in case '@rss' is called with a non-URL/… 
+  + ChannelStats: Use the safe math evaluator.
+  + core/Math: Move the math evaluator to src/utils/.
+  + Math: Fix log/log10 return type.
+  + Aka, Google, String: fix more DeprecationWarning in tests (#1328)
+  + AutoMode, Channel, Nickometer: fix invalid escape sequence Deprecatio…
+  + plugins: use r'' strings to fix DeprecationWarning in test cases (#1328)
+  + Aka, Debug: cleanup imports
+  + Use importlib instead of imp.
+  + Replace failUnless/failIf with assertTrue/assertFalse.
+  + Socket: Don't add instances twice in cls._instances. 
+  + Socket: use a proper lock instead of a boolean.
+  + Add subcommand dispatching for CAP/FAIL/WARN/NOTE.
+  + Rename doAuthenticate* functions to not conflict with callback names.
+  + Make irc.error do nothing is no string is given as argument. 
+  + Call super().setValue() before defaultHttpHeaders. 
+  + Deduplicate setting Accept-Language HTTP header. 
+  + Web: Implement protocols.http.requestLanguage
+  + Add supybot.protocols.http.requestLanguage
+  + Fix getSpecific usage 
+  + Import MutableMapping and MutableSet from collections.abc. 
+  + setup.py: migrate shebang to Python 3
+  + setup.py: remove obsolete version_info conditionals
+  + scripts: remove obsolete conditionals for Python 2
+  + scripts: migrate shebangs and version checks to Python 3
+  + Be less hostile to users in --allow-root help
+  + Readd Limnoria name to default part & quit messages 
+  + SedRegex: skip testReDoSTimeout if multiprocessing is disabled
+  + SedRegex: update plugin metadata 
+  + SedRegex: spawn a single process to handle the whole history.
+  + SedRegex: add test for ReDoS timeout
+  + SedRegex: abort when a search times out
+  + SedRegex: test case normalization of channel names
+  + SedRegex: match channel names case insensitively
+  + SedRegex: log all errors, always display the not found mesage
+  + SedRegex: reuse processTimeout in the sub() process too
+  + SedRegex: README: specifically mention that /s is specific to this plugin
+  + SedRegex: make the regexp process timeout configurable
+  + SedRegex: remove compatibility workaround for Python 2.7.6 and lower
+  + SedRegex: skip testBoldReplacement on Python 2
+  + SedRegex: remove a duplicate test
+  + SedRegex: use self.__class__ instead of __class__ in tests (Python 2 …
+  + SedRegex: add a bunch of test cases
+  + SedRegex: bump copyright year to 2017
+  + SedRegex: fix some replacement queries not working
+  + SedRegex: also catch errors in the regexp_wrapper() step
+  + SedRegex: log the exact error name instead of "SedRegex error"
+  + SedRegex: require ending delimiter to prevent overzealous matching of…
+  + SedRegex: work around "nothing to replace" errors on < Python 2.7.6 a…
+  + SedRegex: fix flag matching
+  + SedRegex: add configuration / usage instructions
+  + SedRegex: implement 's' regex flag to only match the caller's message
+  + SedRegex: allow free form flags and return them in _unpack_sed()
+  + SedRegex: sanitize against \n\r\t in output
+  + SedRegex: only operate on messages from the current network
+  + SedRegex: work around "nothing to repeat" errors on Python < 2.7.6
+
+-------------------------------------------------------------------
 Sat Jan  4 13:10:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2020-01-01:
