@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 10 18:15:14 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.2:
+  * Release v3.52.2
+  * Ignore parse exceptions from xdebug command when loading command list (#901)
+  * Return OAuth2 errors to the terminal
+  * Handle OAuth2 errors (e.g. denied consent/scopes)
+
+-------------------------------------------------------------------
 Wed Jan 29 16:30:45 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.52.1:
