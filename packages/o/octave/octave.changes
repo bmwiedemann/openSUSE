@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb  9 07:18:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.2.0
+  This version is a bug fixing release, for details see:
+  https://www.gnu.org/software/octave/news/release/2020/01/31/octave-5.2.0-released.html
+- Drop upstream patches:
+  * octave-bug-55029-fix_pause_and_kbhit_with_glibc_2_28.patch
+  * octave-bug-56533-Cursor_misplaced_when_entering_newline_in_editor_with_tabs_indentation-part1.patch
+  * octave-bug-56533-Cursor_misplaced_when_entering_newline_in_editor_with_tabs_indentation-part2.patch
+- Use documentation from upstream tarball, no need to rebuild locally.
+- Cleanup spec file, remove conditionals for EOLed distributions.
+
+-------------------------------------------------------------------
+Wed Nov 27 20:13:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix octave_pkg_test in RPM octave.macros, unpack pkg tarball
+  again, as the target directory is removed by 'pkg build'.
+
+-------------------------------------------------------------------
 Fri Jul 05 12:14:16 2019 UTC - Markus Ebner <hiwatari.seiji@gmail.com>
 
 - Backport fix: Cursor misplaced when entering newline in editor with tabs indentation

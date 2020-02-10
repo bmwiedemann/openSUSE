@@ -36,10 +36,11 @@
 %octskiptests .*fetch.*|ga|csape|tbl(read|write)|princomp
 
 %octave_pkg_test \
+    [ -e %{octpkg}-%{version} ] || tar xaf %{octpkg}-%{version}.tar.gz \
     for fpath in $(find %{octpkg}-%{version} -name '*.m') ; do \
-      filename="${fpath##*/}" ; \
-      basename="${filename%.m}" ; \
       if grep -q '^%\! *test' $fpath ; then \
+        filename="${fpath##*/}" ; \
+        basename="${filename%.m}" ; \
         if echo $basename | grep -q -v -E '^(%{octskiptests})$' ; then \
           %octave --eval "test $basename" | ( grep test || : ) > test.log ; \
           if grep -s 'test *failed' test.log ; then \

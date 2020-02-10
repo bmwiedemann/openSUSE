@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,14 @@
 
 %define apiver  v53
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 5.1.0
+%define pkg_ver 5.2.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
 %bcond_without native_graphics
 
 # Build GUI
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse} == 0
-%bcond_with gui
-%else
 %bcond_without gui
-%endif
-
-# Use Qt5 GUI
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse} == 1
-%bcond_with qt5gui
-%else
-%bcond_without qt5gui
-%endif
 
 # JIT compilation
 %bcond_with jit
@@ -46,21 +35,10 @@
 
 # Image processing library
 # Default variant - GraphicsMagick
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse} == 0
-%bcond_without imagemagick
-%else
 %bcond_with imagemagick
-%endif
 
 # Sound IO
 %bcond_without sound
-
-# Build documentation
-%if 0%{?suse_version} == 1315
-%bcond_with doc
-%else
-%bcond_without doc
-%endif
 
 # Allow building without openBLAS, e.g. for architectures
 # like RISC-V where openBLAS is not available
@@ -78,16 +56,12 @@ Release:        0
 Summary:        A High Level Programming Language
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://www.octave.org/
+URL:            http://www.octave.org/
 Source:         https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
 Source2:        octave.pc.in
 Source3:        octave.macros
 # PATCH-FIX-OPENSUSE
 Patch0:         octave_tools_pie.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         octave-bug-55029-fix_pause_and_kbhit_with_glibc_2_28.patch
-Patch2:         octave-bug-56533-Cursor_misplaced_when_entering_newline_in_editor_with_tabs_indentation-part1.patch
-Patch3:         octave-bug-56533-Cursor_misplaced_when_entering_newline_in_editor_with_tabs_indentation-part2.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -106,6 +80,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
+#BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
 %if %{with imagemagick}
 BuildRequires:  pkgconfig(ImageMagick++)
@@ -122,22 +97,14 @@ BuildRequires:  suitesparse-devel
 BuildRequires:  termcap
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)
-# Documentation build requires
-%if %{with doc}
-BuildRequires:  gnuplot
-BuildRequires:  texinfo
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-latex
-%endif
 # GUI build requires
 %if %{with gui}
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-%if %{with qt5gui}
 BuildRequires:  libqscintilla_qt5-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qttools
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
@@ -146,11 +113,6 @@ BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 # boo#1095605
 Requires:       libQt5Sql5-sqlite
-%else
-BuildRequires:  libqt4-devel
-BuildRequires:  libqt4-devel-doc
-BuildRequires:  qscintilla-devel
-%endif
 Obsoletes:      octave-gui < 4.0
 Provides:       octave-gui = %{version}
 %endif
@@ -184,7 +146,6 @@ BuildRequires:  unzip
 BuildRequires:  zip
 Requires:       octave-cli = %{version}
 Requires(pre):  update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Octave is a high level programming language. It is designed for the
@@ -245,13 +206,7 @@ This package contains documentation for Octave.
 
 %prep
 %setup -q -n %{name}-%{src_ver}
-%if 0%{?suse_version} > 1315
-# autoconf in Leap 42.x is to old, so we just build without -pie there
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%endif
 
 # define octave_blas macros
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}
@@ -259,10 +214,8 @@ sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}
 %build
 %limit_build -m 700
 
-%if 0%{?suse_version} > 1315
 # rebuild makefiles after Patch0
 autoreconf -i -s -f
-%endif
 %if 0%{?suse_version} > 1500
 export QCOLLECTIONGENERATOR=qhelpgenerator-qt5
 %endif
@@ -295,9 +248,14 @@ ln -s %{_sysconfdir}/%{name}/octaverc %{buildroot}/%{_datadir}/%{name}/site/m/st
 #
 mkdir -p %{buildroot}/%{_libdir}/%{name}/packages
 mkdir -p %{buildroot}/%{_datadir}/%{name}/packages
+# Documentation
+install -Dm 644 -t %{buildroot}%{_mandir}/man1/ doc/*/*.1
+install -Dm 644 -t %{buildroot}%{_infodir} doc/*/*.info doc/*/*.info-*
 # .pc file
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
 cp octave.pc %{buildroot}/%{_libdir}/pkgconfig
+# Remove icons with huge size, we have scalable SVGs
+rm -rf %{buildroot}/%{_datadir}/icons/hicolor/1024x1024
 # gui related fixes
 %if %{without gui}
 rm -rf %{buildroot}/%{_datadir}/icons/hicolor/
@@ -315,19 +273,9 @@ echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 echo "-Xss8m" >  scripts/java/java.opts
 make check
 
-%post
-/sbin/ldconfig
-%if %{with gui}
-%desktop_database_post
-%icon_theme_cache_post
-%endif
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%if %{with gui}
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+%postun -p /sbin/ldconfig
 
 %post cli
 /sbin/ldconfig
@@ -348,9 +296,6 @@ make check
 %{_datadir}/%{name}/%{src_ver}/locale/
 %{_datadir}/metainfo/*.xml
 %{_datadir}/applications/*.desktop
-%if 0%{?suse_version} <= 1315
-%dir %{_datadir}/metainfo/
-%endif
 %{_datadir}/icons/hicolor/*/apps/octave.*
 %endif
 
@@ -359,16 +304,12 @@ make check
 %{_bindir}/octave-%{src_ver}
 %{_bindir}/octave-cli
 %{_bindir}/octave-cli-%{src_ver}
-%if %{with doc}
 %{_mandir}/man1/octave.1.gz
 %{_mandir}/man1/octave-cli.1.gz
-%endif
 %{_bindir}/octave-config
 %{_bindir}/octave-config-%{src_ver}
-%if %{with doc}
 %{_mandir}/man1/octave-config.1.gz
 %{_infodir}/*.gz
-%endif
 %config %{_sysconfdir}/ld.so.conf.d/%{name}.conf
 %config(noreplace) %{_sysconfdir}/%{name}/octaverc
 %dir %{_libdir}/%{name}
@@ -390,9 +331,7 @@ make check
 %files devel
 %{_bindir}/mkoctfile
 %{_bindir}/mkoctfile-%{src_ver}
-%if %{with doc}
 %{_mandir}/man1/mkoctfile.1.gz
-%endif
 %{_includedir}/*
 %{_libdir}/%{name}/%{src_ver}/lib*.so
 %{_libdir}/%{name}/api-%{apiver}
