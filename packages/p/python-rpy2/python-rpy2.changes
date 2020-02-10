@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:10:53 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.2.6
+  + Bugs fixed
+    * The conversion of date/time object with specified timezones
+      was wrong when different than the local time zone
+    * Iterating over :mod:`rpy2.situation.iter_info()` could result
+      in a error because of a typo in the code.
+  + Changes
+    * :mod:`pandas` 1.0.0 breaks the conversion layer. A warning
+      is not emitted whenever trying to use `pandas` >= 1.0.
+
+-------------------------------------------------------------------
 Thu Jan 30 15:31:13 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.2.5

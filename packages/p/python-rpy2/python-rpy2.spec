@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-rpy2
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        A Python interface to the R Programming Language
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ export CFLAGS="%{optflags}"
 # %%check
 # mkdir -p tester
 # pushd tester
-# %%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+# %%{python_expand export PYTHONPATH=%%{buildroot}%%{$python_sitearch}
 # $python -B -m rpy2.tests
 # }
 # popd
