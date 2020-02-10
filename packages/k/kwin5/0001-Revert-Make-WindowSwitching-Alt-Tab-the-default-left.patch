@@ -14,11 +14,11 @@ that steals clicks from windows. Very annoying.
  tabbox/tabbox.cpp                 | 6 +++---
  2 files changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/kcmkwin/kwinscreenedges/touch.cpp b/kcmkwin/kwinscreenedges/touch.cpp
-index df5cb38be..cc8347caf 100644
---- a/kcmkwin/kwinscreenedges/touch.cpp
-+++ b/kcmkwin/kwinscreenedges/touch.cpp
-@@ -252,7 +252,7 @@ void KWinScreenEdgesConfig::monitorLoad()
+Index: kwin-5.15.80git.20191114T141940~cb7022150/kcmkwin/kwinscreenedges/touch.cpp
+===================================================================
+--- kwin-5.15.80git.20191114T141940~cb7022150.orig/kcmkwin/kwinscreenedges/touch.cpp	2019-11-14 15:19:40.000000000 +0100
++++ kwin-5.15.80git.20191114T141940~cb7022150/kcmkwin/kwinscreenedges/touch.cpp	2019-11-14 23:02:35.305453854 +0100
+@@ -251,7 +251,7 @@
      KConfigGroup tabBoxConfig(m_config, "TabBox");
      list.clear();
      // TabBox
@@ -27,7 +27,7 @@ index df5cb38be..cc8347caf 100644
      list = tabBoxConfig.readEntry("TouchBorderActivate", list);
      foreach (int i, list) {
          monitorChangeEdge(ElectricBorder(i), int(TabBox));
-@@ -347,8 +347,6 @@ void KWinScreenEdgesConfig::monitorDefaults()
+@@ -346,8 +346,6 @@
      // Clear all edges
      for (int i = 0; i < 8; i++)
          m_ui->monitor->selectEdgeItem(i, 0);
@@ -36,11 +36,11 @@ index df5cb38be..cc8347caf 100644
  }
  
  void KWinScreenEdgesConfig::monitorShowEvent()
-diff --git a/tabbox/tabbox.cpp b/tabbox/tabbox.cpp
-index d6d3c7849..4dc2a599a 100644
---- a/tabbox/tabbox.cpp
-+++ b/tabbox/tabbox.cpp
-@@ -821,14 +821,14 @@ void TabBox::reconfigure()
+Index: kwin-5.15.80git.20191114T141940~cb7022150/tabbox/tabbox.cpp
+===================================================================
+--- kwin-5.15.80git.20191114T141940~cb7022150.orig/tabbox/tabbox.cpp	2019-11-14 15:19:40.000000000 +0100
++++ kwin-5.15.80git.20191114T141940~cb7022150/tabbox/tabbox.cpp	2019-11-14 23:02:35.305453854 +0100
+@@ -782,14 +782,14 @@
          borderConfig = QStringLiteral("BorderAlternativeActivate");
      }
  
@@ -57,7 +57,7 @@ index d6d3c7849..4dc2a599a 100644
          for (const auto &s : list) {
              bool ok;
              const int i = s.toInt(&ok);
-@@ -841,7 +841,7 @@ void TabBox::reconfigure()
+@@ -802,7 +802,7 @@
              actions.insert(ElectricBorder(i), a);
          }
      };
@@ -66,6 +66,3 @@ index d6d3c7849..4dc2a599a 100644
      touchConfig(QStringLiteral("TouchBorderAlternativeActivate"), m_touchAlternativeActivate, TabBoxWindowsAlternativeMode);
  }
  
--- 
-2.13.2
-

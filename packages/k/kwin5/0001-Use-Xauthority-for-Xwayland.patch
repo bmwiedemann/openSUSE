@@ -17,11 +17,11 @@ starting applications as other users again
  xwl/xwayland.h   |   3 ++
  3 files changed, 105 insertions(+), 2 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9f167e107..47d22f540 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -594,6 +594,7 @@ set(kwin_XLIB_LIBS
+Index: kwin-5.15.80git.20200128T055143~f859c2184/CMakeLists.txt
+===================================================================
+--- kwin-5.15.80git.20200128T055143~f859c2184.orig/CMakeLists.txt	2020-01-28 07:06:54.470652988 +0100
++++ kwin-5.15.80git.20200128T055143~f859c2184/CMakeLists.txt	2020-01-28 07:07:01.953123505 +0100
+@@ -605,6 +605,7 @@
      ${X11_ICE_LIB}
      ${X11_SM_LIB}
      ${X11_X11_LIB}
@@ -29,11 +29,11 @@ index 9f167e107..47d22f540 100644
  )
  
  set(kwin_XCB_LIBS
-diff --git a/xwl/xwayland.cpp b/xwl/xwayland.cpp
-index 5f17d3923..17b73b3d7 100644
---- a/xwl/xwayland.cpp
-+++ b/xwl/xwayland.cpp
-@@ -48,6 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+Index: kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.cpp
+===================================================================
+--- kwin-5.15.80git.20200128T055143~f859c2184.orig/xwl/xwayland.cpp	2020-01-28 07:06:54.470652988 +0100
++++ kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.cpp	2020-01-28 07:10:26.978420516 +0100
+@@ -48,6 +48,8 @@
  #include <sys/socket.h>
  #include <iostream>
  
@@ -42,7 +42,7 @@ index 5f17d3923..17b73b3d7 100644
  static void readDisplay(int pipe)
  {
      QFile readPipe;
-@@ -107,8 +109,84 @@ Xwayland::~Xwayland()
+@@ -107,8 +109,84 @@
      s_self = nullptr;
  }
  
@@ -127,7 +127,7 @@ index 5f17d3923..17b73b3d7 100644
      int pipeFds[2];
      if (pipe(pipeFds) != 0) {
          std::cerr << "FATAL ERROR failed to create pipe to start Xwayland " << std::endl;
-@@ -150,11 +228,15 @@ void Xwayland::init()
+@@ -150,11 +228,15 @@
      env.insert("WAYLAND_SOCKET", QByteArray::number(wlfd));
      env.insert("EGL_PLATFORM", QByteArrayLiteral("DRM"));
      m_xwaylandProcess->setProcessEnvironment(env);
@@ -142,10 +142,10 @@ index 5f17d3923..17b73b3d7 100644
 +        args << QStringLiteral("-auth") << m_xwaylandAuthority.fileName();
 +    }
 +    m_xwaylandProcess->setArguments(args);
-     m_xwaylandFailConnection = connect(m_xwaylandProcess, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::error), this,
+     m_xwaylandFailConnection = connect(m_xwaylandProcess, &QProcess::errorOccurred, this,
          [this] (QProcess::ProcessError error) {
              if (error == QProcess::FailedToStart) {
-@@ -186,6 +268,23 @@ void Xwayland::prepareDestroy()
+@@ -186,6 +268,23 @@
  
  void Xwayland::createX11Connection()
  {
@@ -169,11 +169,11 @@ index 5f17d3923..17b73b3d7 100644
      int screenNumber = 0;
      xcb_connection_t *c = nullptr;
      if (m_xcbConnectionFd == -1) {
-diff --git a/xwl/xwayland.h b/xwl/xwayland.h
-index b759e6af5..3e07e3b89 100644
---- a/xwl/xwayland.h
-+++ b/xwl/xwayland.h
-@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+Index: kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.h
+===================================================================
+--- kwin-5.15.80git.20200128T055143~f859c2184.orig/xwl/xwayland.h	2020-01-28 07:06:54.470652988 +0100
++++ kwin-5.15.80git.20200128T055143~f859c2184/xwl/xwayland.h	2020-01-28 07:07:01.953123505 +0100
+@@ -23,6 +23,7 @@
  #include "xwayland_interface.h"
  
  #include <xcb/xproto.h>
@@ -181,7 +181,7 @@ index b759e6af5..3e07e3b89 100644
  
  class QProcess;
  
-@@ -74,6 +75,8 @@ private:
+@@ -74,6 +75,8 @@
      const xcb_query_extension_reply_t *m_xfixes = nullptr;
      DataBridge *m_dataBridge = nullptr;
  
@@ -190,6 +190,3 @@ index b759e6af5..3e07e3b89 100644
      ApplicationWaylandAbstract *m_app;
  
      Q_DISABLE_COPY(Xwayland)
--- 
-2.22.0
-

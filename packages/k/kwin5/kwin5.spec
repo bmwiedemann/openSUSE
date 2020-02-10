@@ -21,7 +21,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -31,9 +31,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -41,7 +41,8 @@ Patch100:       0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Use-Xauthority-for-Xwayland.patch
 # PATCH-FIX-OPENSUSE
-Patch102:       0001-Revert-platforms-x11-Force-glXSwapBuffers-to-block-w.patch
+Patch102:       0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
+# PATCH-FIX-OPENSUSE
 Patch103:       0001-Bypass-wayland-interface-blacklisting.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
 BuildRequires:  fdupes
@@ -183,7 +184,7 @@ This package provides development files.
   %endif
   %endif
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build

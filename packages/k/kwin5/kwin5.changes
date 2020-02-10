@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [libkwineffects] Detect AMD Navi GPUs
+  * [x11] Fix visual artifacts during interactive resize (kde#415839)
+  * ScreenEdge: Do not use localtime for measuring duration
+  * [scripting] Expose Workspace::sendClientToDesktop() (kde#416093)
+  * Fix minor issues in XdgShellClient::updateClientOutputs
+  * Drop Toplevel::decorationRect()
+  * s/m_xdgShellSurface/m_xdgShellToplevel/g
+  * [wayland] Get rid of some duplicated code
+  * Document AbstractClient::isResize() and AbstractClient::isMove()
+  * Move definition of X11Client::damageNotifyEvent() to x11client.cpp
+  * Rename X11Client::getSyncRequest() to X11Client::syncRequest()
+  * Schedule a decoration repaint when client is resized
+  * [decoration] Implement the size property
+  * Fix kwin.upd not running if python 2 not installed
+  * Port away from a deprecated signal
+  * [wayland] Keep the opposite corner still when resizing a window
+  * [wayland] Provide correct input geometry for client-side decorated clients (kde#416346)
+  * [effects/morphingpopups] Don't animate popups when only shape changes (kde#416531)
+  * [kcms/kwindecoration] Fix saving of window decoration plugin (kde#416525)
+  * [nightcolor] Check whether Night Color is inhibited by a D-Bus service more efficiently
+  * [plugins/windowsystem] Use upstream KWINDOWSYSTEM_BUILD_DEPRECATED_SINCE
+  * [x11] Apply "Block compositing" rule right away (kde#415903)
+- Refresh 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+  * 0001-Use-Xauthority-for-Xwayland.patch
+- Drop patch, fallout apparently fixed:
+  * 0001-Revert-platforms-x11-Force-glXSwapBuffers-to-block-w.patch
+- Add patch to avoid env in shebang:
+  * 0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

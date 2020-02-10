@@ -1,0 +1,24 @@
+From 8bc332927cc331fdd8b46da7fac4faff5b51b6ac Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 27 Sep 2019 19:43:30 +0200
+Subject: [PATCH] Use fixed absolute path instead of /usr/bin/env in shebangs
+
+- Force use of the system version
+- Makes the automatic rpm dependency generator work properly
+---
+ kconf_update/kwin-5.18-move-animspeed.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kconf_update/kwin-5.18-move-animspeed.py b/kconf_update/kwin-5.18-move-animspeed.py
+index a8dca2101..6902aad6d 100644
+--- a/kconf_update/kwin-5.18-move-animspeed.py
++++ b/kconf_update/kwin-5.18-move-animspeed.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import fileinput
+ 
+-- 
+2.22.0
+
