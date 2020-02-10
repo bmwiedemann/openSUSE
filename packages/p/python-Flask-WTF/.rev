@@ -36,4 +36,12 @@ Required for python-puppetboard SR# 263316</comment>
 - disabled sphinx build html docs and doc packages because of build errors.</comment>
     <requestid>569481</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>141d27c07de837ad8885e8e6a0602b15</srcmd5>
+    <version>0.14.3</version>
+    <time>1581368047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772539</requestid>
+  </revision>
 </revisionlist>

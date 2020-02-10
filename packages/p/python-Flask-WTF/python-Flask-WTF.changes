@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  8 20:58:05 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * removed python-devel dependency
+  * be more specific in %file section
+
+- update to version 0.14.3:
+  * Fix deprecated imports from "werkzeug" and "collections".
+
+-------------------------------------------------------------------
 Thu Jan 25 11:24:26 UTC 2018 - tchvatal@suse.com
 
 - Fix whitespace and drop the subpkg wrt previous commit
