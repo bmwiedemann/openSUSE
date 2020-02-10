@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:21 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * Bump manifest version
+  * Remove duplicate include
+  * Make tabbar code a bit more fool-proof
+  * [Download Plugin] Register downloaded files as recent documents
+  * Bump manifest version
+  * Add icon to browser integration do not remind menu item
+  * Disable purpose menu
+  * Bump manifest version
+  * Fix i18n pot to json extraction
+  * Remove unused optional_permissions
+  * Just return applicationDisplayName in MPRIS Identity
+  * Don't add and remove player element if it is already in the page
+  * Show startup error in popup as well
+  * Fixup new Audio() constructor and apply autoplay prevention evasion to document.createElement (kde#411742)
+  * Improve error reporting for port on Firefox
+  * Fix clearing kde connect devices on disconnect
+  * Add KDEClangFormat cmake support
+  * Add per-origin media controls blacklist (kde#394126)
+  * Add settings change listener
+  * Move save failure message above options
+  * Let plugin add additional status information
+  * Remove comment
+  * Let options page scroll
+  * Add SettingsUtils utility class
+  * Make .hidden super hidden
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:38 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
