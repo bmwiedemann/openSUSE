@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  6 20:44:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200206
+  * man: document dynamic debug trick for Linux
+  * extract-{handshakes,keys}: rework for upstream kernel
+  * netlink: remove libmnl requirement
+  * embeddable-wg-library: use newer string_list
+  * netlink: don't pretend that sysconf isn't a function
+  * Small cleanups.
+
+-------------------------------------------------------------------
 Tue Jan 21 22:04:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20200121

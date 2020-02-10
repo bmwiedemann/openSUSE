@@ -1,7 +1,7 @@
 #
 # spec file for package wireguard-tools
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20200121
+Version:        1.0.20200206
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only
@@ -30,7 +30,6 @@ Source99:       https://www.zx2c4.com/keys/AB9942E6D4A4CFC3412620A749FC7012A5DE0
 Source2:        wireguard.target
 Patch1:         wireguard-fix-systemd-service.patch
 BuildRequires:  bash-completion
-BuildRequires:  libmnl-devel
 BuildRequires:  pkgconfig
 %systemd_requires
 
@@ -55,6 +54,7 @@ wg: set and retrieve configuration of WireGuard interfaces
 contrib/dns-hatchet/apply.sh
 
 %build
+export CFLAGS="%{optflags}"
 make V=1 -C src %{?_smp_mflags}
 
 %install
