@@ -113,4 +113,12 @@ factory)</comment>
   * lshw-add-notime-option-to-manpage.patch</comment>
     <requestid>770160</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3cc61ca345f6eedb9b9aec5d36fe0633</srcmd5>
+    <version>B.02.18+git.20190613</version>
+    <time>1581367985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772322</requestid>
+  </revision>
 </revisionlist>

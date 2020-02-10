@@ -38,7 +38,6 @@ BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.4
-Recommends:     %{name}-lang
 Recommends:     hwdata
 %lang_package
 
