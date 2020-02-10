@@ -19,7 +19,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        GPL-2.0-or-later AND BSD-3-Clause AND LGPL-3.0-or-later AND MIT
@@ -111,8 +111,7 @@ This package adds websockify support to allow xpra to listen for http
 connections, and also the xpra html5 client.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # fix shebangs
 find -name '*.py' \
      -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
@@ -143,6 +142,7 @@ python3 setup.py install \
     --skip-build \
     --root %{buildroot} \
     --prefix %{_prefix} \
+    --with-service \
     --verbose
 
 #Install nvenc.keys file
@@ -205,11 +205,11 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_sbindir}/rc%{name}
 %{python3_sitearch}/xpra
 %{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
-%{_datadir}/appdata/xpra.appdata.xml
 %{_datadir}/applications/xpra-gui.desktop
 %{_datadir}/applications/xpra-launcher.desktop
 %{_datadir}/applications/xpra-shadow.desktop
 %{_datadir}/applications/xpra.desktop
+%{_datadir}/metainfo/xpra.appdata.xml
 %{_datadir}/pixmaps/xpra-mdns.png
 %{_datadir}/pixmaps/xpra-shadow.png
 %{_datadir}/pixmaps/xpra.png

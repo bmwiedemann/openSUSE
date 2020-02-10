@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:20:15 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.6
+  * fix UDP with Python3
+  * fix key mapping issues with non-X11 clients and non-US
+    layouts
+  * fix notification logging errors during shutdown
+  * fix window stacking order with html5 client and override
+    redirect windows
+  * fix png/P and png/L decoding
+  * fix very slow startup on Debian due to missing
+    libfakeXinerama
+  * fix display scaling notification warning
+  * fix errors generating the tray title string
+  * fix missing webp modules in 'clean' build target
+  * fix some special characters with HTML5 client
+  * fix initiate-moveresize with multiple clients
+  * fix control commands argument error handling
+  * fix unit tests
+  * fix window repaint issues: system tray, Python 2 non-opengl
+    window spinners
+  * fix server errors during client connection cleanup
+  * fix spacebar and other characters with tablet input devices
+    (ie: mobile browsers)
+  * fix unhelpful backtraces when client application windows are
+    lost
+  * fix for crashes on X11 displays lacking RandR support
+  * fix handling of non 24/32-bit png window icons
+  * man page connection string fixes
+  * disable cpuinfo module - known to cause problems on various
+    platforms
+  * ignore error and continue when loading version information
+    from invalid builds
+  * remove executable file permissions on files uploaded to the
+    server
+  * blacklist 'Intel(R) UHD Graphics 620'
+  * use correct location for appdata.xml
+  * use Debian location for systemd service config file
+  * ensure emacs, gvim and xxdiff always use 'text' mode
+  * re-enable pulseaudio memfd (was wrongly disabled in v3.0.0)
+  * remove remnants of GTK2 dependencies from non-GTK2 components
+  * add missing entry to path information tool
+
+- Refreshed xpra-paths.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 16:57:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
