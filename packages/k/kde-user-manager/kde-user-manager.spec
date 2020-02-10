@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           kde-user-manager
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        KDE System Settings module to manage users
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/user-manager-%{version}.tar.xz
+Source:         user-manager-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/user-manager-%{version}.tar.xz.sig
+Source1:        user-manager-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.3.0
@@ -51,7 +51,7 @@ A simple system settings module to manage the users of your systems.
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build

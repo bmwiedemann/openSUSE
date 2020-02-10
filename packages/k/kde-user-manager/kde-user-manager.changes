@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Fix new user creation (kde#416801)
+  * Consider empty email valid (kde#411736)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:19:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Port to QRandomGenerator
+  * Remove unused variable
+  * Port away from KIconThemes
+  * Use a default non-administrator user Type for new users in model (kde#414860)
+  * Don't CacheUser/UnCacheUser when editing Realname (kde#392943)
+  * Check values have changed before setting the model (kde#384894)
+  * Make avatar icon dpr aware aka HiDPI rendered
+  * Add KDEClangFormat cmake support
+  * Now we depends against 5.62
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
