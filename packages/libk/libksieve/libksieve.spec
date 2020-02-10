@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksieve
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -80,7 +80,7 @@ the Sieve server-side mail filtering protocol in KDE PIM applications.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
