@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  9 21:26:35 UTC 2020 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 2.6.3
+  * Changelog in packaged ChangeLog.md or at
+    https://github.com/VirtualGL/virtualgl/blob/2.6.3/ChangeLog.md
+- Refreshed patch VirtualGL-link-libs.patch
+- Removed patch virtualgl-nodl.patch - resolved upstream
+- Added patch glx.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 19:24:54 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Add riscv64 to the list of 64-bit architectures

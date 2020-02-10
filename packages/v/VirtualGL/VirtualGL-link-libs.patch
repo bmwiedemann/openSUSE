@@ -1,11 +1,15 @@
-Index: VirtualGL-2.5.2/server/CMakeLists.txt
+From: tchvatal@suse.com
+Date: 2014-08-29T09:28:04+00:00
+Subject: Fix building with -Wl,-z,now and no-undefined
+
+Index: VirtualGL-2.6.3/server/CMakeLists.txt
 ===================================================================
---- VirtualGL-2.5.2.orig/server/CMakeLists.txt
-+++ VirtualGL-2.5.2/server/CMakeLists.txt
-@@ -114,12 +114,12 @@ foreach(fakerlib ${VGL_FAKER_NAME} ${VGL
- endforeach()
- 
- add_library(${VGL_DLFAKER_NAME} SHARED dlfaker.c)
+--- VirtualGL-2.6.3.orig/server/CMakeLists.txt
++++ VirtualGL-2.6.3/server/CMakeLists.txt
+@@ -143,12 +143,12 @@ add_library(${VGL_DLFAKER_NAME} SHARED d
+ if(VGL_FAKEOPENCL)
+ 	target_compile_definitions(${VGL_DLFAKER_NAME} PUBLIC -DFAKEOPENCL)
+ endif()
 -target_link_libraries(${VGL_DLFAKER_NAME} ${LIBDL})
 +target_link_libraries(${VGL_DLFAKER_NAME} ${LIBDL} vglfaker)
  install(TARGETS ${VGL_DLFAKER_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -17,7 +21,7 @@ Index: VirtualGL-2.5.2/server/CMakeLists.txt
  install(TARGETS ${VGL_GEFAKER_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
  
  set(HEADERS ../common/rr.h rrtransport.h)
-@@ -183,13 +183,14 @@ if(VGL_USESSL AND CMAKE_SYSTEM_NAME STRE
+@@ -222,13 +222,14 @@ if(VGL_USESSL AND CMAKE_SYSTEM_NAME STRE
  	set_target_properties(vgltrans_test PROPERTIES LINK_FLAGS "-Wl,-Bsymbolic")
  endif()
  target_link_libraries(vgltrans_test vglcommon ${FBXFAKERLIB} ${TJPEG_LIBRARY}

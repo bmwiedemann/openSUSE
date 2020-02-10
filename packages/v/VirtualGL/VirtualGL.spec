@@ -1,7 +1,7 @@
 #
 # spec file for package VirtualGL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           VirtualGL
-Version:        2.5.2
+Version:        2.6.3
 Release:        0
 Summary:        A toolkit for displaying OpenGL applications to thin clients
 License:        LGPL-2.1-only AND SUSE-wxWidgets-3.1
 Group:          Productivity/Networking/Other
-Url:            http://www.virtualgl.org
-Source0:        http://downloads.sourceforge.net/virtualgl/%{name}-%{version}.tar.gz
+URL:            http://www.virtualgl.org
+Source0:        https://sourceforge.net/projects/virtualgl/files/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         VirtualGL-link-libs.patch
-Patch2:         virtualgl-nodl.patch
+Patch2:         glx.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLU-devel
 BuildRequires:  cmake
@@ -34,13 +34,17 @@ BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xv)
 
 %description
@@ -91,7 +95,9 @@ Ertl 2000.)
 %prep
 %setup -q
 %patch1 -p1
+%if %{suse_version} > 1500
 %patch2 -p1
+%endif
 
 # Use /var/lib
 sed -e "s#%{_sysconfdir}/opt#%{_localstatedir}/lib#g" \
@@ -154,6 +160,7 @@ rm -rf %{buildroot}/%{_bindir}/.vglrun.*
 %{_libdir}/libvglfaker.so
 %{_libdir}/libdlfaker.so
 %{_libdir}/libvglfaker-nodl.so
+%{_libdir}/libvglfaker-opencl.so
 %{_libdir}/libgefaker.so
 
 %files devel
