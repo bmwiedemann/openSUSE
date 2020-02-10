@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.63.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libgravatar
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -36,7 +36,9 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
@@ -58,7 +60,7 @@ This package contains the debug categories for the libgravatar library.
 %build
 %cmake_kf5 -d build
 
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
