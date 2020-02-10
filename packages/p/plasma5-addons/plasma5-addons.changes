@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [applets/weather] Port weather station picker to QQC2+ListView (kde#414442)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * [TabBox] Add Thumbnail Grid window switcher
+  * [applets/calculator] Use Qt's in-built number formatting (kde#410988)
+  * Update my email address
+  * Fix localization. Idea by Victor Ryzhykh.
+  * Add applet for controlling Night Color (kde#400418)
+  * Port to QRandomGenerator
+  * List the Activity Pager also as an alternative to e.g. the Activity Bar (kde#394792)
+  * Assign notification area category for Keyboard indicator
+  * Unset X-Plasma-MainScript for wallpaper plugins
+  * Make it compile against qt5.15
+  * [applet/Weather] Remove unnecessary size override for the busy indicator
+  * support for shadowed background
+  * enable custom background for some plasmoids
+  * [applets/Weather] Port config UI mostly to QQC2 and away from Plasma components
+  * Shorten POTD provider names and remove description that is not used anywhere
+  * Add KDEClangFormat cmake support
+  * [applets/weather] Use unit description from KUnitConversion
+  * Add mmHg to pressure options in weather applet
+  * [applets/weather] Port from KIconLoader to QIcon
+  * Fix NOAA picture of the day provider (kde#408580)
+  * Correctly highlight the icon in the system tray
+  * Use colorful Plasma icon for General category in applets' settings sidebars Ref T10165
+  * Ignore some files
+  * Make it compile without deprecated methods
+  * Remove deprecated method
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
