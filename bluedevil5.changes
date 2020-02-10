@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 16 14:04:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * [plasmoid] Show device battery percentage
+  * [Wizard] Show notification instead of finished page when pairing succeeds
+  * [Wizard] Allow choosing device by double click
+  * [applet] Make details text fully opaque and normal style
+  * Get icon size from QStyle
+  * Remove some unused includes
+  * make it compile without deprecated methods
+  * Port old style connects
+  * Add KDEClangFormat cmake support
+  * Pluralize the i18n() message
+  * Enable removing multiple devices at once
+  * Use a more appropriate and user-friendly type of messagebox for device removal
+  * Make it compile without deprecated method
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
