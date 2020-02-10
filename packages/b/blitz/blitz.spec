@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# ISSUE WITH make doc CAUSING FAILED BUILDS FOR openSUSE Leap 15.2
+%if 0%{?suse_version} >= 1550
+%bcond_without doc
+%else
+%bcond_with doc
+%endif
 
 Name:           blitz
 Version:        1.0.2
@@ -40,10 +46,12 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(papi)
 BuildRequires:  pkgconfig(openlibm)
 BuildRequires:  python3-base
+%if %{with doc}
 BuildRequires:  texinfo
 BuildRequires:  texi2html
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-latex
+%endif
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
 
@@ -91,13 +99,16 @@ This package provides documentation files for the Blitz Library.
 
 %build
 %cmake \
-    -DBUILD_DOC=ON \
+    -DBUILD_DOC=%{?with_doc:ON}%{!?with_doc:OFF} \
     -DBUILD_TESTING=ON \
     -DDISABLE_REFMAN_PDF=ON \
     -DENABLE_SERIALISATION=ON \
     -DSIMD_EXTENSION=ON \
     -DCMAKE_INSTALL_DOCDIR=%{_docdir}/blitz
+
+%if %{with doc}
 make blitz-doc
+%endif
 %cmake_build
 
 %install
@@ -108,11 +119,13 @@ rm -rf %{buildroot}/%{_libdir}/libblitz.a
 %post   -n libblitz%{sonum} -p /sbin/ldconfig
 %postun -n libblitz%{sonum} -p /sbin/ldconfig
 
+%if %{with doc}
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/blitz.info.gz
 
 %preun devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/blitz.info.gz
+%endif
 
 %files -n libblitz%{sonum}
 %license COPYING COPYING.LESSER COPYRIGHT LEGAL LICENSE
@@ -121,7 +134,9 @@ rm -rf %{buildroot}/%{_libdir}/libblitz.a
 
 %files devel
 %license COPYING COPYING.LESSER COPYRIGHT LEGAL LICENSE
+%if %{with doc}
 %{_infodir}/blitz.info.gz
+%endif
 %{_libdir}/libblitz.so
 %{_libdir}/pkgconfig/blitz.pc
 %{_libdir}/cmake/blitz*.cmake
@@ -130,11 +145,15 @@ rm -rf %{buildroot}/%{_libdir}/libblitz.a
 
 %files doc
 %doc ChangeLog ChangeLog.*
+%if %{with doc}
 %license %{_docdir}/blitz/COPYING
 %license %{_docdir}/blitz/COPYING.LESSER
 %license %{_docdir}/blitz/COPYRIGHT
 %license %{_docdir}/blitz/LEGAL
 %license %{_docdir}/blitz/LICENSE
+%else
+%license COPYING COPYING.LESSER COPYRIGHT LEGAL LICENSE
+%endif
 %{_docdir}/blitz/
 
 %changelog
