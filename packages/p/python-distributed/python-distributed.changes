@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:46:57 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.10.0:
+  * Fixed ZeroDivisionError in dashboard when no workers were present
+    (GH#3407) James Bourbeau
+  * Respect the dashboard-prefix when redirecting from the root
+    (GH#3387) Chrysostomos Nanakos
+  * Allow enabling / disabling work-stealing after the cluster has
+    started (GH#3410) John Kirkham
+  * Support *args and **kwargs in offload (GH#3392) Matthew Rocklin
+  * Add lifecycle hooks to SchedulerPlugin (GH#3391) Matthew Rocklin
+
+-------------------------------------------------------------------
 Sat Jan 18 19:17:28 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.9.3:
