@@ -7,4 +7,12 @@
     <comment>Dependency of perl-WWW-OpenSearch needed for https://build.opensuse.org/request/show/694894</comment>
     <requestid>696906</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>56fc2b919f3915bcae4fd5fa8e387eea</srcmd5>
+    <version>0.42</version>
+    <time>1581368093</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-tests.patch to fix build with latest libxml::xml</comment>
+    <requestid>772659</requestid>
+  </revision>
 </revisionlist>

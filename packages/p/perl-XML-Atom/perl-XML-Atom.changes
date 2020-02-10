@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:52:48 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- add fix-tests.patch to fix build with latest libxml::xml
+
+-------------------------------------------------------------------
 Thu Nov  8 17:11:26 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix Build: Add d2c045a8ca0d0ca147b04bc9e7c70b27db8cc4e1.patch
