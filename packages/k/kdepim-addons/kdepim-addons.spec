@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Addons for KDEPIM applications
 License:        GPL-2.0-only
@@ -38,6 +38,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
+BuildRequires:  libmarkdown-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
@@ -102,7 +103,7 @@ themes, and plugins providing extra or advanced functionality.
 
 %build
 %cmake_kf5 -d build -- -DKDEPIMADDONS_BUILD_EXAMPLES=FALSE -DQTCREATOR_TEMPLATE_INSTALL_DIR=%{_kf5_sharedir}/qtcreator/templates
-%make_jobs
+%cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -146,6 +147,8 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libkmaillanguagetool.so.5.*
 %{_kf5_libdir}/libkmailquicktextpluginprivate.so.5
 %{_kf5_libdir}/libkmailquicktextpluginprivate.so.5.*
+%{_kf5_libdir}/libkmailmarkdown.so.5
+%{_kf5_libdir}/libkmailmarkdown.so.5.*
 %{_kf5_plugindir}/akonadi/emailaddressselectionldapdialogplugin.so
 %{_kf5_plugindir}/importwizard/
 %{_kf5_plugindir}/kaddressbook/
