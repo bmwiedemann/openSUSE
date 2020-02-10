@@ -1,7 +1,7 @@
 #
 # spec file for package afl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        2.60c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
-Url:            http://lcamtuf.coredump.cx/afl/
+URL:            http://lcamtuf.coredump.cx/afl/
 Source:         https://github.com/vanhauser-thc/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
 Patch1:         afl-1.58b-fix-paths.patch
@@ -53,6 +53,7 @@ export CFLAGS="$CFLAGS %{optflags}"
 export AFL_NO_X86=1
 %endif
 make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir}
+make radamsa
 
 %install
 %ifnarch %{ix86} x86_64
@@ -69,6 +70,7 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %{_libexecdir}/%{name}/as
 %{_libexecdir}/%{name}/argvfuzz*.so
 %{_libexecdir}/%{name}/socketfuzz*.so
+%{_libexecdir}/%{name}/libradamsa.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
 %{_datadir}/%{name}/testcases/*

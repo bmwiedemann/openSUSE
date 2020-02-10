@@ -487,4 +487,12 @@
     <comment></comment>
     <requestid>760476</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>f655dde382beeff468c32a9960dd3af6</srcmd5>
+    <version>2.60c</version>
+    <time>1581368024</time>
+    <user>dimstar_suse</user>
+    <comment>- added radamsa mutator (forwarded request 772507 from msmeissn)</comment>
+    <requestid>772508</requestid>
+  </revision>
 </revisionlist>
