@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kpkpass
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -65,7 +65,7 @@ to build programs that use the kpkpass library.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
