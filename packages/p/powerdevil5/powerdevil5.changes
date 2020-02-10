@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Drop unused method
+  * Use URLs with transport encryption
+  * Show peripheral low battery notification for NoCharge
+  * Add specialized notification for Bluetooth battery
+  * Lock screen by default, on mobile
+  * Add Q_ENUM to enums for happier debugging
+  * Port to std::sort
+  * Remove unused include
+  * Make it compiles without deprecated methods
+  * Add KDEClangFormat cmake support
+  * Fix minor typos
+  * Port away from foreach
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:38 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
