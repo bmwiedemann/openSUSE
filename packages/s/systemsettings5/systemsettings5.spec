@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -42,6 +42,7 @@ BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
@@ -76,7 +77,7 @@ Provides KDE's control center modules. Development files.
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
