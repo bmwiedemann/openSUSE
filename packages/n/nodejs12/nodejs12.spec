@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs12
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.14.1
+Version:        12.15.0
 Release:        0
 
 %define node_version_number 12
@@ -387,6 +387,7 @@ find deps/zlib -name *.[ch] -delete
 # script, so we'll do it thus:
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
+export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}

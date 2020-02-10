@@ -134,4 +134,20 @@
 - Really disable LTO when required (nodejs &lt; 12)</comment>
     <requestid>762223</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>26b6f5299642b237ea294ddc563b16ac</srcmd5>
+    <version>12.15.0</version>
+    <time>1581368061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LTS release 12.15.0:
+  * fixes a remotely triggerable assertion on a TLS server via a
+    crafted certificate string (CVE-2019-15604, bsc#1163104)
+  * fixes an HTTP request smuggling vulnerability via malformed
+    Transfer-Encoding header (CVE-2019-15605, bsc#1163102)
+  * trim HTTP header values of optional white space
+    (CVE-2019-15606, bsc#1163103)
+  * enabled stricter HTTP header parsing by default.
+- fix_ci_tests.patch: refreshed</comment>
+    <requestid>772640</requestid>
+  </revision>
 </revisionlist>

@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v12.14.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-git.8252c06165/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v12.14.0/test/parallel/test-module-loading-globalpaths.js
+--- node-git.8252c06165.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-git.8252c06165/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,11 +16,11 @@ Index: node-v12.14.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v12.14.0/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-git.8252c06165/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-v12.14.0/test/parallel/test-tls-env-bad-extra-ca.js
-@@ -36,7 +36,7 @@ fork(__filename, opts)
+--- node-git.8252c06165.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-git.8252c06165/test/parallel/test-tls-env-bad-extra-ca.js
+@@ -37,7 +37,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
      if (!common.isWindows) {
@@ -29,10 +29,10 @@ Index: node-v12.14.0/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-v12.14.0/test/parallel/test-tls-passphrase.js
+Index: node-git.8252c06165/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v12.14.0/test/parallel/test-tls-passphrase.js
+--- node-git.8252c06165.orig/test/parallel/test-tls-passphrase.js
++++ node-git.8252c06165/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -51,10 +51,10 @@ Index: node-v12.14.0/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-v12.14.0/test/parallel/test-crypto-scrypt.js
+Index: node-git.8252c06165/test/parallel/test-crypto-scrypt.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-crypto-scrypt.js
-+++ node-v12.14.0/test/parallel/test-crypto-scrypt.js
+--- node-git.8252c06165.orig/test/parallel/test-crypto-scrypt.js
++++ node-git.8252c06165/test/parallel/test-crypto-scrypt.js
 @@ -12,30 +12,6 @@ if (typeof internalBinding('crypto').scr
    common.skip('no scrypt support');
  
@@ -146,10 +146,10 @@ Index: node-v12.14.0/test/parallel/test-crypto-scrypt.js
          get [name]() {
            if (--accessCount === 0)
              return '';
-Index: node-v12.14.0/test/parallel/test-repl-envvars.js
+Index: node-git.8252c06165/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v12.14.0/test/parallel/test-repl-envvars.js
+--- node-git.8252c06165.orig/test/parallel/test-repl-envvars.js
++++ node-git.8252c06165/test/parallel/test-repl-envvars.js
 @@ -2,12 +2,14 @@
  
  // Flags: --expose-internals
@@ -166,10 +166,10 @@ Index: node-v12.14.0/test/parallel/test-repl-envvars.js
  const tests = [
    {
      env: {},
-Index: node-v12.14.0/test/common/index.mjs
+Index: node-git.8252c06165/test/common/index.mjs
 ===================================================================
---- node-v12.14.0.orig/test/common/index.mjs
-+++ node-v12.14.0/test/common/index.mjs
+--- node-git.8252c06165.orig/test/common/index.mjs
++++ node-git.8252c06165/test/common/index.mjs
 @@ -45,6 +45,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
@@ -186,23 +186,10 @@ Index: node-v12.14.0/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-Index: node-v12.14.0/test/parallel/test-fs-utimes.js
+Index: node-git.8252c06165/Makefile
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-fs-utimes.js
-+++ node-v12.14.0/test/parallel/test-fs-utimes.js
-@@ -145,7 +145,7 @@ const path = `${tmpdir.path}/test-utimes
- fs.writeFileSync(path, '');
- 
- // Test Y2K38 for all platforms [except 'arm', 'OpenBSD' and 'SunOS']
--if (!process.arch.includes('arm') && !common.isOpenBSD && !common.isSunOS) {
-+if (!process.arch.includes('arm') && process.arch !== 's390' && !common.isOpenBSD && !common.isSunOS) {
-   const Y2K38_mtime = 2 ** 31;
-   fs.utimesSync(path, Y2K38_mtime, Y2K38_mtime);
-   const Y2K38_stats = fs.statSync(path);
-Index: node-v12.14.0/Makefile
-===================================================================
---- node-v12.14.0.orig/Makefile
-+++ node-v12.14.0/Makefile
+--- node-git.8252c06165.orig/Makefile
++++ node-git.8252c06165/Makefile
 @@ -486,7 +486,7 @@ test-all-valgrind: test-build
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) --mode=debug,release --valgrind
  
@@ -230,10 +217,10 @@ Index: node-v12.14.0/Makefile
  
  .PHONY: doc-only
  doc-only: tools/doc/node_modules \
-Index: node-v12.14.0/test/parallel/test-child-process-spawnsync-args.js
+Index: node-git.8252c06165/test/parallel/test-child-process-spawnsync-args.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-child-process-spawnsync-args.js
-+++ node-v12.14.0/test/parallel/test-child-process-spawnsync-args.js
+--- node-git.8252c06165.orig/test/parallel/test-child-process-spawnsync-args.js
++++ node-git.8252c06165/test/parallel/test-child-process-spawnsync-args.js
 @@ -12,6 +12,8 @@ const tmpdir = require('../common/tmpdir
  const assert = require('assert');
  const { spawnSync } = require('child_process');
@@ -243,10 +230,10 @@ Index: node-v12.14.0/test/parallel/test-child-process-spawnsync-args.js
  const command = common.isWindows ? 'cd' : 'pwd';
  const options = { cwd: tmpdir.path };
  
-Index: node-v12.14.0/test/parallel/test-dns.js
+Index: node-git.8252c06165/test/parallel/test-dns.js
 ===================================================================
---- node-v12.14.0.orig/test/parallel/test-dns.js
-+++ node-v12.14.0/test/parallel/test-dns.js
+--- node-git.8252c06165.orig/test/parallel/test-dns.js
++++ node-git.8252c06165/test/parallel/test-dns.js
 @@ -320,16 +320,6 @@ common.expectsError(() => {
  });
  
