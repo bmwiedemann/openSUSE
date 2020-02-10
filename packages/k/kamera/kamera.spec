@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamera
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Digital camera support for KDE applications
 License:        LGPL-2.1-or-later
@@ -53,7 +53,7 @@ This package allows any KDE application to access and manipulate pictures on a d
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
