@@ -20,15 +20,15 @@
 
 %bcond_without lang
 Name:           kscreenlocker
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            https://projects.kde.org/kscreenlocker
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
+Source:         kscreenlocker-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
+Source1:        kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
@@ -91,7 +91,7 @@ Development files for Library and components for secure lock screen architecture
 
 %build
   %cmake_kf5 -d build -- -DKDE4_COMMON_PAM_SERVICE=kde -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   # Ship our own file to not depend on a display manager being installed (boo#1108329)

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [kcm] Handle empty shortcut in property fetch (kde#416397)
+  * Load user information once on startup
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Fix minor EBN issues and typos
+  * Have the wallpaper combo managed by KConfigDialogManager
+  * Remove dead code
+  * Integrate the lnf and wallpaper settings with the KCM logic
+  * Move the shortcut management in the settings object
+  * it's already define in ecm now
+  * Add KDEClangFormat cmake support
+  * Add version
+  * Port some deprecated methods
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
