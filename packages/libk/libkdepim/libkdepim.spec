@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -73,7 +73,7 @@ This package contains the libkdepim library.
 %build
 %cmake_kf5 -d build
 
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
