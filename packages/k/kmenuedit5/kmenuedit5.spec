@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kmenuedit5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Provides the interface and basic tools for the KDE workspace
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kmenuedit-%{version}.tar.xz
+Source:         kmenuedit-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kmenuedit-%{version}.tar.xz.sig
+Source1:        kmenuedit-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.7.0
@@ -38,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KDELibs4Support)
@@ -60,7 +61,7 @@ Provides the interface and basic tools for the KDE workspace.
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -86,6 +87,8 @@ Provides the interface and basic tools for the KDE workspace.
 %dir %{_kf5_htmldir}
 %{_kf5_htmldir}/en/kmenuedit/
 %{_kf5_debugdir}/kmenuedit.categories
+%dir %{_kf5_libdir}/kconf_update_bin
+%{_kf5_libdir}/kconf_update_bin/kmenuedit_globalaccel
 
 %if %{with lang}
 %files lang -f %{name}.lang
