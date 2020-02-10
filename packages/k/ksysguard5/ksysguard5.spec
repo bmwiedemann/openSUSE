@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksysguard5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE System Guard daemon
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz
+Source:         ksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz.sig
+Source1:        ksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        ksysguardd.service
@@ -85,7 +85,7 @@ to enable monitoring them remotely with ksysguard.
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -106,7 +106,7 @@ to enable monitoring them remotely with ksysguard.
 %post
 /sbin/ldconfig
 %service_add_post ksysguardd.service
-%set_permissions %{_kf5_libexecdir}/ksysguard/ksgrd_network_helper
+%set_permissions %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
 
 %postun
 /sbin/ldconfig
@@ -114,7 +114,7 @@ to enable monitoring them remotely with ksysguard.
 exit 0
 
 %verifyscript
-%verify_permissions -e %{_kf5_libexecdir}/ksysguard/ksgrd_network_helper
+%verify_permissions -e %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
 
 %files
 %license COPYING*
@@ -137,6 +137,7 @@ exit 0
 %dir %{_kf5_plugindir}/ksysguard/
 %dir %{_kf5_plugindir}/ksysguard/process
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_network.so
+%{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_nvidia.so
 %{_unitdir}/ksysguardd.service
 
 %if %{with lang}

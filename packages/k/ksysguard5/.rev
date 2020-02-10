@@ -793,4 +793,12 @@ Wed Sep  3 21:20:56 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
     <requestid>761986</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>688a3b1bdce7d563eeba26210e9b780d</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367888</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
+    <requestid>772242</requestid>
+  </revision>
 </revisionlist>

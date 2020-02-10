@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Mon Jan 27 10:04:39 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix path for chkstat (boo#1151190)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * typo--
+  * Remove endl. qCritical/qDebug already adds a endl.
+  * Don't use nullptr as flag value
+  * Move ACPI battery information from /proc/acpi to /sys
+  * Revert "Move ACPI battery information from /proc/acpi to /sys"
+  * Move ACPI battery information from /proc/acpi to /sys
+  * Add Total/Available/Allocated memory sensors
+  * Use URL with transport encryption
+  * Make it compiles without deprecated method
+  * Add KDEClangFormat cmake support
+  * Fix ksysguard acpi cooling devices
+  * Fix minor issues found by EBN
+  * fix nvidia line part count
+  * Fix a number of issues found by the OpenSuse security team in networkhelper
+  * Add plugin showing nvidia GPU load stats
+  * Make it compile without deprecated method
+  * Port QLayout::setMargins to QLayout::setContentsMargins
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
