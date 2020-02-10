@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           kgamma5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Display gamma configuration
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kgamma5-%{version}.tar.xz
+Source:         kgamma5-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kgamma5-%{version}.tar.xz.sig
+Source1:        kgamma5-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.0.0
@@ -59,7 +59,7 @@ gamma.
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
