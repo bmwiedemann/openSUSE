@@ -1105,4 +1105,12 @@
   * 0001-Revert-KCMs-Activities-Fix-jagginess-for-activities-.patch</comment>
     <requestid>763704</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>8a2d6793097f1f9156f276c8d723d2fd</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367912</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
+    <requestid>772256</requestid>
+  </revision>
 </revisionlist>

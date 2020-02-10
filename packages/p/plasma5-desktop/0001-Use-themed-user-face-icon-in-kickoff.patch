@@ -10,17 +10,14 @@ Subject: [PATCH] Use themed user face icon in kickoff
  1 file changed, 1 deletion(-)
 
 diff --git a/applets/kickoff/package/contents/ui/Header.qml b/applets/kickoff/package/contents/ui/Header.qml
-index 9d342255..ee4529e9 100644
+index a072793f0..b20823a10 100644
 --- a/applets/kickoff/package/contents/ui/Header.qml
 +++ b/applets/kickoff/package/contents/ui/Header.qml
-@@ -78,7 +78,6 @@ Item {
-             right: faceIcon.right
-             rightMargin: -units.gridUnit/2
-         }
+@@ -116,7 +116,6 @@ Item {
+         visible: faceIcon.status !== Image.Ready
+         anchors.fill: faceIcon
+         anchors.bottomMargin: units.smallSpacing
 -        usesPlasmaTheme: false
      }
  
      MouseArea {
--- 
-2.12.0
-

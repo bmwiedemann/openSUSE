@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,15 +30,13 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Revert-KCMs-Activities-Fix-jagginess-for-activities-.patch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -68,6 +66,7 @@ BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
+BuildRequires:  cmake(KF5NewStuffQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
 BuildRequires:  cmake(KF5People) >= %{kf5_version}
@@ -110,6 +109,7 @@ BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xorg-evdev)
 BuildRequires:  pkgconfig(xorg-libinput)
 BuildRequires:  pkgconfig(xorg-server)
@@ -136,10 +136,17 @@ Requires:       kinfocenter5
 Requires:       kirigami2
 Requires:       kmenuedit5
 Requires:       ksysguard5
+# kcm_style does DBus calls to the KDED module.
+# However, that depends on xsettingsd and gio, so
+# let the Supplements in kde-gtk-config5 handle it.
+# Requires:       kde-gtk-config5 >= %{_plasma5_version}
 # needed for the ActivityManager
 Requires:       kactivities5-imports
+# Needed for several KCMs
+Requires:       knewstuff-imports
 Conflicts:      kactivities5 < 5.20.0
 Recommends:     plasma5-addons
+Suggests:       %{name}-emojier
 Recommends:     %{name}-lang
 Provides:       kdebase4-workspace = 5.3.0
 Obsoletes:      kdebase4-workspace < 5.3.0
@@ -166,7 +173,22 @@ Obsoletes:      synaptiks
 %description
 This package contains the basic packages for a Plasma workspace.
 
+%package emojier
+Summary:        Selection window for emoji text input
+Group:          System/GUI/KDE
+Requires:       %{name} = %{version}
+# This uses .dict files, which are part of the ibus package.
+# That's a huge dep tree and is also known to break things.
+# So until that is fixed, don't install emojier by default.
+Requires:       ibus
+# Get it installed automatically at least if ibus is already there
+Supplements:    (%{name} and ibus)
+
+%description emojier
+Press Meta+. to open an emoji selection window.
+
 %lang_package
+
 %prep
 %autosetup -p1 -n plasma-desktop-%{version}
 
@@ -175,7 +197,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -217,6 +239,8 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_knsrcfilesdir}/lookandfeel.knsrc
 %{_kf5_knsrcfilesdir}/xcursor.knsrc
 %{_kf5_knsrcfilesdir}/ksplash.knsrc
+%{_kf5_knsrcfilesdir}/gtk2_themes.knsrc
+%{_kf5_knsrcfilesdir}/gtk3_themes.knsrc
 %{_kf5_bindir}/kaccess
 %{_kf5_bindir}/kapplymousetheme
 %{_kf5_bindir}/kfontinst
@@ -227,6 +251,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_bindir}/solid-action-desktop-gen
 %{_kf5_bindir}/lookandfeeltool
 %{_kf5_bindir}/kcolorschemeeditor
+%{_kf5_bindir}/tastenbrett
 %{_kf5_libdir}/kconf_update_bin/krdb_clearlibrarypath
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeinit5_kaccess.so
@@ -276,6 +301,12 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_plasmadir}/services/kimpanel.operations
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_kimpanel.so
+
+%files emojier
+%{_kf5_bindir}/ibus-ui-emojier-plasma
+%{_kf5_applicationsdir}/org.kde.plasma.emojier.desktop
+%dir %{_kf5_sharedir}/kglobalaccel
+%{_kf5_sharedir}/kglobalaccel/org.kde.plasma.emojier.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang

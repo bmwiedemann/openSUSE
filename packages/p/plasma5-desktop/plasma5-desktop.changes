@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [krdb] Hardcode Breeze default in kde4 migration
+  * always normal colorgroup on tooltips
+  * Fix fonts KCM button state (kde#416358)
+  * [Colors KCM] Consider settings dirty if currently active scheme is edited
+  * [Colors KCM] Fix roles mixup
+  * [Applets/Folder] Re-arrange positioning of "Arrange in" and "Align" submenus (kde#360353)
+  * [Folder View] Fix text label color in pop-up (kde#416658)
+  * KCM/baloo Display full mount point in list of excluded mount points
+  * Port plasma-desktop to autoconfig.kde.org
+  * [applets/taskmanager] Perform more rounding in thumbnail size calculation
+  * add missing file
+  * Add kconf update script for ksmserver
+  * [Emojier] Copy Emoji also into selection clipboard
+  * [applets/Task Manager] Refine tooltip highlight effect (kde#416390)
+  * [Kickoff] Don't enable OpacityMask layer.effect in software mode
+  * Switch to the old-style button text for the KNSQuick buttons (kde#415541)
+  * Remove misleading comment about the setting, that does not exist anymore (kde#416636)
+  * [Task Manager] Draw audio icon highlight effect behind the icon, not in front of it
+  * [Kickoff] Theme separators
+  * [App Style KCM] Hide preview buttons, if previewers are not found (kde#416343)
+  * [App Style KCM] Use QtQuick NewStuff dialogs
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Wed Jan 22 18:36:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add ibus dependency for emojier
+- Split emojier out, don't install it by default as ibus can break
+  stuff and is just bloat.
+- See boo#1161584 for splitting ibus-data out
+
+-------------------------------------------------------------------
+Tue Jan 21 08:49:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- knewstuff-imports is needed for several KCMs
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+- Drop patch, now upstream:
+  * 0001-Revert-KCMs-Activities-Fix-jagginess-for-activities-.patch
+
+-------------------------------------------------------------------
 Sun Jan 12 20:33:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix the activity list in the KCM (kde#416158):
