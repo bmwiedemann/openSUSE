@@ -23,15 +23,15 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
+Source:         drkonqi-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
+Source1:        drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCHES 100-199 are from upstream 5.16 branch
@@ -49,6 +49,7 @@ BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlRpcClient) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
@@ -72,7 +73,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
