@@ -683,4 +683,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762402</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>622db0ad307b910682d2fd4db9e7d201</srcmd5>
+    <version>19.12.2</version>
+    <time>1581367767</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771708</requestid>
+  </revision>
 </revisionlist>
