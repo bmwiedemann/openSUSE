@@ -36,15 +36,15 @@ BuildRequires:  fix-version-checks-in-here
 
 %bcond_without lang
 Name:           plymouth-theme-breeze
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Plymouth "Breeze" theme
 License:        GPL-2.0+
 Group:          System/Base
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-plymouth-%{version}.tar.xz
+Source:         breeze-plymouth-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-plymouth-%{version}.tar.xz.sig
+Source1:        breeze-plymouth-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 2.8.12
@@ -74,7 +74,7 @@ boot splash themes.
 
 %build
   %cmake_kf5 -d build -- -DDISTRO_NAME=%{_distro_name} -DDISTRO_VERSION=%{_distro_version} -DDISTRO_LOGO=%{_distro_logo}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
