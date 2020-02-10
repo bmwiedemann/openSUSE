@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Upgrade theme to Breeze GTK on startup (kde#416635)
+  * Correctly process font, that has multiple words in family name (kde#380980)
+  * Bind gtk-enable-animations setting to global animation speed slider
+- Drop patches, now upstream:
+  * 0001-Upgrade-theme-to-Breeze-GTK-on-startup.patch
+
+-------------------------------------------------------------------
+Mon Jan 27 12:50:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to add kconf_update binary to set the initial config:
+  * 0001-Upgrade-theme-to-Breeze-GTK-on-startup.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 11:19:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Sat Jan 18 17:15:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add Obsoletes for dropped kde-gtk-config5-lang
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * Remove GTK KCM
+  * Rewrite GTK KCM (kde#405405)
+  * Respect GTK2_RC_FILES environmental variable (kde#415770)
+  * Synchronize decorations buttons order in GTK headerbars
+  * Sync dark theme preference for GTK3 applications
+  * Refactor GTK KCM code
+  * Remove traces of old GTK configs
+  * Remove scrollbar behavior option in GTK KCM
+  * Sync scrollbar behavior with GTK applications
+  * Remove redundant finder
+  * Remove unneeded options in GTK KCM (kde#406740,kde#401008,kde#401123)
+  * Add default value for cursor theme (kde#414109)
+  * Update GTK settings according to Plasma settings (kde#401507,kde#375272,kde#411097)
+  * port old style connects
+  * Add KDEClangFormat cmake support
+  * Make it compile without deorecated method
+- Drop files which were only used by the long gone 
+  kde_gtk_config.suse.sh script:
+  * gtk3-settings.ini-kde4.template
+  * gtkrc-2.0-kde4.template
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5

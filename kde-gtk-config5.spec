@@ -18,104 +18,84 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
-Summary:        KCM Module to Configure GTK2 and GTK3 Applications Appearance Under KDE
+Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kde-gtk-config
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
+Source:         kde-gtk-config-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
+Source1:        kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-Source3:        gtkrc-2.0-kde4.template
-Source4:        gtk3-settings.ini-kde4.template
 BuildRequires:  extra-cmake-modules >= 0.0.9
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(Qt5Svg) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
-Recommends:     %{name}-lang
+# Needed for syncing GTK+ settings
+Requires:       xsettingsd
 Suggests:       gtk2-metatheme-breeze
 Suggests:       gtk3-metatheme-breeze
 Supplements:    packageand(plasma5-workspace:libgtk-2_0-0)
 Supplements:    packageand(plasma5-workspace:libgtk-3-0)
 Provides:       kde-gtk-config = %{version}
 Obsoletes:      kde-gtk-config < %{version}
+# Existed only up to 5.17
+Obsoletes:      %{name}-lang < %{version}
 
 %description
-kde-gtk-config is a KCM module to configure GTK2 and GTK3 applications
+kde-gtk-config is a KDED module which configures GTK2 and GTK3 applications
 appearance under KDE.
 
-Among its many features, it lets you:
- - Choose which theme is used for GTK2 and GTK3 applications.
- - Tweak some GTK applications behaviour.
- - Select what icon theme to use in GTK applications.
- - Select GTK applications default fonts.
- - Easily browse and install new GTK2 and GTK3 themes.
-
 %package gtk2
-Summary:        GTK2 Preview Helper for the GTK Configuration KCM
+Summary:        GTK2 Preview Helper for the GTK Configuration
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Supplements:    packageand(%{name}:libgtk-2_0-0)
 
 %description gtk2
 This package contains a helper application that allows previewing
-the GTK2 application style from within the GTK configuration KCM
+the GTK2 application style from within the application style KCM
 
 %package gtk3
-Summary:        GTK3 Preview Helper for the GTK Configuration KCM
+Summary:        GTK3 Preview Helper for the GTK Configuration
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Supplements:    packageand(%{name}:libgtk-3-0)
 
 %description gtk3
 This package contains a helper application that allows previewing
-the GTK3 application style from within the GTK configuration KCM
-
-%lang_package
+the GTK3 application style from within the application style KCM
 
 %prep
-%setup -q -n kde-gtk-config-%{version}
-%autopatch -p1
+%autosetup -p1 -n kde-gtk-config-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_kf5 -d build
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
-  %kf5_find_lang
-%endif
-
-install -Dpm 0644 %{SOURCE3} %{buildroot}%{_kf5_sharedir}/%{name}/gtkrc-2.0-kde4.template
-install -Dpm 0644 %{SOURCE4} %{buildroot}%{_kf5_sharedir}/%{name}/gtk3-settings.ini-kde4.template
 
 %files
 %license COPYING*
-%{_kf5_sharedir}/%{name}/
-%{_kf5_knsrcfilesdir}/cgctheme.knsrc
-%{_kf5_knsrcfilesdir}/cgcgtk3.knsrc
-%{_kf5_servicesdir}/
-%{_kf5_plugindir}/
-%{_kf5_sharedir}/kcm-gtk-module/
-%dir %{_kf5_sharedir}/icons/hicolor/8x8
-%dir %{_kf5_sharedir}/icons/hicolor/8x8/apps
-%{_kf5_sharedir}/icons/hicolor/*/*/*.*
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/kded
+%{_kf5_plugindir}/kf5/kded/gtkconfig.so
+%dir %{_kf5_sharedir}/kcm-gtk-module/
+%{_kf5_sharedir}/kcm-gtk-module/preview.ui
+
+%dir %{_kf5_sharedir}/kconf_update/
+%{_kf5_sharedir}/kconf_update/gtkconfig.upd
+%dir %{_kf5_libdir}/kconf_update_bin/
+%{_kf5_libdir}/kconf_update_bin/gtk_theme
 
 %files gtk2
 %license COPYING*
@@ -125,9 +105,5 @@ install -Dpm 0644 %{SOURCE4} %{buildroot}%{_kf5_sharedir}/%{name}/gtk3-settings.
 %files gtk3
 %license COPYING*
 %{_kf5_libdir}/libexec/gtk3_preview
-
-%if %{with lang}
-%files lang -f %{name}.lang
-%endif
 
 %changelog
