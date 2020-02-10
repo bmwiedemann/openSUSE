@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-import-wizard
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -93,7 +93,7 @@ This package contains development headers to build new import plugins for KDE PI
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
