@@ -492,4 +492,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
     <requestid>761995</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6c853a0cead855798f62f035336328ee</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367944</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
+    <requestid>772251</requestid>
+  </revision>
 </revisionlist>
