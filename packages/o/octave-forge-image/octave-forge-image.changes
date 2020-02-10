@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb  9 07:03:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.12.0:
+  * The following functions are new:
+      imref2d               integralImage         integralImage3
+      imref3d
+  * Improved the cubic interpolation method in imremap.  This should
+    also cause improved results in the functions imperspectivewarp,
+    imresize, and imrotate when using the cubic or bicubic methods.
+  * The function labelmatrix was changed for compatibility with the
+    upcoming Octave version 6.
+  * The function bwmorph now supports the "endpoints" operation.
+  * The function nonmax_supress was renamed nonmax_suppress to fix its
+    incorrect spelling.  The incorrectly named function is kept for
+    backwards compatibility.
+  * The functions imremap, imperspectivewrap, and imrotate no longer
+    return the `valid' output argument.
+  * The imgradientxy function will now recognize the methods "central"
+    and "intermediate" for Matlab compatibility.  Their previous names
+    "centraldifference" and "intermediatedifference" continue to work
+    for backwards compatibility.
+  * The stdfilt function will again handle all images of non floating
+    type (a regression introduced in the version 2.10.0).
+
+-------------------------------------------------------------------
 Mon Jan 14 14:00:30 UTC 2019 - hiwatari.seiji@gmail.com
 
 - Update to version 2.10.0:
