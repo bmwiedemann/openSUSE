@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dash
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -51,6 +51,7 @@ analytical python code.
 
 %prep
 %setup -q -n dash-%{version}
+sed -i -e '/^#!\//, 1d' dash/extract-meta.js
 
 %build
 %python_build
