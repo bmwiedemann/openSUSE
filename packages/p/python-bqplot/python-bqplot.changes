@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:15:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.3
+  * Add versions lookup table in the README
+  * Axis: Fix axis side validation 
+  * Binary Serializers: Add support for pandas.Timestamp array
+  * DOC: Fix a few Sphinx warnings
+  * GridHeatMap: Add tests
+  * GridHeatmap: Fix selection
+  * MarketMap: Fix text style at creation
+  * Pie: Add tests
+  * Pie: Fix Labels and data update
+  * Remove unused function 
+  * Update tests 
+  * added a tutorial for building compound widgets 
+  * cleaned up notebook metadata hence reducing the size of the file
+  * cleared metadata thereby reducing file size significantly
+  * cleared metadata, fixed image path and url link to image documentation
+  * cleared output cells, used pyplot to reduce code and removed redundant widgets
+
+-------------------------------------------------------------------
 Wed Jan 15 15:57:38 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.12.2

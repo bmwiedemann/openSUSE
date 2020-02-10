@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-bqplot
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Interactive plotting package for the Jupyter notebook
 License:        Apache-2.0
