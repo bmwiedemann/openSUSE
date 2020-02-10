@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           milou5
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Dedicated search application built on top of Baloo
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 Url:            https://projects.kde.org/milou
-Source:         https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz
+Source:         milou-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz.sig
+Source1:        milou-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -56,7 +56,7 @@ A dedicated search application built on top of Baloo
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
