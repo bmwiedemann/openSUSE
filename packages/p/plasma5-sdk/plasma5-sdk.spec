@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           plasma5-sdk
-Version:        5.17.5
+Version:        5.18.0
 Release:        0
 Summary:        Plasma SDK
 License:        LGPL-2.0-or-later AND GPL-2.0-only
 Group:          System/GUI/KDE
 Url:            https://cgit.kde.org/plasma-sdk.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
+Source:         plasma-sdk-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
+Source1:        plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-icons
@@ -83,11 +83,11 @@ test Plasma data engines without writing a Plasma applet.
 %lang_package
 
 %prep
-%autosetup -p1 -n plasma-sdk-%{version}
+%setup -q -n plasma-sdk-%{version}
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [Cuttlefish] --warnings
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * ignore files
+  * Don't add twice "parser.addVersionOption"
+  * refactor(lookandfeelexplorer): Port almost entire look and feel explorer to QQC2
+  * Remove unused action
+  * [Cuttlefish] Use the same actions in all menus
+  * [Cuttlefish] Set context properties before loading file
+  * [Cuttlefish] Replace deprectated method KDeclarative::setupBindings()
+  * [Cuttlefish] Make AppStream file valid
+  * [Cuttlefish] Make it clear that picker mode still works
+  * Don't use nullptr as flag
+  * Rename Look and Feel Explorer to Plasma Global Theme Explorer
+  * Port away from deprecated functions from Qt 5.14
+  * Fix Cuttlefish mouse click selection in icon grid
+  * Avoid connecting to overloaded signal
+  * port old style connects
+  * Add KDEClangFormat cmake support
+  *  Revert "Update version number for 5.17.0"
+  *  Revert "Update version number for 5.17.80"
+  * [Cuttlefish] Compare an icon in different themes
+  * [Cuttlefish] Add 48 to the sizeslider
+  * Make it compiles without deprecated method
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:37 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
