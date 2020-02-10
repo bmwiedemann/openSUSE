@@ -1,0 +1,4 @@
+<multibuild>
+  <flavor>sifivefu540</flavor>
+  <flavor>qemu-riscv64smode</flavor>
+</multibuild>
