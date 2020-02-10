@@ -500,4 +500,12 @@
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762285</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ee6b38bf2fb7f7032b6389038078b2ea</srcmd5>
+    <version>19.12.2</version>
+    <time>1581367663</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771590</requestid>
+  </revision>
 </revisionlist>
