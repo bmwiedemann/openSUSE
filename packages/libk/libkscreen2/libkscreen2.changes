@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- No code changes since 5.17.90
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Mon Jan 20 13:34:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix version in source URL
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * fix(kwayland): move blocking tablet init before timer start
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * fix(randr): make sure crtc exists
+  * feat: add auto rotate and tablet mode information
+  * feat: replace replication source with logical size API
+  * docs: add todos for KF6
+  * docs: add contributing guide
+  * Add KDEClangFormat cmake support
+  * [wayland] Don't init m_internalConfig twice
+  * Now we depend against kf5.58
+  * Make it compile against qt 5.14
+
+-------------------------------------------------------------------
 Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.17.5
