@@ -1,7 +1,7 @@
 #
 # spec file for package quantum-espresso
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,43 +16,100 @@
 #
 
 
-%if 0%{?sles_version}
-%define _mvapich2 1
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%define pname quantum-espresso
+
+%if 0%{?sle_version} >= 150200
+%define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?suse_version}
-%define _openmpi 1
+%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
+%define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 
-%if 0%{?suse_version} >= 1550
-%define omp_ver 1
+%if "%{flavor}" == ""
+%define package_name %{pname}
+ExclusiveArch:  do_not_build
+%endif
+
+%if "%{flavor}" != "" && !0%{?DisOMPI1:1} && !0%{?DisOMPI2:1} && !0%{?DisOMPI3:1}
+ExclusiveArch:  x86_64
+%endif
+
+%if "%{flavor}" == "mvapich2"
+%global mpi_flavor mvapich2
+%endif
+
+%if "%{flavor}" == "openmpi1"
+%global mpi_flavor openmpi
+%define mpi_vers 1
+%{?DisOMPI1}
+%endif
+
+%if "%{flavor}" == "openmpi2"
+%global mpi_flavor openmpi
+%define mpi_vers 2
+%{?DisOMPI2}
+%endif
+
+%if "%{flavor}" == "openmpi3"
+%global mpi_flavor openmpi
+%define mpi_vers 3
+%{?DisOMPI3}
+%endif
+
+%{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
+%{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
+
+# For compatibility package names
+%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1500
+%define mpi_ext %{nil}
 %else
-%define omp_ver %{nil}
+%define mpi_ext %{?mpi_vers}
 %endif
 
-%define _mpi %{?_openmpi:openmpi}%{omp_ver} %{?_mvapich2:mvapich2}
+%if %{without mpi}
+ %define my_prefix %_prefix
+ %define my_bindir %_bindir
+ %define my_libdir %_libdir
+ %define my_incdir %_includedir
+%else
+ %define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
+ %define my_bindir %{my_prefix}/bin
+ %define my_suffix -%{mpi_flavor}%{?mpi_ext}
+%endif
 
-Name:           quantum-espresso
+%if 0%{!?package_name:1}
+ %define package_name   %pname%{?my_suffix}
+%endif
+
+Name:           %{package_name}
 Version:        6.4.1
 Release:        0
 Summary:        A suite for electronic-structure calculations and materials modeling
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
-Url:            http://www.quantum-espresso.org
+URL:            http://www.quantum-espresso.org
 Source0:        https://gitlab.com/QEF/q-e/-/archive/qe-%{version}/q-e-qe-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM backports-6.4.1.git-diff badshah400@gmail.com -- Backported fixes for version 6.4.1 from upstream
 Patch0:         https://gitlab.com/QEF/q-e/wikis/uploads/3e4b6d3844989c02d0ebb03a935e1976/backports-6.4.1.git-diff
 BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
-%if 0%{?_openmpi}
-BuildRequires:  openmpi%{omp_ver}-devel
+%if %{with mpi}
+BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
+BuildRequires:  fftw3-mpi-devel
+%if 0%{?suse_version} >= 1550 && %{mpi_flavor} == "openmpi"
+# hackish workaround for multiple openmpiX-config all providing openmpi-runtime-config
+BuildRequires:  %{mpi_flavor}%{?mpi_ext}-config
 %endif
-%if 0%{?_mvapich2}
-BuildRequires:  mvapich2-devel
+%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1550
+Provides:       %{pname}-openmpi = %{version}-%{release}
+Obsoletes:      %{pname}-openmpi < %{version}-%{release}
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64
+%else
+BuildRequires:  fftw3-devel
+%endif
 
 %description
 Quantum ESPRESSO is an integrated suite of Open-Source computer codes for
@@ -70,73 +127,28 @@ Quantum ESPRESSO is an integrated suite of Open-Source computer codes for
 electronic-structure calculations and materials modeling at the nanoscale.
 It is based on density-functional theory, plane waves, and pseudopotentials.
 
-%package openmpi
-Summary:        A suite for electronic-structure calculations and materials modeling
-Group:          Productivity/Scientific/Physics
-
-%description openmpi
-Quantum ESPRESSO is an integrated suite of Open-Source computer codes for
-electronic-structure calculations and materials modeling at the nanoscale.
-It is based on density-functional theory, plane waves, and pseudopotentials.
-
-This package contains the nespresso binary compiled with openmpi support.
-
-%if 0%{?sles_version}
-%package mvapich2
-Summary:        A suite for electronic-structure calculations and materials modeling
-Group:          Productivity/Scientific/Physics
-
-%description mvapich2
-Quantum ESPRESSO is an integrated suite of Open-Source computer codes for
-electronic-structure calculations and materials modeling at the nanoscale.
-It is based on density-functional theory, plane waves, and pseudopotentials.
-
-This package contains the nespresso binary compiled with mvapich2 support.
-%endif
-
 %prep
 %autosetup -p1 -n q-e-qe-%{version}
 
-echo "prepare parallel builds: %_mpi"
-set -- *
-for i in %_mpi
-do
-    mkdir espresso-$i
-    cp -ap "$@" espresso-$i
-done
-
 %build
-%configure --disable-parallel
-make all
-
-for mpi in %_mpi;
-do
-cd espresso-$mpi
-export CC="%{_libdir}/mpi/gcc/$mpi/bin/mpicc"
-export FC="%{_libdir}/mpi/gcc/$mpi/bin/mpif90"
-export F77="%{_libdir}/mpi/gcc/$mpi/bin/mpif77"
+%if %{with mpi}
+export CC="%{my_bindir}/mpicc"
+export FC="%{my_bindir}/mpif90"
 %configure --enable-parallel
-make all
-cd ..
-done
+%else
+export CC=gcc
+export FC=gfortran
+%configure --disable-parallel
+%endif
+make %{?_smp_mflags} all
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-cd bin
+mkdir -p %{buildroot}%{my_bindir}
+pushd bin
 for bin in *.x; do
-    install -m 755 $bin %{buildroot}%{_bindir}/qe_$bin
+    install -m 755 $bin %{buildroot}%{my_bindir}/qe_$bin
 done
-cd ..
-
-for mpi in %_mpi;
-do
- mkdir -p %{buildroot}%{_libdir}/mpi/gcc/$mpi/bin
- cd espresso-$mpi/bin
-   for bin in *.x; do
-     install -m 755 $bin %{buildroot}%{_libdir}/mpi/gcc/$mpi/bin/qe_$bin
-   done
- cd ../..
-done
+popd
 
 %fdupes -s Doc/
 
@@ -144,24 +156,12 @@ done
 %defattr(-,root,root)
 %doc README.md
 %license License
-%{_bindir}/*.x
+%{my_bindir}/*.x
 
-%files openmpi
-%defattr(-,root,root)
-%doc README.md
-%license License
-%{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/*.x
-
-%if 0%{?sles_version}
-%files mvapich2
-%defattr(-,root,root)
-%doc README.md
-%license License
-%{_libdir}/mpi/gcc/mvapich2/bin/*.x
-%endif
-
+%if %{without mpi}
 %files doc
 %defattr(-,root,root)
 %doc Doc/*
+%endif
 
 %changelog

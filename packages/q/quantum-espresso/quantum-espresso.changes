@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 10 00:17:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add missing Provides/Obsoletes for renamed openmpi1 package.
+- Avoid overriding ExclusiveArch for disabled flavors.
+- Cleanup spec file, use same patterns as other MPI packages. 
+
+-------------------------------------------------------------------
+Wed Jan 29 11:48:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Remove duplicated definitions.
+- Remove bogus undefines of suffix and mpi_flavor for "serial"
+  flavour. The former causes builds to fail for openSUSE >= 1550
+  using rpm >= 4.15.
+
+-------------------------------------------------------------------
+Thu Nov  7 14:50:51 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use multibuild to build different mpi (mvapich2, openmpi1,
+  openmpi2, and openmpi3) and serial versions.
+
+-------------------------------------------------------------------
 Thu Nov  7 00:52:39 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add backports-6.4.1.git-diff: Backported fixes for version
