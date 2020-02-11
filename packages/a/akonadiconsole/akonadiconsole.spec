@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadiconsole
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -52,18 +52,18 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5MessageCore)
+BuildRequires:  cmake(KF5MessageViewer)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(Qt5Sql) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 Obsoletes:      akonadi_resources < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
@@ -81,7 +81,7 @@ for debugging.
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
