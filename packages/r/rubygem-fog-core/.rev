@@ -7,4 +7,12 @@
     <comment>I need this package as a dependency of rubygem-fog-libvirt.</comment>
     <requestid>709713</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e93c1464e9fe6a934f6ccfc50432445</srcmd5>
+    <version>2.2.0</version>
+    <time>1581456239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773049</requestid>
+  </revision>
 </revisionlist>
