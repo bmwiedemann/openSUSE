@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  8 13:38:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.1. Too many changes to list, see
+  https://github.com/utelle/wxsqlite3#history
+
+- Drop _service file
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Fri Nov  3 08:11:04 UTC 2017 - olaf@aepfle.de
 
 - Version 3.5.8.20171102.1b93c9c

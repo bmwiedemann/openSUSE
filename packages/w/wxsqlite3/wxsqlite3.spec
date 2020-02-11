@@ -1,7 +1,7 @@
 #
 # spec file for package wxsqlite3
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define wx_version_soname %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@;s@\\.@_@')
 %define sover 0
-
 Name:           wxsqlite3
-Version:        3.5.8.20171102.1b93c9c
+Version:        4.5.1
 Release:        0
 Summary:        C++ wrapper around SQLite 3.x
 License:        SUSE-wxWidgets-3.1
-Group:          Development/Libraries/C and C++
-Url:            https://github.com/utelle/wxsqlite3
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://utelle.github.io/wxsqlite3
+Source0:        https://github.com/utelle/wxsqlite3/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  make
-%if 0%{?is_opensuse}
+%if 0%{suse_version} > 1315
 BuildRequires:  wxWidgets-devel >= 3
 %else
-# SLE_12 lacks wxWidgets_3.0-devel
-BuildRequires:  wxWidgets-devel < 3
+BuildRequires:  wxWidgets-3_0-devel
 %define _use_internal_dependency_generator 0
 %define __find_requires %wx_requires
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database
@@ -49,7 +44,6 @@ library.
 
 %package -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover}
 Summary:        C++ wrapper around SQLite 3.x
-Group:          System/Libraries
 
 %description -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover}
 wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database
@@ -58,7 +52,6 @@ library.
 
 %package        devel
 Summary:        C++ wrapper around SQLite 3.x - Development Files
-Group:          Development/Libraries/C and C++
 Requires:       libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover} = %{version}
 
 %description    devel
@@ -69,11 +62,9 @@ library.
 %prep
 : wx_version_soname: %{wx_version_soname}
 wx-config --version
-%setup -q
+%autosetup
 
 %build
-export CFLAGS='%{optflags} -fno-strict-aliasing'
-export CXXFLAGS='%{optflags} -fno-strict-aliasing'
 autoreconf -fi
 %configure \
 	--enable-shared \
@@ -81,22 +72,23 @@ autoreconf -fi
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
-find %{buildroot} -name "*.la" -print -delete
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover} -p /sbin/ldconfig
-
 %postun -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover} -p /sbin/ldconfig
 
 %files -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover}
-%defattr(-,root,root,-)
-%doc LICENCE.txt readme.md
-%{_libdir}/*.so.*
+%license LICENCE.txt
+%doc readme.md
+%{_libdir}/libwxcode_gtk2u_wxsqlite3-3.0.so.%{sover}*
 
 %files devel
-%defattr(-,root,root,-)
-%{_includedir}/wx
-%{_libdir}/*.so
-%{_libdir}/pkgconfig
+%dir %{_includedir}/wx
+%{_includedir}/wx/wxsqlite3.h
+%{_includedir}/wx/wxsqlite3_version.h
+%{_includedir}/wx/wxsqlite3def.h
+%{_libdir}/libwxcode_gtk2u_wxsqlite3-3.0.so
+%{_libdir}/pkgconfig/wxsqlite3.pc
 
 %changelog
