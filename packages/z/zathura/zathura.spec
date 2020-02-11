@@ -1,7 +1,7 @@
 #
 # spec file for package zathura
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zathura
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
@@ -42,13 +42,9 @@ Recommends:     zathura-pdf-poppler-plugin
 Suggests:       zathura-cb-plugin
 Suggests:       zathura-djvu-plugin
 Suggests:       zathura-ps-plugin
-%if 0%{?suse_version} >= 1550
 BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
-%if 0%{?suse_version} >= 1330
-BuildRequires:  pkgconfig(synctex)
+%if 0%{suse_version} >= 1550
+BuildRequires:  pkgconfig(synctex) >= 1.19
 %endif
 
 %description
@@ -96,7 +92,11 @@ Optional dependency offering fish completion for zathura
 
 %build
 export CFLAGS="%{optflags}"
+%if 0%{suse_version} < 1550
+%meson -Dsynctex=disabled
+%else
 %meson
+%endif
 %meson_build
 
 %check
