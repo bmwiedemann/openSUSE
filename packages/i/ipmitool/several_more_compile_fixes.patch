@@ -4,11 +4,14 @@ Changes partly very old and not possible to find the original author.
 
 Signed-off-by: Thomas Renninger <trenn@suse.de>
 
-Index: ipmitool-1.8.18/lib/ipmi_ekanalyzer.c
-===================================================================
---- ipmitool-1.8.18.orig/lib/ipmi_ekanalyzer.c	2018-09-09 13:48:58.000000000 +0200
-+++ ipmitool-1.8.18/lib/ipmi_ekanalyzer.c	2018-09-25 11:42:30.901490572 +0200
-@@ -4014,7 +4014,7 @@ ipmi_ek_display_clock_config_record(stru
+---
+ lib/ipmi_ekanalyzer.c |    2 +-
+ lib/ipmi_picmg.c      |    4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/lib/ipmi_ekanalyzer.c
++++ b/lib/ipmi_ekanalyzer.c
+@@ -4013,7 +4013,7 @@
  					(feature & 1) ? "Source" : "Receiver");
  			printf("\tFamily:  0x%02x    - AccLVL: 0x%02x\n",
  					family, accuracy);
@@ -17,11 +20,9 @@ Index: ipmitool-1.8.18/lib/ipmi_ekanalyzer.c
  					freq, min_freq, max_freq);
  		}
  		printf("\n");
-Index: ipmitool-1.8.18/lib/ipmi_picmg.c
-===================================================================
---- ipmitool-1.8.18.orig/lib/ipmi_picmg.c	2018-09-09 13:48:58.000000000 +0200
-+++ ipmitool-1.8.18/lib/ipmi_picmg.c	2018-09-25 11:42:30.905490809 +0200
-@@ -850,7 +850,7 @@ ipmi_picmg_portstate_get(struct ipmi_int
+--- a/lib/ipmi_picmg.c
++++ b/lib/ipmi_picmg.c
+@@ -949,7 +949,7 @@
  					}
  					else if (d->type >= 0x06 && d->type <= 0xef)
  					{
@@ -30,7 +31,7 @@ Index: ipmitool-1.8.18/lib/ipmi_picmg.c
  					}
  					else if (d->type >= 0xf0 && d->type <= 0xfe)
  					{
-@@ -1702,7 +1702,7 @@ ipmi_picmg_clk_get(struct ipmi_intf * in
+@@ -1805,7 +1805,7 @@
  						oemval2str( rsp->data[3], rsp->data[4],
  											picmg_clk_accuracy_vals));
  		
@@ -39,15 +40,3 @@ Index: ipmitool-1.8.18/lib/ipmi_picmg.c
  		   }
  		}
  	}
-Index: ipmitool-1.8.18/lib/ipmi_sdr.c
-===================================================================
---- ipmitool-1.8.18.orig/lib/ipmi_sdr.c	2018-09-09 13:48:58.000000000 +0200
-+++ ipmitool-1.8.18/lib/ipmi_sdr.c	2018-09-25 11:42:30.909491047 +0200
-@@ -52,6 +52,7 @@
- #include <ipmitool/ipmi_entity.h>
- #include <ipmitool/ipmi_constants.h>
- #include <ipmitool/ipmi_strings.h>
-+#include <ipmitool/ipmi_sensor.h>
- 
- #if HAVE_CONFIG_H
- # include <config.h>

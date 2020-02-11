@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Feb 11 13:39:26 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Don't hardcode /usr but use rpm variables 
+
+-------------------------------------------------------------------
+Mon Feb 10 08:27:23 UTC 2020 - trenn@suse.de
+
+- bsc#1163026
+- CVE-2020-5208
+- Use license macro for COPYING, instead of doc
+- Add ChangeLog mainline log to docs for shorter
+  obs changelogs. This will be the last more detailed
+  changelog, due to more important buffer overflow patches.
+  Otherwise this changelog will not include (mainline) changes
+  anymore.
+- Update to version 1.8.18+git20200204.7ccea28:
+  * fru, sdr: Fix id_string buffer overflows
+  * lanp: Fix buffer overflows in get_lan_param_select
+  * channel: Fix buffer overflow
+  * session: Fix buffer overflow in ipmi_get_session_info
+  * fru: Fix buffer overflow in ipmi_spd_print_fru
+  * fru: Fix buffer overflow vulnerabilities
+  * chassis: bootmbox: Refix 62a04390
+  * configure: Drop requirement for curses et. al libs
+
+- Add a configure option to disable IANA PEN database internet download
+A    autotools_define_DOWNLOAD.diff
+D    create_pen_list_from_local_file.patch
+- New pen database:
+M    enterprise-numbers
+- Patches adjusted to latest mainline code:
+M    fix_file_permissions.patch
+M    ipmitool_adjust_suse_paths.patch
+M    several_more_compile_fixes.patch
+
+-------------------------------------------------------------------
 Mon Sep  2 16:22:47 UTC 2019 - trenn@suse.de
 
 - Enable USB interface by explicit passing --enable-intf-usb (jira#SLE-7780)

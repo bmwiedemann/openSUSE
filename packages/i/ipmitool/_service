@@ -2,9 +2,13 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/ipmitool/ipmitool.git</param>
     <param name="scm">git</param>
+    <param name="version">HEAD</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">ipmitool</param>
+<!--
     <param name="versionformat">1.8.18</param>
+-->
+    <param name="versionformat">1.8.18+git%cd.%h</param>    
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
