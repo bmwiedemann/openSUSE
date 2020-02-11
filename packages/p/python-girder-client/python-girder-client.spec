@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-girder-client
-Version:        3.0.6
+Version:        3.0.8
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0

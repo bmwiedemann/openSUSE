@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:23:06 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.8
+  * Add lockfiles for ancillary npm packages
+- Update to 3.0.7
+  * Add filter for local plugins
+  * Fix code style and improve build efficiency
+  * Fix incorrect list.extend usage
+  * Fix invalid python2 syntax
+  * Update girder build to remove old node_modules
+  * Rename the Ansible variable girder_package_path and default it to empty
+  * Clarify girder_version Ansible parameter docs
+  * In Ansible, remove "girder_pip_extra_args" and make "girder_version"
+  * Update molecule dependencies
+  * Ensure core swagger client does not put passwords in URL
+  * Fix an issue with publishing npm packages
+
+-------------------------------------------------------------------
 Thu Jan 30 19:34:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.0.6
