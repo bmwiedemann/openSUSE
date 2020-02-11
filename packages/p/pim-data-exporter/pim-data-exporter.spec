@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pim-data-exporter
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Data exporter for KDE PIM
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,32 +38,34 @@ BuildRequires:  gettext-devel
 BuildRequires:  kontact
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5AkonadiNotes)
-BuildRequires:  cmake(KF5AlarmCalendar)
+BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5CalendarSupport)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5MailCommon)
 BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
 BuildRequires:  cmake(KF5PimTextEdit)
-BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Requires:       kontact
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
@@ -80,7 +82,7 @@ This package contains utlities needed by KDE PIM to export data for backup and a
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
