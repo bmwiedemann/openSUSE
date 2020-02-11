@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-filetransfer-handler
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Telepathy filetransfer handler
 License:        GPL-2.0-or-later
@@ -61,7 +61,7 @@ Telepathy text filetransfer handler
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
