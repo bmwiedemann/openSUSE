@@ -1,7 +1,7 @@
 #
 # spec file for package blueman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           blueman
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        GTK+ Bluetooth Manager
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
-Url:            https://github.com/blueman-project/blueman
+URL:            https://github.com/blueman-project/blueman
 Source:         https://github.com/%{name}-project/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  automake
 BuildRequires:  dbus-1-python3-devel
@@ -90,7 +90,7 @@ echo -e 'NotShowIn=KDE;GNOME;' >> data/%{name}.desktop.in
 #NOCONFIGURE=1 ./autogen.sh
 %configure \
     --disable-static \
-	--enable-polkit \
+    --enable-polkit \
     --disable-schemas-compile
 
 %make_build
