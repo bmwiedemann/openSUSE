@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sat Jan 18 23:44:15 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20191020:
+  * fix typo
+  * Setting context_reset and context_destroy for vulkan and d3d too.
+  * Supporting frontends not having GET_PREFERRED_HW_RENDER.
+  * Fix compilation issues.
+  * Properly negotiating with frontend for driver to use.
+
+-------------------------------------------------------------------
+Sun Sep 29 22:34:58 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190825:
+  * fix build under musl, fd_set is in sys/select.h
+  * adding texture cache accuracy to core options
+  * cheats-core-option
+  * enable Bounding Box Emulation as a core option
+  * only bind right analog if not being used for IR pointer
+  * give rel/abs option to "right stick controls IR"
+  * Changing right stick IR control back to relative
+  * Wiimote+nunchuk: bind wiimote accelerometer X/Y on right analog stick
+  * New core options for IR center/width/height
+  * Update Options.cpp
+  * Update Cursor.cpp
+  * Configure a core option to determine IR behaviour
+  * Right Stick controls IR pointer
+
+-------------------------------------------------------------------
+Wed Sep 25 14:55:19 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial version
+

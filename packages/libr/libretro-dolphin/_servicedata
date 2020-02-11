@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/dolphin.git</param>
+              <param name="changesrevision">2115dc01f146d4fef95a06f6d24f6340ab0ba942</param></service></servicedata>
