@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcachegrind
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Frontend for Cachegrind
 License:        GPL-2.0-only AND BSD-4-Clause AND GFDL-1.2-only
@@ -65,7 +65,7 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 export CXXFLAGS="%{optflags} -fPIC"
 export CFLAGS="%{optflags} -fPIC"
 %cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
-%make_jobs
+%cmake_build
 
 %install
   %make_install -C build
