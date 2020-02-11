@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdesdk-kioslaves
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
@@ -45,7 +45,7 @@ This package contains additional KIO slaves.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
