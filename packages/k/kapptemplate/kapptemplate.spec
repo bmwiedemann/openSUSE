@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kapptemplate
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -65,7 +65,7 @@ sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
