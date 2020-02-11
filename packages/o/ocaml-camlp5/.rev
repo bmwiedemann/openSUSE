@@ -31,4 +31,12 @@
     <comment>- Add compiler-libs-devel to BuildRequires (bsc#1156934)</comment>
     <requestid>750772</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5bd06949ed023da989dffbdcf026303</srcmd5>
+    <version>7.11</version>
+    <time>1581456274</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773385</requestid>
+  </revision>
 </revisionlist>
