@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 02:02:58 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Add recommends on kernel-devel (bsc#1158733)
+
+-------------------------------------------------------------------
 Mon Feb  3 23:01:33 UTC 2020 - Tony Jones <tonyj@suse.com>
 
 - Resolve protoype issue when invoking tracebacks (bsc#1161296)

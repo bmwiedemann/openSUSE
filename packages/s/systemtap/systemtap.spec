@@ -50,6 +50,7 @@ BuildRequires:  sqlite-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-dtrace = %{version}
 Requires:       %{name}-runtime = %{version}-%{release}
+Recommends:     kernel-devel
 Obsoletes:      systemtap-client < 1.5
 
 %description
