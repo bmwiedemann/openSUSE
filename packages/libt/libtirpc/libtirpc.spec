@@ -23,18 +23,13 @@ Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-%if 0%{suse_version} >= 1300
-BuildRequires:  krb5-mini-devel
-%else
-BuildRequires:  krb5-devel
-%endif
-BuildRequires:  autoconf
-BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(krb5)
 URL:            https://sourceforge.net/projects/libtirpc/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         0001-Add-authdes_seccreate-stub.patch
+Patch1:         0001-Avoid-multiple-definiton-with-gcc-fno-common.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define debug_package_requires libtirpc3 = %{version}-%{release}
 
@@ -80,16 +75,13 @@ TCP over IPv4.
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
+%patch1 -p1
 
 %build
 sed -i -e 's|@includedir@/tirpc|@includedir@|g' libtirpc.pc.in
-/bin/sh autogen.sh
 %configure --disable-static \
-%if 0%{suse_version} < 1200
-		--disable-gssapi \
-%endif
 		--libdir=/%{_lib}
-make %{?_smp_mflags}
+%make_build %{?_smp_mflags}
 
 %install
 # Don't strip .symtab to allow debugging
