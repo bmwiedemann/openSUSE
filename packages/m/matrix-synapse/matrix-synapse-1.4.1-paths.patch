@@ -1,0 +1,83 @@
+Index: matrix-synapse-1.4.1/contrib/example_log_config.yaml
+===================================================================
+--- matrix-synapse-1.4.1.orig/contrib/example_log_config.yaml
++++ matrix-synapse-1.4.1/contrib/example_log_config.yaml
+@@ -26,7 +26,7 @@ handlers:
+   file:
+     class: logging.handlers.RotatingFileHandler
+     formatter: fmt
+-    filename: /var/log/synapse/homeserver.log
++    filename: /var/log/matrix-synapse/homeserver.log
+     maxBytes: 100000000
+     backupCount: 3
+     filters: [context]
+Index: matrix-synapse-1.4.1/synapse/config/key.py
+===================================================================
+--- matrix-synapse-1.4.1.orig/synapse/config/key.py
++++ matrix-synapse-1.4.1/synapse/config/key.py
+@@ -100,7 +100,7 @@ class KeyConfig(Config):
+             signing_key_path = config.get("signing_key_path")
+             if signing_key_path is None:
+                 signing_key_path = os.path.join(
+-                    config_dir_path, config["server_name"] + ".signing.key"
++                    '/etc/matrix-synapse/keys.d', config["server_name"] + ".signing.key"
+                 )
+ 
+             self.signing_key = self.read_signing_keys(signing_key_path, "signing_key")
+@@ -165,7 +165,7 @@ class KeyConfig(Config):
+     def generate_config_section(
+         self, config_dir_path, server_name, generate_secrets=False, **kwargs
+     ):
+-        base_key_name = os.path.join(config_dir_path, server_name)
++        base_key_name = os.path.join('/etc/matrix-synapse/keys.d', server_name)
+ 
+         if generate_secrets:
+             macaroon_secret_key = 'macaroon_secret_key: "%s"' % (
+Index: matrix-synapse-1.4.1/synapse/config/logger.py
+===================================================================
+--- matrix-synapse-1.4.1.orig/synapse/config/logger.py
++++ matrix-synapse-1.4.1/synapse/config/logger.py
+@@ -89,7 +89,7 @@ class LoggingConfig(Config):
+         self.no_redirect_stdio = config.get("no_redirect_stdio", False)
+ 
+     def generate_config_section(self, config_dir_path, server_name, **kwargs):
+-        log_config = os.path.join(config_dir_path, server_name + ".log.config")
++        log_config = os.path.join('/etc/matrix-synapse/', server_name + ".log.config")
+         return (
+             """\
+         ## Logging ##
+Index: matrix-synapse-1.4.1/synapse/config/server.py
+===================================================================
+--- matrix-synapse-1.4.1.orig/synapse/config/server.py
++++ matrix-synapse-1.4.1/synapse/config/server.py
+@@ -379,7 +379,7 @@ class ServerConfig(Config):
+             bind_port = 8448
+             unsecure_port = 8008
+ 
+-        pid_file = os.path.join(data_dir_path, "homeserver.pid")
++        pid_file = os.path.join("/run/matrix-synapse", "homeserver.pid")
+ 
+         # Bring DEFAULT_ROOM_VERSION into the local-scope for use in the
+         # default config string
+Index: matrix-synapse-1.4.1/synapse/config/tls.py
+===================================================================
+--- matrix-synapse-1.4.1.orig/synapse/config/tls.py
++++ matrix-synapse-1.4.1/synapse/config/tls.py
+@@ -259,7 +259,7 @@ class TlsConfig(Config):
+         If the TLS paths are not specified the default will be certs in the
+         config directory"""
+ 
+-        base_key_name = os.path.join(config_dir_path, server_name)
++        base_key_name = os.path.join('/etc/matrix-synapse/keys.d', server_name)
+ 
+         if bool(tls_certificate_path) != bool(tls_private_key_path):
+             raise ConfigError(
+@@ -278,7 +278,7 @@ class TlsConfig(Config):
+         acme_enabled = bool(acme_domain)
+         acme_domain = "matrix.example.com"
+ 
+-        default_acme_account_file = os.path.join(data_dir_path, "acme_account.key")
++        default_acme_account_file = os.path.join('/etc/matrix-synapse/keys.d', "acme_account.key")
+ 
+         # this is to avoid the max line length. Sorrynotsorry
+         proxypassline = (

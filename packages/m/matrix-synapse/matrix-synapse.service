@@ -11,7 +11,6 @@ User=synapse
 Group=synapse
 WorkingDirectory=/var/lib/matrix-synapse
 
-ExecStartPre=@PYTHON_FLAVOR@ -m synapse.app.homeserver --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/ --generate-keys
 ExecStart=@PYTHON_FLAVOR@ -m synapse.app.homeserver --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/
 
 # Adjust the cache factor if necessary.

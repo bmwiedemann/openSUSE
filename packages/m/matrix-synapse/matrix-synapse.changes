@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:34:39 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.9.1
+  Fix bug where setting mau_limit_reserved_threepids config would
+  cause Synapse to refuse to start. (#6793)
+
+-------------------------------------------------------------------
+Thu Jan 23 16:06:38 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- package cleanup
+  - make sure we have all libraries to actually install the package:
+    - buildrequires all runtime requirements
+    - (build)require python3-typing_extensions
+  - having it use the python package name is not really useful here.
+  - refreshed and renamed better-paths.patch to
+    matrix-synapse-1.4.1-paths.patch
+  - also fix existing synapse user
+    - group to synapse instead of nogroup
+    - home directory to /var/lib/matrix-synapse
+    - shell to /bin/false (which actually exists)
+  - improvements to the logging configuration:
+    - install copy of the current /etc/matrix-synapse/log.yaml as
+      /etc/matrix-synapse/log.systemd.yaml
+    - install /etc/matrix-synapse/log.file.yaml which logs to
+      /var/log/matrix-synapse/homeserver.log
+    - add the log directory /var/log/matrix-synapse/
+  - added README.SUSE
+  - better way to bootstrap a new config:
+    1. ExecStartPre would have never worked anyway
+    2. added %{_sbindir}/matrix-synapse-generate-config
+    Usage:
+    %{_sbindir}/matrix-synapse-generate-config servername
+  - fix group and shell for the synapse user
+  - added better-paths.patch
+    - put the pid file into /run/matrix-synapse/
+    - use a default logging config in /etc/matrix-synapse/log.yaml
+      to have systemd logging by default
+  - use full path in the service file
+  - actually use source 50 instead of the service file in the tarball
+  - make permissions tighter on the config files as it contains
+    passwords and other secrets:
+    root:synapse u=rwX,g=rX,o=
+
+-------------------------------------------------------------------
 Thu Jan 23 13:45:22 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 1.9.0.
@@ -111,6 +155,10 @@ Fri Dec 13 13:23:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
   The full changelog is included in
   /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+  https://github.com/matrix-org/synapse/releases/tag/v1.7.0
+  Please make sure to read the Upgrade notes referenced in the 
+  above.
 
 -------------------------------------------------------------------
 Thu Nov 28 17:41:02 UTC 2019 - Aleksa Sarai <asarai@suse.com>
