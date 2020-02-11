@@ -303,4 +303,12 @@
     <comment>19.12.1 (forwarded request 762016 from cgiboudeaux)</comment>
     <requestid>762442</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f60f5baaa61916e8840908153b15f4c1</srcmd5>
+    <version>19.12.2</version>
+    <time>1581456063</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771752</requestid>
+  </revision>
 </revisionlist>
