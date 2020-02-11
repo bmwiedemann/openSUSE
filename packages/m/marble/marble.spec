@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           marble
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -173,7 +173,7 @@ export SUSE_ASNEEDED=0
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 %cmake_kf5 -d build -- -DBUILD_MARBLE_TESTS=NO -DMOBILE=FALSE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
-%make_jobs
+%cmake_build
 
 %install
   %kf5_makeinstall -C build
