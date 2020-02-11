@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:34:48 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.2
+  * x264: Codec requires resolution with even values
+  * Audio: fix recording with only one channel
+  * Webcam: fix image flipped horizontally
+
+-------------------------------------------------------------------
 Sat Feb  1 12:08:12 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.1
+  * Player: Notification if codec or service is missing
+  * x264enc: add profile=baseline
+  * Select the language for the online help via a combobox
 
 -------------------------------------------------------------------
 Tue Dec 31 13:35:50 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
