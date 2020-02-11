@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kipi-plugins
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ rm -f po/*/kipiplugin_vkontakte.po
 
 %build
 %cmake_kf5 -d build
-%make_jobs VERBOSE=1
+%cmake_build VERBOSE=1
 
 %install
 %kf5_makeinstall -C build
