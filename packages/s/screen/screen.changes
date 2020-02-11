@@ -1,5 +1,16 @@
 -------------------------------------------------------------------
-Wed Oct 02 09:09:20 UTC 2019 - - alexander_naumov@opensuse.org
+Thu Feb 06 21:44:38 UTC 2020 - alexander_naumov@opensuse.org
+
+- GNU Screen 4.8.0:
+  * Improves startup time by only polling for already open
+    files to close
+  * Fixes:
+    - Fix for segfault if termcap doesn't have Km entry
+    - Make screen exit code be 0 when checking --version
+    - Fix potential memory corruption
+
+-------------------------------------------------------------------
+Wed Oct 02 09:09:20 UTC 2019 - alexander_naumov@opensuse.org
 
 - GNU Screen 4.7.0:
   * Adds support for SGR (1006) mouse mode

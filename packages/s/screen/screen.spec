@@ -1,7 +1,7 @@
 #
 # spec file for package screen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@
 %define rundir %{_localstatedir}/run
 %endif
 Name:           screen
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        A program to allow multiple screens on a VT100/ANSI Terminal
 License:        GPL-3.0-or-later
 Group:          System/Console
-Url:            http://www.gnu.org/software/screen/
-Source:         http://ftp.gnu.org/gnu/screen/%{name}-%{version}.tar.gz
+URL:            https://www.gnu.org/software/screen/
+Source:         https://ftp.gnu.org/gnu/screen/%{name}-%{version}.tar.gz
 Source1:        screen.conf
-Source2:        http://ftp.gnu.org/gnu/screen/%{name}-%{version}.tar.gz.sig
+Source2:        https://ftp.gnu.org/gnu/screen/%{name}-%{version}.tar.gz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=screen&download=1#/%{name}.keyring
 Source4:        screen.pam
 Patch0:         global_screenrc.patch
