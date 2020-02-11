@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:18:28 UTC 2020 - ohering@suse.de
+
+- Update to version 7.11
+  cover ocaml-4.10
+
+-------------------------------------------------------------------
 Mon Nov 25 12:34:56 UTC 2019 - ohering@suse.de
 
 - Add compiler-libs-devel to BuildRequires (bsc#1156934)
