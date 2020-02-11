@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:36:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:56 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.2
+- Too many changes since 19.12.1, only listing bugfixes:
+  * Improve creation of generalization with parent provided as string: (kde#416178)
+  * Fix broken file selection for PHP and SQL in code import wizard: (kde#335566)
+  * Fix endless loop on importing mysql schema: (kde#398082)
+  * Fix 'Missing entries in the New context menu entry for the logical view' (kde#416053)
+  * Fix 'Umbrello Crash On Moving the Seconds element in the Class Diagram' (kde#416013)
+  * Fix 'No association update after changing a class attribute type from class to class pointer or address and vice versa' (kde#416006)
+  * Fix 'Duplicate Composition Association when rename it's variable in the tree View' (kde#415992)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:36:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1
