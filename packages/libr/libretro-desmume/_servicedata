@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/desmume.git</param>
+              <param name="changesrevision">e8cf461f83eebb195f09e70090f57b07d1bcdd9f</param></service></servicedata>
