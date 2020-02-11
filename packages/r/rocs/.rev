@@ -927,4 +927,12 @@
 - Drop fix_build_leap.diff</comment>
     <requestid>768871</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>d2a16e906baa06be66a1e64ac8b14bdd</srcmd5>
+    <version>19.12.2</version>
+    <time>1581456102</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.2</comment>
+    <requestid>771796</requestid>
+  </revision>
 </revisionlist>
