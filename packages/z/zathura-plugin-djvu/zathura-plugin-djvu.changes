@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 11 07:12:34 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.9
+* Fix crash on search without results
+
+-------------------------------------------------------------------
 Wed Aug  8 16:49:19 UTC 2018 - jengelh@inai.de
 
 - Use noun phrase in summary.
