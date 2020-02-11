@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Jan 22 21:58:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Package cleanup
+  * Run speccleaner
+  * Fix url
+  * Use source URL from github
+  * Use pkgconfig-style dependencies
+- Run testsuite  
+- Update to version 0.9.7
+  * added new option -E which overrules SRV result
+  * added new option -J to take ha1 instead of password
+  * dont retransmit on reliable transports
+  * added --disable-ips configure option which allows to compile
+    the oldstyle --numeric behavior
+  * added new option -k only available with TLS support
+  * added 'star' as special word for the contact option -C
+  * fixed overwritting of outbound proxy if domainname is an IP
+  * added option -Z to modify SIP_T1 at run time
+  * added syslog support
+  * enabled -c parameter for Inivte mode
+  * added new options for TLS (ca-cert, client-cert,
+    ignore-cert-failure)
+  * Note: these options are only available as long options
+  * added option to ignore TLS certificate verification errors
+  * added option -k, --local-ip
+  * added SHA-256 as a possible algorithm for digest authentication
+
+-------------------------------------------------------------------
+Wed Apr  4 00:21:12 UTC 2018 - jamesp@vicidial.com
+
+- modify source to compile on OpenSuSE Leap 15.0
+
+-------------------------------------------------------------------
+Fri Apr 17 2011 04:55:21 UTC - jamesp@vicidial.com
+ 
+- Code cleanup to try and make a better package I hope
+
+-------------------------------------------------------------------
+Fri Dec 13 2010 01:21:18 UTC - jamesp@vicidial.com
+
+- Initial RPM
