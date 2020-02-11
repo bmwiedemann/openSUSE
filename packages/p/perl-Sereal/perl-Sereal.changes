@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb  5 03:12:03 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 4.011
+   see /usr/share/doc/packages/perl-Sereal/Changes
+
+  4.011 Tues February 4, 2020
+      * Fix and test custom opcode logic for 5.31.2 and later.
+  
+  4.010 Tues February 4, 2020
+      * Encoder/Decoder: Update miniz
+      * Encoder/Decoder: Update zstd
+      * Sereal/Encoder/Decoder: perltidy perl code to a standard style
+
+-------------------------------------------------------------------
+Sat Feb  1 03:18:06 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 4.009
+   see /usr/share/doc/packages/perl-Sereal/Changes
+
+  4.009 Fri January 31, 2020
+      * Encoder/Decoder: Update ppport.h for modern perls.
+  
+  4.008 Thurs Jan 30, 2020
+      * Encoder/Decoder: Build fixes for modern perls.
+      * Encoder/Decoder: Pod fixes
+
+-------------------------------------------------------------------
 Wed Apr 10 05:23:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.007
