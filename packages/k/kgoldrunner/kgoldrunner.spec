@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgoldrunner
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Action & Puzzle Solving Game
 License:        GPL-2.0-or-later
@@ -59,7 +59,7 @@ KGoldrunner is a game of action and puzzle solving
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
