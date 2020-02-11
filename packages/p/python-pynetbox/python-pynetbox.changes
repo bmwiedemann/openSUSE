@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 11 06:39:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.5
+  * save() is not idempotent when dealing with choice objects
+    from NetBox 2.7 
+
+-------------------------------------------------------------------
 Sun Jan 12 09:18:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.4
