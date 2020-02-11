@@ -180,4 +180,13 @@
     <comment>- Add isl_basic_map_underlying_set-fix.patch from upstream. (forwarded request 762618 from marxin)</comment>
     <requestid>762620</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>932439c1b9deef0c3ca33a943f6595a3</srcmd5>
+    <version>0.22.1</version>
+    <time>1581455799</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove isl_basic_map_underlying_set-fix.patch with is part
+  of the release. (forwarded request 770708 from marxin)</comment>
+    <requestid>770795</requestid>
+  </revision>
 </revisionlist>

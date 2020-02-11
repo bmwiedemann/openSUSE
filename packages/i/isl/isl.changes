@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  6 09:22:41 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to 0.22.1:
+  - fix error handling
+- Remove isl_basic_map_underlying_set-fix.patch with is part
+  of the release.
+
+-------------------------------------------------------------------
 Fri Jan 10 08:06:27 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add isl_basic_map_underlying_set-fix.patch from upstream.

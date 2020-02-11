@@ -18,7 +18,7 @@
 
 %define islsover 22
 Name:           isl
-Version:        0.22
+Version:        0.22.1
 Release:        0
 Summary:        Integer Set Library
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/C and C++
 URL:            http://isl.gforge.inria.fr/
 Source:         http://isl.gforge.inria.fr/isl-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch0:         isl_basic_map_underlying_set-fix.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -56,7 +55,6 @@ bounded by linear constraints.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure --disable-static
