@@ -1,4 +1,4 @@
-# Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed:
+# Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed
 Ignore: firewall-macros:firewalld
 
 # Help python-subinit to win until python-python-subunit is gone
