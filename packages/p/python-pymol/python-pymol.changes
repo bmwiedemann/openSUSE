@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  1 18:34:11 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove glew runtime dependency (only contains debug tools and
+  documentation).
+- Remove freeglut build dependency (unused unless enabled with
+  '--glut' setup.py option).
+- Use https for URL. 
+
+-------------------------------------------------------------------
 Mon Feb 11 15:49:44 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 2.3.0:

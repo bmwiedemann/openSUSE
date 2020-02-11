@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymol
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        A Molecular Viewer
 License:        Python-2.0
 Group:          Productivity/Scientific/Chemistry
-URL:            http://pymol.org
+URL:            https://pymol.org/2/
 Source:         https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
 # Source:         %%{modname}-%%{version}.tar.xz
 # PATCH-FIX-OPENSUSE no-build-date.patch dhall@wustl.edu -- patch eliminates build date
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  freeglut-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
@@ -46,7 +45,6 @@ BuildRequires:  glm-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  python-rpm-macros
-Requires:       glew
 Requires:       python-numpy
 Requires:       python-qt5
 Requires(post): update-alternatives
