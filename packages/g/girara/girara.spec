@@ -1,7 +1,7 @@
 #
 # spec file for package girara
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
