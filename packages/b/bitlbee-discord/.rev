@@ -59,4 +59,21 @@
 </comment>
     <requestid>654098</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5c4efa88ec02890ae8ba473fe283561</srcmd5>
+    <version>0.4.2+9.g69e16be</version>
+    <time>1581456353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.2+20200207.g69e16be:
+  * Call imcb_connected only after we parsed the whole READY message
+  * Sync private groups as well
+  * Per-channel sync
+  * Remove pending sync var
+  * Don't wait for GUILD_SYNC on login
+  * Add BITLBEE_LIBS to discord_la_LDFLAGS
+  * Fix paste_buffer
+- Remove obsolete Groups tag (fate#326485)
+</comment>
+    <requestid>773489</requestid>
+  </revision>
 </revisionlist>
