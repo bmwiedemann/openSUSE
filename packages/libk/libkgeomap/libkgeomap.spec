@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgeomap
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Wrapper around different world-map components
 License:        LGPL-2.1-only AND GPL-2.0-or-later
@@ -106,7 +106,7 @@ This library is used by kipi-plugins, digiKam and other kipi host programs
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
