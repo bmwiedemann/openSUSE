@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 10 21:09:21 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.21:
+  * Convert DB duration to milliseconds.
+  * Reworks settings.
+  * Fix volume rate sync using Gsettings
+    (glgo#World/lollypop#2194).
+  * Add a way to go to artist view from album banner
+    (glgo#World/lollypop#2192).
+  * Fix flowbox alignment (glgo#World/lollypop#2193).
+  * Fix loved track from LastFM (glgo#World/lollypop#2189).
+  * Improve handling of skipped tracks (glgo#World/lollypop#2188).
+  * Sort albums released in same year (glgo#World/lollypop#2183).
+
+-------------------------------------------------------------------
 Wed Jan 22 19:28:29 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.20:

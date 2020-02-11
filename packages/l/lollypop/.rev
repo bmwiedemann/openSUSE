@@ -1229,4 +1229,22 @@
   * Bug fixes.</comment>
     <requestid>766409</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>c3fa691d2725ff87a10d1a92be1863e8</srcmd5>
+    <version>1.2.21</version>
+    <time>1581456290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.21:
+  * Convert DB duration to milliseconds.
+  * Reworks settings.
+  * Fix volume rate sync using Gsettings
+    (glgo#World/lollypop#2194).
+  * Add a way to go to artist view from album banner
+    (glgo#World/lollypop#2192).
+  * Fix flowbox alignment (glgo#World/lollypop#2193).
+  * Fix loved track from LastFM (glgo#World/lollypop#2189).
+  * Improve handling of skipped tracks (glgo#World/lollypop#2188).
+  * Sort albums released in same year (glgo#World/lollypop#2183).</comment>
+    <requestid>773312</requestid>
+  </revision>
 </revisionlist>
