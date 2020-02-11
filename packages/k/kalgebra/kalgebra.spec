@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalgebra
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -85,7 +85,7 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
