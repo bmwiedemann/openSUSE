@@ -23,4 +23,12 @@
     <comment>fix factory build </comment>
     <requestid>748784</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e50edc2b2c6d450df249c78c4e8eb5ad</srcmd5>
+    <version>3.2.6</version>
+    <time>1581456260</time>
+    <user>dimstar_suse</user>
+    <comment>- Support Leap 15.2 (forwarded request 773372 from hillwood)</comment>
+    <requestid>773373</requestid>
+  </revision>
 </revisionlist>

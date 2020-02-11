@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-terminal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Deepin terminal
 License:        GPL-3.0-or-later AND GPL-3.0-only
 Group:          System/X11/Terminals
-Url:            https://github.com/linuxdeepin/deepin-terminal
+URL:            https://github.com/linuxdeepin/deepin-terminal
 Source0:        https://github.com/linuxdeepin/deepin-terminal/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE deepin-terminal-system-vte.patch hillwood@opensuse.org - Use vte in system default
 Patch0:         deepin-terminal-system-vte.patch
@@ -42,7 +42,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(xcb)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150100
 BuildRequires:  pkgconfig(vte-2.91)
 %endif
 BuildRequires:  pkgconfig(fontconfig)
@@ -74,7 +74,7 @@ sed -i 's|return @@PROJECT_PATH@@;|return "%{_datadir}/%{name}";|' project_path.
 
 %build
 %cmake -DCMAKE_INSTALL_DIR=%{_prefix} \
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150100
        -DUSE_SYSTEM_VTE=ON \
 %endif
        -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
@@ -105,8 +105,8 @@ make %{?_smp_mflags}
 %{_datadir}/%{name}/theme
 %{_datadir}/%{name}/image
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/deepin-terminal.svg
-%{_datadir}/applications/deepin-terminal.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/applications/%{name}.desktop
 
 %files lang -f %{name}.lang
 
