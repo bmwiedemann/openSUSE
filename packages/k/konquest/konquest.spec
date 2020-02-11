@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konquest
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Galactic strategy game
 License:        GPL-2.0-or-later
@@ -75,7 +75,7 @@ the galaxy.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
