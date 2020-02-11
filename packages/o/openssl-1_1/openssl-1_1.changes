@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jan 28 12:14:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
-- Support for CPACF enhancements - part 2 (crypto) [jsc#SLE-7575]
+- Support for CPACF enhancements - part 2 (crypto) [jsc#SLE-7403]
 - Add patches:
   * openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
   * openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
