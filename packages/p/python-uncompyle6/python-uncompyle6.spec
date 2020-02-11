@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncompyle6
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uncompyle6
-Version:        3.4.0
+Version:        3.6.3
 Release:        0
 Summary:        Python cross-version byte-code decompiler
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/rocky/python-uncompyle6/
+URL:            https://github.com/rocky/python-uncompyle6/
 Source:         https://files.pythonhosted.org/packages/source/u/uncompyle6/uncompyle6-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -31,11 +31,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module spark_parser >= 1.8.7}
-BuildRequires:  %{python_module xdis >= 4.0.2}
+BuildRequires:  %{python_module xdis >= 4.2.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-spark_parser >= 1.8.7
-Requires:       python-xdis >= 4.0.2
+Requires:       python-xdis >= 4.2.2
 BuildArch:      noarch
 
 %python_subpackages
@@ -46,8 +46,6 @@ The successor to decompyle, uncompyle, and uncompyle2.
 
 %prep
 %setup -q -n uncompyle6-%{version}
-# invalid syntax on new pytest
-rm pytest/test_function_call.py
 
 %build
 %python_build
