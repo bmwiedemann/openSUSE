@@ -1,7 +1,7 @@
 #
 # spec file for package perl-POE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-POE
-Version:        1.367
+Version:        1.368
 Release:        0
 %define cpan_name POE
-Summary:        Portable Multitasking and Networking Framework for Any Event Loop
+Summary:        Portable multitasking and networking framework for any event loop
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/POE/
-Source0:        http://www.cpan.org/authors/id/R/RC/RCAPUTO/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,10 +53,9 @@ networking in Perl. Other languages have similar frameworks. Python has
 Twisted. TCL has "the event loop".
 
 POE provides a unified interface for several other event loops, including
-select(), IO::Poll, the Glib manpage, the Gtk manpage, the Tk manpage, the
-Wx manpage, and the Gtk2 manpage. Many of these event loop interfaces were
-written by others, with the help of POE::Test::Loops. They may be found on
-the CPAN.
+select(), IO::Poll, Glib, Gtk, Tk, Wx, and Gtk2. Many of these event loop
+interfaces were written by others, with the help of POE::Test::Loops. They
+may be found on the CPAN.
 
 POE achieves its high degree of portability to different operating systems
 and Perl versions by being written entirely in Perl. CPAN hosts optional XS
@@ -69,9 +68,9 @@ Remember, though, that higher-level abstractions often require more
 resources than lower-level ones. The conveniences they provide are not
 free.
 
-POE's bundled abstraction layers are the tip of a growing iceberg. the
-Sprocket manpage, POE::Stage, and other CPAN distributions build upon this
-work. You're encouraged to look around.
+POE's bundled abstraction layers are the tip of a growing iceberg.
+Sprocket, POE::Stage, and other CPAN distributions build upon this work.
+You're encouraged to look around.
 
 No matter how high you go, though, it all boils down to calls to
 POE::Kernel. So your down-to-earth code can easily cooperate with
@@ -81,11 +80,11 @@ stratospheric systems.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
