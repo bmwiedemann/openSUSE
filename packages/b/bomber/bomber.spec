@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bomber
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Game involving the invasion of cities with a plane
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ The goal of the game is to destroy all the buildings and advance to the next lev
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
