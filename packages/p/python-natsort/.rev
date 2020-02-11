@@ -119,4 +119,12 @@
 - Remove too_slow.patch which is harmful now.</comment>
     <requestid>762092</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>824952573585b229a3b661dfec314d75</srcmd5>
+    <version>7.0.1</version>
+    <time>1581456234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772536</requestid>
+  </revision>
 </revisionlist>

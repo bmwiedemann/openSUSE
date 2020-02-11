@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  9 17:17:05 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+* specfile:
+  * require sortedcontainers for tests
+
+- update to version 7.0.1:
+  * Bug where that caused incorrect sorting when using locales that
+    have a "." character as the thousands separator.
+
+-------------------------------------------------------------------
 Thu Jan  9 09:39:48 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 7.0.0:
