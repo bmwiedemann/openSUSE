@@ -1,7 +1,7 @@
 #
 # spec file for package python-unicodedata2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unicodedata2
-Version:        12.0.0
+Version:        12.1.0
 Release:        0
-License:        Apache-2.0 and Python-2.0
 Summary:        Python unicodedata backport
-Url:            http://github.com/mikekap/unicodedata2
+License:        Apache-2.0 AND Python-2.0
 Group:          Development/Languages/Python
-Source:         https://github.com/mikekap/unicodedata2/archive/12.0.0.tar.gz#/unicodedata2-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+URL:            https://github.com/mikekap/unicodedata2
+Source:         https://github.com/mikekap/unicodedata2/archive/%{version}.tar.gz#/unicodedata2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
