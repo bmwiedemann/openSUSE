@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Jan 20 07:51:51 UTC 2020 - kkaempf@suse.com
+
+- Update to version 0~git20200120:
+  * backport 1.24.0 fixes
+  * Backport variable audio rate
+  * Update name to Beetle
+  * Prevent 'double free' crash when closing content
+  * (MSVC 2017) Buildfix
+  * (tvOS) support building
+  * libretro: Update Core Options API
+  * libretro: allow mingw cross compile
+  * iOS: support for building using buildbot recipe
+
+-------------------------------------------------------------------
+Thu Oct 10 21:47:20 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190914:
+  * (tvOS) support building
+  * libretro: Update Core Options API
+  * libretro: allow mingw cross compile
+  * iOS: support for building using buildbot recipe
+  * Turkish Language Support
+  * Add new enhanced core options
+  * Get rid of asserts
+  * libretro: jni: Switch stl to c++ in preparation for ndk r20
+  * WonderSwan: Fixed off-by-1 bugs in window coordinate evaluation, per tip from trap15.
+- Rename to libretro-beetle-wswan to follow upstream naming
+- Remove info file because it is provided in core info package
+
+-------------------------------------------------------------------
+Wed Sep 13 11:54:10 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170907.4b543be (no proper versioning
+  done by upstream).
