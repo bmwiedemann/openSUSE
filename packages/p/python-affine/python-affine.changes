@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:42:39 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 2.3.0
+  + Right multiplication like vector * matrix is deprecated and will
+    raise AffineError in version 3.0.0.
+  + Change signature of Affine constructor to help users of PyCharm
+  + The Affine class docstring has been improved.
+- cleaning spec
+
+-------------------------------------------------------------------
 Wed Mar  6 18:47:41 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.2.2

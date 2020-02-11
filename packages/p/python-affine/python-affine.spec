@@ -1,7 +1,7 @@
 #
 # spec file for package python-affine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,28 +13,28 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-affine
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
-License:        BSD-3-Clause
 Summary:        Affine transformation matrices
-Url:            https://github.com/sgillies/affine
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/sgillies/affine
 Source:         https://files.pythonhosted.org/packages/source/a/affine/affine-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module pydocstyle}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module pytest-cov}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
