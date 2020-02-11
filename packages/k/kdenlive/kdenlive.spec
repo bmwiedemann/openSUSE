@@ -1,7 +1,7 @@
 #
 # spec file for package kdenlive
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -35,11 +35,14 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Patch0:         0001-Fix-crash-on-new-project-with-Qt-5.14.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libmlt-devel
+BuildRequires:  pkgconfig
+BuildRequires:  rttr-devel
+BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -48,6 +51,7 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
@@ -55,15 +59,10 @@ BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Plotting)
+BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  libmlt-devel
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  rttr-devel
-BuildRequires:  shared-mime-info
-BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -86,8 +85,8 @@ Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}')
 # It requires the profiles
 Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}')-data
 # Without a few of the plugins it crashes on start
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}')-modules
 Requires:       %{melt_path}
+Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}')-modules
 # It doesn't start without it (boo#994649)
 Requires:       libqt5-qtquickcontrols
 # needed for the new timeline
@@ -115,11 +114,10 @@ work.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
