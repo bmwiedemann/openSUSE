@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kirigami-gallery
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
@@ -55,7 +55,7 @@ code examples on cgit
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
