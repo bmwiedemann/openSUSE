@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kshisen
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Shisen-Sho Mahjongg-like game
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ two tiles with of the same type until no tile is left.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
