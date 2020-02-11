@@ -1,7 +1,7 @@
 #
 # spec file for package blueberry
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define __requires_exclude typelib\\((St)\\)
 Name:           blueberry
-Version:        1.2.8
+Version:        1.3.5
 Release:        0
 Summary:        A configuration tool for Bluetooth
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/blueberry
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        blueberry-rfkill.rules
