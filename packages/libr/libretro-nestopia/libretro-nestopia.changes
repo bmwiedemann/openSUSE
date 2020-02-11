@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Oct 03 20:05:18 UTC 2019 - i@guoyunhe.me
+
+- Update to version 1.50~git20190921
+- Remove info file nestopia.libretro because it is provided in
+  libretro-core-info package
+
+-------------------------------------------------------------------
+Sun Oct 28 18:17:13 UTC 2018 - sean@suspend.net
+
+- Update to v1.49
+ * Shell: added more palettes to extras
+ * Shell: Game-specific custom palettes
+ * Scale factors up to 8x
+ * Added option to enable overclocking
+ * Added rewind controls to gamepad
+ * Famicom Mic support
+ * Optional JACK Audio support (McKayJT)
+ * Added .wav sample loading
+ * Changes: Separated GTK+ and SDL input settings
+ * Removed deprecated functions from UI
+ * Use GTK+ OpenGL widget for GUI (Wayland support)
+ * Reworked Alternate Speed/Fast-Forward
+ * Allow mapping more than 9 joysticks (Lou-Cipher)
+ * Restructured build system, separated SDL and GTK builds
+ * Curors options split int normal and special cursor options
+ * Fixed automatc ROM patching, improved patching function
+ 
+-------------------------------------------------------------------
+Wed Sep 13 11:54:10 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170910.3eacbb2 (no proper versioning
+  done by upstream).
