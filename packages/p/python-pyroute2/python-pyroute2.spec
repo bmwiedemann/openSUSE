@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroute2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroute2
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Python Netlink library
 License:        GPL-2.0-or-later OR Apache-2.0

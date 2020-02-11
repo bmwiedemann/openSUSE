@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb  8 19:40:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.7:
+  * ndb.objects.netns: prototype
+  * ndb: netns management
+  * ndb: netns sources autoconnect (disabled by default)
+  * wireguard: basic support
+  * netns: fix FD leakage
+      * <https://github.com/svinota/pyroute2/issues/623>
+  * cli: Python3 fixes
+  * iproute: support `route('append', ...)`
+  * ipdb: fix routes cleanup on link down
+      * <https://github.com/svinota/pyroute2/issues/620>
+  * wiset: support "mark" ipset type
+
+-------------------------------------------------------------------
 Mon Jun  3 10:15:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.6:
