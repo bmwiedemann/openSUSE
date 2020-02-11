@@ -1,7 +1,7 @@
 #
 # spec file for package byobu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           byobu
-Version:        5.129
+Version:        5.130
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
@@ -31,7 +31,6 @@ Source2:        %{name}.keyring
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 # For env in desktop-file
 Requires:       coreutils
@@ -85,9 +84,11 @@ mv %{buildroot}%{_datadir}/%{name}/desktop/byobu.desktop.old %{buildroot}%{_data
 %suse_update_desktop_file -G "Screen Profiles" -r %{name} System TerminalEmulator
 %fdupes %{buildroot}%{_mandir}/
 
+sed -i 's,/usr/bin/env python3,/usr/bin/python3,' %{buildroot}/usr/lib/byobu/include/*.py
+
 %files
 %license COPYING
-%doc AUTHORS README
+%doc README.md
 %config %{_sysconfdir}/profile.d/Z97-%{name}.*sh
 %dir %{_sysconfdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/%{name}/*
