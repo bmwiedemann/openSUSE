@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksystemlog
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
@@ -64,7 +64,7 @@ want to quickly see problems occurring on their server.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
