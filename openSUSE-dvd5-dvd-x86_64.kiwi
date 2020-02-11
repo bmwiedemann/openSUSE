@@ -120,13 +120,9 @@
       <repopackage name="anjuta-extras"/>
       <repopackage name="anjuta-extras-lang"/>
       <repopackage name="anjuta-lang"/>
-      <repopackage name="apache-commons-io"/>
       <repopackage name="apache-commons-logging"/>
       <repopackage name="apache-parent"/>
-      <repopackage name="apache-pdfbox"/>
-      <repopackage name="apache-rpm-macros-control"/>
       <repopackage name="apache2"/>
-      <repopackage name="apache2-devel"/>
       <repopackage name="apache2-doc"/>
       <repopackage name="apache2-example-pages"/>
       <repopackage name="apache2-mod_dnssd"/>
@@ -145,8 +141,6 @@
       <repopackage name="appstream-glib"/>
       <repopackage name="appstream-glib-lang"/>
       <repopackage name="AppStream-lang"/>
-      <repopackage name="apr-devel"/>
-      <repopackage name="apr-util-devel"/>
       <repopackage name="apulse" arch="x86_64"/>
       <repopackage name="apulse-32bit" arch="x86_64"/>
       <repopackage name="arabic-ae-fonts"/>
@@ -207,8 +201,6 @@
       <repopackage name="autoyast2-installation"/>
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
-      <repopackage name="avalon-framework"/>
-      <repopackage name="avalon-logkit"/>
       <repopackage name="avogadrolibs"/>
       <repopackage name="awesfx"/>
       <repopackage name="b43-fwcutter"/>
@@ -391,7 +383,6 @@
       <repopackage name="dasher-data-recommended"/>
       <repopackage name="dasher-lang"/>
       <repopackage name="db48-utils"/>
-      <repopackage name="dbsplit-tools"/>
       <repopackage name="dbus-1"/>
       <repopackage name="dbus-1-glib"/>
       <repopackage name="dbus-1-glib-32bit" arch="x86_64"/>
@@ -431,20 +422,14 @@
       <repopackage name="discover-backend-packagekit"/>
       <repopackage name="discover-lang"/>
       <repopackage name="distribution-logos-openSUSE-Tumbleweed"/>
-      <repopackage name="djvulibre"/>
       <repopackage name="dleyna-connector-dbus"/>
       <repopackage name="dleyna-renderer"/>
       <repopackage name="dleyna-server"/>
       <repopackage name="dmidecode"/>
       <repopackage name="dmraid"/>
       <repopackage name="dnsmasq"/>
-      <repopackage name="docbook-dsssl-stylesheets"/>
-      <repopackage name="docbook-xml-website"/>
       <repopackage name="docbook-xsl-stylesheets"/>
-      <repopackage name="docbook5-xsl-stylesheets"/>
-      <repopackage name="docbook_3"/>
       <repopackage name="docbook_4"/>
-      <repopackage name="docbook_5"/>
       <repopackage name="dolphin"/>
       <repopackage name="dolphin-part"/>
       <repopackage name="dolphin-part-lang"/>
@@ -663,7 +648,6 @@
       <repopackage name="gegl-0_4-lang"/>
       <repopackage name="geoclue2"/>
       <repopackage name="geocode-glib"/>
-      <repopackage name="geronimo-jms-1_1-api"/>
       <repopackage name="gettext-runtime"/>
       <repopackage name="gettext-tools"/>
       <repopackage name="ghex"/>
@@ -699,7 +683,6 @@
       <repopackage name="glabels-lang"/>
       <repopackage name="glade"/>
       <repopackage name="glade-lang"/>
-      <repopackage name="glassfish-servlet-api"/>
       <repopackage name="glib-networking"/>
       <repopackage name="glib-networking-lang"/>
       <repopackage name="glib2-lang"/>
@@ -995,9 +978,7 @@
       <repopackage name="hplip"/>
       <repopackage name="hplip-hpijs"/>
       <repopackage name="hplip-sane"/>
-      <repopackage name="html-dtd"/>
       <repopackage name="html2ps"/>
-      <repopackage name="html2text"/>
       <repopackage name="hunspell"/>
       <repopackage name="hunspell-tools"/>
       <repopackage name="hwdata"/>
@@ -1045,7 +1026,6 @@
       <repopackage name="icewm-lang"/>
       <repopackage name="icewm-lite"/>
       <repopackage name="icewm-theme-branding"/>
-      <repopackage name="icu4j"/>
       <repopackage name="iftop"/>
       <repopackage name="iio-sensor-proxy"/>
       <repopackage name="ImageMagick"/>
@@ -1061,7 +1041,6 @@
       <repopackage name="inkscape"/>
       <repopackage name="inkscape-extensions-extra"/>
       <repopackage name="inkscape-extensions-gimp"/>
-      <repopackage name="inkscape-extensions-skencil"/>
       <repopackage name="inkscape-lang"/>
       <repopackage name="inn"/>
       <repopackage name="insserv-compat"/>
@@ -1111,7 +1090,6 @@
       <repopackage name="iw"/>
       <repopackage name="java-11-openjdk"/>
       <repopackage name="java-11-openjdk-headless"/>
-      <repopackage name="javamail"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
@@ -1299,8 +1277,6 @@
       <repopackage name="kig-lang"/>
       <repopackage name="kimageformats"/>
       <repopackage name="kimageformats-eps"/>
-      <repopackage name="kimagemapeditor"/>
-      <repopackage name="kimagemapeditor-lang"/>
       <repopackage name="kimap-lang"/>
       <repopackage name="kinfocenter5"/>
       <repopackage name="kinfocenter5-lang"/>
@@ -2563,9 +2539,7 @@
       <repopackage name="libpcre1"/>
       <repopackage name="libpcre1-32bit" arch="x86_64"/>
       <repopackage name="libpcre2-16-0"/>
-      <repopackage name="libpcre2-32-0"/>
       <repopackage name="libpcre2-8-0"/>
-      <repopackage name="libpcre2-posix2"/>
       <repopackage name="libpcreposix0"/>
       <repopackage name="libpcsclite1"/>
       <repopackage name="libpeas-1_0-0"/>
@@ -2942,7 +2916,6 @@
       <repopackage name="libtheoradec1"/>
       <repopackage name="libtheoraenc1"/>
       <repopackage name="libthunarx-3-0"/>
-      <repopackage name="libtidy5"/>
       <repopackage name="libtiff5"/>
       <repopackage name="libtiff5-32bit" arch="x86_64"/>
       <repopackage name="libtinyxml0"/>
@@ -3095,25 +3068,12 @@
       <repopackage name="libwrap0"/>
       <repopackage name="libwsutil11"/>
       <repopackage name="libwx_baseu-suse-nostl3_0_4"/>
-      <repopackage name="libwx_baseu-suse3_0_4"/>
       <repopackage name="libwx_baseu_net-suse-nostl3_0_4"/>
-      <repopackage name="libwx_baseu_net-suse3_0_4"/>
       <repopackage name="libwx_baseu_xml-suse-nostl3_0_4"/>
-      <repopackage name="libwx_baseu_xml-suse3_0_4"/>
       <repopackage name="libwx_gtk2u_adv-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_adv-suse3_0_4"/>
-      <repopackage name="libwx_gtk2u_aui-suse3_0_4"/>
       <repopackage name="libwx_gtk2u_core-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_core-suse3_0_4"/>
-      <repopackage name="libwx_gtk2u_gl-suse3_0_4"/>
       <repopackage name="libwx_gtk2u_html-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_html-suse3_0_4"/>
-      <repopackage name="libwx_gtk2u_media-suse3_0_4"/>
-      <repopackage name="libwx_gtk2u_propgrid-suse3_0_4"/>
       <repopackage name="libwx_gtk2u_qa-suse-nostl3_0_4"/>
-      <repopackage name="libwx_gtk2u_richtext-suse3_0_4"/>
-      <repopackage name="libwx_gtk2u_stc-suse3_0_4"/>
-      <repopackage name="libwx_gtk2u_xrc-suse3_0_4"/>
       <repopackage name="libX11-6"/>
       <repopackage name="libX11-6-32bit" arch="x86_64"/>
       <repopackage name="libX11-data"/>
@@ -3204,7 +3164,6 @@
       <repopackage name="libxklavier16"/>
       <repopackage name="libxml2-2"/>
       <repopackage name="libxml2-2-32bit" arch="x86_64"/>
-      <repopackage name="libxml2-devel"/>
       <repopackage name="libxml2-tools"/>
       <repopackage name="libxmlb1"/>
       <repopackage name="libxmlsec1-1"/>
@@ -3465,7 +3424,6 @@
       <repopackage name="mutter"/>
       <repopackage name="mutter-data"/>
       <repopackage name="mutter-lang"/>
-      <repopackage name="mxml"/>
       <repopackage name="mypy"/>
       <repopackage name="myspell-cs_CZ"/>
       <repopackage name="myspell-da_DK"/>
@@ -3688,11 +3646,9 @@
       <repopackage name="patterns-desktop-imaging"/>
       <repopackage name="patterns-desktop-laptop"/>
       <repopackage name="patterns-desktop-multimedia"/>
-      <repopackage name="patterns-desktop-technical_writing"/>
       <repopackage name="patterns-devel-base-devel_basis"/>
       <repopackage name="patterns-devel-base-devel_kernel"/>
       <repopackage name="patterns-devel-base-devel_rpm_build"/>
-      <repopackage name="patterns-devel-base-devel_web"/>
       <repopackage name="patterns-devel-C-C++-devel_C_C++"/>
       <repopackage name="patterns-devel-osc-devel_osc_build"/>
       <repopackage name="patterns-devel-perl-devel_perl"/>
@@ -3750,7 +3706,6 @@
       <repopackage name="pcfclock-kmp-default"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
-      <repopackage name="pcre2-devel"/>
       <repopackage name="pcsc-acr38"/>
       <repopackage name="pcsc-asedriveiiie-usb"/>
       <repopackage name="pcsc-asekey"/>
@@ -4065,43 +4020,19 @@
       <repopackage name="phononsettings"/>
       <repopackage name="phononsettings-lang"/>
       <repopackage name="php7"/>
-      <repopackage name="php7-bcmath"/>
-      <repopackage name="php7-bz2"/>
-      <repopackage name="php7-calendar"/>
       <repopackage name="php7-ctype"/>
-      <repopackage name="php7-curl"/>
-      <repopackage name="php7-dba"/>
-      <repopackage name="php7-devel"/>
       <repopackage name="php7-dom"/>
-      <repopackage name="php7-exif"/>
-      <repopackage name="php7-fastcgi"/>
-      <repopackage name="php7-ftp"/>
       <repopackage name="php7-gd"/>
       <repopackage name="php7-gettext"/>
-      <repopackage name="php7-gmp"/>
       <repopackage name="php7-iconv"/>
       <repopackage name="php7-json"/>
-      <repopackage name="php7-ldap"/>
       <repopackage name="php7-mbstring"/>
       <repopackage name="php7-mysql"/>
-      <repopackage name="php7-odbc"/>
-      <repopackage name="php7-openssl"/>
       <repopackage name="php7-pdo"/>
-      <repopackage name="php7-pear"/>
-      <repopackage name="php7-pecl"/>
-      <repopackage name="php7-pgsql"/>
-      <repopackage name="php7-shmop"/>
-      <repopackage name="php7-snmp"/>
-      <repopackage name="php7-sockets"/>
       <repopackage name="php7-sqlite"/>
-      <repopackage name="php7-sysvsem"/>
-      <repopackage name="php7-sysvshm"/>
-      <repopackage name="php7-tidy"/>
       <repopackage name="php7-tokenizer"/>
       <repopackage name="php7-xmlreader"/>
       <repopackage name="php7-xmlwriter"/>
-      <repopackage name="php7-xsl"/>
-      <repopackage name="php7-zlib"/>
       <repopackage name="pia"/>
       <repopackage name="pico"/>
       <repopackage name="pidgin"/>
@@ -4221,7 +4152,6 @@
       <repopackage name="procinfo"/>
       <repopackage name="procmail"/>
       <repopackage name="procps"/>
-      <repopackage name="psgml"/>
       <repopackage name="psmisc"/>
       <repopackage name="psmisc-lang"/>
       <repopackage name="psqlODBC"/>
@@ -4260,8 +4190,6 @@
       <repopackage name="python-Sphinx-doc-man"/>
       <repopackage name="python-tk"/>
       <repopackage name="python-typeshed"/>
-      <repopackage name="python-wxWidgets-3_0"/>
-      <repopackage name="python-wxWidgets-3_0-lang"/>
       <repopackage name="python-xml"/>
       <repopackage name="python2-appdirs"/>
       <repopackage name="python2-asn1crypto"/>
@@ -4287,11 +4215,9 @@
       <repopackage name="python2-pyasn1"/>
       <repopackage name="python2-pycairo"/>
       <repopackage name="python2-pycparser"/>
-      <repopackage name="python2-pycups"/>
       <repopackage name="python2-pyparsing"/>
       <repopackage name="python2-python-dateutil"/>
       <repopackage name="python2-pytz"/>
-      <repopackage name="python2-reportlab"/>
       <repopackage name="python2-SecretStorage"/>
       <repopackage name="python2-setuptools"/>
       <repopackage name="python2-six"/>
@@ -4552,12 +4478,10 @@
       <repopackage name="re2c"/>
       <repopackage name="read-only-root-fs"/>
       <repopackage name="readcd"/>
-      <repopackage name="readline-devel"/>
       <repopackage name="readline-doc"/>
       <repopackage name="rebootmgr"/>
       <repopackage name="redis"/>
       <repopackage name="reiserfs"/>
-      <repopackage name="relaxngDatatype"/>
       <repopackage name="release-notes-openSUSE"/>
       <repopackage name="remmina"/>
       <repopackage name="remmina-lang"/>
@@ -5083,7 +5007,6 @@
       <repopackage name="rubygem-ruby-fcgi"/>
       <repopackage name="rzip"/>
       <repopackage name="rzsz"/>
-      <repopackage name="sablot"/>
       <repopackage name="sac"/>
       <repopackage name="salt"/>
       <repopackage name="salt-master"/>
@@ -5100,7 +5023,6 @@
       <repopackage name="sane-backends"/>
       <repopackage name="sane-backends-autoconfig"/>
       <repopackage name="sasl2-kdexoauth2"/>
-      <repopackage name="saxon6"/>
       <repopackage name="sazanami-fonts"/>
       <repopackage name="sbc"/>
       <repopackage name="sbl"/>
@@ -5145,7 +5067,6 @@
       <repopackage name="simple-scan"/>
       <repopackage name="simple-scan-lang"/>
       <repopackage name="site-config"/>
-      <repopackage name="sk1"/>
       <repopackage name="skanlite"/>
       <repopackage name="skanlite-lang"/>
       <repopackage name="skkdic"/>
@@ -5200,7 +5121,6 @@
       <repopackage name="susepaste-screenshot"/>
       <repopackage name="sushi"/>
       <repopackage name="sushi-lang"/>
-      <repopackage name="svg-schema"/>
       <repopackage name="sweeper"/>
       <repopackage name="sweeper-lang"/>
       <repopackage name="swell-foop"/>
@@ -5265,8 +5185,6 @@
       <repopackage name="tcsh"/>
       <repopackage name="tcsh-lang"/>
       <repopackage name="technisat-usb2-firmware"/>
-      <repopackage name="tei-roma"/>
-      <repopackage name="tei-xsl-stylesheets"/>
       <repopackage name="telepathy-idle"/>
       <repopackage name="telepathy-logger"/>
       <repopackage name="telepathy-mission-control"/>
@@ -5277,7 +5195,6 @@
       <repopackage name="terminfo-base"/>
       <repopackage name="terminfo-screen"/>
       <repopackage name="terminus-bitmap-fonts"/>
-      <repopackage name="texlive-latex-doc"/>
       <repopackage name="texlive-lm-fonts"/>
       <repopackage name="tftp"/>
       <repopackage name="tgt"/>
@@ -5295,7 +5212,6 @@
       <repopackage name="thunar-volman"/>
       <repopackage name="thunar-volman-branding-openSUSE"/>
       <repopackage name="thunar-volman-lang"/>
-      <repopackage name="tidy"/>
       <repopackage name="tiff"/>
       <repopackage name="tigervnc"/>
       <repopackage name="time"/>
@@ -5318,7 +5234,6 @@
       <repopackage name="tracker-miner-files"/>
       <repopackage name="tracker-miners"/>
       <repopackage name="tracker-miners-lang"/>
-      <repopackage name="trang"/>
       <repopackage name="transactional-update"/>
       <repopackage name="transactional-update-zypp-config"/>
       <repopackage name="translation-update"/>
@@ -5523,7 +5438,6 @@
       <repopackage name="wqy-zenhei-fonts"/>
       <repopackage name="wxWidgets-lang"/>
       <repopackage name="x11-tools"/>
-      <repopackage name="xalan-j2"/>
       <repopackage name="xano-mincho-fonts"/>
       <repopackage name="xapps-common"/>
       <repopackage name="xapps-common-lang"/>
@@ -5558,7 +5472,6 @@
       <repopackage name="xen-libs"/>
       <repopackage name="xen-tools" arch="x86_64"/>
       <repopackage name="xen-tools-domU"/>
-      <repopackage name="xerces-j2"/>
       <repopackage name="xf86-input-evdev"/>
       <repopackage name="xf86-input-joystick"/>
       <repopackage name="xf86-input-keyboard"/>
@@ -5691,7 +5604,6 @@
       <repopackage name="xfwm4-branding-openSUSE"/>
       <repopackage name="xfwm4-lang"/>
       <repopackage name="xhost"/>
-      <repopackage name="xhtml-dtd"/>
       <repopackage name="xinetd"/>
       <repopackage name="xinit"/>
       <repopackage name="xkbcomp"/>
@@ -5704,13 +5616,7 @@
       <repopackage name="xml-commons-resolver"/>
       <repopackage name="xmlbeans"/>
       <repopackage name="xmlcharent"/>
-      <repopackage name="xmlformat"/>
-      <repopackage name="xmlgraphics-batik"/>
-      <repopackage name="xmlgraphics-batik-css"/>
-      <repopackage name="xmlgraphics-commons"/>
-      <repopackage name="xmlgraphics-fop"/>
-      <repopackage name="xmlstarlet"/>
-      <repopackage name="xmlto"/>
+      <repopackage name="xmlstarlet" arch="x86_64"/>
       <repopackage name="xmodmap"/>
       <repopackage name="xorg-x11-driver-video"/>
       <repopackage name="xorg-x11-essentials"/>
@@ -5744,7 +5650,6 @@
       <repopackage name="xset"/>
       <repopackage name="xsetroot"/>
       <repopackage name="xsettingsd"/>
-      <repopackage name="xslide"/>
       <repopackage name="xtables-addons-kmp-default"/>
       <repopackage name="xtables-plugins"/>
       <repopackage name="xterm"/>
@@ -5752,7 +5657,6 @@
       <repopackage name="xtermset"/>
       <repopackage name="xtrans"/>
       <repopackage name="xz"/>
-      <repopackage name="xz-devel"/>
       <repopackage name="xz-lang"/>
       <repopackage name="yakuake"/>
       <repopackage name="yakuake-lang"/>

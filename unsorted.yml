@@ -573,6 +573,7 @@ unsorted:
   - apache-commons-httpclient-demo 
   - apache-commons-httpclient-javadoc 
   - apache-commons-httpclient-manual 
+  - apache-commons-io 
   - apache-commons-io-javadoc 
   - apache-commons-jexl 
   - apache-commons-jexl-javadoc 
@@ -602,11 +603,14 @@ unsorted:
   - apache-ivy 
   - apache-ivy-javadoc 
   - apache-logging-parent 
+  - apache-pdfbox 
   - apache-pdfbox-javadoc 
   - apache-portlet-1_0-api 
   - apache-portlet-1_0-api-javadoc 
   - apache-rex 
   - apache-rpm-macros 
+  - apache-rpm-macros-control 
+  - apache2-devel 
   - apache2-event 
   - apache2-icons-oxygen 
   - apache2-mod_apparmor 
@@ -649,6 +653,8 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
+  - apr-devel 
+  - apr-util-devel 
   - apulse: [i586] 
   - aqbanking 
   - aqbanking-devel 
@@ -892,7 +898,9 @@ unsorted:
   - avahi-mono 
   - avahi-utils 
   - avahi-utils-gtk 
+  - avalon-framework 
   - avalon-framework-javadoc 
+  - avalon-logkit 
   - avalon-logkit-javadoc 
   - avesta-fonts 
   - avfs 
@@ -2196,6 +2204,7 @@ unsorted:
   - dbh-devel 
   - dblatex 
   - dblatex-doc 
+  - dbsplit-tools 
   - dbus-1-devel 
   - dbus-1-devel-32bit: [x86_64] 
   - dbus-1-devel-doc 
@@ -2346,6 +2355,7 @@ unsorted:
   - dita 
   - diy-devel: [x86_64] 
   - djvu2pdf 
+  - djvulibre 
   - djvulibre-djview4 
   - djvulibre-doc 
   - dkgpg 
@@ -2373,15 +2383,20 @@ unsorted:
   - dnsmeter 
   - dnstracer 
   - docbook-css-stylesheets 
+  - docbook-dsssl-stylesheets 
   - docbook-simple 
   - docbook-tdg 
   - docbook-toys 
   - docbook-utils 
   - docbook-utils-minimal 
   - docbook-xml-slides 
+  - docbook-xml-website 
   - docbook-xsl-pdf2index 
   - docbook2x 
   - docbook2x-doc 
+  - docbook5-xsl-stylesheets 
+  - docbook_3 
+  - docbook_5 
   - docbook_5-doc 
   - docker 
   - docker-bash-completion 
@@ -3627,6 +3642,7 @@ unsorted:
   - geronimo-javamail-1_4-api 
   - geronimo-jaxr-1_0-api 
   - geronimo-jaxrpc-1_1-api 
+  - geronimo-jms-1_1-api 
   - geronimo-jpa-3_0-api 
   - geronimo-jsp-2_0-api 
   - geronimo-jsp-2_1-api 
@@ -4397,6 +4413,7 @@ unsorted:
   - glassfish-jsp-api-javadoc 
   - glassfish-jsp-javadoc 
   - glassfish-master-pom 
+  - glassfish-servlet-api 
   - glassfish-servlet-api-javadoc 
   - glassfish-transaction-api 
   - glassfish-transaction-api-javadoc 
@@ -5398,7 +5415,9 @@ unsorted:
   - htdig-devel 
   - htdig-doc 
   - hte 
+  - html-dtd 
   - html-xml-utils 
+  - html2text 
   - htmldoc 
   - htop 
   - http-builder 
@@ -5553,6 +5572,7 @@ unsorted:
   - icon-naming-utils 
   - icoutils 
   - icu 
+  - icu4j 
   - icu4j-charset 
   - icu4j-javadoc 
   - icu4j-localespi 
@@ -5638,6 +5658,7 @@ unsorted:
   - injeqt-devel 
   - inkscape-extensions-dia 
   - inkscape-extensions-fig 
+  - inkscape-extensions-skencil 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -5878,6 +5899,7 @@ unsorted:
   - javahelp2 
   - javahelp2-javadoc 
   - javahelp2-manual 
+  - javamail 
   - javamail-javadoc 
   - javapackages-gradle 
   - javapackages-ivy 
@@ -6508,6 +6530,8 @@ unsorted:
   - kim-api-devel 
   - kim-api-examples 
   - kimageformats-32bit: [x86_64] 
+  - kimagemapeditor 
+  - kimagemapeditor-lang 
   - kimap-devel 
   - kinit-32bit: [x86_64] 
   - kinit-devel 
@@ -10687,8 +10711,10 @@ unsorted:
   - libpcre16-0 
   - libpcre16-0-32bit: [x86_64] 
   - libpcre2-16-0-32bit: [x86_64] 
+  - libpcre2-32-0 
   - libpcre2-32-0-32bit: [x86_64] 
   - libpcre2-8-0-32bit: [x86_64] 
+  - libpcre2-posix2 
   - libpcre2-posix2-32bit: [x86_64] 
   - libpcrecpp0 
   - libpcrecpp0-32bit: [x86_64] 
@@ -11801,6 +11827,7 @@ unsorted:
   - libthriftnb-0_12_0 
   - libthriftz-0_12_0 
   - libtidy-devel 
+  - libtidy5 
   - libtidyp-1_04-0 
   - libtidyp-devel 
   - libtiff-devel 
@@ -12241,28 +12268,38 @@ unsorted:
   - libwtdbopostgres4_2_0 
   - libwv-1_2-4 
   - libwv2-4 
+  - libwx_baseu-suse3_0_4 
   - libwx_baseu-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu-suse3_1_3 
+  - libwx_baseu_net-suse3_0_4 
   - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_net-suse3_1_3 
+  - libwx_baseu_xml-suse3_0_4 
   - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
   - libwx_baseu_xml-suse3_1_3 
+  - libwx_gtk2u_adv-suse3_0_4 
   - libwx_gtk2u_adv-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_adv-suse3_1_3 
   - libwx_gtk2u_aui-suse-nostl3_0_4 
+  - libwx_gtk2u_aui-suse3_0_4 
   - libwx_gtk2u_aui-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_aui-suse3_1_3 
+  - libwx_gtk2u_core-suse3_0_4 
   - libwx_gtk2u_core-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_core-suse3_1_3 
   - libwx_gtk2u_gl-suse-nostl3_0_4 
+  - libwx_gtk2u_gl-suse3_0_4 
   - libwx_gtk2u_gl-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_gl-suse3_1_3 
+  - libwx_gtk2u_html-suse3_0_4 
   - libwx_gtk2u_html-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_html-suse3_1_3 
   - libwx_gtk2u_media-suse-nostl3_0_4 
+  - libwx_gtk2u_media-suse3_0_4 
   - libwx_gtk2u_media-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_media-suse3_1_3 
   - libwx_gtk2u_propgrid-suse-nostl3_0_4 
+  - libwx_gtk2u_propgrid-suse3_0_4 
   - libwx_gtk2u_propgrid-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_propgrid-suse3_1_3 
   - libwx_gtk2u_qa-suse3_0_4 
@@ -12273,12 +12310,15 @@ unsorted:
   - libwx_gtk2u_ribbon-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_ribbon-suse3_1_3 
   - libwx_gtk2u_richtext-suse-nostl3_0_4 
+  - libwx_gtk2u_richtext-suse3_0_4 
   - libwx_gtk2u_richtext-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_richtext-suse3_1_3 
   - libwx_gtk2u_stc-suse-nostl3_0_4 
+  - libwx_gtk2u_stc-suse3_0_4 
   - libwx_gtk2u_stc-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_stc-suse3_1_3 
   - libwx_gtk2u_xrc-suse-nostl3_0_4 
+  - libwx_gtk2u_xrc-suse3_0_4 
   - libwx_gtk2u_xrc-suse3_0_4-32bit: [x86_64] 
   - libwx_gtk2u_xrc-suse3_1_3 
   - libwx_gtk3u_adv-suse3_1_3 
@@ -12411,6 +12451,7 @@ unsorted:
   - libxml++26-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
+  - libxml2-devel 
   - libxml2-devel-32bit: [x86_64] 
   - libxml2-doc 
   - libxmlb-devel 
@@ -14089,6 +14130,7 @@ unsorted:
   - mvapich2_2_3_3-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
+  - mxml 
   - mxml-devel 
   - mxml-doc 
   - mycroft-core 
@@ -15737,8 +15779,10 @@ unsorted:
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-desktop-books 
+  - patterns-desktop-technical_writing 
   - patterns-devel-base-devel_basis-32bit 
   - patterns-devel-base-devel_kernel-32bit 
+  - patterns-devel-base-devel_web 
   - patterns-devel-java-devel_java 
   - patterns-devel-mono-devel_mono 
   - patterns-devel-python-devel_python3 
@@ -15898,6 +15942,7 @@ unsorted:
   - pcre-devel-static 
   - pcre-doc 
   - pcre-tools 
+  - pcre2-devel 
   - pcre2-devel-static 
   - pcre2-doc 
   - pcre2-tools 
@@ -17009,36 +17054,60 @@ unsorted:
   - php-pear-Net_Socket 
   - php-pear-XML_Parser 
   - php7-APCu 
+  - php7-bcmath 
+  - php7-bz2 
+  - php7-calendar 
+  - php7-curl 
+  - php7-dba 
+  - php7-devel 
   - php7-embed 
   - php7-enchant 
+  - php7-exif 
+  - php7-fastcgi 
   - php7-fileinfo 
   - php7-firebird 
   - php7-fpm 
+  - php7-ftp 
   - php7-gmagick 
+  - php7-gmp 
   - php7-ice 
   - php7-imagick 
   - php7-intl 
+  - php7-ldap 
   - php7-libphutil 
   - php7-lzf 
   - php7-maxminddb 
   - php7-memcached 
+  - php7-odbc 
   - php7-opcache 
+  - php7-openssl 
   - php7-pcntl 
+  - php7-pear 
+  - php7-pecl 
+  - php7-pgsql 
   - php7-phalcon 
   - php7-phar 
   - php7-phpunit8 
   - php7-posix 
   - php7-readline 
   - php7-redis 
+  - php7-shmop 
   - php7-smbclient 
+  - php7-snmp 
   - php7-soap 
+  - php7-sockets 
   - php7-sodium 
   - php7-sysvmsg 
+  - php7-sysvsem 
+  - php7-sysvshm 
   - php7-test 
+  - php7-tidy 
   - php7-uuid 
   - php7-xdebug 
   - php7-xmlrpc 
+  - php7-xsl 
   - php7-zip 
+  - php7-zlib 
   - phpMyAdmin 
   - phpPgAdmin 
   - pianobar 
@@ -17488,6 +17557,7 @@ unsorted:
   - proxychains-ng 
   - prozgui 
   - prun-ohpc 
+  - psgml 
   - psgplay 
   - psi+ 
   - psi+-data 
@@ -17864,7 +17934,9 @@ unsorted:
   - python-vips 
   - python-volatility 
   - python-weakrefmethod 
+  - python-wxWidgets-3_0 
   - python-wxWidgets-3_0-devel 
+  - python-wxWidgets-3_0-lang 
   - python-xapian 
   - python-yui 
   - python-zope.deprecation-doc 
@@ -19381,6 +19453,7 @@ unsorted:
   - python2-pycryptodome 
   - python2-pycryptodomex 
   - python2-pyct 
+  - python2-pycups 
   - python2-pycurl 
   - python2-pycxx 
   - python2-pycxx-devel 
@@ -19675,6 +19748,7 @@ unsorted:
   - python2-rencode 
   - python2-renderspec 
   - python2-reno 
+  - python2-reportlab 
   - python2-repoze.lru 
   - python2-repoze.sphinx.autointerface 
   - python2-repoze.who 
@@ -23066,6 +23140,7 @@ unsorted:
   - re2-devel 
   - read-edid 
   - read-only-root-fs-volatile 
+  - readline-devel 
   - readline-devel-32bit: [x86_64] 
   - readline-devel-static 
   - readline5-devel 
@@ -23099,6 +23174,7 @@ unsorted:
   - regexp 
   - reiser4progs 
   - reiser4progs-devel 
+  - relaxngDatatype 
   - remake 
   - remake-lang 
   - remind 
@@ -24077,6 +24153,7 @@ unsorted:
   - s-tui 
   - s3backer 
   - s3fs 
+  - sablot 
   - sablot-devel 
   - sac-javadoc 
   - saidar 
@@ -24122,6 +24199,7 @@ unsorted:
   - sawfish-pager 
   - sawfish-sounds 
   - sax3 
+  - saxon6 
   - saxon6-aelfred 
   - saxon6-demo 
   - saxon6-fop 
@@ -24428,6 +24506,7 @@ unsorted:
   - sitar 
   - sitecopy 
   - sitecopy-lang 
+  - sk1 
   - skelcd-control-Kubic 
   - skelcd-control-MicroOS 
   - skelcd-control-openSUSE 
@@ -24855,6 +24934,7 @@ unsorted:
   - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
   - suseprime-appindicator 
+  - svg-schema 
   - svg-schema-doc 
   - svgcleaner 
   - svgcleaner-gui 
@@ -25030,6 +25110,8 @@ unsorted:
   - tecla-devel 
   - tecnoballz 
   - teeworlds 
+  - tei-roma 
+  - tei-xsl-stylesheets 
   - tei_4 
   - telegraf 
   - telegram-desktop: [x86_64] 
@@ -28839,6 +28921,7 @@ unsorted:
   - texlive-latex-bin-bin 
   - texlive-latex-brochure 
   - texlive-latex-course 
+  - texlive-latex-doc 
   - texlive-latex-doc-ptr 
   - texlive-latex-fonts 
   - texlive-latex-fonts-doc 
@@ -32472,6 +32555,7 @@ unsorted:
   - thunarx-python-doc 
   - thunderbolt-user-space 
   - tibetan-machine-uni-fonts 
+  - tidy 
   - tidy-doc 
   - tidyp 
   - tig 
@@ -32589,6 +32673,7 @@ unsorted:
   - tracker-devel 
   - trader 
   - trader-lang 
+  - trang 
   - transconnect 
   - transfig 
   - transifex-client 
@@ -33552,6 +33637,7 @@ unsorted:
   - x3270 
   - x86info 
   - xalan-c 
+  - xalan-j2 
   - xalan-j2-demo 
   - xalan-j2-manual 
   - xalan-j2-xsltc 
@@ -33635,6 +33721,7 @@ unsorted:
   - xengine 
   - xerces-c 
   - xerces-c-doc 
+  - xerces-j2 
   - xerces-j2-demo 
   - xerces-j2-javadoc 
   - xev 
@@ -33699,6 +33786,7 @@ unsorted:
   - xgnokii 
   - xgrabsc 
   - xhfsutil 
+  - xhtml-dtd 
   - xiccd 
   - xindy 
   - xindy-doc 
@@ -33755,6 +33843,9 @@ unsorted:
   - xmldb-api-javadoc 
   - xmldb-api-sdk 
   - xmldb-common 
+  - xmlformat 
+  - xmlgraphics-batik 
+  - xmlgraphics-batik-css 
   - xmlgraphics-batik-demo 
   - xmlgraphics-batik-javadoc 
   - xmlgraphics-batik-rasterizer 
@@ -33762,7 +33853,9 @@ unsorted:
   - xmlgraphics-batik-squiggle 
   - xmlgraphics-batik-svgpp 
   - xmlgraphics-batik-ttf2svg 
+  - xmlgraphics-commons 
   - xmlgraphics-commons-javadoc 
+  - xmlgraphics-fop 
   - xmlrpc-c-devel 
   - xmlsec1 
   - xmlsec1-devel 
@@ -33770,6 +33863,8 @@ unsorted:
   - xmlsec1-gnutls-devel 
   - xmlsec1-nss-devel 
   - xmlsec1-openssl-devel 
+  - xmlstarlet: [i586] 
+  - xmlto 
   - xmltoman 
   - xmltooling-schemas 
   - xmlunit 
@@ -33881,6 +33976,7 @@ unsorted:
   - xsession 
   - xsetmode 
   - xsetpointer 
+  - xslide 
   - xsm 
   - xsp 
   - xstdcmap 
@@ -33933,6 +34029,7 @@ unsorted:
   - xylib-devel 
   - xyscan 
   - xyscan-doc 
+  - xz-devel 
   - xz-devel-32bit: [x86_64] 
   - xz-java 
   - xz-java-javadoc 
