@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/mgba.git</param>
+              <param name="changesrevision">24fb0a5ba23689aa4c0c9620ae6b5659d419fefb</param></service><service name="tar_scm">
+                <param name="url">https://github.com/libretro/libretro-handy.git</param>
+              <param name="changesrevision">10f515163f875af5bd20c5170cb1ce7139de6fe4</param></service></servicedata>

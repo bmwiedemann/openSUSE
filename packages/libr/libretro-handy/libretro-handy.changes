@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sat Feb 08 13:08:02 UTC 2020 - i@guoyunhe.me
+
+- Remove handy.libretro which is now provided by libretro-core-info package
+- Update to version 0~git20200107:
+  * (MSVC 2017) Buildfix
+  * Revert "fix: ms. pac-man speedup"
+  * Compile using -O3 for PSP platform
+  * [libretro] variable color depth
+  * [libretro] fix audio_batch_cb
+  * [libretro] reduce savestate size
+  * fix palette generation
+  * resize save buffer to avoid crashes
+  * support higher sample rates
+  * fix reset crashes
+  * zendocon laugh fix
+  * remove handy detection
+  * rotate screen via joypad
+  * Support lynx o program images
+  * fix cart memcpy crash
+  * sync upstream formatting
+  * (tvOS) Compile using tvOS SDK
+  * libretro: allow mingw cross compiling
+  * eeprom fix: 0xff default value
+  * fix: run audio channels when muted
+  * fix: roadblasters flicker
+  * fix: gates of zendocon laugh
+  * fix: ms. pac-man speedup
+  * fix: warbirds horizon
+  * eeprom save fixes
+  * libretro: jni: Switch stl to c++ in preparation for ndk r20
+  * higher audio rate
+  * libretro save state
+  * makefile cleanup
+  * added a8a35 (@evilwraith)
+  * Added A7A7
+  * no options restart
+  * msvc2017 targets
+  * [LIBNX] Initial Port
+  * Replace bzero call with memset
+  * fixed 8 bit behavour
+  * change bit-per-pixel (back?)
+  * eeprom save/load; boorom replacement and more
+  * add read/write eeprom file
+  * removed broken code for Howie images, added working code
+  * commented unused sprintf
+  * put back comment
+  * default pixel format back to 32 bit
+  * EEPROM support
+  * Added possibility to switch between 16bit and 32bit graphic output more easily. Fiexed typo for rotation (240->270 degree)
+  * bit-inverted mSTEREO as in hardware, unclear why this was implemented in a different way before...
+  * Refactor android jni makefiles
+  * Stlport has been deprecated for some time, use gnustl instead
+  * Add Xbox OG port
+  * Add 3DS target
+  * Makefile: Add Switch target.
+  * Add MSVC 2003 target
+  * add travis build script
+  * default pixel format back to 32 bit
+  * EEPROM support
+  * Added possibility to switch between 16bit and 32bit graphic output more easily. Fiexed typo for rotation (240->270 degree)
+  * bit-inverted mSTEREO as in hardware, unclear why this was implemented in a different way before...
+  * Fixed returned value in retro_get_memory_size
+  * Fixed retro_get_memory_data/size
+  * support for iOS arm64 build
+
+-------------------------------------------------------------------
+Mon Sep 18 14:58:40 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170917.d5b2c1b (no proper versioning
+  done by upstream).
