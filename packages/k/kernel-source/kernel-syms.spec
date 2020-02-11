@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.5.1
+Version:        5.5.2
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g1d61c83
+Release:        <RELEASE>.g994cf1f
 %else
 Release:        0
 %endif
@@ -41,20 +41,23 @@ BuildRequires:  coreutils
 %ifarch aarch64
 Requires:       kernel-64kb-devel = %version-%source_rel
 %endif
-%ifarch aarch64 %ix86 ppc64 ppc64le s390x x86_64
+%ifarch aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le s390x x86_64
 Requires:       kernel-default-devel = %version-%source_rel
+%endif
+%ifarch armv7hl
+Requires:       kernel-lpae-devel = %version-%source_rel
 %endif
 %ifarch %ix86
 Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-1d61c83b92081ecc07b5d6d5a15e9d5a5776de14
+Provides:       %name-srchash-994cf1f3cd948310f125c08ff9cbaedf6ec78671
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 aarch64 ppc64 ppc64le s390x x86_64
+ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64 ppc64le s390x x86_64
 Prefix:         /usr/src
 
 %description

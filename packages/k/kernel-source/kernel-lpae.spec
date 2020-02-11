@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-zfcpdump
+# spec file for package kernel-lpae
 #
 # Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -27,7 +27,7 @@
 
 %include %_sourcedir/kernel-spec-macros
 
-%define build_flavor	zfcpdump
+%define build_flavor	lpae
 %define build_default	("%build_flavor" == "default")
 %define build_vanilla	("%build_flavor" == "vanilla")
 
@@ -61,8 +61,8 @@
 %define install_vdso 0
 %endif
 
-Name:           kernel-zfcpdump
-Summary:        The IBM System Z zfcpdump Kernel
+Name:           kernel-lpae
+Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0
 Group:          System/Kernel
 Version:        5.5.2
@@ -253,7 +253,7 @@ Source113:      patches.kabi.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  s390x
+ExclusiveArch:  armv7hl
 %define kmp_target_cpu %_target_cpu
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
@@ -345,10 +345,8 @@ NoSource:       121
 %define supported_modules_check 0
 
 %description
-The Linux kernel for booting the zfcpdump process on IBM System Z.
-
-This kernel should only be used by the s390-tools package. This kernel
-should not be installed as a regular booting kernel.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 
 %source_timestamp
@@ -1059,7 +1057,7 @@ fi
 %defattr(-, root, root)
 
 %package extra
-Summary:        The IBM System Z zfcpdump Kernel - Unsupported kernel modules
+Summary:        Kernel for LPAE enabled systems - Unsupported kernel modules
 Group:          System/Kernel
 Url:            http://www.kernel.org/
 Provides:       %name-extra_%_target_cpu = %version-%source_rel
@@ -1078,10 +1076,8 @@ Conflicts:      libc.so.6()(64bit)
 %endif
 
 %description extra
-The Linux kernel for booting the zfcpdump process on IBM System Z.
-
-This kernel should only be used by the s390-tools package. This kernel
-should not be installed as a regular booting kernel.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 This package contains additional modules not supported by Novell.
 

@@ -1,9 +1,91 @@
 -------------------------------------------------------------------
+Fri Feb  7 09:49:28 CET 2020 - ykaukab@suse.de
+
+- config.conf: enable armv6 and armv7 configs
+- commit d355d69
+
+-------------------------------------------------------------------
+Wed Feb  5 07:24:59 CET 2020 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update upstream reference (in mainline now) and move to "almost mainline" section:
+  patches.suse/btrfs-do-not-zero-f_bavail-if-we-have-available-spac.patch
+- commit d386a7a
+
+-------------------------------------------------------------------
+Wed Feb  5 07:21:12 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.2 (bnc#1012628).
+- vfs: fix do_last() regression (bnc#1012628).
+- cifs: fix soft mounts hanging in the reconnect code
+  (bnc#1012628).
+- x86/resctrl: Fix a deadlock due to inaccurate reference
+  (bnc#1012628).
+- x86/resctrl: Fix use-after-free when deleting resource groups
+  (bnc#1012628).
+- x86/resctrl: Fix use-after-free due to inaccurate refcount of
+  rdtgroup (bnc#1012628).
+- KVM: PPC: Book3S PR: Fix -Werror=return-type build failure
+  (bnc#1012628).
+- gfs2: Another gfs2_find_jhead fix (bnc#1012628).
+- lib/test_bitmap: correct test data offsets for 32-bit
+  (bnc#1012628).
+- perf c2c: Fix return type for histogram sorting comparision
+  functions (bnc#1012628).
+- PM / devfreq: Add new name attribute for sysfs (bnc#1012628).
+- tools lib: Fix builds when glibc contains strlcpy()
+  (bnc#1012628).
+- arm64: kbuild: remove compressed images on 'make ARCH=arm64
+  (dist)clean' (bnc#1012628).
+- mm/mempolicy.c: fix out of bounds write in mpol_parse_str()
+  (bnc#1012628).
+- reiserfs: Fix memory leak of journal device string
+  (bnc#1012628).
+- media: digitv: don't continue if remote control state can't
+  be read (bnc#1012628).
+- media: af9005: uninitialized variable printked (bnc#1012628).
+- media: vp7045: do not read uninitialized values if usb transfer
+  fails (bnc#1012628).
+- media: gspca: zero usb_buf (bnc#1012628).
+- media: dvb-usb/dvb-usb-urb.c: initialize actlen to 0
+  (bnc#1012628).
+- tomoyo: Use atomic_t for statistics counter (bnc#1012628).
+- ttyprintk: fix a potential deadlock in interrupt context issue
+  (bnc#1012628).
+- Bluetooth: Fix race condition in hci_release_sock()
+  (bnc#1012628).
+- cgroup: Prevent double killing of css when enabling threaded
+  cgroup (bnc#1012628).
+- commit c2619d7
+
+-------------------------------------------------------------------
 Tue Feb  4 07:41:15 CET 2020 - jslaby@suse.cz
 
 - btrfs: do not zero f_bavail if we have available space
   (bnc#1162471).
 - commit efe8ca5
+
+-------------------------------------------------------------------
+Mon Feb  3 15:44:53 CET 2020 - dsterba@suse.com
+
+- btrfs: do not zero f_bavail if we have available space (bsc#1162471)
+- commit edaa5de
+
+-------------------------------------------------------------------
+Mon Feb  3 06:53:24 CET 2020 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update upstream references and move into "almost mainline" section:
+  patches.suse/0001-x86-kvm-Be-careful-not-to-clear-KVM_VCPU_FLUSH_TLB-b.patch
+  patches.suse/0002-x86-kvm-Introduce-kvm_-un-map_gfn.patch
+  patches.suse/0003-x86-kvm-Cache-gfn-to-pfn-translation.patch
+  patches.suse/0004-x86-KVM-Make-sure-KVM_VCPU_FLUSH_TLB-flag-is-not-mis.patch
+  patches.suse/0005-x86-KVM-Clean-up-host-s-steal-time-structure.patch
+  patches.suse/pci-brcmstb-add-broadcom-stb-pcie-host-controller-driver.patch
+  patches.suse/pci-brcmstb-add-msi-capability.patch
+- move into "almost mainline" section
+  patches.suse/ASoC-SOF-Introduce-state-machine-for-FW-boot.patch
+- commit 9b0f74c
 
 -------------------------------------------------------------------
 Sat Feb  1 10:56:18 CET 2020 - jslaby@suse.cz

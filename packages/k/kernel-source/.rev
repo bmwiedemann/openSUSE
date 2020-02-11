@@ -4978,4 +4978,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5.1 with tentative btrfs fix</comment>
     <requestid>769861</requestid>
   </revision>
+  <revision rev="527" vrev="1">
+    <srcmd5>85b9fe615e91b01c2656e89cd32aafac</srcmd5>
+    <version>5.5.2</version>
+    <time>1581455809</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.2 &amp; reenable ARM 32bit</comment>
+    <requestid>772320</requestid>
+  </revision>
 </revisionlist>
