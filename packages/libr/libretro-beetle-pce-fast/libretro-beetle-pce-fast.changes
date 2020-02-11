@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Oct 10 21:40:46 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190911:
+  * (tvOS) support building
+  * libretro: allow mingw cross compile
+  * iOS: support for building using buildbot recipe
+  * Add enhanced core options
+  * (UWP) Still some compilation issues
+  * Fix MSVC 2003
+  * msvc buildfixes
+  * Take out asserts
+  * fix memory leak
+  * Do free at end of function
+- Rename to libretro-beetle-pce-fast to follow upstream naming
+- Remove info file because it is provided in core info package
+
+-------------------------------------------------------------------
+Wed Sep 13 11:54:10 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170906.efda29c (no proper versioning
+  done by upstream).
