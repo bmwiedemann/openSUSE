@@ -1,7 +1,7 @@
 #
 # spec file for package bison
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bison
-Version:        3.5
+Version:        3.5.1
 Release:        0
 Summary:        The GNU Parser Generator
 License:        GPL-3.0-or-later
@@ -51,13 +51,13 @@ Bison is a parser generator similar to yacc(1).
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   # non-parallel profiling for reproducible results https://bugzilla.opensuse.org/show_bug.cgi?id=1040589
-  make --jobs=1 CFLAGS="%{optflags}" check
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build --jobs=1 CFLAGS="%{optflags}" check
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}"
 %endif
 
 %check
