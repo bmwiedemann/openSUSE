@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  7 15:44:07 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.0.1
+  * Update to Python 3.6, 3.7, and 3.8
+  * Drop support for Python 2.6, 3.2, and 3.3
+  * Ignore None in list argument expansion
+  * Handle a list with an empty string appropriately
+
+-------------------------------------------------------------------
 Tue Dec  4 12:55:40 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
