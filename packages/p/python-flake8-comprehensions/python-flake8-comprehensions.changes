@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  9 16:53:49 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.2.2:
+  * Remove check for dict comprehensions in rule C407 as it would also
+    change the results for certain builtins such as sum().
+
+- changes from version 3.2.1:
+  * Remove check for set comprehensions in rule C407 as it would
+    change the results for certain builtins such as sum().
+
+- changes from version 3.2.0:
+  * Add filter and map to rule C407.
+  * Check for dict and set comprehensions in rules C407 and C412.
+
+-------------------------------------------------------------------
 Sat Dec  7 17:47:28 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-comprehensions
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flake8-comprehensions
-Version:        3.1.4
+Version:        3.2.2
 Release:        0
 Summary:        A flake8 plugin to help you write better list/set/dict comprehensions
 License:        ISC
