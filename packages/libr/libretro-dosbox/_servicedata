@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/dosbox-libretro.git</param>
+              <param name="changesrevision">e4ed503b14ed59d5d745396ef1cc7d52cf912328</param></service></servicedata>
