@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20190428
+Version:        20200126
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -56,7 +56,7 @@ A collection of various tools. Some of the important ones:
 * ofl(1) — open file lister (replaces fuser and lsof -m)
 * tailhex(1) — hex dumper with tail-following support
 * utmp_register(1) — make entries in the utmp/wtmp database
-* vfontas(1) — VGA font file assembler
+* vfontas(1) — Bitmap font transformation utility
 
 %package scripts
 Summary:        Collection of day-to-day tools (scripts)
@@ -166,6 +166,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 b="%buildroot"
+mv "$b/%_bindir"/extract_* "$b/%_libexecdir/%name/"
 mv "$b/%_bindir/rot13" "$b/%_libexecdir/%name/"
 install -dm0755 "$b/%_datadir/mc/syntax"
 install -pm0644 cooledit/*.syntax "$b/%_datadir/mc/syntax/"
@@ -188,23 +189,23 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %defattr(-,root,root)
 %doc LICENSE*
 %_bindir/bin2c
+%_bindir/bsvplay
 %_bindir/declone
 %_bindir/gxxdm
 %_bindir/hcdplay
+%_bindir/pcmdiff
+%_bindir/proc_iomem_count
+%_bindir/proc_stat_parse
+%_bindir/qplay
 %_bindir/tailhex
+%_bindir/vfontas
 %_bindir/xcp
 %dir %hldir
-%hldir/bsvplay
 %hldir/cctypeinfo
-%hldir/pcmdiff
 %hldir/peicon
-%hldir/proc_iomem_count
-%hldir/proc_stat_parse
 %hldir/psthreads
-%hldir/qplay
 %hldir/rot13
 %hldir/utmp_register
-%hldir/vfontas
 
 %files scripts
 %defattr(-,root,root)
@@ -216,6 +217,7 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %_bindir/gpsh
 %_bindir/man2html
 %_bindir/mkvappend
+%_bindir/mod2opus
 %_bindir/pegrep
 %_bindir/pesubst
 %_bindir/qpdecode
@@ -228,17 +230,13 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %hldir/diff2php
 %hldir/doxygen-kerneldoc-filter
 %hldir/extract_*
-%hldir/git-*
 %hldir/ldif-duplicate-attrs
 %hldir/ldif-leading-spaces
 %hldir/logontime
 %hldir/mailsplit
-%hldir/mod2opus
 %hldir/recursive_lower
 %hldir/rezip
-%hldir/shared.pm
 %hldir/sourcefuncsize
-%hldir/stxdb
 %hldir/vcsaview
 
 %files man
@@ -254,7 +252,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %config %_sysconfdir/openldap/schema/*
 %_datadir/%name
 %_datadir/kbd
-%_datadir/fonts/misc
 %_datadir/mc
 
 %if 0%{?build_profile}
@@ -280,10 +277,10 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 
 %files -n sysinfo
 %defattr(-,root,root)
-%_bindir/clock_info
 %_bindir/pmap_dirty
 %_bindir/sysinfo
 %dir %hldir
+%hldir/clock_info
 %hldir/hxnetload
 %hldir/paddrspacesize
 %hldir/proc_stat_signal_decode

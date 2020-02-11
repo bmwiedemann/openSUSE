@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 26 14:39:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200126
+  * vfontas: add full vectorizer for SFD glyphs
+  * vfontas: improved ascent/descent values for vector output
+  * vfontas: hex format misreading was fixed
+
+-------------------------------------------------------------------
 Sun Apr 28 18:56:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 20190428
