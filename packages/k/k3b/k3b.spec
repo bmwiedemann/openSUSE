@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application for KDE
 License:        GPL-2.0-or-later
@@ -124,7 +124,7 @@ This package contain files needed for development with k3b.
 %build
 CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
