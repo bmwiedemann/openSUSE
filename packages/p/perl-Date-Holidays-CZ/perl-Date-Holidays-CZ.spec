@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Date-Holidays-CZ
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Date-Holidays-CZ
-Version:        0.13
+Version:        0.15
 Release:        0
 %define cpan_name Date-Holidays-CZ
 Summary:        Determine Czech holidays
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Date-Holidays-CZ/
-Source:         %{cpan_name}-%{version}.tar.gz
+Source0:        Date-Holidays-CZ-0.15.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -56,6 +56,6 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes example LICENSE README
+%doc Changes example LICENSE README.rst
 
 %changelog
