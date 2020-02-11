@@ -1,8 +1,8 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define libname libopenvdb6_2
+%define libname libopenvdb7_0
 
 Name:           openvdb
-Version:        6.2.1
+Version:        7.0.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
