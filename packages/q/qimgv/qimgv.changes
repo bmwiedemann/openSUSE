@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb 11 07:05:46 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.9
+  What's new:
+  * [FolderView] You can now edit / remove files right from
+    folder view.
+  * [FolderView] Scroll animations for keyboard navigation.
+  * [Thumbnailer] Files are now stored as png. This fixes
+    transparency in folder view.
+  * [Panel] Scrollbar indicator.
+  * [Viewer] Configurable zoom step.
+  * [Viewer] Added another way to zoom: hold RMB and scroll.
+  * [Viewer] Added expandLimit option.
+  * Added jpeg save quality option.
+  * Changed some default settings.
+  * Updated theme & icons.
+  Bug fixes:
+  * Several bug fixes related to file operations.
+  * Minor visual fixes.
+  * Keyboard input fixes. All your keys should now work,
+    including symbols accessible through shift.
+  * Removed max zoom option.
+  * [windows] Do not track subfolders.
+  * [Thumbnailer] Fix for video files with % in file path.
+  * [FolderView] Thumbnails are now always uncropped.
+  * [FolderView] Fixes for mouse scrolling.
+  * Fix some keyboard focus issues.
+  * File format detection fixes.
+  * Crash fixes.
+
+- Refreshed qimgv-nosharedlib.patch and qimgv-PIE.patch
+
+- Removed group tag
+
+-------------------------------------------------------------------
 Tue Nov 12 21:30:01 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.8
