@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:09:53 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.301
+  * Following pandas release v1.0.0, removing deprecated keyword args "broadcast" and "reduce"
+
+-------------------------------------------------------------------
 Thu Jan 30 19:22:19 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.300

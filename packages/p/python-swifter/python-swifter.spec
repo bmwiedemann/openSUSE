@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-swifter
-Version:        0.300
+Version:        0.301
 Release:        0
 Summary:        Tool to speed up pandas calculations
 License:        MIT
