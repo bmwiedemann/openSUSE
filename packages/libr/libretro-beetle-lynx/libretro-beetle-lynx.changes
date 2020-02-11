@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Oct 10 21:18:38 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190911:
+  * (tvOS) support building
+  * libretro: allow mingw cross compile
+  * iOS: support for building using buildbot recipe
+  * Update - MSVC2003 builds
+  * Add libnx target
+  * libretro: jni: Switch stl to c++ in preparation for ndk r20
+  * msvc targets
+  * Update - sync recent changes to to mdfn 1.22.2
+  * Stereo_Buffer.cpp: silence runtime error found when running -fsanitizer
+  * Update file.c
+- Rename to libretro-beetle-lynx to follow upstream naming
+- Remove info file because it is provided in core info package
+
+-------------------------------------------------------------------
+Wed Sep 13 11:54:10 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170729.3b3fbd3 (no proper versioning
+  done by upstream).
