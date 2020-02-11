@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 07 14:27:46 UTC 2020 - ro@suse.com
+
+- Update to version 84.87+git20200207.27e2c61:
+  * change rp_filter to 2 to follow the current default (bsc#1160735)
+
+-------------------------------------------------------------------
 Thu Feb 06 10:22:51 UTC 2020 - ro@suse.com
 
 - Update to version 84.87+git20200206.ed897a1:

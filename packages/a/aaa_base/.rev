@@ -3724,4 +3724,13 @@
   will fail</comment>
     <requestid>770505</requestid>
   </revision>
+  <revision rev="463" vrev="1">
+    <srcmd5>016b414690416c3f4f7fb8bf26a2af21</srcmd5>
+    <version>84.87+git20200207.27e2c61</version>
+    <time>1581455804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200207.27e2c61:
+  * change rp_filter to 2 to follow the current default (bsc#1160735)</comment>
+    <requestid>772113</requestid>
+  </revision>
 </revisionlist>
