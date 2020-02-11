@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblog
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Client-side support library for web application remote blogging APIs
 License:        LGPL-2.1-or-later
@@ -87,7 +87,7 @@ This package contains necessary include files for the library.
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
