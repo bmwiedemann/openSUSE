@@ -1,0 +1,2 @@
+addFilter('wrong-script-interpreter.*rackup')
+addFilter('script-without-shebang')
