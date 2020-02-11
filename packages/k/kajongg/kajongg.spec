@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kajongg
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
@@ -69,7 +69,7 @@ Kajongg is a version of the four player Mahjongg tile game.
   export PYTHONDONTWRITEBYTECODE=1
   export DESTDIR=%{buildroot}
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %make_install -C build
