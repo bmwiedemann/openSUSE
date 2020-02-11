@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pydle
-Version:        0.9.2
+Version:        0.9.4rc1
 Release:        0
 Summary:        Modular, callback-based IRCv3 library for Python 3
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Shizmob/pydle
-Source:         https://files.pythonhosted.org/packages/source/p/pydle/pydle-%{version}.tar.gz
+Source:         https://github.com/Shizmob/pydle/archive/v%{version}.tar.gz#/pydle-%{version}.tar.gz
 Source1:        LICENSE.md
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
