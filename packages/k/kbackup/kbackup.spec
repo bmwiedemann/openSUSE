@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kbackup
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
@@ -76,7 +76,7 @@ Although GUI based, it also offers an automated, GUI-less mode.
     %endif
   %endif
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
