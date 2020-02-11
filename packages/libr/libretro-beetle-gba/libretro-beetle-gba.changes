@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Oct 10 21:04:51 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190911:
+  * (tvOS) support building
+  * libretro: allow mingw cross compile
+  * iOS: support for building using buildbot
+  * makefile cleanup
+  * libretro: jni: Switch stl to c++ in preparation for ndk r20
+  * Updated A7A7
+  * Added A7A7
+  * add memory hooks for cheat/rumble
+  * Revert "Fix need_fullpath value in libretro API"
+
+-------------------------------------------------------------------
+Thu Oct 10 21:04:29 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial version
+
