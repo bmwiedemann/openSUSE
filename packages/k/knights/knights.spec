@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           knights
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
@@ -77,7 +77,7 @@ export CC=gcc-7
 export CXX=g++-7
 %endif
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
