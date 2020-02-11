@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-CELL
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-App-CELL
-Version:        0.222
+Version:        0.228
 Release:        0
 %define cpan_name App-CELL
 Summary:        Configuration, Error-handling, Localization, and Logging
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/App-CELL/
-Source0:        App-CELL-0.222.tar.gz
+Source0:        App-CELL-0.228.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -57,8 +57,8 @@ This is the top-level module of App::CELL, the Configuration,
 Error-handling, Localization, and Logging framework for applications (or
 scripts) written in Perl.
 
-For details, read the POD in the App::CELL distro. For an introduction,
-read App::CELL::Guide.
+For details, read the POD in the the App::CELL manpage distro. For an
+introduction, read the App::CELL::Guide manpage.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
