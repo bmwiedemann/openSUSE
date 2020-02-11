@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:14:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.0
+  * Add python -m pydata_google_auth CLI for working with user credentials
+
+-------------------------------------------------------------------
 Thu Jan 30 15:20:11 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.2.1
