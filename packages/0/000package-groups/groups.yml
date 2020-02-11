@@ -76,7 +76,6 @@ dvd:
   - patterns-devel-perl-devel_perl: [suggested]
   - patterns-devel-base-devel_rpm_build: [suggested]
   - patterns-devel-ruby-devel_ruby: [suggested]
-  - patterns-devel-base-devel_web: [suggested]
   - patterns-server-dhcp_dns_server: [suggested]
   - patterns-server-directory_server: [suggested]
   - patterns-base-enhanced_base: [suggested]
