@@ -84,4 +84,3 @@
 
 :post_install: |-
   %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/
-  chmod 644 %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/test/cgi/test.gz

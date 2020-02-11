@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack
-Version:        2.0.8
+Version:        2.1.2
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -65,11 +65,10 @@ Also see https://rack.github.io/.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="COPYING HISTORY.md README.rdoc" \
+  --doc-files="CHANGELOG.md MIT-LICENSE README.rdoc" \
   -f
 # MANUAL
 %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/
-chmod 644 %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/test/cgi/test.gz
 # /MANUAL
 
 %gem_packages

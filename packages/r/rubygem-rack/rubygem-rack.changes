@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 29 11:44:30 UTC 2020 - Daniel Donisa <daniel.donisa@suse.com>
+
+- updated to version 2.1.2 
+
+-------------------------------------------------------------------
+Mon Jan 27 11:28:34 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.1.1
+
+  * Remove Rack::Chunked from Rack::Server default middleware. (#1475, @ioquatix)
+  * Restore support for code relying on SessionId#to_s. (@jeremyevans)
+
+- non upstream changes
+
+  * removed the modification of the permissions for test/cgi/test.gz
+    during package build since it won't get installed anymore.
+
+-------------------------------------------------------------------
 Thu Dec 19 08:55:14 UTC 2019 - David Kang <dkang@suse.com>
 
 - updated to version 2.0.8
