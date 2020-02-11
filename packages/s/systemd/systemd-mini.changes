@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Feb  6 14:15:01 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit f8adabc2b1f3e3ad150e7a3bfa88341eda5a8a57 (merge v244.2)
+
+  77c04ce5c2 hwdb: update to v245-rc1
+  b4eb884824 Fix typo in function name
+  e2d4cb9843 polkit: when authorizing via PK let's re-resolve callback/userdata instead of caching it
+  83bfc0d8dd sd-bus: introduce API for re-enqueuing incoming messages
+  5926f9f172 polkit: use structured initialization
+  0697d0d972 polkit: on async pk requests, re-validate action/details
+  2589995acd polkit: reuse some common bus message appending code
+  5b2442d5c3 bus-polkit: rename return error parameter to ret_error
+  0a19ff7004 shared: split out polkit stuff from bus-util.c → bus-polkit.c
+  1325dfb577 test: adapt to the new capsh format
+  3538fafb47 meson: update efi path detection to gnu-efi-3.0.11
+  3034855a5b presets: "disable" all passive targets by default
+  c2e3046819 shared/sysctl-util: normalize repeated slashes or dots to a single value
+  6f4364046f dhcp6: do not use T1 and T2 longer than one provided by the lease
+  0ed6cda28d network: fix implicit type conversion warning by GCC-10
+  f6a5c02d26 bootspec: parse random-seed-mode line in loader.conf
+  ddc5dca8a7 sd-boot: fix typo
+  2bbbe9ae41 test: Synchronize journal before reading from it
+  072485d661 sd-bus: fix introspection bug in signal parameter names
+  80af3cf5e3 efi: fix build.
+  [...]
+
+-------------------------------------------------------------------
+Mon Feb  3 14:52:51 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Use suse.pool.ntp.org server pool on SLE (jsc#SLE-7683)
+
+-------------------------------------------------------------------
+Tue Jan 21 16:01:09 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop scripts-udev-convert-lib-udev-path.sh
+
+  Nobody should need it these days.
+
+-------------------------------------------------------------------
 Tue Jan 14 14:21:40 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Temporarily restore /sbin/{udevd,udevadm) obsolete symlinks

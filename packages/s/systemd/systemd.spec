@@ -1,7 +1,7 @@
 #
 # spec file for package systemd
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.58.g8254b8d964
+%define suse_version +suse.138.gf8adabc2b1
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -52,7 +52,7 @@
 %bcond_with     parentpathid
 
 Name:           systemd
-Url:            http://www.freedesktop.org/wiki/Software/systemd
+URL:            http://www.freedesktop.org/wiki/Software/systemd
 Version:        244
 Release:        0
 Summary:        A System and Session Manager
@@ -156,7 +156,6 @@ Source14:       kbd-model-map.legacy
 Source100:      scripts-systemd-fix-machines-btrfs-subvol.sh
 Source101:      scripts-systemd-upgrade-from-pre-210.sh
 Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
-Source200:      scripts-udev-convert-lib-udev-path.sh
 
 # Patches listed in here are put in quarantine. Normally all
 # changes must go to upstream first and then are cherry-picked in the
@@ -237,7 +236,7 @@ This library provides several of the systemd C APIs:
 Summary:        A rule-based device node and kernel event manager
 License:        GPL-2.0-only
 Group:          System/Kernel
-Url:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 Requires:       system-group-hardware
 Requires(post): sed
 Requires(post): coreutils
@@ -470,7 +469,11 @@ systemd-journal-remote, and systemd-journal-upload.
 %autopatch -p1
 
 %build
-opensuse_ntp_servers=({0..3}.opensuse.pool.ntp.org)
+%if 0%{?is_opensuse}
+ntp_servers=({0..3}.opensuse.pool.ntp.org)
+%else
+ntp_servers=({0..3}.suse.pool.ntp.org)
+%endif
 
 # keep split-usr until all packages have moved their systemd rules to /usr
 %meson \
@@ -486,7 +489,7 @@ opensuse_ntp_servers=({0..3}.opensuse.pool.ntp.org)
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
         -Ddefault-hierarchy=hybrid \
         -Ddefault-kill-user-processes=false \
-        -Dntp-servers="${opensuse_ntp_servers[*]}" \
+        -Dntp-servers="${ntp_servers[*]}" \
         -Drc-local=/etc/init.d/boot.local \
         -Ddebug-shell=/bin/bash \
         -Dseccomp=auto \
@@ -578,9 +581,6 @@ mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
 # allow directory structure...
 for s in %{S:100} %{S:101} %{S:102}; do
 	install -m0755 -D $s %{buildroot}%{_prefix}/lib/systemd/scripts/${s#*/scripts-systemd-}
-done
-for s in %{S:200}; do
-	install -m0755 -D $s %{buildroot}%{_prefix}/lib/udev/scripts/${s#*/scripts-udev-}
 done
 
 # Legacy sysvinit tools
@@ -866,7 +866,6 @@ systemctl daemon-reload || :
 
 %posttrans -n udev%{?mini}
 %regenerate_initrd_posttrans
-%{_prefix}/lib/udev/scripts/convert-lib-udev-path.sh || :
 
 %post -n libudev%{?mini}1 -p /sbin/ldconfig
 %post -n libsystemd0%{?mini} -p /sbin/ldconfig
@@ -1167,9 +1166,11 @@ fi
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
 
 %dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/dbus-1/system-services
 
+%{_datadir}/dbus-1/services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.locale1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.login1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.systemd1.conf
@@ -1199,6 +1200,7 @@ fi
 %exclude %{_datadir}/systemd/gatewayd
 %endif
 
+%{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
@@ -1328,7 +1330,6 @@ fi
 %exclude %{_udevrulesdir}/99-systemd.rules
 %{_udevrulesdir}/*.rules
 %{_udevhwdbdir}/
-%{_prefix}/lib/udev/scripts/
 %dir %{_sysconfdir}/udev/
 %dir %{_sysconfdir}/udev/rules.d/
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
