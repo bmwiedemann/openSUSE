@@ -1,7 +1,7 @@
 #
 # spec file for package julia
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,19 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define julia_ver            1.2.0
+%define julia_ver            1.3.1
 %define libjulia_sover_major 1
-%define libjulia_sover_minor 2
-%define libuv_ver    2348256acf5759a544e5ca7935f638d2bc091d60
+%define libjulia_sover_minor 3
+%define libuv_ver    35b1504507a7a4168caae3d78db54d1121b121e1
 %define libwhich_ver 81e9723c0273d78493dc8c8ed570f68d9ce7e89e
-%define pkg_ver      394e7c5d55d3722f5b2ab660ca0a694ea0041974
-%define utf8proc_ver 454f60150c7f023526d353e1e6b386f93ee0b116
+%define pkg_ver      f71e2c5a119b9c850f9b357fc8c56068f5b51cc0
+%define openlibm_ver ce69bf1f32d3e2e9791da36c9e33ba38670d5576
+%define utf8proc_ver 5c632c57426f2e4246e3b64dd2fd088d3920f9e5
 %define llvm_ver     6.0.1
 %define compat_mode  1
 %define src_name     julia-tarball
 %define libgit2_ver  %(rpm -qa | grep -E "^libgit2-[0-9]" | head -n1 | cut -d'-' -f2)
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{julia_ver}/julia-%{julia_ver}.tar.gz
@@ -44,6 +45,7 @@ Source11:       https://api.github.com/repos/vtjnash/libwhich/tarball/%{libwhich
 Source12:       https://api.github.com/repos/JuliaLang/utf8proc/tarball/%{utf8proc_ver}#/utf8proc-%{utf8proc_ver}.tar.gz
 Source13:       https://llvm.org/releases/%{llvm_ver}/llvm-%{llvm_ver}.src.tar.xz
 Source14:       https://api.github.com/repos/JuliaLang/Pkg.jl/tarball/%{pkg_ver}#/Pkg-%{pkg_ver}.tar.gz
+Source15:       https://api.github.com/repos/JuliaMath/openlibm/tarball/%{openlibm_ver}#/openlibm-%{openlibm_ver}.tar.gz
 Source99:       juliabuildopts
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch0:         julia-env-script-interpreter.patch
@@ -59,23 +61,24 @@ BuildRequires:  gcc-fortran
 BuildRequires:  gmp-devel >= 6.1.2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lapack-devel >= 3.5.0
-BuildRequires:  libgit2-devel
-BuildRequires:  libopenblas_openmp-devel >= 0.2.19
-BuildRequires:  libunwind-devel > 1.1
+BuildRequires:  libgit2-devel >= 0.28.2
+BuildRequires:  libopenblas_openmp-devel >= 0.3.5
+BuildRequires:  libssh2-devel >= 1.9.0
+BuildRequires:  libunwind-devel >= 1.3.1
 BuildRequires:  m4
-BuildRequires:  mpfr-devel >= 4.0.1
+BuildRequires:  mbedtls-devel >= 2.16.0
+BuildRequires:  mpfr-devel >= 4.0.2
 BuildRequires:  ncurses-devel
-BuildRequires:  openlibm-devel
 BuildRequires:  openspecfun-devel
 BuildRequires:  openssl
 BuildRequires:  patchelf >= 0.9
-BuildRequires:  pcre2-devel >= 10.30
+BuildRequires:  pcre2-devel >= 10.31
 BuildRequires:  perl
 BuildRequires:  python >= 2.5
 BuildRequires:  readline-devel
-BuildRequires:  suitesparse-devel >= 4.4.5
+BuildRequires:  suitesparse-devel >= 5.4.0
 BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
+BuildRequires:  zlib-devel >= 1.2.11
 Requires:       libamd2
 Requires:       libarpack2
 Requires:       libcamd2
@@ -87,18 +90,18 @@ Requires:       libfftw3_threads3
 Requires:       libgit2-%{libgit2_ver}
 Requires:       libgmp10
 Requires:       libmpfr6
-Requires:       libopenblas_openmp0 >= 0.2.19
+Requires:       libopenblas_openmp0 >= 0.3.5
 Requires:       libpcre2-8-0
 Requires:       libspqr2
 Requires:       libsuitesparseconfig5
 Requires:       libumfpack5
 Requires:       ncurses
+Requires:       p7zip >= 16
 Requires:       readline
 Recommends:     arpack-ng-devel
 Recommends:     git
 Recommends:     gmp-devel
 Recommends:     mpfr-devel
-Recommends:     openlibm-devel
 Recommends:     openspecfun-devel
 Recommends:     pcre2-devel
 Recommends:     suitesparse-devel
@@ -192,6 +195,7 @@ cp %{SOURCE11} ./
 cp %{SOURCE12} ./
 cp %{SOURCE13} ./
 cp %{SOURCE14} ./
+cp %{SOURCE15} ./
 popd
 popd
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 20:03:23 UTC 2020 - Ronan Chagas <ronisbr@gmail.com>
+
+- Version bump to 1.3.1, see NEWS.md for details.
+- Add p7zip as build dependency.
+- Bundle openlibm since Tumbleweed does not have the required
+  version (0.6).
+- Bump bundled dependencies as required by the new v1.3.1.
+    * Pkg.jl: f71e2c5a119b9c850f9b357fc8c56068f5b51cc0
+    * libuv: 35b1504507a7a4168caae3d78db54d1121b121e1
+    * openlibm: ce69bf1f32d3e2e9791da36c9e33ba38670d5576
+    * utf8proc: 5c632c57426f2e4246e3b64dd2fd088d3920f9e5
+
+-------------------------------------------------------------------
 Mon Sep 23 16:48:44 UTC 2019 - Ronan Chagas <ronisbr@gmail.com>
 
 - Add option `USE_LLVM_SHLIB=1` to fix boo#1114692.
