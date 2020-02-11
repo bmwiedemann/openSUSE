@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:36:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.2
+- Too many changes since 19.12.1, only listing bugfixes:
+  * limit the rate with which progress is sent via MPRIS (kde#416179)
+  * disable playlist animations to fix display corruption (kde#398093)
+  * allow database to contain and get tracks without metadata (kde#415180)
+  * fix problems with wrong type passed from qml to c++ (kde#415827)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:00:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.12.1

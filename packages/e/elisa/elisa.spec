@@ -20,7 +20,7 @@
 %define kf5_version 5.48.0
 %bcond_without lang
 Name:           elisa
-Version:        19.12.1
+Version:        19.12.2
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -86,7 +86,7 @@ built and played.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
