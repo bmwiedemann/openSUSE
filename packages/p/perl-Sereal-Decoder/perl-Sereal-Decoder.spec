@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sereal-Decoder
-Version:        4.009
+Version:        4.011
 Release:        0
 %define cpan_name Sereal-Decoder
 Summary:        Binary serialization module for Perl (decoder part)
