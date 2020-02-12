@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200210" schemaversion="4.1">
+<image name="OBS__openSUSE___20200211" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200210</productvar>
+      <productvar name="VERSION">20200211</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200210,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200211,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200210/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200211/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -560,7 +560,6 @@
       <repopackage name="fillup"/>
       <repopackage name="findutils"/>
       <repopackage name="findutils-lang"/>
-      <repopackage name="fipscheck" arch="x86_64"/>
       <repopackage name="firebird"/>
       <repopackage name="firewalld"/>
       <repopackage name="firewalld-lang"/>
@@ -1214,7 +1213,7 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-devel"/>
+      <repopackage name="kernel-default-devel" arch="x86_64"/>
       <repopackage name="kernel-devel"/>
       <repopackage name="kernel-docs"/>
       <repopackage name="kernel-firmware-all"/>
@@ -1249,7 +1248,6 @@
       <repopackage name="kernel-firmware-usb-network"/>
       <repopackage name="kernel-macros"/>
       <repopackage name="kernel-source"/>
-      <repopackage name="kernel-syms" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils"/>
       <repopackage name="kf5-kcm-fcitx"/>
@@ -1796,7 +1794,6 @@
       <repopackage name="libfftw3_threads3"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind4_0"/>
-      <repopackage name="libfipscheck1" arch="x86_64"/>
       <repopackage name="libfl-devel"/>
       <repopackage name="libfl2"/>
       <repopackage name="libFLAC++6"/>
@@ -4009,8 +4006,6 @@
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="permissions-doc"/>
-      <repopackage name="pesign" arch="x86_64"/>
-      <repopackage name="pesign-obs-integration" arch="x86_64"/>
       <repopackage name="pfscalibration"/>
       <repopackage name="pfstmo"/>
       <repopackage name="pfstools"/>
@@ -4840,6 +4835,7 @@
       <repopackage name="ruby2.6-rubygem-rack-1_3"/>
       <repopackage name="ruby2.6-rubygem-rack-1_4"/>
       <repopackage name="ruby2.6-rubygem-rack-1_6"/>
+      <repopackage name="ruby2.6-rubygem-rack-2.0"/>
       <repopackage name="ruby2.6-rubygem-rack-accept"/>
       <repopackage name="ruby2.6-rubygem-rack-cache-1_2"/>
       <repopackage name="ruby2.6-rubygem-rack-oauth2"/>
@@ -5339,6 +5335,7 @@
       <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
+      <repopackage name="typelib-1_0-XApp-1_0"/>
       <repopackage name="typelib-1_0-Zpj-0_0"/>
       <repopackage name="ucode-amd"/>
       <repopackage name="ucode-intel"/>

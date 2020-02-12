@@ -1115,6 +1115,7 @@ unsorted:
   - bff 
   - bff-samples 
   - bff4 
+  - bgzip 
   - biabam 
   - biblesync-devel 
   - bibletime 
@@ -3030,7 +3031,7 @@ unsorted:
   - finger-server 
   - fio 
   - fips 
-  - fipscheck: [i586] 
+  - fipscheck 
   - fipscheck-devel 
   - firebird-doc 
   - firebird-examples 
@@ -5420,6 +5421,7 @@ unsorted:
   - html2text 
   - htmldoc 
   - htop 
+  - htsfile 
   - http-builder 
   - http-builder-javadoc 
   - http-parser-devel 
@@ -6410,6 +6412,7 @@ unsorted:
   - kernel-debug-devel 
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
+  - kernel-default-devel: [i586] # devel package of dvd:kernel-default 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
@@ -6419,7 +6422,7 @@ unsorted:
   - kernel-pae: [i586] 
   - kernel-pae-devel: [i586] 
   - kernel-source-vanilla 
-  - kernel-syms: [i586] 
+  - kernel-syms 
   - kernel-vanilla 
   - kernel-vanilla-devel 
   - ketchup 
@@ -8890,7 +8893,7 @@ unsorted:
   - libfinal-devel 
   - libfinal-examples 
   - libfinal0 
-  - libfipscheck1: [i586] 
+  - libfipscheck1 
   - libfipscheck1-32bit: [x86_64] 
   - libfishsound-devel 
   - libfishsound1 
@@ -9541,6 +9544,10 @@ unsorted:
   - libhssi-io1: [x86_64] 
   - libhtp-devel 
   - libhtp2 
+  - libhts-devel 
+  - libhts-devel-32bit: [x86_64] 
+  - libhts3 
+  - libhts3-32bit: [x86_64] 
   - libhttp_parser2_7_1-32bit: [x86_64] 
   - libhttrack2 
   - libhubbub-devel 
@@ -10538,7 +10545,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb6_2 
+  - libopenvdb7_0 
   - libopenvswitch-2_12-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
@@ -11341,15 +11348,50 @@ unsorted:
   - libressl-devel-doc 
   - librest-0_7-0-32bit: [x86_64] 
   - librest-devel 
+  - libretro-2048 
+  - libretro-3dengine 
+  - libretro-81 
+  - libretro-atari800 
+  - libretro-beetle-gba 
+  - libretro-beetle-lynx 
+  - libretro-beetle-ngp 
+  - libretro-beetle-pce-fast 
+  - libretro-beetle-pcfx 
+  - libretro-beetle-psx 
+  - libretro-beetle-psx-hw 
+  - libretro-beetle-saturn 
+  - libretro-beetle-supergrafx 
+  - libretro-beetle-vb 
+  - libretro-beetle-wswan 
+  - libretro-blastem: [x86_64] 
+  - libretro-bluemsx 
   - libretro-bsnes 
+  - libretro-cap32 
   - libretro-core-info 
+  - libretro-craft 
+  - libretro-crocods 
   - libretro-database 
+  - libretro-desmume 
+  - libretro-dosbox 
+  - libretro-easyrpg 
+  - libretro-fceumm 
+  - libretro-flycast 
+  - libretro-freechaf 
+  - libretro-freeintv 
+  - libretro-fuse 
   - libretro-gambatte 
   - libretro-gtk-0_14-0 
+  - libretro-handy 
   - libretro-mgba 
+  - libretro-nestopia 
+  - libretro-parallel-n64 
   - libretro-pcsx-rearmed 
   - libretro-pcsx_rearmed 
   - libretro-play 
+  - libretro-ppsspp 
+  - libretro-prosystem 
+  - libretro-virtualjaguar 
+  - libretro-yabause 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -13218,6 +13260,7 @@ unsorted:
   - matomo 
   - matrix-quaternion 
   - matrix-quaternion-lang 
+  - matrix-synapse 
   - matthewlib-java 
   - matthewlib-java-javadoc 
   - maven 
@@ -16281,6 +16324,7 @@ unsorted:
   - perl-File-Flock 
   - perl-File-HomeDir 
   - perl-File-LibMagic 
+  - perl-File-Map 
   - perl-File-MimeInfo 
   - perl-File-Mork 
   - perl-File-Next 
@@ -16633,6 +16677,7 @@ unsorted:
   - perl-Perl-PrereqScanner 
   - perl-Perl-Version 
   - perl-Perl6-Junction 
+  - perl-PerlIO-Layers 
   - perl-PerlIO-gzip 
   - perl-PerlIO-locale 
   - perl-PerlIO-utf8_strict 
@@ -16992,8 +17037,8 @@ unsorted:
   - permissions-zypp-plugin 
   - permlib-devel 
   - perseus-sdr-tools 
-  - pesign: [i586] 
-  - pesign-obs-integration: [i586] 
+  - pesign 
+  - pesign-obs-integration 
   - petsc-devel 
   - petsc-doc 
   - petsc-gnu-mpich-hpc-devel 
@@ -17962,6 +18007,7 @@ unsorted:
   - python2-Cheetah3 
   - python2-CommonMark 
   - python2-Cython 
+  - python2-DataProperty 
   - python2-DataShape 
   - python2-DateTime 
   - python2-Delorean 
@@ -18162,6 +18208,7 @@ unsorted:
   - python2-akismet 
   - python2-alabaster 
   - python2-alembic 
+  - python2-allpairspy 
   - python2-alsa 
   - python2-altgraph 
   - python2-amqp 
@@ -18917,6 +18964,7 @@ unsorted:
   - python2-humanfriendly 
   - python2-humanhash3 
   - python2-humanize 
+  - python2-humanreadable 
   - python2-hupper 
   - python2-husl 
   - python2-hyper 
@@ -19348,6 +19396,7 @@ unsorted:
   - python2-pika 
   - python2-pika-pool 
   - python2-pilkit 
+  - python2-pingparsing 
   - python2-pip 
   - python2-pip-api 
   - python2-pip-licenses 
@@ -20230,6 +20279,7 @@ unsorted:
   - python3-CherryPy 
   - python3-CommonMark 
   - python3-Cython 
+  - python3-DataProperty 
   - python3-DataShape 
   - python3-DateTime 
   - python3-Delorean 
@@ -20458,6 +20508,7 @@ unsorted:
   - python3-aiorpcX 
   - python3-aiosmtplib 
   - python3-akismet 
+  - python3-allpairspy 
   - python3-alsa 
   - python3-altair 
   - python3-altair-widgets 
@@ -21347,6 +21398,7 @@ unsorted:
   - python3-humanfriendly 
   - python3-humanhash3 
   - python3-humanize 
+  - python3-humanreadable 
   - python3-hupper 
   - python3-husl 
   - python3-hvplot 
@@ -21643,7 +21695,6 @@ unsorted:
   - python3-matplotlib-tk 
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
-  - python3-matrix-synapse 
   - python3-matrix-synapse-ldap3 
   - python3-maxminddb 
   - python3-mbstrdecoder 
@@ -21925,6 +21976,7 @@ unsorted:
   - python3-pika 
   - python3-pika-pool 
   - python3-pilkit 
+  - python3-pingparsing 
   - python3-pip-api 
   - python3-pip-licenses 
   - python3-pip-shims 
@@ -23857,6 +23909,7 @@ unsorted:
   - ruby2.6-rubygem-rack-doc-1_3 
   - ruby2.6-rubygem-rack-doc-1_4 
   - ruby2.6-rubygem-rack-doc-1_6 
+  - ruby2.6-rubygem-rack-doc-2.0 
   - ruby2.6-rubygem-rack-oauth2-doc 
   - ruby2.6-rubygem-rack-oauth2-testsuite 
   - ruby2.6-rubygem-rack-protection-doc 
@@ -23866,10 +23919,10 @@ unsorted:
   - ruby2.6-rubygem-rack-ssl-doc-1_3 
   - ruby2.6-rubygem-rack-test-doc-0_6 
   - ruby2.6-rubygem-rack-test-testsuite-0_6 
-  - ruby2.6-rubygem-rack-testsuite 
   - ruby2.6-rubygem-rack-testsuite-1_3 
   - ruby2.6-rubygem-rack-testsuite-1_4 
   - ruby2.6-rubygem-rack-testsuite-1_6 
+  - ruby2.6-rubygem-rack-testsuite-2.0 
   - ruby2.6-rubygem-rails-deprecated_sanitizer-doc 
   - ruby2.6-rubygem-rails-deprecated_sanitizer-testsuite 
   - ruby2.6-rubygem-rails-doc-5.2 
@@ -24497,6 +24550,7 @@ unsorted:
   - sipp 
   - siproxd 
   - siproxd-doc 
+  - sipsak 
   - sisctrl 
   - sispmctl 
   - sispmctl-devel 
@@ -24829,6 +24883,7 @@ unsorted:
   - stdman 
   - steamtricks 
   - steamtricks-data 
+  - steinberg-bravura-fonts 
   - stellarium 
   - stgit 
   - stix-integrals-fonts 
@@ -25042,6 +25097,7 @@ unsorted:
   - t-prot 
   - t1utils 
   - t38modem 
+  - tabix 
   - tachyon 
   - tagbanwa-fonts 
   - taglib 
@@ -33015,7 +33071,6 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
-  - typelib-1_0-XApp-1_0 
   - typelib-1_0-Xkl-1_0 
   - typelib-1_0-Xmlb-1_0 
   - typelib-1_0-XplayerPlParser-1_0 
@@ -34167,6 +34222,7 @@ unsorted:
   - zathura-lang 
   - zathura-plugin-cb 
   - zathura-plugin-djvu 
+  - zathura-plugin-pdf-mupdf: [i586] 
   - zathura-plugin-pdf-poppler 
   - zathura-plugin-ps 
   - zathura-zsh-completion 
