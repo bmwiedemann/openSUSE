@@ -3031,7 +3031,7 @@ unsorted:
   - finger-server 
   - fio 
   - fips 
-  - fipscheck 
+  - fipscheck: [i586] 
   - fipscheck-devel 
   - firebird-doc 
   - firebird-examples 
@@ -6412,7 +6412,6 @@ unsorted:
   - kernel-debug-devel 
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
-  - kernel-default-devel: [i586] # devel package of dvd:kernel-default 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
@@ -6422,7 +6421,7 @@ unsorted:
   - kernel-pae: [i586] 
   - kernel-pae-devel: [i586] 
   - kernel-source-vanilla 
-  - kernel-syms 
+  - kernel-syms: [i586] 
   - kernel-vanilla 
   - kernel-vanilla-devel 
   - ketchup 
@@ -8893,7 +8892,7 @@ unsorted:
   - libfinal-devel 
   - libfinal-examples 
   - libfinal0 
-  - libfipscheck1 
+  - libfipscheck1: [i586] 
   - libfipscheck1-32bit: [x86_64] 
   - libfishsound-devel 
   - libfishsound1 
@@ -11372,6 +11371,7 @@ unsorted:
   - libretro-crocods 
   - libretro-database 
   - libretro-desmume 
+  - libretro-dolphin: [x86_64] 
   - libretro-dosbox 
   - libretro-easyrpg 
   - libretro-fceumm 
@@ -17037,8 +17037,8 @@ unsorted:
   - permissions-zypp-plugin 
   - permlib-devel 
   - perseus-sdr-tools 
-  - pesign 
-  - pesign-obs-integration 
+  - pesign: [i586] 
+  - pesign-obs-integration: [i586] 
   - petsc-devel 
   - petsc-doc 
   - petsc-gnu-mpich-hpc-devel 
@@ -34222,7 +34222,7 @@ unsorted:
   - zathura-lang 
   - zathura-plugin-cb 
   - zathura-plugin-djvu 
-  - zathura-plugin-pdf-mupdf: [i586] 
+  - zathura-plugin-pdf-mupdf 
   - zathura-plugin-pdf-poppler 
   - zathura-plugin-ps 
   - zathura-zsh-completion 
