@@ -1,7 +1,7 @@
 #
 # spec file for package flxmlrpc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           flxmlrpc
 Version:        0.1.4
 Release:        0
 Summary:        An implementation of the XMLRPC protocol
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
-Url:            https://sourceforge.net/projects/fldigi/
+URL:            https://sourceforge.net/projects/fldigi/
 #Git-Clone:     https://git.code.sf.net/p/fldigi/flxmlrpc
 Source:         http://downloads.sourceforge.net/project/fldigi/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
@@ -67,7 +67,7 @@ sed -i 's/\r$//' COPYING
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -77,12 +77,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libflxmlrpc%{sover} -p /sbin/ldconfig
 
 %files -n libflxmlrpc%{sover}
-%defattr(-,root,root)
-%doc README COPYING AUTHORS NEWS
+%license COPYING
+%doc README AUTHORS NEWS
 %{_libdir}/libflxmlrpc.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/flxmlrpc
 %{_libdir}/libflxmlrpc.so
 %{_libdir}/pkgconfig/flxmlrpc.pc

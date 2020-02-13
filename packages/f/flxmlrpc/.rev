@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>505008</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f72844b3185dd115ab6013afec6dd04</srcmd5>
+    <version>0.1.4</version>
+    <time>1581585126</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package modernisation</comment>
+    <requestid>773687</requestid>
+  </revision>
 </revisionlist>
