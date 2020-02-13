@@ -1,7 +1,7 @@
 #
 # spec file for package vm-install
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,19 @@ BuildRequires:  update-desktop-files
 %endif
 # For directory ownership:
 BuildRequires:  yast2
-Version:        0.10.07
+Version:        0.10.08
 Release:        0
 Summary:        Tool to Define a Virtual Machine and Install Its Operating System
 License:        GPL-2.0
 Group:          System/Emulators/PC
-Source0:        %{name}-0.10.07.tar.bz2
+Source0:        %{name}-0.10.08.tar.bz2
 Source1:        vm-install.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       kdump
 Requires:       python3-dbus-python
 Requires:       python3-libvirt-python
 Requires:       python3-libxml2-python
+Requires:       python3-netifaces
 Requires:       python3-pycurl
 %if %suse_version > 1230
 Requires:       qemu-tools

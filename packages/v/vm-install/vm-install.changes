@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:32:48 MST 2020 - carnold@suse.com
+
+- bsc#1163183 - vm-install: Parsing error acquiring bridge names
+- Add Requires python3-netifaces to spec file
+- Add winserver2019 support
+- Version 0.10.08
+
+-------------------------------------------------------------------
 Tue Jun 25 10:27:13 MDT 2019 - carnold@suse.com
 
 - bsc#1139355 - vm-install: The use of the 'builder' option in the

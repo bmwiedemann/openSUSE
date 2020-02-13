@@ -1305,4 +1305,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>713099</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>b11c8d49c346661ef168ee5a07006d1b</srcmd5>
+    <version>0.10.08</version>
+    <time>1581585214</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1163183 parsing bridge names. Also added support for winserver2019</comment>
+    <requestid>774040</requestid>
+  </revision>
 </revisionlist>
