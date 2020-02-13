@@ -24,7 +24,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        1.9.9
+Version:        1.9.12
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
+BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(dee-1.0)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
@@ -115,7 +115,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       ffmpeg
 Requires:       hicolor-icon-theme
 Requires:       icu
-Requires:       libappindicator1
 Requires:       openssl
 ExclusiveArch:  x86_64
 
@@ -145,8 +144,11 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
       -DTDESKTOP_API_HASH=98a22f733eac40f1bd187a30d19271de \
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
       -DDESKTOP_APP_USE_PACKAGED=ON \
+      -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
+      -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF \
       -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
       -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
+      -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_DISABLE_AUTOUPDATE=ON \
