@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 04 12:20:43 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20200204:
+  * mariadb: settings for new auth_pam_tool (bsc#1160285)
+  * chkstat:
+    - add read-only fallback when /proc is not mounted (bsc#1160764)
+    - capability handling fixes (bsc#1161779)
+    - better error message when refusing to fix dir perms (#32)
+
+-------------------------------------------------------------------
+Mon Jan 27 11:58:17 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200127:
+  * fix paths of ksysguard whitelisting
+  * fix zero-termination of error message for overly long paths
+
+-------------------------------------------------------------------
 Thu Dec 05 14:31:49 UTC 2019 - malte.kraus@suse.com
 
 - Update to version 20191205:

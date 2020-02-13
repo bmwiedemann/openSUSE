@@ -1114,4 +1114,21 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * faxq-helper: correct &quot;secure&quot; permission for trusted group (bsc#1157498)</comment>
     <requestid>754442</requestid>
   </revision>
+  <revision rev="130" vrev="10">
+    <srcmd5>50c118c706a4a8e3ba46816d9cf91804</srcmd5>
+    <version>unknown</version>
+    <time>1581585050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200204:
+  * mariadb: settings for new auth_pam_tool (bsc#1160285)
+  * chkstat:
+    - add read-only fallback when /proc is not mounted (bsc#1160764)
+    - capability handling fixes (bsc#1161779)
+    - better error message when refusing to fix dir perms (#32)
+
+- Update to version 20200127:
+  * fix paths of ksysguard whitelisting
+  * fix zero-termination of error message for overly long paths</comment>
+    <requestid>769971</requestid>
+  </revision>
 </revisionlist>
