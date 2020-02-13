@@ -2,7 +2,7 @@
 #
 # spec file for package etckeeper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Mitsutoshi NAKANO <bkbin005@rinku.zaq.ne.jp>
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -34,7 +34,7 @@
 %define make_args systemddir=%{_unitdir} PYTHON=%{python_versioned} %{python_args}
 
 Name:           etckeeper
-Version:        1.18.8
+Version:        1.18.14
 Release:        0
 Summary:        Store /etc under Version Control
 License:        GPL-2.0-or-later
@@ -43,7 +43,7 @@ Source:         https://git.joeyh.name/index.cgi/etckeeper.git/snapshot/%{name}-
 # PATCH-FIX-UPSTREAM etckeeper-avoid-packagelist.patch gh#joeyh/etckeeper#17 bkbin005@rinku.zaq.ne.jp -- add AVOID_PACKAGELIST
 Patch0:         etckeeper-avoid-packagelist.patch
 Patch1:         etckeeper-set-package-manager.patch
-Url:            http://etckeeper.branchable.com/
+URL:            http://etckeeper.branchable.com/
 %if ! %{with bzr}
 BuildArch:      noarch
 %endif
@@ -130,6 +130,14 @@ Requires:       etckeeper = %{version}-%{release}
 %description bash-completion
 Bash command line completion support for %{name}.
 
+%package zsh-completion
+Summary:        The zsh completion for etckeeper
+Group:          System/Shells
+Requires:       etckeeper = %{version}-%{release}
+
+%description zsh-completion
+zsh command line completion support for %{name}.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -187,6 +195,11 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/etckeeper
+
+%files zsh-completion
+%{_datadir}/zsh
+%{_datadir}/zsh/vendor-completions
+%{_datadir}/zsh/vendor-completions/_etckeeper
 
 %files zypp-plugin
 %{_prefix}/lib/zypp/plugins/commit/zypper-etckeeper.py

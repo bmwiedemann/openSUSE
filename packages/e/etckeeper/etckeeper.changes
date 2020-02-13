@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:28:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix spec file 
+
+-------------------------------------------------------------------
+Tue Feb  4 07:37:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.18.14:
+  * pacman 5.2 deprecated File hooks, use Path.
+    Thanks, Christian Hesse
+  * Fix vcs subcommand setup for zsh completion.
+    Thanks, James Rowe.
+  * Added zsh completion.
+    Thanks, James Rowe
+  * commit: Recent changes added code that does not work on all POSIX shells.
+    Fixed by Thorsten Glaser.
+  * Fix bug in hostname determination in the previous release.
+    Thanks, Christian Hesse
+  * Support platforms without a hostname command, fall back to 
+    reading /etc/hostname.
+    Thanks, Chris Morgan
+  * commit: Support -mmessage, without a space, since eg git commit
+    can be used that way.
+    Thanks, martin f. krafft
+  * commit: When multiple parameters are given, use them all as the commit
+    message, instead of the old behavior of only using the first parameter and
+    throwing the rest away.
+    Thanks, martin f. krafft
+  * Avoid post-install failing when ps is from busybox or another
+    version not supporting procps-specific options.
+  * Use ps --no-headers rather than problimatic -h option.
+  * When run during a package installation, include in the commit
+    message the command line that caused etckeeper to run.
+    Thanks, Laszlo Gombos 
+
+-------------------------------------------------------------------
 Tue Oct  2 09:38:10 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove idempotent %if..%endif guards.
