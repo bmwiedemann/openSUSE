@@ -256,4 +256,12 @@
     <comment>- Disable test_large_stdout_stream as it randomly fails</comment>
     <requestid>730119</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>2cb2c33a0e08fdeb170dabe9e53445b2</srcmd5>
+    <version>4.7.0</version>
+    <time>1581585056</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test test_pager_as_cat as it pulls additional deps</comment>
+    <requestid>770497</requestid>
+  </revision>
 </revisionlist>

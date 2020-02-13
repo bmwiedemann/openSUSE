@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 10:09:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable test test_pager_as_cat as it pulls additional deps
+
+-------------------------------------------------------------------
 Wed Sep 11 11:50:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable test_large_stdout_stream as it randomly fails

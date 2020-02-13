@@ -1,7 +1,7 @@
 #
 # spec file for package python-pexpect
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,8 @@ find examples -type f -name "*.cgi" -exec sed -i "s|##!%{_bindir}/env python|##!
 export LANG=en_US.UTF-8
 # test_bash https://github.com/pexpect/pexpect/issues/568
 # test_large_stdout_stream - random
-%pytest -k 'not test_bash and not test_large_stdout_stream'
+# test_pager_as_cat - needs manpages that would pull extra deps
+%pytest -k 'not test_bash and not test_large_stdout_stream and not test_pager_as_cat'
 
 %files %{python_files}
 %license LICENSE
