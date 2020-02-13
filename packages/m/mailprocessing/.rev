@@ -44,4 +44,18 @@ continued that tradition.</comment>
   * Various documentation and release engineering fixes/cleanups</comment>
     <requestid>712271</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a48e77cc2ecc2eefb632d91dbbef6a67</srcmd5>
+    <version>1.2.7</version>
+    <time>1581585149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mailprocessing-1.2.7
+  * imapproc: fix crash when attempting to query message flags on empty folders
+  * maildirproc: catch and log ENOENT when moving to a nonexistent target folder
+  * maildirproc: logging improvements/fixes
+  * maildirproc: fix handling of '/' as separator
+  * Various test fixes and flake8 cleanups (test suite still non-functional)
+  * Fix clean target in Makefile on MacOS</comment>
+    <requestid>773711</requestid>
+  </revision>
 </revisionlist>

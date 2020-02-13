@@ -1,7 +1,7 @@
 #
 # spec file for package mailprocessing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mailprocessing
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Maildir and IMAP processor/filter using Python 3x as its configuration language
 License:        GPL-2.0-only
