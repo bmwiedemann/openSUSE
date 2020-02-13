@@ -1,7 +1,7 @@
 #
 # spec file for package owncloud-client
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           owncloud-client
 
-Version:        2.6.0.13018 
+Version:        2.6.1.13407 
 Release:        0
 
 Summary:        The ownCloud synchronization client

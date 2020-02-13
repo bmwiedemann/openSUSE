@@ -186,4 +186,16 @@
     <comment></comment>
     <requestid>751731</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b08929b0daaa4fe19d257e6b204832bf</srcmd5>
+    <version>2.6.1.13407</version>
+    <time>1581585062</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed some unused parts from tarball as described in README.
+
+- update to 2.6.1, a bugfix release for 2.6.0 with little improvements
+  as well.
+  Changelog: https://github.com/owncloud/client/releases/tag/v2.6.1</comment>
+    <requestid>773523</requestid>
+  </revision>
 </revisionlist>
