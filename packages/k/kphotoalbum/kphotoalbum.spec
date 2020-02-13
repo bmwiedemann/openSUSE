@@ -17,15 +17,13 @@
 
 
 Name:           kphotoalbum
-Version:        5.6
+Version:        5.6.1
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.kphotoalbum.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch:          Fix-crash-when-associating-a-tag-with-an-area.patch
 BuildRequires:  cmake >= 3.2.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -66,7 +64,6 @@ an image from a special place, or even both.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %cmake_kf5 -d build

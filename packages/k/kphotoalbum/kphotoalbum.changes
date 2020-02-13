@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:35:50 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.6.1
+  * Bugfix: Fix crash when associating tags with image areas
+    (kde#417360)
+- Drop Fix-crash-when-associating-a-tag-with-an-area.patch, merged
+  upstream
+
+-------------------------------------------------------------------
 Mon Feb 10 08:54:45 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.6
