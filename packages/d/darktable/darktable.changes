@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 15:15:45 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update the documentation to 3.0
+
+-------------------------------------------------------------------
 Tue Jan 28 16:04:17 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix the RPATH which is broken because of an invalid cmake macro

@@ -61,10 +61,11 @@ Release:        0
 %define pkg_version 3.0.0
 URL:            http://www.darktable.org/
 Source0:        %{pkg_name}-%{pkg_version}.tar.xz
-Source1:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual.pdf
-Source2:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual-de.pdf
-Source3:        https://github.com/darktable-org/darktable/releases/download/release-2.6.1/darktable-usermanual-it.pdf
-Source4:        https://github.com/darktable-org/darktable/releases/download/release-2.0.0/darktable-lua-api.pdf
+Source1:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual.pdf
+Source2:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-de.pdf
+Source3:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-it.pdf
+Source4:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-fr.pdf
+Source5:        https://github.com/darktable-org/darktable/releases/download/release-2.0.0/darktable-lua-api.pdf
 Source96:       %{pkg_name}-%{pkg_version}.tar.xz.asc
 Source97:       darktable.dsc
 Source98:       debian.tar.xz
@@ -204,7 +205,7 @@ This package provides the user manual in PDF format.
 %prep
 %autosetup -p1 -n %{pkg_name}-%{version}
 
-cp %{S:1} %{S:2} %{S:3} %{S:4} .
+cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
 cp %{S:99} .
 
 # Remove bundled OpenCL headers.
