@@ -107,4 +107,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- update to 1.9.1</comment>
     <requestid>773516</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da9c6e8ea1cb01f65a8b30258ce86661</srcmd5>
+    <version>1.10.0</version>
+    <time>1581585153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773873</requestid>
+  </revision>
 </revisionlist>

@@ -9,7 +9,7 @@
     <param name="versionrewrite-pattern">v([\.\d]+)(rc.*)</param>
     <param name="versionrewrite-replacement">\1~\2</param>
     -->
-    <param name="revision">v1.9.1</param>
+    <param name="revision">v1.10.0</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service name="tar" mode="buildtime"/>

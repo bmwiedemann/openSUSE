@@ -46,7 +46,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -116,8 +116,8 @@ BuildRequires:  python3-pymacaroons >= 0.13.0
 Requires:       python3-pymacaroons >= 0.13.0
 BuildRequires:  python3-service_identity >= 18.1.0
 Requires:       python3-service_identity >= 18.1.0
-BuildRequires:  python3-signedjson >= 1.0.0
-Requires:       python3-signedjson >= 1.0.0
+BuildRequires:  python3-signedjson >= 1.1.0
+Requires:       python3-signedjson >= 1.1.0
 BuildRequires:  python3-six >= 1.10
 Requires:       python3-six >= 1.10
 BuildRequires:  python3-sortedcontainers >= 1.4.4

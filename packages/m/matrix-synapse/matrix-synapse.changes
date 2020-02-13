@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Feb 12 16:01:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump requires on python3-signedjson to follow code change
+
+-------------------------------------------------------------------
+Wed Feb 12 13:51:08 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.10.0.
+
+  WARNING to client developers: As of this release Synapse validates
+  client_secret parameters in the Client-Server API as per the spec. See #6766
+  for details.
+
+  + Add experimental support for updated authorization rules for aliases
+    events, from MSC2260.
+  + Variety of E2EE improvements, most notably:
+    * Fix bug where querying a remote user's device keys that weren't cached
+      resulted in only returning a single device.
+    * Fix bug where Synapse didn't invalidate cache of remote users' devices
+      when Synapse left a room.
+    * Detect unknown remote devices and mark cache as stale.
+    * Attempt to resync remote users' devices when detected as stale.
+    * When a client asks for a remote user's device keys check if the local
+      cache for that user has been marked as potentially stale.
+    * Detect unexpected sender keys on remote encrypted events and resync
+      device lists.
+    * Fix an issue with cross-signing where device signatures were not sent to
+      remote servers.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Tue Jan 28 14:34:39 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 1.9.1
@@ -157,7 +190,7 @@ Fri Dec 13 13:23:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
   /usr/share/doc/packages/matrix-synapse/CHANGES.md.
 
   https://github.com/matrix-org/synapse/releases/tag/v1.7.0
-  Please make sure to read the Upgrade notes referenced in the 
+  Please make sure to read the Upgrade notes referenced in the
   above.
 
 -------------------------------------------------------------------
