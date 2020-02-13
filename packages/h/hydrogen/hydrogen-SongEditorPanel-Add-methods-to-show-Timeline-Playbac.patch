@@ -1,0 +1,77 @@
+From 68b2cbebf3e6de8f58b8b848aabefef48ecfa964 Mon Sep 17 00:00:00 2001
+From: Sebastian Moors <mauser@smoors.de>
+Date: Thu, 13 Sep 2018 22:01:42 +0200
+Subject: [PATCH] SongEditorPanel: Add methods to show Timeline/PlaybackTrack
+
+---
+ src/gui/src/SongEditor/SongEditorPanel.cpp | 35 ++++++++++++++++++++----------
+ src/gui/src/SongEditor/SongEditorPanel.h   |  4 ++++
+ 2 files changed, 27 insertions(+), 12 deletions(-)
+
+Index: hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/SongEditor/SongEditorPanel.cpp
++++ hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.cpp
+@@ -703,24 +703,35 @@ void SongEditorPanel::viewPlaybackTrackB
+ 	}
+ }
+ 
++void SongEditorPanel::showTimeline()
++{
++	m_pWidgetStack->setCurrentWidget( m_pPositionRuler );
++	m_pTimeLineToggleBtn->show();
++	m_pMutePlaybackToggleBtn->hide();
++	m_pEditPlaybackBtn->hide();
++	m_pPlaybackTrackFader->hide();
++	m_pViewPlaybackToggleBtn->setPressed(false);
++}
++
++
++void SongEditorPanel::showPlaybackTrack()
++{
++	m_pWidgetStack->setCurrentWidget( m_pWaveDisplay );
++	m_pTimeLineToggleBtn->hide();
++	m_pMutePlaybackToggleBtn->show();
++	m_pEditPlaybackBtn->show();
++	m_pPlaybackTrackFader->show();
++	m_pViewPlaybackToggleBtn->setPressed(true);
++}
++
+ void SongEditorPanel::viewTimeLineBtnPressed( Button* pBtn )
+ {
+ 	if( pBtn->isPressed() ){
+-		m_pWidgetStack->setCurrentWidget( m_pPositionRuler );
+-		m_pTimeLineToggleBtn->show();
+-		m_pMutePlaybackToggleBtn->hide();
+-		m_pEditPlaybackBtn->hide();
+-		m_pPlaybackTrackFader->hide();
+-		m_pViewPlaybackToggleBtn->setPressed(false);
++		showTimeline();
+ 	}
+ 	else
+ 	{
+-		m_pWidgetStack->setCurrentWidget( m_pWaveDisplay );
+-		m_pTimeLineToggleBtn->hide();
+-		m_pMutePlaybackToggleBtn->show();
+-		m_pEditPlaybackBtn->show();
+-		m_pPlaybackTrackFader->show();
+-		m_pViewPlaybackToggleBtn->setPressed(true);
++		showPlaybackTrack();
+ 	}
+ }
+ 
+Index: hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.h
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/SongEditor/SongEditorPanel.h
++++ hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.h
+@@ -69,6 +69,10 @@ class SongEditorPanel : public QWidget,
+ 		SongEditorActionMode getActionMode() {	return m_actionMode;	}
+ 		void toggleAutomationAreaVisibility();
+ 		
++		void showTimeline();
++		void showPlaybackTrack();
++		
++		
+ 		// Implements EventListener interface
+ 		virtual void selectedPatternChangedEvent();
+ 		void restoreGroupVector( QString filename );

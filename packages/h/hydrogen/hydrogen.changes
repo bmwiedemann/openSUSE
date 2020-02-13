@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 12 17:42:55 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- hydrogen-ongEditorPanel-clean-up-scroll-signals.patch,
+  hydrogen-SongEditorPanel-Add-methods-to-show-Timeline-Playbac.patch,
+  hydrogen-SongEditor-Fix-timeline-scrolling.patch,
+  * adjusted git commits from upstream, which fix scrolling in
+    Song Editor (boo#1163519)
+
+-------------------------------------------------------------------
 Sun Apr  7 14:27:51 UTC 2019 - plater <davejplater@gmail.com>
 
 - Update to 1.0.0-beta named version 0.9.9pre1

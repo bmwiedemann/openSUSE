@@ -1,0 +1,142 @@
+From b26ebd8fc3ca315be8d16a5ab034576ae32239d6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=A9my=20Zurcher?= <jeremy@asynk.ch>
+Date: Wed, 18 Jul 2018 16:05:39 +0200
+Subject: [PATCH] ongEditorPanel : clean up scroll signals
+
+protect against looping event
+prepare the road to complete #584,
+(update vertical position on add/remove pattern)
+---
+ src/gui/src/SongEditor/SongEditorPanel.cpp | 58 ++++++++++++++----------------
+ src/gui/src/SongEditor/SongEditorPanel.h   |  5 ++-
+ 2 files changed, 28 insertions(+), 35 deletions(-)
+
+Index: hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.cpp
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/SongEditor/SongEditorPanel.cpp
++++ hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.cpp
+@@ -169,7 +169,7 @@ SongEditorPanel::SongEditorPanel(QWidget
+ 
+ // ZOOM
+ 	m_pHScrollBar = new QScrollBar( Qt::Horizontal,NULL );
+-	connect( m_pHScrollBar, SIGNAL(valueChanged(int)), this, SLOT( syncToExternalScrollBar() ) );
++	connect( m_pHScrollBar, SIGNAL(valueChanged(int)), this, SLOT( hScrollTo(int) ) );
+ 
+ 	// zoom-in btn
+ 	Button* pZoomInBtn = new Button(
+@@ -275,7 +275,7 @@ SongEditorPanel::SongEditorPanel(QWidget
+ 	m_pPatternListScrollView->setFixedWidth( m_nPatternListWidth );
+ 	m_pPatternListScrollView->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+ 	m_pPatternListScrollView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+-	connect( m_pPatternListScrollView->verticalScrollBar(), SIGNAL( valueChanged(int) ), this, SLOT( on_patternListScroll() ) );
++	connect( m_pPatternListScrollView->verticalScrollBar(), SIGNAL( valueChanged(int) ), this, SLOT( vScrollTo(int) ) );
+ 
+ 	m_pPatternList = new SongEditorPatternList( m_pPatternListScrollView->viewport() );
+ 	m_pPatternListScrollView->setWidget( m_pPatternList );
+@@ -289,8 +289,8 @@ SongEditorPanel::SongEditorPanel(QWidget
+ 	m_pSongEditor = new SongEditor( m_pEditorScrollView->viewport() );
+ 	m_pEditorScrollView->setWidget( m_pSongEditor );
+ 
+-	connect( m_pEditorScrollView->horizontalScrollBar(), SIGNAL( valueChanged(int) ), this, SLOT( on_EditorScroll() ) );
+-	connect( m_pEditorScrollView->verticalScrollBar(), SIGNAL( valueChanged(int) ), this, SLOT( on_EditorScroll() ) );
++	connect( m_pEditorScrollView->horizontalScrollBar(), SIGNAL( valueChanged(int) ), this, SLOT( hScrollTo(int) ) );
++	connect( m_pEditorScrollView->verticalScrollBar(), SIGNAL( valueChanged(int) ), this, SLOT( vScrollTo(int) ) );
+ 
+ 
+ 	// POSITION RULER
+@@ -334,7 +334,7 @@ SongEditorPanel::SongEditorPanel(QWidget
+ 	m_pAutomationCombo->update();
+ 
+ 	m_pVScrollBar = new QScrollBar( Qt::Vertical, NULL );
+-	connect( m_pVScrollBar, SIGNAL(valueChanged(int)), this, SLOT( syncToExternalScrollBar() ) );
++	connect( m_pVScrollBar, SIGNAL(valueChanged(int)), this, SLOT( vScrollTo(int) ) );
+ 
+ 
+ 	// ok...let's build the layout
+@@ -400,13 +400,12 @@ void SongEditorPanel::updatePlayHeadPosi
+ 
+ 		int nPlayHeadPosition = Hydrogen::get_instance()->getPatternPos() * m_pSongEditor->getGridWidth();
+ 
++		int value = m_pEditorScrollView->horizontalScrollBar()->value();
+ 		if ( nPlayHeadPosition > ( x + w - 50 ) ) {
+-			m_pEditorScrollView->horizontalScrollBar()->setValue( m_pEditorScrollView->horizontalScrollBar()->value() + 100 );
+-			on_EditorScroll();	// force a re-sync
++			hScrollTo( value + 100 );
+ 		}
+ 		else if ( nPlayHeadPosition < x ) {
+-			m_pEditorScrollView->horizontalScrollBar()->setValue( m_pEditorScrollView->horizontalScrollBar()->value() - 100 );
+-			on_EditorScroll();	// force a re-sync
++			hScrollTo( value - 100 );
+ 		}
+ 	}
+ }
+@@ -450,35 +449,30 @@ void SongEditorPanel::updatePlaybackFade
+ 	}
+ }
+ 
+-void SongEditorPanel::on_patternListScroll()
++void SongEditorPanel::vScrollTo( int value )
+ {
+-	m_pEditorScrollView->verticalScrollBar()->setValue( m_pPatternListScrollView->verticalScrollBar()->value() );
+-}
+-
+-
+-
+-///
+-/// Synchronize the patternlist with the patternsequence
+-///
+-void SongEditorPanel::on_EditorScroll()
+-{
+-	resyncExternalScrollBar();
+-	m_pPatternListScrollView->verticalScrollBar()->setValue( m_pEditorScrollView->verticalScrollBar()->value() );
+-	m_pPositionRulerScrollView->horizontalScrollBar()->setValue( m_pEditorScrollView->horizontalScrollBar()->value() );
++	static bool inside = false;
++	if ( !inside ) {
++		inside = true;
++		m_pVScrollBar->setValue( value );
++		m_pPatternListScrollView->verticalScrollBar()->setValue( value );
++		m_pEditorScrollView->verticalScrollBar()->setValue( value );
++		inside = false;
++	}
+ }
+ 
+-
+-
+-void SongEditorPanel::syncToExternalScrollBar()
++void SongEditorPanel::hScrollTo( int value )
+ {
+-	m_pEditorScrollView->horizontalScrollBar()->setValue( m_pHScrollBar->value() );
+-	m_pEditorScrollView->verticalScrollBar()->setValue( m_pVScrollBar->value() );
+-	m_pAutomationPathScrollView->horizontalScrollBar()->setValue( m_pHScrollBar->value() );
+-	m_pAutomationPathScrollView->verticalScrollBar()->setValue( m_pVScrollBar->value() );
++	static bool inside = false;
++	if ( !inside ) {
++		inside = true;
++		m_pHScrollBar->setValue( value );
++		m_pEditorScrollView->horizontalScrollBar()->setValue( value );
++		m_pAutomationPathScrollView->horizontalScrollBar()->setValue( value );
++		inside = false;
++	}
+ }
+ 
+-
+-
+ ///
+ /// Update and redraw all...
+ ///
+Index: hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.h
+===================================================================
+--- hydrogen-1.0.0-beta1.orig/src/gui/src/SongEditor/SongEditorPanel.h
++++ hydrogen-1.0.0-beta1/src/gui/src/SongEditor/SongEditorPanel.h
+@@ -79,9 +79,8 @@ class SongEditorPanel : public QWidget,
+ 		void revertaddEmptyPattern( int idx );
+ 
+ 	private slots:
+-		void on_patternListScroll();
+-		void on_EditorScroll();
+-		void syncToExternalScrollBar();
++		void vScrollTo( int value );
++		void hScrollTo( int value );
+ 
+ 		void newPatBtnClicked( Button* );
+ 		void upBtnClicked( Button* );

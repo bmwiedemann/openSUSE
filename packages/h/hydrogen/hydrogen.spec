@@ -1,7 +1,7 @@
 #
 # spec file for package hydrogen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,7 @@ Summary:        A Real-Time Drum Machine and Sequencer
 # NOTE: Don't forget to update the libsuffix macro.
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-Url:            http://www.hydrogen-music.org/
+URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/%{name}/archive/%{tarvers}-beta1.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        h2cli.1
 Source2:        COPYING
@@ -41,6 +41,9 @@ Patch1:         hydrogen-no-current-time.patch
 Patch2:         hydrogen-0.9.6-lib64.patch
 # PATCH-FIX-UPSTREAM hydrogen-gcc47.patch boris@steki.net -- Fix build with gcc 4.7.
 Patch3:         hydrogen-gcc47.patch
+Patch6:         hydrogen-ongEditorPanel-clean-up-scroll-signals.patch
+Patch5:         hydrogen-SongEditorPanel-Add-methods-to-show-Timeline-Playbac.patch
+Patch7:         hydrogen-SongEditor-Fix-timeline-scrolling.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
