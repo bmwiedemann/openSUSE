@@ -17,7 +17,7 @@
 
 
 Name:           accerciser
-Version:        3.34.3
+Version:        3.34.4
 Release:        0
 Summary:        Accessibility debugging tool
 License:        BSD-3-Clause
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 # py3atspi is a virtual name that is provided by the default at-spi stack
 Requires:       py3atspi
 Requires:       python3-gobject-Gdk
+Requires:       python3-python-xlib
 BuildArch:      noarch
 
 %description

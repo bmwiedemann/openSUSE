@@ -513,4 +513,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
     <comment>Eliminate the -lang recommends (forwarded request 767093 from dimstar)</comment>
     <requestid>767333</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>69686dab8fe9b0c9f5cee1baa3c3dad3</srcmd5>
+    <version>3.34.4</version>
+    <time>1581585122</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>773685</requestid>
+  </revision>
 </revisionlist>
