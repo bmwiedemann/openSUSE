@@ -1,7 +1,7 @@
 #
 # spec file for package ads
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,7 @@ Version:        1.5+git.6.ae0dafd
 Release:        0
 Summary:        Swiss army knife for samba
 License:        GPL-3.0-only
-Group:          Productivity/Networking/Samba
-Url:            http://www.github.com/dmulder/ads
+URL:            http://www.github.com/dmulder/ads
 Source:         %{name}-%{version}.tar.bz2
 Requires:       krb5-client
 Requires:       ntp
@@ -40,6 +39,7 @@ BuildRequires:  python3-dnspython
 BuildRequires:  python3-ldap
 BuildRequires:  python3-netifaces
 BuildRequires:  python3-python-pam
+BuildRequires:  python3-setuptools
 BuildRequires:  samba-python3
 
 %description
