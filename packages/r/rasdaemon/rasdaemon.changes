@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 06 17:57:39 UTC 2020 - trenn@suse.de
+
+- Update to version 0.6.5+git20200205.3dca35f
+- bsc#1162524
+  Mainline commits:
+  3a4fc059d58d876733d5fd9098b6be9e2a9034d8
+  a16ca0711001957ee98f2c124abce0fa1f801529
+  which are required for bsc#1162524:
+  rasdaemon update with support for AMD scalable MCA and cnamburu-naples-support
+
+-------------------------------------------------------------------
 Thu Aug 23 11:36:13 UTC 2018 - mpluskal@suse.com
 
 - Update to version 0.6.2:

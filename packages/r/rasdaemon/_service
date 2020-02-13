@@ -4,8 +4,12 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">rasdaemon</param>
-    <param name="revision">refs/tags/v0.6.2</param>
+<!--
+    <param name="revision">refs/tags/0.6.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
+-->
+    <param name="revision">refs/heads/master</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service mode="disabled" name="recompress">

@@ -89,4 +89,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>631249</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e2747f055d620cb7978a9d7da1ac58e9</srcmd5>
+    <version>0.6.5+git20200205.3dca35f</version>
+    <time>1581585097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773626</requestid>
+  </revision>
 </revisionlist>
