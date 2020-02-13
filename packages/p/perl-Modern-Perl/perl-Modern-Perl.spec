@@ -17,7 +17,7 @@
 
 
 Name:           perl-Modern-Perl
-Version:        1.20200201
+Version:        1.20200211
 Release:        0
 %define cpan_name Modern-Perl
 Summary:        Enable all of the features of Modern Perl with one import

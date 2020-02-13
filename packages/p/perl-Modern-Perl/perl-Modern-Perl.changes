@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 12 03:09:46 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.20200211
+   see /usr/share/doc/packages/perl-Modern-Perl/Changes
+
+  1.20200211 2020-02-10 19:33:55-08:00 America/Los_Angeles
+      - bash doesn't like !' in double quotes, so it stuck up for awk
+
+-------------------------------------------------------------------
 Sun Feb  2 03:12:15 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.20200201
