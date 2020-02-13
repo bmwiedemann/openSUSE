@@ -1,7 +1,7 @@
 #
 # spec file for package python-PsychoPy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-PsychoPy
-Version:        3.2.4
+Version:        2020.1.0
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Psychology experiment software in Python
 Url:            https://github.com/psychopy/psychopy
 Group:          Development/Languages/Python
-Source:         https://github.com/psychopy/psychopy/releases/download/%{version}/PsychoPy-%{version}.zip
+Source0:        https://files.pythonhosted.org/packages/source/P/PsychoPy/PsychoPy-%{version}.zip
 Source99:       %{name}-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -44,6 +44,7 @@ BuildRequires:  %{python_module astunparse}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module greenlet}
@@ -82,6 +83,7 @@ Requires:       python-Pillow
 Requires:       python-arabic-reshaper 
 Requires:       python-astunparse
 Requires:       python-configobj
+Requires:       python-distro
 Requires:       python-future
 Requires:       python-json_tricks
 Requires:       python-lxml

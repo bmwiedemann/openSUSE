@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:32:11 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 2020.1.0
+  + NEW:
+    * Many exciting tools for 3D rendering. See Coder demos menu for some examples
+    * Online studies now support shapes Cross, Star and regular polygons (nVertices)
+    * Online studies have better cross-browser compatibility including fixed support for edge
+    * Online studies have substantially improve timing. In fact, PsychoPy now has the
+      best timing of any online system, consistently under 4ms precision for RTs!
+    * New Runner dialog:
+    * Support for pyglet 1.4, including support for text alignment in multi-line text
+    * CHANGED: rendering of text stimuli may not look quite the same. We now have new parameters
+      anchorHoriz and TextAlign rather than alignHoriz but this may not act the same in all
+      cases
+    * Online studies no longer require a separate html folder. In some cases (e.g. when adding extra resource files)
+      it may be preferable to keep the html folder and that's currently still the default
+      for new studies but ExperimentSettings>online>folder can now be set to blank and the html/js
+      files will be saved alongside the psyexp/py files. This reduces file duplication.
+    * Support for QUESTplus staircases
+    * Pyglet backend now supports 10-bit framebuffer
+    * Updated support for Oculus Rift
+    * Added a :class:~psychopy.visual.Pie (pacman) stimulus
+    * Substantially faster rendering of DotStim
+  + FIXED:
+    * Rect stimulus now aliases size with width and height so that users can refer to either
+    * Faster updating of DotStim dot locations (so fewer dropped frames)
+    * continueRoutine can be set in the BeginRoutine block rather than the EachFrame block
+    * Tab key was incorrectly reporting itself as 'escape' in new Keyboard object
+    * many more!
+
+-------------------------------------------------------------------
 Thu Oct 24 18:56:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 3.2.4
