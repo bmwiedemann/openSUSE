@@ -1,7 +1,7 @@
 #
 # spec file for package fontawesome-fonts
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://fontawesome.io/
+URL:            http://fontawesome.io/
 Source0:        http://fontawesome.io/assets/font-awesome-%{version}.zip
 Source1:        README-Trademarks.txt
 BuildRequires:  fontpackages-devel
@@ -56,8 +56,8 @@ cp -p %{SOURCE1} .
 install -m 0755 -d %{buildroot}%{_ttfontsdir}
 install -p -m 0644 fonts/*.ttf fonts/*.otf fonts/*.woff %{buildroot}%{_ttfontsdir}
 
-install -m 0755 -d %{buildroot}%{_datadir}/font-awesome-web
-install -p -m 0644 fonts/*.svg %{buildroot}%{_datadir}/font-awesome-web
+install -m 0755 -d %{buildroot}%{_datadir}/font-awesome-web/fonts
+install -p -m 0644 fonts/*.{ttf,woff,woff2,svg} %{buildroot}%{_datadir}/font-awesome-web/fonts
 cp -r css less scss %{buildroot}%{_datadir}/font-awesome-web/
 
 %reconfigure_fonts_scriptlets

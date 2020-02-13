@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:38:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- default font path for the web fonts is "../fonts" so we need to install the
+  referenced files in /usr/share/font-awesome-web/fonts.
+
+-------------------------------------------------------------------
 Thu Nov 24 10:16:25 UTC 2016 - mpluskal@suse.com
 
 - Update to version 4.7.0:
