@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:36:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to building using Python 3, as a consequence rename python
+  binding package to python3-hivex.
+- Drop unneeded Recommends and Group lines.
+- Make use of python3_sitearch macro to drop pyver variable.
+- Use python3-config to determine CFLAGS and libraries.
+- Run spec-cleaner against the specfile.
+
+-------------------------------------------------------------------
 Fri Nov  1 18:44:08 UTC 2019 - ohering@suse.de
 
 - Fix bytecode build

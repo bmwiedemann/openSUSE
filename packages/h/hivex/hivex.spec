@@ -1,7 +1,7 @@
 #
 # spec file for package hivex
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,36 +13,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_without perl_bingings
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
-
 Name:           hivex
+Version:        1.3.18
+Release:        0
+Summary:        Windows "Registry Hive" extraction library
+License:        LGPL-2.1-only AND GPL-2.0-only
+URL:            http://libguestfs.org/hivex.3.html
+Source:         http://libguestfs.org/download/hivex/%{name}-%{version}.tar.gz
+Source2:        http://libguestfs.org/download/hivex/%{name}-%{version}.tar.gz.sig
+Source3:        %{name}.keyring
+Source4:        %{name}.rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Requires:       perl(Getopt::Long)
 Requires:       perl(Pod::Usage)
 Requires:       perl(Win::Hivex)
 Requires:       perl(Win::Hivex::Regedit)
-Recommends:     %name-lang
-Url:            http://libguestfs.org/hivex.3.html
-Summary:        Windows "Registry Hive" extraction library
-License:        LGPL-2.1 and GPL-2.0
-Group:          Development/Libraries/C and C++
-Version:        1.3.18
-Release:        0
-Source:         http://libguestfs.org/download/hivex/%name-%version.tar.gz
-Source2:        http://libguestfs.org/download/hivex/%name-%version.tar.gz.sig
-Source3:        %name.keyring
-Source4:        %name.rpmlintrc
 
 %description
 Hivex is a library for extracting the contents of Windows "Registry
@@ -51,8 +48,7 @@ registry files.
 
 %package devel
 Summary:        Development files for hivex
-Group:          Development/Languages/C and C++
-Requires:       libhivex0 = %version
+Requires:       libhivex0 = %{version}
 
 %description devel
 Development files for hivex. Hivex is a Windows Registry Hive extraction
@@ -60,7 +56,6 @@ library.
 
 %package -n libhivex0
 Summary:        Windows Registry Hive extraction library
-Group:          System/Libraries
 
 %description -n libhivex0
 Hivex is a Windows Registry Hive extraction library.
@@ -68,15 +63,11 @@ Hivex is a Windows Registry Hive extraction library.
 %if %{with perl_bingings}
 %package -n perl-Win-Hivex
 Summary:        Perl bindings for hivex
-Group:          Development/Languages/Perl
-Requires:       perl = %perl_version
-%if 0%{?suse_version} < 1140
-BuildRequires:  perl-macros
-%endif
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(IO::Stringy)
 BuildRequires:  perl(Test::More)
-%perl_requires
+Requires:       perl = %{perl_version}
+%{perl_requires}
 
 %description -n perl-Win-Hivex
 This subpackage contains the Perl bindings for hivex.
@@ -85,27 +76,24 @@ Hivex is a Windows Registry Hive extraction library.
 %endif
 
 %if %{with python_bindings}
-%package -n python-hivex
-%define pyver %(python -c "import sys; print sys.version[:3]")
-BuildRequires:  python
-BuildRequires:  python-devel
+%package -n python3-hivex
 Summary:        Python bindings for libhivex
-Group:          Development/Languages/Python
+BuildRequires:  python3-devel
+Provides:       python-hivex = %{version}-%{release}
+Obsoletes:      python-hivex < %{version}-%{release}
 
-%description -n python-hivex
+%description -n python3-hivex
 This subpackage contains the Python bindings for hivex.
 Hivex is a Windows Registry Hive extraction library.
 %endif
 
 %if %{with ocaml_bindings}
 %package -n ocaml-hivex
-%{?ocaml_preserve_bytecode}
+Summary:        OCAML bindings for libhivex
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-rpm-macros
-
-Summary:        OCAML bindings for libhivex
-Group:          Development/Languages/OCaml
+%{?ocaml_preserve_bytecode}
 
 %description -n ocaml-hivex
 This subpackage contains the OCAML bindings for hivex.
@@ -113,7 +101,6 @@ Hivex is a Windows Registry Hive extraction library.
 
 %package -n ocaml-hivex-devel
 Summary:        OCAML bindings development files for libhivex
-Group:          Development/Languages/OCaml
 Requires:       hivex-devel = %{version}
 Requires:       ocaml-hivex = %{version}
 
@@ -127,21 +114,21 @@ for hivex. Hivex is a Windows Registry Hive extraction library.
 %prep
 %setup -q
 
-sed -i 's:/usr/bin/env perl:/usr/bin/perl:' regedit/hivexregedit
+sed -i 's:%{_bindir}/env perl:%{_bindir}/perl:' regedit/hivexregedit
 
 %build
-if python --version && ! pkg-config python
+if type python3-config >/dev/null
 then
-	export PYTHON_LIBS="-lpython`python -c 'import distutils.sysconfig; print (distutils.sysconfig.get_python_version ());'`"
-	export PYTHON_CFLAGS="-I`python -c 'import distutils.sysconfig; print (distutils.sysconfig.get_python_inc ());'`"
+	export PYTHON="python3"
+	export PYTHON_LIBS=$(python3-config --libs)
+	export PYTHON_CFLAGS=$(python3-config --cflags)
 	export PYTHON_EXT_SUFFIX=.so
 fi
 %configure --disable-static
 # 'INSTALLDIRS' ensures that perl libs are installed in the vendor dir instead of the site dir
-make \
-	INSTALLDIRS=vendor \
+%make_build \
 	LD_RUN_PATH= \
-	%{?_smp_mflags}
+	INSTALLDIRS=vendor
 
 %install
 %make_install INSTALLDIRS=vendor
@@ -150,41 +137,40 @@ make \
 %perl_process_packlist
 %perl_gen_filelist
 # the macro above packages everything, here only the perl files are desrired
-grep "%perl_vendorarch/" %name.files | tee t
-mv t %name.files
+grep "%{perl_vendorarch}/" %{name}.files | tee t
+mv t %{name}.files
 %endif
 #
-rm -f %buildroot/%_libdir/*.{l,}a
-touch %name.lang
-%find_lang %name
+rm -f %{buildroot}/%{_libdir}/*.{l,}a
+touch %{name}.lang
+%find_lang %{name}
 
 %post -n libhivex0 -p /sbin/ldconfig
 %postun -n libhivex0 -p /sbin/ldconfig
 
 %files
 %doc README
-%_bindir/*
-%_mandir/*/*
+%{_bindir}/*
+%{_mandir}/*/*
 
 %files devel
-%_libdir/pkgconfig/*
-%_includedir/*
-%_libdir/*.so
+%{_libdir}/pkgconfig/*
+%{_includedir}/*
+%{_libdir}/*.so
 
 %files -n libhivex0
-%_libdir/*.so.*
+%{_libdir}/*.so.*
 
 %if %{with python_bindings}
-%files -n python-hivex
-%_libdir/python%pyver/site-packages/*
+%files -n python3-hivex
+%{python3_sitearch}/*
 %endif
 
 %if %{with perl_bingings}
 %post -n perl-Win-Hivex -p /sbin/ldconfig
-
 %postun -n perl-Win-Hivex -p /sbin/ldconfig
 
-%files -n perl-Win-Hivex -f %name.files
+%files -n perl-Win-Hivex -f %{name}.files
 %endif
 #
 
@@ -204,6 +190,6 @@ touch %name.lang
 %{_libdir}/ocaml/hivex/hivex.mli
 %endif
 
-%files lang -f %name.lang
+%files lang -f %{name}.lang
 
 %changelog
