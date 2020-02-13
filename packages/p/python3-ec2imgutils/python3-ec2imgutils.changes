@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:05:02 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 7.0.8 (bsc#1162712)
+  + For ARM image upload automatically enable ENA support. ARM based
+    instances require the ENA driver in the kernel
+
+-------------------------------------------------------------------
 Thu Nov 14 21:53:26 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to version 7.0.7
