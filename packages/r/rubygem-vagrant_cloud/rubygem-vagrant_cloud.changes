@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:09:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Unrestrict rest_client version dependency
+
+-------------------------------------------------------------------
 Wed Oct 16 08:45:57 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Update to 2.0.3

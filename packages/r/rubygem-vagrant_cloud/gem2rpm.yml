@@ -30,7 +30,13 @@
 # - bar.desktop
 # :gem_install_args: '....'
 # ## used by gem2rpm
-# :pre_install: |-
+:pre_install: |-
+  %gem_unpack
+  sed -i 's|\(.*<rest-client>.freeze, \)\["~> 2.0.2"\]|\1\["~> 2.0"\]|' %{mod_full_name}.gemspec
+  find -type f -print0 | xargs -0 touch -r %{S:0}
+  %gem_build
+  # HACK: %%gem_install uses the gem from %%{_sourcedir} by default, so we *must* put it back there
+  mv %{mod_full_name}.gem %{_sourcedir}/
 #   %if 0%{?use_system_libev}
 #   export USE_VENDORED_LIBEV="no"
 #   %endif
