@@ -1,3 +1,25 @@
+gpxsee (7.22) stable; urgency=low
+
+  * Fixed loading of GMAP maps when Garmin BaseCamp has associated
+    them (OS X issue).
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 12 Feb 2020 23:11:19 +0100
+
+gpxsee (7.21) stable; urgency=low
+
+  * Added support for Garmin GMAP maps.
+  * Various IMG/GMAP maps fixes/improvements.
+  * Hungarian localization.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 11 Feb 2020 23:12:31 +0100
+
+gpxsee (7.20) stable; urgency=low
+
+  * Added support for Suunto SML files.
+  * Various IMG maps improvements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 26 Jan 2020 17:27:23 +0100
+
 gpxsee (7.19) stable; urgency=medium
 
   * Fixed/improved pause detection.

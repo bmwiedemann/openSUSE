@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 12 23:06:23 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.22
+  * Fixed loading of GMAP maps when Garmin BaseCamp has associated
+    them (OS X issue).
+
+-------------------------------------------------------------------
+Tue Feb 11 23:09:17 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.21
+  * Added support for Garmin GMAP maps.
+  * Various IMG/GMAP maps fixes/improvements.
+  * Hungarian localization.
+
+-------------------------------------------------------------------
+Sun Jan 26 17:24:23 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.20
+  * Added support for Suunto SML files.
+  * Various IMG maps improvements.
+
+-------------------------------------------------------------------
 Sun Jan 12 18:33:57 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.19
