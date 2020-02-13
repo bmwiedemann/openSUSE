@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb 11 18:44:51 UTC 2020 - lduncan@suse.com
+
+- Update to version 0.6.7 from 0.6.5:
+  * Update the changelog for release 0.6.7
+  * Bump version to 0.6.7
+  * Add Yuya Murai to THANKS.md
+  * Remove email addresses from THANKS.md
+  * Document IPv6 address support in README.md
+  * Do not shadow the portal_ref variable in configfs_tpg_update()
+  * Remove unused struct member isns_portals_cache::nr_portals
+  * Add a couple of assertions to help clang-tidy
+  * Use strncpy() instead of strcpy() to fix a warning from clang-tidy
+  * Upgrade CMake minimum version to 3.1
+  * Give example of an IP6 address for the "isns_server" parameter
+  * Fix the address length passed to getsockname() and getnameinfo()
+  * Replace HOST_NAME_MAX with NI_MAXHOST
+  * Fix connection with IPv6 servers
+  * Add some hints for getaddrinfo()
+  * Remove the state change notification (SCN) service
+  * Make the protocol family more apparent in the logs
+  * Do not use IP:port in the logs because IPv6 addresses contain ":"
+  * Add MostlyBrian to THANKS
+  * When iterating over targets, use the alias of each target.
+  * Update the changelog for release 0.6.6
+  * Bump version to 0.6.6
+  * Register the iSCSI alias attribute
+  * Add Hao Wu to THANKS
+  * Fix bug #44, Can't update "Device Attr" to window 2008 iSNS server.
+  Replacing target-isns-0.6.5.tar.xz with target-isns-0.6.7.tar.xz.
+
+-------------------------------------------------------------------
 Thu Oct 25 18:37:03 UTC 2018 - opensuse-packaging@opensuse.org
 
 - Update to version 0.6.5:

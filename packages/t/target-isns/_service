@@ -4,8 +4,8 @@
     <param name="url">https://github.com/open-iscsi/target-isns.git</param>
     <param name="subdir"></param>
     <param name="filename">target-isns</param>
-    <param name="versionformat">0.6.5</param>
-    <param name="revision">v0.6.5</param>
+    <param name="versionformat">0.6.7</param>
+    <param name="revision">v0.6.7</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
