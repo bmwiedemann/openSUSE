@@ -1,7 +1,7 @@
 #
 # spec file for package mrsh
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 %if 0%{?have_systemd}
-BuildRequires:  systemd-mini
+BuildRequires:  pkgconfig(systemd)
 %endif
 BuildRequires:  fdupes
 
@@ -59,7 +59,7 @@ Group:          System/Daemons
 Requires:       mrsh
 Requires:       tcpd
 %if 0%{?have_systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 Requires:       xinetd
 %endif
@@ -108,6 +108,9 @@ DESTDIR="%{buildroot}" make install
 
 ln -sf in.mrlogind %{buildroot}%{_sbindir}/in.rlogind
 ln -sf in.mrshd %{buildroot}%{_sbindir}/in.rshd
+for i in rcp rlogin rsh; do
+   ln -sf m$i %{buildroot}/%{_bindir}/$i
+done
 
 for i in mrsh mrlogin
 do

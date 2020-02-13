@@ -76,4 +76,21 @@
     <comment>- Add pam_keyinit.so to /etc/pam.d/mrsh|mrlogind (boo#1144051).</comment>
     <requestid>754486</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>41afed8980ae40070c2a0ebe8717076a</srcmd5>
+    <version>2.12</version>
+    <time>1581585144</time>
+    <user>dimstar_suse</user>
+    <comment>- Create compatibility symlinks as relative links. This doesn't
+  trick chkstat to erronously set permissions on link targets
+  during package build.
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+- Use systemd_ordering instead of systemd_requires: systemd is
+  never a strict requirement; but in case the system is scheduled
+  for installation together with systemd, we want systemd to be
+  installed prior to mrsh.</comment>
+    <requestid>773722</requestid>
+  </revision>
 </revisionlist>
