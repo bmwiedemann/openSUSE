@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-Status
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.01
+Version:        1.02
 Release:        0
 %define cpan_name Mojolicious-Plugin-Status
 Summary:        Mojolicious server status
@@ -31,11 +31,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(BSD::Resource)
-BuildRequires:  perl(IPC::ShareLite)
+BuildRequires:  perl(File::Map)
 BuildRequires:  perl(Mojolicious) >= 7.88
 BuildRequires:  perl(Sereal)
 Requires:       perl(BSD::Resource)
-Requires:       perl(IPC::ShareLite)
+Requires:       perl(File::Map)
 Requires:       perl(Mojolicious) >= 7.88
 Requires:       perl(Sereal)
 %{perl_requires}
@@ -43,9 +43,8 @@ Requires:       perl(Sereal)
 %description
 Mojolicious::Plugin::Status is a Mojolicious plugin providing a server
 status ui for Mojo::Server::Daemon and Mojo::Server::Prefork. Note that
-this module is *EXPERIMENTAL* because the IPC mechanism used can be
-unreliable and slow down the whole application significantly. Therefore it
-should currently only be used for debugging purposes.
+this module is *EXPERIMENTAL* and should therefore only be used for
+debugging purposes.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}

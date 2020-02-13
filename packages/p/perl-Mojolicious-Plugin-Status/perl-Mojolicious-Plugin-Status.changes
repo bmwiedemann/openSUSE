@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 11 03:09:46 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.02  2020-02-10
+    - Switched to File::Map as storage backend, so this plugin should be much
+      more reliable and safer to use now. (kraih, haarg, leont)
+
+-------------------------------------------------------------------
 Tue Oct  8 08:04:00 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.01
