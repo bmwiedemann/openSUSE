@@ -417,4 +417,15 @@
     <comment></comment>
     <requestid>763048</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>150c1d0de68fc036d1152874b3ccb266</srcmd5>
+    <version>2.3.9.3</version>
+    <time>1581585218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.9.3
+  * CVE-2020-7046: Truncated UTF-8 can be used to DoS
+    submission-login and lmtp processes.
+  * CVE-2020-7957: Specially crafted mail can crash snippet generation. (forwarded request 773697 from adkorte)</comment>
+    <requestid>774042</requestid>
+  </revision>
 </revisionlist>
