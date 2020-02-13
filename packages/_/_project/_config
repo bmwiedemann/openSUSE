@@ -448,9 +448,11 @@ Prefer: wine-32bit wine-devel-32bit wine-devel
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.6-rubygem-addressable
+Prefer: ruby2.6-rubygem-builder
 Prefer: ruby2.6-rubygem-fast_gettext
 Prefer: ruby2.6-rubygem-i18n
 Prefer: ruby2.6-rubygem-mail
+Prefer: ruby2.6-rubygem-mime-types
 Prefer: ruby2.6-rubygem-sprockets
 Prefer: ruby2.6-rubygem-thor
 Prefer: ruby2.6-rubygem-tilt
