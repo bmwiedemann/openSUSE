@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Feb 12 09:06:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.1.1
+  * Several minor bug fixes, especially wrt. newer C++ compilers.
+
+-------------------------------------------------------------------
+Tue Feb 11 15:25:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (v1.1)
