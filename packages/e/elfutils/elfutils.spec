@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.177
+Version:        0.178
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -31,8 +31,8 @@ Source1:        README-BEFORE-ADDING-PATCHES
 Source2:        baselibs.conf
 Source3:        %{name}.changes
 Source5:        %{name}.keyring
-Patch1:         dwelf_elf_e_machine_string.patch
 Patch2:         cfi-fix.patch
+Patch3:         remove-run-large-elf-file.sh.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -65,33 +65,9 @@ Requires:       libasm1 = %{version}
 This package contains the headers and libraries needed to build
 applications that require libasm.
 
-%package -n libebl-plugins
-Summary:        Architecture backends for libebl
-Group:          System/Libraries
-Provides:       libebl = %{version}-%{release}
-Obsoletes:      libebl < %{version}-%{release}
-Provides:       libebl1 = %{version}-%{release}
-Obsoletes:      libebl1 < %{version}-%{release}
-
-%description -n libebl-plugins
-This subpackage contains the plugins to read architecture-specific
-debug info. This is part of the elfutils package.
-
-%package -n libebl-devel
-Summary:        Development files for libebl and for EBL plugins
-Group:          Development/Libraries/C and C++
-Requires:       glibc-devel
-Requires:       libdw-devel = %{version}
-
-%description -n libebl-devel
-This package contains the headers and libraries needed to build
-applications that require libebl, or to build additional EBL
-architecutre backend plugins.
-
 %package -n libelf1
 Summary:        Library to read and write ELF files
 Group:          System/Libraries
-Requires:       libebl-plugins = %{version}
 
 %description -n libelf1
 This package provides a high-level library to read and write ELF files.
@@ -131,8 +107,8 @@ applications that require libdw.
 
 %prep
 %setup -q
-%patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -155,7 +131,7 @@ CFLAGS+=" -fPIC"
 autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
-%configure --program-prefix=eu-
+%configure --program-prefix=eu- --disable-debuginfod
 %make_build
 
 %install
@@ -163,18 +139,14 @@ chmod a+x tests/run*.sh
 # remove unneeded files
 rm -f %{buildroot}/%{_libdir}/*.la
 ls -lR %{buildroot}/%{_libdir}/libelf*
+rm %{buildroot}/%{_libdir}/pkgconfig/libdebuginfod.pc
 %find_lang %{name}
 
 %post -n libasm1 -p /sbin/ldconfig
-
 %post -n libelf1 -p /sbin/ldconfig
-
 %post -n libdw1 -p /sbin/ldconfig
-
 %postun -n libasm1 -p /sbin/ldconfig
-
 %postun -n libelf1 -p /sbin/ldconfig
-
 %postun -n libdw1 -p /sbin/ldconfig
 
 %check
@@ -187,7 +159,24 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS NOTES README THANKS TODO
-%{_bindir}/*
+%{_bindir}/eu-addr2line
+%{_bindir}/eu-ar
+%{_bindir}/eu-elfclassify
+%{_bindir}/eu-elfcmp
+%{_bindir}/eu-elfcompress
+%{_bindir}/eu-elflint
+%{_bindir}/eu-findtextrel
+%{_bindir}/eu-make-debug-archive
+%{_bindir}/eu-nm
+%{_bindir}/eu-objdump
+%{_bindir}/eu-ranlib
+%{_bindir}/eu-readelf
+%{_bindir}/eu-size
+%{_bindir}/eu-stack
+%{_bindir}/eu-strings
+%{_bindir}/eu-strip
+%{_bindir}/eu-unstrip
+%{_mandir}/man1/eu-*.1*
 
 %files -n libasm1
 %{_libdir}/libasm.so.*
@@ -198,14 +187,6 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_libdir}/libasm.a
 %dir %{_includedir}/elfutils
 %{_includedir}/elfutils/libasm.h
-
-%files -n libebl-plugins
-%{_libdir}/elfutils
-
-%files -n libebl-devel
-%{_libdir}/libebl.a
-%dir %{_includedir}/elfutils
-%{_includedir}/elfutils/libebl.h
 
 %files -n libelf1
 %{_libdir}/libelf.so.*
@@ -221,6 +202,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_includedir}/elfutils/elf-knowledge.h
 %{_includedir}/elfutils/version.h
 %{_libdir}/pkgconfig/libelf.pc
+%{_mandir}/man3/elf_*.3*
 
 %files -n libdw1
 %{_libdir}/libdw.so.*

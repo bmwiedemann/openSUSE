@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Feb 10 08:39:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-add libelf1 to baselibs.conf: we still generate a
+  libelf-devel-32bit, which is only installable if libelf1-21bit
+  also exists.
+
+-------------------------------------------------------------------
+Tue Feb  4 09:34:24 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Exclude debuginfod sub-packages and move them to elfutils-debuginfod.
+
+-------------------------------------------------------------------
+Thu Jan 23 09:09:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid double-shipping libdebuginfo.so.1 in two different
+  subpackages. Fixup RPM group.
+
+-------------------------------------------------------------------
+Thu Jan 23 06:17:51 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Split libdebuginfod1 into libdebuginfod1 and debuginfod-client.
+  Add Requires for these packages.
+
+-------------------------------------------------------------------
+Mon Jan 20 11:01:42 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Rename debuginfod-client package to libdebuginfod1 in
+  order to fulfil SLPP violation. 
+
+-------------------------------------------------------------------
+Wed Jan  8 10:46:15 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Fix variable references in specfile
+
+-------------------------------------------------------------------
+Mon Dec  9 09:33:40 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %fillupdir macros for proper sysconfig export.
+
+-------------------------------------------------------------------
+Fri Nov 29 16:01:36 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.178:
+
+  debuginfod: New server, client tool and library to index and fetch
+              ELF/DWARF files addressed by build-id through HTTP.
+
+  doc: There are now some manual pages for functions and tools.
+
+  backends: The libebl libraries are no longer dynamically loaded through
+            dlopen, but are now compiled into libdw.so directly.
+
+  readelf: -n, --notes now takes an optional "SECTION" argument.
+           -p and -x now also handle section numbers.
+           New option --dyn-sym to show just the dynamic symbol table.
+
+  libcpu: Add RISC-V disassembler.
+
+  libdw: Abbrevs and DIEs can now be read concurrently by multiple
+         threads through the same Dwarf handle.
+
+  libdwfl: Will try to use debuginfod when installed as fallback to
+           retrieve ELF and DWARF debug data files by build-id.
+- remove dwelf_elf_e_machine_string.patch.
+- remove unused libebl-plugins and libebl-devel subpackages
+- new subpackages debuginfod-client, debuginfod-client-devel and
+  debuginfod added
+- main package binaries are explicitely listed and man pages
+  for the binaries are included
+
+-------------------------------------------------------------------
+Wed Nov 27 10:07:05 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add remove-run-large-elf-file.sh.patch in order to remove
+  running run-large-elf-file.sh (it hit OOM).
+
+-------------------------------------------------------------------
 Thu Nov 14 15:19:43 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - disable-tests-with-ptrace.patch: Remove, set XFAIL_TESTS instead
