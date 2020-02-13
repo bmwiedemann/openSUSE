@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(sfml-system)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch: %arm ppc64 ppc64le
 
 %description
 Dolphin is an emulator for running GameCube and Wii games on Windows, Linux,

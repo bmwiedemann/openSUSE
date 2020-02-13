@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:01:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on unsupported architectures %arm ppc64 ppc64le
+
+-------------------------------------------------------------------
 Sat Jan 18 23:44:15 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20191020:
