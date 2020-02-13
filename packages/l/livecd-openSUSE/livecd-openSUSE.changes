@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:13:07 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use bgrt as plymouth theme for Leap (boo#1162535)
+
+-------------------------------------------------------------------
 Mon Jan 27 11:19:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Rescue CD size limitation: block more -lang files

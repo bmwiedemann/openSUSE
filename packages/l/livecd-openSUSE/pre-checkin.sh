@@ -36,7 +36,6 @@ for distro in leap tumbleweed; do
 	releaseprefix="openSUSE"
 	if [ "${distro}" = "leap" ]; then
 		distroname="openSUSE Leap %OS_VERSION_ID%"
-		bootsplash="openSUSE"
 		# This changes every few weeks, apparently.
 		#releaseprefix="Leap"
 	fi
