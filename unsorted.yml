@@ -1922,7 +1922,8 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coreutils-testsuite 
+  - coreutils-single 
+  - coreutils-testsuite: [i586] 
   - corosync 
   - corosync-qdevice 
   - corosync-qnetd 
@@ -2250,6 +2251,7 @@ unsorted:
   - deadbeef-plugin-mpris2 
   - debhelper 
   - debootstrap 
+  - debuginfod-client 
   - decentxml 
   - decentxml-javadoc 
   - dee-devel 
@@ -2606,6 +2608,7 @@ unsorted:
   - elementary-wallpapers 
   - elemines 
   - elftoaout 
+  - elfutils-debuginfod 
   - elib 
   - elinks: [x86_64] 
   - elisa 
@@ -2751,6 +2754,7 @@ unsorted:
   - etcd-for-k8s-image: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
+  - etckeeper-zsh-completion 
   - etckeeper-zypp-plugin 
   - etherape 
   - etherape-lang 
@@ -8575,6 +8579,8 @@ unsorted:
   - libddccontrol0 
   - libddcutil-devel 
   - libddcutil0 
+  - libdebuginfod-devel 
+  - libdebuginfod1 
   - libdecoration0 
   - libdecoration0-32bit: [x86_64] 
   - libdee-1_0-4 
@@ -8677,8 +8683,6 @@ unsorted:
   - libeXosip2-devel 
   - libeb16 
   - libebackend-1_2-10-32bit: [x86_64] 
-  - libebl-devel 
-  - libebl-plugins-32bit: [x86_64] 
   - libebml-devel 
   - libebml4-32bit: [x86_64] 
   - libebook-1_2-20-32bit: [x86_64] 
@@ -15736,6 +15740,7 @@ unsorted:
   - paper-icon-theme 
   - paperclips 
   - paperclips-javadoc 
+  - paperjam 
   - paperkey 
   - papi 
   - papi-devel 
@@ -16460,6 +16465,8 @@ unsorted:
   - perl-Linux-DesktopFiles 
   - perl-Linux-Inotify2 
   - perl-List-AllUtils 
+  - perl-List-BinarySearch 
+  - perl-List-BinarySearch-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -17823,7 +17830,6 @@ unsorted:
   - python-hachoir-parser 
   - python-happybase-doc 
   - python-heatclient-doc 
-  - python-hivex 
   - python-ibus 
   - python-idle 
   - python-imobiledevice 
@@ -21380,6 +21386,7 @@ unsorted:
   - python3-hetzner 
   - python3-hetznercloud 
   - python3-hexdump 
+  - python3-hivex 
   - python3-hkdf 
   - python3-hl7apy 
   - python3-holidays 
@@ -21784,7 +21791,6 @@ unsorted:
   - python3-neovim-remote 
   - python3-net-snmp 
   - python3-netCDF4 
-  - python3-netifaces 
   - python3-netmiko 
   - python3-networkx: [i586] 
   - python3-neutronclient 
@@ -22356,7 +22362,6 @@ unsorted:
   - python3-python-utils 
   - python3-python-vlc 
   - python3-python-whois 
-  - python3-python-xlib 
   - python3-python-yubico 
   - python3-python3-openid 
   - python3-python3-saml 
@@ -24088,7 +24093,6 @@ unsorted:
   - ruby2.6-rubygem-timers-doc 
   - ruby2.6-rubygem-timers-testsuite 
   - ruby2.6-rubygem-tins-doc 
-  - ruby2.6-rubygem-tmuxinator 
   - ruby2.6-rubygem-tmuxinator-doc 
   - ruby2.6-rubygem-tmuxinator-testsuite 
   - ruby2.6-rubygem-tomlrb-doc 
@@ -24143,6 +24147,8 @@ unsorted:
   - ruby2.6-rubygem-winrm-elevated-doc 
   - ruby2.6-rubygem-winrm-fs-doc 
   - ruby2.6-rubygem-xdg-doc 
+  - ruby2.6-rubygem-xdg-doc-2 
+  - ruby2.6-rubygem-xdg-testsuite-2 
   - ruby2.6-rubygem-xml-simple-doc 
   - ruby2.6-rubygem-xmlhash-doc 
   - ruby2.6-rubygem-xmlhash-testsuite 

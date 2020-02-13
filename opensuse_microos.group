@@ -49,7 +49,6 @@
     <package name="libdbus-1-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libdw1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libebl-plugins" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libelf1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libexpat1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
