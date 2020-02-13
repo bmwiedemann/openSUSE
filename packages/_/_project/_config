@@ -231,6 +231,9 @@ Support: libunwind libunwind-devel
 Preinstall: libunwind
 %endif
 
+# Prefer coreutils over coreutils-single
+Prefer: coreutils
+
 ### Branding related preferences
 Prefer: distribution-logos-openSUSE-Tumbleweed
 Prefer: awesome:awesome-branding-upstream
