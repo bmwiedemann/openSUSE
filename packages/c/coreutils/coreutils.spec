@@ -1,7 +1,7 @@
 #
 # spec file for package coreutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,26 @@
 #
 
 
-Name:           coreutils
+%bcond_with ringdisabled
+
+# there are more fancy ways to define a package name using magic
+# macros but OBS and the bots that rely on parser information from
+# OBS can't deal with all of them
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" != ""
+%define name_suffix -%{flavor}
+%if %{with ringdisabled}
+ExclusiveArch:  do_not_build
+%endif
+%endif
+
+Name:           coreutils%{?name_suffix} 
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
 Group:          System/Base
-Url:            https://www.gnu.org/software/coreutils/
+URL:            https://www.gnu.org/software/coreutils/
 Version:        8.31
 Release:        0
-
-#################################################################
-#################################################################
-###                ! ! ! R E M I N D E R ! ! !                ###
-#################################################################
-###    Please call "./pre_checkin.sh" prior to submitting.    ###
-###    (This will regenerate coreutils-testsuite.spec)        ###
-#################################################################
-#################################################################
 
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -60,18 +64,21 @@ BuildRequires:  valgrind
 %endif
 %endif
 
-%if "%{name}" == "coreutils"
+%if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 Provides:       fileutils = %{version}
 Provides:       mktemp = %{version}
 Provides:       sh-utils = %{version}
 Provides:       stat = %{version}
 Provides:       textutils = %{version}
+%if "%{name}" == "coreutils-single"
+Conflicts:      coreutils
+Provides:       coreutils = %{version}-%{release}
+%endif
 %endif
 
 # this will create a cycle, broken up randomly - coreutils is just
 # too core to have other prerequisites.
 #PreReq:         permissions
-PreReq:         %{install_info_prereq}
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -146,6 +153,17 @@ the GNU fileutils, sh-utils, and textutils packages.
   timeout touch tr true truncate tsort tty uname unexpand uniq unlink
   uptime users vdir wc who whoami yes
 
+%package doc
+Summary:        Documentation for the GNU Core Utilities
+Group:          Documentation/Man
+Provides:       coreutils:%{_infodir}/coreutils.info.gz
+Supplements:    packageand(coreutils:patterns-base-documentation)
+Supplements:    packageand(coreutils-single:patterns-base-documentation)
+BuildArch:      noarch
+
+%description doc
+This package contains the documentation for the GNU Core Utilities.
+
 # ================================================
 %lang_package
 %prep
@@ -183,6 +201,12 @@ AUTOPOINT=true autoreconf -fi
 export CFLAGS="%optflags"
 %configure --libexecdir=%{_libdir} \
            --enable-install-program=arch \
+	   --enable-no-install-program=kill \
+%if "%{name}" == "coreutils-single"
+           --enable-single-binary \
+           --without-openssl \
+           --without-gmp \
+%endif
            DEFAULT_POSIX2_VERSION=200112 \
            alternative=199209
 
@@ -211,12 +235,8 @@ ln -v lib/parse-datetime.{c,y} .
 
 # ================================================
 %install
-%if "%{name}" == "coreutils"
+%if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 make install DESTDIR="%buildroot" pkglibexecdir=%{_libdir}/%{name}
-
-# remove kill - we use that from util-linux.
-rm -v %{buildroot}%{_bindir}/kill
-rm -v %{buildroot}/%{_mandir}/man1/kill.1
 
 #UsrMerge
 install -d %{buildroot}/bin
@@ -228,31 +248,34 @@ do
 done
 #EndUsrMerge
 echo '.so man1/test.1' > %{buildroot}/%{_mandir}/man1/\[.1
+%if "%{name}" == "coreutils"
 %find_lang coreutils
+# add LC_TIME directories to lang package
+awk '/LC_TIME/ {a=$2; gsub(/\/[^\/]+\.mo/,"", a); print "%%dir", a} {print}' < coreutils.lang > tmp
+mv tmp coreutils.lang
+%else
+rm -rf %{buildroot}%{_mandir}
+rm -rf %{buildroot}%{_infodir}
+rm -rf %{buildroot}%{_datadir}/locale
+> coreutils.lang
+%endif
 %endif
 
 # ================================================
 %post
-%if "%{name}" == "coreutils"
-%install_info --info-dir=%{_infodir} %{_infodir}/coreutils.info.gz
+%if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 %{?regenerate_initrd_post}
 %endif
 
 # ================================================
 %posttrans
-%if "%{name}" == "coreutils"
+%if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 %{?regenerate_initrd_posttrans}
 %endif
 
 # ================================================
-%postun
-%if "%{name}" == "coreutils"
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/coreutils.info.gz
-%endif
-
-# ================================================
 %files
-%if "%{name}" == "coreutils"
+%if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 
 %defattr(-,root,root)
 %license COPYING
@@ -262,12 +285,15 @@ echo '.so man1/test.1' > %{buildroot}/%{_mandir}/man1/\[.1
 /bin/*
 #EndUsrMerge
 %{_libdir}/%{name}
-%doc %{_infodir}/coreutils.info*.gz
-%doc %{_mandir}/man1/*.1.gz
-%dir %{_datadir}/locale/*/LC_TIME
 
+%if "%{name}" == "coreutils"
 %files lang -f coreutils.lang
 %defattr(-,root,root)
+
+%files doc
+%doc %{_infodir}/coreutils.info*.gz
+%doc %{_mandir}/man1/*.1.gz
+%endif
 
 %else
 
