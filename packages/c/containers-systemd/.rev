@@ -42,4 +42,13 @@
   * Fix network parameter for dhcp servers</comment>
     <requestid>768833</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>faaba8066d3efe402fcb703410509b80</srcmd5>
+    <version>0.0+git20200212.47b21c6</version>
+    <time>1581585168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200212.47b21c6:
+  * Add haproxy</comment>
+    <requestid>773810</requestid>
+  </revision>
 </revisionlist>

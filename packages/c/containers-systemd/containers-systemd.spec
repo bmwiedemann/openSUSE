@@ -16,11 +16,11 @@
 #
 
 
-%define containers bind dhcp-server mariadb nginx
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-mariadb.service container-nginx.service
+%define containers bind dhcp-server haproxy mariadb nginx
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service
 
 Name:           containers-systemd
-Version:        0.0+git20200124.e3c2408
+Version:        0.0+git20200212.47b21c6
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -87,6 +87,10 @@ done
 %{_sbindir}/rccontainer-dhcp-server
 %{_sbindir}/rccontainer-dhcp6-server
 %ghost %dir /srv/dhcp-server
+%{_unitdir}/container-haproxy.service
+%{_fillupdir}/sysconfig.container-haproxy
+%{_sbindir}/rccontainer-haproxy
+%ghost %dir /srv/haproxy
 %{_unitdir}/container-mariadb.service
 %{_fillupdir}/sysconfig.container-mariadb
 %{_sbindir}/rccontainer-mariadb
