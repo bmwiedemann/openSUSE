@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  9 13:23:44 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.3.4.2, fixing four bugs:
+  * lyx bug #11728: five second delay when saving files on windows
+  * crash related to math toolbar
+  * lyx bug #11724: bad output Beamer presentation in combination
+    with certain page geometry settings
+  * lyx bug #11579: CJKUtf8 not possible in ERT
+
+-------------------------------------------------------------------
 Sun Jan 12 21:46:18 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.3.4:

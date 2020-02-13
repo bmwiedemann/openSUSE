@@ -733,4 +733,17 @@
     <comment>new version</comment>
     <requestid>769126</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>6bc12e1d8fba95e2a2218e50bb04d8c5</srcmd5>
+    <version>2.3.4.2</version>
+    <time>1581585079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.4.2, fixing four bugs:
+  * lyx bug #11728: five second delay when saving files on windows
+  * crash related to math toolbar
+  * lyx bug #11724: bad output Beamer presentation in combination
+    with certain page geometry settings
+  * lyx bug #11579: CJKUtf8 not possible in ERT</comment>
+    <requestid>773612</requestid>
+  </revision>
 </revisionlist>
