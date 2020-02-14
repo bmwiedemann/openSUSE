@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlschema
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-xmlschema
-Version:        1.0.15
+Version:        1.1.0
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/brunato/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
-BuildRequires:  %{python_module elementpath >= 1.3.0}
+BuildRequires:  %{python_module elementpath >= 1.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-elementpath >= 1.3.0
+Requires:       python-elementpath >= 1.4.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,8 +43,8 @@ for Python.
 # do not hardcode versions
 sed -i -e 's:~=:>=:' setup.py
 # do not bother with memory validation
-rm xmlschema/tests/check_memory.py
-rm xmlschema/tests/test_memory.py
+rm tests/check_memory.py
+rm tests/test_memory.py
 
 %build
 export LANG="en_US.UTF8"
@@ -52,12 +53,13 @@ export LANG="en_US.UTF8"
 %install
 export LANG="en_US.UTF8"
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/xmlschema/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# test_element_tree_import_script is (easily workaroundable) https://github.com/sissaschool/xmlschema/issues/167
+# tests_factory setup is broken
 export LANG="en_US.UTF8"
-%pytest
+%pytest -k "not (test_element_tree_import_script or tests_factory)" tests
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
