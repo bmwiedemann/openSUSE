@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- The devel subpackage needs libepoxy-devel (boo#1163286)
+- Remove conditions for Leap 42
+
+-------------------------------------------------------------------
 Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.0

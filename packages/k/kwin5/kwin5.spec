@@ -55,14 +55,6 @@ BuildRequires:  libcap-progs
 BuildRequires:  libepoxy-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
 BuildRequires:  cmake(Breeze) >= 5.9.0
 BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
@@ -160,6 +152,7 @@ KWin is the window manager of the K desktop environment.
 Summary:        KDE Window Manager - development files
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
+Requires:       libepoxy-devel
 Requires:       libkdecoration2-devel >= %{_plasma5_version}
 Conflicts:      kdebase4-workspace-devel
 
@@ -173,16 +166,6 @@ This package provides development files.
 %autosetup -p1 -n kwin-%{version}
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-  %if 0%{?sle_version} < 120300
-    export CC=gcc-6
-    export CXX=g++-6
-  %else
-    export CC=gcc-7
-    export CXX=g++-7
-  %endif
-  %endif
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
