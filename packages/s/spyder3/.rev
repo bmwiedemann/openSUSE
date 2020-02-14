@@ -294,4 +294,25 @@ Fixed sources as requested.</comment>
     <comment>- add pytest41.patch - fix tests with pytest-4+</comment>
     <requestid>744739</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d32b0c9ef8b3a9bb99f6e612610f79cc</srcmd5>
+    <version>4.0.1</version>
+    <time>1581694625</time>
+    <user>okurz-factory</user>
+    <comment>- fix unit test stall by upstream PR #11547
+  0001-fix-hanging-test-when-not-in-git-repository.patch
+- skip git tests by 0001-only-test-for-git-when-in-git.patch (PR#11548)
+- skip some failing tests due to timeouts
+- the plugin directories have moved
+- the plugins have no language files anymore -- remove lang packages
+- simplify xvfb setup by using xvfb-run
+- remove pytest41.patch not needed anymore
+- add more needed build dependencies
+- update to version 4.0.1
+  This is a major upgrade from 3.3.6. For an extensive list of fixes
+  and updates see https://github.com/spyder-ide/spyder/blob/master/CHANGELOG.md#version-401-2020-01-02
+  and below.
+</comment>
+    <requestid>774149</requestid>
+  </revision>
 </revisionlist>

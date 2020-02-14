@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 13 05:25:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix unit test stall by upstream PR #11547
+  0001-fix-hanging-test-when-not-in-git-repository.patch
+- skip git tests by 0001-only-test-for-git-when-in-git.patch (PR#11548)
+- skip some failing tests due to timeouts
+- the plugin directories have moved
+- the plugins have no language files anymore -- remove lang packages
+- simplify xvfb setup by using xvfb-run
+
+-------------------------------------------------------------------
+Tue Jan 28 19:02:15 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove pytest41.patch not needed anymore
+- add more needed build dependencies
+
+-------------------------------------------------------------------
+Sat Jan 25 13:56:31 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.0.1
+  This is a major upgrade from 3.3.6. For an extensive list of fixes
+  and updates see https://github.com/spyder-ide/spyder/blob/master/CHANGELOG.md#version-401-2020-01-02
+  and below.
+
+-------------------------------------------------------------------
 Fri Nov  1 11:33:59 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add pytest41.patch - fix tests with pytest-4+ 

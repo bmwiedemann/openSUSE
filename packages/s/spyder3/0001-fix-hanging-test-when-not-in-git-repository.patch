@@ -1,0 +1,60 @@
+From fe4540003afd00d3f57a8861c89aea5376d2e1c2 Mon Sep 17 00:00:00 2001
+From: Benjamin Greiner <code@bnavigator.de>
+Date: Wed, 12 Feb 2020 20:50:19 -0800
+Subject: [PATCH 1/2] fix hanging test when not in git repository
+
+---
+ spyder/plugins/editor/widgets/tests/test_goto.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/spyder/plugins/editor/widgets/tests/test_goto.py b/spyder/plugins/editor/widgets/tests/test_goto.py
+index 5a000f4d4d..3b8b662a8e 100644
+--- a/spyder/plugins/editor/widgets/tests/test_goto.py
++++ b/spyder/plugins/editor/widgets/tests/test_goto.py
+@@ -17,6 +17,7 @@
+ 
+ # Local imports
+ from spyder.plugins.editor.widgets.tests.test_codeeditor import editorbot
++from spyder.utils.vcs import get_git_remotes
+ 
+ # Constants
+ HERE = os.path.abspath(__file__)
+@@ -71,8 +72,10 @@
+              'https://github.com/spyder-ide/spyder/issues/123'),
+             ('# gh:spyder-ide/spyder#123\n', 'gh:spyder-ide/spyder#123', None,
+              'https://github.com/spyder-ide/spyder/issues/123'),
+-            ('# gh-123\n', 'gh-123', HERE,
+-             'https://github.com/spyder-ide/spyder/issues/123'),
++            pytest.param(('# gh-123\n', 'gh-123', HERE,
++                          'https://github.com/spyder-ide/spyder/issues/123'),
++                         marks=pytest.mark.skipif(not(get_git_remotes(HERE)),
++                                                  reason='not in a git repository')),
+         ]
+     )
+ def test_goto_uri(qtbot, editorbot, mocker, params):
+
+From 9c0232da9fcb7350d3b7147cfff1198de3258017 Mon Sep 17 00:00:00 2001
+From: Benjamin Greiner <greiner@dsi.uni-stuttgart.de>
+Date: Wed, 12 Feb 2020 21:17:44 -0800
+Subject: [PATCH 2/2] pep8 fix
+
+---
+ spyder/plugins/editor/widgets/tests/test_goto.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/spyder/plugins/editor/widgets/tests/test_goto.py b/spyder/plugins/editor/widgets/tests/test_goto.py
+index 3b8b662a8e..cd8e3b9eae 100644
+--- a/spyder/plugins/editor/widgets/tests/test_goto.py
++++ b/spyder/plugins/editor/widgets/tests/test_goto.py
+@@ -74,8 +74,9 @@
+              'https://github.com/spyder-ide/spyder/issues/123'),
+             pytest.param(('# gh-123\n', 'gh-123', HERE,
+                           'https://github.com/spyder-ide/spyder/issues/123'),
+-                         marks=pytest.mark.skipif(not(get_git_remotes(HERE)),
+-                                                  reason='not in a git repository')),
++                         marks=pytest.mark.skipif(
++                             not(get_git_remotes(HERE)),
++                             reason='not in a git repository')),
+         ]
+     )
+ def test_goto_uri(qtbot, editorbot, mocker, params):

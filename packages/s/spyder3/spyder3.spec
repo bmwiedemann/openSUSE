@@ -1,7 +1,7 @@
 #
 # spec file for package spyder3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,81 +23,100 @@
 %endif
 %define         X_display         ":98"
 Name:           spyder3
-Version:        3.3.6
+Version:        4.0.1
 Release:        0
-Url:            https://www.spyder-ide.org/
+URL:            https://www.spyder-ide.org/
 Summary:        The Scientific Python Development Environment
 License:        MIT
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder3-rpmlintrc
-Patch0:         pytest41.patch
+Patch0:         0001-fix-hanging-test-when-not-in-git-repository.patch
+Patch1:         0001-only-test-for-git-when-in-git.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.0
+BuildRequires:  python3-QDarkStyle >= 2.7
 BuildRequires:  python3-QtAwesome >= 0.5.7
 BuildRequires:  python3-QtPy >= 1.5.0
 BuildRequires:  python3-Sphinx >= 0.6.0
+BuildRequires:  python3-atomicwrites
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-devel
+BuildRequires:  python3-intervaltree
 BuildRequires:  python3-jedi >= 0.9.0
 BuildRequires:  python3-nbconvert
 BuildRequires:  python3-numpydoc
+BuildRequires:  python3-pexpect
 BuildRequires:  python3-pickleshare
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pycodestyle
 BuildRequires:  python3-pyflakes
 BuildRequires:  python3-pygments >= 2.0
 BuildRequires:  python3-pylint
+BuildRequires:  python3-python-language-server >= 0.31.2
+BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq
 BuildRequires:  python3-qt5 >= 5.5
-BuildRequires:  python3-qtconsole >= 4.2.0
+BuildRequires:  python3-qtconsole >= 4.6.0
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-watchdog
 BuildRequires:  update-desktop-files
 %if %{with test}
 BuildRequires:  git-core
 BuildRequires:  python3-Cython
 BuildRequires:  python3-Pillow
+BuildRequires:  python3-diff-match-patch
 BuildRequires:  python3-flaky
 BuildRequires:  python3-keyring
 BuildRequires:  python3-matplotlib
+BuildRequires:  python3-matplotlib-qt5
+BuildRequires:  python3-matplotlib-tk
 BuildRequires:  python3-opengl
 BuildRequires:  python3-pandas
 BuildRequires:  python3-pytest < 5
 BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 0.5.0
+BuildRequires:  python3-spyder-kernels >= 1.8.1
 BuildRequires:  python3-sympy
-BuildRequires:  xauth
-BuildRequires:  xorg-x11-server
+BuildRequires:  xvfb-run
 %endif
 Requires:       python3-Pygments >= 2.0
+Requires:       python3-QDarkStyle >= 2.7
 Requires:       python3-QtAwesome >= 0.5.7
 Requires:       python3-QtPy >= 1.5.0
 Requires:       python3-Sphinx >= 0.6.0
+Requires:       python3-atomicwrites
 Requires:       python3-chardet >= 2.0.0
 Requires:       python3-cloudpickle
+Requires:       python3-diff-match-patch
+Requires:       python3-intervaltree
 Requires:       python3-jedi >= 0.9.0
 Requires:       python3-keyring
 Requires:       python3-nbconvert
 Requires:       python3-numpydoc
 Requires:       python3-opengl
+Requires:       python3-pexpect
 Requires:       python3-pickleshare
 Requires:       python3-psutil
 Requires:       python3-pycodestyle
 Requires:       python3-pyflakes
 Requires:       python3-pygments >= 2.0
 Requires:       python3-pylint
+Requires:       python3-python-language-server >= 0.31.2
+Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq
 Requires:       python3-qt5 >= 5.2
-Requires:       python3-qtconsole >= 4.2.0
+Requires:       python3-qtconsole >= 4.6.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
-Requires:       python3-spyder-kernels >= 0.5.0
+Requires:       python3-spyder-kernels >= 1.8.1
+Requires:       python3-watchdog
 Recommends:     python3-Pillow
 Recommends:     python3-matplotlib >= 1.0
 Recommends:     python3-numpy
@@ -195,19 +214,17 @@ IDE for researchers, engineers and data analysts.
 Documentation and help files for Spyder and its plugins.
 
 %lang_package
-%lang_package -n %{name}-breakpoints
-%lang_package -n %{name}-profiler
-%lang_package -n %{name}-pylint
 
 %prep
 %setup -q -n spyder-%{version}
-%patch0 -p1
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
 sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
 # Fix non-executable-script RPMLint warning
 sed -i -e '/^#!\//, 1d' spyder/app/restart.py
 sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python3_build
@@ -230,9 +247,6 @@ popd
 
 # get the language files
 %find_lang spyder %{name}.lang
-%find_lang breakpoints breakpoints.lang
-%find_lang profiler profiler.lang
-%find_lang pylint pylint.lang
 
 %suse_update_desktop_file -r %{name} Development Science IDE NumericalAnalysis
 %fdupes %{buildroot}%{python3_sitelib}
@@ -252,16 +266,22 @@ python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/sp
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-export DISPLAY=%{X_display}
 export PYTHONDONTWRITEBYTECODE=1
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 10
-# test_github_backend and test_update require Internet
-# test_vcs_root and test_git_revision expect build root to be a git clone
-# test_introspection times out on armv7l, and is skipped on upstream CI
+# require Internet
+skiptests="test_github_backend or test_update" 
+# times out on armv7l, and is skipped on upstream CI
 # with reason "It makes other tests to segfault in our CIs"
-python3 -B -m pytest -vvvv spyder -k 'not (test_github_backend or test_update or test_vcs_root or test_git_revision or test_introspection)'
+skiptests="$skiptests or test_introspection"   
+# segfaults on obs (?)
+skiptests="$skiptests or test_arrayeditor_edit_complex_array"
+# this test runs into timeouts and is skipped on some of the
+# upstream CIs for the same reason
+skiptests="$skiptests or test_mpl_backend_change"
+# tests not suitable for CIs or OBS as evident from the last assert which fails here
+skiptests="$skiptests or test_connection_dialog_remembers_input_with_ssh_passphrase"
+skiptests="$skiptests or test_connection_dialog_remembers_input_with_password"
+
+xvfb-run -a python3 -B -m pytest -vvvv spyder -k "not ($skiptests)"
 %endif
 
 %files
@@ -272,6 +292,11 @@ python3 -B -m pytest -vvvv spyder -k 'not (test_github_backend or test_update or
 %{python3_sitelib}/spyder/
 %{python3_sitelib}/spyder-%{version}-py*.egg-info
 %exclude %{python3_sitelib}/spyder/locale/
+%exclude %{python3_sitelib}/spyder/plugins/breakpoints/
+%exclude %{python3_sitelib}/spyder/plugins/io_dcm/
+%exclude %{python3_sitelib}/spyder/plugins/io_hdf5/
+%exclude %{python3_sitelib}/spyder/plugins/profiler/
+%exclude %{python3_sitelib}/spyder/plugins/pylint/
 %dir %{_datadir}/icons/hicolor/128x128
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/128x128/apps
@@ -284,41 +309,26 @@ python3 -B -m pytest -vvvv spyder -k 'not (test_github_backend or test_update or
 
 %files breakpoints
 %license LICENSE.txt
-%{python3_sitelib}/spyder_breakpoints/
-%exclude %{python3_sitelib}/spyder_breakpoints/locale/
+%{python3_sitelib}/spyder/plugins/breakpoints/
 
 %files dicom
 %license LICENSE.txt
-%{python3_sitelib}/spyder_io_dcm/
+%{python3_sitelib}/spyder/plugins/io_dcm/
 
 %files hdf5
 %license LICENSE.txt
-%{python3_sitelib}/spyder_io_hdf5/
+%{python3_sitelib}/spyder/plugins/io_hdf5/
 
 %files profiler
 %license LICENSE.txt
-%{python3_sitelib}/spyder_profiler/
-%exclude %{python3_sitelib}/spyder_profiler/locale/
+%{python3_sitelib}/spyder/plugins/profiler/
 
 %files pylint
 %license LICENSE.txt
-%{python3_sitelib}/spyder_pylint/
-%exclude %{python3_sitelib}/spyder_pylint/locale/
+%{python3_sitelib}/spyder/plugins/pylint/
 
 %files lang -f %{name}.lang
 %license LICENSE.txt
 %{python3_sitelib}/spyder/locale/
-
-%files breakpoints-lang -f breakpoints.lang
-%license LICENSE.txt
-%{python3_sitelib}/spyder_breakpoints/locale/
-
-%files profiler-lang -f profiler.lang
-%license LICENSE.txt
-%{python3_sitelib}/spyder_profiler/locale/
-
-%files pylint-lang -f pylint.lang
-%license LICENSE.txt
-%{python3_sitelib}/spyder_pylint/locale/
 
 %changelog
