@@ -67,6 +67,8 @@ sed -i '1d' %{name}/__main__.py
 sed -i 's,^#!/usr/bin/env ,#!/usr/bin/,' \
     misc/userscripts/* \
     scripts/*.py
+sed -i 's,^#!/usr/bin/bash,#!/bin/bash,' \
+    misc/userscripts/* 
 mv misc/Makefile .
 
 %build

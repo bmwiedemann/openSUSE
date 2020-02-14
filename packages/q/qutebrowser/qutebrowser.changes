@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 16:14:30 UTC 2020 - Tom Warnke <tom+opensuse@toromtomtom.com>
+
+- replace shebangs pointing to /usr/bin/bash with /bin/bash. This 
+  removes the requirement /usr/bin/bash from the RPM.
+  Fixes boo#1163276.
+
+-------------------------------------------------------------------
 Wed Feb  5 07:18:39 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to version 1.10.0
