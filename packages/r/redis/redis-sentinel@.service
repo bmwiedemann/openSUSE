@@ -1,5 +1,5 @@
 [Unit]
-Description=Redis
+Description=Redis Sentinel instance: %i
 After=network.target
 PartOf=redis-sentinel.target
 

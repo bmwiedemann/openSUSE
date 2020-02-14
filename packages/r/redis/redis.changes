@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  8 15:40:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- print instance name in the from the service files
+
+-------------------------------------------------------------------
 Thu Jan 23 18:58:34 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't install redis-trib.rb, it's only a dummy telling the user

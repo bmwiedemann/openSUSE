@@ -1,5 +1,5 @@
 [Unit]
-Description=Redis
+Description=Redis instance: %i
 After=network.target
 PartOf=redis.target
 
