@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.66
+%define _tar_path 5.67
 %bcond_without lang
 Name:           solid
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -33,21 +33,21 @@ Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Concurrent) >= 5.11.0
-BuildRequires:  cmake(Qt5DBus) >= 5.11.0
-BuildRequires:  cmake(Qt5Gui) >= 5.11.0
-BuildRequires:  cmake(Qt5Qml) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Xml) >= 5.11.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui) >= 5.12.0
+BuildRequires:  cmake(Qt5Qml) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Xml) >= 5.12.0
 BuildRequires:  pkgconfig(libudev)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.12.0
 %endif
 
 %description
@@ -91,7 +91,7 @@ Summary:        KDE Desktop hardware abstraction: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5Core) >= 5.12.0
 
 %description devel
 Solid is a device integration framework.  It provides a way of querying and
@@ -105,7 +105,7 @@ Development files.
 
 %build
   %cmake_kf5 -d build -- -DWITH_NEW_SOLID_JOB=ON -DWITH_NEW_POWER_ASYNC_API=ON -DWITH_NEW_POWER_ASYNC_FREEDESKTOP=ON -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
