@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  9 10:15:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.9.70:
+  * Fixed 100-continue handling for PATCH method
+  * Fixed FTBFS from wrong #endif position for certain builds
+  * Fixed connection overflow issue when combining
+    MHD_USE_NO_LISTEN_SOCKET with MHD_USE_THREAD_PER_CONNECTION
+  * Updated m4 script to fix FTBFS when using
+    -Werror=unused-but-set-parameter
+  * Adding fix for urlencoding of keys without values in
+    post-processor logic.
+  * Adding patch from Ethan Tuttle with test case for urlencoding
+    in post-processor for keys without values.
+
+-------------------------------------------------------------------
 Sun Dec 15 18:50:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - update to 0.9.69:

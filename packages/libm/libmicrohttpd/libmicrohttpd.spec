@@ -1,7 +1,7 @@
 #
 # spec file for package libmicrohttpd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010,2011,2012  Stephan Kleine
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        0.9.69
+Version:        0.9.70
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
