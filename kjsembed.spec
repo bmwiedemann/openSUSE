@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5JsEmbed5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kjsembed
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        Method for binding Javascript objects to QObjects
 License:        LGPL-2.1-or-later
@@ -43,11 +43,11 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5JS) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5Svg) >= 5.11.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
-BuildRequires:  cmake(Qt5Xml) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Svg) >= 5.12.0
+BuildRequires:  cmake(Qt5UiTools) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5Xml) >= 5.12.0
 
 %description
 KSJEmbed provides a method for binding JavaScript objects to QObjects,
@@ -83,7 +83,7 @@ JavaScript objects to QObjects, so applications can be scripted.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
