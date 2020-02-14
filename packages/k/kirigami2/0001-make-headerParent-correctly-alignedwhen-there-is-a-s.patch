@@ -1,0 +1,24 @@
+From f695cde36a6829b8b92b2fd82deff16d9385fcb9 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 10 Feb 2020 11:48:50 +0100
+Subject: [PATCH] make headerParent correctly alignedwhen there is a scrollbar
+
+---
+ src/controls/GlobalDrawer.qml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/controls/GlobalDrawer.qml b/src/controls/GlobalDrawer.qml
+index 0e8e5120..9166ad7a 100644
+--- a/src/controls/GlobalDrawer.qml
++++ b/src/controls/GlobalDrawer.qml
+@@ -301,6 +301,7 @@ OverlayDrawer {
+                 anchors {
+                     left: parent.left
+                     right: parent.right
++                    rightMargin: Math.min(0, -scrollView.width + mainFlickable.width)
+                 }
+                 spacing: 0
+                 y: bannerImage.visible ? Math.max(headerContainer.height, -mainFlickable.contentY) - height : 0
+-- 
+2.25.0
+

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 10 21:33:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch 0001-make-headerParent-correctly-alignedwhen-there-is-a-s.patch
+
+-------------------------------------------------------------------
+Sun Feb  2 18:07:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Too many changes since 5.66.0, only listing bugfixes:
+  * Clip the flickable parent item (kde#416877)
+  * proper size hint for the gridlayout (kde#416860)
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
