@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kquickcharts
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        Set of charts for QtQuick applications
 License:        LGPL-2.1-or-later
@@ -36,9 +36,9 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Qml) >= 5.11.0
-BuildRequires:  cmake(Qt5Quick) >= 5.11.0
-BuildRequires:  cmake(Qt5QuickControls2) >= 5.11.0
+BuildRequires:  cmake(Qt5Qml) >= 5.12.0
+BuildRequires:  cmake(Qt5Quick) >= 5.12.0
+BuildRequires:  cmake(Qt5QuickControls2) >= 5.12.0
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 
@@ -64,7 +64,7 @@ applications.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
