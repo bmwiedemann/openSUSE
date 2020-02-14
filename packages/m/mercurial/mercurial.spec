@@ -20,7 +20,7 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
 Name:           mercurial
-Version:        5.2.1
+Version:        5.3
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -36,8 +36,6 @@ Patch0:         mercurial-hgk-path-fix.diff
 Patch1:         mercurial-docutils-compat.diff
 # PATCH-FIX-OPENSUSE mercurial-locale-path-fix.patch saschpe@suse.de -- locales are found in /usr/share/locale
 Patch2:         mercurial-locale-path-fix.patch
-# PATCH-FIX-OPENSUSE mercurial-4.8-python2-shebang.patch develop7@develop7.info sets shebang to python2
-Patch3:         mercurial-4.8-python2-shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  python3
 BuildRequires:  python3-devel
@@ -81,7 +79,6 @@ designed for efficient handling of very large distributed projects.
 %patch1
 %endif
 %patch2 -p1
-%patch3
 
 sed -i -e '1s@env @@' contrib/hgk
 

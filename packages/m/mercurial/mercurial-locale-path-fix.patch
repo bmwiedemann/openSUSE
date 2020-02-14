@@ -1,13 +1,11 @@
-Index: mercurial-4.1/mercurial/i18n.py
-===================================================================
---- mercurial-4.1.orig/mercurial/i18n.py
-+++ mercurial-4.1/mercurial/i18n.py
-@@ -50,7 +50,7 @@ _ugettext = None
+--- a/mercurial/i18n.py
++++ b/mercurial/i18n.py
+@@ -48,7 +48,7 @@ if (
  
- def setdatapath(datapath):
-     datapath = pycompat.fsdecode(datapath)
--    localedir = os.path.join(datapath, r'locale')
-+    localedir = '/usr/share/locale'
-     t = gettextmod.translation(r'hg', localedir, _languages, fallback=True)
-     global _ugettext
-     try:
+ 
+ datapath = pycompat.fsdecode(resourceutil.datapath)
+-localedir = os.path.join(datapath, 'locale')
++localedir = '/usr/share/locale'
+ t = gettextmod.translation('hg', localedir, _languages, fallback=True)
+ try:
+     _ugettext = t.ugettext

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:24:34 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.3
+  This is a regularly-scheduled quarterly feature release.
+
+  See release notes at https://www.mercurial-scm.org/wiki/Release5.3
+
+- drop mercurial-4.8-python2-shebang.patch because of switch to Python 3
+- fixed and refreshed mercurial-locale-path-fix.patch
+
+-------------------------------------------------------------------
 Fri Jan  3 22:28:39 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch Mercurial to Python 3 (it should be supported already,
