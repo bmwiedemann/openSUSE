@@ -1,7 +1,7 @@
 #
 # spec file for package audacity
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ Version:        2.3.3
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
-Group:          Multimedia;Sound Editors;Audio Editors;Audio Effects;
-Url:            http://audacityteam.org/
+Group:          Productivity/Multimedia/Sound
+URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 #Source:         https://www.fosshub.com/Audacity.html/%%{name}-minsrc-%%{version}.tar.xz
 Source1:        audacity-license-nyquist

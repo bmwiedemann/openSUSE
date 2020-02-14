@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:51:29 CET 2020 - sbrabec@suse.com
+
+- Fix invalid RPM group.
+
+-------------------------------------------------------------------
 Mon Feb  3 07:34:28 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Download 2.3.3 tarball again to fix incorrect release info.
