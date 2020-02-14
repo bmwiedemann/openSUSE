@@ -276,4 +276,16 @@ as requested by Michel</comment>
   * Fix SLE wrapper to take the proper architecture for packages DVD (jsc#SLE-8271)</comment>
     <requestid>731719</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a00e49d21626eb4c40bb333b93144781</srcmd5>
+    <version>1.2.7</version>
+    <time>1581693978</time>
+    <user>okurz-factory</user>
+    <comment>- 1.2.7
+  * Fix possible partition misallignment (bsc#1162531)
+
+- 1.2.6
+  * Fix SLE wrapper for new Package DVD name.</comment>
+    <requestid>770240</requestid>
+  </revision>
 </revisionlist>
