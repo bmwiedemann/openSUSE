@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:33:02 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix invalid RPM group.
+
+-------------------------------------------------------------------
 Fri Jan  3 06:34:54 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Drop "Provides: locale(ja)" to reduce the size of Japanese base

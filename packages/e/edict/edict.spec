@@ -1,7 +1,7 @@
 #
 # spec file for package edict
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        20191016
 Release:        0
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT format)
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
-Group:          dictionary japanese
+Group:          System/I18n/Japanese
 URL:            http://www.edrdg.org/jmdict/edict.html
 # The files change daily, so we do not include their full URL here,
 # but do see download_dicts.sh.
