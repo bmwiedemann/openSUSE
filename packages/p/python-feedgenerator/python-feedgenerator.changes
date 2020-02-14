@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:10:45 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.9.1:
+  * Remove unnecessary files from source distribution
+  * Update PyPI classifiers
+- remove separate license file: now included in source tarball
+- add fix_encoding_in_setup_py.patch to fix build failure
+
+-------------------------------------------------------------------
 Thu Dec  6 13:27:23 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call

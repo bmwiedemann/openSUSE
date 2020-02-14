@@ -1,0 +1,18 @@
+--- feedgenerator-1.9.1.orig/setup.py
++++ feedgenerator-1.9.1/setup.py
+@@ -3,12 +3,14 @@
+ # Using setuptools rather than distutils to get the `develop` command
+ from setuptools import setup
+ 
++# Needed to specify the encoding
++from io import open
+ 
+ NAME = 'feedgenerator'
+ PACKAGES = ['feedgenerator', 'feedgenerator.django',
+             'feedgenerator.django.utils']
+ DESCRIPTION = 'Standalone version of django.utils.feedgenerator'
+-LONG_DESCRIPTION = open('README.rst').read()
++LONG_DESCRIPTION = open('README.rst', encoding='utf-8').read()
+ 
+ URL = "https://github.com/getpelican/feedgenerator"
+ 

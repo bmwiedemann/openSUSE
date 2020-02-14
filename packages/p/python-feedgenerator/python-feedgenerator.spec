@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedgenerator
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-feedgenerator
-Version:        1.9
+Version:        1.9.1
 Release:        0
 Summary:        Standalone version of django.utilsfeedgenerator, compatible with Py3k
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getpelican/feedgenerator
 Source:         https://files.pythonhosted.org/packages/source/f/feedgenerator/feedgenerator-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/getpelican/feedgenerator/master/LICENSE
+Patch0:         fix_encoding_in_setup_py.patch
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -43,8 +43,7 @@ It is based on the current Django Version 1.5.dev20120824122350.
 
 %prep
 %setup -q -n feedgenerator-%{version}
-# add the missing licence
-cp %{SOURCE1} LICENSE
+%autopatch -p1
 
 %build
 %python_build
