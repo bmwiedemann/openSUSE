@@ -822,4 +822,12 @@
     <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
     <requestid>772225</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>3faefe359e3b48e6b35c9c3c27dedfa5</srcmd5>
+    <version>5.18.0</version>
+    <time>1581693790</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773422</requestid>
+  </revision>
 </revisionlist>
