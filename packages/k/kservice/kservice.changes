@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:07:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * autotests: simplify test to use bin/data/menus
+  * [autotests] rename test desktop file, so can see the debug output in CI
+  * Support multiple values in XDG_CURRENT_DESKTOP
+  * [autotest] mkpath() before copy to fix CI failure
+  * Deprecated allowAsDefault
+  * Make "Default Applications" in mimeapps.list the preferred applications
+  * autotests: use local desktop file to avoid relying on konsole
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
