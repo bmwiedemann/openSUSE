@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:59:40 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- From Stefan Seyfried <seife@novell.slipkontur.de> : Fix grub2-install fails
+  with "not a directory" error (boo#1161641, bsc#1162403)
+  * grub2-install-fix-not-a-directory-error.patch
+
+-------------------------------------------------------------------
 Wed Nov 27 17:09:42 UTC 2019 - olaf@aepfle.de
 
 - Correct awk pattern in 20_linux_xen (bsc#900418, bsc#1157912)

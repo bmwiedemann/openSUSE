@@ -1,0 +1,40 @@
+From: Stefan Seyfried <seife@novell.slipkontur.de>
+Subject: Makefile.am: makes sure that ext2/3/4 is tried before minix
+References: boo#1161641
+
+I recently came across a strange grub2-install error when building kiwi images
+in OBS. The reason is a bug in the minix file system detection. I filed
+upstream bug [1].
+  
+Note I experienced this on SLES15-SP1. The bug is still present in current
+Tumbleweed [2]. This bug thus needs fixing in all supported openSUSE releases.
+  
+The reproducer-script is called as root like
+
+  bash ./grub-bug-57652-reproduce-suse.sh /tmp/grub-test.img /mnt
+
+/tmp needs 1GB of free storage to store the image.
+
+Maybe this would be good enough as a minimal-intrusive fix. It does not fix the
+minix detection code, but instead makes sure that ext[234] is tried before
+minix.
+
+[1] https://savannah.gnu.org/bugs/index.php?57652
+[2] https://bugzilla.opensuse.org/attachment.cgi?id=828118
+
+Index: grub-2.04/Makefile.am
+===================================================================
+--- grub-2.04.orig/Makefile.am
++++ grub-2.04/Makefile.am
+@@ -42,8 +42,11 @@ libgrub.pp: grub_script.tab.h grub_scrip
+ 	  -D'GRUB_MOD_INIT(x)=@MARKER@x@' $^ > $@ || (rm -f $@; exit 1)
+ CLEANFILES += libgrub.pp
+ 
++# the grep/sed ensures that ext2 gets initialized before minix*
++# see https://savannah.gnu.org/bugs/?57652
+ libgrub_a_init.lst: libgrub.pp
+ 	cat $< | grep '@MARKER@' | sed 's/@MARKER@\(.*\)@/\1/g' | sort -u > $@ || (rm -f $@; exit 1)
++	if grep ^ext2 $@ >/dev/null; then sed '/ext2/d;/newc/iext2' < $@ > $@.tmp && mv $@.tmp $@; fi
+ CLEANFILES += libgrub_a_init.lst
+ 
+ libgrub_a_init.c: libgrub_a_init.lst $(top_srcdir)/geninit.sh

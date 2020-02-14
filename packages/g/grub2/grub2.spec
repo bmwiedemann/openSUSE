@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -222,6 +222,7 @@ Patch84:        grub2-s390x-09-improve-zipl-setup.patch
 Patch85:        grub2-getroot-scan-disk-pv.patch
 Patch92:        grub2-util-30_os-prober-multiple-initrd.patch
 Patch93:        grub2-getroot-support-nvdimm.patch
+Patch94:        grub2-install-fix-not-a-directory-error.patch
 # Btrfs snapshot booting related patches
 Patch101:       grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
 Patch102:       grub2-btrfs-02-export-subvolume-envvars.patch
@@ -506,6 +507,7 @@ swap partition while in resuming
 %patch85 -p1
 %patch92 -p1
 %patch93 -p1
+%patch94 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
