@@ -3989,4 +3989,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     s390x (bsc#1162252)</comment>
     <requestid>769757</requestid>
   </revision>
+  <revision rev="369" vrev="241">
+    <srcmd5>88ce9eee9e3d66d28f855e7230f0e78e</srcmd5>
+    <version>unknown</version>
+    <time>1581694226</time>
+    <user>okurz-factory</user>
+    <comment>- u_Revert_gallium_Fix_big-endian_addressing_of_non-bitmask_array_formats.patch
+  * replaces U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
+    by an official merge request (bsc#1162252, gitlab issue#2472)</comment>
+    <requestid>770593</requestid>
+  </revision>
 </revisionlist>

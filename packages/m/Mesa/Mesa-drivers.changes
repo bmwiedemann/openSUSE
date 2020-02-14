@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 11:32:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_Revert_gallium_Fix_big-endian_addressing_of_non-bitmask_array_formats.patch
+  * replaces U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
+    by an official merge request (bsc#1162252, gitlab issue#2472)
+
+-------------------------------------------------------------------
 Mon Feb  3 17:17:44 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
