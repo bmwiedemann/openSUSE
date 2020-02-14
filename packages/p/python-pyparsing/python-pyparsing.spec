@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyparsing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-pyparsing%{psuffix}
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        MIT AND GPL-2.0-or-later AND GPL-3.0-or-later
