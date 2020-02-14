@@ -1,7 +1,7 @@
 #
 # spec file for package complexity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -44,19 +44,19 @@ in that scoring scheme.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
 
 %preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
 
 %files
 %license COPYING
