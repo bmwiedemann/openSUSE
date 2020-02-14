@@ -42,6 +42,7 @@ BuildRequires:  llvm-clang-devel >= 3.5
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(flatpak) >= 0.8.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
