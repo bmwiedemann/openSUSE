@@ -1,7 +1,7 @@
 #
-# spec file for package nsync
+# spec file for package libnsync
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define libmajor 1
 
@@ -21,9 +22,9 @@ Name:           libnsync
 Version:        1.23.0
 Release:        0
 Summary:        Library that exports various synchronization primitives
-License:        Apache-2.0 
-Group:          Development C/C++
-Url:            https://github.com/google/nsync
+License:        Apache-2.0
+Group:          System/Libraries
+URL:            https://github.com/google/nsync
 Source:         nsync-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -39,22 +40,24 @@ C/C++ library that exports various synchronization primitives:
 	waitable bit (useful for cancellation, or other conditions)
 
 %package -n libnsync%libmajor
-Summary:       Library that exports various synchronization primitives
-Group:          Development C
+Summary:        Library that exports various synchronization primitives
+Group:          System/Libraries
+
 %description -n libnsync%libmajor
 Library for C that exports various synchronization primitives
 
 %package -n libnsync_cpp%libmajor
-Summary:       Library that exports various synchronization primitives
-Group:          Development C++
+Summary:        Library that exports various synchronization primitives
+Group:          System/Libraries
+
 %description -n libnsync_cpp%libmajor
 Library for C++ that exports various synchronization primitives
 
 %package devel
-Summary:       Library that exports various synchronization primitives
-Group:          Development C++
-Requires:       libnsync_cpp%libmajor = %{version}
+Summary:        Library that exports various synchronization primitives
+Group:          Development/Libraries/C and C++
 Requires:       libnsync%libmajor = %{version}
+Requires:       libnsync_cpp%libmajor = %{version}
 
 %description devel
 C/C++ library that exports various synchronization primitives:
@@ -75,7 +78,6 @@ export CFLAGS="-pthread -std=c++11 -D_POSIX_C_SOURCE=200809L"
   -DNSYNC_ATOMIC_CPP11=ON\
   -DNSYNC_USE_CPP11_TIMEPOINT=ON\
   -DNSYNC_ENABLE_TESTS=0
-
 
 %cmake_build
 
@@ -104,4 +106,3 @@ export CFLAGS="-pthread -std=c++11 -D_POSIX_C_SOURCE=200809L"
 %{_libdir}/libnsync_cpp.so.*
 
 %changelog
-
