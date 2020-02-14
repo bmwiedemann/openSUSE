@@ -98,4 +98,12 @@
     <comment>- Do not use setup.py test but call pytest directly</comment>
     <requestid>760391</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c84a5417bc2417f853d4fb097be9ad54</srcmd5>
+    <version>0.11.10</version>
+    <time>1581694785</time>
+    <user>okurz-factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774244</requestid>
+  </revision>
 </revisionlist>

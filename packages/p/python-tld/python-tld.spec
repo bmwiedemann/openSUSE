@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tld
-Version:        0.11.9
+Version:        0.11.10
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
@@ -50,7 +50,6 @@ A list of TLD names is taken from Mozillas public suffix list:
 %setup -q -n tld-%{version}
 %patch0 -p1
 # https://github.com/barseghyanartur/tld/issues/75
-chmod -x src/tld/res/old/effective_tld_names-2015-07-19.dat.txt
 
 %build
 %python_build

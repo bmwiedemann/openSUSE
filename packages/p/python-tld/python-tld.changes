@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 19:50:54 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.11.10:
+  - Python 2.7 and 3.5 fixes.
+
+-------------------------------------------------------------------
 Thu Jan  2 10:14:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not use setup.py test but call pytest directly
