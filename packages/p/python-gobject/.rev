@@ -636,4 +636,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment></comment>
     <requestid>763798</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>b564302d279b3c3419d37654c686a98f</srcmd5>
+    <version>3.34.0</version>
+    <time>1581694230</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>771845</requestid>
+  </revision>
 </revisionlist>

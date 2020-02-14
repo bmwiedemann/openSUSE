@@ -93,7 +93,6 @@ addon libraries such as pygtk.
 %package -n %{name}-common-devel
 Summary:        Shared development files for GObject's Python bindings
 Group:          Development/Languages/Python
-Requires:       %{python_module gobject-devel = %{version}}
 Requires:       glib2-devel >= 2.38.0
 Requires:       gobject-introspection-devel >= 1.46.0
 Requires:       libffi-devel >= 3.0.0

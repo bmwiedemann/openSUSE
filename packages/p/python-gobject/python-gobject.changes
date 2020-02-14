@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 21:56:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove %{python_module gobject-devel = %{version}} from
+  common-devel: Assuming that consumers of the .pc and include
+  headers are not really using the python bindings.
+
+-------------------------------------------------------------------
 Sat Jan 11 20:21:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gnome-common Requires from python-gobject-common-devel
