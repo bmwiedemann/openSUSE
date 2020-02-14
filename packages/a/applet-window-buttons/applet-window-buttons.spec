@@ -20,7 +20,7 @@
 %define qt5_version 5.9
 
 Name:           applet-window-buttons
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Plasma 5 applet to show window buttons in panels
 License:        GPL-2.0-or-later

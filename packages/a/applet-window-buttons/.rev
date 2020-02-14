@@ -77,4 +77,14 @@
     <comment>new version</comment>
     <requestid>768179</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d952fa01b41a05e777d324f82daeded</srcmd5>
+    <version>0.8.1</version>
+    <time>1581694696</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 0.8.1:
+  * fix compatibility with Plasma 5.18 (Rodrigo Pedra Brum)
+  * never hide buttons for AlwaysVisible visibility state</comment>
+    <requestid>774193</requestid>
+  </revision>
 </revisionlist>

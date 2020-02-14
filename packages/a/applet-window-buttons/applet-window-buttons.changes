@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:21:26 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.8.1:
+  * fix compatibility with Plasma 5.18 (Rodrigo Pedra Brum)
+  * never hide buttons for AlwaysVisible visibility state
+
+-------------------------------------------------------------------
 Tue Jan 28 20:38:05 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update source URL
