@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Feb  9 16:34:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.46.6:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Fix precondition in creation method of structs
+      . Don't set implemenation of interface property to its own
+      . Use result value of assignment rather than its computation
+      . Cast instance parameter in member-initializer for
+        base-properties
+      . Skip StructRegisterFunction for boolean/integer/floating
+        types
+      . Handle different type-symbols in visit_base_access()
+      . Explicitly include header for length-type of arrays
+      . Explicitly include <glib.h> as needed for null-literal
+    - vala:
+      . VoidType is actually compatible with itself
+      . Keep formal_target_type on transform of
+        method-call/object-creation
+      . Add a basic parameter check for [Print] methods
+      . Don't ignore inner errors in Block and acknowledge them
+        further
+      . Don't report further errors if MemberInitializer.check()
+        failed
+      . Improve error message for unsupported inner types and
+        declarations
+      . Don't allow "va_list" as return-type or type of fields
+      . Check before accessing "name" of parent_symbol which might
+        be null
+      . Allow to override base interface properties explicitly
+      . Always bail if there are semantic errors
+      . Fix base-access check for compact classes
+      . Improve detection of recursive struct declarations
+      . Inline allocated arrays require length or initializer
+      . Don't ignore errors in Parameter and acknowledge them
+        further
+    - parser: Implicit "main" method of main-block is public and
+      static
+    - genie: Fix parser's inner state when a struct is declared
+      after a class
+    - girparser: Apply explicitly given ctype metadata attributes
+      on callables
+    - testrunner: Invalid tests and therefore expected failures
+      must return 1
+  + Bindings:
+    - glib-2.0: Add to_string() for GLib.PollFd and GLib.Pid
+    - gstreamer: Update from 1.17.0+ git master
+    - gtk+-3.0: Update to 3.24.13+3822ac74
+    - gtk4: Update to 3.96.0+4ab12ab7
+    - webkit2gtk-4.0: Update to 2.27.4
+
+-------------------------------------------------------------------
 Mon Nov 18 10:29:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.46.5:
