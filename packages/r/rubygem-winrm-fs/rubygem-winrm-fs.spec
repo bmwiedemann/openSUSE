@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-winrm-fs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
+%define mod_name winrm-fs
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-winrm-fs
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
-%define mod_name winrm-fs
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2.0}
+Summary:        WinRM File System
+License:        Apache-2.0
+Group:          Development/Languages/Ruby
+URL:            https://github.com/WinRb/winrm-fs
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://github.com/WinRb/winrm-fs
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
-Summary:        WinRM File System
-License:        Apache-2.0
-Group:          Development/Languages/Ruby
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         update-alternatives
 
 %description
