@@ -1,0 +1,29 @@
+From 5a28b3c546d2037df79374aa4aeb1c7ab4d1fdfc Mon Sep 17 00:00:00 2001
+From: Jehan <jehan@girinstud.io>
+Date: Tue, 27 Mar 2018 19:54:15 +0200
+Subject: [PATCH] autogen: add automake 1.16 support.
+
+Fixes #5.
+
+(cherry picked from commit 1e9109dde3bffd416ed351c3f30ecd6ffd0ca2cd)
+---
+ autogen.sh | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/autogen.sh b/autogen.sh
+index 18ad577..166fc3d 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -90,6 +90,9 @@ fi
+ echo -n "checking for automake >= $AUTOMAKE_REQUIRED_VERSION ... "
+ if ($AUTOMAKE --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=$AUTOMAKE
++elif (automake-1.16 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.16
++   ACLOCAL=aclocal-1.16
+ elif (automake-1.15 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.15
+    ACLOCAL=aclocal-1.15
+-- 
+2.14.3
+
