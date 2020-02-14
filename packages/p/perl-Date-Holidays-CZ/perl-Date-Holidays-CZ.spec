@@ -17,14 +17,14 @@
 
 
 Name:           perl-Date-Holidays-CZ
-Version:        0.15
+Version:        0.17
 Release:        0
 %define cpan_name Date-Holidays-CZ
 Summary:        Determine Czech holidays
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Date-Holidays-CZ/
-Source0:        Date-Holidays-CZ-0.15.tar.gz
+Source0:        Date-Holidays-CZ-0.17.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
