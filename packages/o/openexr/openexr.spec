@@ -1,7 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ URL:            http://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         Fix-the-symlinks-creation.patch
+Patch1:         0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
 BuildRequires:  cmake
 BuildRequires:  fltk-devel
 BuildRequires:  freeglut-devel
@@ -116,6 +117,7 @@ This package contains documentation.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 pushd OpenEXR
@@ -124,8 +126,7 @@ export PTHREAD_LIBS="-lpthread"
 export CXXFLAGS="%{optflags} -O0"
 %endif
 %cmake \
-  -DCMAKE_INSTALL_DOCDIR="%{_docdir}/%{name}" \
-  -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}
+  -DCMAKE_INSTALL_DOCDIR="%{_docdir}/%{name}"
 %if %{asan_build}
 vmemlimit=$(ulimit -v)
 if [ $vmemlimit != unlimited ]; then

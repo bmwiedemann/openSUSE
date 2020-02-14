@@ -319,4 +319,186 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   included ctest macro does not accept extra parameters. (forwarded request 750562 from StefanBruens)</comment>
     <requestid>750686</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e85d9fce37de9ccd50cf52d6a3a0e257</srcmd5>
+    <version>2.4.0</version>
+    <time>1581693779</time>
+    <user>okurz-factory</user>
+    <comment>- Fix relative paths in generated pkgconfig files:
+  0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
+- Fix build with older cmake package (Leap 15.0 up to 15.2), the
+  included ctest macro does not accept extra parameters.
+- Add Fix-the-symlinks-creation.patch to fix the symlinks creation.
+- fix OpenEXR.pc
+- increase timeout for IlmImf test
+- version update to 2.4.0
+  * Completely re-written CMake configuration files
+  * Improved support for building on Windows, via CMake
+  * Improved support for building on macOS, via CMake
+  * All code compiles without warnings on gcc, clang, msvc
+  * Cleanup of license and copyright notices
+  * floating-point exception handling is disabled by default
+  * New Slice::Make method to reliably compute base pointer for a slice.
+  * Miscellaneous bug fixes
+  * CVE-2018-18444 Issue #351 Out of Memory
+  * CVE-2018-18443 Issue #350 heap-buffer-overflow
+- upstream does not provide gpg signature anymore
+  https://github.com/openexr/openexr/issues/565
+- modified sources
+  % baselibs.conf
+- deleted patches
+  - openexr-CVE-2017-14988.patch (upstreamed)
+  - openexr-CVE-2017-9111,9113,9115.patch (upstreamed)
+  - openexr-CVE-2018-18444.patch (upstreamed)
+- deleted sources
+  - openexr-2.3.0.tar.gz.sig (not needed)
+  - openexr.keyring (not needed)
+- testsuite only for x86_64 [bsc#1146648]
+- Enable tests on architectures with enough memory - boo#1146648
+  * disable imffuzztest as it takes to much resources
+- security update
+- added patches
+  CVE-2017-14988 [bsc#1061305]
+  + openexr-CVE-2017-14988.patch
+- security update
+- added patches
+  CVE-2017-9111 [bsc#1040109], CVE-2017-9113 [bsc#1040113], CVE-2017-9115 [bsc#1040115]
+  + openexr-CVE-2017-9111,9113,9115.patch
+- Codify new ilmbase requirements.
+- security update
+  * CVE-2018-18444 [bsc#1113455]
+    + openexr-CVE-2018-18444.patch
+- asan_build: build ASAN included
+- debug_build: build more suitable for debugging
+- Remove useless --with-pic.
+- Adjust RPM groups and repair sentence structure.
+- updated to 2.3.0
+  * ThreadPool overhead improvements, enable custom thread pool
+    to be registered via ThreadPoolProvider class
+  * Fixes to enable custom namespaces for Iex, Imf
+  * Improve read performance for deep/zipped data, and
+    SIMD-accelerated uncompress support
+  * Added rawPixelDataToBuffer() function for access to
+    compressed scanlines
+  * Iex::BaseExc no longer derived from std::string.
+  * Imath throw() specifiers removed
+  * Initial Support for Python 3
+  * removed patch
+- Update to 2.2.1
+  * Fix reported OpenEXR security vulnerabilities: CVE-2017-9110,
+    CVE-2017-9111, CVE-2017-9112, CVE-2017-9113, CVE-2017-9114,
+    CVE-2017-9115 and CVE-2017-9116
+- pgajdos@suse.com: but really seem to fix only:
+  CVE-2017-9110 [bsc#1040107], CVE-2017-9114 [bsc#1040114],
+  CVE-2017-9116 [bsc#1040116], CVE-2017-12596 [bsc#1052522]; for
+  the rest of issues see [bsc#1040109], [bsc#1040112],
+  [bsc#1040113], [bsc#1040114], [bsc#1040115], and [bsc#1061305]
+- Cleanup a bit with spec-cleaner
+- Update to 2.2.0
+  * DreamWorks Lossy Compression A new high quality, high performance lossy
+    compression codec contributed by DreamWorks Animation. This codec allows
+    control over variable lossiness to balance visual quality and file size.
+    This contribution also includes performance improvements that speed up
+    the PIZ codec.
+  * IlmImfUtil A new library intended to aid in development of image file
+    manipulation utilities that support the many types of OpenEXR images.
+  * This release also includes improvements to cross-platform build support
+    using CMake.
+- Bumped the soname, and now we have libIlmImf and libIlmImfUtil
+- Removed openexr-2.1.0-headers.patch
+- Updated openexr.keyring from the savannah project page.
+- Add obsoletes to baselibs.conf.
+- remove dependency on gpg-offline (blocks rebuilds and
+  tarball integrity is checked by source-validator anyway)
+- add openexr-2.1.0-headers.patch to install
+  ImfDeepImageStateAttribute.h header too
+- update to 2.1.0
+  This release includes a refactoring of the optimised read paths for RGBA
+  data, optimisations for some of the python bindings to Imath, improvements to
+  the cmake build environment as well as additional documentation describing
+  deep data in more detail.
+- make tests conditional, enable fuzz test and huge test
+- update to 2.0.1
+  This is a maintenance push that predominantly addresses edge case
+  failures in the optimisation code paths by temporarily disabling the
+  feature. For more details, please refer to the
+  /usr/share/doc/packages/openexr/ChangeLog
+- add gpg-offline based verification
+- fix library deps
+- update to 2.0.0
+ * Deep Data support - Pixels can now store a variable-length list of samples.
+   The main rationale behind deep images is to enable the storage of multiple
+   values at different depths for each pixel. OpenEXR 2.0 supports both
+   hard-surface and volumetric representations for Deep Compositing workflows.
+ * Multi-part Image Files - With OpenEXR 2.0, files can now contain a number
+   of separate, but related, data parts in one file. Access to any part is
+   independent of the others, pixels from parts that are not required in the
+   current operation don't need to be accessed, resulting in quicker read
+   times when accessing only a subset of channels. The multipart interface
+   also incorporates support for Stereo images where views are stored in
+   separate parts. This makes stereo OpenEXR 2.0 files significantly faster to
+   work with than the previous multiview support in OpenEXR.
+ * Optimized pixel reading - decoding RGB(A) scanline images has been
+   accelerated on SSE processors providing a significant speedup when reading
+   both old and new format images, including multipart and multiview files.
+ * Namespacing - The library introduces versioned namespaces to avoid
+   conflicts between packages compiled with different versions of the library.
+- obsoleted
+    openexr-suse-docdir.patch (moved in install phase)
+    openexr-disable-tests.patch
+- license update: BSD-3-Clause
+  No GPL licensed files found in the package
+- Update baselibs.conf
+- Update to 1.7.1
+  * Updated the .so verison to 7.
+  * obsoletes openexr-includes.patch
+- require new ilmbase-devel for build
+- rename libopenexr-devel to openexr devel to be compatible
+  with renamed ilmbase package
+- disable the test at all, as running them in OBS seems not to be
+  reliable
+- Remove redundant tags/sections per specfile guideline suggestions
+- openexr-disable-tests.patch - disable broken tests prevents a build
+  in Factory
+- remove explicit libdrm buildrequires
+- Use %_smp_mflags for parallel build
+- Update to 1.7.0 - bugfix release, multiviewer support
+  * obsoletes CVE-2009-1720 support
+  * built with --enable-larget-stack and test
+- Renammed to be more comfortable with Shared Library policy
+  * openexr - main (source package) contains tools in bindir, it provides and
+    obsoletes the old OpenEXR symbol
+  * libIlmImf6 - contains the openexr library
+  * libopenexr-devel - contains the headers, Provides and Obsoletes the
+    OpenEXR-devel symbol
+  * openexr-doc - documentation
+- add baselibs.conf as a source
+- fixed bnc#527539:  VUL-0: OpenEXR: [ MDVSA-2009:190 ] OpenEXR
+  used patches from Mandriva
+  * CVE-2009-1720
+  * CVE-2009-1721
+- save 6.7MB by removing static libraries and &quot;la&quot; files
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+- obsolete old -XXbit packages (bnc#437293)
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+- update to 1.6.1
+- fix buid, add docu subpackage with documentation and examples
+- fix linking of new IlmThread lib versus libpthread
+- update to 1.4.6
+- fix build, fix packaging examples and doc
+- added missing Requires
+- fixed RPM_OPT_FLAGS
+- fix shared lib dependencies
+- fix installed headers
+- converted neededforbuild to BuildRequires
+- make use of mesa-devel-packages macro in neededforbuild
+- don't build as root
+- update to version 1.2.2
+- Fix missing declaration.
+- try to fix docu installation
+- initial package of version 1.2.1 (forwarded request 773200 from StefanBruens)</comment>
+    <requestid>773383</requestid>
+  </revision>
 </revisionlist>
