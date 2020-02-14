@@ -1301,4 +1301,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>move all deprecated tools into bluez-deprecated package (forwarded request 757454 from seife)</comment>
     <requestid>757455</requestid>
   </revision>
+  <revision rev="167" vrev="3">
+    <srcmd5>0cb1cfcd9f3d7ab38417786c95e4257e</srcmd5>
+    <version>5.52</version>
+    <time>1581693856</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773528</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package bluez
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010-2019 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -312,8 +312,8 @@ make check V=0
 %{fillup_only -n bluetooth}
 # We need the bluez systemd service enabled at any time. It won't start up
 # on its own, as it is triggered by udev in the end (bnc#796671)
-/bin/systemctl enable bluetooth.service 2>&1 || :
-/bin/systemctl daemon-reload >/dev/null 2>&1 || :
+/usr/bin/systemctl enable bluetooth.service 2>&1 || :
+/usr/bin/systemctl daemon-reload >/dev/null 2>&1 || :
 
 %preun
 %service_del_preun bluetooth.service bluetooth-mesh.service
