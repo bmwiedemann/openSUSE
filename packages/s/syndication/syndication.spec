@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Syndication5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           syndication
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        RSS/Atom parsing library
 License:        LGPL-2.1-or-later
@@ -72,7 +72,7 @@ package contains development headers.
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
