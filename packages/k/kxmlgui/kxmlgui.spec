@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5XmlGui5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kxmlgui
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -54,14 +54,14 @@ BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 # Now requires private headers
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5DBus) >= 5.11.0
-BuildRequires:  cmake(Qt5Network) >= 5.11.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
-BuildRequires:  cmake(Qt5Xml) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(Qt5Network) >= 5.12.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5Xml) >= 5.12.0
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -91,9 +91,9 @@ Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5DBus) >= 5.11.0
-Requires:       cmake(Qt5Widgets) >= 5.11.0
-Requires:       cmake(Qt5Xml) >= 5.11.0
+Requires:       cmake(Qt5DBus) >= 5.12.0
+Requires:       cmake(Qt5Widgets) >= 5.12.0
+Requires:       cmake(Qt5Xml) >= 5.12.0
 
 %description devel
 libkxmlgui provides a framework for managing menu and toolbar actions in an
@@ -108,7 +108,7 @@ description for example for integrating actions from plugins. Development files.
 
 %build
   %cmake_kf5 -d build -- -DSYSCONF_INSTALL_DIR=%{_kf5_sysconfdir}
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build

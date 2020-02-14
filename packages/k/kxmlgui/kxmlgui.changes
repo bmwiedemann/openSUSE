@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:07:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:33:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * autotests: mark known test failure with QEXPECT_FAIL
+  * Use KStandardAction convenience method for switchApplicationLanguage
+  * allow programLogo property to be a QIcon, too
+  * Compile against qt5.15
+  * remove ability to report bugs against arbitrary stuff from a static list
+  * remove compiler information from bug report dialog
+  * KMainWindow: fix autoSaveSettings to catch QDockWidgets being shown again
+  * Drop unused headers
+  * i18n: Add more semantic context strings
+  * i18n: Split translations for strings "Translation"
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
