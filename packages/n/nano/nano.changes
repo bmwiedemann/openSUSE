@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:12:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.8:
+  * When something is pasted into nano, suppress auto-indentation
+  * paste can be undone as a whole with a single M-U
+  * Improve handling of lock files on start-up 
+  * Shift+Meta+letter key combos can be bound with 'bind Sh-M-letter'
+  * A custom nanorc file can be specified on the command line, with
+    -f filename or --rcfile=filename
+
+-------------------------------------------------------------------
 Thu Jan 30 02:17:13 UTC 2020 - seanlew@opensuse.org
 
 - update to 4.7:
