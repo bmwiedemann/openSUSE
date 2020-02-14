@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  7 12:15:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit python3-gobject BuildRequires: used to pulled in by
+  pkgconfig(pygobject-3.0), but in order to not drag in py2 and py3
+  all the time, this dependency was eliminated.
+
+-------------------------------------------------------------------
 Wed Jan 15 13:37:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gnome-builder-meson-fixes.patch: Fix build with new meson
