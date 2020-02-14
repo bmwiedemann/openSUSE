@@ -17,14 +17,15 @@
 
 
 Name:           perl-App-CELL
-Version:        0.228
+Version:        0.229
 Release:        0
 %define cpan_name App-CELL
 Summary:        Configuration, Error-handling, Localization, and Logging
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/App-CELL/
-Source0:        App-CELL-0.228.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SM/SMITHFARM/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -40,6 +41,7 @@ BuildRequires:  perl(Log::Any::Test)
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Params::Validate)
 BuildRequires:  perl(Software::License)
+BuildRequires:  perl(Test::Output)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(Try::Tiny)
 Requires:       perl(Date::Format)
@@ -57,14 +59,14 @@ This is the top-level module of App::CELL, the Configuration,
 Error-handling, Localization, and Logging framework for applications (or
 scripts) written in Perl.
 
-For details, read the POD in the the App::CELL manpage distro. For an
-introduction, read the App::CELL::Guide manpage.
+For details, read the POD in the App::CELL distro. For an introduction,
+read App::CELL::Guide.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -76,6 +78,7 @@ introduction, read the App::CELL::Guide manpage.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes config LICENSE README.rst WISHLIST
+%doc Changes README.rst WISHLIST
+%license LICENSE
 
 %changelog

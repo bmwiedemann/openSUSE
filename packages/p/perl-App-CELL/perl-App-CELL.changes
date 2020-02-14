@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 13 03:07:11 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.229
+   see /usr/share/doc/packages/perl-App-CELL/Changes
+
+  
+  0.229 2020-02-12 12:13 CET
+  - Qualify all calls to CORE::caller()
+  - t/034-status-dump.t: use Test::Output
+
+-------------------------------------------------------------------
 Tue Feb 11 18:36:49 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - updated to 0.228
