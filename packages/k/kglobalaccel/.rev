@@ -635,4 +635,12 @@
     <comment>KDE Frameworks 5.66.0</comment>
     <requestid>763458</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>afa957a7716c1f39744095ee0b7cf40d</srcmd5>
+    <version>5.67.0</version>
+    <time>1581694357</time>
+    <user>okurz-factory</user>
+    <comment>KDE Frameworks 5.67</comment>
+    <requestid>773259</requestid>
+  </revision>
 </revisionlist>

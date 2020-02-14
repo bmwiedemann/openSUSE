@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5GlobalAccel5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kglobalaccel
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        Global desktop keyboard shortcuts
 License:        LGPL-2.1-or-later
@@ -47,14 +47,14 @@ BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.12.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-keysyms)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.12.0
 %endif
 
 %description
@@ -92,8 +92,8 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       libKF5GlobalAccelPrivate5 = %{version}
-Requires:       cmake(Qt5DBus) >= 5.11.0
-Requires:       cmake(Qt5Widgets) >= 5.11.0
+Requires:       cmake(Qt5DBus) >= 5.12.0
+Requires:       cmake(Qt5Widgets) >= 5.12.0
 
 %description devel
 KGlobalAccel allows you to have global accelerators that are independent of
@@ -117,7 +117,7 @@ does not need focus for them to be activated.
 
 %build
   %cmake_kf5 -d build -- -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
