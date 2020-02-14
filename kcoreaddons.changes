@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:06:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * demote plugin load errors from warning to debug level + reword
+  * Document how to filter by servicetype the right way
+  * Add perlSplit() overload taking a QRegularExpression
+    and deprecate the QRegExp one
+  * Add mime type for backtraces saved from DrKonqi
+  * Add utility text function KShell::tildeCollapse
+  * Port to QMultiHash as QHash::insertMulti is deprecated
+  * KPluginMetaData: add initialPreference() getter
+  * desktoptojson: also convert InitialPreference key
+  * KCoreAddons: fix compilation with qtbase git dev branch
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
