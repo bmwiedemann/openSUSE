@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2017-2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ Systems.
 
 %build
 MYCFLAGS=$(grep ^CFLAGS Makefile | cut -f2 -d=)
-make %{?_smp_mflags} all CFLAGS="${MYCFLAGS} %{optflags}"
+make %{?_smp_mflags} all CFLAGS="${MYCFLAGS} %{optflags}" V=1
 make %{?_smp_mflags} doc
 
 %check
