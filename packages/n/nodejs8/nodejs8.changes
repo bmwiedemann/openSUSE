@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:54:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- CVE-2019-15604.patch: fixes a remotely triggerable assertion
+  on a TLS server via a crafted certificate string
+  (CVE-2019-15604, bsc#1163104)
+
+- CVE-2019-15605.patch: fixes an HTTP request smuggling vulnerability
+  via malformed Transfer-Encoding header (CVE-2019-15605, bsc#1163102)
+
+- CVE-2019-15606.patch: trim HTTP header values of optional
+  white space (CVE-2019-15606, bsc#1163103)
+
+-------------------------------------------------------------------
 Tue Jan  7 13:20:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for aarch64

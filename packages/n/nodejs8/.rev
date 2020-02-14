@@ -440,4 +440,18 @@ Previous build was broken because of boo#1056783: for some reason the compiler w
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>764404</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>21f9d55b250ba3d85838bb3091744030</srcmd5>
+    <version>8.17.0</version>
+    <time>1581693799</time>
+    <user>okurz-factory</user>
+    <comment>- CVE-2019-15604.patch: fixes a remotely triggerable assertion
+  on a TLS server via a crafted certificate string
+  (CVE-2019-15604, bsc#1163104)
+- CVE-2019-15605.patch: fixes an HTTP request smuggling vulnerability
+  via malformed Transfer-Encoding header (CVE-2019-15605, bsc#1163102)
+- CVE-2019-15606.patch: trim HTTP header values of optional
+  white space (CVE-2019-15606, bsc#1163103)</comment>
+    <requestid>773450</requestid>
+  </revision>
 </revisionlist>

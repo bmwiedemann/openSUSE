@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs8
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,6 +132,10 @@ Patch7:         manual_configure.patch
 Patch12:        openssl_1_1_1.patch
 
 Patch32:        fix_build_with_openssl_1.1.1d.patch
+
+Patch33:        CVE-2019-15606.patch
+Patch34:        CVE-2019-15604.patch
+Patch35:        CVE-2019-15605.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -345,6 +349,9 @@ tar Jxvf %{SOURCE11}
 %endif
 %patch12 -p1
 %patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).
@@ -390,6 +397,7 @@ find deps/zlib -name *.[ch] -delete
 # script, so we'll do it thus:
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -Wno-class-memaccess -Wno-error=return-type"
+export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?cc_exec:1}
 export CC=%{?cc_exec}
