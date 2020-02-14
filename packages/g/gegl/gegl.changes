@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb  4 20:53:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.20:
+  + Build: Improvements and refinements of meson builds and CI.
+    Fixing major issues for OSX and win32.
+  + Buffer:
+    - Pass O_BINARY where relevant on windows, fixing crashes
+      occuring when swap is used.
+    - Avoid 32bit overflows in computations for gegl_buffer_set and
+      gegl_buffer_get.
+  + Core:
+    - Avoid running more thread jobs than there are pixels to
+      process.
+    - Faster teardown of buffer caches when bounding box shrinks.
+    - Only do in-place processing if ROI fits in input abyss.
+  + Operations:
+    - Improved edge handling for gegl:distance-transform.
+    - gegl:crop removed workaround for incorrect in-place handling.
+- Drop gegl-0.4.18_allow_unknown_arch.patch: Fixed upstream.
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Sun Nov  3 10:42:57 UTC 2019 - ecsos@opensuse.org
 
 - Add BuildRequires: pkgconfig(libavutil) >= 55.92.100

@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           gegl
-Version:        0.4.18
+Version:        0.4.20
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,8 +31,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE -- allow building on architectures without CPU optimizations
-Patch:          gegl-0.4.18_allow_unknown_arch.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc
@@ -48,7 +46,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(OpenEXR) >= 1.6.1
-BuildRequires:  pkgconfig(babl) >= 0.1.62
+BuildRequires:  pkgconfig(babl) >= 0.1.74
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gexiv2)
@@ -97,7 +95,6 @@ input and output.
 %package -n %{name}-0_4
 Summary:        Generic Graphics Library
 Group:          System/Libraries
-Recommends:     %{name}-0_4-lang
 
 %description -n %{name}-0_4
 GEGL provides infrastructure to do demand based cached non destructive
