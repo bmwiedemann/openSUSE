@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:09:39 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Cleanup spec file, remove obsolete conditionals.
+- Build playdv as a separate package, removes X11, SDL1 and gtk2
+  build dependencies from the library.
+
+-------------------------------------------------------------------
 Fri Mar  6 17:30:12 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner
