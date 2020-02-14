@@ -43,5 +43,5 @@ to work.
 +arpd: arpd.o
 +	$(QUIET_CC)$(CC) $(LDFLAGS) -o arpd arpd.o $(LDLIBS) -ldb
  
- ssfilter.c: ssfilter.y
- 	$(QUIET_YACC)bison ssfilter.y -o ssfilter.c
+ ssfilter.tab.c: ssfilter.y
+ 	$(QUIET_YACC)$(YACC) -b ssfilter ssfilter.y
