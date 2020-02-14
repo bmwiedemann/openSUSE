@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -31,6 +31,8 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/qqc2-des
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/qqc2-desktop-style-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-ScrollView-Use-scrollbar-height-as-bottom-padding-no.patch
 BuildRequires:  extra-cmake-modules >= 0.0.8
 # For dir ownership
 BuildRequires:  kf5-filesystem
@@ -72,11 +74,11 @@ qqc2-desktop-style.
 Usually not needed as it is only a runtime dependency.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build

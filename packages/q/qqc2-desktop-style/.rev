@@ -240,4 +240,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.66.0</comment>
     <requestid>763499</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>49dbc808143808a94c7ebc9b4d9bef03</srcmd5>
+    <version>5.67.0</version>
+    <time>1581694502</time>
+    <user>okurz-factory</user>
+    <comment>KDE Frameworks 5.67</comment>
+    <requestid>773303</requestid>
+  </revision>
 </revisionlist>

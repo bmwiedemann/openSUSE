@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 10 21:34:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch 0001-ScrollView-Use-scrollbar-height-as-bottom-padding-no.patch
+
+-------------------------------------------------------------------
+Sun Feb  2 18:07:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:33:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Remove scrollbar related workarounds from list delegates
+  * [TabBar] Remove frame
+  * Add active, link, visited, negative, neutral and positive background colors
+  * fix paddings
+  * use hasTransientTouchInput
+  * always round x and y
+  * support mobile mode scrollbar
+  * ScrollView: Do not overlay scrollbars over contents
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
