@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:07:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:33:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * [networkmanager-qt] Port QRegExp to QRegularExpression
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
