@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Feb  9 17:16:03 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- Update to new upstream version 5.5
+  * bridge: support fdb get
+  * devlink: command line option to switch netns
+  * devlink: all changing netns on reload
+  * devlink: new timestamp format for health report dump
+  * ip: support for alternative device names
+  * ip link: support to get SR-IOV VF node GUID and port GUID
+  * ip neigh: support get
+  * rdma: relax requirement to have PID for HW objects
+  * rdma: stat show mr
+  * ss: allow dumping kTLS info
+  * tc: support action flags
+  * tc flower: support masked port destination and source match
+  * tc pie: add dq_rate_estimator option
+  * tipc: new commands to set TIPC AEAD key
+  * more json support
+- drop patches obsoleted by version upgrade:
+  * ss-fix-end-of-line-printing-in-misc-ss.c.patch
+  * no-double-definitions.patch
+  * Revert-emp-fix-warning-on-deprecated-bison-directive.patch
+  * Revert-tc-ematch-fix-deprecated-yacc-warning.patch
+- refresh
+  * split-link-and-compile-steps-for-binaries.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 10:05:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add no-double-definitions.patch [boo#1160271]

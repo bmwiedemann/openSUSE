@@ -17,9 +17,8 @@
 
 
 Name:           iproute2
-Version:        5.4
+Version:        5.5.0
 Release:        0
-%define rversion 5.4.0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
@@ -28,18 +27,14 @@ URL:            https://www.linuxfoundation.org/collaborate/workgroups/networkin
 
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone:	git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2
-Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%rversion.tar.xz
-Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%rversion.tar.sign
+Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.xz
+Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.sign
 Source9:        %name.keyring
 Patch1:         adjust-installation-directories-for-openSUSE-SLE.patch
 Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
 Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
 Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
-Patch7:         ss-fix-end-of-line-printing-in-misc-ss.c.patch
-Patch8:         no-double-definitions.patch
-Patch101:       Revert-tc-ematch-fix-deprecated-yacc-warning.patch
-Patch102:       Revert-emp-fix-warning-on-deprecated-bison-directive.patch
 Patch201:       bpf-data-section-support-poc.patch
 Patch202:       bpf-bss-section-poc.patch
 BuildRequires:  bison
@@ -87,14 +82,7 @@ Requires:       bash-completion
 bash command line completion support for iproute.
 
 %prep
-%setup -qn %name-%rversion
-%patch -P 1 -P 2 -P 3 -P 4 -P 6 -P 7 -P 8 -P 201 -P 202 -p1
-%if 0%{?suse_version} < 1500
-%patch -P 101 -p1
-%endif
-%if 0%{?sles_version} == 11
-%patch -P 102 -p1
-%endif
+%autosetup -p1
 find . -name *.orig -delete
 
 %build
