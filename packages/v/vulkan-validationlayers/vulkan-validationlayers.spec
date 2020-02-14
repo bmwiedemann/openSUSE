@@ -36,6 +36,8 @@ BuildRequires:  spirv-tools-devel >= 2020.1~git24
 BuildRequires:  pkgconfig(vulkan) >= 1.1.112
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
+Conflicts:      vulkan < 1.1
+Obsoletes:      vulkan < 1.1
 
 %description
 Vulkan is a 3D graphics and compute API providing cross-platform

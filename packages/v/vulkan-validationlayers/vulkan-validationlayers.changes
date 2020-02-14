@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 11 15:21:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add conflicts and obsoletes for vulkan < 1.1 so the package replaces
+  properly the vulkan package in SLE/Leap
+
+-------------------------------------------------------------------
 Mon Feb  3 12:41:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to release 1.2.132
