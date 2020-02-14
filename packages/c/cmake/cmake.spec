@@ -1,7 +1,7 @@
 #
 # spec file for package cmake
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,23 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "gui"
-%define psuffix -gui
+%define psuffix -ui
 %bcond_without gui
 %else
-%define psuffix %{nil}
 %bcond_with gui
 %endif
+%if "%{flavor}" == "mini"
+%define psuffix -mini
+%bcond_without mini
+%else
+%bcond_with mini
+%endif
 %define shortversion 3.16
-Name:           cmake%{psuffix}
+Name:           cmake%{?psuffix}
 Version:        3.16.2
 Release:        0
+Summary:        Cross-platform make system
+License:        BSD-3-Clause
 URL:            https://www.cmake.org/
 Source0:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}.tar.gz
 Source1:        cmake.macros
@@ -42,53 +49,52 @@ Patch0:         cmake-fix-ruby-test.patch
 Patch1:         feature-suse-python-interp-search-order.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libcurl-mini-devel
-# this is commented as it would create dependancy cycle between jsoncpp and cmake
-#if 0 % { ? suse_version} > 1320
-#BuildRequires:  pkgconfig(jsoncpp)
-#endif
 BuildRequires:  pkgconfig
 BuildRequires:  rhash-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(libarchive) >= 3.0.2
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libuv) >= 1.10
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 Requires:       make
-%if %{with gui}
-Summary:        CMake graphical user interface
-License:        BSD-3-Clause
-%else
-Summary:        Cross-platform make system
-License:        BSD-3-Clause
-%endif
-%if %{with gui}
-BuildRequires:  python-sphinx
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Widgets)
-Requires:       cmake
-Recommends:     cmake-man
-%else
 # bnc#953842 - A python file is shipped so require python base so it can be run.
 Requires:       python3-base
+%if %{with mini}
+Requires:       this-is-only-for-build-envs
+Conflicts:      cmake
+Provides:       cmake = %{version}
+%else
+BuildRequires:  pkgconfig(jsoncpp) >= 1.4.1
+BuildRequires:  pkgconfig(libarchive) >= 3.3.3
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libzstd)
+Conflicts:      cmake-mini
 %endif
+%if %{with gui}
+BuildRequires:  python3-Sphinx
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
+
+%description
+CMake is a cross-platform build system.
 
 %package -n cmake-man
 Summary:        Manual pages for cmake, a cross-platform make system
+Supplements:    cmake
 
 %description -n cmake-man
 Manual pages for cmake, a cross-platform make system.
 
-%if %{with gui}
-%description
+%package -n cmake-gui
+Summary:        CMake graphical user interface
+Requires:       cmake
+
+%description -n cmake-gui
 This is a Graphical User Interface for CMake, a cross-platform
 build system.
-%else
-%description
-CMake is a cross-platform build system.
-%endif
 
 %prep
 # The publisher doesn't sign the source tarball, but a signatures file containing multiple hashes.
@@ -107,9 +113,12 @@ export CXXFLAGS="%{optflags}"
     --docdir=/share/doc/packages/cmake \
     --mandir=/share/man \
     --system-libs \
+%if %{with mini}
+    --no-system-curl \
     --no-system-jsoncpp \
     --no-system-libarchive \
     --no-system-zstd \
+%endif
     --parallel=0%{jobs} \
     --verbose \
 %if %{with gui}
@@ -119,7 +128,7 @@ export CXXFLAGS="%{optflags}"
     --no-qt-gui \
 %endif
     %{nil}
-make VERBOSE=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -144,20 +153,22 @@ install -p -m0755 -D %{SOURCE4} %{buildroot}%{_libexecdir}/rpm/cmake.prov
 
 # Install bash completion symlinks
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-for f in %{buildroot}%{_datadir}/%{name}/completions/*
+for f in %{buildroot}%{_datadir}/cmake/completions/*
 do
-  ln -s ../../%{name}/completions/$(basename $f) %{buildroot}%{_datadir}/bash-completion/completions
+  ln -s ../../cmake/completions/$(basename $f) %{buildroot}%{_datadir}/bash-completion/completions
 done
 
 # cmake-mode.el
-%define cmake_mode_el %{_datadir}/emacs/site-lisp/%{name}-mode.el
+%define cmake_mode_el %{_datadir}/emacs/site-lisp/cmake-mode.el
 install -D -p -m 0644 Auxiliary/cmake-mode.el %{buildroot}%cmake_mode_el
-rm %{buildroot}%{_datadir}/%{name}/editors/emacs/cmake-mode.el
-# fix: W: files-duplicate  (%license covers already)
-rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
+rm %{buildroot}%{_datadir}/cmake/editors/emacs/cmake-mode.el
+# fix: W: files-duplicate  (%%license covers already)
+rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 
 %fdupes %{buildroot}%{_datadir}/cmake
+%endif
 
+%if "%{flavor}" == ""
 %check
 # Excluded tests:
 #    TestUpload: uses internet connection
@@ -172,7 +183,7 @@ rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
 %files -n cmake-gui
 %license Copyright.txt
 %{_bindir}/cmake-gui
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/cmake-gui.desktop
 %{_datadir}/mime/packages/cmakecache.xml
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
@@ -188,7 +199,7 @@ rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
 %files
 %license Copyright.txt
 %doc README.rst
-%config %{_rpmconfigdir}/macros.d/macros.cmake
+%{_rpmconfigdir}/macros.d/macros.cmake
 %{_libexecdir}/rpm
 %{_bindir}/cpack
 %{_bindir}/cmake
@@ -198,7 +209,7 @@ rm %{buildroot}%{_docdir}/%{name}/Copyright.txt
 %{_libdir}/cmake
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/cmake.m4
-%doc %{_docdir}/%{name}
+%doc %{_docdir}/cmake
 %{_datadir}/bash-completion
 %cmake_mode_el
 %dir %{dirname:%cmake_mode_el}

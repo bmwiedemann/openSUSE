@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:26:56 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert LIBDIR change in macros - it is inconsistent (all other
+  INSTALL_<dir>s use absolute paths), unneeded (paths may be
+  absolute or relative), and breaks a number of packages.
+- Update minimum libarchive version, >= 3.3.3.
+- Do not flag macros as config file.
+- Adjust constraints (7G disk space is required, independent
+  of architecture).
+
+-------------------------------------------------------------------
+Fri Feb  7 02:11:06 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Revert "use cmake generics in marcos.cmake" it breaks many
+  cases in stagings.
+
+-------------------------------------------------------------------
+Wed Feb  5 12:50:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add new -mini flavor in order to break up cycles
+  * make sure the default cmake links now all system libraries
+    and mini uses bundled stuff as needed
+- Switch to python3 variant of Sphinx on the manpage/docu creation
+
+-------------------------------------------------------------------
+Tue Jan 14 23:14:08 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- use cmake generics in marcos.cmake
+
+-------------------------------------------------------------------
+Tue Jan 14 07:36:33 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix setting CMAKE_INSTALL_LIBDIR in cmake macro
+  * This is a relative path, see `cmake --help-module GNUInstallDirs`
+- Do NOT set -DCMAKE_SKIP_RPATH:BOOL=OFF
+  * A lot of applications have private libraries in a subdirectory
+    and require linking with RPATH which is totally valid.
+
+-------------------------------------------------------------------
 Fri Dec 20 10:09:57 UTC 2019 - Christoph G <foss@grueninger.de>
 
 - update to CMAke 3.16.2
