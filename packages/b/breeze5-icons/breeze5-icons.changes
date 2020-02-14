@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:06:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * create Breeze style Kate icon based on new design by Tyson Tan
+  * Change VLC icon to be more like official VLC icons
+  * add ktrip icon from ktrip repo
+  * Clean up wayland icon shadow
+  * Add icon for application/sql
+  * Cleanup and add 22px media repeat icons
+  * Add icon for text/vnd.kde.kcrash-report
+  * Turn application/x-ms-shortcut into an actual shortcut icon
+
+-------------------------------------------------------------------
 Sun Jan  5 09:01:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
