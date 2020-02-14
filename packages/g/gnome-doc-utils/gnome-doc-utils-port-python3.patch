@@ -1,0 +1,320 @@
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/__init__.py
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/__init__.py
+@@ -86,14 +86,14 @@ class MessageOutput:
+                 self.messages.append(t)
+                 if spacepreserve:
+                     self.nowrap[t] = True
+-                if t in self.linenos.keys():
++                if t in list(self.linenos.keys()):
+                     self.linenos[t].append((self.filename, tag, lineno))
+                 else:
+                     self.linenos[t] = [ (self.filename, tag, lineno) ]
+                 if (not self.do_translations) and comment and not t in self.comments:
+                     self.comments[t] = comment
+             else:
+-                if t in self.linenos.keys():
++                if t in list(self.linenos.keys()):
+                     self.linenos[t].append((self.filename, tag, lineno))
+                 else:
+                     self.linenos[t] = [ (self.filename, tag, lineno) ]
+@@ -200,7 +200,7 @@ class XMLDocument(object):
+             tree = ctxt.doc()
+             newnode = tree.getRootElement()
+         except:
+-            print >> sys.stderr, """Error while normalizing string as XML:\n"%s"\n""" % (text)
++            print("""Error while normalizing string as XML:\n"%s"\n""" % (text), file=sys.stderr)
+             return text
+ 
+         self.normalizeNode(newnode)
+@@ -326,7 +326,7 @@ class XMLDocument(object):
+                 pass
+ 
+             content = '<%s>%s</%s>' % (starttag, text, endtag)
+-            tmp = tmp + content.encode('utf-8')
++            tmp = tmp + content
+ 
+             newnode = None
+             try:
+@@ -338,7 +338,7 @@ class XMLDocument(object):
+                 pass
+ 
+             if not newnode:
+-                print >> sys.stderr, """Error while parsing translation as XML:\n"%s"\n""" % (text.encode('utf-8'))
++                print("""Error while parsing translation as XML:\n"%s"\n""" % (text.encode('utf-8')), file=sys.stderr)
+                 return
+ 
+             newelem = newnode.getRootElement()
+@@ -352,9 +352,10 @@ class XMLDocument(object):
+ 
+                 if node:
+                     copy = newelem.copyNodeList()
+-                    next = node.next
++                    #next = node.next
+                     node.replaceNode(newelem.copyNodeList())
+-                    node.next = next
++                    #print(type(next))
++                    #node.next = next
+ 
+             else:
+                 # In practice, this happens with tags such as "<para>    </para>" (only whitespace in between)
+@@ -470,7 +471,7 @@ class XMLDocument(object):
+ 
+         worth = self.worthOutputting(node)
+         if not translation:
+-            translation = outtxt.decode('utf-8')
++            translation = outtxt
+             if worth and self.app.options.get('mark_untranslated'):
+                 node.setLang('C')
+ 
+@@ -577,8 +578,8 @@ class Main(object):
+                 raise IOError("Unable to read file '%s'" % xmlfile)
+             try:
+                 doc = XMLDocument(xmlfile, self)
+-            except Exception, e:
+-                print >> sys.stderr, "Unable to parse XML file '%s': %s" % (xmlfile, str(e))
++            except Exception as e:
++                print("Unable to parse XML file '%s': %s" % (xmlfile, str(e)), file=sys.stderr)
+                 sys.exit(1)
+             self.current_mode.preProcessXml(doc.doc, self.msg)
+             doc.generate_messages()
+@@ -590,14 +591,14 @@ class Main(object):
+             raise IOError("Unable to read file '%s'" % xmlfile)
+         try:
+             doc = XMLDocument(xmlfile, self)
+-        except Exception, e:
+-            print >> sys.stderr, str(e)
++        except Exception as e:
++            print(str(e), file=sys.stderr)
+             sys.exit(1)
+ 
+         try:
+             mfile = open(mofile, "rb")
+         except:
+-            print >> sys.stderr, "Can't open MO file '%s'." % (mofile)
++            print("Can't open MO file '%s'." % (mofile), file=sys.stderr)
+         self.gt = gettext.GNUTranslations(mfile)
+         self.gt.add_fallback(NoneTranslations())
+         # Has preProcessXml use cases for merge?
+@@ -619,16 +620,16 @@ class Main(object):
+             raise IOError("Unable to read file '%s'" % xmlfile)
+         try:
+             doc = XMLDocument(xmlfile, self)
+-        except Exception, e:
+-            print >> sys.stderr, str(e)
++        except Exception as e:
++            print(str(e), file=sys.stderr)
+             sys.exit(1)
+         doc.generate_messages()
+ 
+         self.msg.translationsFollow()
+         try:
+             doc = XMLDocument(origxml, self)
+-        except Exception, e:
+-            print >> sys.stderr, str(e)
++        except Exception as e:
++            print(str(e), file=sys.stderr)
+             sys.exit(1)
+         doc.generate_messages()
+         self.output_po()
+@@ -663,7 +664,7 @@ class Main(object):
+         if not text or text.strip() == '':
+             return text
+         if self.gt:
+-            res = self.gt.ugettext(text.decode('utf-8'))
++            res = self.gt.gettext(text)
+             return res
+ 
+         return text
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/modes/docbook.py
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/modes/docbook.py
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/modes/docbook.py
+@@ -43,7 +43,7 @@ try:
+ except ImportError:
+     from md5 import new as md5_new
+ 
+-from basic import basicXmlMode
++from .basic import basicXmlMode
+ 
+ class docbookXmlMode(basicXmlMode):
+     """Class for special handling of DocBook document types.
+@@ -131,7 +131,7 @@ class docbookXmlMode(basicXmlMode):
+                     hash = self._md5_for_file(fullpath)
+                 else:
+                     hash = "THIS FILE DOESN'T EXIST"
+-                    print >>sys.stderr, "Warning: image file '%s' not found." % fullpath
++                    print("Warning: image file '%s' not found." % fullpath, file=sys.stderr)
+ 
+                 msg.outputMessage("@@image: '%s'; md5=%s" % (attr, hash), node.lineNo(),
+                                   "When image changes, this message will be marked fuzzy or untranslated for you.\n"+
+@@ -184,7 +184,7 @@ class docbookXmlMode(basicXmlMode):
+                     else:
+                         ai.addChild(copy)
+                     if match.group(3):
+-                        copy.newChild(None, "year", match.group(3).encode('utf-8'))
++                        copy.newChild(None, "year", match.group(3))
+                     if match.group(1) and match.group(2):
+                         holder = match.group(1)+"(%s)" % match.group(2)
+                     elif match.group(1):
+@@ -193,15 +193,15 @@ class docbookXmlMode(basicXmlMode):
+                         holder = match.group(2)
+                     else:
+                         holder = "???"
+-                    copy.newChild(None, "holder", holder.encode('utf-8'))
++                    copy.newChild(None, "holder", holder)
+ 
+ # Perform some tests when ran standalone
+ if __name__ == '__main__':
+     test = docbookXmlMode()
+-    print "Ignored tags       : " + repr(test.getIgnoredTags())
+-    print "Final tags         : " + repr(test.getFinalTags())
+-    print "Space-preserve tags: " + repr(test.getSpacePreserveTags())
++    print("Ignored tags       : " + repr(test.getIgnoredTags()))
++    print("Final tags         : " + repr(test.getFinalTags()))
++    print("Space-preserve tags: " + repr(test.getSpacePreserveTags()))
+ 
+-    print "Credits from string: '%s'" % test.getStringForTranslators()
+-    print "Explanation for credits:\n\t'%s'" % test.getCommentForTranslators()
++    print("Credits from string: '%s'" % test.getStringForTranslators())
++    print("Explanation for credits:\n\t'%s'" % test.getCommentForTranslators())
+ 
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/modes/gs.py
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/modes/gs.py
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/modes/gs.py
+@@ -20,7 +20,7 @@
+ # Special case Gnome Summary
+ #
+ 
+-from basic import basicXmlMode
++from .basic import basicXmlMode
+ 
+ class gsXmlMode(basicXmlMode):
+     """Abstract class for special handling of document types."""
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/modes/mallard.py
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/modes/mallard.py
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/modes/mallard.py
+@@ -39,7 +39,7 @@ try:
+ except ImportError:
+     from md5 import new as md5_new
+ 
+-from basic import basicXmlMode
++from .basic import basicXmlMode
+ 
+ class mallardXmlMode(basicXmlMode):
+     """Class for special handling of Mallard document types."""
+@@ -112,7 +112,7 @@ class mallardXmlMode(basicXmlMode):
+                     hash = self._md5_for_file(fullpath)
+                 else:
+                     hash = "THIS FILE DOESN'T EXIST"
+-                    print >>sys.stderr, "Warning: image file '%s' not found." % fullpath
++                    print("Warning: image file '%s' not found." % fullpath, file=sys.stderr)
+                     
+                 msg.outputMessage("@@image: '%s'; md5=%s" % (attr, hash), node.lineNo(),
+                                   "When image changes, this message will be marked fuzzy or untranslated for you.\n"+
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/modes/ubuntu.py
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/modes/ubuntu.py
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/modes/ubuntu.py
+@@ -2,7 +2,7 @@
+ 
+ import libxml2
+ 
+-from docbook import docbookXmlMode
++from .docbook import docbookXmlMode
+ 
+ class ubuntuXmlMode (docbookXmlMode):
+     """Special-casing Ubuntu DocBook website documentation."""
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/modes/xhtml.py
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/modes/xhtml.py
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/modes/xhtml.py
+@@ -21,7 +21,7 @@
+ # This implements special instructions for handling XHTML documents
+ # in a better way, particularly to extract some attributes in HTML tags
+ 
+-from basic import basicXmlMode
++from .basic import basicXmlMode
+ 
+ class xhtmlXmlMode(basicXmlMode):
+     """Class for special handling of XHTML document types."""
+Index: gnome-doc-utils-0.20.10/xml2po/xml2po/xml2po.py.in
+===================================================================
+--- gnome-doc-utils-0.20.10.orig/xml2po/xml2po/xml2po.py.in
++++ gnome-doc-utils-0.20.10/xml2po/xml2po/xml2po.py.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -u
++#!/usr/bin/python3 -u
+ # -*- encoding: utf-8 -*-
+ # Copyright (c) 2004, 2005, 2006 Danilo Šegan <danilo@gnome.org>.
+ # Copyright (c) 2009 Claude Paroz <claude@2xlibre.net>.
+@@ -41,9 +41,9 @@ NULL_STRING = '/dev/null'
+ if not os.path.exists('/dev/null'): NULL_STRING = 'NUL'
+ 
+ def usage (with_help = False):
+-    print >> sys.stderr, "Usage:  %s [OPTIONS] [XMLFILE]..." % (sys.argv[0])
++    print("Usage:  %s [OPTIONS] [XMLFILE]..." % (sys.argv[0]), file=sys.stderr)
+     if with_help:
+-        print >> sys.stderr, """
++        print("""
+ OPTIONS may be some of:
+     -a    --automatic-tags     Automatically decides if tags are to be considered
+                                  "final" or not
+@@ -72,7 +72,7 @@ EXAMPLES:
+     using -p option for each XML file:
+         %(command)s -p de.po chapter1.xml > chapter1.de.xml
+         %(command)s -p de.po chapter2.xml > chapter2.de.xml
+-""" % {'command': sys.argv[0]}
++""" % {'command': sys.argv[0]}, file=sys.stderr)
+ 
+ 
+ def main(argv):
+@@ -82,7 +82,7 @@ def main(argv):
+ 
+     name = os.path.join(os.path.dirname(__file__), '..')
+     if os.path.exists(os.path.join(name, 'tests')):
+-        print >> sys.stderr, 'Running from source folder, modifying PYTHONPATH'
++        print('Running from source folder, modifying PYTHONPATH', file=sys.stderr)
+         sys.path.insert(0, name)
+ 
+     from xml2po import Main
+@@ -142,14 +142,14 @@ def main(argv):
+         elif opt in ('-o', '--output'):
+             output = arg
+         elif opt in ('-v', '--version'):
+-            print VERSION
++            print(VERSION)
+             sys.exit(0)
+         elif opt in ('-h', '--help'):
+             usage(True)
+             sys.exit(0)
+ 
+     if operation == 'update' and output != "-":
+-        print >> sys.stderr, "Option '-o' is not yet supported when updating translations directly. Ignoring this option."
++        print("Option '-o' is not yet supported when updating translations directly. Ignoring this option.", file=sys.stderr)
+ 
+     # Treat remaining arguments as XML files
+     filenames = []
+@@ -159,16 +159,16 @@ def main(argv):
+     try:
+         xml2po_main = Main(default_mode, operation, output, options)
+     except IOError:
+-        print >> sys.stderr, "Error: cannot open file %s for writing." % (output)
++        print("Error: cannot open file %s for writing." % (output), file=sys.stderr)
+         sys.exit(5)
+ 
+     if operation == 'merge':
+         if len(filenames) > 1:
+-            print  >> sys.stderr, "Error: You can merge translations with only one XML file at a time."
++            print("Error: You can merge translations with only one XML file at a time.", file=sys.stderr)
+             sys.exit(2)
+ 
+         if not mofile:
+-            print >> sys.stderr, "Error: You must specify MO file when merging translations."
++            print("Error: You must specify MO file when merging translations.", file=sys.stderr)
+             sys.exit(3)
+ 
+         xml2po_main.merge(mofile, filenames[0])

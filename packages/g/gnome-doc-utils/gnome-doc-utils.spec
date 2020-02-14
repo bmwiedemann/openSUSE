@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-doc-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,21 @@ Release:        0
 Summary:        A Collection of Documentation Utilities for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-URL:            http://www.gnome.org
-Source:         http://download.gnome.org/sources/gnome-doc-utils/0.20/%{name}-%{version}.tar.xz
+URL:            https://www.gnome.org
+Source0:        https://download.gnome.org/sources/gnome-doc-utils/0.20/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-doc-utils-fig-path.patch bgo#682776 dimstar@opensuse.org -- Fix linking of figs in subfolders.
 Patch0:         gnome-doc-utils-fig-path.patch
+# PATCH-FIX-UPSTREAM gnome-doc-utils-port-python3.patch -- Port to python3
+Patch1:         gnome-doc-utils-port-python3.patch
+
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  python2-libxml2
+%if %suse_version > 1500
+BuildRequires:  python3-libxml2
+%else
+BuildRequires:  python3-libxml2-python
+%endif
 # needed for xmllint
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-devel
@@ -48,7 +55,7 @@ the DocBook XSLT stylesheets that were once distributed with Yelp.
 Summary:        Tool to extract translatable content from XML documents
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Requires:       python2-libxml2
+Requires:       python3-libxml2
 
 %description -n xml2po
 xml2po is a Python program which extracts translatable content from
@@ -70,7 +77,7 @@ documentation and auxiliary files in a source tree. It also contains
 the DocBook XSLT stylesheets that were once distributed with Yelp.
 
 %package -n xml2po-devel
-Summary:        pkgconfig file for xml2po
+Summary:        Pkgconfig file for xml2po
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 Requires:       xml2po = %{version}
@@ -82,24 +89,22 @@ free-form XML documents and outputs gettext compatible POT files.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 translation-update-upstream
 
 %build
-%configure\
-	--disable-scrollkeeper
-make %{?_smp_mflags} pkgconfigdir=%{_datadir}/pkgconfig
+export LANG=C.UTF-8
+%configure \
+	--disable-scrollkeeper \
+	%{nil}
+%make_build pkgconfigdir=%{_datadir}/pkgconfig
 
 %install
 %make_install pkgconfigdir=%{_datadir}/pkgconfig
-%if 0%{?suse_version} <= 1120
-rm %{buildroot}%{_datadir}/locale/en@shaw/LC_MESSAGES/*
-%endif
 %find_lang %{name} %{?no_lang_C}
 %find_lang gnome-doc-make %{?no_lang_C} %{name}.lang
 %find_lang gnome-doc-xslt %{?no_lang_C} %{name}.lang
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 %files
 %license COPYING
@@ -121,7 +126,7 @@ rm %{buildroot}%{_datadir}/locale/en@shaw/LC_MESSAGES/*
 %license xml2po/COPYING
 %doc xml2po/AUTHORS xml2po/ChangeLog xml2po/NEWS xml2po/README
 %{_bindir}/xml2po
-%{python_sitelib}/xml2po
+%{python3_sitelib}/xml2po
 %{_mandir}/man?/xml2po*%{ext_man}
 
 %files devel

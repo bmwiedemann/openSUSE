@@ -431,4 +431,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767131 from dimstar)</comment>
     <requestid>767399</requestid>
   </revision>
+  <revision rev="61" vrev="16">
+    <srcmd5>a86a3aaab74524f2ade967f51541b047</srcmd5>
+    <version>0.20.10</version>
+    <time>1581694097</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>772649</requestid>
+  </revision>
 </revisionlist>
