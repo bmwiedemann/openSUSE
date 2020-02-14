@@ -37,6 +37,8 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-unlock-widgets.patch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -146,8 +148,7 @@ Requires:       kactivities5-imports
 Requires:       knewstuff-imports
 Conflicts:      kactivities5 < 5.20.0
 Recommends:     plasma5-addons
-Suggests:       %{name}-emojier
-Recommends:     %{name}-lang
+Recommends:     %{name}-emojier
 Provides:       kdebase4-workspace = 5.3.0
 Obsoletes:      kdebase4-workspace < 5.3.0
 Provides:       kcm-touchpad = %{version}
@@ -177,12 +178,8 @@ This package contains the basic packages for a Plasma workspace.
 Summary:        Selection window for emoji text input
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
-# This uses .dict files, which are part of the ibus package.
-# That's a huge dep tree and is also known to break things.
-# So until that is fixed, don't install emojier by default.
-Requires:       ibus
-# Get it installed automatically at least if ibus is already there
-Supplements:    (%{name} and ibus)
+# Other color fonts don't really work that well
+Recommends:     noto-coloremoji-fonts
 
 %description emojier
 Press Meta+. to open an emoji selection window.
@@ -196,6 +193,9 @@ Press Meta+. to open an emoji selection window.
 sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/package/metadata.desktop
 
 %build
+  # Reference the local copy (see the comment in the install section)
+  sed -i"" 's#ibus/dicts/#plasma/ibus-emoji-dicts/#g' applets/kimpanel/backend/ibus/emojier/emojier.cpp
+
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
@@ -218,6 +218,12 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   # remove empty/invalid appstream xml files. kpackagetool5 generates invalid files sometimes...
   # remove this once kpackagetool5 is fixed
   find %{buildroot}%{_kf5_appstreamdir} -type f -size 0 -print -delete
+
+  # The emojier needs .dict files from ibus, which are part of the ibus package.
+  # That's a huge dep tree and is also known to break things such as keyboard layout selection.
+  # So until that is fixed (boo#1161584) install the files as part of the package.
+  mkdir -p %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
+  cp %{_datadir}/ibus/dicts/emoji-*.dict %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
 
   # no devel files needed here
   rm -rfv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
@@ -293,6 +299,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_servicetypesdir}/
 %{_kf5_datadir}/
 %{_kf5_sharedir}/solid/
+%exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/
 %{_kf5_libdir}/libexec/kimpanel-ibus-panel
@@ -307,6 +314,7 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_applicationsdir}/org.kde.plasma.emojier.desktop
 %dir %{_kf5_sharedir}/kglobalaccel
 %{_kf5_sharedir}/kglobalaccel/org.kde.plasma.emojier.desktop
+%{_kf5_plasmadir}/ibus-emoji-dicts/
 
 %if %{with lang}
 %files lang -f %{name}.lang

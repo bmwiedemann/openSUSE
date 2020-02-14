@@ -1113,4 +1113,21 @@
     <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
     <requestid>772256</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>028654fe4279c6a268d02eea7fb257e4</srcmd5>
+    <version>5.18.0</version>
+    <time>1581693870</time>
+    <user>okurz-factory</user>
+    <comment>- Add %exclude for ibus-emoji-dicts to avoid file conflicts
+
+- Ship ibus emoji dicts as part of the emojier subpackage,
+  recommend it by default now
+- Recommend noto-coloremoji-fonts for emojier
+- Drop superfluous -lang recommends
+
+- Add patch to unlock widgets by default as the GUI option got
+  dropped (kde#417424):
+  * 0001-unlock-widgets.patch</comment>
+    <requestid>774303</requestid>
+  </revision>
 </revisionlist>

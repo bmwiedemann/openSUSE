@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:00:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add %exclude for ibus-emoji-dicts to avoid file conflicts
+
+-------------------------------------------------------------------
+Wed Feb 12 08:37:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Ship ibus emoji dicts as part of the emojier subpackage,
+  recommend it by default now
+- Recommend noto-coloremoji-fonts for emojier
+- Drop superfluous -lang recommends
+
+-------------------------------------------------------------------
+Tue Feb 11 16:51:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to unlock widgets by default as the GUI option got
+  dropped (kde#417424):
+  * 0001-unlock-widgets.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.0
