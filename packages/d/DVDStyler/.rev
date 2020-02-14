@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>739253</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb1fb7dceb94ef57b7801de8f1fa8de5</srcmd5>
+    <version>3.1.2</version>
+    <time>1581694902</time>
+    <user>okurz-factory</user>
+    <comment>Update to version 3.1.2 (fixes boo#1163548)</comment>
+    <requestid>774359</requestid>
+  </revision>
 </revisionlist>

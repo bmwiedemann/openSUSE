@@ -1,7 +1,7 @@
 #
 # spec file for package DVDStyler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2007-2011 Detlef Reichelt <detlef@links2linux.de>
@@ -22,16 +22,13 @@
 
 %define wxsvgver %(pkg-config --modversion libwxsvg)
 Name:           DVDStyler
-Version:        3.0.4
+Version:        3.1.2
 Release:        0
 Summary:        GUI frontend for dvdauthor and other related tools
 License:        GPL-3.0-or-later
-Url:            https://www.dvdstyler.org
+URL:            https://www.dvdstyler.org
 Source:         https://sourceforge.net/projects/dvdstyler/files/dvdstyler/%{version}/%{name}-%{version}.tar.bz2
 Source1:        gpl-3.0.txt
-# PATCH-FIX-UPSTREAM DVDStyler-fix-build-ffmpeg4.patch -- Fix build with ffmpeg v4
-Patch0:         DVDStyler-fix-build-ffmpeg4.patch
-
 BuildRequires:  bison
 #!BuildIgnore: cdrkit-cdrtools-compat
 BuildRequires:  dvd+rw-tools
@@ -98,8 +95,7 @@ Features:
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 # do not install docs
 sed -i '/^doc_DATA/d' Makefile.in
 cp -v %{SOURCE1} .
@@ -107,7 +103,7 @@ cp -v %{SOURCE1} .
 %build
 export FFMPEG_PATH=%{_bindir}/ffmpeg
 %configure --enable-debug
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
