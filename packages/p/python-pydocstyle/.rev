@@ -83,4 +83,12 @@
   * Fix parsing tuple syntax ``__all__`` (#355, #352).</comment>
     <requestid>731444</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>baa8c5005a5c082ee33aee26b1d02759</srcmd5>
+    <version>5.0.2</version>
+    <time>1581693917</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>772544</requestid>
+  </revision>
 </revisionlist>

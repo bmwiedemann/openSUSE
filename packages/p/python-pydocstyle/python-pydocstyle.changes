@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Feb  9 17:08:50 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * updated line numbers for patch
+  * be more specific in %files section
+
+- update to version 5.0.2:
+  * Bug Fixes
+    + Fix DeprecationWarning / SyntaxError "invalid escape sequence"
+      with Python 3.6+ (#445).
+
+- changes from version 5.0.1 :
+  * Bug Fixes
+    + Fixed an issue where AttributeError was raised when parsing the
+      parameter section of a class docstring (#434, #436).
+
+- changes from version 5.0.0 :
+  * Major Updates
+    + Support for Python 3.4 has been dropped (#402).
+  * New Features
+    + Extend support for detecting missing arguments in Google style
+      docstrings to method calls (#384).
+    + Extend support for detecting missing argument description in
+      Numpy style docstrings (#407).
+    + Added support for Python 3.8 (#423).
+    + Allow skipping errors on module level docstring via #noqa
+      (#427).
+    + Whitespace is ignored with set options split across multiple
+      lines (#221).
+  * Bug Fixes
+    + Remove D413 from the google convention (#430).
+    + Remove D413 from the pep257 convention (#404).
+    + Replace semicolon with colon in D416 messages. (#409)
+    + D301 (Use r""" if any backslashes in a docstring) does not
+      trigger on backslashes for line continuation or unicode literals
+      \u... and \N... anymore. These are considered intended elements
+      of the docstring and thus should not be escaped by using a raw
+      docstring (#365).
+    + Fix decorator parsing (#411).
+    + Google-style sections no longer cause false errors when used
+      with Numpy-style sections (#388, #424).
+    + D202: Allow a blank line after function docstring when followed
+      by declaration of an inner function or class (#395, #426).
+    + Fix D401 and D404 checks not working for docstrings containing
+      only one word and ending with non-alpha character (#421)
+
+-------------------------------------------------------------------
 Sun Sep 15 07:26:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Update integration-tests-invocation.patch to match PR submitted
