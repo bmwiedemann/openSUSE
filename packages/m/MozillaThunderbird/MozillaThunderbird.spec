@@ -2,7 +2,7 @@
 # spec file for package MozillaThunderbird
 #
 # Copyright (c) 2020 SUSE LLC
-#               2006-2019 Wolfgang Rosenauer <wr@rosenauer.org>
+#               2006-2020 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.4.2
-%define orig_version    68.4.2
+%define mainver         %major.5.0
+%define orig_version    68.5.0
 %define orig_suffix     %{nil}
 %define update_channel  release
 %define source_prefix   thunderbird-%{mainver}

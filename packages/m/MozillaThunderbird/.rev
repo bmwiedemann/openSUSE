@@ -3123,4 +3123,38 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     <comment></comment>
     <requestid>769383</requestid>
   </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>1d64841cbdf624ada484437b5e6723be</srcmd5>
+    <version>68.5.0</version>
+    <time>1581693835</time>
+    <user>okurz-factory</user>
+    <comment>- Mozilla Thunderbird 68.5.0
+  New
+  * Support for Client Identity IMAP/SMTP Service Extension
+  * Support for OAuth 2.0 authentication for POP3 accounts
+  Fixes
+  * Status area goes blank during account setup
+  * Calendar: Could not remove color for default categories
+  * Calendar: Prevent calendar component loading multiple times
+  * Calendar: Today pane did not retain width between sessions
+  MFSA 2020-07 (bsc#1163368)
+  * CVE-2020-6793 (bmo#1608539)
+    Out-of-bounds read when processing certain email messages
+  * CVE-2020-6794 (bmo#1606619)
+    Setting a master password post-Thunderbird 52 does not delete
+    unencrypted previously stored passwords
+  * CVE-2020-6795 (bmo#1611105)
+    Crash processing S/MIME messages with multiple signatures
+  * CVE-2020-6797 (bmo#1596668) (Mac OSX only)
+    Extensions granted downloads.open permission could open arbitrary
+    applications on Mac OSX
+  * CVE-2020-6798 (bmo#1602944)
+    Incorrect parsing of template tag could result in JavaScript injection
+  * CVE-2020-6792 (bmo#1609607)
+    Message ID calculcation was based on uninitialized data
+  * CVE-2020-6800 (bmo#1595786,bmo#1596706,bmo#1598543,bmo#1604851,
+    bmo#1608580,bmo#1608785,bmo#1605777)
+    Memory safety bugs fixed in Thunderbird 68.5</comment>
+    <requestid>773527</requestid>
+  </revision>
 </revisionlist>
