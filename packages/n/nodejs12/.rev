@@ -150,4 +150,35 @@
 - fix_ci_tests.patch: refreshed</comment>
     <requestid>772640</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f0388822527b911ee2fc93b26afe8ea</srcmd5>
+    <version>12.16.0</version>
+    <time>1581694610</time>
+    <user>okurz-factory</user>
+    <comment>- Update to LTS release 12.16.0:
+  * assert: add experimental assert.match() and assert.doesNotMatch()
+    methods. These allow matching vs. provided regular expressions.
+  * child_process, cluster: now support serialization option to
+    allow for custom serialization mechanism for IPC.
+  * cli: add --trace-edit and --trance-uncaught flags
+  * crypto:
+    + added support for 'ieee-p1363' signature type for DSA and ECDSA
+      in addition to DER
+    + Added Hash.prototype.copy making it possibly to clone internal
+      state of Hash object. This allows digest computation between
+      updates.
+  * deps:
+    + libuv was updated to 1.34.0
+    + V8 was updated to 7.8.279.23 - for official changes, see
+      https://v8.dev/blog/v8-release-78
+  * events:
+    + add EventEmitter.on to async iterate over events
+    + allow monitoring error events via EventEmitter.errorMonitor
+    + add experimental method to captureRejections for async handlers
+  * perf_hooks: now considered stable API
+  * wasi: Add new core module for WebAssebly System Interface as
+    an experimental feature.
+- wasi_compile_flags.patch: fix header inclusions in uvwasi dependency</comment>
+    <requestid>774096</requestid>
+  </revision>
 </revisionlist>

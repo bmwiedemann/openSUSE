@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.15.0
+Version:        12.16.0
 Release:        0
 
 %define node_version_number 12
@@ -145,6 +145,7 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 # instead of /usr
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
+Patch107:       wasi_compile_flags.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -195,6 +196,7 @@ BuildRequires:  xz
 BuildRequires:  zlib-devel
 
 %if %node_version_number > 12
+BuildRequires:  netcfg
 BuildRequires:  python3
 %else
 %if 0%{?suse_version} >= 1500
@@ -350,6 +352,7 @@ tar Jxvf %{SOURCE11}
 %endif
 %patch104 -p1
 %patch106 -p1
+%patch107 -p1
 %patch120 -p1
 %patch200 -p1
 
