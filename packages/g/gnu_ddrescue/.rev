@@ -163,4 +163,12 @@
     <comment>- Update to release 1.25~rc1</comment>
     <requestid>739099</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d93a03dae717682b928c0328e7f24d72</srcmd5>
+    <version>1.25~rc1</version>
+    <time>1581694838</time>
+    <user>okurz-factory</user>
+    <comment>- Update to release 1.25~rc1, fix previous mention of &quot;rc1&quot; to be actually pre1</comment>
+    <requestid>774291</requestid>
+  </revision>
 </revisionlist>
