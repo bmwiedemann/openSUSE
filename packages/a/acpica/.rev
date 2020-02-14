@@ -504,4 +504,16 @@ You added ec_access.c with a GPL-2.0 (only) license. Now the spec file has to be
     <comment></comment>
     <requestid>706245</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9d43aefd1974b6da90c0c536fbfd9ed6</srcmd5>
+    <version>20200110</version>
+    <time>1581694041</time>
+    <user>okurz-factory</user>
+    <comment>- Add -fcommon as there are a lot re-definitions which lead to errors
+  and compile failures with gcc10 which enables -fno-common by default
+  bsc#1160383 - acpica fails with -fno-common
+
+- Update to version 20200110</comment>
+    <requestid>770466</requestid>
+  </revision>
 </revisionlist>

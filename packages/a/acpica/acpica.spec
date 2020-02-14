@@ -1,7 +1,7 @@
 #
 # spec file for package acpica
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20190509
+Version:        20200110
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
@@ -71,7 +71,7 @@ cd acpidump-%{dmp_ver}
 cc %{SOURCE1} %{optflags} -o ec_access
 make %{?_smp_mflags} -C acpi_genl CFLAGS="%{optflags}"
 make %{?_smp_mflags} -C wmidump CFLAGS="%{optflags}"
-make %{?_smp_mflags} OPT_CFLAGS="%{optflags}" HOST="_LINUX"
+make %{?_smp_mflags} OPT_CFLAGS="%{optflags} -fcommon"  HOST="_LINUX"
 cd acpidump-%{dmp_ver}/tools/power/acpi
 if [ -f tools/acpidump/Makefile ]; then # 4.3+
 	cd tools/acpidump/
