@@ -1203,3 +1203,23 @@ Index: presage-0.9.1/apps/python/pypresagemate.in
                 config = conffile
 -         print 'Configuration file: ' + str(config)
 +         print('Configuration file: ' + str(config))
+Index: presage-0.9.1/apps/dbus/presage_dbus_python_demo
+===================================================================
+--- presage-0.9.1.orig/apps/dbus/presage_dbus_python_demo
++++ presage-0.9.1/apps/dbus/presage_dbus_python_demo
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ ##########
+ #  Presage, an extensible predictive text entry system
+Index: presage-0.9.1/apps/dbus/presage_dbus_service
+===================================================================
+--- presage-0.9.1.orig/apps/dbus/presage_dbus_service
++++ presage-0.9.1/apps/dbus/presage_dbus_service
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ ##########
+ #  Presage, an extensible predictive text entry system

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:46:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert change of the source package name for the doc flavor.
+  Different flavors require distinct package names for _multibuild
+  to work properly.
+
+-------------------------------------------------------------------
+Sat Feb  8 14:54:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update presage-0.9.1-python3.patch: Adjust two more env python to
+  for python3.
+
+-------------------------------------------------------------------
+Thu Feb  6 08:16:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Export the include path to fix the build under python 3.8
+
+-------------------------------------------------------------------
 Thu Jan 23 12:16:38 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - Add presage-0.9.1-python3.patch, port python binding and apps

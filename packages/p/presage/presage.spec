@@ -1,7 +1,7 @@
 #
 # spec file for package presage
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global pname %{sname}
 %endif
 
-Name:           %pname
+Name:           %{pname}
 Version:        0.9.1
 Release:        0
 Summary:        Intelligent predictive text entry platform (tools and demos)
@@ -238,6 +238,8 @@ make -C doc %{?_smp_mflags}
 %else
 export LIBS+="-lm -lgmodule-2.0"
 export PYTHON="/usr/bin/python3"
+export CFLAGS="%{optflags} $(python3-config --includes)"
+export CXXFLAGS="%{optflags} $(python3-config --includes)"
 %configure
 make %{?_smp_mflags}
 %endif
