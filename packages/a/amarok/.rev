@@ -1011,4 +1011,13 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
   * Fix missing directory separators when saving podcasts to disk</comment>
     <requestid>736815</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>f7acc9a6c32407d31b749afe7fb30c83</srcmd5>
+    <version>2.9.70git.20200131T110159~195748144f</version>
+    <time>1581694245</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 2.9.70git.20200131T110159~195748144f:
+  * Use safe hardcoded value for ProvidersUrl</comment>
+    <requestid>772341</requestid>
+  </revision>
 </revisionlist>
