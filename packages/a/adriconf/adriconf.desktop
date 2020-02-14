@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=ADriConf
+GenericName=Advanced DRI Configurator
+Comment=Advanced DRI Configurator
+Comment[en_GB]=Advanced DRI Configurator
+Comment[en_US]=Advanced DRI Configurator
+Comment[pt]=Configurador Avançado para DRI
+Comment[pt_BR]=Configurador Avançado para DRI
+Icon=adriconf
+Categories=System;Utility;DesktopSettings;X-SuSE-core;
+Exec=adriconf
+Type=Application
+StartupNotify=true
+Terminal=false
