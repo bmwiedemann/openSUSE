@@ -40,9 +40,6 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt) >= 1.0.0
 Requires:       osinfo-db
-%if %{with_lang}
-Recommends:     %{name}-lang
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

@@ -366,4 +366,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment>Drop ids.tar.bz2 in favor of using hwdata for pci.ids and usb.ids</comment>
     <requestid>761909</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>3ee525c5d2e1e13fc042d7f8aa0f85a8</srcmd5>
+    <version>1.7.1</version>
+    <time>1581694201</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770568</requestid>
+  </revision>
 </revisionlist>
