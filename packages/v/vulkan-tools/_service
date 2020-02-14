@@ -3,8 +3,8 @@
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/Vulkan-Tools</param>
 		<param name="revision">shannon-132-known-good-update</param>
-		<param name="parent-tag">v1.1.132</param>
-		<param name="versionformat">1.1.132</param>
+		<param name="parent-tag">v1.2.132</param>
+		<param name="versionformat">1.2.132</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>
