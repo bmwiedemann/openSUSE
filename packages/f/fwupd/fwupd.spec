@@ -42,7 +42,6 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 
 BuildRequires:  dejavu-fonts
-BuildRequires:  docbook-utils-minimal
 BuildRequires:  gcab
 # for certtool
 BuildRequires:  gnutls
