@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Hide
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Devel-Hide
-Version:        0.0010
+Version:        0.0011
 Release:        0
 %define cpan_name Devel-Hide
 Summary:        Forces the unavailability of specified Perl modules (for testing)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Devel-Hide/
-Source0:        https://cpan.metacpan.org/authors/id/F/FE/FERREIRA/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,7 +39,7 @@ or not).
 
 They _die_ with a message like:
 
-    Can't locate Module/ToHide.pm (hidden)
+    Can't locate Module/ToHide.pm in @INC (hidden)
 
 The original intent of this module is to allow Perl developers to test for
 alternative behavior when some modules are not available. In a Perl
@@ -76,20 +76,28 @@ There are three alternative ways to include modules in the hidden list:
 
   * import()
 
-Optionally, you can propagate the list of hidden modules to your process'
-child processes, by passing '-from:children' as the first option when you
-use() this module. This works by populating 'PERL5OPT', and is incompatible
-with Taint mode, as explained in perlrun.
+Optionally, you can provide some arguments *before* the list of modules:
+
+* -from:children
+
+propagate the list of hidden modules to your process' child processes. This
+works by populating 'PERL5OPT', and is incompatible with Taint mode, as
+explained in perlrun.
+
+* -quiet
+
+suppresses diagnostic output. You will still get told about errors. This is
+passed to child processes if -from:children is in effect.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

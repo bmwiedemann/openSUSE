@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 03:08:47 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.0011
+   see /usr/share/doc/packages/perl-Devel-Hide/Changes
+
+  0.0011      2020-02-12
+  
+     - Fix https://rt.cpan.org/Public/Bug/Display.html?id=120220
+     - Fix https://rt.cpan.org/Public/Bug/Display.html?id=120221
+     - Add -quiet option to suppress some notices
+
+-------------------------------------------------------------------
 Sat Jun 16 05:19:45 UTC 2018 - coolo@suse.com
 
 - updated to 0.0010
