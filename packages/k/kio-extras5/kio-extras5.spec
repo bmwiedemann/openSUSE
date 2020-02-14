@@ -38,6 +38,7 @@ BuildRequires:  OpenEXR-devel
 BuildRequires:  flac-devel
 BuildRequires:  gperf
 BuildRequires:  cmake(KF5Activities)
+BuildRequires:  cmake(KF5ActivitiesStats)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)

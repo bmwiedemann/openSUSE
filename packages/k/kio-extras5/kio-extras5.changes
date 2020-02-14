@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 20:28:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add cmake(KF5ActivitiesStats) for the recentlyused:/ protocol
+
+-------------------------------------------------------------------
 Fri Feb  7 08:37:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
