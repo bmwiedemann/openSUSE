@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,12 +49,12 @@
 %endif
 
 Name:           nextcloud
-Version:        18.0.0
+Version:        18.0.1
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://nextcloud.com
+URL:            https://nextcloud.com
 Source0:        https://download.nextcloud.com/server/releases/%{name}-%{version}.tar.bz2
 Source1:        apache_secure_data
 Source2:        README

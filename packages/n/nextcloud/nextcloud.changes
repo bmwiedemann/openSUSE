@@ -1,8 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 12 19:42:37 UTC 2020 - ecsos@opensuse.org
+
+- Update to 18.0.1
+  - No changelog from upstream at this time.
+
+-------------------------------------------------------------------
 Fri Jan 17 18:37:04 UTC 2020 - ecsos@opensuse.org
 
 - Update to 18.0.0
-  No changelog from upstream at this time.
+  As this is a major release, the changelog is too long to put here.
+  Users can look at github milestones to find what has been merged.
+  A quick overview of what is new:
+  - Files - features an improved sidebar, accepting internal 
+    shares & folder owner transfership
+    - Workspaces brings context to your folders, facilitating 
+      collaboration in one place.
+    - File locking prevents conflicts editing shared files with 
+      others
+  - Flow - Brings extensive, easy to use workflow capabilities to 
+    Nextcloud. Automatically turn documents in PDFs, send messages
+    to chat rooms and more!
+  - ONLYOFFICE - Built in ONLYOFFICE makes collaborative editing of
+    Microsoft Office documents accessible to everyone
+  - Photos - A brand new image gallery makes finding, browsing and
+    sharing your images easier than ever before.
+  - Calendar 2.0 - Calendar 2.0 books Talk meetings, brings busy 
+    view for meetings and resource booking and more
+  - Mail - Mail 1.0 recognizes itineraries, handles rich text mails
+    and more
+  - Talk - rewritten user interface brings message delivery notifications, 
+    circles support, message replies and flow integration
 
 - Add "occ maintenance:repair" during package update to fix possible (db) errors.
 
