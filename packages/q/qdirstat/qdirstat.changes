@@ -1,5 +1,15 @@
 -------------------------------------------------------------------
-Mon Jul 22 15:20:45 CEST 2019 - shundhammer@suse.de
+Thu Feb 13 13:35:07 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to V1.6.1:
+  - Improved handling for "permission denied" errors while reading
+    directories
+  - Show exact byte size on demand
+  - New optional tree column "oldest file"
+  - Bug fix: Fixed text color in histogram in dark widget themes
+
+-------------------------------------------------------------------
+Mon 22. Jul 15:20:45 CEST 2019 - shundhammer@suse.de
 
 - Update to V1.6:
   - Packages view
