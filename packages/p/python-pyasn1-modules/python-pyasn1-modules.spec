@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyasn1-modules
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyasn1-modules
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        Collection of protocols modules written in ASN.1 language
 License:        BSD-3-Clause
@@ -56,6 +56,7 @@ specification.
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.txt README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyasn1_modules
+%{python_sitelib}/pyasn1_modules-%{version}-py*.egg-info
 
 %changelog
