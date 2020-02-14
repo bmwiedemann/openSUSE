@@ -1,7 +1,7 @@
 #
 # spec file for package libusbmuxd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           libusbmuxd
 Version:        1.0.10
 Release:        0
 Summary:        A client library to multiplex connections from and to iOS devices
-License:        LGPL-2.1+ and GPL-2.0+
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://cgit.sukimashita.com/libusbmuxd.git
+URL:            http://cgit.sukimashita.com/libusbmuxd.git
 Source:         http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM libusbmuxd-CVE-2016-5104.patch CVE-2016-5104 boo#982014 dimstar@opensuse.org - Make sure sockets only listen locally
@@ -99,8 +99,9 @@ notification and backup services running on the device).
 %patch0 -p1
 
 %build
+export CFLAGS="%optflags -fexceptions"
 %configure
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}

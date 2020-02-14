@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 23 14:56:51 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Software using pthread_cleanup_* routines must be built with
+  with -fexceptions so a safer and cleaner implementation is
+  used.
+
+-------------------------------------------------------------------
 Mon Oct  2 21:30:26 UTC 2017 - jengelh@inai.de
 
 - Rectify RPM groups.
