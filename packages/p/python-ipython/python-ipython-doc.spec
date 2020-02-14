@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython-doc
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 # This package has to be kept separate from the main package to avoid
 # dependency loops with most of the core jupyter packages.
 %define         oldpython python
-%define doc_ver 7.11.1
+%define doc_ver 7.12.0
 Name:           python-ipython-doc
-Version:        7.11.1
+Version:        7.12.0
 Release:        0
 Summary:        Documentation for python3-jupyter_ipython
 License:        BSD-3-Clause

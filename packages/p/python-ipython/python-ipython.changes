@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  8 22:41:18 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.12.0:
+  * Exit non-zero when ipython is given a file path to run that
+    doesn't exist :ghpull:`12074`
+  * Test PR on ARM64 with Travis-CI :ghpull:`12073`
+  * Update CI to work with latest Pytest :ghpull:`12086`
+  * Add infrastructure to run ipykernel eventloop via trio
+    :ghpull:`12097`
+  * Support git blame ignore revs :ghpull:`12091`
+  * Start multi-line __repr__ s on their own line :ghpull:`12099`
+
+-------------------------------------------------------------------
 Wed Jan 15 15:41:15 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 7.11.1
