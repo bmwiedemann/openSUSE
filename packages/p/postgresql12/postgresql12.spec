@@ -1,7 +1,7 @@
 #
-# spec file for package postgresql11
+# spec file for package postgresql12
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,27 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?suse_version} >= 1300
-%bcond_without  systemd
-%else
-%bcond_with     systemd
-%endif
-%if 0%{?suse_version} >= 1500
-%bcond_without  systemd_notify
-%bcond_without  llvm
-%else
-%bcond_with     systemd_notify
-%bcond_with     llvm
-%endif
-
-%bcond_without  selinux
-%bcond_without  icu
-%ifnarch %arm
-%bcond_without  check
-%else
-%bcond_with     check
-%endif
 
 %define pgmajor 12
 %define pgname postgresql%pgmajor
@@ -65,6 +44,33 @@ Name:           %pgname
 %define buildmain 1
 %define buildlibs 0
 %define builddevel 0
+%endif
+
+%if 0%{?suse_version} >= 1300 && %buildmain
+%bcond_without  systemd
+%else
+%bcond_with     systemd
+%endif
+%if 0%{?suse_version} >= 1500 && %buildmain
+%bcond_without  systemd_notify
+%bcond_without  llvm
+%else
+%bcond_with     systemd_notify
+%bcond_with     llvm
+%endif
+
+%if %buildmain
+%bcond_without  selinux
+%bcond_without  icu
+%else
+%bcond_with     selinux
+%bcond_with     icu
+%endif
+
+%ifnarch %arm
+%bcond_without  check
+%else
+%bcond_with     check
 %endif
 
 %if %buildmain
@@ -97,11 +103,7 @@ BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-%if 0%{?suse_version} == 1110
-BuildRequires:  krb5-devel
-%else
 BuildRequires:  pkgconfig(krb5)
-%endif
 %if %{with systemd_notify}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
@@ -129,7 +131,7 @@ Patch4:         postgresql-plperl-keep-rpath.patch
 Patch6:         postgresql-testsuite-int8.sql.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
 Patch9:         postgresql-var-run-socket.patch
-Url:            https://www.postgresql.org/
+URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
 Provides:       postgresql-implementation = %version-%release
@@ -197,8 +199,6 @@ Group:          Development/Libraries/C and C++
 Provides:       postgresql-devel-implementation = %version-%release
 Requires:       %libecpg >= %version
 Requires:       %libpq >= %version
-Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun): postgresql-noarch >= %pgmajor
 # Installation of postgresql??-devel is exclusive
 Provides:       postgresql-devel-exclusive = %pgmajor
 Conflicts:      postgresql-devel-exclusive < %pgmajor
@@ -268,11 +268,7 @@ Requires:       openssl-devel
 Requires:       pam-devel
 Requires:       readline-devel
 Requires:       zlib-devel
-%if 0%{?suse_version} == 1110
-Requires:       krb5-devel
-%else
 Requires:       pkgconfig(krb5)
-%endif
 %if %{with selinux}
 Requires:       libselinux-devel
 %endif
@@ -324,9 +320,6 @@ Summary:        HTML Documentation for PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-docs-implementation = %version-%release
 Requires:       postgresql-docs-noarch >= %pgmajor
-%if 0%{?suse_version} >= 1120
-BuildArch:      noarch
-%endif
 
 %description docs
 PostgreSQL is an advanced object-relational database management system
@@ -619,7 +612,9 @@ done
 popd
 mkdir -p %buildroot%pgmandir/man1
 cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgmajor
-genlists devel ecpg
+# No update-alternatives, devel-packages are exclusive
+ln -s %pgbindir/ecpg %buildroot%_bindir/ecpg
+%find_lang ecpg-%{pgmajor} devel.files
 
 # Build up the file lists for the libpq and libecpg packages
 cat > libpq.files <<EOF
@@ -717,15 +712,6 @@ fi
 /usr/share/postgresql/install-alternatives %priority
 
 %postun -n %pgname-server-devel
-/usr/share/postgresql/install-alternatives %priority
-%endif
-
-%if %builddevel
-
-%post -n %pgname-devel
-/usr/share/postgresql/install-alternatives %priority
-
-%postun -n %pgname-devel
 /usr/share/postgresql/install-alternatives %priority
 %endif
 
@@ -843,9 +829,12 @@ fi
 %defattr(-,root,root)
 %dir %pgbasedir
 %dir %pgbindir
+%_bindir/ecpg
 %_libdir/pkgconfig/*
 %_libdir/lib*.so
+%pgbindir/ecpg
 %pgincludedir
+%doc %pgmandir/man1/ecpg.1*
 
 %endif
 

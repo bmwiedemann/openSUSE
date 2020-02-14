@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 11 04:15:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Avoid the dependency from the devel package to the main package.
+  devel packages are exclusive, thus ecpg does not require
+  update-alternatives.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:13:41 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Remove unused build dependencies from the client libs package:
+  LVM, icu, selinux, systemd.
+- Drop conditionals for suse_version 1110/1120.
+
+-------------------------------------------------------------------
 Fri Dec 20 14:46:29 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 12.1
