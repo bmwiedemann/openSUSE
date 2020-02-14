@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:06:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Remove extra flush when we close file it will flush
+  * endl is Qt:: namespaced in qt5.15. Port to \n and flush
+    when QTextStream is not on a QFile
+
+-------------------------------------------------------------------
 Fri Jan 24 13:42:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to
