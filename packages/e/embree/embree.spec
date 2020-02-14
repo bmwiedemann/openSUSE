@@ -1,8 +1,8 @@
 #
 # spec file for package embree
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           embree
-Version:        3.6.1
+Version:        3.8.0
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
@@ -60,8 +60,10 @@ specifically compiled for Blender Cycles needs.
 
 %build
 %limit_build -m 3900
-# blender insists in using static embree
+# we need fat lto objects here
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CXXFLAGS="%{optflags}"
+# blender insists in using static embree
 %cmake \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DEMBREE_STATIC_LIB=ON \

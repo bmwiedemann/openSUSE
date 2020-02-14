@@ -24,4 +24,12 @@ openSUSE:Factory:Staging:adi:14 ).</comment>
     <comment></comment>
     <requestid>737992</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e0c163872d011bfe6483069f104cf99</srcmd5>
+    <version>3.8.0</version>
+    <time>1581694579</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773619</requestid>
+  </revision>
 </revisionlist>
