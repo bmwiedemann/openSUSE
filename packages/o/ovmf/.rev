@@ -329,4 +329,12 @@
     <comment>- only build -aarch32 Cortex-A15 EFI on armv7hl</comment>
     <requestid>758466</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>784a5568bad21f47bfb067c51a461ac8</srcmd5>
+    <version>201911</version>
+    <time>1581694004</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770415</requestid>
+  </revision>
 </revisionlist>

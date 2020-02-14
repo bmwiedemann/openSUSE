@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -360,19 +360,31 @@ build_template()
 	local KEY="$3"
 	local PKKEK_FILE="$4"
 	local ISO_FILE="$5"
-
-	local FW_CODE_ORIG="${PREFIX}-code.bin"
-	local FW_VARS_ORIG="${PREFIX}-vars.bin"
-	local FW_CODE="${PREFIX}-${KEY}-code.bin"
-	local FW_VARS="${PREFIX}-${KEY}-vars.bin"
-
-	ln -s "$FW_CODE_ORIG" "$FW_CODE"
-	cp "$FW_VARS_ORIG" "$FW_VARS"
+	local TYPE="$6"
 
 	# QEMU parameters
 	#  pflash parameters
-	local PFLASH_CODE="-drive if=pflash,format=raw,unit=0,readonly,file=$FW_CODE"
-	local PFLASH_VARS="-drive if=pflash,format=raw,unit=1,file=$FW_VARS"
+	local PFLASH=""
+	if [ $TYPE == "separate" ]; then
+		local FW_CODE_ORIG="${PREFIX}-code.bin"
+		local FW_VARS_ORIG="${PREFIX}-vars.bin"
+		local FW_CODE="${PREFIX}-${KEY}-code.bin"
+		local FW_VARS="${PREFIX}-${KEY}-vars.bin"
+		local PFLASH_CODE="-drive if=pflash,format=raw,unit=0,readonly,file=$FW_CODE"
+		local PFLASH_VARS="-drive if=pflash,format=raw,unit=1,file=$FW_VARS"
+
+		ln -s "$FW_CODE_ORIG" "$FW_CODE"
+		cp "$FW_VARS_ORIG" "$FW_VARS"
+
+		PFLASH="$PFLASH_CODE $PFLASH_VARS"
+	elif [ $TYPE == "unified" ]; then
+		local UNIFIED_FW_ORIG="${PREFIX}.bin"
+		local UNIFIED_FW="${PREFIX}-${KEY}.bin"
+
+		cp "$UNIFIED_FW_ORIG" "$UNIFIED_FW"
+
+		PFLASH="-drive if=pflash,format=raw,unit=0,file=$UNIFIED_FW"
+	fi
 
 	#  smbios parameters for PK and KEK
 	local SMBIOS="-smbios type=11,value=$(pkkek_oemstr $PKKEK_FILE)"
@@ -412,7 +424,7 @@ build_template()
 	fi
 
 	# Launch the VM
-	$QEMU $MACHINE $MEMORY $PFLASH_CODE $PFLASH_VARS $SMBIOS $CDROM $MISC
+	$QEMU $MACHINE $MEMORY $PFLASH $SMBIOS $CDROM $MISC
 }
 
 # Assign the default PK/KEK
@@ -459,11 +471,22 @@ $GEN_ISO $BUILD_ARCH $SHELL $ENROLLER no-default $NOMS_ISO_FILE
 for flavor in ${FLAVORS[@]}; do
 	for key in ${KEY_SOURCES[@]}; do
 		build_template "$BUILD_ARCH" "$flavor" "$key" \
-			"${PKKEK[$key]}" "${KEY_ISO_FILES[$key]}"
+			"${PKKEK[$key]}" "${KEY_ISO_FILES[$key]}" \
+			"separate"
 	done
 done
 
 %ifarch x86_64
+# Generate the unified firmware with preloaded keys for backward
+# compatibility. (bsc#1159793)
+for flavor in ${FLAVORS[@]}; do
+	for key in ${KEY_SOURCES[@]}; do
+		build_template "$BUILD_ARCH" "$flavor" "$key" \
+			"${PKKEK[$key]}" "${KEY_ISO_FILES[$key]}" \
+			"unified"
+	done
+done
+
 # Rename the x86_64 4MB firmware
 #  We use ovmf-x86_64-$key-4m instead of ovmf-x86_64-4m-$key in the
 #  version < stable201905. Rename the 4MB firmware files for backward
