@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:14:51 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Remove no longer necessary Qt5Script dependencies
+- Replace python(2) dependencies with python3, which it actually
+  used already anyway
+
+-------------------------------------------------------------------
+Sun Feb  2 18:06:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * ki18n_wrap_ui: error when file doesn't exist
+  * [Kuit] Revert changes in parseUiMarker()
+  * ki18n: export Kuit::setupForDomain, unittest
+    KUitSetup::setFormatForMarker
+  * [Kuit] Port QRegExp to QRegularExpression
+  * [Kuit] Port QRegExp to QRegularExpression, third pass
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0

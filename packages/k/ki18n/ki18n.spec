@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ki18n
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -38,17 +38,16 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE fallbackLang.diff -- look for translations in locale/kf5 also
 Patch0:         fallbackLang.diff
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  kf5-filesystem
-BuildRequires:  python
-BuildRequires:  cmake(Qt5Concurrent) >= 5.11.0
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5Qml) >= 5.11.0
-BuildRequires:  cmake(Qt5Script) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  python3
+BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Qml) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
 
 %description
 KI18n provides functionality for internationalizing user interface text
@@ -60,7 +59,6 @@ and translators can use the familiar Gettext tools and workflows.
 Summary:        KDE Gettext-based UI text internationalization
 Group:          System/GUI/KDE
 %requires_ge    libQt5Core5
-%requires_ge    libQt5Script5
 Obsoletes:      libKF5I18n4
 %if %{with lang}
 Recommends:     %{lname}-lang = %{version}
@@ -79,7 +77,7 @@ Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       gettext-runtime
 Requires:       gettext-tools
-Requires:       python
+Requires:       python3
 
 %description devel
 KI18n provides functionality for internationalizing user interface text
@@ -96,7 +94,7 @@ Development files.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
