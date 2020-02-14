@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:37:36 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- * Deal with error messages returned sometimes by evaluation
+    of ${devspec} in 'ofpathname'.
+  * Strip embedded nulls from values provided by kernel files.
+  * Redirect more error messages to /dev/null
+  [bsc#1116561,
+   0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch]
+
+-------------------------------------------------------------------
+Tue Dec  3 15:55:46 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Parse new DRC Info: Define data structures to support parsing
+  the new "ibm,drc-info" device tree property.  Integrate the new
+  property information into the existing search mechanisms of the
+  userspace 'drmgr' driver.
+  [jsc#SLE-11094, jsc#SLE-11193, jsc#SLE-11092, jsc#SLE-11319, jsc#ECO-935,
+  bsc#1158312, bsc#1161925, fate#326955
+  bug-1158312-parse-ibm-drc-info-property.patch]
+
+- Bump package version to be able to tell the fix for jsc#SLE-11092 is included
+  Kernel can depend on the fixed version this way.
+
+-------------------------------------------------------------------
 Wed Jul  3 06:59:23 UTC 2019 - jmoellers@suse.de
 
 - Change the file permissions of smt_off.service to 644

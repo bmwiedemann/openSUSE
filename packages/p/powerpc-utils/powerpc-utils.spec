@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define realversion 1.3.7
+
 Name:           powerpc-utils
-Version:        1.3.7
+Version:        %{realversion}.1
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
 Group:          System/Management
-Url:            https://github.com/ibm-power-utilities/powerpc-utils
-Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/ibm-power-utilities/powerpc-utils
+Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{realversion}.tar.gz#/%{name}-%{realversion}.tar.gz
 Source1:        nvsetenv
 Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
@@ -31,6 +33,8 @@ Patch3:         systemd-dir.patch
 Patch4:         libvirt-service-dep.patch
 # This adds field in the middle of tool output so revert it again in < 15.1
 Patch5:         Revert-lparstat-Show-available-physical-processors-i.patch
+Patch6:         bug-1158312-parse-ibm-drc-info-property.patch
+Patch7:         0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
@@ -55,7 +59,7 @@ The powerpc-utils package provides a set of tools and utilities and
 utilities for maintaining and enabling certain features of Linux on Power.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{realversion}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -63,6 +67,8 @@ utilities for maintaining and enabling certain features of Linux on Power.
 %if 0%{?sle_version} <= 120400 || 0%{?sle_version} == 150000
 %patch5 -p1
 %endif
+%patch6 -p1
+%patch7 -p1
 
 %build
 autoreconf -fvi
