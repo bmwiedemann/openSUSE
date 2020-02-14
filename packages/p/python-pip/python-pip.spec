@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@
 %bcond_with test
 %endif
 Name:           python-pip%{psuffix}
-Version:        19.3.1
+Version:        20.0.2
 Release:        0
 Summary:        A Python package management system
 License:        MIT
 URL:            http://www.pip-installer.org
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz
+Source1:        setuptools-45.1.0-py3-none-any.whl
 Patch0:         pip-shipped-requests-cabundle.patch
-Patch1:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,6 +48,8 @@ BuildArch:      noarch
 %if %{with test}
 # Test requirements:
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
@@ -70,7 +72,10 @@ pip-installable as well.
 %prep
 %setup -q -n pip-%{version}
 %patch0 -p1
-%patch1 -p1
+%if %{with test}
+mkdir -p tests/data/common_wheels
+cp %{SOURCE1} tests/data/common_wheels/
+%endif
 # remove shebangs verbosely (if only sed would offer a verbose mode...)
 for f in $(find src -name \*.py -exec grep -l '^#!%{_bindir}/env' {} \;); do
     sed -i 's|^#!%{_bindir}/env .*$||g' $f

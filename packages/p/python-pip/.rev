@@ -549,4 +549,41 @@
     <comment></comment>
     <requestid>741067</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>675aff794a6b4729ec17f589f471f742</srcmd5>
+    <version>20.0.2</version>
+    <time>1581693880</time>
+    <user>okurz-factory</user>
+    <comment>- update to 20.0.2
+- add setuptools-45.1.0-py3-none-any.whl for testsuite
+- drop pytest5.patch
+ * Fix a regression in generation of compatibility tags
+ * Rename an internal module, to avoid ImportErrors due to improper uninstallation
+ * Switch to a dedicated CLI tool for vendoring dependencies.
+ * Remove wheel tag calculation from pip and use packaging.tags. This should provide more tags ordered better than in prior releases.
+ *  Deprecate setup.py-based builds that do not generate an .egg-info directory.
+ *  The pip&gt;=20 wheel cache is not retro-compatible with previous versions. Until pip 21.0, pip will continue to take advantage of existing legacy cache entries.
+ *  Deprecate undocumented --skip-requirements-regex option.
+ *  Deprecate passing install-location-related options via --install-option.
+ *  Use literal &quot;abi3&quot; for wheel tag on CPython 3.x, to align with PEP 384 which only defines it for this platform.
+ *  Remove interpreter-specific major version tag e.g. cp3-none-any from consideration. This behavior was not documented strictly, and this tag in particular is not useful. Anyone with a use case can create an issue with pypa/packaging.
+ *  Wheel processing no longer permits wheels containing more than one top-level .dist-info directory.
+ *  Support for the git+git@ form of VCS requirement is being deprecated and will be removed in pip 21.0. Switch to git+https:// or git+ssh://. git+git:// also works but its use is discouraged as it is insecure.
+ *  Default to doing a user install (as if --user was passed) when the main site-packages directory is not writeable and user site-packages are enabled.
+ *  Warn if a path in PATH starts with tilde during pip install.
+ *  Cache wheels built from Git requirements that are considered immutable, because they point to a commit hash.
+ *  Add option --no-python-version-warning to silence warnings related to deprecation of Python versions.
+ *  Cache wheels that pip wheel built locally, matching what pip install does. This particularly helps performance in workflows where pip wheel is used for building before installing. Users desiring the original behavior can use pip wheel --no-cache-dir
+ *  Display CA information in pip debug.
+ *  Show only the filename (instead of full URL), when downloading from PyPI.
+ *  Suggest a more robust command to upgrade pip itself to avoid confusion when the current pip command is not available as pip.
+ *  Define all old pip console script entrypoints to prevent import issues in stale wrapper scripts.
+ *  The build step of pip wheel now builds all wheels to a cache first, then copies them to the wheel directory all at once. Before, it built them to a temporary directory and moved them to the wheel directory one by one.
+ *  Expand ~ prefix to user directory in path options, configs, and environment variables. Values that may be either URL or path are not currently supported, to avoid ambiguity:
+   --find-links
+   --constraint, -c
+   --requirement, -r
+   --editable, -e</comment>
+    <requestid>770248</requestid>
+  </revision>
 </revisionlist>
