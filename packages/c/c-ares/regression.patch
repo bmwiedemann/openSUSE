@@ -1,0 +1,106 @@
+commit 9413d54ff43d18cedf0d4531408aabc7c2c102a2
+Author: Adam Majer <amajer@suse.de>
+Date:   Mon Feb 3 15:19:08 2020 +0100
+
+    Only count valid addresses when response parsing
+    
+    When ares_parse_a_reply or ares_parse_aaaa_reply is called in case
+    where another AAAA and A responses exist, the resulting ares_addrttl
+    count is invalid and the structure points to gibberish.
+    
+    This is a regression since 1.15.
+
+    PR: https://github.com/c-ares/c-ares/pull/302
+
+diff --git a/ares_parse_a_reply.c b/ares_parse_a_reply.c
+index b506f72..920ba24 100644
+--- a/ares_parse_a_reply.c
++++ b/ares_parse_a_reply.c
+@@ -86,7 +86,10 @@ int ares_parse_a_reply(const unsigned char *abuf, int alen,
+   next = ai.nodes;
+   while (next)
+     {
+-      ++naddrs;
++      if (next->ai_family == AF_INET)
++        {
++          ++naddrs;
++        }
+       next = next->ai_next;
+     }
+ 
+diff --git a/ares_parse_aaaa_reply.c b/ares_parse_aaaa_reply.c
+index aca3f00..d39e138 100644
+--- a/ares_parse_aaaa_reply.c
++++ b/ares_parse_aaaa_reply.c
+@@ -88,7 +88,10 @@ int ares_parse_aaaa_reply(const unsigned char *abuf, int alen,
+   next = ai.nodes;
+   while (next)
+     {
+-      ++naddrs;
++      if(next->ai_family == AF_INET6)
++        {
++          ++naddrs;
++        }
+       next = next->ai_next;
+     }
+ 
+diff --git a/test/ares-test-parse-a.cc b/test/ares-test-parse-a.cc
+index 77d9591..0741c0d 100644
+--- a/test/ares-test-parse-a.cc
++++ b/test/ares-test-parse-a.cc
+@@ -11,13 +11,14 @@ TEST_F(LibraryTest, ParseAReplyOK) {
+   DNSPacket pkt;
+   pkt.set_qid(0x1234).set_response().set_aa()
+     .add_question(new DNSQuestion("example.com", ns_t_a))
+-    .add_answer(new DNSARR("example.com", 0x01020304, {2,3,4,5}));
++    .add_answer(new DNSARR("example.com", 0x01020304, {2,3,4,5}))
++    .add_answer(new DNSAaaaRR("example.com", 0x01020304, {0,0,0,0,0,0,0,0,0,0,0,0,2,3,4,5}));
+   std::vector<byte> data = {
+     0x12, 0x34,  // qid
+     0x84, // response + query + AA + not-TC + not-RD
+     0x00, // not-RA + not-Z + not-AD + not-CD + rc=NoError
+     0x00, 0x01,  // num questions
+-    0x00, 0x01,  // num answer RRs
++    0x00, 0x02,  // num answer RRs
+     0x00, 0x00,  // num authority RRs
+     0x00, 0x00,  // num additional RRs
+     // Question
+@@ -35,6 +36,15 @@ TEST_F(LibraryTest, ParseAReplyOK) {
+     0x01, 0x02, 0x03, 0x04, // TTL
+     0x00, 0x04,  // rdata length
+     0x02, 0x03, 0x04, 0x05,
++    // Answer 2
++    0x07, 'e', 'x', 'a', 'm', 'p', 'l', 'e',
++    0x03, 'c', 'o', 'm',
++    0x00,
++    0x00, 0x1c,  //  RR type
++    0x00, 0x01,  //  class IN
++    0x01, 0x02, 0x03, 0x04, // TTL
++    0x00, 0x10,  // rdata length
++    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x03, 0x04, 0x05,
+   };
+   EXPECT_EQ(data, pkt.data());
+   struct hostent *host = nullptr;
+@@ -68,7 +78,7 @@ TEST_F(LibraryTest, ParseMalformedAReply) {
+     0x84, // [2] response + query + AA + not-TC + not-RD
+     0x00, // [3] not-RA + not-Z + not-AD + not-CD + rc=NoError
+     0x00, 0x01,  // [4:6) num questions
+-    0x00, 0x01,  // [6:8) num answer RRs
++    0x00, 0x02,  // [6:8) num answer RRs
+     0x00, 0x00,  // [8:10) num authority RRs
+     0x00, 0x00,  // [10:12) num additional RRs
+     // Question
+diff --git a/test/ares-test-parse-aaaa.cc b/test/ares-test-parse-aaaa.cc
+index 9d0457e..1314c83 100644
+--- a/test/ares-test-parse-aaaa.cc
++++ b/test/ares-test-parse-aaaa.cc
+@@ -13,7 +13,8 @@ TEST_F(LibraryTest, ParseAaaaReplyOK) {
+     .add_question(new DNSQuestion("example.com", ns_t_aaaa))
+     .add_answer(new DNSAaaaRR("example.com", 100,
+                               {0x01, 0x01, 0x01, 0x01, 0x02, 0x02, 0x02, 0x02,
+-                               0x03, 0x03, 0x03, 0x03, 0x04, 0x04, 0x04, 0x04}));
++                               0x03, 0x03, 0x03, 0x03, 0x04, 0x04, 0x04, 0x04}))
++    .add_answer(new DNSARR("example.com", 0x01020304, {2,3,4,5}));
+   std::vector<byte> data = pkt.data();
+   struct hostent *host = nullptr;
+   struct ares_addr6ttl info[5];

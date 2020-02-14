@@ -48,4 +48,24 @@
   bsc#1156601</comment>
     <requestid>748803</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26223688f6b1befd8f6101c681975675</srcmd5>
+    <version>1.15.0+20200117</version>
+    <time>1581694548</time>
+    <user>okurz-factory</user>
+    <comment>- Upgrade to latest snapshot from 2020-01-17
+- disable-live-tests.patch: refreshed
+- regression.patch: fix a regression in DNS results that contain
+  both A and AAAA answers.
+
+- Add netcfg as the build requirement and runtime requirement.
+  ares_getaddrinfo function uses the getservbyport_r function which
+  requires the /etc/services file to function properly. That config
+  file is provided by the netcfg package. Unit tests rely on it
+  too, hence it has to be a build dependency as well.
+
+- Switch to cmake-based build.
+  Some packages need the cmake build files.</comment>
+    <requestid>770034</requestid>
+  </revision>
 </revisionlist>
