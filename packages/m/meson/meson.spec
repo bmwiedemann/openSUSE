@@ -51,6 +51,8 @@ Patch4:         meson-fix-gcc48.patch
 Patch5:         meson-distutils.patch
 # PATCH-FIX-UPSREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
 Patch6:         meson-testsuite-boost.patch
+# PATCH-FIX-UPSTREAM meson-6614.patch dimstar@opensuse.org -- cmake: Fix crash when no C++ compiler is not installed
+Patch7:         meson-6614.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -88,6 +90,9 @@ BuildRequires:  llvm-devel
 BuildRequires:  meson = %{version}
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python2-PyYAML
+%endif
 BuildRequires:  python2-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
@@ -171,6 +176,7 @@ This package provides support for meson.build files in Vim.
 (cd "test cases/frameworks/1 boost"
 %patch6 -p0
 )
+%patch7 -p1
 
 # Remove static boost tests from "test cases/frameworks/1 boost/".
 sed -i "/static/d" test\ cases/frameworks/1\ boost/meson.build
