@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3-distutils-extra
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 01550 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
