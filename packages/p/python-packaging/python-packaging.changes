@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:51:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add issue_254.patch to fix tests under non-x86_64 pplatforms 
+
+-------------------------------------------------------------------
+Wed Feb  5 13:45:06 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 20.1
+ * Fix a bug caused by reuse of an exhausted iterator.
+ * Add type hints
+ * Add proper trove classifiers for PyPy support 
+ * Scale back depending on ctypes for manylinux support detection 
+ * Use sys.implementation.name where appropriate for packaging.tags
+ * Expand upon the API provded by packaging.tags
+ * Officially support Python 3.8 
+ * Add major, minor, and micro aliases to packaging.version.Version 
+ * Properly mark packaging has being fully typed by adding a py.typed file
+
+-------------------------------------------------------------------
 Tue Oct  8 09:22:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.2:

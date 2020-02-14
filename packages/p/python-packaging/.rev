@@ -114,4 +114,23 @@
   * 0005-Drop-dependency-on-attrs.patch</comment>
     <requestid>736042</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bd08a0c7c887fcad02ad85e612504d18</srcmd5>
+    <version>20.1</version>
+    <time>1581693761</time>
+    <user>okurz-factory</user>
+    <comment>- add issue_254.patch to fix tests under non-x86_64 pplatforms 
+
+- Update to 20.1
+ * Fix a bug caused by reuse of an exhausted iterator.
+ * Add type hints
+ * Add proper trove classifiers for PyPy support 
+ * Scale back depending on ctypes for manylinux support detection 
+ * Use sys.implementation.name where appropriate for packaging.tags
+ * Expand upon the API provded by packaging.tags
+ * Officially support Python 3.8 
+ * Add major, minor, and micro aliases to packaging.version.Version 
+ * Properly mark packaging has being fully typed by adding a py.typed file</comment>
+    <requestid>773191</requestid>
+  </revision>
 </revisionlist>

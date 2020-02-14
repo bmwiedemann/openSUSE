@@ -1,0 +1,80 @@
+From f1d67cb7b6903c29c725fe46777d6e28757e04d5 Mon Sep 17 00:00:00 2001
+From: Marius Bakke <mbakke@fastmail.com>
+Date: Tue, 4 Feb 2020 09:29:23 +0100
+Subject: [PATCH] Fix test_linux_platforms_manylinux* on architectures other
+ than x86_64 (#256)
+
+* Fix test_linux_platforms_manylinux tests for i686.
+
+  By not assuming the platform is x86_64.  Fixes #254.
+
+* Allow test_linux_platforms_manylinux tests to pass on non x86.
+
+  The expected output only occurs on x86 platforms, so mock it on other
+  architectures.
+
+Co-authored-by: Brett Cannon <54418+brettcannon@users.noreply.github.com>
+---
+ tests/test_tags.py | 30 ++++++++++++++++++------------
+ 1 file changed, 18 insertions(+), 12 deletions(-)
+
+diff --git a/tests/test_tags.py b/tests/test_tags.py
+index 1c05969..d7c1514 100644
+--- a/tests/test_tags.py
++++ b/tests/test_tags.py
+@@ -435,37 +435,43 @@ def test_linux_platforms_manylinux_unsupported(self, monkeypatch):
+         linux_platform = list(tags._linux_platforms(is_32bit=False))
+         assert linux_platform == ["linux_x86_64"]
+ 
+-    def test_linux_platforms_manylinux1(self, monkeypatch):
++    def test_linux_platforms_manylinux1(self, is_x86, monkeypatch):
+         monkeypatch.setattr(
+             tags, "_is_manylinux_compatible", lambda name, _: name == "manylinux1"
+         )
+-        if platform.system() != "Linux":
++        if platform.system() != "Linux" or not is_x86:
+             monkeypatch.setattr(distutils.util, "get_platform", lambda: "linux_x86_64")
++            monkeypatch.setattr(platform, "machine", lambda: "x86_64")
+         platforms = list(tags._linux_platforms(is_32bit=False))
+-        assert platforms == ["manylinux1_x86_64", "linux_x86_64"]
++        arch = platform.machine()
++        assert platforms == ["manylinux1_" + arch, "linux_" + arch]
+ 
+-    def test_linux_platforms_manylinux2010(self, monkeypatch):
++    def test_linux_platforms_manylinux2010(self, is_x86, monkeypatch):
+         monkeypatch.setattr(
+             tags, "_is_manylinux_compatible", lambda name, _: name == "manylinux2010"
+         )
+-        if platform.system() != "Linux":
++        if platform.system() != "Linux" or not is_x86:
+             monkeypatch.setattr(distutils.util, "get_platform", lambda: "linux_x86_64")
++            monkeypatch.setattr(platform, "machine", lambda: "x86_64")
+         platforms = list(tags._linux_platforms(is_32bit=False))
+-        expected = ["manylinux2010_x86_64", "manylinux1_x86_64", "linux_x86_64"]
++        arch = platform.machine()
++        expected = ["manylinux2010_" + arch, "manylinux1_" + arch, "linux_" + arch]
+         assert platforms == expected
+ 
+-    def test_linux_platforms_manylinux2014(self, monkeypatch):
++    def test_linux_platforms_manylinux2014(self, is_x86, monkeypatch):
+         monkeypatch.setattr(
+             tags, "_is_manylinux_compatible", lambda name, _: name == "manylinux2014"
+         )
+-        if platform.system() != "Linux":
++        if platform.system() != "Linux" or not is_x86:
+             monkeypatch.setattr(distutils.util, "get_platform", lambda: "linux_x86_64")
++            monkeypatch.setattr(platform, "machine", lambda: "x86_64")
+         platforms = list(tags._linux_platforms(is_32bit=False))
++        arch = platform.machine()
+         expected = [
+-            "manylinux2014_x86_64",
+-            "manylinux2010_x86_64",
+-            "manylinux1_x86_64",
+-            "linux_x86_64",
++            "manylinux2014_" + arch,
++            "manylinux2010_" + arch,
++            "manylinux1_" + arch,
++            "linux_" + arch,
+         ]
+         assert platforms == expected
+ 

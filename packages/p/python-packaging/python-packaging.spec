@@ -1,7 +1,7 @@
 #
 # spec file for package python-packaging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,14 @@
 %bcond_with test
 %endif
 Name:           python-packaging%{psuffix}
-Version:        19.2
+Version:        20.1
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/packaging
 Source:         https://pypi.io/packages/source/p/packaging/packaging-%{version}.tar.gz
+Patch0:         issue_254.patch
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +56,7 @@ Core utilities for Python packages
 
 %prep
 %setup -q -n packaging-%{version}
+%patch0 -p1
 # sdist must provide a packaging.egg-info, used below in install phase
 test -d packaging.egg-info
 
