@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %bcond_without python2
 Name:           python-urllib3%{psuffix}
-Version:        1.25.6
+Version:        1.25.8
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -71,6 +71,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.12.0}
 BuildRequires:  %{python_module tornado < 6}
+BuildRequires:  %{python_module trustme >= 0.5.3}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 %endif
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
