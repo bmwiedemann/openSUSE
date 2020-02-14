@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb  8 16:12:53 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.49.2
+  Fixed bugs:
+  * Fix compilation problems with NEON-specific code in freebl
+    (bmo#1608327)
+  * Fix a taskcluster issue with Python 2 / Python 3 (bmo#1608895)
+
+-------------------------------------------------------------------
+Thu Jan 16 07:01:01 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.49.1
+  3.49.1
+  https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.49.1_release_notes
+  * Cache the most recent PBKDF2 password hash, to speed up repeated
+    SDR operations, important with the increased KDF iteration counts (bmo#1606992)
+  3.49
+  https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.49_release_notes
+  * The legacy DBM database, libnssdbm, is no longer built by default
+    when using gyp builds (bmo#1594933)
+  * several bugfixes
+
+-------------------------------------------------------------------
 Tue Jan  7 08:24:50 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.48
