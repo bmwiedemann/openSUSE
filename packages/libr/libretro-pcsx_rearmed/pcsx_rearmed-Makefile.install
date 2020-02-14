@@ -1,6 +1,0 @@
-include Makefile.libretro
-
-core_installdir := $(prefix)/lib
-
-install:
-	install -p -D -m755 pcsx_rearmed_libretro.so $(DESTDIR)$(core_installdir)/pcsx_rearmed_libretro.so
