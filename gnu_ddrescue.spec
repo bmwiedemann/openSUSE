@@ -1,7 +1,7 @@
 #
 # spec file for package gnu_ddrescue
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gnu_ddrescue
-Version:        1.25~pre1
+Version:        1.25~rc1
 Release:        0
-%define rversion	1.25-pre1
+%define rversion	1.25-rc1
 Summary:        I/O error aware data recovery and copying utility
 License:        GPL-2.0-or-later
-Group:          base recovery-tools
+Group:          System/Base
 URL:            http://gnu.org/software/ddrescue/ddrescue.html
 Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%rversion.tar.lz
 #Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%rversion.tar.lz.sig
