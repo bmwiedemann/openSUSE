@@ -46,7 +46,7 @@
 %endif
 %ifarch x86_64
 %if %{?suse_version} > 1500
-%bcond_without lto
+%bcond_with lto
 %else
 %bcond_with lto
 %endif
@@ -57,7 +57,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        79.0.3945.130
+Version:        80.0.3987.100
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -86,12 +86,15 @@ Patch10:        gcc-enable-lto.patch
 Patch11:        chromium-unbundle-zlib.patch
 Patch12:        chromium-old-glibc-noexcept.patch
 Patch13:        chromium-79-gcc-alignas.patch
-Patch14:        chromium-79-gcc-ambiguous-nodestructor.patch
-Patch15:        chromium-79-gcc-name-clash.patch
-Patch16:        chromium-79-gcc-permissive.patch
-Patch17:        chromium-79-icu-65.patch
-Patch18:        chromium-79-include.patch
-Patch19:        chromium-79-system-hb.patch
+Patch14:        chromium-80-gcc-abstract.patch
+Patch15:        chromium-80-gcc-blink.patch
+Patch16:        chromium-80-gcc-incomplete-type.patch
+Patch17:        chromium-80-gcc-permissive.patch
+Patch18:        chromium-80-gcc-quiche.patch
+Patch19:        chromium-80-include.patch
+Patch20:        chromium-80-unbundle-libxml.patch
+Patch21:        chromium-fix-char_traits.patch
+Patch22:        gpu-timeout.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -174,7 +177,6 @@ BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(python)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(schroedinger-1.0)
@@ -245,6 +247,7 @@ BuildRequires:  python-simplejson
 BuildRequires:  python-xml
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(zlib)
 %endif
 %if %{with system_icu}
@@ -330,9 +333,6 @@ keeplibs=(
     third_party/blink
     third_party/boringssl
     third_party/boringssl/src/third_party/fiat
-    third_party/boringssl/src/third_party/sike
-    third_party/boringssl/linux-aarch64/crypto/third_party/sike
-    third_party/boringssl/linux-x86_64/crypto/third_party/sike
     third_party/breakpad
     third_party/breakpad/breakpad/src/third_party/curl
     third_party/brotli
@@ -366,10 +366,12 @@ keeplibs=(
     third_party/depot_tools
     third_party/depot_tools/third_party/six
     third_party/devscripts
+    third_party/devtools-frontend
+    third_party/devtools-frontend/src/third_party
     third_party/dom_distiller_js
     third_party/emoji-segmenter
     third_party/flatbuffers
-    third_party/flot
+    third_party/libgifcodec
     third_party/glslang
     third_party/google_input_tools
     third_party/google_input_tools/third_party/closure_library
@@ -438,7 +440,6 @@ keeplibs=(
     third_party/sfntly
     third_party/simplejson
     third_party/skia
-    third_party/skia/third_party/gif
     third_party/skia/third_party/skcms
     third_party/skia/third_party/vulkan
     third_party/skia/include/third_party/vulkan/
@@ -471,6 +472,7 @@ keeplibs=(
     third_party/webrtc/rtc_base/third_party/sigslot
     third_party/widevine
     third_party/woff2
+    third_party/wuffs
     third_party/zlib/google
     tools/grit/third_party/six
     url/third_party/mozilla
@@ -483,6 +485,7 @@ keeplibs=(
 %if %{with sle_bundles}
 keeplibs+=(
     third_party/libwebp
+    third_party/opus
     third_party/yasm
     third_party/simplejson
     third_party/catapult/third_party/beautifulsoup4
@@ -561,9 +564,11 @@ export PATH="$HOME/bin/:$PATH"
 %endif
 # do not eat all memory
 %limit_build -m 2600
-
 %if %{with lto}
-export LDFLAGS="-flto=%{jobs} --param lto-max-streaming-parallelism=1"
+# reduce the threads for linking even more due to LTO eating ton of memory
+_link_threads=$(((%{jobs} - 2)))
+test "$_link_threads" -le 0 && _link_threads=1
+export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
 %endif
 
 # Set system libraries to be used
@@ -576,7 +581,6 @@ gn_system_libraries=(
     libpng
     libxslt
     libusb
-    opus
     re2
     snappy
 )
@@ -589,6 +593,7 @@ gn_system_libraries+=(
 %if !%{with sle_bundles}
 gn_system_libraries+=(
     libwebp
+    opus
     yasm
     zlib
 )
@@ -619,13 +624,6 @@ myconf_gn+=" use_swiftshader_with_subzero=true"
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
-myconf_gn+=" use_jumbo_build=true"
-%ifarch %{arm} aarch64
-# Limit number to avoid OOM errors
-myconf_gn+=" jumbo_file_merge_limit=5"
-%else
-myconf_gn+=" jumbo_file_merge_limit=8"
-%endif
 myconf_gn+=" concurrent_links=1"
 myconf_gn+=" symbol_level=1"
 myconf_gn+=" blink_symbol_level=0"

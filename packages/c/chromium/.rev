@@ -2718,4 +2718,41 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>765585</requestid>
   </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>ebaacc49f2285c043af116b5258cf39c</srcmd5>
+    <version>80.0.3987.100</version>
+    <time>1581694100</time>
+    <user>okurz-factory</user>
+    <comment>- Update to 80.0.3987.100 bsc#1163484:
+  * feature fixes only
+
+- Update to 80.0.3987.87 bsc#1162833:
+  * CVE-2020-6381: Integer overflow in JavaScript
+  * CVE-2020-6382: Type Confusion in JavaScript
+  * CVE-2019-18197: Multiple vulnerabilities in XML
+  * CVE-2019-19926: Inappropriate implementation in SQLite
+  * CVE-2020-6385: Insufficient policy enforcement in storage
+  * CVE-2019-19880, CVE-2019-19925: Multiple vulnerabilities in SQLite
+  * CVE-2020-6387: Out of bounds write in WebRTC
+  * CVE-2020-6388: Out of bounds memory access in WebAudio
+  * CVE-2020-6389: Out of bounds write in WebRTC
+  * CVE-2020-6390: Out of bounds memory access in streams
+  * CVE-2020-6391: Insufficient validation of untrusted input in Blink
+  * CVE-2020-6392: Insufficient policy enforcement in extensions
+  * CVE-2020-6393: Insufficient policy enforcement in Blink
+  * CVE-2020-6394: Insufficient policy enforcement in Blink
+  * CVE-2020-6395: Out of bounds read in JavaScript
+  * CVE-2020-6396: Inappropriate implementation in Skia
+  * CVE-2020-6397: Incorrect security UI in sharing
+  * CVE-2020-6398: Uninitialized use in PDFium
+  * CVE-2020-6399: Insufficient policy enforcement in AppCache
+  * CVE-2020-6400: Inappropriate implementation in CORS
+  * CVE-2020-6401: Insufficient validation of untrusted input in Omnibox
+  * CVE-2020-6402: Insufficient policy enforcement in downloads
+  * CVE-2020-6403: Incorrect security UI in Omnibox
+  * CVE-2020-6404: Inappropriate implementation in Blink
+  * CVE-2020-6405: Out of bounds read in SQLite
+  * CVE-2020-6406: Use after free in audio</comment>
+    <requestid>773714</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Feb 12 13:16:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 80.0.3987.100 bsc#1163484:
+  * feature fixes only
+
+-------------------------------------------------------------------
+Wed Feb  5 13:04:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 80.0.3987.87 bsc#1162833:
+  * CVE-2020-6381: Integer overflow in JavaScript
+  * CVE-2020-6382: Type Confusion in JavaScript
+  * CVE-2019-18197: Multiple vulnerabilities in XML
+  * CVE-2019-19926: Inappropriate implementation in SQLite
+  * CVE-2020-6385: Insufficient policy enforcement in storage
+  * CVE-2019-19880, CVE-2019-19925: Multiple vulnerabilities in SQLite
+  * CVE-2020-6387: Out of bounds write in WebRTC
+  * CVE-2020-6388: Out of bounds memory access in WebAudio
+  * CVE-2020-6389: Out of bounds write in WebRTC
+  * CVE-2020-6390: Out of bounds memory access in streams
+  * CVE-2020-6391: Insufficient validation of untrusted input in Blink
+  * CVE-2020-6392: Insufficient policy enforcement in extensions
+  * CVE-2020-6393: Insufficient policy enforcement in Blink
+  * CVE-2020-6394: Insufficient policy enforcement in Blink
+  * CVE-2020-6395: Out of bounds read in JavaScript
+  * CVE-2020-6396: Inappropriate implementation in Skia
+  * CVE-2020-6397: Incorrect security UI in sharing
+  * CVE-2020-6398: Uninitialized use in PDFium
+  * CVE-2020-6399: Insufficient policy enforcement in AppCache
+  * CVE-2020-6400: Inappropriate implementation in CORS
+  * CVE-2020-6401: Insufficient validation of untrusted input in Omnibox
+  * CVE-2020-6402: Insufficient policy enforcement in downloads
+  * CVE-2020-6403: Incorrect security UI in Omnibox
+  * CVE-2020-6404: Inappropriate implementation in Blink
+  * CVE-2020-6405: Out of bounds read in SQLite
+  * CVE-2020-6406: Use after free in audio
+  * CVE-2019-19923: Out of bounds memory access in SQLite
+  * CVE-2020-6408: Insufficient policy enforcement in CORS
+  * CVE-2020-6409: Inappropriate implementation in Omnibox
+  * CVE-2020-6410: Insufficient policy enforcement in navigation
+  * CVE-2020-6411: Insufficient validation of untrusted input in Omnibox
+  * CVE-2020-6412: Insufficient validation of untrusted input in Omnibox
+  * CVE-2020-6413: Inappropriate implementation in Blink
+  * CVE-2020-6414: Insufficient policy enforcement in Safe Browsing
+  * CVE-2020-6415: Inappropriate implementation in JavaScript
+  * CVE-2020-6416: Insufficient data validation in streams
+  * CVE-2020-6417: Inappropriate implementation in installer
+- Disable lto for now as it consumes >16GB ram
+- Added patches:
+  * chromium-80-gcc-abstract.patch
+  * chromium-80-gcc-blink.patch
+  * chromium-80-gcc-incomplete-type.patch
+  * chromium-80-gcc-permissive.patch
+  * chromium-80-gcc-quiche.patch
+  * chromium-80-include.patch
+  * chromium-80-unbundle-libxml.patch
+  * chromium-80.0.3987.87.tar.xz
+  * chromium-fix-char_traits.patch
+  * gpu-timeout.patch
+- Removed patches:
+  * chromium-79-gcc-ambiguous-nodestructor.patch
+  * chromium-79-gcc-name-clash.patch
+  * chromium-79-gcc-permissive.patch
+  * chromium-79-icu-65.patch
+  * chromium-79-include.patch
+  * chromium-79-system-hb.patch
+- Rebased patches:
+  * chromium-old-glibc-noexcept.patch
+  * chromium-vaapi-fix.patch
+  * chromium-vaapi.patch
+
+-------------------------------------------------------------------
 Sat Jan 18 20:04:05 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 79.0.3945.130 boo#1161252:

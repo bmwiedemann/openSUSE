@@ -1,7 +1,7 @@
-Index: chromium-79.0.3941.4/chrome/common/media_router/media_sink.cc
+Index: chromium-80.0.3987.16/chrome/common/media_router/media_sink.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/chrome/common/media_router/media_sink.cc
-+++ chromium-79.0.3941.4/chrome/common/media_router/media_sink.cc
+--- chromium-80.0.3987.16.orig/chrome/common/media_router/media_sink.cc
++++ chromium-80.0.3987.16/chrome/common/media_router/media_sink.cc
 @@ -19,12 +19,12 @@ MediaSink::MediaSink(const MediaSink::Id
        provider_id_(provider_id) {}
  
@@ -17,10 +17,10 @@ Index: chromium-79.0.3941.4/chrome/common/media_router/media_sink.cc
  
  bool MediaSink::IsMaybeCloudSink() const {
    switch (icon_type_) {
-Index: chromium-79.0.3941.4/components/history/core/browser/history_types.cc
+Index: chromium-80.0.3987.16/components/history/core/browser/history_types.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/components/history/core/browser/history_types.cc
-+++ chromium-79.0.3941.4/components/history/core/browser/history_types.cc
+--- chromium-80.0.3987.16.orig/components/history/core/browser/history_types.cc
++++ chromium-80.0.3987.16/components/history/core/browser/history_types.cc
 @@ -42,7 +42,7 @@ QueryResults::QueryResults(QueryResults&
    Swap(&other);
  }
@@ -39,10 +39,10 @@ Index: chromium-79.0.3941.4/components/history/core/browser/history_types.cc
  
  // MostVisitedURL --------------------------------------------------------------
  
-Index: chromium-79.0.3941.4/components/history/core/browser/history_types.h
+Index: chromium-80.0.3987.16/components/history/core/browser/history_types.h
 ===================================================================
---- chromium-79.0.3941.4.orig/components/history/core/browser/history_types.h
-+++ chromium-79.0.3941.4/components/history/core/browser/history_types.h
+--- chromium-80.0.3987.16.orig/components/history/core/browser/history_types.h
++++ chromium-80.0.3987.16/components/history/core/browser/history_types.h
 @@ -141,7 +141,7 @@ class QueryResults {
    ~QueryResults();
  
@@ -61,10 +61,10 @@ Index: chromium-79.0.3941.4/components/history/core/browser/history_types.h
    ~QueryURLResult();
  
    // Indicates whether the call to HistoryBackend::QueryURL was successfull
-Index: chromium-79.0.3941.4/components/history/core/browser/url_row.cc
+Index: chromium-80.0.3987.16/components/history/core/browser/url_row.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/components/history/core/browser/url_row.cc
-+++ chromium-79.0.3941.4/components/history/core/browser/url_row.cc
+--- chromium-80.0.3987.16.orig/components/history/core/browser/url_row.cc
++++ chromium-80.0.3987.16/components/history/core/browser/url_row.cc
 @@ -26,7 +26,7 @@ URLRow::~URLRow() {
  }
  
@@ -74,10 +74,10 @@ Index: chromium-79.0.3941.4/components/history/core/browser/url_row.cc
  
  void URLRow::Swap(URLRow* other) {
    std::swap(id_, other->id_);
-Index: chromium-79.0.3941.4/components/omnibox/browser/suggestion_answer.cc
+Index: chromium-80.0.3987.16/components/omnibox/browser/suggestion_answer.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/components/omnibox/browser/suggestion_answer.cc
-+++ chromium-79.0.3941.4/components/omnibox/browser/suggestion_answer.cc
+--- chromium-80.0.3987.16.orig/components/omnibox/browser/suggestion_answer.cc
++++ chromium-80.0.3987.16/components/omnibox/browser/suggestion_answer.cc
 @@ -60,7 +60,7 @@ SuggestionAnswer::TextField::TextField(T
  SuggestionAnswer::TextField& SuggestionAnswer::TextField::operator=(
      const TextField&) = default;
@@ -87,10 +87,10 @@ Index: chromium-79.0.3941.4/components/omnibox/browser/suggestion_answer.cc
  
  // static
  bool SuggestionAnswer::TextField::ParseTextField(const base::Value& field_json,
-Index: chromium-79.0.3941.4/components/policy/core/common/policy_map.cc
+Index: chromium-80.0.3987.16/components/policy/core/common/policy_map.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/components/policy/core/common/policy_map.cc
-+++ chromium-79.0.3941.4/components/policy/core/common/policy_map.cc
+--- chromium-80.0.3987.16.orig/components/policy/core/common/policy_map.cc
++++ chromium-80.0.3987.16/components/policy/core/common/policy_map.cc
 @@ -52,7 +52,7 @@ PolicyMap::Entry::Entry(
  PolicyMap::Entry::~Entry() = default;
  
@@ -100,10 +100,10 @@ Index: chromium-79.0.3941.4/components/policy/core/common/policy_map.cc
  
  PolicyMap::Entry PolicyMap::Entry::DeepCopy() const {
    Entry copy(level, scope, source, value ? value->CreateDeepCopy() : nullptr,
-Index: chromium-79.0.3941.4/components/search_provider_logos/logo_common.cc
+Index: chromium-80.0.3987.16/components/search_provider_logos/logo_common.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/components/search_provider_logos/logo_common.cc
-+++ chromium-79.0.3941.4/components/search_provider_logos/logo_common.cc
+--- chromium-80.0.3987.16.orig/components/search_provider_logos/logo_common.cc
++++ chromium-80.0.3987.16/components/search_provider_logos/logo_common.cc
 @@ -14,14 +14,14 @@ LogoMetadata::LogoMetadata() = default;
  LogoMetadata::LogoMetadata(const LogoMetadata&) = default;
  LogoMetadata::LogoMetadata(LogoMetadata&&) noexcept = default;
@@ -130,10 +130,10 @@ Index: chromium-79.0.3941.4/components/search_provider_logos/logo_common.cc
  LogoCallbacks::~LogoCallbacks() = default;
  
  }  // namespace search_provider_logos
-Index: chromium-79.0.3941.4/components/signin/public/identity_manager/account_info.cc
+Index: chromium-80.0.3987.16/components/signin/public/identity_manager/account_info.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/components/signin/public/identity_manager/account_info.cc
-+++ chromium-79.0.3941.4/components/signin/public/identity_manager/account_info.cc
+--- chromium-80.0.3987.16.orig/components/signin/public/identity_manager/account_info.cc
++++ chromium-80.0.3987.16/components/signin/public/identity_manager/account_info.cc
 @@ -58,7 +58,7 @@ CoreAccountInfo::CoreAccountInfo(CoreAcc
  CoreAccountInfo& CoreAccountInfo::operator=(const CoreAccountInfo& other) =
      default;
@@ -152,36 +152,36 @@ Index: chromium-79.0.3941.4/components/signin/public/identity_manager/account_in
  
  bool AccountInfo::IsEmpty() const {
    return CoreAccountInfo::IsEmpty() && hosted_domain.empty() &&
-Index: chromium-79.0.3941.4/google_apis/gaia/core_account_id.cc
+Index: chromium-80.0.3987.16/google_apis/gaia/core_account_id.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/google_apis/gaia/core_account_id.cc
-+++ chromium-79.0.3941.4/google_apis/gaia/core_account_id.cc
-@@ -14,7 +14,7 @@ CoreAccountId::~CoreAccountId() = defaul
+--- chromium-80.0.3987.16.orig/google_apis/gaia/core_account_id.cc
++++ chromium-80.0.3987.16/google_apis/gaia/core_account_id.cc
+@@ -24,7 +24,7 @@ CoreAccountId::~CoreAccountId() = defaul
  
  CoreAccountId& CoreAccountId::operator=(const CoreAccountId&) = default;
  
 -CoreAccountId& CoreAccountId::operator=(CoreAccountId&&) noexcept = default;
 +CoreAccountId& CoreAccountId::operator=(CoreAccountId&&) = default;
  
- CoreAccountId::CoreAccountId(const char* id) : id(id) {}
- 
-Index: chromium-79.0.3941.4/google_apis/gaia/core_account_id.h
+ // static
+ CoreAccountId CoreAccountId::FromGaiaId(const std::string& gaia_id) {
+Index: chromium-80.0.3987.16/google_apis/gaia/core_account_id.h
 ===================================================================
---- chromium-79.0.3941.4.orig/google_apis/gaia/core_account_id.h
-+++ chromium-79.0.3941.4/google_apis/gaia/core_account_id.h
-@@ -20,7 +20,7 @@ struct CoreAccountId {
+--- chromium-80.0.3987.16.orig/google_apis/gaia/core_account_id.h
++++ chromium-80.0.3987.16/google_apis/gaia/core_account_id.h
+@@ -30,7 +30,7 @@ struct CoreAccountId {
    ~CoreAccountId();
  
    CoreAccountId& operator=(const CoreAccountId&);
 -  CoreAccountId& operator=(CoreAccountId&&) noexcept;
 +  CoreAccountId& operator=(CoreAccountId&&);
  
-   // Those implicit constructor and conversion operator allow to
-   // progressively migrate the code to use this struct. Removing
-Index: chromium-79.0.3941.4/gpu/config/gpu_info.cc
+   // Checks if the account is valid or not.
+   bool empty() const;
+Index: chromium-80.0.3987.16/gpu/config/gpu_info.cc
 ===================================================================
---- chromium-79.0.3941.4.orig/gpu/config/gpu_info.cc
-+++ chromium-79.0.3941.4/gpu/config/gpu_info.cc
+--- chromium-80.0.3987.16.orig/gpu/config/gpu_info.cc
++++ chromium-80.0.3987.16/gpu/config/gpu_info.cc
 @@ -173,7 +173,7 @@ GPUInfo::GPUDevice& GPUInfo::GPUDevice::
      const GPUInfo::GPUDevice& other) = default;
  
@@ -191,11 +191,11 @@ Index: chromium-79.0.3941.4/gpu/config/gpu_info.cc
  
  GPUInfo::GPUInfo()
      : optimus(false),
-Index: chromium-79.0.3941.4/third_party/openscreen/src/osp/public/service_info.h
+Index: chromium-80.0.3987.16/third_party/openscreen/src/osp/public/service_info.h
 ===================================================================
---- chromium-79.0.3941.4.orig/third_party/openscreen/src/osp/public/service_info.h
-+++ chromium-79.0.3941.4/third_party/openscreen/src/osp/public/service_info.h
-@@ -21,7 +21,7 @@ struct ServiceInfo {
+--- chromium-80.0.3987.16.orig/third_party/openscreen/src/osp/public/service_info.h
++++ chromium-80.0.3987.16/third_party/openscreen/src/osp/public/service_info.h
+@@ -22,7 +22,7 @@ struct ServiceInfo {
    ServiceInfo(ServiceInfo&&) MAYBE_NOEXCEPT = default;
    ServiceInfo(const ServiceInfo&) MAYBE_NOEXCEPT = default;
  
