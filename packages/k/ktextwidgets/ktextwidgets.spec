@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5TextWidgets5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktextwidgets
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        KDE Text editing widgets
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.5
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -44,16 +44,13 @@ BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
 BuildRequires:  cmake(Qt5TextToSpeech)
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 
 %description
 KTextWidgets provides widgets for displaying and editing text. It supports
@@ -78,7 +75,7 @@ Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5I18n) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5Sonnet) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Widgets) >= 5.11.0
+Requires:       cmake(Qt5Widgets) >= 5.12.0
 
 %description devel
 KTextWidgets provides widgets for displaying and editing text. It supports
@@ -91,7 +88,7 @@ rich text as well as plain text. Development files.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
