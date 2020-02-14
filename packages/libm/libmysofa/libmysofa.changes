@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 11 16:12:41 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to version 1.0
+  * Fixed CVE-2020-6860
+  * Support for netcdf 4.7.2 generated files
+  * Support for user-defined variables
+
+-------------------------------------------------------------------
 Sun Jan  5 17:29:31 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 0.9.1

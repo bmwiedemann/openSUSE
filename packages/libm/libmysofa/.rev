@@ -45,4 +45,16 @@
 - Drop libmysofa-0-pkgconfig-paths.patch</comment>
     <requestid>760995</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e9d5fa0f7f233d10a0da0f5a0ee513a</srcmd5>
+    <version>1.0</version>
+    <time>1581693809</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 1.0
+  * Fixed CVE-2020-6860
+  * Support for netcdf 4.7.2 generated files
+  * Support for user-defined variables
+</comment>
+    <requestid>773490</requestid>
+  </revision>
 </revisionlist>

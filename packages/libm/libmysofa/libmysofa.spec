@@ -16,10 +16,10 @@
 #
 
 
-%define sover 0
+%define sover 1
 %define __builder ninja
 Name:           libmysofa
-Version:        0.9.1
+Version:        1.0
 Release:        0
 Summary:        Reader for AES SOFA HRTF files
 License:        BSD-3-Clause
