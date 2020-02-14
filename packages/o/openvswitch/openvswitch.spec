@@ -1,7 +1,7 @@
 #
 # spec file for package openvswitch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ Summary:        A multilayer virtual network switch
 # - utilities/bugtool which is LGPL-2.1
 License:        Apache-2.0 AND LGPL-2.1-only AND SISSL
 Group:          Productivity/Networking/System
-Url:            http://openvswitch.org/
+URL:            http://openvswitch.org/
 Source0:        http://openvswitch.org/releases/openvswitch-%{version}.tar.gz
 Source1:        preamble
 Source89:       Module.supported.updates
@@ -292,6 +292,7 @@ Group:          Productivity/Networking/System
 Requires:       %{lname} = %{version}
 Requires:       python2
 Requires:       python2-six
+Requires:       python2-sortedcontainers
 Provides:       python-%{name} = %{version}
 Provides:       python-ovs = %{version}
 Provides:       python2-%{name} = %{version}
@@ -309,6 +310,7 @@ Group:          Productivity/Networking/System
 Requires:       %{lname} = %{version}
 Requires:       python3
 Requires:       python3-six
+Requires:       python3-sortedcontainers
 Provides:       python3-%{name} = %{version}
 Obsoletes:      python3-%{name} < 2.10.1
 
