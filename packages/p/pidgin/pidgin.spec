@@ -126,7 +126,6 @@ Requires:       cyrus-sasl-digestmd5
 Requires:       cyrus-sasl-plain
 Requires:       libpurple-branding
 Requires:       perl >= %{perl_version}
-Recommends:     libpurple-lang
 # Needed for purple-url-handler.
 %if 0%{?suse_version} >= 1500
 Requires:       python3-dbus-python
