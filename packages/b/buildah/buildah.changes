@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 13 08:22:30 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.14.0
+  * getDateAndDigestAndSize(): use manifest.Digest
+  * Touch up os/arch doc
+  * chroot: handle slightly broken seccomp defaults
+  * buildahimage: specify fuse-overlayfs mount options
+  * parse: don't complain about not being able to rename something
+    to itself
+  * Fix build for 32bit platforms
+  * Allow users to set OS and architecture on bud
+  * Fix COPY in containerfile with envvar
+  * Add --sign-by to bud/commit/push, --remove-signatures for
+    pull/push
+  * Add support for containers.conf
+  * manifest push: add --format option
+
+-------------------------------------------------------------------
 Wed Jan 15 07:44:30 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.13.1
