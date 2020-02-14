@@ -1,7 +1,7 @@
 #
 # spec file for package ccache
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        3.7.6
+Version:        3.7.7
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later

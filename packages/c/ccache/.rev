@@ -486,4 +486,17 @@ Fixed a regression in 3.7.2 when using the compiler option “-Werror” and the
   * Properly handle color diagnostics in the depend mode as well.</comment>
     <requestid>757695</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>53cf1d627187bb6bbe5795cc9c811a8c</srcmd5>
+    <version>3.7.7</version>
+    <time>1581694197</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 3.7.7:
+  * Fixed a bug related to object file location in the dependency file (if using -MD or -MMD but not -MF and the build directory is not the same as the source directory then the object file location in the .d file would become incorrect). This fixes regression in ccache 3.7.5 introduced by the bug fix related to EDG-based compilers. Note that this removes support for EDG-based compilers again. (A better fix for this is planned for ccache 4.0.)
+  * Removed the unify mode since it has bugs and shortcomings that are non-trivial or impossible to fix: it doesn’t work with the direct mode, it doesn’t handle C++ raw strings correctly, it can give false cache hits for .incbin directives, it’s turned off when using -g and it can make line numbers in warning messages and __LINE__ macros incorrect.
+mtime and ctime values are now stored in the manifest files only when sloppy_file_stat is set. This avoids adding superfluous manifest file entries on direct mode cache misses.
+  * A “Result:” line is now always printed to the log.
+  * The “cache miss” statistics counter will now be updated for read-only cache misses, making it consistent with the cache hit case.</comment>
+    <requestid>770545</requestid>
+  </revision>
 </revisionlist>
