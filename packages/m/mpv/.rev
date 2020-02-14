@@ -733,4 +733,14 @@
     for the complete changelog.</comment>
     <requestid>772447</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>faa5b902e6e1cdc58ddfcb052f14795d</srcmd5>
+    <version>0.32.0+git.20200213T013258.5bf433b16f</version>
+    <time>1581694642</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 0.32.0+git.20200213T013258.5bf433b16f:
+  * See https://github.com/mpv-player/mpv/compare/6799f8e0e9..5bf433b16f
+    for the complete changelog.</comment>
+    <requestid>774138</requestid>
+  </revision>
 </revisionlist>
