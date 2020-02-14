@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Feb  9 21:53:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.0
+  New:
+  * Edit text box content.
+  * Panning image by holding space or mouse middle button and
+    dragging.
+  * Change annotation element config after drawing.
+  Changed:
+  * Increase blur level so that large text is not visible.
+  * Crop widget updates shows via cursor if something is movable.
+  * Multi-tool buttons select current (last) tool on single click.
+  Fixed:
+  * Unable to select number annotation when clicking on the number
+    without background.
+  * Ctrl Modifier stuck on second or third screenshot with Ctrl-N.
+  * Undo/Redo is now disabled during crop and scale operation.
+  * Mess with russian letters in text tool when typing in Russian.
+  * Text tool does not allow me to type accents.
+  * Highlighter rect and ellipse have only border but no fill.
+  * Saved tool selection not loaded on startup.
+  * On startup does not highlight tool, when this tool not the
+    first item in the list.
+  * Cursor image cannot be grabbed for moving.
+  * Accents still not work in text tool on Linux.
+
+-------------------------------------------------------------------
 Sun Dec 29 19:45:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Package stable release, version 0.1.0

@@ -1,7 +1,7 @@
 #
 # spec file for package kImageAnnotator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover   0_1_0
+
+%define sover   0_2_0
 %define libname libkImageAnnotator%{sover}
 Name:           kImageAnnotator
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/DamirPorobic/kImageAnnotator
 Source:         https://github.com/DamirPorobic/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/DamirPorobic/kImageAnnotator/master/LICENSE
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(x11)
 BuildRequires:  kColorPicker-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(x11)
 
 %description
 kImageAnnotator is a tool for annotating images.
@@ -54,7 +54,6 @@ Development files for %{name} including headers and libraries
 
 %prep
 %setup -q
-cp %{SOURCE1} .
 
 %build
 %cmake \
@@ -78,4 +77,3 @@ make %{?_smp_mflags}
 %{_includedir}/%{name}
 
 %changelog
-
