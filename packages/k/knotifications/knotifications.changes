@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:07:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Add new signal for default action activation
+  * Drop dependency to KF5Codecs by using the new
+    stripRichText function
+  * Strip richtext on Windows
+  * Reduce dependencies on Windows
+  * Adapt to Qt 5.14 Android changes
+  * Don't use KWindowSystem on Android
+  * Deprecate raiseWidget
+  * Port KNotification from KWindowSystem
+
+-------------------------------------------------------------------
 Sun Jan  5 09:02:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
