@@ -1,7 +1,7 @@
 #
 # spec file for package picard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://picard.musicbrainz.org
 Source0:        https://codeload.github.com/metabrainz/picard/tar.gz/release-%{version}#/%{name}-%{version}.tar.gz
+Patch0:         0001-Fix-crash-on-PyQt-ge-5.14-on-cover-art-context-menu.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -48,6 +49,7 @@ track-based tagging.
 
 %prep
 %setup -q -n %{name}-release-%{version}
+%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8

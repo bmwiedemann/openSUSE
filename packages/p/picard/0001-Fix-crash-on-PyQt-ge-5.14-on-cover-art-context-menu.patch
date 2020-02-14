@@ -1,0 +1,37 @@
+From 32e05058e0ac5772d7a480287ee428642fbbc9b9 Mon Sep 17 00:00:00 2001
+From: Philipp Wolfer <ph.wolfer@gmail.com>
+Date: Tue, 7 Jan 2020 08:22:13 +0100
+Subject: [PATCH] PICARD-1700: Fix crash on PyQt >= 5.14 on cover art context
+ menu
+
+In PyQt 5.14 the exclusive parameter for QActionGroup is no longer available. Also QActionGroup is exclusive by default in Qt5, so there is no need to set this.
+---
+ picard/ui/coverartbox.py | 2 +-
+ picard/ui/logview.py     | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/picard/ui/coverartbox.py b/picard/ui/coverartbox.py
+index 102704184..bde1c06f5 100644
+--- a/picard/ui/coverartbox.py
++++ b/picard/ui/coverartbox.py
+@@ -538,7 +538,7 @@ def contextMenuEvent(self, event):
+         if not menu.isEmpty():
+             menu.addSeparator()
+ 
+-        load_image_behavior_group = QtWidgets.QActionGroup(self.parent, exclusive=True)
++        load_image_behavior_group = QtWidgets.QActionGroup(self.parent)
+         action = load_image_behavior_group.addAction(QtWidgets.QAction(_('Replace front cover art on drop'), self.parent, checkable=True))
+         action.triggered.connect(partial(self.set_load_image_behavior, behavior='replace'))
+         if config.setting["load_image_behavior"] == 'replace':
+diff --git a/picard/ui/logview.py b/picard/ui/logview.py
+index cf75feadd..7bb7813c0 100644
+--- a/picard/ui/logview.py
++++ b/picard/ui/logview.py
+@@ -129,7 +129,6 @@ def __init__(self, parent=None):
+         super().__init__(parent=parent)
+ 
+         self.action_group = QtWidgets.QActionGroup(self)
+-        self.action_group .setExclusive(True)
+         self.actions = {}
+         for level, feat in log.levels_features.items():
+             act = QtWidgets.QAction(_(feat.name), self, checkable=True)

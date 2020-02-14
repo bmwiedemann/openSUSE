@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 13 16:25:33 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix a crash when right-clicking on the cover art box.
+  * 0001-Fix-crash-on-PyQt-ge-5.14-on-cover-art-context-menu.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 21:10:07 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.2.3:
