@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Crash5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kcrash
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        An application crash handler
 License:        LGPL-2.1-or-later
@@ -44,9 +44,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.12.0
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -65,7 +65,7 @@ Summary:        Build environment for the KCrash application crash handler
 Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5Core) >= 5.12.0
 
 %description devel
 KCrash provides support for intercepting and handling application crashes.
@@ -76,7 +76,7 @@ Development files.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
