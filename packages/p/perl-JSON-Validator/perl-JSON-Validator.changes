@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 14 03:07:59 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.21
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.21 2020-02-14T10:14:14+0900
+   - Fix data_section() without a class #193
+
+-------------------------------------------------------------------
 Wed Feb 12 03:08:11 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.20
