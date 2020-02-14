@@ -29,7 +29,7 @@
 # The tests also pull in dependencies of all backends done in pure python
 %bcond_with tests
 Name:           python-matplotlib
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
