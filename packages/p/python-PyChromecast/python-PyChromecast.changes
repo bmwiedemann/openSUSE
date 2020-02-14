@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:38:57 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.1.1
+  * Update "add support to your favorite app" in the README
+  * Get ipaddress the same way as code examples in zeroconf
+  * Correct METADATA_TYPE in media.py
+
+-------------------------------------------------------------------
 Wed Jan 15 11:26:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.1.0
