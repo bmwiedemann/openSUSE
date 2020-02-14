@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           plasma-framework
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -63,16 +63,16 @@ BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Wayland) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.11.0
-BuildRequires:  cmake(Qt5Gui) >= 5.11.0
-BuildRequires:  cmake(Qt5Qml) >= 5.11.0
-BuildRequires:  cmake(Qt5Quick) >= 5.11.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui) >= 5.12.0
+BuildRequires:  cmake(Qt5Qml) >= 5.12.0
+BuildRequires:  cmake(Qt5Quick) >= 5.12.0
 BuildRequires:  cmake(Qt5QuickControls2) >= 5.7.0
-BuildRequires:  cmake(Qt5Sql) >= 5.11.0
-BuildRequires:  cmake(Qt5Svg) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.11.0
+BuildRequires:  cmake(Qt5Sql) >= 5.12.0
+BuildRequires:  cmake(Qt5Svg) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.12.0
 #FIXME: Figure how to add it properly
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig(egl)
@@ -123,9 +123,9 @@ Requires:       kf5-filesystem
 Requires:       cmake(KF5Package) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Gui) >= 5.11.0
-Requires:       cmake(Qt5Qml) >= 5.11.0
-Requires:       cmake(Qt5Quick) >= 5.11.0
+Requires:       cmake(Qt5Gui) >= 5.12.0
+Requires:       cmake(Qt5Qml) >= 5.12.0
+Requires:       cmake(Qt5Quick) >= 5.12.0
 Conflicts:      kapptemplate <= 15.12.3
 
 %description devel
@@ -138,7 +138,7 @@ Plasma library and runtime components based upon KF5 and Qt5
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
