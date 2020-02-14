@@ -381,4 +381,12 @@
     <comment>- Trim package descriptions on packages installed more rarely. (forwarded request 725675 from jengelh)</comment>
     <requestid>725827</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>212c2bdce8fa41fce603110fc1c94c81</srcmd5>
+    <version>0.1.74</version>
+    <time>1581693956</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770194</requestid>
+  </revision>
 </revisionlist>

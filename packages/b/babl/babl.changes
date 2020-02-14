@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 21:09:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.74:
+  + Build fixes, improved host cpu detection, OSX fixes, clang
+    warning squelches.
+
+-------------------------------------------------------------------
 Fri Aug 23 19:58:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim package descriptions on packages installed more rarely.
