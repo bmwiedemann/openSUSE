@@ -418,4 +418,21 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
 - Update update-timeline.patch</comment>
     <requestid>754872</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b1118044b14fa0adc44de83abc61009e</srcmd5>
+    <version>5.13.2</version>
+    <time>1581694222</time>
+    <user>okurz-factory</user>
+    <comment>- Disable debug assertions, e.g. Cura passes None for empty dicts and
+  crashes when trying to convert to QVariantMap, fixes boo#1157504.
+- Split python2 and python3 builds using _multibuild.
+- Rename python-qt5-utils package to python-qt5-common-devel to
+  better reflect its use, and drop the dependencies to it from the
+  bindings package.
+- Make doc and common-devel subpackages noarch.
+- Adjust _constraints, build requires 5 GByte disk space regardless
+  of architecture.
+- Fix install location of binary dbus-mainloop integration module.</comment>
+    <requestid>770584</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb  1 21:11:44 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable debug assertions, e.g. Cura passes None for empty dicts and
+  crashes when trying to convert to QVariantMap, fixes boo#1157504.
+- Split python2 and python3 builds using _multibuild.
+- Rename python-qt5-utils package to python-qt5-common-devel to
+  better reflect its use, and drop the dependencies to it from the
+  bindings package.
+- Make doc and common-devel subpackages noarch.
+- Adjust _constraints, build requires 5 GByte disk space regardless
+  of architecture.
+- Fix install location of binary dbus-mainloop integration module.
+
+-------------------------------------------------------------------
 Fri Dec  6 20:17:33 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.13.2

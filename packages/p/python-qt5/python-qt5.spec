@@ -1,7 +1,7 @@
 #
-# spec file for package python-qt5
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,28 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%define pyname python
+%endif
+
+%if "%{flavor}" == "python3"
+%define skip_python2 1
+%define build_examples 1
+%define build_sipfiles 1
+%define pyname python3
+%endif
+%if "%{flavor}" == "python2"
+%define skip_python3 1
+%define pyname python2
+%endif
+%define bname python-qt5
+%define pname %{pyname}-qt5
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-qt5
+Name:           %{pname}
 Version:        5.13.2
 Release:        0
 Summary:        Python bindings for Qt 5
@@ -25,21 +45,22 @@ License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
 Source:         https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
+Source99:       python-qt5-rpmlintrc
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt5.
 Patch1:         disable-rpaths.diff
 # PATCH-FIX-UPSTREAM
 Patch2:         update-timeline.patch
+BuildRequires:  %{python_module dbus-python-devel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.19}
 BuildRequires:  dbus-1-devel
-BuildRequires:  dbus-1-python-devel
-BuildRequires:  dbus-1-python3-devel
 BuildRequires:  fdupes
 BuildRequires:  gdb
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-enum34
+%if !0%{?skip_python2}
+BuildRequires:  python2-enum34
+%endif
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5Bluetooth)
 BuildRequires:  pkgconfig(Qt5Designer)
@@ -59,13 +80,12 @@ BuildRequires:  pkgconfig(Qt5WebChannel)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
-Requires:       %{name}-utils
-Requires:       python-sip(api) = %{python_sip_api_ver}
+Requires:       %{pyname}-sip(api) = %{python_sip_api_ver}
 %requires_ge    libqt5-x11
-%requires_ge    python-dbus-python
-Provides:       python-PyQt5 = %{version}
+%requires_ge    %{pyname}-dbus-python
+Provides:       %{pyname}-PyQt5 = %{version}
 %ifpython2
-Requires:       python-enum34
+Requires:       %{pyname}-enum34
 %endif
 # Do not build WebKit support from SLE15
 %if 0%{?is_opensuse} || 0%{?suse_version} < 1500
@@ -99,10 +119,10 @@ PyQt is a set of Python bindings for the Qt framework.
 Summary:        PyQt - devel part of python bindings for Qt 5
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
+Requires:       %{pyname}-devel
+Requires:       %{pyname}-sip-devel >= 4.19.11
 Requires:       libqt5-qtbase-devel
-Requires:       python-devel
-Requires:       python-qt5-utils
-Requires:       python-sip-devel >= 4.19.11
+Requires:       python-qt5-common-devel
 Requires:       pkgconfig(Qt5Bluetooth)
 Requires:       pkgconfig(Qt5Designer)
 Requires:       pkgconfig(Qt5Help)
@@ -123,10 +143,10 @@ Requires:       pkgconfig(Qt5X11Extras)
 Requires:       pkgconfig(Qt5XmlPatterns)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-qscintilla-qt5
-Provides:       python-PyQt5-devel = %{version}
+Recommends:     %{pyname}-qscintilla-qt5
+Provides:       %{pyname}-PyQt5-devel = %{version}
 %ifpython2
-Requires:       python-enum34
+Requires:       %{pyname}-enum34
 %endif
 # Do not build WebKit support from SLE15
 %if 0%{?is_opensuse} || 0%{?suse_version} < 1500
@@ -154,34 +174,38 @@ PyQt is a set of Python bindings for the Qt framework.
 This package contains all the developer tools you need to create your
 own PyQt applications.
 
-%package -n %{name}-utils
+%package -n %{bname}-common-devel
 Summary:        Common files for PyQt5 for python2 and python3
 Group:          Development/Libraries/Python
-Provides:       %{python_module PyQt5-utils = %{version}}
-Provides:       %{python_module qt5-utils = %{version}}
+Obsoletes:      %{bname}-utils < %{version}-%{release}
+Provides:       %{bname}-utils = %{version}-%{release}
+BuildArch:      noarch
 
-%description -n %{name}-utils
+%description -n %{bname}-common-devel
 PyQt is a set of Python bindings for the Qt framework.
 
-This package contains common files shared between python2 and python3
-versions of PyQt5.
+This package contains the SIP definitions shared between python2
+and python3 versions of PyQt5.
 
-%package -n %{name}-doc
-Summary:        Documentation for %{name}
+%package -n %{bname}-doc
+Summary:        Examples for %{bname}
 Group:          Documentation/Other
 Provides:       %{python_module PyQt5-doc = %{version}}
 Provides:       %{python_module qt5-doc = %{version}}
+BuildArch:      noarch
 
-%description -n %{name}-doc
+%description -n %{bname}-doc
 PyQt is a set of Python bindings for the Qt framework.
 
-This package contains documentation and examples for PyQt5.
+This package contains programming examples for PyQt5.
 
 %prep
 %autosetup -p1 -n PyQt5-%{version}
 
 # Fix wrong-script-interpreter
+%if 0%{?build_examples}
 find examples -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%__python3|" {} \;
+%endif
 
 %build
 export CXXFLAGS="%{optflags}"
@@ -195,7 +219,6 @@ ln -s ../config-tests .
 $python ../configure.py --verbose  \
                         --confirm-license \
                         --assume-shared \
-                        --debug \
                         --qmake=%{_libqt5_qmake} \
                         --sip=%{_bindir}/sip-%{$python_bin_suffix} \
                         --qsci-api \
@@ -219,6 +242,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 cp ../README ./
 sed -i 's/The "doc" directory/The "doc" directory of package %{$python_prefix}-qt5-devel/' README
 
+%if "%{python_sitearch}" != "%{python_sitelib}"
+    mv %{buildroot}%{python_sitelib}/dbus %{buildroot}%{python_sitearch}/dbus
+%endif
+
 popd
 
 # Prepare for update-alternatives usage
@@ -235,9 +262,15 @@ for p in pyuic5 pylupdate5 pyrcc5 ; do
     %prepare_alternative $p
 done
 
-mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -r examples %{buildroot}%{_docdir}/%{name}/
-%fdupes %{buildroot}%{_docdir}/%{name}/
+%if 0%{?build_examples}
+mkdir -p %{buildroot}%{_docdir}/%{bname}
+cp -r examples %{buildroot}%{_docdir}/%{bname}/
+%fdupes %{buildroot}%{_docdir}/%{bname}/
+%endif
+
+%if !0%{?build_sipfiles}
+rm -Rf %{buildroot}%{_datadir}/sip/PyQt5/
+%endif
 
 %post devel
 %{python_install_alternative pyuic5} \
@@ -253,10 +286,12 @@ cp -r examples %{buildroot}%{_docdir}/%{name}/
 %doc NEWS ChangeLog
 %{python_sitearch}/PyQt5/
 %{python_sitearch}/PyQt5-%{version}.dist-info/
-%{python_sitelib}/dbus/mainloop/pyqt5.so
+%dir %{python_sitearch}/dbus
+%dir %{python_sitearch}/dbus/mainloop
+%{python_sitearch}/dbus/mainloop/pyqt5.so
 %dir %{_libqt5_plugindir}/PyQt5/
 %{_libqt5_plugindir}/PyQt5/libpy%{python_bin_suffix}qt5qmlplugin.so
-%exclude %{_docdir}/%{name}/examples/
+%exclude %{_docdir}/%{bname}/examples/
 
 %files %{python_files devel}
 %python_alternative %{_bindir}/pyuic5
@@ -269,12 +304,16 @@ cp -r examples %{buildroot}%{_docdir}/%{name}/
 %dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
 %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQt5.api
 
-%files -n %{name}-utils
+%if 0%{?build_sipfiles}
+%files -n %{bname}-common-devel
 %{_datadir}/sip/PyQt5/
+%endif
 
-%files -n %{name}-doc
+%if 0%{?build_examples}
+%files -n %{bname}-doc
 %license LICENSE
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/examples/
+%dir %{_docdir}/%{bname}
+%{_docdir}/%{bname}/examples/
+%endif
 
 %changelog
