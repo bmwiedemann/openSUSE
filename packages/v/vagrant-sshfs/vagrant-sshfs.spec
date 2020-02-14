@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant-sshfs
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,49 +17,30 @@
 
 
 %global vagrant_plugin_name vagrant-sshfs
-
-%global rb_build_versions %rb_default_ruby
-%global rb_build_abi %rb_default_build_abi
-
-Name:           %{vagrant_plugin_name}
-Version:        1.3.1
-Release:        0
+%global rb_build_versions %{rb_default_ruby}
+%global rb_build_abi %{rb_default_build_abi}
 %define mod_name %{vagrant_plugin_name}
 %define mod_full_name %{vagrant_plugin_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-Requires:       sshfs
-Requires:       vagrant
-BuildRequires:  vagrant
-
-BuildRequires:  %{ruby}
-BuildRequires:  ruby-macros >= 5
-
-# Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
-BuildRequires:  %{rubygem mime-types:3 }
-# Prevent have choice for rubygem(ruby:2.6.0:builder) >= 2.1.2
-BuildRequires:  %{rubygem builder:3.2 }
-# Prevent have choice for rubygem(ruby:2.6.0:ffi) >= 0.5.0
-BuildRequires:  %{rubygem ffi:1.11 }
-
+Name:           %{vagrant_plugin_name}
+Version:        1.3.3
+Release:        0
 Summary:        SSHFS synced folder implementation for Vagrant
 License:        GPL-2.0-only
 Group:          Development/Languages/Ruby
 URL:            https://github.com/dustymabe/%{name}
-Source0:        %{URL}/releases/download/v%{version}/%{mod_full_name}.gem
+Source0:        %{URL}/releases/download/v%{version}/%{mod_full_name}.tar.gz
+Source1:        %{URL}/releases/download/v%{version}/%{mod_full_name}.tar.gz.asc
+# Dusty Mabe's key
+Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 # custom script to automate the test suite run
-Source1:        testsuite.sh
-
-# we don't need windows compatibility and don't ship that gem
-# source:
-# https://src.fedoraproject.org/rpms/vagrant-sshfs/raw/master/f/0001-remove-win32-dep.patch
-# PATCH-FIX-OPENSUSE: 0001-remove-win32-dep.patch
-Patch0:         0001-remove-win32-dep.patch
-# Update the testing vagrant box version
-Patch1:         0001-Bump-testing-Vagrant-box-version.patch
+Source3:        testsuite.sh
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+BuildRequires:  vagrant >= 1.9.1
+Requires:       sshfs
+Requires:       vagrant >= 1.9.1
 
 %description
-
 This Vagrant plugin adds synced folder support for mounting folders from the
 Vagrant host into the Vagrant guest via SSHFS. In the default mode it does this
 by executing the SSHFS client software within the guest, which creates an SSH
@@ -76,10 +57,9 @@ This package contains the documentation for the SSHFS provider to Vagrant.
 %package        -n %{name}-testsuite
 Summary:        Testsuite for %{name}
 Group:          Development/Languages/Ruby
-BuildArch:      noarch
-
 Requires:       vagrant-libvirt
 Requires:       vagrant-sshfs = %{version}-%{release}
+BuildArch:      noarch
 
 %description    -n %{name}-testsuite
 This package contains the testsuite for the SSHFS provider for Vagrant. You most
@@ -87,27 +67,31 @@ likely do not want to install this package, unless you want to test
 vagrant-sshfs.
 
 %prep
-%gem_unpack
+%autosetup -c
 
-%patch0
-%patch1 -p1
-sed -i "/^.*spec.add_dependency 'win32-process'/d" %{vagrant_plugin_name}.gemspec
+# since we don't have the full git repo we can't use `git ls-files`
+sed -i 's/git ls-files -z/find . -type f -print0/' %{vagrant_plugin_name}.gemspec
+
+# remove dependencies on windows libraries (needed for windows, not linux)
+sed -i '/win32-process/d' %{vagrant_plugin_name}.gemspec
 chmod +x test/misc/dotests.sh
 
+mv %{vagrant_plugin_name}.gemspec %{mod_full_name}.gemspec
+
 %build
-%gem_build
+%{gem_build}
 
 %install
-%vagrant_plugin_install
-install -p -m 0755 %{S:1} %{buildroot}/%{vagrant_plugin_instdir}/test/misc/
+%vagrant_plugin_install -n %{mod_full_name}.gem
+install -p -m 0755 %{SOURCE3} %{buildroot}/%{vagrant_plugin_instdir}/test/misc/
 
 %files
 %{vagrant_plugin_instdir}
 %{vagrant_plugin_cache}
 %{vagrant_plugin_spec}
 
-%license %{mod_full_name}/LICENSE
-%doc %{mod_full_name}/README.adoc
+%license LICENSE
+%doc README.adoc
 
 # files for development, we don't want these
 %exclude %{vagrant_plugin_instdir}/.gitignore
@@ -120,11 +104,11 @@ install -p -m 0755 %{S:1} %{buildroot}/%{vagrant_plugin_instdir}/test/misc/
 %exclude %{vagrant_plugin_instdir}/README.adoc
 
 %files -n %{name}-doc
-%license %{mod_full_name}/LICENSE
+%license LICENSE
 %doc %{vagrant_plugin_docdir}
 
 %files -n %{name}-testsuite
-%license %{mod_full_name}/LICENSE
+%license LICENSE
 %{vagrant_plugin_instdir}/test
 
 %changelog

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 29 08:51:07 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.3
+
+  v1.3.3:
+  * RELEASE.txt: Updates to release process
+  * synced_folder: gentoo: Update path to look for sftp-server
+  * version: bump to 1.3.3
+
+  v1.3.2:
+  * remove tests - add build script
+  * Fix some errors when building
+  * Updates to build/release instructions
+  * Update vagrant and vagrant-libvirt in Gemfile
+  * Remove the build Vagrantfile
+  * Run the build.sh script inside a buildah unshare session
+  * guest: make alpine fuse module loading match what we do for freebsd
+  * tests: update Vagrantfile to be Fedora 31
+  * version: bump to 1.3.2
+  * guest: Add alpine support
+  * Add note for windows users to use cygwin shell.
+
+- Drop patches:
+  * 0001-Bump-testing-Vagrant-box-version.patch
+  * 0001-remove-win32-dep.patch
+
+- Add gpg source verification
+- Drop not required dependencies on the rubygems mime-types, builder and ffi
+
+-------------------------------------------------------------------
 Thu Nov  7 21:05:53 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Add missing sshfs dependency
