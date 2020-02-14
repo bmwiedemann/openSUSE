@@ -1247,4 +1247,15 @@
   * Sort albums released in same year (glgo#World/lollypop#2183).</comment>
     <requestid>773312</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>c4bbb56457fae6988325e4b14a998d35</srcmd5>
+    <version>1.2.22</version>
+    <time>1581694789</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 1.2.22:
+  * Fix a crash in track menu (glgo#World/lollypop#2197).
+  * Fix timestamp reading (glgo#World/lollypop#2183,
+    glgo#World/lollypop#2195).</comment>
+    <requestid>774235</requestid>
+  </revision>
 </revisionlist>

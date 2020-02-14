@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 13 19:58:57 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.22:
+  * Fix a crash in track menu (glgo#World/lollypop#2197).
+  * Fix timestamp reading (glgo#World/lollypop#2183,
+    glgo#World/lollypop#2195).
+
+-------------------------------------------------------------------
 Mon Feb 10 21:09:21 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.21:
