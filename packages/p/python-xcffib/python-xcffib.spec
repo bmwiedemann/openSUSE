@@ -1,7 +1,7 @@
 #
 # spec file for package python-xcffib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xcffib
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        A drop in replacement for xpyb, an XCB python binding
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/tych0/xcffib
+URL:            https://github.com/tych0/xcffib
 Source:         https://files.pythonhosted.org/packages/source/x/xcffib/xcffib-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.1.0}
 BuildRequires:  %{python_module nose}
