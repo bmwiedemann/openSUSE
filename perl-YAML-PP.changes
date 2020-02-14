@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Feb 14 03:17:33 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.019
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.019 2020-02-13 16:06:56+01:00
+  
+      - Important (and possibly breaking) changes:
+        - Change default schema from JSON to Core.
+          Reason: This is the recommended Schema for YAML 1.2, and what people
+          would expect to be the default.
+        - load* in scalar context returns first document.
+          Reason: I think this is the most reasonable behaviour, and it
+          will continue to work the same if you later add documents to a file.
+        - Empty nodes in YAML 1.2 JSON Schema resolve to '' by default like
+          before, but now it can be configured
+        - Fix some control character escaping and encoding issues (issue#16, issue#17)
+          YAML::PP will now just assume all input data are unicode characters
+          and won't do an explicit utf8::upgrade
+        - Fix Core schema resolver for inf: add +.inf, +.Inf, +.INF
+      - Improve emitter regarding empty lists/hashes (no newline before []/{})
+      - Spelling and grammar fixes (PR#23 @gregoa)
+      - Fix YAML::PP::Grammar pod (PR#22 @gregoa)
+      - Fix yamlpp5-load-dump
+      - Fix error tokens output
+      - Update yaml-test-suite to data-2020-02-11
+
+-------------------------------------------------------------------
 Tue Jul 16 10:23:21 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.018
