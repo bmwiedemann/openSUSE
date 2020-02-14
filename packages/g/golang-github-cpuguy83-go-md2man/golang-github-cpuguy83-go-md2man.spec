@@ -1,7 +1,7 @@
 #
-# spec file for package golang
+# spec file for package golang-github-cpuguy83-go-md2man
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,20 +24,18 @@
 %global import_path     %{provider_prefix}
 
 Name:           golang-%{provider}-%{project}-%{repo}
-Version:        1.0.6+git20160904.a65d4d2
+Version:        2.0.0+git20190314.f79a8a8
 Release:        0
 Summary:        Convert markdown into man pages
 License:        MIT
 Group:          Development/Languages/Golang
-Url:            https://%{provider_prefix}
+URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.xz
 Source1:        rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-
-ExcludeArch:    s390
 
 %{go_nostrip}
 %{go_provides}
@@ -61,7 +59,7 @@ Tool to converts markdown into man pages.
 
 %build
 %goprep %{import_path}
-%gobuild ...
+%gobuild --mod=vendor "" ...
 
 %install
 %goinstall
@@ -69,11 +67,12 @@ Tool to converts markdown into man pages.
 %gofilelist
 
 %check
-%gotest %{import_path}...
+%gotest --mod=vendor "" ...
 
 %files -f file.lst
 %defattr(-,root,root,-)
-%doc README.md LICENSE.md
+%doc README.md
+%license LICENSE.md
 
 %files -n go-md2man
 %defattr(-,root,root)

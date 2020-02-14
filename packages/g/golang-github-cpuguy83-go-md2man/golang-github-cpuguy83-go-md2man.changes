@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Feb  5 11:53:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.0+git20190314.f79a8a8:
+  * Psych, we only support go.11 and higher
+  * Update readme
+  * Use go modules and set import paths to /v2
+  * Improvements to makefile
+  * Use TRAVIS_GO_VERSION env var instead of matrix
+  * Use golangci-lint
+  * Update travis config for go versions
+  * Don't run vendor validation in CI
+  * Fix the example and typo
+  * Fix links processing for v2
+  * RenderNode: fix error printing
+  * Fix table parsing/processing for v2
+  * Fix list in list embedding
+  * Update md2man to use blackfriday v2 API
+  * Update vendoring to blackfriday v2 API
+  * remove older versions of go from travis config
+  * fix validate vendor script
+  * More linters
+  * Add errcheck to metalinter
+  * Fix linting issues
+  * set vendor check to executable
+  * Add travis config
+  * remove used processFooterText
+  * Fix falal -> fatalf
+  * Add TitleBlock test
+  * gofmt roff.go
+  * Update README details
+  * Improve rendering of nested lists
+  * dep ensure -upgrade to get v1.5 of blackfriday
+  * converts project to use dep
+  * Add some initial unit tests
+  * Fix some table rendering issues for empty cells
+  * Don't use CMD in Dockerfile
+  * Add dockerfile
+  * Fix tables displaying using tbl specification
+- from version 1.0.10
+  * Bumps blackfriday to 1.5.2
+  * Some tidying up of CI, Makefile enhancements.
+- from version 1.0.9
+  * Use go modules instead of go dep
+    + Everything is still vendored so build scripts should not fail
+- from version 1.0.8
+  * Improve testing
+  * Improve rendering of nested lists - #30 @msimacek
+- from version 1.0.7
+  * Switch vendor tool to dep #29
+  * Update blackfriday vendoring to v1.5 #29
+- Update _service file
+- Move LICENSE to %license section
+- Invoke %gobuild with -mod=vendor "" to disable network access
+- Remove s390x from ExcludeArch
+
+-------------------------------------------------------------------
 Wed Jun 13 15:17:54 UTC 2018 - jmassaguerpla@suse.com
 
 - since commit https://github.com/cpuguy83/go-md2man/commit/648eed146d3f3beacb64063cd0daae908015eebd#diff-a447edf0cfc23146457ff83dce52d372 there is a vendor directory and thus we don't need to

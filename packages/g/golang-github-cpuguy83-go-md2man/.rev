@@ -48,4 +48,41 @@ This goes with sr#443064 and sr#443160</comment>
     <comment></comment>
     <requestid>616830</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a67f5428086747e5c01011dcfa5d709d</srcmd5>
+    <version>2.0.0+git20190314.f79a8a8</version>
+    <time>1581694002</time>
+    <user>okurz-factory</user>
+    <comment>- Update to version 2.0.0+git20190314.f79a8a8:
+  * Psych, we only support go.11 and higher
+  * Update readme
+  * Use go modules and set import paths to /v2
+  * Improvements to makefile
+  * Use TRAVIS_GO_VERSION env var instead of matrix
+  * Use golangci-lint
+  * Update travis config for go versions
+  * Don't run vendor validation in CI
+  * Fix the example and typo
+  * Fix links processing for v2
+  * RenderNode: fix error printing
+  * Fix table parsing/processing for v2
+  * Fix list in list embedding
+  * Update md2man to use blackfriday v2 API
+  * Update vendoring to blackfriday v2 API
+  * remove older versions of go from travis config
+  * fix validate vendor script
+  * More linters
+  * Add errcheck to metalinter
+  * Fix linting issues
+  * set vendor check to executable
+  * Add travis config
+  * remove used processFooterText
+  * Fix falal -&amp;gt; fatalf
+  * Add TitleBlock test
+  * gofmt roff.go
+  * Update README details
+  * Improve rendering of nested lists
+  * dep ensure -upgrade to get v1.5 of blackfriday (forwarded request 770234 from glaubitz)</comment>
+    <requestid>770395</requestid>
+  </revision>
 </revisionlist>
