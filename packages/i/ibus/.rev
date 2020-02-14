@@ -832,4 +832,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>763969</requestid>
   </revision>
+  <revision rev="97" vrev="5">
+    <srcmd5>a385d017bfd8fa2dcd12a39c5ae31502</srcmd5>
+    <version>1.5.21</version>
+    <time>1581693985</time>
+    <user>okurz-factory</user>
+    <comment>Drop lang Recommends (forwarded request 770102 from iznogood)</comment>
+    <requestid>770254</requestid>
+  </revision>
 </revisionlist>

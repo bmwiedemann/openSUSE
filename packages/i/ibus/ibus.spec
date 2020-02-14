@@ -97,7 +97,6 @@ Requires:       python3-gobject-Gdk
 # which are provided by two packages in openSUSE, so we limit their
 # versions to 3.0 only.
 Requires:       typelib-1_0-Gtk-3_0
-Recommends:     %{name}-lang
 Provides:       locale(ja;ko;zh)
 Obsoletes:      ibus-gnome-shell
 %if %{with_kde}
