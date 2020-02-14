@@ -52,19 +52,18 @@ Source3:        https://s3.amazonaws.com/%{name}-buildtools/gin-%{bundled_gin_ve
 Source4:        %{name}-server-user.conf
 Source99:       %{name}-rpmlintrc
 Patch0:         0003-Remove-boost-signals-from-the-required-Boost-librari.patch
-Patch1:         0005-Use-find_program-to-find-qmake-if-it-is-not-in-the-p.patch
-Patch2:         0002-Bump-bundled-gwt-version.patch
+Patch1:         0002-Bump-bundled-gwt-version.patch
 # Tumbleweed and Leap 15.2 only patch
-Patch3:         0001-First-pass-at-Boost-1.70-support.patch
+Patch2:         0001-First-pass-at-Boost-1.70-support.patch
 # main ubundling patch
-Patch4:         0004-Unbundle-mathjax-and-pandoc.patch
+Patch3:         0004-Unbundle-mathjax-and-pandoc.patch
 # patches for Leap 15.1 & 15.0
-Patch5:         0006-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
-Patch6:         0007-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
-Patch7:         0008-Remove-PauseChanged-related-handler-from-DownloadHel.patch
+Patch4:         0005-Use-std-thread-instead-of-QThread-for-Qt-5.10-suppor.patch
+Patch5:         0006-Add-explicit-include-mutex-for-gcc-7-to-DesktopWebpa.patch
+Patch6:         0007-Remove-PauseChanged-related-handler-from-DownloadHel.patch
 # shorten the installation time a bit by not installing mathjax
-Patch8:         0009-Don-t-install-pandoc-and-mathjax.patch
-Patch9:         0010-Fix-rstudio-exec-path.patch
+Patch7:         0008-Don-t-install-pandoc-and-mathjax.patch
+Patch8:         0009-Fix-rstudio-exec-path.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
 BuildRequires:  ant
@@ -131,6 +130,7 @@ Requires:       R-core-libs
 Requires:       ghc-pandoc-citeproc
 Requires:       mathjax
 Requires:       pandoc
+Recommends:     git
 Suggests:       rstudio-desktop
 Suggests:       rstudio-server
 Provides:       bundled(gin) = %{bundled_gin_version}
@@ -174,19 +174,18 @@ on a server has a number of benefits, including:
 %autosetup -N
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch4 -p1
+%patch3 -p1
+%patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 # TW & Leap 15.2 specific patches
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
-%patch3 -p1
+%patch2 -p1
 # Leap 15.1 & 15.0 patches:
 %else
+%patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 %endif
 
 # unpack common-dictionaries
@@ -209,7 +208,12 @@ export RSTUDIO_VERSION_MINOR=%{rstudio_version_minor}
 export RSTUDIO_VERSION_PATCH=%{rstudio_version_patch}
 export RSTUDIO_GIT_REVISION_HASH=%{rstudio_git_revision_hash}
 export GIT_COMMIT=%{rstudio_git_revision_hash}
-%cmake -DRSTUDIO_TARGET=Desktop -DRSTUDIO_SERVER=TRUE -DCMAKE_BUILD_TYPE=Release -DRSTUDIO_BOOST_SIGNALS_VERSION=2 -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/%{name}
+%cmake -DRSTUDIO_TARGET=Desktop -DRSTUDIO_SERVER=TRUE -DCMAKE_BUILD_TYPE=Release    \
+    -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/%{name}                                   \
+    -DRSTUDIO_USE_SYSTEM_BOOST=TRUE                                                 \
+    -DRSTUDIO_BOOST_SIGNALS_VERSION=2                                               \
+    -DBOOST_ROOT=%{_prefix} -DBOOST_LIBRARYDIR=%{_lib}                              \
+    -DQT_QMAKE_EXECUTABLE=%{_bindir}/qmake-qt5
 
 # dirty hack:
 # gwtc compilation runs via make -> ant -> java and something in that chain
