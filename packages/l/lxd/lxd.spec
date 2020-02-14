@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        3.20
+Version:        3.21
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -38,8 +38,6 @@ Source100:      %{name}.service
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
-# FIX-UPSTREAM: Backport of https://github.com/canonical/dqlite/pull/207. boo#1156336
-Patch100:       boo1156336-0001-vfs-vfs__delete-fix-double-unlock-of-root-mutex.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -90,8 +88,6 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
-# boo#1156336
-%patch100 -d _dist/deps/dqlite -p1
 
 # Create fake "go mod"-like import paths. This is going to be really fun to
 # maintain but it's unfortunately necessary because openSUSE doesn't have nice

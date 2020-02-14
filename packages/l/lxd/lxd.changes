@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 14 07:27:24 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.21. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-21-has-been-released/6802
+  boo#1163651
+  + New way to attach to LXD managed networks
+  + Clustering: Configurable number of active and standby database members
+  * Ceph ported to new storage driver infrastructure
+  * VM: CPU pinning and topology
+  * VM: Network and storage optimizations
+  * VM: Agent-less reporting of IPv6 addresses
+- Remove upstreamed patch. boo#1156336
+  - boo1156336-0001-vfs-vfs__delete-fix-double-unlock-of-root-mutex.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 15:03:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libudev) instead of libudev-devel: Allow
