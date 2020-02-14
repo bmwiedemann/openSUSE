@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.02
+Version:        1.06
 Release:        0
 %define cpan_name Mojolicious-Plugin-Status
 Summary:        Mojolicious server status
@@ -32,11 +32,11 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(BSD::Resource)
 BuildRequires:  perl(File::Map)
-BuildRequires:  perl(Mojolicious) >= 7.88
+BuildRequires:  perl(Mojolicious) >= 8.33
 BuildRequires:  perl(Sereal)
 Requires:       perl(BSD::Resource)
 Requires:       perl(File::Map)
-Requires:       perl(Mojolicious) >= 7.88
+Requires:       perl(Mojolicious) >= 8.33
 Requires:       perl(Sereal)
 %{perl_requires}
 

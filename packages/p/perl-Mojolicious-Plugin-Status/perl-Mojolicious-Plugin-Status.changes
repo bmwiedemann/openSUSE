@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb 14 03:09:36 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.06  2020-02-14
+    - Fixed displaying RSS on Linux correctly.
+  
+  1.05  2020-02-13
+    - Added support for tracking different response types.
+    - Improved template design.
+    - Fixed display bugs for large request paths and query strings.
+
+-------------------------------------------------------------------
+Thu Feb 13 03:10:53 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.04  2020-02-13
+    - Improved template design.
+  
+  1.03  2020-02-12
+    - Added support for retaining a list of the slowest requests since server
+      start.
+    - Added reusable Mojo::MemoryMap module.
+    - Improved template design.
+
+-------------------------------------------------------------------
 Tue Feb 11 03:09:46 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.02
