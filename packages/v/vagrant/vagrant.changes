@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:12:50 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Bump the version of i18n, rubyzip and net-ssh
+
+  Rebased patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+  * 0004-plugins-don-t-abuse-require_relative.patch.patch
+  * 0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0006-do-not-depend-on-wdm.patch
+  * 0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0008-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+  * 0010-Skip-failing-tests.patch
+  * 0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+  * 0012-Disable-Subprocess-unit-test.patch
+
+  Added patch:
+  * 0013-Update-some-outdated-gem-versions.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 10:46:16 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.2.7

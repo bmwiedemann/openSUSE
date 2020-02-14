@@ -159,4 +159,12 @@
     <comment></comment>
     <requestid>768994</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e609b46391b312b9d6e63a124e12348a</srcmd5>
+    <version>2.2.7</version>
+    <time>1581694563</time>
+    <user>okurz-factory</user>
+    <comment>Bump dependent gem versions for vagrant</comment>
+    <requestid>770467</requestid>
+  </revision>
 </revisionlist>

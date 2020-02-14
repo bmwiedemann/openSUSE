@@ -61,6 +61,8 @@ Patch10:        0010-Skip-failing-tests.patch
 # https://github.com/hashicorp/vagrant/pull/10945
 Patch11:        0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
 Patch12:        0012-Disable-Subprocess-unit-test.patch
+# https://github.com/hashicorp/vagrant/pull/11339
+Patch13:        0013-Update-some-outdated-gem-versions.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -95,8 +97,9 @@ BuildRequires:  %{rubygem childprocess:0.6 }
 BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 #  s.add_dependency "erubis", "~> 2.7.0"
 BuildRequires:  %{rubygem erubis:2.7 }
-#  s.add_dependency "i18n", "~> 1.1"
-BuildRequires:  %{rubygem i18n:1 >= 1.1 }
+# PATCHED
+#  s.add_dependency "i18n", "~> 1.8"
+BuildRequires:  %{rubygem i18n:1 >= 1.8 }
 #  s.add_dependency "listen", "~> 3.1.5"
 BuildRequires:  %{rubygem listen:3.1 >= 3.1.5 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -104,8 +107,9 @@ BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
-#  s.add_dependency "net-ssh", "~> 5.1.0"
-BuildRequires:  %{rubygem net-ssh:5.1}
+# PATCHED
+#  s.add_dependency "net-ssh", "~> 5.2.0"
+BuildRequires:  %{rubygem net-ssh:5.2}
 #  s.add_dependency "net-sftp", "~> 2.1"
 BuildRequires:  %{rubygem net-sftp:2 >= 2.1 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -115,8 +119,9 @@ BuildRequires:  %{rubygem rb-kqueue:0.2 }
 #  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
 BuildRequires:  %{rubygem rest-client >= 1.6}
 BuildConflicts:  %{rubygem rest-client >= 3.0}
-#  s.add_dependency "rubyzip", "~> 1.3"
-BuildRequires:  %{rubygem rubyzip:1 >= 1.3}
+# PATCHED
+#  s.add_dependency "rubyzip", "~> 2.0"
+BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
 # BuildRequires:  %%{rubygem wdm }
 #  s.add_dependency "winrm", "~> 2.1"
@@ -178,8 +183,9 @@ Requires:       %{rubygem childprocess:0.6}
 Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 #  s.add_dependency "erubis", "~> 2.7.0"
 Requires:       %{rubygem erubis:2.7}
-#  s.add_dependency "i18n", "~> 1.1"
-Requires:       %{rubygem i18n:1 >= 1.1}
+# PATCHED
+#  s.add_dependency "i18n", "~> 1.8"
+Requires:       %{rubygem i18n:1 >= 1.8}
 #  s.add_dependency "listen", "~> 3.1.5"
 Requires:       %{rubygem listen >= 3.1.5}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -187,8 +193,9 @@ Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
-#  s.add_dependency "net-ssh", "~> 5.1.0"
-Requires:       %{rubygem net-ssh:5.1}
+# PATCHED
+#  s.add_dependency "net-ssh", "~> 5.2.0"
+Requires:       %{rubygem net-ssh:5.2}
 #  s.add_dependency "net-sftp", "~> 2.1"
 Requires:       %{rubygem net-sftp:2 >= 2.1}
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -198,8 +205,9 @@ Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
 Requires:       %{rubygem rest-client >= 1.6}
 Requires:       %{rubygem rest-client < 3.0}
-#  s.add_dependency "rubyzip", "~> 1.3"
-Requires:       %{rubygem rubyzip:1 >= 1.3}
+# PATCHED
+#  s.add_dependency "rubyzip", "~> 2.0"
+Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"
 # skip wdm, Windows only
 #  s.add_dependency "winrm", "~> 2.1"

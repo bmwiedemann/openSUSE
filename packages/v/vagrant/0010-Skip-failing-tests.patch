@@ -1,7 +1,7 @@
 From af5720555a656230e30333d592c84de50737a2bc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 1 Apr 2019 17:28:31 +0200
-Subject: [PATCH 10/12] Skip failing tests
+Subject: [PATCH 10/13] Skip failing tests
 
 ---
  test/unit/bin/vagrant_test.rb | 4 ++--

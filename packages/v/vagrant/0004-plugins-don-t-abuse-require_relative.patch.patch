@@ -1,7 +1,7 @@
 From e589e6be6b7697717fcae15428e443b9be0fd629 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Wed, 17 May 2017 09:09:57 +0200
-Subject: [PATCH 04/12] plugins-don-t-abuse-require_relative.patch
+Subject: [PATCH 04/13] plugins-don-t-abuse-require_relative.patch
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
