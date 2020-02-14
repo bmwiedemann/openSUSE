@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Wed Feb 12 10:22:03 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta6
+
+  ## Changed
+  - Revert full Source url usage and reinstate OBS source service in the build pipeline (#129) 
+
+-------------------------------------------------------------------
+Tue Feb 11 14:18:15 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta5
+
+  ## Fixed
+  - Source url in spec file (#128)
+
+-------------------------------------------------------------------
+Tue Feb 11 11:50:22 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta4
+
+  ## Changed
+  - Use a full source url in the spec file (#127)
+
+-------------------------------------------------------------------
+Mon Feb 10 17:23:30 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta3
+
+  ## Added
+  - Copyright notice to README and RPM spec file. (#126)
+
+-------------------------------------------------------------------
+Mon Feb 10 13:40:46 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- SR to Factory and SLES 15 SP2 (jsc#SLE-10545)
+
+-------------------------------------------------------------------
+Wed Feb  5 16:58:21 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta2
+
+  ## Changed
+  - **BC Break**: Default TCP listening port changed again from 9964 to 9664 due to a typo. (#124)
+  - **BC Break**: Many refactorings to multiple metrics that didn't comply with Prometheus vetting process. (#123)
+
+
+-------------------------------------------------------------------
+Tue Feb  4 10:16:05 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0-beta
+
+  ## Changed
+  - **BC Break** - Metrics timestamps are now opt-in and disabled by default. The old behaviour can be kept via the `--enable-timestamps` CLI flag / config option. (#118)
+  - **BC Break** - Default TCP listening port changed from 9002 to 9964. The old behaviour can be kept via the `--port` CLI flags / config option. (#122)
+
+-------------------------------------------------------------------
+Fri Dec 13 15:20:50 2019 UTC - shap-staff@suse.de
+
+- Release 0.4.0
+
+  ## Added
+  - Added more new DRBD metrics (#106 #108)
+
+  ## Changed
+  - OBS builds don't reuse the binaries built in Travis anymore, due to compliance requirements (#105)
+
+  ## Fixed
+  - Various grammar/typos in the docs (#103, #104, #106)
+
+  ## Removed
+  - Useless warning about missing DRBD split-brain notifications directory (#110)
+
+-------------------------------------------------------------------
+Thu Nov 28 12:40:53 2019 UTC - shap-staff@suse.de
+
+- Release 0.3.0
+
+  ## Added
+  - Brand new `ha_cluster_drbd_split_brain` metric (#100) 
+  - Travis "Build & release" job automatically publishes built assets to GH releases and deploys tags in OBS. (#102)
+
+  ## Changed
+  - **BC Break** - Refactor Pacemaker location constraints metric (#99)
+
+  ## Fixed
+  - DRBD default path now corresponds with the DBRD packages of the distros we use and support (#101)
+
+-------------------------------------------------------------------
+Fri Nov 15 11:47:43 UTC 2019 - stefano.torresi@suse.com
+
+- Update to version 0.2.0:
+  * make drbd resource label usage consistent
+  * make the resource and node name/id labels match across all the metrics that have it
+  * document possible values
+  * comment regex usage
+  * add test case for edge case not previously covered
+  * update metrics doc
+  * add ha_cluster_sbd_devices_total metric
+  * minor readme fixes
+  * make collector initalization error handling cleaner
+  * add /usr/etc to the scanned config dirs
+  * readme changes
+  * fix typo in config example
+  * make more clear that what is being added are directories
+  * improve help
+  * initialize flags in init instead of main
+  * integrate config with cli flags
+  * rename var for consistency
+  * add sample config and run go fmt
+  * use an alias for better clarity
+  * add static configuration support via spf13/viper library
+  * fix config_last_change pacemaker metric due to Prometheus limitations
+  * Improves DRBD Percent Sync Doc (Float values).
+  * Fix DRBD test message
+  * Change DRBD percent from int to Float
+
+-------------------------------------------------------------------
+Thu Oct 31 09:50:57 UTC 2019 - dmaiocchi@suse.com
+
+- Update to version 0.1.0:
+  * add doc
+  * Update metrics on constraints
+  * check for binary existence
+  * Add -address listen, log -level flag
+  * Implement constraint ban metric
+  * Implement Delta metric percentInSync
+  * Update pacemaker_metrics.go
+  * Implement metric and doc
+  * Add needed struct and test parsing xml
+  * Implement skeleton and fake data
+  * Implement Migration threshold metric
+  * Add landing page to exporter
+  * Add documentation about metric
+  * Implement failcount metric population with data
+  * Implement metric structs and needed tests
+  * add testdata
+
+-------------------------------------------------------------------
+Fri Oct 25 15:20:57 UTC 2019 - stefano.torresi@suse.com
+
+- Update to version 0.0.9:
+    ## Added
+    - All the metrics are now timestamped (#67)
+    - New `ha_cluster_pacemaker_stonith_enabled` metric (#68)
+    - Comprehensive [metrics documentation](https://github.com/ClusterLabs/ha_cluster_exporter/blob/0.0.9/doc/metrics.md)
+    - RPM package spec and SystemD unit are now in the repo rather than in the OBS package.
+
+    ## Changed
+    - Extensive refactoring to implement `prometheus.Collector` API (#66) 
+    - Various metrics and their labels were renamed (#61, #62)
+    - Removed Go vendoring mode (#76) 
+
+    ## Fixed
+    - Metrics no longer need to be reset (#60) 
+    - TravisCI configuration (#74)
+
+
+-------------------------------------------------------------------
+Fri Oct 18 09:01:28 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- update to 0.0.8 Release Github: DRBD Metrics and other minor improvements 
+
+-------------------------------------------------------------------
+Wed Oct  2 15:50:37 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- remove user and group from systemd unit file. (cause breakage on exporter) 
+
+-------------------------------------------------------------------
+Wed Oct  2 14:51:02 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- update to 0.0.7 Releases Github: SBD metrics 
+
+-------------------------------------------------------------------
+Mon Sep 30 16:55:19 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+-  update to 0.0.6 Rel GitHub: corosync metrics
+
+-------------------------------------------------------------------
+Wed Sep 18 15:57:00 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- update to 0.0.5 Released GitHub version. Metrics improvements 
+
+-------------------------------------------------------------------
+Tue Sep 17 13:48:21 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- Version bump to 0.0.4
+- Start prometheus-ha_cluster_exporter systemd service after pacemaker service 
+
+-------------------------------------------------------------------
+Tue Sep 17 12:00:20 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- fix source file name 
+
+-------------------------------------------------------------------
+Tue Sep 17 11:32:35 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Add new version model fine grained. 0.0.3  Version. Add logging for systemd
+
+-------------------------------------------------------------------
+Tue Sep 17 11:14:48 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Adapt systemd unit file to ha_exporter 
+
+-------------------------------------------------------------------
+Tue Sep 17 09:57:01 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- Match tar file name with package name
+
+-------------------------------------------------------------------
+Mon Sep 16 10:34:57 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- add 0.1 version of ha_cluster exporter
