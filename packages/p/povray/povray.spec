@@ -59,7 +59,7 @@ realistic reflections, shading, perspective, and other effects.
 
 %package doc
 Summary:        Documentation for POV-Ray
-Group:          Documenation/HTML
+Group:          Documentation/HTML
 
 %description doc
 This package contains the Povray documentation.
