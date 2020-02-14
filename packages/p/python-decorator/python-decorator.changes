@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 19:11:44 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.4.1:
+  Changed the description to "Decorators for Humans" are requested by
+  several users. Fixed a .rst bug in the description as seen in PyPI.
+
+-------------------------------------------------------------------
 Tue Mar 19 15:15:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.4.0:

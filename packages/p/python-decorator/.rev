@@ -192,4 +192,14 @@
     arguments by going back to the syntax used in version 4.2.</comment>
     <requestid>686454</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>27173c6cf1b662a3c526d7709ee5c06e</srcmd5>
+    <version>4.4.1</version>
+    <time>1581693939</time>
+    <user>okurz-factory</user>
+    <comment>- update to 4.4.1:
+  Changed the description to &quot;Decorators for Humans&quot; are requested by
+  several users. Fixed a .rst bug in the description as seen in PyPI.</comment>
+    <requestid>773654</requestid>
+  </revision>
 </revisionlist>

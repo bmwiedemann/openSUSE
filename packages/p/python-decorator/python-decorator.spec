@@ -1,7 +1,7 @@
 #
 # spec file for package python-decorator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 #
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-decorator
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
-Summary:        Non-nested signature-retaining Python decorators
+Summary:        Decorators for Humans
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/micheles/decorator
@@ -58,7 +58,7 @@ redirecting_stdout, locked, etc. more accessible.
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGES.md README.md
+%doc CHANGES.md README.rst
 %{python_sitelib}/decorator.py*
 %pycache_only %{python_sitelib}/__pycache__/decorator.*.py*
 %{python_sitelib}/decorator-%{version}-py*.egg-info
