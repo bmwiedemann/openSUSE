@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-PP
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-PP
-Version:        0.018
+Version:        0.019
 Release:        0
 %define cpan_name YAML-PP
 Summary:        YAML 1.2 processor
@@ -43,19 +43,19 @@ YAML::PP is a modern, modular YAML processor.
 It aims to support 'YAML 1.2' and 'YAML 1.1'. See http://yaml.org/.
 
 YAML is a serialization language. The YAML input is called "YAML Stream". A
-stream consists of one or more "Documents", seperated by a line with a
+stream consists of one or more "Documents", separated by a line with a
 document start marker '---'. A document optionally ends with the document
 end marker '...'.
 
-This allows to process continuous streams additionally to a fixed input
+This allows one to process continuous streams additionally to a fixed input
 file or string.
 
 The YAML::PP frontend will currently load all documents, and return only
-the last if called with scalar context.
+the first if called with scalar context.
 
-The YAML backend is implemented in a modular way that allows to add custom
-handling of YAML tags, perl objects and data types. The inner API is not
-yet stable. Suggestions welcome.
+The YAML backend is implemented in a modular way that allows one to add
+custom handling of YAML tags, perl objects and data types. The inner API is
+not yet stable. Suggestions welcome.
 
 You can check out all current parse and load results from the
 yaml-test-suite here: https://perlpunk.github.io/YAML-PP-p5/test-suite.html
@@ -77,7 +77,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md etc examples Makefile.dev README test-suite
+%doc Changes CONTRIBUTING.md examples Makefile.dev README
 %license LICENSE
 
 %changelog
