@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:07:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Fix build of python bindings for kcolumnheadersmodel
+
+-------------------------------------------------------------------
 Tue Jan 14 17:01:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use python3 to build the python bindings.

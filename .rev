@@ -599,4 +599,12 @@
 - Fix the python bindings build and installation.</comment>
     <requestid>764457</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>314546600232ec5c5b619b7b4f5b798c</srcmd5>
+    <version>5.67.0</version>
+    <time>1581694391</time>
+    <user>okurz-factory</user>
+    <comment>KDE Frameworks 5.67</comment>
+    <requestid>773270</requestid>
+  </revision>
 </revisionlist>
