@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 22:25:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python3-gobject BuildRequires: We eliminated an auto-pull-in
+  of the python stack for consumers of the C-headers. Orca uses
+  both.
+
+-------------------------------------------------------------------
 Tue Jan 28 20:38:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.2:

@@ -32,6 +32,7 @@ BuildRequires:  liblouis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.3
 BuildRequires:  python3-brlapi >= 0.5.1
+BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-louis
 BuildRequires:  python3-speechd
 BuildRequires:  translation-update-upstream
