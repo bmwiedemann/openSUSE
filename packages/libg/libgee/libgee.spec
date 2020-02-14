@@ -1,7 +1,7 @@
 #
 # spec file for package libgee
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libgee
-Version:        0.20.2
+Version:        0.20.3
 Release:        0
 Summary:        GObject-based library providing commonly used data structures
 License:        LGPL-2.1-or-later

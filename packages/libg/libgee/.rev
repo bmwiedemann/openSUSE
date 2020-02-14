@@ -308,4 +308,12 @@
     <comment>New stable release (forwarded request 720987 from iznogood)</comment>
     <requestid>721002</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>74e560555a0c877130983c52812d95f2</srcmd5>
+    <version>0.20.3</version>
+    <time>1581693825</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773506</requestid>
+  </revision>
 </revisionlist>
