@@ -191,7 +191,7 @@ translation-update-upstream
 NOCONFIGURE=1 ./autogen.sh
 pppddir=`ls -1d %{_libdir}/pppd/2*`
 test -n "$pppddir" || exit 1
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 export PYTHON=%{_bindir}/python3
 %configure \
     --disable-silent-rules \

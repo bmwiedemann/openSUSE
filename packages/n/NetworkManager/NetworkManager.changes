@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:11:19 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add -fcommon to CFLAGS. This is currently being done upstream
+  (boo#1160381).
+
+-------------------------------------------------------------------
 Fri Jan 31 10:36:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.6:
