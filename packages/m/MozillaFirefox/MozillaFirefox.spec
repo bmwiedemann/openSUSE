@@ -2,7 +2,7 @@
 # spec file for package MozillaFirefox
 #
 # Copyright (c) 2020 SUSE LLC
-#               2006-2019 Wolfgang Rosenauer <wr@rosenauer.org>
+#               2006-2020 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 
 # changed with every update
-%define major          72
-%define mainver        %major.0.2
-%define orig_version   72.0.2
+%define major          73
+%define mainver        %major.0
+%define orig_version   73.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
 %define devpkg         1
+
+# disable for FF73 for now as it fails for unknown reason
+%define do_profiling   0
 
 # always build with GCC as SUSE Security Team requires that
 %define clang_build 0
@@ -72,7 +75,7 @@ BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.37
+BuildRequires:  cargo >= 1.39
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
@@ -81,14 +84,14 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.24
-BuildRequires:  mozilla-nss-devel >= 3.48
+BuildRequires:  mozilla-nss-devel >= 3.49.2
 BuildRequires:  nasm >= 2.13
 BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
-BuildRequires:  rust >= 1.37
-BuildRequires:  rust-cbindgen >= 0.9.1
+BuildRequires:  rust >= 1.39
+BuildRequires:  rust-cbindgen >= 0.12.0
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -183,7 +186,6 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-bmo1601707.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -319,7 +321,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch23 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -399,7 +400,7 @@ ac_add_options --prefix=%{_prefix}
 ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
 ac_add_options --enable-release
-ac_add_options --enable-default-toolkit=cairo-gtk3
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 %if 0%{?suse_version} >= 1550
 ac_add_options --disable-gconf
 %endif
@@ -409,11 +410,12 @@ ac_add_options --disable-debug-symbols
 %else
 ac_add_options --enable-debug-symbols
 %endif
-%if 0%{?suse_version} > 1549
+# building with elf-hack started to fail everywhere with FF73
+#%if 0%{?suse_version} > 1549
 %ifnarch aarch64 ppc64 ppc64le s390x
 ac_add_options --disable-elf-hack
 %endif
-%endif
+#%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %if %{localize}
@@ -665,7 +667,6 @@ exit 0
 %{progdir}/browser/features/
 %{progdir}/browser/chrome/icons
 %{progdir}/browser/blocklist.xml
-%{progdir}/browser/chrome.manifest
 %{progdir}/browser/omni.ja
 %dir %{progdir}/distribution/
 %{progdir}/distribution/extensions/
@@ -677,7 +678,6 @@ exit 0
 %{progdir}/%{progname}
 %{progdir}/%{progname}-bin
 %{progdir}/application.ini
-%{progdir}/chrome.manifest
 %{progdir}/dependentlibs.list
 %{progdir}/*.so
 %{progdir}/omni.ja

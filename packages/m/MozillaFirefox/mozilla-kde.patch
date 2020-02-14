@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  52a515e07938d75f7c33e7b724845ce6dc315c0c
+# Parent  48866e4a200fb5299b94af4d9841e38336cff9f4
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,7 +13,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -88,16 +88,17 @@
+@@ -84,16 +84,17 @@
  #include "nsXPCOM.h"
  #include "nsXULAppAPI.h"
  #include "nsZipArchive.h"
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4543,25 +4544,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4539,25 +4540,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4607,17 +4620,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4603,17 +4616,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -136,7 +136,7 @@ diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/c
 diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpack/chrome/manifest.py
 --- a/python/mozbuild/mozpack/chrome/manifest.py
 +++ b/python/mozbuild/mozpack/chrome/manifest.py
-@@ -36,16 +36,17 @@ class ManifestEntry(object):
+@@ -37,16 +37,17 @@ class ManifestEntry(object):
          'platformversion',
          'os',
          'osversion',
@@ -175,7 +175,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1199,36 +1199,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1195,36 +1195,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -265,7 +265,7 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 --- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 +++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
-@@ -14,16 +14,17 @@
+@@ -13,16 +13,17 @@
  #include "nsPrintfCString.h"
  #include "nsNetCID.h"
  #include "nsNetUtil.h"
@@ -283,7 +283,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
    NS_DECL_ISUPPORTS
    NS_DECL_NSISYSTEMPROXYSETTINGS
  
-@@ -37,16 +38,18 @@ class nsUnixSystemProxySettings final : 
+@@ -36,16 +37,18 @@ class nsUnixSystemProxySettings final : 
    nsCOMPtr<nsIGSettingsCollection> mProxySettings;
    nsInterfaceHashtable<nsCStringHashKey, nsIGSettingsCollection>
        mSchemeProxySettings;
@@ -302,7 +302,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -381,21 +384,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -380,21 +383,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -356,7 +356,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -87,17 +87,19 @@ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'co
+@@ -88,17 +88,19 @@ elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'co
          '../components/printingui',
      ]
  elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'uikit':
@@ -1213,10 +1213,10 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  #include "nsString.h"
  #include "nsReadableUtils.h"
  #include "nsUnicharUtils.h"
- #include "nsIURL.h"
  #include "nsIFileStreams.h"
  #include "nsILineInputStream.h"
-@@ -1025,17 +1025,17 @@ nsresult nsOSHelperAppService::GetHandle
+ #include "nsIFile.h"
+@@ -1024,17 +1024,17 @@ nsresult nsOSHelperAppService::GetHandle
  
  nsresult nsOSHelperAppService::OSProtocolHandlerExists(
      const char* aProtocolScheme, bool* aHandlerExists) {
@@ -1235,7 +1235,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
      nsCOMPtr<nsIHandlerService> handlerSvc =
          do_GetService(NS_HANDLERSERVICE_CONTRACTID, &rv);
      if (NS_SUCCEEDED(rv) && handlerSvc) {
-@@ -1045,17 +1045,17 @@ nsresult nsOSHelperAppService::OSProtoco
+@@ -1044,17 +1044,17 @@ nsresult nsOSHelperAppService::OSProtoco
    }
  
    return rv;
@@ -1254,7 +1254,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
  NS_IMETHODIMP nsOSHelperAppService::IsCurrentAppOSDefaultForProtocol(
      const nsACString& aScheme, bool* _retval) {
-@@ -1142,17 +1142,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1141,17 +1141,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
    nsresult rv =
        LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                 minorType, mime_types_description, true);
@@ -1273,7 +1273,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
      rv = LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                    minorType, mime_types_description, false);
-@@ -1254,17 +1254,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1253,17 +1253,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
  
    // Now look up our extensions
    nsAutoString extensions, mime_types_description;
@@ -1295,7 +1295,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -127,16 +127,17 @@ include('/ipc/chromium/chromium-config.m
+@@ -128,16 +128,17 @@ include('/ipc/chromium/chromium-config.m
  
  FINAL_LIBRARY = 'xul'
  
@@ -1316,25 +1316,24 @@ diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 --- a/widget/gtk/nsFilePicker.cpp
 +++ b/widget/gtk/nsFilePicker.cpp
-@@ -4,16 +4,17 @@
+@@ -1,15 +1,16 @@
+ /* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
+ /* This Source Code Form is subject to the terms of the Mozilla Public
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
   * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
- #include "mozilla/Types.h"
+ #include <dlfcn.h>
+ #include <gtk/gtk.h>
++#include <gdk/gdkx.h>
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
  
- #include <gtk/gtk.h>
-+#include <gdk/gdkx.h>
- 
+ #include "mozilla/Types.h"
  #include "nsGtkUtils.h"
  #include "nsIFileURL.h"
  #include "nsIGIOService.h"
- #include "nsIURI.h"
- #include "nsIWidget.h"
- #include "nsIFile.h"
- #include "nsIStringBundle.h"
-@@ -21,16 +22,17 @@
+@@ -20,16 +21,17 @@
  #include "nsArrayEnumerator.h"
  #include "nsMemory.h"
  #include "nsEnumeratorUtils.h"
@@ -1352,7 +1351,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #define MAX_PREVIEW_SOURCE_SIZE 4096
  
  nsIFile* nsFilePicker::mPrevDisplayDirectory = nullptr;
-@@ -228,17 +230,19 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -227,17 +229,19 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1373,7 +1372,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -338,16 +342,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
+@@ -337,16 +341,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
    return NS_OK;
  }
  
@@ -1413,7 +1412,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
-@@ -573,16 +600,240 @@ void nsFilePicker::Done(void* file_choos
+@@ -572,16 +599,240 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1835,7 +1834,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
-@@ -47,16 +47,17 @@
+@@ -46,16 +46,17 @@
  #include "prproces.h"
  #include "nsIDirectoryEnumerator.h"
  #include "nsSimpleEnumerator.h"
@@ -1853,7 +1852,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -1902,62 +1903,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -1904,62 +1905,77 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {

@@ -4242,4 +4242,41 @@
     <comment></comment>
     <requestid>769385</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>ee268abb9f0888fe755a5f63bd089931</srcmd5>
+    <version>73.0</version>
+    <time>1581694149</time>
+    <user>okurz-factory</user>
+    <comment>- Mozilla Firefox 73.0
+  * Added support for setting a default zoom level applicable for all
+    web content
+  * High-contrast mode has been updated to allow background images
+  * Improved audio quality when playing back audio at a faster or
+    slower speed
+  * Added NextDNS as alternative option for DNS over HTTPS
+  MFSA 2020-05 (bsc#1163368)
+  * CVE-2020-6796 (bmo#1610426)
+    Missing bounds check on shared memory read in the parent process
+  * CVE-2020-6797 (bmo#1596668) (MacOS X only)
+    Extensions granted downloads.open permission could open arbitrary
+    applications on Mac OSX
+  * CVE-2020-6798 (bmo#1602944)
+    Incorrect parsing of template tag could result in JavaScript injection
+  * CVE-2020-6799 (bmo#1606596) (Windows only)
+    Arbitrary code execution when opening pdf links from other
+    applications, when Firefox is configured as default pdf reader
+  * CVE-2020-6800 (bmo#1595786,bmo#1596706,bmo#1598543,bmo#1604851,
+    bmo#1608580,bmo#1608785,bmo#1605777)
+    Memory safety bugs fixed in Firefox 73 and Firefox ESR 68.5
+  * CVE-2020-6801 (bmo#1601024,bmo#1601712,bmo#1604836,bmo#1606492)
+    Memory safety bugs fixed in Firefox 73
+- updated requirements
+  * rust &gt;= 1.39
+  * NSS &gt;= 3.49.2
+  * rust-cbindgen &gt;= 0.12.0
+- rebased patches
+- removed obsolete patch
+  * mozilla-bmo1601707.patch</comment>
+    <requestid>773730</requestid>
+  </revision>
 </revisionlist>
