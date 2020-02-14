@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.66
+%define _tar_path 5.67
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sonnet
-Version:        5.66.0
+Version:        5.67.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -45,13 +45,13 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  myspell-dictionaries
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 BuildRequires:  pkgconfig(hunspell)
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.12.0
 %endif
 
 %description
@@ -92,7 +92,7 @@ Group:          Development/Libraries/KDE
 Requires:       extra-cmake-modules
 Requires:       libKF5SonnetCore%{sonum} = %{version}
 Requires:       libKF5SonnetUi%{sonum} = %{version}
-Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5Core) >= 5.12.0
 
 %description devel
 Sonnet is a plugin-based spell checking library for Qt-based
@@ -106,7 +106,7 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 
 %build
   %cmake_kf5 -d build -- -Dlconvert_executable=%{_kf5_libdir}/qt5/bin/lconvert
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
