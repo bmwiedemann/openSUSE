@@ -1,7 +1,7 @@
 #
 # spec file for package ilmbase
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,12 @@ Release:        0
 Summary:        Base library for ILM software (OpenEXR)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.openexr.com
+URL:            http://www.openexr.com
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-the-symlinks-creation.patch
+Patch1:         0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -113,10 +114,11 @@ Group:          System/Libraries
 %prep
 %setup -q -n openexr-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 pushd IlmBase
-%cmake -DCMAKE_INSTALL_INCLUDE_DIR:path=%{_includedir}
+%cmake
 %if %{asan_build}
 vmemlimit=$(ulimit -v)
 if [ $vmemlimit != unlimited ]; then
