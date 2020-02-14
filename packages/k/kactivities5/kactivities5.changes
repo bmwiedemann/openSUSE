@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:06:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Remove files that Windows cannot handle.
+  * Ensure to store resource uri without a trailing slash
+
+-------------------------------------------------------------------
 Sun Jan  5 09:01:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.66.0
