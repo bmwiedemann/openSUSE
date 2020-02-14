@@ -115,4 +115,17 @@
     <comment></comment>
     <requestid>722948</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1837deab38a9e44f390bd64aa808b3ae</srcmd5>
+    <version>12.1.04</version>
+    <time>1581693757</time>
+    <user>okurz-factory</user>
+    <comment>- unifont 12.1.04:
+  * added two missing dots to Arabic Extended-A glyph U+08BA
+  * added descending lines to coffin (U+26B0) so it looks more 3D
+  *Â removed dotted circles in Adlam and Nyiakeng Puachue Hmong
+  * changed four Soyombo glyphs
+  * improved several Duployan glyphs</comment>
+    <requestid>772703</requestid>
+  </revision>
 </revisionlist>
