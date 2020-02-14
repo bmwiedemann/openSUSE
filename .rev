@@ -158,4 +158,12 @@
     <comment>- fix tests run failing on older distributions due to incorrect locale</comment>
     <requestid>687816</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3fb74bd5133e6b3fd5903b2b2315ce95</srcmd5>
+    <version>0.9.7</version>
+    <time>1581693900</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770567</requestid>
+  </revision>
 </revisionlist>
