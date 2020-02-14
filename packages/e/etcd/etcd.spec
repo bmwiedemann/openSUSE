@@ -20,18 +20,20 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
+%define project go.etcd.io/etcd
 
 Name:           etcd
-Version:        3.3.15
+Version:        3.4.3
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/coreos/etcd
-Source:         %{name}-%{version}.tar.xz
-Source1:        %{name}.conf
-Source2:        %{name}.service
-Source5:        README.security
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source11:       %{name}.conf
+Source12:       %{name}.service
+Source15:       README.security
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
@@ -65,25 +67,38 @@ A command line client for etcd. It can be used in scripts or for administrators
 to explore an etcd cluster.
 
 %prep
-%setup -q
-cp %{SOURCE5} .
+%setup -q -a1
+cp %{SOURCE15} .
 
 %build
-%{goprep} github.com/coreos/etcd
-%{gobuild} .
-%{gobuild} etcdctl
+%{goprep} go.etcd.io/etcd
+export GOPATH=$HOME/go
+mkdir -pv $HOME/go/src/%{project}
+rm -rf $HOME/go/src/%{project}/*
+cp -avr * $HOME/go/src/%{project}
+
+cd $HOME/go/src/%{project}
+go build -v -buildmode=pie -o etcd
+
+cd $HOME/go/src/%{project}/etcdctl
+go build -v -buildmode=pie -o etcdctl
 
 %install
-%{goinstall}
-rm -rf %{buildroot}/%{_libdir}/go/contrib
+cd $HOME/go/src/%{project}
+
+install -d %{buildroot}/%{_sbindir}
+install -D -m 0755 etcd %{buildroot}/%{_sbindir}/etcd
+
+install -d %{buildroot}/%{_bindir}
+install -D -m 0755 etcdctl/etcdctl %{buildroot}/%{_bindir}/etcdctl
 
 # Service
-install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
+install -D -p -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}.service
 install -d %{buildroot}/%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # Sysconfig
-install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -D -p -m 0644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %ifarch aarch64
 # arm64 is not yet officially supported
 echo -e "\n#Enable arm64\nETCD_UNSUPPORTED_ARCH=arm64\n" >> %{buildroot}%{_fillupdir}/sysconfig.%{name}
@@ -91,9 +106,6 @@ echo -e "\n#Enable arm64\nETCD_UNSUPPORTED_ARCH=arm64\n" >> %{buildroot}%{_fillu
 
 # Additional
 install -d -m 750 %{buildroot}%{_localstatedir}/lib/%{name}
-
-# Move
-mv %{buildroot}%{_bindir}/etcd %{buildroot}%{_sbindir}/%{name}
 
 %pre
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}

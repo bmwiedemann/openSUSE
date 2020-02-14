@@ -152,4 +152,12 @@
     <comment>Needed for k8s 1.16</comment>
     <requestid>736836</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fd77403ce62a172ce84cc06d74f71f95</srcmd5>
+    <version>3.4.3</version>
+    <time>1581694051</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770502</requestid>
+  </revision>
 </revisionlist>
