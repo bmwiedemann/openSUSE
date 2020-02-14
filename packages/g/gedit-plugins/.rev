@@ -419,4 +419,12 @@
     <comment>New stable rel (forwarded request 750082 from iznogood)</comment>
     <requestid>750930</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>c61ce1bdc552e70845ff180ddd35edab</srcmd5>
+    <version>3.34.1</version>
+    <time>1581694031</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770463</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gedit-plugins
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(libpeas-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.12
-Requires:       %{name}-lang = %{version}
 Requires:       gedit >= 3.14.0
 Recommends:     %{name}-data
 Suggests:       gedit-plugin-bookmarks
