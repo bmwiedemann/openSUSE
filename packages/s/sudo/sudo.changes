@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Feb  6 19:21:23 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.8.31
+  Major changes between version 1.8.31 and 1.8.30:
+  * This version fixes a potential security issue that can lead to
+    a buffer overflow if the pwfeedback option is enabled in
+    sudoers [CVE-2019-18634] [bsc#1162202]
+  * The sudoedit_checkdir option now treats a user-owned directory
+    as writable, even if it does not have the write bit set at the
+    time of check. Symbolic links will no longer be followed by
+    sudoedit in any user-owned directory. Bug #912.
+  * Fixed a crash introduced in sudo 1.8.30 when suspending sudo
+    at the password prompt. Bug #914.
+  * Fixed compilation on systems where the mmap MAP_ANON flag is
+    not available. Bug #915.
+  Major changes between version 1.8.30 and 1.8.29:
+  * Sudo now closes file descriptors before changing uids. This
+    prevents a non-root process from interfering with sudo's ability
+    to close file descriptors on systems that support the prlimit(2)
+    system call.
+  * Sudo now treats an attempt to run sudo sudoedit as simply
+    sudoedit If the sudoers file contains a fully-qualified path
+    to sudoedit, sudo will now treat it simply as sudoedit
+    (with no path). Visudo will will now treat a fully-qualified
+    path to sudoedit as an error. Bug #871.
+  * Fixed a bug introduced in sudo 1.8.28 where sudo would warn
+    about a missing /etc/environment file on AIX and Linux when
+    PAM is not enabled. Bug #907.
+  * Fixed a bug on Linux introduced in sudo 1.8.29 that prevented
+    the askpass program from running due to an unlimited stack size
+    resource limit. Bug #908.
+  * If a group provider plugin has optional arguments, the argument
+    list passed to the plugin is now NULL terminated as per the
+    documentation.
+  * The user's time stamp file is now only updated if both authentication
+    and approval phases succeed. This is consistent with the behavior
+    of sudo prior to version 1.8.23. Bug #910.
+  * The new allow_unknown_runas_id sudoers setting can be used to
+    enable or disable the use of unknown user or group IDs.
+    Previously, sudo would always allow unknown user or group IDs if
+    the sudoers entry permitted it, including via the ALL alias.
+    As of sudo 1.8.30, the admin must explicitly enable support for
+    unknown IDs.
+  * The new runas_check_shell sudoers setting can be used to require
+    that the runas user have a shell listed in the /etc/shells file.
+    On many systems, users such as bin, do not have a valid shell and
+    this flag can be used to prevent commands from being run as
+    those users.
+  * Fixed a problem restoring the SELinux tty context during reboot
+    if mctransd is killed before sudo finishes. GitHub Issue #17.
+  * Fixed an intermittent warning on NetBSD when sudo restores the
+    initial stack size limit.
+  Major changes between version 1.8.29 and 1.8.28p1:
+  * The cvtsudoers command will now reject non-LDIF input when
+    converting from LDIF format to sudoers or JSON formats.
+  * The new log_allowed and log_denied sudoers settings make it
+    possible to disable logging and auditing of allowed and/or
+    denied commands.
+  * The umask is now handled differently on systems with PAM or
+    login.conf. If the umask is explicitly set in sudoers, that
+    value is used regardless of what PAM or login.conf may specify.
+    However, if the umask is not explicitly set in sudoers, PAM or
+    login.conf may now override the default sudoers umask. Bug #900.
+  * For make install, the sudoers file is no longer checked for syntax
+    errors when DESTDIR is set. The default sudoers file includes the
+    contents of /etc/sudoers.d which may not be readable as non-root.
+    Bug #902.
+  * Sudo now sets most resource limits to their maximum value to avoid
+    problems caused by insufficient resources, such as an inability to
+    allocate memory or open files and pipes. Fixed a regression introduced
+    in sudo 1.8.28 where sudo would refuse to run if the parent process was
+    not associated with a session. This was due to sudo passing a session
+    ID of -1 to the plugin.
+- refresh sudo-sudoers.patch
+
+-------------------------------------------------------------------
 Fri Dec  6 08:38:45 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move pam.d/sudo* files to /usr/etc
