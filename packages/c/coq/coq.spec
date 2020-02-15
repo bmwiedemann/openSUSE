@@ -1,7 +1,7 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           coq
-Version:        8.9.1
+Version:        8.11.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -31,7 +32,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  memory-constraints
 # Required for standard coq:
 BuildRequires:  make >= 3.81
-BuildRequires:  ocaml >= 3.10.2
+BuildRequires:  ocaml >= 4.05.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
 # TODO: Build docs when antlr4-python3-runtime becomes available.
 #BuildRequires:  python3-Sphinx
@@ -39,9 +40,12 @@ BuildRequires:  ocaml-camlp5-devel >= 5.08
 #BuildRequires:  antlr4-python3-runtime
 #BuildRequires:  python3-beautifulsoup4
 # Required for coq-ide:
-BuildRequires:  ocamlfind(findlib)
-BuildRequires:  ocamlfind(lablgtk2)
 BuildRequires:  update-desktop-files
+BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(lablgtk3)
+BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtksourceview-3.0)
 
 %global __requires_exclude ocaml\\\((Interface|Sos_types|GtkSourceView2_types)\\\)
 
@@ -65,7 +69,7 @@ The Coq Integrated Development Interface is a graphical interface for the Coq pr
 Summary:        Development files for coq
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}-%{release}
-Requires:       ocaml >= 3.10.2
+Requires:       ocaml >= 4.05.0
 
 %description devel
 This package contains development files for Coq.
@@ -121,6 +125,9 @@ sed -i '1s|^#!/usr/bin/env *|#!/usr/bin/|;1s|^#!/usr/bin/python$|#!/usr/bin/pyth
 # Remove superfluous man page.
 rm %{buildroot}%{_mandir}/man1/coqtop.byte.1
 
+# Remove unneeded empty *.vos files.
+find %{buildroot}%{_libdir}/coq -empty -name '*.vos' -delete
+
 # Build lists of runtime and devel files by ending.
 # Compiled theories and shared objects are needed at runtime.
 find %{buildroot}%{_libdir}/coq/{plugins,theories} -type d | \
@@ -144,7 +151,7 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 
 %files -f runtime.list
 %license LICENSE CREDITS
-%doc CHANGES.md README.md
+%doc README.md
 %{_docdir}/%{name}/FAQ-CoqIde
 
 %{_bindir}/coq-tex
@@ -161,9 +168,12 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 %{_bindir}/coqtop.opt
 %{_bindir}/coqwc
 %{_bindir}/coqworkmgr
+%{_bindir}/doc_grammar
+%{_bindir}/votour
 
 %dir %{_libdir}/coq
 %{_libdir}/coq/META
+%{_libdir}/coq/revision
 %dir %{_libdir}/coq/kernel
 %dir %{_libdir}/coq/kernel/byterun
 %{_libdir}/coq/plugins/micromega/csdpcert

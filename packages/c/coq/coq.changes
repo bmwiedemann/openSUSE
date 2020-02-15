@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:38:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.11.0.
+  * Ltac2, a new tactic language for writing more robust larger
+    scale tactics, with built-in support for datatypes and the
+    multi-goal tactic monad.
+  * Primitive floats are integrated in terms and follow the binary64
+    format of the IEEE 754 standard, as specified in the
+    Coq.Float.Floats library.
+  * Many other cleanups and improvements have been performed and
+    are further described in the changelog.
+  * Special note on compatibility: Fixed bugs of Export and Import
+    that can have a significant impact on user developments.
+- Drop unneeded empty *.vos files.
+
+-------------------------------------------------------------------
+Sat Nov 30 16:40:21 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.10.2.
+  * Fixed a critical bug of template polymorphism and nonlinear
+    universes;
+  * Fixed a few anomalies;
+  * Fixed an 8.10 regression related to the printing of coercions
+    associated to notations;
+  * Fixed uneven dimensions of CoqIDE panels when window has been
+    resized;
+  * Fixed queries in CoqIDE.
+
+-------------------------------------------------------------------
+Tue Nov 12 22:46:34 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.10.0.
+  * some quality-of-life bug fixes;
+  * a critical bug fix related to template polymorphism;
+  * native 63-bit machine integers;
+  * a new sort of definitionally proof-irrelevant propositions: SProp;
+  * private universes for opaque polymorphic constants;
+  * string notations and numeral notations;
+  * a new simplex-based proof engine for the tactics lia, nia, lra
+    and nra;
+  * new introduction patterns for SSReflect;
+  * a tactic to rewrite under binders: under;
+  * easy input of non-ASCII symbols in CoqIDE, which now uses GTK3.
+- Update to version 8.10.1.
+  * Fix proof of False when using SProp
+  * Fix an anomaly when unsolved evar in Add Ring
+  * Fix Ltac regression in binding free names in uconstr
+  * Fix handling of unicode input before space
+  * Fix custom extraction of inductives to JSON
+- Update version requirements.
+
+-------------------------------------------------------------------
 Tue Nov 12 22:31:20 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix findlib build dependency.
