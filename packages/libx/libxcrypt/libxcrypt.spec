@@ -1,7 +1,7 @@
 #
 # spec file for package libxcrypt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libxcrypt
-Version:        4.4.10
+Version:        4.4.12
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
@@ -25,7 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/besser82/%{name}
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         gcc10.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -86,8 +85,8 @@ is highly discouraged.
 %build
 # Disable LTO due to symbol versioning (boo#1138833):
 # (https://en.opensuse.org/openSUSE:LTO#Symbol_versioning).
-
 %define _lto_cflags %{nil}
+
 autoreconf -fi
 %configure			\
   --disable-silent-rules	\

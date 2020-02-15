@@ -46,4 +46,13 @@
     <comment>- gcc10.patch: fix build with gcc10 (bsc#1158192) (forwarded request 756004 from Andreas_Schwab)</comment>
     <requestid>756005</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>898fe759c03d9c0cac84f84379e2937e</srcmd5>
+    <version>4.4.12</version>
+    <time>1581801688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.12
+  * Another fix for GCC v10.x, which occurs on s390 architectures only. (forwarded request 768745 from Andreas_Schwab)</comment>
+    <requestid>768748</requestid>
+  </revision>
 </revisionlist>
