@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:30:35 UTC 2020 - Reinhard Max <max@suse.com>
+
+- CVE-2020-8597, bsc#1162610, ppp-CVE-2020-8597.patch: rhostname
+  buffer overflow in the  eap_request and eap_response functions.
+
+-------------------------------------------------------------------
 Thu Oct  4 15:18:10 UTC 2018 - schwab@suse.de
 
 - ppp-2.4.7-DES-openssl.patch: Use openssl instead of libcrypt for DES

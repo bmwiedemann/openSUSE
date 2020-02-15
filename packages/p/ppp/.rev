@@ -285,4 +285,13 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment></comment>
     <requestid>640619</requestid>
   </revision>
+  <revision rev="39" vrev="12">
+    <srcmd5>14946210190ed28e57e3b5538b4560c1</srcmd5>
+    <version>2.4.7</version>
+    <time>1581801816</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2020-8597, bsc#1162610, ppp-CVE-2020-8597.patch: rhostname
+  buffer overflow in the  eap_request and eap_response functions.</comment>
+    <requestid>772130</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ppp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ Patch23:        ppp-send-padt.patch
 Patch24:        ppp-CVE-2015-3310.patch
 Patch25:        fix-header-conflict.patch
 Patch26:        ppp-2.4.7-DES-openssl.patch
+Patch27:        ppp-CVE-2020-8597.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  linux-atm-devel
 BuildRequires:  openssl-devel
@@ -146,6 +147,7 @@ you can disable unnecessary or disable everything.
 %patch24
 %patch25 -p1
 %patch26 -p1
+%patch27
 sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x
 find -type f -name '*.orig' | xargs rm -f
