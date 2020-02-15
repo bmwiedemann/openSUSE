@@ -1,7 +1,7 @@
 #
 # spec file for package zsh
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 # Only for -test builds
-%define _version 5.7.1-test-2
+%define _version 5.7.1-test-3
 
 %if 0%{?rhel_version} || 0%{?centos_version} || 0%{?fedora_version}
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
@@ -28,7 +28,7 @@ BuildRequires:  texi2html
 BuildRequires:  texinfo
 %endif
 Name:           zsh
-Version:        5.8~pre2
+Version:        5.8~pre3
 Release:        0%{?dist}
 Summary:        Shell with comprehensive completion
 License:        MIT

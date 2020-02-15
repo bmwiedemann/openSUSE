@@ -865,4 +865,13 @@
 - See included ChangeLog for the complete list of changes.</comment>
     <requestid>758830</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e05d121e79129cdf6d8424ecaf970493</srcmd5>
+    <version>5.8~pre3</version>
+    <time>1581801805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8~pre3 (5.7.1-test-3)
+  * Minor bugfixes compared to pre2</comment>
+    <requestid>771563</requestid>
+  </revision>
 </revisionlist>
