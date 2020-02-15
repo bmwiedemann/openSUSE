@@ -1,7 +1,7 @@
 #
 # spec file for package python-coloredlogs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coloredlogs
-Version:        10.0
+Version:        11.0
 Release:        0
 Summary:        Colored terminal output for Python's logging module
 License:        MIT
@@ -30,7 +30,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/coloredlogs/col
 # With using alternatives, we don't have versionless command in time of %check
 Patch0:         test_cli_conversion_test.patch
 BuildRequires:  %{python_module capturer >= 2.4}
-BuildRequires:  %{python_module humanfriendly >= 3.2}
+BuildRequires:  %{python_module humanfriendly >= 6.1}
 BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module pytest-cov >= 2.3.1}
@@ -75,9 +75,8 @@ using Colorama.
 
 %check
 # test_auto_install - requires the install to the system to be actually complete
-# test_plain_text_output_format - random hickupy test
 export PATH=%{buildroot}%{_bindir}:$PATH
-%pytest coloredlogs/tests.py -k 'not (test_auto_install or test_plain_text_output_format)'
+%pytest coloredlogs/tests.py -k 'not test_auto_install'
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst

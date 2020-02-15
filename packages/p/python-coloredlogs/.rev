@@ -42,4 +42,20 @@
   coloredlogs in time of %check. (forwarded request 700393 from mcepl)</comment>
     <requestid>700395</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f6e73c622d207e62f267ea92002efa8</srcmd5>
+    <version>11.0</version>
+    <time>1581801925</time>
+    <user>dimstar_suse</user>
+    <comment>- Should go into Factory only with sr#774497.
+- Update to 11.0:
+  - This is a maintenance release that drops Python 2.6 support,
+    adds Python 3.7 support and merges quite a few minor pull
+    requests. The major version number was bumped because of the
+    compatibility changes.
+    Complete list of (really small) changes is on
+    https://github.com/xolox/python-coloredlogs/blob/master/CHANGELOG.rst#release-11-0-2020-02-14
+  - Update test_cli_conversion_test.patch</comment>
+    <requestid>774498</requestid>
+  </revision>
 </revisionlist>

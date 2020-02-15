@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 15 08:30:15 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 11.0:
+  - This is a maintenance release that drops Python 2.6 support,
+    adds Python 3.7 support and merges quite a few minor pull
+    requests. The major version number was bumped because of the
+    compatibility changes.
+    Complete list of (really small) changes is on
+    https://github.com/xolox/python-coloredlogs/blob/master/CHANGELOG.rst#release-11-0-2020-02-14
+  - Update test_cli_conversion_test.patch
+
+-------------------------------------------------------------------
 Fri May  3 14:04:05 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add test_cli_conversion_test.patch, because we don't have versionless
