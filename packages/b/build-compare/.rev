@@ -960,4 +960,12 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - use EXIT handler in pkg-diff to remove tmpfiles</comment>
     <requestid>762170</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>8095bff571f608bda65cddc895f2b4d2</srcmd5>
+    <version>20200115T165709.b82e1e5</version>
+    <time>1581801672</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>766378</requestid>
+  </revision>
 </revisionlist>

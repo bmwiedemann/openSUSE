@@ -43,56 +43,6 @@ function wprint
   watchdog_reset
 }
 
-function findunjarbin
-{
-    if [[ $(type -p fastjar) ]]; then
-        UNJAR=fastjar
-    elif [[ $(type -p jar) ]]; then
-        UNJAR=jar
-    elif [[ $(type -p unzip) ]]; then
-        UNJAR=unzip
-    else
-        echo "ERROR: jar, fastjar, or unzip is not installed (trying file $file)"
-        exit 1
-    fi
-}
-
-#usage unjar <file>
-function unjar()
-{
-    local file
-    file=$1
-
-    findunjarbin
-    case $UNJAR in
-        jar|fastjar)
-        # echo jar -xf $file
-        ${UNJAR} -xf $file
-        ;;
-        unzip)
-        unzip -oqq $file
-        ;;
-    esac
-}
-
-# list files in given jar file
-#usage unjar_l <file>
-function unjar_l()
-{
-    local file
-    file=$1
-
-    findunjarbin
-    case $UNJAR in
-        jar|fastjar)
-        ${UNJAR} -tf $file
-        ;;
-        unzip)
-        unzip -Z -1 $file
-        ;;
-    esac
-}
-
 filter_disasm()
 {
   [[ $nofilter ]] && return
@@ -209,6 +159,14 @@ verify_before_processing()
   if test ! -e "new/$file"; then
     wprint "Missing in new package: $file"
     return 1
+  fi
+
+  # consider only files and symlinks
+  if test ! -f "old/$file"; then
+    return 0
+  fi
+  if test ! -f "new/$file"; then
+    return 0
   fi
 
   if cmp -b "old/$file" "new/$file" > "${cmpout}" ; then
@@ -633,6 +591,208 @@ normalize_file()
   esac
 }
 
+archive_a()
+{
+  local cmd=$1
+  local file=$2
+  case "${cmd}" in
+  f)
+    test -x "$(type -P ar)" && return 0
+    echo "ERROR: ar missing for ${file}"
+    return 1
+  ;;
+  l)
+    ar t "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  x)
+    ar x "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  esac
+}
+
+archive_cpio()
+{
+  local cmd=$1
+  local file=$2
+  case "${cmd}" in
+  f)
+    test -x "$(type -P cpio)" && return 0
+    echo "ERROR: cpio missing for ${file}"
+    return 1
+  ;;
+  l)
+    cpio --quiet --list --force-local < "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  x)
+    cpio --quiet --extract --force-local < "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  esac
+}
+
+archive_squashfs()
+{
+  local cmd=$1
+  local file=$2
+  case "${cmd}" in
+  f)
+    test -x "$(type -P unsquashfs)" && return 0
+    echo "ERROR: unsquashfs missing for ${file}"
+    return 1
+  ;;
+  l)
+    unsquashfs -no-progress -ls -dest '' "${file}" | grep -Ev '^(Parallel unsquashfs:|[0-9]+ inodes )'
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  x)
+    unsquashfs -no-progress -dest "." "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  esac
+}
+
+archive_tar()
+{
+  local cmd=$1
+  local file=$2
+  case "${cmd}" in
+  f)
+    test -x "$(type -P tar)" && return 0
+    echo "ERROR: tar missing for ${file}"
+    return 1
+  ;;
+  l)
+    tar tf "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  x)
+    tar xf "${file}"
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  esac
+}
+
+UNJAR=
+archive_zip()
+{
+  local cmd=$1
+  local file=$2
+  case "${cmd}" in
+  f)
+    if test -x "$(type -P fastjar)"
+     then
+      UNJAR="${_}"
+    elif test -x "$(type -P jar)"
+    then
+      UNJAR="${_}"
+    elif test -x "$(type -P unzip)"
+    then
+      UNJAR="${_}"
+    else
+      echo "ERROR: jar/fastjar/unzip missing for ${file}"
+      return 1
+    fi
+    return 0
+  ;;
+  l)
+    case "${UNJAR##*/}" in
+      jar|fastjar)
+        "${UNJAR}" -tf "${file}"
+      ;;
+      unzip)
+        "${UNJAR}" -Z -1 "${file}"
+      ;;
+    esac
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  x)
+    case "${UNJAR##*/}" in
+      jar|fastjar)
+        "${UNJAR}" -xf "${file}"
+      ;;
+      unzip)
+        "${UNJAR}" -oqq "${file}"
+      ;;
+    esac
+    test "$?" = "0" && return 0
+    return 1
+  ;;
+  esac
+}
+
+# returns 0 if content is identical
+# returns 1 if at least one file differs
+# handler f returns 1 if required tool for inspection is missing
+# handler l lists content, returns 1 if tool failed
+# handler x extracts content, returns 1 if tool failed
+compare_archive()
+{
+  local file="$1"
+  local handler="$2"
+  local old="`readlink -f \"old/$file\"`"
+  local new="`readlink -f \"new/$file\"`"
+  local f
+  local -a content
+  local -i ret=1
+
+  "${handler}" 'f' "${file}" || return 1
+
+  mkdir -p "d/old/${file}" "d/new/${file}"
+  if pushd "d" > /dev/null
+  then
+    "${handler}" 'l' "${old}" | ${sort} > 'co'
+    test "${PIPESTATUS[0]}" = "0" || return 1
+    "${handler}" 'l' "${new}" | ${sort} > 'cn'
+    test "${PIPESTATUS[0]}" = "0" || return 1
+    if cmp -s 'co' 'cn'
+    then
+      if pushd "old/${file}" > /dev/null
+      then
+        "${handler}" 'x' "${old}" || return 1
+        popd > /dev/null
+      fi
+      if pushd "new/${file}" > /dev/null
+      then
+        "${handler}" 'x' "${new}" || return 1
+        popd > /dev/null
+      fi
+      readarray -t content < 'cn'
+      for f in "${content[@]}"
+      do
+        if ! check_single_file "${file}/${f}"
+        then
+          ret=1
+          if test -z "$check_all"
+          then
+            break
+          fi
+        fi
+        watchdog_touch
+      done
+      ret=$?
+    else
+      wprint "$file has different file list"
+      diff -u 'co' 'cn'
+    fi
+    popd > /dev/null
+    rm -rf "d"
+  fi
+
+  return ${ret}
+}
+
 check_single_file()
 {
   local file="$1"
@@ -660,111 +820,25 @@ check_single_file()
 
   case "$file" in
     *.a)
-       flist=`ar t "new/$file"`
-       pwd=$PWD
-       fdir=`dirname "$file"`
-       cd "old/$fdir"
-       ar x `basename "$file"`
-       cd "$pwd/new/$fdir"
-       ar x `basename "$file"`
-       cd "$pwd"
-       for f in $flist; do
-          if ! check_single_file "$fdir/$f"; then
-             return 1
-          fi
-         watchdog_touch
-       done
-       return 0
+      compare_archive "${file}" 'archive_a'
+      return $?
        ;;
     *.cpio)
-       flist=`cpio --quiet --list --force-local < "new/$file" | $sort`
-       pwd=$PWD
-       fdir="$file.extract.$PPID.$$"
-       mkdir "old/$fdir" "new/$fdir"
-       cd "old/$fdir"
-       cpio --quiet --extract --force-local < "../${file##*/}"
-       cd "$pwd/new/$fdir"
-       cpio --quiet --extract --force-local < "../${file##*/}"
-       cd "$pwd"
-       for f in $flist; do
-         if ! check_single_file "$fdir/$f"; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-         watchdog_touch
-       done
-       rm -rf "old/$fdir" "new/$fdir"
-       return $ret
+      compare_archive "${file}" 'archive_cpio'
+      return $?
        ;;
     *.squashfs)
-       flist=`unsquashfs -no-progress -ls -dest '' "new/$file" | grep -Ev '^(Parallel unsquashfs:|[0-9]+ inodes )' | $sort`
-       fdir="$file.extract.$PPID.$$"
-       unsquashfs -no-progress -dest "old/$fdir" "old/$file"
-       unsquashfs -no-progress -dest "new/$fdir" "new/$file"
-       for f in $flist; do
-         if ! check_single_file "$fdir/$f"; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-         watchdog_touch
-       done
-       rm -rf "old/$fdir" "new/$fdir"
-       return $ret
+      compare_archive "${file}" 'archive_squashfs'
+      return $?
        ;;
     *.tar|*.tar.bz2|*.tar.gz|*.tgz|*.tbz2)
-       flist=`tar tf "new/$file"`
-       pwd=$PWD
-       fdir=`dirname "$file"`
-       cd "old/$fdir"
-       tar xf `basename "$file"`
-       cd "$pwd/new/$fdir"
-       tar xf `basename "$file"`
-       cd "$pwd"
-       for f in $flist; do
-         if ! check_single_file "$fdir/$f"; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-         watchdog_touch
-       done
-       return $ret
-       ;;
+      compare_archive "${file}" 'archive_tar'
+      return $?
+      ;;
     *.zip|*.egg|*.jar|*.war)
-       for dir in old new ; do
-          (
-             cd $dir
-             unjar_l ./$file | $sort > flist
-          )
-       done
-       if ! cmp -s old/flist new/flist; then
-          wprint "$file has different file list"
-          diff -u old/flist new/flist
-          return 1
-       fi
-       flist=`cat new/flist`
-       pwd=$PWD
-       fdir=`dirname $file`
-       cd old/$fdir
-       unjar `basename $file`
-       cd $pwd/new/$fdir
-       unjar `basename $file`
-       cd $pwd
-       for f in $flist; do
-         if test -f new/$fdir/$f && ! check_single_file $fdir/$f; then
-           ret=1
-           if test -z "$check_all"; then
-             break
-           fi
-         fi
-         watchdog_touch
-       done
-       return $ret;;
+      compare_archive "${file}" 'archive_zip'
+      return $?
+      ;;
      *.bz2)
         bunzip2 -c old/$file > old/${file/.bz2/}
         bunzip2 -c new/$file > new/${file/.bz2/}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 19:16:29 UTC 2020 - olaf@aepfle.de
+
+- compare archives in separate directory to preserve existing files
+- consider only files and symlinks in verify_before_processing
+
+-------------------------------------------------------------------
 Tue Jan  7 13:59:43 UTC 2020 - olaf@aepfle.de
 
 - this new decade must be handled in man pages created by docbook.xml 
