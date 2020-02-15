@@ -148,6 +148,7 @@ xhci-tegra:	nvidia
 tegra-vic:	nvidia		tegra_drm
 atusb:		usb-network
 qca:		bluetooth	btqca
+btqca:		bluetooth
 liquidio:	liquidio
 nitrox:		platform	n5pf
 i915:		i915
@@ -163,6 +164,7 @@ mt76x0:		mediatek	mt76x0u mt76x0e
 mt76x2e:	mediatek	mt76x2e mt76x2u
 mt76x2u:	mediatek
 mt7615e:	mediatek
+mt7622:		mediatek
 nfp:		nfp
 wil6210:	atheros
 venus:		media

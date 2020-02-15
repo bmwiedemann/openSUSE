@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 07 15:37:30 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200207 (git commit 6f89735800fe):
+  * rtl_nic: update firmware for RTL8153A
+  * rtl_bt: Update RTL8822C BT FW to V0x0998_C2B4
+  * linux-firmware: add firmware for MT7622
+  * linux-firmware: add version 2 for MT7615E
+  * amdgpu: update to latest navi10 firmware from 19.50
+  * Revert "radeon: update oland rlc microcode from amdgpu"
+  * amlogic: update video decoder firmwares
+  * amdgpu: add renoir firmware for 19.50
+  * amdgpu: update raven2 firmware for 19.50
+  * nfp: update Agilio SmartNIC flower firmware to rev AOTC-2.12.A.13
+  * qca: update bluetooth firmware for QCA6174
+- Update topics and alias list
+
+-------------------------------------------------------------------
 Mon Jan 27 13:55:32 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200122 (git commit 1eb2408c6fea):
