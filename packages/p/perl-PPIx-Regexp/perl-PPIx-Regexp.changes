@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  9 03:09:13 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.069
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.069		2020-02-07	T. R. Wyant
+      The PPIx::Regexp->new() 'parse' option is now fatal. This selected
+      either string or regex parse. I consider the string parse a failed
+      experiment. This is the latest step in removing it in favor of the
+      PPIx::QuoteLike package.
+
+-------------------------------------------------------------------
 Wed Jan 22 03:09:32 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.068
