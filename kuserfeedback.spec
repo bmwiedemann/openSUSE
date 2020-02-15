@@ -30,17 +30,18 @@ BuildRequires:  bison
 # For icons
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules >= 5.44.0
-BuildRequires:  flex
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  kf5-filesystem
+# Needed instead of cmake(...) to build on Leap
+BuildRequires:  libqt5-qttools-doc
 # Needed for tests
 BuildRequires:  Mesa-dri
-BuildRequires:  xvfb-run
 BuildRequires:  update-desktop-files
+BuildRequires:  xvfb-run
 BuildRequires:  cmake(Qt5Charts)
 BuildRequires:  cmake(Qt5Core) >= 5.4
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5DocTools)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Help)
 BuildRequires:  cmake(Qt5Network) >= 5.4
@@ -95,8 +96,8 @@ needed to build QML interfaces leveraging the library.
 %package server
 Summary:        Server component of kuserfeedback
 Group:          Productivity/Networking/Web/Servers
-Requires:       (php-sqlite or php-mysql or php-pgsql)
 Requires:       php
+Requires:       (php-sqlite or php-mysql or php-pgsql)
 
 %description server
 KUserFeedback is a framework which allows applications to collect user
