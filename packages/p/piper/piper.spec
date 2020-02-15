@@ -1,7 +1,7 @@
 #
 # spec file for package piper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           piper
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only
 Group:          Hardware/Other
-Url:            https://github.com/libratbag/piper
+URL:            https://github.com/libratbag/piper
 Source:         %name-%version.tar.xz
 Patch1:         shebang-env.patch
 BuildArch:      noarch
@@ -31,10 +31,13 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-cairo
+BuildRequires:  python3-evdev
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-lxml
 BuildRequires:  update-desktop-files
 Requires:       python3-cairo
+Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml

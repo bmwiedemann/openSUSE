@@ -59,4 +59,24 @@ changes incompatibly.</comment>
   applied upstream.</comment>
     <requestid>720732</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d12e870f6a788267d40b77677eff6067</srcmd5>
+    <version>0.4</version>
+    <time>1581801938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4:
+  * New and updated translations
+    * Taiwanese Mandarin
+    * Bulgarain
+    * Italian
+    * Polish
+    * German
+    * Croatian
+    * Swedish
+    * Brazilian Portuguese
+  * More gracefully handle permission when connecting to the daemon
+    [boo#1150413]
+</comment>
+    <requestid>774552</requestid>
+  </revision>
 </revisionlist>

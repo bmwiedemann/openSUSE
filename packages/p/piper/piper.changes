@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 15 10:16:18 UTC 2020 - marix@marix.org
+
+- Update to version 0.4:
+  * New and updated translations
+    * Taiwanese Mandarin
+    * Bulgarain
+    * Italian
+    * Polish
+    * German
+    * Croatian
+    * Swedish
+    * Brazilian Portuguese
+  * More gracefully handle permission when connecting to the daemon
+    [boo#1150413]
+
+-------------------------------------------------------------------
 Fri Aug 02 20:35:49 UTC 2019 - marix@marix.org
 
 - Update to version 0.3:
