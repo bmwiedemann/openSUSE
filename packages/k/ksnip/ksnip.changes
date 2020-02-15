@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Feb  9 22:20:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  New:
+  * Make captured cursor an item which can be moved and deleted.
+  * Add watermarks to annotated image.
+  * Add crop button to toolbar.
+  * Add undo and redo button on toolbar.
+  * Make if watermark is rotated a config option.
+  * Do not open image uploaded to imgur in browser.
+  * Add shortcuts for taking screenshots.
+  * Add Global HotKeys for X11.
+  * Provide option to use previous capture area.
+  * Add System Tray Icon.
+  * Show tray icon notification after image was uploaded to
+    imgur or saved.
+  * Add support for Open-with.
+  * Open ksnip minimized to tray.
+  Changed:
+  * Change copy icon.
+  * Before discarding ask if user want save or not or cancel.
+  * Shortcut for imgur upload was changed to Shift + i.
+  Fixed:
+  * Wildcards in path are not resolved.
+  * CLI arg --rectarea doesn't work.
+  * Add shortcut for File Menu in Main Menu.
+  * Prompt to save before exit enabled now by default.
+  * Configuration Window not translated.
+  * ksnip opens anyway with -s option specified.
+  * Open Image with full size window doesn't resize main window.
+  * Can't work correctly when using scaled display.
+  * ksnip opens outside desktop if last saved position was on n
+    longer available monitor.
+  * Window demaximize when taking a new screenshot.
+  * Add support for Chinese Text Input.
+- Drop patch:
+  * ksnip-fix-install-dir.patch (not longer needed)
+
+-------------------------------------------------------------------
 Mon Jan 13 21:14:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Drop superflous "Recommends: %{name}-lang"

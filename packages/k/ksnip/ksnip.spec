@@ -1,7 +1,7 @@
 #
 # spec file for package ksnip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           ksnip
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/DamirPorobic/ksnip
 Source:         https://github.com/DamirPorobic/ksnip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         ksnip-fix-install-dir.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel
+BuildRequires:  kImageAnnotator-devel >= 0.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -51,7 +50,6 @@ annotation features for your screenshots.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake
