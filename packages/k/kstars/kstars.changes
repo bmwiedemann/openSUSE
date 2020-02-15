@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:53:34 UTC 2020 - wbauer@tmo.at
+
+- Update to 3.4.0
+  * http://knro.blogspot.com/2020/02/kstars-v340-is-released.html
+  * Continued work on the linear focusing algorithm
+  * Faster Astrometry.net solver
+  * Fixed a few memory allocation issues to reduce the process
+    memory usage
+  * Fixed DSLR ImageToFITS loading when auto convert is used
+  * Fixed focus direction for relative DC focusers
+  * Improved reliability of setting snoop property for the active
+    profile
+  * Fixed File name sanitization issues
+  * Communication with remote INDI Web Manager is now mostly
+    asynchronous
+  * Align property labels in the INDI dialog vertically on top
+
+-------------------------------------------------------------------
 Thu Jan  2 09:59:22 UTC 2020 - wbauer@tmo.at
 
 - Update to 3.3.9
