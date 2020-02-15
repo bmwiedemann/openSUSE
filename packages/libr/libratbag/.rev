@@ -120,4 +120,26 @@ Matthias</comment>
     <comment></comment>
     <requestid>760020</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a81bf889a3147f266432efd4db77201</srcmd5>
+    <version>0.13</version>
+    <time>1581801936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13:
+  * Fixed bug that was preventing users from changing the settings
+    of  devices from Logitech's productivity line.
+  * Give a more specific error message if user cannot reach ratbagd
+    via D-BUS [boo#1150413]
+  * Added support for keyboards:
+    + Logitech G513
+    + Logitech G815
+    + Logitech G910
+    + Logitech G915
+  * Other added and improved devices:
+    + Logitech G Powerplay
+    * Logitech M590
+- Updated shebang-env.diff to properly apply to the new version.
+</comment>
+    <requestid>774551</requestid>
+  </revision>
 </revisionlist>

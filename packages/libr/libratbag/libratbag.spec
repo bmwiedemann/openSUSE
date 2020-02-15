@@ -1,7 +1,7 @@
 #
 # spec file for package libratbag
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           libratbag
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Configuration library for gaming mice
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libratbag/libratbag
+URL:            https://github.com/libratbag/libratbag
 Source:         %name-%version.tar.xz
 Patch1:         shebang-env.diff
 Patch2:         install-daemon-into-sbindir.patch

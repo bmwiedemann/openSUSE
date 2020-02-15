@@ -6,26 +6,37 @@ Upstream: never
 Python files in openSUSE should directly specify the correct Python interpreter
 to ensure we don't run into issues if a virtualenv or the like should be active
 when invoking the script.
+
 diff --git a/data/devices/data-parse-test.py b/data/devices/data-parse-test.py
-index f6e522d..90b6a2e 100755
+index bdd4fe9..31ca244 100755
 --- a/data/devices/data-parse-test.py
 +++ b/data/devices/data-parse-test.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
- # vim: set expandtab shiftwidth=4 tabstop=4:
  #
  # Copyright © 2017 Red Hat, Inc.
+ #
 diff --git a/data/devices/duplicate-check.py b/data/devices/duplicate-check.py
-index cfcbf51..5be2b7b 100755
+index 332f125..1841696 100755
 --- a/data/devices/duplicate-check.py
 +++ b/data/devices/duplicate-check.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
- # vim: set expandtab shiftwidth=4 tabstop=4:
  #
  # Copyright © 2018 Red Hat, Inc.
+ #
+diff --git a/data/devices/receiver-check.py b/data/devices/receiver-check.py
+index 024f3e6..68d9d99 100755
+--- a/data/devices/receiver-check.py
++++ b/data/devices/receiver-check.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # Copyright © 2018 Red Hat, Inc.
+ #
 diff --git a/tools/check_scan_build.py b/tools/check_scan_build.py
 index c5d13f7..73209c1 100755
 --- a/tools/check_scan_build.py
@@ -37,42 +48,42 @@ index c5d13f7..73209c1 100755
  #  This program is free software; you can redistribute it and/or modify
  #  it under the terms of the GNU General Public License as published by
 diff --git a/tools/merge_ratbagd.py b/tools/merge_ratbagd.py
-index 69438ba..1840859 100755
+index 77b7e07..ed7f4ef 100755
 --- a/tools/merge_ratbagd.py
 +++ b/tools/merge_ratbagd.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
- # vim: set expandtab shiftwidth=4 tabstop=4:
+ # Copyright 2017 Red Hat, Inc.
  #
 diff --git a/tools/ratbagctl.devel.in b/tools/ratbagctl.devel.in
-index 6589c38..a4dd2ae 100755
+index a3d6c2f..71c14c5 100755
 --- a/tools/ratbagctl.devel.in
 +++ b/tools/ratbagctl.devel.in
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
- # vim: set expandtab shiftwidth=4 tabstop=4:
+ # This file is part of libratbag.
  #
 diff --git a/tools/ratbagctl.in.in b/tools/ratbagctl.in.in
-index bfea5ab..0bde40f 100755
+index ad0bacc..8bfdb85 100755
 --- a/tools/ratbagctl.in.in
 +++ b/tools/ratbagctl.in.in
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
- # vim: set expandtab shiftwidth=4 tabstop=4:
+ # Copyright 2016 Red Hat, Inc.
  #
 diff --git a/tools/ratbagctl.test.in b/tools/ratbagctl.test.in
-index 01bf618..a8d6e7d 100755
+index c4ad1bf..8f2f8ce 100755
 --- a/tools/ratbagctl.test.in
 +++ b/tools/ratbagctl.test.in
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
- # vim: set expandtab shiftwidth=4 tabstop=4:
+ # This file is part of libratbag.
  #
