@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Release:        0
 Summary:        Utilities to handle user data directories
 License:        GPL-2.0-only
 Group:          System/GUI/Other
-Url:            http://freedesktop.org/wiki/Software/xdg-user-dirs
-Source0:        http://user-dirs.freedesktop.org/releases/%{name}-%{version}.tar.gz
+URL:            https://freedesktop.org/wiki/Software/xdg-user-dirs
+Source0:        https://user-dirs.freedesktop.org/releases/%{name}-%{version}.tar.gz
 BuildRequires:  make
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang
 
 %description
 xdg-user-dirs is a tool to help manage "well known" user directories
@@ -58,7 +57,8 @@ chmod a+x %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/xdg-user-dirs.sh
 %suse_update_desktop_file %{name}
 
 %files
-%doc AUTHORS COPYING README ChangeLog
+%license COPYING
+%doc AUTHORS README ChangeLog
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
 %config(noreplace) %{_sysconfdir}/xdg/user-dirs.conf
