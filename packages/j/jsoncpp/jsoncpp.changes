@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 12 07:46:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86 architectures - boo#1163385
+  * jsoncpp-f11611c8785082ead760494cba06196f14a06dcb.patch
+- From 1.9.1 to 1.9.2, features.h has been renamed json_features.h
+  so, add a symlink for compatibility - boo#1163385
+
+-------------------------------------------------------------------
 Mon Feb  3 15:35:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9.2:

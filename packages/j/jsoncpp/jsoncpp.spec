@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/open-source-parsers/jsoncpp
 Source0:        https://github.com/open-source-parsers/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/open-source-parsers/jsoncpp/commit/f11611c8785082ead760494cba06196f14a06dcb
+Patch1:         jsoncpp-f11611c8785082ead760494cba06196f14a06dcb.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -68,6 +70,7 @@ format to store user input files.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %meson \
@@ -75,6 +78,11 @@ format to store user input files.
 
 %install
 %meson_install
+pushd %{buildroot}%{_includedir}/json/
+# From 1.9.1 to 1.9.2, features.h has been renamed json_features.h
+# so, create a symlink for compatibility
+ln -s json_features.h features.h
+popd
 
 %check
 %meson_test
