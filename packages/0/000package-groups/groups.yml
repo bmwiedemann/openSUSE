@@ -374,6 +374,8 @@ opensuse_microos:
   - patterns-microos-sssd_ldap: [aarch64,x86_64]
   - patterns-microos-ima_evm: [aarch64,x86_64]
   - patterns-microos-cloud: [aarch64,x86_64]
+  - patterns-microos-desktop-kde: [aarch64,x86_64]
+  - patterns-microos-desktop-gnome: [aarch64,x86_64]
   - patterns-microos-onlyDVD: [aarch64,x86_64]
   - patterns-microos-alt_onlyDVD: [aarch64,x86_64]
   - patterns-containers-container_runtime: [aarch64,x86_64]
