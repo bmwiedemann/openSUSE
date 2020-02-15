@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 17:47:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.5.0
+  * Reimplemented vistir.contextmanagers.open_file to fall back to 
+    urllib.urlopen in the absence of requests, which is now an optional extra.
+  * Fixed a bug which caused path_to_url to sometimes fail to properly 
+    encode surrogates using utf-8 on windows using python 3.
+- drop upstreamed patch fix-test_Account-for-encoded-length.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 14:46:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Conditionalize python2 build to do it only on older codestreams

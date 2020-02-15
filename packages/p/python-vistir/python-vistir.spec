@@ -19,20 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-vistir
-Version:        0.4.3
+Version:        0.5.0
 Release:        0
 Summary:        Utilities for filesystems, paths, projects, subprocesses, and more
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/vistir
 Source:         https://github.com/sarugaku/vistir/archive/%{version}.tar.gz#/vistir-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://github.com/sarugaku/vistir/issues/65
-Patch0:         fix-test_Account-for-encoded-length.patch
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama >= 0.3.4
-Requires:       python-requests
+Recommends:     python-requests
 Requires:       python-six
 Recommends:     python-yaspin
 BuildArch:      noarch
@@ -54,6 +52,7 @@ BuildRequires:  %{python_module yaspin}
 BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-backports.shutil_get_terminal_size
 BuildRequires:  python2-backports.weakref
+BuildRequires:  python2-mock
 BuildRequires:  python2-pathlib2
 %endif
 # /SECTION
@@ -65,7 +64,6 @@ subprocesses, and more.
 
 %prep
 %setup -q -n vistir-%{version}
-%patch0 -p1
 
 sed -i '/invoke/d;/parver/d;/wheel$/d;/addopts/d' setup.cfg
 rm -r tasks

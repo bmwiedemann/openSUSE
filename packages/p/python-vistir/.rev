@@ -79,4 +79,12 @@
     <comment>- Conditionalize python2 build to do it only on older codestreams</comment>
     <requestid>764623</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>995c681b78a9fa73ab326c96d7ab45d9</srcmd5>
+    <version>0.5.0</version>
+    <time>1581801783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770677</requestid>
+  </revision>
 </revisionlist>
