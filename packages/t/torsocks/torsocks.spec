@@ -1,7 +1,7 @@
 #
 # spec file for package torsocks
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name  libtorsocks
 Name:           torsocks
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Use SOCKS-friendly applications with Tor
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            https://github.com/dgoulet/torsocks
+URL:            https://github.com/dgoulet/torsocks
 Source0:        https://github.com/dgoulet/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 Recommends:     libcap-progs
-Requires:       tor
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Torsocks allows you to use most applications in a safe way with Tor.
@@ -79,7 +77,7 @@ and use simple
 autoreconf -fi
 
 %configure --docdir=%{_defaultdocdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -88,16 +86,14 @@ make %{?_smp_mflags}
 rm %{buildroot}/%{_libdir}/%{name}/lib%{name}.{a,la}
 
 %post   -n %{name} -p /sbin/ldconfig
-
 %postun -n %{name} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc ChangeLog README.md gpl-2.0.txt doc/socks/SOCKS5 doc/socks/socks-extensions.txt doc/notes/DEBUG extras/torsocks-bash_completion extras/torsocks-zsh_completion
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man5/%{name}.conf.5%{ext_man}
-%{_mandir}/man8/%{name}.8%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/%{name}.conf.5%{?ext_man}
+%{_mandir}/man8/%{name}.8%{?ext_man}
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/%{_name}.so*
 %config(noreplace) %{_sysconfdir}/tor/%{name}.conf
