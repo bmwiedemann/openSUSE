@@ -388,4 +388,12 @@
   * lib64 symlink is again relative (as was with &lt; 16.1.0). (#1248)</comment>
     <requestid>731579</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>44acb26f8f5a1b61d53c1d8a1e448266</srcmd5>
+    <version>16.7.9</version>
+    <time>1581801780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770676</requestid>
+  </revision>
 </revisionlist>

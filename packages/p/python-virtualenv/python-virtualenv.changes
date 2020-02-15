@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 17:56:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 16.7.9
+  * upgrade setuptools from 41.4.0 to 42.0.2
+  * fix virtualenv creation when --no-pip argument used.
+
+-------------------------------------------------------------------
 Tue Sep 17 18:01:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use multibuild to avoid cycles with pytest
