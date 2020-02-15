@@ -3,11 +3,12 @@
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
+      <arch>aarch64</arch>
     </conditions>
     <hardware>
       <processors>4</processors>
       <memory>
-        <size unit="M">12000</size>
+        <size unit="M">16000</size>
       </memory>
     </hardware>
   </overwrite>

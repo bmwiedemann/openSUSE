@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Feb  4 14:18:09 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove nanopb from requirements.
+
+-------------------------------------------------------------------
+Thu Jan 16 23:58:08 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add patches which allow an access to TransportSocketFactoryContext
+  from a Filter context. Needed for cilium-proxy to work properly:
+  * 0001-server-add-getTransportSocketFactoryContext-to-Filte.patch
+  * 0002-test-Fix-mocks.patch
+  * 0003-test-Fix-format.patch
+  * 0004-server-Add-comments-pointing-out-implementation-deta.patch
+  * 0005-server-Move-setInitManager-to-TransportSocketFactory.patch
+  * 0006-fix-format.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 22:04:24 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.12.2+git.20200109:
+  * http: fixed CVE-2019-18801 by allocating sufficient memory for
+    request headers.
+  * http: fixed CVE-2019-18802 by implementing stricter validation
+    of HTTP/1 headers.
+  * http: trim LWS at the end of header keys, for correct HTTP/1.1
+    header parsing.
+  * http: added strict authority checking. This can be reversed
+    temporarily by setting the runtime feature
+    envoy.reloadable_features.strict_authority_validation to false.
+  * route config: fixed CVE-2019-18838 by checking for presence of
+    host/path headers.
+  * listener: fixed CVE-2019-18836 by clearing accept filters
+    before connection creation.
+- Switch from Maistra to envoy-openssl as the way of replacing
+  BoringSSL with OpenSSL.
+- Add source package to build cilium-proxy separately, with
+  envoy-proxy-source as a build depencency.
+- Add patch which fixes dynamic linking of OpenSSL:
+  * bazel-Fix-optional-dynamic-linking-of-OpenSSL.patch
+- Add patch which adds backwards compatibility with TLS 1.2 and
+  OpenSSL 1.1.0:
+  * compatibility-with-TLS-1.2-and-OpenSSL-1.1.0.patch
+- Add patch for compatibility with fmt 6.1.0 and spdlog 1.5.0:
+  * logger-Use-spdlog-memory_buf_t-instead-of-fmt-memory.patch
+- Remove patches which are not needed anymore:
+  * 0001-bazel-Update-protobuf-and-other-needed-dependencies.patch
+  * 0002-bazel-Update-grpc-to-1.23.0.patch
+  * 0003-tracing-update-googleapis-use-SetName-for-operation-.patch
+
+-------------------------------------------------------------------
+Fri Dec 13 12:46:45 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Replace lua51-luajit with moonjit.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:11:18 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Do not bundle any dependencies, move everything to separate
+  packages.
+- Add patch which makes envoy-proxy compatible with newer
+  googleapis:
+  * 0003-tracing-update-googleapis-use-SetName-for-operation-.patch
+
+-------------------------------------------------------------------
+Fri Nov  1 13:30:50 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Do not use global optflags (temporarily) - enabling them causes
+  linker errors.
+
+-------------------------------------------------------------------
+Fri Oct 18 14:47:16 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Disable incompatible_bzl_disallow_load_after_statement check in
+  Bazel - some dependencies still do not pass it.
+
+-------------------------------------------------------------------
+Thu Oct 17 15:48:01 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Wed Oct 16 07:57:15 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove duplicate tarball of golang-org-x-tools and unneeded
+  tarballs of msgpack and http-parser.
+
+-------------------------------------------------------------------
+Tue Oct 15 09:34:40 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.11.1:
+  * http: added mitigation of client initiated attacks that result
+    in flooding of the downstream HTTP/2 connections. Those attacks
+    can be logged at the “warning” level when the runtime feature
+    http.connection_manager.log_flood_exception is enabled. The
+    runtime setting defaults to disabled to avoid log spam when
+    under attack.
+  * http: added inbound_empty_frames_flood counter stat to the
+    HTTP/2 codec stats, for tracking number of connections
+    terminated for exceeding the limit on consecutive inbound
+    frames with an empty payload and no end stream flag. The limit
+    is configured by setting the
+    max_consecutive_inbound_frames_with_empty_payload config
+    setting.
+  * http: added inbound_priority_frames_flood counter stat to the
+    HTTP/2 codec stats, for tracking number of connections
+    terminated for exceeding the limit on inbound PRIORITY frames.
+    The limit is configured by setting the
+    max_inbound_priority_frames_per_stream config setting.
+  * http: added inbound_window_update_frames_flood counter stat
+    to the HTTP/2 codec stats, for tracking number of connections
+    terminated for exceeding the limit on inbound WINDOW_UPDATE
+    frames.
+  * http: added outbound_flood counter stat to the HTTP/2 codec
+    stats, for tracking number of connections terminated for
+    exceeding the outbound queue limit.
+  * http: added outbound_control_flood counter stat to the HTTP/2
+    codec stats, for tracking number of connections terminated
+    for exceeding the outbound queue limit for PING, SETTINGS and
+    RST_STREAM frames.
+  * http: enabled strict validation of HTTP/2 messaging. Previous
+    behavior can be restored using
+    stream_error_on_invalid_http_messaging config setting.
+- Add sources of envoy-openssl project which makes use of OpenSSL
+  instead of BoringSSL.
+- Add patches which makes Envoy compatible with versions of
+  libraries available in openSUSE:
+  * 0001-bazel-Update-protobuf-and-other-needed-dependencies.patch
+  * 0002-bazel-Update-grpc-to-1.23.0.patch
+- Remove patches which are not needed anymore:
+  * 0001-Remove-deprecated-Blaze-PACKAGE_NAME-macro-5330.patch
+  * 0001-Upgrade-gabime-spdlog-dependency-to-1.3.0-5604.patch
+  * 0001-bazel-transport-sockets-Update-grpc-to-1.19.1.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 09:50:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - openssl-devel should be pkgconfig(openssl)
