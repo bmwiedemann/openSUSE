@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:19:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.34.2
+  * Fixed installation of wheel from sdist on environments without Unicode file name support
+  * Fixed installation of wheel from sdist which was broken due to a chicken and egg problem
+  * Dropped Python 3.4 support
+  * Moved the contents of setup.py to setup.cfg
+
+-------------------------------------------------------------------
 Mon Aug 19 08:50:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.33.6:

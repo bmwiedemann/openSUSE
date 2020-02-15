@@ -183,4 +183,12 @@
   * Fixed egg2wheel compatibility with the future release of Python 3.10 (PR by Anthony Sottile)</comment>
     <requestid>724515</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>36a7a4607cbfed4e0e63fed0cc8fdac9</srcmd5>
+    <version>0.34.2</version>
+    <time>1581801723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770617</requestid>
+  </revision>
 </revisionlist>
