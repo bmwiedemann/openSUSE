@@ -192,4 +192,12 @@
   lowest and that has sse2</comment>
     <requestid>639559</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>47acd910ead6d7d063e5638be3cbbc08</srcmd5>
+    <version>3.2.2</version>
+    <time>1581801885</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup rpmlint warning about installed Makefiles (forwarded request 773617 from scarabeus_iv)</comment>
+    <requestid>773618</requestid>
+  </revision>
 </revisionlist>

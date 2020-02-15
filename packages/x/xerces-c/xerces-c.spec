@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-c
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        3.2.2
 Release:        0
 Summary:        A Validating XML Parser
 License:        Apache-2.0
-Group:          Productivity/Publishing/XML
-URL:            http://xerces.apache.org/xerces-c/
+URL:            https://xerces.apache.org/xerces-c/
 Source0:        http://www.apache.org/dist/xerces/c/3/sources/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/dist/xerces/c/3/sources/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -44,7 +43,6 @@ faithful to the XML 1.0 recommendation and associated standards ( DOM
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
 
 %description doc
 Xerces-C is a validating XML parser written in a portable subset of
@@ -58,7 +56,6 @@ This package contains just documentation.
 
 %package -n %{libname}
 Summary:        Shared libraries for Xerces-c - a validating XML parser
-Group:          Productivity/Publishing/XML
 Provides:       Xerces-c = %{version}
 Obsoletes:      Xerces-c < %{version}
 
@@ -74,7 +71,6 @@ This package contains shared libraries.
 
 %package -n libxerces-c-devel
 Summary:        A validating XML parser - Development Files
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Provides:       Xerces-c-devel = %{version}
 Obsoletes:      Xerces-c-devel < %{version}
@@ -98,11 +94,12 @@ find . -type d -name .svn -exec rm -Rf "{}" "+"
     --enable-netaccessor-curl \
     --disable-static \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+rm doc/Makefile*
 %fdupes -s doc
 
 %post -n %{libname} -p /sbin/ldconfig
