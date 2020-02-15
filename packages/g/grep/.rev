@@ -598,4 +598,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
   supplements. (forwarded request 731935 from lnussel)</comment>
     <requestid>731945</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>10e20cd81a9e7ec86825c8321646bdf1</srcmd5>
+    <version>3.4</version>
+    <time>1581801660</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch back to system regex to avoid undefined behaviour (forwarded request 766066 from Andreas_Schwab)</comment>
+    <requestid>766067</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package grep
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           grep
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            https://www.gnu.org/software/grep/
+URL:            https://www.gnu.org/software/grep/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
-Patch0:         test-pcre-jitstack.diff
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
@@ -42,11 +41,11 @@ match to a specified pattern.  By default, grep prints the matching lines.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \
   --disable-silent-rules \
+  --without-included-regex \
   %{nil}
 %if 0%{?do_profiling}
   make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate} -fno-profile-values"

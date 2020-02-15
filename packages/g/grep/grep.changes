@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:57:16 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Switch back to system regex to avoid undefined behaviour
+
+-------------------------------------------------------------------
+Sun Jan  5 10:59:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- grep 3.4:
+  * new --no-ignore-case option causes grep to observe case
+    distinctions, overriding any previous -i (--ignore-case) option
+  * '.' no longer matches some invalid byte sequences in UTF-8 locales
+  * grep -Fw can no longer false match in non-UTF-8 multibyte locales
+  * The exit status of 'grep -L' is no longer incorrect when standard
+    output is /dev/null
+  * fix some performance bugs
+- drop test-pcre-jitstack.diff
+
+-------------------------------------------------------------------
 Thu Sep 19 11:49:29 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - Do not recommend lang package. The lang package already has a
