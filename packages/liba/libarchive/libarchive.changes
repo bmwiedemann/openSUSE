@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 12 08:34:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.4.2
+  New features:
+  * support for atomic file extraction (bsdtar -x --safe-writes) (#1289)
+  * support for mbed TLS (PolarSSL) (#1301)
+  Important bugfixes:
+  * security fixes in RAR5 reader (#1280 #1326)
+  * compression buffer fix in XAR writer (#1317)
+  * fix uname and gname longer than 32 characters in PAX writer (#1319)
+  * fix segfault when archiving hard links in ISO9660 and XAR writers (#1325)
+  * fix support for extracting 7z archive entries with Delta filter (#987)
+
+-------------------------------------------------------------------
 Mon Dec 30 08:40:05 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Revert back to autoconf, cmake introduces a cycle. Leave cmake

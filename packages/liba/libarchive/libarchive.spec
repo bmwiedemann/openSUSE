@@ -1,7 +1,7 @@
 #
 # spec file for package libarchive
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_without	ext2fs
 %endif
 Name:           libarchive
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
