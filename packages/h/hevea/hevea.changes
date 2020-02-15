@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 23:34:46 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.33.
+  * Modifications to cope with upcoming ocaml 4.10.0.
+
+-------------------------------------------------------------------
 Fri Nov  1 11:29:16 UTC 2019 - olaf@aepfle.de
 
 - Require the native ocaml compiler, those Makefiles are written that way...

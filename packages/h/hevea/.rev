@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>744750</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f0cf3c852a179fee60f00e71fe9e24e</srcmd5>
+    <version>2.33</version>
+    <time>1581801911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.33.
+  * Modifications to cope with upcoming ocaml 4.10.0.</comment>
+    <requestid>774439</requestid>
+  </revision>
 </revisionlist>
