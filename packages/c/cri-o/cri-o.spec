@@ -24,7 +24,7 @@
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -38,7 +38,6 @@ Source4:        cri-o-rpmlintrc
 Source5:        kubelet.env
 Source6:        crio-wipe.service
 Source7:        crio-shutdown.service
-Patch1:         prevent-local-loopback-teardown-rh1754154.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel-static
@@ -86,7 +85,6 @@ This package provides the CRI-O container runtime configuration for kubeadm
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 # Keep cgroupfs as the default cgroup manager for SLE15 builds
@@ -130,8 +128,8 @@ cd $HOME/go/src/%{project}
 # Binaries
 install -D -m 0755 bin/crio    %{buildroot}/%{_bindir}/crio
 install -D -m 0755 bin/crio-status    %{buildroot}/%{_bindir}/crio-status
+install -D -m 0755 bin/pinns    %{buildroot}/%{_bindir}/pinns
 install -d %{buildroot}/%{_libexecdir}/crio/bin
-install -D -m 0755 bin/pause   %{buildroot}/%{_libexecdir}/crio/bin/pause
 # Completions
 install -D -m 0644 completions/bash/crio %{buildroot}/%{_datadir}/bash-completion/completions/crio
 install -D -m 0644 completions/zsh/_crio %{buildroot}%{_sysconfdir}/zsh_completion.d/_crio
@@ -145,7 +143,7 @@ install -d %{buildroot}/%{_mandir}/man8
 install -m 0644 docs/crio.conf.5 %{buildroot}/%{_mandir}/man5
 install -m 0644 docs/crio.8      %{buildroot}/%{_mandir}/man8
 # Configs
-install -D -m 0644 %{SOURCE3}       %{buildroot}/%{_sysconfdir}/crio/crio.conf
+install -D -m 0644 %{SOURCE3}       %{buildroot}/%{_sysconfdir}/crio/crio.conf.d/00-default.conf
 install -D -m 0644 crio-umount.conf %{buildroot}/%{_datadir}/oci-umount/oci-umount.d/cri-umount.conf
 install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/sysconfig.crio
 # Systemd
@@ -164,9 +162,9 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 # Binaries
 %{_bindir}/crio
 %{_bindir}/crio-status
+%{_bindir}/pinns
 %dir %{_libexecdir}/crio
 %dir %{_libexecdir}/crio/bin
-%{_libexecdir}/crio/bin/pause
 # Completions
 %{_datadir}/bash-completion/completions/crio
 %{_datadir}/bash-completion/completions/crio-status
@@ -184,7 +182,8 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %license LICENSE
 # Configs
 %dir %{_sysconfdir}/crio
-%config(noreplace) %{_sysconfdir}/crio/crio.conf
+%dir %{_sysconfdir}/crio/crio.conf.d
+%config %{_sysconfdir}/crio/crio.conf.d/00-default.conf
 %dir %{_datadir}/oci-umount
 %dir %{_datadir}/oci-umount/oci-umount.d
 %{_datadir}/oci-umount/oci-umount.d/cri-umount.conf
