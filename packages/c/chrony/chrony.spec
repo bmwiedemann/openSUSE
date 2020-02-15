@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define vendorzone opensuse.
-%global clknetsim_ver 58c5e8b
+%global clknetsim_ver 79ffe44
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -46,6 +46,8 @@ Patch0:         chrony-config.patch
 Patch1:         chrony-service-helper.patch
 Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
+Patch4:         chrony-test-fix-util-unit-test-for-NTP-era-split.patch
+Patch5:         chrony-test-update-processing-of-packet-log.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -98,6 +100,8 @@ or a different computer.
 %patch1 -p1
 %patch2 -p1
 %patch3
+%patch4 -p1
+%patch5 -p1
 
 # If this is an openSUSE build, use our vendor zone
 # (2.*pool.ntp.org names include IPv6 addresses). If not
