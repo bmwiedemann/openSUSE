@@ -4986,4 +4986,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5.2 &amp; reenable ARM 32bit</comment>
     <requestid>772320</requestid>
   </revision>
+  <revision rev="528" vrev="1">
+    <srcmd5>d07d126ac413b7f079f04afdd7e0a428</srcmd5>
+    <version>5.5.3</version>
+    <time>1581801856</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.3 &amp; few fixes</comment>
+    <requestid>773597</requestid>
+  </revision>
 </revisionlist>
