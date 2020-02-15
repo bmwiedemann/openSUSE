@@ -353,4 +353,13 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>749145</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cb5f6903d5d4d039da048232c7b14a1a</srcmd5>
+    <version>3.14.3</version>
+    <time>1581801809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.3 bsc#1163043:
+  * Relax importlib requirement to allow either version 0 or 1 - by :user:`chyzzqo2` #1476</comment>
+    <requestid>771779</requestid>
+  </revision>
 </revisionlist>
