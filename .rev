@@ -612,4 +612,13 @@
     call from os layer into ddx layer</comment>
     <requestid>764639</requestid>
   </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>49fb8d60f2f2cf1146186867b0c8eecb</srcmd5>
+    <version>1.10.0</version>
+    <time>1581801799</time>
+    <user>dimstar_suse</user>
+    <comment>- added a reference to bsc#1162951 about the reasoning why adding
+  the vnc user to the shadow group</comment>
+    <requestid>771558</requestid>
+  </revision>
 </revisionlist>

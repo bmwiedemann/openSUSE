@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -407,6 +407,8 @@ fi
 
 getent group %{vncgroup} > /dev/null || groupadd -r %{vncgroup} || :
 getent passwd %{vncuser} > /dev/null || useradd -r -g %{vncgroup} -d /var/lib/empty -s /sbin/nologin -c "user for VNC" %{vncuser} || :
+# add vnc user to shadow group. (bsc#980326)
+# more details about the reasoning in bsc#1162951
 usermod -G shadow -a %{vncuser} || :
 
 %post -n xorg-x11-Xvnc
