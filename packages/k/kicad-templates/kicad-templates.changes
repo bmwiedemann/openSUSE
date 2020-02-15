@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 15:46:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add Conflicts for kicad-library, removed/split with kicad-5.0.0,
+  fixes upgrade path for e.g. Leap 15.2.
+
+-------------------------------------------------------------------
 Mon Nov 18 22:01:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.5

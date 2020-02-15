@@ -33,6 +33,9 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildArch:      noarch
 Provides:       kicad-templates = %{compatversion}
+# kicad library has been removed, templates are packaged separately
+Conflicts:      kicad-library <= 4.0.7
+Provides:       kicad-library:%{_datadir}/kicad/template/Arduino_Fio/fp-lib-table
 
 %description
 KiCad is a software suite used for Electronic Design Automation (EDA).
