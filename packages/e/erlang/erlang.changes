@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 15 09:40:37 UTC 2020 - matwey.kornilov@gmail.com
+
+- Changes for 22.2.6:
+  * erts: A process could get into an inconsistent state where it
+    was runnable, but never scheduled for execution. This could
+    occur when a mix of normal and low priority processes where
+    scheduled on the same type of dirty scheduler simultaneously.
+
+-------------------------------------------------------------------
 Fri Feb  7 09:01:17 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Changes for 22.2.5:
