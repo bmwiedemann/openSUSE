@@ -1,7 +1,7 @@
 #
 # spec file for package issue-generator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           issue-generator
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Generates an issue files from different snippets
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://github.com/thkukuk/issue-generator
+URL:            https://github.com/thkukuk/issue-generator
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 Requires(post): %fillup_prereq

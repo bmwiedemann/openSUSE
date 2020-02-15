@@ -104,4 +104,13 @@
   - automatically generate issue file [bsc#1116825]</comment>
     <requestid>664664</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aec5229467154808e06341cb2f8d7b54</srcmd5>
+    <version>1.8</version>
+    <time>1581801896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8
+  - Handle network interface renames</comment>
+    <requestid>773881</requestid>
+  </revision>
 </revisionlist>

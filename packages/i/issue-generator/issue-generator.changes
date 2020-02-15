@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 16:46:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.8
+  - Handle network interface renames
+
+-------------------------------------------------------------------
 Fri Jan 11 14:53:33 CET 2019 - kukuk@suse.de
 
 - Update to version 1.7
