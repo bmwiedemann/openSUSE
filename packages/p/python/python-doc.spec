@@ -85,6 +85,13 @@ Patch55:        bpo36302-sort-module-sources.patch
 Patch56:        adapted-from-F00251-change-user-install-location.patch
 # Switch couple of tests failing on acient SLE-12
 Patch57:        python-2.7.17-switch-off-failing-SSL-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2020-8492-urllib-ReDoS.patch bsc#1162367 mcepl@suse.com
+# Fixes Python urrlib allowed an HTTP server to conduct Regular
+# Expression Denial of Service (ReDoS)
+Patch58:        CVE-2020-8492-urllib-ReDoS.patch
+# PATCH-FIX-UPSTREAM CVE-2019-9674-zip-bomb.patch bsc#1162825 mcepl@suse.com
+# Improve documentation warning against the possible zip bombs
+Patch59:        CVE-2019-9674-zip-bomb.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc
 Provides:       pyth_ps
@@ -149,6 +156,8 @@ Python, and Macintosh Module Reference in PDF format.
 %patch51 -p1
 %patch55 -p1
 %patch56 -p1
+%patch58 -p1
+%patch59 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac

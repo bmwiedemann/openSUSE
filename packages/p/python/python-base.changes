@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb  8 23:29:28 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2019-9674-zip-bomb.patch to improve documentation
+  warning about dangers of zip-bombs and other security problems
+  with zipfile library. (bsc#1162825 CVE-2019-9674)
+
+-------------------------------------------------------------------
+Sat Feb  8 22:30:51 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Change to Requires: libpython%{so_version} == %{version}-%{release}
+  to python-base to keep both packages always synchronized (add
+  %{so_version}) (bsc#1162224).
+
+-------------------------------------------------------------------
+Thu Feb  6 23:14:47 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-8492-urllib-ReDoS.patch fixing the security bug
+  "Python urrlib allowed an HTTP server to conduct Regular
+  Expression Denial of Service (ReDoS)" (bsc#1162367)
+
+-------------------------------------------------------------------
 Mon Feb  3 19:30:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Provide python-testsuite from devel subkg to ease py2->py3

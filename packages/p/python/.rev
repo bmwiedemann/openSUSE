@@ -1372,4 +1372,18 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   glibc supported NIS on its own.</comment>
     <requestid>769788</requestid>
   </revision>
+  <revision rev="149" vrev="7">
+    <srcmd5>46ff15418812e89717b118b315ef7822</srcmd5>
+    <version>2.7.17</version>
+    <time>1581801833</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2019-9674-zip-bomb.patch to improve documentation
+  warning about dangers of zip-bombs and other security problems
+  with zipfile library. (bsc#1162825 CVE-2019-9674)
+
+- Change to Requires: libpython%{so_version} == %{version}-%{release}
+  to python-base to keep both packages always synchronized (add
+  %{so_version}) (bsc#1162224).</comment>
+    <requestid>772516</requestid>
+  </revision>
 </revisionlist>

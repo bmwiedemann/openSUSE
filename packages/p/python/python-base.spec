@@ -16,6 +16,8 @@
 #
 
 
+%define so_version 2_7-1_0
+
 Name:           python-base
 Version:        2.7.17
 Release:        0
@@ -85,6 +87,13 @@ Patch55:        bpo36302-sort-module-sources.patch
 Patch56:        adapted-from-F00251-change-user-install-location.patch
 # Switch couple of tests failing on acient SLE-12
 Patch57:        python-2.7.17-switch-off-failing-SSL-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2020-8492-urllib-ReDoS.patch bsc#1162367 mcepl@suse.com
+# Fixes Python urrlib allowed an HTTP server to conduct Regular
+# Expression Denial of Service (ReDoS)
+Patch58:        CVE-2020-8492-urllib-ReDoS.patch
+# PATCH-FIX-UPSTREAM CVE-2019-9674-zip-bomb.patch bsc#1162825 mcepl@suse.com
+# Improve documentation warning against the possible zip bombs
+Patch59:        CVE-2019-9674-zip-bomb.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
@@ -101,7 +110,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  netcfg
 Requires:       python-rpm-macros
 # explicitly, see bnc#697251:
-Requires:       libpython2_7-1_0 = %{version}
+Requires:       libpython%{so_version} = %{version}-%{release}
 Provides:       %{name} = %{python_version}
 # bug437293
 %ifarch ppc64
@@ -157,7 +166,7 @@ Provides:       python2-xml = %{version}
 The expat module is a Python interface to the expat XML parser. Since
 Python2.x, it is part of the core Python distribution.
 
-%package -n libpython2_7-1_0
+%package -n libpython%{so_version}
 Summary:        Python Interpreter shared library
 Group:          Development/Languages/Python
 
@@ -208,6 +217,8 @@ other applications.
 %patch51 -p1
 %patch55 -p1
 %patch56 -p1
+%patch58 -p1
+%patch59 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
