@@ -61,4 +61,37 @@
 </comment>
     <requestid>707400</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f71be225c18ff67344633303a528561</srcmd5>
+    <version>0.9.62</version>
+    <time>1581801912</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.62 
+  * added file-copy-limit in /etc/firejail/firejail.config
+  * profile templates (/usr/share/doc/firejail)
+  * allow-debuggers support in profiles
+  * several seccomp enhancements
+  * compiler flags autodetection
+  * move chroot entirely from path based to file descriptor based mounts
+  * whitelisting /usr/share in a large number of profiles
+  * new scripts in conrib: gdb-firejail.sh and sort.py
+  * enhancement: whitelist /usr/share in some profiles
+  * added signal mediation to apparmor profile
+  * new conditions: HAS_X11, HAS_NET
+  * new profiles: qgis, klatexformula, klatexformula_cmdl, links, xlinks
+  * new profiles: pandoc, teams-for-linux, OpenArena, gnome-sound-recorder
+  * new profiles: godot, tcpdump, tshark, newsbeuter, keepassxc-cli
+  * new profiles: keepassxc-proxy, rhythmbox-client, jerry, zeal, mpg123
+  * new profiles: conplay, mpg123.bin, mpg123-alsa, mpg123-id3dump, out123
+  * new profiles: mpg123-jack, mpg123-nas, mpg123-openal, mpg123-oss
+  * new profiles: mpg123-portaudio, mpg123-pulse, mpg123-strip, pavucontrol-qt
+  * new profiles: gnome-characters, gnome-character-map, rsync, Whalebird,
+  * new profiles: tor-browser (AUR), Zulip, tb-starter-wrapper, bzcat,
+  * new profiles: kiwix-desktop, bzcat, zstd, pzstd, zstdcat, zstdgrep, zstdless
+  * new profiles: zstdmt, unzstd, i2p, ar, gnome-latex, pngquant, kalgebra
+  * new profiles: kalgebramobile, signal-cli, amuled, kfind, profanity
+  * new profiles: audio-recorder, cameramonitor, ddgtk, drawio, unf, gmpc
+  * new profiles: electron-mail, gist, gist-paste (forwarded request 773543 from darix)</comment>
+    <requestid>774571</requestid>
+  </revision>
 </revisionlist>
