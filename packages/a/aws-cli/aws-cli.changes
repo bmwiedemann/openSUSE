@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 14 13:33:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- make it possible to find the package under the name "awscli"
+
+-------------------------------------------------------------------
+Mon Feb 10 17:29:44 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add bash command completion capability (boo#1117074)
+
+-------------------------------------------------------------------
 Thu Jan 30 12:47:41 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.17.9

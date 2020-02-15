@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.gz
 Patch0:         hide_py_pckgmgmt.patch
 BuildRequires:  fdupes
 Requires:       groff
+Provides:       awscli = %{version}
 BuildArch:      noarch
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 BuildRequires:  python3-devel
@@ -90,6 +91,9 @@ find %{buildroot}%{python_sitelib}/awscli/examples -type f -exec chmod 644 {} \;
 %endif
 # No DOS crap
 rm %{buildroot}/%{_bindir}/aws.cmd
+# bash completion
+install -d -m 755 %{buildroot}%{_sysconfdir}/bash_completion.d
+ln -s %{_bindir}/aws_bash_completer %{buildroot}%{_sysconfdir}/bash_completion.d/aws
 
 %files
 %doc CHANGELOG.rst README.rst
@@ -106,5 +110,6 @@ rm %{buildroot}/%{_bindir}/aws.cmd
 %{python_sitelib}/*egg-info/*
 %endif
 %{_bindir}/*
+%{_sysconfdir}/bash_completion.d/aws
 
 %changelog
