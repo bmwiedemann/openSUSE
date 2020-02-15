@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  7 03:08:40 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.04
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.04      2020-02-05 19:05:32 -0700
+    - Production release identical to 2.03_01
+  
+  2.03_01   2020-02-04 21:29:35 -0700
+    - Add use strict to generated ::Installl::Files modules (gh#162, gh#163)
+
+-------------------------------------------------------------------
 Wed Feb  5 03:07:23 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.02
