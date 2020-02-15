@@ -24,6 +24,7 @@ Summary:        SIS-PM Control for Linux
 License:        GPL-2.0-only
 URL:            https://sourceforge.net/projects/sispmctl/
 Source0:        sispmctl-%{version}.tar.gz
+Patch0:         sispmctl-fix-udev-group.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb)
@@ -47,6 +48,7 @@ Development files for the GEMBIRD Silver Shield PM device.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %configure \

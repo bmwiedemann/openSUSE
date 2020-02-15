@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:18:35 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Add patch to change the udev group to dialout
+  * add sispmctl-fix-udev-group.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 13:08:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Split devel files to devel subpkg
