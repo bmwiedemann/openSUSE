@@ -187,7 +187,7 @@ Requires:       %{rubygem erubis:2.7}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
 #  s.add_dependency "listen", "~> 3.1.5"
-Requires:       %{rubygem listen >= 3.1.5}
+Requires:       %{rubygem listen:3.1 >= 3.1.5}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"

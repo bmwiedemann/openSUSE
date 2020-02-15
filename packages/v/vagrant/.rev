@@ -167,4 +167,12 @@
     <comment>Bump dependent gem versions for vagrant</comment>
     <requestid>770467</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>6c8c120fa905d3e23542af11822d83c7</srcmd5>
+    <version>2.2.7</version>
+    <time>1581801915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774407</requestid>
+  </revision>
 </revisionlist>

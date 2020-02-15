@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:16:58 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix non-restrictive dependency on rubygem-listen
+
+-------------------------------------------------------------------
 Wed Feb  5 08:12:50 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Bump the version of i18n, rubyzip and net-ssh
