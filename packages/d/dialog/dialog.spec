@@ -1,7 +1,7 @@
 #
 # spec file for package dialog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Menus and Input Boxes for Shell Scripts
 License:        LGPL-2.1-only
 Group:          Development/Tools/Other
-Url:            http://invisible-island.net/dialog/
+URL:            http://invisible-island.net/dialog/
 Source0:        ftp://ftp.invisible-island.net/dialog/%{name}-%{version}-%{src_date}.tgz
 Source1:        ftp://ftp.invisible-island.net/dialog/%{name}-%{version}-%{src_date}.tgz.asc
 Source2:        %{name}.keyring
@@ -37,7 +37,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 Requires:       terminfo-base
-Recommends:     %{name}-lang
 Suggests:       terminfo
 
 %description
