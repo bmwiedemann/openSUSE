@@ -1035,4 +1035,36 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     <comment>- Use -ffat-lto-objects to work around mpers.sh failure (forwarded request 758125 from Andreas_Schwab)</comment>
     <requestid>758126</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>68f8fc2d7c398f900e204fc1f03e9840</srcmd5>
+    <version>5.5</version>
+    <time>1581801785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.5
+  * Improvements
+    * Added -e trace=%creds option for tracing syscalls related to process
+      credentials.
+    * Enhanced decoding of arch_prctl, keyctl, io_uring_register,
+      io_uring_setup, and perf_event_open syscalls.
+    * Enhanced decoding of BPF_PROG_LOAD bpf syscall command.
+    * Updated decoding of clone3 syscall to match Linux 5.5.
+    * Implemented decoding of TCA_ACT_FLAGS and TCA_STATS_PKT64 netlink
+      attributes.
+    * Updated lists of AUDIT_*, BPF_*, CLONE_*, KEY_*, KVM_*, PPC_PTRACE_*,
+      SCTP_*, STATX_*, TIPC_*, V4L2_*, and *_MAGIC constants.
+    * Updated lists of ioctl commands from Linux 5.5.
+    * Enhanced manual page and &quot;strace --help&quot; output.
+  * Bug fixes
+    * Fixed stack trace printing for early syscalls when strace is configured
+      to use libdw backend for stack tracing (addresses Fedora bug #1788636).
+    * Fixed stack trace caching when --seccomp-bpf option is specified.
+    * Fixed potentially unaligned access in decoder of SO_TIMESTAMP*_NEW
+      control messages.
+    * Fixed decoding of NDA_LLADDR netlink neighbor table attribute.
+    * Fixed build of mpers support when CFLAGS contains -flto.
+    * Fixed build on no-MMU architectures.
+    * Fixed build with glibc-2.31 and Linux kernel headers &amp;lt; 5.3.
+    * Fixed tests for glibc-2.31. (forwarded request 770679 from AndreasSchwab)</comment>
+    <requestid>770680</requestid>
+  </revision>
 </revisionlist>
