@@ -177,4 +177,12 @@
   - CRLR handling Security fixes</comment>
     <requestid>758618</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ebe18d2d166ee9144d467bcecfb368f4</srcmd5>
+    <version>1.4.3</version>
+    <time>1581801788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770684</requestid>
+  </revision>
 </revisionlist>

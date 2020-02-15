@@ -1,7 +1,7 @@
 #
 # spec file for package python-waitress
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-waitress
-Version:        1.4.0
+Version:        1.4.3
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
@@ -29,16 +29,15 @@ Source:         https://files.pythonhosted.org/packages/source/w/waitress/waitre
 # https://docs.python.org/3/objects.inv -> python3.inv
 Source1:        python3.inv
 Source2:        fetch-intersphinx-inventories.sh
-Patch:          local-intersphinx-inventories.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION documentation requirements
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  python3-pylons-sphinx-themes
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -59,8 +58,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n waitress-%{version}
-#%patch -p1
-cp %{S:1} docs/
+cp %{SOURCE1} docs/
 
 %build
 %python_build

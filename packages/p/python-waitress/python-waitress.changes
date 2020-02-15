@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  6 17:29:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.3
+  * Waitress did not properly validate that the HTTP headers it received 
+    were properly formed, thereby potentially allowing a front-end server 
+    to treat a request different from Waitress. This could lead to HTTP 
+    request smuggling/splitting.
+- drop patch local-intersphinx-inventories.patch
+  * it was commented out, anyway
+
+-------------------------------------------------------------------
 Fri Dec 20 18:28:24 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.4.0:
