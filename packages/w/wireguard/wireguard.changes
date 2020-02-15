@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 14 16:08:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20200214
+  * chacha20poly1305: defensively protect against large inputs
+  * netns: ensure that icmp src address is correct with nat
+  * receive: reset last_under_load to zero
+  * send: account for mtu=0 devices
+
+-------------------------------------------------------------------
 Wed Feb  5 20:35:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20200205 
