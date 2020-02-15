@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:16:05 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- fix-locking-in-_IO_cleanup.patch: update to latest version
+
+-------------------------------------------------------------------
+Mon Feb  3 08:13:02 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.31
+  * The GNU C Library now supports a feature test macro _ISOC2X_SOURCE to
+    enable features from the draft ISO C2X standard
+  * The <math.h> functions that round their results to a narrower type now
+    have corresponding type-generic macros in <tgmath.h>
+  * The function pthread_clockjoin_np has been added, enabling join with a
+    terminated thread with a specific clock
+  * New locale added: mnw_MM (Mon language spoken in Myanmar).
+  * The DNS stub resolver will optionally send the AD (authenticated data) bit
+    in queries if the trust-ad option is set via the options directive in
+    /etc/resolv.conf (or if RES_TRUSTAD is set in _res.options)
+  * The totalorder and totalordermag functions, and the corresponding
+    functions for other floating-point types, now take pointer arguments to
+    avoid signaling NaNs possibly being converted to quiet NaNs in argument
+    passing
+  * The obsolete function stime is no longer available to newly linked
+    binaries, and its declaration has been removed from <time.h>
+  * The gettimeofday function no longer reports information about a
+    system-wide time zone
+  * If a lazy binding failure happens during dlopen, during the execution of
+    an ELF constructor, the process is now terminated
+- malloc-info-whitespace.patch, riscv-vfork.patch,
+  prefer-map-32bit-exec.patch, backtrace-powerpc.patch,
+  ldconfig-dynstr.patch: Removed.
+
+-------------------------------------------------------------------
+Tue Jan 21 15:08:13 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- backtrace-powerpc.patch: Fix array overflow in backtrace on PowerPC
+  (bsc#1158996, BZ #25423)
+- Drop support for pluggable gconv modules (bsc#1159851)
+
+-------------------------------------------------------------------
 Mon Dec  9 13:21:34 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - prefer-map-32bit-exec.patch: rtld: Check __libc_enable_secure before

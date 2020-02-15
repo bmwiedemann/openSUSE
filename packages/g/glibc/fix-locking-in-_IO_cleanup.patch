@@ -1,70 +1,34 @@
-Always do locking when accessing streams (bug 15142)
+Always do locking when accessing streams (bug 15142, bug 14697)
 
-During exit, skip files that are currently locked to avoid deadlock.
+Now that abort no longer calls fflush there is no reason to avoid locking
+the stdio streams anywhere.  This fixes a conformance issue and potential
+heap corruption during exit.  The test nptl/tst-stdio1 is removed as that
+was expecting the problematic behaviour.
 
-	[BZ #15142]
-	* libio/libio.h (_IO_ftrylockfile) [_IO_MTSAVE_IO]: Define.
-	* libio/genops.c (_IO_flush_all_lockp): Make static.  Rename
-	argument to skip_locked, callers changed.  Skip files that are
-	locked if skip_locked.
-	(_IO_unbuffer_all): Lock files before access, but skip locked
-	files.
-	* libio/libioP.h (_IO_flush_all_lockp): Don't declare.
-
-Index: glibc-2.27/libio/libio.h
+Index: glibc-2.31/libio/genops.c
 ===================================================================
---- glibc-2.27.orig/libio/libio.h
-+++ glibc-2.27/libio/libio.h
-@@ -33,11 +33,15 @@ libc_hidden_proto (_IO_vfscanf)
-   if (((_fp)->_flags & _IO_USER_LOCK) == 0) _IO_lock_lock (*(_fp)->_lock)
- #  define _IO_funlockfile(_fp) \
-   if (((_fp)->_flags & _IO_USER_LOCK) == 0) _IO_lock_unlock (*(_fp)->_lock)
-+#  define _IO_ftrylockfile(_fp) \
-+  (((_fp)->_flags & _IO_USER_LOCK) == 0 ? _IO_lock_trylock (*(_fp)->_lock) : 0)
- # else
- #  define _IO_flockfile(_fp) \
-   if (((_fp)->_flags & _IO_USER_LOCK) == 0) _IO_flockfile (_fp)
- #  define _IO_funlockfile(_fp) \
-   if (((_fp)->_flags & _IO_USER_LOCK) == 0) _IO_funlockfile (_fp)
-+#  define _IO_ftrylockfile(_fp) \
-+  (((_fp)->_flags & _IO_USER_LOCK) == 0 ? _IO_ftrylockfile (_fp) : 0)
- # endif
- #endif /* _IO_MTSAFE_IO */
- 
-Index: glibc-2.27/libio/genops.c
-===================================================================
---- glibc-2.27.orig/libio/genops.c
-+++ glibc-2.27/libio/genops.c
-@@ -744,8 +744,8 @@ _IO_adjust_column (unsigned start, const
- }
+--- glibc-2.31.orig/libio/genops.c
++++ glibc-2.31/libio/genops.c
+@@ -682,7 +682,7 @@ _IO_adjust_column (unsigned start, const
  libc_hidden_def (_IO_adjust_column)
  
--int
+ int
 -_IO_flush_all_lockp (int do_lock)
-+static int
-+_IO_flush_all_lockp (bool skip_locked)
++_IO_flush_all (void)
  {
    int result = 0;
    FILE *fp;
-@@ -758,7 +758,16 @@ _IO_flush_all_lockp (int do_lock)
+@@ -695,8 +695,7 @@ _IO_flush_all_lockp (int do_lock)
    for (fp = (FILE *) _IO_list_all; fp != NULL; fp = fp->_chain)
      {
        run_fp = fp;
 -      if (do_lock)
-+      if (skip_locked)
-+	{
-+	  /* Skip files that are currently locked.  */
-+	  if (_IO_ftrylockfile (fp))
-+	    {
-+	      run_fp = NULL;
-+	      continue;
-+	    }
-+	}
-+      else
- 	_IO_flockfile (fp);
+-	_IO_flockfile (fp);
++      _IO_flockfile (fp);
  
        if (((fp->_mode <= 0 && fp->_IO_write_ptr > fp->_IO_write_base)
-@@ -769,8 +778,7 @@ _IO_flush_all_lockp (int do_lock)
+ 	   || (_IO_vtable_offset (fp) == 0
+@@ -706,8 +705,7 @@ _IO_flush_all_lockp (int do_lock)
  	  && _IO_OVERFLOW (fp, EOF) == EOF)
  	result = EOF;
  
@@ -74,31 +38,32 @@ Index: glibc-2.27/libio/genops.c
        run_fp = NULL;
      }
  
-@@ -787,7 +795,7 @@ int
- _IO_flush_all (void)
- {
-   /* We want locking.  */
--  return _IO_flush_all_lockp (1);
-+  return _IO_flush_all_lockp (false);
+@@ -718,14 +716,6 @@ _IO_flush_all_lockp (int do_lock)
+ 
+   return result;
  }
+-
+-
+-int
+-_IO_flush_all (void)
+-{
+-  /* We want locking.  */
+-  return _IO_flush_all_lockp (1);
+-}
  libc_hidden_def (_IO_flush_all)
  
-@@ -852,6 +860,14 @@ _IO_unbuffer_all (void)
- 
-   for (fp = (FILE *) _IO_list_all; fp; fp = fp->_chain)
+ void
+@@ -791,6 +781,9 @@ _IO_unbuffer_all (void)
      {
-+      run_fp = fp;
-+      /* Skip files that are currently locked.  */
-+      if (_IO_ftrylockfile (fp))
-+	{
-+	  run_fp = NULL;
-+	  continue;
-+	}
-+
        int legacy = 0;
  
++      run_fp = fp;
++      _IO_flockfile (fp);
++
  #if SHLIB_COMPAT (libc, GLIBC_2_0, GLIBC_2_1)
-@@ -863,18 +879,6 @@ _IO_unbuffer_all (void)
+       if (__glibc_unlikely (_IO_vtable_offset (fp) != 0))
+ 	legacy = 1;
+@@ -800,18 +793,6 @@ _IO_unbuffer_all (void)
  	  /* Iff stream is un-orientated, it wasn't used. */
  	  && (legacy || fp->_mode != 0))
  	{
@@ -117,7 +82,7 @@ Index: glibc-2.27/libio/genops.c
  	  if (! legacy && ! dealloc_buffers && !(fp->_flags & _IO_USER_BUF))
  	    {
  	      fp->_flags |= _IO_USER_BUF;
-@@ -881,17 +885,15 @@ _IO_unbuffer_all (void)
+@@ -825,17 +806,15 @@ _IO_unbuffer_all (void)
  
  	  if (! legacy && fp->_mode > 0)
  	    _IO_wsetb (fp, NULL, NULL, 0);
@@ -138,24 +103,22 @@ Index: glibc-2.27/libio/genops.c
      }
  
  #ifdef _IO_MTSAFE_IO
-@@ -916,9 +918,9 @@ libc_freeres_fn (buffer_free)
+@@ -861,9 +840,7 @@ libc_freeres_fn (buffer_free)
  int
  _IO_cleanup (void)
  {
 -  /* We do *not* want locking.  Some threads might use streams but
 -     that is their problem, we flush them underneath them.  */
 -  int result = _IO_flush_all_lockp (0);
-+  /* We want to skip locked streams.  Some threads might use streams but
-+     that is their problem, we don't flush those.  */
-+  int result = _IO_flush_all_lockp (true);
++  int result = _IO_flush_all ();
  
    /* We currently don't have a reliable mechanism for making sure that
       C++ static destructors are executed in the correct order.
-Index: glibc-2.27/libio/libioP.h
+Index: glibc-2.31/libio/libioP.h
 ===================================================================
---- glibc-2.27.orig/libio/libioP.h
-+++ glibc-2.27/libio/libioP.h
-@@ -486,7 +486,6 @@ extern int _IO_new_do_write (FILE *, con
+--- glibc-2.31.orig/libio/libioP.h
++++ glibc-2.31/libio/libioP.h
+@@ -487,7 +487,6 @@ extern int _IO_new_do_write (FILE *, con
  extern int _IO_old_do_write (FILE *, const char *, size_t);
  extern int _IO_wdo_write (FILE *, const wchar_t *, size_t);
  libc_hidden_proto (_IO_wdo_write)
@@ -163,3 +126,77 @@ Index: glibc-2.27/libio/libioP.h
  extern int _IO_flush_all (void);
  libc_hidden_proto (_IO_flush_all)
  extern int _IO_cleanup (void);
+Index: glibc-2.31/nptl/Makefile
+===================================================================
+--- glibc-2.31.orig/nptl/Makefile
++++ glibc-2.31/nptl/Makefile
+@@ -295,7 +295,7 @@ tests = tst-attr1 tst-attr2 tst-attr3 ts
+ 	tst-signal6 \
+ 	tst-exec1 tst-exec2 tst-exec3 tst-exec4 tst-exec5 \
+ 	tst-exit1 tst-exit2 tst-exit3 \
+-	tst-stdio1 tst-stdio2 \
++	tst-stdio2 \
+ 	tst-stack1 tst-stack2 tst-stack3 tst-stack4 tst-pthread-getattr \
+ 	tst-pthread-attr-affinity tst-pthread-mutexattr \
+ 	tst-unload \
+Index: glibc-2.31/nptl/tst-stdio1.c
+===================================================================
+--- glibc-2.31.orig/nptl/tst-stdio1.c
++++ /dev/null
+@@ -1,56 +0,0 @@
+-/* Copyright (C) 2002-2020 Free Software Foundation, Inc.
+-   This file is part of the GNU C Library.
+-   Contributed by Ulrich Drepper <drepper@redhat.com>, 2002.
+-
+-   The GNU C Library is free software; you can redistribute it and/or
+-   modify it under the terms of the GNU Lesser General Public
+-   License as published by the Free Software Foundation; either
+-   version 2.1 of the License, or (at your option) any later version.
+-
+-   The GNU C Library is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-   Lesser General Public License for more details.
+-
+-   You should have received a copy of the GNU Lesser General Public
+-   License along with the GNU C Library; if not, see
+-   <https://www.gnu.org/licenses/>.  */
+-
+-#include <pthread.h>
+-#include <signal.h>
+-#include <stdio.h>
+-#include <unistd.h>
+-
+-static int do_test (void);
+-
+-#define TEST_FUNCTION do_test ()
+-#include "../test-skeleton.c"
+-
+-static void *tf (void *a)
+-{
+-  flockfile (stdout);
+-  /* This call should never return.  */
+-  return a;
+-}
+-
+-
+-int
+-do_test (void)
+-{
+-  pthread_t th;
+-
+-  flockfile (stdout);
+-
+-  if (pthread_create (&th, NULL, tf, NULL) != 0)
+-    {
+-      write_message ("create failed\n");
+-      _exit (1);
+-    }
+-
+-  delayed_exit (1);
+-  xpthread_join (th);
+-
+-  puts ("join returned");
+-
+-  return 1;
+-}
