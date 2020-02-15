@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-humanfriendly%{psuffix}
-Version:        4.18
+Version:        6.1
 Release:        0
 Summary:        Human friendly input/output for text interfaces using Python
 License:        MIT
@@ -42,6 +42,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module capturer >= 2.1}
 BuildRequires:  %{python_module coloredlogs >= 2}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.4.0}
 BuildRequires:  %{pythons}

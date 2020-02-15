@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Feb 15 08:48:24 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.1:
+  - Added a :pypy:`...` role for easy linking to packages on the
+    Python Package Index, for details refer to
+    :func:`humanfriendly.sphinx.pypi_role()`.
+  - Wasted quite a bit of time debugging a MacOS failure on
+    Travis CI caused by a broken man`pip` installation, fixed by
+    using get-pip.py to bootstrap an installation that actually
+    works wink.
+  - Enable :class:`~humanfriendly.testing.MockedProgram` to
+    customize the shell script code of mocked programs. This was
+    added to make it easy to mock a program that is expected to
+    generate specific output (I'm planning to use this in the
+    :pypi:`linux-utils` test suite).
+  - Defined __all__ for all public modules that previously lacked
+    "export control" and decided to bump the major version number
+    as a precaution:
+    - These changes should not have any impact on backwards
+      compatibility, unless I forgot entries, in which case
+      callers can get :exc:`~exceptions.ImportError`
+      exceptions...
+    - Imports of public modules were previously exported
+      (implicitly) and this pollutes code completion suggestions
+      which in turn can encourage bad practices (not importing
+      things using their "canonical" name).
+    - I started developing the humanfriendly package years before
+      I learned about the value of defining __all__ and so some
+      modules lacked a definition until now. I decided that now
+      was as good a time as any to add those definitions
+      innocent.
+  - Simplified the headings in docs/api.rst so that only the
+    module names remain. This was done because Sphinx doesn't
+    support nested links in HTML output and thus generated really
+    weird "Table of Contents" listings.
+  - Fixed the reStructuredText references in the documentation of
+    :func:`~humanfriendly.prompts.prompt_for_choice()`. This
+    function is imported from :mod:`humanfriendly.prompts` to
+    :mod:`humanfriendly` (for backwards compatibility) where it
+    can't use relative references to refer to the other functions
+    in the :mod:`humanfriendly.prompts` module.
+  - Embedded quite a few Python API references into recent
+    changelog entries, just because I could (I heart what
+    hyperlinks can do for the usability of technical
+    documentation, it gives a lot more context).
+  - Added custom :man:`...` role for easy linking to Linux manual
+    pages to the :mod:`humanfriendly.sphinx` module.
+  - Changed rendering of pretty tables to expand tab characters
+    to spaces: Until now pretty tables did not take the variable
+    width of tab characters into account which resulted in tables
+    whose "line drawing characters" were visually misaligned.
+    Tabs are now expanded to spaces using str.expandtabs().
+  - Stop testing on Python 2.6 and drop official support. The
+    world (including Travis CI) has moved on and preserving
+    Python 2.6 compatibility was clearly starting to drag the
+    project down...
+  - I decided to bump the major version number because each of
+    these changes can be considered backwards incompatible in one
+    way or another and version numbers are cheap anyway so there
+    stuck_out_tongue.
+
+-------------------------------------------------------------------
 Wed Dec 11 08:57:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Require full python stack for sqlite module

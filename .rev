@@ -104,4 +104,41 @@
     <comment>- Require full python stack for sqlite module</comment>
     <requestid>755758</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>00526c64f58abe1ef96a7c5a6012d867</srcmd5>
+    <version>6.1</version>
+    <time>1581801923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1:
+  - Added a :pypy:`...` role for easy linking to packages on the
+    Python Package Index, for details refer to
+    :func:`humanfriendly.sphinx.pypi_role()`.
+  - Wasted quite a bit of time debugging a MacOS failure on
+    Travis CI caused by a broken man`pip` installation, fixed by
+    using get-pip.py to bootstrap an installation that actually
+    works wink.
+  - Enable :class:`~humanfriendly.testing.MockedProgram` to
+    customize the shell script code of mocked programs. This was
+    added to make it easy to mock a program that is expected to
+    generate specific output (I'm planning to use this in the
+    :pypi:`linux-utils` test suite).
+  - Defined __all__ for all public modules that previously lacked
+    &quot;export control&quot; and decided to bump the major version number
+    as a precaution:
+    - These changes should not have any impact on backwards
+      compatibility, unless I forgot entries, in which case
+      callers can get :exc:`~exceptions.ImportError`
+      exceptions...
+    - Imports of public modules were previously exported
+      (implicitly) and this pollutes code completion suggestions
+      which in turn can encourage bad practices (not importing
+      things using their &quot;canonical&quot; name).
+    - I started developing the humanfriendly package years before
+      I learned about the value of defining __all__ and so some
+      modules lacked a definition until now. I decided that now
+      was as good a time as any to add those definitions
+      innocent.
+  - Simplified the headings in docs/api.rst so that only the</comment>
+    <requestid>774497</requestid>
+  </revision>
 </revisionlist>
