@@ -1,0 +1,53 @@
+From 224228a2a4db8f433e4ae8fc827e231e095aca45 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Thu, 19 Dec 2019 18:08:05 +0800
+Subject: [PATCH v3] mdadm.8: add note information for raid0 growing operation
+Patch-mainline: Not yet, waiting for maintainer to merge
+References: bsc#1129900
+
+When growing a raid0 device, if the new component disk size is not
+big enough, the grow operation may fail due to lack of backup space.
+
+The minimum backup space should be larger than
+        LCM(old, new) * chunk-size * 2
+where LCM() is the least common multiple of the old and new count of
+component disks, and "* 2" comes from the fact that mdadm refuses to
+use more than half of a spare device for backup space.
+
+There are users reporting such failure when they grew a raid0 array
+with small component disk. Neil Brown points out this is not a bug
+and how the failure comes. This patch adds note information into
+mdadm(8) man page in the Notes part of GROW MODE section, to explain
+the minimum size requirement of new component disk size or external
+backup size.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+Cc: NeilBrown <neilb@suse.de>
+Cc: Jes Sorensen <jsorensen@fb.com>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: Wols Lists <antlists@youngman.org.uk>
+Cc: Nix <nix@esperi.org.uk>
+---
+ mdadm.8.in | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/mdadm.8.in b/mdadm.8.in
+index 6b63bb4..bba4e25 100644
+--- a/mdadm.8.in
++++ b/mdadm.8.in
+@@ -2772,6 +2772,12 @@ option and it is transparent for assembly feature.
+ .IP \(bu 4
+ Roaming between Windows(R) and Linux systems for IMSM metadata is not
+ supported during grow process.
++.IP \(bu 4
++When growing a raid0 device, the new component disk size (or external
++backup size) should be larger than LCM(old, new) * chunk-size * 2,
++where LCM() is the least common multiple of the old and new count of
++component disks, and "* 2" comes from the fact that mdadm refuses to
++use more than half of a spare device for backup space. 
+ 
+ .SS SIZE CHANGES
+ Normally when an array is built the "size" is taken from the smallest
+-- 
+2.16.4
+

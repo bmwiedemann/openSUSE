@@ -1,7 +1,7 @@
 #
 # spec file for package mdadm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,10 @@ Patch21:        0011-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch
 Patch22:        0012-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
 Patch23:        0013-mdcheck-use-to-pass-variable-to-mdcheck.patch
 Patch24:        0014-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
+Patch25:        0015-Create-add-support-for-RAID0-layouts.patch
+Patch26:        0016-Assemble-add-support-for-RAID0-layouts.patch
 Patch1001:      1001-display-timeout-status.patch
+Patch1002:      1002-mdadm.8-add-note-information-for-raid0-growing-opera.patch
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
 
@@ -80,7 +83,10 @@ mdadm is a program that can be used to control Linux md devices.
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
+%patch25 -p1
+%patch26 -p1
 %patch1001 -p1
+%patch1002 -p1
 
 %build
 make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" SUSE=yes
