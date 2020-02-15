@@ -302,6 +302,7 @@ Prefer: udev-mini libcom_err2-mini libext2fs2-mini
 Prefer: -harfbuzz-bootstrap -harfbuzz-bootstrap-devel
 
 # break dependency of the -mini packages: they are valid for OBS, but not for end-user-installation
+Ignore: cmake-mini:this-is-only-for-build-envs
 Ignore: curl-mini:this-is-only-for-build-envs
 Ignore: dummy-release:this-is-only-for-build-envs
 Ignore: erlang-rebar-obs:this-is-only-for-build-envs
