@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 Name:           busybox
-Version:        1.30.1
+Version:        1.31.1
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://www.busybox.net/
+URL:            http://www.busybox.net/
 Source:         http://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
 Source4:        busybox-container.config
 Source5:        man.conf
+# Upstream patches
+Patch0:         busybox-no-stime.patch
 # other patches
-Patch:          busybox.install.patch
+Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
 BuildRequires:  libtirpc-devel
@@ -64,7 +66,8 @@ makes sense in a container.
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p1
+%patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
 	-exec rm -Rf {} +

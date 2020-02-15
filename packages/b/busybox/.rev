@@ -570,4 +570,20 @@
     <comment>- Add man.conf to container variant (forwarded request 742256 from kukuk)</comment>
     <requestid>742257</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b4f74efc61ec0e9cc716db675b0ca866</srcmd5>
+    <version>1.31.1</version>
+    <time>1581801704</time>
+    <user>dimstar_suse</user>
+    <comment>- Eanble FEATURE_TFTP_HPA_COMPAT and SH_MATH_BASE
+
+- Update to version 1.31.1:
+  + Bug fix release. 1.30.1 has fixes for dc, ash (PS1 expansion
+    fix), hush, dpkg-deb, telnet and wget.
+- Changes from version 1.31.0:
+  + many bugfixes and new features.
+- Add busybox-no-stime.patch: stime() has been deprecated in glibc
+  2.31 and replaced with clock_settime().</comment>
+    <requestid>772655</requestid>
+  </revision>
 </revisionlist>
