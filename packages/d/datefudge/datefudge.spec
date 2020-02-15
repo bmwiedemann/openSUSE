@@ -1,7 +1,7 @@
 #
 # spec file for package datefudge
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           datefudge
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        A preload library to fake system time
 # FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools
-Url:            http://packages.qa.debian.org/d/datefudge.html
+URL:            http://packages.qa.debian.org/d/datefudge.html
 Source:         http://cdn.debian.net/debian/pool/main/d/datefudge/%{name}_%{version}.tar.xz
 Source2:        http://cdn.debian.net/debian/pool/main/d/datefudge/%{name}_%{version}.dsc#/%{name}.asc
 Source3:        https://db.debian.org/fetchkey.cgi?fingerprint=35E876FAB4D3732E93B4D237631DE7553BE8AFD4#/%{name}.keyring
+Patch0:         glibc-2.31-fix.patch
 
 %description
 This program fakes the system date so that programs think the
@@ -39,6 +40,7 @@ echo "`grep -A1 "Files:" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  
 echo "`grep -A1 "Checksums-Sha1" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha1sum -c
 echo "`grep -A1 "Checksums-Sha256" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha256sum -c
 %setup -q
+%patch0 -p1
 sed "s/VERSION := \$\(.*\)/VERSION := %{version}/g" -i Makefile
 sed 's/-o root -g root/-p/g' -i Makefile
 

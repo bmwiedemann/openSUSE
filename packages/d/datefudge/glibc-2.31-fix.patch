@@ -1,0 +1,30 @@
+diff --git a/datefudge.c b/datefudge.c
+index fe93ef8..3785563 100644
+--- a/datefudge.c
++++ b/datefudge.c
+@@ -66,8 +66,13 @@ time_t time(time_t *x) {
+ 
+ #endif
+ 
++#if __GLIBC_PREREQ (2, 31)
++int __gettimeofday(struct timeval *x, void *y) {
++    static int (*libc_gettimeofday)(struct timeval *, void *) = NULL;
++#else
+ int __gettimeofday(struct timeval *x, struct timezone *y) {
+     static int (*libc_gettimeofday)(struct timeval *, struct timezone *) = NULL;
++#endif
+     int res;
+ 
+     if(!libc_gettimeofday)
+@@ -78,7 +83,11 @@ int __gettimeofday(struct timeval *x, struct timezone *y) {
+     return 0;
+ }
+ 
++#if __GLIBC_PREREQ (2, 31)
++int gettimeofday(struct timeval *x, void *y) {
++#else
+ int gettimeofday(struct timeval *x, struct timezone *y) {
++#endif
+     return __gettimeofday(x,y);
+ }
+ 
