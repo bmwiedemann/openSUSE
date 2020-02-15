@@ -48,4 +48,23 @@
     <comment></comment>
     <requestid>743486</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9ffeaa1ab59b510b681ae400b0f8cb29</srcmd5>
+    <version>0.3.5+git20200203.3144b69</version>
+    <time>1581801693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.5+git20200203.3144b69:
+  * Release version 0.3.5
+  * Use float.h instead of obsolete gnuism values.h
+  * Remove gnuism (strdupa)
+  * Check for empty value (NULL pointer) before calling strdup.
+- Update to version 0.3.4+git20200121.febebf2:
+  * Release version 0.3.4
+  * Fix buffer overflow in econf_readDirs
+  * Fix parsing of quoted strings, and values starting with delimiters
+  * tests: add test for quoted strings
+  * tests: tst-configdirs5: fix config dir paths
+</comment>
+    <requestid>769722</requestid>
+  </revision>
 </revisionlist>

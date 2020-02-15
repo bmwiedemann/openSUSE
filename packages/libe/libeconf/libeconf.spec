@@ -1,7 +1,7 @@
 #
 # spec file for package libeconf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.3.3+git20191028.3ac14ce
+Version:        0.3.5+git20200203.3144b69
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/openSUSE/libeconf
+URL:            https://github.com/openSUSE/libeconf
 Source:         libeconf-%{version}.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  autoconf
