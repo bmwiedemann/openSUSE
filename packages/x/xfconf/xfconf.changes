@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 05:42:59 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- xfconfd needs to be a hard dependency to libxfconf (boo#1163214)
+
+-------------------------------------------------------------------
 Fri Aug 16 12:58:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

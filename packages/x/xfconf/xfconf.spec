@@ -67,7 +67,7 @@ This package contains the Perl interface to %{name}.
 %package -n %{libname}
 Summary:        Xfconf Shared Library
 Group:          System/Libraries
-Recommends:     %{name} = %{version}
+Requires:       %{name} >= %{version}
 Provides:       libxfce4mcs = %{version}
 Obsoletes:      libxfce4mcs < %{version}
 
