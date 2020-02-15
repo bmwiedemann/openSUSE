@@ -133,6 +133,8 @@ Patch34:        riscv-eh-frame-fixup.patch
 Patch35:        polly-pthread.patch
 # PATCH-FEATURE_UPSTREAM compiler-rt-move-fdp.patch -- Move FuzzedDataProvider to include
 Patch36:        compiler-rt-move-fdp.patch
+# PATCH-FIX-UPSTREAM compiler-rt-sanitizer-ipc-perm.patch -- Fix sanitizer-common build with glibc 2.31
+Patch37:        compiler-rt-sanitizer-ipc-perm.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -236,6 +238,9 @@ Recommends:     clang%{_sonum}-doc
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
 Provides:       llvm%{_sonum}-emacs-plugins
+Conflicts:      emacs-llvm < %{version}
+Provides:       emacs-llvm = %{version}
+Conflicts:      vim-plugin-llvm < %{version}
 %if %{with libcxx}
 Requires:       libc++%{_socxx}
 %endif
@@ -262,8 +267,8 @@ static code analyzers for CLANG.
 
 %package -n clang%{_sonum}-include-fixer
 Summary:        Automatically add missing includes
-Group:          Development/Languages/C and C++
 # Avoid multiple provider errors
+Group:          Development/Languages/C and C++
 Requires:       libclang%{_sonum} = %{version}
 Conflicts:      clang-include-fixer < %{version}
 Conflicts:      find-all-symbols < %{version}
@@ -284,8 +289,8 @@ namespace qualifiers.
 
 %package -n libclang%{_sonum}
 Summary:        Library files needed for clang
-Group:          System/Libraries
 # Avoid multiple provider errors
+Group:          System/Libraries
 Requires:       libLLVM%{_sonum}
 
 %description -n libclang%{_sonum}
@@ -307,6 +312,7 @@ Summary:        Documentation for Clang
 Group:          Documentation/HTML
 Conflicts:      clang-doc-provider < %{version}
 # The docs used to be contained in the devel package.
+Conflicts:      clang5-devel
 Conflicts:      clang6-devel
 Conflicts:      clang7-devel
 Conflicts:      clang8-devel
@@ -318,8 +324,8 @@ This package contains documentation for the Clang compiler.
 
 %package -n libLTO%{_sonum}
 Summary:        Link-time optimizer for LLVM
-Group:          System/Libraries
 # Avoid multiple provider errors
+Group:          System/Libraries
 Requires:       libLLVM%{_sonum}
 
 %description -n libLTO%{_sonum}
@@ -327,8 +333,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package LTO-devel
 Summary:        Link-time optimizer for LLVM (devel package)
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libLTO%{_sonum}
 Conflicts:      libLTO.so < %{version}
@@ -340,8 +346,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package gold
 Summary:        Gold linker plugin for LLVM
-Group:          Development/Tools/Building
 # Avoid multiple provider errors
+Group:          Development/Tools/Building
 Requires:       libLLVM%{_sonum}
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
@@ -351,8 +357,8 @@ This package contains the Gold linker plugin for LLVM.
 
 %package -n libomp%{_sonum}-devel
 Summary:        MPI plugin for LLVM
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       libLLVM%{_sonum}
 Conflicts:      libomp-devel < %{version}
 Provides:       libomp-devel = %{version}
@@ -373,8 +379,8 @@ standard library, targeting C++11.
 
 %package -n libc++-devel
 Summary:        C++ standard library implementation (devel package)
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       libc++%{_socxx} = %{version}
 Requires:       libc++abi-devel = %{version}
 Conflicts:      libc++.so < %{version}
@@ -482,8 +488,8 @@ disassembler.
 
 %package -n liblldb%{_sonum}
 Summary:        LLDB software debugger runtime library
-Group:          System/Libraries
 # Avoid multiple provider errors
+Group:          System/Libraries
 Requires:       libLLVM%{_sonum}
 Requires:       libclang%{_sonum}
 
@@ -492,8 +498,8 @@ This subpackage contains the main LLDB component.
 
 %package -n lldb%{_sonum}-devel
 Summary:        Development files for LLDB
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       clang%{_sonum}-devel = %{version}
 Requires:       liblldb%{_sonum} = %{version}
 Requires:       llvm%{_sonum}-devel = %{version}
@@ -570,6 +576,7 @@ This package contains the development files for Polly.
 pushd compiler-rt-%{version}.src
 %patch28 -p2
 %patch36 -p2
+%patch37 -p1
 popd
 
 pushd clang-%{version}.src

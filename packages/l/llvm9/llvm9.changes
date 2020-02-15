@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:29:11 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add vim-plugin-llvm Conflicts to clang subpackage which now
+  contains files formerly in llvmN-vim-plugins, conflicting with
+  packages from older llvm releases.
+
+-------------------------------------------------------------------
+Thu Feb  6 10:58:59 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add back emacs-llvm Provides and Conflicts to clang subpackage
+  originally in llvm-emacs-plugins to properly conflict with
+  llvm-emacs-plugins from older llvm releases.
+
+-------------------------------------------------------------------
+Tue Feb  4 08:41:49 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add clang5-devel to clang9-doc conflicts.
+
+-------------------------------------------------------------------
+Mon Feb  3 08:53:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add compiler-rt-sanitizer-ipc-perm.patch: Fix sanitizer-common
+  build with glibc 2.31.
+
+-------------------------------------------------------------------
 Wed Jan 29 22:33:02 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Move clang-{format,include-fixer,rename}.{el,py} files from

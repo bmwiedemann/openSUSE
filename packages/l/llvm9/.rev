@@ -91,4 +91,23 @@
     <comment>Move clang-{format,include-fixer,rename}.{el,py} from llvm-*-plugins to clang, drop empty llvm-emacs-plugins. (forwarded request 768749 from aaronpuchert)</comment>
     <requestid>768764</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>704e703197b5b0cccc44ee777cc756f8</srcmd5>
+    <version>9.0.1</version>
+    <time>1581801695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vim-plugin-llvm Conflicts to clang subpackage which now
+  contains files formerly in llvmN-vim-plugins, conflicting with
+  packages from older llvm releases.
+
+- Add back emacs-llvm Provides and Conflicts to clang subpackage
+  originally in llvm-emacs-plugins to properly conflict with
+  llvm-emacs-plugins from older llvm releases.
+
+- Add clang5-devel to clang9-doc conflicts.
+
+- Add compiler-rt-sanitizer-ipc-perm.patch: Fix sanitizer-common
+  build with glibc 2.31.</comment>
+    <requestid>770860</requestid>
+  </revision>
 </revisionlist>
