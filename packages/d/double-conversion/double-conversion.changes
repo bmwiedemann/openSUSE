@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:01:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use proper cmake calls
+- Do not pull in py2 that is EOL but use python3 for build
+
+-------------------------------------------------------------------
 Mon Jul 22 19:33:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
-- Update to version 3.1.5
+- Update to version 3.1.5 jsc#ECO-1190
   * Fix `0x` for string->double conversion when Hex Floats are allowed.
     Avoid integer overflow when exponents for hex floats were too big.
     Update version number.

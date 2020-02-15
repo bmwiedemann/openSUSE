@@ -1,7 +1,7 @@
 #
 # spec file for package double-conversion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 %define lib_ver 3
+%define libname libdouble-conversion3
 Name:           double-conversion
 Version:        3.1.5
 Release:        0
 Summary:        Binary-decimal and decimal-binary routines for IEEE doubles
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
-Url:            https://github.com/google/double-conversion
+URL:            https://github.com/google/double-conversion
 Source0:        https://github.com/google/double-conversion/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  python
+BuildRequires:  python3-base
 
 %description
 Double-conversion provides binary-decimal and decimal-binary routines
@@ -36,11 +36,10 @@ for IEEE double-precision floating point numbers. The library
 consists of conversion routines that have been extracted from the V8
 JavaScript engine.
 
-%package     -n lib%{name}%{lib_ver}
+%package     -n %{libname}
 Summary:        Binary-decimal and decimal-binary routines for IEEE doubles
-Group:          System/Libraries
 
-%description -n lib%{name}%{lib_ver}
+%description -n %{libname}
 Double-conversion provides binary-decimal and decimal-binary routines
 for IEEE double-precision floating point numbers. The library
 consists of conversion routines that have been extracted from the V8
@@ -48,8 +47,7 @@ JavaScript engine.
 
 %package        devel
 Summary:        Development files for BCD/DCB routines for IEEE doubles
-Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{lib_ver} = %{version}
+Requires:       %{libname} = %{version}
 
 %description    devel
 Double-conversion provides binary-decimal and decimal-binary routines
@@ -67,7 +65,7 @@ that use double-conversion.
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=ON\
     -DBUILD_TESTING:BOOL=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -76,16 +74,15 @@ that use double-conversion.
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %ctest
 
-%post   -n lib%{name}%{lib_ver} -p /sbin/ldconfig
-%postun -n lib%{name}%{lib_ver} -p /sbin/ldconfig
+%post   -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n lib%{name}%{lib_ver}
-%license COPYING LICENSE
+%files -n %{libname}
+%license LICENSE
 %{_libdir}/libdouble-conversion.so.%{lib_ver}*
 
 %files devel
 %doc AUTHORS Changelog README.md
-%license COPYING LICENSE
 %{_libdir}/libdouble-conversion.so
 %{_libdir}/cmake/%{name}/
 %{_includedir}/%{name}/

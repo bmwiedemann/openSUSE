@@ -66,4 +66,15 @@
   * Allow the library to be compiled for Emscripten.</comment>
     <requestid>718475</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>67858298784f7b245f69e158448fd69f</srcmd5>
+    <version>3.1.5</version>
+    <time>1581801789</time>
+    <user>dimstar_suse</user>
+    <comment>- Use proper cmake calls
+- Do not pull in py2 that is EOL but use python3 for build
+
+- Update to version 3.1.5 jsc#ECO-1190 (forwarded request 770656 from scarabeus_iv)</comment>
+    <requestid>770685</requestid>
+  </revision>
 </revisionlist>
