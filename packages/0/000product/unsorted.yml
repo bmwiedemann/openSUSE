@@ -374,6 +374,8 @@ unsorted:
   - adolc-devel 
   - adolc-devel-32bit: [x86_64] 
   - adolc-doc 
+  - adriconf 
+  - adriconf-lang 
   - ads 
   - aegisub: [x86_64] 
   - aelfred 
@@ -1365,6 +1367,7 @@ unsorted:
   - bzr-test 
   - bzrtp-devel 
   - c-ares-devel 
+  - c-ares-utils 
   - c-toxcore 
   - c-toxcore-daemon 
   - c-toxcore-devel 
@@ -1750,6 +1753,7 @@ unsorted:
   - cmake-fedora-modules 
   - cmake-gui 
   - cmake-man 
+  - cmake-mini 
   - cmark 
   - cmark-devel 
   - cmis-client 
@@ -1923,7 +1927,7 @@ unsorted:
   - coredns 
   - coredns-extras 
   - coreutils-single 
-  - coreutils-testsuite: [i586] 
+  - coreutils-testsuite 
   - corosync 
   - corosync-qdevice 
   - corosync-qnetd 
@@ -6813,6 +6817,11 @@ unsorted:
   - kured 
   - kured-k8s-yaml: [i586] 
   - kurso-de-esperanto 
+  - kuserfeedback-devel 
+  - kuserfeedback-imports 
+  - kuserfeedback-lang 
+  - kuserfeedback-server 
+  - kuserfeedback-tools 
   - kvirc 
   - kwallet-devel 
   - kwallet-devel-32bit: [x86_64] 
@@ -7274,6 +7283,8 @@ unsorted:
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
   - libKReport3-4 
+  - libKUserFeedbackCore1 
+  - libKUserFeedbackWidgets1 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_2_3 
@@ -8284,7 +8295,7 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -8647,6 +8658,7 @@ unsorted:
   - libduktape201 
   - libdv 
   - libdv-devel 
+  - libdv-playdv 
   - libdv4-32bit: [x86_64] 
   - libdvbpsi-0-devel 
   - libdvbpsi-devel 
@@ -9735,7 +9747,7 @@ unsorted:
   - libjthread1_3_3 
   - libjxrglue0 
   - libkColorPicker0_1_0 
-  - libkImageAnnotator0_1_0 
+  - libkImageAnnotator0_2_0 
   - libkaccounts1-32bit: [x86_64] 
   - libkate-devel 
   - libkate-tools 
@@ -10267,7 +10279,7 @@ unsorted:
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
   - libmysofa-devel 
-  - libmysofa0-32bit: [x86_64] 
+  - libmysofa1-32bit: [x86_64] 
   - libmysqlcppconn-devel 
   - libmysqlcppconn7 
   - libmysqlcppconn8-1 
@@ -11150,9 +11162,9 @@ unsorted:
   - libqxp-tools 
   - libqxtglobalshortcut0 
   - libradcli4 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradosstriper-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - libradosstriper-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -11174,7 +11186,7 @@ unsorted:
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
   - libraylib2 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -11390,7 +11402,6 @@ unsorted:
   - libretro-nestopia 
   - libretro-parallel-n64 
   - libretro-pcsx-rearmed 
-  - libretro-pcsx_rearmed 
   - libretro-play 
   - libretro-ppsspp 
   - libretro-prosystem 
@@ -11400,7 +11411,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -14185,6 +14196,8 @@ unsorted:
   - myman 
   - mypaint-brushes 
   - mypaint-brushes-devel 
+  - mypaint-brushes1 
+  - mypaint-brushes1-devel 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -17255,6 +17268,7 @@ unsorted:
   - plasma-vault-lang 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
+  - plasma5-desktop-lang 
   - plasma5-sdk 
   - plasma5-sdk-lang 
   - plasma5-workspace-devel 
@@ -17591,6 +17605,7 @@ unsorted:
   - projectlibre 
   - prometheus-client-model-source 
   - prometheus-cpp-devel 
+  - prometheus-ha_cluster_exporter: [x86_64] 
   - prometheus-webhook-snmp 
   - pronsole 
   - pronterface 
@@ -17607,7 +17622,6 @@ unsorted:
   - protoc-gen-validate 
   - protoc-gen-validate-source 
   - proxychains-ng 
-  - prozgui 
   - prun-ohpc 
   - psgml 
   - psgplay 
@@ -17950,6 +17964,7 @@ unsorted:
   - python-qt3d-qt5-api 
   - python-qt3d-qt5-examples 
   - python-qt3d-qt5-sip 
+  - python-qt5-common-devel 
   - python-qt5-doc 
   - python-qtcharts-qt5-api 
   - python-qtcharts-qt5-examples 
@@ -18776,7 +18791,6 @@ unsorted:
   - python2-efl-doc 
   - python2-efl-examples 
   - python2-elasticsearch 
-  - python2-elementpath 
   - python2-email_validator 
   - python2-emoji 
   - python2-empy 
@@ -20207,7 +20221,6 @@ unsorted:
   - python2-xlrd 
   - python2-xlwt 
   - python2-xmldiff 
-  - python2-xmlschema 
   - python2-xmlsec 
   - python2-xmltodict 
   - python2-xpybutil 
@@ -23139,7 +23152,7 @@ unsorted:
   - radeontop 
   - radeontop-lang 
   - radiotray-ng 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -24805,7 +24818,6 @@ unsorted:
   - spyder-unittest 
   - spyder3 
   - spyder3-breakpoints 
-  - spyder3-breakpoints-lang 
   - spyder3-dicom 
   - spyder3-hdf5 
   - spyder3-lang 
@@ -24813,9 +24825,7 @@ unsorted:
   - spyder3-memory-profiler 
   - spyder3-notebook 
   - spyder3-profiler 
-  - spyder3-profiler-lang 
   - spyder3-pylint 
-  - spyder3-pylint-lang 
   - spyder3-terminal 
   - spyder3-unittest 
   - sql-parser-devel 
@@ -33511,7 +33521,6 @@ unsorted:
   - vulkan-headers 
   - vulkan-tools 
   - vulkan-validationlayers 
-  - vusb-analyzer 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
   - w3m-inline-image 
