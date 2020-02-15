@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:18:16 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Remove: 0001-clarify-container-prune-force.patch because it's now
+  included in the release
+- Update podman to v1.8.0:
+  * Features
+    - The podman system service command has been added, providing a
+      preview of Podman's new Docker-compatible API. This API is
+      still very new, and not yet ready for production use, but is
+      available for early testing
+    - Rootless Podman now uses Rootlesskit for port forwarding,
+      which should greatly improve performance and capabilities
+    - The podman untag command has been added to remove tags from
+      images without deleting them
+    - The podman inspect command on images now displays previous
+      names they used
+    - The podman generate systemd command now supports a --new
+      option to generate service files that create and run new
+      containers instead of managing existing containers
+    - Support for --log-opt tag= to set logging tags has been added
+      to the journald log driver
+    - Added support for using Seccomp profiles embedded in images
+      for podman run and podman create via the new --seccomp-policy
+        CLI flag
+    - The podman play kube command now honors pull policy
+  * Bugfixes
+    - Fixed a bug where the podman cp command would not copy the
+      contents of directories when paths ending in /. were given
+    - Fixed a bug where the podman play kube command did not
+      properly locate Seccomp profiles specified relative to
+      localhost
+    - Fixed a bug where the podman info command for remote Podman
+      did not show registry information
+    - Fixed a bug where the podman exec command did not support
+      having input piped into it
+    - Fixed a bug where the podman cp command with rootless Podman
+      on CGroups v2 systems did not properly determine if the
+      container could be paused while copying
+    - Fixed a bug where the podman container prune --force command
+      could possible remove running containers if they were started
+      while the command was running 
+    - Fixed a bug where Podman, when run as root, would not
+      properly configure slirp4netns networking when requested
+    - Fixed a bug where podman run --userns=keep-id did not work
+      when the user had a UID over 65535
+    - Fixed a bug where rootless podman run and podman create with
+      the --userns=keep-id option could change permissions on
+      /run/user/$UID and break KDE
+    - Fixed a bug where rootless Podman could not be run in a
+      systemd service on systems using CGroups v2
+    - Fixed a bug where podman inspect would show CPUShares as 0,
+      instead of the default (1024), when it was not explicitly set
+    - Fixed a bug where podman-remote push would segfault
+    - Fixed a bug where image healthchecks were not shown in the
+      output of podman inspect
+    - Fixed a bug where named volumes created with containers from
+      pre-1.6.3 releases of Podman would be autoremoved with their
+      containers if the --rm flag was given, even if they were
+      given names
+    - Fixed a bug where podman history was not computing image
+      sizes correctly
+    - Fixed a bug where Podman would not error on invalid values to
+      the --sort flag to podman images
+    - Fixed a bug where providing a name for the image made by
+      podman commit was mandatory, not optional as it should be
+    - Fixed a bug where the remote Podman client would append an
+      extra " to %PATH
+    - Fixed a bug where the podman build command would sometimes
+      ignore the -f option and build the wrong Containerfile
+    - Fixed a bug where the podman ps --filter command would only
+      filter running containers, instead of all containers, if
+      --all was not passed
+    - Fixed a bug where the podman load command on compressed
+      images would leave an extra copy on disk
+    - Fixed a bug where the podman restart command would not
+      properly clean up the network, causing it to function
+      differently from podman stop; podman start
+    - Fixed a bug where setting the --memory-swap flag to podman
+      create and podman run to -1 (to indicate unlimited) was not
+      supported
+  * Misc
+    - Initial work on version 2 of the Podman remote API has been
+      merged, but is still in an alpha state and not ready for use.
+      Read more here
+    - Many formatting corrections have been made to the manpages
+    - The changes to address (#5009) may cause anonymous volumes
+      created by Podman versions 1.6.3 to 1.7.0 to not be removed
+      when their container is removed
+    - Updated vendored Buildah to v1.13.1
+    - Updated vendored containers/storage to v1.15.8
+    - Updated vendored containers/image to v5.2.0
+
+-------------------------------------------------------------------
 Fri Jan 24 14:04:36 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Add apparmor-abstractions as required runtime dependency to
@@ -189,7 +282,7 @@ Thu Dec 12 14:30:34 UTC 2019 - Richard Brown <rbrown@suse.com>
 -------------------------------------------------------------------
 Thu Oct 31 13:05:29 UTC 2019 - Richard Brown <rbrown@suse.com>
 
-- Add container-start-fix.patch to correct output of container-start to show container_name, not _id. 
+- Add container-start-fix.patch to correct output of container-start to show container_name, not _id.
 
 -------------------------------------------------------------------
 Mon Oct 21 07:21:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>

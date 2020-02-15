@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -31,8 +31,6 @@ Url:            https://github.com/containers/libpod
 Source0:        %{name}-%{version}.tar.xz
 Source2:        libpod.conf
 Source3:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM 0001-clarify-container-prune-force.patch https://github.com/containers/libpod/issues/4844
-Patch0:         0001-clarify-container-prune-force.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -84,7 +82,6 @@ skopeo, as they all share the same datastore backend.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %package cni-config
 Summary:        Basic CNI configuration for podman
