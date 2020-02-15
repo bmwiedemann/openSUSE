@@ -1379,4 +1379,30 @@
   (bsc#1157321)</comment>
     <requestid>750032</requestid>
   </revision>
+  <revision rev="151" vrev="12">
+    <srcmd5>208a8d02b5bc9fd2a4607d10cfb01e21</srcmd5>
+    <version>unknown</version>
+    <time>1581801859</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 2.4.3
+   Dropped patches (accepted upstream):
+   - 0001-nfs.conf-allow-empty-assignments.patch
+   - 0002-Let-systemd-know-when-rpc.statd-is-needed.patch
+   - 0003-systemd-run-statd-notify-even-when-nfs-client-isn-t-.patch
+   - 0004-nfsidmap-honour-with-pluginpath-for-instalation.patch
+   - 0005-nfs.conf-fail-to-disable-major-NFS-version-4-using-v.patch
+   - 0006-conffile-allow-optional-include-files.patch
+   - 0007-statd-user-from-sm
+   - 0008-mountd-Initialize-logging-early.patch
+   Dropped patches (upstream used different solution):
+   - 0009-Allow-compilation-to-succeed-with-fno-common.patch (btw this used
+	 Patch0: instead of Patch10:) (boo#1160405)
+   
+   Add nfsdcld - NFSv4 Client Tracking Daemon, add nfsdcld.service and enable it
+   for nfs-kernel-server, add man page
+   Add clddb-tool - tool for downgrading the nfsdcld sqlite database schema,
+   add man page
+   Removed osd_login (dropped in upstream in 2.3.4 rc1) (forwarded request 773318 from pevik)</comment>
+    <requestid>773539</requestid>
+  </revision>
 </revisionlist>

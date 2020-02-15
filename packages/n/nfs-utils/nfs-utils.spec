@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.3.3
+Version:        2.4.3
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/NFS
-Url:            http://kernel.org/pub/linux/utils/nfs-utils/
+URL:            http://kernel.org/pub/linux/utils/nfs-utils/
 Source0:        http://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils-%{version}.tar.xz
 # Download does not work:
 # Source1:        ftp://nfs.sourceforge.net/pub/nfs/nfs.doc.tar.bz2
@@ -45,14 +45,6 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-nfs.conf-allow-empty-assignments.patch
-Patch2:         0002-Let-systemd-know-when-rpc.statd-is-needed.patch
-Patch3:         0003-systemd-run-statd-notify-even-when-nfs-client-isn-t-.patch
-Patch4:         0004-nfsidmap-honour-with-pluginpath-for-instalation.patch
-Patch5:         0005-nfs.conf-fail-to-disable-major-NFS-version-4-using-v.patch
-Patch6:         0006-conffile-allow-optional-include-files.patch
-Patch7:         0007-statd-user-from-sm
-Patch8:         0008-mountd-Initialize-logging-early.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel
@@ -150,14 +142,6 @@ This package contains additional NFS documentation.
 %prep
 %setup -q -a 1
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 cp %{SOURCE6} .
 
@@ -277,12 +261,12 @@ if [ -f %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd ]; then
 	mv %{_localstatedir}/lock/subsys/nfsserver-rpc.idmapd /run/nfs
 fi
 ###
-%service_add_post nfs-mountd.service nfs-server.service
+%service_add_post nfs-mountd.service nfs-server.service nfsdcld.service
 %tmpfiles_create nfs-kernel-server.conf
 %set_permissions /var/lib/nfs/rmtab
 
 %postun -n nfs-kernel-server
-%service_del_postun nfs-mountd.service nfs-server.service
+%service_del_postun nfs-mountd.service nfs-server.service nfsdcld.service
 
 %verifyscript -n nfs-kernel-server
 %verify_permissions -e /var/lib/nfs/rmtab
@@ -296,9 +280,10 @@ fi
 /sbin/mount.nfs4
 /sbin/umount.nfs
 /sbin/umount.nfs4
-/sbin/osd_login
 %attr(0755,root,root) %{_sbindir}/mountstats
 %attr(0755,root,root) %{_sbindir}/nfsiostat
+%{_sbindir}/clddb-tool
+%{_sbindir}/nfsdcld
 %{_sbindir}/nfsidmap
 %{_sbindir}/nfsstat
 %{_sbindir}/rcnfs-client
@@ -317,6 +302,7 @@ fi
 %{_unitdir}/nfs-client.target
 %{_unitdir}/nfs-idmapd.service
 %{_unitdir}/nfs-utils.service
+%{_unitdir}/nfsdcld.service
 %{_unitdir}/rpc-gssd.service
 %{_unitdir}/rpc-gssd.service.d
 %{_unitdir}/rpc_pipefs.target
@@ -330,9 +316,11 @@ fi
 %dir /usr/lib/systemd/system-generators
 /usr/lib/systemd/system-generators/nfs-server-generator
 /usr/lib/systemd/system-generators/rpc-pipefs-generator
+%{_mandir}/man8/clddb-tool.8%{ext_man}
 %{_mandir}/man5/nfsmount.conf.5%{ext_man}
 %{_mandir}/man5/nfs.conf.5%{ext_man}
 %{_mandir}/man5/nfs.5%{ext_man}
+%{_mandir}/man8/nfsdcld.8%{ext_man}
 %{_mandir}/man5/idmapd.conf.5%{ext_man}
 %{_mandir}/man7/nfs.systemd.7%{ext_man}
 %{_mandir}/man8/mount.nfs.8%{ext_man}
