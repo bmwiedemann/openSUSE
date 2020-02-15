@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019-2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -123,6 +123,9 @@ Patch34:        s390-tools-sles15sp2-34-zkey-Add-convert-command-to-convert-keys
 Patch35:        s390-tools-sles15sp2-35-zkey-Allow-zkey-cryptsetup-setkey-to-set-different-k.patch
 Patch36:        s390-tools-sles15sp2-zcrypt-CEX7S-exploitation-support.patch
 Patch37:        s390-tools-sles15sp2-zcryptstats-Add-support-for-CEX7.patch
+Patch38:        s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
+Patch39:        s390-tools-sles15sp2-zkey-Fix-listing-of-keys-on-file-systems-reporting-D.patch
+Patch40:        s390-tools-sles15sp2-zkey-Fix-display-of-clear-key-size-for-XTS-keys.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
@@ -137,6 +140,7 @@ Patch908:       dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
 Patch909:       59-dasd.rules-wait_for.patch
 Patch910:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
 Patch911:       s390-tools-sles15sp2-Close-file-descriptor-when-checking-for-read-only.patch
+Patch912:       s390-tools-sles15sp1-zdev-Also-include-the-ctc-driver-in-the-initrd.patch
 
 BuildRequires:  dracut
 BuildRequires:  fuse-devel

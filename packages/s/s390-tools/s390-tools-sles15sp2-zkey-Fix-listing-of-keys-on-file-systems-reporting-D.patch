@@ -1,0 +1,62 @@
+Subject: [PATCH] [BZ 183125] zkey: Fix listing of keys on file systems reporting DT_UNKNOWN.
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Description:   zkey: Fix listing of keys on file systems reporting DT_UNKNOWN.
+Symptom:       When the zkey key repository is located in a file system that
+               does not have full support for report the file type, such as
+               XFS, the 'zkey list' command does not show any keys, although
+               keys exist in the repository.
+Problem:       The zkey list function uses scandir() to look for files in the
+               zkey key repository directory. It checks the dirent.d_type field
+               to consider only regular files, but skips all others. File
+               systems that do not have full support for returning the file
+               type in d_type will return DT_UNKNOWN instead. zkey skips
+               those directory entries and thus does not show any keys.
+Solution:      Also consider directory entries with d_type = DT_UNKNOWN.
+Reproduction:  Use zkey with a zkey repository directory located in a file
+               system that does not have full support for returning the file
+               type, such as XFS. Generate a key in the repository and then
+               list the key s with 'zkey list'.
+               Note: Newly created XFS file systems usually support returning
+               the file type, but existing XFS file systems might not. To
+               create an XFS file system that does not support returning the
+               file type, use 'mkfs.xfs -f -m crc=0 -n ftype=0' to create
+               the file system.
+Upstream-ID:   0de533aef9def920fed751c6025e4f19c4cba763~
+Problem-ID:    183125
+
+Upstream-Description:
+
+               zkey: Fix listing of keys on file systems reporting DT_UNKNOWN
+
+               The zkey list function uses scandir() to look for files in the
+               zkey key repository directory. It checks the dirent.d_type field
+               to consider only regular files, but skip all others.
+
+               Unfortunately, not all file systems have full support for returning
+               the file type in d_type. When the zkey repository is located in a file
+               system that does not support d_type, such as xfs, zkey list shows no
+               keys, although the key repository contains keys.
+
+               Fix this by also considering directory entries with d_type = DT_UNKNOWN.
+
+               Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+               Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -906,7 +906,7 @@ static int _keystore_info_file_filter(co
+ {
+ 	size_t len;
+ 
+-	if (dirent->d_type != DT_REG)
++	if (dirent->d_type != DT_REG && dirent->d_type != DT_UNKNOWN)
+ 		return 0;
+ 
+ 	len = strlen(dirent->d_name);

@@ -1,0 +1,60 @@
+Subject: [PATCH] [BZ 183401] zkey: Fix display of clear key size for XTS keys
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Description:   zkey: Fix display of clear key size for XTS keys
+Symptom:       The 'zkey list' command shows bogus values for the
+               keys 'Clear key size' for XTS keys of type CCA-AESDATA
+               or CCA-AESCIPHER.
+Problem:       XTS keys consist of 2 keys concatenated to each other.
+               To calculate the clear key size, the clear key size of
+               both keys must be added. The code does not address the
+               second key correctly, and thus reads the clear key size
+               of the second key from an invalid memory location. This
+               results in bogus values reported as clear key size.
+               This bug has been introduced with feature SEC1717 "Cipher
+               key support" with commit 298fab68fee8 "zkey: Preparations 
+               for introducing a new key type".
+Solution:      Correct the addressing of the second key.
+Reproduction:  Generate an XTS key of type CCA-AESDATA or CCA-AESCIPHER
+               and then run 'zkey list'.
+Upstream-ID:   e7f446432b92b293e758099842843cfb1f18fa97
+Problem-ID:    183401
+
+Upstream-Description:
+
+              zkey: Fix display of clear key size for XTS keys
+
+              Fixes: 298fab68fee8 ("zkey: Preparations for introducing a new key type")
+              Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/pkey.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -1591,8 +1591,8 @@ int get_key_bit_size(const u8 *key, size
+ 	if (is_cca_aes_data_key(key, key_size)) {
+ 		*bitsize = datakey->bitsize;
+ 		if (key_size == 2 * AESDATA_KEY_SIZE) {
+-			datakey = (struct aesdatakeytoken *)key +
+-					AESDATA_KEY_SIZE;
++			datakey = (struct aesdatakeytoken *)(key +
++					AESDATA_KEY_SIZE);
+ 			*bitsize += datakey->bitsize;
+ 		}
+ 	} else if (is_cca_aes_cipher_key(key, key_size)) {
+@@ -1601,8 +1601,8 @@ int get_key_bit_size(const u8 *key, size
+ 		else
+ 			*bitsize = 0; /* Unknown */
+ 		if (key_size > cipherkey->length) {
+-			cipherkey = (struct aescipherkeytoken *)key +
+-					cipherkey->length;
++			cipherkey = (struct aescipherkeytoken *)(key +
++					cipherkey->length);
+ 			if (cipherkey->pfv == 0x00) /* V0 payload */
+ 				*bitsize += cipherkey->pl - 384;
+ 		}
