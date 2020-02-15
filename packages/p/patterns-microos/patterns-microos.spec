@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,6 @@ Requires:       cracklib-dict-small
 Requires:       dosfstools
 Requires:       dracut
 Requires:       elfutils
-Requires:       fcoe-utils
 Requires:       filesystem
 Requires:       glibc
 Requires:       grub2
@@ -138,9 +137,6 @@ Requires:       grub2-arm64-efi
 Requires:       grub2-arm-efi
 Requires:       grub2-arm-uboot
 %endif
-%ifnarch s390x
-Requires:       irqbalance
-%endif
 %ifarch x86_64
 Requires:       mokutil
 Requires:       shim
@@ -187,6 +183,10 @@ Requires:       kernel-lpae
 Requires:       kernel-default
 %endif
 Requires:       kernel-firmware
+%ifnarch s390x
+Requires:       irqbalance
+%endif
+Requires:       fcoe-utils
 
 %description hardware
 Packages required to install openSUSE MicroOS on real hardware.
@@ -281,6 +281,164 @@ Requires:       cloud-init-config-MicroOS
 %description cloud
 Packages required to enable openSUSE MicroOS in the Cloud.
 
+%package desktop-gnome
+Summary:        MicroOS GNOME Desktop
+Group:          Metapackages
+Provides:       pattern() = microos_gnome_desktop
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 9100
+Provides:       pattern-visible()
+Requires:       gdm-branding-MicroOS
+Requires:       pattern() = gnome_basic
+Requires:       pattern() = x11
+# from data/COMMON-DESKTOP
+Requires:       desktop-data
+Requires:       desktop-file-utils
+#
+# Now the real packages
+#
+# #332596
+Requires:       gnome-keyring-pam
+# implied by gnome-keyring-pam
+#Requires:     gnome-keyring
+Requires:       gnome-power-manager
+# implied by gdm
+#Requires: gnome-shell
+#Requires: gnome-settings-daemon
+# implied by gnome-shell
+#Requires:       gnome-control-center
+#
+# Default sessions
+# - Put in Recommends for now, to make sure the livecd will always build; but
+#   ideally, should be in Requires
+# - We also we explicitly put the packages required by those sessions, in case
+#   gnome-session-*-session is not installable, to make sure the livecd is
+#   somehow a bit usable
+#
+Requires:       gnome-session-default-session
+# boo#1090117
+Requires:       gnome-shell-classic
+Requires:       gnome-terminal
+# bnc#879466
+Requires:       gnome-user-docs
+Requires:       gpgme
+# we need something for xdg-su
+Requires:       adobe-sourcecodepro-fonts
+Requires:       adobe-sourcesanspro-fonts
+Requires:       adobe-sourceserifpro-fonts
+Requires:       dejavu-fonts
+Requires:       file-roller
+Requires:       flatpak
+Requires:       ghostscript-fonts-other
+Requires:       ghostscript-fonts-std
+Requires:       gnome-calculator
+Requires:       gnome-packagekit
+Requires:       gnome-software
+Requires:       gnome-system-monitor
+Requires:       gnome-tweak-tool
+Requires:       google-carlito-fonts
+Requires:       google-droid-fonts
+Requires:       google-opensans-fonts
+Requires:       google-roboto-fonts
+Requires:       libgnomesu
+Requires:       nautilus
+Requires:       nautilus-extension-terminal
+Requires:       nautilus-share
+Requires:       noto-coloremoji-fonts
+Requires:       noto-emoji-fonts
+Requires:       noto-sans-fonts
+Requires:       polkit-default-privs
+# Pulseaudio is the default sound server
+Requires:       pulseaudio-module-gsettings
+Requires:       pulseaudio-module-x11
+Requires:       samba
+# #509829
+Requires:       xdg-user-dirs-gtk
+Requires:       yelp
+#
+# Low-level parts that we need
+#
+%if 0%{is_opensuse}
+# bnc#430161
+Requires:       NetworkManager
+Requires:       NetworkManager-applet
+%endif
+%if 0%{is_opensuse}
+Requires:       canberra-gtk-play
+%endif
+%if 0%{is_opensuse}
+Requires:       MozillaFirefox
+Requires:       avahi
+#
+# Branding
+#
+# #591535
+Requires:       gio-branding-openSUSE
+Requires:       gtk2-branding-openSUSE
+Requires:       gtk3-branding-openSUSE
+Requires:       hicolor-icon-theme-branding-openSUSE
+
+#PackageKit
+Requires:       PackageKit
+Requires:       PackageKit-branding-openSUSE
+%endif
+
+%description desktop-gnome
+Packages required for the openSUSE MicroOS Desktop with GNOME.
+
+%package desktop-kde
+Summary:        MicroOS KDE Plasma Desktop
+Group:          Metapackages
+Provides:       pattern() = microos_kde_desktop
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 9101
+Provides:       pattern-visible()
+Requires:       pattern() = kde_plasma
+
+# Some basic system tools
+Requires:       kate
+Requires:       konsole
+
+# Recommended by kde_plasma
+Requires:       bluedevil5
+Requires:       breeze5-wallpapers
+Requires:       dolphin
+Requires:       kde-print-manager
+Requires:       kdeconnect-kde
+Requires:       kgamma5
+Requires:       kwrited5
+Requires:       phonon4qt5-backend-gstreamer
+Requires:       plasma-nm5
+Requires:       plasma5-addons
+Requires:       plasma5-pa
+Requires:       plasma5-pk-updates
+Requires:       plasma5-session-wayland
+Requires:       sddm
+# Not useful with excludedocs...
+#Requires:       khelpcenter5
+Requires:       kio-extras5
+Requires:       kwalletmanager5
+Requires:       pinentry-qt5
+
+Requires:       alsa-plugins-pulse
+Requires:       pulseaudio
+Requires:       pulseaudio-module-x11
+Requires:       pulseaudio-module-zeroconf
+Requires:       pulseaudio-utils
+
+# Recommends and Supplements won't work, so pull in manually
+Requires:       discover-backend-flatpak
+Requires:       pipewire
+Requires:       plasma5-defaults-openSUSE
+Requires:       qqc2-desktop-style
+Requires:       sddm-theme-openSUSE
+Requires:       xdg-desktop-portal-kde
+
+%description desktop-kde
+Packages required for the openSUSE MicroOS with KDE Plasma
+
 %package onlyDVD
 Summary:        Packages only for the DVD of openSUSE MicroOS
 Group:          Metapackages
@@ -346,7 +504,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 
 %install
 mkdir -p %buildroot/usr/share/doc/packages/patterns-microos/
-for i in basesystem base defaults hardware ima_evm apparmor selinux sssd_ldap cloud \
+for i in basesystem base defaults hardware ima_evm apparmor selinux sssd_ldap cloud desktop-gnome desktop-kde \
     onlyDVD alt_onlyDVD; do
 	echo "This file marks the pattern $i to be installed." >%buildroot/usr/share/doc/packages/patterns-microos/$i.txt
 done
@@ -394,6 +552,16 @@ done
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/cloud.txt
+
+%files desktop-gnome
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/desktop-gnome.txt
+
+%files desktop-kde
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/desktop-kde.txt
 
 %files onlyDVD
 %defattr(-,root,root)

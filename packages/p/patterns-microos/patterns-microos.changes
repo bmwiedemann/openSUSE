@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 12 15:04:18 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Move fcoe-utils and irqbalance to hardware pattern, not useful
+  on guest install.
+
+-------------------------------------------------------------------
+Wed Feb 12 09:48:30 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Introduce MicroOS Desktop patterns [boo#1163453] 
+
+-------------------------------------------------------------------
 Tue Nov 26 10:29:21 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install libnss_usrfiles2 by default for /usr/etc support

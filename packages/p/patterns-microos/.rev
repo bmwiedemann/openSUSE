@@ -91,4 +91,15 @@
     <comment>- Install libnss_usrfiles2 by default for /usr/etc support</comment>
     <requestid>750999</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>acc5794d20e5e1264733a3268f57d079</srcmd5>
+    <version>5.0</version>
+    <time>1581801893</time>
+    <user>dimstar_suse</user>
+    <comment>- Move fcoe-utils and irqbalance to hardware pattern, not useful
+  on guest install.
+- Introduce MicroOS Desktop patterns [boo#1163453] 
+</comment>
+    <requestid>773808</requestid>
+  </revision>
 </revisionlist>
