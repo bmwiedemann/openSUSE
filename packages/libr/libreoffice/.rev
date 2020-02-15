@@ -2647,4 +2647,12 @@ Petr</comment>
     <comment>- Move the animation library to core package bsc#1162152</comment>
     <requestid>768552</requestid>
   </revision>
+  <revision rev="195" vrev="3">
+    <srcmd5>edb90200a4b59b38b8df21acf61da6dc</srcmd5>
+    <version>6.4.0.3</version>
+    <time>1581801837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773683</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:03:39 UTC 2020 - Marina Latini <marina.latini@suse.com>
+
+- Fix autocorrect names for Italian 
+  In Italian there are also other locales that should be included
+  in this list like fur_IT lld_IT sc_IT and vec_IT
+
+-------------------------------------------------------------------
+Sun Feb  9 04:51:53 UTC 2020 - Thomas Williams <bif.bam@gmail.com>
+
+- Remove unneeded (and counterintuitive) mysql/mariadb dep from core
+  RPMs. Move it instead to the -base package, where it's really used.
+
+-------------------------------------------------------------------
+Thu Feb  6 09:55:01 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add soffice.sh_Avoid-exporting-empty-LC_ALL.patch to fix broken
+  handling of non-ASCII characters in the KDE filedialog
+  (boo#1161816)
+
+-------------------------------------------------------------------
 Thu Jan 30 10:24:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Move the animation library to core package bsc#1162152

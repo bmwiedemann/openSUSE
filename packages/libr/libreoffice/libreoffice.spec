@@ -100,6 +100,8 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-UPSTREAM lo-Fix-build-with-poppler-0.83.patch
 Patch4:         lo-Fix-build-with-poppler-0.83.patch
+# PATCH-FIX-UPSTREAM soffice.sh_Avoid-exporting-empty-LC_ALL.patch
+Patch5:         soffice.sh_Avoid-exporting-empty-LC_ALL.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -956,6 +958,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch4 -p1
+%patch5 -p1
 %patch990 -p1
 %patch991 -p1
 
@@ -1247,7 +1250,7 @@ done
 %make_autocorr_aliases -l de de-DE de-AT de-BE de-CH de-LI de-LU
 %make_autocorr_aliases -l es es-ES es-AR es-BO es-CL es-CO es-CR es-CU es-DO es-EC es-GT es-HN es-MX es-NI es-PA es-PE es-PR es-PY es-SV es-US es-UY es-VE
 %make_autocorr_aliases -l fr fr-FR fr-BE fr-CA fr-CH fr-LU fr-MC
-%make_autocorr_aliases -l it it-IT it-CH
+%make_autocorr_aliases -l it it-IT it-CH fur_IT lld_IT sc_IT vec_IT
 %make_autocorr_aliases -l nl-NL nl-AW
 %make_autocorr_aliases -l sv-SE sv-FI
 pushd %{buildroot}%{_libdir}/%{name}/share/autocorr
@@ -1352,6 +1355,11 @@ mv tmplist file-lists/common_list.txt
 export DESTDIR=%{buildroot}
 export SRCDIR="./"
 ./solenv/bin/install-gdb-printers -a %{_datadir}/gdb/auto-load%{_libdir}/%{name} -c -i %{_libdir}/%{name} -p %{_datadir}/libreoffice/gdb
+
+# Why would the mysql lib which is only USED by base not be IN THE BASE PACKAGE?!?
+grep -v "%{_libdir}/libreoffice/program/libmysqlclo.so" file-lists/common_list.txt > tmplist
+mv tmplist file-lists/common_list.txt
+echo "%{_libdir}/libreoffice/program/libmysqlclo.so" >> file-lists/base_list.txt
 
 # We have ton of duped files so run over it
 %fdupes %{buildroot}%{_prefix}

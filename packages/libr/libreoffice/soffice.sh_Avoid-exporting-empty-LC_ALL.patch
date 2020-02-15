@@ -1,0 +1,72 @@
+From f5b7139b8eb1296e28d0983f35c3cec11d215298 Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Wed, 05 Feb 2020 09:40:56 +0100
+Subject: [PATCH] tdf#130080 soffice.sh: Avoid exporting empty LC_ALL
+
+The previous way of doing
+
+    LO_SAVE_LC_ALL="$LC_ALL"
+    LC_ALL=C
+    export LC_ALL
+    # ... (call some tools,...)
+    LC_ALL="$LO_SAVE_LC_ALL"
+
+resulted in the LC_ALL environment variable explicity being
+set to an empty string in case it was not set at all previously.
+
+For some reason, an LC_ALL explicitly set to an empty string
+(other than an unset LC_ALL) makes the system ICU on various
+Linux distributions assume an "US-ASCII" encoding, even if the
+locale is otherwise configured to be a UTF-8 one.
+Since the corresponding detection from ICU is used in the
+KF5/Qt stack, that resulted in the Plasma-native file picker
+assuming an ASCII-encoding, and thus having problems with
+files containing non-ASCII characters.
+
+To avoid this, don't export LC_ALL if unset or set to an
+empty string.
+
+A big thanks to frinring on IRC #kde-devel for the analysis
+of why the Plasma-native file picker is affected by LC_ALL being
+set to an empty string!
+
+I could also reproduce that the following sample program run
+with 'LC_ALL=' on KDE Neon Developer edition printed "US-ASCII"
+when using the system ICU, while it printed "UTF-8" when using
+a self-built ICU as of current master (commit
+d6b88d49e3be7096baf3828776c2b482a8ed1780) instead, but did not
+further investigate why:
+
+    #include <unicode/ucnv.h>
+    #include <iostream>
+
+    int main() {
+        std::cout << ucnv_getDefaultName();
+    }
+
+Change-Id: Idee88f200b6edecdb2633ed6e6fa70b370ffcf0c
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/88003
+Reviewed-by: Michael Stahl <michael.stahl@cib.de>
+Tested-by: Jenkins
+(cherry picked from commit 25649502e08a52087dea5e482d34a1d4150f0930)
+---
+
+diff --git a/desktop/scripts/soffice.sh b/desktop/scripts/soffice.sh
+index 026f7f0..415ea04 100755
+--- a/desktop/scripts/soffice.sh
++++ b/desktop/scripts/soffice.sh
+@@ -169,8 +169,12 @@
+     ;;
+ esac
+ 
+-# restore locale setting
+-LC_ALL="$LO_SAVE_LC_ALL"
++# restore locale setting, avoiding to export empty LC_ALL, s. tdf#130080
++if [ -n "$LO_SAVE_LC_ALL" ]; then
++    LC_ALL="$LO_SAVE_LC_ALL"
++else
++    unset LC_ALL
++fi
+ 
+ # run soffice.bin directly when you want to get the backtrace
+ if [ -n "$GDBTRACECHECK" ] ; then
