@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 14 17:31:40 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 7.0.2
+* change FIXEDWIDTH default to better accommodate auto-rotation (13 Dec 2019)
+* prevent SSL_accept() from blocking (5 Dec 2019)
+* support libtiff v4.1 (5 Dec 2019)
+* fix ignoremodembusy feature broken by ModemGroup limits feature (16 Nov 2019)
+
+-------------------------------------------------------------------
 Fri Nov 22 15:00:52 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Version 7.0.1
