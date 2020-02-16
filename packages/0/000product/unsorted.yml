@@ -1648,7 +1648,6 @@ unsorted:
   - cilium-etcd-operator 
   - cilium-init: [x86_64] 
   - cilium-operator: [x86_64] 
-  - cilium-proxy: [x86_64] 
   - cimple 
   - cimple-cmpi-adapter 
   - cimple-devel 
@@ -2358,7 +2357,7 @@ unsorted:
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Leap 
-  - distribution-logos-openSUSE-MicroOS 
+  - distribution-logos-openSUSE-MicroOS: [i586] 
   - dita 
   - diy-devel: [x86_64] 
   - djvu2pdf 
@@ -2686,6 +2685,7 @@ unsorted:
   - envoy-protoc-gen-validate 
   - envoy-protoc-gen-validate-source 
   - envoy-proxy: [x86_64] 
+  - envoy-proxy-source: [x86_64] 
   - envy24control 
   - eog-devel 
   - eog-plugin-exif-display 
@@ -3540,6 +3540,7 @@ unsorted:
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
   - gdl-devel 
   - gdlmm-devel 
+  - gdm-branding-MicroOS: [i586] 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -5780,7 +5781,6 @@ unsorted:
   - ispell-slovene 
   - ispell-swedish 
   - istgt 
-  - istio-proxy: [x86_64] 
   - isync 
   - itk 
   - itpp-devel 
@@ -10948,6 +10948,7 @@ unsorted:
   - libpwquality-tools 
   - libpythia8 
   - libpythia8lhapdf6 
+  - libpython2_7-1_0-32bit: [x86_64] 
   - libpython3_7m1_0-32bit: [x86_64] 
   - libqalculate-devel 
   - libqb-devel 
@@ -17789,6 +17790,7 @@ unsorted:
   - python-azure-agent-test 
   - python-azure-sdk 
   - python-barbicanclient-doc 
+  - python-base-32bit: [x86_64] 
   - python-beautifulsoup4-doc 
   - python-billiard-doc 
   - python-blinker-doc 
