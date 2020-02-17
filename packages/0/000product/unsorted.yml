@@ -7527,7 +7527,9 @@ unsorted:
   - libQt5Xml5-32bit: [x86_64] 
   - libQt5XmlPatterns5-32bit: [x86_64] 
   - libQtAV1 
+  - libQtAV1-32bit: [x86_64] 
   - libQtAVWidgets1 
+  - libQtAVWidgets1-32bit: [x86_64] 
   - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
   - libRivet-3_1_0 
@@ -10853,6 +10855,7 @@ unsorted:
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit: [x86_64] 
+  - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
   - libpoppler94-32bit: [x86_64] 
   - libportal-devel 
@@ -10901,6 +10904,10 @@ unsorted:
   - libproxy-sharp 
   - libproxy-tools 
   - libproxy1-32bit: [x86_64] 
+  - libproxy1-config-gnome3-32bit: [x86_64] 
+  - libproxy1-config-kde-32bit: [x86_64] 
+  - libproxy1-networkmanager-32bit: [x86_64] 
+  - libproxy1-pacrunner-webkit-32bit: [x86_64] 
   - libpsiconv6 
   - libpskc-devel 
   - libpsl-devel 
@@ -10966,6 +10973,7 @@ unsorted:
   - libqcustomplot2 
   - libqd0 
   - libqgpgme-devel 
+  - libqgpgme7-32bit: [x86_64] 
   - libqhexedit4 
   - libqhull7 
   - libqimageblitz5-1 
