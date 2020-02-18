@@ -21,7 +21,7 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           granite
-Version:        5.2.4
+Version:        5.3.0
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later AND LGPL-3.0-or-later
@@ -96,10 +96,11 @@ This package contains the development files for %{soname}.
 %prep
 %setup -q
 
-# Fix: invalid-filepath-dependency
-sed -e "s/libgranite.full_path.*\,$/'%{soname}.so.%{sover}',/" \
-    -i $(grep -rl 'libgranite.full_path')
-
+# Fix: invalid-filename-dependency
+# Can't install typelib-1_0-Granite nothing provides libgranite.so.*()(64bit)
+sed -e "s/\(.\)@PLAINNAME@\(.\)/\1%{soname}.so.%{sover}\2/" \
+    -i lib/meson.build
+    
 %build
 %meson
 %meson_build
@@ -117,13 +118,14 @@ sed -e "s/libgranite.full_path.*\,$/'%{soname}.so.%{sover}',/" \
 
 %files common
 %license COPYING
-%doc AUTHORS README*
+%doc README*
 %{_datadir}/icons/hicolor/*/actions/appointment.??g
 %{_datadir}/icons/hicolor/*/actions/open-menu*.??g
+%{_datadir}/metainfo/granite.appdata.xml
 
 %files demo
 %{_bindir}/%{name}-demo
-%{_datadir}/applications/%{name}-demo.desktop
+%{_datadir}/applications/io.elementary.granite.demo.desktop
 
 %files -n typelib-1_0-Granite-1_0
 %{_typelibdir}/Granite-1.0.typelib
@@ -137,5 +139,3 @@ sed -e "s/libgranite.full_path.*\,$/'%{soname}.so.%{sover}',/" \
 %{_datadir}/vala/vapi/%{name}.vapi
 
 %files lang -f %{name}.lang
-
-%changelog
