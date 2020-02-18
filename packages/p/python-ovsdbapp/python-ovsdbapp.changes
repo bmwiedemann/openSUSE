@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:47:14 UTC 2019 - cloud-devel@suse.de
+
+- update to version 0.17.0
+  - modify RowEvent hash key
+  - Mock Thread for both connection tests
+  - Add missing tox environment "functional-py36"
+  - TrivialFix: Fix the chassis_del comment in Southbound API
+  - Add mock.patch.stopall cleanup handler to base test class
+  - Make Event logging more useful by default
+  - Make event debug log more useful
+  - Switch functional and tempest jobs to python3
+  - Allow match_ip in LrNatDelCommand to be IP network
+  - Add db_create_row method
+  - Break out match_fn from matches
+  - Sync Sphinx requirement
+  - Remove vtep-related code from venv testing
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+  - Make it possible to opt out of nested transactions
+  - Add HA Chassis Group related commands
+  - Add commands to set and get LRP options
+  - Pass kwargs from execute to transaction()
+  - Replace openstack repository by opendev
+  - Bump appdirs lower constraint
+  - Update the UPPER_CONSTRAINTS_FILE for tox
+  - Update master for stable/stein
+  - Move WaitForPortBindingEvent out from testing code
+  - add an option to let the user choose the right time to start connection
+  - Change the order of parameters for lsp_bind method
+
+-------------------------------------------------------------------
 Mon Apr  8 13:52:13 UTC 2019 - cloud-devel@suse.de
 
 - update to version 0.15.0
