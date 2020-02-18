@@ -673,4 +673,38 @@ all changed Requires/Buildrequires seem to be available
   - fix formatting of sample defaults</comment>
     <requestid>692854</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d05c60596b8e72f16ce958ac55164d38</srcmd5>
+    <version>6.11.1</version>
+    <time>1582018850</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.11.1
+  - Move user docs to top of index
+  - Switch to sphinxcontrib-apidoc
+  - Update master for stable/stein
+  - Add unit tests for validator
+  - OpenDev Migration Patch
+  - Deprecate ConfigFilter
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Revert &quot;Replace git.openstack.org URLs with opendev.org URLs&quot;
+  - Clean up the unnecessary sphinx from test-requirements.txt
+  - Add note to docs about CLI opts and config files
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Handle collections.abc deprecations
+  - Document precedence of config sources
+  - tox: Suppress output
+  - Add exclude-groups option to config validator
+  - Dropping the py35 testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Improve removing quotes logic
+  - Clarify help on config-file and config-dir options
+  - Add a Quick Start tutorial
+  - tox: Whitelist 'find'
+  - Add special handling for keystone_authtoken group
+  - Fix coverage tox venv
+  - Remove '.testr.conf'
+  - Add Python 3 Train unit tests
+  - Bump the openstackdocstheme extension to 1.20</comment>
+    <requestid>774910</requestid>
+  </revision>
 </revisionlist>

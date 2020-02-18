@@ -17,15 +17,14 @@
 
 
 Name:           python-oslo.config
-Version:        6.8.1
+Version:        6.11.1
 Release:        0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.config
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-6.8.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-6.11.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-PyYAML >= 3.12
 BuildRequires:  python2-debtcollector >= 1.2.0
 BuildRequires:  python2-fixtures
@@ -38,13 +37,12 @@ BuildRequires:  python2-requests >= 2.18.0
 BuildRequires:  python2-requests-mock
 BuildRequires:  python2-rfc3986 >= 1.2.0
 BuildRequires:  python2-six >= 1.10.0
+BuildRequires:  python2-stestr
 BuildRequires:  python2-stevedore >= 1.20.0
-BuildRequires:  python2-testrepository
 BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-debtcollector >= 1.2.0
-BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-netaddr >= 0.7.18
@@ -55,8 +53,8 @@ BuildRequires:  python3-requests >= 2.18.0
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-rfc3986 >= 1.2.0
 BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
-BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 Requires:       python-PyYAML >= 3.12
@@ -94,21 +92,23 @@ parsing library from the Oslo project.
 %package -n python-oslo.config-doc
 Summary:        Documentation for OpenStack common configuration library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python2-Sphinx
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.config-doc
 Documentation for the oslo-config library.
 
 %prep
-%autosetup -p1 -n oslo.config-6.8.1
+%autosetup -p1 -n oslo.config-6.11.1
 %py_req_cleanup
 
 %build
 %{python_build}
 
-PBR_VERSION=6.8.1 PYTHONPATH=. \
-    sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=6.11.1 PYTHONPATH=. \
+    %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -126,9 +126,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %check
 # Requires oslo.log which we can't depend on for build cycle reasons
 rm -v oslo_config/tests/test_cfg.py
-%{python_expand rm -rf .testrepository
-$python setup.py testr
-}
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license LICENSE
