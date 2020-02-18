@@ -17,19 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-PyGithub
-Version:        1.45
+Version:        1.46
 Release:        0
 Summary:        Python library to use the GitHub API v3
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/PyGithub/PyGithub
 Source:         https://github.com/PyGithub/PyGithub/archive/v%{version}.tar.gz
-Patch0:         no-hardcoded-dep.patch
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module httpretty >= 0.9.6}
-BuildRequires:  %{python_module mock >= 3.0.5}
 BuildRequires:  %{python_module parameterized >= 0.7.0}
 BuildRequires:  %{python_module requests >= 2.14.0}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +42,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-PyGithub is a Python (2 and 3) library to use the Github API v3.
+PyGithub is a Python 3 library to use the Github API v3.
 Github resources (repositories, user profiles, organizations,
 etc.) can be managed with this.
 
