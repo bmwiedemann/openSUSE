@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-loguru
-Version:        0.3.2
+Version:        0.4.1
 Release:        0
-License:        MIT
 Summary:        Python logging component with a simple interface
-Url:            https://github.com/Delgan/loguru
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Recommends:     python-colorama
 BuildArch:      noarch
 
@@ -54,8 +55,8 @@ export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
-%doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%doc README.rst
+%{python_sitelib}/loguru*
 
 %changelog

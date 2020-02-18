@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:14:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.1
+  * Deprecate the ansi parameter of .opt() in favor of colors
+    which is a name more appropriate.
+  * Prevent unrelated files and directories to be incorrectly
+    collected thus causing errors during the retention process
+  * Strip color markups contained in record["message"] when
+    logging with .opt(ansi=True) instead of leaving them as is.
+  * Ignore color markups contained in *args and **kwargs when
+    logging with .opt(ansi=True), leave them as is instead of
+    trying to use them to colorize the message which could cause
+    undesirable errors.
+- Update to version 0.4.0
+  * Add support for coroutine functions used as sinks and add the
+    new logger.complete() asynchronous method to await them.
+  * Add a way to filter logs using one level per module in the
+    form of a dict passed to the filter argument.
+  * Add type hints to annotate the public methods using a .pyi
+    stub file.
+  * Add support for copy.deepcopy() of the logger allowing multiple
+    independent loggers with separate set of handlers.
+  * Add the possibility to convert datetime to UTC before
+    formatting (in logs and filenames) by adding "!UTC" at the end
+    of the time format specifier.
+  * Add the level name as the first argument of namedtuple returned
+    by the .level() method.
+  * Remove class objects from the list of supported sinks and
+    restrict usage of **kwargs in .add() to file sink only. User is
+    in charge of instantiating sink and wrapping additional keyword
+    arguments if needed, before passing it to the .add() method.
+  * Rename the logger.configure() keyword argument patch to patcher
+    so it better matches the signature of logger.patch().
+  * Fix AttributeError while using a file sink on some distributions
+    (like Alpine Linux) missing the os.getxattr and os.setxattr
+    functions.
+  * Fix values wrongly displayed for keyword arguments during
+    exception formatting with diagnose=True.
+  * Fix logging messages wrongly chopped off at the end while using
+    standard logging.Handler sinks with .opt(raw=True).
+  * Fix an error using a filter function "by name" while receiving
+    a log with record["name"] equals to None.
+  * Fix incorrect record displayed while handling errors
+    (if catch=True) occurring because of non-picklable objects
+    (if enqueue=True).
+  * Prevent hypothetical ImportError if a Python installation is
+    missing the built-in distutils module.
+  * Raise TypeError instead of ValueError when a logger method is
+    called with argument of invalid type.
+  * Raise ValueError if the built-in format() and filter() functions
+    are respectively used as format and filter arguments of the
+    add() method. This helps the user to understand the problem, as
+    such a mistake can quite easily occur.
+  * Remove inheritance of some record dict attributes to str (for
+    "level", "file", "thread" and "process").
+  * Give a name to the worker thread used when enqueue=True
+
+-------------------------------------------------------------------
 Fri Aug  2 02:37:29 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.3.2
