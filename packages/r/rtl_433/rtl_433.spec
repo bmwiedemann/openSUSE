@@ -1,7 +1,7 @@
 #
 # spec file for package rtl_433
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define version_unconverted 19.08+git.20190829
+%define version_unconverted 20.02+git.20200218
 Name:           rtl_433
-Version:        19.08+git.20190829
+Version:        20.02+git.20200218
 Release:        0
 Summary:        Application turning the RTL2832 dongle into a 433.92MHz generic data receiver
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ URL:            https://github.com/merbanan/rtl_433.git
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(libusb)
 
