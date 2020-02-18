@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Feb 12 17:49:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.6:
+  + SIM: Updated logic to avoid sending PIN/PUK to the SIM card
+    when not required (e.g. if already unlocked).
+  + Simple interface: Avoid aborting connection if SIM-PUK2 locked,
+    as PIN2/PUK2 doesn't prevent us from getting connected.
+  + Location interface: Fixed memory leak happening as soon as a
+    position fix was obtained and gps-raw location source was
+    enabled.
+  + Core:
+    - Fixed handling of 0x00 bytes at the end of GSM encoded
+      strings.
+    - Fixed cleaning up 'timed-out' signal on the serial port
+      objects.
+    - Fixed logic that closes MBIM ports during cleanup.
+  + Several other minor fixes and memory leak plugs.
+- Changes from version 1.12.4:
+  + Core: Added missing ME error codes when building GError
+    variables for the MM_MOBILE_EQUIPMENT_ERROR domain.
+  + Bearer: Avoid connection checks or stats updates while
+    disconnecting.
+  + Serial port: Fix segfault when port flash operation gets
+    cancelled.
+  + Simple interface: Fix the ongoing connection cancellable
+    handling.
+  + Voice interface: Fix segfault when voice support check fails.
+  + QMI: Fixed several memory leaks, including a severe one
+    happening when multiple GPS sources (e.g. raw and nmea) were
+    enabled at the same time.
+  + Plugins: ublox: ignore errors when attempting to disconnect
+    last bearer.
+  + mmcli: Allow "yes" and "no" as boolean strings.
+  + Several other minor fixes and memory leak plugs.
+- Changes from version 1.12.2:
+  + Simple interface: Avoid assertion on the ongoing connect
+    cancellable.
+  + Plugin manager:
+    - Fix waiting the minimum probing time.
+    - Explicitly cancel timeouts when device probing is cancelled.
+    - Disable lazy plugin loading, we now require all missing
+      symbols to be resolved at loading time for a plugin to
+      correctly be loaded.
+  + Bearer: Avoid reporting disconnection error if trying to
+    disconnect a bearer that is already disconnected.
+  + MBIM: Completely skip LTE attach config/status if unsupported.
+  + QMI:
+    - Make current settings mandatory when using 'static'
+      addressing.
+    - Handle disconnection indications during connection attempt.
+    - Explicitly close QMI port during disconnection if it was
+      opened during a connection attempt.
+  + Plugins:
+    - huawei: avoid using QCDM port during a voice call.
+    - sierra: added port type hints for the EM7565.
+    - dell,dw5821e: added support for the DW5821e with eSIM
+      variant.
+  + mmcli: Fix printing empty value lists in human-friendly output.
+  + Several other minor fixes and memory leak plugs.
+
+-------------------------------------------------------------------
 Wed Nov  6 20:40:26 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.0

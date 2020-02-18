@@ -632,4 +632,12 @@
       is used for the connection, in order to properly sync with (forwarded request 746198 from mnhauke)</comment>
     <requestid>746228</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>47819cb4f2656a0765a3823a54df162b</srcmd5>
+    <version>1.12.6</version>
+    <time>1582018460</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>774604</requestid>
+  </revision>
 </revisionlist>
