@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 18 03:07:17 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Convert-UUlib/Changes
+
+  1.62 Mon Feb 17 23:19:42 CET 2020
+  	- major performance improvement by simplifying code in _FP_gets
+            to not use fscanf. This might slow things down on platforms
+            with very slow fgetc.
+  
+  1.61 Sun Feb  9 18:38:29 CET 2020
+  	- lint uulib: fix some format string type mismatches
+            and some other minor issues.
+
+-------------------------------------------------------------------
 Sat Nov  9 10:53:22 UTC 2019 -  <tina.mueller@suse.com>
 
 - Add manual license GPL-1.0-or-later to cpanspec.yml (see COPYING file in

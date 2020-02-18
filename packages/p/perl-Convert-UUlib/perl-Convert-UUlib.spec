@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Convert-UUlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Convert-UUlib
-Version:        1.6
+Version:        1.62
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Convert-UUlib
@@ -44,7 +44,7 @@ this document and especially the non-trivial decoder program at the end.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
