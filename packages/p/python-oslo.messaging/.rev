@@ -404,4 +404,41 @@
   - Switch driver to confluent-kafka client library</comment>
     <requestid>692859</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1a4968976feda328339f7dae6e455936</srcmd5>
+    <version>10.2.0</version>
+    <time>1582018882</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 10.2.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - doc: Cleanup admin docs
+  - Add Python 3 Train unit tests
+  - Support kafka message compression
+  - Introduce RabbitMQ driver documentation
+  - Download kafka from archive.apache.org
+  - Handle collections.abc deprecations
+  - Update master for stable/stein
+  - Use default exchange for direct messaging
+  - Add the &quot;transport_options&quot; parameter to the amqp1 and kafka drivers.
+  - Clarify the documentation for pooled Notification Listeners
+  - Add transport_options parameter
+  - Implement the transport options
+  - Dropping the py35 testing
+  - Consider the topic parameter as an array in client-notify
+  - Fix nits on kafka compression help text
+  - Add thread name to the RabbitMQ heartbeat thread
+  - Replace openstack.org git:// URLs with https://
+  - Update messaging intermediaries for amqp1 tests
+  - Remove log translation and i18n
+  - Retry to declare a queue after internal error
+  - Unmark RabbitMQ heartbeat as experimental
+  - Add help msg to payload for CLI notifier
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Handle unexpected failures during call monitor heartbeat
+  - Allow users run the rabbitmq heartbeat inside a standard pthread.
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Implement mandatory flag for RabbitMQ driver
+  - Add the mandatory flag for direct send</comment>
+    <requestid>774915</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:26:51 UTC 2019 - cloud-devel@suse.de
+
+- update to version 10.2.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - doc: Cleanup admin docs
+  - Add Python 3 Train unit tests
+  - Support kafka message compression
+  - Introduce RabbitMQ driver documentation
+  - Download kafka from archive.apache.org
+  - Handle collections.abc deprecations
+  - Update master for stable/stein
+  - Use default exchange for direct messaging
+  - Add the "transport_options" parameter to the amqp1 and kafka drivers.
+  - Clarify the documentation for pooled Notification Listeners
+  - Add transport_options parameter
+  - Implement the transport options
+  - Dropping the py35 testing
+  - Consider the topic parameter as an array in client-notify
+  - Fix nits on kafka compression help text
+  - Add thread name to the RabbitMQ heartbeat thread
+  - Replace openstack.org git:// URLs with https://
+  - Update messaging intermediaries for amqp1 tests
+  - Remove log translation and i18n
+  - Retry to declare a queue after internal error
+  - Unmark RabbitMQ heartbeat as experimental
+  - Add help msg to payload for CLI notifier
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Handle unexpected failures during call monitor heartbeat
+  - Allow users run the rabbitmq heartbeat inside a standard pthread.
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Implement mandatory flag for RabbitMQ driver
+  - Add the mandatory flag for direct send
+  - fix typos
+  - Explain why Listener connections cannot be pooled
+  - OpenDev Migration Patch
+  - Bump the openstackdocstheme extension to 1.20
+  - Fix switch connection destination when a rabbitmq cluster node disappear
+  - Correcting typo in acknowledge spelling
+
+-------------------------------------------------------------------
 Mon Apr  8 11:37:20 UTC 2019 - cloud-devel@suse.de
 
 - update to version 9.5.0
