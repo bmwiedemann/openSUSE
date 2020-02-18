@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 16 03:09:04 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.83
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.83    2020-02-15      Remove dependency on Data::Compare, which in turn
+                            depends on non-pure-perl XS in CLone.pm
+  
+  1.82    2020-02-15      Fix build bug affecting perl 5.8 when AUTOMATED_TESTING
+                            is set (https://github.com/DrHyde/perl-modules-Devel-CheckOS/pull/23)
+
+-------------------------------------------------------------------
 Wed Feb  7 15:24:31 UTC 2018 - coolo@suse.com
 
 - updated to 1.81

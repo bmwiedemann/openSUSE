@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-CheckOS
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Devel-CheckOS
-Version:        1.81
+Version:        1.83
 Release:        0
 #Upstream:  This software is free-as-in-speech software, and may be used, distributed, and modified under the terms of either the GNU General Public Licence version 2 or the Artistic Licence. It's up to you which one you use. The full text of the licences can be found in the files GPL2.txt and ARTISTIC.txt, respectively.
 %define cpan_name Devel-CheckOS
-Summary:        Check What Os We're Running On
-License:        GPL-2.0 or Artistic-1.0
+Summary:        Check what OS we're running on
+License:        GPL-2.0-only OR Artistic-1.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Devel-CheckOS/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Data::Compare) >= 1.21
 BuildRequires:  perl(File::Find::Rule) >= 0.28
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(Data::Compare) >= 1.21
 Requires:       perl(File::Find::Rule) >= 0.28
 Requires:       perl(File::Temp) >= 0.19
 Requires:       perl(Test::More) >= 0.88
@@ -55,14 +53,14 @@ covering them with a splendid Fedora.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
