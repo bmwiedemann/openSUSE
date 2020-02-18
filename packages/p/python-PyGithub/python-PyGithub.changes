@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:22:59 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.46
+  + Bug Fixes & Improvements
+    * Add repo edit support for delete_branch_on_merge
+    * Fix mistake in Repository.create_fork()
+    * Correct two attributes in Invitation
+    * Search repo issues by string label
+    * Correct Repository.create_git_tag_and_release()
+    * exposed seats and filled_seats for Github Organization Plan
+    * Repository.create_project() body is optional
+    * Implement move action for ProjectCard
+    * Tidy up ProjectCard.get_content()
+    * Added nested teams and parent
+    * Correct parameter for Label.edit
+    * doc: example of Pull Request creation
+    * Fix PyPI wheel deployment
+- No longer build Python 2 package
+- Drop BuildRequires on mock, no longer required
+- Drop no-hardcoded-dep.patch, no longer required
+
+-------------------------------------------------------------------
 Mon Jan  6 04:35:05 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.45:
