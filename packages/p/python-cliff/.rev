@@ -449,4 +449,22 @@
   - Don't try to run issubclass on non-classes</comment>
     <requestid>692819</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9f08e6bdb585f7d9157f66d387fe5572</srcmd5>
+    <version>2.16.0</version>
+    <time>1582018482</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.16.0
+  - Dropping the py35 testing
+  - add python 3.7 unit test job
+  - Remove dead files
+  - OpenDev Migration Patch
+  - Updates for OpenDev transition
+  - Change openstack-dev to openstack-discuss
+  - Pin cmd2 back to &lt;0.9 on all versions
+  - add argparse conflict handler &quot;ignore&quot;
+  - Missing carriage return in some cases, using -f json
+  - Add Python 3 Train unit tests</comment>
+    <requestid>774899</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,37 @@
 
 
 Name:           python-cliff
-Version:        2.14.1
+Version:        2.16.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-cliff
-Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-2.14.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-2.16.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-PrettyTable
 BuildRequires:  python2-PyYAML
 BuildRequires:  python2-cmd2
+BuildRequires:  python2-docutils
 BuildRequires:  python2-mock
 BuildRequires:  python2-pbr
 BuildRequires:  python2-python-subunit
 BuildRequires:  python2-setuptools
+BuildRequires:  python2-stestr
 BuildRequires:  python2-stevedore
-BuildRequires:  python2-testrepository
 BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python2-unicodecsv
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-cmd2
+BuildRequires:  python3-docutils
 BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
-BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 Requires:       python-PrettyTable
@@ -67,7 +70,8 @@ other extensions.
 %package -n python-cliff-doc
 Summary:        %{summary} - Documentation
 Group:          Documentation/HTML
-BuildRequires:  python2-Sphinx
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 Provides:       %{python_module cliff-doc = %{version}}
 
 %description -n python-cliff-doc
@@ -78,22 +82,20 @@ other extensions.
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n cliff-2.14.1
+%autosetup -p1 -n cliff-2.16.0
 
 %py_req_cleanup
 
 %build
 %python_build
-%{__python2} setup.py build_sphinx
+PBR_VERSION=2.16.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %python_install
 
 %check
-%{python_expand rm -rf .testrepository
-$python setup.py test
-}
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license LICENSE
