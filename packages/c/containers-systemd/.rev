@@ -51,4 +51,13 @@
   * Add haproxy</comment>
     <requestid>773810</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1992acb9caffbacf5d119f635327ac0</srcmd5>
+    <version>0.0+git20200217.580c00f</version>
+    <time>1582018957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200217.580c00f:
+  * Add squid</comment>
+    <requestid>775002</requestid>
+  </revision>
 </revisionlist>
