@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 14 13:46:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable packaging of user-theme extension: Despite its name, this
+  extension is also used to enable 'system themes' in GMOME Tweaks.
+  And since we have multiple themes in the repository, we should
+  also provide the needed extension to enable them.
+- No longer obsolete gnome-shell-extension-user-theme.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:11:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

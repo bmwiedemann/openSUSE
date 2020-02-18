@@ -805,4 +805,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767150 from dimstar)</comment>
     <requestid>767415</requestid>
   </revision>
+  <revision rev="94" vrev="5">
+    <srcmd5>0230721cf7b1184a117621156751700b</srcmd5>
+    <version>3.34.1</version>
+    <time>1582018457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774602</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -70,7 +70,6 @@ Obsoletes:      gnome-shell-extension-gajim < %{version}
 Obsoletes:      gnome-shell-extension-native-window-placement < %{version}
 Obsoletes:      gnome-shell-extension-places-menu < %{version}
 Obsoletes:      gnome-shell-extension-systemMonitor < %{version}
-Obsoletes:      gnome-shell-extension-user-theme < %{version}
 Obsoletes:      gnome-shell-extension-windows-navigator < %{version}
 Obsoletes:      gnome-shell-extension-workspace-indicator < %{version}
 Obsoletes:      gnome-shell-extension-xrandr-indicator < %{version}
@@ -102,6 +101,14 @@ Group:          System/GUI/GNOME
 This packages provides architecture dependent session files to
 gnome-shell classic.
 
+%package -n gnome-shell-extension-user-theme
+Summary:        Allow the user to change GNOME Shell Themes
+Group:          System/GUI/GNOME
+
+%description -n gnome-shell-extension-user-theme
+This extension allows the user to switch to different themes. It's possible
+to pick system installed themes or even themes installed in the user's home.
+
 %lang_package -n %{name}-common
 
 %prep
@@ -128,7 +135,7 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %meson \
     -D classic_mode=true \
     -D extension_set=classic \
-    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator, horizontal-workspaces"
+    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,horizontal-workspaces,user-theme"
 %meson_build
 
 %install
@@ -219,6 +226,10 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %defattr(-,root,root)
 %license COPYING
 %{_datadir}/gnome-session/sessions/gnome-classic.session
+
+%files -n gnome-shell-extension-user-theme
+%license COPYING
+%{_datadir}/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/
 
 %files common-lang -f %{name}.lang
 
