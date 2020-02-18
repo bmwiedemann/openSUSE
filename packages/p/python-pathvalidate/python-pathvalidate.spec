@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathvalidate
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pathvalidate
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Python library to sanitize/validate a string such as filenames
 License:        MIT
@@ -30,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
+BuildRequires:  %{python_module allpairspy}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
