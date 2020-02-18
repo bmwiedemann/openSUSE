@@ -17,7 +17,7 @@
 
 
 Name:           gnome-klotski
-Version:        3.34.3
+Version:        3.34.4
 Release:        0
 Summary:        Klotski Game for GNOME
 License:        GPL-3.0-or-later
