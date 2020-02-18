@@ -1,0 +1,51 @@
+From 126343d586171444681c43ff26a5e116651340eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 13 Feb 2020 04:23:10 +0100
+Subject: [PATCH] Fix CMakeLists.txt
+
+Fix issue #83 - use CMAKE_INSTALL_LIBDIR
+Fix issue #84 - link with -libm for sqrt
+---
+ CMakeLists.txt | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cfc372d..945c87b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,8 @@ if(NOT CMAKE_BUILD_TYPE)
+ endif(NOT CMAKE_BUILD_TYPE)
+ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+ 
++include(GNUInstallDirs)
++
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+ 
+@@ -48,19 +50,20 @@ set(SOURCES ${PROJECT_SOURCE_DIR}/src/arithmetic.c
+ 
+ # Shared library
+ add_library(symspg SHARED ${SOURCES})
++target_link_libraries(symspg m)
+ set_property(TARGET symspg PROPERTY VERSION ${serial})
+ set_property(TARGET symspg PROPERTY SOVERSION ${soserial})
+-install(TARGETS symspg LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++install(TARGETS symspg LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # Static link library
+ add_library(symspg_static STATIC ${SOURCES})
+ set_property(TARGET symspg_static PROPERTY VERSION ${serial})
+ set_property(TARGET symspg_static PROPERTY SOVERSION ${soserial})
+ set_property(TARGET symspg_static PROPERTY OUTPUT_NAME symspg)
+-install(TARGETS symspg_static ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++install(TARGETS symspg_static ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # Header file
+-install(FILES ${PROJECT_SOURCE_DIR}/src/spglib.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
++install(FILES ${PROJECT_SOURCE_DIR}/src/spglib.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/spglib)
+ 
+ # make check
+ enable_testing()
+-- 
+2.25.0
+
