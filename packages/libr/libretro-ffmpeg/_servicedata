@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/FFmpeg.git</param>
+              <param name="changesrevision">ffbe659368f9c5c2fa549f045a0fceb0f87cac50</param></service></servicedata>
