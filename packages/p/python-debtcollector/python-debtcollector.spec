@@ -16,15 +16,14 @@
 #
 
 
-%global pypi_name debtcollector
 Name:           python-debtcollector
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        A collection of Python deprecation patterns and strategies
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/debtcollector/
-Source0:        https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-1.22.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-fixtures
 BuildRequires:  python2-funcsigs >= 1.0.0
@@ -62,8 +61,7 @@ future deprecations.
 %package -n python-debtcollector-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
 %description -n python-debtcollector-doc
@@ -80,14 +78,14 @@ future deprecations.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -p1 -n debtcollector-1.22.0
 %py_req_cleanup
 
 %build
 %python_build
 
 # generate html doc
-%{__python2} setup.py build_sphinx
+PBR_VERSION=1.22.0 %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
@@ -100,8 +98,8 @@ rm -rf html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-*.egg-info
+%{python_sitelib}/debtcollector
+%{python_sitelib}/debtcollector-*.egg-info
 
 %files -n python-debtcollector-doc
 %license LICENSE

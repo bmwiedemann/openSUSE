@@ -186,4 +186,19 @@
   - import zuul job settings from project-config</comment>
     <requestid>692821</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>074629c195b99ce0a2899f7da1d0f794</srcmd5>
+    <version>1.22.0</version>
+    <time>1582018485</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.22.0
+  - OpenDev Migration Patch
+  - add python 3.7 unit test job
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update Sphinx requirement
+  - Add Python 3 Train unit tests</comment>
+    <requestid>774900</requestid>
+  </revision>
 </revisionlist>
