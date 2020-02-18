@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:50:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.4:
+  + EDBusServer: Delay new module load.
+  + alarm-notify: Double-free with certain types of the reminder.
+  + Bugs fixed:
+    - Calendar: Handle errors in file backend's refresh thread
+      gracefully.
+    - WebDAV: Privilege with multiple child elements not handled
+      properly.
+    - Broken search folder that includes all mails from other
+      search folders.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:07:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
