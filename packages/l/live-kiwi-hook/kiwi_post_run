@@ -34,6 +34,8 @@ newiso="$(echo "${oldiso}" | sed -E 's/([^.]*)\.([^0-9][^-]+).*(Build.*)/\1-\2-\
 
 # Use rename to also rename the checksum files
 rename -v "${oldiso}" "${newiso}" ./*
+# Adjust references in .sha256 files
+sed -i"" "s/${oldiso}/${newiso}/g" ./*.sha256
 
 isosize="$(stat -c %s "${newiso}.iso")"
 

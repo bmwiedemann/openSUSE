@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:21:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Update the filename in .sha256 files as well (boo#1159974)
+
+-------------------------------------------------------------------
 Wed Mar 27 09:15:57 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Provide and conflict kiwi_post_run (boo#1130510)
