@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:54:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * Add POSIX as a platform
+  * Change platform of validate_filepath_arg/sanitize_filepath_arg
+    to 'auto':
+
+-------------------------------------------------------------------
 Sat Feb  8 09:47:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 2.1.0
