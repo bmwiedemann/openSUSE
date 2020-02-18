@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 17 18:01:02 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.2+1581962442.g190d64e:
+  + upstream 1.1.2 release (2020-02-17)
+    * Implement "vagrant box list" and "vagrant box remove" (PR#69)
+    * Allow user to specify custom private key file for remote libvirt (PR#71)
+    * spec: add Fedora-specific Requires (PR#77)
+    * Pillar is now automatically configured by ceph-bootstrap (PR#78)
+    * Implement "sesdev scp" feature (PR#101)
+    * Implement "sesdev create caasp4" feature (PR#103)
+    * Miscellaneous spec file cleanups and bugfixes (PR#72)
+    * several fixes for octopus/ses7 deployment (PR#76)
+    * Remove any orphaned images after destroy (PR#81)
+    * seslib: fix Ceph repos for ses5, ses6, ses7 (PR#83)
+    * tools/run_async: decode stderr bytes (PR#88)
+    * libvirt/network: autostart networks per default (PR#93)
+    * Fix NTP issue that was causing SES5 deployment to fail (PR#108)
+    * Increase chances of getting the latest ses7 packages (PR#84)
+    * ceph_bootstrap_deployment: log cephadm and ceph-bootstrap version (PR#86)
+    * ceph_bootstrap: restart salt-master after ceph-bootstrap installation (PR#87)
+    * seslib: add SES7 Internal Media when --qa-test given (PR#90)
+
+-------------------------------------------------------------------
 Sat Feb  1 09:56:19 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.1+1580550501.gd6782ab:
