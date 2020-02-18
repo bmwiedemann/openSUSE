@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 18 03:11:57 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.012
+   see /usr/share/doc/packages/perl-PerlIO-Layers/Changes
+
+  0.012     2020-02-18 01:30:34+01:00 Europe/Amsterdam
+            Add ppport.h for backwards compatibility
+
+-------------------------------------------------------------------
 Mon May 29 19:26:19 UTC 2017 - coolo@suse.com
 
 - initial package 0.011
