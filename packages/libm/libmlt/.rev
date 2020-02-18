@@ -533,4 +533,12 @@ Only build sdl2 module.
   * Fixed preset overrides depend on the XML attribute order.</comment>
     <requestid>750045</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>58e7e67ffeb98a43fb08038181e440e2</srcmd5>
+    <version>6.20.0</version>
+    <time>1582028963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.20.0</comment>
+    <requestid>775047</requestid>
+  </revision>
 </revisionlist>

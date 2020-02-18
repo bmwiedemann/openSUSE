@@ -1,7 +1,7 @@
-Index: mlt-6.18.0/src/modules/lumas/create_lumas
+Index: mlt-6.20.0/src/modules/lumas/create_lumas
 ===================================================================
---- mlt-6.18.0.orig/src/modules/lumas/create_lumas
-+++ mlt-6.18.0/src/modules/lumas/create_lumas
+--- mlt-6.20.0.orig/src/modules/lumas/create_lumas
++++ mlt-6.20.0/src/modules/lumas/create_lumas
 @@ -1,5 +1,7 @@
  #!/bin/sh
  
@@ -9,4 +9,4 @@ Index: mlt-6.18.0/src/modules/lumas/create_lumas
 +
  [ \( -d PAL \) -a \( ! $0 -nt .executed \) ] && exit 0
  
- bpp=16
+ if [ "$(uname -s)" = "Darwin" ]; then

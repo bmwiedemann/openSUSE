@@ -1,7 +1,7 @@
 #
 # spec file for package libmlt
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 6.18.0
+%define lversion 6.20.0
 %define soname 6
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define soname_pp 3
 
 Name:           %{libname}
-Version:        6.18.0
+Version:        6.20.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later

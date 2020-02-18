@@ -1,7 +1,7 @@
 #
 # spec file for package webvfx
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define _name mlt
-%define mltversion 6.18.0
-%define mltsoversion 6.18.0
+%define mltversion 6.20.0
+%define mltsoversion 6.20.0
 %define sover 1
 %define mltmaj %(echo %{mltversion} |cut -d "." -f 1)
 # Find qt version used to build
 %define qt5version %(pkg-config --modversion Qt5Core)
 Name:           webvfx
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Video effects engine based on web technologies
 License:        BSD-3-Clause
@@ -47,8 +47,8 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5WebSockets)
-BuildRequires:  pkgconfig(mlt++)
-BuildRequires:  pkgconfig(mlt-framework)
+BuildRequires:  pkgconfig(mlt++) = %{mltversion}
+BuildRequires:  pkgconfig(mlt-framework) = %{mltversion}
 
 %description
 WebVfx is a video effects library that allows effects to be

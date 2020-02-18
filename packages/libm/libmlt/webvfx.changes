@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 17 11:39:18 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.0
+  * This version adds support for MLT v6.20.0's preview
+    scaling.
+  * For the MLT integration, if the resource starts with
+    "plain:" webvfx does automatic scaling per the zoom level.
+    This works fine for content that is simply produced or
+    overlayed by the filter. However, content that uses the
+    webvfx JavaScript extension will not operate with zoom
+    unless the service property mlt_resolution_scale is set to
+    1.
+    New properties mlt_profile_scale_width and
+    mlt_profile_scale_height as real numbers that reflect the
+    new MLT consumer scale property used to do low-res preview
+    scaling. Content script can access this via
+    webvfx.getNumberParameter() to scale its parameters and
+    elements.
+
+- Refreshed webvfx-versioned-libdir.patch and
+  webvfx-nobrowser.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 12:02:29 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.0
