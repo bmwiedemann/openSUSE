@@ -986,4 +986,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>766699</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>f909408d8d61b40fc7c7e4b12d2b95d5</srcmd5>
+    <version>5.4.1</version>
+    <time>1582018477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774897</requestid>
+  </revision>
 </revisionlist>
