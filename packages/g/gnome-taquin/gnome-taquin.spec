@@ -17,7 +17,7 @@
 
 
 Name:           gnome-taquin
-Version:        3.34.3
+Version:        3.34.4
 Release:        0
 Summary:        A computer version of the 15-puzzle and other sliding puzzles
 License:        GPL-3.0-or-later
