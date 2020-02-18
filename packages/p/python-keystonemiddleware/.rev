@@ -196,4 +196,32 @@ update to version 4.9.0
   - Added request_id and global_request_id to CADF notifications</comment>
     <requestid>692833</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc67475944598249ae01e3a29106a1d9</srcmd5>
+    <version>7.0.1</version>
+    <time>1582018807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.0.1
+  - OpenDev Migration Patch
+  - Remove PKI/PKIZ support
+  - Run lower-constraints on Bionic and update python-keystoneclient
+  - Add a new option to choose the Identity endpoint
+  - Comment html_static_path entry in docs conf.py
+  - Update master for stable/stein
+  - Fix debug tox environment
+  - Add Python 3 Train unit tests
+  - Remove Diablo compatibility tests
+  - print auth version for request strategy in debug
+  - Update the min version of tox
+  - Drop py35 jobs
+  - Blacklist bandit 1.6.0 &amp; cap sphinx for 2.7
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Run lower-constraints job on Xenial
+  - Add validation of app cred access rules
+  - Fix bandit warning
+  - Bump memcached minimum version
+  - Bump the openstackdocstheme extension to 1.20
+  - Fix string format error</comment>
+    <requestid>774904</requestid>
+  </revision>
 </revisionlist>

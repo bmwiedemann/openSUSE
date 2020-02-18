@@ -16,23 +16,21 @@
 #
 
 
-%global sname keystonemiddleware
 Name:           python-keystonemiddleware
-Version:        6.0.0
+Version:        7.0.1
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/k/%{sname}/%{sname}-%{version}.tar.gz
-BuildRequires:  openssl
+URL:            https://launchpad.net/keystonemiddleware
+Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-7.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-WebOb >= 1.7.1
 BuildRequires:  python2-WebTest
 BuildRequires:  python2-cryptography
 BuildRequires:  python2-fixtures
-BuildRequires:  python2-keystoneauth1 >= 3.4.0
-BuildRequires:  python2-keystoneclient >= 3.8.0
+BuildRequires:  python2-keystoneauth1 >= 3.12.0
+BuildRequires:  python2-keystoneclient >= 3.20.0
 BuildRequires:  python2-mock
 BuildRequires:  python2-oslo.cache >= 1.26.0
 BuildRequires:  python2-oslo.config >= 5.2.0
@@ -55,8 +53,8 @@ BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-WebTest
 BuildRequires:  python3-cryptography
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 3.4.0
-BuildRequires:  python3-keystoneclient >= 3.8.0
+BuildRequires:  python3-keystoneauth1 >= 3.12.0
+BuildRequires:  python3-keystoneclient >= 3.20.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.cache >= 1.26.0
 BuildRequires:  python3-oslo.config >= 5.2.0
@@ -76,12 +74,14 @@ BuildRequires:  python3-stevedore
 BuildRequires:  python3-testresources
 BuildRequires:  python3-testtools
 Requires:       python-WebOb >= 1.7.1
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-keystoneclient >= 3.8.0
+Requires:       python-keystoneauth1 >= 3.12.0
+Requires:       python-keystoneclient >= 3.20.0
 Requires:       python-oslo.cache >= 1.26.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.context >= 2.19.2
 Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-oslo.log >= 3.36.0
+Requires:       python-oslo.messaging
 Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-pycadf >= 1.1.0
@@ -100,15 +100,15 @@ does not expose any CLI or Python API features.
 %package -n python-keystonemiddleware-doc
 Summary:        Documentation for Middleware for OpenStack Identity
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-sphinxcontrib-apidoc
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-keystonemiddleware-doc
 Documentation for Middleware for OpenStack Identity.
 
 %prep
-%autosetup -p1 -n %{sname}-%{version}
+%autosetup -p1 -n keystonemiddleware-7.0.1
 %py_req_cleanup
 
 %build
@@ -119,7 +119,7 @@ Documentation for Middleware for OpenStack Identity.
 
 # generate html docs
 export PYTHONPATH=.
-PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -129,8 +129,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %python_files
 %license LICENSE
 %doc ChangeLog README.rst
-%{python2_sitelib}/%{sname}
-%{python2_sitelib}/*.egg-info
+%{python_sitelib}/keystonemiddleware
+%{python_sitelib}/*.egg-info
 
 %files -n python-keystonemiddleware-doc
 %doc doc/build/html

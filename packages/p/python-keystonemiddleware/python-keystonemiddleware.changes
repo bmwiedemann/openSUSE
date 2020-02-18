@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:26:49 UTC 2019 - cloud-devel@suse.de
+
+- update to version 7.0.1
+  - OpenDev Migration Patch
+  - Remove PKI/PKIZ support
+  - Run lower-constraints on Bionic and update python-keystoneclient
+  - Add a new option to choose the Identity endpoint
+  - Comment html_static_path entry in docs conf.py
+  - Update master for stable/stein
+  - Fix debug tox environment
+  - Add Python 3 Train unit tests
+  - Remove Diablo compatibility tests
+  - print auth version for request strategy in debug
+  - Update the min version of tox
+  - Drop py35 jobs
+  - Blacklist bandit 1.6.0 & cap sphinx for 2.7
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Run lower-constraints job on Xenial
+  - Add validation of app cred access rules
+  - Fix bandit warning
+  - Bump memcached minimum version
+  - Bump the openstackdocstheme extension to 1.20
+  - Fix string format error
+
+-------------------------------------------------------------------
 Mon Apr  8 13:54:07 UTC 2019 - cloud-devel@suse.de
 
 - update to version 6.0.0
