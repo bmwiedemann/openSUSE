@@ -17,16 +17,14 @@
 
 
 Name:           python-oslo.reports
-Version:        1.29.2
+Version:        1.30.0
 Release:        0
 Summary:        OpenStack oslo.reports library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.reports
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.reports/oslo.reports-1.29.2.tar.gz
-# https://review.openstack.org/588088
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.reports/oslo.reports-1.30.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-Jinja2 >= 2.10
 BuildRequires:  python2-eventlet
 BuildRequires:  python2-greenlet
@@ -40,7 +38,6 @@ BuildRequires:  python2-psutil >= 3.2.2
 BuildRequires:  python2-six >= 1.10.0
 BuildRequires:  python2-stestr
 BuildRequires:  python3-Jinja2 >= 2.10
-BuildRequires:  python3-devel
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-greenlet
 BuildRequires:  python3-oslo.config
@@ -68,8 +65,9 @@ framework, known as the "guru meditation report".
 %package -n python-oslo.reports-doc
 Summary:        Documentation for OpenStack reports library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.reports-doc
 The project oslo.reports hosts a general purpose error report generation
@@ -77,14 +75,14 @@ framework, known as the "guru meditation report".
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.reports-1.29.2
+%autosetup -p1 -n oslo.reports-1.30.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -97,8 +95,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
-%{python2_sitelib}/oslo_reports
-%{python2_sitelib}/*.egg-info
+%{python_sitelib}/oslo_reports
+%{python_sitelib}/*.egg-info
 
 %files -n python-oslo.reports-doc
 %license LICENSE

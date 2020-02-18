@@ -110,4 +110,18 @@
 - remove 0001-Update-unit-test-to-reflect-latest-oslo.config.patch (merged)</comment>
     <requestid>692923</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1c2a7e15300c77d80e333690fe3ead3</srcmd5>
+    <version>1.30.0</version>
+    <time>1582018896</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.30.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Sync Sphinx requirement
+  - OpenDev Migration Patch
+  - Move doc related modules to doc/requirements.txt
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests</comment>
+    <requestid>774919</requestid>
+  </revision>
 </revisionlist>
