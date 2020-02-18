@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="opensuse-squid-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>openSUSE image containing squid.</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/busybox#latest">
+      <containerconfig
+        name="opensuse/squid"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+	<entrypoint execute="/usr/local/bin/entrypoint.sh"/>
+	<subcommand execute="squid"/>
+	<expose>
+	  <port number='3128/tcp'/>
+	</expose>
+	<environment>
+	  <env name="SQUID_CACHE_DIR" value="/var/cache/squid"/>
+          <env name="SQUID_LOG_DIR" value="/var/log/squid"/>
+	</environment>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.squid">
+            <label name="org.opencontainers.image.title" value="openSUSE squid container"/>
+            <label name="org.opencontainers.image.description" value="Image containing squid."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/squid:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE squid container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>false</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="squid"/>
+    <package name="mandoc"/>
+    <archive name="entrypoint.tar.gz"/>
+  </packages>
+</image>
