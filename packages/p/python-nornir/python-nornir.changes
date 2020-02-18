@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 15 15:10:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update o version 2.4.0
+  * Netconf connection plugin does not respect ssh config
+  * Added napalm_ping.py plugin
+  * Replace multiprocessing.dummy with concurrent.futures
+  * Ansible Inventory - NornirNoValidInventoryError Exception
+  * Minor Typing updates to appease mypy
+  * Update to support Netmiko 3.x.x
+  * Add netconf plugins
+  * Fix KeyError when setting a “False” val in defaults
+  * Add Netbox inventory plugin to documentation
+  * Add netconf_capabilities plugin
+  * Fix netbox unnamed devices
+
+-------------------------------------------------------------------
 Mon Oct 14 09:03:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing buildtime requirement: colorama >= 0.4.1

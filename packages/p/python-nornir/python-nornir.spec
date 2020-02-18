@@ -1,7 +1,7 @@
 #
 # spec file for package python-nornir
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nornir
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Network automation framework written in Python
 License:        Apache-2.0
@@ -53,6 +53,7 @@ BuildRequires:  %{python_module pydantic >= 0.18.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module ruamel.yaml >= 0.15.85}
+BuildRequires:  %{python_module typing_extensions >= 3.7}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
