@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:29:27 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.29.2
+  - Dropping the py35 testing
+  - Introduce a base yaml parser for all openstack components
+  - Sync Sphinx requirement
+  - Cap sphinx for py2 to match global requirements
+  - Explicitly set default_flow_style to False
+  - Resolve some issue with tox.ini, setup.cfg
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs
+
+-------------------------------------------------------------------
 Mon Apr  8 11:25:54 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.28.2

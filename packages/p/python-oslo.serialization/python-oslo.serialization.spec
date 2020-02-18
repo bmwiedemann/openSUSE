@@ -17,15 +17,14 @@
 
 
 Name:           python-oslo.serialization
-Version:        2.28.2
+Version:        2.29.2
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.serialization
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-2.28.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-2.29.2.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-ipaddress
 BuildRequires:  python2-mock
 BuildRequires:  python2-msgpack >= 0.5.2
@@ -35,7 +34,6 @@ BuildRequires:  python2-oslo.utils >= 3.33.0
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-stestr
-BuildRequires:  python3-devel
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack >= 0.5.2
 BuildRequires:  python3-netaddr
@@ -58,8 +56,8 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 %package -n python-oslo.serialization-doc
 Summary:        Documentation for OpenStack serialization library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo.serialization-doc
 The oslo.serialization library provides support for representing objects
@@ -67,7 +65,7 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.serialization-2.28.2
+%autosetup -p1 -n oslo.serialization-2.29.2
 sed -i -e "s,bandit.*,," test-requirements.txt
 %py_req_cleanup
 
@@ -75,7 +73,7 @@ sed -i -e "s,bandit.*,," test-requirements.txt
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

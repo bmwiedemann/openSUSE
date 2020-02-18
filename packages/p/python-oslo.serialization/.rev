@@ -205,4 +205,22 @@
   - import zuul job settings from project-config</comment>
     <requestid>692865</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a86749f72164bff014427994ba874e2c</srcmd5>
+    <version>2.29.2</version>
+    <time>1582018902</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.29.2
+  - Dropping the py35 testing
+  - Introduce a base yaml parser for all openstack components
+  - Sync Sphinx requirement
+  - Cap sphinx for py2 to match global requirements
+  - Explicitly set default_flow_style to False
+  - Resolve some issue with tox.ini, setup.cfg
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs</comment>
+    <requestid>774921</requestid>
+  </revision>
 </revisionlist>
