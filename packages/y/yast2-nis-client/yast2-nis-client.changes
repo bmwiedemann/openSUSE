@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  7 16:09:20 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Preserve NSS database sources when adding nis to nsswitch.conf
+  file (bsc#1162916).
+- 4.2.2
+
+-------------------------------------------------------------------
 Tue Aug 27 18:23:15 CEST 2019 - schubi@suse.de
 
 - Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
