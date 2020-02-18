@@ -294,4 +294,32 @@
   - Clean up .gitignore references to personal tools</comment>
     <requestid>692858</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>91a2bc9bf078b24c984fe785a253b366</srcmd5>
+    <version>3.44.1</version>
+    <time>1582018879</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.44.1
+  - Use setLevel instead of setting logger.level directly
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Use raw string for regex
+  - Dropping the py35 testing
+  - Avoid tox_install.sh for constraints support
+  - Add Python 3 Train unit tests
+  - Schedule a periodical check of requirements to catch py2.7 issues quickly
+  - OpenDev Migration Patch
+  - Fix guidelines w.r.t. translation of log messages
+  - Replace openstack.org git:// URLs with https://
+  - Remove incubator migration docs
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add TRAIN to deprecated releases
+  - Cap bandit below 1.6.0 version and update sphinx and limit monotonic.
+  - Update master for stable/stein
+  - Add 'levelkey' + 'tbkey' params
+  - Add logging guidelines based on previous spec
+  - Bump the openstackdocstheme extension to 1.20
+  - Added cmdline information into fluentFormatter event message
+  - Modify the constraints url in tox.</comment>
+    <requestid>774914</requestid>
+  </revision>
 </revisionlist>

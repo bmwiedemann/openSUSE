@@ -17,15 +17,14 @@
 
 
 Name:           python-oslo.log
-Version:        3.42.3
+Version:        3.44.1
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-3.42.3.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-3.44.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-mock
 BuildRequires:  python2-monotonic >= 1.4
 BuildRequires:  python2-oslo.config >= 5.2.0
@@ -37,12 +36,9 @@ BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 3.1.1
 BuildRequires:  python2-pyinotify >= 0.9.6
 BuildRequires:  python2-python-dateutil >= 2.7.0
-BuildRequires:  python2-python-subunit
 BuildRequires:  python2-six >= 1.11.0
 BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
-BuildRequires:  python3-devel
 BuildRequires:  python3-mock
 BuildRequires:  python3-monotonic >= 1.4
 BuildRequires:  python3-oslo.config >= 5.2.0
@@ -54,10 +50,8 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-pyinotify >= 0.9.6
 BuildRequires:  python3-python-dateutil >= 2.7.0
-BuildRequires:  python3-python-subunit
 BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  python3-stestr
-BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 Requires:       python-debtcollector >= 1.19.0
 Requires:       python-monotonic >= 1.4
@@ -69,6 +63,7 @@ Requires:       python-oslo.utils >= 3.36.0
 Requires:       python-pyinotify >= 0.9.6
 Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-six >= 1.11.0
+Requires:       python-systemd
 BuildArch:      noarch
 %if 0%{?suse_version}
 Requires(post): update-alternatives
@@ -88,21 +83,21 @@ support for context specific logging (like resource id's etc).
 %package -n python-oslo.log-doc
 Summary:        Documentation for OpenStack log library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo.log-doc
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-3.42.3
+%autosetup -p1 -n oslo.log-3.44.1
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=3.42.3 sphinx-build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=3.44.1 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -114,6 +109,9 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %postun
 %python_uninstall_alternative convert-json
+
+%check
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license LICENSE
