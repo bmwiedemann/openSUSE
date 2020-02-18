@@ -2279,4 +2279,13 @@ for more fun options (forwarded request 147495 from coolo)</comment>
     <comment>- fix-locking-in-_IO_cleanup.patch: update to latest version (forwarded request 774214 from Andreas_Schwab)</comment>
     <requestid>774215</requestid>
   </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>3d61dfd50f5aba91e5a7cbe7ad52faad</srcmd5>
+    <version>2.31</version>
+    <time>1582035509</time>
+    <user>dimstar_suse</user>
+    <comment>- nsswitch.conf: comment out initgroups setting, so that it defaults to
+  the group setting (bsc#1164075) (forwarded request 775213 from Andreas_Schwab)</comment>
+    <requestid>775215</requestid>
+  </revision>
 </revisionlist>

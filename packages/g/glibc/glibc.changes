@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:41:56 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- nsswitch.conf: comment out initgroups setting, so that it defaults to
+  the group setting (bsc#1164075)
+
+-------------------------------------------------------------------
 Thu Feb 13 14:16:05 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - fix-locking-in-_IO_cleanup.patch: update to latest version
