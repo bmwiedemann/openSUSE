@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 16 19:32:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  * Drop Python 2 support
+  * Add type annotations and py.typed to the package
+  * Replace the logging library from Logbook to loguru
+  * Remove deprecated error classes
+  * Remove deprecated methods
+
+-------------------------------------------------------------------
 Thu Feb  6 21:44:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.17.2
