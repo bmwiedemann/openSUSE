@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-helpers-namespace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@ Summary:        PyTest Helpers Namespace
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/saltstack/pytest-helpers-namespace
-Source:         https://github.com/saltstack/pytest-helpers-namespace/archive/v2019.1.8.tar.gz#/pytest-helpers-namespace-%{version}.tar.gz
+Source:         https://github.com/saltstack/pytest-helpers-namespace/archive/v%{version}.tar.gz#/pytest-helpers-namespace-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest <  5
+Requires:       python-pytest
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module pytest-forked}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
