@@ -306,4 +306,12 @@ positives from dmeventd when a long logwatch run is in progress (forwarded reque
     <comment></comment>
     <requestid>726476</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>0864b17baa4b2b996e8053a94094a70a</srcmd5>
+    <version>7.5.2</version>
+    <time>1582018918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774937</requestid>
+  </revision>
 </revisionlist>
