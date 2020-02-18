@@ -24,4 +24,12 @@
     <comment>- unrestric pytest4, use pytest-forked to separate tests</comment>
     <requestid>744760</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f77af021f093488c544e553f08e0fbce</srcmd5>
+    <version>2019.1.8</version>
+    <time>1582029015</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict to pytest 5 as it works there too</comment>
+    <requestid>775140</requestid>
+  </revision>
 </revisionlist>

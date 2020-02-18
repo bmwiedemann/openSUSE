@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:10:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict to pytest 5 as it works there too
+
+-------------------------------------------------------------------
 Fri Nov  1 14:01:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - unrestric pytest4, use pytest-forked to separate tests 
