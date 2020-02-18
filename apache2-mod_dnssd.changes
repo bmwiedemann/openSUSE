@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:39:40 UTC 2020 - pgajdos@suse.com
+
+- removing %apache_test_* macros, do not test module just by
+  loading the module
+
+-------------------------------------------------------------------
 Tue Dec 19 13:19:58 UTC 2017 - pgajdos@suse.com
 
 -  buildrequire apr-devel instead of libapr1-devel

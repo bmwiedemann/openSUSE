@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_dnssd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Apache2 module for Zeroconf support via DNS-SD
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            http://0pointer.de/lennart/projects/mod_dnssd/
+URL:            http://0pointer.de/lennart/projects/mod_dnssd/
 Source:         %{_name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE apache2-mod_dnssd-apxs2-prefork.patch
 Patch0:         apache2-mod_dnssd-apxs2-prefork.patch
@@ -64,11 +64,6 @@ make %{?_smp_mflags}
 # make install can't work, as apxs -i apparently does not like redirection
 mkdir -p %{buildroot}/%{apache_libexecdir}
 cp -p src/.libs/%{_name}.so %{buildroot}/%{apache_libexecdir}
-
-%check
-set +x
-%apache_test_module_load -m dnssd
-set -x
 
 %files
 %defattr(-,root,root)
