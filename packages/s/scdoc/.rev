@@ -121,4 +121,16 @@
 - Update scdoc-1.6.1-makefile.patch</comment>
     <requestid>730284</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8ba5df482a59b322ae14a53206fbfce5</srcmd5>
+    <version>1.10.1</version>
+    <time>1582018701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * Replace str_t with struct str
+  * Expand preamble written to man page output
+  * Fix timezone-dependent tests
+  * Fix `date --date` dependent test</comment>
+    <requestid>774820</requestid>
+  </revision>
 </revisionlist>
