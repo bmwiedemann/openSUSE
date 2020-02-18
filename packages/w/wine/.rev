@@ -3430,4 +3430,18 @@
 - update staging to 5.1 release</comment>
     <requestid>769572</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>bec0c96aedba351770275e88f329e94b</srcmd5>
+    <version>5.2</version>
+    <time>1582018643</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.2 development release
+  - More compatible codepage mapping tables.
+  - Support for using the null display driver as a real driver.
+  - Better UTF-8 support in the Resource and Message Compilers.
+  - Fixes for using ucrtbase as C runtime.
+  - Various bug fixes.
+- update staging to 5.2 release</comment>
+    <requestid>774796</requestid>
+  </revision>
 </revisionlist>

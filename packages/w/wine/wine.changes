@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 17 07:50:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.2 development release
+  - More compatible codepage mapping tables.
+  - Support for using the null display driver as a real driver.
+  - Better UTF-8 support in the Resource and Message Compilers.
+  - Fixes for using ucrtbase as C runtime.
+  - Various bug fixes.
+- update staging to 5.2 release
+
+-------------------------------------------------------------------
 Mon Feb  3 12:46:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.1 development release

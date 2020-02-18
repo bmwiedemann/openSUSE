@@ -1,7 +1,7 @@
 #
 # spec file for package wine
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.1
-Version:        5.1
+%define realver 5.2
+Version:        5.2
 Release:        0
 
 %if "%{flavor}" != ""
@@ -125,7 +125,7 @@ BuildRequires:  pkgconfig(zlib)
 Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
-Url:            http://www.winehq.org/
+URL:            http://www.winehq.org/
 Source0:        https://dl.winehq.org/wine/source/5.x/%{projectname}-%{realver}.tar.xz
 Source41:       wine.keyring
 Source42:       https://dl.winehq.org/wine/source/5.x/%{projectname}-%{realver}.tar.xz.sign
@@ -157,7 +157,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.1
+%define staging_version 5.2
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
