@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 00:13:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix crash with libGeos 3.8.0, https://github.com/Ultimaker/Cura/issues/6771
+  Check-validity-of-polygon.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 11:33:43 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.4.1

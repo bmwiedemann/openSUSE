@@ -1185,4 +1185,12 @@
     <comment>- Update to release 2020.01.24</comment>
     <requestid>766719</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>2336c3e8f25d603e2323f2a1b2a7b130</srcmd5>
+    <version>2020.02.16</version>
+    <time>1582028967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.02.16</comment>
+    <requestid>775031</requestid>
+  </revision>
 </revisionlist>

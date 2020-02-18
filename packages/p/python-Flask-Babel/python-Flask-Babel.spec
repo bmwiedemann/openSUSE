@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Babel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Babel
-Version:        0.12.2
+Version:        1.0.0
 Release:        0
 Summary:        i18n and l10n support for Flask
 License:        BSD-3-Clause

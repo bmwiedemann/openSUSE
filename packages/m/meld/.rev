@@ -586,4 +586,12 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767378</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>254995b156eb944d682ab288f3646ced</srcmd5>
+    <version>3.20.2</version>
+    <time>1582028952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775015</requestid>
+  </revision>
 </revisionlist>

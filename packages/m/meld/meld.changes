@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 16 12:38:05 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.20.2:
+  + Fix display of large file sizes.
+  + Set file chooser encoding to autodetect by default.
+  + Fix ignoring blank lines on text-filtered files in folder
+    comparison.
+  + Fix expand/collapse actions for missing folders.
+  + Fix some incorrect action sensitivity settings.
+  + Fix height of commit dialog.
+  + Fix install support for Python 3.8.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:18:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

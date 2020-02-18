@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 16 05:57:42 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.0.0:
+  * pytz is an explicit dependency. (#14)
+  * pytz.gae, used for Google App Engine, is no longer necessary and
+    has been removed. (#153)
+  * Fixed a deprecated werkzeug import (#158).
+  * Fix issues switching locales in threaded contexts (#125).
+
+-------------------------------------------------------------------
 Sun Nov  4 23:43:26 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase.

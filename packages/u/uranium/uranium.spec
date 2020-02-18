@@ -1,7 +1,7 @@
 #
 # spec file for package uranium
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://github.com/Ultimaker/Uranium
 Source0:        Uranium-%{version}.tar.xz
 # X-OPENSUSE-FIX fix cmake install directory.
 Patch1:         fix-cmake-install.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/Ultimaker/Uranium/commit/78fa9ab2dd8ab117.patch
+Patch2:         Check-validity-of-polygon.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libArcus-devel
@@ -48,6 +50,7 @@ A Python framework for building Desktop applications.
 %prep
 %setup -q -n Uranium-%version
 %patch1 -p1
+%patch2 -p1
 
 %build
 # Hack, remove LIB_SUFFIX for 64bit, which is correct as uranium is pure python (i.e. noarch)
