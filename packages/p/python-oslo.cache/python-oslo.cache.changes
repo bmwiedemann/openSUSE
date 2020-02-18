@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:19:09 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.37.0
+  - tox: Use the new hotness for constraints
+  - Lower the memcache_socket_timeout to one second
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Pass `flush_on_reconnect` to memcache pooled backend
+  - add python 3.7 unit test job
+  - Dropping the py35 testing
+  - Avoid tox_install.sh for constraints support
+  - Replace git.openstack.org URLs with opendev.org URLs.
+  - OpenDev Migration Patch
+  - Pass server_max_value_length to memcached client
+  - Update hacking version
+  - Fix lower-constraints
+  - Add Python 3 Train unit tests
+  - Update master for stable/stein
+  - Remove stale comment in _memcache_pool
+
+-------------------------------------------------------------------
 Tue Jun 11 06:15:29 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.33.3
