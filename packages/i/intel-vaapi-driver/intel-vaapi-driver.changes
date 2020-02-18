@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 17 18:54:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.4.0
+  * Fix the dependency on libEGL (boo#1163093)
+  * Fix ROI support
+  * Fix FD leaks on Wayland
+  * Fix BRC setting
+  * Fix VP8 encoder
+  * Fix VP9 encoder
+  * Fix meson build
+- supersedes patches:
+  * U_vaapi_Check-interface-from-libva.patch
+  * U_vaapi_Revert-VPP-clear-surface.patch
+  * U_vaapi_Return-false-instead-assertion-fail.patch
+  * U_vaapi_HEVC-encoder-correct-minimal-bitrate.patch
+  * U_vaapi_Remove-dep-on-EncRoi-attr.patch
+  * U_vaapi_Fix-off-by-one-in-ROI-regions.patch
+
+-------------------------------------------------------------------
 Fri Mar 15 22:42:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patches:

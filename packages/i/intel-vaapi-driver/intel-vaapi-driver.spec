@@ -1,7 +1,7 @@
 #
 # spec file for package intel-vaapi-driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           intel-vaapi-driver
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Intel Driver for Video Acceleration (VA) API for Linux
 License:        MIT AND EPL-1.0
@@ -26,12 +26,6 @@ URL:            https://github.com/intel/%{name}/
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
 Source1:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.bz2.sha1sum
 Source2:        baselibs.conf
-Patch0:         U_vaapi_Check-interface-from-libva.patch
-Patch1:         U_vaapi_Revert-VPP-clear-surface.patch
-Patch2:         U_vaapi_Return-false-instead-assertion-fail.patch
-Patch3:         U_vaapi_HEVC-encoder-correct-minimal-bitrate.patch
-Patch4:         U_vaapi_Remove-dep-on-EncRoi-attr.patch
-Patch5:         U_vaapi_Fix-off-by-one-in-ROI-regions.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

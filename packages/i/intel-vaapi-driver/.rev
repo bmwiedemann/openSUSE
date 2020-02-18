@@ -87,4 +87,26 @@ vaapi-intel-driver needs to be dropped then.</comment>
     <comment></comment>
     <requestid>685565</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e5b3d16426092b44f2a5dff5ea627a7d</srcmd5>
+    <version>2.4.0</version>
+    <time>1582029010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0
+  * Fix the dependency on libEGL (boo#1163093)
+  * Fix ROI support
+  * Fix FD leaks on Wayland
+  * Fix BRC setting
+  * Fix VP8 encoder
+  * Fix VP9 encoder
+  * Fix meson build
+- supersedes patches:
+  * U_vaapi_Check-interface-from-libva.patch
+  * U_vaapi_Revert-VPP-clear-surface.patch
+  * U_vaapi_Return-false-instead-assertion-fail.patch
+  * U_vaapi_HEVC-encoder-correct-minimal-bitrate.patch
+  * U_vaapi_Remove-dep-on-EncRoi-attr.patch
+  * U_vaapi_Fix-off-by-one-in-ROI-regions.patch</comment>
+    <requestid>775129</requestid>
+  </revision>
 </revisionlist>
