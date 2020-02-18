@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:51:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Raise the disk space and set a minimum memory in _constraints.
+
+-------------------------------------------------------------------
 Thu Feb  6 20:52:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.11.1. Check
