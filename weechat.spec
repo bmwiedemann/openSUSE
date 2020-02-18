@@ -28,6 +28,7 @@ Source1:        weechat.desktop
 Source2:        %{name}.keyring
 Source3:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
 Source4:        %{name}.changes
+Patch0:         CVE-2020-8955.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -126,6 +127,7 @@ Spell-checking support for %{name}, using the aspell and enchant libraries.
 
 %prep
 %setup -q
+%patch0 -p1
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE4}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
@@ -144,7 +146,7 @@ export CFLAGS="%{optflags}"
     -DENABLE_JAVASCRIPT=OFF \
     -DENABLE_PHP=OFF \
     -DCA_FILE=%{_sysconfdir}/ssl/ca-bundle.pem
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -153,8 +155,6 @@ install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.de
 %suse_update_desktop_file -r "%{name}" Network IRCClient
 
 %find_lang "%{name}" --with-man
-
-
 
 %files
 %doc AUTHORS.adoc ChangeLog.adoc Contributing.adoc
