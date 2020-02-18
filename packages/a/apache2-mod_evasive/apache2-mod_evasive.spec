@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_evasive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,11 +82,6 @@ mkdir -p "$b/%apache_libexecdir" "$b/%apache_sysconfdir/conf.d"
 cp -a mod_evasive.conf "$b/%apache_sysconfdir/conf.d/"
 perl -i -pe "s{/usr/lib/}{%_libdir/}g" \
 	"$b/%apache_sysconfdir/conf.d/mod_evasive.conf"
-
-%check
-set +x
-%apache_test_module_load -m evasive%ap_suffix -i mod_evasive.conf
-set -x
 
 %files
 %defattr(-,root,root)
