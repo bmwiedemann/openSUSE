@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 02:53:29 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1581993539.5a1deb03:
+  * Dev: behave: functional test for setup cluster with crossed network
+  * Dev: unittest: test for get_peer_hostname/is_online/find_configured_ip functions
+  * Dev: corosync: check whether local ip has already configured
+  * Dev: bootstrap: check whether init node is online while joining
+  * Dev: bootstrap: for udpu, don't check join node's ip was in the same network
+
+-------------------------------------------------------------------
 Sat Feb 01 08:28:52 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1580544897.c42c9530:
