@@ -69,6 +69,7 @@ Thu Jun 13 08:00:36 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
   * Fix reading Android APK archives (#1055 )
   * Fix problems related to unreadable directories (#1167)
   * A two-digit number of OSS-Fuzz issues was resolved in this release
+    including CVE-2019-18408
 - Add libarchive.keyring and validate the tarball signature
 - Drop all security patches, fixed upstream:
   * CVE-2018-1000877.patch
@@ -115,6 +116,7 @@ Fri Sep 14 06:57:14 UTC 2018 - Adrian Schröter <adrian@suse.de>
   * Many fixes for building with Visual Studio
   * NO_OVERWRITE doesn't change existing directory attributes
   * New support for Zstandard read and write filters
+- Fixes CVE-2017-14501, CVE-2017-14502, CVE-2017-14503
 - fix-CVE-2017-14166.patch is obsolete
 
 -------------------------------------------------------------------
