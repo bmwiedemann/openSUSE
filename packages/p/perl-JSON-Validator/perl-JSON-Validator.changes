@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 15 03:10:34 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.22
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.22 2020-02-15T08:35:29+0900
+   - Add support for "dependencies" keyword #192 #197
+   - Add support for anyOf/allOf/oneOf at the same time #196 #197
+   - Allow if/then/else to be in any sort of schema #190 #197
+
+-------------------------------------------------------------------
 Fri Feb 14 03:07:59 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.21
