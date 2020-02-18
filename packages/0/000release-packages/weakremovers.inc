@@ -22533,6 +22533,7 @@ Provides: weakremover(virtualbox-qt)
 Provides: weakremover(virtualbox-vnc)
 Provides: weakremover(virtualbox-websrv)
 Provides: weakremover(vkmark)
+Provides: weakremover(yast2-python-bindings)
 %endif
 %ifarch x86_64
 Provides: weakremover(96BoardsGPIO-common)
