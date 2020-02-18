@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_jk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,19 +65,6 @@ install -d -m 755 %{buildroot}%{apache_libexecdir}
 install -m 755 native/apache-2.0/.libs/mod_jk.so %{buildroot}%{apache_libexecdir}/
 cp %{SOURCE1} .
 cp %{SOURCE2} .
-
-%check
-exit 0
-set +x
-mkdir -p %{apache_test_module_dir}
-cat << EOF > %{apache_test_module_dir}/jk-test.conf
-JkWorkersFile %{apache_test_module_dir}/workers.properties
-JkLogFile     %{apache_test_module_dir}/mod_jk.log
-JkLogLevel    debug
-EOF
-cp conf/workers.properties %{apache_test_module_dir}
-%apache_test_module_load -m jk -i jk-test.conf
-set -x
 
 %files
 %license LICENSE
