@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 10 23:59:20 UTC 2020 - dmulder@suse.com
+
+- Don't overwrite CPPFLAGS/LDFLAGS/LIBADD during build; (bsc#1163310);
+- 4.1.2
+
+-------------------------------------------------------------------
+Thu Jan  9 09:45:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to python3 on new releases of openSUSE as we no longer
+  support python2 at all
+- Cleanup the spec file to adhere to current packaging guidelines
+
+-------------------------------------------------------------------
 Tue May 21 15:58:45 UTC 2019 - dmulder@suse.com
 
 - yast2-python-bindings compilation errors when compiling with
