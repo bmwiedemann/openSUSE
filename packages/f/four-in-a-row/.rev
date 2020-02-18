@@ -253,4 +253,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767115 from dimstar)</comment>
     <requestid>767375</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>07facc0637190b580e5127f522dcf81a</srcmd5>
+    <version>3.34.4</version>
+    <time>1582018515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774619</requestid>
+  </revision>
 </revisionlist>
