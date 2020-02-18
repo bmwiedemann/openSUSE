@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:03:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20200130:
+  * Fix build with GCC 10.
+  * remove more udp detritus
+  * Remove leftover udp.h include.
+  * remove dead var
+  * remove all the udp logging
+  * Remove unnecessary abstraction.
+  * syscalls: remove arch_prctl from x86_32
+  * modify_ldt: include linux/types.h before ASSEMBLY == 1
+  * Remove DEVEL crud
+  * update TCP setsockopts
+
+-------------------------------------------------------------------
 Wed Jan 22 10:41:26 UTC 2020 - tchvatal@suse.com
 
 - Update to version 1.9+git.20191230:
