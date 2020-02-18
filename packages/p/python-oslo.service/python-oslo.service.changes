@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:29:46 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.40.2
+  - Make PID availabe as formatstring in backdoor path
+  - Polish usage.rst
+  - Reno for SIGHUP fix
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - Move doc related modules to doc/requirements.txt
+  - Add workers' type check before launching the services
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update master for stable/stein
+  - restart: don't stop process on sighup when mutating
+  - Stop using pbr to build docs
+
+-------------------------------------------------------------------
 Mon Apr  8 11:46:55 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.38.0

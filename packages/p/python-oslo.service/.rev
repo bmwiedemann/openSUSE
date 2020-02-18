@@ -278,4 +278,25 @@
   - add python 3.7 unit test job</comment>
     <requestid>692866</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>245c3d6128fa77540fda6fb3bbe3c4e1</srcmd5>
+    <version>1.40.2</version>
+    <time>1582018905</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.40.2
+  - Make PID availabe as formatstring in backdoor path
+  - Polish usage.rst
+  - Reno for SIGHUP fix
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - Move doc related modules to doc/requirements.txt
+  - Add workers' type check before launching the services
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update master for stable/stein
+  - restart: don't stop process on sighup when mutating
+  - Stop using pbr to build docs</comment>
+    <requestid>774922</requestid>
+  </revision>
 </revisionlist>
