@@ -344,6 +344,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
+  - opensuse-squid-image:
+    - x86_64
   - opensuse-toolbox-image:
     - x86_64
   - opensuse-tumbleweed-image:docker:
