@@ -1,7 +1,7 @@
 #
 # spec file for package maven
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 %bcond_with  logback
 Name:           maven
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0

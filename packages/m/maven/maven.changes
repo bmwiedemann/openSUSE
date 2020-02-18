@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 15:50:55 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.3
+- Modified patches:
+  * 0002-Invoke-logback-via-reflection.patch
+  * 0004-Use-non-shaded-HTTP-wagon.patch
+    + Adapt to changed line endings
+
+-------------------------------------------------------------------
 Thu Nov 21 15:53:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.6.2
-- Modified patche:
+- Modified patch:
   * 0002-Invoke-logback-via-reflection.patch
     + adapt to changed context
 - Removed patch:
