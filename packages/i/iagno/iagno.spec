@@ -17,7 +17,7 @@
 
 
 Name:           iagno
-Version:        3.34.4
+Version:        3.34.5
 Release:        0
 Summary:        Reversi Game for GNOME
 License:        GPL-3.0-or-later
