@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Feb 17 00:30:06 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fix: invalid-filename-dependency
+
+-------------------------------------------------------------------
+Wed Dec 18 15:36:54 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.0:
+  * Add Release to Actions
+  * Delete AUTHORS
+  * AccelLabel and Utils: Add null checks (#362)
+  * Add tooltip support for SourceList (#187)
+  * Add Lint to CI (#325)
+  * DynamicNotebook: Lint (#334)
+  * Application: Lint (#341)
+  * BufferSurface: Lint (#343)
+  * AboutDialog: Lint (#352)
+  * Drawing Utilities: Lint (#353)
+  * Drawing Color: Lint (#354)
+  * IconFactory: Lint (#355)
+  * Logger: Lint (#356)
+  * AppMenu: Lint (#357)
+  * Abstract Settings Pages: Lint (#358)
+  * AsyncImage: Lint (#351)
+  * MessageDialog: Lint (#350)
+  * CellRenderers: Lint (#349)
+  * SimpleCommand: Lint (#348)
+  * CompositedWindow: Lint (#347)
+  * SettingsSidebarRow: Lint (#346)
+  * Settings: Lint (#345)
+  * Paths: Lint (#344)
+  * SourceList: Lint (#342)
+  * DatePicker: Lint (#340)
+  * ModeButton: Lint (#339)
+  * Welcome: Lint (#336)
+  * TimePicker: Lint (#338)
+  * Utils: Lint (#337)
+  * Demo Views: Lint (#335)
+  * Use async mutex for badge synchronisation (#333)
+  * Add Gettext Updates to Actions
+  * Delay tab resizing when closing tabs and larger min/max tab
+    width (#311)
+  * Add AccelLabel (#300)
+  * MessageDialogView: Sentence-case primary label (#329)
+  * ...
+
+-------------------------------------------------------------------
+Mon Sep  9 18:53:22 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.2.5:
+  * Use vala-lint to lint demo directory. (#316)
+  * README: Update Weblate badge
+  * Remove path from --shared-library flag (#297)
+  * Utils: Add equal keys to accel_to_string (#307)
+  * Merge branch 'origin/master' into Weblate.
+  * Revert "More efficient code for closing to the right (#299)"
+    (#304)
+  * Fix merge conflicts with Weblate
+  * More efficient code for closing to the right (#299)
+  * Provide Badge and Progress support for an Application (#288)
+  * Localization fixes (#298)
+  * Close Tabs to the Right (#296)
+  * Fix #294: Rapidly closing tabs with three-finger/middle click
+    button re-opens closed tabs (#295)
+- Fix: invalid-filepath-dependency
+
+-------------------------------------------------------------------
 Mon Jul  8 01:05:33 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 5.2.4:
