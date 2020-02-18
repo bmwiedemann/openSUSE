@@ -27,4 +27,13 @@
     <comment>- Version bump 1.11.1, properly fixes the version mismatch and repacked tarball mess</comment>
     <requestid>262766</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f43724745a921d6d3182e15220050e14</srcmd5>
+    <version>1.11.1</version>
+    <time>1582018741</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Honor optflags when building</comment>
+    <requestid>774850</requestid>
+  </revision>
 </revisionlist>

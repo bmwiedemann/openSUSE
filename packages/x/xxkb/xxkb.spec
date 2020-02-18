@@ -1,7 +1,7 @@
 #
 # spec file for package xxkb
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,14 +22,14 @@ Release:        0
 Summary:        A keyboard layout indicator and switcher
 License:        Artistic-2.0
 Group:          System/X11/Utilities
-Url:            http://xxkb.sourceforge.net/
+URL:            http://xxkb.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}-%{version}-src.tar.gz
 BuildRequires:  imake
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The xxkb program is a keyboard layout switcher and indicator. Unlike the
@@ -39,18 +39,18 @@ accepts events from XKB. That means that it will work with the existing
 setup of your X Server without any modifications.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 xmkmf -a
-make %{?_smp_mflags}
+%make_build CC="cc %{optflags}"
 
 %install
-make install install.man DESTDIR=%{buildroot}
+%make_install install.man
 
 %files
-%defattr(-,root,root)
-%doc README* LICENSE CHANGES.koi8
+%license LICENSE
+%doc README* CHANGES.koi8
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*.xpm

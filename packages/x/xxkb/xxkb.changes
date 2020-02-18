@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:11:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Honor optflags when building
+
+-------------------------------------------------------------------
 Sun Nov 23 15:59:00 UTC 2014 - tampakrap@opensuse.org
 
 - Version bump 1.11.1, properly fixes the version mismatch and repacked tarball mess
