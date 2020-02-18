@@ -17,21 +17,19 @@
 
 
 Name:           python-oslo.privsep
-Version:        1.32.1
+Version:        1.33.3
 Release:        0
 Summary:        OpenStack library for privilege separation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.privsep
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-1.32.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-1.33.3.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Sphinx
 BuildRequires:  python2-cffi >= 1.7.0
 BuildRequires:  python2-eventlet >= 0.18.2
 BuildRequires:  python2-greenlet >= 0.4.10
 BuildRequires:  python2-mock
 BuildRequires:  python2-msgpack >= 0.5.0
-BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python2-oslo.config >= 5.2.0
 BuildRequires:  python2-oslo.i18n >= 3.15.3
 BuildRequires:  python2-oslo.log >= 3.36.0
@@ -40,13 +38,11 @@ BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr
 BuildRequires:  python2-setuptools
 BuildRequires:  python2-stestr
-BuildRequires:  python3-Sphinx
 BuildRequires:  python3-cffi >= 1.7.0
 BuildRequires:  python3-eventlet >= 0.18.2
 BuildRequires:  python3-greenlet >= 0.4.10
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack >= 0.5.0
-BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.log >= 3.36.0
@@ -86,19 +82,21 @@ OpenStack library for privilege separation
 %package -n python-oslo.privsep-doc
 Summary:        oslo.privsep documentation
 Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.privsep-doc
 Documentation for oslo.privsep
 
 %prep
-%autosetup -p1 -n oslo.privsep-1.32.1
+%autosetup -p1 -n oslo.privsep-1.33.3
 %py_req_cleanup
 
 %build
 %python_build
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

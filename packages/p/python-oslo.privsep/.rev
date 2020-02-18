@@ -154,4 +154,24 @@
   - add python 3.7 unit test job</comment>
     <requestid>692862</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9685a2f31391819e5296c42838d1a26b</srcmd5>
+    <version>1.33.3</version>
+    <time>1582018893</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.33.3
+  - Pass correct arguments to six.reraise
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - OpenDev Migration Patch
+  - Convert dict keys received in _ClientChannel from byte to str
+  - Move doc related modules to doc/requirements.txt
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add more usage documentation
+  - Self-resetting PrivContext
+  - Add sample_default for thread_pool_size Opt
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests
+  - Reno for SIGHUP fix</comment>
+    <requestid>774918</requestid>
+  </revision>
 </revisionlist>
