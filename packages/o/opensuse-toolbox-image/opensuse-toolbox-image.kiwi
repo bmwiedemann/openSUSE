@@ -28,6 +28,8 @@
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/toolbox:%PKG_VERSION%-%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
           </suse_label_helper:add_prefix>
+	  <label name="com.github.containers.toolbox" value="true"/>
+	  <label name="com.github.debarshiray.toolbox" value="true"/>
         </labels>
         <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE toolbox container</history>
       </containerconfig>
@@ -51,5 +53,8 @@
     <package name="vim"/>
     <package name="less"/>
     <package name="man"/>
+    <package name="sudo"/>
+    <package name="system-group-wheel"/>
+    <package name="libcap-progs"/>
   </packages>
 </image>

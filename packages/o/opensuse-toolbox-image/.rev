@@ -25,4 +25,13 @@
     <comment></comment>
     <requestid>744431</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4d1124b88d5e6da52352d477c1992d4a</srcmd5>
+    <version>1.0.0</version>
+    <time>1582018658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sudo, wheel group and libcap-progs
+- Add labels for containers/toolbox</comment>
+    <requestid>774803</requestid>
+  </revision>
 </revisionlist>

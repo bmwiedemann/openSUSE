@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 15:06:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add sudo, wheel group and libcap-progs
+- Add labels for containers/toolbox
+
+-------------------------------------------------------------------
 Wed Oct 30 09:55:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints file for ppc64le with 4GB disk space
