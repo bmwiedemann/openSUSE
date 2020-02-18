@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 10 17:49:16 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200209:
+  * Update Android.mk
+  * (Android) Aarch64/x86/x64 now has lightrec support
+  * Buildfix for LLVM
+  * OSX should use lightrec
+  * Fix build
+  * Update Makefile.libretro
+  * Update psxmem.c
+  * (NEON GPU) Don't hide this for non-ARM
+  * Start getting NEON GPU to work on non-Arm
+  * License this MIT - should be compatible with everything
+  * Update .travis.yml
+  * Update Makefile.libretro
+  * Fix Linux build
+  * cdrom: add missing BCD->int convert in cdrFreeze()
+  * gpulib: fix out-of-bounds reads in do_cmd_buffer()
+  * Add support for the Lightrec dynarec
+  * pcsxmem: mmap RAM/BIOS/scratchpad to better locations
+  * git subrepo clone (merge) https://github.com/witwall/mman-win32 deps/mman
+  * git subrepo clone https://github.com/pcercuei/lightrec.git deps/lightrec
+  * git subrepo clone https://git.savannah.gnu.org/git/lightning.git deps/lightning
+
+-------------------------------------------------------------------
 Fri Feb  7 14:58:32 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version

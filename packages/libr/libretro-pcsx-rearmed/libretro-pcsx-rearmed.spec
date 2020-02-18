@@ -17,10 +17,10 @@
 
 
 Name:           libretro-pcsx-rearmed
-Version:        0~git20200201
+Version:        0~git20200209
 Release:        0
 Summary:        ARM optimized PCSX core for PlayStation emulation
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
@@ -28,7 +28,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  make
 
 Provides:       libretro-pcsx_rearmed = %{version}
-Obsoletes:      libretro-pcsx_rearmed <= %{version}
+Obsoletes:      libretro-pcsx_rearmed < %{version}
 
 %description
 PCSX ReARMed is yet another PCSX fork based on the PCSX-Reloaded project, which
@@ -48,7 +48,7 @@ This package is for RetroArch/Libretro front-end.
 %setup -q
 
 %build
-make -f Makefile.libretro USE_DYNAREC=0
+make -f Makefile.libretro DYNAREC=lightrec
 
 %install
 mkdir -p %{buildroot}%{_libdir}/libretro
