@@ -144,6 +144,8 @@ unsorted:
   - OpenImageIO 
   - OpenImageIO-devel 
   - OpenLP 
+  - OpenMoji-Black: [i586] 
+  - OpenMoji-Color: [i586] 
   - OpenPrintingPPDs 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
@@ -34152,7 +34154,7 @@ unsorted:
   - yast2-isns 
   - yast2-nis-server 
   - yast2-pkg-bindings-devel-doc 
-  - yast2-python-bindings 
+  - yast2-python-bindings: [x86_64] 
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration: [x86_64] 
