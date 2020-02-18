@@ -150,4 +150,19 @@
     <comment></comment>
     <requestid>662462</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bf78999c4a631223def31e6b3bda67b</srcmd5>
+    <version>2.4.0</version>
+    <time>1582018532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * Many minor updates and fixes, the most visible the use of
+    FanArt.tv for artist images instead of Last.fm due to license
+    changes.
+  * For details see included changelog or
+    https://github.com/CDrummond/cantata/releases/tag/v2.4.0
+  * Remove note about remote devices: the code has been removed.
+  * Remove install-libsolidlite.diff</comment>
+    <requestid>774609</requestid>
+  </revision>
 </revisionlist>

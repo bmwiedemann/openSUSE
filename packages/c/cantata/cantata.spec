@@ -1,7 +1,7 @@
 #
 # spec file for package cantata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           cantata
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://github.com/CDrummond/cantata/
+URL:            https://github.com/CDrummond/cantata/
 Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE  fix-translations-with-qt5.diff  -- Make sure that it finds the right lrelease and lconvert binaries with Qt5
 Patch1:         fix-translations-with-qt5.diff
-Patch2:         install-libsolidlite.diff
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -97,11 +96,8 @@ information, please refer to the main README.
 %prep
 %setup -q
 %patch1 -p0
-%patch2 -p0
 
 %build
-# Disable remote devices, as the maintainer himself suggested.
-# Code is probably going to be removed. See boo#1091824
 %cmake -DENABLE_REMOTE_DEVICES=OFF
 %make_jobs
 
@@ -126,13 +122,10 @@ information, please refer to the main README.
 %files
 %defattr(-,root,root)
 %{_bindir}/%{name}
-#%config(noreplace) %{_sysconfdir}/dbus-1/system.d/mpd.cantata.mounter.conf
 %{_libexecdir}/%{name}/
-%{_libdir}/libsolidlite.so
 %{_datadir}/%{name}
 %exclude %{_datadir}/%{name}/translations/
 %{_datadir}/applications/%{name}.desktop
-#%{_datadir}/dbus-1/system-services/mpd.cantata.mounter.service
 %{_datadir}/icons/hicolor/
 %doc AUTHORS ChangeLog README README.md TODO
 %if 0%{?suse_version} < 1500

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 15 19:43:45 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.4.0:
+  * Many minor updates and fixes, the most visible the use of
+    FanArt.tv for artist images instead of Last.fm due to license
+    changes.
+  * For details see included changelog or
+    https://github.com/CDrummond/cantata/releases/tag/v2.4.0
+  * Remove note about remote devices: the code has been removed.
+  * Remove install-libsolidlite.diff
+
+-------------------------------------------------------------------
 Wed Jan  2 12:39:48 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.3.3:
