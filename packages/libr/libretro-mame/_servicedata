@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/mame.git</param>
+              <param name="changesrevision">ac970e8c2ee4a022d6f7da619246bb7a0a8b6197</param></service></servicedata>
