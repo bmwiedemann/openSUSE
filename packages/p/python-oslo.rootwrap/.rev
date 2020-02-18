@@ -132,4 +132,19 @@
   - import zuul job settings from project-config</comment>
     <requestid>692864</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>87982fa222055266b50de8793374daf8</srcmd5>
+    <version>5.16.1</version>
+    <time>1582018900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.16.1
+  - Update hacking version
+  - OpenDev Migration Patch
+  - Always close all passed in fds beyond sensible_fd_limit on launch
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing</comment>
+    <requestid>774920</requestid>
+  </revision>
 </revisionlist>

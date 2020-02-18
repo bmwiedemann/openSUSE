@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.rootwrap
-Version:        5.15.2
+Version:        5.16.1
 Release:        0
 Summary:        Filtering shell commands to run as root from OpenStack services
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.rootwrap
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.rootwrap/oslo.rootwrap-5.15.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.rootwrap/oslo.rootwrap-5.16.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-eventlet
@@ -73,14 +73,14 @@ BuildRequires:  python-openstackdocstheme
 Documentation for the OpenStack oslo.rootwrap library.
 
 %prep
-%autosetup -p1 -n oslo.rootwrap-5.15.2
+%autosetup -p1 -n oslo.rootwrap-5.16.1
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-PBR_VERSION=5.15.2 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=5.16.1 sphinx-build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -95,6 +95,10 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %postun
 %python_uninstall_alternative oslo-rootwrap
 %python_uninstall_alternative oslo-daemon
+
+%check
+export PYTHONPATH=.
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license LICENSE

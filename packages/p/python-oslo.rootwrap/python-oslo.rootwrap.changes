@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:28:35 UTC 2019 - cloud-devel@suse.de
+
+- update to version 5.16.1
+  - Update hacking version
+  - OpenDev Migration Patch
+  - Always close all passed in fds beyond sensible_fd_limit on launch
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing
+
+-------------------------------------------------------------------
 Mon Apr  8 11:54:38 UTC 2019 - cloud-devel@suse.de
 
 - update to version 5.15.2
