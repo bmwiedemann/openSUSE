@@ -23,7 +23,7 @@ Version:        3.1.4
 Release:        0
 Summary:        Process Management Interface for MPI
 License:        BSD-3-Clause
-Group:          Development/Libraries/Parallel 
+Group:          Development/Libraries/Parallel
 URL:            https://pmix.org/
 Source0:        https://github.com/openpmix/openpmix/archive/v%{version}.tar.gz#/openpmix-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -51,23 +51,24 @@ rapid launch and wireup of the roughly 1M processes executing across 100k nodes
 expected for exascale operations remains challenging.
 
 This RPM contains all the tools necessary to compile and link against PMIx.
+
 %package -n libpmix2
 Summary:        PMI-X lib version 1
-Group:          hpc mpi
+Group:          System/Libraries
 
 %description  -n libpmix2
 This package contains the shared library used by the PMI-X standard
 
 %package -n libmca_common_dstore1
 Summary:        Communication library used by PMI-X
-Group:          hpc mpi
+Group:          System/Libraries
 
 %description  -n libmca_common_dstore1
 This package contains the communication library used by the PMI
 
 %package devel
 Summary:        Process Management Interface for MPI
-Group:          hpc mpi devel
+Group:          Development/Libraries/C and C++
 Requires:       %{name}-headers = %{version}
 Requires:       libpmix2 = %{version}
 
@@ -77,14 +78,14 @@ aware applications.
 
 %package headers
 Summary:        Process Management Interface for MPI
-Group:          hpc mpi devel
+Group:          Development/Libraries/C and C++
 
 %description headers
 This Package contains necessary the headers for PMI-X.
 
 %package -n pmix-mca-params
 Summary:        Settings for the Module Component Architecure
-Group:          hpc mpi devel
+Group:          Development/Libraries/C and C++
 Provides:       pmix-runtime-config = %{version}
 Conflicts:      otherproviders(pmix-runtime-config)
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:59:50 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix invalid RPM groups.
+
+-------------------------------------------------------------------
 Fri Jan 10 13:30:55 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - configuration can now also be provided with openmpi flavors 
