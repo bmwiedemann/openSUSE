@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Feb 18 10:21:24 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update: 3.13.2
+  In this release we’re focusing on fixing a few minor bugs and two 
+  regressions that were introduced in the last release 
+  (tracking IE<9 was not working anymore, and automatic login within
+   an iframe has also been fixed).
+  41 tickets have been closed by more than 12 contributors!
+  Main (core) tickets closed:
+  #15404 Real time map dialog box does not close with x [by @sgiehl]
+  #8505 Visitor map shows info icon but no tooltip when there is no data [by @sgiehl]
+  #15414 Since 3.13.1 autologin in an iframe does not work anymore [by @tsteur]
+  #15422 Fix removing user capabilities [by @sgiehl, @tsteur]
+  #15477 Matomo can’t track IE <9 any more [by @tsteur]
+  #15500 Undefined index: bounce_rate_new [by @sgiehl]
+  #15417 In Update pop up venster Piwik is mentioned instead of Matomo [by @sgiehl]
+  #14549 update mocha
+  #15469 Two YAML parser
+  #15307 Visits log fails without any error [by @tsteur]
+  #15420 Cannot copy a dashboard to a user when the user is not one of
+         the first 100 [by @sgiehl]
+  #15430 VisitorLog.php(225): Trying to access array offset on value 
+         of type null – Matomo 3.13.1 [by @sgiehl]
+  #15441 UserId.getUsers generates warnings: Warning – Illegal 
+         offset type and Notice – Undefined index: label [by @sgiehl]
+  #15452 Trying to access array offset on value of type null [by @sgiehl]
+  #15046 Clarify how to Setup the archiving cronjob using Plesk in the user guide manual
+  #15293 New visit not created after logout
+  #15428 Order of implode() args, avoid E_NOTICE in PHP7.4 [by @PeterUpfold, @sgiehl]
+  #15445 Forward instance_id from local config when reseting config
+         during tests. [by @diosmosis]
+  #15446 silence is_executable call in case user doesn’t have permission
+         to access dir [by @diosmosis]
+  #15457 Add event that allows plugins to disable archiving for certain
+         periods/sites if they want. [by @diosmosis]
+  #15462 Day range archiving issue [by @diosmosis, @tsteur]
+  #15464 Use latest davaxi/sparkline release [by @sgiehl]
+  #15481 Mention Joomla install FAQ [by @tsteur, @diosmosis]
+  #15487 Sort Packages [by @limitstudios, @tsteur]
+  #15489 Make sparklines work when mbstring extension is not installed
+         [by @mattab, @diosmosis]
+- pre-require php-json to make sure the post script works
+
+-------------------------------------------------------------------
 Mon Feb  3 15:05:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

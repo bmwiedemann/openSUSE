@@ -32,7 +32,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        3.13.1
+Version:        3.13.2
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -70,6 +70,8 @@ Requires:       php-curl
 Requires:       php-dom
 Requires:       php-gd
 Requires:       php-iconv
+# for the upgrade process:
+Requires(pre):  php-json
 Requires:       php-json
 Requires:       php-mbstring
 Requires:       php-mysql
