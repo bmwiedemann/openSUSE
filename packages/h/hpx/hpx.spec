@@ -23,30 +23,23 @@ Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
-URL:            http://stellar.cct.lsu.edu/tag/hpx/
+URL:            https://stellar.cct.lsu.edu/tag/hpx/
 Source0:        https://github.com/STEllAR-GROUP/hpx/archive/%{version}.tar.gz#/%{name}_%{version}.tar.gz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-BuildRequires:  gcc-c++ >= 4.9
+BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  gperftools-devel
-%if 0%{?suse_version} > 1325
+BuildRequires:  hwloc-devel
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
-%ifarch aarch64 %arm
+%ifarch aarch64 %{arm}
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_thread-devel
 %endif
-%else
-BuildRequires:  boost-devel
-%endif
-BuildRequires:  cmake
-BuildRequires:  fdupes
-BuildRequires:  hwloc-devel
 BuildRequires:  openmpi-macros-devel
 Requires:       libhpx1 = %{version}-%{release}
 
@@ -57,7 +50,7 @@ HPX is a general purpose C++ runtime system for parallel and distributed applica
 Summary:        Development headers and libraries for hpx
 Group:          Development/Libraries/C and C++
 Requires:       libhpx1 = %{version}-%{release}
-%openmpi_devel_requires
+%{openmpi_devel_requires}
 
 %description devel
 HPX is a general purpose C++ runtime system for parallel and distributed applications of any scale.
@@ -67,7 +60,7 @@ This package contains development headers and libraries for hpx
 %package -n libhpx1
 Summary:        Libraries for the hpx package
 Group:          System/Libraries
-%openmpi_requires
+%{openmpi_requires}
 
 %description -n libhpx1
 HPX is a general purpose C++ runtime system for parallel and distributed applications of any scale.
@@ -76,20 +69,20 @@ This package contains libraries for the hpx package.
 
 %prep
 %define _lto_cflags %{nil}
-%setup -n %{name}-%{version} -q
+%setup -q
 
 %build
-%ifarch aarch64 %arm
+%ifarch aarch64 %{arm}
 %define cmake_opts -DHPX_WITH_GENERIC_CONTEXT_COROUTINES=ON
 %endif
 
 # add lib atomic for s390x and ppc64
 %ifarch s390x ppc64
-%define cmake_opts -DCMAKE_SHARED_LINKER_FLAGS="$RPM_OPT_FLAGS -latomic" -DCMAKE_EXE_LINKER_FLAGS="$RPM_OPT_FLAGS -latomic"
+%define cmake_opts -DCMAKE_SHARED_LINKER_FLAGS="%{optflags} -latomic" -DCMAKE_EXE_LINKER_FLAGS="%{optflags} -latomic"
 %endif
 
-%setup_openmpi
-%{cmake} -DLIB=%{_lib} %{?cmake_opts:%{cmake_opts}} \
+%{setup_openmpi}
+%cmake -DLIB=%{_lib} %{?cmake_opts:%cmake_opts} \
  -DHPX_WITH_BUILD_BINARY_PACKAGE=ON \
  -DHPX_WITH_EXAMPLES=OFF
 make %{?_smp_mflags}
@@ -113,14 +106,12 @@ sed -i '1s@env @@' %{buildroot}/%{_bindir}/{hpx*.py,hpxcxx}
 %license LICENSE_1_0.txt
 
 %files -n libhpx1
-%defattr(-,root,root,-)
 %license LICENSE_1_0.txt
 %dir %{_libdir}/%{name}/
 %{_libdir}/%{name}/lib*.so.*
 %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_bindir}/hpxcxx
 %{_includedir}/%{name}
 %{_libdir}/lib*.so
