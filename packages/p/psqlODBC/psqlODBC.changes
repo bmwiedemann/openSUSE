@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 17 21:04:03 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to 12.01.0000:
+  * Fix result-conversions regression test.
+    + Remove tests for abstime type because the type was removed
+      in PG12.
+    + Update results for PG12's new floating point output format.
+  * Fix the bug that causes Error : A parameter cannot be found
+    that matches parameter name�ene'.
+    + Check BuildResult(the result of drivers build) before
+      building installers.
+    + Enclose the command part * Find_VSDir $vc_ver * with
+      parentheses so that the subsequent * -ne "" * isn't
+      considered to be a parameter.
+  * Cope with the removal of pg_class.relhasoids in PG12 correctly
+    when retrieving updatable cursors.
+- Changes in 12.00.0000:
+  * Fix the bug that SQLGetDescField() for Field SQL_DESC_COUNT
+    returns SQLINTEGER value which should be of type SQLSMALLINT.
+  * SQLGetTypeInfo() filters SQL_TYPE_DATE, SQL_TYPE_TIME and
+    SQL_TYPE_TIMESTAMP for ODBC 2.x applications.
+  * Added support for scalar functions TIMESTAMPADD(),
+    TIMESTAMPDIFF() and EXTRACT() functions.
+  * The macro IS_NOT_SPACE() is used for not pointers but integers.
+  * Fix a crash bug when SQLProcedureColumns() handles
+    satisfies_hash_partition(). The proargmodes column of
+    satisfies_hash_partition()'s pg_proc entry is not null but the
+    proallargtypes column is null.
+
+
+-------------------------------------------------------------------
 Mon May 27 06:10:16 UTC 2019 - mvetter@suse.com
 
 - Cleanup with spec-cleaner
