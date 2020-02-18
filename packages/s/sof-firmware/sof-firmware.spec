@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
-Version:        1.4.1
-Release:        0
 License:        BSD-3-Clause
 Group:          Hardware/Other
+Version:        1.4.2
+Release:        0
 Url:            https://www.sofproject.org/
 BuildRequires:  fdupes
 Source:         ftp://ftp.alsa-project.org/pub/misc/sof/sof-firmware-%{version}.tar.bz2
@@ -55,6 +56,10 @@ Various firmware data files for SOF drivers.
 
 %prep
 %setup -q -c
+# fix up symlinks in 1.4.2 tarball
+ln -sf ../signed/sof-apl-signed-intel.ri usr/lib/firmware/intel/sof/gcc/sof-apl.ri
+ln -sf ../signed/sof-cnl-signed-intel.ri usr/lib/firmware/intel/sof/gcc/sof-cnl.ri
+ln -sf ../signed/sof-icl-signed-intel.ri usr/lib/firmware/intel/sof/gcc/sof-icl.ri
 
 %build
 

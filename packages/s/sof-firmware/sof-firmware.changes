@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 08:01:10 CET 2020 - tiwai@suse.de
+
+- Update to version 1.4.2:
+  see https://github.com/thesofproject/sof/releases for details
+- Fix broken symlinks in 1.4.2 tarball
+
+-------------------------------------------------------------------
 Tue Jan 14 14:47:36 CET 2020 - tiwai@suse.de
 
 - Initial version: 1.4.1, taken from the bundled tarball in
