@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Feb 17 21:15:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.1
+  * Poco 1.10.0 doesn't build with cmake & POCO_UNBUNDLED
+  * poco 1.10/ NetSSL / openssl < 1.1 : default server usage
+    changed (compare to 1.9.4)
+  * Wrong cancelation of the fix: incorrect type of store name
+    parameter in
+  * allow pre-allocation of the buffer in Poco::LogStreamBuf.
+  * Modernise TLS configuration
+  * Add getSpecifiedPort() method in Poco::URI.
+  * Test failures on s390x architecture with 1.10.0
+  * Poco::UTF16Encoding and Poco::UTF32Encoding byte order
+    conversion bug
+  * Poco::SHA2Engine computes incorrect hash on big-endian systems
+  * Close Service Handle after DeleteService Function call
+  * MySQL: resetting the session when putting it back into a
+    SessionPool is now optional (and disabled by default) due to a
+    bug in MySQL messing up the character encoding when doing so.
+  * Poco::AutoPtr and Poco::SharedPtr now support comparison with
+    nullptr.
+- Update to version 1.10.0
+  * POCO's fixed-size integer types are now based on <cstdint>
+    types.
+  * Many methods exposing raw pointers have been changed to use
+    smart pointers (usually Poco::SharedPtr or Poco::AutoPtr)
+    instead. This may break some existing code. Specifically, the
+    Logging framework in the Foundation library and the
+    Configuration framework in the Util library have been changed.
+  * New JWT library for dealing with JSON Web Tokens.
+  * The NetSSL_OpenSSL library supports TLS 1.3 with OpenSSL 1.1.1
+    or later.
+  * NetSSL_OpenSSL now has a Poco::Net::FTPSClientSession and
+    Poco::Net::FTPSStreamOpener class for connecting to FTP servers
+    over TLS.
+  * Fixed a potential crash in Poco::Net::NetworkInterface on Linux
+    due to an invalid cast when obtaining the MAC address of an
+    interface.
+  *  X509Certificate does not render UTF-8 characters in subjectName
+  *  NetworkInterface::map can fail to reveal some interfaces if an
+     earlier one can not be handled
+  *  Poco::Data::ODBC Binding of SQL Decimal Type
+  *  Allow to filter long tests using a command line argument
+  *  Poco::Net::MediaType::parse() does not split parameters
+  *  Added tryWait() into Process and ProcessHandle. Handle
+     kill()-ed UNIX process exit codes.
+  *  unescape Backslash char in UTF8 unescape method
+  *  Add support for SameSite attribute in HTTPCookie
+  *  setEscapeUnicode() functions in JSON Array and Object classes
+     ignore their boolean parameter
+  *  Allow Poco::Net::Context::usePrivateKey to accept ECKey and/or
+     general EVPPKey
+  *  X509Certificate validFrom expiresOn Date parsing
+  *  Poco::Mysql does not build with MySQL 8.0+
+  *  Uploads larger than 2GB fail
+  *  UUIDGenerator should allow random seed
+  *  Support for XDG Base Directory Specification
+  *  Add an option to force the use of PollingDirectoryWatcherStrategy
+  *  fix Dynamic::Var parse string issue
+  *  Restore pre-1.8.0 behaviour of Poco::Net::ServerSocket::bind.
+  *  Implement DataURIStream for extracting data from data URIs.
+  *  File fail on overwrite
+  *  X509Certificate: Get rid of deprecated OpenSSL 1.1 APIs
+  *  SocketAcceptor::setReactor() is broken
+  *  Poco::strToInt<> fails for values right above the type's
+     boundary/limit
+  *  Poco::JSON::Object::set() should return reference to this to
+     allow chaining.
+  *  SQLite mismatch open/close API calls
+  *  ICMPSocket does not check reply address
+  *  Use PollSet in SocketReactor
+  *  MySQL session state is not cleared in SessionPool
+  *  Preserve entries order in DynamicStruct
+  *  Can not open certain zip files include data descriptor
+  *  add struct tm support to DateTime
+  *  NTPClient not checking reply address
+  *  lock-order-inversion in SocketReactor
+  *  add socket gather/scatter capabilities
+  *  UDPServer and client
+  *  add PMTU discovery
+  *  SocketNotifier not thread-safe
+  *  WebSocketTest.cpp faults reported by valgrind
+  *  Reset connection when a session is returned to the SessionPool
+  *  Android abstract namespace local socket address
+  *  Fix race condition in TCPServerDispatcher.cpp
+  *  SocketImpl::bind --> bind wrong config
+
+-------------------------------------------------------------------
 Wed Jan 22 14:02:43 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Make spec file greater 

@@ -16,11 +16,11 @@
 #
 
 
-%define sover  63
+%define sover  71
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.9.3
+Version:        1.10.1
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
@@ -28,9 +28,10 @@ Group:          System/Libraries
 URL:            https://pocoproject.org
 Source:         https://github.com/pocoproject/%{name}/archive/%{name}-%{version}-release.tar.gz
 BuildRequires:  cmake >= 2.8.12
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  ninja
 BuildRequires:  mysql-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(expat)
@@ -236,6 +237,16 @@ Provides:       poco-zip = %{version}
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
+
+%package -n libPocoJWT%{sover}
+Summary:        C++ Framework for Network-based Applications
+Group:          System/Libraries
+Provides:       poco-jwt = %{version}
+
+%description -n libPocoJWT%{sover}
+C++ class libraries and frameworks for building
+network- and Internet-based applications.
+
 %prep
 %setup -q -n "poco-poco-%{version}-release"
 
@@ -272,6 +283,8 @@ network- and Internet-based applications.
 
 %install
 %cmake_install
+rm -rf %{buildroot}%{_libdir}/cmake/Poco/V*
+%fdupes -s %{buildroot}/%{_libdir}/cmake/Poco
 
 %check
 %if %{with tests}
@@ -380,6 +393,12 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 
 %post   -n libPocoZip%{sover} -p /sbin/ldconfig
 %postun -n libPocoZip%{sover} -p /sbin/ldconfig
+
+%files -n libPocoJWT%{sover}
+%{_libdir}/libPocoJWT.so.%{sover}
+
+%post   -n libPocoJWT%{sover} -p /sbin/ldconfig
+%postun -n libPocoJWT%{sover} -p /sbin/ldconfig
 
 %files -n poco-devel
 %license LICENSE
