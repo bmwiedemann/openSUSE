@@ -1666,6 +1666,7 @@
     <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libSoapySDR0_7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libWPEBackend-fdo-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
