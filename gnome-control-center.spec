@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        3.34.2
+Version:        3.34.4
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -34,8 +34,6 @@ Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM gnome-control-center-can-not-find-usermod.patch bsc#1158341 glgo#GNOME/gnome-control-center!653 xwang@suse.com -- user-accounts: can't find command usermod
-Patch1:         gnome-control-center-can-not-find-usermod.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-Initialize-GError-to-NULL-before-use.patch xwang@suse.com -- user-accounts: Initialize GError* to NULL before use
 Patch2:         gnome-control-center-Initialize-GError-to-NULL-before-use.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-fno-common.patch boo#1160393 mgorse@suse.com -- fix build with -fno-common.
@@ -195,7 +193,6 @@ GNOME control center.
 %setup -q
 translation-update-upstream po gnome-control-center-2.0
 
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
