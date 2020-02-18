@@ -36,4 +36,12 @@ conflicting man pages moved to shepherd-bins so conflict should be gone</comment
 </comment>
     <requestid>702619</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>650284c2ce870e1434b0f7e6f6026ac9</srcmd5>
+    <version>0.7.0</version>
+    <time>1582018712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0</comment>
+    <requestid>774829</requestid>
+  </revision>
 </revisionlist>

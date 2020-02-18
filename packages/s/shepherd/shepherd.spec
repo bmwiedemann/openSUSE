@@ -1,7 +1,7 @@
 #
 # spec file for package shepherd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           shepherd
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Init and service manager
 License:        GPL-3.0-or-later
@@ -71,6 +71,7 @@ make %{?_smp_mflags}
 %{_bindir}/herd
 %{_bindir}/shepherd
 %{_libdir}/guile
+%{_libdir}/shepherd
 %{_datadir}/guile
 %doc %{_infodir}/%{name}.info.gz
 %doc %{_mandir}/man*/*
