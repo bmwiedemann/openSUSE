@@ -1,7 +1,7 @@
 #
 # spec file for package sbt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -458,18 +458,25 @@ cp %{SOURCE63} .
 ./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.4.1
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.6.2
+./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.6.3
 ./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.6.2
+./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.6.3
 ./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.6.2
+./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.6.3
 ./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.6.2
+./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.6.3
 ./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.6.2
+./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.6.3
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.0.17
 ./climbing-nemesis.py org.codehaus.plexus plexus-interpolation %{ivy_local_dir} --version 1.25
-./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.0.M1
-./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.3
+./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.0.M1 --ignore "cdi-api"
+./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.3 --ignore "cdi-api"
+./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.4 --ignore "cdi-api"
 
 ./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.25
+./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.29
 
 ./climbing-nemesis.py com.google.guava guava %{ivy_local_dir} --version 18.0 --ignore "jsr305"
 ./climbing-nemesis.py com.google.code.findbugs jsr305 %{ivy_local_dir} --version 1.3.9

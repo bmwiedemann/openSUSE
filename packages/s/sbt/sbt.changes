@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 09:54:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven 3.6.3
+
+-------------------------------------------------------------------
 Mon Dec 16 09:47:41 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 0.13.18 which can be built and used with
