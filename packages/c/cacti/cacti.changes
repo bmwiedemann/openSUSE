@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 15 18:46:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.9:
+  * CVE-2020-7106: Lack of escaping on some pages could lead to XSS
+    exposure (boo#1161297)
+  * CVE-2020-7237: Remote Code Execution due to input validation
+    failure in Performance Boost Debug Log (boo#1161297)
+  * many bug fixes
+
+-------------------------------------------------------------------
 Sun Feb  2 17:10:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.8:
