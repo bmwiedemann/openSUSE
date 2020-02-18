@@ -221,4 +221,22 @@
   - Use templates for cover and lower-constraints</comment>
     <requestid>692857</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31cb93670f2d7632e83f96f8809ed3da</srcmd5>
+    <version>3.24.0</version>
+    <time>1582018874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.24.0
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Update master for stable/stein
+  - Clarify that translation strings are extracted via source inspection
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Move doc related modules to doc/requirements.txt
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Fix guidelines w.r.t. translation of log messages
+  - OpenDev Migration Patch
+  - Move to releases.openstack.org</comment>
+    <requestid>774913</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:26:24 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.24.0
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Update master for stable/stein
+  - Clarify that translation strings are extracted via source inspection
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Move doc related modules to doc/requirements.txt
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Fix guidelines w.r.t. translation of log messages
+  - OpenDev Migration Patch
+  - Move to releases.openstack.org
+
+-------------------------------------------------------------------
 Mon Apr  8 11:39:44 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.23.1

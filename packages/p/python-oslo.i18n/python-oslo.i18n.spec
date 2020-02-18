@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.i18n
-Version:        3.23.1
+Version:        3.24.0
 Release:        0
 Summary:        OpenStack i18n library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.i18n
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.i18n/oslo.i18n-3.23.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.i18n/oslo.i18n-3.24.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-Babel >= 2.3.4
 BuildRequires:  python2-mock
@@ -50,14 +50,14 @@ or library.
 %package -n python-oslo.i18n-doc
 Summary:        Documentation for OpenStack i18n library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo.i18n-doc
 Documentation for the oslo.i18n library.
 
 %prep
-%autosetup -p1 -n oslo.i18n-3.23.1
+%autosetup -p1 -n oslo.i18n-3.24.0
 %py_req_cleanup
 
 %build
@@ -67,7 +67,7 @@ Documentation for the oslo.i18n library.
 %{python_install}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
