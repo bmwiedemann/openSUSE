@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Tue Feb  4 14:39:12 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove nanopb from requirements.
+
+-------------------------------------------------------------------
+Fri Jan 17 02:26:57 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 20200109:
+  * Based on Envoy 1.12.2, which fixes CVE-2019-18801,
+    CVE-2019-18802, CVE-2019-18838 amd CVE-2019-18836. For details
+    please refer to changelog of envoy-proxy package.
+  * Improvements for incremental xDS.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:11:18 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Do not bundle any dependencies, move everything to separate
+  packages.
+- Add patch which makes cilium-proxy compatible with newer
+  googleapis:
+  * 0003-tracing-update-googleapis-use-SetName-for-operation-.patch
+
+-------------------------------------------------------------------
+Fri Nov  1 13:30:50 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Do not use global optflags (temporarily) - enabling them causes
+  linker errors.
+
+-------------------------------------------------------------------
+Fri Oct 18 14:46:31 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Disable incompatible_bzl_disallow_load_after_statement check in
+  Bazel - some dependencies still do not pass it.
+
+-------------------------------------------------------------------
+Thu Oct 17 15:48:01 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Tue Oct 15 09:52:11 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 20191004:
+  * Compatibility with Cilium 1.6.
+  * Compatibility with Envoy 1.11.1.
+- Add sources of envoy-openssl project which makes use of OpenSSL
+  instead of BoringSSL.
+- Add patches which makes Envoy compatible with versions of
+  libraries available in openSUSE:
+  * 0001-bazel-Update-protobuf-and-other-needed-dependencies.patch
+  * 0002-bazel-Update-grpc-to-1.23.0.patch
+- Remove patches which are not needed anymore:
+  * 0001-Remove-deprecated-Blaze-PACKAGE_NAME-macro-5330.patch
+  * 0001-Upgrade-gabime-spdlog-dependency-to-1.3.0-5604.patch
+  * 0001-bazel-transport-sockets-Update-grpc-to-1.19.1.patch
+
+-------------------------------------------------------------------
+Thu Apr  4 09:50:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- openssl-devel should be pkgconfig(openssl)
+
+-------------------------------------------------------------------
+Tue Mar 19 13:35:44 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Add patch which allows to use grpc 1.19.x.
+  * 0001-bazel-transport-sockets-Update-grpc-to-1.19.1.patch
+- Use source packages of grpc-httpjson-transcoding, opentracing-cpp
+  and lightstep-tracer-cpp. (boo#1129568)
+
+-------------------------------------------------------------------
+Tue Mar 12 12:18:08 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use fixed date for reproducible builds (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Feb 26 13:52:00 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add upstream patch which allows to use spdlog 1.3.x.
+  * 0001-Upgrade-gabime-spdlog-dependency-to-1.3.0-5604.patch
+
+-------------------------------------------------------------------
+Wed Feb 20 17:30:58 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add upstream patch which fixes build with Bazel 0.22.0.
+  * 0001-Remove-deprecated-Blaze-PACKAGE_NAME-macro-5330.patch
+
+-------------------------------------------------------------------
+Tue Dec 04 10:03:30 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial version 20181115
+- Add patch which applies Envoy patches (mentioned in envoy-proxy
+  package's changelog) via Bazel build system. Cilium-proxy uses
+  Envoy's tarball as a Bazel dependency - that's why it needs to
+  be done this way.
+  * cilium-proxy-apply-envoy-patches.patch
+- Add patch which apply Istio Proxy patches (mentioned in
+  istio-proxy package's changelog) via Bazel build system.
+  Cilium-proxy uses Istio's tarball as a Bazel dependency - that's
+  why it needs to be done this way.
+  * cilium-proxy-apply-istio-patches.patch
+- Add patch to use Go from the system and prevent Bazel trying to
+  download Go on its own.
+  * cilium-proxy-use-go-sdk-from-host.patch
+- Add patch to use dynamically linked libraries as third-party
+  dependencies in Envoy.
+  * cilium-proxy-use-prebuilt-envoy-deps.patch
+- Add patch which makes cilium-proxy compatible with Envoy
+  1.8.0+git20181105, upstream supports lower version.
+  * cilium-proxy-upgrade-envoy-version.patch
+
