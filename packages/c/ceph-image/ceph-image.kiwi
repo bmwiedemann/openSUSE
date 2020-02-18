@@ -27,6 +27,7 @@
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
+            <label name="io.ceph.version" value="%PKG_VERSION%"/>
             <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/ceph/ceph:%PKG_VERSION%.%RELEASE%"/>
