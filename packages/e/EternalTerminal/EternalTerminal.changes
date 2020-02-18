@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 09:58:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.6:
+  * Generate passkeys on server (#280)
+
+-------------------------------------------------------------------
 Fri Dec 27 11:23:46 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0.5:
