@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_maxminddb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.1.0
 Release:        0
 Summary:        MaxMind DB Apache Module
 License:        Apache-2.0
-Group:          Productivity/Networking/Web/Servers
 URL:            https://maxmind.github.io/mod_maxminddb/
 Source:         https://github.com/maxmind/mod_maxminddb/releases/download/%{version}/mod_maxminddb-%{version}.tar.gz
 Source2:        %{modname}.conf
@@ -51,11 +50,6 @@ echo "MaxMindDBEnable On" > test-enable-module.conf
 autoreconf
 %configure
 make %{?_smp_mflags}
-
-%check
-set +x
-%apache_test_module_load -m maxminddb -i test-enable-module.conf
-set -x
 
 %install
 mkdir -p %{buildroot}/%{apache_libexecdir}
