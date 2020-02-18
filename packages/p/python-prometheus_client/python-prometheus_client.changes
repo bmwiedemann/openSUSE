@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 14:57:12 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Add Provides and Obsoletes fields to correctly supersede SUSE:SLE-15-SP2:GA/python-prometheus-client
+
+-------------------------------------------------------------------
 Mon Jul 29 11:39:05 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
 
 - Require python-futures instead of python2-futures for building for both sle12 and sle15 

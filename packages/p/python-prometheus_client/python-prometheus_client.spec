@@ -1,7 +1,7 @@
 #
 # spec file for package python-prometheus_client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Suggests:       python-twisted
+Provides:       python-prometheus-client = %{version}-%{release}
+Obsoletes:      python-prometheus-client < %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
