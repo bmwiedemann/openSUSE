@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 17 03:07:35 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.0013
+   see /usr/share/doc/packages/perl-Devel-Hide/Changes
+
+  0.0013      2020-01-16
+  
+     - Cope with changes to how the hints hash works in perl 5.31.7
+  
+  0.0012      2020-01-15
+  
+     - Add -lexically argument to import() to support hiding modules
+       just during the current scope
+
+-------------------------------------------------------------------
 Thu Feb 13 03:08:47 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.0011

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Devel-Hide
-Version:        0.0011
+Version:        0.0013
 Release:        0
 %define cpan_name Devel-Hide
 Summary:        Forces the unavailability of specified Perl modules (for testing)
@@ -70,11 +70,23 @@ loaded and stopping the search before they have a chance to be found.
 
 There are three alternative ways to include modules in the hidden list:
 
-  * setting @Devel::Hide::HIDDEN
+* import()
 
-  * environment variable DEVEL_HIDE_PM
+this is probably the most commonly used method, called automagically when
+you do this:
 
-  * import()
+    use Devel::Hide qw(Foo Bar::Baz);
+
+or
+
+    perl -MDevel::Hide=...
+
+* setting @Devel::Hide::HIDDEN
+
+* environment variable DEVEL_HIDE_PM
+
+both of these two only support 'global' hiding, whereas 'import()' supports
+lexical hiding as well.
 
 Optionally, you can provide some arguments *before* the list of modules:
 
@@ -82,7 +94,16 @@ Optionally, you can provide some arguments *before* the list of modules:
 
 propagate the list of hidden modules to your process' child processes. This
 works by populating 'PERL5OPT', and is incompatible with Taint mode, as
-explained in perlrun.
+explained in perlrun. Of course, this is unnecessary if your child
+processes are just forks of the current one.
+
+* -lexically
+
+This is only available on perl 5.10.0 and later. It is a fatal error to try
+to use it on an older perl.
+
+Everything following this will only have effect until the end of the
+current scope. Yes, that includes '-quiet'.
 
 * -quiet
 
