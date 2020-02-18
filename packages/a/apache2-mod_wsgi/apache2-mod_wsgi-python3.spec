@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_wsgi-python3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Source:         https://github.com/GrahamDumpleton/mod_wsgi/archive/%{version}.t
 ## Work around for inconsistent Apache source tree in SLE 12, see bnc#915479
 Patch0:         wsgi_fixVersionCheck.patch
 BuildRequires:  apache-rex
+%apache_rex_deps
 BuildRequires:  python3-devel
 Conflicts:      apache2-mod_wsgi
 Provides:       %{modname} = %{version}-%{release}

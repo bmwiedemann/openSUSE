@@ -349,4 +349,12 @@
 - test with %apache_rex_check (forwarded request 753968 from pgajdos)</comment>
     <requestid>754581</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a4a54587242b72582719ee3ad284d005</srcmd5>
+    <version>4.6.8</version>
+    <time>1582029005</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>775139</requestid>
+  </revision>
 </revisionlist>
