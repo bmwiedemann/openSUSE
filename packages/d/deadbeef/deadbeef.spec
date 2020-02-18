@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,10 @@ Patch5:         deadbeef_disable_psf.patch
 Patch6:         deadbeef-fix-return-type.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org Install documents by rpmbuild
 Patch7:         deadbeef-drop-documents-installation.patch
+# PATCH-FIX-UPSTREAM deadbeef-better-ogg-and-aac-converter-support.patch hillwood@opensuse.org More profiles for ogg and aac
+# Bring the feature to openSUSE first.
+# https://github.com/DeaDBeeF-Player/deadbeef/pull/2338
+Patch8:         deadbeef-better-ogg-and-aac-converter-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -103,6 +107,7 @@ Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 Obsoletes:      %{name}-restricted-plugins < %{version}
 Provides:       %{name}-restricted-plugins = %{version}-%{version}
+Recommends:     faac
 
 %description plugins-extra
 Extra plugins for DeaDBeeF audio player.
@@ -125,6 +130,7 @@ This package provides headers for DeaDBeeF plugins development.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 cp %{SOURCE1} %{name}.appdata.xml
 

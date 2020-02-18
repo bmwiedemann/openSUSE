@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:02:21 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- More profiles for ogg and aac
+  add deadbeef-better-ogg-and-aac-converter-support.patch
+
+-------------------------------------------------------------------
+Thu Jan 16 11:11:11 UTC 2020 - olaf@aepfle.de
+
+- Fix potential buffer overflow in on_group_by_custom_activate
+
+-------------------------------------------------------------------
 Mon Jan  6 13:26:05 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.8.2

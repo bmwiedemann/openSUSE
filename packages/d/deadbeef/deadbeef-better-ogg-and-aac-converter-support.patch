@@ -1,0 +1,138 @@
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/AAC_(Nero_FAAC).txt deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_(Nero_FAAC).txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/AAC_(Nero_FAAC).txt	2019-08-02 02:36:50.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_(Nero_FAAC).txt	1970-01-01 08:00:00.000000000 +0800
+@@ -1,11 +0,0 @@
+-title AAC (Nero FAAC)
+-ext mp4
+-encoder faac -w -o %o -
+-method 0
+-id3v2_version 0
+-tag_id3v2 0
+-tag_id3v1 0
+-tag_apev2 0
+-tag_flac 0
+-tag_oggvorbis 0
+-tag_mp4 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/AAC_VBR_192Kbps_(Nero_FAAC).txt deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_VBR_192Kbps_(Nero_FAAC).txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/AAC_VBR_192Kbps_(Nero_FAAC).txt	1970-01-01 08:00:00.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_VBR_192Kbps_(Nero_FAAC).txt	2020-02-14 21:10:08.903061000 +0800
+@@ -0,0 +1,11 @@
++title AAC VBR 192kbps (Nero FAAC)
++ext m4a
++encoder faac -q 200 -w -o %o -
++method 0
++id3v2_version 0
++tag_id3v2 0
++tag_id3v1 0
++tag_apev2 0
++tag_flac 0
++tag_oggvorbis 0
++tag_mp4 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/AAC_VBR_256Kbps_(Nero_FAAC).txt deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_VBR_256Kbps_(Nero_FAAC).txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/AAC_VBR_256Kbps_(Nero_FAAC).txt	1970-01-01 08:00:00.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_VBR_256Kbps_(Nero_FAAC).txt	2020-02-16 16:56:24.022674708 +0800
+@@ -0,0 +1,11 @@
++title AAC VBR 256kbps (Nero FAAC)
++ext m4a
++encoder faac -q 300 -w -o %o -
++method 0
++id3v2_version 0
++tag_id3v2 0
++tag_id3v1 0
++tag_apev2 0
++tag_flac 0
++tag_oggvorbis 0
++tag_mp4 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/AAC_VBR_320Kbps_(Nero_FAAC).txt deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_VBR_320Kbps_(Nero_FAAC).txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/AAC_VBR_320Kbps_(Nero_FAAC).txt	1970-01-01 08:00:00.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/AAC_VBR_320Kbps_(Nero_FAAC).txt	2020-02-14 21:10:24.514992000 +0800
+@@ -0,0 +1,11 @@
++title AAC VBR 320kbps (Nero FAAC)
++ext m4a
++encoder faac -q 500 -w -o %o -
++method 0
++id3v2_version 0
++tag_id3v2 0
++tag_id3v1 0
++tag_apev2 0
++tag_flac 0
++tag_oggvorbis 0
++tag_mp4 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/Ogg_VBR_192Kbps.txt deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_VBR_192Kbps.txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/Ogg_VBR_192Kbps.txt	1970-01-01 08:00:00.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_VBR_192Kbps.txt	2020-02-14 21:19:59.992432000 +0800
+@@ -0,0 +1,10 @@
++title Ogg Vorbis VBR 192kbps
++ext ogg
++encoder oggenc -q 6 -o %o -
++method 0
++id3v2_version 0
++tag_id3v2 0
++tag_id3v1 0
++tag_apev2 0
++tag_flac 0
++tag_oggvorbis 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/Ogg_VBR_256Kbps.txt deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_VBR_256Kbps.txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/Ogg_VBR_256Kbps.txt	1970-01-01 08:00:00.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_VBR_256Kbps.txt	2020-02-14 21:16:34.625346000 +0800
+@@ -0,0 +1,10 @@
++title Ogg Vorbis VBR 256kbps
++ext ogg
++encoder oggenc -q 8 -o %o -
++method 0
++id3v2_version 0
++tag_id3v2 0
++tag_id3v1 0
++tag_apev2 0
++tag_flac 0
++tag_oggvorbis 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/Ogg_VBR_320Kbps.txt deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_VBR_320Kbps.txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/Ogg_VBR_320Kbps.txt	1970-01-01 08:00:00.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_VBR_320Kbps.txt	2020-02-14 21:19:09.784656000 +0800
+@@ -0,0 +1,10 @@
++title Ogg Vorbis VBR 320kbps
++ext ogg
++encoder oggenc -q 9 -o %o -
++method 0
++id3v2_version 0
++tag_id3v2 0
++tag_id3v1 0
++tag_apev2 0
++tag_flac 0
++tag_oggvorbis 1
+diff -Nur deadbeef-1.8.2/plugins/converter/convpresets/Ogg_Vorbis_(-q_5).txt deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_Vorbis_(-q_5).txt
+--- deadbeef-1.8.2/plugins/converter/convpresets/Ogg_Vorbis_(-q_5).txt	2019-08-02 02:36:50.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/convpresets/Ogg_Vorbis_(-q_5).txt	1970-01-01 08:00:00.000000000 +0800
+@@ -1,10 +0,0 @@
+-title Ogg Vorbis (-q 5)
+-ext ogg
+-encoder oggenc -q 5 -o %o -
+-method 0
+-id3v2_version 0
+-tag_id3v2 0
+-tag_id3v1 0
+-tag_apev2 0
+-tag_flac 0
+-tag_oggvorbis 1
+diff -Nur deadbeef-1.8.2/plugins/converter/Makefile.am deadbeef-1.8.2-new/plugins/converter/Makefile.am
+--- deadbeef-1.8.2/plugins/converter/Makefile.am	2019-08-02 02:36:50.000000000 +0800
++++ deadbeef-1.8.2-new/plugins/converter/Makefile.am	2020-02-16 16:55:07.799115782 +0800
+@@ -1,12 +1,16 @@
+ convdata = \
+-	convpresets/AAC_(Nero_FAAC).txt\
++	convpresets/AAC_VBR_192Kbps_(Nero_FAAC).txt\
++	convpresets/AAC_VBR_256Kbps_(Nero_FAAC).txt\
++	convpresets/AAC_VBR_320Kbps_(Nero_FAAC).txt\
+ 	convpresets/FLAC_(compression_level_5).txt\
+ 	convpresets/MP3_CBR_320_Kbps_(Lame).txt\
+ 	convpresets/MP3_VBR_192Kbps_(Lame).txt\
+ 	convpresets/MS_RIFF_WAV.txt\
+ 	convpresets/MusePack.txt\
+ 	convpresets/Ogg_FLAC.txt\
+-	convpresets/Ogg_Vorbis_(-q_5).txt\
++	convpresets/Ogg_VBR_192Kbps.txt\
++	convpresets/Ogg_VBR_256Kbps.txt\
++	convpresets/Ogg_VBR_320Kbps.txt\
+ 	convpresets/Opus.txt\
+ 	convpresets/TTA.txt\
+ 	convpresets/WavPack.txt\
