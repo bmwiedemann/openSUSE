@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="renderspec">
-    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/stein/openstack/microversion_parse/microversion_parse.spec.j2</param>
+    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/train/openstack/microversion_parse/microversion_parse.spec.j2</param>
     <param name="output-name">python-microversion_parse.spec</param>
     <param name="requirements">https://raw.githubusercontent.com/openstack/microversion-parse/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>

@@ -15,4 +15,12 @@
     <comment>- switch to stable/stein template</comment>
     <requestid>692837</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>01c583369c713518fda89ad820d84fc2</srcmd5>
+    <version>0.2.1</version>
+    <time>1582018815</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to stable/train package template</comment>
+    <requestid>774905</requestid>
+  </revision>
 </revisionlist>
