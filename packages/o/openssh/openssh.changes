@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:47:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patches to fix the sandbox blocking glibc on 32bit platforms
+  (boo#1164061):
+  * openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
+  * openssh-8.1p1-seccomp-clock_gettime64.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 18:05:37 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Add openssh-8.1p1-seccomp-clock_nanosleep.patch, allow clock_nanosleep
