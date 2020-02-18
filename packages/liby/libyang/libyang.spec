@@ -1,7 +1,7 @@
 #
 # spec file for package libyang
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,14 @@
 
 
 %define sover 1
-%define realver 1.0-r5
 Name:           libyang
-Version:        1.0r5
+Version:        1.0.130
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://github.com/CESNET/libyang
-Source:         https://github.com/CESNET/libyang/archive/v%{realver}.tar.gz#/%{name}-%{realver}.tar.gz
+Source:         https://github.com/CESNET/libyang/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -149,7 +148,7 @@ BuildArch:      noarch
 This is the API documentation of libyang.
 
 %prep
-%setup -q -n %{name}-%{realver}
+%setup -q
 
 %build
 %cmake \

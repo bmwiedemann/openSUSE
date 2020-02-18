@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 15 22:32:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.130
+  * new functions lyd_find_sibling*() for searching for a specific
+    sibling
+    + if available, they use hashes meaning the search complexity
+      is constant!
+  * leafref validation no longer cached
+    + may make validation slightly longer but editing data is
+      much faster
+  * minor C++ binding fixes
+  * minor schema/data parser bugfixes
+  * other general bugfixes
+- Update to version 1.0.109
+  * new LYB parser flag to allow using updated modules
+  * minor fixes in action validation
+  * other minor fixes
+
+-------------------------------------------------------------------
 Sat Dec 21 20:44:42 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Run testsuite
