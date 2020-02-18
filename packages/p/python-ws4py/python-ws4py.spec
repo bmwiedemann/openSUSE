@@ -1,7 +1,7 @@
 #
 # spec file for package python-ws4py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Name:           python-ws4py%{psuffix}
 Version:        0.5.1
 Release:        0
 Summary:        WebSocket client and server library for Python
-License:        BSD-2-Clause
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Lawouach/WebSocket-for-Python
 Source:         https://files.pythonhosted.org/packages/source/w/ws4py/ws4py-%{version}.tar.gz
