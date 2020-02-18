@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 18 02:47:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.82:
+  https://wiki.blender.org/wiki/Reference/Release_Notes/2.82 
+- dropped patches:
+  0001-Fix-T71680-_PyObject_LookupAttr-memory-leak.patch
+  0006-add_ppc64el-s390x_support.patch
+- refreshed patches:
+  - make_python_3.6_compatible.patch
+    dropped the memory leak fix from the patch
+- track series file in spec file to make quilt easier
+- enable _smp_mflags. seems to work with 2.82
+- drop unused options from the spec file:
+  WITH_RAYOPTIMIZATION
+  WITH_MOD_SMOKE
+
+-------------------------------------------------------------------
 Wed Feb  5 20:34:02 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 2.81a:

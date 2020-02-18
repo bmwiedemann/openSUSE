@@ -46,7 +46,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.81a
+Version:        2.82
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -59,13 +59,9 @@ Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
 Source8:        %{name}.appdata.xml
-Patch0:         0006-add_ppc64el-s390x_support.patch
+Source99:       series
 # only rely on patch availibility, if python_36 is requested
-# this patch also fixes a memory leak
-Patch1:         make_python_3.6_compatible.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-T71680-_PyObject_LookupAttr-memory-leak.patch hpj@urpla.net
-# if the former patch isn't applied, fix underlying memory leak
-Patch2:         0001-Fix-T71680-_PyObject_LookupAttr-memory-leak.patch
+Patch0:         make_python_3.6_compatible.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -226,11 +222,8 @@ md5sum -c %{SOURCE1}
 popd
 
 %setup -q
-%patch0 -p1
 %if %{with python_36}
-%patch1 -p1
-%else
-%patch2 -p1
+%patch0 -p1
 %endif
 
 rm -rf extern/glew
@@ -315,7 +308,6 @@ cmake ../ \
       -DWITH_SYSTEM_LZO:BOOL=ON \
       -DWITH_MOD_FLUID:BOOL=ON \
       -DWITH_MOD_REMESH:BOOL=ON \
-      -DWITH_MOD_SMOKE:BOOL=ON \
 %ifnarch x86_64
       -DWITH_MOD_OCEANSIM:BOOL=OFF \
 %else
@@ -353,11 +345,6 @@ cmake ../ \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
       -DWITH_QUADRIFLOW:BOOL=ON \
-%ifnarch x86_64
-      -DWITH_RAYOPTIMIZATION:BOOL=OFF \
-%else
-      -DWITH_RAYOPTIMIZATION:BOOL=ON \
-%endif
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
       -DWITH_SYSTEM_GLEW:BOOL=ON \
@@ -366,7 +353,7 @@ cmake ../ \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
 
-make $_smp_mflags
+make %{_smp_mflags}
 
 %install
 echo "release version = %{_version}"
