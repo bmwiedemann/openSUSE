@@ -1,4 +1,4 @@
-From 357c8c498b31d5f05dd6d0b73b4d41b62228ac56 Mon Sep 17 00:00:00 2001
+From baf5b711ffca44ea86f92c89d6e9be55441d1b1d Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 10:26:43 +0100
 Subject: [PATCH] configs: am335x_evm: disable BTRFS

@@ -1,4 +1,4 @@
-From 741743044fdc2008ea45ac7f271daa567c4dd9f0 Mon Sep 17 00:00:00 2001
+From 9f8b17cd1c23f8bb4e5702d16da2951e8cd79ab1 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Wed, 21 Feb 2018 17:41:13 +0100
 Subject: [PATCH] rpi: Use firmware provided device tree

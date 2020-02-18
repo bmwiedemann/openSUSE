@@ -1,4 +1,4 @@
-From 55cefec93c8fae1ad5bd0f2f892785610c142d91 Mon Sep 17 00:00:00 2001
+From 7bd7774b57e903b797cc1b12c15e3ae61a8f3477 Mon Sep 17 00:00:00 2001
 From: Andre Przywara <andre.przywara@arm.com>
 Date: Fri, 3 Jan 2020 22:08:47 +0000
 Subject: [PATCH] net: phy: Fix overlong PHY timeout

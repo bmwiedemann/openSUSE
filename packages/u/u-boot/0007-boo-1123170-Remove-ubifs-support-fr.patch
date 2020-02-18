@@ -1,4 +1,4 @@
-From 98e9215b94ac8e2e5a8d545ad05b2ff0f9429bcc Mon Sep 17 00:00:00 2001
+From 789d64316535a62f065fe386fb9efb1bb30fada1 Mon Sep 17 00:00:00 2001
 From: Guillaume GARDET <guillaume.gardet@free.fr>
 Date: Tue, 29 Jan 2019 11:38:12 +0100
 Subject: [PATCH] boo#1123170: Remove ubifs support from omap3_beagle to keep a

@@ -1,4 +1,4 @@
-From 76c24dca74ae4142400b36a37a5e563aafbcef76 Mon Sep 17 00:00:00 2001
+From c99673d47b635950b7c56dd9ea43371cb149e8f3 Mon Sep 17 00:00:00 2001
 From: Amit Singh Tomar <amittomer25@gmail.com>
 Date: Mon, 27 Jan 2020 01:14:43 +0000
 Subject: [PATCH] rpi4: Update memory map to accommodate scb devices

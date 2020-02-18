@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 16:56:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update patch to fix boo#1163723 :
+  * 0001-XXX-openSUSE-XXX-Prepend-partition-.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 10:43:44 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.01

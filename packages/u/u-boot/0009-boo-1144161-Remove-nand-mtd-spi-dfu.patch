@@ -1,4 +1,4 @@
-From 06001132d3503a4e2db4d71fe380bb75115930f7 Mon Sep 17 00:00:00 2001
+From 92f993cab1b84e49b3d0788fde619fab83a526af Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Mon, 16 Dec 2019 17:51:17 +0100
 Subject: [PATCH] boo#1144161: Remove nand/mtd/spi/dfu/fastboot support from
