@@ -294,4 +294,30 @@
   - delete useless indent</comment>
     <requestid>692869</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b1f2a6e47cd732568f684c4e9105dba0</srcmd5>
+    <version>2.34.1</version>
+    <time>1582018913</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.34.1
+  - Add local bindep.txt
+  - Dropping the py35 testing
+  - Add nosec to skip bandit check
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Sync Sphinx requirement
+  - Set locale to english
+  - When looping call fails do not log the exception trace
+  - Change python3.5 job to python3.7 job on Stein+
+  - Add Python 3 Train unit tests
+  - Fix invalid escape sequence warning
+  - Ensure that log message with non-ascii code does not raise exception
+  - SDRS recommendation for create VM
+  - Update master for stable/stein
+  - Return None if no suitable datastore is found
+  - Follow the new PTI for document build
+  - Fix doc build error under Python 3
+  - Update NFC lease progress</comment>
+    <requestid>774925</requestid>
+  </revision>
 </revisionlist>

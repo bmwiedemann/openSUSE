@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:30:36 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.34.1
+  - Add local bindep.txt
+  - Dropping the py35 testing
+  - Add nosec to skip bandit check
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Sync Sphinx requirement
+  - Set locale to english
+  - When looping call fails do not log the exception trace
+  - Change python3.5 job to python3.7 job on Stein+
+  - Add Python 3 Train unit tests
+  - Fix invalid escape sequence warning
+  - Ensure that log message with non-ascii code does not raise exception
+  - SDRS recommendation for create VM
+  - Update master for stable/stein
+  - Return None if no suitable datastore is found
+  - Follow the new PTI for document build
+  - Fix doc build error under Python 3
+  - Update NFC lease progress
+
+-------------------------------------------------------------------
 Mon Apr  8 11:31:42 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.32.2

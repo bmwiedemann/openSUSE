@@ -17,15 +17,14 @@
 
 
 Name:           python-oslo.vmware
-Version:        2.32.2
+Version:        2.34.1
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.vmware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-2.32.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-2.34.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-Babel
 BuildRequires:  python2-ddt
 BuildRequires:  python2-eventlet >= 0.18.2
@@ -48,7 +47,6 @@ BuildRequires:  python2-testtools
 BuildRequires:  python2-urllib3 >= 1.21.1
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
-BuildRequires:  python3-devel
 BuildRequires:  python3-eventlet >= 0.18.2
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-lxml >= 3.4.1
@@ -97,22 +95,22 @@ server.
 %package        -n python-oslo.vmware-doc
 Summary:        Documentation for OpenStack common VMware library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-Requires:       %{name} = %{version}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.vmware-doc
 Documentation for OpenStack common VMware library.
 
 %prep
-%autosetup -p1 -n oslo.vmware-2.32.2
+%autosetup -p1 -n oslo.vmware-2.34.1
 %py_req_cleanup
 
 %build
 %python_build
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -125,8 +123,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python2_sitelib}/oslo_vmware
-%{python2_sitelib}/*.egg-info
+%{python_sitelib}/oslo_vmware
+%{python_sitelib}/*.egg-info
 
 %files -n python-oslo.vmware-doc
 %doc doc/build/html
