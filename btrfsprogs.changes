@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 17 00:00:00 CET 2020 - dsterba@suse.cz
+
+- Update to 5.4.1
+  * build: fix docbook5 build
+  * check: do extra verification of extent items, inode items and chunks
+  * qgroup: return ENOTCONN if quotas not running (needs updated kernel)
+  * other: various test fixups
+
+-------------------------------------------------------------------
 Thu Jan 23 13:00:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: Allow OBS to
