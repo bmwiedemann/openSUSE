@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        0.1.1
+Version:        0.2.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        The Jupyter Server
-Url:            https://github.com/jupyter/jupyter_server
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter-server/jupyter_server-%{version}.tar.gz
+URL:            https://github.com/jupyter/jupyter_server
+Source:         https://github.com/jupyter/jupyter_server/archive/%{version}.tar.gz#/jupyter_server-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,20 +40,21 @@ BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module nbval}
-BuildRequires:  %{python_module nose-exclude}
-BuildRequires:  %{python_module nose_warnings_filters}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module prometheus_client}
+BuildRequires:  %{python_module pytest-console-scripts}
+BuildRequires:  %{python_module pytest-tornasync}
+BuildRequires:  %{python_module pytest4}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module requests}
-# BuildRequires:  %%{python_module selenium}
 BuildRequires:  %{python_module terminado >= 0.8.1}
 BuildRequires:  %{python_module tornado >= 4}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
+BuildRequires:  pandoc
 BuildRequires:  python-ipaddress
 BuildRequires:  python-mock
-BuildRequires:  pandoc
 # /SECTION
+Requires:       jupyter-jupyter-server = %{version}
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-ipykernel
@@ -66,7 +68,6 @@ Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.1
 Requires:       python-tornado >= 4
 Requires:       python-traitlets >= 4.2.1
-Requires:       jupyter-jupyter-server = %{version}
 %ifpython2
 Requires:       python-ipaddress
 %endif
@@ -84,6 +85,7 @@ This package provides the python interface.
 
 %package     -n jupyter-jupyter-server
 Summary:        The Jupyter Server
+Group:          Development/Languages/Python
 Requires:       jupyter-ipykernel
 Requires:       jupyter-jupyter-client >= 5.2.0
 Requires:       jupyter-jupyter-core >= 4.4.0
@@ -114,7 +116,8 @@ mv %{buildroot}%{_bindir}/jupyter-bundlerextension %{buildroot}%{_bindir}/jupyte
 
 %check
 export LANG=en_US.UTF-8
-%python_expand nosetests-%{$python_bin_suffix} -v jupyter_server
+export PATH=$PATH:%{buildroot}%{_bindir}
+%pytest tests
 
 %files %{python_files}
 %doc README.md
@@ -124,7 +127,6 @@ export LANG=en_US.UTF-8
 %files -n jupyter-jupyter-server
 %license COPYING.md
 %{_bindir}/jupyter-server
-%{_bindir}/jupyter-extension
 %{_bindir}/jupyter-server-bundlerextension
 
 %changelog

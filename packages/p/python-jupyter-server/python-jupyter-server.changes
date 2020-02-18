@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:25:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.1
+  + Added
+    * pytest-plugin for Jupyter Server.
+- Update to 0.2.0
+  + Added
+    * `extension` submodule
+  + Changed
+    * `jupyter serverextension <command>` entrypoint has been changed to `jupyter server extension <command>`.
+    * `toggle_jupyter_server` and `validate_jupyter_server` function no longer take a Logger object as an argument.
+    * Changed testing framework from nosetests to pytest
+    * Added Github actions as a testing framework along side Travis and Azure
+  + Removed
+    * Removed the option to update `root_dir` trait in FileContentsManager and MappingKernelManager in ServerApp
+  + Fixed
+    * Synced Jupyter Server with Notebook PRs in batches (ended on 2019-09-27)
+  + Security
+    * Added a "secure_write to function for cookie/token saves
+
+-------------------------------------------------------------------
 Tue Nov 12 17:38:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 support due to python-notebook dropping python2 support
