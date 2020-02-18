@@ -144,8 +144,8 @@ unsorted:
   - OpenImageIO 
   - OpenImageIO-devel 
   - OpenLP 
-  - OpenMoji-Black: [i586] 
-  - OpenMoji-Color: [i586] 
+  - OpenMoji-Black 
+  - OpenMoji-Color 
   - OpenPrintingPPDs 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
@@ -910,6 +910,7 @@ unsorted:
   - avfs 
   - avfs-devel 
   - avgtime 
+  - avif-tools 
   - avocado-common 
   - avocado-examples 
   - avocado-vt-common 
@@ -1650,6 +1651,7 @@ unsorted:
   - cilium-etcd-operator 
   - cilium-init: [x86_64] 
   - cilium-operator: [x86_64] 
+  - cilium-proxy: [x86_64] 
   - cimple 
   - cimple-cmpi-adapter 
   - cimple-devel 
@@ -4576,6 +4578,7 @@ unsorted:
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
   - gnome-shell-extension-terminus 
+  - gnome-shell-extension-user-theme 
   - gnome-shell-extensions-common 
   - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-boxes 
@@ -7355,23 +7358,24 @@ unsorted:
   - libOyranosSynnefo-devel 
   - libOyranosSynnefo-devel-static 
   - libOyranosSynnefo1 
-  - libPocoCppParser63 
-  - libPocoCrypto63 
-  - libPocoData63 
-  - libPocoDataMySQL63 
-  - libPocoDataODBC63 
-  - libPocoDataSQLite63 
-  - libPocoEncodings63 
-  - libPocoFoundation63 
-  - libPocoJSON63 
-  - libPocoMongoDB63 
-  - libPocoNet63 
-  - libPocoNetSSL63 
-  - libPocoPDF63 
-  - libPocoRedis63 
-  - libPocoUtil63 
-  - libPocoXML63 
-  - libPocoZip63 
+  - libPocoCppParser71 
+  - libPocoCrypto71 
+  - libPocoData71 
+  - libPocoDataMySQL71 
+  - libPocoDataODBC71 
+  - libPocoDataSQLite71 
+  - libPocoEncodings71 
+  - libPocoFoundation71 
+  - libPocoJSON71 
+  - libPocoJWT71 
+  - libPocoMongoDB71 
+  - libPocoNet71 
+  - libPocoNetSSL71 
+  - libPocoPDF71 
+  - libPocoRedis71 
+  - libPocoUtil71 
+  - libPocoXML71 
+  - libPocoZip71 
   - libPythonQt-Qt5-Python3-3 
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
@@ -7604,7 +7608,6 @@ unsorted:
   - libSimGearCore-2018_3_4 
   - libSoQt20 
   - libSoapyOsmoSDR0 
-  - libSoapySDR0_7 
   - libSoundTouch1-32bit: [x86_64] 
   - libStatTimer2: [x86_64] 
   - libSwiften4 
@@ -7934,7 +7937,6 @@ unsorted:
   - libavformat58-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif-tools 
   - libavif0 
   - libavrdude1 
   - libavresample4-32bit: [x86_64] 
@@ -10524,7 +10526,7 @@ unsorted:
   - libopenjp2-7-32bit: [x86_64] 
   - libopenjpeg1 
   - libopenjpeg1-32bit: [x86_64] 
-  - libopenlibm2 
+  - libopenlibm3 
   - libopenmpi1-gnu-hpc 
   - libopenmpi2-gnu-hpc 
   - libopenmpi3-gnu-hpc 
@@ -11402,6 +11404,7 @@ unsorted:
   - libretro-dosbox 
   - libretro-easyrpg 
   - libretro-fceumm 
+  - libretro-ffmpeg: [x86_64] 
   - libretro-flycast 
   - libretro-freechaf 
   - libretro-freeintv 
@@ -11815,6 +11818,7 @@ unsorted:
   - libswscale5-32bit: [x86_64] 
   - libsybdb5 
   - libsympol0_1 
+  - libsymspg1 
   - libsynce-devel 
   - libsynce0 
   - libsysstat-qt5-0 
@@ -17896,7 +17900,6 @@ unsorted:
   - python-masakariclient-doc 
   - python-mathgl 
   - python-md2workflow-common 
-  - python-microversion_parse 
   - python-microversion_parse-doc 
   - python-mistralclient-doc 
   - python-mox3-doc 
@@ -17911,8 +17914,6 @@ unsorted:
   - python-networkx-doc 
   - python-neutronclient-doc 
   - python-nlopt 
-  - python-notify 
-  - python-notify-devel 
   - python-notmuch-doc 
   - python-novaclient-doc 
   - python-obexftp 
@@ -18135,7 +18136,6 @@ unsorted:
   - python2-PyECLib 
   - python2-PyExecJS 
   - python2-PyFxA 
-  - python2-PyGithub 
   - python2-PyHamcrest 
   - python2-PyICU 
   - python2-PyInstaller 
@@ -18967,7 +18967,6 @@ unsorted:
   - python2-guzzle_sphinx_theme 
   - python2-h11 
   - python2-h2 
-  - python2-h5netcdf 
   - python2-h5py 
   - python2-hankel 
   - python2-hanzidentifier 
@@ -19215,6 +19214,7 @@ unsorted:
   - python2-memory_profiler 
   - python2-metaextract 
   - python2-mhash 
+  - python2-microversion_parse 
   - python2-minio 
   - python2-miniupnpc 
   - python2-misaka 
@@ -20036,7 +20036,6 @@ unsorted:
   - python2-structlog 
   - python2-subgrab 
   - python2-subliminal 
-  - python2-subprocrunner 
   - python2-subst 
   - python2-suds-jurko 
   - python2-suntime 
@@ -21738,6 +21737,7 @@ unsorted:
   - python3-metaextract 
   - python3-metakernel 
   - python3-metamagic.json 
+  - python3-microversion_parse 
   - python3-mimesis 
   - python3-minidb 
   - python3-minio 
@@ -21979,6 +21979,7 @@ unsorted:
   - python3-pcp 
   - python3-pdd 
   - python3-pdfkit 
+  - python3-pdfminer.six 
   - python3-pdfrw 
   - python3-pecan 
   - python3-peewee 
@@ -22006,6 +22007,7 @@ unsorted:
   - python3-pifpaf 
   - python3-pika 
   - python3-pika-pool 
+  - python3-pikepdf 
   - python3-pilkit 
   - python3-pingparsing 
   - python3-pip-api 
@@ -22322,6 +22324,7 @@ unsorted:
   - python3-pytest-timeout 
   - python3-pytest-tldr 
   - python3-pytest-tornado 
+  - python3-pytest-tornasync 
   - python3-pytest-translations 
   - python3-pytest-travis-fold 
   - python3-pytest-trio 
@@ -22614,6 +22617,7 @@ unsorted:
   - python3-speaklater 
   - python3-spec 
   - python3-spec_tools 
+  - python3-spglib 
   - python3-sphinx-argparse 
   - python3-sphinx-autodoc-typehints 
   - python3-sphinx-bootstrap-theme 
@@ -24802,6 +24806,7 @@ unsorted:
   - speex-devel 
   - speexdsp-devel 
   - spew 
+  - spglib-devel 
   - sphinx 
   - sphinxbase 
   - sphinxbase-devel 
@@ -34154,7 +34159,6 @@ unsorted:
   - yast2-isns 
   - yast2-nis-server 
   - yast2-pkg-bindings-devel-doc 
-  - yast2-python-bindings: [x86_64] 
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration: [x86_64] 
