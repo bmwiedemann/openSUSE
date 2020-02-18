@@ -123,4 +123,21 @@
   - delete unused '='</comment>
     <requestid>692868</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6173384619d6621d76ae984503ebd30</srcmd5>
+    <version>1.36.1</version>
+    <time>1582018912</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.36.1
+  - Fix deprecation warnings
+  - Cap Bandit below 1.6.0, update sphinx requirement, uncap jsonschema
+  - OpenDev Migration Patch
+  - Replace openstack.org git:// URLs with https://
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Resolve some issue with tox.ini, setup.cfg
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs</comment>
+    <requestid>774924</requestid>
+  </revision>
 </revisionlist>

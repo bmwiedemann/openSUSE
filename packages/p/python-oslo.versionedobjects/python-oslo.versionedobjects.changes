@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:30:13 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.36.1
+  - Fix deprecation warnings
+  - Cap Bandit below 1.6.0, update sphinx requirement, uncap jsonschema
+  - OpenDev Migration Patch
+  - Replace openstack.org git:// URLs with https://
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Resolve some issue with tox.ini, setup.cfg
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs
+
+-------------------------------------------------------------------
 Mon Apr  8 11:34:36 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.35.1

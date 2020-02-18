@@ -17,15 +17,14 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        1.35.1
+Version:        1.36.1
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.versionedobjects
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-1.35.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-1.36.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-iso8601 >= 0.1.11
 BuildRequires:  python2-jsonschema
 BuildRequires:  python2-oslo.concurrency >= 3.26.0
@@ -39,7 +38,6 @@ BuildRequires:  python2-oslo.utils >= 3.33.0
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr
 BuildRequires:  python2-stestr
-BuildRequires:  python3-devel
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-jsonschema
 BuildRequires:  python3-oslo.concurrency >= 3.26.0
@@ -79,20 +77,20 @@ code across different services and projects.
 %package -n python-oslo.versionedobjects-doc
 Summary:        osloversionedobjects library - Documentation
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo.versionedobjects-doc
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n oslo.versionedobjects-1.35.1
+%autosetup -p1 -n oslo.versionedobjects-1.36.1
 %py_req_cleanup
 
 %build
 %{python_build}
 
-PYTHONPATH=. sphinx-build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
