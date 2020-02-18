@@ -41,4 +41,16 @@
 </comment>
     <requestid>652113</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>759de06621bf368eb2a773be16eac098</srcmd5>
+    <version>1.3</version>
+    <time>1582018727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * README.md: Clarify how to use GCRYPT_FULL_REPACK.
+  * Updates to redhat/git-remote-gcrypt.spec.
+  * install.sh: try rst2man.py if rst2man binary not available.
+  * Add git-config option to set rsync put flags.</comment>
+    <requestid>774822</requestid>
+  </revision>
 </revisionlist>
