@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 17 03:09:48 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.08  2020-02-16
+    - Fixed support for *BSD operating systems.
+  
+  1.07  2020-02-14
+    - Updated the File::Temp requirement to version 0.2308 to avoid flock bugs
+      that could make web apps hang forever.
+
+-------------------------------------------------------------------
 Fri Feb 14 03:09:36 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.06
