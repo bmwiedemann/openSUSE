@@ -2001,4 +2001,14 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment>Shortcut through -mini (forwarded request 769718 from dimstar)</comment>
     <requestid>769770</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>c8b2d4ffceadbaeed86d19b156bbfb13</srcmd5>
+    <version>5.2.3.6</version>
+    <time>1582028976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix minor 5.2.3.6
+  + Fix for possible start failure when both Docker containers 
+    and Libvirt VMs were in use. (forwarded request 774963 from bruno_friedmann)</comment>
+    <requestid>774964</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.3.5
+Version:        5.2.3.6
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only

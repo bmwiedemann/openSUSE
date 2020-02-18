@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:09:31 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix minor 5.2.3.6
+  + Fix for possible start failure when both Docker containers 
+    and Libvirt VMs were in use.
+
+-------------------------------------------------------------------
 Mon Feb  3 16:30:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
