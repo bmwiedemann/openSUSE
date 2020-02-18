@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:15:02 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Use kdesu to start Calamares:
+  - xdg-su may autoselect gnomesu which fails (boo#1164072);
+  - pkexec may have theme issues.
+
+-------------------------------------------------------------------
 Mon Dec 23 13:04:03 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
 
 - Exclude /etc/dracut.conf.d/02-livecd.conf from copying into

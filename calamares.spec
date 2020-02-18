@@ -1,7 +1,7 @@
 #
 # spec file for package calamares
 #
-# Copyright (c) 2017, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2017, 2019, 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Source0:        https://github.com/%{name}/%{name}/releases/download/v%{version}
 # new generic branding.desc with explanations in comments
 Source1:        branding.desc
 Source2:        %{name}-rpmlintrc
-# .desktop file customizations for openSUSE Leap 15 to use xdg-su instead of Polkit pkexec
+# .desktop file customizations to use kdesu instead of Polkit pkexec
 Patch0:         %{name}-desktop-file.patch
 # adjust some default settings (default shipped .conf files) for openSUSE and openSUSE based appliances
 Patch1:         3.2-packages.conf.patch
@@ -79,6 +79,7 @@ Requires:       e2fsprogs
 Requires:       gawk
 Requires:       gptfdisk
 Requires:       grub2
+Requires:       /usr/bin/kdesu
 Requires:       kpmcore >= 3.3
 Requires:       ntfsprogs
 Requires:       os-prober
@@ -145,9 +146,7 @@ based custom appliances.
 %prep
 %setup -q -n %{name}-%{version}
 cp -f %{SOURCE1} src/branding/default/
-%if 0%{?suse_version} == 1500
 %patch0 -p1
-%endif
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
@@ -165,7 +164,7 @@ make %{?_smp_mflags}
 
 %install
 %kf5_makeinstall -C build
-# if we don't want polkit (and you want use xdg-su instead)
+# if we don't want polkit (and you want use kdesu instead)
 %if 0%{?suse_version} == 1500
 rm -fr %{buildroot}%{_datadir}/polkit-1
 %endif
@@ -212,7 +211,7 @@ chmod +x %{buildroot}%{_libdir}/%{name}/modules/unpackfs/runtests.sh
 %{_datadir}/%{name}/qml/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-# if we want polkit (you can use xdg-su instead)
+# if we want polkit (you can use kdesu instead)
 %if 0%{?suse_version} > 1500
 %{_datadir}/polkit-1/actions/com.github.%{name}.%{name}.policy
 %endif
