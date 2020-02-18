@@ -369,4 +369,21 @@
   - import zuul job settings from project-config</comment>
     <requestid>692867</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bc0529c8c97bbbddfcc2e25a2915cc0f</srcmd5>
+    <version>3.41.1</version>
+    <time>1582018909</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.41.1
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Add digestmod when using hmac
+  - Dropping the py35 testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - eventletutils: Optimise EventletEvent.clear()
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+  - Mask encryption_key_id</comment>
+    <requestid>774923</requestid>
+  </revision>
 </revisionlist>

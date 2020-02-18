@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.utils
-Version:        3.40.3
+Version:        3.41.1
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.utils
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-3.40.3.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-3.41.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-Babel
 BuildRequires:  python2-ddt
@@ -79,14 +79,14 @@ such as encoding, exception handling, string manipulation, and time handling.
 %package -n python-oslo.utils-doc
 Summary:        Documentation for OpenStack utils library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo.utils-doc
 Documentation for OpenStack utils library.
 
 %prep
-%autosetup -p1 -n oslo.utils-3.40.3
+%autosetup -p1 -n oslo.utils-3.41.1
 
 %py_req_cleanup
 
@@ -97,8 +97,7 @@ Documentation for OpenStack utils library.
 %python_install
 
 # generate html docs
-#%{__python2} setup.py build_sphinx
-PBR_VERSION=3.40.3 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=3.41.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -108,8 +107,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{python2_sitelib}/oslo_utils
-%{python2_sitelib}/*.egg-info
+%{python_sitelib}/oslo_utils
+%{python_sitelib}/*.egg-info
 
 %files -n python-oslo.utils-doc
 %doc doc/build/html

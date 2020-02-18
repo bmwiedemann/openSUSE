@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:18:17 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.41.1
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Add digestmod when using hmac
+  - Dropping the py35 testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - eventletutils: Optimise EventletEvent.clear()
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+  - Mask encryption_key_id
+
+-------------------------------------------------------------------
 Mon Apr  8 11:23:34 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.40.3
