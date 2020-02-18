@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.concurrency
-Version:        3.29.1
+Version:        3.30.0
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.concurrency
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-3.29.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-3.30.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-enum34 >= 1.0.4
@@ -79,8 +79,9 @@ external processes.
 %package -n python-oslo.concurrency-doc
 Summary:        Documentation for OpenStack concurrency library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.concurrency-doc
 The oslo.concurrency library has utilities for safely running multi-thread,
@@ -89,14 +90,14 @@ external processes.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.concurrency-3.29.1
+%autosetup -p1 -n oslo.concurrency-3.30.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

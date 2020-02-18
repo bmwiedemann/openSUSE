@@ -241,4 +241,19 @@
   - Use templates for cover and lower-constraints</comment>
     <requestid>692853</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8732520141ef2cd83d0d06d48e4ad274</srcmd5>
+    <version>3.30.0</version>
+    <time>1582018839</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.30.0
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - OpenDev Migration Patch
+  - Follow the new PTI for document build</comment>
+    <requestid>774909</requestid>
+  </revision>
 </revisionlist>
