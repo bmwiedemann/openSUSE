@@ -259,4 +259,24 @@
   - import zuul job settings from project-config</comment>
     <requestid>692860</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>39c7e09d6895bdd0bd58b0fc45fd9126</srcmd5>
+    <version>3.38.1</version>
+    <time>1582018886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.38.1
+  - Fix invalid escape sequence warnings
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - More details when logging 413 Entity Too Large
+  - Add Python 3 Train unit tests
+  - Bump the openstackdocstheme extension to 1.20
+  - Update hacking version
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing
+  - Do not use the deprecated best_match() method
+  - Blacklist sphinx 2.1.0 (autodoc bug)</comment>
+    <requestid>774916</requestid>
+  </revision>
 </revisionlist>

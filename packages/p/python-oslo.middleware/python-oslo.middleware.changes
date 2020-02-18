@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:27:08 UTC 2019 - cloud-devel@suse.de
+
+- update to version 3.38.1
+  - Fix invalid escape sequence warnings
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - More details when logging 413 Entity Too Large
+  - Add Python 3 Train unit tests
+  - Bump the openstackdocstheme extension to 1.20
+  - Update hacking version
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing
+  - Do not use the deprecated best_match() method
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+
+-------------------------------------------------------------------
 Mon Apr  8 11:49:31 UTC 2019 - cloud-devel@suse.de
 
 - update to version 3.37.1

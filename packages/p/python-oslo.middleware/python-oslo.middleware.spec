@@ -17,17 +17,17 @@
 
 
 Name:           python-oslo.middleware
-Version:        3.37.1
+Version:        3.38.1
 Release:        0
 Summary:        OpenStack oslo.middleware library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.middleware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-3.37.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-3.38.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-Jinja2 >= 2.10
-BuildRequires:  python2-WebOb >= 1.7.1
+BuildRequires:  python2-WebOb >= 1.8.0
 BuildRequires:  python2-debtcollector >= 1.2.0
 BuildRequires:  python2-fixtures
 BuildRequires:  python2-mock
@@ -44,7 +44,7 @@ BuildRequires:  python2-stestr
 BuildRequires:  python2-stevedore >= 1.20.0
 BuildRequires:  python2-testtools
 BuildRequires:  python3-Jinja2 >= 2.10
-BuildRequires:  python3-WebOb >= 1.7.1
+BuildRequires:  python3-WebOb >= 1.8.0
 BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
@@ -62,7 +62,7 @@ BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testtools
 Requires:       python-Jinja2 >= 2.10
-Requires:       python-WebOb >= 1.7.1
+Requires:       python-WebOb >= 1.8.0
 Requires:       python-debtcollector >= 1.2.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.context >= 2.19.2
@@ -84,9 +84,8 @@ for limiting size/connection etc.
 %package -n python-oslo-middleware-doc
 Summary:        Documentation for OpenStack middleware library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-reno
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo-middleware-doc
 Oslo middleware library includes components that can be injected into wsgi
@@ -96,14 +95,14 @@ for limiting size/connection etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.middleware-3.37.1
+%autosetup -p1 -n oslo.middleware-3.38.1
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
