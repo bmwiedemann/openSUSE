@@ -1,10 +1,10 @@
-diff --git a/common/av_log.c b/common/av_log.c
-index 8b0cb09efa..72968aa543 100644
---- a/common/av_log.c
-+++ b/common/av_log.c
-@@ -218,7 +218,7 @@ bool print_libav_versions(struct mp_log *log, int v)
+Index: mpv/common/av_log.c
+===================================================================
+--- mpv.orig/common/av_log.c
++++ mpv/common/av_log.c
+@@ -203,7 +203,7 @@ bool print_libav_versions(struct mp_log
  
-     mp_msg(log, v, "%s version: %s\n", LIB_PREFIX, av_version_info());
+     mp_msg(log, v, "FFmpeg version: %s\n", av_version_info());
  
 -    return !mismatch;
 +    return true;

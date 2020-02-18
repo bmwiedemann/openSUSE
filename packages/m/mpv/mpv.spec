@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.9
 %define lname   libmpv1
 Name:           mpv
-Version:        0.32.0+git.20200213T013258.5bf433b16f
+Version:        0.32.0+git.20200217T003119.36ca0e0030
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lcms2) >= 2.6
-BuildRequires:  pkgconfig(libarchive) >= 3.0.0
+BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(libass) >= 0.12.1
 BuildRequires:  pkgconfig(libavcodec) >= 58.7.100
 BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
@@ -88,7 +88,7 @@ BuildRequires:  pkgconfig(xrandr) >= 1.2.0
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xxf86vm)
-BuildRequires:  pkgconfig(zimg)
+BuildRequires:  pkgconfig(zimg) >= 2.9
 BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
