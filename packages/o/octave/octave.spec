@@ -80,7 +80,8 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
-#BuildRequires:  makeinfo
+# required for help/doc called from the tests
+BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
 %if %{with imagemagick}
 BuildRequires:  pkgconfig(ImageMagick++)
@@ -226,6 +227,7 @@ export QCOLLECTIONGENERATOR=qhelpgenerator-qt5
   %{?with_jit: --enable-jit} \
   %{!?with_java: --disable-java} \
   --with-blas=%{blas_library} \
+  --disable-docs \
   --enable-openmp
 
 make %{?_smp_mflags}
