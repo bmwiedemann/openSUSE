@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 15 18:30:36 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- whois 5.5.5:
+  * Fix the hide string for .sx, which broke many others
+
+-------------------------------------------------------------------
 Fri Jan  3 17:37:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - whois 5.5.4:
