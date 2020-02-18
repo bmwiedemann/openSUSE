@@ -1,7 +1,7 @@
 #
 # spec file for package openlibm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           openlibm
-Version:        0.5.5
+Version:        0.7.0
 Release:        0
-%define so_ver  2
+%define so_ver  3
 %define libname lib%{name}%{so_ver}
 Summary:        Standalone C mathematical library
-License:        BSD-2-Clause and MIT
+License:        BSD-2-Clause AND MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/JuliaLang/openlibm/
+URL:            https://github.com/JuliaLang/openlibm/
 Source0:        https://github.com/JuliaLang/openlibm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    ppc s390 s390x
+ExcludeArch:    ppc
 
 %description
 OpenLibm is an implementation of a standalone C mathematical library

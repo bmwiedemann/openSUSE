@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 17 08:51:45 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.7.0
+  * Enable optimization again for *int.c and *intf.c
+  * This release adds support for: wasm32, mips, s390, s390x, netbsd
+
+-------------------------------------------------------------------
 Sun Feb 11 10:13:04 UTC 2018 - kasimir_@outlook.de
 
 - Fix build for armv7l
