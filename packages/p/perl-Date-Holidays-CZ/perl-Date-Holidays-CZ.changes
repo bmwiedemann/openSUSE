@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 17 17:06:28 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Date-Holidays-CZ/Changes
+
+-------------------------------------------------------------------
+Sat Feb 15 03:07:27 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Date-Holidays-CZ/Changes
+
+  
+  0.18 2020-02-14 09:43 CET
+  - CONTRIBUTING.rst: add new file
+  - Try to fix MANIFEST.SKIP
+  - CZ.pm: Add license text to main module POD
+  - t/pod.t: test POD
+
+-------------------------------------------------------------------
 Tue Feb 11 18:35:14 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - updated to 0.17

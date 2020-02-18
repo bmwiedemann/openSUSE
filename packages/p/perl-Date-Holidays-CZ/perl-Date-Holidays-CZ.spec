@@ -17,14 +17,15 @@
 
 
 Name:           perl-Date-Holidays-CZ
-Version:        0.17
+Version:        0.20
 Release:        0
 %define cpan_name Date-Holidays-CZ
 Summary:        Determine Czech holidays
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Date-Holidays-CZ/
-Source0:        Date-Holidays-CZ-0.17.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        Date-Holidays-CZ-0.20.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -41,10 +42,10 @@ list of Czech holidays in a given year.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -56,6 +57,7 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes example LICENSE README.rst
+%doc Changes CONTRIBUTING.rst example README.rst
+%license LICENSE
 
 %changelog
