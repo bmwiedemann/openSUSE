@@ -1042,4 +1042,14 @@
     <comment>- Be aware that it might be that the version is not found (boo#1162245)</comment>
     <requestid>768746</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>125eb376ecf22b533765ce0ae69cad6b</srcmd5>
+    <version>1.13.4</version>
+    <time>1582028997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.4 (2020-02-15)
+  * $ssl_force_tls reverted to default unset. Defaulting this set
+    was overly optimistic, and caused breakage. (forwarded request 775085 from namtrac)</comment>
+    <requestid>775097</requestid>
+  </revision>
 </revisionlist>
