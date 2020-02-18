@@ -17,7 +17,7 @@
 
 
 Name:           cacti-spine
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later

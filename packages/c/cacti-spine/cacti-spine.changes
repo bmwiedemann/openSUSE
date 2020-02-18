@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 15 18:43:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.9:
+  * works with cacti 1.2.9
+  * Improve logging of snmp multiple OID get function
+  * PCOMMAND Device[XXXX] WARNING: Recache Event Detected for Device
+  * Segmentation Fault triggered by a lot of errors
+  * Replace function gethostbyname with thread safe getaddrinfo
+  * removed strip_alpha for "Wrong-Type" SNMP-Answer
+
+-------------------------------------------------------------------
 Sun Feb  2 17:03:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.8:
