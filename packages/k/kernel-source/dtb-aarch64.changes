@@ -1,4 +1,239 @@
 -------------------------------------------------------------------
+Sat Feb 15 09:16:55 CET 2020 - jslaby@suse.cz
+
+- bcache: fix incorrect data type usage in btree_flush_write()
+  (git-fixes).
+- commit 119f9ca
+
+-------------------------------------------------------------------
+Sat Feb 15 07:51:04 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.4 (bnc#1012628).
+- selinux: fall back to ref-walk if audit is required
+  (bnc#1012628).
+- libertas: make lbs_ibss_join_existing() return error code on
+  rates overflow (bnc#1012628).
+- libertas: don't exit from lbs_ibss_join_existing() with RCU
+  read lock held (bnc#1012628).
+- mwifiex: Fix possible buffer overflows in
+  mwifiex_cmd_append_vsie_tlv() (bnc#1012628).
+- mwifiex: Fix possible buffer overflows in
+  mwifiex_ret_wmm_get_status() (bnc#1012628).
+- dmaengine: axi-dmac: add a check for devm_regmap_init_mmio
+  (bnc#1012628).
+- clk: meson: g12a: fix missing uart2 in regmap table
+  (bnc#1012628).
+- mfd: max77650: Select REGMAP_IRQ in Kconfig (bnc#1012628).
+- regmap: fix writes to non incrementing registers (bnc#1012628).
+- pinctrl: qcom: Don't lock around irq_set_irq_wake()
+  (bnc#1012628).
+- pinctrl: sh-pfc: r8a7778: Fix duplicate SDSELF_B and SD1_CLK_B
+  (bnc#1012628).
+- pinctrl: sh-pfc: r8a77965: Fix DU_DOTCLKIN3 drive/bias control
+  (bnc#1012628).
+- pinctrl: baytrail: Allocate IRQ chip dynamic (bnc#1012628).
+- selinux: fix regression introduced by move_mount(2) syscall
+  (bnc#1012628).
+- selinux: revert "stop passing MAY_NOT_BLOCK to the AVC upon
+  follow_link" (bnc#1012628).
+- x86/alternatives: add missing insn.h include (bnc#1012628).
+- bcache: avoid unnecessary btree nodes flushing in
+  btree_flush_write() (bnc#1012628).
+- ASoC: soc-generic-dmaengine-pcm: Fix error handling
+  (bnc#1012628).
+- dt-bindings: iio: adc: ad7606: Fix wrong maxItems value
+  (bnc#1012628).
+- i2c: cros-ec-tunnel: Fix ACPI identifier (bnc#1012628).
+- i2c: cros-ec-tunnel: Fix slave device enumeration (bnc#1012628).
+- media: i2c: adv748x: Fix unsafe macros (bnc#1012628).
+- drivers: watchdog: stm32_iwdg: set WDOG_HW_RUNNING at probe
+  (bnc#1012628).
+- crypto: caam/qi2 - fix typo in algorithm's driver name
+  (bnc#1012628).
+- crypto: atmel-sha - fix error handling when setting hmac key
+  (bnc#1012628).
+- crypto: artpec6 - return correct error code for failed setkey()
+  (bnc#1012628).
+- crypto: testmgr - don't try to decrypt uninitialized buffers
+  (bnc#1012628).
+- mtd: sharpslpart: Fix unsigned comparison to zero (bnc#1012628).
+- mtd: onenand_base: Adjust indentation in onenand_read_ops_nolock
+  (bnc#1012628).
+- arm64: kvm: Fix IDMAP overlap with HYP VA (bnc#1012628).
+- arm64: nofpsmid: Handle TIF_FOREIGN_FPSTATE flag cleanly
+  (bnc#1012628).
+- KVM: arm64: Treat emulated TVAL TimerValue as a signed 32-bit
+  integer (bnc#1012628).
+- KVM: arm64: pmu: Fix chained SW_INCR counters (bnc#1012628).
+- KVM: arm64: pmu: Don't increment SW_INCR if PMCR.E is unset
+  (bnc#1012628).
+- KVM: arm: Make inject_abt32() inject an external abort instead
+  (bnc#1012628).
+- KVM: arm: Fix DFSR setting for non-LPAE aarch32 guests
+  (bnc#1012628).
+- KVM: arm/arm64: Fix young bit from mmu notifier (bnc#1012628).
+- crypto: arm/chacha - fix build failured when kernel mode NEON
+  is disabled (bnc#1012628).
+- arm64: ptrace: nofpsimd: Fail FP/SIMD regset operations
+  (bnc#1012628).
+- arm64: cpufeature: Set the FP/SIMD compat HWCAP bits properly
+  (bnc#1012628).
+- arm64: cpufeature: Fix the type of no FP/SIMD capability
+  (bnc#1012628).
+- arm64: kernel: Correct annotation of end of el0_sync
+  (bnc#1012628).
+- sched/uclamp: Fix a bug in propagating uclamp value in new
+  cgroups (bnc#1012628).
+- ARM: 8949/1: mm: mark free_memmap as __init (bnc#1012628).
+- KVM: arm/arm64: vgic-its: Fix restoration of unmapped
+  collections (bnc#1012628).
+- ARM: at91: pm: use of_device_id array to find the proper shdwc
+  node (bnc#1012628).
+- ARM: at91: pm: use SAM9X60 PMC's compatible (bnc#1012628).
+- iommu/arm-smmu-v3: Populate VMID field for CMDQ_OP_TLBI_NH_VA
+  (bnc#1012628).
+- powerpc/pseries: Allow not having ibm,
+  hypertas-functions::hcall-multi-tce for DDW (bnc#1012628).
+- powerpc/pseries/vio: Fix iommu_table use-after-free refcount
+  warning (bnc#1012628).
+- powerpc/papr_scm: Fix leaking 'bus_desc.provider_name' in some
+  paths (bnc#1012628).
+- powerpc/ptdump: Only enable PPC_CHECK_WX with STRICT_KERNEL_RWX
+  (bnc#1012628).
+- powerpc/ptdump: Fix W+X verification call in mark_rodata_ro()
+  (bnc#1012628).
+- Revert "powerpc/pseries/iommu: Don't use dma_iommu_ops on
+  secure guests" (bnc#1012628).
+- soc: qcom: rpmhpd: Set 'active_only' for active only power
+  domains (bnc#1012628).
+- tools/power/acpi: fix compilation error (bnc#1012628).
+- ARM: dts: at91: sama5d3: define clock rate range for tcb1
+  (bnc#1012628).
+- ARM: dts: at91: sama5d3: fix maximum peripheral clock rates
+  (bnc#1012628).
+- ARM: dts: meson8b: use the actual frequency for the GPU's
+  364MHz OPP (bnc#1012628).
+- ARM: dts: meson8: use the actual frequency for the GPU's
+  182.1MHz OPP (bnc#1012628).
+- arm64: dts: marvell: clearfog-gt-8k: fix switch cpu port node
+  (bnc#1012628).
+- arm64: dts: renesas: r8a77990: ebisu: Remove
+  clkout-lr-synchronous from sound (bnc#1012628).
+- ARM: dts: am43xx: add support for clkout1 clock (bnc#1012628).
+- ARM: dts: at91: Reenable UART TX pull-ups (bnc#1012628).
+- arm64: dts: qcom: msm8998-mtp: Add alias for blsp1_uart3
+  (bnc#1012628).
+- arm64: dts: uDPU: fix broken ethernet (bnc#1012628).
+- arm64: dts: qcom: msm8998: Fix tcsr syscon size (bnc#1012628).
+- platform/x86: intel_mid_powerbtn: Take a copy of ddata
+  (bnc#1012628).
+- ARC: [plat-axs10x]: Add missing multicast filter number to
+  GMAC node (bnc#1012628).
+- MIPS: Loongson: Fix potential NULL dereference in
+  loongson3_platform_init() (bnc#1012628).
+- watchdog: qcom: Use platform_get_irq_optional() for bark irq
+  (bnc#1012628).
+- rtc: cmos: Stop using shared IRQ (bnc#1012628).
+- rtc: hym8563: Return -EINVAL if the time is known to be invalid
+  (bnc#1012628).
+- rtc: mt6397: drop free_irq of devm_ allocated irq (bnc#1012628).
+- netdevsim: use __GFP_NOWARN to avoid memalloc warning
+  (bnc#1012628).
+- netdevsim: fix panic in nsim_dev_take_snapshot_write()
+  (bnc#1012628).
+- netdevsim: disable devlink reload when resources are being used
+  (bnc#1012628).
+- netdevsim: fix using uninitialized resources (bnc#1012628).
+- mt76: mt7615: fix max_nss in mt7615_eeprom_parse_hw_cap
+  (bnc#1012628).
+- bpf, sockmap: Check update requirements after locking
+  (bnc#1012628).
+- bpf: Improve bucket_log calculation logic (bnc#1012628).
+- selftests/bpf: Test freeing sockmap/sockhash with a socket in it
+  (bnc#1012628).
+- bpf, sockhash: Synchronize_rcu before free'ing map
+  (bnc#1012628).
+- bpf, sockmap: Don't sleep while holding RCU lock on tear-down
+  (bnc#1012628).
+- bpftool: Don't crash on missing xlated program instructions
+  (bnc#1012628).
+- x86/boot: Handle malformed SRAT tables during early ACPI parsing
+  (bnc#1012628).
+- NFSv4.0: nfs4_do_fsinfo() should not do implicit lease renewals
+  (bnc#1012628).
+- NFSv4: try lease recovery on NFS4ERR_EXPIRED (bnc#1012628).
+- NFSv4: pnfs_roc() must use cred_fscmp() to compare creds
+  (bnc#1012628).
+- NFS: Fix fix of show_nfs_errors (bnc#1012628).
+- NFS/pnfs: Fix pnfs_generic_prepare_to_resend_writes()
+  (bnc#1012628).
+- NFS: Revalidate the file size on a fatal write error
+  (bnc#1012628).
+- nfs: NFS_SWAP should depend on SWAP (bnc#1012628).
+- NFSv4.x recover from pre-mature loss of openstateid
+  (bnc#1012628).
+- netfilter: flowtable: Fix missing flush hardware on table free
+  (bnc#1012628).
+- netfilter: flowtable: Fix hardware flush order on
+  nf_flow_table_cleanup (bnc#1012628).
+- netfilter: flowtable: restrict flow dissector match on meta
+  ingress device (bnc#1012628).
+- netfilter: flowtable: fetch stats only if flow is still alive
+  (bnc#1012628).
+- iwlwifi: mvm: fix TDLS discovery with the new firmware API
+  (bnc#1012628).
+- iwlwifi: mvm: avoid use after free for pmsr request
+  (bnc#1012628).
+- PCI/AER: Initialize aer_fifo (bnc#1012628).
+- PCI: Don't disable bridge BARs when assigning bus resources
+  (bnc#1012628).
+- PCI: tegra: Fix afi_pex2_ctrl reg offset for Tegra30
+  (bnc#1012628).
+- PCI/switchtec: Fix vep_vector_number ioread width (bnc#1012628).
+- PCI/switchtec: Use dma_set_mask_and_coherent() (bnc#1012628).
+- ath10k: pci: Only dump ATH10K_MEM_REGION_TYPE_IOREG when safe
+  (bnc#1012628).
+- PCI/IOV: Fix memory leak in pci_iov_add_virtfn() (bnc#1012628).
+- scsi: ufs: Fix ufshcd_probe_hba() reture value in case
+  ufshcd_scsi_add_wlus() fails (bnc#1012628).
+- RDMA/umem: Fix ib_umem_find_best_pgsz() (bnc#1012628).
+- RDMA/cma: Fix unbalanced cm_id reference count during address
+  resolve (bnc#1012628).
+- RDMA/core: Ensure that rdma_user_mmap_entry_remove() is a fence
+  (bnc#1012628).
+- RDMA/mlx5: Fix handling of IOVA != user_va in ODP paths
+  (bnc#1012628).
+- RDMA/uverbs: Verify MR access flags (bnc#1012628).
+- RDMA/core: Fix locking in ib_uverbs_event_read (bnc#1012628).
+- RDMA/i40iw: fix a potential NULL pointer dereference
+  (bnc#1012628).
+- RDMA/netlink: Do not always generate an ACK for some netlink
+  operations (bnc#1012628).
+- IB/mlx4: Fix leak in id_map_find_del (bnc#1012628).
+- IB/mlx5: Return the administrative GUID if exists (bnc#1012628).
+- IB/srp: Never use immediate data if it is disabled by a user
+  (bnc#1012628).
+- IB/mlx4: Fix memory leak in add_gid error flow (bnc#1012628).
+- commit 271ee1b
+
+-------------------------------------------------------------------
+Thu Feb 13 15:01:42 CET 2020 - tiwai@suse.de
+
+- Update config files: enable CONFIG_FW_CFG_SYSFS for arm64 (bsc#1163521)
+- commit d888576
+
+-------------------------------------------------------------------
+Wed Feb 12 09:23:36 CET 2020 - jdelvare@suse.de
+
+- Update config files: CONFIG_NVME_HWMON=y
+  When the config files were updated for kernel v5.5, the commit
+  message claimed CONFIG_NVME_HWMON was to be enabled, however the
+  configuration files themselves had the option disabled. We definitely
+  want hardware monitoring enabled on NVME devices, so fix the
+  configuration files to match the original intent.
+- commit d654690
+
+-------------------------------------------------------------------
 Wed Feb 12 07:13:36 CET 2020 - jslaby@suse.cz
 
 - Linux 5.5.3 (bnc#1012628).
@@ -607,6 +842,13 @@ Wed Feb 12 07:13:36 CET 2020 - jslaby@suse.cz
   (bnc#1012628).
 - Update config files.
 - commit ffbbfe8
+
+-------------------------------------------------------------------
+Tue Feb 11 15:14:37 CET 2020 - tiwai@suse.de
+
+- cgroup: init_tasks shouldn't be linked to the root cgroup
+  (bsc#1163370).
+- commit 00b4c73
 
 -------------------------------------------------------------------
 Mon Feb 10 16:15:42 CET 2020 - tiwai@suse.de

@@ -4994,4 +4994,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5.3 &amp; few fixes</comment>
     <requestid>773597</requestid>
   </revision>
+  <revision rev="529" vrev="1">
+    <srcmd5>753d4968baa44ed6821c3169769345de</srcmd5>
+    <version>5.5.4</version>
+    <time>1582018487</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.4 &amp; 2 small config changes</comment>
+    <requestid>774675</requestid>
+  </revision>
 </revisionlist>
