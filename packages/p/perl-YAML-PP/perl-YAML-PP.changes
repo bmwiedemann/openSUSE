@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 18 03:14:31 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.020
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.020 2020-02-17 15:35:44+01:00
+  
+      - Change default schema from JSON to Core (this change was supposed
+        to go in 0.019 but wasn't completely done)
+      - Add option version_directive (print %YAML 1.2)
+      - Add option yaml_version
+      - Add support for detecting the right schema depending on the
+        YAML version directive
+      - Support both %YAML and %TAG directive for a document
+      - Improve emitter (output footer ... after open-ended block scalars)
+      - Improve emitter (quote strings starting with `---` to reduce ambiguity
+        for the reader)
+
+-------------------------------------------------------------------
 Fri Feb 14 03:17:33 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.019
