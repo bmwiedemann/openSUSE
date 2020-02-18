@@ -17,21 +17,19 @@
 
 
 Name:           python-futurist
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Useful additions to futures, from the future.
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/futurist
-Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-1.8.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-1.9.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-PrettyTable >= 0.7.1
-BuildRequires:  python2-Sphinx
 BuildRequires:  python2-contextlib2 >= 0.4.0
 BuildRequires:  python2-eventlet
 BuildRequires:  python2-futures >= 3.0.0
 BuildRequires:  python2-monotonic >= 0.6
-BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-setuptools
@@ -50,12 +48,12 @@ BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 Requires:       python-PrettyTable >= 0.7.1
-Requires:       python-monotonic >= 0.6
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 %ifpython2
 Requires:       python-contextlib2 >= 0.4.0
 Requires:       python-futures >= 3.0.0
+Requires:       python-monotonic >= 0.6
 %endif
 %python_subpackages
 
@@ -63,14 +61,16 @@ Requires:       python-futures >= 3.0.0
 Useful additions to futures, from the future.
 
 %prep
-%autosetup -p1 -n futurist-1.8.1
+%autosetup -p1 -n futurist-1.9.0
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-PBR_VERSION=1.8.1 sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=1.9.0 %sphinx_build -b html doc/source doc/build/html
+# remove the sphinx-build leftovers
+rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{python_install}

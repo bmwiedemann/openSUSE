@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:28:51 UTC 2019 - cloud-devel@suse.de
+
+- update to version 1.9.0
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Use opendev repository
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+
+-------------------------------------------------------------------
 Mon Apr  8 14:00:23 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.8.1

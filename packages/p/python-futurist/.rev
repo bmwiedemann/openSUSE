@@ -106,4 +106,17 @@
   - Switch to stestr</comment>
     <requestid>692824</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3865ad88c4382a95afdc266ada9f29a2</srcmd5>
+    <version>1.9.0</version>
+    <time>1582018795</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.0
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Use opendev repository
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests</comment>
+    <requestid>774901</requestid>
+  </revision>
 </revisionlist>
