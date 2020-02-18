@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.db
-Version:        4.45.0
+Version:        5.0.2
 Release:        0
 Summary:        OpenStack oslo.db library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.db
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-4.45.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-5.0.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python-devel
 BuildRequires:  python2-PyMySQL
@@ -98,13 +98,15 @@ Summary:        Documentation for the Oslo database handling library
 Group:          Documentation/HTML
 BuildRequires:  python-Sphinx
 BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-sphinxcontrib-apidoc
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.db-doc
 Documentation for the Oslo database handling library.
 
 %prep
-%autosetup -p1 -n oslo.db-4.45.0
+%autosetup -p1 -n oslo.db-5.0.2
 %py_req_cleanup
 
 %build

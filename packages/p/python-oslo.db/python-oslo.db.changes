@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:26:09 UTC 2019 - cloud-devel@suse.de
+
+- update to version 5.0.2
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Support context function argument as keyword
+  - Update master for stable/stein
+  - Bump psycopg lower-constraint to 2.7
+  - Fix deprecation warnings under py36
+  - Rollback existing nested transacvtion before restarting
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add local bindep.txt
+  - Use connect, not contextual_connect
+  - docs: Use sphinxcontrib.apidoc for building API docs
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Removing deprecated min_pool_size
+  - Add libpq-dev to bindep.txt
+
+-------------------------------------------------------------------
 Tue May  7 06:59:49 UTC 2019 - cloud-devel@suse.de
 
 - update to version 4.45.0

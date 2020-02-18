@@ -405,4 +405,27 @@
   - Bump psycopg lower-constraint to 2.7</comment>
     <requestid>701217</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b07b6732ad216da7cded360ddd2aa91</srcmd5>
+    <version>5.0.2</version>
+    <time>1582018868</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.2
+  - OpenDev Migration Patch
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Support context function argument as keyword
+  - Update master for stable/stein
+  - Bump psycopg lower-constraint to 2.7
+  - Fix deprecation warnings under py36
+  - Rollback existing nested transacvtion before restarting
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add local bindep.txt
+  - Use connect, not contextual_connect
+  - docs: Use sphinxcontrib.apidoc for building API docs
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Removing deprecated min_pool_size
+  - Add libpq-dev to bindep.txt</comment>
+    <requestid>774912</requestid>
+  </revision>
 </revisionlist>
