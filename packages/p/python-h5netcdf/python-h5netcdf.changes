@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:21:03 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.8.0
+  * Support for reading Datasets with missing dimension scales.
+  * Fixed a bug where Datatype objects were treated as Datasets.
+  * Fixed several issues with upstream deprecations.
+
+-------------------------------------------------------------------
 Tue Dec  3 18:28:36 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
