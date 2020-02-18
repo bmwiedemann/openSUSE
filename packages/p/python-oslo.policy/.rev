@@ -217,4 +217,27 @@
   - Fixes is_admin type from StrOpt to BoolOpt.</comment>
     <requestid>692861</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c8d7eee72d49e9ce75f9cbfa0cb254fc</srcmd5>
+    <version>2.3.2</version>
+    <time>1582018890</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.2
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - Clarify policy_file configuration option help text
+  - Corrects tox.ini snippet to point to config file
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add attribute to suppress deprecation warnings
+  - Add unit tests on the sphinxext indent function
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Updated from global requirements
+  - Add py36 and py37 tox envs
+  - Only alias when policy names change
+  - Move doc related modules to doc/requirements.txt
+  - Provide more specific error when namespace is missing
+  - OpenDev Migration Patch
+  - Update master for stable/stein</comment>
+    <requestid>774917</requestid>
+  </revision>
 </revisionlist>

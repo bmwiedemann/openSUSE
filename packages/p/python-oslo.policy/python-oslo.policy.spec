@@ -17,15 +17,14 @@
 
 
 Name:           python-oslo.policy
-Version:        2.1.1
+Version:        2.3.2
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-2.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-2.3.2.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-PyYAML >= 3.12
 BuildRequires:  python2-oslo.config >= 5.2.0
 BuildRequires:  python2-oslo.context >= 2.22.0
@@ -37,7 +36,6 @@ BuildRequires:  python2-requests >= 2.14.2
 BuildRequires:  python2-requests-mock
 BuildRequires:  python2-stestr
 BuildRequires:  python3-PyYAML >= 3.12
-BuildRequires:  python3-devel
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.context >= 2.22.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -74,22 +72,22 @@ RBAC policy enforcement library for OpenStack.
 Summary:        Documentation for the Oslo Policy library
 Group:          Documentation/HTML
 BuildRequires:  python2-Sphinx
-BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-oslo.policy-doc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-2.1.1
+%autosetup -p1 -n oslo.policy-2.3.2
 %py_req_cleanup
 
 %build
 %{python_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

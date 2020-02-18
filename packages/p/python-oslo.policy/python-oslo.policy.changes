@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:27:45 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.3.2
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - Clarify policy_file configuration option help text
+  - Corrects tox.ini snippet to point to config file
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add attribute to suppress deprecation warnings
+  - Add unit tests on the sphinxext indent function
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Updated from global requirements
+  - Add py36 and py37 tox envs
+  - Only alias when policy names change
+  - Move doc related modules to doc/requirements.txt
+  - Provide more specific error when namespace is missing
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+
+-------------------------------------------------------------------
 Mon Apr  8 11:37:57 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.1.1
