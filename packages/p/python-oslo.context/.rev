@@ -180,4 +180,18 @@
   - import zuul job settings from project-config</comment>
     <requestid>692855</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>59c132535b7bf05faa22671417c2fa06</srcmd5>
+    <version>2.23.0</version>
+    <time>1582018857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.23.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+  - Cap Bandit below 1.6.0 and update Sphinx requirement</comment>
+    <requestid>774911</requestid>
+  </revision>
 </revisionlist>

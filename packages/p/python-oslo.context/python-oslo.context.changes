@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:25:52 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.23.0
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update master for stable/stein
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+
+-------------------------------------------------------------------
 Mon Apr  8 12:27:32 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.22.1

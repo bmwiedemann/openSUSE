@@ -18,13 +18,13 @@
 
 %bcond_without test
 Name:           python-oslo.context
-Version:        2.22.1
+Version:        2.23.0
 Release:        0
 Summary:        OpenStack Oslo context library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.context
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.context/oslo.context-2.22.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.context/oslo.context-2.23.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python3-pbr >= 2.0.0
@@ -51,20 +51,20 @@ used by various modules such as logging.
 %package -n python-oslo.context-doc
 Summary:        Documentation for OpenStack common context library
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-oslo.context-doc
 Documentation for the oslo-context library.
 
 %prep
-%autosetup -p1 -n oslo.context-2.22.1
+%autosetup -p1 -n oslo.context-2.23.0
 %py_req_cleanup
 
 %build
 %{python_build}
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -79,8 +79,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/oslo_context
-%{python2_sitelib}/*.egg-info
+%{python_sitelib}/oslo_context
+%{python_sitelib}/*.egg-info
 
 %files -n python-oslo.context-doc
 %license LICENSE
