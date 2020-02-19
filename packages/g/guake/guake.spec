@@ -1,7 +1,7 @@
 #
 # spec file for package guake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           guake
-Version:        3.6.3
+Version:        3.7.0
 Release:        0
 Summary:        Drop-down terminal for GNOME
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
-Url:            http://guake-project.org/
-Source:         https://github.com/Guake/guake/archive/%{version}.tar.gz
+URL:            http://guake-project.org/
+Source:         https://github.com/Guake/guake/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-tools
@@ -47,6 +48,8 @@ BuildArch:      noarch
 #     gnome-tweak-tool
 #     gsettings-desktop-schemas
 
+%lang_package
+
 %description
 Guake is a dropdown terminal made for the GNOME desktop environment.
 
@@ -54,19 +57,22 @@ Guake is a dropdown terminal made for the GNOME desktop environment.
 %setup -q
 
 %build
-make
+make %{?_smp_mflags}
 
 %install
-PBR_VERSION=%{version} make install DESTDIR=%{buildroot} prefix=%{_prefix}
+PBR_VERSION=%{version} make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+
+rm -fr %{buildroot}%{_datadir}/%{name}/po
+
 rm -r %{buildroot}%{python3_sitelib}/guake/tests/
 # conflicts with libgio-2_0-0
 rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %fdupes %{buildroot}
 %suse_update_desktop_file -G "Guake Preferences" %{name}-prefs Settings DesktopSettings
 %suse_update_desktop_file -G "Guake Terminal" %{name} System TerminalEmulator
-%find_lang %{name}
+%find_lang %{name} %{?no_lang_C}
 
-%files -f %{name}.lang
+%files
 %doc README.rst NEWS.rst
 %license COPYING
 %{python3_sitelib}/*
@@ -79,5 +85,7 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %{_datadir}/metainfo/guake.appdata.xml
 %{_datadir}/pixmaps/
 %{_datadir}/guake/
+
+%files lang -f %{name}.lang
 
 %changelog

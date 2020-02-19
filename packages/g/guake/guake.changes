@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:25:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.7.0:
+  * Fixes the bug when "New Tab" or "Split Terminal" resets colors
+    set by "--bgcolor" command.
+  * Custom colors for every terminal added. Colors are saved
+    alongside with another tab info. "Reset custom colors" menu
+    item added to hte tab context menu.
+  * Resetting colors of the current page. Managing background and
+    foreground colors of the current terminal.
+  * Adds an option to display only the last directory on the
+    current path as the tab name.
+  * New Features:
+    - Add tab selection popover in each notebook
+    - Add fullscreen hide tabbar option
+    - List new features here followed by the ticket number, for
+      example:
+      * Resetting colors of the current page.
+      * Setting of background and foreground colors and resetting
+        colors of the focused terminal.
+    - Setting of background and foreground colors and resetting
+      colors of the current terminal (not the focused one).
+    - Add --select-terminal and --selected-terminal options to
+      Guake CLI
+    - Adds an option to display only the last directory on the
+      current path as the tab name.
+    - Reworked the tab name selection to use a drop-down menu.
+    - Unfullscreen through D-Bus interface, as well as through
+      CLI.
+  * Bug Fixes
+    - Fix Crash (TypeError) when common keys are found in config
+      #1713
+    - Fixes the bug when "New Tab" or "Split Terminal" resets
+      colors set by "--bgcolor" command.
+    - Add pew package to Pipfile
+    - When composited changed, it will update Guake window visual
+      to make it transparent
+    - Fix fullscreen/unfullscreen not handle correctly when
+      trigger by wm
+    - Fix search revealer causing terminal unclickable at bottom
+      right
+    - adding a new tab no longer shows the hidden scrollbars on
+      other tabs
+    - Remove no need window draw callback
+    - Fix make uninstall not cleaning up properly
+    - Update some dependencies for build environment
+    - Update the error message on missing dependencies (ex: when
+      use 'pip install' guake)
+  * Translation updates.
+- Use %{name}-%{version} name for source tarball.
+- Split out separate -lang package.
+- Remove spurious translation files not installed in localedir.
+- Run make with multiple parallel threads.
+
+-------------------------------------------------------------------
 Thu May 16 22:51:40 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.6.3:
