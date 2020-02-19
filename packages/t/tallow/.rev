@@ -84,4 +84,15 @@
     <comment></comment>
     <requestid>759096</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>58dbb9269c69039cd388effe3f826551</srcmd5>
+    <version>21+git20200213.865ec91</version>
+    <time>1582112380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21+git20200213.865ec91:
+  * Add tallow.patterns man page
+  * Add extra path for firewall-cmd
+- Drop 0001-Add-extra-path-for-firewall-cmd.patch, accepted upstream</comment>
+    <requestid>774231</requestid>
+  </revision>
 </revisionlist>

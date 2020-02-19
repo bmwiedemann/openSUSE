@@ -1,7 +1,7 @@
 #
 # spec file for package tallow
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           tallow
-Version:        19+git20191106.4b071b0
+Version:        21+git20200213.865ec91
 Release:        0
 Summary:        Temporary IP address ban issuance daemon
 License:        GPL-3.0-or-later
-Group:          Productivity/Security
 URL:            https://github.com/clearlinux/tallow
 Source:         tallow-%{version}.tar.xz
-Patch:          0001-Add-extra-path-for-firewall-cmd.patch
 Requires:       ipset
 Requires:       iptables
 #For systemd macros:
@@ -48,7 +46,6 @@ potentially valid users.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 ./autogen.sh
@@ -88,6 +85,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/tallow
 %{_prefix}/lib/systemd/system/tallow.service
 %{_mandir}/man1/tallow.1%{?ext_man}
 %{_mandir}/man5/tallow.conf.5%{?ext_man}
+%{_mandir}/man5/tallow.patterns.5%{?ext_man}
 %dir %{_datadir}/tallow
 %{_datadir}/tallow/sshd.json
 %ghost %{_sysconfdir}/tallow.conf
