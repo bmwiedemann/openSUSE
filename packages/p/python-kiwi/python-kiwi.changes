@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Thu Feb 06 10:07:45 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.15 → 9.19.16
+
+-------------------------------------------------------------------
+Wed Feb 05 17:11:07 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Deleted distro provided login.defs from overlay
+
+-------------------------------------------------------------------
+Wed Feb 05 12:11:43 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Delete use of methods that are done by the builder
+
+-------------------------------------------------------------------
+Tue Feb 04 09:18:11 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Deleted obsolete ifplugd from arm build test
+
+-------------------------------------------------------------------
+Mon Feb 03 10:20:40 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Deleted obsolete ifplugd from s390 build test
+
+-------------------------------------------------------------------
+Mon Feb 03 10:17:32 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update status helper script
+
+  Also show new ppc integration test builds
+
+-------------------------------------------------------------------
+Mon Feb 03 10:06:32 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added fedora ppc integration test
+
+  Added obs integration test for building a simple disk image
+  to be started in a VM on power. Related to Issue #1325
+
+-------------------------------------------------------------------
+Sun Feb 02 20:23:00 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added suse ppc integration test
+
+  Added obs integration test for building a simple disk image
+  to be started in a VM on power. Related to Issue #1325
+
+-------------------------------------------------------------------
+Sun Feb 02 20:13:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.14 → 9.19.15
+
+-------------------------------------------------------------------
+Wed Jan 29 14:49:03 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Disable RPM module content validation and filtering when building in OBS
+
+  The Open Build Service builds images by identifying the requested dependencies,
+  downloading them into an isolated environment, regenerating the repository
+  metadata from scratch with *only* that content, and then passing those
+  new repositories to be used for building images. This enforces the
+  reproducibility of the image build process.
+
+  However, when building images for Linux distributions that have
+  AppStreams/modules (such as Red Hat Enterprise Linux/CentOS 8)
+  in an Open Build Service system, the repository metadata associated
+  with modules is not present as OBS does not generate it.
+
+  This causes the image build to fail because the normal module
+  content filtering rules make it so that modular RPMs are disabled
+  unless there is module metadata in the repository that identifies
+  them and that the module has been configured to be enabled.
+
+  As it is not possible for us to satisfy those conditions, instead
+  we disable modular filtering entirely when we detect that the image
+  build is occurring inside the build service, as we are reasonably
+  certain that OBS will not give us bad or broken package sets.
+
+-------------------------------------------------------------------
+Tue Jan 28 09:41:25 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed ppc kernel lookup
+
+  On power the kernel is named e.g vmlinux-4.12.14-197.29-default
+  kiwi was missing that name match. Related to Issue #1325
+
+-------------------------------------------------------------------
+Mon Jan 27 17:11:36 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed sat solver flags validation
+
+  The sat library from the python3-solv plugin does not expose
+  the flags information as method. Instead the flags value is
+  a variable pointing to an integer that has a name mapping
+  in self.solv.Selection from the library.
+
+-------------------------------------------------------------------
+Fri Jan 24 10:18:51 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.13 → 9.19.14
+
+-------------------------------------------------------------------
+Wed Jan 22 13:32:10 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Make use of Path.which including root_dir parameter
+
+  This commit refactors the use of Path.which in several parts of the
+  code. Since dd4d2ed78 the Path utility is capable to run Path.which
+  on certain chroot env, thus no need to adapt the PATH environment
+  variable.
+
+  Fixes #1281
+
+-------------------------------------------------------------------
+Tue Jan 21 11:09:56 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make PXE oem deployment genericly useable
+
+  When deploying a disk image via PXE the initrd contained a config
+  file which connects it to a certain image. This has the disadvantage
+  that no other image could be deployed with it. This commit changes the
+  deployment code in a way that the config file is read from the
+  network if the disk is deployed via PXE. The tarball created by
+  kiwi provides the image connected config file but users now have
+  the opportunity to create their own boot configurations which allows
+  deployment of different images with the same kiwi built deployment
+  initrd. This Fixes #1298 and is one first step into a more generic
+  PXE support offered by kiwi.
+
+-------------------------------------------------------------------
+Mon Jan 20 16:50:38 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.12 → 9.19.13
+
+-------------------------------------------------------------------
+Mon Jan 20 16:17:24 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Remove RootBind.move_to_root method
+
+  This commit removes the RootBind.move_to_root method as this can all be
+  done by using the Path.move_to_root utility method. This allows
+  to drop the RootBind attribute in PackageManager classes and focus
+  path manipulation methods into a common utility.
+
+  Related to #1281
+
+-------------------------------------------------------------------
+Mon Jan 20 15:49:39 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.11 → 9.19.12
+
+-------------------------------------------------------------------
+Mon Jan 20 11:30:14 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed custom args check
+
+  If a custom argument exists in the dictionary but has no value
+  it should be treated as not set and initialized empty as intended
+
+-------------------------------------------------------------------
+Fri Jan 17 15:10:54 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed order of fstab entries
+
+  If a volume manager is used the volumes are added before the
+  root filesystem(/) entry in fstab. This does not hurt because
+  at boot time systemd manages the mounting of the rootfs prior
+  to any other information in the fstab file but it's conceptually
+  broken. Users justifiably can expect the fstab entries in the
+  correct order such that mounting from top to bottom leads
+  to a consistent root filesystem state.
+
+-------------------------------------------------------------------
+Fri Jan 17 10:40:30 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.10 → 9.19.11
+
+-------------------------------------------------------------------
+Wed Jan 15 16:02:51 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added support for spare partition fs attributes
+
+  Added new type attribute:
+
+  ```xml
+  <type ... spare_part_fs_attributes="..."/>
+  ```
+
+  which can be a comma separated list of the following currently
+  supported filesystem attributes:
+
+  * no-copy-on-write
+  * synchronous-updates
+
+  See chattr and filesystem manual pages for details on those
+  attributes. More attributes for the spare part context can be
+  added on request. This Fixes #1233
+
+-------------------------------------------------------------------
+Wed Jan 15 11:08:19 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Allow builds without KIWI dracut modules
+
+  This commit avoids requesting non installed dracut modules to the dracut
+  creation. It bumps a warning message if the module requested by KIWI is
+  not installed in the root-tree and ignores the request.
+
+  This allows the creation of images without including KIWI dracut modules
+  when the related runtime checks are disabled.
+
+  Fixes #1300
+
+-------------------------------------------------------------------
 Mon Jan 13 10:12:58 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.19.9 → 9.19.10
@@ -419,6 +632,19 @@ Tue Nov 19 09:32:38 CET 2019 - Marcus Schäfer <ms@suse.de>
 Tue Nov 19 09:02:14 CET 2019 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.18.33 → 9.18.34
+
+-------------------------------------------------------------------
+Fri Nov 15 17:09:22 CET 2019 - David Cassany <dcassany@suse.com>
+
+- Start using tftp system user package
+
+  With this commit we start requiring tftp system user package. This
+  user was created and managed by multiple packages before, with the
+  risk of having inconsistent criteria on its defaults. Now there there
+  a system user package so whatever package that requries this user should
+  just require this package and do not create or modify the tftp user.
+
+  Related with bsc#1143454
 
 -------------------------------------------------------------------
 Fri Nov 15 14:47:41 CET 2019 - David Cassany <dcassany@suse.com>

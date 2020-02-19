@@ -1345,4 +1345,12 @@
   tool. This Fixes #1308</comment>
     <requestid>764217</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a582b5f72973d36a885e14c379570e7f</srcmd5>
+    <version>9.19.16</version>
+    <time>1582112372</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774133</requestid>
+  </revision>
 </revisionlist>

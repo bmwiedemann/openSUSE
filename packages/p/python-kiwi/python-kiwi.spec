@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.19.10
+Version:        9.19.16
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -188,6 +188,9 @@ Requires:       syslinux
 Requires(pre):  shadow-utils
 %else
 Requires(pre):  shadow
+%endif
+%if 0%{?suse_version} >= 1550
+Requires(pre):  user(tftp)
 %endif
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}
@@ -391,7 +394,7 @@ done
 %fdupes %{buildroot}/srv/tftpboot
 %endif
 
-%if %{_vendor} != "debbuild"
+%if %{_vendor} != "debbuild" && 0%{?suse_version} < 1550
 %ifarch %{ix86} x86_64
 %pre -n kiwi-pxeboot
 #============================================================
@@ -446,7 +449,9 @@ fi
 %if %{_vendor} != "debbuild"
 %ifarch %{ix86} x86_64
 %files -n kiwi-pxeboot
+%if 0%{?suse_version} < 1550
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
+%endif
 %dir /srv/tftpboot/KIWI
 %dir /srv/tftpboot/pxelinux.cfg
 %dir /srv/tftpboot/image
