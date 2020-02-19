@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 06:38:42 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1582007909.a256d580:
+  * Improve log output of test module as well as lib function lines
+  * t: Cut 18-qemu-options.t runtime from 45s to 27s by allowing to abort qemu start early
+
+-------------------------------------------------------------------
 Sun Feb 09 18:37:41 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1581101005.a5c3ec95:
