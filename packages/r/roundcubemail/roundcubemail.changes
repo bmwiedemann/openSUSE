@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:39:33 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- prefer brotli over gzip if brotli is available:
+  + enable mod_brotli in roundcubemail-httpd.conf (after deflate)
+  + enable brotli via a2enmod for new installations
+
+-------------------------------------------------------------------
 Thu Jan  2 19:43:40 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.4.2:

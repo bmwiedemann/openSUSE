@@ -1,7 +1,7 @@
 #
 # spec file for package roundcubemail
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -250,7 +250,7 @@ if [ ${1:-0} -eq 1 ]; then
       %{_sbindir}/a2enmod -q php7    || %{_sbindir}/a2enmod php7
     fi
   %endif
-    for module in alias deflate expires filter headers rewrite setenvif version ; do
+    for module in alias brotli deflate expires filter headers rewrite setenvif version ; do
       %{_sbindir}/a2enmod -q $module || %{_sbindir}/a2enmod $module
     done
   fi

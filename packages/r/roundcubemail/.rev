@@ -496,4 +496,12 @@
   * Fix so install-jsdeps.sh removes Bootstrap's sourceMappingURL (#7035)</comment>
     <requestid>761569</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>c3804c8266f22048344a36c6023ba149</srcmd5>
+    <version>1.4.2</version>
+    <time>1582112578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776200</requestid>
+  </revision>
 </revisionlist>
