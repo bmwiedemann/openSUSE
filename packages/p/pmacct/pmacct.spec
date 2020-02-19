@@ -1,7 +1,7 @@
 #
 # spec file for package pmacct
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with ndpi
 
 Name:           pmacct
-Version:        1.7.4
+Version:        1.7.4p1
 Release:        0
 Summary:        Accounting and aggregation toolsuite for IPv4 and IPv6
 License:        GPL-2.0-only
@@ -72,7 +72,7 @@ supported, both unicast and multicast. A client program can export
 export data to tools like RRDtool, GNUPlot, Net-SNMP, MRTG, and Cacti.
 
 %prep
-%setup -q
+%setup -q -n %{name}-1.7.4
 
 # fix permissions
 chmod -x sql/pmacct-*
