@@ -232,4 +232,12 @@
   by pg_config --libs</comment>
     <requestid>759919</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3a6a36e960780023fe87f7f88b2bf29c</srcmd5>
+    <version>9.5.21</version>
+    <time>1582112424</time>
+    <user>dimstar_suse</user>
+    <comment>update for CVE-2020-1720 (forwarded request 774444 from darix)</comment>
+    <requestid>774449</requestid>
+  </revision>
 </revisionlist>
