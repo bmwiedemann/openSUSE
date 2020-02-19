@@ -89,4 +89,12 @@
   * Fixed infinite recursion in ImportManager on importing module _bootlocale inside open().</comment>
     <requestid>735857</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b179fd1ead8ebdaaff2675c311225be6</srcmd5>
+    <version>3.2.4</version>
+    <time>1582112520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776239</requestid>
+  </revision>
 </revisionlist>

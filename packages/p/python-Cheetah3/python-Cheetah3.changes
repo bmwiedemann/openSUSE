@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 14 11:31:46 UTC 2020 - trenn@suse.de
+
+- python-Markdown is a BuildRequire for python-Cheetah3
+  python2-Markdown package is not built anymore since last
+  submitrequest:
+    - disable python2 build: Markdown is python 3 only now
+  Therefore python-Cheetah3 can also only build python3-Cheetah3
+  due to: nothing provides python2-Markdown
+  unresolvable build service errors otherwise
+
+-------------------------------------------------------------------
 Mon Oct  7 13:22:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.2.4:
