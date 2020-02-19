@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:59:17 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.17.0
+  - Bump openstackdocstheme to 1.20.0
+  - Rename --backend to --store
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Update sphinx dependency
+  - Correcting typo in shell.py - enviroment to environment.
+  - HTTPClient: actually set a timeout for requests
+  - Add upper-constraints.txt to releasenotes tox environment
+  - Add Python 3 Train unit tests
+  - Update hacking version
+  - Trivial: fix image format typo
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Add release note for glanceclient 2.17.0
+  - Modify the url of upper_constraints_file
+
+-------------------------------------------------------------------
 Mon Apr  8 11:58:56 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.16.0

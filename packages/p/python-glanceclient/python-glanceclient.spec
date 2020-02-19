@@ -1,7 +1,7 @@
 #
 # spec file for package python-glanceclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           python-glanceclient
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Glance
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-glanceclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-glanceclient/python-glanceclient-2.16.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-glanceclient/python-glanceclient-2.17.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
 BuildRequires:  python2-PrettyTable >= 0.7.1
 BuildRequires:  python2-fixtures
 BuildRequires:  python2-keystoneclient
@@ -40,7 +39,6 @@ BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testtools
 BuildRequires:  python2-warlock >= 1.2.0
 BuildRequires:  python3-PrettyTable >= 0.7.1
-BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-mock
@@ -82,10 +80,10 @@ glanceclient module), and a command-line script (glance). Each implements
 %package -n python-glanceclient-doc
 Summary:        Documentation for OpenStack Glance API Client
 Group:          Documentation/HTML
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-reno
-BuildRequires:  python-sphinxcontrib-apidoc
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-reno
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-glanceclient-doc
 This is a client for the OpenStack Glance API. There's a Python API (the
@@ -94,17 +92,18 @@ glanceclient module), and a command-line script (glance). Each implements
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-glanceclient-2.16.0
+%autosetup -p1 -n python-glanceclient-2.17.0
 %py_req_cleanup
 
 %build
 %python_build
 
 # generate html docs
-PBR_VERSION=2.16.0 sphinx-build -b html doc/source doc/build/html
-PBR_VERSION=2.16.0 sphinx-build -b man doc/source doc/build/man
+PBR_VERSION=2.17.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.17.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+rm -rf doc/build/man/.{doctrees,buildinfo}
 
 %install
 %python_install

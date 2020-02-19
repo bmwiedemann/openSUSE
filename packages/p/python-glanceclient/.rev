@@ -527,4 +527,26 @@ update to version 2.3.0
   - Remove team diversity tags note in README</comment>
     <requestid>692825</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fbcb682aa6e65e88c9fdb5f1458d1ff9</srcmd5>
+    <version>2.17.0</version>
+    <time>1582112487</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.17.0
+  - Bump openstackdocstheme to 1.20.0
+  - Rename --backend to --store
+  - Update master for stable/stein
+  - OpenDev Migration Patch
+  - Update sphinx dependency
+  - Correcting typo in shell.py - enviroment to environment.
+  - HTTPClient: actually set a timeout for requests
+  - Add upper-constraints.txt to releasenotes tox environment
+  - Add Python 3 Train unit tests
+  - Update hacking version
+  - Trivial: fix image format typo
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Add release note for glanceclient 2.17.0
+  - Modify the url of upper_constraints_file</comment>
+    <requestid>776218</requestid>
+  </revision>
 </revisionlist>
