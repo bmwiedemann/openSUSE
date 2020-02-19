@@ -601,4 +601,12 @@ https://github.com/rfc1036/whois/issues/50</comment>
     <comment></comment>
     <requestid>775137</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>537413a1ec668d9567b08bca13f57d83</srcmd5>
+    <version>5.5.6</version>
+    <time>1582112471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775225</requestid>
+  </revision>
 </revisionlist>
