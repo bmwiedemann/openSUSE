@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 18:13:33 UTC 2020 - R. Tyler Croy <rtyler@brokenco.de>
+
+- Add support for omkafka which is now in Factory, and 15.x repos
+
+-------------------------------------------------------------------
 Thu Jan  9 08:44:32 UTC 2020 - Thomas Blume <thomas.blume@suse.com>
 
 - avoid build error with gcc flag -fno-common (bsc#1160414)

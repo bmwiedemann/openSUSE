@@ -1,7 +1,7 @@
 #
 # spec file for package rsyslog
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,11 +63,11 @@ Release:        0
 %bcond_without  omhttpfs
 %bcond_without  omamqp1
 %bcond_without  tcl
+%bcond_without  kafka
 # https://github.com/rsyslog/rsyslog/issues/1355
 %bcond_with	maxminddb
 # contributed modules not built for various reasons
 # --enable-mmgrok - grok not in factory
-# --enable-omkafka - librdkafka not in factory
 # TODO: ... doesnt have a proper configure check but wants hdfs.h
 %bcond_with     hdfs
 %bcond_with     mongodb
@@ -83,7 +83,7 @@ Release:        0
 %define         rsyslog_sockets_cfg         %{rsyslog_rundir}/additional-log-sockets.conf
 %define         rsyslog_module_dir_nodeps   %{_libdir}/rsyslog/
 %define         rsyslog_module_dir_withdeps %{_libdir}/rsyslog/
-Url:            http://www.rsyslog.com/
+URL:            http://www.rsyslog.com/
 # Upstream library deprecated and we want to support migration
 Obsoletes:      %{name}-module-guardtime
 %if %{with systemd}
@@ -148,6 +148,10 @@ BuildRequires:  hiredis-devel >= 0.10.1
 %endif
 %if %{with zeromq}
 BuildRequires:  czmq-devel >= 3.0.2
+%endif
+%if %{with kafka}
+BuildRequires:  librdkafka-devel
+Requires:       librdkafka1
 %endif
 %if %{with gssapi}
 BuildRequires:  krb5-devel
@@ -541,6 +545,21 @@ This module provides support for ZeroMQ.
 
 %endif
 
+%if %{with kafka}
+
+%package module-kafka
+Requires:       %{name} = %{version}
+Summary:        Kafka support module for syslog
+Group:          System/Daemons
+
+%description module-kafka
+Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
+package.
+
+This module provides support for Kafka.
+
+%endif
+
 %if %{with omamqp1}
 %package module-omamqp1
 Requires:       %{name} = %{version}
@@ -603,6 +622,10 @@ autoreconf -fiv
 	--enable-liblogging-stdlog	\
 %if %{with elasticsearch}
 	--enable-elasticsearch	\
+%endif
+%if %{with kafka}
+	--enable-imkafka		\
+	--enable-omkafka		\
 %endif
 %if %{with omhttpfs}
 	--enable-omhttpfs	\
@@ -758,6 +781,10 @@ if test "%{rsyslog_module_dir_nodeps}" != "%{rsyslog_module_dir_withdeps}" ; the
 %endif
 %if %{with omhttpfs}
 		omhttpfs.so \
+%endif
+%if %{with kafka}
+		imkafka.so \
+		omkafka.so \
 %endif
 	; do
 		mv -f %{buildroot}%{rsyslog_module_dir_nodeps}/$mod \
@@ -1190,6 +1217,14 @@ fi
 %defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/imzmq3.so
 %{rsyslog_module_dir_withdeps}/omzmq3.so
+%endif
+
+%if %{with kafka}
+
+%files module-kafka
+%defattr(-,root,root)
+%{rsyslog_module_dir_withdeps}/imkafka.so
+%{rsyslog_module_dir_withdeps}/omkafka.so
 %endif
 
 %if %{with omamqp1}
