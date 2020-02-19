@@ -1259,4 +1259,17 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
   * go#36836 crypto/x509: certificate validation bypass on Windows 10 (forwarded request 768362 from jfkw)</comment>
     <requestid>768367</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ccdbc02ed583611345ad6038fc1bc149</srcmd5>
+    <version>1.12.17</version>
+    <time>1582112392</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.12.17 (released 2020/02/12) includes a fix to the runtime.
+  Refs boo#1141689.
+  * go#36574 runtime: &quot;PowerRegisterSuspendResumeNotification failed with errno= 87&quot; when running in Windows docker containers
+  * Truncate changelog for versions older than go1.12
+
+  Refs boo#1141689. (forwarded request 774246 from jfkw)</comment>
+    <requestid>774248</requestid>
+  </revision>
 </revisionlist>
