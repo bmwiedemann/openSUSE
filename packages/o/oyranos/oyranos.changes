@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 17:21:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix a compile error with Qt 5.14, name clash between X11 #define
+  None and QActionGroup::None.
+  + 0001-Fix-compile-errors-due-to-None-redefinition-by-X11-X.patch
+
+-------------------------------------------------------------------
 Wed Jun  5 09:21:59 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to not include build kernel version (boo#1101107)

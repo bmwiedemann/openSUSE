@@ -1,7 +1,7 @@
 #
 # spec file for package oyranos
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011-2017 Kai-Uwe Behrmann <ku.b@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,9 +32,9 @@ Name:           oyranos
 Version:        0.9.6
 Release:        0
 Summary:        Color Management System
-License:        BSD-3-Clause AND GPL-2.0
+License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://www.oyranos.org
+URL:            http://www.oyranos.org
 Source0:        oyranos_%{version}.orig.tar.bz2
 Source1:        oyranos_%{version}-1.debian.tar.gz
 Source2:        oyranos-rpmlintrc
@@ -49,6 +49,8 @@ Patch6:         0007-No-undefined.patch
 Patch7:         exmpl-update-GLee.h-to-Mesa-18.3.1.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/oyranos-cms/oyranos/pull/52
 Patch8:         reproducible.patch
+# PATCH-FIX-OPENSUSE
+Patch9:         0001-Fix-compile-errors-due-to-None-redefinition-by-X11-X.patch
 BuildRequires:  cmake
 BuildRequires:  color-filesystem
 BuildRequires:  cups-devel
@@ -285,7 +287,8 @@ kdb mount-openicc || :
 %postun -n lib%{name}0 -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%doc AUTHORS.md COPYING.md ChangeLog.md README.md
+%doc AUTHORS.md ChangeLog.md README.md
+%license COPYING.md
 %{_bindir}/%{name}-compat-gnome
 %{_bindir}/%{name}-icc
 %{_bindir}/%{name}-policy
