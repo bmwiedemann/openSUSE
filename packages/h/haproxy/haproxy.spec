@@ -46,8 +46,14 @@
 %bcond_with    apparmor_reload
 %endif
 
+%if 0%{?suse_version} >= 1500
+%bcond_without sysusers
+%else
+%bcond_with sysusers
+%endif
+
 Name:           haproxy
-Version:        2.1.1+git0.4ae521379
+Version:        2.1.3+git0.5c020bbdd
 Release:        0
 #
 #
@@ -72,10 +78,13 @@ BuildRequires:  pcre-devel
 BuildRequires:  zlib-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(udev)
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(libsystemd)
+%if %{with sysusers}
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+%endif
 %endif
 BuildRequires:  vim
 %define pkg_name haproxy
@@ -88,6 +97,7 @@ Source1:        %{pkg_name}.init
 Source2:        usr.sbin.haproxy.apparmor
 Source3:        local.usr.sbin.haproxy.apparmor
 Source4:        haproxy.cfg
+Source5:        haproxy-user.conf
 Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
@@ -101,10 +111,11 @@ Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 Provides:       haproxy-1.5 = %{version}
 Obsoletes:      haproxy-1.5 < %{version}
-# this requires is not strictly needed. we only need it for the ownership of the vim data dir
-Requires:       vim
 %if %{with systemd}
-%{?systemd_requires}
+%{?systemd_ordering}
+%if %{with sysusers}
+%sysusers_requires
+%endif
 %endif
 %{!?vim_data_dir:%global vim_data_dir /usr/share/vim/%(readlink /usr/share/vim/current)}
 
@@ -161,6 +172,9 @@ make \
     DEBUG_CFLAGS="%{optflags}" V=1
 %if %{with systemd}
 make -C contrib/systemd  PREFIX="%{_prefix}"
+%if %{with sysusers}
+%sysusers_generate_pre %{SOURCE5} haproxy
+%endif
 %endif
 make -C contrib/halog    PREFIX="%{_prefix}" \
     DEFINE="%{optflags} -pie -fpie -fstack-protector -Wl,-z,relro,-z,now"
@@ -175,6 +189,9 @@ install -D -m 0755 contrib/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
 %if %{with systemd}
 install -D -m 0644 contrib/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
 ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
+%if %{with sysusers}
+install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/haproxy-user.conf
+%endif
 %else
 install -D -m 0755 %{S:1}                      %{buildroot}%{_sysconfdir}/init.d/%{pkg_name}
 ln -fs %{_sysconfdir}/init.d/%{pkg_name} %{buildroot}%{_sbindir}/rc%{pkg_name}
@@ -190,13 +207,13 @@ install -D -m 0644 %{S:3}                   %{buildroot}/etc/apparmor.d/local/us
 
 rm examples/*init*
 
-%pre
-getent group %{pkg_name} >/dev/null || /usr/sbin/groupadd -r %{pkg_name}
-getent passwd %{pkg_name} >/dev/null || \
-	/usr/sbin/useradd  -g %{pkg_name} -s /bin/false -r \
-	-c "user for %{pkg_name}" -d %{pkg_home} %{pkg_name}
 
 %if %{with systemd}
+%if %{with sysusers}
+%pre -f haproxy.pre
+%else
+%pre
+%endif
 %service_add_pre %{pkg_name}.service
 
 %post
@@ -212,6 +229,12 @@ getent passwd %{pkg_name} >/dev/null || \
 %service_del_postun %{pkg_name}.service
 
 %else
+
+%pre
+getent group %{pkg_name} >/dev/null || /usr/sbin/groupadd -r %{pkg_name}
+getent passwd %{pkg_name} >/dev/null || \
+	/usr/sbin/useradd  -g %{pkg_name} -s /bin/false -r \
+	-c "user for %{pkg_name}" -d %{pkg_home} %{pkg_name}
 
 %post
 %fillup_and_insserv %{pkg_name}
@@ -238,6 +261,9 @@ getent passwd %{pkg_name} >/dev/null || \
 %config(noreplace) %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}/*
 %if %{with systemd}
 %{_unitdir}/%{pkg_name}.service
+%if %{with sysusers}
+%{_sysusersdir}/haproxy-user.conf
+%endif
 %else
 %config(noreplace) %{_sysconfdir}/init.d/%{pkg_name}
 %endif
@@ -246,6 +272,9 @@ getent passwd %{pkg_name} >/dev/null || \
 %{_sbindir}/rchaproxy
 %dir %attr(-,root,haproxy) %{pkg_home}
 %{_mandir}/man1/%{pkg_name}.1.gz
+%dir %{_datadir}/vim
+%dir %{vim_data_dir}
+%dir %{vim_data_dir}/syntax
 %{vim_data_dir}/syntax/%{pkg_name}.vim
 %if %{with apparmor}
 %if 0%{?suse_version} == 1110
