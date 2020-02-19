@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 15 02:32:06 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update patches for v5.5 to handle errors in vboxvideo. boo#1163337.
+
+-------------------------------------------------------------------
+Wed Feb 12 03:35:20 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add file "fixes_for_5.6.patch" to handle API changes.
+
+-------------------------------------------------------------------
 Fri Jan 17 22:56:58 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version update to 6.1.2 (released January 14 2020i by Oracle)

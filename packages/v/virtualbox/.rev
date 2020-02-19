@@ -1908,4 +1908,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>766683</requestid>
   </revision>
+  <revision rev="190" vrev="2">
+    <srcmd5>0eccd867b14712bdee9ad1fe382c64ec</srcmd5>
+    <version>6.1.2</version>
+    <time>1582112444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774577</requestid>
+  </revision>
 </revisionlist>

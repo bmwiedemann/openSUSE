@@ -149,6 +149,8 @@ Patch132:       fixes_for_qt5.13.patch
 Patch133:       fixes_for_leap15.2.patch
 # Fixes for API changes in kernel 5.5
 Patch134:       fixes_for_5.5.patch
+# Fixes for API changes in kernel 5.6
+Patch135:       fixes_for_5.6.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 BuildRequires:  LibVNCServer-devel
@@ -451,6 +453,7 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %endif
 %patch133 -p1
 %patch134 -p1
+%patch135 -p1
 
 # make VB UI background colors look sane again
 %patch999 -p1

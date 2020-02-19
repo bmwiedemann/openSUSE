@@ -270,7 +270,53 @@ Index: VirtualBox-6.1.2/src/VBox/Additions/linux/drm/vbox_ttm.c
  
  #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 18, 0) && !defined(RHEL_72)
  #define PLACEMENT_FLAGS(placement) (placement)
-@@ -310,11 +314,12 @@ int vbox_mm_init(struct vbox_private *vb
+@@ -102,8 +106,16 @@ static int vbox_ttm_global_init(struct v
+  */
+ static void vbox_ttm_global_release(struct vbox_private *vbox)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
++	struct ttm_bo_device *bdev = &vbox->ttm.bdev;
++#endif
+ 	drm_global_item_unref(&vbox->ttm.bo_global_ref.ref);
+ 	drm_global_item_unref(&vbox->ttm.mem_global_ref);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
++	drm_vma_offset_manager_destroy(bdev->vma_manager);
++	kfree(bdev->vma_offset_manager);
++	bdev->vma_offset_manager = NULL;
++#endif
+ }
+ #endif
+ 
+@@ -296,11 +308,27 @@ int vbox_mm_init(struct vbox_private *vb
+ 	int ret;
+ 	struct drm_device *dev = vbox->dev;
+ 	struct ttm_bo_device *bdev = &vbox->ttm.bdev;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
++	struct drm_vma_offset_manager *vma_manager;
+ 
++	vma_manager = kzalloc(sizeof(*vma_manager), GFP_KERNEL);
++	if (!vma_manager)
++		return -ENOMEM;
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0) && !defined(RHEL_77) && !defined(RHEL_81)
+ 	ret = vbox_ttm_global_init(vbox);
+-	if (ret)
++	if (ret) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
++		kfree(vma_manager);
++#endif
+ 		return ret;
++	}
++#endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
++	bdev->vma_manager = vma_manager;
++	drm_vma_offset_manager_init(bdev->vma_manager,
++				    DRM_FILE_PAGE_OFFSET_START,
++				    DRM_FILE_PAGE_OFFSET_SIZE);
+ #endif
+ 	ret = ttm_bo_device_init(&vbox->ttm.bdev,
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0) && !defined(RHEL_77) && !defined(RHEL_81)
+@@ -310,11 +338,12 @@ int vbox_mm_init(struct vbox_private *vb
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0) || defined(RHEL_71)
  				 dev->anon_inode->i_mapping,
  #endif
