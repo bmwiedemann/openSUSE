@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 15 10:36:49 UTC 2020 - ro@suse.com
+
+- Update to version 84.87+git20200215.db1636b:
+  * refactor brp-15-strip-debug to not use /dev/fd/62
+  * Also strip lto data from .o files (boo#1146634)
+
+-------------------------------------------------------------------
 Thu Oct 31 17:02:57 CET 2019 - ro@suse.de
 
 - fix specfile to account for removed brp-65-lib64-linux

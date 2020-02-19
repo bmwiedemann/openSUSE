@@ -1,7 +1,7 @@
 #
 # spec file for package brp-check-suse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Summary:        Build root policy check scripts
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Requires:       perl
-Version:        84.87+git20191016.914fe67
+Version:        84.87+git20200215.db1636b
 Release:        0
-Url:            https://github.com/openSUSE/brp-check-suse
+URL:            https://github.com/openSUSE/brp-check-suse
 #
 # Note: don't rebuild this manually. Instead submit your patches
 # for inclusion in the git repo at https://github.com/openSUSE/brp-check-suse

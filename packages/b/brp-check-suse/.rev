@@ -520,4 +520,14 @@ Lets break everything :)
       only hicolor is used as generic fallback</comment>
     <requestid>744540</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2713bb57a190f41f8a70fbd14f0d8352</srcmd5>
+    <version>84.87+git20200215.db1636b</version>
+    <time>1582112434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200215.db1636b:
+  * refactor brp-15-strip-debug to not use /dev/fd/62
+  * Also strip lto data from .o files (boo#1146634)</comment>
+    <requestid>774512</requestid>
+  </revision>
 </revisionlist>
