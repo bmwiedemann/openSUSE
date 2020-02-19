@@ -115,9 +115,9 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        12.1
+Version:        12.2
 Release:        0
-%define pkg_version 12.1
+%define pkg_version %{version}
 Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{pkg_version}.tar.bz2
 Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{pkg_version}.tar.bz2.sha256
 Source2:        baselibs.conf
@@ -432,6 +432,9 @@ find -name .gitignore -delete
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export PYTHON=python3
+%ifarch %arm
+export USE_ARMV8_CRC32C=0
+%endif
 PACKAGE_TARNAME=%pgname %configure \
         --bindir=%pgbindir \
         --libdir=%pglibdir \

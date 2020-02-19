@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 15 03:02:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 12.2 (CVE-2020-1720)
+  https://www.postgresql.org/about/news/2011/
+  https://www.postgresql.org/docs/12/release-12-2.html
+
+-------------------------------------------------------------------
+Fri Feb 14 07:53:46 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable explicitly armv8 CRC for %arm, as we use some armv8
+  workers for armv6/7 builds which is confusing configure script
+
+-------------------------------------------------------------------
 Tue Feb 11 04:15:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid the dependency from the devel package to the main package.
