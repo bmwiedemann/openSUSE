@@ -33,6 +33,7 @@ Source7:        %{name}.logrotate
 Source9:        %{name}.permissions
 Source10:       README.kerberos
 Source11:       %{name}.service
+Source12:       %{name}-user.conf
 # http://lists.squid-cache.org/pipermail/squid-announce/2016-October/000064.html
 Source13:       http://www.squid-cache.org/pgp.asc#/squid.keyring
 Source15:       cache_dir.sed
@@ -55,6 +56,8 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  samba-winbind
 BuildRequires:  sharutils
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(kdb)
@@ -64,16 +67,16 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nettle)
 Requires:       logrotate
 Requires(pre):  permissions
-Requires(pre):  shadow
 Provides:       http_proxy
 # due to package rename
 # Wed Aug 15 17:40:30 UTC 2012
 Provides:       %{name}3 = %{version}
 Obsoletes:      %{name}3 < %{version}
-%{?systemd_requires}
+%{?systemd_ordering}
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libnsl-devel
 %endif
+%sysusers_requires
 
 %description
 Squid is a caching proxy for the Web supporting HTTP(S), FTP, and
@@ -142,6 +145,7 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--enable-security-cert-generators \
 	--enable-security-cert-validators
 make SAMBAPREFIX=%{_prefix} %{?_smp_mflags}
+%sysusers_generate_pre %{SOURCE12} squid
 
 %install
 install -d -m 750 %{buildroot}%{_localstatedir}/{cache,log}/%{name}
@@ -197,28 +201,15 @@ mkdir -p %{buildroot}%{_datadir}/snmp/mibs
 mv %{buildroot}%{_datadir}/squid/mib.txt \
   %{buildroot}%{_datadir}/snmp/mibs/SQUID-MIB.txt
 
+# Install sysusers file.
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
+
 %check
 # Fails in chroot environment
 make %{?_smp_mflags} check
 
-%pre
-# we need this group for /usr/sbin/pinger
-getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}
-# we need this group for squid (ntlmauth)
-# read access to /var/lib/samba/winbindd_privileged
-getent group winbind >/dev/null || %{_sbindir}/groupadd -r winbind
-getent passwd squid >/dev/null || \
-  %{_sbindir}/useradd -c "WWW-proxy squid" -d %{_localstatedir}/cache/%{name} \
-    -G winbind -g %{name} -o -u 31 -r -s /bin/false \
-    %{name}
-# if default group is not squid, change it
-if [ "$(%{_bindir}/id -ng %{name} 2>/dev/null)" != "%{name}" ]; then
-  %{_sbindir}/usermod -g %{name} %{name}
-fi
-# if squid is not member of winbind, add him
-if [ $(%{_bindir}/id -nG %{name} 2>/dev/null | grep -q winbind; echo $?) -ne 0 ]; then
-  %{_sbindir}/usermod -G winbind %{name}
-fi
+%pre -f squid.pre
 %service_add_pre %{name}.service
 
 # update mode?
@@ -265,6 +256,7 @@ fi
 %dir %{squidconfdir}
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/squid.conf
+%{_sysusersdir}/squid-user.conf
 %config(noreplace) %{squidconfdir}/cachemgr.conf
 %config(noreplace) %{squidconfdir}/errorpage.css
 %config(noreplace) %{squidconfdir}/errors

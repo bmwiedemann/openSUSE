@@ -779,4 +779,12 @@ from the squid 3.x changelog</comment>
   * improve cache handling with chunked responses</comment>
     <requestid>770216</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>342d0c6b54dbec1b29cec727e421b9c6</srcmd5>
+    <version>4.10</version>
+    <time>1582112584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776229</requestid>
+  </revision>
 </revisionlist>

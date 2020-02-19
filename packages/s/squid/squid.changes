@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:46:02 CET 2020 - kukuk@suse.de
+
+- Use sysusers instead of shadow to create squid user and groups
+- Don't hard require systemd
+
+-------------------------------------------------------------------
 Wed Feb  5 09:57:59 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to squid 4.10:
