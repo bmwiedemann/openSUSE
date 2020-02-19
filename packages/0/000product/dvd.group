@@ -2640,6 +2640,7 @@
     <package name="librcc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librcd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librdf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="librdkafka1" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="librdmacm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="libre2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreadline8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
