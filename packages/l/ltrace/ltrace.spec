@@ -1,7 +1,7 @@
 #
 # spec file for package ltrace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,10 @@ Group:          Development/Tools/Debuggers
 Version:        0.7.91
 Release:        0
 URL:            http://ltrace.org/
-%define git_id g6c6bcc3
+%define git_id gea8928d
 Source:         ltrace-%{version}-%{git_id}.tar.bz2
 Source2:        baselibs.conf
 Patch:          readdir.patch
-Patch2:         ltrace-fix-build.patch
 Patch3:         ppc-ptrace.patch
 Patch4:         arm-trace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
@@ -63,7 +62,6 @@ child processes may fail or some things may not work as expected.
 %prep
 %setup -q
 %patch -p1
-%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5
