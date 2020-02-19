@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:47:31 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.8.2
+  Release is all bug fixes it seems. It includes these patches in
+  the release tarball:
+  vrend-Don-t-free-resource-struct-in-_resource_alloca.patch
+  vrend-Don-t-try-launching-a-grid-if-no-CS-is-availab.patch
+  vrend-Use-the-original-context-to-delete-objects.patch
+  vrend-Don-t-switch-to-ctx0-when-deleting-ctx0.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 15:46:04 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Avoid potential DoS in texture allocation (CVE-2020-8003

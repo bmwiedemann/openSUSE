@@ -18,18 +18,13 @@
 
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://virgil3d.github.io/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
-
-Patch0001:      vrend-Don-t-free-resource-struct-in-_resource_alloca.patch
-Patch0002:      vrend-Don-t-try-launching-a-grid-if-no-CS-is-availab.patch
-Patch0003:      vrend-Use-the-original-context-to-delete-objects.patch
-Patch0004:      vrend-Don-t-switch-to-ctx0-when-deleting-ctx0.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
@@ -76,10 +71,6 @@ without GL.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch0004 -p1
 
 %build
 %meson
