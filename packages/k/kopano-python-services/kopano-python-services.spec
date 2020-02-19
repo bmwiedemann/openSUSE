@@ -206,9 +206,6 @@ mkdir -p "$b/var/lib/kopano/autorespond" "$b/var/lib/kopano/spamd/spam"
 mkdir -p "$b/%_localstatedir/log/kopano"
 chmod 750 "$b/%_localstatedir/log/kopano"
 
-%post -n kopano-backup
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-
 %triggerpostun -n kopano-backup -- kopano-backup
 if [ "$1" -ne 2 ]; then exit 0; fi
 # putback previously existing cfgs after they get untracked once
@@ -217,9 +214,6 @@ if [ ! -e "%_sysconfdir/kopano/backup.cfg" -a \
     mv -v "%_sysconfdir/kopano/backup.cfg.rpmsave" \
         "%_sysconfdir/kopano/backup.cfg"
 fi
-
-%post -n kopano-migration-pst
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 
 %triggerpostun -n kopano-migration-pst -- kopano-migration-pst
 if [ "$1" -ne 2 ]; then exit 0; fi
@@ -234,7 +228,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-presence.service}}
 
 %post -n kopano-presence
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-presence.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-presence.service}}
 
@@ -266,7 +259,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-search.service}}
 
 %post -n kopano-search
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-search.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-search.service}}
 
@@ -298,8 +290,6 @@ fi
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-spamd.service}}
 
 %post -n kopano-spamd
-chown -Rh kopano:kopano /var/log/kopano 2>/dev/null || :
-chown kopano:kopano /var/lib/kopano/spamd 2>/dev/null || :
 %{?_unitdir:%{?suse_version:%service_add_post kopano-spamd.service}}
 %{?_unitdir:%{!?suse_version:%systemd_post kopano-spamd.service}}
 

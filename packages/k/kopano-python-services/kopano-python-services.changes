@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:17:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop chown calls from scriptlets [boo#1154309]
+
+-------------------------------------------------------------------
 Wed Jan 22 22:46:14 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.1
