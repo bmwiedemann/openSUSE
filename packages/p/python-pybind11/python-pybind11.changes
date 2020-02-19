@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 13 05:32:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix mixup of expanded/unexpaned python versions in devel package,
+  the devel package always required python(2)-devel and
+  python2-pybind. Move the data to a -common-devel subpackage,
+  pulled in by versioned python{2,3}-pybind-devel packages.
+
+-------------------------------------------------------------------
 Tue Jan 14 10:19:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add package version to extra devel packages added via Provides

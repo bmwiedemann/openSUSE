@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,13 +40,19 @@ and vice versa, mainly to create Python bindings of existing C++
 code. It can reduce boilerplate code in traditional extension modules
 by inferring type information using compile-time introspection.
 
-%package -n %{name}-devel
+%package -n %{name}-common-devel
 Summary:        Development files for pybind11
-Requires:       %{name} = %{version}
-Requires:       python-devel
-Provides:       %{python_module pybind11-devel = %{version}}
+Provides:       %{python_module pybind11-common-devel = %{version}}
 
-%description -n %{name}-devel
+%description -n %{name}-common-devel
+This package contains files for developing applications using pybind11.
+
+%package devel
+Summary:        Development files for pybind11
+Requires:       %{name}-common-devel = %{version}
+Requires:       python-devel
+
+%description devel
 This package contains files for developing applications using pybind11.
 
 %prep
@@ -63,7 +69,7 @@ This package contains files for developing applications using pybind11.
 %python_install
 %cmake_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# removing duplciated header files
+# removing duplicated header files
 rm -rv %{buildroot}%{_includedir}/python2.*/pybind11/
 rm -rv %{buildroot}%{_includedir}/python3.*/pybind11
 
@@ -72,9 +78,12 @@ rm -rv %{buildroot}%{_includedir}/python3.*/pybind11
 %license LICENSE
 %{python_sitelib}/*
 
-%files -n %{name}-devel
+%files -n %{name}-common-devel
 %{_includedir}/pybind11
 %license LICENSE
 %{_datadir}/cmake/pybind11
+
+%files %{python_files devel}
+%license LICENSE
 
 %changelog
