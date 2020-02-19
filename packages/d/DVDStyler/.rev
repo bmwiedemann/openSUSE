@@ -67,4 +67,12 @@
     <comment>Update to version 3.1.2 (fixes boo#1163548)</comment>
     <requestid>774359</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>81058ba92b3aa78beb23f791a5c3c4f5</srcmd5>
+    <version>3.1.2</version>
+    <time>1582112540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776175</requestid>
+  </revision>
 </revisionlist>

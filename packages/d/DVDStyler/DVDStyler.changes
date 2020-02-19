@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 20:11:37 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to normalize zip timestamps
+  to make package build reproducible
+
+-------------------------------------------------------------------
 Fri Feb 14 09:47:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.1.2

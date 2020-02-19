@@ -1,0 +1,23 @@
+https://sourceforge.net/p/dvdstyler/DVDStyler/merge-requests/1/
+
+Date: 2019-05-14
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Subject: Do not save extra file attributes in .zip
+
+(such as ctime and atime)
+to make it easier to make a reproducible build
+
+See https://reproducible-builds.org/ for why this is good.
+
+diff --git a/configure b/configure
+index 55d9352..8d02c0f 100755
+--- a/configure
++++ b/configure
+@@ -7869,6 +7869,7 @@ if test "x$ZIP" = x; then
+     Please check that zip is in path.
+ " "$LINENO" 5
+ fi
++ZIP="$ZIP -X"
+ 
+ # Extract the first word of "dvdauthor", so it can be a program name with args.
+ set dummy dvdauthor; ac_word=$2

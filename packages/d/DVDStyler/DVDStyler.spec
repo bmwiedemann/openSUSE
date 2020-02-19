@@ -29,6 +29,8 @@ License:        GPL-3.0-or-later
 URL:            https://www.dvdstyler.org
 Source:         https://sourceforge.net/projects/dvdstyler/files/dvdstyler/%{version}/%{name}-%{version}.tar.bz2
 Source1:        gpl-3.0.txt
+# PATCH-FIX-UPSTREAM -- bmwiedemann https://sourceforge.net/p/dvdstyler/DVDStyler/merge-requests/1/
+Patch0:         reproducible.patch
 BuildRequires:  bison
 #!BuildIgnore: cdrkit-cdrtools-compat
 BuildRequires:  dvd+rw-tools
@@ -95,7 +97,7 @@ Features:
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 # do not install docs
 sed -i '/^doc_DATA/d' Makefile.in
 cp -v %{SOURCE1} .
