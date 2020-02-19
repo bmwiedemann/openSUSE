@@ -366,7 +366,8 @@ Prefer: cmake:libcurl4-mini
 #Prefer: -curl-mini -libcurl-mini-devel -libcurl4-mini
 
 # Cmake exists as a -mini flavor, which is not linked against curl.
-Substitute: cmake cmake-mini
+# That substitute is crap - it actually replaces Requires: cmake with Requires: cmake-mini in spec files!!!
+# Substitute: cmake cmake-mini
 Prefer: cmake-mini
 
 # Samba brings python2 and python3 bindings, with the py3-bindings not 100% complete yet. So we favor py2
