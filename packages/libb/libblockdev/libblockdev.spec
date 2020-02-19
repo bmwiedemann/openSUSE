@@ -527,6 +527,9 @@ find %{buildroot} -name "*.la" -print -type f -delete
 %files -n %{libname}
 %license LICENSE
 %{_libdir}/libblockdev.so.%{somajor}*
+%ifarch s390x
+%{_libdir}/libbd_s390.so*
+%endif
 
 %files -n typelib-1_0-BlockDev-2_0
 %{_libdir}/girepository-1.0/BlockDev-2.0.typelib
@@ -540,6 +543,9 @@ find %{buildroot} -name "*.la" -print -type f -delete
 %dir %{_includedir}/blockdev
 %{_includedir}/blockdev/blockdev.h
 %{_includedir}/blockdev/plugins.h
+%ifarch s390x
+%{_includedir}/blockdev/s390.h
+%endif
 
 %if %{with python2}
 %files -n python2-%{name}
