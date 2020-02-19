@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-fast_gettext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-fast_gettext
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 %define mod_name fast_gettext
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/grosser/fast_gettext
+URL:            https://github.com/grosser/fast_gettext
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A simple, fast, memory-efficient and threadsafe implementation of

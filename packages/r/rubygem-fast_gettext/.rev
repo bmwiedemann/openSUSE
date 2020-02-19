@@ -221,4 +221,12 @@ See the README.rdoc in lib/vendor (forwarded request 129678 from babelworx)</com
     <comment></comment>
     <requestid>741229</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>acbd41f7aff4dbcd8fac8b8fdca5b232</srcmd5>
+    <version>2.0.2</version>
+    <time>1582112354</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773758</requestid>
+  </revision>
 </revisionlist>
