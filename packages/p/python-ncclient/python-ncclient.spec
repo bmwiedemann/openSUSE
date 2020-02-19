@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ncclient
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://ncclient.org
+URL:            http://ncclient.org
 Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#/ncclient-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -72,6 +72,7 @@ cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 
 %install
 %python_install
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/test
 %fdupes %{buildroot}
 
 %check

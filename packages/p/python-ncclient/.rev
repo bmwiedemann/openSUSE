@@ -142,4 +142,13 @@
     <comment></comment>
     <requestid>754829</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2cf14d1824d93cf746908d726498753e</srcmd5>
+    <version>0.6.7</version>
+    <time>1582112489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.7
+  * Bugfix release</comment>
+    <requestid>776246</requestid>
+  </revision>
 </revisionlist>
