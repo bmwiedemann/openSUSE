@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 14 22:40:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add patch to fix Alt+D shortcut handling (kde#416695):
+  * Set-toolbox-to-invisible-when-its-hidden.patch
+
+-------------------------------------------------------------------
+Fri Feb 14 13:01:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix saving font settings (kde#416358):
+  * 0001-KCM-Fonts-force-need-save-to-false-during-load-to-av.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 09:00:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add %exclude for ibus-emoji-dicts to avoid file conflicts

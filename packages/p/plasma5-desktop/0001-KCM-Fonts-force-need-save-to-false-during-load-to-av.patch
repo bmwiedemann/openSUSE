@@ -1,0 +1,40 @@
+From 0c4da0774e4388b6937b5aa98124b696debcb601 Mon Sep 17 00:00:00 2001
+From: Benjamin Port <benjamin.port@enioka.com>
+Date: Thu, 13 Feb 2020 21:14:43 +0100
+Subject: [PATCH] [KCM Fonts] force need save to false during load to avoid
+ state to be true too early
+
+Summary:
+This will resolve a bug (apply never enabled). Bug occurs (at least) when kdeglobals contains QFont serialization without styleName (old style)
+
+BUG: 416358
+
+Reviewers: #plasma, broulik, ervin, crossi, meven, ngraham, davidedmundson
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D27384
+---
+ kcms/fonts/fonts.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kcms/fonts/fonts.cpp b/kcms/fonts/fonts.cpp
+index 32e1239ad..f771f6e51 100644
+--- a/kcms/fonts/fonts.cpp
++++ b/kcms/fonts/fonts.cpp
+@@ -572,8 +572,8 @@ void KFonts::load()
+     // previews
+     engine()->addImageProvider("preview", new PreviewImageProvider(m_settings->font()));
+ 
+-    // reload state after loading by emiting a settings signal
+-    emit m_settings->activeFontChanged();
++    // KCM expect save state to be false at this point (can be true because of setNearestExistingFonts
++    setNeedsSave(false);
+ }
+ 
+ void KFonts::save()
+-- 
+2.23.0
+

@@ -39,6 +39,8 @@ Source2:        plasma.keyring
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-unlock-widgets.patch
+Patch3:         0001-KCM-Fonts-force-need-save-to-false-during-load-to-av.patch
+Patch4:         Set-toolbox-to-invisible-when-its-hidden.patch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel

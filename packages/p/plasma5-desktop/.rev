@@ -1130,4 +1130,12 @@
   * 0001-unlock-widgets.patch</comment>
     <requestid>774303</requestid>
   </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>b7d199f3dee111dce1a6c8124746f75f</srcmd5>
+    <version>5.18.0</version>
+    <time>1582112438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774530</requestid>
+  </revision>
 </revisionlist>
