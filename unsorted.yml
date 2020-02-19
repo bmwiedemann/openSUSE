@@ -1901,6 +1901,7 @@ unsorted:
   - connman-plugin-pptp 
   - connman-plugin-tist 
   - connman-plugin-vpnc 
+  - connman-plugin-wireguard 
   - connman-test 
   - conntrack-tools: [i586] 
   - conntrackd 
@@ -5154,6 +5155,7 @@ unsorted:
   - gtypist 
   - gtypist-lang 
   - guake 
+  - guake-lang 
   - guava 
   - guava-javadoc 
   - guava-testlib 
@@ -11208,7 +11210,6 @@ unsorted:
   - librcd0-32bit: [x86_64] 
   - librdf0-32bit: [x86_64] 
   - librdkafka-devel 
-  - librdkafka1 
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
   - libre2-0-32bit: [x86_64] 
@@ -11391,7 +11392,7 @@ unsorted:
   - libretro-beetle-supergrafx 
   - libretro-beetle-vb 
   - libretro-beetle-wswan 
-  - libretro-blastem: [x86_64] 
+  - libretro-blastem 
   - libretro-bluemsx 
   - libretro-bsnes 
   - libretro-cap32 
@@ -11412,6 +11413,7 @@ unsorted:
   - libretro-gambatte 
   - libretro-gtk-0_14-0 
   - libretro-handy 
+  - libretro-mame: [x86_64] 
   - libretro-mgba 
   - libretro-nestopia 
   - libretro-parallel-n64 
@@ -17952,7 +17954,7 @@ unsorted:
   - python-polib-doc 
   - python-praatio-doc 
   - python-py2pack-doc 
-  - python-pybind11-devel 
+  - python-pybind11-common-devel 
   - python-pycadf-common 
   - python-pycadf-doc 
   - python-pycairo-common-devel 
@@ -18038,7 +18040,6 @@ unsorted:
   - python2-CacheControl 
   - python2-Cerberus 
   - python2-Chameleon 
-  - python2-Cheetah3 
   - python2-CommonMark 
   - python2-Cython 
   - python2-DataProperty 
@@ -18103,7 +18104,6 @@ unsorted:
   - python2-M2Crypto 
   - python2-Mako 
   - python2-MapProxy 
-  - python2-Markdown: [x86_64] 
   - python2-MarkupPy 
   - python2-MarkupSafe 
   - python2-Markups 
@@ -19519,6 +19519,7 @@ unsorted:
   - python2-pybars3 
   - python2-pybeam 
   - python2-pybind11 
+  - python2-pybind11-devel 
   - python2-pyblake2 
   - python2-pybluez 
   - python2-pybtex 
@@ -22109,6 +22110,7 @@ unsorted:
   - python3-pybars3 
   - python3-pybeam 
   - python3-pybind11: [i586] 
+  - python3-pybind11-devel 
   - python3-pyblake2 
   - python3-pybluez 
   - python3-pybtex 
@@ -23405,6 +23407,7 @@ unsorted:
   - rsyslog-module-gcrypt 
   - rsyslog-module-gssapi 
   - rsyslog-module-gtls 
+  - rsyslog-module-kafka 
   - rsyslog-module-mmnormalize 
   - rsyslog-module-mysql 
   - rsyslog-module-omamqp1 
