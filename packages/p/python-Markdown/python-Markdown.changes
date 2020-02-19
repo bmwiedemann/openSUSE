@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Feb 13 19:07:42 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.2.1: bugfix release
+  * The name property in toc_tokens from the TOC extension now
+    escapes HTML special characters (<, >, and &).
+- additional changes from version 3.2: major release
+  * Backwards-incompatible changes:
+    + Drop support for Python 2.7
+    + em and strong inline processor changes
+    + CodeHilite now always wraps with <code> tags
+    + markdown.util.etree deprecated
+  * New features:
+    + Some new configuration options have been added to the toc
+      extension
+    + Document thread safety (#812).
+    + Markdown parsing in HTML has been exposed via a separate
+      extension called md_in_html.
+    + Add support for Python 3.8.
+  * Bug fixes:
+    + HTML tag placeholders are no longer included in .toc_tokens
+      (#899).
+    + Unescape backslash-escaped characters in TOC ids (#864).
+    + Refactor bold and italic logic in order to solve complex
+      nesting issues (#792).
+    + Always wrap CodeHilite code in tags (#862).
+- disable python2 build: Markdown is python 3 only now
+
+-------------------------------------------------------------------
 Tue May 21 16:55:19 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.1.1: bugfix release

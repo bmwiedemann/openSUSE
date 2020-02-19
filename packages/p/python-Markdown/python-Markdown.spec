@@ -1,7 +1,7 @@
 #
 # spec file for package python-Markdown
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Markdown
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://python-markdown.github.io/
+URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/M/Markdown/Markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
 BuildRequires:  %{python_module PyYAML}
@@ -37,11 +38,6 @@ Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython2
-# older python2 version provided the package in lowercase
-Provides:       %{oldpython}-markdown = %{version}
-Obsoletes:      %{oldpython}-markdown < %{version}
-%endif
 %python_subpackages
 
 %description
