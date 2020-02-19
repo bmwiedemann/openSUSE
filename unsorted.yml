@@ -18103,7 +18103,7 @@ unsorted:
   - python2-M2Crypto 
   - python2-Mako 
   - python2-MapProxy 
-  - python2-Markdown 
+  - python2-Markdown: [x86_64] 
   - python2-MarkupPy 
   - python2-MarkupSafe 
   - python2-Markups 
