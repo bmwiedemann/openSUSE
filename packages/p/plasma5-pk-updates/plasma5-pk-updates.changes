@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:21:59 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update german translations to remove a superfluous fullstop
+  (kde#386751)
+
+-------------------------------------------------------------------
 Mon Aug 26 13:59:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Implement EULA handling (boo#1148168):
