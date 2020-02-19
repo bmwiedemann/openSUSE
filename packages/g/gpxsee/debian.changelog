@@ -1,3 +1,10 @@
+gpxsee (7.23) stable; urgency=low
+
+  * Fixed various IMG maps rendering issues.
+  * Improved the default IMG map style.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 17 Feb 2020 20:37:41 +0100
+
 gpxsee (7.22) stable; urgency=low
 
   * Fixed loading of GMAP maps when Garmin BaseCamp has associated
