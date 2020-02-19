@@ -724,4 +724,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.15.1</comment>
     <requestid>769447</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>f05cf8367d40752a3621068523ec8651</srcmd5>
+    <version>1.15.1</version>
+    <time>1582112396</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix invalid RPM groups.</comment>
+    <requestid>774292</requestid>
+  </revision>
 </revisionlist>
