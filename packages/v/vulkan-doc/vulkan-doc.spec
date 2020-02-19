@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-doc
-Version:        1.2.132
+Version:        1.2.133
 Release:        0
 Summary:        Formal documentation of the Vulkan API
 License:        CC-BY-SA-4.0 AND Apache-2.0
