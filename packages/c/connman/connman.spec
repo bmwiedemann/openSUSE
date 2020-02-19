@@ -1,7 +1,7 @@
 #
 # spec file for package connman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define tist_working		1
 %endif
 Name:           connman
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        Connection Manager
 License:        GPL-2.0-only
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libiptc)
+BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(xtables)
 Requires:       bluez
@@ -72,7 +73,7 @@ Summary:        Connman reference man pages
 Group:          Documentation/Man
 
 %description doc
-Documentation in form of man pages for connman
+Documentation in form of man pages for Connman (Connection Manager).
 
 ##############################
 #Plugins
@@ -80,7 +81,7 @@ Documentation in form of man pages for connman
 
 %if %{hh2serial_working}
 %package plugin-hh2serial-gps
-Summary:        HH2Serial GPS plugin for connman (Connection Manager)
+Summary:        HH2Serial GPS plugin for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 
@@ -91,7 +92,7 @@ Provides HH2Serial GPS device support for Connman (Connection Manager).
 
 %if %{openconnect_present}
 %package plugin-openconnect
-Summary:        OpenConnect plugin for connman (Connection Manager)
+Summary:        OpenConnect plugin for connman
 Group:          System/Daemons
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openconnect)
@@ -106,7 +107,7 @@ OpenConnect is an open client for Cisco(TM) AnyConnect(TM) VPN.
 %endif #openconnect_present
 
 %package plugin-vpnc
-Summary:        VPNC plugin for connman (Connection Manager)
+Summary:        VPNC plugin for connman
 Group:          System/Daemons
 BuildRequires:  vpnc
 Requires:       %{name} >= %{version}
@@ -117,7 +118,7 @@ Provides VPNC support for Connman (Connection Manager).
 #-------------------------------------
 
 %package plugin-openvpn
-Summary:        OpenVPN plugin for connman (Connection Manager)
+Summary:        OpenVPN plugin for connman
 Group:          System/Daemons
 BuildRequires:  openvpn
 Requires:       %{name} >= %{version}
@@ -128,19 +129,26 @@ Provides OpenVPN support for Connman (Connection Manager).
 #-------------------------------------
 
 %package plugin-pptp
-Summary:        PPTP plugin for connman (Connection Manager)
+Summary:        PPTP plugin for connman
 Group:          System/Daemons
-BuildRequires:  vpnc
 Requires:       %{name} >= %{version}
-Requires:       vpnc
 
 %description plugin-pptp
 Provides PPTP support for Connman (Connection Manager).
 #-------------------------------------
 
+%package plugin-wireguard
+Summary:        WireGuard plugin for connman
+Group:          System/Daemons
+Requires:       %{name} >= %{version}
+
+%description plugin-wireguard
+Provides WireGuard network support for Connman (Connection Manager).
+#-------------------------------------
+
 %if %{tist_working}
 %package plugin-tist
-Summary:        TIST plugin for connman (Connection Manager)
+Summary:        TIST plugin for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 
@@ -150,7 +158,7 @@ Provides TI Shared Transport support for Connman (Connection Manager).
 #-------------------------------------
 
 %package plugin-l2tp
-Summary:        L2TP plugin for connman (Connection Manager)
+Summary:        L2TP plugin for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 
@@ -159,7 +167,7 @@ Provides L2TP (Layer 2 Tunneling Protocol) support for Connman (Connection Manag
 #-------------------------------------
 
 %package plugin-iospm
-Summary:        Intel OSPM plugin for connman (Connection Manager)
+Summary:        Intel OSPM plugin for connman
 Group:          System/Daemons
 BuildRequires:  ppp-devel
 Requires:       %{name} >= %{version}
@@ -170,7 +178,7 @@ Provides Intel OSPM support for Connman (Connection Manager).
 #-------------------------------------
 
 %package test
-Summary:        Test and example scripts for connman (Connection Manager)
+Summary:        Test and example scripts for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 
@@ -179,7 +187,7 @@ Provides test and example scripts for Connman (Connection Manager).
 #-------------------------------------
 
 %package nmcompat
-Summary:        NetworkManager compatibility for connman (Connection Manager)
+Summary:        NetworkManager compatibility for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 
@@ -188,7 +196,7 @@ Provides NetworkManager compatibility for Connman (Connection Manager).
 #-------------------------------------
 
 %package plugin-polkit
-Summary:        PolicyKit plugin for connman (Connection Manager)
+Summary:        PolicyKit plugin for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 Requires:       dbus-1 >= 1.0
@@ -199,7 +207,7 @@ Provides PolicyKit support for Connman (Connection Manager).
 #-------------------------------------
 
 %package client
-Summary:        Client script for connman (Connection Manager)
+Summary:        Client script for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
 
@@ -259,7 +267,7 @@ export FFLAGS
            --enable-tools \
            --enable-datafiles
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -273,10 +281,9 @@ touch %{buildroot}%{_localstatedir}/lib/%{name}/settings
 install -Dm0755 {client,%{buildroot}/%{_bindir}}/connmanctl
 install -Dm0644 {src,%{buildroot}%{_sysconfdir}/%{name}}/main.conf
 
+rm %{buildroot}%{_libdir}/connman/scripts/vpn-script
+
 find %{buildroot} -type f -name "*.la" -delete -print
-%if ! %{openconnect_present}
-rm %{buildroot}%{_libdir}/%{name}/scripts/openconnect-script
-%endif
 
 %pre
 %service_add_pre connman.service
@@ -314,7 +321,8 @@ fi
 %service_del_postun connman-wait-online.service
 
 %files
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_sbindir}/connmand
 %{_sbindir}/connman-vpnd
 %{_sbindir}/connmand-wait-online
@@ -352,7 +360,6 @@ fi
 %if %{openconnect_present}
 %files plugin-openconnect
 %{_libdir}/%{name}/plugins-vpn/openconnect.so
-%{_libdir}/%{name}/scripts/openconnect-script
 %endif
 
 %files plugin-vpnc
@@ -371,6 +378,9 @@ fi
 
 %files plugin-pptp
 %{_libdir}/%{name}/plugins-vpn/pptp.so
+
+%files plugin-wireguard
+%{_libdir}/connman/plugins-vpn/wireguard.so
 
 %if %{tist_working}
 %files plugin-tist

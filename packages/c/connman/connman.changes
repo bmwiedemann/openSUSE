@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 18 17:57:00 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.38:
+  * Fix issue with online check on IP address update.
+  * Fix issue with OpenVPN and encrypted private keys.
+  * Fix issue with finishing of VPN connections.
+  * Add support for updated stable iwd APIs.
+  * Add support for WireGuard networks.
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Fri May 10 21:53:12 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.37:
