@@ -77,6 +77,7 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/libgstpython.so
 %files %{python_files}
 %license COPYING
 %doc NEWS TODO
+%dir %{python_sitearch}/gi
 %{python_sitearch}/gi/overrides/
 
 %files -n gstreamer-plugin-python
