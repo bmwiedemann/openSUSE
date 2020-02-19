@@ -437,4 +437,39 @@
 - Added rmt-client-setup-res for RES8 systems</comment>
     <requestid>731538</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3d3288354a4af12d9bb37705732e0932</srcmd5>
+    <version>2.5.4</version>
+    <time>1582112466</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.5.4
+- Fix migrations in case adding migration_extra column failed (bsc#1162296)
+
+- Version 2.5.3
+- low_speed_time and low_speed_limit can be configured
+
+- Version 2.5.2
+- Fix offline migration (CVE-2019-18904: bsc#1160922)
+- Ensure download of signature file from custom repositories
+
+- Version 2.5.1
+- Relax systemd units dependencies (bsc#1160673)
+
+- Version 2.5.0
+- Add `rmt-cli scc sync-systems` command
+
+- Version 2.4.5
+- rmt-server-pubcloud: escape paths in regex
+
+- Version 2.4.4
+- Verbose error reporting for SCC API errors (bsc#1157119)
+
+- Version 2.4.3
+- rmt-server-pubcloud: Relax zypper auth plugin checks; produce detailed logs
+- rmt-server-pubcloud: Allow access to SLES 12 SP1 repos when SLES 11 was activated
+
+- Fix dependency to removed boot_cli_i18n file (bsc#1136020)
+- Offline migration from SLE 15 to SLE 15 SP1 will add Python2 module</comment>
+    <requestid>775075</requestid>
+  </revision>
 </revisionlist>

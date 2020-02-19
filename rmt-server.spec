@@ -1,7 +1,7 @@
 #
 # spec file for package rmt-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define ruby_version %{rb_default_ruby_suffix}
 
 Name:           rmt-server
-Version:        2.4.2
+Version:        2.5.4
 Release:        0
 Summary:        Repository mirroring tool and registration proxy for SCC
 License:        GPL-2.0-or-later
@@ -56,7 +56,7 @@ Requires(post): shadow
 Requires(post): timezone
 Requires(post): util-linux
 Conflicts:      yast2-rmt < 1.0.3
-Recommends:     yast2-rmt >= 1.0.3
+Recommends:     yast2-rmt >= 1.3.0
 Recommends:     rmt-server-config
 # Does not build for i586 and s390 and is not supported on those architectures
 ExcludeArch:    %{ix86} s390
@@ -132,9 +132,11 @@ mkdir -p %{buildroot}%{_unitdir}
 
 install -m 444 package/files/systemd/rmt-server-mirror.timer %{buildroot}%{_unitdir}
 install -m 444 package/files/systemd/rmt-server-sync.timer %{buildroot}%{_unitdir}
+install -m 444 package/files/systemd/rmt-server-systems-scc-sync.timer %{buildroot}%{_unitdir}
 
 install -m 444 package/files/systemd/rmt-server-mirror.service %{buildroot}%{_unitdir}
 install -m 444 package/files/systemd/rmt-server-sync.service %{buildroot}%{_unitdir}
+install -m 444 package/files/systemd/rmt-server-systems-scc-sync.service %{buildroot}%{_unitdir}
 install -m 444 package/files/systemd/rmt-server.service %{buildroot}%{_unitdir}
 install -m 444 package/files/systemd/rmt-server.target %{buildroot}%{_unitdir}
 install -m 444 package/files/systemd/rmt-server-migration.service %{buildroot}%{_unitdir}
@@ -147,6 +149,7 @@ ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rcrmt-server-migration
 ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rcrmt-server-mirror
 ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rcrmt-server-sync
 ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rcrmt-server-regsharing
+ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rcrmt-server-systems-scc-sync
 
 mkdir -p %{buildroot}%{_sysconfdir}
 mv %{_builddir}/rmt.conf %{buildroot}%{_sysconfdir}/rmt.conf
@@ -223,6 +226,7 @@ find %{buildroot}%{lib_dir}/vendor/bundle/ruby/*/gems/yard*/ -type f -exec chmod
 %{_sbindir}/rcrmt-server-migration
 %{_sbindir}/rcrmt-server-sync
 %{_sbindir}/rcrmt-server-mirror
+%{_sbindir}/rcrmt-server-systems-scc-sync
 %{_unitdir}/rmt-server.target
 %{_unitdir}/rmt-server.service
 %{_unitdir}/rmt-server-migration.service
@@ -230,6 +234,8 @@ find %{buildroot}%{lib_dir}/vendor/bundle/ruby/*/gems/yard*/ -type f -exec chmod
 %{_unitdir}/rmt-server-mirror.timer
 %{_unitdir}/rmt-server-sync.service
 %{_unitdir}/rmt-server-sync.timer
+%{_unitdir}/rmt-server-systems-scc-sync.service
+%{_unitdir}/rmt-server-systems-scc-sync.timer
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/completions/rmt-cli
@@ -261,10 +267,10 @@ getent group %{rmt_group} >/dev/null || %{_sbindir}/groupadd -r %{rmt_group}
 getent passwd %{rmt_user} >/dev/null || \
 	%{_sbindir}/useradd -g %{rmt_group} -s /bin/false -r \
 	-c "user for RMT" -d %{app_dir} %{rmt_user}
-%service_add_pre rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service
+%service_add_pre rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service rmt-server-systems-scc-sync.service
 
 %post
-%service_add_post rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service
+%service_add_post rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service rmt-server-systems-scc-sync.service
 cd %{_datadir}/rmt && runuser -u %{rmt_user} -g %{rmt_group} -- bin/rails secrets:setup >/dev/null
 cd %{_datadir}/rmt && runuser -u %{rmt_user} -g %{rmt_group} -- bin/rails runner -e production "Rails::Secrets.write({'production' => {'secret_key_base' => SecureRandom.hex(64)}}.to_yaml)" >/dev/null
 
@@ -285,10 +291,10 @@ if [ $1 -eq 2 ]; then
 fi
 
 %preun
-%service_del_preun rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service
+%service_del_preun rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service rmt-server-systems-scc-sync.service
 
 %postun
-%service_del_postun rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service
+%service_del_postun rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service rmt-server-systems-scc-sync.service
 
 %posttrans
 /usr/bin/systemctl reload nginx.service
