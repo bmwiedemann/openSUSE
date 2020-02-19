@@ -1,7 +1,7 @@
 #
 # spec file for package xournalpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xournalpp
-Version:        1.0.16
+Version:        1.0.17
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
-Url:            https://github.com/xournalpp/xournalpp
+URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM xournalpp-fix-desktop-categories.patch badshah400@gmail.com -- Fix desktop categories with additional keywords to prevent "No sufficient Category definition" error from brp-desktop.
 Patch0:         xournalpp-fix-desktop-categories.patch
@@ -55,7 +55,7 @@ It supports pen input, e.g. Wacom tablets.
 
 %build
 %cmake
-%make_jobs
+%cmake_build translations
 
 %install
 %cmake_install

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 19 00:25:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.0.17:
+  - Fixed arrow tip scaling: now scales with thickness instead of
+    length (gh#xournalpp/xournalpp#967).
+  - Changed coordinate draw direction.
+  - Fixed audio playback failures not showing error messages to
+    the user (gh#xournalpp/xournalpp#1573).
+  - Fixed text tool bold shortcut not working when capslock is
+    enabled (gh#xournalpp/xournalpp#1583).
+  - Fixed sidebar preview context menu "Move Page Up" and "Move
+    Page Down" buttons not being disabled on the first and last
+    page, respectively (gh#xournalpp/xournalpp#1637).
+  - Fixed Enter keypress on the "Goto Page" (Ctrl-G) dialog not
+    changing the page (gh#xournalpp/xournalpp#975).
+  - Fixed missing Xournal++ icon errors on most of the dialog
+    windows (gh#xournalpp/xournalpp#1667).
+- Build translations during make stage.
+- Use %cmake_build instead of obsolete %make_jobs.
+
+-------------------------------------------------------------------
 Tue Dec 17 11:39:57 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.0.16:
