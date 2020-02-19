@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.49
+Version:        2.1.51
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
@@ -26,6 +26,8 @@ Group:          System/Management
 URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.service
+Source2:        targetclid.socket
+Source3:        targetclid.service
 BuildRequires:  %{python_module configshell-fb}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyparsing}
@@ -45,8 +47,8 @@ Requires(postun): update-alternatives
 Provides:       targetcli    = %{version}-%{release}
 Provides:       targetcli-fb = %{version}-%{release}
 %endif
-Obsoletes:      targetcli
-Obsoletes:      targetcli-fb
+Obsoletes:      targetcli < %{version}-%{release}
+Obsoletes:      targetcli-fb < %{version}-%{release}
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150000
 # explicit Provides advertising RBD support
@@ -56,11 +58,6 @@ Obsoletes:      targetcli-rbd < %{version}
 %{?systemd_ordering}
 Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
-Patch3:         saveconfig-compress-the-backup-config-files
-Patch4:         targetcli-fb-fix-raise-exception-error-in-save_backups
-Patch5:         Add-emulate_pr-backstore-attribute.patch
-Patch6:         do-not-remove-the-first-digit-when-auto-completing-the-tpg-tag
-Patch7:         iscsi-discovery_auth-enable-is-a-number-not-a-string
 
 %python_subpackages
 
@@ -90,11 +87,6 @@ python2-targetcli-fb and python3-targetcli-fb.
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch2 -p1
 %endif
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
 %python_build
@@ -102,48 +94,62 @@ python2-targetcli-fb and python3-targetcli-fb.
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/targetcli
+%python_clone -a %{buildroot}%{_bindir}/targetclid
 install -d -m755 %{buildroot}%{_sysconfdir}/target
 install -d -m755 %{buildroot}%{_sysconfdir}/target/backup
 install -d -m755 %{buildroot}%{_sbindir}
 install -D -m644 targetcli.8 %{buildroot}%{_mandir}/man8/targetcli.8
-install -D -m644 %{SOURCE1} %{buildroot}%{_unitdir}/targetcli.service
+install -D -m644 targetclid.8 %{buildroot}%{_mandir}/man8/targetclid.8
+install -D -m644 %{S:1} %{buildroot}%{_unitdir}/targetcli.service
+install -D -m644 %{S:2} %{buildroot}%{_unitdir}/targetclid.socket
+install -D -m644 %{S:3} %{buildroot}%{_unitdir}/targetclid.service
 %fdupes %{buildroot}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetcli
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
 
 %post
 %python_install_alternative targetcli
+%python_install_alternative targetclid
 
 %postun
 %python_uninstall_alternative targetcli
+%python_uninstall_alternative targetclid
 
 %pre
-%{service_add_pre targetcli.service}
+%{service_add_pre targetcli.service targetclid.socket targetclid.service}
 
 %preun
-%{stop_on_removal targetcli}
+%{stop_on_removal targetcld targetcli}
+%{service_del_preun targetcli.service targetclid.socket targetclid.service}
 
 %post -n %{name}-common
-%{service_add_post targetcli.service}
+%{service_add_post targetcli.service targetclid.socket targetclid.service}
 
 %postun -n %{name}-common
-%{service_del_postun targetcli.service}
+%{service_del_postun targetcli.service targetclid.socket targetclid.service}
 
 %pre -n %{name}-common
-%{service_add_pre targetcli.service}
+%{service_add_pre targetcli.service targetclid.socket targetclid.service}
 
 %preun -n %{name}-common
-%{service_del_preun targetcli.service}
+%{service_del_preun targetcli.service targetclid.socket targetclid.service}
 
 %files %{python_files}
 %python_alternative %{_bindir}/targetcli
+%python_alternative %{_bindir}/targetclid
 %{python_sitelib}/*
 
 %files -n %{name}-common
-%doc COPYING README.md THANKS
+%license COPYING
+%doc README.md THANKS
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
 %doc %{_mandir}/man8/targetcli.8%{ext_man}
+%doc %{_mandir}/man8/targetclid.8%{ext_man}
 %{_unitdir}/targetcli.service
+%{_unitdir}/targetclid.service
+%{_unitdir}/targetclid.socket
 %{_sbindir}/rctargetcli
+%{_sbindir}/rctargetclid
 
 %changelog

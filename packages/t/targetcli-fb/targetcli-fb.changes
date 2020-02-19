@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Feb 12 17:58:15 UTC 2020 - lduncan@suse.com
+
+- Update to version 2.1.51 from 2.1.49, which includes
+  the addition of a targetcli daemon, which can be used
+  to speed up batch processing. With patches:
+  * version 2.1.51
+  * targetcli: depreciate the redundant '--tcp' option
+  * man: add daemon intro at targetcli(8) man page
+  * systemd-units: fix documentation
+  * targetclid: add man page entry
+  * daemon: load the prefs on every new connection
+  * cli: show useful hint in header area of shell in daemonized mode
+  * cli: provide a way to disable using daemon
+  * cli: show better error msg when daemon is not running
+  * Do not print err msg when signal closes socket.
+  * Handle systemd socket activation, when present.
+  * Close socket when receiving a signal to interrupt connection.
+  * Exit with success when getting a signal.
+  * Only return response to targetcli when bytes present
+  * Removed useless semicolons, as they're ignored
+  * Handle OSError correctly: use strerror to get string
+  * Tweak systemd socket-activation settings for daemon
+  * Handle Python 3.7 stricter binary vs. string rules.
+  * Fix indention for targetclid when processing output.
+  * version 2.1.50
+  * iscsi discovery_auth enable is a number not a string
+  * restoreconfig: add ability to restore/reload single target or storage_object
+  * Fix a syntax error in some except clauses
+  * Remove Epydoc markup from command messages
+  * targetcli: serialize multiple requests
+  * targetcli: way to enable targetclid as default choice
+  * targetclid: enable socket based activation
+  * targetclid: add daemonize component for targetcli
+  * Do not remove the first digit when auto-completing the TPG tag
+  * Remove the extra semicolon in _save_backups
+  * Add emulate_pr backstore attribute
+  * targetcli-fb: Fix raise exception error in _save_backups
+  * saveconfig: compress the backup config files
+  This replaces targetcli-fb-2.1.49.tar.xz with
+  targetcli-fb-2.1.51.tar.xz, and removes the following patches,
+  which area already upstream:
+  * Add-emulate_pr-backstore-attribute.patch
+  * do-not-remove-the-first-digit-when-auto-completing-the-tpg-tag
+  * iscsi-discovery_auth-enable-is-a-number-not-a-string
+  * saveconfig-compress-the-backup-config-files
+  * targetcli-fb-fix-raise-exception-error-in-save_backups
+
+-------------------------------------------------------------------
 Mon Feb  3 16:38:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

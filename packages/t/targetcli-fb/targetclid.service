@@ -1,0 +1,13 @@
+[Unit]
+Description=Targetcli daemon
+Documentation=man:targetclid(8)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/targetclid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+Also=targetclid.socket
