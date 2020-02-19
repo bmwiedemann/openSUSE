@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@
 %endif
 
 Name:           libzypp
-Version:        17.22.0
+Version:        17.22.1
 Release:        0
-Url:            https://github.com/openSUSE/libzypp
+URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
 License:        GPL-2.0-or-later
 Group:          System/Packages
@@ -85,8 +85,11 @@ BuildRequires:  libsolv-tools
 Requires:       libsolv-tools
 %endif
 
-# required for testsuite, webrick
-BuildRequires:  ruby
+BuildRequires:  glib2-devel
+BuildRequires:  libsigc++2-devel
+
+# required for testsuite
+BuildRequires:  nginx
 
 Requires:       rpm
 
@@ -95,20 +98,22 @@ BuildRequires:  rpm-devel > 4.4
 %endif
 
 %if 0%{?fedora_version} || 0%{?rhel_version} >= 600 || 0%{?centos_version} >= 600
-BuildRequires:  glib2-devel
 BuildRequires:  popt-devel
 BuildRequires:  rpm-devel > 4.4
 %endif
 
 %if 0%{?mandriva_version}
-BuildRequires:  glib2-devel
 BuildRequires:  librpm-devel > 4.4
 %endif
 
 %if 0%{?suse_version}
 BuildRequires:  libgpgme-devel
+#testsuite
+BuildRequires:  FastCGI-devel
 %else
 BuildRequires:  gpgme-devel
+#testsuite
+BuildRequires:  fcgi-devel
 %endif
 
 %define min_curl_version 7.19.4
@@ -273,7 +278,7 @@ cd ..
 
 %check
 pushd build/tests
-LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$LD_LIBRARY_PATH" ctest --output-on-failure .
+LD_LIBRARY_PATH="$(pwd)/../zypp:$LD_LIBRARY_PATH" ctest --output-on-failure .
 popd
 
 %post
