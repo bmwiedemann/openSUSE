@@ -432,4 +432,62 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>767033</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7619025b83040e54ad308d6d018fba51</srcmd5>
+    <version>2.4.121.1</version>
+    <time>1582112516</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.121.1:
+ - Fix
+   - Make lief optional again. [Raphaël Vinot]
+     fix #538
+- remove fix-tests-template-version.patch, merged upstream
+- update to version 2.4.121:
+ - New
+   - Add includeDecayScore to rest search. [VVX7]
+   - Support for first_seen/last_seen. [Raphaël Vinot]
+     Cleaner import of datetime
+   - [attributes] chrome-extension-id added. [Alexandre Dulaunoy]
+ - Changes
+   - Do not install neo by default. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - More flexible when an event is in a weird state. [Raphaël Vinot]
+   - Str to int, properly load SharingGroup. [Raphaël Vinot]
+     Fix #535
+   - Bump deps, add pep8 test. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Support dict in tag/untag. [Raphaël Vinot]
+   - Test update last seen. [Raphaël Vinot]
+   - Add test cases in feed. [Raphaël Vinot]
+   - Add test cases. [Raphaël Vinot]
+   - Normalize to_datetime conversion. [Raphaël Vinot]
+   - Trustar example uses objects. [Raphaël Vinot]
+   - Add lief in the generic requirements. [Raphaël Vinot]
+   - Refactorize typing, validate. [Raphaël Vinot]
+ - Fix
+   - Issue with readme. [Raphaël Vinot]
+   - Remove debugging. [Raphaël Vinot]
+   - [*-seen] Consider that `-` can also be in the date component while
+     parsing. [mokaddem]
+   - First seen was after last seen, trigerring the exception. [Raphaël
+     Vinot]
+   - Tests failing if local tz was not CET. [Raphaël Vinot]
+   - Syntax and typos. [Raphaël Vinot]
+   - Bugs introduced by last commit. [Raphaël Vinot]
+ - Other
+   - Doc: fix Search-FullOverview.ipynb code example. [Bernhard E. Reiter]
+   - Chore: delete old examples. [Manabu Niseki]
+     Delete examples which use deprecated/deleted methods
+   - Scrape trustar intel platform reports and create misp events.
+     [th3jiv3r]
+   - Configuration for trustar integration. [th3jiv3r]
+   - Fixed trailing lines. [turtlefac3]
+   - Fixed trailing lines. [turtlefac3]
+   - Custom integration written in python to scrape Proofpoint VAP API for
+     metrics of top Very Attacked Persons and create MISP events.
+     [turtlefac3]
+   - Fix typos on FullOverview.ipynb. [Bernhard E. Reiter]
+</comment>
+    <requestid>775647</requestid>
+  </revision>
 </revisionlist>
