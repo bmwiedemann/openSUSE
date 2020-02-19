@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-REST
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-App-Dochazka-REST
-Version:        0.551
+Version:        0.558
 Release:        0
 %define cpan_name App-Dochazka-REST
 Summary:        Dochazka REST server
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/App-Dochazka-REST/
-Source0:        App-Dochazka-REST-0.551.tar.gz
+Source0:        App-Dochazka-REST-0.558.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
