@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 19 07:36:23 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.5.3. Main changes:
+  * Container action scripts are no longer bound in from `etc/actions.d` on the
+    host. They are created dynamically and inserted at container startup.
+  * `%files from ...` will no longer follow symlinks when copying between
+    stages in a multi stage build, as symlinks should be copied so that they
+    resolve identically in later stages. Copying `%files` from the host will
+    still maintain previous behavior of following links.
+  * Many bug fixes, please read CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Dec 19 14:12:49 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.5.2. Main change is a fix for a security issue related 

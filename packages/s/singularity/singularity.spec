@@ -1,7 +1,7 @@
 #
 # spec file for package singularity
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://www.sylabs.io/singularity/
@@ -94,7 +94,6 @@ cd %{name}/builddir
 
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
 make DESTDIR=$RPM_BUILD_ROOT install man
-chmod 644 $RPM_BUILD_ROOT%{_sysconfdir}/singularity/actions/*
 # move bash completion to the right place
 mkdir -pv %{buildroot}/%{_datadir}/bash-completion/completions/
 mv %{buildroot}/%{_sysconfdir}/bash_completion.d/singularity \
@@ -143,12 +142,6 @@ exit 0
 %{_libexecdir}/singularity/bin/starter
 %{_libexecdir}/singularity/cni/*
 %dir %{_sysconfdir}/singularity
-%dir %{_sysconfdir}/singularity/actions/
-%config(noreplace) %attr(755, root, singularity) %{_sysconfdir}/singularity/actions/exec
-%config(noreplace) %attr(755, root, singularity) %{_sysconfdir}/singularity/actions/run
-%config(noreplace) %attr(755, root, singularity) %{_sysconfdir}/singularity/actions/shell
-%config(noreplace) %attr(755, root, singularity) %{_sysconfdir}/singularity/actions/start
-%config(noreplace) %attr(755, root, singularity) %{_sysconfdir}/singularity/actions/test
 %config(noreplace) %{_sysconfdir}/singularity/capability.json
 %config(noreplace) %{_sysconfdir}/singularity/cgroups
 %config(noreplace) %{_sysconfdir}/singularity/ecl.toml
