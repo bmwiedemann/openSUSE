@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:10:31 UTC 2020 - Bjoern Voigt <bjoernv@arcor.de>
+
+- Update to 2.6.3
+  * desktop#1782 Add UserInfo class and fetch quota via API instead of PropfindJob
+  * desktop#1770 l10n: Changed grammar and triple dots to ellipsis
+  * desktop#1767 l10n: Changed spelling of "user name" to "username"
+  * desktop#1765 Start the client in background if activated by D-Bus
+  * desktop#1764 Do not install files related to cloud providers under Xenial
+  * desktop#1763 Make sure that the libcloudprovider integration is using a valid D-Bus path
+  * desktop#1762 Changed product name to Nextcloud
+  * desktop#1760 Update autoupdate.rst
+  * desktop#1745 Use system proxy by default if no config file is present
+  * desktop#1729 Install libcloudproviders files by default on debian
+  * desktop#1727 Windows 7 is out of support
+  * desktop#1721 BugFix: Handle broken shared file error gracefully
+  * desktop#1720 Fix Explorer integration on Windows and the crash on other systems
+  * desktop#1718 Welcome to 2020
+  * desktop#1707 Updated year in legalnotice.cpp
+  * desktop#1699 apply http2 qt resend patch from owncloud
+
+-------------------------------------------------------------------
 Tue Dec 31 19:15:00 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 2.6.2
