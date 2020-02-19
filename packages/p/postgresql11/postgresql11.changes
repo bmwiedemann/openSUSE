@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 15 03:10:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 11.7: (CVE-2020-1720) 
+  https://www.postgresql.org/about/news/2011/
+  https://www.postgresql.org/docs/11/release-11-7.html
+
+-------------------------------------------------------------------
 Mon Jan 27 09:10:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable explicitly armv8 CRC for %arm, as we use some armv8
