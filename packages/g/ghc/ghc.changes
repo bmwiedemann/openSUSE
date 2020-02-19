@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 16:43:22 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Increase memory limit for qemu user-space builds
+
+-------------------------------------------------------------------
 Wed Feb  5 11:16:13 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Fix typo in last change

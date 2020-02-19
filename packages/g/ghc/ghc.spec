@@ -269,7 +269,11 @@ export CFLAGS="${CFLAGS:-%optflags}"
 
 %if 0%{?suse_version} >= 1500
 %ifarch %{unregisterised_archs}
+%if 0%{?qemu_user_space_build}
+%limit_build -m 15000
+%else
 %limit_build -m 8000
+%endif
 %else
 %limit_build -m 2000
 %endif

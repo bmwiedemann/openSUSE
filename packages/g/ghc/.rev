@@ -792,4 +792,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment></comment>
     <requestid>770251</requestid>
   </revision>
+  <revision rev="82" vrev="5">
+    <srcmd5>0fd0ed3aaaf6013395de2f27a42c3aad</srcmd5>
+    <version>8.8.2</version>
+    <time>1582112462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775057</requestid>
+  </revision>
 </revisionlist>
