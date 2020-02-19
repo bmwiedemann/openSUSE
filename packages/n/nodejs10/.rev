@@ -278,4 +278,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>765334</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9be4f51154d05e93c980b4058d5c9bea</srcmd5>
+    <version>10.19.0</version>
+    <time>1582112364</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 10.19.0:
+  * fixes a remotely triggerable assertion on a TLS server via a
+    crafted certificate string (CVE-2019-15604, bsc#1163104)
+  * fixes an HTTP request smuggling vulnerability via malformed
+    Transfer-Encoding header (CVE-2019-15605, bsc#1163102)
+  * trim HTTP header values of optional white space
+    (CVE-2019-15606, bsc#1163103)
+  * enabled stricter HTTP header parsing by default.</comment>
+    <requestid>774097</requestid>
+  </revision>
 </revisionlist>
