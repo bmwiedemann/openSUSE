@@ -4315,4 +4315,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Mapping related function in wrong source file.</comment>
     <requestid>769482</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>6ea5dfbb2376371bfe0a1e4740cf2539</srcmd5>
+    <version>8.2.0257</version>
+    <time>1582112407</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.0257, fixes the following problems
+  * Vim9 script commands not sufficiently tested.
+  * Cannot assign to an imported variable.
+  * When 'lazyredraw' is set the window title may not be updated.
+  * :helptags and some other functionality not tested.
+  * Crash when using winnr('j') in a popup window.
+  * Error code E899 used twice.
+  * Calling Vim9 function using default argument fails.
+  * Crash when missing member type on list argument.
+  * Fnamemodify() does not apply &quot;:~&quot; when followed by &quot;:.&quot;.
+  * Function a bit far away from where it's used.
+  * Coverity complains about uninitialized field.
+  * Test for ANSI colors fails without an &quot;ls&quot; command.
+  * Missing search/substitute pattern hardly tested.
+  * Configure does not recognize gcc 10.0 and later.
+  * A popup window with a terminal can be made hidden.
+  * Wrong file name shortening. (Ingo Karkat)
+  * Several Vim9 instructions are not tested.
+  * Terminal test fails on Mac.
+  * Several Vim9 instructions are not tested.
+  * Terminal test still fails on Mac.
+  * Terminal test did pass on Mac.
+  * No test for Vim9 += and ..=.
+  * Vim9: optional function arguments don't work yet.
+  * Some instructions not yet tested.
+  * compiling :elseif not tested yet.
+  * compiling lambda not tested yet.
+  * Compiling for loop not tested.
+  * Compiling a few instructions not tested.
+  * Configure does not recognize gcc version on BSD.</comment>
+    <requestid>774387</requestid>
+  </revision>
 </revisionlist>

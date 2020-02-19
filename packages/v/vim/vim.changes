@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Feb 14 15:01:26 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.0257, fixes the following problems
+  * Vim9 script commands not sufficiently tested.
+  * Cannot assign to an imported variable.
+  * When 'lazyredraw' is set the window title may not be updated.
+  * :helptags and some other functionality not tested.
+  * Crash when using winnr('j') in a popup window.
+  * Error code E899 used twice.
+  * Calling Vim9 function using default argument fails.
+  * Crash when missing member type on list argument.
+  * Fnamemodify() does not apply ":~" when followed by ":.".
+  * Function a bit far away from where it's used.
+  * Coverity complains about uninitialized field.
+  * Test for ANSI colors fails without an "ls" command.
+  * Missing search/substitute pattern hardly tested.
+  * Configure does not recognize gcc 10.0 and later.
+  * A popup window with a terminal can be made hidden.
+  * Wrong file name shortening. (Ingo Karkat)
+  * Several Vim9 instructions are not tested.
+  * Terminal test fails on Mac.
+  * Several Vim9 instructions are not tested.
+  * Terminal test still fails on Mac.
+  * Terminal test did pass on Mac.
+  * No test for Vim9 += and ..=.
+  * Vim9: optional function arguments don't work yet.
+  * Some instructions not yet tested.
+  * compiling :elseif not tested yet.
+  * compiling lambda not tested yet.
+  * Compiling for loop not tested.
+  * Compiling a few instructions not tested.
+  * Configure does not recognize gcc version on BSD.
+  * Compare instructions not tested.
+  * Terminal popup test is flaky.
+  * Silent system command may clear the screen.
+  * The :compiler command causes a crash. (Daniel Steinberg)
+  * Crash when using garbagecollect() in between rand().
+  * Message test fails on SunOS.
+  * Draw error when an empty group is removed from 'statusline'.
+  * Crash when setting 'wincolor' on finished terminal window. (Bakudankun)
+  variables.  (Tim Pope)
+  * Using memory after it was freed. (Dominique Pelle)
+  * Crash when setting 'buftype' to "quickfix".
+  * Preview popup window test fails with long directory name. (Jakub
+  Kądziołka)
+  * Insufficient code coverage for ex_docmd.c functions.
+  * Compiler warning in Lua interface.
+  * test_clear_search_pat() is unused.
+  * A couple of function return types can be more specific.
+  * Crash when using :disassamble without argument. (Dhiraj Mishra)
+  * Compiler warning for checking size_t to be negative.
+  * Time and timer related code is spread out.
+  * Cannot recognize a terminal in a popup window.
+
+-------------------------------------------------------------------
 Mon Feb  3 09:17:59 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Refreshed disable-unreliable-tests.patch and vim-7.3-help_tags.patch
