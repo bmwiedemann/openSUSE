@@ -264,4 +264,19 @@
     <comment>- Disable test test_pager_as_cat as it pulls additional deps</comment>
     <requestid>770497</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a1f258b603d7c89375abe273a598f02b</srcmd5>
+    <version>4.8.0</version>
+    <time>1582112404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.0
+ * Returned behavior of searchwindowsize to that in 4.3 and earlier
+ * Fixed a bug truncating before attribute after a timeout 
+ * Fixed a bug where a search could be less than searchwindowsize
+    if it was increased between calls
+ * Minor test cleanups to improve portability
+ * Disable chaining of timeout and EOF exceptions
+ * Several doc updates.</comment>
+    <requestid>774361</requestid>
+  </revision>
 </revisionlist>

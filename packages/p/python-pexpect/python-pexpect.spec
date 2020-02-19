@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pexpect
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        Pure Python Expect-like module
 License:        ISC
