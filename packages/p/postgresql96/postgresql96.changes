@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 15 03:23:25 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 9.6.17 (CVE-2020-1720)
+  https://www.postgresql.org/about/news/2011/
+  https://www.postgresql.org/docs/9.6/release-9-6-17.html
+
+-------------------------------------------------------------------
 Sun Dec 29 17:11:56 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
 
 - use and package the sha256 checksum for for source

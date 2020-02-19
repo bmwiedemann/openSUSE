@@ -240,4 +240,12 @@
   by pg_config --libs</comment>
     <requestid>759918</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>01fdb8c6a57bfdcca418750a02fdbbae</srcmd5>
+    <version>9.6.17</version>
+    <time>1582112427</time>
+    <user>dimstar_suse</user>
+    <comment>update for CVE-2020-1720 (forwarded request 774445 from darix)</comment>
+    <requestid>774450</requestid>
+  </revision>
 </revisionlist>
