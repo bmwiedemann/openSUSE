@@ -37,4 +37,14 @@
   * Add create_autoyast_profile to caasp section for reference</comment>
     <requestid>722653</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e97c839980b3b86c6959c250b60753c6</srcmd5>
+    <version>1.0+git20200214.c7654a7</version>
+    <time>1582112401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200214.c7654a7:
+  * Remove btrfsQuota, snapper list provides now the same informations
+  * Adjust README.md</comment>
+    <requestid>774346</requestid>
+  </revision>
 </revisionlist>

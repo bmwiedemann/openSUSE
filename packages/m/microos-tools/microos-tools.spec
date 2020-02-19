@@ -1,7 +1,7 @@
 #
 # spec file for package microos-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        1.0+git20190812.97ca0ee
+Version:        1.0+git20200214.c7654a7
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -40,8 +40,6 @@ Files, scripts and directories for openSUSE Kubic.
 
 %install
 cp -a {etc,usr} %{buildroot}
-mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}%{_mandir}/man8
 
 %pre
 %service_add_pre setup-systemd-proxy-env.service
@@ -63,8 +61,6 @@ mkdir -p %{buildroot}%{_mandir}/man8
 %{_unitdir}
 %{_prefix}/lib/sysctl.d/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
-%{_sbindir}/btrfsQuota
 %{_sbindir}/setup-systemd-proxy-env
-%{_mandir}/man8/btrfsQuota.8%{?ext_man}
 
 %changelog

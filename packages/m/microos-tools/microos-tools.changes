@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:59:05 UTC 2020 - kukuk@suse.de
+
+- Update to version 1.0+git20200214.c7654a7:
+  * Remove btrfsQuota, snapper list provides now the same informations
+  * Adjust README.md
+
+-------------------------------------------------------------------
 Mon Aug 12 13:18:41 CEST 2019 - kukuk@suse.de
 
 - Remove create_autoyast_profile from sources
