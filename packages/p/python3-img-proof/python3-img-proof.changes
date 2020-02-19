@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 22:23:21 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v4.7.0 (2020-02-18)
+  + Add list of 15-SP2 repos to SLES on-demand test.
+  + Cleanup spec file.
+
+-------------------------------------------------------------------
 Tue Jan 21 18:44:21 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v4.6.0 (2020-01-21)
