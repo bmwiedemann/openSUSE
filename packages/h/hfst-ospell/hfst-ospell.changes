@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jan 16 13:08:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 0.5.1:
+- Update to 0.5.1 bsc#1164440:
   * change correction finding order (fixes issue #28)
   * require C++1y (C++14)
   * observe ICU namespacing (fixes issue #42)

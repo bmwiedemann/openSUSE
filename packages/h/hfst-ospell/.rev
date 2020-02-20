@@ -42,4 +42,12 @@
   * observe ICU namespacing (fixes issue #42)</comment>
     <requestid>764972</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c82c4cb5d1a7471f6f646bf602d04174</srcmd5>
+    <version>0.5.1</version>
+    <time>1582206903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1 bsc#1164440:</comment>
+    <requestid>777624</requestid>
+  </revision>
 </revisionlist>
