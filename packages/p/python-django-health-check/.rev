@@ -16,4 +16,13 @@
   * Resolve #232 -- Change license information to MIT</comment>
     <requestid>745448</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>690189d384a6ed075260717a28e49592</srcmd5>
+    <version>3.12.1</version>
+    <time>1582207142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.12.1:
+  * Add health_check Django command (CLI) (#217, #234)</comment>
+    <requestid>777589</requestid>
+  </revision>
 </revisionlist>
