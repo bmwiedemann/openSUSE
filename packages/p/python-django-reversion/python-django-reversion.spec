@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-reversion
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-reversion
-Version:        3.0.5
+Version:        3.0.7
 Release:        0
 Summary:        A Django extension that provides version control for model instances
 License:        BSD-3-Clause
-URL:            http://github.com/etianen/django-reversion
+URL:            https://github.com/etianen/django-reversion
 Source:         https://files.pythonhosted.org/packages/source/d/django-reversion/django-reversion-%{version}.tar.gz
 BuildRequires:  %{python_module Django > 1.11}
 BuildRequires:  %{python_module mysqlclient}

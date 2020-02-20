@@ -129,4 +129,17 @@
     `django.contrib.admin` is not in `INSTALLED_APPS`.</comment>
     <requestid>754684</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d03be5a06b78db894363fca0247a42bc</srcmd5>
+    <version>3.0.7</version>
+    <time>1582207169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.7:
+  * Packaging improvements (@michael-k).
+  * Removing deprecated usages of force_text (@Tenzer).
+  * Documentation fixes (@chicheng).
+  * Removing deprecated usages of ugettext_lazy (@François GUÉRIN).
+  * Slovenian translation (@Bor Plestenjak).</comment>
+    <requestid>777600</requestid>
+  </revision>
 </revisionlist>
