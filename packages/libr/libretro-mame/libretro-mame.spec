@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-mame
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,14 @@ Name:           libretro-mame
 Version:        0~git20200205
 Release:        0
 Summary:        MAME libretro core for arcade emulation
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
-
+BuildRequires:  Mesa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  python3
 BuildRequires:  python3-xml
-BuildRequires:  Mesa-devel
 
 %description
 MAME is a multi-purpose emulation framework.
