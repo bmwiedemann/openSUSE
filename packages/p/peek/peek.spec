@@ -1,7 +1,7 @@
 #
 # spec file for package peek
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           peek
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        An animated GIF recorder
 License:        GPL-3.0-or-later
 URL:            https://github.com/phw/peek
-Source:         https://github.com/phw/peek/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.19
