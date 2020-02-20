@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:26:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Thu Oct 17 17:49:08 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Fri Sep 20 06:18:33 UTC 2019 - nick wang <nwang@suse.com>
 
 - bsc#1145296, fix the wrong return code with cib_apply_diff

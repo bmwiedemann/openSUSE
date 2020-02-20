@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,7 @@ Version:        9.10.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
-Group:          Productivity/Clustering/HA
-Url:            http://www.drbd.org/
+URL:            http://www.drbd.org/
 Source:         http://www.linbit.com/downloads/drbd/utils/%{name}-%{version}.tar.gz
 
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
@@ -67,8 +66,8 @@ BuildRequires:  glibc-devel
 BuildRequires:  libxslt
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  udev
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 %if %{with drbdmon}
 BuildRequires:  gcc-c++
 %endif
