@@ -118,4 +118,12 @@
   pcscd-group-no-longer-exist.patch).</comment>
     <requestid>445654</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>91543bd74fd6f428b8221268896d7697</srcmd5>
+    <version>3.7</version>
+    <time>1582207269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777676</requestid>
+  </revision>
 </revisionlist>

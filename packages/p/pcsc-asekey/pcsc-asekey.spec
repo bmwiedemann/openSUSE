@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-asekey
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Security
 Version:        3.7
 Release:        0
-%define tar_version %(echo %{version} | tr . -)
-Url:            http://www.asedrive.com/downloads
+%define tar_version 3-7
+URL:            http://www.asedrive.com/downloads
 Source:         %{_name}-%{tar_version}-tar.bz2
 # PATCH-FIX-OPENSUSE pcsc-asekey-no-duplicated-install.patch sbrabec@suse.com -- Do not install driver twice. Keep only the one used by current pcsc-lite.
 Patch1:         pcsc-asekey-no-duplicated-install.patch
@@ -34,12 +34,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libusb-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Requires:       pcsc-lite
 Supplements:    modalias(usb:v0DC3p1701d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0DC3p1702d*dc*dsc*dp*ic*isc*ip*)
 %define ifddir %(pkg-config libpcsclite --variable=usbdropdir)
-%if %( echo `rpm -q --queryformat %%{version} udev` ) > 190
+%if %( pkg-config --modversion udev ) > 190
 %define _udevrulesdir %{_libexecdir}/udev/rules.d
 %else
 %define _udevrulesdir /lib/udev/rules.d
