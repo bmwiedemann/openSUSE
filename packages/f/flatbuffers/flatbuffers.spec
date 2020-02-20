@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,12 @@ and tools.
 
 %build
 chmod -x readme.md docs/source/*.md docs/footer.html docs/source/doxyfile
+# Fixup CMake/FlatbuffersConfigVersion.cmake.in - Upstream releases tarballs
+# that make no sense. They exect git describe to find correct information about
+# the version in use - and replace that into the cmake file in the end. Obviously
+# the tarball has no .git directory and thus does not carry that inormation
+# We just inject %%version there. Easiest fix.
+sed -i 's/@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@/%{version}/' CMake/FlatbuffersConfigVersion.cmake.in
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DFLATBUFFERS_BUILD_SHAREDLIB=ON \
        -DFLATBUFFERS_BUILD_FLATLIB=OFF \

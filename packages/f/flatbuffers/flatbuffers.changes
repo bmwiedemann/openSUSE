@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:01:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: RPM 4.15 got a bit stricter and fails on
+  find-provides script errors. Earlier RPM versions ignored it. In
+  this specic case it turns out that the .cmake file installed is
+  invalid, as it contained set(PACKAGE_VERSION "..") (so RPM is
+  right to abort). Turns out that upstream simply did not really
+  cater for the fact that this could be installed from tarball and
+  not from a git checkout: they use 'git describe' to inject a
+  version into the .cmake file. Fix this by replacing the
+  placeholders using sed, injecting the rpm %version there.
+
+-------------------------------------------------------------------
 Tue Dec  3 14:49:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use %cmake_build to build the cmake stuff
