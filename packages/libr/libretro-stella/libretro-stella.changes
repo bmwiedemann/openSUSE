@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Feb 19 13:10:38 UTC 2020 - i@guoyunhe.me
+
+- Remove stella.libretro which is now provided by libretro-core-info package
+- Update to version 0~git20200216:
+  * Take titlebar into account when calculating max desktop window size (fixes #577).
+  * fix overscan issue (fixes #576)
+  * attempt to fix #575
+  * Apply changes to DefProps based on latest 'const' vs. 'constexpr' refactoring.
+  * Use 'const' instead of 'constexpr' when generating properties file.
+  * change zero value for phosphor into "0" (not "Off")
+  * Wrap std::stoi inside BSPF::stringToInt, and handle its exceptions.
+  * fix Exit ROM from debugger (fixes #513)
+  * disable user palette option if no file exists (resolves #572)
+
+-------------------------------------------------------------------
+Mon Sep 18 15:03:41 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170916.979e4ac (no proper versioning
+  done by upstream).
