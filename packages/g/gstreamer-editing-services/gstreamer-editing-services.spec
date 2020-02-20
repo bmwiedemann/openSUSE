@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-editing-services
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,6 @@
 #
 
 
-# TODO: finish meson support
-%define use_meson 0
-
 Name:           gstreamer-editing-services
 Version:        1.16.2
 Release:        0
@@ -29,13 +26,13 @@ Group:          Productivity/Multimedia/Other
 URL:            http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
 Source:         https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{name}-%{version}.tar.xz
 
+BuildRequires:  c++_compiler
 BuildRequires:  flex
-BuildRequires:  gcc-c++
-%if %{use_meson}
 BuildRequires:  meson >= 0.47.0
-%endif
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bash-completion) >= 2.0
+BuildRequires:  python3-gobject-devel
+# Does not build/get installed when using meson build
+# BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.16
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
@@ -43,6 +40,7 @@ BuildRequires:  pkgconfig(gst-validate-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-controller-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.3
@@ -51,15 +49,24 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pygobject-3.0)
 
 %description
-The GStreamer multimedia framework and the accompanying GNonLin set of plugins for non-linear editing offer all the building blocks for:
+The GStreamer multimedia framework and the accompanying GNonLin set
+of plugins for non-linear editing offer all the building blocks
+for:
+Decoding and encoding to a wide variety of formats, through all the
+available GStreamer plugins.
+Easily choosing segments of streams and arranging them through time
+through the GNonLin set of plugins.
 
-    Decoding and encoding to a wide variety of formats, through all the available GStreamer plugins.
+But all those building blocks only offer stream-level access, which
+results in developers who want to write non-linear editors to write
+a consequent amount of code to get to the level of non-linear
+editing notions which are closer and more meaningful for the
+end-user (and therefore the application).
 
-    Easily choosing segments of streams and arranging them through time through the GNonLin set of plugins.
-
-But all those building blocks only offer stream-level access, which results in developers who want to write non-linear editors to write a consequent amount of code to get to the level of non-linear editing notions which are closer and more meaningful for the end-user (and therefore the application).
-
-The GStreamer Editing Services (hereafter GES) aims to fill the gap between GStreamer/GNonLin and the application developer by offering a series of classes to simplify the creation of many kind of editing-related applications.
+The GStreamer Editing Services (hereafter GES) aims to fill the gap
+between GStreamer/GNonLin and the application developer by offering
+a series of classes to simplify the creation of many kind of
+editing-related applications.
 
 %package -n libges-1_0-0
 Summary:        GStreamer Editing Services - Libraries
@@ -67,15 +74,24 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n libges-1_0-0
-The GStreamer multimedia framework and the accompanying GNonLin set of plugins for non-linear editing offer all the building blocks for:
+The GStreamer multimedia framework and the accompanying GNonLin set
+of plugins for non-linear editing offer all the building blocks
+for:
+Decoding and encoding to a wide variety of formats, through all the
+available GStreamer plugins.
+Easily choosing segments of streams and arranging them through time
+through the GNonLin set of plugins.
 
-    Decoding and encoding to a wide variety of formats, through all the available GStreamer plugins.
+But all those building blocks only offer stream-level access, which
+results in developers who want to write non-linear editors to write
+a consequent amount of code to get to the level of non-linear
+editing notions which are closer and more meaningful for the
+end-user (and therefore the application).
 
-    Easily choosing segments of streams and arranging them through time through the GNonLin set of plugins.
-
-But all those building blocks only offer stream-level access, which results in developers who want to write non-linear editors to write a consequent amount of code to get to the level of non-linear editing notions which are closer and more meaningful for the end-user (and therefore the application).
-
-The GStreamer Editing Services (hereafter GES) aims to fill the gap between GStreamer/GNonLin and the application developer by offering a series of classes to simplify the creation of many kind of editing-related applications.
+The GStreamer Editing Services (hereafter GES) aims to fill the gap
+between GStreamer/GNonLin and the application developer by offering
+a series of classes to simplify the creation of many kind of
+editing-related applications.
 
 %package -n typelib-1_0-GES-1_0
 Summary:        GStreamer Editing Services - Libraries
@@ -83,15 +99,24 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n typelib-1_0-GES-1_0
-The GStreamer multimedia framework and the accompanying GNonLin set of plugins for non-linear editing offer all the building blocks for:
+The GStreamer multimedia framework and the accompanying GNonLin set
+of plugins for non-linear editing offer all the building blocks
+for:
+Decoding and encoding to a wide variety of formats, through all the
+available GStreamer plugins.
+Easily choosing segments of streams and arranging them through time
+through the GNonLin set of plugins.
 
-    Decoding and encoding to a wide variety of formats, through all the available GStreamer plugins.
+But all those building blocks only offer stream-level access, which
+results in developers who want to write non-linear editors to write
+a consequent amount of code to get to the level of non-linear
+editing notions which are closer and more meaningful for the
+end-user (and therefore the application).
 
-    Easily choosing segments of streams and arranging them through time through the GNonLin set of plugins.
-
-But all those building blocks only offer stream-level access, which results in developers who want to write non-linear editors to write a consequent amount of code to get to the level of non-linear editing notions which are closer and more meaningful for the end-user (and therefore the application).
-
-The GStreamer Editing Services (hereafter GES) aims to fill the gap between GStreamer/GNonLin and the application developer by offering a series of classes to simplify the creation of many kind of editing-related applications.
+The GStreamer Editing Services (hereafter GES) aims to fill the gap
+between GStreamer/GNonLin and the application developer by offering
+a series of classes to simplify the creation of many kind of
+editing-related applications.
 
 %package devel
 Summary:        GStreamer Editing Services - Development files
@@ -102,40 +127,38 @@ Requires:       libges-1_0-0 = %{version}
 Requires:       typelib-1_0-GES-1_0 = %{version}
 
 %description devel
-The GStreamer multimedia framework and the accompanying GNonLin set of plugins for non-linear editing offer all the building blocks for:
+The GStreamer multimedia framework and the accompanying GNonLin set
+of plugins for non-linear editing offer all the building blocks
+for:
+Decoding and encoding to a wide variety of formats, through all the
+available GStreamer plugins.
+Easily choosing segments of streams and arranging them through time
+through the GNonLin set of plugins.
 
-    Decoding and encoding to a wide variety of formats, through all the available GStreamer plugins.
+But all those building blocks only offer stream-level access, which
+results in developers who want to write non-linear editors to write
+a consequent amount of code to get to the level of non-linear
+editing notions which are closer and more meaningful for the
+end-user (and therefore the application).
 
-    Easily choosing segments of streams and arranging them through time through the GNonLin set of plugins.
-
-But all those building blocks only offer stream-level access, which results in developers who want to write non-linear editors to write a consequent amount of code to get to the level of non-linear editing notions which are closer and more meaningful for the end-user (and therefore the application).
-
-The GStreamer Editing Services (hereafter GES) aims to fill the gap between GStreamer/GNonLin and the application developer by offering a series of classes to simplify the creation of many kind of editing-related applications.
+The GStreamer Editing Services (hereafter GES) aims to fill the gap
+between GStreamer/GNonLin and the application developer by offering
+a series of classes to simplify the creation of many kind of
+editing-related applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%if %{use_meson}
-%{meson} \
+%meson \
+	-Dgtk_doc=disabled \
 	-Dintrospection=enabled \
 	-Dtests=disabled \
 	%{nil}
-%{meson_build}
-%else
-export PYTHON=python3
-%configure \
-    --enable-introspection
-make %{?_smp_mflags}
-%endif
+%meson_build
 
 %install
-%if %{use_meson}
-%{meson_install}
-%else
-%make_install
-%endif
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n libges-1_0-0 -p /sbin/ldconfig
 %postun -n libges-1_0-0 -p /sbin/ldconfig
@@ -144,11 +167,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %{_mandir}/man1/ges-launch-1.0.1%{ext_man}
 %{_bindir}/ges-launch-1.0
-%{_datadir}/bash-completion/completions/ges-launch-1.0
+# Does not build/get installed when using meson build.
+#%%{_datadir}/bash-completion/completions/ges-launch-1.0
 %{_datadir}/gstreamer-1.0/validate/scenarios/ges-edit-clip-while-paused.scenario
 %{_libdir}/gst-validate-launcher/python/launcher/apps/geslaunch.py
-%dir %{python_sitearch}/gstreamer-editing-services
-%{python_sitearch}/gstreamer-editing-services/GES.*
+%{python3_sitearch}/gi/overrides/GES.py
 
 %files -n libges-1_0-0
 %license COPYING
