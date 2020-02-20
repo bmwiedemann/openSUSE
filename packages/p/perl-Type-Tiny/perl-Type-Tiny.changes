@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Feb 20 03:14:06 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.010000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010000	2020-02-19
+  
+   [ Documentation ]
+   - Correct documentation of slurpy with compile_named.
+     Fixes RT#131720.
+     <https://rt.cpan.org/Ticket/Display.html?id=131720>
+  
+   [ Packaging ]
+   - Package as stable.
+  
+  1.009_003	2020-02-11
+  
+   [ Bug Fixes ]
+   - Fix importing multiple type libraries into a type registry at once.
+     Fixes RT#131744.
+     <https://rt.cpan.org/Ticket/Display.html?id=131744>
+  
+   [ Documentation ]
+   - Fix typo in documentation of `my_methods`.
+     Philippe Bruhat++
+  
+  1.009_002	2020-02-11
+  
+   [ Documentation ]
+   - Mention MooX::Pression.
+  
+   [ Other ]
+   - Added: Type::Params now supports `head` and `tail` options for
+     `compile`, `compile_named`, and `compile_named_oo`.
+   - Parameterized `Ref` type constraint in Types::Standard now checks its
+     parameter is a known Perl ref type.
+   - Type::Params on Perl older than 5.10 now uses its own B::perlstring
+     implementation to quote strings instead of using B::cstring.
+  
+  1.009_001	2020-02-06
+  
+   [ Test Suite ]
+   - More tests for recursively defined type constraints.
+  
+   [ Other ]
+   - Added: Type::Tiny::Enum now has an `as_regexp` method.
+   - In some edge cases, the regexps used by Type::Tiny::Enum will now be
+     slightly faster.
+  
+  1.009_000	2020-02-04
+  
+   - Subclasses of Moose::Meta::TypeConstraint are now converted to the
+     appropriate subclasses of Type::Tiny by Types::TypeTiny::to_TypeTiny,
+     instead of always being converted to the base class. This improves
+     inlining amongst other things.
+   - When types are declared by Type::Library's -declare import parameter,
+     the temporary subs installed can now generate placeholder type
+     constraints which allow the types to be used in recursive type
+     definitions.
+
+-------------------------------------------------------------------
 Fri Jan 31 03:22:52 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.008005
