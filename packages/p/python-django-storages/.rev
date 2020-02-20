@@ -37,4 +37,14 @@
   * support for django 3.x</comment>
     <requestid>761364</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae16ee5fa295c4be170d3bbb3333b75b</srcmd5>
+    <version>1.9.1</version>
+    <time>1582207197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1:
+  * Breaking: The long deprecated S3 backend based on boto has been removed. (#825)
+  * Test against and support Python 3.8 (#810)</comment>
+    <requestid>777611</requestid>
+  </revision>
 </revisionlist>

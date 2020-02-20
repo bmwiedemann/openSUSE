@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:13:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.1:
+  * Breaking: The long deprecated S3 backend based on boto has been removed. (#825)
+  * Test against and support Python 3.8 (#810)
+
+-------------------------------------------------------------------
 Tue Jan  7 09:03:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.8:

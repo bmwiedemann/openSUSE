@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-storages
-Version:        1.8
+Version:        1.9.1
 Release:        0
 Summary:        Support for many storage backends in Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jschneier/django-storages
 Source:         https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -32,7 +31,6 @@ Requires:       python-Django >= 1.11
 Suggests:       python-apache-libcloud
 Suggests:       python-azure >= 3.0.0
 Suggests:       python-azure-storage-blob >= 1.3.1
-Suggests:       python-boto >= 2.32.0
 Suggests:       python-boto3 >= 1.4.4
 Suggests:       python-dropbox >= 7.2.1
 Suggests:       python-google-cloud-storage >= 1.15.0
@@ -41,7 +39,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module azure-storage-blob >= 1.3.1}
-BuildRequires:  %{python_module boto >= 2.32.0}
 BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module dropbox >= 7.2.1}
 BuildRequires:  %{python_module google-cloud-storage >= 1.15.0}
@@ -69,6 +66,7 @@ export PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings
 # Integration tests, which is only azure, fail systematically
 rm -r tests/integration
+rm tests/test_azure.py
 # Skip failing test in test_s3boto3.py
 %pytest -k 'not test_deprecated_default_acl'
 
