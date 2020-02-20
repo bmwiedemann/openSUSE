@@ -12,7 +12,14 @@
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
         <profile name="Kubic-kubeadm" description="MicroOS with CRI-O and kubeadm"/>
         <!-- Platforms -->
-        <profile name="kvm-and-xen" description="kvm-and-xen for x86_64" arch="x86_64"/>
+        <profile name="kvm-and-xen_x86_64" description="kvm-and-xen for x86_64" arch="x86_64"/>
+        <profile name="kvm-and-xen_aarch64" description="kvm-and-xen for aarch64" arch="aarch64"/>
+        <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64">
+            <requires profile="kvm-and-xen_x86_64"/>
+        </profile>
+        <profile name="kvm-and-xen" description="kvm-and-xen" arch="aarch64">
+            <requires profile="kvm-and-xen_aarch64"/>
+        </profile>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V for x86_64" arch="x86_64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud for x86_64" arch="x86_64"/>
@@ -30,7 +37,11 @@
         </profile>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64">
-            <requires profile="kvm-and-xen"/>
+            <requires profile="kvm-and-xen_x86_64"/>
+            <requires profile="ContainerHost"/>
+        </profile>
+        <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="aarch64">
+            <requires profile="kvm-and-xen_aarch64"/>
             <requires profile="ContainerHost"/>
         </profile>
         <profile name="ContainerHost-VMware" description="MicroOS with Podman for VMware" arch="x86_64">
@@ -62,7 +73,11 @@
             <requires profile="ContainerHost"/>
         </profile>
         <profile name="Kubic-kubeadm-kvm-and-xen" description="kubeadm with CRI-O for KVM and HVM Xen" arch="x86_64">
-            <requires profile="kvm-and-xen"/>
+            <requires profile="kvm-and-xen_x86_64"/>
+            <requires profile="Kubic-kubeadm"/>
+        </profile>
+        <profile name="Kubic-kubeadm-kvm-and-xen" description="kubeadm with CRI-O for KVM and HVM Xen" arch="aarch64">
+            <requires profile="kvm-and-xen_aarch64"/>
             <requires profile="Kubic-kubeadm"/>
         </profile>
         <profile name="Kubic-kubeadm-VMware" description="kubeadm with CRI-O for VMware" arch="x86_64">
@@ -94,7 +109,7 @@
             <requires profile="Kubic-kubeadm"/>
         </profile>
     </profiles>
-    <preferences profiles="kvm-and-xen">
+    <preferences profiles="kvm-and-xen_x86_64">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>openSUSE</bootsplash-theme>
@@ -108,7 +123,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -131,6 +146,42 @@
             <size unit="G">20</size>
         </type>
     </preferences>
+    <preferences profiles="kvm-and-xen_aarch64">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootsplash-theme>openSUSE</bootsplash-theme>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            bootloader="grub2"
+            bootloader_console="gfxterm"
+            firmware="uefi"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+            </systemdisk>
+            <size unit="G">20</size>
+        </type>
+    </preferences>
     <preferences profiles="VMware">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
@@ -145,7 +196,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=vmware"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=vmware"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -183,7 +234,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=openstack"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=openstack"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -221,7 +272,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -259,7 +310,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=tty0 net.ifnames=0 quiet \$ignition_firstboot ignition.platform.id=virtualbox"
+            kernelcmdline="console=tty0 net.ifnames=0 quiet \$ignition_firstboot ignition.platform.id=virtualbox"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -296,7 +347,7 @@
             fsmountoptions="noatime"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -333,7 +384,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="efi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -370,7 +421,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -406,7 +457,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -444,7 +495,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="plymouth.enable=0 console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -470,7 +521,7 @@
     <repository type="rpm-md" >
         <source path='obsrepositories:/'/>
     </repository>
-    <drivers profiles="kvm-and-xen">
+    <drivers profiles="kvm-and-xen_x86_64">
         <file name="drivers/xen/*" arch="x86_64"/>
         <file name="drivers/block/xen-blkfront.ko" arch="x86_64"/>
         <file name="drivers/net/xen-netfront.ko" arch="x86_64"/>
@@ -512,7 +563,7 @@
         <namedCollection name="kubic_worker"/>
         <package name="patterns-containers-kubic_worker"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64">
         <!-- XEN specific packages -->
         <package name="xen-tools-domU" arch="x86_64"/>
         <package name="grub2-x86_64-xen" arch="x86_64"/>
@@ -529,7 +580,6 @@
         <package name="kernel-default"/>
     </packages>
     <packages type="image" profiles="OpenStack-Cloud">
-        <package name="cloud-init"/>
         <package name="kernel-default"/>
     </packages>
     <packages type="image" profiles="VirtualBox">

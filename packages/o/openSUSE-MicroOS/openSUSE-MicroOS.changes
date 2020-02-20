@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 16:19:57 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Remove plymouth.enable=0, plymouth is not part of image.
+- Remove explicit addition of cloud-init on openStack image, it
+  is already pulled by cloud pattern.
+- Build kvm-and-xen, ContainerHost-kvm-and-xen and
+  kubeadm-kvm-and-xenon aarch64 in addition to x86_64.
+- Create a volume for grub2 for aarch64.
+- Disable ignition using qemu fw_cfg on kvm images on aarch64 until
+  kernel is fixed.
+
+-------------------------------------------------------------------
 Mon Jan 27 11:03:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use net.ifnames=0 everywhere
