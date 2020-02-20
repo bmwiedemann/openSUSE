@@ -20,7 +20,7 @@ index 2057839..04a5917 100644
 +from setuptools import find_packages, setup, Command
  
  name="pybeam"
- version="0.5"
+ version="0.6"
  test_suite="test"
  
 +class BuildSphinx(Command):
@@ -48,7 +48,7 @@ index 2057839..04a5917 100644
  	license='MIT',
  	packages=find_packages(exclude=(test_suite,)),
  	test_suite=test_suite,
--	install_requires=['construct>=2.9,<2.10', 'six', 'sphinx'],
+-	install_requires=['construct>=2.9,<2.11', 'six', 'sphinx'],
 -	command_options={
 -		'build_sphinx': {
 -			'project': ('setup.py', name),
@@ -57,7 +57,7 @@ index 2057839..04a5917 100644
 -			'source_dir': ('setup.py', 'doc')
 -		}
 -	},
-+	install_requires=['construct>=2.9,<2.10', 'six'],
++	install_requires=['construct>=2.9,<2.11', 'six'],
 +	cmdclass = {'build_sphinx': BuildSphinx},
  	zip_safe=False)
 -- 

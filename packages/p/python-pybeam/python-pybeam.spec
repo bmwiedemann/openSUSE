@@ -1,7 +1,7 @@
 #
-# spec file for package python-pybeam
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,39 +19,33 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_with    doc
-%bcond_without test
 %define psuffix -test
+%bcond_without test
 %endif
 %if "%{flavor}" == ""
-%bcond_with    doc
 %bcond_with    test
 %endif
 Name:           python-pybeam%{?psuffix}
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Python module to parse Erlang BEAM files
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/matwey/pybeam
+URL:            https://github.com/matwey/pybeam
 Source:         https://files.pythonhosted.org/packages/source/p/pybeam/pybeam-%{version}.tar.gz
 Patch0:         make_sphinx_optional.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with doc}
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module construct < 2.10}
-BuildRequires:  %{python_module construct >= 2.9}
-%endif
-%if %{with test}
-BuildRequires:  %{python_module pybeam == %{version}}
-BuildRequires:  %{python_module six}
-%endif
-Requires:       python-construct < 2.10
+Requires:       python-construct < 2.11
 Requires:       python-construct >= 2.9
 Requires:       python-six >= 1.4.0
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module construct < 2.11}
+BuildRequires:  %{python_module construct >= 2.9}
+BuildRequires:  %{python_module six}
+%endif
 %python_subpackages
 
 %description
@@ -60,7 +54,7 @@ imports, exports, atoms, as well as compile info and attribute
 chunks in pretty python format.
 
 %package -n %{name}-doc
-Summary:        API Documentation for %name
+Summary:        API Documentation for %{name}
 Group:          Documentation/HTML
 
 %description -n %{name}-doc
@@ -76,9 +70,6 @@ chunks in pretty python format.
 %if %{without test}
 %python_build
 %endif
-%if %{with doc}
-%python_build build_sphinx
-%endif
 
 %install
 %if %{without test}
@@ -88,18 +79,13 @@ chunks in pretty python format.
 
 %check
 %if %{with test}
-%python_exec setup.py test
+%python_exec -m unittest discover
 %endif
 
 %if %{without test}
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/*
-%endif
-
-%if %{with doc}
-%files -n %{name}-doc
-%doc build/html
 %endif
 
 %changelog

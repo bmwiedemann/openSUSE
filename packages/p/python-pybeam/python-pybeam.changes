@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:50:49 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.6
+
+-------------------------------------------------------------------
+Wed Feb 12 16:47:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove doc conditional as it is never built due to always being
+  as a bcond_with
+- Use unittest directly to avoid setup.py test deprecation
+- Allow usage with construct 2.10
+
+-------------------------------------------------------------------
 Sun Dec 15 02:38:15 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make Sphinx dependency optional (docs are not built by default),
