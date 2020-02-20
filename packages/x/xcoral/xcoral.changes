@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:39:10 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.48-8:
+  * No upstream changelog available
+- Drop no longer needed patches:
+  * xcoral-3.47.configure.diff
+  * xcoral-arraysubscript.patch  
+
+-------------------------------------------------------------------
 Sat Mar 17 12:18:50 UTC 2018 - jengelh@inai.de
 
 - Ensure neutrality of description.

@@ -1,7 +1,7 @@
 #
 # spec file for package xcoral
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         real_ver %{version}-8
 Name:           xcoral
-Version:        3.47
+Version:        3.48
 Release:        0
 Summary:        X11 Editor with C/C++/Java Browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-Url:            http://xcoral.free.fr/
-Source:         http://xcoral.free.fr/xcoral-%{version}.tar.gz
-Patch0:         xcoral-3.47.configure.diff
-Patch1:         xcoral-arraysubscript.patch
+URL:            http://xcoral.free.fr/
+Source:         http://xcoral.free.fr/xcoral-%{real_ver}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xt)
@@ -43,18 +42,20 @@ Further information about Xcoral and SMAC is available in the detailed
 online help system (also available Postscript format).
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -n %{name}-%{real_ver}
 
 %build
 %configure
 # parallel build fails
-make --jobs=1
+%make_build --jobs=1
 
 %install
-install -d %{buildroot}%{_libdir}
-make installprefix=%{buildroot} install
+install -d %{buildroot}%{_libdir}/%{name}
+%make_install \
+  prefix=%{buildroot}%{_prefix} \
+  exec_prefix=%{buildroot}%{_prefix} \
+  X_BINDIR=%{buildroot}%{_bindir} \
+  XC_LIBDIR=%{buildroot}%{_libdir}/%{name}
 find Doc "(" -name "*.ps" -o -name "*.pdf" ")" -exec bzip2 {} +
 install -Dpm 0644 SmacLib/xcoralrc.lf \
   %{buildroot}%{_sysconfdir}/skel/.xcoralrc
