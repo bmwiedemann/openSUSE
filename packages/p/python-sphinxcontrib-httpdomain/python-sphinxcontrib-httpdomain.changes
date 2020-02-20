@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 20 06:34:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove python-tornado Conflicts, {Build,}Require tornado4 directly.
+
+-------------------------------------------------------------------
 Mon Aug 26 16:57:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Use better way to handle tornado version compatibility.

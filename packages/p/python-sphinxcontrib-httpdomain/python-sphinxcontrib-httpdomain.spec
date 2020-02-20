@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-httpdomain
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,12 @@ BuildRequires:  %{python_module bottle >= 0.11.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module tornado >= 4.5}
-BuildConflicts: %{python_module tornado >= 5}
+BuildRequires:  %{python_module tornado4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.5
 Requires:       python-six
-Requires:       python-tornado >= 4.5
-Conflicts:      python-tornado >= 5
+Requires:       python-tornado4
 BuildArch:      noarch
 %python_subpackages
 
