@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 19 15:01:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust config.sh
+
+-------------------------------------------------------------------
+Wed Feb 19 12:10:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Change handling of /etc/nginx: allow to only mount nginx.conf
+- Mount htdocs to /srv/www/htdocs and not /data/htdocs
+
+-------------------------------------------------------------------
 Sun Feb  9 00:43:37 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Fix README errata 
+
+-------------------------------------------------------------------
+Thu Jan 23 15:24:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Replace busybox man/groff with mandoc
 
 -------------------------------------------------------------------
 Tue Jan 21 15:29:29 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
