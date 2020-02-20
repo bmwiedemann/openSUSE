@@ -999,6 +999,7 @@
     <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="incidenceeditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="indent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
+    <package name="indent-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="info-std" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

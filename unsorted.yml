@@ -1621,8 +1621,6 @@ unsorted:
   - checkpolicy: [i586] 
   - cheese-devel 
   - chemical-mime-data 
-  - cherrytree 
-  - cherrytree-lang 
   - chessx 
   - chezdav 
   - chmlib-devel 
@@ -1848,7 +1846,6 @@ unsorted:
   - compcache 
   - compface 
   - compface-devel 
-  - compicc 
   - compiz 
   - compiz-bcop 
   - compiz-branding-SLED 
@@ -1859,14 +1856,10 @@ unsorted:
   - compiz-emerald-devel 
   - compiz-emerald-lang 
   - compiz-emerald-theme-manager 
-  - compiz-emerald-themes 
   - compiz-gnome 
   - compiz-lang 
   - compiz-manager 
   - compiz-plugins 
-  - compiz-plugins-experimental 
-  - compiz-plugins-experimental-devel 
-  - compiz-plugins-experimental-lang 
   - compiz-plugins-extra 
   - compiz-plugins-extra-devel 
   - compiz-plugins-extra-lang 
@@ -1949,6 +1942,7 @@ unsorted:
   - courier-unicode-devel 
   - courier-unicode-doc 
   - cowsay 
+  - cozette-fonts 
   - cozy 
   - cozy-lang 
   - cp437 
@@ -11421,6 +11415,7 @@ unsorted:
   - libretro-play 
   - libretro-ppsspp 
   - libretro-prosystem 
+  - libretro-stella 
   - libretro-virtualjaguar 
   - libretro-yabause 
   - librevenge-devel 
@@ -17024,6 +17019,7 @@ unsorted:
   - perl-XSLoader 
   - perl-YAML-LibYAML-API 
   - perl-YAML-PP 
+  - perl-YAML-PP-LibYAML 
   - perl-YAML-Syck 
   - perl-YAML-Tiny 
   - perl-aliased 
@@ -18740,6 +18736,7 @@ unsorted:
   - python2-django-classy-tags 
   - python2-django-compressor 
   - python2-django-contrib-comments 
+  - python2-django-coverage-plugin 
   - python2-django-crispy-forms 
   - python2-django-environ 
   - python2-django-jinja 
@@ -18752,12 +18749,11 @@ unsorted:
   - python2-django-picklefield 
   - python2-django-pipeline 
   - python2-django-pyscss 
-  - python2-django-registration 
   - python2-django-rest-framework-client 
   - python2-django-rest-framework-social-oauth2 
   - python2-django-seed 
   - python2-django-sekizai 
-  - python2-django-silk 
+  - python2-django-silk: [x86_64] 
   - python2-django-storages 
   - python2-django-tagging 
   - python2-django-tastypie 
@@ -19007,6 +19003,7 @@ unsorted:
   - python2-icalendar 
   - python2-identify 
   - python2-ifaddr 
+  - python2-ifconfig-parser 
   - python2-ijson 
   - python2-imageio 
   - python2-imagesize 
@@ -20289,6 +20286,7 @@ unsorted:
   - python2-zope.testrunner 
   - python2-zstandard 
   - python2-zstd 
+  - python2-zxcvbn 
   - python2-zypp-plugin 
   - python3-32bit: [x86_64] 
   - python3-3to2 
@@ -21096,6 +21094,7 @@ unsorted:
   - python3-django-compressor 
   - python3-django-contrib-comments 
   - python3-django-cors-headers 
+  - python3-django-coverage-plugin 
   - python3-django-crispy-forms 
   - python3-django-debreach 
   - python3-django-debug-toolbar 
@@ -21443,6 +21442,7 @@ unsorted:
   - python3-idle 
   - python3-idna_ssl 
   - python3-ifaddr 
+  - python3-ifconfig-parser 
   - python3-ijson 
   - python3-imagecodecs 
   - python3-imageio 
@@ -22979,6 +22979,7 @@ unsorted:
   - python3-zope.testrunner 
   - python3-zstandard 
   - python3-zstd 
+  - python3-zxcvbn 
   - pyzo 
   - pyzy-devel 
   - q4wine 
@@ -24576,8 +24577,6 @@ unsorted:
   - sil-mondulkiri-fonts 
   - sil-padauk-fonts 
   - simh 
-  - simple-ccsm 
-  - simple-ccsm-lang 
   - simple-mtpfs 
   - simple-obfs 
   - simple-obfs-doc 
