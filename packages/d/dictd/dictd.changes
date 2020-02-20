@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 19 11:15:40 UTC 2020 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 1.12.1+git.1579902294.78aa097:
+  * Replace inet_ntoa with gethostbyname for checking -lnsl library. It seems recent IssumOS has inet_ntoa in libc.
+  * test/dictzip_test.in: use @AWK@ instead of awk
+  * test/dictzip_test.in: avoid printing binary \0. This fixes test on some systems
+  * Fix test/dictzip_test regression test with broken busybox-1.30 AWK implementation. Use AWK set to ./configure script
+  * dictfmt: fix overlap of memcpy(3) (overlap of source and destination pointers) Use memmove(3) instead of memcpy(3). This fixes test fail on Linux/musl.
+  * Fix build on Solaris-10
+
+-------------------------------------------------------------------
 Wed Jun  5 15:29:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

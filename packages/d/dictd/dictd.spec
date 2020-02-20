@@ -1,7 +1,7 @@
 #
 # spec file for package dictd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dictd
-Version:        1.12.1+git.1555438032.190d8c6
+Version:        1.12.1+git.1579902294.78aa097
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
 License:        GPL-1.0-or-later AND Zlib AND MIT
@@ -35,8 +35,8 @@ BuildRequires:  gcc
 BuildRequires:  libdbi-devel
 BuildRequires:  libmaa-devel
 BuildRequires:  libtool
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(systemd)
 # libtool-ltdl-devel  byacc
 %if 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
