@@ -1735,4 +1735,12 @@
   + man-pages-somaxconn-default-value.patch</comment>
     <requestid>769510</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>f3ce48eb6b083e2591f59f15a402b8e8</srcmd5>
+    <version>5.05</version>
+    <time>1582206811</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774804</requestid>
+  </revision>
 </revisionlist>
