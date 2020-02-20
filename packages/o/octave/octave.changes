@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:17:38 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Avoid stealing SIGCHLD from QProcess::waitForFinished, which
+  causes the KDE file dialogs to hang up to the 30s default timeout.
+  This only happens when a samba server is installed locally.
+  Fixes https://savannah.gnu.org/bugs/?54607
+  * 0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
+- Add Xvfb build dependency for make check, several tests fail
+  otherwise.
+
+-------------------------------------------------------------------
 Sun Feb 16 15:22:39 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Readd makeinfo to the build dependencies, called by octaves

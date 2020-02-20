@@ -62,6 +62,8 @@ Source2:        octave.pc.in
 Source3:        octave.macros
 # PATCH-FIX-OPENSUSE
 Patch0:         octave_tools_pie.patch
+# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
+Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -112,6 +114,8 @@ BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
+# testing
+BuildRequires:  xorg-x11-Xvfb
 # boo#1095605
 Requires:       libQt5Sql5-sqlite
 Obsoletes:      octave-gui < 4.0
@@ -208,6 +212,7 @@ This package contains documentation for Octave.
 %prep
 %setup -q -n %{name}-%{src_ver}
 %patch0 -p1
+%patch1 -p1
 
 # define octave_blas macros
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}
@@ -272,6 +277,13 @@ echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 %check
 # Increase stack limits. OpenBLAS tests are run after some JVM test, and OpenBLAS
 # dgetrf is quite memory hungry, see https://github.com/xianyi/OpenBLAS/issues/246
+
+%define         X_display         ":98"
+export DISPLAY=%{X_display}
+Xvfb %{X_display} >& Xvfb.log &
+trap "kill $! || true" EXIT
+sleep 10
+
 echo "-Xss8m" >  scripts/java/java.opts
 make check
 

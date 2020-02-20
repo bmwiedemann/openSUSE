@@ -1,0 +1,50 @@
+From f80ba25e3df56e390ee0fa0fea17b2ac1748bfcf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 17 Feb 2020 14:12:25 +0100
+Subject: [PATCH] Disable signal handler thread, avoid duplicate signal
+ handlers
+
+octave::set_signal_handlers installs handlers for a bunch of signals,
+while the watcher thread waits for the same signals using sigwait.
+
+As a result, it is unspecified if the signal will be handled in
+interrupt context by the thread which installed the handlers, or by
+the dedicated thread.
+
+Using sigwait has the side effect of possibly also stealing any signals
+from a thread which installs a signal handler later. This is the case
+for e.g. QProcess::waitForFinished(), which will likely not receive
+a SIGCHLD and run in a timeout. This occurs for the native KDE file
+dialog, which will spawn external programs for the CIFS/SAMBA usershare
+integration iff a SAMBA server is installed locally.
+
+Note this somewhat reverses the problem for QProcess, as QProcess now
+steals the SIGCHLD from octaves main thread, although only for a short
+duration until the external process is finished. The latter is solved
+with the upcoming Qt 5.15 + Linux 5.3, which no longer relies on
+SIGCHLD: https://codereview.qt-project.org/c/qt/qtbase/+/108456/
+
+See also https://bugreports.qt.io/browse/QTBUG-56338
+
+Not using a dedicated signal handler thread removes a source of
+indeterminism, and also fixes https://savannah.gnu.org/bugs/?54607
+---
+ liboctave/wrappers/signal-wrappers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/liboctave/wrappers/signal-wrappers.c b/liboctave/wrappers/signal-wrappers.c
+index 90ba890..d838555 100644
+--- a/liboctave/wrappers/signal-wrappers.c
++++ b/liboctave/wrappers/signal-wrappers.c
+@@ -699,7 +699,7 @@ signal_watcher (void *arg)
+ void
+ octave_create_interrupt_watcher_thread (octave_sig_handler *handler)
+ {
+-#if ! defined (__WIN32__)
++#if 0
+   pthread_t sighandler_thread_id;
+ 
+   if (pthread_create (&sighandler_thread_id, 0, signal_watcher, handler))
+-- 
+2.25.0
+
