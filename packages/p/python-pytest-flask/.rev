@@ -7,4 +7,13 @@
     <comment> </comment>
     <requestid>717926</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1cae7bb9e5af4f8a13fc1c25b1fc93f6</srcmd5>
+    <version>0.15.1</version>
+    <time>1582207115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  * Fix ImportError with Werkzeug 1.0.0rc1 (#105).</comment>
+    <requestid>777572</requestid>
+  </revision>
 </revisionlist>
