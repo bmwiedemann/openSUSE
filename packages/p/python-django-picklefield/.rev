@@ -104,4 +104,13 @@
 - Enable tests</comment>
     <requestid>657151</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>70ea694463ffc3dc68674a49eb8f1d5d</srcmd5>
+    <version>2.1.1</version>
+    <time>1582207157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * no changelog</comment>
+    <requestid>777595</requestid>
+  </revision>
 </revisionlist>

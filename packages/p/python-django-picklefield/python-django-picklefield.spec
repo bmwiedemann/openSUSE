@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-picklefield
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-picklefield
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Pickled object field for Django
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/gintas/django-picklefield
+URL:            https://github.com/gintas/django-picklefield
 Source:         https://github.com/gintas/django-picklefield/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
