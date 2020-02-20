@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-registration
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
+%define skip_python2 1
 Name:           python-django-registration
-Version:        3.0.1
+Version:        3.1
 Release:        0
 Summary:        An extensible user-registration application for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ubernostrum/django-registration/
 Source:         https://files.pythonhosted.org/packages/source/d/django-registration/django-registration-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module confusable-homoglyphs >= 3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-mock
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Requires:       python-confusable-homoglyphs >= 3.0
 BuildArch:      noarch
 %python_subpackages
@@ -42,6 +42,7 @@ dependencies.
 
 %prep
 %setup -q -n django-registration-%{version}
+sed -i -e 's:~=:>=:g' setup.py
 
 %build
 %python_build

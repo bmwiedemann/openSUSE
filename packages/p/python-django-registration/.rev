@@ -129,4 +129,13 @@
     <comment> </comment>
     <requestid>705619</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5fd9db8f41ffa3956dae30f8ce6c4b5c</srcmd5>
+    <version>3.1</version>
+    <time>1582207166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1:
+  * no changelog provided</comment>
+    <requestid>777599</requestid>
+  </revision>
 </revisionlist>
