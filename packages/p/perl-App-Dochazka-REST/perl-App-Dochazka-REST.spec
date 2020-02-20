@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-REST
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Dochazka REST server
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/App-Dochazka-REST/
+URL:            http://search.cpan.org/dist/App-Dochazka-REST/
 Source0:        App-Dochazka-REST-0.558.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -84,12 +84,12 @@ Requires:       perl(Web::MREST::CLI) >= 0.276
 Requires:       perl(Web::Machine) >= 0.15
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  systemd
 BuildRequires:  perl(Starman)
+BuildRequires:  pkgconfig(systemd)
 Requires:       perl(Starman)
 Requires(pre): /usr/sbin/groupadd
 Requires(pre): /usr/sbin/useradd
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %pre
 getent group dochazka-rest >/dev/null || groupadd -r dochazka-rest
