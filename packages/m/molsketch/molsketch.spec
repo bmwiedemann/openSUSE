@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@ Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
-Url:            https://molsketch.sourceforge.net
+URL:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
@@ -135,7 +135,8 @@ done
 %endif
 
 %files
-%doc CHANGELOG COPYING
+%license COPYING
+%doc CHANGELOG
 %{_bindir}/%{binname}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/molsketch.*
