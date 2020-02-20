@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 10 08:44:31 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.05
+  * Newly documented interfaces in existing pages
+    clone.2
+        Add clone3() set_tid information
+        Document CLONE_CLEAR_SIGHAND
+    fcntl.2
+        Update manpage with new memfd F_SEAL_FUTURE_WRITE seal
+    memfd_create.2
+        Update manpage with new memfd F_SEAL_FUTURE_WRITE seal
+    loop.4
+        Document LOOP_SET_BLOCK_SIZE
+        Document LOOP_SET_DIRECT_IO
+    proc.5
+        Document /proc/sys/vm/unprivileged_userfaultfd
+- deleted patches
+  - man-pages-somaxconn-default-value.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Feb  3 10:36:58 UTC 2020 - pgajdos@suse.com
 
 - added patches

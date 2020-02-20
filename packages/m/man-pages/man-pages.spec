@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        5.04
+Version:        5.05
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -32,8 +32,6 @@ Patch3:         %{name}_gai.conf-reference.patch
 Patch5:         %{name}-tty_ioctl.patch
 # [bsc#1154701]
 Patch6:         man-pages-tcp_fack.patch
-# [bsc#1162464]
-Patch7:         man-pages-somaxconn-default-value.patch
 BuildRequires:  fdupes
 Supplements:    packageand(man:patterns-base-documentation)
 BuildArch:      noarch
@@ -55,7 +53,6 @@ only).
 %patch3
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 find -name "*.orig" | xargs rm -fv
 
 %build
