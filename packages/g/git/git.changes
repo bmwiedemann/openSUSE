@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 17 09:53:55 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.25.1:
+  * "git commit" now honors advise.statusHints
+  * various updates, bug fixes and documentation updates
+
+-------------------------------------------------------------------
 Tue Jan 14 14:22:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - git 2.25.0
