@@ -1,7 +1,7 @@
 #
 # spec file for package eolie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(pygobject-3.0)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0)
 Requires:       python3-cairo
 Requires:       python3-dateutil

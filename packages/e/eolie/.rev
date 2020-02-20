@@ -145,4 +145,14 @@
   * Bug fixes.</comment>
     <requestid>725380</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a6b0a77faf6cce00a9b89b0220d52a92</srcmd5>
+    <version>0.9.63</version>
+    <time>1582207005</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require pkgconfig(python3) at build time: It's needed
+  and it's not pulled by other build dependencies anymore.
+</comment>
+    <requestid>777415</requestid>
+  </revision>
 </revisionlist>
