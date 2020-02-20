@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-grappelli
-Version:        2.13.3
+Version:        2.14.1
 Release:        0
 Summary:        A skin for the Django Admin-Interface
 License:        BSD-2-Clause AND LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/sehmaschine/django-grappelli
 Source:         https://github.com/sehmaschine/django-grappelli/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}

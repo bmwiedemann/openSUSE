@@ -157,4 +157,13 @@
   * Improved: CSS field width with inline tabular.</comment>
     <requestid>761484</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>02f4719c17a1e751ab4a94065544e6c5</srcmd5>
+    <version>2.14.1</version>
+    <time>1582207132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1:
+  * First release of Grappelli which is compatible with Django 3.0.</comment>
+    <requestid>777584</requestid>
+  </revision>
 </revisionlist>
