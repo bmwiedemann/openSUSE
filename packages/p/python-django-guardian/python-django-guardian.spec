@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-guardian
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %define pypi_package_name django-guardian
 %define skip_python2 1
 Name:           python-%{pypi_package_name}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Implementation of per object permissions for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/lukaszb/django-guardian
 Source:         https://files.pythonhosted.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.0}

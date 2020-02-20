@@ -131,4 +131,13 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
   * Add tests for missing migrations</comment>
     <requestid>731218</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f79ce4a70a5b1517a0637adce1211f1a</srcmd5>
+    <version>2.2.0</version>
+    <time>1582207137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Django 3.x support</comment>
+    <requestid>777586</requestid>
+  </revision>
 </revisionlist>
