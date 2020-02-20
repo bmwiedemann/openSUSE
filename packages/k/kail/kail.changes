@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 10:02:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.14.2
+  - Capture logs from terminated containers
+- Update vendor.tar.gz
+
+-------------------------------------------------------------------
 Wed Jan 22 09:22:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.13.0

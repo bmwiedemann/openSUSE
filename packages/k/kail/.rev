@@ -36,4 +36,14 @@
 - Update vendor.tar.gz</comment>
     <requestid>766236</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4e0ade7988b1ad374a589e30b0c1726</srcmd5>
+    <version>0.14.2</version>
+    <time>1582209452</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.2
+  - Capture logs from terminated containers
+- Update vendor.tar.gz</comment>
+    <requestid>775119</requestid>
+  </revision>
 </revisionlist>
