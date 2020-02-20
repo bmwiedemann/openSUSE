@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_perl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -176,6 +176,19 @@ find %{buildroot}%{perl_vendorarch}/auto -name .packlist -print0 | xargs -0 -r r
 # remove perllocal.pod file
 rm -f %{buildroot}%{perl_archlib}/perllocal.pod
 %endif
+
+# taken from kdump/kdump.spec, thanks!
+# Compatibility cruft
+# there is no %%license prior to SLE12
+%if %{undefined _defaultlicensedir}
+%define license %doc
+%else
+# filesystem before SLE12 SP3 lacks /usr/share/licenses
+%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
+%define _defaultlicensedir %{_defaultdocdir}
+%endif
+%endif
+# End of compatibility cruft
 
 %files
 %license LICENSE
