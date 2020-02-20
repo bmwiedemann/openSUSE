@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-json-widget
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-json-widget
-Version:        0.2.0
+Version:        1.0.0
 Release:        0
 Summary:        Django JSON widget for editing the Django jsonfield
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jmrivas86/django-json-widget
 Source:         https://github.com/jmrivas86/django-json-widget/archive/v%{version}.tar.gz#/django-json-widget-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
+Requires:       python-future
 BuildArch:      noarch
 %python_subpackages
 

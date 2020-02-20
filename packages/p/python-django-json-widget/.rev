@@ -16,4 +16,16 @@
     <comment>- Use noun phrase in summary.</comment>
     <requestid>687598</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7bc77e3865c73450188377c7f568632</srcmd5>
+    <version>1.0.0</version>
+    <time>1582207153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Fixed static to work with CDN tools like django-storages
+  * Make widget more configurable
+  * Fixed an incompatibility with Python 2.7
+  * update jsoneditor to latest version</comment>
+    <requestid>777594</requestid>
+  </revision>
 </revisionlist>

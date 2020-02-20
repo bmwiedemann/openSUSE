@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:33:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.0:
+  * Fixed static to work with CDN tools like django-storages
+  * Make widget more configurable
+  * Fixed an incompatibility with Python 2.7
+  * update jsoneditor to latest version
+
+-------------------------------------------------------------------
 Wed Feb 20 17:36:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.
