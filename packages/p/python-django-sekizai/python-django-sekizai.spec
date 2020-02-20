@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-sekizai
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-sekizai
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Django Template Blocks with extra functionality
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ojii/django-sekizai
 Source:         https://github.com/divio/django-sekizai/archive/%{version}.tar.gz
 Patch0:         django-sekizai-pycodestyle.patch
@@ -52,10 +51,10 @@ Django Template Blocks with extra functionality
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py
+%python_exec setup.py test
 
 %files %{python_files}
-%license LICENSE
+%license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/*
 

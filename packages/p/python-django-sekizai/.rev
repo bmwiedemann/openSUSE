@@ -19,4 +19,19 @@
   * django-sekizai-django2.patch</comment>
     <requestid>705177</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88777e441993cb1d9ca8013f47287c84</srcmd5>
+    <version>1.1.0</version>
+    <time>1582207174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Added support for Django 3.0
+  * Added support for Python 3.8
+  * Extended test matrix
+  * Added isort and adapted imports
+  * Adapted code base to align with other supported addons
+  * Adapted README.rst instructions
+- Rebase patch django-sekizai-pycodestyle.patch</comment>
+    <requestid>777604</requestid>
+  </revision>
 </revisionlist>
