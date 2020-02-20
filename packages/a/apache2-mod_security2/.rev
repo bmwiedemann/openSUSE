@@ -208,4 +208,12 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
     <comment></comment>
     <requestid>561619</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c269528f3c75cf64683bac4def1601d4</srcmd5>
+    <version>2.9.2</version>
+    <time>1582207076</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>777581</requestid>
+  </revision>
 </revisionlist>

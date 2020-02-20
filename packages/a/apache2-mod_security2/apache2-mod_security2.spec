@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_security2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Web Application Firewall for apache httpd
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            http://www.modsecurity.org/
+URL:            http://www.modsecurity.org/
 Source:         https://www.modsecurity.org/tarball/%{version}/%{tarballname}.tar.gz
 Source1:        https://github.com/SpiderLabs/owasp-modsecurity-crs/tarball/master//SpiderLabs-owasp-modsecurity-crs-2.2.9-5-gebe8790.tar.gz
 Source2:        mod_security2.conf
@@ -109,15 +109,6 @@ mv %{buildroot}/%{usrsharedir}/rules/modsecurity_crs_10_setup.conf.example \
 #%check
 #make test
 #make test-regression
-
-set +x
-mkdir -p %{apache_test_module_dir}
-cp %{SOURCE2} %{apache_test_module_dir}/%{modname}-test.conf
-sed -i 's:%{_localstatedir}/log/apache2:/tmp:' %{apache_test_module_dir}/%{modname}-test.conf
-sed -i 's:%{_prefix}/share:%{buildroot}%{_prefix}/share:' %{apache_test_module_dir}/%{modname}-test.conf
-sed -i 's:%{_sysconfdir}/apache2:%{buildroot}%{_sysconfdir}/apache2:' %{apache_test_module_dir}/%{modname}-test.conf
-%apache_test_module_load -m security2 -i %{modname}-test.conf
-set -x
 
 %files
 %if %{suse_version} == 1110

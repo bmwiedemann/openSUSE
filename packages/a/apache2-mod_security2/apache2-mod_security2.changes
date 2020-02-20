@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:26:15 UTC 2020 - pgajdos@suse.com
+
+- removing %apache_test_* macros, do not test module just by
+  loading the module
+
+-------------------------------------------------------------------
 Fri Dec 29 00:09:38 UTC 2017 - jengelh@inai.de
 
 - Trim advertisement and filler wording from descriptions.
