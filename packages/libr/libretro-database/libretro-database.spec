@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-database
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-database
-Version:        1.8.2
+Version:        1.8.4
 Release:        0
 Summary:        RetroArch Database
 License:        MIT
@@ -26,8 +26,8 @@ URL:            https://github.com/libretro/%{name}
 
 Source:         https://github.com/libretro/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  make
 BuildRequires:  fdupes
+BuildRequires:  make
 BuildArch:      noarch
 
 Requires:       retroarch
