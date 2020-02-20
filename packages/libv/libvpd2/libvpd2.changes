@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:03:34 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Amended existing patch
+  udev-rules-don-t-generate-multiple-vpdupdate-events-.patch
+  with a single initial rule to avoid anything not /device/.
+  [bsc#1164300,
+   udev-rules-don-t-generate-multiple-vpdupdate-events-.patch]
+
+-------------------------------------------------------------------
 Tue Jan 28 15:59:32 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Avoid boot stalls due to excessive udev rule execution
