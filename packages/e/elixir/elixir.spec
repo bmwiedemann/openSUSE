@@ -1,7 +1,7 @@
 #
 # spec file for package elixir
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
 Group:          Development/Languages/Other
-Url:            http://elixir-lang.org
+URL:            http://elixir-lang.org
 Source0:        https://github.com/elixir-lang/elixir/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        macros.elixir
 BuildRequires:  gcc
