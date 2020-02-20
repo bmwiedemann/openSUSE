@@ -145,4 +145,14 @@
     <comment></comment>
     <requestid>658873</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>dc23f3773a13b3e350d5c677fde77743</srcmd5>
+    <version>2.2.12</version>
+    <time>1582207221</time>
+    <user>dimstar_suse</user>
+    <comment>- Use xz sources
+- Split lang package
+- Fetch keyring from savannah</comment>
+    <requestid>777653</requestid>
+  </revision>
 </revisionlist>

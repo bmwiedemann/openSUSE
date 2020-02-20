@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:15:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use xz sources
+- Split lang package
+- Fetch keyring from savannah
+
+-------------------------------------------------------------------
 Mon Dec 17 09:04:23 UTC 2018 - astieger@suse.com
 
 - indent 2.2.12:
