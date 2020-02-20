@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:56:48 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200219.a6acfd1:
+  * Adjust for new nginx container image
+  * Fix comment
+
+-------------------------------------------------------------------
 Mon Feb 17 21:06:26 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20200217.580c00f:

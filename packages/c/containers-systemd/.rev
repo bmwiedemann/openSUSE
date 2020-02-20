@@ -60,4 +60,14 @@
   * Add squid</comment>
     <requestid>775002</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b62d07e8ed2ee504812ec779624674b</srcmd5>
+    <version>0.0+git20200219.a6acfd1</version>
+    <time>1582206944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200219.a6acfd1:
+  * Adjust for new nginx container image
+  * Fix comment</comment>
+    <requestid>777380</requestid>
+  </revision>
 </revisionlist>
