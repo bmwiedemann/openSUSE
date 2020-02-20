@@ -209,6 +209,7 @@ Patch16:        missing-return.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
+Patch31:        DependOnVariableHelper.patch
 #
 # OpenJDK specific patches
 #
@@ -369,8 +370,8 @@ The OpenJDK %{featurever} runtime environment without audio and video support.
 
 %package devel
 Summary:        OpenJDK %{featurever} Development Environment
-# Require base package.
 Group:          Development/Languages/Java
+# Require base package.
 Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
@@ -504,6 +505,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch20 -p1
 
 %patch30 -p1
+%patch31 -p1
 
 # s390 build fixes
 
@@ -938,7 +940,7 @@ cp -a %{buildoutputdir}/images/docs %{buildroot}%{_javadocdir}/%{sdklnk}
 for s in 16 24 32 48 ; do
   install -D -p -m 644 \
     src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png \
-    %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/java-%{javaver}.png
+    %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/java-%{javaver}-openjdk.png
 done
 
 # Install desktop file.
@@ -1183,7 +1185,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libjawt.so
 %{_jvmdir}/%{sdkdir}/lib/libsplashscreen.so
 %dir %{_datadir}/icons/hicolor
-%{_datadir}/icons/hicolor/*x*/apps/java-%{javaver}.png
+%{_datadir}/icons/hicolor/*x*/apps/java-%{javaver}-openjdk.png
 
 %files headless
 %dir %{_jvmdir}

@@ -279,4 +279,12 @@
     <comment>Oracle January 2020 CPU</comment>
     <requestid>764569</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>3c15e18dd2d568b712ecc72bef3bdc50</srcmd5>
+    <version>11.0.6.0</version>
+    <time>1582206804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774720</requestid>
+  </revision>
 </revisionlist>

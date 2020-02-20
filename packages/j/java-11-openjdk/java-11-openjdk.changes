@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:46:21 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- DependOnVariableHelper.patch: Fix DependOnVariableHelper for make 4.3
+
+-------------------------------------------------------------------
+Sun Feb  2 22:35:55 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Install java icons not only versioned, but also postfixed by the
+  "openjdk", in order to prevent install conflicts with other
+  jdk 11 flavours.
+
+-------------------------------------------------------------------
 Wed Jan 15 07:36:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.6-10 (January 2020 CPU,
