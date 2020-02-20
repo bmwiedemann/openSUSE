@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:10:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4.4:
+  * minor fixes
+- Remove merged patch python-django-gravatar2-fix-testsuite.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 10:47:09 UTC 2019 - pgajdos@suse.com
 
 - call spec-cleaner

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-gravatar2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-gravatar2
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Gravatar Support for Django
 License:        MIT
 URL:            https://github.com/twaddington/django-gravatar
-Source:         https://github.com/twaddington/django-gravatar/archive/1.4.2.tar.gz
-# https://github.com/twaddington/django-gravatar/issues/30
-Patch0:         python-django-gravatar2-fix-testsuite.patch
+Source:         https://files.pythonhosted.org/packages/source/d/django-gravatar2/django-gravatar2-%{version}.tar.gz
 # skip test which wants to read from https://secure.gravatar.com/avatar/
 Patch1:         python-django-gravatar2-skip-online-test.patch
 BuildRequires:  %{python_module setuptools}
@@ -44,8 +42,7 @@ BuildRequires:  %{pythons}
 Essential Gravatar support for Django. Features helper methods, templatetags and a full test suite!
 
 %prep
-%setup -q -n django-gravatar-%{version}
-%patch0 -p1
+%setup -q -n django-gravatar2-%{version}
 %patch1 -p1
 
 %build
