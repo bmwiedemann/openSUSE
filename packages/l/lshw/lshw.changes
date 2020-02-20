@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:15:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Disable LTO as it causes random build failures on some
+  architectures (bsc#1164297)
+
+-------------------------------------------------------------------
 Fri Feb  7 10:50:13 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.

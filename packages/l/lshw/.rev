@@ -121,4 +121,13 @@ factory)</comment>
     <comment></comment>
     <requestid>772322</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>1ec43fc9b9775ad1a6181ecd18019544</srcmd5>
+    <version>B.02.18+git.20190613</version>
+    <time>1582207182</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO as it causes random build failures on some
+  architectures (bsc#1164297)</comment>
+    <requestid>777588</requestid>
+  </revision>
 </revisionlist>

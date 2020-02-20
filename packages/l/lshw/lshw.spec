@@ -82,6 +82,7 @@ http://www.ezix.org/software/lshw.html
 %autosetup -p1
 
 %build
+%define _lto_cflags %{nil}
 %make_build \
   SBINDIR="%{_sbindir}" \
   RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing" \
