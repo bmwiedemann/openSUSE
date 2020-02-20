@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,10 @@ Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/mike-fabian/ibus-table/
+URL:            https://github.com/mike-fabian/ibus-table/
 Source:         https://github.com/mike-fabian/ibus-table/releases/download/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE ibus-table_fix_other_tables_compile_error.patch bnc#1160315 qzhao@suse.com -- Fix ibus other tables compile error.
+Patch0:         ibus-table_fix_other_tables_compile_error.patch
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -49,6 +51,7 @@ This package contains the files required for the development of ibus-table.
 
 %prep
 %setup -q
+%patch0 -p1
 chmod -x AUTHORS COPYING README
 
 %build

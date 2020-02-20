@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 12:08:01 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Add ibus-table_fix_other_tables_compile_error.patch: Fix ibus 
+  other tables compile errors(bnc#1160315).
+
+-------------------------------------------------------------------
 Sat Oct 13 13:40:35 UTC 2018 - hillwood@opensuse.org
 
 - Update version to 1.9.21
