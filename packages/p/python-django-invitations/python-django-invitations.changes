@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:25:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.9.3:
+  * support new django
+- Remove patch django20.patch
+
+-------------------------------------------------------------------
 Wed Feb  5 14:53:08 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - disable py2 build as deps are only for python 3 

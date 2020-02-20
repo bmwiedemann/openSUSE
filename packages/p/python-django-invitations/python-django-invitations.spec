@@ -19,14 +19,12 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-invitations
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Generic invitations app with support for Django-allauth
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/bee-keeper/django-invitations
 Source:         https://github.com/bee-keeper/django-invitations/archive/%{version}.tar.gz
-Patch0:         django20.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module freezegun >= 0.3.5}
@@ -46,7 +44,6 @@ Generic invitations app with support for Django-allauth.
 
 %prep
 %setup -q -n django-invitations-%{version}
-%patch0 -p1
 rm tox.ini
 
 %build
@@ -58,8 +55,7 @@ rm tox.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_auth https://github.com/pytest-dev/pytest-django/issues/341
-%pytest tests/basic/tests.py --ds=test_settings -k 'not test_auth'
+%pytest tests/basic/tests.py --ds=test_settings
 %pytest tests/allauth/test_allauth.py --ds=test_allauth_settings
 
 %files %{python_files}

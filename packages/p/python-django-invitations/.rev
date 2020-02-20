@@ -23,4 +23,14 @@
     <comment>- disable py2 build as deps are only for python 3</comment>
     <requestid>770316</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6506b4bc616fec0995aab4509b1e9641</srcmd5>
+    <version>1.9.3</version>
+    <time>1582207149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.3:
+  * support new django
+- Remove patch django20.patch</comment>
+    <requestid>777591</requestid>
+  </revision>
 </revisionlist>
