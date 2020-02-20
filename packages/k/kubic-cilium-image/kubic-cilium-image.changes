@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 10:20:18 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove dependency on kubic-project/container-images Github
+  project - it's not used anymore.
+- Remove dependency on boringssl package - cilium-proxy is now
+  using OpenSSL instead.
+
+-------------------------------------------------------------------
 Tue Mar 26 13:09:47 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
 
 - Commit 4e60fe4 by Michal Rostecki mrostecki@opensuse.org 
