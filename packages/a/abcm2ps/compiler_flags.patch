@@ -1,21 +1,21 @@
-diff -urEbw abcm2ps-8.14.6/configure abcm2ps-8.14.6.new/configure
---- abcm2ps-8.14.6/configure	2019-11-05 14:02:00.000000000 +0100
-+++ abcm2ps-8.14.6.new/configure	2019-11-08 11:51:14.147405009 +0100
-@@ -5,7 +5,7 @@
- VDATE=2019-11-05
+diff -urEbw abcm2ps-8.14.7/configure abcm2ps-8.14.7.new/configure
+--- abcm2ps-8.14.7/configure	2020-02-19 14:00:51.000000000 +0100
++++ abcm2ps-8.14.7.new/configure	2020-02-19 14:37:35.365351023 +0100
+@@ -6,7 +6,7 @@
  
  CC=gcc
+ PKG_CONFIG=pkg-config
 -CFLAGS="-g -O2 -Wall -pipe"
 +CFLAGS="$RPM_OPT_FLAGS -pipe"
  
  srcdir=.
  prefix=/usr/local
-@@ -60,8 +60,8 @@
- if which pkg-config > /dev/null ; then
- 	if pkg-config --exists freetype2 ; then
- 		if pkg-config --exists pangocairo ; then
--			CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `pkg-config pango cairo freetype2 --cflags`"
--			LDLIBS="$LDLIBS `pkg-config pangocairo pangoft2 freetype2 --libs`"
+@@ -61,8 +61,8 @@
+ if which $PKG_CONFIG > /dev/null ; then
+ 	if $PKG_CONFIG --exists freetype2 ; then
+ 		if $PKG_CONFIG --exists pangocairo ; then
+-			CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `$PKG_CONFIG pango cairo freetype2 --cflags`"
+-			LDLIBS="$LDLIBS `$PKG_CONFIG pangocairo pangoft2 freetype2 --libs`"
 +			CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `pkg-config pango cairo gobject-2.0 freetype2 --cflags`"
 +			LDLIBS="$LDLIBS `pkg-config pangocairo pangoft2 gobject-2.0 freetype2 --libs`"
  		else

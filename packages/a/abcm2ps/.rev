@@ -134,4 +134,23 @@
   * put the upper tuplets a bit closer to the notes</comment>
     <requestid>746544</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7e500991c4d2f6b3079be087b979cca6</srcmd5>
+    <version>8.14.7</version>
+    <time>1582206981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.14.7:
+  * crash when %%score with no common voices and next notes with beams
+  * crash when new staff system with only new voices
+  * crash when slash found before a bar and not a (deprecated) measure repeat
+  * crash when %%staves at end of tune and lack of music in the last voice
+  * bad parsing of the note durations
+  * clash of some ties with dots
+  * bad check of the number of measures in Z (multi-rest)
+  * new improved coda sign
+  * Make pkg-config substitutable for cross-compilations
+  * add option tieheight factor to tie height like in slurheight
+  * add some decorations from v2.2 standard</comment>
+    <requestid>777343</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:35:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.7:
+  * crash when %%score with no common voices and next notes with beams
+  * crash when new staff system with only new voices
+  * crash when slash found before a bar and not a (deprecated) measure repeat
+  * crash when %%staves at end of tune and lack of music in the last voice
+  * bad parsing of the note durations
+  * clash of some ties with dots
+  * bad check of the number of measures in Z (multi-rest)
+  * new improved coda sign
+  * Make pkg-config substitutable for cross-compilations
+  * add option tieheight factor to tie height like in slurheight
+  * add some decorations from v2.2 standard
+
+-------------------------------------------------------------------
 Fri Nov  8 10:52:12 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update compiler_flags.patch
