@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:24:30 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1163959-PiDxeS3BootScriptLib-fix-numeric-truncation.patch
+  to fix the numeric truncation to avoid the potential memory
+  corruption (bsc#1163959, CVE-2019-14563)
+
+-------------------------------------------------------------------
 Mon Feb  3 02:14:23 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Build the unified firmware with preloaded keys for backward
