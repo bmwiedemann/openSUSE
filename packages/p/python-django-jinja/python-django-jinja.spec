@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-jinja
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-jinja
-Version:        2.4.1
+Version:        2.6.0
 Release:        0
 Summary:        Jinja2 templating language integrated in Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/niwinz/django-jinja
 Source:         https://github.com/niwinz/django-jinja/archive/%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.8}
+BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Jinja2 >= 2.5}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-mock
-Requires:       python-Django >= 1.8
+Requires:       python-Django >= 1.11
 Requires:       python-Jinja2 >= 2.5
 BuildArch:      noarch
 %python_subpackages
