@@ -367,4 +367,13 @@ SPDX format (forwarded request 109060 from babelworx)</comment>
 Should be handled together with sr#769061</comment>
     <requestid>769067</requestid>
   </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>3e8d68346c7f478dd48aa5526298bcea</srcmd5>
+    <version>0.3.14</version>
+    <time>1582206929</time>
+    <user>dimstar_suse</user>
+    <comment>- leave creation of /var/lib/tpm to the new system-user-tss package. Otherwise
+  we're getting conflicts in packages depending on trousers (bsc#1162360).</comment>
+    <requestid>777248</requestid>
+  </revision>
 </revisionlist>

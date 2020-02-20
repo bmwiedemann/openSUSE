@@ -94,9 +94,7 @@ make %{?_smp_mflags}
 
 %install
 %define trousers_data %{buildroot}%{_datadir}/%{name}
-%define trousers_state %{buildroot}%{tpmstatedir}
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
-mkdir -p %{trousers_state}
 install -D -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/tcsd.service
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rctcsd
 # these files can be used to fake trousers ownership of a TPM if the ownership
@@ -168,7 +166,6 @@ done
 %doc README README.selinux AUTHORS ChangeLog LICENSE NICETOHAVES TODO doc/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
-%attr(750,tss,tss) %{tpmstatedir}
 %{_datadir}/%{name}
 %{_sbindir}/tcsd
 %{_sbindir}/rctcsd
