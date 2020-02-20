@@ -34,4 +34,13 @@
   * CKEditor 4.13</comment>
     <requestid>761493</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a22b64b44ccec8f4a028b0b82f6c61ca</srcmd5>
+    <version>5.9.0</version>
+    <time>1582207080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.0:
+  * ckeditor update</comment>
+    <requestid>777575</requestid>
+  </revision>
 </revisionlist>
