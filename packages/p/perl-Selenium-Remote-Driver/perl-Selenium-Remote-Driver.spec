@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Selenium-Remote-Driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Selenium-Remote-Driver
-Version:        1.36
+Version:        1.37
 Release:        0
 %define cpan_name Selenium-Remote-Driver
 Summary:        Perl Client for Selenium Remote Driver
@@ -91,7 +91,7 @@ and started the Selenium Server (Selenium Server is a Java application).
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's,!/bin/env perl,/usr/bin/perl,' driver-example.pl
 # MANUAL END

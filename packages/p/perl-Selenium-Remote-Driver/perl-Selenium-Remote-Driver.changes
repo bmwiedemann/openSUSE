@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 19 03:15:58 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.37
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.37  02-17-2019 TEODESIAN
+          [BUG FIXES]
+          - obey the auto_close flag in the direct drivers
+
+-------------------------------------------------------------------
 Sat Nov  9 10:27:41 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.36
