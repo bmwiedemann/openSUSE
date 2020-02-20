@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 12:44:03 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200219.c0ab2c6b:
+  * stagingapi: replace staging project URL to staging workflow on adi project
+  * ttm: ignore parallel_failed jobs, but still list as failed
+
+-------------------------------------------------------------------
 Mon Feb 17 14:42:10 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200217.a9f37804:
