@@ -181,4 +181,20 @@
 - wasi_compile_flags.patch: fix header inclusions in uvwasi dependency</comment>
     <requestid>774096</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>11031bdaa54a4c9bd447b161d9e4872c</srcmd5>
+    <version>12.16.1</version>
+    <time>1582206955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LTS release 12.16.1:
+  * Reverted regressions from 12.16.0
+    + accidental unflagging of self resolving modules - it now requires
+      --experimental-modules flag to enable.
+    + process cleanup changes introduced WASM-Related assertion
+    + use of largepages runtime option introduced linking failure
+    + async_hooks was causing an exception when handling errors
+    + enumerable Read-Only property on EventEmitter breaks @types/extend
+    + exceptions in the HTTP parser were not emitting as an uncaughtException</comment>
+    <requestid>777344</requestid>
+  </revision>
 </revisionlist>

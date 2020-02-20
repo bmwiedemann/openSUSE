@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:41:50 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.16.1:
+  * Reverted regressions from 12.16.0
+    + accidental unflagging of self resolving modules - it now requires
+      --experimental-modules flag to enable.
+    + process cleanup changes introduced WASM-Related assertion
+    + use of largepages runtime option introduced linking failure
+    + async_hooks was causing an exception when handling errors
+    + enumerable Read-Only property on EventEmitter breaks @types/extend
+    + exceptions in the HTTP parser were not emitting as an uncaughtException
+
+-------------------------------------------------------------------
 Wed Feb 12 10:12:13 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS release 12.16.0:

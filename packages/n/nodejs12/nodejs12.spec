@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.16.0
+Version:        12.16.1
 Release:        0
 
 %define node_version_number 12
