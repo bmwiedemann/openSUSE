@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:43:05 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- updated to 0.155
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Tue Feb 12 10:30:20 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- cpanspec.yml: ship /var/log/dochazka-www instead of /var/log/dochazka 
+
+-------------------------------------------------------------------
+Fri Oct 20 20:45:06 UTC 2017 - ncutler@suse.com
+
+- updated to 0.155
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Oct 19 21:38:31 UTC 2017 - ncutler@suse.com
+
+- updated to 0.154
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Oct 19 07:37:13 UTC 2017 - ncutler@suse.com
+
+- updated to 0.153
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Oct 16 20:20:52 UTC 2017 - ncutler@suse.com
+
+- updated to 0.152
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Sat Nov  5 21:41:16 UTC 2016 - ncutler@suse.com
+
+- updated to 0.142
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Tue Nov  1 14:40:55 UTC 2016 - ncutler@suse.com
+
+- updated to 0.141
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Wed Sep 28 22:17:16 UTC 2016 - ncutler@suse.com
+
+- updated to 0.140
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Wed Sep 28 17:17:03 UTC 2016 - ncutler@suse.com
+
+- updated to 0.139
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Tue Sep 27 14:59:49 UTC 2016 - ncutler@suse.com
+
+- updated to 0.138
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Sun Sep 25 19:47:41 UTC 2016 - ncutler@suse.com
+
+- updated to 0.137
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Sun Sep 25 10:04:13 UTC 2016 - ncutler@suse.com
+
+- updated to 0.136
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Sun Sep 25 08:01:39 UTC 2016 - ncutler@suse.com
+
+- updated to 0.135
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep 19 10:49:00 UTC 2016 - ncutler@suse.com
+
+- updated to 0.134
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Sep 15 22:25:26 UTC 2016 - ncutler@suse.com
+
+- updated to 0.133
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Sep 15 11:41:30 UTC 2016 - ncutler@suse.com
+
+- updated to 0.132
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Sep 15 06:12:22 UTC 2016 - tampakrap@opensuse.org
+
+- add example and empty config files
+
+-------------------------------------------------------------------
+Mon Sep 12 18:43:49 UTC 2016 - ncutler@suse.com
+
+- updated to 0.131
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep 12 10:00:01 UTC 2016 - ncutler@suse.com
+
+- updated to 0.130
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep 12 09:28:34 UTC 2016 - tampakrap@opensuse.org
+
+- create dochazka-www user, and also its homedir
+- create logdir
+- install the unit service file
+
+-------------------------------------------------------------------
+Mon Sep 12 08:27:17 UTC 2016 - ncutler@suse.com
+
+- updated to 0.129
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Mon Sep 12 08:26:10 UTC 2016 - ncutler@suse.com
+
+- updated to 0.128
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
+Thu Sep  8 11:51:08 UTC 2016 - tampakrap@opensuse.org
+
+- updated to 0.126
+   see /usr/share/doc/packages/perl-App-Dochazka-WWW/Changes
+
+-------------------------------------------------------------------
 Thu Jul 30 20:51:32 UTC 2015 - ncutler@suse.com
 
 - git rid of App::Dochazka::REST dependency 
