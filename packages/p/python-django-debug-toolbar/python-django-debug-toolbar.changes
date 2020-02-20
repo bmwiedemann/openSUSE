@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 20 07:57:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2:
+  * Removed support for end of life Django 2.0 and 2.1.
+  * Added support for Python 3.8.
+  * Add locals() option for sql panel.
+  * Added support for Django 3.0
+
+-------------------------------------------------------------------
 Tue Jan  7 09:27:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1:

@@ -136,4 +136,16 @@ Too many small improvements and cleanups to list them all.
   * Verified compatibility with the upcoming Django 3.0 (at the time of writing).</comment>
     <requestid>761487</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d40a2aa432ed27e3ebba601816d6d466</srcmd5>
+    <version>2.2</version>
+    <time>1582207096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2:
+  * Removed support for end of life Django 2.0 and 2.1.
+  * Added support for Python 3.8.
+  * Add locals() option for sql panel.
+  * Added support for Django 3.0</comment>
+    <requestid>777579</requestid>
+  </revision>
 </revisionlist>
