@@ -54,4 +54,13 @@
   gh#bw2/ConfigArgParse#146</comment>
     <requestid>750115</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>31ae996b736f3cf345fbb57e2a0384ff</srcmd5>
+    <version>1.0</version>
+    <time>1582207231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.
+  * Dash supported as first char of argument</comment>
+    <requestid>777654</requestid>
+  </revision>
 </revisionlist>

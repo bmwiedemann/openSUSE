@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:25:43 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.
+  * Dash supported as first char of argument
+
+-------------------------------------------------------------------
 Thu Nov 21 15:24:10 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - When setting the environmental variable COLUMNS=80
