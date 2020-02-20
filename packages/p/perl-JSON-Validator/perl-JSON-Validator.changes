@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 19 03:10:52 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.23
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.23 2020-02-19T09:37:44+0900
+   - Using List::Util::uniq() instead of JSON::Validator::Util::uniq #198
+
+-------------------------------------------------------------------
 Sat Feb 15 03:10:34 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.22

@@ -17,7 +17,7 @@
 
 
 Name:           perl-JSON-Validator
-Version:        3.22
+Version:        3.23
 Release:        0
 %define cpan_name JSON-Validator
 Summary:        Validate data against a JSON schema
@@ -30,16 +30,18 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Mojolicious) >= 7.28
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 1.30
+Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Mojolicious) >= 7.28
 %{perl_requires}
 
 %description
 JSON::Validator is a data structure validation library based around at
 https://json-schema.org/. This module can be used directly with a JSON
-schema or you can use the elegant DSL schema-builder JSON::Validator::joi
+schema or you can use the elegant DSL schema-builder JSON::Validator::Joi
 to define the schema programmatically.
 
 %prep
