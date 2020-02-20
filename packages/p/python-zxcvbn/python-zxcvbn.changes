@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Feb 20 11:29:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Really run all the tests using pytest
+
+-------------------------------------------------------------------
+Thu Feb 20 10:54:22 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- initial import of release 4.4.28
