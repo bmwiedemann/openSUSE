@@ -171,4 +171,14 @@ reports this as a valid minimum, the guest won't start.
     <comment></comment>
     <requestid>757739</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3fc5aceaf70bd7e7a7091d89df7638be</srcmd5>
+    <version>2.7</version>
+    <time>1582207029</time>
+    <user>dimstar_suse</user>
+    <comment>- RemoteBox-2.6_fix-env-script-interpreter.patch remamed for to
+  RemoteBox-2.7_fix-env-script-interpreter.patch.
+</comment>
+    <requestid>777422</requestid>
+  </revision>
 </revisionlist>

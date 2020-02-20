@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later
 URL:            http://knobgoblin.org.uk
 Source0:        http://knobgoblin.org.uk/downloads/%{name}-%{version}.tar.bz2
-Patch0:         RemoteBox-2.6_fix-env-script-interpreter.patch
+Patch0:         RemoteBox-2.7_fix-env-script-interpreter.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 Requires:       freerdp
