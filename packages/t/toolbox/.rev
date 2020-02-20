@@ -16,4 +16,17 @@
   * Make default shell configureable, use /bin/bash as default</comment>
     <requestid>738325</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aec0a10ef51ae5c11835f536bd2587b7</srcmd5>
+    <version>1.0+git20200217.cd18bfb</version>
+    <time>1582206816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200217.cd18bfb:
+  * Multiple toolboxes, with different names
+  * Configure `sudo` access for an user toolbox
+  * Correctly setup the user
+  * Add -u|--user parameter
+  * Handle arguments with 'getopt'</comment>
+    <requestid>774805</requestid>
+  </revision>
 </revisionlist>

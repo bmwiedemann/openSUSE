@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 17 09:07:33 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20200217.cd18bfb:
+  * Multiple toolboxes, with different names
+  * Configure `sudo` access for an user toolbox
+  * Correctly setup the user
+  * Add -u|--user parameter
+  * Handle arguments with 'getopt'
+
+-------------------------------------------------------------------
 Mon Oct 14 12:40:00 UTC 2019 - kukuk@suse.com
 
 - Update to version 1.0+git20191014.3034fbc:

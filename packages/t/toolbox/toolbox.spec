@@ -1,7 +1,7 @@
 #
 # spec file for package toolbox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           toolbox
-Version:        1.0+git20191014.3034fbc
+Version:        1.0+git20200217.cd18bfb
 Release:        0
 Summary:        Script to start a toolbox container for system debugging
 License:        Apache-2.0
