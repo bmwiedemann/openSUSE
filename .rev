@@ -17,4 +17,17 @@
 - Remove merged django2.patch</comment>
     <requestid>704169</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>27637eddc17e9add69c90c9083531d27</srcmd5>
+    <version>1.0.0</version>
+    <time>1582207086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Added isort and adapted imports
+  * Adapted code base to align with other supported addons
+  * Adapted README.rst instructions
+  * Added support for Django 3.0
+  * Added support for Python 3.8</comment>
+    <requestid>777578</requestid>
+  </revision>
 </revisionlist>
