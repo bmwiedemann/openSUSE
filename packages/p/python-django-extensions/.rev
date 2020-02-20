@@ -82,4 +82,13 @@
 </comment>
     <requestid>765870</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a5d06f2a441ce504b4959b8ff5bd3b5</srcmd5>
+    <version>2.2.8</version>
+    <time>1582207103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.8:
+  * Various small fixes</comment>
+    <requestid>777580</requestid>
+  </revision>
 </revisionlist>

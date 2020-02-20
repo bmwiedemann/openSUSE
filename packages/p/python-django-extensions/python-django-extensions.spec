@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-extensions
-Version:        2.2.5
+Version:        2.2.8
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause
@@ -60,44 +60,26 @@ http://github.com/django-extensions/django-extensions
 %prep
 %setup -q -n django-extensions-%{version}
 
-# See https://github.com/django-extensions/django-extensions/issues/1123
-rm tests/test_encrypted_fields.py
-
-# pip checks not possible in rpmbuild,
-# and also not particularly useful when packaged.
-rm tests/management/commands/test_pipchecker.py
-
-# tests are completely borked and the keyczar module is deprecated
-#rm tests/db/fields/test_encrypted.py
-
 %build
 export LANG=en_US.UTF-8
 %python_build
 
 %install
+export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
-
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-# It is not possible to use %%pytest here, as it expands to py.test-3.7
-# which causes /usr/bin to be in the PYTHONPATH.
-# django_extensions/management/commands/mail_debug.py imports smtpd,
-# and python2-base adds smtpd.py to /usr/bin, so the import fails on
-# Python 3.
-
-python2 -m pytest
-%endif
-%if 0%{?have_python3} && ! 0%{?skip_python3}
 # Test collection exception ValueError: wrapper loop when unwrapping call
-python3 -m pytest \
+# test_should_highlight_python_syntax_with_name - breaks ordering on py versions, fragile 
+%python_expand $python -m pytest -v \
     --ignore tests/test_logging_filters.py \
     --ignore tests/management/commands/test_reset_db.py \
-    --ignore tests/management/commands/test_reset_schema.py
-%endif
+    --ignore tests/management/commands/test_reset_schema.py \
+    --ignore tests/management/commands/test_pipchecker.py \
+    -k 'not test_should_highlight_python_syntax_with_name'
 
 %files %{python_files}
 %license LICENSE
