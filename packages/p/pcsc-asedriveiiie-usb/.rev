@@ -138,4 +138,12 @@ responds perhaps dropped.
   pcscd-group-no-longer-exist.patch)</comment>
     <requestid>445653</requestid>
   </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>ab4aaa955bb8fe35cdccd502ef33fa67</srcmd5>
+    <version>3.7</version>
+    <time>1582207266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777675</requestid>
+  </revision>
 </revisionlist>

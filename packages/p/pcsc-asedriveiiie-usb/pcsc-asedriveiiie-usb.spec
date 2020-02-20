@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-asedriveiiie-usb
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%if %( echo `rpm -q --queryformat %%{version} udev` ) > 190
+%if %( pkg-config --modversion udev ) > 190
 %define _udevprefix /usr/lib
 %else
 %define _udevprefix /lib
@@ -29,8 +29,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Security
 Version:        3.7
 Release:        0
-%define tar_version %(echo %{version} | tr . -)
-Url:            http://www.asedrive.com/downloads
+%define tar_version 3-7
+URL:            http://www.asedrive.com/downloads
 Source:         %{_name}-%{tar_version}-tar.bz2
 # PATCH-FIX-OPENSUSE asedriveiiie-usb-destdir.patch sbrabec@suse.cz -- Fix destdir installation.
 Patch1:         asedriveiiie-usb-destdir.patch
@@ -40,7 +40,7 @@ BuildRequires:  libusb-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
 # for directory ownership
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 Requires:       pcsc-lite
 Supplements:    modalias(usb:v0DC3p0802d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v0DC3p1104d*dc*dsc*dp*ic*isc*ip*)
