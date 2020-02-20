@@ -19,12 +19,11 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-randomly
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            https://github.com/adamchainz/pytest-randomly
+URL:            https://github.com/pytest-dev/pytest-randomly
 Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module setuptools}

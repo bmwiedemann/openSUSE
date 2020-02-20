@@ -56,4 +56,13 @@
   * Update Python support to 3.5-3.8.</comment>
     <requestid>761147</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4f1ae310f4705187c8a4a25ca891979</srcmd5>
+    <version>3.2.1</version>
+    <time>1582207073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1:
+  * Update MANIFEST.in so tests are included in the sdist tarball again.</comment>
+    <requestid>777569</requestid>
+  </revision>
 </revisionlist>
