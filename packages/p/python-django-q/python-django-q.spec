@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-q
-Version:        1.0.2
+Version:        1.2.1
 Release:        0
 Summary:        Multiprocessing Distributed Task Queue for Django
 License:        MIT
@@ -62,8 +62,8 @@ This package provides a multiprocessing distributed task queue for Django.
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/django_q/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -r %{buildroot}%{$python_sitelib}/django_q/tests
 
 %check
 # start redis server

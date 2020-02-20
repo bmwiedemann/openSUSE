@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:38:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.1:
+  * Convert to f-strings #415 (Koed00)
+  * Run task at a specific time #407
+  * Question about Multiple Clusters #401
+  * Ability to use a Redis URI #402
+  * Latest versions of Arrow will break django-q #377
+  * Timeout override is lost when sent to broker #332
+  * "InterfaceError: connection already closed" being raised when a test is run #326
+  * scheduler creating duplicate tasks in multiple cluster environment #231
+
+-------------------------------------------------------------------
 Mon Jan 13 14:33:00 UTC 2020 - pgajdos@suse.com
 
 - be able to test also for 15
