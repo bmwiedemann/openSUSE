@@ -45,7 +45,7 @@ BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view

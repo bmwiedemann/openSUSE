@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 20:46:57 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Extend the conditional for "BuildRequires: rsvg-convert" to cover
+  Leap 15.2 as well, it has a newer librsvg
+
+-------------------------------------------------------------------
 Fri Feb  7 08:38:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
