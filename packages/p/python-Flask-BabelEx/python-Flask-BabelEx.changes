@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:31:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.4:
+  * Werkzeug 1.0.0 fixes
+
+-------------------------------------------------------------------
 Wed Oct 24 15:20:27 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Fix grammar in description.

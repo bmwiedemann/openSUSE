@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>644502</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9c62b084ac99f29a152042b8fb395d2</srcmd5>
+    <version>0.9.4</version>
+    <time>1582207205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  * Werkzeug 1.0.0 fixes</comment>
+    <requestid>777620</requestid>
+  </revision>
 </revisionlist>

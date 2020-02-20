@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-BabelEx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
-%bcond_without test
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without test
 Name:           python-Flask-BabelEx
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
-License:        BSD-3-Clause
 Summary:        i18n/l10n support for Flask applications
-Url:            http://github.com/mrjoes/flask-babelex
-Group:          Development/Languages/Python
+License:        BSD-3-Clause
+URL:            https://github.com/mrjoes/flask-babelex
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-BabelEx/Flask-BabelEx-%{version}.tar.gz
 Patch0:         remove-failing-tests.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Babel >= 1.0
+Requires:       python-Flask
+Requires:       python-Jinja2 >= 2.5
+Requires:       python-speaklater >= 1.2
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Babel >= 1.0}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Jinja2 >= 2.5}
 BuildRequires:  %{python_module speaklater >= 1.2}
 %endif
-BuildRequires:  fdupes
-Requires:       python-Babel >= 1.0
-Requires:       python-Flask
-Requires:       python-Jinja2 >= 2.5
-Requires:       python-speaklater >= 1.2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
