@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:57:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.2:
+  * Fix user-specified locale not being used
+  * Pep8 cleanup
+  * UUID primary key support
+  * More verbose logging in seed command
+  * fix for faker seed_instance
+  * Django 2.2, 3.0 added to build matrix
+  * Python 3.6, 3.7, 3.8 added to build matrix
+
+-------------------------------------------------------------------
 Tue Mar 26 12:23:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

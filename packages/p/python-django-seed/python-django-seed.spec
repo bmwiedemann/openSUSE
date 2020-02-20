@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-seed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,24 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-seed
-Version:        0.1.9
+Version:        0.2.2
 Release:        0
 Summary:        Django project fake data seeder
 License:        MIT
-Group:          Development/Languages/Python
-Url:            http://github.com/brobin/django-seed
+URL:            https://github.com/brobin/django-seed
 Source:         https://files.pythonhosted.org/packages/source/d/django-seed/django-seed-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/Brobin/django-seed/master/runtests.py
-Source2:        https://raw.githubusercontent.com/Brobin/django-seed/master/LICENSE
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 1.11
+Requires:       python-Faker >= 0.7.7
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Faker >= 0.7.7}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module django-nose}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Django >= 1.11
-Requires:       python-Faker >= 0.7.7
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,7 +44,6 @@ A module to seed Django projects with fake data.
 %prep
 %setup -q -n django-seed-%{version}
 sed -i 's/fake-factory/Faker/' setup.py
-cp %{SOURCE1} %{SOURCE2} .
 
 %build
 %python_build
