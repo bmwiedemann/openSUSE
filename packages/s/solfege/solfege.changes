@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:25:11 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 3.23.4 and remove all traces of python2
+- Upstream changes:
+  *fix F9 listing user lesson files
+  *toneincontext: let the user compare and practise when answering
+   wrong
+  *toneincontext: remove Give up button
+  *port exporting exercises to audio files and creating ear training
+   test
+  *printouts to python3/gtk3
+  *download ALSA: reload moved to importlib
+  *Ported winmidi.c to Python 3!!
+  *winreg, osutils, filesystem win32 fixes
+  *toneincontext: select between number and solfa buttons
+  *toneincontext in minor: ask for correct tones
+  *toneincontext: clear flashbar after we give up
+  *toneincontext: statistics for x last question
+  *.solfegerc: sort sections and variable on save
+  *toneincontext: let the user set the tempo
+  *Fix bug #48079: label for interval accels
+
+-------------------------------------------------------------------
 Sat Nov 23 11:23:53 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Fix build by removing unnecessary makeinfo rebuild of README,

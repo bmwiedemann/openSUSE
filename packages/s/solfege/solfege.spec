@@ -1,7 +1,7 @@
 #
 # spec file for package solfege
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Name:           solfege
 Summary:        An ear training program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Version:        3.22.2
+Version:        3.23.4
 Release:        0
 Url:            https://www.gnu.org/software/solfege/
 BuildRequires:  automake
@@ -35,11 +35,11 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  libxslt
-BuildRequires:  python-devel
-BuildRequires:  python-gtk-devel
+BuildRequires:  python3-gobject-devel
 BuildRequires:  swig
 BuildRequires:  texinfo
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(python3)
 %if 0%{?suse_version} > 1320 || 0%{?is_opensuse} == 1
 BuildRequires:  txt2man
 %endif
@@ -49,16 +49,17 @@ BuildRequires:  txt2man
 %define my_provides /tmp/my-provides
 %endif
 
-Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
+Source0:        ftp://alpha.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        lessonfile_editor.1
-Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        ftp://alpha.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Patch0:         solfege-configure-fix.dif
 Patch1:         solfege-python-fixcompile.patch
 Patch2:         solfege-nogenreadmeetc.patch
-Requires:       python-gtk
+Requires:       lilypond-century-schoolbook-l-fonts
+Requires:       lilypond-emmentaler-fonts
+Requires:       lilypond-fonts-common
+Requires:       python3-gobject-Gdk
 Requires:       timidity
-Recommends:     lilypond
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Solfege is an eartraining program for X written in python, using
@@ -73,13 +74,16 @@ sing chords, scales, dictation and remember rhythmic patterns.
 %patch0
 %patch1
 %patch2
-for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python2/' ${i} ;done
+
+for i in `grep -rl "/usr/bin/env python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
+#for i in `grep -rl "!/usr/bin/python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
 
 %build
 autoreconf -fi
 
 %configure \
-    --enable-docbook-stylesheet=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunker.xsl
+    --enable-docbook-stylesheet=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunker.xsl \
+    --disable-oss-sound
 make %{?jobs:-j%jobs} all
 
 %install
@@ -102,23 +106,27 @@ chmod 755 %{my_provides}
 %fdupes -s %{buildroot}
 # Fix any .py files with shebangs and wrong permissions.
 chmod 0755 %{buildroot}/usr/share/solfege/solfege/_version.py
+chmod 0755 %{buildroot}/usr/share/solfege/solfege/parsetree.py
+chmod 0755 %{buildroot}/usr/share/solfege/solfege/presetup.py
+chmod 0644 %{buildroot}/usr/share/solfege/solfege/_version.py
+find %{buildroot}/usr/share/solfege/ -name "*~" -print -delete
 
 %post
-/sbin/ldconfig
+#/sbin/ldconfig
 if test -e /dev/music;
 then break;
 else mknod /dev/music u 14 8 > /dev/null;
 fi
 
-%postun -p /sbin/ldconfig
+#%%postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(-, root, root)
-%doc AUTHORS FAQ README changelog
+%doc changelog
 %license COPYING
 %{_bindir}/*
 %{_datadir}/solfege
-%{_libdir}/solfege
+#%%{_libdir}/solfege
 %{_mandir}/man1/*.1.gz
 %config %{_sysconfdir}/solfege*
 %{_datadir}/pixmaps/*
