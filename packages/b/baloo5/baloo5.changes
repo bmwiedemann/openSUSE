@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:53:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix FileIndexScheduler being stuck after suspending it:
+  0001-FileIndexScheduler-Force-evaluation-of-indexerState-.patch
+
+-------------------------------------------------------------------
+Sat Feb 15 17:53:07 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Sync-IndexerConfig-on-exit.patch to fix settings not getting
+  saved (kde#417127)
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

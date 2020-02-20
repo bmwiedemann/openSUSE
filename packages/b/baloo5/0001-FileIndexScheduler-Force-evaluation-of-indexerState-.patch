@@ -1,0 +1,59 @@
+From f421ca39ad8e24e780d7c4956493d0c53d47e924 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 11 Feb 2020 16:50:17 +0100
+Subject: [PATCH] [FileIndexScheduler] Force evaluation of indexerState after
+ suspend/resume
+
+Summary:
+When the scheduler is idle when suspending scheduleIndexing() has to be
+triggered, otherwise indexerState is only evaluated on the first external
+trigger (e.g. a changed file).
+
+On resume, scheduleIndexing() never updated the state, as Suspended did
+not qualify as an Idle state. This had the effect of the scheduler being
+stuck in the Suspended state.
+
+Test Plan:
+balooctl suspend && balooctl status
+balooctl resume && balooctl status
+
+Reviewers: #baloo, ngraham
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks, #baloo
+
+Differential Revision: https://phabricator.kde.org/D27326
+---
+ src/file/fileindexscheduler.cpp | 2 ++
+ src/file/fileindexscheduler.h   | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/file/fileindexscheduler.cpp b/src/file/fileindexscheduler.cpp
+index c3ca4a73..9cab41db 100644
+--- a/src/file/fileindexscheduler.cpp
++++ b/src/file/fileindexscheduler.cpp
+@@ -248,6 +248,8 @@ void FileIndexScheduler::setSuspend(bool suspend)
+         qCDebug(BALOO) << "Suspending";
+         if (m_indexerState == ContentIndexing) {
+             m_contentIndexer->quit();
++        } else {
++            scheduleIndexing();
+         }
+     } else {
+         qCDebug(BALOO) << "Resuming";
+diff --git a/src/file/fileindexscheduler.h b/src/file/fileindexscheduler.h
+index 1b446044..afa8067c 100644
+--- a/src/file/fileindexscheduler.h
++++ b/src/file/fileindexscheduler.h
+@@ -104,6 +104,7 @@ private:
+     void setSuspend(bool suspend);
+     bool isIndexerIdle() {
+         return m_isGoingIdle ||
++               (m_indexerState == Suspended) ||
+                (m_indexerState == Idle) ||
+                (m_indexerState == LowPowerIdle);
+     }
+-- 
+2.25.0
+

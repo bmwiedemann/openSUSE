@@ -35,6 +35,10 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/baloo-%{
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch:          Sync-IndexerConfig-on-exit.patch
+# PATCH-FIX-UPSTREAM -- Fix scheduler being stuck in Suspended state
+Patch1:         0001-FileIndexScheduler-Force-evaluation-of-indexerState-.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libattr-devel
@@ -146,6 +150,7 @@ package contains aditional command line utilities. Development files.
 
 %prep
 %setup -q -n baloo-%{version}
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
