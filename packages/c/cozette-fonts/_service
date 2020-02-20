@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">git://github.com/slavfox/Cozette.git</param>
+    <param name="scm">git</param>
+    <param name="revision">7882aee</param>
+    <param name="versionprefix">1.4.0+git</param>
+    <param name="versionformat">%ct.%h</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+  <service mode="disabled" name="download_files" />
+</services>
