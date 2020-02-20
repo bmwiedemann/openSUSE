@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 16 17:10:45 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Check-activeModule-before-using-it.patch to fix crash when
+  opening Kontact's settings (kde#417396)
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

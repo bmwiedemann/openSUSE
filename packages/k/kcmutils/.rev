@@ -606,4 +606,13 @@
     <comment>KDE Frameworks 5.67</comment>
     <requestid>773240</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>0365b68780f870c1de27c783498a3300</srcmd5>
+    <version>5.67.0</version>
+    <time>1582206809</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Check-activeModule-before-using-it.patch to fix crash when
+  opening Kontact's settings (kde#417396) (forwarded request 774714 from wolfi323)</comment>
+    <requestid>774735</requestid>
+  </revision>
 </revisionlist>
