@@ -874,4 +874,13 @@
   * Minor bugfixes compared to pre2</comment>
     <requestid>771563</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>60e9627c8c5ac250189fee593883b0aa</srcmd5>
+    <version>5.8</version>
+    <time>1582206828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8
+  * Fixes CVE-2019-20044 bsc#1163882</comment>
+    <requestid>774851</requestid>
+  </revision>
 </revisionlist>

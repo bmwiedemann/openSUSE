@@ -16,9 +16,6 @@
 #
 
 
-# Only for -test builds
-%define _version 5.7.1-test-3
-
 %if 0%{?rhel_version} || 0%{?centos_version} || 0%{?fedora_version}
 %if 0%{?rhel_version} >= 700 || 0%{?centos_version} >= 700
 %global __requires_exclude ^/bin/zsh$
@@ -28,14 +25,14 @@ BuildRequires:  texi2html
 BuildRequires:  texinfo
 %endif
 Name:           zsh
-Version:        5.8~pre3
+Version:        5.8
 Release:        0%{?dist}
 Summary:        Shell with comprehensive completion
 License:        MIT
 Group:          System/Shells
 URL:            http://www.zsh.org
-Source0:        https://downloads.sourceforge.net/project/zsh/zsh-test/%{_version}/zsh-%{_version}.tar.xz
-Source1:        https://downloads.sourceforge.net/project/zsh/zsh-test/%{_version}/zsh-%{_version}.tar.xz.asc
+Source0:        https://downloads.sourceforge.net/project/zsh/zsh/%{version}/zsh-%{version}.tar.xz
+Source1:        https://downloads.sourceforge.net/project/zsh/zsh/%{version}/zsh-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        zshrc
 Source4:        zshenv
@@ -94,7 +91,7 @@ mechanism, and more.
 This package contains the Zsh manual in HTML format.
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q
 %if 0%{?suse_version}
 %patch1 -p1
 %endif
