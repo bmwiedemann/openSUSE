@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 20 09:08:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.0:
+  * Ability to clean up all requests/queries #368 (nasirhjafri)
+  * Used bulk_create to save number of queries #370 (nasirhjafri)
+  * Dropped Python 2 and 3.4 support #380 (munza)
+  * Added Python 3.8 support #380 (nasirhjafri)
+  * Removed django<2.2 support and added django 3.0 support #385 (nasirhjafri)
+  * Add function support for enabling profiling #391 (tredzko)
+  * Mask authorization header #376 (StefanMich)
+
+-------------------------------------------------------------------
 Mon Sep 16 09:19:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.4:

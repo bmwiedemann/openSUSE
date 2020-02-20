@@ -45,4 +45,19 @@
   * Fix project url on PyPi #343 (luzfcb)</comment>
     <requestid>731213</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>350e2f00ea01d0b25360bf2c3013d1bc</srcmd5>
+    <version>4.0.0</version>
+    <time>1582207179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Ability to clean up all requests/queries #368 (nasirhjafri)
+  * Used bulk_create to save number of queries #370 (nasirhjafri)
+  * Dropped Python 2 and 3.4 support #380 (munza)
+  * Added Python 3.8 support #380 (nasirhjafri)
+  * Removed django&lt;2.2 support and added django 3.0 support #385 (nasirhjafri)
+  * Add function support for enabling profiling #391 (tredzko)
+  * Mask authorization header #376 (StefanMich)</comment>
+    <requestid>777606</requestid>
+  </revision>
 </revisionlist>

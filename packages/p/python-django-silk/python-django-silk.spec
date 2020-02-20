@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-silk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-silk
-Version:        3.0.4
+Version:        4.0.0
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/jazzband/django-silk
+URL:            https://github.com/jazzband/django-silk
 Source:         https://github.com/jazzband/django-silk/archive/%{version}.tar.gz#/django-silk-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module Jinja2 >= 2.8}
 BuildRequires:  %{python_module Pillow >= 3.2}
 BuildRequires:  %{python_module Pygments >= 2.0}
@@ -36,7 +35,19 @@ BuildRequires:  %{python_module pytz > 2014.2}
 BuildRequires:  %{python_module requests >= 2.10}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.1.19}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 2.2
+Requires:       python-Jinja2 >= 2.8
+Requires:       python-Pillow >= 3.2
+Requires:       python-Pygments >= 2.0
+Requires:       python-autopep8 >= 1.2.1
+Requires:       python-gprof2dot >= 2017.09.19
+Requires:       python-python-dateutil >= 2.4
+Requires:       python-pytz > 2014.2
+Requires:       python-requests >= 2.10
+Requires:       python-sqlparse >= 0.1.19
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module contextlib2 >= 0.5.5}
 BuildRequires:  %{python_module factory_boy >= 2.8.1}
@@ -48,19 +59,6 @@ BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module simplejson >= 3.13.2}
 BuildRequires:  %{python_module six >= 1.11.0}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Django >= 1.11
-Requires:       python-Jinja2 >= 2.8
-Requires:       python-Pillow >= 3.2
-Requires:       python-Pygments >= 2.0
-Requires:       python-autopep8 >= 1.2.1
-Requires:       python-gprof2dot >= 2017.09.19
-Requires:       python-python-dateutil >= 2.4
-Requires:       python-pytz > 2014.2
-Requires:       python-requests >= 2.10
-Requires:       python-sqlparse >= 0.1.19
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
