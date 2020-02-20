@@ -39,4 +39,12 @@
     <comment>Fixing library name conflict.</comment>
     <requestid>749328</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7a18f77f694e151288764f13826c635f</srcmd5>
+    <version>5.2</version>
+    <time>1582209459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777685</requestid>
+  </revision>
 </revisionlist>

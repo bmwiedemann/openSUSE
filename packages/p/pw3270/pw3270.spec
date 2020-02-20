@@ -118,7 +118,7 @@ BuildRequires:  update-desktop-files
 %if 0%{suse_version} >= 1210
 BuildRequires:	autoconf-archive
 %endif
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
