@@ -1,0 +1,48 @@
+From 8a287e822f402d49997a740f5cad0f8d505bf5c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 16 Feb 2020 16:30:36 +0100
+Subject: [PATCH] Link tools to shared library
+
+The default is static linking, change to shared linking.
+
+See https://github.com/qhull/qhull/issues/57
+---
+ CMakeLists.txt | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d44056..d3c3891 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -484,22 +484,22 @@ set(qvoronoi_SOURCES    src/qvoronoi/qvoronoi.c)
+ set(qhalf_SOURCES       src/qhalf/qhalf.c)
+ 
+ add_executable(qhull ${qhull_SOURCES})
+-target_link_libraries(qhull ${qhull_STATICR})
++target_link_libraries(qhull ${qhull_SHAREDR})
+ 
+ add_executable(rbox ${rbox_SOURCES})
+-target_link_libraries(rbox ${qhull_STATIC})
++target_link_libraries(rbox ${qhull_SHARED})
+ 
+ add_executable(qconvex ${qconvex_SOURCES})
+-target_link_libraries(qconvex ${qhull_STATIC})
++target_link_libraries(qconvex ${qhull_SHARED})
+ 
+ add_executable(qdelaunay ${qdelaunay_SOURCES})
+-target_link_libraries(qdelaunay ${qhull_STATIC})
++target_link_libraries(qdelaunay ${qhull_SHARED})
+ 
+ add_executable(qvoronoi ${qvoronoi_SOURCES})
+-target_link_libraries(qvoronoi ${qhull_STATIC})
++target_link_libraries(qvoronoi ${qhull_SHARED})
+ 
+ add_executable(qhalf ${qhalf_SOURCES})
+-target_link_libraries(qhalf ${qhull_STATIC})
++target_link_libraries(qhalf ${qhull_SHARED})
+ 
+ # ---------------------------------------
+ # Define options for linking to qhull_SHAREDR or qhull_SHARED
+-- 
+2.25.0
+

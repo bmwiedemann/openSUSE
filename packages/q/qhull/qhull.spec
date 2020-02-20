@@ -1,7 +1,7 @@
 #
 # spec file for package qhull
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        Qhull
 Group:          Development/Libraries/C and C++
 URL:            http://www.qhull.org
 Source0:        http://www.qhull.org/download/qhull-%{srcyear}-src-%{srcver}.tgz
+# PATCH-FIX-OPENUSE -- https://github.com/qhull/qhull/issues/57
+Patch0:         0001-Link-tools-to-shared-library.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -44,11 +46,11 @@ inputs in 9-D and higher.
 
 %package -n libqhull%{sonum}
 Summary:        Computing convex hulls, Delaunay triangulations and Voronoi diagrams
-Group:          System/Libraries
 # Bad naming of old packages, conflicts on the file level (libqhull.so.7)
-Obsoletes: libqhull%{sonum}-7_3_2 < %{version}-%{release}
-Provides:  libqhull%{sonum}-7_3_2 = %{version}-%{release}
-Obsoletes: libqhull%{sonum}-7_2_0 < %{version}
+Group:          System/Libraries
+Obsoletes:      libqhull%{sonum}-7_3_2 < %{version}-%{release}
+Provides:       libqhull%{sonum}-7_3_2 = %{version}-%{release}
+Obsoletes:      libqhull%{sonum}-7_2_0 < %{version}
 
 %description -n libqhull%{sonum}
 Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram,
@@ -65,7 +67,7 @@ inputs in 9-D and higher.
 %package devel
 Summary:        Development and documentation files for qhull
 Group:          Development/Libraries/C and C++
-Requires:       qhull = %{version}
+Requires:       libqhull%{sonum} = %{version}
 
 %description devel
 Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram,
@@ -76,6 +78,7 @@ This package contains the header files for the Qhull libraries.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake \

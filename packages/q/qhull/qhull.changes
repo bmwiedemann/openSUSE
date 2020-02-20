@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 16 15:30:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add missing dependency from devel package to shared library.
+- Use shared linking for qhull tools.
+  0001-Link-tools-to-shared-library.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 12:07:11 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Correct name of the library package according to SLPP - the
