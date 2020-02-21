@@ -1,7 +1,7 @@
 #
 # spec file for package python-numba
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,36 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-numba
-Version:        0.46.0
+Version:        0.48.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 Patch0:         skip-failing-tests.patch
 # PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
 Patch1:         fix-max-name-size.patch
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module llvmlite >= 0.29}
-BuildRequires:  %{python_module numpy-devel >= 1.10}
+BuildRequires:  %{python_module llvmlite >= 0.31}
+BuildRequires:  %{python_module numpy-devel >= 1.11}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.16}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tbb}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
-BuildRequires:  python2-funcsigs
-BuildRequires:  python2-singledispatch
-BuildRequires:  python3-tbb
 BuildRequires:  tbb-devel
-Requires:       python-llvmlite >= 0.29
-Requires:       python-numpy >= 1.10
+Requires:       python-llvmlite >= 0.31
+Requires:       python-numpy >= 1.15
 Requires:       python-scipy >= 0.16
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -56,11 +54,6 @@ Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-cffi
 Recommends:     python-tbb
-%ifpython2
-Requires:       python2-enum34
-Requires:       python2-funcsigs
-Requires:       python2-singledispatch
-%endif
 %python_subpackages
 
 %description
@@ -82,10 +75,9 @@ data structures such as those that exist in NumPy.
 
 %package        devel
 Summary:        Development files for numba applications
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Requires:       python-devel
-Requires:       python-numpy-devel >= 1.7
+Requires:       python-numpy-devel >= 1.11
 
 %description    devel
 This package contains files for developing applications using numba.

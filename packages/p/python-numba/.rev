@@ -181,4 +181,16 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>757638</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4c24f236341f6b0c5cd15312247b518c</srcmd5>
+    <version>0.48.0</version>
+    <time>1582299785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.48.0:
+  * Many fixes for llvm/cuda updates; see CHANGE_LOG for details
+  * Drop python2 support
+- Add one more failing test to skip:
+  * skip-failing-tests.patch</comment>
+    <requestid>777950</requestid>
+  </revision>
 </revisionlist>
