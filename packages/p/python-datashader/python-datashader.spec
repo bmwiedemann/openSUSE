@@ -1,7 +1,7 @@
 #
 # spec file for package python-datashader
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-datashader
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-DataShape >= 0.5.1
-Requires:       python-Pillow
+Requires:       python-Pillow >= 3.1.1
 Requires:       python-PyYAML
 Requires:       python-bokeh
 Requires:       python-colorcet >= 0.9.0
@@ -57,7 +57,7 @@ Requires:       python-xarray >= 0.9.6
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module DataShape >= 0.5.1}
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pillow >= 3.1.1}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module colorcet >= 0.9.0}
@@ -65,7 +65,8 @@ BuildRequires:  %{python_module dask >= 0.18.0}
 BuildRequires:  %{python_module dask-bag}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module fastparquet >= 0.1.6}
-BuildRequires:  %{python_module nbsmoke >= 0.2.6}
+BuildRequires:  %{python_module holoviews >= 1.10.0}
+BuildRequires:  %{python_module nbsmoke >= 0.4.0}
 BuildRequires:  %{python_module numba >= 0.37.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas >= 0.24.1}
