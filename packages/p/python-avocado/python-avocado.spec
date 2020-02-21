@@ -1,7 +1,7 @@
 #
 # spec file for package python-avocado
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# No longer build for python2
+%define skip_python2  1
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         pkgname avocado
@@ -386,7 +389,6 @@ popd
 pushd optional_plugins/glib
 %python_build
 popd
-
 
 %install
 %python_install
