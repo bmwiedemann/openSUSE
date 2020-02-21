@@ -1,7 +1,7 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           libcap
+Version:        2.32
+Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Version:        2.25
-Release:        0
+URL:            https://sites.google.com/site/fullycapable/
 Source:         https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-%{version}.tar.xz
 Source2:        baselibs.conf
-Url:            https://sites.google.com/site/fullycapable/
 BuildRequires:  fdupes
-BuildRequires:  pkg-config
+BuildRequires:  glibc-devel-static
+BuildRequires:  pkgconfig
 
 %description
 Capabilities are a measure to limit the omnipotence of the superuser.
@@ -47,8 +48,6 @@ anything. Capabilities (Linux-Privs) provide a more fine-grained access
 control. Without kernel patches, you can use this library to drop
 capabilities within setuid binaries. If you use patches, this can be
 done automatically by the kernel.
-
-
 
 %package devel
 Summary:        Development files for libcap
@@ -76,9 +75,11 @@ libcap.
 
 %prep
 %setup -q
+
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 make prefix=%{_prefix} lib=%{_lib} LIBDIR=%{_libdir} SBINDIR=%{_sbindir} \
-     INCDIR=%{_includedir} MANDIR=%{_mandir} DEBUG="-g %{optflags}"
+     INCDIR=%{_includedir} MANDIR=%{_mandir} DYNAMIC=yes DEBUG="-g %{optflags}"
 
 %install
 make install RAISE_SETFCAP=no \
@@ -88,34 +89,36 @@ make install RAISE_SETFCAP=no \
              INCDIR=/%{_includedir} \
              MANDIR=/%{_mandir}/ \
              PKGCONFIGDIR=%{_libdir}/pkgconfig/
-find %{buildroot} -type f -name '*.la' -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 # do not provide static libs
 rm %{buildroot}%{_libdir}/libcap.a
 
-%fdupes -s $RPM_BUILD_ROOT
+%fdupes -s %{buildroot}
+
+%check
+make test
 
 %post -n libcap2 -p /sbin/ldconfig
-
 %postun -n libcap2 -p /sbin/ldconfig
 
 %files -n libcap2
-%defattr(-,root,root)
 %license License
 %{_libdir}/libcap.so.*
 
 %files progs
-%defattr(-,root,root)
 %{_mandir}/man1/*
 %{_mandir}/man8/*
 %{_sbindir}/*
 
 %files devel
-%defattr(-,root,root)
 %license License
 %doc README CHANGELOG
 %{_includedir}/sys/capability.h
+%{_includedir}/sys/psx_syscall.h
 %{_libdir}/*.so
+%{_libdir}/libpsx.a
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/libpsx.pc
 %{_mandir}/man3/*
 
 %changelog

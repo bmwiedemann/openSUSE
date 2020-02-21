@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Feb 15 21:24:26 CET 2020 - tiwai@suse.de
+
+- Update to version 2.32:
+  * Bug fix for fakeroot incompatibility (boo#1162014)
+  * Slight perf improvement for cap_get_bound().
+  * C++ support for psx header inclusion.
+  * Some new testing features for capsh
+
+-------------------------------------------------------------------
+Tue Jan 28 14:23:23 CET 2020 - tiwai@suse.de
+
+- Update to version 2.31:
+  * primarily a documentation update
+  * fix libpam.pc to not require libpsx.pc
+  * changed the text format of the default output of getpcap
+
+-------------------------------------------------------------------
+Mon Jan 13 12:54:25 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build using -ffat-lto-objects for static library 
+
+-------------------------------------------------------------------
+Thu Jan  9 16:05:12 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.30:
+  * BUGFIX: arm and i386 fixes C and Go setgroups choice - used
+    wrong syscall in 2.29.
+  * cleaned up make clean and make install to actually work as
+    intended
+  * updated Gentoo libpsx.pc file from Lars Wendler
+  * refactored the way libpsx linkage with libcap performed mutual
+    discovery.
+  * Previously (2.28) libpsx had an API call overridden by libcap
+    using weak linkage function in libpsx. In 2.30 this is reversed,
+    namely libpsx provides the stronger function and libcap has a
+    weak "no-op" version.
+  * a bit more consistency in handling the 'all' sets in libcap
+    (C) and libcap/cap (Go). Namely, they both dynamically discover
+    the number of capabilities named by the kernel and use this as
+    the definition of 'all' for the current runtime.
+    + libcap (C) exports cap_max_bit() to export the number of
+      supported capabilities
+    + libcap/cap (Go) exports cap.MaxBits() for this same value.
+- For changes for older releases see:
+  * https://sites.google.com/site/fullycapable/release-notes-for-libcap
+- Add glibc-static-devel as build requirement as tests need it
+- Install libpsx.a as it seems to be needed in some cases:
+  * https://bugs.gentoo.org/703912
+
+-------------------------------------------------------------------
 Mon Dec 16 14:21:27 UTC 2019 - matthias.gerstner@suse.com
 
 - Remove pam_cap (bsc#1150522) since this PAM module is a bad idea, security
