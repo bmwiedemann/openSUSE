@@ -85,4 +85,15 @@
 </comment>
     <requestid>748050</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6c9ac6f38e36928838ee63f7ca4ff97</srcmd5>
+    <version>1.1.8</version>
+    <time>1582299613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.8
+  * Fixed path to library in nss_wrapper.pc
+  * Try different backends for gethostbyaddr nd gethostbyname
+</comment>
+    <requestid>774824</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nss_wrapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 ############################# NOTE ##################################
 
 Name:           nss_wrapper
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 
 Summary:        A wrapper for the user, group and hosts NSS API
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://cwrap.org/
+URL:            http://cwrap.org/
 
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
@@ -91,7 +91,7 @@ find %{buildroot}%{_bindir} -name "*.pl" \
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS README.md ChangeLog
+%doc AUTHORS README.md CHANGELOG
 %license LICENSE
 %{_bindir}/nss_wrapper.pl
 %{_libdir}/libnss_wrapper.so*
