@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 21 10:39:15 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1582278168.345f257f6:
+  * Use unique git hash from vars.json for src links when possible
+  * docs: Add hint about importance of using the same filesystem for cache+pool
+  * Fix source code remote path for optional .git github links
+  * Fix missing dependency 'perl(Archive::Extract)' for worker since e86f68b08
+  * Silence a warning in 24-worker-overall.t
+  * docs: Replace dated styling/Mark systemctl command
+  * Handle the case where there are no screenshots more gracefully (avoiding warnings in tests)
+  * Redirect to remote code location for source view when using CASEDIR
+  * Flatten the download conditions a bit
+  * Do not capture and store all job output as a note
+  * Log all download errors
+  * Fail the job instead of throwing an exception
+  * Add tests for OpenQA::Downloader
+  * Use OpenQA::Downloader in download_asset task
+  * Add downloader module and use it for the cache service
+  * Use preferred explicit rendering in "src" method
+  * Simplify "src" method showing source code of test modules
+  * t: Fix and re-enable ui/03-source.t
+
+-------------------------------------------------------------------
 Tue Feb 18 23:34:01 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1582068800.bb5602a1e:
