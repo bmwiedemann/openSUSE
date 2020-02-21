@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 19:09:15 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.1:
+  * fix showing list of results
+  * Merge branch 'master' of https://github.com/lainsce/palaura
+    palaura.changes palaura.spec
+  * RISE FROM YOUR GRAVE!
+  * Merge pull request #40 from meisenzahl/master
+  * Update README.md
+  * Update meson.build
+  * Update com.github.lainsce.palaura.appdata.xml.in
+
+-------------------------------------------------------------------
 Thu Jul  4 17:49:19 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.0.8:

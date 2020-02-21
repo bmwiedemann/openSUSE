@@ -17,7 +17,7 @@
 
 
 Name:           palaura
-Version:        1.0.8
+Version:        1.2.1
 Release:        0
 Summary:        A dictionary with word definitions
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 0.5
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 
@@ -54,7 +55,20 @@ It uses the Oxford Dictionaries API for lookups.
 %suse_update_desktop_file -r com.github.lainsce.palaura GTK Office Dictionary
 %fdupes %{buildroot}/%{_datadir}
 
-%files
+# dirlist HiDPI icons (see: hicolor/index.theme)
+touch $PWD/dir.lst
+_dirlist=$PWD/dir.lst
+pushd %{buildroot}
+find ./ | while read _list; do
+    echo $_list | grep '[0-9]\@[0-9]' || continue
+    _path=$(echo $_list | sed 's/[^/]//')
+    if ! ls ${_path%/*}; then
+        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
+    fi
+done
+popd
+
+%files -f dir.lst
 %license LICENSE
 %doc AUTHORS README.md
 %{_bindir}/com.github.lainsce.palaura
