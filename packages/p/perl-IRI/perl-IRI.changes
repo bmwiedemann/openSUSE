@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 03:10:50 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.011
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.011  2020-02-20
+  
+   - (Update) Add IRI->rel method.
+
+-------------------------------------------------------------------
 Sat Dec 28 03:09:20 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.010
