@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Feb 21 12:58:18 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.11.0.
+
+  * Limit the number of events that can be requested by the backfill federation
+    API to 100.
+  * Reject device display names over 100 characters in length to prevent abuse.
+  * Implement new aliases endpoint as per MSC2432.
+  * Stop sending m.room.alias events wheng adding / removing aliases. Check
+    alt_aliases in the latest m.room.canonical_alias event when deleting an
+    alias.
+  * Change the default power levels of invites, tombstones and server ACLs for
+    new rooms.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
+Tue Feb 18 01:44:41 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 1.10.1.
+
+  * Fix a bug introduced in Synapse 1.10.0 which would cause room state to be
+    cleared in the database if Synapse was upgraded direct from 1.2.1 or
+    earlier to 1.10.0.
+
+  The full changelog is included in
+  /usr/share/doc/packages/matrix-synapse/CHANGES.md.
+
+-------------------------------------------------------------------
 Wed Feb 12 16:01:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump requires on python3-signedjson to follow code change
