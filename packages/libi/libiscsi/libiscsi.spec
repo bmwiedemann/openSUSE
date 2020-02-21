@@ -1,7 +1,7 @@
 #
 # spec file for package libiscsi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define         sover 9
 Name:           libiscsi
-Version:        1.19.0
+Version:        1.19.0+git.20200212
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/sahlberg/libiscsi
-Source:         https://github.com/sahlberg/libiscsi/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -89,7 +89,6 @@ autoreconf -fiv
 
 %install
 %make_install
-mv "%{buildroot}/%{_bindir}/ld_iscsi.so" "%{buildroot}/%{_libdir}/"
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{name}%{sover} -p /sbin/ldconfig
@@ -106,9 +105,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/iscsi-swp
 %{_bindir}/iscsi-perf
 %{_bindir}/iscsi-readcapacity16
-# preload library that intercepts a handful of system calls and converts
-# iSCSI URLs to look and behave as if they are normal read-only files.
-%{_libdir}/ld_iscsi.so
 %{_mandir}/man1/iscsi-inq.1%{?ext_man}
 %{_mandir}/man1/iscsi-ls.1%{?ext_man}
 %{_mandir}/man1/iscsi-swp.1%{?ext_man}

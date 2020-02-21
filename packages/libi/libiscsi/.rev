@@ -101,4 +101,21 @@
     <comment>- Update build dependencies (libgcrypt)</comment>
     <requestid>732876</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b2ee46a689e740bdee007c27a7467a4b</srcmd5>
+    <version>1.19.0+git.20200212</version>
+    <time>1582299574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.0+git.20200212 (resolves boo#1160276):
+  * drop the LD_PRELOAD tool
+  * remove FIXME
+  * Fix data segment length comparison to unsigned long
+  * iser: queue pdus when cmdsn exceeds maxcmdsn
+  * iser: send immediate data
+  * iser: remove `__packed` from struct iser_cm_hdr declaration
+  * iser: fix struct iser_rx_desc
+  * test-tool: avoid use-after-free on iscsi_logout_sync
+  * Use dynamic memory allocation instead of variable-length arrays</comment>
+    <requestid>775204</requestid>
+  </revision>
 </revisionlist>

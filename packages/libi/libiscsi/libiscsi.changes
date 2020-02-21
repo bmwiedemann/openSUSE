@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 18 13:33:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20200212 (resolves boo#1160276):
+  * drop the LD_PRELOAD tool
+  * remove FIXME
+  * Fix data segment length comparison to unsigned long
+  * iser: queue pdus when cmdsn exceeds maxcmdsn
+  * iser: send immediate data
+  * iser: remove `__packed` from struct iser_cm_hdr declaration
+  * iser: fix struct iser_rx_desc
+  * test-tool: avoid use-after-free on iscsi_logout_sync
+  * Use dynamic memory allocation instead of variable-length arrays
+
+-------------------------------------------------------------------
 Tue Sep 24 08:56:59 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update build dependencies (libgcrypt)
