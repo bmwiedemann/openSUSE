@@ -70,6 +70,8 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(pango) >= 1.12.0
+# This is a work around for boo#1163190 pango-devel doesn't pull in cairo-devel although it requires it
+BuildRequires:  pkgconfig(cairo)
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
 Requires:       ghostscript >= 8.15

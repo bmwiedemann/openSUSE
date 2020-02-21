@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 21 06:34:35 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Work around boo#1163190 by requiring pkgconfig(cairo) for 15.2
+
+-------------------------------------------------------------------
 Mon May 13 12:13:03 UTC 2019 - plater <davejplater@gmail.com>
 
 - Fix build against glib2 >= 2.60.2 by manually adding:

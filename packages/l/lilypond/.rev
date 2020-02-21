@@ -277,4 +277,13 @@
   -lglib-2.0 -lgobject-2.0 to the linker flags.</comment>
     <requestid>702667</requestid>
   </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>97511cdb3814dc285ece13a345c274db</srcmd5>
+    <version>2.18.2</version>
+    <time>1582299747</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around boo#1163190 by requiring pkgconfig(cairo)
+</comment>
+    <requestid>777867</requestid>
+  </revision>
 </revisionlist>
