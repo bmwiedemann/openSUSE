@@ -1,7 +1,7 @@
 #
 # spec file for package calamares
 #
-# Copyright (c) 2017, 2019, 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://github.com/calamares/calamares/issues
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %define _sover  3
 Name:           calamares
 Version:        3.2.15
 Release:        0
 Summary:        Installer from a live CD/DVD/USB to disk
+License:        GPL-3.0-only
 Group:          System/Management
-License:        GPL-3.0
-Url:            http://calamares.io/
+URL:            http://calamares.io/
 Source0:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # new generic branding.desc with explanations in comments
 Source1:        branding.desc
