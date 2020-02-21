@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Feb 18 15:10:56 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#213
+- move plymouthd start after screen size detection (bsc#1163115)
+- 7.0.10
+
+--------------------------------------------------------------------
 Wed Jan 29 09:47:24 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#210
