@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:16:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.1
+  - Fix klog flag usage
+- Remove unused vendor.tar.gz source
+
+-------------------------------------------------------------------
 Wed Nov  6 11:31:23 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.9.0

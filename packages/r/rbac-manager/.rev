@@ -63,4 +63,14 @@
   - Versioning now happens automagically.</comment>
     <requestid>745962</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2081f37869680f94531d602d2fcab56</srcmd5>
+    <version>0.9.1</version>
+    <time>1582299581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1
+  - Fix klog flag usage
+- Remove unused vendor.tar.gz source</comment>
+    <requestid>777391</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 
 Name:           rbac-manager
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/reactiveops/rbac-manager
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.12
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
@@ -43,9 +42,7 @@ This package contains the yaml file requried to download and run the
 rbac-manager in a kubernetes cluster.
 
 %prep
-%setup -q # a1
-rm -rf vendor
-tar -xf %{SOURCE1}
+%setup -q
 
 %build
 go build -mod vendor -buildmode=pie -a -o rbac-manager ./cmd/manager/main.go
