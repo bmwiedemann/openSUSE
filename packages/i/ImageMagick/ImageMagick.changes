@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:28:30 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.23
+  * Report gray(127.5) as gray(50%).
+  * Support -define connected-components:perimeter-threshold=min-max
+
+-------------------------------------------------------------------
+Mon Feb 10 08:57:29 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.22
+  * More work on connect components, e.g. keep-colors, remove-colors,
+    keep-topids.
+  * Initialize mutex before locking if its not already initialized.
+  * Support 24-bit TIFF images.
+
+-------------------------------------------------------------------
 Mon Feb  3 08:04:34 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.9.21

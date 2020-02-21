@@ -2500,4 +2500,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Refresh cache morphology when writing MPC images.</comment>
     <requestid>769461</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>0dcd262cb753e35053718d3274ebc439</srcmd5>
+    <version>7.0.9.23</version>
+    <time>1582299640</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.23
+  * Report gray(127.5) as gray(50%).
+  * Support -define connected-components:perimeter-threshold=min-max
+
+- version update to 7.0.9.22
+  * More work on connect components, e.g. keep-colors, remove-colors,
+    keep-topids.
+  * Initialize mutex before locking if its not already initialized.
+  * Support 24-bit TIFF images.</comment>
+    <requestid>774856</requestid>
+  </revision>
 </revisionlist>
