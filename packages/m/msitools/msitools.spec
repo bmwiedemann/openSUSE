@@ -1,7 +1,7 @@
 #
 # spec file for package msitools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7
 BuildRequires:  pkgconfig(uuid) >= 1.41.3
 BuildRequires:  pkgconfig(vapigen) >= 0.16
-Recommends:     %{name}-lang
 
 %description
 msitools is a set of programs to inspect and build Windows Installer
@@ -79,12 +78,12 @@ cross-compiled Windows applications.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
