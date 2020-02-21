@@ -2692,4 +2692,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>764223</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>abd177221a4a94c58b83af1def21cac8</srcmd5>
+    <version>6.2</version>
+    <time>1582299599</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20200215
+  + improve manual page for panel library, extending the portability
+    section as well as documenting error-returns.
+  + show tic's version when installing terminal database in run_tic.sh
+  + correct check for gcc vs other compilers used in ncurses 6.0, from
+    FreeBSD patch by Kyle Evans (cf: 20150725).
+  + add notes for 6.2 to INSTALL.
+
+- Update to ncurses 6.2 (patch 20200212)
+  * Add 20200212 6.2 release for upload to ftp.gnu.org
+    + update release notes
+    + minor build-fixes, mostly to test-package scripts
+  * Add ncurses patch20200208
+    + modify check for sizeof(wchar_t) to ensure it gives useful result
+      when cross-compiling.
+    + drop assumption in configure script that Cygwin's linker is broken.
+    + define NCURSES_BROKEN_LINKER if the broken-linker feature is used,
+    to simplify configure-checks for ncurses-examples.
+  * Add ncurses patch20200202
+    + reassert copyright on ncurses, per discussion in ncurses FAQ:
+      https://invisible-island.net/ncurses/ncurses.faq.html#relicensed
+  * Add ncurses patch20200201
+    + modify comparison in make_hash.c to correct a special case in
+      collision handling for Caps-hpux11
+    + add testing utility report_hashing to check hash-tables used for
+      terminfo and termcap names.
+    + fix a missing prototype for _nc_free_and_exit().
+    + update a few comments about tack 1.07
+    + use an awk script to split too-long pathnames used in Ada95 sample
+      programs for explain.txt</comment>
+    <requestid>774813</requestid>
+  </revision>
 </revisionlist>

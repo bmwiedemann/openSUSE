@@ -3,8 +3,8 @@
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 --- tack/Makefile.in
-+++ tack/Makefile.in	2018-01-22 11:17:39.717358930 +0000
-@@ -84,7 +84,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
++++ tack/Makefile.in	2020-02-12 11:04:53.991231022 +0000
+@@ -85,7 +85,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS)
  CFLAGS_DEBUG	= $(CCFLAGS) @CC_G_OPT@ -DTRACE
  CFLAGS_PROFILE	= $(CCFLAGS) -pg
@@ -13,7 +13,7 @@
  
  CFLAGS_DEFAULT	= $(CFLAGS_@DFT_UPR_MODEL@)
  
-@@ -93,7 +93,7 @@ ABI_VERSION	= @cf_cv_abi_version@
+@@ -94,7 +94,7 @@ ABI_VERSION	= @cf_cv_abi_version@
  LOCAL_LIBDIR	= @top_builddir@/lib
  
  LD		= @LD@
@@ -22,7 +22,7 @@
  LDFLAGS		= @EXTRA_LDFLAGS@ @TINFO_LDFLAGS@ \
  		  @LDFLAGS@ @LD_MODEL@ @TINFO_LIBS@ @LIBS@
  
-@@ -101,7 +101,7 @@ LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LI
+@@ -102,7 +102,7 @@ LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LI
  LDFLAGS_NORMAL	= $(LDFLAGS) $(CFLAGS_NORMAL)
  LDFLAGS_DEBUG	= $(LDFLAGS) $(CFLAGS_DEBUG)
  LDFLAGS_PROFILE	= $(LDFLAGS) $(CFLAGS_PROFILE)
@@ -31,7 +31,7 @@
  
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
-@@ -165,10 +165,10 @@ DEPS_TACK = \
+@@ -166,10 +166,10 @@ DEPS_TACK = \
  	$(MODEL)/tack$o
  
  tack$x: $(DEPS_TACK) @NCURSES_TREE@$(DEPS_CURSES)

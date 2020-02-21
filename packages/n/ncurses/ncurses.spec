@@ -56,23 +56,23 @@ Obsoletes:      ncurses-64bit
 # but also build the ABI version 5 as this is part of the source
 # tar ball including the latest upstream fixes for ABI 5.
 #
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Terminal control library
 #Git:           http://ncurses.scripts.mit.edu
 License:        MIT
 Group:          System/Base
 URL:            http://www.invisible-island.net/ncurses/ncurses.html
-Source0:        ftp://ftp.invisible-island.net/ncurses/ncurses-6.1.tar.gz
-Source1:        ncurses-6.1-patches.tar.bz2
+Source0:        ftp://ftp.invisible-island.net/ncurses/ncurses-6.2.tar.gz
+Source1:        ncurses-6.2-patches.tar.bz2
 Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.08-20190721.tgz
+Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20200202.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
-Patch0:         ncurses-6.1.dif
+Patch0:         ncurses-6.2.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -1044,7 +1044,13 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	sed "s@^%{buildroot}@@g" | \
 	grep -v -F -x -f default.list -f screen.list -f iterm.list \
 	> extension.list
+#
+# Remove backward compatibilty link if any
+#
     rm -f %{buildroot}%{_prefix}/lib/terminfo
+#
+# Store pkg-config files
+#
     cp -p pc/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
 %if 0%{?qemu_user_space_build:1}%{?_crossbuild}
