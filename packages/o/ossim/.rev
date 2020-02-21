@@ -7,4 +7,14 @@
     <comment>Updates</comment>
     <requestid>713747</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3d85f2239fe027f385ce87431e0a78e4</srcmd5>
+    <version>2.11.1</version>
+    <time>1582299692</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.11.1
+- drop fix_hdf5_printErrorStack.patch (fixed upstream)
+</comment>
+    <requestid>777684</requestid>
+  </revision>
 </revisionlist>

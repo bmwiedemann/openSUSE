@@ -1,7 +1,7 @@
 #
 # spec file for package ossim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,18 +17,15 @@
 #
 
 
-%define _release_name Islamorada
+%define _release_name OrchidIsland
 Name:           ossim
-Version:        2.5.1
+Version:        2.11.1
 Release:        0
 Summary:        Open Source Software Image Map (OSSIM)
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://trac.osgeo.org/ossim/
 Source0:        https://github.com/ossimlabs/ossim/archive/%{_release_name}-%{version}.tar.gz#/%{name}-%{_release_name}-%{version}.tar.gz
-# hdf5 1.10.2+ deprecate printError() virtual function by removing it
-# Fix ossim code to use printErrorStack replacement
-Patch0:         fix_hdf5_printErrorStack.patch
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
@@ -80,7 +77,6 @@ The OSSIM data samples files for tests.
 
 %prep
 %setup -q -n %{name}-%{_release_name}-%{version}
-%patch0 -p1
 
 %build
 export CXXFLAGS=" -std=c++03"
@@ -93,15 +89,7 @@ export CXXFLAGS=" -std=c++03"
   -DBUILD_OSSIM_CURL_APPS=OFF \
   -DBUILD_OSSIM_TESTS=ON \
   -DBUILD_OSSIM_HDF5_SUPPORT=ON \
-  -DBUILD_SHARED_LIBS=ON \
-  -DGEOS_C_LIB=%{_libdir}/libgeos_c.so \
-  -DGEOS_INCLUDE_DIR=%{_includedir}/geos \
-  -DGEOS_LIB=%{_libdir}/libgeos.so \
-  -DGEOS_LIBRARY=%{_libdir}/libgeos.so \
-  -DGEOTIFF_INCLUDE_DIR=%{_includedir}/libgeotiff \
-  -DCMAKE_MODULE_PATH=$(CURDIR)/CMakeModules \
-  -DFREETYPE_INCLUDE_DIRS=%{_includedir}/freetype2 \
-  -DGEOTIFF_LIBRARY=%{_libdir}/libgeotiff.so
+  -DBUILD_SHARED_LIBS=ON
 
 make %{?_smp_mflags}
 
