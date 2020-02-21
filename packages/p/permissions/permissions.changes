@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:10:41 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200213:
+  * remove obsolete/broken entries for rcp/rsh/rlogin
+  * chkstat: handle symlinks in final path elements correctly
+  * Revert "Revert "mariadb: settings for new auth_pam_tool (bsc#1160285)""
+  * Revert "mariadb: settings for new auth_pam_tool (bsc#1160285)"
+
+-------------------------------------------------------------------
 Tue Feb 04 12:20:43 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200204:

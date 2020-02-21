@@ -1131,4 +1131,16 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * fix zero-termination of error message for overly long paths</comment>
     <requestid>769971</requestid>
   </revision>
+  <revision rev="131" vrev="11">
+    <srcmd5>3e2542bfd731b9c03fc55cb77457a0f5</srcmd5>
+    <version>unknown</version>
+    <time>1582299597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200213:
+  * remove obsolete/broken entries for rcp/rsh/rlogin
+  * chkstat: handle symlinks in final path elements correctly
+  * Revert &quot;Revert &quot;mariadb: settings for new auth_pam_tool (bsc#1160285)&quot;&quot;
+  * Revert &quot;mariadb: settings for new auth_pam_tool (bsc#1160285)&quot;</comment>
+    <requestid>774158</requestid>
+  </revision>
 </revisionlist>

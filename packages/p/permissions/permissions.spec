@@ -1,7 +1,7 @@
 #
 # spec file for package permissions
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION 20200204
+%define VERSION 20200213
 
 Name:           permissions
 Version:        %{VERSION}
