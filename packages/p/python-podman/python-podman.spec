@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-podman
-Version:        0.12.0
+Version:        1.6.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/containers/python-podman
+URL:            https://github.com/containers/python-podman
 Source:         https://files.pythonhosted.org/packages/source/p/podman/podman-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools >= 39}
 BuildRequires:  %{python_module varlink}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-psutil
@@ -64,7 +65,7 @@ A library to interact with a Podman server
 
 %files %{python_files}
 %doc AUTHORS CHANGES.txt ChangeLog README.md
-%license LICENSE LICENSE.txt
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog
