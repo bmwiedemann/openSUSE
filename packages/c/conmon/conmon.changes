@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
-Tue Jan 28 07:37:26 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+Fri Feb 21 09:22:06 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
-- Update to v2.0.10:
+- Update to v2.0.10 (bsc#1160460, bsc#1164390, jsc#ECO-1048,
+  jsc#SLE-11485, jsc#SLE-11331):
   - journal logging: write to /dev/null instead of -1 
 
 -------------------------------------------------------------------
