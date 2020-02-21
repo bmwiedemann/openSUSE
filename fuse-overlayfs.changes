@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Feb  4 08:12:04 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
-- Update to v0.7.6
+- Update to v0.7.6 (bsc#1160460)
   - do not look in lower layers for the ino if there is no origin
     xattr set
   - attempt to use the file path if the operation on the fd fails
@@ -66,7 +66,7 @@ Mon Aug 19 08:04:35 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 -------------------------------------------------------------------
 Mon Jun 17 06:43:31 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
-- Update to v0.4.1:
+- Update to v0.4.1 (bsc#1137860):
   - create_directory: do not redeclare variable buf
   - fuse-overlayfs: accept option "dev"
   - fuse-overlayfs: add check to readdir for the node parent
