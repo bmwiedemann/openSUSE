@@ -1,7 +1,7 @@
 #
 # spec file for package popt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,10 +23,10 @@ Release:        0
 Summary:        A C library for parsing command line parameters
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://www.rpm5.org/
+URL:            http://www.rpm.org/
 
 #CVS-Clone:	-d :pserver:anonymous@rpm5.org:/cvs co popt
-Source:         http://rpm5.org/files/popt/popt-%{version}.tar.gz
+Source:         http://ftp.rpm.org/mirror/popt/popt-%{version}.tar.gz
 Source2:        baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
