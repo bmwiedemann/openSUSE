@@ -182,22 +182,22 @@ unsorted:
   - QtAV-qml 
   - QtDMM 
   - QtPass 
-  - R-BH 
+  - R-BH: [x86_64] 
   - R-KernSmooth 
   - R-MASS 
   - R-Matrix 
   - R-Matrix-devel 
-  - R-PKI 
-  - R-R6 
-  - R-RCurl 
-  - R-RJSONIO 
-  - R-Rcpp 
-  - R-Rcpp-devel 
-  - R-Rcpp-doc 
+  - R-PKI: [x86_64] 
+  - R-R6: [x86_64] 
+  - R-RCurl: [x86_64] 
+  - R-RJSONIO: [x86_64] 
+  - R-Rcpp: [x86_64] 
+  - R-Rcpp-devel: [x86_64] 
+  - R-Rcpp-doc: [x86_64] 
   - R-base 
   - R-base-devel 
-  - R-base64enc 
-  - R-bitops 
+  - R-base64enc: [x86_64] 
+  - R-bitops: [x86_64] 
   - R-boot 
   - R-class 
   - R-cluster 
@@ -208,47 +208,47 @@ unsorted:
   - R-core-doc 
   - R-core-libs 
   - R-core-packages 
-  - R-crayon 
-  - R-curl 
+  - R-crayon: [x86_64] 
+  - R-curl: [x86_64] 
   - R-datasets 
-  - R-digest 
-  - R-digest-devel 
+  - R-digest: [x86_64] 
+  - R-digest-devel: [x86_64] 
   - R-foreign 
   - R-grDevices 
   - R-graphics 
   - R-grid 
-  - R-httpuv 
-  - R-jsonlite 
-  - R-later 
+  - R-httpuv: [x86_64] 
+  - R-jsonlite: [x86_64] 
+  - R-later: [x86_64] 
   - R-lattice 
-  - R-magrittr 
+  - R-magrittr: [x86_64] 
   - R-methods 
   - R-mgcv 
   - R-nlme 
   - R-nnet 
-  - R-openssl 
-  - R-openssl-doc 
-  - R-packrat 
+  - R-openssl: [x86_64] 
+  - R-openssl-doc: [x86_64] 
+  - R-packrat: [x86_64] 
   - R-parallel 
-  - R-plumber 
-  - R-praise 
-  - R-promises 
+  - R-plumber: [x86_64] 
+  - R-praise: [x86_64] 
+  - R-promises: [x86_64] 
   - R-recommended-packages 
-  - R-rlang 
+  - R-rlang: [x86_64] 
   - R-rpart 
-  - R-rsconnect 
-  - R-rstudioapi 
+  - R-rsconnect: [x86_64] 
+  - R-rstudioapi: [x86_64] 
   - R-spatial 
   - R-splines 
   - R-stats 
   - R-stats4 
-  - R-stringi 
-  - R-stringi-devel 
+  - R-stringi: [x86_64] 
+  - R-stringi-devel: [x86_64] 
   - R-survival 
   - R-tcltk 
   - R-tools 
   - R-utils 
-  - R-yaml 
+  - R-yaml: [x86_64] 
   - Regina-REXX 
   - Regina-REXX-devel 
   - Regina-REXX-doc 
@@ -1262,7 +1262,7 @@ unsorted:
   - boost_1_71_0-gnu-openmpi3-hpc-devel: [x86_64] 
   - boost_1_71_0-gnu-openmpi3-hpc-python2: [x86_64] 
   - boost_1_71_0-gnu-openmpi3-hpc-python3: [x86_64] 
-  - bootchart 
+  - bootchart: [x86_64] 
   - booth 
   - booth-test 
   - bootsplash-branding-KDE 
@@ -2127,7 +2127,7 @@ unsorted:
   - cura-engine-lulzbot: [x86_64] 
   - cura-fdm-materials 
   - cura-lulzbot: [x86_64] 
-  - curl-mini 
+  - curl-mini: [x86_64] 
   - curlftpfs 
   - cutecom 
   - cutmp3 
@@ -8513,9 +8513,9 @@ unsorted:
   - libcupsimage2-32bit: [x86_64] 
   - libcurl-devel 
   - libcurl-devel-32bit: [x86_64] 
-  - libcurl-mini-devel 
+  - libcurl-mini-devel: [x86_64] 
   - libcurl4-32bit: [x86_64] 
-  - libcurl4-mini 
+  - libcurl4-mini: [x86_64] 
   - libcvc-devel 
   - libcvc0 
   - libcwiid-devel 
