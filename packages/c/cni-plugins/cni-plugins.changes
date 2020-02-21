@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jan  9 13:24:41 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
-- Update to version 0.8.4:
+- Update to version 0.8.4 (bsc#1160460):
   * add support for mips64le
   * Add missing cniVersion in README example
   * bump go-iptables module to v0.4.5
