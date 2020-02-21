@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           calibre
-Version:        4.10.1
+Version:        4.11.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
