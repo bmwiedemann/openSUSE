@@ -16,13 +16,7 @@
 #
 
 
-%define bootstrap 0
-%define mini %{nil}
-%if 0%{?bootstrap}
-%bcond_with testsuite
-%else
 %bcond_without testsuite
-%endif
 %bcond_with mozilla_nss
 # need ssl always for python-pycurl
 %bcond_without openssl
@@ -45,8 +39,7 @@ Patch4:         curl-disabled-redirect-protocol-message.patch
 Patch5:         curl-use_OPENSSL_config.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-Requires:       libcurl4%{?mini} = %{version}
-%if !0%{?bootstrap}
+Requires:       libcurl4 = %{version}
 BuildRequires:  groff
 BuildRequires:  lzma
 BuildRequires:  openldap2-devel
@@ -57,14 +50,6 @@ BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(zlib)
-# avoid our own libcurl4 pulled in by cmake
-#!BuildRequires: libcurl4-mini
-%else
-Requires:       this-is-only-for-build-envs
-Conflicts:      curl
-# The -mini package is sufficient for the build hosts
-Provides:       curl = %{version}
-%endif
 %if %{with openssl}
 BuildRequires:  pkgconfig(libssl)
 %endif
@@ -83,32 +68,22 @@ server using any of the supported protocols (HTTP, HTTPS, FTP, FTPS,
 TFTP, DICT, TELNET, LDAP, or FILE). The command is designed to work
 without user interaction or any kind of interactivity.
 
-%package -n libcurl4%{?mini}
+%package -n libcurl4
 Summary:        Library for transferring data from URLs
-%if 0%{?bootstrap}
-Requires:       this-is-only-for-build-envs
-Conflicts:      libcurl4
-Provides:       libcurl4 = %{version}
-%endif
 
-%description -n libcurl4%{?mini}
+%description -n libcurl4
 The cURL shared library for accessing data using different
 network protocols.
 
-%package -n libcurl%{?mini}-devel
+%package -n libcurl-devel
 Summary:        Development files for the curl library
 Requires:       glibc-devel
-Requires:       libcurl4%{?mini} = %{version}
+Requires:       libcurl4 = %{version}
 # curl-devel (v 7.15.5) was last used in 10.2
 Provides:       curl-devel <= 7.15.5
 Obsoletes:      curl-devel < 7.16.2
-%if 0%{?bootstrap}
-Requires:       this-is-only-for-build-envs
-Conflicts:      libcurl-devel
-Provides:       libcurl-devel = %{version}-%{release}
-%endif
 
-%description -n libcurl%{?mini}-devel
+%description -n libcurl-devel
 Curl is a client to get documents and files from or send documents to a
 server using any of the supported protocols (HTTP, HTTPS, FTP, GOPHER,
 DICT, TELNET, LDAP, or FILE). The command is designed to work without
@@ -154,12 +129,10 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-nss \
 %endif
 %endif
-%if !0%{?bootstrap}
     --with-gssapi=%{_libexecdir}/mit \
     --with-libidn2 \
     --with-libssh \
     --with-libmetalink \
-%endif
     --enable-hidden-symbols \
     --disable-static \
     --enable-threaded-resolver
@@ -197,8 +170,8 @@ pushd scripts
 %make_install
 popd
 
-%post -n libcurl4%{?mini} -p /sbin/ldconfig
-%postun -n libcurl4%{?mini} -p /sbin/ldconfig
+%post -n libcurl4 -p /sbin/ldconfig
+%postun -n libcurl4 -p /sbin/ldconfig
 
 %files
 %doc README RELEASE-NOTES
@@ -212,11 +185,11 @@ popd
 %dir %{_datadir}/fish/vendor_completions.d/
 %{_datadir}/fish/vendor_completions.d/curl.fish
 
-%files -n libcurl4%{?mini}
+%files -n libcurl4
 %license COPYING
 %{_libdir}/libcurl.so.4*
 
-%files -n libcurl%{?mini}-devel
+%files -n libcurl-devel
 %{_bindir}/curl-config
 %{_includedir}/curl
 %dir %{_datadir}/aclocal/

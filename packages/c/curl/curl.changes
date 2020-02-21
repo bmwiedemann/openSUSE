@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:11:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate curl-mini: The reason for this to exist was that cmake
+  pulled in curl into too many places, causing build cycles. A new
+  cmake-mini was generated, eliminating that need.
+
+-------------------------------------------------------------------
 Wed Jan  8 09:54:50 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.68.0
@@ -8,7 +15,7 @@ Wed Jan  8 09:54:50 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - curl: add --etag-compare and --etag-save
     - curl: add --parallel-immediate
     - multi: add curl_multi_wakeup()
-    - openssl: CURLSSLOPT_NO_PARTIALCHAIN can disable partial cert chains 
+    - openssl: CURLSSLOPT_NO_PARTIALCHAIN can disable partial cert chains
   * Bugfixes:
     - CVE-2019-15601: file: on Windows, refuse paths that start with \\
     - Azure Pipelines: add several builds
