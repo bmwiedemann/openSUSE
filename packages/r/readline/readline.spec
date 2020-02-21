@@ -1,7 +1,7 @@
 #
 # spec file for package readline
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Release:        0
 Summary:        The readline library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.gnu.org/software/readline/
+URL:            http://www.gnu.org/software/readline/
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
 Source0:        ftp://ftp.gnu.org/gnu/readline/readline-%{version}%{rextend}.tar.gz
 Source1:        readline-%{version}-patches.tar.bz2

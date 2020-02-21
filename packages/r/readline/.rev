@@ -86,4 +86,21 @@
     <comment></comment>
     <requestid>729453</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b963cc8d128534311d3ae1d8e6cff577</srcmd5>
+    <version>8.0</version>
+    <time>1582299589</time>
+    <user>dimstar_suse</user>
+    <comment>- Add official patch readline80-002
+  When using previous-history to go back beyond the beginning of the history list,
+  it's possible to move to an incorrect partial line.
+- Add official patch readline80-003
+  Reading history entries with timestamps can result in history entries joined
+  by linefeeds.
+- Add official patch readline80-004
+  If writing the history file fails, and renaming the backup history file fails,
+  it's possible for readline's history code to return the wrong error to its
+  caller.</comment>
+    <requestid>774144</requestid>
+  </revision>
 </revisionlist>

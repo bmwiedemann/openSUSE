@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 13 11:10:31 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch readline80-002
+  When using previous-history to go back beyond the beginning of the history list,
+  it's possible to move to an incorrect partial line.
+- Add official patch readline80-003
+  Reading history entries with timestamps can result in history entries joined
+  by linefeeds.
+- Add official patch readline80-004
+  If writing the history file fails, and renaming the backup history file fails,
+  it's possible for readline's history code to return the wrong error to its
+  caller.
+
+-------------------------------------------------------------------
 Wed Sep  4 09:48:58 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - Avoid pulling in readline-doc into every installation. Instead of
