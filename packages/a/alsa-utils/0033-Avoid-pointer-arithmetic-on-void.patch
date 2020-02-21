@@ -1,0 +1,103 @@
+From 62a765087e3885a463dbf0d888c5d666da9ee7b3 Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Wed, 5 Feb 2020 00:12:19 -0800
+Subject: [PATCH 33/35] Avoid pointer arithmetic on `void *`
+
+The pointer operand to the binary `+` operator must be to a complete
+object type.
+
+Signed-off-by: Michael Forney <mforney@mforney.org>
+Reviewed-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ aplay/aplay.c                     | 4 ++--
+ axfer/xfer-libasound-irq-mmap.c   | 7 ++++---
+ axfer/xfer-libasound-timer-mmap.c | 4 ++--
+ bat/common.c                      | 2 +-
+ seq/aplaymidi/aplaymidi.c         | 2 +-
+ 5 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 908093c45c90..08395f695287 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -442,7 +442,7 @@ static ssize_t xwrite(int fd, const void *buf, size_t count)
+ 	size_t offset = 0;
+ 
+ 	while (offset < count) {
+-		written = write(fd, buf + offset, count - offset);
++		written = write(fd, (char *)buf + offset, count - offset);
+ 		if (written <= 0)
+ 			return written;
+ 
+@@ -1210,7 +1210,7 @@ static int test_au(int fd, void *buffer)
+ 	hwparams.channels = BE_INT(ap->channels);
+ 	if (hwparams.channels < 1 || hwparams.channels > 256)
+ 		return -1;
+-	if ((size_t)safe_read(fd, buffer + sizeof(AuHeader), BE_INT(ap->hdr_size) - sizeof(AuHeader)) != BE_INT(ap->hdr_size) - sizeof(AuHeader)) {
++	if ((size_t)safe_read(fd, (char *)buffer + sizeof(AuHeader), BE_INT(ap->hdr_size) - sizeof(AuHeader)) != BE_INT(ap->hdr_size) - sizeof(AuHeader)) {
+ 		error(_("read error"));
+ 		prg_exit(EXIT_FAILURE);
+ 	}
+diff --git a/axfer/xfer-libasound-irq-mmap.c b/axfer/xfer-libasound-irq-mmap.c
+index a13b3c300354..386e741de733 100644
+--- a/axfer/xfer-libasound-irq-mmap.c
++++ b/axfer/xfer-libasound-irq-mmap.c
+@@ -146,9 +146,10 @@ static int irq_mmap_process_frames(struct libasound_state *state,
+ 	// TODO: Perhaps, the complex layout can be supported as a variation of
+ 	// vector type. However, there's no driver with this layout.
+ 	if (layout->vector == NULL) {
+-		frame_buf = areas[0].addr;
+-		frame_buf += snd_pcm_frames_to_bytes(state->handle,
+-						     frame_offset);
++		char *buf;
++		buf = areas[0].addr;
++		buf += snd_pcm_frames_to_bytes(state->handle, frame_offset);
++		frame_buf = buf;
+ 	} else {
+ 		int i;
+ 		for (i = 0; i < layout->samples_per_frame; ++i) {
+diff --git a/axfer/xfer-libasound-timer-mmap.c b/axfer/xfer-libasound-timer-mmap.c
+index 1c642fe58b28..ba26e2995f5f 100644
+--- a/axfer/xfer-libasound-timer-mmap.c
++++ b/axfer/xfer-libasound-timer-mmap.c
+@@ -100,8 +100,8 @@ static void *get_buffer(struct libasound_state *state,
+ 
+ 	if (layout->vector == NULL) {
+ 		char *buf;
+-		buf = areas[0].addr + snd_pcm_frames_to_bytes(state->handle,
+-							      frame_offset);
++		buf = areas[0].addr;
++		buf += snd_pcm_frames_to_bytes(state->handle, frame_offset);
+ 		frame_buf = buf;
+ 	} else {
+ 		int i;
+diff --git a/bat/common.c b/bat/common.c
+index d3d1f285449c..339e749fd74a 100644
+--- a/bat/common.c
++++ b/bat/common.c
+@@ -231,7 +231,7 @@ int generate_input_data(struct bat *bat, void *buffer, int bytes, int frames)
+ 		load = 0;
+ 
+ 		while (1) {
+-			err = fread(buffer + load, 1, bytes - load, bat->fp);
++			err = fread((char *)buffer + load, 1, bytes - load, bat->fp);
+ 			if (0 == err) {
+ 				if (feof(bat->fp)) {
+ 					fprintf(bat->log,
+diff --git a/seq/aplaymidi/aplaymidi.c b/seq/aplaymidi/aplaymidi.c
+index 12d6fac3b0dc..b086e7015aa2 100644
+--- a/seq/aplaymidi/aplaymidi.c
++++ b/seq/aplaymidi/aplaymidi.c
+@@ -633,7 +633,7 @@ static void handle_big_sysex(snd_seq_event_t *ev)
+ 		check_snd("sync output", err);
+ 		if (sleep(1))
+ 			fatal("aborted");
+-		ev->data.ext.ptr += MIDI_BYTES_PER_SEC;
++		ev->data.ext.ptr = (char *)ev->data.ext.ptr + MIDI_BYTES_PER_SEC;
+ 		length -= MIDI_BYTES_PER_SEC;
+ 	}
+ 	ev->data.ext.len = length;
+-- 
+2.16.4
+

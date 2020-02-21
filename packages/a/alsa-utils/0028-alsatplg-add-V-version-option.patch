@@ -1,0 +1,93 @@
+From 32e7016fd710f6ed9d514100c7c05453974036d0 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 20 Dec 2019 15:23:27 +0100
+Subject: [PATCH 28/35] alsatplg: add -V,--version option
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ topology/alsatplg.rst |  3 +++
+ topology/topology.c   | 20 ++++++++++++++++++--
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/topology/alsatplg.rst b/topology/alsatplg.rst
+index e09c865cc9b2..260454bfc526 100644
+--- a/topology/alsatplg.rst
++++ b/topology/alsatplg.rst
+@@ -47,6 +47,9 @@ Available options:
+   **-h**, **--help**
+     this help
+ 
++  **-V**, **--version**
++    show the utility version and versions of used libraries
++
+   **-c**, **--compile** `FILE`
+     source configuration file for the compilation
+ 
+diff --git a/topology/topology.c b/topology/topology.c
+index a94941ae762e..101f8ccf16ea 100644
+--- a/topology/topology.c
++++ b/topology/topology.c
+@@ -34,10 +34,11 @@
+ #include <alsa/asoundlib.h>
+ #include <alsa/topology.h>
+ #include "gettext.h"
++#include "version.h"
+ 
+ static snd_output_t *log;
+ 
+-static void usage(char *name)
++static void usage(const char *name)
+ {
+ 	printf(
+ _("Usage: %s [OPTIONS]...\n"
+@@ -51,9 +52,20 @@ _("Usage: %s [OPTIONS]...\n"
+ "-s, --sort              sort the identifiers in the normalized output\n"
+ "-g, --group             save configuration by group indexes\n"
+ "-x, --nocheck           save configuration without additional integrity checks\n"
++"-V, --version           print version\n"
+ ), name);
+ }
+ 
++static void version(const char *name)
++{
++	printf(
++_("%s version %s\n"
++"libasound version %s\n"
++"libatopology version %s\n"
++), name, SND_UTIL_VERSION_STR,
++   snd_asoundlib_version(), snd_tplg_version());
++}
++
+ static int load(snd_tplg_t **tplg, const char *source_file, int cflags)
+ {
+ 	int fd, err;
+@@ -227,7 +239,7 @@ static int compile(const char *source_file, const char *output_file, int cflags)
+ 
+ int main(int argc, char *argv[])
+ {
+-	static const char short_options[] = "hc:n:u:v:o:sgxz";
++	static const char short_options[] = "hc:n:u:v:o:sgxzV";
+ 	static const struct option long_options[] = {
+ 		{"help", 0, NULL, 'h'},
+ 		{"verbose", 1, NULL, 'v'},
+@@ -239,6 +251,7 @@ int main(int argc, char *argv[])
+ 		{"group", 0, NULL, 'g'},
+ 		{"nocheck", 0, NULL, 'x'},
+ 		{"dapm-nosort", 0, NULL, 'z'},
++		{"version", 0, NULL, 'V'},
+ 		{0, 0, 0, 0},
+ 	};
+ 	char *source_file = NULL;
+@@ -286,6 +299,9 @@ int main(int argc, char *argv[])
+ 		case 'x':
+ 			sflags |= SND_TPLG_SAVE_NOCHECK;
+ 			break;
++		case 'V':
++			version(argv[0]);
++			return 0;
+ 		default:
+ 			fprintf(stderr, _("Try `%s --help' for more information.\n"), argv[0]);
+ 			return 1;
+-- 
+2.16.4
+

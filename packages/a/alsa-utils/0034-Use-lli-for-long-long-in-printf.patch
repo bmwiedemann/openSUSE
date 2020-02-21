@@ -1,0 +1,59 @@
+From 646b3b1c0badbfd1b2ea7b82eb59d43a460c531c Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Wed, 5 Feb 2020 00:12:20 -0800
+Subject: [PATCH 34/35] Use %lli for long long in printf
+
+The `L` length modifier only applies to floating-point conversion
+specifiers, and `ll` is used for `long long` integers.
+
+Although glibc accepts %Li, musl does not and returns EINVAL.
+
+Signed-off-by: Michael Forney <mforney@mforney.org>
+Reviewed-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsactl/state.c | 4 ++--
+ amixer/amixer.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/alsactl/state.c b/alsactl/state.c
+index 38e85c06c0b0..22e0269fd30a 100644
+--- a/alsactl/state.c
++++ b/alsactl/state.c
+@@ -336,9 +336,9 @@ static int get_control(snd_ctl_t *handle, snd_ctl_elem_id_t *id, snd_config_t *t
+ 		long long max = snd_ctl_elem_info_get_max64(info);
+ 		long long step = snd_ctl_elem_info_get_step64(info);
+ 		if (step)
+-			sprintf(buf, "%Li - %Li (step %Li)", min, max, step);
++			sprintf(buf, "%lli - %lli (step %lli)", min, max, step);
+ 		else
+-			sprintf(buf, "%Li - %Li", min, max);
++			sprintf(buf, "%lli - %lli", min, max);
+ 		err = snd_config_string_add(comment, "range", buf);
+ 		if (err < 0) {
+ 			error("snd_config_string_add: %s", snd_strerror(err));
+diff --git a/amixer/amixer.c b/amixer/amixer.c
+index 928f7c5d6482..4c19a583e5b1 100644
+--- a/amixer/amixer.c
++++ b/amixer/amixer.c
+@@ -620,7 +620,7 @@ static int show_control(const char *space, snd_hctl_elem_t *elem,
+ 		       snd_ctl_elem_info_get_step(info));
+ 		break;
+ 	case SND_CTL_ELEM_TYPE_INTEGER64:
+-		printf(",min=%Li,max=%Li,step=%Li\n", 
++		printf(",min=%lli,max=%lli,step=%lli\n",
+ 		       snd_ctl_elem_info_get_min64(info),
+ 		       snd_ctl_elem_info_get_max64(info),
+ 		       snd_ctl_elem_info_get_step64(info));
+@@ -662,7 +662,7 @@ static int show_control(const char *space, snd_hctl_elem_t *elem,
+ 				printf("%li", snd_ctl_elem_value_get_integer(control, idx));
+ 				break;
+ 			case SND_CTL_ELEM_TYPE_INTEGER64:
+-				printf("%Li", snd_ctl_elem_value_get_integer64(control, idx));
++				printf("%lli", snd_ctl_elem_value_get_integer64(control, idx));
+ 				break;
+ 			case SND_CTL_ELEM_TYPE_ENUMERATED:
+ 				printf("%u", snd_ctl_elem_value_get_enumerated(control, idx));
+-- 
+2.16.4
+
