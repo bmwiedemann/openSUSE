@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Feb 14 14:02:39 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200214:
+  * Locales: Update Russian Translations (ru_RU). (#3253)
+  * onepad: Update to latest controller database.
+  * Locales: Translation/localisation fixes for Arabic/French/German. (#3251)
+  * Locales: Update Japanese translations ja_JP. (#3250)
+  * Locales: Update Dutch/Polish translations (nl_NL, pl_PL). (#3245)
+  * NSIS: Update VC Redist URL/comments
+
+-------------------------------------------------------------------
+Mon Feb 10 19:32:14 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200210:
+  * locales: Refresh locales to include updated strings
+  * locales: Renormalise nl_NL line endings
+  * locales: Remove pl_PL duplicate metadata
+  * PCSX2: PCSX2 1.6 Documentation Overhaul. (#3139)
+  * onepad: Update to latest controller database.
+
+-------------------------------------------------------------------
+Sun Feb  9 14:36:33 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Disable pkgconfig(libpcap) to fix Leap builds
+
+-------------------------------------------------------------------
+Fri Feb 07 22:14:53 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 1.5.0~git20200207:
+  * gsdx-hw: Add Jak 2 JP to crc list. (#3240)
+  * GameDB: New fixes/patches
+  * Locales: Fix First time wizard window width on Chinese Simplified language zn_CN.
+  * Locales: Update Russian translations ru_RU. (#3234)
+  * Locales: Update German translations de_DE. (#3230)
+  * onepad: Broken haptic != Broken controller.
+  * gsdx-gui: Update crc hack level and Image load store tooltips to reflect recent changes.
+  * gsdx-hw: Move GSC_XenosagaE3 crc hacks to Aggressive state.
+
+-------------------------------------------------------------------
 Fri Jan 31 08:52:42 UTC 2020 - pousaduarte@gmail.com
 
 - Update to version 1.5.0~git20200127:

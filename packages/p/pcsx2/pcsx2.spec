@@ -17,7 +17,7 @@
 
 
 Name:           pcsx2
-Version:        1.5.0~git20200127
+Version:        1.5.0~git20200214
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        LGPL-3.0-only
@@ -36,7 +36,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libaio-devel
 BuildRequires:  libpcap-devel-static
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libpcap)
+# Disabled for Leap builds
+#BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxml-2.0) 
 
