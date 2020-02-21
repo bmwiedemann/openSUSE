@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:56:07 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch bash50-012
+  When using previous-history to go back beyond the beginning of the history list,
+  it's possible to move to an incorrect partial line.
+- Add official patch bash50-013
+  Reading history entries with timestamps can result in history entries joined
+  by linefeeds.
+- Add official patch bash50-014
+  If the current line is empty, using the emacs C-xC-e binding to enter the
+  editor will edit the previous command instead of the current (empty) one.
+- Add official patch bash50-015
+  If alias expansion is enabled when processing the command argument to the
+  `-c' option, an alias is defined in that command, and the command ends with
+  the invocation of that alias, the shell's command parser can prematurely
+  terminate before the entire command is executed.
+- Add official patch bash50-016
+  Bash waits too long to reap /dev/fd process substitutions used as redirections
+  with loops and group commands, which can lead to file descriptor exhaustion.
+
+-------------------------------------------------------------------
 Wed Oct 16 12:49:36 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Remove PILOTPORT and PILOTRATE environment variable from

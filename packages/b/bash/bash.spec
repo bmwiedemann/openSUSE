@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ License:        GPL-3.0-or-later
 Group:          System/Shells
 Suggests:       command-not-found
 Suggests:       bash-doc = %version
-Url:            http://www.gnu.org/software/bash/bash.html
+URL:            http://www.gnu.org/software/bash/bash.html
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
 Source0:        ftp://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz
 Source1:        bash-%{bversion}-patches.tar.bz2
