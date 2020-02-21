@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-neovim
-Version:        0.3.2
+Version:        0.4.1
 Release:        0
 Summary:        Python client to Neovim
 License:        Apache-2.0
 Group:          Productivity/Text/Editors
 URL:            https://github.com/neovim/pynvim
-Source:         https://github.com/neovim/pynvim/archive/%{version}/pynvim-%{version}.tar.gz
+Source:         https://github.com/neovim/%{modname}/archive/%{version}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM setup_version.patch gh#neovim/pynvim#431 mcepl@suse.com
+# Upstream setup.py has incorrect version.
+Patch0:         setup_version.patch
 BuildRequires:  fdupes
 %if 0%{?rhel} >= 7
 BuildRequires:  python34-pytest

@@ -138,4 +138,32 @@
     <comment></comment>
     <requestid>667629</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ed7fe9b0190621360cca035a107f95ac</srcmd5>
+    <version>0.4.1</version>
+    <time>1582299792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  - Logging will be disabled on release tarballs and pip packages
+    for performance reasons. use scripts/enable_log_statements.sh
+    and scripts/disable_log_statements.sh to toggle the
+    availability of logging.
+  - 09bba08 remove scrutinizer
+  - f048531 make pytest_runner an optional dependency
+  - 5b50ce9 fix missing self.name for nvim_error_event
+  - 175a2cc Test with python 3.8
+  - 5a2b552 fix the disable logging script.
+  - 2a31195 Update docs/tests to use --headless when needed
+  - 1d121e0 Update tests for new global/local option behavior
+  - 6310063 session: set client info (not only for host)
+  - 58ff62f python2 compat: fix buffer inequality
+  - a63cddb ci: fix coverage reporting
+  - f4f3bf5 api: key deletion; use KeyError for maps (if_python
+    compat)
+  - d3c389f host: do not run __init__ in plugin until the plugin
+    is invoked
+- Add temporary patch setup_version.patch setting the version
+  number in setup.py correctly. gh#neovim/pynvim#431 (forwarded request 777949 from mcepl)</comment>
+    <requestid>777951</requestid>
+  </revision>
 </revisionlist>
