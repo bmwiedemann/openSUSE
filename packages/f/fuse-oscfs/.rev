@@ -7,4 +7,18 @@
     <comment>python2-oscfs is renamed to fuse-oscfs (see sr#705678)</comment>
     <requestid>713219</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f59811e1786f7c0957544190895a2f9</srcmd5>
+    <version>0.7.1</version>
+    <time>1582299808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1:
+  - fix read() with offset especially with large files. This fixes use of
+    various tools when applied on oscfs files e.g. `rpm2cpio` or
+    `tail *.spec` previously failed or behaved strangely.
+  - be robust against non-ASCII characters in OBS buildlogs.
+  - apply caching also to actual file content to be more efficient when e.g.
+    operating on larger files.</comment>
+    <requestid>777996</requestid>
+  </revision>
 </revisionlist>
