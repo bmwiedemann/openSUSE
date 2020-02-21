@@ -1,7 +1,7 @@
 #
 # spec file for package libstoragemgmt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define python3 0
 %endif
 Name:           libstoragemgmt
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Storage array management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
