@@ -24,7 +24,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        1.9.13
+Version:        1.9.14
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
