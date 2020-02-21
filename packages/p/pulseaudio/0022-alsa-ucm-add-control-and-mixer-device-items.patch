@@ -1,0 +1,99 @@
+From ddd0fdb9970b920ef95e33cfe50a1e492be9d60b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 6 Dec 2019 20:33:45 +0100
+Subject: [PATCH] alsa-ucm: add control and mixer device items
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c |  5 +++++
+ src/modules/alsa/alsa-ucm.h | 15 +++++++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index 45eb83085b38..2a594b4df546 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -90,16 +90,20 @@ static void ucm_port_update_available(pa_alsa_ucm_port_data *port);
+ static struct ucm_items item[] = {
+     {"PlaybackPCM", PA_ALSA_PROP_UCM_SINK},
+     {"CapturePCM", PA_ALSA_PROP_UCM_SOURCE},
++    {"PlaybackCTL", PA_ALSA_PROP_UCM_PLAYBACK_CTL_DEVICE},
+     {"PlaybackVolume", PA_ALSA_PROP_UCM_PLAYBACK_VOLUME},
+     {"PlaybackSwitch", PA_ALSA_PROP_UCM_PLAYBACK_SWITCH},
++    {"PlaybackMixer", PA_ALSA_PROP_UCM_PLAYBACK_MIXER_DEVICE},
+     {"PlaybackMixerElem", PA_ALSA_PROP_UCM_PLAYBACK_MIXER_ELEM},
+     {"PlaybackMasterElem", PA_ALSA_PROP_UCM_PLAYBACK_MASTER_ELEM},
+     {"PlaybackMasterType", PA_ALSA_PROP_UCM_PLAYBACK_MASTER_TYPE},
+     {"PlaybackPriority", PA_ALSA_PROP_UCM_PLAYBACK_PRIORITY},
+     {"PlaybackRate", PA_ALSA_PROP_UCM_PLAYBACK_RATE},
+     {"PlaybackChannels", PA_ALSA_PROP_UCM_PLAYBACK_CHANNELS},
++    {"CaptureCTL", PA_ALSA_PROP_UCM_CAPTURE_CTL_DEVICE},
+     {"CaptureVolume", PA_ALSA_PROP_UCM_CAPTURE_VOLUME},
+     {"CaptureSwitch", PA_ALSA_PROP_UCM_CAPTURE_SWITCH},
++    {"CaptureMixer", PA_ALSA_PROP_UCM_CAPTURE_MIXER_DEVICE},
+     {"CaptureMixerElem", PA_ALSA_PROP_UCM_CAPTURE_MIXER_ELEM},
+     {"CaptureMasterElem", PA_ALSA_PROP_UCM_CAPTURE_MASTER_ELEM},
+     {"CaptureMasterType", PA_ALSA_PROP_UCM_CAPTURE_MASTER_TYPE},
+@@ -107,6 +111,7 @@ static struct ucm_items item[] = {
+     {"CaptureRate", PA_ALSA_PROP_UCM_CAPTURE_RATE},
+     {"CaptureChannels", PA_ALSA_PROP_UCM_CAPTURE_CHANNELS},
+     {"TQ", PA_ALSA_PROP_UCM_QOS},
++    {"JackCTL", PA_ALSA_PROP_UCM_JACK_DEVICE},
+     {"JackControl", PA_ALSA_PROP_UCM_JACK_CONTROL},
+     {"JackHWMute", PA_ALSA_PROP_UCM_JACK_HW_MUTE},
+     {NULL, NULL},
+diff --git a/src/modules/alsa/alsa-ucm.h b/src/modules/alsa/alsa-ucm.h
+index a6863abc05a6..014bc334ad67 100644
+--- a/src/modules/alsa/alsa-ucm.h
++++ b/src/modules/alsa/alsa-ucm.h
+@@ -45,12 +45,18 @@ typedef void snd_use_case_mgr_t;
+ /** For devices: Playback roles */
+ #define PA_ALSA_PROP_UCM_PLAYBACK_ROLES             "alsa.ucm.playback.roles"
+ 
++/** For devices: Playback control device name  */
++#define PA_ALSA_PROP_UCM_PLAYBACK_CTL_DEVICE        "alsa.ucm.playback.ctldev"
++
+ /** For devices: Playback control volume ID string. e.g PlaybackVolume */
+ #define PA_ALSA_PROP_UCM_PLAYBACK_VOLUME            "alsa.ucm.playback.volume"
+ 
+ /** For devices: Playback switch e.g PlaybackSwitch */
+ #define PA_ALSA_PROP_UCM_PLAYBACK_SWITCH            "alsa.ucm.playback.switch"
+ 
++/** For devices: Playback mixer device name  */
++#define PA_ALSA_PROP_UCM_PLAYBACK_MIXER_DEVICE      "alsa.ucm.playback.mixer.device"
++
+ /** For devices: Playback mixer identifier */
+ #define PA_ALSA_PROP_UCM_PLAYBACK_MIXER_ELEM        "alsa.ucm.playback.mixer.element"
+ 
+@@ -78,12 +84,18 @@ typedef void snd_use_case_mgr_t;
+ /** For devices: Capture roles */
+ #define PA_ALSA_PROP_UCM_CAPTURE_ROLES              "alsa.ucm.capture.roles"
+ 
++/** For devices: Capture control device name  */
++#define PA_ALSA_PROP_UCM_CAPTURE_CTL_DEVICE         "alsa.ucm.capture.ctldev"
++
+ /** For devices: Capture controls volume ID string. e.g CaptureVolume */
+ #define PA_ALSA_PROP_UCM_CAPTURE_VOLUME             "alsa.ucm.capture.volume"
+ 
+ /** For devices: Capture switch e.g CaptureSwitch */
+ #define PA_ALSA_PROP_UCM_CAPTURE_SWITCH             "alsa.ucm.capture.switch"
+ 
++/** For devices: Capture mixer device name  */
++#define PA_ALSA_PROP_UCM_CAPTURE_MIXER_DEVICE       "alsa.ucm.capture.mixer.device"
++
+ /** For devices: Capture mixer identifier */
+ #define PA_ALSA_PROP_UCM_CAPTURE_MIXER_ELEM         "alsa.ucm.capture.mixer.element"
+ 
+@@ -114,6 +126,9 @@ typedef void snd_use_case_mgr_t;
+ /** For devices: The modifier (if any) that this device corresponds to */
+ #define PA_ALSA_PROP_UCM_MODIFIER "alsa.ucm.modifier"
+ 
++/* Corresponds to the "JackCTL" UCM value. */
++#define PA_ALSA_PROP_UCM_JACK_DEVICE		    "alsa.ucm.jack_device"
++
+ /* Corresponds to the "JackControl" UCM value. */
+ #define PA_ALSA_PROP_UCM_JACK_CONTROL               "alsa.ucm.jack_control"
+ 
+-- 
+2.16.4
+

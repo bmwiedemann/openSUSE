@@ -1,0 +1,93 @@
+From dacfcbb09c9d91ca20dedfa449da37f0f7e3953f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 7 Dec 2019 11:50:13 +0100
+Subject: [PATCH] alsa-ucm: use the proper mixer name for ucm pcm sink/source
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-sink.c   |  9 ++++++++-
+ src/modules/alsa/alsa-source.c | 10 +++++++++-
+ src/modules/alsa/alsa-ucm.c    |  9 +++++++--
+ 3 files changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-sink.c b/src/modules/alsa/alsa-sink.c
+index 19e9efc3674b..5ea4b2597449 100644
+--- a/src/modules/alsa/alsa-sink.c
++++ b/src/modules/alsa/alsa-sink.c
+@@ -2083,11 +2083,18 @@ static void set_sink_name(pa_sink_new_data *data, pa_modargs *ma, const char *de
+ }
+ 
+ static void find_mixer(struct userdata *u, pa_alsa_mapping *mapping, const char *element, bool ignore_dB) {
++    const char *mdev;
+ 
+     if (!mapping && !element)
+         return;
+ 
+-    if (!(u->mixer_handle = pa_alsa_open_mixer_for_pcm(u->pcm_handle, &u->control_device))) {
++    mdev = pa_proplist_gets(mapping->proplist, "alsa.mixer_device");
++    if (mdev) {
++        u->mixer_handle = pa_alsa_open_mixer_by_name(mdev);
++    } else {
++        u->mixer_handle = pa_alsa_open_mixer_for_pcm(u->pcm_handle, &u->control_device);
++    }
++    if (!mdev) {
+         pa_log_info("Failed to find a working mixer device.");
+         return;
+     }
+diff --git a/src/modules/alsa/alsa-source.c b/src/modules/alsa/alsa-source.c
+index 34946b74c77f..bd78d45e2a5b 100644
+--- a/src/modules/alsa/alsa-source.c
++++ b/src/modules/alsa/alsa-source.c
+@@ -1789,10 +1789,18 @@ static void set_source_name(pa_source_new_data *data, pa_modargs *ma, const char
+ }
+ 
+ static void find_mixer(struct userdata *u, pa_alsa_mapping *mapping, const char *element, bool ignore_dB) {
++    const char *mdev;
++
+     if (!mapping && !element)
+         return;
+ 
+-    if (!(u->mixer_handle = pa_alsa_open_mixer_for_pcm(u->pcm_handle, &u->control_device))) {
++    mdev = pa_proplist_gets(mapping->proplist, "alsa.mixer_device");
++    if (mdev) {
++        u->mixer_handle = pa_alsa_open_mixer_by_name(mdev);
++    } else {
++        u->mixer_handle = pa_alsa_open_mixer_for_pcm(u->pcm_handle, &u->control_device);
++    }
++    if (!mdev) {
+         pa_log_info("Failed to find a working mixer device.");
+         return;
+     }
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index d02adab650fe..d1ca62d28619 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -1339,7 +1339,8 @@ static void ucm_add_mapping(pa_alsa_profile *p, pa_alsa_mapping *m) {
+ 
+ static void alsa_mapping_add_ucm_device(pa_alsa_mapping *m, pa_alsa_ucm_device *device) {
+     char *cur_desc;
+-    const char *new_desc;
++    const char *new_desc, *mdev;
++    bool is_sink = m->direction == PA_ALSA_DIRECTION_OUTPUT;
+ 
+     pa_idxset_put(m->ucm_context.ucm_devices, device, NULL);
+ 
+@@ -1355,10 +1356,14 @@ static void alsa_mapping_add_ucm_device(pa_alsa_mapping *m, pa_alsa_ucm_device *
+     m->description = m->description ? m->description : pa_xstrdup("");
+ 
+     /* save mapping to ucm device */
+-    if (m->direction == PA_ALSA_DIRECTION_OUTPUT)
++    if (is_sink)
+         device->playback_mapping = m;
+     else
+         device->capture_mapping = m;
++
++    mdev = get_mixer_device(device, is_sink);
++    if (mdev)
++        pa_proplist_sets(m->proplist, "alsa.mixer_device", mdev);
+ }
+ 
+ static void alsa_mapping_add_ucm_modifier(pa_alsa_mapping *m, pa_alsa_ucm_modifier *modifier) {
+-- 
+2.16.4
+

@@ -50,6 +50,39 @@ Patch2:         pulseaudio-wrong-memset.patch
 Patch5:         qpaeq-shebang.patch
 # PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
 Patch6:         pulseaudio-old-systemd-workaround.patch
+# PATCH-FIX-UPSTREAM
+Patch1001:      0001-alsa-mixer-path-test-Hide-unused-functions-when-buil.patch
+Patch1002:      0002-alsa-mixer-recognize-the-Speaker-Jack-control.patch
+Patch1003:      0003-alsa-mixer-add-support-for-SteelSeries-Arctis-Pro-20.patch
+Patch1004:      0004-alsa-mixer-Add-support-for-SteelSeries-Arctis-5-2019.patch
+Patch1005:      0005-alsa-mixer-add-support-for-LucidSound-LS31-and-creat.patch
+Patch1006:      0006-alsa-ucm-use-ucm2-name-for-the-direct-card-index-ope.patch
+Patch1007:      0007-alsa-ucm-add-mixer-IDs-to-ucm_items.patch
+Patch1008:      0008-alsa-mixer-handle-the-index-for-ALSA-mixer-element-i.patch
+Patch1009:      0009-alsa-mixer-improve-alsa_id_decode-function.patch
+Patch1010:      0010-alsa-ucm-Support-Playback-CaptureVolume.patch
+Patch1011:      0011-alsa-ucm-Fix-volume-control-based-on-review.patch
+Patch1012:      0012-alsa-ucm-use-the-correct-mixer-identifiers-as-first.patch
+Patch1013:      0013-alsa-ucm-add-support-for-master-volume.patch
+Patch1014:      0014-alsa-ucm-split-correctly-JackHWMute-device-names.patch
+Patch1015:      0015-alsa-ucm-fix-parsing-for-JackControl.patch
+Patch1016:      0016-alsa-ucm-add-comments-to-ucm_get_mixer_id.patch
+Patch1017:      0017-alsa-ucm-validate-access-to-PA_DEVICE_PORT_DATA.patch
+Patch1018:      0018-alsa-Skip-resume-PCM-if-hardware-doesn-t-support-it.patch
+Patch1019:      0019-alsa-ucm-parse-correctly-the-device-values.patch
+Patch1020:      0020-alsa-ucm-do-not-try-to-use-UCM-device-name-as-jack-n.patch
+Patch1021:      0021-alsa-util-do-not-try-to-guess-the-mixer-name-from-th.patch
+Patch1022:      0022-alsa-ucm-add-control-and-mixer-device-items.patch
+Patch1023:      0023-alsa-ucm-get-the-mixer-names-from-ucm-don-t-guess.patch
+Patch1024:      0024-alsa-ucm-use-the-proper-mixer-name-for-ucm-pcm-sink-.patch
+Patch1025:      0025-alsa-mixer-handle-interface-type-CARD-PCM-for-mixer-.patch
+Patch1026:      0026-alsa-mixer-Add-the-ability-to-pass-the-intended-role.patch
+Patch1027:      0027-alsa-mixer-Set-the-intended-role-of-Steelseries-Arct.patch
+Patch1028:      0028-alsa-rewrite-mixer-open-close-cache-mixer-accesses-i.patch
+Patch1029:      0029-alsa-ucm-add-support-for-HDMI-ELD.patch
+Patch1030:      0030-alsa-mixer-do-the-quick-card-number-lookup-to-save-m.patch
+Patch1031:      0031-alsa-mixer-improve-check-for-the-empty-path-set-for-.patch
+Patch1032:      0032-alsa-ucm-allow-to-set-profile-priority-from-UCM-valu.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  doxygen
@@ -338,6 +371,38 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %prep
 %setup -q -T -b0
 %patch0
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
+%patch1006 -p1
+%patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
+%patch1010 -p1
+%patch1011 -p1
+%patch1012 -p1
+%patch1013 -p1
+%patch1014 -p1
+%patch1015 -p1
+%patch1016 -p1
+%patch1017 -p1
+%patch1018 -p1
+%patch1019 -p1
+%patch1020 -p1
+%patch1021 -p1
+%patch1022 -p1
+%patch1023 -p1
+%patch1024 -p1
+%patch1025 -p1
+%patch1026 -p1
+%patch1027 -p1
+%patch1028 -p1
+%patch1029 -p1
+%patch1030 -p1
+%patch1031 -p1
+%patch1032 -p1
 %patch1 -p1
 %patch2
 %patch5

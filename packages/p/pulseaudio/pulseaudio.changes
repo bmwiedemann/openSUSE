@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Feb 12 22:01:05 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes / enhancements about alsa modules:
+  mainly for UCM support (boo#1160914):
+  0001-alsa-mixer-path-test-Hide-unused-functions-when-buil.patch
+  0002-alsa-mixer-recognize-the-Speaker-Jack-control.patch
+  0003-alsa-mixer-add-support-for-SteelSeries-Arctis-Pro-20.patch
+  0004-alsa-mixer-Add-support-for-SteelSeries-Arctis-5-2019.patch
+  0005-alsa-mixer-add-support-for-LucidSound-LS31-and-creat.patch
+  0006-alsa-ucm-use-ucm2-name-for-the-direct-card-index-ope.patch
+  0007-alsa-ucm-add-mixer-IDs-to-ucm_items.patch
+  0008-alsa-mixer-handle-the-index-for-ALSA-mixer-element-i.patch
+  0009-alsa-mixer-improve-alsa_id_decode-function.patch
+  0010-alsa-ucm-Support-Playback-CaptureVolume.patch
+  0011-alsa-ucm-Fix-volume-control-based-on-review.patch
+  0012-alsa-ucm-use-the-correct-mixer-identifiers-as-first.patch
+  0013-alsa-ucm-add-support-for-master-volume.patch
+  0014-alsa-ucm-split-correctly-JackHWMute-device-names.patch
+  0015-alsa-ucm-fix-parsing-for-JackControl.patch
+  0016-alsa-ucm-add-comments-to-ucm_get_mixer_id.patch
+  0017-alsa-ucm-validate-access-to-PA_DEVICE_PORT_DATA.patch
+  0018-alsa-Skip-resume-PCM-if-hardware-doesn-t-support-it.patch
+  0019-alsa-ucm-parse-correctly-the-device-values.patch
+  0020-alsa-ucm-do-not-try-to-use-UCM-device-name-as-jack-n.patch
+  0021-alsa-util-do-not-try-to-guess-the-mixer-name-from-th.patch
+  0022-alsa-ucm-add-control-and-mixer-device-items.patch
+  0023-alsa-ucm-get-the-mixer-names-from-ucm-don-t-guess.patch
+  0024-alsa-ucm-use-the-proper-mixer-name-for-ucm-pcm-sink-.patch
+  0025-alsa-mixer-handle-interface-type-CARD-PCM-for-mixer-.patch
+  0026-alsa-mixer-Add-the-ability-to-pass-the-intended-role.patch
+  0027-alsa-mixer-Set-the-intended-role-of-Steelseries-Arct.patch
+  0028-alsa-rewrite-mixer-open-close-cache-mixer-accesses-i.patch
+  0029-alsa-ucm-add-support-for-HDMI-ELD.patch
+  0030-alsa-mixer-do-the-quick-card-number-lookup-to-save-m.patch
+  0031-alsa-mixer-improve-check-for-the-empty-path-set-for-.patch
+  0032-alsa-ucm-allow-to-set-profile-priority-from-UCM-valu.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 07:36:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.

@@ -1,0 +1,51 @@
+From 1c240b7a12e9e2f7c2266d18cbb74130bb81277e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 26 Nov 2019 10:35:14 +0100
+Subject: [PATCH] alsa-mixer: improve alsa_id_decode() function
+
+Accept those identifiers:
+
+        Speaker,1
+        'Speaker',1
+        "Speaker",1
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-mixer.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-mixer.c b/src/modules/alsa/alsa-mixer.c
+index 38ace783a997..f57aabe5d885 100644
+--- a/src/modules/alsa/alsa-mixer.c
++++ b/src/modules/alsa/alsa-mixer.c
+@@ -117,11 +117,24 @@ static char *alsa_id_str(char *dst, size_t dst_len, pa_alsa_mixer_id *id) {
+ }
+ 
+ static int alsa_id_decode(const char *src, char *name, int *index) {
+-    char *idx;
++    char *idx, c;
++    int i;
+ 
+     *index = 0;
+-    strcpy(name, src);
+-    idx = strchr(name, ',');
++    c = src[0];
++    /* Strip quotes in entries such as 'Speaker',1 or "Speaker",1 */
++    if (c == '\'' || c == '"') {
++        strcpy(name, src + 1);
++        for (i = 0; name[i] != '\0' && name[i] != c; i++);
++        idx = NULL;
++        if (name[i]) {
++                name[i] = '\0';
++                idx = strchr(name + i + 1, ',');
++        }
++    } else {
++        strcpy(name, src);
++        idx = strchr(name, ',');
++    }
+     if (idx == NULL)
+         return 0;
+     *idx = '\0';
+-- 
+2.16.4
+

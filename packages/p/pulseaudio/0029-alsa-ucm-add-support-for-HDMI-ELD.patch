@@ -1,0 +1,264 @@
+From 3ceff8bb3f697ec16dc5c72e658b10ac40bc19f5 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sat, 7 Dec 2019 23:22:33 +0100
+Subject: [PATCH] alsa-ucm: add support for HDMI ELD
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c         | 72 +++++++++++++++++++++++++++++++++++--
+ src/modules/alsa/alsa-ucm.h         |  7 ++++
+ src/modules/alsa/module-alsa-card.c | 56 ++++++++++++++++++-----------
+ 3 files changed, 113 insertions(+), 22 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index b9a4b8c4b436..5695840abaf1 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -820,6 +820,36 @@ static int pa_alsa_ucm_device_cmp(const void *a, const void *b) {
+     return strcmp(pa_proplist_gets(d1->proplist, PA_ALSA_PROP_UCM_NAME), pa_proplist_gets(d2->proplist, PA_ALSA_PROP_UCM_NAME));
+ }
+ 
++static void set_eld_devices(pa_hashmap *hash)
++{
++    pa_device_port *port;
++    pa_alsa_ucm_port_data *data;
++    pa_alsa_ucm_device *dev;
++    const char *eld_mixer_device_name;
++    void *state;
++    int idx, eld_device;
++
++    PA_HASHMAP_FOREACH(port, hash, state) {
++        data = PA_DEVICE_PORT_DATA(port);
++        eld_mixer_device_name = NULL;
++        eld_device = -1;
++        PA_DYNARRAY_FOREACH(dev, data->devices, idx) {
++            if (dev->eld_device >= 0 && dev->eld_mixer_device_name) {
++                if (eld_device >= 0 && eld_device != dev->eld_device) {
++                    pa_log_error("The ELD device is already set!");
++                } else if (eld_mixer_device_name && pa_streq(dev->eld_mixer_device_name, eld_mixer_device_name)) {
++                    pa_log_error("The ELD mixer device is already set (%s, %s)!", dev->eld_mixer_device_name, dev->eld_mixer_device_name);
++                } else {
++                    eld_mixer_device_name = dev->eld_mixer_device_name;
++                    eld_device = dev->eld_device;
++                }
++            }
++        }
++        data->eld_device = eld_device;
++        data->eld_mixer_device_name = pa_xstrdup(eld_mixer_device_name);
++    }
++}
++
+ static void probe_volumes(pa_hashmap *hash, bool is_sink, snd_pcm_t *pcm_handle, pa_hashmap *mixers, bool ignore_dB) {
+     pa_device_port *port;
+     pa_alsa_path *path;
+@@ -1159,6 +1189,9 @@ void pa_alsa_ucm_add_ports_combination(
+         ucm_add_ports_combination(p, context, is_sink, pdevices, 0, PA_IDXSET_INVALID, ports, cp, core);
+         pa_xfree(pdevices);
+     }
++
++    /* ELD devices */
++    set_eld_devices(ports);
+ }
+ 
+ void pa_alsa_ucm_add_ports(
+@@ -1709,6 +1742,33 @@ static int ucm_create_profile(
+     return 0;
+ }
+ 
++static void mapping_init_eld(pa_alsa_mapping *m, snd_pcm_t *pcm)
++{
++    pa_alsa_ucm_mapping_context *context = &m->ucm_context;
++    pa_alsa_ucm_device *dev;
++    uint32_t idx;
++    char *mdev;
++    snd_pcm_info_t *info;
++    int pcm_card, pcm_device;
++
++    snd_pcm_info_alloca(&info);
++    if (snd_pcm_info(pcm, info) < 0)
++        return;
++
++    if ((pcm_card = snd_pcm_info_get_card(info)) < 0)
++        return;
++    if ((pcm_device = snd_pcm_info_get_device(info)) < 0)
++        return;
++
++    PA_IDXSET_FOREACH(dev, context->ucm_devices, idx) {
++       mdev = pa_sprintf_malloc("hw:%i", pcm_card);
++       if (mdev == NULL)
++           continue;
++       dev->eld_mixer_device_name = mdev;
++       dev->eld_device = pcm_device;
++    }
++}
++
+ static snd_pcm_t* mapping_open_pcm(pa_alsa_ucm_config *ucm, pa_alsa_mapping *m, int mode) {
+     snd_pcm_t* pcm;
+     pa_sample_spec try_ss = ucm->core->default_sample_spec;
+@@ -1730,8 +1790,11 @@ static snd_pcm_t* mapping_open_pcm(pa_alsa_ucm_config *ucm, pa_alsa_mapping *m,
+     pcm = pa_alsa_open_by_device_string(m->device_strings[0], NULL, &try_ss,
+             &try_map, mode, &try_period_size, &try_buffer_size, 0, NULL, NULL, exact_channels);
+ 
+-    if (pcm && !exact_channels)
+-        m->channel_map = try_map;
++    if (pcm) {
++        if (!exact_channels)
++            m->channel_map = try_map;
++        mapping_init_eld(m, pcm);
++    }
+ 
+     return pcm;
+ }
+@@ -1912,6 +1975,8 @@ static void free_verb(pa_alsa_ucm_verb *verb) {
+         if (di->supported_devices)
+             pa_idxset_free(di->supported_devices, NULL);
+ 
++        pa_xfree(di->eld_mixer_device_name);
++
+         pa_xfree(di);
+     }
+ 
+@@ -2115,6 +2180,7 @@ static void ucm_port_data_init(pa_alsa_ucm_port_data *port, pa_alsa_ucm_config *
+     port->ucm = ucm;
+     port->core_port = core_port;
+     port->devices = pa_dynarray_new(NULL);
++    port->eld_device = -1;
+ 
+     for (i = 0; i < n_devices; i++) {
+         pa_dynarray_append(port->devices, devices[i]);
+@@ -2139,6 +2205,8 @@ static void ucm_port_data_free(pa_device_port *port) {
+ 
+     if (ucm_port->paths)
+         pa_hashmap_free(ucm_port->paths);
++
++    pa_xfree(ucm_port->eld_mixer_device_name);
+ }
+ 
+ static void ucm_port_update_available(pa_alsa_ucm_port_data *port) {
+diff --git a/src/modules/alsa/alsa-ucm.h b/src/modules/alsa/alsa-ucm.h
+index 49362992865b..48fd9db3f79f 100644
+--- a/src/modules/alsa/alsa-ucm.h
++++ b/src/modules/alsa/alsa-ucm.h
+@@ -207,6 +207,9 @@ struct pa_alsa_ucm_device {
+     pa_alsa_jack *jack;
+     pa_dynarray *hw_mute_jacks; /* pa_alsa_jack */
+     pa_available_t available;
++
++    char *eld_mixer_device_name;
++    int eld_device;
+ };
+ 
+ void pa_alsa_ucm_device_update_available(pa_alsa_ucm_device *device);
+@@ -273,6 +276,10 @@ struct pa_alsa_ucm_port_data {
+     pa_hashmap *paths;
+     /* Current path, set when activating profile */
+     pa_alsa_path *path;
++
++    /* ELD info */
++    char *eld_mixer_device_name;
++    int eld_device; /* PCM device number */
+ };
+ 
+ struct pa_alsa_ucm_volume {
+diff --git a/src/modules/alsa/module-alsa-card.c b/src/modules/alsa/module-alsa-card.c
+index 3b2f99fc4e54..c5852b43d844 100644
+--- a/src/modules/alsa/module-alsa-card.c
++++ b/src/modules/alsa/module-alsa-card.c
+@@ -512,15 +512,24 @@ static int report_jack_state(snd_mixer_elem_t *melem, unsigned int mask) {
+     return 0;
+ }
+ 
+-static pa_device_port* find_port_with_eld_device(pa_hashmap *ports, int device) {
++static pa_device_port* find_port_with_eld_device(struct userdata *u, int device) {
+     void *state;
+     pa_device_port *p;
+ 
+-    PA_HASHMAP_FOREACH(p, ports, state) {
+-        pa_alsa_port_data *data = PA_DEVICE_PORT_DATA(p);
+-        pa_assert(data->path);
+-        if (device == data->path->eld_device)
+-            return p;
++    if (u->use_ucm) {
++        PA_HASHMAP_FOREACH(p, u->card->ports, state) {
++            pa_alsa_ucm_port_data *data = PA_DEVICE_PORT_DATA(p);
++            pa_assert(data->eld_mixer_device_name);
++            if (device == data->eld_device)
++                return p;
++        }
++    } else {
++        PA_HASHMAP_FOREACH(p, u->card->ports, state) {
++            pa_alsa_port_data *data = PA_DEVICE_PORT_DATA(p);
++            pa_assert(data->path);
++            if (device == data->path->eld_device)
++                return p;
++        }
+     }
+     return NULL;
+ }
+@@ -537,10 +546,7 @@ static int hdmi_eld_changed(snd_mixer_elem_t *melem, unsigned int mask) {
+     if (mask == SND_CTL_EVENT_MASK_REMOVE)
+         return 0;
+ 
+-    if (u->use_ucm)
+-        return 0;
+-
+-    p = find_port_with_eld_device(u->card->ports, device);
++    p = find_port_with_eld_device(u, device);
+     if (p == NULL) {
+         pa_log_error("Invalid device changed in ALSA: %d", device);
+         return 0;
+@@ -571,21 +577,30 @@ static void init_eld_ctls(struct userdata *u) {
+     /* The code in this function expects ports to have a pa_alsa_port_data
+      * struct as their data, but in UCM mode ports don't have any data. Hence,
+      * the ELD controls can't currently be used in UCM mode. */
+-    if (u->use_ucm)
+-        return;
+-
+     PA_HASHMAP_FOREACH(port, u->card->ports, state) {
+-        pa_alsa_port_data *data = PA_DEVICE_PORT_DATA(port);
+         snd_mixer_t *mixer_handle;
+         snd_mixer_elem_t* melem;
+         int device;
+ 
+-        pa_assert(data->path);
+-        device = data->path->eld_device;
+-        if (device < 0)
+-            continue;
++        if (u->use_ucm) {
++            pa_alsa_ucm_port_data *data = PA_DEVICE_PORT_DATA(port);
++            device = data->eld_device;
++            if (device < 0 || !data->eld_mixer_device_name)
++                continue;
++
++            mixer_handle = pa_alsa_open_mixer_by_name(u->mixers, data->eld_mixer_device_name, true);
++        } else {
++            pa_alsa_port_data *data = PA_DEVICE_PORT_DATA(port);
++
++            pa_assert(data->path);
++
++            device = data->path->eld_device;
++            if (device < 0)
++                continue;
++
++            mixer_handle = pa_alsa_open_mixer(u->mixers, u->alsa_card_index, true);
++        }
+ 
+-        mixer_handle = pa_alsa_open_mixer(u->mixers, u->alsa_card_index, true);
+         if (!mixer_handle)
+             continue;
+ 
+@@ -595,9 +610,10 @@ static void init_eld_ctls(struct userdata *u) {
+             snd_mixer_elem_set_callback(melem, hdmi_eld_changed);
+             snd_mixer_elem_set_callback_private(melem, u);
+             hdmi_eld_changed(melem, 0);
++            pa_log_info("ELD device found for port %s (%d).", port->name, device);
+         }
+         else
+-            pa_log_debug("No ELD device found for port %s.", port->name);
++            pa_log_debug("No ELD device found for port %s (%d).", port->name, device);
+     }
+ }
+ 
+-- 
+2.16.4
+

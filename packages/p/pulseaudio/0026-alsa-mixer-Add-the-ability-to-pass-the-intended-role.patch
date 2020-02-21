@@ -1,0 +1,51 @@
+From c6a0665618975eedc98bdf23e4140935a1af38c2 Mon Sep 17 00:00:00 2001
+From: Laurent Bigonville <bigon@bigon.be>
+Date: Thu, 7 Mar 2019 11:35:30 +0100
+Subject: [PATCH] alsa-mixer: Add the ability to pass the intended-role to the
+ mapping
+
+https://gitlab.freedesktop.org/pulseaudio/pulseaudio/issues/640
+---
+ src/modules/alsa/alsa-mixer.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/src/modules/alsa/alsa-mixer.c b/src/modules/alsa/alsa-mixer.c
+index 094cff817df7..7956371b604b 100644
+--- a/src/modules/alsa/alsa-mixer.c
++++ b/src/modules/alsa/alsa-mixer.c
+@@ -3978,6 +3978,24 @@ static int mapping_parse_fallback(pa_config_parser_state *state) {
+     return 0;
+ }
+ 
++static int mapping_parse_intended_roles(pa_config_parser_state *state) {
++    pa_alsa_profile_set *ps;
++    pa_alsa_mapping *m;
++
++    pa_assert(state);
++
++    ps = state->userdata;
++
++    if (!(m = pa_alsa_mapping_get(ps, state->section))) {
++        pa_log("[%s:%u] %s invalid in section %s", state->filename, state->lineno, state->lvalue, state->section);
++        return -1;
++    }
++
++    pa_proplist_sets(m->proplist, PA_PROP_DEVICE_INTENDED_ROLES, state->rvalue);
++
++    return 0;
++}
++
+ 
+ static int profile_parse_mappings(pa_config_parser_state *state) {
+     pa_alsa_profile_set *ps;
+@@ -4569,6 +4587,7 @@ pa_alsa_profile_set* pa_alsa_profile_set_new(const char *fname, const pa_channel
+         { "element-output",         mapping_parse_element,        NULL, NULL },
+         { "direction",              mapping_parse_direction,      NULL, NULL },
+         { "exact-channels",         mapping_parse_exact_channels, NULL, NULL },
++        { "intended-roles",         mapping_parse_intended_roles, NULL, NULL },
+ 
+         /* Shared by [Mapping ...] and [Profile ...] */
+         { "description",            mapping_parse_description,    NULL, NULL },
+-- 
+2.16.4
+

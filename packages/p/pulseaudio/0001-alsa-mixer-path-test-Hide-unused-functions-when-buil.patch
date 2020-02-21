@@ -1,0 +1,48 @@
+From 3dff31e19ca627fc4e0a8f13aeb44923118ecfa1 Mon Sep 17 00:00:00 2001
+From: Tanu Kaskinen <tanuk@iki.fi>
+Date: Fri, 20 Sep 2019 17:09:40 +0300
+Subject: [PATCH] alsa-mixer-path-test: Hide unused functions when building
+ with Meson
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Silences these warnings:
+
+[509/574] Compiling C object 'src/tests/a4ccf2d@@alsa-mixer-path-test@exe/alsa-mixer-path-test.c.o'.
+../src/tests/alsa-mixer-path-test.c:24:20: warning: ‘load_makefile’ defined but not used [-Wunused-function]
+ static pa_strlist *load_makefile() {
+                    ^~~~~~~~~~~~~
+../src/tests/alsa-mixer-path-test.c:17:20: warning: ‘get_default_paths_dir’ defined but not used [-Wunused-function]
+ static const char *get_default_paths_dir(void) {
+                    ^~~~~~~~~~~~~~~~~~~~~
+---
+ src/tests/alsa-mixer-path-test.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/tests/alsa-mixer-path-test.c b/src/tests/alsa-mixer-path-test.c
+index ee40587b7b13..75cf086138cc 100644
+--- a/src/tests/alsa-mixer-path-test.c
++++ b/src/tests/alsa-mixer-path-test.c
+@@ -13,6 +13,10 @@
+ #include <pulsecore/strlist.h>
+ #include <modules/alsa/alsa-mixer.h>
+ 
++/* This test inspects the Makefile, so this is not applicable when using
++ * Meson. */
++#ifndef MESON_BUILD
++
+ /* This function was copied from alsa-mixer.c */
+ static const char *get_default_paths_dir(void) {
+     if (pa_run_from_build_tree())
+@@ -52,6 +56,7 @@ static pa_strlist *load_makefile() {
+     fclose(f);
+     return result;
+ }
++#endif /* end of #ifndef MESON_BUILD */
+ 
+ START_TEST (mixer_path_test) {
+ #ifdef MESON_BUILD
+-- 
+2.16.4
+

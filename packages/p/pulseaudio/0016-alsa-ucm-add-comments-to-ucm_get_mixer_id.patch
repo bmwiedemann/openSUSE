@@ -1,0 +1,45 @@
+From f5c02dfcd821ab77fc7f91da985254a7bdb658ad Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 4 Dec 2019 16:29:51 +0100
+Subject: [PATCH] alsa-ucm: add comments to ucm_get_mixer_id()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/modules/alsa/alsa-ucm.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index 221fed719284..3ee271845c19 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -241,7 +241,7 @@ static char *ucm_get_mixer_id(
+         const char *cprop,
+         const char *cid)
+ {
+-#if SND_LIB_VERSION >= 0x10201
++#if SND_LIB_VERSION >= 0x10201 /* alsa-lib-1.2.1+ check */
+     snd_ctl_elem_id_t *ctl;
+     int err;
+ #endif
+@@ -249,13 +249,17 @@ static char *ucm_get_mixer_id(
+     char *value2;
+     int index;
+ 
++    /* mixer element as first, if it's found, return it without modifications */
+     value = pa_proplist_gets(device->proplist, mprop);
+     if (value)
+         return pa_xstrdup(value);
++    /* fallback, get the control element identifier */
++    /* and try to do some heuristic to determine the mixer element name */
+     value = pa_proplist_gets(device->proplist, cprop);
+     if (value == NULL)
+         return NULL;
+-#if SND_LIB_VERSION >= 0x10201
++#if SND_LIB_VERSION >= 0x10201 /* alsa-lib-1.2.1+ check */
++    /* The new parser may return also element index. */
+     snd_ctl_elem_id_alloca(&ctl);
+     err = snd_use_case_parse_ctl_elem_id(ctl, cid, value);
+     if (err < 0)
+-- 
+2.16.4
+

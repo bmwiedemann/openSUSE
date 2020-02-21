@@ -1,0 +1,242 @@
+From 9acacd9ba3b9f4df0957e9ddaacbcee00396175c Mon Sep 17 00:00:00 2001
+From: Jaska Uimonen <jaska.uimonen@intel.com>
+Date: Tue, 1 Oct 2019 18:34:17 +0300
+Subject: [PATCH] alsa-ucm: Fix volume control based on review
+
+- sync mixer logic added
+- mixer path creation, empty set in mapping creation, paths added in path creation
+- path creation moved inside new port creation as it might be called twice otherwise
+- some comments added
+---
+ src/modules/alsa/alsa-sink.c   | 31 ++++++++--------------------
+ src/modules/alsa/alsa-source.c | 29 ++++++++------------------
+ src/modules/alsa/alsa-ucm.c    | 47 +++++++++++++++++++++++++++++-------------
+ src/modules/alsa/alsa-ucm.h    |  2 +-
+ 4 files changed, 52 insertions(+), 57 deletions(-)
+
+diff --git a/src/modules/alsa/alsa-sink.c b/src/modules/alsa/alsa-sink.c
+index 08d4d1f38b80..0a5c92529af3 100644
+--- a/src/modules/alsa/alsa-sink.c
++++ b/src/modules/alsa/alsa-sink.c
+@@ -1266,7 +1266,7 @@ static void sync_mixer(struct userdata *u, pa_device_port *port) {
+ 
+     /* port may be NULL, because if we use a synthesized mixer path, then the
+      * sink has no ports. */
+-    if (port) {
++    if (port && !u->ucm_context) {
+         pa_alsa_port_data *data;
+ 
+         data = PA_DEVICE_PORT_DATA(port);
+@@ -1648,28 +1648,19 @@ static int sink_set_port_ucm_cb(pa_sink *s, pa_device_port *p) {
+     struct userdata *u = s->userdata;
+     pa_alsa_ucm_port_data *data;
+ 
+-    data = PA_DEVICE_PORT_DATA(p);
+-
+     pa_assert(u);
+     pa_assert(p);
++    pa_assert(u->mixer_handle);
+     pa_assert(u->ucm_context);
+ 
+-    u->mixer_path = data->path;
++    data = PA_DEVICE_PORT_DATA(p);
++    pa_assert_se(u->mixer_path = data->path);
+     mixer_volume_init(u);
+ 
+-    if (u->mixer_path) {
+-        pa_alsa_path_select(u->mixer_path, NULL, u->mixer_handle, s->muted);
+-
+-        if (s->set_mute)
+-            s->set_mute(s);
+-        if (s->flags & PA_SINK_DEFERRED_VOLUME) {
+-            if (s->write_volume)
+-                s->write_volume(s);
+-        } else {
+-            if (s->set_volume)
+-                s->set_volume(s);
+-        }
+-    }
++    if (s->flags & PA_SINK_DEFERRED_VOLUME)
++        pa_asyncmsgq_send(u->sink->asyncmsgq, PA_MSGOBJECT(u->sink), SINK_MESSAGE_SYNC_MIXER, p, 0, NULL);
++    else
++        sync_mixer(u, p);
+ 
+     return pa_alsa_ucm_set_port(u->ucm_context, p, true);
+ }
+@@ -2091,6 +2082,7 @@ static void set_sink_name(pa_sink_new_data *data, pa_modargs *ma, const char *de
+ }
+ 
+ static void find_mixer(struct userdata *u, pa_alsa_mapping *mapping, const char *element, bool ignore_dB) {
++
+     if (!mapping && !element)
+         return;
+ 
+@@ -2099,11 +2091,6 @@ static void find_mixer(struct userdata *u, pa_alsa_mapping *mapping, const char
+         return;
+     }
+ 
+-    if (u->ucm_context) {
+-        /* We just want to open the device */
+-        return;
+-    }
+-
+     if (element) {
+ 
+         if (!(u->mixer_path = pa_alsa_path_synthesize(element, PA_ALSA_DIRECTION_OUTPUT)))
+diff --git a/src/modules/alsa/alsa-source.c b/src/modules/alsa/alsa-source.c
+index 657ed5aeda11..d186101720b8 100644
+--- a/src/modules/alsa/alsa-source.c
++++ b/src/modules/alsa/alsa-source.c
+@@ -1137,7 +1137,7 @@ static void sync_mixer(struct userdata *u, pa_device_port *port) {
+ 
+     /* port may be NULL, because if we use a synthesized mixer path, then the
+      * source has no ports. */
+-    if (port) {
++    if (port && !u->ucm_context) {
+         pa_alsa_port_data *data;
+ 
+         data = PA_DEVICE_PORT_DATA(port);
+@@ -1523,24 +1523,17 @@ static int source_set_port_ucm_cb(pa_source *s, pa_device_port *p) {
+ 
+     pa_assert(u);
+     pa_assert(p);
++    pa_assert(u->mixer_handle);
+     pa_assert(u->ucm_context);
+ 
+-    u->mixer_path = data->path;
++    data = PA_DEVICE_PORT_DATA(p);
++    pa_assert_se(u->mixer_path = data->path);
+     mixer_volume_init(u);
+ 
+-    if (u->mixer_path) {
+-        pa_alsa_path_select(u->mixer_path, NULL, u->mixer_handle, s->muted);
+-
+-        if (s->set_mute)
+-            s->set_mute(s);
+-        if (s->flags & PA_SOURCE_DEFERRED_VOLUME) {
+-            if (s->write_volume)
+-                s->write_volume(s);
+-        } else {
+-            if (s->set_volume)
+-                s->set_volume(s);
+-        }
+-    }
++    if (s->flags & PA_SOURCE_DEFERRED_VOLUME)
++        pa_asyncmsgq_send(u->source->asyncmsgq, PA_MSGOBJECT(u->source), SOURCE_MESSAGE_SYNC_MIXER, p, 0, NULL);
++    else
++        sync_mixer(u, p);
+ 
+     return pa_alsa_ucm_set_port(u->ucm_context, p, false);
+ }
+@@ -1805,11 +1798,6 @@ static void find_mixer(struct userdata *u, pa_alsa_mapping *mapping, const char
+         return;
+     }
+ 
+-    if (u->ucm_context) {
+-        /* We just want to open the device */
+-        return;
+-    }
+-
+     if (element) {
+ 
+         if (!(u->mixer_path = pa_alsa_path_synthesize(element, PA_ALSA_DIRECTION_INPUT)))
+@@ -2404,6 +2392,7 @@ static void userdata_free(struct userdata *u) {
+     if (u->mixer_fdl)
+         pa_alsa_fdlist_free(u->mixer_fdl);
+ 
++    /* Only free the mixer_path if the sink owns it */
+     if (u->mixer_path && !u->mixer_path_set && !u->ucm_context)
+         pa_alsa_path_free(u->mixer_path);
+ 
+diff --git a/src/modules/alsa/alsa-ucm.c b/src/modules/alsa/alsa-ucm.c
+index 349a59566200..a812b52f449e 100644
+--- a/src/modules/alsa/alsa-ucm.c
++++ b/src/modules/alsa/alsa-ucm.c
+@@ -852,21 +852,29 @@ static void ucm_add_port_combination(
+ 
+         pa_hashmap_put(ports, port->name, port);
+         pa_log_debug("Add port %s: %s", port->name, port->description);
+-    }
+-
+-    if (num == 1) {
+-        /* To keep things simple and not worry about stacking controls, we only support hardware volumes on non-combination
+-         * ports. */
+-        data = PA_DEVICE_PORT_DATA(port);
+ 
+-        PA_HASHMAP_FOREACH_KV(profile, volume_element, is_sink ? dev->playback_volumes : dev->capture_volumes, state) {
+-            pa_alsa_path *path = pa_alsa_path_synthesize(volume_element,
+-                    is_sink ? PA_ALSA_DIRECTION_OUTPUT : PA_ALSA_DIRECTION_INPUT);
+-
+-            if (!path)
+-                pa_log_warn("Failed to set up volume control: %s", volume_element);
+-            else
+-                pa_hashmap_put(data->paths, pa_xstrdup(profile), path);
++        if (num == 1) {
++            /* To keep things simple and not worry about stacking controls, we only support hardware volumes on non-combination
++             * ports. */
++            data = PA_DEVICE_PORT_DATA(port);
++
++            PA_HASHMAP_FOREACH_KV(profile, volume_element, is_sink ? dev->playback_volumes : dev->capture_volumes, state) {
++                pa_alsa_path *path = pa_alsa_path_synthesize(volume_element,
++                                                             is_sink ? PA_ALSA_DIRECTION_OUTPUT : PA_ALSA_DIRECTION_INPUT);
++
++                if (!path)
++                    pa_log_warn("Failed to set up volume control: %s", volume_element);
++                else {
++                    pa_hashmap_put(data->paths, pa_xstrdup(profile), path);
++
++                    /* Add path also to already created empty path set */
++                    dev = sorted[0];
++                    if (is_sink)
++                        pa_hashmap_put(dev->playback_mapping->output_path_set->paths, pa_xstrdup(volume_element), path);
++                    else
++                        pa_hashmap_put(dev->capture_mapping->input_path_set->paths, pa_xstrdup(volume_element), path);
++                }
++            }
+         }
+     }
+ 
+@@ -1185,16 +1193,27 @@ int pa_alsa_ucm_set_port(pa_alsa_ucm_mapping_context *context, pa_device_port *p
+ 
+ static void ucm_add_mapping(pa_alsa_profile *p, pa_alsa_mapping *m) {
+ 
++    pa_alsa_path_set *ps;
++
++    /* create empty path set for the future path additions */
++    ps = pa_xnew0(pa_alsa_path_set, 1);
++    ps->direction = m->direction;
++    ps->paths = pa_hashmap_new(pa_idxset_trivial_hash_func, pa_idxset_trivial_compare_func);
++
+     switch (m->direction) {
+         case PA_ALSA_DIRECTION_ANY:
+             pa_idxset_put(p->output_mappings, m, NULL);
+             pa_idxset_put(p->input_mappings, m, NULL);
++            m->output_path_set = ps;
++            m->input_path_set = ps;
+             break;
+         case PA_ALSA_DIRECTION_OUTPUT:
+             pa_idxset_put(p->output_mappings, m, NULL);
++            m->output_path_set = ps;
+             break;
+         case PA_ALSA_DIRECTION_INPUT:
+             pa_idxset_put(p->input_mappings, m, NULL);
++            m->input_path_set = ps;
+             break;
+     }
+ }
+diff --git a/src/modules/alsa/alsa-ucm.h b/src/modules/alsa/alsa-ucm.h
+index 2e39a09a51f3..d8507a83615c 100644
+--- a/src/modules/alsa/alsa-ucm.h
++++ b/src/modules/alsa/alsa-ucm.h
+@@ -240,7 +240,7 @@ struct pa_alsa_ucm_port_data {
+      * a combination of devices. */
+     pa_dynarray *devices; /* pa_alsa_ucm_device */
+ 
+-    /* profile -> pa_alsa_path for volume control */
++    /* profile name -> pa_alsa_path for volume control */
+     pa_hashmap *paths;
+     /* Current path, set when activating profile */
+     pa_alsa_path *path;
+-- 
+2.16.4
+

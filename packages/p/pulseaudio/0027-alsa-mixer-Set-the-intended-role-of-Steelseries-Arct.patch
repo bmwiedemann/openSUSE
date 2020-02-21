@@ -1,0 +1,39 @@
+From 6438e5c46dc449e4726ec9312859cc70388d2851 Mon Sep 17 00:00:00 2001
+From: Laurent Bigonville <bigon@bigon.be>
+Date: Thu, 7 Mar 2019 11:36:02 +0100
+Subject: [PATCH] alsa-mixer: Set the intended-role of Steelseries Arctis 5/7
+ headset as phone
+
+Fixes: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/issues/640
+---
+ .../alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf     | 1 +
+ src/modules/alsa/mixer/profile-sets/usb-gaming-headset.conf              | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf
+index 80c33707aea4..5f11ed1e26ef 100644
+--- a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf
++++ b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-common-usb-audio.conf
+@@ -7,6 +7,7 @@ device-strings = hw:%f,0,0
+ channel-map = left,right
+ paths-input = analog-input-mic
+ paths-output = steelseries-arctis-output-chat-common
++intended-roles = phone
+ 
+ [Mapping analog-game]
+ description = Game
+diff --git a/src/modules/alsa/mixer/profile-sets/usb-gaming-headset.conf b/src/modules/alsa/mixer/profile-sets/usb-gaming-headset.conf
+index 01ecf864bcf2..f48b44f03767 100644
+--- a/src/modules/alsa/mixer/profile-sets/usb-gaming-headset.conf
++++ b/src/modules/alsa/mixer/profile-sets/usb-gaming-headset.conf
+@@ -34,6 +34,7 @@ device-strings = hw:%f,0,0
+ channel-map = mono
+ paths-output = usb-gaming-headset-output-mono
+ paths-input = usb-gaming-headset-input
++intended-roles = phone
+ 
+ [Mapping analog-stereo]
+ device-strings = hw:%f,1,0
+-- 
+2.16.4
+
