@@ -1,7 +1,7 @@
 #
 # spec file for package retext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Simple editor for Markdown and reStructuredText
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
-Url:            https://github.com/retext-project/retext
+URL:            https://github.com/retext-project/retext
 Source:         https://github.com/retext-project/retext/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -33,7 +33,7 @@ BuildRequires:  python3-Markups >= 2.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
 BuildRequires:  python3-qt5
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
