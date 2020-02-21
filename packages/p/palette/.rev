@@ -90,4 +90,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>679482</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1565f42cba46ab84b9ad5457072b729e</srcmd5>
+    <version>3.1.7</version>
+    <time>1582299708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 777758 from awissu)</comment>
+    <requestid>777761</requestid>
+  </revision>
 </revisionlist>

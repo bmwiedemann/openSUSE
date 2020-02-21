@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 19 19:09:44 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.1.7:
+  * Remove debian packaging from in-tree
+  * Create compress-images.yml
+  * Create gettext.yml
+  * Create lint.yml
+  * Create release.yml
+  * Add files via upload (#44)
+  * Update .travis.yml
+  * Downgrade Node.js to fix builds on Travis CI (#42)
+  * Prefer dark (#38)
+  * Use real colors again for AppCenter website
+
+-------------------------------------------------------------------
 Thu Jan 17 10:53:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.1.5:
