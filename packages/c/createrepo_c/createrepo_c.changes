@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 13:27:23 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.15.7
+  + Add relogin_suggested to updatecollectionpackage (rh#1779751)
+  + Support issued date in epoch format in Python API (rh#1779751)
+
+-------------------------------------------------------------------
 Sun Jan 19 14:36:38 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.15.6

@@ -223,4 +223,14 @@
   + Sync --excludes matching for dir-walk vs. --pkglist</comment>
     <requestid>765581</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>534b2c23902fa0a2764dc04e28bf5c4f</srcmd5>
+    <version>0.15.7</version>
+    <time>1582299571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.7
+  + Add relogin_suggested to updatecollectionpackage (rh#1779751)
+  + Support issued date in epoch format in Python API (rh#1779751)</comment>
+    <requestid>775199</requestid>
+  </revision>
 </revisionlist>
