@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 21 12:43:10 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+Fix ethernet on RPi4 (bsc#1164512)
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.01
+* Patches added:
+  0018-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+
+-------------------------------------------------------------------
 Mon Feb 17 16:56:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update patch to fix boo#1163723 :
