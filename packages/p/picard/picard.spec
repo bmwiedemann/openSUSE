@@ -17,20 +17,19 @@
 
 
 Name:           picard
-Version:        2.2.3
+Version:        2.3
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://picard.musicbrainz.org
 Source0:        https://codeload.github.com/metabrainz/picard/tar.gz/release-%{version}#/%{name}-%{version}.tar.gz
-Patch0:         0001-Fix-crash-on-PyQt-ge-5.14-on-cover-art-context-menu.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libofa-devel
 BuildRequires:  python3-devel
-BuildRequires:  python3-mutagen
+BuildRequires:  python3-mutagen >= 1.43
 BuildRequires:  python3-qt5
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-sip
@@ -49,7 +48,6 @@ track-based tagging.
 
 %prep
 %setup -q -n %{name}-release-%{version}
-%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8
