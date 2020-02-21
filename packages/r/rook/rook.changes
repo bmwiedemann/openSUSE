@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 20 12:36:38 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- ceph: populate CSI configmap for external cluster
+
+-------------------------------------------------------------------
+Tue Feb 18 11:08:04 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.4:
+  * Stop garbage collector from deleting the CSI driver unexpectedly (#4820)
+  * Upgrade legacy OSDs created with partitions created by Rook (#4799)
+  * Ability to set the pool target_size_ratio (#4803)
+  * Improve detection of drain-canaries and log significant nodedrain scheduling events (#4679)
+  * Sort flexvolume docs and update for kubespray (#4747)
+  * Add OpenShift common issues documentation (#4764)
+  * Improved integration test when cleaning devices (#4796)
+
+-------------------------------------------------------------------
 Mon Jan 27 13:52:34 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update to v1.2.2:
