@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 12 20:57:05 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  alsatplg fixes, misc cleanups:
+  0027-alsatplg-rewrite-to-use-the-new-libatopology-functio.patch
+  0028-alsatplg-add-V-version-option.patch
+  0029-alsatplg-add-decode-command.patch
+  0030-alsatplg-add-documentation-for-z-dapm-nosort-h.patch
+  0031-configure-fix-new-libatopology-check.patch
+  0032-Use-__func__-instead-of-__FUNCTION__.patch
+  0033-Avoid-pointer-arithmetic-on-void.patch
+  0034-Use-lli-for-long-long-in-printf.patch
+  0035-Avoid-empty-initializer-list.patch
+- Fix build on SLE12-* target
+
+-------------------------------------------------------------------
 Tue Jan 21 15:57:03 CET 2020 - tiwai@suse.de
 
 - Backport upstream patches:

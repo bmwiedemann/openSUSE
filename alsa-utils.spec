@@ -55,6 +55,15 @@ Patch23:        0023-alsa-info.sh-Condense-nested-commands-for-file-uploa.patch
 Patch24:        0024-alsa-info.sh-Condense-nested-commands-for-formatting.patch
 Patch25:        0025-alsa-info.sh-Perform-test-for-wget-earlier.patch
 Patch26:        0026-alsa-info.sh-Warn-after-actual-upload-failure-do-not.patch
+Patch27:        0027-alsatplg-rewrite-to-use-the-new-libatopology-functio.patch
+Patch28:        0028-alsatplg-add-V-version-option.patch
+Patch29:        0029-alsatplg-add-decode-command.patch
+Patch30:        0030-alsatplg-add-documentation-for-z-dapm-nosort-h.patch
+Patch31:        0031-configure-fix-new-libatopology-check.patch
+Patch32:        0032-Use-__func__-instead-of-__FUNCTION__.patch
+Patch33:        0033-Avoid-pointer-arithmetic-on-void.patch
+Patch34:        0034-Use-lli-for-long-long-in-printf.patch
+Patch35:        0035-Avoid-empty-initializer-list.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
 BuildRequires:  alsa-topology-devel
@@ -62,7 +71,11 @@ BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1500
+BuildRequires:  python-docutils
+%else
 BuildRequires:  python3-docutils
+%endif
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -117,6 +130,15 @@ and test audio before and after PM state changes.
 %patch24 -p1
 %patch25 -p1
 %patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
 # fix stupid automake's automatic action

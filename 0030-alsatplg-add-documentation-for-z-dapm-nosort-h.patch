@@ -1,0 +1,25 @@
+From 56e1b879d4bccda62e7c0177b0a395d57a37931c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 1 Jan 2020 17:45:06 +0100
+Subject: [PATCH 30/35] alsatplg: add documentation for -z,--dapm-nosort (-h)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ topology/topology.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/topology/topology.c b/topology/topology.c
+index 91d2fce655fe..ad0d108562df 100644
+--- a/topology/topology.c
++++ b/topology/topology.c
+@@ -53,6 +53,7 @@ _("Usage: %s [OPTIONS]...\n"
+ "-s, --sort              sort the identifiers in the normalized output\n"
+ "-g, --group             save configuration by group indexes\n"
+ "-x, --nocheck           save configuration without additional integrity checks\n"
++"-z, --dapm-nosort       do not sort the DAPM widgets\n"
+ "-V, --version           print version\n"
+ ), name);
+ }
+-- 
+2.16.4
+

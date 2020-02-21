@@ -1,0 +1,67 @@
+From f80a290153f210bb80165ac8dc6b1dccaa24781d Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Wed, 5 Feb 2020 00:12:18 -0800
+Subject: [PATCH 32/35] Use __func__ instead of __FUNCTION__
+
+They are equivalent, but __func__ is in C99. __FUNCTION__ exists only
+for backwards compatibility with old gcc versions.
+
+Signed-off-by: Michael Forney <mforney@mforney.org>
+Reviewd-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsactl/alsactl.h | 16 ++++++++--------
+ aplay/aplay.c     |  4 ++--
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/alsactl/alsactl.h b/alsactl/alsactl.h
+index 4f969ec2a4bc..69b539ca6be0 100644
+--- a/alsactl/alsactl.h
++++ b/alsactl/alsactl.h
+@@ -13,15 +13,15 @@ void cerror_(const char *fcn, long line, int cond, const char *fmt, ...);
+ void dbg_(const char *fcn, long line, const char *fmt, ...);
+ 
+ #if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 95)
+-#define info(...) do { info_(__FUNCTION__, __LINE__, __VA_ARGS__); } while (0)
+-#define error(...) do { error_(__FUNCTION__, __LINE__, __VA_ARGS__); } while (0)
+-#define cerror(cond, ...) do { cerror_(__FUNCTION__, __LINE__, (cond) != 0, __VA_ARGS__); } while (0)
+-#define dbg(...) do { dbg_(__FUNCTION__, __LINE__, __VA_ARGS__); } while (0)
++#define info(...) do { info_(__func__, __LINE__, __VA_ARGS__); } while (0)
++#define error(...) do { error_(__func__, __LINE__, __VA_ARGS__); } while (0)
++#define cerror(cond, ...) do { cerror_(__func__, __LINE__, (cond) != 0, __VA_ARGS__); } while (0)
++#define dbg(...) do { dbg_(__func__, __LINE__, __VA_ARGS__); } while (0)
+ #else
+-#define info(args...) do { info_(__FUNCTION__, __LINE__, ##args); }  while (0)
+-#define error(args...) do { error_(__FUNCTION__, __LINE__, ##args); }  while (0)
+-#define cerror(cond, ...) do { error_(__FUNCTION__, __LINE__, (cond) != 0, ##args); } while (0)
+-#define dbg(args...) do { dbg_(__FUNCTION__, __LINE__, ##args); }  while (0)
++#define info(args...) do { info_(__func__, __LINE__, ##args); }  while (0)
++#define error(args...) do { error_(__func__, __LINE__, ##args); }  while (0)
++#define cerror(cond, ...) do { error_(__func__, __LINE__, (cond) != 0, ##args); } while (0)
++#define dbg(args...) do { dbg_(__func__, __LINE__, ##args); }  while (0)
+ #endif	
+ 
+ int init(const char *file, const char *cardname);
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 1a887e412aae..908093c45c90 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -186,13 +186,13 @@ static const struct fmt_capture {
+ 
+ #if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 95)
+ #define error(...) do {\
+-	fprintf(stderr, "%s: %s:%d: ", command, __FUNCTION__, __LINE__); \
++	fprintf(stderr, "%s: %s:%d: ", command, __func__, __LINE__); \
+ 	fprintf(stderr, __VA_ARGS__); \
+ 	putc('\n', stderr); \
+ } while (0)
+ #else
+ #define error(args...) do {\
+-	fprintf(stderr, "%s: %s:%d: ", command, __FUNCTION__, __LINE__); \
++	fprintf(stderr, "%s: %s:%d: ", command, __func__, __LINE__); \
+ 	fprintf(stderr, ##args); \
+ 	putc('\n', stderr); \
+ } while (0)
+-- 
+2.16.4
+
