@@ -1,5 +1,0 @@
-<package name="R-packrat" project="openSUSE:Factory">
-  <title></title>
-  <description>A Dependency Management System for Projects and their R Package Dependencies</description>
-  <devel project="devel:languages:R:released" package="R-packrat"/>
-</package>

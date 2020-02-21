@@ -1,2 +1,0 @@
-addFilter("devel-file-in-non-devel-package.*/usr/lib6?4?/R/library/Rcpp/unitTests/.*")
-addFilter("devel-file-in-non-devel-package.*/usr/lib6?4?/R/library/Rcpp/skeleton/.*")
