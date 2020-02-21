@@ -116,4 +116,13 @@
     <comment>1</comment>
     <requestid>258006</requestid>
   </revision>
+  <revision rev="18" vrev="963">
+    <srcmd5>57370ba2d8401160d39a7029cbb31b43</srcmd5>
+    <version>2.2</version>
+    <time>1582299807</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner
+- Drop obsolete README.KDE</comment>
+    <requestid>777999</requestid>
+  </revision>
 </revisionlist>

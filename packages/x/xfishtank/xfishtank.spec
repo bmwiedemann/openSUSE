@@ -1,7 +1,7 @@
 #
 # spec file for package xfishtank
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,42 +20,33 @@ Name:           xfishtank
 Version:        2.2
 Release:        0
 Summary:        An aquarium in the root window
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
 Source:         %{name}-%{version}.tar.bz2
-Source1:        README.KDE
-Patch:          %{name}-%{version}-orig.patch
+Patch0:         %{name}-%{version}-orig.patch
 Patch1:         %{name}-%{version}-implicit_decl.patch
 Patch2:         %{name}-%{version}-random_retval.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  imake
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xproto)
-Provides:       fishtank
-Obsoletes:      fishtank
 
 %description
-A nice little aquarium with funny fish -- yet another background
-screen.
+A nice little aquarium with funny fish -- yet another background screen.
 
 %prep
-%setup -q
-%patch
-%patch1
-%patch2
-install -m 0644 %{S:1} .
+%autosetup -p0
 
 %build
 xmkmf -a
-make %{?_smp_mflags} CCOPTIONS="%optflags"
+%make_build CCOPTIONS="%{optflags}"
 
 %install
-make DESTDIR="$RPM_BUILD_ROOT" install
+%make_install
 
 %files
-%defattr(-,root,root)
 %doc README*
-%_bindir/xfishtank
+%{_bindir}/xfishtank
 
 %changelog
