@@ -1,0 +1,82 @@
+Avoid left over dot lock file after reboot
+
+---
+ dotlock.c |   50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+
+--- dotlock.c
++++ dotlock.c	2020-02-17 11:16:22.785018224 +0000
+@@ -30,8 +30,38 @@
+ #define O_SYNC	0
+ #endif
+ 
++#if defined(__linux__)
++#  include <sys/statfs.h>
++#  include <unistd.h>
++#  ifndef  TMPFS_MAGIC
++#    define TMPFS_MAGIC 0x01021994
++#  endif
++#endif
++
+ #include "dotlock.h"
+ 
++#if defined(__linux__)
++static char *sys_tmpdir;
++static int
++dosys_tmpdir ()
++{
++	static char *shm = "/dev/shm";
++	struct statfs fs;
++	static int doshm;
++
++	if (doshm)
++		return (sys_tmpdir != NULL);
++
++	doshm++;
++
++	if (statfs(shm, &fs) < 0 || fs.f_type != TMPFS_MAGIC || eaccess(shm, W_OK|X_OK))
++		return 0;
++
++	sys_tmpdir = shm;
++	return 1;
++}
++#endif
++
+ static int create_exclusive(const char *);
+ /*
+  * Create a unique file. O_EXCL does not really work over NFS so we follow
+@@ -140,7 +170,17 @@ dot_lock(const char *fname, int pollinte
+ 	(void)sigaddset(&nset, SIGTSTP);
+ 	(void)sigaddset(&nset, SIGCHLD);
+ 
++#if defined(__linux__)
++	const char *ptr;
++	if ((ptr = strrchr(fname, '/')) && dosys_tmpdir()) {
++		ptr++;
++		fname = ptr;
++		(void)snprintf(path, sizeof(path), "%s/%s.lock", sys_tmpdir, fname);
++	} else
++		(void)snprintf(path, sizeof(path), "%s.lock", fname);
++#else
+ 	(void)snprintf(path, sizeof(path), "%s.lock", fname);
++#endif
+ 
+ 	retval = -1;
+ 	for (;;) {
+@@ -174,6 +214,16 @@ dot_unlock(const char *fname)
+ {
+ 	char path[MAXPATHLEN];
+ 
++#if defined(__linux__)
++	const char *ptr;
++	if ((ptr = strrchr(fname, '/')) && dosys_tmpdir()) {
++		ptr++;
++		fname = ptr;
++		(void)snprintf(path, sizeof(path), "%s/%s.lock", sys_tmpdir, fname);
++	} else
++		(void)snprintf(path, sizeof(path), "%s.lock", fname);
++#else
+ 	(void)snprintf(path, sizeof(path), "%s.lock", fname);
++#endif
+ 	(void)unlink(path);
+ }

@@ -712,4 +712,13 @@
   common variable seen twice by compiler (boo#1160296)</comment>
     <requestid>761828</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>31e4e435bf09e0ed7ddb679b8728df8a</srcmd5>
+    <version>6.22.02</version>
+    <time>1582299636</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch tcsh-6.22.02-local-dotlock.dif to avoid
+  dead locks at login after a reboot to left dot locking files</comment>
+    <requestid>774849</requestid>
+  </revision>
 </revisionlist>

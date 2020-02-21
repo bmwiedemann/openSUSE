@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 11:19:42 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add temporary patch tcsh-6.22.02-local-dotlock.dif to avoid
+  dead locks at login after a reboot to left dot locking files 
+
+-------------------------------------------------------------------
 Wed Jan  8 12:06:46 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add temporary patch tcsh-6.22.02-workaround-common.patch to avoid
