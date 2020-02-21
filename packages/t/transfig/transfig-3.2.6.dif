@@ -137,3 +137,35 @@
  #include "transfig.h"
  
  extern void sysmv(char *file);					/* sys.c */
+--- configure
++++ configure	2020-01-24 13:08:02.103408590 +0000
+@@ -4122,7 +4122,7 @@ main ()
+ 
+   int dynamic_array[ni.number];
+   dynamic_array[ni.number - 1] = 543;
+-
++  free(ia);
+   // work around unused variable warnings
+   return (!success || bignum == 0LL || ubignum == 0uLL || newvar[0] == 'x'
+ 	  || dynamic_array[ni.number - 1] != 543);
+@@ -6377,8 +6377,8 @@ char *malloc ();
+ int
+ main ()
+ {
+-return ! malloc (0);
+-  ;
++void *tmp = malloc (0);
++if (tmp) free (tmp); return !tmp;
+   return 0;
+ }
+ _ACEOF
+@@ -6444,7 +6444,8 @@ char *realloc ();
+ int
+ main ()
+ {
+-return ! realloc (0, 0);
++void *tmp = realloc (0, 0);
++if (tmp) free (tmp); return !tmp;
+   ;
+   return 0;
+ }

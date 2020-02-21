@@ -1,0 +1,79 @@
+From 00cdedac7a0b029846dee891769a1e77df83a01b Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Sat, 25 Jan 2020 15:04:59 +0100
+Subject: [PATCH] Accept -1 as default TeX font, fixes ticket #81
+
+The default for PostScript fonts is -1, for TeX fonts 0. Accepting -1 for TeX
+fonts lead to out-of-bound read. Now, -1 for TeX fonts is converted to 0.
+---
+ fig2dev/dev/genpict2e.c |  9 +++++----
+ fig2dev/dev/gentikz.c   |  9 +++++----
+ fig2dev/tests/read.at   | 10 ++++++++++
+ 3 files changed, 20 insertions(+), 8 deletions(-)
+
+diff --git fig2dev/dev/genpict2e.c fig2dev/dev/genpict2e.c
+index 6ab442e..dd6fd95 100644
+--- fig2dev/dev/genpict2e.c
++++ fig2dev/dev/genpict2e.c
+@@ -2223,11 +2223,12 @@ put_font(F_text *t)
+ 	}
+ 
+ 	if (psfont_text(t))
+-	    fprintf(tfp, "\\usefont%s",
+-		    texpsfonts[t->font <= MAX_PSFONT ? t->font + 1 : 0]);
++		fprintf(tfp, "\\usefont%s", texpsfonts[t->font <= MAX_PSFONT ?
++				t->font + 1 : 0]);
+ 	else
+-	    fprintf(tfp, "\\normalfont%s ",
+-		    texfonts[t->font <= MAX_FONT ? t->font : MAX_FONT - 1]);
++		/* Default psfont is -1, default texfont 0, also accept -1. */
++		fprintf(tfp, "\\normalfont%s ", texfonts[t->font <= MAX_FONT ?
++				(t->font >= 0 ? t->font : 0) : MAX_FONT - 1]);
+ }
+ 
+ void
+diff --git fig2dev/dev/gentikz.c fig2dev/dev/gentikz.c
+index 797ca1c..b374e10 100644
+--- fig2dev/dev/gentikz.c
++++ fig2dev/dev/gentikz.c
+@@ -1772,11 +1772,12 @@ put_font(F_text *t)
+ 	}
+ 
+ 	if (psfont_text(t))
+-	    fprintf(tfp, "\\usefont%s",
+-		    texpsfonts[t->font <= MAX_PSFONT ? t->font + 1 : 0]);
++		fprintf(tfp, "\\usefont%s", texpsfonts[t->font <= MAX_PSFONT ?
++				t->font + 1 : 0]);
+ 	else
+-	    fprintf(tfp, "\\normalfont%s ",
+-		    texfonts[t->font <= MAX_FONT ? t->font : MAX_FONT - 1]);
++		/* Default psfont is -1, default texfont 0, also accept -1. */
++		fprintf(tfp, "\\normalfont%s ", texfonts[t->font <= MAX_FONT ?
++			    (t->font >= 0 ? t->font : 0) : MAX_FONT - 1]);
+ }
+ 
+ /*
+diff --git fig2dev/tests/read.at fig2dev/tests/read.at
+index 9b34bfb..331afb5 100644
+--- fig2dev/tests/read.at
++++ fig2dev/tests/read.at
+@@ -406,6 +406,16 @@ EOF
+ ])
+ AT_CLEANUP
+ 
++AT_SETUP([allow tex font -1, ticket #81])
++AT_DATA([text.fig], [FIG_FILE_TOP
++4 0 0 50 -1 -1 12 0.0 0 150 405 0 0 Text\001
++])
++AT_CHECK([fig2dev -L pict2e text.fig
++], 0, ignore)
++AT_CHECK([fig2dev -L tikz text.fig
++], 0, ignore)
++AT_CLEANUP
++
+ AT_BANNER([Dynamically allocate picture file name.])
+ 
+ AT_SETUP([prepend fig file path to picture file name])
+-- 
+2.16.4
+

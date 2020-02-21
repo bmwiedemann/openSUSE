@@ -1,0 +1,75 @@
+From 3165d86c31c6323913239fdc6460be6ababd3826 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Tue, 4 Feb 2020 20:58:27 +0100
+Subject: [PATCH] Allow arrows with zero length on arcs, ticket #74
+
+---
+ fig2dev/bound.c         |  9 +++++----
+ fig2dev/tests/output.at | 10 +++++++++-
+ 2 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git fig2dev/bound.c fig2dev/bound.c
+index ce7f4d1..d305ab9 100644
+--- fig2dev/bound.c
++++ fig2dev/bound.c
+@@ -3,7 +3,7 @@
+  * Copyright (c) 1985 Supoj Sutanthavibul
+  * Copyright (c) 1991 Micah Beck
+  * Parts Copyright (c) 1989-2015 by Brian V. Smith
+- * Parts Copyright (c) 2015-2019 Thomas Loimer
++ * Parts Copyright (c) 2015-2020 Thomas Loimer
+  *
+  * Any party obtaining a copy of these files is granted, free of charge, a
+  * full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -1095,9 +1095,8 @@ compute_arcarrow_angle(double x1, double y1, double x2, double y2,
+ 	r=sqrt(dx*dx+dy*dy);
+ 	h = (double) arrow->ht;
+ 	/* lines are made a little thinner in set_linewidth */
+-	thick = (arrow->thickness <= THICK_SCALE) ?
+-		    0.5* arrow->thickness :
+-		    arrow->thickness - THICK_SCALE;
++	thick = arrow->thickness <= THICK_SCALE ?
++		0.5 * arrow->thickness : arrow->thickness - THICK_SCALE;
+ 	/* lpt is the amount the arrowhead extends beyond the end of the line */
+ 	lpt = thick/2.0/(arrow->wid/h/2.0);
+ 	/* add this to the length */
+@@ -1107,6 +1106,8 @@ compute_arcarrow_angle(double x1, double y1, double x2, double y2,
+ 	if (h > 2.0*r) {
+ 	    arc_tangent_int(x1,y1,x2,y2,direction,x,y);
+ 	    return;
++	} else if (h < thick) {
++	    h = thick;
+ 	}
+ 
+ 	beta=atan2(dy,dx);
+diff --git fig2dev/tests/output.at fig2dev/tests/output.at
+index fd06727..e0d088c 100644
+--- fig2dev/tests/output.at
++++ fig2dev/tests/output.at
+@@ -2,7 +2,7 @@ dnl Fig2dev: Translate Fig code to various Devices
+ dnl Copyright (c) 1991 by Micah Beck
+ dnl Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+ dnl Parts Copyright (c) 1989-2015 by Brian V. Smith
+-dnl Parts Copyright (c) 2015-2019 by Thomas Loimer
++dnl Parts Copyright (c) 2015-2020 by Thomas Loimer
+ dnl
+ dnl Any party obtaining a copy of these files is granted, free of charge, a
+ dnl full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -175,6 +175,14 @@ AT_CHECK([fig2dev -L pict2e -P big1.fig big1.tex && \
+ ], 0, ignore)
+ AT_CLEANUP
+ 
++AT_SETUP([accept arc arrows with zero height, ticket #74])
++AT_KEYWORDS(pict2e)
++AT_CHECK([fig2dev -L pict2e <<EOF
++FIG_FILE_TOP
++5 1 0 1 0 7 50 -1 -1 0.0 0 0 1 0 0.0 0.0 600 0 0 600 -600 0
++	1 1 1.0 60.0 0.0
++EOF], 0, ignore)
++AT_CLEANUP
+ 
+ AT_BANNER([Test svg output language.])
+ AT_SETUP([compare patterns with template])
+-- 
+2.16.4
+

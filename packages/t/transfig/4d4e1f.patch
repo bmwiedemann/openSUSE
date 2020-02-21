@@ -1,0 +1,114 @@
+From 4d4e1fdac467c386cba8706aa0067d5ab8da02d7 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Mon, 3 Feb 2020 23:39:32 +0100
+Subject: [PATCH] Allow DEFAULT color in cgm and ge output, #72, #73
+
+Also, fix a memory leak in gencgm.c.
+---
+ fig2dev/dev/gencgm.c        |  8 +++++++-
+ fig2dev/dev/genge.c         |  7 ++++---
+ fig2dev/tests/data/line.fig |  2 +-
+ fig2dev/tests/output.at     | 12 ++++++++++++
+ 4 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git fig2dev/dev/gencgm.c fig2dev/dev/gencgm.c
+index 0f472a8..e12940f 100644
+--- fig2dev/dev/gencgm.c
++++ fig2dev/dev/gencgm.c
+@@ -151,9 +151,11 @@ gencgm_start(F_compound *objects)
+ {
+   int	 i;
+   char	*p, *figname;
++  char	*figname_buf = NULL;
+ 
+   if (from) {
+-	figname = strdup(from);
++	figname_buf = strdup(from);
++	figname = figname_buf;
+ 	p = strrchr(figname, '/');
+ 	if (p)
+ 	    figname = p+1;	/* remove path from name for comment in file */
+@@ -255,6 +257,8 @@ gencgm_start(F_compound *objects)
+     print_comments("% ",objects->comments, " %");
+     fprintf(tfp,"%% %%\n");
+   }
++  if (figname_buf)
++    free(figname_buf);
+ }
+ 
+ int
+@@ -552,6 +556,8 @@ hatchindex(index)
+ static void
+ getrgb(int color, int *r, int *g, int *b)
+ {
++  if (color < 0)	/* DEFAULT color is black */
++    color = 0;
+   if (color < NUM_STD_COLS) {
+     *r = stdcols[color].r * 255.;
+     *g = stdcols[color].g * 255.;
+diff --git fig2dev/dev/genge.c fig2dev/dev/genge.c
+index b171f39..5697bb6 100644
+--- fig2dev/dev/genge.c
++++ fig2dev/dev/genge.c
+@@ -56,7 +56,8 @@ static void	genge_ctl_spline(F_spline *s);
+ 				    /* color mapping		*/
+ 				    /* xfig	ge		*/
+ 
+-static int	GE_COLORS[] = {	 1, /* black	black		*/
++static int	GE_COLORS[] = {  1, /* DEFAULT == black		*/
++				 1, /* black	black		*/
+ 				 8, /* blue	blue		*/
+ 				 7, /* green	green		*/
+ 				 6, /* cyan	cyan		*/
+@@ -438,7 +439,7 @@ back_arrow(F_line *l)
+ static void
+ set_color(int col)
+ {
+-	fprintf(tfp,"c%02d ",GE_COLORS[col]);
++	fprintf(tfp,"c%02d ",GE_COLORS[col + 1]);
+ }
+ 
+ /* set fill if there is a fill style */
+@@ -447,7 +448,7 @@ static void
+ set_fill(int style, int color)
+ {
+ 	if (style != UNFILLED)
+-	    fprintf(tfp,"C%02d ",GE_COLORS[color]);
++	    fprintf(tfp,"C%02d ",GE_COLORS[color + 1]);
+ }
+ 
+ /*
+diff --git fig2dev/tests/data/line.fig fig2dev/tests/data/line.fig
+index e033b12..bfc4976 100644
+--- fig2dev/tests/data/line.fig
++++ fig2dev/tests/data/line.fig
+@@ -7,5 +7,5 @@ A9
+ Single
+ -2
+ 1200 2
+-2 1 0 3 0 7 50 -1 -1 0.0 0 0 -1 0 0 3
++2 1 0 3 -1 7 50 -1 -1 0.0 0 0 -1 0 0 3
+ 50 50 500 50 500 200
+diff --git fig2dev/tests/output.at fig2dev/tests/output.at
+index 9a1bc45..fd06727 100644
+--- fig2dev/tests/output.at
++++ fig2dev/tests/output.at
+@@ -261,3 +261,15 @@ AT_CHECK([fig2dev -L tikz -P big1.fig big1.tex && \
+ 	latex -halt-on-error big1.tex && latex -halt-on-error big2.tex
+ ], 0, ignore)
+ AT_CLEANUP
++
++
++AT_BANNER([Test other output languages.])
++
++AT_SETUP([allow default color in ge, cgm output, #72, #73])
++AT_KEYWORDS(cgm ge)
++AT_CHECK([fig2dev -L cgm $srcdir/data/line.fig
++], 0, ignore)
++AT_CHECK([fig2dev -L ge $srcdir/data/line.fig
++], 0, ignore)
++AT_CLEANUP
++
+-- 
+2.16.4
+

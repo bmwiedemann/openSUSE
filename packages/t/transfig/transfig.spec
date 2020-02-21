@@ -1,7 +1,7 @@
 #
 # spec file for package transfig
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,16 @@ Patch4:         transfig-fix-afl.patch
 Patch5:         CVE-2019-19746.patch
 Patch6:         c379fe.patch
 Patch7:         CVE-2019-19797.patch
+Patch8:         00cded.patch
+Patch9:         d70e4b.patch
+Patch10:        d6a10d.patch
+Patch11:        acccc8.patch
+Patch12:        e3cee2.patch
+Patch13:        421afa.patch
+Patch14:        2f8d1a.patch
+Patch15:        4d4e1f.patch
+Patch16:        3165d8.patch
+Patch17:        639c36.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        fig2dev-3.2.6a-RGBFILE.patch
@@ -107,15 +117,25 @@ find -type f | xargs -r chmod a-x,go-w
 %patch5 -p0 -b .sec2
 %patch6 -p0 -b .sec3
 %patch7 -p0 -b .sec4
+%patch8 -p0 -b .sec5
+%patch9 -p0 -b .sec6
+%patch10 -p0 -b .sec7
+%patch11 -p0 -b .sec8
+%patch12 -p0 -b .sec9
+%patch13 -p0 -b .sec10
+%patch14 -p0 -b .sec11
+%patch15 -p0 -b .sec12
+%patch16 -p0 -b .sec13
+%patch17 -p0 -b .sec14
 %patch43 -p2 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
 %patch45 -p1 -b .p45
 
 %build
+ulimit -v unlimited || :
 CC=gcc
-CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99"
-CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
-export CC CFLAGS
+CFLAGS="%{optflags} -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99 $(getconf LFS_CFLAGS)"
+export CC CFLAGS LDFLAGS
 chmod 755 configure
 %configure \
     --docdir=%{_defaultdocdir}/%{name} \

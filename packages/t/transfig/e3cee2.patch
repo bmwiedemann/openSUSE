@@ -1,0 +1,33 @@
+From e3cee2576438f47a3b8678c6960472e625f8f7d7 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Mon, 27 Jan 2020 22:14:29 +0100
+Subject: [PATCH] Keep coordinates of spline controls within sane range
+
+This fixes the fundamental issue of ticket #65.
+---
+ fig2dev/read.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git fig2dev/read.c fig2dev/read.c
+index 797030c..255586a 100644
+--- fig2dev/read.c
++++ fig2dev/read.c
+@@ -1393,6 +1393,15 @@ read_splineobject(FILE *fp, char **restrict line, size_t *line_len,
+ 		free_splinestorage(s);
+ 		return NULL;
+ 	    }
++	    if (lx < INT_MIN || lx > INT_MAX || ly < INT_MIN || ly > INT_MAX ||
++		rx < INT_MIN || rx > INT_MAX || ry < INT_MIN || ry > INT_MAX) {
++		    /* do not care to clean up, we exit anyway
++		       cp->next = NULL;
++		       free_splinestorage(s);	*/
++		    put_msg("Spline control points out of range at line %d.",
++				    *line_no);
++		    exit(EXIT_FAILURE);
++	    }
+ 	    cq->lx = lx; cq->ly = ly;
+ 	    cq->rx = rx; cq->ry = ry;
+ 	    cp->next = cq;
+-- 
+2.16.4
+

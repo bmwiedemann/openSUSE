@@ -1,0 +1,40 @@
+From d6a10d168469ed9c4d681ebdc577ea0f65de1501 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Sun, 26 Jan 2020 22:13:26 +0100
+Subject: [PATCH] Fix ticket #60. The previous commit fixed also #65, #68, #71,
+ #73, #75
+
+---
+ CHANGES        | 3 ++-
+ fig2dev/read.c | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+|diff --git CHANGES CHANGES
+|index f1bbbc3..4834e50 100644
+|--- CHANGES
+|+++ CHANGES
+|@@ -7,7 +7,8 @@ Patchlevel Xx (Xxx 20xx)
+| BUGS FIXED:
+| 	Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+| 	o Fix ticket #81.
+|-	o Do not allow ASCII NUL anywhere in input. Fixes ticket #80.
+|+	o Do not allow ASCII NUL anywhere in input.
+|+	  Fixes tickets #65, #68, #71, #73, #75, #80.
+| 	o Use getline() to improve input scanning.
+| 	  Fixes tickets #58, #59, #61, #62, #67, #78, #79.
+| 	o Correctly scan embedded pdfs for /MediaBox value.
+diff --git fig2dev/read.c fig2dev/read.c
+index 86cee71..797030c 100644
+--- fig2dev/read.c
++++ fig2dev/read.c
+@@ -1322,6 +1322,7 @@ read_splineobject(FILE *fp, char **restrict line, size_t *line_len,
+ 		}
+ 	    q->x = x;
+ 	    q->y = y;
++	    q->next = NULL;
+ 	    p->next = q;
+ 	    p = q;
+ 	    ++c;
+-- 
+2.16.4
+

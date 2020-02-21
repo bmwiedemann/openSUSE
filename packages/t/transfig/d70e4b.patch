@@ -1,0 +1,129 @@
+From d70e4ba6308046f71cb51f67db8412155af52411 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Sun, 26 Jan 2020 13:16:52 +0100
+Subject: [PATCH] Reject ASCII NUL anywhere in the input
+
+The input is read in line by line, stored in a buffer and processed further
+with sscanf(). Embedded NUL characters ('\0') would already disturb sscanf(),
+and nowhere does the code expect NUL characters. Therefore, detect NUL while
+reading the input, and exit with an error message when NUL is found anywere.
+Fixes ticket #80.
+---
+ CHANGES                              |   4 ++++
+ fig2dev/read.c                       |  21 +++++++++++++++++++--
+ fig2dev/tests/data/text_w_ascii0.fig | Bin 0 -> 321 bytes
+ fig2dev/tests/read.at                |   6 ++++++
+ 4 files changed, 29 insertions(+), 2 deletions(-)
+ create mode 100644 fig2dev/tests/data/text_w_ascii0.fig
+
+|diff --git CHANGES CHANGES
+|index 4a414fa..f1bbbc3 100644
+|--- CHANGES
+|+++ CHANGES
+|@@ -6,6 +6,10 @@ Patchlevel Xx (Xxx 20xx)
+| 
+| BUGS FIXED:
+| 	Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+|+	o Fix ticket #81.
+|+	o Do not allow ASCII NUL anywhere in input. Fixes ticket #80.
+|+	o Use getline() to improve input scanning.
+|+	  Fixes tickets #58, #59, #61, #62, #67, #78, #79.
+| 	o Correctly scan embedded pdfs for /MediaBox value.
+| 	o Convert polygons having too few points to polylines. Ticket #56.
+| 	o Reject huge arrow types causing integer overflow. Ticket #57.
+diff --git fig2dev/read.c fig2dev/read.c
+index e85ee10..86cee71 100644
+--- fig2dev/read.c
++++ fig2dev/read.c
+@@ -178,8 +178,14 @@ read_objects(FILE *fp, F_compound *obj)
+ 		put_msg("Could not read input file.");
+ 		return -1;
+ 	}
+-	/* seek to the end of the first line */
+-	if (strchr(buf, '\n') == NULL) {
++
++	/* check for embedded '\0' */
++	if (strlen(buf) < sizeof buf - 1 && buf[strlen(buf) - 1] != '\n') {
++		put_msg("ASCII NUL ('\\0') character within the first line.");
++		exit(EXIT_FAILURE);
++	/* seek to the end of the first line
++	   (the only place, where '\0's are tolerated) */
++	} else if (buf[strlen(buf) - 1] != '\n') {
+ 		int	c;
+ 		do
+ 			c = fgetc(fp);
+@@ -1398,6 +1404,15 @@ read_splineobject(FILE *fp, char **restrict line, size_t *line_len,
+ 	return s;
+ }
+ 
++static void
++exit_on_ascii_NUL(const char *restrict line, size_t chars, int line_no)
++{
++	if (strlen(line) < (size_t)chars) {
++		put_msg("ASCII NUL ('\\0') in line %d.", line_no);
++		exit(EXIT_FAILURE);
++	}
++}
++
+ static char *
+ find_end(const char *str, int v30flag)
+ {
+@@ -1469,6 +1484,7 @@ read_textobject(FILE *fp, char **restrict line, size_t *line_len, int *line_no)
+ 
+ 		while ((chars = getline(line, line_len, fp)) != -1) {
+ 			++(*line_no);
++			exit_on_ascii_NUL(*line, chars, *line_no);
+ 			end = find_end(*line, v30_flag);
+ 			if (end) {
+ 				*end = '\0';
+@@ -1640,6 +1656,7 @@ get_line(FILE *fp, char **restrict line, size_t *line_len, int *line_no)
+ 		if (**line == '\n' || (**line == '\r' &&
+ 					chars == 2 && (*line)[1] == '\n'))
+ 			continue;
++		exit_on_ascii_NUL(*line, chars, *line_no);
+ 		/* remove newline and possibly a carriage return */
+ 		if ((*line)[chars-1] == '\n') {
+ 			chars -= (*line)[chars - 2] == '\r' ? 2 : 1;
+|diff --git fig2dev/tests/data/text_w_ascii0.fig fig2dev/tests/data/text_w_ascii0.fig
+|new file mode 100644
+|index 0000000000000000000000000000000000000000..fb15b306b26a42446b809d0caf77efcfc73c588a
+|GIT binary patch
+|literal 321
+|zcmV-H0lxktMoC8?GcGa;Okr+hb7Ns}WeP)OZggdG3Q2BbXk~K>Ol5R*WpWBJFfcAK
+|zFbY#?Zf9&|3N11UF)}bPATkOxATS^>ATl5@ATl)|F*Y+GGch1HATS^xFd!{4ATb~?
+|zATkOdFeV^0ATcs9AT=O)Tp%DYATS^>US3{aUP@kGUS3`R!hplS!@pi$US3{aUS3{a
+|zUS3{aUS3{aUS3{aG&LYaTrf#7d0a3sF$yCzATS^>AT=-`EioW1F(5HAATTa4ATS^?
+|zH83DFFf|}BATS_7ZXjWEV`*t1dS!BNASYa0Fee~rWpZU8Ej|D)E-qniWFT{IZDk;B
+|zZ*pZIbY*ySAZBlDY;SjIZf7hYcWHEJAYmY5WpZ?3X>K54ZEtmMbRchLAZ=-GX>E0F
+|TAY*7@a$#e1WpZ;|FfcI+7J*tc
+|
+|literal 0
+|KcmV+b0RR6000031
+|
+|diff --git fig2dev/tests/read.at fig2dev/tests/read.at
+|index 331afb5..60982b0 100644
+|--- fig2dev/tests/read.at
+|+++ fig2dev/tests/read.at
+|@@ -407,6 +407,7 @@ EOF
+| AT_CLEANUP
+| 
+| AT_SETUP([allow tex font -1, ticket #81])
+|+AT_KEYWORDS([pict2e tikz])
+| AT_DATA([text.fig], [FIG_FILE_TOP
+| 4 0 0 50 -1 -1 12 0.0 0 150 405 0 0 Text\001
+| ])
+|@@ -416,6 +417,11 @@ AT_CHECK([fig2dev -L tikz text.fig
+| ], 0, ignore)
+| AT_CLEANUP
+| 
+|+AT_SETUP([reject ASCII NUL ('\0') in input, ticket #80])
+|+AT_KEYWORDS([read.c svg])
+|+AT_CHECK([fig2dev -L svg $srcdir/data/text_w_ascii0.fig], 1, ignore, ignore)
+|+AT_CLEANUP
+|+
+| AT_BANNER([Dynamically allocate picture file name.])
+| 
+| AT_SETUP([prepend fig file path to picture file name])
+-- 
+2.16.4
+

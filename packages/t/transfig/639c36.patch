@@ -1,0 +1,38 @@
+From 639c36010a120e97a6e82e7cd57cbf9dbf4b64f1 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Tue, 4 Feb 2020 21:52:25 +0100
+Subject: [PATCH] Fix pstricks fill with non-solid default color, #77
+
+In the pstricks output, filling an area with the shaded or tinted default color
+is now equivalent to filling with shaded or tinted black color.
+---
+ fig2dev/dev/genpstricks.c | 3 ++-
+ fig2dev/tests/output.at   | 1 -
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git fig2dev/dev/genpstricks.c fig2dev/dev/genpstricks.c
+index 07c4d09..5acc1f6 100644
+--- fig2dev/dev/genpstricks.c
++++ fig2dev/dev/genpstricks.c
+@@ -1856,7 +1856,8 @@ format_options(char *options, char *prefix, char *postfix, char *sqrb_init,
+     else if (fill_style <= 40)
+       /* shade or tint fill */
+       sprintf(tmps, "fillstyle=solid,fillcolor=%s",
+-	      shade_or_tint_name_after_declare_color(tmpc, fill_style, fill_color));
++	      shade_or_tint_name_after_declare_color(tmpc, fill_style,
++		      fill_color == DEFAULT ? CT_BLACK : fill_color));
+     else {
+       char *type = 0, *ps;
+       int angle = 0;
+diff --git fig2dev/tests/output.at fig2dev/tests/output.at
+index e0d088c..e1e5ca4 100644
+--- fig2dev/tests/output.at
++++ fig2dev/tests/output.at
+@@ -280,4 +280,3 @@ AT_CHECK([fig2dev -L cgm $srcdir/data/line.fig
+ AT_CHECK([fig2dev -L ge $srcdir/data/line.fig
+ ], 0, ignore)
+ AT_CLEANUP
+-
+-- 
+2.16.4
+

@@ -1,0 +1,68 @@
+From 421afa17d8cb8dafcaf3e6044a70790fa4fe307b Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Mon, 27 Jan 2020 23:01:11 +0100
+Subject: [PATCH] Accept -1 TeX font in more places, fixes #71, #75
+
+Continue the work started in commit [00cded]. Fix the fundamental issue of
+tickets #71 and #75, which was hidden by commit [d70e4b].
+---
+ fig2dev/dev/texfonts.h | 14 +++++++++-----
+ fig2dev/tests/read.at  |  4 +++-
+ 2 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git fig2dev/dev/texfonts.h fig2dev/dev/texfonts.h
+index 89097f2..e5254b6 100644
+--- fig2dev/dev/texfonts.h
++++ fig2dev/dev/texfonts.h
+@@ -35,17 +35,21 @@ extern char		texfontsizes[];
+ #define MAXFONTSIZE	42
+ 
+ #ifdef NFSS
+-#define TEXFAMILY(F)	(texfontfamily[((F) <= MAX_FONT) ? (F) : (MAX_FONT-1)])
+-#define TEXSERIES(F)	(texfontseries[((F) <= MAX_FONT) ? (F) : (MAX_FONT-1)])
+-#define TEXSHAPE(F)	(texfontshape[((F) <= MAX_FONT) ? (F) : (MAX_FONT-1)])
++#define TEXFAMILY(F)	texfontfamily[(F) <= MAX_FONT ? ((F) >= 0 ? (F) : 0) \
++						: MAX_FONT-1]
++#define TEXSERIES(F)	texfontseries[(F) <= MAX_FONT ? ((F) >= 0 ? (F) : 0) \
++						: MAX_FONT-1]
++#define TEXSHAPE(F)	texfontshape[(F) <= MAX_FONT ? ((F) >= 0 ? (F) : 0) \
++						: MAX_FONT-1]
+ #endif
+-#define TEXFONT(F)	(texfontnames[((F) <= MAX_FONT) ? (F) : (MAX_FONT-1)])
++#define TEXFONT(F)	texfontnames[(F) <= MAX_FONT ? ((F) >= 0 ? (F) : 0) \
++						: MAX_FONT-1]
+ 
+ /*
+ #define TEXFONTSIZE(S)	(texfontsizes[((S) <= MAXFONTSIZE) ? (int)(round(S))\
+ 							: (MAXFONTSIZE-1)])
+ */
+-#define TEXFONTSIZE(S)	(((S) <= MAXFONTSIZE) ? texfontsizes[(int)(round(S))] : (S))
++#define TEXFONTSIZE(S)	((S) <= MAXFONTSIZE ? texfontsizes[(int)round(S)] : (S))
+ #define TEXFONTMAG(T)	TEXFONTSIZE(T->size*(rigid_text(T) ? 1.0 : fontmag))
+ 
+ void setfigfont(F_text *text);		/* genepic.c */
+|diff --git fig2dev/tests/read.at fig2dev/tests/read.at
+|index 60982b0..726e6da 100644
+|--- fig2dev/tests/read.at
+|+++ fig2dev/tests/read.at
+|@@ -406,7 +406,7 @@ EOF
+| ])
+| AT_CLEANUP
+| 
+|-AT_SETUP([allow tex font -1, ticket #81])
+|+AT_SETUP([allow tex font -1, tickets #71, #75, #81])
+| AT_KEYWORDS([pict2e tikz])
+| AT_DATA([text.fig], [FIG_FILE_TOP
+| 4 0 0 50 -1 -1 12 0.0 0 150 405 0 0 Text\001
+|@@ -415,6 +415,8 @@ AT_CHECK([fig2dev -L pict2e text.fig
+| ], 0, ignore)
+| AT_CHECK([fig2dev -L tikz text.fig
+| ], 0, ignore)
+|+AT_CHECK([fig2dev -L mp text.fig
+|+], 0, ignore)
+| AT_CLEANUP
+| 
+| AT_SETUP([reject ASCII NUL ('\0') in input, ticket #80])
+-- 
+2.16.4
+

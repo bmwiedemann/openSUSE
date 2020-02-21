@@ -1,0 +1,84 @@
+From acccc89c20206a5db1f463438ba444e35bcb400e Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Tue, 28 Jan 2020 22:56:40 +0100
+Subject: [PATCH] Reject text or ellipse angles beyond -2pi to 2pi, #76
+
+In fact, generously extend the allowed range to -7 to 7.
+Sane applications, e.g., xfig, certainly keep the angles within one revolution.
+---
+ CHANGES               | 6 +++---
+ fig2dev/object.h      | 7 ++++---
+ fig2dev/tests/read.at | 8 ++++++++
+ 3 files changed, 15 insertions(+), 6 deletions(-)
+
+|diff --git CHANGES CHANGES
+|index 4834e50..52daead 100644
+|--- CHANGES
+|+++ CHANGES
+|@@ -6,9 +6,9 @@ Patchlevel Xx (Xxx 20xx)
+| 
+| BUGS FIXED:
+| 	Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+|-	o Fix ticket #81.
+|-	o Do not allow ASCII NUL anywhere in input.
+|-	  Fixes tickets #65, #68, #71, #73, #75, #80.
+|+	o Accept text and ellipse angles only within -2*pi to 2*pi. Fixes #76.
+|+	o Allow -1 as default TeX font, not only 0. Fixes #71, #75, #81.
+|+	o Do not allow ASCII NUL anywhere in input. Fixes #65, #68, #73, #80.
+| 	o Use getline() to improve input scanning.
+| 	  Fixes tickets #58, #59, #61, #62, #67, #78, #79.
+| 	o Correctly scan embedded pdfs for /MediaBox value.
+diff --git fig2dev/object.h fig2dev/object.h
+index fe56bbb..8464010 100644
+--- fig2dev/object.h
++++ fig2dev/object.h
+@@ -3,7 +3,7 @@
+  * Copyright (c) 1991 by Micah Beck
+  * Parts Copyright (c) 1985-1988 by Supoj Sutanthavibul
+  * Parts Copyright (c) 1989-2015 by Brian V. Smith
+- * Parts Copyright (c) 2015-2019 by Thomas Loimer
++ * Parts Copyright (c) 2015-2020 by Thomas Loimer
+  *
+  * Any party obtaining a copy of these files is granted, free of charge, a
+  * full and unrestricted irrevocable, world-wide, paid up, royalty-free,
+@@ -94,7 +94,8 @@ typedef struct f_ellipse {
+ #define INVALID_ELLIPSE(e)	\
+ 	e->type < T_ELLIPSE_BY_RAD || e->type > T_CIRCLE_BY_DIA ||	\
+ 	COMMON_PROPERTIES(e) || (e->direction != 1 && e->direction != 0) || \
+-	e->radiuses.x == 0 || e->radiuses.y == 0
++	e->radiuses.x == 0 || e->radiuses.y == 0 || \
++	e->angle < -7. || e->angle > 7.
+ 
+ typedef struct f_arc {
+ 	int			type;
+@@ -243,7 +244,7 @@ typedef struct f_text {
+ 	t->type < T_LEFT_JUSTIFIED || t->type > T_RIGHT_JUSTIFIED ||	\
+ 	t->font < DEFAULT || t->font > MAX_PSFONT ||			\
+ 	t->flags < DEFAULT || t->flags >= 2 * HIDDEN_TEXT ||		\
+-	t->height < 0 || t->length < 0
++	t->height < 0 || t->length < 0 || t->angle < -7. || t->angle > 7.
+ 
+ typedef struct f_control {
+ 	double			lx, ly, rx, ry;	/* used by older versions*/
+|diff --git fig2dev/tests/read.at fig2dev/tests/read.at
+|index 726e6da..2d066e4 100644
+|--- fig2dev/tests/read.at
+|+++ fig2dev/tests/read.at
+|@@ -424,6 +424,14 @@ AT_KEYWORDS([read.c svg])
+| AT_CHECK([fig2dev -L svg $srcdir/data/text_w_ascii0.fig], 1, ignore, ignore)
+| AT_CLEANUP
+| 
+|+AT_SETUP([reject out of range text angle, ticket #76])
+|+AT_CHECK([fig2dev -L pstricks <<EOF
+|+FIG_FILE_TOP
+|+4 0 0 50 -1 -1 12 9e26 0 150 405 0 0 Very slanted text\001
+|+EOF
+|+], 1, ignore, ignore)
+|+AT_CLEANUP
+|+
+| AT_BANNER([Dynamically allocate picture file name.])
+| 
+| AT_SETUP([prepend fig file path to picture file name])
+-- 
+2.16.4
+

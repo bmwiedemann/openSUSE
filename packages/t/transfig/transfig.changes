@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 11 11:38:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream security patches/commits
+  * 00cded.patch
+  * 2f8d1a.patch
+  * 3165d8.patch
+  * 421afa.patch
+  * 4d4e1f.patch
+  * 639c36.patch
+  * acccc8.patch
+  * d6a10d.patch
+  * d70e4b.patch
+  * e3cee2.patch
+
+-------------------------------------------------------------------
 Tue Jan 21 13:08:49 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid auto(re)config 
