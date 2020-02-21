@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           flashrom
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            https://flashrom.org/Flashrom
+URL:            https://flashrom.org/Flashrom
 Source0:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.bz2
 Source1:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.bz2.asc#/%{name}-%{version}.tar.bz2.sig
 # Got the key from David Hendricks

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 20 21:18:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2
+  - Meson support
+  - Layout improvements/fixes and many, many code cleanups.
+  - New chips: MX25U25635F, MX25L51245G, GD25Q256D, M95M02-A125,
+    N25Q/MT25Q variants, W25Q128JW_DTR, AT25SF321, S25FL512S
+  - New programmers: National Instruments USB-845x, Tin Can Tools
+    Flyswatter/Flyswatter 2, STLINK V3, more Intel PCHs (Apollo
+    Lake, Cannon Lake variants, Ice Lake U)
+  - Reduced dependency on libusb0
+  - Syntax: Added --flash-name and --flash-size arguments to print
+    information about the flash chip
+
+-------------------------------------------------------------------
 Sun Jun 23 17:43:36 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1
