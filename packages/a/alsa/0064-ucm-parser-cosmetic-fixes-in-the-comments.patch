@@ -1,0 +1,103 @@
+From 7d3fec6ac68de0244621ae0aca7474d159336639 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 17 Jan 2020 18:21:08 +0100
+Subject: [PATCH 64/74] ucm: parser - cosmetic fixes in the comments
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/parser.c | 63 ++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 31 insertions(+), 32 deletions(-)
+
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index 6c13fafdabbf..6c5d29026e5e 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -676,42 +676,41 @@ static int parse_value(snd_use_case_mgr_t *uc_mgr ATTRIBUTE_UNUSED,
+ /*
+  * Parse Modifier Use cases
+  *
+- *	# Each modifier is described in new section. N modifiers are allowed
+- *	SectionModifier."Capture Voice" {
++ * # Each modifier is described in new section. N modifiers are allowed
++ * SectionModifier."Capture Voice" {
+  *
+- *		Comment "Record voice call"
++ *	Comment "Record voice call"
+  *
+- *		SupportedDevice [
+- *			"x"
+- *			"y"
+- *		]
+- *
+- *		ConflictingDevice [
+- *			"x"
+- *			"y"
+- *		]
++ *	SupportedDevice [
++ *		"x"
++ *		"y"
++ *	]
+  *
+- *		EnableSequence [
+- *			....
+- *		]
++ *	ConflictingDevice [
++ *		"x"
++ *		"y"
++ *	]
+  *
+- *		DisableSequence [
+- *			...
+- *		]
++ *	EnableSequence [
++ *		....
++ *	]
+  *
+- *              TransitionSequence."ToModifierName" [
+- *			...
+- *		]
++ *	DisableSequence [
++ *		...
++ *	]
+  *
+- *		# Optional TQ and ALSA PCMs
+- *		Value {
+- *			TQ Voice
+- *			CapturePCM "hw:1"
+- *			PlaybackVolume "name='Master Playback Volume',index=2"
+- *			PlaybackSwitch "name='Master Playback Switch',index=2"
+- *		}
++ *      TransitionSequence."ToModifierName" [
++ *		...
++ *	]
+  *
+- *	 }
++ *	# Optional TQ and ALSA PCMs
++ *	Value {
++ *		TQ Voice
++ *		CapturePCM "hw:1"
++ *		PlaybackVolume "name='Master Playback Volume',index=2"
++ *		PlaybackSwitch "name='Master Playback Switch',index=2"
++ *	}
++ * }
+  *
+  * SupportedDevice and ConflictingDevice cannot be specified together.
+  * Both are optional.
+@@ -836,11 +835,11 @@ static int parse_modifier(snd_use_case_mgr_t *uc_mgr,
+ /*
+  * Parse Device Use Cases
+  *
+- *# Each device is described in new section. N devices are allowed
+- *SectionDevice."Headphones" {
++ * # Each device is described in new section. N devices are allowed
++ * SectionDevice."Headphones" {
+  *	Comment "Headphones connected to 3.5mm jack"
+  *
+- *	upportedDevice [
++ *	SupportedDevice [
+  *		"x"
+  *		"y"
+  *	]
+-- 
+2.16.4
+

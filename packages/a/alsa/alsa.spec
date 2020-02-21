@@ -111,6 +111,17 @@ Patch60:        0060-ucm-fix-the-configuration-directory-longname-for-ucm.patch
 Patch61:        0061-ucm-split-conf_file_name-and-conf_dir_name.patch
 Patch62:        0062-ucm-remove-MAX_FILE-definition-and-use-correct-PATH_.patch
 Patch63:        0063-topology-remove-MAX_FILE-definition-and-use-correct-.patch
+Patch64:        0064-ucm-parser-cosmetic-fixes-in-the-comments.patch
+Patch65:        0065-configure.ac-remove-an-unnecessary-libtool-fix.patch
+Patch66:        0066-ucm-parser-use-correct-filename-in-parser_master_fil.patch
+Patch67:        0067-ucm-the-ucm2-subdirectory-is-driver-name-based.patch
+Patch68:        0068-ucm-implement-RenameDevice-and-RemoveDevice-verb-man.patch
+Patch69:        0069-ucm-fill-missing-device-entries-conflicting-supporte.patch
+Patch70:        0070-control-Remove-access-to-the-deprecated-dimen-fields.patch
+Patch71:        0071-topology-Drop-SNDRV_CTL_ELEM_ACCESS_TIMESTAMP-access.patch
+Patch72:        0072-uapi-Sync-with-5.6-kernel-ABI.patch
+Patch73:        0073-ucm-parser-add-error-message-to-verb_dev_list_add.patch
+Patch74:        0074-do-not-set-close-on-exec-flag-on-descriptor-if-it-wa.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -258,6 +269,17 @@ This package contains the library for ALSA topology support.
 %patch61 -p1
 %patch62 -p1
 %patch63 -p1
+%patch64 -p1
+%patch65 -p1
+%patch66 -p1
+%patch67 -p1
+%patch68 -p1
+%patch69 -p1
+%patch70 -p1
+%patch71 -p1
+%patch72 -p1
+%patch73 -p1
+%patch74 -p1
 %patch101 -p1
 
 %build

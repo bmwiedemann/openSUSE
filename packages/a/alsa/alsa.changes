@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 12 20:36:56 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  ucm-parser fixes and enhancements, configure script cleanup,
+  fixes of 5.6 kernel ABI, O_CLOEXEC flag fix:
+  0064-ucm-parser-cosmetic-fixes-in-the-comments.patch
+  0065-configure.ac-remove-an-unnecessary-libtool-fix.patch
+  0066-ucm-parser-use-correct-filename-in-parser_master_fil.patch
+  0067-ucm-the-ucm2-subdirectory-is-driver-name-based.patch
+  0068-ucm-implement-RenameDevice-and-RemoveDevice-verb-man.patch
+  0069-ucm-fill-missing-device-entries-conflicting-supporte.patch
+  0070-control-Remove-access-to-the-deprecated-dimen-fields.patch
+  0071-topology-Drop-SNDRV_CTL_ELEM_ACCESS_TIMESTAMP-access.patch
+  0072-uapi-Sync-with-5.6-kernel-ABI.patch
+  0073-ucm-parser-add-error-message-to-verb_dev_list_add.patch
+  0074-do-not-set-close-on-exec-flag-on-descriptor-if-it-wa.patch
+
+-------------------------------------------------------------------
 Tue Jan 21 15:49:49 CET 2020 - tiwai@suse.de
 
 - Backport upstream fixes:

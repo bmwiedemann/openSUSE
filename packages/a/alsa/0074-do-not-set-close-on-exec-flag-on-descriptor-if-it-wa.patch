@@ -1,0 +1,32 @@
+From b367274b4dcdd1e83e6e7211dd2c08df05c8a998 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eb@emlix.com>
+Date: Tue, 11 Feb 2020 11:22:18 +0100
+Subject: [PATCH 74/74] do not set close-on-exec flag on descriptor if it was
+ already set
+
+There is no need to set this again if O_CLOEXEC is supported.
+
+Signed-off-by: Rolf Eike Beer <eb@emlix.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ include/local.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/local.h b/include/local.h
+index ea0ec32d96b3..ed6ba93664dd 100644
+--- a/include/local.h
++++ b/include/local.h
+@@ -320,8 +320,10 @@ static inline int snd_open_device(const char *filename, int fmode)
+ 			fd = rsm_open_device(filename, fmode);
+ 	}
+ #endif
++#ifndef O_CLOEXEC
+ 	if (fd >= 0)
+ 		fcntl(fd, F_SETFD, FD_CLOEXEC);
++#endif
+ 	return fd;
+ }
+ 
+-- 
+2.16.4
+

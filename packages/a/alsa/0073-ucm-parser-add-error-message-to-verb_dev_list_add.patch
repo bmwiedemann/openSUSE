@@ -1,0 +1,25 @@
+From 5bc3d4c4c14c6a54f61465987fe7e1a097288e4b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 10 Feb 2020 13:18:23 +0100
+Subject: [PATCH 73/74] ucm: parser - add error message to verb_dev_list_add()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/parser.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index 23bf6a63f31e..8d6eea31f8e7 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -1135,6 +1135,7 @@ static int verb_dev_list_add(struct use_case_verb *verb,
+ 		}
+ 		return uc_mgr_put_to_dev_list(&device->dev_list, src);
+ 	}
++	uc_error("error: unable to find device '%s'", dst);
+ 	return -ENOENT;
+ }
+ 
+-- 
+2.16.4
+

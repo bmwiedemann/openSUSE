@@ -1,0 +1,135 @@
+From fdf96312fa3c9261db2954afcde8c6a15d2ebe44 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 7 Feb 2020 16:18:11 +0100
+Subject: [PATCH 69/74] ucm: fill missing device entries (conflicting /
+ supported)
+
+It is not necessary to maintain this information in sync in the configuration
+files. Fill the missing entries to the complementary devices.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/parser.c    | 50 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ src/ucm/ucm_local.h |  1 +
+ src/ucm/utils.c     | 25 +++++++++++++++++++++++++
+ 3 files changed, 75 insertions(+), 1 deletion(-)
+
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index f9a8f6283c3a..23bf6a63f31e 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -1112,6 +1112,52 @@ static int parse_modifier_name(snd_use_case_mgr_t *uc_mgr,
+ 	return parse_compound(uc_mgr, cfg, parse_modifier, data1, data2);
+ }
+ 
++static int verb_dev_list_add(struct use_case_verb *verb,
++			     enum dev_list_type dst_type,
++			     const char *dst,
++			     const char *src)
++{
++	struct use_case_device *device;
++	struct list_head *pos;
++
++	list_for_each(pos, &verb->device_list) {
++		device = list_entry(pos, struct use_case_device, list);
++		if (strcmp(device->name, dst) != 0)
++			continue;
++		if (device->dev_list.type != dst_type) {
++			if (list_empty(&device->dev_list.list)) {
++				device->dev_list.type = dst_type;
++			} else {
++				uc_error("error: incompatible device list type ('%s', '%s')",
++					 device->name, src);
++				return -EINVAL;
++			}
++		}
++		return uc_mgr_put_to_dev_list(&device->dev_list, src);
++	}
++	return -ENOENT;
++}
++
++static int verb_dev_list_check(struct use_case_verb *verb)
++{
++	struct list_head *pos, *pos2;
++	struct use_case_device *device;
++	struct dev_list_node *dlist;
++	int err;
++
++	list_for_each(pos, &verb->device_list) {
++		device = list_entry(pos, struct use_case_device, list);
++		list_for_each(pos2, &device->dev_list.list) {
++			dlist = list_entry(pos2, struct dev_list_node, list);
++			err = verb_dev_list_add(verb, device->dev_list.type,
++						dlist->name, device->name);
++			if (err < 0)
++				return err;
++		}
++	}
++	return 0;
++}
++
+ static int verb_device_management(struct use_case_verb *verb)
+ {
+ 	struct list_head *pos;
+@@ -1141,7 +1187,9 @@ static int verb_device_management(struct use_case_verb *verb)
+ 	/* those lists are no longer used */
+ 	uc_mgr_free_dev_name_list(&verb->rename_list);
+ 	uc_mgr_free_dev_name_list(&verb->remove_list);
+-	return 0;
++
++	/* handle conflicting/supported lists */
++	return verb_dev_list_check(verb);
+ }
+ 
+ /*
+diff --git a/src/ucm/ucm_local.h b/src/ucm/ucm_local.h
+index ba8d2acb3355..acec4bf67e30 100644
+--- a/src/ucm/ucm_local.h
++++ b/src/ucm/ucm_local.h
+@@ -262,6 +262,7 @@ int uc_mgr_config_load(int format, const char *file, snd_config_t **cfg);
+ int uc_mgr_import_master_config(snd_use_case_mgr_t *uc_mgr);
+ int uc_mgr_scan_master_configs(const char **_list[]);
+ 
++int uc_mgr_put_to_dev_list(struct dev_list *dev_list, const char *name);
+ int uc_mgr_remove_device(struct use_case_verb *verb, const char *name);
+ int uc_mgr_rename_device(struct use_case_verb *verb, const char *src,
+ 			 const char *dst);
+diff --git a/src/ucm/utils.c b/src/ucm/utils.c
+index 60a591725835..50b2a1df4a6a 100644
+--- a/src/ucm/utils.c
++++ b/src/ucm/utils.c
+@@ -328,6 +328,31 @@ void uc_mgr_free_dev_list(struct dev_list *dev_list)
+ 	}
+ }
+ 
++int uc_mgr_put_to_dev_list(struct dev_list *dev_list, const char *name)
++{
++	struct list_head *pos;
++	struct dev_list_node *dlist;
++	char *n;
++
++	list_for_each(pos, &dev_list->list) {
++		dlist = list_entry(pos, struct dev_list_node, list);
++		if (strcmp(dlist->name, name) == 0)
++			return 0;
++	}
++
++	dlist = calloc(1, sizeof(*dlist));
++	if (dlist == NULL)
++		return -ENOMEM;
++	n = strdup(name);
++	if (n == NULL) {
++		free(dlist);
++		return -ENOMEM;
++	}
++	dlist->name = n;
++	list_add(&dlist->list, &dev_list->list);
++	return 0;
++}
++
+ int uc_mgr_rename_in_dev_list(struct dev_list *dev_list, const char *src,
+ 			      const char *dst)
+ {
+-- 
+2.16.4
+

@@ -1,0 +1,29 @@
+From beb6b178e6d0ca4a9b6c528bac9bfa899b733462 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Mon, 10 Feb 2020 12:49:25 +0100
+Subject: [PATCH 71/74] topology: Drop SNDRV_CTL_ELEM_ACCESS_TIMESTAMP access
+
+SNDRV_CTL_ELEM_ACCESS_TIMESTAMP is removed from 5.6 kernel ABI as the
+ctl timestamp field has been never used and deprecated.
+Drop the corresponding access from the topology code, too.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/topology/ctl.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/topology/ctl.c b/src/topology/ctl.c
+index b78f1c54be05..90241b6318c5 100644
+--- a/src/topology/ctl.c
++++ b/src/topology/ctl.c
+@@ -35,7 +35,6 @@ static const struct ctl_access_elem ctl_access[] = {
+ 	{"read", SNDRV_CTL_ELEM_ACCESS_READ},
+ 	{"write", SNDRV_CTL_ELEM_ACCESS_WRITE},
+ 	{"volatile", SNDRV_CTL_ELEM_ACCESS_VOLATILE},
+-	{"timestamp", SNDRV_CTL_ELEM_ACCESS_TIMESTAMP},
+ 	{"tlv_read", SNDRV_CTL_ELEM_ACCESS_TLV_READ},
+ 	{"tlv_write", SNDRV_CTL_ELEM_ACCESS_TLV_WRITE},
+ 	{"tlv_command", SNDRV_CTL_ELEM_ACCESS_TLV_COMMAND},
+-- 
+2.16.4
+

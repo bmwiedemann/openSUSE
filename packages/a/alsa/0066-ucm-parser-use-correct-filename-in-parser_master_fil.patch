@@ -1,0 +1,38 @@
+From c5a09b0feaf759957dfac2c797b652781a0d41fe Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 3 Feb 2020 14:44:13 +0100
+Subject: [PATCH 66/74] ucm: parser - use correct filename in
+ parser_master_file()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/ucm/parser.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/ucm/parser.c b/src/ucm/parser.c
+index 6c5d29026e5e..dbbd381755b1 100644
+--- a/src/ucm/parser.c
++++ b/src/ucm/parser.c
+@@ -1413,16 +1413,16 @@ static int parse_master_file(snd_use_case_mgr_t *uc_mgr, snd_config_t *cfg)
+ 	if (uc_mgr->conf_format >= 2) {
+ 		err = snd_config_search(cfg, "Syntax", &n);
+ 		if (err < 0) {
+-			uc_error("Syntax field not found in %s", uc_mgr->conf_dir_name);
++			uc_error("Syntax field not found in %s", uc_mgr->conf_file_name);
+ 			return -EINVAL;
+ 		}
+ 		err = snd_config_get_integer(n, &l);
+ 		if (err < 0) {
+-			uc_error("Syntax field is invalid in %s", uc_mgr->conf_dir_name);
++			uc_error("Syntax field is invalid in %s", uc_mgr->conf_file_name);
+ 			return err;
+ 		}
+ 		if (l < 2 || l > SYNTAX_VERSION_MAX) {
+-			uc_error("Incompatible syntax %d in %s", l, uc_mgr->conf_dir_name);
++			uc_error("Incompatible syntax %d in %s", l, uc_mgr->conf_file_name);
+ 			return -EINVAL;
+ 		}
+ 		/* delete this field to avoid strcmp() call in the loop */
+-- 
+2.16.4
+
