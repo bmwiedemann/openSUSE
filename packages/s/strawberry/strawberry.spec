@@ -65,19 +65,11 @@ BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudf)
-%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libvlc)
-%endif
 BuildRequires:  pkgconfig(libxine)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
-%if 0%{?suse_version} < 1500
-Requires(post): update-desktop-files
-Requires(post): gtk3-tools
-Requires(postun): update-desktop-files
-Requires(postun): gtk3-tools
-%endif
 
 Requires:       libQt5Sql5-sqlite
 
@@ -116,27 +108,11 @@ make %{?_smp_mflags}
 %install
 %cmake_install
 
-%if 0%{?suse_version} < 1500
-rm -f %{buildroot}%{_datadir}/metainfo/org.strawberrymusicplayer.strawberry.appdata.xml
-%endif
-
 %suse_update_desktop_file org.strawberrymusicplayer.strawberry Qt AudioVideo Audio Player
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.strawberrymusicplayer.strawberry.desktop
-%if 0%{?suse_version} >= 1500
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.strawberrymusicplayer.strawberry.appdata.xml
-%endif
 
 %files
 %doc README.md Changelog
@@ -144,9 +120,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.straw
 %{_bindir}/strawberry*
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/strawberry.*
-%if 0%{?suse_version} >= 1500
 %{_datadir}/metainfo/*.appdata.xml
-%endif
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-tagreader.1%{?ext_man}
 

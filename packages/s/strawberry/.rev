@@ -384,4 +384,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>761010</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>75cb5e46eb064b59247f984dc0492f19</srcmd5>
+    <version>0.6.8</version>
+    <time>1582299714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777750</requestid>
+  </revision>
 </revisionlist>
