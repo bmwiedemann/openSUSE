@@ -1,0 +1,39 @@
+From 2ccb7969e0be03c1a47260dbb34d0c7865c5593f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 23 Jan 2020 19:56:19 +0100
+Subject: [PATCH 12/36] DAISY-I2S: added back PCM devices
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/DAISY-I2S/HiFi.conf | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/ucm2/DAISY-I2S/HiFi.conf b/ucm2/DAISY-I2S/HiFi.conf
+index 02292f2f22e4..877f6ff02937 100644
+--- a/ucm2/DAISY-I2S/HiFi.conf
++++ b/ucm2/DAISY-I2S/HiFi.conf
+@@ -27,6 +27,11 @@ SectionDevice."Headphones" {
+ 		cset "name='Left Speaker Mixer Left DAC1 Switch' on"
+ 		cset "name='Right Speaker Mixer Right DAC1 Switch' on"
+ 	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
+ }
+ 
+ SectionDevice."Mic" {
+@@ -43,4 +48,9 @@ SectionDevice."Mic" {
+ 		cset "name='DMIC1 Left Capture Switch' on"
+ 		cset "name='DMIC1 Right Capture Switch' on"
+ 	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
+ }
+-- 
+2.16.4
+

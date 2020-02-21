@@ -1,0 +1,66 @@
+From c44072f1e12f29de45484d9de946b505c1f4789b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 4 Feb 2020 17:52:37 +0100
+Subject: [PATCH 25/36] SDP4430: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/SDP4430/FMAnalog.conf  | 1 +
+ ucm2/SDP4430/Record.conf    | 1 +
+ ucm2/SDP4430/Voice.conf     | 1 +
+ ucm2/SDP4430/VoiceCall.conf | 2 ++
+ 4 files changed, 5 insertions(+)
+
+diff --git a/ucm2/SDP4430/FMAnalog.conf b/ucm2/SDP4430/FMAnalog.conf
+index 2cfabf92cb57..da21ab1ddad2 100644
+--- a/ucm2/SDP4430/FMAnalog.conf
++++ b/ucm2/SDP4430/FMAnalog.conf
+@@ -33,6 +33,7 @@ SectionDevice."Headset" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
+                 CapturePCM "hw:${CardId},0"
+ 	}
+ }
+diff --git a/ucm2/SDP4430/Record.conf b/ucm2/SDP4430/Record.conf
+index d3c4955ac2d8..44e722b28f12 100644
+--- a/ucm2/SDP4430/Record.conf
++++ b/ucm2/SDP4430/Record.conf
+@@ -39,6 +39,7 @@ SectionDevice."Headset" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
+ 		CapturePCM "hw:${CardId},0"
+ 	}
+ }
+diff --git a/ucm2/SDP4430/Voice.conf b/ucm2/SDP4430/Voice.conf
+index 15cd4f08e310..21103328054d 100644
+--- a/ucm2/SDP4430/Voice.conf
++++ b/ucm2/SDP4430/Voice.conf
+@@ -39,6 +39,7 @@ SectionDevice."Headset" {
+ 	]
+ 
+ 	Value {
++		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId},2"
+ 	}
+ }
+diff --git a/ucm2/SDP4430/VoiceCall.conf b/ucm2/SDP4430/VoiceCall.conf
+index 2f02a2ba0247..d7d5c9033bdb 100644
+--- a/ucm2/SDP4430/VoiceCall.conf
++++ b/ucm2/SDP4430/VoiceCall.conf
+@@ -58,7 +58,9 @@ SectionDevice."Headset" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
+                 CapturePCM "hw:${CardId},2"
++		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId},2"
+ 	}
+ }
+-- 
+2.16.4
+

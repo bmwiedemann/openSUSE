@@ -1,0 +1,113 @@
+From 9b0f31cc65b558c0eee98be583b8a8108341e53d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 23 Jan 2020 19:45:00 +0100
+Subject: [PATCH 10/36] bytcht-cx2072x: cleanups and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/bytcht-cx2072x/HiFi.conf        | 5 -----
+ ucm2/codecs/cx2072x/HeadPhones.conf  | 4 +++-
+ ucm2/codecs/cx2072x/HeadsetMic.conf  | 8 +++++---
+ ucm2/codecs/cx2072x/InternalMic.conf | 8 +++++---
+ ucm2/codecs/cx2072x/Speaker.conf     | 4 +++-
+ 5 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/ucm2/bytcht-cx2072x/HiFi.conf b/ucm2/bytcht-cx2072x/HiFi.conf
+index 60e022974790..b329ea4ed399 100644
+--- a/ucm2/bytcht-cx2072x/HiFi.conf
++++ b/ucm2/bytcht-cx2072x/HiFi.conf
+@@ -8,11 +8,6 @@ SectionVerb {
+ 		<codecs/cx2072x/DisableSeq.conf>
+ 		<platforms/bytcr/PlatformDisableSeq.conf>
+ 	]
+-
+-	Value {
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+-	}
+ }
+ 
+ <codecs/cx2072x/Speaker.conf>
+diff --git a/ucm2/codecs/cx2072x/HeadPhones.conf b/ucm2/codecs/cx2072x/HeadPhones.conf
+index b5d3d3a15402..484d020be7e8 100644
+--- a/ucm2/codecs/cx2072x/HeadPhones.conf
++++ b/ucm2/codecs/cx2072x/HeadPhones.conf
+@@ -16,7 +16,9 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/cx2072x/HeadsetMic.conf b/ucm2/codecs/cx2072x/HeadsetMic.conf
+index 0a59750f8f4a..b1a777114df4 100644
+--- a/ucm2/codecs/cx2072x/HeadsetMic.conf
++++ b/ucm2/codecs/cx2072x/HeadsetMic.conf
+@@ -1,8 +1,8 @@
+-SectionDevice."HeadsetMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	ConflictingDevice [
+-		"InternalMic"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -17,7 +17,9 @@ SectionDevice."HeadsetMic" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/cx2072x/InternalMic.conf b/ucm2/codecs/cx2072x/InternalMic.conf
+index e358c35c1847..831c3cc63f5c 100644
+--- a/ucm2/codecs/cx2072x/InternalMic.conf
++++ b/ucm2/codecs/cx2072x/InternalMic.conf
+@@ -1,8 +1,8 @@
+-SectionDevice."InternalMic" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone"
+ 
+ 	ConflictingDevice [
+-		"HeadsetMic"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+@@ -17,6 +17,8 @@ SectionDevice."InternalMic" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/cx2072x/Speaker.conf b/ucm2/codecs/cx2072x/Speaker.conf
+index a83aeae9a1d3..f60e3559d1f7 100644
+--- a/ucm2/codecs/cx2072x/Speaker.conf
++++ b/ucm2/codecs/cx2072x/Speaker.conf
+@@ -16,6 +16,8 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ }
+-- 
+2.16.4
+

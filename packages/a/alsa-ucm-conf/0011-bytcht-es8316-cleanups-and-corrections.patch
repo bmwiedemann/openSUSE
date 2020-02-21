@@ -1,0 +1,185 @@
+From 7248ff84f18dc56d289937a81adfdc3852ee8a8f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 23 Jan 2020 19:53:52 +0100
+Subject: [PATCH 11/36] bytcht-es8316: cleanups and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/codecs/es8316/HeadPhones.conf      |  7 ++++---
+ ucm2/codecs/es8316/IN1-HeadsetMic.conf  | 10 +++++-----
+ ucm2/codecs/es8316/IN1-InternalMic.conf | 10 +++++-----
+ ucm2/codecs/es8316/IN2-HeadsetMic.conf  | 10 +++++-----
+ ucm2/codecs/es8316/IN2-InternalMic.conf |  6 ++++--
+ ucm2/codecs/es8316/MonoSpeaker.conf     |  7 ++++---
+ ucm2/codecs/es8316/Speaker.conf         |  4 +++-
+ 7 files changed, 30 insertions(+), 24 deletions(-)
+
+diff --git a/ucm2/codecs/es8316/HeadPhones.conf b/ucm2/codecs/es8316/HeadPhones.conf
+index 3f3e591d3a93..603b40c2e6c1 100644
+--- a/ucm2/codecs/es8316/HeadPhones.conf
++++ b/ucm2/codecs/es8316/HeadPhones.conf
+@@ -3,7 +3,6 @@ SectionDevice."Headphones" {
+ 
+ 	ConflictingDevice [
+ 		"Speaker"
+-		"MonoSpeaker"
+ 	]
+ 
+ 	EnableSequence [
+@@ -15,8 +14,10 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+-		JackHWMute "Speaker MonoSpeaker"
++		JackHWMute "Speaker"
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN1-HeadsetMic.conf b/ucm2/codecs/es8316/IN1-HeadsetMic.conf
+index 997a50bac5bf..d798270dd444 100644
+--- a/ucm2/codecs/es8316/IN1-HeadsetMic.conf
++++ b/ucm2/codecs/es8316/IN1-HeadsetMic.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."HeadsetMic-IN1" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone on IN1"
+ 
+ 	ConflictingDevice [
+-		"InternalMic-IN1"
+-		"InternalMic-IN2"
+-		"HeadsetMic-IN2"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -17,7 +15,9 @@ SectionDevice."HeadsetMic-IN1" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId},0"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN1-InternalMic.conf b/ucm2/codecs/es8316/IN1-InternalMic.conf
+index 70a77b9287d0..31c5cda6a314 100644
+--- a/ucm2/codecs/es8316/IN1-InternalMic.conf
++++ b/ucm2/codecs/es8316/IN1-InternalMic.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."InternalMic-IN1" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone on IN1"
+ 
+ 	ConflictingDevice [
+-		"InternalMic-IN2"
+-		"HeadsetMic-IN1"
+-		"HeadsetMic-IN2"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+@@ -17,6 +15,8 @@ SectionDevice."InternalMic-IN1" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN2-HeadsetMic.conf b/ucm2/codecs/es8316/IN2-HeadsetMic.conf
+index 1ab122110796..28f26f8d4c4d 100644
+--- a/ucm2/codecs/es8316/IN2-HeadsetMic.conf
++++ b/ucm2/codecs/es8316/IN2-HeadsetMic.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."HeadsetMic-IN2" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone on IN2"
+ 
+ 	ConflictingDevice [
+-		"InternalMic-IN1"
+-		"InternalMic-IN2"
+-		"HeadsetMic-IN1"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -17,7 +15,9 @@ SectionDevice."HeadsetMic-IN2" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId},0"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN2-InternalMic.conf b/ucm2/codecs/es8316/IN2-InternalMic.conf
+index 7809f8a4775a..8c0418fde5ba 100644
+--- a/ucm2/codecs/es8316/IN2-InternalMic.conf
++++ b/ucm2/codecs/es8316/IN2-InternalMic.conf
+@@ -1,4 +1,4 @@
+-SectionDevice."InternalMic-IN2" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone on IN2"
+ 
+ 	ConflictingDevice [
+@@ -17,6 +17,8 @@ SectionDevice."InternalMic-IN2" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId},0"
++		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/MonoSpeaker.conf b/ucm2/codecs/es8316/MonoSpeaker.conf
+index 704556a8f9c8..f11f2b7f2d41 100644
+--- a/ucm2/codecs/es8316/MonoSpeaker.conf
++++ b/ucm2/codecs/es8316/MonoSpeaker.conf
+@@ -1,8 +1,7 @@
+-SectionDevice."MonoSpeaker" {
++SectionDevice."Speaker" {
+ 	Comment "Mono Speaker"
+ 
+ 	ConflictingDevice [
+-		"Speaker"
+ 		"Headphones"
+ 	]
+ 
+@@ -32,6 +31,8 @@ SectionDevice."MonoSpeaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/Speaker.conf b/ucm2/codecs/es8316/Speaker.conf
+index 0e77746fd474..a1e4491a8577 100644
+--- a/ucm2/codecs/es8316/Speaker.conf
++++ b/ucm2/codecs/es8316/Speaker.conf
+@@ -15,6 +15,8 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackChannels 2
+ 	}
+ }
+-- 
+2.16.4
+

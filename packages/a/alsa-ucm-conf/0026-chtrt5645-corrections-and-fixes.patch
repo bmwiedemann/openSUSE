@@ -1,0 +1,322 @@
+From 4b7f489f6d2fa1e89592fbd1a01f87b725bc7c9c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 4 Feb 2020 18:44:49 +0100
+Subject: [PATCH 26/36] chtrt5645: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtrt5645/HiFi-dmic1.conf                   | 32 ++++++++++++------------
+ ucm2/chtrt5645/HiFi-dmic2.conf                   | 30 +++++++++++-----------
+ ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf | 21 ++++++++--------
+ ucm2/chtrt5645/HiFi.conf                         | 21 ++++++++--------
+ ucm2/codecs/rt5645/AnalogMic.conf                |  5 ++--
+ 5 files changed, 54 insertions(+), 55 deletions(-)
+
+diff --git a/ucm2/chtrt5645/HiFi-dmic1.conf b/ucm2/chtrt5645/HiFi-dmic1.conf
+index 86164c9e0ff4..4748bd9315ca 100644
+--- a/ucm2/chtrt5645/HiFi-dmic1.conf
++++ b/ucm2/chtrt5645/HiFi-dmic1.conf
+@@ -2,10 +2,6 @@ SectionVerb {
+ 	# ALSA PCM
+ 	Value {
+ 		TQ "HiFi"
+-
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+ 	}
+ 
+ 	EnableSequence [
+@@ -29,7 +25,9 @@ SectionDevice."Speaker" {
+ 	Comment "Speaker"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -50,7 +48,9 @@ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -69,12 +69,13 @@ SectionDevice."Headphones" {
+ 	]
+ }
+ 
+-SectionDevice."DMic" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
+-		CapturePriority "150"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+@@ -91,13 +92,15 @@ SectionDevice."DMic" {
+ 	]
+ }
+ 
+-SectionDevice."HSMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+-		JackHWMute "DMic"
++		JackHWMute "Mic"
+ 	}
+ 
+ 	EnableSequence [
+@@ -113,9 +116,6 @@ SectionDevice."HSMic" {
+ 	]
+ 
+ 	DisableSequence [
+-		<codecs/rt5645/HSMicEnableSeq.conf>
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
++		<codecs/rt5645/HSMicDisableSeq.conf>
+ 	]
+ }
+diff --git a/ucm2/chtrt5645/HiFi-dmic2.conf b/ucm2/chtrt5645/HiFi-dmic2.conf
+index 5c947ae43afe..459b9f578566 100644
+--- a/ucm2/chtrt5645/HiFi-dmic2.conf
++++ b/ucm2/chtrt5645/HiFi-dmic2.conf
+@@ -2,10 +2,6 @@ SectionVerb {
+ 	# ALSA PCM
+ 	Value {
+ 		TQ "HiFi"
+-
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+ 	}
+ 
+ 	EnableSequence [
+@@ -29,7 +25,9 @@ SectionDevice."Speaker" {
+ 	Comment "Speaker"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -50,7 +48,9 @@ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -69,12 +69,13 @@ SectionDevice."Headphones" {
+ 	]
+ }
+ 
+-SectionDevice."DMic" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
+-		CapturePriority "150"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+@@ -93,11 +94,13 @@ SectionDevice."DMic" {
+ 	]
+ }
+ 
+-SectionDevice."HSMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "DMic"
+ 	}
+@@ -115,9 +118,6 @@ SectionDevice."HSMic" {
+ 	]
+ 
+ 	DisableSequence [
+-		<codecs/rt5645/HSMicEnableSeq.conf>
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
++		<codecs/rt5645/HSMicDisableSeq.conf>
+ 	]
+ }
+diff --git a/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf b/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
+index a1bca67ebaf0..fe410f37818d 100644
+--- a/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
++++ b/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
+@@ -2,10 +2,6 @@ SectionVerb {
+ 	# ALSA PCM
+ 	Value {
+ 		TQ "HiFi"
+-
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+ 	}
+ 
+ 	EnableSequence [
+@@ -29,7 +25,9 @@ SectionDevice."Speaker" {
+ 	Comment "Speaker"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -54,7 +52,9 @@ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -79,11 +79,13 @@ SectionDevice."Headphones" {
+ 
+ <codecs/rt5645/AnalogMic.conf>
+ 
+-SectionDevice."HSMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "Mic"
+ 	}
+@@ -102,8 +104,5 @@ SectionDevice."HSMic" {
+ 
+ 	DisableSequence [
+ 		<codecs/rt5645/HSMicDisableSeq.conf>
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
+ 	]
+ }
+diff --git a/ucm2/chtrt5645/HiFi.conf b/ucm2/chtrt5645/HiFi.conf
+index 7b2a66353891..954bf68d3032 100644
+--- a/ucm2/chtrt5645/HiFi.conf
++++ b/ucm2/chtrt5645/HiFi.conf
+@@ -2,10 +2,6 @@ SectionVerb {
+ 	# ALSA PCM
+ 	Value {
+ 		TQ "HiFi"
+-
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+ 	}
+ 
+ 	EnableSequence [
+@@ -29,7 +25,9 @@ SectionDevice."Speaker" {
+ 	Comment "Speaker"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -50,7 +48,9 @@ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -71,11 +71,13 @@ SectionDevice."Headphones" {
+ 
+ <codecs/rt5645/AnalogMic.conf>
+ 
+-SectionDevice."HSMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "Mic"
+ 	}
+@@ -94,8 +96,5 @@ SectionDevice."HSMic" {
+ 
+ 	DisableSequence [
+ 		<codecs/rt5645/HSMicDisableSeq.conf>
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
+ 	]
+ }
+diff --git a/ucm2/codecs/rt5645/AnalogMic.conf b/ucm2/codecs/rt5645/AnalogMic.conf
+index d52fe61e4470..5583cdb8cddb 100644
+--- a/ucm2/codecs/rt5645/AnalogMic.conf
++++ b/ucm2/codecs/rt5645/AnalogMic.conf
+@@ -2,8 +2,9 @@ SectionDevice."Mic" {
+ 	Comment "Internal Analog Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
+-		CapturePriority "150"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+-- 
+2.16.4
+

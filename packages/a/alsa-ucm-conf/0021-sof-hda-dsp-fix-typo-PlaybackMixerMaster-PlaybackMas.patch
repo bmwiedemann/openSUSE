@@ -1,0 +1,27 @@
+From 9de65f1f733d178be0e61e3c9f37df1031ab6a81 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 28 Jan 2020 17:57:43 +0100
+Subject: [PATCH 21/36] sof-hda-dsp: fix typo (PlaybackMixerMaster ->
+ PlaybackMasterElem)
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 5c7236d7bd02..71cef496d0ca 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -21,7 +21,7 @@ SectionDevice."Headphones1" {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId},0"
+ 		PlaybackMixerElem "Headphone"
+-		PlaybackMixerMaster "Master"
++		PlaybackMasterElem "Master"
+ 		PlaybackVolume "Headphone Playback Volume"
+ 		PlaybackSwitch "Headphone Playback Switch"
+ 		PlaybackChannels "2"
+-- 
+2.16.4
+

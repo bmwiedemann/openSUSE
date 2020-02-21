@@ -1,0 +1,217 @@
+From ffae896c7e958198b795c9680e4e4fb64b88c8ea Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 Jan 2020 14:35:10 +0100
+Subject: [PATCH 17/36] cht-bsw-rt5672: fixes and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/cht-bsw-rt5672/HiFi-stereo-dmic2.conf |  9 ++++-----
+ ucm2/cht-bsw-rt5672/HiFi.conf              |  5 -----
+ ucm2/codecs/rt5672/DMIC1.conf              |  8 +++++---
+ ucm2/codecs/rt5672/DMIC2.conf              |  8 +++++---
+ ucm2/codecs/rt5672/HeadPhones.conf         |  8 +++++---
+ ucm2/codecs/rt5672/HeadsetMic.conf         | 10 ++++++----
+ ucm2/codecs/rt5672/MonoSpeaker.conf        |  8 +++++---
+ ucm2/codecs/rt5672/Speaker.conf            | 10 ++++++----
+ 8 files changed, 36 insertions(+), 30 deletions(-)
+
+diff --git a/ucm2/cht-bsw-rt5672/HiFi-stereo-dmic2.conf b/ucm2/cht-bsw-rt5672/HiFi-stereo-dmic2.conf
+index 2916490bbdb5..82c976bcdd25 100644
+--- a/ucm2/cht-bsw-rt5672/HiFi-stereo-dmic2.conf
++++ b/ucm2/cht-bsw-rt5672/HiFi-stereo-dmic2.conf
+@@ -9,15 +9,14 @@ SectionVerb {
+ 	DisableSequence [
+ 		<platforms/bytcr/PlatformDisableSeq.conf>
+ 	]
+-
+-	Value {
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+-	}
+ }
+ 
+ <codecs/rt5672/Speaker.conf>
++RenameDevice."Speaker1" "Speaker"
++RemoveDevice."Speaker2" "Speaker2"
+ <codecs/rt5672/HeadPhones.conf>
+ 
+ <codecs/rt5672/DMIC2.conf>
++RenameDevice."Mic2" "Mic"
++RemoveDevice."Mic1" "Mic1"
+ <codecs/rt5672/HeadsetMic.conf>
+diff --git a/ucm2/cht-bsw-rt5672/HiFi.conf b/ucm2/cht-bsw-rt5672/HiFi.conf
+index 18c693283083..9a64cc30d2ca 100644
+--- a/ucm2/cht-bsw-rt5672/HiFi.conf
++++ b/ucm2/cht-bsw-rt5672/HiFi.conf
+@@ -9,11 +9,6 @@ SectionVerb {
+ 	DisableSequence [
+ 		<platforms/bytcr/PlatformDisableSeq.conf>
+ 	]
+-
+-	Value {
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+-	}
+ }
+ 
+ <codecs/rt5672/Speaker.conf>
+diff --git a/ucm2/codecs/rt5672/DMIC1.conf b/ucm2/codecs/rt5672/DMIC1.conf
+index b3da62780dd3..73983af48a37 100644
+--- a/ucm2/codecs/rt5672/DMIC1.conf
++++ b/ucm2/codecs/rt5672/DMIC1.conf
+@@ -1,9 +1,9 @@
+-SectionDevice."DigitalMic-DMIC1" {
++SectionDevice."Mic1" {
+ 	Comment "Internal Digital Microphone on DMIC1"
+ 
+ 	ConflictingDevice [
+-		"DigitalMic-DMIC2"
+-		"HeadsetMic"
++		"Mic2"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+@@ -21,6 +21,8 @@ SectionDevice."DigitalMic-DMIC1" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
+ 		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/DMIC2.conf b/ucm2/codecs/rt5672/DMIC2.conf
+index 38fe015a9629..751c95cf22f1 100644
+--- a/ucm2/codecs/rt5672/DMIC2.conf
++++ b/ucm2/codecs/rt5672/DMIC2.conf
+@@ -1,9 +1,9 @@
+-SectionDevice."DigitalMic-DMIC2" {
++SectionDevice."Mic2" {
+ 	Comment "Internal Digital Microphone on DMIC2"
+ 
+ 	ConflictingDevice [
+-		"DigitalMic-DMIC1"
+-		"HeadsetMic"
++		"Mic1"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+@@ -21,6 +21,8 @@ SectionDevice."DigitalMic-DMIC2" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
+ 		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/HeadPhones.conf b/ucm2/codecs/rt5672/HeadPhones.conf
+index 350fb2b4ed73..0542f7790052 100644
+--- a/ucm2/codecs/rt5672/HeadPhones.conf
++++ b/ucm2/codecs/rt5672/HeadPhones.conf
+@@ -2,8 +2,8 @@ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+ 	ConflictingDevice [
+-		"Speaker"
+-		"MonoSpeaker"
++		"Speaker1"
++		"Speaker2"
+ 	]
+ 
+ 	EnableSequence [
+@@ -15,7 +15,9 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 300
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/HeadsetMic.conf b/ucm2/codecs/rt5672/HeadsetMic.conf
+index fd02cb3a676a..f407579b302d 100644
+--- a/ucm2/codecs/rt5672/HeadsetMic.conf
++++ b/ucm2/codecs/rt5672/HeadsetMic.conf
+@@ -1,9 +1,9 @@
+-SectionDevice."HeadsetMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	ConflictingDevice [
+-		"DigitalMic-DMIC1"
+-		"DigitalMic-DMIC2"
++		"Mic1"
++		"Mic2"
+ 	]
+ 
+ 	EnableSequence [
+@@ -30,7 +30,9 @@ SectionDevice."HeadsetMic" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 300
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/MonoSpeaker.conf b/ucm2/codecs/rt5672/MonoSpeaker.conf
+index 6308ad953c7f..0849c6744bea 100644
+--- a/ucm2/codecs/rt5672/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5672/MonoSpeaker.conf
+@@ -1,8 +1,8 @@
+-SectionDevice."MonoSpeaker" {
++SectionDevice."Speaker2" {
+ 	Comment "Mono Speaker"
+ 
+ 	ConflictingDevice [
+-		"Speaker"
++		"Speaker1"
+ 		"Headphones"
+ 	]
+ 
+@@ -19,6 +19,8 @@ SectionDevice."MonoSpeaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/Speaker.conf b/ucm2/codecs/rt5672/Speaker.conf
+index e4391ccca589..44e73aa875c3 100644
+--- a/ucm2/codecs/rt5672/Speaker.conf
++++ b/ucm2/codecs/rt5672/Speaker.conf
+@@ -1,8 +1,8 @@
+-SectionDevice."Speaker" {
+-	Comment "Speakers"
++SectionDevice."Speaker1" {
++	Comment "Stereo Speakers"
+ 
+ 	ConflictingDevice [
+-		"MonoSpeaker"
++		"Speaker2"
+ 		"Headphones"
+ 	]
+ 
+@@ -15,6 +15,8 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ }
+-- 
+2.16.4
+

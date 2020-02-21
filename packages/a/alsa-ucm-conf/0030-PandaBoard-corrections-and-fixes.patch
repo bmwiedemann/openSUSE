@@ -1,0 +1,187 @@
+From 1e7ea2a0d7afe51447e7efb71f8f03c39b6fcb64 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 4 Feb 2020 19:11:10 +0100
+Subject: [PATCH 30/36] PandaBoard: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/PandaBoard/FMAnalog.conf  |  9 ++++++---
+ ucm2/PandaBoard/HiFi.conf      | 18 +++++++++++-------
+ ucm2/PandaBoard/HiFiLP.conf    |  8 ++++++--
+ ucm2/PandaBoard/Record.conf    |  8 ++++++--
+ ucm2/PandaBoard/Voice.conf     |  8 ++++++--
+ ucm2/PandaBoard/VoiceCall.conf | 12 ++++++++----
+ 6 files changed, 43 insertions(+), 20 deletions(-)
+
+diff --git a/ucm2/PandaBoard/FMAnalog.conf b/ucm2/PandaBoard/FMAnalog.conf
+index 11a2288be4b9..29cbbe84c56a 100644
+--- a/ucm2/PandaBoard/FMAnalog.conf
++++ b/ucm2/PandaBoard/FMAnalog.conf
+@@ -17,10 +17,9 @@ SectionVerb {
+                 cset "name='Capture Volume' 0"
+ 	]
+ 
+-	# Optional TQ and ALSA PCMs
++	# Optional TQ
+ 	Value {
+ 		TQ "Music"
+-                CapturePCM "hw:${CardId},0"
+ 	}
+ }
+ 
+@@ -38,5 +37,9 @@ SectionDevice."Headset" {
+                 cset "name='Analog Right Capture Route' 3"
+                 cset "name='Capture Preamplifier Volume' 0"
+ 	]
+-}
+ 
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/PandaBoard/HiFi.conf b/ucm2/PandaBoard/HiFi.conf
+index 1b161250b3d3..5de0c8fe7921 100644
+--- a/ucm2/PandaBoard/HiFi.conf
++++ b/ucm2/PandaBoard/HiFi.conf
+@@ -26,13 +26,10 @@ SectionVerb {
+                 cset "name='Headset Playback Volume' 0"
+ 	]
+ 
+- 	# Optional TQ and ALSA PCMs
+-#	Value {
+-#		TQ "Music"
+-#		PlaybackPCM "hw:${CardId},0"
+-#                PlaybackVolume "name='DL1 Media Playback Volume' 90,90"
+-#                PlaybackSwitch "name='DL1 PDM Switch' 1"
+-#	}
++ 	# Optional TQ
++	Value {
++		TQ "Music"
++	}
+ }
+ 
+ SectionDevice."Headset" {
+@@ -49,4 +46,11 @@ SectionDevice."Headset" {
+ 		cset "name='Headset Left Playback' 0"
+                 cset "name='Headset Playback Volume' 0"
+ 	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		# PlaybackVolume "name='DL1 Media Playback Volume' 90,90"
++		# PlaybackSwitch "name='DL1 PDM Switch' 1"
++	}
+ }
+diff --git a/ucm2/PandaBoard/HiFiLP.conf b/ucm2/PandaBoard/HiFiLP.conf
+index 92de382dab78..c735248b23c7 100644
+--- a/ucm2/PandaBoard/HiFiLP.conf
++++ b/ucm2/PandaBoard/HiFiLP.conf
+@@ -18,10 +18,9 @@ SectionVerb {
+                 cset "name='SDT DL Volume' 0"
+ 	]
+ 
+-	# Optional TQ and ALSA PCMs
++	# Optional TQ
+ 	Value {
+ 		TQ "Music"
+-		PlaybackPCM "hw:${CardId},6"
+ 	}
+ }
+ 
+@@ -39,4 +38,9 @@ SectionDevice."Headset" {
+ 		cset "name='Headset Left Playback' 0"
+                 cset "name='Headset Playback Volume' 0"
+ 	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},6"
++	}
+ }
+diff --git a/ucm2/PandaBoard/Record.conf b/ucm2/PandaBoard/Record.conf
+index 1fbe74c99df7..e88d6c3a86ec 100644
+--- a/ucm2/PandaBoard/Record.conf
++++ b/ucm2/PandaBoard/Record.conf
+@@ -18,10 +18,9 @@ SectionVerb {
+                 cset "name='Capture Volume' 0"
+ 	]
+ 
+-	# Optional TQ and ALSA PCMs
++	# Optional TQ
+ 	Value {
+ 		TQ "Music"
+-		CapturePCM "hw:${CardId},0"
+ 	}
+ 
+ }
+@@ -40,4 +39,9 @@ SectionDevice."Headset" {
+                 cset "name='Analog Right Capture Route' 3"
+                 cset "name='Capture Preamplifier Volume' 0"
+ 	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
+ }
+diff --git a/ucm2/PandaBoard/Voice.conf b/ucm2/PandaBoard/Voice.conf
+index 42af48a4b517..6843cc8f3eb2 100644
+--- a/ucm2/PandaBoard/Voice.conf
++++ b/ucm2/PandaBoard/Voice.conf
+@@ -18,10 +18,9 @@ SectionVerb {
+                 cset "name='SDT DL Volume' 0"
+ 	]
+ 
+-	# Optional TQ and ALSA PCMs
++	# Optional TQ
+ 	Value {
+ 		TQ "Voice"
+-		PlaybackPCM "hw:${CardId},2"
+ 	}
+ }
+ 
+@@ -39,4 +38,9 @@ SectionDevice."Headset" {
+ 		cset "name='Headset Left Playback' 0"
+                 cset "name='Headset Playback Volume' 0"
+ 	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},2"
++	}
+ }
+diff --git a/ucm2/PandaBoard/VoiceCall.conf b/ucm2/PandaBoard/VoiceCall.conf
+index c20bf5cbb2b6..9a8099ef5317 100644
+--- a/ucm2/PandaBoard/VoiceCall.conf
++++ b/ucm2/PandaBoard/VoiceCall.conf
+@@ -31,11 +31,9 @@ SectionVerb {
+                 cset "name='SDT DL Volume' 0"
+ 	]
+ 
+-	# Optional TQ and ALSA PCMs
++	# Optional TQ
+ 	Value {
+ 		TQ "Voice"
+-                CapturePCM "hw:${CardId},2"
+-		PlaybackPCM "hw:${CardId},2"
+ 	}
+ }
+ 
+@@ -59,5 +57,11 @@ SectionDevice."Headset" {
+ 		cset "name='Headset Left Playback' 0"
+                 cset "name='Headset Playback Volume' 0"
+ 	]
+-}
+ 
++	Value {
++		CapturePriority 100
++                CapturePCM "hw:${CardId},2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},2"
++	}
++}
+-- 
+2.16.4
+

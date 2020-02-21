@@ -1,0 +1,198 @@
+From ed9918179e37e091a861cea57022d45ff50b2bca Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 27 Jan 2020 16:01:21 +0100
+Subject: [PATCH 19/36] skylake-rt286: fixes and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/skylake-rt286/Hdmi1.conf         |  7 +++----
+ ucm2/skylake-rt286/Hdmi2.conf         |  7 +++----
+ ucm2/skylake-rt286/HiFi.conf          | 36 ++++++++++++++++-------------------
+ ucm2/skylake-rt286/skylake-rt286.conf | 14 ++------------
+ 4 files changed, 24 insertions(+), 40 deletions(-)
+
+diff --git a/ucm2/skylake-rt286/Hdmi1.conf b/ucm2/skylake-rt286/Hdmi1.conf
+index 975fd39896ee..5a569434d075 100644
+--- a/ucm2/skylake-rt286/Hdmi1.conf
++++ b/ucm2/skylake-rt286/Hdmi1.conf
+@@ -1,16 +1,15 @@
+ # Usecase for device HDMI1/Display Port stereo playback on Intel SKYLAKE/KABYLAKE platforms
+ # For Audio in I2S mode
+ 
+-SectionDevice."Hdmi1" {
++SectionDevice."HDMI1" {
+         Comment "HDMI/Display Port 1 Stereo"
+ 
+         Value {
++		PlaybackPriority 300
+                 PlaybackPCM "hw:${CardId},4"
+-                PlaybackChannels "2"
+-                PlaybackPriority "3"
+ 		If.1 {
+ 			Condition {
+-				ControlExists
++				Type ControlExists
+ 				Control "iface=CARD,name='HDMI/DP,pcm=4 Jack'"
+ 			}
+ 			True {
+diff --git a/ucm2/skylake-rt286/Hdmi2.conf b/ucm2/skylake-rt286/Hdmi2.conf
+index d6ca62f72be6..d2780b6d4b1f 100644
+--- a/ucm2/skylake-rt286/Hdmi2.conf
++++ b/ucm2/skylake-rt286/Hdmi2.conf
+@@ -1,16 +1,15 @@
+ # Usecase for device HDMI2/Display Port stereo playback on Intel SKYLAKE/KABYLAKE platforms
+ # For Audio in I2S mode
+ 
+-SectionDevice."Hdmi2" {
++SectionDevice."HDMI2" {
+         Comment "HDMI/Display Port 2 Stereo"
+ 
+         Value {
++		PlaybackPriority 400
+                 PlaybackPCM "hw:${CardId},5"
+-                PlaybackChannels "2"
+-                PlaybackPriority "4"
+ 		If.1 {
+ 			Condition {
+-				ControlExists
++				Type ControlExists
+ 				Control "iface=CARD,name='HDMI/DP,pcm=5 Jack'"
+ 			}
+ 		 	True {
+diff --git a/ucm2/skylake-rt286/HiFi.conf b/ucm2/skylake-rt286/HiFi.conf
+index 489170f33acf..9e94a1b1072d 100644
+--- a/ucm2/skylake-rt286/HiFi.conf
++++ b/ucm2/skylake-rt286/HiFi.conf
+@@ -2,15 +2,12 @@
+ # For Audio in I2S mode on Intel SKYLAKE/KABYLAKE platforms
+ 
+ SectionVerb {
+-
+ 	EnableSequence [
+ 		cset "name='media0_out mo dmic01_hifi_in mi Switch' 1"
+ 	]
+ 
+ 	Value {
+ 		TQ "HiFi"
+-		CapturePCM "hw:${CardId},1"
+-		PlaybackPCM "hw:${CardId},0"
+ 	}
+ }
+ 
+@@ -20,6 +17,7 @@ SectionDevice."Headphones" {
+ 	ConflictingDevice [
+ 		"Speaker"
+ 	]
++
+ 	EnableSequence [
+ 		cset "name='HPO L Switch' 1"
+ 		cset "name='HPO R Switch' 1"
+@@ -27,11 +25,9 @@ SectionDevice."Headphones" {
+ 		cset "name='Speaker Playback Switch' 0,0"
+ 	]
+ 
+-	DisableSequence [
+-	]
+ 	Value {
+-		PlaybackChannels "2"
+-		PlaybackPriority "1"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -43,6 +39,7 @@ SectionDevice."Speaker" {
+ 	ConflictingDevice [
+ 		"Headphones"
+ 	]
++
+ 	EnableSequence [
+ 		cset "name='SPO Switch' 1"
+ 		cset "name='Speaker Playback Switch' 1,1"
+@@ -51,20 +48,18 @@ SectionDevice."Speaker" {
+ 		cset "name='HPO R Switch' 0"
+ 	]
+ 
+-	DisableSequence [
+-	]
+ 	Value {
+-		PlaybackChannels "2"
+-		PlaybackPriority "1"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
+ 		JackHWMute "Headphones"
+ 	}
+ }
+ 
+ SectionDevice."Headset" {
+-	Comment "Headset Mic"
++	Comment "Headset Microphone"
+ 
+ 	ConflictingDevice [
+-		"dmiccap"
++		"Mic"
+ 	]
+ 	EnableSequence [
+ 		cset "name='media0_out mo codec0_in mi Switch' 1"
+@@ -79,15 +74,14 @@ SectionDevice."Headset" {
+ 		cset "name='media0_out mo codec0_in mi Switch' 0"
+ 	]
+ 	Value {
+-		CaptureChannels "2"
+-		CapturePriority "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId},1"
+ 		JackControl "Mic Jack"
+ 	}
+ }
+ 
+-
+-SectionDevice."dmiccap" {
+-	Comment "DMIC Stereo"
++SectionDevice."Mic" {
++	Comment "Digital Stereo Microphone"
+ 
+ 	ConflictingDevice [
+ 		"Headset"
+@@ -110,8 +104,10 @@ SectionDevice."dmiccap" {
+ 		cset "name='ADC 0 Mux' 2"
+ 	]
+ 	Value {
+-		CaptureChannels "2"
+-		CapturePriority "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId},1"
+ 	}
+ }
+ 
++<skylake-rt286/Hdmi1.conf>
++<skylake-rt286/Hdmi2.conf>
+diff --git a/ucm2/skylake-rt286/skylake-rt286.conf b/ucm2/skylake-rt286/skylake-rt286.conf
+index efb8a20e0533..4ea57773cd2a 100644
+--- a/ucm2/skylake-rt286/skylake-rt286.conf
++++ b/ucm2/skylake-rt286/skylake-rt286.conf
+@@ -8,19 +8,9 @@ SectionUseCase."HiFi" {
+ 	Comment "Play and record HiFi quality Music"
+ }
+ 
+-SectionUseCase."Hdmi1" {
+-        File "Hdmi1.conf"
+-        Comment "Play on Hdmi/DP 1"
+-}
+-
+-SectionUseCase."Hdmi2" {
+-        File "Hdmi2.conf"
+-        Comment "Play on Hdmi/DP 2"
+-}
+-
+ ValueDefaults {
+-	CaptureChannels "2"
+-	CapturePriority "2"	
++	PlaybackChannels 2
++	CaptureChannels 2
+ }
+ 
+ SectionDefaults [
+-- 
+2.16.4
+

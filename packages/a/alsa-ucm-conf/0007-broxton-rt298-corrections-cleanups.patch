@@ -1,0 +1,274 @@
+From b70e91923bfa61989acb32801bee259a4c04674d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 23 Jan 2020 14:13:10 +0100
+Subject: [PATCH 07/36] broxton-rt298: corrections, cleanups
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/broxton-rt298/Hdmi.conf          | 43 ++++++++++++++++++++++++
+ ucm2/broxton-rt298/Hdmi1.conf         | 23 -------------
+ ucm2/broxton-rt298/Hdmi2.conf         | 23 -------------
+ ucm2/broxton-rt298/HiFi.conf          | 63 ++++++++++++++++++++---------------
+ ucm2/broxton-rt298/broxton-rt298.conf | 18 +++-------
+ 5 files changed, 84 insertions(+), 86 deletions(-)
+ create mode 100644 ucm2/broxton-rt298/Hdmi.conf
+ delete mode 100644 ucm2/broxton-rt298/Hdmi1.conf
+ delete mode 100644 ucm2/broxton-rt298/Hdmi2.conf
+
+diff --git a/ucm2/broxton-rt298/Hdmi.conf b/ucm2/broxton-rt298/Hdmi.conf
+new file mode 100644
+index 000000000000..fc64fe77743f
+--- /dev/null
++++ b/ucm2/broxton-rt298/Hdmi.conf
+@@ -0,0 +1,43 @@
++# Usecase for device HDMI1/Display Port stereo playback on Intel SKYLAKE/KABYLAKE platforms
++
++SectionDevice."HDMI1" {
++	Comment "HDMI/Display Port 1 Stereo"
++
++	Value {
++		PlaybackPCM "hw:${CardId},4"
++		PlaybackPriority 500
++		If.1 {
++			Condition {
++				Type ControlExists
++				Control "iface=CARD,name='HDMI/DP,pcm=4 Jack'"
++			}
++			True {
++				JackControl "HDMI/DP,pcm=4 Jack"
++			}
++			False {
++				JackControl "HDMI/DP, pcm=4 Jack"
++			}
++		}
++	}
++}
++
++SectionDevice."HDMI2" {
++	Comment "HDMI/Display Port 2 Stereo"
++
++	Value {
++		PlaybackPCM "hw:${CardId},5"
++		PlaybackPriority 600
++		If.1 {
++			Condition {
++				Type ControlExists
++				Control "iface=CARD,name='HDMI/DP,pcm=5 Jack'"
++			}
++			True {
++				JackControl "HDMI/DP,pcm=5 Jack"
++			}
++			False {
++				JackControl "HDMI/DP, pcm=5 Jack"
++			}
++		}
++	}
++}
+diff --git a/ucm2/broxton-rt298/Hdmi1.conf b/ucm2/broxton-rt298/Hdmi1.conf
+deleted file mode 100644
+index ede176bace07..000000000000
+--- a/ucm2/broxton-rt298/Hdmi1.conf
++++ /dev/null
+@@ -1,23 +0,0 @@
+-# Usecase for device HDMI1/Display Port stereo playback on Intel SKYLAKE/KABYLAKE platforms
+-# For Audio in I2S mode
+-
+-SectionDevice."Hdmi1" {
+-        Comment "HDMI/Display Port 1 Stereo"
+-
+-        Value {
+-                PlaybackPCM "hw:${CardId},4"
+-                PlaybackPriority "3"
+-		If.1 {
+-			Condition {
+-				Type ControlExists
+-				Control "iface=CARD,name='HDMI/DP,pcm=4 Jack'"
+-			}
+-			True {
+-				JackControl "HDMI/DP,pcm=4 Jack"
+-			}
+-			False {
+-				JackControl "HDMI/DP, pcm=4 Jack"
+-			}
+-		}
+-        }
+-}
+diff --git a/ucm2/broxton-rt298/Hdmi2.conf b/ucm2/broxton-rt298/Hdmi2.conf
+deleted file mode 100644
+index 9718bae23392..000000000000
+--- a/ucm2/broxton-rt298/Hdmi2.conf
++++ /dev/null
+@@ -1,23 +0,0 @@
+-# Usecase for device HDMI1/Display Port stereo playback on Intel SKYLAKE/KABYLAKE platforms
+-# For Audio in I2S mode
+-
+-SectionDevice."Hdmi2" {
+-        Comment "HDMI/Display Port 2 Stereo"
+-
+-        Value {
+-		PlaybackPCM "hw:${CardId},5"
+-		PlaybackPriority "4"
+-		If.1 {
+-			Condition {
+-				Type ControlExists
+-				Control "iface=CARD,name='HDMI/DP,pcm=5 Jack'"
+-			}
+-			True {
+-				JackControl "HDMI/DP,pcm=5 Jack"
+-			}
+-			False {
+-				JackControl "HDMI/DP, pcm=5 Jack"
+-			}
+-		}
+-        }
+-}
+diff --git a/ucm2/broxton-rt298/HiFi.conf b/ucm2/broxton-rt298/HiFi.conf
+index 630d5e1eb175..6f5b9a594f65 100644
+--- a/ucm2/broxton-rt298/HiFi.conf
++++ b/ucm2/broxton-rt298/HiFi.conf
+@@ -9,31 +9,29 @@ SectionVerb {
+ 
+ 	Value {
+ 		TQ "HiFi"
+-		CapturePCM "hw:${CardId},1"
+-		PlaybackPCM "hw:${CardId},0"
+ 	}
+ }
+ 
+-SectionDevice."DigitalMic" {
+-	Comment "DMIC Stereo"
++SectionDevice."Speaker" {
++	Comment "Speaker"
+ 
+ 	ConflictingDevice [
+-		"Headset"
++		"Headphones"
+ 	]
+ 
+ 	EnableSequence [
+-		cset "name='media0_out mo dmic01_hifi_in mi Switch' 1"
+-		cset "name='media0_out mo codec0_in mi Switch' 0"
+-		cset "name='Mic Jack Switch' 0"
+-
++		cset "name='SPO Switch' 1"
++		cset "name='Speaker Playback Switch' 1,1"
++		cset "name='Speaker Switch' 1"
++		cset "name='HPO L Switch' 0"
++		cset "name='HPO R Switch' 0"
+ 	]
+ 
+-	DisableSequence [
+-		cset "name='media0_out mo codec0_in mi Switch' 1"
+-		cset "name='media0_out mo dmic01_hifi_in mi Switch' 0"
+-		cset "name='Mic Jack Switch' 1"
+-		cset "name='ADC 0 Mux' 0"
+-	]
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		JackHWMute "Headphones"
++	}
+ }
+ 
+ SectionDevice."Headphones" {
+@@ -51,36 +49,45 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+ }
+ 
+-SectionDevice."Speaker" {
+-	Comment "Speaker"
++SectionDevice."Mic" {
++	Comment "Digital Microphone"
+ 
+ 	ConflictingDevice [
+-		"Headphones"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+-		cset "name='SPO Switch' 1"
+-		cset "name='Speaker Playback Switch' 1,1"
+-		cset "name='Speaker Switch' 1"
+-		cset "name='HPO L Switch' 0"
+-		cset "name='HPO R Switch' 0"
++		cset "name='media0_out mo dmic01_hifi_in mi Switch' 1"
++		cset "name='media0_out mo codec0_in mi Switch' 0"
++		cset "name='Mic Jack Switch' 0"
++
++	]
++
++	DisableSequence [
++		cset "name='media0_out mo codec0_in mi Switch' 1"
++		cset "name='media0_out mo dmic01_hifi_in mi Switch' 0"
++		cset "name='Mic Jack Switch' 1"
++		cset "name='ADC 0 Mux' 0"
+ 	]
+ 
+ 	Value {
+-		JackHWMute "Headphones"
++		CapturePriority 100
++		CapturePCM "hw:${CardId},1"
+ 	}
+ }
+ 
+ SectionDevice."Headset" {
+-	Comment "Headset Mic"
++	Comment "Headset Microphone"
+ 
+ 	ConflictingDevice [
+-		"DigitalMic"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -97,6 +104,10 @@ SectionDevice."Headset" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId},1"
+ 		JackControl "Mic Jack"
+ 	}
+ }
++
++<broxton-rt298/Hdmi.conf>
+diff --git a/ucm2/broxton-rt298/broxton-rt298.conf b/ucm2/broxton-rt298/broxton-rt298.conf
+index 8752e915854a..1332dc5e55a9 100644
+--- a/ucm2/broxton-rt298/broxton-rt298.conf
++++ b/ucm2/broxton-rt298/broxton-rt298.conf
+@@ -8,21 +8,11 @@ SectionUseCase."HiFi" {
+ 	Comment "Play and record HiFi quality Music"
+ }
+ 
+-SectionUseCase."Hdmi1" {
+-        File "Hdmi1.conf"
+-        Comment "Play on Hdmi/DP 1"
+-}
+-
+-SectionUseCase."Hdmi2" {
+-        File "Hdmi2.conf"
+-        Comment "Play on Hdmi/DP 2"
+-}
+-
+ ValueDefaults {
+-	PlaybackChannels "2"
+-	PlaybackPriority "1"
+-	CaptureChannels "2"
+-	CapturePriority "2"
++	PlaybackChannels 2
++	PlaybackPriority 1
++	CaptureChannels 2
++	CapturePriority 2
+ }
+ 
+ SectionDefaults [
+-- 
+2.16.4
+

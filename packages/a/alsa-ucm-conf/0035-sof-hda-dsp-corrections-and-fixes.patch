@@ -1,0 +1,114 @@
+From acf80f98692ab6f409e77cddb1bb55b387da4b17 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 5 Feb 2020 03:24:00 +0100
+Subject: [PATCH 35/36] sof-hda-dsp: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HDA-Capture-value.conf |  4 ++--
+ ucm2/sof-hda-dsp/Hdmi.conf              |  6 +++---
+ ucm2/sof-hda-dsp/HiFi.conf              | 14 +++++++-------
+ 3 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/ucm2/sof-hda-dsp/HDA-Capture-value.conf b/ucm2/sof-hda-dsp/HDA-Capture-value.conf
+index b3e90aaa7193..5f3c2a38899d 100644
+--- a/ucm2/sof-hda-dsp/HDA-Capture-value.conf
++++ b/ucm2/sof-hda-dsp/HDA-Capture-value.conf
+@@ -1,5 +1,5 @@
+-CapturePCM "hw:${CardId},0"
++CapturePCM "hw:${CardId}"
+ CaptureMixerElem "Capture"
+ CaptureVolume "Capture Volume"
+ CaptureSwitch "Capture Switch"
+-CaptureChannels "2"
++CaptureChannels 2
+diff --git a/ucm2/sof-hda-dsp/Hdmi.conf b/ucm2/sof-hda-dsp/Hdmi.conf
+index 7418fa79f993..1982c7269ed5 100644
+--- a/ucm2/sof-hda-dsp/Hdmi.conf
++++ b/ucm2/sof-hda-dsp/Hdmi.conf
+@@ -14,7 +14,7 @@ SectionDevice."HDMI1" {
+ 	Value {
+ 		PlaybackPriority 500
+ 		PlaybackPCM "hw:${CardId},3"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 		JackControl "HDMI/DP,pcm=3 Jack"
+ 	}
+ }
+@@ -33,7 +33,7 @@ SectionDevice."HDMI2" {
+ 	Value {
+ 		PlaybackPriority 600
+ 		PlaybackPCM "hw:${CardId},4"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 		JackControl "HDMI/DP,pcm=4 Jack"
+ 	}
+ }
+@@ -52,7 +52,7 @@ SectionDevice."HDMI3" {
+ 	Value {
+ 		PlaybackPriority 700
+ 		PlaybackPCM "hw:${CardId},5"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 		JackControl "HDMI/DP,pcm=5 Jack"
+ 	}
+ }
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 71cef496d0ca..6dfdabe2ff40 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -19,12 +19,12 @@ SectionDevice."Headphones1" {
+ 
+ 	Value {
+ 		PlaybackPriority 200
+-		PlaybackPCM "hw:${CardId},0"
++		PlaybackPCM "hw:${CardId}"
+ 		PlaybackMixerElem "Headphone"
+ 		PlaybackMasterElem "Master"
+ 		PlaybackVolume "Headphone Playback Volume"
+ 		PlaybackSwitch "Headphone Playback Switch"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 		If.jack {
+ 			Condition {
+ 				Type ControlExists
+@@ -72,12 +72,12 @@ SectionDevice."Speaker" {
+ 
+ 	Value {
+ 		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},0"
++		PlaybackPCM "hw:${CardId}"
+ 		PlaybackMixerElem "Speaker"
+ 		PlaybackMasterElem "Master"
+ 		PlaybackVolume "Speaker Playback Volume"
+ 		PlaybackSwitch "Speaker Playback Switch"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 	}
+ }
+ 
+@@ -93,7 +93,7 @@ If.monomic {
+ 			Comment "Headphones Stereo Microphone"
+ 
+ 			ConflictingDevice [
+-				"HeadsetMic"
++				"Headset"
+ 			]
+ 
+ 			EnableSequence [
+@@ -147,10 +147,10 @@ SectionDevice."Mic" {
+ 				Needle "cfg-dmics:4"
+ 			}
+ 			True {
+-				CaptureChannels "4"
++				CaptureChannels 4
+ 			}
+ 			False {
+-				CaptureChannels "2"
++				CaptureChannels 2
+ 			}
+ 		}
+ 		If.vol {
+-- 
+2.16.4
+

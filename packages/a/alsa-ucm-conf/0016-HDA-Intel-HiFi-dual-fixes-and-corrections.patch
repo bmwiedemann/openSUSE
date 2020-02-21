@@ -1,0 +1,358 @@
+From dfad18452427460bf50c55a2c06f9460b2db2123 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 Jan 2020 11:06:29 +0100
+Subject: [PATCH 16/36] HDA-Intel/HiFi-dual: fixes and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA Intel PCH/HDAudio-DualCodecs.conf         |   6 -
+ .../HDAudio-Gigabyte-ALC1220DualCodecs.conf        |   1 -
+ ucm2/HDA Intel PCH/HDAudio-Lenovo-DualCodecs.conf  |   1 -
+ ucm2/HDA Intel PCH/HiFi-dual.conf                  | 144 ---------------------
+ ucm2/HDA-Intel/HDAudio-DualCodecs.conf             |   6 +
+ .../HDAudio-Gigabyte-ALC1220DualCodecs.conf        |   1 +
+ ucm2/HDA-Intel/HDAudio-Lenovo-DualCodecs.conf      |   1 +
+ ucm2/HDA-Intel/HiFi-dual.conf                      | 118 +++++++++++++++++
+ 8 files changed, 126 insertions(+), 152 deletions(-)
+ delete mode 100644 ucm2/HDA Intel PCH/HDAudio-DualCodecs.conf
+ delete mode 120000 ucm2/HDA Intel PCH/HDAudio-Gigabyte-ALC1220DualCodecs.conf
+ delete mode 120000 ucm2/HDA Intel PCH/HDAudio-Lenovo-DualCodecs.conf
+ delete mode 100644 ucm2/HDA Intel PCH/HiFi-dual.conf
+ create mode 100644 ucm2/HDA-Intel/HDAudio-DualCodecs.conf
+ create mode 120000 ucm2/HDA-Intel/HDAudio-Gigabyte-ALC1220DualCodecs.conf
+ create mode 120000 ucm2/HDA-Intel/HDAudio-Lenovo-DualCodecs.conf
+ create mode 100644 ucm2/HDA-Intel/HiFi-dual.conf
+
+diff --git a/ucm2/HDA Intel PCH/HDAudio-DualCodecs.conf b/ucm2/HDA Intel PCH/HDAudio-DualCodecs.conf
+deleted file mode 100644
+index 8aaabd0c819d..000000000000
+--- a/ucm2/HDA Intel PCH/HDAudio-DualCodecs.conf	
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Syntax 2
+-Comment "HDAudio with dual HD-audio codecs"
+-SectionUseCase."HiFi" {
+-	File "HiFi-dual.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/HDA Intel PCH/HDAudio-Gigabyte-ALC1220DualCodecs.conf b/ucm2/HDA Intel PCH/HDAudio-Gigabyte-ALC1220DualCodecs.conf
+deleted file mode 120000
+index 89801aaa2c40..000000000000
+--- a/ucm2/HDA Intel PCH/HDAudio-Gigabyte-ALC1220DualCodecs.conf	
++++ /dev/null
+@@ -1 +0,0 @@
+-HDAudio-DualCodecs.conf
+\ No newline at end of file
+diff --git a/ucm2/HDA Intel PCH/HDAudio-Lenovo-DualCodecs.conf b/ucm2/HDA Intel PCH/HDAudio-Lenovo-DualCodecs.conf
+deleted file mode 120000
+index 89801aaa2c40..000000000000
+--- a/ucm2/HDA Intel PCH/HDAudio-Lenovo-DualCodecs.conf	
++++ /dev/null
+@@ -1 +0,0 @@
+-HDAudio-DualCodecs.conf
+\ No newline at end of file
+diff --git a/ucm2/HDA Intel PCH/HiFi-dual.conf b/ucm2/HDA Intel PCH/HiFi-dual.conf
+deleted file mode 100644
+index 63b3fe61edc0..000000000000
+--- a/ucm2/HDA Intel PCH/HiFi-dual.conf	
++++ /dev/null
+@@ -1,144 +0,0 @@
+-SectionVerb {
+-	Value {
+-		TQ "HiFi"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Front Playback Volume' 100%"
+-		cset "name='Front Playback Switch' on"
+-		cset "name='Rear-Panel Capture Volume' 100%"
+-		cset "name='Rear-Panel Capture Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Front Playback Volume' 0"
+-		cset "name='Front Playback Switch' off"
+-		cset "name='Rear-Panel Capture Volume' 0"
+-		cset "name='Rear-Panel Capture Switch' off"
+-	]
+-}
+-
+-SectionDevice."Speaker" {
+-	Comment "Speaker"
+-
+-	Value {
+-		PlaybackChannels "2"
+-		PlaybackPCM "hw:${CardId},4"
+-	}
+-
+-	ConflictingDevice [
+-		"Headphone"
+-	]
+-
+-	EnableSequence [
+-		cset "name='Speaker Playback Switch' on"
+-		cset "name='Speaker Playback Volume' 100%"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Speaker Playback Volume' 0"
+-		cset "name='Speaker Playback Switch' off"
+-	]
+-}
+-
+-SectionDevice."LineOut" {
+-	Comment "Line Out"
+-
+-	Value {
+-		PlaybackChannels "2"
+-		PlaybackPCM "hw:${CardId},0"
+-		JackControl "Line Out Jack"
+-		JackHWMute "Speaker"
+-	}
+-}
+-
+-SectionDevice."Headphones" {
+-	Comment "Headphones"
+-
+-	Value {
+-		PlaybackChannels "2"
+-		PlaybackPCM "hw:${CardId},4"
+-		JackControl "Front Headphone Jack"
+-		JackHWMute "Speaker"
+-	}
+-
+-	ConflictingDevice [
+-		"Speaker"
+-	]
+-
+-	EnableSequence [
+-		cset "name='Headphone Playback Switch' on"
+-		cset "name='Headphone Playback Volume' 100%"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headphone Playback Volume' 0"
+-		cset "name='Headphone Playback Switch' off"
+-	]
+-}
+-
+-SectionDevice."LineIn" {
+-	Comment "Rear Line In"
+-
+-	Value {
+-		CaptureChannels "2"
+-		CapturePCM "hw:${CardId},0"
+-		JackControl "Line Jack"
+-	}
+-
+-	ConflictingDevice [
+-		"RearMic"
+-	]
+-
+-	EnableSequence [
+-		cset "name='Input Source' Line"
+-		If.0 {
+-			Condition {
+-				Type ControlExists
+-				Control "name='Line Boost Volume'"
+-			}
+-			True {
+-				cset "name='Line Boost Volume' 3"
+-			}
+-		}
+-	]
+-}
+-
+-SectionDevice."RearMic" {
+-	Comment "Rear Microphone"
+-
+-	Value {
+-		CaptureChannels "2"
+-		CapturePCM "hw:${CardId},0"
+-		# CapturePriority "150"
+-		JackHWMute "LineIn"
+-	}
+-
+-	ConflictingDevice [
+-		"LineIn"
+-	]
+-
+-	EnableSequence [
+-		cset "name='Input Source' Rear Mic"
+-	]
+-}
+-
+-SectionDevice."FrontMic" {
+-	Comment "Front Microphone"
+-
+-	Value {
+-		CaptureChannels "2"
+-		CapturePCM "hw:${CardId},4"
+-		JackControl "Front Mic Jack"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Front-Panel Capture Volume' 100%"
+-		cset "name='Front-Panel Capture Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Front-Panel Capture Volume' 0"
+-		cset "name='Front-Panel Capture Switch' off"
+-	]
+-}
+diff --git a/ucm2/HDA-Intel/HDAudio-DualCodecs.conf b/ucm2/HDA-Intel/HDAudio-DualCodecs.conf
+new file mode 100644
+index 000000000000..8aaabd0c819d
+--- /dev/null
++++ b/ucm2/HDA-Intel/HDAudio-DualCodecs.conf
+@@ -0,0 +1,6 @@
++Syntax 2
++Comment "HDAudio with dual HD-audio codecs"
++SectionUseCase."HiFi" {
++	File "HiFi-dual.conf"
++	Comment "Default"
++}
+diff --git a/ucm2/HDA-Intel/HDAudio-Gigabyte-ALC1220DualCodecs.conf b/ucm2/HDA-Intel/HDAudio-Gigabyte-ALC1220DualCodecs.conf
+new file mode 120000
+index 000000000000..89801aaa2c40
+--- /dev/null
++++ b/ucm2/HDA-Intel/HDAudio-Gigabyte-ALC1220DualCodecs.conf
+@@ -0,0 +1 @@
++HDAudio-DualCodecs.conf
+\ No newline at end of file
+diff --git a/ucm2/HDA-Intel/HDAudio-Lenovo-DualCodecs.conf b/ucm2/HDA-Intel/HDAudio-Lenovo-DualCodecs.conf
+new file mode 120000
+index 000000000000..89801aaa2c40
+--- /dev/null
++++ b/ucm2/HDA-Intel/HDAudio-Lenovo-DualCodecs.conf
+@@ -0,0 +1 @@
++HDAudio-DualCodecs.conf
+\ No newline at end of file
+diff --git a/ucm2/HDA-Intel/HiFi-dual.conf b/ucm2/HDA-Intel/HiFi-dual.conf
+new file mode 100644
+index 000000000000..846c6db75a51
+--- /dev/null
++++ b/ucm2/HDA-Intel/HiFi-dual.conf
+@@ -0,0 +1,118 @@
++SectionVerb {
++	Value {
++		TQ "HiFi"
++		PlaybackChannels 2
++		CaptureChannels 2
++	}
++
++	EnableSequence [
++		cset "name='Front Playback Volume' 100%"
++		cset "name='Front Playback Switch' on"
++		cset "name='Rear-Panel Capture Volume' 100%"
++		cset "name='Rear-Panel Capture Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='Front Playback Volume' 0"
++		cset "name='Front Playback Switch' off"
++		cset "name='Rear-Panel Capture Volume' 0"
++		cset "name='Rear-Panel Capture Switch' off"
++	]
++}
++
++SectionDevice."Speaker" {
++	Comment "Speaker"
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},4"
++		PlaybackMixerElem "Speaker"
++	}
++
++	ConflictingDevice [
++		"Headphones"
++	]
++}
++
++SectionDevice."Line1" {
++	Comment "Line Out"
++
++	Value {
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		JackControl "Line Out Jack"
++		JackHWMute "Speaker"
++	}
++}
++
++SectionDevice."Headphones" {
++	Comment "Headphones"
++
++	Value {
++		PlaybackPriority 300
++		PlaybackPCM "hw:${CardId},4"
++		PlaybackMixerElem "Headphone"
++		JackControl "Front Headphone Jack"
++		JackHWMute "Speaker"
++	}
++
++	ConflictingDevice [
++		"Speaker"
++	]
++}
++
++SectionDevice."Line2" {
++	Comment "Rear Line In"
++
++	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		JackControl "Line Jack"
++	}
++
++	ConflictingDevice [
++		"Mic2"
++	]
++
++	EnableSequence [
++		cset "name='Input Source' Line"
++		If.0 {
++			Condition {
++				Type ControlExists
++				Control "name='Line Boost Volume'"
++			}
++			True {
++				cset "name='Line Boost Volume' 3"
++			}
++		}
++	]
++}
++
++SectionDevice."Mic2" {
++	Comment "Rear Microphone"
++
++	Value {
++		CapturePriority 300
++		CapturePCM "hw:${CardId}"
++		JackHWMute "Line2"
++	}
++
++	ConflictingDevice [
++		"Line2"
++	]
++
++	EnableSequence [
++		cset "name='Input Source' Rear Mic"
++	]
++}
++
++SectionDevice."Mic1" {
++	Comment "Front Microphone"
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId},4"
++		CaptureMixerElem "Front-Panel"
++		JackControl "Front Mic Jack"
++	}
++}
+-- 
+2.16.4
+

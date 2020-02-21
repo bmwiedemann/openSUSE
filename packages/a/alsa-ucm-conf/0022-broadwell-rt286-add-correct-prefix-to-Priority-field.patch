@@ -1,0 +1,60 @@
+From 4fd064eb56bec3a47f8380fd1498bbc190cca703 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 28 Jan 2020 18:15:22 +0100
+Subject: [PATCH 22/36] broadwell-rt286: add correct prefix to Priority field
+ names
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/broadwell-rt286/HiFi.conf | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/ucm2/broadwell-rt286/HiFi.conf b/ucm2/broadwell-rt286/HiFi.conf
+index e766250dfac8..96b89a0ff0d0 100644
+--- a/ucm2/broadwell-rt286/HiFi.conf
++++ b/ucm2/broadwell-rt286/HiFi.conf
+@@ -21,7 +21,7 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	Value {
+-		Priority 100
++		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+ 		PlaybackChannels 2
+ 		PlaybackMixerElem "DAC0"
+@@ -49,7 +49,7 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		Priority 200
++		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+ 		PlaybackChannels 2
+ 		PlaybackMixerElem "DAC0"
+@@ -76,9 +76,9 @@ SectionDevice."Mic" {
+ 	]
+ 
+ 	Value {
+-		Priority 100
++		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels "2"
++		CaptureChannels 2
+ 		CaptureMixerElem "Mic"
+ 		CaptureMasterElem "ADC0"
+ 	}
+@@ -101,9 +101,9 @@ SectionDevice."Handset" {
+ 	]
+ 
+ 	Value {
+-		Priority 200
++		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels "2"
++		CaptureChannels 2
+ 		CaptureMixerElem "Mic"
+ 		CaptureMasterElem "ADC0"
+ 		JackDev "rt286-jack"
+-- 
+2.16.4
+

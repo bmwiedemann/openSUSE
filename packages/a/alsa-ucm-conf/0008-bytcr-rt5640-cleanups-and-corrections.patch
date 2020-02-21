@@ -1,0 +1,171 @@
+From e1f9bdb95e1cf90c17a44fa5734b41b6656d648d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 23 Jan 2020 19:03:53 +0100
+Subject: [PATCH 08/36] bytcr-rt5640: cleanups and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/codecs/rt5640/DigitalMics.conf     | 8 ++++----
+ ucm2/codecs/rt5640/HeadPhones.conf      | 4 +++-
+ ucm2/codecs/rt5640/HeadsetMic.conf      | 8 ++++----
+ ucm2/codecs/rt5640/IN1-InternalMic.conf | 6 +++---
+ ucm2/codecs/rt5640/IN3-InternalMic.conf | 8 ++++----
+ ucm2/codecs/rt5640/MonoSpeaker.conf     | 6 ++++--
+ ucm2/codecs/rt5640/Speaker.conf         | 4 +++-
+ 7 files changed, 25 insertions(+), 19 deletions(-)
+
+diff --git a/ucm2/codecs/rt5640/DigitalMics.conf b/ucm2/codecs/rt5640/DigitalMics.conf
+index 36982c476317..17cae1953677 100644
+--- a/ucm2/codecs/rt5640/DigitalMics.conf
++++ b/ucm2/codecs/rt5640/DigitalMics.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."DigitalMics" {
++SectionDevice."Mic" {
+ 	Comment "Internal Digital Microphones"
+ 
+ 	ConflictingDevice [
+-		"IN1-InternalMics"
+-		"IN3-InternalMics"
+-		"HeadsetMic"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+@@ -22,6 +20,8 @@ SectionDevice."DigitalMics" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId},0"
+ 		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/HeadPhones.conf b/ucm2/codecs/rt5640/HeadPhones.conf
+index e37442dc73f8..dccc943490c1 100644
+--- a/ucm2/codecs/rt5640/HeadPhones.conf
++++ b/ucm2/codecs/rt5640/HeadPhones.conf
+@@ -32,7 +32,9 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 300
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/HeadsetMic.conf b/ucm2/codecs/rt5640/HeadsetMic.conf
+index a99b29533ced..f6d9423963ac 100644
+--- a/ucm2/codecs/rt5640/HeadsetMic.conf
++++ b/ucm2/codecs/rt5640/HeadsetMic.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."HeadsetMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	ConflictingDevice [
+-		"IN1-InternalMics"
+-		"IN3-InternalMics"
+-		"DigitalMics"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -38,6 +36,8 @@ SectionDevice."HeadsetMic" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId},0"
+ 		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+diff --git a/ucm2/codecs/rt5640/IN1-InternalMic.conf b/ucm2/codecs/rt5640/IN1-InternalMic.conf
+index 95fc89eb4c58..435cce83dc13 100644
+--- a/ucm2/codecs/rt5640/IN1-InternalMic.conf
++++ b/ucm2/codecs/rt5640/IN1-InternalMic.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."IN1-InternalMics" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone on IN1"
+ 
+ 	ConflictingDevice [
+-		"DigitalMics"
+ 		"HeadsetMic"
+-		"IN3-InternalMics"
+ 	]
+ 
+ 	EnableSequence [
+@@ -41,6 +39,8 @@ SectionDevice."IN1-InternalMics" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId},0"
+ 		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/IN3-InternalMic.conf b/ucm2/codecs/rt5640/IN3-InternalMic.conf
+index b8270e9605fa..4d4060e23324 100644
+--- a/ucm2/codecs/rt5640/IN3-InternalMic.conf
++++ b/ucm2/codecs/rt5640/IN3-InternalMic.conf
+@@ -1,10 +1,8 @@
+-SectionDevice."IN3-InternalMics" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone on IN3"
+ 
+ 	ConflictingDevice [
+-		"DigitalMics"
+-		"HeadsetMic"
+-		"IN1-InternalMics"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+@@ -41,6 +39,8 @@ SectionDevice."IN3-InternalMics" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId},0"
+ 		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/MonoSpeaker.conf b/ucm2/codecs/rt5640/MonoSpeaker.conf
+index ee4eff31f6c7..6ca51e2397d1 100644
+--- a/ucm2/codecs/rt5640/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5640/MonoSpeaker.conf
+@@ -1,4 +1,4 @@
+-SectionDevice."MonoSpeaker" {
++SectionDevice."Speaker" {
+ 	Comment "Mono Speaker"
+ 
+ 	ConflictingDevice [
+@@ -37,6 +37,8 @@ SectionDevice."MonoSpeaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/Speaker.conf b/ucm2/codecs/rt5640/Speaker.conf
+index 564a6b308ce6..09b99cf6410d 100644
+--- a/ucm2/codecs/rt5640/Speaker.conf
++++ b/ucm2/codecs/rt5640/Speaker.conf
+@@ -37,6 +37,8 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackPriority 100
++		PlaybackChannels 2
+ 	}
+ }
+-- 
+2.16.4
+

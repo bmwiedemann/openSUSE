@@ -1,0 +1,157 @@
+From 54f0ed010f7353b37a7b0eee109537675323b9d8 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 Jan 2020 14:39:26 +0100
+Subject: [PATCH 18/36] chtnau8824: fixes and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtnau8824/HiFi-mono.conf       | 3 ---
+ ucm2/chtnau8824/HiFi.conf            | 8 --------
+ ucm2/codecs/nau8824/HeadPhones.conf  | 5 +++--
+ ucm2/codecs/nau8824/HeadsetMic.conf  | 8 +++++---
+ ucm2/codecs/nau8824/InternalMic.conf | 9 +++++----
+ ucm2/codecs/nau8824/MonoSpeaker.conf | 7 ++++---
+ ucm2/codecs/nau8824/Speaker.conf     | 5 +++--
+ 7 files changed, 20 insertions(+), 25 deletions(-)
+
+diff --git a/ucm2/chtnau8824/HiFi-mono.conf b/ucm2/chtnau8824/HiFi-mono.conf
+index 3433d03b416c..26d6a56d6374 100644
+--- a/ucm2/chtnau8824/HiFi-mono.conf
++++ b/ucm2/chtnau8824/HiFi-mono.conf
+@@ -3,9 +3,6 @@ SectionVerb {
+ 
+ 	Value {
+ 		TQ "HiFi"
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+ 	}
+ 
+ 	EnableSequence [
+diff --git a/ucm2/chtnau8824/HiFi.conf b/ucm2/chtnau8824/HiFi.conf
+index 9f7ac74bba40..fd8b741cf326 100644
+--- a/ucm2/chtnau8824/HiFi.conf
++++ b/ucm2/chtnau8824/HiFi.conf
+@@ -1,13 +1,5 @@
+ 
+ SectionVerb {
+-
+-	Value {
+-		TQ "HiFi"
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+-	}
+-
+ 	EnableSequence [
+ 		<platforms/bytcr/PlatformEnableSeq.conf>
+ 		<codecs/nau8824/EnableSeq.conf>
+diff --git a/ucm2/codecs/nau8824/HeadPhones.conf b/ucm2/codecs/nau8824/HeadPhones.conf
+index f35f4e20f21e..6623365af66e 100644
+--- a/ucm2/codecs/nau8824/HeadPhones.conf
++++ b/ucm2/codecs/nau8824/HeadPhones.conf
+@@ -2,12 +2,13 @@ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ 
+ 	ConflictingDevice [
+-		"MonoSpeaker"
+ 		"Speaker"
+ 	]
+ 
+diff --git a/ucm2/codecs/nau8824/HeadsetMic.conf b/ucm2/codecs/nau8824/HeadsetMic.conf
+index bc17f9fde421..738163861d69 100644
+--- a/ucm2/codecs/nau8824/HeadsetMic.conf
++++ b/ucm2/codecs/nau8824/HeadsetMic.conf
+@@ -1,13 +1,15 @@
+-SectionDevice."HeadsetMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 300
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ 
+ 	ConflictingDevice [
+-		"InternalMic"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+diff --git a/ucm2/codecs/nau8824/InternalMic.conf b/ucm2/codecs/nau8824/InternalMic.conf
+index 3793d6435253..731a261cf93a 100644
+--- a/ucm2/codecs/nau8824/InternalMic.conf
++++ b/ucm2/codecs/nau8824/InternalMic.conf
+@@ -1,13 +1,14 @@
+-SectionDevice."InternalMic" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone"
+ 
+ 	Value {
+-		CaptureChannels "2"
+-		CapturePriority "150"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+-		"HeadsetMic"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+diff --git a/ucm2/codecs/nau8824/MonoSpeaker.conf b/ucm2/codecs/nau8824/MonoSpeaker.conf
+index 5321c8af1eaa..b02a22cb682e 100644
+--- a/ucm2/codecs/nau8824/MonoSpeaker.conf
++++ b/ucm2/codecs/nau8824/MonoSpeaker.conf
+@@ -1,12 +1,13 @@
+-SectionDevice."MonoSpeaker" {
++SectionDevice."Speaker" {
+ 	Comment "Mono Speaker"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+-		"Speaker"
+ 		"Headphones"
+ 	]
+ 
+diff --git a/ucm2/codecs/nau8824/Speaker.conf b/ucm2/codecs/nau8824/Speaker.conf
+index 474c37392b51..365879585a98 100644
+--- a/ucm2/codecs/nau8824/Speaker.conf
++++ b/ucm2/codecs/nau8824/Speaker.conf
+@@ -2,11 +2,12 @@ SectionDevice."Speaker" {
+ 	Comment "Speaker"
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+-		"MonoSpeaker"
+ 		"Headphones"
+ 	]
+ 
+-- 
+2.16.4
+

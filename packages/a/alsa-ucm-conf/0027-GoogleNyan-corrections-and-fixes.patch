@@ -1,0 +1,37 @@
+From 3a92d95926e9289daf7b82335866b1561ccefc0d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 4 Feb 2020 18:48:05 +0100
+Subject: [PATCH 27/36] GoogleNyan: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/GoogleNyan/HiFi.conf | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ucm2/GoogleNyan/HiFi.conf b/ucm2/GoogleNyan/HiFi.conf
+index 0bcd8e8b435e..542859160b4c 100644
+--- a/ucm2/GoogleNyan/HiFi.conf
++++ b/ucm2/GoogleNyan/HiFi.conf
+@@ -38,6 +38,10 @@ SectionVerb {
+ }
+ 
+ SectionDevice."Headphones" {
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
+ 	EnableSequence [
+ 		cset "name='Speakers Switch' off"
+ 		cset "name='Headphones Switch' on"
+@@ -50,6 +54,8 @@ SectionDevice."Headphones" {
+ 
+ SectionDevice."Mic" {
+ 	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
+ 		#CaptureControl "MIC2"
+ 	}
+ 	EnableSequence [
+-- 
+2.16.4
+

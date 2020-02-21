@@ -1,0 +1,54 @@
+From 3b6bfaa6b5c08b78ee0cbb9b1b1137fc20f92a63 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 4 Feb 2020 18:58:27 +0100
+Subject: [PATCH 29/36] SDP4430: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/SDP4430/FMAnalog.conf | 2 +-
+ ucm2/SDP4430/HiFi.conf     | 5 +++++
+ ucm2/SDP4430/Record.conf   | 2 +-
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/ucm2/SDP4430/FMAnalog.conf b/ucm2/SDP4430/FMAnalog.conf
+index da21ab1ddad2..e2132d2dddbf 100644
+--- a/ucm2/SDP4430/FMAnalog.conf
++++ b/ucm2/SDP4430/FMAnalog.conf
+@@ -34,7 +34,7 @@ SectionDevice."Headset" {
+ 
+ 	Value {
+ 		CapturePriority 100
+-                CapturePCM "hw:${CardId},0"
++		CapturePCM "hw:${CardId}"
+ 	}
+ }
+ 
+diff --git a/ucm2/SDP4430/HiFi.conf b/ucm2/SDP4430/HiFi.conf
+index af5b8fb9428b..8e44a953067a 100644
+--- a/ucm2/SDP4430/HiFi.conf
++++ b/ucm2/SDP4430/HiFi.conf
+@@ -49,4 +49,9 @@ SectionDevice."Headset" {
+ 		cset "name='HS Left Playback' 0"
+                 cset "name='Headset Playback Volume' 0"
+ 	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
+ }
+diff --git a/ucm2/SDP4430/Record.conf b/ucm2/SDP4430/Record.conf
+index 44e722b28f12..49837e2c4ebf 100644
+--- a/ucm2/SDP4430/Record.conf
++++ b/ucm2/SDP4430/Record.conf
+@@ -40,6 +40,6 @@ SectionDevice."Headset" {
+ 
+ 	Value {
+ 		CapturePriority 100
+-		CapturePCM "hw:${CardId},0"
++		CapturePCM "hw:${CardId}"
+ 	}
+ }
+-- 
+2.16.4
+

@@ -1,0 +1,26 @@
+From dbf9201ef6cc0008e3d1d10d28490c47689aed0e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 28 Jan 2020 18:16:54 +0100
+Subject: [PATCH 23/36] GoogleNyan: comment CaptureControl, what is this?
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/GoogleNyan/HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/GoogleNyan/HiFi.conf b/ucm2/GoogleNyan/HiFi.conf
+index 1f7e93c6826b..0bcd8e8b435e 100644
+--- a/ucm2/GoogleNyan/HiFi.conf
++++ b/ucm2/GoogleNyan/HiFi.conf
+@@ -50,7 +50,7 @@ SectionDevice."Headphones" {
+ 
+ SectionDevice."Mic" {
+ 	Value {
+-		CaptureControl "MIC2"
++		#CaptureControl "MIC2"
+ 	}
+ 	EnableSequence [
+ 		cset "name='Int Mic Switch' off"
+-- 
+2.16.4
+

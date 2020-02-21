@@ -1,0 +1,40 @@
+From c546a3466d0d801b3d5a8fb6c2cd840a068e72f2 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 4 Feb 2020 18:52:18 +0100
+Subject: [PATCH 28/36] PAZ00: corrections and fixes
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/PAZ00/HiFi.conf   | 4 ++++
+ ucm2/PAZ00/Record.conf | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/ucm2/PAZ00/HiFi.conf b/ucm2/PAZ00/HiFi.conf
+index 6e30cbef4222..7f5de05946e7 100644
+--- a/ucm2/PAZ00/HiFi.conf
++++ b/ucm2/PAZ00/HiFi.conf
+@@ -32,4 +32,8 @@ SectionDevice."Headset" {
+         # Internal speaker
+         cset "name='Int Spk Switch' on"
+     ]
++    Value {
++	PlaybackPriority 100
++	PlaybackPCM "hw:${CardId}"
++    }
+ }
+diff --git a/ucm2/PAZ00/Record.conf b/ucm2/PAZ00/Record.conf
+index 3cb57b2f47a8..20dbac42c325 100644
+--- a/ucm2/PAZ00/Record.conf
++++ b/ucm2/PAZ00/Record.conf
+@@ -52,4 +52,8 @@ SectionDevice."Headset" {
+         # Internal mic
+         cset "name='DMIC En Capture Switch' on"
+     ]
++    Value {
++	CapturePriority 100
++	CapturePCM "hw:${CardId}"
++    }
+ }
+-- 
+2.16.4
+

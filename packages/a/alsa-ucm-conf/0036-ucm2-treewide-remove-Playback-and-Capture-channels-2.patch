@@ -1,0 +1,945 @@
+From 14c768eacd923c3b8bfe3dd027464a5d423e3773 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 6 Feb 2020 19:44:07 +0100
+Subject: [PATCH 36/36] ucm2: treewide - remove Playback and Capture channels=2
+ assignments
+
+The value 2 is the default.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/DB410c/HDMI.conf                            | 1 -
+ ucm2/DB410c/HiFi.conf                            | 9 ---------
+ ucm2/DB820c/HDMI.conf                            | 1 -
+ ucm2/DB820c/HiFi.conf                            | 1 -
+ ucm2/HDA-Intel/HiFi-dual.conf                    | 2 --
+ ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf          | 3 ---
+ ucm2/broadwell-rt286/HiFi.conf                   | 4 ----
+ ucm2/broxton-rt298/broxton-rt298.conf            | 7 -------
+ ucm2/chtrt5645/HiFi-dmic1.conf                   | 4 ----
+ ucm2/chtrt5645/HiFi-dmic2.conf                   | 4 ----
+ ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf | 3 ---
+ ucm2/chtrt5645/HiFi.conf                         | 3 ---
+ ucm2/codecs/cx2072x/HeadPhones.conf              | 1 -
+ ucm2/codecs/cx2072x/HeadsetMic.conf              | 1 -
+ ucm2/codecs/cx2072x/InternalMic.conf             | 1 -
+ ucm2/codecs/cx2072x/Speaker.conf                 | 1 -
+ ucm2/codecs/es8316/HeadPhones.conf               | 1 -
+ ucm2/codecs/es8316/IN1-HeadsetMic.conf           | 1 -
+ ucm2/codecs/es8316/IN1-InternalMic.conf          | 1 -
+ ucm2/codecs/es8316/IN2-HeadsetMic.conf           | 1 -
+ ucm2/codecs/es8316/IN2-InternalMic.conf          | 1 -
+ ucm2/codecs/es8316/MonoSpeaker.conf              | 1 -
+ ucm2/codecs/es8316/Speaker.conf                  | 1 -
+ ucm2/codecs/nau8824/HeadPhones.conf              | 1 -
+ ucm2/codecs/nau8824/HeadsetMic.conf              | 1 -
+ ucm2/codecs/nau8824/InternalMic.conf             | 1 -
+ ucm2/codecs/nau8824/MonoSpeaker.conf             | 1 -
+ ucm2/codecs/nau8824/Speaker.conf                 | 1 -
+ ucm2/codecs/rt5640/DigitalMics.conf              | 1 -
+ ucm2/codecs/rt5640/HeadPhones.conf               | 1 -
+ ucm2/codecs/rt5640/HeadsetMic.conf               | 1 -
+ ucm2/codecs/rt5640/IN1-InternalMic.conf          | 1 -
+ ucm2/codecs/rt5640/IN3-InternalMic.conf          | 1 -
+ ucm2/codecs/rt5640/MonoSpeaker.conf              | 1 -
+ ucm2/codecs/rt5640/Speaker.conf                  | 1 -
+ ucm2/codecs/rt5645/AnalogMic.conf                | 1 -
+ ucm2/codecs/rt5651/DigitalMic.conf               | 1 -
+ ucm2/codecs/rt5651/HeadPhones-swapped.conf       | 1 -
+ ucm2/codecs/rt5651/HeadPhones.conf               | 1 -
+ ucm2/codecs/rt5651/IN1-InternalMic.conf          | 1 -
+ ucm2/codecs/rt5651/IN12-InternalMic.conf         | 1 -
+ ucm2/codecs/rt5651/IN2-HeadsetMic.conf           | 1 -
+ ucm2/codecs/rt5651/IN2-InternalMic.conf          | 1 -
+ ucm2/codecs/rt5651/IN3-HeadsetMic.conf           | 1 -
+ ucm2/codecs/rt5651/MonoSpeaker.conf              | 1 -
+ ucm2/codecs/rt5651/Speaker.conf                  | 1 -
+ ucm2/codecs/rt5672/DMIC1.conf                    | 1 -
+ ucm2/codecs/rt5672/DMIC2.conf                    | 1 -
+ ucm2/codecs/rt5672/HeadPhones.conf               | 1 -
+ ucm2/codecs/rt5672/HeadsetMic.conf               | 1 -
+ ucm2/codecs/rt5672/MonoSpeaker.conf              | 1 -
+ ucm2/codecs/rt5672/Speaker.conf                  | 1 -
+ ucm2/kblrt5660/Hdmi1.conf                        | 1 -
+ ucm2/kblrt5660/Hdmi2.conf                        | 1 -
+ ucm2/kblrt5660/HiFi.conf                         | 2 --
+ ucm2/skylake-rt286/skylake-rt286.conf            | 5 -----
+ ucm2/sof-hda-dsp/HDA-Capture-value.conf          | 1 -
+ ucm2/sof-hda-dsp/Hdmi.conf                       | 3 ---
+ ucm2/sof-hda-dsp/HiFi.conf                       | 5 -----
+ 59 files changed, 100 deletions(-)
+
+diff --git a/ucm2/DB410c/HDMI.conf b/ucm2/DB410c/HDMI.conf
+index fa44132227ff..3335422f9a90 100644
+--- a/ucm2/DB410c/HDMI.conf
++++ b/ucm2/DB410c/HDMI.conf
+@@ -4,7 +4,6 @@
+ SectionVerb {
+ 	Value {
+ 		TQ "HiFi"
+-		PlaybackChannels 2
+ 	}
+ }
+ 
+diff --git a/ucm2/DB410c/HiFi.conf b/ucm2/DB410c/HiFi.conf
+index 1b2716ab8bf1..62ddc8e1eb35 100644
+--- a/ucm2/DB410c/HiFi.conf
++++ b/ucm2/DB410c/HiFi.conf
+@@ -1,14 +1,6 @@
+ # Use case configuration for DB410c board.
+ # Author: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+ 
+-SectionVerb {
+-	Value {
+-		PlaybackChannels 2
+-		CaptureChannels 2
+-	}
+-}
+-
+-
+ SectionDevice."Speaker" {
+ 	Comment "Speaker playback"
+ 
+@@ -35,7 +27,6 @@ SectionDevice."Speaker" {
+ 	}
+ }
+ 
+-
+ SectionDevice."Headphones" {
+ 	Comment "Headphones playback"
+ 
+diff --git a/ucm2/DB820c/HDMI.conf b/ucm2/DB820c/HDMI.conf
+index c0d40f690f66..f0ca015c6632 100644
+--- a/ucm2/DB820c/HDMI.conf
++++ b/ucm2/DB820c/HDMI.conf
+@@ -29,6 +29,5 @@ SectionDevice."HDMI" {
+         Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "plughw:${CardId}"
+-		PlaybackChannels 2
+         }
+ }
+diff --git a/ucm2/DB820c/HiFi.conf b/ucm2/DB820c/HiFi.conf
+index 501c263bc648..89280d72450c 100644
+--- a/ucm2/DB820c/HiFi.conf
++++ b/ucm2/DB820c/HiFi.conf
+@@ -69,7 +69,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "plughw:${CardId},1"
+-		PlaybackChannels 2
+ 	}
+ }
+ 
+diff --git a/ucm2/HDA-Intel/HiFi-dual.conf b/ucm2/HDA-Intel/HiFi-dual.conf
+index 846c6db75a51..174fef4787b1 100644
+--- a/ucm2/HDA-Intel/HiFi-dual.conf
++++ b/ucm2/HDA-Intel/HiFi-dual.conf
+@@ -1,8 +1,6 @@
+ SectionVerb {
+ 	Value {
+ 		TQ "HiFi"
+-		PlaybackChannels 2
+-		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+diff --git a/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf b/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf
+index 37b7e0d11b82..2f625e437b57 100644
+--- a/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf
++++ b/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf
+@@ -3,7 +3,6 @@ SectionDevice."Headphones" {
+ 
+ 	Value {
+ 		PlaybackPriority 100
+-		PlaybackChannels 2
+ 		PlaybackPCM "hw:${CardId}"
+ 	}
+ }
+@@ -13,7 +12,6 @@ SectionDevice."Line" {
+ 
+ 	Value {
+ 		PlaybackPriority 200
+-		PlaybackChannels 2
+ 		PlaybackPCM "hw:${CardId},1"
+ 	}
+ }
+@@ -23,7 +21,6 @@ SectionDevice."Mic" {
+ 
+ 	Value {
+ 		CapturePriority 100
+-		CaptureChannels 2
+ 		CapturePCM "hw:${CardId}"
+ 	}
+ }
+diff --git a/ucm2/broadwell-rt286/HiFi.conf b/ucm2/broadwell-rt286/HiFi.conf
+index 96b89a0ff0d0..611a03ec5f8a 100644
+--- a/ucm2/broadwell-rt286/HiFi.conf
++++ b/ucm2/broadwell-rt286/HiFi.conf
+@@ -23,7 +23,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		PlaybackMixerElem "DAC0"
+ 		PlaybackMasterElem "Master"
+ 	}
+@@ -51,7 +50,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		PlaybackMixerElem "DAC0"
+ 		PlaybackMasterElem "Master"
+ 		JackDev "rt286-jack"
+@@ -78,7 +76,6 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		CaptureMixerElem "Mic"
+ 		CaptureMasterElem "ADC0"
+ 	}
+@@ -103,7 +100,6 @@ SectionDevice."Handset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		CaptureMixerElem "Mic"
+ 		CaptureMasterElem "ADC0"
+ 		JackDev "rt286-jack"
+diff --git a/ucm2/broxton-rt298/broxton-rt298.conf b/ucm2/broxton-rt298/broxton-rt298.conf
+index 1332dc5e55a9..95f9ac51522a 100644
+--- a/ucm2/broxton-rt298/broxton-rt298.conf
++++ b/ucm2/broxton-rt298/broxton-rt298.conf
+@@ -8,13 +8,6 @@ SectionUseCase."HiFi" {
+ 	Comment "Play and record HiFi quality Music"
+ }
+ 
+-ValueDefaults {
+-	PlaybackChannels 2
+-	PlaybackPriority 1
+-	CaptureChannels 2
+-	CapturePriority 2
+-}
+-
+ SectionDefaults [
+ 	cset "name='Headphone Jack Switch' 1"
+ 	cset "name='Speaker Switch' 1"
+diff --git a/ucm2/chtrt5645/HiFi-dmic1.conf b/ucm2/chtrt5645/HiFi-dmic1.conf
+index 4748bd9315ca..1a8ee0abdadf 100644
+--- a/ucm2/chtrt5645/HiFi-dmic1.conf
++++ b/ucm2/chtrt5645/HiFi-dmic1.conf
+@@ -27,7 +27,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -50,7 +49,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -75,7 +73,6 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+@@ -98,7 +95,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "Mic"
+ 	}
+diff --git a/ucm2/chtrt5645/HiFi-dmic2.conf b/ucm2/chtrt5645/HiFi-dmic2.conf
+index 459b9f578566..c9fdd79e4cd0 100644
+--- a/ucm2/chtrt5645/HiFi-dmic2.conf
++++ b/ucm2/chtrt5645/HiFi-dmic2.conf
+@@ -27,7 +27,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -50,7 +49,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -75,7 +73,6 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+@@ -100,7 +97,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "DMic"
+ 	}
+diff --git a/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf b/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
+index fe410f37818d..db866cd5c67a 100644
+--- a/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
++++ b/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
+@@ -27,7 +27,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -54,7 +53,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -85,7 +83,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "Mic"
+ 	}
+diff --git a/ucm2/chtrt5645/HiFi.conf b/ucm2/chtrt5645/HiFi.conf
+index 954bf68d3032..58468a8ddd02 100644
+--- a/ucm2/chtrt5645/HiFi.conf
++++ b/ucm2/chtrt5645/HiFi.conf
+@@ -27,7 +27,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+@@ -50,7 +49,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+@@ -77,7 +75,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 		JackHWMute "Mic"
+ 	}
+diff --git a/ucm2/codecs/cx2072x/HeadPhones.conf b/ucm2/codecs/cx2072x/HeadPhones.conf
+index 484d020be7e8..adb70db66fdf 100644
+--- a/ucm2/codecs/cx2072x/HeadPhones.conf
++++ b/ucm2/codecs/cx2072x/HeadPhones.conf
+@@ -18,7 +18,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/cx2072x/HeadsetMic.conf b/ucm2/codecs/cx2072x/HeadsetMic.conf
+index b1a777114df4..5a6643e834dc 100644
+--- a/ucm2/codecs/cx2072x/HeadsetMic.conf
++++ b/ucm2/codecs/cx2072x/HeadsetMic.conf
+@@ -19,7 +19,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/cx2072x/InternalMic.conf b/ucm2/codecs/cx2072x/InternalMic.conf
+index 831c3cc63f5c..9c083be48543 100644
+--- a/ucm2/codecs/cx2072x/InternalMic.conf
++++ b/ucm2/codecs/cx2072x/InternalMic.conf
+@@ -19,6 +19,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/cx2072x/Speaker.conf b/ucm2/codecs/cx2072x/Speaker.conf
+index f60e3559d1f7..a641ba259136 100644
+--- a/ucm2/codecs/cx2072x/Speaker.conf
++++ b/ucm2/codecs/cx2072x/Speaker.conf
+@@ -18,6 +18,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/HeadPhones.conf b/ucm2/codecs/es8316/HeadPhones.conf
+index 6a05e5488979..b68569a9447b 100644
+--- a/ucm2/codecs/es8316/HeadPhones.conf
++++ b/ucm2/codecs/es8316/HeadPhones.conf
+@@ -16,7 +16,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 		JackHWMute "Speaker"
+ 	}
+diff --git a/ucm2/codecs/es8316/IN1-HeadsetMic.conf b/ucm2/codecs/es8316/IN1-HeadsetMic.conf
+index e9f90614c646..a76b27585a3b 100644
+--- a/ucm2/codecs/es8316/IN1-HeadsetMic.conf
++++ b/ucm2/codecs/es8316/IN1-HeadsetMic.conf
+@@ -17,7 +17,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN1-InternalMic.conf b/ucm2/codecs/es8316/IN1-InternalMic.conf
+index 31c5cda6a314..ede0a8cdd550 100644
+--- a/ucm2/codecs/es8316/IN1-InternalMic.conf
++++ b/ucm2/codecs/es8316/IN1-InternalMic.conf
+@@ -17,6 +17,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN2-HeadsetMic.conf b/ucm2/codecs/es8316/IN2-HeadsetMic.conf
+index 377d84d3a0f2..b114c864811c 100644
+--- a/ucm2/codecs/es8316/IN2-HeadsetMic.conf
++++ b/ucm2/codecs/es8316/IN2-HeadsetMic.conf
+@@ -17,7 +17,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/IN2-InternalMic.conf b/ucm2/codecs/es8316/IN2-InternalMic.conf
+index f0ff6f183f5a..c8fce625dfe6 100644
+--- a/ucm2/codecs/es8316/IN2-InternalMic.conf
++++ b/ucm2/codecs/es8316/IN2-InternalMic.conf
+@@ -17,6 +17,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/MonoSpeaker.conf b/ucm2/codecs/es8316/MonoSpeaker.conf
+index 64a7e76046a0..f5f42737f1fd 100644
+--- a/ucm2/codecs/es8316/MonoSpeaker.conf
++++ b/ucm2/codecs/es8316/MonoSpeaker.conf
+@@ -33,6 +33,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/es8316/Speaker.conf b/ucm2/codecs/es8316/Speaker.conf
+index 58fe078409ee..03c21b31ef39 100644
+--- a/ucm2/codecs/es8316/Speaker.conf
++++ b/ucm2/codecs/es8316/Speaker.conf
+@@ -16,6 +16,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/nau8824/HeadPhones.conf b/ucm2/codecs/nau8824/HeadPhones.conf
+index 6623365af66e..a807f846f1f9 100644
+--- a/ucm2/codecs/nau8824/HeadPhones.conf
++++ b/ucm2/codecs/nau8824/HeadPhones.conf
+@@ -4,7 +4,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ 
+diff --git a/ucm2/codecs/nau8824/HeadsetMic.conf b/ucm2/codecs/nau8824/HeadsetMic.conf
+index 738163861d69..1129a6bc0490 100644
+--- a/ucm2/codecs/nau8824/HeadsetMic.conf
++++ b/ucm2/codecs/nau8824/HeadsetMic.conf
+@@ -4,7 +4,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 300
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ 
+diff --git a/ucm2/codecs/nau8824/InternalMic.conf b/ucm2/codecs/nau8824/InternalMic.conf
+index 731a261cf93a..409f01b8f116 100644
+--- a/ucm2/codecs/nau8824/InternalMic.conf
++++ b/ucm2/codecs/nau8824/InternalMic.conf
+@@ -4,7 +4,6 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+diff --git a/ucm2/codecs/nau8824/MonoSpeaker.conf b/ucm2/codecs/nau8824/MonoSpeaker.conf
+index b02a22cb682e..6b4ef8a9f6cf 100644
+--- a/ucm2/codecs/nau8824/MonoSpeaker.conf
++++ b/ucm2/codecs/nau8824/MonoSpeaker.conf
+@@ -4,7 +4,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+diff --git a/ucm2/codecs/nau8824/Speaker.conf b/ucm2/codecs/nau8824/Speaker.conf
+index 365879585a98..a995873eda31 100644
+--- a/ucm2/codecs/nau8824/Speaker.conf
++++ b/ucm2/codecs/nau8824/Speaker.conf
+@@ -4,7 +4,6 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ 
+ 	ConflictingDevice [
+diff --git a/ucm2/codecs/rt5640/DigitalMics.conf b/ucm2/codecs/rt5640/DigitalMics.conf
+index 9cd8a8c4d9cd..503c4a9cd7bf 100644
+--- a/ucm2/codecs/rt5640/DigitalMics.conf
++++ b/ucm2/codecs/rt5640/DigitalMics.conf
+@@ -22,6 +22,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/HeadPhones.conf b/ucm2/codecs/rt5640/HeadPhones.conf
+index 7859b7a6bfb3..42151d6e2e17 100644
+--- a/ucm2/codecs/rt5640/HeadPhones.conf
++++ b/ucm2/codecs/rt5640/HeadPhones.conf
+@@ -33,7 +33,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 300
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/HeadsetMic.conf b/ucm2/codecs/rt5640/HeadsetMic.conf
+index 40e0abedd5f7..7a8dfb8df6cc 100644
+--- a/ucm2/codecs/rt5640/HeadsetMic.conf
++++ b/ucm2/codecs/rt5640/HeadsetMic.conf
+@@ -38,7 +38,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/IN1-InternalMic.conf b/ucm2/codecs/rt5640/IN1-InternalMic.conf
+index 7d76c4f17d41..ebb5b6de426f 100644
+--- a/ucm2/codecs/rt5640/IN1-InternalMic.conf
++++ b/ucm2/codecs/rt5640/IN1-InternalMic.conf
+@@ -41,6 +41,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/IN3-InternalMic.conf b/ucm2/codecs/rt5640/IN3-InternalMic.conf
+index 2df29386d1f8..172d90961de0 100644
+--- a/ucm2/codecs/rt5640/IN3-InternalMic.conf
++++ b/ucm2/codecs/rt5640/IN3-InternalMic.conf
+@@ -41,6 +41,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/MonoSpeaker.conf b/ucm2/codecs/rt5640/MonoSpeaker.conf
+index 70ab80922fb1..ddc7ba85cddd 100644
+--- a/ucm2/codecs/rt5640/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5640/MonoSpeaker.conf
+@@ -38,6 +38,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5640/Speaker.conf b/ucm2/codecs/rt5640/Speaker.conf
+index 3b4b2968fb56..411cd13db1ff 100644
+--- a/ucm2/codecs/rt5640/Speaker.conf
++++ b/ucm2/codecs/rt5640/Speaker.conf
+@@ -38,6 +38,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5645/AnalogMic.conf b/ucm2/codecs/rt5645/AnalogMic.conf
+index 5583cdb8cddb..17938802a52e 100644
+--- a/ucm2/codecs/rt5645/AnalogMic.conf
++++ b/ucm2/codecs/rt5645/AnalogMic.conf
+@@ -4,7 +4,6 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ 
+ 	EnableSequence [
+diff --git a/ucm2/codecs/rt5651/DigitalMic.conf b/ucm2/codecs/rt5651/DigitalMic.conf
+index fa1de4c2afb7..aa40c1c2efeb 100644
+--- a/ucm2/codecs/rt5651/DigitalMic.conf
++++ b/ucm2/codecs/rt5651/DigitalMic.conf
+@@ -16,6 +16,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/HeadPhones-swapped.conf b/ucm2/codecs/rt5651/HeadPhones-swapped.conf
+index 7e91aa271345..595f29c78dbc 100644
+--- a/ucm2/codecs/rt5651/HeadPhones-swapped.conf
++++ b/ucm2/codecs/rt5651/HeadPhones-swapped.conf
+@@ -33,7 +33,6 @@ SectionDevice."Headphones" {
+ 
+ 	Value {
+ 		PlaybackPriority 200
+-		PlaybackChannels 2
+ 		PlaybackPCM "hw:${CardId}"
+ 		JackControl "Headphone Jack"
+ 	}
+diff --git a/ucm2/codecs/rt5651/HeadPhones.conf b/ucm2/codecs/rt5651/HeadPhones.conf
+index 18a41082b78f..266c8519629c 100644
+--- a/ucm2/codecs/rt5651/HeadPhones.conf
++++ b/ucm2/codecs/rt5651/HeadPhones.conf
+@@ -25,7 +25,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN1-InternalMic.conf b/ucm2/codecs/rt5651/IN1-InternalMic.conf
+index 13c7cb6137af..faa0bfa36e14 100644
+--- a/ucm2/codecs/rt5651/IN1-InternalMic.conf
++++ b/ucm2/codecs/rt5651/IN1-InternalMic.conf
+@@ -20,6 +20,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN12-InternalMic.conf b/ucm2/codecs/rt5651/IN12-InternalMic.conf
+index e0175418b059..79c72a3edee2 100644
+--- a/ucm2/codecs/rt5651/IN12-InternalMic.conf
++++ b/ucm2/codecs/rt5651/IN12-InternalMic.conf
+@@ -24,6 +24,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN2-HeadsetMic.conf b/ucm2/codecs/rt5651/IN2-HeadsetMic.conf
+index 5b514390a178..86bbacbe4828 100644
+--- a/ucm2/codecs/rt5651/IN2-HeadsetMic.conf
++++ b/ucm2/codecs/rt5651/IN2-HeadsetMic.conf
+@@ -24,7 +24,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN2-InternalMic.conf b/ucm2/codecs/rt5651/IN2-InternalMic.conf
+index 9eeef4d0b5a3..da15a6d9988b 100644
+--- a/ucm2/codecs/rt5651/IN2-InternalMic.conf
++++ b/ucm2/codecs/rt5651/IN2-InternalMic.conf
+@@ -20,6 +20,5 @@ SectionDevice."Mic" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN3-HeadsetMic.conf b/ucm2/codecs/rt5651/IN3-HeadsetMic.conf
+index d579dcd8504e..a40fefcca50e 100644
+--- a/ucm2/codecs/rt5651/IN3-HeadsetMic.conf
++++ b/ucm2/codecs/rt5651/IN3-HeadsetMic.conf
+@@ -24,7 +24,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/MonoSpeaker.conf b/ucm2/codecs/rt5651/MonoSpeaker.conf
+index 9c780a0bbf52..a83b4815c50f 100644
+--- a/ucm2/codecs/rt5651/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5651/MonoSpeaker.conf
+@@ -43,6 +43,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/Speaker.conf b/ucm2/codecs/rt5651/Speaker.conf
+index efc12e54fc8b..18308b48f980 100644
+--- a/ucm2/codecs/rt5651/Speaker.conf
++++ b/ucm2/codecs/rt5651/Speaker.conf
+@@ -25,6 +25,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/DMIC1.conf b/ucm2/codecs/rt5672/DMIC1.conf
+index 73983af48a37..201828367dde 100644
+--- a/ucm2/codecs/rt5672/DMIC1.conf
++++ b/ucm2/codecs/rt5672/DMIC1.conf
+@@ -23,6 +23,5 @@ SectionDevice."Mic1" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/DMIC2.conf b/ucm2/codecs/rt5672/DMIC2.conf
+index 751c95cf22f1..48e61705b5f6 100644
+--- a/ucm2/codecs/rt5672/DMIC2.conf
++++ b/ucm2/codecs/rt5672/DMIC2.conf
+@@ -23,6 +23,5 @@ SectionDevice."Mic2" {
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/HeadPhones.conf b/ucm2/codecs/rt5672/HeadPhones.conf
+index 0542f7790052..2c8d6e8372b3 100644
+--- a/ucm2/codecs/rt5672/HeadPhones.conf
++++ b/ucm2/codecs/rt5672/HeadPhones.conf
+@@ -17,7 +17,6 @@ SectionDevice."Headphones" {
+ 	Value {
+ 		PlaybackPriority 300
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/HeadsetMic.conf b/ucm2/codecs/rt5672/HeadsetMic.conf
+index f407579b302d..a764d82d6110 100644
+--- a/ucm2/codecs/rt5672/HeadsetMic.conf
++++ b/ucm2/codecs/rt5672/HeadsetMic.conf
+@@ -32,7 +32,6 @@ SectionDevice."Headset" {
+ 	Value {
+ 		CapturePriority 300
+ 		CapturePCM "hw:${CardId}"
+-		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/MonoSpeaker.conf b/ucm2/codecs/rt5672/MonoSpeaker.conf
+index 0849c6744bea..f08c9c6de12c 100644
+--- a/ucm2/codecs/rt5672/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5672/MonoSpeaker.conf
+@@ -21,6 +21,5 @@ SectionDevice."Speaker2" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5672/Speaker.conf b/ucm2/codecs/rt5672/Speaker.conf
+index 44e73aa875c3..8b7bcf88e964 100644
+--- a/ucm2/codecs/rt5672/Speaker.conf
++++ b/ucm2/codecs/rt5672/Speaker.conf
+@@ -17,6 +17,5 @@ SectionDevice."Speaker1" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/kblrt5660/Hdmi1.conf b/ucm2/kblrt5660/Hdmi1.conf
+index ccf51183fdd3..561946f1a8be 100755
+--- a/ucm2/kblrt5660/Hdmi1.conf
++++ b/ucm2/kblrt5660/Hdmi1.conf
+@@ -7,7 +7,6 @@ SectionDevice."HDMI1" {
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId},2"
+-		PlaybackChannels 2
+ 		If.1 {
+ 			Condition {
+ 				Type ControlExists
+diff --git a/ucm2/kblrt5660/Hdmi2.conf b/ucm2/kblrt5660/Hdmi2.conf
+index c5e400166ed7..756a3464dfbb 100755
+--- a/ucm2/kblrt5660/Hdmi2.conf
++++ b/ucm2/kblrt5660/Hdmi2.conf
+@@ -7,7 +7,6 @@ SectionDevice."HDMI2" {
+ 	Value {
+ 		PlaybackPriority 300
+ 		PlaybackPCM "hw:${CardId},3"
+-		PlaybackChannels 2
+ 		If.1 {
+ 			Condition {
+ 				Type ControlExists
+diff --git a/ucm2/kblrt5660/HiFi.conf b/ucm2/kblrt5660/HiFi.conf
+index 0f5d46dafb15..c1e8a0f1821c 100755
+--- a/ucm2/kblrt5660/HiFi.conf
++++ b/ucm2/kblrt5660/HiFi.conf
+@@ -28,7 +28,6 @@ SectionDevice."Line1" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId}"
+-		PlaybackChannels 2
+ 		JackDev "rt5660-jack"
+ 		JackControl "Line Out Jack"
+ 	}
+@@ -61,7 +60,6 @@ SectionDevice."Line2" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId},1"		
+-		CaptureChannels 2
+ 		JackDev "rt5660-jack"
+ 		JackControl "Line In Jack"
+ 	}
+diff --git a/ucm2/skylake-rt286/skylake-rt286.conf b/ucm2/skylake-rt286/skylake-rt286.conf
+index 4ea57773cd2a..97f2a7c6e594 100644
+--- a/ucm2/skylake-rt286/skylake-rt286.conf
++++ b/ucm2/skylake-rt286/skylake-rt286.conf
+@@ -8,11 +8,6 @@ SectionUseCase."HiFi" {
+ 	Comment "Play and record HiFi quality Music"
+ }
+ 
+-ValueDefaults {
+-	PlaybackChannels 2
+-	CaptureChannels 2
+-}
+-
+ SectionDefaults [
+ 	cset "name='Headphone Jack Switch' 1"
+ 	cset "name='Speaker Switch' 1"
+diff --git a/ucm2/sof-hda-dsp/HDA-Capture-value.conf b/ucm2/sof-hda-dsp/HDA-Capture-value.conf
+index 5f3c2a38899d..2f1316ab753f 100644
+--- a/ucm2/sof-hda-dsp/HDA-Capture-value.conf
++++ b/ucm2/sof-hda-dsp/HDA-Capture-value.conf
+@@ -2,4 +2,3 @@ CapturePCM "hw:${CardId}"
+ CaptureMixerElem "Capture"
+ CaptureVolume "Capture Volume"
+ CaptureSwitch "Capture Switch"
+-CaptureChannels 2
+diff --git a/ucm2/sof-hda-dsp/Hdmi.conf b/ucm2/sof-hda-dsp/Hdmi.conf
+index 1982c7269ed5..be6cb39945c5 100644
+--- a/ucm2/sof-hda-dsp/Hdmi.conf
++++ b/ucm2/sof-hda-dsp/Hdmi.conf
+@@ -14,7 +14,6 @@ SectionDevice."HDMI1" {
+ 	Value {
+ 		PlaybackPriority 500
+ 		PlaybackPCM "hw:${CardId},3"
+-		PlaybackChannels 2
+ 		JackControl "HDMI/DP,pcm=3 Jack"
+ 	}
+ }
+@@ -33,7 +32,6 @@ SectionDevice."HDMI2" {
+ 	Value {
+ 		PlaybackPriority 600
+ 		PlaybackPCM "hw:${CardId},4"
+-		PlaybackChannels 2
+ 		JackControl "HDMI/DP,pcm=4 Jack"
+ 	}
+ }
+@@ -52,7 +50,6 @@ SectionDevice."HDMI3" {
+ 	Value {
+ 		PlaybackPriority 700
+ 		PlaybackPCM "hw:${CardId},5"
+-		PlaybackChannels 2
+ 		JackControl "HDMI/DP,pcm=5 Jack"
+ 	}
+ }
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 6dfdabe2ff40..60a869341935 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -24,7 +24,6 @@ SectionDevice."Headphones1" {
+ 		PlaybackMasterElem "Master"
+ 		PlaybackVolume "Headphone Playback Volume"
+ 		PlaybackSwitch "Headphone Playback Switch"
+-		PlaybackChannels 2
+ 		If.jack {
+ 			Condition {
+ 				Type ControlExists
+@@ -77,7 +76,6 @@ SectionDevice."Speaker" {
+ 		PlaybackMasterElem "Master"
+ 		PlaybackVolume "Speaker Playback Volume"
+ 		PlaybackSwitch "Speaker Playback Switch"
+-		PlaybackChannels 2
+ 	}
+ }
+ 
+@@ -149,9 +147,6 @@ SectionDevice."Mic" {
+ 			True {
+ 				CaptureChannels 4
+ 			}
+-			False {
+-				CaptureChannels 2
+-			}
+ 		}
+ 		If.vol {
+ 			Condition {
+-- 
+2.16.4
+

@@ -1,0 +1,76 @@
+From 86a9fad7760fa40282821a3d7818ac881dd2f92d Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 Jan 2020 10:14:41 +0100
+Subject: [PATCH 14/36] DB820c: cleanups and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/DB820c/HDMI.conf | 10 ++++++----
+ ucm2/DB820c/HiFi.conf |  8 +++++---
+ 2 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/ucm2/DB820c/HDMI.conf b/ucm2/DB820c/HDMI.conf
+index 76c0e9283a33..c0d40f690f66 100644
+--- a/ucm2/DB820c/HDMI.conf
++++ b/ucm2/DB820c/HDMI.conf
+@@ -8,14 +8,14 @@ SectionVerb {
+ 
+         DisableSequence [
+ 		cset "name='HDMI Mixer MultiMedia1' 0"
++	]
++
+         Value {
+                 TQ "HiFi"
+-                PlaybackPCM "plughw:${CardId},0"
+         }
+ }
+ 
+-SectionDevice."HDMI-stereo" {
+-        #Name "HDMI-stereo"
++SectionDevice."HDMI" {
+         Comment "HDMI Digital Stereo Output"
+ 
+         EnableSequence [
+@@ -27,6 +27,8 @@ SectionDevice."HDMI-stereo" {
+         ]
+ 
+         Value {
+-                PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "plughw:${CardId}"
++		PlaybackChannels 2
+         }
+ }
+diff --git a/ucm2/DB820c/HiFi.conf b/ucm2/DB820c/HiFi.conf
+index fa7770e1be42..501c263bc648 100644
+--- a/ucm2/DB820c/HiFi.conf
++++ b/ucm2/DB820c/HiFi.conf
+@@ -67,12 +67,13 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
++		PlaybackPriority 100
+ 		PlaybackPCM "plughw:${CardId},1"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 	}
+ }
+ 
+-SectionDevice."HandsetMic" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone"
+ 
+ 	EnableSequence [
+@@ -93,7 +94,8 @@ SectionDevice."HandsetMic" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
+ 		CapturePCM "plughw:${CardId},2"
+-		CaptureChannels "1"
++		CaptureChannels 1
+ 	}
+ }
+-- 
+2.16.4
+

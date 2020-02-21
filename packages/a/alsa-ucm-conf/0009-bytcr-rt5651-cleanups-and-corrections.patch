@@ -1,0 +1,355 @@
+From 38989bd8f548a5b79d53c8278a5f25a5b3904d5f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 23 Jan 2020 19:39:08 +0100
+Subject: [PATCH 09/36] bytcr-rt5651: cleanups and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/bytcr-rt5651/HiFi-Components.conf     |  7 +++++--
+ ucm2/bytcr-rt5651/HiFi-LongName.conf       |  6 ++++--
+ ucm2/bytcr-rt5651/HiFi.conf                |  5 -----
+ ucm2/codecs/rt5651/DigitalMic.conf         | 12 +++---------
+ ucm2/codecs/rt5651/HeadPhones-swapped.conf |  5 +++--
+ ucm2/codecs/rt5651/HeadPhones.conf         |  5 +++--
+ ucm2/codecs/rt5651/IN1-InternalMic.conf    | 14 ++++----------
+ ucm2/codecs/rt5651/IN12-InternalMic.conf   | 14 ++++----------
+ ucm2/codecs/rt5651/IN2-HeadsetMic.conf     | 12 +++++-------
+ ucm2/codecs/rt5651/IN2-InternalMic.conf    | 14 ++++----------
+ ucm2/codecs/rt5651/IN3-HeadsetMic.conf     | 12 +++++-------
+ ucm2/codecs/rt5651/MonoSpeaker.conf        |  7 ++++---
+ ucm2/codecs/rt5651/Speaker.conf            |  5 +++--
+ 13 files changed, 47 insertions(+), 71 deletions(-)
+
+diff --git a/ucm2/bytcr-rt5651/HiFi-Components.conf b/ucm2/bytcr-rt5651/HiFi-Components.conf
+index 235838e553a2..53ebcbe252c8 100644
+--- a/ucm2/bytcr-rt5651/HiFi-Components.conf
++++ b/ucm2/bytcr-rt5651/HiFi-Components.conf
+@@ -42,6 +42,11 @@ If.dmic1 {
+ 	}
+ 	True {
+ 		<codecs/rt5651/DigitalMic.conf>
++		<codecs/rt5651/IN2-HeadsetMic.conf>
++		SectionDevice."Mic".ConflictingDevice.0 "Headset"
++	}
++	False {
++		<codecs/rt5651/IN3-HeadsetMic.conf>
+ 	}
+ }
+ 
+@@ -77,5 +82,3 @@ If.in12 {
+ 		<codecs/rt5651/IN12-InternalMic.conf>
+ 	}
+ }
+-
+-<codecs/rt5651/IN3-HeadsetMic.conf>
+diff --git a/ucm2/bytcr-rt5651/HiFi-LongName.conf b/ucm2/bytcr-rt5651/HiFi-LongName.conf
+index 58eb722d485b..e6dd90813681 100644
+--- a/ucm2/bytcr-rt5651/HiFi-LongName.conf
++++ b/ucm2/bytcr-rt5651/HiFi-LongName.conf
+@@ -42,6 +42,10 @@ If.dmic1 {
+ 	}
+ 	True {
+ 		<codecs/rt5651/DigitalMic.conf>
++		<codecs/rt5651/IN2-HeadsetMic.conf>
++	}
++	False {
++		<codecs/rt5651/IN3-HeadsetMic.conf>
+ 	}
+ }
+ 
+@@ -77,5 +81,3 @@ If.in12 {
+ 		<codecs/rt5651/IN12-InternalMic.conf>
+ 	}
+ }
+-
+-<codecs/rt5651/IN3-HeadsetMic.conf>
+diff --git a/ucm2/bytcr-rt5651/HiFi.conf b/ucm2/bytcr-rt5651/HiFi.conf
+index 1f031f25e872..8a9a402da328 100644
+--- a/ucm2/bytcr-rt5651/HiFi.conf
++++ b/ucm2/bytcr-rt5651/HiFi.conf
+@@ -10,11 +10,6 @@ SectionVerb {
+ 	DisableSequence [
+ 		<platforms/bytcr/PlatformDisableSeq.conf>
+ 	]
+-
+-	Value {
+-		PlaybackPCM "hw:${CardId}"
+-		CapturePCM "hw:${CardId}"
+-	}
+ }
+ 
+ If.0 {
+diff --git a/ucm2/codecs/rt5651/DigitalMic.conf b/ucm2/codecs/rt5651/DigitalMic.conf
+index 7a0c4d4e59e9..fa1de4c2afb7 100644
+--- a/ucm2/codecs/rt5651/DigitalMic.conf
++++ b/ucm2/codecs/rt5651/DigitalMic.conf
+@@ -1,14 +1,6 @@
+-SectionDevice."DigitalMic" {
++SectionDevice."Mic" {
+ 	Comment "Internal Digital Microphone"
+ 
+-	ConflictingDevice [
+-		"InternalMic-IN1"
+-		"InternalMic-IN2"
+-		"InternalMic-IN12"
+-		"HeadsetMic-IN2"
+-		"HeadsetMic-IN3"
+-	]
+-
+ 	EnableSequence [
+ 		cset "name='Stereo1 ADC MIXL ADC2 Switch' on"
+ 		cset "name='Stereo1 ADC MIXR ADC2 Switch' on"
+@@ -22,6 +14,8 @@ SectionDevice."DigitalMic" {
+ 	]
+ 
+ 	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
+ 		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/HeadPhones-swapped.conf b/ucm2/codecs/rt5651/HeadPhones-swapped.conf
+index f5260a3734fb..7e91aa271345 100644
+--- a/ucm2/codecs/rt5651/HeadPhones-swapped.conf
++++ b/ucm2/codecs/rt5651/HeadPhones-swapped.conf
+@@ -3,7 +3,6 @@ SectionDevice."Headphones" {
+ 
+ 	ConflictingDevice [
+ 		"Speaker"
+-		"MonoSpeaker"
+ 	]
+ 
+ 	EnableSequence [
+@@ -33,7 +32,9 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackChannels 2
++		PlaybackPCM "hw:${CardId}"
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/HeadPhones.conf b/ucm2/codecs/rt5651/HeadPhones.conf
+index 0a87b32f5be5..18a41082b78f 100644
+--- a/ucm2/codecs/rt5651/HeadPhones.conf
++++ b/ucm2/codecs/rt5651/HeadPhones.conf
+@@ -3,7 +3,6 @@ SectionDevice."Headphones" {
+ 
+ 	ConflictingDevice [
+ 		"Speaker"
+-		"MonoSpeaker"
+ 	]
+ 
+ 	EnableSequence [
+@@ -24,7 +23,9 @@ SectionDevice."Headphones" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 		JackControl "Headphone Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN1-InternalMic.conf b/ucm2/codecs/rt5651/IN1-InternalMic.conf
+index 01b786e17f5d..13c7cb6137af 100644
+--- a/ucm2/codecs/rt5651/IN1-InternalMic.conf
++++ b/ucm2/codecs/rt5651/IN1-InternalMic.conf
+@@ -1,14 +1,6 @@
+-SectionDevice."InternalMic-IN1" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone on IN1"
+ 
+-	ConflictingDevice [
+-		"DigitalMic"
+-		"InternalMic-IN2"
+-		"InternalMic-IN12"
+-		"HeadsetMic-IN2"
+-		"HeadsetMic-IN3"
+-	]
+-
+ 	EnableSequence [
+ 		cset "name='Internal Mic Switch' on"
+ 		cset "name='RECMIXL BST1 Switch' on"
+@@ -26,6 +18,8 @@ SectionDevice."InternalMic-IN1" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN12-InternalMic.conf b/ucm2/codecs/rt5651/IN12-InternalMic.conf
+index 44cc53ab4c73..e0175418b059 100644
+--- a/ucm2/codecs/rt5651/IN12-InternalMic.conf
++++ b/ucm2/codecs/rt5651/IN12-InternalMic.conf
+@@ -1,14 +1,6 @@
+-SectionDevice."InternalMic-IN12" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphones on IN1 and IN2"
+ 
+-	ConflictingDevice [
+-		"DigitalMic"
+-		"InternalMic-IN1"
+-		"InternalMic-IN2"
+-		"HeadsetMic-IN2"
+-		"HeadsetMic-IN3"
+-	]
+-
+ 	EnableSequence [
+ 		cset "name='Internal Mic Switch' on"
+ 		cset "name='RECMIXL BST1 Switch' on"
+@@ -30,6 +22,8 @@ SectionDevice."InternalMic-IN12" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN2-HeadsetMic.conf b/ucm2/codecs/rt5651/IN2-HeadsetMic.conf
+index 177f70b0c269..5b514390a178 100644
+--- a/ucm2/codecs/rt5651/IN2-HeadsetMic.conf
++++ b/ucm2/codecs/rt5651/IN2-HeadsetMic.conf
+@@ -1,12 +1,8 @@
+-SectionDevice."HeadsetMic-IN2" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone on IN2"
+ 
+ 	ConflictingDevice [
+-		"DigitalMic"
+-		"InternalMic-IN1"
+-		"InternalMic-IN2"
+-		"InternalMic-IN12"
+-		"HeadsetMic-IN3"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -26,7 +22,9 @@ SectionDevice."HeadsetMic-IN2" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN2-InternalMic.conf b/ucm2/codecs/rt5651/IN2-InternalMic.conf
+index 611ca6c7553c..9eeef4d0b5a3 100644
+--- a/ucm2/codecs/rt5651/IN2-InternalMic.conf
++++ b/ucm2/codecs/rt5651/IN2-InternalMic.conf
+@@ -1,14 +1,6 @@
+-SectionDevice."InternalMic-IN2" {
++SectionDevice."Mic" {
+ 	Comment "Internal Microphone on IN2"
+ 
+-	ConflictingDevice [
+-		"DigitalMic"
+-		"InternalMic-IN1"
+-		"InternalMic-IN12"
+-		"HeadsetMic-IN2"
+-		"HeadsetMic-IN3"
+-	]
+-
+ 	EnableSequence [
+ 		cset "name='Internal Mic Switch' on"
+ 		cset "name='RECMIXL BST2 Switch' on"
+@@ -26,6 +18,8 @@ SectionDevice."InternalMic-IN2" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/IN3-HeadsetMic.conf b/ucm2/codecs/rt5651/IN3-HeadsetMic.conf
+index 3231e78e4e2d..d579dcd8504e 100644
+--- a/ucm2/codecs/rt5651/IN3-HeadsetMic.conf
++++ b/ucm2/codecs/rt5651/IN3-HeadsetMic.conf
+@@ -1,12 +1,8 @@
+-SectionDevice."HeadsetMic-IN3" {
++SectionDevice."Headset" {
+ 	Comment "Headset Microphone on IN3"
+ 
+ 	ConflictingDevice [
+-		"DigitalMic"
+-		"InternalMic-IN1"
+-		"InternalMic-IN2"
+-		"InternalMic-IN12"
+-		"HeadsetMic-IN2"
++		"Mic"
+ 	]
+ 
+ 	EnableSequence [
+@@ -26,7 +22,9 @@ SectionDevice."HeadsetMic-IN3" {
+ 	]
+ 
+ 	Value {
+-		CaptureChannels "2"
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++		CaptureChannels 2
+ 		JackControl "Headset Mic Jack"
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/MonoSpeaker.conf b/ucm2/codecs/rt5651/MonoSpeaker.conf
+index c2276c6fbbee..9c780a0bbf52 100644
+--- a/ucm2/codecs/rt5651/MonoSpeaker.conf
++++ b/ucm2/codecs/rt5651/MonoSpeaker.conf
+@@ -1,8 +1,7 @@
+-SectionDevice."MonoSpeaker" {
++SectionDevice."Speaker" {
+ 	Comment "Mono Speaker"
+ 
+ 	ConflictingDevice [
+-		"Speaker"
+ 		"Headphones"
+ 	]
+ 
+@@ -42,6 +41,8 @@ SectionDevice."MonoSpeaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ }
+diff --git a/ucm2/codecs/rt5651/Speaker.conf b/ucm2/codecs/rt5651/Speaker.conf
+index 463d13b5525c..efc12e54fc8b 100644
+--- a/ucm2/codecs/rt5651/Speaker.conf
++++ b/ucm2/codecs/rt5651/Speaker.conf
+@@ -2,7 +2,6 @@ SectionDevice."Speaker" {
+ 	Comment "Speakers"
+ 
+ 	ConflictingDevice [
+-		"MonoSpeaker"
+ 		"Headphones"
+ 	]
+ 
+@@ -24,6 +23,8 @@ SectionDevice."Speaker" {
+ 	]
+ 
+ 	Value {
+-		PlaybackChannels "2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		PlaybackChannels 2
+ 	}
+ }
+-- 
+2.16.4
+

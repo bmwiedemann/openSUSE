@@ -1,0 +1,151 @@
+From 1a824b16b8fc26122deec2a6307b8294dc1bc497 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 Jan 2020 10:07:14 +0100
+Subject: [PATCH 13/36] DB410c: cleanups and corrections
+
+---
+ ucm2/DB410c/HDMI.conf |  9 ++++++---
+ ucm2/DB410c/HiFi.conf | 50 ++++++++++++++++++++++++++++++++++++++++----------
+ 2 files changed, 46 insertions(+), 13 deletions(-)
+
+diff --git a/ucm2/DB410c/HDMI.conf b/ucm2/DB410c/HDMI.conf
+index d08a50b9aa42..fa44132227ff 100644
+--- a/ucm2/DB410c/HDMI.conf
++++ b/ucm2/DB410c/HDMI.conf
+@@ -4,12 +4,15 @@
+ SectionVerb {
+ 	Value {
+ 		TQ "HiFi"
+-		PlaybackPCM "plughw:${CardId},0"
+-		PlaybackChannels "2"
++		PlaybackChannels 2
+ 	}
+ }
+ 
+-SectionDevice."HDMI-stereo" {
++SectionDevice."HDMI" {
+ 	# Name "HDMI-stereo"
+ 	Comment "HDMI Digital Stereo Output"
++	Value {
++		PlaybackPriority 200
++		PlaybackPCM "plughw:${CardId}"
++	}
+ }
+diff --git a/ucm2/DB410c/HiFi.conf b/ucm2/DB410c/HiFi.conf
+index 848d02fd78f1..1b2716ab8bf1 100644
+--- a/ucm2/DB410c/HiFi.conf
++++ b/ucm2/DB410c/HiFi.conf
+@@ -2,14 +2,9 @@
+ # Author: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+ 
+ SectionVerb {
+-
+-	# ALSA PCM
+ 	Value {
+-		# ALSA PCM device for HiFi
+-		PlaybackPCM "plughw:${CardId},1"
+-		CapturePCM "plughw:${CardId},2"
+-		PlaybackChannels "2"
+-		CaptureChannels "2"
++		PlaybackChannels 2
++		CaptureChannels 2
+ 	}
+ }
+ 
+@@ -33,6 +28,11 @@ SectionDevice."Speaker" {
+ 		cset "name='SPK DAC Switch' 0"
+ 		cset "name='RX3 MIX1 INP1' ZERO"
+ 	]
++
++	Value {
++		PlaybackPriority 200
++		PlaybackPCM "plughw:${CardId},1"
++	}
+ }
+ 
+ 
+@@ -64,6 +64,11 @@ SectionDevice."Headphones" {
+ 		cset "name='RX1 MIX1 INP1' ZERO"
+ 		cset "name='RX2 MIX1 INP1' ZERO"
+ 	]
++
++	Value {
++		PlaybackPriority 300
++		PlaybackPCM "plughw:${CardId},1"
++	}
+ }
+ 
+ SectionDevice."Earpiece" {
+@@ -73,6 +78,11 @@ SectionDevice."Earpiece" {
+ 		"Speaker"
+ 		"Headphones"
+ 	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "plughw:${CardId},1"
++	}
+ }
+ 
+ SectionDevice."Handset" {
+@@ -90,9 +100,14 @@ SectionDevice."Handset" {
+ 		cset "name='ADC2 Volume' 0"
+ 		cset "name='DEC1 MUX' ZERO"
+ 	]
++
++	Value {
++		CapturePriority 400
++		CapturePCM "plughw:${CardId},2"
++	}
+ }
+ 
+-SectionDevice."PrimaryMic" {
++SectionDevice."Mic1" {
+ 	Comment "Primary Microphone"
+ 
+ 	EnableSequence [
+@@ -105,9 +120,14 @@ SectionDevice."PrimaryMic" {
+ 		cset "name='DEC1 MUX' ZERO"
+ 		cset "name='ADC1 Volume' 0"
+ 	]
++
++	Value {
++		CapturePriority 300
++		CapturePCM "plughw:${CardId},2"
++	}
+ }
+ 
+-SectionDevice."SecondaryMic" {
++SectionDevice."Mic2" {
+ 	Comment "Secondary Microphone"
+ 
+ 	EnableSequence [
+@@ -122,9 +142,14 @@ SectionDevice."SecondaryMic" {
+ 		cset "name='ADC2 Volume' 0"
+ 		cset "name='ADC2 MUX' ZERO"
+ 	]
++
++	Value {
++		CapturePriority 200
++		CapturePCM "plughw:${CardId},2"
++	}
+ }
+ 
+-SectionDevice."DigitalMic" {
++SectionDevice."Mic3" {
+ 	Comment "Digital Microphone"
+ 
+ 	EnableSequence [
+@@ -135,4 +160,9 @@ SectionDevice."DigitalMic" {
+ 	DisableSequence [
+ 		cset "name='DEC1 MUX' ZERO"
+ 	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "plughw:${CardId},2"
++	}
+ }
+-- 
+2.16.4
+

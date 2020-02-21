@@ -1,0 +1,111 @@
+From 42d0227c417e732ac76328e4168d885b07211f92 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 24 Jan 2020 10:15:58 +0100
+Subject: [PATCH 15/36] Dell-WD15-Dock: cleaups and corrections
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/Dell-WD15-Dock/Dell-WD15-Dock.conf |  6 ------
+ ucm2/Dell-WD15-Dock/HiFi.conf           | 26 --------------------------
+ ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf | 29 +++++++++++++++++++++++++++++
+ ucm2/USB-Audio/Dell-WD15-Dock.conf      |  6 ++++++
+ 4 files changed, 35 insertions(+), 32 deletions(-)
+ delete mode 100644 ucm2/Dell-WD15-Dock/Dell-WD15-Dock.conf
+ delete mode 100644 ucm2/Dell-WD15-Dock/HiFi.conf
+ create mode 100644 ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf
+ create mode 100644 ucm2/USB-Audio/Dell-WD15-Dock.conf
+
+diff --git a/ucm2/Dell-WD15-Dock/Dell-WD15-Dock.conf b/ucm2/Dell-WD15-Dock/Dell-WD15-Dock.conf
+deleted file mode 100644
+index 7b96a54249bc..000000000000
+--- a/ucm2/Dell-WD15-Dock/Dell-WD15-Dock.conf
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Syntax 2
+-Comment "USB-audio on Dell WD15 docking station"
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/Dell-WD15-Dock/HiFi.conf b/ucm2/Dell-WD15-Dock/HiFi.conf
+deleted file mode 100644
+index 3b02f81dafc5..000000000000
+--- a/ucm2/Dell-WD15-Dock/HiFi.conf
++++ /dev/null
+@@ -1,26 +0,0 @@
+-SectionDevice."Headphones" {
+-	Comment "Headphones"
+-
+-	Value {
+-		PlaybackChannels "2"
+-		PlaybackPCM "hw:${CardId},0"
+-	}
+-}
+-
+-SectionDevice."LineOut" {
+-	Comment "Line Out"
+-
+-	Value {
+-		PlaybackChannels "2"
+-		PlaybackPCM "hw:${CardId},1"
+-	}
+-}
+-
+-SectionDevice."Mic" {
+-	Comment "Microphone"
+-
+-	Value {
+-		CaptureChannels "2"
+-		CapturePCM "hw:${CardId},0"
+-	}
+-}
+diff --git a/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf b/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf
+new file mode 100644
+index 000000000000..37b7e0d11b82
+--- /dev/null
++++ b/ucm2/USB-Audio/Dell-WD15-Dock-HiFi.conf
+@@ -0,0 +1,29 @@
++SectionDevice."Headphones" {
++	Comment "Headphones"
++
++	Value {
++		PlaybackPriority 100
++		PlaybackChannels 2
++		PlaybackPCM "hw:${CardId}"
++	}
++}
++
++SectionDevice."Line" {
++	Comment "Line Out"
++
++	Value {
++		PlaybackPriority 200
++		PlaybackChannels 2
++		PlaybackPCM "hw:${CardId},1"
++	}
++}
++
++SectionDevice."Mic" {
++	Comment "Microphone"
++
++	Value {
++		CapturePriority 100
++		CaptureChannels 2
++		CapturePCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/USB-Audio/Dell-WD15-Dock.conf b/ucm2/USB-Audio/Dell-WD15-Dock.conf
+new file mode 100644
+index 000000000000..1fbac9e5c1bd
+--- /dev/null
++++ b/ucm2/USB-Audio/Dell-WD15-Dock.conf
+@@ -0,0 +1,6 @@
++Syntax 2
++Comment "USB-audio on Dell WD15 docking station"
++SectionUseCase."HiFi" {
++	File "Dell-WD15-Dock-HiFi.conf"
++	Comment "Default"
++}
+-- 
+2.16.4
+
