@@ -240,4 +240,12 @@
     <comment>- Update to new release (forwarded request 769347 from awissu)</comment>
     <requestid>769348</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c8d224801d4dc2c0040b358ca4bf70dc</srcmd5>
+    <version>2.1.1</version>
+    <time>1582299711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 777758 from awissu)</comment>
+    <requestid>777762</requestid>
+  </revision>
 </revisionlist>

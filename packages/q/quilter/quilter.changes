@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 19:10:35 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.1:
+  * Fixed: Would duplicate files when open in the sidebar
+  * Fixed: If the sidebar was empty and Quilter was reopened, last 
+    file contents would still appear
+
+-------------------------------------------------------------------
 Sun Feb  2 10:32:56 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.1.0:
