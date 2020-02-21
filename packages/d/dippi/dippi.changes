@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 19:05:44 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7.4:
+  * Create release.yml
+  * Create lint.yml
+  * Create gettext.yml
+  * Create compress-images.yml
+  * Remove debian packaging from in-tree
+  * Update .travis.yml
+  * Prefer dark (#72)
+  * Update com.github.cassidyjames.dippi.appdata.xml.in (#71)
+
+-------------------------------------------------------------------
 Mon Apr 15 19:06:32 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.7.3:
