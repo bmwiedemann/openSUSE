@@ -1,0 +1,527 @@
+From 6aff8a132815a84bab69401c1e7de96ec549fbf2 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 10 Feb 2020 16:37:34 +0100
+Subject: [PATCH] build: Always use EXTERN_UNLESS_MAIN_MODULE pattern.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* common/util.h (EXTERN_UNLESS_MAIN_MODULE): Add the definion only
+here but now without the Norcroft-C.  Change all other places where it
+gets defined.
+* common/iobuf.h (iobuf_debug_mode): Declare unconditionally as
+extern.
+* common/iobuf.c (iobuf_debug_mode): Define it here.
+* agent/gpg-agent.c (INCLUDED_BY_MAIN_MODULE): Define here and also in
+all main modules of all other programs.
+
+* g10/main.h: Put util.h before the local header files.
+--
+
+This change is required for use with gcc/ld's LTO feature which does
+not allow common blocks.  Further gcc 10 will make -fno-common the
+default and thus this chnage is always needed.  What a pitty.
+
+Co-authored-by: Tomáš Mráz
+GnuPG-bug-id: 4831
+Signed-off-by: Werner Koch <wk@gnupg.org>
+(cherry picked from commit 21d9bd8b87a9f793a106095e3838eb71825189d7)
+
+- Applied respective chnages also to gpg-card and keyboxd.
+
+Signed-off-by: Werner Koch <wk@gnupg.org>
+---
+ agent/agent.h             | 1 +
+ agent/gpg-agent.c         | 1 +
+ agent/preset-passphrase.c | 1 +
+ agent/protect-tool.c      | 1 +
+ agent/t-protect.c         | 1 +
+ common/iobuf.c            | 1 +
+ common/iobuf.h            | 9 +--------
+ common/util.h             | 8 ++++++++
+ dirmngr/dirmngr.c         | 1 +
+ dirmngr/dirmngr.h         | 1 +
+ g10/gpgcompose.c          | 1 +
+ g10/main.h                | 2 +-
+ g10/options.h             | 8 --------
+ g10/test.c                | 1 +
+ g13/g13-common.h          | 2 +-
+ g13/g13-syshelp.c         | 1 +
+ g13/g13.c                 | 1 +
+ kbx/keyboxd.c             | 1 +
+ kbx/keyboxd.h             | 1 +
+ scd/scdaemon.c            | 1 +
+ scd/scdaemon.h            | 1 +
+ sm/gpgsm.c                | 2 ++
+ sm/gpgsm.h                | 1 +
+ tools/gpg-card.c          | 2 ++
+ tools/gpg-card.h          | 1 +
+ tools/gpg-wks-client.c    | 1 +
+ tools/gpg-wks-server.c    | 1 +
+ tools/gpg-wks.h           | 1 +
+ tools/gpgconf.c           | 1 +
+ tools/gpgconf.h           | 1 +
+ tools/gpgtar.c            | 1 +
+ tools/gpgtar.h            | 2 ++
+ 32 files changed, 41 insertions(+), 18 deletions(-)
+
+Index: gnupg-2.2.19/agent/agent.h
+===================================================================
+--- gnupg-2.2.19.orig/agent/agent.h
++++ gnupg-2.2.19/agent/agent.h
+@@ -37,6 +37,14 @@
+ #include "../common/session-env.h"
+ #include "../common/shareddefs.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* To convey some special hash algorithms we use algorithm numbers
+    reserved for application use. */
+ #ifndef GCRY_MODULE_ID_USER
+@@ -55,6 +63,7 @@
+ 
+ 
+ /* A large struct name "opt" to keep global flags */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   unsigned int debug;  /* Debug flags (DBG_foo_VALUE) */
+Index: gnupg-2.2.19/agent/gpg-agent.c
+===================================================================
+--- gnupg-2.2.19.orig/agent/gpg-agent.c
++++ gnupg-2.2.19/agent/gpg-agent.c
+@@ -49,6 +49,7 @@
+ #endif
+ #include <npth.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #define GNUPG_COMMON_NEED_AFLOCAL
+ #include "agent.h"
+ #include <assuan.h> /* Malloc hooks  and socket wrappers. */
+Index: gnupg-2.2.19/agent/preset-passphrase.c
+===================================================================
+--- gnupg-2.2.19.orig/agent/preset-passphrase.c
++++ gnupg-2.2.19/agent/preset-passphrase.c
+@@ -44,6 +44,7 @@
+ # include <windows.h>  /* To initialize the sockets.  fixme */
+ #endif
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "agent.h"
+ #include "../common/simple-pwquery.h"
+ #include "../common/i18n.h"
+Index: gnupg-2.2.19/agent/protect-tool.c
+===================================================================
+--- gnupg-2.2.19.orig/agent/protect-tool.c
++++ gnupg-2.2.19/agent/protect-tool.c
+@@ -38,6 +38,7 @@
+ #include <fcntl.h> /* for setmode() */
+ #endif
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "agent.h"
+ #include "../common/i18n.h"
+ #include "../common/get-passphrase.h"
+Index: gnupg-2.2.19/agent/t-protect.c
+===================================================================
+--- gnupg-2.2.19.orig/agent/t-protect.c
++++ gnupg-2.2.19/agent/t-protect.c
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <assert.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "agent.h"
+ 
+ 
+Index: gnupg-2.2.19/common/iobuf.c
+===================================================================
+--- gnupg-2.2.19.orig/common/iobuf.c
++++ gnupg-2.2.19/common/iobuf.c
+@@ -118,6 +118,7 @@ struct close_cache_s
+ typedef struct close_cache_s *close_cache_t;
+ static close_cache_t close_cache;
+ 
++int iobuf_debug_mode;
+ 
+ 
+ #ifdef HAVE_W32_SYSTEM
+Index: gnupg-2.2.19/common/iobuf.h
+===================================================================
+--- gnupg-2.2.19.orig/common/iobuf.h
++++ gnupg-2.2.19/common/iobuf.h
+@@ -249,14 +249,7 @@ struct iobuf_struct
+   int subno;
+ };
+ 
+-#ifndef EXTERN_UNLESS_MAIN_MODULE
+-#if defined (__riscos__) && !defined (INCLUDED_BY_MAIN_MODULE)
+-#define EXTERN_UNLESS_MAIN_MODULE extern
+-#else
+-#define EXTERN_UNLESS_MAIN_MODULE
+-#endif
+-#endif
+-EXTERN_UNLESS_MAIN_MODULE int iobuf_debug_mode;
++extern int iobuf_debug_mode;
+ 
+ 
+ /* Returns whether the specified filename corresponds to a pipe.  In
+Index: gnupg-2.2.19/common/util.h
+===================================================================
+--- gnupg-2.2.19.orig/common/util.h
++++ gnupg-2.2.19/common/util.h
+@@ -56,6 +56,14 @@
+ #endif
+ 
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* Hash function used with libksba. */
+ #define HASH_FNC ((void (*)(void *, const void*,size_t))gcry_md_write)
+ 
+Index: gnupg-2.2.19/dirmngr/dirmngr.c
+===================================================================
+--- gnupg-2.2.19.orig/dirmngr/dirmngr.c
++++ gnupg-2.2.19/dirmngr/dirmngr.c
+@@ -55,6 +55,7 @@
+ #endif /*HTTP_USE_GNUTLS*/
+ 
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #define GNUPG_COMMON_NEED_AFLOCAL
+ #include "dirmngr.h"
+ 
+Index: gnupg-2.2.19/dirmngr/dirmngr.h
+===================================================================
+--- gnupg-2.2.19.orig/dirmngr/dirmngr.h
++++ gnupg-2.2.19/dirmngr/dirmngr.h
+@@ -39,6 +39,14 @@
+ #include "dirmngr-status.h"
+ #include "http.h"     /* (parsed_uri_t) */
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* This objects keeps information about a particular LDAP server and
+    is used as item of a single linked list of servers. */
+ struct ldap_server_s
+@@ -76,6 +84,7 @@ struct fingerprint_list_s
+ 
+ 
+ /* A large struct named "opt" to keep global flags.  */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   unsigned int debug; /* debug flags (DBG_foo_VALUE) */
+Index: gnupg-2.2.19/g10/gpgcompose.c
+===================================================================
+--- gnupg-2.2.19.orig/g10/gpgcompose.c
++++ gnupg-2.2.19/g10/gpgcompose.c
+@@ -20,6 +20,7 @@
+ #include <config.h>
+ #include <errno.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "gpg.h"
+ #include "packet.h"
+ #include "keydb.h"
+Index: gnupg-2.2.19/g10/main.h
+===================================================================
+--- gnupg-2.2.19.orig/g10/main.h
++++ gnupg-2.2.19/g10/main.h
+@@ -22,9 +22,9 @@
+ 
+ #include "../common/types.h"
+ #include "../common/iobuf.h"
++#include "../common/util.h"
+ #include "keydb.h"
+ #include "keyedit.h"
+-#include "../common/util.h"
+ 
+ /* It could be argued that the default cipher should be 3DES rather
+    than AES128, and the default compression should be 0
+Index: gnupg-2.2.19/g10/options.h
+===================================================================
+--- gnupg-2.2.19.orig/g10/options.h
++++ gnupg-2.2.19/g10/options.h
+@@ -32,7 +32,7 @@
+ 
+ #ifndef EXTERN_UNLESS_MAIN_MODULE
+ /* Norcraft can't cope with common symbols */
+-#if defined (__riscos__) && !defined (INCLUDED_BY_MAIN_MODULE)
++#if !defined (INCLUDED_BY_MAIN_MODULE)
+ #define EXTERN_UNLESS_MAIN_MODULE extern
+ #else
+ #define EXTERN_UNLESS_MAIN_MODULE
+Index: gnupg-2.2.19/g10/test.c
+===================================================================
+--- gnupg-2.2.19.orig/g10/test.c
++++ gnupg-2.2.19/g10/test.c
+@@ -22,6 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "gpg.h"
+ 
+ /* A unit test consists of one or more tests.  Tests can be broken
+Index: gnupg-2.2.19/g13/g13-common.h
+===================================================================
+--- gnupg-2.2.19.orig/g13/g13-common.h
++++ gnupg-2.2.19/g13/g13-common.h
+@@ -32,6 +32,13 @@
+ #include "../common/session-env.h"
+ #include "../common/strlist.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
+ 
+ /* Debug values and macros.  */
+ #define DBG_MOUNT_VALUE     1	/* Debug mount or device stuff. */
+@@ -48,6 +55,7 @@
+ /* A large struct named "opt" to keep global flags.  Note that this
+    struct is used by g13 and g13-syshelp and thus some fields may only
+    make sense for one of them.  */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   unsigned int debug; /* Debug flags (DBG_foo_VALUE).  */
+Index: gnupg-2.2.19/g13/g13-syshelp.c
+===================================================================
+--- gnupg-2.2.19.orig/g13/g13-syshelp.c
++++ gnupg-2.2.19/g13/g13-syshelp.c
+@@ -31,6 +31,7 @@
+ #endif
+ #include <unistd.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "g13-syshelp.h"
+ 
+ #include <gcrypt.h>
+Index: gnupg-2.2.19/g13/g13.c
+===================================================================
+--- gnupg-2.2.19.orig/g13/g13.c
++++ gnupg-2.2.19/g13/g13.c
+@@ -27,6 +27,7 @@
+ #include <fcntl.h>
+ #include <npth.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "g13.h"
+ 
+ #include <gcrypt.h>
+Index: gnupg-2.2.19/scd/scdaemon.c
+===================================================================
+--- gnupg-2.2.19.orig/scd/scdaemon.c
++++ gnupg-2.2.19/scd/scdaemon.c
+@@ -37,6 +37,7 @@
+ #include <signal.h>
+ #include <npth.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #define GNUPG_COMMON_NEED_AFLOCAL
+ #include "scdaemon.h"
+ #include <ksba.h>
+Index: gnupg-2.2.19/scd/scdaemon.h
+===================================================================
+--- gnupg-2.2.19.orig/scd/scdaemon.h
++++ gnupg-2.2.19/scd/scdaemon.h
+@@ -31,6 +31,14 @@
+ #include "../common/util.h"
+ #include "../common/sysutils.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* To convey some special hash algorithms we use algorithm numbers
+    reserved for application use. */
+ #ifndef GCRY_MODULE_ID_USER
+@@ -44,6 +52,7 @@
+ 
+ 
+ /* A large struct name "opt" to keep global flags. */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   unsigned int debug; /* Debug flags (DBG_foo_VALUE). */
+Index: gnupg-2.2.19/sm/gpgsm.c
+===================================================================
+--- gnupg-2.2.19.orig/sm/gpgsm.c
++++ gnupg-2.2.19/sm/gpgsm.c
+@@ -28,6 +28,8 @@
+ #include <fcntl.h>
+ /*#include <mcheck.h>*/
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
++
+ #include "gpgsm.h"
+ #include <gcrypt.h>
+ #include <assuan.h> /* malloc hooks */
+Index: gnupg-2.2.19/sm/gpgsm.h
+===================================================================
+--- gnupg-2.2.19.orig/sm/gpgsm.h
++++ gnupg-2.2.19/sm/gpgsm.h
+@@ -36,6 +36,13 @@
+ #include "../common/ksba-io-support.h"
+ #include "../common/compliance.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
+ 
+ #define MAX_DIGEST_LEN 64
+ 
+@@ -52,6 +59,7 @@ struct keyserver_spec
+ 
+ 
+ /* A large struct named "opt" to keep global flags. */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   unsigned int debug; /* debug flags (DBG_foo_VALUE) */
+Index: gnupg-2.2.19/tools/gpg-wks-client.c
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpg-wks-client.c
++++ gnupg-2.2.19/tools/gpg-wks-client.c
+@@ -25,6 +25,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "../common/util.h"
+ #include "../common/status.h"
+ #include "../common/i18n.h"
+Index: gnupg-2.2.19/tools/gpg-wks-server.c
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpg-wks-server.c
++++ gnupg-2.2.19/tools/gpg-wks-server.c
+@@ -32,6 +32,7 @@
+ #include <sys/stat.h>
+ #include <dirent.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "../common/util.h"
+ #include "../common/init.h"
+ #include "../common/sysutils.h"
+Index: gnupg-2.2.19/tools/gpg-wks.h
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpg-wks.h
++++ gnupg-2.2.19/tools/gpg-wks.h
+@@ -25,11 +25,20 @@
+ #include "../common/strlist.h"
+ #include "mime-maker.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* The draft version we implement.  */
+ #define WKS_DRAFT_VERSION 3
+ 
+ 
+ /* We keep all global options in the structure OPT.  */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   int verbose;
+Index: gnupg-2.2.19/tools/gpgconf.c
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpgconf.c
++++ gnupg-2.2.19/tools/gpgconf.c
+@@ -25,6 +25,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "gpgconf.h"
+ #include "../common/i18n.h"
+ #include "../common/sysutils.h"
+Index: gnupg-2.2.19/tools/gpgconf.h
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpgconf.h
++++ gnupg-2.2.19/tools/gpgconf.h
+@@ -22,7 +22,16 @@
+ 
+ #include "../common/util.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* We keep all global options in the structure OPT.  */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   int verbose;		/* Verbosity level.  */
+Index: gnupg-2.2.19/tools/gpgtar.c
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpgtar.c
++++ gnupg-2.2.19/tools/gpgtar.c
+@@ -34,6 +34,7 @@
+ #include <string.h>
+ #include <assert.h>
+ 
++#define INCLUDED_BY_MAIN_MODULE 1
+ #include "../common/util.h"
+ #include "../common/i18n.h"
+ #include "../common/sysutils.h"
+Index: gnupg-2.2.19/tools/gpgtar.h
+===================================================================
+--- gnupg-2.2.19.orig/tools/gpgtar.h
++++ gnupg-2.2.19/tools/gpgtar.h
+@@ -23,7 +23,16 @@
+ #include "../common/util.h"
+ #include "../common/strlist.h"
+ 
++#ifndef EXTERN_UNLESS_MAIN_MODULE
++# if !defined (INCLUDED_BY_MAIN_MODULE)
++#  define EXTERN_UNLESS_MAIN_MODULE extern
++# else
++#  define EXTERN_UNLESS_MAIN_MODULE
++# endif
++#endif
++
+ /* We keep all global options in the structure OPT.  */
++EXTERN_UNLESS_MAIN_MODULE
+ struct
+ {
+   int verbose;

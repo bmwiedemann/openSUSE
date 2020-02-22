@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:48:34 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build with GCC-10: [bsc#1160394]
+  * Always use EXTERN_UNLESS_MAIN_MODULE pattern
+  * In GCC-10, the default option -fcommon will change to -fno-common
+- Add gpg2-gcc10-build-fno-common.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 17:47:24 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Accept key updates even without UIDs [bsc#1143158]
