@@ -4,6 +4,8 @@
       <arch>ppc</arch>
       <arch>ppc64</arch>
       <arch>ppc64le</arch>
+      <arch>x86_64</arch>
+      <arch>i586</arch>
     </conditions>
     <hardware>
       <disk>

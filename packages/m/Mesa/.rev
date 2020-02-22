@@ -3999,4 +3999,21 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     by an official merge request (bsc#1162252, gitlab issue#2472)</comment>
     <requestid>770593</requestid>
   </revision>
+  <revision rev="370" vrev="242">
+    <srcmd5>c5ec783d818a03938d5fedbf8ffb3be3</srcmd5>
+    <version>unknown</version>
+    <time>1582394349</time>
+    <user>dimstar_suse</user>
+    <comment>- use 7G disk constraints also for x86_64 and i586 (bsc#1164488) 
+
+- only use 'BuildRequires:llvm-devel &gt;= 9.0.0' for TW/factory; for 
+  older products still use 'BuildRequires: llvm9-devel'; fixed
+  build on openSUSE Leap 15.2
+
+- Update to version 19.3.4
+  * changes all over the tree, but aco and anv are leading the
+    way in changes
+- supersedes u_Revert_gallium_Fix_big-endian_addressing_of_non-bitmask_array_formats.patch</comment>
+    <requestid>777801</requestid>
+  </revision>
 </revisionlist>
