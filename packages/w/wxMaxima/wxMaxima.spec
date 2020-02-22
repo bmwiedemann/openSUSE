@@ -18,20 +18,23 @@
 
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.01.3
+Version:        20.02.1
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wxmaxima-developers.github.io/wxmaxima/
-Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz
-Source2:        %{name}-rpmlintrc
+Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libomp7-devel
 BuildRequires:  maxima >= 5.30.0
+BuildRequires:  po4a
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
@@ -42,9 +45,12 @@ BuildRequires:  wxWidgets-devel >= 3
 # gnuplot is needed for plotting
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+# required for parallel processing
+Requires:       libomp7-devel
+Recommends:     %{name}-lang
 ExcludeArch:    ppc64 ppc64le
+
+%lang_package
 
 %description
 wxMaxima is a GUI for the computer algebra system maxima
@@ -56,7 +62,7 @@ based on wxWidgets.
 %build
 %cmake
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -65,8 +71,16 @@ for i in 24 32 48 64 128 256 512
 do
   rsvg-convert -w ${i} data/io.github.wxmaxima_developers.wxMaxima.svg -o wxmaxima-${i}.png
   install -D -m 0644 wxmaxima-${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/io.github.wxmaxima_developers.wxMaxima.png
+  rsvg-convert -w ${i} data/text-x-wxmathml.svg -o text-x-wxmathml-${i}.png
+  install -D -m 0644 text-x-wxmathml-${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/mimetypes/text-x-wxmathml.png
+  rsvg-convert -w ${i} data/text-x-wxmaxima-batch.svg -o text-x-wxmaxima-batch-${i}.png
+  install -D -m 0644 text-x-wxmaxima-batch-${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/mimetypes/text-x-wxmaxima-batch.png
 done
 install -D -m 0644 data/io.github.wxmaxima_developers.wxMaxima.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/io.github.wxmaxima_developers.wxMaxima.svg
+install -D -m 0644 data/text-x-wxmathml.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/text-x-wxmathml.svg
+install -D -m 0644 data/text-x-wxmaxima-batch.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/text-x-wxmaxima-batch.svg
+
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes
 
 # REMOVE UNNECESSARY ICONS OUT OF PIXMAPS
 rm %{buildroot}%{_datadir}/pixmaps/*
@@ -79,38 +93,28 @@ rm %{buildroot}%{_datadir}/%{tarname}/COPYING
 
 %fdupes %{buildroot}%{_prefix}
 
-%find_lang %{name}
+%find_lang %{name} %{?no_lang_C}
 
 %post
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-%endif
 %install_info --info-dir=%{_infodir} %{_infodir}/wxmaxima.info%{ext_info}
 
 %postun
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-%endif
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/wxmaxima.info%{ext_info}
 
-%files -f %{name}.lang
+%files
 %license COPYING
 %doc AUTHORS README.md ChangeLog
 %{_datadir}/doc/%{tarname}/
 %{_bindir}/*
 %{_datadir}/wxMaxima/
-%dir %{_datadir}/icons/hicolor/512x512
-%dir %{_datadir}/icons/hicolor/512x512/apps
 %{_datadir}/icons/hicolor/*/apps/io.github.wxmaxima_developers.wxMaxima.*
+%{_datadir}/icons/hicolor/*/mimetypes/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/wxmaxima
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*.appdata.xml
 %{_mandir}/man1/wxmaxima*%{ext_man}
 %{_datadir}/mime/packages/*.xml
+
+%files lang -f %{name}.lang
 
 %changelog
