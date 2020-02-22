@@ -365,4 +365,16 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment></comment>
     <requestid>721098</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>852124ce525f97787386a70e2694cfff</srcmd5>
+    <version>1.1.1</version>
+    <time>1582394560</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1
+ * Replaced usage of the long-superseded “parser.suite” module in the mako.util
+   package for parsing the python magic encoding comment with the “ast.parse” function
+ * Added “babel” and “lingua” dependency entries to the setuptools entrypoints
+   for the babel and lingua extensions</comment>
+    <requestid>775305</requestid>
+  </revision>
 </revisionlist>
