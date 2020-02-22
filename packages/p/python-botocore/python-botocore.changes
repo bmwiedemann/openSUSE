@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Feb 17 17:30:50 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.15.0
+  * feature:retries: Add support for retry modes, including ``standard`` and ``adaptive`` modes (`#1972 <https://github.com/boto/botocore/issues/1972>`__)
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``mediatailor``: Update mediatailor client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``shield``: Update shield client to latest version
+- from version 1.14.17
+  * api-change:``mediapackage-vod``: Update mediapackage-vod client to latest version
+- from version 1.14.16
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``chime``: Update chime client to latest version
+  * api-change:``workmail``: Update workmail client to latest version
+  * api-change:``ds``: Update ds client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``es``: Update es client to latest version
+  * api-change:``neptune``: Update neptune client to latest version
+- from version 1.14.15
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``cognito-idp``: Update cognito-idp client to latest version
+  * api-change:``cloudformation``: Update cloudformation client to latest version
+- from version 1.14.14
+  * api-change:``docdb``: Update docdb client to latest version
+  * api-change:``kms``: Update kms client to latest version
+- from version 1.14.13
+  * api-change:``robomaker``: Update robomaker client to latest version
+  * api-change:``imagebuilder``: Update imagebuilder client to latest version
+  * api-change:``rds``: Update rds client to latest version
+- from version 1.14.12
+  * api-change:``ebs``: Update ebs client to latest version
+  * api-change:``appsync``: Update appsync client to latest version
+  * api-change:``lex-models``: Update lex-models client to latest version
+  * api-change:``ecr``: Update ecr client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``codebuild``: Update codebuild client to latest version
+- from version 1.14.11
+  * api-change:``groundstation``: Update groundstation client to latest version
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+  * api-change:``dlm``: Update dlm client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``forecastquery``: Update forecastquery client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``resourcegroupstaggingapi``: Update resourcegroupstaggingapi client to latest version
+- from version 1.14.10
+  * api-change:``workmail``: Update workmail client to latest version
+  * api-change:``iot``: Update iot client to latest version
+  * api-change:``cloudfront``: Update cloudfront client to latest version
+  * api-change:``storagegateway``: Update storagegateway client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``kafka``: Update kafka client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+- Refresh patches for new version
+  + hide_py_pckgmgmt.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 11:01:59 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.14.9
