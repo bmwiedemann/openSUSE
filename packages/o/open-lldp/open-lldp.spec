@@ -1,7 +1,7 @@
 #
 # spec file for package open-lldp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,7 +30,7 @@ BuildRequires:  libnl3-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-Url:            https://github.com/intel/openlldp
+URL:            https://github.com/intel/openlldp
 Source:         %{name}-v%{version}.tar.xz
 Patch0:         disable-werror.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -38,7 +38,7 @@ Provides:       dcbd = %{version}
 Obsoletes:      dcbd < %{version}
 Provides:       lldpad = %{version}
 Obsoletes:      lldpad < %{version}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %systemd_requires
 
 %description
