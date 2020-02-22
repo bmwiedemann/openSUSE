@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 17 20:54:23 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.24.14:
+  + Fix the opaque region for windows on X11.
+  + Theme:
+    - Fix flat buttons in backdrop.
+    - Make popovers look more similar to menus.
+    - Tweak checkbox & radiobutton appearance.
+    - Add general typography classes (heading, title-1, etc).
+  + Language bindings: Fix annotations for
+    gtk_tree_model_sort_new_with_model.
+  + Switch: Fix touch support.
+  + Infobar: Make clickable for default action.
+  + Emojichooser: Respect a no-emoji input hint.
+  + Fontchooser: Fix an oversight with hiding the size label.
+  + Filechooser: Disable recursive search without a system indexer.
+  + Modelbutton: Fix a11y support to reflect button state.
+  + Input: Fix touchpad gesture center calculation.
+  + X11:
+    - Fix root window scaling.
+    - Support _GTK_WORKAREAS_Dn property.
+  + Wayland:
+    - Support a terminal purpose in input methods.
+    - Fix preedit cursor positioning.
+    - Fix enabling/disabling of text inputs.
+    - Support simultaneous selection requests.
+    - Require Wayland 1.14.91.
+  + Printing: Fix a crash with Avahi.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 10 12:03:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move /usr/share/locale/en from the -lang package to the -data

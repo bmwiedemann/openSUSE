@@ -35,7 +35,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.13+0
+Version:        3.24.14
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -86,10 +86,10 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(pango) >= 1.41.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(rest-0.7)
-BuildRequires:  pkgconfig(wayland-client) >= 1.9.91
-BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
+BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
+BuildRequires:  pkgconfig(wayland-cursor) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.12
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
