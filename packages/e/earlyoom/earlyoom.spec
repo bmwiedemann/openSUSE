@@ -19,7 +19,6 @@
 %if ! 0%{?_fillupdir:1}
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           earlyoom
 Version:        1.3
 Release:        0
@@ -52,21 +51,20 @@ sed -ri '/LDFLAGS/ s|$| -lrt|' Makefile
 
 %build
 CFLAGS='%{optflags} -DVERSION=\"%{version}\" -std=gnu99'
-make %{?_smp_mflags} CFLAGS="$CFLAGS"
+%make_build CFLAGS="$CFLAGS"
 
 %install
 %make_install PREFIX=%{_prefix} SYSTEMDUNITDIR=%{_unitdir}
 install -D -m644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
-# Files list
 %files
 %license LICENSE
 %doc MANPAGE.md README.md
-%{_bindir}/earlyoom
+%{_bindir}/%{name}
 %{_unitdir}/%{name}.service
-%exclude %{_sysconfdir}/default/earlyoom
+%exclude %{_sysconfdir}/default/%{name}
 %{_fillupdir}/sysconfig.%{name}
-%{_mandir}/man1/earlyoom.1%{?ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %pre
 %{service_add_pre %{name}.service}
