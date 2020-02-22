@@ -1,8 +1,28 @@
 -------------------------------------------------------------------
+Fri Feb 21 20:01:01 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 2.15
+  + fix error on rpmrebuild_files.sh line 204 (verify tag)
+  + use env in shebang to avoid path problemes (/bin versus /usr/bin)
+    *** This is reverted on openSUSE to static /usr/bin/bash ***
+  + updated htmc doc (features, usage)
+  + avoid shebang translation for rpmrebuild packages
+    (__brp_mangle_shebangs macro)
+  + fix bug on change-spec-preamble (move processing_init before
+    CommandLineParsing) thanks Nerijus
+  + fix cpio problem : add --no-absolute-filenames option
+  + better diagnostic on internal error
+  + fix bug on conditional requires (with space)
+- Packaging
+  + renew spec with spec-cleaner
+  + use %autopatch macro
+  + Add sed instruction to remove all env calls in code
+
+-------------------------------------------------------------------
 Fri Nov  2 13:54:14 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 2.14
-  + add list of optional tags, to allow rpmrebuild work with old 
+  + add list of optional tags, to allow rpmrebuild work with old
     rpm versions
   + add dependency on setarch
   + add debug code (calls on functions)
@@ -20,7 +40,7 @@ Fri Sep 14 06:29:00 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
 - Update to version 2.13
   + can handle recommends / supplements rpm tags
   + previous 2.12-1
-    - apply patch on requires from Bruce Jerrick : Handle 
+    - apply patch on requires from Bruce Jerrick : Handle
     Requires(pre,post,preun,postun)
     - add new requires syntax with if ( redhat-rpm-config )
   + previous 2.11-3
@@ -59,7 +79,7 @@ Sun Dec 28 14:00:00 UTC 2014 - Led <ledest@gmail.com>
 -------------------------------------------------------------------
 Thu Dec  5 12:19:18 UTC 2013 - bruno@ioda-net.ch
 
-- Update to 2.11 
+- Update to 2.11
   * Wed Nov 22 2013 <gerbier@users.sourceforge.net> 2.11
 	- add install option
   * Sun Aug 11 2013 <gerbier@users.sourceforge.net> 2.10-2
@@ -67,9 +87,9 @@ Thu Dec  5 12:19:18 UTC 2013 - bruno@ioda-net.ch
   * Tue Aug 01 2013 <valery_reznic@users.sourceforge.net> 2.10
 	- add tag DISTTAG (feature request)
 	- do not test install if work on rpm files
-	- applied patch from Olivier Bourdon for pretrans and postrans 
+	- applied patch from Olivier Bourdon for pretrans and postrans
 
-- Packaging fix bnc#832338 
+- Packaging fix bnc#832338
 	-Add Require rpm-build
 
 -------------------------------------------------------------------
@@ -103,7 +123,7 @@ Thu Oct 13 12:42:06 UTC 2011 - bruno@ioda-net.ch
 - spec cleaner
 - Remove redundant tags/sections from specfile
   (cf. packaging guidelines)
-- Use %_smp_mflags for parallel build- 
+- Use %_smp_mflags for parallel build-
 
 -------------------------------------------------------------------
 Tue Apr  6 14:48:25 UTC 2010 - hvogel@novell.com

@@ -1,7 +1,7 @@
 #
 # spec file for package rpmrebuild
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpmrebuild
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        A tool to build a rpm file from the rpm database
 License:        GPL-2.0-or-later
@@ -44,25 +44,29 @@ a software after some configuration's change.
 
 %prep
 %setup -q -c
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 %build
 make %{?_smp_mflags}
 # Remove shebang on script that are sourced and not executed
-find . -iname "*.src" -exec sed -i 's,^#!/bin/bash,,g' {} \;
+find . -iname "*.src" -exec sed -i 's,^#!%{_bindir}/env bash,,g' {} \;
+# As in 2.15 remove env usage to static path
+find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env bash,#!%{_bindir}/sh,g' {} \;
+# Same for those
+find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/sh,g' {} \;
+# and last
+sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/sh,g' rpmrebuild
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags} 
+make DESTDIR=%{buildroot} install %{?_smp_mflags}
 mv %{buildroot}%{_mandir}/fr_FR.UTF-8/ %{buildroot}%{_mandir}/fr
 rm -rf %{buildroot}%{_mandir}/fr_FR/
 # chmod 0755 %%{buildroot}%%{_libexecdir}/rpmrebuild/*.sh
 
 %files
 %defattr(-,root,root,-)
-%license COPYING
-%doc AUTHORS Changelog COPYRIGHT News README Todo
+%license COPYING COPYRIGHT
+%doc AUTHORS Changelog News README Todo
 %{_bindir}/rpmrebuild
 %{_libexecdir}/rpmrebuild
 %{_mandir}/fr/man1/*
