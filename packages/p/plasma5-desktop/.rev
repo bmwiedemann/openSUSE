@@ -1138,4 +1138,12 @@
     <comment></comment>
     <requestid>774530</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>3e16dafe33de6b89d0af5d5599ecc7db</srcmd5>
+    <version>5.18.1</version>
+    <time>1582394753</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.1</comment>
+    <requestid>776816</requestid>
+  </revision>
 </revisionlist>

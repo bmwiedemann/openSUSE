@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * [desktoppackage] Fix layout when an applet has no custom config modules (kde#410770)
+  * Set toolbox to invisble when it's hidden (kde#416695)
+  * [kcm/standardactions] Don't register kcminit hook when we don't have one
+  * [KCM Fonts] force need save to false during load to avoid state to be true too early (kde#416358)
+  * Baloo KCM: Do not anchor fill ScrollView (kde#417437)
+  * [Styles KCM] Set style display name as window title (kde#417563)
+  * unlock widgets (kde#417424)
+  * Remove a typo in the previous commit
+  * Replace plasma.kde.org with kde.org/plasma-desktop
+  * [kcms/cursortheme] Don't skip everything because of lack of XFixes
+  * [Sessions KCM] Fix firmware setup
+  * [KSplash KCM] Fix ghns button label (kde#417224)
+- Drop patches, now upstream:
+  * 0001-KCM-Fonts-force-need-save-to-false-during-load-to-av.patch
+  * 0001-unlock-widgets.patch
+  * Set-toolbox-to-invisible-when-its-hidden.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 22:40:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add patch to fix Alt+D shortcut handling (kde#416695):
