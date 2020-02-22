@@ -182,22 +182,12 @@ unsorted:
   - QtAV-qml 
   - QtDMM 
   - QtPass 
-  - R-BH: [x86_64] 
   - R-KernSmooth 
   - R-MASS 
   - R-Matrix 
   - R-Matrix-devel 
-  - R-PKI: [x86_64] 
-  - R-R6: [x86_64] 
-  - R-RCurl: [x86_64] 
-  - R-RJSONIO: [x86_64] 
-  - R-Rcpp: [x86_64] 
-  - R-Rcpp-devel: [x86_64] 
-  - R-Rcpp-doc: [x86_64] 
   - R-base 
   - R-base-devel 
-  - R-base64enc: [x86_64] 
-  - R-bitops: [x86_64] 
   - R-boot 
   - R-class 
   - R-cluster 
@@ -208,47 +198,27 @@ unsorted:
   - R-core-doc 
   - R-core-libs 
   - R-core-packages 
-  - R-crayon: [x86_64] 
-  - R-curl: [x86_64] 
   - R-datasets 
-  - R-digest: [x86_64] 
-  - R-digest-devel: [x86_64] 
   - R-foreign 
   - R-grDevices 
   - R-graphics 
   - R-grid 
-  - R-httpuv: [x86_64] 
-  - R-jsonlite: [x86_64] 
-  - R-later: [x86_64] 
   - R-lattice 
-  - R-magrittr: [x86_64] 
   - R-methods 
   - R-mgcv 
   - R-nlme 
   - R-nnet 
-  - R-openssl: [x86_64] 
-  - R-openssl-doc: [x86_64] 
-  - R-packrat: [x86_64] 
   - R-parallel 
-  - R-plumber: [x86_64] 
-  - R-praise: [x86_64] 
-  - R-promises: [x86_64] 
   - R-recommended-packages 
-  - R-rlang: [x86_64] 
   - R-rpart 
-  - R-rsconnect: [x86_64] 
-  - R-rstudioapi: [x86_64] 
   - R-spatial 
   - R-splines 
   - R-stats 
   - R-stats4 
-  - R-stringi: [x86_64] 
-  - R-stringi-devel: [x86_64] 
   - R-survival 
   - R-tcltk 
   - R-tools 
   - R-utils 
-  - R-yaml: [x86_64] 
   - Regina-REXX 
   - Regina-REXX-devel 
   - Regina-REXX-doc 
@@ -1262,7 +1232,6 @@ unsorted:
   - boost_1_71_0-gnu-openmpi3-hpc-devel: [x86_64] 
   - boost_1_71_0-gnu-openmpi3-hpc-python2: [x86_64] 
   - boost_1_71_0-gnu-openmpi3-hpc-python3: [x86_64] 
-  - bootchart: [x86_64] 
   - booth 
   - booth-test 
   - bootsplash-branding-KDE 
@@ -2127,7 +2096,6 @@ unsorted:
   - cura-engine-lulzbot: [x86_64] 
   - cura-fdm-materials 
   - cura-lulzbot: [x86_64] 
-  - curl-mini: [x86_64] 
   - curlftpfs 
   - cutecom 
   - cutmp3 
@@ -5951,6 +5919,7 @@ unsorted:
   - jboss-parent 
   - jboss-websocket-1.0-api 
   - jboss-websocket-1.0-api-javadoc 
+  - jc 
   - jcifs 
   - jcifs-demo 
   - jcifs-javadoc 
@@ -7897,6 +7866,7 @@ unsorted:
   - libatomic1-gcc7-32bit: [x86_64] 
   - libatomic_ops-devel 
   - libatomicparsley0 
+  - libatopology2 
   - libatopology2-32bit: [x86_64] 
   - libatrildocument3 
   - libatrilview3 
@@ -8513,9 +8483,7 @@ unsorted:
   - libcupsimage2-32bit: [x86_64] 
   - libcurl-devel 
   - libcurl-devel-32bit: [x86_64] 
-  - libcurl-mini-devel: [x86_64] 
   - libcurl4-32bit: [x86_64] 
-  - libcurl4-mini: [x86_64] 
   - libcvc-devel 
   - libcvc0 
   - libcwiid-devel 
@@ -15166,6 +15134,7 @@ unsorted:
   - octave-forge-lssa 
   - octave-forge-ltfat 
   - octave-forge-mapping 
+  - octave-forge-matgeom 
   - octave-forge-mechanics 
   - octave-forge-miscellaneous 
   - octave-forge-msh 
@@ -18295,18 +18264,6 @@ unsorted:
   - python2-autopep8 
   - python2-autoupgrade-ng 
   - python2-av 
-  - python2-avocado 
-  - python2-avocado-plugins-glib 
-  - python2-avocado-plugins-golang 
-  - python2-avocado-plugins-loader-yaml 
-  - python2-avocado-plugins-output-html 
-  - python2-avocado-plugins-result-upload 
-  - python2-avocado-plugins-resultsdb 
-  - python2-avocado-plugins-runner-docker 
-  - python2-avocado-plugins-runner-remote 
-  - python2-avocado-plugins-runner-vm 
-  - python2-avocado-plugins-varianter-pict 
-  - python2-avocado-plugins-varianter-yaml-to-mux 
   - python2-avocado-plugins-vt 
   - python2-avro 
   - python2-aws-sam-translator 
@@ -18753,7 +18710,6 @@ unsorted:
   - python2-django-rest-framework-social-oauth2 
   - python2-django-seed 
   - python2-django-sekizai 
-  - python2-django-silk: [x86_64] 
   - python2-django-storages 
   - python2-django-tagging 
   - python2-django-tastypie 
@@ -18792,6 +18748,7 @@ unsorted:
   - python2-ecdsa 
   - python2-ed25519 
   - python2-ed25519ll 
+  - python2-edgegrid-python 
   - python2-editdistance 
   - python2-editdistance-devel 
   - python2-efilter 
@@ -19294,8 +19251,6 @@ unsorted:
   - python2-ntlm-auth 
   - python2-ntplib 
   - python2-num2words 
-  - python2-numba 
-  - python2-numba-devel 
   - python2-numexpr 
   - python2-numpy-devel 
   - python2-numpy-gnu-hpc 
@@ -21195,6 +21150,7 @@ unsorted:
   - python3-ec2imgutils 
   - python3-ec2metadata 
   - python3-ed25519 
+  - python3-edgegrid-python 
   - python3-editdistance 
   - python3-editdistance-devel 
   - python3-efilter 

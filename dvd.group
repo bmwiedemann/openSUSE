@@ -1758,7 +1758,6 @@
     <package name="libatkmm-1_6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatomic1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="libatopology2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatspi0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
