@@ -564,4 +564,18 @@
     <comment></comment>
     <requestid>749103</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>50efb4e9dd48eea24ff93c9f339efd56</srcmd5>
+    <version>0.29.15</version>
+    <time>1582394548</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.15
+ * Crash when returning a temporary Python object from an async-def function.
+ * Crash when using **kwargs in generators.
+ * Double reference free in __class__ cell handling for super() calls.
+ * Compile error when using *args as Python class bases.
+ * Fixed C name collision in the auto-pickle code
+ * Deprecated import failed in Python 3.9</comment>
+    <requestid>775286</requestid>
+  </revision>
 </revisionlist>
