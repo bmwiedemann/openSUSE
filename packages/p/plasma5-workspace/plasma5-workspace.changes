@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * [kcms/feedback] Improve default kcmshell window size (kde#417747)
+  * Extract messages from header files as well (Thanks to Victor Ryzhykh)
+  * Remove downloadNewWhat usage
+  * Don't delay ksplash until the entire slideshow is loaded
+  * [Notifications] Only let details label grow, never shrink (kde#417489)
+  * [libtaskmanager] Fix shared VirtualDesktopInfo::Private tied to the 1st creator (kde#415200)
+  * [Background Finder] Create a valid invocation token
+  * Replace plasma.kde.org with kde.org/plasma-desktop
+
+-------------------------------------------------------------------
 Tue Feb 11 10:34:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update tarball, now with updated preview images
