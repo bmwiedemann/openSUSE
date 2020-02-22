@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * Fix crash when asking for a modem unlock (kde#417545)
+
+-------------------------------------------------------------------
 Thu Feb  6 15:10:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.0
