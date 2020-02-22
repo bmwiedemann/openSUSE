@@ -1,7 +1,7 @@
 #
 # spec file for package python-Automat
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,10 @@
 %bcond_with test
 %endif
 Name:           python-Automat%{psuffix}
-Version:        0.8.0
+Version:        20.2.0
 Release:        0
 Summary:        Self-service finite-state machines for the programmer on the go
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/glyph/automat
 Source:         https://files.pythonhosted.org/packages/source/A/Automat/Automat-%{version}.tar.gz
 BuildRequires:  %{python_module m2r}
@@ -49,6 +48,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Twisted >= 16.1.1}
 BuildRequires:  %{python_module attrs >= 16.1.0}
 BuildRequires:  %{python_module graphviz >= 0.5.1}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -71,7 +71,7 @@ automata (particularly deterministic finite-state transducers).
 
 %check
 %if %{with test}
-%python_exec setup.py test
+%pytest automat/_test
 %endif
 
 %if !%{with test}
