@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Login
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-Flask-Login
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        User session management for Flask
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/maxcountryman/flask-login
+URL:            https://github.com/maxcountryman/flask-login
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Login/Flask-Login-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Flask
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Flask}
 %endif
-Requires:       python-Flask
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -59,8 +57,9 @@ loading users from their ID.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc LICENSE README.md
-%{python_sitelib}/*
+%license LICENSE
+%doc README.md
+%{python_sitelib}/flask_login
+%{python_sitelib}/Flask_Login-%{version}-py*.egg-info
 
 %changelog

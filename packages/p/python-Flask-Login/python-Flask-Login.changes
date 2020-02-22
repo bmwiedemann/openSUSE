@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb 16 05:59:39 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove python devel
+  * be more specific in %files section
+
+- update to version 0.5.0:
+  * New custom test client: `flask_login.FlaskLoginClient`.  You can
+    use this to write clearer automated tests. #431
+  * Prefix authenticated user_id, remember, and remember_seconds in
+    Flask Session with underscores to prevent accidental usage in
+    application code. #470
+  * Simplify user loading. #378
+  * Various documentation improvements. #393, #394, #397, #417
+  * Set session ID when setting next. #403
+  * Clear session identifier on logout. #404
+  * Ensure use of a safe and up-to-date version of Flask.
+  * Drop support of Python versions: 2.6, 3.3, 3.4 #450
+
+-------------------------------------------------------------------
 Sun Dec  3 18:32:18 UTC 2017 - arun@gmx.de
 
 - update to version 0.4.1:
