@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 18 16:05:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 1.2.133
+  * Avoid clang warning about parentheses
+  * secure_getenv change logging WARN to INFO
+  * don't unconditionally add std-val meta layer
+  * Fix buffer size updates in registry search
+  * Add core 1.2 functions to gpa_helper
+  * add null check to loaderValidateLayers
+  * Warn when loader_secure_getenv() fails
+  * Regenerate files for debug utils changes
+  * Fix debug utils terminators being skipped
+
+-------------------------------------------------------------------
 Mon Feb  3 12:37:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to release 1.2.132

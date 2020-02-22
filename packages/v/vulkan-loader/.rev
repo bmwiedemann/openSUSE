@@ -143,4 +143,12 @@
     <comment>- Update to release 1.2.132</comment>
     <requestid>769796</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7d0bff48e541c05c2189bf77e550e1b7</srcmd5>
+    <version>1.2.133</version>
+    <time>1582394596</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.133</comment>
+    <requestid>776238</requestid>
+  </revision>
 </revisionlist>
