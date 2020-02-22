@@ -1,7 +1,7 @@
 #
 # spec file for package libssh
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,6 @@ Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
 Patch0:         0001-disable-timeout-test-on-slow-buildsystems.patch
-# cmake pulls curl, but libssh is a dependency of it, so avoid cycles by using curl-mini
-#!BuildRequires: libcurl4-mini
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
