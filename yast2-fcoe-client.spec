@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-fcoe-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-fcoe-client
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        YaST2 - Configuration of Fibre Channel over Ethernet
 License:        GPL-2.0-only
@@ -30,7 +30,6 @@ BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-testsuite
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 
 # Yast2::Systemd::Service

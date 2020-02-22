@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 20 13:09:42 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Use the correct file names when copying the configuration of the
+  FCoE VLANs to the target system at the end of installation
+  (related to bsc#1163343).
+- 4.2.2
+
+-------------------------------------------------------------------
 Mon Aug 26 09:37:36 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to
