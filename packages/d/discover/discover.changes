@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * pk: make sure we get the local package details
+  * Simplify UI logic
+  * Fix typo
+  * pk: list codecs as addons
+  * Don't offer to show more when there's not more to show (kde#417290)
+  * remove warning when there's no kuserfeedback
+  * snap: mark transactions as cancelled when we cancel them
+  * Don't escape search text in search page title (kde#416781)
+  * Use real Kirigami Separators instead of blue rectangles
+
+-------------------------------------------------------------------
 Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.0
