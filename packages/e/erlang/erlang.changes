@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:06:40 UTC 2020 - g.santomaggio@gmail.com
+
+- Changes for 22.2.7:
+  * compiler: Fixed a bug that could cause the compiler to reject
+    valid code that used the is_map_key/2 BIF.
+  * compiler: Fixed a bug that could cause the compiler to reject
+    valid code that matched the same map key several times.
+  * compiler: The compiler could crash when compiling a convoluted
+    receive statement.
+  * compiler: The compiler could crash when a fun was created but
+    never used. The compiler could crash when compiling the
+    expression true = 0 / X.
+
+- jsc#SLE-10913
+
+-------------------------------------------------------------------
 Sat Feb 15 09:40:37 UTC 2020 - matwey.kornilov@gmail.com
 
 - Changes for 22.2.6:

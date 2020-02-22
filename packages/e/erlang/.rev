@@ -808,4 +808,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>774576</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>6c50a65df5ab5db70f9896b9a39105ad</srcmd5>
+    <version>22.2.7</version>
+    <time>1582394820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778053</requestid>
+  </revision>
 </revisionlist>
