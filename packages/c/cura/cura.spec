@@ -1,7 +1,7 @@
 #
 # spec file for package cura
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Hardware/Printing
-URL:            http://github.com/Ultimaker/Cura
+URL:            https://github.com/Ultimaker/Cura
 Source0:        Cura-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro buisiness
 Patch1:         disable-code-style-check.patch
@@ -30,6 +30,8 @@ Patch1:         disable-code-style-check.patch
 Patch2:         fix-runtime.patch
 # PATCH-FIX-OPENSUSE fix-crash-on-start.patch
 Patch3:         fix-crash-on-start.patch
+# PATCH-FIX-OPENSUSE -- avoid bad UI layout and crash in preview
+Patch4:         0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libArcus3
@@ -85,6 +87,7 @@ settings, and send this G-Code to the 3D printer for printing.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 CFLAGS="%{optflags}"
