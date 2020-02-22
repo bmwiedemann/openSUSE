@@ -1,6 +1,10 @@
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
 
+# Workaround packages requiring curl-mini
+#Substitute: curl-mini curl
+#Substitute: libcurl4-mini libcurl
+
 # Help python-subinit to win until python-python-subunit is gone
 Prefer: python2-subunit python3-subunit
 
