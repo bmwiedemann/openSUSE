@@ -846,4 +846,12 @@
   + config/cloud.cfg.d: update README [Joshua Powers] (LP: #1855006)</comment>
     <requestid>765394</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>ee61ee4d3a22f049e9474703d4069269</srcmd5>
+    <version>19.4</version>
+    <time>1582394308</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>777713</requestid>
+  </revision>
 </revisionlist>

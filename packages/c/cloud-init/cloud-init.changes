@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:07:50 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-long-pass.patch (bsc#1162936, CVE-2020-8632)
+  + Increase the default length of generated passwords
+
+-------------------------------------------------------------------
+Wed Feb 12 22:37:57 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-use-different-random-src.diff (bsc#1162937, CVE-2020-8631)
+  + Use non-deterministic generator for password generation.
+
+-------------------------------------------------------------------
+Wed Feb 12 19:30:42 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch (bsc#1163178)
+  + Entries in the routes definition have changed causing a traceback
+    during rout config file writing. This patch update addresses the
+    issue by extracting the new entries properly.
+
+-------------------------------------------------------------------
 Fri Jan 17 18:55:41 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-no-tempnet-oci.patch (bsc#1161132, bsc#1161133)

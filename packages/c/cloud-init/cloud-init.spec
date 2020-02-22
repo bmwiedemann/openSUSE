@@ -45,6 +45,8 @@ Patch55:        cloud-init-mix-static-dhcp.patch
 Patch56:        cloud-init-sysconf-path.patch
 # FIXME (lp#1860164)
 Patch57:        cloud-init-no-tempnet-oci.patch
+Patch58:        cloud-init-use-different-random-src.diff
+Patch59:        cloud-init-long-pass.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -190,6 +192,8 @@ Documentation and examples for cloud-init tools
 %patch55 -p0
 %patch56
 %patch57
+%patch58 -p1
+%patch59
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315
