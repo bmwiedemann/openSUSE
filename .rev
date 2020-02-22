@@ -114,4 +114,14 @@
     <comment></comment>
     <requestid>777721</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>6113e3524d494a5e89e643dd19da2d30</srcmd5>
+    <version>3.2.15</version>
+    <time>1582394829</time>
+    <user>dimstar_suse</user>
+    <comment>- Requires kde-cli-tools5 instead of /usr/bin/kdesu, 
+  because OBS KIWI solver does not understand file requirements.
+</comment>
+    <requestid>778065</requestid>
+  </revision>
 </revisionlist>

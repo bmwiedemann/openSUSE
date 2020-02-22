@@ -28,7 +28,7 @@ Source0:        https://github.com/%{name}/%{name}/releases/download/v%{version}
 # new generic branding.desc with explanations in comments
 Source1:        branding.desc
 Source2:        %{name}-rpmlintrc
-# .desktop file customizations to use kdesu instead of Polkit pkexec
+# .desktop file customizations to use kdesu from kde-cli-tools5 instead of Polkit pkexec
 Patch0:         %{name}-desktop-file.patch
 # adjust some default settings (default shipped .conf files) for openSUSE and openSUSE based appliances
 Patch1:         3.2-packages.conf.patch
@@ -81,7 +81,7 @@ Requires:       e2fsprogs
 Requires:       gawk
 Requires:       gptfdisk
 Requires:       grub2
-Requires:       /usr/bin/kdesu
+Requires:       kde-cli-tools5
 Requires:       kpmcore >= 3.3
 Requires:       ntfsprogs
 Requires:       os-prober
@@ -166,7 +166,7 @@ make %{?_smp_mflags}
 
 %install
 %kf5_makeinstall -C build
-# if we don't want polkit (and you want use kdesu instead)
+# if we don't want polkit (and you want use kdesu from kde-cli-tools5 instead)
 %if 0%{?suse_version} == 1500
 rm -fr %{buildroot}%{_datadir}/polkit-1
 %endif
@@ -213,7 +213,7 @@ chmod +x %{buildroot}%{_libdir}/%{name}/modules/unpackfs/runtests.sh
 %{_datadir}/%{name}/qml/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-# if we want polkit (you can use kdesu instead)
+# if we want polkit (you can use kdesu from kde-cli-tools5 instead)
 %if 0%{?suse_version} > 1500
 %{_datadir}/polkit-1/actions/com.github.%{name}.%{name}.policy
 %endif
