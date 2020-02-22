@@ -1,0 +1,33 @@
+commit b608d584d9b6aeae916dec48c2cadf2e631f91b8
+Author: Tobias Kortkamp <t@tobik.me>
+Date:   Sat Nov 30 17:10:58 2019 +0100
+
+    Unbreak build with OpenAL 1.20.0
+    
+    In file included from /home/tobias/src/github.com/uTox/uTox/src/av/audio.c:33:
+    /usr/local/include/AL/alc.h:34:26: error: typedef redefinition with different types
+          ('struct ALCdevice' vs 'struct ALCdevice_struct')
+    typedef struct ALCdevice ALCdevice;
+                             ^
+    /home/tobias/src/github.com/uTox/uTox/src/av/audio.h:8:33: note: previous definition is here
+    typedef struct ALCdevice_struct ALCdevice;
+                                    ^
+    1 error generated.
+
+diff --git a/src/av/audio.h b/src/av/audio.h
+index 4edb0e45..e6b08550 100644
+--- a/src/av/audio.h
++++ b/src/av/audio.h
+@@ -5,7 +5,11 @@
+ #include <stdint.h>
+ #include <stdbool.h>
+ 
+-typedef struct ALCdevice_struct ALCdevice;
++#ifdef __APPLE__
++#include <OpenAL/alc.h>
++#else
++#include <AL/alc.h>
++#endif
+ 
+ extern bool utox_audio_thread_init;
+ 

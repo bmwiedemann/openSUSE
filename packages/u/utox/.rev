@@ -50,4 +50,13 @@
 </comment>
     <requestid>732477</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b8e6e0d19b397274dac99028a4144a1a</srcmd5>
+    <version>0.17.1</version>
+    <time>1582394921</time>
+    <user>dimstar_suse</user>
+    <comment>- added patch fix_build_with_openAL_1.20.patch to fix build with openAL 1.20
+</comment>
+    <requestid>778180</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package utox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://utox.org/
 Source:         https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz
 Source1:        https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz.asc
 Source2:        uTox.keyring
+# PATCH-FEATURE-UPSTREAM fix_build_with_openAL_1.20.patch
+Patch:          fix_build_with_openAL_1.20.patch
 BuildRequires:  c-toxcore-devel
 BuildRequires:  cmake >= 3.2
 BuildRequires:  dbus-1-devel
@@ -52,6 +54,7 @@ Lightweight Tox client.
 
 %prep
 %setup -q -n %{realname}
+%patch0 -p1
 
 %build
 %cmake \
