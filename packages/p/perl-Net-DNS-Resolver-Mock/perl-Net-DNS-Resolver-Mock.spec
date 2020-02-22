@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS-Resolver-Mock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-DNS-Resolver-Mock
-Version:        1.20171219
+Version:        1.20200215
 Release:        0
 %define cpan_name Net-DNS-Resolver-Mock
 Summary:        Mock a DNS Resolver object for testing
@@ -25,6 +25,7 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MB/MBRADSHAW/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -33,6 +34,7 @@ BuildRequires:  perl(Net::DNS::Packet)
 BuildRequires:  perl(Net::DNS::Question)
 BuildRequires:  perl(Net::DNS::Resolver)
 BuildRequires:  perl(Net::DNS::ZoneFile)
+BuildRequires:  perl(Test::Exception)
 Requires:       perl(Net::DNS::Packet)
 Requires:       perl(Net::DNS::Question)
 Requires:       perl(Net::DNS::Resolver)
@@ -60,7 +62,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc README
+%doc Changes README
 %license LICENSE
 
 %changelog
