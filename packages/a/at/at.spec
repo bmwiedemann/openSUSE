@@ -1,7 +1,7 @@
 #
 # spec file for package at
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,7 @@ Version:        3.1.23
 Release:        0
 Summary:        A Job Manager
 License:        GPL-2.0-or-later
-Group:          System/Daemons
-Url:            http://ftp.debian.org/debian/pool/main/a/at
+URL:            http://ftp.debian.org/debian/pool/main/a/at
 Source:         http://ftp.debian.org/debian/pool/main/a/at/%{name}_%{version}.orig.tar.gz
 Source2:        atd.pamd
 Source3:        sysconfig.atd
@@ -132,7 +131,7 @@ install -m644 %{SOURCE3} %{buildroot}%{_fillupdir}
 
 %pre
 %{_sbindir}/groupadd -g 25 -o -r at 2> /dev/null || :
-%{_sbindir}/useradd -r -o -g at -u 25 -s /bin/bash -c "Batch jobs daemon" -d %{_localstatedir}/spool/atjobs at 2> /dev/null || :
+%{_sbindir}/useradd -r -o -g at -u 25 -s /bin/false -c "Batch jobs daemon" -d %{_localstatedir}/spool/atjobs at 2> /dev/null || :
 %service_add_pre atd.service
 
 %preun
