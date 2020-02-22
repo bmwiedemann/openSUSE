@@ -745,4 +745,12 @@
 - Introduce a user mktex as replacement for user nobody (boo#1159740)</comment>
     <requestid>770144</requestid>
   </revision>
+  <revision rev="63" vrev="66">
+    <srcmd5>bea4c3fabe18046e33bade2f0f376e39</srcmd5>
+    <version>unknown</version>
+    <time>1582394216</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch also to user mktex in fmtutil script (boo#1159740)</comment>
+    <requestid>777662</requestid>
+  </revision>
 </revisionlist>

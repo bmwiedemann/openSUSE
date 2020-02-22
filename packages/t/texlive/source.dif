@@ -723,7 +723,7 @@
    } else {
 +    my ($uid, $gid);
      $tmpdir = File::Temp::tempdir(CLEANUP => 1);
-+    if ($> == 0 && ($uid=getpwnam("nobody")) && ($gid=getgrnam("mktex"))) {
++    if ($> == 0 && ($uid=getpwnam("mktex")) && ($gid=getgrnam("mktex"))) {
 +      my $cnt = chown $uid, $gid, $tmpdir;
 +      die "could not create directory $tmpdir" if $cnt <= 0;
 +      $cnt = chmod 0770, $tmpdir;

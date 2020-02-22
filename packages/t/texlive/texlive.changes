@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 20 06:21:10 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Switch also to user mktex in fmtutil script (boo#1159740) 
+
+-------------------------------------------------------------------
 Wed Feb  5 06:56:24 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Check passwd not group file for user mktex 

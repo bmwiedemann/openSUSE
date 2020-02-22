@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -1440,9 +1440,6 @@ URL:            http://www.tug.org/texlive/
 Requires(pre):    %{name}-filesystem
 Requires(pre):    /usr/bin/getent
 Requires(pre):    /usr/sbin/groupadd
-%if 0%{?suse_version} >= 1330
-Requires(pre):    user(nobody)
-%endif
 Requires(post):   %{name}-filesystem
 Requires(post):   permissions
 Requires:       %{name}-gsftopk-bin
