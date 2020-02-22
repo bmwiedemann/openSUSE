@@ -888,4 +888,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
     <requestid>772258</requestid>
   </revision>
+  <revision rev="105" vrev="14">
+    <srcmd5>5357c4f573379f54f5ddda00f75938fb</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1582394769</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.1</comment>
+    <requestid>776820</requestid>
+  </revision>
 </revisionlist>
