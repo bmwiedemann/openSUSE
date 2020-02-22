@@ -1233,4 +1233,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Eliminate the -lang recommends (forwarded request 767207 from dimstar)</comment>
     <requestid>767468</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>4ad0d39f25bd91bf9207f51c064e995d</srcmd5>
+    <version>3.34.4</version>
+    <time>1582394474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775291</requestid>
+  </revision>
 </revisionlist>
