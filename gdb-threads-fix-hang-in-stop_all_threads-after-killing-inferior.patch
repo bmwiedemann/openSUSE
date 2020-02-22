@@ -1,0 +1,140 @@
+[gdb/threads] Fix hang in stop_all_threads after killing inferior
+
+Consider a two-threaded testcase a.out, sleeping in both its threads:
+...
+$ gdb -ex r --args a.out
+Reading symbols from a.out...
+Starting program: /data/gdb_versions/devel/a.out
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7ffff77fe700 (LWP 31268)]
+...
+
+Typing ^C causes stop_all_threads to be executed, and if an external SIGKILL
+(such as caused by killall -9 a.out) arrives at the start of stop_all_threads,
+gdb hangs in stop_all_threads after giving this warning:
+...
+warning: unable to open /proc file '/proc/24938/status'
+...
+
+Using "set debug infrun 1" we can see in more detail where we hang:
+...
+infrun: stop_all_threads
+infrun: stop_all_threads, pass=0, iterations=0
+infrun:   Thread 0x7ffff7fa6740 (LWP 10264) not executing
+infrun:   Thread 0x7ffff77fe700 (LWP 10268) executing, need stop
+infrun: target_wait (-1.0.0, status) =
+infrun:   10264.10268.0 [Thread 0x7ffff77fe700 (LWP 10268)],
+infrun:   status->kind = signalled, signal = GDB_SIGNAL_KILL
+infrun: stop_all_threads status->kind = signalled, signal = GDB_SIGNAL_KILL \
+  Thread 0x7ffff77fe700 (LWP 10268)
+infrun:   Thread 0x7ffff7fa6740 (LWP 10264) not executing
+infrun:   Thread 0x7ffff77fe700 (LWP 10268) executing, already stopping
+warning: unable to open /proc file '/proc/10264/status'
+infrun: target_wait (-1.0.0, status) =
+infrun:   -1.0.0 [process -1],
+infrun:   status->kind = no-resumed
+infrun: infrun_async(0)
+infrun: stop_all_threads status->kind = no-resumed process -1
+infrun:   Thread 0x7ffff7fa6740 (LWP 10264) not executing
+infrun:   Thread 0x7ffff77fe700 (LWP 10268) executing, already stopping
+infrun: stop_all_threads status->kind = no-resumed process -1
+infrun:   Thread 0x7ffff7fa6740 (LWP 10264) not executing
+infrun:   Thread 0x7ffff77fe700 (LWP 10268) executing, already stopping
+infrun: stop_all_threads status->kind = no-resumed process -1
+infrun:   Thread 0x7ffff7fa6740 (LWP 10264) not executing
+infrun:   Thread 0x7ffff77fe700 (LWP 10268) executing, already stopping
+<repeat>
+......
+
+So, we're hanging in the 'while (1)' loop in stop_all_threads as follows:
+- thread t is tested, and both t->executing and t->stop_requested are found
+  to be 1 (noted with 'executing, already stopping')
+- consequently need_wait is set 1
+- consequently wait_one is executed
+- wait_one returns a TARGET_WAITKIND_NO_RESUMED event, which is handled by
+  continuing at the start of the loop
+
+The loop actually starts with update_thread_list (), but that doesn't seem
+to change the state of the threads.
+
+Fix the hang by:
+- detecting the first sign of trouble: the TARGET_WAITKIND_SIGNALLED event
+  with signal GDB_SIGNAL_KILL,
+- making that event pending again,
+- making sure the corresponding thread will not set need_wait again
+  (by setting t->executing == 0)
+- making sure that the corresponding thread keeps t->resumed == 1 in the
+  the all_non_exited_threads loop
+
+This results in the ^C being handled without showing the user that the
+test-case was killed:
+...
+^C
+Thread 1 received signal SIGINT, Interrupt.
+0x00007ffff78c50f0 in nanosleep () from /lib64/libc.so.6
+(gdb)
+...
+
+But a subsequent continue does show that:
+...
+(gdb) c
+Continuing.
+
+Program terminated with signal SIGKILL, Killed.
+The program no longer exists.
+(gdb)
+....
+
+Build and reg-tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2020-01-29  Tom de Vries  <tdevries@suse.de>
+
+	PR threads/25478
+	* infrun.c (stop_all_threads): Detecting event
+	TARGET_WAITKIND_SIGNALLED with signal GDB_SIGNAL_KILL, make event
+	pending again, set t->executing to 0 and keep t->resumed set to 1.
+
+Change-Id: Ibe1f29251fe2ff1c1991f041babbe18373c113b1
+
+---
+ gdb/infrun.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/infrun.c b/gdb/infrun.c
+index 9d20036fcf..16e9e136c0 100644
+--- a/gdb/infrun.c
++++ b/gdb/infrun.c
+@@ -4344,7 +4344,12 @@ stop_all_threads (void)
+ 
+ 		  /* The thread may be not executing, but still be
+ 		     resumed with a pending status to process.  */
+-		  t->resumed = 0;
++		  if (t->suspend.waitstatus.kind == TARGET_WAITKIND_SIGNALLED
++		      && t->suspend.waitstatus.value.sig == GDB_SIGNAL_KILL
++		      && t->suspend.waitstatus_pending_p)
++		    ;
++		  else
++		    t->resumed = 0;
+ 		}
+ 	    }
+ 
+@@ -4359,7 +4364,15 @@ stop_all_threads (void)
+ 
+ 	  event_ptid = wait_one (&ws);
+ 
+-	  if (ws.kind == TARGET_WAITKIND_NO_RESUMED)
++	  if (ws.kind == TARGET_WAITKIND_SIGNALLED
++	      && ws.value.sig == GDB_SIGNAL_KILL)
++	    {
++	      thread_info *t = find_thread_ptid (event_ptid);
++	      save_waitstatus (t, &ws);
++	      t->resumed = 1;
++	      t->executing = 0;
++	    }
++	  else if (ws.kind == TARGET_WAITKIND_NO_RESUMED)
+ 	    {
+ 	      /* All resumed threads exited.  */
+ 	    }

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 19:56:55 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix hang after SIGKILL [swo#25478].
+  * gdb-threads-fix-hang-in-stop_all_threads-after-killing-inferior.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 15:43:46 UTC 2020 - matz@suse.com
 
 - Add support for official name of s390 arch13: z15.
