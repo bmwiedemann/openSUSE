@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Feb 17 17:46:35 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.12.0
+  * feature:retries: [``botocore``] Add support for retry modes, including ``standard``
+    and ``adaptive`` modes (`#1972 <https://github.com/boto/botocore/issues/1972>`__)
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``mediatailor``: [``botocore``] Update mediatailor client to latest version
+  * api-change:``securityhub``: [``botocore``] Update securityhub client to latest version
+  * api-change:``shield``: [``botocore``] Update shield client to latest version
+- from version 1.11.17
+  * api-change:``mediapackage-vod``: [``botocore``] Update mediapackage-vod client to latest version
+- from version 1.11.16
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``chime``: [``botocore``] Update chime client to latest version
+  * api-change:``workmail``: [``botocore``] Update workmail client to latest version
+  * api-change:``ds``: [``botocore``] Update ds client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``es``: [``botocore``] Update es client to latest version
+  * api-change:``neptune``: [``botocore``] Update neptune client to latest version
+- from version 1.11.15
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``cognito-idp``: [``botocore``] Update cognito-idp client to latest version
+  * api-change:``cloudformation``: [``botocore``] Update cloudformation client to latest version
+- from version 1.11.14
+  * api-change:``docdb``: [``botocore``] Update docdb client to latest version
+  * api-change:``kms``: [``botocore``] Update kms client to latest version
+- from version 1.11.13
+  * api-change:``robomaker``: [``botocore``] Update robomaker client to latest version
+  * api-change:``imagebuilder``: [``botocore``] Update imagebuilder client to latest version
+  * api-change:``rds``: [``botocore``] Update rds client to latest version
+- from version 1.11.12
+  * api-change:``ebs``: [``botocore``] Update ebs client to latest version
+  * api-change:``appsync``: [``botocore``] Update appsync client to latest version
+  * api-change:``lex-models``: [``botocore``] Update lex-models client to latest version
+  * api-change:``ecr``: [``botocore``] Update ecr client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``codebuild``: [``botocore``] Update codebuild client to latest version
+- from version 1.11.11
+  * api-change:``groundstation``: [``botocore``] Update groundstation client to latest version
+  * api-change:``mediaconvert``: [``botocore``] Update mediaconvert client to latest version
+  * api-change:``dlm``: [``botocore``] Update dlm client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``forecastquery``: [``botocore``] Update forecastquery client to latest version
+  * api-change:``securityhub``: [``botocore``] Update securityhub client to latest version
+  * api-change:``resourcegroupstaggingapi``: [``botocore``] Update
+    resourcegroupstaggingapi client to latest version
+- from version 1.11.10
+  * api-change:``workmail``: [``botocore``] Update workmail client to latest version
+  * api-change:``iot``: [``botocore``] Update iot client to latest version
+  * api-change:``cloudfront``: [``botocore``] Update cloudfront client to latest version
+  * api-change:``storagegateway``: [``botocore``] Update storagegateway client to latest version
+  * api-change:``ssm``: [``botocore``] Update ssm client to latest version
+  * api-change:``kafka``: [``botocore``] Update kafka client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jan 30 12:10:45 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.11.9
