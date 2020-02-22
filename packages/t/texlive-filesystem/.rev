@@ -418,4 +418,13 @@
 - Introduce a user mktex as replacement for user nobody (boo#1159740)</comment>
     <requestid>770139</requestid>
   </revision>
+  <revision rev="43" vrev="46">
+    <srcmd5>b4ab16bf0a12239fb60fbe1f07831777</srcmd5>
+    <version>unknown</version>
+    <time>1582394227</time>
+    <user>dimstar_suse</user>
+    <comment>- Use setpriv to create ls-R files, below /var/cache/texmf/fonts
+  use uid mktex for this (boo#1159740)</comment>
+    <requestid>777663</requestid>
+  </revision>
 </revisionlist>

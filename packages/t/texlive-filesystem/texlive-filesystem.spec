@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-filesystem
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,10 +44,12 @@ Requires:       cron
 Requires:       python3
 Requires(pre):  /usr/bin/getent
 Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  /usr/bin/stat
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(post): /usr/bin/mktemp
 Requires(post): /usr/bin/mv
+Requires(post): /usr/bin/setpriv
 Requires(pre):  /usr/bin/perl
 Requires(pre):  /usr/bin/clear
 Requires(pre):  /usr/bin/dialog
@@ -56,16 +58,12 @@ Requires(pre):  ed
 Requires(pre):  findutils
 Requires(pre):  grep
 Requires(pre):  sed
-Requires(pre):  group(nobody)
-Requires(pre):  user(nobody)
 Requires(verify): permissions
 Obsoletes:      tetex
 BuildRequires:  cron
 BuildRequires:  ed
 BuildRequires:  fontconfig
 #BuildConflicts: texinfo
-BuildRequires:  group(nobody)
-BuildRequires:  user(nobody)
 Source10:       rc.config.texlive
 Source11:       update.texlive
 Source12:       texlive.cron
@@ -15295,7 +15293,7 @@ popd
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive.texlive) <<-EOF
 	%{_libexecdir}/mktex/public	root:%{texgrp}	2755
 	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
-	%{_fontcache}/ls-R		root:%{texgrp}	0664
+	%{_fontcache}/ls-R	   %{texusr}:%{texgrp}	0664
 	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
 	%{_texmfvardir}/dist/ls-R	root:%{texgrp}	0664
 	%{_texmfvardir}/main/ls-R	root:%{texgrp}	0664
@@ -15315,7 +15313,7 @@ popd
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive) <<-EOF
 	%{_libexecdir}/mktex/public	root:%{texgrp}	0755
 	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
-	%{_fontcache}/ls-R		root:%{texgrp}	0664
+	%{_fontcache}/ls-R	   %{texusr}:%{texgrp}	0664
 	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
 	%{_texmfvardir}/dist/ls-R	root:%{texgrp}	0664
 	%{_texmfvardir}/main/ls-R	root:%{texgrp}	0664
@@ -15392,7 +15390,6 @@ popd
 # the ls-R file on update
 error=0
 for dir in	%{_texmfconfdir}	\
-		%{_fontcache}		\
 		%{_texmfvardir}		\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
@@ -15402,6 +15399,13 @@ do
     test "$(stat --format '%U:%G' ${dir}/ls-R)" != root:%{texgrp}  || continue
     chown root:%{texgrp} ${dir}/ls-R || error=1
 done
+for dir in	%{_fontcache}
+do
+    test ! -h ${dir}/ls-R || rm -vf ${dir}/ls-R
+    test -e ${dir}/ls-R || continue
+    test "$(stat --format '%U:%G' ${dir}/ls-R)" != %{texusr}:%{texgrp}  || continue
+    chown %{texusr}:%{texgrp} ${dir}/ls-R || error=1
+done
 test $error = 0 || exit 1
 
 %post
@@ -15409,20 +15413,28 @@ test $error = 0 || exit 1
 # the ls-R file (empty at package time)
 error=0
 for dir in	%{_texmfconfdir}	\
-		%{_fontcache}		\
 		%{_texmfvardir}		\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
     test ! -e ${dir}/ls-R -o -h ${dir}/ls-R || continue
-    tmp=$(mktemp ${dir}/ls-R.XXXXXX) || error=1
+    tmp=$(setpriv --reuid root --regid mktex --init-groups mktemp ${dir}/ls-R.XXXXXX) || error=1
     test $error = 0 || continue
-    mv ${tmp} ${dir}/ls-R || error=1
-    test $error = 0 || continue
-    chgrp %{texgrp} ${dir}/ls-R || error=1
+    setpriv --reuid root --regid mktex --init-groups mv ${tmp} ${dir}/ls-R || error=1
     test $error = 0 || continue
     chmod 0664 ${dir}/ls-R || error=1
     test $error = 0 || continue
+    echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \
+    ${dir}/ls-R
+done
+for dir in	%{_fontcache}
+do
+    test ! -e ${dir}/ls-R -o -h ${dir}/ls-R || continue
+    tmp=$(setpriv --reuid mktex --regid mktex --init-groups mktemp ${dir}/ls-R.XXXXXX) || error=1
+    test $error = 0 || continue
+    setpriv --reuid mktex --regid mktex --init-groups mv ${tmp} ${dir}/ls-R || error=1
+    test $error = 0 || continue
+    chmod 0664 ${dir}/ls-R || error=1
     echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \
     ${dir}/ls-R
 done
@@ -26888,7 +26900,7 @@ rm -f /var/run/texlive/run-update
 %verify(link) %{_texmfmaindir}/ls-R
 %verify(link) %{_texmfdistdir}/ls-R
 %ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfconfdir}/ls-R
-%ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_fontcache}/ls-R
+%ghost %config(noreplace) %attr(0664,%{texusr},%{texgrp}) %verify(not md5 size mtime mode) %{_fontcache}/ls-R
 %ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/ls-R
 %ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/dist/ls-R
 %ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfvardir}/main/ls-R
