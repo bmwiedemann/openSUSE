@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 21 19:03:45 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1582309642.4cf93ee9f:
+  * Add merge key example to inline help
+  * Add docs for merge keys
+  * JobTemplates: Add tests with merge keys
+  * Use YAML::PP for JobTemplates
+  * worker: Add explicit test for last error of web UI connection
+  * Avoid redundant code in worker job test
+  * worker: Handle job duplication failures
+  * Show warnings when restarting job and assets are missing
+  * Add function to determine whether a job misses assets
+  * Move check for hidden asset types into its own function
+
+-------------------------------------------------------------------
 Fri Feb 21 10:39:15 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1582278168.345f257f6:
