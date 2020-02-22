@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-geometry
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %define octpkg  geometry
 Name:           octave-forge-%{octpkg}
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Computational Geometry for Octave
 License:        GPL-3.0-or-later AND BSD-2-Clause
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-BuildRequires:  octave-devel >= 4.0.1
+BuildRequires:  octave-devel >= 4.2.0
 Requires:       octave-cli >= 4.0.1
+Requires:       octave-forge-matgeom >= 1.0.0
 
 %description
-Library for geometric computing extending MatGeom functions. Useful to create,
-transform, manipulate and display geometric primitives.
+Library for geometric computing extending MatGeom functions.
+Useful to create, transform, manipulate and display geometric
+primitives.
 This is part of Octave-Forge project.
 
 %prep
