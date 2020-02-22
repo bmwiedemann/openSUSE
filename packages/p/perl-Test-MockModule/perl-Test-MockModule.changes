@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 20 03:09:39 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.172.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.172.0
+  - 7558aa9 Make sure we can redefine a function in 'main' - Nicolas R
+  - 0538fe1 Plug GitHub workflow as additional CI - Nicolas R
+  - 0e9d90b update parallel to use in_parallel instead ofaggregate - Geoff Franks
+
+-------------------------------------------------------------------
 Mon Oct 21 14:42:00 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.171.0
