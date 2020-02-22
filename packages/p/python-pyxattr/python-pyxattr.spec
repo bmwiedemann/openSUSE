@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyxattr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,26 @@
 #
 
 
+%define skip_python2 1
 %global mod_name pyxattr
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define github_url https://github.com/iustin/%{mod_name}/releases/download
 Name:           python-%{mod_name}
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        Filesystem extended attributes for python
-License:        LGPL-2.0-or-later
-Group:          Development/Languages/Python
+License:        LGPL-2.1-or-later
 URL:            https://pyxattr.k1024.org/
-Source:         https://files.pythonhosted.org/packages/source/p/pyxattr/pyxattr-%{version}.tar.gz
+Source0:        %{github_url}/v%{version}/%{mod_name}-%{version}.tar.gz
+Source1:        %{github_url}/v%{version}/%{mod_name}-%{version}.tar.gz.asc
+Source2:        https://k1024.org/files/key.asc#/%{name}.keyring
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libattr-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pytest
 %python_subpackages
 
 %description
@@ -40,13 +44,16 @@ implements extended attributes manipulation. It is a wrapper on top
 of the attr C library - see attr(5).
 
 %prep
-%setup -q -n pyxattr-%{version}
+%autosetup -n pyxattr-%{version}
 
 %build
 %python_build
 
 %check
-%python_exec setup.py test
+# the module is just a C extension => need to add the installed destination to
+# PYTHONPATH, otherwise it won't be found
+export PYTHONPATH=%{buildroot}%{python3_sitearch}:$PYTHONPATH
+%python_exec -m pytest test
 
 %install
 %python_install
@@ -56,6 +63,6 @@ of the attr C library - see attr(5).
 %{python_sitearch}/xattr*
 %{python_sitearch}/*egg-info
 %license COPYING
-%doc NEWS README.rst
+%doc NEWS README.md
 
 %changelog

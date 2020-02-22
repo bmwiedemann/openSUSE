@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 19 08:49:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.7.1
+
+  * Fix license to LGPL 2.1 and later
+  * Add keyring for source verification
+
+  Changelog:
+
+  Major change: drop compatibility with Python 2, which allows significant code
+  cleanups.
+
+  Other changes:
+
+  * Switch internal implementation of argument parsing to a built-in one
+    (`PyUnicode_FSConverter`), which brings automatic support for
+    path-like objects in Python 3.6+ (#20), and also a more uniform
+    handling of Unicode path arguments with respect to other Python code.
+  * Fix missing error check in list operations in `get_all` (#17).
+  * Switch test library to pytest; not that a reasonable recent version is
+    needed. Additionally, expand test coverage, although not directly
+    visible in actual coverage reports…
+
+-------------------------------------------------------------------
 Tue Jul 16 15:09:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Initial package version
