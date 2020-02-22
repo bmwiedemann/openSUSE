@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 20:04:40 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add polari-fix-nb-translation.patch: Fix Norwegian bokmål
+  translation error (glgo#GNOME/polari!145).
+
+-------------------------------------------------------------------
 Sun Jan  5 16:42:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add polari-appdata-screenshotfix.patch: appdata: Point

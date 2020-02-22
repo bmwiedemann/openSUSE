@@ -1,0 +1,14 @@
+diff -Nur orig-polari-3.34.1/po/nb.po polari-3.34.1/po/nb.po
+--- orig-polari-3.34.1/po/nb.po	2019-12-02 15:50:00.000000000 +0100
++++ polari-3.34.1/po/nb.po	2020-02-14 21:02:53.563204662 +0100
+@@ -505,8 +505,8 @@
+ #, javascript-format
+ msgid "%d user left"
+ msgid_plural "%d users left"
+-msgstr[0] "%d bruker igjen"
+-msgstr[1] "%d brukere igjen"
++msgstr[0] "%d bruker gikk ut"
++msgstr[1] "%d brukere gikk ut"
+ 
+ #. today
+ #. Translators: Time in 24h format

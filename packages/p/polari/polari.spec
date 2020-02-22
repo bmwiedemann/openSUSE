@@ -28,6 +28,8 @@ Source0:        https://download.gnome.org/sources/polari/3.34/%{name}-%{version
 Source99:       polari-rpmlintrc
 # PATCH-FIX-UPSTREAM polari-appdata-screenshotfix.patch -- appdata: Point screenshots to the stable branch
 Patch0:         polari-appdata-screenshotfix.patch
+# PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
+Patch1:         polari-fix-nb-translation.patch
 
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.43.0
