@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb 16 03:07:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.08
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.08      2020-02-15 17:16:30 -0700
+    - Production release identical to 2.07_01
+  
+  2.07_01   2020-02-14 19:00:22 -0700
+    - Fix Alien::Build::Interpolate bug introduced in 2.06_01 (gh#171)
+  
+  2.06_01   2020-02-14 12:23:02 -0700
+    - Several helpers for Alien::Build::Interpolate::Default no longer
+      require Aliens if the tools are already found in the PATH (gh#168)
+    - Better document dynamic vs. static libraries in AlienAuthor and FAQ
+      documents (gh#110, gh#169)
+    - Prefer nmake or gmake over dmake on Windows, even if Perl is
+      configured to use dmake (gh#95, gh#170)
+  
+  2.05_01   2020-02-11 15:19:01 -0700
+    - Fix bug where the autoconf plugin could use the wrong configure if
+      there is another "configure" script somewhere in the PATH on Windows
+      (gh#166, gh#167)
+
+-------------------------------------------------------------------
 Fri Feb  7 03:08:40 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.04
