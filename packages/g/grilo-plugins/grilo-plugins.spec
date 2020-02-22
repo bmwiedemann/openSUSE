@@ -1,7 +1,7 @@
 #
 # spec file for package grilo-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM  tracker-fix-crash-if-chromaprint-plugin-not-installed.patch bsc#1158231 glgo#GNOME/grilo-plugins#61 yfjiang@suse.com -- avoid crash if the chromaprint plugin is disabled in build time.
-Patch0:         tracker-fix-crash-if-chromaprint-plugin-not-installed.patch
 
 BuildRequires:  docbook_4
 BuildRequires:  fdupes

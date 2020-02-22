@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 14 16:53:15 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.3.11:
+  + tracker:
+    - Fix crash if chromaprint plugin isn't installed.
+    - Correctly escape strings on sparql updates.
+    - Acoustid: add support for album artist.
+  + Updated translations.
+- Drop tracker-fix-crash-if-chromaprint-plugin-not-installed.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:13:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
