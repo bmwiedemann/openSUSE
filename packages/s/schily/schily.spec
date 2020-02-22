@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2019.12.05
+%global box_version	2020.02.11
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2019-12-05
+%define rver	2020-02-11
 
 Name:           schily
 Version:        %box_version
@@ -467,7 +467,8 @@ rm -fv libsiconv/shlsiconv.mk
 # - Not fully parallel safe, so stick to default.
 #
 mycf="%optflags -fno-strict-aliasing -fno-omit-frame-pointer -fPIC -finput-charset=ISO-8859-1 -fcommon"
-gmake RUNPATH="" LINKMODE=dynamic COPTOPT="$mycf" LDOPTX="" SCCS_BIN_PRE="" SCCS_HELP_PRE="" config all
+gmake RUNPATH="" LINKMODE=dynamic COPTOPT="$mycf" LDOPTX="" SCCS_BIN_PRE="" SCCS_HELP_PRE="" config
+gmake RUNPATH="" LINKMODE=dynamic COPTOPT="$mycf" LDOPTX="" SCCS_BIN_PRE="" SCCS_HELP_PRE="" all
 
 %install
 b="%buildroot"
@@ -562,7 +563,6 @@ rm -Rfv \
    $b/usr/bin/scgcheck \
    $b/usr/bin/scgskeleton \
    $b/usr/bin/scut \
-   $b/usr/bin/sdd \
    $b/usr/bin/sfind \
    $b/usr/bin/sformat \
    $b/usr/bin/sgrow \
@@ -618,7 +618,6 @@ rm -Rfv \
    $b/usr/share/man/man1/scgcheck.1 \
    $b/usr/share/man/man1/scgskeleton.1 \
    $b/usr/share/man/man1/scut.1 \
-   $b/usr/share/man/man1/sdd.1 \
    $b/usr/share/man/man1/sfind.1 \
    $b/usr/share/man/man1/sgrow.1 \
    $b/usr/share/man/man1/spaste.1 \
@@ -631,6 +630,8 @@ rm -Rfv \
    $b/usr/share/man/man1/udiff.1 \
    $b/usr/share/man/man3/getopt.3 \
    $b/usr/share/man/man3/getsubopt.3 \
+   $b/usr/share/man/man3/starthandlecond.3 \
+   $b/usr/share/man/man3/unhandlecond.3 \
    $b/usr/share/man/man5/makefiles.5 \
    $b/usr/share/man/man5/makerules.5 \
    $b/usr/share/man/man5/streamarchive.5 \
@@ -925,7 +926,9 @@ fi
 %files -n readcd
 %license CDDL.Schily.txt
 %_bindir/readcd
+%_bindir/sdd
 %_mandir/man1/readcd.1*
+%_mandir/man1/sdd.1*
 
 %files -n rscsi
 %license CDDL.Schily.txt

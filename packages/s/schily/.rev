@@ -237,4 +237,12 @@
     <comment>- Set -fcommon [boo#1160291].</comment>
     <requestid>770063</requestid>
   </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>4e38b76569ca9b8db6f681471843b672</srcmd5>
+    <version>unknown</version>
+    <time>1582394180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>777390</requestid>
+  </revision>
 </revisionlist>
