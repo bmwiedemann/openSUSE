@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * make sure ifa_addr isn't null (kde#417798)
+  * appdata: fix <lanchable>
+  * import currently used license copies for reuse compliance
+  * replace samba module with data that works (kde#411433,kde#374141,kde#325951)
+
+-------------------------------------------------------------------
 Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.0
