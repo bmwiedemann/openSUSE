@@ -75,16 +75,16 @@ you will need to install %{name}-devel.
 %setup -q -n %{name}-%{longver}
 
 %build
-make %{?_smp_mflags} CXXFLAGS="%{optflags}"
+%make_build CXXFLAGS="%{optflags}"
 
 %install
-make install DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
+%make_install includedir=%{_includedir} libdir=%{_libdir}
 
 # Suppress the static library
 find %{buildroot} -name 'lib%{name}.a' -delete
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
