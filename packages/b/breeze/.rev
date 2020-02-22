@@ -830,4 +830,12 @@
     <comment></comment>
     <requestid>773422</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>ec322c19d8e9c0f8dfd933e79f8ab443</srcmd5>
+    <version>5.18.1</version>
+    <time>1582394624</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.1</comment>
+    <requestid>776739</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * Add missing cursors for Chromium-based apps
+
+-------------------------------------------------------------------
 Tue Feb 11 10:33:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update tarball, with new preview image
