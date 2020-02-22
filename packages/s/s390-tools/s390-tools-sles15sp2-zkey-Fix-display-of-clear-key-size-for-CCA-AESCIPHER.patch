@@ -1,0 +1,48 @@
+Subject: [PATCH] [BZ 183875] zkey: Fix display of clear key size for CCA-AESCIPHER keys
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Description:   zkey: Fix display of clear key size for CCA-AESCIPHER keys
+Symptom:       The 'zkey list' command shows bogus values for the
+               keys 'Clear key size' for keys of type CCA-AESCIPHER.
+Problem:       Secure keys of type CCA-AESCIPHER are variable length,
+               dependent on the effective key size (e.g. 128, 192, or 256
+               bits). However, the key blob stored is padded to a fixed 
+               length, so that all key blobs of type CCA-AESCIPHER are
+               the same size, regardless of the effective key bit size.
+               To code to display the clear key bitsize does not correctly
+               handle the padding and may treat a non-XTS key like an XTS
+               key and thus reads past the end of the key blob. This 
+               results in bogus values reported as clear key size.
+               This bug has been introduced with feature SEC1717 "Cipher
+               key support" with commit ddde3f354f35 ("zkey: Introduce th
+               CCA-AESCIPHER key type").
+Solution:      Correct the handling of key of type CCA-AESCIPHER.
+Reproduction:  Generate a key of type CCA-AESCIPHER and then run 
+               'zkey list'.
+Upstream-ID:   49cbaba302f002aa7f148631a76fc21a3069bc25
+Problem-ID:    183875
+
+Upstream-Description:
+
+              zkey: Fix display of clear key size for CCA-AESCIPHER keys
+
+              Fixes: ddde3f354f35 ("zkey: Introduce the CCA-AESCIPHER key type")
+              Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+--- a/zkey/pkey.c
++++ b/zkey/pkey.c
+@@ -1600,9 +1600,9 @@ int get_key_bit_size(const u8 *key, size
+ 			*bitsize = cipherkey->pl - 384;
+ 		else
+ 			*bitsize = 0; /* Unknown */
+-		if (key_size > cipherkey->length) {
++		if (key_size == 2 * AESCIPHER_KEY_SIZE) {
+ 			cipherkey = (struct aescipherkeytoken *)(key +
+-					cipherkey->length);
++					AESCIPHER_KEY_SIZE);
+ 			if (cipherkey->pfv == 0x00) /* V0 payload */
+ 				*bitsize += cipherkey->pl - 384;
+ 		}

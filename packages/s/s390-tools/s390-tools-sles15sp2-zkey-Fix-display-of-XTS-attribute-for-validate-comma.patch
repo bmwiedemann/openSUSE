@@ -1,0 +1,54 @@
+Subject: [PATCH] [BZ 183669] zkey: Fix display of XTS attribute for validate command
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Description:   zkey: Fix display of XTS attribute for validate command
+Symptom:       The 'zkey validate' command shows an invalid value for
+               the XTS attribute.
+Problem:       Due to a use after free of the secure key, the XTS attribute
+               is not determined correctly, and is displayed incorrectly.
+               Function is_xts_key() is called with a secure key that has
+               already been freed and thus most likely returns false.
+               This bug has been introduced with feature SEC1717 "Cipher
+               key support" with commit 298fab68fee8 "zkey: Preparations for
+               introducing a new key type"
+Solution:      Free the secure key only after the last use.
+Reproduction:  Generate an XTS key of type CCA-AESDATA or CCA-AESCIPHER
+               and then run 'zkey validate'.
+Upstream-ID:   f75f4aff8f6e4ae148bde858ee1cb7f1066f5f23
+Problem-ID:    183669
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zkey/keystore.c |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+--- a/zkey/keystore.c
++++ b/zkey/keystore.c
+@@ -2516,7 +2516,7 @@ static int _keystore_process_validate(st
+ 	size_t clear_key_bitsize;
+ 	size_t secure_key_size;
+ 	char *apqns = NULL;
+-	u8 *secure_key;
++	u8 *secure_key = NULL;
+ 	int is_old_mk;
+ 	int rc, valid;
+ 	u64 mkvp;
+@@ -2550,8 +2550,7 @@ static int _keystore_process_validate(st
+ 
+ 	rc = get_master_key_verification_pattern(secure_key, secure_key_size,
+ 						 &mkvp, keystore->verbose);
+-	free(secure_key);
+-	if (rc)
++	if (rc != 0)
+ 		goto out;
+ 
+ 	_keystore_print_record(info->rec, name, properties, 1,
+@@ -2577,6 +2576,8 @@ static int _keystore_process_validate(st
+ 		info->num_warnings++;
+ 
+ out:
++	if (secure_key != NULL)
++		free(secure_key);
+ 	if (apqns != NULL)
+ 		free(apqns);
+ 	if (apqn_list != NULL)
