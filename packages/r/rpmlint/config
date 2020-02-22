@@ -940,7 +940,9 @@ setOption("PAMModules.WhiteList", (
     "pam_oslogin_admin.so",
     "pam_oslogin_login.so",
     # fprintd (bsc#792095)
-    "pam_fprintd.so"
+    "pam_fprintd.so",
+    # mariadb (bsc#1163362)
+    "pam_user_map.so"
 ))
 
 # Output filters

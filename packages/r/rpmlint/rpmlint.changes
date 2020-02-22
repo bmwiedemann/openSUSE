@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:39:31 UTC 2020 - matthias.gerstner@suse.com
+
+- whitelist new mariadb pam module "pam_user_map.so" (bsc#1163362)
+
+-------------------------------------------------------------------
 Thu Feb 06 10:06:37 UTC 2020 - malte.kraus@suse.com
 
 - Update to version master:
