@@ -17,7 +17,7 @@
 
 
 Name:           grilo
-Version:        0.3.11
+Version:        0.3.12
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
@@ -50,8 +50,8 @@ various sources using a single API.
 %package -n libgrilo-0_3-0
 Summary:        Framework for browsing and searching media content
 # Needed for the -lang package to be installable
-Group:          System/Libraries
 # Without plugins, grilo is useless
+Group:          System/Libraries
 Recommends:     grilo-plugins
 Provides:       %{name} = %{version}
 
