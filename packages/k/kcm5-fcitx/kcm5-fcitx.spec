@@ -1,7 +1,7 @@
 #
 # spec file for package kcm5-fcitx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        KF5 control module for Fcitx
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            http://github.com/fcitx/kcm-fcitx
+URL:            http://github.com/fcitx/kcm-fcitx
 Source:         http://download.fcitx-im.org/kcm-fcitx/kcm-fcitx-%{version}.tar.xz
 Source1:        input-keyboard.svg
 #PATCH-FIX-OPENSUSE rename po to kcm5_fcitx to avoid conflict w/ kcm_fcitx
@@ -45,7 +45,7 @@ BuildRequires:  kwidgetsaddons-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libtool
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
