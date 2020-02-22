@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:05:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * Fix being unable to set the right permissions for kde_settings.conf (kde#414396)
+  * Don't let the Advanced tab's spacers expand all they want (kde#417657)
+  * Sync ("Wayland") appending to match SDDM (kde#417499)
+  * Have authhelper define config file paths on its own
+- Refresh 0003-Don-t-add-a-Wayland-suffix-to-Wayland-sessions.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.0
