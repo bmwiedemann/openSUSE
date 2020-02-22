@@ -835,4 +835,13 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.2 (forwarded request 766570 from adkorte)</comment>
     <requestid>766583</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f099ec5461f0dd02905d18ec82e0357c</srcmd5>
+    <version>7.4.3</version>
+    <time>1582394449</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.3: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.3 (forwarded request 777667 from adkorte)</comment>
+    <requestid>777682</requestid>
+  </revision>
 </revisionlist>

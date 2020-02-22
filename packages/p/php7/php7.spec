@@ -1,7 +1,7 @@
 #
 # spec file for package php7
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.2
+Version:        7.4.3
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -76,6 +76,7 @@ Patch15:        php-fix_net-snmp_disable_MD5.patch
 # should be upstreamed, will do later
 Patch17:        php-date-regenerate-lexers.patch
 BuildRequires:  apache-rex
+%apache_rex_deps
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
