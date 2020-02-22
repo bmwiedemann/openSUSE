@@ -38,7 +38,11 @@ This package is for RetroArch/libretro front-end.
 %setup -q
 
 %build
-make -f Makefile.libretro PTR64=1 PYTHON_EXECUTABLE=python3
+%ifarch x86_64 aarch64 ppc64 ppc64le
+make %{?_smp_mflags} -f Makefile.libretro PTR64=1 PYTHON_EXECUTABLE=python3
+%else
+make %{?_smp_mflags} -f Makefile.libretro PYTHON_EXECUTABLE=python3
+%endif
 
 %install
 mkdir -p %{buildroot}%{_libdir}/libretro

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 21:17:50 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Fix 32bit builds
+
+-------------------------------------------------------------------
+Fri Feb 21 13:11:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of all cpu cores to reduce the build time
+
+-------------------------------------------------------------------
 Wed Feb 19 10:35:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to fix build (especially on arm)
