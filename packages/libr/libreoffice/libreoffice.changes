@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 19 11:46:11 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- fix_old_boost_spirit_namespace.patch: fixes build with older
+  boost versions by moving to modern Boost.Spirit namespace usage 
+
+-------------------------------------------------------------------
+Mon Feb 17 08:03:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.1.1:
+  * 6.4.1 RC1 release
+  * Add sfir and breeze dark svg iconsets
+- Remove merged patch:
+  * lo-Fix-build-with-poppler-0.83.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 11:03:39 UTC 2020 - Marina Latini <marina.latini@suse.com>
 
 - Fix autocorrect names for Italian 

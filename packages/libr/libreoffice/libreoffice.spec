@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.4.0.3
+Version:        6.4.1.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -98,10 +98,9 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-# PATCH-FIX-UPSTREAM lo-Fix-build-with-poppler-0.83.patch
-Patch4:         lo-Fix-build-with-poppler-0.83.patch
 # PATCH-FIX-UPSTREAM soffice.sh_Avoid-exporting-empty-LC_ALL.patch
 Patch5:         soffice.sh_Avoid-exporting-empty-LC_ALL.patch
+Patch6:         fix_old_boost_spirit_namespace.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -957,8 +956,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
-%patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %patch990 -p1
 %patch991 -p1
 
@@ -1538,12 +1537,14 @@ exit 0
 %dir %{_datadir}/%{name}/share/config
 %{_datadir}/%{name}/share/config/images_breeze.zip
 %{_datadir}/%{name}/share/config/images_breeze_dark.zip
+%{_datadir}/%{name}/share/config/images_breeze_dark_svg.zip
 %{_datadir}/%{name}/share/config/images_elementary.zip
 %{_datadir}/%{name}/share/config/images_colibre.zip
 %{_datadir}/%{name}/share/config/images_karasa_jaga.zip
 %{_datadir}/%{name}/share/config/images_karasa_jaga_svg.zip
 %{_datadir}/%{name}/share/config/images_sifr.zip
 %{_datadir}/%{name}/share/config/images_sifr_dark.zip
+%{_datadir}/%{name}/share/config/images_sifr_dark_svg.zip
 %{_datadir}/%{name}/share/config/images_sifr_svg.zip
 %{_datadir}/%{name}/share/config/images_tango.zip
 %{_datadir}/%{name}/share/config/images_helpimg.zip
