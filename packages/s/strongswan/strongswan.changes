@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 17 20:26:37 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- move file %{_datadir}/dbus-1/system.d/nm-strongswan-service.conf 
+  to strongswan-nm subpackage, as it is needed for the 
+  NetworkManager plugin that uses strongswan-nm, not 
+  strongswan-ipsec
+  This fixes the following error:
+  ```
+  Failed to initialize a plugin instance: Connection ":1.153" is not
+  allowed to own the service "org.freedesktop.NetworkManager.strongswan"
+  due to security policies in the configuration file
+  ```
+
+-------------------------------------------------------------------
 Thu Jan 30 13:43:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop upstream fixed patches:

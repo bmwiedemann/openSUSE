@@ -548,7 +548,6 @@ fi
 %if %{with systemd}
 %{_unitdir}/strongswan-starter.service
 %{_unitdir}/strongswan.service
-%{_datadir}/dbus-1/system.d/nm-strongswan-service.conf
 %{_sbindir}/rcstrongswan
 %{_sbindir}/charon-systemd
 %else
@@ -957,6 +956,7 @@ fi
 %dir %{_libexecdir}/ipsec
 %dir %{strongswan_plugins}
 %{_libexecdir}/ipsec/charon-nm
+%{_datadir}/dbus-1/system.d/nm-strongswan-service.conf
 %endif
 
 %if %{with mysql}
