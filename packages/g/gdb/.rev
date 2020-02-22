@@ -1477,4 +1477,13 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   [jsc#SLE-7903]</comment>
     <requestid>765839</requestid>
   </revision>
+  <revision rev="137" vrev="7">
+    <srcmd5>dfc0e7eed68704d1a66f2e3917cc5a9c</srcmd5>
+    <version>8.3.1</version>
+    <time>1582394183</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix hang after SIGKILL [swo#25478].
+  * gdb-threads-fix-hang-in-stop_all_threads-after-killing-inferior.patch (forwarded request 770204 from tomdevries)</comment>
+    <requestid>777392</requestid>
+  </revision>
 </revisionlist>

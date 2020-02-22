@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -257,6 +257,9 @@ Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
 
 # Proposed patch for PR gdb/24956
 Patch2501:      gdb-only-force-interp_console-ui_out-for-breakpoint-commands-in-mi-mode.patch
+
+# Proposed patch for PR threads/25478
+Patch2502:      gdb-threads-fix-hang-in-stop_all_threads-after-killing-inferior.patch
 
 # Testsuite patches
 Patch2600:      gdb-testsuite-8.3-kfail-xfail-unsupported.patch
@@ -610,6 +613,7 @@ find -name "*.info*"|xargs rm -f
 
 %patch2500 -p1
 %patch2501 -p1
+%patch2502 -p1
 
 %patch2600 -p1
 
