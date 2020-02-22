@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1571044665.b011a0f19
+Version:        1.1582296846.a3b8d70ac
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -41,6 +41,7 @@ Requires:       perl(Selenium::Remote::Driver)
 Requires:       perl(Selenium::Remote::WDKeys)
 Requires:       perl(Selenium::Waiter)
 Requires:       perl(Test::Assert)
+Requires:       perl(Tie::IxHash)
 Requires:       perl(XML::LibXML)
 Requires:       perl(XML::Simple)
 Requires:       perl(XML::Writer)
