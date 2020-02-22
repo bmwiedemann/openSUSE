@@ -19,15 +19,15 @@
 
 %bcond_without lang
 Name:           bluedevil5
-Version:        5.17.90
+Version:        5.18.1
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 Url:            http://www.kde.org/
-Source:         https://download.kde.org/unstable/plasma/%{version}/bluedevil-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/unstable/plasma/%{version}/bluedevil-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -69,7 +69,7 @@ Bluetooth daemon for KDE Plasma, handling connections.
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
