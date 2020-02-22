@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 08:43:30 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Fix grub hangs after loading rogue image without valid signature for uefi
+  secure boot (bsc#1159102)
+  * grub2-verifiers-fix-system-freeze-if-verify-failed.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 07:59:40 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - From Stefan Seyfried <seife@novell.slipkontur.de> : Fix grub2-install fails

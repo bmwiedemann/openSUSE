@@ -223,6 +223,7 @@ Patch85:        grub2-getroot-scan-disk-pv.patch
 Patch92:        grub2-util-30_os-prober-multiple-initrd.patch
 Patch93:        grub2-getroot-support-nvdimm.patch
 Patch94:        grub2-install-fix-not-a-directory-error.patch
+Patch95:        grub2-verifiers-fix-system-freeze-if-verify-failed.patch
 # Btrfs snapshot booting related patches
 Patch101:       grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
 Patch102:       grub2-btrfs-02-export-subvolume-envvars.patch
@@ -508,6 +509,7 @@ swap partition while in resuming
 %patch92 -p1
 %patch93 -p1
 %patch94 -p1
+%patch95 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1

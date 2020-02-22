@@ -1,0 +1,44 @@
+From d0de8b37f651e13886ef0e0fda285a1294adafe8 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 18 Feb 2020 18:08:18 +0800
+Subject: [PATCH] verifiers: Fix calling uninitialized function pointer
+
+The necessary check for NULL before use of function ver->close is not
+taking place in the failure path. This patch simply adds the missing
+check and fixes the problem that GRUB hangs indefinitely after booting
+rogue image without valid signature if secure boot is turned on.
+
+Now it displays like this for booting rogue UEFI image:
+
+  error: bad shim signature
+  error: you need to load the kernel first
+
+  Press any key to continue...
+
+and then you can go back to boot menu by pressing any key or after a few
+seconds expired.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/commands/verifiers.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/verifiers.c b/grub-core/commands/verifiers.c
+index 0dde48182..7b9297cd3 100644
+--- a/grub-core/commands/verifiers.c
++++ b/grub-core/commands/verifiers.c
+@@ -196,7 +196,8 @@ grub_verifiers_open (grub_file_t io, enum grub_file_type type)
+   return ret;
+ 
+  fail:
+-  ver->close (context);
++  if (ver->close)
++    ver->close (context);
+  fail_noclose:
+   verified_free (verified);
+   grub_free (ret);
+-- 
+2.16.4
+
