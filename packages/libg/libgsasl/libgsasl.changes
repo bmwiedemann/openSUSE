@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb  4 23:07:18 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.1:
+  * gsasl: IMAP client code now permits empty SASL tokens prefixed
+    with '+'. Normally servers should send '+ '. Buggy servers
+    include Microsoft Exchange.
+  * GSSAPI client:
+    - Now retrieves GSASL_AUTHZID for authorization identity.
+    - Can now transmit an empty/missing authorization identity.
+    - See lib/NEWS for more information.
+  * Build fixes: Update of gnulib, including how it is
+    bootstrapped.
+  * Updated translations.
+- Run spec-cleaner, modernize spec.
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Mon Apr  4 14:22:22 CEST 2016 - kukuk@suse.de
 
 - Remove unused buildrequires for libgssglue-devel
