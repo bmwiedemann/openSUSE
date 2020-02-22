@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Socket-SSL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,24 @@
 #
 
 
-%define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.066
+Version:        2.067
 Release:        0
+%define cpan_name IO-Socket-SSL
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 #BuildRequires:  perl(Mozilla::CA)
 BuildRequires:  perl(Net::SSLeay) >= 1.46
 #Requires:       perl(Mozilla::CA)
 Requires:       perl(Net::SSLeay) >= 1.46
-BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -76,18 +77,21 @@ Additional documentation can be found in
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
+# MANUAL BEGIN
+rm README.Win32
+# MANUAL END
 %perl_gen_filelist
 
 %files -f %{name}.files

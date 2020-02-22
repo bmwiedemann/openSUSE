@@ -1,2 +1,4 @@
 patches:
 ignore_requires: Mozilla::CA
+post_build: |-
+ rm README.Win32

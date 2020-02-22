@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:28:53 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Add removal of the README.Win32 file in cpanspec.yml
+
+-------------------------------------------------------------------
+Sat Feb 15 03:09:16 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.067
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+-------------------------------------------------------------------
 Mon May 27 08:49:54 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Remove not needed README.Win32 from the files section.
