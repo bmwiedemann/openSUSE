@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jsonrpc-server
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-python-jsonrpc-server
-Version:        0.3.2
+Version:        0.3.4
 Release:        0
 Summary:        JSON RPC 2.0 server library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/palantir/python-jsonrpc-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-jsonrpc-server/python-jsonrpc-server-%{version}.tar.gz
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -34,9 +34,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ujson
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-future >= 0.14.0
+BuildRequires:  python-futures
+%endif
 %ifpython2
-BuildRequires:  python2-futures
-Requires:       python2-futures
+Requires:       python-future >= 0.14.0
+Requires:       python-futures
 %endif
 %python_subpackages
 
