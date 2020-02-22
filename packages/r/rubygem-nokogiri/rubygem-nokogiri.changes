@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 11 00:53:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.10.8
+  [MRI] Pulled in upstream patch from libxml that addresses
+  CVE-2020-7595. Full details are available in #1992. Note that
+  this patch is not yet (as of 2020-02-10) in an upstream release
+  of libxml.
+
+-------------------------------------------------------------------
 Sat Dec 14 00:26:06 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.10.7
