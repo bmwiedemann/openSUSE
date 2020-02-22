@@ -2755,4 +2755,16 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2020-6406: Use after free in audio</comment>
     <requestid>773714</requestid>
   </revision>
+  <revision rev="245" vrev="2">
+    <srcmd5>63607ae31a24c7dfeb0b9bf0b81dba6c</srcmd5>
+    <version>80.0.3987.100</version>
+    <time>1582394264</time>
+    <user>dimstar_suse</user>
+    <comment>- Add chromedriver binary to bindir
+
+- Drop sandbox binary as it should not be needed really bsc#1163588
+- Remove unused patch:
+  * chromium-sandbox-pie.patch</comment>
+    <requestid>777696</requestid>
+  </revision>
 </revisionlist>

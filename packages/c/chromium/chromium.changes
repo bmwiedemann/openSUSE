@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:18:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add chromedriver binary to bindir
+
+-------------------------------------------------------------------
+Thu Feb 13 14:51:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop sandbox binary as it should not be needed really bsc#1163588
+- Remove unused patch:
+  * chromium-sandbox-pie.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 13:16:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 80.0.3987.100 bsc#1163484:

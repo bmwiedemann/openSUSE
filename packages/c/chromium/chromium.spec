@@ -79,7 +79,6 @@ Patch3:         fix_building_widevinecdm_with_chromium.patch
 Patch4:         chromium-dma-buf.patch
 Patch5:         chromium-buildname.patch
 Patch6:         chromium-drm.patch
-Patch7:         chromium-sandbox-pie.patch
 Patch8:         chromium-system-icu.patch
 Patch9:         chromium-system-libusb.patch
 Patch10:        gcc-enable-lto.patch
@@ -726,7 +725,7 @@ myconf_gn+=" google_default_client_secret=\"${google_default_client_secret}\""
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
 gn gen --args="${myconf_gn}" out/Release
 
-ninja -v %{?_smp_mflags} -C out/Release chrome chrome_sandbox chromedriver
+ninja -v %{?_smp_mflags} -C out/Release chrome chromedriver
 
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium
@@ -744,10 +743,6 @@ pushd out/Release
 mkdir -p %{buildroot}%{_sysconfdir}/default
 install -m 644 %{SOURCE103} %{buildroot}%{_sysconfdir}/default/chromium
 
-# Recent Chromium builds now wants to have the sandbox in the same directory. So let's create a symlink to the one in %{_prefix}/lib
-cp -a chrome_sandbox %{buildroot}%{_libexecdir}/
-ln -s -f %{_libexecdir}/chrome_sandbox %{buildroot}/%{_libdir}/chromium/chrome-sandbox
-
 cp -a *.bin *.pak locales xdg-mime %{buildroot}%{_libdir}/chromium/
 %if !%{with system_icu}
 cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
@@ -760,6 +755,7 @@ cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
 
 # chromedriver
 cp -a chromedriver %{buildroot}%{_libdir}/chromium/
+ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
 
 # Patch xdg-settings to use the chromium version of xdg-mime as that the system one is not KDE4 compatible
 sed "s|xdg-mime|%{_libdir}/chromium/xdg-mime|g" xdg-settings > %{buildroot}%{_libdir}/chromium/xdg-settings
@@ -809,13 +805,9 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 
 %fdupes %{buildroot}
 
-%verifyscript
-%verify_permissions -e %{_libexecdir}/chrome_sandbox
-
 %post
 %icon_theme_cache_post
 %desktop_database_post
-%set_permissions %{_libexecdir}/chrome_sandbox
 /sbin/ldconfig %{_libdir}/chromium
 
 %postun
@@ -824,7 +816,6 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 /sbin/ldconfig %{_libdir}/chromium
 
 %files
-%verify(not mode) %{_libexecdir}/chrome_sandbox
 %license LICENSE
 %doc AUTHORS
 %config %{_sysconfdir}/chromium
@@ -841,12 +832,12 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %{_datadir}/metainfo/chromium-browser.appdata.xml
 %{_datadir}/gnome-control-center/default-apps/chromium-browser.xml
 %{_datadir}/icons/hicolor/
-%{_libexecdir}/chrome_sandbox
 %exclude %{_libdir}/chromium/chromedriver
 %{_bindir}/chromium
 %{_mandir}/man1/chromium.1%{?ext_man}
 
 %files -n chromedriver
 %{_libdir}/chromium/chromedriver
+%{_bindir}/chromedriver
 
 %changelog
