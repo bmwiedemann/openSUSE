@@ -397,4 +397,12 @@
   * Don't use unions and instead use memcpy for the type swaps. (#6672)</comment>
     <requestid>758459</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>f42370f8857f0764b714394e5a1eb064</srcmd5>
+    <version>3.9.2</version>
+    <time>1582394422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775096</requestid>
+  </revision>
 </revisionlist>
