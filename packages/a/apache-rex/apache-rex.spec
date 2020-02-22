@@ -1,7 +1,7 @@
 #
 # spec file for package apache-rex
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define macros_file           macros.apache-rex
 
 Name:           apache-rex
-Version:        20191219
+Version:        20200210
 Release:        0
 Summary:        Script for Apache HTTPD Runnable Examples
 License:        Apache-2.0
