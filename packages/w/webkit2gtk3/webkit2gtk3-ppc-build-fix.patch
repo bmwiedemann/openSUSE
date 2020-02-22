@@ -1,0 +1,13 @@
+diff --git a/Source/bmalloc/bmalloc/BPlatform.h b/Source/bmalloc/bmalloc/BPlatform.h
+index c49a6b90e26..ebafe03d77d 100644
+--- a/Source/bmalloc/bmalloc/BPlatform.h
++++ b/Source/bmalloc/bmalloc/BPlatform.h
+@@ -40,7 +40,7 @@
+ #define BOS_DARWIN 1
+ #endif
+ 
+-#ifdef __unix
++#if defined(__unix) || defined(__unix__)
+ #define BOS_UNIX 1
+ #endif
+ 

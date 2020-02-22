@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.26.3
+Version:        2.26.4
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -45,6 +45,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         webkit2gtk3-fdo-soname.patch
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
 Patch1:         webkit-process.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-ppc-build-fix.patch webkit#207906 mgorse@suse.com -- fix the build on ppc64le.
+Patch2:         webkit2gtk3-ppc-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -274,6 +276,7 @@ A small test browswer from webkit, useful for testing features.
 %if 0%{?suse_version} <= 1500
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %define _lto_cflags %{nil}

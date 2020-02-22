@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 18 21:31:17 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-ppc-build-fix.patch: fix ppc64le build failure on
+  SLE 15.
+
+-------------------------------------------------------------------
+Fri Feb 14 11:10:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.26.4 (boo#1163809):
+  + Always use a light theme for rendering form controls.
+  + Fix the build with WPE renderer disabled.
+  + Fix the build with OpenGL disabled.
+  + Fix the build with GCC 10.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-3862, CVE-2020-3864, CVE-2020-3865,
+    CVE-2020-3867, CVE-2020-3868.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:21:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
