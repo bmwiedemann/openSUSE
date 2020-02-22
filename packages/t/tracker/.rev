@@ -1036,4 +1036,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767227 from dimstar)</comment>
     <requestid>767487</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>7284e0267fc7aac8910cfb9c9c833ee8</srcmd5>
+    <version>2.3.2</version>
+    <time>1582394533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777063</requestid>
+  </revision>
 </revisionlist>

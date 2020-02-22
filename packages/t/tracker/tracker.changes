@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 23:39:08 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.2:
+  + Location info for photos is now inserted into the DB. It didn't
+    work before as we failed to process SPARQL "blank nodes"
+    correctly.
+  + Fix for oversensitive FTS5 index corruption detection.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:20:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
