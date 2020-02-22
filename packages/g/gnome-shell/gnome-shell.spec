@@ -19,21 +19,20 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.34.3+0
+Version:        3.34.4
 Release:        0
 Summary:        GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
 Source:         %{name}-%{version}.tar.xz
-
-# PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
-Patch1:         gnome-shell-private-connection.patch
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
 # SOURCE-FEATURE-SLE sle-background bsc#1007468 xwang@suse.com -- Add SUSE logo on lock screen for GNOME theme
 Source2:        sle-background.png
 
+# PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
+Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
 Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 # PATCH-FIX-UPSTREAM gnome-shell-Avoid-loginDialog-grab-focus-when-locked.patch bsc#1058521 bgo#788169 xwang@suse.com -- Avoid login dialog grabs focus when screen locked
