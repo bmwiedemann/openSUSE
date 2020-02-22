@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 18 16:49:55 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v19.1
+  * Removed deprecated aliases ContextType, ConnectionType, PKeyType, X509NameType,
+    X509ReqType, X509Type, X509StoreType, CRLType, PKCS7Type, PKCS12Type, and NetscapeSPKIType.
+    Use the classes without the ``Type`` suffix instead.
+  * The minimum ``cryptography`` version is now 2.8
+  * Deprecated ``OpenSSL.SSL.Context.set_npn_advertise_callback,
+    OpenSSL.SSL.Context.set_npn_select_callback, and
+    OpenSSL.SSL.Connection.get_next_proto_negotiated
+    ALPN should be used instead.
+  * Support bytearray in SSL.Connection.send() by using cffi's from_buffer
+  * The OpenSSL.SSL.Context.set_alpn_select_callback can return a new
+    NO_OVERLAPPING_PROTOCOLS sentinel value to allow a TLS handshake
+    to complete without an application protocol.
+
+-------------------------------------------------------------------
 Thu Aug 22 12:02:59 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix-compilation-2020.patch to fix tests after 2020
