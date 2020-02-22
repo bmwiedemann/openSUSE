@@ -1,7 +1,7 @@
 #
 # spec file for package glib2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without     systemtap
 Name:           glib2
-Version:        2.62.4
+Version:        2.62.5
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -153,7 +153,6 @@ This package contains static versions of the GLib libraries.
 %package -n libglib-2_0-0
 Summary:        General-Purpose Utility Library
 Group:          System/Libraries
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 #

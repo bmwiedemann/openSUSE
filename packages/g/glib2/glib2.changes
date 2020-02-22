@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 18 13:51:25 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.5:
+  + Fix potential relative read when calling g_printerr(), which
+    could lead to a denial of service from a setuid-root process
+    being used to block access to the TTY for another user.
+  + Fix SOCKS proxy resolver sometimes not being used when
+    resolving addresses via Happy Eyeballs (CVE-2020-6750).
+  + Several other Happy Eyeballs fixes for address resolution.
+  + Fix parsing of full Julian day range from `$TZ` environment
+    variable.
+  + Several race condition/crash fixes.
+  + Bugs fixed: glgo#GNOME/GLib#1919, glgo#GNOME/GLib#1995,
+    glgo#GNOME/GLib#1999, glgo#GNOME/GLib!1323,
+    glgo#GNOME/GLib!1331, glgo#GNOME/GLib!1352,
+    glgo#GNOME/GLib!1361, glgo#GNOME/GLib!1365,
+    glgo#GNOME/GLib!1370, glgo#GNOME/GLib!1371.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 14:08:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
 Thu Dec 19 17:45:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.4:
