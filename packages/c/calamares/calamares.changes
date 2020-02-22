@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 21 17:09:26 UTC 2020 - avvissu@yandex.by
+
+- Requires kde-cli-tools5 instead of /usr/bin/kdesu, 
+  because OBS KIWI solver does not understand file requirements.
+
+-------------------------------------------------------------------
 Tue Feb 18 12:05:05 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix spec file license year string

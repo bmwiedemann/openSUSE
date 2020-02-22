@@ -9,8 +9,11 @@ addFilter("calamares.*shared-lib-calls-exit /usr/lib.*/libcalamares.*exit@GLIBC.
 # Polkit pkexec is among requirements of Calamares for openSUSE Tumbleweed.
 addFilter("calamares.*desktopfile-without-binary.*calamares.desktop pkexec")
 
-# xdg-utils is among requirements of Calamares for openSUSE Leap 15.
+# xdg-utils is among requirements of Calamares.
 addFilter("calamares.*desktopfile-without-binary.*calamares.desktop xdg-su")
+
+# /usr/bin/kdesu provided by kde-cli-tools5, kde-cli-tools5 is among requirements of Calamares.
+addFilter("calamares.*desktopfile-without-binary.*calamares.desktop kdesu")
 
 # despide of warning, `desktop-file-validate calamares.desktop` shows no errors
 addFilter("calamares.*: W: invalid-desktopfile /usr/share/applications/calamares.desktop")
