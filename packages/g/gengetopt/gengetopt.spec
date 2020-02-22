@@ -1,7 +1,7 @@
 #
 # spec file for package gengetopt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,20 @@
 
 
 Name:           gengetopt
-Version:        2.22.6
+Version:        2.23
 Release:        0
 Summary:        Commandline parser generator
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://www.gnu.org/software/gengetopt/
-Source0:        https://ftp.gnu.org/gnu/gengetopt/%{name}-%{version}.tar.gz
-Source1:        https://ftp.gnu.org/gnu/gengetopt/%{name}-%{version}.tar.gz.sig
-Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM sbrabec@suse.cz savannah54996 -- Fix glibc license. https://savannah.gnu.org/bugs/?54996
-Patch1:         gengetopt-glibc-license.patch
-# PATCH-FIX-UPSTREAM bmwiedemann boo#1047218 https://savannah.gnu.org/bugs/index.php?55311
-Patch2:         reproducible.patch
+Source0:        https://ftp.gnu.org/gnu/gengetopt/%{name}-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/gengetopt/%{name}-%{version}.tar.xz.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  makeinfo
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
 Gengetopt is a tool to generate C code to parse getopt styled command line
@@ -46,13 +40,11 @@ add any run or compile time dependencies to your projects. Moreover
 reading/writing the options from/to config files is also supported.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup
 
 %build
 %configure
-make --jobs 1
+%make_build
 
 %install
 %make_install
@@ -65,7 +57,7 @@ rm -rf %{buildroot}%{_infodir}/dir
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %check
-make check --jobs 1
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
@@ -79,6 +71,7 @@ make check --jobs 1
 %doc doc/*.h doc/*.c doc/*.ggo doc/README.example
 %{_bindir}/%{name}
 %{_infodir}/%{name}.info%{?ext_info}
+%{_infodir}/index.info%{?ext_info}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

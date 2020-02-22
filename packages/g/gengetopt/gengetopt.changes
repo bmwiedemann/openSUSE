@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 20 11:02:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2.3:
+  * Gengen and gengetopt are required when building from git. When
+    building from tarball, everything works like it did before.
+  * Drop IRIX compatibility
+  * To mimic behaviour of coreutils, version string is no longer
+    part of --help (bug #34400)
+  * To mimic behaviour of coreutils, usage is printed before
+    purpose in --help bug #34402)
+  * Use singular (`[OPTION]...`, `[FILE]...`) instead of plural
+    (`[OPTIONS]...`, `[FILES]...`) (bug #34394)
+  * Fix spelling of `--unnamed`. `--unamed` still provided for
+    backwards compatibility. (bug #34392)
+- Drop no longer applying patches:
+  * reproducible.patch
+  * gengetopt-glibc-license.patch 
+
+-------------------------------------------------------------------
 Fri Dec 28 09:07:29 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to make package build

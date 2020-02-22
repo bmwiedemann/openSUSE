@@ -128,4 +128,26 @@
     <comment></comment>
     <requestid>661741</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4501f9d669abc0bcb8a6764984939871</srcmd5>
+    <version>2.23</version>
+    <time>1582394209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3:
+  * Gengen and gengetopt are required when building from git. When
+    building from tarball, everything works like it did before.
+  * Drop IRIX compatibility
+  * To mimic behaviour of coreutils, version string is no longer
+    part of --help (bug #34400)
+  * To mimic behaviour of coreutils, usage is printed before
+    purpose in --help bug #34402)
+  * Use singular (`[OPTION]...`, `[FILE]...`) instead of plural
+    (`[OPTIONS]...`, `[FILES]...`) (bug #34394)
+  * Fix spelling of `--unnamed`. `--unamed` still provided for
+    backwards compatibility. (bug #34392)
+- Drop no longer applying patches:
+  * reproducible.patch
+  * gengetopt-glibc-license.patch</comment>
+    <requestid>777644</requestid>
+  </revision>
 </revisionlist>
