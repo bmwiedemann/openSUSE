@@ -689,4 +689,12 @@
   * Port old style connects in QSignalSpy</comment>
     <requestid>772612</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8674dae80eb44a9d2514693fe43e040c</srcmd5>
+    <version>5.18.1</version>
+    <time>1582394711</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.1</comment>
+    <requestid>776783</requestid>
+  </revision>
 </revisionlist>
