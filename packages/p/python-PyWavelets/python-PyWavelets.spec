@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWavelets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-PyWavelets
-Version:        1.0.3
+Version:        1.1.1
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/PyWavelets/pywt
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWavelets/PyWavelets-%{version}.tar.gz
-Source10:       https://media.readthedocs.org/pdf/pywavelets/v%{version}/pywavelets.pdf
-Source11:       https://media.readthedocs.org/htmlzip/pywavelets/v%{version}/pywavelets.zip
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.9.1}
@@ -36,8 +35,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # SECTION test requirements
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-numpy >= 1.9.1
+Provides:       python-PyWavelets-doc = %{version}
+Obsoletes:      python-PyWavelets-doc < %{version}
 %python_subpackages
 
 %description
@@ -51,36 +53,9 @@ PyWavelets is a Python wavelet transforms module that can do:
   * Single and double precision calculations
   * Results compatibility with Matlab Wavelet Toolbox
 
-%package     -n %{name}-doc
-Summary:        This package contains the HMTL documentation of %{name}
-Group:          Documentation/Other
-Provides:       %{python_module PyWavelets-doc = %{version}}
-
-%description -n %{name}-doc
-PyWavelets is a Python wavelet transforms module that can do:
-
-  * 1D and 2D Forward and Inverse Discrete Wavelet Transform (DWT and IDWT)
-  * 1D and 2D Stationary Wavelet Transform (Undecimated Wavelet Transform)
-  * 1D and 2D Wavelet Packet decomposition and reconstruction
-  * Computing Approximations of wavelet and scaling functions
-  * Over seventy built-in wavelet filters and support for custom wavelets
-  * Single and double precision calculations
-  * Results compatibility with Matlab Wavelet Toolbox
-
-This Package contains the documentation of %{name} in HTML and PDF formats.
-
 %prep
 %setup -q -n PyWavelets-%{version}
 sed -i -e '/^#!\//, 1d' pywt/tests/*.py
-
-cp %{SOURCE10} .
-unzip %{SOURCE11} -d docs
-mv docs/pywavelets-* docs/html
-rm docs/html/.buildinfo
-
-# Make docs non-executable
-chmod a-x *.rst
-chmod a-x PyWavelets.egg-info/*
 
 # Fix wrong-script-interpreter
 find demo -name '*.py' -exec sed -i "s|#!%{_bindir}/env python|#!%__python3|"  {} \;
@@ -111,21 +86,17 @@ popd
 }
 
 %check
-mkdir test
-pushd test
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B -c 'import pywt;pywt.test()'
-}
+mkdir temp
+mv pywt temp/pywt
+export PYTHONDONTWRITEBYTECODE=1
+# Accuracy is platform-dependent
+%pytest_arch --ignore=temp -k 'not test_accuracy_precomputed_cwt' %{buildroot}%{$python_sitearch}/pywt/
+mv temp/pywt pywt
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/pywt/
 %{python_sitearch}/PyWavelets-%{version}-py*.egg-info
-
-%files -n %{name}-doc
-%license LICENSE
-%doc pywavelets.pdf
-%doc docs/html
 
 %changelog
