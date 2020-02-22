@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/kubernetes-incubator/external-storage.git</param>
+    <param name="changesrevision">2546b4746a5c3b940513fbabf7caa7ac94184ec6</param>
+ </service>
+</servicedata>

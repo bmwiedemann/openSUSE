@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Feb 21 17:50:20 UTC 2020 - kukuk@suse.com
+
+- Update to version 2.3.0+git20200220.a14bfd72:
+  * Remove duplicate selector fields
+  * add namespace for rolebinding
+  * Update rbac.yaml
+  * Remove ServiceAccount from deployment yaml files
+  * Fix namespace and bump to Deployment apps/v1
+
+-------------------------------------------------------------------
+Fri Feb 21 17:49:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
