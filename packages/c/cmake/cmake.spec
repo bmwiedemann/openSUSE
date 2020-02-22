@@ -29,6 +29,13 @@
 %else
 %bcond_with mini
 %endif
+%if "%{flavor}" == "full"
+%define psuffix -full
+%bcond_without full
+%else
+%bcond_with full
+%endif
+
 %define shortversion 3.16
 Name:           cmake%{?psuffix}
 Version:        3.16.2
@@ -44,6 +51,7 @@ Source4:        cmake.prov
 Source5:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt
 Source6:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
+Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
@@ -58,19 +66,24 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libuv) >= 1.10
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
+%if "%{flavor}" == ""
+Requires:       cmake-implementation = %{version}
+%endif
+%if %{with full} || %{with mini}
 Requires:       make
 # bnc#953842 - A python file is shipped so require python base so it can be run.
 Requires:       python3-base
+Conflicts:      cmake-implementation
+Provides:       cmake-implementation = %{version}
+%endif
 %if %{with mini}
 Requires:       this-is-only-for-build-envs
-Conflicts:      cmake
-Provides:       cmake = %{version}
-%else
+%endif
+%if %{with full} || %{with gui}
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.1
 BuildRequires:  pkgconfig(libarchive) >= 3.3.3
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libzstd)
-Conflicts:      cmake-mini
 %endif
 %if %{with gui}
 BuildRequires:  python3-Sphinx
@@ -102,8 +115,10 @@ build system.
 echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
 %setup -q -n cmake-%{version}
 %autopatch -p1
+cp %{SOURCE99} .
 
 %build
+%if "%{flavor}" != ""
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 # This is not autotools configure
@@ -129,8 +144,10 @@ export CXXFLAGS="%{optflags}"
 %endif
     %{nil}
 %make_build
+%endif
 
 %install
+%if "%{flavor}" != ""
 %make_install
 mkdir -p %{buildroot}%{_libdir}/cmake
 %if %{with gui}
@@ -167,8 +184,9 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 
 %fdupes %{buildroot}%{_datadir}/cmake
 %endif
+%endif
 
-%if "%{flavor}" == ""
+%if "%{flavor}" == "full"
 %check
 # Excluded tests:
 #    TestUpload: uses internet connection
@@ -197,6 +215,9 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %{_mandir}/man1/*
 %else
 %files
+%if "%{flavor}" == ""
+%doc README.SUSE
+%else
 %license Copyright.txt
 %doc README.rst
 %{_rpmconfigdir}/macros.d/macros.cmake
@@ -213,6 +234,7 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %{_datadir}/bash-completion
 %cmake_mode_el
 %dir %{dirname:%cmake_mode_el}
+%endif
 %endif
 
 %changelog

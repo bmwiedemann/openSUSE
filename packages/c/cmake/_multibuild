@@ -1,4 +1,5 @@
 <multibuild>
-  <package>mini</package>
-  <package>gui</package>
+  <flavor>mini</flavor>
+  <flavor>full</flavor>
+  <flavor>gui</flavor>
 </multibuild>

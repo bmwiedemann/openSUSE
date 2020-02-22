@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:30:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change cmake to be a meta-package that requires
+  cmake-implementation. This new symbol is provided by the (newly
+  named) cmake-full package as well as cmake-mini.
+- This is needed as the original attempt of using Substitute in OBS
+  actually rewrites the used spec files on disk, not only on the
+  fly and we ended up with packages Requiring cmake-mini (which is
+  not installable on end user systems).
+
+-------------------------------------------------------------------
 Mon Feb 10 15:26:56 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Revert LIBDIR change in macros - it is inconsistent (all other
