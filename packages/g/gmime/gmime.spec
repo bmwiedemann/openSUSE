@@ -1,7 +1,7 @@
 #
 # spec file for package gmime
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # NOTE - also update baselibs.conf when bumping this
 %define so_ver 3_0
 Name:           gmime
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        MIME Parser and Utility Library
 License:        LGPL-2.1-or-later
