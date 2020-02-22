@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Feb 20 15:28:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.0
+  * The mapping package now depends on the geometry and io packages. The
+    (suggested) dependency on the octclip package has been removed.
+  * The following functions are new in mapping 1.4.0:
+      aer2ecef        aer2enu         aer2geodetic      aer2ned
+      axes2ecc        antipode        closePolygonParts deg2nm
+      deg2sm          dxfdraw         dxfparse          dxfread
+      earthRadius     ecc2flat        ecc2n             ecef2geodetic
+      enu2aer         enu2uvw         flat2ecc          geodetic3ecef
+      geocentricLatitude              geodeticLatitudeFromGeocentric
+      geodeticLatitudeFromParametric  gmlread           gpxread
+      isShapeMultipart                kmlread           kmzread
+      majaxis         meridianarc     minaxis           n2ecc
+      parametricLatitude              polycut           rad2nm
+      rad2sm         rasterclip       rcurve
+      referenceEllipsoid              utmzone           wgs84Ellipsoid
+  * Bug fixes:
+    shapedraw.m:  * Fix color arg. bug when drawing (poly)line
+                    geometries.
+                  * Restore input check order.
+                  * Do not connect multipoint shapes.
+    shaperead.m:  * Fix reading 'line' geometries.
+                  * Ignore shapes with (almost) infinite
+                    coordinates.
+                  * Fix .shx file usage.
+                  * Move file existence check to start of function.
+                  * Fix reading MultiPoint shapefiles.
+                  * Provision for absent M-values in M and Z
+                    shapetypes.
+                  * More robust input validation.
+                  * Properly process BoundingBox limits.
+                  * Fix incompatible dimensions bug when reading
+                    Multipoint files.
+                  * Fix reading selected attributes.
+    shapewrite.m: * Various fixes (credits to a.o., Martin Kunz,
+                    M.Parkan).
+                  * Properly write missing M-values.
+                  * Fix OOM error when writing large Point type files.
+                  * Fix and overhaul writing requested attributes.
+                  Fixes for bug #53422:
+                  * Unconditionally write .dbf file.
+                  * Fix record lengths for all Point types.
+                  * Fix XY coordinate write order for all Multipoint
+                    types.
+                  * Update .shx header as well.
+    rasterinfo.m: * Show nr. of bands and bounding box.
+  * Code improvements
+    shaperead.m:  * Invoke the Clipper library for clipping polylines
+                    and polygons, leading to much improved performance
+                    when invoking the BoundingBox option together with
+                    the Clip option. To use this feature the Octave-
+                    Forge geometry package >= 4.0.0 must be installed
+                    and loaded.
+  * New features
+    shapewrite.m: * Allow writing M & Z shape types (Matlab-
+                    incompatible types, yet supported by Octave).
+
+-------------------------------------------------------------------
 Fri Jun 10 17:59:08 UTC 2016 - dmitry_r@opensuse.org
 
 - Update to version 1.2.1

@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-mapping
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  mapping
 Name:           octave-forge-%{octpkg}
-Version:        1.2.1
+Version:        1.4.0
 Release:        0
 Summary:        Octave mapping functions
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io/%{octpkg}/index.html
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  octave-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gdal)
 Requires:       octave-cli >= 3.8.0
-Requires:       octave-forge-geometry >= 1.4.0
+Requires:       octave-forge-geometry >= 4.0.0
 Requires:       octave-forge-io >= 2.2.7
-Requires:       octave-forge-octclip >= 1.0.3
 
 %description
-Simple Mapping and GIS .shp file functions.
+Simple Mapping and GIS .shp, .dxf and raster file functions.
 
 This is part of Octave-Forge project.
 
