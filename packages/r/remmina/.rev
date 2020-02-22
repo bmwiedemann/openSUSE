@@ -411,4 +411,25 @@
     <comment></comment>
     <requestid>764536</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bade342331de892aaf6a75b4927e3968</srcmd5>
+    <version>1.4.0</version>
+    <time>1582394918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.4.0
+  * This is a long term release
+  * RDP clipboard fixes
+  * SSH authentication fixes
+  * Fixed compiler warnings
+  * SSH tunnel refactoring
+  * Parameters passed individually, notation, &quot;Press any key to continueâ€¦&quot;
+  * Updated boolean expressions
+  * Add end of options escaping
+  * Remove double-quotes escaping early
+  * Ending code block whitespace line removed
+  * Safer removal of build directory
+  * Spelling: Could not access the RDP server x7
+  * Removing double struct declaration</comment>
+    <requestid>778174</requestid>
+  </revision>
 </revisionlist>
