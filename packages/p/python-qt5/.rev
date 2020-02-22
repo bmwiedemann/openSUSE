@@ -435,4 +435,12 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
 - Fix install location of binary dbus-mainloop integration module.</comment>
     <requestid>770584</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>69a49a674316d3768b7aeb871838cca9</srcmd5>
+    <version>5.13.2</version>
+    <time>1582394393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775006</requestid>
+  </revision>
 </revisionlist>

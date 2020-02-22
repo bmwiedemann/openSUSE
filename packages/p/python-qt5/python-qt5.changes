@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 16 17:04:29 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix dbus mainloop integration, install a noarch wrapper in
+  the dbus/mainloop module path, and move the implementation
+  alongside the other binary modules. bnc#1163755, bnc#1163763.
+  * 0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+
+-------------------------------------------------------------------
 Sat Feb  1 21:11:44 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Disable debug assertions, e.g. Cura passes None for empty dicts and

@@ -50,6 +50,8 @@ Source99:       python-qt5-rpmlintrc
 Patch1:         disable-rpaths.diff
 # PATCH-FIX-UPSTREAM
 Patch2:         update-timeline.patch
+# PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
+Patch3:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
 BuildRequires:  %{python_module dbus-python-devel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.19}
@@ -242,10 +244,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 cp ../README ./
 sed -i 's/The "doc" directory/The "doc" directory of package %{$python_prefix}-qt5-devel/' README
 
-%if "%{python_sitearch}" != "%{python_sitelib}"
-    mv %{buildroot}%{python_sitelib}/dbus %{buildroot}%{python_sitearch}/dbus
-%endif
-
 popd
 
 # Prepare for update-alternatives usage
@@ -286,9 +284,9 @@ rm -Rf %{buildroot}%{_datadir}/sip/PyQt5/
 %doc NEWS ChangeLog
 %{python_sitearch}/PyQt5/
 %{python_sitearch}/PyQt5-%{version}.dist-info/
-%dir %{python_sitearch}/dbus
-%dir %{python_sitearch}/dbus/mainloop
-%{python_sitearch}/dbus/mainloop/pyqt5.so
+%dir %{python_sitelib}/dbus
+%dir %{python_sitelib}/dbus/mainloop
+%{python_sitelib}/dbus/mainloop/pyqt5.py
 %dir %{_libqt5_plugindir}/PyQt5/
 %{_libqt5_plugindir}/PyQt5/libpy%{python_bin_suffix}qt5qmlplugin.so
 %exclude %{_docdir}/%{bname}/examples/

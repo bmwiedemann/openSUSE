@@ -1,0 +1,118 @@
+From 90b1d19e4a65b1490f4ea277d81cbc96bcaa4c4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 16 Feb 2020 18:00:54 +0100
+Subject: [PATCH] Use a noarch wrapper for dbus mainloop integration
+
+python-dbus installs in a noarch directory by default, so it not a
+suitable place for the binary module.
+
+Install the binary module to the same directory as all other binary
+modules, and just install a small wrapper for dbus.mainloop.pyqt5.
+---
+ configure.py  | 11 +++++++++--
+ dbus/dbus.cpp |  8 ++++----
+ dbus/pyqt5.py |  5 +++++
+ project.py    |  6 ++++++
+ 4 files changed, 24 insertions(+), 6 deletions(-)
+ create mode 100644 dbus/pyqt5.py
+
+diff --git a/configure.py b/configure.py
+index a361cf1..4fb3fa0 100644
+--- a/configure.py
++++ b/configure.py
+@@ -58,7 +58,7 @@ class ModuleMetadata:
+ # The module meta-data.
+ MODULE_METADATA = {
+     'dbus':                 ModuleMetadata(qmake_QT=['-gui'],
+-                                    qmake_TARGET='pyqt5'),
++                                    qmake_TARGET='dbus_mainloop'),
+     'QAxContainer':         ModuleMetadata(qmake_QT=['axcontainer']),
+     'Qt':                   ModuleMetadata(qmake_QT=['-core', '-gui']),
+     'QtAndroidExtras':      ModuleMetadata(qmake_QT=['androidextras']),
+@@ -1656,7 +1656,6 @@ del find_qt
+ 
+         generate_module_makefile(target_config, verbose, mname,
+                 include_paths=target_config.dbus_inc_dirs, libs=libs,
+-                install_path=target_config.pydbus_module_dir,
+                 src_dir=sp_src_dir)
+ 
+         subdirs.append(mname)
+@@ -1686,6 +1685,14 @@ INSTALLS += init_py
+ 
+     all_installs.append(root_dir + '/__init__.py')
+ 
++    # Install the dbus mainloop wrapper.
++    if target_config.pydbus_module_dir != '':
++        out_f.write('''
++mainloop_wrapper.files = %s
++mainloop_wrapper.path = %s
++INSTALLS += mainloop_wrapper
++''' % (source_path('dbus', 'pyqt5.py'), target_config.pydbus_module_dir))
++
+     # Install the uic module.
+     out_f.write('''
+ uic_package.files = %s
+diff --git a/dbus/dbus.cpp b/dbus/dbus.cpp
+index 7183d92..8dc3446 100644
+--- a/dbus/dbus.cpp
++++ b/dbus/dbus.cpp
+@@ -405,11 +405,11 @@ static PyMethodDef module_functions[] = {
+ 
+ // The module entry point.
+ #if PY_MAJOR_VERSION >= 3
+-PyMODINIT_FUNC PyInit_pyqt5()
++PyMODINIT_FUNC PyInit_dbus_mainloop()
+ {
+     static PyModuleDef module_def = {
+         PyModuleDef_HEAD_INIT,
+-        "pyqt5",
++        "dbus_mainloop",
+         NULL,
+         -1,
+         module_functions,
+@@ -422,12 +422,12 @@ PyMODINIT_FUNC PyInit_pyqt5()
+     return PyModule_Create(&module_def);
+ }
+ #else
+-PyMODINIT_FUNC initpyqt5()
++PyMODINIT_FUNC initdbus_mainloop()
+ {
+     // Import the generic part of the Python DBus bindings.
+     if (import_dbus_bindings("dbus.mainloop.pyqt5") < 0)
+         return;
+ 
+-    Py_InitModule("pyqt5", module_functions);
++    Py_InitModule("dbus_mainloop", module_functions);
+ }
+ #endif
+diff --git a/dbus/pyqt5.py b/dbus/pyqt5.py
+new file mode 100644
+index 0000000..1356ce3
+--- /dev/null
++++ b/dbus/pyqt5.py
+@@ -0,0 +1,5 @@
++"""Qt main loop integration using "python-qt5"""
++
++__all__ = ('DBusQtMainLoop', )
++
++from PyQt5.dbus_mainloop import DBusQtMainLoop
+diff --git a/project.py b/project.py
+index 0b86b37..7f5d2b8 100644
+--- a/project.py
++++ b/project.py
+@@ -289,6 +289,12 @@ del find_qt
+         buildable.libraries.extend(dbus_libs)
+         buildable.debug = self.py_debug
+ 
++        installable = Installable('pyqt5', target_subdir=dbus_module_dir)
++        installable.files.append(
++                os.path.join(project.root_dir, 'dbus',
++                        'pyqt5.py'))
++        self.installables.append(installable)
++
+         self.buildables.append(buildable)
+ 
+     def _add_plugin(self, name, user_name, target_name, target_subdir):
+-- 
+2.25.0
+
