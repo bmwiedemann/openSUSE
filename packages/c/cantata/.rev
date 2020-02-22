@@ -165,4 +165,24 @@
   * Remove install-libsolidlite.diff</comment>
     <requestid>774609</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>750586a8f2f4a7cad71500953e791595</srcmd5>
+    <version>2.4.1</version>
+    <time>1582394932</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tranlations-with-qt5.diff again and update it. Cantata
+  only finds the 64bits lrelease.
+- Remove no longer necessary fix-translations-with-qt5.diff
+- Update to 2.4.1:
+  * Re-enable custom playqueue background. This is broken for 5.12,
+    but that's a Qt bug. So it is not enabled for 5.12 (and Leap)
+  * Look in /usr/lib64/qt5/bin for lrelease
+  * Fix deprecation warnings.
+  * Enable catagorized view by default, might also be a Qt issue?
+    Because it can crash (cantata bug #1530) we keep this disabled.
+  * Remove Encyclopaedia Metallum from lyrics providers, as does
+    not work.
+</comment>
+    <requestid>778205</requestid>
+  </revision>
 </revisionlist>

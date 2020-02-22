@@ -17,15 +17,15 @@
 
 
 Name:           cantata
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/CDrummond/cantata/
 Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE  fix-translations-with-qt5.diff  -- Make sure that it finds the right lrelease and lconvert binaries with Qt5
-Patch1:         fix-translations-with-qt5.diff
+# PATCH-FIX-OPENSUSE  fix-translations-with-qt5.diff  -- Make sure that it finds the right lrelease and lconvert binaries with Qt5 (cantata only find the 64bits lrelease).
+Patch0:         fix-translations-with-qt5.diff
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -95,10 +95,11 @@ information, please refer to the main README.
 
 %prep
 %setup -q
-%patch1 -p0
+%patch0 -p1
 
 %build
-%cmake -DENABLE_REMOTE_DEVICES=OFF
+%cmake -DENABLE_REMOTE_DEVICES=OFF \
+    -DENABLE_CATEGORIZED_VIEW=OFF
 %make_jobs
 
 %install

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Feb 22 14:31:01 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-tranlations-with-qt5.diff again and update it. Cantata
+  only finds the 64bits lrelease.
+
+-------------------------------------------------------------------
+Sat Feb 22 12:31:45 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Remove no longer necessary fix-translations-with-qt5.diff
+
+-------------------------------------------------------------------
+Sat Feb 22 11:50:56 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.4.1:
+  * Re-enable custom playqueue background. This is broken for 5.12,
+    but that's a Qt bug. So it is not enabled for 5.12 (and Leap)
+  * Look in /usr/lib64/qt5/bin for lrelease
+  * Fix deprecation warnings.
+  * Enable catagorized view by default, might also be a Qt issue?
+    Because it can crash (cantata bug #1530) we keep this disabled.
+  * Remove Encyclopaedia Metallum from lyrics providers, as does
+    not work.
+
+-------------------------------------------------------------------
 Sat Feb 15 19:43:45 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.4.0:

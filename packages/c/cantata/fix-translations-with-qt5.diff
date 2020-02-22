@@ -1,10 +1,11 @@
---- translations/CMakeLists.txt.orig	2017-08-01 00:15:09.325243508 +0200
-+++ translations/CMakeLists.txt	2017-08-01 00:15:09.357242950 +0200
+diff -ur a/translations/CMakeLists.txt b/translations/CMakeLists.txt
+--- a/translations/CMakeLists.txt	2020-02-22 11:24:03.000000000 +0100
++++ b/translations/CMakeLists.txt	2020-02-22 15:26:32.378741878 +0100
 @@ -4,7 +4,7 @@
      list(APPEND CANTATA_TRANS "${TRANS}")
  endforeach ()
  
--find_program(LRELEASE_EXECUTABLE lrelease)
+-find_program(LRELEASE_EXECUTABLE lrelease PATHS /usr/lib64/qt5/bin/)
 +find_program(LRELEASE_EXECUTABLE lrelease-qt5)
  
  if (LRELEASE_EXECUTABLE)
