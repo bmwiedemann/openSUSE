@@ -143,4 +143,12 @@
     <comment>- Update to snapshot 2020.1~git24 (323a81fc)</comment>
     <requestid>766382</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8f30f1176a1ee6cb6ee3c868d3c636d3</srcmd5>
+    <version>2020.1</version>
+    <time>1582394202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.1</comment>
+    <requestid>777630</requestid>
+  </revision>
 </revisionlist>

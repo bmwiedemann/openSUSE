@@ -16,18 +16,18 @@
 #
 
 
-%define version_unconverted 2020.1~git24
-%define lname libSPIRV-Tools-suse15
+%define version_unconverted 2020.1
+%define lname libSPIRV-Tools-suse16
 
 Name:           spirv-tools
-Version:        2020.1~git24
+Version:        2020.1
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
 
-Source:         %name-%version.tar.xz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
@@ -66,7 +66,7 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%setup -q
+%setup -qn SPIRV-Tools-%version
 %autopatch -p1
 
 %build
