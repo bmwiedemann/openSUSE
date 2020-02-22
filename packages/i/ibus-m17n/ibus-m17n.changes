@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 22 12:48:45 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.4.2
+  * Update translations
+  * Fix for google code issue 1781 in ibus-m17n for kk 
+    (Correct symbols for kk input methods)
+  * Add m17n.appdata.xml
+  * Migration from IBusConfig to GSettings
+  * Add an option to emulate US layout
+  * Fix preedit background colour and underlining
+  * Switch off preedit background and foreground correctly if disabled 
+    in the setup tool
+  * bug fixes 
+
+-------------------------------------------------------------------
 Mon Nov 14 17:24:06 UTC 2016 - toddrme2178@gmail.com
 
 - "ua" isn't a valid language code.  Change to "ur", which is

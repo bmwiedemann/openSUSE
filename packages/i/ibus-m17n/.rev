@@ -152,4 +152,22 @@
     <comment>1</comment>
     <requestid>440608</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5ab98121be0ca03c01aa1187d2d0b073</srcmd5>
+    <version>1.4.2</version>
+    <time>1582394928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.4.2
+  * Update translations
+  * Fix for google code issue 1781 in ibus-m17n for kk 
+    (Correct symbols for kk input methods)
+  * Add m17n.appdata.xml
+  * Migration from IBusConfig to GSettings
+  * Add an option to emulate US layout
+  * Fix preedit background colour and underlining
+  * Switch off preedit background and foreground correctly if disabled 
+    in the setup tool
+  * bug fixes (forwarded request 778194 from hillwood)</comment>
+    <requestid>778195</requestid>
+  </revision>
 </revisionlist>

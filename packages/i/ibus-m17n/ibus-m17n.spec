@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-m17n
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@ Name:           ibus-m17n
 BuildRequires:  ibus-devel
 BuildRequires:  m17n-lib-devel
 BuildRequires:  pkgconfig
-Version:        1.3.4
+Version:        1.4.2
 Release:        0
 Summary:        The M17N engine for IBus platform
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System Environment/Libraries
 Provides:       locale(ibus:am;ar;as;bn;fa;gu;he;hi;ja;ka;kk;kn;ko;lo;ml;my;ur;ru;vi;zh)
-Url:            http://code.google.com/p/ibus/
+URL:            http://code.google.com/p/ibus/
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       ibus
@@ -49,12 +49,17 @@ make %{?jobs:-j %jobs}
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README
+%doc AUTHORS README
+%license COPYING
 %{_datadir}/ibus-*
 %dir %{_libdir}/ibus
 %{_libdir}/ibus/ibus-*
 %dir %{_datadir}/ibus
 %dir %{_datadir}/ibus/component
 %{_datadir}/ibus/component/*
+%{_datadir}/applications/ibus-setup-m17n.desktop
+%{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.m17n.gschema.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/m17n.appdata.xml
 
 %changelog
