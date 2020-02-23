@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 22 09:55:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate the curl-mini trickery for Tumbleweed: curl-mini is
+  being eliminated in favor of cmake-mini: the original plan to
+  split the cycle at curl did not work out in the long run.
+
+-------------------------------------------------------------------
 Fri Jan 24 15:02:50 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add disable-rdma-interface-renaming.patch to disable interface renaming which causes
