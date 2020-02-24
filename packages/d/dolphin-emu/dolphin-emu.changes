@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 24 11:20:37 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1582525609.25d5f0d9ef:
+  * InputCommon: Constify Device::Input::IsDetectable function.
+  * Translation resources sync with Transifex
+  * Qt/TAS: Improve TAS windows
+  * InputCommon: Remove Wii Remote real-time calibration of M+ in favor of functionality provided by ControllerEmu.
+  * InputCommon: Add real Wii Remote support to ControllerInterface. Add option to connect additional Wii Remotes.
+  * InputCommon/ControllerInterface: Make devices mutex recursive so RemoveDevice can be used within UpdateInput.
+  * Core/WiimoteEmu: Add functions to Nunchuk, Classic Controller, and MotionPlus extensions to get/set data without duplicate bithacks everywhere.
+  * InputCommon: Add types to ControllerEmu that represent raw controller inputs and calibration data to calculate normalized input values.
+  * Common: Add additional Vector operations.
+  * InputCommon: Add calibration functionality to IMUGyroscope.
+  * MathUtil: Add RunningMean/RunningVariance classes.
+  * InputCommon: Add "Dead Zone" setting to raw gyro inputs.
+  * Windows GUI: Use QMenu font (Segoe UI) for entire application
+  * Common: Avoid std::function overhead in ScopeGuard
+  * Core/GeckoCodeConfig : Fix Gecko codes formatting
+  * CMake: Fix building ARM64 on Windows
+
+-------------------------------------------------------------------
 Thu Feb 13 10:35:43 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1581377336.a9dc4ac3f0:
