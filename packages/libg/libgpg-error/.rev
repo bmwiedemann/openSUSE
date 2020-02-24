@@ -472,4 +472,12 @@
   * gawk5.patch</comment>
     <requestid>723926</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ecec616cccec04b890a9092513d06ebf</srcmd5>
+    <version>1.37</version>
+    <time>1582555783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774951</requestid>
+  </revision>
 </revisionlist>

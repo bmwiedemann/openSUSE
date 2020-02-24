@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 17 16:34:09 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.37
+  Release-info: https://dev.gnupg.org/T4772
+  * Fixes a build problems when using Gawk 5.0  [#4459]
+  * Improves cross-compiling support.  [#4643]
+  * New error codes to map SQLite primary error codes.
+  * Now uses poll(2) instead of select(2) in gpgrt_poll if possible.
+  * Fixes a bug in gpgrt_close.  [#4698]
+  * Fixes a few minor portability bugs.
+  * New interfaces in this release:
+    GPG_ERR_NO_KEYBOXD    GPG_ERR_KEYBOXD       GPG_ERR_NO_SERVICE
+    GPG_ERR_SERVICE       GPG_ERR_SQL_OK        GPG_ERR_SQL_ERROR
+    GPG_ERR_SQL_INTERNAL  GPG_ERR_SQL_PERM      GPG_ERR_SQL_ABORT
+    GPG_ERR_SQL_BUSY      GPG_ERR_SQL_LOCKED    GPG_ERR_SQL_NOMEM
+    GPG_ERR_SQL_READONLY  GPG_ERR_SQL_INTERRUPT GPG_ERR_SQL_IOERR
+    GPG_ERR_SQL_CORRUPT   GPG_ERR_SQL_NOTFOUND  GPG_ERR_SQL_FULL
+    GPG_ERR_SQL_CANTOPEN  GPG_ERR_SQL_PROTOCOL  GPG_ERR_SQL_EMPTY
+    GPG_ERR_SQL_SCHEMA    GPG_ERR_SQL_TOOBIG    GPG_ERR_SQL_CONSTRAINT
+    GPG_ERR_SQL_MISMATCH  GPG_ERR_SQL_MISUSE    GPG_ERR_SQL_NOLFS
+    GPG_ERR_SQL_AUTH      GPG_ERR_SQL_FORMAT    GPG_ERR_SQL_RANGE
+    GPG_ERR_SQL_NOTADB    GPG_ERR_SQL_NOTICE    GPG_ERR_SQL_WARNING
+    GPG_ERR_SQL_ROW       GPG_ERR_SQL_DONE
+- Remove patch fixed upstream.
+  * gawk5.patch
+
+-------------------------------------------------------------------
 Fri Aug 16 07:46:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix buidling with gawk 5.0 and newer:

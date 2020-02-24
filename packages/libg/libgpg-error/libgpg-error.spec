@@ -1,7 +1,7 @@
 #
 # spec file for package libgpg-error
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgpg-error
-Version:        1.36
+Version:        1.37
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source1:        ftp://ftp.gnupg.org/gcrypt/libgpg-error/%{name}-%{version}.tar.b
 # http://www.gnupg.org/signature_key.en.html
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         gawk5.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -65,7 +64,6 @@ Files needed for software development using libgpg-error.
 
 %prep
 %setup -q -n libgpg-error-%{version}
-%patch0 -p1
 
 %build
 autoreconf -fvi
