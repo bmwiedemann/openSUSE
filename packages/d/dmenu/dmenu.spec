@@ -22,37 +22,39 @@ Release:        0
 Summary:        A generic and efficient menu for X
 License:        MIT
 Group:          System/GUI/Other
-URL:            http://tools.suckless.org/dmenu/
+URL:            https://tools.suckless.org/dmenu/
 Source:         http://dl.suckless.org/tools/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Patch0:         dmenu-optflags.patch
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
 
 %description
-dmenu is a dynamic menu for X, originally designed for dwm. It manages large numbers of user-defined menu items efficiently.
+dmenu is a dynamic menu for X, originally designed for dwm. It manages
+large numbers of user-defined menu items efficiently.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-export CFLAGS="%optflags"
-make X11LIB="%{_prefix}/X11R6/%{_lib}"
+export CFLAGS="%{optflags}"
+%make_build X11LIB="%{_prefix}/X11R6/%{_lib}"
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags} \
-    PREFIX="%{_prefix}"\
-    DESTDIR=%{buildroot}
-#
+%make_install \
+  PREFIX="%{_prefix}"\
+  DESTDIR=%{buildroot}
 
 %files
-%defattr(-,root,root)
-%{_bindir}/%{name}*
-%{_mandir}/man1/%{name}*
+%license LICENSE
+%doc README
+%{_bindir}/dmenu
+%{_bindir}/dmenu_path
+%{_bindir}/dmenu_run
 %{_bindir}/stest
-%{_mandir}/man1/stest.1.gz
+%{_mandir}/man1/dmenu.1%{?ext_man}
+%{_mandir}/man1/stest.1%{?ext_man}
 
 %changelog
