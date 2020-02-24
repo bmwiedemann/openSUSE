@@ -1,0 +1,54 @@
+From: Liang Yan <lyan@suse.com>
+Date: Fri, 31 Jan 2020 14:54:06 -0500
+Subject: target/arm/monitor: query-cpu-model-expansion crashed qemu when using
+ machine type none
+
+References: bsc#1159443
+
+Commit e19afd566781 mentioned that target-arm only supports queryable
+cpu models 'max', 'host', and the current type when KVM is in use.
+The logic works well until using machine type none.
+
+For machine type none, cpu_type will be null if cpu option is not
+set by command line, strlen(cpu_type) will terminate process.
+So We add a check above it.
+
+This won't affect i386 and s390x since they do not use current_cpu.
+
+[LY: patch only queued in upstream, will update commit id later]
+Signed-off-by: Liang Yan <lyan@suse.com>
+---
+ target/arm/monitor.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index fa054f8a369c8221c8746b8d8046..782085ca2120b243584f7c058ef8 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -136,17 +136,20 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     }
+ 
+     if (kvm_enabled()) {
+-        const char *cpu_type = current_machine->cpu_type;
+-        int len = strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
+         bool supported = false;
+ 
+         if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
+             /* These are kvmarm's recommended cpu types */
+             supported = true;
+-        } else if (strlen(model->name) == len &&
+-                   !strncmp(model->name, cpu_type, len)) {
+-            /* KVM is enabled and we're using this type, so it works. */
+-            supported = true;
++        } else if (current_machine->cpu_type) {
++            const char *cpu_type = current_machine->cpu_type;
++            int len = strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
++
++            if (strlen(model->name) == len &&
++                !strncmp(model->name, cpu_type, len)) {
++                /* KVM is enabled and we're using this type, so it works. */
++                supported = true;
++            }
+         }
+         if (!supported) {
+             error_setg(errp, "We cannot guarantee the CPU type '%s' works "

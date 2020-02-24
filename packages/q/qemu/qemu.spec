@@ -219,6 +219,8 @@ Patch00088:     test-add-mapping-from-arch-of-i686-to-qe.patch
 Patch00089:     roms-Makefile-enable-cross-compile-for-b.patch
 Patch00090:     iscsi-Cap-block-count-from-GET-LBA-STATU.patch
 Patch00091:     block-backup-fix-memory-leak-in-bdrv_bac.patch
+Patch00092:     target-arm-monitor-query-cpu-model-expan.patch
+Patch00093:     hw-i386-disable-smbus-migration-for-xenf.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -349,9 +351,9 @@ BuildRequires:  libSDL2_image-devel
 BuildRequires:  libseccomp-devel >= 2.3.0
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel >= 1.0.13
 BuildRequires:  libvdeplug-devel
+BuildRequires:  pkgconfig(libudev)
 %if 0%{?is_opensuse}
 BuildRequires:  lzfse-devel
 %endif
@@ -1017,6 +1019,8 @@ This package provides a service file for starting and stopping KSM.
 %patch00089 -p1
 %patch00090 -p1
 %patch00091 -p1
+%patch00092 -p1
+%patch00093 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

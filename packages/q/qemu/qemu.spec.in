@@ -236,9 +236,9 @@ BuildRequires:  libSDL2_image-devel
 BuildRequires:  libseccomp-devel >= 2.3.0
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
-BuildRequires:  libudev-devel
 BuildRequires:  libusb-1_0-devel >= 1.0.13
 BuildRequires:  libvdeplug-devel
+BuildRequires:  pkgconfig(libudev)
 %if 0%{?is_opensuse}
 BuildRequires:  lzfse-devel
 %endif

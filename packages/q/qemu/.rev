@@ -1626,4 +1626,22 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>768145</requestid>
   </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>011029d6533ec782b56c1b75fc4a9222</srcmd5>
+    <version>4.2.0</version>
+    <time>1582555810</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix xenfv migration from xen host with pre-v4.0 qemu. We had
+  previously dropped a similar patch, but have decided that for now
+  we need to go with this type of solution (bsc#1159755)
+  hw-i386-disable-smbus-migration-for-xenf.patch
+- Avoid query-cpu-model-expansion crashed qemu when using
+  machine type none, patch is queued in upstream now, will
+  update commit id later (bsc#1159443)
+  target-arm-monitor-query-cpu-model-expan.patch
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: Allow
+  OBS to shortcut through -mini flavors.
+</comment>
+    <requestid>777725</requestid>
+  </revision>
 </revisionlist>
