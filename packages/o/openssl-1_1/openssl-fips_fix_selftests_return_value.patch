@@ -1,0 +1,27 @@
+Index: openssl-1.1.1d/crypto/fips/fips_dsa_selftest.c
+===================================================================
+--- openssl-1.1.1d.orig/crypto/fips/fips_dsa_selftest.c	2020-02-17 10:40:18.006796026 +0100
++++ openssl-1.1.1d/crypto/fips/fips_dsa_selftest.c	2020-02-17 10:40:18.946801354 +0100
+@@ -150,7 +150,7 @@ int FIPS_selftest_dsa()
+ {
+     DSA *dsa = NULL;
+     EVP_PKEY *pk = NULL;
+-    int ret = -1;
++    int ret = 0;
+     BIGNUM *p = NULL, *q = NULL, *g = NULL, *pub_key = NULL, *priv_key = NULL;
+ 
+     fips_load_key_component(p, dsa_test_2048);
+Index: openssl-1.1.1d/crypto/fips/fips_ecdh_selftest.c
+===================================================================
+--- openssl-1.1.1d.orig/crypto/fips/fips_ecdh_selftest.c	2020-02-17 10:40:18.006796026 +0100
++++ openssl-1.1.1d/crypto/fips/fips_ecdh_selftest.c	2020-02-17 10:40:18.950801378 +0100
+@@ -221,6 +221,9 @@ int FIPS_selftest_ecdh(void)
+     }
+ 
+  err:
++    if (rv == -1) {
++        rv = 0;
++    }
+ 
+     if (x)
+         BN_clear_free(x);

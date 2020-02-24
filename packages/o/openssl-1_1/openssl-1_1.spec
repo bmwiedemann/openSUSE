@@ -82,9 +82,11 @@ Patch40:        openssl-fips-selftests_in_nonfips_mode.patch
 Patch41:        openssl-fips-clearerror.patch
 Patch42:        openssl-fips-ignore_broken_atexit_test.patch
 Patch43:        openssl-keep_EVP_KDF_functions_version.patch
+Patch44:        openssl-fips_fix_selftests_return_value.patch
+Patch45:        openssl-fips-add-SHA3-selftest.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-7403 Support for CPACF enhancements - part 2 (crypto)
-Patch44:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
-Patch45:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
+Patch50:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
+Patch51:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
 BuildRequires:  pkgconfig
 Conflicts:      ssl
 Provides:       ssl
@@ -268,13 +270,23 @@ cp %{SOURCE5} .
 #   openssl dgst -sha256 -hmac 'ppaksykemnsecgtsttplmamstKMEs'
 %{expand:%%global __os_install_post {%__os_install_post
 
+# Point linker to the newly installed libcrypto in order to avoid BuildRequiring itself (libopenssl1_1)
+export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
+
 %{buildroot}%{_bindir}/fips_standalone_hmac \
   %{buildroot}%{_libdir}/libssl.so.%{maj_min} > \
     %{buildroot}%{_libdir}/.libssl.so.%{maj_min}.hmac
 
+# As fips_standalone_hmac now uses the very same library it checksums,
+# the libcrypto hmac needs to be saved to a temporary file, otherwise
+# the library will detect the empty hmac and abort due to a wrong checksum
 %{buildroot}%{_bindir}/fips_standalone_hmac \
   %{buildroot}%{_libdir}/libcrypto.so.%{maj_min} > \
-    %{buildroot}%{_libdir}/.libcrypto.so.%{maj_min}.hmac
+    %{buildroot}%{_libdir}/.libcrypto.so.%{maj_min}.temphmac
+
+# rename the temporary checksum to its proper name
+mv %{buildroot}%{_libdir}/.libcrypto.so.%{maj_min}.temphmac %{buildroot}%{_libdir}/.libcrypto.so.%{maj_min}.hmac
+unset LD_LIBRARY_PATH
 
 }}
 

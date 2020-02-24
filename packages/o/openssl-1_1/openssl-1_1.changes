@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 21 08:03:05 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Use the newly build libcrypto shared library when computing the hmac
+  checksums in order to avoid a bootstrapping issue by BuildRequiring
+  libopenssl1_1 (bsc#1164102)
+
+-------------------------------------------------------------------
+Thu Feb 20 13:35:05 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix wrong return values of FIPS DSA and ECDH selftests (bsc#1163569)
+  * add openssl-fips_fix_selftests_return_value.patch
+
+-------------------------------------------------------------------
+Tue Feb 18 22:49:46 UTC 2020 - Jason Sikes <jsikes@suse.com>
+
+- Added SHA3 FIPS self-tests bsc#1155345
+  * openssl-fips-add-SHA3-selftest.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 12:14:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Support for CPACF enhancements - part 2 (crypto) [jsc#SLE-7403]
