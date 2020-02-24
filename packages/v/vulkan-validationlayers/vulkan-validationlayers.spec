@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.2.132
+Version:        1.2.133
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
