@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        5.3.2
+Version:        5.3.5
 Release:        0
 Summary:        Python testing tool with autodiscovery and detailed asserts
 License:        MIT

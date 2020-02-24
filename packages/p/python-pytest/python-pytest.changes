@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 19 09:47:59 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 5.3.5
+ * Captured output during teardown is shown with -rP
+ * Fix a pytest-xdist crash when dealing with exceptions raised
+   in subprocesses created by the multiprocessing module.
+ * FixtureDef objects now properly register their finalizers
+   with autouse and parameterized fixtures that execute before
+   them in the fixture stack so they are torn down at the right times,
+   and in the right order.
+ * Fix parsing of outcomes containing multiple errors with testdir results
+
+-------------------------------------------------------------------
 Tue Jan 14 12:32:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix typo importlib_metadata -> importlib-metadata

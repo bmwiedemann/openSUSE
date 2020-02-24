@@ -774,4 +774,20 @@
     junit_family is not explicitly configured in pytest.ini.</comment>
     <requestid>764286</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c697b96726e881ca5408e58f4b2c6cc1</srcmd5>
+    <version>5.3.5</version>
+    <time>1582555789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.5
+ * Captured output during teardown is shown with -rP
+ * Fix a pytest-xdist crash when dealing with exceptions raised
+   in subprocesses created by the multiprocessing module.
+ * FixtureDef objects now properly register their finalizers
+   with autouse and parameterized fixtures that execute before
+   them in the fixture stack so they are torn down at the right times,
+   and in the right order.
+ * Fix parsing of outcomes containing multiple errors with testdir results</comment>
+    <requestid>776261</requestid>
+  </revision>
 </revisionlist>
