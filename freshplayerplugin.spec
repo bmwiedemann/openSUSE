@@ -1,7 +1,7 @@
 #
 # spec file for package freshplayerplugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
-Supplements:    packageand(browser(npapi):chromium-pepper-flash)
+Supplements:    (browser(npapi) and flash-player-ppapi)
 Conflicts:      flash-player
 %if 0%{with restricted}
 # Hardware accelerated decoding.
@@ -65,10 +65,10 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-x11)
 BuildRequires:  pkgconfig(vdpau)
-Requires:       chromium-pepper-flash
+Requires:       flash-player-ppapi
 Provides:       flash-plugin
 %else
-Recommends:     chromium-pepper-flash
+Recommends:     flash-player-ppapi
 %endif
 %ifarch armv6l || armv6hl
 BuildRequires:  Mesa-libEGL-devel
@@ -86,9 +86,7 @@ which will look like browser to PPAPI plugin and look like NPAPI
 plugin for browser.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # Enable hardware accelerated decoding for PMBS.
 %if %{with restricted}
@@ -104,7 +102,7 @@ sed -i 's|^\(enable_hwdec = \)0|\11|' data/freshwrapper.conf.example
   -DWITH_HWDEC=0  \
 %endif
   -DWITH_GLES2=ON
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %cmake_install
