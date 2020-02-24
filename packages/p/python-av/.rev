@@ -15,4 +15,31 @@
     <comment></comment>
     <requestid>718541</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8893f347d24aa8b8541467fd92dbf4cf</srcmd5>
+    <version>7.0.1</version>
+    <time>1582556060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 7.0.1:
+  + Major:
+    * Drop support for FFmpeg &lt; 4.0. (:issue:`559`)
+    * Introduce per-error exceptions, and mirror the builtin exception heirarchy. It is recommended to examine your error handling code, as common FFmpeg errors will result in ValueError baseclasses now. (:issue:`563`)
+    * Data stream's encode and decode return empty lists instead of none allowing common API use patterns with data streams.
+    * Remove whence parameter from :meth:`InputContainer.seek` as non-time seeking doesn't seem to actually be supported by any FFmpeg formats.
+   + Minor:
+     * Users can disable the logging system to avoid lockups in sub-interpreters. (:issue:`545`)
+     * Filters support audio in general, and a new :meth:`.Graph.add_abuffer`. (:issue:`562`)
+     * :func:`av.open` supports timeout parameters. (:issue:`480` and :issue:`316`)
+     * Expose :attr:`Stream.base_rate` and :attr:`Stream.guessed_rate`. (:issue:`564`)
+     * :meth:`.VideoFrame.reformat` can specify interpolation.
+     * Expose many sets of flags.
+   + Fixes:
+     * Removed deprecated AV_FRAME_DATA_QP_TABLE_* enums. (:issue:`607`)
+     * Fix typing in :meth:`.CodecContext.parse` and make it more robust.
+     * Fix wrong attribute in ByteSource. (:issue:`340`)
+     * Remove exception that would break audio remuxing. (:issue:`537`)
+     * Log messages include last FFmpeg error log in more helpful way.
+     * Use AVCodecParameters so FFmpeg doesn't complain. (:issue:`222`)</comment>
+    <requestid>778637</requestid>
+  </revision>
 </revisionlist>

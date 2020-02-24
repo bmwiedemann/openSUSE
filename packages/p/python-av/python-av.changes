@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 24 01:48:27 UTC 2020 - steven.kowalik@suse.com
+
+- Update version to 7.0.1:
+  + Major:
+    * Drop support for FFmpeg < 4.0. (:issue:`559`)
+    * Introduce per-error exceptions, and mirror the builtin exception heirarchy. It is recommended to examine your error handling code, as common FFmpeg errors will result in ValueError baseclasses now. (:issue:`563`)
+    * Data stream's encode and decode return empty lists instead of none allowing common API use patterns with data streams.
+    * Remove whence parameter from :meth:`InputContainer.seek` as non-time seeking doesn't seem to actually be supported by any FFmpeg formats.
+   + Minor:
+     * Users can disable the logging system to avoid lockups in sub-interpreters. (:issue:`545`)
+     * Filters support audio in general, and a new :meth:`.Graph.add_abuffer`. (:issue:`562`)
+     * :func:`av.open` supports timeout parameters. (:issue:`480` and :issue:`316`)
+     * Expose :attr:`Stream.base_rate` and :attr:`Stream.guessed_rate`. (:issue:`564`)
+     * :meth:`.VideoFrame.reformat` can specify interpolation.
+     * Expose many sets of flags.
+   + Fixes:
+     * Removed deprecated AV_FRAME_DATA_QP_TABLE_* enums. (:issue:`607`)
+     * Fix typing in :meth:`.CodecContext.parse` and make it more robust.
+     * Fix wrong attribute in ByteSource. (:issue:`340`)
+     * Remove exception that would break audio remuxing. (:issue:`537`)
+     * Log messages include last FFmpeg error log in more helpful way.
+     * Use AVCodecParameters so FFmpeg doesn't complain. (:issue:`222`)
+
+-------------------------------------------------------------------
 Thu Jul 25 11:52:20 UTC 2019 - pgajdos@suse.com
 
 - version update to 6.2.0

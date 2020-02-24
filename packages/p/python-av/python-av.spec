@@ -1,7 +1,7 @@
 #
 # spec file for package python-av
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-av
-Version:        6.2.0
+Version:        7.0.1
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
