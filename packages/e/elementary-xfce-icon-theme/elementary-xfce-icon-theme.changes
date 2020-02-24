@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 21 12:37:35 UTC 2020 - tux93@opensuse.org
+
+- Update to version 0.14+git19.684af360:
+  * Several small symlink  fixes
+  * Revamped all 16px panel icons and made several fixes
+  * Revamped 16px dark panel icons and synced network icons from elementary upstream
+  * Add symlinks for LICENSE
+  * Fix dangling symlinks to AUTHORS, CONTRIBUTORS, and README.md
+  * Cleanup unused styles fron thunderbird svgs, fixing inkscape warning attribute 'mask' given as CSS
+  * Second run of vacuum-defs
+  * Drop file reference (fixes #171)
+  * Rename fake svgs to pngs
+  * Vacuum all svgs
+  * Drop Chrome and Chromium icons Both icons scale well at every size
+
+-------------------------------------------------------------------
 Tue Nov 05 16:00:52 UTC 2019 - tux93@opensuse.org
 
 - Update to version 0.14+git5.36fd0049:

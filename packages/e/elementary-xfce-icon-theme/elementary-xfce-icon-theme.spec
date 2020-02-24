@@ -1,7 +1,7 @@
 #
 # spec file for package elementary-xfce-icon-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name elementary-xfce
 Name:           elementary-xfce-icon-theme
-Version:        0.14+git5.36fd0049
+Version:        0.14+git19.684af360
 Release:        0
 Summary:        Icon theme inspired by Tango and Elementary
 License:        GPL-2.0-only
@@ -43,9 +43,9 @@ drop a lot of desktop-specific symlinks.
 %prep
 %setup -q -n %{_name}-%{version}
 # cleanup unecessary doc files
-rm %{_name}-darker/{CONTRIBUTORS,AUTHORS,README.md}
-rm %{_name}-dark/{CONTRIBUTORS,AUTHORS,README.md}
-rm %{_name}/{CONTRIBUTORS,AUTHORS,README.md}
+rm %{_name}-darker/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
+rm %{_name}-dark/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
+rm %{_name}/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
 
 %build
 # Nothing to build
