@@ -124,4 +124,12 @@
     <comment></comment>
     <requestid>769061</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>f732c5a0c43a8e6969461d6a4c4bd6f9</srcmd5>
+    <version>20170617</version>
+    <time>1582555785</time>
+    <user>dimstar_suse</user>
+    <comment>- Align /var/lib/tss permissions with trousers (boo#1162360). (forwarded request 775182 from michals)</comment>
+    <requestid>775206</requestid>
+  </revision>
 </revisionlist>

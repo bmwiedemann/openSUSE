@@ -362,7 +362,7 @@ install -m 644 %{SOURCE20} %{buildroot}%{_sysusersdir}/system-user-tss.conf
 
 %files -n system-user-tss
 %defattr(-,root,root)
-%dir %attr(0755,root,root) /var/lib/tpm
+%dir %attr(0750,tss,tss) /var/lib/tpm
 %{_sysusersdir}/system-user-tss.conf
 
 %changelog
