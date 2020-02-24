@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:53:11 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.6
+  * drop qemu/sifive_u platform
+- align.patch: removed
+
+-------------------------------------------------------------------
 Thu Oct 24 14:43:17 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Initial version 0.5
