@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -1320,6 +1320,7 @@ unsorted:
   - bumpversion 
   - busybox 
   - busybox-container 
+  - busybox-k8s-yaml 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1822,9 +1823,6 @@ unsorted:
   - compiz-lang 
   - compiz-manager 
   - compiz-plugins 
-  - compiz-plugins-main 
-  - compiz-plugins-main-devel 
-  - compiz-plugins-main-lang 
   - complexity 
   - compsize 
   - compton 
@@ -15450,6 +15448,7 @@ unsorted:
   - openucx-tools: [x86_64] 
   - openvas-smb 
   - openvdb-devel 
+  - openvdb-tools 
   - openvpn-auth-pam-plugin 
   - openvpn-devel 
   - openvpn-down-root-plugin 
@@ -17782,8 +17781,6 @@ unsorted:
   - python-gr-fcdproplus 
   - python-gtk-devel 
   - python-gtk-doc 
-  - python-gtksourceview 
-  - python-gtksourceview-devel 
   - python-gunicorn-doc 
   - python-hachoir-core 
   - python-hachoir-metadata 
@@ -18431,7 +18428,6 @@ unsorted:
   - python2-blindspin 
   - python2-blinker 
   - python2-blist 
-  - python2-blockdiag 
   - python2-blosc 
   - python2-bloscpack 
   - python2-bobo 
@@ -19698,6 +19694,7 @@ unsorted:
   - python2-pyusb 
   - python2-pyutf8 
   - python2-pyuv 
+  - python2-pyux 
   - python2-pyviz-comms 
   - python2-pyvmomi 
   - python2-pywinrm 
@@ -22322,6 +22319,7 @@ unsorted:
   - python3-pyuca 
   - python3-pyusb 
   - python3-pyuv 
+  - python3-pyux 
   - python3-pyviz-comms 
   - python3-pyvmomi 
   - python3-pywinrm 
@@ -24991,7 +24989,6 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-devel-osc-devel_osc_build 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 

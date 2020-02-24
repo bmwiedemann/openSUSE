@@ -5135,7 +5135,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
-      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
+      <repopackage name="sysdig-kmp-default"/>
       <repopackage name="sysfsutils"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
