@@ -29,6 +29,7 @@
 %bcond_without	openssl
 %bcond_without	ext2fs
 %endif
+
 Name:           libarchive
 Version:        3.4.2
 Release:        0
@@ -42,12 +43,14 @@ Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
 Patch2:         fix-soversion.patch
+BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  libzstd-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
@@ -164,27 +167,18 @@ Static library for libarchive
 %autopatch -p1
 
 %build
-export CFLAGS="%{optflags} -D_REENTRANT -pipe"
-export CXXFLAGS="$CFLAGS"
-%configure \
-	--disable-silent-rules \
-%if %{without static_libs}
-	--disable-static \
-%endif
-	--enable-bsdcpio
-
-# lzma mt detection is broken
-sed -i -e "/HAVE_LZMA_STREAM_ENCODER_MT/d" config.h
-
-make %{?_smp_mflags}
+%define __builder ninja
+%cmake
+%cmake_build
 
 %check
-make %{?_smp_mflags} check
+%ctest
 
 %install
-%make_install
+%cmake_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
+rm "%{buildroot}%{_libdir}/libarchive.a"
 rm "%{buildroot}%{_mandir}/man5/"{tar,cpio,mtree}.5*
 sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 
