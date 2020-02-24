@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 23 15:59:37 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 0.10.1
+  * Switch to 'locationforecast' product and use a more recent API 
+    version (bxo#16268)
+  * Fix invalid scrollbar index to add a label (bxo#16023)
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16182)
+  * Fix build with panel 4.15
+  * Make build output less verbose
+  * Use standard icon names (bxo#16059)
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:05:09 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

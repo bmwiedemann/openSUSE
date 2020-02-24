@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-panel-plugin-weather
+# spec file for package xfce4-weather-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with git
 %define panel_version 4.12.0
 %define plugin weather
 Name:           xfce4-weather-plugin
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Weather Condition Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-weather-plugin
-Source0:        http://archive.xfce.org/src/panel-plugins/%{name}/0.10/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/panel-plugins/xfce4-weather-plugin
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.10/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM xfce4-panel-plugin-weather-fix-no-return-in-nonvoid-function.patch gber@opensuse.org -- Return bogus value in case of an unhandled switch case
 Patch0:         xfce4-weather-plugin-fix-no-return-in-nonvoid-function.patch
 BuildRequires:  fdupes
@@ -51,7 +52,6 @@ Recommends:     %{name}-lang = %{version}
 Provides:       xfce4-panel-plugin-%{plugin} = %{version}-%{release}
 Obsoletes:      xfce4-panel-plugin-%{plugin} < %{version}-%{release}
 Obsoletes:      xfce4-panel-plugin-%{plugin}-debuginfo
-
 
 %description
 The Weather plugin shows short- and long-term weather forecasts.
