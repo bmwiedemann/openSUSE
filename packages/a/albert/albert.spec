@@ -1,7 +1,7 @@
 #
 # spec file for package albert
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,6 @@ Version:        0.16.1
 Release:        0
 Summary:        Desktop agnostic launcher
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://albertlauncher.github.io/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
@@ -43,6 +42,7 @@ BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.9
 BuildRequires:  pkgconfig(Qt5Xml) >= 5.9
 BuildRequires:  pkgconfig(muparser)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(xext)
 
 %description
 Access everything with virtually zero effort. Run applications,
