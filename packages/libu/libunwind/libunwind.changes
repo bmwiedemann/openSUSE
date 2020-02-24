@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 19 09:24:20 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build with GCC-10: [bsc#1160876]
+  * In GCC-10, the default option -fcommon will change to -fno-common
+- Add libunwind-gcc10-build-fno-common.patch
+ 
+-------------------------------------------------------------------
 Sun Jul  7 21:45:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description. Avoid name repetition in

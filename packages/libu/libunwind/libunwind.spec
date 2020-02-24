@@ -1,7 +1,7 @@
 #
 # spec file for package libunwind
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Release:        0
 Summary:        Call chain detection library
 License:        MIT
 Group:          System/Base
-Url:            http://savannah.nongnu.org/projects/libunwind/
-Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{realver}.tar.gz
-Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{realver}.tar.gz.sig
+URL:            https://savannah.nongnu.org/projects/libunwind/
+Source0:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{realver}.tar.gz
+Source1:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{realver}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch0:         libunwind-gcc10-build-fno-common.patch
 BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
@@ -47,6 +48,7 @@ A C programming interface (API) to determine the call chain of a program.
 
 %prep
 %setup -q -n %{name}-%{realver}
+%patch0 -p1
 
 %build
 %configure \
