@@ -277,4 +277,17 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
 - Use %license macro</comment>
     <requestid>764793</requestid>
   </revision>
+  <revision rev="38" vrev="8">
+    <srcmd5>d280d1685c0fddb137b3a7840cbf309f</srcmd5>
+    <version>2.33</version>
+    <time>1582556078</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Change-typedef-List-to-typedef-xList.patch:
+  * Change 'typedef List' to 'typedef xList'.
+    Since SLURM exposes a type List in its public API without proper
+    namespacing we need to change this type in pdsh.
+    To remain compatible with older versions of SLURM whose type List
+    was identical to pdsh's we need to rename not only the struct.</comment>
+    <requestid>778681</requestid>
+  </revision>
 </revisionlist>

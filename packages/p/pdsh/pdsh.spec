@@ -60,6 +60,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch1:         pdsh-rename-list-to-xlist.patch
+Patch2:         Change-typedef-List-to-typedef-xList.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Prereq: 
 # Set this to 1 to build with genders support and framework for
@@ -131,6 +132,7 @@ Plugin for pdsh to determine nodes to run on from netgroups.
 %prep
 %setup -q 
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
