@@ -1,0 +1,34 @@
+Index: utfcpp-3.1/CMakeLists.txt
+===================================================================
+--- utfcpp-3.1.orig/CMakeLists.txt
++++ utfcpp-3.1/CMakeLists.txt
+@@ -32,6 +32,5 @@ endif()
+ 
+ if(UTF8_TESTS)
+     enable_testing()
+-    add_subdirectory(extern/gtest)
+     add_subdirectory(tests)
+ endif()
+Index: utfcpp-3.1/tests/CMakeLists.txt
+===================================================================
+--- utfcpp-3.1.orig/tests/CMakeLists.txt
++++ utfcpp-3.1/tests/CMakeLists.txt
+@@ -16,15 +16,18 @@ target_link_libraries(negative PRIVATE u
+ target_link_libraries(cpp11 PRIVATE
+     utf8::cpp
+     gtest_main
++    gtest
+     )
+ target_link_libraries(apitests PRIVATE
+     utf8::cpp
+     gtest_main
++    gtest
+ )
+ 
+ target_link_libraries(noexceptionstests PRIVATE
+     utf8::cpp
+     gtest_main
++    gtest
+ )
+ target_compile_options(noexceptionstests PUBLIC -fno-exceptions)
+ 

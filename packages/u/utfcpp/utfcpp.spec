@@ -1,7 +1,7 @@
 #
 # spec file for package utfcpp
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,45 +12,53 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         uglyver 2_3_4
 Name:           utfcpp
-Version:        2.3.4
+Version:        3.1
 Release:        0
 Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
-Group:          Development/Libraries/C and C++
-Url:            http://sourceforge.net/projects/utfcpp/
-Source:         http://download.sourceforge.net/%{name}/utf8_v%{uglyver}.zip
-BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/nemtrif/utfcpp
+Source:         https://github.com/nemtrif/utfcpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE utfcpp-use_system_gtest.patch aloisio@gmx.com -- use system-supplied googletest
+Patch0:         utfcpp-use_system_gtest.patch
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  googletest-devel
 
 %description
-A library for handling UTF-8 encoded strings.
-
-%prep
-%setup -q -n source
-
-%build
-
-%install
-install -d %{buildroot}/%{_includedir}/utf8
-install -m0644 utf8.h %{buildroot}/%{_includedir}
-install -m0644 utf8/{checked,unchecked,core}.h %{buildroot}/%{_includedir}/utf8
+A C++ library for handling UTF-8 encoded strings.
 
 %package devel
 Summary:        A library for handling UTF-8 encoded strings
-Group:          Development/Libraries/C and C++
 
 %description devel
-A library for handling UTF-8 encoded strings.
+A C++ library for handling UTF-8 encoded strings.
+
+%prep
+%autosetup -p1
+
+%build
+%cmake
+
+%install
+%cmake_install
+
+%check
+make -C build test
 
 %files devel
-%defattr(-,root,root)
-%{_includedir}/utf8/
-%{_includedir}/utf8.h
+%dir %{_includedir}/utf8cpp
+%{_includedir}/utf8cpp/utf8.h
+%dir %{_includedir}/utf8cpp/utf8
+%{_includedir}/utf8cpp/utf8/checked.h
+%{_includedir}/utf8cpp/utf8/core.h
+%{_includedir}/utf8cpp/utf8/cpp11.h
+%{_includedir}/utf8cpp/utf8/unchecked.h
+%dir %{_libdir}/cmake/utf8cpp
+%{_libdir}/cmake/utf8cpp/utf8cppConfig.cmake
 
 %changelog
