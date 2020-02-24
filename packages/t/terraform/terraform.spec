@@ -1,7 +1,7 @@
 #
 # spec file for package terraform
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           terraform
-Version:        0.12.19
+Version:        0.12.21
 Release:        0
 Summary:        Tool for building infrastructure safely and efficiently
 License:        MPL-2.0
@@ -29,7 +29,7 @@ BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 # See: https://github.com/hashicorp/terraform/issues/22807
-ExcludeArch:    %ix86
+ExcludeArch:    %{ix86}
 %{go_nostrip}
 %{go_provides}
 

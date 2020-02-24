@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb 19 18:30:17 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Update to 0.12.21
+  NEW FEATURES:
+   * backend/cos: New backend "cos", supporting using Tencent Cloud Storage as a remote backend.
+   * command/login: Enable "terraform login" and add support for UI-generated tokens ([#23995](https://github.com/hashicorp/terraform/issues/23995))
+   * command/logout: Add "terraform logout" command to remove local credentials ([#24048](https://github.com/hashicorp/terraform/issues/24048))
+  ENHANCEMENTS:
+   * command/workspace delete: release lock after workspace removal warning ([#24085](https://github.com/hashicorp/terraform/issues/24085))
+   * lang/funcs: add `setsubtract` function ([#23424](https://github.com/hashicorp/terraform/issues/23424))
+  BUG FIXES:
+   * command/state show: Fix an issue when a resource has a non-default provider configured ([#24027](https://github.com/hashicorp/terraform/issues/24027))
+   * backend/remote-state: Fix issues where lingering lock files remained when deleting non-empty workspaces ([#24085](https://github.com/hashicorp/terraform/issues/24085))
+   * command/import: Release lock if initialization error occurs on import ([#23318](https://github.com/hashicorp/terraform/issues/23318))
+   * terraform: Fix panic when using `for_each` with a set containing `null` values ([#24047](https://github.com/hashicorp/terraform/issues/24047))
+
+-------------------------------------------------------------------
+Wed Feb 19 07:05:47 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Run spec-cleaner
+- Update to 0.12.20
+  ENHANCEMENTS:
+   * config: New built-in functions `try` and `can` are intended to ease working with data structures whose shape isn't known statically. ([#23794](https://github.com/hashicorp/terraform/issues/23794))
+   * config: New, optional syntax for [`required_providers`](https://www.terraform.io/docs/configuration/terraform.html#specifying-required-provider-versions) setting in `terraform` blocks. This is not intended for general use yet but will support upcoming enhancements. [[#23843](https://github.com/hashicorp/terraform/issues/23843)] 
+
+  BUG FIXES:
+   * command/show: Fix an issue with show and aliased providers ([#23848](https://github.com/hashicorp/terraform/issues/23848))
+   * core: Always clean up empty resources before empty modules ([#23822](https://github.com/hashicorp/terraform/issues/23822))
+   * internal/modsdir/manifest: Fix CLI issue with Windows machines ([#23865](https://github.com/hashicorp/terraform/issues/23865))
+  EXPERIMENTS:
+   * This release includes an _opt-in experiment_ for [custom validation rules on module variables](https://www.terraform.io/docs/configuration/variables.html#custom-validation-rules).
+     The feature is not yet finalized and is subject to breaking changes even in minor releases, but we're introducing it here in order to solicit feedback from module developers about which use-cases it is meeting, any use-cases it _isn't_ meeting, and any situations where things feel harder to express than they might be.
+     Due to the experimental nature of this feature, we do not recommend using it in "production" modules yet and we require an explicit [experimental feature opt-in](https://www.terraform.io/docs/configuration/terraform.html#experimental-language-features) of `variable_validation`. Depending on what feedback we receive, the design of this experimental feature may change significantly in future versions without an automatic upgrade path. 
+
+-------------------------------------------------------------------
 Wed Jan 15 11:18:20 UTC 2020 - Jean-Philippe Evrard <jevrard@suse.com>
 
 - Update to 0.12.19
