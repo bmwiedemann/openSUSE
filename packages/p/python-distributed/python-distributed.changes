@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sat Feb 22 18:57:41 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.11.0:
+  * Add dask serialization of CUDA objects (GH#3482) John Kirkham
+  * Suppress cuML ImportError (GH#3499) John Kirkham
+  * Msgpack 1.0 compatibility (GH#3494) James Bourbeau
+  * Register cuML serializers (GH#3485) John Kirkham
+  * Check exact equality for worker state (GH#3483) Brett Naul
+  * Serialize 1-D, contiguous, uint8 CUDA frames (GH#3475) John
+    Kirkham
+  * Update NumPy array serialization to handle non-contiguous slices
+    (GH#3474) James Bourbeau
+  * Propose fix for collection based resources docs (GH#3480) Chris
+    Roat
+  * Remove --verbose flag from CI runs (GH#3484) Matthew Rocklin
+  * Do not duplicate messages in scheduler report (GH#3477) Jakub
+    Beránek
+  * Register Dask cuDF serializers (GH#3478) John Kirkham
+  * Add support for Python 3.8 (GH#3249) James Bourbeau
+  * Add last seen column to worker table and highlight errant workers
+    (GH#3468) kaelgreco
+  * Change default value of local_directory from empty string to None
+    (GH#3441) condoratberlin
+  * Clear old docs (GH#3458) Matthew Rocklin
+  * Change default multiprocessing behavior to spawn (GH#3461) Matthew
+    Rocklin
+  * Split dashboard host on additional slashes to handle inproc
+    (GH#3466) Jacob Tomlinson
+  * Update locality.rst (GH#3470) Dustin Tindall
+  * Minor gen.Return cleanup (GH#3469) James Bourbeau
+  * Update comparison logic for worker state (GH#3321) rockwellw
+  * Update minimum tblib version to 1.6.0 (GH#3451) James Bourbeau
+  * Add total row to workers plot in dashboard (GH#3464) Julia Signell
+  * Workaround RecursionError on profile data (GH#3455) Tom Augspurger
+  * Include code and summary in performance report (GH#3462) Matthew
+    Rocklin
+  * Skip test_open_close_many_workers on Python 3.6 (GH#3459) Matthew
+    Rocklin
+  * Support serializing/deserializing rmm.DeviceBuffer s (GH#3442)
+    John Kirkham
+  * Always add new TaskGroup to TaskPrefix (GH#3322) James Bourbeau
+  * Rerun black on the code base (GH#3444) John Kirkham
+  * Ensure __causes__ s of exceptions raised on workers are serialized
+    (GH#3430) Alex Adamson
+  * Adjust numba.cuda import and add check (GH#3446) John Kirkham
+  * Fix name of Numba serialization test (GH#3447) John Kirkham
+  * Checks for command parameters in ssh2 (GH#3078) Peter Andreas
+    Entschev
+  * Update worker_kwargs description in LocalCluster constructor
+    (GH#3438) James Bourbeau
+  * Ensure scheduler updates task and worker states after successful
+    worker data deletion (GH#3401) James Bourbeau
+  * Avoid loop= keyword in asyncio coordination primitives (GH#3437)
+    Matthew Rocklin
+  * Call pip as a module to avoid warnings (GH#3436) Cyril Shcherbin
+  * Add documentation of parameters in coordination primitives
+    (GH#3434) Søren Fuglede Jørgensen
+  * Replace tornado.locks with asyncio for
+    Events/Locks/Conditions/Semaphore (GH#3397) Matthew Rocklin
+  * Remove object from class hierarchy (GH#3432) Anderson Banihirwe
+  * Add dashboard_link property to Client (GH#3429) Jacob Tomlinson
+  * Allow memory monitor to evict data more aggressively (GH#3424)
+    fjetter
+  * Make _get_ip return an IP address when defaulting (GH#3418) Pierre
+    Glaser
+  * Support version checking with older versions of Dask (GH#3390)
+    Igor Gotlibovych
+  * Add Mac OS build to CI (GH#3358) James Bourbeau
+
+-------------------------------------------------------------------
 Sat Feb  8 21:46:57 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.10.0:
