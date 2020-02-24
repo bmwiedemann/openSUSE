@@ -40,4 +40,15 @@
   * better python 3.7 compatibility</comment>
     <requestid>680067</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7126b42c0d1c69b973b0dc8d0af97387</srcmd5>
+    <version>2.0.1</version>
+    <time>1582556062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Drop python2 and python3.4 support
+  * Fix #126: '_io.BufferedRandom' object has no attribute 'buffer'
+  * Fix #109 blockdiag does not work with recent pillow</comment>
+    <requestid>778638</requestid>
+  </revision>
 </revisionlist>

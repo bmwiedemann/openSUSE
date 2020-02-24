@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 24 02:11:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * Drop python2 and python3.4 support
+  * Fix #126: '_io.BufferedRandom' object has no attribute 'buffer'
+  * Fix #109 blockdiag does not work with recent pillow
+
+-------------------------------------------------------------------
 Thu Feb 28 09:38:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.4:
