@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define _name Greybird
 
 Name:           greybird-theme
-Version:        3.22.10+git17.4d806cd
+Version:        3.22.11+git4.320a703
 Release:        0
-Url:            https://github.com/shimmerproject/Greybird
+URL:            https://github.com/shimmerproject/Greybird
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
 License:        GPL-2.0-or-later OR CC-BY-SA-3.0
 Group:          System/GUI/GNOME
