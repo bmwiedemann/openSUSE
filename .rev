@@ -408,4 +408,15 @@ Documentation
   * Fix compiler warnings.</comment>
     <requestid>770346</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ec13a9769b65a8d7d42a5a99b6bb069d</srcmd5>
+    <version>3.5.2</version>
+    <time>1582555787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.2:
+  * Portability issues and minor cosmetic issues.
+  * The lalr1.cc skeleton properly rejects unsupported values for
+    parse.lac (as yacc.c does).</comment>
+    <requestid>775252</requestid>
+  </revision>
 </revisionlist>
