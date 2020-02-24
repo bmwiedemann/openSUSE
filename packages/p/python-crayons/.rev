@@ -27,4 +27,18 @@
  * Disable colors on TERM=dumb</comment>
     <requestid>681480</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b677213f0fe1254093bdafbf28e5edbd</srcmd5>
+    <version>0.3.0</version>
+    <time>1582556071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0 
+  * Rewrites clean to just remove ANSI codes, not whatever it was doing before (which seemed to be stripping all characters from the string)
+  * Adds random function to get a random color (thanks @azillion)
+  * Adds replace_color function to allow setting replacement for a given color (e.g. replace blue with magneta) (thanks @frostming)
+  * Adds reset_replace_color to reset any replacement colors set
+- Update URL in the spec to be correct
+- Write a description</comment>
+    <requestid>778646</requestid>
+  </revision>
 </revisionlist>

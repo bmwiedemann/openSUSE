@@ -1,7 +1,7 @@
 #
 # spec file for package python-crayons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-crayons
-Version:        0.2.0 
+Version:        0.3.0 
 Release:        0
 Summary:        Colored strings for terminal usage
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/kennethreitz/httpbin
+URL:            https://github.com/MasterOdin/crayons
 Source:         https://files.pythonhosted.org/packages/source/c/crayons/crayons-%{version}.tar.gz
 Source1:        LICENSE
 BuildRequires:  %{python_module setuptools}
@@ -33,6 +33,9 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
+Crayons is a simple module to give you colored strings for terminal usage.
+Included colors are red, green, yellow, blue, black, magenta, cyan, white,
+and normal.
 
 %prep
 %setup -q -n crayons-%{version}

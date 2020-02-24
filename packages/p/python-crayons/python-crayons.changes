@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 24 05:03:28 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.0 
+  * Rewrites clean to just remove ANSI codes, not whatever it was doing before (which seemed to be stripping all characters from the string)
+  * Adds random function to get a random color (thanks @azillion)
+  * Adds replace_color function to allow setting replacement for a given color (e.g. replace blue with magneta) (thanks @frostming)
+  * Adds reset_replace_color to reset any replacement colors set
+- Update URL in the spec to be correct
+- Write a description
+
+-------------------------------------------------------------------
 Mon Mar  4 14:43:50 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.2.0
