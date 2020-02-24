@@ -600,4 +600,12 @@
     <comment></comment>
     <requestid>765497</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c2501784150a47e9c5cf69756d82fc75</srcmd5>
+    <version>1.2.4</version>
+    <time>1582555849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4.</comment>
+    <requestid>778250</requestid>
+  </revision>
 </revisionlist>

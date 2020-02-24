@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 19 20:55:09 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.2.4
+  * fix binding TCP and UDP sockets to the same port, when
+    specifying port 0
+  * fix announce_to_all_trackers and announce_to_all_tiers behavior
+  * fix suggest_read_cache setting
+  * back-off tracker hostname looksups resulting in NXDOMAIN
+  * lower SOCKS5 UDP keepalive timeout
+  * fix external IP voting for multi-homed DHT nodes
+  * deprecate broadcast_lsd setting. Just use multicast
+  * deprecate upnp_ignore_nonrouters setting
+  * don't attempt sending event=stopped if event=start never
+    succeeded
+  * make sure &key= stays consistent between different source
+    IPs (as mandated by BEP7)
+  * fix binding sockets to outgoing interface
+  * add new socks5_alert to trouble shoot SOCKS5 proxies
+- Cleanup spec file, remove conditionals for Leap 42.x
+
+-------------------------------------------------------------------
 Sat Jan 18 17:19:16 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 1.2.3

@@ -18,13 +18,13 @@
 
 %define _name   libtorrent
 %define sover   10
-%define _version 1_2_3
+%define _version 1_2_4
 %bcond_without  python2
 %bcond_without  python3
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
@@ -40,7 +40,6 @@ BuildRequires:  python-devel
 %if %{with python3}
 BuildRequires:  python3-devel
 %endif
-%if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_random-devel
 BuildRequires:  libboost_system-devel
@@ -49,11 +48,6 @@ BuildRequires:  libboost_python-devel
 %endif
 %if %{with python3}
 BuildRequires:  libboost_python3-devel
-%endif
-%else
-BuildRequires:  boost-devel >= 1.54
-# For quadmath.h we need gcc-fortran on openSUSE Leap 14.x and older.
-BuildRequires:  gcc-fortran
 %endif
 
 %description
@@ -75,29 +69,15 @@ alternative to all the other bittorrent implementations around.
 It is a library and not a full featured client, although it comes
 with a working example client.
 
-%if %{with python2}
-%if 0%{?suse_version} >= 1500
 %package -n python2-%{name}
-%else
-%package -n python-%{name}
-%endif
 Summary:        Python Bindings for libtorrent-rasterbar
-Group:          Development/Libraries/Python
-
-%if 0%{?suse_version} >= 1500
 # python-libtorrent-rasterbar was last used in openSUSE Leap 42.2.
+Group:          Development/Libraries/Python
 Provides:       python-%{name} = %{version}-%{release}
 Obsoletes:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
-%else
-Provides:       python2-%{name} = %{version}-%{release}
-Obsoletes:      python2-%{name} < %{version}-%{release}
-
-%description -n python-%{name}
-%endif
 Python Bindings for the libtorrent-rasterbar package.
-%endif
 
 %package -n python3-%{name}
 Summary:        Python Bindings for libtorrent-rasterbar
@@ -118,12 +98,8 @@ Summary:        Header files for libtorrent, a C++ implementation of the BitTorr
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 Requires:       gcc-c++
-Requires:       pkgconfig(openssl)
-%if 0%{?suse_version} >= 1500
 Requires:       libboost_headers-devel
-%else
-Requires:       boost-devel >= 1.54
-%endif
+Requires:       pkgconfig(openssl)
 
 %description devel
 libtorrent-rasterbar is a C++ library that aims to be a good
@@ -147,13 +123,6 @@ Documentation for the libtorrent-rasterbar package.
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-%if 0%{?suse_version} < 1500
-export CXXFLAGS="$CXXFLAGS -std=c++11"
-%ifarch aarch64
-# Some architectures require explicit linkage to libboost_atomic on boost 1.55 and older.
-export LIBS="$LIBS -lboost_atomic"
-%endif
-%endif
 
 %global _configure ../configure
 for py in %{?with_python2:python} %{?with_python3:python3}; do
@@ -222,11 +191,7 @@ make check %{?_smp_mflags} V=1 -C build-python3
 %{_libdir}/%{name}.so.%{sover}*
 
 %if %{with python2}
-%if 0%{?suse_version} >= 1500
 %files -n python2-%{name}
-%else
-%files -n python-%{name}
-%endif
 %{python_sitearch}/%{_name}*.so
 %{python_sitearch}/python_%{_name}-*
 %endif
