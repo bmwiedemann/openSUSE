@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Thu Feb 20 07:00:15 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.5 (bnc#1012628).
+- io_uring: fix deferred req iovec leak (bnc#1012628).
+- io_uring: retry raw bdev writes if we hit -EOPNOTSUPP
+  (bnc#1012628).
+- Input: synaptics - switch T470s to RMI4 by default
+  (bnc#1012628).
+- Input: synaptics - enable SMBus on ThinkPad L470 (bnc#1012628).
+- Input: synaptics - remove the LEN0049 dmi id from topbuttonpad
+  list (bnc#1012628).
+- ALSA: usb-audio: Add clock validity quirk for Denon
+  MC7000/MCX8000 (bnc#1012628).
+- ALSA: usb-audio: Fix UAC2/3 effect unit parsing (bnc#1012628).
+- ALSA: pcm: Fix double hw_free calls (bnc#1012628).
+- ALSA: hda/realtek - Add more codec supported Headset Button
+  (bnc#1012628).
+- ALSA: hda/realtek - Fix silent output on MSI-GL73 (bnc#1012628).
+- ALSA: usb-audio: Apply sample rate quirk for Audioengine D1
+  (bnc#1012628).
+- ACPI: EC: Fix flushing of pending work (bnc#1012628).
+- ACPI: PM: s2idle: Avoid possible race related to the EC GPE
+  (bnc#1012628).
+- ACPICA: Introduce acpi_any_gpe_status_set() (bnc#1012628).
+- ACPI: PM: s2idle: Prevent spurious SCIs from waking up the
+  system (bnc#1012628).
+- ext4: don't assume that mmp_nodename/bdevname have NUL
+  (bnc#1012628).
+- ext4: fix support for inode sizes > 1024 bytes (bnc#1012628).
+- ext4: fix checksum errors with indexed dirs (bnc#1012628).
+- ext4: add cond_resched() to ext4_protect_reserved_inode
+  (bnc#1012628).
+- ext4: improve explanation of a mount failure caused by a
+  misconfigured kernel (bnc#1012628).
+- Btrfs: fix race between using extent maps and merging them
+  (bnc#1012628).
+- btrfs: ref-verify: fix memory leaks (bnc#1012628).
+- btrfs: print message when tree-log replay starts (bnc#1012628).
+- btrfs: log message when rw remount is attempted with unclean
+  tree-log (bnc#1012628).
+- ARM: npcm: Bring back GPIOLIB support (bnc#1012628).
+- gpio: xilinx: Fix bug where the wrong GPIO register is written
+  to (bnc#1012628).
+- arm64: ssbs: Fix context-switch when SSBS is present on all CPUs
+  (bnc#1012628).
+- xprtrdma: Fix DMA scatter-gather list mapping imbalance
+  (bnc#1012628).
+- cifs: make sure we do not overflow the max EA buffer size
+  (bnc#1012628).
+- jbd2: move the clearing of b_modified flag to the
+  journal_unmap_buffer() (bnc#1012628).
+- jbd2: do not clear the BH_Mapped flag when forgetting a metadata
+  buffer (bnc#1012628).
+- EDAC/sysfs: Remove csrow objects on errors (bnc#1012628).
+- EDAC/mc: Fix use-after-free and memleaks during device removal
+  (bnc#1012628).
+- KVM: nVMX: Use correct root level for nested EPT shadow page
+  tables (bnc#1012628).
+- KVM: x86/mmu: Fix struct guest_walker arrays for 5-level paging
+  (bnc#1012628).
+- perf/x86/amd: Add missing L2 misses event spec to AMD Family
+  17h's event map (bnc#1012628).
+- s390/pkey: fix missing length of protected key on return
+  (bnc#1012628).
+- s390/uv: Fix handling of length extensions (bnc#1012628).
+- drm/vgem: Close use-after-free race in vgem_gem_create
+  (bnc#1012628).
+- drm/mst: Fix possible NULL pointer dereference in
+  drm_dp_mst_process_up_req() (bnc#1012628).
+- drm/panfrost: Make sure the shrinker does not reclaim referenced
+  BOs (bnc#1012628).
+- drm/amdgpu: update smu_v11_0_pptable.h (bnc#1012628).
+- drm/amdgpu:/navi10: use the ODCAP enum to index the caps array
+  (bnc#1012628).
+- bus: moxtet: fix potential stack buffer overflow (bnc#1012628).
+- nvme: fix the parameter order for nvme_get_log in
+  nvme_get_fw_slot_info (bnc#1012628).
+- drivers: ipmi: fix off-by-one bounds check that leads to a
+  out-of-bounds write (bnc#1012628).
+- IB/mlx5: Return failure when rts2rts_qp_counters_set_id is
+  not supported (bnc#1012628).
+- IB/hfi1: Acquire lock to release TID entries when user file
+  is closed (bnc#1012628).
+- IB/hfi1: Close window for pq and request coliding (bnc#1012628).
+- IB/rdmavt: Reset all QPs when the device is shut down
+  (bnc#1012628).
+- IB/umad: Fix kernel crash while unloading ib_umad (bnc#1012628).
+- RDMA/core: Fix invalid memory access in spec_filter_size
+  (bnc#1012628).
+- RDMA/iw_cxgb4: initiate CLOSE when entering TERM (bnc#1012628).
+- RDMA/hfi1: Fix memory leak in _dev_comp_vect_mappings_create
+  (bnc#1012628).
+- RDMA/rxe: Fix soft lockup problem due to using tasklets in
+  softirq (bnc#1012628).
+- RDMA/core: Fix protection fault in get_pkey_idx_qp_list
+  (bnc#1012628).
+- s390/time: Fix clk type in get_tod_clock (bnc#1012628).
+- Input: ili210x - fix return value of is_visible function
+  (bnc#1012628).
+- sched/uclamp: Reject negative values in cpu_uclamp_write()
+  (bnc#1012628).
+- mac80211: use more bits for ack_frame_id (bnc#1012628).
+- spmi: pmic-arb: Set lockdep class for hierarchical irq domains
+  (bnc#1012628).
+- perf/x86/intel: Fix inaccurate period in context switch for
+  auto-reload (bnc#1012628).
+- hwmon: (pmbus/ltc2978) Fix PMBus polling of MFR_COMMON
+  definitions (bnc#1012628).
+- mac80211: fix quiet mode activation in action frames
+  (bnc#1012628).
+- cifs: fix mount option display for sec=krb5i (bnc#1012628).
+- ceph: noacl mount option is effectively ignored (bnc#1012628).
+- arm64: dts: fast models: Fix FVP PCI interrupt-map property
+  (bnc#1012628).
+- KVM: x86: Mask off reserved bit from #DB exception payload
+  (bnc#1012628).
+- KVM: nVMX: Handle pending #DB when injecting INIT VM-exit
+  (bnc#1012628).
+- perf stat: Don't report a null stalled cycles per insn metric
+  (bnc#1012628).
+- NFSv4.1 make cachethis=no for writes (bnc#1012628).
+- NFSv4: Ensure the delegation cred is pinned when we call
+  delegreturn (bnc#1012628).
+- Revert "drm/sun4i: drv: Allow framebuffer modifiers in mode
+  config" (bnc#1012628).
+- drm/i915/pmu: Correct the rc6 offset upon enabling
+  (bnc#1012628).
+- ext4: choose hardlimit when softlimit is larger than hardlimit
+  in ext4_statfs_project() (bnc#1012628).
+- io-wq: add support for inheriting ->fs (bnc#1012628).
+- NFSv4: Add accounting for the number of active delegations held
+  (bnc#1012628).
+- gpio: add gpiod_toggle_active_low() (bnc#1012628).
+- mmc: core: Rework wp-gpio handling (bnc#1012628).
+- commit 5157fff
+
+-------------------------------------------------------------------
+Wed Feb 19 08:03:41 CET 2020 - jslaby@suse.cz
+
+- Update config files (bnc#1161832).
+  Disable CONFIG_MODULE_SIG on i386. We don't run pesign on i386 builds,
+  hence the modules are not signed at all. This results in module
+  verification failures and warnings.
+  CONFIG_SECURITY_LOCKDOWN_LSM depends on (selects) CONFIG_MODULE_SIG, so
+  we have to disable it too. But it makes no sense to lockdown without
+  module signature anyway.
+- commit 599e3c2
+
+-------------------------------------------------------------------
+Mon Feb 17 08:56:00 CET 2020 - jslaby@suse.cz
+
+- vt: selection, close sel_buffer race (bnc#1162928
+  CVE-2020-8648).
+- vt: selection, handle pending signals in paste_selection
+  (bnc#1162928 CVE-2020-8648).
+- commit 813d10d
+
+-------------------------------------------------------------------
 Sat Feb 15 09:16:55 CET 2020 - jslaby@suse.cz
 
 - bcache: fix incorrect data type usage in btree_flush_write()
