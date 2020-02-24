@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 23 10:42:00 UTC 2020 - ecsos@opensuse.org
+
+- Update to 4.11.2
+  * Bug fixes:
+    - title: "4.11.2 fixes a couple of regressions that broke the 
+      New bookmark button in the viewer and scrolling in the 
+      content server library view. Also fixes calculation of 
+      default column widths in viewer not changing when font size
+      is changed."
+
+-------------------------------------------------------------------
 Fri Feb 21 16:54:31 UTC 2020 - ecsos@opensuse.org
 
 - Update to 4.11.1
