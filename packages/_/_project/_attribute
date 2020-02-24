@@ -52,7 +52,7 @@
   boo#1144894: '20190921'
   boo#1145372: '20191023'
   boo#1145461: '20190820'
-  boo#1146736: '20200221'
+  boo#1146736: '20200222'
   boo#1148477: '20191009'
   boo#1148850: '20191008'
   boo#1150977: '20190917'
@@ -64,7 +64,7 @@
   boo#1153160: '20191210'
   boo#1153162: '20191009'
   boo#1153188: '20191014'
-  boo#1153514: '20200221'
+  boo#1153514: '20200222'
   boo#1153562: '20200213'
   boo#1153568: '20191204'
   boo#1154311: '20191018'
@@ -96,10 +96,10 @@
   boo#1161365: '20200128'
   boo#1161399: '20200121'
   boo#1161687: '20200218'
-  boo#1162853: '20200221'
+  boo#1162853: '20200222'
   boo#1163655: '20200218'
   boo#1163766: '20200222'
-  boo#1164313: '20200221'
+  boo#1164313: '20200222'
   bsc#1114673: '20191202'
   bsc#1120957: '20190508'
   bsc#1126782: '20191016'
@@ -276,7 +276,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200222</value>
+    <value>20200224</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -320,6 +320,8 @@ products:
   - kubic-metallb-controller-image:
     - x86_64
   - kubic-metallb-speaker-image:
+    - x86_64
+  - kubic-nfs-client-provisioner-image:
     - x86_64
   - kubic-pause-image:
     - i586
@@ -435,7 +437,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20200222'
 published: '20200220'
 publishing: '20200220'
 testing: '20200222'
