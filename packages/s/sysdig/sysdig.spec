@@ -25,6 +25,7 @@ Group:          System/Monitoring
 URL:            http://www.sysdig.org/
 Source0:        https://github.com/draios/%{name}/archive/%{version}/sysdig-%{version}.tar.gz
 BuildRequires:  %{kernel_module_package_buildreqs}
+Patch0:         sysdig-32bit.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -52,7 +53,8 @@ Think of it as strace + tcpdump + lsof + awesome sauce. With a little Lua
 cherry on top.
 
 %prep
-%autosetup
+%setup -q
+%patch0 -p0
 
 %build
 export SYSDIG_CHISEL_DIR=%{_datadir}%{name}/chisels

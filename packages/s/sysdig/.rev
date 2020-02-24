@@ -362,4 +362,12 @@
   * Added more detail to probe loader error message (#1541)</comment>
     <requestid>762636</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9d4dd973a9a1189528989728348f2d08</srcmd5>
+    <version>0.26.5</version>
+    <time>1582556088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778694</requestid>
+  </revision>
 </revisionlist>
