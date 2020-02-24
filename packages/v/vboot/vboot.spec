@@ -1,7 +1,7 @@
 #
 # spec file for package vboot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define major_version 78
 %define minor_version 12499
@@ -37,7 +38,7 @@ BuildRequires:  libyaml-devel
 BuildRequires:  python
 BuildRequires:  trousers-devel
 BuildRequires:  xz-devel
-ExcludeArch:    ppc ppc64 ppc64le
+ExcludeArch:    ppc ppc64 ppc64le riscv64
 
 %description
 VBoot contains verified boot reference implementation and
