@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 11:10:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable binding to localhost only, breaks usage in containers
+
+-------------------------------------------------------------------
 Thu Dec 19 09:23:57 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Change the owner of files inside the tarball to root:root
