@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-default-base
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
-%define block_drivers loop dm-mod ahci ata_piix mptsas mptspi BusLogic sym53c8xx aam53c974 rbd
+%define block_drivers loop dm-mod ahci ata_piix mptsas mptspi BusLogic sym53c8xx aam53c974 rbd brd
 
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
 xhci-hcd xhci-pci typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 13:38:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add the brd module, used by the LTP testsuite and tiny
+
+-------------------------------------------------------------------
 Thu Jan  9 14:24:45 UTC 2020 - Guilherme Moro <gmoro@suse.com>
 
 - Remove iscsi_ibft (bsc#1157460)
