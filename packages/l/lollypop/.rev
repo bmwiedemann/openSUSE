@@ -1258,4 +1258,16 @@
     glgo#World/lollypop#2195).</comment>
     <requestid>774235</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>9096bfa0d5ffcfa8dc2c5d12e40e018c</srcmd5>
+    <version>1.2.23</version>
+    <time>1582555916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.23:
+  * Fix an issue with &quot;Stop after&quot; (glgo#World/lollypop#2200).
+  * Smarter &quot;random&quot; for albums (glgo#World/lollypop#2202).
+  * Fix issues with track duration (glgo#World/lollypop#2204,
+    glgo#World/lollypop#2205).</comment>
+    <requestid>778451</requestid>
+  </revision>
 </revisionlist>

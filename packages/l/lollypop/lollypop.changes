@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 22 19:41:14 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.23:
+  * Fix an issue with "Stop after" (glgo#World/lollypop#2200).
+  * Smarter "random" for albums (glgo#World/lollypop#2202).
+  * Fix issues with track duration (glgo#World/lollypop#2204,
+    glgo#World/lollypop#2205).
+
+-------------------------------------------------------------------
 Thu Feb 13 19:58:57 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.22:
