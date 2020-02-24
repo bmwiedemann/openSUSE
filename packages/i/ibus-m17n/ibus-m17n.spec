@@ -17,17 +17,18 @@
 
 
 Name:           ibus-m17n
-BuildRequires:  ibus-devel
-BuildRequires:  m17n-lib-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.4
+BuildRequires:  pkgconfig(m17n-shell)
 Version:        1.4.2
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
-Group:          System Environment/Libraries
+Group:          System/Localization
 Provides:       locale(ibus:am;ar;as;bn;fa;gu;he;hi;ja;ka;kk;kn;ko;lo;ml;my;ur;ru;vi;zh)
-URL:            http://code.google.com/p/ibus/
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/ibus/ibus-m17n
+Source:         https://github.com/ibus/ibus-m17n/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       ibus
 
@@ -39,8 +40,10 @@ the input table maps from m17n-db.
 %setup -q
 
 %build
-%configure --disable-static --libexecdir=%{_prefix}/%{_lib}/ibus
-make %{?jobs:-j %jobs}
+%configure --disable-static \
+           --libexecdir=%{_prefix}/%{_lib}/ibus \
+           --with-gtk=3.0
+%make_build
 
 %install
 %makeinstall

@@ -170,4 +170,14 @@
   * bug fixes (forwarded request 778194 from hillwood)</comment>
     <requestid>778195</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>819847b912ad1e40d28c7b85df89e922</srcmd5>
+    <version>1.4.2</version>
+    <time>1582555995</time>
+    <user>dimstar_suse</user>
+    <comment>- Change group as System/Localization
+- Enable ibus-m17n-setup build
+</comment>
+    <requestid>778525</requestid>
+  </revision>
 </revisionlist>
