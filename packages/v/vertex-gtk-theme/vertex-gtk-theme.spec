@@ -1,7 +1,7 @@
 #
 # spec file for package vertex-gtk-theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,7 +92,7 @@ ln -s 3.20 common/gtk-3.0/3.24
 %build
 ./autogen.sh
 %configure \
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
   --disable-gnome-shell
 %else
   --enable-gnome-shell

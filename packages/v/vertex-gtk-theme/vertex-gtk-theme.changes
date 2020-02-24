@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 23 16:38:41 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Correction the conditional of enable/disable GNOME Shell support
+  * Leap 15.x would stay with suse_version 1500 in the whole scope,
+    use > 1500 just won't work
+  * Looks 15.1 build succeed, let's disable building with GNOME Shell
+    support from 15.2
+
+-------------------------------------------------------------------
 Thu Oct 25 12:16:46 UTC 2018 - sor.alexei@meowr.ru
 
 - Support GTK+ 3.24.
