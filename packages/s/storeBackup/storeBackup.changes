@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:12:54 UTC 2020 - Thomas Wagner <wagner-thomas@gmx.at>
+
+- add missing requirement to `which`
+
+-------------------------------------------------------------------
 Mon Jan 20 18:00:00 UTC 2020 - Jan Ritzerfeld <suse@bugs.jan.ritzerfeld.org>
 
 - add fix-tmp-lock-file-race-condition.patch:

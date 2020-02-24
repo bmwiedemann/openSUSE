@@ -40,6 +40,7 @@ Requires:       e2fsprogs
 Requires:       fileutils
 Requires:       sh-utils
 Requires:       textutils
+Requires:       which
 Recommends:     cron
 
 %description 
