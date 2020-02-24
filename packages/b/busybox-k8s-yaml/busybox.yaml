@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: default
+spec:
+  containers:
+  - name: busybox
+    image: registry.opensuse.org/opensuse/busybox
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: Always
+  restartPolicy: Always
