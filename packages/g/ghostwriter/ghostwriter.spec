@@ -17,7 +17,7 @@
 
 
 Name:           ghostwriter
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
