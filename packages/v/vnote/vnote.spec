@@ -1,7 +1,7 @@
 #
 # spec file for package vnote
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           vnote
-Version:        2.7
+Version:        2.8.2
 Release:        0
 Summary:        A Vim-inspired note-taking application, especially for Markdown
 License:        MIT
 Group:          Productivity/Text/Editors
-Url:            https://github.com/tamlok/vnote
-Source0:        %{name}-%{version}.zip
+URL:            https://github.com/tamlok/vnote
+Source0:        %{name}-%{version}.tar.gz
 Source1:        hoedown-e63d216.zip
 Source2:        marked-f1ddca7.zip
 BuildRequires:  libqt5-qtbase-devel >= 5.7.1

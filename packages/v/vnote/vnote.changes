@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 16 05:37:25 UTC 2020 - Grover Chou <groverchout@gmail.com>
+
+- update to version v2.8.2
+ * Upgrade Mermaid.js to latest release
+ * Fix PlantUML online resources
+ * Add a configuration in Settings to control code block copy button
+ * Add supports for image hosting, including service GitHub, Gitee, Wechat, and Tencent Cloud
+ * Support sorting notebooks in context menu
+ * Add theme v_next
+
+-------------------------------------------------------------------
 Mon Jun 24 08:45:44 UTC 2019 - Grover Chou <groverchout@gmail.com>
 
 - update to version v2.7
