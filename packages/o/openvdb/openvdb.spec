@@ -27,13 +27,19 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
+BuildRequires:  glu-devel
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
+BuildRequires:  libglfw-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
+BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(blosc)
@@ -63,6 +69,15 @@ This package contains the C++ header files and symbolic links to the shared
 libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
 
+%package tools
+Summary:        OpenVDB command line tools
+Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
+
+%description	tools
+This package contains the command line utilites that come with the OpenVDB
+library: vdb_lod, vdb_print, vdb_render, vdb_view
+
 %prep
 %setup -q
 
@@ -78,9 +93,11 @@ sed -i 's/lib$/lib64/g' openvdb/CMakeLists.txt
     -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC " \
     -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC " \
     -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE \
-    -DOPENVDB_BUILD_BINARIES=OFF \
+    -DOPENVDB_BUILD_VDB_PRINT=ON \
+    -DOPENVDB_BUILD_VDB_LOD=ON \
+    -DOPENVDB_BUILD_VDB_RENDER=ON \
+    -DOPENVDB_BUILD_VDB_VIEW=ON \
     -DOPENVDB_BUILD_PYTHON_MODULE=OFF \
-    -DOPENVDB_INSTALL_CMAKE_MODULES=OFF \
     -DOPENVDB_ENABLE_RPATH=OFF \
     -DUSE_EXR=ON
 
@@ -100,7 +117,16 @@ rm %{buildroot}%{_libdir}/libopenvdb.a
 %{_libdir}/*.so.*
 
 %files devel
+%license LICENSE
 %{_includedir}/%{name}
+%{_libdir}/cmake/OpenVDB
 %{_libdir}/*.so
+
+%files tools
+%license LICENSE
+%{_bindir}/vdb_lod
+%{_bindir}/vdb_print
+%{_bindir}/vdb_render
+%{_bindir}/vdb_view
 
 %changelog
