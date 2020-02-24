@@ -18,11 +18,15 @@
 
 # bcond is confusingly backwards to what you expect - without means
 #  to ENABLE the option, with means to DISABLE it.
-%if (0%{is_opensuse} > 0) || (0%{?sle_version} > 150100)
+%if (0%{?sle_version} > 150099) || (0%{?suse_version} > 1549)
 %bcond_without lib389
-%bcond_with rust
 %else
 %bcond_with    lib389
+%endif
+
+%if (0%{?sle_version} > 150299) || (0%{?suse_version} > 1549)
+%bcond_without rust
+%else
 %bcond_with    rust
 %endif
 
@@ -47,7 +51,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.3.1~git0.a08202a5b
+Version:        1.4.3.3~git0.776c6edf5
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -56,8 +60,13 @@ URL:            https://pagure.io/389-ds-base
 Source:         389-ds-base-%{version}.tar.bz2
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
+%if %{with rust}
 Source3:        vendor.tar.gz
+%endif
 Source9:        %{name}-rpmlintrc
+%if %{with rust}
+Patch1:         0001-fix-cargo-build.patch
+%endif
 # 389-ds does not support i686
 ExcludeArch:    %ix86
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -96,7 +105,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)
@@ -235,18 +246,15 @@ the private key and other crypto material, without user intervention.  svrcore
 uses the facilities provided by NSS.
 
 %prep
+# Extract the 389-ds sources.
 %setup -q -a 1 -n %{name}-base-%{version}
-%setup -q -n %{name}-base-%{version} -D -T -a 3
 
-rm -rf .cargo
-mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+# Extract the vendor.tar.gz. The -D -T here prevents removal of the sources
+# from the previous setup step.
+%if %{with rust}
+%setup -q -n %{name}-base-%{version} -D -T -a 3
+%endif
+%patch1 -p1
 
 %build
 # Make sure python3 is used in shebangs
@@ -303,6 +311,8 @@ popd
 %if %{with lib389}
 pushd src/lib389
 %python_install
+mv %{buildroot}/usr/libexec/dirsrv/dscontainer %{buildroot}%{_prefix}/lib/dirsrv/
+rmdir %{buildroot}/usr/libexec/dirsrv/
 popd
 %endif
 
@@ -495,7 +505,7 @@ exit 0
 %{_unitdir}/dirsrv@.service
 %{_unitdir}/dirsrv.target
 %exclude %{_unitdir}/dirsrv@.service.d/custom.conf
-%{_prefix}/lib/dirsrv/
+%{_prefix}/lib/dirsrv/ds_systemd_ask_password_acl
 # This has to be hardcoded to /lib - $libdir changes between lib/lib64, but
 # sysctl.d is always in /lib.
 %{_prefix}/lib/sysctl.d/*
@@ -543,9 +553,8 @@ exit 0
 %{_sbindir}/dscreate
 %{_sbindir}/dsctl
 %{_sbindir}/dsidm
-%{_sbindir}/dscontainer
-# %dir %{_prefix}/libexec/dirsrv
-# %{_prefix}/libexec/dirsrv/dscontainer
+%dir %{_prefix}/lib/dirsrv/
+%{_prefix}/lib/dirsrv/dscontainer
 %{_mandir}/man8/dsconf.8.gz
 %{_mandir}/man8/dscreate.8.gz
 %{_mandir}/man8/dsctl.8.gz

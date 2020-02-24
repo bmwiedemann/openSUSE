@@ -1,0 +1,62 @@
+From ee740a74baf6454b149ffe6061f8419f727bb16d Mon Sep 17 00:00:00 2001
+From: William Brown <william@blackhats.net.au>
+Date: Mon, 17 Feb 2020 13:59:27 +1000
+Subject: [PATCH] fix cargo build
+
+---
+ Makefile.am  |  2 +-
+ configure.ac | 15 +++++++--------
+ 2 files changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index df986bfee..9180d170c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2180,7 +2180,7 @@ ns_slapd_LDADD = libslapd.la libldaputil.la libsvrcore.la $(LDAPSDK_LINK) $(NSS_
+ 	$(NSPR_LINK) $(SASL_LINK) $(LIBNSL) $(LIBSOCKET) $(THREADLIB) $(SYSTEMD_LIBS) $(EVENT_LINK)
+ if RUST_ENABLE
+ ns_slapd_LDADD += $(RNSSLAPD_LIB)
+-ns_slapd_CPPFLAGS = -lssl -lcrypto
++ns_slapd_CPPFLAGS += -lssl -lcrypto
+ endif
+ ns_slapd_DEPENDENCIES = libslapd.la libldaputil.la
+ # We need to link ns-slapd with the C++ compiler on HP-UX since we load
+diff --git a/configure.ac b/configure.ac
+index 78803cc9b..895b11a04 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,18 +104,15 @@ if test "$enable_rust" = yes -o "$enable_rust_offline" = yes; then
+     AS_IF([test "$CARGO" != "yes" -o "$RUSTC" != "yes"], [
+       AC_MSG_FAILURE("Rust based plugins cannot be built cargo=$CARGO rustc=$RUSTC")
+     ])
+-
+-    if test "$enable_rust_offline" = yes; then
+-        rust_vendor_sources = "replace-with = \"vendored-sources\""
+-    else
+-        rust_vendor_sources = ""
+-    fi
+-    AC_SUBST([rust_vendor_sources])
+-    AC_CONFIG_FILES([.cargo/config])
+ fi
+ AC_SUBST([enable_rust])
+ AM_CONDITIONAL([RUST_ENABLE],[test "$enable_rust" = yes -o "$enable_rust_offline" = yes])
+ 
++AS_IF([test "$enable_rust_offline" = yes],
++    [rust_vendor_sources="replace-with = \"vendored-sources\""],
++    [rust_vendor_sources=""])
++AC_SUBST([rust_vendor_sources])
++
+ 
+ AC_MSG_CHECKING(for --enable-debug)
+ AC_ARG_ENABLE(debug, AS_HELP_STRING([--enable-debug], [Enable debug features (default: no)]),
+@@ -925,5 +922,7 @@ AC_CONFIG_FILES([src/pkgconfig/dirsrv.pc src/pkgconfig/libsds.pc src/pkgconfig/s
+ 
+ AC_CONFIG_FILES([Makefile rpm/389-ds-base.spec  ])
+ 
++AC_CONFIG_FILES([.cargo/config])
++
+ AC_OUTPUT
+ 
+-- 
+2.21.1 (Apple Git-122.3)
+

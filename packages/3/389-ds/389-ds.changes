@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Feb 17 03:45:13 UTC 2020 - 389-ds-maintainer@suse.de
+
+- Add requirement on openssl for rust-openssl as part of ldaptokens
+- Add rust vendored libs
+- Add 0001-fix-cargo-build.patch to fix minor rust build issues
+- Update to version 1.4.3.3~git0.776c6edf5:
+  * Bump version to 1.4.3.3
+  * Issue 50855 - remove unused file from UI
+  * Issue 50855 - UI: Port Server Tab to React
+  * Issue 49845 - README does not contain complete information on building
+  * Issue: 50686 - Port fractional replication test cases from TET to python3 part 1
+  * Ticket - 49623-cont cenotaph errors on modrdn operations
+  * Issue 50882 - Fix healthcheck errors for instances that do not have TLS enabled
+  * Issue 50886 - Typo in the replication debug message
+  * Issue 50873 - Fix healthcheck and virtual attr check
+  * Issue 50873 - Fix issues with healthcheck tool
+  * Issue 50028 - Add a new CI test case
+  * Issue 49946 - Add a new CI test case
+  * Issue 50117 - Add a new CI test case
+  * Ticket 50787 - fix implementation of attr unique
+  * Ticket 50859 - support running only with ldaps socket
+  * Issue 50823 - dsctl doesn't work with 'slapd-' in the instance name
+  * Ticket 49624 cont - DB Deadlock on modrdn appears to corrupt database and entry cache
+  * Issue 50867 - Fix minor buildsys issues
+  * Issue 50737 - Allow building with rust online without vendoring
+  * Ticket 50831 add cargo.lock to allow offline builds
+  * Ticket 50694 - import PEM certs on startup
+  * Ticket 50857 - Memory leak in ACI using IP subject
+  * Issue 49761 - Fix CI test suite issues
+  * Issue 50853 - Fix NULL pointer deref in config setting
+  * Issue 50850 - Fix dsctl healthcheck for python36
+  * Issue 49990 - Need to enforce a hard maximum limit for file descriptors
+  * Ticket 48707 - ldapssotoken for authentication
+  * Bump version to 1.4.3.2
+  * Issue 49254 - Fix compiler failures and warnings
+  * Ticket 50741-cont bdb_start - Detected Disorderly Shutdown
+  * Issue 50836 - Port Schema UI tab to React
+  * Issue 50842 - Decrease 389-console Cockpit component size
+  * Ticket 50790 - Add result text when filter is invalid
+  * Issue 50627 - Add ASAN logs to HTML report
+  * Issue 50834 - Incorrectly setting the NSS default SSL version max
+  * Issue 50829 - Disk monitoring rotated log cleanup causes heap-use-after-free
+  * Ticket 50709 - (cont) Several memory leaks reported by Valgrind for 389-ds 1.3.9.1-10
+  * Ticket 50784 - performance testing scripts
+  * Issue 50599 - Fix memory leak when removing db region files
+  * Issue 49395 - Set the default TLS version min to TLS1.2
+  * Issue 50818 - dsconf pwdpolicy get error
+  * Issue 50824 - dsctl remove fails with "name 'ensure_str' is not defined"
+  * Issue 50599 - Remove db region files prior to db recovery
+  * Issue 50812 -  dscontainer executable should be placed under /usr/libexec/dirsrv/
+  * Issue 50816 - dsconf allows the root password to be set to nothing
+  * Issue 50798 - incorrect bytes in format string(fix import issue)
+
+-------------------------------------------------------------------
 Mon Jan 20 02:36:11 UTC 2020 - 389-ds-maintainer@suse.de
 
 - Update to version 1.4.3.1~git0.a08202a5b:
