@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 04:23:56 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort python glob to make
+  package build reproducible
+
+-------------------------------------------------------------------
 Wed Feb 19 08:25:11 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 3.23.4 and remove all traces of python2

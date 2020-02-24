@@ -55,6 +55,8 @@ Source2:        ftp://alpha.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Patch0:         solfege-configure-fix.dif
 Patch1:         solfege-python-fixcompile.patch
 Patch2:         solfege-nogenreadmeetc.patch
+# PATCH-FIX-UPSTREAM - sent by mail to tca@gnu - is upstream orphaned?
+Patch3:         reproducible.patch
 Requires:       lilypond-century-schoolbook-l-fonts
 Requires:       lilypond-emmentaler-fonts
 Requires:       lilypond-fonts-common
@@ -74,6 +76,7 @@ sing chords, scales, dictation and remember rhythmic patterns.
 %patch0
 %patch1
 %patch2
+%patch3 -p1
 
 for i in `grep -rl "/usr/bin/env python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
 #for i in `grep -rl "!/usr/bin/python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
