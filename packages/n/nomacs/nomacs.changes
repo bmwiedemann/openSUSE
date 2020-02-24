@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 23 19:28:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add nomacs-3.12-fix-DkImageStorage.patch: Fix DkImageStorage
+  (commits e4d0c079, 7779c75b).
+- Drop openSUSE Leap 42.x support.
+
+-------------------------------------------------------------------
 Mon Sep  2 10:34:00 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-build-with-GCC9.patch.

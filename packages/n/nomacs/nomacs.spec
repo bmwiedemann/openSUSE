@@ -1,7 +1,7 @@
 #
 # spec file for package nomacs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,12 @@ Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Url:            https://nomacs.org/
+URL:            https://nomacs.org/
 Source:         https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         Fix-build-with-GCC9.patch
+# PATCH-FIX-UPSTREAM nomacs-3.12-fix-DkImageStorage.patch arojas@archlinux.org -- Fix DkImageStorage (commits e4d0c079, 7779c75b).
+Patch0:         nomacs-3.12-fix-DkImageStorage.patch
+# PATCH-FIX-UPSTREAM Fix-build-with-GCC9.patch kensington@gentoo.org -- Fix build with GCC9 (commit 37805e3b).
+Patch1:         Fix-build-with-GCC9.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -56,8 +59,8 @@ differences (e.g. schemes of architects to show the progress).
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 sed -i 's/\r$//g' ImageLounge/Readme/*
 
 %build
@@ -69,16 +72,13 @@ pushd ImageLounge/
   -DUSE_SYSTEM_QUAZIP=ON                               \
   -DCMAKE_SHARED_LINKER_FLAGS=""                       \
   -DENABLE_TRANSLATIONS=ON
-make %{?_smp_mflags} V=1
+%make_build
 popd
 
 %install
 pushd ImageLounge/
 %cmake_install
 popd
-%if 0%{?suse_version} < 1500
-mv %{buildroot}%{_datadir}/{metainfo,appdata}/
-%endif
 
 rm %{buildroot}%{_libdir}/lib%{name}*.so
 %suse_update_desktop_file %{name}
@@ -88,24 +88,12 @@ rm %{buildroot}%{_libdir}/lib%{name}*.so
 sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 %fdupes %{buildroot}%{_datadir}/
 
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%endif
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%endif
+%postun -p /sbin/ldconfig
 
 %files
-%if 0%{?suse_version} >= 1500
 %license ImageLounge/Readme/COPYRIGHT ImageLounge/Readme/LICENSE*
-%else
-%doc ImageLounge/Readme/COPYRIGHT ImageLounge/Readme/LICENSE*
-%endif
 %doc ImageLounge/Readme/README
 %{_bindir}/%{name}
 %{_libdir}/lib%{name}*.so.*
@@ -113,13 +101,8 @@ sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 %exclude "%{_datadir}/nomacs/Image Lounge/translations/"
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.*
-%if 0%{?suse_version} >= 1500
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/%{name}.appdata.xml
-%else
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
-%endif
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files lang -f %{name}.lang
