@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb 16 03:22:03 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 5.131
+  * debian/control: Closes: #949941
+    - build-depend on python3-pep8, rather than pep8 transitional package
+  * usr/lib/byobu/disk:
+    - change disk status to white on darker magenta/purple, helps with
+      readability on some terminals
+  * usr/lib/byobu/include/select-session.py: LP: #1750430
+    - commit edeae41 fixed the excessive creation of sessions by not
+      creating different sessions. This commit adjust the behavior in a way
+      that having .reuse-sessions enabled tmux will properly attach and remove
+      sessions when dettaching and will also kill the last session available
+    - When more than two sessions exist, tmux asks which session to use
+  * usr/share/byobu/keybindings/f-keys.tmux: LP: #1861555
+    - Update usage of tmux swap-window so that focus stays with the
+      original window.
+
+-------------------------------------------------------------------
 Tue Feb  4 04:26:59 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.130

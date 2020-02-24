@@ -2,7 +2,7 @@
 # spec file for package byobu
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
+# Copyright (c) 2020 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           byobu
-Version:        5.130
+Version:        5.131
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
@@ -67,7 +67,7 @@ Help files and changelog for %{name}.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -84,7 +84,7 @@ mv %{buildroot}%{_datadir}/%{name}/desktop/byobu.desktop.old %{buildroot}%{_data
 %suse_update_desktop_file -G "Screen Profiles" -r %{name} System TerminalEmulator
 %fdupes %{buildroot}%{_mandir}/
 
-sed -i 's,/usr/bin/env python3,/usr/bin/python3,' %{buildroot}/usr/lib/byobu/include/*.py
+sed -i 's,%{_bindir}/env python3,%{_bindir}/python3,' %{buildroot}%{_prefix}/lib/byobu/include/*.py
 
 %files
 %license COPYING
