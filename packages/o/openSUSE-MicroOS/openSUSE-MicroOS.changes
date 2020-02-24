@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 20 15:08:44 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Enable back ignition using qemu fw_cfg on kvm images on aarch64.
+
+-------------------------------------------------------------------
 Thu Feb 13 16:19:57 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove plymouth.enable=0, plymouth is not part of image.
