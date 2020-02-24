@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 19 07:53:56 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.2.133
+  * vulkaninfo: support ASTC HDR formats
+  * vulkaninfo: Update VkFormat ranges
+  * vulkaninfo: new vkconfig_output backdend
+  * vulkaninfo: Check for surface extensions
+
+-------------------------------------------------------------------
 Fri Feb  7 13:12:50 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 -  Really update to 1.2.132
