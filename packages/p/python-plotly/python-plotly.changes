@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 22 18:54:15 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.5.1:
+  * Updated
+    + Updated Plotly.js to version 1.52.2. See the plotly.js CHANGELOG
+      for more information on bug fixes.
+  * Fixed
+    + update_annotations, update_shapes and update_layout_images now
+      no longer require the patch argument, as per the docstring #2167
+    + px.defaults no longer accepts arbitrary keys #2168
+    + better error message when pandas is not installed #2125
+    + support columns of numerical type in path argument of
+      px.sunburst/px.treemap and add values of color column in
+      hoverlabel for px.sunburst/px.treemap #2133
+
+-------------------------------------------------------------------
 Thu Jan 30 17:27:22 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 4.5.0
