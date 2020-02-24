@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Feb 22 18:54:54 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require pandas >= 0.23
+
+- update to version 2.11.0:
+  * Array
+    + Cache result of Array.shape (:pr:`5916`) Bruce Merry
+    + Improve accuracy of estimate_graph_size for rechunk (:pr:`5907`)
+      Bruce Merry
+    + Skip rechunk steps that do not alter chunking (:pr:`5909`) Bruce
+      Merry
+    + Support dtype and other kwargs in coarsen (:pr:`5903`) Matthew
+      Rocklin
+    + Push chunk override from map_blocks into blockwise (:pr:`5895`)
+      Bruce Merry
+    + Avoid using rewrite_blockwise for a singleton (:pr:`5890`) Bruce
+      Merry
+    + Optimize slices_from_chunks (:pr:`5891`) Bruce Merry
+    + Avoid unnecessary __getitem__ in block() when chunks have
+      correct dimensionality (:pr:`5884`) Thomas Robitaille
+  * Bag
+    + Add include_path option for dask.bag.read_text (:pr:`5836`)
+      Yifan Gu
+    + Fixes ValueError in delayed execution of bagged NumPy array
+      (:pr:`5828`) Surya Avala
+  * Core
+    + CI: Pin msgpack (:pr:`5923`) Tom Augspurger
+    + Rename test_inner to test_outer (:pr:`5922`) Shiva Raisinghani
+    + quote should quote dicts too (:pr:`5905`) Bruce Merry
+    + Register a normalizer for literal (:pr:`5898`) Bruce Merry
+    + Improve layer name synthesis for non-HLGs (:pr:`5888`) Bruce
+      Merry
+    + Replace flake8 pre-commit-hook with upstream (:pr:`5892`) Julia
+      Signell
+    + Call pip as a module to avoid warnings (:pr:`5861`) Cyril
+      Shcherbin
+    + Close ThreadPool at exit (:pr:`5852`) Tom Augspurger
+    + Remove dask.dataframe import in tokenization code (:pr:`5855`)
+      James Bourbeau
+  * DataFrame
+    + Require pandas>=0.23 (:pr:`5883`) Tom Augspurger
+    + Remove lambda from dataframe aggregation (:pr:`5901`) Matthew
+      Rocklin
+    + Fix exception chaining in dataframe/__init__.py (:pr:`5882`) Ram
+      Rachum
+    + Add support for reductions on empty dataframes (:pr:`5804`)
+      Shiva Raisinghani
+    + Expose sort= argument for groupby (:pr:`5801`) Richard J Zamora
+    + Add df.empty property (:pr:`5711`) rockwellw
+    + Use parquet read speed-ups from
+      fastparquet.api.paths_to_cats. (:pr:`5821`) Igor Gotlibovych
+  * Documentation
+    + Deprecate doc_wraps (:pr:`5912`) Tom Augspurger
+    + Update array internal design docs for HighLevelGraph era
+      (:pr:`5889`) Bruce Merry
+    + Move over dashboard connection docs (:pr:`5877`) Matthew Rocklin
+    + Move prometheus docs from distributed.dask.org (:pr:`5876`)
+      Matthew Rocklin
+    + Removing duplicated DO block at the end (:pr:`5878`) K.-Michael
+      Aye
+    + map_blocks see also (:pr:`5874`) Tom Augspurger
+    + More derived from (:pr:`5871`) Julia Signell
+    + Fix typo (:pr:`5866`) Yetunde Dada
+    + Fix typo in cloud.rst (:pr:`5860`) Andrew Thomas
+    + Add note pointing to code of conduct and diversity statement
+      (:pr:`5844`) Matthew Rocklin
+
+-------------------------------------------------------------------
 Sat Feb  8 21:45:22 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.10.1:

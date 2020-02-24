@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -71,7 +71,7 @@ BuildRequires:  %{python_module lzmaffi}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module multipledispatch}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas >= 0.19.0}
+BuildRequires:  %{python_module pandas >= 0.23.0}
 BuildRequires:  %{python_module pandas-datareader}
 BuildRequires:  %{python_module partd >= 0.3.7}
 BuildRequires:  %{python_module psutil}
@@ -174,7 +174,7 @@ Requires:       %{name}-array = %{version}
 Requires:       %{name}-multiprocessing = %{version}
 Requires:       python-fsspec >= 0.5.1
 Requires:       python-numpy >= 1.13.0
-Requires:       python-pandas >= 0.21.0
+Requires:       python-pandas >= 0.23.0
 Requires:       python-partd >= 0.3.10
 Requires:       python-six
 Recommends:     %{name}-bag = %{version}
