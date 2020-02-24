@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 20 21:46:23 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- update to 2.7.1
+- Bug fixes
+  * irc: fix crash when receiving a malformed message 352 (who)
+  * irc: fix crash when a new message 005 is received with longer nick prefixes
+  * irc: fix crash when receiving a malformed message 324 (channel mode) (CVE-2020-8955)
+- removed CVE-2020-8955.patch: fixed upstream
+
+-------------------------------------------------------------------
 Mon Feb 17 12:43:01 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix boo#1163889 - CVE-2020-8955 , add patch CVE-2020-8955.patch

@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        2.7
+Version:        2.7.1
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source1:        weechat.desktop
 Source2:        %{name}.keyring
 Source3:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
 Source4:        %{name}.changes
-Patch0:         CVE-2020-8955.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -127,7 +126,6 @@ Spell-checking support for %{name}, using the aspell and enchant libraries.
 
 %prep
 %setup -q
-%patch0 -p1
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE4}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
