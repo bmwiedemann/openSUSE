@@ -31,6 +31,7 @@ Source3:        %name.keyring
 Source99:       baselibs.conf
 Patch1:         no-static.diff
 Patch2:         libseccomp-fix_aarch64-test.patch
+Patch3:         SNR_ppoll.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes

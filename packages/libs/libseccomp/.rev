@@ -238,4 +238,13 @@
     <comment></comment>
     <requestid>761662</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>6b25d1efc3a48acdaddb48a564ba8d03</srcmd5>
+    <version>2.4.2</version>
+    <time>1582555781</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix ntpsec and others build (accidental drop of symbols):
+  * SNR_ppoll.patch (forwarded request 774797 from scarabeus_iv)</comment>
+    <requestid>774875</requestid>
+  </revision>
 </revisionlist>
