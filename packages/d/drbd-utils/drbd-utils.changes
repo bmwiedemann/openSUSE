@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 25 06:18:56 UTC 2020 - nick wang <nwang@suse.com>
+
+- Update to 9.12.0
+ * drbd.ocf: new wrc_timeout param, fail on attach failure,
+   remove_master_score_if_peer_primary param,
+   fail_promote_early_if_peer_primary param, improved helper logging
+   no error if wait-connect fails
+ * drbdadm,v9: fix dumping meta-disk in corner case
+ * crm-fence-peer.9.sh: fix Pacemaker 2 compat
+ * drbdsetup,v9: fixes for various json output corner cases
+ * drbdsetup,all: prepare for netlink changes (linux v5.2+)
+ * drbdadm,v9: fix a check for setting up connections multiple times
+ * init: setup file backed loop devices (mapping from LINSTOR)
+ * rr-conflict: add retry-connect option (>=drbd 9.0.20)
+ * drbdmon: 256/16 colors; events2 handler improvements
+ * drbdsetup,v9: new flag: force-resync (>=drbd 9.0.21)
+- Remove netlink-prepare-for-kernel-v5.2.patch
+  Remove netlink-Add-NLA_F_NESTED-flag-to-nested-attribute.patch
+  Remove cibadmin-return-code-convert.patch in 144c8cc1d
+
+-------------------------------------------------------------------
 Mon Feb  3 12:26:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to
@@ -199,23 +220,23 @@ Fri Sep  1 08:13:38 UTC 2017 - nwang@suse.com
  * drbdmon: peer-device status, version info, node name
  * "drbdadm status" for v8.4
  * set peer-device-options only once
-- Remove Update-block-drbd-script-to-support-xen.patch 
+- Remove Update-block-drbd-script-to-support-xen.patch
 
 -------------------------------------------------------------------
 Fri Aug 25 06:45:36 UTC 2017 - nwang@suse.com
 
-- fate#323392, enable drbdmon which imported in 8.9.10 
+- fate#323392, enable drbdmon which imported in 8.9.10
 
 -------------------------------------------------------------------
 Fri Aug 11 06:09:20 UTC 2017 - nwang@suse.com
 
 - bsc#1052352, support block drbd for legacy format.
-- Add Update-block-drbd-script-to-support-xen.patch 
+- Add Update-block-drbd-script-to-support-xen.patch
 
 -------------------------------------------------------------------
 Tue Jul 25 08:35:18 UTC 2017 - nwang@suse.com
 
-- bsc#1048671, Fix handler called from kernel always invalid 
+- bsc#1048671, Fix handler called from kernel always invalid
   for stacking resource
 - Add fix_call_khelper_with_stack.patch 
 
