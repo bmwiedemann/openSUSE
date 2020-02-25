@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 24 19:22:54 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.9.16.
+  * Fix build failure with Poppler ≥ 0.85.
+- Disable tests: depend on Python2.
+
+-------------------------------------------------------------------
 Mon Dec 23 18:35:39 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
 
-- Ipdate to 0.9.15.
+- Update to 0.9.15.
   * Fix build failure with Poppler ≥ 0.83.
 
 -------------------------------------------------------------------

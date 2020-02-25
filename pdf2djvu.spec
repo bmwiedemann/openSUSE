@@ -1,7 +1,7 @@
 #
 # spec file for package pdf2djvu
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pdf2djvu
-Version:        0.9.15
+Version:        0.9.16
 Release:        0
 Summary:        PDF to DjVu Converter
 License:        GPL-2.0-only
@@ -34,11 +34,6 @@ BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.25
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(poppler) >= 0.24
 BuildRequires:  pkgconfig(uuid)
-# Requires to run tests correctly.
-BuildRequires:  liberation-fonts
-BuildRequires:  python2-Pillow
-BuildRequires:  python2-nose
-#
 Requires:       djvulibre
 Recommends:     %{name}-lang
 
@@ -59,11 +54,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 %find_lang %{name} --with-man
-
-%check
-%if 0%{?suse_version} >= 1210
-make %{?_smp_mflags} test
-%endif
 
 %files
 %license doc/COPYING
