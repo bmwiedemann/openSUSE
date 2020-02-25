@@ -347,7 +347,7 @@
             fsmountoptions="noatime"
             bootloader="grub2"
             firmware="efi"
-            kernelcmdline="console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal rd.neednet=0"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -384,7 +384,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="efi"
-            kernelcmdline="console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200n8 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal rd.neednet=0"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -421,7 +421,7 @@
             bootloader="grub2"
             bootloader_console="gfxterm"
             firmware="uefi"
-            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            kernelcmdline="console=ttyS0,115200 console=tty0 quiet net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal rd.neednet=0"
             bootpartition="false"
             devicepersistency="by-uuid"
             btrfs_root_is_snapshot="true"
@@ -596,7 +596,7 @@
         <package name="raspberrypi-firmware" arch="aarch64"/>
         <package name="raspberrypi-firmware-config" arch="aarch64"/>
         <package name="raspberrypi-firmware-dt" arch="aarch64"/>
-        <package name="u-boot-rpi3" arch="aarch64"/>
+        <package name="u-boot-rpiarm64" arch="aarch64"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <package name="bcm43xx-firmware"/>

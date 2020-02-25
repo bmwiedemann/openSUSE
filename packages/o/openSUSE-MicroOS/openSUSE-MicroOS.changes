@@ -4,6 +4,13 @@ Thu Feb 20 15:08:44 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 - Enable back ignition using qemu fw_cfg on kvm images on aarch64.
 
 -------------------------------------------------------------------
+Mon Feb 17 15:35:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Set rd.neednet=0 on all bare metal images as it's broken in
+  dracut currently (boo#1161438) and especially on RPi4 it can't be
+  worked around manually at all (no USB keyboard support in GRUB)
+
+-------------------------------------------------------------------
 Thu Feb 13 16:19:57 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove plymouth.enable=0, plymouth is not part of image.
@@ -14,6 +21,16 @@ Thu Feb 13 16:19:57 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 - Create a volume for grub2 for aarch64.
 - Disable ignition using qemu fw_cfg on kvm images on aarch64 until
   kernel is fixed.
+
+-------------------------------------------------------------------
+Tue Feb  4 14:34:28 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Force inclusion of pcie-brcmstb on RPi (boo#1162669)
+
+-------------------------------------------------------------------
+Thu Jan 30 12:07:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use u-boot-rpiarm64
 
 -------------------------------------------------------------------
 Mon Jan 27 11:03:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
