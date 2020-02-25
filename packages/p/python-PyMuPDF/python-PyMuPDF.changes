@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:22:02 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version update to 1.16.11
+  * Add redact/replace support
+  * Fix PolygonAnnotation
+
+-------------------------------------------------------------------
 Wed Jan 15 11:54:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.16.10
