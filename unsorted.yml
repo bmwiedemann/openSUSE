@@ -232,6 +232,8 @@ unsorted:
   - SimGear-devel 
   - SoQt-devel 
   - SoQt-doc 
+  - Srain 
+  - Srain-lang 
   - ThePEG-devel: [x86_64] 
   - ThePEG-libs: [x86_64] 
   - UEFITool 
@@ -1018,6 +1020,7 @@ unsorted:
   - bash-completion-devel 
   - bash-completion-doc 
   - bash-devel 
+  - bash-git-prompt 
   - bash-loadables 
   - bat 
   - batctl 
@@ -1057,6 +1060,7 @@ unsorted:
   - bcel 
   - bcel5_3 
   - bcel5_3-javadoc 
+  - bcftools 
   - bcg729-devel 
   - bchunk 
   - bcmatroska2-devel 
@@ -1320,7 +1324,7 @@ unsorted:
   - bumpversion 
   - busybox 
   - busybox-container 
-  - busybox-k8s-yaml 
+  - busybox-k8s-yaml: [i586] 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1728,6 +1732,7 @@ unsorted:
   - cmpi-bindings-perl 
   - cmpi-bindings-pywbem 
   - cmpi-bindings-ruby 
+  - cmpi-provider-register 
   - cmrt-devel 
   - cmuclmtk 
   - cmus 
@@ -8410,7 +8415,6 @@ unsorted:
   - libcrossc1-32bit: [x86_64] 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto45 
   - libcrypto45-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_2_0 
@@ -8423,6 +8427,7 @@ unsorted:
   - libcrystalhd3 
   - libcrystalhd3-32bit: [x86_64] 
   - libcsirocsa0 
+  - libcsironn0 
   - libcsnd6-6_0 
   - libcsound64-6_0 
   - libcsparse3 
@@ -11310,7 +11315,6 @@ unsorted:
   - librepo0 
   - librepository-javadoc 
   - librepute1 
-  - libressl 
   - libressl-devel 
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
@@ -11507,6 +11511,7 @@ unsorted:
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
+  - libsfcUtil0 
   - libsfml2-2_5 
   - libsfml2-2_5-32bit: [x86_64] 
   - libsfst-hfst0 
@@ -11650,7 +11655,6 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
-  - libssl47 
   - libssl47-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
@@ -11859,7 +11863,6 @@ unsorted:
   - libtinyobjloader1 
   - libtinyxml2-6 
   - libtirpc-devel 
-  - libtls19 
   - libtls19-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb4 
@@ -17700,7 +17703,6 @@ unsorted:
   - python-Cheetah 
   - python-Genshi-doc 
   - python-Hamlib 
-  - python-Jinja2-emacs 
   - python-Jinja2-vim 
   - python-Kivy-doc 
   - python-LHAPDF 
@@ -17712,6 +17714,7 @@ unsorted:
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
+  - python-Sphinx-doc-man 
   - python-Twisted-doc 
   - python-WTForms-doc 
   - python-WebOb-doc 
@@ -17887,8 +17890,6 @@ unsorted:
   - python-pygame-doc 
   - python-pyghmi-doc 
   - python-pygraphviz-doc 
-  - python-pylibacl: [i586] 
-  - python-pylibacl-doc: [i586] 
   - python-pymisp-doc 
   - python-pymod2pkg-doc 
   - python-pynag 
@@ -19494,7 +19495,7 @@ unsorted:
   - python2-pykwalify 
   - python2-pylama 
   - python2-pylev 
-  - python2-pylibacl: [x86_64] 
+  - python2-pylibacl 
   - python2-pyliblzma 
   - python2-pylibmc 
   - python2-pylint 
@@ -19838,7 +19839,6 @@ unsorted:
   - python2-semver 
   - python2-senlinclient 
   - python2-sentry-sdk 
-  - python2-seqdiag 
   - python2-serpent 
   - python2-serpy 
   - python2-serverfiles 
@@ -19906,7 +19906,6 @@ unsorted:
   - python2-sphinxcontrib-asyncio 
   - python2-sphinxcontrib-autoprogram 
   - python2-sphinxcontrib-autoprogram-doc 
-  - python2-sphinxcontrib-blockdiag 
   - python2-sphinxcontrib-documentedlist 
   - python2-sphinxcontrib-github-alt 
   - python2-sphinxcontrib-httpdomain 
@@ -19916,7 +19915,6 @@ unsorted:
   - python2-sphinxcontrib-pecanwsme 
   - python2-sphinxcontrib-plantuml 
   - python2-sphinxcontrib-programoutput 
-  - python2-sphinxcontrib-seqdiag 
   - python2-sphinxcontrib-websupport 
   - python2-spidev 
   - python2-spotipy 
@@ -20073,6 +20071,7 @@ unsorted:
   - python2-validate_email 
   - python2-validators 
   - python2-varlink 
+  - python2-vcrpy 
   - python2-vcs 
   - python2-vcversioner 
   - python2-vega_datasets 
@@ -20380,6 +20379,7 @@ unsorted:
   - python3-SoundCard 
   - python3-SoundFile 
   - python3-SpeechRecognition 
+  - python3-Sphinx 
   - python3-Sphinx-latex 
   - python3-TagStats 
   - python3-Tempita 
@@ -20400,6 +20400,7 @@ unsorted:
   - python3-WebOb 
   - python3-WebTest 
   - python3-Werkzeug 
+  - python3-Whoosh 
   - python3-XStatic 
   - python3-XStatic-Angular-Schema-Form 
   - python3-XStatic-jQuery 
@@ -20449,6 +20450,7 @@ unsorted:
   - python3-aiorpcX 
   - python3-aiosmtplib 
   - python3-akismet 
+  - python3-alabaster 
   - python3-allpairspy 
   - python3-alsa 
   - python3-altair 
@@ -21078,6 +21080,7 @@ unsorted:
   - python3-dockerpty 
   - python3-docopt 
   - python3-docrepr 
+  - python3-docutils 
   - python3-docutils-ast-writer 
   - python3-dogpile.cache 
   - python3-dogslow 
@@ -21096,6 +21099,7 @@ unsorted:
   - python3-duckduckgo2 
   - python3-dukpy 
   - python3-dukpy-kovidgoyal 
+  - python3-dulwich 
   - python3-dynaconf 
   - python3-easydev 
   - python3-easygui 
@@ -21154,6 +21158,7 @@ unsorted:
   - python3-fastTSNE 
   - python3-fastcluster 
   - python3-fasteners 
+  - python3-fastimport 
   - python3-fastjet 
   - python3-fastnumbers 
   - python3-fastparquet 
@@ -21248,6 +21253,7 @@ unsorted:
   - python3-geomet 
   - python3-geopy 
   - python3-getmac 
+  - python3-geventhttpclient 
   - python3-gexiv2 
   - python3-ggplot 
   - python3-girder-client 
@@ -21285,6 +21291,7 @@ unsorted:
   - python3-google-resumable-media 
   - python3-googleapis-common-protos 
   - python3-googlemaps 
+  - python3-gpg 
   - python3-gpgme 
   - python3-gphoto2 
   - python3-gpiod 
@@ -21358,6 +21365,7 @@ unsorted:
   - python3-imagecodecs 
   - python3-imageio 
   - python3-imageio-ffmpeg 
+  - python3-imagesize 
   - python3-imbox 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -21887,6 +21895,7 @@ unsorted:
   - python3-pathvalidate 
   - python3-patsy 
   - python3-pbkdf2 
+  - python3-pbr 
   - python3-pcp 
   - python3-pdd 
   - python3-pdfkit 
@@ -22087,7 +22096,7 @@ unsorted:
   - python3-pylama 
   - python3-pylast 
   - python3-pylev 
-  - python3-pylibacl: [x86_64] 
+  - python3-pylibacl 
   - python3-pylineclip 
   - python3-pylint 
   - python3-pylons-sphinx-themes 
@@ -22174,6 +22183,7 @@ unsorted:
   - python3-pytest-attrib 
   - python3-pytest-bdd 
   - python3-pytest-benchmark 
+  - python3-pytest-black 
   - python3-pytest-check-links 
   - python3-pytest-click 
   - python3-pytest-codestyle 
@@ -22322,6 +22332,7 @@ unsorted:
   - python3-pyux 
   - python3-pyviz-comms 
   - python3-pyvmomi 
+  - python3-pywbem 
   - python3-pywinrm 
   - python3-pyxattr 
   - python3-pyxb 
@@ -22365,6 +22376,7 @@ unsorted:
   - python3-remoto 
   - python3-rencode 
   - python3-renderspec 
+  - python3-reno 
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
   - python3-repoze.who 
@@ -22404,6 +22416,7 @@ unsorted:
   - python3-rnginline 
   - python3-robot-detection 
   - python3-rollbar 
+  - python3-roman 
   - python3-rope 
   - python3-rply 
   - python3-rpmconf 
@@ -22511,6 +22524,7 @@ unsorted:
   - python3-smmap 
   - python3-smmap2 
   - python3-sniffio 
+  - python3-snowballstemmer 
   - python3-snuggs 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
@@ -22539,24 +22553,32 @@ unsorted:
   - python3-sphinx-removed-in 
   - python3-sphinx-testing 
   - python3-sphinx-version-warning 
+  - python3-sphinx_rtd_theme 
   - python3-sphinxcontrib-actdiag 
   - python3-sphinxcontrib-apidoc 
+  - python3-sphinxcontrib-applehelp 
   - python3-sphinxcontrib-asyncio 
   - python3-sphinxcontrib-autoprogram 
   - python3-sphinxcontrib-autoprogram-doc 
   - python3-sphinxcontrib-blockdiag 
+  - python3-sphinxcontrib-devhelp 
   - python3-sphinxcontrib-documentedlist 
   - python3-sphinxcontrib-github-alt 
+  - python3-sphinxcontrib-htmlhelp 
   - python3-sphinxcontrib-httpdomain 
   - python3-sphinxcontrib-issuetracker 
+  - python3-sphinxcontrib-jsmath 
   - python3-sphinxcontrib-newsfeed 
   - python3-sphinxcontrib-nwdiag 
   - python3-sphinxcontrib-pecanwsme 
   - python3-sphinxcontrib-plantuml 
   - python3-sphinxcontrib-programoutput 
+  - python3-sphinxcontrib-qthelp 
   - python3-sphinxcontrib-seqdiag 
+  - python3-sphinxcontrib-serializinghtml 
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
+  - python3-sphinxcontrib-websupport 
   - python3-spidev 
   - python3-splinter 
   - python3-spotipy 
@@ -24181,6 +24203,7 @@ unsorted:
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
   - samplicator 
+  - samtools 
   - sane-backends-32bit: [x86_64] 
   - sane-backends-devel 
   - sane-backends-devel-32bit: [x86_64] 
@@ -24245,6 +24268,7 @@ unsorted:
   - sblim-indication_helper 
   - sblim-indication_helper-devel 
   - sblim-sfcCommon-devel 
+  - sblim-sfcb 
   - sblim-sfcc-devel 
   - sblim-testsuite 
   - sblim-tools-libra-devel 
@@ -33716,6 +33740,7 @@ unsorted:
   - xen-devel 
   - xen-doc-html: [x86_64] 
   - xen-libs-32bit: [x86_64] 
+  - xen-tools-xendomains-wait-disk: [x86_64] 
   - xengine 
   - xerces-c 
   - xerces-c-doc 
