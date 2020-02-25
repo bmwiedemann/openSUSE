@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 20 15:57:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- The name of the cni-bridge in the default config changed from
+  "cni0" to "podman-cni0" with podman-1.6.0. Add a %trigger to
+  rename the bridge in the system to the new default if it exists.
+  The trigger is only excuted when updating podman-cni-config 
+  from something older than 1.6.0. This is mainly needed for SLE
+  where we're updating from 1.4.4 to 1.8.0 (bsc#1160460).
+
+-------------------------------------------------------------------
 Fri Feb  7 14:18:16 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Remove: 0001-clarify-container-prune-force.patch because it's now
   included in the release
-- Update podman to v1.8.0:
+- Update podman to v1.8.0 (bsc#1160460):
   * Features
     - The podman system service command has been added, providing a
       preview of Podman's new Docker-compatible API. This API is
@@ -522,6 +532,12 @@ Thu Sep  5 15:26:01 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
   additional OCI runtime in the configuration.
 
 -------------------------------------------------------------------
+Mon Sep  2 12:02:44 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add patch for CVE-2019-10214. bsc#1144065
+  + CVE-2019-10214.patch
+
+-------------------------------------------------------------------
 Tue Aug 27 08:04:20 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Update podman to v1.5.1
@@ -691,6 +707,12 @@ Wed Aug 14 08:26:22 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 - Update libpod.conf to support latest path discovery feature for
   `runc` and `conmon` binaries.
 - Re-enable 32bit build
+
+--------------------------------------------------------------------
+Tue Jul 30 07:46:16 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Remove fuse-overlayfs because it's (currently) an unsatisfied dependency on
+  SLE (bsc#1143386)
 
 -------------------------------------------------------------------
 Thu Jul 25 09:20:47 UTC 2019 - Richard Brown <rbrown@suse.com>

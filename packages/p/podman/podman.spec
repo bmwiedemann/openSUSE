@@ -87,6 +87,8 @@ skopeo, as they all share the same datastore backend.
 Summary:        Basic CNI configuration for podman
 Group:          System/Management
 Requires:       %{name} = %{version}
+# iproute2 is needed by the %triggerun scriplet
+Requires:       iproute2
 BuildArch:      noarch
 
 %description cni-config
@@ -194,5 +196,15 @@ install -D -m 0644 contrib/varlink/io.podman.socket %{buildroot}%{_unitdir}/io.p
 
 %postun
 %service_del_postun io.podman.service io.podman.socket
+
+%triggerun cni-config -- %{name}-cni-config < 1.6.0
+# The name of the network bridge changed from cni0 to podman-cni0 with
+# podman 1.6. We need to rename the existing bridge to the new name to
+# to avoid network issues after upgrade
+if ip link show dev cni0 > /dev/null 2>&1; then
+    ip link set dev cni0 down
+    ip link set dev cni0 name cni-podman0
+    ip link set dev cni-podman0 up
+fi
 
 %changelog
