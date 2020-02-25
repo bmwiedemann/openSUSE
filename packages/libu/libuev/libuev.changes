@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:39:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.1:
+  * Use separate aux/ dir for auxilliary files and check for install 
+
+-------------------------------------------------------------------
 Mon Apr  8 08:28:23 UTC 2019 - mvetter@suse.com
 
 - Update to 2.3.0:
