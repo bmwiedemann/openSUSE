@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jan 30 10:36:21 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Add upstream patch 8.15.2.mci.p0
+- Add upstream patch 8.15.2.mci.p0 (boo#1164084)
   * If sendmail tried to reuse an SMTP session which had already been
     closed by the server, then the connection cache could have invalid
     information about the session.  One possible consequence was that

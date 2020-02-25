@@ -839,4 +839,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     STARTTLS was not used even if offered.</comment>
     <requestid>768562</requestid>
   </revision>
+  <revision rev="94" vrev="22">
+    <srcmd5>f37ba8a691b5dd1895f2871113d9f037</srcmd5>
+    <version>8.15.2</version>
+    <time>1582643253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779008</requestid>
+  </revision>
 </revisionlist>
