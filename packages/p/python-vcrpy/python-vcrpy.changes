@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 09:14:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Added patch 0001-Revert-v4.0.x-Remove-legacy-python-and-add-python3.8.patch
+  * Enable python2 again since it breaks many packages
+- Fix locale on Leap
+
+-------------------------------------------------------------------
 Fri Feb  7 14:58:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.0.2

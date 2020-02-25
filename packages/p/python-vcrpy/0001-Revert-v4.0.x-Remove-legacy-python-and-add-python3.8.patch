@@ -1,0 +1,1214 @@
+From bd3de7c8b762f7a1bdd947a0c2d817b4e70cd740 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
+ <meggy.calabkova@gmail.com>
+Date: Mon, 24 Feb 2020 09:53:16 +0100
+Subject: [PATCH] Revert "v4.0.x - Remove legacy python and add python3.8
+ support (#499)"
+
+This reverts commit 4a8e80ee3e288c61a85a90d7f13c83d9e9a4db2e.
+---
+ setup.py                                      |  36 +-
+ tests/integration/test_basic.py               |   2 +-
+ tests/integration/test_boto.py                |   7 +-
+ tests/integration/test_config.py              |   2 +-
+ tests/integration/test_disksaver.py           |   2 +-
+ tests/integration/test_filter.py              |   6 +-
+ tests/integration/test_httplib2.py            |   4 +-
+ tests/integration/test_ignore.py              |   2 +-
+ tests/integration/test_matchers.py            |   2 +-
+ tests/integration/test_multiple.py            |   2 +-
+ tests/integration/test_proxy.py               |   7 +-
+ tests/integration/test_record_mode.py         |   2 +-
+ tests/integration/test_register_matcher.py    |   2 +-
+ tests/integration/test_register_persister.py  |   2 +-
+ tests/integration/test_register_serializer.py |   2 +-
+ tests/integration/test_request.py             |   2 +-
+ tests/integration/test_stubs.py               |   2 +-
+ tests/integration/test_urllib2.py             |   6 +-
+ tests/integration/test_wild.py                |  15 +-
+ tests/unit/test_cassettes.py                  |   6 +-
+ tests/unit/test_errors.py                     |   3 +-
+ tests/unit/test_filters.py                    |   6 +-
+ tests/unit/test_matchers.py                   |   2 +-
+ tests/unit/test_response.py                   |   4 +
+ tests/unit/test_serialize.py                  |   5 +-
+ tests/unit/test_stubs.py                      |   5 +-
+ tests/unit/test_vcr.py                        |   6 +-
+ tox.ini                                       |  35 +-
+ vcr/__init__.py                               |  19 +-
+ vcr/cassette.py                               |  15 +-
+ vcr/compat.py                                 |  14 +
+ vcr/config.py                                 |  10 +-
+ vcr/errors.py                                 |   2 +-
+ vcr/filters.py                                |  32 +-
+ vcr/matchers.py                               |   5 +-
+ vcr/patch.py                                  |   9 +-
+ vcr/persisters/filesystem.py                  |   4 +-
+ vcr/request.py                                |  10 +-
+ vcr/serializers/compat.py                     |   7 +-
+ vcr/stubs/__init__.py                         |  20 +-
+ vcr/stubs/aiohttp_stubs/__init__.py           |   2 +
+ vcr/stubs/boto3_stubs.py                      |   5 +-
+ vcr/stubs/compat.py                           |  27 +-
+ vcr/stubs/tornado_stubs.py                    |   4 +-
+ vcr/util.py                                   |   4 +-
+ 57 files changed, 458 insertions(+), 484 deletions(-)
+ delete mode 100644 docs/_static/vcr.png
+ delete mode 100644 docs/_static/vcr.svg
+ create mode 100644 vcr/compat.py
+
+Index: vcrpy-4.0.2/setup.py
+===================================================================
+--- vcrpy-4.0.2.orig/setup.py
++++ vcrpy-4.0.2/setup.py
+@@ -1,31 +1,11 @@
+ #!/usr/bin/env python
+ 
+-import codecs
+-import os
+-import re
+ import sys
+ 
+ from setuptools import setup, find_packages
+ from setuptools.command.test import test as TestCommand
+ 
+ long_description = open("README.rst", "r").read()
+-here = os.path.abspath(os.path.dirname(__file__))
+-
+-
+-def read(*parts):
+-    # intentionally *not* adding an encoding option to open, See:
+-    #   https://github.com/pypa/virtualenv/issues/201#issuecomment-3145690
+-    with codecs.open(os.path.join(here, *parts), "r") as fp:
+-        return fp.read()
+-
+-
+-def find_version(*file_paths):
+-    version_file = read(*file_paths)
+-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file, re.M)
+-    if version_match:
+-        return version_match.group(1)
+-
+-    raise RuntimeError("Unable to find version string.")
+ 
+ 
+ class PyTest(TestCommand):
+@@ -46,21 +26,27 @@ install_requires = [
+     "PyYAML",
+     "wrapt",
+     "six>=1.5",
++    'contextlib2; python_version=="2.7"',
++    'mock; python_version=="2.7"',
+     'yarl; python_version>="3.6"',
+     'yarl<1.4; python_version=="3.5"',
+ ]
+ 
++excluded_packages = ["tests*"]
++if sys.version_info[0] == 2:
++    excluded_packages.append("vcr.stubs.aiohttp_stubs")
++
+ setup(
+     name="vcrpy",
+-    version=find_version("vcr", "__init__.py"),
++    version="4.0.2",
+     description=("Automatically mock your HTTP interactions to simplify and speed up testing"),
+     long_description=long_description,
+     long_description_content_type="text/x-rst",
+     author="Kevin McCarthy",
+     author_email="me@kevinmccarthy.org",
+     url="https://github.com/kevin1024/vcrpy",
+-    packages=find_packages(exclude=["tests*"]),
+-    python_requires=">=3.5",
++    packages=find_packages(exclude=excluded_packages),
++    python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+     install_requires=install_requires,
+     license="MIT",
+     tests_require=["pytest", "mock", "pytest-httpbin"],
+@@ -69,12 +55,12 @@ setup(
+         "Environment :: Console",
+         "Intended Audience :: Developers",
+         "Programming Language :: Python",
++        "Programming Language :: Python :: 2",
++        "Programming Language :: Python :: 2.7",
+         "Programming Language :: Python :: 3",
+         "Programming Language :: Python :: 3.5",
+         "Programming Language :: Python :: 3.6",
+         "Programming Language :: Python :: 3.7",
+-        "Programming Language :: Python :: 3.8",
+-        "Programming Language :: Python :: 3 :: Only",
+         "Programming Language :: Python :: Implementation :: CPython",
+         "Programming Language :: Python :: Implementation :: PyPy",
+         "Topic :: Software Development :: Testing",
+Index: vcrpy-4.0.2/tests/integration/test_basic.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_basic.py
++++ vcrpy-4.0.2/tests/integration/test_basic.py
+@@ -3,7 +3,7 @@
+ 
+ # External imports
+ import os
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ # Internal imports
+ import vcr
+Index: vcrpy-4.0.2/tests/integration/test_boto.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_boto.py
++++ vcrpy-4.0.2/tests/integration/test_boto.py
+@@ -6,9 +6,14 @@ import boto  # NOQA
+ import boto.iam  # NOQA
+ from boto.s3.connection import S3Connection  # NOQA
+ from boto.s3.key import Key  # NOQA
+-from configparser import DuplicateSectionError  # NOQA
+ import vcr  # NOQA
+ 
++try:  # NOQA
++    from ConfigParser import DuplicateSectionError  # NOQA
++except ImportError:  # NOQA
++    # python3
++    from configparser import DuplicateSectionError  # NOQA
++
+ 
+ def test_boto_stubs(tmpdir):
+     with vcr.use_cassette(str(tmpdir.join("boto-stubs.yml"))):
+Index: vcrpy-4.0.2/tests/integration/test_config.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_config.py
++++ vcrpy-4.0.2/tests/integration/test_config.py
+@@ -2,7 +2,7 @@ import os
+ import json
+ import pytest
+ import vcr
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ 
+ def test_set_serializer_default_config(tmpdir, httpbin):
+Index: vcrpy-4.0.2/tests/integration/test_disksaver.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_disksaver.py
++++ vcrpy-4.0.2/tests/integration/test_disksaver.py
+@@ -4,7 +4,7 @@
+ # External imports
+ import os
+ import time
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ # Internal imports
+ import vcr
+Index: vcrpy-4.0.2/tests/integration/test_filter.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_filter.py
++++ vcrpy-4.0.2/tests/integration/test_filter.py
+@@ -1,8 +1,8 @@
+ import base64
+ import pytest
+-from urllib.request import urlopen, Request
+-from urllib.parse import urlencode
+-from urllib.error import HTTPError
++from six.moves.urllib.request import urlopen, Request
++from six.moves.urllib.parse import urlencode
++from six.moves.urllib.error import HTTPError
+ import vcr
+ import json
+ from assertions import assert_cassette_has_one_response, assert_is_json
+Index: vcrpy-4.0.2/tests/integration/test_httplib2.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_httplib2.py
++++ vcrpy-4.0.2/tests/integration/test_httplib2.py
+@@ -3,7 +3,7 @@
+ 
+ import sys
+ 
+-from urllib.parse import urlencode
++from six.moves.urllib_parse import urlencode
+ import pytest
+ import pytest_httpbin.certs
+ 
+@@ -111,7 +111,7 @@ def test_post_data(tmpdir, httpbin_both)
+ 
+ def test_post_unicode_data(tmpdir, httpbin_both):
+     """Ensure that it works when posting unicode data"""
+-    data = urlencode({"snowman": "☃".encode()})
++    data = urlencode({"snowman": u"☃".encode("utf-8")})
+     url = httpbin_both.url + "/post"
+     with vcr.use_cassette(str(tmpdir.join("post_data.yaml"))):
+         _, res1 = http().request(url, "POST", data)
+Index: vcrpy-4.0.2/tests/integration/test_ignore.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_ignore.py
++++ vcrpy-4.0.2/tests/integration/test_ignore.py
+@@ -1,4 +1,4 @@
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ import socket
+ from contextlib import contextmanager
+ import vcr
+Index: vcrpy-4.0.2/tests/integration/test_matchers.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_matchers.py
++++ vcrpy-4.0.2/tests/integration/test_matchers.py
+@@ -1,6 +1,6 @@
+ import vcr
+ import pytest
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ 
+ DEFAULT_URI = "http://httpbin.org/get?p1=q1&p2=q2"  # base uri for testing
+Index: vcrpy-4.0.2/tests/integration/test_multiple.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_multiple.py
++++ vcrpy-4.0.2/tests/integration/test_multiple.py
+@@ -1,6 +1,6 @@
+ import pytest
+ import vcr
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ 
+ def test_making_extra_request_raises_exception(tmpdir, httpbin):
+Index: vcrpy-4.0.2/tests/integration/test_proxy.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_proxy.py
++++ vcrpy-4.0.2/tests/integration/test_proxy.py
+@@ -5,9 +5,8 @@
+ import multiprocessing
+ import pytest
+ 
+-import http.server
+-import socketserver
+-from urllib.request import urlopen
++from six.moves import socketserver, SimpleHTTPServer
++from six.moves.urllib.request import urlopen
+ 
+ # Internal imports
+ import vcr
+@@ -16,7 +15,7 @@ import vcr
+ requests = pytest.importorskip("requests")
+ 
+ 
+-class Proxy(http.server.SimpleHTTPRequestHandler):
++class Proxy(SimpleHTTPServer.SimpleHTTPRequestHandler):
+     """
+     Simple proxy server.
+ 
+Index: vcrpy-4.0.2/tests/integration/test_record_mode.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_record_mode.py
++++ vcrpy-4.0.2/tests/integration/test_record_mode.py
+@@ -1,6 +1,6 @@
+ import pytest
+ import vcr
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ 
+ def test_once_record_mode(tmpdir, httpbin):
+Index: vcrpy-4.0.2/tests/integration/test_register_matcher.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_register_matcher.py
++++ vcrpy-4.0.2/tests/integration/test_register_matcher.py
+@@ -1,5 +1,5 @@
+ import vcr
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ 
+ def true_matcher(r1, r2):
+Index: vcrpy-4.0.2/tests/integration/test_register_persister.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_register_persister.py
++++ vcrpy-4.0.2/tests/integration/test_register_persister.py
+@@ -3,7 +3,7 @@
+ 
+ # External imports
+ import os
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ # Internal imports
+ import vcr
+Index: vcrpy-4.0.2/tests/integration/test_register_serializer.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_register_serializer.py
++++ vcrpy-4.0.2/tests/integration/test_register_serializer.py
+@@ -1,7 +1,7 @@
+ import vcr
+ 
+ 
+-class MockSerializer:
++class MockSerializer(object):
+     def __init__(self):
+         self.serialize_count = 0
+         self.deserialize_count = 0
+Index: vcrpy-4.0.2/tests/integration/test_request.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_request.py
++++ vcrpy-4.0.2/tests/integration/test_request.py
+@@ -1,5 +1,5 @@
+ import vcr
+-from urllib.request import urlopen
++from six.moves.urllib.request import urlopen
+ 
+ 
+ def test_recorded_request_uri_with_redirected_request(tmpdir, httpbin):
+Index: vcrpy-4.0.2/tests/integration/test_stubs.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_stubs.py
++++ vcrpy-4.0.2/tests/integration/test_stubs.py
+@@ -1,7 +1,7 @@
+ import vcr
+ import zlib
+ import json
+-import http.client as httplib
++import six.moves.http_client as httplib
+ 
+ from assertions import assert_is_json
+ 
+Index: vcrpy-4.0.2/tests/integration/test_urllib2.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_urllib2.py
++++ vcrpy-4.0.2/tests/integration/test_urllib2.py
+@@ -2,8 +2,8 @@
+ """Integration tests with urllib2"""
+ 
+ import ssl
+-from urllib.request import urlopen
+-from urllib.parse import urlencode
++from six.moves.urllib.request import urlopen
++from six.moves.urllib_parse import urlencode
+ import pytest_httpbin.certs
+ 
+ # Internal imports
+@@ -104,7 +104,7 @@ def test_post_data(httpbin_both, tmpdir)
+ 
+ def test_post_unicode_data(httpbin_both, tmpdir):
+     """Ensure that it works when posting unicode data"""
+-    data = urlencode({"snowman": "☃".encode()}).encode("utf-8")
++    data = urlencode({"snowman": u"☃".encode("utf-8")}).encode("utf-8")
+     url = httpbin_both.url + "/post"
+     with vcr.use_cassette(str(tmpdir.join("post_data.yaml"))):
+         res1 = urlopen_with_cafile(url, data).read()
+Index: vcrpy-4.0.2/tests/integration/test_wild.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/integration/test_wild.py
++++ vcrpy-4.0.2/tests/integration/test_wild.py
+@@ -1,13 +1,16 @@
+-import http.client as httplib
+ import multiprocessing
+ import pytest
+-from xmlrpc.client import ServerProxy
+-from xmlrpc.server import SimpleXMLRPCServer
++from six.moves import xmlrpc_client, xmlrpc_server
+ 
+ requests = pytest.importorskip("requests")
+ 
+ import vcr  # NOQA
+ 
++try:
++    import httplib
++except ImportError:
++    import http.client as httplib
++
+ 
+ def test_domain_redirect():
+     """Ensure that redirects across domains are considered unique"""
+@@ -77,7 +80,7 @@ def test_amazon_doctype(tmpdir):
+ 
+ 
+ def start_rpc_server(q):
+-    httpd = SimpleXMLRPCServer(("127.0.0.1", 0))
++    httpd = xmlrpc_server.SimpleXMLRPCServer(("127.0.0.1", 0))
+     httpd.register_function(pow)
+     q.put("http://{}:{}".format(*httpd.server_address))
+     httpd.serve_forever()
+@@ -96,11 +99,11 @@ def rpc_server():
+ 
+ def test_xmlrpclib(tmpdir, rpc_server):
+     with vcr.use_cassette(str(tmpdir.join("xmlrpcvideo.yaml"))):
+-        roundup_server = ServerProxy(rpc_server, allow_none=True)
++        roundup_server = xmlrpc_client.ServerProxy(rpc_server, allow_none=True)
+         original_schema = roundup_server.pow(2, 4)
+ 
+     with vcr.use_cassette(str(tmpdir.join("xmlrpcvideo.yaml"))):
+-        roundup_server = ServerProxy(rpc_server, allow_none=True)
++        roundup_server = xmlrpc_client.ServerProxy(rpc_server, allow_none=True)
+         second_schema = roundup_server.pow(2, 4)
+ 
+     assert original_schema == second_schema
+Index: vcrpy-4.0.2/tests/unit/test_cassettes.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_cassettes.py
++++ vcrpy-4.0.2/tests/unit/test_cassettes.py
+@@ -1,12 +1,12 @@
+-import contextlib
+ import copy
+-import http.client as httplib
+ import inspect
+ import os
+-from unittest import mock
+ 
++from six.moves import http_client as httplib
+ import pytest
+ import yaml
++
++from vcr.compat import mock, contextlib
+ from vcr.cassette import Cassette
+ from vcr.errors import UnhandledHTTPRequestError
+ from vcr.patch import force_reset
+@@ -208,7 +208,7 @@ def test_nesting_context_managers_by_che
+ 
+ 
+ def test_custom_patchers():
+-    class Test:
++    class Test(object):
+         attribute = None
+ 
+     with Cassette.use(path="custom_patches", custom_patches=((Test, "attribute", VCRHTTPSConnection),)):
+Index: vcrpy-4.0.2/tests/unit/test_errors.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_errors.py
++++ vcrpy-4.0.2/tests/unit/test_errors.py
+@@ -1,7 +1,6 @@
+-from unittest import mock
+-
+ import pytest
+ 
++from vcr.compat import mock
+ from vcr import errors
+ from vcr.cassette import Cassette
+ 
+Index: vcrpy-4.0.2/tests/unit/test_filters.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_filters.py
++++ vcrpy-4.0.2/tests/unit/test_filters.py
+@@ -1,4 +1,4 @@
+-from io import BytesIO
++from six import BytesIO
+ from vcr.filters import (
+     remove_headers,
+     replace_headers,
+@@ -8,10 +8,10 @@ from vcr.filters import (
+     replace_post_data_parameters,
+     decode_response,
+ )
++from vcr.compat import mock
+ from vcr.request import Request
+ import gzip
+ import json
+-from unittest import mock
+ import zlib
+ 
+ 
+Index: vcrpy-4.0.2/tests/unit/test_matchers.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_matchers.py
++++ vcrpy-4.0.2/tests/unit/test_matchers.py
+@@ -1,5 +1,5 @@
+ import itertools
+-from unittest import mock
++from vcr.compat import mock
+ 
+ import pytest
+ 
+Index: vcrpy-4.0.2/tests/unit/test_response.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_response.py
++++ vcrpy-4.0.2/tests/unit/test_response.py
+@@ -1,5 +1,8 @@
+ # coding: UTF-8
+ import io
++import unittest
++
++import six
+ 
+ from vcr.stubs import VCRHTTPResponse
+ 
+@@ -55,6 +58,7 @@ def test_response_headers_should_have_co
+     assert response.headers.get("date") == "Fri, 24 Oct 2014 18:35:37 GMT"
+ 
+ 
++@unittest.skipIf(six.PY2, "Regression test for Python3 only")
+ def test_response_parses_correctly_and_fp_attribute_error_is_not_thrown():
+     """
+     Regression test for https://github.com/kevin1024/vcrpy/issues/440
+Index: vcrpy-4.0.2/tests/unit/test_serialize.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_serialize.py
++++ vcrpy-4.0.2/tests/unit/test_serialize.py
+@@ -1,8 +1,7 @@
+ # -*- encoding: utf-8 -*-
+-from unittest import mock
+-
+ import pytest
+ 
++from vcr.compat import mock
+ from vcr.request import Request
+ from vcr.serialize import deserialize, serialize
+ from vcr.serializers import yamlserializer, jsonserializer, compat
+@@ -30,7 +29,7 @@ def test_deserialize_new_json_cassette()
+         deserialize(f.read(), jsonserializer)
+ 
+ 
+-REQBODY_TEMPLATE = """\
++REQBODY_TEMPLATE = u"""\
+ interactions:
+ - request:
+     body: {req_body}
+Index: vcrpy-4.0.2/tests/unit/test_stubs.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_stubs.py
++++ vcrpy-4.0.2/tests/unit/test_stubs.py
+@@ -1,10 +1,9 @@
+-from unittest import mock
+-
+ from vcr.stubs import VCRHTTPSConnection
++from vcr.compat import mock
+ from vcr.cassette import Cassette
+ 
+ 
+-class TestVCRConnection:
++class TestVCRConnection(object):
+     def test_setting_of_attributes_get_propogated_to_real_connection(self):
+         vcr_connection = VCRHTTPSConnection("www.examplehost.com")
+         vcr_connection.ssl_version = "example_ssl_version"
+Index: vcrpy-4.0.2/tests/unit/test_vcr.py
+===================================================================
+--- vcrpy-4.0.2.orig/tests/unit/test_vcr.py
++++ vcrpy-4.0.2/tests/unit/test_vcr.py
+@@ -1,10 +1,10 @@
+-from unittest import mock
+ import os
+ 
+ import pytest
+-import http.client as httplib
++from six.moves import http_client as httplib
+ 
+ from vcr import VCR, use_cassette
++from vcr.compat import mock
+ from vcr.request import Request
+ from vcr.stubs import VCRHTTPSConnection
+ from vcr.patch import _HTTPConnection, force_reset
+@@ -170,7 +170,7 @@ def test_fixtures_with_use_cassette(rand
+ 
+ 
+ def test_custom_patchers():
+-    class Test:
++    class Test(object):
+         attribute = None
+         attribute2 = None
+ 
+Index: vcrpy-4.0.2/tox.ini
+===================================================================
+--- vcrpy-4.0.2.orig/tox.ini
++++ vcrpy-4.0.2/tox.ini
+@@ -3,8 +3,8 @@ skip_missing_interpreters=true
+ envlist = 
+   cov-clean,
+   lint,
+-  {py35,py36,py37,py38}-{requests,httplib2,urllib3,tornado4,boto3,aiohttp},
+-  {pypy3}-{requests,httplib2,urllib3,tornado4,boto3},
++  {py27,py35,py36,py37,py38,pypy,pypy3}-{requests,httplib2,urllib3,tornado4,boto3},
++  {py35,py36,py37,py38}-{aiohttp},
+   cov-report
+ 
+ 
+@@ -34,27 +34,6 @@ deps =
+   flake8 
+   black
+ 
+-[testenv:docs]
+-# Running sphinx from inside the "docs" directory
+-# ensures it will not pick up any stray files that might
+-# get into a virtual environment under the top-level directory
+-# or other artifacts under build/
+-changedir = docs
+-# The only dependency is sphinx
+-# If we were using extensions packaged separately,
+-# we would specify them here.
+-# A better practice is to specify a specific version of sphinx.
+-deps =
+-    sphinx
+-    sphinx_rtd_theme
+-# This is the sphinx command to generate HTML.
+-# In other circumstances, we might want to generate a PDF or an ebook
+-commands =
+-    sphinx-build -W -b html -d {envtmpdir}/doctrees . {envtmpdir}/html
+-# We use Python 3.7. Tox sometimes tries to autodetect it based on the name of
+-# the testenv, but "docs" does not give useful clues so we have to be explicit.
+-basepython = python3.7
+-
+ [testenv]
+ # Need to use develop install so that paths
+ # for aggregate code coverage combine
+@@ -71,17 +50,17 @@ deps =
+     requests: requests>=2.22.0
+     httplib2: httplib2
+     urllib3: urllib3
+-    {py35,py36}-tornado4: tornado>=4,<5
+-    {py35,py36}-tornado4: pytest-tornado
+-    {py35,py36}-tornado4: pycurl
++    {py27,py35,py36,pypy}-tornado4: tornado>=4,<5
++    {py27,py35,py36,pypy}-tornado4: pytest-tornado
++    {py27,py35,py36}-tornado4: pycurl
+     boto3: boto3
+     boto3: urllib3
+     aiohttp: aiohttp
+     aiohttp: pytest-asyncio
+     aiohttp: pytest-aiohttp
+ depends = 
+-  lint,{py35,py36,py37,py38,pypy3}-{requests,httplib2,urllib3,tornado4,boto3},{py35,py36,py37,py38}-{aiohttp}: cov-clean
+-  cov-report: lint,{py35,py36,py37,py38,pypy3}-{requests,httplib2,urllib3,tornado4,boto3},{py35,py36,py37,py38}-{aiohttp}
++  {py27,py35,py36,py37,pypy}-{lint,requests,httplib2,urllib3,tornado4,boto3},{py35,py36,py37}-{aiohttp}: cov-clean
++  cov-report: {py27,py35,py36,py37,pypy}-{lint,requests,httplib2,urllib3,tornado4,boto3},{py35,py36,py37}-{aiohttp}
+ passenv =
+     AWS_ACCESS_KEY_ID
+     AWS_DEFAULT_REGION
+Index: vcrpy-4.0.2/vcr/__init__.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/__init__.py
++++ vcrpy-4.0.2/vcr/__init__.py
+@@ -1,8 +1,23 @@
+ import logging
++import warnings
++import sys
+ from .config import VCR
+-from logging import NullHandler
+ 
+-__version__ = "4.0.2"
++# Set default logging handler to avoid "No handler found" warnings.
++try:  # Python 2.7+
++    from logging import NullHandler
++except ImportError:
++
++    class NullHandler(logging.Handler):
++        def emit(self, record):
++            pass
++
++
++if sys.version_info[0] == 2:
++    warnings.warn(
++        "Python 2.x support of vcrpy is deprecated and will be removed in an upcoming major release.",
++        DeprecationWarning,
++    )
+ 
+ logging.getLogger(__name__).addHandler(NullHandler())
+ 
+Index: vcrpy-4.0.2/vcr/cassette.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/cassette.py
++++ vcrpy-4.0.2/vcr/cassette.py
+@@ -1,5 +1,4 @@
+ import collections
+-import contextlib
+ import copy
+ import sys
+ import inspect
+@@ -7,13 +6,13 @@ import logging
+ 
+ import wrapt
+ 
++from .compat import contextlib
+ from .errors import UnhandledHTTPRequestError
+ from .matchers import requests_match, uri, method, get_matchers_results
+ from .patch import CassettePatcherBuilder
+ from .serializers import yamlserializer
+ from .persisters.filesystem import FilesystemPersister
+ from .util import partition_dict
+-from ._handle_coroutine import handle_coroutine
+ 
+ try:
+     from asyncio import iscoroutinefunction
+@@ -23,10 +22,18 @@ except ImportError:
+         return False
+ 
+ 
++if sys.version_info[:2] >= (3, 5):
++    from ._handle_coroutine import handle_coroutine
++else:
++
++    def handle_coroutine(*args, **kwags):
++        raise NotImplementedError("Not implemented on Python 2")
++
++
+ log = logging.getLogger(__name__)
+ 
+ 
+-class CassetteContextDecorator:
++class CassetteContextDecorator(object):
+     """Context manager/decorator that handles installing the cassette and
+     removing cassettes.
+ 
+@@ -152,7 +159,7 @@ class CassetteContextDecorator:
+         return new_args_getter
+ 
+ 
+-class Cassette:
++class Cassette(object):
+     """A container for recorded requests and responses"""
+ 
+     @classmethod
+Index: vcrpy-4.0.2/vcr/compat.py
+===================================================================
+--- /dev/null
++++ vcrpy-4.0.2/vcr/compat.py
+@@ -0,0 +1,14 @@
++try:
++    from unittest import mock
++except ImportError:
++    import mock
++
++try:
++    import contextlib
++except ImportError:
++    import contextlib2 as contextlib
++else:
++    if not hasattr(contextlib, "ExitStack"):
++        import contextlib2 as contextlib
++
++__all__ = ["mock", "contextlib"]
+Index: vcrpy-4.0.2/vcr/config.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/config.py
++++ vcrpy-4.0.2/vcr/config.py
+@@ -1,6 +1,9 @@
+ import copy
+ 
+-from collections import abc as collections_abc
++try:
++    from collections import abc as collections_abc  # only works on python 3.3+
++except ImportError:
++    import collections as collections_abc
+ import functools
+ import inspect
+ import os
+@@ -16,7 +19,7 @@ from . import matchers
+ from . import filters
+ 
+ 
+-class VCR:
++class VCR(object):
+     @staticmethod
+     def is_test_method(method_name, function):
+         return method_name.startswith("test") and isinstance(function, types.FunctionType)
+@@ -99,7 +102,7 @@ class VCR:
+         return matchers
+ 
+     def use_cassette(self, path=None, **kwargs):
+-        if path is not None and not isinstance(path, str):
++        if path is not None and not isinstance(path, six.string_types):
+             function = path
+             # Assume this is an attempt to decorate a function
+             return self._use_cassette(**kwargs)(function)
+@@ -248,5 +251,4 @@ class VCR:
+ 
+     def test_case(self, predicate=None):
+         predicate = predicate or self.is_test_method
+-        # TODO: Remove this reference to `six` in favor of the Python3 equivalent
+         return six.with_metaclass(auto_decorate(self.use_cassette, predicate))
+Index: vcrpy-4.0.2/vcr/errors.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/errors.py
++++ vcrpy-4.0.2/vcr/errors.py
+@@ -3,7 +3,7 @@ class CannotOverwriteExistingCassetteExc
+         self.cassette = kwargs["cassette"]
+         self.failed_request = kwargs["failed_request"]
+         message = self._get_message(kwargs["cassette"], kwargs["failed_request"])
+-        super().__init__(message)
++        super(CannotOverwriteExistingCassetteException, self).__init__(message)
+ 
+     @staticmethod
+     def _get_message(cassette, failed_request):
+Index: vcrpy-4.0.2/vcr/filters.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/filters.py
++++ vcrpy-4.0.2/vcr/filters.py
+@@ -1,5 +1,5 @@
+-from io import BytesIO
+-from urllib.parse import urlparse, urlencode, urlunparse
++from six import BytesIO, text_type
++from six.moves.urllib.parse import urlparse, urlencode, urlunparse
+ import copy
+ import json
+ import zlib
+@@ -8,11 +8,13 @@ from .util import CaseInsensitiveDict
+ 
+ 
+ def replace_headers(request, replacements):
+-    """Replace headers in request according to replacements.
+-    The replacements should be a list of (key, value) pairs where the value can be any of:
+-    1. A simple replacement string value.
+-    2. None to remove the given header.
+-    3. A callable which accepts (key, value, request) and returns a string value or None.
++    """
++    Replace headers in request according to replacements. The replacements
++    should be a list of (key, value) pairs where the value can be any of:
++      1. A simple replacement string value.
++      2. None to remove the given header.
++      3. A callable which accepts (key, value, request) and returns a string
++         value or None.
+     """
+     new_headers = request.headers.copy()
+     for k, rv in replacements:
+@@ -35,9 +37,10 @@ def remove_headers(request, headers_to_r
+ 
+ 
+ def replace_query_parameters(request, replacements):
+-    """Replace query parameters in request according to replacements.
+-
+-    The replacements should be a list of (key, value) pairs where the value can be any of:
++    """
++    Replace query parameters in request according to replacements. The
++    replacements should be a list of (key, value) pairs where the value can be
++    any of:
+       1. A simple replacement string value.
+       2. None to remove the given header.
+       3. A callable which accepts (key, value, request) and returns a string
+@@ -70,9 +73,10 @@ def remove_query_parameters(request, que
+ 
+ 
+ def replace_post_data_parameters(request, replacements):
+-    """Replace post data in request--either form data or json--according to replacements.
+-
+-    The replacements should be a list of (key, value) pairs where the value can be any of:
++    """
++    Replace post data in request--either form data or json--according to
++    replacements. The replacements should be a list of (key, value) pairs where
++    the value can be any of:
+       1. A simple replacement string value.
+       2. None to remove the given header.
+       3. A callable which accepts (key, value, request) and returns a string
+@@ -95,7 +99,7 @@ def replace_post_data_parameters(request
+                         json_data[k] = rv
+             request.body = json.dumps(json_data).encode("utf-8")
+         else:
+-            if isinstance(request.body, str):
++            if isinstance(request.body, text_type):
+                 request.body = request.body.encode("utf-8")
+             splits = [p.partition(b"=") for p in request.body.split(b"&")]
+             new_splits = []
+Index: vcrpy-4.0.2/vcr/matchers.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/matchers.py
++++ vcrpy-4.0.2/vcr/matchers.py
+@@ -1,6 +1,5 @@
+ import json
+-import urllib
+-import xmlrpc.client
++from six.moves import urllib, xmlrpc_client
+ from .util import read_body
+ import logging
+ 
+@@ -78,7 +77,7 @@ _checker_transformer_pairs = (
+         lambda body: urllib.parse.parse_qs(body.decode("ascii")),
+     ),
+     (_header_checker("application/json"), _transform_json),
+-    (lambda request: _xml_header_checker(request) and _xmlrpc_header_checker(request), xmlrpc.client.loads),
++    (lambda request: _xml_header_checker(request) and _xmlrpc_header_checker(request), xmlrpc_client.loads),
+ )
+ 
+ 
+Index: vcrpy-4.0.2/vcr/patch.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/patch.py
++++ vcrpy-4.0.2/vcr/patch.py
+@@ -1,11 +1,10 @@
+ """Utilities for patching in cassettes"""
+-import contextlib
+ import functools
+ import itertools
+-from unittest import mock
+ 
++from .compat import contextlib, mock
+ from .stubs import VCRHTTPConnection, VCRHTTPSConnection
+-import http.client as httplib
++from six.moves import http_client as httplib
+ 
+ import logging
+ 
+@@ -94,7 +93,7 @@ else:
+     _AiohttpClientSessionRequest = aiohttp.client.ClientSession._request
+ 
+ 
+-class CassettePatcherBuilder:
++class CassettePatcherBuilder(object):
+     def _build_patchers_from_mock_triples_decorator(function):
+         @functools.wraps(function)
+         def wrapped(self, *args, **kwargs):
+@@ -359,7 +358,7 @@ class CassettePatcherBuilder:
+         )
+ 
+ 
+-class ConnectionRemover:
++class ConnectionRemover(object):
+     def __init__(self, connection_class):
+         self._connection_class = connection_class
+         self._connection_pool_to_connections = {}
+Index: vcrpy-4.0.2/vcr/persisters/filesystem.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/persisters/filesystem.py
++++ vcrpy-4.0.2/vcr/persisters/filesystem.py
+@@ -4,13 +4,13 @@ import os
+ from ..serialize import serialize, deserialize
+ 
+ 
+-class FilesystemPersister:
++class FilesystemPersister(object):
+     @classmethod
+     def load_cassette(cls, cassette_path, serializer):
+         try:
+             with open(cassette_path) as f:
+                 cassette_content = f.read()
+-        except OSError:
++        except IOError:
+             raise ValueError("Cassette not found.")
+         cassette = deserialize(cassette_content, serializer)
+         return cassette
+Index: vcrpy-4.0.2/vcr/request.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/request.py
++++ vcrpy-4.0.2/vcr/request.py
+@@ -1,13 +1,13 @@
+ import warnings
+-from io import BytesIO
+-from urllib.parse import urlparse, parse_qsl
++from six import BytesIO, text_type
++from six.moves.urllib.parse import urlparse, parse_qsl
+ from .util import CaseInsensitiveDict
+ import logging
+ 
+ log = logging.getLogger(__name__)
+ 
+ 
+-class Request:
++class Request(object):
+     """
+     VCR's representation of a request.
+     """
+@@ -39,7 +39,7 @@ class Request:
+ 
+     @body.setter
+     def body(self, value):
+-        if isinstance(value, str):
++        if isinstance(value, text_type):
+             value = value.encode("utf-8")
+         self._body = value
+ 
+@@ -136,4 +136,4 @@ class HeadersDict(CaseInsensitiveDict):
+         if old:
+             key = old[0]
+ 
+-        super().__setitem__(key, value)
++        super(HeadersDict, self).__setitem__(key, value)
+Index: vcrpy-4.0.2/vcr/serializers/compat.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/serializers/compat.py
++++ vcrpy-4.0.2/vcr/serializers/compat.py
+@@ -1,3 +1,6 @@
++import six
++
++
+ def convert_to_bytes(resp):
+     resp = convert_body_to_bytes(resp)
+     return resp
+@@ -21,7 +24,7 @@ def convert_body_to_bytes(resp):
+     http://pyyaml.org/wiki/PyYAMLDocumentation#Python3support
+     """
+     try:
+-        if resp["body"]["string"] is not None and not isinstance(resp["body"]["string"], bytes):
++        if resp["body"]["string"] is not None and not isinstance(resp["body"]["string"], six.binary_type):
+             resp["body"]["string"] = resp["body"]["string"].encode("utf-8")
+     except (KeyError, TypeError, UnicodeEncodeError):
+         # The thing we were converting either wasn't a dictionary or didn't
+@@ -41,7 +44,7 @@ def _convert_string_to_unicode(string):
+     result = string
+ 
+     try:
+-        if string is not None and not isinstance(string, str):
++        if string is not None and not isinstance(string, six.text_type):
+             result = string.decode("utf-8")
+     except (TypeError, UnicodeDecodeError, AttributeError):
+         # Sometimes the string actually is binary or StringIO object,
+Index: vcrpy-4.0.2/vcr/stubs/__init__.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/stubs/__init__.py
++++ vcrpy-4.0.2/vcr/stubs/__init__.py
+@@ -1,12 +1,9 @@
+ """Stubs for patching HTTP and HTTPS requests"""
+ 
+ import logging
+-from http.client import (
+-    HTTPConnection,
+-    HTTPSConnection,
+-    HTTPResponse,
+-)
+-from io import BytesIO
++import six
++from six.moves.http_client import HTTPConnection, HTTPSConnection, HTTPResponse
++from six import BytesIO
+ from vcr.request import Request
+ from vcr.errors import CannotOverwriteExistingCassetteException
+ from . import compat
+@@ -14,7 +11,7 @@ from . import compat
+ log = logging.getLogger(__name__)
+ 
+ 
+-class VCRFakeSocket:
++class VCRFakeSocket(object):
+     """
+     A socket that doesn't do anything!
+     Used when playing back cassettes, when there
+@@ -146,7 +143,7 @@ class VCRHTTPResponse(HTTPResponse):
+         return self._content.readable()
+ 
+ 
+-class VCRConnection:
++class VCRConnection(object):
+     # A reference to the cassette that's currently being patched in
+     cassette = None
+ 
+@@ -299,7 +296,8 @@ class VCRConnection:
+             self.real_connection.sock = value
+ 
+     def __init__(self, *args, **kwargs):
+-        kwargs.pop("strict", None)  # apparently this is gone in py3
++        if six.PY3:
++            kwargs.pop("strict", None)  # apparently this is gone in py3
+ 
+         # need to temporarily reset here because the real connection
+         # inherits from the thing that we are mocking out.  Take out
+@@ -330,7 +328,7 @@ class VCRConnection:
+             # we're setting the real_connection itself for the first time
+             pass
+ 
+-        super().__setattr__(name, value)
++        super(VCRConnection, self).__setattr__(name, value)
+ 
+     def __getattr__(self, name):
+         """
+@@ -342,7 +340,7 @@ class VCRConnection:
+             # we're setting the real_connection itself for the first time
+             return getattr(self.real_connection, name)
+ 
+-        return super().__getattr__(name)
++        return super(VCRConnection, self).__getattr__(name)
+ 
+ 
+ for k, v in HTTPConnection.__dict__.items():
+Index: vcrpy-4.0.2/vcr/stubs/aiohttp_stubs/__init__.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/stubs/aiohttp_stubs/__init__.py
++++ vcrpy-4.0.2/vcr/stubs/aiohttp_stubs/__init__.py
+@@ -1,4 +1,6 @@
+ """Stubs for aiohttp HTTP clients"""
++from __future__ import absolute_import
++
+ import asyncio
+ import functools
+ import logging
+Index: vcrpy-4.0.2/vcr/stubs/boto3_stubs.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/stubs/boto3_stubs.py
++++ vcrpy-4.0.2/vcr/stubs/boto3_stubs.py
+@@ -1,4 +1,6 @@
+ """Stubs for boto3"""
++import six
++
+ try:
+     # boto using awsrequest
+     from botocore.awsrequest import AWSHTTPConnection as HTTPConnection
+@@ -24,7 +26,8 @@ class VCRRequestsHTTPSConnection(VCRHTTP
+     _baseclass = VerifiedHTTPSConnection
+ 
+     def __init__(self, *args, **kwargs):
+-        kwargs.pop("strict", None)
++        if six.PY3:
++            kwargs.pop("strict", None)  # apparently this is gone in py3
+ 
+         # need to temporarily reset here because the real connection
+         # inherits from the thing that we are mocking out.  Take out
+Index: vcrpy-4.0.2/vcr/stubs/compat.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/stubs/compat.py
++++ vcrpy-4.0.2/vcr/stubs/compat.py
+@@ -1,5 +1,11 @@
+-from io import BytesIO
+-import http.client
++import six
++from six import BytesIO
++from six.moves.http_client import HTTPMessage
++
++try:
++    import http.client
++except ImportError:
++    pass
+ 
+ 
+ """
+@@ -9,7 +15,10 @@ layer that tries to cope with this move.
+ 
+ 
+ def get_header(message, name):
+-    return message.getallmatchingheaders(name)
++    if six.PY3:
++        return message.getallmatchingheaders(name)
++    else:
++        return message.getheader(name)
+ 
+ 
+ def get_header_items(message):
+@@ -20,8 +29,16 @@ def get_header_items(message):
+ 
+ def get_headers(message):
+     for key in set(message.keys()):
+-        yield key, message.get_all(key)
++        if six.PY3:
++            yield key, message.get_all(key)
++        else:
++            yield key, message.getheaders(key)
+ 
+ 
+ def get_httpmessage(headers):
+-    return http.client.parse_headers(BytesIO(headers))
++    if six.PY3:
++        return http.client.parse_headers(BytesIO(headers))
++    msg = HTTPMessage(BytesIO(headers))
++    msg.fp.seek(0)
++    msg.readheaders()
++    return msg
+Index: vcrpy-4.0.2/vcr/stubs/tornado_stubs.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/stubs/tornado_stubs.py
++++ vcrpy-4.0.2/vcr/stubs/tornado_stubs.py
+@@ -1,6 +1,8 @@
+ """Stubs for tornado HTTP clients"""
++from __future__ import absolute_import
++
+ import functools
+-from io import BytesIO
++from six import BytesIO
+ 
+ from tornado import httputil
+ from tornado.httpclient import HTTPResponse
+Index: vcrpy-4.0.2/vcr/util.py
+===================================================================
+--- vcrpy-4.0.2.orig/vcr/util.py
++++ vcrpy-4.0.2/vcr/util.py
+@@ -107,12 +107,12 @@ def auto_decorate(decorator, predicate=l
+ 
+     class DecorateAll(type):
+         def __setattr__(cls, attribute, value):
+-            return super().__setattr__(attribute, maybe_decorate(attribute, value))
++            return super(DecorateAll, cls).__setattr__(attribute, maybe_decorate(attribute, value))
+ 
+         def __new__(cls, name, bases, attributes_dict):
+             new_attributes_dict = {
+                 attribute: maybe_decorate(attribute, value) for attribute, value in attributes_dict.items()
+             }
+-            return super().__new__(cls, name, bases, new_attributes_dict)
++            return super(DecorateAll, cls).__new__(cls, name, bases, new_attributes_dict)
+ 
+     return DecorateAll
