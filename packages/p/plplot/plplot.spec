@@ -22,6 +22,7 @@
 %define lua_version 5.3
 %endif
 
+%bcond_with    ocaml_camlidl
 %define tk_enabled 1
 
 # SECTION Disable octave bindings for all versions until compilation against octave 4.4 is fixed
@@ -50,6 +51,7 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            http://plplot.sourceforge.net/
 Source0:        http://download.sf.net/plplot/%{name}-%{version}.tar.gz
+Patch0:         plplot-ocaml.patch
 # PATCH-FIX-UPSTREAM plplot-5.9.9-ada-pic.patch idoenmez@suse.de -- Compile Ada code with -fPIC
 Patch1:         plplot-5.9.9-ada-pic.patch
 # List based on build_ada in gcc.spec
@@ -65,7 +67,12 @@ BuildRequires:  java-devel
 BuildRequires:  lapack-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+%if %{with ocaml_camlidl}
 BuildRequires:  ocaml
+BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocamlfind(camlidl)
+BuildRequires:  ocamlfind(findlib)
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -169,9 +176,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{c_shlib} = %{version}
 Requires:       %{csirocsa_shlib} = %{version}
-%if 0%{?suse_version} < 1550
 Requires:       %{csironn_shlib} = %{version}
-%endif
 Requires:       %{qsastime_shlib} = %{version}
 Requires:       gcc-c++
 Requires:       pkgconfig
@@ -197,7 +202,7 @@ in C.
 %preun devel
 /sbin/install-info --delete %{_infodir}/plplotdoc.info %{_infodir}/dir
 
-%files devel
+%files devel -f %{name}.filelist.ocaml
 %license COPYING.LIB Copyright
 %doc AUTHORS FAQ README README.release
 %{_bindir}/pltek
@@ -214,11 +219,9 @@ in C.
 %{_libdir}/cmake/plplot/export_cairo-release.cmake
 %{_libdir}/cmake/plplot/export_csirocsa.cmake
 %{_libdir}/cmake/plplot/export_csirocsa-release.cmake
-%if 0%{?suse_version} < 1550
 %{_libdir}/libcsironn.so
 %{_libdir}/cmake/plplot/export_csironn.cmake
 %{_libdir}/cmake/plplot/export_csironn-release.cmake
-%endif
 %{_libdir}/cmake/plplot/export_mem.cmake
 %{_libdir}/cmake/plplot/export_mem-release.cmake
 %{_libdir}/cmake/plplot/export_ntk.cmake
@@ -310,6 +313,11 @@ in C.
 %{_datadir}/plplot%{version}/examples/test_c_interactive.sh
 %{_datadir}/plplot%{version}/examples/test_cxx.sh
 %{_datadir}/plplot%{version}/examples/test_diff.sh
+%if %{with ocaml_camlidl}
+%{_libdir}/pkgconfig/plplot-ocaml.pc
+%{_datadir}/plplot%{version}/examples/ocaml
+%{_datadir}/plplot%{version}/examples/test_ocaml.sh
+%endif
 
 ##########################################################################
 
@@ -787,7 +795,6 @@ This package provides the shared lib for PLplot's csirocsa.
 %{_libdir}/libcsirocsa.so.*
 ##########################################################################
 
-%if 0%{?suse_version} < 1550
 %package -n %{csironn_shlib}
 ##########################################################################
 Summary:        PLplot csironn component
@@ -807,7 +814,6 @@ This package provides the shared lib for PLplot's csironn.
 %files -n %{csironn_shlib}
 %{_libdir}/libcsironn.so.*
 ##########################################################################
-%endif
 
 %package -n %{qsastime_shlib}
 ##########################################################################
@@ -981,9 +987,9 @@ This package provides the xwin driver for plotting using PLplot.
 ##########################################################################
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
+%build
 for file in NEWS README.release
 do
   iconv -f ISO-8859-1 -t UTF-8 $file > ${file}.tmp
@@ -991,7 +997,6 @@ do
   mv ${file}.tmp $file
 done
 
-%build
 export CFLAGS="%{optflags} -DUSE_INTERP_RESULT -fno-strict-aliasing"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export FFLAGS="%{optflags}"
@@ -1008,6 +1013,7 @@ cmake \
         -DCMAKE_INSTALL_LIBDIR=%{_libdir} \\\
         -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
         -DCMAKE_BUILD_TYPE:STRING=Release \\\
+        -DENABLE_compiler_diagnostics=ON \\\
         -DPL_FREETYPE_FONT_PATH:PATH="%{_datadir}/fonts/truetype" \\\
         -DUSE_RPATH:BOOL=OFF \\\
         -DENABLE_ada:BOOL=ON \\\
@@ -1026,7 +1032,11 @@ cmake \
         -DENABLE_itk:BOOL=ON \\\
         -DENABLE_tk:BOOL=ON \\\
 %endif
-        -DENABLE_ocaml:BOOL=ON \\\
+%if %{with ocaml_camlidl}
+        -DENABLE_ocaml:BOOL=ON \
+%else
+        -DENABLE_ocaml:BOOL=OFF \
+%endif
         -DPLD_aqt:BOOL=ON \\\
         -DPLD_plmeta:BOOL=OFF \\\
         -DPLD_svg:BOOL=ON \\\
@@ -1039,13 +1049,19 @@ cmake \
         -DPLPLOT_USE_QT5:BOOL=ON \\\
         ..
 
-make %{?_smp_mflags}
+make %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
 pushd builddir
 %make_install DESTDIR=%{buildroot}
 popd
+> %{name}.filelist.ocaml
+%if %{with ocaml_camlidl}
+: creating '%{name}.files' and '%{name}.files.devel'
+%ocaml_create_file_list
+mv %{name}.files.devel %{name}.filelist.ocaml
+%endif
 
 # Fix up tclIndex files so they are the same on all builds
 for file in %{buildroot}%{_datadir}/plplot%{version}/examples/*/tclIndex
