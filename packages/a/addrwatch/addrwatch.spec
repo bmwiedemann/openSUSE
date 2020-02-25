@@ -1,7 +1,7 @@
 #
 # spec file for package addrwatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           addrwatch
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A tool for IPv4/IPv6 and Ethernet address pairing monitoring
 License:        GPL-3.0-only
-Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/fln/addrwatch
 Source0:        https://github.com/fln/addrwatch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-db-reconnect-issue.patch
 BuildRequires:  autoconf >= 2.68
 BuildRequires:  automake
 BuildRequires:  libevent-devel

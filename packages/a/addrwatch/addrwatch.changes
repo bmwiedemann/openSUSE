@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 24 17:21:45 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.2
+  * Add leading / to default shared-memory name
+  * Add clang-tidy support, clean most of the linter warnings
+  * Remove sys_siglist usage in favor of strsignal (#12)
+  * Add clang-format format support, re-style code base
+  * addrwatch: Add limits header for PATH_MAX 
+  * Mark db_reconnect as static inline, fixes GH-11
+  * Add experimental meson build support
+  * Add mysql migration script, update README.md 
+
+- Drop fix-db-reconnect-issue.patch (merged upstream)
+
+-------------------------------------------------------------------
+Thu Oct 17 12:52:36 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Fri Aug  2 12:41:58 UTC 2019 - Karol Babioch <kbabioch@suse.com>
 
 - Using %autosetup macro.
