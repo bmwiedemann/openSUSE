@@ -34,4 +34,19 @@
   * Add firefox theme</comment>
     <requestid>757321</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eb8f2be0ed4799b193606b283cbbaecb</srcmd5>
+    <version>20200220</version>
+    <time>1582643284</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20200220:
+  * Switch to unison hovering
+  * Fix budgie issues 
+  * Update Firefox Theme
+  * Remove nav-bar's padding-left when window buttons are hidden 
+  * Fixed titlebutton backdrop hover icon issue
+  * Deeper shadow
+  * Fix thunar and tilix issues</comment>
+    <requestid>779052</requestid>
+  </revision>
 </revisionlist>
