@@ -71,4 +71,14 @@
     <comment>fixes boo#1159777</comment>
     <requestid>761860</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>cc982eea3e170ce93a9c873f53f95758</srcmd5>
+    <version>0.12.3</version>
+    <time>1582643267</time>
+    <user>dimstar_suse</user>
+    <comment>- Added v4l2loopback-dont_use_timeval.patch and
+  v4l2loopback-drop_cast_to_time_t.patch (fix boo#1164757)
+</comment>
+    <requestid>779016</requestid>
+  </revision>
 </revisionlist>

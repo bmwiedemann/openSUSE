@@ -1,0 +1,25 @@
+From 54ef8e99720cbb447ad8e0d598ee05580b485391 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?IOhannes=20m=20zm=C3=B6lnig?= <zmoelnig@iem.at>
+Date: Tue, 25 Feb 2020 11:22:43 +0100
+Subject: [PATCH] Drop cast to (time_t)
+
+Closes: https://github.com/umlaeute/v4l2loopback/issues/258
+---
+ v4l2loopback.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/v4l2loopback.c b/v4l2loopback.c
+index 4f43a73..93d1859 100644
+--- a/v4l2loopback.c
++++ b/v4l2loopback.c
+@@ -144,8 +144,8 @@ static inline void v4l2l_get_timestamp(struct v4l2_buffer *b) {
+ 	ktime_get_ts64(&ts);
+ #endif
+ 
+-	b->timestamp.tv_sec = (time_t)ts.tv_sec;
+-	b->timestamp.tv_usec = (suseconds_t)(ts.tv_nsec / NSEC_PER_USEC);
++	b->timestamp.tv_sec = ts.tv_sec;
++	b->timestamp.tv_usec = (ts.tv_nsec / NSEC_PER_USEC);
+ }
+ 
+ 

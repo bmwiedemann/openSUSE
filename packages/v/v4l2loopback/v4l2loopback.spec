@@ -26,6 +26,10 @@ Source:         https://github.com/umlaeute/v4l2loopback/archive/v%{version}.tar
 Source1:        preamble
 #PATCH-FIX-OPENSUSE v4l2loopback-include_header.patch
 Patch0:         v4l2loopback-include_header.patch
+#PATCH-FIX-UPSTREAM v4l2loopback-dont_use_timeval.patch -- fixes build with kernel 5.6
+Patch1:         v4l2loopback-dont_use_timeval.patch
+#PATCH-FIX-UPSTREAM v4l2loopback-drop_cast_to_time_t.patch -- fixes build with kernel 5.6
+Patch2:         v4l2loopback-drop_cast_to_time_t.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  help2man
 Requires:       v4l-utils

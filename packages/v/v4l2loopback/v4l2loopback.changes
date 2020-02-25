@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 09:28:10 UTC 2020 - aloisio@gmx.com
+
+- Added v4l2loopback-dont_use_timeval.patch and
+  v4l2loopback-drop_cast_to_time_t.patch (fix boo#1164757)
+
+-------------------------------------------------------------------
 Wed Jan  8 14:19:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Made build verbose
