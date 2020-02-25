@@ -16,10 +16,11 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-seqdiag
-Version:        0.8.5
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx "seqdiag" extension
 License:        BSD-2-Clause

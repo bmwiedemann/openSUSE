@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 25 06:26:01 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version 2.0.0:
+  * Update CI settings
+  * blockdiag.utils.compat has been no longer needed
+  * Update package metadata
+  * Drop old Sphinx support
+  * Drop codes for old pythons
+  * Add .mypy_cache to gitignore
+  * Bump v2.0.0
+  * Fix flake8 violations
+- Stop building python2 version. No longer supported upstream
+
+-------------------------------------------------------------------
 Thu Jan  9 12:02:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove bogus python-devel and python-setuptools deps
