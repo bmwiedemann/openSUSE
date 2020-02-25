@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>770566</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>74056d9f0cd8ba13a4a26fb776e68c04</srcmd5>
+    <version>0.9.0</version>
+    <time>1582642985</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests to avoid deadlock in xvfb</comment>
+    <requestid>777875</requestid>
+  </revision>
 </revisionlist>

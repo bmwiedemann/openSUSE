@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 21 09:11:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests to avoid deadlock in xvfb
+
+-------------------------------------------------------------------
 Thu Feb  6 12:33:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.9.0
