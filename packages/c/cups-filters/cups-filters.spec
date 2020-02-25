@@ -37,12 +37,9 @@ Name:           cups-filters
 #       and also run: zypper vcmp 'next version' 'current version'
 # e.g. zypper vcmp '1.0.49' '1.0.49.20140326' -> 1.0.49 is older than 1.0.49.20140326
 #  and zypper vcmp '1.0.50' '1.0.49.20140326' -> 1.0.50 is newer than 1.0.49.20140326
-Version:        1.25.0
+Version:        1.27.1
 Release:        0
 Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%{version}.tar.xz
-Patch1:         add-cstring-include.patch
-# https://github.com/OpenPrinting/cups-filters/pull/184
-Patch2:         foomatic-rip-fix-compilation-with-fno-common.patch
 # Upstream fix for https://bugs.linuxfoundation.org/show_bug.cgi?id=1421
 # in https://github.com/OpenPrinting/cups-filters/commit/6db3b08d3b20332b1525b8dd1a47950381b8f637
 # dowloaded via
