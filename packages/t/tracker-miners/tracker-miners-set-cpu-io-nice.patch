@@ -1,0 +1,158 @@
+From 3757daba251bd5bd1bb20b89c6269d63ff95038d Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 19 Feb 2020 18:27:11 +0100
+Subject: [PATCH] tracker-extract: Set cpu/io/nice settings before glib/gio
+ usage
+
+This was happening late enough during main() that there were already
+non-exclusive threadpools/threads created with regular scheduler
+settings. Those settings would be cached in recent glib, creating
+disparities that it will g_error() out on later. Those created threads
+might however be reused later on by different code (eg. metadata
+extraction, directly or indirectly), with the regular scheduling
+priorities set.
+
+Given that even accessing GSettings will result in threads being
+spawned underneath, there's no better choice than doing this always.
+This means the 'sched-idle' setting is ineffective. But this default
+should avoid fingers from pointing at us.
+
+Closes: https://gitlab.gnome.org/GNOME/tracker/issues/180
+---
+ src/tracker-extract/tracker-main.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/src/tracker-extract/tracker-main.c b/src/tracker-extract/tracker-main.c
+index f6db1e0f2..0a9a42ebd 100644
+--- a/src/tracker-extract/tracker-main.c
++++ b/src/tracker-extract/tracker-main.c
+@@ -109,14 +109,10 @@ static GOptionEntry entries[] = {
+ };
+ 
+ static void
+-initialize_priority_and_scheduling (TrackerSchedIdle sched_idle,
+-                                    gboolean         first_time_index)
++initialize_priority_and_scheduling (void)
+ {
+ 	/* Set CPU priority */
+-	if (sched_idle == TRACKER_SCHED_IDLE_ALWAYS ||
+-	    (sched_idle == TRACKER_SCHED_IDLE_FIRST_INDEX && first_time_index)) {
+-		tracker_sched_idle ();
+-	}
++	tracker_sched_idle ();
+ 
+ 	/* Set disk IO priority and scheduling */
+ 	tracker_ioprio_init ();
+@@ -230,6 +226,9 @@ run_standalone (TrackerConfig *config)
+ 		output_format_name = "turtle";
+ 	}
+ 
++	/* This makes sure we don't steal all the system's resources */
++	initialize_priority_and_scheduling ();
++
+ 	/* Look up the output format by name */
+ 	enum_class = g_type_class_ref (TRACKER_TYPE_SERIALIZATION_FORMAT);
+ 	enum_value = g_enum_get_value_by_nick (enum_class, output_format_name);
+@@ -242,9 +241,6 @@ run_standalone (TrackerConfig *config)
+ 
+ 	tracker_locale_sanity_check ();
+ 
+-	/* This makes sure we don't steal all the system's resources */
+-	initialize_priority_and_scheduling (tracker_config_get_sched_idle (config), TRUE);
+-
+ 	file = g_file_new_for_commandline_arg (filename);
+ 	uri = g_file_get_uri (file);
+ 
+@@ -371,6 +367,9 @@ main (int argc, char *argv[])
+ 		return EXIT_FAILURE;
+ 	}
+ 
++	/* This makes sure we don't steal all the system's resources */
++	initialize_priority_and_scheduling ();
++
+ 	connection = g_bus_get_sync (TRACKER_IPC_BUS, NULL, &error);
+ 	if (error) {
+ 		g_critical ("Could not create DBus connection: %s\n",
+@@ -402,9 +401,6 @@ main (int argc, char *argv[])
+ 	/* Initialize subsystems */
+ 	initialize_directories ();
+ 
+-	/* This makes sure we don't steal all the system's resources */
+-	initialize_priority_and_scheduling (tracker_config_get_sched_idle (config), TRUE);
+-
+ 	extract = tracker_extract_new (TRUE, force_module);
+ 
+ 	if (!extract) {
+-- 
+2.24.1
+
+
+From 75493f12a06a2150d9c8d66d2ec6fe25e14428cd Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 19 Feb 2020 18:27:21 +0100
+Subject: [PATCH] tracker-miner-fs: Set cpu/io/nice settings before glib/gio
+ usage
+
+This was happening late enough during main() that there were already
+non-exclusive threadpools/threads created with regular scheduler
+settings. Those settings would be cached in recent glib, creating
+disparities that it will g_error() out on later. Those created threads
+might however be reused later on by different code (eg. metadata
+extraction, directly or indirectly), with the regular scheduling
+priorities set.
+
+Given that even accessing GSettings will result in threads being
+spawned underneath, there's no better choice than doing this always.
+This means the 'sched-idle' setting is ineffective. But this default
+should avoid fingers from pointing at us.
+
+Closes: https://gitlab.gnome.org/GNOME/tracker/issues/180
+---
+ src/miners/fs/tracker-main.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/src/miners/fs/tracker-main.c b/src/miners/fs/tracker-main.c
+index 03e8e6496..7ae85e254 100644
+--- a/src/miners/fs/tracker-main.c
++++ b/src/miners/fs/tracker-main.c
+@@ -271,14 +271,10 @@ initialize_signal_handler (void)
+ }
+ 
+ static void
+-initialize_priority_and_scheduling (TrackerSchedIdle sched_idle,
+-                                    gboolean         first_time_index)
++initialize_priority_and_scheduling (void)
+ {
+ 	/* Set CPU priority */
+-	if (sched_idle == TRACKER_SCHED_IDLE_ALWAYS ||
+-	    (sched_idle == TRACKER_SCHED_IDLE_FIRST_INDEX && first_time_index)) {
+-		tracker_sched_idle ();
+-	}
++	tracker_sched_idle ();
+ 
+ 	/* Set disk IO priority and scheduling */
+ 	tracker_ioprio_init ();
+@@ -823,6 +819,9 @@ main (gint argc, gchar *argv[])
+ 		return EXIT_FAILURE;
+ 	}
+ 
++	/* This makes sure we don't steal all the system's resources */
++	initialize_priority_and_scheduling ();
++
+ 	connection = g_bus_get_sync (TRACKER_IPC_BUS, NULL, &error);
+ 	if (error) {
+ 		g_critical ("Could not create DBus connection: %s\n",
+@@ -851,10 +850,6 @@ main (gint argc, gchar *argv[])
+ 
+ 	sanity_check_option_values (config);
+ 
+-	/* This makes sure we don't steal all the system's resources */
+-	initialize_priority_and_scheduling (tracker_config_get_sched_idle (config),
+-	                                    tracker_miner_files_get_first_index_done () == FALSE);
+-
+ 	main_loop = g_main_loop_new (NULL, FALSE);
+ 
+ 	if (domain_ontology_name) {
+-- 
+2.24.1
+

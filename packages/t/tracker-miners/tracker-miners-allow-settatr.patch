@@ -1,0 +1,36 @@
+From 78c709c3946857e43796240d54a7558cbb6c2da1 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 19 Feb 2020 18:27:35 +0100
+Subject: [PATCH] libtracker-miners-common: Allow sched_setattr syscall
+
+https://gitlab.gnome.org/GNOME/glib/issues/2039 has taught us two
+things:
+- Even if sched_setattr failures aren't handled as g_error() in
+  glib, there will be some kind of warning. It's not desirable to
+  extractor modules to indirectly trigger it.
+- Since priorities cannot be risen back without special capabilities
+  (results in EPERM), it's not that bad to simply allow this syscall.
+
+So simply allow the sched_setattr syscall in our seccomp filter.
+
+Closes: https://gitlab.gnome.org/GNOME/tracker/issues/180
+---
+ src/libtracker-miners-common/tracker-seccomp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libtracker-miners-common/tracker-seccomp.c b/src/libtracker-miners-common/tracker-seccomp.c
+index 6e6218126..9d031c09e 100644
+--- a/src/libtracker-miners-common/tracker-seccomp.c
++++ b/src/libtracker-miners-common/tracker-seccomp.c
+@@ -114,7 +114,7 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (rt_sigprocmask);
+ 	ALLOW_RULE (sched_yield);
+ 	ALLOW_RULE (sched_getaffinity);
+-	ERROR_RULE (sched_setattr, EPERM);
++	ALLOW_RULE (sched_setattr);
+ 	ALLOW_RULE (nanosleep);
+ 	ALLOW_RULE (waitid);
+ 	ALLOW_RULE (waitpid);
+-- 
+2.24.1
+

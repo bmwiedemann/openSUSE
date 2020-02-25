@@ -25,6 +25,11 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/2.3/%{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM tracker-miners-set-cpu-io-nice.patch -- Set cpu/io/nice settings before glib/gio
+Patch0:         tracker-miners-set-cpu-io-nice.patch
+# PATCH-FIX-UPSTREAM tracker-miners-allow-settatr.patch -- Allow sched_setattr syscall
+Patch1:         tracker-miners-allow-settatr.patch
+
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  libtiff-devel
