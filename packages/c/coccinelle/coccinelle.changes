@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:11:11 UTC 2020 - olaf@aepfle.de
+
+- The used buildsystem relies on ocaml.opt
+
+-------------------------------------------------------------------
 Wed Jan 15 17:10:38 UTC 2020 - olaf@aepfle.de
 
 - Use _service file to trim the bundles directory

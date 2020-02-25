@@ -29,7 +29,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml >= 3.11
+BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-menhir-devel
 BuildRequires:  ocaml-ocamlbuild
