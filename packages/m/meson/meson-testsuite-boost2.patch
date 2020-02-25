@@ -1,0 +1,59 @@
+Index: meson-0.53.1/test cases/frameworks/1 boost/meson.build
+===================================================================
+--- meson.build
++++ meson.build
+@@ -22,24 +22,14 @@ endif
+ # Use one without a library dependency and one with it.
+ 
+ linkdep = dependency('boost', modules : ['thread', 'system', 'test'])
+-staticdep = dependency('boost', modules : ['thread', 'system'], static : true)
+ testdep = dependency('boost', modules : ['unit_test_framework'])
+ nomoddep = dependency('boost')
+ extralibdep = dependency('boost', modules : ['thread', 'system', 'log_setup', 'log'])
+ 
+ pymod = import('python')
+-python2 = pymod.find_installation('python2', required: host_machine.system() == 'linux', disabler: true)
+ python3 = pymod.find_installation('python3', required: host_machine.system() == 'linux', disabler: true)
+-python2dep = python2.dependency(required: host_machine.system() == 'linux', embed: true, disabler: true)
+ python3dep = python3.dependency(required: host_machine.system() == 'linux', embed: true, disabler: true)
+ 
+-# compile python 2/3 modules only if we found a corresponding python version
+-if(python2dep.found() and host_machine.system() == 'linux')
+-  bpython2dep = dependency('boost', modules : ['python'], required: false, disabler: true)
+-else
+-  python2dep = disabler()
+-  bpython2dep = disabler()
+-endif
+ 
+ if(python3dep.found() and host_machine.system() == 'linux')
+   bpython3dep = dependency('boost', modules : ['python3'], required: false, disabler: true)
+@@ -49,24 +39,19 @@ else
+ endif
+ 
+ linkexe = executable('linkedexe', 'linkexe.cc', dependencies : linkdep)
+-staticexe = executable('staticlinkedexe', 'linkexe.cc', dependencies : staticdep)
+ unitexe = executable('utf', 'unit_test.cpp', dependencies: testdep)
+ nomodexe = executable('nomod', 'nomod.cpp', dependencies : nomoddep)
+ extralibexe = executable('extralibexe', 'extralib.cpp', dependencies : extralibdep)
+ 
+ # python modules are shared libraries
+-python2module = shared_library('python2_module', ['python_module.cpp'], dependencies: [python2dep, bpython2dep], name_prefix: '', cpp_args: ['-DMOD_NAME=python2_module'])
+ python3module = shared_library('python3_module', ['python_module.cpp'], dependencies: [python3dep, bpython3dep], name_prefix: '', cpp_args: ['-DMOD_NAME=python3_module'])
+ 
+ test('Boost linktest', linkexe)
+-test('Boost statictest', staticexe)
+ test('Boost UTF test', unitexe)
+ test('Boost nomod', nomodexe)
+ test('Boost extralib test', extralibexe)
+ 
+ # explicitly use the correct python interpreter so that we don't have to provide two different python scripts that have different shebang lines
+-python2interpreter = find_program(python2.path(), required: false, disabler: true)
+-test('Boost Python2', python2interpreter, args: ['./test_python_module.py', meson.current_build_dir()], workdir: meson.current_source_dir(), depends: python2module)
+ python3interpreter = find_program(python3.path(), required: false, disabler: true)
+ test('Boost Python3', python3interpreter, args: ['./test_python_module.py', meson.current_build_dir()], workdir: meson.current_source_dir(), depends: python3module)
+ 
+@@ -74,3 +59,4 @@ subdir('partial_dep')
+ 
+ # check we can apply a version constraint
+ dependency('boost', version: '>=@0@'.format(dep.version()))
++

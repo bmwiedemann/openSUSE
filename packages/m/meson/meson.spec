@@ -49,10 +49,14 @@ Patch3:         meson-suse-fix-llvm-3.8.patch
 Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
-# PATCH-FIX-UPSREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
+# PATCH-FIX-UPSTREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
 Patch6:         meson-testsuite-boost.patch
 # PATCH-FIX-UPSTREAM meson-6614.patch dimstar@opensuse.org -- cmake: Fix crash when no C++ compiler is not installed
 Patch7:         meson-6614.patch
+# PATCH-FIX-UPSTREAM 6642.patch mimi.vx@gmail.com -- Fix skip python2 unittests
+Patch8:         6642.patch
+# PATCH-FIX-OPENSUSE meson-testsuite-boost2.patch mimi.vx@gmail.com -- disable libboost_python tests
+Patch9:         meson-testsuite-boost2.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -93,8 +97,12 @@ BuildRequires:  pkgconfig
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python2-PyYAML
 %endif
+%if 0%{?suse_version} < 1550
 BuildRequires:  python2-devel
+%endif
+BuildRequires:  distribution-release
 BuildRequires:  python3-gobject
+BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel-static
 BuildRequires:  cmake(Qt5Core)
@@ -106,15 +114,17 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(python3) >= 3.4
+BuildRequires:  pkgconfig(python3) >= 3.5
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} < 1550
+BuildRequires:  libboost_python-devel
+%endif
 BuildRequires:  java-headless
 BuildRequires:  libboost_log-devel
-BuildRequires:  libboost_python-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
@@ -177,6 +187,12 @@ This package provides support for meson.build files in Vim.
 %patch6 -p0
 )
 %patch7 -p1
+%patch8 -p1
+%if 0%{?suse_version} >= 1550
+(cd "test cases/frameworks/1 boost"
+%patch9 -p0
+)
+%endif
 
 # Remove static boost tests from "test cases/frameworks/1 boost/".
 sed -i "/static/d" test\ cases/frameworks/1\ boost/meson.build

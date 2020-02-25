@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:07:46 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Add 6642.patch - allow skip python2 unittests
+      meson-testsuite-boost2.patch skip libboost_python tests on TW
+
+-------------------------------------------------------------------
 Wed Feb 12 19:08:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add meson-6614.patch: cmake: Fix crash when no C++ compiler is

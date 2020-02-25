@@ -1,0 +1,23 @@
+From 2d9d7857b07002668600e2d076dc89685ea8da40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ond=C5=99ej=20S=C3=BAkup?=
+ <mimi1vx@users.noreply.github.com>
+Date: Tue, 18 Feb 2020 09:49:45 +0100
+Subject: [PATCH] Skip Py2 tests correctly also on other systems than Debian
+
+---
+ run_unittests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: meson-0.53.1/run_unittests.py
+===================================================================
+--- meson-0.53.1.orig/run_unittests.py
++++ meson-0.53.1/run_unittests.py
+@@ -6659,7 +6659,7 @@ class NativeFileTests(BasePlatformTests)
+             # python module breaks. This is fine on other OSes because they
+             # don't need the extra indirection.
+             raise unittest.SkipTest('bat indirection breaks internal sanity checks.')
+-        if os.path.exists('/etc/debian_version'):
++        if os.path.exists('/etc/os-release') or os.path.exists('/etc/debian_version'):
+             rc = subprocess.call(['pkg-config', '--cflags', 'python2'],
+                                  stdout=subprocess.DEVNULL,
+                                  stderr=subprocess.DEVNULL)
