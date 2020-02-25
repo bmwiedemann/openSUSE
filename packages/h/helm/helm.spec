@@ -1,7 +1,7 @@
 #
 # spec file for package helm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define git_commit b9a54967f838723fe241172a6b94d18caf8bcdca
+%define git_commit ac925eb7279f4a6955df663a0128044a8a6b7593
 Name:           helm
-Version:        3.0.0beta.3
+Version:        3.0.3
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -26,11 +26,9 @@ Group:          Development/Languages/Other
 URL:            https://github.com/kubernetes/helm
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  go1.12
-Source99:       README.packaging
 BuildRequires:  golang-packaging
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.12
 %{go_nostrip}
 %{go_provides}
 
@@ -40,15 +38,13 @@ Helm is a tool for managing Kubernetes charts. Charts are packages of pre-config
 %prep
 %setup -q
 tar xJf %{SOURCE1}
-%{goprep} helm.sh/helm
 
 %build
-export GOPATH="%{_builddir}/go:$GOPATH"
-GOBIN=$PWD/bin go install -tags '' -ldflags ' -X helm.sh/helm/pkg/version.Version=v%{version} -X helm.sh/helm/pkg/version.BuildMetadata= -X helm.sh/helm/pkg/version.GitCommit=%{git_commit} -X helm.sh/helm/pkg/version.GitTreeState=clean' helm.sh/helm/cmd/...
+go build -mod=vendor -buildmode=pie ./cmd/helm
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-install -m755 bin/helm %{buildroot}/%{_bindir}/helm
+install -m755 helm %{buildroot}/%{_bindir}/helm
 
 %files
 %doc README.md
