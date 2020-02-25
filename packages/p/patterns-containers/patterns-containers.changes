@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 22 17:42:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-k8s-yaml to kubeadm pattern
+
+-------------------------------------------------------------------
+Thu Feb 20 15:38:47 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add helm to kubeadm pattern
+  (https://github.com/kubic-project/issues/issues/10)
+
+-------------------------------------------------------------------
 Sun Dec 22 15:08:31 UTC 2019 - kukuk@suse.de
 
 - loadbalancer: add kubic-haproxycfg

@@ -134,4 +134,15 @@
     <comment>- loadbalancer: add kubic-haproxycfg</comment>
     <requestid>758861</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>4a70e21348317d3fb13dc9ceba5584bc</srcmd5>
+    <version>5.0</version>
+    <time>1582643024</time>
+    <user>dimstar_suse</user>
+    <comment>- Add busybox-k8s-yaml to kubeadm pattern
+
+- Add helm to kubeadm pattern
+  (https://github.com/kubic-project/issues/issues/10)</comment>
+    <requestid>778802</requestid>
+  </revision>
 </revisionlist>

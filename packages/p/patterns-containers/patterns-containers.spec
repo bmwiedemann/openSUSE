@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-containers
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ Provides:       pattern-visible()
 Provides:       patterns-caasp-kubeadm
 Obsoletes:      patterns-caasp-kubeadm <= 4.0
 Requires:       autofs
+Requires:       busybox-k8s-yaml
 Requires:       ceph-common
 Requires:       cilium-k8s-yaml
 Requires:       cri-runtime
@@ -50,6 +51,7 @@ Requires:       cri-tools
 Requires:       flannel-k8s-yaml
 Requires:       health-checker-plugins-kubic
 Requires:       hello-kubic-k8s-yaml
+Requires:       helm
 Requires:       kubernetes-client
 Requires:       kubernetes-kubeadm
 Requires:       kubernetes-kubeadm-criconfig
