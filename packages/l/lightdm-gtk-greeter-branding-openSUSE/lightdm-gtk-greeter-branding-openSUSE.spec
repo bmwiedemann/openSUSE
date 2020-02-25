@@ -33,7 +33,7 @@ BuildRequires:  lightdm-gtk-greeter
 # default background image
 Requires:       wallpaper-branding
 # default gtk3 theme
-Requires:       gtk3-metatheme-adwaita
+Requires:       gtk3-metatheme-greybird-geeko
 Requires:       lightdm-gtk-greeter = %{lightdm_gtk_greeter_version}
 Provides:       lightdm-gtk-greeter-branding = %{lightdm_gtk_greeter_version}
 Conflicts:      otherproviders(lightdm-gtk-greeter-branding)
