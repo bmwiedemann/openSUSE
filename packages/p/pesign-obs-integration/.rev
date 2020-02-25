@@ -305,4 +305,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>746111</requestid>
   </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>540353b2e414136f8f43abce26eae5da</srcmd5>
+    <version>10.1</version>
+    <time>1582642894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778639</requestid>
+  </revision>
 </revisionlist>
