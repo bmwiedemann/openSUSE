@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:36:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.1:
+  * build: Fixed building with CMake
+  * Update Ukranian translation
+
+-------------------------------------------------------------------
 Wed Feb 19 13:30:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 1.5.0:
