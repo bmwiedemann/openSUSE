@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupytext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define mainver 1.3.4
+%define labver  1.1.1
 Name:           python-jupytext
-%define mainver 1.2.4
-%define labver  1.0.2
 Version:        %{mainver}
 Release:        0
-License:        MIT
 Summary:        Tool to convert Jupyter notebooks to other formats
-Url:            https://github.com/mwouts/jupytext
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/mwouts/jupytext
 Source:         https://files.pythonhosted.org/packages/source/j/jupytext/jupytext-%{mainver}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module nbformat >= 4.0.0}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module testfixtures}
-# /SECTION
-BuildRequires:  fdupes
+Requires:       jupyter-jupytext = %{mainver}
+Requires:       python-PyYAML
 Requires:       python-nbformat >= 4.0.0
 Requires:       python-notebook
-Requires:       python-PyYAML
-Requires:       jupyter-jupytext = %{mainver}
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nbformat >= 4.0.0}
+BuildRequires:  %{python_module testfixtures}
+# /SECTION
 %python_subpackages
 
 %description
@@ -57,6 +57,7 @@ This package provides the python interface.
 
 %package     -n jupyter-jupytext
 Summary:        Tool to convert Jupyter notebooks to other formats
+Group:          Development/Languages/Python
 Requires:       jupyter-nbformat >= 4.0.0
 Requires:       jupyter-notebook
 Requires:       python3-jupytext = %{mainver}
@@ -71,8 +72,9 @@ interactive computing.
 This package provides the exectuables and jupyter components.
 
 %package     -n jupyter-jupytext-jupyterlab
-Summary:        Tool to convert Jupyter notebooks to other formats
 Version:        %{labver}
+Summary:        Tool to convert Jupyter notebooks to other formats
+Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
 Requires:       python3-jupytext = %{mainver}
 
