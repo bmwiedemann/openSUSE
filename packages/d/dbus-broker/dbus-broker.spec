@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-broker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           dbus-broker
-Version:        21
+Version:        22
 Release:        0
 Summary:        XDG-conforming message bus implementation
 License:        Apache-2.0
 Group:          System/Daemons
-Url:            https://github.com/bus1/dbus-broker
+URL:            https://github.com/bus1/dbus-broker
 
 Source:         https://github.com/bus1/dbus-broker/releases/download/v%version/dbus-broker-%version.tar.xz
 BuildRequires:  linux-glibc-devel >= 4.13

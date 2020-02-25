@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 24 17:52:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22
+  * Implement org.freedesktop.DBus.Debug.Stats in the driver.
+  * Support no-op activation files.
+  * The new configuration option `linux-4-17`, if set to true
+    (default is false), makes dbus-broker assume it runs on
+    linux-v4.17 or newer. It will make use of features introduced
+    up to linux-v4.17. This allows to forcibly disable
+    workarounds for old kernels.
+
+-------------------------------------------------------------------
 Tue Jun 11 12:06:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 21
