@@ -4279,4 +4279,19 @@
   * mozilla-bmo1601707.patch</comment>
     <requestid>773730</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>8021c2f982eb13a036e694e89f945fe5</srcmd5>
+    <version>73.0.1</version>
+    <time>1582642956</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 73.0.1
+  * Resolved problems connecting to the RBC Royal Bank website
+    (bmo#1613943)
+  * Fixed Firefox unexpectedly exiting when leaving Print Preview mode
+    (bmo#1611133)
+  * Fixed crashes when playing encrypted content on some Linux systems
+    (bmo#1614535)
+- start in wayland mode when running under wayland session</comment>
+    <requestid>777864</requestid>
+  </revision>
 </revisionlist>

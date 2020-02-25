@@ -81,6 +81,12 @@ export LIBXCB_ALLOW_SLOPPY_LOCK=1
 # disable Gnome crash dialog (doesn't make sense anyway)
 export GNOME_DISABLE_CRASH_DIALOG=1
 
+# Wayland
+# $XDG_SESSION_TYPE should contain either x11 or wayland
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  export MOZ_ENABLE_WAYLAND=1
+fi
+
 # enable xinput2 (boo#1032003)
 # breaks too many things right now (boo#1053959)
 #export MOZ_USE_XINPUT2=1
