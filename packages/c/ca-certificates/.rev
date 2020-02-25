@@ -367,4 +367,15 @@
     <comment></comment>
     <requestid>637028</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>80cf43e105a4fdeb1b3521937ea2448a</srcmd5>
+    <version>2+git20200129.d1a437d</version>
+    <time>1582642831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20200129.d1a437d:
+  * rewrite in bash
+  * java.run: don't set LANG=en_US
+- no longer require openssl, it's all done by p11-kit</comment>
+    <requestid>777924</requestid>
+  </revision>
 </revisionlist>

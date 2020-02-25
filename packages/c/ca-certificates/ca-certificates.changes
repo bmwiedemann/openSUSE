@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 29 16:58:22 UTC 2020 - lnussel@suse.de
+
+- Update to version 2+git20200129.d1a437d:
+  * rewrite in bash
+  * java.run: don't set LANG=en_US
+- no longer require openssl, it's all done by p11-kit
+
+-------------------------------------------------------------------
 Thu Sep 20 18:23:03 UTC 2018 - Jason Sikes <jsikes@suse.de>
 
 - Changed "openssl" requirement to "openssl(cli)"
