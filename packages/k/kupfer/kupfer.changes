@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 01:32:02 UTC 2020 - wnereiz@member.fsf.org
+
+- Add dependency packages python-base to satisfy waf env setting 
+
+-------------------------------------------------------------------
 Sat Oct  6 12:30:20 UTC 2018 - wnereiz@member.fsf.org
 
 - Add dependency packages python3-cairo and python3-dbus-python

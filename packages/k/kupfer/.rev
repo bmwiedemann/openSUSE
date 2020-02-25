@@ -49,4 +49,13 @@
 </comment>
     <requestid>640270</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d65146103d9566b04df42e9f2b8bdcf6</srcmd5>
+    <version>319</version>
+    <time>1582643152</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dependency packages python-base to satisfy waf env setting 
+</comment>
+    <requestid>778906</requestid>
+  </revision>
 </revisionlist>

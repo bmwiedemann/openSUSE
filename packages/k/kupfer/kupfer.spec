@@ -1,7 +1,7 @@
 #
 # spec file for package kupfer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  python >= 3.4
+BuildRequires:  python-base
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
@@ -80,16 +81,6 @@ applications.
 %fdupes %{buildroot}
 
 %find_lang %{name}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
 
 %files -f %{name}.lang
 %license COPYING
