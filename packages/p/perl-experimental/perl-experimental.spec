@@ -1,7 +1,7 @@
 #
 # spec file for package perl-experimental
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-experimental
-Version:        0.020
+Version:        0.021
 Release:        0
 %define cpan_name experimental
 Summary:        Experimental features made easy
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/experimental/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -76,6 +76,14 @@ This was added in perl 5.22.0.
 
 This was added in perl 5.22.0.
 
+* * 'declared_refs' - enables aliasing via assignment to references
+
+This was added in perl 5.26.0.
+
+* * 'isa' - allow the use of the 'isa' infix operator
+
+This was added in perl 5.32.0.
+
 * * 'lexical_topic' - allow the use of lexical '$_' via 'my $_'.
 
 This was added in perl 5.10.0 and removed in perl 5.23.4.
@@ -84,10 +92,16 @@ This was added in perl 5.10.0 and removed in perl 5.23.4.
 
 This was added in 5.18.0.
 
-* * 'postderef' - allow the use of postfix dereferencing expressions,
-  including in interpolating strings
+* * 'postderef' - allow the use of postfix dereferencing expressions
 
-This was added in perl 5.20.0.
+This was added in perl 5.20.0, and became non-experimental (and always
+enabled) in 5.24.0.
+
+* * 'postderef_qq' - allow the use of postfix dereferencing expressions
+  inside interpolating strings
+
+This was added in perl 5.20.0, and became non-experimental (and always
+enabled) in 5.24.0.
 
 * * 're_strict' - enables strict mode in regular expressions
 
@@ -122,11 +136,11 @@ This was added on perl 5.22.0.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
