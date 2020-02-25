@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 30
+%define micro_version 31
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -80,7 +80,7 @@ Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
 # PATCH-FIX-OPENSUSE: include all necessary aqute-bnd jars
 Patch4:         tomcat-9.0-osgi-build.patch
 # PATCH-FIX-OPENSUSE: cast ByteBuffer to Buffer in cases where there is a risk of using Java 9+ apis
-Patch5:         tomcat-9.0.30-java8compat.patch
+Patch5:         tomcat-9.0.31-java8compat.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr

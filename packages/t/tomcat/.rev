@@ -625,4 +625,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>bsc#1162081</comment>
     <requestid>768399</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c034f32194abef727e90f5059f6a4acf</srcmd5>
+    <version>9.0.31</version>
+    <time>1582643303</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.0.31 - Security fixes</comment>
+    <requestid>779100</requestid>
+  </revision>
 </revisionlist>
