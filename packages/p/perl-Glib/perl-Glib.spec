@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Glib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 Name:           perl-Glib
-Version:        1.3291
+Version:        1.3292
 Release:        0
+#Upstream:  This library is free software; you can redistribute it and/or modify it under the terms of the Lesser General Public License (LGPL). For more information, see http://www.fsf.org/licenses/lgpl.txt
 %define cpan_name Glib
 Summary:        Perl wrappers for the GLib utility and Object libraries
 License:        LGPL-2.1-or-later

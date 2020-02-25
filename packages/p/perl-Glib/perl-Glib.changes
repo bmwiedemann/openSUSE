@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 20 19:26:45 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Add manual license LGPL-2.1-or-later to cpanspec.yml
+
+-------------------------------------------------------------------
+Wed Feb 19 03:09:13 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.3292
+   see /usr/share/doc/packages/perl-Glib/ChangeLog.pre-git
+
+-------------------------------------------------------------------
 Wed Aug 28 09:40:45 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Removed patch fixed upstream:
