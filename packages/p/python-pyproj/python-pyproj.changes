@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:25:55 UTC 2020 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 2.5.0
+  * Wheels contain PROJ version is 6.3.1
+  * Remove deprecated PyObject_AsWriteBuffer (issue #495)
+  * ENH: Added pyproj.crs.CRS.equals with ignore_axis_order kwarg
+    (issue #493)
+  * ENH: Added pyproj.crs.CoordinateSystem.from_json,
+    pyproj.crs.CoordinateSystem.from_json_dict, and
+    pyproj.crs.CoordinateSystem.from_string (pull #501)
+  * ENH: Added pyproj.crs.CoordinateSystem to pyproj.crs
+    namespace (pull #501)
+  * ENH: Added pyproj.crs.CoordinateSystem.from_user_input,
+    pyproj.crs.CoordinateOperation.from_user_input,
+    pyproj.crs.Datum.from_user_input,
+    pyproj.crs.PrimeMeridian.from_user_input,
+    pyproj.crs.Ellipsoid.from_user_input (pull #502)
+  * ENH: Added pyproj.crs.CoordinateSystem.from_name,
+    pyproj.crs.CoordinateOperation.from_name,
+    pyproj.crs.Datum.from_name,
+    :meth:pyproj.crs.PrimeMeridian.from_name,
+    pyproj.crs.Ellipsoid.from_name (pull #505)
+  * BUG: Fix getting :attr:pyproj.crs.Ellipsoid.semi_minor_metre
+    when not computed (issue #457)
+  * ENH: Added support for custom CRS (issue #389)
+  * ENH: Added enumeration for WKT2_2019 (issue #526)
+  * ENH: Update from_cf/to_cf to use WKT instead of PROJ strings
+    for internal management (issue #515)
+
+-------------------------------------------------------------------
 Mon Dec  2 06:39:16 UTC 2019 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to 2.4.2.post1
