@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbval
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbval
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        A pytest plugin to validate Jupyter notebooks
 License:        BSD-3-Clause
@@ -42,7 +42,7 @@ Recommends:     python-pytest-cov
 Recommends:     python-pytest-timeout
 Recommends:     python-sympy
 Provides:       python-jupyter_nbval = %{version}
-Obsoletes:      python-jupyter_nbval <= %{version}
+Obsoletes:      python-jupyter_nbval < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}

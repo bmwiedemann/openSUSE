@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:50:14 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.9.5
+  * Add Python 3.8 to Appveyor
+  * Allow Python nightly fail in Travis
+  * Fix coverage for coverage.py >=5
+  * Add Python 3.8 to Travis
+
+-------------------------------------------------------------------
 Wed Jan 15 15:07:57 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.9.4
