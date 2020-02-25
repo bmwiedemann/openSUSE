@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 22 17:46:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable CONFIG_FEATURE_NSLOOKUP_BIG as it leads to incompatible
+  nslookup behavior
+
+-------------------------------------------------------------------
 Mon Feb 10 11:46:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Eanble FEATURE_TFTP_HPA_COMPAT and SH_MATH_BASE

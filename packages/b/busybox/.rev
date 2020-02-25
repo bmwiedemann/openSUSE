@@ -586,4 +586,13 @@
   2.31 and replaced with clock_settime().</comment>
     <requestid>772655</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8f4d8561818c891816a867b62b9f4749</srcmd5>
+    <version>1.31.1</version>
+    <time>1582642885</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable CONFIG_FEATURE_NSLOOKUP_BIG as it leads to incompatible
+  nslookup behavior</comment>
+    <requestid>778275</requestid>
+  </revision>
 </revisionlist>
