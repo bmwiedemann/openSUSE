@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 17:11:18 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- port reproducible.patch to python 3
+
+-------------------------------------------------------------------
 Mon Feb 10 15:02:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in python-gtk as that is py2 only and this package
