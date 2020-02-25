@@ -13,7 +13,7 @@ Index: contrib/ftpasswd
  my $shell_file = "/etc/shells";
  my $default_cracklib_dict = "/usr/lib/cracklib_dict";
  my $cracklib_dict;
-@@ -1109,6 +1109,46 @@ usage: $program [--help] [--hash|--group
+@@ -1128,6 +1128,46 @@ usage: $program [--help] [--hash|--group
      --version
                  Displays the version of $program.
  

@@ -329,4 +329,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>remove deprecated NoCertRequest from TLSOptions (forwarded request 769275 from computersalat)</comment>
     <requestid>769276</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cec56eab34e12b825aec1003ca40e7e0</srcmd5>
+    <version>1.3.6c</version>
+    <time>1582643125</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.3.6c, fix for boo#1164572 (CVE-2020-9272, gh#902), fix for boo#1164574 (CVE-2020-9273, gh#903) (forwarded request 778853 from computersalat)</comment>
+    <requestid>778858</requestid>
+  </revision>
 </revisionlist>

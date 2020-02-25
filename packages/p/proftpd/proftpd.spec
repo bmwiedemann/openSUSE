@@ -22,7 +22,7 @@ Summary:        Configurable GPL-licensed FTP server software
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.6b
+Version:        1.3.6c
 Release:        0
 URL:            http://www.proftpd.org/
 Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz
@@ -47,8 +47,6 @@ Patch103:       %{name}-strip.patch
 Patch104:       %{name}-no_BuildDate.patch
 #RPMLINT-FIX-openSUSE: env-script-interpreter
 Patch105:       %{name}_env-script-interpreter.patch
-#PATCH-FIX-UPSTREAM: (CVE-2019-19269, CVE-2019-19270)
-Patch200:       %{name}-tls-crls-issue859.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
 BuildRequires:  fdupes
@@ -156,8 +154,6 @@ rm README.AIX
 %patch103
 %patch104
 %patch105
-
-%patch200 -p1
 
 %build
 rm contrib/mod_wrap.c
