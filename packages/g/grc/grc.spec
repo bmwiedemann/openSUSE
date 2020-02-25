@@ -1,7 +1,7 @@
 #
 # spec file for package grc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           grc
-Version:        1.11.1
+Version:        1.11.3
 Release:        0
 Summary:        Generic colouriser for everything
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Console
-Url:            http://kassiopeia.juls.savba.sk/~garabik/software/grc.html
+URL:            http://kassiopeia.juls.savba.sk/~garabik/software/grc.html
 Source:         https://github.com/garabik/grc/archive/v%{version}.tar.gz#/v%{version}.tar.gz
 # https://github.com/simotek/grc-osc-conf
 Source1:        conf.osc
@@ -41,6 +41,9 @@ logfiles or commands output.
 # Nothing to build.
 
 %install
+# fix wrong wrong-script-interpreter
+find . -name 'grc' -exec sed -i "s|#! %{_bindir}/env python3$|#!/usr/bin/python3|" {} +
+find . -name 'grcat' -exec sed -i "s|#! %{_bindir}/env python3$|#!/usr/bin/python3|" {} +
 install -Dm 0755 grc %{buildroot}%{_bindir}/grc
 install -Dm 0755 grcat %{buildroot}%{_bindir}/grcat
 install -Dm 0644 grc.conf %{buildroot}%{_sysconfdir}/grc.conf

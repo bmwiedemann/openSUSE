@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 01:04:16 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Update to v1.11.3
+  * Some new configs
+    * iwconfig
+    * lolcat
+    * ntpupdate
+    * whois
+  * Minor changes to some other configs
+  * --color=auto is now default
+  * Do not colorize if output is not a terminal
+
+-------------------------------------------------------------------
 Thu Aug 10 02:27:19 UTC 2017 - simonf.lees@suse.com
 
 - Update to v1.11.1
@@ -6,8 +19,8 @@ Thu Aug 10 02:27:19 UTC 2017 - simonf.lees@suse.com
 -------------------------------------------------------------------
 Sun May 28 11:33:51 UTC 2017 - sflees@suse.de
 
-- Updating to version 1.11 
- 
+- Updating to version 1.11
+
 -------------------------------------------------------------------
 Fri Apr 29 12:15:59 UTC 2016 - jsegitz@novell.com
 
