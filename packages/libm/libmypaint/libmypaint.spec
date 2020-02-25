@@ -1,7 +1,7 @@
 #
 # spec file for package libmypaint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,19 @@
 #
 
 
-%define shlib %{name}-1_4-0
+%define shlib %{name}-1_5-1
 %define geglshlib %{name}-gegl0
 Name:           libmypaint
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A brushstroke creation library
 License:        ISC
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://mypaint.org/
 Source:         https://github.com/mypaint/libmypaint/releases/download/v%{version}/libmypaint-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libmypaint-bump-gegl-version.patch -- Bump minimum gegl version to new stable branch 0.4.0
-Patch0:         libmypaint-bump-gegl-version.patch
-# PATCH-FIX-UPSTREAM libmypaint-gegl-0.4.14.patch badshah400@gmail.com -- Fix compilation against gegl=0.4.14
-# See https://www.gimpusers.com/forums/gimp-developer/21248-libmypaint-needs-patching-for-recent-gegl
-Patch1:         libmypaint-gegl-0.4.14.patch
-# PATCH-FIX-UPSTREAM libmypaint-gegl-shlib-version.patch gh#mypaint/libmypaint#97 badshah400@gmail.com -- Fixes building with GEGL Support
-Patch2:         libmypaint-gegl-shlib-version.patch
+# PATCH-FIX-UPSTREAM libmypaint-gegl-pkgconfig.patch badshah400@gmail.com -- In libmypaint-gegl.pc, change Name to libmypaint-gegl to avoid conflict with libmypaint.pc and Requires to depend on the correct version of gegl and on libmypaint - not libmypaint-@LIBMYPAINT_API_PLATFORM_VERSION@
+Patch0:         libmypaint-gegl-pkgconfig.patch
 BuildRequires:  intltool
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gegl-0.4)
 BuildRequires:  pkgconfig(json-c)
@@ -90,18 +84,12 @@ for %{name}'s GEGL bindings.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%if 0%{?suse_version} >= 1500
-%patch1 -p1
-%endif
-%patch2 -p1
+%autosetup -p1
 
 # FIX A SPURIOUS PERM
 chmod -x README.md
 
 %build
-autoreconf -fiv
 %configure \
 	--enable-gegl \
 	%{nil}
@@ -118,7 +106,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{geglshlib} -p /sbin/ldconfig
 
 %files -n %{shlib}
-%{_libdir}/%{name}-1.4.so.*
+%{_libdir}/%{name}-1.5.so.*
 
 %files lang -f %{name}.lang
 
@@ -126,7 +114,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc README.md
 %{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/pkgconfig/libmypaint.pc
 %{_includedir}/%{name}/
 
 %files -n %{geglshlib}
@@ -134,6 +122,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files gegl-devel
 %{_libdir}/%{name}-gegl.so
+%{_libdir}/pkgconfig/libmypaint-gegl.pc
 %{_includedir}/%{name}-gegl/
 
 %changelog
