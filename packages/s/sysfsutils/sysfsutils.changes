@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 18:05:28 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Fix compiler issues for this package, which hasn't been touched
+  in a while. Should be no functional change. Added patch:
+  * sysfsutils-fix-compiler-issues.patch
+
+-------------------------------------------------------------------
 Thu Feb 16 20:11:00 UTC 2012 - crrodriguez@opensuse.org
 
 - Libraries are back to %{_libdir}, /usr merge project 

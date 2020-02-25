@@ -1,7 +1,7 @@
 #
 # spec file for package sysfsutils
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sysfsutils
 Summary:        System Utilities Package / Libsysfs
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Version:        2.1.0
 Release:        0
-Url:            http://linux-diag.sourceforge.net
+URL:            http://linux-diag.sourceforge.net
 Source:         http://aleron.dl.sourceforge.net/sourceforge/linux-diag/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch1:         %{name}-fix-compiler-issues.patch
 Provides:       libsysfs
 # bug437293
 %ifarch ppc64
@@ -62,6 +63,7 @@ This package contains the development files for libsysfs.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %configure --disable-static --with-pic
