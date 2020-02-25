@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Feb 25 04:21:46 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.0, partial changelog:
+  * Fixes a bug in which search results from search_users were not being displayed. (Issue #61)
+  * Fixes another field deletion/addition problem relating to Issue #59
+  * Fixes a bug preventing the match subcommand from being able to properly obtain field values. (Issue #60)
+  * Fixes several minor bugs relating to issue previews including:
+  * In certain situations, the preview automatic change detection would become stuck in a loop causing the page to refresh continuously.
+  * Preview document was not delivered with an UTF-8 charset, so non-latin-1 characters would be mangled.
+  * Changes to Jira fields would not be refreshed when rendering preview after submitting changes.
+  * Insufficient whitespace between comments may cause Jira to misinterpret headers as part of a previous comment's bulleted list.
+  * Fixes bug that would cause an unhelpful traceback to be displayed if you were to run Jirafs commands outside of a ticketfolder.
+  * Fixes to various bugs relating to merging upstream changes from Jira with un-pushed local changes.
+  * User is now warned about conflicts were they to occur when merging-in upstream changes.
+  * Conflicts are displayed on the status display should they exist, including instructions about how to resolve them.
+  * Additional polish for 'preview' function including:
+  * Fixes to exception display in-console for harmless errors resulting from clients navigating away.
+  * Defaulting behavior such that server will automatically self-terminate when the user navigates away. If this behavior is not desired, a command-line argument --serve-forever is available.
+  * Adding display of comments for 'all' preview mode.
+  * Adds links allowing you to jump to the specific section you're interested in when in the 'all' preview mode.
+  * Macro reversal changes for comments.read_only.jira: No longer will macros be reversed for read-only files given that the content of historical comments cannot be changed.
+  * Users can now set a preferred date format by setting a configuration value main.date_format.
+  * Obsolete and undocumented "Clone" functionality allowing you to clone a Jira ticketfolder from a git repository (instead of directly from a Jira issue) was removed.
+  * Jira server URL inference when cloning by using an issue number instead of a ticket URL is improved to be more foolproof.
+- Refreshed patch capitalization.patch
+- Removed {Build,}Requires on six, not required
+- Tighten Requires on python-jira
+
+-------------------------------------------------------------------
 Wed Jan 22 19:12:16 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.0.7: too many changes, and no good changelog

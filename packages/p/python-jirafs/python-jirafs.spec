@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jirafs
-Version:        2.0.7
+Version:        2.2.0
 Release:        0
 Summary:        Library for editing JIRA issues as local text files
 License:        MIT
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module ipdb}
 BuildRequires:  %{python_module jira}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tox}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,8 +42,7 @@ Requires:       python-PrettyTable
 Requires:       python-blessings
 Requires:       python-environmental-override
 Requires:       python-ipdb
-Requires:       python-jira
-Requires:       python-six
+Requires:       python-jira >= 2
 BuildArch:      noarch
 %python_subpackages
 
