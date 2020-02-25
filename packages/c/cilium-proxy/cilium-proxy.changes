@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 23:46:41 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fix the version string - mention OpenSSL instead of BoringSSL.
+
+-------------------------------------------------------------------
 Tue Feb  4 14:39:12 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Remove nanopb from requirements.

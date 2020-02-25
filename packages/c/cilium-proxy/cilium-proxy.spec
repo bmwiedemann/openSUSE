@@ -1,7 +1,7 @@
 #
 # spec file for package cilium-proxy
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Version:        20200109
 Release:        0
 Summary:        L7 proxy and communication bus for Cilium
 License:        Apache-2.0
-Url:            https://github.com/cilium/proxy
+URL:            https://github.com/cilium/proxy
 Source0:        %{name}-%{version}.tar.xz
 Source1:        BUILD
 Patch0:         0001-Adjust-cilium-proxy-to-Envoy-1.12.2.patch
@@ -136,6 +136,9 @@ git add .
 GIT_AUTHOR_DATE=2000-01-01T01:01:01 GIT_COMMITTER_DATE=2000-01-01T01:01:01 \
 git commit -m "Dummy commit just to satisfy bazel" &> /dev/null
 
+# Fix the version string
+sed -i "s|BoringSSL|OpenSSL|g" envoy/source/common/common/BUILD
+
 %build
 cd %{_builddir}/envoy-proxy
 # TODO(mrostecki): Create a macro in bazel package.
@@ -222,4 +225,3 @@ install -D -m0755 bazel-bin/envoy %{buildroot}%{_bindir}/cilium-envoy
 %{_bindir}/cilium-envoy
 
 %changelog
-
