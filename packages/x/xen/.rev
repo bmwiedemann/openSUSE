@@ -2403,4 +2403,12 @@
     <comment>Maintenance update with a few bug fixes.</comment>
     <requestid>768357</requestid>
   </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>7a8cd898a8dbdd04b7bc3f1964776d5c</srcmd5>
+    <version>4.13.0_08</version>
+    <time>1582642916</time>
+    <user>dimstar_suse</user>
+    <comment>Maintenance update with a few bug fixes.</comment>
+    <requestid>777747</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Feb 20 08:18:37 MST 2020 - carnold@suse.com
+
+- bsc#1160932 - VUL-0: xen: XSA-312 v1: arm: a CPU may speculate
+  past the ERET instruction 
+  5e1dcedd-Arm-place-speculation-barrier-after-ERET.patch
+- bsc#1164425 - x86: "spec-ctrl=no-xen" should also disable branch
+  hardening
+  5e4e614d-x86-spec-ctrl-no-xen-also-disables-branch-hardening.patch
+- Upstream bug fixes (bsc#1027519)
+  5e21ce98-x86-time-update-TSC-stamp-after-deep-C-state.patch
+  5e286cce-VT-d-dont-pass-bridges-to-domain_context_mapping_one.patch
+  5e318cd4-x86-apic-fix-disabling-LVT0.patch
+  5e344c11-x86-HVM-relinquish-resources-from-domain_destroy.patch
+  5e3bd385-EFI-recheck-variable-name-strings.patch
+  5e3bd3d1-EFI-dont-leak-heap-VIA-XEN_EFI_get_next_variable_name.patch
+  5e3bd3f8-xmalloc-guard-against-overflow.patch
+  5e46e090-x86-smp-reset-x2apic_enabled-in-smp_send_stop.patch
+  5e4c00ef-VT-d-check-full-RMRR-for-E820-reserved.patch
+  5e4d4f5b-sched-fix-get_cpu_idle_time-with-core-sched.patch
+
+-------------------------------------------------------------------
+Tue Feb 18 18:18:18 UTC 2020 - ohering@suse.de
+
+- bsc#1159755 - use fixed qemu-3.1 machine type for HVM
+  This must be done in qemu to preserve PCI layout
+  remove libxl.lock-qemu-machine-for-hvm.patch
+
+-------------------------------------------------------------------
+Fri Feb  7 12:37:35 UTC 2020 - ohering@suse.de
+
+- jsc#SLE-10183 - script to calculate cpuid= mask
+  add helper script from https://github.com/twizted/xen_maskcalc
+  domUs may be migrated between different cpus from the same vendor
+  if their visible cpuid value has incompatible feature bits masked.
+
+-------------------------------------------------------------------
+Wed Feb  5 15:16:06 UTC 2020 - ohering@suse.de
+
+- jsc#SLE-10172, bsc#1055731 - handle degraded raid for xendomains
+  add helper script and systemd service from
+  https://github.com/luizluca/xen-tools-xendomains-wait-disk
+  in new sub package xen-tools-xendomains-wait-disk
+  See included README for usage instructions
+  xendomains-wait-disks.LICENSE
+  xendomains-wait-disks.README.md
+  xendomains-wait-disks.sh
+
+-------------------------------------------------------------------
 Tue Jan 28 14:10:38 UTC 2020 - ohering@suse.de
 
 - bsc#1159755 - use fixed qemu-3.1 machine type for HVM

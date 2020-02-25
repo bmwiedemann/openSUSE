@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_06
+Version:        4.13.0_08
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -159,6 +159,10 @@ Source37:       xen2libvirt.py
 Source41:       xencommons.service
 Source42:       xen-dom0-modules.service
 Source57:       xen-utils-0.1.tar.bz2
+Source10172:    xendomains-wait-disks.sh
+Source10173:    xendomains-wait-disks.LICENSE
+Source10174:    xendomains-wait-disks.README.md
+Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
@@ -167,6 +171,18 @@ Patch2:         5de65fc4-x86-avoid-HPET-use-on-certain-Intel.patch
 Patch3:         5e15e03d-sched-fix-S3-resume-with-smt=0.patch
 Patch4:         5e16fb6a-x86-clear-per-cpu-stub-page-info.patch
 Patch5:         5e1da013-IRQ-u16-is-too-narrow-for-evtchn.patch
+Patch6:         5e1dcedd-Arm-place-speculation-barrier-after-ERET.patch
+Patch7:         5e21ce98-x86-time-update-TSC-stamp-after-deep-C-state.patch
+Patch8:         5e286cce-VT-d-dont-pass-bridges-to-domain_context_mapping_one.patch
+Patch9:         5e318cd4-x86-apic-fix-disabling-LVT0.patch
+Patch10:        5e344c11-x86-HVM-relinquish-resources-from-domain_destroy.patch
+Patch11:        5e3bd385-EFI-recheck-variable-name-strings.patch
+Patch12:        5e3bd3d1-EFI-dont-leak-heap-VIA-XEN_EFI_get_next_variable_name.patch
+Patch13:        5e3bd3f8-xmalloc-guard-against-overflow.patch
+Patch14:        5e46e090-x86-smp-reset-x2apic_enabled-in-smp_send_stop.patch
+Patch15:        5e4c00ef-VT-d-check-full-RMRR-for-E820-reserved.patch
+Patch16:        5e4d4f5b-sched-fix-get_cpu_idle_time-with-core-sched.patch
+Patch17:        5e4e614d-x86-spec-ctrl-no-xen-also-disables-branch-hardening.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -198,7 +214,6 @@ Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
 Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
-Patch468:       libxl.lock-qemu-machine-for-hvm.patch
 Patch469:       libxl.helper_done-crash.patch
 Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
@@ -231,6 +246,7 @@ This package contains the Xen Hypervisor. (tm)
 
 %package libs
 Summary:        Xen Virtualization: Libraries
+License:        GPL-2.0-only
 Group:          System/Kernel
 
 %description libs
@@ -254,6 +270,7 @@ Authors:
 
 %package tools
 Summary:        Xen Virtualization: Control tools for domain 0
+License:        GPL-2.0-only
 Group:          System/Kernel
 %ifarch x86_64
 %if 0%{?suse_version} >= 1315
@@ -296,10 +313,36 @@ Authors:
     Ian Pratt <ian.pratt@cl.cam.ac.uk>
 
 
+%ifarch x86_64
+%package tools-xendomains-wait-disk
+Summary:        Adds a new xendomains-wait-disks.service
+License:        GPL-3.0+
+Group:          System/Kernel
+Requires:       %{name}-tools = %{version}-%{release}
+Requires:       coreutils
+Requires:       sed
+Requires:       vim
+BuildArch:      noarch
+
+%description tools-xendomains-wait-disk
+This package adds a new service named xendomains-wait-disks.service,
+that simply calls xendomains-wait-disks. xendomains-wait-disks script
+loops checking for the presence of every disk used by domU that
+xendomains.service will try to launch. The script returns when
+all disks become available or xendomains-wait-disks.service expires.
+
+xendomains-wait-disks.service has the same dependencies as
+xendomains.service, but it adds itself as a Wanted service for xendomains.
+If xendomains-wait-disks.service fails, xendomains.service is launched anyway.
+
+https://github.com/luizluca/xen-tools-xendomains-wait-disk
+%endif
+
 %endif
 
 %package tools-domU
 Summary:        Xen Virtualization: Control tools for domain U
+License:        GPL-2.0-only
 Group:          System/Kernel
 Conflicts:      %{name}-tools
 Requires:       %{name}-libs = %{version}-%{release}
@@ -320,6 +363,7 @@ Authors:
 
 %package devel
 Summary:        Xen Virtualization: Headers and libraries for development
+License:        GPL-2.0-only
 Group:          System/Kernel
 Requires:       %{name}-libs = %{version}
 Requires:       libuuid-devel
@@ -342,6 +386,7 @@ Authors:
 
 %package doc-html
 Summary:        Xen Virtualization: HTML documentation
+License:        GPL-2.0-only
 Group:          Documentation/HTML
 
 %description doc-html
@@ -367,6 +412,18 @@ Authors:
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -398,7 +455,6 @@ Authors:
 %patch465 -p1
 %patch466 -p1
 %patch467 -p1
-%patch468 -p1
 %patch469 -p1
 %patch470 -p1
 # python3 conversion patches
@@ -776,6 +832,32 @@ cat > %{buildroot}/usr/lib/xen/bin/qemu-system-i386 << 'EOF'
 exec %{_bindir}/qemu-system-i386 "$@"
 EOF
 chmod 0755 %{buildroot}/usr/lib/xen/bin/qemu-system-i386
+#
+unit='%{_libexecdir}/%{name}/bin/xendomains-wait-disks'
+mkdir -vp '%{buildroot}%{_libexecdir}/%{name}/bin'
+cp -avL '%{SOURCE10172}' "%{buildroot}${unit}"
+mkdir xendomains-wait-disk
+cp -avL '%{SOURCE10173}' xendomains-wait-disk/LICENSE
+cp -avL '%{SOURCE10174}' xendomains-wait-disk/README.md
+tee %{buildroot}%{_unitdir}/xendomains-wait-disks.service <<'_EOS_'
+[Unit]
+Description=Xendomains - for those machines that will start, wait for their disks to apear
+Requires=proc-xen.mount xenstored.service
+After=proc-xen.mount xenstored.service xenconsoled.service xen-init-dom0.service
+After=network-online.target
+After=remote-fs.target
+Before=xendomains.service
+ConditionPathExists=/proc/xen/capabilities
+
+[Service]
+Type=oneshot
+ExecStart=${unit}
+TimeoutSec=5min
+
+[Install]
+WantedBy=xendomains.service
+_EOS_
+#
 %endif
 
 # Stubdom
@@ -796,6 +878,7 @@ install -m644 %SOURCE26 %{buildroot}/etc/modprobe.d/xen_loop.conf
 # xen-utils
 make -C tools/xen-utils-0.1 install DESTDIR=%{buildroot} XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
 install -m755 %SOURCE37 %{buildroot}/usr/sbin/xen2libvirt
+install -m755 %SOURCE10183 %{buildroot}/usr/sbin/xen_maskcalc
 
 rm -f %{buildroot}/etc/xen/README*
 # Example config
@@ -968,6 +1051,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %endif
 /usr/sbin/xl
 /usr/sbin/xen2libvirt
+/usr/sbin/xen_maskcalc
 %ifarch %ix86 x86_64
 /usr/sbin/xen-hptool
 /usr/sbin/xen-hvmcrash
@@ -1000,6 +1084,9 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/lib/supportconfig/plugins/xen
 %{_libexecdir}/xen
 %exclude %{_libexecdir}/%{name}-tools-domU
+%ifarch x86_64
+%exclude %{_libexecdir}/%{name}/bin/xendomains-wait-disks
+%endif
 %{_fillupdir}/sysconfig.pciback
 %{_fillupdir}/sysconfig.xencommons
 %{_fillupdir}/sysconfig.xendomains
@@ -1024,6 +1111,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %config /etc/modprobe.d/xen_loop.conf
 %config %{_unitdir}
 %exclude %{_unitdir}/%{name}-vcpu-watch.service
+%exclude %{_unitdir}/xendomains-wait-disks.service
 %config %{with_systemd_modules_load}
 %dir /etc/modprobe.d
 /etc/bash_completion.d/xl.sh
@@ -1086,6 +1174,13 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %{_libdir}/ocaml/xentoollog/*.cmi
 %endif
 
+%ifarch x86_64
+%files tools-xendomains-wait-disk
+%license xendomains-wait-disk/LICENSE
+%doc xendomains-wait-disk/README.md
+%config %{_unitdir}/xendomains-wait-disks.service
+%config %attr(0755,root,root) %{_libexecdir}/%{name}/bin/xendomains-wait-disks
+%endif
 # with_dom0_support
 %endif
 
