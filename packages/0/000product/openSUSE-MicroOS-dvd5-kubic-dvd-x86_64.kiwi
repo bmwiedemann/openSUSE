@@ -97,6 +97,7 @@
       <repopackage name="btrfsprogs" arch="x86_64"/>
       <repopackage name="btrfsprogs-udev-rules" arch="x86_64"/>
       <repopackage name="bubblewrap" arch="x86_64"/>
+      <repopackage name="busybox-k8s-yaml" arch="x86_64"/>
       <repopackage name="ca-certificates" arch="x86_64"/>
       <repopackage name="ca-certificates-mozilla" arch="x86_64"/>
       <repopackage name="canberra-gtk-play" arch="x86_64"/>
@@ -455,6 +456,7 @@
       <repopackage name="libcreaterepo_c0" arch="x86_64"/>
       <repopackage name="libcroco-0_6-3" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
+      <repopackage name="libcrypto45" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcue2" arch="x86_64"/>
       <repopackage name="libcups2" arch="x86_64"/>
@@ -886,6 +888,7 @@
       <repopackage name="libreadline8"/>
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreiserfscore0" arch="x86_64"/>
+      <repopackage name="libressl" arch="x86_64"/>
       <repopackage name="librest-0_7-0" arch="x86_64"/>
       <repopackage name="librgw2" arch="x86_64"/>
       <repopackage name="librpmbuild9" arch="x86_64"/>
@@ -936,6 +939,7 @@
       <repopackage name="libssh-config" arch="x86_64"/>
       <repopackage name="libssh2-1" arch="x86_64"/>
       <repopackage name="libssh4" arch="x86_64"/>
+      <repopackage name="libssl47" arch="x86_64"/>
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
@@ -961,6 +965,7 @@
       <repopackage name="libtiff5" arch="x86_64"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
+      <repopackage name="libtls19" arch="x86_64"/>
       <repopackage name="libtotem-plparser18" arch="x86_64"/>
       <repopackage name="libtracker-common-2_0" arch="x86_64"/>
       <repopackage name="libtracker-control-2_0-0" arch="x86_64"/>
