@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://libcloud.apache.org
 Source0:        https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-%{version}.tar.gz
+Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module lockfile}
@@ -57,6 +58,7 @@ differences among multiple cloud provider APIs.
 
 %prep
 %setup -q -n apache-libcloud-%{version}
+%patch1 -p1
 %patch2 -p1
 sed -i '/^#!/d' demos/gce_demo.py
 chmod a-x demos/gce_demo.py

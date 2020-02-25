@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 21 19:48:04 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Add gce_image_projects.patch to update the current list of SUSE
+  image projects in GCE.
+
+-------------------------------------------------------------------
 Thu Jan 16 17:28:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.8.0
