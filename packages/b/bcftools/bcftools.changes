@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Tue Feb 25 11:46:58 UTC 2020 - Pierre Bonamy <flyos@mailoo.org>
+
+- Changed python dependencies from python3 to python3-base and
+  python3-matplotlib
+
+-------------------------------------------------------------------
+Wed Feb 12 15:10:09 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Add use_python3.patch to switch from python2 to python3
+
+-------------------------------------------------------------------
+Wed Feb  5 19:01:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.10.2
+  * This release fixes crashes reported on files including integer
+    INFO tags with values outside the range officially supported
+    by VCF. It also fixes a bug where invalid BCF files would be
+    created if such values were present.
+- Update to 1.10.0
+  + Numerous bug fixes, usability improvements and sanity checks were added to prevent common user errors.
+  + The -r, --regions (and -R, --regions-file) option should never create unsorted VCFs or duplicates records again. This also fixes rare cases where a spanning deletion makes a subsequent record invisible to bcftools isec and other commands.
+  + Additions to filtering and formatting expressions
+    * support for the spanning deletion alternate allele (ALT=*)
+    * new ILEN filtering expression to be able to filter by indel length
+    * new MEAN, MEDIAN, MODE, STDEV, phred filtering functions
+    * new formatting expression %PBINOM (phred-scaled binomial probability), %INFO (the whole INFO column), %FORMAT (the whole FORMAT column), %END (end position of the REF allele), %END0 (0-based end position of the REF allele), %MASK (with multiple files indicates the presence of the site in other files)
+  + New plugins
+    * +gvcfz: compress gVCF file by resizing gVCF blocks according to specified criteria
+    * +indel-stats: collect various indel-specific statistics
+    * +parental-origin: determine parental origin of a CNV region
+    * +remove-overlaps: remove overlapping variants.
+    * +split-vep: query structured annotations such INFO/CSQ created by bcftools/csq or VEP
+    * +trio-dnm: screen variants for possible de-novo mutations in trios
+  + annotate
+    * new -l, --merge-logic option for combining multiple overlapping regions
+  + call
+    * new bcftools call -G, --group-samples option which allows grouping samples into populations and applying the HWE assumption within but not across the groups.
+  + csq
+    * significant reduction of memory usage in the local -l mode for VCFs with thousands of samples and 20% reduction in the non-local haplotype-aware mode.
+    * fixes a small memory leak and formatting issue in FORMAT/BCSQ at sites with many consequences
+    * do not print protein sequence of start_lost events
+    * support for "start_retained" consequence
+    * support for symbolic insertions (ALT="<INS...>"), "feature_elongation" consequence
+    * new -b, --brief-predictions option to output abbreviated protein predictions.
+  + concat
+    * the --naive command now checks header compatibility when concatenating multiple files.
+  + consensus
+    * add a new -H, --haplotype 1pIu/2pIu feature to output first/second allele for phased genotypes and the IUPAC code for unphased genotypes
+    * new -p, --prefix option to add a prefix to sequence names on output
+  + +contrast
+    * added support for Fisher's test probability and other annotations
+  + +fill-from-fasta
+    * new -N, --replace-non-ACGTN option
+  + +dosage
+    * fix some serious bugs in dosage calculation
+  + +fill-tags
+    * extended to perform simple on-the-fly calculations such as calculating INFO/DP from FORMAT/DP.
+  + merge
+    * add support for merging FORMAT strings
+    * bug fixed in gVCF merging
+  + mpileup
+    * a new optional SCR annotation for the number of soft-clipped reads
+  + reheader
+    * new -f, --fai option for updating contig lines in the VCF header
+  + +trio-stats
+    * extend output to include DNM homs and recurrent DNMs
+  + VariantKey support
+
+-------------------------------------------------------------------
+Thu Sep  6 08:43:05 UTC 2018 - flyos@mailoo.org
+
+- Update to 1.9
+    * `annotate`
+        - REF and ALT columns can be now transferred from the annotation 
+    file.
+        - fixed bug when setting vector_end values.
+    * `consensus`
+        - new -M option to control output at missing genotypes
+        - variants immediately following insersions should not be skipped. 
+          Note however, that the current fix requires normalized VCF and may 
+          still falsely skip variants adjacent to multiallelic indels.
+        - bug fixed in -H selection handling
+    * `convert`
+        - the --tsv2vcf option now makes the missing genotypes diploid, 
+          "./." instead of "."
+        - the behavior of -i/-e with --gvcf2vcf changed. Previously only 
+          sites with FILTER set to "PASS" or "." were expanded and the -i/-e 
+          options dropped sites completely. The new behavior is to let the -i/-e 
+          options control which records will be expanded. In order to drop 
+          records completely, one can stream through "bcftools view" first.
+    * `csq`
+        - since the real consequence of start/splice events are not known, 
+          the aminoacid positions at subsequent variants should stay unchanged
+        - add `--force` option to skip malformatted transcripts in GFFs 
+          with out-of-phase CDS exons.
+    * `+dosage`: output all alleles and all their dosages at multiallelic 
+       sites
+    * `+fixref`: fix serious bug in -m top conversion
+    * `-i/-e` filtering expressions:
+        - add two-tailed binomial test
+        - add functions N_PASS() and F_PASS()
+        - add support for lists of samples in filtering expressions, with 
+          many samples it was impractical to list them all on the command line. 
+          Samples can be now in a file as, e.g., GT[@samples.txt]="het"
+        - allow multiple perl functions in the expressions and some bug 
+          fixes
+        - fix a parsing problem, '@' was not removed from '@filename' 
+          expressions
+    * `mpileup`: fixed bug where, if samples were renamed using the `-G` 
+       (`--read-groups`) option, some samples could be omitted from the 
+       output file.
+    * `norm`: update INFO/END when normalizing indels
+    * `+split`: new -S option to subset samples and to use custom file 
+       names instead of the defaults
+    * `+smpl-stats`: new plugin
+    * `+trio-stats`: new plugin
+    * Fixed build problems with non-functional configure script produced 
+      on some platforms
+
+-------------------------------------------------------------------
+Thu Jul 12 08:58:12 UTC 2018 - flyos@mailoo.org
+
+- Cleaned spec file using spec-cleaner
+- Update to 1.8
+  * `-i, -e` filtering: Support for custom perl scripts
+  * `+contrast`: New plugin to annotate genotype differences between groups of samples
+  * `+fixploidy`: New options for simpler ploidy usage
+  * `+setGT`: Target genotypes can be set to phased by giving `--new-gt p`
+  * `run-roh.pl`: Allow to pass options directly to `bcftools roh`
+  * Number of bug fixes
+  * `-i, -e` filtering: Major revamp, improved filtering by FORMAT fields
+    and missing values. New GT=ref,alt,mis etc keywords, check the documenation
+    for details.
+  * `query`: Only matching expression are printed when both the -f and -i/-e
+    expressions contain genotype fields. Note that this changes the original
+    behavior. Previously all samples were output when one matching sample was
+    found. This functionality can be achieved by pre-filtering with view and then
+    streaming to query. Compare
+          bcftools query -f'[%CHROM:%POS %SAMPLE %GT\n]' -i'GT="alt"' file.bcf
+    and
+          bcftools view -i'GT="alt"' file.bcf -Ou | bcftools query -f'[%CHROM:%POS %SAMPLE %GT\n]'
+  * `annotate`: New -k, --keep-sites option
+  * `consensus`: Fix --iupac-codes output
+  * `csq`: Homs always considered phased and other fixes
+  * `norm`: Make `-c none` work and remove `query -c`
+  * `roh`: Fix errors in the RG output
+  * `stats`: Allow IUPAC ambiguity codes in the reference file; report the number of missing genotypes
+  * `+fill-tags`: Add ExcHet annotation
+  * `+setGt`: Fix bug in binom.test calculation, previously it worked only for nAlt<nRef!
+  * `+split`: New plugin to split a multi-sample file into single-sample files in one go
+  * Improve python3 compatibility in plotting scripts
+  * New `sort` command.
+  * New options added to the `consensus` command. Note that the `-i, --iupac`
+    option has been renamed to `-I, --iupac`, in favor of the standard 
+    `-i, --include`.
+  * Filtering expressions (`-i/-e`): support for `GT=<type>` expressions and
+    for lists and ranges (#639) - see the man page for details.
+  * `csq`: relax some GFF3 parsing restrictions to enable using Ensembl
+    GFF3 files for plants (#667)
+  * `stats`: add further documentation to output stats files (#316) and
+    include haploid counts in per-sample output (#671).
+  * `plot-vcfstats`: further fixes for Python3 (@nsoranzo, #645, #666).
+  * `query` bugfix (#632)
+  * `+setGT` plugin: new option to set genotypes based on a two-tailed binomial
+    distribution test. Also, allow combining `-i/-e` with `-t q`.
+  * `mpileup`: fix typo (#636)
+  * `convert --gvcf2vcf` bugfix (#641)
+  * `+mendelian`: recognize some mendelian inconsistencies that were
+    being missed (@oronnavon, #660), also add support for multiallelic
+    sites and sex chromosomes.
+
+-------------------------------------------------------------------
+Mon Jul 10 21:28:20 UTC 2017 - flyos@mailoo.org
+
+- Update to 1.5
+- Fixed some runtime dependencies (perl and python-matplotlib)
+
+-------------------------------------------------------------------
+Sun May 22 09:16:49 UTC 2016 - flyos@mailoo.org
+
+- Initial release

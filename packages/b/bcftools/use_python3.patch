@@ -1,0 +1,86 @@
+From: toddrme2178@gmail.com
+Date: 2020-02-12
+Subject: Use python3 instead of python2
+
+The package currently uses the "python" executable, but it should be
+python3 compatible according to the documentation.  This patch changes
+all the executables to use "python3" instead of "python".
+
+
+diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.1 b/doc/bcftools.1
+--- a/doc/bcftools.1
++++ b/doc/bcftools.1
+@@ -5440,7 +5440,7 @@
+ .nf
+ # The final looks can be customized by editing the generated
+ # \*(Aqoutdir/plot\&.py\*(Aq script and re\-running manually
+-cd outdir && python plot\&.py && pdflatex summary\&.tex
++cd outdir && python3 plot\&.py && pdflatex summary\&.tex
+ .fi
+ .if n \{\
+ .RE
+
+diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.html b/doc/bcftools.html
+--- a/doc/bcftools.html
++++ b/doc/bcftools.html
+@@ -3012,7 +3012,7 @@
+ bcftools stats -s - &gt; file.vchk</pre><pre class="literallayout"># Plot the stats
+ plot-vcfstats -p outdir file.vchk</pre><pre class="literallayout"># The final looks can be customized by editing the generated
+ # 'outdir/plot.py' script and re-running manually
+-cd outdir &amp;&amp; python plot.py &amp;&amp; pdflatex summary.tex</pre></div></div><div class="refsect1" title="PERFORMANCE"><a id="_performance"></a><h2>PERFORMANCE</h2><p>HTSlib was designed with BCF format in mind. When parsing VCF files, all records
++cd outdir &amp;&amp; python3 plot.py &amp;&amp; pdflatex summary.tex</pre></div></div><div class="refsect1" title="PERFORMANCE"><a id="_performance"></a><h2>PERFORMANCE</h2><p>HTSlib was designed with BCF format in mind. When parsing VCF files, all records
+ are internally converted into BCF representation. Simple operations, like removing
+ a single column from a VCF file, can be therefore done much faster with standard
+ UNIX commands, such as <span class="strong"><strong>awk</strong></span> or <span class="strong"><strong>cut</strong></span>.
+
+diff -U 3 -H -w -E -d -r -N -- a/doc/bcftools.txt b/doc/bcftools.txt
+--- a/doc/bcftools.txt
++++ b/doc/bcftools.txt
+@@ -3101,7 +3101,7 @@
+ 
+     # The final looks can be customized by editing the generated
+     # 'outdir/plot.py' script and re-running manually
+-    cd outdir && python plot.py && pdflatex summary.tex
++    cd outdir && python3 plot.py && pdflatex summary.tex
+ --
+ 
+ PERFORMANCE
+
+diff -U 3 -H -w -E -d -r -N -- a/polysomy.c b/polysomy.c
+--- a/polysomy.c
++++ b/polysomy.c
+@@ -253,7 +253,7 @@
+     FILE *fp = open_file(&fname,"w","%s/dist.py", args->output_dir);
+ //-------- matplotlib script --------------
+     fprintf(fp,
+-        "#!/usr/bin/env python\n"
++        "#!/usr/bin/python3\n"
+         "#\n"
+         "import matplotlib as mpl\n"
+         "mpl.use('Agg')\n"
+
+diff -U 3 -H -w -E -d -r -N -- a/vcfcnv.c b/vcfcnv.c
+--- a/vcfcnv.c
++++ b/vcfcnv.c
+@@ -320,7 +320,7 @@
+ {
+     if ( th>100 ) return;   // create no plots
+ 
+-    char *cmd = msprintf("python %s -p %f", script, th);
++    char *cmd = msprintf("python3 %s -p %f", script, th);
+     int ret = system(cmd);
+     if ( ret) fprintf(stderr, "The command returned non-zero status %d: %s\n", ret, cmd);
+     free(cmd);
+
+diff -U 3 -H -w -E -d -r -N -- a/vcfgtcheck.c b/vcfgtcheck.c
+--- a/vcfgtcheck.c
++++ b/vcfgtcheck.c
+@@ -60,7 +60,7 @@
+ {
+     mkdir_p(script);
+     int len = strlen(script);
+-    char *cmd = !strcmp(".py",script+len-3) ? msprintf("python %s", script) : msprintf("python %s.py", script);
++    char *cmd = !strcmp(".py",script+len-3) ? msprintf("python3 %s", script) : msprintf("python3 %s.py", script);
+     int ret = system(cmd);
+     if ( ret ) fprintf(stderr, "The command returned non-zero status %d: %s\n", ret, cmd);
+     free(cmd);
