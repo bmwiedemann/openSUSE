@@ -100,4 +100,12 @@ For newer release I take more care of the changelog</comment>
 - Install license and readme file</comment>
     <requestid>778745</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2da6a2207c34ed3045507022a8129e1b</srcmd5>
+    <version>4.9</version>
+    <time>1582643273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779047</requestid>
+  </revision>
 </revisionlist>
