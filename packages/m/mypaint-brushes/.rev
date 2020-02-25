@@ -17,4 +17,12 @@ New package, needed for gimp 2.10
     <comment>requed</comment>
     <requestid>772449</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13d1ee2518ba7266eb20d24a5e75caed</srcmd5>
+    <version>2.0.2</version>
+    <time>1582643017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778001</requestid>
+  </revision>
 </revisionlist>
