@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Feb 21 14:44:16 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+ - remove @VERSION@ from mariadb.service and mariadb@.service
+
+-------------------------------------------------------------------
+Fri Feb  7 12:47:56 UTC 2020 - pgajdos@suse.com
+
+- disable testing with rpm macros as it does not work as for 10.4,
+  needs to be investigated
+
+-------------------------------------------------------------------
+Wed Feb  5 14:08:30 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- update suse_skipped_tests.list for ppc
+
+-------------------------------------------------------------------
+Tue Feb  4 15:30:16 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- rename mariadb.rpmlintrc to mariadb-rpmlintrc
+- for ppc install pam_user_map.so in /lib/security
+
+-------------------------------------------------------------------
+Tue Feb  4 10:53:34 UTC 2020 - matthias.gerstner@suse.com
+
+- rename mariadb-10.2.12-harden_setuid.patch to
+  mariadb-10.4.12-harden_setuid.patch to match the correct version number.
+- add mariadb-10.4.12-fix-install-db.patch to improve default behaviour of
+  mysql_install_db. This prevents performing security sensitive actions to
+  be performed but instead only warns the caller (bsc#1160868).
+
+-------------------------------------------------------------------
+Sun Feb  2 21:53:07 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 10.4.12
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-10412-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10412-changelog
+    https://mariadb.com/kb/en/library/mariadb-10411-release-notes
+    https://mariadb.com/kb/en/library/mariadb-10411-changelog
+  * fixes for the following security vulnerabilities:
+    CVE-2020-2574
+  * don't let mysql_install_db set SUID bit for auth_pam_tool
+    in rpm/deb packages CVE-2020-7221 [bsc#1160868]
+- add mariadb-10.2.12-harden_setuid.patch to harden auth_pam_tool
+  setuid-root binary [bsc#1160285]
+- pack pam_user_map.so module in the /%{_lib}/security directory
+  and user_map.conf configuration file in the /etc/security directory
+- fix race condition with mysql_upgrade_info status file by moving
+  it to the location owned by root (/var/lib/misc) CVE-2019-18901
+  [bsc#1160895]
+- move .run-mysql_upgrade file from $datadir/.run-mysql_upgrade
+  to /var/lib/misc/.mariadb_run_upgrade so the mysql user can't
+  use it for a symlink attack [bsc#1160912]
+- change -DWITH_COMMENT and -DCOMPILATION_COMMENT to be
+  SUSE/openSUSE independent
+
+-------------------------------------------------------------------
+Fri Jan 24 17:02:52 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- enhance mariadb.service and mariadb@.service with various options
+  (Documentation=, User=, Group=, KillSignal=, SendSIGKILL=,
+  Restart=, RestartSec=, CapabilityBoundingSet=, ProtectSystem=,
+  ProtectHome=, PermissionsStartOnly= and UMask=) [bsc#1160878] 
+- mysql-systemd-helper: use systemd-tmpfiles instead of shell
+  script operations for a cleaner and safer creating of /run/mysql
+  [bsc#1160883]
+
+-------------------------------------------------------------------
+Fri Jan  3 13:31:34 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 10.4.10
+  * changes and improvements for 10.4
+    https://mariadb.com/kb/en/changes-improvements-in-mariadb-104/
+  * fixes for the following security vulnerabilities: none
+- pack mariadb variants of the mysql binaries (e.g. mariadb-dumpslow
+  is a symlink to mysqldumpslow and the like)
+- refresh mariadb-10.2.4-fortify-and-O.patch
+- update suse_skipped_tests.list
+- _constraints: increase physicalmemory value
+- package auth_pam_tool setuid binary properly
+- add cracklib-password-check subpackage but do not build it right
+  now (cracklib-dict-full >= 2.9.0 is not available yet)
+- add rcmariadb compat link
+- add mariadb.rpmlintrc file
+- do not move my_safe_process to bindir but use rpmlint
+  arch-dependent-file-in-usr-share exception for it (this file
+  is used just for the testing and it doesn't have to be in bindir
+ 
+-------------------------------------------------------------------
 Thu Dec  5 10:41:56 UTC 2019 - pgajdos@suse.com
 
 - added rpm test macros: %mysql_testserver_start,

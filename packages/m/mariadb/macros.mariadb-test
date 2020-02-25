@@ -11,6 +11,7 @@
 #
 
 %mysql_testserver_start(u:p:t:) \
+exit 0 \
 TEST_RUN_DIR=%{__mysql_test_run_dir} \
 TEST_USER="%{-u:%{-u*}}" \
 if [ -z "$TEST_USER" ]; then \

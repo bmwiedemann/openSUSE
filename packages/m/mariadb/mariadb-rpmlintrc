@@ -1,0 +1,21 @@
+# This file contains a list of exceptions for rpmlint checker
+
+# Zero-length
+# Some test results can be zero-length files
+addFilter(r'(zero-length|pem-certificate) /usr/share/mysql-test/*')
+
+# Permissions
+# wsrep_sst_common
+#   It contains a parser of arguments for other sst scripts.
+#   It is meant to be sourced, not to be executed alone.
+#   So it correctly does not have shebang nor executable bit.
+addFilter(r'non-executable-in-bin /usr/bin/wsrep_sst_common 644')
+addFilter(r'script-without-shebang /usr/bin/wsrep_sst_common')
+
+# Wrong location
+# wsrep_check_version is a wsrep version check utility. Used in testing only.
+addFilter(r'arch-dependent-file-in-usr-share .* /usr/share/mysql-test/lib/My/SafeProcess/wsrep_check_version')
+# my_safe_process is an utility that encapsulates process creation, monitoring and cleanup. Used in testing only.
+addFilter(r'arch-dependent-file-in-usr-share .* /usr/share/mysql-test/lib/My/SafeProcess/my_safe_process')
+# pam_mariadb_mtr.so is a pam module to test pam authentication plugin. Used in pam.test only.
+addFilter(r'arch-dependent-file-in-usr-share .* /usr/share/mysql-test/suite/plugins/pam/pam_mariadb_mtr.so')

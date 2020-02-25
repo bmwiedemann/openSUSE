@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,12 +49,14 @@
 %endif
 # Define python interpreter version
 %if 0%{?suse_version} >= 1500
-%define python_path /usr/bin/python3            
-%else            
-%define python_path /usr/bin/python2            
+%define python_path %{_bindir}/python3
+%else
+%define python_path %{_bindir}/python2
 %endif
+# Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
+%define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.3.20
+Version:        10.4.12
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -73,11 +75,14 @@ Source17:       mysql-systemd-helper
 Source18:       mariadb@.service
 Source19:       macros.mariadb-test
 Source50:       suse_skipped_tests.list
+Source51:       mariadb-rpmlintrc
 Patch1:         mariadb-10.2.4-logrotate.patch
 Patch3:         mariadb-10.1.1-mysqld_multi-features.patch
 Patch7:         mariadb-10.0.15-logrotate-su.patch
 Patch8:         mariadb-10.2.4-fortify-and-O.patch
 Patch9:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
+Patch10:        mariadb-10.4.12-harden_setuid.patch
+Patch11:        mariadb-10.4.12-fix-install-db.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -141,6 +146,7 @@ Requires:       /bin/hostname
 Requires:       perl-base
 # myrocks_hotbackup needs MySQLdb - if we want to use it under python3, we need python3-mysqlclient
 Requires:       python3-mysqlclient
+Requires(post): permissions
 Requires(pre):  shadow
 Recommends:     logrotate
 Conflicts:      mariadb-server
@@ -332,6 +338,22 @@ Obsoletes:      mysql-tools < %{version}
 A set of scripts for administering a MariaDB or developing
 applications with MariaDB.
 
+%if 0%{with_cracklib_plugin} > 0
+%package cracklib-password-check
+Summary:        The password strength checking plugin
+BuildRequires:  cracklib-devel >= 2.9.0
+BuildRequires:  cracklib-dict-small >= 2.9.0
+Requires:       %{name} = %{version}
+Requires:       cracklib-dict-small >= 2.9.0
+
+%description      cracklib-password-check
+cracklib_password_check is a password validation plugin. It uses the CrackLib
+library to check the strength of new passwords. CrackLib is installed by default
+in many Linux distributions, since the system's PAM authentication framework is
+usually configured to check the strength of new passwords with the pam_cracklib
+PAM module.
+%endif
+
 %prep
 %setup -q
 # Remove JAR files from the tarball (used for testing from the source)
@@ -341,6 +363,8 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch7
 %patch8
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -399,7 +423,7 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DMYSQL_UNIX_ADDR="%{_rundir}/mysql/mysql.sock"              \
        -DINSTALL_UNIX_ADDRDIR="%{_rundir}/mysql/mysql.sock"         \
        -DINSTALL_MYSQLSHAREDIR=share/%{name}                        \
-       -DWITH_COMMENT="openSUSE mariadb rpm"                        \
+       -DWITH_COMMENT="MariaDB rpm"                                 \
        -DWITH_EXTRA_CHARSET=all                                     \
        -DDEFAULT_CHARSET=utf8mb4                                    \
        -DDEFAULT_COLLATION=utf8mb4_general_ci                       \
@@ -427,7 +451,7 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DWITH_INNODB_DISALLOW_WRITES=1                              \
        -DWITH_LIBARCHIVE=ON                                         \
        -DWITH_MARIABACKUP=ON                                        \
-       -DCOMPILATION_COMMENT="openSUSE package"                     \
+       -DCOMPILATION_COMMENT="MariaDB package"                      \
        -DDENABLE_DOWNLOADS=false                                    \
        -DINSTALL_PLUGINDIR_RPM="%{_lib}/mysql/plugin"               \
        -DINSTALL_LIBDIR_RPM="%{_lib}"                               \
@@ -507,7 +531,7 @@ rm -f %{buildroot}%{_datadir}/mysql/mysql.server
 rm -f %{buildroot}%{_datadir}/mysql/mysqld_multi.server
 # The old fork of mytop utility (we ship it as a separate package)
 rm -f %{buildroot}%{_bindir}/mytop
-# xtrabackup is not supported for MariaDB 10.3
+# xtrabackup is not supported for MariaDB >= 10.3
 rm -f %{buildroot}%{_bindir}/wsrep_sst_xtrabackup-v2
 rm -f %{buildroot}%{_bindir}/wsrep_sst_xtrabackup
 
@@ -537,19 +561,15 @@ rm %{buildroot}%{_datadir}/aclocal/mysql.m4
 rm %{buildroot}%{_mandir}/man1/mysql_config*.1*
 rm -r %{buildroot}%{_includedir}/mysql
 
-# mysql-test includes my_safe_process executable that should be moved to /usr/bin
-mv %{buildroot}%{_datadir}/mysql-test/lib/My/SafeProcess/my_safe_process %{buildroot}%{_bindir}
-ln -s ../../../../../bin/my_safe_process %{buildroot}%{_datadir}/mysql-test/lib/My/SafeProcess/my_safe_process
-
 # Rename the wsrep README so it corresponds with the other README names
 cp Docs/README-wsrep Docs/README.wsrep
 
 # Generate various filelists (binaries and manpages)
 # mariadb.files
-filelist mariabackup mbstream innochecksum mariadb-service-convert my_print_defaults myisam_ftdump myisamchk myisamlog myisampack mysql_fix_extensions  mysql_install_db mysql_secure_installation mysql_upgrade mysqld mysqld_multi mysqld_safe mysqlbinlog mysqldumpslow resolve_stack_dump resolveip {m,}aria_chk {m,}aria_dump_log {m,}aria_ftdump {m,}aria_pack {m,}aria_read_log tokuft_logprint tokuft_logdump tokuftdump mysql_ldb sst_dump myrocks_hotbackup >mariadb.files
+filelist mariabackup mariadb-backup mbstream innochecksum mariadb-service-convert my_print_defaults myisam_ftdump myisamchk myisamlog myisampack mysql_fix_extensions mariadb-fix-extensions mysql_install_db mariadb-install-db mysql_secure_installation mariadb-secure-installation mysql_upgrade mariadb-upgrade mysqld mariadbd mysqld_multi mariadbd-multi mysqld_safe mariadbd-safe mysqlbinlog mariadb-binlog mysqldumpslow mariadb-dumpslow resolve_stack_dump resolveip {m,}aria_chk {m,}aria_dump_log {m,}aria_ftdump {m,}aria_pack {m,}aria_read_log tokuft_logprint tokuft_logdump tokuftdump mysql_ldb mariadb-ldb sst_dump myrocks_hotbackup >mariadb.files
 
 # mariadb-client.files
-filelist mysql mysqladmin mysqlcheck mysqldump mysqlimport mysqlshow mysql_config_editor mysqld_safe_helper >mariadb-client.files
+filelist mysql mariadb mysqladmin mariadb-admin mysqlcheck mariadb-check mysqldump mariadb-dump mysqlimport mariadb-import mysqlshow mariadb-show mysql_config_editor mysqld_safe_helper mariadbd-safe-helper mariadb-client-test  >mariadb-client.files
 
 # Mysql has configuration file in _bindir
 if [ -f scripts/mysqlaccess.conf ] ; then
@@ -562,13 +582,13 @@ fi
 filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera.files
 
 # mariadb-bench.files
-filelist mysqlslap >mariadb-bench.files
+filelist mysqlslap mariadb-slap >mariadb-bench.files
 
 # mariadb-test.files
-filelist mysql_client_test mysql_client_test_embedded mysql_waitpid mysqltest mysqltest_embedded >mariadb-test.files
+filelist mysql_client_test mysql_client_test_embedded mariadb-client-test-embedded mysql_waitpid mariadb-waitpid mysqltest mariadb-test mysqltest_embedded mariadb-test-embedded >mariadb-test.files
 
 # mariadb-tools.files
-filelist msql2mysql mysql_plugin mysql_convert_table_format mysql_find_rows mysql_setpermission mysql_tzinfo_to_sql mysqlaccess mysqlhotcopy perror replace mysql_embedded >mariadb-tools.files
+filelist msql2mysql mysql_plugin mariadb-plugin mysql_convert_table_format mariadb-convert-table-format mysql_find_rows mariadb-find-rows mysql_setpermission mariadb-setpermission mysql_tzinfo_to_sql mariadb-tzinfo-to-sql mysqlaccess mariadb-access mysqlhotcopy mariadb-hotcopy perror replace mysql_embedded mariadb-embedded >mariadb-tools.files
 
 # All configuration files
 echo '%{_datadir}/mysql/*.cnf' >> mariadb.files
@@ -601,6 +621,7 @@ install -m 664 %{SOURCE14} %{buildroot}%{_sysconfdir}/my.cnf
 install -D -m 755 %{_sourcedir}/mysql-systemd-helper '%{buildroot}'%{_libexecdir}/mysql/mysql-systemd-helper
 sed -i 's|@MYSQLVER@|%{version}|' '%{buildroot}'%{_libexecdir}/mysql/mysql-systemd-helper
 ln -sf service '%{buildroot}'%{_sbindir}/rcmysql
+ln -sf service '%{buildroot}'%{_sbindir}/rcmariadb
 rm -rf '%{buildroot}'%{_sysconfdir}/init.d
 install -D -m 644 %{_sourcedir}/mariadb.service '%{buildroot}'%{_unitdir}/mariadb.service
 install -D -m 644 %{_sourcedir}/mariadb@.service '%{buildroot}'%{_unitdir}/mariadb@.service
@@ -663,13 +684,18 @@ mkdir -p '%{buildroot}'%{_localstatedir}/lib/mysql-files
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
 install -m 644 %{SOURCE19} %{buildroot}%{_rpmconfigdir}/macros.d
 
+# install pam_user_map.so to /lib64/security for non 32bit architectures
+%ifnarch i586 %{arm} ppc
+mkdir -p %{buildroot}/%{_lib}/security
+mv %{buildroot}/lib/security/pam_user_map.so %{buildroot}/%{_lib}/security/
+%endif
 
 %check
 cd build
 
 # Run an extensive mysql test suite
-# If 0%{ignore_testsuite_result} == 1 then run all tests but ignore failures
-# If 0%{ignore_testsuite_result} == 0 then skip tests listed in unstable-tests
+# If ignore_testsuite_result == 1 then run all tests but ignore failures
+# If ignore_testsuite_result == 0 then skip tests listed in unstable-tests
 # (contains suse_skipped_tests.list) and don't ignore failures
 
 %if 0%{run_testsuite} > 0
@@ -716,6 +742,8 @@ getent passwd mysql | cut -d: -f7 | grep '\b/bin/false\b' &>/dev/null || usermod
 %service_add_post mariadb.service
 %tmpfiles_create %{_tmpfilesdir}/mariadb.conf
 
+%set_permissions %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
+
 # SLE11 Migration support
 for i in protected tmp; do
     rmdir "$datadir"/.$i 2>/dev/null || :
@@ -737,14 +765,25 @@ Your configuration was left intact and you can see the new configuration in
 EOF
 fi
 
-# Warn on first run
+# Decide if the upgrade is needed
 datadir="`%{_bindir}/my_print_defaults mysqld mysql_server | sed -n 's|--datadir=||p'`"
 [ -n "$datadir" ] || datadir="%{_localstatedir}/lib/mysql"
+
+# NOTE: .run-mysql_upgrade was moved and renamed to .mariadb_run_upgrade. Remove the old file and
+# create a new one if needed.
+rm -f "$datadir/.run-mysql_upgrade"
 if [ -d "$datadir/mysql" ]; then
-    touch "$datadir/.run-mysql_upgrade"
-    chmod 640 "$datadir/.run-mysql_upgrade"
+	touch "%{_localstatedir}/lib/misc/.mariadb_run_upgrade"
 fi
-if [ \! -f "$datadir/mysql_upgrade_info" ]; then
+
+# Manage showing of a README or upgrade messages
+# NOTE: mysql_upgrade_info was moved and renamed to mariadb_upgrade_info. Copy the content and remove it
+if [ -f "$datadir/mysql_upgrade_info" ]; then
+	cat "$datadir/mysql_upgrade_info" > "%{_localstatedir}/lib/misc/mariadb_upgrade_info"
+	rm -f "$datadir/mysql_upgrade_info"
+fi
+
+if [ \! -f "%{_localstatedir}/lib/misc/mariadb_upgrade_info" ]; then
     if [ $1 -eq 1 ]; then
         cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
 
@@ -754,8 +793,8 @@ EOF
     fi
 else
     MYSQLVER="`echo %{version} | sed 's|\.[0-9]\+$||'`"
-    if [ -f "$datadir/mysql_upgrade_info" ] && \
-        [ -z "`grep "^$MYSQLVER" "$datadir/mysql_upgrade_info" 2> /dev/null`" ]; then
+    if [ -f "%{_localstatedir}/lib/misc/mariadb_upgrade_info" ] && \
+        [ -z "`grep "^$MYSQLVER" "%{_localstatedir}/lib/misc/mariadb_upgrade_info" 2> /dev/null`" ]; then
     cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
 
 WARNING: You are upgrading from different stable version of MySQL!
@@ -768,6 +807,9 @@ EOF
     fi
 fi
 exit 0
+
+%verifyscript
+%verify_permissions %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
 
 %preun
 %service_del_preun mariadb.service
@@ -783,6 +825,7 @@ exit 0
 %dir %attr(0755, root, mysql) %{_sysconfdir}/my.cnf.d
 %config(noreplace) %attr(0644, root, mysql) %{_sysconfdir}/my.cnf.d/*
 %exclude %{_sysconfdir}/my.cnf.d/50-galera.cnf
+%config(noreplace) %{_sysconfdir}/security/user_map.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
 %doc %{_defaultdocdir}/%{name}
 %dir %{_libexecdir}/mysql
@@ -795,6 +838,7 @@ exit 0
 %{_unitdir}/mysql@.service
 %{_tmpfilesdir}/mariadb.conf
 %{_sbindir}/rcmysql
+%{_sbindir}/rcmariadb
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/mysql
 %{_datadir}/%{name}/charsets/
@@ -805,6 +849,12 @@ exit 0
 %dir %{_libdir}/mysql/plugin
 %{_libdir}/mysql/plugin/*.so
 %exclude %{_libdir}/mysql/plugin/dialog*.so
+%if 0%{with_cracklib_plugin} > 0
+%exclude %{_libdir}/mysql/plugin/cracklib_password_check.so
+%endif
+/%{_lib}/security/pam_user_map.so
+%dir %attr(0750, root, mysql) %{_libdir}/mysql/plugin/auth_pam_tool_dir
+%verify(not mode) %attr(4755,root,root) %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
 %ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
 %dir %attr(0750, mysql, mysql) %{_localstatedir}/lib/mysql-files
 %if 0%{with_mroonga} > 0
@@ -857,7 +907,6 @@ exit 0
 %{_datadir}/sql-bench
 
 %files test -f mariadb-test.files
-%{_bindir}/my_safe_process
 %{_bindir}/test-connect-t
 %{_mandir}/man1/my_safe_process.1%{?ext_man}
 %{_mandir}/man1/mysql-test-run.pl.1%{?ext_man}
@@ -871,5 +920,10 @@ exit 0
 %{_bindir}/mysqlrepair
 %{_bindir}/mysqlanalyze
 %{_bindir}/mysqloptimize
+
+%if 0%{with_cracklib_plugin} > 0
+%files cracklib-password-check
+%{_libdir}/mysql/plugin/cracklib_password_check.so
+%endif
 
 %changelog

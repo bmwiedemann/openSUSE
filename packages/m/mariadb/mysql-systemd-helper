@@ -10,6 +10,9 @@ read_config() {
 	MYSQLVER="$(echo @MYSQLVER@ | sed 's|\.[0-9]\+$||')"
 	mysql_daemon_user=mysql
 	mysql_daemon_group=mysql
+	# status information directory (e.g. info about a necessity of upgrade, current version etc)
+	mariadb_status_dir="/var/lib/misc"
+	
 	if [[ -z "$INSTANCE" ]]; then
 		datadir=/var/lib/mysql
 		socket="/run/mysql/mysql.sock"
@@ -54,8 +57,7 @@ mysql_install() {
 		echo "Creating MySQL privilege database... "
 		mysql_install_db --rpm --user="$mysql_daemon_user" --datadir="$datadir" || \
 		die "Creation of MySQL database in $datadir failed"
-		echo -n "$MYSQLVER" > "$datadir"/mysql_upgrade_info
-		chmod 640 "$datadir/mysql_upgrade_info"
+		echo -n "$MYSQLVER" > "$mariadb_status_dir"/mariadb_upgrade_info
 	fi
 }
 
@@ -63,7 +65,7 @@ mysql_install() {
 mysql_upgrade() {
 	# Run mysql_upgrade on every package install/upgrade. Not always
 	# necessary, but doesn't do any harm.
-	if [[ -f "$datadir/.run-mysql_upgrade" ]]; then
+	if [[ -f "$mariadb_status_dir/.mariadb_run_upgrade" ]]; then
 		echo "Checking MySQL configuration for obsolete options..."
 		sed -i -e 's|^\([[:blank:]]*\)skip-locking|\1skip-external-locking|' \
 		       -e 's|^\([[:blank:]]*skip-federated\)|#\1|' /etc/my.cnf
@@ -116,10 +118,9 @@ mysql_upgrade() {
 		if /usr/bin/mysql_upgrade --no-defaults --force --socket="$protected/mysql.sock"; then
 			echo "Everything upgraded successfully"
 			up_ok=""
-			rm -f "$datadir/.run-mysql_upgrade"
-			[[ $(grep -q "^$MYSQLVER" "$datadir/mysql_upgrade_info" 2> /dev/null) ]] || \
-				echo -n "$MYSQLVER" > "$datadir/mysql_upgrade_info"
-				chmod 640 "$datadir/mysql_upgrade_info"
+			rm -f "$mariadb_status_dir/.mariadb_run_upgrade"
+			[[ $(grep -q "^$MYSQLVER" "$mariadb_status_dir/mariadb_upgrade_info" 2> /dev/null) ]] || \
+				echo -n "$MYSQLVER" > "$mariadb_status_dir/mariadb_upgrade_info"
 		else
 			echo "Upgrade failed"
 			up_ok="false"
@@ -178,10 +179,8 @@ LC_ALL=C
 
 INSTANCE="$2"
 read_config
-mkdir -p /run/mysql
-# fix permissions for /run/mysql (bsc#1038740)
-chmod 755 /run/mysql
-chown --no-dereference "$mysql_daemon_user:$mysql_daemon_group" /run/mysql
+# Make sure that /run/mysql is created and has correct permissions (bsc#1038740)
+systemd-tmpfiles --create /usr/lib/tmpfiles.d/mariadb.conf
 case "$1" in
 	install)
 		mysql_install ;;
