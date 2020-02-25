@@ -1,7 +1,7 @@
 #
 # spec file for package focuswriter
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           focuswriter
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
