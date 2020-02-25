@@ -1,7 +1,7 @@
 #
 # spec file for package matio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,10 @@ Source0:        http://downloads.sourceforge.net/matio/%{name}-%{version}.7z
 BuildRequires:  hdf5-devel >= 1.10.2
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel >= 1.2.3
-%if 0%{?suse_version} <= 1500
-BuildRequires:  p7zip
-%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  p7zip-full
+%else
+BuildRequires:  p7zip
 %endif
 
 %description
