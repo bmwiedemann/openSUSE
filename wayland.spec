@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define _version 1.17.0
+%define _version 1.18.0
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %define eglversion 99~%_version
 %else
@@ -184,24 +184,19 @@ fi
 %postun -n libwayland-server0 -p /sbin/ldconfig
 
 %files -n libwayland-client0
-%defattr(-,root,root)
 %_libdir/libwayland-client.so.0*
 %doc COPYING
 
 %files -n libwayland-cursor0
-%defattr(-,root,root)
 %_libdir/libwayland-cursor.so.0*
 
 %files -n libwayland-egl1
-%defattr(-,root,root)
 %_libdir/libwayland-egl.so.1*
 
 %files -n libwayland-server0
-%defattr(-,root,root)
 %_libdir/libwayland-server.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_bindir/wayland-scanner
 %_includedir/%name/
 %_libdir/libwayland-*.so
@@ -211,7 +206,6 @@ fi
 
 %if %with_doc
 %files doc
-%defattr(-,root,root)
 %_mandir/man3/wl*.3*
 %_docdir/%name/
 %endif
