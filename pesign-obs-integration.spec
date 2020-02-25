@@ -1,7 +1,7 @@
 #
 # spec file for package pesign-obs-integration
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,15 @@ Requires:       openssl
 Requires:       pesign
 %endif
 BuildRequires:  openssl
-Url:            http://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
+URL:            http://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
 Source:         %{name}_%{version}.tar.gz
 Patch1:         0001-Passthrough-license-tag.patch
 Patch2:         0001-Add-support-for-kernel-module-compression.patch
 Patch3:         0001-Initialize-compress-variable.patch
 Patch4:         0001-Keep-the-files-in-the-OTHER-directory.patch
 Patch5:         0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+# https://github.com/openSUSE/pesign-obs-integration/pull/17
+Patch6:         0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # suse-module-tools <= 15.0.10 contains modsign-verify
 Requires:       suse-module-tools >= 15.0.10
@@ -52,6 +54,7 @@ boot loader, kernel and kernel modules in the openSUSE Buildservice.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 
