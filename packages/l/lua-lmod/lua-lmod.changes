@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 09:52:42 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.3.1:
+  * The function extensions() now takes a string of comma separated names. 
+  * Add support for "atleast()" and "between()" functions support a "<" 
+    to signify a less than instead of less than or equal to between range.
+  * Make "ml - foo" an error.
+  * It is now safe to have os.exit(1) in a modulefile. Spider can now 
+    handle it.
+- Remove obsolete BuildRequires on ohpc.
+
+-------------------------------------------------------------------
 Fri Nov 29 08:42:31 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 8.2.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lmod
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,6 @@
 %define build_pdf 1
 %endif
 
-#
-%define ohpc 0
-
 %define lua_lmod_modulesdir %{_datarootdir}/lmod/modulefiles
 %define lua_lmod_admin_modulesdir %{_datarootdir}/lmod/admin/modulefiles
 %define lua_lmod_moduledeps %{_datarootdir}/lmod/moduledeps
@@ -39,18 +36,12 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.2.5
+Version:        8.3.1
 Release:        0
 URL:            https://github.com/TACC/Lmod
-%if 0%{?ohpc}
-BuildRequires:  ohpc
-%endif
-
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
 Patch1:         Messages-Remove-message-about-creating-a-consulting-ticket.patch
 Patch2:         Doc-Ugly-workaround-for-bug-in-Sphinx.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  lua >= %{lua_version}
 BuildRequires:  lua-devel >= %{lua_version}
@@ -112,7 +103,7 @@ BuildArch:      noarch
 
 %description doc
 Documentation (pdf) for the Lmod Environment Modules System.
- 
+
 %prep
 %setup -q -n Lmod-%{version}
 %patch1 -p1
@@ -134,7 +125,7 @@ export LUA_PATH="%{lua_path}"
 make
 find my_docs/ -name .gitignore -delete
 %endif
-cd docs; make %{?build_pdf:latexpdf} %{!?build_pdf:man}; cd ..                                                                                                                                
+cd docs; make %{?build_pdf:latexpdf} %{!?build_pdf:man}; cd ..
 
 %install
 %if 0%{!?build_pdf:1}
@@ -151,7 +142,7 @@ EOF
 mkdir -p %{buildroot}%{lua_lmod_modulesdir}
 mkdir -p %{buildroot}%{lua_lmod_admin_modulesdir}
 mkdir -p %{buildroot}%{lua_lmod_moduledeps}
-mkdir -p %{buildroot}/%{_mandir}/man1                                                       
+mkdir -p %{buildroot}/%{_mandir}/man1
 
 # Fix file duplicates
 rm -f %{buildroot}/%{_datadir}/lmod/%{version}/init/ksh
@@ -160,7 +151,7 @@ rm -f %{buildroot}/%{_datadir}/lmod/%{version}/init/zsh
 ln -s %{_datadir}/lmod/%{version}/init/bash  %{buildroot}/%{_datadir}/lmod/%{version}/init/zsh
 rm -f %{buildroot}/%{_datadir}/lmod/%{version}/init/tcsh
 ln -s %{_datadir}/lmod/%{version}/init/csh %{buildroot}/%{_datadir}/lmod/%{version}/init/tcsh
-rm -f %{buildroot}/%{_datadir}/lmod/%{version}/settarg/Version.lua 
+rm -f %{buildroot}/%{_datadir}/lmod/%{version}/settarg/Version.lua
 ln -s %{_datadir}/lmod/%{version}/libexec/Version.lua %{buildroot}/%{_datadir}/lmod/%{version}/settarg/Version.lua
 
 for file in $(find %{buildroot}%{_datadir}/lmod); do
@@ -228,7 +219,7 @@ setenv LMOD_PREPEND_BLOCK "normal"
 
 if ( \`id -u\` == "0" ) then
    setenv MODULEPATH "%{?OHPC_MODULES:%{OHPC_ADMIN}/modulefiles:%{OHPC_MODULES}:}%{lua_lmod_admin_modulesdir}:%{lua_lmod_modulesdir}"
-else   
+else
    setenv MODULEPATH "%{?OHPC_MODULES:%{OHPC_MODULES}:}%{lua_lmod_modulesdir}"
 endif
 
@@ -236,7 +227,7 @@ endif
 source %{_datadir}/lmod/%{version}/init/csh >/dev/null
 
 # Load baseline SUSE HPC environment
-module try-add suse-hpc 
+module try-add suse-hpc
 
 EOF
 
