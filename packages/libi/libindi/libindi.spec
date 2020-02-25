@@ -1,7 +1,7 @@
 #
 # spec file for package libindi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver 1
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -28,9 +28,13 @@ URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-warnings.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         remove-unused-websocket-block.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gsl-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libcfitsio-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libnova-devel
@@ -46,13 +50,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(udev)
 Requires:       libindi-plugins = %{version}
-%if 0%{?suse_version} >= 1330
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
 
 %description
 INDI is an Instrument Neutral Distributed Interface control protocol
@@ -128,16 +125,9 @@ completely dynamic GUI based on the services provided by the device.
 # libindi doesn't check whether CMAKE_INSTALL_LIBDIR is relative or not...
 sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}|${CMAKE_INSTALL_LIBDIR}|' libs/indibase/alignment/CMakeLists.txt
 
-%if 0%{?suse_version} < 1330
-export CC=gcc-7
-export CXX=g++-7
-%endif
-
 %cmake -DUDEVRULES_INSTALL_DIR=%{_udevdir}/rules.d \
   -DINDI_BUILD_QT5_CLIENT=ON \
-%if 0%{?suse_version} >= 1330
   -DINDI_BUILD_WEBSOCKET=ON \
-%endif
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 
 %make_jobs
