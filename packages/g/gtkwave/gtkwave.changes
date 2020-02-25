@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:44:00 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.104: 
+  * Remove redundant TREE_VHDL_ST_PACKAGE from SST exclude.
+  * Added addCommentTracesFromList tcl command from user patch.
+  * Harden savefile loader for missing group start on vectors.
+  * Preliminary VHDL support for wlf2vcd.
+  * Add missing return value checks on mmap() in FST writer.
+  * Fix MAP_FAILED missing for MinGW.
+  * Fix to make the coloration red on 'u' traces.  (Bug from
+  * Dinotrace-like rendering in 3.3.96.)
+  * Typo fix on missing group start on vectors.
+  * Added support for loading .vf files
+  * Added support for dumping variable types in vcd saveer,
+    not just using "wire" for non-reals/strings.
+  * Fix for uninitialized values at time 0 for FST, FSDB loaders.
+
+-------------------------------------------------------------------
 Wed Aug 21 23:31:42 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 3.3.101
