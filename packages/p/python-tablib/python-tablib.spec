@@ -1,7 +1,7 @@
 #
 # spec file for package python-tablib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-tablib
-Version:        0.14.0
+Version:        1.1.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
@@ -35,10 +35,11 @@ BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module odfpy >= 1.3.5}
 BuildRequires:  %{python_module openpyxl >= 2.4.8}
 BuildRequires:  %{python_module pandas >= 0.20.3}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module xlrd >= 1.1.0}
 BuildRequires:  %{python_module xlwt >= 1.3.0}
 BuildRequires:  %{python_module xml}

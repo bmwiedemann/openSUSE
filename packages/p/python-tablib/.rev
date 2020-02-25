@@ -74,4 +74,19 @@
     <comment></comment>
     <requestid>753797</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31ce3ca021a4aac609f29ff79f922991</srcmd5>
+    <version>1.1.0</version>
+    <time>1582643169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Tablib is now able to import CSV content where not all rows have the same length. Missing columns on any line receive the empty string (#226).
+  * Dropped Python 2 support
+  * Formats can now be dynamically registered through the tablib.formats.registry.refister API (#256).
+  * Tablib methods expecting data input (detect_format, import_set, Dataset.load, Databook.load) now accepts file-like objects in addition to raw strings and bytestrings (#440).
+  * Fixed a crash when exporting an empty string with the ReST format (#368)
+  * Error cells from imported .xls files contain now the error string (#202)
+- Add BuildRequires on python-tabulate.</comment>
+    <requestid>778913</requestid>
+  </revision>
 </revisionlist>
