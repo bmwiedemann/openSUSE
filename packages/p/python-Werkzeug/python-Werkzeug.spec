@@ -1,7 +1,7 @@
 #
 # spec file for package python-Werkzeug
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,15 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Werkzeug
-Version:        0.16.0
+Version:        1.0.0
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://werkzeug.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkzeug-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001_create_a_thread_to_reap_death_process.patch bsc#954591
-Patch0:         0001_create_a_thread_to_reap_death_process.patch
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -66,7 +65,6 @@ bulletin boards, etc.).
 %prep
 %setup -q -n Werkzeug-%{version}
 sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylike,plnt,coolmagic}.py # Fix non-executable scripts
-%patch0 -p1
 
 %build
 %python_build
