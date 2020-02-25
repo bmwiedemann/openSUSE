@@ -1,7 +1,7 @@
 #
 # spec file for package python-seqdiag
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,10 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%else
-BuildArch:      noarch
-%endif
 Name:           python-seqdiag
-Version:        0.9.6
+Version:        2.0.0
 Release:        0
 Summary:        Python module to generate sequence-diagram images from text
 License:        Apache-2.0
@@ -35,6 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-setuptools
+BuildArch:      noarch
 %python_subpackages
 
 %description

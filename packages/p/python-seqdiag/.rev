@@ -24,4 +24,28 @@
   * Python 3.7 compatibility</comment>
     <requestid>697923</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e359f60d899be9352248192f9629256</srcmd5>
+    <version>2.0.0</version>
+    <time>1582643172</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.0
+  * compat module is no longer needed
+  * Enable Travis CI
+  * Define long_description_content_type
+  * Drop &quot;setup.py release&quot; macro
+  * Add get_version() to setup.py
+  * Add project_urls to setup.py
+  * isort'ize
+  * Add .gitignore
+  * Fix author_email
+  * Drop py27 and py34 support
+  * Bump version
+  * Remove buildout
+  * Fix seqdiag is not universal package
+  * Fix flake8 violations
+  * Stop to use deprecated APIs
+- Stop building python2 version. No longer supported upstream</comment>
+    <requestid>778944</requestid>
+  </revision>
 </revisionlist>

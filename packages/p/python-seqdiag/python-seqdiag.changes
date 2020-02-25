@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 25 06:28:27 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version 2.0.0
+  * compat module is no longer needed
+  * Enable Travis CI
+  * Define long_description_content_type
+  * Drop "setup.py release" macro
+  * Add get_version() to setup.py
+  * Add project_urls to setup.py
+  * isort'ize
+  * Add .gitignore
+  * Fix author_email
+  * Drop py27 and py34 support
+  * Bump version
+  * Remove buildout
+  * Fix seqdiag is not universal package
+  * Fix flake8 violations
+  * Stop to use deprecated APIs
+- Stop building python2 version. No longer supported upstream
+
+-------------------------------------------------------------------
 Thu Apr 25 19:53:17 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.9.6:
