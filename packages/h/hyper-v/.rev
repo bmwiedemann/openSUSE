@@ -426,4 +426,13 @@
 - Fix a warning of buffer overflow with gcc 8.0.1 (4fcba780)</comment>
     <requestid>752453</requestid>
   </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>3eb727501ea26a7dcef7c82667ba4f0b</srcmd5>
+    <version>7</version>
+    <time>1582642910</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert previous non-upstream change for async name resolution
+  Just use gethostname via hyper-v.kvp.gethostname.patch (bsc#1100758)</comment>
+    <requestid>777742</requestid>
+  </revision>
 </revisionlist>

@@ -41,7 +41,6 @@
 #include <net/if.h>
 #include <limits.h>
 #include <getopt.h>
-#include <pthread.h>
 
 /*
  * KVP protocol: The user mode component first registers with the
@@ -86,7 +85,7 @@ static char *processor_arch;
 static char *os_build;
 static char *os_version;
 static char *lic_version = "Unknown version";
-static char *full_domain_name;
+static char full_domain_name[HV_KVP_EXCHANGE_MAX_VALUE_SIZE];
 static struct utsname uts_buf;
 
 /*
@@ -1329,76 +1328,27 @@ setval_error:
 	return error;
 }
 
-/*
- * Async retrival of Fully Qualified Domain Name because getaddrinfo takes an
- * unpredictable amount of time to finish.
- */
-static void *kvp_getaddrinfo(void *p)
+
+static void
+kvp_get_domain_name(char *buffer, int length)
 {
-	char *tmp, **str_ptr = (char **)p;
-	char hostname[HOST_NAME_MAX + 1];
-	struct addrinfo	*info, hints = {
-		.ai_family = AF_INET, /* Get only ipv4 addrinfo. */
-		.ai_socktype = SOCK_STREAM,
-		.ai_flags = AI_CANONNAME,
-	};
-	int ret;
-	int prev_ret = 0, cnt = 5;
+	struct addrinfo	hints, *info ;
+	int error = 0;
 
-	do {
-		if (gethostname(hostname, sizeof(hostname) - 1) < 0)
-			goto out;
+	gethostname(buffer, length);
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_INET; /*Get only ipv4 addrinfo. */
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_flags = AI_CANONNAME;
 
-		ret = getaddrinfo(hostname, NULL, &hints, &info);
-		switch (ret) {
-		case 0:
-			break;
-		case EAI_BADFLAGS:
-		case EAI_MEMORY:
-		case EAI_OVERFLOW:
-		case EAI_SOCKTYPE:
-		case EAI_SYSTEM:
-			/* Permanent failure */
-			syslog(LOG_ERR, "getaddrinfo failed: %d %s",
-				ret, gai_strerror(ret));
-			goto out;
-		default:
-			/* runtime debug */
-			if (cnt) {
-				if (prev_ret != ret) {
-					prev_ret = ret;
-					syslog(LOG_ERR, "getaddrinfo warning: %d %s", ret, gai_strerror(ret));
-					cnt--;
-				}
-			}
-			/* Temporary failure, aim for success. */
-			sleep(5);
-		}
-	} while (ret);
-
-	ret = asprintf(&tmp, "%s", info->ai_canonname);
-	freeaddrinfo(info);
-	if (ret <= 0)
-		goto out;
-
-	if (ret > HV_KVP_EXCHANGE_MAX_VALUE_SIZE)
-		tmp[HV_KVP_EXCHANGE_MAX_VALUE_SIZE - 1] = '\0';
-	*str_ptr = tmp;
-
-out:
-	pthread_exit(NULL);
-}
-
-static void kvp_obtain_domain_name(char **str_ptr)
-{
-	pthread_t t;
-
-	if (pthread_create(&t, NULL, kvp_getaddrinfo, str_ptr)) {
-		syslog(LOG_ERR, "pthread_create failed; error: %d %s",
-			errno, strerror(errno));
+	error = getaddrinfo(buffer, NULL, &hints, &info);
+	if (error != 0) {
+		snprintf(buffer, length, "getaddrinfo failed: 0x%x %s",
+			error, gai_strerror(error));
 		return;
 	}
-	pthread_detach(t);
+	snprintf(buffer, length, "%s", info->ai_canonname);
+	freeaddrinfo(info);
 }
 
 void print_usage(char *argv[])
@@ -1463,7 +1413,11 @@ int main(int argc, char *argv[])
 	 * Retrieve OS release information.
 	 */
 	kvp_get_os_info();
-	kvp_obtain_domain_name(&full_domain_name);
+	/*
+	 * Cache Fully Qualified Domain Name because getaddrinfo takes an
+	 * unpredictable amount of time to finish.
+	 */
+	kvp_get_domain_name(full_domain_name, sizeof(full_domain_name));
 
 	if (kvp_file_init()) {
 		syslog(LOG_ERR, "Failed to initialize the pools");
@@ -1618,7 +1572,7 @@ int main(int argc, char *argv[])
 
 		switch (hv_msg->body.kvp_enum_data.index) {
 		case FullyQualifiedDomainName:
-			strcpy(key_value, full_domain_name ? : "");
+			strcpy(key_value, full_domain_name);
 			strcpy(key_name, "FullyQualifiedDomainName");
 			break;
 		case IntegrationServicesVersion:

@@ -1,0 +1,23 @@
+--- a/hyper-v.tools.hv.hv_kvp_daemon.c
++++ b/hyper-v.tools.hv.hv_kvp_daemon.c
+@@ -1335,6 +1335,7 @@ kvp_get_domain_name(char *buffer, int le
+ 	struct addrinfo	hints, *info ;
+ 	int error = 0;
+ 
++	return;
+ 	gethostname(buffer, length);
+ 	memset(&hints, 0, sizeof(hints));
+ 	hints.ai_family = AF_INET; /*Get only ipv4 addrinfo. */
+@@ -1572,6 +1573,12 @@ int main(int argc, char *argv[])
+ 
+ 		switch (hv_msg->body.kvp_enum_data.index) {
+ 		case FullyQualifiedDomainName:
++			/*
++			 * The API is undocumented.
++			 * The Host can not possibly care about DNS within the guest network
++			 * The time it takes to get the hostname is much shorter than a DNS lookup.
++			 */
++			gethostname(full_domain_name, sizeof(full_domain_name));
+ 			strcpy(key_value, full_domain_name);
+ 			strcpy(key_name, "FullyQualifiedDomainName");
+ 			break;

@@ -61,7 +61,7 @@ Source20:       hyper-v.tools.hv.hv_get_dhcp_info.sh
 Source21:       hyper-v.tools.hv.hv_get_dns_info.sh
 Source22:       hyper-v.tools.hv.hv_set_ifconfig.sh
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         hyper-v.kvp.gethostname.patch
 
 %description
 This package contains the Microsoft Hyper-V tools.
@@ -70,9 +70,11 @@ This package contains the Microsoft Hyper-V tools.
 %setup -Tc
 cp -avL %{S:5} kvptest.ps1.txt
 cp -vL %{S:9} %{hv_kvp_daemon}.h
-cp -vL %{S:10} %{hv_kvp_daemon}.c
+cp -vL %{S:10} .
 cp -vL %{S:12} %{hv_vss_daemon}.c
-cp -vL %{S:14} %{hv_fcopy_daemon}.c
+cp -vL %{S:14}  %{hv_fcopy_daemon}.c
+%patch0 -p1
+mv `basename %{S:10}` %{hv_kvp_daemon}.c
 
 %build
 sed -i~ '/#include <linux.hyperv.h>/d' %{hv_kvp_daemon}.c
@@ -237,7 +239,6 @@ ln -sfvbn ../../etc/init.d/%{hv_fcopy_daemon} $RPM_BUILD_ROOT${bindir}/rc%{hv_fc
 %endif
 
 %files
-%defattr (-,root,root)
 %doc kvptest.ps1.txt
 %if %{use_systemd}
 %{_unitdir}
