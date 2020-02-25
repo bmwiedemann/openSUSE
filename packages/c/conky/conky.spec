@@ -1,7 +1,7 @@
 #
-# spec file for package conky
+# spec file for package tempspec
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,17 +53,25 @@ BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cairo-xlib)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
 Requires:       fontawesome-fonts
+# This is required for imlib2 function properly.
+Requires:       imlib2-loaders
 Provides:       conky-cairo = %{version}
 Obsoletes:      conky-cairo < %{version}
+Provides:       conky-imlib2 = %{version}
+Obsoletes:      conky-imlib2 < %{version}
 %if %{with audacious}
 BuildRequires:  pkgconfig(audacious)
 BuildRequires:  pkgconfig(audclient)
@@ -77,14 +85,6 @@ Provides:       conky-feature-nvidia = %{version}
 Obsoletes:      conky-feature-nvidia < %{version}
 %endif
 %if 0%{?is_opensuse}
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(cairo-xlib)
-BuildRequires:  pkgconfig(imlib2)
-BuildRequires:  pkgconfig(librsvg-2.0)
-# This is required for imlib2 function properly.
-Requires:       imlib2-loaders
-Provides:       conky-imlib2 = %{version}
-Obsoletes:      conky-imlib2 < %{version}
 %if 0%{?suse_version} >= 1315
 BuildRequires:  libircclient-devel
 BuildRequires:  libtolua++-5_1-devel
@@ -161,17 +161,14 @@ configuration files in nano.
 	-DBUILD_IBM=ON \
 	-DBUILD_ICAL=ON \
 	-DBUILD_ICONV=ON \
-%if 0%{?is_opensuse}
-	-DBUILD_LUA_CAIRO=ON \
+   	-DBUILD_LUA_CAIRO=ON \
 	-DBUILD_IMLIB2=ON \
     -DBUILD_LUA_IMLIB2=ON \
-	-DBUILD_LUA_RSVG=ON \
+   	-DBUILD_LUA_RSVG=ON \
+%if 0%{?is_opensuse}
+    -DBUILD_IRC=ON \
 %else
-	-DBUILD_LUA_CAIRO=OFF \
-	-DBUILD_IMLIB2=OFF \
-    -DBUILD_LUA_IMLIB2=OFF \
     -DBUILD_IRC=OFF \
-	-DBUILD_LUA_RSVG=OFF \
 %endif
 %if %{with xmms2}
 	-DBUILD_XMMS2=ON \
@@ -180,7 +177,6 @@ configuration files in nano.
 %endif
 	-DBUILD_IOSTATS=ON \
 	-DBUILD_IPV6=ON \
-    -DBUILD_IRC=ON \
 	-DBUILD_MATH=ON \
 	-DBUILD_MOC=ON \
 	-DBUILD_MPD=ON \
@@ -259,13 +255,11 @@ rm -rf %{buildroot}%{_libdir}/conky/*.{a,la}
 %{_bindir}/conky
 %{_bindir}/conkyconf
 %{_mandir}/man1/conky.1%{?ext_man}
-%if 0%{?is_opensuse}
 %dir %{_libdir}/conky
 %{_libdir}/conky/libcairo.so
-%{_libdir}/conky/librsvg.so
 %{_libdir}/conky/libcairo_imlib2_helper.so
 %{_libdir}/conky/libimlib2.so
-%endif
+%{_libdir}/conky/librsvg.so
 %{_datadir}/applications/conky.desktop
 %{_datadir}/icons/hicolor/scalable/apps/conky-logomark-violet.svg
 %{_libdir}/libtcp-portmon.so
