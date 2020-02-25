@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Feb 24 16:58:27 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Use profile.d instead of editing /etc/bashrc.
+
+-------------------------------------------------------------------
+Thu Feb 20 18:06:58 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Version 2.7.1
+
+-------------------------------------------------------------------
+Fri Aug 08 00:00:00 UTC 2014 - Justin Zhang <schnell18@gmail.com>
+
+bash-git-prompt 1.0.1-1
+- Initial version of package
