@@ -1,7 +1,7 @@
 #
 # spec file for package munin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 %define active_by_default 0
 
 Name:           munin
-Version:        2.0.49
+Version:        2.0.56
 Release:        0
 Summary:        Network-wide graphing framework (grapher/gatherer)
 License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            http://munin-monitoring.org/
+URL:            http://munin-monitoring.org/
 Source0:        http://downloads.munin-monitoring.org/%{name}/stable/%{version}/%{name}-%{version}.tar.gz
 Source1:        Makefile.config
 Source2:        munin-node.rc
@@ -360,6 +360,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_sbindir}/munin-run
 %{_sbindir}/munin-node
 %{_sbindir}/munin-node-configure
+%{_bindir}/munin-get
 %{_prefix}/lib/tmpfiles.d/munin-node.conf
 %{_unitdir}/munin-node.service
 %dir %{_prefix}/lib/munin
@@ -406,6 +407,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_mandir}/man1/munin-node.1.gz
 %{_mandir}/man1/munin-run.1.gz
 %{_mandir}/man1/munindoc.1.gz
+%{_mandir}/man1/munin-get.1.gz
 %{_mandir}/man3/Munin::Common::Config.3pm.gz
 %{_mandir}/man3/Munin::Common::Defaults.3pm.gz
 %{_mandir}/man3/Munin::Common::TLS.3pm.gz
