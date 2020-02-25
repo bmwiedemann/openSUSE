@@ -1,0 +1,115 @@
+From 09c5bd80cf811a0e7b81ceddfb525d576885e097 Mon Sep 17 00:00:00 2001
+From: Iustin Pop <iustin@k1024.org>
+Date: Wed, 4 Dec 2019 00:35:33 +0100
+Subject: [PATCH] Change entry qualifier set/get behaviour
+
+This was intended to address #13, but investigation found out more
+breakage than just that. It's hard to make overflow/underflow tests
+without assuming the signedness of the uid_t/gid_t types, so
+assume/require that they're unsigned (it is true with glibc, MacOS and
+FreeBSD) and use this to improve the behaviour:
+
+- Fix setting very large qualifiers, both in the sense of correctly
+  reporting overflow when too large, and not longer falsely reporting
+  overflow for larger than signed max but smaller than unsigned max;
+- Fix returning very large (larger than signed max value) qualifiers;
+
+Fixes #13.
+---
+ NEWS               |  6 ++++++
+ acl.c              | 17 +++++++++++------
+ tests/test_acls.py | 11 +++++------
+ 3 files changed, 22 insertions(+), 12 deletions(-)
+
+Index: b/acl.c
+===================================================================
+--- a/acl.c
++++ b/acl.c
+@@ -889,7 +889,7 @@ static PyObject* Entry_get_tag_type(PyOb
+  */
+ static int Entry_set_qualifier(PyObject* obj, PyObject* value, void* arg) {
+     Entry_Object *self = (Entry_Object*) obj;
+-    long uidgid;
++    unsigned long uidgid;
+     uid_t uid;
+     gid_t gid;
+     void *p;
+@@ -906,7 +906,10 @@ static int Entry_set_qualifier(PyObject*
+                         "qualifier must be integer");
+         return -1;
+     }
+-    if((uidgid = PyInt_AsLong(value)) == -1) {
++    /* This is the negative value check, and larger than long
++       check. If uid_t/gid_t are long-sized, this is enough to check
++       for both over and underflow. */
++    if((uidgid = PyLong_AsUnsignedLong(value)) == (unsigned long) -1) {
+         if(PyErr_Occurred() != NULL) {
+             return -1;
+         }
+@@ -920,9 +923,11 @@ static int Entry_set_qualifier(PyObject*
+     }
+     uid = uidgid;
+     gid = uidgid;
++    /* This is an extra overflow check, in case uid_t/gid_t are
++       int-sized (and int size smaller than long size). */
+     switch(tag) {
+     case ACL_USER:
+-      if((long)uid != uidgid) {
++      if((unsigned long)uid != uidgid) {
+         PyErr_SetString(PyExc_OverflowError, "cannot assign given qualifier");
+         return -1;
+       } else {
+@@ -930,7 +935,7 @@ static int Entry_set_qualifier(PyObject*
+       }
+       break;
+     case ACL_GROUP:
+-      if((long)gid != uidgid) {
++      if((unsigned long)gid != uidgid) {
+         PyErr_SetString(PyExc_OverflowError, "cannot assign given qualifier");
+         return -1;
+       } else {
+@@ -953,7 +958,7 @@ static int Entry_set_qualifier(PyObject*
+ /* Returns the qualifier of the entry */
+ static PyObject* Entry_get_qualifier(PyObject *obj, void* arg) {
+     Entry_Object *self = (Entry_Object*) obj;
+-    long value;
++    unsigned long value;
+     tag_qual tq;
+ 
+     if (self->entry == NULL) {
+@@ -973,7 +978,7 @@ static PyObject* Entry_get_qualifier(PyO
+                         " group tag");
+         return NULL;
+     }
+-    return PyInt_FromLong(value);
++    return PyLong_FromUnsignedLong(value);
+ }
+ 
+ /* Returns the parent ACL of the entry */
+Index: b/test/test_acls.py
+===================================================================
+--- a/test/test_acls.py
++++ b/test/test_acls.py
+@@ -579,10 +579,7 @@ class ModificationTests(aclTest, unittes
+             qualifier = 1
+             e.tag_type = tag
+             while True:
+-                if tag == posix1e.ACL_USER:
+-                    regex = re.compile("user with uid %d" % qualifier)
+-                else:
+-                    regex = re.compile("group with gid %d" % qualifier)
++                regex = re.compile("(user|group) with (u|g)id %d" % qualifier)
+                 try:
+                     e.qualifier = qualifier
+                 except OverflowError:
+@@ -597,7 +594,9 @@ class ModificationTests(aclTest, unittes
+         """Tests qualifier overflow handling"""
+         acl = posix1e.ACL()
+         e = acl.append()
+-        qualifier = sys.maxsize * 2
++        # the uid_t/gid_t are unsigned, so they can hold slightly more
++        # than sys.maxsize*2 (on Linux).
++        qualifier = (sys.maxsize + 1) * 2
+         for tag in [posix1e.ACL_USER, posix1e.ACL_GROUP]:
+             e.tag_type = tag
+             with self.assertRaises(OverflowError):

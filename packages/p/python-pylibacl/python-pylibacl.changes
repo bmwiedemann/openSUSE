@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:28:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply a manually merged version of 
+  09c5bd80cf811a0e7b81ceddfb525d576885e097.patch, in order to fix
+  build with 32 bit archs https://github.com/iustin/pylibacl/issues/13
+
+-------------------------------------------------------------------
 Thu Jan  9 14:06:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.4:

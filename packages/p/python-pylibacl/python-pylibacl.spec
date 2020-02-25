@@ -2,6 +2,7 @@
 # spec file for package python-pylibacl
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2013-2020 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +25,7 @@ Summary:        POSIX1e ACLs for python
 License:        LGPL-2.1-or-later
 URL:            https://pylibacl.k1024.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pylibacl/pylibacl-%{version}.tar.gz
+Patch:          09c5bd80cf811a0e7b81ceddfb525d576885e097.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +42,7 @@ of the systems's acl C library - see acl(5).
 
 %prep
 %setup -q -n pylibacl-%{version}
+%autopatch -p1
 
 %build
 %python_build
