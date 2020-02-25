@@ -1,7 +1,7 @@
 #
 # spec file for package caja-extensions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.23.0
 Release:        0
 Summary:        Set of extensions for Caja, the MATE file manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE caja-extensions_use-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of a direct gksu call in caja-gksu.
@@ -35,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  pkgconfig(gupnp-1.2)
 %else
 BuildRequires:  pkgconfig(gupnp-1.0)
@@ -48,7 +47,6 @@ Set of extensions for Caja, the MATE file manager.
 
 %package -n caja-extension-gksu
 Summary:        Caja privilege granting plugin
-Group:          System/GUI/Other
 Requires:       ImageMagick
 Requires:       caja >= %{_version}
 # caja-gksu is last seen in openSUSE Leap 42.1.
@@ -62,7 +60,6 @@ Caja file manager.
 
 %package -n caja-extension-image-converter
 Summary:        Caja image converter
-Group:          System/GUI/Other
 Requires:       ImageMagick
 Requires:       caja >= %{_version}
 Recommends:     caja-extension-image-converter-lang
@@ -81,7 +78,6 @@ image(s) using ImageMagick's convert tool.
 
 %package -n caja-extension-open-terminal
 Summary:        Caja terminal plugin
-Group:          System/GUI/Other
 Requires:       caja >= %{_version}
 Recommends:     caja-extension-open-terminal-lang
 # mate-file-manager-open-terminal is last seen in openSUSE 13.1.
@@ -97,7 +93,6 @@ through Caja file manager.
 
 %package -n caja-extension-sendto
 Summary:        A collection of 'sendto' plugins for Caja
-Group:          System/GUI/Other
 Requires:       caja >= %{_version}
 Recommends:     caja-extension-sendto-lang
 # mate-file-manager-sendto is last seen in openSUSE 13.1.
@@ -115,7 +110,6 @@ and devices.
 %if 0%{?is_opensuse}
 %package -n  caja-extension-sendto-gajim
 Summary:        Gajim integration for the Caja file manager
-Group:          System/GUI/Other
 Requires:       caja-extension-sendto = %{version}
 Requires:       gajim
 # caja-sendto-gajim is last seen in openSUSE Leap 42.1.
@@ -128,7 +122,6 @@ This package provides Gajim integration to the Caja file manager.
 
 %package -n  caja-extension-sendto-pidgin
 Summary:        Pidgin integration for the Caja file manager
-Group:          System/GUI/Other
 Requires:       caja-extension-sendto = %{version}
 Requires:       pidgin
 # mate-file-manager-sendto-pidgin is last seen in openSUSE 13.1.
@@ -143,7 +136,6 @@ This package provides Pidgin integration to the Caja file manager.
 
 %package -n  caja-extension-sendto-upnp
 Summary:        UPnP integration for the MATE Desktop file manager
-Group:          System/GUI/Other
 Requires:       caja-extension-sendto = %{version}
 # mate-file-manager-sendto-upnp is last seen in openSUSE 13.1.
 Provides:       mate-file-manager-sendto-upnp = %{version}
@@ -159,7 +151,6 @@ Empathy and Pidgin.
 
 %package -n caja-extension-sendto-devel
 Summary:        Development files for caja-sendto
-Group:          Development/Libraries/X11
 Requires:       caja-extension-sendto = %{version}
 Requires:       caja-extension-sendto-pidgin = %{version}
 Requires:       caja-extension-sendto-upnp = %{version}
@@ -177,7 +168,6 @@ Empathy and Pidgin.
 
 %package -n caja-extension-share
 Summary:        Share directory from caja via Samba
-Group:          System/GUI/Other
 Requires:       caja >= %{_version}
 Requires:       mate-icon-theme
 Requires:       samba >= 3.0.23
@@ -196,7 +186,6 @@ directories can be accessed by any operating system.
 
 %package -n caja-extension-wallpaper
 Summary:        Allows to quickly set desktop background
-Group:          System/GUI/Other
 Requires:       caja >= %{_version}
 Recommends:     caja-extension-wallpaper-lang
 # caja-wallpaper is last seen in openSUSE Leap 42.1.
@@ -208,7 +197,6 @@ Caja-share allows you to quickly set desktop background wallpaper.
 
 %package -n caja-extension-xattr-tags
 Summary:        See tags stored on xattrs
-Group:          System/GUI/Other
 Requires:       caja >= %{_version}
 Recommends:     caja-extension-xattr-tags-lang
 
@@ -217,7 +205,6 @@ Caja-xattr-tags allows one to see tags stored on xattrs.
 
 %package common-lang
 Summary:        Languages for Caja extensions
-Group:          System/Localization
 Provides:       caja-extension-image-converter-lang = %{version}
 Provides:       caja-extension-open-terminal-lang = %{version}
 Provides:       caja-extension-sendto-lang = %{version}
@@ -232,7 +219,7 @@ Provides common translations shared by Caja file manager extensions.
 %prep
 %setup -q
 %patch0 -p1
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %patch1
 %endif
 

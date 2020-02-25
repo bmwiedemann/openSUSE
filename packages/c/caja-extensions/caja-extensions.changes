@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 21 11:27:10 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Leap 15.2 has newer gupnp, enable builds with gupnp 1.2 on Leap 15.2
+
+-------------------------------------------------------------------
+Thu Oct 17 15:17:39 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Thu Jul 18 08:53:02 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:
