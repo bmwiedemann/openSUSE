@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipympl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define labver  0.4.2
-%define mainver 0.3.3
+%define labver  0.5.0
+%define mainver 0.4.1
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{mainver}
@@ -36,10 +36,10 @@ BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  npm
 BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-rpm-macros
-BuildRequires:  jupyter-jupyterlab-filesystem
 Requires:       python-ipython
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-matplotlib >= 2.0.0
@@ -63,8 +63,9 @@ This package provides the python interface.
 
 %package     -n jupyter-ipympl
 Summary:        Matplotlib Jupyter Extension
-Requires:       python3-ipympl = %{mainver}
+Group:          Development/Languages/Python
 Requires:       jupyter-notebook
+Requires:       python3-ipympl = %{mainver}
 
 %description -n jupyter-ipympl
 Jupyter extension to display matplotlib plots in a widget.
@@ -73,9 +74,11 @@ This package provides the jupyter notebook extension.
 
 %package     -n jupyter-ipympl-jupyterlab
 Version:        %{labver}
+Release:        0
 Summary:        Matplotlib JupyterLab Extension
-Requires:       python3-ipympl = %{mainver}
+Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
+Requires:       python3-ipympl = %{mainver}
 Provides:       python3-jupyter_ipympl_jupyterlab = %{labver}
 Obsoletes:      python3-jupyter_ipympl_jupyterlab < %{labver}
 
@@ -96,7 +99,7 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 %install
 %python_install
 
-%{jupyter_move_config}
+%jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
 
