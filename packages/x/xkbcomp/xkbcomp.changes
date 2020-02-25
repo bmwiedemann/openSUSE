@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 21 11:18:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.3
+  * Update configure.ac bug URL for gitlab migration
+  * configure: Remove unused AC_SUBST([REQUIRED_MODULES])
+  * pkgconfig: Remove unneeded Requires.private
+  * Suppress high-keycode warnings at the default warning level
+  * xkbcomp Fix missing support for "affect" and incorrect modifier
+    handling for ISOLock
+  * Don't compare with string literals
+  * Fix invalid error report on F_Accel field
+  * Error out if we have no default path
+
+-------------------------------------------------------------------
 Fri Jun  8 10:40:35 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.4.2
