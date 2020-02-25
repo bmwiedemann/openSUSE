@@ -26,4 +26,13 @@
 </comment>
     <requestid>658046</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8eaa2f17ba8dbd9c20e08129b7c3f9da</srcmd5>
+    <version>2.0.0</version>
+    <time>1582643075</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0
+- drop py2 support</comment>
+    <requestid>778792</requestid>
+  </revision>
 </revisionlist>

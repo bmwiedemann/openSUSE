@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:09:15 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.0.0
+- drop py2 support
+
+-------------------------------------------------------------------
 Fri Dec 14 12:17:54 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 
 - Package should own whole sitelib/sphinxcontrib/__pycache__

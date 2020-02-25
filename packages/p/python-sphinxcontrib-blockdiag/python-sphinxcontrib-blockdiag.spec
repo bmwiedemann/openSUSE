@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-blockdiag
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Test files missing
 %bcond_with     test
 Name:           python-sphinxcontrib-blockdiag
-Version:        1.5.5
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx "blockdiag" extension
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/blockdiag/sphinxcontrib-blockdiag
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-blockdiag/sphinxcontrib-blockdiag-%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx >= 0.6}
+BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module blockdiag >= 1.5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 0.6
+Requires:       python-Sphinx >= 2.0
 Requires:       python-blockdiag >= 1.5.0
 BuildArch:      noarch
 %if %{with test}
@@ -57,7 +57,7 @@ A sphinx extension for embedding block diagram using blockdiag.
 
 %if %{with test}
 %check
-%python_exec setup.py test
+%pytest
 %endif
 
 %files %{python_files}
