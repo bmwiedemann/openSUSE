@@ -1,7 +1,7 @@
 #
 # spec file for package claws-mail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,6 @@
 %if !%{gtk3_ready}
 %define favor_gtk2 1
 %endif
-
 %if 0%{?suse_version} >= 1330
 %bcond_without vcalendar
 %else
@@ -32,17 +31,15 @@
 %bcond_with    litehtml
 %endif
 %bcond_with    tnef
-
 Name:           claws-mail
-Version:        3.17.4
+Version:        3.17.5
 Release:        0
-URL:            http://www.claws-mail.org/
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
+URL:            https://www.claws-mail.org/
 Source:         http://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
-Patch:          libcanberra-gtk3.patch
-Patch1:         remove-MarkAll-from-message-menu.patch
+Patch0:         libcanberra-gtk3.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -50,18 +47,6 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gmp-devel
 BuildRequires:  gpgme-devel
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-jadetex
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-metafont-bin
-BuildRequires:  texlive-wasy
-%if 0%{?favor_gtk2}
-BuildRequires:  gtk2-devel
-BuildRequires:  libcanberra-gtk-devel >= 0.6
-%else
-BuildRequires:  gtk3-devel
-BuildRequires:  libcanberra-gtk3-devel >= 0.6
-%endif
 BuildRequires:  libarchive-devel
 BuildRequires:  libcanberra-devel >= 0.6
 BuildRequires:  libcurl-devel
@@ -69,21 +54,17 @@ BuildRequires:  libetpan-devel >= 0.57
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgdata-devel >= 0.17.2
-%if %{with vcalendar}
-BuildRequires:  libical-devel >= 2.0.0
-%endif
 BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel >= 2.40.5
 BuildRequires:  openldap2-devel
-%if 0%{?is_opensuse}
-BuildRequires:  pilot-link-devel
-%endif
-%if %{with tnef}
-BuildRequires:  libytnef-devel
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python-gtk-devel
 BuildRequires:  startup-notification-devel
+BuildRequires:  texlive-dvips
+BuildRequires:  texlive-jadetex
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-metafont-bin
+BuildRequires:  texlive-wasy
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.60
@@ -94,19 +75,7 @@ BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(sm)
-# LiteHTML requires Gumbo which is currently shipped only with Tumbleweed
-%if %{with litehtml}
-BuildRequires:  c++_compiler
-BuildRequires:  pkgconfig(gumbo)
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pinentry-gtk2
-# libetpan 1.9.2 introduced function mailstream_ssl_set_server_name, which
-# will be used by claws-mail if available
-%if %{pkg_vcmp libetpan-devel >= 1.9.2}
-Requires:       libetpan >= 1.9.2
-%endif
-%{?libperl_requires}
 Recommends:     %{name}-lang
 Provides:       sylpheed-claws = %{version}
 Obsoletes:      sylpheed-claws < %{version}
@@ -116,6 +85,33 @@ Provides:       claws-mail-extra-plugins = %{version}
 # The extra-plugin package was merged with version 3.9.1, also merge the -lang package
 Obsoletes:      claws-mail-extra-plugins-lang < %{version}
 Provides:       claws-mail-extra-plugins-lang = %{version}
+%{?libperl_requires}
+%if 0%{?favor_gtk2}
+BuildRequires:  gtk2-devel
+BuildRequires:  libcanberra-gtk-devel >= 0.6
+%else
+BuildRequires:  gtk3-devel
+BuildRequires:  libcanberra-gtk3-devel >= 0.6
+%endif
+%if %{with vcalendar}
+BuildRequires:  libical-devel >= 2.0.0
+%endif
+%if 0%{?is_opensuse}
+BuildRequires:  pilot-link-devel
+%endif
+%if %{with tnef}
+BuildRequires:  libytnef-devel
+%endif
+# LiteHTML requires Gumbo which is currently shipped only with Tumbleweed
+%if %{with litehtml}
+BuildRequires:  c++_compiler
+BuildRequires:  pkgconfig(gumbo)
+%endif
+# libetpan 1.9.2 introduced function mailstream_ssl_set_server_name, which
+# will be used by claws-mail if available
+%if %{pkg_vcmp libetpan-devel >= 1.9.2}
+Requires:       libetpan >= 1.9.2
+%endif
 
 %description
 Claws Mail (previously known as Sylpheed-Claws) is a
@@ -130,10 +126,6 @@ create a new account.
 Summary:        Development files for claws-mail
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Provides:       claws-mail:/usr/include/claws-mail/main.h
-# The extra-plugin package was merged with version 3.9.1; as such, also the -devel package merged
-Obsoletes:      claws-mail-extra-plugins-devel < %{version}
-Provides:       claws-mail-extra-plugins-devel = %{version}
 Requires:       claws-mail = %{version}
 Requires:       enchant-devel
 Requires:       glib2-devel >= 2.28
@@ -142,6 +134,10 @@ Requires:       gpgme-devel
 Requires:       gtk2-devel >= 2.24
 Requires:       libetpan-devel
 Requires:       openldap2-devel
+Provides:       claws-mail:%{_includedir}/claws-mail/main.h
+# The extra-plugin package was merged with version 3.9.1; as such, also the -devel package merged
+Obsoletes:      claws-mail-extra-plugins-devel < %{version}
+Provides:       claws-mail-extra-plugins-devel = %{version}
 
 %description devel
 Claws Mail (previously known as Sylpheed-Claws) is a
@@ -151,12 +147,12 @@ toolkit, and it runs on the X Window System.
 This package contains header files for building plugins.
 
 %lang_package
+
 %prep
 %setup -q
 %if ! 0%{?favor_gtk2}
-%patch -p1
+%patch0 -p1
 %endif
-%patch1 -p1
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
@@ -213,12 +209,12 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --enable-startup-notification \
         --enable-compface \
         --enable-libetpan
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
+%make_install
 # Clean up
-rm %{buildroot}%{_libdir}/claws-mail/plugins/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 # install desktop file
 %suse_update_desktop_file claws-mail
 # we want to have the icon installed in /usr/share/pixmaps
@@ -245,7 +241,6 @@ cat <<EOF > %{buildroot}%{_sysconfdir}/skel/.claws-mail/clawsrc
 EOF
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README README.tools TODO
 %{_bindir}/claws-mail
@@ -267,11 +262,10 @@ EOF
 %{_datadir}/claws-mail/tools/tb2claws-mail
 %{_datadir}/claws-mail/tools/u*
 %{_datadir}/claws-mail/tools/kdeservicemenu/
-%{_mandir}/man1/claws-mail.1.gz
+%{_mandir}/man1/claws-mail.1%{?ext_man}
 %config(noreplace) %{_sysconfdir}/skel/.claws-mail/
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/claws-mail/
 %{_libdir}/pkgconfig/claws-mail.pc
 

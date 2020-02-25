@@ -767,4 +767,12 @@
 No changes entry, as it's just a correction of the last changes entry.</comment>
     <requestid>765888</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>3d31cd705937bfcf44862f0b431f792d</srcmd5>
+    <version>3.17.5</version>
+    <time>1582643149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778901</requestid>
+  </revision>
 </revisionlist>

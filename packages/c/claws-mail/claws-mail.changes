@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Feb 24 20:08:25 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 3.17.5
+  + Inline Git patches now have colour syntax highlighting
+    The colours of these, and patch attachments, are configurable on
+    the 'Other' tab of the Display/Colors page of the general
+    preferences.
+  + The previously hidden preference, 'summary_from_show', is now
+    configurable within the UI, on the 'Message List' tab of the
+    Display/Summaries page of the general preferences, 'Displayed in
+    From column [ ]'.
+  + 'Re-edit' has been added to the message context menu when in the
+    Drafts folder.
+  + Additional Date header formats are supported:
+    - weekday, month, day, hh, mm, ss, year, zone
+    - weekday, month, day, hh, mm, ss, year
+  + LiteHtml viewer plugin: scrolling with the keyboard has been
+    implemented.
+  + The included tools/scripts have been updated:
+    - eud2gc.py converted to Python 3
+    - tbird2claws.py converted to Python 3
+    - tbird2claws.py converted to Python 3
+    - google_search.pl has been replaced with ddg_search.pl (that is,
+      duckduckgo.com instead of google.com)
+    - fix_date.sh and its documentation have been updated 
+    - multiwebsearch.pl 'fm' (freshmeat.net) has been removed; 'google'
+      has been replaced by 'ddg'
+    - the outdated OOo2claws-mail.pl script has been removed
+  + Updated manuals
+  + Updated translations: British English, Catalan, Czech, Danish,
+    Dutch, French, German, Russian, Slovak, Spanish, Swedish,
+    Traditional Chinese, Turkish
+  + bug fixes: claws#2131, claws#4237, claws#4239, claws#4248, 
+    claws#4253, claws#4257, claws#4277, claws#4278, claws#4305
+  + Misc bugs fixed:
+    - Fix crash in litehtml_viewer when  tag has no href
+    - removed "The following file has been attached..." dialogue
+    - MBOX import: give a better estimation of the time left and
+      grey out widgets while importing
+    - Fixed "vcard.c:238:2: warning: ‘strncpy’ output truncate 
+      before terminating nul copying as many bytes from a string
+      as its length"
+    - RSSyl: Fix handling deleted feed items where modified and
+      published dates do not match 
+    - fix bolding of target folder
+    - when creating a new account, don't pre-fill data from the
+      default account
+    - respect 'default selection' settings when moving a msg with
+      manual filtering
+    - Fix printing of empty pages when the selected part is
+      rendered with a plugin not implementing print
+    - Addressbook folder selection dialogs: make sure folder list
+      is sorted and apply global prefs to get stripes in lists.
+    - when user cancels the GPG signing passphrase dialogue,
+      don't bother the user with an "error" dialogue
+    - Fix imap keyword search. Libetpan assumes keyword search is
+      a MUST but RFC states it is a MAY. Fix advanced search on
+      MS Exchange
+    - fix SHIFT+SPACE in msg list, moving in reverse
+    - revert pasting images as attachments
+    - Fix help about command-line arguments that require a
+      parameter.
+    - Printing: only print as plain text if the part is of type
+      text
+    - fix a segfault with default info icon when trying to print
+     a non-text part.
+ - Run spec-cleaner
+ - Removed remove-MarkAll-from-message-menu.patch (claws#4278)
+
+-------------------------------------------------------------------
 Fri Jan 10 13:47:24 UTC 2020 - Jean Delvare <jdelvare@suse.com>
 
 - Drop add-MarkAll-to-folder-menu.patch. After discussion,
