@@ -287,4 +287,13 @@
     <comment></comment>
     <requestid>729337</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>61fafe6b456396bc79a49bd1184fd45e</srcmd5>
+    <version>2019.3</version>
+    <time>1582642897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.3
+  * IANA 2019c</comment>
+    <requestid>778643</requestid>
+  </revision>
 </revisionlist>

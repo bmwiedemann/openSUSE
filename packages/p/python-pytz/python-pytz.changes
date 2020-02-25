@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 03:12:10 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2019.3
+  * IANA 2019c
+
+-------------------------------------------------------------------
 Tue Aug 27 17:49:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add versioned dependency on timezone database to ensure the

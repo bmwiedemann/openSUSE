@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 # Ensure you update the tzdata_version for any minor version increase
 # otherwise the update python library has the incorrect timezone data.
-%define tzdata_version 2019b
+%define tzdata_version 2019c
 
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytz
-Version:        2019.2
+Version:        2019.3
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT
