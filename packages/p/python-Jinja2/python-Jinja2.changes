@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Feb 21 18:56:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disable tests on 32bit archs
+
+-------------------------------------------------------------------
+Tue Feb 18 17:26:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- update to 2.11.1
+ * Fix a bug that prevented looking up a key after an attribute
+   ({{ data.items[1:] }}) in an async template
+ * Drop support for Python 2.6, 3.3, and 3.4. This will be the last version
+   to support Python 2.7 and 3.5.
+ * Added a new ChainableUndefined class to support getitem and getattr
+   on an undefined object.
+ * Allow {%+ syntax (with NOP behavior) when lstrip_blocks is disabled.
+ * Added a default parameter for the map filter.
+ * Exclude environment globals from meta.find_undeclared_variables().
+ * Float literals can be written with scientific notation, like 2.56e-3.
+ * Int and float literals can be written with the ‘_’ separator
+   for legibility, like 12_345.
+ * Fix a bug causing deadlocks in LRUCache.setdefault
+ * The trim filter takes an optional string of characters to trim.
+ * A new jinja2.ext.debug extension adds a {% debug %} tag to quickly dump
+   the current context and available filters and tests.
+ * Lexing templates with large amounts of whitespace is much faster.
+ * Parentheses around comparisons are preserved, so {{ 2 * (3 < 5) }} outputs
+   “2” instead of “False”.
+ * Add new boolean, false, true, integer and float tests.
+ * The environment’s finalize function is only applied to the output of expressions
+   (constant or not), not static template data.
+ * When providing multiple paths to FileSystemLoader, a template can have
+   the same name as a directory.
+ * Always return Undefined when omitting the else clause in a {{ 'foo' if bar }}
+   expression, regardless of the environment’s undefined class. Omitting
+   the else clause is a valid shortcut and should not raise an error when using
+   StrictUndefined.
+ * Fix behavior of loop control variables such as length and revindex0 when
+   looping over a generator.
+ * Async support is only loaded the first time an environment enables it,
+   in order to avoid a slow initial import.
+ * In async environments, the |map filter will await the filter call if needed.
+ * In for loops that access loop attributes, the iterator is not advanced ahead
+   of the current iteration unless length, revindex, nextitem, or last are accessed.
+   This makes it less likely to break groupby results.
+ * In async environments, the loop attributes length and revindex work for async iterators.
+ * In async environments, values from attribute/property access will be awaited if needed.
+ * PackageLoader doesn’t depend on setuptools or pkg_resources.
+ * PackageLoader has limited support for PEP 420 namespace packages.
+ * Support os.PathLike objects in FileSystemLoader and ModuleLoader
+ * NativeTemplate correctly handles quotes between expressions. "'{{ a }}', '{{ b }}'"
+   renders as the tuple ('1', '2') rather than the string '1, 2'.
+ * Creating a NativeTemplate directly creates a NativeEnvironment instead
+   of a default Environment.
+ * After calling LRUCache.copy(), the copy’s queue methods point to the correct queue.
+ * Compiling templates always writes UTF-8 instead of defaulting to the system encoding.
+ * |wordwrap filter treats existing newlines as separate paragraphs to be wrapped
+   individually, rather than creating short intermediate lines.
+ * Add break_on_hyphens parameter to |wordwrap filter.
+ * Cython compiled functions decorated as context functions will be passed the context.
+ * When chained comparisons of constants are evaluated at compile time,
+   the result follows Python’s behavior of returning False if any comparison
+   returns False, rather than only the last one
+ * Tracebacks for exceptions in templates show the correct line numbers
+   and source for Python >= 3.7.
+ * Tracebacks for template syntax errors in Python 3 no longer show
+   internal compiler frames
+ * Add a DerivedContextReference node that can be used by extensions to get
+   the current context and local variables such as loop
+ * Constant folding during compilation is applied to some node types
+   that were previously overlooked
+ * TemplateSyntaxError.source is not empty when raised from an included template.
+ * Passing an Undefined value to get_template (such as through extends, import,
+   or include), raises an UndefinedError consistently. select_template will show
+   the undefined message in the list of attempts rather than the empty string.
+ * TemplateSyntaxError can be pickled.
+
+-------------------------------------------------------------------
 Mon Oct  7 13:37:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.10.3:

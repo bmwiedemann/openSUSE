@@ -1,7 +1,7 @@
 #
 # spec file for package python-Jinja2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,14 @@
 #
 
 
+%ifarch %{ix86} armv7l
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Jinja2
-Version:        2.10.3
+Version:        2.11.1
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
@@ -47,7 +51,6 @@ sandboxed environment.
 
 %package -n python-Jinja2-vim
 Summary:        Jinja2 syntax files for Vim
-License:        BSD-3-Clause
 Requires:       %{name} = %{version}
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     vim
@@ -56,16 +59,6 @@ Recommends:     vim
 %description -n python-Jinja2-vim
 Vim syntax highlighting scheme for Jinja2 templates.
 
-%package -n python-Jinja2-emacs
-Summary:        Jinja2 syntax files for Emacs
-License:        GPL-2.0-or-later
-Requires:       %{name} = %{version}
-%if 0%{?suse_version} || 0%{?fedora_version} >= 24
-Recommends:     emacs
-%endif
-
-%description -n python-Jinja2-emacs
-Emacs syntax highlighting scheme for Jinja2 templates.
 
 %prep
 %setup -q -n Jinja2-%{version}
@@ -77,11 +70,12 @@ dos2unix LICENSE.rst # Fix wrong EOL encoding
 %install
 %python_install
 install -Dm644 ext/Vim/jinja.vim %{buildroot}%{_datadir}/vim/site/syntax/jinja.vim # Install VIM syntax file
-install -Dm644 ext/jinja.el %{buildroot}%{_datadir}/emacs/site-lisp/jinja.el # Install Emacs syntax file
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if %{with tests}
 %check
 %pytest
+%endif
 
 %files %{python_files}
 %license LICENSE.rst
@@ -94,8 +88,5 @@ install -Dm644 ext/jinja.el %{buildroot}%{_datadir}/emacs/site-lisp/jinja.el # I
 %dir %{_datadir}/vim/site
 %dir %{_datadir}/vim/site/syntax
 %{_datadir}/vim/site/syntax/jinja.vim
-
-%files -n python-Jinja2-emacs
-%{_datadir}/emacs/site-lisp/jinja.el
 
 %changelog

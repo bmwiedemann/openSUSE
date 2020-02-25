@@ -371,4 +371,41 @@
 - Remove merged python38.patch</comment>
     <requestid>735867</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9ced9cc8e93ea3015a61951b23c3ccb3</srcmd5>
+    <version>2.11.1</version>
+    <time>1582642842</time>
+    <user>dimstar_suse</user>
+    <comment>- disable tests on 32bit archs
+
+ 
+- update to 2.11.1
+ * Fix a bug that prevented looking up a key after an attribute
+   ({{ data.items[1:] }}) in an async template
+ * Drop support for Python 2.6, 3.3, and 3.4. This will be the last version
+   to support Python 2.7 and 3.5.
+ * Added a new ChainableUndefined class to support getitem and getattr
+   on an undefined object.
+ * Allow {%+ syntax (with NOP behavior) when lstrip_blocks is disabled.
+ * Added a default parameter for the map filter.
+ * Exclude environment globals from meta.find_undeclared_variables().
+ * Float literals can be written with scientific notation, like 2.56e-3.
+ * Int and float literals can be written with the ‘_’ separator
+   for legibility, like 12_345.
+ * Fix a bug causing deadlocks in LRUCache.setdefault
+ * The trim filter takes an optional string of characters to trim.
+ * A new jinja2.ext.debug extension adds a {% debug %} tag to quickly dump
+   the current context and available filters and tests.
+ * Lexing templates with large amounts of whitespace is much faster.
+ * Parentheses around comparisons are preserved, so {{ 2 * (3 &lt; 5) }} outputs
+   “2” instead of “False”.
+ * Add new boolean, false, true, integer and float tests.
+ * The environment’s finalize function is only applied to the output of expressions
+   (constant or not), not static template data.
+ * When providing multiple paths to FileSystemLoader, a template can have
+   the same name as a directory.
+ * Always return Undefined when omitting the else clause in a {{ 'foo' if bar }}
+   expression, regardless of the environment’s undefined class. Omitting</comment>
+    <requestid>778074</requestid>
+  </revision>
 </revisionlist>
