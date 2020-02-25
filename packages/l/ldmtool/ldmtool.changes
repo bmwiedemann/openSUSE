@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 08:30:24 UTC 2020 - Antoine Ginies <aginies@suse.com>
+
+- update to version 0.2.4
+- update patch Remove-deprecated-g_type_class_add_private.patch
+- remove upstream merged patches (werror-fixes.patch, cast_be64toh.patch)
+- fix buildrequires
+- use localsource as the github repo doesnt include yet the built tarball
+  for 0.2.4 release
+
+-------------------------------------------------------------------
 Sat Oct 27 15:29:47 UTC 2018 - Liang Yan <lyan@suse.com>
 
 - fix deprecated api g_type_class_add_private()

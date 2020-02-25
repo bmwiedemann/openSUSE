@@ -1,7 +1,7 @@
 #
 # spec file for package ldmtool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,22 +20,25 @@
 %define sover  1_0-0
 
 Name:           ldmtool
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        A tool to manage Windows dynamic disks
 License:        GPL-3.0-only
 Group:          System/Base
 
-Url:            https://github.com/mdbooth/libldm 
-Source0:        %{url}/downloads/%{srcname}-%{version}.tar.gz
-Patch0:         werror-fixes.patch
-Patch1:         cast_be64toh.patch
-Patch2:         Remove-deprecated-g_type_class_add_private.patch
+URL:            https://github.com/mdbooth/libldm 
+# Disable until the create a tarball with the 2.4.0 release
+#Source0:        %{url}/downloads/%{srcname}-%{version}.tar.gz
+Source0:        %{srcname}-%{version}.tar.gz
+Patch0:         Remove-deprecated-g_type_class_add_private.patch
 
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  device-mapper-devel >= 1.0
-BuildRequires:  glib2-devel >= 2.26.0
+BuildRequires:  glib2-devel >= 2.38.0
 BuildRequires:  gtk-doc
 BuildRequires:  json-glib-devel >= 0.14.0
+BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
@@ -70,11 +73,10 @@ Contains libraries and header files for developing applications using
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch0 -p0
 
 %build
+./autogen.sh
 %configure --disable-static --enable-gtk-doc
 make %{?_smp_mflags}
 
