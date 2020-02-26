@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:31:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.2.0
+  * Disable old SSL versions and ciphersuites and remove SSLCompression off 
+    setting to follow Mozilla recommendations in Apache.
+
+-------------------------------------------------------------------
 Tue Jan 21 09:39:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.1.0
