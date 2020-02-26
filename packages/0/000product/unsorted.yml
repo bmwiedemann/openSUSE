@@ -1732,7 +1732,6 @@ unsorted:
   - cmpi-bindings-perl 
   - cmpi-bindings-pywbem 
   - cmpi-bindings-ruby 
-  - cmpi-provider-register 
   - cmrt-devel 
   - cmuclmtk 
   - cmus 
@@ -11517,7 +11516,6 @@ unsorted:
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
-  - libsfcUtil0 
   - libsfml2-2_5 
   - libsfml2-2_5-32bit: [x86_64] 
   - libsfst-hfst0 
@@ -17721,7 +17719,6 @@ unsorted:
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
-  - python-Sphinx-doc-man 
   - python-Twisted-doc 
   - python-WTForms-doc 
   - python-WebOb-doc 
@@ -20384,7 +20381,6 @@ unsorted:
   - python3-SoundCard 
   - python3-SoundFile 
   - python3-SpeechRecognition 
-  - python3-Sphinx 
   - python3-Sphinx-latex 
   - python3-TagStats 
   - python3-Tempita 
@@ -20405,7 +20401,6 @@ unsorted:
   - python3-WebOb 
   - python3-WebTest 
   - python3-Werkzeug 
-  - python3-Whoosh 
   - python3-XStatic 
   - python3-XStatic-Angular-Schema-Form 
   - python3-XStatic-jQuery 
@@ -20455,7 +20450,6 @@ unsorted:
   - python3-aiorpcX 
   - python3-aiosmtplib 
   - python3-akismet 
-  - python3-alabaster 
   - python3-allpairspy 
   - python3-alsa 
   - python3-altair 
@@ -21085,7 +21079,6 @@ unsorted:
   - python3-dockerpty 
   - python3-docopt 
   - python3-docrepr 
-  - python3-docutils 
   - python3-docutils-ast-writer 
   - python3-dogpile.cache 
   - python3-dogslow 
@@ -21102,7 +21095,6 @@ unsorted:
   - python3-duckduckgo2 
   - python3-dukpy 
   - python3-dukpy-kovidgoyal 
-  - python3-dulwich 
   - python3-dynaconf 
   - python3-easydev 
   - python3-easygui 
@@ -21161,7 +21153,6 @@ unsorted:
   - python3-fastTSNE 
   - python3-fastcluster 
   - python3-fasteners 
-  - python3-fastimport 
   - python3-fastjet 
   - python3-fastnumbers 
   - python3-fastparquet 
@@ -21256,7 +21247,6 @@ unsorted:
   - python3-geomet 
   - python3-geopy 
   - python3-getmac 
-  - python3-geventhttpclient 
   - python3-gexiv2 
   - python3-ggplot 
   - python3-girder-client 
@@ -21294,7 +21284,6 @@ unsorted:
   - python3-google-resumable-media 
   - python3-googleapis-common-protos 
   - python3-googlemaps 
-  - python3-gpg 
   - python3-gpgme 
   - python3-gphoto2 
   - python3-gpiod 
@@ -21368,7 +21357,6 @@ unsorted:
   - python3-imagecodecs 
   - python3-imageio 
   - python3-imageio-ffmpeg 
-  - python3-imagesize 
   - python3-imbox 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -21898,7 +21886,6 @@ unsorted:
   - python3-pathvalidate 
   - python3-patsy 
   - python3-pbkdf2 
-  - python3-pbr 
   - python3-pcp 
   - python3-pdd 
   - python3-pdfkit 
@@ -22335,7 +22322,6 @@ unsorted:
   - python3-pyux 
   - python3-pyviz-comms 
   - python3-pyvmomi 
-  - python3-pywbem 
   - python3-pywinrm 
   - python3-pyxattr 
   - python3-pyxb 
@@ -22379,7 +22365,6 @@ unsorted:
   - python3-remoto 
   - python3-rencode 
   - python3-renderspec 
-  - python3-reno 
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
   - python3-repoze.who 
@@ -22419,7 +22404,6 @@ unsorted:
   - python3-rnginline 
   - python3-robot-detection 
   - python3-rollbar 
-  - python3-roman 
   - python3-rope 
   - python3-rply 
   - python3-rpmconf 
@@ -22527,7 +22511,6 @@ unsorted:
   - python3-smmap 
   - python3-smmap2 
   - python3-sniffio 
-  - python3-snowballstemmer 
   - python3-snuggs 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
@@ -22556,32 +22539,24 @@ unsorted:
   - python3-sphinx-removed-in 
   - python3-sphinx-testing 
   - python3-sphinx-version-warning 
-  - python3-sphinx_rtd_theme 
   - python3-sphinxcontrib-actdiag 
   - python3-sphinxcontrib-apidoc 
-  - python3-sphinxcontrib-applehelp 
   - python3-sphinxcontrib-asyncio 
   - python3-sphinxcontrib-autoprogram 
   - python3-sphinxcontrib-autoprogram-doc 
   - python3-sphinxcontrib-blockdiag 
-  - python3-sphinxcontrib-devhelp 
   - python3-sphinxcontrib-documentedlist 
   - python3-sphinxcontrib-github-alt 
-  - python3-sphinxcontrib-htmlhelp 
   - python3-sphinxcontrib-httpdomain 
   - python3-sphinxcontrib-issuetracker 
-  - python3-sphinxcontrib-jsmath 
   - python3-sphinxcontrib-newsfeed 
   - python3-sphinxcontrib-nwdiag 
   - python3-sphinxcontrib-pecanwsme 
   - python3-sphinxcontrib-plantuml 
   - python3-sphinxcontrib-programoutput 
-  - python3-sphinxcontrib-qthelp 
   - python3-sphinxcontrib-seqdiag 
-  - python3-sphinxcontrib-serializinghtml 
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
-  - python3-sphinxcontrib-websupport 
   - python3-spidev 
   - python3-splinter 
   - python3-spotipy 
@@ -24271,7 +24246,6 @@ unsorted:
   - sblim-indication_helper 
   - sblim-indication_helper-devel 
   - sblim-sfcCommon-devel 
-  - sblim-sfcb 
   - sblim-sfcc-devel 
   - sblim-testsuite 
   - sblim-tools-libra-devel 
