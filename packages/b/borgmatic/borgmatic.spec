@@ -79,6 +79,8 @@ common errors.
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
 perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic
 perl -pi -e "s,/root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic.service
+perl -pi -e "s,=sleep,=/usr/bin/sleep," sample/systemd/borgmatic.service
+perl -pi -e "s,=systemd-inhibit,=/usr/bin/systemd-inhibit," sample/systemd/borgmatic.service
 perl -pi -e "s/ruamel.yaml>0.15.0,<0.17.0/ruamel.yaml/" setup.py
 perl -pi -e "s/packages=find_packages\(\)/packages=find_packages(exclude=('tests*',))/" setup.py
 
