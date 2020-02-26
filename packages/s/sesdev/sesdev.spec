@@ -20,7 +20,7 @@
 %endif
 
 Name:           sesdev
-Version:        1.1.2+1581962442.g190d64e
+Version:        1.1.5+1582717868.g68df753
 Release:        1%{?dist}
 Summary:        CLI tool to deploy and manage SES clusters
 License:        MIT
@@ -64,6 +64,13 @@ DeepSea. The tool is highly customizable and allows to choose different
 versions of Ceph and SES, as well as, different versions of the openSUSE
 based OS.
 
+%package qa
+Summary:    Integration test script for validating Ceph deployments
+
+%description qa
+Integration test script for validating Ceph clusters deployed
+by sesdev
+
 %prep
 %autosetup -p1
 %if 0%{?fedora} && 0%{?fedora} < 30
@@ -76,13 +83,25 @@ sed -i -e 's/^\s*lv.qemu_use_session = false$//g' seslib/templates/Vagrantfile.j
 %install
 %py3_install
 %fdupes %{buildroot}%{python3_sitelib}
+# qa script installation
+install -m 0755 -d %{buildroot}/%{_datadir}/%{name}/qa
+install -m 0755 -d %{buildroot}/%{_datadir}/%{name}/qa/common
+install -m 0755 qa/health-ok.sh %{buildroot}/%{_datadir}/%{name}/qa/health-ok.sh
+install -m 0644 qa/common/common.sh %{buildroot}/%{_datadir}/%{name}/qa/common/common.sh
+install -m 0644 qa/common/helper.sh %{buildroot}/%{_datadir}/%{name}/qa/common/helper.sh
+install -m 0644 qa/common/json.sh %{buildroot}/%{_datadir}/%{name}/qa/common/json.sh
+install -m 0644 qa/common/zypper.sh %{buildroot}/%{_datadir}/%{name}/qa/common/zypper.sh
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python3_sitelib}/seslib*/
 %{python3_sitelib}/sesdev*/
-%{_bindir}/sesdev
+%{_bindir}/%{name}
+%dir %{_datadir}/%{name}
+
+%files qa
+%{_datadir}/%{name}/qa
 
 %changelog
 

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:51:32 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.5+1582717868.g68df753:
+  + upstream 1.1.5 release (2020-02-26)
+    * sesdev.spec: use standard ordering of sections
+    * sesdev: give the user a way to specify --no-deploy-... (PR #120)
+    * seslib: fix --no-deploy-mgrs option not working (PR #122)
+
+-------------------------------------------------------------------
+Wed Feb 26 09:06:38 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.4+1582707984.gdb87191
+  + upstream 1.1.4 release (2020-02-26)
+    * sesdev.spec: properly package /usr/share/sesdev directory
+      (follow-on fix for PR #112)
+
+-------------------------------------------------------------------
+Tue Feb 25 14:05:06 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.3+1582639489.g0e91afa:
+  + upstream 1.1.3 release (2020-02-25)
+    * Rename ceph-bootstrap to ceph-salt (PR#114)
+    * Migrate ceph-bootstrap-qa to sesdev (part 2) (PR#112)
+    * provision: remove which RPM from test environment (PR#113)
+    * ceph_salt_deployment: disable system update and reboot (PR#117)
+    * seslib: by default, a mgr for every mon (PR#111)
+
+-------------------------------------------------------------------
 Mon Feb 17 18:01:02 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.2+1581962442.g190d64e:
