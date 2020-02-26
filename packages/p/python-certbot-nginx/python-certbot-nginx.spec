@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-nginx
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Nginx plugin for Certbot
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  nginx
 BuildRequires:  python-rpm-macros
 Requires:       nginx
-Requires:       python-acme >= 1.1.0
+Requires:       python-acme >= 1.0.0
 Requires:       python-certbot >= 1.1.0
 Requires:       python-pyOpenSSL
 Requires:       python-pyparsing >= 1.5.5
