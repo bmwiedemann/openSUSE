@@ -16,18 +16,18 @@
 #
 
 
+%define         X_display         ":98"
 %ifarch x86_64 aarch64 ppc64le %{arm} %{ix86} %{ppc}
 %bcond_without  test
 %else
 %bcond_with     test
 %endif
-%define         X_display         ":98"
 Name:           spyder3
 Version:        4.0.1
 Release:        0
-URL:            https://www.spyder-ide.org/
 Summary:        The Scientific Python Development Environment
 License:        MIT
+URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder3-rpmlintrc
 Patch0:         0001-fix-hanging-test-when-not-in-git-repository.patch
@@ -62,30 +62,10 @@ BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-watchdog
 BuildRequires:  update-desktop-files
-%if %{with test}
-BuildRequires:  git-core
-BuildRequires:  python3-Cython
-BuildRequires:  python3-Pillow
-BuildRequires:  python3-diff-match-patch
-BuildRequires:  python3-flaky
-BuildRequires:  python3-keyring
-BuildRequires:  python3-matplotlib
-BuildRequires:  python3-matplotlib-qt5
-BuildRequires:  python3-matplotlib-tk
-BuildRequires:  python3-opengl
-BuildRequires:  python3-pandas
-BuildRequires:  python3-pytest < 5
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-lazy-fixture
-BuildRequires:  python3-pytest-mock
-BuildRequires:  python3-pytest-qt
-BuildRequires:  python3-pytest-timeout
-BuildRequires:  python3-pytest-xvfb
-BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 1.8.1
-BuildRequires:  python3-sympy
-BuildRequires:  xvfb-run
-%endif
+Requires:       %{name}-breakpoints
+Requires:       %{name}-lang
+Requires:       %{name}-profiler
+Requires:       %{name}-pylint
 Requires:       python3-Pygments >= 2.0
 Requires:       python3-QDarkStyle >= 2.7
 Requires:       python3-QtAwesome >= 0.5.7
@@ -117,21 +97,42 @@ Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-spyder-kernels >= 1.8.1
 Requires:       python3-watchdog
+Recommends:     %{name}-dicom
+Recommends:     %{name}-hdf5
 Recommends:     python3-Pillow
 Recommends:     python3-matplotlib >= 1.0
 Recommends:     python3-numpy
 Recommends:     python3-pandas >= 0.13.1
 Recommends:     python3-scipy
 Recommends:     python3-sympy >= 0.7.3
-Recommends:     %{name}-breakpoints
-Recommends:     %{name}-dicom
-Recommends:     %{name}-hdf5
-Recommends:     %{name}-profiler
-Recommends:     %{name}-pylint
 Provides:       python3-spyder = %{version}
 Provides:       python3-spyderlib = %{version}
 Obsoletes:      python3-spyderlib < %{version}
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  git-core
+BuildRequires:  python3-Cython
+BuildRequires:  python3-Pillow
+BuildRequires:  python3-diff-match-patch
+BuildRequires:  python3-flaky
+BuildRequires:  python3-keyring
+BuildRequires:  python3-matplotlib
+BuildRequires:  python3-matplotlib-qt5
+BuildRequires:  python3-matplotlib-tk
+BuildRequires:  python3-opengl
+BuildRequires:  python3-pandas
+BuildRequires:  python3-pytest < 5
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-lazy-fixture
+BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-pytest-qt
+BuildRequires:  python3-pytest-timeout
+BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-scipy
+BuildRequires:  python3-spyder-kernels >= 1.8.1
+BuildRequires:  python3-sympy
+BuildRequires:  xvfb-run
+%endif
 
 %description
 Spyder, the Scientific Python Development Environment, is an
@@ -268,10 +269,10 @@ python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/sp
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 # require Internet
-skiptests="test_github_backend or test_update" 
+skiptests="test_github_backend or test_update"
 # times out on armv7l, and is skipped on upstream CI
 # with reason "It makes other tests to segfault in our CIs"
-skiptests="$skiptests or test_introspection"   
+skiptests="$skiptests or test_introspection"
 # segfaults on obs (?)
 skiptests="$skiptests or test_arrayeditor_edit_complex_array"
 # this test runs into timeouts and is skipped on some of the

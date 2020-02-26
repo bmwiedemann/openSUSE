@@ -315,4 +315,12 @@ Fixed sources as requested.</comment>
 </comment>
     <requestid>774149</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>8d804714f5121f4921478935f9a1dfc2</srcmd5>
+    <version>4.0.1</version>
+    <time>1582725885</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779225</requestid>
+  </revision>
 </revisionlist>
