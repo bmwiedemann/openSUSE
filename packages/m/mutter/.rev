@@ -1241,4 +1241,16 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>775291</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>435c25e712201657cfe4679f8d228d98</srcmd5>
+    <version>3.34.4</version>
+    <time>1582726451</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework mutter-fix-mesa20.patch: base it on mutter upstream commit
+  a444a4c.
+
+- Add mutter-fix-mesa20.patch: fixes build against Mesa 20
+  (boo#1164688).</comment>
+    <requestid>779062</requestid>
+  </revision>
 </revisionlist>

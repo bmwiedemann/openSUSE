@@ -35,6 +35,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch4:         mutter-disable-cvt-s390x.patch
+# PATCH-FIX-UPSTREAM mutter-fix-mesa20.patch sndirsch@suse.de -- EGL: Include EGL/eglmesaext.h
+Patch5:         mutter-fix-mesa20.patch
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
 Patch1000:      mutter-SLE-bell.patch
@@ -155,6 +157,7 @@ applications that want to make use of the mutter library.
 %setup -q
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter
