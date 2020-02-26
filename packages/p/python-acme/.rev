@@ -440,4 +440,14 @@
     removed in the next release of Certbot.</comment>
     <requestid>766003</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b77cdd9fda87ae02662e0deb6b3d353b</srcmd5>
+    <version>1.2.0</version>
+    <time>1582725746</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  * Support for Python 3.4 has been removed.
+  * Fix collections.abc imports for Python 3.9.</comment>
+    <requestid>778029</requestid>
+  </revision>
 </revisionlist>
