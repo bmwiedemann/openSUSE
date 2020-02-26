@@ -990,6 +990,7 @@
       <repopackage name="iagno"/>
       <repopackage name="iagno-lang"/>
       <repopackage name="ibus"/>
+      <repopackage name="ibus-dict-emoji"/>
       <repopackage name="ibus-gtk"/>
       <repopackage name="ibus-gtk-32bit" arch="x86_64"/>
       <repopackage name="ibus-gtk3"/>
@@ -1548,7 +1549,7 @@
       <repopackage name="libbd_part2"/>
       <repopackage name="libbd_swap2"/>
       <repopackage name="libbd_utils2"/>
-      <repopackage name="libbind9-1302"/>
+      <repopackage name="libbind9-1600"/>
       <repopackage name="libblas3"/>
       <repopackage name="libblkid-devel"/>
       <repopackage name="libblkid1"/>
@@ -1709,7 +1710,7 @@
       <repopackage name="libdmapsharing-3_0-2"/>
       <repopackage name="libdmtx0"/>
       <repopackage name="libdmx1"/>
-      <repopackage name="libdns1311"/>
+      <repopackage name="libdns1600"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
@@ -2075,10 +2076,10 @@
       <repopackage name="libiptcdata"/>
       <repopackage name="libiptcdata-lang"/>
       <repopackage name="libiptcdata0"/>
-      <repopackage name="libirs1301"/>
-      <repopackage name="libisc1310"/>
-      <repopackage name="libisccc1302"/>
-      <repopackage name="libisccfg1302"/>
+      <repopackage name="libirs1600"/>
+      <repopackage name="libisc1600"/>
+      <repopackage name="libisccc1600"/>
+      <repopackage name="libisccfg1600"/>
       <repopackage name="libiscsi9"/>
       <repopackage name="libisl22"/>
       <repopackage name="libiso9660-11"/>
