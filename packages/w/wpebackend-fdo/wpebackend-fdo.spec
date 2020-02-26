@@ -1,7 +1,7 @@
 #
 # spec file for package wpebackend-fdo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
 URL:            https://github.com/Igalia/WPEBackend-fdo
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM memset-prototype.patch mgorse@suse.com -- fix usage of undeclared std::memset() function
-Patch0:         memset-prototype.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

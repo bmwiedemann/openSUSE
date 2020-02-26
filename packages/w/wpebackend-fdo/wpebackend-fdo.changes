@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:00:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.1 (boo#1164688):
+  + Fix build failures with recent compiler versions due to missing
+    function declarations.
+- Drop memset-prototype.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Oct  7 21:33:05 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Add memset-prototype.patch: fix usage of undeclared
