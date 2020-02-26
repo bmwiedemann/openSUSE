@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 24 09:14:24 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.9.25
+  * Adapt to a change in command-line options in the SVG inkscape delegate.
+  * No percent sign in lab() color.
+  * Support connected-components:eccentricity-threshold,
+    connected-components:major-axis-threshold,
+    connected-components:minor-axis-threshold,
+    connected-components:angle-threshold.
+  * Set the alpha channel if the write mask is not enabled.
+  * Corrected ellipse orientation when computing image moments.
+
+-------------------------------------------------------------------
 Mon Feb 17 12:28:30 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.9.23

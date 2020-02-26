@@ -2516,4 +2516,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Support 24-bit TIFF images.</comment>
     <requestid>774856</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>be6e19ceb38493e40fa45c279ef09bab</srcmd5>
+    <version>7.0.9.25</version>
+    <time>1582725720</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.25
+  * Adapt to a change in command-line options in the SVG inkscape delegate.
+  * No percent sign in lab() color.
+  * Support connected-components:eccentricity-threshold,
+    connected-components:major-axis-threshold,
+    connected-components:minor-axis-threshold,
+    connected-components:angle-threshold.
+  * Set the alpha channel if the write mask is not enabled.
+  * Corrected ellipse orientation when computing image moments.</comment>
+    <requestid>778702</requestid>
+  </revision>
 </revisionlist>
