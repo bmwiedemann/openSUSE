@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:51:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.0314, fixes the following problems
+- refreshed vim-7.3-filetype_spec.patch 
+  * Cannot recognize a terminal in a popup window.
+  * ModifyOtherKeys cannot be temporarily disabled.
+  * Terminal in popup test sometimes fails.
+  * Several lines of code are duplicated.
+  * Some code not covered by tests.
+  * Fileformat test fails on MS-Windows.
+  * A few new Vim9 messages are not localized.
+  * Fileformat test still fails on MS-Windows.
+  * "eval" after "if 0" doesn't check for following command.
+  * Terminal in popup test sometimes fails on Mac.
+  * No check for a following command when calling a function fails.
+  * Trycatch test fails.
+  * Vim9: operator after list index does not work. (Yasuhiro Matsumoto)
+  * Some code not covered by tests.
+  * The "num64" feature is available everywhere and building without it
+  causes problems.
+  * ":helptags ALL" gives error for directories without write
+  permission. (Matěj Cepl)
+  * Hang with combination of feedkeys(), Ex mode and :global. (Yegappan
+  Lakshmanan)
+  * Some Ex code not covered by tests.
+  * Vim9: not allowing space before ")" in function call is too
+  restrictive. (Ben Jackson)
+  * Vim9: not all instructions covered by tests.
+  * Channel test is flaky on Mac.
+  * Vim9: no test for deleted :def function.
+  * Vim9: throw in :def function not caught higher up.
+  * Two placed signs in the same line are not combined.  E.g. in the terminal
+  debugger a breakpoint and the PC cannot be both be            displayed.
+  * Vim9: setting number option not tested.
+  * Vim9: failing to load script var not tested.
+  * Vim9: assignment test fails.
+  * Unused error message. Cannot create s:var.
+  * Cannot use popup_close() for a terminal popup.
+  * Vim9: return in try block not tested; catch with pattern not tested.
+  * Vim9: some float and blob operators not tested.
+  * Vim9: :echo did not clear the rest of the line.
+  * Running individual test differs from all tests.
+  * Vim9: assigning [] to list<string> doesn't work.
+  * Vim9: CHECKNR and CHECKTYPE instructions not tested.
+  * Various Ex commands not sufficiently tested.
+  * Cannot use Ex command that is also a function name.
+  * Highlighting for :s wrong when using different separator.
+  * Mixing up "long long" and __int64 may cause problems. (John Marriott)
+  * Compiler warnings for the Ruby interface.
+  * Vim9 script: cannot start command with a string constant.
+  * Vim9: ISN_STORE with argument not tested.  Some cases in tv2bool()
+  not tested.
+  * Vim9: expression test fails without channel support.
+  * Insufficient testing for exception handling and the "attention" prompt.
+  * Setting 'term' may cause error in TermChanged autocommand.
+  * TermChanged test fails in the GUI.
+  * Terminal test if failing on some systems.
+  * Relativenumber test fails on some systems. (James McCoy)
+  * Vim9: :substitute(pat(repl does not work in Vim9 script.
+  * Python 3 vim.eval not well tested.
+  * 'showbreak' does not work for a very long line. (John Little)
+  * Window-local values have confusing name.
+  * Autocmd test fails on a slow system.
+  * Short name not set for terminal buffer.
+
+-------------------------------------------------------------------
 Fri Feb 14 15:01:26 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.0257, fixes the following problems

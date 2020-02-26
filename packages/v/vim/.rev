@@ -4352,4 +4352,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Configure does not recognize gcc version on BSD.</comment>
     <requestid>774387</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>80a268cb2dc12c00afb7adcb2b3d2f32</srcmd5>
+    <version>8.2.0314</version>
+    <time>1582726460</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.0314, fixes the following problems
+- refreshed vim-7.3-filetype_spec.patch 
+  * Cannot recognize a terminal in a popup window.
+  * ModifyOtherKeys cannot be temporarily disabled.
+  * Terminal in popup test sometimes fails.
+  * Several lines of code are duplicated.
+  * Some code not covered by tests.
+  * Fileformat test fails on MS-Windows.
+  * A few new Vim9 messages are not localized.
+  * Fileformat test still fails on MS-Windows.
+  * &quot;eval&quot; after &quot;if 0&quot; doesn't check for following command.
+  * Terminal in popup test sometimes fails on Mac.
+  * No check for a following command when calling a function fails.
+  * Trycatch test fails.
+  * Vim9: operator after list index does not work. (Yasuhiro Matsumoto)
+  * Some code not covered by tests.
+  * The &quot;num64&quot; feature is available everywhere and building without it
+  causes problems.
+  * &quot;:helptags ALL&quot; gives error for directories without write
+  permission. (Matěj Cepl)
+  * Hang with combination of feedkeys(), Ex mode and :global. (Yegappan
+  Lakshmanan)
+  * Some Ex code not covered by tests.
+  * Vim9: not allowing space before &quot;)&quot; in function call is too
+  restrictive. (Ben Jackson)
+  * Vim9: not all instructions covered by tests.
+  * Channel test is flaky on Mac.
+  * Vim9: no test for deleted :def function.
+  * Vim9: throw in :def function not caught higher up.
+  * Two placed signs in the same line are not combined.  E.g. in the terminal</comment>
+    <requestid>779065</requestid>
+  </revision>
 </revisionlist>
