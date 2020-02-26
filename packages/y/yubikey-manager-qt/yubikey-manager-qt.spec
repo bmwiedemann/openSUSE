@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define bname ykman-gui
 Name:           yubikey-manager-qt
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Graphical application for configuring a YubiKey
 License:        BSD-2-Clause
@@ -51,7 +51,7 @@ sed -i 's|python |python3 |g' ykman-cli/ykman-cli.pro
 sed -i 's|python |python3 |g' ykman-gui/ykman-gui.pro
 
 %build
-qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true";
+qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_LFLAGS+="%optflags" CONFIG+="hide_symbols" QMAKE_STRIP="/bin/true";
 make %{?_smp_mflags}
 
 %install

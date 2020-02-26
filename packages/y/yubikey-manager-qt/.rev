@@ -120,4 +120,18 @@
     <comment></comment>
     <requestid>725153</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7c355dd2bf5213b572f31d98804a721d</srcmd5>
+    <version>1.1.4</version>
+    <time>1582725899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+ * OTP: Add option to upload YubiOTP credential to YubiCloud
+ * Linux: Show hint about pcscd service if opening device fails
+ * Bugfix: Signal handling now compatible with Python 3.8
+- Set CONFIG=+hide_symbols so the compiler can generate better
+  and smaller code knowing that no symbols need to be visible.
+</comment>
+    <requestid>779238</requestid>
+  </revision>
 </revisionlist>
