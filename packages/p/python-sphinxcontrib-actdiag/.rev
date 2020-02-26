@@ -23,4 +23,21 @@
     <comment>- Remove superfluous devel dependency for noarch package</comment>
     <requestid>656154</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>083be0e3efac6bc9390cbf475e926783</srcmd5>
+    <version>2.0.0</version>
+    <time>1582725845</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.0
+  * Bump v2.0.0
+  * blockdiag.utils.compat has been no longer needed
+  * Fix flake8 violations
+  * Drop old Sphinx support
+  * Update CI settings
+  * Add .mypy_cache to gitignore
+  * Drop codes for old pythons
+  * Update package metadata
+----------------------------------------------------------------</comment>
+    <requestid>779143</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 15:59:53 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version 2.0.0
+  * Bump v2.0.0
+  * blockdiag.utils.compat has been no longer needed
+  * Fix flake8 violations
+  * Drop old Sphinx support
+  * Update CI settings
+  * Add .mypy_cache to gitignore
+  * Drop codes for old pythons
+  * Update package metadata
+
+----------------------------------------------------------------
 Tue Dec  4 12:54:36 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

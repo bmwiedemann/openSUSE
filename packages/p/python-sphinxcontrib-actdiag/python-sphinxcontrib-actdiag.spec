@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-actdiag
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,12 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Test files missing gh#blockdiag/sphinxcontrib-actdiag#1
 %bcond_with     test
 Name:           python-sphinxcontrib-actdiag
-Version:        0.8.5
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx actdiag extension
 License:        BSD-2-Clause
