@@ -23,7 +23,7 @@
 %bcond_with     precompiledSafeC
 
 Name:           ipmctl
-Version:        01.00.00.3474
+Version:        01.00.00.3497
 Release:        0
 Summary:        Utility for managing Intel Optane DC persistent memory modules
 License:        BSD-3-Clause
