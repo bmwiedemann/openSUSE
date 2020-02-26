@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:54:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Do not pull in flake8
+
+-------------------------------------------------------------------
 Thu Apr 18 15:24:46 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.14.1

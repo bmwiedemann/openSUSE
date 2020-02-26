@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>695847</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>23c0c867b1d241f4db6bbc781f9b625a</srcmd5>
+    <version>1.14.1</version>
+    <time>1582725731</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+- Do not pull in flake8</comment>
+    <requestid>778726</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tempora
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,11 @@ Version:        1.14.1
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/tempora
 Source:         https://files.pythonhosted.org/packages/source/t/tempora/tempora-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
-BuildRequires:  %{python_module pytest-flake8}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -51,13 +50,15 @@ Modules include:
 
 %prep
 %setup -q -n tempora-%{version}
+# do not require cov/xdist/etc
+sed -i -e 's/--flake8//g' pytest.ini
 
 %build
 %python_build
 
 %install
 %python_install
-%fdupes %{buildroot}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
