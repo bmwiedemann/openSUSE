@@ -33,14 +33,15 @@ do_work() {
       cmd="${cmd}" \
     awk '
       BEGIN {
-        dbg=1;
+        dbg=0;
         count=1;
         depth=0;
         pkg_name=ENVIRON["pkg_name"];
         cmd=ENVIRON["cmd"];
         
         if(dbg) printf "bEGIN \\"%s\\" cmd: %s\n", pkg_name, cmd > "/dev/stderr" ;
-        reqs[pkg_name]=""
+        requires[pkg_name]=""
+        ppx_runtime_deps[pkg_name]=""
         pkg_names[depth]=pkg_name
       }
       
@@ -73,8 +74,8 @@ do_work() {
             }
             if(dbg) printf "dir: %s %s\n", x, candidate > "/dev/stderr" ;
             if (candidate != pkg_name) {
-              reqs[candidate] = reqs[pkg_name];
-              delete reqs[pkg_name];
+              requires[candidate] = requires[pkg_name];
+              delete requires[pkg_name];
               pkg_name = candidate;
               if(dbg) printf "new pkg_name %s %s\n", x, pkg_name > "/dev/stderr" ;
               pkg_names[depth]=pkg_name
@@ -86,14 +87,76 @@ do_work() {
         next
       }
 
-      /^[[:blank:]]*requires.*[[:blank:]]*=/ {
+      /^[[:blank:]]*requires(|\([^)]+\))[[:blank:]]*(+=|=)/ {
         if(dbg) printf "GOT: %s\n", $0 > "/dev/stderr" ;
-        x = split($0, a, "\\"");
+        done=0
+        requires_line = ""
+        do {
+          need_next_line = 1
+          line = $0
+          requires_line = sprintf("%s%s", requires_line, line)
+          l = length(requires_line)
+          qm = index(requires_line, "\\"")
+          if (l > qm) {
+            line = substr(requires_line, qm + 1)
+            qm = index(line, "\\"")
+            need_next_line = qm == 0
+          }
+
+          if (need_next_line) {
+            done = getline == 0
+          } else {
+            done = 1
+          }
+        } while (done == 0)
+
+        x = split(requires_line, a, "\\"");
         if ( a[2] ) {
           if(dbg) printf "req2 %s %s\n", x, a[2] > "/dev/stderr" ;
           x = gsub("[[:blank:]]+", ",", a[2]);
           if(dbg) printf "req2 %s %s\n", x, a[2] > "/dev/stderr" ;
-          reqs[pkg_name] = a[2];
+          if (requires[pkg_name] == "") {
+            requires[pkg_name] = a[2]
+          } else {
+            requires[pkg_name] = sprintf("%s,%s", requires[pkg_name],a[2])
+          }
+        }
+        next
+      }
+
+      /^[[:blank:]]*ppx_runtime_deps[[:blank:]]*(+=|=)/ {
+        if(dbg) printf "GOT: %s\n", $0 > "/dev/stderr" ;
+        done=0
+        ppx_runtime_deps_line = ""
+        do {
+          need_next_line = 1
+          line = $0
+          ppx_runtime_deps_line = sprintf("%s%s", ppx_runtime_deps_line, line)
+          l = length(ppx_runtime_deps_line)
+          qm = index(ppx_runtime_deps_line, "\\"")
+          if (l > qm) {
+            line = substr(ppx_runtime_deps_line, qm + 1)
+            qm = index(line, "\\"")
+            need_next_line = qm == 0
+          }
+
+          if (need_next_line) {
+            done = getline == 0
+          } else {
+            done = 1
+          }
+        } while (done == 0)
+
+        x = split(ppx_runtime_deps_line, a, "\\"");
+        if ( a[2] ) {
+          if(dbg) printf "req2 %s %s\n", x, a[2] > "/dev/stderr" ;
+          x = gsub("[[:blank:]]+", ",", a[2]);
+          if(dbg) printf "req2 %s %s\n", x, a[2] > "/dev/stderr" ;
+          if (ppx_runtime_deps[pkg_name] == "") {
+            ppx_runtime_deps[pkg_name] = a[2]
+          } else {
+            requires[pkg_name] = sprintf("%s,%s", requires[pkg_name],a[2])
+          }
         }
         next
       }
@@ -106,7 +169,7 @@ do_work() {
         if ( a[2] ) {
           if(dbg) printf "req2 %s %s\n", x, a[2] > "/dev/stderr" ;
           pkg_name = pkg_name"."a[2];
-          reqs[pkg_name]=""
+          requires[pkg_name]=""
           pkg_names[depth]=pkg_name
           if(dbg) printf "new pkg_name %s %s\n", x, pkg_name > "/dev/stderr" ;
         }
@@ -124,10 +187,15 @@ do_work() {
       
       END {
         if(dbg) printf "eND \\"%s\\"\n", pkg_name > "/dev/stderr" ;
-        for (req in reqs) {
+        for (req in requires) {
           if(dbg)printf "eNd \\"%s\\"\n", req > "/dev/stderr";
           # format: provides:requires
-          printf "%s:%s\n", req, reqs[req];
+          printf "%s:%s\n", req, requires[req];
+        }
+        for (req in ppx_runtime_deps) {
+          if(dbg)printf "eNd \\"%s\\"\n", req > "/dev/stderr";
+          # format: provides:requires
+          printf "%s:%s\n", req, ppx_runtime_deps[req];
         }
         if(dbg) printf "ENd \\"%s\\"\n", pkg_name > "/dev/stderr" ;
       }
@@ -158,3 +226,4 @@ do
     *) ;;
   esac
 done
+# vim: tw=666 ts=2 shiftwidth=2 et
