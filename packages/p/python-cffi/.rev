@@ -262,4 +262,15 @@
     <comment></comment>
     <requestid>749648</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f1b8bd38db45d7e9ecca363e281d90d5</srcmd5>
+    <version>1.14.0</version>
+    <time>1582725681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0
+ * ffi.dlopen() can now be called with a handle (as a void *) to an already-opened C library.
+ * fixed a stack overflow issue for calls like lib.myfunc([large list]).
+ * fixed a memory leak inside ffi.getwinerror() on CPython 3.x.</comment>
+    <requestid>778788</requestid>
+  </revision>
 </revisionlist>
