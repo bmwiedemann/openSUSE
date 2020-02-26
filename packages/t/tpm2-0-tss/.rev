@@ -322,4 +322,22 @@ into the same staging project.</comment>
 This should be handled together with sr#769061</comment>
     <requestid>769069</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f87a6f665fc02f3979ac3bd86283873a</srcmd5>
+    <version>2.3.3</version>
+    <time>1582725725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.3
+  * Fixed mixing salted and unsalted sessions in the same ESAPI
+    context
+  * Removed use of VLAs from TPML marshal code
+  * Added check for object node before calling compute_session_value
+    function
+  * Fixed auth calculation in Esys_StartAuthSession called with
+    optional parameters
+  * Fixed compute_encrypted_salt error handling in
+    Esys_StartAuthSession
+  * Fixed exported symbols map for libtss2-mu</comment>
+    <requestid>778720</requestid>
+  </revision>
 </revisionlist>

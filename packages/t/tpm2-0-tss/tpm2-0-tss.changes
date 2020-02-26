@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 19 19:37:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.3
+  * Fixed mixing salted and unsalted sessions in the same ESAPI
+    context
+  * Removed use of VLAs from TPML marshal code
+  * Added check for object node before calling compute_session_value
+    function
+  * Fixed auth calculation in Esys_StartAuthSession called with
+    optional parameters
+  * Fixed compute_encrypted_salt error handling in
+    Esys_StartAuthSession
+  * Fixed exported symbols map for libtss2-mu
+
+-------------------------------------------------------------------
 Fri Jan 31 11:51:03 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Use system-users for tss user creation (boo#1162360).
