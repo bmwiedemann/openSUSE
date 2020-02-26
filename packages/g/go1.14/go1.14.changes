@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Tue Feb 25 21:54:49 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14 (released 2020-02-25) is a major release of Go.
+  go1.14.x minor releases will be provided through February 2021.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  Most changes are in the implementation of the toolchain, runtime,
+  and libraries. As always, the release maintains the Go 1 promise
+  of compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1164903 go1.14 release tracking
+  * See release notes https://golang.org/doc/go1.14. Excerpts
+    relevant to OBS environment and for SUSE/openSUSE follow:
+  * Module support in the go command is now ready for production
+    use, and we encourage all users to migrate to Go modules for
+    dependency management.
+  * RISC-V experimental support for 64-bit RISC-V on Linux
+    (GOOS=linux, GOARCH=riscv64). Be aware that performance,
+    assembly syntax stability, and possibly correctness are a work
+    in progress.
+  * When the main module contains a top-level vendor directory and
+    its go.mod file specifies go 1.14 or higher, the go command now
+    defaults to -mod=vendor for operations that accept that flag. A
+    new value for that flag, -mod=mod, causes the go command to
+    instead load modules from the module cache (as when no vendor
+    directory is present).
+  * When -mod=vendor is set (explicitly or by default), the go
+    command now verifies that the main module's vendor/modules.txt
+    file is consistent with its go.mod file.
+  * go list -m no longer silently omits transitive dependencies
+    that do not provide packages in the vendor directory. It now
+    fails explicitly if -mod=vendor is set and information is
+    requested for a module not mentioned in vendor/modules.txt.
+  * The go get command no longer accepts the -mod flag. Previously,
+    the flag's setting either was ignored or caused the build to
+    fail.
+  * mod=readonly is now set by default when the go.mod file is
+    read-only and no top-level vendor directory is present.
+  * modcacherw is a new flag that instructs the go command to leave
+    newly-created directories in the module cache at their default
+    permissions rather than making them read-only. The use of this
+    flag makes it more likely that tests or other tools will
+    accidentally add files not included in the module's verified
+    checksum. However, it allows the use of rm -rf (instead of go
+    clean -modcache) to remove the module cache.
+  * modfile=file is a new flag that instructs the go command to
+    read (and possibly write) an alternate go.mod file instead of
+    the one in the module root directory. A file named go.mod must
+    still be present in order to determine the module root
+    directory, but it is not accessed. When -modfile is specified,
+    an alternate go.sum file is also used: its path is derived from
+    the -modfile flag by trimming the .mod extension and appending
+    .sum.
+
+-------------------------------------------------------------------
+Thu Feb  6 04:28:14 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14rc1 (released 2020/02/05) is a release candidate version of
+  Go 1.14. It is cut from release-branch.go1.14 at the revision
+  tagged go1.14rc1. go1.14rc1 is packaged before stable release of
+  go1.14 to provide a preview of new default behavior for go
+  modules. This early access is primarily intended to test use in
+  offline OBS environment use with upstream go proxy infrastructure.
+  * packaging: drop patch gcc9-rsp-clobber.patch now merged in go1.14
+  * packaging: update version of LLVM compiler-rt
+  * packaging: update _service definitions
+  * packaging: update %doc entries rm devel/ add modules.md
+  * doc: rename HTML element IDs to avoid duplicates
+  * net: don't check LookupHost error in TestLookupNullByte
+  * runtime: don't treat SIGURG as a bad signal
+  * internal/bytealg: fix riscv64 offset names
+  * doc: remove paragraph break for upgrading to modules
+  * syscall: Revert "release a js.Func object in fsCall"
+  * doc/go1.14: note that all changes to the standard library are minor
+  * doc/go1.14: fix broken links
+  * doc/go1.14: remove TODO about Solaris port
