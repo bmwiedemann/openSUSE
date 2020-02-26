@@ -412,4 +412,21 @@
     <comment></comment>
     <requestid>770212</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>854f929e5f3ab2d0e8bc6b23fb540ea4</srcmd5>
+    <version>0.4.22</version>
+    <time>1582725729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.22: 
+  + Build:
+    - Updates to python gobject introspection tests, and made them
+      able to look up babl typelib.
+    - Build pdf:load again; missing since meson migration.
+    - Fix OpenCL include file generation to work in non-utf8
+      locales.
+  + Operations: matting-{global,levin}: fix crash when bounding
+    boxes of input and aux differ.
+</comment>
+    <requestid>778722</requestid>
+  </revision>
 </revisionlist>

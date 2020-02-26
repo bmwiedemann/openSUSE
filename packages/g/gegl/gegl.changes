@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 24 09:39:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.4.22: 
+  + Build:
+    - Updates to python gobject introspection tests, and made them
+      able to look up babl typelib.
+    - Build pdf:load again; missing since meson migration.
+    - Fix OpenCL include file generation to work in non-utf8
+      locales.
+  + Operations: matting-{global,levin}: fix crash when bounding
+    boxes of input and aux differ.
+
+-------------------------------------------------------------------
 Tue Feb  4 20:53:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.20:
