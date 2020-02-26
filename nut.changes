@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 20:40:40 CET 2020 - sbrabec@suse.com
+
+- Remove obsolete chown from %post. We no more support upgrade from
+  SUSE Linux 9 (bsc#1157325).
+
+-------------------------------------------------------------------
 Wed Jul 24 14:16:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build on TW:
