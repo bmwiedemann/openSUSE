@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-pk-updates
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Patch8:         0006-Remove-explicit-initialization-of-default-constructe.patch
 Patch9:         0007-Port-away-from-KDELibs4Support-use-Solid-Power-inter.patch
 # PATCH-FEATURE-UPSTREAM
 Patch10:        0001-Add-support-for-license-prompts.patch
+Patch11:        0001-Don-t-show-an-error-for-a-failed-automatic-refresh.patch
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= 1.3.0

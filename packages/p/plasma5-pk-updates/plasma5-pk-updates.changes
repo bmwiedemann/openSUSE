@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 07:55:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid error messages for a locked db (boo#1161501):
+  * 0001-Don-t-show-an-error-for-a-failed-automatic-refresh.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 15:21:59 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update german translations to remove a superfluous fullstop
