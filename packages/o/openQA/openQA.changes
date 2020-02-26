@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:03:38 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1582671252.ca350bd34:
+  * Revert "Merge pull request #2750 from Martchus/fix-scheduler-ws-race-condition"
+  * Dereference symlink when displaying needle info
+  * Declare YAML::XS properly as a runtime dependency for JSON::Validator
+  * Log job duplication only at one place
+  * Use prefix 'abandoned: ' for reason in stale job detection
+  * Use consistent data structures in worker logs
+  * Improve test coverage of the worker command handler
+  * Format test of the worker's web UI connection in a more compact way
+  * Stop the worker as usual when handling 'incompatible' command
+  * Revert condition for job-specific web socket messages
+  * Add test for handling the quit message from the worker
+  * Prevent race condition when assigning and sending jobs to a worker
+
+-------------------------------------------------------------------
 Mon Feb 24 03:03:49 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1582356603.73b75d1a4:
