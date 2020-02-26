@@ -18,12 +18,16 @@
 #
 
 
-%define _lto_cflags %{nil}
 %define ocaml_base_version 4.05
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
-%global __ocaml_requires_opts -c -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
-%global __ocaml_provides_opts -f "%{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte"
+%global __ocaml_requires_opts \
+	-c \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	%{nil}
+%global __ocaml_provides_opts \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	%{nil}
 %bcond_with ocaml_make_testsuite
 
 Name:           ocaml
@@ -35,10 +39,15 @@ Group:          Development/Languages/OCaml
 Url:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
 Source2:        rpmlintrc
+Patch0:         ocaml-MPR-7591-frametable-not-8-aligned-on-x86-64-port.patch
 Patch1:         ocamldoc-man-th.patch
+Patch2:         ocaml-Fixes-for-out-of-range-Ialloc.patch
+Patch3:         ocaml-In-caml_executable_name-wrong-test-on-the-return-cod.patch
 # FIX-UPSTREAM pass RPM_OPT_FLAGS to build
 Patch4:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 Patch5:         ocaml-3.08.3-gcc4.patch
+Patch6:         ocaml-byterun-do-not-alias-function-arguments-to-sigprocma.patch
+Patch7:         ocaml-assert.patch
 Patch8:         ocaml-4.05.0-CVE-2018-9838.patch
 # FIX-UPSTREAM backport 'AArch64 GOT fixed' - https://github.com/ocaml/ocaml/pull/1330
 Patch9:         ocaml-fix_aarch64_build.patch
@@ -47,14 +56,14 @@ BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
 Obsoletes:      ocaml-docs
 Provides:       ocaml(compiler) = %{ocaml_base_version}
 Provides:       ocaml(ocaml_base_version) = %{ocaml_base_version}
 %if %{ocaml_native_compiler}
-Requires:       gcc
+Requires:       %(type -p gcc | xargs readlink -f)
 Provides:       ocaml(ocaml.opt) = %{ocaml_base_version}
 %endif
 
@@ -151,9 +160,12 @@ make_target='world.opt'
 %else
 make_target='world'
 %endif
+env \
+CFLAGS='-Werror=implicit-function-declaration -Werror=return-type' \
 ./configure -bindir %{_bindir} \
-            -libdir %{_libdir}/ocaml \
+            -libdir %{ocaml_standard_library} \
             -no-cplugins \
+            -cc "$(type -p gcc | xargs readlink -f)" \
             -mandir %{_mandir}
 
 make_target+=" -j1"
@@ -417,7 +429,7 @@ do
 	files='files.ocaml.META'
 	;;
 	esac
-	d=%{_libdir}/ocaml/${ocamlfind}
+	d=%{ocaml_standard_library}/${ocamlfind}
 	f=${d}/META
 	mkdir -vp %{buildroot}${d}
 	mv "${META}" %{buildroot}${f}
@@ -432,95 +444,95 @@ done
 %license LICENSE
 %{_bindir}/*
 %{_mandir}/*/*
-%{_libdir}/ocaml/*.a
+%{ocaml_standard_library}/*.a
 %if %{ocaml_native_compiler}
-%{_libdir}/ocaml/*.cmxs
-%{_libdir}/ocaml/*.cmxa
-%{_libdir}/ocaml/*.cmx
-%{_libdir}/ocaml/*.o
+%{ocaml_standard_library}/*.cmxs
+%{ocaml_standard_library}/*.cmxa
+%{ocaml_standard_library}/*.cmx
+%{ocaml_standard_library}/*.o
 %endif
-%{_libdir}/ocaml/*.mli
-%{_libdir}/ocaml/libcamlrun_shared.so
+%{ocaml_standard_library}/*.mli
+%{ocaml_standard_library}/libcamlrun_shared.so
 %if %{ocaml_native_compiler}
-%{_libdir}/ocaml/libasmrun_shared.so
+%{ocaml_standard_library}/libasmrun_shared.so
 %endif
-%{_libdir}/ocaml/vmthreads/*.mli
-%{_libdir}/ocaml/vmthreads/*.a
+%{ocaml_standard_library}/vmthreads/*.mli
+%{ocaml_standard_library}/vmthreads/*.a
 %if %{ocaml_native_compiler}
-%{_libdir}/ocaml/threads/*.a
-%{_libdir}/ocaml/threads/*.cmxa
-%{_libdir}/ocaml/threads/*.cmx
+%{ocaml_standard_library}/threads/*.a
+%{ocaml_standard_library}/threads/*.cmxa
+%{ocaml_standard_library}/threads/*.cmx
 %endif
-%{_libdir}/ocaml/caml
-%{_libdir}/ocaml/Makefile.config
-%{_libdir}/ocaml/VERSION
-%{_libdir}/ocaml/extract_crc
-%{_libdir}/ocaml/camlheader
-%{_libdir}/ocaml/camlheader_ur
-%{_libdir}/ocaml/expunge
-%{_libdir}/ocaml/ld.conf
-%{_libdir}/ocaml/objinfo_helper
-%exclude %{_libdir}/ocaml/graphicsX11.mli
+%{ocaml_standard_library}/caml
+%{ocaml_standard_library}/Makefile.config
+%{ocaml_standard_library}/VERSION
+%{ocaml_standard_library}/extract_crc
+%{ocaml_standard_library}/camlheader
+%{ocaml_standard_library}/camlheader_ur
+%{ocaml_standard_library}/expunge
+%{ocaml_standard_library}/ld.conf
+%{ocaml_standard_library}/objinfo_helper
+%exclude %{ocaml_standard_library}/graphicsX11.mli
 %exclude %{_bindir}/ocamlrun
 %exclude %{_bindir}/ocamldoc*
-%exclude %{_libdir}/ocaml/ocamldoc
+%exclude %{ocaml_standard_library}/ocamldoc
 
 %files runtime
 %{_bindir}/ocamlrun
-%dir %{_libdir}/ocaml
-%{_libdir}/ocaml/*.cmo
-%{_libdir}/ocaml/*.cmi
-%{_libdir}/ocaml/*.cmt
-%{_libdir}/ocaml/*.cmti
-%{_libdir}/ocaml/*.cma
-%{_libdir}/ocaml/stublibs
-%dir %{_libdir}/ocaml/vmthreads
-%{_libdir}/ocaml/vmthreads/*.cmi
-%{_libdir}/ocaml/vmthreads/*.cma
-%{_libdir}/ocaml/vmthreads/*.cmti
-%dir %{_libdir}/ocaml/threads
-%{_libdir}/ocaml/threads/*.cmi
-%{_libdir}/ocaml/threads/*.cma
-%{_libdir}/ocaml/threads/*.cmti
-%exclude %{_libdir}/ocaml/graphicsX11.cmi
-%exclude %{_libdir}/ocaml/topdirs.cmi
-%exclude %{_libdir}/ocaml/topdirs.cmt
-%exclude %{_libdir}/ocaml/topdirs.cmti
+%dir %{ocaml_standard_library}
+%{ocaml_standard_library}/*.cmo
+%{ocaml_standard_library}/*.cmi
+%{ocaml_standard_library}/*.cmt
+%{ocaml_standard_library}/*.cmti
+%{ocaml_standard_library}/*.cma
+%{ocaml_standard_library}/stublibs
+%dir %{ocaml_standard_library}/vmthreads
+%{ocaml_standard_library}/vmthreads/*.cmi
+%{ocaml_standard_library}/vmthreads/*.cma
+%{ocaml_standard_library}/vmthreads/*.cmti
+%dir %{ocaml_standard_library}/threads
+%{ocaml_standard_library}/threads/*.cmi
+%{ocaml_standard_library}/threads/*.cma
+%{ocaml_standard_library}/threads/*.cmti
+%exclude %{ocaml_standard_library}/graphicsX11.cmi
+%exclude %{ocaml_standard_library}/topdirs.cmi
+%exclude %{ocaml_standard_library}/topdirs.cmt
+%exclude %{ocaml_standard_library}/topdirs.cmti
 %doc Changes
 %license LICENSE
 
 %files x11
-%{_libdir}/ocaml/graphicsX11.cmi
-%{_libdir}/ocaml/graphicsX11.mli
+%{ocaml_standard_library}/graphicsX11.cmi
+%{ocaml_standard_library}/graphicsX11.mli
 
 %files source
-%{_libdir}/ocaml/*.ml
+%{ocaml_standard_library}/*.ml
 
 %files ocamldoc -f files.ocamldoc.META
 %{_bindir}/ocamldoc*
-%{_libdir}/ocaml/ocamldoc
+%{ocaml_standard_library}/ocamldoc
 %doc ocamldoc/Changes.txt
 
 %files compiler-libs
-%dir %{_libdir}/ocaml
-%{_libdir}/ocaml/topdirs.cmi
-%{_libdir}/ocaml/topdirs.cmt
-%{_libdir}/ocaml/topdirs.cmti
-%{_libdir}/ocaml/compiler-libs/*.cma
-%{_libdir}/ocaml/compiler-libs/*.cmi
-%{_libdir}/ocaml/compiler-libs/*.cmo
-%{_libdir}/ocaml/compiler-libs/*.cmt
-%{_libdir}/ocaml/compiler-libs/*.cmti
+%dir %{ocaml_standard_library}
+%{ocaml_standard_library}/topdirs.cmi
+%{ocaml_standard_library}/topdirs.cmt
+%{ocaml_standard_library}/topdirs.cmti
+%{ocaml_standard_library}/compiler-libs/*.cma
+%{ocaml_standard_library}/compiler-libs/*.cmi
+%{ocaml_standard_library}/compiler-libs/*.cmo
+%{ocaml_standard_library}/compiler-libs/*.cmt
+%{ocaml_standard_library}/compiler-libs/*.cmti
 
 %files compiler-libs-devel -f files.compiler-libs.META
-%dir %{_libdir}/ocaml/compiler-libs
+%dir %{ocaml_standard_library}/compiler-libs
 %if %{ocaml_native_compiler}
-%{_libdir}/ocaml/compiler-libs/*.a
-%{_libdir}/ocaml/compiler-libs/*.o
-%{_libdir}/ocaml/compiler-libs/*.cmx
-%{_libdir}/ocaml/compiler-libs/*.cmxa
+%{ocaml_standard_library}/compiler-libs/*.a
+%{ocaml_standard_library}/compiler-libs/*.o
+%{ocaml_standard_library}/compiler-libs/*.cmx
+%{ocaml_standard_library}/compiler-libs/*.cmxa
 %endif
-%{_libdir}/ocaml/compiler-libs/*.mli
+%{ocaml_standard_library}/compiler-libs/*.mli
 
 %if %{with ocaml_make_testsuite}
 %check
