@@ -495,4 +495,41 @@
     <comment>- added radamsa mutator (forwarded request 772507 from msmeissn)</comment>
     <requestid>772508</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>63e3900a53a741e64b0c699a730d5ac1</srcmd5>
+    <version>2.61c</version>
+    <time>1582725849</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.61c
+  - use -march=native if available                                                                                                                                                           
+  - most tools now check for mistyped environment variables                                                                                                                                  
+  - gcc 10 is now supported                                                                                                                                                                  
+  - the memory safety checks are now disabled for a little more speed during                                                                                                                 
+    fuzzing (only affects creating queue entries), can be toggled in config.h                                                                                                                
+  - afl-fuzz:                                                                                                                                                                                
+     - MOpt out of bounds writing crash fixed                                                                                                                                                
+     - now prints the real python version support compiled in                                                                                                                                
+     - set stronger performance compile options and little tweaks                                                                                                                            
+     - Android: prefer bigcores when selecting a CPU                                                                                                                                         
+     - CmpLog forkserver                                                                                                                                                                     
+     - Redqueen input-2-state mutator (cmp instructions only ATM)                                                                                                                            
+     - all Python 2+3 versions supported now                                                                                                                                                 
+     - changed execs_per_sec in fuzzer_stats from &quot;current&quot; execs per second                                                                                                                 
+       (which is pointless) to total execs per second                                                                                                                                        
+     - bugfix for dictionary insert stage count (fix via Google repo PR)                                                                                                                     
+     - added warning if -M is used together with custom mutators with _ONLY option                                                                                                           
+     - AFL_TMPDIR checks are now later and better explained if they fail                                                                                                                     
+  - llvm_mode                                                                                                                                                                                
+     - InsTrim: three bug fixes:                                                                                                                                                             
+        1. (minor) no pointless instrumentation of 1 block functions                                                                                                                         
+        2. (medium) path bug that leads a few blocks not instrumented that                                                                                                                   
+           should be                                                                                                                                                                         
+        3. (major) incorrect prev_loc was written, fixed!                                                                                                                                    
+  - afl-clang-fast:                                                                                                                                                                          
+     - show in the help output for which llvm version it was compiled for                                                                                                                    
+     - now does not need to be recompiled between trace-pc and pass                                                                                                                          
+       instrumentation. compile normally and set AFL_LLVM_USE_TRACE_PC :)                                                                                                                    
+     - LLVM 11 is supported (forwarded request 779147 from msmeissn)</comment>
+    <requestid>779153</requestid>
+  </revision>
 </revisionlist>

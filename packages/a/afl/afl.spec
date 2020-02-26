@@ -17,7 +17,7 @@
 
 
 Name:           afl
-Version:        2.60c
+Version:        2.61c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
@@ -62,8 +62,8 @@ export AFL_NO_X86=1
 make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} MAN_PATH=%{_mandir}/man8 DESTDIR=%{buildroot} install
 
 %files
-%license docs/COPYING 
-%doc docs/ChangeLog docs/README.* docs/*.txt
+%license docs/COPYING LICENSE
+%doc /usr/share/doc/packages/%name/
 %{_bindir}/%{name}-*
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as

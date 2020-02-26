@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Feb 25 12:04:22 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.61c
+  - use -march=native if available                                                                                                                                                           
+  - most tools now check for mistyped environment variables                                                                                                                                  
+  - gcc 10 is now supported                                                                                                                                                                  
+  - the memory safety checks are now disabled for a little more speed during                                                                                                                 
+    fuzzing (only affects creating queue entries), can be toggled in config.h                                                                                                                
+  - afl-fuzz:                                                                                                                                                                                
+     - MOpt out of bounds writing crash fixed                                                                                                                                                
+     - now prints the real python version support compiled in                                                                                                                                
+     - set stronger performance compile options and little tweaks                                                                                                                            
+     - Android: prefer bigcores when selecting a CPU                                                                                                                                         
+     - CmpLog forkserver                                                                                                                                                                     
+     - Redqueen input-2-state mutator (cmp instructions only ATM)                                                                                                                            
+     - all Python 2+3 versions supported now                                                                                                                                                 
+     - changed execs_per_sec in fuzzer_stats from "current" execs per second                                                                                                                 
+       (which is pointless) to total execs per second                                                                                                                                        
+     - bugfix for dictionary insert stage count (fix via Google repo PR)                                                                                                                     
+     - added warning if -M is used together with custom mutators with _ONLY option                                                                                                           
+     - AFL_TMPDIR checks are now later and better explained if they fail                                                                                                                     
+  - llvm_mode                                                                                                                                                                                
+     - InsTrim: three bug fixes:                                                                                                                                                             
+        1. (minor) no pointless instrumentation of 1 block functions                                                                                                                         
+        2. (medium) path bug that leads a few blocks not instrumented that                                                                                                                   
+           should be                                                                                                                                                                         
+        3. (major) incorrect prev_loc was written, fixed!                                                                                                                                    
+  - afl-clang-fast:                                                                                                                                                                          
+     - show in the help output for which llvm version it was compiled for                                                                                                                    
+     - now does not need to be recompiled between trace-pc and pass                                                                                                                          
+       instrumentation. compile normally and set AFL_LLVM_USE_TRACE_PC :)                                                                                                                    
+     - LLVM 11 is supported                                                                                                                                                                  
+     - CmpLog instrumentation using SanCov (see llvm_mode/README.cmplog)                                                                                                                     
+  - afl-gcc, afl-clang-fast, afl-gcc-fast:                                                                                                                                                   
+     - experimental support for undefined behaviour sanitizer UBSAN                                                                                                                          
+       (set AFL_USE_UBSAN=1)                                                                                                                                                                 
+     - the instrumentation summary output now also lists activated sanitizers                                                                                                                
+     - afl-as: added isatty(2) check back in                                                                                                                                                 
+     - added AFL_DEBUG (for upcoming merge)                                                                                                                                                  
+  - qemu_mode:                                                                                                                                                                               
+     - persistent mode is now also available for arm and aarch64                                                                                                                             
+     - CmpLog instrumentation for QEMU (-c afl-fuzz command line option)                                                                                                                     
+       for x86, x86_64, arm and aarch64                                                                                                                                                      
+     - AFL_PERSISTENT_HOOK callback module for persistent QEMU                                                                                                                               
+       (see examples/qemu_persistent_hook)                                                                                                                                                   
+     - added qemu_mode/README.persistent.md documentation                                                                                                                                    
+     - AFL_ENTRYPOINT noew has instruction granularity                                                                                                                                       
+  - afl-cmin is now a sh script (invoking awk) instead of bash for portability                                                                                                               
+    the original script is still present as afl-cmin.bash                                                                                                                                    
+  - afl-showmap: -i dir option now allows processing multiple inputs using the                                                                                                               
+     forkserver. This is for enhanced speed in afl-cmin.                                                                                                                                     
+  - added blacklist and whitelisting function check in all modules of llvm_mode                                                                                                              
+  - added fix from Debian project to compile libdislocator and libtokencap                                                                                                                   
+  - libdislocator: AFL_ALIGNED_ALLOC to force size alignment to max_align_t                                                                                                                  
+
+-------------------------------------------------------------------
 Sun Feb  9 16:12:14 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - added radamsa mutator
