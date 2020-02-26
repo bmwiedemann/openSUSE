@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-thunderbolt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define qt5_version 5.10.0
 %bcond_without lang
 Name:           plasma5-thunderbolt
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later
