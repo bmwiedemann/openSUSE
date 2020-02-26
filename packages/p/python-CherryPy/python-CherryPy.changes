@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:40:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Export travis variable to skip more tests that can randomly
+  fail
+
+-------------------------------------------------------------------
 Mon Jan 13 15:00:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 18.5.0

@@ -210,4 +210,13 @@
     <comment></comment>
     <requestid>764061</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>47fb45399c5f7dedd741ce8a3dbd370e</srcmd5>
+    <version>18.5.0</version>
+    <time>1582725735</time>
+    <user>dimstar_suse</user>
+    <comment>- Export travis variable to skip more tests that can randomly
+  fail</comment>
+    <requestid>778740</requestid>
+  </revision>
 </revisionlist>
