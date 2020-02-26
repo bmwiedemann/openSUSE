@@ -25,11 +25,9 @@ License:        LGPL-2.0
 Group:          Development/Languages/OCaml
 Url:            https://github.com/ocaml/ocamlbuild
 Source:         %{name}-%{version}.tar.xz
-Conflicts:      ocaml < 4.03.0
-BuildRequires:  ocaml >= 4.03.0
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
-BuildRequires:  ocaml-runtime
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml
+BuildRequires:  ocaml-rpm-macros >= 20200220
+Requires:       %{name}-devel = %{version}
 
 %description
 OCamlbuild is a generic build tool, that has built-in rules for
@@ -74,30 +72,13 @@ sh %{name}.sh %{?_smp_mflags}
 sh %{name}.sh \
 install \
 DESTDIR=%{buildroot} %{?_smp_mflags}
-find %{buildroot} -ls
+%ocaml_create_file_list
 
-%files
+%files -f %{name}.files
 %doc Changes
-%license LICENSE
 %{_bindir}/*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.cmo
 %{_mandir}/man*/*
 
-%files devel
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*.o
-%endif
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog
