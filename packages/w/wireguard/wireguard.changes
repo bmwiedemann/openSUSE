@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 12:28:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20200215
+  * send: cleanup skb padding calculation
+  * socket: remove useless synchronize_net
+
+-------------------------------------------------------------------
 Fri Feb 14 16:08:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20200214
