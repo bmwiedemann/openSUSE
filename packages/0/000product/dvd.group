@@ -958,6 +958,7 @@
     <package name="iagno" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iagno-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ibus" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="ibus-dict-emoji" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-gtk" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1789,7 +1790,7 @@
     <package name="libbd_part2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_swap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_utils2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libbind9-1302" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libbind9-1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblas3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblkid-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1927,7 +1928,7 @@
     <package name="libdmapsharing-3_0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdns1311" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdns1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdolphinvcs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdotconf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2251,10 +2252,10 @@
     <package name="libiptcdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libirs1301" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisc1310" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccc1302" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccfg1302" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libirs1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisccc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisccfg1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libisl22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiso9660-11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2858,7 +2859,7 @@
     <package name="libutf8proc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libuuid-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libuv1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libuv1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

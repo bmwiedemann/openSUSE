@@ -4646,6 +4646,9 @@ unsorted:
   - go1.13 
   - go1.13-doc 
   - go1.13-race: [x86_64] 
+  - go1.14 
+  - go1.14-doc 
+  - go1.14-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -5910,6 +5913,8 @@ unsorted:
   - jboss-websocket-1.0-api 
   - jboss-websocket-1.0-api-javadoc 
   - jc 
+  - jchardet 
+  - jchardet-javadoc 
   - jcifs 
   - jcifs-demo 
   - jcifs-javadoc 
@@ -7041,6 +7046,7 @@ unsorted:
   - leveldb 
   - leveldb-devel 
   - leveldb-devel-static 
+  - lha 
   - lhasa-devel 
   - lib3270-5_2 
   - lib3270-devel 
@@ -7966,7 +7972,7 @@ unsorted:
   - libbfio-devel 
   - libbfio1 
   - libbiblesync2_0 
-  - libbind9-1302-32bit: [x86_64] 
+  - libbind9-1600-32bit: [x86_64] 
   - libbitcoinconsensus-devel 
   - libbitcoinconsensus0 
   - libbitmask-devel 
@@ -8586,7 +8592,7 @@ unsorted:
   - libdnf-devel 
   - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1311-32bit: [x86_64] 
+  - libdns1600-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
@@ -9632,10 +9638,10 @@ unsorted:
   - libirman0 
   - libirrecord0 
   - libirs-devel 
-  - libirs1301-32bit: [x86_64] 
-  - libisc1310-32bit: [x86_64] 
-  - libisccc1302-32bit: [x86_64] 
-  - libisccfg1302-32bit: [x86_64] 
+  - libirs1600-32bit: [x86_64] 
+  - libisc1600-32bit: [x86_64] 
+  - libisccc1600-32bit: [x86_64] 
+  - libisccfg1600-32bit: [x86_64] 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
@@ -11348,7 +11354,7 @@ unsorted:
   - libretro-dosbox 
   - libretro-easyrpg 
   - libretro-fceumm 
-  - libretro-ffmpeg: [x86_64] 
+  - libretro-ffmpeg 
   - libretro-flycast 
   - libretro-freechaf 
   - libretro-freeintv 
@@ -12045,6 +12051,7 @@ unsorted:
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
   - libuv-devel 
+  - libuv1-32bit: [x86_64] 
   - libuwac0-0 
   - libv3270-5_2 
   - libv3270-devel 
@@ -18148,7 +18155,6 @@ unsorted:
   - python2-aci-integration-module 
   - python2-acitoolkit 
   - python2-acme 
-  - python2-actdiag 
   - python2-adal 
   - python2-adapt-parser 
   - python2-addict 
@@ -19901,7 +19907,6 @@ unsorted:
   - python2-sphinx-version-warning 
   - python2-sphinx_rtd_theme 
   - python2-sphinxbase 
-  - python2-sphinxcontrib-actdiag 
   - python2-sphinxcontrib-apidoc 
   - python2-sphinxcontrib-asyncio 
   - python2-sphinxcontrib-autoprogram 
@@ -21089,8 +21094,6 @@ unsorted:
   - python3-dpcontracts 
   - python3-dpkt 
   - python3-dragonmapper 
-  - python3-drf-jwt-knox 
-  - python3-drf-nested-routers 
   - python3-drms 
   - python3-dropbox 
   - python3-dtaidistance 
@@ -24435,6 +24438,7 @@ unsorted:
   - servletapi4-javadoc 
   - servletapi5 
   - sesdev 
+  - sesdev-qa 
   - setconf 
   - setools-console 
   - setools-gui 
