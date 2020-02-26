@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Form
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTML-Form
-Version:        6.05
+Version:        6.07
 Release:        0
 %define cpan_name HTML-Form
 Summary:        Class that represents an HTML form element
@@ -45,12 +45,12 @@ Requires:       perl(URI) >= 1.10
 Objects of the 'HTML::Form' class represents a single HTML '<form> ...
 </form>' instance. A form consists of a sequence of inputs that usually
 have names, and which can take on various values. The state of a form can
-be tweaked and it can then be asked to provide 'HTTP::Request' objects that
-can be passed to the request() method of 'LWP::UserAgent'.
+be tweaked and it can then be asked to provide HTTP::Request objects that
+can be passed to the request() method of LWP::UserAgent.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

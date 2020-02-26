@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:08:16 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 6.07
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+
+  6.07      2020-02-21 03:50:52Z
+      - Restore =head1 NAME section to pod for HTML::Form
+
+-------------------------------------------------------------------
+Fri Feb 21 03:09:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+
+  6.06      2020-02-20 14:48:37Z
+      - Change the behaviour of find_input in list context (GH#21) (E. Choroba)
+      - Pod tweaks (GH#17) (Olaf Alders)
+      - Add list context examples for find_input() (GH#20) (Olaf Alders)
+      - Modernize some tests (GH#18) (Olaf Alders)
+
+-------------------------------------------------------------------
 Mon Oct  7 10:33:52 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.05
