@@ -1,0 +1,25 @@
+--- cogl-1.22.4+8.orig/configure.ac	2020-02-24 14:18:52.687126415 +0000
++++ cogl-1.22.4+8/configure.ac	2020-02-24 14:30:10.484314856 +0000
+@@ -1216,6 +1216,12 @@
+               [],
+               [AC_MSG_ERROR([Unable to locate required EGL headers])],
+               [#include <EGL/egl.h>])
++            AC_CHECK_HEADERS(
++              [EGL/eglmesaext.h],
++              [],
++              [AC_MSG_ERROR([Unable to locate required EGL headers])],
++              [#include <EGL/egl.h>
++#include <EGL/eglext.h>])
+ 
+             AC_CHECK_LIB(EGL, [eglInitialize],
+               [COGL_EXTRA_LDFLAGS="$COGL_EXTRA_LDFLAGS -lEGL"],
+@@ -1226,7 +1232,8 @@
+           )
+ 
+         COGL_EGL_INCLUDES="#include <EGL/egl.h>
+-#include <EGL/eglext.h>"
++#include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>"
+         AC_SUBST([COGL_EGL_INCLUDES])
+       ])
+ 

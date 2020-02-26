@@ -1,7 +1,7 @@
 #
 # spec file for package cogl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            http://clutter-project.org/
 #Source0:       http://download.gnome.org/sources/cogl/1.22/%%{name}-%%{version}.tar.xz
 Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM cogl-fix-mesa20.patch sndirsch@suse.de -- Fix build against Mesa 20
+Patch0:         cogl-fix-mesa20.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc >= 1.13

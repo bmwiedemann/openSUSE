@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 14:35:32 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Add cogl-fix-mesa20.patch: fixes build against Mesa 20
+  (boo#1164688, glgo#GNOME/cogl!17).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:06:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
