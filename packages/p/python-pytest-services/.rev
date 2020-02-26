@@ -21,4 +21,12 @@
   * #20: Added workaround for issue with SysLogHandler.</comment>
     <requestid>748853</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>97983f95d3a7dec9c9ab30716396a03f</srcmd5>
+    <version>2.0.1</version>
+    <time>1582725733</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in mysql for tests we actually skip anyway</comment>
+    <requestid>778734</requestid>
+  </revision>
 </revisionlist>
