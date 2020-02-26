@@ -335,4 +335,12 @@
   * The 429 TooManyRequests and 503 ServiceUnavailable HTTP exceptions takes a retry_after parameter to set the Retry-After header. #1657</comment>
     <requestid>777800</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d166fe727392f50f4aaef98d7da5ff2f</srcmd5>
+    <version>0.16.0</version>
+    <time>1582725684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779352</requestid>
+  </revision>
 </revisionlist>
