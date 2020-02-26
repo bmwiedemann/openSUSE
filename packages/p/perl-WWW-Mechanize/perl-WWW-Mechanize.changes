@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 22 03:12:26 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.96
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  1.96      2020-02-21 02:23:40Z [FIXED]
+      - HTML::Form::find_input() has a 1-based index (GH#293) (Olaf Alders)
+      - Fix invocation of dump_forms in mech-dump (GH#288) (積丹尼 Dan Jacobson)
+      - make xt/author/eol.t pass (GH#291) (Shoichi Kaji)
+      [DOCUMENTATION]
+      - Fix documentation of use of undef in form_with() and all_forms_with()
+        (GH#289) (積丹尼 Dan Jacobson)
+
+-------------------------------------------------------------------
 Tue Oct 29 09:45:37 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.95
