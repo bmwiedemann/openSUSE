@@ -5,7 +5,7 @@ Tue Feb 25 13:24:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
   http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.30_(markt)
 - Fixed CVEs:
   * CVE-2019-17569 (bsc#1164825)
-  * CVE-2020-1935
+  * CVE-2020-1935 (bsc#1164860)
   * CVE-2020-1938 (bsc#1164692)
 - Modified patch
   * tomcat-9.0.30-java8compat.patch

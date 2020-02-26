@@ -48,7 +48,7 @@ Release:        0
 Summary:        Apache Servlet/JSP/EL Engine, RI for Servlet 4.0/JSP 2.3/EL 3.0 API
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-URL:            http://tomcat.apache.org
+URL:            https://tomcat.apache.org
 Source0:        https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz
 Source1:        %{name}-%{major_version}.%{minor_version}.conf
 Source2:        %{name}-%{major_version}.%{minor_version}.init
@@ -81,7 +81,6 @@ Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
 Patch4:         tomcat-9.0-osgi-build.patch
 # PATCH-FIX-OPENSUSE: cast ByteBuffer to Buffer in cases where there is a risk of using Java 9+ apis
 Patch5:         tomcat-9.0.31-java8compat.patch
-
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
 BuildRequires:  apache-commons-collections
@@ -102,6 +101,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  log4j12
+BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
