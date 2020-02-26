@@ -40,6 +40,7 @@ Recommends:     distribution-logos-openSUSE-Tumbleweed
 Suggests:       java-11-openjdk
 Suggests:       mariadb
 Suggests:       mariadb-client
+Suggests:       openssl-1_1
 Conflicts:      core-release <= 10
 Conflicts:      distribution-release
 Conflicts:      sled-release <= 10
