@@ -215,4 +215,16 @@
     <comment>certbot version bump</comment>
     <requestid>766006</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>272ddd747644631335f578861f609205</srcmd5>
+    <version>1.2.0</version>
+    <time>1582725749</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  * Add directory field to error message when field is missing.
+  * If MD5 hasher is not available, try it in non-security mode (fix for FIPS systems)
+  * Support for Python 3.4 has been removed.
+  * Fix collections.abc imports for Python 3.9.</comment>
+    <requestid>778031</requestid>
+  </revision>
 </revisionlist>
