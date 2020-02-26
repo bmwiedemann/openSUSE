@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:39:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.3
+  * allow more granular values in spinboxes
+  * Show if demodulation is in progress
+  * add environment variables to set API version explicitly
+  * centralize setting operations + rename constants.py->settings.py
+
+-------------------------------------------------------------------
 Mon Jan  6 22:09:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.2
