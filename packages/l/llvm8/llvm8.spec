@@ -1,7 +1,7 @@
 #
 # spec file for package llvm8
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,8 @@ Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch26:        clang-fix-powerpc-triplet.patch
 Patch27:        run-test-single-threaded.patch
 Patch28:        llvm-add-missing-include.patch
+# PATCH-FIX-UPSTREAM compiler-rt-sanitizer-ipc-perm.patch -- Fix sanitizer-common build with glibc 2.31
+Patch29:        compiler-rt-sanitizer-ipc-perm.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -528,6 +530,10 @@ pushd cfe-%{_relver}.src
 %patch8 -p1
 %patch16 -p2
 %patch26 -p1
+popd
+
+pushd compiler-rt-%{version}.src
+%patch29 -p2
 popd
 
 %if %{with lldb}
