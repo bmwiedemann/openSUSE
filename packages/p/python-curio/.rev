@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>707060</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d56501b4cd8c70d557bda5d91dc5024</srcmd5>
+    <version>1.0</version>
+    <time>1582725822</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0
+- minimal python version bump to 3.7
+- please see CHANGES file for detailed changelog
+- add gh_313.patch to fix epool problem
+</comment>
+    <requestid>779020</requestid>
+  </revision>
 </revisionlist>

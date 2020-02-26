@@ -1,0 +1,130 @@
+From 3cb182c94fe04dc4afd13c3b36a100c94343fb65 Mon Sep 17 00:00:00 2001
+From: David Beazley <dave@dabeaz.com>
+Date: Mon, 24 Feb 2020 22:29:42 +0000
+Subject: [PATCH] Fixed subtle epoll() edge case on Linux. Related to bug #313
+
+---
+ CHANGES              |  9 +++++++++
+ curio/io.py          |  4 +++-
+ curio/kernel.py      | 10 ++++++++++
+ curio/traps.py       |  8 +++++++-
+ docs/reference.rst   |  3 +++
+ tests/test_socket.py |  2 +-
+ 6 files changed, 33 insertions(+), 3 deletions(-)
+
+Index: curio-1.0/CHANGES
+===================================================================
+--- curio-1.0.orig/CHANGES
++++ curio-1.0/CHANGES
+@@ -1,5 +1,14 @@
+ CHANGES
+ -------
++Version 1.1 - In Progress
++
++02/24/2020 Fixed a very subtle edge case involving epoll() and duplicated
++           file descriptors on Linux. The fix required a new trap
++           _io_release() to explitly unregister a file descriptor
++           before closing. This must be embedded in any close()
++           implementation prior to actually calling close() on a real
++           file object.  No changes should be necessary in existing
++           user-level Curio code.  Bug #313 reported by Ondřej Súkup.
+ 
+ Version 1.0 - February 20, 2020
+ -------------------------------
+Index: curio-1.0/curio/io.py
+===================================================================
+--- curio-1.0.orig/curio/io.py
++++ curio-1.0/curio/io.py
+@@ -36,7 +36,7 @@ import os
+ 
+ # -- Curio
+ 
+-from .traps import _read_wait, _write_wait
++from .traps import _read_wait, _write_wait, _io_release
+ from . import errors
+ from . import thread
+ 
+@@ -286,6 +286,7 @@ class Socket(object):
+ 
+     async def close(self):
+         if self._socket:
++            await _io_release(self._fileno)
+             self._socket.close()
+         self._socket = None
+         self._fileno = -1
+@@ -462,6 +463,7 @@ class StreamBase(object):
+     async def close(self):
+         await self.flush()
+         if self._file:
++            await _io_release(self.fileno)
+             self._file.close()
+         self._file = None
+         self._fileno = -1
+Index: curio-1.0/curio/kernel.py
+===================================================================
+--- curio-1.0.orig/curio/kernel.py
++++ curio-1.0/curio/kernel.py
+@@ -283,6 +283,8 @@ class Kernel(object):
+ 
+         # Reschedule a task, putting it back on the ready queue.
+         def reschedule_task(task):
++            assert task not in ready
++
+             ready_append(task)
+             task.state = 'READY'
+             task.cancel_func = None
+@@ -404,6 +406,14 @@ class Kernel(object):
+             suspend_task(state, lambda: unregister_event(fileobj, event))
+ 
+         # ----------------------------------------
++        # Release any kernel resources associated with fileobj.
++        def trap_io_release(fileobj):
++            if current._last_io:
++                unregister_event(*current._last_io)
++                current._last_io = None
++            current._trap_result = None
++
++        # ----------------------------------------
+         # Return tasks currently waiting on a file obj.
+         def trap_io_waiting(fileobj):
+             try:
+Index: curio-1.0/curio/traps.py
+===================================================================
+--- curio-1.0.orig/curio/traps.py
++++ curio-1.0/curio/traps.py
+@@ -13,7 +13,7 @@ __all__ = [
+     '_read_wait', '_write_wait', '_future_wait', '_sleep', '_spawn',
+     '_cancel_task', '_scheduler_wait', '_scheduler_wake',
+     '_get_kernel', '_get_current', '_set_timeout', '_unset_timeout',
+-    '_clock', '_io_waiting',
++    '_clock', '_io_waiting', '_io_release',
+     ]
+ 
+ # -- Standard library
+@@ -50,6 +50,12 @@ async def _write_wait(fileobj):
+     '''
+     return await _kernel_trap('trap_io', fileobj, EVENT_WRITE, 'WRITE_WAIT')
+ 
++async def _io_release(fileobj):
++    '''
++    Release kernel resources associated with a file
++    '''
++    return await _kernel_trap('trap_io_release', fileobj)
++
+ async def _io_waiting(fileobj):
+     '''
+     Return a tuple (rtask, wtask) of tasks currently blocked waiting
+Index: curio-1.0/docs/reference.rst
+===================================================================
+--- curio-1.0.orig/docs/reference.rst
++++ curio-1.0/docs/reference.rst
+@@ -1652,6 +1652,9 @@ may raise a cancellation exception.
+    * - ``await _write_wait(fileobj)``
+      - Sleep until data can be written on *fileobj*.
+        *fileobj* is any file-like object with a `fileno()` method.
++   * - ``await _io_release(fileobj)``
++       Release any kernel resources associated with *fileobj*.  Should
++       be called prior to closing any file.
+    * - ``await _io_waiting(fileobj)``
+      - Returns a tuple `(rtask, wtask)` of tasks currently sleeping on
+        *fileobj* (if any).  Returns immediately.

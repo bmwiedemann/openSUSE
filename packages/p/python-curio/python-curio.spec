@@ -1,7 +1,7 @@
 #
 # spec file for package python-curio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-curio
-Version:        0.9
+Version:        1.0
 Release:        0
 Summary:        Concurrent I/O library for Python 3
 License:        BSD-Source-Code
-Group:          Development/Languages/Python
 URL:            https://github.com/dabeaz/curio
 Source:         https://github.com/dabeaz/curio/archive/%{version}.tar.gz#/curio-%{version}.tar.gz
-BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module setuptools}
+Patch0:         gh_313.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools} 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,6 +39,7 @@ Curio is a library for performing concurrent I/O with coroutines in Python 3.
 
 %prep
 %setup -q -n curio-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -47,7 +49,8 @@ Curio is a library for performing concurrent I/O with coroutines in Python 3.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# disabled network tests
+%pytest -k 'not (test_ssl_outgoing or test_socket_funcs)'
 
 %files %{python_files}
 %license LICENSE
