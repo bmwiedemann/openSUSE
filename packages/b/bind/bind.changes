@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb 22 07:42:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update download urls
+- Do not enable geoip on old distros, the geoip db was shut down
+  so we need to use geoip2 everywhere
+
+-------------------------------------------------------------------
+Thu Feb 20 09:33:45 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.0
+  Major upgrade, see
+  https://downloads.isc.org/isc/bind9/9.16.0/RELEASE-NOTES-bind-9.16.0.html
+  and
+  CHANGES file in the source tree.
+  Major functional change:
+  * What was set with --with-tuning=large option in older BIND9
+    versions is now a default, and a --with-tuning=small option was
+    added for small (e.g. OpenWRT) systems.
+  * A new "dnssec-policy" option has been added to named.conf to
+    implement a key and signing policy (KASP) for zones.
+  * The command (and manpage) bind9-config have been dropped as the
+    BIND 9 libraries are now purely internal.
+  No patches became obsolete through the upgrade.
+  [bind-9.16.0.tar.xz]
+
+-------------------------------------------------------------------
 Wed Jan  8 13:54:03 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to bind-9.14.9

@@ -1,7 +1,7 @@
 #
 # spec file for package bind
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 # Don't forget to update the package names also in baselibs.conf
 # Note that the sonums are LIBINTERFACE - LIBAGE
-%define bind9_sonum 1302
+%define bind9_sonum 1600
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1311
+%define dns_sonum 1600
 %define libdns libdns%{dns_sonum}
-%define irs_sonum 1301
+%define irs_sonum 1600
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1310
+%define isc_sonum 1600
 %define libisc libisc%{isc_sonum}
-%define isccc_sonum 1302
+%define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
-%define isccfg_sonum 1302
+%define isccfg_sonum 1600
 %define libisccfg libisccfg%{isccfg_sonum}
-%define libns_sonum 1307
+%define libns_sonum 1600
 
 %define	VENDOR SUSE
 # Defines for user and group add
@@ -46,10 +46,8 @@
 %define	USERMOD_NAMED getent passwd %{NAMED_UID_NAME} >/dev/null || %{_sbindir}/usermod -s %{NAMED_SHELL} -d  %{NAMED_HOMEDIR} %{NAMED_UID_NAME}
 %if 0%{?suse_version} >= 1500
 %define with_systemd 1
-%define with_geoip 0
 %else
 %define with_systemd 0
-%define with_geoip 1
 %endif
 %if 0%{?suse_version} < 1315
 %define with_sfw2 1
@@ -62,16 +60,16 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.14.9
+Version:        9.16.0
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
 Group:          Productivity/Networking/DNS/Servers
-Url:            http://isc.org/sw/bind/
-Source:         ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.gz
+URL:            http://isc.org/sw/bind/
+Source:         ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
 Source1:        vendor-files.tar.bz2
 Source2:        baselibs.conf
-Source3:        ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.gz.sha512.asc
+Source3:        ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.sha512.asc
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source4:        %{name}.keyring
 Source9:        ftp://ftp.internic.net/domain/named.root
@@ -97,11 +95,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn)
-%if %{with_geoip}
-BuildRequires:  pkgconfig(geoip)
-%else
 BuildRequires:  pkgconfig(libmaxminddb)
-%endif
+BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-chrootenv
 Requires:       %{name}-utils
@@ -319,12 +314,8 @@ export CFLAGS="%{optflags} -DNO_VERSION_DATE"
 	--with-pic \
 	--disable-openssl-version-check \
 	--with-tuning=large \
-%if %{with_geoip}
-	--with-geoip \
-%else
 	--without-geoip \
 	--with-geoip2 \
-%endif
 	--with-dlopen \
 	--with-gssapi=yes \
 	--disable-isc-spnego \
@@ -508,7 +499,6 @@ fi
 %if %{with_sfw2}
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/bind
 %endif
-%{_bindir}/bind9-config
 %{_bindir}/named-rrchecker
 %{_sbindir}/rcnamed
 %{_sbindir}/named
@@ -517,7 +507,6 @@ fi
 %{_sbindir}/named-compilezone
 %dir %{_libdir}/named
 %{_libdir}/named/filter-aaaa.so
-%{_mandir}/man1/bind9-config.1%{ext_man}
 %{_mandir}/man1/named-rrchecker.1%{ext_man}
 %{_mandir}/man5/named.conf.5%{ext_man}
 %{_mandir}/man8/named-checkconf.8%{ext_man}
@@ -589,7 +578,6 @@ fi
 %files devel
 %dir %{_includedir}/isc
 %{_includedir}/isc/errno2result.h
-%{_bindir}/isc-config.sh
 %{_libdir}/libbind9.so
 %{_libdir}/libdns.so
 %{_libdir}/libisc*.so
@@ -642,7 +630,6 @@ fi
 %{_mandir}/man1/delv.1%{ext_man}
 %{_mandir}/man1/dig.1%{ext_man}
 %{_mandir}/man1/host.1%{ext_man}
-%{_mandir}/man1/isc-config.sh.1%{ext_man}
 %{_mandir}/man1/mdig.1%{ext_man}
 %{_mandir}/man1/nslookup.1%{ext_man}
 %{_mandir}/man1/nsupdate.1%{ext_man}
