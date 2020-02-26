@@ -18,20 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-
 Name:           python-onnx
 Version:        1.6.0
 Release:        0
-Summary:        Open Neural Network Exchange
+Summary:        Open Neural Network eXchange
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pybind11}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,8 +44,6 @@ Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-six
 Requires:       python-typing_extensions >= 3.6.2.1
-Suggests:       python-mypy >= 0.600
-
 %python_subpackages
 
 %description
@@ -51,7 +51,6 @@ Open format to represent deep learning models. With ONNX, AI developers can more
 
 %package devel
 Summary:        C/C++ - header files which are used for development
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 
 %description devel
@@ -59,9 +58,30 @@ The headers and other files needed for the development.
 
 %prep
 %setup -q -n onnx-%{version}
+# avoid bundles
+rm -rf third_party
+# say that the cmake was already built (we used our macros)
+sed -i -e 's:built = False:built = True:g' setup.py
+# do not require extra pytest modules
+sed -i -e '/addopts/d' setup.cfg
+# do not pull in pytest-runner as it is deprecated
+sed -i -e '/pytest-runner/d' setup.py
 
 %build
-export CFLAGS="%{optflags}"
+# define same folder like is used for the setup.py later
+%define __builddir .setuptools-cmake-build
+# Force the cmake to build static libs as otherwise we end
+# up with unresolvable package.
+%{python_expand # we need to generate for each python
+%cmake \
+  -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
+  -DONNX_WERROR=OFF \
+  -DBUILD_ONNX_PYTHON=ON \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DBUILD_STATIC_LIBS=ON \
+  -DPY_EXT_SUFFIX="`$python-config --extension-suffix`"
+%cmake_build ; cd ..
+}
 %python_build
 
 %install
@@ -69,15 +89,20 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 shebang_files="%{python_sitearch}/onnx/backend/test/stat_coverage.py %{python_sitearch}/onnx/defs/gen_doc.py %{python_sitearch}/onnx/gen_proto.py"
 for file in $shebang_files ; do
-  sed -i 's@/usr/bin/env python@/usr/bin/python3@' %{buildroot}/$file
+  sed -i 's@%{_bindir}/env python@%{_bindir}/python3@' %{buildroot}/$file
   chmod 755 %{buildroot}/$file
 done
-# check fails with buitling typing of python 3.7.3
-# https://github.com/pybind/pybind11/issues/1949
+
+%check
+export PYTHONDONTWRITEBYTECODE=1
+# copy inplace for tests
+cp %{__builddir}/*cpp2py* ./onnx/
+# skip online tests
+%pytest_arch -n auto -k 'not (test_bvlc_alexnet_cpu or test_shufflenet_cpu or test_densenet121_cpu or test_squeezenet_cpu or test_inception_v1_cpu or test_vgg19_cpu or test_inception_v2_cpu or test_zfnet512_cpu or test_resnet50_cpu)'
 
 %files %{python_files}
 %doc README.md
-%license LICENSE 
+%license LICENSE
 %python3_only %{_bindir}/check-model
 %python3_only %{_bindir}/check-node
 %python3_only %{_bindir}/backend-test-tools

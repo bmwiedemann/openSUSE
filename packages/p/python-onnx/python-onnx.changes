@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:57:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing dependencies and enable testsuite
+
+-------------------------------------------------------------------
+Tue Feb 25 11:52:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Force onnx static build in cmake round to ensure we do not
+  end up with unresolvable pkg
+
+-------------------------------------------------------------------
+Mon Feb 24 15:43:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove testing fluff from previous change and properly loop
+  the cmake call for each python variant
+- Enable python2 (well rather not explicitly disable it as there
+  is no need for that at the momment)
+
+-------------------------------------------------------------------
+Mon Feb 24 14:48:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Force building with system cmake to respect system definitions
+  and to provide debug information for later on
+
+-------------------------------------------------------------------
 Wed Jan  8 09:35:42 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - moved necessary defs from devel to main package 
