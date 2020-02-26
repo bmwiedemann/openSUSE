@@ -1,7 +1,7 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Release:        0
 Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
 Group:          Hardware/UPS
-Url:            http://www.networkupstools.org/
+URL:            http://www.networkupstools.org/
 Source:         http://www.networkupstools.org/source/2.7/%{name}-%{version}.tar.gz
 Source2:        README.SUSE
 Source6:        nut.system-sleep
@@ -245,8 +245,6 @@ getent passwd %{NUT_USER} >/dev/null || useradd -r -g %{NUT_GROUP} -s /bin/false
 %service_add_pre nut-driver.service nut-server.service nut-monitor.service
 
 %post
-# Be sure that all files are owned by a dedicated user.
-chown -R %{NUT_USER}:%{NUT_GROUP} %{STATEPATH}
 # Generate initial passwords.
 if grep -q "password = @UPSD_INITIAL_MASTER_PASSWORD@" %{CONFPATH}/upsmon.conf %{CONFPATH}/upsd.users; then
   UPSD_INITIAL_MASTER_PASSWORD=$(head -c 20 /dev/urandom | md5sum | head -c 10)
@@ -256,9 +254,6 @@ if grep -q "password = @UPSD_INITIAL_SLAVE_PASSWORD@" %{CONFPATH}/upsd.users ; t
   UPSD_INITIAL_SLAVE_PASSWORD=$(head -c 20 /dev/urandom | md5sum | head -c 10)
   sed -i s/@UPSD_INITIAL_SLAVE_PASSWORD@/$UPSD_INITIAL_SLAVE_PASSWORD/ %{CONFPATH}/upsd.users
 fi
-# Be sure that all files are owned by a dedicated user.
-chown %{NUT_USER}:root %{CONFPATH}/upsd.conf %{CONFPATH}/upsmon.conf %{CONFPATH}/upsd.users
-chmod 600 %{CONFPATH}/upsd.conf %{CONFPATH}/upsmon.conf %{CONFPATH}/upsd.users
 # Migrate Suspend to Disc to the new convention (bnc#449861 and later bnc#871406):
 # It was never on by default, but documentation up to 11.0 recommends
 # "shutdown -z +0" for suspend to disc. It was discontinued before 11.0.
