@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 18 20:00:54 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.9.1:
+ - Features:
+  - :gh:`177` (:pr:`178`): Fixed repository and CI links (moved https://github.com/k-bx/python-semver/ repository to https://github.com/python-semver/python-semver/)
+  - :pr:`179`: Added note about moving this project to the new python-semver organization on GitHub
+  - :gh:`187` (:pr:`188`): Added logo for python-semver organization and documentation
+  - :gh:`191` (:pr:`194`): Created manpage for pysemver
+  - :gh:`196` (:pr:`197`): Added distribution specific installation instructions
+  - :gh:`201` (:pr:`202`): Reformatted source code with black
+  - :gh:`208` (:pr:`209`): Introduce new function :func:`semver.VersionInfo.isvalid`
+    and extend :command:`pysemver` with :command:`check` subcommand
+  - :gh:`210` (:pr:`215`): Document how to deal with invalid versions
+  - :pr:`212`: Improve docstrings according to PEP257
+ - Bug Fixes:
+  - :gh:`192` (:pr:`193`): Fixed "pysemver" and "pysemver bump" when called without arguments
+
+-------------------------------------------------------------------
 Tue Nov 26 14:15:33 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.9.0:
