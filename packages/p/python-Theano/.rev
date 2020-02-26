@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>683533</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8ad191c40ffcd6fcbb6146808408c05c</srcmd5>
+    <version>1.0.4</version>
+    <time>1582725817</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce the test scope as it takes a day to compile the full
+  testsuite, just run the generic test directory
+
+- Do install test files again as it fixes Keras testing (forwarded request 779134 from scarabeus_iv)</comment>
+    <requestid>779135</requestid>
+  </revision>
 </revisionlist>

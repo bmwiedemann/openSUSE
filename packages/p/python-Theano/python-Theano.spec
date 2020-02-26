@@ -1,7 +1,7 @@
 #
 # spec file for package python-Theano
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,46 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-Theano
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-Theano%{psuffix}
 Version:        1.0.4
 Release:        0
 Summary:        A scientific python library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            http://deeplearning.net/software/theano/
+URL:            https://github.com/Theano/Theano
 Source:         https://files.pythonhosted.org/packages/source/T/Theano/Theano-%{version}.tar.gz
 Source1:        python-Theano.rpmlintrc
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       c++_compiler
+Requires:       python-devel
 Requires:       python-numpy >= 1.9.1
+Requires:       python-numpy-devel >= 1.9.1
 Requires:       python-scipy >= 0.14
 Requires:       python-six >= 1.9.0
+# The tests are compiling and are arch specific
+%if !%{with test}
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module nose >= 1.3.0}
+%endif
+%if %{with test}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy >= 1.9.1}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module scipy >= 0.14}
 BuildRequires:  %{python_module six >= 1.9.0}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -66,23 +81,35 @@ Theano features:
 %python_build
 
 %install
+%if !%{with test}
 %python_install
+
+# remove binaries and stuff thats not supposed to end up on system
+%python_expand rm -r %{buildroot}%{$python_sitelib}/bin
+# Other pkgs use theano tests as a basis (see Keras)
+#%%python_expand rm -r %{buildroot}%{$python_sitelib}/theano/tests
+#%%python_expand rm -r %{buildroot}%{$python_sitelib}/theano/*/tests
 
 # replace duplicate .pyo/.pyc with hardlinks
 %python_expand %fdupes %{buildroot}%{_defaultdocdir}/%{name}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
-# Fix python-bytecode-inconsistent-mtime
-%python_expand $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/theano
-%python_expand $python -O -m compileall -d %{$python_sitelib}  %{buildroot}%{$python_sitelib}/theano
+%check
+%if %{with test}
+# https://github.com/Theano/Theano/issues/6719
+rm theano/tensor/tests/test_var.py
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} theano/tests -v -e '(test_scan_err1|test_remove0|test_csm_unsorted|test_good|test_vector_arguments|test_vector_arguments)'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc DESCRIPTION.txt EMAIL.txt HISTORY.txt NEWS.txt README.rst
 %license doc/LICENSE.txt
 %python3_only %{_bindir}/theano-cache
 %python3_only %{_bindir}/theano-nose
-%{python_sitelib}/bin
 %{python_sitelib}/theano
 %{python_sitelib}/Theano-%{version}-*.egg-info
+%endif
 
 %changelog
