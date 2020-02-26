@@ -26,11 +26,11 @@ Group:          Development/Languages/OCaml
 Url:            https://github.com/ocaml/camlp4
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml-ocamlbuild
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocaml(ocaml_base_version) = 4.05
 BuildRequires:  ocamlfind(compiler-libs)
 Conflicts:      ocaml < 4.05.0
-Requires:       ocaml-runtime = 4.05.0
+Requires:       ocaml(ocaml_base_version) = 4.05
 
 %description
 Camlp4 is a Pre-Processor-Pretty-Printer for Objective Caml, parsing a
@@ -68,7 +68,7 @@ make \
 
 %install
 %make_install
-d="%{buildroot}$(ocamlc -where)/camlp4"
+d="%{buildroot}%{ocaml_standard_library}/camlp4"
 tee "${d}/META" <<_META_
 # Specifications for the "camlp4" preprocessor:
 requires = ""
@@ -215,44 +215,12 @@ package "profiler" (
   archive(native) = "camlp4prof.cmx"
 )
 _META_
+%ocaml_create_file_list
 
-%files
-%doc LICENSE README.md
-%dir %{_libdir}/ocaml/camlp4
-%dir %{_libdir}/ocaml/camlp4/Camlp4Filters
-%dir %{_libdir}/ocaml/camlp4/Camlp4Parsers
-%dir %{_libdir}/ocaml/camlp4/Camlp4Printers
-%dir %{_libdir}/ocaml/camlp4/Camlp4Top
-%{_libdir}/ocaml/camlp4/*.cma
-%{_libdir}/ocaml/camlp4/*.cmi
-%{_libdir}/ocaml/camlp4/*.cmo
-%{_libdir}/ocaml/camlp4/Camlp4Filters/*.cmi
-%{_libdir}/ocaml/camlp4/Camlp4Filters/*.cmo
-%{_libdir}/ocaml/camlp4/Camlp4Parsers/*.cmi
-%{_libdir}/ocaml/camlp4/Camlp4Parsers/*.cmo
-%{_libdir}/ocaml/camlp4/Camlp4Printers/*.cmi
-%{_libdir}/ocaml/camlp4/Camlp4Printers/*.cmo
-%{_libdir}/ocaml/camlp4/Camlp4Top/*.cmi
-%{_libdir}/ocaml/camlp4/Camlp4Top/*.cmo
+%files -f %{name}.files
+%doc README.md
 
-%files devel
-%{_bindir}/camlp4*
-%{_bindir}/mkcamlp4
-%dir %{_libdir}/ocaml/camlp4
-%{_libdir}/ocaml/camlp4/META
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/camlp4/*.a
-%{_libdir}/ocaml/camlp4/*.cmx
-%{_libdir}/ocaml/camlp4/*.cmxa
-%{_libdir}/ocaml/camlp4/*.o
-%{_libdir}/ocaml/camlp4/Camlp4Filters/*.cmx
-%{_libdir}/ocaml/camlp4/Camlp4Filters/*.o
-%{_libdir}/ocaml/camlp4/Camlp4Parsers/*.cmx
-%{_libdir}/ocaml/camlp4/Camlp4Parsers/*.o
-%{_libdir}/ocaml/camlp4/Camlp4Printers/*.cmx
-%{_libdir}/ocaml/camlp4/Camlp4Printers/*.o
-%{_libdir}/ocaml/camlp4/Camlp4Top/*.cmx
-%{_libdir}/ocaml/camlp4/Camlp4Top/*.o
-%endif
+%files devel -f %{name}.files.devel
+%{_bindir}/*
 
 %changelog

@@ -59,4 +59,17 @@
     <comment>- Add compiler-libs-devel to BuildRequires (bsc#1156934)</comment>
     <requestid>750771</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>460c37cec4f2f5f0b98ff7577db6ef3a</srcmd5>
+    <version>4.05</version>
+    <time>1582725686</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix inconsistent packaging
+  Move everything into the devel subpkg The binaries are already
+  in the devel subpkg, but they need libs from the main pkg. With
+  the update Requires/Provides both pkgs provide identical strings,
+  which leads to conflicts
+- Require current ocaml-rpm-macros</comment>
+    <requestid>778050</requestid>
+  </revision>
 </revisionlist>
