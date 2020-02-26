@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 25 15:57:30 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 2.0.0:
+  * Drop python2 and python3.4 support
+
+-------------------------------------------------------------------
 Tue Jan  8 17:36:08 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
 
 - Update conditionals to use Suggests properly based on RHEL version
