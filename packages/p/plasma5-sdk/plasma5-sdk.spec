@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-sdk
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           plasma5-sdk
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        Plasma SDK
 License:        LGPL-2.0-or-later AND GPL-2.0-only
 Group:          System/GUI/KDE
-Url:            https://cgit.kde.org/plasma-sdk.git
+URL:            https://cgit.kde.org/plasma-sdk.git
 Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
