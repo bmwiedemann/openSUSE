@@ -1,0 +1,31 @@
+From 26e87be7f6c1ed1752ad7ca671375c8d6e0820cf Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Mon, 24 Feb 2020 12:52:08 +0100
+Subject: [PATCH] ARM: dts: get rid of emmc2's vmmc-supply regulator
+
+This regulator setup isn't compatible with the upstream kernel. So get
+rid of it as it's not really needed.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+index e5978243aa9c..a6813785bb0c 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -398,10 +398,6 @@ &sdhost {
+ 	status = "disabled";
+ };
+ 
+-&emmc2 {
+-	vmmc-supply = <&sd_vcc_reg>;
+-};
+-
+ &phy1 {
+ 	led-modes = <0x00 0x08>; /* link/activity link */
+ };
+-- 
+2.25.1
+

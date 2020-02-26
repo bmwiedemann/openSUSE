@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 19 14:12:46 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 6a3905568d (2020-02-03) (jsc#SLE-7296)
+ * based on rpi-5.5.y
+- Remove obsolete overlays and patches because of bump to rpi-5.5.y:
+ * rpi4-genet-overlay.dtso
+ * upstream-rpi4-genet-phy.patch
+- Add remove-vmmc-emmc2.patch fixing issues with SD cards boot
+
+-------------------------------------------------------------------
 Thu Jan 16 13:14:17 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add rpi4-thermal.dts overlay, which provides CPU thermal measurements (bsc#1160311).
