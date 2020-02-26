@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 24 09:15:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add baselibs.conf to generate 32bit lib needed for bind
+
+-------------------------------------------------------------------
 Tue Feb  4 11:17:12 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update to libuv 1.34.2:

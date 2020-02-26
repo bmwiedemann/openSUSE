@@ -22,12 +22,12 @@ Version:        1.34.2
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://libuv.org
 Source0:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz
 Source1:        https://dist.libuv.org/dist/v%{version}/libuv-v%{version}.tar.gz.sign
 # https://github.com/libuv/libuv/blob/v1.x/MAINTAINERS.md
 Source2:        %{name}.keyring
+Source3:        baselibs.conf
 Patch1:         fix_tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -41,7 +41,6 @@ Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 
 %package     -n libuv%{somajor}
 Summary:        Asychronous I/O support library
-Group:          System/Libraries
 
 %description -n libuv%{somajor}
 libuv is a support library with a focus on asynchronous I/O. It was
@@ -50,7 +49,6 @@ Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 
 %package        devel
 Summary:        Development libraries for libuv
-Group:          Development/Libraries/C and C++
 BuildRequires:  glibc-devel
 Requires:       libuv%{somajor} = %{version}
 
@@ -69,14 +67,14 @@ Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 ./autogen.sh
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libuv%{somajor} -p /sbin/ldconfig
 %postun -n libuv%{somajor} -p /sbin/ldconfig
