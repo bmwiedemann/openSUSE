@@ -16,4 +16,12 @@
 - Replace old RPM shell vars by macros.</comment>
     <requestid>624607</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>341156eb28976093eb04d4352c78c530</srcmd5>
+    <version>1.4.632</version>
+    <time>1582725895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current GIT HEAD (6eda3828)</comment>
+    <requestid>779228</requestid>
+  </revision>
 </revisionlist>

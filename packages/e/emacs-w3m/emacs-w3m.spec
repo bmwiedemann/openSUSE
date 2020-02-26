@@ -21,12 +21,11 @@ Summary:        An interface program to use w3m with Emacs
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 # Summary(ja): w3m を Emacs 上で動かすためのプログラムです
-Version:        1.4.631
+Version:        1.4.632
 Release:        0
 Url:            http://emacs-w3m.namazu.org/
-# cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login
-# (CVS password empty)
-# cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
+%define git_revision 6eda3828
+# git archive --prefix=emacs-w3m-%{version}/ --remote=https://github.com/emacs-w3m/emacs-w3m %{git_revision}
 Source0:        emacs-w3m-%{version}.tar.bz2
 Source1:        suse-start.el
 Patch1:         w3m-el-1.3-map.patch
