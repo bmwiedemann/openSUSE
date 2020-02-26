@@ -474,4 +474,26 @@
 - Add rpi4-thermal device tree overlay for RPi4 (bsc#1160311)</comment>
     <requestid>766229</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a863efae9ac7e7e808f0162c92d32bed</srcmd5>
+    <version>2020.02.20</version>
+    <time>1582725962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to f4b5869 (2020-02-12) (bsc#1163476):
+  * firmware: board_info: Fix GPIO expander reset trait
+  * firmware: gencmd: Fix measure_clock name for CLOCK_OUTPUT_108
+  * firmware: platform: Compromise on gpu overclock settings
+- After the rpi-5.5.y update in raspberrypi-firmware-dt:
+  * Remove rpi4-genet as it's not needed anymore
+  * Remove gpu_mem entry for rpi4
+- Update to f4b5869 (2020-02-12) (bsc#1163476):
+  * firmware: board_info: Fix GPIO expander reset trait
+  * firmware: gencmd: Fix measure_clock name for CLOCK_OUTPUT_108
+  * firmware: platform: Compromise on gpu overclock settings
+- After the rpi-5.5.y update in raspberrypi-firmware-dt:
+  * Remove rpi4-genet as it's not needed anymore
+  * Remove gpu_mem entry for rpi4
+</comment>
+    <requestid>779308</requestid>
+  </revision>
 </revisionlist>

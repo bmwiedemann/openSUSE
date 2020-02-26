@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 21 16:30:21 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to f4b5869 (2020-02-12) (bsc#1163476):
+  * firmware: board_info: Fix GPIO expander reset trait
+  * firmware: gencmd: Fix measure_clock name for CLOCK_OUTPUT_108
+  * firmware: platform: Compromise on gpu overclock settings
+- After the rpi-5.5.y update in raspberrypi-firmware-dt:
+  * Remove rpi4-genet as it's not needed anymore
+  * Remove gpu_mem entry for rpi4
+
+-------------------------------------------------------------------
 Wed Jan 22 08:48:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to be2713bed4 (2020-01-16):
