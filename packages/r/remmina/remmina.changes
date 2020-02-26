@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 25 18:06:28 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.1
+  * Bug-fix release
+
+  * SSH fixes, should fix #2094
+  * Update remmina_filezilla_sftp.sh
+
+-------------------------------------------------------------------
 Fri Feb 21 11:04:05 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to new upstream release 1.4.0

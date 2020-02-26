@@ -432,4 +432,12 @@
   * Removing double struct declaration</comment>
     <requestid>778174</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>41ceddb9f4d96fbbcaef746736d9310e</srcmd5>
+    <version>1.4.1</version>
+    <time>1582726042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779385</requestid>
+  </revision>
 </revisionlist>
