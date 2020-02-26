@@ -30,7 +30,7 @@
 %define with_emoji 0
 %endif
 Name:           ibus
-Version:        1.5.21
+Version:        1.5.22
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -51,6 +51,9 @@ Patch4:         ibus-xim-fix-re-focus-after-lock.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
 # Select an IM engine at the first login
 Patch8:         im-engines-precede-xkb.patch
+# PATFH-FIX-OPENSUSE ibus-fix-Signal-does-not-exist.patch hillwood@opensuse.org
+# panel.vala: The name `Signal' does not exist in the context of `Posix' in Leap 15.1 and below
+Patch9:         ibus-fix-Signal-does-not-exist.patch
 # PATCH-FIX-SLE hide-setup-menu.patch bnc#899259  qzhao@suse.com
 # ibus-setup should not launch from main menu.
 Patch10:        hide-setup-menu.patch
@@ -60,9 +63,6 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-
-Patch13:        ibus-CVE-2019-14822-GDBusServer-peer-authorization.patch
-
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dconf-devel >= 0.7.5
 BuildRequires:  fdupes
@@ -87,6 +87,9 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(xkbcommon)
+%if %{with_emoji}
+Requires:       %{name}-dict-emoji = %{version}
+%endif
 Requires:       dconf
 Requires:       iso-codes
 Requires:       libibus-1_0-5 = %{version}
@@ -136,6 +139,18 @@ Group:          System/Libraries
 %description -n typelib-1_0-IBus-1_0
 This package contains the introspection bindings for the IBus library.
 
+%if %{with_emoji}
+%package dict-emoji
+Summary:        Emoji dictionary for IBus
+Group:          System/I18n/Chinese
+BuildArch:      noarch
+# make sure old ibus package containing emoji dict files is updated
+Conflicts:      ibus < 1.5.22
+
+%description dict-emoji
+This package contains data of emoji dictionary for IBus and other applications
+%endif
+
 %package gtk
 Summary:        IBus input method support for gtk2 applications
 Group:          System/I18n/Chinese
@@ -178,6 +193,9 @@ docs for ibus.
 %patch0 -p1
 %patch4 -p1
 %patch8 -p1
+%if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
+%patch9 -p1
+%endif
 
 cp -r %{SOURCE2} .
 cp -r %{SOURCE3} .
@@ -191,8 +209,6 @@ cp -r %{SOURCE11} .
 %patch11 -p1
 %patch12 -p1
 %endif
-
-%patch13 -p1
 
 %build
 autoreconf -fi
@@ -302,7 +318,13 @@ dconf update
 %{_bindir}/ibus-autostart
 %{_bindir}/ibus-daemon
 %{_bindir}/ibus-setup
-%{_datadir}/ibus/
+%dir %{_datadir}/ibus
+%{_datadir}/ibus/component
+%dir %{_datadir}/ibus/dicts
+%{_datadir}/ibus/dicts/unicode-*.dict
+%{_datadir}/ibus/engine
+%{_datadir}/ibus/keymaps
+%{_datadir}/ibus/setup
 %{_datadir}/applications/org.freedesktop.IBus.Setup.desktop
 %{_datadir}/GConf/gsettings/ibus.convert
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.gschema.xml
@@ -337,6 +359,13 @@ dconf update
 
 %files -n libibus-1_0-5
 %{_libdir}/libibus-1.0.so.*
+
+%if %{with_emoji}
+%files dict-emoji
+
+%dir %{_datadir}/ibus/dicts
+%{_datadir}/ibus/dicts/emoji-*.dict
+%endif
 
 %files -n typelib-1_0-IBus-1_0
 %{_libdir}/girepository-1.0/IBus-1.0.typelib

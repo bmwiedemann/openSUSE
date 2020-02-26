@@ -840,4 +840,17 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment>Drop lang Recommends (forwarded request 770102 from iznogood)</comment>
     <requestid>770254</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>49e8b5fdf28161d206fbcaab03520d26</srcmd5>
+    <version>1.5.22</version>
+    <time>1582725716</time>
+    <user>dimstar_suse</user>
+    <comment>Can you check this change carefully?
+
+- Fix dependency between ibus and ibus-dict-emoji
+  * Keep ibus and ibus-dict-emoji from the same source
+  * Add Conflict to remove old ibus containing emoji dictionary
+    files (forwarded request 778826 from ftake)</comment>
+    <requestid>779043</requestid>
+  </revision>
 </revisionlist>

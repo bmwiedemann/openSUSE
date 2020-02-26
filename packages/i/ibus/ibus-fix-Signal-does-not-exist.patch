@@ -1,0 +1,12 @@
+diff -Nur ibus-1.5.22/ui/gtk3/panel.vala ibus-1.5.22-new/ui/gtk3/panel.vala
+--- ibus-1.5.22/ui/gtk3/panel.vala	2020-02-21 20:46:17.000000000 +0800
++++ ibus-1.5.22-new/ui/gtk3/panel.vala	2020-02-24 17:55:17.718453204 +0800
+@@ -1053,7 +1053,7 @@
+ 
+     private void show_setup_dialog() {
+         if (m_setup_pid != 0) {
+-            if (Posix.kill(m_setup_pid, Posix.Signal.USR1) == 0)
++            if (Posix.kill(m_setup_pid, Posix.SIGUSR1) == 0)
+                 return;
+             m_setup_pid = 0;
+         }

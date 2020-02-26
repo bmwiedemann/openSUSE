@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb 24 14:27:11 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix dependency between ibus and ibus-dict-emoji
+  * Keep ibus and ibus-dict-emoji from the same source
+  * Add Conflict to remove old ibus containing emoji dictionary
+    files
+
+-------------------------------------------------------------------
+Sat Feb 22 12:30:37 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.22
+  * GDBusAuthObserver security fix, drop 
+    ibus-CVE-2019-14822-GDBusServer-peer-authorization.patch
+  * Use XDG_RUNTIME_DIR for Unix socket directory 
+  * Hangul button press handling
+  * Fix deprecated APIs
+  * Bug fixes
+  * Fix boo#1149065
+  * Fix restart crash with inotify read() (Robert Hoffmann) 
+  * Make session file header comment more clear (Jason)
+  * Amend typos (Jason)
+  * Add NotShowIn and Keywords keys to the desktop entry (Changwoo Ryu)
+  * Handle small final sigma in ibus_keyval_convert_case (Alex Henrie) 
+  * Update translations.
+- Add ibus-fix-Signal-does-not-exist.patch. Fix build on Leap 15.1 and below
+
+-------------------------------------------------------------------
+Wed Feb 19 14:57:10 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Split ibus-dict-emoji so that KDE Plasma can use IBus's emoji
+  dictionaries without IBus daemon (boo#1161584)
+
+-------------------------------------------------------------------
 Tue Feb  4 22:02:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.

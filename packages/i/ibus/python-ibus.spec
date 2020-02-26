@@ -18,7 +18,7 @@
 
 %define _name ibus
 Name:           python-ibus
-Version:        1.5.21
+Version:        1.5.22
 Release:        0
 Summary:        Python2 module for ibus
 License:        LGPL-2.1-or-later
