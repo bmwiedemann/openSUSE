@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 21 13:18:18 UTC 2020 - Philipp Seiler <p.seiler@linuxmail.org>
+
+- update to mesa 20.0.0
+ * changelog https://mesa3d.org/relnotes/20.0.0.html
+- supersedes U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patch
+- supersedes U_0002-r600-Move-get_pic_param-to-radeon_vce.c.patch
+- supersedes U_0003-radeon-Move-si_get_pic_param-to-radeon_vce.c.patch
+- supersedes U_0004-radeon-Fix-multiple-definition-error-with-radeon_deb.patch
+- supersedes U_0006-nouveau-nvc0-add-extern-keyword-to-nvc0_miptree_vtbl.patch 
+- update to patch n_add-Mesa-headers-again.patch to fit v20.0.0 sources
+- update to patch n_drirc-disable-rgb10-for-chromium-on-amd.patch to fit v20.0.0 sources
+
+-------------------------------------------------------------------
 Fri Feb 21 05:09:10 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - use 7G disk constraints also for x86_64 and i586 (bsc#1164488) 

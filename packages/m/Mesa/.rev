@@ -4016,4 +4016,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes u_Revert_gallium_Fix_big-endian_addressing_of_non-bitmask_array_formats.patch</comment>
     <requestid>777801</requestid>
   </revision>
+  <revision rev="371" vrev="243">
+    <srcmd5>9c307c1230d630dd260e725960cf10ea</srcmd5>
+    <version>unknown</version>
+    <time>1582726447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778461</requestid>
+  </revision>
 </revisionlist>

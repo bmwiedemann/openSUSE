@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 19.3.4
+%define _version 20.0.0
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -110,7 +110,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        19.3.4
+Version:        20.0.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -129,11 +129,6 @@ Patch2:         n_add-Mesa-headers-again.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
-Patch61:        U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patch
-Patch62:        U_0002-r600-Move-get_pic_param-to-radeon_vce.c.patch
-Patch63:        U_0003-radeon-Move-si_get_pic_param-to-radeon_vce.c.patch
-Patch64:        U_0004-radeon-Fix-multiple-definition-error-with-radeon_deb.patch
-Patch66:        U_0006-nouveau-nvc0-add-extern-keyword-to-nvc0_miptree_vtbl.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -749,11 +744,6 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch2 -p1
 %patch54 -p1
 %patch58 -p1
-%patch61 -p1
-%patch62 -p1
-%patch63 -p1
-%patch64 -p1
-%patch66 -p1
 
 # Remove requires to libglvnd/libglvnd-devel from baselibs.conf when
 # disabling libglvnd build; ugly ...
