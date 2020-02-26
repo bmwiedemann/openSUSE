@@ -1358,4 +1358,41 @@
     <comment>- No longer recommend -lang: supplements are in use. (forwarded request 770107 from iznogood)</comment>
     <requestid>770135</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>ce6d57ad8a6dc72424edc266b88cadd6</srcmd5>
+    <version>2.5.24</version>
+    <time>1582725701</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.24 release
+  - ptp2:
+    * GoPro: fixed all images not visible bug
+    * Canon EOS: lock/unlock ui before more operations
+    * Canon Powershot SX / EOS M: some setup adjustments to make powershot sx work better
+    * Nikon Keymission 170: try override opcodes to allow capture
+    * Nikon DSLR: fixed a regression where 5 seconds was longer image capture shutterspeed
+    * Sony: adjusted manualfocusing not to autofocus
+    * Fuji: access ISO config
+    * Sony: fixed manual focusing
+    * Sony: specify capturetarget on camera, available on current 2019/2020 Sony
+    * bugfixes
+    * New ids added:
+      * Sony Alpha RX100V, A7s, RX0 II,
+      * Nikon Z50, Coolpix L810, KeyMission 170
+      * Canon PowerShot SX530HS, SX 620HS, 
+      * Canon EOS 2000D, 1500D, R2, M6 Mark 2, 250D,
+      * Fuji X-A5, X-E3, GFX100
+      * GoPro Hero 7 White, 7 Silver, 7 Black, 8 Black
+    
+  - lumix:
+    * New WIFI Lumix camera driver was added, using curl and libxml2.
+      Lots of abilities supported already, also capture preview.
+      However capture itself is not yet working.
+      This driver needs libxml2 and libcurl to be built.
+  - all:
+    * Selecting camera libraries has changed a bit.
+    --camlibs=everything will select all and outdated drivers
+    --camlibs=standard  will select &quot;current day&quot; drivers
+    --camlibs=standard,outdated  will select &quot;current day&quot; and &quot;outdated&quot; drivers</comment>
+    <requestid>778604</requestid>
+  </revision>
 </revisionlist>
