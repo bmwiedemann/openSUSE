@@ -71,4 +71,13 @@ versions of libva(2)</comment>
     <comment>- This release fullfills requirements for jsc#SLE-8838</comment>
     <requestid>746611</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>084228b594e08642c7022a3f71d68bb3</srcmd5>
+    <version>19.2.1</version>
+    <time>1582725838</time>
+    <user>dimstar_suse</user>
+    <comment>- generate-supplements.sh/specfile: fixed supplements lines
+  (boo#1164851)</comment>
+    <requestid>779122</requestid>
+  </revision>
 </revisionlist>

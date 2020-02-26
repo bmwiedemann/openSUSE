@@ -4,6 +4,7 @@
 for i in \
   $(grep -r RegisterDevice .| \
     grep 0x | \
+    sed 's/0x//g' | \
     cut -d "(" -f2 | \
     cut -d "," -f1 | \
     tr [:lower:] [:upper:] | \
