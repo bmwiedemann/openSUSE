@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 26 18:11:40 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.52.3:
+  * Release v3.52.3
+  * Fix unnecessary use of $host->getCacheKey() [skip changelog]
+  * Display Git URL in project:create (create) command
+  * Accept the variable value from stdin in variable:create and variable:update commands (#905)
+  * Avoid overly verbose message in tunnel:single command
+  * Check relationships before asking confirm question in tunnel:open command
+  * Display tunnel details as a URL
+
+-------------------------------------------------------------------
 Mon Feb 10 18:15:14 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.52.2:
