@@ -1,0 +1,13 @@
+diff -urEbwB scala-maven-plugin-3.4.6.orig/src/main/java/scala_maven/ScalaMojoSupport.java scala-maven-plugin-3.4.6/src/main/java/scala_maven/ScalaMojoSupport.java
+--- scala-maven-plugin-3.4.6.orig/src/main/java/scala_maven/ScalaMojoSupport.java	2019-12-13 12:05:35.720160084 +0100
++++ scala-maven-plugin-3.4.6/src/main/java/scala_maven/ScalaMojoSupport.java	2019-12-13 12:05:51.268247149 +0100
+@@ -794,8 +794,8 @@
+                     bootcp = bootcp && !"-nobootcp".equals(arg);
+                 }
+             }
+-            String cp = bootcp ? "" : toolcp;
+             bootcp = bootcp && !(StringUtils.isNotEmpty(addScalacArgs) && addScalacArgs.contains("-nobootcp"));
++            String cp = bootcp ? "" : toolcp;
+             // scalac with args in files
+             // * works only since 2.8.0
+             // * is buggy (don't manage space in path on windows)
