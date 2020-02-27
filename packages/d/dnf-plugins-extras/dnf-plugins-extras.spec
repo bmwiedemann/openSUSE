@@ -1,7 +1,7 @@
 #
 # spec file for package dnf-plugins-extras
 #
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.19}
 %global dnf_plugins_extra_obsolete 2.0.0
 
 # YUM v3 has been removed from openSUSE Tumbleweed as of 20191119
@@ -37,16 +37,13 @@
 %bcond_with tests
 
 Name:           dnf-plugins-extras
-Version:        4.0.8
+Version:        4.0.9
 Release:        0
 Summary:        Extras Plugins for DNF
 Group:          System/Packages
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-
-# Backports from upstream
-Patch0001:      0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch
 
 BuildArch:      noarch
 BuildRequires:  cmake
@@ -142,6 +139,8 @@ Group:          System/Packages
 Requires:       python3-%{name}-common = %{version}-%{release}
 Requires:       python3-systemd
 Requires:       systemd
+Provides:       dnf-command(offline-distrosync)
+Provides:       dnf-command(offline-upgrade)
 Provides:       dnf-command(system-upgrade)
 Provides:       %{name}-system-upgrade = %{version}-%{release}
 Provides:       system-upgrade = %{version}-%{release}

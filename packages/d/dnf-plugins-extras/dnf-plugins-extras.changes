@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:21:01 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.9
+  + [doc] move manpages for plugins to "dnf-PLUGIN" (rh#1706386)
+  + Add offline-upgrade and offline-distrosync commands
+  + [doc] Add description for new offline command
+  + Store reason for system-upgrade plugin
+  + Do not show Operation aborted as an error (rh#1797427)
+- Drop backported patch included in this release
+  * Patch: 0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch
+
+-------------------------------------------------------------------
 Sun Dec  1 18:54:11 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to version 4.0.8

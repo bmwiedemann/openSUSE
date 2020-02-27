@@ -26,4 +26,19 @@
   * Patch: 0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch</comment>
     <requestid>752753</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ce517cd5f5e35512da2bfc4dbd7e255</srcmd5>
+    <version>4.0.9</version>
+    <time>1582819067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.9
+  + [doc] move manpages for plugins to &quot;dnf-PLUGIN&quot; (rh#1706386)
+  + Add offline-upgrade and offline-distrosync commands
+  + [doc] Add description for new offline command
+  + Store reason for system-upgrade plugin
+  + Do not show Operation aborted as an error (rh#1797427)
+- Drop backported patch included in this release
+  * Patch: 0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch</comment>
+    <requestid>779947</requestid>
+  </revision>
 </revisionlist>
