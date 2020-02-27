@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:44:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not disable LTO there is no actual reason for that
+- Export LD_LIBRARY_PATH to fix older releases build
+
+-------------------------------------------------------------------
+Wed Feb 26 10:36:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- There is no actual reason to not use github tag for tarball
+  fetching -> remove the service
+- Format with spec-cleaner
+- Use proper %cmake macros everywhere
+- Add configure options for cmake to set it up in a way we really
+  want
+- Add patch from Debian to not install OpenCL cmake finder:
+  * cmake-no-install-ocl-cmake.patch
+
+-------------------------------------------------------------------
+Thu Feb 20 10:26:52 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- enabled tests 
+
+-------------------------------------------------------------------
 Thu Jan 30 14:20:22 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - packaged separate benchnn packae with its input files
@@ -32,8 +55,6 @@ Wed Jan  8 15:21:54 UTC 2020 - Christian Goll <cgoll@suse.com>
   * Added separate README for binary packages (28f4c96)
   * Fixed computing per-oc mask in RNN (ff3ffab)
   * Added workaround for number of cores calculation in Xbyak (301b088)
-
-
 
 -------------------------------------------------------------------
 Mon Feb 11 16:35:48 UTC 2019 - cgoll@suse.com
