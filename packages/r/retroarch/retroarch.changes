@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 19 21:02:02 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Add more core recommends
+
+-------------------------------------------------------------------
 Mon Feb  3 16:10:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

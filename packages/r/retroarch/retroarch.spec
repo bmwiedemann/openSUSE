@@ -80,24 +80,23 @@ Recommends:     retroarch-assets
 Recommends:     libretro-core-info
 Recommends:     libretro-database
 
-# Emulator cores
+# Emulation cores
 
-# ---------------- Atari ---------------
+# Arcade/MAME for old roms
+Recommends:     libretro-mame2003-plus
+# Arcade/MAME for latest roms
+Recommends:     libretro-mame
 
 # Atari 2600
 Recommends:     libretro-stella
+# Atari 5200
+Recommends:     libretro-atari800
+# Atari 7800
+Recommends:     libretro-prosystem
+# Atari Jaguar
+Recommends:     libretro-virtualjaguar
 # Atari Lynx
-Recommends:     libretro-beetle-lynx
-
-# ---------- Final Burn Alpha ----------
-
-# ---------------- MAME ----------------
-
-Recommends:     libretro-mame2000
-Recommends:     libretro-mame2003
-Recommends:     libretro-mame2003-plus
-
-# -------------- Nintendo --------------
+Recommends:     libretro-handy
 
 # Nintendo Entertainment System (NES)
 Recommends:     libretro-nestopia
@@ -117,32 +116,51 @@ Recommends:     libretro-desmume
 # Nintendo 3DS (3DS)
 Recommends:     libretro-citra
 
-# ---------------- Sega ----------------
-
-# Master System (SMS), Mega Drive (MD)
-Recommends:     libretro-genesis-plus-gx
-# Mega Drive (MD), Mega CD (MCD), 32X
-Recommends:     libretro-picodrive
-# Saturn (SS)
+# Sega Genesis/Mega Drive (MD)
+Recommends:     libretro-blastem
+# Sega Saturn (SS)
 Recommends:     libretro-yabause
-# Dreamcast (DC)
+# Sega Dreamcast (DC)
 Recommends:     libretro-flycast
 
-# ---------------- Sony ----------------
-
-# PlayStation (PSX)
-Recommends:     libretro-pcsx_rearmed
-# PlayStation 2 (PS2)
+# Sony PlayStation (PSX)
+Recommends:     libretro-pcsx-rearmed
+# Sony PlayStation 2 (PS2)
 Recommends:     libretro-play
+# Sony PlayStation Portable (PSP)
+Recommends:     libretro-ppsspp
 
-# ---------------- Other ---------------
-
+# Amstrad
+Recommends:     libretro-crocods
+# Amstrad CPC
+Recommends:     libretro-cap32
 # Bandai WonderSwan
 Recommends:     libretro-beetle-wswan
-# PC Engine/TurboGrafx-16
-Recommends:     libretro-beetle-pce-fast
+# Fairchild ChannelF
+Recommends:     libretro-freechaf
+# Mattel Intellivision
+Recommends:     libretro-freeintv
+# MS DOS
+Recommends:     libretro-dosbox
+# MSX
+Recommends:     libretro-bluemsx
 # Neo Geo Pocket
 Recommends:     libretro-beetle-ngp
+# PC Engine/TurboGrafx-16
+Recommends:     libretro-beetle-pce-fast
+# ZX 81
+Recommends:     libretro-81
+# ZX Spectrum
+Recommends:     libretro-fuse
+
+# Game and game engine cores
+
+Recommends:     libretro-2048
+Recommends:     libretro-3dengine
+Recommends:     libretro-chailove
+Recommends:     libretro-craft
+Recommends:     libretro-easyrpg
+Recommends:     libretro-ffmpeg
 
 %description
 RetroArch is a modular multi-system emulator system that is designed to be
