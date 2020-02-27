@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:47:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  Changes
+  * Fix loop bound in AVX rotator
+  * Fix out-of-bounds read in AVX2 square dist kernel
+  * Fix length checks in AVX2 index max kernels
+  * includes: rearrange attributes to simplify macros Whitespace
+  * kernels: fix usage in header comments
+- Update to version 2.2.0
+  Highlights
+  * Dropped Python 2 build support
+    + Removed Python six module dependency
+  * Use C11 aligned_alloc whenever possible
+  * Add VOLK version in volk_version.h (included in volk.h)
+  * Improved CMake code
+  * Improved code with lots of refactoring and performance tweaks
+
+-------------------------------------------------------------------
 Sun Dec 22 14:26:11 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0

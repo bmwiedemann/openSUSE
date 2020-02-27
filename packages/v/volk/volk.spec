@@ -1,7 +1,7 @@
 #
 # spec file for package volk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %global sonum 2
-%global soname 2_1
+%global soname 2_2_1
 
 Name:           volk
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        GPL-3.0-only
@@ -35,7 +35,6 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  orc
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Mako
-BuildRequires:  python3-six
 
 %description
 VOLK provides a library of vector-optimized kernels. It is a subproject
