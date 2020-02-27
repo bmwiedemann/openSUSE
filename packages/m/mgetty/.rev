@@ -268,4 +268,12 @@
   - Also is being checked and set correctly now. (forwarded request 767615 from msmeissn)</comment>
     <requestid>767625</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f98a8309802c6724d30638eea15fcb22</srcmd5>
+    <version>1.2.1</version>
+    <time>1582810633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779522</requestid>
+  </revision>
 </revisionlist>

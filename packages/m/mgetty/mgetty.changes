@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:58:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.2.1
+  Changes from 1.1.37 to 1.2.0:
+  * policy.h: default MAILER to "/usr/sbin/sendmail"
+  * conf_mg.c, conf_mg.h, mgetty.c: new option "open-delay <msec>"
+  * utmp.c, mg_utmp.h: apply FreeBSD port patches to adjust to 9.x
+  * bug fixes based on static code analysis (mem leaks, buffer overruns)
+  * mgetty.c: make "dialout!" logging more useful (log dialout command)
+  * more bugfixes, features and code improvements
+  * see ftp://mgetty.greenie.net/pub/mgetty/source/1.2/mgetty-1.1.37-1.2.0.diff.gz
+  Changes from 1.2.0 to 1.2.1:
+  * fax/faxrunq.in, fax/faxq.in: properly quote input from JOB files,
+    avoid attack with shell metacharacters (CVE-2018-16741, bsc#1108752)
+  * contrib/scrtsc.c: remove from distribution (CVE-2018-16742, bsc#1108762)
+  * contrib/next-login/next-login.c: fix buffer overflow on username
+    (CVE-2018-16743, bsc#1108761)
+  * faxrec.c, policy.h: rework mail handling, avoid potential buffer
+    overrun by means of "mail-to" config variable (CVE-2018-16744, bsc#1108757)
+  * more bugfixes
+  * see ftp://mgetty.greenie.net/pub/mgetty/source/1.2/mgetty-1.2.0-1.2.1.diff.gz
+- Drop upstreamed patch 0001-Fix-build-failure-with-gcc-7.patch
+- Reapplied patch mgetty-1.1.37-makefile.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 07:13:28 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Fixed permission handling of faxq-helper.

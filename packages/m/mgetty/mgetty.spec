@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mgetty
-Version:        1.1.37
+Version:        1.2.1
 Release:        0
 Summary:        Mgetty Listens for Data, Fax, or Voice Calls on a Serial Line
 License:        GPL-2.0-or-later
 Group:          Hardware/Fax
-Url:            http://mgetty.greenie.net/
-Source0:        ftp://mgetty.greenie.net/pub/mgetty/source/1.1/%{name}%{version}-Jun05.tar.gz
+URL:            http://mgetty.greenie.net/
+Source0:        ftp://mgetty.greenie.net/pub/mgetty/source/1.2/mgetty-%{version}.tar.gz
 Source2:        logrotate
 Source3:        mgetty@.service
 Source4:        vgetty@.service
@@ -38,7 +38,6 @@ Patch7:         bug646280.patch
 Patch8:         fixpie.patch
 Patch9:         lp64.patch
 Patch10:        mgetty-1.1.36-fix-bashisms.patch
-Patch11:        0001-Fix-build-failure-with-gcc-7.patch
 Patch12:        mgetty-noroot.patch
 Patch13:        mgetty-mkdir-p.patch
 BuildRequires:  groff
@@ -102,14 +101,14 @@ The g3utils are included in the mgetty source package.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 %patch12 -p1
 %patch13 -p1
+chmod +x mkidirs
 
 %build
 ln -s policy.h-dist policy.h
-make -j1 CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie" CC="gcc"
-make -j1 -C voice CFLAGS="%{optflags} -fPIE -DAUTO_PPP" LDFLAGS="-pie" CC="gcc"
+%make_build -j1 CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie" CC="gcc"
+%make_build -j1 -C voice CFLAGS="%{optflags} -fPIE -DAUTO_PPP" LDFLAGS="-pie" CC="gcc"
 
 %install
 %make_install
@@ -158,7 +157,6 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %service_del_postun mgetty@.service vgetty@.service
 
 %files
-%defattr(-, root, root)
 %dir %{_sysconfdir}/mgetty+sendfax
 %doc %{_docdir}/mgetty
 %dir %{_localstatedir}/spool/voice
@@ -200,38 +198,38 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %{_bindir}/voctopvf
 %{_bindir}/wavtopvf
 %{_infodir}/mgetty.info*%{ext_info}
-%{_mandir}/man1/autopvf.1%{ext_man}
-%{_mandir}/man1/basictopvf.1%{ext_man}
-%{_mandir}/man1/lintopvf.1%{ext_man}
-%{_mandir}/man1/pvf.1%{ext_man}
-%{_mandir}/man1/pvfamp.1%{ext_man}
-%{_mandir}/man1/pvfcut.1%{ext_man}
-%{_mandir}/man1/pvfecho.1%{ext_man}
-%{_mandir}/man1/pvffft.1%{ext_man}
-%{_mandir}/man1/pvffile.1%{ext_man}
-%{_mandir}/man1/pvffilter.1%{ext_man}
-%{_mandir}/man1/pvfmix.1%{ext_man}
-%{_mandir}/man1/pvfnoise.1%{ext_man}
-%{_mandir}/man1/pvfreverse.1%{ext_man}
-%{_mandir}/man1/pvfsine.1%{ext_man}
-%{_mandir}/man1/pvfspeed.1%{ext_man}
-%{_mandir}/man1/pvftoau.1%{ext_man}
-%{_mandir}/man1/pvftobasic.1%{ext_man}
-%{_mandir}/man1/pvftolin.1%{ext_man}
-%{_mandir}/man1/pvftormd.1%{ext_man}
-%{_mandir}/man1/pvftovoc.1%{ext_man}
-%{_mandir}/man1/pvftowav.1%{ext_man}
-%{_mandir}/man1/sff2g3.1%{ext_man}
-%{_mandir}/man1/rmdfile.1%{ext_man}
-%{_mandir}/man1/rmdtopvf.1%{ext_man}
-%{_mandir}/man1/voctopvf.1%{ext_man}
-%{_mandir}/man1/wavtopvf.1%{ext_man}
-%{_mandir}/man1/zplay.1%{ext_man}
-%{_mandir}/man4/mgettydefs.4%{ext_man}
-%{_mandir}/man8/callback.8%{ext_man}
-%{_mandir}/man8/faxq-helper.8%{ext_man}
-%{_mandir}/man8/mgetty.8%{ext_man}
-%{_mandir}/man8/vgetty.8%{ext_man}
+%{_mandir}/man1/autopvf.1%{?ext_man}
+%{_mandir}/man1/basictopvf.1%{?ext_man}
+%{_mandir}/man1/lintopvf.1%{?ext_man}
+%{_mandir}/man1/pvf.1%{?ext_man}
+%{_mandir}/man1/pvfamp.1%{?ext_man}
+%{_mandir}/man1/pvfcut.1%{?ext_man}
+%{_mandir}/man1/pvfecho.1%{?ext_man}
+%{_mandir}/man1/pvffft.1%{?ext_man}
+%{_mandir}/man1/pvffile.1%{?ext_man}
+%{_mandir}/man1/pvffilter.1%{?ext_man}
+%{_mandir}/man1/pvfmix.1%{?ext_man}
+%{_mandir}/man1/pvfnoise.1%{?ext_man}
+%{_mandir}/man1/pvfreverse.1%{?ext_man}
+%{_mandir}/man1/pvfsine.1%{?ext_man}
+%{_mandir}/man1/pvfspeed.1%{?ext_man}
+%{_mandir}/man1/pvftoau.1%{?ext_man}
+%{_mandir}/man1/pvftobasic.1%{?ext_man}
+%{_mandir}/man1/pvftolin.1%{?ext_man}
+%{_mandir}/man1/pvftormd.1%{?ext_man}
+%{_mandir}/man1/pvftovoc.1%{?ext_man}
+%{_mandir}/man1/pvftowav.1%{?ext_man}
+%{_mandir}/man1/sff2g3.1%{?ext_man}
+%{_mandir}/man1/rmdfile.1%{?ext_man}
+%{_mandir}/man1/rmdtopvf.1%{?ext_man}
+%{_mandir}/man1/voctopvf.1%{?ext_man}
+%{_mandir}/man1/wavtopvf.1%{?ext_man}
+%{_mandir}/man1/zplay.1%{?ext_man}
+%{_mandir}/man4/mgettydefs.4%{?ext_man}
+%{_mandir}/man8/callback.8%{?ext_man}
+%{_mandir}/man8/faxq-helper.8%{?ext_man}
+%{_mandir}/man8/mgetty.8%{?ext_man}
+%{_mandir}/man8/vgetty.8%{?ext_man}
 %{_sbindir}/mgetty
 %{_sbindir}/vgetty
 %{_sbindir}/callback
@@ -240,17 +238,15 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %config %{_prefix}/lib/mgetty+sendfax/new_fax
 
 %files -n g3utils
-%defattr(-, root, root)
 %{_bindir}/g32pbm
 %{_bindir}/g3cat
 %{_bindir}/g3topbm
 %{_bindir}/pbm2g3
-%{_mandir}/man1/g32pbm.1%{ext_man}
-%{_mandir}/man1/g3cat.1%{ext_man}
-%{_mandir}/man1/pbm2g3.1%{ext_man}
+%{_mandir}/man1/g32pbm.1%{?ext_man}
+%{_mandir}/man1/g3cat.1%{?ext_man}
+%{_mandir}/man1/pbm2g3.1%{?ext_man}
 
 %files -n sendfax
-%defattr(-, root, root)
 %dir %{_sysconfdir}/mgetty+sendfax
 %dir %{_prefix}/lib/mgetty+sendfax
 %attr(755,fax,root) %dir %{_localstatedir}/spool/fax
@@ -269,14 +265,14 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %attr(4750,fax,trusted) %verify(not mode group) %{_prefix}/lib/mgetty+sendfax/faxq-helper
 %{_prefix}/lib/mgetty+sendfax/cour25.pbm
 %{_prefix}/lib/mgetty+sendfax/cour25n.pbm
-%{_mandir}/man1/fax.1%{ext_man}
-%{_mandir}/man1/faxq.1%{ext_man}
-%{_mandir}/man1/faxrm.1%{ext_man}
-%{_mandir}/man1/faxrunq.1%{ext_man}
-%{_mandir}/man1/faxspool.1%{ext_man}
-%{_mandir}/man1/coverpg.1%{ext_man}
-%{_mandir}/man5/faxqueue.5%{ext_man}
-%{_mandir}/man8/faxrunqd.8%{ext_man}
-%{_mandir}/man8/sendfax.8%{ext_man}
+%{_mandir}/man1/fax.1%{?ext_man}
+%{_mandir}/man1/faxq.1%{?ext_man}
+%{_mandir}/man1/faxrm.1%{?ext_man}
+%{_mandir}/man1/faxrunq.1%{?ext_man}
+%{_mandir}/man1/faxspool.1%{?ext_man}
+%{_mandir}/man1/coverpg.1%{?ext_man}
+%{_mandir}/man5/faxqueue.5%{?ext_man}
+%{_mandir}/man8/faxrunqd.8%{?ext_man}
+%{_mandir}/man8/sendfax.8%{?ext_man}
 
 %changelog
