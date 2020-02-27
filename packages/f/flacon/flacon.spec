@@ -1,7 +1,7 @@
 #
 # spec file for package flacon
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014-2018 Alexander Evseev <aevseev@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,13 +34,14 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(uchardet)
-Requires:       shntool
 Recommends:     %{name}-lang = %{version}
 Recommends:     flac
 Recommends:     lame
 Recommends:     mac
+Recommends:     mp3gain
 Recommends:     opus-tools
 Recommends:     sox
+Recommends:     ttaenc
 Recommends:     vorbis-tools
 Recommends:     vorbisgain
 Recommends:     wavpack
