@@ -230,4 +230,12 @@
     <comment></comment>
     <requestid>766064</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>ef0528d650969b317926a3ff38fc976f</srcmd5>
+    <version>2.13.0</version>
+    <time>1582810793</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with newer slf4j</comment>
+    <requestid>779801</requestid>
+  </revision>
 </revisionlist>

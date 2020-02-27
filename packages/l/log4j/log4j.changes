@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 18:03:25 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * logging-log4j-LOG4J2-2745-LOG4J2-2744-slf4j.patch
+  * logging-log4j-Remove-unsupported-EventDataConverter.patch
+    + fix build with newer slf4j
+
+-------------------------------------------------------------------
 Tue Jan 21 10:55:28 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 2.13.0 [bsc#1159646, CVE-2019-17571]

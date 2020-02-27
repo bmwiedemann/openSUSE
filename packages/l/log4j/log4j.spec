@@ -25,6 +25,8 @@ License:        Apache-2.0
 URL:            http://logging.apache.org/%{name}
 Source0:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz
 Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz.asc
+Patch1:         logging-log4j-LOG4J2-2745-LOG4J2-2744-slf4j.patch
+Patch2:         logging-log4j-Remove-unsupported-EventDataConverter.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
@@ -129,6 +131,7 @@ Obsoletes:      %{name}-manual < %{version}
 
 %prep
 %setup -q -n apache-%{name}-%{version}-src
+%autopatch -p1
 
 %pom_remove_plugin -r :maven-site-plugin
 %pom_remove_plugin -r :maven-remote-resources-plugin
@@ -144,7 +147,7 @@ rm -rf docs/api
 %pom_disable_module %{name}-distribution
 %pom_disable_module %{name}-samples
 
-# Apache Flume is not in Fedora yet
+# Apache Flume is not in openSUSE yet
 %pom_disable_module %{name}-flume-ng
 
 # artifact for upstream testing of log4j itself, shouldn't be distributed
@@ -165,7 +168,7 @@ rm log4j-core/src/main/java/org/apache/logging/log4j/core/async/DisruptorBlockin
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_remove_dep -r :kafka-clients
 
-# not compatible with fedora's version
+# liquibase not available
 %pom_disable_module %{name}-liquibase
 
 # we don't have slf4j 1.8 yet
