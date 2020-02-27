@@ -7,18 +7,15 @@ Subject: [PATCH] Add libogg to IOMovie target link libraries
  IO/Movie/CMakeLists.txt | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/IO/Movie/CMakeLists.txt b/IO/Movie/CMakeLists.txt
-index 457f1a99..98ca4708 100644
---- a/VTK/IO/Movie/CMakeLists.txt
-+++ b/VTK/IO/Movie/CMakeLists.txt
-@@ -33,3 +33,7 @@ vtk_module_library(vtkIOMovie ${Module_SRCS})
- if(WIN32 AND VTK_USE_VIDEO_FOR_WINDOWS)
-   vtk_module_link_libraries(vtkIOMovie LINK_PRIVATE vfw32)
- endif()
+Index: ParaView-v5.7.0/VTK/IO/Movie/CMakeLists.txt
+===================================================================
+--- ParaView-v5.7.0.orig/VTK/IO/Movie/CMakeLists.txt
++++ ParaView-v5.7.0/VTK/IO/Movie/CMakeLists.txt
+@@ -20,3 +20,7 @@ if (WIN32 AND VTK_USE_VIDEO_FOR_WINDOWS)
+     PRIVATE
+       vfw32)
+ endif ()
 +
 +if(vtkIOMovie_vtkoggtheora)
 +  target_link_libraries(vtkIOMovie PUBLIC ogg)
 +endif()
--- 
-2.20.1
-

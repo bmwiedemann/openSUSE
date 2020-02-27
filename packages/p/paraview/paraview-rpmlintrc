@@ -1,10 +1,6 @@
-# paraview has *.so symbolic links to other files
-# and these are mistaken by rpmlint to be devel files
-addFilter("devel-file-in-non-devel-package")
+# A non-executable file in bindir is used by paraview to locate plugins (hard-coded)
+# See https://gitlab.kitware.com/paraview/paraview/issues/19706
+addFilter("non-executable-in-bin .*/usr/bin/paraview\.conf")
+addFilter("script-without-shebang .*/usr/bin/paraview\.conf")
 
-# Upstream doesn't supply manpages, so no go here
-addFilter("no-manual-page-for-binary")
 
-# The hidden .plugin file is really needed
-addFilter("hidden-file-or-dir .*/usr/lib64/paraview/.plugins")
-addFilter("hidden-file-or-dir .*/usr/lib64/paraview*/.plugins")

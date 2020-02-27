@@ -1,14 +1,13 @@
---- a/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt_orig	2019-02-14 23:22:45.209934041 +0100
-+++ b/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt	2019-02-14 23:23:32.793799582 +0100
-@@ -297,8 +297,10 @@
-   "${CMAKE_CURRENT_BINARY_DIR}/include/exodusII_cfg.h"
-   "${CMAKE_CURRENT_BINARY_DIR}/include/exodus_config.h")
- 
--vtk_add_library(vtkexodusII ${sources} ${headers})
-+vtk_add_library(vtkexodusII ${sources} ${headers})
-+set_property(TARGET vtkexodusII PROPERTY POSITION_INDEPENDENT_CODE ON)
- target_link_libraries(vtkexodusII PUBLIC ${vtknetcdf_LIBRARIES})
-+target_link_libraries(vtkexodusII PUBLIC pthread)
- if (NOT VTK_INSTALL_NO_DEVELOPMENT)
-   install(FILES
-     ${headers}
+Index: ParaView-v5.7.0/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+===================================================================
+--- ParaView-v5.7.0.orig/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
++++ ParaView-v5.7.0/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+@@ -301,6 +301,8 @@ vtk_module_add_module(VTK::exodusII
+   SOURCES ${sources}
+   HEADERS ${headers}
+   HEADERS_SUBDIR "vtkexodusII/include")
++vtk_module_link(VTK::exodusII PUBLIC pthread)
++vtk_module_link(VTK::exodusII PUBLIC hdf5)
+ target_compile_definitions(exodusII
+   PRIVATE
+     exoIIc_EXPORTS)

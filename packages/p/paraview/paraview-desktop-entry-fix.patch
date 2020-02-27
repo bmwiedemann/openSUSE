@@ -1,9 +1,9 @@
-Index: ParaView-v5.4.0/Applications/ParaView/paraview.desktop.in
+Index: ParaView-v5.8.0/Clients/ParaView/org.paraview.ParaView.desktop.in
 ===================================================================
---- ParaView-v5.4.0.orig/Applications/ParaView/paraview.desktop.in
-+++ ParaView-v5.4.0/Applications/ParaView/paraview.desktop.in
+--- ParaView-v5.8.0.orig/Clients/ParaView/org.paraview.ParaView.desktop.in
++++ ParaView-v5.8.0/Clients/ParaView/org.paraview.ParaView.desktop.in
 @@ -6,3 +6,5 @@ Comment=Parallel visualization applicati
- Exec=paraview
+ Exec=paraview %f
  TryExec=paraview
  Icon=paraview
 +Categories=Graphics;2DGraphics;3DGraphics;

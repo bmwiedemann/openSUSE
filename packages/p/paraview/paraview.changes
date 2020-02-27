@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Feb 18 18:49:49 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.8.0:
+  * See https://blog.kitware.com/paraview-5-8-0-release-notes/.
+- Rebase paraview-desktop-entry-fix.patch for updated location of
+  desktop file in source.
+- Drop fix-QtGUI-missing-GLX_mesa-linking.patch: no longer
+  required as linking GLX_mesa to build QtGUI is now correctly
+  handled by build.
+- Drop 0001-Allow-compilation-on-GLES-platforms.patch: patch no
+  longer applies (since vesin 5.7.0) and commenting out patch
+  leads to factory_auto declining the submission.
+- Use ninja instead of make as recommended by upstream and to
+  speed up build; define __builder to ninja so that cmake build
+  macros use this instead of the default make.
+- Pass PARAVIEW_BUILD_WITH_EXTERNAL to cmake to use system third
+  party libraries by default; pass VTK_MODULE_USE_EXTERNAL_<name>
+  to use specific bundled libraries conditionally (gl2ps, haru,
+  pugixml).
+- Use %cmake_build instead of %make_jobs during building.
+- Replace deprecated options passed to cmake by updated ones:
+  * PARAVIEW_BUILD_QT_GUI -> DPARAVIEW_USE_QT
+  * PARAVIEW_ENABLE_PYTHON -> PARAVIEW_USE_PYTHON.
+- Update paraview-rpmlintrc to suppress warning about a non-exec
+  file that is installed to %{_bindir} and is really necessary
+  (see https://gitlab.kitware.com/paraview/paraview/issues/19706);
+  the previous entry no longer applies, so drop it.
+- Add absolutely necessary dependencies for paraview-devel as
+  Requires.
+- Install python modules to %{python3_sitearch}/paraview rather
+  than the default [%{python3_sitearch}] by setting
+  PARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX when configuring cmake;
+  this avoids file conflicts between python3-paraview and
+  python3-vtk.
+- Don't install paraview-config: it doesn't work without the
+  static libs being installed.
+
+-------------------------------------------------------------------
+Sat Jan 31 22:30:41 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.7.0:
+  See https://blog.kitware.com/paraview-5-7-0-release-notes/
+- Split out new subpackages: libparaview5_7 for all the shared
+  libs, paraview-plugins for bundled plugins, and python3-paraview
+  for python3 bindings.
+- Move shared libraries to %{_libdir} and install them as part of
+  libparaview5_7.
+- Update commands passed to cmake in keeping with upstream's
+  overhaul.
+- Drop paraview-find-qhelpgenerator-qt5.patch: no longer needed.
+- Drop  paraview-fix-file-contains-date-time.patch: GCC supports
+  SOURCE_DATE_EPOCH and, as such, this fix is no longer needed.
+- Switch to python3: Paraview is production ready with python3
+  starting with version 5.7.0, and python2 support is slated to be
+  dropped from the next major upgrade.
+- Rebase patches for updated version:
+  * fix-libharu-missing-m.patch.
+  * bundled_exodusii_add_missing_libpthread.patch.
+- New patches to fix linking problems introduced with version
+  5.7.0:
+  * fix-loguru-missing-links.patch: Add linking to libraries libm,
+    libdl, and libpthread when building loguru.
+  * fix-QtGUI-missing-GLX_mesa-linking.patch: Link to library
+    libGLX_mesa when building Qt GUI support.
+  * paraview-link-against-python.patch to fix linking against
+    the python library.
+- Patch 0001-Allow-compilation-on-GLES-platforms.patch needs
+  rebase; commented out for now.
+- Switch an env based hashbang with one directly calling the
+  required binary (python3 in this case).
+- Switch as many BuildRequires as possible to pkgconfig based
+  ones.
+- Update rpmlintrc file to remove no longer needed filters and
+  update the leftover filter (hidden file or dir) for directory
+  change.
+
+-------------------------------------------------------------------
 Fri Jan 31 22:05:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop fix-libhdf5-missing-m.patch: No longer needed.
