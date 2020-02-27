@@ -1,6 +1,7 @@
 #
 # spec file for package ocli
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,11 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ocli
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        OwnTracks command line interface publisher 
 License:        GPL-2.0-or-later
@@ -25,6 +27,7 @@ URL:            https://github.com/owntracks/ocli
 Source:         https://github.com/owntracks/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gpsd-devel
 BuildRequires:  mosquitto-devel
+Provides:       owntracks-cli-publisher
 
 %description
 This is the OwnTracks command line interface publisher, a.k.a.
@@ -45,7 +48,7 @@ make %{?_smp_mflags}
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/ocli
-%{_mandir}/man1/ocli.1%{?ext_man}
+%{_bindir}/owntracks-cli-publisher
+%{_mandir}/man1/owntracks-cli-publisher.1%{?ext_man}
 
 %changelog

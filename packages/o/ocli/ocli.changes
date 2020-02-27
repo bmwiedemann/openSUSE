@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 15 13:40:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0
+  - Rename binary to "owntracks-cli-publisher"
+  - Use version tag from "version.h".
+  - silence switch is honoured
+
+-------------------------------------------------------------------
 Sun Jan 12 21:23:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.0
