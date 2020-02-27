@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
-Fri Feb 21 12:37:35 UTC 2020 - tux93@opensuse.org
+Thu Feb 27 09:53:35 UTC 2020 - maurizio.galli@gmail.com
+
+- Update to version 0.14+git21.6b81725d:
+  * Removed conflicting icons
+- Fixes boo#1164862
+
+-------------------------------------------------------------------
+Fri Feb 21 12:37:35 UTC 2020 - maurizio.galli@gmail.com
 
 - Update to version 0.14+git19.684af360:
   * Several small symlink  fixes
@@ -15,7 +22,7 @@ Fri Feb 21 12:37:35 UTC 2020 - tux93@opensuse.org
   * Drop Chrome and Chromium icons Both icons scale well at every size
 
 -------------------------------------------------------------------
-Tue Nov 05 16:00:52 UTC 2019 - tux93@opensuse.org
+Tue Nov 05 16:00:52 UTC 2019 - maurizio.galli@gmail.com
 
 - Update to version 0.14+git5.36fd0049:
   * Drop Firefox icon

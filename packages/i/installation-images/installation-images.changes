@@ -1,4 +1,26 @@
 --------------------------------------------------------------------
+Wed Feb 26 10:46:23 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#361
+- etc: ptp_clockmatrix to module.config
+- 14.459
+
+--------------------------------------------------------------------
+Thu Feb 20 09:36:39 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#359
+- etc: update module.config to match 5.6
+- 14.458
+
+--------------------------------------------------------------------
+Tue Feb 11 12:19:55 UTC 2020 - lslezak@suse.cz
+
+- merge gh#openSUSE/installation-images#358
+- Added libyui-rest-api extension image (bsc#1163275)
+- Adapt also the tftp.file_list file
+- 14.457
+
+--------------------------------------------------------------------
 Thu Feb 6 12:20:32 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#357

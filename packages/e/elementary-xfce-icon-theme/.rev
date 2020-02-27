@@ -87,4 +87,111 @@
     <comment></comment>
     <requestid>778612</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>95af5230ba69cd751d3693d5522a0728</srcmd5>
+    <version>0.14+git21.6b81725d</version>
+    <time>1582810894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14+git21.6b81725d:
+  * Removed conflicting icons
+- Fixes boo#1164862
+- Update to version 0.14+git19.684af360:
+  * Several small symlink  fixes
+  * Revamped all 16px panel icons and made several fixes
+  * Revamped 16px dark panel icons and synced network icons from elementary upstream
+  * Add symlinks for LICENSE
+  * Fix dangling symlinks to AUTHORS, CONTRIBUTORS, and README.md
+  * Cleanup unused styles fron thunderbird svgs, fixing inkscape warning attribute 'mask' given as CSS
+  * Second run of vacuum-defs
+  * Drop file reference (fixes #171)
+  * Rename fake svgs to pngs
+  * Vacuum all svgs
+  * Drop Chrome and Chromium icons Both icons scale well at every size
+- Update to version 0.14+git5.36fd0049:
+  * Drop Firefox icon
+- Update to version 0.14+git4.5c874a03:
+  * fix nm-device-wired 16px light icon colors
+  * make nm-device-wired dark icon 16px match 22px style
+  * Make 24px home folder consistent with 16px
+  * Make 16-24px Music folder blue for better contrast on dark background
+  * make nm-device-wired icon 16px match 22px style
+  * Added nm-applet wired symbolic icon
+  * Improve sizing and alignment of thunderbird icon
+  * thunderbird png -&gt; svg
+  * New thunderbird icon
+- Update to version 0.14+git4.5c874a03:
+  * fix nm-device-wired 16px light icon colors
+  * make nm-device-wired dark icon 16px match 22px style
+  * make nm-device-wired icon 16px match 22px style
+- Update to version 0.13.1+git37.828aa1a8:
+  * Make 24px home folder consistent with 16px
+  * Make 16-24px Music folder blue for better contrast on dark background
+- Update to version 0.13.1+git35.4527964c:
+  * Added nm-applet wired symbolic icon
+  * New thunderbird icon
+  * Updated software-updater icons to match symbolic icons color codes
+- Changed source archive to xz
+- Update to version 0.13.1+git29.525caef4:
+  * Also inherit the upstream elementary theme (Fixes #157)
+  * Add some missing symbolic icons for blueman and blueberry
+  * Added transmission symbolic icon
+  * Add preferences-color and xfce4-color-settings icons
+  * added new software-updater symbolic icons
+  * fixed blueman-disabled symbolic icon
+  * Drop dangling symlinks
+  * Also add Thunar toolbar icons to -darker variant
+  * Improve symbolic icons for Thunar
+- Changed source file name to follow guidelines (&quot;+&quot; instead of &quot;~&quot;)
+- Update to version 0.13.1~git20.f4968df2:
+  * Added 24px system-software-update monochrome icons
+  * Removed apps/48/system-software-update.svg from Darker variant
+  
+- Update to version 0.13.1~git17.6118c6a9:
+  * Adding symlink to appropriate update icon for gpk
+  * Fix gradients and shadows of software-update icons
+  * software-update-icons: Fixed 16px icons to match 22px design
+  * Add approved 'monochrome' panel icons for software updater 
+    and update CONTRIBUTORS
+  * Fix last remaining blue folders (gh#shimmerproject/elementary-xfce#127)
+- Update to version 0.13.1~git12.5a5d511b:
+  * added blueberry tray icons
+- Update to version 0.13.1~git11.25ff77b0:
+  * Ensure we're inheriting Adwaita (gh#shimmerproject/elementary-xfce#139)
+  * Respect the CC variable, if defined.
+  * Avoid race condition when using parallelization.
+  * Add symlinks for media-flash-sd
+- Update to version 0.13.1~git6.c377da86:
+  * Add yast specific package-* icons
+- Renamed version 
+- Update to version 0.13.1+20181113.14732d1b:
+  * No longer inherit from the gnome icon theme
+    (gh#shimmerproject/elementary-xfce#136)
+    
+- Added Requires adwaita-icon-theme and hicolor-icon-theme
+- Remove conjecture and first-person grammar from description.
+- Update to version 0.13.1+20181112.4a4d7c9f:
+  * Reorganize Authors, License and Contributors files 
+    (gh#shimmerproject/elementary-xfce#135)
+  * Update bluetooth icon from upstream
+  * More vacuuming
+  * Update Network and Power settings from upstream
+  * Update view-refresh from upstream
+  * Add new network icons for dark panels
+  * Add 22px wireless icons
+  * Start transition to new wireless icon
+  * More vacuuming
+  * Recolor the remaining blue folder icons 
+    (gh#shimmerproject/elementary-xfce#127)
+  
+- removed patch as no longer needed (gh#shimmerproject/elementary-xfce#135)
+- fixed spec file to remove duplicates
+- switched source to master branch 
+- revert previous changes
+- created patch to move doc files in the correct location in the source
+- fixed doc files and license file issues in source tar.gz in spec file 
+- run spec-cleaner 
+- initial build 
+</comment>
+    <requestid>779865</requestid>
+  </revision>
 </revisionlist>

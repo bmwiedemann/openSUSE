@@ -1,7 +1,7 @@
 #
 # spec file for package qtkeychain-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,14 @@
 
 %define lname   libqt5keychain1
 Name:           qtkeychain-qt5
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/frankosterfeld/qtkeychain
-Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz
+Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-On-Unix-systems-shared-libraries-have-a-abi-version.patch
-Patch2:         0002-Detect-XFCE-desktop-correctly.patch
-Patch3:         0003-Generate-Qt-5.12.1-compatible-qt_Qt5Keychain.pri.patch
 BuildRequires:  cmake
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)

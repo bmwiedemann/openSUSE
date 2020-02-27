@@ -1,4 +1,283 @@
 -------------------------------------------------------------------
+Thu Feb 27 08:52:18 UTC 2020 - Michal Jura <mjura@suse.com>
+
+- Update to version 0.17.2:
+  * Bump version to v0.17.2 and add docs (#1075)
+  * Add Sonobuoy plugins page (#1070)
+  * Update to use latest systemd-logs image (#1074)
+  * Get rid of Linux specific scripts as much as possible (#1072)
+  * Use filepath instead of path when possible (#1073)
+  * Add M2 as a team member on the site (#1069)
+  * Fix flag name for systemd-logs image (#1066)
+  * Update goreleaser to remove deprecated field (#1065)
+  * Version bump and docs for v0.17.1 (#1063)
+  * Add support for pulling and pushing all images (#1061)
+  * Clarify that users shouldn't provide more options when running a file (#1053)
+  * Bring KIND to 0.6.1 in CircleCI (#1062)
+  * feat: Adding namespace to cluster resources and removing only necessary ones
+  * Refactor image client to not be E2E specific (#1057)
+  * Allow systemd-logs to be configured via CLI
+  * Improve error message from GetStatus
+  * Adds commands to print default plugin definitions
+  * Tag Items with metadata about the type if item (e.g. node/file/etc)
+  * Do not fail jobs if we can't query the API server while running
+  * Remove outdated examples
+  * Fix bug which caused daemonset status to not be updated with results
+  * Process JUnit error field
+  * Update release docs (#1042)
+  * Prepare v0.17.0 release (#1041)
+  * Add results to shortlinks and update link to remove .md suffix (#1039)
+  * Add blog post describing progress updates from e2e plugin
+  * Add FAQ to shortlinks (#1033)
+  * Update blog post about kube-bench image
+  * Prepare v0.16.5 release (#1031)
+  * Improve site accessibility score (#1017)
+  * Add an FAQ (#998)
+  * Improve instructions for airgapped environments (#1023)
+  * Add command to ouput default image registry config (#1022)
+  * Fixes: #1018
+  * fix typo in e2eplugin page (#1014)
+  * Default to enableing progress updates from E2E plugin
+  * Updated to just /docs so this doesn't have to be updated again
+  * Updated docs link to point to latest
+  * Update to log logic in order to stream from new containers as they come up (#1007)
+  * Publish 32-bit and arm64 clients (#1009)
+  * Fix formatting of commands in CIS blog post (#1004)
+  * Add CIS Benchmark plugin blog post (#1002)
+  * Bump version and docs for v0.16.4 (#999)
+  * Add wait period to allow image pull error recovery (#997)
+  * Ensure errors.json with structured data is parsed (#995)
+  * Allow daemonsets to use affinity to limit nodes they run on (#990)
+  * Allow plugins to be specified via a URL (#989)
+  * Allow DNS pod selectors to be configured (#987)
+  * Prepare v0.16.3 release (#983)
+  * Use prerelease info when looking up conformance image (#978)
+  * Fix broken e2eplugin link (#974)
+  * Set OwnerReference on plugin TLS Secret (#973)
+  * Sleep forever after systemd logs plugin finishes (#971)
+  * Update github org in one of our scripts (#960)
+  * Don't set branch just let it be calculated (#966)
+  * Tweaks to CI (#964)
+  * Fixing up CI scripts to publish correctly (#963)
+  * Adjust our CircleCI to list tags on required job (#961)
+  * Add older blog posts and author images (#958)
+  * Prepare v0.16.2 release (#957)
+  * Update release process docs to reference new systems (#956)
+  * Improve docs organization and E2E descriptions (#951)
+  * Make timeouts more clear (#938)
+  * Remove .travis.yml to disable TravisCI (#954)
+  * Update badge to be from CircleCI not Travis (#953)
+  * Unity integration testing and remove Travis (#949)
+  * Make the publish script executable (#948)
+  * Fixup to path to script (#947)
+  * Move image pushing into CircleCI (#945)
+  * Adds new blog post regarding customizing the E2E test image (#944)
+  * Add CircleCI config (#940)
+  * Update README to download release instead of go get (#942)
+  * Move to go modules (#935)
+  * Results aggregation should consider the errors directory (#936)
+  * Process all nodes and treat empty status as unknown (#937)
+  * Fixup to docker image push (#934)
+  * Get dockerhub image pushing to work on Travis (#932)
+  * Use created namespace name during `run --wait` (#930)
+  * Update our registry to dockerhub and use our latest kind-node (#927)
+  * Fix blockquote rendering (#923)
+  * Add new GitHub org blog post (#928)
+  * Allow piping input to sonobuoy run (#925)
+  * Update repo throughout codebase (#924)
+  * Prepare for v0.16.1 Release (#921)
+  * Tweak readme with info about results. (#917)
+  * Default to using the golang-based conformance runner (#916)
+  * Add a small test which runs a basic plugin (#903)
+  * Allow the --plugin flag to specify a directory of plugins (#911)
+  * Prints all plugins when invoking `sonobuoy results` by default (#909)
+  * Adds blog post summarizing improvements made up until 0.16.0 (#908)
+  * Adds a testImage for our integration tests (#907)
+  * Adds the results format as a flag parameter for gen plugin (#904)
+  * Add kind and dep to path in Travis build (#902)
+  * Remove unused dependency from Gopkg.toml (#898)
+  * Add a test to check that version fields are set (#894)
+  * Prepare v0.16.0 release (#896)
+  * Rename stress test directory to match package name (#893)
+  * Fix script to make new versioned docs (#892)
+  * Bump version and add v0.15.4 docs (#886)
+  * Add certified conformance mode and non-disruptive-conformance mode (#885)
+  * Progress reports for plugins (#869)
+  * Remove 'extended' mode (#884)
+  * Minor change to retrigger blog publishing (#882)
+  * Add blog post for Customizing PodSpecs (#879)
+  * Add a disruptive taint to list of default tolerations (#878)
+  * check for container running before following logs (#706)
+  * Remove unnecessary legacy branding (#873)
+  * Update to Go 1.13 (#871)
+  * Show logs for a specific plugin (#868)
+  * Adjust MASTER_URL to be just the hostname (#867)
+  * Bubble up unknown results just like failures (#866)
+  * Fix broken links and reference to conformance image (#864)
+  * Update version and add new docs for v0.15.3 (#862)
+  * Update release docs for new build flow (#861)
+  * Remove plugin.ResultType due to confusion/lack of need (#857)
+  * Add documentation for custom PodSpecs (#859)
+  * Add junit support for non-e2e tests/multi-suite (#851)
+  * Use MarshalIndent on json goldenfiles (#856)
+  * Rename master to aggregator (#847)
+  * Update gems (#850)
+  * Bump version of Sonobuoy and add new docs for v0.15.2 (#846)
+  * Set OwnerReference on Plugin resources (#845)
+  * Modify some old docs to avoid liquid syntax warnings (#844)
+  * Ensure we filter resources by namespace (#842)
+  * Ensure a plugin isn't reported as passed if no results were read (#841)
+  * Add Details map to post-processed Items (#838)
+  * Add ability to override pod spec options (#837)
+  * Add results info to the status annotation and status cmd output (#829)
+  * Use gcloud auth instead of docker-credential-gcr (#836)
+  * Add image building/pushing back to Travis (#835)
+  * Remove use of templates for plugin Jobs and DaemonSets (#834)
+  * Sync master/root README.md and provide a script to do this (#831)
+  * Remove `plugin` command (#833)
+  * Fix SEO title output on docs
+  * Add SEO functionality to the site
+  * Add 0.15.1 blog post (#828)
+  * Bump version to 0.15.1 and add versioned docs (#826)
+  * Add some documentation for new results command (#825)
+  * Allow multiple result files to be post-processed (#824)
+  * Default to ResultFormat=raw if unset (#822)
+  * Save results in a conanical format via postprocessing (#813)
+  * Update some vars and literals to use consts (#816)
+  * Change max supported version error to warning (#815)
+  * Write plugin definitions in their respective folders (#812)
+  * Remove use of global sonobuoy pod name (#811)
+  * Remove plugin.Definition (#810)
+  * Wait should emit some output
+  * Preserve single file result names and keep job/ds depth the same (#785)
+  * Ensure only failed tests are run with --rerun-failed (#801)
+  * Pin images used in kind config and reduce number of workers (#803)
+  * Upgrade kind to v0.4.0 (#804)
+  * Create a UUID for loaded configs if necessary (#807)
+  * Add Docker to requirements for sonobuoy images (#805)
+  * add fieldSelectors & labelSelectors for getPodLogs (#778)
+  * Generate Plugins ConfigMap if no plugins specified (#799)
+  * Fix a broken link on "Conformance Testing" page (#798)
+  * Allow cleanup to be skipped on a per plugin basis (#796)
+  * Small CTA fix
+  * Add redirect for docs
+  * Fix links to doc pages on new site (#794)
+  * Fix preflight test error message (#791)
+  * Fix retrieve command when using dynamic pod name (#790)
+  * Look up sonobuoy master pod name by label (#787)
+  * issue 777 add more query options for getPodLogs (#788)
+  * Return exit code 1 if sonobuoy can't pull all images required for the e2e tests (#786)
+  * Add e2e-repo-config flag to images pull command (#781)
+  * Add new blog post for dry-run and --plugin-env flag (#774)
+  * Fix logo reference on main README (#773)
+  * Update README to point to docs site (#771)
+  * Add v0.15.0 doc snapshot and automate process (#770)
+  * Prepare v0.15.0 release (#769)
+  * Update release process documentation (#768)
+  * Tweak the timing of considering pod as failing to be more permissive (#764)
+  * Add basic validation of configs (#763)
+  * Add versioned docs to Sonobuoy site (#756)
+  * Fixup debug line to target regular files and print file name (#762)
+  * Apply changes from running gofmt (#758)
+  * Add Bridget to the team on the website (#760)
+  * Add native Makefile target (#757)
+  * Ensure dep has been run in CI (#755)
+  * Update golden file tests to use static versions (#751)
+  * Fixup to travis debug lines (#753)
+  * Add vscode to gitignore (#749)
+  * Set GitSHA when using goreleaser (#750)
+  * Fix build and cleanup test to ensure clean state for release (#747)
+  * Bump version to v0.14.3 (#743)
+  * Fix excerpt separator being shown in blog posts (#742)
+  * Add checks for if a container has terminated (#734)
+  * Add daemonSet monitoring tests (#740)
+  * Add tests for job.Monitor logic (#739)
+  * Adjust README description of support matrix (#737)
+  * Reprocess results if there was a processing error
+  * Unify http/non-http result handling (#729)
+  * Use a struct for GetStatus to be consistent (#731)
+  * Add ability to specify custom annotations (#723)
+  * Documentation usability and readability update (#727)
+  * Fix/simplify the config loading logic enabling empty resources (#725)
+  * Add initial annotation to the pod when starting (#724)
+  * Don't create resource directories if not querying for resources (#726)
+  * Properly report error when a plugin fails to run (#720)
+  * Ensure plugin selection list and resources can be empty (#722)
+  * Update version number
+  * Update README | Remove enhancements
+  * Update docs from master branch not gh-pages
+  * Updates to homepage links
+  * Adding in Jekyll site
+  * Set any plugin env vars from the CLI (#709)
+  * Fix race/deadlock issues with logs when a pod is not ready (#719)
+  * Ensure conformance image version is prefixed with 'v' (#717)
+  * Fix broken link in conformance doc (#718)
+  * Use go modules when getting KinD (#714)
+  * remove redundant fields from GenConfig
+  * Add documentation about how to pull private Sonobuoy image
+  * Add example for command runner plugin
+  * Add coverage profile to gitignore to ensure clean state after tests
+  * Bump version to v0.14.2
+  * Fix servergroups query
+  * Update queryies to use the dynamic client
+  * Add ability to set args when defining a plugin
+  * Properly set default for plugin job driver
+  * Support imagePullSecrets for sonobuoy workers
+  * Add CLI flag for aggregation timeout
+  * Add plugin flag for custom, local plugins
+  * Add sonobuoy gen config file and documentation
+  * Tighten preflight check to err on existing namespace
+  * Update client go and other deps
+  * Run all loaded plugins by default
+  * Modify the json serialization of config object
+  * Add test that will run through command creation
+  * Fix flaky unit test
+  * Change logic in template to use a list of plugin manifests
+  * Add `gen plugin` command to generate boilerplate for plugins
+  * Centralize the process of going from kubeconfig to sonobuoy client
+  * Defer assignment of Docker gcr.io secret
+  * Add context flag whenever kubeconfig flag is added
+  * Add CodeCov reports
+  * Bump version for 0.14.1
+  * Use heptio kube-conformance image for any cluster < v1.14.1
+  * Fix CRD query
+  * Error e2e command if no e2e results
+  * Add validation to focus/skip regexp flags
+  * Update release documentation
+  * Add additional documentation about testing in airgap
+  * Clean up a few artifacts for clean state
+  * Skip goreleaser validation
+  * Add a short version option for scripting
+  * Bump versions for v0.14
+  * Add image list for v1.14 Kubernetes
+  * Use workers default image and pull IfNotPresent
+  * Push images in Jenkins
+  * Remove image pushing from Travis
+  * Add image download to tar, image pull to docker client, image tag/push to registry
+  * Replace alpine with debian-slim
+  * Show list of images used for upstream Kubernetes E2E tests
+  * Add missing registry entry for airgap example
+  * Remove debug lines
+  * Default to 'auto' for gen command
+  * Update README
+  * Use upstream conformance image when >= v1.13
+  * Add support for KUBE_TEST_REPO_LIST and custom registries
+  * Update to go1.12
+  * Restructured cmd package
+  * Run E2E tests inside a kind cluster
+  * List files created by retrieve command
+  * Update logo
+  * Fix go vet error in daemonset.go
+  * Add wait flags for delete and run
+  * Prioritize flags over config values when running gen
+  * Fix problem for building locally on non-Linux OS
+  * Provide more clear output from sonobuoy e2e
+  * Update version command to print GitSHA, Min/Max K8S Versions & current cluster API version
+  * Acknowledge state between plugins complete and done
+  * Project Sonobuoy renaming (#577)
+  * Added checks to release document (#566)
+
+-------------------------------------------------------------------
 Thu Jan 31 13:05:43 UTC 2019 - Markos Chandras <mchandras@suse.de>
 
 - Update to latest 0.13.0 release

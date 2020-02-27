@@ -352,10 +352,13 @@ BuildRequires:  less
 BuildRequires:  libopenssl1_1-hmac
 %endif
 BuildRequires:  libpcsclite1
+BuildRequires:  libyui-ncurses
 BuildRequires:  libyui-ncurses-pkg
+BuildRequires:  libyui-ncurses-rest-api
 BuildRequires:  libyui-qt
 BuildRequires:  libyui-qt-graph
 BuildRequires:  libyui-qt-pkg
+BuildRequires:  libyui-qt-rest-api
 BuildRequires:  linuxrc
 BuildRequires:  lklug-fonts
 BuildRequires:  lsscsi
@@ -607,7 +610,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.456
+Version:        14.459
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

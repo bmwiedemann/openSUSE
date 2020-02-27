@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 15:04:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop llvm6-devel requirement for ARM
+
+-------------------------------------------------------------------
 Wed Jan 22 22:39:11 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Add support for riscv64

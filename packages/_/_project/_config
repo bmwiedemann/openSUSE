@@ -1,10 +1,6 @@
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
 Ignore: firewall-macros:firewalld
 
-# Workaround packages requiring curl-mini
-#Substitute: curl-mini curl
-#Substitute: libcurl4-mini libcurl
-
 # Help python-subinit to win until python-python-subunit is gone
 Prefer: python2-subunit python3-subunit
 
@@ -80,12 +76,12 @@ Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
 Substitute: system-packages:docker kmod kernel-default docker createrepo_c zypper
-Substitute: build-packages:docker python3-kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !curl-mini !systemd-mini-sysvinit
+Substitute: build-packages:docker python3-kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit
 
 # Podman based image building
 Substitute: system-packages:podman kmod kernel-default podman buildah createrepo_c zypper
 
-Substitute: build-packages:kiwi python3-kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !curl-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini
+Substitute: build-packages:kiwi python3-kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini
 
 # To build ISO images
 Substitute: build-packages:iso !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !systemd-mini-sysvinit
@@ -307,15 +303,12 @@ Prefer: -harfbuzz-bootstrap -harfbuzz-bootstrap-devel
 
 # break dependency of the -mini packages: they are valid for OBS, but not for end-user-installation
 Ignore: cmake-mini:this-is-only-for-build-envs
-Ignore: curl-mini:this-is-only-for-build-envs
 Ignore: dummy-release:this-is-only-for-build-envs
 Ignore: erlang-rebar-obs:this-is-only-for-build-envs
 Ignore: ghc-bootstrap-helpers:this-is-only-for-build-envs
 Ignore: ghc-bootstrap:this-is-only-for-build-envs
 Ignore: harfbuzz-bootstrap:this-is-only-for-build-envs
 Ignore: jdk-bootstrap:this-is-only-for-build-envs
-Ignore: libcurl-mini-devel:this-is-only-for-build-envs
-Ignore: libcurl4-mini:this-is-only-for-build-envs
 Ignore: libsystemd0-mini:this-is-only-for-build-envs
 Ignore: libudev-mini1:this-is-only-for-build-envs
 Ignore: libunbound-devel-mini:this-is-only-for-build-envs
@@ -364,11 +357,6 @@ Conflict: udev:libudev-mini1
 Conflict: systemd:libsystemd0-mini
 Conflict: systemd-mini-devel:systemd
 
-# curl: there is a -mini package to bootstrap and a full; some programs decide on what they want to build in based on what curl can do, so let's prefer full curl
-Prefer: curl libcurl-devel libcurl4
-Prefer: cmake:libcurl4-mini
-#Prefer: -curl-mini -libcurl-mini-devel -libcurl4-mini
-
 # Cmake exists as a -mini flavor, which is not linked against curl.
 # That substitute is crap - it actually replaces Requires: cmake with Requires: cmake-mini in spec files!!!
 # Substitute: cmake cmake-mini
@@ -376,16 +364,6 @@ Prefer: cmake-mini
 
 # Samba brings python2 and python3 bindings, with the py3-bindings not 100% complete yet. So we favor py2
 Prefer: samba-libs-python
-
-# Remain so many unresolvable packages, we need some magic here!
-# Prefer: libcurl-devel:libcurl4
-# Substitute: pkgconfig(libcurl) libcurl4 libcurl-devel
-# Substitute: curl-devel libcurl4 libcurl-devel
-# Conflict: ghc-curl-devel:libcurl4-mini
-# Conflict: netcdf-devel:libcurl4-mini
-# Conflict: libkolabxml-devel:libcurl4-mini
-# Conflict: kdump:libcurl4-mini
-# Conflict: yast2-transfer:libcurl4-mini
 
 Prefer: -suse-build-key
 # Set postfix as the 'default' smtp_daemon (virtual symbol provided by all MTAs)

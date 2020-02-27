@@ -1,7 +1,7 @@
 #
 # spec file for package sonobuoy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define git_commit %{version}
+%define project github.com/vmware-tanzu/sonobuoy
 Name:           sonobuoy
-Version:        0.13.0
+Version:        0.17.2
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0
 Group:          Development/Languages/Other
-URL:            https://github.com/heptio/sonobuoy
-Source:         %{name}-%{version}.tar.xz
-BuildRequires:  go >= 1.8
+URL:            https://github.com/vmware-tanzu/sonobuoy
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  go >= 1.12
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 %{go_nostrip}
 %{go_provides}
 
@@ -37,16 +37,21 @@ Kubernetes cluster by running a set of Kubernetes conformance tests
 in an accessible and non-destructive manner.
 
 %prep
-%setup -q
-%{goprep} github.com/heptio/sonobuoy
+%setup -q -a1
 
 %build
-export GOPATH="%{_builddir}/go:$GOPATH"
-GOBIN=$PWD/bin go install -tags '' -ldflags '-s -w -X github.com/heptio/sonobuoy/pkg/buildinfo.Version=v%{version}' github.com/heptio/sonobuoy
+%{goprep} github.com/vmware-tanzu/sonobuoy
+export GOPATH=$HOME/go
+mkdir -pv $HOME/go/src/%{project}
+rm -rf $HOME/go/src/%{project}/*
+cp -avr * $HOME/go/src/%{project}
+
+cd $HOME/go/src/%{project}
+CGO_ENABLED=0 go build -o sonobuoy -ldflags="-s -w -X %{project}/pkg/buildinfo.Version=v%{version}" %{project}
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m755 bin/sonobuoy %{buildroot}/%{_bindir}/sonobuoy
+cd $HOME/go/src/%{project}
+install -m755 sonobuoy %{buildroot}/%{_bindir}/sonobuoy
 
 %files
 %doc README.md

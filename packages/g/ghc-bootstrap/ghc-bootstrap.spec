@@ -87,7 +87,6 @@ Requires:       libnuma-devel
 %ifarch aarch64 %{arm}
 BuildRequires:  binutils-gold
 Requires:       binutils-gold
-Requires:       llvm6-devel
 %endif
 %ifarch s390x riscv64
 BuildRequires:  libffi-devel
