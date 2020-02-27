@@ -1,7 +1,7 @@
 #
 # spec file for package mate-desktop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  docbook-xsl-stylesheets
 # set to %{version} when mate-common has an equal release to mate-desktop
 BuildRequires:  mate-common >= 1.22
 BuildRequires:  pkgconfig
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
