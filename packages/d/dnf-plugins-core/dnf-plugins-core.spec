@@ -57,7 +57,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.0.13
+Version:        4.0.14
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0+

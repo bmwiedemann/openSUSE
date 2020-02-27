@@ -169,4 +169,16 @@
 - Deconflict with zypper-needs-restarting on SLE to unblock PackageHub updates</comment>
     <requestid>765594</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>49a4b2d85689240cdae3d72733c2846e</srcmd5>
+    <version>4.0.14</version>
+    <time>1582819065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.14
+  + Fix conflict for dnf download --resolve (rh#1787908)
+  + config-manager calls parser error when without options (rh#1782822)
+  + Update reposync.py with --norepopath option
+  + Fix: don't open stdin if versionlock is missing (rh#1785563)</comment>
+    <requestid>779945</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:17:50 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.14
+  + Fix conflict for dnf download --resolve (rh#1787908)
+  + config-manager calls parser error when without options (rh#1782822)
+  + Update reposync.py with --norepopath option
+  + Fix: don't open stdin if versionlock is missing (rh#1785563)
+
+-------------------------------------------------------------------
 Sun Jan 19 16:04:23 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.13
