@@ -8,6 +8,11 @@
 #--------------------------------------
 echo "Configure image: [$kiwi_iname]..."
 
+# Log to stdout/stderr
+ln -sf /dev/stdout /var/log/nginx/access.log
+ln -sf /dev/stderr /var/log/nginx/error.log
+
+# Create fallback backp of default config files and data
 mkdir -p /usr/local/nginx/etc
 cp -av /etc/nginx/* /usr/local/nginx/etc/
 rm /etc/nginx/*.default

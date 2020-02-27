@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 10:34:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Redirect access.log to stdout
+- Redirect error.log to stderr
+
+-------------------------------------------------------------------
 Mon Feb 24 20:37:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add demo index.html
