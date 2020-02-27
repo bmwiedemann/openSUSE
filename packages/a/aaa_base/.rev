@@ -3733,4 +3733,13 @@
   * change rp_filter to 2 to follow the current default (bsc#1160735)</comment>
     <requestid>772113</requestid>
   </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>59a89cf956bd4d1cf90c0631b643c064</srcmd5>
+    <version>84.87+git20200224.7105b32</version>
+    <time>1582817378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200224.7105b32:
+  * Add usrfiles for protocols and rpc, too (forwarded request 778724 from kukuk)</comment>
+    <requestid>778725</requestid>
+  </revision>
 </revisionlist>

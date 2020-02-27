@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 24 10:22:08 UTC 2020 - kukuk@suse.com
+
+- Update to version 84.87+git20200224.7105b32:
+  * Add usrfiles for protocols and rpc, too
+
+-------------------------------------------------------------------
+Mon Feb 24 10:07:25 UTC 2020 - ro@suse.com
+
+- Update to version 84.87+git20200224.bb11f02:
+  * change feedback url from http://www.suse.de/feedback to
+    https://github.com/openSUSE/aaa_base/issues
+  * added "-h"/"--help" to "old" command (from Bernhard Lang)
+
+-------------------------------------------------------------------
 Fri Feb 07 14:27:46 UTC 2020 - ro@suse.com
 
 - Update to version 84.87+git20200207.27e2c61:
