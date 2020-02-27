@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Feb 26 15:52:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only needs Qt 5.12 to build
+- Fix private-headers-devel requires
+
+-------------------------------------------------------------------
+Thu Feb 20 12:36:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit
