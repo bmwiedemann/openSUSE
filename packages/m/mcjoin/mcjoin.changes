@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:56:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5
+  * Replaced mutually exclusive options -q and -d with -l level.
+    Default log level is notice, for true quiet mode, use -l none
+  * Added new daemon mode, which makes mcjoin detach from its
+    controlling terminal and run in the background, with all
+    output except progress redirected to syslog
+  * Fix possible file descriptor leak
+  * Improve error detection if mcjoin cannot find a default
+    interface, a valid (source) IP address, or anything else
+    goes wrong
+  * Add support for -w SEC, initial delay before actually
+    starting. Useful if started very early in a system bootstrap
+    before network has come up properly
+- Update to version 2.4
+  * Support for SSM (S,G) join, in addition to the existing
+    ASM (*,G) join
+  * Find interface bsaed on default route with best metric
+  * Initial support for IPv6 (*,G) and (S,G) joins
+
+-------------------------------------------------------------------
 Thu Apr  4 19:41:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3
