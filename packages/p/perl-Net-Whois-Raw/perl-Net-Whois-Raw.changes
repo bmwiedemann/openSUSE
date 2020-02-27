@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 03:09:47 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.99027
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99027  Feb 24 2020 Alexander Nalobin
+      - pwhois script refactoring
+      - Can pass arbitrary query part to pwhois script
+
+-------------------------------------------------------------------
 Mon Oct 28 10:59:36 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.99026
