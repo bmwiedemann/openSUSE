@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 03:07:35 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.105
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.105     2020-02-26 09:40:36+11:00 Australia/Melbourne
+          - one_of suboptions now get accessors (thanks, Michael McClimon!)
+
+-------------------------------------------------------------------
 Sun Apr 28 05:13:41 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.104
