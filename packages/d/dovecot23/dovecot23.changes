@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 12:40:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update dovecot-2.3.0-dont_use_etc_ssl_certs.patch: since we
+  change CERTDIR to /etc/ssl/private, it is rather evil to then err
+  out claiming /etc/ssl/certs would not exist. The error message
+  should mention the directory it tested for.
+
+-------------------------------------------------------------------
 Wed Feb 12 12:24:46 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.9.3

@@ -428,4 +428,15 @@
   * CVE-2020-7957: Specially crafted mail can crash snippet generation. (forwarded request 773697 from adkorte)</comment>
     <requestid>774042</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>238adfe9651c48cb30817fb5145452b1</srcmd5>
+    <version>2.3.9.3</version>
+    <time>1582810616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dovecot-2.3.0-dont_use_etc_ssl_certs.patch: since we
+  change CERTDIR to /etc/ssl/private, it is rather evil to then err
+  out claiming /etc/ssl/certs would not exist. The error message
+  should mention the directory it tested for. (forwarded request 779407 from dimstar)</comment>
+    <requestid>779422</requestid>
+  </revision>
 </revisionlist>

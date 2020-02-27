@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot23
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -127,7 +127,7 @@ Recommends:     %{name}-backend-sqlite = %{version}
 %endif
 Recommends:     %{name}-fts = %{version}
 Recommends:     %{name}-fts-squat = %{version}
-Url:            http://www.dovecot.org
+URL:            http://www.dovecot.org
 Source:         http://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz
 Source1:        http://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz
 Source2:        dovecot-rpmlintrc

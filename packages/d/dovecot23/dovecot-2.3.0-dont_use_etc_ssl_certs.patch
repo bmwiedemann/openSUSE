@@ -1,7 +1,7 @@
-Index: dovecot-2.3.7.2/doc/example-config/conf.d/10-ssl.conf
+Index: dovecot-2.3.9.3/doc/example-config/conf.d/10-ssl.conf
 ===================================================================
---- dovecot-2.3.7.2.orig/doc/example-config/conf.d/10-ssl.conf
-+++ dovecot-2.3.7.2/doc/example-config/conf.d/10-ssl.conf
+--- dovecot-2.3.9.3.orig/doc/example-config/conf.d/10-ssl.conf
++++ dovecot-2.3.9.3/doc/example-config/conf.d/10-ssl.conf
 @@ -9,7 +9,7 @@
  # dropping root privileges, so keep the key file unreadable by anyone but
  # root. Included doc/mkcert.sh can be used to easily generate self-signed
@@ -11,10 +11,10 @@ Index: dovecot-2.3.7.2/doc/example-config/conf.d/10-ssl.conf
  ssl_key = </etc/ssl/private/dovecot.pem
  
  # If key file is password protected, give the password here. Alternatively
-Index: dovecot-2.3.7.2/doc/man/doveconf.1.in
+Index: dovecot-2.3.9.3/doc/man/doveconf.1.in
 ===================================================================
---- dovecot-2.3.7.2.orig/doc/man/doveconf.1.in
-+++ dovecot-2.3.7.2/doc/man/doveconf.1.in
+--- dovecot-2.3.9.3.orig/doc/man/doveconf.1.in
++++ dovecot-2.3.9.3/doc/man/doveconf.1.in
 @@ -132,7 +132,7 @@ Show passwords and other sensitive value
  .TP
  .B \-x
@@ -31,11 +31,11 @@ Index: dovecot-2.3.7.2/doc/man/doveconf.1.in
 -.BR dsync (1)
 \ No newline at end of file
 +.BR dsync (1)
-Index: dovecot-2.3.7.2/doc/mkcert.sh
+Index: dovecot-2.3.9.3/doc/mkcert.sh
 ===================================================================
---- dovecot-2.3.7.2.orig/doc/mkcert.sh
-+++ dovecot-2.3.7.2/doc/mkcert.sh
-@@ -8,10 +8,10 @@ OPENSSL=${OPENSSL-openssl}
+--- dovecot-2.3.9.3.orig/doc/mkcert.sh
++++ dovecot-2.3.9.3/doc/mkcert.sh
+@@ -8,14 +8,14 @@ OPENSSL=${OPENSSL-openssl}
  SSLDIR=${SSLDIR-/etc/ssl}
  OPENSSLCONFIG=${OPENSSLCONFIG-dovecot-openssl.cnf}
  
@@ -48,10 +48,15 @@ Index: dovecot-2.3.7.2/doc/mkcert.sh
  KEYFILE=$KEYDIR/dovecot.pem
  
  if [ ! -d $CERTDIR ]; then
-Index: dovecot-2.3.7.2/doc/wiki/CompilingSource.txt
+-  echo "$SSLDIR/certs directory doesn't exist"
++  echo "$CERTDIR directory doesn't exist"
+   exit 1
+ fi
+ 
+Index: dovecot-2.3.9.3/doc/wiki/CompilingSource.txt
 ===================================================================
---- dovecot-2.3.7.2.orig/doc/wiki/CompilingSource.txt
-+++ dovecot-2.3.7.2/doc/wiki/CompilingSource.txt
+--- dovecot-2.3.9.3.orig/doc/wiki/CompilingSource.txt
++++ dovecot-2.3.9.3/doc/wiki/CompilingSource.txt
 @@ -142,7 +142,7 @@ non-standard path. Make sure you have th
  installed, and if it is not in the standard location, set 'CPPFLAGS' and
  'LDFLAGS' as shown in <the first section above.> [CompilingSource.txt]
@@ -61,10 +66,10 @@ Index: dovecot-2.3.7.2/doc/wiki/CompilingSource.txt
  the private key from '/etc/ssl/private/dovecot.pem'. The '/etc/ssl' directory
  can be changed using the '--with-ssldir=DIR' configure option. Both can of
  course be overridden from the configuration file.
-Index: dovecot-2.3.7.2/doc/wiki/SSL.CertificateCreation.txt
+Index: dovecot-2.3.9.3/doc/wiki/SSL.CertificateCreation.txt
 ===================================================================
---- dovecot-2.3.7.2.orig/doc/wiki/SSL.CertificateCreation.txt
-+++ dovecot-2.3.7.2/doc/wiki/SSL.CertificateCreation.txt
+--- dovecot-2.3.9.3.orig/doc/wiki/SSL.CertificateCreation.txt
++++ dovecot-2.3.9.3/doc/wiki/SSL.CertificateCreation.txt
 @@ -39,7 +39,7 @@ CN matches the connected host name, othe
  invalid. It's also possible to use wildcards (eg. *.domain.com) in the host
  name. They should work with most clients.
@@ -74,10 +79,10 @@ Index: dovecot-2.3.7.2/doc/wiki/SSL.CertificateCreation.txt
  private key file is created to '/etc/ssl/private/dovecot.pem'. Also by default
  the certificate will expire in 365 days. If you wish to change any of these,
  modify the mkcert.sh script.
-Index: dovecot-2.3.7.2/doc/wiki/SSL.DovecotConfiguration.txt
+Index: dovecot-2.3.9.3/doc/wiki/SSL.DovecotConfiguration.txt
 ===================================================================
---- dovecot-2.3.7.2.orig/doc/wiki/SSL.DovecotConfiguration.txt
-+++ dovecot-2.3.7.2/doc/wiki/SSL.DovecotConfiguration.txt
+--- dovecot-2.3.9.3.orig/doc/wiki/SSL.DovecotConfiguration.txt
++++ dovecot-2.3.9.3/doc/wiki/SSL.DovecotConfiguration.txt
 @@ -41,7 +41,7 @@ The most important SSL settings are (in
  ---%<-------------------------------------------------------------------------
  ssl = yes
