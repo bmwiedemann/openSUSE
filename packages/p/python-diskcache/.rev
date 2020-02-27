@@ -33,4 +33,15 @@
     <comment>- Update to pull in full python due to the dependencies</comment>
     <requestid>748706</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>644ea9078678b43a594d035245db991b</srcmd5>
+    <version>4.1.0</version>
+    <time>1582810725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Move zero-expiration logic into memoize (rather than Cache.set)
+  * Provide JSONDisk with diskcache (#124)
+  * Add check for DEFAULT_TIMEOUT in DjangoCache.memoize</comment>
+    <requestid>779740</requestid>
+  </revision>
 </revisionlist>
