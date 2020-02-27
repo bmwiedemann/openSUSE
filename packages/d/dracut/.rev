@@ -1616,4 +1616,18 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 95zfcp_rules/parse-zfcp.sh: remove rule existence check (bsc#1008352)</comment>
     <requestid>769998</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>4f0696c446680af565a43f25b1dae49e</srcmd5>
+    <version>049.1+git124.70941b30</version>
+    <time>1582817377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049.1+git124.70941b30:
+  * 90kernel-modules: Add PCI host controller modules (boo#1162669)
+
+- Update to version 049.1+git123.c2a6645e:
+  * dracut: add warning when including unsupported modules (bsc#1163055)
+  * 01fips: Boot without BOOT_IMAGE being set (bsc#1161292)
+  * 01fips: Use correct kernel image name for more platforms (bsc#1164076)</comment>
+    <requestid>778051</requestid>
+  </revision>
 </revisionlist>
