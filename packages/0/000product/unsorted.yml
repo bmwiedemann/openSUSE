@@ -360,6 +360,8 @@ unsorted:
   - agenda 
   - agenda-lang 
   - aha 
+  - aho-corasick-double-array-trie 
+  - aho-corasick-double-array-trie-javadoc 
   - aide 
   - aide-test 
   - airspy 
@@ -2413,6 +2415,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -5212,6 +5215,10 @@ unsorted:
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
+  - hawtbuf 
+  - hawtbuf-javadoc 
+  - hawtbuf-proto 
+  - hawtbuf-protoc 
   - hawtjni 
   - hawtjni-javadoc 
   - hawtjni-maven-plugin 
@@ -5779,6 +5786,8 @@ unsorted:
   - jackson-parent 
   - jacktrip 
   - jaero 
+  - jafama 
+  - jafama-javadoc 
   - jakarta-commons-discovery 
   - jakarta-commons-discovery-javadoc 
   - jakarta-commons-launcher 
@@ -5856,6 +5865,8 @@ unsorted:
   - java-cup 
   - java-cup-bootstrap 
   - java-cup-manual 
+  - java-jwt 
+  - java-jwt-javadoc 
   - java-libkolabxml1 
   - java-mraa 
   - javacc 
@@ -6215,6 +6226,8 @@ unsorted:
   - jupyter-widgetsnbextension 
   - jvnet-parent 
   - jvyamlb 
+  - jwnl 
+  - jwnl-javadoc 
   - jwt_verify_lib-source 
   - jxrlib 
   - jxrlib-devel 
@@ -7434,6 +7447,8 @@ unsorted:
   - libQt5PrintSupport-devel-32bit: [x86_64] 
   - libQt5PrintSupport-private-headers-devel 
   - libQt5PrintSupport5-32bit: [x86_64] 
+  - libQt5Quick3D5 
+  - libQt5Quick3DAssetImport5 
   - libQt5QuickControls2-devel 
   - libQt5QuickTemplates2-devel 
   - libQt5RemoteObjects5 
@@ -9705,7 +9720,7 @@ unsorted:
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
-  - libkColorPicker0_1_0 
+  - libkColorPicker0_1_1 
   - libkImageAnnotator0_2_0 
   - libkaccounts1-32bit: [x86_64] 
   - libkate-devel 
@@ -10654,6 +10669,7 @@ unsorted:
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
   - libpapi_5_7_0-hpc 
+  - libparaview5_8: [i586] 
   - libpari-gmp-tls6 
   - libparlatype-devel 
   - libparlatype2 
@@ -11006,6 +11022,11 @@ unsorted:
   - libqt5-qtnetworkauth-devel-32bit: [x86_64] 
   - libqt5-qtnetworkauth-examples 
   - libqt5-qtnetworkauth-private-headers-devel 
+  - libqt5-qtquick3d-devel 
+  - libqt5-qtquick3d-examples 
+  - libqt5-qtquick3d-imports 
+  - libqt5-qtquick3d-private-headers-devel 
+  - libqt5-qtquick3d-tools 
   - libqt5-qtquickcontrols-examples 
   - libqt5-qtquickcontrols2-examples 
   - libqt5-qtquickcontrols2-private-headers-devel 
@@ -12169,7 +12190,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk2_1 
+  - libvolk2_2_1 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -13234,6 +13255,13 @@ unsorted:
   - maven-ant-plugin-javadoc 
   - maven-antrun-plugin 
   - maven-antrun-plugin-javadoc 
+  - maven-archetype 
+  - maven-archetype-catalog 
+  - maven-archetype-common 
+  - maven-archetype-descriptor 
+  - maven-archetype-javadoc 
+  - maven-archetype-packaging 
+  - maven-archetype-plugin 
   - maven-archiver 
   - maven-archiver-javadoc 
   - maven-artifact 
@@ -14506,6 +14534,7 @@ unsorted:
   - nfacct 
   - nfc-eventd 
   - nfcutils 
+  - nfdump 
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
@@ -15742,6 +15771,7 @@ unsorted:
   - paranamer-parent 
   - paraview 
   - paraview-devel 
+  - paraview-plugins: [i586] 
   - paraviewdata 
   - parboiled 
   - parboiled-javadoc 
@@ -19341,7 +19371,6 @@ unsorted:
   - python2-pika 
   - python2-pika-pool 
   - python2-pilkit 
-  - python2-pingparsing 
   - python2-pip 
   - python2-pip-api 
   - python2-pip-licenses 
@@ -21865,6 +21894,7 @@ unsorted:
   - python3-param 
   - python3-parameterized 
   - python3-paramiko-expect 
+  - python3-paraview: [i586] 
   - python3-parfive 
   - python3-parse 
   - python3-parse_type 
@@ -24278,7 +24308,11 @@ unsorted:
   - scala-apidoc 
   - scala-bootstrap 
   - scala-bootstrap-swing 
+  - scala-maven-plugin 
+  - scala-maven-plugin-javadoc 
   - scala-pickling 
+  - scala-stm 
+  - scala-stm-javadoc 
   - scala-swing 
   - scalapack-mvapich2-test 
   - scalapack-openmpi1-test 
@@ -32623,6 +32657,7 @@ unsorted:
   - tog-pegasus-devel 
   - tog-pegasus-libs 
   - tog-pegasus-test 
+  - toilet 
   - tolua 
   - toluapp-5.1 
   - toluapp-5.3 
@@ -33362,6 +33397,7 @@ unsorted:
   - virtualbox-vnc: [x86_64] 
   - virtualbox-websrv: [x86_64] 
   - viruskiller 
+  - vis 
   - visio2svg-conv 
   - vit 
   - vitetris 
@@ -34118,6 +34154,8 @@ unsorted:
   - yaz 
   - yaz-doc 
   - yder-devel 
+  - yecht 
+  - yecht-javadoc 
   - yelp-devel 
   - yelp-tools 
   - yishu 
