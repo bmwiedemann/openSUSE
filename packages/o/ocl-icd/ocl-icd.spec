@@ -1,7 +1,7 @@
 #
 # spec file for package ocl-icd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        2.2.12
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
-Group:          System/Libraries
 URL:            https://github.com/OCL-dev/ocl-icd
 Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  libtool
@@ -29,11 +28,6 @@ BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  pkgconfig(egl)
-%if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550)
-BuildRequires:  update-alternatives
-Requires(pre):  update-alternatives
-Requires(post): update-alternatives
-%endif
 
 %description
 OpenCL is a royalty-free standard for cross-platform, parallel programming
@@ -46,11 +40,10 @@ ICD (driver backend).
 
 %package     -n libOpenCL1
 Summary:        OpenCL ICD Bindings
-Group:          System/Libraries
 Suggests:       pocl
 %if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550)
-Requires(pre):  update-alternatives
 Requires(post): update-alternatives
+Requires(pre):  update-alternatives
 %endif
 
 %description -n libOpenCL1
@@ -64,8 +57,8 @@ ICD (driver backend).
 
 %package        devel
 Summary:        Development files of ocl-icd
-Group:          Development/Libraries/C and C++
 Requires:       libOpenCL1 = %{version}
+Requires:       opencl-headers >= 2.2
 Requires:       pkgconfig(egl)
 
 %description    devel
@@ -78,15 +71,8 @@ use ocl-icd for ICD functionality.
 %build
 ./bootstrap
 %configure
-make %{?_smp_mflags} stamp-generator stamp-generator-dummy
-%if 0%{?sles_version} || (0%{?suse_version} && 0%{?suse_version} <= 1140)
-for i in *.h *.c; do
-    sed -i -e '/#[ ]*pragma GCC diagnostic push/d
-               /#[ ]*pragma GCC diagnostic pop/d
-               /#[ ]*pragma GCC diagnostic ignored "-Wcpp"/d' $i
-done
-%endif
-make %{?_smp_mflags}
+%make_build stamp-generator stamp-generator-dummy
+%make_build
 
 %install
 %make_install
@@ -104,7 +90,6 @@ ln -s %{_libdir}/ocl-icd/libOpenCL.so.1 %{buildroot}/%{_sysconfdir}/alternatives
 %endif
 
 %if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550)
-
 %post -n libOpenCL1
 # apparently needed when updating from a pre update-alternatives package ...
 rm -f %{_libdir}/libOpenCL.so.1.*
@@ -116,11 +101,8 @@ rm -f %{_libdir}/libOpenCL.so.1.*
 if [ "$1" = 0 ] ; then
    %{_sbindir}/update-alternatives --remove libOpenCL.so.1  %{_libdir}/ocl-icd/libOpenCL.so.1
 fi
-
 %else
-
 %post -n libOpenCL1 -p /sbin/ldconfig
-
 %endif
 
 %postun -n libOpenCL1 -p /sbin/ldconfig
@@ -135,7 +117,7 @@ fi
 %endif
 
 %check
-make check
+%make_build check
 
 %files -n libOpenCL1
 %doc README

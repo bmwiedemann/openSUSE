@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 12:25:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove condition for SLE11 build as it is unresolvable anyway
+- Require update-alternatives only where really needed
+- Require opencl-headers in the develpackage as otherwise all
+  those that pull the devel would need to do it on their own.
+
+-------------------------------------------------------------------
 Mon Aug  5 15:57:04 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 2.2.12:
