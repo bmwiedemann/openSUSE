@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:16:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.10.0:
+  * Detect XFCE desktop correctly
+  * Fix build with Qt 5.12.x
+  * translations update
+- Drop upstream patches:
+  * 0001-On-Unix-systems-shared-libraries-have-a-abi-version.patch
+  * 0002-Detect-XFCE-desktop-correctly.patch
+  * 0003-Generate-Qt-5.12.1-compatible-qt_Qt5Keychain.pri.patch
+
+-------------------------------------------------------------------
 Mon Jun 17 09:28:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add fixes from git master:
