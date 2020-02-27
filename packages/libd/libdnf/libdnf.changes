@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:07:48 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 0.45.0
+  + Config options: only first empty value clears existing (rh#1788154)
+  + Make parsing of reldeps more strict (rh#1788107)
+  + [context] Support repositories defined in main configuration file
+  + Fix filtering packages by advisory when more versions and arches are available (rh#1770125)
+  + Add expanding solvable provides for dependency matching (rh#1534123)
+  + DnfRepo: fix module_hotfixes keyfile priority level
+  + Add custom exceptions to libdnf interface
+  + [conf] Set useful default colors when color is enabled
+  + Port to libmodulemd-2 API (rh#1693683)
+
+-------------------------------------------------------------------
 Sun Jan 19 15:14:04 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 0.43.1

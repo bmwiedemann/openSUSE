@@ -245,4 +245,21 @@
   + [context] Add API to disable/enable plugins</comment>
     <requestid>765591</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b2176b891f8be16750ad2066f233e5e</srcmd5>
+    <version>0.45.0</version>
+    <time>1582819061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.45.0
+  + Config options: only first empty value clears existing (rh#1788154)
+  + Make parsing of reldeps more strict (rh#1788107)
+  + [context] Support repositories defined in main configuration file
+  + Fix filtering packages by advisory when more versions and arches are available (rh#1770125)
+  + Add expanding solvable provides for dependency matching (rh#1534123)
+  + DnfRepo: fix module_hotfixes keyfile priority level
+  + Add custom exceptions to libdnf interface
+  + [conf] Set useful default colors when color is enabled
+  + Port to libmodulemd-2 API (rh#1693683)</comment>
+    <requestid>779941</requestid>
+  </revision>
 </revisionlist>

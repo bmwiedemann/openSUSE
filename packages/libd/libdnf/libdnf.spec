@@ -17,7 +17,7 @@
 #
 
 %global libsolv_version 0.7.7
-%global libmodulemd_version 1.6.1
+%global libmodulemd_version 2.5.0
 %global librepo_version 1.11.0
 %global dnf_conflict 4.2.13
 %global swig_version 3.0.12
@@ -33,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.43.1
+Version:        0.45.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -64,7 +64,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(modulemd) >= %{libmodulemd_version}
+BuildRequires:  pkgconfig(modulemd-2.0) >= %{libmodulemd_version}
 BuildRequires:  pkgconfig(smartcols)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zck) >= 0.9.11
@@ -88,6 +88,8 @@ Recommends:     %{name}-lang = %{version}-%{release}
 Obsoletes:      typelib-1_0-Dnf-1_0 < 0.24.1
 # To avoid API issues with librepo and incomprehensible crashes
 Requires:       librepo0%{?_isa} >= %{librepo_version}
+# To avoid API issues with libmodulemd
+Requires:       libmodulemd2%{?_isa} >= %{libmodulemd_version}
 
 %description -n %{libname}
 This library provides an interface atop libsolv, and a high-level
