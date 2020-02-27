@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 26 20:04:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  * Drop Python 2 support
+  * Add packet size option to PingTransmitter and CLI
+  * Add ttl option to PingTransmitter and CLI
+  * Add include_icmp_replies flag to PingStats.as_dict method
+  * Add --no-color option to the CLI tool
+  * Add type annotations and py.typed to the package
+  * Add [cli] extras_require
+  * Update dependencies
+  * Remove deprecated methods
+  * Reduce a package dependency
+  * Replace the logging library
+  * Fix timestamp parsing when transmitting ping by CLI
+  * Minor bug fixes
+
+-------------------------------------------------------------------
 Sat Feb  8 15:27:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.18.2

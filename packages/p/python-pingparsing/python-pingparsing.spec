@@ -1,7 +1,7 @@
 #
 # spec file for package python-pingparsing
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pingparsing
-Version:        0.18.2
+Version:        1.0.0
 Release:        0
-License:        MIT
 Summary:        CLI-tool/Python-library for parsing ping command output
-Url:            https://github.com/thombashi/pingparsing
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/thombashi/pingparsing
 Source:         https://github.com/thombashi/pingparsing/archive/v%{version}.tar.gz#/pingparsing-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module humanreadable >= 0.0.7}
 BuildRequires:  %{python_module Logbook >= 0.12.3}
+BuildRequires:  %{python_module humanreadable >= 0.0.7}
 BuildRequires:  %{python_module pyparsing >= 2.0.3}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module subprocrunner >= 0.17.0}
 BuildRequires:  %{python_module typepy >= 0.6.3}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module simplejson}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-humanreadable >= 0.0.7
-Requires:       python-Logbook >= 0.12.3
+Requires:       python-loguru >= 0.4.1
 Requires:       python-pyparsing >= 2.0.3
 Requires:       python-setuptools >= 38.3.0
 Requires:       python-six >= 1.10.0
