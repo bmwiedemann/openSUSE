@@ -5010,4 +5010,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5.5 &amp; vc CVE fix &amp; disable MOD_SIG on i586</comment>
     <requestid>777570</requestid>
   </revision>
+  <revision rev="531" vrev="1">
+    <srcmd5>6b290fcd324cceea50a652c6e0660bf1</srcmd5>
+    <version>5.5.6</version>
+    <time>1582810508</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.6 &amp; fix some configs (mistake since 5.5)</comment>
+    <requestid>778825</requestid>
+  </revision>
 </revisionlist>

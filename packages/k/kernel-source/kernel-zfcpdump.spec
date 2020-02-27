@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.5
-%define patchversion 5.5.5
+%define patchversion 5.5.6
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.5.5
+Version:        5.5.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5157fff
+Release:        <RELEASE>.g4a830b1
 %else
 Release:        0
 %endif
@@ -174,10 +174,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5157fffd4c3251d3bddbfbfb66ce2bae0cd32bf5
-Provides:       kernel-srchash-5157fffd4c3251d3bddbfbfb66ce2bae0cd32bf5
+Provides:       kernel-%build_flavor-base-srchash-4a830b16604db6d70acd1ba41c4d0b0fe1b8acca
+Provides:       kernel-srchash-4a830b16604db6d70acd1ba41c4d0b0fe1b8acca
 # END COMMON DEPS
-Provides:       %name-srchash-5157fffd4c3251d3bddbfbfb66ce2bae0cd32bf5
+Provides:       %name-srchash-4a830b16604db6d70acd1ba41c4d0b0fe1b8acca
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
