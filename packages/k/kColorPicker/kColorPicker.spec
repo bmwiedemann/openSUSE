@@ -1,7 +1,7 @@
 #
 # spec file for package kColorPicker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover   0_1_0
+
+%define sover   0_1_1
 %define libname libkColorPicker%{sover}
 Name:           kColorPicker
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Qt based Color Picker with popup menu
 License:        GPL-2.0-or-later
@@ -29,8 +30,8 @@ Source1:        https://raw.githubusercontent.com/DamirPorobic/kColorPicker/mast
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
 
 %description
 QToolButton with color popup menu with lets you select a color. The popup
