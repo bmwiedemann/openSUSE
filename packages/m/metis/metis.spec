@@ -1,7 +1,7 @@
 #
 # spec file for package metis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,27 @@ ExclusiveArch:  do_not_build
 %undefine mpi_flavor
 %endif
 
+%if "%{flavor}" == "gnu7-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%undefine mpi_flavor
+%endif
+
+%if "%{flavor}" == "gnu8-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%undefine mpi_flavor
+%endif
+
+%if "%{flavor}" == "gnu9-hpc"
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%undefine mpi_flavor
+%endif
+
 %if %{without hpc}
 %if 0%{!?package_name:1}
 %define package_name  %{pname}
@@ -82,7 +103,7 @@ Release:        0
 Summary:        Serial Graph Partitioning and Fill-reducing Matrix Ordering
 License:        Apache-2.0
 Group:          Productivity/Scientific/Math
-Url:            http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
+URL:            http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
 Source0:        http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/%{pname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE metis-cmake.patch
 Patch1:         metis-cmake.patch
@@ -165,6 +186,8 @@ BuildArch:      noarch
 METIS library provides to partitioning unstructured graphs and hypergraph
 and computing fill-reducing orderings of sparse matrices. This package provides
 graph files you can use to test Metis.
+
+%{?with_hpc:%{hpc_master_package examples}}
 
 %prep
 %{?with_hpc: %hpc_debug}

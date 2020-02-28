@@ -56,4 +56,12 @@
 - Fix package group names.</comment>
     <requestid>674938</requestid>
   </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>3a80d4dafb1995107a8b2c8798cd1041</srcmd5>
+    <version>5.1.0</version>
+    <time>1582899561</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8/9 building (jsc#SLE-8604). (forwarded request 779445 from eeich)</comment>
+    <requestid>779515</requestid>
+  </revision>
 </revisionlist>
