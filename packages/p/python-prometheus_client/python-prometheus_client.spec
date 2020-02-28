@@ -50,7 +50,9 @@ The official Python 2 and 3 client for Prometheus.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# some tests are currently broken in ppc64le 
+# see https://bugzilla.suse.com/show_bug.cgi?id=1164604
+%pytest -k "not TestProcessCollector"
 
 %files %{python_files}
 %doc README.md

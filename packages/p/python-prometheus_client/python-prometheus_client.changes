@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:57:33 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Temporarily skip some tests failing on ppc64le due to upstream issues
+  See bsc#1164604
+
+-------------------------------------------------------------------
 Mon Feb 17 14:57:12 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Add Provides and Obsoletes fields to correctly supersede SUSE:SLE-15-SP2:GA/python-prometheus-client
