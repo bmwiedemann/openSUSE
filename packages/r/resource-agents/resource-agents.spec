@@ -1,7 +1,7 @@
 #
 # spec file for package resource-agents
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           resource-agents
-Version:        4.3.0+git178.b102c209
+Version:        4.4.0+git57.70549516
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Clustering/HA
-Url:            http://linux-ha.org/
+URL:            http://linux-ha.org/
 Source:         resource-agents-%{version}.tar.xz
 Source1:        resource-agents.conf
 Source2:        monitoring-plugins-metadata.tar.bz2
