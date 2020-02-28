@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 24 12:41:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-appconfiguration >= 0.4.0
+  + python-azure-mgmt-keyvault >= 2.1.1
+  + python-azure-mgmt-resource >= 8.0.1
+  + python-azure-mgmt-storage >= 7.2.0
+
+-------------------------------------------------------------------
 Mon Jan 27 20:12:33 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires

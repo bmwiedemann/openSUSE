@@ -119,4 +119,12 @@
   + python-azure-mgmt-web &gt;= 0.44.0</comment>
     <requestid>767870</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>0257d0e91bff18c9c15eec70beac0a9c</srcmd5>
+    <version>4.0.0</version>
+    <time>1582899605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778758</requestid>
+  </revision>
 </revisionlist>

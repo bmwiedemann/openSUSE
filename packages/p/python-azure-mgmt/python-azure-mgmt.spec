@@ -37,7 +37,7 @@ Requires:       python-azure-mgmt-alertsmanagement >= 0.2.0
 Requires:       python-azure-mgmt-apimanagement < 1.0.0
 Requires:       python-azure-mgmt-apimanagement >= 0.1.0
 Requires:       python-azure-mgmt-appconfiguration < 1.0.0
-Requires:       python-azure-mgmt-appconfiguration >= 0.1.0
+Requires:       python-azure-mgmt-appconfiguration >= 0.4.0
 Requires:       python-azure-mgmt-applicationinsights < 1.0.0
 Requires:       python-azure-mgmt-applicationinsights >= 0.1.1
 Requires:       python-azure-mgmt-attestation < 1.0.0
@@ -117,7 +117,7 @@ Requires:       python-azure-mgmt-iothub >= 0.10.0
 Requires:       python-azure-mgmt-iothubprovisioningservices < 1.0.0
 Requires:       python-azure-mgmt-iothubprovisioningservices >= 0.2.0
 Requires:       python-azure-mgmt-keyvault < 3.0.0
-Requires:       python-azure-mgmt-keyvault >= 2.0.0
+Requires:       python-azure-mgmt-keyvault >= 2.1.1
 Requires:       python-azure-mgmt-kusto < 1.0.0
 Requires:       python-azure-mgmt-kusto >= 0.5.0
 Requires:       python-azure-mgmt-labservices < 1.0.0
@@ -174,8 +174,8 @@ Requires:       python-azure-mgmt-relay < 1.0.0
 Requires:       python-azure-mgmt-relay >= 0.1.0
 Requires:       python-azure-mgmt-reservations < 1.0.0
 Requires:       python-azure-mgmt-reservations >= 0.3.1
-Requires:       python-azure-mgmt-resource < 8.0.0
-Requires:       python-azure-mgmt-resource >= 7.0.0
+Requires:       python-azure-mgmt-resource < 9.0.0
+Requires:       python-azure-mgmt-resource >= 8.0.1
 Requires:       python-azure-mgmt-resourcegraph < 3.0.0
 Requires:       python-azure-mgmt-resourcegraph >= 2.0.0
 Requires:       python-azure-mgmt-scheduler < 3.0.0
@@ -199,7 +199,7 @@ Requires:       python-azure-mgmt-sql >= 0.16.0
 Requires:       python-azure-mgmt-sqlvirtualmachine < 1.0.0
 Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.5.0
 Requires:       python-azure-mgmt-storage < 8.0.0
-Requires:       python-azure-mgmt-storage >= 7.0.0
+Requires:       python-azure-mgmt-storage >= 7.2.0
 Requires:       python-azure-mgmt-storagecache < 1.0.0
 Requires:       python-azure-mgmt-storagecache >= 0.2.0
 Requires:       python-azure-mgmt-storagesync < 1.0.0
