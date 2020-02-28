@@ -216,4 +216,12 @@ Readded changes dropped by accident:
 - fix owner for README.SuperLU</comment>
     <requestid>674942</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>ce26bed9f96a358878483301e9db1988</srcmd5>
+    <version>5.2.1</version>
+    <time>1582899558</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8/9 building (jsc#SLE-8604). (forwarded request 779442 from eeich)</comment>
+    <requestid>779514</requestid>
+  </revision>
 </revisionlist>

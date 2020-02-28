@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 12:30:51 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc8/9 building (jsc#SLE-8604).
+
+-------------------------------------------------------------------
 Thu Feb 14 09:16:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix the package group fix.
