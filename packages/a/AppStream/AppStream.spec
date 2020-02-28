@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.12.7
+Version:        0.12.10
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,25 +28,19 @@ URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz
 Source1:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Restore-compatibility-with-GLib-2.58.patch
-Patch2:         0001-Fix-possible-NULL-dereference.patch
-Patch3:         0002-Don-t-ignore-xmlNodeDump-return-code.patch
-Patch4:         0003-Fix-infinite-recursion-if-component-has-itself-liste.patch
-# PATCH-FIX-UPSTREAM (https://github.com/ximion/appstream/issues/239)
-Patch1000:      find-lmdb.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gperf
 BuildRequires:  lmdb-devel
-BuildRequires:  meson >= 0.42
+BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.46
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(yaml-0.1)
