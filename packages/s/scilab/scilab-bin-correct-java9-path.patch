@@ -1,8 +1,8 @@
-Index: scilab-6.0.2/bin/scilab
+Index: scilab-6.1.0/bin/scilab
 ===================================================================
---- scilab-6.0.2.orig/bin/scilab
-+++ scilab-6.0.2/bin/scilab
-@@ -493,12 +493,7 @@ detect_java_vm() {
+--- scilab-6.1.0.orig/bin/scilab
++++ scilab-6.1.0/bin/scilab
+@@ -523,12 +523,7 @@ detect_java_vm() {
              if test $SCIVERBOSE -ne 0; then
                  echo "JAVA_HOME : $JAVA_HOME"
              fi
@@ -16,7 +16,7 @@ Index: scilab-6.0.2/bin/scilab
  # Configuring LD_LIBRARY_PATH for libjava.so libhpi.so and libxxxx.so
  
              case $OS in
-@@ -604,7 +599,7 @@ detect_java_vm() {
+@@ -634,7 +629,7 @@ detect_java_vm() {
      fi # IS_SCILAB_BINARY
  
      # Check if the lib exists
@@ -25,7 +25,7 @@ Index: scilab-6.0.2/bin/scilab
      if test ! -f "$LIBJAVA"; then
          if test $SCIVERBOSE -ne 0; then
              echo "Cannot find $LIBJAVA"
-@@ -613,7 +608,7 @@ detect_java_vm() {
+@@ -643,7 +638,7 @@ detect_java_vm() {
          CLASSPATH="${CLASSPATH:+:$CLASSPATH}$SCI/modules/core/jar/org.scilab.modules.core.jar"
          # @TODO This is the default path of the official sun JVM.
          # It is different for other implementation of the JVM....
@@ -34,7 +34,7 @@ Index: scilab-6.0.2/bin/scilab
      fi
  
      # Bug http://bugzilla.scilab.org/show_bug.cgi?id=14290 -
-@@ -650,7 +645,7 @@ if test $IS_SCILAB_BINARY -eq 1; then
+@@ -680,7 +675,7 @@ if test $IS_SCILAB_BINARY -eq 1; then
          TCL_LIBRARY="$SCIBINARYBASE/thirdparty/tcl8.5"
          TK_LIBRARY="$SCIBINARYBASE/thirdparty/tk8.5"
      fi
@@ -43,7 +43,7 @@ Index: scilab-6.0.2/bin/scilab
      DOCBOOK_ROOT="$SCI/../../thirdparty/docbook"
      PATH="$PATH:$SCI/modules/scicos/"
  
-@@ -832,7 +827,7 @@ SCILIB=$SCI/bin:$SCI/lib/scilab/:$SCI/li
+@@ -862,7 +857,7 @@ SCILIB=$SCI/bin:$SCI/lib/scilab/:$SCI/li
  if test -d "$SCI/lib/thirdparty"; then
      SCILIB=$SCI/lib/thirdparty:$SCILIB;
  fi
@@ -52,7 +52,7 @@ Index: scilab-6.0.2/bin/scilab
  if test -d "$SCI/lib/thirdparty/redist"; then
      LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SCI/lib/thirdparty/redist;
  fi
-@@ -879,6 +874,7 @@ case $OS in
+@@ -909,6 +904,7 @@ case $OS in
      *)
  esac
  
@@ -60,7 +60,7 @@ Index: scilab-6.0.2/bin/scilab
  
  if test $SCIVERBOSE -ne 0; then
      echo "LD_LIBRARY_PATH : $LD_LIBRARY_PATH"
-@@ -1182,6 +1178,7 @@ if test "$rest" = "yes"; then
+@@ -1217,6 +1213,7 @@ if test "$rest" = "yes"; then
          esac
      done
  

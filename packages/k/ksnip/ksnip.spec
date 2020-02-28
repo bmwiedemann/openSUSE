@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.2.0
+BuildRequires:  kImageAnnotator-devel >= 0.2.1
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)

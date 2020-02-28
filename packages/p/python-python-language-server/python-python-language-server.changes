@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 20 22:03:23 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.31.8:
+  - Only add snippet completions when positional args are available
+  - Fix issues with parsing except's while computing folding
+  - Initialized hook (#732)
+  - Upload wheels first to PyPi
+- Switch off tests because of gh#palantir/python-language-server#744
+
+-------------------------------------------------------------------
 Tue Jan  7 08:01:27 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.31.4:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:08:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.14.1
+  * [PYSIDE-841] Add example for Threads and Signals
+  * [PYSIDE-1135] qApp: Ensure QtCore import when embedded QApplication subclass is used
+  * [PYSIDE-1158] Let qApp be noApp instead of pretending to be None
+  * [PYSIDE-1164] qApp: make sure to create the right instance when embedding
+  * [PYSIDE-1165] designer: patch rpath for unix
+  * [PYSIDE-1192] libpyside: Set default signal name only if previously assigned
+  * [PYSIDE-1201] docs: Fix pre overlap and improve reading
+  * [PYSIDE-1205] libpyside: avoid freeing char*
+  * [PYSIDE-1207] Fix ownership of QTextDocument::createObject
+  * [PYSIDE-1191] shiboken: Introduce "until" version attribute as opposite of "since"
+
+-------------------------------------------------------------------
 Mon Dec 30 09:12:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.14.0:

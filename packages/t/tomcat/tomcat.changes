@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 10:15:08 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Change default value of AJP connector secretRequired to false
+- Added patch:
+  * tomcat-9.0.31-secretRequired-default.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 13:24:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to Tomcat 9.0.31. See changelog at

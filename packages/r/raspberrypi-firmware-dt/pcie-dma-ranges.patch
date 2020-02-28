@@ -1,0 +1,29 @@
+From f517c7f214d438b63092d397a9f944c1e3f1dcc2 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Thu, 27 Feb 2020 12:23:35 +0100
+Subject: [PATCH] ARM: dts: bcm2711: Fix pci-brcmstb's dma-ranges
+
+The B0 revision of boards can only DMA to the lower 3GB of memory. Honor
+that limitation and let the firmware update it when relevant.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ arch/arm/boot/dts/bcm2711-rpi.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi.dtsi b/arch/arm/boot/dts/bcm2711-rpi.dtsi
+index 8011cb6361d3..7b2ddf36d32c 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi.dtsi
++++ b/arch/arm/boot/dts/bcm2711-rpi.dtsi
+@@ -102,7 +102,7 @@ IRQ_TYPE_LEVEL_HIGH
+ 		 * to scb:0x0_00000000-ffffffff
+ 		 */
+ 		dma-ranges = <0x02000000 0x0 0x00000000  0x0 0x00000000
+-			      0x1 0x00000000>;
++			      0x0 0xc0000000>;
+ 		status = "okay";
+ 	};
+ 
+-- 
+2.25.1
+

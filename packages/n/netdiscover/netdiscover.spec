@@ -1,7 +1,7 @@
 #
 # spec file for package netdiscover
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define 				pkgver 0.3-pre-beta7
 Name:           netdiscover
-Version:        0.3_beta7
+Version:        0.5.1
 Release:        0
 Summary:        A network address discovering/monitoring tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://sourceforge.net/projects/netdiscover/?source=directory
-Source0:        https://sourceforge.net/projects/netdiscover/files/netdiscover/%{pkgver}-LINUXONLY/netdiscover-%{pkgver}-LINUXONLY.tar.gz
-# PATCH-FIX-OPENSUSE netdiscover-update-oui.patch -- alows us updating oui
-# database from hwdata
-Patch0:         netdiscover-update-oui.patch
-# Patches from debian
-Patch1:         netdiscover-fix-makefile.patch
-Patch2:         netdiscover-fix-spelling-binary.patch
-Patch3:         netdiscover-fix-manpage.patch
+URL:            https://github.com/netdiscover-scanner/netdiscover
+Source0:        https://github.com/netdiscover-scanner/netdiscover/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  dos2unix
 BuildRequires:  hwdata
 BuildRequires:  libnet-devel
 BuildRequires:  libpcap-devel
@@ -49,18 +42,14 @@ inspect your network arp traffic, and find network addresses using auto scan
 mode, which will scan for common local networks.
 
 %prep
-%setup -q -n netdiscover-%{pkgver}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup
 
 %build
 autoreconf -fiv
 %configure
 cp %{_datadir}/hwdata/oui.txt ./
-sh update-oui-database.sh
-make %{?_smp_mflags}
+sh update-oui-database.sh --no-download
+%make_build
 
 %install
 %make_install
@@ -70,6 +59,6 @@ rm -rf %{buildroot}%{_datadir}/doc
 %license COPYING
 %doc ChangeLog README AUTHORS NEWS TODO
 %{_sbindir}/netdiscover
-%{_mandir}/man8/netdiscover.8%{ext_man}
+%{_mandir}/man8/netdiscover.8%{?ext_man}
 
 %changelog

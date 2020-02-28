@@ -11,66 +11,10 @@ Change-Id: Ibd88d95fe2a8a9f37969e08d76c7e3f53e660f69
  .../org/scilab/modules/xcos/palette/Palette.java   |    2 --
  4 files changed, 5 deletions(-)
 
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/actions/ExportAllAction.java
+Index: scilab-6.1.0/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.java
 ===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/actions/ExportAllAction.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/actions/ExportAllAction.java
-@@ -46,7 +46,6 @@ import org.scilab.modules.xcos.JavaContr
- import org.scilab.modules.xcos.Kind;
- import org.scilab.modules.xcos.ObjectProperties;
- import org.scilab.modules.xcos.VectorOfScicosID;
--import org.scilab.modules.xcos.Xcos;
- import org.scilab.modules.xcos.XcosTab;
- import org.scilab.modules.xcos.configuration.ConfigurationManager;
- import org.scilab.modules.xcos.graph.XcosDiagram;
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/CodeGenerationAction.java
-===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/CodeGenerationAction.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/CodeGenerationAction.java
-@@ -20,7 +20,6 @@ package org.scilab.modules.xcos.block.ac
- import java.awt.Cursor;
- import java.awt.event.ActionEvent;
- import java.awt.event.ActionListener;
--import java.util.logging.Logger;
- import org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.InterpreterException;
- import static org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.asynchronousScilabExec;
- import static org.scilab.modules.action_binding.highlevel.ScilabInterpreterManagement.buildCall;
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/graph/ScicosParameters.java
-===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/graph/ScicosParameters.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/graph/ScicosParameters.java
-@@ -18,7 +18,6 @@ package org.scilab.modules.xcos.graph;
- 
- import java.beans.PropertyChangeEvent;
- import java.beans.PropertyVetoException;
--import java.beans.VetoableChangeListener;
- import java.beans.VetoableChangeSupport;
- import java.io.Serializable;
- 
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/Palette.java
-===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/palette/Palette.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/Palette.java
-@@ -17,7 +17,6 @@
- package org.scilab.modules.xcos.palette;
- 
- import com.mxgraph.model.mxGeometry;
--import java.awt.Dimension;
- import java.awt.GraphicsEnvironment;
- import java.awt.image.BufferedImage;
- import java.io.File;
-@@ -50,7 +49,6 @@ import org.scilab.modules.xcos.palette.m
- import org.scilab.modules.xcos.palette.model.PaletteBlock;
- import org.scilab.modules.xcos.palette.model.PaletteNode;
- import org.scilab.modules.xcos.palette.model.PreLoaded;
--import org.scilab.modules.xcos.palette.view.PaletteManagerPanel;
- import org.scilab.modules.xcos.utils.BlockPositioning;
- import org.scilab.modules.xcos.utils.XcosConstants;
- 
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.java
-===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.java
+--- scilab-6.1.0.orig/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.java
++++ scilab-6.1.0/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.java
 @@ -21,6 +21,7 @@ import java.util.LinkedList;
  import javax.swing.SwingUtilities;
  import javax.swing.tree.DefaultMutableTreeNode;
@@ -90,10 +34,10 @@ Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/BrowserView.ja
              BrowserTreeNodeData data = (BrowserTreeNodeData) node.getUserObject();
              if (data.getId() == uid) {
                  return node;
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/Palette.java
+Index: scilab-6.1.0/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/Palette.java
 ===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/Palette.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/Palette.java
+--- scilab-6.1.0.orig/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/Palette.java
++++ scilab-6.1.0/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/Palette.java
 @@ -58,7 +58,7 @@ public abstract class Palette extends Pa
       * @see javax.swing.tree.TreeNode#children()
       */
@@ -103,10 +47,10 @@ Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/palette/model/
          return null;
      }
  
-Index: scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/SuperblockMaskCustomizeAction.java
+Index: scilab-6.1.0/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/SuperblockMaskCustomizeAction.java
 ===================================================================
---- scilab-6.0.2.orig/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/SuperblockMaskCustomizeAction.java
-+++ scilab-6.0.2/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/SuperblockMaskCustomizeAction.java
+--- scilab-6.1.0.orig/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/SuperblockMaskCustomizeAction.java
++++ scilab-6.1.0/modules/xcos/src/java/org/scilab/modules/xcos/block/actions/SuperblockMaskCustomizeAction.java
 @@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
  import java.util.Arrays;
  import java.util.Iterator;

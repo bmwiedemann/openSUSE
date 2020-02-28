@@ -17,4 +17,23 @@
   * Mark license as such</comment>
     <requestid>580981</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1cf390adb2c16d61ef074f721e5793be</srcmd5>
+    <version>0.5.1</version>
+    <time>1582899725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Drop no longer needed patches:
+  * netdiscover-fix-spelling-binary.patch
+  * netdiscover-fix-manpage.patch
+  * netdiscover-fix-makefile.patch
+  * netdiscover-update-oui.patch
+- Update to version 0.5.1:
+  * Added an official repository notice in README.
+  * Added dates of releases in ChangeLog.
+  * Added some copyright notices.
+  * Several important fixes and improvements in manpage and help page.
+- For changes for previous releses see provided Changelog</comment>
+    <requestid>780195</requestid>
+  </revision>
 </revisionlist>

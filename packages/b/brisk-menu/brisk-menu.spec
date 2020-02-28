@@ -1,7 +1,7 @@
 #
 # spec file for package brisk-menu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,22 @@
 
 
 Name:           brisk-menu
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        Modern, efficient menu for MATE
 License:        GPL-2.0-or-later AND CC-BY-SA-4.0
-Group:          System/GUI/Other
-Url:            https://github.com/solus-project/brisk-menu
-Source:         https://github.com/solus-project/brisk-menu/releases/download/v%{version}/%{name}-v%{version}.tar.xz
-Source1:        https://github.com/solus-project/brisk-menu/releases/download/v%{version}/%{name}-v%{version}.tar.xz.asc
+URL:            https://github.com/getsolus/brisk-menu
+Source:         https://github.com/getsolus/brisk-menu/releases/download/v%{version}/%{name}-v%{version}.tar.xz
+Source1:        https://github.com/getsolus/brisk-menu/releases/download/v%{version}/%{name}-v%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM brisk-menu-mate-menus-1.22.patch -- https://github.com/solus-project/brisk-menu/pull/103
-Patch0:         brisk-menu-mate-menus-1.22.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libmate-menu) >= 1.21
-BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= 1.21
+BuildRequires:  pkgconfig(libmate-menu) >= 1.22
+BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= 1.22
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(x11)
 Recommends:     %{name}-lang
@@ -46,7 +43,6 @@ Modern, efficient menu for the MATE Desktop Environment.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch0 -p1
 
 %lang_package
 
@@ -57,16 +53,6 @@ Modern, efficient menu for the MATE Desktop Environment.
 %install
 %meson_install
 %find_lang %{name}
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license LICENSE*

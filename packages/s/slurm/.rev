@@ -524,4 +524,12 @@
   targets (bsc#1162377)</comment>
     <requestid>770336</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f021465eb15cc0354abc74fab92d531c</srcmd5>
+    <version>20.02.0</version>
+    <time>1582899696</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable %arm builds as this is no longer supported. (forwarded request 780053 from kasimir)</comment>
+    <requestid>780146</requestid>
+  </revision>
 </revisionlist>

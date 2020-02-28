@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:22:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update project url
+- Drop no longer needed patches:
+  * netdiscover-fix-spelling-binary.patch
+  * netdiscover-fix-manpage.patch
+  * netdiscover-fix-makefile.patch
+  * netdiscover-update-oui.patch
+- Update to version 0.5.1:
+  * Added an official repository notice in README.
+  * Added dates of releases in ChangeLog.
+  * Added some copyright notices.
+  * Several important fixes and improvements in manpage and help page.
+- For changes for previous releses see provided Changelog
+
+-------------------------------------------------------------------
 Wed Feb 28 14:25:58 UTC 2018 - mpluskal@suse.com
 
 - Run spec-cleaner:

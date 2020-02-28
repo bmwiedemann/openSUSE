@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.6.1 (changes since 0.5.0):
+  * Add a new "dash" style menu.
+  * Fix super key global bindings on Compiz.
+  * Unset Lock key masks when closing menu.
+  * Fix key-binder from swallowing Super+Mouse events.
+  * Update API for MATE Desktop 1.22.
+  * Make favourites appear first.
+  * Fix categories list so scrollbar is not always shown.
+  * Update translations.
+- Remove brisk-menu-mate-menus-1.22.patch: fixed upstream.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Fri Dec 14 12:54:01 UTC 2018 - sor.alexei@meowr.ru
 
 - Add brisk-menu-mate-menus-1.22.patch:

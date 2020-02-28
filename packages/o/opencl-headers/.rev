@@ -140,4 +140,19 @@
   * Fix clCreateFromGLBuffer error code result type</comment>
     <requestid>723096</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>401de14a04c81b9c981a27ea810658ac</srcmd5>
+    <version>2.2+git.20200218</version>
+    <time>1582899736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20200218:
+  * add experimental enums (#70)
+  * Add CL_IMPORT_DMA_BUF_DATA_CONSISTENCY_WITH_HOST_ARM definition (#72)
+  * Add tests and Travis CI config (#64)
+  * Add definitions for cl_arm_import_memory_android_hardware_buffer (#61)
+  * Add version guards to ICD declarations (#63)
+  * Add cl_khr_extended_versioning definitions (#59)
+  * Add API function pointer and ICD dispatch table definitions (#50)</comment>
+    <requestid>780201</requestid>
+  </revision>
 </revisionlist>

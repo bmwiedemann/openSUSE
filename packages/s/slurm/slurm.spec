@@ -17,9 +17,9 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 34
-%define ver 19.05.5
-%define _ver _19_05
+%define so_version 35
+%define ver 20.02.0
+%define _ver _20_02
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
@@ -27,7 +27,7 @@
 
 %define pname slurm
 
-%ifarch i586
+%ifarch i586 %arm
 ExclusiveArch:  do_not_build
 %endif
 
@@ -41,7 +41,7 @@ ExclusiveArch:  do_not_build
 %define base_ver 1808
 %endif
 %if 0%{?sle_version} == 150200
-%define base_ver 1905
+%define base_ver 2002
 %endif
 
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
@@ -64,11 +64,17 @@ ExclusiveArch:  do_not_build
 
 %if 0%{?suse_version:1} && 0%{?suse_version} <= 1140
  %define comp_at %defattr(-,root,root)
+ %undefine python_ver
 %else
  %define have_json_c 1
+ %define python_ver 3
  %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
  %define have_apache_rpm_macros 1
  %endif
+%endif
+
+%if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
+%define have_http_parser 1
 %endif
 
 %if 0
@@ -117,13 +123,6 @@ Source1:        slurm-rpmlintrc
 Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
-Patch3:         split-xdaemon-in-xdaemon_init-and-xdaemon_finish-for.patch
-Patch4:         slurmctld-uses-xdaemon_-for-systemd.patch
-Patch5:         slurmd-uses-xdaemon_-for-systemd.patch
-Patch6:         slurmdbd-uses-xdaemon_-for-systemd.patch
-Patch7:         slurmsmwd-uses-xdaemon_-for-systemd.patch
-Patch8:         removed-deprecated-xdaemon.patch
-Patch9:         slurmctld-rerun-agent_init-when-backup-controller-takes-over.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -146,7 +145,7 @@ BuildRequires:  hdf5-devel
 %endif
 BuildRequires:  libbitmask-devel
 BuildRequires:  libcpuset-devel
-BuildRequires:  python
+BuildRequires:  python%{?python_ver}
 %if 0%{?have_libnuma}
 BuildRequires:  libnuma-devel
 %endif
@@ -248,11 +247,13 @@ This package contains the library needed to run programs dynamically linked
 with SLURM.
 
 
-%package -n libpmi%{pmi_so}
+%package -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 Summary:        SLURM PMI Library
 Group:          System/Libraries
+%{?upgrade:Provides: libpmi%{pmi_so} = %{version}}
+%{?upgrade:Conflicts: libpmi%{pmi_so}}
 
-%description -n libpmi%{pmi_so}
+%description -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
@@ -436,6 +437,24 @@ BuildRequires:  lua-devel
 This package includes the Lua API to provide an interface to SLURM
 through Lua.
 
+%package rest
+Summary:        Slurm REST API Interface
+Group:          Productivity/Clustering/Computing 
+Requires:       %{name}-config = %{version}
+%if 0%{?have_http_parser}
+BuildRequires:  http-parser-devel
+%endif
+%if 0%{?have_boolean_deps}
+Recommends:     (%{name}-munge = %version if munge)
+%else
+Recommends:     %{name}-munge = %version
+%endif
+%{?upgrade:Provides: %{pname}-rest = %{version}}
+%{?upgrade:Conflicts: %{pname}-rest}
+
+%description rest
+This package provides the interface to SLURM via REST API.
+
 %package node
 Summary:        Minimal slurm node 
 Group:          Productivity/Clustering/Computing
@@ -508,22 +527,22 @@ Contains also cray specific documentation.
 %patch0 -p2
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-# Drop this fix as it is considered to be resolved by c1a537dbbe6
-##%patch9 -p1
+%if 0%{?python_ver} < 3
+# Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
+mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
+%endif
 
 %build
 %define _lto_cflags %{nil}
+[ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
 %configure --enable-shared \
            --disable-static \
            --without-rpath \
            --without-datawarp \
            --with-shared-libslurm \
+%if 0%{?have_http_parser} && 0%{?have_json_c}
+           --enable-slurmrestd \
+%endif
 %{!?have_netloc:--without-netloc} \
            --sysconfdir=%{_sysconfdir}/%{pname} \
 %{!?have_hdf5:--without-hdf5} \
@@ -533,6 +552,7 @@ Contains also cray specific documentation.
 make %{?_smp_mflags}
 
 %install
+[ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
 %make_install
 make install-contrib DESTDIR=%{buildroot} PERL_MM_PARAMS="INSTALLDIRS=vendor"
 
@@ -707,6 +727,10 @@ cat > %{buildroot}/%{_sysconfdir}/%{pname}/nss_slurm.conf <<EOF
 # NodeName myname
 EOF
 %fdupes -s %{buildroot}
+# Temporary - remove when build is fixed upstream.
+%if 0%{!?have_http_parser:1} || 0%{!?have_json_c:1}
+rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
+%endif
 
 %define fixperm() [ $1 -eq 1 -a -e %2 ] && /bin/chmod %1 %2
 
@@ -810,8 +834,8 @@ exit 0
 %post -n %{libslurm} -p /sbin/ldconfig
 %postun -n %{libslurm} -p /sbin/ldconfig
 
-%post -n  libpmi%{pmi_so} -p /sbin/ldconfig
-%postun -n  libpmi%{pmi_so} -p /sbin/ldconfig
+%post -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
+%postun -n  libpmi%{pmi_so}%{?upgrade:%{_ver}} -p /sbin/ldconfig
 
 %post -n libnss_%{pname}%{nss_so} -p /sbin/ldconfig
 %postun -n libnss_%{pname}%{nss_so} -p /sbin/ldconfig
@@ -892,7 +916,6 @@ exit 0
 %{_bindir}/sprio
 %{_bindir}/squeue
 %{_bindir}/sreport
-%{_bindir}/smap
 %{_bindir}/sshare
 %{_bindir}/sstat
 %{_bindir}/strigger
@@ -916,7 +939,6 @@ exit 0
 %{_mandir}/man1/sgather.1.*
 %{_mandir}/man1/sinfo.1*
 %{_mandir}/man1/slurm.1*
-%{_mandir}/man1/smap.1*
 %{_mandir}/man1/sprio.1*
 %{_mandir}/man1/squeue.1*
 %{_mandir}/man1/sreport.1*
@@ -953,7 +975,7 @@ exit 0
 %{?comp_at}
 %{_libdir}/libslurm*.so.%{so_version}*
 
-%files -n libpmi%{pmi_so}
+%files -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 %{?comp_at}
 %{_libdir}/libpmi*.so.%{pmi_so}*
 
@@ -1032,10 +1054,11 @@ exit 0
 %{_libdir}/slurm/acct_gather_profile_none.so
 %{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
 %{_libdir}/slurm/burst_buffer_generic.so
-%{_libdir}/slurm/checkpoint_none.so
-%{_libdir}/slurm/checkpoint_ompi.so
 %{_libdir}/slurm/core_spec_none.so
 %{_libdir}/slurm/cli_filter_none.so
+%{_libdir}/slurm/cli_filter_lua.so
+%{_libdir}/slurm/cli_filter_syslog.so
+%{_libdir}/slurm/cli_filter_user_defaults.so
 %{_libdir}/slurm/cred_none.so
 %{_libdir}/slurm/ext_sensors_none.so
 %{_libdir}/slurm/gpu_generic.so
@@ -1048,6 +1071,7 @@ exit 0
 %{_libdir}/slurm/jobacct_gather_none.so
 %{_libdir}/slurm/jobcomp_filetxt.so
 %{_libdir}/slurm/jobcomp_none.so
+%{_libdir}/slurm/jobcomp_lua.so
 %{_libdir}/slurm/jobcomp_script.so
 %{_libdir}/slurm/job_container_cncu.so
 %{_libdir}/slurm/job_container_none.so
@@ -1066,7 +1090,6 @@ exit 0
 %{_libdir}/slurm/mcs_none.so
 %{_libdir}/slurm/mcs_user.so
 %{_libdir}/slurm/mpi_none.so
-%{_libdir}/slurm/mpi_openmpi.so
 %{_libdir}/slurm/mpi_pmi2.so
 %if %{with pmix}
 %{_libdir}/slurm/mpi_pmix.so
@@ -1076,6 +1099,7 @@ exit 0
 %{_libdir}/slurm/preempt_none.so
 %{_libdir}/slurm/preempt_partition_prio.so
 %{_libdir}/slurm/preempt_qos.so
+%{_libdir}/slurm/prep_script.so
 %{_libdir}/slurm/priority_basic.so
 %{_libdir}/slurm/priority_multifactor.so
 %{_libdir}/slurm/proctrack_cgroup.so
@@ -1121,6 +1145,7 @@ exit 0
 %{_libdir}/slurm/select_cray_aries.so
 %{_libdir}/slurm/switch_cray_aries.so
 %{_libdir}/slurm/task_cray_aries.so
+%{_libdir}/slurm/mpi_cray_shasta.so
  %if 0%{?have_json_c}
 %{_libdir}/slurm/node_features_knl_cray.so
 %{_libdir}/slurm/power_cray_aries.so
@@ -1155,6 +1180,13 @@ exit 0
 %doc ../README.pam_slurm ../README.pam_slurm_adopt
 /%_lib/security/pam_slurm.so
 /%_lib/security/pam_slurm_adopt.so
+
+%if 0%{?have_http_parser} && 0%{?have_json_c}
+%files rest
+%{?comp_at}
+%{_sbindir}/slurmrestd
+%{_mandir}/man8/slurmrestd.*
+%endif
 
 %files node
 %{?comp_at}
@@ -1199,9 +1231,6 @@ exit 0
 %{_mandir}/man5/nonstop.conf.5.*
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*
-%if 0%{?legacy_cray}
-%{_mandir}/man5/cray.*
-%endif
 
 %if 0%{?have_hdf5}
 %files hdf5
@@ -1219,7 +1248,7 @@ exit 0
 %{_libdir}/slurm/select_cray_aries.so
 %{_libdir}/slurm/switch_cray_aries.so
 %{_libdir}/slurm/task_cray_aries.so
-%{_mandir}/man5/cray.*
+%{_libdir}/slurm/mpi_cray_shasta.so
  %if 0%{?have_json_c}
 %{_libdir}/slurm/node_features_knl_cray.so
 %{_libdir}/slurm/power_cray_aries.so

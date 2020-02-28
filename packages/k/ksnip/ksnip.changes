@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:57:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.1
+  * Allow opening link directly to image without opening in browser.
+  * Always use transparent snipping area background for Wayland.
+  * Disable unavailable config options.
+
+-------------------------------------------------------------------
 Sun Feb  9 22:20:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.0

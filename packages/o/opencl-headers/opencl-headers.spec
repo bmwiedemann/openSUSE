@@ -1,7 +1,7 @@
 #
 # spec file for package opencl-headers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           opencl-headers
-Version:        2.2+git.20190806
+Version:        2.2+git.20200218
 Release:        0
 Summary:        OpenCL (Open Computing Language) headers
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/cl/
-Source:         %{name}-%{version}.tar.xz
-BuildRequires:  xz
+Source:         %{name}-%{version}.tar.gz
 Conflicts:      opencl-headers-1_2
 BuildArch:      noarch
 
@@ -37,7 +36,7 @@ This package provides the official Khronos Group OpenCL headers needed to
 compile programs that use OpenCL.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 

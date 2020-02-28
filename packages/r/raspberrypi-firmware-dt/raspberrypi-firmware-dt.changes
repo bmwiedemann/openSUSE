@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 11:27:47 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Replace PCIE overlay rpi4-pcie-ib-size-fix-overlay.dts with patch
+  pcie-dma-ranges.patch, as RPI's firmware scans/alters that value before
+  applying overlays (bsc#1165143)
+
+-------------------------------------------------------------------
 Wed Feb 19 14:12:46 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to 6a3905568d (2020-02-03) (jsc#SLE-7296)

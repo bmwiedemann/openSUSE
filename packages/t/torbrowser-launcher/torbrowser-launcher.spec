@@ -1,7 +1,7 @@
 #
 # spec file for package torbrowser-launcher
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://github.com/micahflee/torbrowser-launcher
+URL:            https://github.com/micahflee/torbrowser-launcher
 Source:         https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE pythontorbrowser-launcher-fix-distro-name.patch badshah400@gmail.com -- Use the correct distribution name (the setup.py code gives "SuSE" instead of "openSUSE")
 Patch0:         torbrowser-launcher-fix-distro-name.patch
@@ -34,8 +34,8 @@ BuildRequires:  python3-gpg
 BuildRequires:  python3-qt5
 BuildRequires:  update-desktop-files
 Requires:       gpg2
-Requires:       python-Parsley
-Requires:       python-PySocks
+Requires:       python3-Parsley
+Requires:       python3-PySocks
 Requires:       python3-gpg
 Requires:       python3-qt5
 Requires:       python3-requests

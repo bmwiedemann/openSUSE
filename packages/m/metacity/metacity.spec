@@ -1,7 +1,7 @@
 #
 # spec file for package metacity
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,15 @@
 
 %define soname  libmetacity
 %define sover   1
-%define _version 3.30
+%define _version 3.35
 Name:           metacity
-Version:        3.30.1
+Version:        3.35.1
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
-Url:            https://wiki.gnome.org/Projects/Metacity
+Group:          System/Libraries
+URL:            https://wiki.gnome.org/Projects/Metacity
 Source:         https://download.gnome.org/sources/metacity/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE metacity-lower-autotools.patch -- Lower the requirements on autotools.
-Patch0:         metacity-lower-autotools.patch
-# PATCH-FEATURE-OPENSUSE metacity-gtk-3.20.patch -- Restore GTK+ 3.20 support.
-Patch1:         metacity-gtk-3.20.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -42,7 +38,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  zenity
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.3.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
@@ -108,14 +104,12 @@ needed to develop applications that require libmetacity.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fi
 %configure\
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -127,22 +121,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
-
 %files
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc AUTHORS NEWS rationales.txt README
 %{_bindir}/metacity
 %{_bindir}/metacity-message

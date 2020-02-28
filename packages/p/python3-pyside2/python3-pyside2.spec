@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Name:           python3-pyside2
-Version:        5.14.0
+Version:        5.14.1
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 20.04.0 (changes since 18.10.2):
+  * Update to preserve custom preferences.
+  * Add support for Indicator-datetime.
+  * Add NoDisplay=true to all Indicator autostart files.
+  * Remove checks for obsolete GNOME Main Menu.
+  * Migrate to python3-distro and drop use of the deprecated
+    "platform" module.
+  * Remove a call to "mate-panel --replace".
+  * Remove clear shadow.
+    This seems to affect how some shadows are positioned, leading
+    to a clear space between the window and its shadow.
+  * Correctly initialise all notifications so they are sent from
+    MATE Tweak.
+  * Add support for setting window manager button layouts with and
+    without the menu.
+  * Detect new IndicatorAppmenu.
+  * Correct literal string comparison.
+  * Detect Brisk menu on Arch Linux and Manjaro.
+  * Update translations.
+- Rebase mate-tweak-use-matemenu.patch.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Sat Nov  3 20:36:06 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 18.10.2 (changes since 18.04.13):

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:13:46 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints disk 4GB PowerPC to avoid build failure ppc64
+
+-------------------------------------------------------------------
 Mon Feb  3 06:47:51 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.5.0

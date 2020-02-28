@@ -1,7 +1,7 @@
 #
 # spec file for package scilab
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           scilab
 Summary:        High Level Programming Language/Numerical Analysis Software
 License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Version:        6.0.2
+Version:        6.1.0
 Release:        0
 URL:            http://www.scilab.org
 # FOR STABLE RELEASE
@@ -58,8 +58,8 @@ Patch25:        scilab-java9-ClassLoader.patch
 Patch26:        scilab-java_source_target.patch
 # PATCH-FIX-UPSTREAM scilab-drop-javax-annotation.patch badshah400@gmail.com -- Remove references to javax.annotation as it is unavailable with java >= 11 and the code referencing this doesn't do anything anyway
 Patch27:        scilab-drop-javax-annotation.patch
-# PATCH-FIX-OPENSUSE scilab-fix-build-with-modern-lucene.patch - Build against lucene 7
-Patch28:        scilab-fix-build-with-modern-lucene.patch
+# PATCH-FIX-UPSTREAM scilab-unicode-in-copyright-header.patch badshah400@gmail.com -- Compilation fails due to unicode in copyight header
+Patch28:        scilab-unicode-in-copyright-header.patch
 ExcludeArch:    i586 ppc64
 
 # SECTION Dependency to rebuild configure after patching autotools files
@@ -76,15 +76,15 @@ BuildRequires:  asm2
 %endif
 BuildRequires:  eigen3-devel >= 3.3.2
 BuildRequires:  f2c
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
+BuildRequires:  gcc >= 8
+BuildRequires:  gcc-c++ >= 8
+BuildRequires:  gcc-fortran >= 8
 BuildRequires:  time
 
 ## for dynamic link features
-Requires:       gcc
-Requires:       gcc-c++
-Requires:       gcc-fortran
+Requires:       gcc >= 8
+Requires:       gcc-c++ >= 8
+Requires:       gcc-fortran >= 8
 # Core
 BuildRequires:  libcurl-devel
 BuildRequires:  libxml2-devel

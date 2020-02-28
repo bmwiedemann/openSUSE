@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 20.04.0 (changes since 18.10.1):
+  * Add community contributed wallpapers for 19.04, 19.10, 20.04.
+  * A&AD&R: Fix theme parsing error in gtk-widgets.css. max-width
+    and max-height are not valid property names.
+  * A&AD&R: Fix unusual scrolling in some GTK+3 applications, such
+    as Firefox.
+  * Fix XML mark up error in mate-background-properties.
+  * Add suggested-action button style.
+  * Add -secure icons required for correct VPN icon display in
+    AppIndicator mode (lp#1681654).
+  * Add Apport icons.
+  * Optimise all .png and .jpg image assets.
+  * De-duplicate icon themes.
+  * Fix low contrast text selection in dialogue windows
+    (lp#1763942).
+  * Fix inconsistent OK buttons.
+  * Fix model buttons pop-overs.
+  * Fix styling of paned headerbars.
+  * Increase treeview expander size.
+  * Increase minimum size of checkbox/radio buttons.
+  * Improve font and font-size for context-menu (lp#1823550).
+  * Improve spacing and padding for tabs, toolbars, menu items and
+    column headers.
+  * Restore notebook padding to 6px.
+  * Remove obsolete mate-window-applet icons.
+  * Remove suggested-action button style.
+  * Resize new IM status icon.
+  * Resize Xfce mouse power status icons.
+  * Resize keyboard status icons.
+  * Resize network status icons.
+  * Resize audio status icons.
+  * Resize user status icons.
+  * Resize message status icons.
+  * Resize Ubuntu One status icons.
+  * Resize mouse power status icons.
+  * Resize auth status icons.
+  * Resize bluetooth status icons.
+  * Add themed icons for indicator-notifications.
+  * Correctly colour button.suggested-action.
+  * Update indicator-notifications status icons.
+  * Add "do not disturb" variants of the indicator-notifications
+    status icons.
+  * Drop obsolete libreoffice application icon overrides.
+  * Drop erroneous audio input/volume application icon overrides
+    (lp#1630913).
+  * Drop erroneous input-keyboard.svg application icon override.
+  * Drop erroneous blueman.svg application icon override.
+  * Make consistent blueman-*.svg symlinks to corresponding
+    bluetooth-*.svg master set icons.
+  * Add missing system-file-manager.svg to Radiant-MATE icon theme.
+  * Correct the dimensions of gpm-battery-* icons.
+    Symlink all the other battery icons to the gpm-battery-* master
+    set.
+  * Correct the dimensions of Brasero animation icons.
+  * Resize indicator-notifications status icons.
+    Add "do not disturb" variants.
+  * Add full-colour microphone icons for use in applications.
+  * Add full-colour volume icons for use in applications and the
+    OSD.
+  * A&AD&R: Drop all button.destructive-action and
+    button.suggested-action styling. The standard button style does
+    a fine job.
+  * Add icon theme for MATE Optimus.
+  * Remove all gpm-battery-*.svg icons and update all battery-*.svg
+    icons.
+    Ensures applications correctly use full-colour icons while
+    indicators use mono icons.
+  * Add brand colour to start-here.svg
+  * Add high-resolution window buttons.
+  * Define the base button dimensions.
+    This is used to determine whether the image needs to be
+    re-scaled when rendering on different DPI densities.
+- Drop support for old openSUSE versions.
+- Remove themes-light-menubars.patch: unnecessary after Qt4 fell
+  out of use.
+
+-------------------------------------------------------------------
 Sun Nov 25 15:37:18 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 18.10.1:

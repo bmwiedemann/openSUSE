@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:55:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.1
+  Fixes:
+  * Edit border around text box doesn't disappear when done with
+    editing.
+  * Edit border not shown under Windows when NoFillNoBorder
+    selected for Text Tool.
+  * Drawing text tool rect from right to left and bottom top create
+    no rect.
+  * Text Tool FillType selection not saved.
+  * Icons not scaled with HiDPI.
+  * Text Cursor not show on Linux.
+
+-------------------------------------------------------------------
 Sun Feb  9 21:53:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.0

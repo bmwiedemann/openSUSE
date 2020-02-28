@@ -81,6 +81,9 @@ Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
 Patch4:         tomcat-9.0-osgi-build.patch
 # PATCH-FIX-OPENSUSE: cast ByteBuffer to Buffer in cases where there is a risk of using Java 9+ apis
 Patch5:         tomcat-9.0.31-java8compat.patch
+# PATCH-FIX-OPENSUSE: set ajp connector secreteRequired to false by default to avoid tomcat not starting
+Patch6:         tomcat-9.0.31-secretRequired-default.patch
+
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
 BuildRequires:  apache-commons-collections
@@ -258,6 +261,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

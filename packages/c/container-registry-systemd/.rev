@@ -58,4 +58,14 @@
   * Ignore if pull fails, continue with old image in that case</comment>
     <requestid>764731</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0ac6e63a51803e6e0772a81864545eb8</srcmd5>
+    <version>0.0+git20200228.a79d477</version>
+    <time>1582899710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200228.a79d477:
+  * README: Add section about pull-through cache
+  * README: Add link to configuration reference</comment>
+    <requestid>780193</requestid>
+  </revision>
 </revisionlist>

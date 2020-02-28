@@ -1,6 +1,5 @@
-# ---
-# ## used by gem2rpm
-# :summary: this is a custom summary
+---
+:summary: Ruby module for reading and writing zip files
 # ## used by gem2rpm
 # :description: |-
 #   this is a custom description

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,8 +100,8 @@ sed -i "s/\('pandoc'\|'wheel',\)//" setup.py
 
 %check
 exit_code=0
-user=abuild
-pass=abuildpw
+user=auth_db_user
+pass=auth_db_pass
 port=63306
 run_dir=/tmp/mysql
 #

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:40:17 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2+git.20200218:
+  * add experimental enums (#70)
+  * Add CL_IMPORT_DMA_BUF_DATA_CONSISTENCY_WITH_HOST_ARM definition (#72)
+  * Add tests and Travis CI config (#64)
+  * Add definitions for cl_arm_import_memory_android_hardware_buffer (#61)
+  * Add version guards to ICD declarations (#63)
+  * Add cl_khr_extended_versioning definitions (#59)
+  * Add API function pointer and ICD dispatch table definitions (#50)
+
+-------------------------------------------------------------------
 Tue Aug 13 14:33:57 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2+git.20190806:

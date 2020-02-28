@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Thu Feb 27 20:07:19 UTC 2020 - Kasimir _ <kasimir_@outlook.de>
+
+- Disable %arm builds as this is no longer supported.
+
+-------------------------------------------------------------------
+Wed Feb 26 06:13:13 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version 20.02.0 (jsc#SLE-8491)
+  * Fix minor memory leak in slurmd on reconfig.
+  * Fix invalid ptr reference when rolling up data in the database.
+  * Change shtml2html.py to require python3 for RHEL8 support, and match
+    man2html.py.
+  * slurm.spec - override "hardening" linker flags to ensure RHEL8 builds
+    in a usable manner.
+  * Fix type mismatches in the perl API.
+  * Prevent use of uninitialized slurmctld_diag_stats.
+  * Fixed various Coverity issues.
+  * Only show warning about root-less topology in daemons.
+  * Fix accounting of jobs in IGNORE_JOBS reservations.
+  * Fix issue with batch steps state not loading correctly when upgrading from
+    19.05.
+  * Deprecate max_depend_depth in SchedulerParameters and move it to
+    DependencyParameters.
+  * Silence erroneous error on slurmctld upgrade when loading federation state.
+  * Break infinite loop in cons_tres dealing with incorrect tasks per tres
+    request resulting in slurmctld hang.
+  * Improve handling of --gpus-per-task to make sure appropriate number of GPUs
+    is assigned to job.
+  * Fix seg fault on cons_res when requesting --spread-job.
+- Move to python3 for everything but SLE-11-SP4
+  * For SLE-11-SP4 add a workaround to handle a python3 script (python2.7
+    compliant).
+
+-------------------------------------------------------------------
+Wed Feb 19 21:27:00 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add explicit version dependency to libpmix as well.
+  'slurm-devel' has a tight version dependency on libpmix -
+  allowing multiple libpmix versions in one package repository
+  is therefore essential.
+
+-------------------------------------------------------------------
+Thu Feb 13 22:34:48 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version 20.02.0-rc1
+  * sbatch - fix segfault when no newline at the end of a burst buffer file.
+  * Change scancel to only check job's base state when matching -t options.
+  * Save job dependency list in state files.
+  * cons_tres - allow jobs to be run on systems with root-less topologies.
+  * Restore pre-20.02pre1 PrologSlurmctld synchonization behavior to avoid
+    various race conditions, and ensure proper batch job launch.
+  * Add new slurmrestd command/daemon which implements the Slurm REST API.
+
+-------------------------------------------------------------------
+Tue Feb 11 10:09:43 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Update to version 20.02.0-0pre1, highlights are
+  Highlights:
+ * Exclusive behavior of a node includes all GRES on a node as well
+   as the cpus.
+ * Use python3 instead of python for internal build/test scripts.
+   The slurm.spec file has been updated to depend on python3 as well.
+ * Added new NodeSet configuration option to help simplify partition
+   configuration sections for heterogeneous / condo*style clusters.
+ * Added slurm.conf option MaxDBDMsgs to control how many messages will be
+   stored in the slurmctld before throwing them away when the slurmdbd is down.
+ * The checkpoint plugin interface and all associated API calls have been
+   removed.
+ * slurm_init_job_desc_msg() initializes mail_type as uint16_t. This allows
+   mail_type to be set to NONE with scontrol.
+ * Add new slurm_spank_log() function to print messages back to the user from
+   within a SPANK plugin without prepending "error: " from slurm_error().
+ * Enforce having partition name and nodelist=ALL when creating reservations
+   with flags=PART_NODES.
+ * SPANK - removed never-implemented slurm_spank_slurmd_init() interface. This
+   hook has always been accessible through slurm_spank_init() in the
+   S_CTX_SLURMD context instead.
+ * sbcast - add new BcastAddr option to NodeName lines to allow sbcast traffic
+   to flow over an alternate network path.
+ * Added auth/jwt plugin, and 'scontrol token' subcommand.  PMIx - improve
+ * performance of proc map generation.  Deprecate kill_invalid_depend in
+ * SchedulerParameters and move it to a new
+   option called DependencyParameters.
+ * Enable job dependencies for any job on any cluster in the same federation.
+ * Allow clusters to be added automatically to db at startup of ctld.  Add
+ * AccountingStorageExternalHost slurm.conf parameter.  The
+ * "ConditionPathExists" condition in slurmd.service has been disabled by
+   default to permit simpler installation of a "configless" Slurm cluster.
+ * In SchedulerParameters remove deprecated max_job_bf and replace with
+   bf_max_job_test.
+ * Disable sbatch, salloc, srun --reboot for non-admins.  SPANK - added support
+ * for S_JOB_GID in the job script context with
+   spank_get_item().
+ * Prolog/Epilog - add SLURM_JOB_GID environment variable.
+ configuration file changes:
+ * The mpi/openmpi plugin has been removed as it does nothing.
+    MpiDefault=openmpi will be translated to the functionally-equivalent
+    MpiDefault=none.
+ command changes (see man pages for details)
+ * Display StepId=<jobid>.batch instead of StepId=<jobid>.4294967294 in output
+   of "scontrol show step". (slurm_sprint_job_step_info())
+ * MPMD in srun will now defer PATH resolution for the commands to launch to
+   slurmstepd. Previously it would handle resolution client*side, but with
+   a non*standard approach that walked PATH in reverse.
+ * squeue - added "--me" option, equivalent to --user=$USER.
+ * The LicensesUsed line has been removed from 'scontrol show config'.
+   Please see the 'scontrol show licenses' command as an alternative.
+ * sbatch - adjusted backoff times for "--wait" option to reduce load on
+   slurmctld. This results in a steady*state delay of 32s between queries,
+   instead of the prior 10s delay.
+- Removed following deprecated patches:
+  * removed patch slurmctld-rerun-agent_init-when-backup-controller-takes-over.patch
+  * removed patch split-xdaemon-in-xdaemon_init-and-xdaemon_finish-for.patch
+  * removed patch slurmctld-uses-xdaemon_-for-systemd.patch
+  * removed patch slurmd-uses-xdaemon_-for-systemd.patch
+  * removed patch slurmdbd-uses-xdaemon_-for-systemd.patch
+  * removed patch slurmsmwd-uses-xdaemon_-for-systemd.patch
+  * removed patch removed-deprecated-xdaemon.patch
+
+-------------------------------------------------------------------
 Wed Feb  5 15:37:05 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - standard slurm.conf uses now also SlurmctldHost on all build 

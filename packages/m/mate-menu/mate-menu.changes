@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 20.04.1 (changes since 19.04.0):
+  * Add a darker MATE logo.
+  * Ensure the name is consistent 'Advanced MATE Menu'.
+  * Remove theme and colour customisation.
+    This feature adds unnecessary complexity and is mostly useless.
+    The applet already adapts to the desktop theme and panel
+    colours.
+  * Use start-here as the menu icon
+    Instead of providing a custom image and then having to override
+    it, we set the icon to always be "start-here".
+    This way each theme can supply the correct icon without having
+    to manually change it.
+  * Fix applet tooltip text.
+  * The viewport is now coloured consistently with the other
+    plugins.
+  * The buttons will now have a relief on hover.
+  * Icons should render sharply on HiDPI displays.
+  * Remove search focus delay.
+  * Render search icons as high resolution Cairo surfaces.
+  * Check availability of environment variables.
+  * Fix transliterated desktop entries in the Applications section.
+  * Set window title.
+    This fixes issues in which a global menu tries to display
+    information about the top-level focused window when the
+    mate-menu is open.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Remove mate-menu-glib-2.48.patch.
+
+-------------------------------------------------------------------
 Mon Apr  1 22:08:06 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 19.04.0 (changes since 18.04.3):

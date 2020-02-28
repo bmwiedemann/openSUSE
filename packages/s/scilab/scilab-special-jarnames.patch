@@ -1,8 +1,8 @@
-Index: scilab-6.0.2/configure.ac
+Index: scilab-6.1.0/configure.ac
 ===================================================================
---- scilab-6.0.2.orig/configure.ac
-+++ scilab-6.0.2/configure.ac
-@@ -1040,8 +1040,14 @@ interface for JOGL2 - or libGL (OpenGL l
+--- scilab-6.1.0.orig/configure.ac
++++ scilab-6.1.0/configure.ac
+@@ -1048,8 +1048,14 @@ interface for JOGL2 - or libGL (OpenGL l
  
                  ################ Mandatory for graphic_export features #####
                  # XML to PDF/other Translator
@@ -18,7 +18,7 @@ Index: scilab-6.0.2/configure.ac
                  AC_SUBST(FOP)
  
                  AC_ARG_WITH(emf, [AS_HELP_STRING([--without-emf],
-@@ -1107,9 +1113,16 @@ interface for JOGL2 - or libGL (OpenGL l
+@@ -1115,9 +1121,16 @@ interface for JOGL2 - or libGL (OpenGL l
  
                  if test -z "$XML_APIS_EXT"; then
                      # Other other distribs (Ex: Fedora/Redhat)

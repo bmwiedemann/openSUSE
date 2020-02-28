@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        0.18.1
+Version:        1.0.0~rc.0
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
@@ -30,16 +30,22 @@ Source:         node_exporter-v%{version}.tar.xz
 Source1:        prometheus-node_exporter.service
 Source2:        README
 Source3:        update-tarball.sh
+Source4:        prometheus-node_exporter.sysconfig
 BuildRequires:  fdupes
 BuildRequires:  go1.11
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
+Requires(post): %fillup_prereq
 Requires(pre):  shadow
 %{go_provides}
 Provides:       node_exporter
 Provides:       prometheus(node_exporter)
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
 
 %description
 Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
@@ -58,6 +64,7 @@ make collector/fixtures/sys/.unpacked  # unpacks text fixtures required by gotes
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus-node_exporter.service
 install -Dd -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus-node_exporter
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus-node_exporter
 %gofilelist
 %fdupes %{buildroot}
 
@@ -71,7 +78,7 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 
 %post
 %service_add_post prometheus-node_exporter.service
-
+%fillup_only -n prometheus-node_exporter
 %preun
 %service_del_preun prometheus-node_exporter.service
 
@@ -85,5 +92,6 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 %{_bindir}/node_exporter
 %{_unitdir}/prometheus-node_exporter.service
 %{_sbindir}/rcprometheus-node_exporter
+%{_fillupdir}/sysconfig.prometheus-node_exporter
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 11:30:53 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Remove rpi4-pcie-ib-size-fix as raspberrypi-firwamre-dt removed it (bsc#1165143)
+
+-------------------------------------------------------------------
 Fri Feb 21 16:30:21 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to f4b5869 (2020-02-12) (bsc#1163476):

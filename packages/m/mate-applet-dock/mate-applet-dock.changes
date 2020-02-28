@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 20.04.0 (changes since 0.88):
+  * Fix icon blinking when opening a minimised window.
+  * Fix a typo in user application path.
+  * Support pixbufs without an alpha channel.
+  * Use the "distro" module for looking up distribution details.
+  * Fix a few crashes.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
 
 - Update to version 0.88:

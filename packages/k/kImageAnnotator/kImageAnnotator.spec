@@ -16,10 +16,10 @@
 #
 
 
-%define sover   0_2_0
+%define sover   0_2_1
 %define libname libkImageAnnotator%{sover}
 Name:           kImageAnnotator
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ URL:            https://github.com/DamirPorobic/kImageAnnotator
 Source:         https://github.com/DamirPorobic/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  kColorPicker-devel
+BuildRequires:  kColorPicker-devel >= 0.1.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)

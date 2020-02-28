@@ -1,7 +1,7 @@
 #
 # spec file for package mate-tweak
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define _name   mate_tweak
 Name:           mate-tweak
-Version:        18.10.2
+Version:        20.04.0
 Release:        0
 Summary:        MATE desktop tweak tool
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/ubuntu-mate/mate-tweak
+URL:            https://github.com/ubuntu-mate/mate-tweak
 Source:         https://github.com/ubuntu-mate/mate-tweak/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE mate-tweak-use-matemenu.patch sor.alexei@meowr.ru -- Layouts are patched to use mate-menu instead of mintMenu or gnome-main-menu.
 Patch0:         mate-tweak-use-matemenu.patch
@@ -44,6 +44,7 @@ Requires:       Mesa-demo-x
 Requires:       dconf
 Requires:       mate-panel
 Requires:       python3-configobj
+Requires:       python3-distro
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
@@ -87,14 +88,6 @@ ln -s %{_bindir}/%{name} %{buildroot}%{_libexecdir}/%{name}/%{name}.py
 
 %fdupes %{buildroot}%{python3_sitelib}/
 %find_lang %{name}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %license COPYING

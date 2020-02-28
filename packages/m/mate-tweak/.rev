@@ -199,4 +199,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>653666</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>288922d572b7ccf3e37863734653c0fc</srcmd5>
+    <version>20.04.0</version>
+    <time>1582899750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.04.0.</comment>
+    <requestid>780262</requestid>
+  </revision>
 </revisionlist>

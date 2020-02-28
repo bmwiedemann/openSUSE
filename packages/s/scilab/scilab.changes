@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:11:32 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.1.0:
+  See https://help.scilab.org/docs/6.1.0/en_US/CHANGES.html.
+- Drop scilab-fix-build-with-modern-lucene.patch: incorporated
+  upstream.
+- Add scilab-unicode-in-copyright-header.patch: Replace a unicode
+  character in a copyright header as compilation fails due to it.
+- GCC >= 8 is now required.
+- Minor rebase of existing patches to apply cleanly against
+  updated sources.
+
+-------------------------------------------------------------------
 Tue Nov 19 20:15:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch scilab-fix-build-with-modern-lucene.patch in order

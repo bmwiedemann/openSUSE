@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Thu Feb 27 12:54:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Wed Aug 14 21:02:05 UTC 2019 - Simona Avornicesei <simona@avornicesei.com>
+
+- Fixed build on Fedora / CentOS
+
+-------------------------------------------------------------------
+Wed Aug 14 20:01:49 UTC 2019 - Simona Avornicesei <simona@avornicesei.com>
+- Fixed build on OpenSUSE Tumbleweed
+
+-------------------------------------------------------------------
+Tue Apr 23 20:23:53 UTC 2019 - Simona Avornicesei <simona@avornicesei.com>
+- build GSSNTLMSSP package v0.8.0 from https://pagure.io/gssntlmssp
+
+-------------------------------------------------------------------
+Thu Apr 18 00:00:00 UTC 2019 - Simo Sorce <simo@redhat.com>
+
+- New upstream release 0.8.0:
+  * Add compatibility with OpenSSL 1.1.0
+  * Port some documentation into the tree
+  * Rename and split the README file
+  * Add support for RFC5801
+  * Add support to return SSF value
+
+-------------------------------------------------------------------
+Fri Jun  3 00:00:00 UTC 2016 - Simo Sorce <simo@samba.org>
+
+- New upstream release 0.7.0:
+  * Return the actual_mech_type when requested
+  * Add test to check actual_mech is actually returned
+  * Fix gss_inquire_cred with no creds
+  * Return actual mech on accept context too
+  * Add test for accept returning mech
+  * Add placeholder inquire_name
+  * Fix a regression in error handling
+  * Check that we are actually asking for a known oid
+  * Move setting seq numbers to a spearate function
+  * Add context extension to reset crypto state
+
+-------------------------------------------------------------------
+Mon Feb 23 00:00:00 UTC 2015 - Simo Sorce <simo@samba.org>
+
+- Update EPEL to latest version
+
+-------------------------------------------------------------------
+Sun Jan 26 00:00:00 UTC 2014 - Simo Sorce <simo@samba.org>
+
+- Fixes #1058025
+- New upstream release 0.3.1:
+  * Fix segfault in init context.
+
+-------------------------------------------------------------------
+Sun Jan 12 00:00:00 UTC 2014 - Simo Sorce <simo@samba.org>
+
+- New upstream release 0.3.0:
+  * Added support for NTLMv1 Signing and Sealing completing full coverage
+    of the NTLM protocol
+  * Added a number of GSSAPI calls to inquire, export and import context and
+    credentials, in preparation for making it work with GSS-Proxy
+  * Various fixes memleak and other fixes
+
+-------------------------------------------------------------------
+Wed Dec  4 00:00:00 UTC 2013 - Simo Sorce <simo@samba.org>
+
+- Backport patch that fixes failures with gss_set_neg_mechs() calls.
+
+-------------------------------------------------------------------
+Fri Oct 18 00:00:00 UTC 2013 - Simo Sorce <simo@samba.org>
+
+- New upstream realease 0.2.0:
+  * Add support for acquire_cred_with_password()
+  * Fix Signing keys generation
+  * Add enterprise names support
+  * Add connectionless mode support
+  * Add development header gssapi_ntlmssp.h
+  * Various bugfixes and tests for new features
+
+-------------------------------------------------------------------
+Thu Oct 17 00:00:00 UTC 2013 - Simo Sorce <simo@samba.org>
+
+- Initial import of 0.1.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applet-dock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define _name   mate-dock-applet
 Name:           mate-applet-dock
-Version:        0.88
+Version:        20.04.0
 Release:        0
 Summary:        Dock applet for the MATE panel
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
-URL:            https://github.com/robint99/mate-dock-applet
-Source:         https://github.com/robint99/%{_name}/archive/V%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+URL:            https://github.com/ubuntu-mate/mate-dock-applet
+Source:         https://github.com/ubuntu-mate/%{_name}/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bamf-daemon
@@ -34,17 +33,14 @@ BuildRequires:  python3-devel
 Requires:       bamf-daemon
 Requires:       python3-Pillow
 Requires:       python3-cairo
+Requires:       python3-distro
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
+Requires:       python3-python-xlib
 Requires:       python3-xdg
 Recommends:     libunity
 %glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500
-Requires:       python3-python-xlib
-%else
-Requires:       python3-xlib
-%endif
 
 %description
 An application dock applet for the MATE panel.
@@ -72,7 +68,7 @@ The applet allows you to:
 autoreconf -fi
 %configure \
   --with-gtk3
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -86,14 +82,6 @@ rm -rf *.pyc *.pyo __pycache__/
 touch -c *.py
 %py3_compile .
 popd
-
-%if 0%{?suse_version} < 1500
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING

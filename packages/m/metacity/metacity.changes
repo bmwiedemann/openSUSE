@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.35.1 (changes since 3.30.1):
+  * Convert WM_NAME and WM_CLASS to UTF-8.
+  * Add support for _GTK_SHOW_WINDOW_MENU.
+  * Fix a possible crash in the compositor.
+  * Add support for _GTK_WORKAREAS_Dn.
+  * Add support for _GNOME_WM_STRUT_AREA.
+  * Clip shape region to window size.
+  * Do not move focus to a fullscreen window that is on another
+    monitor.
+  * Fix blurry titlebar font.
+  * Fix shadow regression with Metacity theme.
+  * Fix some memory leaks.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Remove metacity-lower-autotools.patch, metacity-gtk-3.20.patch.
+
+-------------------------------------------------------------------
 Sun Nov 25 15:37:18 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 3.30.1 (changes since 3.28.0):

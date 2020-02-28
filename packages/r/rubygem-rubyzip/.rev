@@ -124,4 +124,41 @@
     <comment></comment>
     <requestid>747726</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b6010ae8b0338621ad6c5baf614b2650</srcmd5>
+    <version>2.2.0</version>
+    <time>1582899713</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpmlint complains (removing rubygem-rubyzip.rpmlintrc)
+
+- New upstream release 2.2.0
+  - Add support for decompression plugin gems #427
+
+- New upstream release 2.1.0
+  - Fix (at least partially) the `restore_times` and `restore_permissions`
+    options to `Zip::File.new`
+    [#413](https://github.com/rubyzip/rubyzip/pull/413)
+     - Previously, neither option did anything, regardless of what it was set
+       to. We have therefore defaulted them to `false` to preserve the current
+       behavior, for the time being. If you have explicitly set either to
+       `true`, it will now have an effect.
+     - Fix handling of UniversalTime (`mtime`, `atime`, `ctime`)
+       fields. [#421](https://github.com/rubyzip/rubyzip/pull/421)
+     - Previously, `Zip::File` did not pass the options to `Zip::Entry` in some
+       cases. [#423](https://github.com/rubyzip/rubyzip/pull/423)
+     - Note that `restore_times` in this release does nothing on Windows and
+       only restores `mtime`, not `atime` or `ctime`.
+  - Allow `Zip::File.open` to take an options hash like `Zip::File.new`
+    [#418](https://github.com/rubyzip/rubyzip/pull/418)
+  - Always print warnings with `warn`, instead of a mix of `puts` and `warn`
+    [#416](https://github.com/rubyzip/rubyzip/pull/416)
+  - Create temporary files in the system temporary directory instead of the
+    directory of the zip file
+    [#411](https://github.com/rubyzip/rubyzip/pull/411)
+  - Drop unused `tmpdir` requirement
+    [#411](https://github.com/rubyzip/rubyzip/pull/411)
+  Tooling
+  - Move CI to xenial and include jruby on JDK11</comment>
+    <requestid>780191</requestid>
+  </revision>
 </revisionlist>

@@ -39,4 +39,12 @@
     <comment>- Add mate-menus 1.22 support.</comment>
     <requestid>682544</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d0240e1b5abab19aee704704721a69c</srcmd5>
+    <version>0.6.1</version>
+    <time>1582899742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1.</comment>
+    <requestid>780243</requestid>
+  </revision>
 </revisionlist>

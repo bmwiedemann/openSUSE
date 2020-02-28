@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-rmt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-rmt
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 BuildArch:      noarch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
-Requires:       rmt-server >= 1.0.6
+Requires:       rmt-server >= 2.5.0
 Requires:       yast2
 Requires:       yast2-ruby-bindings
 
@@ -33,9 +33,9 @@ BuildRequires:  yast2
 BuildRequires:  yast2-devtools
 BuildRequires:  yast2-ruby-bindings
 #for install task
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # for tests
-BuildRequires:  rubygem(rspec)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 
 Summary:        YaST2 - Module to configure RMT
 License:        GPL-2.0-only

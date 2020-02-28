@@ -1,7 +1,7 @@
-Index: scilab-6.0.2/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
+Index: scilab-6.1.0/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
 ===================================================================
---- scilab-6.0.2.orig/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
-+++ scilab-6.0.2/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
+--- scilab-6.1.0.orig/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
++++ scilab-6.1.0/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
 @@ -62,7 +62,7 @@ public class ClassPath {
       */
      public static void addURL(final URL u, int i) {
@@ -26,11 +26,11 @@ Index: scilab-6.0.2/modules/jvm/src/java/org/scilab/modules/jvm/ClassPath.java
          return paths;
      }
  
-Index: scilab-6.0.2/bin/scilab
+Index: scilab-6.1.0/bin/scilab
 ===================================================================
---- scilab-6.0.2.orig/bin/scilab
-+++ scilab-6.0.2/bin/scilab
-@@ -620,6 +620,10 @@ detect_java_vm() {
+--- scilab-6.1.0.orig/bin/scilab
++++ scilab-6.1.0/bin/scilab
+@@ -650,6 +650,10 @@ detect_java_vm() {
      ;;
      esac
  
@@ -40,4 +40,4 @@ Index: scilab-6.0.2/bin/scilab
 +
  ####### END OF JAVA ENV DETECTION/SETTING ######
  }
-
+ 
