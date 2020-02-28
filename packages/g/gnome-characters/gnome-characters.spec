@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-characters
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-characters
-Version:        3.32.1
+Version:        3.34.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-characters/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.35.9
 BuildRequires:  intltool >= 0.50.1

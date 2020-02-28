@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 27 13:16:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0:
+  + searchProvider: Fix deprecation fixes.
+  + Improves search entry and exit behaviour.
+  + Fix deprecation warnings.
+  + Fix single instance application mode.
+  + Snap and flatpak fixes.
+
+-------------------------------------------------------------------
 Tue Apr  9 09:04:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:
