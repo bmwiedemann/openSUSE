@@ -1247,4 +1247,41 @@
     <comment></comment>
     <requestid>734079</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>d16a68f4bb8cf5b104677369add624c1</srcmd5>
+    <version>4.4.0+git57.70549516</version>
+    <time>1582899556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0+git57.70549516:
+  * [lvmlockd] support lvm2-2.03 removing lvmetad
+  * oralsnr: allow using the tns_admin directory for different listeners
+  * Change 'alredy' to 'already'
+  * LVM-activate: add OCF_CHECK_LEVEL to control monitor action
+  * redis: validate_all: fixes file status tests
+  * rabbitmq-cluster: ensure we delete nodename if stop action fails
+  * IPsrcaddr: remove hardcoded device when using destination parameter
+  * Remove standby.signal when promote with restart
+  * IPsrcaddr: fixes to avoid failing during probe
+  * LVM-activate: verify vg or lv validity
+  * [podman] Simplify the code for checking if an image exists
+  * Filesystem: add trigger_udev_rules_if_need() for -U, -L, or /dev/xxx device
+  * Filesystem: respect udevd need time to create UUID symlinks
+  * ldirectord: Support sched-flags
+  * IPaddr2: ipt_CLUSTERIP &quot;iptables&quot; extension not &quot;nft&quot; backend compatible
+  * IPsrcaddr: fixes to replace local rule if using local table, and set src back to primary for device on stop
+  * iSCSI logical unit fix (#1435)
+  * Clear out the $DIR_EXECUTABLE variable so we catch the situation when we lose the directory with binaries after first sapinstance_init invokation. The second sapinstance_init invocation will not detect it as it will have already preset the $DIR_EXECUTABLE from previous run. This may allow us running actions after second sapinstance_init invocation that would be not run if we knew that we miss the needed binaries.
+  * High: pgsql: Support for PostgreSQL 12
+  * IPaddr2: add noprefixroute parameter
+  * Filesystem: refresh UUID in the start phase
+  * azure-lb Set socat to default on SUSE distributions.
+  * exportfs: allow multiple exports of same directory
+  * Low: MailTo: fix variable expansion
+  * iSCSILogicalUnit.in fixes (#1427)
+  * Low: exportfs: Fix spelling error
+  * Low: mysql-common: fix startup check
+  * aliyun-vpc-move-ip: add binary detection
+  * Supports both 'go' and 'python' versions of Aliyun CLI</comment>
+    <requestid>779467</requestid>
+  </revision>
 </revisionlist>
