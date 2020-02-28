@@ -1,7 +1,7 @@
-From 84aceebf6f76934c5d8fa11b0f7cd662542c286a Mon Sep 17 00:00:00 2001
+From 852d6a0d81b21673bdcb80ff13bf60dd5a416dd4 Mon Sep 17 00:00:00 2001
 From: Samuel Cabrero <scabrero@suse.de>
 Date: Mon, 14 Jan 2019 13:06:55 +0100
-Subject: [PATCH 2/9] krb5-1.9-manpaths
+Subject: [PATCH 2/8] krb5-1.9-manpaths
 
 Import krb5-1.9-manpaths.dif
 
@@ -14,7 +14,7 @@ configure scripts should be rebuilt.  Originally RT#6525
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/man/kpropd.man b/src/man/kpropd.man
-index 38daa5e79..a0106ec5f 100644
+index 66de36813..9988dcdf3 100644
 --- a/src/man/kpropd.man
 +++ b/src/man/kpropd.man
 @@ -67,7 +67,7 @@ the \fB/etc/inetd.conf\fP file which looks like this:
@@ -27,5 +27,5 @@ index 38daa5e79..a0106ec5f 100644
  .fi
  .UNINDENT
 -- 
-2.20.1
+2.25.0
 

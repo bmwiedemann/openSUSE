@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Feb 25 08:36:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove cruft to support distributions older than SLE 12
+- Use macros where applicable
+- Switch to pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Mon Feb 17 17:26:16 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Upgrade to 1.18
+  Administrator experience:
+    * Remove support for single-DES encryption types.
+    * Change the replay cache format to be more efficient and robust.
+      Replay cache filenames using the new format end with ".rcache2"
+      by default.
+    * setuid programs will automatically ignore environment variables
+      that normally affect krb5 API functions, even if the caller does
+      not use krb5_init_secure_context().
+    * Add an "enforce_ok_as_delegate" krb5.conf relation to disable
+      credential forwarding during GSSAPI authentication unless the KDC
+      sets the ok-as-delegate bit in the service ticket.
+    * Use the permitted_enctypes krb5.conf setting as the default value
+      for default_tkt_enctypes and default_tgs_enctypes.
+  Developer experience:
+    * Implement krb5_cc_remove_cred() for all credential cache types.
+    * Add the krb5_pac_get_client_info() API to get the client account
+      name from a PAC.
+  Protocol evolution:
+    * Add KDC support for S4U2Self requests where the user is identified
+      by X.509 certificate. (Requires support for certificate lookup from
+      a third-party KDB module.)
+    * Remove support for an old ("draft 9") variant of PKINIT.
+    * Add support for Microsoft NegoEx. (Requires one or more third-party
+      GSS modules implementing NegoEx mechanisms.)
+  User experience:
+    * Add support for "dns_canonicalize_hostname=fallback", causing
+      host-based principal names to be tried first without DNS
+      canonicalization, and again with DNS canonicalization if the
+      un-canonicalized server is not found.
+    * Expand single-component hostnames in host-based principal names
+      when DNS canonicalization is not used, adding the system's first DNS
+      search path as a suffix. Add a "qualify_shortname" krb5.conf relation
+      to override this suffix or disable expansion.
+    * Honor the transited-policy-checked ticket flag on application servers,
+      eliminating the requirement to configure capaths on servers in some
+      scenarios.
+  Code quality:
+    * The libkrb5 serialization code (used to export and import krb5 GSS
+      security contexts) has been simplified and made type-safe.
+    * The libkrb5 code for creating KRB-PRIV, KRB-SAFE, and KRB-CRED
+      messages has been revised to conform to current coding practices.
+    * The test suite has been modified to work with macOS System Integrity
+      Protection enabled.
+    * The test suite incorporates soft-pkcs11 so that PKINIT PKCS11 support
+      can always be tested.
+- Updated patches:
+  * 0002-krb5-1.9-manpaths.patch
+  * 0004-krb5-1.6.3-gssapi_improve_errormessages.patch
+  * 0005-krb5-1.6.3-ktutil-manpage.patch
+  * 0006-krb5-1.12-api.patch
+- Renamed patches:
+  * 0001-krb5-1.12-pam.patch => 0001-ksu-pam-integration.patch
+  * 0003-krb5-1.12-buildconf.patch => 0003-Adjust-build-configuration.patch
+  * 0008-krb5-1.12-selinux-label.patch => 0007-SELinux-integration.patch
+  * 0009-krb5-1.9-debuginfo.patch => 0008-krb5-1.9-debuginfo.patch
+- Deleted patches:
+  * 0007-krb5-1.12-ksu-path.patch
+
+-------------------------------------------------------------------
 Thu Dec 12 08:56:09 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
 
 - Upgrade to 1.17.1

@@ -1,7 +1,7 @@
-From 3cdd9863a1a7a9a004f3d75e32136bb0be26a32b Mon Sep 17 00:00:00 2001
+From c1b8aa3d8546453544fd659ef18b96709eb88e54 Mon Sep 17 00:00:00 2001
 From: Samuel Cabrero <scabrero@suse.de>
 Date: Mon, 14 Jan 2019 13:09:05 +0100
-Subject: [PATCH 4/9] krb5-1.6.3-gssapi_improve_errormessages
+Subject: [PATCH 4/8] krb5-1.6.3-gssapi_improve_errormessages
 
 Import krb5-1.6.3-gssapi_improve_errormessages.dif
 ---
@@ -22,5 +22,5 @@ index bc416107e..22612f970 100644
          *minor_status = ENOMEM;
          return(GSS_S_FAILURE);
 -- 
-2.20.1
+2.25.0
 

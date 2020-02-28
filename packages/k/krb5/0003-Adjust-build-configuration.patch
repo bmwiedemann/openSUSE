@@ -1,15 +1,15 @@
-From a04d1b609e0ca89d1ad93faeeafa5b3202cca4df Mon Sep 17 00:00:00 2001
-From: Samuel Cabrero <scabrero@suse.de>
-Date: Mon, 14 Jan 2019 13:08:07 +0100
-Subject: [PATCH 3/9] krb5-1.12-buildconf
-
-Import krb5-1.12-buildconf.patch
+From 48abdf7c7b28611c1135b35dfa23ac61899e80b2 Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Tue, 23 Aug 2016 16:45:26 -0400
+Subject: [PATCH 3/8] Adjust build configuration
 
 Build binaries in this package as RELRO PIEs, libraries as partial RELRO,
 and install shared libraries with the execute bit set on them.  Prune out
 the -L/usr/lib* and PIE flags where they might leak out and affect
 apps which just want to link with the libraries. FIXME: needs to check and
 not just assume that the compiler supports using these flags.
+
+Last-updated: krb5-1.15-beta1
 ---
  src/build-tools/krb5-config.in | 7 +++++++
  src/config/pre.in              | 2 +-
@@ -48,7 +48,7 @@ index ce87e21ca..164bf8301 100644
  ## ${prefix}.
  prefix=@prefix@
 diff --git a/src/config/shlib.conf b/src/config/shlib.conf
-index 3e4af6c02..a43736137 100644
+index 3e4af6c02..2b20c3fda 100644
 --- a/src/config/shlib.conf
 +++ b/src/config/shlib.conf
 @@ -423,7 +423,7 @@ mips-*-netbsd*)
@@ -56,7 +56,7 @@ index 3e4af6c02..a43736137 100644
  	# Use objdump -x to examine the fields of the library
  	# UNDEF_CHECK is suppressed by --enable-asan
 -	LDCOMBINE='$(CC) -shared -fPIC -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK)'
-+	LDCOMBINE='$(CC) -shared -fPIC -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK) -Wl,-z,relro'
++	LDCOMBINE='$(CC) -shared -fPIC -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK)  -Wl,-z,relro -Wl,--warn-shared-textrel'
  	UNDEF_CHECK='-Wl,--no-undefined'
  	# $(EXPORT_CHECK) runs export-check.pl when in maintainer mode.
  	LDCOMBINE_TAIL='-Wl,--version-script binutils.versions $(EXPORT_CHECK)'
@@ -71,5 +71,5 @@ index 3e4af6c02..a43736137 100644
  	CXX_LINK_SHARED='$(CXX) $(PROG_LIBPATH) $(PROG_RPATH_FLAGS) $(CXXFLAGS) $(LDFLAGS)'
  	CXX_LINK_STATIC='$(CXX) $(PROG_LIBPATH) $(CXXFLAGS) $(LDFLAGS)'
 -- 
-2.20.1
+2.25.0
 

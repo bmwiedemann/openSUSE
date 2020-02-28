@@ -1,9 +1,7 @@
-From 333d843912825435da5c3e62807efb6753946be1 Mon Sep 17 00:00:00 2001
-From: Samuel Cabrero <scabrero@suse.de>
-Date: Mon, 14 Jan 2019 13:05:56 +0100
-Subject: [PATCH 1/9] krb5-1.12-pam
-
-Import krb5-1.12-pam.patch
+From ff26447c1edc29bf69672f1a55f8bb1c3f20f582 Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Tue, 23 Aug 2016 16:29:58 -0400
+Subject: [PATCH 1/8] ksu pam integration
 
 Modify ksu so that it performs account and session management on behalf of
 the target user account, mimicking the action of regular su.  The default
@@ -16,31 +14,35 @@ section of /etc/krb5.conf.
 When enabled, ksu gains a dependency on libpam.
 
 Originally RT#5939, though it's changed since then to perform the account
-and session management before dropping privileges.
+and session management before dropping privileges, and to apply on top of
+changes we're proposing for how it handles cache collections.
+
+Last-updated: krb5-1.18-beta1
 ---
- src/aclocal.m4              |  67 +++++++
+ src/aclocal.m4              |  68 +++++++
  src/clients/ksu/Makefile.in |   8 +-
- src/clients/ksu/main.c      |  94 ++++++++-
+ src/clients/ksu/main.c      |  88 +++++++-
  src/clients/ksu/pam.c       | 389 ++++++++++++++++++++++++++++++++++++
  src/clients/ksu/pam.h       |  57 ++++++
- src/configure.in            |   2 +
- 6 files changed, 614 insertions(+), 3 deletions(-)
+ src/configure.ac            |   2 +
+ 6 files changed, 609 insertions(+), 3 deletions(-)
  create mode 100644 src/clients/ksu/pam.c
  create mode 100644 src/clients/ksu/pam.h
 
 diff --git a/src/aclocal.m4 b/src/aclocal.m4
-index 3752d9bd5..340546d80 100644
+index 2394f7e33..53f8b6fb7 100644
 --- a/src/aclocal.m4
 +++ b/src/aclocal.m4
-@@ -1697,3 +1697,70 @@ AC_DEFUN(KRB5_AC_PERSISTENT_KEYRING,[
-       ]))
+@@ -1675,3 +1675,71 @@ if test "$with_ldap" = yes; then
+   OPENLDAP_PLUGIN=yes
+ fi
  ])dnl
- dnl
++dnl
 +dnl
 +dnl Use PAM instead of local crypt() compare for checking local passwords,
 +dnl and perform PAM account, session management, and password-changing where
 +dnl appropriate.
-+dnl 
++dnl
 +AC_DEFUN(KRB5_WITH_PAM,[
 +AC_ARG_WITH(pam,[AC_HELP_STRING(--with-pam,[compile with PAM support])],
 +	    withpam="$withval",withpam=auto)
@@ -104,11 +106,11 @@ index 3752d9bd5..340546d80 100644
 +AC_SUBST(NON_PAM_MAN)
 +])dnl
 diff --git a/src/clients/ksu/Makefile.in b/src/clients/ksu/Makefile.in
-index b2fcbf240..5755bb58a 100644
+index 8b4edce4d..9d58f29b5 100644
 --- a/src/clients/ksu/Makefile.in
 +++ b/src/clients/ksu/Makefile.in
 @@ -3,12 +3,14 @@ BUILDTOP=$(REL)..$(S)..
- DEFINES = -DGET_TGT_VIA_PASSWD -DPRINC_LOOK_AHEAD -DCMD_PATH='"/bin /local/bin"'
+ DEFINES = -DGET_TGT_VIA_PASSWD -DPRINC_LOOK_AHEAD -DCMD_PATH='"/usr/local/sbin /usr/local/bin /sbin /bin /usr/sbin /usr/bin"'
  
  KSU_LIBS=@KSU_LIBS@
 +PAM_LIBS=@PAM_LIBS@
@@ -142,7 +144,7 @@ index b2fcbf240..5755bb58a 100644
  clean:
  	$(RM) ksu
 diff --git a/src/clients/ksu/main.c b/src/clients/ksu/main.c
-index d9596d948..7a0c7e48b 100644
+index 4f03dd8ed..21a4d02bb 100644
 --- a/src/clients/ksu/main.c
 +++ b/src/clients/ksu/main.c
 @@ -26,6 +26,7 @@
@@ -172,7 +174,7 @@ index d9596d948..7a0c7e48b 100644
  /***********/
  
  #define KS_TEMPORARY_CACHE "MEMORY:_ksu"
-@@ -528,6 +534,25 @@ main (argc, argv)
+@@ -535,6 +541,23 @@ main (argc, argv)
                 prog_name,target_user,client_name,
                 source_user,ontty());
  
@@ -182,13 +184,11 @@ index d9596d948..7a0c7e48b 100644
 +                                   NULL, source_user,
 +                                   ttyname(STDERR_FILENO)) != 0) {
 +                fprintf(stderr, "Access denied for %s.\n", target_user);
-+                sweep_up(ksu_context, cc_target);
 +                exit(1);
 +            }
 +            if (appl_pam_requires_chauthtok()) {
 +                fprintf(stderr, "Password change required for %s.\n",
 +                        target_user);
-+                sweep_up(ksu_context, cc_target);
 +                exit(1);
 +            }
 +            force_fork++;
@@ -198,8 +198,8 @@ index d9596d948..7a0c7e48b 100644
          /* Run authorization as target.*/
          if (krb5_seteuid(target_uid)) {
              com_err(prog_name, errno, _("while switching to target for "
-@@ -596,6 +621,26 @@ main (argc, argv)
-             com_err(prog_name,retval, _("while calling cc_filter"));
+@@ -595,6 +618,24 @@ main (argc, argv)
+ 
              exit(1);
          }
 +#ifdef USE_PAM
@@ -210,13 +210,11 @@ index d9596d948..7a0c7e48b 100644
 +                                   NULL, source_user,
 +                                   ttyname(STDERR_FILENO)) != 0) {
 +                fprintf(stderr, "Access denied for %s.\n", target_user);
-+                sweep_up(ksu_context, cc_target);
 +                exit(1);
 +            }
 +            if (appl_pam_requires_chauthtok()) {
 +                fprintf(stderr, "Password change required for %s.\n",
 +                        target_user);
-+                sweep_up(ksu_context, cc_target);
 +                exit(1);
 +            }
 +            force_fork++;
@@ -224,8 +222,8 @@ index d9596d948..7a0c7e48b 100644
 +#endif
      }
  
-     if (all_rest_copy){
-@@ -645,6 +690,32 @@ main (argc, argv)
+     if( some_rest_copy){
+@@ -652,6 +693,30 @@ main (argc, argv)
          exit(1);
      }
  
@@ -233,7 +231,6 @@ index d9596d948..7a0c7e48b 100644
 +    if (appl_pam_enabled(ksu_context, "ksu")) {
 +        if (appl_pam_session_open() != 0) {
 +            fprintf(stderr, "Error opening session for %s.\n", target_user);
-+            sweep_up(ksu_context, cc_target);
 +            exit(1);
 +        }
 +#ifdef DEBUG
@@ -244,7 +241,6 @@ index d9596d948..7a0c7e48b 100644
 +        if (appl_pam_cred_init()) {
 +            fprintf(stderr, "Error initializing credentials for %s.\n",
 +                    target_user);
-+            sweep_up(ksu_context, cc_target);
 +            exit(1);
 +        }
 +#ifdef DEBUG
@@ -258,7 +254,7 @@ index d9596d948..7a0c7e48b 100644
      /* set permissions */
      if (setgid(target_pwd->pw_gid) < 0) {
          perror("ksu: setgid");
-@@ -742,7 +813,7 @@ main (argc, argv)
+@@ -749,7 +814,7 @@ main (argc, argv)
          fprintf(stderr, "program to be execed %s\n",params[0]);
      }
  
@@ -267,7 +263,7 @@ index d9596d948..7a0c7e48b 100644
          execv(params[0], params);
          com_err(prog_name, errno, _("while trying to execv %s"), params[0]);
          sweep_up(ksu_context, cc_target);
-@@ -772,16 +843,35 @@ main (argc, argv)
+@@ -779,16 +844,35 @@ main (argc, argv)
              if (ret_pid == -1) {
                  com_err(prog_name, errno, _("while calling waitpid"));
              }
@@ -306,7 +302,7 @@ index d9596d948..7a0c7e48b 100644
      }
 diff --git a/src/clients/ksu/pam.c b/src/clients/ksu/pam.c
 new file mode 100644
-index 000000000..cbfe48704
+index 000000000..eb5d03bbf
 --- /dev/null
 +++ b/src/clients/ksu/pam.c
 @@ -0,0 +1,389 @@
@@ -342,7 +338,7 @@ index 000000000..cbfe48704
 + * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 + * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 + * POSSIBILITY OF SUCH DAMAGE.
-+ * 
++ *
 + * Convenience wrappers for using PAM.
 + */
 +
@@ -701,7 +697,7 @@ index 000000000..cbfe48704
 +#endif
 diff --git a/src/clients/ksu/pam.h b/src/clients/ksu/pam.h
 new file mode 100644
-index 000000000..0ab76569c
+index 000000000..d45b9fd84
 --- /dev/null
 +++ b/src/clients/ksu/pam.h
 @@ -0,0 +1,57 @@
@@ -737,7 +733,7 @@ index 000000000..0ab76569c
 + * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 + * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 + * POSSIBILITY OF SUCH DAMAGE.
-+ * 
++ *
 + * Convenience wrappers for using PAM.
 + */
 +
@@ -762,11 +758,11 @@ index 000000000..0ab76569c
 +int appl_pam_cred_init(void);
 +void appl_pam_cleanup(void);
 +#endif
-diff --git a/src/configure.in b/src/configure.in
-index 61ef738dc..e9a12ac16 100644
---- a/src/configure.in
-+++ b/src/configure.in
-@@ -1352,6 +1352,8 @@ AC_SUBST([VERTO_VERSION])
+diff --git a/src/configure.ac b/src/configure.ac
+index 234f4281c..d1f576124 100644
+--- a/src/configure.ac
++++ b/src/configure.ac
+@@ -1390,6 +1390,8 @@ AC_SUBST([VERTO_VERSION])
  
  AC_PATH_PROG(GROFF, groff)
  
@@ -776,5 +772,5 @@ index 61ef738dc..e9a12ac16 100644
  if test "${localedir+set}" != set; then
      localedir='$(datadir)/locale'
 -- 
-2.20.1
+2.25.0
 
