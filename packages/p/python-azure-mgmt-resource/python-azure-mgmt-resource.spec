@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-resource
-Version:        7.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Microsoft Azure Resource Management Client Library
 License:        MIT
