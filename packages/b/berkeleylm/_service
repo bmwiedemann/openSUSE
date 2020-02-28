@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git://github.com/adampauls/berkeleylm.git</param>
+    <param name="scm">git</param>
+    <param name="revision">62788bde1df15742778cf3b12d5ce0dde85e7968</param>
+    <param name="versionformat">1.1.6</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
