@@ -19,18 +19,18 @@
 %define shlib %{name}-1_5-1
 %define geglshlib %{name}-gegl0
 Name:           libmypaint
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A brushstroke creation library
 License:        ISC
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://mypaint.org/
 Source:         https://github.com/mypaint/libmypaint/releases/download/v%{version}/libmypaint-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libmypaint-gegl-pkgconfig.patch badshah400@gmail.com -- In libmypaint-gegl.pc, change Name to libmypaint-gegl to avoid conflict with libmypaint.pc and Requires to depend on the correct version of gegl and on libmypaint - not libmypaint-@LIBMYPAINT_API_PLATFORM_VERSION@
-Patch0:         libmypaint-gegl-pkgconfig.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gegl-0.4)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-c)
 
 %description
@@ -52,6 +52,7 @@ This package provides the shared libraries for %{name}.
 Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
+Requires:       typelib-1_0-MyPaint-1_5 = %{version}
 Provides:       mypaint-devel = %{version}
 Obsoletes:      mypaint-devel < %{version}
 
@@ -61,11 +62,22 @@ which is used by MyPaint and other projects.
 This package provides the header needed for developing
 applications using %{name}.
 
+%package -n typelib-1_0-MyPaint-1_5
+Summary:        A brushstroke creation library -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-MyPaint-1_5
+libmypaint, a.k.a. "brushlib", is a library for making brushstrokes
+which is used by MyPaint and other projects.
+
+This package provides the GObject Introspection bindings for the library.
+
 %package gegl-devel
 Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{geglshlib} = %{version}
 Requires:       %{shlib} = %{version}
+Requires:       typelib-1_0-MyPaintGegl-1_5 = %{version}
 
 %description gegl-devel
 libmypaint, a.k.a. "brushlib", is a library for making brushstrokes which
@@ -81,6 +93,17 @@ libmypaint, a.k.a. "brushlib", is a library for making brushstrokes which is
 used by MyPaint and other projects. This package provides the shared libraries
 for %{name}'s GEGL bindings.
 
+%package -n typelib-1_0-MyPaintGegl-1_5
+Summary:        A brushstroke creation library with gegl support -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-MyPaintGegl-1_5
+libmypaint, a.k.a. "brushlib", is a library for making brushstrokes
+which is used by MyPaint and other projects.
+
+This package provides the GObject Introspection bindings for the library with
+gegl support.
+
 %lang_package
 
 %prep
@@ -92,6 +115,7 @@ chmod -x README.md
 %build
 %configure \
 	--enable-gegl \
+	--enable-openmp \
 	%{nil}
 make %{?_smp_mflags}
 
@@ -116,6 +140,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/libmypaint.pc
 %{_includedir}/%{name}/
+%{_datadir}/gir-1.0/MyPaint-1.5.gir
 
 %files -n %{geglshlib}
 %{_libdir}/%{name}-gegl.so.*
@@ -124,5 +149,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}-gegl.so
 %{_libdir}/pkgconfig/libmypaint-gegl.pc
 %{_includedir}/%{name}-gegl/
+%{_datadir}/gir-1.0/MyPaintGegl-1.5.gir
+
+%files -n typelib-1_0-MyPaint-1_5
+%{_libdir}/girepository-1.0/MyPaint-1.5.typelib
+
+%files -n typelib-1_0-MyPaintGegl-1_5
+%{_libdir}/girepository-1.0/MyPaintGegl-1.5.typelib
 
 %changelog

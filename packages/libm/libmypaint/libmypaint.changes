@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 24 06:49:00 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.1:
+  * mypaint-brush.c:count_dabs_to calculation changed to be
+    consistent with v1.3.0 / 1.4.0 when called via the old stroke
+    interface, and generally fixed so that there's no need for an
+    additional initial mypaint_brush_stroke_to call to produce a
+    visible stroke.
+  * mypaint-brush.c: estimation of dabs per pixel reverted to the
+    old calculation when called via the old stroke interface.
+  * Fixes incorrect versions for the requirements in the
+    libmypaint-gegl pkg-config file (for both gegl and libmypaint)
+  * The openmp flags are now actually used when building with
+    --enable-openmp
+  * Translation updates.
+- Drop libmypaint-gegl-pkgconfig.patch: incorporated upstream.
+- Compile with openmp support by passing `--enable-openmp` to
+  configure.
+- Build introspection bindings:
+  * Add BuildRequires pkgconfig(gobject-introspection-1.0) and
+    pkgconfig(glib-2.0).
+  * Split out new packages for introspection bindings:
+    typelib-1_0-MyPaint-1_5 and typelib-1_0-MyPaintGegl-1_5.
+
+-------------------------------------------------------------------
 Tue Feb 18 21:12:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.0:
