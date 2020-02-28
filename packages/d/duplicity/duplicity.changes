@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Feb 26 15:14:17 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Fix source URI. 
+
+-------------------------------------------------------------------
+Tue Feb 25 23:11:19 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.11: 
+  + Fixed to work around par2 0.8.1 core dump on short name.
+  + Merged in translation updates.
+  + Fixed bug #1857818 - startswith first arg must be bytes.
+  + Fixed bug #1863018 - mediafire backend fails on py3.
+  + Fixed bug #1236248 - --extra-clean clobbers old backups.
+  + Add rclone requirement to snapcraft.yaml.
+  + Fixed bug #1860405 - Auth mechanism not supported.
+  + Fixed bug #1862672 - test_log does not respect TMPDIR.
+  + Renamed botobackend.py to s3_boto_backend.py.
+  + Reworked setup.py to build a pip-compatible distribution
+    tarball of duplicity.
+  + Added dist/makepip for convenience.
+  + Adjust Dockerfiles to new requirements.
+  + Fixed bug #1861287 - Removing old backup chains fails using
+    pexpect+sftp.
+  + Enhance setup.py/cfg to allow install by pip.
+  + Changes in version 0.8.10:
+  + Switched to python3 for snaps.
+  + Fixed bug #1858713 - paramiko socket.timeout.
+  + Removed some unneeded includes of gettext
+  + Fixed bug #1859304 with patch from Arduous
+    - Backup and restore do not work on SCP backend.
+  + Move to single-sourceing the package version.
+  + Fixed bug #1859877 - syntax warning on python 3.8.
+  + Skip functional/test_selection::TestUnicode if
+    python version is less than 3.7.
+  + Clean up some TODO tasks in testing code.
+  + Clean up deprecation errors in Python 3.8.
+  + Fixed bug #1858204 - ENODEV should be added to
+    list of recognized error strings.
+  + Fixed bug #1858207 missing targets in multibackend.
+  + Merged in translation updates.
+- Rebase duplicity-remove_shebang.patch.
+- Modify setup.py to default to the correct revision absent a bzr
+  tree, so that documentation is installed into a reasonable
+  directory.
+
+-------------------------------------------------------------------
 Wed Jan  8 01:39:09 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.09: 

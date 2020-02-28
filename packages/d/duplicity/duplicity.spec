@@ -1,7 +1,7 @@
 #
 # spec file for package duplicity
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define version_base 0.8.11
+%define bzr_rev 1596
 Name:           duplicity
-Version:        0.8.09
+Version:        %{version_base}.%{bzr_rev}
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            http://duplicity.nongnu.org/
-Source:         https://code.launchpad.net/%{name}/0.8-series/%{version}/+download/%{name}-%{version}.tar.gz
+Source:         https://code.launchpad.net/%{name}/0.8-series/%{version_base}/+download/%{name}-%{version}.tar.gz
 Patch1:         duplicity-remove_shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
@@ -59,6 +61,7 @@ links.
 %patch1 -p1
 
 %build
+sed -i "s/revno = u'0'/revno = u'%{bzr_rev}'/" setup.py
 %python3_build
 
 %install
