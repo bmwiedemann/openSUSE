@@ -1,0 +1,20 @@
+diff --git a/jfreechart-1.0.19/ant/build-swt.xml b/jfreechart-1.0.19/ant/build-swt.xml
+index a7a4246..6806489 100644
+--- a/jfreechart-1.0.19/ant/build-swt.xml
++++ b/jfreechart-1.0.19/ant/build-swt.xml
+@@ -32,6 +32,7 @@
+                destdir="${basedir}/build"
+                debug="on"
+                deprecation="on"
++               encoding="UTF-8"
+                source="1.6"
+                target="1.6"
+                includeantruntime="false">
+@@ -61,6 +62,7 @@
+                destdir="${basedir}/build"
+                debug="on"
+                deprecation="on"
++               encoding="UTF-8"
+                source="1.6"
+                target="1.6"
+                includeantruntime="false">
