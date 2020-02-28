@@ -1020,4 +1020,16 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
   * Use safe hardcoded value for ProvidersUrl</comment>
     <requestid>772341</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>69bac44d2bb2cb4fc21aa2c08b03c9ac</srcmd5>
+    <version>2.9.70git.20200225T224218~2084224e4c</version>
+    <time>1582899549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.70git.20200225T224218~2084224e4c:
+  * Fix error of Wikipedia entering in an infinite recursion of page loading
+  * Fix metainfo generation for Amarok applets
+  * Fix loading of lyrics from lyrics.wikia.com
+  * Removed obsolete PackagePath role from AppletModel</comment>
+    <requestid>779414</requestid>
+  </revision>
 </revisionlist>

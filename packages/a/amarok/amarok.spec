@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.70git.20200131T110159~195748144f
+Version:        2.9.70git.20200225T224218~2084224e4c
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later

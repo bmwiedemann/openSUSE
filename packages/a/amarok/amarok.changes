@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 12:49:20 UTC 2020 - christophe@krop.fr
+
+- Update to version 2.9.70git.20200225T224218~2084224e4c:
+  * Fix error of Wikipedia entering in an infinite recursion of page loading
+  * Fix metainfo generation for Amarok applets
+  * Fix loading of lyrics from lyrics.wikia.com
+  * Removed obsolete PackagePath role from AppletModel
+
+-------------------------------------------------------------------
 Sat Feb 08 13:47:46 UTC 2020 - christophe@krop.fr
 
 - Update to version 2.9.70git.20200131T110159~195748144f:
