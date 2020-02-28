@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:13:14 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Relax version dependency for python-humanfriendly in Requires
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jan 16 14:33:52 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
