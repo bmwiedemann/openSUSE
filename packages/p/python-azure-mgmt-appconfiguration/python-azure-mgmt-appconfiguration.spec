@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-appconfiguration
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-appconfiguration
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Microsoft Azure App Configuration Management Client Library
 License:        MIT
@@ -40,9 +40,7 @@ Requires:       python-msrest >= 0.5.0
 Requires:       python-msrestazure < 2.0.0
 Requires:       python-msrestazure >= 0.4.32
 Conflicts:      python-azure-sdk <= 2.0.0
-
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -71,8 +69,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/appconfiguration
 %{python_sitelib}/azure_mgmt_appconfiguration-*.egg-info
