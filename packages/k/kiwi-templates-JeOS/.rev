@@ -56,4 +56,12 @@
     <comment>- Use systemctl instead of chkconfig</comment>
     <requestid>769883</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>0394752886bb9fabcf27869f0b9a2c82</srcmd5>
+    <version>84.87</version>
+    <time>1582899552</time>
+    <user>dimstar_suse</user>
+    <comment>- Make RPi's EFI partition 64MB big (bsc#1164817)</comment>
+    <requestid>779428</requestid>
+  </revision>
 </revisionlist>

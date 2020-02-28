@@ -240,7 +240,7 @@
             devicepersistency="by-uuid"
             btrfs_quota_groups="true"
             btrfs_root_is_snapshot="true"
-            efipartsize="16"
+            efipartsize="64"
             editbootinstall="editbootinstall_rpi.sh"
         >
             <systemdisk>
