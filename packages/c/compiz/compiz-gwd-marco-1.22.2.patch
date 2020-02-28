@@ -1,0 +1,835 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -357,6 +357,14 @@ else
+   use_marco="no"
+ fi
+ 
++# Check if we are building against marco 1.22.2 or later
++if test "x$use_marco" = "xyes"; then
++  PKG_CHECK_EXISTS(libmarco-private >= 1.22.2,
++    [have_marco_1_22_2=yes], [have_marco_1_22_2=no])
++else
++  have_marco_1_22_2="no"
++fi
++
+ if test "x$use_gtk" = "xyes"; then
+   if test "x$use_gsettings" = "xyes"; then
+     PKG_CHECK_MODULES(GSETTINGS, [glib-2.0 >= 2.32 gio-2.0 >= 2.25.0])
+@@ -383,6 +391,12 @@ if test "$use_marco" = yes; then
+   AC_DEFINE(USE_MARCO, 1, [Build marco theme support])
+ fi
+ 
++AM_CONDITIONAL(HAVE_MARCO_1_22_2, test "x$have_marco_1_22_2" = "xyes")
++if test "$have_marco_1_22_2" = yes; then
++  AC_DEFINE(HAVE_MARCO_1_22_2, 1,
++      [Build against marco 1.22.2 or later])
++fi
++
+ AM_CONDITIONAL(USE_MATE, test "x$use_mate" = "xyes")
+ if test "$use_mate" = yes; then
+   AC_DEFINE(USE_MATE, 1, [Build basic mate compatibility])
+@@ -473,6 +487,7 @@ echo ""
+ echo "and the following optional features will be used:"
+ echo "  gtk:                       $use_gtk ($with_gtk)"
+ echo "  marco:                     $use_marco"
++echo "  marco >=1.22.2 support:    $have_marco_1_22_2"
+ echo "  gwd gsettings support:     $use_gsettings"
+ echo "  desktop menu entries:      $use_menu_entries"
+ echo ""
+--- a/gtk-window-decorator/gtk-window-decorator.c
++++ b/gtk-window-decorator/gtk-window-decorator.c
+@@ -206,6 +206,9 @@ static double decoration_alpha = 0.5;
+ 
+ #define SWITCHER_SPACE 40
+ 
++#ifdef HAVE_MARCO_1_22_2
++static decor_extents_t _resize_extents      = {10, 10, 10, 10};
++#endif
+ static decor_extents_t _shadow_extents      = { 0, 0, 0, 0 };
+ static decor_extents_t _win_extents         = { 6, 6, 4, 6 };
+ static decor_extents_t _max_win_extents     = { 6, 6, 4, 6 };
+@@ -215,6 +218,8 @@ static decor_extents_t _switcher_extents    = { 6, 6, 6, 6 + SWITCHER_SPACE };
+ static int titlebar_height = 17;
+ static int max_titlebar_height = 17;
+ 
++static gint scale;
++
+ static decor_context_t window_context = {
+     { 0, 0, 0, 0 },
+     6, 6, 4, 6,
+@@ -1518,7 +1523,15 @@ decor_update_meta_window_property (decor_t	  *d,
+ 					     top_stretch_offset,
+ 					     bottom_stretch_offset);
+ 
++#ifdef HAVE_MARCO_1_22_2
++    /*Add the new invisible borders from marco to frame extents */
++    extents.left = _win_extents.left + _resize_extents.left;
++    extents.right = _win_extents.right + _resize_extents.right;
++    extents.top = _win_extents.top + _resize_extents.top;
++    extents.bottom = _win_extents.bottom + _resize_extents.bottom;
++#else
+     extents = _win_extents;
++#endif
+     max_extents = _max_win_extents;
+ 
+     extents.top += titlebar_height;
+@@ -1563,10 +1576,10 @@ meta_get_corner_radius (const MetaFrameGeometry *fgeom,
+ 			int		        *bottom_left_radius,
+ 			int			*bottom_right_radius)
+ {
+-    *top_left_radius     = fgeom->top_left_corner_rounded_radius;
+-    *top_right_radius    = fgeom->top_right_corner_rounded_radius;
+-    *bottom_left_radius  = fgeom->bottom_left_corner_rounded_radius;
+-    *bottom_right_radius = fgeom->bottom_right_corner_rounded_radius;
++    *top_left_radius     = fgeom->top_left_corner_rounded_radius * scale;
++    *top_right_radius    = fgeom->top_right_corner_rounded_radius * scale;
++    *bottom_left_radius  = fgeom->bottom_left_corner_rounded_radius * scale;
++    *bottom_right_radius = fgeom->bottom_right_corner_rounded_radius * scale;
+ }
+ 
+ static int
+@@ -1579,9 +1592,15 @@ radius_to_width (int radius,
+     return floor (0.5f + r1 - sqrt (r2));
+ }
+ 
++
+ static Region
++#ifdef HAVE_MARCO_1_22_2
++meta_get_top_border_region (const MetaFrameGeometry *fgeom)
++#else
+ meta_get_top_border_region (const MetaFrameGeometry *fgeom,
+ 			    int			    width)
++#endif
++
+ {
+     Region     corners_xregion, border_xregion;
+     XRectangle xrect;
+@@ -1590,7 +1609,10 @@ meta_get_top_border_region (const MetaFrameGeometry *fgeom,
+     int	       bottom_left_radius;
+     int	       bottom_right_radius;
+     int	       w, i;
+-
++#ifdef HAVE_MARCO_1_22_2
++    int width;
++    int height;
++#endif
+     corners_xregion = XCreateRegion ();
+ 
+     meta_get_corner_radius (fgeom,
+@@ -1599,6 +1621,11 @@ meta_get_top_border_region (const MetaFrameGeometry *fgeom,
+ 			    &bottom_left_radius,
+ 			    &bottom_right_radius);
+ 
++#ifdef HAVE_MARCO_1_22_2
++    /*We have to define these here with newer marco versions*/
++    width = fgeom->width - fgeom->borders.invisible.left - fgeom->borders.invisible.right;
++    height = fgeom->borders.visible.top;
++#endif
+     if (top_left_radius)
+     {
+ 	for (i = 0; i < top_left_radius; i++)
+@@ -1634,8 +1661,11 @@ meta_get_top_border_region (const MetaFrameGeometry *fgeom,
+     xrect.x = 0;
+     xrect.y = 0;
+     xrect.width = width;
++#ifdef HAVE_MARCO_1_22_2
++    xrect.height = fgeom->height;
++#else
+     xrect.height = fgeom->top_height;
+-
++#endif
+     XUnionRectWithRegion (&xrect, border_xregion, border_xregion);
+ 
+     XSubtractRegion (border_xregion, corners_xregion, border_xregion);
+@@ -1646,8 +1676,12 @@ meta_get_top_border_region (const MetaFrameGeometry *fgeom,
+ }
+ 
+ static Region
++#ifdef HAVE_MARCO_1_22_2
++meta_get_bottom_border_region (const MetaFrameGeometry *fgeom)
++#else
+ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+ 			       int		        width)
++#endif
+ {
+     Region     corners_xregion, border_xregion;
+     XRectangle xrect;
+@@ -1657,6 +1691,11 @@ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+     int	       bottom_right_radius;
+     int	       w, i;
+ 
++#ifdef HAVE_MARCO_1_22_2
++    int width;
++    int height;
++#endif
++
+     corners_xregion = XCreateRegion ();
+ 
+     meta_get_corner_radius (fgeom,
+@@ -1665,6 +1704,12 @@ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+ 			    &bottom_left_radius,
+ 			    &bottom_right_radius);
+ 
++#ifdef HAVE_MARCO_1_22_2
++    /*We have to define these here with newer marco versions*/
++    width = fgeom->width - fgeom->borders.invisible.left - fgeom->borders.invisible.right;
++    height = fgeom->borders.visible.top;
++#endif
++
+     if (bottom_left_radius)
+     {
+ 	for (i = 0; i < bottom_left_radius; i++)
+@@ -1672,7 +1717,11 @@ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+ 	    w = radius_to_width (bottom_left_radius, i);
+ 
+ 	    xrect.x	 = 0;
++#ifdef HAVE_MARCO_1_22_2
++	    xrect.y	 = fgeom->height - i - 1;
++#else
+ 	    xrect.y	 = fgeom->bottom_height - i - 1;
++#endif
+ 	    xrect.width  = w;
+ 	    xrect.height = 1;
+ 
+@@ -1687,7 +1736,11 @@ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+ 	    w = radius_to_width (bottom_right_radius, i);
+ 
+ 	    xrect.x	 = width - w;
++#ifdef HAVE_MARCO_1_22_2
++	    xrect.y	 = fgeom->height - i - 1;
++#else
+ 	    xrect.y	 = fgeom->bottom_height - i - 1;
++#endif
+ 	    xrect.width  = w;
+ 	    xrect.height = 1;
+ 
+@@ -1700,7 +1753,11 @@ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+     xrect.x = 0;
+     xrect.y = 0;
+     xrect.width = width;
++#ifdef HAVE_MARCO_1_22_2
++    xrect.height = fgeom->height;
++#else
+     xrect.height = fgeom->bottom_height;
++#endif
+ 
+     XUnionRectWithRegion (&xrect, border_xregion, border_xregion);
+ 
+@@ -1712,8 +1769,12 @@ meta_get_bottom_border_region (const MetaFrameGeometry *fgeom,
+ }
+ 
+ static Region
++#ifdef HAVE_MARCO_1_22_2
++meta_get_left_border_region (const MetaFrameGeometry *fgeom)
++#else
+ meta_get_left_border_region (const MetaFrameGeometry *fgeom,
+ 			     int		     height)
++#endif
+ {
+     Region     border_xregion;
+     XRectangle xrect;
+@@ -1722,17 +1783,25 @@ meta_get_left_border_region (const MetaFrameGeometry *fgeom,
+ 
+     xrect.x	 = 0;
+     xrect.y	 = 0;
++#ifdef HAVE_MARCO_1_22_2
++    xrect.width = fgeom->borders.visible.left;
++    xrect.height = fgeom->height - fgeom->borders.total.top - fgeom->borders.total.bottom;
++#else
+     xrect.width  = fgeom->left_width;
+     xrect.height = height - fgeom->top_height - fgeom->bottom_height;
+-
++#endif
+     XUnionRectWithRegion (&xrect, border_xregion, border_xregion);
+ 
+     return border_xregion;
+ }
+ 
+ static Region
++#ifdef HAVE_MARCO_1_22_2
++meta_get_right_border_region (const MetaFrameGeometry *fgeom)
++#else
+ meta_get_right_border_region (const MetaFrameGeometry *fgeom,
+ 			      int		      height)
++#endif
+ {
+     Region     border_xregion;
+     XRectangle xrect;
+@@ -1741,8 +1810,13 @@ meta_get_right_border_region (const MetaFrameGeometry *fgeom,
+ 
+     xrect.x	 = 0;
+     xrect.y	 = 0;
++#ifdef HAVE_MARCO_1_22_2
++    xrect.width = fgeom->borders.visible.right;
++    xrect.height = fgeom->height - fgeom->borders.total.top - fgeom->borders.total.bottom;
++#else
+     xrect.width  = fgeom->right_width;
+     xrect.height = height - fgeom->top_height - fgeom->bottom_height;
++#endif
+ 
+     XUnionRectWithRegion (&xrect, border_xregion, border_xregion);
+ 
+@@ -1858,6 +1932,9 @@ meta_get_decoration_geometry (decor_t		*d,
+ 			      MetaButtonLayout  *button_layout,
+ 			      GdkRectangle      *clip)
+ {
++#ifdef HAVE_MARCO_1_22_2
++    MetaFrameBorders borders;
++#endif
+     gint left_width, right_width, top_height, bottom_height;
+ 
+     if (meta_button_layout_set)
+@@ -1931,7 +2008,18 @@ meta_get_decoration_geometry (decor_t		*d,
+ 
+     if (d->state & WNCK_WINDOW_STATE_ABOVE)
+ 	*flags |= META_FRAME_ABOVE;
+-
++#ifdef HAVE_MARCO_1_22_2
++    meta_theme_get_frame_borders (theme,
++                                  META_FRAME_TYPE_NORMAL,
++                                  text_height,
++                                  *flags,
++                                  &borders);
++
++    top_height = borders.total.top;
++    bottom_height = borders.total.bottom;
++    left_width = borders.total.left;
++    right_width = borders.total.right;
++#else
+     meta_theme_get_frame_borders (theme,
+ 				  META_FRAME_TYPE_NORMAL,
+ 				  text_height,
+@@ -1940,7 +2028,7 @@ meta_get_decoration_geometry (decor_t		*d,
+ 				  &bottom_height,
+ 				  &left_width,
+ 				  &right_width);
+-
++#endif
+     clip->x = d->context->left_space - left_width;
+     clip->y = d->context->top_space - top_height;
+ 
+@@ -2097,8 +2185,14 @@ meta_draw_window_decoration (decor_t *d)
+ 
+ 	cairo_paint (cr);
+ 
++#ifdef HAVE_MARCO_1_22_2
++	meta_theme_draw_frame (theme,
++	                       context,
++#else
+ 	meta_theme_draw_frame (theme,
+ 			       style_window,
++#endif
++
+ #if GTK_CHECK_VERSION (3, 0, 0)
+ 			       cr,
+ #else
+@@ -2108,23 +2202,37 @@ meta_draw_window_decoration (decor_t *d)
+ #endif
+ 			       META_FRAME_TYPE_NORMAL,
+ 			       flags,
++#ifdef HAVE_MARCO_1_22_2
++			       fgeom.width - fgeom.borders.total.left - fgeom.borders.total.right,
++			       fgeom.height - fgeom.borders.total.top - fgeom.borders.total.bottom,
++#else
+ 			       clip.width - fgeom.left_width - fgeom.right_width,
+ 			       clip.height - fgeom.top_height - fgeom.bottom_height,
++#endif
+ 			       d->layout,
+ 			       text_height,
+ 			       &button_layout,
+ 			       button_states,
+ 			       d->icon_pixbuf,
+ 			       NULL);
+-
++#ifdef HAVE_MARCO_1_22_2
++	if (fgeom.borders.visible.top)
++	{
++	    top_region = meta_get_top_border_region (&fgeom);
++#else
+ 	if (fgeom.top_height)
+ 	{
+ 	    top_region = meta_get_top_border_region (&fgeom, clip.width);
+-
++#endif
+ 	    decor_blend_border_picture (xdisplay,
+ 					d->context,
+ 					src,
++#ifdef HAVE_MARCO_1_22_2
++					fgeom.borders.invisible.left,
++					fgeom.borders.invisible.top,
++#else
+ 					0, 0,
++#endif
+ 					d->picture,
+ 					&d->border_layout,
+ 					BORDER_TOP,
+@@ -2133,15 +2241,24 @@ meta_draw_window_decoration (decor_t *d)
+ 					shade_alpha,
+ 					0);
+ 	}
+-
++#ifdef HAVE_MARCO_1_22_2
++	if (fgeom.borders.visible.bottom )
++	{
++	    bottom_region = meta_get_bottom_border_region (&fgeom);
++#else
+ 	if (fgeom.bottom_height)
+ 	{
+ 	    bottom_region = meta_get_bottom_border_region (&fgeom, clip.width);
+-
++#endif
+ 	    decor_blend_border_picture (xdisplay,
+ 					d->context,
+ 					src,
++#ifdef HAVE_MARCO_1_22_2
++					fgeom.borders.invisible.left,
++					fgeom.height - fgeom.borders.total.bottom,
++#else
+ 					0, clip.height - fgeom.bottom_height,
++#endif
+ 					d->picture,
+ 					&d->border_layout,
+ 					BORDER_BOTTOM,
+@@ -2150,15 +2267,24 @@ meta_draw_window_decoration (decor_t *d)
+ 					shade_alpha,
+ 					0);
+ 	}
+-
++#ifdef HAVE_MARCO_1_22_2
++	if (fgeom.borders.visible.left)
++	{
++	    left_region = meta_get_left_border_region (&fgeom);
++#else
+ 	if (fgeom.left_width)
+ 	{
+ 	    left_region = meta_get_left_border_region (&fgeom, clip.height);
+-
++#endif
+ 	    decor_blend_border_picture (xdisplay,
+ 					d->context,
+ 					src,
++#ifdef HAVE_MARCO_1_22_2
++					fgeom.borders.invisible.left,
++					fgeom.borders.total.top,
++#else
+ 					0, fgeom.top_height,
++#endif
+ 					d->picture,
+ 					&d->border_layout,
+ 					BORDER_LEFT,
+@@ -2167,15 +2293,24 @@ meta_draw_window_decoration (decor_t *d)
+ 					shade_alpha,
+ 					0);
+ 	}
+-
++#ifdef HAVE_MARCO_1_22_2
++	if (fgeom.borders.visible.right)
++	{
++	    right_region = meta_get_right_border_region (&fgeom);
++#else
+ 	if (fgeom.right_width)
+ 	{
+ 	    right_region = meta_get_right_border_region (&fgeom, clip.height);
+-
++#endif
+ 	    decor_blend_border_picture (xdisplay,
+ 					d->context,
+ 					src,
++#ifdef HAVE_MARCO_1_22_2
++					fgeom.width  - fgeom.borders.total.right,
++					fgeom.borders.total.top,
++#else
+ 					clip.width - fgeom.right_width, fgeom.top_height,
++#endif
+ 					d->picture,
+ 					&d->border_layout,
+ 					BORDER_RIGHT,
+@@ -2201,6 +2336,14 @@ meta_draw_window_decoration (decor_t *d)
+     if (d->prop_xid)
+     {
+ 	/* translate from frame to client window space */
++#ifdef HAVE_MARCO_1_22_2
++	if (top_region)
++	    XOffsetRegion (top_region, -fgeom.borders.total.left, -fgeom.borders.total.top);
++	if (bottom_region)
++	    XOffsetRegion (bottom_region, -fgeom.borders.total.left, 0);
++	if (left_region)
++	    XOffsetRegion (left_region, -fgeom.borders.total.left, 0);
++#else
+ 	if (top_region)
+ 	    XOffsetRegion (top_region, -fgeom.left_width, -fgeom.top_height);
+ 	if (bottom_region)
+@@ -2208,11 +2351,13 @@ meta_draw_window_decoration (decor_t *d)
+ 	if (left_region)
+ 	    XOffsetRegion (left_region, -fgeom.left_width, 0);
+ 
++#endif
+ 	decor_update_meta_window_property (d, theme, flags,
+ 					   top_region,
+ 					   bottom_region,
+ 					   left_region,
+ 					   right_region);
++
+ 	d->prop_xid = 0;
+     }
+ 
+@@ -2957,6 +3102,12 @@ meta_get_event_window_position (decor_t *d,
+     MetaButtonLayout  button_layout;
+     MetaFrameGeometry fgeom;
+     MetaFrameFlags    flags;
++#ifdef HAVE_MARCO_1_22_2
++    GtkBorder visible;
++    GtkBorder resize;
++    GtkBorder total;
++    gint top_border;
++#endif
+     MetaTheme	      *theme;
+     GdkRectangle      clip;
+ 
+@@ -2964,8 +3115,118 @@ meta_get_event_window_position (decor_t *d,
+ 
+     meta_get_decoration_geometry (d, theme, &flags, &fgeom, &button_layout,
+ 				  &clip);
++#ifdef HAVE_MARCO_1_22_2
++    visible = fgeom.borders.visible;
++    resize = fgeom.borders.invisible;
++
++    /*  When shadow borders are added, we will no longer be able to use
++     * `fgeom->borders.total` border here - it includes also
++     * `shadow` border, but it is not included in frame extents! Create new
++     * `total` border that includes only `visible` border and `resize` border.
++     */
++    total.left = visible.left + resize.left;
++    total.right = visible.right + resize.right;
++    total.top = visible.top + resize.top;
++    total.bottom = visible.bottom + resize.bottom;
++
++
++    /* Taken from compiz 0.9, cannot be used in this function
++     * but not declaring these causes a segfault due to return values
++     */
++    width += total.left + total.right;
++    height += total.top + total.bottom;
++
++    top_border = fgeom.title_rect.y - fgeom.borders.invisible.top;
++
++    switch (i) {
++    case 2: /* bottom */
++	switch (j) {
++	case 2: /* bottom right */
++	    *x = fgeom.width - resize.right - RESIZE_EXTENDS;
++	    *y = fgeom.height - RESIZE_EXTENDS;
++	    *w = resize.right + RESIZE_EXTENDS;
++	    *h = resize.bottom + RESIZE_EXTENDS;
++	    break;
++	case 1: /* bottom */
++	    *x = resize.left  + RESIZE_EXTENDS;
++	    *y = fgeom.height - RESIZE_EXTENDS;
++	    *w = fgeom.width - resize.left - resize.right - (2 * RESIZE_EXTENDS);
++	    *h = resize.bottom +  RESIZE_EXTENDS;
++	    break;
++	case 0: /* bottom left */
++	default:
++	    *x = 0;
++	    *y = fgeom.height - RESIZE_EXTENDS;
++	    *w = resize.left + RESIZE_EXTENDS;
++	    *h = resize.bottom + RESIZE_EXTENDS;
++	    break;
++	}
++	break;
++    case 1: /* middle */
++	switch (j) {
++	case 2: /* right */
++	    *x = fgeom.width - resize.right - RESIZE_EXTENDS;
++	    *y = resize.top + top_border + RESIZE_EXTENDS;
++	    *w = resize.right + RESIZE_EXTENDS;
++	    *h = fgeom.height - resize.top - top_border - resize.bottom - (2 * RESIZE_EXTENDS);
++	    break;
++	case 1: /* middle */
++	    *x = total.left;
++	    *y = fgeom.title_rect.y + TOP_RESIZE_HEIGHT;
++	    *w = fgeom.width - resize.left - resize.right;
++	    *h = visible.top - top_border - TOP_RESIZE_HEIGHT;
++	    break;
++	case 0: /* left */
++	default:
++	    *x = 0;
++	    *y = resize.top + top_border + RESIZE_EXTENDS;
++	    *w = resize.left;
++	    *h = fgeom.height - resize.top - top_border - resize.bottom  - (2 * RESIZE_EXTENDS);
++	    break;
++	}
++	break;
++    case 0: /* top */
++    default:
++	switch (j) {
++	case 2: /* top right */
++	    *x = fgeom.width - resize.right - RESIZE_EXTENDS;
++	    *y = 0;
++	    *w = total.right + RESIZE_EXTENDS;
++	    *h = resize.top + top_border + RESIZE_EXTENDS;
++	    break;
++	case 1: /* top */
++	    *x = resize.left + RESIZE_EXTENDS;
++	    *y = 0;
++	    *w = fgeom.width - total.left - total.right - (2 * RESIZE_EXTENDS);
++	    *h = resize.top + top_border + TOP_RESIZE_HEIGHT;
++	    break;
++	case 0: /* top left */
++	default:
++	    *x = 0;
++	    *y = 0;
++	    *w = total.left + RESIZE_EXTENDS;
++	    *h = resize.top + top_border + RESIZE_EXTENDS;
++	    break;
++	}
++    }
+ 
+-    width  += fgeom.right_width + fgeom.left_width;
++    if (!(flags & META_FRAME_ALLOWS_VERTICAL_RESIZE))
++    {
++	/* turn off top and bottom event windows */
++	if (i == 0 || i == 2)
++	    *w = *h = 0;
++    }
++
++    if (!(flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE))
++    {
++	/* turn off left and right event windows */
++	if (j == 0 || j == 2)
++	    *w = *h = 0;
++    }
++#undef TOP_RESIZE_HEIGHT
++#undef RESIZE_EXTENDS
++#else
++ width  += fgeom.right_width + fgeom.left_width;
+     height += fgeom.top_height  + fgeom.bottom_height;
+ 
+     switch (i) {
+@@ -3043,20 +3304,7 @@ meta_get_event_window_position (decor_t *d,
+ 	    break;
+ 	}
+     }
+-
+-    if (!(flags & META_FRAME_ALLOWS_VERTICAL_RESIZE))
+-    {
+-	/* turn off top and bottom event windows */
+-	if (i == 0 || i == 2)
+-	    *w = *h = 0;
+-    }
+-
+-    if (!(flags & META_FRAME_ALLOWS_HORIZONTAL_RESIZE))
+-    {
+-	/* turn off left and right event windows */
+-	if (j == 0 || j == 2)
+-	    *w = *h = 0;
+-    }
++#endif
+ }
+ 
+ static gboolean
+@@ -3180,7 +3428,17 @@ meta_get_button_position (decor_t *d,
+     *y = space->clickable.y;
+     *w = space->clickable.width;
+     *h = space->clickable.height;
+-
++#ifdef HAVE_MARCO_1_22_2
++    /*compensate for offset caused by invisible borders
++     *taken straight from compiz 0.9
++     *but exclude left side buttons so resize border isn't blocked
++     */
++    if (*x >= 20)
++    {
++        *x = *x - fgeom.borders.invisible.left;
++        *y = *y + fgeom.borders.invisible.top;
++    }
++#endif
+     return TRUE;
+ }
+ 
+@@ -3402,6 +3660,7 @@ static void
+ update_window_decoration_icon (WnckWindow *win)
+ {
+     decor_t *d = g_object_get_data (G_OBJECT (win), "decor");
++    int icon_width, icon_height;
+ 
+     if (d->icon)
+     {
+@@ -3416,9 +3675,15 @@ update_window_decoration_icon (WnckWindow *win)
+     }
+ 
+     if (d->icon_pixbuf)
+-	g_object_unref (G_OBJECT (d->icon_pixbuf));
+-
++    {
++	    g_object_unref (G_OBJECT (d->icon_pixbuf));
++    }
+     d->icon_pixbuf = wnck_window_get_mini_icon (win);
++	icon_width = gdk_pixbuf_get_width(d->icon_pixbuf);
++    icon_height = gdk_pixbuf_get_height(d->icon_pixbuf);
++    d->icon_pixbuf = gdk_pixbuf_scale_simple (d->icon_pixbuf, icon_width * scale,
++                                              icon_height * scale, GDK_INTERP_BILINEAR);
++
+     if (d->icon_pixbuf)
+     {
+ 	cairo_t	*cr;
+@@ -6248,10 +6513,28 @@ static void
+ meta_update_border_extents (gint text_height)
+ {
+     MetaTheme *theme;
++#ifdef HAVE_MARCO_1_22_2
++    MetaFrameBorders borders;
++#else
+     gint      top_height, bottom_height, left_width, right_width;
+-
++#endif
+     theme = meta_theme_get_current ();
+ 
++#ifdef HAVE_MARCO_1_22_2
++    meta_theme_get_frame_borders (theme,
++                                  META_FRAME_TYPE_NORMAL,
++                                  text_height,
++                                  0,
++                                  &borders);
++
++    _win_extents.top    = borders.visible.top;
++    _win_extents.bottom = borders.visible.bottom;
++    _win_extents.left   = borders.visible.left;
++    _win_extents.right  = borders.visible.right;
++
++    titlebar_height = borders.visible.top - _win_extents.top;
++
++#else
+     meta_theme_get_frame_borders (theme,
+ 				  META_FRAME_TYPE_NORMAL,
+ 				  text_height,
+@@ -6267,7 +6550,23 @@ meta_update_border_extents (gint text_height)
+     _win_extents.right  = right_width;
+ 
+     titlebar_height = top_height - _win_extents.top;
++#endif
+ 
++#ifdef HAVE_MARCO_1_22_2
++    meta_theme_get_frame_borders (theme,
++                                  META_FRAME_TYPE_NORMAL,
++                                  text_height,
++                                  META_FRAME_MAXIMIZED,
++                                  &borders);
++
++    _max_win_extents.top    = borders.visible.top;
++    _max_win_extents.bottom = borders.visible.bottom;
++    _max_win_extents.left   = borders.visible.left;
++    _max_win_extents.right  = borders.visible.right;
++
++    max_titlebar_height = borders.visible.top - _max_win_extents.top;
++
++#else
+     meta_theme_get_frame_borders (theme,
+ 				  META_FRAME_TYPE_NORMAL,
+ 				  text_height,
+@@ -6283,6 +6582,7 @@ meta_update_border_extents (gint text_height)
+     _max_win_extents.right  = right_width;
+ 
+     max_titlebar_height = top_height - _max_win_extents.top;
++#endif
+ }
+ #endif
+ 
+@@ -7322,7 +7622,10 @@ main (int argc, char *argv[])
+ #if GTK_CHECK_VERSION(3, 10, 0)
+     /* We need to be able to fully trust that the window and monitor sizes
+      * that GDK reports corresponds to the X ones, so we disable the automatic
+-     * scale handling */
++     * scale handling
++     * Get the scale factor first though and keep it here
++     */
++    scale = gdk_window_get_scale_factor (gdk_get_default_root_window ());
+     gdk_x11_display_set_window_scale(gdkdisplay, 1);
+ #endif
+ 
+--- a/plugins/decoration.c
++++ b/plugins/decoration.c
+@@ -1310,6 +1310,30 @@ decorWindowUpdate (CompWindow *w,
+ 	    setWindowBorderExtents (w, &decoration->border);
+ 	}
+ 
++#ifdef HAVE_MARCO_1_22_2
++     /*Set clientFrame extents for SSD windows. We never have GtkFrameExtents
++     *on SSD windows so we can repurposes clientFrame to handle gtk-window-decorator
++     *resize extents. We need the checks so as to leave GtkFrameExtents on CSD windows
++     *unchanged and to ensure that ClientFrame extents are set to zero for Emerald
++     */
++    if (w->mwmDecor && decoration->border.left > 10)
++    {
++        /*These were hardcoded in gtk-window-decorator so we can use the same value here*/
++	    w->clientFrame.left = 10;
++	    w->clientFrame.right = 10;
++	    w->clientFrame.top = 10;
++	    w->clientFrame.bottom = 10;
++    }
++    else if (w->mwmDecor)
++    {
++        w->clientFrame.left = 0;
++        w->clientFrame.right = 0;
++        w->clientFrame.top = 0;
++        w->clientFrame.bottom = 0;
++    }
++
++#endif
++
+ 	decorWindowUpdateFrame (w);
+ 	updateWindowOutputExtents (w);
+ 	damageWindowOutputExtents (w);
+@@ -1868,16 +1892,21 @@ decorWindowStateChangeNotify (CompWindow   *w,
+ 	    /* since we immediately update the frame extents, we must
+ 	       also update the stored saved window geometry in order
+ 	       to prevent the window from shifting back too far once
+-	       unmaximized */
+-
+-	    moveDx = decorWindowShiftX (w) - oldShiftX;
+-	    moveDy = decorWindowShiftY (w) - oldShiftY;
++	       unmaximized
++          *Note that this ONLY works for CSD windows (_GTK_FRAME_EXTENTS)
++           as ClientFrame handling for SSD windows (marco) works differently
++         */
++	    if (!w->mwmDecor)
++        {
++	        moveDx = decorWindowShiftX (w) - oldShiftX;
++	        moveDy = decorWindowShiftY (w) - oldShiftY;
+ 
+ 	    if (w->saveMask & CWX)
+ 	        w->saveWc.x += moveDx;
+ 
+ 	    if (w->saveMask & CWY)
+ 	        w->saveWc.y += moveDy;
++        }
+ 
+ 	    decorWindowUpdateFrame (w);
+ 	}
+--- a/plugins/resize.c
++++ b/plugins/resize.c
+@@ -751,7 +751,7 @@ resizeHandleMotionEvent (CompScreen *s,
+ 	int    w, h;                    /* size of window contents */
+ 	int    wX, wY, wWidth, wHeight; /* rect. for window contents+borders */
+ 	int    i;
+-	int    workAreaSnapDistance = 15;
++	int    workAreaSnapDistance;
+ 
+ 	RESIZE_DISPLAY (s->display);
+ 
+@@ -879,6 +879,15 @@ resizeHandleMotionEvent (CompScreen *s,
+ 	{
+ 	    const XRectangle *workArea = &s->outputDev[i].workArea;
+ 
++	    if (rd->w->mwmDecor) /*SSD windows (need to detect gtk-window-decorator)*/
++	    {
++	        workAreaSnapDistance = 0;
++	    }
++	    else
++	    {
++	        workAreaSnapDistance = 15;
++	    }
++
+ 	    /* if window and work-area intersect in x axis */
+ 	    if (wX + wWidth > workArea->x &&
+ 		wX < workArea->x + workArea->width)

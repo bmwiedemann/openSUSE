@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add compiz-gwd-marco-1.22.2.patch: Fix build against Marco 1.22.2
+  or later (commits cc75be2e, bd67e080, c272018a, d2b57855,
+  004d52d9, 8de1335f, cdfd6818, 18734772, 472eecac, 2431089c,
+  feb113b8, 6520214d, f3ce70af, 6284ac84, c83d3cfb, 8d7516c0,
+  c63bb0a1, e069210f, 43287478, 25d5513a).
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Sat Nov 17 23:13:30 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 0.8.16.1:

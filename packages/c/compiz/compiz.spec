@@ -1,7 +1,7 @@
 #
 # spec file for package compiz
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch0:         %{name}-suse-defaults.patch
 Patch1:         %{name}-java-config-notify.diff
 # PATCH-FIX-UPSTREAM bsc#474862 dreveman@novell.com -- Allow moving focus to fs window.
 Patch2:         bug-474862-allow-moving-focus-to-fs-window.diff
+# PATCH-FIX-UPSTREAM compiz-gwd-marco-1.22.2.patch lukefromdc@hushmail.com -- Fix build against Marco 1.22.2+.
+Patch3:         %{name}-gwd-marco-1.22.2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -52,11 +54,13 @@ BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libmarco-private)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.14.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
+BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(pangocairo)
@@ -83,13 +87,6 @@ Provides:       windowmanager
 Obsoletes:      %{name}-kde < %{version}
 Obsoletes:      %{name}-kde4 < %{version}
 ExcludeArch:    s390 s390x
-%if 0%{?suse_version} >= 1500 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libwnck-3.0)
-%else
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libwnck-1.0)
-%endif
 
 %description
 Compiz is an OpenGL compositing manager that uses
@@ -105,8 +102,8 @@ Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Recommends:     %{name}-plugins-main < 0.9
 Suggests:       ccsm < 0.9
-Supplements:    packageand(%{name}:gnome-session)
-Supplements:    packageand(%{name}:mate-session-manager)
+Supplements:    (%{name} and gnome-session)
+Supplements:    (%{name} and mate-session-manager)
 Provides:       %{name}-decorator = 0.8
 Provides:       %{name}-mate = %{version}
 
@@ -138,10 +135,12 @@ Requires:       pkgconfig(cairo-xlib-xrender)
 Requires:       pkgconfig(fuse)
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
+Requires:       pkgconfig(gtk+-3.0)
 Requires:       pkgconfig(ice)
 Requires:       pkgconfig(libpng)
 Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libstartup-notification-1.0)
+Requires:       pkgconfig(libwnck-3.0)
 Requires:       pkgconfig(libxml-2.0)
 Requires:       pkgconfig(libxslt)
 Requires:       pkgconfig(pangocairo)
@@ -156,13 +155,6 @@ Requires:       pkgconfig(xinerama)
 Requires:       pkgconfig(xrandr)
 Requires:       pkgconfig(xrender)
 Recommends:     pkgconfig(libmarco-private)
-%if 0%{?suse_version} >= 1500 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
-Requires:       pkgconfig(gtk+-3.0)
-Requires:       pkgconfig(libwnck-3.0)
-%else
-Requires:       pkgconfig(gtk+-2.0)
-Requires:       pkgconfig(libwnck-1.0)
-%endif
 
 %description devel
 Compiz is an OpenGL compositing manager that uses
@@ -176,8 +168,8 @@ Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires(pre):  /bin/ln
 Requires(pre):  /bin/rm
-Supplements:    packageand(%{name}:branding-openSUSE)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-openSUSE)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 
 %description branding-openSUSE
@@ -192,8 +184,8 @@ Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires(pre):  /bin/ln
 Requires(pre):  /bin/rm
-Supplements:    packageand(%{name}:branding-SLED)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-SLED)
+Conflicts:      %{name}-branding
 # compiz-branding-SLE was last used in openSUSE Leap 42.1
 Provides:       %{name}-branding-SLE = %{version}
 Obsoletes:      %{name}-branding-SLE < %{version}
@@ -211,8 +203,8 @@ Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires(pre):  /bin/ln
 Requires(pre):  /bin/rm
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 
 %description branding-upstream
@@ -231,30 +223,19 @@ window borders and title bar of windows managed by Compiz. It is
 used by window decorators like gtk-window-decorator.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
+
 cp -a %{SOURCE1} opensuse.png
 cp -a %{SOURCE2} sle.png
-
-%if 0%{?suse_version} < 1500 && !(0%{?sle_version} > 120100 && 0%{?is_opensuse})
-# Workaround /usr/@DATADIRNAME@/locale/.
-rm -r m4/
-%endif
 
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
   --disable-static \
   --enable-marco   \
-%if 0%{?suse_version} >= 1500 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
   --with-gtk=3.0   \
-%else
-  --with-gtk=2.0   \
-%endif
   --with-default-plugins=core,ccp,decoration,dbus,commands,ezoom,fade,minimize,mousepoll,move,place,png,regex,resize,session,snap,switcher,vpswitch,wall,workarounds,matecompat
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -265,19 +246,9 @@ install -Dpm 0644 sle.png %{buildroot}%{_datadir}/%{name}/sle.png
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%icon_theme_cache_post
-%endif
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+%postun -p /sbin/ldconfig
 
 %post branding-openSUSE
 ln -sf opensuse.png %{_datadir}/%{name}/cube-image.png
@@ -302,14 +273,6 @@ ln -sf freedesktop.png %{_datadir}/%{name}/cube-image.png
 if [ -f %{_datadir}/%{name}/cube-image.png ]; then
     rm -f %{_datadir}/%{name}/cube-image.png || :
 fi
-
-%if 0%{?suse_version} < 1500
-%post gnome
-%glib2_gsettings_schema_post
-
-%postun gnome
-%glib2_gsettings_schema_postun
-%endif
 
 %post -n libdecoration%{sover} -p /sbin/ldconfig
 
