@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Feb 15 03:17:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to 10.12 (CVE-2020-1720)
+- update to 10.12 (CVE-2020-1720, bsc#1163985)
   https://www.postgresql.org/about/news/2011/
   https://www.postgresql.org/docs/10/release-10-12.html
 
