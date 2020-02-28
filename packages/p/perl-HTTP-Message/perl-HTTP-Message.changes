@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 25 03:07:45 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 6.22
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.22      2020-02-24 18:58:07Z
+      - Full release.  No changes since TRIAL release 6.21
+  
+  6.21      2020-02-19 14:35:09Z (TRIAL RELEASE)
+      - Bump Encode to latest version (3.01) (GH#129) (Olaf Alders)
+      - Revert #115 (GH#131) (Olaf Alders)
+      - Revert (GH#125) "try hard to make a usable file name" (GH#130) (Olaf
+        Alders)
+      - Fix JSON request encoding examples in POD (GH#126) (Michael Schout)
+  
+  6.20      2019-02-05 01:46:39Z (TRIAL RELEASE)
+      - Fix encoded file names when LC_ALL=C (GH#125) (Lars Dɪᴇᴄᴋᴏᴡ 迪拉斯)
+  
+  6.19      2019-01-16 15:17:35Z (TRIAL RELEASE)
+      - Add support for RFC 8187 encoded filenames (GH#115) (Zaki Mughal)
+      - Fix memoized _uri_canonical #121 (GH#123) (Dorian Taylor)
+      - Don't overwrite $@ in decodable (gh #80) (GH#118) (mschae94)
+      - Add support for RFC 8187 encoded filenames (GH#115) (Zaki Mughal)
+
+-------------------------------------------------------------------
 Wed Jun  6 05:30:44 UTC 2018 - coolo@suse.com
 
 - updated to 6.18

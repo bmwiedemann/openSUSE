@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Message
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-HTTP-Message
-Version:        6.18
+Version:        6.22
 Release:        0
 %define cpan_name HTTP-Message
 Summary:        HTTP style message (base class)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTTP-Message/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,7 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Raw::Zlib)
-BuildRequires:  perl(Encode) >= 2.21
+BuildRequires:  perl(Encode) >= 3.01
 BuildRequires:  perl(Encode::Locale) >= 1
 BuildRequires:  perl(HTTP::Date) >= 6
 BuildRequires:  perl(IO::Compress::Bzip2) >= 2.021
@@ -47,7 +47,7 @@ BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI) >= 1.10
 Requires:       perl(Compress::Raw::Zlib)
-Requires:       perl(Encode) >= 2.21
+Requires:       perl(Encode) >= 3.01
 Requires:       perl(Encode::Locale) >= 1
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(IO::Compress::Bzip2) >= 2.021
@@ -376,11 +376,11 @@ these methods:
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
