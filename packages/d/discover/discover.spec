@@ -1,7 +1,7 @@
 #
 # spec file for package discover
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           discover
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
-Url:            https://quickgit.kde.org/?p=discover.git
+URL:            https://quickgit.kde.org/?p=discover.git
 Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
@@ -53,6 +53,7 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5DBus)
@@ -65,6 +66,7 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
 Requires:       kirigami2
+Requires:       kuserfeedback-imports
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang
 Recommends:     %{name}-backend-packagekit
