@@ -622,4 +622,12 @@
     <comment>Remove -lang recommends (forwarded request 768702 from dimstar)</comment>
     <requestid>768715</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>b35240a2c578e4a22a6b8f3419526ef6</srcmd5>
+    <version>2.40.0</version>
+    <time>1583007660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779892</requestid>
+  </revision>
 </revisionlist>

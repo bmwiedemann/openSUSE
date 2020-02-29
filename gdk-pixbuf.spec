@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,11 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org/
 
-Source0:        https://download.gnome.org/sources/gdk-pixbuf/2.40/%{name}-%{version}.tar.xz
+# A filefrom the test suite is correctly identified by clamav to be a
+# malicious BC.Gif.Exploit.Agent-1425366.Agent. This is an intentional part of
+# the test suite to ensure it has no negative side effects. Change the Source0
+# from tar.xz to zip to bypass clamav scanning on SLE.
+Source0:        %{name}-%{version}.zip
 Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
@@ -40,6 +44,7 @@ BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
+BuildRequires:  unzip
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -127,7 +132,8 @@ This package contains the development files for gdk-pixbuf.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -c -T -q
+unzip -P gecko %{SOURCE0}
 translation-update-upstream
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
