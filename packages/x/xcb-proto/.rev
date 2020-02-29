@@ -114,4 +114,18 @@
   U_python3-compat.patch</comment>
     <requestid>582992</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>904acd9ad24f375c1d1d69590222466a</srcmd5>
+    <version>7.6_1.14</version>
+    <time>1583007509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14
+  * Update README for gitlab migration
+  * pkg-config: Add sysroot prefix
+  * screensaver: Use CARD32 encoding for ScreenSaverSuspend 'suspend'
+  * Removed unused member &quot;fds&quot;
+  * Fix size computation of imported lists
+  * Allow access to the original type in the XML</comment>
+    <requestid>778888</requestid>
+  </revision>
 </revisionlist>

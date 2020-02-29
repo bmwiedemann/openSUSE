@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-proto
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define dirsuffix 1.13
+%define dirsuffix 1.14
 %if 0%{?suse_version} >= 1500
 %bcond_with python2
 %else
@@ -28,9 +28,9 @@ Release:        0
 Summary:        The X11 Protocol: X Protocol C Bindings
 License:        X11
 Group:          Development/Libraries/X11
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 #Git-Web:	https://cgit.freedesktop.org/xcb/proto
-Source:         http://xorg.freedesktop.org/archive/individual/xcb/%{name}-%{dirsuffix}.tar.bz2
+Source:         http://xorg.freedesktop.org/archive/individual/proto/%{name}-%{dirsuffix}.tar.xz
 BuildRequires:  autoconf >= 2.57
 BuildRequires:  automake
 BuildRequires:  fdupes

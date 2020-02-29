@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 24 19:19:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.14
+  * Update README for gitlab migration
+  * pkg-config: Add sysroot prefix
+  * screensaver: Use CARD32 encoding for ScreenSaverSuspend 'suspend'
+  * Removed unused member "fds"
+  * Fix size computation of imported lists
+  * Allow access to the original type in the XML
+
+-------------------------------------------------------------------
 Mon Mar  5 14:02:55 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.13
