@@ -1,0 +1,15 @@
+---
+ lib/tcpwrap.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- lib/tcpwrap.h
++++ lib/tcpwrap.h	2020-02-27 10:47:52.529084180 +0000
+@@ -17,7 +17,7 @@
+ #include <mailutils/types.h>
+ 
+ extern int mu_tcp_wrapper_enable;
+-const char *mu_tcp_wrapper_daemon;
++extern const char *mu_tcp_wrapper_daemon;
+ extern int mu_tcpwrapper_access (int fd);
+ extern void mu_tcpwrapper_cfg_init (void);
+ extern int mu_tcp_wrapper_prefork (int fd, 

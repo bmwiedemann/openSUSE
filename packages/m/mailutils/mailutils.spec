@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch3:         mailutils-3.5-guile-2.0.patch
 # PATCH-FIX-UPSTREAM python38-compat.patch http://savannah.gnu.org/bugs/index.php?57318 mcepl@suse.com
 # Remove incompatibility with Python 3.8+
 Patch4:         python38-compat.patch
+# PATCH-FIX-SUSE add extern in header file declaration of variable mu_tcp_wrapper_daemon (boo#1164444)
+Patch5:         silent-common-mu_tcp_wrapper_daemon.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -179,6 +181,7 @@ implementations: UNIX mailbox, Maildir, MH, POP3, IMAP4, even SMTP.
 %patch0
 %patch2
 %patch4 -p1
+%patch5
 set -- %(rpm -q --queryformat '%%{VERSION}' guile-devel | sed -r 's@\.@ @g')
 (cat > guile.list)<<-EOF
 	%dir %{_datadir}/guile/site/$1.$2/

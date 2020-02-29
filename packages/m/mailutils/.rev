@@ -123,4 +123,14 @@
   http://savannah.gnu.org/bugs/index.php?57318</comment>
     <requestid>754378</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>64ee874e9718b95d84f8c1db604fd90f</srcmd5>
+    <version>3.8</version>
+    <time>1583007669</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch silent-common-mu_tcp_wrapper_daemon.patch
+  * Add extern in header file declaration of variable
+    mu_tcp_wrapper_daemon (boo#1164444)</comment>
+    <requestid>779936</requestid>
+  </revision>
 </revisionlist>
