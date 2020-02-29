@@ -1,7 +1,7 @@
 #
 # spec file for package sysconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,21 @@ BuildRequires:  pkgconfig(systemd)
 %define         udevdir	/lib/udev
 %endif
 Name:           sysconfig
-Version:        0.85.3
+Version:        0.85.4
 Release:        0
 Summary:        The sysconfig scheme for traditional network scripts
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://github.com/openSUSE/sysconfig
+URL:            https://github.com/openSUSE/sysconfig
 Source:         %{name}-%{version}.tar.bz2
+#
+# Upstream First - openSUSE Build Service Policy:
+#
+# Never add any patches to this package without the upstream commit id in
+# the patch. Any patches added here without a very good reason to make an
+# exception will be silently removed with the next version update.
+# Please use pull requests at https://github.com/openSUSE/sysconfig/ instead.
+#
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       /sbin/ifup
@@ -145,7 +153,7 @@ EOF
 %ghost /run/netconfig/resolv.conf
 %ghost /run/netconfig/yp.conf
 %ghost /etc/resolv.conf
-%ghost /etc/yp.conf
+%ghost %config(noreplace) %{_sysconfdir}/yp.conf
 
 %post -p /bin/bash
 #

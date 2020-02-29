@@ -1672,4 +1672,18 @@ also obs request: #660553
   boot.</comment>
     <requestid>720983</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>82034561bbddb6b029f60ec7f55608f9</srcmd5>
+    <version>0.85.4</version>
+    <time>1583007540</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.4
+- Add Upstream First openSUSE Build Service Policy to the spec
+- Mark /etc/yp.conf as %config(noreplace): this is the same as the
+  file shipped by ypbind has as mode. In sysconfig we create a
+  symlink, in ypbind, the file is actually only owned for
+  reference. Having the same modes allows for the bots to do their
+  work properly (boo#1159566).</comment>
+    <requestid>779087</requestid>
+  </revision>
 </revisionlist>

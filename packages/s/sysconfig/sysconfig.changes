@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:04:11 CET 2020 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.85.4
+- Add Upstream First openSUSE Build Service Policy to the spec
+
+-------------------------------------------------------------------
+Wed Jan 29 22:05:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Mark /etc/yp.conf as %config(noreplace): this is the same as the
+  file shipped by ypbind has as mode. In sysconfig we create a
+  symlink, in ypbind, the file is actually only owned for
+  reference. Having the same modes allows for the bots to do their
+  work properly (boo#1159566).
+
+-------------------------------------------------------------------
 Wed Jul 24 13:37:57 UTC 2019 - Reinhard Max <max@suse.com>
 
 - version 0.85.3
