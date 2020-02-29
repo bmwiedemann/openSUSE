@@ -1,7 +1,7 @@
 #
 # spec file for package python-ecdsa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ecdsa
-Version:        0.13.3
+Version:        0.15
 Release:        0
 Summary:        ECDSA cryptographic signature library (pure python)
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/warner/python-ecdsa
+URL:            https://github.com/warner/python-ecdsa
 Source:         https://files.pythonhosted.org/packages/source/e/ecdsa/ecdsa-%{version}.tar.gz
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -32,6 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Suggests:       python-gmpy
+Suggests:       python-gmpy2
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,8 +56,7 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#! %{_bindir}/env p
 %install
 %python_install
 
-#hardlink duplicated files
-%fdupes %{buildroot}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
