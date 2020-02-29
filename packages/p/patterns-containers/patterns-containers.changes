@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 15:37:12 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Prevent building of kubic-specific patterns in SLE/Leap 
+
+-------------------------------------------------------------------
 Sat Feb 22 17:42:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add busybox-k8s-yaml to kubeadm pattern

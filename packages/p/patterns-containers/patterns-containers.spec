@@ -106,6 +106,8 @@ Requires:       pattern() = basesystem
 %description container_runtime_kubernetes
 This pattern installs the default container runtime packages for kubernetes clustered systems.
 
+# Kubic specific packages shouldn't build for SLE/Leap
+%if ! 0%{?sle_version}
 %package kubic_admin
 Summary:        Kubic Admin Node
 Group:          Metapackages
@@ -156,7 +158,7 @@ Requires:       pattern() = basesystem
 
 %description kubic_loadbalancer
 This pattern installs the the software required for an openSUSE Kubic Loadbalancer Node.
-
+%endif
 
 %package kubernetes_utilities
 Summary:        Utilities to manage kubernetes
@@ -190,9 +192,12 @@ mkdir -p %buildroot/usr/share/doc/packages/patterns-containers/
 echo 'This file marks the pattern kubeadm to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubeadm.txt
 echo 'This file marks the pattern container_runtime to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/container_runtime.txt
 echo 'This file marks the pattern container_runtime_kubernetes to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/container_runtime_kubernetes.txt
+# Kubic specific packages shouldn't build for SLE/Leap
+%if ! 0%{?sle_version}
 echo 'This file marks the pattern kubic_admin to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubic_admin.txt
 echo 'This file marks the pattern kubic_worker to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubic_worker.txt
 echo 'This file marks the pattern kubic_loadbalancer to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubic_loadbalancer.txt
+%endif
 echo 'This file marks the pattern kubernetes_utilities to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/kubernetes_utilities.txt
 
 %files kubeadm
@@ -210,6 +215,8 @@ echo 'This file marks the pattern kubernetes_utilities to be installed.' >%build
 %dir %{_docdir}/patterns-containers
 %{_docdir}/patterns-containers/container_runtime_kubernetes.txt
 
+# Kubic specific packages shouldn't build for SLE/Leap
+%if ! 0%{?sle_version}
 %files kubic_admin
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-containers
@@ -224,6 +231,7 @@ echo 'This file marks the pattern kubernetes_utilities to be installed.' >%build
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-containers
 %{_docdir}/patterns-containers/kubic_loadbalancer.txt
+%endif
 
 %files kubernetes_utilities
 %defattr(-,root,root)
