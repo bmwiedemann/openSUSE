@@ -185,7 +185,12 @@ cd nss
 #make generate
 
 %build
+%ifarch %arm
+# LTO fails on neon errors
+%global _lto_cflags %{nil}
+%else
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 cd nss
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -234,7 +239,7 @@ pushd ../dist/Linux*
 # copy headers
 cp -rL ../public/nss/*.h %{buildroot}%{_includedir}/nss3
 # copy some freebl include files we also want
-for file in blapi.h alghmac.h
+for file in blapi.h alghmac.h cmac.h
 do
   cp -L ../private/nss/$file %{buildroot}/%{_includedir}/nss3
 done
