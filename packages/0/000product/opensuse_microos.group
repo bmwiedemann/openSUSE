@@ -416,6 +416,7 @@
     <package name="ksysguard5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="ktexteditor" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="kubic-locale-archive" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="kuserfeedback-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="kwalletd5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="kwalletmanager5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="kwayland" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -497,6 +498,8 @@
     <package name="libKF5WindowSystem5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libKF5XmlGui5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="libKUserFeedbackCore1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libLLVM9" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libQt5Concurrent5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libQt5Core5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -875,7 +878,7 @@
     <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="libpython3_7m1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libpython3_7m1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="libqalculate21" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libqca-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libqt5-qdbus" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -1173,7 +1176,7 @@
     <package name="pulseaudio-module-zeroconf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="python3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-Jinja2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
@@ -1185,7 +1188,7 @@
     <package name="python3-asn1crypto" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-attrs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
-    <package name="python3-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="python3-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="python3-blinker" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-certifi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="python3-cffi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
