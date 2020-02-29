@@ -1,7 +1,7 @@
 #
 # spec file for package sane-backends
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,39 +12,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+# Enable support for PWG eSCL network backend
+%bcond_without escl
+
 Name:           sane-backends
+BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libtool
 # Cf. the comment about 'libusb' at .configure below:
-BuildRequires:  libusb-1_0-devel
 BuildRequires:  libv4l-devel
 BuildRequires:  net-snmp-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+%if %{with escl}
+BuildRequires:  pkgconfig(avahi-client) >= 0.6.24
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libxml-2.0)
+%endif
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(systemd)
 %systemd_requires
+
+%define libname libsane1
+# SANE build systems mangles backend SONAMEs to be libsane.so.x
+%define __provides_exclude_from %{_libdir}/sane
+
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
-License:        GPL-2.0+ and SUSE-GPL-2.0+-with-sane-exception and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-# There is no 1.0.26 release of sane-backends. That number was skipped so that the SANE upstream
-# development version numbers would more clearly be an extension of the prior release:
-Version:        1.0.27
+Version:        1.0.29
 Release:        0
-Url:            http://www.sane-project.org/
-# URLs to get Source0:
-# On http://www.sane-project.org/source.html at "Stable Source" there is the link to "alioth.debian.org"
-# that points to http://alioth.debian.org/project/showfiles.php?group_id=30186 and there:
-# How to get Source0:
-# wget --no-check-certificate https://alioth.debian.org/frs/download.php/file/4224/sane-backends-1.0.27.tar.gz
-# How to get the MD5 sum file:
-# wget --no-check-certificate https://alioth.debian.org/frs/download.php/file/4223/sane-backends-1.0.27.tar.gz.md5
-# How to check the MD5 sum:
-# md5sum -c sane-backends-1.0.27.tar.gz.md5
-Source0:        https://alioth.debian.org/frs/download.php/file/4224/sane-backends-%{version}.tar.gz
+URL:            http://www.sane-project.org/
+# Unfortunately, the first version does not build, as it does not contain a prebuilt configure,
+# and autoconf fails as it requires a complete git clone:
+# https://gitlab.com/sane-project/backends/issues/248
+# Use the version including a semi-random hash instead, which is a dist tarball
+# Source0:        https://gitlab.com/sane-project/backends/-/archive/%%{version}/backends-%%{version}.tar.gz#/sane-backends-%%{version}.tar.gz
+Source0:        https://gitlab.com/sane-project/backends/uploads/54f858b20a364fc35d820df935a86478/sane-backends-1.0.29.tar.gz
 # Source100... is SUSE specific stuff:
 # Source102 is the OpenSLP registration file for the saned:
 Source102:      sane.reg
@@ -69,12 +77,9 @@ Source201:      create_sane-backends-autoconfig.rules
 # Sources 202 and 203 are files to enable socket based service activation which replaced xinetd
 Source202:      saned@.service
 Source203:      saned.socket
-# Patch2 sane-backends.builttime.patch avoids build-compare noise
+# PATCH-FIX-OPENSUSE - Make timestamps reproducible, https://gitlab.com/sane-project/backends/issues/228
 Patch2:         sane-backends.builttime.patch
 # Patch100... is SUSE specific stuff:
-# Patch101 no-descriptions-external-hpoj.patch removes descriptions-external/hpoj.desc from doc/Makefile.am
-# because it is intentionally removed from the sources in the prep section:
-Patch101:       no-descriptions-external-hpoj.patch
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
 # (see https://bugzilla.novell.com/show_bug.cgi?id=788756#c14).
 # It adds "requires DFSG non-free Image Scan software from Avasys" to all comments
@@ -86,10 +91,6 @@ Patch101:       no-descriptions-external-hpoj.patch
 # Furthermore it removes "unsupported" models from epkowa.desc because
 # otherwise there would be confusing model entries shown in yast2-scanner:
 Patch102:       adapt_epkowa.desc_for_yast2-scanner.patch
-# Install into this non-root directory (required when norootforbuild is used):
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# Prerequire /sbin/ldconfig which is used in the traditional bash scriptlets for post/postun:
-PreReq:         /sbin/ldconfig
 # See https://bugzilla.novell.com/show_bug.cgi?id=437293
 %ifarch ppc64
 Obsoletes:      sane-64bit
@@ -100,8 +101,8 @@ Obsoletes:      sane-64bit
 # to avoid a RPMLINT warning that the package obsoletes itself:
 Provides:       sane = %{version}
 Obsoletes:      sane < %{version}
-# Skip testing devel dependencies required by libtool .la files by the following comment:
-# skip-check-libtool-deps
+# Pull in the same version, not just matching soname
+Requires:       %{libname} = %{version}
 
 %description
 The software consists of SANE scanner drivers,
@@ -119,26 +120,36 @@ via network from client hosts that run the "net" meta driver.
 
 %package devel
 Summary:        Development files for sane-backends
-License:        GPL-2.0+ and SUSE-GPL-2.0+-with-sane-exception and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-Requires:       net-snmp-devel
+Requires:       %{libname} = %{version}
 
 %description devel
 This package contains the development files for sane-backends.
 
+%package -n %{libname}
+Summary:        Core SANE library
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
+Group:          Hardware/Scanner
+Conflicts:      sane-backends < %{version}
+Recommends:     sane-backends
+
+%description -n %{libname}
+This contains the SANE library. Individual scanner backends are provided
+by sane-backends or third party packages.
+
 %package autoconfig
 Summary:        USB Scanner Autoconfiguration
-License:        GPL-2.0+ and LGPL-2.1+ and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Requires:       sane-backends
+Requires:       %{libname} = %{version}
 # When sane-backends is already installed, try to install also sane-backends-autoconfig if available:
 Supplements:    sane-backends
 
 %description autoconfig
 USB scanner autoconfiguration happens via udev.
 
-The file /etc/udev/rules.d/56-sane-backends-autoconfig.rules contains
+The file /udev/rules.d/56-sane-backends-autoconfig.rules contains
 entries for those USB scanners where the USB IDs are known, which are
 supported by a free driver, where the support status is "complete" or
 "good", and which do not require firmware upload.
@@ -162,16 +173,15 @@ package or remove it when it is already installed.
 # Patch2 sane-backends.builttime.patch avoids build-compare noise
 %patch2 -p1
 # Patch100... is SUSE specific stuff:
-# Patch101 no-descriptions-external-hpoj.patch removes descriptions-external/hpoj.desc from doc/Makefile.am
-# because it is intentionally removed from the sources in the prep section:
-%patch101
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
 # see https://bugzilla.novell.com/show_bug.cgi?id=788756#c14
 %patch102
-# Source100... is SUSE specific stuff:
+
 # Remove hpoj.desc completely to avoid confusion with its successor hpaio.desc
 # because since openSUSE 10.3 the package hp-officeJet (for hpoj.desc) is dropped.
+sed -i -e '/descriptions-external\/hpoj.desc / d' doc/Makefile{.am,.in}
 rm doc/descriptions-external/hpoj.desc
+
 # For compliance with the other description files in the sane-backends sources
 # change the manufacturer name from "Hewlett Packard" to "Hewlett-Packard":
 for d in doc/descriptions-external/hp3770.desc doc/descriptions-external/hp8200.desc
@@ -187,18 +197,7 @@ cp %{SOURCE200} create_scanner_database
 chmod u+x create_scanner_database
 
 %build
-%{?suse_update_config:%{suse_update_config -f}}
-# 'autoreconf -fi' failed for sane-backends-1.0.19 with the message:
-# "aclocal: acinclude.m4:606: file m4/libtool.m4 does not exist".
-# The m4 dir from CVS was not included in the 1.0.18 tar, so it was
-# not included in 1.0.19 either, but it has new files since 1.0.18.
-# It is a bit strange because autoconf never complained before.
-# Because it is not clear whether or not 'autoreconf -fi' is best
-# and because it builds without it, it was simply disabled for sane-backends-1.0.19.
-# Now sane-backends-1.0.20 provides a new automake compatible build system
-# so that 'autoreconf -fi' works again:
-autoreconf -fi
-export CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE -DGIMP_ENABLE_COMPAT_CRUFT=1 -fno-strict-aliasing"
+export CFLAGS="%{optflags} -D_GNU_SOURCE -DGIMP_ENABLE_COMPAT_CRUFT=1 -fno-strict-aliasing"
 export LDFLAGS="-L/%_lib $LDFLAGS"
 # Enable pthread instead of fork (used in Debian since Feb 2009 and no issues so far),
 # see https://bugzilla.novell.com/show_bug.cgi?id=633780
@@ -227,6 +226,9 @@ export LDFLAGS="-L/%_lib $LDFLAGS"
             --docdir=%{_defaultdocdir}/sane-backends \
             --enable-pthread \
             --with-usb \
+%if %{with escl}
+            --enable-avahi \
+%endif
             --without-api-spec \
             --disable-locking
 # Enable locking for backends where "99" is the group of the lockfile path (LOCKPATH_GROUP)
@@ -236,10 +238,10 @@ export LDFLAGS="-L/%_lib $LDFLAGS"
 #            --enable-locking \
 #            --with-group=99 \
 #            --localstatedir=/var
-make
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%makeinstall
 # The actual driver modules are installed as libsane-<driver>.so.{version}
 # and two libsane-<driver>.so.1 and libsane-<driver>.so links point to them.
 # Additionally a libsane-<driver>.la libtool archive file is installed
@@ -342,8 +344,8 @@ sed -i -e 's|/usr/share/sane/descriptions|%{buildroot}/usr/share/sane/descriptio
 # (use it as bash input because sources may be installed without execute permissions):
 bash %{SOURCE201} >autoconfig.rules
 # Install the scanner autoconfiguration udev rules file:
-install -d %{buildroot}%{_sysconfdir}/udev/rules.d
-install -m644 autoconfig.rules %{buildroot}%{_sysconfdir}/udev/rules.d/56-sane-backends-autoconfig.rules
+install -d %{buildroot}%{_udevrulesdir}
+install -m644 autoconfig.rules %{buildroot}%{_udevrulesdir}/56-sane-backends-autoconfig.rules
 # Since version 1.0.19 there is udev and HAL support.
 # Therefore the old/outdated hotplug stuff is dropped (was never used by openSUSE).
 # Neither tools/hotplug/libsane.usermap nor tools/hotplug/libusbscanner is installed.
@@ -414,7 +416,7 @@ sed -i -e '/^# Epson Perfection 636S /i# Epson Perfection 1640\nKERNEL=="sg[0-9]
 # see http://lists.alioth.debian.org/pipermail/sane-devel/2011-June/028739.html
 sed -i -e '/^# Epson Perfection 2450 /i# Any SCSI processor EPSON SCANNER...\nKERNEL=="sg[0-9]*", ATTRS{type}=="3", ATTRS{vendor}=="EPSON", ATTRS{model}=="SCANNER*", MODE="0664", GROUP="lp", ENV{libsane_matched}="yes"' tools/udev/libsane.rules
 # Install the udev rules file:
-install -m644 tools/udev/libsane.rules %{buildroot}%{_sysconfdir}/udev/rules.d/55-libsane.rules
+install -m644 tools/udev/libsane.rules %{buildroot}%{_udevrulesdir}/55-libsane.rules
 # Service files:
 # Sources 202 and 203 are files to enable socket based service activation which replaced xinetd
 # Source202 is saned@.service and Source203 is saned.socket
@@ -448,15 +450,16 @@ fi
 %service_add_pre saned.socket
 
 %post
-/sbin/ldconfig
 %service_add_post saned.socket
 
 %preun
 %service_del_preun saned.socket
 
 %postun
-/sbin/ldconfig
 %service_del_postun saned.socket
+
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files -f sane-backends.lang
 %defattr(-,root,root)
@@ -464,17 +467,15 @@ fi
 %config(noreplace) %{_sysconfdir}/sane.d/*.conf
 %dir %{_sysconfdir}/slp.reg.d
 %config(noreplace) %{_sysconfdir}/slp.reg.d/*
-%dir %{_sysconfdir}/udev
-%dir %{_sysconfdir}/udev/rules.d
-%{_sysconfdir}/udev/rules.d/55-libsane.rules
+%{_udevrulesdir}/55-libsane.rules
 %{_sbindir}/saned
 %{_bindir}/scanimage
 %{_bindir}/sane-find-scanner
 %{_bindir}/gamma4scanimage
 %{_bindir}/umax_pp
 %{_datadir}/sane/
-%{_libdir}/libsane.so.*
 %{_libdir}/sane/
+%exclude %{_libdir}/sane/libsane-dll.so.*
 %{_unitdir}/saned@.service
 %{_unitdir}/saned.socket
 #dir /var/lock/sane
@@ -486,6 +487,13 @@ fi
 %doc %{_mandir}/man7/sane.7.gz
 %doc %{_mandir}/man8/saned.8.gz
 
+%files -n %{libname}
+%dir %{_libdir}/sane/
+%dir %{_sysconfdir}/sane.d
+%dir %{_sysconfdir}/sane.d/dll.d/
+%{_libdir}/sane/libsane-dll.so.*
+%{_libdir}/libsane.so.*
+
 %files devel
 %defattr(-,root,root)
 %{_bindir}/sane-config
@@ -496,8 +504,6 @@ fi
 
 %files autoconfig
 %defattr(-,root,root)
-%dir %{_sysconfdir}/udev
-%dir %{_sysconfdir}/udev/rules.d
-%{_sysconfdir}/udev/rules.d/56-sane-backends-autoconfig.rules
+%{_udevrulesdir}/56-sane-backends-autoconfig.rules
 
 %changelog

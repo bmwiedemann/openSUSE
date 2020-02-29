@@ -1,14 +1,20 @@
+From 8d9536a24cb7f4a21fb35326819b292e8f87fc20 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 20 Feb 2020 18:46:48 +0100
+Subject: [PATCH] Make timestamps reproducible
+
+https://gitlab.com/sane-project/backends/issues/228
 ---
- tools/sane-desc.c |   24 ++++++++++++------------
+ tools/sane-desc.c | 24 ++++++++++++------------
  1 file changed, 12 insertions(+), 12 deletions(-)
 
-Index: sane-backends-1.0.25/tools/sane-desc.c
-===================================================================
---- sane-backends-1.0.25.orig/tools/sane-desc.c
-+++ sane-backends-1.0.25/tools/sane-desc.c
+diff --git a/tools/sane-desc.c b/tools/sane-desc.c
+index 890e754..ba85e84 100644
+--- a/tools/sane-desc.c
++++ b/tools/sane-desc.c
 @@ -2816,8 +2816,8 @@ html_print_footer (void)
       "<address>\n"
-      "<a href=\"http://www.sane-project.org/imprint.html\"\n"
+      "<a href=\"imprint.html\"\n"
       ">Contact</a>\n" "</address>\n" "<font size=-1>\n");
 -  printf ("This page was last updated on %s by sane-desc %s from %s\n",
 -	  asctime (localtime (&current_time)), SANE_DESC_VERSION, PACKAGE_STRING);
@@ -74,3 +80,6 @@ Index: sane-backends-1.0.25/tools/sane-desc.c
  
    printf
      ("#\n"
+-- 
+2.25.1
+
