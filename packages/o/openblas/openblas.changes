@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Feb 26 12:22:00 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc8/9 building (jsc#SLE-8604).
+
+-------------------------------------------------------------------
+Mon Feb 10 07:01:49 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.3.8
+  common:
+  * LAPACK has been updated to 3.9.0 (plus patches up to January 2nd, 2020)
+  * CMAKE support has been improved in several areas including cross-compilation
+  * A thread race condition in the GEMM3M kernels was resolved
+  * The "generic" (plain C) gemm beta kernel used by many targets has been sped up
+  * An optimized version of the LAPACK trtrs functions has been added
+  * An incompatibilty between the LAPACK tests and the OpenBLAS implementation of XERBLA
+    was resolved, removing the numerous warnings about wrong error exits in the former
+  * Support for NetBSD has been added
+  * Support for compilation with g95 and non-GNU versions of ld has been improved
+  * Compilation with (upcoming) gcc 10 is now supported
+  power:
+  * Worked around miscompilation of several POWER8 and POWER9 kernels by
+    older versions of gcc
+  * Added support for big-endian POWER8 and for compilation on AIX
+  * Corrected bugs in the big-endian support for PPC440 and PPC970
+  * DYNAMIC_ARCH support is now available in CMAKE builds as well
+  armv8:
+  * Performance of DGEMM_BETA and SGEMM_NCOPY has been improved
+  * Compilation for 32bit works again 
+  * Performance of the RPCC function has been improved
+  * Improved performance on small systems
+  * DYNAMIC_ARCH support is now available in CMAKE builds as well
+  * Cross-compilation from OSX to IOS was simplified
+  x86-64:
+  * A new AVX512 DGEMM kernel was added and the AVX512 SGEMM kernel was
+    significantly improved
+  * Optimized AVX512 kernels for CGEMM and ZGEMM have been added
+  * AVX2 kernels for STRMM, SGEMM, and CGEMM have been significantly
+    sped up and optimized CGEMM3M and ZGEMM3M kernels have been added 
+  * Added support for QEMU virtual cpus
+  * A compilation problem with PGI and SUN compilers was fixed
+  * Intel "Goldmont plus" is now autodetected
+  * A potential crash on program exit on MS Windows has been fixed 
+  IBM Z:
+  * Z15 is now supported as Z14
+  * DYNAMIC_ARCH is now available on ZARCH as well
+- Remove now merged gcc10-Support-two-digit-version-numbers-in-gcc-version-che.patch
+
+-------------------------------------------------------------------
 Sun Dec  8 09:03:24 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add gcc10-Support-two-digit-version-numbers-in-gcc-version-che.patch

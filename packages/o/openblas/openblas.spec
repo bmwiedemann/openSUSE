@@ -1,7 +1,7 @@
 #
 # spec file for package openblas
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_7
-%define vers 0.3.7
+%define _vers 0_3_8
+%define vers 0.3.8
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -64,12 +64,6 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu7-hpc"
-%define compiler_family gnu
-%define c_f_ver 7
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu-hpc-pthreads"
 %define compiler_family gnu
 %undefine c_f_ver
@@ -78,9 +72,43 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%if "%flavor" == "gnu7-hpc"
+%define compiler_family gnu
+%define c_f_ver 7
+%{bcond_without hpc}
+%endif
+
 %if "%flavor" == "gnu7-hpc-pthreads"
 %define compiler_family gnu
 %define c_f_ver 7
+%define ext pthreads
+%define build_flags USE_THREAD=1 USE_OPENMP=0
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc"
+%define compiler_family gnu
+%define c_f_ver 8
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-hpc-pthreads"
+%define compiler_family gnu
+%define c_f_ver 8
+%define ext pthreads
+%define build_flags USE_THREAD=1 USE_OPENMP=0
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc"
+%define compiler_family gnu
+%define c_f_ver 9
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-hpc-pthreads"
+%define compiler_family gnu
+%define c_f_ver 9
 %define ext pthreads
 %define build_flags USE_THREAD=1 USE_OPENMP=0
 %{bcond_without hpc}
@@ -128,8 +156,7 @@ Source2:        README.HPC.SUSE
 # PATCH-FIX-UPSTREAM openblas-noexecstack.patch
 Patch1:         openblas-noexecstack.patch
 # PATCH port
-Patch3:         openblas-s390.patch
-Patch4:         gcc10-Support-two-digit-version-numbers-in-gcc-version-che.patch
+Patch2:         openblas-s390.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -234,8 +261,7 @@ This package contains headers for OpenBLAS.
 
 %setup -q -n OpenBLAS-%{version}
 %patch1 -p1
-%patch3 -p1
-%patch4 -p1
+%patch2 -p1
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
 %endif
