@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 18 14:34:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1582036279.1c70638:
+  * Revert "init: drop namespace for the check"
+
+-------------------------------------------------------------------
+Tue Feb 18 10:22:10 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1581958876.d324e18:
+  * metadata: support "after" ordering
+- Adjust the ordering of the forms
+- Move out the user modules from the susemanager domain
+
+-------------------------------------------------------------------
 Wed Jan 15 12:12:38 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1579090265.ecae64c:

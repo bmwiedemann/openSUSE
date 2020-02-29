@@ -20,7 +20,7 @@
 %define fdir  %{_datadir}/salt-formulas
 
 Name:           yomi-formula
-Version:        0.0.1+git.1579090265.ecae64c
+Version:        0.0.1+git.1582036279.1c70638
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
@@ -30,7 +30,8 @@ BuildArch:      noarch
 URL:            https://github.com/openSUSE/yomi
 Source0:        %{fname}-%{version}.tar.xz
 
-# On SLE/Leap 15-SP1 and TW requires the new salt-formula configuration location.
+# On SLE/Leap 15-SP1 and TW requires the new salt-formula
+# configuration location.
 %if ! (0%{?sle_version:1} && 0%{?sle_version} < 150100)
 Requires(pre):  salt-formulas-configuration
 %else
@@ -60,6 +61,10 @@ cp -R salt/* %{buildroot}%{fdir}/states/
 
 # Remove the top.sls, as can overwrite the one from the user
 rm %{buildroot}%{fdir}/states/top.sls
+
+# Reallocate the user defined modules
+mkdir -p %{buildroot}%{_prefix}/lib/%{fname}/
+mv %{buildroot}%{fdir}/states/_* %{buildroot}%{_prefix}/lib/%{fname}/
 
 # Example of pillars
 mkdir -p %{buildroot}%{_datadir}/%{fname}/
@@ -113,14 +118,15 @@ cat <<EOF > %{buildroot}%{_datadir}/%{fname}/kubic-file.conf
 file_roots:
   base:
     - /usr/share/yomi/kubic
+    - %{_prefix}/lib/%{fname}
     - /usr/share/salt-formulas/states
     - /srv/salt
 EOF
 
-# Metadata, forms and subform (and fake states)
-for form in metadata/form*.yml; do
-    form_name=${form#metadata/form-}
-    form_name=${form_name%.yml}
+# Metadata, forms, subforms, and 'after' order
+after=''
+for form in metadata/*form*.yml; do
+    form_name=$(echo $form | sed -n 's/.*-form-\(.*\)\.yml/\1/p')
     mkdir -p %{buildroot}%{fdir}/metadata/$form_name/
     cp -a $form %{buildroot}%{fdir}/metadata/$form_name/form.yml
     cp metadata/metadata.yml %{buildroot}%{fdir}/metadata/$form_name/
@@ -128,7 +134,21 @@ for form in metadata/form*.yml; do
         mkdir -p %{buildroot}%{fdir}/states/$form_name/
         touch %{buildroot}%{fdir}/states/$form_name/init.sls
     fi
+    # Add the 'after' section to ordering the forms
+    sed -i "s/#AFTER/$after/g" %{buildroot}%{fdir}/metadata/$form_name/metadata.yml
+    if [ -z "$after" ]; then
+	after='after:\n'
+    fi
+    after+="  - ${form_name}\n"
 done
+
+# Configuration file for the master
+mkdir -p %{buildroot}%{_sysconfdir}/salt/master.d/
+cat <<EOF > %{buildroot}%{_sysconfdir}/salt/master.d/%{name}.conf
+file_roots:
+  base:
+    - %{_prefix}/lib/%{fname}
+EOF
 
 %files
 %defattr(-,root,root,-)
@@ -137,10 +157,13 @@ done
 %dir %attr(0755, root, salt) %{fdir}/
 %dir %attr(0755, root, salt) %{fdir}/states/
 %dir %attr(0755, root, salt) %{fdir}/metadata/
-%dir %attr(0755, root, root) %{_datadir}/%{fname}
+%dir %attr(0755, root, root) %{_prefix}/lib/%{fname}/
+%dir %attr(0755, root, root) %{_datadir}/%{fname}/
 %{fdir}/states/
 %{fdir}/metadata/
+%{_prefix}/lib/%{fname}/
 %{_datadir}/%{fname}
 %{_bindir}/monitor
+%config %{_sysconfdir}/salt/master.d/%{name}.conf
 
 %changelog
