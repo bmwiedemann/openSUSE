@@ -17,7 +17,7 @@
 
 
 Name:           rakkess
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Utility to show an access matrix for k8s server resources
 License:        Apache-2.0
@@ -39,6 +39,9 @@ on a provided kubernetes cluster.
 %build
 # use vendor directory and build as position independent executeable
 sed -i -e 's|go build -race|go build -mod vendor -buildmode=pie|g' Makefile
+%ifarch %arm
+export GOARCH=arm
+%endif
 %ifarch aarch64
 export GOARCH=arm64
 %endif

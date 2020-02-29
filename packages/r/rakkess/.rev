@@ -39,4 +39,12 @@
 - Refresh vendor.tar.xz</comment>
     <requestid>769667</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f149ab924c7ba43e9fca76cd9cd71c29</srcmd5>
+    <version>0.4.4</version>
+    <time>1583007603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780066</requestid>
+  </revision>
 </revisionlist>
