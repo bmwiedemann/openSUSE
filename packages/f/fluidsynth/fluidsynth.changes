@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 20 17:00:13 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 2.1.1
+  * a regression introduced in 2.1.0 caused the jack audio driver
+    to not correct a sample-rate mismatch
+  * pkg-config is now being to used to find readline
+  * fix various typos in the documentation
+  * fix a memory leak in the file renderer
+  * fix leaking memory when sequencer clients were not explicitly
+    unregistered
+  * fix a heap-based use-after-free in jack driver
+  * fix the linker possibly not finding libinstpatch
+
+-------------------------------------------------------------------
 Fri Dec 27 21:27:34 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.1.0
