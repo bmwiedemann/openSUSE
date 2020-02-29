@@ -732,4 +732,12 @@ Peter Hutterer (3):
     <comment>- Fix invalid RPM groups.</comment>
     <requestid>774292</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>955221aacf4bc884d4c385107eb8d56b</srcmd5>
+    <version>1.15.2</version>
+    <time>1583007626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779863</requestid>
+  </revision>
 </revisionlist>
