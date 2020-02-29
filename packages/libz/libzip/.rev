@@ -393,4 +393,13 @@
   - libzip-ocloexec.patch (upstreamed)</comment>
     <requestid>767661</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4735fc6e259ccc2ea5bd7b8d45e02074</srcmd5>
+    <version>1.6.1</version>
+    <time>1583007814</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.6.1
+  * Bugfix for double-free in zipcmp(1) during cleanup. (forwarded request 778695 from polslinux)</comment>
+    <requestid>779940</requestid>
+  </revision>
 </revisionlist>

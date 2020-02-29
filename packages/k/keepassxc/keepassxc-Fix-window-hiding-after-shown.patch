@@ -1,0 +1,351 @@
+From 345ae7feaae558f69a6f22bc7f438f0a233a71b5 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 21 Feb 2020 01:17:20 +0100
+Subject: [PATCH 1/4] gui: Use proper windowing system detection.
+
+The GUI features depend on windowing system used, not OS.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/gui/MainWindow.cpp | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
+index b0dec4bf..d52ce9d2 100644
+--- a/src/gui/MainWindow.cpp
++++ b/src/gui/MainWindow.cpp
+@@ -1287,13 +1287,13 @@ void MainWindow::processTrayIconTrigger()
+ void MainWindow::hideWindow()
+ {
+     saveWindowInformation();
+-#if !defined(Q_OS_LINUX) && !defined(Q_OS_MACOS)
+-    // On some Linux systems, the window should NOT be minimized and hidden (i.e. not shown), at
+-    // the same time (which would happen if both minimize on startup and minimize to tray are set)
+-    // since otherwise it causes problems on restore as seen on issue #1595. Hiding it is enough.
+-    // TODO: Add an explanation for why this is also not done on Mac (or remove the check)
+-    setWindowState(windowState() | Qt::WindowMinimized);
+-#endif
++    if (QGuiApplication::platformName() != "xcb") {
++        // In X11 the window should NOT be minimized and hidden (i.e. not
++        // shown) at the same time (which would happen if both minimize on
++        // startup and minimize to tray are set) since otherwise it causes
++        // problems on restore as seen on issue #1595. Hiding it is enough.
++        setWindowState(windowState() | Qt::WindowMinimized);
++    }
+     // Only hide if tray icon is active, otherwise window will be gone forever
+     if (isTrayIconEnabled()) {
+         hide();
+-- 
+2.25.1
+
+
+From 942cbed7d3c1a31ed547d6c411d8080653f5b5f9 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Sun, 16 Feb 2020 22:38:35 +0100
+Subject: [PATCH 2/4] gui: Fix main window hiding after shown
+
+There is an issue with the WM sometimes produding an event that
+keepassxc interprets as request to hide the main window just after it is
+shown. A workaround with immediately fired timer was implemented.
+However, there is no guarantee on execution ordering of the timer
+callback and other application code. Remove the timer and override
+show() and hide() on main window to only hide if the window has not been
+shown recently.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/core/Clock.cpp     |  5 +++++
+ src/core/Clock.h       |  1 +
+ src/gui/MainWindow.cpp | 26 +++++++++++++++++++++++++-
+ src/gui/MainWindow.h   |  4 ++++
+ 4 files changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/Clock.cpp b/src/core/Clock.cpp
+index be9e91dc..5704d4bf 100644
+--- a/src/core/Clock.cpp
++++ b/src/core/Clock.cpp
+@@ -34,6 +34,11 @@ uint Clock::currentSecondsSinceEpoch()
+     return instance().currentDateTimeImpl().toTime_t();
+ }
+ 
++qint64 Clock::currentMilliSecondsSinceEpoch()
++{
++    return instance().currentDateTimeImpl().toMSecsSinceEpoch();
++}
++
+ QDateTime Clock::serialized(const QDateTime& dateTime)
+ {
+     auto time = dateTime.time();
+diff --git a/src/core/Clock.h b/src/core/Clock.h
+index 8f81b096..4d1ee253 100644
+--- a/src/core/Clock.h
++++ b/src/core/Clock.h
+@@ -28,6 +28,7 @@ public:
+     static QDateTime currentDateTime();
+ 
+     static uint currentSecondsSinceEpoch();
++    static qint64 currentMilliSecondsSinceEpoch();
+ 
+     static QDateTime serialized(const QDateTime& dateTime);
+ 
+diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
+index d52ce9d2..95c004f5 100644
+--- a/src/gui/MainWindow.cpp
++++ b/src/gui/MainWindow.cpp
+@@ -1073,7 +1073,7 @@ void MainWindow::changeEvent(QEvent* event)
+         if (isTrayIconEnabled() && m_trayIcon && m_trayIcon->isVisible()
+             && config()->get("GUI/MinimizeToTray").toBool()) {
+             event->ignore();
+-            QTimer::singleShot(0, this, SLOT(hide()));
++            hide();
+         }
+ 
+         if (config()->get("security/lockdatabaseminimize").toBool()) {
+@@ -1284,6 +1284,30 @@ void MainWindow::processTrayIconTrigger()
+     }
+ }
+ 
++void MainWindow::show()
++{
++    m_lastShowTime = Clock::currentMilliSecondsSinceEpoch();
++    QMainWindow::show();
++}
++
++bool MainWindow::shouldHide()
++{
++    qint64 current_time = Clock::currentMilliSecondsSinceEpoch();
++
++    if (current_time - m_lastShowTime < 50) {
++        return false;
++    }
++
++    return true;
++}
++
++void MainWindow::hide()
++{
++    if (shouldHide()) {
++        QMainWindow::hide();
++    }
++}
++
+ void MainWindow::hideWindow()
+ {
+     saveWindowInformation();
+diff --git a/src/gui/MainWindow.h b/src/gui/MainWindow.h
+index 0e74edf6..a50d82d3 100644
+--- a/src/gui/MainWindow.h
++++ b/src/gui/MainWindow.h
+@@ -70,6 +70,8 @@ public slots:
+     void hideGlobalMessage();
+     void showYubiKeyPopup();
+     void hideYubiKeyPopup();
++    void hide();
++    void show();
+     void hideWindow();
+     void toggleWindow();
+     void bringToFront();
+@@ -133,6 +135,7 @@ private:
+ 
+     static const QString BaseWindowTitle;
+ 
++    bool shouldHide();
+     void saveWindowInformation();
+     bool saveLastDatabases();
+     void updateTrayIcon();
+@@ -164,6 +167,7 @@ private:
+     bool m_appExiting = false;
+     bool m_contextMenuFocusLock = false;
+     uint m_lastFocusOutTime = 0;
++    qint64 m_lastShowTime = 0;
+     QTimer m_trayIconTriggerTimer;
+     QSystemTrayIcon::ActivationReason m_trayIconTriggerReason;
+ };
+-- 
+2.25.1
+
+
+From f1ba4aa57f4607239b9c09d97060c9e7a015fea4 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 17 Feb 2020 14:54:29 +0100
+Subject: [PATCH 3/4] gui: Do not apply workaround for main window hiding on
+ Windows
+
+The bug with main window hiding just after shown is not observed on
+Windows and applying the workaround break Windows GUI tests. I don't
+have Windows machine to investigate the failure.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/gui/MainWindow.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
+index 95c004f5..f5bbd663 100644
+--- a/src/gui/MainWindow.cpp
++++ b/src/gui/MainWindow.cpp
+@@ -1286,18 +1286,21 @@ void MainWindow::processTrayIconTrigger()
+ 
+ void MainWindow::show()
+ {
++#ifndef _WIN32
+     m_lastShowTime = Clock::currentMilliSecondsSinceEpoch();
++#endif
+     QMainWindow::show();
+ }
+ 
+ bool MainWindow::shouldHide()
+ {
++#ifndef _WIN32
+     qint64 current_time = Clock::currentMilliSecondsSinceEpoch();
+ 
+     if (current_time - m_lastShowTime < 50) {
+         return false;
+     }
+-
++#endif
+     return true;
+ }
+ 
+-- 
+2.25.1
+
+
+From 31db796157f27a4bbdbc4744364b60e7d8b01d1c Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 24 Feb 2020 12:33:43 +0100
+Subject: [PATCH 4/4] gui: When minimizing window take tray settings into
+ account.
+
+The user can set an option to hide window instead of minimizing when
+tray icon is enabled. This is not honored in most places where the main
+windows is minimized. Fix it. This also allows using the tray icon as a
+workaround for minimization not working under some circumstances in X11.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ src/gui/DatabaseWidget.cpp           |  9 +++++----
+ src/gui/MainWindow.cpp               | 11 ++++++++++-
+ src/gui/MainWindow.h                 |  1 +
+ src/gui/TotpDialog.cpp               |  2 +-
+ src/gui/TotpExportSettingsDialog.cpp |  2 +-
+ 5 files changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/src/gui/DatabaseWidget.cpp b/src/gui/DatabaseWidget.cpp
+index fd579b04..d81aa073 100644
+--- a/src/gui/DatabaseWidget.cpp
++++ b/src/gui/DatabaseWidget.cpp
+@@ -49,6 +49,7 @@
+ #include "gui/EntryPreviewWidget.h"
+ #include "gui/FileDialog.h"
+ #include "gui/KeePass1OpenWidget.h"
++#include "gui/MainWindow.h"
+ #include "gui/MessageBox.h"
+ #include "gui/OpVaultOpenWidget.h"
+ #include "gui/TotpDialog.h"
+@@ -677,7 +678,7 @@ void DatabaseWidget::setClipboardTextAndMinimize(const QString& text)
+     clipboard()->setText(text);
+     if (config()->get("HideWindowOnCopy").toBool()) {
+         if (config()->get("MinimizeOnCopy").toBool()) {
+-            window()->showMinimized();
++            getMainWindow()->minimizeOrHide();
+         } else if (config()->get("DropToBackgroundOnCopy").toBool()) {
+             window()->lower();
+         }
+@@ -782,7 +783,7 @@ void DatabaseWidget::openUrlForEntry(Entry* entry)
+             QProcess::startDetached(cmdString.mid(6));
+ 
+             if (config()->get("MinimizeOnOpenUrl").toBool()) {
+-                window()->showMinimized();
++                getMainWindow()->minimizeOrHide();
+             }
+         }
+     } else {
+@@ -791,7 +792,7 @@ void DatabaseWidget::openUrlForEntry(Entry* entry)
+             QDesktopServices::openUrl(url);
+ 
+             if (config()->get("MinimizeOnOpenUrl").toBool()) {
+-                window()->showMinimized();
++                getMainWindow()->minimizeOrHide();
+             }
+         }
+     }
+@@ -972,7 +973,7 @@ void DatabaseWidget::loadDatabase(bool accepted)
+         m_saveAttempts = 0;
+         emit databaseUnlocked();
+         if (config()->get("MinimizeAfterUnlock").toBool()) {
+-            window()->showMinimized();
++            getMainWindow()->minimizeOrHide();
+         }
+     } else {
+         if (m_databaseOpenWidget->database()) {
+diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
+index f5bbd663..4d9e3b7b 100644
+--- a/src/gui/MainWindow.cpp
++++ b/src/gui/MainWindow.cpp
+@@ -295,7 +295,7 @@ MainWindow::MainWindow()
+     connect(m_ui->menuGroups, SIGNAL(aboutToHide()), SLOT(releaseContextFocusLock()));
+ 
+     // Control window state
+-    new QShortcut(Qt::CTRL + Qt::Key_M, this, SLOT(showMinimized()));
++    new QShortcut(Qt::CTRL + Qt::Key_M, this, SLOT(minimizeOrHide()));
+     new QShortcut(Qt::CTRL + Qt::SHIFT + Qt::Key_M, this, SLOT(hideWindow()));
+     // Control database tabs
+     new QShortcut(Qt::CTRL + Qt::Key_Tab, this, SLOT(selectNextDatabaseTab()));
+@@ -1333,6 +1333,15 @@ void MainWindow::hideWindow()
+     }
+ }
+ 
++void MainWindow::minimizeOrHide()
++{
++    if (config()->get("GUI/MinimizeToTray").toBool()) {
++        hideWindow();
++    } else {
++        showMinimized();
++    }
++}
++
+ void MainWindow::toggleWindow()
+ {
+     if (isVisible() && !isMinimized()) {
+diff --git a/src/gui/MainWindow.h b/src/gui/MainWindow.h
+index a50d82d3..0fd4c8ac 100644
+--- a/src/gui/MainWindow.h
++++ b/src/gui/MainWindow.h
+@@ -73,6 +73,7 @@ public slots:
+     void hide();
+     void show();
+     void hideWindow();
++    void minimizeOrHide();
+     void toggleWindow();
+     void bringToFront();
+     void closeAllDatabases();
+diff --git a/src/gui/TotpDialog.cpp b/src/gui/TotpDialog.cpp
+index 639eb0eb..7292cfcd 100644
+--- a/src/gui/TotpDialog.cpp
++++ b/src/gui/TotpDialog.cpp
+@@ -67,7 +67,7 @@ void TotpDialog::copyToClipboard()
+     clipboard()->setText(m_entry->totp());
+     if (config()->get("HideWindowOnCopy").toBool()) {
+         if (config()->get("MinimizeOnCopy").toBool()) {
+-            getMainWindow()->showMinimized();
++            getMainWindow()->minimizeOrHide();
+         } else if (config()->get("DropToBackgroundOnCopy").toBool()) {
+             getMainWindow()->lower();
+             window()->lower();
+diff --git a/src/gui/TotpExportSettingsDialog.cpp b/src/gui/TotpExportSettingsDialog.cpp
+index 178cd6d9..ea14eabd 100644
+--- a/src/gui/TotpExportSettingsDialog.cpp
++++ b/src/gui/TotpExportSettingsDialog.cpp
+@@ -105,7 +105,7 @@ void TotpExportSettingsDialog::copyToClipboard()
+     clipboard()->setText(m_totpUri);
+     if (config()->get("HideWindowOnCopy").toBool()) {
+         if (config()->get("MinimizeOnCopy").toBool()) {
+-            getMainWindow()->showMinimized();
++            getMainWindow()->minimizeOrHide();
+         } else if (config()->get("DropToBackgroundOnCopy").toBool()) {
+             getMainWindow()->lower();
+             window()->lower();
+-- 
+2.25.1
+

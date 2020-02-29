@@ -1,7 +1,7 @@
 #
 # spec file for package bcunit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define soname  libbcunit
 %define sover   1
 Name:           bcunit
-Version:        3.0.2
+Version:        3.0.2+git.20191119
 Release:        0
 Summary:        Provide C programmers basic testing functionality
 License:        LGPL-2.0-or-later
-Url:            https://linphone.org/
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+URL:            https://linphone.org/
+Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE bcunit-link-ncurses.patch jengelh@medozas.de
 Patch0:         bcunit-link-ncurses.patch
@@ -33,6 +33,7 @@ Patch1:         bcunit-ncurses6.patch
 # PATCH-FIX-OPENSUSE bcunit-sover.patch sor.alexei@meowr.ru -- Correctly set the sover.
 Patch2:         bcunit-sover.patch
 BuildRequires:  cmake
+BuildRequires:  git-core >= 1.7.10
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 
@@ -69,45 +70,35 @@ BCUnit is a unit testing framework for C.
 This package installs the BCUnit shared library.
 
 %prep
-%setup -q -n BCunit-%{version}-Source
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %cmake \
   -DENABLE_STATIC=OFF    \
-  -DENABLE_AUTOMATED=ON  \
-  -DENABLE_BASIC=ON      \
-  -DENABLE_CONSOLE=ON    \
-  -DENABLE_CURSES=ON     \
-  -DENABLE_EXAMPLES=ON
-make %{?_smp_mflags} V=1
+  -DENABLE_DOC=ON
+%cmake_build
 
 %install
 %cmake_install
 
-# Architecture dependent files.
 mkdir -p %{buildroot}%{_libdir}/BCUnit/
-mv %{buildroot}%{_datadir}/BCUnit/Examples/ \
-  %{buildroot}%{_libdir}/BCUnit/
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README.md TODO
+%license COPYING
 %{_libdir}/%{soname}.so.%{sover}*
 
 %files doc
-%defattr(-,root,root)
 %dir %{_datadir}/BCUnit/
-%{_datadir}/BCUnit/*
+%dir %{_datadir}/doc/BCUnit/
+%doc %{_datadir}/doc/BCUnit/*
+%doc %{_datadir}/BCUnit/*
+%{_mandir}/man3/BCUnit.3%{?ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/BCUnit/
 %dir %{_datadir}/BCunit/
 %{_libdir}/BCUnit/

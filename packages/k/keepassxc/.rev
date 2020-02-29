@@ -258,4 +258,12 @@
   * https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.3</comment>
     <requestid>765640</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8b8c38e99c365ad27d211a9127ea1062</srcmd5>
+    <version>2.5.3</version>
+    <time>1583007869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780344</requestid>
+  </revision>
 </revisionlist>

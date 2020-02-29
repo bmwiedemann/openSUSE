@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.61
+Version:        0.6.62
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          System/Management
-Url:            https://github.com/openSUSE/wicked
+URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
 #
@@ -39,7 +39,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  make
-Provides:       libwicked-0_6_61 = %{version}
+Provides:       libwicked-0_6_62 = %{version}
 Obsoletes:      libwicked-0-6 <= %{version}
 
 %if 0%{?suse_version} >= 1500
@@ -84,8 +84,8 @@ Requires(pre):       util-linux
 %endif
 
 %if %{with systemd}
-BuildRequires:  systemd-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %if 0%{?suse_version:1}
 Requires(pre):  %fillup_prereq
@@ -155,7 +155,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_61 = %{version}
+Requires:       libwicked-0_6_62 = %{version}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number

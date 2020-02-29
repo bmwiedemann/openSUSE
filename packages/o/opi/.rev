@@ -88,4 +88,15 @@
     <comment></comment>
     <requestid>746561</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0c2aa02df2200c9feaa6d6b80c37c364</srcmd5>
+    <version>0.8.0</version>
+    <time>1583007898</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.0
+  * Changed
+    - Type number 0 to exit
+</comment>
+    <requestid>780487</requestid>
+  </revision>
 </revisionlist>

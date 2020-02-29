@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 26 21:00:16 UTC 2020 - rtorreromarijnissen@suse.com
+
+- version 0.6.62
+- dhcp4: discard lease on client-id mismatch (CVE-2020-7217,bsc#1160906)
+- dhcp4: free lease on response without message type (CVE-2020-7216,bsc#1160905)
+- dhcp6: don't add free'd IA to ia_pd_list on T1>T2 (CVE-2019-18903,bsc#1160904)
+- dhcp6: fix use-after-free on option parsing failure (CVE-2019-18902,bsc#1160903)
+- utils: don't reject NULL var array names/keys breaking wicked duid dump
+- routes: schema fix to avoid not applying rto_min incl. new time format (bsc#1160939)
+- systemd: order start wicked after network-pre.target and openvswitch.service start
+- packaging: use pkgconfig(libsystemd) instead of systemd-devel
+- misc bug fixes by Malte Kraus including undefined behaviour, memory access alignment
+- corrections, use-after-free, missed initialization and format errors
+
+-------------------------------------------------------------------
 Wed Dec 11 11:23:05 UTC 2019 - mt@suse.com
 
 - version 0.6.61

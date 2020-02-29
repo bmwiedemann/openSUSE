@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 29 08:30:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.3 development release
+  - More work towards Ucrtbase runtime support.
+  - Full support for Unicode normalization.
+  - Improvements in Shell Folders handling.
+  - Various bug fixes.
+- update staging to 5.3 release
+
+-------------------------------------------------------------------
 Mon Feb 17 07:50:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.2 development release

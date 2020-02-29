@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 16:47:50 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner.
+- Add Requires:toilet for caca-utils, because need for cacaclock.
+
+-------------------------------------------------------------------
 Thu Aug  1 09:46:57 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add Bug1143286_libcaca_configure_ac_chg_for_lto.patch

@@ -81,4 +81,45 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>643650</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>8b0ee80be24ec91b42e92651a3776783</srcmd5>
+    <version>3.2.1</version>
+    <time>1583007820</time>
+    <user>dimstar_suse</user>
+    <comment>- nrpe.xml firewalld file is handled by firewalld package
+- Leap 15.1 is suse_version 1500 (thanks, dimstar)
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+- Do not package nrpe.xml for Leap 15.0, as it is included in 
+  firewalld package there. 
+- add nrpe.xml snipplet for firewalld
+- still ship nrpe snipplet for SuSEfirewalld for now
+- use systemd files directly from upstream:
+  + drop Requires=var-run.mount line from service file 
+  + drop nrpe.service
+  + drop nrpe.socket
+  + do not create tmpfiles.d/nrpe in spec any longer
+- handle migration from /etc/nagios/nrpe.cfg to /etc/nrpe.cfg also 
+  for systemd case (triggerun)
+- increase warn/crit level for processes to 350/400 in a default 
+  installation
+- added patch and dh.h file to NOT re-calculate dh.h parameters 
+  during each build (for reproducable builds). 
+  Can be enable/disable by setting the 'reproducable' build 
+  condition. Default is: &quot;on&quot; for suse_version &gt;= 15
+  + nrpe-3.2.1-static_dh_parameters.patch
+  + nrpe-3.2.1-dh.h
+- use _rundir and _tmpfilesdir macros everywhere
+- do not create nagios user/group during install on (open)SUSE
+  systems and rely on the files section here instead
+- rename nagios-nrpe-rpmlintrc and nagios-nrpe-SuSEfirewall2 to 
+  nrpe-rpmlintrc and nrpe-SuSEfirewall2
+- simplify rpmlintrc
+- build nrpe-doc package as noarch 
+- specfile cleanup &amp; remove other distribution specials
+- disable chkconfig call in Makefile on old distributions
+  nrpe-3.2.1-disable-chkconfig_in_Makefile.patch
+</comment>
+    <requestid>780480</requestid>
+  </revision>
 </revisionlist>

@@ -49,6 +49,7 @@ Patch7:         missing-decls.patch
 # PATCH-FIX-UPSTREAM libpt2-openssl11.patch boo#1055477 mgorse@suse.com -- port to OpenSSL 1.1.
 Patch8:         libpt2-openssl11.patch
 Patch9:         reproducible.patch
+Patch10:        libpt2-gnu-make-4.3.patch
 BuildRequires:  SDL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  bison
@@ -187,6 +188,9 @@ This plugin enables pulseaudio support for %{name}.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%if %{pkg_vcmp make >= 4.3}
+%patch10 -p1
+%endif
 
 %build
 export CXXFLAGS="%optflags -fvisibility-inlines-hidden"

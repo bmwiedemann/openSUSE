@@ -1,7 +1,7 @@
 #
 # spec file for package polkit-kde-agent-5
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           polkit-kde-agent-5
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        PolicyKit authentication agent for KDE
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Url:            http://www.kde.org/
+URL:            http://www.kde.org/
 Source:         https://download.kde.org/stable/plasma/%{version}/polkit-kde-agent-1-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/polkit-kde-agent-1-%{version}.tar.xz.sig

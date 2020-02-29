@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 14:09:26 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.62c
+  - Important fix for memory allocation functions that result in afl-fuzz not identifying crashes - UPDATE!
+  - Small fix for -E/-V to release the CPU
+  - CmpLog does not need sancov anymore
+
+-------------------------------------------------------------------
 Tue Feb 25 12:04:22 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.61c

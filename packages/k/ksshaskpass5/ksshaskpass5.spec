@@ -1,7 +1,7 @@
 #
 # spec file for package ksshaskpass5
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           ksshaskpass5
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        Plasma 5 version of ssh-askpass
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Url:            http://www.kde.org/
+URL:            http://www.kde.org/
 Source:         https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/ksshaskpass-%{version}.tar.xz.sig

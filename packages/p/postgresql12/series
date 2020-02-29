@@ -1,6 +1,0 @@
-postgresql-conf.patch -p0
-postgresql-regress.patch  -p0
-postgresql-plperl-keep-rpath.patch -p0
-postgresql-testsuite-int8.sql.patch -p1
-postgresql-testsuite-keep-results-file.patch
-postgresql-var-run-socket.patch -p0

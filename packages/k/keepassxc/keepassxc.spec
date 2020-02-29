@@ -1,7 +1,7 @@
 #
 # spec file for package keepassxc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://github.com/keepassxreboot/keepassxc/releases/download/%{
 Source2:        https://keepassxc.org/keepassxc_master_signing_key.asc#/%{name}.keyring
 Source98:       debian.tar.xz
 Source99:       keepassxc.dsc
+Patch:          keepassxc-Fix-window-hiding-after-shown.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -46,8 +47,8 @@ BuildRequires:  libykpers-devel
 BuildRequires:  ykpers-devel
 %endif
 BuildRequires:  libyubikey-devel
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig
+BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -97,6 +98,7 @@ are encrypted using AES and Twofish.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %define _lto_cflags %{nil}

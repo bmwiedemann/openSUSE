@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2014-2019 Dr. Axel Braun
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2014-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,11 @@
 %define         majorver 3.6
 Name:           gnuhealth
 
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 
 # List of additional build dependencies
-###ildRequires:  fdupes
+BuildRequires:  fdupes
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 
@@ -41,7 +41,7 @@ Source3:        gnuhealth.service
 Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
-##atch0:         bug_57292.diff
+Patch0:         shebang.diff
 ##atch1:         xmlfix.diff
 ##atch2:         demo.diff
 
@@ -106,7 +106,7 @@ This package provides the interface to Orthanc
 
 %prep
 %setup -q -n %{name}-%{version}
-##atch0 -p1
+%patch0 -p1
 ##atch1 -p1
 ##atch2 -p1
 cp %{S:1} .
@@ -141,7 +141,7 @@ install -p -m 644 %{SOURCE4} $RPM_BUILD_ROOT%{_unitdir}/%{name}-webdav@.service
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/tryton
 
-####ython_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %pre
 #Write environment changes to /etc/bash.bashrc.local

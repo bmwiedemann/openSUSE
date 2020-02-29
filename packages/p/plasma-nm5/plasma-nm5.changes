@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:07:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * Fix build with missing includes
+  * [kded] Set password dialog boxes to plaintext
+  * [kded] Escape notifications
+  * [kcm] Escape connection name in close dialog
+  * KCM: Fix connection list background and padding
+  * Fix ampersand and other characters in tooltip (kde#398225)
+  * Make sure we change icon on NM connectivity change
+
+-------------------------------------------------------------------
 Tue Feb 18 14:05:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.1

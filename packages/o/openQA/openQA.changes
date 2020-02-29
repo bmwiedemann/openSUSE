@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Feb 28 19:04:52 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1582908813.c5b7e89c0:
+  * Makefile: Add KEEP_DB flag for optional, faster re-runs
+  * Extract a script "openqa-setup-db" for local database setup
+  * Make "developer" test as unstable based on recent results
+  * systemd: Prevent error on repeated startup of openqa-setup-db
+  * Improve shell style of t/test_postgresql based on shellcheck
+  * systemd: Make worker also only depend necessary network related targets
+  * Remove misleading log message of test setup
+  * Make check for error message in fullstack cache test less specific
+  * Refactor setup of fullstack tests
+  * Initialize host of cache client via sub to ease test setup
+  * Format test of the worker's web UI connection in a more compact way
+  * systemd: Fix premature startup of services when network is not fully up yet
+  * worker: Log only a debug message if a JSON can not be opened
+  * Remove unused modules from scheduler fullstack test
+  * Alleviate debugging of test_postgresql
+  * load_templates: Remove query uses from table requests
+  * load_templates: Create groups that do not exist
+  * Prevent search popover icons from appearing on top of menus
+  * Improve logging, error handling and notes for worker-server connection
+  * Delete unused and uncovered method 'Worker::WebUIConnection::disable'
+  * Delete unused and uncovered method 'Utils::append_channel_to_defaults'
+  * Stop the worker as usual when handling 'incompatible' command
+  * Update systemd/openqa-enqueue-bug-cleanup.timer
+  * Align jobtemplate inline help to left
+  * Fix openqa-enqueue-bug-cleanup.timer description
+
+-------------------------------------------------------------------
 Wed Feb 26 11:03:38 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1582671252.ca350bd34:

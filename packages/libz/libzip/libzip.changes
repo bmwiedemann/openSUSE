@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:26:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- version update to 1.6.1
+  * Bugfix for double-free in zipcmp(1) during cleanup.
+
+-------------------------------------------------------------------
 Mon Jan 27 11:27:42 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.6.0

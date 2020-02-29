@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 15:15:34 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Clicking the tray icon momentarily shows and immediately hides window. Make
+  it stick (boo#1165293).
+- Fix window not minimizing to tray.
+  + add keepassxc-Fix-window-hiding-after-shown.patch
+
+-------------------------------------------------------------------
 Sun Jan 19 21:24:09 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.5.3:

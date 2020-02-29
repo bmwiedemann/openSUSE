@@ -27,7 +27,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -168,7 +168,18 @@ sed -i 's/^Icon=wireshark.png$/Icon=wireshark/' wireshark*.desktop
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'
+%if 0%{?is_opensuse}
 %cmake_build
+%else 
+# if the cmake_build makro does not exit we build it by hand...
+/usr/bin/make \
+    %if "/usr/bin/make" == "/usr/bin/make" 
+        -O VERBOSE=1 \
+    %else 
+        -v \
+    %endif 
+    -j8
+%endif 
 
 %install
 %cmake_install

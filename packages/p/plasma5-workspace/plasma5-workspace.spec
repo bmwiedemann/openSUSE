@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-workspace
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Url:            http://www.kde.org/
+URL:            http://www.kde.org/
 Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
@@ -86,6 +86,7 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlRpcClient)
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
+BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 #!BuildIgnore:  kdialog
 BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
@@ -149,6 +150,8 @@ Recommends:     oxygen5-sounds >= %{_plasma5_version}
 Requires:       solid-imports
 # Used by KCMs
 Requires:       knewstuff-imports
+# Used by the user feedback KCM
+Requires:       kuserfeedback-imports
 Requires:       xembedsniproxy >= %{_plasma5_version}
 # startkde and startplasma call these
 Requires:       awk
@@ -443,6 +446,7 @@ fi
 %{_kf5_debugdir}/*.categories
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
 
 %files -n xembedsniproxy

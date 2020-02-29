@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>                                                                                                            
+<service>
+  <short>NRPE</short>
+  <description>Opens port for NRPE Service to allow connects from Nagios.</description>
+  <port protocol="tcp" port="5666"/>
+</service>

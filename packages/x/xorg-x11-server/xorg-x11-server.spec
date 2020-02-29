@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,6 +121,7 @@ BuildRequires:  pkgconfig(xext) >= 1.0.99.4
 BuildRequires:  pkgconfig(xextproto) >= 7.1.99
 BuildRequires:  pkgconfig(xf86dgaproto)
 BuildRequires:  pkgconfig(xf86driproto)
+BuildRequires:  pkgconfig(xf86vidmodeproto)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xfont2)
 BuildRequires:  pkgconfig(xi) >= 1.2.99.1
@@ -409,6 +410,7 @@ autoreconf -fi
 export PCI_TXT_IDS_DIR=%{pci_ids_dir}
 %endif
 %configure CFLAGS="%{optflags} -fno-strict-aliasing" \
+            --enable-xf86vidmode \
             --sysconfdir=/etc \
             --enable-xdmcp \
             --enable-xdm-auth-1 \

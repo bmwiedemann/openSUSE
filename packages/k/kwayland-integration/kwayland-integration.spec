@@ -1,7 +1,7 @@
 #
 # spec file for package kwayland-integration
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kwayland-integration
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Integration plugins for various KDE frameworks for wayland windowing system
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Url:            http://www.kde.org
+URL:            http://www.kde.org
 Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-integration-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-integration-%{version}.tar.xz.sig

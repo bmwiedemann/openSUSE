@@ -36,6 +36,8 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Restore-former-position-of-Create-New-menu-item-in-v.patch
 BuildRequires:  extra-cmake-modules >= 1.6.0
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Activities) >= 5.7.0

@@ -43,7 +43,11 @@ BuildRequires:  libtool
 BuildRequires:  libwnck2-devel
 BuildRequires:  lua51-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-gtk-devel
+BuildRequires:  python-rpm-macros
+# We cannot use pygtk anymore, as it is Python 2-based.
+# Unless geany-plugins switches to PyGObject, we cannot have Gnome
+# plugins here.
+# BuildRequires:  python-gtk-devel
 BuildRequires:  vala
 BuildRequires:  pkgconfig(enchant) >= 1.3
 BuildRequires:  pkgconfig(geany) >= 1.26
@@ -78,10 +82,6 @@ a lightweight IDE.
 %install
 %make_install
 install -d -m755 %{buildroot}%{python_sitearch}
-
-pushd %{buildroot}%{python_sitearch}
-%py_compile .
-popd
 
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -size 0 -delete

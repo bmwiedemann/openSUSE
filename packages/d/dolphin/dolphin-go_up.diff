@@ -1,8 +1,8 @@
-Index: dolphin-18.03.90/src/dolphinui.rc
+Index: dolphin-19.12.2/src/dolphinui.rc
 ===================================================================
---- dolphin-18.03.90.orig/src/dolphinui.rc
-+++ dolphin-18.03.90/src/dolphinui.rc
-@@ -92,6 +92,7 @@
+--- dolphin-19.12.2.orig/src/dolphinui.rc
++++ dolphin-19.12.2/src/dolphinui.rc
+@@ -99,6 +99,7 @@
          <text context="@title:menu">Main Toolbar</text>
          <Action name="go_back" />
          <Action name="go_forward" />

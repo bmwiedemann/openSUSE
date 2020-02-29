@@ -341,4 +341,12 @@ SPDX format (choose from http://www.spdx.org/licenses or the list linked at lice
     <comment></comment>
     <requestid>720193</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>a7a86ea1a8f0e9194f033d3370cc35ee</srcmd5>
+    <version>0.99.beta19.git20171003</version>
+    <time>1583007803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779814</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:09:12 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- specfile: reenabled XFree86-VidModeExtension (boo#1164020)
+
+-------------------------------------------------------------------
 Mon Jan 20 16:12:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_fno-common.patch

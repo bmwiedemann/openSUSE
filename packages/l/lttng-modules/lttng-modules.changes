@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:29:32 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.11.2:
+  * See /usr/share/doc/packages/lttng-modules/ChangeLog
+- Rebase and rename lttng-modules-fix-leap-15.0.patch to
+  lttng-modules-fix-leap-15.1.patch.
+- Update the spec.
+
+-------------------------------------------------------------------
 Thu Oct  3 17:56:21 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.10.11 (changes since 2.10.9):

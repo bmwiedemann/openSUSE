@@ -1,0 +1,60 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+wireshark-3.2.2.tar.xz: 31548392 bytes
+SHA256(wireshark-3.2.2.tar.xz)=5f5923ef4c3fee370ed0ca1bb324f37c246015eba4a7e74ab95d9208feeded79
+RIPEMD160(wireshark-3.2.2.tar.xz)=886e731f8055c32f82d29931981b13a07bb0584c
+SHA1(wireshark-3.2.2.tar.xz)=9cc54a56e9c2ed77e1bc436d9ae2f7bba68d26f8
+
+Wireshark-win64-3.2.2.exe: 60064040 bytes
+SHA256(Wireshark-win64-3.2.2.exe)=cc9b49c696219cc093debaae11febeb546b2a508f41150b983ae0af6954c0512
+RIPEMD160(Wireshark-win64-3.2.2.exe)=2b292f3882e1eb27a01707fc98aa460501cbb296
+SHA1(Wireshark-win64-3.2.2.exe)=865313414ccd9a1f9792f0a94e5de01b59716274
+
+Wireshark-win32-3.2.2.exe: 54766256 bytes
+SHA256(Wireshark-win32-3.2.2.exe)=73af61a1edae2af371e432a09bbda8af48a8ada0ea789592ff24499d80070ae6
+RIPEMD160(Wireshark-win32-3.2.2.exe)=849d9cbb6c807369148a7e80826b62892ae6d9e6
+SHA1(Wireshark-win32-3.2.2.exe)=32cfdad68a57619fad98a36b184fcba9aecd7f40
+
+Wireshark-win64-3.2.2.msi: 48234496 bytes
+SHA256(Wireshark-win64-3.2.2.msi)=2be8c75267a4a5670facc7246e3afa145a9f0b04fe9cc6a03876a2100cf54d51
+RIPEMD160(Wireshark-win64-3.2.2.msi)=34ce997ebc0f70a5f58ec8c9ad469743ebc7b7a8
+SHA1(Wireshark-win64-3.2.2.msi)=c03c345347ff1b2e143bea23521a3e3051dce4ec
+
+Wireshark-win32-3.2.2.msi: 42946560 bytes
+SHA256(Wireshark-win32-3.2.2.msi)=9806b8985b5e697b273dd16d5039877b7f7d2bed3c48581f540556cf5b60ee57
+RIPEMD160(Wireshark-win32-3.2.2.msi)=9136a45df0d15d526b308697560a3cd3fb8328e4
+SHA1(Wireshark-win32-3.2.2.msi)=4730be9ec289cc33b290216de2f42027980de9e9
+
+WiresharkPortable_3.2.2.paf.exe: 36532592 bytes
+SHA256(WiresharkPortable_3.2.2.paf.exe)=bcae2ceaf37afb2ab1f6bb1b9f1054c68a537e22b98219407561007ba3217647
+RIPEMD160(WiresharkPortable_3.2.2.paf.exe)=d66557ea96adadff42db9b484ab1030da9a92855
+SHA1(WiresharkPortable_3.2.2.paf.exe)=1235aaa1a73b33065ebab1e21bdcb2c10a9bbf55
+
+Wireshark 3.2.2 Intel 64.dmg: 97487826 bytes
+SHA256(Wireshark 3.2.2 Intel 64.dmg)=c6bda7aba34c441dc8b3998ffbe938ea37a98cf9e4cbf0136a8b65229ce0887f
+RIPEMD160(Wireshark 3.2.2 Intel 64.dmg)=db7aaf2ff01d14653c5dbca355cf042cdc472192
+SHA1(Wireshark 3.2.2 Intel 64.dmg)=1a37a7cd62ab258431ad166d62cfbc42f0a7287a
+
+You can validate these hashes using the following commands (among others):
+
+    Windows: certutil -hashfile Wireshark-win64-x.y.z.exe SHA256
+    Linux (GNU Coreutils): sha256sum wireshark-x.y.z.tar.xz
+    macOS: shasum -a 256 "Wireshark x.y.z Intel 64.dmg"
+    Other: openssl sha256 wireshark-x.y.z.tar.xz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEWlrbp9vqbD+HIk8ZgiRKeOb+ruoFAl5W4l4ACgkQgiRKeOb+
+ruqVJA//ctBHfeFtMvuIhDyDLzgGxFSOB448Aa2BxBSWd/WQ9gqwmbHK7LZKx5UA
+27BWikL+ZJFEe1hzh4cwgcpq7wmutWabDZSRIzg1zmEsvqrNrwiCGEeaAnEr8dgQ
+cj+YapEBXauMG3Be5OWDzzXZYP5H96KOoFmubCrFSEgq2jY+tg4Ukyks28mWB+vN
+Ys8XsSIYEfXGIynW5aZCRcXrqMUTgIfDUXjYjRui/ZPuRaXFd1fryNV4jYM3/JO9
+tIbEf4Cluy7vKpiWMlY4DB66vZU7m9iGaR1JR4SPACa0oPTZCeWxx/elcI6y29oo
+LXEBGnsas3HSdDGEc7uZ18mV1jFbp0VBgS1pNPOoiZFa2vJ4htOji1ZeK4BLwNg6
+qBIVpyPeRqnDCcYq53xCc3aKQe4VN42OdCwuD3sSUK0b8PbPeAlDzxntJRoAUAQG
+FwbQumODbJHqJlb5E4UmCjSrrmoyI1w48s1DDgESeBjQYmSqm1tp2P7P3E2gyYQQ
+L2mIdeHjzOVSzsc4X8MTvEUlG8IxbnwmQsy+YwFl54ijIHddthHX2MqDZLp/8zO7
+l5uX2p9yRBj8xCOjfkp8KOzzab4htYtpAmfER9gWL56IDbK/BqjjNoCxxcbxZ47a
+y5yvP3IZsbdzchr5ktF6ZJbN1OzjPIr+VmUd5R8a92LgWjve9pI=
+=PJXP
+-----END PGP SIGNATURE-----

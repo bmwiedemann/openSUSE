@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-nm5
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without lang
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (LGPL-2.1-only OR LGPL-3.0-only) AND (GPL-2.0-only OR GPL-3.0-only)

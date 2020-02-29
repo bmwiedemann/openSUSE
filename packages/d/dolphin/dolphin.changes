@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:08:08 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to move back the "Create New..." menu item
+  in its former position (kde#417640):
+  * 0001-Restore-former-position-of-Create-New-menu-item-in-v.patch
+- Refreshed patches:
+  * dolphin-go_up.diff
+
+-------------------------------------------------------------------
 Fri Feb  7 08:36:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

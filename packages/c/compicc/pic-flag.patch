@@ -1,0 +1,22 @@
+Index: compicc-0.8.9/configure
+===================================================================
+--- compicc-0.8.9.orig/configure
++++ compicc-0.8.9/configure
+@@ -437,6 +437,8 @@ else
+ fi
+ $COMPILER $CFLAGS $ROOT_DIR/tests/intptr_test.c -o tests/intptr_test 2>/dev/null
+ if [ -f tests/intptr_test ]; then
++  FPIC=-fPIC
++  DPIC=-DPIC
+   tests/intptr_test
+   INTPTR_SIZE=$?
+   if [ $INTPTR_SIZE -eq 4 ]; then
+@@ -444,8 +446,6 @@ if [ -f tests/intptr_test ]; then
+   elif [ $INTPTR_SIZE -gt 4 ]; then
+     echo_="64-bit build            detected"
+     BARCH=64
+-    FPIC=-fPIC
+-    DPIC=-DPIC
+     test -n "$ECHO" && $ECHO "BUILD_64 = 1" >> $CONF
+   elif [ $INTPTR_SIZE -ne 0 ]; then
+     echo_="$INTPTR_SIZE-byte intptr_t          detected"

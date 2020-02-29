@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 21 15:41:39 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch off building with PyGtk (as it is Python 2-based).
+
+-------------------------------------------------------------------
 Tue Feb  4 19:00:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop geany-plugins-lang Requires: It should have been a

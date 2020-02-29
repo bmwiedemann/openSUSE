@@ -1,7 +1,7 @@
 #
 # spec file for package shotcut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with    x264
 
 Name:           shotcut
-Version:        19.09.14
+Version:        20.02.17
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -30,12 +30,10 @@ Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            http://www.shotcut.org/
+URL:            http://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE shotcut-noupdatecheck.patch davejplater@gmail.com -- Disable automatic update check
-Patch1:         shotcut-noupdatecheck.patch
 # PATCH-FIX-UPSTREAM shotcut-with-mlt-6.16.0.patch davejplater@gmail.com -- Fix missing type define with mlt < 6.17.0
-Patch2:         shotcut-with-mlt-6.16.0.patch
+Patch1:         shotcut-with-mlt-6.16.0.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -95,22 +93,14 @@ echo "Qt5Core = %{qt5version}"
 find . \
 \( -name \*.html -o -name \*.js \) -type f -executable -exec chmod a-x {} + || :
 
-# Create version.json from current version
-echo "{" > version.json
-echo " \"version_number\": %{_vstring}02," >> version.json
-echo " \"version_string\": \"%{version}.02\"," >> version.json
-echo " \"url\": \"https://shotcut.org/blog/new-release-%{_vstring}/\"" >> version.json
-echo "}" >> version.json
-echo "" >> version.json
-
 %build
 ##if LIBMLT_VERSION_INT >= MLT_VERSION_CPP_UPDATED 397568
 ##define LIBMLT_VERSION_INT 397312     ((LIBMLT_VERSION_MAJOR<<16)+(LIBMLT_VERSION_MINOR<<8)+LIBMLT_VERSION_REVISION)
-export _VSTRING="%{version}.02"
 %qmake5 \
 	QMAKE_STRIP="" \
-	_VSTRING="%{version}.02" \
-        PREFIX="%{_prefix}" -Wall -recursive
+        PREFIX="%{_prefix}" -Wall -recursive \
+        SHOTCUT_VERSION=%{version} \
+        DEFINES+=SHOTCUT_NOUPGRADE
 
 make %{_smp_mflags} VERBOSE=1
 # CC=gcc-8 CPP=cpp-8 CXX=g++-8
@@ -138,7 +128,6 @@ pushd $basedir
 		echo "%lang($lang) $langdir/$qm" >>"$langlist"
 	done
 popd
-cp -v version.json %{buildroot}%{_datadir}/%{name}
 %suse_update_desktop_file -i org.%{name}.Shotcut
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 %fdupes -s %{buildroot}/%{_datadir}

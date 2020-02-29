@@ -18,23 +18,14 @@
 
 
 Name:           rdiff-backup
-Version:        1.9.0~b0
-%define _beta   1.9.0b0
+Version:        1.9.1~b0
+%define _beta   1.9.1b0
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Backup
 Url:            https://rdiff-backup.net/
 Source0:        https://github.com/rdiff-backup/rdiff-backup/releases/download/v%{_beta}/rdiff-backup-%{_beta}.tar.gz
-# https://github.com/rdiff-backup/rdiff-backup/pull/248
-# PATCH-FEATURE-UPSTREAM 0001-handle-sparse-files-efficiently.patch -- seife+obs@b1-systems.com
-Patch1:         0001-handle-sparse-files-efficiently.patch
-# in order not stumble on handle hardlinks, these two patches are necessary
-# http://savannah.nongnu.org/bugs/?26848
-# https://github.com/rdiff-backup/rdiff-backup/pull/240
-# PATCH-FEATURE-UPSTREAM Hardlink.py.revised-patch compare.py.patch -- hpj@urpla.net
-Patch2:         Hardlink.py.revised-1.4.0.patch
-Patch3:         compare.py-1.4.0.patch
 #
 BuildRequires:  librsync-devel
 BuildRequires:  python3-devel

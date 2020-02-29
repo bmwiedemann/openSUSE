@@ -1,7 +1,0 @@
-<package name="iceWMCP" project="openSUSE:Factory">
-  <title>An IceWM Configuration Panel</title>
-  <description>IceWM Control Panel (IceWMCP) is full-featured, Gtk-based control panel
-for IceWM. It is meant to run in IceWM, but can be used in ANY window
-manager as a general-purpose control panel.</description>
-  <devel project="X11:windowmanagers" package="iceWMCP"/>
-</package>

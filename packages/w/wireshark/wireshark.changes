@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 27 07:51:33 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.2.2 (boo#1165241)
+  * CVE-2020-9431: LTE RRC dissector memory leak.
+  * CVE-2020-9430: WiMax DLMAP dissector crash.
+  * CVE-2020-9428: EAP dissector crash.
+  * CVE-2020-9429: WireGuard dissector crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.2.2.html
+
+-------------------------------------------------------------------
+Thu Jan 23 13:34:13 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- Fixed build against SLE flavors
+
+-------------------------------------------------------------------
 Thu Jan 16 08:39:33 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - wireshark 3.2.1

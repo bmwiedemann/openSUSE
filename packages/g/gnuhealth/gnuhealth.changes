@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 28 11:24:46 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.3
+* GH HMIS server. task #15562: Include coronavirus COVID-19 in ICD10 codes
+* GH HMIS server. bug #57695: Traceback when creating a page of life associated to an empty evaluation
+* GH HMIS server. task #15561: Werkzeug 1.0 is not compatible with Trytond 5.0
+* shebang.diff to fix /usr/bin/env 
+
+-------------------------------------------------------------------
 Thu Nov 21 14:40:47 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.6.1

@@ -532,4 +532,15 @@
      - LLVM 11 is supported (forwarded request 779147 from msmeissn)</comment>
     <requestid>779153</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>12174eb19eb75b29865e72462865b2e7</srcmd5>
+    <version>2.62c</version>
+    <time>1583007859</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.62c
+  - Important fix for memory allocation functions that result in afl-fuzz not identifying crashes - UPDATE!
+  - Small fix for -E/-V to release the CPU
+  - CmpLog does not need sancov anymore (forwarded request 780290 from msmeissn)</comment>
+    <requestid>780291</requestid>
+  </revision>
 </revisionlist>

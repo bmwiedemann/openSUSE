@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:07:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * [kcm/effects] Clip ListView
+  * Schedule a workspace repaint in AbstractClient::minimize()
+  * [plastik] Disable problematic text hints (kde#417699,kde#413179)
+
+-------------------------------------------------------------------
 Tue Feb 18 14:05:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.1

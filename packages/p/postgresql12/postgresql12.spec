@@ -123,7 +123,6 @@ Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{p
 Source2:        baselibs.conf
 Source3:        postgresql-README.SUSE
 Source17:       postgresql-rpmlintrc
-Source18:       series
 Patch1:         postgresql-conf.patch
 Patch2:         postgresql-regress.patch
 # PL/Perl needs to be linked with rpath (bsc#578053)
@@ -229,7 +228,9 @@ PreReq:         /sbin/chkconfig
 PreReq:         postgresql = %version
 Requires:       glibc-locale
 Requires:       timezone
+%if %{with llvm}
 Recommends:     %{name}-llvmjit
+%endif
 Provides:       postgresql-server-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(pre):  postgresql-server-noarch >= %pgmajor
@@ -320,6 +321,7 @@ Summary:        HTML Documentation for PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-docs-implementation = %version-%release
 Requires:       postgresql-docs-noarch >= %pgmajor
+BuildArch:      noarch
 
 %description docs
 PostgreSQL is an advanced object-relational database management system

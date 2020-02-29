@@ -1,7 +1,7 @@
 #
 # spec file for package milou5
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without lang
 Name:           milou5
-Version:        5.18.1
+Version:        5.18.2
 Release:        0
 Summary:        Dedicated search application built on top of Baloo
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
-Url:            https://projects.kde.org/milou
+URL:            https://projects.kde.org/milou
 Source:         https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz.sig

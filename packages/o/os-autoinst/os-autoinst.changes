@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 28 19:03:46 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1582730128.1997f880:
+  * Append HDD infos to GENERAL_HW_FLASH_ARGS - poo#63766
+  * Improve bwmqemu::log_call
+
+-------------------------------------------------------------------
 Wed Feb 26 11:02:37 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1582561187.791d0a5d:

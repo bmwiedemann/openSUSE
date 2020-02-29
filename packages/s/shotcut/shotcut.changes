@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Feb 18 18:56:50 UTC 2020 - Pavol Cupka <palica@liguros.net>
+
+- Update to release version 20.02.17
+- Upstream changes:
+  - Fixes:
+    - Fixed dropping multiple files to Playlist in a new project (broken in v19.12.31).
+    - Fixed some broken keyboard shortcuts in the Turkish translation.
+    - Fixed Properties > Speed not working after a project file repair.
+    - Fixed clip selection after Insert Track or Remove Track.
+    - Fixed Playlist > Add Selected to Timeline creates corrupt clips (broken in v19.12.31).
+    - Fixed Settings > Display Method > Software (Mesa) on Windows (broken in v19.12.31).
+    - Fixed creating a Project folder with leading or trailing spaces.
+    - Fixed saving the length property in MLT XML as a time value independent of frame rate.
+    - Fixed starting Text: Simple video filter with "@" shows "0".
+    - Fixed seeking previous & next on the first track in Keyframes where you trim a filter or use simple keyframes.
+    - Fixed an unexpected transition is created when moving a clip rightward adjacent to the next clip in Timeline (regression in v19.12.16).
+    - Fixed drag-n-drop from Source player to Timeline left player in an inconsistent state (broken in v19.09.14).
+    - Fixed an inconsistent colorspace conversion when accessing a cached image.
+    - Fixed Playlist > Copy followed by a change in Properties incorrectly changes the playlist item.
+    - Fixed clicking on the rectangle control may change its size.
+    - Fixed using the LUT (3D) filter with file with extended characters in its file path on Windows.
+    - Fixed a crash when using a transition on every track at the same time.
+  - Changes:
+    - Improved the reliability of Timeline > Select None.
+    - Changed Timeline > Master > Properties > Frame rate to show 6 decimal digits.
+    - Reduced the latency of scrubbing (regression in v19.12.31).
+    - Changed the video-overlay rectangle control used in some filters to allow changing the position by dragging from anywhere inside the rectangle.
+    - To enable, one must first double-click the center circle to put it into a positioning-locked mode. Otherwise, you would be prevented from dragging the clip out of the Source player.
+    - Changed the Filters panel on macOS to prevent floating to avoid a frequently reported problem of the Filters window appearing blank/black.
+    - Changed Timeline > clip context menu > Detach Audio to not seek afterwards.
+    - Improved mouse wheel and trackpad behavior in Timeline.
+    - Now, you do not need to ensure the mouse pointer is over a clip, speed is reduced, and zoom keeps focal point in view. The new zoom behavior does not apply when using the option Center the Playhead in the timeline menu.
+    - Upgraded MLT to version 6.20.0 and WebVfx to version 1.2.0.
+  - New:
+    - Added Settings > Preview Scaling!
+      This reduces the resolution for rendering effects for preview within the app, but there may be added a fair cost to the CPU for down-scaling sources to the preview resolution. Thus, this will be more beneficial when low resolution proxies are created, which is planned for version 20.04 in April.
+      Please understand that preview scaling will not always provide perfect fidelity. Some differences are unavoidable especially where blur, softness, and noise are concerned.
+      Some filters may not support preview scaling and will process at full project resolution:
+          Choppy
+          Rutt-Etra-Izer
+          Stabilize
+          Text: HTML > Blank with Web Animations
+          Text: HTML > Simple Scroll
+          Text: HTML > Two Column Scroll
+    - Added Export > Advanced > Video >Use preview scaling.
+      This is intended to provide a faster export for draft review. You should leave the export resolution set to the project resolution unless your preset or video codec dictates a resolution.
+    - Added Views > Scopes > Video Vector.
+      Note that the graticule on this is non-traditional, inspired by Alexis Van Hurkman.
+    - Added Filters > Audio > Pitch.
+      This is handy when changing the speed of a clip anywhere from 4.0x - 0.25x.
+    - Added the ability to rename clips in Properties by clicking into the header where the name is displayed.
+    - Added support for using a video clip in Transition Properties > Video.
+      This is handy to use with @jonray's matte transitions.
+    - Added a few more export presets:
+          audio/ALAC
+          audio/FLAC
+          intermediate/DNxHR HQ
+          intermediate/ProRes HQ
+          intermediate/ProRes was changed to ProRes 422
+    - Added Arabic translation.
+- Remove patch shotcut-noupdatecheck.patch no longer needed,
+  the package can be now configured to not check for updates
+
+-------------------------------------------------------------------
+Sat Feb 15 22:56:27 UTC 2020 - Pavol Cupka <palica@liguros.net>
+
+- Update to release version 19.12.31
+
+-------------------------------------------------------------------
 Sun Sep 22 20:03:12 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to release version 19.09.14

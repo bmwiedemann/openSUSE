@@ -300,4 +300,41 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>732843</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cbf509ca7b11898ab7b6eb5b5739c093</srcmd5>
+    <version>20.02.17</version>
+    <time>1583007863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release version 20.02.17
+- Upstream changes:
+  - Fixes:
+    - Fixed dropping multiple files to Playlist in a new project (broken in v19.12.31).
+    - Fixed some broken keyboard shortcuts in the Turkish translation.
+    - Fixed Properties &gt; Speed not working after a project file repair.
+    - Fixed clip selection after Insert Track or Remove Track.
+    - Fixed Playlist &gt; Add Selected to Timeline creates corrupt clips (broken in v19.12.31).
+    - Fixed Settings &gt; Display Method &gt; Software (Mesa) on Windows (broken in v19.12.31).
+    - Fixed creating a Project folder with leading or trailing spaces.
+    - Fixed saving the length property in MLT XML as a time value independent of frame rate.
+    - Fixed starting Text: Simple video filter with &quot;@&quot; shows &quot;0&quot;.
+    - Fixed seeking previous &amp; next on the first track in Keyframes where you trim a filter or use simple keyframes.
+    - Fixed an unexpected transition is created when moving a clip rightward adjacent to the next clip in Timeline (regression in v19.12.16).
+    - Fixed drag-n-drop from Source player to Timeline left player in an inconsistent state (broken in v19.09.14).
+    - Fixed an inconsistent colorspace conversion when accessing a cached image.
+    - Fixed Playlist &gt; Copy followed by a change in Properties incorrectly changes the playlist item.
+    - Fixed clicking on the rectangle control may change its size.
+    - Fixed using the LUT (3D) filter with file with extended characters in its file path on Windows.
+    - Fixed a crash when using a transition on every track at the same time.
+  - Changes:
+    - Improved the reliability of Timeline &gt; Select None.
+    - Changed Timeline &gt; Master &gt; Properties &gt; Frame rate to show 6 decimal digits.
+    - Reduced the latency of scrubbing (regression in v19.12.31).
+    - Changed the video-overlay rectangle control used in some filters to allow changing the position by dragging from anywhere inside the rectangle.
+    - To enable, one must first double-click the center circle to put it into a positioning-locked mode. Otherwise, you would be prevented from dragging the clip out of the Source player.
+    - Changed the Filters panel on macOS to prevent floating to avoid a frequently reported problem of the Filters window appearing blank/black.
+    - Changed Timeline &gt; clip context menu &gt; Detach Audio to not seek afterwards.
+    - Improved mouse wheel and trackpad behavior in Timeline.
+    - Now, you do not need to ensure the mouse pointer is over a clip, speed is reduced, and zoom keeps focal point in view. The new zoom behavior does not apply when using the option Center the Playhead in the timeline menu.</comment>
+    <requestid>780301</requestid>
+  </revision>
 </revisionlist>

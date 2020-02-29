@@ -46,3 +46,4 @@ Index: bcunit/BCUnit/Sources/Makefile.am
  
  FRAMEWORK_OBJECT_FILES_SHARED = $(FRAMEWORK_OBJECTS_SHARED)
  FRAMEWORK_COMPILE_DIRS = Framework
+

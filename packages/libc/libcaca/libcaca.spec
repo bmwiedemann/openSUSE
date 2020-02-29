@@ -1,7 +1,7 @@
 #
 # spec file for package libcaca
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 #
 %define _rev da28e9684ef445ac8d42745644336b8a75c01855
-
 Name:           libcaca
 Version:        0.99.beta19.git20171003
 Release:        0
 Summary:        Library for Colour ASCII Art, text mode graphics
 License:        WTFPL
 Group:          Development/Languages/C and C++
-Url:            http://caca.zoy.org/
+URL:            http://caca.zoy.org
 Source0:        https://github.com/cacalabs/%{name}/archive/%{_rev}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         libcaca-0.99-texbuild.patch
@@ -114,6 +113,7 @@ All that is needed to use libcaca from ruby code.
 Summary:        Colour ASCII Art Text mode graphics utilities based on libcaca
 Group:          Amusements/Toys/Graphics
 Requires:       imlib2-loaders
+Requires:       toilet
 
 %description -n caca-utils
 This package contains utilities and demonstration programs for libcaca,
@@ -167,7 +167,7 @@ export CXXFLAGS="$CXXFLAGS %{optflags}"
     --enable-plugins \
     --enable-java=no \
     --enable-python
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -195,7 +195,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/caca-config
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
-%{_mandir}/man1/caca-config.1*
+%{_mandir}/man1/caca-config.1%{?ext_man}
 %{_mandir}/man3/*
 
 %files ruby
@@ -221,11 +221,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/cacaserver
 %{_bindir}/img2txt
 %{_datadir}/libcaca
-%{_mandir}/man1/cacademo.1*
-%{_mandir}/man1/cacafire.1*
-%{_mandir}/man1/cacaview.1*
-%{_mandir}/man1/cacaplay.1*
-%{_mandir}/man1/cacaserver.1*
-%{_mandir}/man1/img2txt.1*
+%{_mandir}/man1/cacademo.1%{?ext_man}
+%{_mandir}/man1/cacafire.1%{?ext_man}
+%{_mandir}/man1/cacaview.1%{?ext_man}
+%{_mandir}/man1/cacaplay.1%{?ext_man}
+%{_mandir}/man1/cacaserver.1%{?ext_man}
+%{_mandir}/man1/img2txt.1%{?ext_man}
 
 %changelog

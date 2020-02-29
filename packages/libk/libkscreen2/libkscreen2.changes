@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:07:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * fix: handle when backend fails to load/initialize
+  * fix(kwayland): wait longer for connection timeout and retry (kde#416566)
+  * fix(kwayland): remove code with side-effects from Q_ASSERT (kde#413892)
+
+-------------------------------------------------------------------
 Tue Feb 18 14:05:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.1

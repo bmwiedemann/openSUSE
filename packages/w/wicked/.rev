@@ -1496,4 +1496,22 @@
 - dhcp4: nullify defer timer pointer when timeout (openSUSE/wicked#798,bsc#1142214)</comment>
     <requestid>755884</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b8b48042527b8f36af4d6720b9593f91</srcmd5>
+    <version>0.6.62</version>
+    <time>1583007796</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.62
+- dhcp4: discard lease on client-id mismatch (CVE-2020-7217,bsc#1160906)
+- dhcp4: free lease on response without message type (CVE-2020-7216,bsc#1160905)
+- dhcp6: don't add free'd IA to ia_pd_list on T1&gt;T2 (CVE-2019-18903,bsc#1160904)
+- dhcp6: fix use-after-free on option parsing failure (CVE-2019-18902,bsc#1160903)
+- utils: don't reject NULL var array names/keys breaking wicked duid dump
+- routes: schema fix to avoid not applying rto_min incl. new time format (bsc#1160939)
+- systemd: order start wicked after network-pre.target and openvswitch.service start
+- packaging: use pkgconfig(libsystemd) instead of systemd-devel
+- misc bug fixes by Malte Kraus including undefined behaviour, memory access alignment
+- corrections, use-after-free, missed initialization and format errors</comment>
+    <requestid>779668</requestid>
+  </revision>
 </revisionlist>

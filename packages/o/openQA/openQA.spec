@@ -65,7 +65,7 @@
 %define devel_requires %build_requires %test_requires rsync chromedriver curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1582671252.ca350bd34
+Version:        4.6.1582908813.c5b7e89c0
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -259,6 +259,7 @@ ln -s %{_datadir}/openqa/script/openqa-clone-custom-git-refspec %{buildroot}%{_b
 ln -s %{_datadir}/openqa/script/openqa-validate-yaml %{buildroot}%{_bindir}/openqa-validate-yaml
 %if %{with python_scripts}
 ln -s %{_datadir}/openqa/script/openqa-label-all %{buildroot}%{_bindir}/openqa-label-all
+ln -s %{_datadir}/openqa/script/setup-db %{buildroot}%{_bindir}/openqa-setup-db
 %endif
 
 cd %{buildroot}
@@ -521,6 +522,8 @@ fi
 
 %files local-db
 %{_unitdir}/openqa-setup-db.service
+%{_datadir}/openqa/script/setup-db
+%{_bindir}/openqa-setup-db
 
 %files bootstrap
 %{_datadir}/openqa/script/openqa-bootstrap

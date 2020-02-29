@@ -1,0 +1,432 @@
+diff -U 3 -dHrN -- a/gnuhealth-control b/gnuhealth-control
+--- a/gnuhealth-control	2019-11-20 09:16:02.000000000 +0100
++++ b/gnuhealth-control	2020-01-15 08:21:34.600157124 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ # gnuhealth-control
+ # The GNU Health control center 
+diff -U 3 -dHrN -- a/health/setup.py b/health/setup.py
+--- a/health/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health/setup.py	2020-01-15 08:25:35.736164023 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_archives/setup.py b/health_archives/setup.py
+--- a/health_archives/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_archives/setup.py	2020-01-15 08:26:14.464165130 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2008-2020 Luis Falcon <lfalcon@gnusolidario.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_caldav/setup.py b/health_caldav/setup.py
+--- a/health_caldav/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_caldav/setup.py	2020-02-27 19:27:33.986769709 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ from setuptools import setup
+ import re
+diff -U 3 -dHrN -- a/health_calendar/setup.py b/health_calendar/setup.py
+--- a/health_calendar/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_calendar/setup.py	2020-01-15 08:27:24.576167136 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_crypto/setup.py b/health_crypto/setup.py
+--- a/health_crypto/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_crypto/setup.py	2020-01-15 16:58:43.120008340 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2008-2020 Luis Falcon <lfalcon@gnusolidario.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_crypto_lab/setup.py b/health_crypto_lab/setup.py
+--- a/health_crypto_lab/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_crypto_lab/setup.py	2020-02-27 19:51:59.046896500 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_disability/setup.py b/health_disability/setup.py
+--- a/health_disability/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_disability/setup.py	2020-02-27 19:52:17.218993066 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_ems/setup.py b/health_ems/setup.py
+--- a/health_ems/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_ems/setup.py	2020-02-27 19:52:36.187094243 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_federation/setup.py b/health_federation/setup.py
+--- a/health_federation/setup.py	2019-11-20 09:17:59.000000000 +0100
++++ b/health_federation/setup.py	2020-02-27 19:52:53.827188678 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_genetics/setup.py b/health_genetics/setup.py
+--- a/health_genetics/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_genetics/setup.py	2020-02-27 19:53:22.659343707 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_genetics_uniprot/setup.py b/health_genetics_uniprot/setup.py
+--- a/health_genetics_uniprot/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_genetics_uniprot/setup.py	2020-02-27 19:53:36.787419962 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_gyneco/setup.py b/health_gyneco/setup.py
+--- a/health_gyneco/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_gyneco/setup.py	2020-02-27 19:53:52.763506413 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_history/setup.py b/health_history/setup.py
+--- a/health_history/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_history/setup.py	2020-02-27 19:54:17.283639527 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_icd10/setup.py b/health_icd10/setup.py
+--- a/health_icd10/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_icd10/setup.py	2020-02-27 19:54:49.907817420 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_icd10pcs/setup.py b/health_icd10pcs/setup.py
+--- a/health_icd10pcs/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_icd10pcs/setup.py	2020-02-27 19:55:07.219912165 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_icd9procs/setup.py b/health_icd9procs/setup.py
+--- a/health_icd9procs/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_icd9procs/setup.py	2020-02-27 19:54:36.887746320 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_icpm/setup.py b/health_icpm/setup.py
+--- a/health_icpm/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_icpm/setup.py	2020-02-27 19:55:24.908009203 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_icu/setup.py b/health_icu/setup.py
+--- a/health_icu/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_icu/setup.py	2020-02-27 19:55:39.808091133 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_imaging/setup.py b/health_imaging/setup.py
+--- a/health_imaging/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_imaging/setup.py	2020-02-27 19:55:58.520194252 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_inpatient/setup.py b/health_inpatient/setup.py
+--- a/health_inpatient/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_inpatient/setup.py	2020-02-27 19:56:11.664266833 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_inpatient_calendar/setup.py b/health_inpatient_calendar/setup.py
+--- a/health_inpatient_calendar/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_inpatient_calendar/setup.py	2020-02-27 19:56:25.716344558 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_insurance/setup.py b/health_insurance/setup.py
+--- a/health_insurance/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_insurance/setup.py	2020-02-27 19:56:43.892445292 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_iss/setup.py b/health_iss/setup.py
+--- a/health_iss/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_iss/setup.py	2020-02-27 19:56:57.320519846 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_lab/setup.py b/health_lab/setup.py
+--- a/health_lab/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_lab/setup.py	2020-02-27 19:57:52.580827797 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_lifestyle/setup.py b/health_lifestyle/setup.py
+--- a/health_lifestyle/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_lifestyle/setup.py	2020-02-27 19:58:09.516922524 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_mdg6/setup.py b/health_mdg6/setup.py
+--- a/health_mdg6/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_mdg6/setup.py	2020-02-27 19:58:22.812997001 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_ntd/setup.py b/health_ntd/setup.py
+--- a/health_ntd/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_ntd/setup.py	2020-02-27 19:58:36.285072558 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_ntd_chagas/setup.py b/health_ntd_chagas/setup.py
+--- a/health_ntd_chagas/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_ntd_chagas/setup.py	2020-02-27 19:58:49.705147916 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_ntd_dengue/setup.py b/health_ntd_dengue/setup.py
+--- a/health_ntd_dengue/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_ntd_dengue/setup.py	2020-02-27 19:59:01.953216769 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_nursing/setup.py b/health_nursing/setup.py
+--- a/health_nursing/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_nursing/setup.py	2020-02-27 19:59:18.989312662 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_ophthalmology/setup.py b/health_ophthalmology/setup.py
+--- a/health_ophthalmology/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_ophthalmology/setup.py	2020-02-27 19:59:32.617389467 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_orthanc/setup.py b/health_orthanc/setup.py
+--- a/health_orthanc/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_orthanc/setup.py	2020-02-27 19:59:44.673457486 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_pediatrics/setup.py b/health_pediatrics/setup.py
+--- a/health_pediatrics/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_pediatrics/setup.py	2020-02-27 20:00:00.521546993 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_pediatrics_growth_charts/setup.py b/health_pediatrics_growth_charts/setup.py
+--- a/health_pediatrics_growth_charts/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_pediatrics_growth_charts/setup.py	2020-02-27 20:00:17.993645808 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_pediatrics_growth_charts_who/setup.py b/health_pediatrics_growth_charts_who/setup.py
+--- a/health_pediatrics_growth_charts_who/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_pediatrics_growth_charts_who/setup.py	2020-02-27 20:00:39.961770229 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_profile/setup.py b/health_profile/setup.py
+--- a/health_profile/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_profile/setup.py	2020-02-27 20:00:58.613876020 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_qrcodes/setup.py b/health_qrcodes/setup.py
+--- a/health_qrcodes/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_qrcodes/setup.py	2020-02-27 20:01:12.265953541 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_reporting/setup.py b/health_reporting/setup.py
+--- a/health_reporting/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_reporting/setup.py	2020-02-27 20:01:27.962042755 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_services/setup.py b/health_services/setup.py
+--- a/health_services/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_services/setup.py	2020-02-27 20:01:48.934162095 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_services_lab/setup.py b/health_services_lab/setup.py
+--- a/health_services_lab/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_services_lab/setup.py	2020-02-27 20:02:00.346227101 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_socioeconomics/setup.py b/health_socioeconomics/setup.py
+--- a/health_socioeconomics/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_socioeconomics/setup.py	2020-02-27 20:02:19.330335339 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_stock/setup.py b/health_stock/setup.py
+--- a/health_stock/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_stock/setup.py	2020-02-27 20:02:32.926412935 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_surgery/setup.py b/health_surgery/setup.py
+--- a/health_surgery/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_surgery/setup.py	2020-02-27 20:02:48.950504462 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_webdav3_server/bin/gnuhealth-webdav-server b/health_webdav3_server/bin/gnuhealth-webdav-server
+--- a/health_webdav3_server/bin/gnuhealth-webdav-server	2019-11-04 21:16:31.000000000 +0100
++++ b/health_webdav3_server/bin/gnuhealth-webdav-server	2020-01-15 08:22:03.868157962 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # This file is part of Tryton.  The COPYRIGHT file at the top level of
+ # this repository contains the full copyright notices and license terms.
+ import sys
+diff -U 3 -dHrN -- a/health_webdav3_server/setup.py b/health_webdav3_server/setup.py
+--- a/health_webdav3_server/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_webdav3_server/setup.py	2020-02-27 20:03:04.450593075 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2017-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2017-2020 GNU Solidario <health@gnusolidario.org>
+diff -U 3 -dHrN -- a/health_who_essential_medicines/setup.py b/health_who_essential_medicines/setup.py
+--- a/health_who_essential_medicines/setup.py	2019-11-20 09:16:02.000000000 +0100
++++ b/health_who_essential_medicines/setup.py	2020-02-27 20:03:19.786680820 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
+ #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/scripts/demo/install_demo_database.sh b/scripts/demo/install_demo_database.sh
+--- a/scripts/demo/install_demo_database.sh	2019-11-04 18:59:44.000000000 +0100
++++ b/scripts/demo/install_demo_database.sh	2020-01-15 08:21:48.320157517 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ # Script to download/unpack and locally install the GNU Health demo database
+ 
+ URL="https://www.gnuhealth.org/downloads/postgres_dumps/gnuhealth-$1-demo.sql.gz"

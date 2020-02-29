@@ -1,0 +1,48 @@
+Index: nrpe-nrpe-3.2.1/macros/ax_nagios_get_ssl
+===================================================================
+--- nrpe-nrpe-3.2.1.orig/macros/ax_nagios_get_ssl
++++ nrpe-nrpe-3.2.1/macros/ax_nagios_get_ssl
+@@ -292,10 +292,15 @@ if test x$SSL_TYPE != xNONE; then
+ 			AC_DEFINE(USE_SSL_DH)
+ 			# Generate DH parameters
+ 			if test -f "$sslbin"; then
+-				echo ""
+-				echo "*** Generating DH Parameters for SSL/TLS ***"
+-				# awk to strip off meta data at bottom of dhparam output
+-				$sslbin dhparam -C 2048 | awk '/^-----/ {exit} {print}' > include/dh.h
++				if test -f include/dh.h ; then
++					echo ""
++					echo "*** Skipping generation of DH Parameters for SSL/TLS: include/dh.h already exists ***"
++				else
++					echo ""
++					echo "*** Generating DH Parameters for SSL/TLS ***"
++					# awk to strip off meta data at bottom of dhparam output
++					$sslbin dhparam -C 2048 | awk '/^-----/ {exit} {print}' > include/dh.h
++				fi
+ 			fi
+ 		fi
+ 	fi
+Index: nrpe-nrpe-3.2.1/configure
+===================================================================
+--- nrpe-nrpe-3.2.1.orig/configure
++++ nrpe-nrpe-3.2.1/configure
+@@ -7722,10 +7722,15 @@ fi
+ 
+ 			# Generate DH parameters
+ 			if test -f "$sslbin"; then
+-				echo ""
+-				echo "*** Generating DH Parameters for SSL/TLS ***"
+-				# awk to strip off meta data at bottom of dhparam output
+-				$sslbin dhparam -C 2048 | awk '/^-----/ {exit} {print}' > include/dh.h
++				if test -f include/dh.h ; then
++					echo ""
++					echo "*** Skipping generation of DH Parameters for SSL/TLS: include/dh.h already exists ***"
++				else
++					echo ""
++					echo "*** Generating DH Parameters for SSL/TLS ***"
++					# awk to strip off meta data at bottom of dhparam output
++					$sslbin dhparam -C 2048 | awk '/^-----/ {exit} {print}' > include/dh.h
++				fi
+ 			fi
+ 		fi
+ 	fi

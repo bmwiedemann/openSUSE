@@ -1,0 +1,19 @@
+Index: nrpe-nrpe-3.2.1/Makefile.in
+===================================================================
+--- nrpe-nrpe-3.2.1.orig/Makefile.in
++++ nrpe-nrpe-3.2.1/Makefile.in
+@@ -128,13 +128,7 @@ install-init:
+ 		elif test $(INIT_TYPE) = launchd; then\
+ 			launchctl load $(INIT_DIR)/$(INIT_FILE); \
+ 		else\
+-			if test -f /sbin/chkconfig ; then \
+-			    case "$(DESTDIR)" in */rpmbuild/*) break;; \
+-			    *)/sbin/chkconfig nrpe on;; \
+-			    esac; \
+-			else\
+-				echo "Make sure to enable the nrpe daemon";\
+-			fi;\
++			echo "Make sure to enable the nrpe daemon";\
+ 		fi;\
+ 	fi
+ 

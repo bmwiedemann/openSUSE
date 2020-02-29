@@ -3363,4 +3363,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * fix build with gcc's -fno-common option (boo#1160423)</comment>
     <requestid>765910</requestid>
   </revision>
+  <revision rev="379" vrev="3">
+    <srcmd5>859bd3b71ea4d750838db5d829144e9b</srcmd5>
+    <version>1.20.7+0</version>
+    <time>1583007810</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile: reenabled XFree86-VidModeExtension (boo#1164020)</comment>
+    <requestid>779939</requestid>
+  </revision>
 </revisionlist>

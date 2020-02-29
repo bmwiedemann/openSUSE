@@ -71,4 +71,16 @@
     <comment>- Skip one test that is flaky</comment>
     <requestid>753929</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>660eea10950cf23cbaa9a15780aebd05</srcmd5>
+    <version>3.2.0</version>
+    <time>1583007801</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Receiving DATA frames on closed (or reset) streams now properly emit a
+    WINDOW_UPDATE to keep the connection flow window topped up.
+  * h2.config.logger now uses a trace(...) function, in addition to
+    debug(...).</comment>
+    <requestid>779741</requestid>
+  </revision>
 </revisionlist>

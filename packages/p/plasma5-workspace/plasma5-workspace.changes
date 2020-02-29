@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:07:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * Use appropriate icon for unconfigured applets' "Configure..." buttons
+  * [applets/systemtray] Clip ListView in config
+  * [kcms/feedback] Increase default window height a bit more (kde#417747)
+  * fix activity runner
+- Build the KUserFeedback KCM
+
+-------------------------------------------------------------------
 Tue Feb 18 14:05:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.1

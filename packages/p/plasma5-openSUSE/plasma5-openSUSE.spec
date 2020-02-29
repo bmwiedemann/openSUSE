@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-openSUSE
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define plasma_version 5.18.1
+%define plasma_version 5.18.2
 Name:           plasma5-openSUSE
 Version:        84.87~git20190606T185118~3d37a0c
 Release:        0
 Summary:        openSUSE KDE Extension
 License:        GPL-2.0-or-later AND CC-BY-SA-4.0
 Group:          System/GUI/KDE
-Url:            https://github.com/openSUSE/plasma-openSUSE
+URL:            https://github.com/openSUSE/plasma-openSUSE
 # We use diffs to be as close to upstream as possible and get
 # fixes directly. For files that diverge too much from upstream,
 # the .tar is the right place.

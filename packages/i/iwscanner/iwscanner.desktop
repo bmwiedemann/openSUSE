@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=iwScanner
-GenericName=Scanner
-Comment=Wireless scanner for linux with an easy to use graphic interface
-Exec=iwscanner
-Icon=iwscanner
-Categories=GTK;Security;Network;Monitor;
-Type=Application
-Terminal=false

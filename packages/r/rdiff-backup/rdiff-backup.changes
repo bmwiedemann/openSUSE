@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Feb 23 10:36:23 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 1.9.1b0, third beta before 2.0.0:
+  * avoid double unquoting of increment file infos, closes #266
+  * fix some ugly bytes output in strings, closes #238
+  * improved hardink handling, Closes #239
+  * add support for SOURCE_DATE_EPOCH to override the build date
+  * add efficient sparse file handling
+- remove all (upstreamed) patches:
+  * 0001-handle-sparse-files-efficiently.patch
+  * Hardlink.py.revised-1.4.0.patch
+  * compare.py-1.4.0.patch
+  * rdiff-backup-1.9-reproducible.diff
+
+-------------------------------------------------------------------
+Fri Feb  7 08:58:30 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add rdiff-backup-1.9-reproducible.diff for reproducible build
+
+-------------------------------------------------------------------
 Sat Feb  1 09:06:26 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 1.9.0b0, second beta before 2.0.0

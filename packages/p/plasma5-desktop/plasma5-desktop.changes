@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:07:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * Calculate needsSave on checkbox toggle not on change (kde#411584)
+  * Remove attempt to start long gone baloo_file_cleaner
+  * [kcm/baloo] Clip ListView
+  * [kcm/activities] Clip ListView
+  * emojier: use proper scoping for QPixmap
+  * KCM look and feel : set proper default values for kwin kdecoration when applying global style
+  * emojier: --warnings
+  * emojier: improve the fallback mechanism to detect languages (kde#417713)
+  * emojier: properly specify the application component name to KAboutData (kde#416669)
+  * emojier: Only fit text when we know it's a very complex emoji (kde#417454)
+  * emojier: make it possible to filter by annotation
+  * [Folder view]Make shadow scale aware
+  * Set good default value for cursor theme and size in KRDB (kde#414109)
+
+-------------------------------------------------------------------
 Tue Feb 18 14:05:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.1
