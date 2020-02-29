@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:48:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Drop Jasper (i.e jpeg2k) support (boo#1130404, boo#1144260)
+  JasPer is unmaintained, CVEs are not being addressed (some issues
+  received patches submitted to the upstream github project, but are
+  not being merged, other CVEs are considered unfixable).
+
+-------------------------------------------------------------------
 Wed Dec 25 01:31:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 3.4.9

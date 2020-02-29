@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,6 @@ Patch2:         0001-Do-not-include-glx.h-when-using-GLES.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
-BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
@@ -224,6 +223,7 @@ rm -f doc/packaging.txt
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
       -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
+      -DWITH_JASPER=OFF \
 
 make %{?_smp_mflags} VERBOSE=1
 
