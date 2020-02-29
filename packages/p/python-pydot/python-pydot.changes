@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 08:02:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- We need the full graphviz-gd as otherwise it acts really weirdly
+
+-------------------------------------------------------------------
 Thu Apr  4 12:58:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one failing test:

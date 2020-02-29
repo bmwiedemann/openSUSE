@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.4.1
 Release:        0
 Summary:        Module to create (dot) graphs from Python
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/erocarrera/pydot
 Source:         https://files.pythonhosted.org/packages/source/p/pydot/pydot-%{version}.tar.gz
 # https://github.com/pydot/pydot/issues/204
@@ -36,8 +35,10 @@ BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  python-rpm-macros
 Requires:       graphviz
+Requires:       graphviz-gd
 Requires:       python-pyparsing >= 2.1.4
-Recommends:     graphviz-gd
+# we need at least some fonts
+Requires:       dejavu-fonts
 BuildArch:      noarch
 %python_subpackages
 
