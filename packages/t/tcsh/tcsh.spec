@@ -34,6 +34,7 @@ Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
 Patch7:         tcsh-6.22.02-workaround-common.patch
 Patch8:         tcsh-6.22.02-local-dotlock.dif
+Patch9:         tcsh-6.22.02-history-merge.dif
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -61,6 +62,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch6      -b .catalogs
 %patch7 -p 1 -b .workaround
 %patch8 -p 0 -b .dotlock
+%patch9 -p 0 -b .histmrg
 %patch0      -b .0
 
 %build

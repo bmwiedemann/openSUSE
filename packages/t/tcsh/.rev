@@ -721,4 +721,16 @@
   dead locks at login after a reboot to left dot locking files</comment>
     <requestid>774849</requestid>
   </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>7d9fb8e755d9db7f6f4983628489fdb3</srcmd5>
+    <version>6.22.02</version>
+    <time>1583007529</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.22.02-history-merge.dif
+  * Was mentioned in upstream mailing list 
+- Change patch tcsh-6.22.02-local-dotlock.dif
+  * Use fcntl() with F_SETLKW for locking the dot lock file its self
+    as this works mostly over NFS whereas tmpfs is local only</comment>
+    <requestid>779040</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,20 @@
+Subject: [Tcsh] tcsh 6.22.00 does not merge history (was: Re: tcsh Deadlock with SIGHUP)
+Message-ID: <20200223205556.GA2917@panix.com>
+References: <20200120140836.GA3123@panix.com>
+        <D3B9BAFA-5D5C-4023-B7E3-06D1CA429777@zoulas.com>
+
+---
+ sh.hist.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- sh.hist.c
++++ sh.hist.c	2020-02-24 12:21:37.003639844 +0000
+@@ -1295,7 +1295,7 @@ rechist(Char *fname, int ref)
+ #endif
+ 	    }
+ 	    getexit(osetexit);
+-	    if (setexit())
++	    if (!setexit())
+ 		loadhist(fname, 1);
+ 	    resexit(osetexit);
+ 	}

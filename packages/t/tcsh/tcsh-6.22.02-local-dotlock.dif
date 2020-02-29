@@ -1,82 +1,203 @@
 Avoid left over dot lock file after reboot
 
 ---
- dotlock.c |   50 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
+ dotlock.c |  124 ++++++++++++++------------------------------------------------
+ dotlock.h |    2 -
+ sh.hist.c |   11 +++--
+ 3 files changed, 36 insertions(+), 101 deletions(-)
 
 --- dotlock.c
-+++ dotlock.c	2020-02-17 11:16:22.785018224 +0000
-@@ -30,8 +30,38 @@
++++ dotlock.c	2020-02-19 12:07:22.228255145 +0000
+@@ -29,7 +29,9 @@
+ #ifndef O_SYNC
  #define O_SYNC	0
  #endif
- 
-+#if defined(__linux__)
-+#  include <sys/statfs.h>
-+#  include <unistd.h>
-+#  ifndef  TMPFS_MAGIC
-+#    define TMPFS_MAGIC 0x01021994
-+#  endif
-+#endif
-+
+-
++#include <unistd.h>
++#include <fcntl.h>
++ 
  #include "dotlock.h"
  
-+#if defined(__linux__)
-+static char *sys_tmpdir;
-+static int
-+dosys_tmpdir ()
-+{
-+	static char *shm = "/dev/shm";
-+	struct statfs fs;
-+	static int doshm;
-+
-+	if (doshm)
-+		return (sys_tmpdir != NULL);
-+
-+	doshm++;
-+
-+	if (statfs(shm, &fs) < 0 || fs.f_type != TMPFS_MAGIC || eaccess(shm, W_OK|X_OK))
-+		return 0;
-+
-+	sys_tmpdir = shm;
-+	return 1;
-+}
-+#endif
-+
  static int create_exclusive(const char *);
- /*
-  * Create a unique file. O_EXCL does not really work over NFS so we follow
-@@ -140,7 +170,17 @@ dot_lock(const char *fname, int pollinte
- 	(void)sigaddset(&nset, SIGTSTP);
- 	(void)sigaddset(&nset, SIGCHLD);
+@@ -46,77 +48,26 @@ static int create_exclusive(const char *
+ static int
+ create_exclusive(const char *fname)
+ {
+-	char path[MAXPATHLEN], hostname[MAXHOSTNAMELEN + 1];
+-	const char *ptr;
+-	struct timeval tv;
+-	pid_t pid;
+-	size_t ntries, cookie;
+-	int fd, serrno;
+-	struct stat st;
+-
+-	(void)gettimeofday(&tv, NULL);
+-	(void)gethostname(hostname, sizeof(hostname));
+-	hostname[sizeof(hostname) - 1] = '\0';
+-	pid = getpid();
+-
+-	cookie = pid ^ tv.tv_usec;
+-
+-	/*
+-	 * We generate a semi-unique filename, from hostname.(pid ^ usec)
+-	 */
+-	if ((ptr = strrchr(fname, '/')) == NULL)
+-		ptr = fname;
+-	else
+-		ptr++;
+-
+-	(void)snprintf(path, sizeof(path), "%.*s.%s.%lx",
+-	    (int)(ptr - fname), fname, hostname, (u_long)cookie);
+-
+-	/*
+-	 * We try to create the unique filename.
+-	 */
+-	for (ntries = 0; ntries < 5; ntries++) {
+-		fd = open(path, O_WRONLY|O_CREAT|O_TRUNC|O_EXCL|O_SYNC, 0);
+-		if (fd != -1) {
+-			(void)close(fd);
++    	struct flock fl = { F_WRLCK, SEEK_SET, 0, 0, getpid()};
++	int fd, retval;
++
++	fd = open(fname, O_WRONLY|O_CREAT|O_SYNC, S_IWUSR);
++	if (fd < 0)
++		return -1;
++	do {
++		int ret;
++		retval = fcntl(fd, F_SETLKW, &fl);
++		if (retval < 0) {
++			if (errno == EINTR)
++				continue;
++			close(fd);
++			fd = -1;
+ 			break;
+ 		}
+-		else if (errno == EEXIST)
+-			continue;
+-		else
+-			return -1;
+-	}
+-
+-	/*
+-	 * We link the path to the name
+-	 */
+-	if (link(path, fname) == -1)
+-		goto bad;
+-
+-	/*
+-	 * Note that we stat our own exclusively created name, not the
+-	 * destination, since the destination can be affected by others.
+-	 */
+-	if (stat(path, &st) == -1)
+-		goto bad;
+-
+-	(void)unlink(path);
+-
+-	/*
+-	 * If the number of links was two (one for the unique file and one
+-	 * for the lock), we've won the race
+-	 */
+-	if (st.st_nlink != 2) {
+-		errno = EEXIST;
+-		return -1;
+-	}
+-	return 0;
++	} while (retval < 0);
  
-+#if defined(__linux__)
-+	const char *ptr;
-+	if ((ptr = strrchr(fname, '/')) && dosys_tmpdir()) {
-+		ptr++;
-+		fname = ptr;
-+		(void)snprintf(path, sizeof(path), "%s/%s.lock", sys_tmpdir, fname);
-+	} else
-+		(void)snprintf(path, sizeof(path), "%s.lock", fname);
-+#else
+-bad:
+-	serrno = errno;
+-	(void)unlink(path);
+-	errno = serrno;
+-	return -1;
++	(void)unlink(fname);
++	return fd;
+ }
+ 
+ /*
+@@ -143,37 +94,18 @@ dot_lock(const char *fname, int pollinte
  	(void)snprintf(path, sizeof(path), "%s.lock", fname);
-+#endif
  
  	retval = -1;
- 	for (;;) {
-@@ -174,6 +214,16 @@ dot_unlock(const char *fname)
- {
- 	char path[MAXPATHLEN];
- 
-+#if defined(__linux__)
-+	const char *ptr;
-+	if ((ptr = strrchr(fname, '/')) && dosys_tmpdir()) {
-+		ptr++;
-+		fname = ptr;
-+		(void)snprintf(path, sizeof(path), "%s/%s.lock", sys_tmpdir, fname);
-+	} else
-+		(void)snprintf(path, sizeof(path), "%s.lock", fname);
-+#else
- 	(void)snprintf(path, sizeof(path), "%s.lock", fname);
-+#endif
- 	(void)unlink(path);
+-	for (;;) {
+-		handle_pending_signals();
+-		(void)sigprocmask(SIG_BLOCK, &nset, &oset);
+-		if (create_exclusive(path) != -1) {
+-			(void)sigprocmask(SIG_SETMASK, &oset, NULL);
+-			retval = 0;
+-			break;
+-		}
+-		else
+-			(void)sigprocmask(SIG_SETMASK, &oset, NULL);
+-
+-		if (errno != EEXIST)
+-			break;
+-
+-		if (pollinterval) {
+-			if (pollinterval == -1) {
+-				errno = EEXIST;
+-				break;
+-			}
+-			(void)usleep((unsigned int)pollinterval * 1000);
+-		}
+-	}
++	handle_pending_signals();
++	(void)sigprocmask(SIG_BLOCK, &nset, &oset);
++	retval = create_exclusive(path);
++	(void)sigprocmask(SIG_SETMASK, &oset, NULL);
+ 	handle_pending_signals();
+ 	return retval;
  }
+ 
+ void
+-dot_unlock(const char *fname)
++dot_unlock(const int fd)
+ {
+-	char path[MAXPATHLEN];
+-
+-	(void)snprintf(path, sizeof(path), "%s.lock", fname);
+-	(void)unlink(path);
++    	struct flock fl = { F_UNLCK, SEEK_SET, 0, 0, getpid()};
++	fcntl(fd, F_SETLK, &fl);
++	close(fd);
+ }
+--- dotlock.h
++++ dotlock.h	2020-02-19 09:40:16.034422159 +0000
+@@ -30,6 +30,6 @@
+  * pollinterval -- Interval (miliseconds) to check for lock, -1 return
+  */
+ int dot_lock(const char *fname, int pollinterval);
+-void dot_unlock(const char *fname);
++void dot_unlock(const int fd);
+ 
+ #endif /* #ifndef _DOTLOCK_H_ */
+--- sh.hist.c
++++ sh.hist.c	2020-02-19 09:48:57.640589111 +0000
+@@ -1209,9 +1209,11 @@ fmthist(int fmt, ptr_t ptr)
+ }
+ 
+ static void
+-dotlock_cleanup(void* lockpath)
++dotlock_cleanup(void* xfdp)
+ {
+-	dot_unlock((char*)lockpath);
++	int *fdp;
++	fdp = xfdp;
++	dot_unlock(*fdp);
+ }
+ 
+ /* Save history before exiting the shell. */
+@@ -1284,11 +1286,12 @@ rechist(Char *fname, int ref)
+ 	    jmp_buf_t osetexit;
+ 	    if (lock) {
+ #ifndef WINNT_NATIVE
++		int fdlk;
+ 		char *lockpath = strsave(short2str(fname));
+ 		cleanup_push(lockpath, xfree);
+ 		/* Poll in 100 miliseconds interval to obtain the lock. */
+-		if ((dot_lock(lockpath, 100) == 0))
+-		    cleanup_push(lockpath, dotlock_cleanup);
++		if ((fdlk = dot_lock(lockpath, 100)) != -1)
++		    cleanup_push(&fdlk, dotlock_cleanup);
+ #endif
+ 	    }
+ 	    getexit(osetexit);
