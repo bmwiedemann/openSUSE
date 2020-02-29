@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.19.16
+Version:        9.20.1
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -212,12 +212,16 @@ BuildRequires:  dracut
 Requires:       bc
 Requires:       cryptsetup
 %if 0%{?fedora} || 0%{?rhel} || 0%{?ubuntu} >= 1804 || 0%{?debian} >= 9
+%if 0%{?rhel} && 0%{?rhel} < 8
 Requires:       btrfs-progs
+%else
+Recommends:     btrfs-progs
+%endif
 Requires:       gdisk
 Requires:       dracut-network
 %else
 %if 0%{?debian} || 0%{?ubuntu}
-Requires:       btrfs-tools
+Recommends:     btrfs-tools
 Requires:       gdisk
 %else
 Requires:       btrfsprogs
@@ -284,12 +288,12 @@ License:        GPL-3.0-or-later
 Group:          %{sysgroup}
 
 %description -n dracut-kiwi-oem-dump
-This package contains the kiwi-dump dracut module which is
-used to install an oem image onto a target disk. It implements
-a simple installer which allows for user selected target disk
-or unattended installation to target. The source of the image
-to install could be either from media(CD/DVD/USB) or from
-remote
+This package contains the kiwi-dump and kiwi-dump-reboot dracut
+modules which is used to install an oem image onto a target disk.
+It implements a simple installer which allows for user selected
+target disk or unattended installation to target. The source of
+the image to install could be either from media(CD/DVD/USB) or
+from remote
 
 %package -n dracut-kiwi-live
 Summary:        KIWI - Dracut module for iso(live) image type
@@ -439,6 +443,7 @@ fi
 
 %files -n dracut-kiwi-oem-dump
 %{_usr}/lib/dracut/modules.d/90kiwi-dump
+%{_usr}/lib/dracut/modules.d/99kiwi-dump-reboot
 
 %files -n dracut-kiwi-live
 %{_usr}/lib/dracut/modules.d/90kiwi-live

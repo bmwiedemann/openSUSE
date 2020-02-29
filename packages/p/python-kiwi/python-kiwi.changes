@@ -1,7 +1,181 @@
 -------------------------------------------------------------------
+Wed Feb 19 18:01:58 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.0 → 9.20.1
+
+-------------------------------------------------------------------
+Wed Feb 19 16:51:56 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added serial console in centos integration test
+
+  For use with Kanku we enable the serial console for the
+  centos integration test image
+
+-------------------------------------------------------------------
+Wed Feb 19 10:37:19 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make PrEP partition known to GPT partitioner
+
+-------------------------------------------------------------------
+Wed Feb 19 10:24:41 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Use GPT table for Power ofw firmware
+
+  GPT partition table should be preferred for power systems
+  these days. Related to Issue #1325
+
+-------------------------------------------------------------------
+Wed Feb 19 09:40:50 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- target blocksize for IBM Power8 systems is 4k
+
+  Adapt the oem image integration test for bare metal to use
+  4k blocksize
+
+-------------------------------------------------------------------
+Tue Feb 18 10:38:30 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixup documentation for consistency
+
+  There is the legacy kiwi version and there is this kiwi(next generation).
+  From a documentation perspective there are several inconsistencies that
+  could confuse users. This commit makes the name for KIWI-NG consistent
+  across the entire documentation. At places where we point to older
+  documentation we use the term Legacy KIWI and a link to the documentation
+  that covers this part. All this is needed in preparation to cleanup the
+  documentation situation for the SUSE documentation but with respect to
+  the upstream doc sources, their layout and markup.
+
+-------------------------------------------------------------------
+Mon Feb 17 16:58:56 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Do not create empty macros file
+
+  This commit makes sure to empty RPM macros files are created during
+  the build. Additionally it also ensures that no needless `rm` and `mkdir`
+  calls are done.
+
+  Fixes #1316
+
+-------------------------------------------------------------------
+Mon Feb 17 16:02:46 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Turn btrfs requirement into a recommend
+
+  Only on suse systems btrfs is eligable to be a required package
+  because it's the default filesystem of that distribution. In any
+  other case it should be a recommended package. As a side effect
+  of this change we will be able to activate the CentOS-8 build
+  target
+
+-------------------------------------------------------------------
+Sat Feb 15 15:46:21 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.19.16 → 9.20.0
+
+-------------------------------------------------------------------
+Thu Feb 13 16:03:42 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Fix append file for PXE
+
+  This commit fixes a regression introduced in 141f384e. With this commit
+  the append file is only added to the PXE tarball only when it is
+  created.
+
+-------------------------------------------------------------------
+Tue Feb 11 19:04:19 CET 2020 - Al <alan.cheung@multapplied.net>
+
+- Split kiwi-dump into 2 modules to allow inserting a module after the image dump and before system reboot
+
+-------------------------------------------------------------------
+Tue Feb 11 13:14:34 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Addded doc_suse tox target to build docbook target
+
+  SUSE documentation is based on docbook or asciidoc. The kiwi
+  documentation is maintained along with the code and uses the
+  sphinx system and therefore ReST as markup language. We would
+  like to keep one source and don't want to move to another markup
+  language. Thus the sources needs to be structured in a way that
+  allows translation into sphinx supported targets as well as
+  into SUSE docbook style. This commit changes the documentation
+  structure in a way that both is possible. With the use of Sphinx
+  XML and rstxml2docbook the ReST docs are converted into docbook.
+  From there the SUSE daps tool can create SUSE documentation
+
+-------------------------------------------------------------------
+Mon Feb 10 09:34:07 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Move gitlab stages to use gitlab registry
+
+  The kiwi-ci-containers project on gitlab now builds all
+  containers that are needed to run all type of tests we
+  have in the gitlab pipeline for kiwi. This commit moves
+  the tests to fetch the containers from the gitlab
+  registry and avoids any requirement to install packages
+  prior to running the tests. This will speedup the
+  overall test time and makes the system also more robust
+  in case the repo servers hosting the packages can't
+  be accessed for some reason
+
+-------------------------------------------------------------------
+Sun Feb 09 19:21:14 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed ISO creation on ppc
+
+  On the ppc architecture the isolinux path was chosen which
+  is wrong. This patch fixes the ISO creation to use the grub
+  path
+
+-------------------------------------------------------------------
+Sun Feb 09 17:42:28 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added suse OEM ppc integration test
+
+  Added obs integration test for building a simple disk image
+  to be started in a VM on power. Related to Issue #1325
+
+-------------------------------------------------------------------
+Fri Feb 07 14:46:36 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Move gitlab build_doc target to gitlab registry
+
+  Use the container from the kiwi-ci-containers project to
+  run the build_doc target
+
+-------------------------------------------------------------------
+Fri Feb 07 09:49:32 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Delete use of ifplugd in integration tests
+
+  ifplugd was dropped from the factory tree and that change
+  needs to be addressed in the integration tests to let
+  them build again
+
+-------------------------------------------------------------------
+Thu Feb 06 10:25:34 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added ppc integration test links
+
+  Added ppc integration test links to the overview page of
+  the kiwi documentation. Related to Issue #1325
+
+-------------------------------------------------------------------
 Thu Feb 06 10:07:45 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.19.15 → 9.19.16
+
+-------------------------------------------------------------------
+Wed Feb 05 18:47:35 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Add .append file for PXE images
+
+  This commit creates the .append file for PXE images. This file
+  is only created for initrd based images and includes the
+  UUID of the rootfs and any parameter added by the user within
+  the 'kernelcmdline' attribute.
+
+  Fixes #1327
 
 -------------------------------------------------------------------
 Wed Feb 05 17:11:07 CET 2020 - Marcus Schäfer <ms@suse.de>
