@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 23 22:21:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.98
+  * Updated the WS-Security and WS-Trust APIs that use SAML with
+    higher precision timestamps in microseconds, using the
+    `custom/struct_timeval.h` serializer for `xsd__dateTime`. The
+    WS-Security and WS-Trust updates require compiling and
+    linking with `custom/struct_timeval.c`.
+  * Fixed an issue with soapcpp2 code generation of `wchar_t*`
+    serializers when combined with a custom serializer with base
+    type `wchar_t*`, i.e. when `extern typedef wchar_t* name` is
+    declared.
+  * Fixed an issue with soapcpp2 code generation when an element
+    tag names starts with an underscore and the element is
+    namespace qualified.
+
+-------------------------------------------------------------------
 Sun Jan 12 22:44:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Temporarily work around -fno-common build failure [boo#1160267].

@@ -521,4 +521,12 @@
     <comment>- Temporarily work around -fno-common build failure [boo#1160267].</comment>
     <requestid>763724</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>79f7a6eb7b4e5974913f6d23ee68dd7b</srcmd5>
+    <version>2.8.98</version>
+    <time>1583007501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8.98</comment>
+    <requestid>778839</requestid>
+  </revision>
 </revisionlist>
