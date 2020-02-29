@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:58:23 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.2
+  - Use full names for zypper options [bsc#1164543]
+  - Ignore /var/lib/rpm in shadowed file output
+  - Optimize create-dirs-from-rpmdb
+
+-------------------------------------------------------------------
 Tue Jan  7 10:52:39 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.20.1

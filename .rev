@@ -445,4 +445,16 @@
 </comment>
     <requestid>761568</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9233984178e7ee1c317a1755ce4e0926</srcmd5>
+    <version>2.20.2</version>
+    <time>1583007703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.2
+  - Use full names for zypper options [bsc#1164543]
+  - Ignore /var/lib/rpm in shadowed file output
+  - Optimize create-dirs-from-rpmdb
+</comment>
+    <requestid>779347</requestid>
+  </revision>
 </revisionlist>
