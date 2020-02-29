@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:56:16 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Fixed one instance where the previous change corrupted the
+  exit status of a command.
+  Redirected two error messages to stderr.
+  [bsc#1164068,
+   0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch]
+
+-------------------------------------------------------------------
 Wed Jan 15 08:37:36 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - * Deal with error messages returned sometimes by evaluation
