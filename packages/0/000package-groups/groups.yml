@@ -386,6 +386,8 @@ opensuse_microos:
   - grub2-arm64-efi: [aarch64]
 
 opensuse_kubic:
+  - patterns-microos-desktop-kde: [locked]
+  - patterns-microos-desktop-gnome: [locked]
   - patterns-containers-kubeadm: [aarch64,x86_64]
   - patterns-containers-container_runtime_kubernetes: [aarch64,x86_64]
   - patterns-containers-container_runtime: [aarch64,x86_64]

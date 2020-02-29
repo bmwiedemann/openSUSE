@@ -758,4 +758,12 @@ remove obsolete _opt patterns</comment>
     <time>1582726407</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="107" vrev="105">
+    <srcmd5>0db98679533ea6cf2c0a7651afac6f3a</srcmd5>
+    <version>unknown</version>
+    <time>1583007533</time>
+    <user>dimstar_suse</user>
+    <comment>Prevent MicroOS Desktops from being added to Kubic media</comment>
+    <requestid>779084</requestid>
+  </revision>
 </revisionlist>
