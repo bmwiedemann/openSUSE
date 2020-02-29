@@ -666,4 +666,16 @@
     <comment></comment>
     <requestid>757448</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d19c37f6d9a9b171b83579d92e20d2c0</srcmd5>
+    <version>2.23.0</version>
+    <time>1583007492</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.23.0
+- dropped merged_pr_5049.patch
+- refreshed requests-no-hardcoded-version.patch 
+ * Remove defunct reference to prefetch in Session __attrs__
+ * Requests no longer outputs password in basic auth usage warning</comment>
+    <requestid>778804</requestid>
+  </revision>
 </revisionlist>

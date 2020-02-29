@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests%{psuffix}
-Version:        2.22.0
+Version:        2.23.0
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -36,7 +36,6 @@ Source:         https://files.pythonhosted.org/packages/source/r/requests/reques
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
 Patch1:         pr_5251-pytest5.patch
-Patch2:         merged_pr_5049.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

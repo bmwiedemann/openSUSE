@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:19:16 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.23.0
+- dropped merged_pr_5049.patch
+- refreshed requests-no-hardcoded-version.patch 
+ * Remove defunct reference to prefetch in Session __attrs__
+ * Requests no longer outputs password in basic auth usage warning
+
+-------------------------------------------------------------------
 Sat Dec 14 22:48:50 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove python-urllib3, python-certifi and ca-certificates from
