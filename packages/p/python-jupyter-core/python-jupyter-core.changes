@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:37:51 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.6.3
+  * Changed windows secure_write path to skip all filesystem
+    permission checks when running in insecure mode. Too many
+    exception paths existed for mounted file systems to reliably
+    try to set them before opting out with the insecure write
+    pattern.
+- Update to 4.6.2
+  * Add ability to allow insecure writes with
+    JUPYTER_ALLOW_INSECURE_WRITES environement variable.
+  * Docs typo and build fixes
+  * Added python 3.7 and 3.8 builds to testing
+- Implement tests via multibuild
+- Drop doc subpackage.  This was only around to resolve dependency
+  cycles in testing, which the multibuild now does.  Keeping up
+  with rapid changes in readthedocs was becoming difficult.
+
+-------------------------------------------------------------------
 Tue Nov 12 15:54:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.6.1
