@@ -66,4 +66,14 @@
   * Fixes for python 3.8</comment>
     <requestid>729748</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d7330ace38bbc8f49bb03561e7fc5cd</srcmd5>
+    <version>1.15.0</version>
+    <time>1583007528</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.0
+- last with python2
+- Improved output on check command</comment>
+    <requestid>779031</requestid>
+  </revision>
 </revisionlist>
