@@ -16,8 +16,10 @@
 #
 
 
+%define sover   2
+
 Name:           libinstpatch
-Version:        1.1.0
+Version:        1.1.3
 Release:        0
 Summary:        MIDI instrument patch library
 License:        LGPL-2.1-only
@@ -27,8 +29,6 @@ URL:            http://www.swamiproject.org/
 # sh libinstpatch-snapshot.sh latest
 Source0:        libinstpatch-%{version}.tar.gz
 Source99:       baselibs.conf
-# .pc file fixes. Patch sent upstream via their mailing list
-Patch0:         libinstpatch-cmake-fixes.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
@@ -38,11 +38,11 @@ BuildRequires:  pkgconfig(sndfile)
 libInstPatch is a library for processing digital sample based MIDI
 instrument "patch" files.
 
-%package -n libinstpatch-1_0-1
+%package -n libinstpatch-1_0-%{sover}
 Summary:        Libinstpatch library
 Group:          System/Libraries
 
-%description -n libinstpatch-1_0-1
+%description -n libinstpatch-1_0-%{sover}
 libInstPatch stands for lib-Instrument-Patch and is a library for processing
 digital sample based MIDI instrument "patch" files. The types of files
 libInstPatch supports are used for creating instrument sounds for wavetable
@@ -54,14 +54,13 @@ This package contains the library of %{name}.
 %package devel
 Summary:        Development package for %{name}
 Group:          Development/Languages/C and C++
-Requires:       libinstpatch-1_0-1 = %{version}
+Requires:       libinstpatch-1_0-%{sover} = %{version}
 
 %description devel
 This package includes the header files for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .pkgconfig -F24
 
 %build
 %cmake
@@ -70,10 +69,10 @@ make %{?_smp_mflags}
 %install
 %cmake_install
 
-%post -n libinstpatch-1_0-1 -p /sbin/ldconfig
-%postun -n libinstpatch-1_0-1 -p /sbin/ldconfig
+%post -n libinstpatch-1_0-%{sover} -p /sbin/ldconfig
+%postun -n libinstpatch-1_0-%{sover} -p /sbin/ldconfig
 
-%files -n libinstpatch-1_0-1
+%files -n libinstpatch-1_0-%{sover}
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/%{name}*.so.*
