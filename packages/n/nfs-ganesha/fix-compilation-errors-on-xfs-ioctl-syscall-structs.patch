@@ -1,0 +1,46 @@
+From 9534ade9929a143f85ad99e12786ab1a572f9233 Mon Sep 17 00:00:00 2001
+From: Anthony Iliopoulos <ailiopoulos@suse.com>
+Date: Tue, 4 Feb 2020 21:50:25 +0100
+Subject: [PATCH] Fix compilation errors on xfs ioctl syscall structs
+
+Upstream xfsprogs has removed some typedef on bulk requst ioctls as of
+commit b46789e2 ("xfs: remove various bulk request typedef usage"), and
+as such compilation fails with xfsprogs headers >= v5.3.0. Replace
+typedef declarations with their corresponding struct types and unbreak
+compilation.
+
+Change-Id: Ibb5be001b73c5d11e3f879f632b73687909f6ff9
+Signed-off-by: Anthony Iliopoulos <ailiopoulos@suse.com>
+---
+ src/FSAL/FSAL_VFS/xfs/handle_syscalls.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/FSAL/FSAL_VFS/xfs/handle_syscalls.c b/src/FSAL/FSAL_VFS/xfs/handle_syscalls.c
+index 2f85eac99..f0975bab6 100644
+--- a/FSAL/FSAL_VFS/xfs/handle_syscalls.c
++++ b/FSAL/FSAL_VFS/xfs/handle_syscalls.c
+@@ -75,9 +75,10 @@ void display_xfs_handle(struct display_buffer *dspbuf,
+ 		}							\
+ 	} while (0)
+ 
+-static int xfs_fsal_bulkstat_inode(int fd, xfs_ino_t ino, xfs_bstat_t *bstat)
++static int xfs_fsal_bulkstat_inode(int fd, xfs_ino_t ino,
++		struct xfs_bstat *bstat)
+ {
+-	xfs_fsop_bulkreq_t bulkreq;
++	struct xfs_fsop_bulkreq bulkreq;
+ 	__u64 i = ino;
+ 
+ 	bulkreq.lastip = &i;
+@@ -89,7 +90,7 @@ static int xfs_fsal_bulkstat_inode(int fd, xfs_ino_t ino, xfs_bstat_t *bstat)
+ 
+ static int xfs_fsal_inode2handle(int fd, ino_t ino, vfs_file_handle_t *fh)
+ {
+-	xfs_bstat_t bstat;
++	struct xfs_bstat bstat;
+ 	xfs_handle_t *hdl = (xfs_handle_t *) fh->handle_data;
+ 	void *data;
+ 	size_t sz;
+-- 
+2.16.4
+
