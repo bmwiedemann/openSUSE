@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 26 10:33:47 UTC 2020 - pgajdos@suse.com
+
+- use r1874196 [SLE-7653]
+- modified patches
+  % apache2-load-private-keys-from-pkcs11.patch (upstream 2.4.x port)
+- deleted patches
+  - apache2-load-certificates-from-pkcs11.patch (merged to above)
+
+-------------------------------------------------------------------
+Tue Feb 18 12:49:55 UTC 2020 - pgajdos@suse.com
+
+- require just libbrotli-devel
+
+-------------------------------------------------------------------
+Thu Feb 13 18:38:57 UTC 2020 - pgajdos@suse.com
+
+- build mod_proxy_http2 extension
+
+-------------------------------------------------------------------
+Wed Feb 12 13:13:05 UTC 2020 - pgajdos@suse.com
+
+- fix build for older distributions
+
+-------------------------------------------------------------------
 Fri Jan 31 18:22:09 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - define DEFAULT_LISTENBACKLOG=APR_INT32_MAX. We want apache

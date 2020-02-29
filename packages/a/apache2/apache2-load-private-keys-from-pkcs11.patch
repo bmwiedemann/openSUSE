@@ -1,14 +1,25 @@
 Index: httpd-2.4.41/modules/ssl/ssl_engine_config.c
 ===================================================================
 --- httpd-2.4.41.orig/modules/ssl/ssl_engine_config.c	2018-10-18 12:06:37.000000000 +0200
-+++ httpd-2.4.41/modules/ssl/ssl_engine_config.c	2019-10-21 21:20:32.102340905 +0200
-@@ -932,7 +932,9 @@ const char *ssl_cmd_SSLCertificateKeyFil
++++ httpd-2.4.41/modules/ssl/ssl_engine_config.c	2020-02-26 11:10:32.727187775 +0100
+@@ -916,7 +916,9 @@ const char *ssl_cmd_SSLCertificateFile(c
+     SSLSrvConfigRec *sc = mySrvConfig(cmd->server);
+     const char *err;
+ 
+-    if ((err = ssl_cmd_check_file(cmd, &arg))) {
++    /* Only check for non-ENGINE based certs. */
++    if (!modssl_is_engine_id(arg)
++        && (err = ssl_cmd_check_file(cmd, &arg))) {
+         return err;
+     }
+ 
+@@ -932,7 +934,9 @@ const char *ssl_cmd_SSLCertificateKeyFil
      SSLSrvConfigRec *sc = mySrvConfig(cmd->server);
      const char *err;
  
 -    if ((err = ssl_cmd_check_file(cmd, &arg))) {
 +    /* Check keyfile exists for non-ENGINE keys. */
-+    if (!modssl_is_engine_key(arg)
++    if (!modssl_is_engine_id(arg)
 +        && (err = ssl_cmd_check_file(cmd, &arg))) {
          return err;
      }
@@ -16,17 +27,28 @@ Index: httpd-2.4.41/modules/ssl/ssl_engine_config.c
 Index: httpd-2.4.41/modules/ssl/ssl_engine_init.c
 ===================================================================
 --- httpd-2.4.41.orig/modules/ssl/ssl_engine_init.c	2019-08-06 14:16:14.000000000 +0200
-+++ httpd-2.4.41/modules/ssl/ssl_engine_init.c	2019-10-21 21:20:32.102340905 +0200
-@@ -1247,6 +1247,8 @@ static apr_status_t ssl_init_server_cert
++++ httpd-2.4.41/modules/ssl/ssl_engine_init.c	2020-02-26 11:10:32.727187775 +0100
+@@ -1247,12 +1247,18 @@ static apr_status_t ssl_init_server_cert
                  (certfile = APR_ARRAY_IDX(mctx->pks->cert_files, i,
                                            const char *));
           i++) {
 +        EVP_PKEY *pkey;
++        const char *engine_certfile = NULL;
 +
          key_id = apr_psprintf(ptemp, "%s:%d", vhost_id, i);
  
          ERR_clear_error();
-@@ -1281,12 +1283,26 @@ static apr_status_t ssl_init_server_cert
+ 
+         /* first the certificate (public key) */
+-        if (mctx->cert_chain) {
++        if (modssl_is_engine_id(certfile)) {
++            engine_certfile = certfile;
++        }
++        else if (mctx->cert_chain) {
+             if ((SSL_CTX_use_certificate_file(mctx->ssl_ctx, certfile,
+                                               SSL_FILETYPE_PEM) < 1)) {
+                 ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(02561)
+@@ -1281,12 +1287,46 @@ static apr_status_t ssl_init_server_cert
  
          ERR_clear_error();
  
@@ -34,13 +56,30 @@ Index: httpd-2.4.41/modules/ssl/ssl_engine_init.c
 -                                         SSL_FILETYPE_PEM) < 1) &&
 -            (ERR_GET_FUNC(ERR_peek_last_error())
 -                != X509_F_X509_CHECK_PRIVATE_KEY)) {
-+        if (modssl_is_engine_key(keyfile)) {
++        if (modssl_is_engine_id(keyfile)) {
 +            apr_status_t rv;
 +
-+            if ((rv = modssl_load_engine_pkey(s, ptemp, keyfile, &pkey))) {
++            cert = NULL;
++            
++            if ((rv = modssl_load_engine_keypair(s, ptemp, vhost_id,
++                                                 engine_certfile, keyfile,
++                                                 &cert, &pkey))) {
 +                return rv;
 +            }
 +
++            if (cert) {
++                if (SSL_CTX_use_certificate(mctx->ssl_ctx, cert) < 1) {
++                    ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10137)
++                                 "Failed to configure engine certificate %s, check %s",
++                                 key_id, certfile);
++                    ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++                    return APR_EGENERAL;
++                }
++
++                /* SSL_CTX now owns the cert. */
++                X509_free(cert);
++            }                    
++            
 +            if (SSL_CTX_use_PrivateKey(mctx->ssl_ctx, pkey) < 1) {
 +                ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10130)
 +                             "Failed to configure private key %s from engine",
@@ -48,6 +87,9 @@ Index: httpd-2.4.41/modules/ssl/ssl_engine_init.c
 +                ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
 +                return APR_EGENERAL;
 +            }
++
++            /* SSL_CTX now owns the key */
++            EVP_PKEY_free(pkey);
 +        }
 +        else if ((SSL_CTX_use_PrivateKey_file(mctx->ssl_ctx, keyfile,
 +                                              SSL_FILETYPE_PEM) < 1)
@@ -58,99 +100,511 @@ Index: httpd-2.4.41/modules/ssl/ssl_engine_init.c
              const unsigned char *ptr;
  
              ERR_clear_error();
+@@ -1372,8 +1412,9 @@ static apr_status_t ssl_init_server_cert
+     /*
+      * Try to read DH parameters from the (first) SSLCertificateFile
+      */
+-    if ((certfile = APR_ARRAY_IDX(mctx->pks->cert_files, 0, const char *)) &&
+-        (dhparams = ssl_dh_GetParamFromFile(certfile))) {
++    certfile = APR_ARRAY_IDX(mctx->pks->cert_files, 0, const char *);
++    if (certfile && !modssl_is_engine_id(certfile)
++        && (dhparams = ssl_dh_GetParamFromFile(certfile))) {
+         SSL_CTX_set_tmp_dh(mctx->ssl_ctx, dhparams);
+         ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, s, APLOGNO(02540)
+                      "Custom DH parameters (%d bits) for %s loaded from %s",
+@@ -1385,10 +1426,10 @@ static apr_status_t ssl_init_server_cert
+     /*
+      * Similarly, try to read the ECDH curve name from SSLCertificateFile...
+      */
+-    if ((certfile != NULL) && 
+-        (ecparams = ssl_ec_GetParamFromFile(certfile)) &&
+-        (nid = EC_GROUP_get_curve_name(ecparams)) &&
+-        (eckey = EC_KEY_new_by_curve_name(nid))) {
++    if (certfile && !modssl_is_engine_id(certfile)
++        && (ecparams = ssl_ec_GetParamFromFile(certfile))
++        && (nid = EC_GROUP_get_curve_name(ecparams)) 
++        && (eckey = EC_KEY_new_by_curve_name(nid))) {
+         SSL_CTX_set_tmp_ecdh(mctx->ssl_ctx, eckey);
+         ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, s, APLOGNO(02541)
+                      "ECDH curve %s for %s specified in %s",
 Index: httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c
 ===================================================================
 --- httpd-2.4.41.orig/modules/ssl/ssl_engine_pphrase.c	2018-12-11 15:14:40.000000000 +0100
-+++ httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c	2019-10-21 21:20:32.102340905 +0200
-@@ -614,3 +614,52 @@ int ssl_pphrase_Handle_CB(char *buf, int
++++ httpd-2.4.41/modules/ssl/ssl_engine_pphrase.c	2020-02-26 11:10:32.727187775 +0100
+@@ -143,8 +143,6 @@ apr_status_t ssl_load_encrypted_pkey(ser
+     const char *key_id = asn1_table_vhost_key(mc, p, sc->vhost_id, idx);
+     EVP_PKEY *pPrivateKey = NULL;
+     ssl_asn1_t *asn1;
+-    unsigned char *ucp;
+-    long int length;
+     int nPassPhrase = (*pphrases)->nelts;
+     int nPassPhraseRetry = 0;
+     apr_time_t pkey_mtime = 0;
+@@ -221,7 +219,7 @@ apr_status_t ssl_load_encrypted_pkey(ser
+          * is not empty. */
+         ERR_clear_error();
+ 
+-        pPrivateKey = modssl_read_privatekey(ppcb_arg.pkey_file, NULL,
++        pPrivateKey = modssl_read_privatekey(ppcb_arg.pkey_file,
+                                              ssl_pphrase_Handle_CB, &ppcb_arg);
+         /* If the private key was successfully read, nothing more to
+            do here. */
+@@ -351,19 +349,12 @@ apr_status_t ssl_load_encrypted_pkey(ser
+         nPassPhrase++;
+     }
+ 
+-    /*
+-     * Insert private key into the global module configuration
+-     * (we convert it to a stand-alone DER byte sequence
+-     * because the SSL library uses static variables inside a
+-     * RSA structure which do not survive DSO reloads!)
+-     */
+-    length = i2d_PrivateKey(pPrivateKey, NULL);
+-    ucp = ssl_asn1_table_set(mc->tPrivateKey, key_id, length);
+-    (void)i2d_PrivateKey(pPrivateKey, &ucp); /* 2nd arg increments */
++    /* Cache the private key in the global module configuration so it
++     * can be used after subsequent reloads. */
++    asn1 = ssl_asn1_table_set(mc->tPrivateKey, key_id, pPrivateKey);
+ 
+     if (ppcb_arg.nPassPhraseDialogCur != 0) {
+         /* remember mtime of encrypted keys */
+-        asn1 = ssl_asn1_table_get(mc->tPrivateKey, key_id);
+         asn1->source_mtime = pkey_mtime;
+     }
+ 
+@@ -614,3 +605,307 @@ int ssl_pphrase_Handle_CB(char *buf, int
       */
      return (len);
  }
 +
-+#if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
-+apr_status_t modssl_load_engine_pkey(server_rec *s, apr_pool_t *p,
-+                                     const char *keyid, EVP_PKEY **ppkey)
-+{
-+    SSLModConfigRec *mc = myModConfig(s);
-+    EVP_PKEY *pPrivateKey = NULL;
-+    ENGINE *e;
-+    UI_METHOD *ui_method;
 +
-+    if (!mc->szCryptoDevice) {
++#if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
++
++/* OpenSSL UI implementation for passphrase entry; largely duplicated
++ * from ssl_pphrase_Handle_CB but adjusted for UI API. TODO: Might be
++ * worth trying to shift pphrase handling over to the UI API
++ * completely. */
++static int passphrase_ui_open(UI *ui)
++{
++    pphrase_cb_arg_t *ppcb = UI_get0_user_data(ui);
++    SSLSrvConfigRec *sc = mySrvConfig(ppcb->s);
++
++    ppcb->nPassPhraseDialog++;
++    ppcb->nPassPhraseDialogCur++;
++
++    /*
++     * Builtin or Pipe dialog
++     */
++    if (sc->server->pphrase_dialog_type == SSL_PPTYPE_BUILTIN
++        || sc->server->pphrase_dialog_type == SSL_PPTYPE_PIPE) {
++        if (sc->server->pphrase_dialog_type == SSL_PPTYPE_PIPE) {
++            if (!readtty) {
++                ap_log_error(APLOG_MARK, APLOG_INFO, 0, ppcb->s,
++                             APLOGNO(10143)
++                             "Init: Creating pass phrase dialog pipe child "
++                             "'%s'", sc->server->pphrase_dialog_path);
++                if (ssl_pipe_child_create(ppcb->p,
++                            sc->server->pphrase_dialog_path)
++                        != APR_SUCCESS) {
++                    ap_log_error(APLOG_MARK, APLOG_ERR, 0, ppcb->s,
++                                 APLOGNO(10144)
++                                 "Init: Failed to create pass phrase pipe '%s'",
++                                 sc->server->pphrase_dialog_path);
++                    return 0;
++                }
++            }
++            ap_log_error(APLOG_MARK, APLOG_INFO, 0, ppcb->s, APLOGNO(10145)
++                         "Init: Requesting pass phrase via piped dialog");
++        }
++        else { /* sc->server->pphrase_dialog_type == SSL_PPTYPE_BUILTIN */
++#ifdef WIN32
++            ap_log_error(APLOG_MARK, APLOG_ERR, 0, ppcb->s, APLOGNO(10146)
++                         "Init: Failed to create pass phrase pipe '%s'",
++                         sc->server->pphrase_dialog_path);
++            return 0;
++#else
++            /*
++             * stderr has already been redirected to the error_log.
++             * rather than attempting to temporarily rehook it to the terminal,
++             * we print the prompt to stdout before EVP_read_pw_string turns
++             * off tty echo
++             */
++            apr_file_open_stdout(&writetty, ppcb->p);
++
++            ap_log_error(APLOG_MARK, APLOG_INFO, 0, ppcb->s, APLOGNO(10147)
++                         "Init: Requesting pass phrase via builtin terminal "
++                         "dialog");
++#endif
++        }
++
++        /*
++         * The first time display a header to inform the user about what
++         * program he actually speaks to, which module is responsible for
++         * this terminal dialog and why to the hell he has to enter
++         * something...
++         */
++        if (ppcb->nPassPhraseDialog == 1) {
++            apr_file_printf(writetty, "%s mod_ssl (Pass Phrase Dialog)\n",
++                            AP_SERVER_BASEVERSION);
++            apr_file_printf(writetty,
++                            "A pass phrase is required to access the private key.\n");
++        }
++        if (ppcb->bPassPhraseDialogOnce) {
++            ppcb->bPassPhraseDialogOnce = FALSE;
++            apr_file_printf(writetty, "\n");
++            apr_file_printf(writetty, "Private key %s (%s)\n",
++                            ppcb->key_id, ppcb->pkey_file);
++        }
++    }
++
++    return 1;
++}
++
++static int passphrase_ui_read(UI *ui, UI_STRING *uis)
++{
++    pphrase_cb_arg_t *ppcb = UI_get0_user_data(ui);
++    SSLSrvConfigRec *sc = mySrvConfig(ppcb->s);
++    const char *prompt;
++    int i;
++    int bufsize;
++    int len;
++    char *buf;
++
++    prompt = UI_get0_output_string(uis);
++    if (prompt == NULL) {
++        prompt = "Enter pass phrase:";
++    }
++
++    /*
++     * Get the maximum expected size and allocate the buffer
++     */
++    bufsize = UI_get_result_maxsize(uis);
++    buf = apr_pcalloc(ppcb->p, bufsize);
++
++    if (sc->server->pphrase_dialog_type == SSL_PPTYPE_BUILTIN
++        || sc->server->pphrase_dialog_type == SSL_PPTYPE_PIPE) {
++        /*
++         * Get the pass phrase through a callback.
++         * Empty input is not accepted.
++         */
++        for (;;) {
++            if (sc->server->pphrase_dialog_type == SSL_PPTYPE_PIPE) {
++                i = pipe_get_passwd_cb(buf, bufsize, "", FALSE);
++            }
++            else { /* sc->server->pphrase_dialog_type == SSL_PPTYPE_BUILTIN */
++                i = EVP_read_pw_string(buf, bufsize, "", FALSE);
++            }
++            if (i != 0) {
++                OPENSSL_cleanse(buf, bufsize);
++                return 0;
++            }
++            len = strlen(buf);
++            if (len < 1){
++                apr_file_printf(writetty, "Apache:mod_ssl:Error: Pass phrase"
++                                "empty (needs to be at least 1 character).\n");
++                apr_file_puts(prompt, writetty);
++            }
++            else {
++                break;
++            }
++        }
++    }
++    /*
++     * Filter program
++     */
++    else if (sc->server->pphrase_dialog_type == SSL_PPTYPE_FILTER) {
++        const char *cmd = sc->server->pphrase_dialog_path;
++        const char **argv = apr_palloc(ppcb->p, sizeof(char *) * 3);
++        char *result;
++
++        ap_log_error(APLOG_MARK, APLOG_INFO, 0, ppcb->s, APLOGNO(10148)
++                     "Init: Requesting pass phrase from dialog filter "
++                     "program (%s)", cmd);
++
++        argv[0] = cmd;
++        argv[1] = ppcb->key_id;
++        argv[2] = NULL;
++
++        result = ssl_util_readfilter(ppcb->s, ppcb->p, cmd, argv);
++        apr_cpystrn(buf, result, bufsize);
++        len = strlen(buf);
++    }
++
++    /*
++     * Ok, we now have the pass phrase, so give it back
++     */
++    ppcb->cpPassPhraseCur = apr_pstrdup(ppcb->p, buf);
++    UI_set_result(ui, uis, buf);
++
++    /* Clear sensitive data. */
++    OPENSSL_cleanse(buf, bufsize);
++    return 1;
++}
++
++static int passphrase_ui_write(UI *ui, UI_STRING *uis)
++{
++    pphrase_cb_arg_t *ppcb = UI_get0_user_data(ui);
++    SSLSrvConfigRec *sc;
++    const char *prompt;
++
++    sc = mySrvConfig(ppcb->s);
++
++    if (sc->server->pphrase_dialog_type == SSL_PPTYPE_BUILTIN
++        || sc->server->pphrase_dialog_type == SSL_PPTYPE_PIPE) {
++        prompt = UI_get0_output_string(uis);
++        apr_file_puts(prompt, writetty);
++    }
++
++    return 1;
++}
++
++static int passphrase_ui_close(UI *ui)
++{
++    /*
++     * Close the pipes if they were opened
++     */
++    if (readtty) {
++        apr_file_close(readtty);
++        apr_file_close(writetty);
++        readtty = writetty = NULL;
++    }
++    return 1;
++}
++
++static apr_status_t pp_ui_method_cleanup(void *uip)
++{
++    UI_METHOD *uim = uip;
++    
++    UI_destroy_method(uim);
++
++    return APR_SUCCESS;
++}
++
++static UI_METHOD *get_passphrase_ui(apr_pool_t *p)
++{
++    UI_METHOD *ui_method = UI_create_method("Passphrase UI");
++
++    UI_method_set_opener(ui_method, passphrase_ui_open);
++    UI_method_set_reader(ui_method, passphrase_ui_read);
++    UI_method_set_writer(ui_method, passphrase_ui_write);
++    UI_method_set_closer(ui_method, passphrase_ui_close);
++
++    apr_pool_cleanup_register(p, ui_method, pp_ui_method_cleanup,
++                              pp_ui_method_cleanup);
++    
++    return ui_method;
++}
++#endif
++
++
++apr_status_t modssl_load_engine_keypair(server_rec *s, apr_pool_t *p,
++                                        const char *vhostid,
++                                        const char *certid, const char *keyid,
++                                        X509 **pubkey, EVP_PKEY **privkey)
++{
++#if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
++    const char *c, *scheme;
++    ENGINE *e;
++    UI_METHOD *ui_method = get_passphrase_ui(p);
++    pphrase_cb_arg_t ppcb;
++
++    memset(&ppcb, 0, sizeof ppcb);
++    ppcb.s = s;
++    ppcb.p = p;
++    ppcb.bPassPhraseDialogOnce = TRUE;
++    ppcb.key_id = vhostid;
++    ppcb.pkey_file = keyid;
++
++    c = ap_strchr_c(keyid, ':');
++    if (!c || c == keyid) {
 +        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
-+                     "Init: Cannot load private key `%s' without engine",
++                     "Init: Unrecognized private key identifier `%s'",
 +                     keyid);
 +        return ssl_die(s);
 +    }
 +
-+    /*
-+     * Using the builtin OpenSSL UI only, for now...
-+     */
-+    ui_method = UI_OpenSSL();
-+
-+    if (!(e = ENGINE_by_id(mc->szCryptoDevice))) {
++    scheme = apr_pstrmemdup(p, keyid, c - keyid);
++    if (!(e = ENGINE_by_id(scheme))) {
 +        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10132)
-+                     "Init: Failed to load Crypto Device API `%s'",
-+                     mc->szCryptoDevice);
++                     "Init: Failed to load engine for private key %s",
++                     keyid);
 +        ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
 +        return ssl_die(s);
 +    }
++
++    if (!ENGINE_init(e)) {
++        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10149)
++                     "Init: Failed to initialize engine %s for private key %s",
++                     scheme, keyid);
++        ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++        return ssl_die(s);
++    }
++
++    ap_log_error(APLOG_MARK, APLOG_DEBUG, 0, s, 
++                 "Init: Initialized engine %s for private key %s",
++                 scheme, keyid);
 +
 +    if (APLOGdebug(s)) {
 +        ENGINE_ctrl_cmd_string(e, "VERBOSE", NULL, 0);
 +    }
 +
-+    pPrivateKey = ENGINE_load_private_key(e, keyid, ui_method, NULL);
-+    if (pPrivateKey == NULL) {
++    if (certid) {
++        struct {
++            const char *cert_id;
++            X509 *cert;
++        } params = { certid, NULL };
++
++        if (!ENGINE_ctrl_cmd(e, "LOAD_CERT_CTRL", 0, &params, NULL, 1)) {
++            ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10136)
++                         "Init: Unable to get the certificate");
++            ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
++            return ssl_die(s);
++        }
++
++        *pubkey = params.cert;
++    }
++
++    *privkey = ENGINE_load_private_key(e, keyid, ui_method, &ppcb);
++    if (*privkey == NULL) {
 +        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10133)
 +                     "Init: Unable to get the private key");
 +        ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
 +        return ssl_die(s);
 +    }
 +
-+    *ppkey = pPrivateKey;
-+
++    ENGINE_finish(e);
 +    ENGINE_free(e);
 +
 +    return APR_SUCCESS;
-+}
++#else
++    return APR_ENOTIMPL;
 +#endif
++}
 Index: httpd-2.4.41/modules/ssl/ssl_private.h
 ===================================================================
 --- httpd-2.4.41.orig/modules/ssl/ssl_private.h	2018-11-23 16:10:24.000000000 +0100
-+++ httpd-2.4.41/modules/ssl/ssl_private.h	2019-10-21 21:20:32.102340905 +0200
-@@ -1001,6 +1001,10 @@ BOOL         ssl_util_vhost_matches(cons
- /**  Pass Phrase Support  */
++++ httpd-2.4.41/modules/ssl/ssl_private.h	2020-02-26 11:10:32.727187775 +0100
+@@ -1002,21 +1002,28 @@ BOOL         ssl_util_vhost_matches(cons
  apr_status_t ssl_load_encrypted_pkey(server_rec *, apr_pool_t *, int,
                                       const char *, apr_array_header_t **);
-+/* Load private key from the configured ENGINE, returned as **pkey.
-+ * Errors logged on failure. */
-+apr_status_t modssl_load_engine_pkey(server_rec *s, apr_pool_t *p,
-+                                     const char *keyid, EVP_PKEY **ppkey);
  
++/* Load public and/or private key from the configured ENGINE. Private
++ * key returned as *pkey.  certid can be NULL, in which case *pubkey
++ * is not altered.  Errors logged on failure. */
++apr_status_t modssl_load_engine_keypair(server_rec *s, apr_pool_t *p,
++                                        const char *vhostid,
++                                        const char *certid, const char *keyid,
++                                        X509 **pubkey, EVP_PKEY **privkey);
++
  /**  Diffie-Hellman Parameter Support  */
  DH           *ssl_dh_GetParamFromFile(const char *);
-@@ -1106,6 +1110,10 @@ DH *modssl_get_dh_params(unsigned keylen
-  * corresponding SSLConnRec structure for the connection. */
- int modssl_request_is_tls(const request_rec *r, SSLConnRec **sslconn);
+ #ifdef HAVE_ECC
+ EC_GROUP     *ssl_ec_GetParamFromFile(const char *);
+ #endif
  
-+/* Returns non-zero if the cert/key filename should be handled through
-+ * the configure ENGINE. */
-+int modssl_is_engine_key(const char *name);
-+
+-unsigned char *ssl_asn1_table_set(apr_hash_t *table,
+-                                  const char *key,
+-                                  long int length);
+-
+-ssl_asn1_t *ssl_asn1_table_get(apr_hash_t *table,
+-                               const char *key);
+-
+-void ssl_asn1_table_unset(apr_hash_t *table,
+-                          const char *key);
++/* Store the EVP_PKEY key (serialized into DER) in the hash table with
++ * key, returning the ssl_asn1_t structure pointer. */
++ssl_asn1_t *ssl_asn1_table_set(apr_hash_t *table, const char *key,
++                               EVP_PKEY *pkey);
++/* Retrieve the ssl_asn1_t structure with given key from the hash. */
++ssl_asn1_t *ssl_asn1_table_get(apr_hash_t *table, const char *key);
++/* Remove and free the ssl_asn1_t structure with given key. */
++void ssl_asn1_table_unset(apr_hash_t *table, const char *key);
+ 
+ /**  Mutex Support  */
+ int          ssl_mutex_init(server_rec *, apr_pool_t *);
+@@ -1109,6 +1116,10 @@ int modssl_request_is_tls(const request_
  int ssl_is_challenge(conn_rec *c, const char *servername, 
                       X509 **pcert, EVP_PKEY **pkey);
+ 
++/* Returns non-zero if the cert/key filename should be handled through
++ * the configured ENGINE. */
++int modssl_is_engine_id(const char *name);
++
+ #endif /* SSL_PRIVATE_H */
+ /** @} */
  
 Index: httpd-2.4.41/modules/ssl/ssl_util.c
 ===================================================================
 --- httpd-2.4.41.orig/modules/ssl/ssl_util.c	2018-11-23 16:10:24.000000000 +0100
-+++ httpd-2.4.41/modules/ssl/ssl_util.c	2019-10-21 21:20:32.106340927 +0200
-@@ -480,3 +480,13 @@ void ssl_util_thread_id_setup(apr_pool_t
++++ httpd-2.4.41/modules/ssl/ssl_util.c	2020-02-26 11:10:32.727187775 +0100
+@@ -192,45 +192,37 @@ BOOL ssl_util_path_check(ssl_pathcheck_t
+     return TRUE;
+ }
+ 
+-/*
+- * certain key data needs to survive restarts,
+- * which are stored in the user data table of s->process->pool.
+- * to prevent "leaking" of this data, we use malloc/free
+- * rather than apr_palloc and these wrappers to help make sure
+- * we do not leak the malloc-ed data.
+- */
+-unsigned char *ssl_asn1_table_set(apr_hash_t *table,
+-                                  const char *key,
+-                                  long int length)
++/* Decrypted private keys are cached to survive restarts.  The cached
++ * data must have lifetime of the process (hence malloc/free rather
++ * than pools), and uses raw DER since the EVP_PKEY structure
++ * internals may not survive across a module reload. */
++ssl_asn1_t *ssl_asn1_table_set(apr_hash_t *table, const char *key,
++                               EVP_PKEY *pkey)
+ {
+     apr_ssize_t klen = strlen(key);
+     ssl_asn1_t *asn1 = apr_hash_get(table, key, klen);
++    apr_size_t length = i2d_PrivateKey(pkey, NULL);
++    unsigned char *p;
+ 
+-    /*
+-     * if a value for this key already exists,
+-     * reuse as much of the already malloc-ed data
+-     * as possible.
+-     */
++    /* Re-use structure if cached previously. */
+     if (asn1) {
+         if (asn1->nData != length) {
+-            free(asn1->cpData); /* XXX: realloc? */
+-            asn1->cpData = NULL;
++            asn1->cpData = ap_realloc(asn1->cpData, length);
+         }
+     }
+     else {
+         asn1 = ap_malloc(sizeof(*asn1));
+         asn1->source_mtime = 0; /* used as a note for encrypted private keys */
+-        asn1->cpData = NULL;
+-    }
+-
+-    asn1->nData = length;
+-    if (!asn1->cpData) {
+         asn1->cpData = ap_malloc(length);
++
++        apr_hash_set(table, key, klen, asn1);
+     }
+ 
+-    apr_hash_set(table, key, klen, asn1);
++    asn1->nData = length;
++    p = asn1->cpData;
++    i2d_PrivateKey(pkey, &p); /* increases p by length */
+ 
+-    return asn1->cpData; /* caller will assign a value to this */
++    return asn1;
+ }
+ 
+ ssl_asn1_t *ssl_asn1_table_get(apr_hash_t *table,
+@@ -480,3 +472,13 @@ void ssl_util_thread_id_setup(apr_pool_t
  }
  
  #endif /* #if APR_HAS_THREADS && MODSSL_USE_OPENSSL_PRE_1_1_API */
 +
-+int modssl_is_engine_key(const char *name)
++int modssl_is_engine_id(const char *name)
 +{
 +#if defined(HAVE_OPENSSL_ENGINE_H) && defined(HAVE_ENGINE_INIT)
 +    /* ### Can handle any other special ENGINE key names here? */
@@ -159,3 +613,85 @@ Index: httpd-2.4.41/modules/ssl/ssl_util.c
 +    return 0;
 +#endif
 +}
+Index: httpd-2.4.41/modules/ssl/ssl_util_ssl.h
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_util_ssl.h	2018-03-09 08:55:27.000000000 +0100
++++ httpd-2.4.41/modules/ssl/ssl_util_ssl.h	2020-02-26 11:10:32.727187775 +0100
+@@ -64,8 +64,11 @@
+ void        modssl_init_app_data2_idx(void);
+ void       *modssl_get_app_data2(SSL *);
+ void        modssl_set_app_data2(SSL *, void *);
+-EVP_PKEY   *modssl_read_privatekey(const char *, EVP_PKEY **, pem_password_cb *, void *);
+-EVP_PKEY   *modssl_read_encrypted_pkey(const char *, EVP_PKEY **, const char *, apr_size_t);
++
++/* Read private key from filename in either PEM or raw base64(DER)
++ * format, using password entry callback cb and userdata. */
++EVP_PKEY   *modssl_read_privatekey(const char *filename, pem_password_cb *cb, void *ud);
++
+ int         modssl_smart_shutdown(SSL *ssl);
+ BOOL        modssl_X509_getBC(X509 *, int *, int *);
+ char       *modssl_X509_NAME_ENTRY_to_string(apr_pool_t *p, X509_NAME_ENTRY *xsne,
+Index: httpd-2.4.41/modules/ssl/ssl_util_ssl.c
+===================================================================
+--- httpd-2.4.41.orig/modules/ssl/ssl_util_ssl.c	2018-03-09 08:55:27.000000000 +0100
++++ httpd-2.4.41/modules/ssl/ssl_util_ssl.c	2020-02-26 11:10:32.727187775 +0100
+@@ -74,7 +74,7 @@ void modssl_set_app_data2(SSL *ssl, void
+ **  _________________________________________________________________
+ */
+ 
+-EVP_PKEY *modssl_read_privatekey(const char* filename, EVP_PKEY **key, pem_password_cb *cb, void *s)
++EVP_PKEY *modssl_read_privatekey(const char *filename, pem_password_cb *cb, void *s)
+ {
+     EVP_PKEY *rc;
+     BIO *bioS;
+@@ -83,7 +83,7 @@ EVP_PKEY *modssl_read_privatekey(const c
+     /* 1. try PEM (= DER+Base64+headers) */
+     if ((bioS=BIO_new_file(filename, "r")) == NULL)
+         return NULL;
+-    rc = PEM_read_bio_PrivateKey(bioS, key, cb, s);
++    rc = PEM_read_bio_PrivateKey(bioS, NULL, cb, s);
+     BIO_free(bioS);
+ 
+     if (rc == NULL) {
+@@ -107,41 +107,9 @@ EVP_PKEY *modssl_read_privatekey(const c
+             BIO_free(bioS);
+         }
+     }
+-    if (rc != NULL && key != NULL) {
+-        if (*key != NULL)
+-            EVP_PKEY_free(*key);
+-        *key = rc;
+-    }
+     return rc;
+ }
+ 
+-typedef struct {
+-    const char *pass;
+-    int pass_len;
+-} pass_ctx;
+-
+-static int provide_pass(char *buf, int size, int rwflag, void *baton)
+-{
+-    pass_ctx *ctx = baton;
+-    if (ctx->pass_len > 0) {
+-        if (ctx->pass_len < size) {
+-            size = (int)ctx->pass_len;
+-        }
+-        memcpy(buf, ctx->pass, size);
+-    }
+-    return ctx->pass_len;
+-}
+-
+-EVP_PKEY   *modssl_read_encrypted_pkey(const char *filename, EVP_PKEY **key, 
+-                                       const char *pass, apr_size_t pass_len)
+-{
+-    pass_ctx ctx;
+-    
+-    ctx.pass = pass;
+-    ctx.pass_len = pass_len;
+-    return modssl_read_privatekey(filename, key, provide_pass, &ctx);
+-}
+-
+ /*  _________________________________________________________________
+ **
+ **  Smart shutdown

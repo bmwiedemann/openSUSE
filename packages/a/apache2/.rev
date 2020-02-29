@@ -1650,4 +1650,22 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
   expects a positive integer argument. (forwarded request 769110 from elvigia)</comment>
     <requestid>769465</requestid>
   </revision>
+  <revision rev="166" vrev="9">
+    <srcmd5>ad2e659dddd9a15f06e087c0ed00e322</srcmd5>
+    <version>2.4.41</version>
+    <time>1583007580</time>
+    <user>dimstar_suse</user>
+    <comment>- use r1874196 [SLE-7653]
+- modified patches
+  % apache2-load-private-keys-from-pkcs11.patch (upstream 2.4.x port)
+- deleted patches
+  - apache2-load-certificates-from-pkcs11.patch (merged to above)
+
+- require just libbrotli-devel
+
+- build mod_proxy_http2 extension
+
+- fix build for older distributions</comment>
+    <requestid>779357</requestid>
+  </revision>
 </revisionlist>

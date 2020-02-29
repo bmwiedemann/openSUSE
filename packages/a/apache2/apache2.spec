@@ -146,10 +146,8 @@ Patch111:       httpd-visibility.patch
 # PATCH-FEATURE-UPSTREAM kstreitova@suse.com -- backport of HttpContentLengthHeadZero and HttpExpectStrict
 Patch115:       httpd-2.4.x-fate317766-config-control-two-protocol-options.diff
 Patch116:       deprecated-scripts-arch.patch
-# load private keys from openssl engine
+# https://svn.apache.org/viewvc?view=revision&revision=1874196
 Patch117:       apache2-load-private-keys-from-pkcs11.patch
-# load certificates from openssl engine
-Patch118:       apache2-load-certificates-from-pkcs11.patch
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apr-util-devel
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
@@ -159,8 +157,7 @@ BuildRequires:  automake
 BuildRequires:  firewall-macros
 %endif
 %if 0%{?suse_version} >= 1315
-BuildRequires:  pkgconfig(libbrotlidec)
-BuildRequires:  pkgconfig(libbrotlienc)
+BuildRequires:  libbrotli-devel
 %endif
 BuildRequires:  db-devel
 BuildRequires:  ed
@@ -344,7 +341,6 @@ to administrators of web servers in general.
 %patch116 -p1
 %endif
 %patch117 -p1
-%patch118 -p1
 cat %{_sourcedir}/SUSE-NOTICE >> NOTICE
 # install READMEs
 a=$(basename %{SOURCE22})
@@ -408,6 +404,9 @@ function configure {
 		--enable-case_filter \
 		--enable-case_filter_in \
 		--enable-imagemap \
+%if 0%{?build_http2}
+                --enable-http2 \
+%endif
 		--with-ldap \
 		--enable-ldap \
 		--enable-authnz_ldap \
@@ -416,6 +415,9 @@ function configure {
 		--enable-proxy-connect \
 		--enable-proxy-ftp \
 		--enable-proxy-http \
+%if 0%{?build_http2}
+                --enable-proxy-http2 \
+%endif
 		--enable-proxy-fdpass \
 		--enable-cache \
 		--enable-disk-cache \
@@ -802,6 +804,19 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 	-e debug -t -f %{buildroot}/%{sysconfdir}/httpd.conf.test || exit 1
 rm %{buildroot}/%{sysconfdir}/*.test
 
+# taken from kdump/kdump.spec, thanks!
+# Compatibility cruft
+# there is no %%license prior to SLE12
+%if %{undefined _defaultlicensedir}
+%define license %doc
+%else
+# filesystem before SLE12 SP3 lacks /usr/share/licenses
+%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
+%define _defaultlicensedir %{_defaultdocdir}
+%endif
+%endif
+# End of compatibility cruft
+
 %files -f filelist
 %defattr(-,root,root)
 %doc INSTALL READM* ABOUT_APACHE CHANGES
@@ -952,6 +967,7 @@ rm %{buildroot}/%{sysconfdir}/*.test
 %{_libdir}/%{name}-prefork/mod_heartmonitor.so
 %if 0%{?build_http2}
 %{_libdir}/%{name}-prefork/mod_http2.so
+%{_libdir}/%{name}-prefork/mod_proxy_http2.so
 %endif
 %{_libdir}/%{name}-prefork/mod_imagemap.so
 %{_libdir}/%{name}-prefork/mod_include.so
@@ -1080,6 +1096,7 @@ rm %{buildroot}/%{sysconfdir}/*.test
 %{_libdir}/%{name}-worker/mod_heartmonitor.so
 %if 0%{?build_http2}
 %{_libdir}/%{name}-worker/mod_http2.so
+%{_libdir}/%{name}-worker/mod_proxy_http2.so
 %endif
 %{_libdir}/%{name}-worker/mod_imagemap.so
 %{_libdir}/%{name}-worker/mod_include.so
@@ -1207,6 +1224,7 @@ rm %{buildroot}/%{sysconfdir}/*.test
 %{_libdir}/%{name}-event/mod_headers.so
 %if 0%{?build_http2}
 %{_libdir}/%{name}-event/mod_http2.so
+%{_libdir}/%{name}-event/mod_proxy_http2.so
 %endif
 %{_libdir}/%{name}-event/mod_heartmonitor.so
 %{_libdir}/%{name}-event/mod_imagemap.so
