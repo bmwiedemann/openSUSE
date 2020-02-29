@@ -49,8 +49,10 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         openssl-fix-syntax-error.patch
-Patch7:         %{name}-bsc1163959-PiDxeS3BootScriptLib-fix-numeric-truncation.patch
+Patch6:         %{name}-bsc1163959-PiDxeS3BootScriptLib-fix-numeric-truncation.patch
+Patch7:         %{name}-bsc1163969-fix-DxeImageVerificationHandler.patch
+Patch8:         %{name}-bsc1163927-fix-ip4dxe-and-arpdxe.patch
+Patch100:       openssl-fix-syntax-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
 BuildRequires:  fdupes
@@ -173,12 +175,14 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
 tar -xf %{SOURCE1} --strip 1
-%patch6 -p1
+%patch100 -p1
 popd
 
 # add berkeley-softfloat-3

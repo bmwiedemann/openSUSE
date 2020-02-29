@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 24 04:00:24 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1163969-fix-DxeImageVerificationHandler.patch to fix
+  dbx signature check (bsc#1163969, CVE-2019-14575)
+  + Also change the order of several patches to distinguish the
+    openssl patch
+- Add ovmf-bsc1163927-fix-ip4dxe-and-arpdxe.patch to fix memory
+  leakage in Ip4Dxe and ArpDxe (bsc#1163927, CVE-2019-14559)
+
+-------------------------------------------------------------------
 Tue Feb 18 09:24:30 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1163959-PiDxeS3BootScriptLib-fix-numeric-truncation.patch

@@ -1,0 +1,1870 @@
+From 3d3fb711addaa2a740c3014641707fe525d7d0e5 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 11:37:04 +0100
+Subject: [PATCH 01/21] SecurityPkg/DxeImageVerificationHandler: simplify
+ "VerifyStatus"
+
+In the DxeImageVerificationHandler() function, the "VerifyStatus" variable
+can only contain one of two values: EFI_SUCCESS and EFI_ACCESS_DENIED.
+Furthermore, the variable is only consumed with EFI_ERROR().
+
+Therefore, using the EFI_STATUS type for the variable is unnecessary.
+Worse, given the complex meanings of the function's return values, using
+EFI_STATUS for "VerifyStatus" is actively confusing.
+
+Rename the variable to "IsVerified", and make it a simple BOOLEAN.
+
+This patch is a no-op, regarding behavior.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-2-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 1e0f973b65c34841288c25fd441a37eec8a30ac7)
+---
+ .../DxeImageVerificationLib.c                 | 20 +++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index a0a12b50ddd1..5afd723adae8 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1563,7 +1563,7 @@ DxeImageVerificationHandler (
+ {
+   EFI_STATUS                           Status;
+   EFI_IMAGE_DOS_HEADER                 *DosHdr;
+-  EFI_STATUS                           VerifyStatus;
++  BOOLEAN                              IsVerified;
+   EFI_SIGNATURE_LIST                   *SignatureList;
+   UINTN                                SignatureListSize;
+   EFI_SIGNATURE_DATA                   *Signature;
+@@ -1588,7 +1588,7 @@ DxeImageVerificationHandler (
+   PkcsCertData      = NULL;
+   Action            = EFI_IMAGE_EXECUTION_AUTH_UNTESTED;
+   Status            = EFI_ACCESS_DENIED;
+-  VerifyStatus      = EFI_ACCESS_DENIED;
++  IsVerified        = FALSE;
+ 
+ 
+   //
+@@ -1812,16 +1812,16 @@ DxeImageVerificationHandler (
+     //
+     if (IsForbiddenByDbx (AuthData, AuthDataSize)) {
+       Action = EFI_IMAGE_EXECUTION_AUTH_SIG_FAILED;
+-      VerifyStatus = EFI_ACCESS_DENIED;
++      IsVerified = FALSE;
+       break;
+     }
+ 
+     //
+     // Check the digital signature against the valid certificate in allowed database (db).
+     //
+-    if (EFI_ERROR (VerifyStatus)) {
++    if (!IsVerified) {
+       if (IsAllowedByDb (AuthData, AuthDataSize)) {
+-        VerifyStatus = EFI_SUCCESS;
++        IsVerified = TRUE;
+       }
+     }
+ 
+@@ -1831,11 +1831,11 @@ DxeImageVerificationHandler (
+     if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE1, mImageDigest, &mCertType, mImageDigestSize)) {
+       Action = EFI_IMAGE_EXECUTION_AUTH_SIG_FOUND;
+       DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but %s hash of image is found in DBX.\n", mHashTypeStr));
+-      VerifyStatus = EFI_ACCESS_DENIED;
++      IsVerified = FALSE;
+       break;
+-    } else if (EFI_ERROR (VerifyStatus)) {
++    } else if (!IsVerified) {
+       if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE, mImageDigest, &mCertType, mImageDigestSize)) {
+-        VerifyStatus = EFI_SUCCESS;
++        IsVerified = TRUE;
+       } else {
+         DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but signature is not allowed by DB and %s hash of image is not found in DB/DBX.\n", mHashTypeStr));
+       }
+@@ -1846,10 +1846,10 @@ DxeImageVerificationHandler (
+     //
+     // The Size in Certificate Table or the attribute certificate table is corrupted.
+     //
+-    VerifyStatus = EFI_ACCESS_DENIED;
++    IsVerified = FALSE;
+   }
+ 
+-  if (!EFI_ERROR (VerifyStatus)) {
++  if (IsVerified) {
+     return EFI_SUCCESS;
+   } else {
+     Status = EFI_ACCESS_DENIED;
+-- 
+2.25.0
+
+
+From 24062a7eae07957c37e09d5344504b8802eafe40 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 11:44:09 +0100
+Subject: [PATCH 02/21] SecurityPkg/DxeImageVerificationHandler: remove "else"
+ after return/break
+
+In the code structure
+
+  if (condition) {
+    //
+    // block1
+    //
+    return;
+  } else {
+    //
+    // block2
+    //
+  }
+
+nesting "block2" in an "else" branch is superfluous, and harms
+readability. It can be transformed to:
+
+  if (condition) {
+    //
+    // block1
+    //
+    return;
+  }
+  //
+  // block2
+  //
+
+with identical behavior, and improved readability (less nesting).
+
+The same applies to "break" (instead of "return") in a loop body.
+
+Perform these transformations on DxeImageVerificationHandler().
+
+This patch is a no-op for behavior. Use
+
+  git show -b -W
+
+for reviewing it more easily.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-3-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit eccb856f013aec700234211e7371f03454ef9d52)
+---
+ .../DxeImageVerificationLib.c                 | 41 ++++++++++---------
+ 1 file changed, 21 insertions(+), 20 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 5afd723adae8..8204c9c0f105 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1621,7 +1621,8 @@ DxeImageVerificationHandler (
+   //
+   if (Policy == ALWAYS_EXECUTE) {
+     return EFI_SUCCESS;
+-  } else if (Policy == NEVER_EXECUTE) {
++  }
++  if (Policy == NEVER_EXECUTE) {
+     return EFI_ACCESS_DENIED;
+   }
+ 
+@@ -1833,7 +1834,8 @@ DxeImageVerificationHandler (
+       DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but %s hash of image is found in DBX.\n", mHashTypeStr));
+       IsVerified = FALSE;
+       break;
+-    } else if (!IsVerified) {
++    }
++    if (!IsVerified) {
+       if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE, mImageDigest, &mCertType, mImageDigestSize)) {
+         IsVerified = TRUE;
+       } else {
+@@ -1851,25 +1853,24 @@ DxeImageVerificationHandler (
+ 
+   if (IsVerified) {
+     return EFI_SUCCESS;
+-  } else {
+-    Status = EFI_ACCESS_DENIED;
+-    if (Action == EFI_IMAGE_EXECUTION_AUTH_SIG_FAILED || Action == EFI_IMAGE_EXECUTION_AUTH_SIG_FOUND) {
+-      //
+-      // Get image hash value as signature of executable.
+-      //
+-      SignatureListSize = sizeof (EFI_SIGNATURE_LIST) + sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize;
+-      SignatureList     = (EFI_SIGNATURE_LIST *) AllocateZeroPool (SignatureListSize);
+-      if (SignatureList == NULL) {
+-        Status = EFI_OUT_OF_RESOURCES;
+-        goto Done;
+-      }
+-      SignatureList->SignatureHeaderSize  = 0;
+-      SignatureList->SignatureListSize    = (UINT32) SignatureListSize;
+-      SignatureList->SignatureSize        = (UINT32) (sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize);
+-      CopyMem (&SignatureList->SignatureType, &mCertType, sizeof (EFI_GUID));
+-      Signature = (EFI_SIGNATURE_DATA *) ((UINT8 *) SignatureList + sizeof (EFI_SIGNATURE_LIST));
+-      CopyMem (Signature->SignatureData, mImageDigest, mImageDigestSize);
++  }
++  Status = EFI_ACCESS_DENIED;
++  if (Action == EFI_IMAGE_EXECUTION_AUTH_SIG_FAILED || Action == EFI_IMAGE_EXECUTION_AUTH_SIG_FOUND) {
++    //
++    // Get image hash value as signature of executable.
++    //
++    SignatureListSize = sizeof (EFI_SIGNATURE_LIST) + sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize;
++    SignatureList     = (EFI_SIGNATURE_LIST *) AllocateZeroPool (SignatureListSize);
++    if (SignatureList == NULL) {
++      Status = EFI_OUT_OF_RESOURCES;
++      goto Done;
+     }
++    SignatureList->SignatureHeaderSize  = 0;
++    SignatureList->SignatureListSize    = (UINT32) SignatureListSize;
++    SignatureList->SignatureSize        = (UINT32) (sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize);
++    CopyMem (&SignatureList->SignatureType, &mCertType, sizeof (EFI_GUID));
++    Signature = (EFI_SIGNATURE_DATA *) ((UINT8 *) SignatureList + sizeof (EFI_SIGNATURE_LIST));
++    CopyMem (Signature->SignatureData, mImageDigest, mImageDigestSize);
+   }
+ 
+ Done:
+-- 
+2.25.0
+
+
+From 76d93e6a0d966fdbefbe3e1df304dc22aae47ac1 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 12:14:14 +0100
+Subject: [PATCH 03/21] SecurityPkg/DxeImageVerificationHandler: keep PE/COFF
+ info status internal
+
+The PeCoffLoaderGetImageInfo() function may return various error codes,
+such as RETURN_INVALID_PARAMETER and RETURN_UNSUPPORTED.
+
+Such error values should not be assigned to our "Status" variable in the
+DxeImageVerificationHandler() function, because "Status" generally stands
+for the main exit value of the function. And
+SECURITY2_FILE_AUTHENTICATION_HANDLER functions are expected to return one
+of EFI_SUCCESS, EFI_SECURITY_VIOLATION, and EFI_ACCESS_DENIED only.
+
+Introduce the "PeCoffStatus" helper variable for keeping the return value
+of PeCoffLoaderGetImageInfo() internal to the function. If
+PeCoffLoaderGetImageInfo() fails, we'll jump to the "Done" label with
+"Status" being EFI_ACCESS_DENIED, inherited from the top of the function.
+
+Note that this is consistent with the subsequent PE/COFF Signature check,
+where we jump to the "Done" label with "Status" having been re-set to
+EFI_ACCESS_DENIED.
+
+As a consequence, we can at once remove the
+
+  Status = EFI_ACCESS_DENIED;
+
+assignment right after the "PeCoffStatus" check.
+
+This patch does not change the control flow in the function, it only
+changes the "Status" outcome from API-incompatible error codes to
+EFI_ACCESS_DENIED, under some circumstances.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-4-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 61a9fa589a15e9005bec293f9766c78b60fbc9fc)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c      | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 8204c9c0f105..e6c8a5408752 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1580,6 +1580,7 @@ DxeImageVerificationHandler (
+   EFI_IMAGE_DATA_DIRECTORY             *SecDataDir;
+   UINT32                               OffSet;
+   CHAR16                               *NameStr;
++  RETURN_STATUS                        PeCoffStatus;
+ 
+   SignatureList     = NULL;
+   SignatureListSize = 0;
+@@ -1669,8 +1670,8 @@ DxeImageVerificationHandler (
+   //
+   // Get information about the image being loaded
+   //
+-  Status = PeCoffLoaderGetImageInfo (&ImageContext);
+-  if (EFI_ERROR (Status)) {
++  PeCoffStatus = PeCoffLoaderGetImageInfo (&ImageContext);
++  if (RETURN_ERROR (PeCoffStatus)) {
+     //
+     // The information can't be got from the invalid PeImage
+     //
+@@ -1678,8 +1679,6 @@ DxeImageVerificationHandler (
+     goto Done;
+   }
+ 
+-  Status = EFI_ACCESS_DENIED;
+-
+   DosHdr = (EFI_IMAGE_DOS_HEADER *) mImageBase;
+   if (DosHdr->e_magic == EFI_IMAGE_DOS_SIGNATURE) {
+     //
+-- 
+2.25.0
+
+
+From aab72f2a7dc9583963461d1cd75073c52a83af5c Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 12:56:59 +0100
+Subject: [PATCH 04/21] SecurityPkg/DxeImageVerificationHandler: narrow down
+ PE/COFF hash status
+
+Inside the "for" loop that scans the signatures of the image, we call
+HashPeImageByType(), and assign its return value to "Status".
+
+Beyond the immediate retval check, this assignment is useless (never
+consumed). That's because a subsequent access to "Status" may only be one
+of the following:
+
+- the "Status" assignment when we call HashPeImageByType() in the next
+  iteration of the loop,
+
+- the "Status = EFI_ACCESS_DENIED" assignment right after the final
+  "IsVerified" check.
+
+To make it clear that the assignment is only useful for the immediate
+HashPeImageByType() retval check, introduce a specific helper variable,
+called "HashStatus".
+
+This patch is a no-op, functionally.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-5-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 47650a5cab608e07c31d66bdb9b4cc6e58bdf22f)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c        | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index e6c8a5408752..5cc82c1b3b22 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1581,6 +1581,7 @@ DxeImageVerificationHandler (
+   UINT32                               OffSet;
+   CHAR16                               *NameStr;
+   RETURN_STATUS                        PeCoffStatus;
++  EFI_STATUS                           HashStatus;
+ 
+   SignatureList     = NULL;
+   SignatureListSize = 0;
+@@ -1802,8 +1803,8 @@ DxeImageVerificationHandler (
+       continue;
+     }
+ 
+-    Status = HashPeImageByType (AuthData, AuthDataSize);
+-    if (EFI_ERROR (Status)) {
++    HashStatus = HashPeImageByType (AuthData, AuthDataSize);
++    if (EFI_ERROR (HashStatus)) {
+       continue;
+     }
+ 
+-- 
+2.25.0
+
+
+From 2cc08bd79fcea93c9495f17c55bf6dbb7076b657 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 13:07:46 +0100
+Subject: [PATCH 05/21] SecurityPkg/DxeImageVerificationHandler: fix retval on
+ memalloc failure
+
+A SECURITY2_FILE_AUTHENTICATION_HANDLER function is not expected to return
+EFI_OUT_OF_RESOURCES. We should only return EFI_SUCCESS,
+EFI_SECURITY_VIOLATION, or EFI_ACCESS_DENIED.
+
+In case we run out of memory while preparing "SignatureList" for
+AddImageExeInfo(), we should simply stick with the EFI_ACCESS_DENIED value
+that is already in "Status" -- from just before the "Action" condition --,
+and not suppress it with EFI_OUT_OF_RESOURCES.
+
+This patch does not change the control flow in the function, it only
+changes the "Status" outcome from API-incompatible error codes to
+EFI_ACCESS_DENIED, under some circumstances.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Fixes: 570b3d1a7278df29878da87990e8366bd42d0ec5
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-6-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit f891b052c5ec13c1032fb9d340d5262ac1a7e7e1)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c   | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 5cc82c1b3b22..5f09a66bc9ce 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1541,7 +1541,6 @@ Done:
+                                  and non-NULL FileBuffer did authenticate, and the platform
+                                  policy dictates that the DXE Foundation may execute the image in
+                                  FileBuffer.
+-  @retval EFI_OUT_RESOURCE       Fail to allocate memory.
+   @retval EFI_SECURITY_VIOLATION The file specified by File did not authenticate, and
+                                  the platform policy dictates that File should be placed
+                                  in the untrusted state. The image has been added to the file
+@@ -1862,7 +1861,6 @@ DxeImageVerificationHandler (
+     SignatureListSize = sizeof (EFI_SIGNATURE_LIST) + sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize;
+     SignatureList     = (EFI_SIGNATURE_LIST *) AllocateZeroPool (SignatureListSize);
+     if (SignatureList == NULL) {
+-      Status = EFI_OUT_OF_RESOURCES;
+       goto Done;
+     }
+     SignatureList->SignatureHeaderSize  = 0;
+-- 
+2.25.0
+
+
+From a3080e1d7d73d14dbe0509ad4f3e595300af6691 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 13:19:26 +0100
+Subject: [PATCH 06/21] SecurityPkg/DxeImageVerificationHandler: remove
+ superfluous Status setting
+
+After the final "IsVerified" check, we set "Status" to EFI_ACCESS_DENIED.
+This is superfluous, as "Status" already carries EFI_ACCESS_DENIED value
+there, from the top of the function. Remove the assignment.
+
+Functionally, this change is a no-op.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-7-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 12a4ef58a8b1f8610f6f7cd3ffb973f924f175fb)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c    | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 5f09a66bc9ce..6ccce1f35843 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1853,7 +1853,6 @@ DxeImageVerificationHandler (
+   if (IsVerified) {
+     return EFI_SUCCESS;
+   }
+-  Status = EFI_ACCESS_DENIED;
+   if (Action == EFI_IMAGE_EXECUTION_AUTH_SIG_FAILED || Action == EFI_IMAGE_EXECUTION_AUTH_SIG_FOUND) {
+     //
+     // Get image hash value as signature of executable.
+-- 
+2.25.0
+
+
+From 117e5b029dd7a8952168cc528a734ed7a7dc6b62 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 13:23:10 +0100
+Subject: [PATCH 07/21] SecurityPkg/DxeImageVerificationHandler: unnest
+ AddImageExeInfo() call
+
+Before the "Done" label at the end of DxeImageVerificationHandler(), we
+now have a single access to "Status": we set "Status" to EFI_ACCESS_DENIED
+at the top of the function. Therefore, the (Status != EFI_SUCCESS)
+condition is always true under the "Done" label.
+
+Accordingly, unnest the AddImageExeInfo() call dependent on that
+condition, remove the condition, and also rename the "Done" label to
+"Failed".
+
+Functionally, this patch is a no-op. It's easier to review with:
+
+  git show -b -W
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-8-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: replace EFI_D_INFO w/ DEBUG_INFO for PatchCheck.py]
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit c602e97446a8e818bf09182f5dc9f3fa409ece95)
+---
+ .../DxeImageVerificationLib.c                 | 34 +++++++++----------
+ 1 file changed, 16 insertions(+), 18 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 6ccce1f35843..51968bd9c855 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1676,7 +1676,7 @@ DxeImageVerificationHandler (
+     // The information can't be got from the invalid PeImage
+     //
+     DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: PeImage invalid. Cannot retrieve image information.\n"));
+-    goto Done;
++    goto Failed;
+   }
+ 
+   DosHdr = (EFI_IMAGE_DOS_HEADER *) mImageBase;
+@@ -1698,7 +1698,7 @@ DxeImageVerificationHandler (
+     // It is not a valid Pe/Coff file.
+     //
+     DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Not a valid PE/COFF image.\n"));
+-    goto Done;
++    goto Failed;
+   }
+ 
+   if (mNtHeader.Pe32->OptionalHeader.Magic == EFI_IMAGE_NT_OPTIONAL_HDR32_MAGIC) {
+@@ -1729,7 +1729,7 @@ DxeImageVerificationHandler (
+     //
+     if (!HashPeImage (HASHALG_SHA256)) {
+       DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Failed to hash this image using %s.\n", mHashTypeStr));
+-      goto Done;
++      goto Failed;
+     }
+ 
+     if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE1, mImageDigest, &mCertType, mImageDigestSize)) {
+@@ -1737,7 +1737,7 @@ DxeImageVerificationHandler (
+       // Image Hash is in forbidden database (DBX).
+       //
+       DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is not signed and %s hash of image is forbidden by DBX.\n", mHashTypeStr));
+-      goto Done;
++      goto Failed;
+     }
+ 
+     if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE, mImageDigest, &mCertType, mImageDigestSize)) {
+@@ -1751,7 +1751,7 @@ DxeImageVerificationHandler (
+     // Image Hash is not found in both forbidden and allowed database.
+     //
+     DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is not signed and %s hash of image is not found in DB/DBX.\n", mHashTypeStr));
+-    goto Done;
++    goto Failed;
+   }
+ 
+   //
+@@ -1860,7 +1860,7 @@ DxeImageVerificationHandler (
+     SignatureListSize = sizeof (EFI_SIGNATURE_LIST) + sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize;
+     SignatureList     = (EFI_SIGNATURE_LIST *) AllocateZeroPool (SignatureListSize);
+     if (SignatureList == NULL) {
+-      goto Done;
++      goto Failed;
+     }
+     SignatureList->SignatureHeaderSize  = 0;
+     SignatureList->SignatureListSize    = (UINT32) SignatureListSize;
+@@ -1870,19 +1870,17 @@ DxeImageVerificationHandler (
+     CopyMem (Signature->SignatureData, mImageDigest, mImageDigestSize);
+   }
+ 
+-Done:
+-  if (Status != EFI_SUCCESS) {
+-    //
+-    // Policy decides to defer or reject the image; add its information in image executable information table.
+-    //
+-    NameStr = ConvertDevicePathToText (File, FALSE, TRUE);
+-    AddImageExeInfo (Action, NameStr, File, SignatureList, SignatureListSize);
+-    if (NameStr != NULL) {
+-      DEBUG((EFI_D_INFO, "The image doesn't pass verification: %s\n", NameStr));
+-      FreePool(NameStr);
+-    }
+-    Status = EFI_SECURITY_VIOLATION;
++Failed:
++  //
++  // Policy decides to defer or reject the image; add its information in image executable information table.
++  //
++  NameStr = ConvertDevicePathToText (File, FALSE, TRUE);
++  AddImageExeInfo (Action, NameStr, File, SignatureList, SignatureListSize);
++  if (NameStr != NULL) {
++    DEBUG ((DEBUG_INFO, "The image doesn't pass verification: %s\n", NameStr));
++    FreePool(NameStr);
+   }
++  Status = EFI_SECURITY_VIOLATION;
+ 
+   if (SignatureList != NULL) {
+     FreePool (SignatureList);
+-- 
+2.25.0
+
+
+From 86eda5226eec2c867e0777997e7dde2985fd00c0 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 13:34:21 +0100
+Subject: [PATCH 08/21] SecurityPkg/DxeImageVerificationHandler: eliminate
+ "Status" variable
+
+The "Status" variable is set to EFI_ACCESS_DENIED at the top of the
+function. Then it is overwritten with EFI_SECURITY_VIOLATION under the
+"Failed" (earlier: "Done") label. We finally return "Status".
+
+The above covers the complete usage of "Status" in
+DxeImageVerificationHandler(). Remove the variable, and simply return
+EFI_SECURITY_VIOLATION in the end.
+
+This patch is a no-op, regarding behavior.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-9-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit fb02f5b2cd0b2a2d413a4f4fc41e085be2ede089)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c        | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 51968bd9c855..b49fe87a10dd 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1560,7 +1560,6 @@ DxeImageVerificationHandler (
+   IN  BOOLEAN                          BootPolicy
+   )
+ {
+-  EFI_STATUS                           Status;
+   EFI_IMAGE_DOS_HEADER                 *DosHdr;
+   BOOLEAN                              IsVerified;
+   EFI_SIGNATURE_LIST                   *SignatureList;
+@@ -1588,7 +1587,6 @@ DxeImageVerificationHandler (
+   SecDataDir        = NULL;
+   PkcsCertData      = NULL;
+   Action            = EFI_IMAGE_EXECUTION_AUTH_UNTESTED;
+-  Status            = EFI_ACCESS_DENIED;
+   IsVerified        = FALSE;
+ 
+ 
+@@ -1880,13 +1878,12 @@ Failed:
+     DEBUG ((DEBUG_INFO, "The image doesn't pass verification: %s\n", NameStr));
+     FreePool(NameStr);
+   }
+-  Status = EFI_SECURITY_VIOLATION;
+ 
+   if (SignatureList != NULL) {
+     FreePool (SignatureList);
+   }
+ 
+-  return Status;
++  return EFI_SECURITY_VIOLATION;
+ }
+ 
+ /**
+-- 
+2.25.0
+
+
+From 0091dec81c57ef448e87b2bb6c5640b41699eba9 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 13:39:19 +0100
+Subject: [PATCH 09/21] SecurityPkg/DxeImageVerificationHandler: fix retval for
+ (FileBuffer==NULL)
+
+"FileBuffer" is a non-optional input (pointer) parameter to
+DxeImageVerificationHandler(). Normally, when an edk2 function receives a
+NULL argument for such a parameter, we return EFI_INVALID_PARAMETER or
+RETURN_INVALID_PARAMETER. However, those don't conform to the
+SECURITY2_FILE_AUTHENTICATION_HANDLER prototype.
+
+Return EFI_ACCESS_DENIED when "FileBuffer" is NULL; it means that no image
+has been loaded.
+
+This patch does not change the control flow in the function, it only
+changes the "Status" outcome from API-incompatible error codes to
+EFI_ACCESS_DENIED, under some circumstances.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Fixes: 570b3d1a7278df29878da87990e8366bd42d0ec5
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-10-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 6d57592740cdd0b6868baeef7929d6e6fef7a8e3)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index b49fe87a10dd..c98b9e45923f 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1655,7 +1655,7 @@ DxeImageVerificationHandler (
+   // Read the Dos header.
+   //
+   if (FileBuffer == NULL) {
+-    return EFI_INVALID_PARAMETER;
++    return EFI_ACCESS_DENIED;
+   }
+ 
+   mImageBase  = (UINT8 *) FileBuffer;
+-- 
+2.25.0
+
+
+From 1fccc0ca4febaae8eb0b8abc14a42e58417d0780 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 14:19:58 +0100
+Subject: [PATCH 10/21] SecurityPkg/DxeImageVerificationHandler: fix imgexec
+ info on memalloc fail
+
+It makes no sense to call AddImageExeInfo() with (Signature == NULL) and
+(SignatureSize > 0). AddImageExeInfo() does not crash in such a case -- it
+avoids the CopyMem() call --, but it creates an invalid
+EFI_IMAGE_EXECUTION_INFO record. Namely, the
+"EFI_IMAGE_EXECUTION_INFO.InfoSize" field includes "SignatureSize", but
+the actual signature bytes are not filled in.
+
+Document and ASSERT() this condition in AddImageExeInfo().
+
+In DxeImageVerificationHandler(), zero out "SignatureListSize" if we set
+"SignatureList" to NULL due to AllocateZeroPool() failure.
+
+(Another approach could be to avoid calling AddImageExeInfo() completely,
+in case AllocateZeroPool() fails. Unfortunately, the UEFI v2.8 spec does
+not seem to state clearly whether a signature is mandatory in
+EFI_IMAGE_EXECUTION_INFO, if the "Action" field is
+EFI_IMAGE_EXECUTION_AUTH_SIG_FAILED or EFI_IMAGE_EXECUTION_AUTH_SIG_FOUND.
+
+For now, the EFI_IMAGE_EXECUTION_INFO addition logic is not changed; we
+only make sure that the record we add is not malformed.)
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-11-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 6aa31db5ebebe18b55aa5359142223a03592416f)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index c98b9e45923f..015a5b61a301 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -704,7 +704,7 @@ GetImageExeInfoTableSize (
+   @param[in]  Name            Input a null-terminated, user-friendly name.
+   @param[in]  DevicePath      Input device path pointer.
+   @param[in]  Signature       Input signature info in EFI_SIGNATURE_LIST data structure.
+-  @param[in]  SignatureSize   Size of signature.
++  @param[in]  SignatureSize   Size of signature. Must be zero if Signature is NULL.
+ 
+ **/
+ VOID
+@@ -761,6 +761,7 @@ AddImageExeInfo (
+   //
+   // Signature size can be odd. Pad after signature to ensure next EXECUTION_INFO entry align
+   //
++  ASSERT (Signature != NULL || SignatureSize == 0);
+   NewImageExeInfoEntrySize = sizeof (EFI_IMAGE_EXECUTION_INFO) + NameStringLen + DevicePathSize + SignatureSize;
+ 
+   NewImageExeInfoTable      = (EFI_IMAGE_EXECUTION_INFO_TABLE *) AllocateRuntimePool (ImageExeInfoTableSize + NewImageExeInfoEntrySize);
+@@ -1858,6 +1859,7 @@ DxeImageVerificationHandler (
+     SignatureListSize = sizeof (EFI_SIGNATURE_LIST) + sizeof (EFI_SIGNATURE_DATA) - 1 + mImageDigestSize;
+     SignatureList     = (EFI_SIGNATURE_LIST *) AllocateZeroPool (SignatureListSize);
+     if (SignatureList == NULL) {
++      SignatureListSize = 0;
+       goto Failed;
+     }
+     SignatureList->SignatureHeaderSize  = 0;
+-- 
+2.25.0
+
+
+From 59e0f2bef458d4d580fb3edfe083b19697ea7a2f Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Thu, 16 Jan 2020 14:45:38 +0100
+Subject: [PATCH 11/21] SecurityPkg/DxeImageVerificationHandler: fix "defer"
+ vs. "deny" policies
+
+In DxeImageVerificationHandler(), we should return EFI_SECURITY_VIOLATION
+for a rejected image only if the platform sets
+DEFER_EXECUTE_ON_SECURITY_VIOLATION as the policy for the image's source.
+Otherwise, EFI_ACCESS_DENIED must be returned.
+
+Right now, EFI_SECURITY_VIOLATION is returned for all rejected images,
+which is wrong -- it causes LoadImage() to hold on to rejected images (in
+untrusted state), for further platform actions. However, if a platform
+already set DENY_EXECUTE_ON_SECURITY_VIOLATION, the platform will not
+expect the rejected image to stick around in memory (regardless of its
+untrusted state).
+
+Therefore, adhere to the platform policy in the return value of the
+DxeImageVerificationHandler() function.
+
+Furthermore, according to "32.4.2 Image Execution Information Table" in
+the UEFI v2.8 spec, and considering that edk2 only supports (AuditMode==0)
+at the moment:
+
+> When AuditMode==0, if the image's signature is not found in the
+> authorized database, or is found in the forbidden database, the image
+> will not be started and instead, information about it will be placed in
+> this table.
+
+we have to store an EFI_IMAGE_EXECUTION_INFO record in both the "defer"
+case and the "deny" case. Thus, the AddImageExeInfo() call is not being
+made conditional on (Policy == DEFER_EXECUTE_ON_SECURITY_VIOLATION); the
+documentation is updated instead.
+
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Cc: Jian J Wang <jian.j.wang@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Ref: https://bugzilla.tianocore.org/show_bug.cgi?id=2129
+Fixes: 5db28a6753d307cdfb1cfdeb2f63739a9f959837
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20200116190705.18816-12-lersek@redhat.com>
+Reviewed-by: Michael D Kinney <michael.d.kinney@intel.com>
+[lersek@redhat.com: push with Mike's R-b due to Chinese New Year
+ Holiday: <https://edk2.groups.io/g/devel/message/53429>; msgid
+ <d3fbb76dabed4e1987c512c328c82810@intel.com>]
+(cherry picked from commit 8b0932c19f31cbf9da26d3b8d4e8d954bdbb5269)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 015a5b61a301..dbfbfcb4fb3a 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1548,7 +1548,8 @@ Done:
+                                  execution table.
+   @retval EFI_ACCESS_DENIED      The file specified by File and FileBuffer did not
+                                  authenticate, and the platform policy dictates that the DXE
+-                                 Foundation many not use File.
++                                 Foundation may not use File. The image has
++                                 been added to the file execution table.
+ 
+ **/
+ EFI_STATUS
+@@ -1872,7 +1873,8 @@ DxeImageVerificationHandler (
+ 
+ Failed:
+   //
+-  // Policy decides to defer or reject the image; add its information in image executable information table.
++  // Policy decides to defer or reject the image; add its information in image
++  // executable information table in either case.
+   //
+   NameStr = ConvertDevicePathToText (File, FALSE, TRUE);
+   AddImageExeInfo (Action, NameStr, File, SignatureList, SignatureListSize);
+@@ -1885,7 +1887,10 @@ Failed:
+     FreePool (SignatureList);
+   }
+ 
+-  return EFI_SECURITY_VIOLATION;
++  if (Policy == DEFER_EXECUTE_ON_SECURITY_VIOLATION) {
++    return EFI_SECURITY_VIOLATION;
++  }
++  return EFI_ACCESS_DENIED;
+ }
+ 
+ /**
+-- 
+2.25.0
+
+
+From 46f09201a83791336668789add280b42a7b2eafc Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Thu, 10 Oct 2019 11:06:53 +0800
+Subject: [PATCH 12/21] SecurityPkg/DxeImageVerificationLib: Fix memory leaks
+ (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+Pointer HashCtx used in IsCertHashFoundInDatabase() is not freed inside
+the while-loop, if it will run more than once.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit fbb96072233b5eaecf4d229cbee47b13dcab39e1)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c  | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index dbfbfcb4fb3a..74dbffa1227f 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -908,6 +908,9 @@ IsCertHashFoundInDatabase (
+       goto Done;
+     }
+ 
++    FreePool (HashCtx);
++    HashCtx = NULL;
++
+     SiglistHeaderSize = sizeof (EFI_SIGNATURE_LIST) + DbxList->SignatureHeaderSize;
+     CertHash          = (EFI_SIGNATURE_DATA *) ((UINT8 *) DbxList + SiglistHeaderSize);
+     CertHashCount     = (DbxList->SignatureListSize - SiglistHeaderSize) / DbxList->SignatureSize;
+-- 
+2.25.0
+
+
+From ffc961111fffebffd2aa0158321c4c7e25ac4e5c Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Thu, 10 Oct 2019 11:14:47 +0800
+Subject: [PATCH 13/21] SecurityPkg/DxeImageVerificationLib: reject
+ CertStack.CertNumber==0 per DBX (CVE-2019-14575)
+
+In case the signers' certificate stack, retrieved from the PE/COFF image's
+Authenticode blob, has zero elements (=there are zero signer certificates),
+then we should consider the image forbidden by DBX, not accepted by DBX.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit c13742b180095e5181e41dffda954581ecbd9b9c)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 74dbffa1227f..5dcd6efed534 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1326,7 +1326,7 @@ IsForbiddenByDbx (
+   //       UINT8  Certn[];
+   //
+   Pkcs7GetSigners (AuthData, AuthDataSize, &CertBuffer, &BufferLength, &TrustedCert, &TrustedCertLength);
+-  if ((BufferLength == 0) || (CertBuffer == NULL)) {
++  if ((BufferLength == 0) || (CertBuffer == NULL) || (*CertBuffer) == 0) {
+     IsForbidden = TRUE;
+     goto Done;
+   }
+-- 
+2.25.0
+
+
+From 43809b0deb50918a9a1184b3642b8d55fafc3157 Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Thu, 10 Oct 2019 11:46:16 +0800
+Subject: [PATCH 14/21] SecurityPkg/DxeImageVerificationLib: fix wrong fetch
+ dbx in IsAllowedByDb (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+Normally two times of calling gRT->GetVariable() are needed to get
+the data of a variable: get the variable size by passing zero variable
+size, and then allocate enough memory and pass the correct variable size
+and buffer.
+
+But in the inner loop in IsAllowedByDb(), the DbxDataSize was not
+initialized to zero before calling gRT->GetVariable(). It won't cause
+problem if dbx does not exist. But it will give wrong result if dbx
+exists and the DbxDataSize happens to be a small enough value. In this
+situation, EFI_BUFFER_TOO_SMALL will be returned. Then the result check
+code followed will jump to 'Done', which is not correct because it's
+actually the value expected.
+
+            if (Status == EFI_BUFFER_TOO_SMALL) {
+              goto Done;
+            }
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit 9e569700901857d0ba418ebdd30b8086b908688c)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c  | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 5dcd6efed534..1efb2f96cdcc 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1456,8 +1456,9 @@ IsAllowedByDb (
+             //
+             // Here We still need to check if this RootCert's Hash is revoked
+             //
++            DbxDataSize = 0;
+             Status   = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, NULL);
+-            if (Status == EFI_BUFFER_TOO_SMALL) {
++            if (Status != EFI_BUFFER_TOO_SMALL) {
+               goto Done;
+             }
+             DbxData = (UINT8 *) AllocateZeroPool (DbxDataSize);
+-- 
+2.25.0
+
+
+From d9c5a03a6d08dcc48aa0c6a1408820a4ba68d570 Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Thu, 10 Oct 2019 14:28:36 +0800
+Subject: [PATCH 15/21] SecurityPkg/DxeImageVerificationLib: avoid bypass in
+ fetching dbx (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+In timestamp check after the cert is found in db, the original code jumps
+to 'Done' if any error happens in fetching dbx variable. At any of the
+jump, VerifyStatus equals to TRUE, which means allowed-by-db. This should
+not be allowed except to EFI_NOT_FOUND case (meaning dbx doesn't exist),
+because it could be used to bypass timestamp check.
+
+This patch add code to change VerifyStatus to FALSE in the case of memory
+allocation failure and dbx fetching failure to avoid potential bypass
+issue.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit 929d1a24d12822942fd4f9fa83582e27f92de243)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 1efb2f96cdcc..ed5dbf26b041 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1459,15 +1459,26 @@ IsAllowedByDb (
+             DbxDataSize = 0;
+             Status   = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, NULL);
+             if (Status != EFI_BUFFER_TOO_SMALL) {
++              if (Status != EFI_NOT_FOUND) {
++                VerifyStatus = FALSE;
++              }
+               goto Done;
+             }
+             DbxData = (UINT8 *) AllocateZeroPool (DbxDataSize);
+             if (DbxData == NULL) {
++              //
++              // Force not-allowed-by-db to avoid bypass
++              //
++              VerifyStatus = FALSE;
+               goto Done;
+             }
+ 
+             Status = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, (VOID *) DbxData);
+             if (EFI_ERROR (Status)) {
++              //
++              // Force not-allowed-by-db to avoid bypass
++              //
++              VerifyStatus = FALSE;
+               goto Done;
+             }
+ 
+-- 
+2.25.0
+
+
+From 0fb79f0611cf37deb0eef3ec0b555c87f8d6c2ba Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Thu, 10 Oct 2019 15:49:55 +0800
+Subject: [PATCH 16/21] SecurityPkg/DxeImageVerificationLib: refactor db/dbx
+ fetching code (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+The dbx fetching code inside the while/for-loop causes code hard to
+understand. Since there's no need to get dbx more than once, this patch
+simplify the code logic by moving related code to be outside the while-
+loop. db fetching code is also refined accordingly to reduce the indent
+level of code.
+
+More comments are also added or refined to explain more details.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit adc6898366298d1f64b91785e50095527f682758)
+---
+ .../DxeImageVerificationLib.c                 | 144 ++++++++++--------
+ 1 file changed, 83 insertions(+), 61 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index ed5dbf26b041..8739d1fa2946 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1412,76 +1412,92 @@ IsAllowedByDb (
+   RootCertSize      = 0;
+   VerifyStatus      = FALSE;
+ 
++  //
++  // Fetch 'db' content. If 'db' doesn't exist or encounters problem to get the
++  // data, return not-allowed-by-db (FALSE).
++  //
+   DataSize = 0;
+   Status   = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, NULL);
+-  if (Status == EFI_BUFFER_TOO_SMALL) {
+-    Data = (UINT8 *) AllocateZeroPool (DataSize);
+-    if (Data == NULL) {
+-      return VerifyStatus;
++  ASSERT (EFI_ERROR (Status));
++  if (Status != EFI_BUFFER_TOO_SMALL) {
++    return VerifyStatus;
++  }
++
++  Data = (UINT8 *) AllocateZeroPool (DataSize);
++  if (Data == NULL) {
++    return VerifyStatus;
++  }
++
++  Status = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, (VOID *) Data);
++  if (EFI_ERROR (Status)) {
++    goto Done;
++  }
++
++  //
++  // Fetch 'dbx' content. If 'dbx' doesn't exist, continue to check 'db'.
++  // If any other errors occured, no need to check 'db' but just return
++  // not-allowed-by-db (FALSE) to avoid bypass.
++  //
++  DbxDataSize = 0;
++  Status      = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, NULL);
++  ASSERT (EFI_ERROR (Status));
++  if (Status != EFI_BUFFER_TOO_SMALL) {
++    if (Status != EFI_NOT_FOUND) {
++      goto Done;
++    }
++    //
++    // 'dbx' does not exist. Continue to check 'db'.
++    //
++  } else {
++    //
++    // 'dbx' exists. Get its content.
++    //
++    DbxData = (UINT8 *) AllocateZeroPool (DbxDataSize);
++    if (DbxData == NULL) {
++      goto Done;
+     }
+ 
+-    Status = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, (VOID *) Data);
++    Status = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, (VOID *) DbxData);
+     if (EFI_ERROR (Status)) {
+       goto Done;
+     }
++  }
+ 
+-    //
+-    // Find X509 certificate in Signature List to verify the signature in pkcs7 signed data.
+-    //
+-    CertList = (EFI_SIGNATURE_LIST *) Data;
+-    while ((DataSize > 0) && (DataSize >= CertList->SignatureListSize)) {
+-      if (CompareGuid (&CertList->SignatureType, &gEfiCertX509Guid)) {
+-        CertData  = (EFI_SIGNATURE_DATA *) ((UINT8 *) CertList + sizeof (EFI_SIGNATURE_LIST) + CertList->SignatureHeaderSize);
+-        CertCount = (CertList->SignatureListSize - sizeof (EFI_SIGNATURE_LIST) - CertList->SignatureHeaderSize) / CertList->SignatureSize;
++  //
++  // Find X509 certificate in Signature List to verify the signature in pkcs7 signed data.
++  //
++  CertList = (EFI_SIGNATURE_LIST *) Data;
++  while ((DataSize > 0) && (DataSize >= CertList->SignatureListSize)) {
++    if (CompareGuid (&CertList->SignatureType, &gEfiCertX509Guid)) {
++      CertData  = (EFI_SIGNATURE_DATA *) ((UINT8 *) CertList + sizeof (EFI_SIGNATURE_LIST) + CertList->SignatureHeaderSize);
++      CertCount = (CertList->SignatureListSize - sizeof (EFI_SIGNATURE_LIST) - CertList->SignatureHeaderSize) / CertList->SignatureSize;
+ 
+-        for (Index = 0; Index < CertCount; Index++) {
+-          //
+-          // Iterate each Signature Data Node within this CertList for verify.
+-          //
+-          RootCert     = CertData->SignatureData;
+-          RootCertSize = CertList->SignatureSize - sizeof (EFI_GUID);
++      for (Index = 0; Index < CertCount; Index++) {
++        //
++        // Iterate each Signature Data Node within this CertList for verify.
++        //
++        RootCert     = CertData->SignatureData;
++        RootCertSize = CertList->SignatureSize - sizeof (EFI_GUID);
+ 
++        //
++        // Call AuthenticodeVerify library to Verify Authenticode struct.
++        //
++        VerifyStatus = AuthenticodeVerify (
++                         AuthData,
++                         AuthDataSize,
++                         RootCert,
++                         RootCertSize,
++                         mImageDigest,
++                         mImageDigestSize
++                         );
++        if (VerifyStatus) {
+           //
+-          // Call AuthenticodeVerify library to Verify Authenticode struct.
++          // The image is signed and its signature is found in 'db'.
+           //
+-          VerifyStatus = AuthenticodeVerify (
+-                           AuthData,
+-                           AuthDataSize,
+-                           RootCert,
+-                           RootCertSize,
+-                           mImageDigest,
+-                           mImageDigestSize
+-                           );
+-          if (VerifyStatus) {
++          if (DbxData != NULL) {
+             //
+             // Here We still need to check if this RootCert's Hash is revoked
+             //
+-            DbxDataSize = 0;
+-            Status   = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, NULL);
+-            if (Status != EFI_BUFFER_TOO_SMALL) {
+-              if (Status != EFI_NOT_FOUND) {
+-                VerifyStatus = FALSE;
+-              }
+-              goto Done;
+-            }
+-            DbxData = (UINT8 *) AllocateZeroPool (DbxDataSize);
+-            if (DbxData == NULL) {
+-              //
+-              // Force not-allowed-by-db to avoid bypass
+-              //
+-              VerifyStatus = FALSE;
+-              goto Done;
+-            }
+-
+-            Status = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DbxDataSize, (VOID *) DbxData);
+-            if (EFI_ERROR (Status)) {
+-              //
+-              // Force not-allowed-by-db to avoid bypass
+-              //
+-              VerifyStatus = FALSE;
+-              goto Done;
+-            }
+-
+             if (IsCertHashFoundInDatabase (RootCert, RootCertSize, (EFI_SIGNATURE_LIST *)DbxData, DbxDataSize, &RevocationTime)) {
+               //
+               // Check the timestamp signature and signing time to determine if the RootCert can be trusted.
+@@ -1491,17 +1507,23 @@ IsAllowedByDb (
+                 DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed and signature is accepted by DB, but its root cert failed the timestamp check.\n"));
+               }
+             }
+-
+-            goto Done;
+           }
+ 
+-          CertData = (EFI_SIGNATURE_DATA *) ((UINT8 *) CertData + CertList->SignatureSize);
++          //
++          // There's no 'dbx' to check revocation time against (must-be pass),
++          // or, there's revocation time found in 'dbx' and checked againt 'dbt'
++          // (maybe pass or fail, depending on timestamp compare result). Either
++          // way the verification job has been completed at this point.
++          //
++          goto Done;
+         }
++
++        CertData = (EFI_SIGNATURE_DATA *) ((UINT8 *) CertData + CertList->SignatureSize);
+       }
+-
+-      DataSize -= CertList->SignatureListSize;
+-      CertList = (EFI_SIGNATURE_LIST *) ((UINT8 *) CertList + CertList->SignatureListSize);
+     }
++
++    DataSize -= CertList->SignatureListSize;
++    CertList = (EFI_SIGNATURE_LIST *) ((UINT8 *) CertList + CertList->SignatureListSize);
+   }
+ 
+ Done:
+-- 
+2.25.0
+
+
+From fad31a3ab1bb12812f00d599d768b3055935a84d Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Mon, 16 Sep 2019 16:52:58 +0800
+Subject: [PATCH 17/21] SecurityPkg/DxeImageVerificationLib: Differentiate
+ error/search result (1) (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+To avoid false-negative issue in check hash against dbx, both error
+condition (as return value) and check result (as out parameter) of
+IsCertHashFoundInDatabase() are added. So the caller of this function
+will know exactly if a failure is caused by a black list hit or
+other error happening, and enforce a more secure operation to prevent
+secure boot from being bypassed. For a white list check (db), there's
+no such necessity.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit a83dbf008cc73406cbdc0d5ac3164cc19fff6683)
+---
+ .../DxeImageVerificationLib.c                 | 64 ++++++++++++-------
+ 1 file changed, 42 insertions(+), 22 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 8739d1fa2946..85261ba7f2ae 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -822,22 +822,23 @@ AddImageExeInfo (
+   @param[in]  SignatureList     Pointer to the Signature List in forbidden database.
+   @param[in]  SignatureListSize Size of Signature List.
+   @param[out] RevocationTime    Return the time that the certificate was revoked.
++  @param[out] IsFound           Search result. Only valid if EFI_SUCCESS returned.
+ 
+-  @return TRUE   The certificate hash is found in the forbidden database.
+-  @return FALSE  The certificate hash is not found in the forbidden database.
++  @retval EFI_SUCCESS           Finished the search without any error.
++  @retval Others                Error occurred in the search of database.
+ 
+ **/
+-BOOLEAN
++EFI_STATUS
+ IsCertHashFoundInDatabase (
+   IN  UINT8               *Certificate,
+   IN  UINTN               CertSize,
+   IN  EFI_SIGNATURE_LIST  *SignatureList,
+   IN  UINTN               SignatureListSize,
+-  OUT EFI_TIME            *RevocationTime
++  OUT EFI_TIME            *RevocationTime,
++  OUT BOOLEAN             *IsFound
+   )
+ {
+-  BOOLEAN             IsFound;
+-  BOOLEAN             Status;
++  EFI_STATUS          Status;
+   EFI_SIGNATURE_LIST  *DbxList;
+   UINTN               DbxSize;
+   EFI_SIGNATURE_DATA  *CertHash;
+@@ -851,21 +852,22 @@ IsCertHashFoundInDatabase (
+   UINT8               *TBSCert;
+   UINTN               TBSCertSize;
+ 
+-  IsFound  = FALSE;
++  Status   = EFI_ABORTED;
++  *IsFound = FALSE;
+   DbxList  = SignatureList;
+   DbxSize  = SignatureListSize;
+   HashCtx  = NULL;
+   HashAlg  = HASHALG_MAX;
+ 
+   if ((RevocationTime == NULL) || (DbxList == NULL)) {
+-    return FALSE;
++    return EFI_INVALID_PARAMETER;
+   }
+ 
+   //
+   // Retrieve the TBSCertificate from the X.509 Certificate.
+   //
+   if (!X509GetTBSCert (Certificate, CertSize, &TBSCert, &TBSCertSize)) {
+-    return FALSE;
++    return Status;
+   }
+ 
+   while ((DbxSize > 0) && (SignatureListSize >= DbxList->SignatureListSize)) {
+@@ -895,16 +897,13 @@ IsCertHashFoundInDatabase (
+     if (HashCtx == NULL) {
+       goto Done;
+     }
+-    Status = mHash[HashAlg].HashInit (HashCtx);
+-    if (!Status) {
++    if (!mHash[HashAlg].HashInit (HashCtx)) {
+       goto Done;
+     }
+-    Status = mHash[HashAlg].HashUpdate (HashCtx, TBSCert, TBSCertSize);
+-    if (!Status) {
++    if (!mHash[HashAlg].HashUpdate (HashCtx, TBSCert, TBSCertSize)) {
+       goto Done;
+     }
+-    Status = mHash[HashAlg].HashFinal (HashCtx, CertDigest);
+-    if (!Status) {
++    if (!mHash[HashAlg].HashFinal (HashCtx, CertDigest)) {
+       goto Done;
+     }
+ 
+@@ -923,7 +922,8 @@ IsCertHashFoundInDatabase (
+         //
+         // Hash of Certificate is found in forbidden database.
+         //
+-        IsFound = TRUE;
++        Status   = EFI_SUCCESS;
++        *IsFound = TRUE;
+ 
+         //
+         // Return the revocation time.
+@@ -938,12 +938,14 @@ IsCertHashFoundInDatabase (
+     DbxList  = (EFI_SIGNATURE_LIST *) ((UINT8 *) DbxList + DbxList->SignatureListSize);
+   }
+ 
++  Status = EFI_SUCCESS;
++
+ Done:
+   if (HashCtx != NULL) {
+     FreePool (HashCtx);
+   }
+ 
+-  return IsFound;
++  return Status;
+ }
+ 
+ /**
+@@ -1216,6 +1218,7 @@ IsForbiddenByDbx (
+ {
+   EFI_STATUS                Status;
+   BOOLEAN                   IsForbidden;
++  BOOLEAN                   IsFound;
+   UINT8                     *Data;
+   UINTN                     DataSize;
+   EFI_SIGNATURE_LIST        *CertList;
+@@ -1344,20 +1347,29 @@ IsForbiddenByDbx (
+     //
+     CertPtr = CertPtr + sizeof (UINT32) + CertSize;
+ 
+-    if (IsCertHashFoundInDatabase (Cert, CertSize, (EFI_SIGNATURE_LIST *)Data, DataSize, &RevocationTime)) {
++    Status = IsCertHashFoundInDatabase (Cert, CertSize, (EFI_SIGNATURE_LIST *)Data, DataSize, &RevocationTime, &IsFound);
++    if (EFI_ERROR (Status)) {
+       //
+-      // Check the timestamp signature and signing time to determine if the image can be trusted.
++      // Error in searching dbx. Consider it as 'found'. RevocationTime might
++      // not be valid in such situation.
+       //
+       IsForbidden = TRUE;
++    } else if (IsFound) {
++      //
++      // Found Cert in dbx successfully. Check the timestamp signature and
++      // signing time to determine if the image can be trusted.
++      //
+       if (PassTimestampCheck (AuthData, AuthDataSize, &RevocationTime)) {
+         IsForbidden = FALSE;
+         //
+         // Pass DBT check. Continue to check other certs in image signer's cert list against DBX, DBT
+         //
+         continue;
++      } else {
++        IsForbidden = TRUE;
++        DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but signature failed the timestamp check.\n"));
++        goto Done;
+       }
+-      DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but signature failed the timestamp check.\n"));
+-      goto Done;
+     }
+ 
+   }
+@@ -1392,6 +1404,7 @@ IsAllowedByDb (
+ {
+   EFI_STATUS                Status;
+   BOOLEAN                   VerifyStatus;
++  BOOLEAN                   IsFound;
+   EFI_SIGNATURE_LIST        *CertList;
+   EFI_SIGNATURE_DATA        *CertData;
+   UINTN                     DataSize;
+@@ -1498,7 +1511,14 @@ IsAllowedByDb (
+             //
+             // Here We still need to check if this RootCert's Hash is revoked
+             //
+-            if (IsCertHashFoundInDatabase (RootCert, RootCertSize, (EFI_SIGNATURE_LIST *)DbxData, DbxDataSize, &RevocationTime)) {
++            Status = IsCertHashFoundInDatabase (RootCert, RootCertSize, (EFI_SIGNATURE_LIST *)DbxData, DbxDataSize, &RevocationTime, &IsFound);
++            if (EFI_ERROR (Status)) {
++              //
++              // Error in searching dbx. Consider it as 'found'. RevocationTime might
++              // not be valid in such situation.
++              //
++              VerifyStatus = FALSE;
++            } else if (IsFound) {
+               //
+               // Check the timestamp signature and signing time to determine if the RootCert can be trusted.
+               //
+-- 
+2.25.0
+
+
+From afc84bb8b23aec482bed92d3e1b4eb8706eb74f6 Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Tue, 17 Sep 2019 11:04:33 +0800
+Subject: [PATCH 18/21] SecurityPkg/DxeImageVerificationLib: tighten default
+ result (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+All intermediate results inside this function will be checked and
+returned immediately upon any failure or error, like out-of-resource,
+hash calculation error or certificate retrieval failure.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit 5cd8be6079ea7e5638903b2f3da0f4c10ec7f1da)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 85261ba7f2ae..470a0d20efca 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1240,7 +1240,7 @@ IsForbiddenByDbx (
+   //
+   // Variable Initialization
+   //
+-  IsForbidden       = FALSE;
++  IsForbidden       = TRUE;
+   Data              = NULL;
+   CertList          = NULL;
+   CertData          = NULL;
+@@ -1257,7 +1257,14 @@ IsForbiddenByDbx (
+   //
+   DataSize = 0;
+   Status   = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, NULL);
++  ASSERT (EFI_ERROR (Status));
+   if (Status != EFI_BUFFER_TOO_SMALL) {
++    if (Status == EFI_NOT_FOUND) {
++      //
++      // Evidently not in dbx if the database doesn't exist.
++      //
++      IsForbidden = FALSE;
++    }
+     return IsForbidden;
+   }
+   Data = (UINT8 *) AllocateZeroPool (DataSize);
+@@ -1374,6 +1381,8 @@ IsForbiddenByDbx (
+ 
+   }
+ 
++  IsForbidden = FALSE;
++
+ Done:
+   if (Data != NULL) {
+     FreePool (Data);
+-- 
+2.25.0
+
+
+From 6f0cb956c5763479fc6d553da37033d1c89edf09 Mon Sep 17 00:00:00 2001
+From: Laszlo Ersek <lersek@redhat.com>
+Date: Wed, 25 Sep 2019 13:41:57 +0200
+Subject: [PATCH 19/21] SecurityPkg/DxeImageVerificationLib: plug Data leak in
+ IsForbiddenByDbx() (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+If the second GetVariable() call for "dbx" fails, in IsForbiddenByDbx(),
+we have to free Data. Jump to "Done" for that.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit cb30c8f25162e6d8142c6b098f14c1e4e7f125ce)
+---
+ .../Library/DxeImageVerificationLib/DxeImageVerificationLib.c   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 470a0d20efca..f20640af68b6 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -1274,7 +1274,7 @@ IsForbiddenByDbx (
+ 
+   Status = gRT->GetVariable (EFI_IMAGE_SECURITY_DATABASE1, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, (VOID *) Data);
+   if (EFI_ERROR (Status)) {
+-    return IsForbidden;
++    goto Done;
+   }
+ 
+   //
+-- 
+2.25.0
+
+
+From 3ed61eef265893a59cf0d3d6dc31c92f106ecd1a Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Thu, 10 Oct 2019 15:02:17 +0800
+Subject: [PATCH 20/21] SecurityPkg/DxeImageVerificationLib: Differentiate
+ error/search result (2) (CVE-2019-14575)
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+
+To avoid false-negative issue in check hash against dbx, both error
+condition (as return value) and check result (as out parameter) of
+IsSignatureFoundInDatabase() are added. So the caller of this function
+will know exactly if a failure is caused by a black list hit or
+other error happening, and enforce a more secure operation to prevent
+secure boot from being bypassed. For a white list check (db), there's
+no such necessity.
+
+All intermediate results inside this function will be checked and
+returned immediately upon any failure or error, like out-of-resource,
+hash calculation error or certificate retrieval failure.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit b1c11470598416c89c67b75c991fd0773bcbab9d)
+---
+ .../DxeImageVerificationLib.c                 | 77 ++++++++++++++-----
+ 1 file changed, 58 insertions(+), 19 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index f20640af68b6..0e1587bc3c3c 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -955,17 +955,19 @@ Done:
+   @param[in]  Signature           Pointer to signature that is searched for.
+   @param[in]  CertType            Pointer to hash algorithm.
+   @param[in]  SignatureSize       Size of Signature.
++  @param[out] IsFound             Search result. Only valid if EFI_SUCCESS returned
+ 
+-  @return TRUE                    Found the signature in the variable database.
+-  @return FALSE                   Not found the signature in the variable database.
++  @retval EFI_SUCCESS             Finished the search without any error.
++  @retval Others                  Error occurred in the search of database.
+ 
+ **/
+-BOOLEAN
++EFI_STATUS
+ IsSignatureFoundInDatabase (
+-  IN CHAR16             *VariableName,
+-  IN UINT8              *Signature,
+-  IN EFI_GUID           *CertType,
+-  IN UINTN              SignatureSize
++  IN  CHAR16            *VariableName,
++  IN  UINT8             *Signature,
++  IN  EFI_GUID          *CertType,
++  IN  UINTN             SignatureSize,
++  OUT BOOLEAN           *IsFound
+   )
+ {
+   EFI_STATUS          Status;
+@@ -975,22 +977,28 @@ IsSignatureFoundInDatabase (
+   UINT8               *Data;
+   UINTN               Index;
+   UINTN               CertCount;
+-  BOOLEAN             IsFound;
+ 
+   //
+   // Read signature database variable.
+   //
+-  IsFound   = FALSE;
++  *IsFound  = FALSE;
+   Data      = NULL;
+   DataSize  = 0;
+   Status    = gRT->GetVariable (VariableName, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, NULL);
+   if (Status != EFI_BUFFER_TOO_SMALL) {
+-    return FALSE;
++    if (Status == EFI_NOT_FOUND) {
++      //
++      // No database, no need to search.
++      //
++      Status = EFI_SUCCESS;
++    }
++
++    return Status;
+   }
+ 
+   Data = (UINT8 *) AllocateZeroPool (DataSize);
+   if (Data == NULL) {
+-    return FALSE;
++    return EFI_OUT_OF_RESOURCES;
+   }
+ 
+   Status = gRT->GetVariable (VariableName, &gEfiImageSecurityDatabaseGuid, NULL, &DataSize, Data);
+@@ -1010,7 +1018,7 @@ IsSignatureFoundInDatabase (
+           //
+           // Find the signature in database.
+           //
+-          IsFound = TRUE;
++          *IsFound = TRUE;
+           //
+           // Entries in UEFI_IMAGE_SECURITY_DATABASE that are used to validate image should be measured
+           //
+@@ -1023,7 +1031,7 @@ IsSignatureFoundInDatabase (
+         Cert = (EFI_SIGNATURE_DATA *) ((UINT8 *) Cert + CertList->SignatureSize);
+       }
+ 
+-      if (IsFound) {
++      if (*IsFound) {
+         break;
+       }
+     }
+@@ -1037,7 +1045,7 @@ Done:
+     FreePool (Data);
+   }
+ 
+-  return IsFound;
++  return Status;
+ }
+ 
+ /**
+@@ -1648,6 +1656,8 @@ DxeImageVerificationHandler (
+   CHAR16                               *NameStr;
+   RETURN_STATUS                        PeCoffStatus;
+   EFI_STATUS                           HashStatus;
++  EFI_STATUS                           DbStatus;
++  BOOLEAN                              IsFound;
+ 
+   SignatureList     = NULL;
+   SignatureListSize = 0;
+@@ -1656,7 +1666,7 @@ DxeImageVerificationHandler (
+   PkcsCertData      = NULL;
+   Action            = EFI_IMAGE_EXECUTION_AUTH_UNTESTED;
+   IsVerified        = FALSE;
+-
++  IsFound           = FALSE;
+ 
+   //
+   // Check the image type and get policy setting.
+@@ -1798,7 +1808,14 @@ DxeImageVerificationHandler (
+       goto Failed;
+     }
+ 
+-    if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE1, mImageDigest, &mCertType, mImageDigestSize)) {
++    DbStatus = IsSignatureFoundInDatabase (
++                 EFI_IMAGE_SECURITY_DATABASE1,
++                 mImageDigest,
++                 &mCertType,
++                 mImageDigestSize,
++                 &IsFound
++                 );
++    if (EFI_ERROR (DbStatus) || IsFound) {
+       //
+       // Image Hash is in forbidden database (DBX).
+       //
+@@ -1806,7 +1823,14 @@ DxeImageVerificationHandler (
+       goto Failed;
+     }
+ 
+-    if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE, mImageDigest, &mCertType, mImageDigestSize)) {
++    DbStatus = IsSignatureFoundInDatabase (
++                 EFI_IMAGE_SECURITY_DATABASE,
++                 mImageDigest,
++                 &mCertType,
++                 mImageDigestSize,
++                 &IsFound
++                 );
++    if (!EFI_ERROR (DbStatus) && IsFound) {
+       //
+       // Image Hash is in allowed database (DB).
+       //
+@@ -1894,14 +1918,29 @@ DxeImageVerificationHandler (
+     //
+     // Check the image's hash value.
+     //
+-    if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE1, mImageDigest, &mCertType, mImageDigestSize)) {
++    DbStatus = IsSignatureFoundInDatabase (
++                 EFI_IMAGE_SECURITY_DATABASE1,
++                 mImageDigest,
++                 &mCertType,
++                 mImageDigestSize,
++                 &IsFound
++                 );
++    if (EFI_ERROR (DbStatus) || IsFound) {
+       Action = EFI_IMAGE_EXECUTION_AUTH_SIG_FOUND;
+       DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but %s hash of image is found in DBX.\n", mHashTypeStr));
+       IsVerified = FALSE;
+       break;
+     }
++
+     if (!IsVerified) {
+-      if (IsSignatureFoundInDatabase (EFI_IMAGE_SECURITY_DATABASE, mImageDigest, &mCertType, mImageDigestSize)) {
++      DbStatus = IsSignatureFoundInDatabase (
++                   EFI_IMAGE_SECURITY_DATABASE,
++                   mImageDigest,
++                   &mCertType,
++                   mImageDigestSize,
++                   &IsFound
++                   );
++      if (!EFI_ERROR (DbStatus) && IsFound) {
+         IsVerified = TRUE;
+       } else {
+         DEBUG ((DEBUG_INFO, "DxeImageVerificationLib: Image is signed but signature is not allowed by DB and %s hash of image is not found in DB/DBX.\n", mHashTypeStr));
+-- 
+2.25.0
+
+
+From 3391fa5e0db3b438bfb9587912faed75ac7c3a94 Mon Sep 17 00:00:00 2001
+From: Jian J Wang <jian.j.wang@intel.com>
+Date: Fri, 14 Feb 2020 13:50:32 +0800
+Subject: [PATCH 21/21] SecurityPkg/DxeImageVerificationLib: change
+ IsCertHashFoundInDatabase name (CVE-2019-14575)
+
+IsCertHashFoundInDatabase() is actually used only for searching dbx,
+according to the function logic, its comments and its use cases. Changing
+it to IsCertHashFoundInDbx to avoid confusion.
+
+REF: https://bugzilla.tianocore.org/show_bug.cgi?id=1608
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Chao Zhang <chao.b.zhang@intel.com>
+Signed-off-by: Jian J Wang <jian.j.wang@intel.com>
+Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
+(cherry picked from commit c230c002accc4281ccc57bba7153a9b2d9b9ccd3)
+---
+ .../DxeImageVerificationLib/DxeImageVerificationLib.c       | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+index 0e1587bc3c3c..b7fa8ea8c55c 100644
+--- a/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
++++ b/SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.c
+@@ -829,7 +829,7 @@ AddImageExeInfo (
+ 
+ **/
+ EFI_STATUS
+-IsCertHashFoundInDatabase (
++IsCertHashFoundInDbx (
+   IN  UINT8               *Certificate,
+   IN  UINTN               CertSize,
+   IN  EFI_SIGNATURE_LIST  *SignatureList,
+@@ -1362,7 +1362,7 @@ IsForbiddenByDbx (
+     //
+     CertPtr = CertPtr + sizeof (UINT32) + CertSize;
+ 
+-    Status = IsCertHashFoundInDatabase (Cert, CertSize, (EFI_SIGNATURE_LIST *)Data, DataSize, &RevocationTime, &IsFound);
++    Status = IsCertHashFoundInDbx (Cert, CertSize, (EFI_SIGNATURE_LIST *)Data, DataSize, &RevocationTime, &IsFound);
+     if (EFI_ERROR (Status)) {
+       //
+       // Error in searching dbx. Consider it as 'found'. RevocationTime might
+@@ -1528,7 +1528,7 @@ IsAllowedByDb (
+             //
+             // Here We still need to check if this RootCert's Hash is revoked
+             //
+-            Status = IsCertHashFoundInDatabase (RootCert, RootCertSize, (EFI_SIGNATURE_LIST *)DbxData, DbxDataSize, &RevocationTime, &IsFound);
++            Status = IsCertHashFoundInDbx (RootCert, RootCertSize, (EFI_SIGNATURE_LIST *)DbxData, DbxDataSize, &RevocationTime, &IsFound);
+             if (EFI_ERROR (Status)) {
+               //
+               // Error in searching dbx. Consider it as 'found'. RevocationTime might
+-- 
+2.25.0
+
