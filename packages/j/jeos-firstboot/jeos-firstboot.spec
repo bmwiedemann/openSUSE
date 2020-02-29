@@ -1,7 +1,7 @@
 #
 # spec file for package jeos-firstboot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        0.0+git20191127.be35ecb
+Version:        0.0+git20200226.95cfe28
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT

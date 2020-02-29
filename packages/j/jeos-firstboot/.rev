@@ -334,4 +334,18 @@
     <comment>Improvements on RPi wireless config dialog</comment>
     <requestid>751396</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>374b73496697fc7141d6106fafae9b3a</srcmd5>
+    <version>0.0+git20200226.95cfe28</version>
+    <time>1583007619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200226.95cfe28:
+  * Show license on openSUSE as well (bsc#1164583)
+  * Improve variable names on net config
+  * Fix EULA message position
+  * Fix comments typo
+  * Improve coding style
+</comment>
+    <requestid>779535</requestid>
+  </revision>
 </revisionlist>
