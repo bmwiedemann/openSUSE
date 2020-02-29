@@ -621,4 +621,12 @@
   the vnc user to the shadow group</comment>
     <requestid>771558</requestid>
   </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>1f000ec358bf8a90142571187e107a8f</srcmd5>
+    <version>1.10.0</version>
+    <time>1583007494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778811</requestid>
+  </revision>
 </revisionlist>
