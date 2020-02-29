@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 08:12:00 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- big endian fixes
+
+-------------------------------------------------------------------
+Tue Feb 25 14:17:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64/armv7 with:
+  * mozilla-bmo1610814.patch (boo#1164845, bmo#1610814)
+
+-------------------------------------------------------------------
 Thu Feb 20 13:40:59 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 73.0.1
@@ -7,7 +18,7 @@ Thu Feb 20 13:40:59 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
   * Fixed Firefox unexpectedly exiting when leaving Print Preview mode
     (bmo#1611133)
   * Fixed crashes when playing encrypted content on some Linux systems
-    (bmo#1614535)
+    (bmo#1614535, boo#1164646)
 - start in wayland mode when running under wayland session
 
 -------------------------------------------------------------------

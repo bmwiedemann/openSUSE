@@ -4294,4 +4294,14 @@
 - start in wayland mode when running under wayland session</comment>
     <requestid>777864</requestid>
   </revision>
+  <revision rev="306" vrev="2">
+    <srcmd5>01e091053a02ac60ac6d0c261fa02a6b</srcmd5>
+    <version>73.0.1</version>
+    <time>1583007630</time>
+    <user>dimstar_suse</user>
+    <comment>- big endian fixes
+- Fix build on aarch64/armv7 with:
+  * mozilla-bmo1610814.patch (boo#1164845, bmo#1610814)</comment>
+    <requestid>779878</requestid>
+  </revision>
 </revisionlist>

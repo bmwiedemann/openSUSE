@@ -23,7 +23,7 @@ diff -r 0e579dcbf732 gfx/2d/ConvolutionFilter.cpp
 +
  void ConvolutionFilter::ConvolveHorizontally(const uint8_t* aSrc, uint8_t* aDst,
                                               bool aHasAlpha) {
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +    int outputSize = mFilter->numValues();
 +
 +    // Input size isn't handed in, so we have to calculate it quickly
@@ -40,7 +40,7 @@ diff -r 0e579dcbf732 gfx/2d/ConvolutionFilter.cpp
 +
    SkOpts::convolve_horizontally(aSrc, *mFilter, aDst, aHasAlpha);
 +
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +    ByteSwapArray((uint8_t*)aSrc, inputSize);
 +    ByteSwapArray(aDst, outputSize);
 +#endif
@@ -52,7 +52,7 @@ diff -r 0e579dcbf732 gfx/2d/ConvolutionFilter.cpp
    auto filterValues =
        mFilter->FilterForValue(aRowIndex, &filterOffset, &filterLength);
 +
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +  for (int filterY = 0; filterY < filterLength; filterY++) {
 +      // Skia only knows LE, so we have to swizzle the input
 +    ByteSwapArray(aSrc[filterY], aRowSize);
@@ -62,7 +62,7 @@ diff -r 0e579dcbf732 gfx/2d/ConvolutionFilter.cpp
    SkOpts::convolve_vertically(filterValues, filterLength, aSrc, aRowSize, aDst,
                                aHasAlpha);
 +
-+#if MOZ_BIG_ENDIAN
++#if MOZ_BIG_ENDIAN()
 +  // After skia is finished, we swizzle back to BE, in case
 +  // the input is used again somewhere else
 +  for (int filterY = 0; filterY < filterLength; filterY++) {
