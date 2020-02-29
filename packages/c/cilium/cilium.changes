@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:16:05 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Use %requires_eq for cilium-proxy.
+
+-------------------------------------------------------------------
+Thu Feb 27 11:35:39 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add cilium-proxy as a runtime dependency.
+
+-------------------------------------------------------------------
+Mon Feb 24 23:50:04 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Build with correct cilium-proxy version string.
+
+-------------------------------------------------------------------
+Mon Feb 24 22:59:42 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add upstream patches which fix running Cilium on aarch64 and
+  remove dependency on glibc:
+  * 0001-option-mark-keep-bpf-templates-as-deprecated.patch
+  * 0002-make-remove-the-need-for-go-bindata.patch
+  * 0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
+- Add downstream patch which makes helm charts compatible with
+  openSUSE images:
+  * 0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
+
+-------------------------------------------------------------------
+Mon Feb 24 18:35:55 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 1.7.0:
+  * Major changes
+    - Add direct server return (DSR) for NodePort BPF
+    - Add support for k8s 1.17
+    - Add support for k8s endpoint slice
+    - Add support for L7 visibility via pod annotations
+    - Clusterwide K8s Cilium Network Policies
+    - Envoy TLS support with header imposition
+  * Bugfixes
+    - Add better mechanism to detect if k8s caches are synced
+      against k8s
+    - api: Add missing annotations to generate DeepCopy for new
+      status fields
+    - bpf: Fix proxy redirection for egress programs
+    - bpf: Remove POLICY_MAP from bpf_netdev and bpf_overlay
+    - cilium: use %v for dumping frontend struct on error
+    - Correct clustermesh identity sync kvstore backend usage (to
+      actually use the remote)
+    - daemon: Upgrade spf13/viper
+    - eni: Check instance existence before resolving deficit
+    - Filter out bpftool probes emitting dmesg messages
+    - Fix cilium daemonset deletion on AKS
+    - Fix concurrent access of a variable used for metrics
+    - Fix issue (#10092) which incorrectly configured route MTU
+      with encryption and tunnel enabled.
+    - Fix memory corruption on clusters with IPv6 and NodePort
+      enabled
+    - Fix node-port default route detection in case there multiple
+      default entries with same ifindex.
+    - Fix regression to avoid freeing alive IPs
+    - Fix regular service lookup in node-port range in case of
+      host-reachable services.
+    - Fix Unlock handling for kvstore locks
+    - Fix vishvananda/netlink library's VethPeerIndex() stack
+      corruption with 4.20+ kernels.
+    - fqdn: Support setting tofqdns-min-ttl to 0
+    - health: add ipv6 health check status to cilium health status
+      output
+    - HostToContainer propagation for /sys/fs/bpf
+    - ipam: Protect release from releasing alive IP 
+    - ipcache: Add probe to check for dump capability to support
+      delete
+    - ipsec: fix connectivity after node reboots
+    - k8s: Fix Service.DeepEquals for ExternalIP
+    - kubernetes: Disable LocalNodeRoute while chaining
+    - node: Provide context in log when restoring router addresses
+    - operator: only enable kvstore watcher if kvstore is enabled
+    - pkg/bpf: Protect each uintptr with runtime.KeepAlive
+    - pkg/endpoint: access endpoint state safely across go routines
+    - pkg/ip: fix cilium status output for big CIDR ranges
+    - policy: Don't open localhost when allowing L7 traffic
+    - policy: Expose L3 selectors within endpoint JSON
+
+-------------------------------------------------------------------
+Thu Feb 20 11:14:01 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Remove quick-install.yaml file, ship only helm chart instead.
+
+-------------------------------------------------------------------
 Mon Dec 23 13:20:38 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Update to version 1.6.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package cilium
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %endif
 
 Name:           cilium
-Version:        1.6.5
+Version:        1.7.0
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -44,12 +44,20 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        cilium-cni-install
 Source3:        cilium-cni-uninstall
+# PATCH-FIX-UPSTREAM 0001-option-mark-keep-bpf-templates-as-deprecated.patch
+Patch0:         0001-option-mark-keep-bpf-templates-as-deprecated.patch
+# PATCH-FIX-UPSTREAM 0002-make-remove-the-need-for-go-bindata.patch
+Patch1:         0002-make-remove-the-need-for-go-bindata.patch
+# PATCH-FIX-UPSTREAM 0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
+Patch2:         0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
+# PATCH-FIX-OPENSUSE 0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
+# TODO(mrostecki): Submit it upstream after we confirm that our images work 100%
+# fine, also on aarch64.
+Patch3:         0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
+# Cilium needs to be aware of the version string of cilium-proxy
+BuildRequires:  cilium-proxy
 BuildRequires:  clang
 BuildRequires:  git
-BuildRequires:  glibc-devel
-# glibc-devel-32bit is needed to compile bpf objects
-# https://github.com/cilium/cilium/issues/368
-BuildRequires:  glibc-devel-32bit
 BuildRequires:  golang-github-jteeuwen-go-bindata
 BuildRequires:  golang-packaging
 %if 0%{?suse_version} > 1510 && 0%{?is_opensuse}
@@ -60,27 +68,27 @@ BuildRequires:  llvm
 BuildRequires:  protobuf-devel
 BuildRequires:  shadow
 BuildRequires:  unzip
-BuildRequires:  golang(API) >= 1.10
+BuildRequires:  golang(API) = 1.13
 Requires:       awk
 Requires:       binutils
-# clang and glibc headers are needed as runtime dependencies for compiling BPF
-# programs by cilium
+%requires_eq    cilium-proxy
+# clang is needed as runtime dependency for compiling BPF programs by cilium
 Requires:       clang
 # Although clang is used as a compiler for BPF programs, they need to have
 # libgcc and libgcc_s linked in.
 # https://github.com/cilium/cilium/issues/7273
 Requires:       gcc
-Requires:       glibc-devel
-# glibc-devel-32bit is needed to compile bpf objects
-# https://github.com/cilium/cilium/issues/368
-Requires:       glibc-devel-32bit
+Requires:       gzip
 Requires:       iproute2
 # Despite the fact that cilium is using BPF programs and aims to replace
 # iptables for container security policies, iptables is still needed for
 # defining few rules which redirect the traffic from kube-proxy to cilium. Then
 # cilium replaces some of kube-proxy functionality, using BPF programs. So, in
 # fact, cilium uses few iptables rules to prevent iptables usage. :)
-Requires:       gzip
+#
+# TODO(mrostecki): (27-02-2020) That comment above is actually quite old. After
+# upgrade to 1.7.x we can get rid of kube-proxy and thus get rid of iptables.
+# But I need to test that properly.
 Requires:       iptables
 Requires:       llvm
 Requires:       protobuf-c
@@ -187,7 +195,7 @@ This package contains the yaml file requried to download and run Cilium
 containers in a Kubernetes cluster.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %goprep %{provider_prefix}
@@ -195,12 +203,13 @@ export GOPATH=%{_builddir}/go
 cd $GOPATH/src/%{provider_prefix}
 
 export EXTRA_GOBUILD_FLAGS="-v -p 4 -x -buildmode=pie"
+export CILIUM_ENVOY_SHA="$(cilium-envoy --version | cut -d : -f 2 | xargs echo -n)"
 
 sed -i '/groupadd /s/^/#/' daemon/Makefile
 sed -i '/groupadd /s/^/#/' operator/Makefile
 # create bindata.go which is no included in the source as it is ignored
 # because of .gitignore
-make -C daemon apply-bindata
+make -C daemon CILIUM_ENVOY_SHA="${CILIUM_ENVOY_SHA}"
 
 %if 0%{?suse_version} > 1510 && 0%{?is_opensuse}
 make precheck
@@ -209,7 +218,7 @@ make ineffassign
 make logging-subsys-field
 %endif
 
-make build
+make build CILIUM_ENVOY_SHA="${CILIUM_ENVOY_SHA}"
 
 %install
 export GOPATH=%{_builddir}/go
@@ -235,21 +244,27 @@ install -D -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/cilium-cni-uninstall
 install -D -m 0755 contrib/packaging/docker/init-container.sh %{buildroot}/%{_bindir}/cilium-init
 install -D -m 0644 contrib/systemd/cilium %{buildroot}%{_fillupdir}/sysconfig.cilium
 install -D -m 0644 proxylib/libcilium.h %{buildroot}%{_includedir}/libcilium.h
-install -D -m 0644 install/kubernetes/quick-install.yaml %{buildroot}%{_datadir}/k8s-yaml/cilium/quick-install.yaml
 pushd install/kubernetes/cilium
 for yaml_file in $(find . -type f -name "*.yaml"); do
     install -D -m 0644 ${yaml_file} %{buildroot}%{_datadir}/k8s-helm/cilium/${yaml_file}
 done
 popd
+
+# Adjust Helm charts values to our images.
 sed -i \
-    -e 's|image: \"docker.io/cilium/cilium:.*|image: \"registry.opensuse.org/kubic/cilium:%{version}\"|' \
-    -e 's|image: \"docker.io/cilium/cilium-init:.*|image: \"registry.opensuse.org/kubic/cilium-init:%{version}\"|' \
-    -e 's|image: \"docker.io/cilium/operator:.*|image: \"registry.opensuse.org/kubic/cilium-operator:%{version}\"|' \
-    -e 's|/init-container.sh|cilium-init|g' \
-    -e 's|/cni-install.sh|cilium-cni-install|g' \
-    -e 's|/cni-uninstall.sh|cilium-cni-uninstall|g' \
-    -e 's|--config-dir=/tmp/cilium/config-map|--config-dir=/tmp/cilium/config-map\n        - --disable-envoy-version-check|g' \
-    %{buildroot}%{_datadir}/k8s-yaml/cilium/quick-install.yaml
+    -e 's|integration: none|integration: crio|' \
+    -e 's|registry: docker.io/cilium|registry: registry.opensuse.org/kubic|' \
+    -e 's|tag: v%{version}|tag: %{version}|' \
+    %{buildroot}%{_datadir}/k8s-helm/cilium/values.yaml
+sed -i \
+    -e 's|cniInstallScript: /cni-install.sh|cilium-cni-install|' \
+    -e 's|cniUninstallScript: /cni-uninstall.sh|cilium-cni-uninstall|' \
+    -e 's|initImage: cilium|initImage: cilium-init|' \
+    -e 's|initScript: /init-container.sh|initScript: cilium-init|' \
+    %{buildroot}%{_datadir}/k8s-helm/cilium/charts/agent/values.yaml
+sed -i \
+    -e 's|image: operator|image: cilium-operator|' \
+    %{buildroot}%{_datadir}/k8s-helm/cilium/charts/operator/values.yaml
 
 mkdir -p %{buildroot}%{bash_completion_dir}
 %{buildroot}%{_bindir}/cilium completion > %{buildroot}%{bash_completion_dir}/cilium
@@ -304,7 +319,7 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_bindir}/cilium-health-responder
 %{_bindir}/cilium-map-migrate
 %{_bindir}/cilium-node-monitor
-%{_bindir}/cilium-ring-dump
+%{_bindir}/maptool
 %license LICENSE
 
 %files cni
@@ -335,9 +350,6 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_libdir}/libcilium.so
 
 %files k8s-yaml
-%dir %{_datarootdir}/k8s-yaml
-%dir %{_datarootdir}/k8s-yaml/cilium
-%{_datadir}/k8s-yaml/cilium/quick-install.yaml
 %dir %{_datadir}/k8s-helm
 %{_datadir}/k8s-helm/cilium
 

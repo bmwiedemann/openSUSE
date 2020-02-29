@@ -237,4 +237,12 @@
     <comment></comment>
     <requestid>758994</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dd2e3b940f976a0f07bc6b4a7399f6d1</srcmd5>
+    <version>1.7.0</version>
+    <time>1583007590</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %requires_eq for cilium-proxy. (forwarded request 779897 from mrostecki)</comment>
+    <requestid>779898</requestid>
+  </revision>
 </revisionlist>
