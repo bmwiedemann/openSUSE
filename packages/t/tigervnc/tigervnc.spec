@@ -42,7 +42,7 @@ BuildRequires:  cmake
 BuildRequires:  fltk-devel >= 1.3.3
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-c++
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8.0
 BuildRequires:  jpackage-utils
 BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
