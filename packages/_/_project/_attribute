@@ -99,7 +99,7 @@
   boo#1162853: '20200228'
   boo#1163655: '20200218'
   boo#1163766: '20200228'
-  boo#1164313: '20200227'
+  boo#1164313: '20200228'
   bsc#1114673: '20191202'
   bsc#1120957: '20190508'
   bsc#1126782: '20191016'
@@ -238,7 +238,7 @@
   poo#63778: '20200225'
   poo#63880: '20200226'
   poo#63892: '20200227'
-  poo#63910: '20200227'
+  poo#63910: '20200228'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -444,7 +444,7 @@ set_snapshot_number: True</value>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
 published: '20200227'
-publishing: '20200227'
+publishing: '20200228'
 testing: '20200228'
 </value>
   </attribute>
