@@ -272,4 +272,22 @@
     <comment></comment>
     <requestid>760849</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>486e33a364eb6a090a11db9f327b059f</srcmd5>
+    <version>1.14</version>
+    <time>1583007508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14
+  * Update configure.ac bug URL for gitlab migration
+  * configure.ac: Depend on pthread-stubs only on not-Linux
+  * c_client: fix &quot;adress&quot; typo
+  * Include time.h before using time()
+  * Handle EINTR from recvmsg in _xcb_in_read
+  * Implement xcb_total_read() and xcb_total_written().
+  * tests: Support Check 0.13.0 API
+  * Add &quot;ge.*&quot; to src/.gitignore
+  * Update README for gitlab migration
+  * Add README.md to EXTRA_DIST</comment>
+    <requestid>778877</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libxcb
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,16 @@
 %bcond_without python2
 %endif
 Name:           libxcb
-Version:        1.13.1
+Version:        1.14
 Release:        0
 Summary:        X11 core protocol C library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xcb.freedesktop.org/
+URL:            http://xcb.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xcb/libxcb
 #Git-Web:	https://cgit.freedesktop.org/xcb/libxcb/
 #DL-URL:	https://xcb.freedesktop.org/dist/
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch1:         bug-262309_xcb-xauthlocalhostname.diff
 Patch2:         n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch

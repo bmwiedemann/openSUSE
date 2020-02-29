@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 24 19:25:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.14
+  * Update configure.ac bug URL for gitlab migration
+  * configure.ac: Depend on pthread-stubs only on not-Linux
+  * c_client: fix "adress" typo
+  * Include time.h before using time()
+  * Handle EINTR from recvmsg in _xcb_in_read
+  * Implement xcb_total_read() and xcb_total_written().
+  * tests: Support Check 0.13.0 API
+  * Add "ge.*" to src/.gitignore
+  * Update README for gitlab migration
+  * Add README.md to EXTRA_DIST
+
+-------------------------------------------------------------------
 Fri Jan  3 12:22:59 UTC 2020 - Chocy Orange <callumjfarmer13@gmail.com>
 
 - Update 1.13.1
