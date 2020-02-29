@@ -61,4 +61,12 @@
     <comment></comment>
     <requestid>646427</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d399ddfe24a3f7dc9f27b901f8c28e82</srcmd5>
+    <version>0.5.2</version>
+    <time>1583007696</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package cleanup</comment>
+    <requestid>779329</requestid>
+  </revision>
 </revisionlist>
