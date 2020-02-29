@@ -572,4 +572,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>- Remove /usr/lib(64)/icu/current [boo#1158955].</comment>
     <requestid>763722</requestid>
   </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>dffca52ba794bdf26c2a3a7637bb7c7a</srcmd5>
+    <version>65.1</version>
+    <time>1583007524</time>
+    <user>dimstar_suse</user>
+    <comment>- Add locale.diff [boo#1162882]</comment>
+    <requestid>779018</requestid>
+  </revision>
 </revisionlist>

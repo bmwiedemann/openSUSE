@@ -1,0 +1,20 @@
+Execute POSIX behavior not just on Solaris but all POSIX platforms.
+
+References: https://bugzilla.opensuse.org/1162882
+---
+ source/common/putil.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: icu/source/common/putil.cpp
+===================================================================
+--- icu.orig/source/common/putil.cpp
++++ icu/source/common/putil.cpp
+@@ -1543,7 +1543,7 @@ static const char *uprv_getPOSIXIDForCat
+             /* Solaris speaks POSIX -  See IEEE Std 1003.1-2008 
+              * This is needed to properly handle empty env. variables
+              */
+-#if U_PLATFORM == U_PF_SOLARIS
++#if U_PLATFORM_IMPLEMENTS_POSIX
+             if ((posixID == 0) || (posixID[0] == '\0')) {
+                 posixID = getenv(category == LC_MESSAGES ? "LC_MESSAGES" : "LC_CTYPE");
+                 if ((posixID == 0) || (posixID[0] == '\0')) {

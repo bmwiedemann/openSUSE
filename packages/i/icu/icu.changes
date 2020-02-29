@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 25 10:29:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add locale.diff [boo#1162882]
+
+-------------------------------------------------------------------
 Sun Jan 12 20:29:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove /usr/lib(64)/icu/current [boo#1158955].

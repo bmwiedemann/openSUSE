@@ -45,6 +45,7 @@ Patch3:         icu-susevers.diff
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
+Patch8:         locale.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
