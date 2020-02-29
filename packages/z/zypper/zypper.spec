@@ -1,7 +1,7 @@
 #
 # spec file for package zypper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,11 +50,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.33
+Version:        1.14.34
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
-Url:            https://github.com/openSUSE/zypper
+URL:            https://github.com/openSUSE/zypper
 Provides:       y2pmsh
 Obsoletes:      y2pmsh
 
