@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 24 01:29:03 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- A file tests/test-images/gif-test-suite/max-width.gif from the
+  test suite is correctly identified by clamav to be a malicious
+  BC.Gif.Exploit.Agent-1425366.Agent. This is an intentional part
+  of the test suite to ensure it has no negative side effects.
+
+  On SLE, the package is built with clamav scanning, which then
+  prevents a successful build. This change repacks the source
+  package to a password-protected zip to bypass the clamav scanning
+  for SLE (bsc#1159337), with following update:
+
+  + Download upstream tarball through source service
+  + Add pre_checkin.sh to convert tarball to zip file
+  + Update spec-file to use the zip file as main source
+
+-------------------------------------------------------------------
 Thu Jan 30 12:17:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
