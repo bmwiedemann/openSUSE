@@ -1,7 +1,7 @@
 #
 # spec file for package xfsprogs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %define libname libhandle1
 
 Name:           xfsprogs
-Version:        5.0.0
+Version:        5.4.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            http://xfs.org
+URL:            https://xfs.wiki.kernel.org/
 Source0:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-%{version}.tar.sign
 Source2:        %{name}.keyring
@@ -56,6 +56,7 @@ BuildRequires:  suse-module-tools
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %endif
+Suggests:	xfsprogs-scrub
 
 %description
 A set of commands to use the XFS file system, including mkfs.xfs.
@@ -67,9 +68,9 @@ block sizes. It is extent based and makes extensive use of Btrees
 (directories, extents, and free space) to aid both performance and
 scalability.
 
-Refer to the documentation at http://oss.sgi.com/projects/xfs/ for
-complete details.  This implementation is on-disk compatible with the
-IRIX version of XFS.
+Refer to the documentation at https://xfs.wiki.kernel.org/ for complete
+details.  This implementation is on-disk compatible with the IRIX
+version of XFS.
 
 %package      -n %{libname}
 Summary:        XFS Filesystem-specific Shared library
@@ -96,6 +97,16 @@ develop XFS file system-specific programs.
 You should install xfsprogs-devel if you want to develop XFS file
 system-specific programs.  If you install xfsprogs-devel, you will also
 want to install xfsprogs.
+
+%package -n	xfsprogs-scrub
+Summary:	XFS scrubbing scripts and service files
+License:        GPL-2.0-or-later
+Group:          System/Filesystems
+Requires:	xfsprogs
+
+%description -n	xfsprogs-scrub
+Scripts and systemd service files for background scrubbing of metadata
+on xfs filesystems.
 
 %prep
 %setup -q
@@ -138,16 +149,16 @@ install -m 0755 module-setup.sh %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 
 %if %{with systemd}
-%pre
+%pre -n xfsprogs-scrub
 %service_add_pre xfs_scrub_all.service xfs_scrub_all.timer
 
-%post
+%post -n xfsprogs-scrub
 %service_add_post xfs_scrub_all.service xfs_scrub_all.timer
 
-%preun
+%preun -n xfsprogs-scrub
 %service_del_preun xfs_scrub_all.service xfs_scrub_all.timer
 
-%postun
+%postun -n xfsprogs-scrub
 %service_del_postun xfs_scrub_all.service xfs_scrub_all.timer
 %endif
 
@@ -168,15 +179,7 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 /sbin/*
 #EndUsrMerge
 %{_sbindir}/*
-%dir %{_libdir}/xfsprogs/
-%{_libdir}/xfsprogs/xfs_scrub_all.cron
-%if %{with systemd}
-%{_libdir}/xfsprogs/xfs_scrub_fail
-%{_unitdir}/xfs_scrub@.service
-%{_unitdir}/xfs_scrub_all.service
-%{_unitdir}/xfs_scrub_all.timer
-%{_unitdir}/xfs_scrub_fail@.service
-%endif
+%exclude %{_sbindir}/xfs_scrub_all
 %{_mandir}/man[258]/*
 %doc %{_defaultdocdir}/%{name}
 %if 0%{?suse_version} >= 1315
@@ -200,5 +203,18 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{_includedir}/xfs
 %{_libdir}/libhandle.so
 %{_mandir}/man3/*
+
+%files -n xfsprogs-scrub
+%defattr(-,root,root,755)
+%dir %{_libdir}/xfsprogs/
+%{_libdir}/xfsprogs/xfs_scrub_all.cron
+%{_sbindir}/xfs_scrub_all
+%if %{with systemd}
+%{_libdir}/xfsprogs/xfs_scrub_fail
+%{_unitdir}/xfs_scrub@.service
+%{_unitdir}/xfs_scrub_all.service
+%{_unitdir}/xfs_scrub_all.timer
+%{_unitdir}/xfs_scrub_fail@.service
+%endif
 
 %changelog

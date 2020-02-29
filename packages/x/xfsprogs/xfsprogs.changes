@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Jan 14 15:37:43 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
+
+- split xfs scrubbing scripts and service files into a separate optional
+  package, in order to avoid having python as a dependency in the main
+  xfsprogs rpm (bsc#1157438).
+
+-------------------------------------------------------------------
+Tue Jan 14 13:35:29 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
+
+- update to v5.4.0:
+  * xfsprogs: Release v5.4.0
+  * xfsprogs: Release v5.4.0-rc1
+  * mkfs: tidy up discard notifications
+  * mkfs: Break block discard into chunks of 2 GB
+  * xfs_admin: enable online label getting and setting
+  * xfs_admin: support external log devices
+  * xfsprogs: add missing line feeds in libxfs/rdwr.c
+  * xfsprogs: remove stray libxfs whitespace
+  * xfsprogs: Release v5.4.0-rc0
+  * xfs: change the seconds fields in xfs_bulkstat to signed
+  * xfs: move local to extent inode logging into bmap helper
+  * xfs: remove broken error handling on failed attr sf to leaf change
+  * xfs: log the inode on directory sf to block format change
+  * xfs: remove unused flags arg from xfs_get_aghdr_buf()
+  * xfs: log proper length of superblock
+  * xfs: revert 1baa2800e62d ("xfs: remove the unused XFS_ALLOC_USERDATA flag")
+  * xfs: convert inode to extent format after extent merge due to shift
+  * xfs: define a flags field for the AG geometry ioctl structure
+  * xfs: add a xfs_valid_startblock helper
+  * xfs: remove the unused XFS_ALLOC_USERDATA flag
+  * xfs: allocate xattr buffer on demand
+  * xfs: consolidate attribute value copying
+  * xfs: move remote attr retrieval into xfs_attr3_leaf_getvalue
+  * xfs: remove unnecessary indenting from xfs_attr3_leaf_getvalue
+  * xfs: make attr lookup returns consistent
+  * xfs: reverse search directory freespace indexes
+  * xfs: speed up directory bestfree block scanning
+  * xfs: factor free block index lookup from xfs_dir2_node_addname_int()
+  * xfs: factor data block addition from xfs_dir2_node_addname_int()
+  * xfs: move xfs_dir2_addname()
+  * xfs: remove all *_ITER_CONTINUE values
+  * xfs: remove all *_ITER_ABORT values
+  * xfs: reinitialize rm_flags when unpacking an offset into an rmap irec
+  * xfs: remove unnecessary int returns from deferred bmap functions
+  * xfs: remove unnecessary int returns from deferred refcount functions
+  * xfs: remove unnecessary int returns from deferred rmap functions
+  * xfs: remove unnecessary parameter from xfs_iext_inc_seq
+  * xfs: fix sign handling problem in xfs_bmbt_diff_two_keys
+  * xfs: don't return _QUERY_ABORT from xfs_rmap_has_other_keys
+  * xfs: fix maxicount division by zero error
+  * xfs: remove excess function parameter description in 'xfs_btree_sblock_v5hdr_verify'
+  * xfs: add kmem allocation trace points
+  * fs: xfs: Remove KM_NOSLEEP and KM_SLEEP.
+
+-------------------------------------------------------------------
+Thu Dec 05 00:53:15 UTC 2019 - seanlew@opensuse.org
+
+- update to v.5.3.0
+  * mkfs.xfs: use libfx to write out AGs versus open coding
+  * mkfs.xfs: fix incorrect error message during AG init
+  * xfs_repair: better info when metadata updates fail
+  * xfs_growfs: allow mounted device node as argument
+  * xfs_spaceman: always report sick metadata
+  * xfs_io: add a bulkstat command
+  * xfs_io: encrypt command enhancements
+  * xfs_io: copy_file_range fixes
+  * man: document several new ioctls
+  * xfs_scrub: copious rewriting
+  * libfrog: header moves, refactoring, updates
+  * libxfs: fix buffer refcounting
+
+-------------------------------------------------------------------
+Sat Aug 17 20:21:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- update to v5.2.0
+  - libxfs: cosmetic changes to trans.c to match kernel (Eric Sandeen)
+  - libxfs changes merged from kernel 5.2
+  - mkfs: enable reflink by default (Darrick Wong)
+  - mkfs: fix stripe unit handling (Allison Collins)
+  - mkfs: remove useless log options in usage() (Yang Xu)
+  - mkfs: validate start and end of aligned logs (Darrick Wong)
+  - xfs_quota: fix built-in help for project setup (Eric Sandeen)
+  - xfs_io: allow passing an open file to copy_range (Amir Goldstein)
+  - xfs_info: limit findmnt to mounted xfs filesystems (Amir Goldstein)
+  - man: break out several ioctl man pages (Darrick Wong)
+  - man: Fix an inconsistency in the mkfs man page (Alvin Zheng)
+  - xfs_scrub: fix background-mode sleep throttling (Darrick Wong)
+  - libxfs: sync up xfs_trans_inode.c with the kernel (Eric Sandeen)
+  - libfrog: fix bitmap return values (Darrick Wong)
+  - libfrog: don't set negative errno in conversion f'ns (Darrick Wong)
+
+-------------------------------------------------------------------
 Sat May 04 07:20:03 UTC 2019 - seanlew@opensuse.org
 
 - Update to v5.0.0
