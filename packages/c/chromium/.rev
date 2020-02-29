@@ -2767,4 +2767,15 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * chromium-sandbox-pie.patch</comment>
     <requestid>777696</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>e9d01d64098412d86f9bf7378d808138</srcmd5>
+    <version>80.0.3987.122</version>
+    <time>1583007545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 80.0.3987.122 bsc#1164828:
+  * CVE-2020-6418: Type confusion in V8
+  * CVE-2020-6407: Out of bounds memory access in streams. 
+  * Integer overflow in ICU</comment>
+    <requestid>779107</requestid>
+  </revision>
 </revisionlist>
