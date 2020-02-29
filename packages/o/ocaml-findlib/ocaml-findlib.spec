@@ -36,9 +36,8 @@ Provides:       ocamlfind = %{version}
 BuildRequires:  m4
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
-BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 
 %description
 Findlib is a library manager for Objective Caml. It provides a
@@ -65,9 +64,9 @@ for developing applications that use ocaml-findlib.
 rm -rfv site-lib-src
 (cd tools/extract_args && make)
 tools/extract_args/extract_args -o src/findlib/ocaml_args.ml ocamlc ocamlcp ocamlmktop ocamlopt ocamldep ocamldoc ||:
-./configure -config %{_libdir}/ocaml/ocamlfind.conf \
+./configure -config %{ocaml_standard_library}/ocamlfind.conf \
   -bindir %{_bindir} \
-  -sitelib `ocamlc -where` \
+  -sitelib '%{ocaml_standard_library}' \
   -mandir %{_mandir} \
   -with-toolbox
 make all
@@ -78,17 +77,17 @@ rm -fv doc/guide-html/TIMESTAMP
 
 %install
 make install prefix=%{buildroot}
-rm -rfv %{buildroot}%{_libdir}/ocaml/ocamlbuild
+rm -rfv %{buildroot}%{ocaml_standard_library}/ocamlbuild
 %ocaml_create_file_list
 
 %files -f %{name}.files
-%{_libdir}/ocaml/ocamlfind.conf
-%{_libdir}/ocaml/topfind
+%{ocaml_standard_library}/ocamlfind.conf
+%{ocaml_standard_library}/topfind
 %{_bindir}/*
 %{_mandir}/man?/*
 #
 
 %files devel -f %{name}.files.devel
-%{_libdir}/ocaml/*/Makefile.config
+%{ocaml_standard_library}/*/Makefile.config
 
 %changelog

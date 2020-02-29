@@ -141,4 +141,13 @@
   to remove the build dependency to this package</comment>
     <requestid>745387</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e560aac938eb144d98f0b0eb1b4f9be9</srcmd5>
+    <version>1.8.1</version>
+    <time>1583007609</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Remove unused dependency to ocamlbuild in preparation of ocamlbuild removal</comment>
+    <requestid>778860</requestid>
+  </revision>
 </revisionlist>
