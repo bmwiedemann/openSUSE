@@ -403,4 +403,14 @@
     - end is always added to message in ppaged()</comment>
     <requestid>760618</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>84b71267c7db1cbbf2d994a234cd6d99</srcmd5>
+    <version>0.8.9</version>
+    <time>1583094362</time>
+    <user>dimstar_suse</user>
+    <comment>- go back to 0.8.9, cliff (which is the only user) is not compatible
+  with &gt;= 0.9.0 atm
+- Same commit like december, november and october last year.</comment>
+    <requestid>780065</requestid>
+  </revision>
 </revisionlist>

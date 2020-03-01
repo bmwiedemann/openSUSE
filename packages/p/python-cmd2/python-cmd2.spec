@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        0.9.22
+Version:        0.8.9
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module colorama >= 0.3.7}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyperclip >= 1.6}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest4}
 BuildRequires:  %{python_module wcwidth >= 0.1.7}
 # Required by tests.
 BuildRequires:  vim
@@ -79,8 +79,6 @@ Drop-in replacement adds several features for command-prompt tools:
 
 %prep
 %setup -q -n cmd2-%{version}
-# Fix non-executable-script
-sed -i -e '/^#!\//, 1d' cmd2/cmd2.py
 # Fix spurious-executable-perm
 chmod a-x README.md
 
@@ -92,6 +90,7 @@ chmod a-x README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm -v tests/test_transcript.py tests/test_parsing.py tests/test_cmd2.py
 %pytest
 
 %files %{python_files}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 13:47:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- go back to 0.8.9, cliff (which is the only user) is not compatible
+  with >= 0.9.0 atm
+- Same commit like december, november and october last year.
+
+-------------------------------------------------------------------
 Fri Jan  3 11:34:58 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.9.22:
