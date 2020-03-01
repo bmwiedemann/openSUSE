@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname  libbabeltrace
 %define sover   1
 Name:           babeltrace
-Version:        1.5.6
+Version:        1.5.8
 Release:        0
 Summary:        Common Trace Format Babel Tower
 License:        MIT AND GPL-2.0-only
-Group:          Development/Languages/C and C++
-Url:            https://diamon.org/babeltrace
+URL:            https://diamon.org/babeltrace
 Source:         https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2
 Source1:        https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
@@ -50,7 +49,6 @@ Common Trace Format (CTF).
 
 %package -n python3-%{name}
 Summary:        Python Bindings for babeltrace
-Group:          Development/Libraries/Python
 
 %description -n python3-%{name}
 This project provides trace read and write libraries, as well as a
@@ -61,7 +59,6 @@ Python Bindings for the babeltrace package.
 
 %package -n %{name}-devel
 Summary:        Common Trace Format Babel Tower
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 
 %description -n %{name}-devel
@@ -82,7 +79,7 @@ export PYTHON_CONFIG="$PYTHON-config"
   --disable-static            \
   --docdir=%{_docdir}/%{name} \
   --enable-python-bindings
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
