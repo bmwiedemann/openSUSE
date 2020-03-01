@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:40:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Bump disk constraint to 18Gb
+
+-------------------------------------------------------------------
+Tue Feb 25 17:17:57 UTC 2020 - pgajdos@suse.com
+
+- test macros: clarify who is admin and user of the database,
+  fix build with 10.4
+- modified sources
+  % macros.mariadb-test
+
+-------------------------------------------------------------------
 Fri Feb 21 14:44:16 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
  - remove @VERSION@ from mariadb.service and mariadb@.service

@@ -1,17 +1,16 @@
 %__mysql_test_run_dir  /tmp/mysql
-%__mysql_test_user     abuild
-%__mysql_test_pass     abuildpw
+%__mysql_test_user     dbuser
+%__mysql_test_pass     dbuserpass
 %__mysql_test_cconf    abuild-myclient.cnf
 %__mysql_test_port     63306
 
 #
 # macro: mysql_testserver_start -- start a test mysqld instance
 #
-#        usage: %mysql_test_start -u <user> -p <password> -t <port>
+#        usage: %mysql_test_start -u <dbuser> -p <dbpassword> -t <port>
 #
 
 %mysql_testserver_start(u:p:t:) \
-exit 0 \
 TEST_RUN_DIR=%{__mysql_test_run_dir} \
 TEST_USER="%{-u:%{-u*}}" \
 if [ -z "$TEST_USER" ]; then \
@@ -34,7 +33,7 @@ cat << EOF > $TEST_RUN_DIR/my.cnf \
 socket = $TEST_RUN_DIR/mysql.sock \
 port   = $TEST_PORT \
 [mysqld] \
-user             = $TEST_USER \
+user             = abuild \
 log-error        = $TEST_RUN_DIR/mysqld.log \
 secure_file_priv = $TEST_RUN_DIR/datadir-private \
 datadir          = $TEST_RUN_DIR/datadir \
@@ -51,12 +50,15 @@ echo '>>> Invoking mysqld' \
 /usr/sbin/mysqld --defaults-file=$TEST_RUN_DIR/my.cnf& \
 sleep 2 \
 \
-echo '>>> Creating authentication database' \
-mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user root password 'roots_secret' \
-mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' create testhat \
-mysql --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' -e "CREATE USER '$TEST_USER'@'localhost' IDENTIFIED BY '$TEST_PASS'" \
-mysql --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' -e "GRANT ALL PRIVILEGES ON * . * TO '$TEST_USER'@'localhost'" \
-mysql --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' -e "FLUSH PRIVILEGES" \
+echo '>>> Creating authentication database (credentials: $TEST_USER, $TEST_PASS)' \
+mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild password abuildpw \
+mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild --password=abuildpw create testhat \
+cat << EOF > $TEST_RUN_DIR/create_auth.sql \
+CREATE USER '$TEST_USER'@'localhost' IDENTIFIED BY '$TEST_PASS'; \
+GRANT ALL PRIVILEGES ON * . * TO '$TEST_USER'@'localhost'; \
+FLUSH PRIVILEGES; \
+EOF\
+mysql       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild --password=abuildpw < $TEST_RUN_DIR/create_auth.sql \
 %nil
 
 #
@@ -95,6 +97,6 @@ echo '>>> Shutting the mysql server down' \
 cat << EOF > $TEST_RUN_DIR/shutdown.sql \
 SHUTDOWN; \
 EOF\
-mysql       --defaults-file=$TEST_RUN_DIR/my.cnf --user root --password='roots_secret' < $TEST_RUN_DIR/shutdown.sql \
+mysql       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild --password=abuildpw < $TEST_RUN_DIR/shutdown.sql \
 %nil
 
