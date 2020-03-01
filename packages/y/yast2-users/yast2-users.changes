@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 14:14:31 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Mark users as WSL capable module (bsc#1162650) 
+- 4.2.9
+
+-------------------------------------------------------------------
 Fri Jan 24 15:43:42 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix return code for `yast2 users list` and `yast2 users show`
