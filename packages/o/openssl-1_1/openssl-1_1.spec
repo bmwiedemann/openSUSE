@@ -84,6 +84,7 @@ Patch42:        openssl-fips-ignore_broken_atexit_test.patch
 Patch43:        openssl-keep_EVP_KDF_functions_version.patch
 Patch44:        openssl-fips_fix_selftests_return_value.patch
 Patch45:        openssl-fips-add-SHA3-selftest.patch
+Patch46:        openssl-fips_selftest_upstream_drbg.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-7403 Support for CPACF enhancements - part 2 (crypto)
 Patch50:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
 Patch51:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch

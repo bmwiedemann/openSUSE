@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:28:14 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Run FIPS DRBG selftests against the crypto/rand DRBG implementation
+  (bsc#1164557)
+  * add openssl-fips_selftest_upstream_drbg.patch
+
+-------------------------------------------------------------------
 Fri Feb 21 08:03:05 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Use the newly build libcrypto shared library when computing the hmac
