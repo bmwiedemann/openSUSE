@@ -50,6 +50,7 @@ buildignore accountsservice
 buildignore MozillaFirefox
 buildignore vim-data
 buildignore tcpdump
+buildignore yast2-trans-pt
 
 install gparted
 install midori

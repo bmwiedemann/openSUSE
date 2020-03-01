@@ -814,4 +814,10 @@
     <comment>- Use bgrt as plymouth theme for Leap (boo#1162535) (forwarded request 773726 from favogt)</comment>
     <requestid>773727</requestid>
   </revision>
+  <revision rev="98" vrev="98">
+    <srcmd5>fead7ac84ae7115f949a0dbf4aad00ae</srcmd5>
+    <version>unknown</version>
+    <time>1583087437</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
