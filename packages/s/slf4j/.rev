@@ -179,4 +179,12 @@
     <comment>The previous tarball does not exist any more</comment>
     <requestid>758086</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b8ba7048bfc26e9ea129d17ab7a2cffb</srcmd5>
+    <version>1.7.30</version>
+    <time>1583094352</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.30</comment>
+    <requestid>779963</requestid>
+  </revision>
 </revisionlist>

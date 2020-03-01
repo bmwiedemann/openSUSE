@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j-sources
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global base_name slf4j
 Name:           %{base_name}-sources
-Version:        1.7.25
+Version:        1.7.30
 Release:        0
 Summary:        SLF4J Source JARs
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
@@ -29,7 +29,6 @@ URL:            http://www.slf4j.org/
 Source0:        https://github.com/qos-ch/%{base_name}/archive/v_%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Patch2:         slf4j-commons-lang3.patch
-Patch3:         slf4j-Disallow-EventData-deserialization-by-default.patch
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -44,7 +43,6 @@ SLF4J Source JARs.
 %prep
 %setup -q -n %{base_name}-v_%{version}
 %patch2 -p1
-%patch3 -p1
 find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 

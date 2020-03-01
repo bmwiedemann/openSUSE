@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           slf4j
-Version:        1.7.25
+Version:        1.7.30
 Release:        0
 Summary:        Simple Logging Facade for Java
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
@@ -30,7 +30,6 @@ Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        build.xml.tar.bz2
 Patch1:         build-remove-slf4j_api-binder.patch
 Patch2:         slf4j-commons-lang3.patch
-Patch3:         slf4j-Disallow-EventData-deserialization-by-default.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  ant-junit >= 1.6.5
 BuildRequires:  apache-commons-lang3
@@ -136,7 +135,6 @@ JUL to SLF4J bridge.
 %setup -q -n %{name}-v_%{version} -a2
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 
