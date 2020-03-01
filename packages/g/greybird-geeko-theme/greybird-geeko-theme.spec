@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-geeko-theme
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _name Greybird-Geeko
 
 Name:           greybird-geeko-theme
-Version:        3.22.10.1+git48.35f7cb8
+Version:        3.22.10.1+git52.ef9302a
 Release:        0
 URL:            https://github.com/shimmerproject/Greybird-Geeko
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
@@ -107,10 +107,12 @@ This package provides the GTK+ 3 support of Greybird.
 %{_datadir}/themes/{%{name_light},%{name_dark}}/xfce-notify-4.0
 %{_datadir}/themes/{%{name_light},%{name_dark}}/xfwm4
 %{_datadir}/themes/{%{name_light},%{name_dark}}/index.theme
+%{_datadir}/themes/{%{name_light},%{name_dark}}/plank
 %dir %{_datadir}/themes/{%{name_light},%{name_dark}}-{Accessibility,Compact}
 %{_datadir}/themes/{%{name_light},%{name_dark}}-{Accessibility,Compact}/*
 %dir %{_datadir}/themes/{%{name_light},%{name_dark}}/gnome-shell
 %{_datadir}/themes/{%{name_light},%{name_dark}}/gnome-shell/*
+%{_datadir}/themes/{%{name_light},%{name_dark}}/plank/*
 
 %files -n gtk2-metatheme-greybird-geeko
 %{_datadir}/themes/{%{name_light},%{name_dark}}/gtk-2.0
