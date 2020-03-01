@@ -10166,8 +10166,6 @@ unsorted:
   - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
   - libmodulemd-devel 
-  - libmodulemd1 
-  - libmodulemd1-devel 
   - libmolsketch-qt5-1 
   - libmongoose-doc 
   - libmongoose2 
@@ -13783,7 +13781,6 @@ unsorted:
   - modsecurity 
   - modsecurity-devel 
   - modulemd-validator 
-  - modulemd-validator-v1 
   - moe 
   - mojave-gtk-theme 
   - mojo-executor 
@@ -14423,6 +14420,7 @@ unsorted:
   - nemo-extension-dropbox 
   - nemo-extension-emblems 
   - nemo-extension-fileroller 
+  - nemo-extension-folder-color 
   - nemo-extension-gtkhash 
   - nemo-extension-image-converter 
   - nemo-extension-nextcloud 
@@ -33099,7 +33097,6 @@ unsorted:
   - typelib-1_0-Memphis-0_2 
   - typelib-1_0-Midori-0_6 
   - typelib-1_0-ModemManager-1_0 
-  - typelib-1_0-Modulemd-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-MyPaint-1_5 
