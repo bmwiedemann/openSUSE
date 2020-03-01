@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Mar  1 09:34:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.9
+  Broker:
+  * Fix session expiry with very large expiry intervals.
+  * Check ACL patterns for validity when loading.
+  * Use presence of password file as indicator for whether username
+    checks should take place, not whether usernames are defined in
+    the password file.
+  * Strip whitespace from end of config file string options.
+  * Satisfy valgrind when exiting on error due to not being able
+    to open a listening socket, by calling freeaddrinfo.
+  * Fix config->user not being freed on exit.
+  * Fix trailing whitespace not being trimmed on acl users.
+  * Fix `bind_interface` not working for the default listener.
+  * Improve password file parsing in the broker and mosqitto_passwd.
+  * Print OpenSSL errors in more situations, like when loading
+    certificates fails.
+  * Fix `mosquitto_client_protocol() returning incorrect values.
+  Client library:
+  * Set minimum keepalive argument to `mosquitto_connect*()` to be
+    5 seconds.
+  * Fix `mosquitto_topic_matches_sub()` not returning
+    MOSQ_ERR_INVAL if the topic contains a wildcard.
+  Clients:
+  * Fix `--remove-retained` not obeying the `-T` option for
+    filtering out topics.
+  * Default behaviour for v5 clients using `-c` is now to use
+    infinite length sessions, as with v3 clients.
+
+-------------------------------------------------------------------
 Wed Jan 22 22:03:28 UTC 2020 - James Oakley <jfunk@funktronics.ca>
 
 - Update apparmor profile to allow open of /etc/mosquitto/conf.d
