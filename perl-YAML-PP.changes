@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 28 03:14:57 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.021
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.021 2020-02-27 19:04:58+01:00
+  
+      - Add option 'preserve' for preserving hash key order and quoting
+        style when loading and dumping
+
+-------------------------------------------------------------------
 Tue Feb 18 03:14:31 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.020
