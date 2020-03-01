@@ -675,4 +675,12 @@ Tweaked resub (forwarded request 600750 from iznogood)</comment>
     <comment></comment>
     <requestid>728255</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>e269e668b8e6a4616782ac8134bd259d</srcmd5>
+    <version>1.16.0</version>
+    <time>1583094353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779971</requestid>
+  </revision>
 </revisionlist>

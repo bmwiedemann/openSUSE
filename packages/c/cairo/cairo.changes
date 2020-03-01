@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 23 20:24:08 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Add an upstream bug fix
+  + cairo-pdf-add-missing-flush.patch: Fixes PDF generation
+    see https://gitlab.freedesktop.org/cairo/cairo/issues/342
+
+-------------------------------------------------------------------
 Wed Sep  4 09:59:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 2 upstream bug fix patches:

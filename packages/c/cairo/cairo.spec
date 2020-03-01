@@ -1,7 +1,7 @@
 #
 # spec file for package cairo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
 Patch2:         cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
 # PATCH-FIX-UPSTREAM cairo-composite_color_glyphs.patch -- Fix a thinko in composite_color_glyphs
 Patch3:         cairo-composite_color_glyphs.patch
+# PATCH-FIX-UPSTREAM cairo-pdf-add-missing-flush.patch - fix pdf generation (upstream issue #342)
+Patch4:         cairo-pdf-add-missing-flush.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
