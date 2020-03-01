@@ -270,16 +270,9 @@ install xz
 install yast2-trans-cs
 install yast2-trans-da
 install yast2-trans-de
-install yast2-trans-en_GB
-install yast2-trans-en_US
 install yast2-trans-es
-install yast2-trans-fr
-install yast2-trans-hu
-install yast2-trans-it
 install yast2-trans-ja
 install yast2-trans-pl
-install yast2-trans-pt
-install yast2-trans-pt_BR
 install yast2-trans-ru
 install yast2-trans-sv
 install yast2-trans-zh_CN
