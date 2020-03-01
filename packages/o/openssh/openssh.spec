@@ -102,6 +102,7 @@ Patch35:        openssh-7.9p1-revert-new-qos-defaults.patch
 Patch36:        openssh-8.1p1-seccomp-clock_nanosleep.patch
 Patch37:        openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
 Patch38:        openssh-8.1p1-seccomp-clock_gettime64.patch
+Patch39:        openssh-8.1p1-use-openssl-kdf.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  groff
@@ -117,7 +118,6 @@ Requires(post): %fillup_prereq
 Requires(pre):  pwdutils
 Recommends:     %{name}-helpers = %{version}-%{release}
 Recommends:     audit
-Recommends:     xauth
 Conflicts:      %{name}-fips < %{version}-%{release}
 Conflicts:      %{name}-fips > %{version}-%{release}
 Conflicts:      nonfreessh

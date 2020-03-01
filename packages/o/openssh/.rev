@@ -1370,4 +1370,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>775238</requestid>
   </revision>
+  <revision rev="138" vrev="4">
+    <srcmd5>f476777bc6c91ed169d7e226476453be</srcmd5>
+    <version>8.1p1</version>
+    <time>1583094378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780476</requestid>
+  </revision>
 </revisionlist>

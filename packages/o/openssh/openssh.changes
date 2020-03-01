@@ -1,10 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 28 16:15:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't recommend xauth to avoid pulling in X.
+
+-------------------------------------------------------------------
 Tue Feb 18 14:47:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patches to fix the sandbox blocking glibc on 32bit platforms
   (boo#1164061):
   * openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
   * openssh-8.1p1-seccomp-clock_gettime64.patch
+
+-------------------------------------------------------------------
+Tue Feb 11 02:20:32 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-8.1p1-use-openssl-kdf.patch (jsc#SLE-9443). This
+  performs key derivation using OpenSSL's SSHKDF facility, which
+  allows OpenSSH to benefit from the former's FIPS certification
+  status.
+
+-------------------------------------------------------------------
+Thu Nov 21 04:49:22 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
+
+- Make sure ssh-keygen runs if SSHD_AUTO_KEYGEN variable is unset
+  or contains an unrecognized value (bsc#1157176).
 
 -------------------------------------------------------------------
 Fri Nov  8 18:05:37 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
@@ -14,13 +33,23 @@ Fri Nov  8 18:05:37 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
   the privsep sandbox kill the preauth process.
 
 -------------------------------------------------------------------
+Thu Oct 17 06:23:58 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-7.7p1-audit.patch to fix crash (bsc#1152730). Fix
+  by Enzo Matsumiya (ematsumiya@suse.com). This was integrated in
+  a separate code stream merged with the Oct. 10 update; the patch
+  was also rebased and renamed to openssh-8.1p1-audit.patch.
+
+-------------------------------------------------------------------
 Mon Oct 14 23:58:39 UTC 2019 - Hans Petter Jansson <hpj@suse.com>
 
 - Add openssh-7.9p1-keygen-preserve-perms.patch (bsc#1150574).
   This attempts to preserve the permissions of any existing
   known_hosts file when modified by ssh-keygen (for instance,
   with -R).
-- Add patch from upstream openssh-7.9p1-revert-new-qos-defaults.patch
+- Added openssh-7.9p1-revert-new-qos-defaults.patch, which reverts
+  an upstream commit that caused compatibility issues with other
+  software (bsc#1136402).
 
 -------------------------------------------------------------------
 Mon Oct 14 23:56:42 UTC 2019 - Hans Petter Jansson <hpj@suse.com>

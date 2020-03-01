@@ -2,7 +2,7 @@
 
 . /etc/sysconfig/ssh
 
-if [ "$SSHD_AUTO_KEYGEN" = "yes" ]; then
+if [ "x$SSHD_AUTO_KEYGEN" != "xno" ]; then
     echo "Checking for missing server keys in /etc/ssh"
     ssh-keygen -A
 fi

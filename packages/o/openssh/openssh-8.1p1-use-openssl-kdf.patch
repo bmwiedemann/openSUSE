@@ -1,0 +1,157 @@
+diff --git a/kex.c b/kex.c
+index 96e44a5..7cd37d6 100644
+--- a/kex.c
++++ b/kex.c
+@@ -38,6 +38,7 @@
+ #ifdef WITH_OPENSSL
+ #include <openssl/crypto.h>
+ #include <openssl/dh.h>
++#include <openssl/kdf.h>
+ #endif
+ 
+ #include "ssh.h"
+@@ -1109,8 +1110,92 @@ kex_choose_conf(struct ssh *ssh)
+ 	return r;
+ }
+ 
++#ifdef WITH_OPENSSL
++
++static const EVP_MD *
++get_openssl_md_for_hash_alg (int hash_alg)
++{
++    if (hash_alg < 0 || hash_alg >= SSH_DIGEST_MAX)
++	return NULL;
++
++    switch (hash_alg)
++    {
++	case SSH_DIGEST_MD5:
++	    return EVP_md5();
++	case SSH_DIGEST_SHA1:
++	    return EVP_sha1();
++	case SSH_DIGEST_SHA256:
++	    return EVP_sha256();
++	case SSH_DIGEST_SHA384:
++	    return EVP_sha384();
++	case SSH_DIGEST_SHA512:
++	    return EVP_sha512();
++	default:
++	    break;
++    }
++
++    return NULL;
++}
++
+ static int
+-derive_key(struct ssh *ssh, int id, u_int need, u_char *hash, u_int hashlen,
++derive_key_via_openssl(struct ssh *ssh, int id, u_int need, u_char *hash, u_int hashlen,
++	   const struct sshbuf *shared_secret, u_char **keyp)
++{
++	struct kex *kex = ssh->kex;
++	EVP_KDF_CTX *hashctx = NULL;
++	const EVP_MD *md = NULL;
++	u_char *digest = NULL;
++	int r = SSH_ERR_LIBCRYPTO_ERROR;
++
++	hashctx = EVP_KDF_CTX_new_id (EVP_KDF_SSHKDF);
++	if (!hashctx)
++	    goto out;
++
++	md = get_openssl_md_for_hash_alg (kex->hash_alg);
++	if (!md)
++	    goto out;
++
++	if (EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_MD,
++			  md) != 1
++	    || EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_KEY,
++			     sshbuf_ptr(shared_secret), sshbuf_len(shared_secret)) != 1
++	    || EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_SSHKDF_TYPE,
++			     (int) id) != 1
++	    || EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_SSHKDF_XCGHASH,
++			     hash, (size_t) hashlen) != 1
++	    || EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_SSHKDF_SESSION_ID,
++			     kex->session_id, (size_t) kex->session_id_len) != 1)
++	    goto out;
++
++	digest = calloc (1, need);
++	if (!digest) {
++	    r = SSH_ERR_ALLOC_FAIL;
++	    goto out;
++	}
++
++	if (EVP_KDF_derive (hashctx, digest, need) != 1)
++	    goto out;
++
++	*keyp = digest;
++	digest = NULL;
++	r = 0;
++
++ out:
++	if (hashctx)
++	    EVP_KDF_CTX_free(hashctx);
++
++	if (digest)
++	    free(digest);
++
++	return r;
++}
++
++#else
++# error This version of openssh must be built with openssl to benefit from FIPS certification.
++#endif
++
++static int
++derive_key_via_internal(struct ssh *ssh, int id, u_int need, u_char *hash, u_int hashlen,
+     const struct sshbuf *shared_secret, u_char **keyp)
+ {
+ 	struct kex *kex = ssh->kex;
+@@ -1174,6 +1259,50 @@ derive_key(struct ssh *ssh, int id, u_int need, u_char *hash, u_int hashlen,
+ 	return r;
+ }
+ 
++/* Belt and suspenders; we want the output from openssl because it's FIPS certified. However,
++ * if there's a bug in the implementation, we should not proceed. Minimize risk by requiring
++ * the implementations agree. */
++static int
++derive_key(struct ssh *ssh, int id, u_int need, u_char *hash, u_int hashlen,
++    const struct sshbuf *shared_secret, u_char **keyp)
++{
++#ifdef WITH_OPENSSL
++
++    u_char *buf_openssl = NULL, *buf_internal = NULL;
++    int r;
++
++    r = derive_key_via_openssl (ssh, id, need, hash, hashlen, shared_secret, &buf_openssl);
++    if (r != 0)
++	goto out;
++
++    r = derive_key_via_internal (ssh, id, need, hash, hashlen, shared_secret, &buf_internal);
++    if (r != 0)
++	goto out;
++
++    if (memcmp (buf_openssl, buf_internal, need))
++    {
++	r = SSH_ERR_LIBCRYPTO_ERROR;
++	goto out;
++    }
++
++    *keyp = buf_openssl;
++    buf_openssl = NULL;
++
++ out:
++    if (buf_openssl)
++	free (buf_openssl);
++    if (buf_internal)
++	free (buf_internal);
++
++    return r;
++
++#else
++
++    return derive_key_via_internal (ssh, id, need, hash, hashlen, shared_secret, keyp);
++
++#endif
++}
++
+ #define NKEYS	6
+ int
+ kex_derive_keys(struct ssh *ssh, u_char *hash, u_int hashlen,
