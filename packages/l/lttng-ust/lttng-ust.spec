@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-ust
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   0
 %define sover_ctl 4
 Name:           lttng-ust
-Version:        2.10.5
+Version:        2.11.0
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only
@@ -28,12 +28,15 @@ URL:            https://lttng.org/
 Source:         https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2
 Source1:        https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM lttng-ust-2.11.0-fix-no-common.patch boo#1160400 mjeanson@gmail.com -- Fix build with -fno-common (commit 21a934df).
+Patch0:         %{name}-2.11.0-fix-no-common.patch
 BuildRequires:  gcc-c++
+BuildRequires:  libnuma-devel
 BuildRequires:  liburcu-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  %{ix86} x86_64 aarch64 ppc64 ppc64le
+ExclusiveArch:  %ix86 x86_64 aarch64 ppc64 ppc64le
 
 %description
 This library may be used by user space applications to generate
@@ -103,7 +106,7 @@ This package includes documentation and examples for developing
 applications using LTTng userspace tracing.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Fix Python shebang.
 sed -i -e "1s|^#!.*$|#!%{_bindir}/python3|" tools/lttng-gen-tp
@@ -116,7 +119,7 @@ export PYTHON=python3
   --disable-static            \
   --disable-maintainer-mode   \
   --enable-python-agent
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

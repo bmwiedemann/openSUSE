@@ -53,4 +53,12 @@
   * fixes boo#1149704. (forwarded request 732859 from marxin)</comment>
     <requestid>732911</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>559211c3ff64593b30d9d20e28954871</srcmd5>
+    <version>2.11.0</version>
+    <time>1583094370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.11.0.</comment>
+    <requestid>780207</requestid>
+  </revision>
 </revisionlist>

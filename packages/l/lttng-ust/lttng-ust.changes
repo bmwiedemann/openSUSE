@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:29:32 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.11.0:
+  * See /usr/share/doc/packages/lttng-ust/ChangeLog
+- Add lttng-ust-2.11.0-fix-no-common.patch: Fix build with
+  -fno-common (commit 21a934df, boo#1160400).
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Tue Sep 24 08:06:00 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Update to version 2.10.5:
