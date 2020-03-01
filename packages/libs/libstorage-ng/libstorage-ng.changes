@@ -1,4 +1,74 @@
 --------------------------------------------------------------------
+Thu Feb 20 22:02:59 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Spanish) (bsc#1149754)
+- 4.2.65
+
+--------------------------------------------------------------------
+Wed Feb 19 11:48:04 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Italian) (bsc#1149754)
+- 4.2.64
+
+--------------------------------------------------------------------
+Wed Feb 19 11:48:03 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (French) (bsc#1149754)
+
+--------------------------------------------------------------------
+Mon Feb 17 10:07:32 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Chinese (Taiwan)) (bsc#1149754)
+- 4.2.63
+
+--------------------------------------------------------------------
+Sun Feb 16 07:11:15 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Chinese (China)) (bsc#1149754)
+- 4.2.62
+
+--------------------------------------------------------------------
+Tue Feb 11 13:41:16 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#706
+- added support for btrfs RAID1C{3,4}
+- increase minor so version
+- 4.2.61
+
+--------------------------------------------------------------------
+Thu Feb 6 11:12:58 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#705
+- fixed failure message
+- 4.2.60
+
+--------------------------------------------------------------------
+Wed Feb 5 09:50:07 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#704
+- added being and end function to ProbeCallbacks
+- extended documentation
+- 4.2.59
+
+--------------------------------------------------------------------
+Wed Feb 5 09:47:45 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#703
+- Remove OutputProcessor class
+
+--------------------------------------------------------------------
+Mon Feb 3 14:34:59 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#702
+- added callback for missing commands during probing
+- added unit tests
+- improved readability of defines for external commands
+- simplyfied code
+- fixed typo
+- added probing callback for missing commands
+- 4.2.58
+
+--------------------------------------------------------------------
 Mon Jan 20 00:25:19 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)

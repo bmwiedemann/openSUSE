@@ -532,4 +532,17 @@
     <comment>- Disable %arm builds as this is no longer supported. (forwarded request 780053 from kasimir)</comment>
     <requestid>780146</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>5408ed36274465c4b4b592bb6b4735db</srcmd5>
+    <version>20.02.0</version>
+    <time>1583094470</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed autopatch as it doesn't work for the SLE-11-SP4 build.
+
+- pmix searches now also for libpmix.so.2 so that there is no dependency
+  for devel package (bsc#1164386)
+  * added patch file check-for-lipmix.so.MAJOR.patch
+  * reworded patch file Remove-rpath-from-build.patch to use %autopatch (forwarded request 780353 from eeich)</comment>
+    <requestid>780356</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 13:33:54 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- replace the three nearly identical cron job scripts by a central one
+- run the cron job as the unprivileged squid user/group which increases
+  security. (bsc#1150554, bsc#1156643)
+
+-------------------------------------------------------------------
 Thu Jan 30 19:45:38 UTC 2020 - Thomas Abraham <tabraham@suse.com>
 
 - Update to sarg-2.4.0 

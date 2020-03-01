@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:04:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix parsing of default value output of mysqld
+- Fix init_db call to allow correct setup of database
+
+-------------------------------------------------------------------
+Thu Feb 27 17:59:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove database if init failed
+
+-------------------------------------------------------------------
 Mon Feb 24 11:10:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable binding to localhost only, breaks usage in containers

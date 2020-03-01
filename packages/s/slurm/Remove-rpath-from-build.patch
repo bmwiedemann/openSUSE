@@ -10,10 +10,10 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in   | 4 ++--
  slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in | 4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
-diff --git a/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in b/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in
+diff --git a/contribs/perlapi/libslurm/perl/Makefile.PL.in b/contribs/perlapi/libslurm/perl/Makefile.PL.in
 index fcae437..797c943 100644
---- a/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in
-+++ b/slurm-19.05.5/contribs/perlapi/libslurm/perl/Makefile.PL.in
+--- a/contribs/perlapi/libslurm/perl/Makefile.PL.in
++++ b/contribs/perlapi/libslurm/perl/Makefile.PL.in
 @@ -77,7 +77,7 @@ DESTDIR_BUG
  # AIX has problems with not always having the correct
  # flags so we have to add some :)
@@ -32,10 +32,10 @@ index fcae437..797c943 100644
  	DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
  	INC               => "-I. -I@top_srcdir@ -I@top_srcdir@/contribs/perlapi/common -I@top_builddir@",
  	# Un-comment this if you add C files to link with later:
-diff --git a/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in b/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
+diff --git a/contribs/perlapi/libslurmdb/perl/Makefile.PL.in b/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
 index 2db028c..83eb4e2 100644
---- a/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
-+++ b/slurm-19.05.5/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
+--- a/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
++++ b/contribs/perlapi/libslurmdb/perl/Makefile.PL.in
 @@ -76,7 +76,7 @@ DESTDIR_BUG
  # AIX has problems with not always having the correct
  # flags so we have to add some :)

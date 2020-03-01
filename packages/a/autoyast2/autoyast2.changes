@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 26 16:19:57 CET 2020 - schubi@suse.de
+
+- Service for init scripts: Checking working network with
+  "network-online.target" before starting the AY init scripts
+  (bsc#1164105).
+- 4.2.28
+
+-------------------------------------------------------------------
+Mon Feb 17 16:31:46 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed user-visible messages (bsc#1084015)
+- 4.2.27
+
+-------------------------------------------------------------------
 Tue Dec 31 11:43:56 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix cloning patterns (regression from 4.2.22)

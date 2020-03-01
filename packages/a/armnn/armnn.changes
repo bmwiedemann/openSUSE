@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 10 13:01:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use Tensorflow 2.x only for Tumbleweed, as TensorFlow2 is not
+  available in Leap 15.2
+- Skip some tests if TensorFlow < 1.14 is used
+
+-------------------------------------------------------------------
+Tue Jan 28 12:33:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable ONNX on Leap 15.2
+
+-------------------------------------------------------------------
+Tue Jan 28 09:48:55 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use tensorflow2 as armnn 19.11 now requires TensorFlow >= 1.14
+
+-------------------------------------------------------------------
 Mon Jan 20 15:21:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable ArmnnConverter and ArmnnQuantizer packaging by default
@@ -14,6 +31,19 @@ Tue Jan 14 11:59:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - ExcludeArch %ix86: Parts of the build deps (tensorflow/bazel) are
   not supported on ix86.
+
+-------------------------------------------------------------------
+Fri Dec  6 13:45:57 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v19.11
+- Remove upstreamed patches:
+  * armnn-generate-versioned-library.patch
+  * armnn-fix_boost.patch
+  * armnn-fix_arm32_dep.patch
+  * armnn-fix_arm32.patch
+- Add patch to fix include:
+  * armnn-fix_include.patch
 
 -------------------------------------------------------------------
 Mon Nov 25 14:16:29 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>

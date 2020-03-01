@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 28 17:27:43 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Removed autopatch as it doesn't work for the SLE-11-SP4 build.
+
+-------------------------------------------------------------------
 Thu Feb 27 20:07:19 UTC 2020 - Kasimir _ <kasimir_@outlook.de>
 
 - Disable %arm builds as this is no longer supported.
+
+-------------------------------------------------------------------
+Thu Feb 27 10:19:05 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- pmix searches now also for libpmix.so.2 so that there is no dependency
+  for devel package (bsc#1164386)
+  * added patch file check-for-lipmix.so.MAJOR.patch
+  * reworded patch file Remove-rpath-from-build.patch to use %autopatch
 
 -------------------------------------------------------------------
 Wed Feb 26 06:13:13 UTC 2020 - Egbert Eich <eich@suse.com>

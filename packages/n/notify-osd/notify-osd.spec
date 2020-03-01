@@ -1,7 +1,7 @@
 #
 # spec file for package notify-osd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _version 0.9.35+16.04.20160415
+%define _version 0.9.35+20.04.20191129
 Name:           notify-osd
-Version:        0.9.35~bzr20160415
+Version:        0.9.35~bzr20191129
 Release:        0
 Summary:        Streamlined Notification Daemon
-License:        GPL-3.0+
-Group:          System/X11/Utilities
-Url:            https://launchpad.net/notify-osd
+License:        GPL-3.0-or-later
+URL:            https://launchpad.net/notify-osd
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_version}.orig.tar.gz
 # PATCH-FEATURE-OPENSUSE notify-osd-leolik.patch -- Extend the configuration capabilities, patch by Roman Sukochev (Leolik) from https://launchpad.net/~leolik/+archive/leolik.
 Patch0:         %{name}-leolik.patch
-# PATCH-FIX-UPSTREAM notify-osd-fix-workarea.patch sor.alexei@meowr.ru -- Fix workarea on Gtk 3.22+.
-Patch1:         %{name}-fix-workarea.patch
 # PATCH-FIX-UPSTREAM notify-osd-fix-voidreturn.patch sor.alexei@meowr.ru -- Fix value non-return in display.c stack_layout().
-Patch2:         %{name}-fix-voidreturn.patch
+Patch1:         %{name}-fix-voidreturn.patch
+# PATCH-FIX-UPSTREAM notify-osd-fix-workarea.patch sor.alexei@meowr.ru -- Fix workarea on GTK+ 3.22.[0-21].
+Patch2:         %{name}-fix-workarea.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake >= 1.8
 BuildRequires:  fdupes
@@ -61,24 +60,20 @@ and timeouts.
 %patch1 -p1
 %patch2 -p1
 
+cp %{_datadir}/automake*/COPYING .
+
 %build
 NOCONFIGURE=1 gnome-autogen.sh
 %configure \
   --disable-schemas-compile
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %fdupes %{buildroot}%{_datadir}/
 
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
-
 %files
-%defattr(-,root,root)
+%license COPYING
 %doc AUTHORS NEWS README TODO
 %{_libexecdir}/%{name}
 %{_datadir}/%{name}/

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:02:35 CET 2020 - schubi@suse.de
+
+- Using SysctlConfig class: Handle sysctl entries in different
+  directories (bsc#1151649).
+- 4.2.11
+
+-------------------------------------------------------------------
 Thu Jan 23 13:04:04 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - don't use /bin/systemctl compat symlink (bsc#1160890)

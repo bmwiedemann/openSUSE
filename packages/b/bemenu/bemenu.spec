@@ -1,7 +1,7 @@
 #
 # spec file for package bemenu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ URL:            https://github.com/Cloudef/bemenu
 Source0:        https://github.com/Cloudef/bemenu/archive/%{version}.tar.gz
 # https://github.com/Cloudef/bemenu/pull/77
 Patch0:         bemenu-0.3.0-curses.patch
+# https://github.com/Cloudef/bemenu/issues/26
+Patch1:         bemenu-0.3.0-boo1165235-ncurses.patch
+Patch2:         bemenu-0.3.0-wayland.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -70,6 +73,8 @@ Files required for development for Bemenu.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %if %{with curses}
 # fix colliding name with our ncurses library specifics

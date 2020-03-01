@@ -20,7 +20,7 @@ Name:           yast2-sudo
 Summary:        YaST2 - Sudo configuration
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Url:            https://github.com/yast/yast-sudo
 

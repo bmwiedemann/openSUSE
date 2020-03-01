@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# Copyright (c) 2007 SuSE Linux Products GmbH, Nuernberg, Germany.
+#
+# Please submit bugfixes or comments via http://www.suse.de/feedback/
+#
+# Author: Klaus Singvogel, 2007
+#
+#
+
+#
+# paranoia settings
+#
+umask 022
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+CRON_DIR=`echo "$0" | cut -d '/' -f 3`
+CRON_FREQ=`echo "$CRON_DIR" | cut -d '.' -f 2`
+
+case "$CRON_FREQ" in
+    daily) ;;
+    montly) ;;
+    weekly) ;;
+    *)
+        echo "Failed to determine cron frequency" 1>&2
+	exit 1
+	;;
+esac
+
+#
+# get information from /etc/sysconfig
+#
+if [ -f /etc/sysconfig/sarg ] ; then
+    . /etc/sysconfig/sarg
+fi
+
+if [ -n "$RUN_SARGREPORT" -a "$RUN_SARGREPORT" = "yes" -a \
+     -x /usr/sbin/sarg-reports ]; then
+     /usr/sbin/sarg-reports "$CRON_FREQ"
+fi
+
+exit 0

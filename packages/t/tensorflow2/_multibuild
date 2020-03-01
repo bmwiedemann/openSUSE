@@ -1,0 +1,8 @@
+<multibuild>
+  <package>standard</package>
+  <package>cuda-10-1</package>
+  <package>lite</package>
+  <package>hpc</package>
+  <package>hpc-openmpi2</package>
+  <package>hpc-mvapich2</package>
+</multibuild>

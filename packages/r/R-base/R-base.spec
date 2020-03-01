@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        3.6.2
+Version:        3.6.3
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -1078,7 +1078,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.23
+Version:        1.3.24
 Release:        %release
 Requires:       R-base
 
@@ -1193,7 +1193,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.72
+Version:        0.8.75
 Release:        %release
 Requires:       R-base
 
@@ -1400,7 +1400,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.142
+Version:        3.1.144
 Release:        %release
 Requires:       R-base
 

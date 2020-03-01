@@ -1,7 +1,7 @@
 #
 # spec file for package ComputeLibrary
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,26 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define so_ver 16
 
-# Disable validation tests by default due to CL
+%define so_ver 17
+# Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
-
 Name:           ComputeLibrary
-Version:        19.08
+Version:        19.11.1
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
-Group:          Productivity/Graphics/Other
-Url:            https://developer.arm.com/technologies/compute-library
+URL:            https://developer.arm.com/technologies/compute-library
 Source:         https://github.com/ARM-software/ComputeLibrary/archive/v%{version}.tar.gz#/ComputeLibrary-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  ocl-icd-devel
 BuildRequires:  scons >= 2.4
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  aarch64 armv7l armv7hl x86_64
 Recommends:     %{name}-sample-data
+ExclusiveArch:  aarch64 armv7l armv7hl x86_64
 
 %description
 A software library for computer vision and machine learning.
@@ -42,18 +39,15 @@ The Compute Library is a collection of low-level functions optimized for Arm CPU
 Examples binaries part.
 
 %package -n libarm_compute%{so_ver}
-Summary:        ARM Compute Library -- libs
-Group:          System/Libraries
+Summary:        ARM Compute Library
 
 %description -n libarm_compute%{so_ver}
 A software library for computer vision and machine learning.
 The Compute Library is a collection of low-level functions optimized for Arm CPU and GPU architectures targeted at image processing, computer vision, and machine learning.
 Library part.
 
-
 %package devel
 Summary:        ARM Compute Library -- devel
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 Requires:       libarm_compute%{so_ver} = %{version}
 
@@ -65,7 +59,6 @@ Devel part, including headers.
 %package sample-data
 %define sampledir sample-data
 Summary:        Compute Library sample data
-Group:          Productivity/Graphics/Visualization/Other
 
 %description sample-data
 Free *.npy and *.ppm files to use with example binaries.
@@ -86,20 +79,23 @@ scons os=linux build=native \
 %endif
 %ifarch aarch64 aarch64_ilp32
       neon=1 arch=arm64-v8a \
-%else
-%ifarch armv7l armv7hl
-      neon=1 arch=armv7a \
-%else
-      neon=0 arch=x86_64 \
 %endif
+%ifarch armv7l armv7hl
+      neon=0 arch=armv7a \
+%endif
+%ifarch x86_64
+      neon=0 arch=x86_64 \
 %endif
       extra_cxx_flags="%{optflags}" \
       Werror=0 %{?_smp_mflags}
 
 %install
 rm build/examples/*.o
+rm build/examples/gemm_tuner/*.o
+mv build/examples/gemm_tuner/* build/examples
+rm -r build/examples/gemm_tuner
 mkdir -p %{buildroot}%{_bindir}
-cp -a build/examples/* %{buildroot}%{_bindir}/
+install -Dm0755 build/examples/* %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_libdir}
 cp -a build/*.so* %{buildroot}%{_libdir}/
 mkdir -p %{buildroot}%{_includedir}/
@@ -110,14 +106,13 @@ rm -f $(find %{buildroot}%{_includedir}/ -name *.cpp)
 mkdir -p %{buildroot}%{_datadir}/ComputeLibrary/%{sampledir}
 cp -r data/* %{buildroot}%{_datadir}/ComputeLibrary/%{sampledir}
 # Install scripts
-cp scripts/* %{buildroot}%{_bindir}
+install -Dm0755 scripts/* %{buildroot}%{_bindir}
 # Fix Python scripts interpreter
 for pyfile in `ls %{buildroot}%{_bindir}/*.py`; do
-  sed -i -e 's|#!/usr/bin/env python|#!/usr/bin/python|' $pyfile
+  sed -i -e 's|#!%{_bindir}/env python|#!%{_bindir}/python|' $pyfile
 done
 
 %post -n libarm_compute%{so_ver} -p /sbin/ldconfig
-
 %postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
 
 %if %{with computelibrary_tests}
@@ -126,15 +121,13 @@ LD_LIBRARY_PATH="build/" build/tests/arm_compute_validation
 %endif
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
 
 %files -n libarm_compute%{so_ver}
-%defattr(-,root,root)
+%license LICENSE
 %{_libdir}/*.so.%{so_ver}*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/arm_compute
 %dir %{_includedir}/half
 %dir %{_includedir}/libnpy

@@ -17,7 +17,7 @@
 
 
 Name:           perl-YAML-PP
-Version:        0.020
+Version:        0.021
 Release:        0
 %define cpan_name YAML-PP
 Summary:        YAML 1.2 processor

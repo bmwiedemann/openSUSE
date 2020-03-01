@@ -1,7 +1,7 @@
 #
 # spec file for package mosquitto
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %bcond_without  websockets
 Name:           mosquitto
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
@@ -44,9 +44,9 @@ Patch1:         mosquitto-1.6.8-config.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcares-devel
-#BuildRequires:  libuuid-devel
 BuildRequires:  openssl-devel >= 1.0.0
 BuildRequires:  tcpd-devel
+BuildRequires:  uthash-devel
 Requires(pre):  shadow
 %if %{with websockets}
 BuildRequires:  libwebsockets-devel

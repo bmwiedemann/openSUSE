@@ -1,0 +1,46 @@
+From: Christian Goll <cgoll@suse.com>
+Date: Thu Feb 27 17:09:11 2020 +0100
+Subject: check for lipmix.so.MAJOR
+Patch-mainline: Not yet
+Git-commit: 6a280d70ba914a4c9734986b353fbb0e76eb664b
+References: 
+
+This is a hack with a safety net included: make sure
+PMIX version is 3 for PMX .so version 2.
+
+Edited-by: Egbert Eich <eich@suse.com>
+---
+ slurm-20.02.0/src/plugins/mpi/pmix/mpi_pmix.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+diff --git a/src/plugins/mpi/pmix/mpi_pmix.c b/src/plugins/mpi/pmix/mpi_pmix.c
+index 7a65895..e18b01d 100644
+--- a/src/plugins/mpi/pmix/mpi_pmix.c
++++ b/src/plugins/mpi/pmix/mpi_pmix.c
+@@ -109,6 +109,18 @@ static void *_libpmix_open(void)
+ #endif
+ 	xstrfmtcat(full_path, "libpmix.so");
+ 
++/*
++ * pmix.so library age is 2 for pmi version 3
++ */
++#if defined (PMIX_SO)
++# if HAVE_PMIX_VER != 3 || PMIX_SO != 2
++#  error PMIX .so != 2 or PMIX version != 3
++# else
++#  define PMIX_SO_STRING "2"
++# endif
++	  lib_plug = dlopen("libpmix.so."PMIX_SO_STRING, RTLD_LAZY | RTLD_GLOBAL);
++	if(!lib_plug)
++#endif
+ 	lib_plug = dlopen(full_path, RTLD_LAZY | RTLD_GLOBAL);
+ 	xfree(full_path);
+ 
+@@ -130,7 +145,7 @@ extern int init(void)
+ {
+ 	libpmix_plug = _libpmix_open();
+ 	if (!libpmix_plug) {
+-		PMIXP_ERROR("pmi/pmix: can not load PMIx library");
++		PMIXP_ERROR("pmi/pmix: can not load PMIx library: %d",(int) HAVE_PMIX_VER);
+ 		return SLURM_ERROR;
+ 	}
+ 	return SLURM_SUCCESS;

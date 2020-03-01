@@ -1,0 +1,27 @@
+diff -urEbw bemenu-0.3.0/lib/CMakeLists.txt bemenu-0.3.0.new/lib/CMakeLists.txt
+--- bemenu-0.3.0/lib/CMakeLists.txt	2019-12-20 13:26:04.000000000 +0100
++++ bemenu-0.3.0.new/lib/CMakeLists.txt	2020-02-28 12:21:34.761885163 +0100
+@@ -34,6 +34,14 @@
+ # Add include directories
+ INCLUDE_DIRECTORIES(${BEMENU_INCLUDE} ${CMAKE_CURRENT_BINARY_DIR})
+ 
++# curses
++set(CURSES_NEED_NCURSES TRUE)
++set(CURSES_NEED_WIDE TRUE)
++
++include(FindCurses)
++find_package(Curses REQUIRED)
++include_directories(${CURSES_INCLUDE_DIRS})
++
+ # Compile renderer plugins
+ ADD_SUBDIRECTORY(renderers)
+ 
+@@ -42,7 +50,7 @@
+ SET_TARGET_PROPERTIES(bemenu PROPERTIES
+     VERSION ${BEMENU_VERSION}
+     SOVERSION ${SOVERSION})
+-TARGET_LINK_LIBRARIES(bemenu dl)
++TARGET_LINK_LIBRARIES(bemenu dl ${CURSES_LIBRARIES})
+ 
+ # Install
+ INSTALL(TARGETS bemenu DESTINATION "${CMAKE_INSTALL_LIBDIR}")

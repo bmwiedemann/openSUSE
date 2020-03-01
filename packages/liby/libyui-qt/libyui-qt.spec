@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libyui-qt
 # DO NOT manually bump the version here; instead, use   rake version:bump
-Version:        2.52.1
+Version:        2.52.2
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 

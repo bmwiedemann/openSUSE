@@ -1,0 +1,110 @@
+From 87f0f4ba503f6ac3bd6598660379bad77a840426 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Fri, 31 Jan 2020 16:02:51 +0100
+Subject: [PATCH 6/6] added mkl_dnn as syslib
+
+---
+ tensorflow/workspace.bzl                     |  1 +
+ third_party/systemlibs/mkl_dnn.BUILD         | 65 ++++++++++++++++++++
+ third_party/systemlibs/syslibs_configure.bzl |  1 +
+ 3 files changed, 67 insertions(+)
+ create mode 100644 third_party/systemlibs/mkl_dnn.BUILD
+
+diff --git a/tensorflow/workspace.bzl b/tensorflow/workspace.bzl
+index 768458cc71..25951236f6 100755
+--- a/tensorflow/workspace.bzl
++++ b/tensorflow/workspace.bzl
+@@ -135,6 +135,7 @@ def tf_repositories(path_prefix = "", tf_repo_name = ""):
+     tf_http_archive(
+         name = "mkl_dnn",
+         build_file = clean_dep("//third_party/mkl_dnn:mkldnn.BUILD"),
++        system_build_file = clean_dep("//third_party/systemlibs:mkl_dnn.BUILD"),
+         sha256 = "ed56652dd237deb86ee9bf102c18de5f2625c059e5ab1d7512c8dc01e316b694",
+         strip_prefix = "mkl-dnn-0.21.2",
+         urls = [
+diff --git a/third_party/systemlibs/mkl_dnn.BUILD b/third_party/systemlibs/mkl_dnn.BUILD
+new file mode 100644
+index 0000000000..948f2d24ed
+--- /dev/null
++++ b/third_party/systemlibs/mkl_dnn.BUILD
+@@ -0,0 +1,65 @@
++licenses(["notice"])  # BSD/MIT-like license
++
++filegroup(
++    name = "LICENSE",
++    visibility = ["//visibility:public"],
++)
++
++
++HEADERS = [
++  "dnnl_config.h",
++  "dnnl_debug.h",
++  "dnnl.h",
++  "dnnl.hpp",
++  "dnnl_types.h",
++  "dnnl_version.h",
++  "mkldnn_config.h",
++  "mkldnn_debug.h",
++  "mkldnn_dnnl_mangling.h",
++  "mkldnn.h",
++  "mkldnn.hpp",
++  "mkldnn_types.h",
++  "mkldnn_version.h",
++]
++
++genrule(
++    name = "link_headers",
++    outs = HEADERS,
++    cmd = """
++      for i in $(OUTS); do
++        i=$${i##*/}
++        ln -sf $(INCLUDEDIR)/mkl-dnn/$$i $(@D)/$$i
++      done
++    """,
++)
++
++cc_library(
++    name = "mkl_headers",
++    hdrs = HEADERS,
++    includes = ["."],
++    visibility = ["//visibility:public"],
++)
++
++cc_library(
++    name = "mkl_dnn",
++    hdrs = HEADERS,
++    linkopts = ["-lmkldnn"],
++    includes = ["."],
++    visibility = ["//visibility:public"],
++)
++
++cc_library(
++    name = "mkl_libs_linux",
++    hdrs = HEADERS,
++    linkopts = ["-lmkldnn"],
++    includes = ["."],
++    visibility = ["//visibility:public"],
++)
++
++cc_library(
++    name = "mkldnn_single_threaded",
++    hdrs = HEADERS,
++    linkopts = ["-lmkldnn"],
++    includes = ["."],
++    visibility = ["//visibility:public"],
++)
+diff --git a/third_party/systemlibs/syslibs_configure.bzl b/third_party/systemlibs/syslibs_configure.bzl
+index 4b57df0cbe..f2ec3864b0 100644
+--- a/third_party/systemlibs/syslibs_configure.bzl
++++ b/third_party/systemlibs/syslibs_configure.bzl
+@@ -31,6 +31,7 @@ VALID_LIBS = [
+     "jsoncpp_git",
+     "keras_applications_archive",
+     "lmdb",
++    "mkl_dnn",
+     "nasm",
+     "nsync",
+     "opt_einsum_archive",
+-- 
+2.24.1
+

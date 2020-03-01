@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 18 20:08:47 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 6.0.0:
+ * Update to not allow a null (None) listener when calling set_listener (minor code "smell" tidy up)
+ * Change get_ssl call in connect to be consistent with transport method
+ * Add a sleep to the heartbeat loop
+ * Minor change to make quote-use more consistent (replace single with double in most places)
+ * Change build to use [Python Poetry](https://python-poetry.org/)
+ * Test coverage improvement
+ * Threading fix (is_alive) - https://github.com/jasonrbriggs/stomp.py/issues/286
+
+-------------------------------------------------------------------
 Sat Jan 18 10:56:54 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 5.0.1:

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 08:50:50 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix SourceRestore when some service is defined (bsc#1163081)
+- 4.2.7
+
+-------------------------------------------------------------------
+Thu Feb 20 17:02:03 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Removed obsolete zypp::target::rpm::ConvertDBReport callbacks,
+  not used since SLE12 (by mlandres)
+- Fixed Pkg.SourceRestore call to allow reading the stored
+  repositories even after the initial installation repository has
+  been added (bsc#1163081)
+- 4.2.6
+
+-------------------------------------------------------------------
 Mon Jan 13 12:18:43 UTC 2020 - Petr Pavlu <petr.pavlu@suse.com>
 
 - Fix calculation of replaced products in Pkg.Resolvable2YCPMap()

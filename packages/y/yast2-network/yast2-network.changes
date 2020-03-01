@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Feb 27 20:40:51 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when running the network configuration client if
+  the config has not been read by a previous client (bsc#1101514)
+- 4.2.58
+
+-------------------------------------------------------------------
+Tue Feb 25 12:16:42 CET 2020 - schubi@suse.de
+
+- Using SysctlConfig class: Handle sysctl entries in different
+  directories (bsc#1151649).
+- 4.2.57
+
+-------------------------------------------------------------------
+Fri Feb 21 09:53:25 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when checking if a given 'host' is local or not
+  (bsc#1163305)
+- 4.2.56
+
+-------------------------------------------------------------------
+Wed Feb 19 11:52:25 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add a class to represent NTP servers (jsc#SLE-7188).
+- 4.2.55
+
+-------------------------------------------------------------------
+Wed Feb 19 07:34:39 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash with an exception when editing the hardware
+  configuration of a new unplugged connection (bsc#1162679)
+
+-------------------------------------------------------------------
+Fri Feb  7 17:31:31 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bsc#1162271
+  - fixed validation of hostname
+- 4.2.54
+
+-------------------------------------------------------------------
+Fri Feb  7 15:50:13 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix the installation proposal text reflecting the network
+  configuration changes (bsc#1162796)
+- 4.2.53
+
+-------------------------------------------------------------------
+Thu Feb  6 15:48:23 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Prevent assignation of values not defined in the AutoYaST profile
+  when reading the interfaces section (bsc#1162671)
+- 4.2.52
+
+-------------------------------------------------------------------
+Tue Feb  4 19:06:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not break when reading interface config files with trailing
+  spaces (bsc#1161300)
+- 4.2.51
+
+-------------------------------------------------------------------
+Mon Feb  3 10:44:31 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix connection configuration summary when using a remote
+  IP address (bsc#1162483)
+- 4.2.50
+
+-------------------------------------------------------------------
+Fri Jan 31 07:23:15 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not fail when listing the s390 group devices of a given type
+  and no one is present (bsc#1160997)
+- 4.2.49
+
+-------------------------------------------------------------------
+Thu Jan 30 12:37:03 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Bring back the s390 group device activation dialog when editing
+  an offline s390 group device (bsc#1160997)
+- 4.2.48
+
+-------------------------------------------------------------------
 Thu Jan 23 09:16:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not try to read an ifcfg-* file that does not exist

@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-clipman-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
 Version:        1.4.3
-Release:        100
+Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
@@ -29,6 +29,8 @@ URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-clipman-pl
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.4/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff -- trivial fix until next release, seife
 Patch0:         xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff
+# PATCH-FIX-OPENSUSE xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff -- boo#1165231
+Patch1:         xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig

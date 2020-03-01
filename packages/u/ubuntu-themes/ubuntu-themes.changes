@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 19.04 (changes since 16.10~bzr20180122):
+  * Remove an old workaround which would force combobox menu text
+    (lp#1725921).
+  * list, row: Set padding, use white bg and hover effect on
+    activatable (lp#1755351, lp#1757471).
+  * Ambiance: Add proper theming for horizontal and vertical linked
+    items.
+  * Ambiance, Radiance: Use proper border-width for first/last
+    linked buttons in rtl.
+  * Ambiance, Radiance: Use default backdrop colours for views and
+    progress bars.
+  * Ambiance, Radiance: Implement ambiance-rw inspired darker
+    placessidebar.
+  * Ambiance, Radiance: Theme the places sidebar buttons to match
+    parent.
+  * Ambiance, Radiance: Remove the gap between the popover and tip,
+    add border.
+  * Ambiance, Radiance: use static bg imgs for window buttons and
+    add padding (lp#1693609).
+  * Ambiance, Radiance: don't use any background image (gradient)
+    when in backdrop.
+  * Ambiance, Radiance: Add more specific selectors for scale
+    states (lp#1759481).
+  * Ambiance, Radiance: Set top and bottom margins for switch and
+    separators in headerbar (lp#1693474).
+  * Ambiance, Radiance: Review of pathbar and stackswitcher buttons
+    (lp#1765561).
+  * Ambiance, Radiance: Add missing global colour definitions
+    (lp#1759795, lp#1762841).
+  * Ambiance, Radiance: Fix complex headerbars such as
+    gnome-builder one (lp#1762783).
+  * Ambiance, Radiance: No need to add icon-shadow for appmenu.
+  * Ambiance, Radiance: Add some transparency to links colour when
+    in backdrop.
+  * Ambiance, Radiance: Uniform the bg colour of decoration and
+    menubar (lp#1759754).
+  * Ambiance, Radiance: Use proper colours for drop actions on
+    places sidebar (lp#1707606).
+  * Ambiance, Radiance: Define colour for infobar and implement
+    backdrop state (lp#1765882)
+  * Remove nonexistent gnome-builder.css (lp#1773045).
+  * Radiance: Fix typo in assets link for focused buttons
+    (lp#1781736).
+  * Radiance: Use scaled image for buttons border (lp#1781736).
+  * Ambiance, Radiance: Don't use padding on window buttons for
+    chromium (lp#1782038).
+  * Ambiance: Use default foreground colour for toolbar menus
+    (lp#1758841).
+  * Ambiance, Radiance: Show proper arrow in combobox (lp#1743373).
+  * Ambiance, Radiance: Use default disabled colour for actions
+    headerbar buttons (lp#1785699).
+  * Ambiace, Radiance: Use headerbar destructive-action definition
+    for buttons.
+  * Ambiance, Radiance: Fix list selected colour for gnome-boxes
+    (lp#1761684).
+  * Ambiance, Radiance: Properly theme disabled and hovered
+    accelerators (lp#1795895).
+  * Don't use icon hover bg colour on nemo desktop (lp#1814506).
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Mon Mar 12 12:43:56 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 16.10~bzr20180122 (changes since

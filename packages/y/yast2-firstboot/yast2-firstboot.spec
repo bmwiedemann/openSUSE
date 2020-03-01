@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.2.10
+Version:        4.2.11
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only

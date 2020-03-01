@@ -255,6 +255,38 @@ monthly ()
   exclude_from_log
 }
 
+try_privdrop ()
+{
+  EGID=`id -g`
+  if [ "$EUID" -ne 0 -a "$EGID" -ne 0 ]; then
+    return
+  fi
+
+  # if the output directory is owned by an unprivileged user then we need to
+  # drop privileges to it to avoid security issues.
+  local TARGET_UID=`/usr/bin/stat -c '%u' "$HTMLOUT"`
+  local TARGET_GID=`/usr/bin/stat -c '%g' "$HTMLOUT"`
+
+  if [ -z "${TARGET_UID}" -o -z "${TARGET_GID}" ]; then
+    echo "error determining uid/gid of $HTMLOUT" 1>&2
+    exit 1
+  fi
+
+  if [ "$EUID" -eq "${TARGET_UID}" -a "$EGID" -eq "${TARGET_GID}" ]; then
+    return
+  fi
+
+  # okay we need to re-execute ourselves with lower privileges
+  exec /usr/bin/setpriv --inh-caps -all \
+    --ruid "${TARGET_UID}" \
+    --rgid "${TARGET_GID}" \
+    --init-groups \
+    --reset-env \
+    $0 "$@"
+}
+
+try_privdrop "$@"
+
 case $1 in
     manual)
         manual
@@ -283,7 +315,7 @@ case $1 in
         echo "     today,  Create Today report"
         echo "     daily,  Create Daily report"
         echo "    weekly,  Create Weekly report"
-        echo "    montly,  Create Monthly report"
+        echo "    monthly,  Create Monthly report"
         exit 0
 esac
 

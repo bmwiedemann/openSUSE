@@ -722,4 +722,12 @@
     <comment>submit new version 4.2.7</comment>
     <requestid>762121</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>3747d73ec3b0bcee85bc2bf6593cd88d</srcmd5>
+    <version>4.2.9</version>
+    <time>1583094404</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.9</comment>
+    <requestid>775179</requestid>
+  </revision>
 </revisionlist>

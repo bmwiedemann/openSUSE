@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 14:52:05 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Allow specifying the default preselected modules in the offline
+  installation (jsc#SLE-8040, jsc#SLE-11455)
+- 4.2.9
+
+-------------------------------------------------------------------
 Wed Oct  2 10:42:28 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
 
 - Add "precise_time" for products that depends on precise time.

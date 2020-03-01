@@ -27,15 +27,13 @@ Release:        0
 Summary:        Squid Analysis Report Generator
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://sarg.sourceforge.net/
+URL:            http://sarg.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        sarg.conf
 Source2:        http://www.initzero.it/products/opensource/sarg-reports/download/sarg-reports
 Source3:        sarg.hosts
 Source4:        sysconfig.sarg
-Source5:        cron.daily.sarg
-Source6:        cron.weekly.sarg
-Source7:        cron.monthly.sarg
+Source5:        cron.sarg
 Source8:        sarg-reports.1.gz
 Source9:        sarg-apache.conf
 Source10:       platform_suse.gif
@@ -49,6 +47,8 @@ BuildRequires:  gd-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  pcre-devel
+# required for the squid user/group
+BuildRequires:  squid
 Requires(post): %fillup_prereq
 Recommends:     cron
 Recommends:     http_proxy
@@ -80,7 +80,7 @@ make %{?_smp_mflags}
 install -d  %{buildroot}/srv/www/htdocs
 %make_install
 install -d  %{buildroot}%{_sysconfdir}/apache2/conf.d
-install -d  %{buildroot}/srv/www/sarg
+install -d %{buildroot}/srv/www/sarg
 install -d  %{buildroot}%{_datadir}/%{name}/languages
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sarg.conf
 install -m 644 %{SOURCE9} %{buildroot}%{_sysconfdir}/apache2/conf.d/
@@ -91,9 +91,14 @@ install -m 755 %{SOURCE2} %{buildroot}%{_sbindir}
 install -m 644 %{SOURCE3} %{buildroot}%{_datadir}/%{name}/sarg.hosts
 install -d %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
-install -D -m 755 %{SOURCE5} %{buildroot}%{_sysconfdir}/cron.daily/suse.de-sarg
-install -D -m 755 %{SOURCE6} %{buildroot}%{_sysconfdir}/cron.weekly/suse.de-sarg
-install -D -m 755 %{SOURCE7} %{buildroot}%{_sysconfdir}/cron.monthly/suse.de-sarg
+install -d %{buildroot}%{_libexecdir}/%{name}
+install -m 755 %{SOURCE5} %{buildroot}/%{_libexecdir}/%{name}/suse.de-sarg
+install -d %{buildroot}%{_sysconfdir}/cron.daily
+install -d %{buildroot}%{_sysconfdir}/cron.weekly
+install -d %{buildroot}%{_sysconfdir}/cron.monthly
+ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.daily/
+ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.weekly/
+ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.monthly/
 install -d -m 755 %{buildroot}%{_mandir}/man8
 install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 
@@ -106,15 +111,19 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man8
 %dir %{_sysconfdir}/cron.daily
 %dir %{_sysconfdir}/cron.weekly
 %dir %{_sysconfdir}/cron.monthly
-%{_sysconfdir}/cron.*/suse.de-sarg
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/suse.de-sarg
+%{_sysconfdir}/cron.weekly/suse.de-sarg
+%{_sysconfdir}/cron.daily/suse.de-sarg
+%{_sysconfdir}/cron.monthly/suse.de-sarg
 %dir /etc/apache2
 %dir /etc/apache2/conf.d
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/sarg-apache.conf
 %{_bindir}/sarg
 %{_sbindir}/sarg-reports
 %dir %{_datadir}/%{name}
-%dir /srv/www/sarg
-/srv/www/sarg/platform_suse.gif
+%attr(-,squid,squid) %dir /srv/www/sarg
+%attr(-,squid,squid) /srv/www/sarg/platform_suse.gif
 %{_datadir}/%{name}/css.tpl
 %{_datadir}/%{name}/exclude_codes
 %{_datadir}/%{name}/sarg.conf

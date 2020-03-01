@@ -1,7 +1,7 @@
 #
 # spec file for package spglib
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
-Url:            https://atztogo.github.io/spglib/
+URL:            https://atztogo.github.io/spglib/
 Source0:        https://github.com/atztogo/spglib/archive/v%{version}.tar.gz#/spglib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-CMakeLists.txt.patch
@@ -85,6 +85,9 @@ pushd .
 %cmake_install
 rm %{buildroot}%{_libdir}/lib*.a
 popd
+
+# Fix "env-script-interpreter" rpmlint warning
+chmod 644 ruby/*.rb
 
 pushd python
 %python3_install

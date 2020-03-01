@@ -50,4 +50,16 @@
   * Add manpage</comment>
     <requestid>759688</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e83c2bdbdadf24ec683ea8049752d455</srcmd5>
+    <version>0.3.0</version>
+    <time>1583094490</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bemenu-0.3.0-wayland.patch: enable wayland renderer
+
+- boo#1165235: Undefined symbol get_wch
+  * Add bemenu-0.3.0-boo1165235-ncurses.patch:
+    Search for ncursesw instead of ncurses</comment>
+    <requestid>780560</requestid>
+  </revision>
 </revisionlist>

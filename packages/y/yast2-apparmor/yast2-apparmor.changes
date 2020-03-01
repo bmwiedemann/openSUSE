@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 16:01:12 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed user-visible messages (bsc#1084015)
+- 4.2.4
+
+-------------------------------------------------------------------
 Thu Jan 23 12:41:07 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - don't use /bin/systemctl compat symlink (bsc#1160890)

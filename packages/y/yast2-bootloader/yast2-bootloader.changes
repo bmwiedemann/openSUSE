@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 28 14:23:30 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- add support for S390 secure boot (jsc#SLE-9471, jsc#SLE-9425)
+- 4.2.17
+
+-------------------------------------------------------------------
+Fri Feb 21 11:10:24 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Delegate the logic for calculating a device udev link to
+  yast2-storage-ng module (related to bsc#1151075).
+- 4.2.16
+
+-------------------------------------------------------------------
 Fri Jan  3 13:08:10 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - deduplicate kernel parameters after merging them

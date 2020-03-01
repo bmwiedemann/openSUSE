@@ -1442,4 +1442,37 @@ CHANGES IN R 3.4.2:
     <comment></comment>
     <requestid>765989</requestid>
   </revision>
+  <revision rev="72" vrev="29">
+    <srcmd5>2577dc9adbfc8d3b1df92da074d90a1b</srcmd5>
+    <version>unknown</version>
+    <time>1583094492</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 3.6.3:
+  NEW FEATURES:
+    * The included LAPACK has been updated to version 3.9.0 (for the
+      included routines, just bug fixes).
+  BUG FIXES:
+    * Fixed a C level integer overflow in rhyper(); reported by
+      Benjamin Tyner in PR#17694.
+    * Uses of url(gzcon(.)) needing to extend buffer size have failed
+      (with HTTP/2 servers), reported by G'abor Cs'ardi.
+    * predict(loess(..), se=TRUE) now errors out (instead of
+      seg.faulting etc) for large sample sizes, thanks to a report and
+      patch by Benjamin Tyner in PR#17121.
+    * tools:assertCondition(., &quot;error&quot;) and hence assertError() no
+      longer return errors twice (invisibly).
+    * update(form, new) in the case of a long new formula sometimes
+      wrongly eliminated the intercept from form, or (more rarely)
+      added a garbage term (or seg.faulted !); the fix happened by
+      simplifying the C-level logic of terms.formula().  Reported by
+      Mathias Amb&quot;uhl in PR#16326.
+    * The error message from stopifnot(.., &lt;error producing call&gt;)
+      again contains the full &quot;stopifnot(.......)&quot; call: Its attempted
+      suppression did not work consistently.
+    * On Windows, download.file(., , &quot;wininet&quot;, headers=character())
+      would fail; reported with patch proposal by Kevin Ushey in
+      PR#17710.
+</comment>
+    <requestid>780561</requestid>
+  </revision>
 </revisionlist>

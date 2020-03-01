@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 08:01:16 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff
+  to fix error stream in .xsession-errors file (boo#1165231)
+
+-------------------------------------------------------------------
 Fri Aug 16 12:36:09 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

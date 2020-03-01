@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.9.35~bzr20191129:
+  * Support "image-path" as hint (lp#1840741).
+- Rebase notify-osd-leolik.patch.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Tue Feb 28 10:11:13 UTC 2017 - sor.alexei@meowr.ru
 
 - Provide dbus(org.freedesktop.Notifications) instead of

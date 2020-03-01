@@ -143,4 +143,12 @@
     <comment></comment>
     <requestid>588368</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5406b3b5a7124dc6877dd61309caeb1a</srcmd5>
+    <version>19.04</version>
+    <time>1583094496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.04.</comment>
+    <requestid>780574</requestid>
+  </revision>
 </revisionlist>

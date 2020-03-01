@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 28 22:47:09 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix "env-script-interpreter" rpmlint warning
+
+-------------------------------------------------------------------
+Fri Feb 28 21:55:07 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Clean spec file.
+
+-------------------------------------------------------------------
 Thu Feb 13 03:56:08 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Build and package python3 bindings.

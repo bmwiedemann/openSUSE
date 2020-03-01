@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        4.2.47
+Version:        4.2.54
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later

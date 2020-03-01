@@ -651,7 +651,7 @@ diff -ruN src_old/stack.c src/stack.c
  	if (new_bubble && bubble_is_append_allowed(bubble)) {
  		app_bubble = find_bubble_for_append(self, bubble);
  
-@@ -984,8 +994,54 @@
+@@ -992,8 +1002,54 @@
  					case SLOT_ALLOCATION_FIXED:
  						*y += EM2PIXELS (defaults_get_icon_size (d), d) +
  						      2 * EM2PIXELS (defaults_get_margin_size (d), d) +
@@ -708,7 +708,7 @@ diff -ruN src_old/stack.c src/stack.c
  					break;
  
  					case SLOT_ALLOCATION_DYNAMIC:
-@@ -1001,6 +1057,114 @@
+@@ -1009,6 +1065,114 @@
  
  			}
  		break;

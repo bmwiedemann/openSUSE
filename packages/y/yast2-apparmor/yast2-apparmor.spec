@@ -17,7 +17,7 @@
 
 
 Name:           yast2-apparmor
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 Summary:        YaST2 - Plugins for AppArmor Profile Management
 License:        GPL-2.0-only

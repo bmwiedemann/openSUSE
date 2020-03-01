@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:28:25 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix disabled finish button (bsc#1163100)
+- 4.2.11
+
+-------------------------------------------------------------------
 Tue Jan 21 10:56:58 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fix packaging error (bsc#1161224)

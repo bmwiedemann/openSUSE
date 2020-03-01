@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.2.15
+Version:        4.2.17
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -29,8 +29,8 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  yast2 >= 3.1.176
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-ruby-bindings >= 1.0.0
-# Y2Storage::Mountable#mount_path
-BuildRequires:  yast2-storage-ng >= 4.0.90
+# Y2Storage::Mountable#preferred_mount_by
+BuildRequires:  yast2-storage-ng >= 4.2.90
 # lenses needed also for tests
 BuildRequires:  augeas-lenses
 BuildRequires:  update-desktop-files
@@ -46,8 +46,8 @@ Requires:       yast2 >= 3.1.176
 Requires:       yast2-core >= 2.18.7
 Requires:       yast2-packager >= 2.17.24
 Requires:       yast2-pkg-bindings >= 2.17.25
-# Y2Storage::Mountable#mount_path
-Requires:       yast2-storage-ng >= 4.0.90
+# Y2Storage::Mountable#preferred_mount_by
+Requires:       yast2-storage-ng >= 4.2.90
 # Support for multiple values in GRUB_TERMINAL
 Requires:       rubygem(%rb_default_ruby_abi:cfa_grub2) >= 1.0.1
 # lenses are needed as cfa_grub2 depends only on augeas bindings, but also

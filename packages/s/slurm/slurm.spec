@@ -24,6 +24,7 @@
 # so-version is 0 and seems to be stable
 %define pmi_so 0
 %define nss_so 2
+%define pmix_so 2
 
 %define pname slurm
 
@@ -123,6 +124,7 @@ Source1:        slurm-rpmlintrc
 Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
+Patch3:         check-for-lipmix.so.MAJOR.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -262,7 +264,7 @@ Summary:        NSS Plugin for SLURM
 Group:          System/Libraries
 
 %description -n libnss_%{pname}%{nss_so}
-libnss_slurm is an optional NSS plugin that permits password and group
+ibnss_slurm is an optional NSS plugin that permits password and group
 resolution for a job on a compute node to be serviced through the local
 slurmstepd process.
 
@@ -369,6 +371,9 @@ Requires:       perl-Switch
 Provides:       torque-client
 %{?upgrade:Provides: %{pname}-torque = %{version}}
 %{?upgrade:Conflicts: %{pname}-torque}
+%if %{with pmix}
+Requires:       libpmix%{pmix_so}
+%endif
 
 %description torque
 Wrapper scripts for aiding migration from Torque/PBS to SLURM.
@@ -524,9 +529,10 @@ Contains also cray specific documentation.
 
 %prep
 %setup -q -n %{pname}-%{dl_ver}
-%patch0 -p2
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %if 0%{?python_ver} < 3
 # Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
 mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
@@ -535,6 +541,7 @@ mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
 %build
 %define _lto_cflags %{nil}
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
+export CPPFLAGS=-DPMIX_SO=%{pmix_so}
 %configure --enable-shared \
            --disable-static \
            --without-rpath \

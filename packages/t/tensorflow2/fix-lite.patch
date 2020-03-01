@@ -1,0 +1,45 @@
+From 8784b0dadbf72d3ab15aa0bad7c419a0e7bd3c30 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Thu, 23 Jan 2020 12:08:24 +0100
+Subject: [PATCH 5/5] fix lite
+
+---
+ tensorflow/lite/tools/make/Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tensorflow/lite/tools/make/Makefile b/tensorflow/lite/tools/make/Makefile
+index f67094f37b..bd52ccc8a6 100644
+--- a/tensorflow/lite/tools/make/Makefile
++++ b/tensorflow/lite/tools/make/Makefile
+@@ -38,15 +38,15 @@ INCLUDES := \
+ -I$(MAKEFILE_DIR)/downloads/gemmlowp \
+ -I$(MAKEFILE_DIR)/downloads/neon_2_sse \
+ -I$(MAKEFILE_DIR)/downloads/farmhash/src \
+--I$(MAKEFILE_DIR)/downloads/flatbuffers/include \
+ -I$(OBJDIR)
+ # This is at the end so any globally-installed frameworks like protobuf don't
+ # override local versions in the source tree.
+-INCLUDES += -I/usr/local/include
++INCLUDES += -I/usr/include
+ 
+ # These are the default libraries needed, but they can be added to or
+ # overridden by the platform-specific settings in target makefiles.
+ LIBS := \
++-lflatbuffers \
+ -lstdc++ \
+ -lpthread \
+ -lm \
+@@ -111,8 +111,8 @@ $(wildcard tensorflow/lite/kernels/internal/optimized/*.cc) \
+ $(wildcard tensorflow/lite/kernels/internal/reference/*.cc) \
+ $(PROFILER_SRCS) \
+ tensorflow/lite/tools/make/downloads/farmhash/src/farmhash.cc \
+-tensorflow/lite/tools/make/downloads/fft2d/fftsg.c \
+-tensorflow/lite/tools/make/downloads/flatbuffers/src/util.cpp
++tensorflow/lite/tools/make/downloads/fft2d/fftsg.c 
++
+ CORE_CC_ALL_SRCS += \
+ 	$(shell find tensorflow/lite/tools/make/downloads/absl/absl/ \
+ 	             -type f -name \*.cc | grep -v test | grep -v benchmark | grep -v synchronization | grep -v debugging)
+-- 
+2.24.1
+

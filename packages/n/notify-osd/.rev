@@ -196,4 +196,12 @@
     <comment></comment>
     <requestid>461886</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9747f87a5162fd96bfe64124bccdf7f7</srcmd5>
+    <version>0.9.35~bzr20191129</version>
+    <time>1583094495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.35~bzr20191129.</comment>
+    <requestid>780573</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.0.88 (changes since 0.0.79):
+  * Extended colours.
+  * Work with SVG and PNG.
+  * Migrate to Gio.
+  * Fix for a few themes (lp#1703103).
+  * Add tick icon.
+  * File's emblem.
+  * Menu with directory and file.
+  * Fixed dumps in shell.
+  * Python 3 compatibility (lp#1826627).
+  * Update translations.
+- Add a Nemo package.
+- Switch to Python 3.
+
+-------------------------------------------------------------------
 Sat May 28 15:43:12 UTC 2016 - sor.alexei@meowr.ru
 
 - Update to version 0.0.79:

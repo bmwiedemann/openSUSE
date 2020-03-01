@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  1 16:58:48 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.8
+  * Removed the deprecated App Menu in favor of the Menu Bar.
+  * Migrate from obsolete Table to Grid
+  * Fix the footer
+  * Include accelerator for preferences (ctrl+shift+p) and fix
+    accelerator for shortcuts (ctrl+shift+F1) 
+  * Avoid maximizing application at startup
+  * Remove unused fast tabbing option from menu
+  * Allow setting the GH command line on the bottom again (cli_position =
+    bottom). By default is top.
+
+-------------------------------------------------------------------
 Fri Jan 31 07:57:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.6.6

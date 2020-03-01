@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  1 16:39:55 UTC 2020 - suse@geigi.de
+
+- Update to 0.6.14
+  * A warning is displayed in the titlebar if network/external drives are not connected
+  * MPRIS desktop integration is more stable
+  * Fix: Last book was loaded on startup even when the storage medium was offline
+  * Fix: Bugs in audiobook location settings window
+  * Fix: Bug which sometimes could prevent playback of an audiobook
+  * Fix: Crash which could occur on startup
+  * Fix: Jumping in titlebar while dragging the position slider with long audio files
+  * Updated translations
+
+-------------------------------------------------------------------
 Thu Feb 27 17:37:13 UTC 2020 - Julian Geywitz <suse@geigi.de>
 
 - Update to 0.6.13

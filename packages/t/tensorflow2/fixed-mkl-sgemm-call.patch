@@ -1,0 +1,51 @@
+From 6c6cd89eb19029921c04fc10b51c82dc503e4af8 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Wed, 5 Feb 2020 14:02:45 +0100
+Subject: [PATCH 7/7] fixed mkl sgemm call
+
+---
+ tensorflow/core/kernels/conv_grad_input_ops.cc     | 4 ++--
+ tensorflow/core/kernels/eigen_contraction_kernel.h | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/tensorflow/core/kernels/conv_grad_input_ops.cc b/tensorflow/core/kernels/conv_grad_input_ops.cc
+index 2f6200e504..93074836c6 100644
+--- a/tensorflow/core/kernels/conv_grad_input_ops.cc
++++ b/tensorflow/core/kernels/conv_grad_input_ops.cc
+@@ -368,8 +368,8 @@ struct Conv2DCustomBackpropInputMatMulFunctor<float> {
+         im2col_buf, filter_total_size * output_image_size * sizeof(T));
+ 
+     mkldnn_status_t st =
+-        mkldnn_sgemm(&transposeA, &transposeB, &m, &n, &k, &alpha, filter_data,
+-                     &ldA, out_data, &ldB, &beta, im2col_buf, &ldC);
++        mkldnn_sgemm(&transposeA, &transposeB, &m, &n, &k, alpha, filter_data,
++                     &ldA, out_data, &ldB, beta, im2col_buf, &ldC);
+ 
+     OP_REQUIRES(
+         ctx, st == 0,
+diff --git a/tensorflow/core/kernels/eigen_contraction_kernel.h b/tensorflow/core/kernels/eigen_contraction_kernel.h
+index 93680f885d..578194179e 100644
+--- a/tensorflow/core/kernels/eigen_contraction_kernel.h
++++ b/tensorflow/core/kernels/eigen_contraction_kernel.h
+@@ -41,6 +41,7 @@ limitations under the License.
+ 
+ #if defined(TENSORFLOW_USE_MKLDNN_CONTRACTION_KERNEL)
+ #include "mkldnn.h"
++#include "mkldnn_dnnl_mangling.h"
+ #endif
+ 
+ #include "tensorflow/core/platform/dynamic_annotations.h"
+@@ -164,8 +165,8 @@ struct mkldnn_gemm_kernel</*Scalar*/ float, IndexType, OutputMapper,
+     const int ldC = static_cast<int>(output.stride());
+ 
+     mkldnn_status_t st = mkldnn_sgemm(
+-        &transposeA, &transposeB, &m, &n, &k, &alpha, blockA, &ldA, blockB,
+-        &ldB, &beta, const_cast<ResScalar*>(output.data()), &ldC);
++        &transposeA, &transposeB, &m, &n, &k, alpha, blockA, &ldA, blockB,
++        &ldB, beta, const_cast<ResScalar*>(output.data()), &ldC);
+     eigen_assert(st == 0);
+ 
+ #if DYNAMIC_ANNOTATIONS_ENABLED == 1 || defined(MEMORY_SANITIZER)
+-- 
+2.24.1
+

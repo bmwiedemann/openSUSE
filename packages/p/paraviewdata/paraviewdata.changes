@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 19 22:20:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.8.0.
+- Switch installation dir to %{_datadir}/paraviewdata-%{version},
+  to allow multiple versions to be installed in parallel.
+- Add Copyright.txt file from upstream git as a Source and install
+  it.
+
+-------------------------------------------------------------------
+Tue Feb 18 15:19:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop the empty docdir directory.
+
+-------------------------------------------------------------------
+Wed Feb  5 23:18:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.7.0.
+- Switch Source to .xz tarball.
+- Run spec-cleaner for minor specfile cleanups.
+
+-------------------------------------------------------------------
 Sat Mar 31 11:10:06 UTC 2018 - jengelh@inai.de
 
 - Trim marketing wording from description.

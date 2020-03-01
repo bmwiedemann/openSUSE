@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Feb 18 16:34:38 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not catch exceptions when getting the updates list from the
+  registration server (bsc#1162903)
+- 4.2.35
+
+-------------------------------------------------------------------
+Mon Feb 17 06:51:38 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix a typo in the online search UI (jsc#SLE-9109).
+- 4.2.34
+
+-------------------------------------------------------------------
+Thu Feb  6 10:07:27 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improves online search mechanism UI (jsc#SLE-9109):
+  - Fix the "ignore case" checkbox behaviour.
+  - Add a help text.
+- 4.2.33
+
+-------------------------------------------------------------------
+Wed Feb  5 14:35:00 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improves online search mechanism UI (jsc#SLE-9109):
+  - Add a summary screen that enumerates which changes will
+    take place (addons and packages).
+  - Fix the 'Cancel' button label.
+  - Improve feedback when waiting for network I/O.
+  - Inform users about unsupported scenarios: unregistered and
+    SMT/RMT registered systems.
+- 4.2.33
+
+-------------------------------------------------------------------
+Wed Feb  5 13:50:48 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix running registration in firstboot (bsc#1162841)
+- 4.2.32
+
+-------------------------------------------------------------------
+Tue Feb  4 14:06:59 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Mark registration as WSL capable module (bsc#1162650)
+- 4.2.31
+
+-------------------------------------------------------------------
 Wed Jan 29 14:26:12 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix random building problems (bsc#1162122).

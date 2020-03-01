@@ -50,8 +50,8 @@
     <package name="mariadb"/>
     <package name="mariadb-tools"/>
     <package name="timezone"/>
-    <package name="util-linux"/>
-    <package name="pwgen"/>
+    <package name="util-linux"/><!-- su is needed for entrypoint.sh -->
+    <package name="pwgen"/><!-- pwgen is needed for entrypoint.sh -->
     <archive name="entrypoint.tar.gz"/>
   </packages>
 </image>

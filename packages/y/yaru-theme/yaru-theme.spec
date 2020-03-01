@@ -1,7 +1,7 @@
 #
 # spec file for package yaru-theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 %define _name   yaru
 Name:           yaru-theme
-Version:        18.10.7
+Version:        20.04.2
 Release:        0
 Summary:        Yaru theme from the Ubuntu community
 License:        GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND CC-BY-SA-4.0
-Group:          System/GUI/Other
 URL:            https://community.ubuntu.com/c/desktop/theme-refresh
 Source:         https://github.com/ubuntu/yaru/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  sassc
+BuildRequires:  pkgconfig(glib-2.0)
 BuildArch:      noarch
 
 %description
@@ -37,7 +38,6 @@ This is the theme shaped by the community on the Ubuntu hub.
 %package -n metatheme-yaru-common
 Summary:        Common files for the Yaru Gtk Theme
 License:        GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND CC-BY-SA-4.0
-Group:          System/GUI/Other
 Recommends:     sound-theme-yaru
 Recommends:     yaru-icon-theme
 Suggests:       gtk2-metatheme-yaru
@@ -49,11 +49,10 @@ This is the theme shaped by the community on the Ubuntu hub.
 %package -n gtk2-metatheme-yaru
 Summary:        GTK+ 2 support for the Yaru Gtk Theme
 License:        GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND CC-BY-SA-4.0
-Group:          System/GUI/Other
 Requires:       gtk2-engine-murrine
 Requires:       gtk2-theming-engine-adwaita
 Requires:       metatheme-yaru-common = %{version}
-Supplements:    packageand(metatheme-yaru-common:gtk2)
+Supplements:    (metatheme-yaru-common and gtk2)
 
 %description -n gtk2-metatheme-yaru
 This is the theme shaped by the community on the Ubuntu hub.
@@ -61,10 +60,9 @@ This is the theme shaped by the community on the Ubuntu hub.
 %package -n gtk3-metatheme-yaru
 Summary:        GTK+ 3 support for the Yaru Gtk Theme
 License:        GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND CC-BY-SA-4.0
-Group:          System/GUI/Other
 Requires:       gtk3
 Requires:       metatheme-yaru-common = %{version}
-Supplements:    packageand(metatheme-yaru-common:gtk3)
+Supplements:    (metatheme-yaru-common and gtk3)
 
 %description -n gtk3-metatheme-yaru
 This is the theme shaped by the community on the Ubuntu hub.
@@ -72,7 +70,6 @@ This is the theme shaped by the community on the Ubuntu hub.
 %package -n yaru-icon-theme
 Summary:        Yaru icon theme
 License:        CC-BY-SA-4.0
-Group:          System/X11/Icons
 Requires:       hicolor-icon-theme
 Requires:       humanity-icon-theme
 
@@ -84,7 +81,6 @@ This package contains the icon theme.
 %package -n sound-theme-yaru
 Summary:        Yaru sound theme
 License:        CC-BY-SA-4.0
-Group:          System/Libraries
 
 %description -n sound-theme-yaru
 This is the theme shaped by the community on the Ubuntu hub.
@@ -106,15 +102,8 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/99_Yaru.gschema.override \
   %{buildroot}%{_datadir}/xsessions/Yaru.desktop \
   %{buildroot}%{_datadir}/wayland-sessions/Yaru-wayland.desktop
 
-%fdupes %{buildroot}%{_datadir}/themes/Yaru/
+%fdupes %{buildroot}%{_datadir}/themes/Yaru*/
 %fdupes %{buildroot}%{_datadir}/icons/Yaru/
-
-%if 0%{?suse_version} < 1500
-%post -n yaru-icon-theme
-%icon_theme_cache_post Yaru
-
-# No need for %%icon_theme_cache_postun in %%postun since the theme won't exist anymore.
-%endif
 
 %files -n metatheme-yaru-common
 %license COPYING* LICENSE_CCBYSA
@@ -123,6 +112,8 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/99_Yaru.gschema.override \
 %exclude %{_datadir}/themes/Yaru/gtk-?.*/
 %{_datadir}/themes/Yaru-dark/
 %exclude %{_datadir}/themes/Yaru-dark/gtk-?.*/
+%{_datadir}/themes/Yaru-light/
+%exclude %{_datadir}/themes/Yaru-light/gtk-?.*/
 %dir %{_datadir}/gnome-shell/
 %dir %{_datadir}/gnome-shell/theme/
 %{_datadir}/gnome-shell/theme/Yaru/
@@ -134,10 +125,12 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/99_Yaru.gschema.override \
 
 %files -n gtk2-metatheme-yaru
 %{_datadir}/themes/Yaru/gtk-2.*/
+%{_datadir}/themes/Yaru-light/gtk-2.*/
 
 %files -n gtk3-metatheme-yaru
 %{_datadir}/themes/Yaru/gtk-3.*/
 %{_datadir}/themes/Yaru-dark/gtk-3.*/
+%{_datadir}/themes/Yaru-light/gtk-3.*/
 
 %files -n yaru-icon-theme
 %license COPYING* LICENSE_CCBYSA

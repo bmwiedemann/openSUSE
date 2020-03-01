@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Feb 28 16:53:10 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when the list of preselected modules is not defined
+  (related to jsc#SLE-8040, jsc#SLE-11455).
+- 4.2.54
+
+-------------------------------------------------------------------
+Thu Feb 27 13:44:18 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed going back (bsc#1163023)
+- 4.2.53
+
+-------------------------------------------------------------------
+Tue Feb 25 09:00:30 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Preselect the default modules in the offline installation
+  (jsc#SLE-8040, jsc#SLE-11455)
+- 4.2.52
+
+-------------------------------------------------------------------
+Wed Feb 19 15:34:23 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Media checker does not complain because sha checksums
+  (bsc#1158432).
+- Media checker shows information about the signature.
+- 4.2.51
+
+-------------------------------------------------------------------
+Tue Feb 18 15:47:45 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Avoid crashing when changing a language and keyboard layout
+  (bsc#1161842).
+- 4.2.50
+
+-------------------------------------------------------------------
+Wed Feb  5 15:36:54 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Enable the "Search Online" menu entry for those systems that
+  are registered or that can be registered (jsc#SLE-9109).
+- 4.2.49
+
+-------------------------------------------------------------------
+Tue Feb  4 14:09:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Mark packager and repositories as WSL capable modules
+  (bsc#1162650)
+- 4.2.48
+
+-------------------------------------------------------------------
 Wed Jan 29 15:35:20 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't overwrite the default English license for add-on modules

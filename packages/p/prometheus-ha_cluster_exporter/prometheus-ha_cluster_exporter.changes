@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 28 15:13:01 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta7
+
+  ## Changed
+  - Refactored project structure by using Go packages (#131).
+  - Refactored Pacemaker collector and separate XML parsing from the metrics collection (#132).
+  - The open-source software license has been changed from GPLv3 to Apache 2.0. (#133)
+  - The RPM build no longer uses PIE, which made Go platform compatibility potentially problematic. (#133)
+
+  ## Fixed
+  - Stopped resources are now tracked correctly. (#134)
+  - A few edge cases previously uncovered in the CI pipeline are now handled correctly. (#135)
+
+-------------------------------------------------------------------
 Wed Feb 12 10:22:03 2020 UTC - shap-staff@suse.de
 
 - Release 1.0.0beta6
 
   ## Changed
-  - Revert full Source url usage and reinstate OBS source service in the build pipeline (#129) 
+  - Revert full Source url usage and reinstate OBS source service in the build pipeline (#129)
 
 -------------------------------------------------------------------
 Tue Feb 11 14:18:15 2020 UTC - shap-staff@suse.de
@@ -77,7 +92,7 @@ Thu Nov 28 12:40:53 2019 UTC - shap-staff@suse.de
 - Release 0.3.0
 
   ## Added
-  - Brand new `ha_cluster_drbd_split_brain` metric (#100) 
+  - Brand new `ha_cluster_drbd_split_brain` metric (#100)
   - Travis "Build & release" job automatically publishes built assets to GH releases and deploys tags in OBS. (#102)
 
   ## Changed
@@ -147,29 +162,29 @@ Fri Oct 25 15:20:57 UTC 2019 - stefano.torresi@suse.com
     - RPM package spec and SystemD unit are now in the repo rather than in the OBS package.
 
     ## Changed
-    - Extensive refactoring to implement `prometheus.Collector` API (#66) 
+    - Extensive refactoring to implement `prometheus.Collector` API (#66)
     - Various metrics and their labels were renamed (#61, #62)
-    - Removed Go vendoring mode (#76) 
+    - Removed Go vendoring mode (#76)
 
     ## Fixed
-    - Metrics no longer need to be reset (#60) 
+    - Metrics no longer need to be reset (#60)
     - TravisCI configuration (#74)
 
 
 -------------------------------------------------------------------
 Fri Oct 18 09:01:28 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
-- update to 0.0.8 Release Github: DRBD Metrics and other minor improvements 
+- update to 0.0.8 Release Github: DRBD Metrics and other minor improvements
 
 -------------------------------------------------------------------
 Wed Oct  2 15:50:37 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
-- remove user and group from systemd unit file. (cause breakage on exporter) 
+- remove user and group from systemd unit file. (cause breakage on exporter)
 
 -------------------------------------------------------------------
 Wed Oct  2 14:51:02 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
-- update to 0.0.7 Releases Github: SBD metrics 
+- update to 0.0.7 Releases Github: SBD metrics
 
 -------------------------------------------------------------------
 Mon Sep 30 16:55:19 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
@@ -179,18 +194,18 @@ Mon Sep 30 16:55:19 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 -------------------------------------------------------------------
 Wed Sep 18 15:57:00 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
-- update to 0.0.5 Released GitHub version. Metrics improvements 
+- update to 0.0.5 Released GitHub version. Metrics improvements
 
 -------------------------------------------------------------------
 Tue Sep 17 13:48:21 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
 
 - Version bump to 0.0.4
-- Start prometheus-ha_cluster_exporter systemd service after pacemaker service 
+- Start prometheus-ha_cluster_exporter systemd service after pacemaker service
 
 -------------------------------------------------------------------
 Tue Sep 17 12:00:20 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
 
-- fix source file name 
+- fix source file name
 
 -------------------------------------------------------------------
 Tue Sep 17 11:32:35 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
@@ -200,7 +215,7 @@ Tue Sep 17 11:32:35 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 -------------------------------------------------------------------
 Tue Sep 17 11:14:48 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
-- Adapt systemd unit file to ha_exporter 
+- Adapt systemd unit file to ha_exporter
 
 -------------------------------------------------------------------
 Tue Sep 17 09:57:01 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>

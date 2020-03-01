@@ -127,6 +127,8 @@
 %{?with_mpi:%global hpc_module_pname p%{pname}}
 %define python_flavor python3
 %define package_name   %{hpc_package_name %_vers}
+%define package_name_provide tensorflow%{hpc_package_name_tail}
+%define package_name_conflict tensorflow2%{hpc_package_name_tail}
 %define libname(l:s:)   lib%{pname}%{-l*}%{hpc_package_name_tail %{?_vers}}
 %define package_python_sitearch %hpc_python_sitearch
 %define package_python_sitelib %{hpc_prefix}/lib64/%{python_ver_hack}/site-packages/
@@ -135,6 +137,7 @@
 %define package_libdir %hpc_libdir
 %else
 %define package_name   %pname%{?package_suffix}
+%define package_name_conflict tensorflow2%{?package_suffix}
 %define package_python_sitearch %{python3_sitearch}
 %define package_python_sitelib %{python3_sitelib}
 %define package_prefix %_prefix
@@ -283,6 +286,10 @@ Requires:       python3-gast
 Requires:       python3-pip
 Requires:       python3-protobuf
 Requires:       python3-termcolor
+Conflicts:      %{package_name_conflict}
+%if %{with hpc}
+Provides:       %{package_name_provide}
+%endif
 %if %{with hpc}
 Requires:       python3-numpy-%{compiler_family}%{?c_f_ver}-hpc
 %else
@@ -342,6 +349,10 @@ more CPUs in a desktop, server, or mobile device without rewriting code.
 Summary:        Header files of tensorflow
 Group:          Development/Languages/Python
 Requires:       %{package_name} = %{version}
+Conflicts:      %{package_name_conflict}-devel
+%if %{with hpc}
+Provides:       %{package_name_provide}-devel
+%endif
 
 %description  -n %{package_name}-devel
 This open source software library for numerical computation is used for data

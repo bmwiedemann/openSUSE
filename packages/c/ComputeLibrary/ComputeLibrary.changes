@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 25 16:05:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.11.1:
+  * Fix offset calculation in NEReductionOperationKernel.
+  * Fix data layout in NEScaleKernel for nhwc.
+  * Retain configuration step data layout to avoid side-effects.
+  * Perform sqrt in double domain for L2 pooling.
+  * Fix output shape calculation for Reduce Mean.
+
+-------------------------------------------------------------------
+Tue Feb 25 15:50:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Cleanup a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec  6 13:44:14 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.11 (no upstream changelog)
+- Revert previous commit to disable neon on armv7
+
+-------------------------------------------------------------------
 Tue Nov 26 15:40:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable neon on armv7

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-dhcp-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-dhcp-server
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        YaST2 - DHCP Server Configuration
 License:        GPL-2.0-only
@@ -39,7 +39,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-dns-server
 BuildRequires:  yast2-perl-bindings
-BuildRequires:  yast2-testsuite
 # Fix old testsuite bind package absence mocks
 BuildRequires:  yast2 >= 4.2.11
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)

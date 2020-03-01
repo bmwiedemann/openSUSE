@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:35:05 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed user-visible messages (bsc#1084015)
+- 4.2.9
+
+-------------------------------------------------------------------
+Thu Feb  6 13:11:35 CET 2020 - schubi@suse.de
+
+- Improved text (label/helptext) for kdump low/high memory usage.
+  (bsc#1153940)
+- 4.2.8
+
+-------------------------------------------------------------------
 Wed Jan  8 14:25:28 CET 2020 - schubi@suse.de
 
 - Showing default (expected) values for high/low kdump memory.

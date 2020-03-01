@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 19 13:24:06 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Rely on the new Y2Network::NtpServer class (jsc#SLE-7188).
+- 4.2.8
+
+-------------------------------------------------------------------
 Thu Jan 23 12:58:04 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - don't use /bin/systemctl compat symlink (bsc#1160890)

@@ -1,0 +1,12 @@
+diff -urEbw bemenu-0.3.0/CMakeLists.txt bemenu-0.3.0.new/CMakeLists.txt
+--- bemenu-0.3.0/CMakeLists.txt	2019-12-20 13:26:04.000000000 +0100
++++ bemenu-0.3.0.new/CMakeLists.txt	2020-02-28 13:42:22.740866682 +0100
+@@ -7,7 +7,7 @@
+ 
+ OPTION(BEMENU_CURSES_RENDERER "Build curses backend" ON)
+ OPTION(BEMENU_X11_RENDERER "Build X11 backend" ON)
+-OPTION(BEMENU_WAYLAND_RENDERER "Build wayland renderer" OFF)
++OPTION(BEMENU_WAYLAND_RENDERER "Build wayland renderer" ON)
+ 
+ INCLUDE(CTest)
+ INCLUDE(GetGitRevisionDescription)

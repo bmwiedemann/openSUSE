@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Feb 20 16:02:54 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Add API methods to get preferred mount by option and the
+  associated device path.
+- 4.2.90
+
+-------------------------------------------------------------------
+Thu Feb 20 14:37:41 CET 2020 - aschnell@suse.com
+
+- allow to install packages needed for probing
+- 4.2.89
+
+-------------------------------------------------------------------
+Wed Feb 19 10:49:56 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: fixed the infinite loop when trying to create a new
+  partition out of the candidate devices (related to bsc#1161331
+  and bsc#1161678).
+- 4.2.88
+
+-------------------------------------------------------------------
+Tue Feb 18 15:04:21 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: do no show button for editing devices when the
+  device cannot be used as block device (bsc#1163597).
+- Revert changes from 4.2.85.
+- 4.2.87
+
+-------------------------------------------------------------------
+Tue Feb 18 11:59:05 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Initial Guided Proposal: place the boot-related partitions in
+  the device choosen for root, even if it's a software RAID
+  (bsc#1161331, bsc#1161678).
+- 4.2.86
+
+-------------------------------------------------------------------
+Tue Feb 18 10:26:02 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: do not allow to edit a device when the device cannot
+  be used as block device (bsc#1163597).
+- 4.2.85
+
+-------------------------------------------------------------------
+Wed Feb 12 09:53:44 CET 2020 - aschnell@suse.com
+
+- added texts for RAID1C3 and RAID1C4 as required by
+  gh#openSUSE/libstorage-ng#706 (related to jsc#SLE-3877)
+- 4.2.84
+
+-------------------------------------------------------------------
+Wed Feb  5 12:38:51 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Partitioner: usability improved by remembering the last active
+  tab and selected device per page (bsc#1159883).
+- 4.2.83
+
+-------------------------------------------------------------------
+Tue Feb  4 12:09:51 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: add a new progress dialog instead of simply closing
+  when applying the changes in a running system (bsc#1135366).
+- 4.2.82
+
+-------------------------------------------------------------------
+Fri Jan 31 16:49:28 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: the button to delete all partitions does no longer
+  fail for devices containing logical partitions (bsc#1162290).
+- 4.2.81
+
+-------------------------------------------------------------------
 Tue Jan 29 10:00:18 UTC 2020 - Christopher Hofmann <cwh@suse.com>
 
 - Added package requirement for UF_PLAIN_ENCRYPTION (bsc#1160773)

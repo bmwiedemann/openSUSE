@@ -1,27 +1,29 @@
 #
-# Copyright (c) 2019 SUSE LLC
+# spec file for package prometheus-ha_cluster_exporter
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Copyright (c) 2020 SUSE LLC
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <https://www.gnu.org/licenses/>.
-#
+
+
 Name:           prometheus-ha_cluster_exporter
 # Version will be processed via set_version source service
-Version:        1.0.0beta6
+Version:        1.0.0beta7
 Release:        0
-License:        Apache-2.0
 Summary:        Prometheus exporter for Pacemaker HA clusters metrics
+License:        Apache-2.0
 Group:          System/Monitoring
-Url:            https://github.com/ClusterLabs/ha_cluster_exporter
+URL:            https://github.com/ClusterLabs/ha_cluster_exporter
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
@@ -48,12 +50,10 @@ Prometheus exporter for Pacemaker HA clusters metrics
 
 %build
 
-# s390x GOARCH doesn't support PIE
-%ifnarch s390x
-export GOFLAGS="-buildmode=pie"
-%endif
-
-go build -mod=vendor -ldflags="-s -w -X main.version=%{version}" -o %{shortname}
+export CGO_ENABLED=0
+go build -mod=vendor \
+         -ldflags="-s -w -X main.version=%{version}" \
+         -o %{shortname}
 
 %install
 

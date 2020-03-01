@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 19:36:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'Provides' only for hpc flavors, otherwise it matches the
+  package name
+
+-------------------------------------------------------------------
+Thu Feb 13 12:42:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add provides/conflicts to avoid to install tensorflow and 
+  tensorflow2 as some files are provided by both packages
+
+-------------------------------------------------------------------
 Tue Feb  4 08:51:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase RAM requirements and limit_build value to avoid OOM

@@ -18,12 +18,14 @@
 
 %define skip_python2 1
 Name:           python-stomp.py
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Python STOMP client
 License:        Apache-2.0
 URL:            https://github.com/jasonrbriggs/stomp.py
-Source:         https://files.pythonhosted.org/packages/source/s/stomp.py/stomp.py-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/stomp.py/stomp.py-%{version}.tar.gz
+# using github archive for docs
+Source1:        https://github.com/jasonrbriggs/stomp.py/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,6 +38,7 @@ A Python client library for accessing messaging servers (such as ActiveMQ, Apoll
 
 %prep
 %setup -q -n stomp.py-%{version}
+%setup -q -n stomp.py-%{version} -D -b 1
 
 %build
 %python_build

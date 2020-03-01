@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 20:23:04 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: Added back the installation finish client for opening
+  the VNC or SSH port during the first stage when used for remote
+  installations (bsc#1161319)
+- 4.2.3
+
+-------------------------------------------------------------------
 Tue Aug 27 18:00:06 CEST 2019 - schubi@suse.de
 
 - Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).

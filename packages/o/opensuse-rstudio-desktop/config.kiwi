@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OBS-ExclusiveArch: x86_64 -->
+<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.5" name="opensuse-rstudio-desktop-image">
+  <description type="system">
+    <author>Marco Varlese</author>
+    <contact>mvarlese@suse.com</contact>
+    <specification>R-Studio Desktop</specification>
+  </description>
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
+      <containerconfig name="opensuse-rstudio-desktop" tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%">
+        <subcommand execute="/usr/lib/rstudio/bin/rstudio"/>
+        <labels>
+          <!-- See https://en.opensuse.org/Building_derived_containers#Labels -->
+          <suse_label_helper:add_prefix prefix="org.opensuse.rstudio-desktop">
+            <label name="org.opencontainers.image.title" value="openSUSE R-Studio Desktop"/>
+            <label name="org.opencontainers.image.description" value="Image for R-Studio Desktop"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="Marco Varlese"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/rstudio-desktop:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Marco Varlese &lt;mvarlese@suse.com&gt;">openSUSE rstudio-desktop container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>false</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+    <hwclock>utc</hwclock>
+  </preferences>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="image" patternType="onlyRequired">
+    <package name="rstudio" arch="x86_64"/>
+  </packages>
+</image>

@@ -1,0 +1,355 @@
+-------------------------------------------------------------------
+Fri Feb 28 10:55:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix name for libtensorflow* sub-packages
+
+-------------------------------------------------------------------
+Thu Feb 20 08:46:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- openSUSE has no CUDA package, so disable cuda build for
+  openSUSE
+
+-------------------------------------------------------------------
+Fri Feb 14 15:03:03 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- addding changes for CUDA builds  
+
+-------------------------------------------------------------------
+Thu Feb 13 19:41:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'Provides' only for hpc flavors, otherwise it matches the
+  package name
+
+-------------------------------------------------------------------
+Tue Feb 11 14:41:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add provides/conflicts to avoid to install tensorflow and 
+  tensorflow2 as some files are provided by both packages
+
+-------------------------------------------------------------------
+Wed Feb  5 14:14:06 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+-  removed mkl-dnn as sourc and force usage of system mkl-dnn 
+   for x86_64 builds
+   * removed file mkl-dnn-v021.2.tar.gz
+   * added patch: added-mkl_dnn-as-syslib.patch
+   * added patch: fixed-mkl-sgemm-call.patch
+
+-------------------------------------------------------------------
+Sun Feb  2 19:32:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 1.25.0 as minimal version for grpc-devel
+
+-------------------------------------------------------------------
+Fri Jan 31 10:33:05 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 3.1.5 as a minimal version for double-conversion-devel
+  (2.0.1 from SLE15SP2/Leap15.2 is too old)
+- Lower required version for protobuf (3.9.1 from SLE15SP2/Leap15.2
+  is fine)
+
+-------------------------------------------------------------------
+Thu Jan 30 14:27:58 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed AVX2 flavor, this should be fixed via mkl-dnn 
+
+-------------------------------------------------------------------
+Thu Jan 30 13:18:12 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on hpc targets
+
+-------------------------------------------------------------------
+Tue Jan 28 11:15:24 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added shared library packages libtensorflow2, 
+  libtensorflow_cc2 and libtensorflow_framework2
+- removed the AWS sdk support as this forces a SEGFAULT
+  * remobed file aws-sdk-cpp-1.5.8.tar.gz
+- dropped following source files as they are not needed any more
+  * removed file backports.weakref-1.0rc1.tar.gz
+  * removed file gettid.patch
+  * removed file grpc-v1.24.2.gz
+  * removed file libjpeg-turbo-2.0.0.tar.gz
+  * removed file nsync_1.20.0.tar.gz
+
+
+-------------------------------------------------------------------
+Tue Jan 28 09:33:03 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not try to install *.pb.* files in Lite flavor
+
+-------------------------------------------------------------------
+Tue Jan 28 09:13:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Define package name at 'tensorflow2' instead of 'tensorflow'
+
+-------------------------------------------------------------------
+Fri Jan 24 16:52:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Generate *.pb.* files and package them, to be used by ArmNN
+- Do not build on %ix86
+- Do not build %arm, except for Lite flavor
+
+-------------------------------------------------------------------
+Thu Jan 23 10:23:01 UTC 2020 - Christian Goll <cgoll@suse.com>
+- updated to tensorflow 2.1.0 which is a stable release and has
+  following breaking changes:
+  * Deletes Operation.traceback_with_start_lines for which we 
+    know of no usages.
+  * Removed id from tf.Tensor.__repr__() as id is not useful other 
+    than internal debugging.
+  * Some tf.assert_* methods now raise assertions at operation 
+    creation time if the input tensors' values are known at that 
+    time, not during the session.run(). This only changes behavior 
+    when the graph execution would have resulted in an error. When 
+    this happens, a noop is returned and the input tensors are 
+    marked non-feedable. In other words, if they are used as keys 
+    in feed_dict argument to session.run(), an error will be raised. 
+    Also, because some assert ops don't make it into the graph, the 
+    graph structure changes. A different graph can result in 
+    different per-op random seeds when they are not given 
+    explicitly (most often).
+  * The following APIs are not longer experimental: 
+    tf.config.list_logical_devices, tf.config.list_physical_devices, 
+    tf.config.get_visible_devices, tf.config.set_visible_devices, 
+    tf.config.get_logical_device_configuration, 
+    tf.config.set_logical_device_configuration.
+  * tf.config.experimentalVirtualDeviceConfiguration has been 
+    renamed to tf.config.LogicalDeviceConfiguration.
+  * tf.config.experimental_list_devices has been removed, 
+    please use tf.config.list_logical_devices.
+- renamed the project to tensorflow2 so that the original tensorflow
+  v1 API compatible release can stay in factory. Following
+  changes were made to achive this:
+  * added tensorflow-v2.1.0.tar.gz
+  * added tensforflow2.spec
+  * added tensforflow2.changes
+  * removed tensorflow-v1.13.2.tar.gz
+  * removed tensorflow.spec
+  * removed tensorflow.chnages
+- following source files had to be updated
+  * updated abseil-cpp.tar.gz
+  * updated bazel-toolchains.tar.gz
+  * updated eigen.tar.gz
+  * updated gemmlowp.zip
+  * updated license.rst.txt
+  * updated rules_closure.tar.gz
+- following new souces had to be updated
+  * added aws-sdk-cpp-1.5.8.tar.gz
+  * added bazel-skylib.0.8.0.tar.gz
+  * added fft2d.tgz
+  * added rules_cc.zip
+- for the following souces the system libraries are now ues
+  * removed aws-sdk-cpp-1.3.15.tar.gz
+  * removed double_conversion.zip
+  * removed file unicode-org-icu.tar.gz
+  * removed file 816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz
+- these patches were removed
+  * removed file support-new-bazel.patch
+  * removed file tensorflow-make_aws_sdk_work_on_aarch64.patch
+  * removed file tensorflow-fix_lite.patch
+  * removed file remove-keras.patch
+  * removed file grpc-namespace-corrections.patch
+- these new patches were added
+  * added fix-lite.patch
+  * added removed-docker-tools.patch
+  * added right-json-location.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 19:24:06 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to tensorflow 0.13.2
+- dropped grpc.tar.gz and grpc-v1.13.0.gz as system grpc is used, this
+  fixes the broken builds which were introduced with gcc9 (bsc#1152671)
+  * added grpc-namespace-corrections.patch in order to use system grpc
+- dropped re2-2018-10-01.tar.gz as system re2 is used now
+
+-------------------------------------------------------------------
+Wed Sep 25 14:18:48 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added remove-keras.patch which removes keras sources and uses
+  distribution keras libaries
+  * removed keras-applications-1.0.6.tar.gz
+  * removed keras-preprocessing-1.0.9.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 23 09:25:08 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- using now system protobuf instead of building it (bsc#1151150) 
+
+-------------------------------------------------------------------
+Tue Sep 17 21:08:12 UTC 2019 - guillaume.gardet@opensuse.org
+
+- Ajust %limit_build to avoid OOM errors
+- Do not use %limit_build for lite flavor
+
+-------------------------------------------------------------------
+Mon Jul 29 13:51:16 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added additonal dependencies
+
+-------------------------------------------------------------------
+Wed Jul 17 08:18:34 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- fixed installation location of shared library 
+
+-------------------------------------------------------------------
+Mon Jul  8 14:04:17 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- removed bazel mirror from as much source links as possible 
+- added support-new-bazel.patch support newer upcoming bazel
+  versions
+
+-------------------------------------------------------------------
+Tue Jun  4 14:16:10 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build for lite flavor:
+  * tensorflow-fix_lite.patch
+
+-------------------------------------------------------------------
+Wed May 29 16:11:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Call ldconfig for devel package in post/postun
+
+-------------------------------------------------------------------
+Mon May 27 15:00:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 build with upstream patch:
+  * tensorflow-make_aws_sdk_work_on_aarch64.patch
+
+-------------------------------------------------------------------
+Mon May 27 04:08:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add Lite flavor
+
+-------------------------------------------------------------------
+Fri Apr 26 08:27:55 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.13.1 fixes boo#1133490 
+
+-------------------------------------------------------------------
+Fri Mar 29 13:06:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Fri Mar 29 08:18:09 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libtensorflow_cc and libtensorflow_framework
+
+-------------------------------------------------------------------
+Tue Mar 19 15:40:25 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added fix_mvapich_mpi_bzl.patch which fixes detection of 
+  mvapich2 mpi library
+- fixed python3 build
+
+-------------------------------------------------------------------
+Tue Mar 12 20:33:56 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 1.13.1
+  * Major Features and Improvements
+  * TensorFlow Lite has moved from contrib to core. This means that Python modules are under tf.lite and source code is now under tensorflow/lite rather than tensorflow/contrib/lite.
+  * TensorFlow GPU binaries are now built against CUDA 10 and TensorRT 5.0.
+  * Support for Python3.7 on all operating systems.
+  * Moved NCCL to core.
+- drop merged patch mpilibpath_configure_py.patch
+- drop obsolete pyton3.7 patches
+- disabled jemalloc for now
+
+-------------------------------------------------------------------
+Tue Feb 12 08:39:57 UTC 2019 - cgoll@suse.com
+
+- enabled aws and googlecloud support
+  * removed no_aws_and_googlecloud.patch
+
+-------------------------------------------------------------------
+Mon Feb 11 16:27:20 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- Fixed build issues with python 3.7 what introduced the patches
+  * python3_7_compatibility.patch backported from upstream
+  * python3.7_unicode.patch fixes a minor function call
+  * python3.7_async_keyword.patch avoids the new keyword async
+
+-------------------------------------------------------------------
+Thu Jan 31 11:44:21 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build with python 3.7
+
+-------------------------------------------------------------------
+Fri Jan 18 16:45:48 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libtensorflow.so as some packages may link to it
+
+-------------------------------------------------------------------
+Fri Jan 11 13:52:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add constraints on HDD size to avoid no space-left error
+
+-------------------------------------------------------------------
+Mon Nov 26 19:38:35 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix python3 provides
+- Minor spec file cleanups
+
+-------------------------------------------------------------------
+Sat Nov 24 09:03:12 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Provide python3-tensorflow
+
+-------------------------------------------------------------------
+Thu Nov  8 15:54:04 UTC 2018 - cgoll@suse.com
+
+- updated build command to fit bazel-0.19 
+
+-------------------------------------------------------------------
+Thu Oct 18 22:11:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim pad wording from descriptions.
+
+-------------------------------------------------------------------
+Tue Oct 16 10:26:54 UTC 2018 - cgoll@suse.com
+
+- Updated to Tensorflow 1.10 as with this release it supports 
+  the partial use of systemlibs. Still a lot additional sources are
+  included which are
+  * closure
+  * weakref
+  * double-conversion
+  * gast
+  * farmhash
+  * nsync
+  * gemmlowp
+  * abseil-cpp
+  * boring-ssl
+  * google-apis
+  * cub
+  * highwayhash
+  * abseil-pypi
+  * eigen
+  * arm_neon_x86_sse
+  * fft
+  * grpc
+  * re2
+  Although some of these libraries are available in factory they could 
+  not be used as explicit versions are needed or bazel or the build
+  system links them in the wrong way.
+- mpilibpath_configure_py.patch changes the search path for the mpi 
+  to also include lib64/
+- no_aws_and_googlecloud.patch removes the dependence of aws, 
+  googlecloud and kafaka apis, as this version is not compiled with
+  the support of this apis.
+
+-------------------------------------------------------------------
+Thu Jan  4 11:00:55 UTC 2018 - cgoll@suse.com
+
+- Initial commit of Tensorflow 1.4 not all requirement could be met
+  by the distribution packages and the sources have to be included. 
+  This is true for
+  - Eigen
+  - protobuf
+  - grpc
+  - lmdb
+  - json-cpp
+  The build itself is now based on bazel and creates the pip package which 
+  is then extracted from the build environment

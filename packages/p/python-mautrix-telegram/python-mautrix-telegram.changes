@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Feb 28 14:20:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Add patch to fix file installation to /etc:
+  * fix-install-files.patch
+- Add patch to be less restrictive on test version:
+  * fix-test.patch
+- Split the server content to separate package to allow multiple
+  python implementations of the bridge itself if needed
+- Fix the dependencies
+
+-------------------------------------------------------------------
+Thu Feb 27 13:49:15 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
