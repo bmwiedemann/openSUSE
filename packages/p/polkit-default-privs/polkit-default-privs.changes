@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Feb 28 10:19:31 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Going back to old versioning scheme as only %suse_version doesn't
+  carry enough information. Keeping the git hash would be enough,
+  but with that we can't ensure that versions increase. So we keep
+  also the timestamp and prefix it with the current %suse_version
+
+-------------------------------------------------------------------
+Wed Feb 19 08:17:27 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Change the package version to match %suse_version. The current 
+  versioning was obviously based on this at one time. Dropping date
+  and git commit information since it's meaningless. 
+- Removed author information from the description
+- Removed conditional Requires: for libmozjs185-1_0 for old 
+  distributions
+
+-------------------------------------------------------------------
+Thu Feb 13 12:16:45 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20200213.f716f0a:
+  * Revert "whitelist lutris (bsc#1161650)"
+
+-------------------------------------------------------------------
+Thu Feb 06 10:34:11 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20200206.331ac1d:
+  * whitelist lutris (bsc#1161650)
+
+-------------------------------------------------------------------
 Tue Jan 21 14:24:51 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 13.2+20200121.bfca858:

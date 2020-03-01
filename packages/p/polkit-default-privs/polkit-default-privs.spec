@@ -1,7 +1,7 @@
 #
 # spec file for package polkit-default-privs
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        13.2+20200121.bfca858
+Version:        1550+20200213.f716f0a
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -31,9 +31,6 @@ Group:          Productivity/Security
 Source:         polkit-default-privs-%version.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  polkit
-%if 0%{?suse_version} < 1310
-Requires:       libmozjs185-1_0
-%endif
 Requires:       polkit
 Supplements:    PolicyKit
 Supplements:    libpolkit0, polkit
@@ -46,11 +43,6 @@ PreReq:         %fillup_prereq
 Predefined polkit profiles for different usage scenarios like desktop and
 server. These profiles define the kind of authentication required for various
 polkit actions used across applications.
-
-
-Authors:
---------
-    Ludwig Nussel
 
 # use a separate package for the static whitelist (i.e. the one that isn't
 # part of the different profile selectable during runtime). This whitelist is

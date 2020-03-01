@@ -3,7 +3,7 @@
     <param name="url">https://github.com/openSUSE/polkit-default-privs.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="versionformat">13.2+%cd.%h</param>
+    <param name="versionformat">1550+%cd.%h</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
