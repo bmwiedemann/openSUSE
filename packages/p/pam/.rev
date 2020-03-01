@@ -764,4 +764,12 @@
     <comment></comment>
     <requestid>733124</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>b9c36fc9f5ff704c743bdcf5d1bb49b9</srcmd5>
+    <version>1.3.1+git20190923.ea78d67</version>
+    <time>1583094349</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend login.defs only (no hard requirement) (forwarded request 779951 from kukuk)</comment>
+    <requestid>779952</requestid>
+  </revision>
 </revisionlist>

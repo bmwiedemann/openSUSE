@@ -1,7 +1,7 @@
 #
 # spec file for package pam
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,7 @@ BuildRequires:  libtool
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
-Requires:       login_defs-support-for-pam >= 1.3.1
+Recommends:     login_defs-support-for-pam >= 1.3.1
 Requires(post): permissions
 %if 0%{?suse_version} > 1320
 BuildRequires:  libdb-4_8-devel
