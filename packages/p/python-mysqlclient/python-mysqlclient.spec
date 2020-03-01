@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysqlclient
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,7 @@ cconf=abuild-myclient.cnf
 #
 # start the mariadb server
 #
-%mysql_testserver_start -u abuild -p abuildpw
+%mysql_testserver_start -u auth_db_user -p auth_db_pass
 #
 # creating client mysql config
 #
