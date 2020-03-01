@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nfs-client
-Version:        4.2.6
+Version:        4.2.7
 Release:        0
 Url:            https://github.com/yast/yast-nfs-client
 Summary:        YaST2 - NFS Configuration
@@ -30,8 +30,8 @@ BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-testsuite
-# SuSEFirewall2 replaced by firewalld (fate#323460)
-BuildRequires:  yast2 >= 4.0.39
+# Yast::Execute.locally
+BuildRequires:  yast2 >= 4.1.42
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 #for install task
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
@@ -46,8 +46,8 @@ BuildRequires:  yast2-storage-ng >= 4.2.73
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake-ci)
 %endif
 
-# SuSEFirewall2 replaced by firewalld (fate#323460)
-Requires:       yast2 >= 4.0.39
+# Yast::Execute.locally
+BuildRequires:  yast2 >= 4.1.42
 #idmapd_conf agent
 Requires:       yast2-nfs-common >= 2.24.0
 # showmount, #150382, #286300

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 15:29:51 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Kill rpcbind process if it was directly executed without using
+  systemd (bsc#1161687).
+- 4.2.7
+
+-------------------------------------------------------------------
 Thu Jan 23 15:41:17 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - fix return code for cli `yast2 nfs list` (bsc#1150070)
