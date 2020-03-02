@@ -7836,7 +7836,7 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute16: [x86_64] 
+  - libarm_compute17: [x86_64] 
   - libarmadillo9 
   - libarmadillo9-32bit: [x86_64] 
   - libarmnn19: [x86_64] 
@@ -10688,7 +10688,7 @@ unsorted:
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
   - libpapi_5_7_0-hpc 
-  - libparaview5_8: [i586] 
+  - libparaview5_8 
   - libpari-gmp-tls6 
   - libparlatype-devel 
   - libparlatype2 
@@ -11868,6 +11868,15 @@ unsorted:
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service0 
   - libtelepathy-qt5-service0-32bit: [x86_64] 
+  - libtensorflow2-gnu-hpc: [x86_64] 
+  - libtensorflow2-gnu-mvapich2-hpc: [x86_64] 
+  - libtensorflow2-gnu-openmpi2-hpc: [x86_64] 
+  - libtensorflow_cc2-gnu-hpc: [x86_64] 
+  - libtensorflow_cc2-gnu-mvapich2-hpc: [x86_64] 
+  - libtensorflow_cc2-gnu-openmpi2-hpc: [x86_64] 
+  - libtensorflow_framework2-gnu-hpc: [x86_64] 
+  - libtensorflow_framework2-gnu-mvapich2-hpc: [x86_64] 
+  - libtensorflow_framework2-gnu-openmpi2-hpc: [x86_64] 
   - libtepl-4-0 
   - libteredo5 
   - libtermkey-devel 
@@ -13272,6 +13281,7 @@ unsorted:
   - matrix-synapse 
   - matthewlib-java 
   - matthewlib-java-javadoc 
+  - mautrix-telegram-server 
   - maven 
   - maven-ant-plugin 
   - maven-ant-plugin-javadoc 
@@ -14195,12 +14205,12 @@ unsorted:
   - mycroft-core 
   - mylvmbackup 
   - myman 
-  - mypaint: [x86_64] 
+  - mypaint 
   - mypaint-brushes 
   - mypaint-brushes-devel 
   - mypaint-brushes1 
   - mypaint-brushes1-devel 
-  - mypaint-lang: [x86_64] 
+  - mypaint-lang 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -15798,7 +15808,7 @@ unsorted:
   - paranamer-parent 
   - paraview 
   - paraview-devel 
-  - paraview-plugins: [i586] 
+  - paraview-plugins 
   - paraviewdata 
   - parboiled 
   - parboiled-javadoc 
@@ -20470,6 +20480,7 @@ unsorted:
   - python3-SpeechRecognition 
   - python3-Sphinx-latex 
   - python3-TagStats 
+  - python3-Telethon 
   - python3-Tempita 
   - python3-TermRecord 
   - python3-Theano 
@@ -21739,6 +21750,8 @@ unsorted:
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
   - python3-matrix-synapse-ldap3 
+  - python3-mautrix 
+  - python3-mautrix-telegram 
   - python3-maxminddb 
   - python3-mbstrdecoder 
   - python3-mccabe 
@@ -21969,7 +21982,7 @@ unsorted:
   - python3-param 
   - python3-parameterized 
   - python3-paramiko-expect 
-  - python3-paraview: [i586] 
+  - python3-paraview 
   - python3-parfive 
   - python3-parse 
   - python3-parse_type 
@@ -25275,6 +25288,20 @@ unsorted:
   - tensorflow-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow-lite: [x86_64] 
   - tensorflow-lite-devel: [x86_64] 
+  - tensorflow2-gnu-hpc: [x86_64] 
+  - tensorflow2-gnu-mvapich2-hpc: [x86_64] 
+  - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2-lite: [x86_64] 
+  - tensorflow2-lite-devel: [x86_64] 
+  - tensorflow2_2_1_0-gnu-hpc: [x86_64] 
+  - tensorflow2_2_1_0-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_1_0-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_1_0-gnu-mvapich2-hpc: [x86_64] 
+  - tensorflow2_2_1_0-gnu-mvapich2-hpc-devel: [x86_64] 
+  - tensorflow2_2_1_0-gnu-mvapich2-hpc-doc: [x86_64] 
+  - tensorflow2_2_1_0-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_1_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_1_0-gnu-openmpi2-hpc-doc: [x86_64] 
   - tensorflow_1_13_2-gnu-hpc: [x86_64] 
   - tensorflow_1_13_2-gnu-hpc-devel: [x86_64] 
   - tensorflow_1_13_2-gnu-hpc-doc: [x86_64] 
