@@ -30,7 +30,7 @@
 %endif
 %bcond_with celt051
 Name:           spice
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        SPICE client and server library
 License:        LGPL-2.1-or-later OR GPL-2.0-or-later
@@ -138,7 +138,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%doc NEWS README ChangeLog
+%doc README CHANGELOG.md
 %license COPYING
 %{_libdir}/libspice-server.so.*
 
