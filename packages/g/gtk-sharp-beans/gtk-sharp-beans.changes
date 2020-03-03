@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 15:24:01 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- FTBFS: build with mcs instead of gmcs 
+- add gtk-sharp-beans-2.14.1-parallel-build.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 13:50:48 UTC 2013 - sshaw@decriptor.com
 
 - Make sure we also apply the patch (bnc#782905) 

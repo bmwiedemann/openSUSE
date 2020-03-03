@@ -1,0 +1,13 @@
+Index: gtk-sharp-beans-2.14.1/Makefile.am
+===================================================================
+--- gtk-sharp-beans-2.14.1.orig/Makefile.am
++++ gtk-sharp-beans-2.14.1/Makefile.am
+@@ -54,6 +54,8 @@ gtk_generated/Builder.cs: gtk-api.xml gt
+ 	gapi2-codegen $(GLIBSHARP_CFLAGS) --outdir=gtk_generated --customdir=$(srcdir)/Gtk.Customs --generate gtkbeans-api.xml
+ 	gapi2-codegen $(GLIBSHARP_CFLAGS) $(GTKSHARP_CFLAGS) $(GIOSHARP_CFLAGS) --outdir=gtk_generated --customdir=$(srcdir)/Gtk.Customs --generate gtk-api.xml
+ 
++gtk-sharp-beans.dll.mdb: gtk-sharp-beans.dll
++
+ gtk-sharp-beans.dll: $(builddir)/gtk_generated/Builder.cs $(SRCS) AssemblyInfo.cs
+ 	@echo -e "\n*** Building $@"
+ 	$(CSC) -target:library -out:$@ $(CSC_DEFINES) $(UNSAFE) $(DEBUG) $(ASSEMBLIES) $(SRCS) AssemblyInfo.cs $(builddir)/gtk_generated/*.cs
