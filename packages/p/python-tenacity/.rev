@@ -106,4 +106,13 @@
   * Python 3.8 enablement</comment>
     <requestid>758620</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>557822ee1033341776e59630c113342c</srcmd5>
+    <version>6.1.0</version>
+    <time>1583226917</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * further Python 3.8 fixes</comment>
+    <requestid>780390</requestid>
+  </revision>
 </revisionlist>
