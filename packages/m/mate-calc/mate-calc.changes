@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0:
+  * Fix typo: "Avogadro" instead of "Avogrado".
+  * Fix precedence of functions i.e. the result of -ln(1) and add
+    according tests.
+  * Fix typo in keywords in desktop file.
+  * mate-calc.desktop.in: Add missing Keywords.
+  * Do not remove org.mate.calc.gschema.xml on make distclean.
+  * The function "mp_mask" is never used.
+  * Set the required version for gettext (0.19.8).
+  * parserfunc: Return NULL on NOT operation overflow.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Jul 17 13:21:43 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:
