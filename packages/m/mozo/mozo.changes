@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * desktop file: Add missing hints for translators.
+  * Sets the required version for gettext (0.19.8).
+  * Add Undo and Redo buttons.
+  * moveItem: Remove redundant code, add missing check for move
+    mode when merging entries.
+  * Change DragAction to MOVE.
+  * undo/redo: Handle missing files.
+  * Fix item drag & drop creating copies, fix undo, redo and a
+    crash when refreshing.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 13:43:11 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:
@@ -10,7 +26,7 @@ Thu Jul 18 13:43:11 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
   * Migrate from intltool to gettext
   * Fix drag and drop of .desktop file
 - remove patch:
-  * mozo-python-3.4.patch: we don't support Leap 42.3, wich has
+  * mozo-python-3.4.patch: we don't support Leap 42.3, which has no
     python 3.4, anymore
 
 -------------------------------------------------------------------
