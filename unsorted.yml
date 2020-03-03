@@ -2434,7 +2434,6 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -10029,8 +10028,7 @@ unsorted:
   - libmapidb-devel 
   - libmapidb1 
   - libmarblewidget-qt5-28 
-  - libmarco-private1: [x86_64] 
-  - libmarco-private2: [i586] 
+  - libmarco-private2 
   - libmariadb-devel 
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
@@ -13189,6 +13187,7 @@ unsorted:
   - mate-desktop-gschemas-branding-upstream 
   - mate-desktop-lang 
   - mate-dictionary 
+  - mate-disk-image-mounter 
   - mate-disk-usage-analyzer 
   - mate-eiciel 
   - mate-eiciel-lang 
@@ -14972,6 +14971,9 @@ unsorted:
   - ocaml-calendar-devel 
   - ocaml-camlp5 
   - ocaml-camlp5-devel 
+  - ocaml-camlzip 
+  - ocaml-camlzip-devel 
+  - ocaml-camlzip-test 
   - ocaml-camomile 
   - ocaml-camomile-data 
   - ocaml-camomile-devel 
@@ -17835,6 +17837,7 @@ unsorted:
   - python-bpython-doc 
   - python-braille 
   - python-btrfsutil 
+  - python-caja 
   - python-caja-devel 
   - python-caja-lang 
   - python-castellan-doc 
@@ -18506,7 +18509,6 @@ unsorted:
   - python2-backports_abc 
   - python2-barbicanclient 
   - python2-baron 
-  - python2-bashate: [x86_64] 
   - python2-bcolz 
   - python2-bcrypt 
   - python2-beautifulsoup4 
@@ -18560,7 +18562,6 @@ unsorted:
   - python2-cachy 
   - python2-cairocffi 
   - python2-cairocffi-pixbuf 
-  - python2-caja 
   - python2-caldav 
   - python2-calmjs 
   - python2-calmjs.parse 
@@ -33380,15 +33381,17 @@ unsorted:
   - vala-panel 
   - vala-panel-appmenu-lang 
   - vala-panel-devel 
-  - vala-panel-extras-battery: [i586] 
-  - vala-panel-extras-gtop: [i586] 
-  - vala-panel-extras-lang: [i586] 
-  - vala-panel-extras-volume: [i586] 
-  - vala-panel-extras-weather: [i586] 
-  - vala-panel-extras-xkb: [i586] 
-  - vala-panel-extras-xkb-flags: [i586] 
+  - vala-panel-extras-battery 
+  - vala-panel-extras-gtop 
+  - vala-panel-extras-lang 
+  - vala-panel-extras-volume 
+  - vala-panel-extras-weather 
+  - vala-panel-extras-xkb 
+  - vala-panel-extras-xkb-flags 
   - vala-panel-lang 
   - vala-panel-plugin-appmenu 
+  - vala-panel-plugin-sntray 
+  - vala-panel-plugin-sntray-lang 
   - vala-panel-plugins-base 
   - vala-panel-plugins-wnck 
   - vala-panel-runner 
@@ -33907,6 +33910,7 @@ unsorted:
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
+  - xfce4-panel-plugin-sntray 
   - xfce4-power-manager-branding-upstream 
   - xfce4-sensors-plugin-devel 
   - xfce4-session-branding-upstream 
