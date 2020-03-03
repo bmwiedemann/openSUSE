@@ -280,4 +280,12 @@ No indication of GPL-3.0 ^only^ files in package. Fedora also using GPL-3.0+ (fo
     <comment></comment>
     <requestid>683742</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>40111dc01a159439f1372c2cca4c43c5</srcmd5>
+    <version>1.5.0</version>
+    <time>1583226884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780644</requestid>
+  </revision>
 </revisionlist>
