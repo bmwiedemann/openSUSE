@@ -18,4 +18,16 @@
     'sender' from the parent message.</comment>
     <requestid>730190</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ab5fd88dfb09f69798d927c9ddd0450</srcmd5>
+    <version>0.4.2</version>
+    <time>1583226928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.2:
+  The blocking ``DBusConnection`` integration class now has a ``.close()``
+  method, and can be used as a context manager::
+    from jeepney.integrate.blocking import connect_and_authenticate
+    with connect_and_authenticate() as connection:</comment>
+    <requestid>780407</requestid>
+  </revision>
 </revisionlist>
