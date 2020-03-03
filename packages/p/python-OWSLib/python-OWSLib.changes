@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:35:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 0.19.1
+  + Fixed Python 3.8 installation (#635, ocefpaf)
+  + Refactored OGC API (#641, tomkralidis)
+  + Add `python_requires` to prevent pip installing this on Python 2.x (#634, craigds)
+  + Tests: use HEAD instead of GET in service_ok (#651, roel)
+  + Tests: replaced service URLs with working versions (#648, roel)
+  + WFS: Fix WFS get_schema when typename doubles as attributename (#647, roel)
+  + WCS: Removed redundant check on logging level (#646, johanvdw)
+  + WFS3: renamed time parameter to datetime (#639, mattfung)
+  + WFS: Added required fields to wfs schema (#628, Alexandre27)
+  + WCS: added resolution and size params to WCS GetCoverage requests (#633, dukestep)
+  + DOCS: updated WMS docs (#649, pathmapper)
+- update to version 0.19.0
+  + ALL: python2 support removed (cehbrecht et. al.)
+  + OWS
+    - safeguard ProviderSite/@href (jannefleischer)
+    - safeguard bbox parsing (walkermatt)
+  + WMS: support ScaleDenominator
+  + WMTS: add timeout (jachym)
+  + OGC API Features updates following specification
+  + TMS: fix broken constructor (justb4)
+  + ALL: pass HTTP headers for WMS/WFS/WMTS/TMS (justb4)
+  + ALL: test fixes/updates
+- update to version 0.18.0
+  + NEW: WFS 3 initial implementation
+  + NEW: add Authentication framework (eric-spitler)
+  + WPS:
+    * add process properties, percentCompleted (cehbrecht)
+    * add reference attributes (enolfc)
+    * add support for multi process processes (huard)
+  + OWS: add support for crs and dimension (saimeCS)
+- packaging: 
+  + cleanup spec
+  + move to build only python3
+
+-------------------------------------------------------------------
 Tue Mar  5 18:48:48 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.17.1 version
