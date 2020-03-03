@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  2 04:12:51 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.15.4
+  * New release with new methods for the Bamboo, Bitbucket methods
+  * New release with new methods for the Bitbucket:
+    + Bitbucket: conditions. reviewers
+    + Confluence: move actions and reorder pages
+    + Jira: Update Rank issues
+  * This release include minor method polishes and a new methods related to the audit records
+  * Confluence, Jira new methods
+  * Continue improve Bitbucket cloud version
+  * Bitbucket - branch permissions and commit related methods
+  * Confluence - better log wrapping (get page_titile)
+  * Bitbucket - methods related to the ssh key fetchings
+  * Bamboo new methods related to the projects and build queue.
+  * Jira bug fix a few method.
+  * Polishes.
+
+-------------------------------------------------------------------
 Fri Jan 17 16:01:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.14.9

@@ -35,4 +35,26 @@
     <comment></comment>
     <requestid>765349</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>267accc6f4436dabd67bd4f0b9aa6c13</srcmd5>
+    <version>1.15.4</version>
+    <time>1583227058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.4
+  * New release with new methods for the Bamboo, Bitbucket methods
+  * New release with new methods for the Bitbucket:
+    + Bitbucket: conditions. reviewers
+    + Confluence: move actions and reorder pages
+    + Jira: Update Rank issues
+  * This release include minor method polishes and a new methods related to the audit records
+  * Confluence, Jira new methods
+  * Continue improve Bitbucket cloud version
+  * Bitbucket - branch permissions and commit related methods
+  * Confluence - better log wrapping (get page_titile)
+  * Bitbucket - methods related to the ssh key fetchings
+  * Bamboo new methods related to the projects and build queue.
+  * Jira bug fix a few method.
+  * Polishes.</comment>
+    <requestid>780799</requestid>
+  </revision>
 </revisionlist>
