@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  2 14:19:17 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.2.0
+- add gss_test.patch to avoid segfault in kerberos
+ * Added support for U2F/FIDO2 security keys
+ * Added login timeout client option and limits on the length and number
+    of banner lines AsyncSSH will accept prior to the SSH version header.
+ * Improved load_keypairs() to read public key files, confirming that they
+    are consistent with their associated private key when they are present.
+ * Fixed issues in the SCP server related to handling filenames with spaces.
+ * Fixed an issue with resuming reading after readuntil() returns an incomplete read.
+ * Fixed a potential issue related to asyncio not reporting sockname/peername
+    when a connection is closed immediately after it is opened.
+ * Made SSHConnection a subclass of asyncio.Protocol to please type checkers.
+
+-------------------------------------------------------------------
 Thu Jan 16 12:16:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.1.0

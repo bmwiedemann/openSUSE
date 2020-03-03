@@ -1,0 +1,13 @@
+Index: asyncssh-2.2.0/tests/test_connection.py
+===================================================================
+--- asyncssh-2.2.0.orig/tests/test_connection.py
++++ asyncssh-2.2.0/tests/test_connection.py
+@@ -1173,7 +1173,7 @@ class _TestConnectionAsyncAcceptor(Serve
+ 
+             conn.logger.info('Acceptor called')
+ 
+-        return (await cls.create_server(_TunnelServer, gss_host=(),
++        return (await cls.create_server(_TunnelServer, gss_host=None,
+                                         acceptor=acceptor))
+ 
+     @asynctest

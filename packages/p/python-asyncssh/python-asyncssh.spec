@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-asyncssh
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            http://asyncssh.timeheart.net
 Source:         https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-%{version}.tar.gz
+Patch0:         gss_test.patch
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.8}
 BuildRequires:  %{python_module gssapi >= 1.2.0}
@@ -41,6 +42,7 @@ Requires:       python-cryptography >= 2.8
 Requires:       python-gssapi >= 1.2.0
 Requires:       python-libnacl >= 1.4.2
 Requires:       python-pyOpenSSL >= 17.0.0
+Recommends:     python-fido2 >= 0.8.1
 BuildArch:      noarch
 
 %python_subpackages
@@ -52,6 +54,7 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 
 %prep
 %setup -q -n asyncssh-%{version}
+%patch0 -p1
 
 %build
 %python_build
