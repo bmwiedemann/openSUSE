@@ -1,7 +1,7 @@
 #
 # spec file for package atril
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,17 @@
 %define typelib1 typelib-1_0-AtrilDocument-1_5_0
 %define typelib2 typelib-1_0-AtrilView-1_5_0
 %define sover   3
-%define _version 1.23
+%define _version 1.24
 Name:           atril
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  python3-libxml2
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-devel
 BuildRequires:  update-desktop-files
@@ -40,9 +37,9 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
 BuildRequires:  pkgconfig(libgxps)
 BuildRequires:  pkgconfig(libpst)
@@ -63,6 +60,11 @@ Provides:       mate-document-viewer = %{version}
 Obsoletes:      mate-document-viewer < %{version}
 Obsoletes:      mate-document-viewer-lang < %{version}
 %glib2_gsettings_schema_requires
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python3-libxml2
+%else
+BuildRequires:  python3-libxml2-python
+%endif
 
 %description
 Atril is a document viewer capable of displaying multiple and single
@@ -72,7 +74,6 @@ page document formats like PDF and Postscript.
 
 %package -n libatrildocument%{sover}
 Summary:        MATE Document Viewer -- System Library
-Group:          System/Libraries
 Obsoletes:      mate-document-viewer-libs-3 < %{version}
 
 %description -n libatrildocument%{sover}
@@ -81,7 +82,6 @@ singlepage document formats like PDF and PostScript.
 
 %package -n libatrilview%{sover}
 Summary:        MATE Document Viewer -- System Library
-Group:          System/Libraries
 Obsoletes:      mate-document-viewer-libs-3 < %{version}
 
 %description -n libatrilview%{sover}
@@ -90,7 +90,6 @@ singlepage document formats like PDF and PostScript.
 
 %package -n %{typelib1}
 Summary:        MATE Desktop bindings for AtrilDocument
-Group:          System/GUI/Other
 
 %description -n %{typelib1}
 Atril is a document viewer capable of displaying multiple and single
@@ -98,7 +97,6 @@ page document formats like PDF and Postscript.
 
 %package -n %{typelib2}
 Summary:        MATE Desktop bindings for AtrilView
-Group:          System/GUI/Other
 
 %description -n %{typelib2}
 Atril is a document viewer capable of displaying multiple and single
@@ -106,7 +104,6 @@ page document formats like PDF and Postscript.
 
 %package backends
 Summary:        Atril shared libraries (View and Document)
-Group:          System/Libraries
 Requires:       mathjax
 # mate-document-viewer-libs-3 was last used in openSUSE 13.1.
 Provides:       mate-document-viewer-libs-3 = %{version}
@@ -118,10 +115,9 @@ page document formats like PDF and Postscript.
 
 %package -n caja-extension-%{name}
 Summary:        Atril extension for Caja file manager
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires:       caja >= %{_version}
-Supplements:    packageand(caja:%{name})
+Supplements:    (caja and %{name})
 # atril-caja was last used in openSUSE Leap 42.1.
 Provides:       %{name}-caja = %{version}
 Obsoletes:      %{name}-caja < %{version}
@@ -139,7 +135,6 @@ dialog.
 
 %package devel
 Summary:        MATE Desktop document viewer development files
-Group:          Development/Libraries/Other
 Requires:       %{name}-backends = %{version}
 Requires:       %{typelib1} = %{version}
 Requires:       %{typelib2} = %{version}
@@ -153,7 +148,6 @@ page document formats like PDF and Postscript.
 
 %package thumbnailer
 Summary:        Atril thumbnailer extension for Caja
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires:       caja >= %{_version}
 
@@ -173,7 +167,7 @@ NOCONFIGURE=1 mate-autogen
   --with-pic                          \
   --libexecdir=%{_libexecdir}/%{name} \
   --enable-introspection
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -189,20 +183,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n libatrildocument%{sover} -p /sbin/ldconfig
 
 %postun -n libatrildocument%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%mime_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%icon_theme_cache_post
-%desktop_database_postun
-%mime_database_postun
-%glib2_gsettings_schema_post
-%endif
 
 %files
 %license COPYING

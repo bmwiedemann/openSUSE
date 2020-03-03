@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * ev-view: Remove unused variables and assignment
+  * Avoid g_type_class_add_private.
+  * tiff: Handle failure from TIFFReadRGBAImageOriented.
+  * view-presentation: Use monitor instead of screen.
+  * shell: Use monitor instead of screen to determine window size.
+  * shell: Fix get_monitor_dpi when widget’s window is not
+    realized.
+  * DPI: Compute monitor resolution or get screen resolution.
+  * Prevent segfaults when no document loaded.
+  * Require GLib 2.54.0.
+  * Fix build warning on marshalling.
+  * Suppress GtkAction warnings.
+  * document: Replace deprecated gdk_color_equal.
+  * Fix buffer overflow in backend/tiff-document.c.
+  * Fix atril.desktop file.
+  * Fix memory leak ev_sidebar_thumbnails_document_changed_cb().
+  * pdf: Fix memory leak when adding new text annotations.
+  * libview: Fix a memory leak.
+  * Revert "First page should not reloaded"
+  * Avoid redundant redeclarations.
+  * libview: Reset "pressed_button" when starting Drag and Drop.
+  * Show SyncTeX version in the About dialogue.
+  * Add a hint for translators.
+  * Migrate from intltool to gettext.
+  * Add accelerator 'o' for toggling Odd Pages Left.
+  * Add accelerator 't' for toggling visibility of the toolbar.
+  * Remove synctex internally, work with external library instead.
+  * build: Require webkit2gtk-4.0 >= 2.6.0.
+  * End the va_list before returning from _synctex_merge_strings.
+  * build: Use synctex system library if available.
+  * Remove synctex warning.
+  * Bump synctex to 1.21.
+  * thumbnailer: Fix a memory leak.
+  * Fix year 2038 issue with signed 32-bit integers.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Tue Sep 24 08:38:50 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 -  Replace BuildRequires: libxml2-python by python3-libxml2
