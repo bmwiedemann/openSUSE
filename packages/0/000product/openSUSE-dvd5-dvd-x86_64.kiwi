@@ -436,6 +436,7 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
+      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
