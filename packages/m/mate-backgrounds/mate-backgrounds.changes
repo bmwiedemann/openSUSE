@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1 (changes since 1.23.0):
+  * build: Don't override GETTEXT_PACKAGE if it's equal to
+    PACKAGE_NAME.
+  * Fix the error if have a newer version of gettext.
+  * build: Add meson config files to EXTRA_DIST.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Feb  5 14:04:34 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Switch to meson build system. This makes the build green again.

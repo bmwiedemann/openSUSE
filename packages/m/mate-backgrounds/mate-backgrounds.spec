@@ -16,17 +16,15 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-backgrounds
-Version:        1.23.0
+Version:        1.24.1
 Release:        0
 Summary:        A set of backgrounds packaged with the MATE desktop
 License:        GPL-2.0-only
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  meson
 Recommends:     %{name}-lang
 BuildArch:      noarch
@@ -41,7 +39,7 @@ in mind.
 %setup -q
 
 %build
-%meson %{nil}
+%meson
 %meson_build
 
 %install
