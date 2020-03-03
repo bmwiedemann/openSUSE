@@ -1,0 +1,24 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="exclude">.header</param>
+    <param name="exclude">.ocamlinit</param>
+    <param name="exclude">.travis.yml</param>
+    <param name="exclude">appveyor-opam.sh</param>
+    <param name="exclude">appveyor.yml</param>
+    <param name="exclude">src/minisat-C-1.14.1</param>
+    <param name="exclude">src/minisat</param>
+    <param name="filename">ocaml-minisat</param>
+    <param name="revision">7feb9a440436036e7ea36024050edb24c510c13b</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/c-cube/ocaml-minisat.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
