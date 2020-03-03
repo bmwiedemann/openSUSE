@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 02 17:31:03 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1583157906.85e9020f0:
+  * Fix permissions of script/setup-db to be executable
+  * Dependency cron 200302
+  * Fix 'openqa-setup-db' on SLE12 builds
+  * t: Update copyright for all changed test files
+  * Harmonize shebang style
+  * Add empty 'unstable_tests.txt' to prevent 'No such file'
+  * Update license notice in each file to use URL rather than postal address
+  * t: Avoid ambiguous meaning of 'kill' when we actually 'terminate'
+  * t: Also check for warnings in full-stack
+
+-------------------------------------------------------------------
 Fri Feb 28 19:04:52 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1582908813.c5b7e89c0:
