@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Mon Feb 24 22:52:03 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable update check 
+
+-------------------------------------------------------------------
+Mon Feb 24 22:40:45 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.10.18:
+  https://www.gimp.org/news/2020/02/24/gimp-2-10-18-released/
+  - Core:
+    - In gimp:replace, when compositing the same content over itself,
+      i.e., when the input and aux buffers share the same storage and
+      same tile alignment, pass the input buffer directly as output,
+      instead of doing actual processing. In particular, this happens
+      when processing a pass-through group outside of its actual bounds.
+    - In gimp_gegl_apply_cached_operation(), use gint64 for storing the
+      total and processed pixel counts used for reporting progress, to
+      avoid overflowing when applying an operation to a large image.
+    - In GimpFilterTool and gimp_drawable_apply_operation(), use
+      gimp_drawable_filter_set_add_alpha() to add an alpha channel when
+      applying an operation that specifies "needs-alpha" to a drawable
+      that can have alpha.
+    - In GimpFilterTool, move all the drawable-filter option setup to a
+      new gimp_filter_tool_update_filter() function, and call it
+      whenever the drawable-filter's options need to be updated. This
+      avoids duplicating logic in various places.
+    - Improve the efficiency of decoding RLE data when loading ABR
+      brushes, by reading entire scanlines into a buffer all-at-once,
+      instead of reading the stream byte-by-byte.
+    - GIMP now optionally phones home to find out if there's a new
+      version available and then tells the user if there is one indeed.
+      It also keeps track of the installer revision and then warns if
+      there's a newer installer available. This can be disabled in
+      Preferences. In that case, users still have the option to manually
+      check for an update via the About dialog. The feature can be
+      disabled entirely with the '--disable-check-update' configure
+      switch.
+  - Tools:
+    - New 3D Transform tool where you can set vanishing point, camera's
+      focal length, and the move and rotate layer, selection, path, or
+      image in 2.5 space. With the "Unified interaction" option enabled,
+      all three interaction modes of the grid (camera, move, and rotate)
+      are available simultaneously. In this mode, the inner and outer
+      regions of the item are used for moving and rotation,
+      respectively, and the vanishing point is controlled through
+      through a handle.
+    - Transform tools now respect the Clip option and update the canvas
+      preview accordingly.
+    - New "Composited preview" option allows respecting layer's blending
+      mode and position in the layer stack rather than rendering it as
+      an overlay on top of the overall layer stack. This simplifies
+      creating complex layer compositions greatly. The option requires
+      mipmaps to be used and thus is disabled by default. It also comes
+      with an experimental "Synchronous preview" suboption to render the
+      composited preview synchronously. This reduces the lag for
+      painting the preview, but can harm responsiveness for bigger
+      images, where rendering the preview is slow.
+    - Add a new "Preview linked items" option to the transform-grid
+      tools. When this option is enabled, together with composited
+      previews, the transform preview includes all linked layers and
+      channels when transforming a layer/channel. Paths are currently
+      unsupported.
+    - New widget called GimpPivotSelector, a 3x3 grid of toggle buttons,
+      is now used for selecting a natural pivot position (e.g. for a
+      transform) relative to an item: its center, its corners, and the
+      midpoints of its edges. Currently used in Rotate and 3D Transform
+      tools.
+    - Add "Show all" support to the Bucket Fill tool in line-art mode
+    - Color picker and sample points now support displaying vlaues in
+      Yu'v' (CIE 1976 UCS) color space.
+    - The Symmetry Painting dock now has an "Enable reflection" option
+      that allows painting patterns resembling a kaleidoscope.
+    - Transform clipping is temporarily disabled for layer groups. No
+      preview other than 'Adjust' works anyway. This will be fixed later
+      on.
+    - Construct a box-filtered mipmap hierarchy for the original brush
+      on-demand, and the closest mipmap is used as the resampling source
+      for downscaled brushes, significantly improving the output
+      quality.
+    - Now that painting is done in a separate thread, the display update
+      rate has a far smaller impact on it. Increase the GimpDisplay
+      update rate, which handles image updates, to 60 FPS, and the
+      GimpDrawTool update rate to 120 FPS. In particular, the latter
+      change makes the brush outline motion much smoother.
+    - In the Airbrush tool, increase the maximal stamp FPS from 15 to
+      60, and change the corresponding maximal Rate value from 150 to
+      100. This technically affects tool presets, but we'll live.
+    - Add a new "Snap brush outline to stroke" toggle to the "Image
+      Windows" preferences page. When enabled, the brush outline in
+      paint tools snaps to the individual dabs while painting, which is
+      how it worked before version 2.10.16. Disable the option by
+      default.  This seems to be what most other programs are doing, and
+      it does give paitning a smoother feel.
+    - The Warp Transform tool now respects settings for painting tools:
+      showing the brush outline, snapping to dabs, and showing the paint
+      tool cursor.
+  - User interface:
+    - Add new Symbolic-High-Contrast and Symbolic-Inverted-High-Contrast
+      themes, which are automatically-generated high-contrast variants
+      of the (original) Symbolic theme.  The contrast factor is settable
+      in the makefile, and is currently at 1.5 for both themes.
+      
+    - Rename tools/invert-svg to tools/svg-contrast, which now takes a
+      contrast-factor argument, and adjusts the input SVG contrast,
+      instead of just inverting it.  Note that we can still use the tool
+      to invert icons, using a contrast of -1.
+    - Allow horizontal scrollbars in all the Preferences dialog tree-
+      views, so that they don't limit the minimal width of the dialog
+      (in particular, the UI- and icon-theme tree-views may contain
+      arbitrarily-long paths).
+    - Draw a border around the color FG/BG color areas as a pair of
+      black and white rectangles instead of letting GTK do this. This
+      imporoves the legibility of borders, especially in dark themes.
+    - Tools are now logically grouped in the toolbox by default. Users
+      can customize the groups to their liking or disable this feature
+      altogether in the Preferences dialog (Interface / Toolbox page).
+    - New opt-out compact style for sliders with revamped interaction.
+      The widget uses a narrower layout, and the different
+      upper/lower-half behavior is gone. Instead, the behavior depends
+      on the mouse button and modifier used:
+      - left-click is used for absolute adjustment,
+      - Shift + left-click + drag changes value in small increments,
+      - Ctrl + left-click + drag changes value in large increments,
+      - middle-click enables numeric input mode;
+      - right-click enables numeric input mode and selects the value.
+    - The "You can drop dockable dialogs here" message is gone from the
+      toolbox for good. Instead, highlight dockable areas when a user
+      starts dragging a dockable dialog, and intensify the highlight as
+      the dialog goes over a dockable area.
+    - Consolidate UI for merging down and anchoring layers: As they are
+      both mutually exclusive and serve an almost identical purpose, the
+      "Merge down" and "Anchor Layer" are given mutually exclusive
+      visibility in menus, and the anchor button is replaced with a
+      merge down button in the Layers dockable whenever there is no
+      active floating selection. Modifier keys are available:
+      - Shift: merge layer group
+      - Ctrl: merge visible layers
+      - Ctrl + Shift: merge visible layers from last used values
+  - Tools:
+    - In GimpPaintTool, when not snapping brush outline to stroke, make
+      sure to properly snap the cursor position to 15-degree angle
+      multiples in line mode, not only when painting the line, but also
+      during motion.
+  - Plug-ins:
+    - Add naive support for CMYK 8-bit PSD files
+    - In plug_in_compat.pdb, when wrapping an op node inside a graph,
+      set the op node as the graph node's underlying operation. This
+      allows gimp_gegl_apply_operation() to perform certain
+      optimizations.
+    - The Spyrogimp plugin now features a Visual tab where the inner
+      mechanics of a spirograph is abstracted away, and you operate on
+      amount of petals etc. The plugin now also allows saving a pattern
+      as a path rather than rendering it to a layer as a bitmap.
+    - Improve the loading speed for PSD files, mostly by eliminating
+      excessive copies.
+  - Filters:
+    - Don't disable gegl:color-to-alpha (which has "needs-alpha") when
+      the drawable doesn't have an alpha channel, if one can be added.
+    - Don't disable color-to-alpha for grayscale drawable, since the
+      operation is applicable to grayscale images (in particular, it
+      doesn't add color where there was none), and since GIMP no longer
+      distinguishes between layers and channels according to the
+      drawable format when updating the filters actions.
+  - Updated translations
+  - Bug fixes #4643, #4634 #4172, #4194, #4205, #4218, #2543, #4185,
+    #4246, #2794, #4209, #4278, #4372, #4187, #4392, #2674, #4338,
+    #2862, #4203, #4204, #4354, #1266, #4584, #4174, #4285, #4366,
+    #1975, #4605
+
+-------------------------------------------------------------------
 Wed Nov 20 09:56:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build for %arm and ppc64 by adding '-lm' to LDFLAGS

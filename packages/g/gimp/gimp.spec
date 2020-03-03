@@ -19,7 +19,7 @@
 %global abiver 4
 %global apiver 2.0
 Name:           gimp
-Version:        2.10.14
+Version:        2.10.18
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -234,6 +234,7 @@ export LDFLAGS="%{optflags} -lm"
 %endif
 	--libexecdir=%{_prefix}/lib\
 	--enable-default-binary\
+	--disable-check-update\
 	--enable-mp
 
 make %{?_smp_mflags}
