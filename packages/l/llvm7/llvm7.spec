@@ -1,7 +1,7 @@
 #
 # spec file for package llvm7
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ Release:        0
 Summary:        Low Level Virtual Machine
 License:        NCSA
 Group:          Development/Languages/Other
-Url:            https://www.llvm.org/
+URL:            https://www.llvm.org/
 # NOTE: please see README.packaging in the llvm package for details on how to update this package
 Source0:        https://llvm.org/releases/%{_relver}/llvm-%{_relver}.src.tar.xz
 Source1:        https://llvm.org/releases/%{_relver}/cfe-%{_relver}.src.tar.xz
@@ -109,6 +109,8 @@ Patch29:        llvm-test-Fix-Assembler-debug-info.ll.patch
 Patch30:        clang-deterministic-selector-order.patch
 Patch31:        openmp-link-with-atomic-if-needed.patch
 Patch32:        llvm-skip-broken-float-test.patch
+# PATCH-FIX-UPSTREAM compiler-rt-sanitizer-ipc-perm.patch -- Fix sanitizer-common build with glibc 2.31
+Patch33:        compiler-rt-sanitizer-ipc-perm.patch
 BuildRequires:  binutils-devel >= 2.21.90
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -187,7 +189,7 @@ new native programs that use the LLVM infrastructure.
 %package -n clang%{_sonum}
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
-Url:            https://clang.llvm.org/
+URL:            https://clang.llvm.org/
 # Avoid multiple provider errors
 Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
@@ -210,7 +212,7 @@ This package contains the clang (C language) frontend for LLVM.
 %package -n clang%{_sonum}-checker
 Summary:        Static code analyzer for CLANG
 Group:          Development/Languages/C and C++
-Url:            https://clang-analyzer.llvm.org/
+URL:            https://clang-analyzer.llvm.org/
 # Avoid multiple provider errors
 Requires:       libclang%{_sonum}
 # Due to a packaging error in clang3_8 we have to conflict.
@@ -314,7 +316,7 @@ This package contains the OpenMP MPI plugin for LLVM.
 %package -n libc++%{_socxx}
 Summary:        C++ standard library implementation
 Group:          System/Libraries
-Url:            https://libcxx.llvm.org/
+URL:            https://libcxx.llvm.org/
 Requires:       libc++abi%{_socxx} = %{_relver}
 
 %description -n libc++%{_socxx}
@@ -337,7 +339,7 @@ standard library, targeting C++11. (development files)
 %package -n libc++abi%{_socxx}
 Summary:        C++ standard library ABI
 Group:          System/Libraries
-Url:            https://libcxxabi.llvm.org/
+URL:            https://libcxxabi.llvm.org/
 
 %description -n libc++abi%{_socxx}
 This package contains the ABI for libc++, a new implementation
@@ -394,7 +396,7 @@ frontend for LLVM.
 %package -n lld%{_sonum}
 Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
-Url:            https://lld.llvm.org/
+URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
@@ -417,7 +419,7 @@ Set of tools for visualising the LLVM optimization records generated with -fsave
 %package -n lldb%{_sonum}
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
-Url:            https://lldb.llvm.org/
+URL:            https://lldb.llvm.org/
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(python3)
@@ -479,7 +481,7 @@ This package contains the Python bindings to clang (C language) frontend for LLV
 %package polly
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
 Group:          Development/Languages/Other
-Url:            https://polly.llvm.org/
+URL:            https://polly.llvm.org/
 Conflicts:      llvm-polly-provider < %{version}
 Provides:       llvm-polly-provider = %{version}
 
@@ -529,6 +531,10 @@ pushd cfe-%{_relver}.src
 %patch16 -p2
 %patch26 -p1
 %patch30 -p1
+popd
+
+pushd compiler-rt-%{_relver}.src
+%patch33 -p2
 popd
 
 %if %{with lldb}
