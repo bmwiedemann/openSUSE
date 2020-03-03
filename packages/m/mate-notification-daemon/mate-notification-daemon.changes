@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Migrate from intltool to gettext.
+  * Use gresource for mate-notification-properties.ui.
+  * Use WARN_CFLAGS which are only set with
+    --enable-compiler-warnings.
+  * Fix decoding the hints dictionary.
+  * mate-notification-properties: Initialise do-not-disturb checkbox.
+  * mate-notification-properties: Add do-not-disturb checkbox.
+  * daemon.c: Check for do-not-disturb and skip notification.
+  * Add do-not-disturb setting.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Jul 17 14:05:41 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

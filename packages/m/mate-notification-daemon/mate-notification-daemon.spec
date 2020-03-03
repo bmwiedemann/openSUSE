@@ -1,7 +1,7 @@
 #
 # spec file for package mate-notification-daemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-notification-daemon
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Notification daemon for MATE
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-BuildRequires:  mate-common >= 1.22
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libwnck-3.0)
@@ -53,25 +52,13 @@ NOCONFIGURE=1 mate-autogen
   --libexecdir=%{_libexecdir}/%{name} \
   --disable-static                    \
   --disable-schemas-install
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file mate-notification-properties
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
@@ -85,8 +72,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/applications/mate-notification-properties.desktop
 %{_datadir}/dbus-1/services/org.freedesktop.mate.Notifications.service
 %{_datadir}/icons/hicolor/*/apps/*
-%dir %{_datadir}/mate-notification-daemon/
-%{_datadir}/mate-notification-daemon/mate-notification-properties.ui
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_mandir}/man1/mate-notification-properties.1%{?ext_man}
 
