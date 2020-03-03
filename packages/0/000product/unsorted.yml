@@ -442,7 +442,6 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
-  - analyzeMFT 
   - android-udev-rules 
   - angelscript 
   - angelscript-devel 
@@ -995,6 +994,8 @@ unsorted:
   - babelstone-runic-fonts 
   - babeltrace: [i586] 
   - babeltrace-devel 
+  - babeltrace2 
+  - babeltrace2-devel 
   - babl-devel 
   - backintime 
   - backintime-lang 
@@ -3219,7 +3220,6 @@ unsorted:
   - fs-uae-launcher 
   - fs_mark 
   - fsarchiver 
-  - fslint 
   - fslsfonts 
   - fstobdf 
   - fstrcmp 
@@ -9990,6 +9990,7 @@ unsorted:
   - liblscp6 
   - libltc-devel 
   - libltc11 
+  - liblttng-ctl0 
   - liblttng-ust-ctl4 
   - liblttng-ust-python-agent0 
   - liblttng-ust0: [i586] 
@@ -10028,7 +10029,8 @@ unsorted:
   - libmapidb-devel 
   - libmapidb1 
   - libmarblewidget-qt5-28 
-  - libmarco-private1 
+  - libmarco-private1: [x86_64] 
+  - libmarco-private2: [i586] 
   - libmariadb-devel 
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
@@ -12905,6 +12907,8 @@ unsorted:
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
   - lttng-modules-kmp-pae: [i586] 
+  - lttng-tools 
+  - lttng-tools-devel 
   - lttng-ust-devel 
   - lttng-ust-doc 
   - ltxml 
@@ -14966,8 +14970,6 @@ unsorted:
   - ocaml-cairo-devel 
   - ocaml-calendar 
   - ocaml-calendar-devel 
-  - ocaml-camlp4 
-  - ocaml-camlp4-devel 
   - ocaml-camlp5 
   - ocaml-camlp5-devel 
   - ocaml-camomile 
@@ -15023,6 +15025,8 @@ unsorted:
   - ocaml-menhir-devel 
   - ocaml-migrate-parsetree 
   - ocaml-migrate-parsetree-devel 
+  - ocaml-minisat 
+  - ocaml-minisat-devel 
   - ocaml-oasis 
   - ocaml-oasis-devel 
   - ocaml-obuild 
@@ -15066,7 +15070,6 @@ unsorted:
   - ocaml-stdlib-shims-devel 
   - ocaml-uutf 
   - ocaml-uutf-devel 
-  - ocaml-x11 
   - ocaml-xml-light 
   - ocaml-xml-light-devel 
   - ocamlify 
@@ -15719,7 +15722,6 @@ unsorted:
   - palette-lang 
   - palm-db-tools 
   - pam-devel-32bit: [x86_64] 
-  - pam-python 
   - pam-test 
   - pam_ccreds 
   - pam_ccreds-32bit: [x86_64] 
@@ -18126,7 +18128,6 @@ unsorted:
   - python2-MiniMock 
   - python2-Morfessor 
   - python2-MulticoreTSNE 
-  - python2-OWSLib 
   - python2-PGet 
   - python2-Parsley 
   - python2-Paste 
@@ -18505,7 +18506,7 @@ unsorted:
   - python2-backports_abc 
   - python2-barbicanclient 
   - python2-baron 
-  - python2-bashate 
+  - python2-bashate: [x86_64] 
   - python2-bcolz 
   - python2-bcrypt 
   - python2-beautifulsoup4 
@@ -19317,7 +19318,6 @@ unsorted:
   - python2-numpy_1_16_5-gnu-hpc 
   - python2-numpy_1_16_5-gnu-hpc-devel 
   - python2-numpydoc 
-  - python2-nwdiag 
   - python2-nxapi-plumbing 
   - python2-oauth2 
   - python2-oauth2client 
@@ -20010,7 +20010,6 @@ unsorted:
   - python2-sphinxcontrib-httpdomain 
   - python2-sphinxcontrib-issuetracker 
   - python2-sphinxcontrib-newsfeed 
-  - python2-sphinxcontrib-nwdiag 
   - python2-sphinxcontrib-pecanwsme 
   - python2-sphinxcontrib-plantuml 
   - python2-sphinxcontrib-programoutput 
@@ -20813,6 +20812,7 @@ unsorted:
   - python3-azurectl 
   - python3-babelfish 
   - python3-babeltrace 
+  - python3-babeltrace2 
   - python3-backcall 
   - python3-backoff 
   - python3-backports 
@@ -21082,6 +21082,7 @@ unsorted:
   - python3-dephell-specifier 
   - python3-dephell-venvs 
   - python3-dephell-versioning 
+  - python3-dephell_changelogs 
   - python3-deprecation 
   - python3-derpconf 
   - python3-designateclient 
@@ -33379,6 +33380,13 @@ unsorted:
   - vala-panel 
   - vala-panel-appmenu-lang 
   - vala-panel-devel 
+  - vala-panel-extras-battery: [i586] 
+  - vala-panel-extras-gtop: [i586] 
+  - vala-panel-extras-lang: [i586] 
+  - vala-panel-extras-volume: [i586] 
+  - vala-panel-extras-weather: [i586] 
+  - vala-panel-extras-xkb: [i586] 
+  - vala-panel-extras-xkb-flags: [i586] 
   - vala-panel-lang 
   - vala-panel-plugin-appmenu 
   - vala-panel-plugins-base 
