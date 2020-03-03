@@ -1,7 +1,7 @@
 #
 # spec file for package libmatekbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,24 @@
 
 
 %define typelib typelib-1_0-Matekbd-1_0
-%define _version 1.23
+%define _version 1.24
 %define sover   4
 Name:           libmatekbd
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop keyboard configuration libraries
 License:        LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.48
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxklavier) >= 5.2
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(x11)
@@ -48,7 +46,6 @@ MATE Desktop applications.
 
 %package -n matekbd-common
 Summary:        MATE Desktop keyboard configuration common files
-Group:          System/GUI/Other
 
 %description -n matekbd-common
 This package provides libmatekdb, an API to manage the keyboard in
@@ -56,12 +53,11 @@ MATE Desktop applications.
 
 %package -n %{name}%{sover}
 Summary:        MATE Desktop keyboard configuration shared libraries
-Group:          System/Libraries
 Requires:       matekbd-common
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 # libmatekbd with a wrong sover was last used in openSUSE Leap 42.1.
-Obsoletes:      %{name}1
+Obsoletes:      %{name}1 < %{version}
 
 %description -n %{name}%{sover}
 This package provides libmatekdb, an API to manage the keyboard in
@@ -69,7 +65,6 @@ MATE Desktop applications.
 
 %package devel
 Summary:        MATE Desktop keyboard configuration development files
-Group:          Development/Libraries/Other
 Requires:       %{name}%{sover} = %{version}
 Requires:       matekbd-common = %{version}
 
@@ -79,7 +74,6 @@ MATE Desktop applications.
 
 %package -n %{typelib}
 Summary:        MATE Desktop keyboard configuration typelib
-Group:          System/GUI/Other
 
 %description -n %{typelib}
 This package provides libmatekdb, an API to manage the keyboard in
@@ -94,20 +88,12 @@ MATE Desktop applications.
 NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
-
-%if 0%{?suse_version} < 1500
-%post -n matekbd-common
-%glib2_gsettings_schema_post
-
-%postun -n matekbd-common
-%glib2_gsettings_schema_postun
-%endif
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 
@@ -120,7 +106,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n matekbd-common
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/libmatekbd/
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/Matekbd-1.0.typelib

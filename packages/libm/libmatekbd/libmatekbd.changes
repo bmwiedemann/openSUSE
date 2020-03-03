@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0:
+  * build: Add configuration summary.
+  * Use gresources for UI files.
+  * matekbd-keyboard-config: Value stored to "clen" is never read.
+  * matekbd-util: Local variables shadow outer variables.
+  * matekbd-keyboard-drawing: Uninitialised structure member.
+  * matekbd-config-private: Avoid redundant redeclarations.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 11:28:56 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to 1.23.0:
