@@ -46,4 +46,15 @@
   https://github.com/boomshop/pulseffectstray</comment>
     <requestid>764192</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35c70e4f12b9e9d99170aca443a07709</srcmd5>
+    <version>4.7.1</version>
+    <time>1583227158</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec cleanup
+- Dropped group tag
+-Update to version 4.7.1 (see CHANGELOG.md)
+</comment>
+    <requestid>781090</requestid>
+  </revision>
 </revisionlist>

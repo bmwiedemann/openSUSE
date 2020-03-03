@@ -17,11 +17,10 @@
 
 
 Name:           pulseeffects
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Mixers
 URL:            https://github.com/wwmm/pulseeffects
 Source0:        https://github.com/wwmm/pulseeffects/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
@@ -78,14 +77,6 @@ sed -i '/^meson.add_install_script/d' meson.build
 %suse_update_desktop_file -r com.github.wwmm.pulseeffects "GTK;AudioVideo;Audio;Mixer;"
 
 %find_lang pulseeffects
-
-%if 0%{?suse_version} < 1500
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files lang -f pulseeffects.lang
 %exclude %{_datadir}/help/C/%{name}
