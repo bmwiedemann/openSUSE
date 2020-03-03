@@ -165,4 +165,18 @@
     <comment></comment>
     <requestid>702977</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e8394330e443a2ee3e8094b81571d48f</srcmd5>
+    <version>2.2.4</version>
+    <time>1583226908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.4:
+  * Run the Setuptools `egg-info` command as part of the `build`
+    command.
+  * Create the socket and catch “non-socket” errors.
+  * Only deal with a range of file descriptors if the range is not empty.
+  * Declare Twine as a build dependency.
+  * Reformat the change log entries with keepachangelog.com sub-sections.</comment>
+    <requestid>780388</requestid>
+  </revision>
 </revisionlist>

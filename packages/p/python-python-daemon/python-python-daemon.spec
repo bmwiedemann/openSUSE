@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-daemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-daemon
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Library to implement a well-behaved Unix daemon process
 License:        Apache-2.0 AND GPL-3.0-only
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module twine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lockfile >= 0.10

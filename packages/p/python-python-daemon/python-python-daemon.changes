@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:41:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.2.4:
+  * Run the Setuptools `egg-info` command as part of the `build`
+    command.
+  * Create the socket and catch “non-socket” errors.
+  * Only deal with a range of file descriptors if the range is not empty.
+  * Declare Twine as a build dependency.
+  * Reformat the change log entries with keepachangelog.com sub-sections.
+
+-------------------------------------------------------------------
 Tue May 14 20:34:45 UTC 2019 - Jonathan <jharker@suse.com>
 
 - Skip broken test 
