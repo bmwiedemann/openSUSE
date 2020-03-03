@@ -104,4 +104,12 @@
     <comment>Reverted back + just a little cleanup</comment>
     <requestid>290500</requestid>
   </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>43046fa5656f10820cbdc4af0df76a7a</srcmd5>
+    <version>0.2</version>
+    <time>1583227117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781002</requestid>
+  </revision>
 </revisionlist>

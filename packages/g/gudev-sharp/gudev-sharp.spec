@@ -34,6 +34,7 @@ BuildRequires:  mono-devel
 BuildRequires:  monodoc-core
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  gtk2-devel
+BuildRequires:  libtool
 
 Requires:       mono-core
 Requires:       libgudev-1_0-0
@@ -52,7 +53,9 @@ Requires:       %{name} = %{version}
 Files for developing programs that use gudev-sharp
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup
+sed -i "s/gmcs/mcs/" configure.in
+autoreconf -fiv
 
 %build
 %configure

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 15:16:26 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- FTBFS: build with mcs instead of deprecated gmcs 
+
+-------------------------------------------------------------------
 Thu Mar 12 22:14:09 UTC 2015 - p.drouand@gmail.com
 
 - Little specfile cleanup
