@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar  1 16:04:17 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.7.1:
+  * Fixing mpv playlist option (for mpv 0.32.0).
+
+-------------------------------------------------------------------
 Wed Jan  8 07:57:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Fix the download url
+- Fix the download url.
 
 -------------------------------------------------------------------
 Thu Jan  2 03:25:28 UTC 2020 - malcolmlewis@opensuse.org
