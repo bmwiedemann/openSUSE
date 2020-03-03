@@ -1,0 +1,45 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,9 +6,17 @@ include(GNUInstallDirs)
+ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share/vala-panel")
+ set (PKGDATADIR "${DATADIR}")
++if(EXISTS ${CMAKE_SOURCE_DIR}/cmake/VCMSubmodule.cmake)
++    include(${CMAKE_SOURCE_DIR}/cmake/VCMSubmodule.cmake)
++    use_vcm(${CMAKE_SOURCE_DIR}/cmake)
++else()
++    find_package(VCM REQUIRED NO_MODULE)
++    list(APPEND CMAKE_MODULE_PATH ${VCM_MODULE_PATH})
++endif()
+ include(GitVersion)
+ determine_fallback_version(${CMAKE_SOURCE_DIR}/cmake)
+-include(FallbackVersion)
++include(${CMAKE_SOURCE_DIR}/cmake/FallbackVersion.cmake)
++include(Format)
+ set (GETTEXT_PACKAGE "vala-panel-extras")
+ set (RELEASE_NAME "Vala Panel extra items")
+ set (PREFIX ${CMAKE_INSTALL_PREFIX})
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -17,7 +17,6 @@ OPTIONS
+     --vapidir=${CMAKE_BINARY_DIR}/vapi
+     --target-glib=2.40
+     --gresources=${CMAKE_CURRENT_SOURCE_DIR}/internal.gresource.xml
+-    --thread
+ GENERATE_VAPI
+     internal
+ )
+--- a/vapi/gio-addons-2.0.vapi
++++ b/vapi/gio-addons-2.0.vapi
+@@ -30,11 +30,6 @@ namespace GLib
+ {
+     [CCode (cname = "g_slist_free_full")]
+     public void slist_free_full(SList list, DestroyNotify? free_func);
+-    namespace SignalHandler
+-    {
+-        [CCode (cname = "g_signal_handlers_disconnect_by_data")]
+-        public void disconnect_by_data(Object instance, void* data);
+-    }
+     [CCode (cname = "GSettingsBackend")]
+     public class KeyfileSettingsBackend : GLib.SettingsBackend
+     {
