@@ -1,7 +1,7 @@
 #
 # spec file for package libmatemixer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 %define sover   0
-%define _version 1.23
+%define _version 1.24
 Name:           libmatemixer
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Mixer library for MATE Desktop
 License:        LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libpulse) >= 5.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -45,7 +43,6 @@ available in the PulseAudio, ALSA and OSS sound systems.
 
 %package -n %{name}%{sover}
 Summary:        Mixer library for MATE Desktop
-Group:          System/Libraries
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
@@ -59,7 +56,6 @@ available in the PulseAudio, ALSA and OSS sound systems.
 
 %package devel
 Summary:        MATE Desktop keyboard configuration development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
@@ -77,7 +73,7 @@ NOCONFIGURE=1 mate-autogen
   --disable-static    \
   --enable-pulseaudio \
   --enable-alsa
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
