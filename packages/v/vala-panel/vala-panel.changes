@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Split vala-cmake-modules into a separate source package.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Sat Nov  9 02:45:59 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Add vala-panel-0.4.91-libm.patch

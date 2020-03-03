@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,21 @@
 
 
 %define _rev    741b80c641591494e9f0ccc4cd19b0cd
-%define cmake_vala_git_revision 1bce300
 Name:           vala-panel
 Version:        0.4.91
 Release:        0
 Summary:        A Gtk3 desktop panel based on Vala
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://gitlab.com/vala-panel-project/vala-panel
 Source:         https://gitlab.com/vala-panel-project/vala-panel/uploads/%{_rev}/%{name}-%{version}.tar.xz
-Source1:        cmake-vala-1bce300.tar.gz
-#PATCH-FIX-UPSTREAM marguerite@opensuse.org - fix linking with libm
-Patch:          vala-panel-0.4.91-libm.patch
+# PATCH-FIX-UPSTREAM vala-panel-0.4.91-libm.patch marguerite@opensuse.org -- Fix linking with libm.
+Patch0:         vala-panel-0.4.91-libm.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.34
+BuildRequires:  vala-cmake-modules
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.0
@@ -59,7 +57,6 @@ rewritten in Vala. It offers same functionality as LXPanel but:
 
 %package devel
 Summary:        Development files for vala-panel
-Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(gtk+-3.0)
 Requires:       pkgconfig(libpeas-1.0)
@@ -72,7 +69,6 @@ This is a development package for vala-panel.
 
 %package runner
 Summary:        Commands runner for vala-panel
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 
 %description runner
@@ -82,7 +78,6 @@ This is a simple commands runner for vala-panel.
 
 %package plugins-base
 Summary:        Plugins for vala-panel -- non-X11 plugins
-Group:          System/GUI/Other
 
 %description plugins-base
 Vala Panel is a desktop panel written in Vala and Gtk3.
@@ -92,7 +87,6 @@ launchbar, applications menu and so on.
 
 %package plugins-wnck
 Summary:        Plugins for vala-panel -- X11 plugins
-Group:          System/GUI/Other
 
 %description plugins-wnck
 Vala Panel is a desktop panel written in Vala and Gtk3.
@@ -100,72 +94,24 @@ Vala Panel is a desktop panel written in Vala and Gtk3.
 This package contains X11 plugins for vala-panel: tasklist,
 system tray, and others.
 
-%package -n vala-cmake-modules
-Summary:        Vala CMake modules
-Group:          Development/Tools/Other
-Version:        %{cmake_vala_git_revision}
-Release:        0
-
-%description -n vala-cmake-modules
-This package provides Vala CMake Modules for vala-panel and vala-panel-appmenu.
-
 %prep
 %autosetup -p1
-mv cmake/FallbackVersion.cmake .
-rm -rf cmake
-tar -xf %{S:1} -C .
-mv cmake-vala-%{cmake_vala_git_revision} cmake
-mv FallbackVersion.cmake cmake
-pushd cmake
-cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}%{_prefix} .
-make %{?_smp_mflags} V=1
-popd
 
 %build
-%if 0%{?suse_version} <= 1320
-export CFLAGS="%{optflags} -std=gnu99"
-%endif
 %cmake \
   -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
   -DCMAKE_SHARED_LINKER_FLAGS=""            \
   -DGSETTINGS_COMPILE=OFF
-make %{?_smp_mflags} V=1
+%cmake_build
 
 %install
-pushd cmake
-make install
-popd
 %cmake_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-%endif
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
-
-%if 0%{?suse_version} < 1500
-%post plugins-base
-%glib2_gsettings_schema_post
-
-%postun plugins-base
-%glib2_gsettings_schema_postun
-
-%post plugins-wnck
-%glib2_gsettings_schema_post
-
-%postun plugins-wnck
-%glib2_gsettings_schema_postun
-%endif
+%postun -p /sbin/ldconfig
 
 %files
 %license LICENSE
@@ -217,8 +163,5 @@ popd
 %{_libdir}/vala-panel/applets/libpager.so
 %{_libdir}/vala-panel/applets/libbuttons.so
 %{_libdir}/vala-panel/applets/libnetmon.so
-
-%files -n vala-cmake-modules
-%{_datadir}/VCM
 
 %changelog
