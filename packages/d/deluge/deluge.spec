@@ -1,7 +1,7 @@
 #
 # spec file for package deluge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.0.3
 Release:        0
 Summary:        BitTorrent Client
 License:        SUSE-GPL-3.0-with-openssl-exception
-Group:          Productivity/Networking/File-Sharing
 URL:            https://deluge-torrent.org/
 Source:         http://download.deluge-torrent.org/source/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE deluge-suse-geoip-location.patch -- Point to the right GeoIP.dat location.
@@ -34,6 +33,7 @@ BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Twisted >= 17.1
 BuildRequires:  python3-devel
 BuildRequires:  python3-libtorrent-rasterbar >= 1.1.1
@@ -41,6 +41,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       python3-Mako
+Requires:       python3-Pillow
 Requires:       python3-Twisted >= 17.1
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
@@ -48,6 +49,7 @@ Requires:       python3-gobject-cairo
 Requires:       python3-libtorrent-rasterbar >= 1.1.1
 Requires:       python3-pyOpenSSL
 Requires:       python3-rencode
+Requires:       python3-setproctitle
 Requires:       python3-setuptools
 Requires:       python3-six
 Requires:       python3-xdg
@@ -67,6 +69,11 @@ BuildArch:      noarch
 %if %{?suse_version} > 1510
 BuildRequires:  python3-slimit
 %endif
+%if %{?suse_version} >= 1550
+Requires:       python3-pycairo
+%else
+Requires:       python3-cairo
+%endif
 
 %description
 Deluge is a Free Software, cross-platform BitTorrent client on
@@ -79,12 +86,10 @@ model.
 %autosetup -p1
 
 %build
-python3 setup.py build
+%py3_build
 
 %install
-python3 setup.py install \
-  --root=%{buildroot} --prefix=%{_prefix}
-
+%py3_install
 %fdupes %{buildroot}%{python3_sitelib}/
 
 mv %{buildroot}%{python3_sitelib}/%{name}/i18n %{buildroot}%{_datadir}/locale
@@ -101,16 +106,6 @@ ls | while read -r f; do
     fi
 done
 popd
-
-%if %{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license LICENSE

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 29 19:11:18 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add a missing requirement python3-setproctitle (boo#1164888).
+- Add a missing requirement python3-Pillow (boo#1164890).
+- Add a missing requirement python3-pycairo (boo#1164892).
+- Use %py3_build and %py3_install macros.
+
+-------------------------------------------------------------------
 Sat Jun 22 16:55:46 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 2.0.3:
