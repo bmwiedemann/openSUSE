@@ -1,7 +1,7 @@
 #
 # spec file for package mate-session-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-session-manager
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Session Manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # Not an upstream file. Only proposes upstream packages:
@@ -32,15 +31,14 @@ Source2:        README.Gsettings-overrides
 # PATCH-FIX-OPENSUSE mate-session-manager-qt-5.7-styleoverride.patch sor.alexei@meowr.ru -- On Qt 5.7+ use Gtk2 Platform Theme.
 Patch0:         mate-session-manager-qt-5.7-styleoverride.patch
 BuildRequires:  hicolor-icon-theme
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(sm)
@@ -49,14 +47,12 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %{name}-branding >= %{_version}
 Requires:       %{name}-gschemas >= %{version}
+# Make native styling in Qt5 happen.
+Requires:       libqt5-qtstyleplugins-platformtheme-gtk2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500
-# Make native styling in Qt5 happen.
-Requires:       libqt5-qtstyleplugins-platformtheme-gtk2
-%endif
 
 %description
 This package contains a session that can be started from a display
@@ -67,10 +63,9 @@ for a full-featured user session.
 
 %package branding-upstream
 Summary:        Upstream definitions of default settings and applications
-Group:          System/Libraries
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: The /etc/mate_defaults.conf allows to define arbitrary
@@ -87,7 +82,6 @@ GSettings and applications used by the MIME system.
 
 %package gschemas
 Summary:        MATE Session Manager GSchemas
-Group:          System/Libraries
 %glib2_gsettings_schema_requires
 
 %description gschemas
@@ -106,13 +100,9 @@ NOCONFIGURE=1 mate-autogen
   --disable-static             \
   --enable-ipv6                \
   --with-default-wm=marco      \
-%if 0%{?suse_version} >= 1500
   --enable-qt57-theme-support  \
-%else
-  --disable-qt57-theme-support \
-%endif
   --with-systemd=yes
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -129,28 +119,14 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop \
 %suse_update_desktop_file %{buildroot}%{_datadir}/xsessions/mate.desktop
 
 %post
-%if 0%{?suse_version} < 1500
-%icon_theme_cache_post
-%endif
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/mate.desktop 20
 
 %postun
-%if 0%{?suse_version} < 1500
-%icon_theme_cache_postun
-%endif
 if [ ! -f %{_datadir}/xsessions/mate.desktop ]; then
     %{_sbindir}/update-alternatives --remove default-xsession.desktop \
       %{_datadir}/xsessions/mate.desktop
 fi
-
-%if 0%{?suse_version} < 1500
-%post gschemas
-%glib2_gsettings_schema_post
-
-%postun gschemas
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
