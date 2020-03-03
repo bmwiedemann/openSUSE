@@ -1,7 +1,7 @@
 #
 # spec file for package ddskk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           ddskk
 Version:        20160304
 Release:        0
 Summary:        SKK (Simple Kana to Kanji Conversion Program) for Emacs
-License:        GPL-2.0+ and SUSE-Permissive and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND SUSE-Permissive AND SUSE-Public-Domain
 Group:          Productivity/Editors/Emacs
-Url:            http://openlab.ring.gr.jp/skk/ddskk.html
+URL:            http://openlab.ring.gr.jp/skk/ddskk.html
 Source0:        https://github.com/skk-dev/ddskk/archive/%{name}-16.2_Warabitai.tar.gz
 Source1:        suse-start.el
 Source97:       download-dic.sh
@@ -33,7 +33,7 @@ Source99:       ddskk-rpmlintrc
 # see README.SUSE for how to generate this file.
 # NOTE: some dictionary files are not licenced under GPL-2.0+
 # see commiters.txt
-Source100:      skkdic-20180304.tar.xz
+Source100:      skkdic-20200228.tar.xz
 Patch2:         bugzilla-141756-workaround.patch
 # PATCH-FIX-OPENSUSE or UPSTREAM -- drop build date to make build reproducible
 Patch3:         ddskk-drop-build-date.patch
@@ -79,7 +79,7 @@ aggressively developed.
 %package -n skkdic
 Summary:        Main Dictionary for SKK
 Group:          System/I18n/Japanese
-Url:            http://openlab.ring.gr.jp/skk/dic.html
+URL:            http://openlab.ring.gr.jp/skk/dic.html
 Requires(post):	info
 Requires(preun):	info
 Provides:       locale(scim-skk:ja)
@@ -90,7 +90,7 @@ main dictionary for SKK
 %package -n skkdic-extra
 Summary:        Optional, additional dictionaries for SKK
 Group:          System/I18n/Japanese
-Url:            http://openlab.ring.gr.jp/skk/dic.html
+URL:            http://openlab.ring.gr.jp/skk/dic.html
 
 %description -n skkdic-extra
 optional, additional dictionaries for SKK
@@ -100,6 +100,7 @@ optional, additional dictionaries for SKK
 %patch2 -p1
 %patch3 -p1
 tar --strip-components=1 --xz -xf %{S:100} -C dic
+cp dic/zipcode/SKK-JISYO.* dic/
 
 %build
 %define emacs_sitelisp_dir %{_datadir}/emacs/site-lisp
@@ -199,7 +200,7 @@ fi
 %files -n skkdic
 %defattr(-,root,root)
 %doc dic/ChangeLog*
-%license dic/READMEs/committers.txt
+%license dic/committers.txt
 %dir %{_datadir}/skk/
 %{_datadir}/skk/SKK-JISYO.L
 %{_datadir}/skk/skk.xpm

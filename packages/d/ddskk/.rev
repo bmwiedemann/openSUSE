@@ -195,4 +195,12 @@ fix representation of bug number in ddskk.changes. (forwarded request 89442 from
     <comment></comment>
     <requestid>588740</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>dcdecdb05fb582170e0937b5cafe0bdd</srcmd5>
+    <version>20160304</version>
+    <time>1583227146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781060</requestid>
+  </revision>
 </revisionlist>
