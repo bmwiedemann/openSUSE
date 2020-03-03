@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Add MATE Disk Image Mounter utility.
+  * WARN_CFLAGS makes MAINTAINER_CFLAGS obsolete for now.
+  * Use MATE_DEBUG_CHECK for setting compiler debug flags.
+  * Print compiler warning flags in summary.
+  * Add WARN_CFLAGS to CFLAGS.
+  * logview: Fix infinite loop parsing logs containing at least one
+    line.
+  * Add hicolor_apps_24x24_mate-system-log.png.
+  * Install hicolor_apps_24x24_mate-disk-usage-analyzer.png.
+  * Avoid g_type_class_add_private.
+  * logview: i18n date format in side pane.
+  * logview: Use preferred date&time representation for current
+    locale.
+  * mate-disk-usage-analyzer: Remove blank space before right
+    parenthesis.
+  * Add scroll tabs with mouse wheel.
+  * gettext: Fix locale dir.
+  * Migrate from intltool to gettext.
+  * Use gresources for UI files.
+  * Avoid redundant redeclarations.
+  * Fix build using the -fno-common flag.
+  * Update translations.
+- Add a mate-disk-image-mounter package for the newly added
+  utility.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Oct 23 17:28:57 CEST 2019 - ro@suse.de
 
 - fix build-requires for factory/tumbleweed

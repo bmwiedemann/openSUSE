@@ -1,7 +1,7 @@
 #
 # spec file for package mate-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,49 +18,48 @@
 
 %define soname_dict libmatedict
 %define sover_dict 6
-%define _version 1.23
+%define _version 1.24
 Name:           mate-utils
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop utilities
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GFDL-1.1-only
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  inkscape
-BuildRequires:  itstool
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
-%if 0%{suse_version} >= 1550
-BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
 %glib2_gsettings_schema_requires
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+BuildRequires:  rsvg-convert
+%else
+BuildRequires:  rsvg-view
+%endif
 
 %description
 This package provides all the tools bundled with MATE utilities:
+ - mate-disk-image-mounter, a disc image mounter.
  - mate-disk-usage-analyzer, a disc usage analyser.
  - mate-dictionary, a program which can look up definitions of words.
  - mate-search-tool, with which one can find files by name or content.
@@ -70,8 +69,8 @@ This package provides all the tools bundled with MATE utilities:
 %package common-lang
 Summary:        Languages for MATE utilities
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GFDL-1.1-only
-Group:          System/Localization
 Provides:       mate-dictionary-lang = %{version}
+Provides:       mate-disk-image-mounter-lang = %{version}
 Provides:       mate-disk-usage-analyzer-lang = %{version}
 Provides:       mate-screenshot-lang = %{version}
 Provides:       mate-search-tool-lang = %{version}
@@ -84,7 +83,6 @@ Provides common translations shared by Caja extensions
 %package -n mate-search-tool
 Summary:        MATE Search Tool
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       mate-desktop-gschemas >= %{_version}
 Recommends:     mate-search-tool-lang
 
@@ -92,10 +90,19 @@ Recommends:     mate-search-tool-lang
 This is the MATE Seach Tool as shipped with the MATE utilities. It uses
 command-line tools such as find and locate to get results.
 
+%package -n mate-disk-image-mounter
+Summary:        MATE disk image mounter
+License:        GPL-2.0-or-later
+Recommends:     mate-disk-image-mounter-lang
+
+%description -n mate-disk-image-mounter
+This is the MATE Disk Image Mounter as shipped with the MATE
+utilities. mate-disk-image-mounter shows up in Caja for .ISO files
+to be conviniently mounted.
+
 %package -n mate-disk-usage-analyzer
 Summary:        MATE disk usage analyser
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Recommends:     mate-disk-usage-analyzer-lang
 
 %description -n mate-disk-usage-analyzer
@@ -104,12 +111,11 @@ mate-disk-usage-analyzer is able to scan either specific directories or
 the wholefilesystem, in order to give the user a graphical tree representation
 including each directory size or percentage in the branch.
 It also auto-detects in real-time any change made to your home
-folder as far as any mounted/unmounted device.
+directory as far as any mounted/unmounted device.
 
 %package -n mate-dictionary
 Summary:        MATE dictionary
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Recommends:     mate-dictionary-lang
 
 %description -n mate-dictionary
@@ -120,7 +126,6 @@ words
 %package -n mate-system-log
 Summary:        MATE system log viewer
 License:        GPL-3.0-or-later AND GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       mate-desktop-gschemas >= %{_version}
 Recommends:     mate-system-log-lang
 
@@ -132,7 +137,6 @@ operating system.
 %package -n mate-screenshot
 Summary:        MATE screenshot maker
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Recommends:     mate-screenshot-lang
 
 %description -n mate-screenshot
@@ -143,7 +147,6 @@ save them.
 %package -n %{soname_dict}%{sover_dict}
 Summary:        Library to look up words in dictionary sources
 License:        GPL-2.0-or-later
-Group:          System/Libraries
 
 %description -n %{soname_dict}%{sover_dict}
 The matedict library is an engine to look up words in dictionary sources.
@@ -151,7 +154,6 @@ The matedict library is an engine to look up words in dictionary sources.
 %package -n %{soname_dict}-devel
 Summary:        Library to look up words in dictionary sources -- Development Files
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 Requires:       %{soname_dict}%{sover_dict} = %{version}
 
 %description -n %{soname_dict}-devel
@@ -159,7 +161,7 @@ The matedict library is an engine to look up words in dictionary sources.
 This package contains development files for libmatedict.
 
 %prep
-%autosetup -p1
+%setup -q
 
 # Do not build the pt lingua for the search tool help to solve build issues.
 sed -i 's/^\(IGNORE_HELP_LINGUAS =\)/\1 pt/' gsearchtool/help/Makefile.am
@@ -171,7 +173,7 @@ NOCONFIGURE=1 mate-autogen
   --libexecdir=%{_libexecdir}/%{name} \
   --with-x                            \
   --enable-ipv6=yes
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -189,54 +191,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %postun -n %{soname_dict}%{sover_dict} -p /sbin/ldconfig
 
-%if 0%{?suse_version} < 1500
-%post -n mate-disk-usage-analyzer
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun -n mate-disk-usage-analyzer
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-
-%post -n mate-dictionary
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun -n mate-dictionary
-%desktop_database_postun
-%glib2_gsettings_schema_post
-
-%post -n mate-screenshot
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun -n mate-screenshot
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-
-%post -n mate-search-tool
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun -n mate-search-tool
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-
-%post -n mate-system-log
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun -n mate-system-log
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
+%files -n mate-disk-image-mounter
+%license COPYING*
+%doc AUTHORS NEWS README
+%{_bindir}/mate-disk-image-mounter
+%{_datadir}/applications/mate-disk-image-mounter.desktop
 
 %files -n mate-disk-usage-analyzer
 %license COPYING*
 %doc AUTHORS NEWS README
 %{_datadir}/help/C/mate-disk-usage-analyzer/
 %{_bindir}/mate-disk-usage-analyzer
-%{_datadir}/mate-disk-usage-analyzer/
 %{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
 %{_datadir}/applications/mate-disk-usage-analyzer.desktop
 %{_datadir}/icons/hicolor/*/apps/mate-disk-usage-analyzer.*
@@ -268,7 +233,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/mate-panel-screenshot
 %{_bindir}/mate-screenshot
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
-%{_datadir}/mate-screenshot/
 %{_datadir}/applications/mate-screenshot.desktop
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/mate-screenshot.appdata.xml
@@ -294,19 +258,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/mate-system-log
 %{_datadir}/applications/mate-system-log.desktop
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
-%{_datadir}/mate-utils/
 %{_datadir}/icons/hicolor/*/apps/mate-system-log*
 %{_mandir}/man?/mate-system-log.?%{?ext_man}
 
 %files -n %{soname_dict}%{sover_dict}
 %license COPYING*
 %doc AUTHORS NEWS README
-%{_datadir}/mate-dict/
 %{_libdir}/%{soname_dict}.so.%{sover_dict}*
 
 %files -n %{soname_dict}-devel
 %doc %{_datadir}/gtk-doc/html/mate-dict/
 %{_includedir}/mate-dict/
+%{_datadir}/mate-dict/
 %{_libdir}/%{soname_dict}.so
 %{_libdir}/pkgconfig/mate-dict.pc
 
