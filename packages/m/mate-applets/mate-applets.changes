@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Use ${datadir}/dbus-1/system.d as the default D-Bus config dir.
+  * Make the dbus directory configurable.
+  * Fix redefined MATELOCALEDIR.
+  * Migrate from intltool to gettext.
+  * Initialise "surface" before testing its value to avoid a crash.
+  * Avoid redundant redeclarations.
+  * build: Don't stop building when cpufreq.h isn't available.
+  * drivemount: Remove -Wformat-nonliteral warning.
+  * netspeed: Remove -Wunused-but-set-variable warning.
+  * cpufreq: Remove -Wabsolute-value warning.
+  * build: Extend --enable-more-warnings configure flag.
+  * Make cpufreq builds independent from kernel header version.
+  * timerapplet.c: Remove reductant condition.
+  * geyes: Avoid memory leak.
+  * multiload: Use /proc/diskstats for NVMe drives.
+  * Treat output as utf8 when limiting width.
+  * command: Use MaCommand object.
+  * Make command applet run commands asynchronously.
+  * build: Show compiler flags on configuration summary.
+  * autoconf: Fix matelocaledir.
+  * Fix build using the -fno-common flag.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Fri Jan 31 14:46:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(NetworkManager) BuildRequires: the entire build
