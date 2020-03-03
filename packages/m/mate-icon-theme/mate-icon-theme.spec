@@ -1,7 +1,7 @@
 #
 # spec file for package mate-icon-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-icon-theme
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        MATE icon theme
 License:        LGPL-3.0-only AND CC-BY-3.0
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icon-naming-utils >= 0.8.7
-# set to %{version} when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 Provides:       mate-icon-theme-devel = %{version}
 BuildArch:      noarch
@@ -46,20 +44,12 @@ directories, and devices.
 %build
 NOCONFIGURE=1 mate-autogen
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %fdupes %{buildroot}%{_datadir}/icons/mate/
 %fdupes %{buildroot}%{_datadir}/icons/menta/
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post mate
-%icon_theme_cache_post menta
-
-# No need for %%icon_theme_cache_postun in %%postun since the theme won't exist anymore.
-%endif
 
 %files
 %license COPYING

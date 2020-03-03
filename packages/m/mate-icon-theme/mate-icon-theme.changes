@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.1):
+  * Add mate/256x256/actions/mail-send.png.
+  * Fix mate/22x22/devices/printer.png.
+  * Upscale 22x22px icons to 24x24px adding 1px to the edges.
+  * Gen png mimetypes icons from paper-sheets.svg - MATE theme.
+  * preferences-system-time.png files are not generated from
+    sources.
+  * Use radial gradient (Blur 13.9%, Opacity 73.4%) for MATE logo
+    shadow.
+  * Add status icons for mobile network connections.
+  * Rework volume-status icons.
+  * Add vpn network status icons.
+  * Update network status icons.
+  * Add network svg icons.
+  * Add dropbox-status icons.
+  * Re-generate network-wired icons from new SVGs.
+  * Add 2 svg sources for nm-applet.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Jul 17 13:16:47 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.1 (changes since 1.22.1):
