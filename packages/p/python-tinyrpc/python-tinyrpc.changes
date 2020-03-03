@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:43:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Tinyrpc now supports the MSGPACK RPC protocol in addition to JSON-RPC.
+
+-------------------------------------------------------------------
 Tue Sep 10 09:23:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.3:
