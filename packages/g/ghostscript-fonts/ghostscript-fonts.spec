@@ -1,7 +1,7 @@
 #
 # spec file for package ghostscript-fonts
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ BuildArch:      noarch
 %if 0%{?suse_version} > 1220
 BuildRequires:  fontpackages-devel
 %endif
-Url:            http://www.ghostscript.com/
+URL:            http://www.ghostscript.com/
 Summary:        Ghostscript's free fonts
 # The version is the same version as the current ghostscript package.
 # Reasoning: Before the Ghostscript package clean-up (see bnc#735824)
@@ -35,7 +35,7 @@ Summary:        Ghostscript's free fonts
 # than the old ghostscript-fonts-* sub-packages, the existing versioning scheme
 # is still used here. This versioning scheme makes sense because this
 # ghostscript-fonts-* packages are the right ones for this Ghostscript version:
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Publishing/PS
 Version:        9.06
 Release:        0
@@ -78,6 +78,7 @@ in the package ghostscript-fonts-other.
 Summary:        Basic Fonts for Ghostscript
 Group:          Productivity/Publishing/PS
 PreReq:         coreutils %suseconfig_fonts_prereq
+Provides:       urw-fonts
 
 %description std
 Several Type 1 basic PostScript fonts.
