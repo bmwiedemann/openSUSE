@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Jan 30 07:07:07 UTC 2020 - ohering@suse.de
+
+- Upgrade to 1.10
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Wed Jul 19 11:57:49 UTC 2017 - olaf@aepfle.de
+
+- Upgrade to 1.07
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Wed May 31 07:07:33 UTC 2017 - olaf@aepfle.de
+
+- Replace tabs with spaces in generated _oasis file
+
+-------------------------------------------------------------------
+Tue Nov 10 10:18:47 UTC 2015 - ohering@suse.de
+
+- Add hardcoded Provides for pre 12.1 repos
+
+-------------------------------------------------------------------
+Mon Nov  9 09:35:58 UTC 2015 - hpj@urpla.net
+
+- don't use make -jN for build
+- add missing group specifier
+
+-------------------------------------------------------------------
+Sat Nov  7 16:50:38 UTC 2015 - hpj@urpla.net
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Sun Feb 23 16:55:07 UTC 2014 - auxsvr@gmail.com
+
+- Upgrade to 1.05 
+- Set appropriate findlib destination directory
+
+-------------------------------------------------------------------
+Thu May 31 15:18:44 UTC 2012 - rschweikert@suse.com
+
+- Add META file to make package ocaml-findlib friendly
+- Fixup Makefile
+
+-------------------------------------------------------------------
+Tue May 22 13:28:36 UTC 2012 - rschweikert@suse.com
+
+- Initial build
+
