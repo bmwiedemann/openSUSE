@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 28 22:50:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Add an ability to specify max line length
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Convert devstack-bashate to native job
+  * Add release notes and contributing in readme
+  * Add Python 3 Train unit tests
+  * Add --version option
+  * Remove pylintrc file
+  * Use stestr as a test runner
+  * Update sphinx version
+  * Update to opendev
+  * Dropping the py35 testing
+  * OpenDev Migration Patch
+  * Replace openstack.org git:// URLs with https://
+  * Replace openstack.org git:// URLs with https://
+  * Change openstack-dev to openstack-discuss
+  * Update min tox version to 2.0
+  * fix tox python3 overrides
+  * add python 3.6 unit test job
+  * switch documentation job to new PTI
+  * import zuul job settings from project-config
+
+-------------------------------------------------------------------
 Sun May 19 07:45:17 UTC 2019 - Markos Chandras <mchandras@suse.de>
 
 - Add python-pbr to runtime dependencies since bashate is trying to

@@ -15,4 +15,32 @@
     <comment></comment>
     <requestid>704165</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>089755fbc10884d1fef1bd757ad279a5</srcmd5>
+    <version>1.0.0</version>
+    <time>1583226933</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Add an ability to specify max line length
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Convert devstack-bashate to native job
+  * Add release notes and contributing in readme
+  * Add Python 3 Train unit tests
+  * Add --version option
+  * Remove pylintrc file
+  * Use stestr as a test runner
+  * Update sphinx version
+  * Update to opendev
+  * Dropping the py35 testing
+  * OpenDev Migration Patch
+  * Replace openstack.org git:// URLs with https://
+  * Replace openstack.org git:// URLs with https://
+  * Change openstack-dev to openstack-discuss
+  * Update min tox version to 2.0
+  * fix tox python3 overrides
+  * add python 3.6 unit test job
+  * switch documentation job to new PTI
+  * import zuul job settings from project-config</comment>
+    <requestid>780409</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bashate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-bashate
-Version:        0.6.0
+Version:        1.0.0
 Release:        0
 Summary:        A PEP8 equivalent for bash scripts
 License:        Apache-2.0
@@ -29,8 +30,7 @@ BuildRequires:  %{python_module Babel >= 0.9.6}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module testrepository}
-BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
 BuildRequires:  python-argparse
@@ -69,10 +69,7 @@ sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/bashate/bashate.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand rm -rf .testrepository
-PYTHON=$python $python %{_bindir}/testr init
-PYTHON=$python $python %{_bindir}/testr run
-}
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license LICENSE
