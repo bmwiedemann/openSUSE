@@ -269,4 +269,23 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738373</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>61829eb4e73c87033346de1d9aeaa765</srcmd5>
+    <version>2.8.4</version>
+    <time>1583226922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.4:
+  - Fixed building with Python 3.8 (:ticket:`#854`).
+  - Don't swallow keyboard interrupts on connect when a password is specified
+    in the connection string (:ticket:`#898`).
+  - Don't advance replication cursor when the message wasn't confirmed
+    (:ticket:`#940`).
+  - Fixed inclusion of ``time.h`` on linux (:ticket:`#951`).
+  - Fixed int overflow for large values in `~psycopg2.extensions.Column.table_oid`
+    and `~psycopg2.extensions.Column.type_code` (:ticket:`#961`).
+  - `~psycopg2.errorcodes` map and `~psycopg2.errors` classes updated to
+    PostgreSQL 12.
+  - Wheel package compiled against OpenSSL 1.1.1d and PostgreSQL at least 11.4.</comment>
+    <requestid>780392</requestid>
+  </revision>
 </revisionlist>

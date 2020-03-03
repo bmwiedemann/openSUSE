@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:49:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.8.4:
+  - Fixed building with Python 3.8 (:ticket:`#854`).
+  - Don't swallow keyboard interrupts on connect when a password is specified
+    in the connection string (:ticket:`#898`).
+  - Don't advance replication cursor when the message wasn't confirmed
+    (:ticket:`#940`).
+  - Fixed inclusion of ``time.h`` on linux (:ticket:`#951`).
+  - Fixed int overflow for large values in `~psycopg2.extensions.Column.table_oid`
+    and `~psycopg2.extensions.Column.type_code` (:ticket:`#961`).
+  - `~psycopg2.errorcodes` map and `~psycopg2.errors` classes updated to
+    PostgreSQL 12.
+  - Wheel package compiled against OpenSSL 1.1.1d and PostgreSQL at least 11.4.
+
+-------------------------------------------------------------------
 Mon Oct 14 14:14:29 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
