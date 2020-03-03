@@ -1,7 +1,7 @@
 #
 # spec file for package python-dephell-archive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell-archive
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Pathlib for archives
 License:        MIT
@@ -52,7 +52,8 @@ Dephell library providing pathlib for archives.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#dephell/dephell_archive#20
+# %%pytest
 
 %files %{python_files}
 %license LICENSE
