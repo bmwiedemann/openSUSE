@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Add remaining peripheral schemas from mate-desktop.
+  * mouse: Add acceleration profiles.
+  * Change media-keys volume-step default from 6 to 5 in the
+    gschema and use only that instead of a redundant constant in
+    the code.
+  * xrandr plugin: i18n dropdown menu.
+  * Add new macro MATE_SETTINGS_PLUGIN_REGISTER_WITH_PRIVATE.
+  * plugins: Drop libXxf86 dependency.
+  * Fix deprecated g_type_class_add_private.
+  * plugins housekeeping: Optimisation code.
+  * Avoid build warning.
+  * mate-settings-plugin: Remove useless macro
+    MATE_SETTINGS_PLUGIN_REGISTER.
+  * msd-smartcard: Remove unused struct members.
+  * Require DBUS >= 1.10.0.
+  * Actually use the configured dbus directory.
+  * Default DBUS_SYS_DIR to ${datadir}/dbus-1/system.d.
+  * Avoid redundant redeclarations.
+  * xrandr: Add bigger icon sizes for tray-applet.
+  * Hide MATE Settings Daemon from Startup Applications capplet.
+  * Setup GETTEXTDATADIRS environment variable for xgettext.
+  * Add its files for marco keybindings xml file.
+  * Switch to use gettext from intltool.
+  * Update translations.
+- Remove drop-libXxf86-dependency.patch: fixed upstream.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 11:46:30 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

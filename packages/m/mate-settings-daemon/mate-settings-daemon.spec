@@ -1,7 +1,7 @@
 #
 # spec file for package mate-settings-daemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,21 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-settings-daemon
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE session settings daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM drop-libXxf86-dependency.patch -- drop libXxf89 dependency, which leaves mate in broken state, fixes boo#1139857
-Patch0:         drop-libXxf86-dependency.patch
 BuildRequires:  hicolor-icon-theme
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dconf) >= 0.13
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libmatekbd) >= %{_version}
@@ -61,7 +57,6 @@ run under it.
 
 %package devel
 Summary:        MATE session settings daemon development files
-Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 
 %description devel
@@ -73,7 +68,6 @@ run under it.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -83,29 +77,16 @@ NOCONFIGURE=1 mate-autogen
   --disable-schemas-install \
   --enable-pulse            \
   --enable-polkit
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%icon_theme_cache_post mate
-%glib2_gsettings_schema_post
-
-%postun
-%icon_theme_cache_postun
-%icon_theme_cache_postun mate
-%glib2_gsettings_schema_postun
-%endif
-
 %files
 %license COPYING COPYING.LIB
 %doc AUTHORS NEWS
-%config %{_sysconfdir}/dbus-1/system.d/org.mate.SettingsDaemon.DateTimeMechanism.conf
 %dir %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/%{name}/xrandr/
 %{_sysconfdir}/xrdb/
@@ -116,6 +97,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/mate-settings-daemon/
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/dbus-1/system-services/*.service
+%{_datadir}/dbus-1/system.d/org.mate.SettingsDaemon.DateTimeMechanism.conf
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/mate-control-center/keybindings/50-accessibility.xml
 %{_datadir}/%{name}/
