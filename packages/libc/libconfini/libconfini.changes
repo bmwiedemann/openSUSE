@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:13:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14.0:
+  * Added implicit value checks to multiple functions
+  * Add constant CONFINI_EROADDR to ConfiniInterruptNo enum
+  * New examples
+
+-------------------------------------------------------------------
 Sun Feb  9 11:52:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.13.0:
