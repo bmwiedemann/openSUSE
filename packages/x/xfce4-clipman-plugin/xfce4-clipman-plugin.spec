@@ -20,17 +20,15 @@
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-clipman-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-clipman-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.4/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff -- trivial fix until next release, seife
 Patch0:         xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff
-# PATCH-FIX-OPENSUSE xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff -- boo#1165231
-Patch1:         xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig

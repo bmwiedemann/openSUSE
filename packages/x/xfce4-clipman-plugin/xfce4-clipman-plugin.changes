@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:11:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.4
+  * settings: Improve layout
+  * settings: Drop some GtkStock items
+  * Update support URLs from goodies to docs.xfce.org (bxo#16141)
+  * Drop deprecated Gtk style properties
+  * Also show desktop file in Cinnamon (bxo#14058)
+  * Fix getting modifier in gsd-clipboard-manager (bxo#14642), obsoletes
+    xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff
+  * Fix typo
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Feb 28 08:01:16 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add xfce4-clipman-plugin-1.4.3-fix-gdk_window_get_device_position.diff
