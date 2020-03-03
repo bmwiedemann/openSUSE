@@ -1,7 +1,7 @@
 #
 # spec file for package mate-menus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,21 @@
 %define soname  libmate-menu
 %define sover   2
 %define typelib typelib-1_0-MateMenu-2_0
-%define _version 1.23
+%define _version 1.24
 Name:           mate-menus
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop Menu
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  intltool
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Requires:       %{name}-branding
 Recommends:     %{name}-lang
@@ -53,10 +51,9 @@ from freedesktop.org.
 %package branding-upstream
 Summary:        The MATE Desktop Menu -- Upstream Menus Definitions
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: This package contains set of needed .menu files in
@@ -69,14 +66,13 @@ BuildArch:      noarch
 The package contains an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org:
 
-http://freedesktop.org/Standards/menu-spec
+https://freedesktop.org/Standards/menu-spec
 
 This package provides the upstream definitions for menus.
 
 %package -n %{soname}%{sover}
 Summary:        MATE Desktop Menu
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 The libmate-menu library implements the "Desktop Menu Specification"
@@ -85,7 +81,6 @@ from freedesktop.org.
 %package -n %{typelib}
 Summary:        MATE Desktop menu bindings
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 
 %description -n %{typelib}
 The libmate-menu library implements the "Desktop Menu Specification"
@@ -94,11 +89,10 @@ from freedesktop.org.
 %package devel
 Summary:        MATE Desktop Menu
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Obsoletes:      python2-%{name} < %{version}
 Requires:       %{soname}%{sover} = %{version}
 Requires:       %{typelib} = %{version}
 Requires:       pkgconfig(glib-2.0)
+Obsoletes:      python2-%{name} < %{version}
 
 %description devel
 mate-menus contains the libmate-menu library, the layout configuration
@@ -116,7 +110,7 @@ from freedesktop.org.
 NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
