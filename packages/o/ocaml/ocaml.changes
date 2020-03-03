@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb 29 20:20:20 UTC 2020 - ohering@suse.de
+
+- update version 4.10.0, with _service file
+  See included Changes for benefits and breaking changes
+- Drop x11 sub package, moved to ocaml-graphics
+- Adjust ocaml-configure-Allow-user-defined-C-compiler-flags.patch
+- Adjust rpmlintrc
+- Remove obsolete ocaml-3.08.3-gcc4.patch
+- Remove obsolete ocaml-4.05.0-CVE-2018-9838.patch
+- Remove obsolete ocaml-4.05.0.tar.xz
+- Remove obsolete ocaml-Fixes-for-out-of-range-Ialloc.patch
+- Remove obsolete ocaml-In-caml_executable_name-wrong-test-on-the-return-cod.patch
+- Remove obsolete ocaml-MPR-7591-frametable-not-8-aligned-on-x86-64-port.patch
+- Remove obsolete ocaml-assert.patch
+- Remove obsolete ocaml-byterun-do-not-alias-function-arguments-to-sigprocma.patch
+- Remove obsolete ocaml-fix_aarch64_build.patch
+- Remove obsolete ocamldoc-man-th.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Require current ocaml-rpm-macros

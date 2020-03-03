@@ -18,9 +18,10 @@
 #
 
 
-%define ocaml_base_version 4.05
+%define ocaml_base_version 4.10
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
+%if %{ocaml_native_compiler}
 %global __ocaml_requires_opts \
 	-c \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
@@ -28,10 +29,22 @@
 %global __ocaml_provides_opts \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	%{nil}
+%else
+%global __ocaml_requires_opts \
+	-c \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	-i Backend_intf \
+	-i Inlining_decision_intf \
+	-i Simplify_boxed_integer_ops_intf \
+	%{nil}
+%global __ocaml_provides_opts \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	%{nil}
+%endif
 %bcond_with ocaml_make_testsuite
 
 Name:           ocaml
-Version:        4.05.0
+Version:        4.10.0
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
@@ -39,23 +52,12 @@ Group:          Development/Languages/OCaml
 Url:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
 Source2:        rpmlintrc
-Patch0:         ocaml-MPR-7591-frametable-not-8-aligned-on-x86-64-port.patch
-Patch1:         ocamldoc-man-th.patch
-Patch2:         ocaml-Fixes-for-out-of-range-Ialloc.patch
-Patch3:         ocaml-In-caml_executable_name-wrong-test-on-the-return-cod.patch
-# FIX-UPSTREAM pass RPM_OPT_FLAGS to build
-Patch4:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
-Patch5:         ocaml-3.08.3-gcc4.patch
-Patch6:         ocaml-byterun-do-not-alias-function-arguments-to-sigprocma.patch
-Patch7:         ocaml-assert.patch
-Patch8:         ocaml-4.05.0-CVE-2018-9838.patch
-# FIX-UPSTREAM backport 'AArch64 GOT fixed' - https://github.com/ocaml/ocaml/pull/1330
-Patch9:         ocaml-fix_aarch64_build.patch
+Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
+BuildRequires:  autoconf
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(x11)
 BuildRequires:  ocaml-rpm-macros >= 20200220
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
@@ -66,6 +68,12 @@ Provides:       ocaml(ocaml_base_version) = %{ocaml_base_version}
 Requires:       %(type -p gcc | xargs readlink -f)
 Provides:       ocaml(ocaml.opt) = %{ocaml_base_version}
 %endif
+Obsoletes:      ocaml-seq < %{version}-%{release}
+Obsoletes:      ocaml-seq-debuginfo < %{version}-%{release}
+Obsoletes:      ocaml-seq-devel < %{version}-%{release}
+Provides:       ocaml-seq = %{version}-%{release}
+Provides:       ocaml-seq-debuginfo = %{version}-%{release}
+Provides:       ocaml-seq-devel = %{version}-%{release}
 
 %description
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -98,17 +106,6 @@ OCaml is a high-level, strongly-typed, functional and object-oriented
 programming language from the ML family of languages.
 
 This package contains source code for OCaml libraries.
-
-%package x11
-Summary:        X11 support for OCaml
-License:        SUSE-LGPL-2.0-with-linking-exception
-Group:          Development/Languages/OCaml
-
-%description x11
-OCaml is a high-level, strongly-typed, functional and object-oriented
-programming language from the ML family of languages.
-
-This package contains X11 support for OCaml.
 
 %package ocamldoc
 Summary:        Documentation generator for OCaml
@@ -150,26 +147,25 @@ This package contains libraries and signature files for developing
 applications that use Ocaml.
 
 %prep
-: do_opt %{ocaml_native_compiler}
 %autosetup -p1
 
 %build
 echo %{version} > VERSION
+test -x "$(type -p gcc | xargs readlink -f)" && export CC="$_"
+test -x "$(type -p as  | xargs readlink -f)" && export AS="$_"
+export ASPP="$CC -c"
 %if %{ocaml_native_compiler}
-make_target='world.opt'
+configure_target='--enable-native-compiler'
 %else
-make_target='world'
+configure_target='--disable-native-compiler'
 %endif
-env \
-CFLAGS='-Werror=implicit-function-declaration -Werror=return-type' \
-./configure -bindir %{_bindir} \
-            -libdir %{ocaml_standard_library} \
-            -no-cplugins \
-            -cc "$(type -p gcc | xargs readlink -f)" \
-            -mandir %{_mandir}
-
-make_target+=" -j1"
-%make_build ${make_target}
+export EXTRA_CFLAGS='-Werror=implicit-function-declaration -Werror=return-type'
+bash -x autogen
+./configure --help
+%configure \
+	${configure_target} \
+	--libdir=%{ocaml_standard_library}
+%make_build
 #
 pushd testsuite
 tee checker.sh <<'_EOF_'
@@ -290,34 +286,6 @@ archive(byte) = "dynlink.cma"
 archive(native) = "dynlink.cmxa"
 _META_
 #
-tee graphics <<_META_
-# Specifications for the "graphics" library:
-requires = ""
-version = "OCaml %{version}"
-description = "Portable drawing primitives"
-directory = "^"
-browse_interfaces = " Unit name: Graphics Unit name: GraphicsX11 "
-archive(byte) = "graphics.cma"
-archive(native) = "graphics.cmxa"
-plugin(byte) = "graphics.cma"
-plugin(native) = "graphics.cmxs"
-_META_
-tee num <<_META_
-requires = "num.core"
-requires(toploop) = "num.core"
-version = "OCaml %{version}"
-description = "Arbitrary-precision rational arithmetic"
-package "core" (
-  version = "OCaml %{version}"
-  directory = "^"
-  browse_interfaces = " Unit name: Arith_flags Unit name: Arith_status Unit name: Big_int Unit name: Int_misc Unit name: Nat Unit name: Num Unit name: Ratio "
-  archive(byte) = "nums.cma"
-  archive(native) = "nums.cmxa"
-  plugin(byte) = "nums.cma"
-  plugin(native) = "nums.cmxs"
-)
-_META_
-#
 tee ocamldoc <<_META_
 requires = "compiler-libs"
 version = "OCaml %{version}"
@@ -335,6 +303,12 @@ archive(byte) = "raw_spacetime_lib.cma"
 archive(native) = "raw_spacetime_lib.cmxa"
 plugin(byte) = "raw_spacetime_lib.cma"
 plugin(native) = "raw_spacetime_lib.cmxs"
+_META_
+#
+tee seq <<_META_
+version = "OCaml %{version}"
+description = ""
+requires = ""
 _META_
 #
 tee stdlib <<_META_
@@ -412,6 +386,9 @@ plugin(byte,mt_vm) = "vmthreads/unix.cma"
 _META_
 #
 popd
+> 'files.ocaml.META'
+> 'files.ocamldoc.META'
+> 'files.compiler-libs.META'
 for META in META/*
 do
 	ocamlfind=${META##*/}
@@ -456,13 +433,12 @@ done
 %if %{ocaml_native_compiler}
 %{ocaml_standard_library}/libasmrun_shared.so
 %endif
-%{ocaml_standard_library}/vmthreads/*.mli
-%{ocaml_standard_library}/vmthreads/*.a
 %if %{ocaml_native_compiler}
 %{ocaml_standard_library}/threads/*.a
 %{ocaml_standard_library}/threads/*.cmxa
 %{ocaml_standard_library}/threads/*.cmx
 %endif
+%{ocaml_standard_library}/threads/*.mli
 %{ocaml_standard_library}/caml
 %{ocaml_standard_library}/Makefile.config
 %{ocaml_standard_library}/VERSION
@@ -472,7 +448,8 @@ done
 %{ocaml_standard_library}/expunge
 %{ocaml_standard_library}/ld.conf
 %{ocaml_standard_library}/objinfo_helper
-%exclude %{ocaml_standard_library}/graphicsX11.mli
+%{ocaml_standard_library}/camlheaderd
+%{ocaml_standard_library}/camlheaderi
 %exclude %{_bindir}/ocamlrun
 %exclude %{_bindir}/ocamldoc*
 %exclude %{ocaml_standard_library}/ocamldoc
@@ -486,24 +463,15 @@ done
 %{ocaml_standard_library}/*.cmti
 %{ocaml_standard_library}/*.cma
 %{ocaml_standard_library}/stublibs
-%dir %{ocaml_standard_library}/vmthreads
-%{ocaml_standard_library}/vmthreads/*.cmi
-%{ocaml_standard_library}/vmthreads/*.cma
-%{ocaml_standard_library}/vmthreads/*.cmti
 %dir %{ocaml_standard_library}/threads
 %{ocaml_standard_library}/threads/*.cmi
 %{ocaml_standard_library}/threads/*.cma
 %{ocaml_standard_library}/threads/*.cmti
-%exclude %{ocaml_standard_library}/graphicsX11.cmi
 %exclude %{ocaml_standard_library}/topdirs.cmi
 %exclude %{ocaml_standard_library}/topdirs.cmt
 %exclude %{ocaml_standard_library}/topdirs.cmti
 %doc Changes
 %license LICENSE
-
-%files x11
-%{ocaml_standard_library}/graphicsX11.cmi
-%{ocaml_standard_library}/graphicsX11.mli
 
 %files source
 %{ocaml_standard_library}/*.ml
