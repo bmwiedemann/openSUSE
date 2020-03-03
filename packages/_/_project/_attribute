@@ -275,7 +275,7 @@ installcheck-ignore-duplicated-binaries = gnome-menus-branding-openSUSE
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
 
 # packages in here are rebuild if their buildinfo changed
-rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema
+rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema perf
 
 bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-module permissions-unauthorized-file permissions-symlink permissions-dir-without-slash permissions-file-as-dir permissions-fscaps permissions-file-setuid-bit permissions-directory-setuid-bit permissions-world-writable polkit-changed- polkit-unauthorized- polkit-untracked- </value>
   </attribute>
