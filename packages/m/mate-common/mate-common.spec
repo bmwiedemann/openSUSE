@@ -1,7 +1,7 @@
 #
 # spec file for package mate-common
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%define _version 1.22
+%define _version 1.24
 Name:           mate-common
-Version:        1.22.0
+Version:        1.24.0
 Release:        0
 Summary:        Common scripts and macros to develop with MATE
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 # Upstream source distribution requires execution of 'autogen.sh';
 # mate-common is a requirement, while this doesn't change we pull
 # all the necessary stuff from here so we won't polute other specs.
 Requires:       autoconf
+Requires:       autoconf-archive
 Requires:       automake
 Requires:       gettext
-Requires:       intltool >= 0.50.1
 Requires:       libtool
 Requires:       pkgconfig
 Requires:       pkgconfig(glib-2.0)
@@ -50,7 +49,7 @@ and several macros are included to help in MATE source trees.
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.22.0):
+  * Update mate-compiler-flags macro.
+  * Check if AX_APPEND_FLAG and AX_CHECK_COMPILE_FLAG are available.
+  * Set compiler debug flags in MATE_DEBUG_CHECK.
+  * Update MATE_CXX_WARNINGS macro.
+- Require autoconf-archive.
+- Do not require intltool.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
 
 - Update to version 1.22.0:
