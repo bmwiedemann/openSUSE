@@ -216,7 +216,11 @@ BuildRequires:  llvm9-devel
 %endif
 
 %if 0%{with_opencl}
+%if 0%{?is_opensuse}
+BuildRequires:  clang-devel >= 9.0.0
+%else
 BuildRequires:  clang9-devel
+%endif
 BuildRequires:  libclc
 %endif
 

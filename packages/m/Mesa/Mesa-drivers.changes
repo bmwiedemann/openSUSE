@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 15:25:41 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Loosen dependencies to allow building with newer versions of
+  clang-devel, similar to llvm-devel.
+
+-------------------------------------------------------------------
 Fri Feb 21 13:18:18 UTC 2020 - Philipp Seiler <p.seiler@linuxmail.org>
 
 - update to mesa 20.0.0

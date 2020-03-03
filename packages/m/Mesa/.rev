@@ -4024,4 +4024,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>778461</requestid>
   </revision>
+  <revision rev="372" vrev="244">
+    <srcmd5>436e0f274ccf094a49f2f77477331ce7</srcmd5>
+    <version>unknown</version>
+    <time>1583226831</time>
+    <user>dimstar_suse</user>
+    <comment>- Loosen dependencies to allow building with newer versions of
+  clang-devel, similar to llvm-devel.</comment>
+    <requestid>780325</requestid>
+  </revision>
 </revisionlist>
