@@ -211,4 +211,12 @@ Submit HEAD</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>719956</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2544114c4899d81b7f8ca0fd6e7633f2</srcmd5>
+    <version>1.24.0</version>
+    <time>1583226989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0.</comment>
+    <requestid>780525</requestid>
+  </revision>
 </revisionlist>

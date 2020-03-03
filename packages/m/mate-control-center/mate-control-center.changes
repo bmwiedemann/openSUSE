@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.1):
+  * mouse: Add support for Acceleration Profiles
+  * appearance: Fix memory leak.
+  * appearance: Add new font for user.
+  * Stop propagate error.
+  * at-properties: Migrate from dbus-glib to gdbus.
+  * Fix UI validation.
+  * time-admin: Add license info in time-admin.ui file.
+  * Search system themes in system data dirs.
+  * display: Enable help button.
+  * windows: Add window-properties.ui.
+  * Avoid redundant redeclarations.
+  * keybindings: Fix schema creation in makefile.
+  * appearance: Fix desktop file creation.
+  * shell: Fix typo in keyword name.
+  * Migrate from intltool to gettext.
+  * default-applications: Load icons as cairo surfaces.
+  * icons: Force uniform size on icons.
+  * remove warning: "__sun" is not defined, evaluates to 0.
+  * fv: thumbnailer: Add font/collection to the supported
+    mimetypes.
+  * font-viewer: Add font/ttf and font/otf mime types.
+  * time-admin: Fix memory leak.
+  * time-admin: Don't share «void QuitApp(TimeAdmin *ta)» method.
+  * default-applications: Remove messenger options from ui file.
+  * time-admin: Remove unreachable code.
+  * time-admin: Simplify date & time displaying.
+  * time-admin: Save button cannot be enabled if NTP
+    synchronisation is active.
+  * time-admin: Display current time in time-admin.ui on startup.
+  * time-admin: Rename adjustament to adjustment in time-admin.ui.
+  * time-admin: A11y time-admin.ui.
+  * time-admin: Add time-admin.ui.
+  * default-applications: Fix Word Processor top margin.
+  * Update translations
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Fri Jul 19 07:43:58 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.1 (changes since 1.22.1):

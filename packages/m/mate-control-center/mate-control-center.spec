@@ -1,7 +1,7 @@
 #
 # spec file for package mate-control-center
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %define sover   1
 %define soname_slab libmate-slab
 %define sover_slab 0
-%define _version 1.23
+%define _version 1.24
 Name:           mate-control-center
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop control center
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
@@ -41,9 +40,9 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dconf) >= 0.11.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libmarco-private) >= %{_version}
 BuildRequires:  pkgconfig(libmate-menu) >= %{_version}
@@ -61,18 +60,13 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xscrnsaver)
-Requires:       %{name}-branding
+Requires:       %{name}-branding >= %{_version}
 Requires:       gsettings-backend-dconf
 Requires:       gsettings-desktop-schemas
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(appindicator3-0.1)
-%endif
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python2-libxml2-python
-%else
-BuildRequires:  libxml2-python
 %endif
 
 %description
@@ -81,10 +75,9 @@ aspects of your desktop.
 
 %package branding-upstream
 Summary:        The MATE Control Center -- Upstream Definition of Shell Content
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: This package contains the definitions of the content appearing
@@ -99,7 +92,6 @@ control center.
 
 %package devel
 Summary:        Header files for MATE Control Center
-Group:          Development/Libraries/Other
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
@@ -110,7 +102,6 @@ This package provides MATE control center development files.
 
 %package -n %{soname}%{sover}
 Summary:        Utility library for getting window manager settings
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 This library is used by MATE control center to change preferences
@@ -118,7 +109,6 @@ of window managers.
 
 %package -n %{soname_slab}%{sover_slab}
 Summary:        MATE Desktop libslab port
-Group:          System/Libraries
 
 %description -n %{soname_slab}%{sover_slab}
 This library makes it easy to create tile-based UI for MATE, as seen in
@@ -126,7 +116,6 @@ gnome-main-menu.
 
 %package -n %{soname_slab}-devel
 Summary:        Header files for libslab
-Group:          Development/Libraries/Other
 Requires:       %{soname_slab}%{sover_slab} = %{version}
 
 %description -n %{soname_slab}-devel
@@ -145,7 +134,7 @@ NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static        \
   --disable-update-mimedb
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -170,20 +159,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n %{soname_slab}%{sover_slab} -p /sbin/ldconfig
 
 %postun -n %{soname_slab}%{sover_slab} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%mime_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%mime_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
