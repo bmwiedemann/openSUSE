@@ -59,12 +59,14 @@ Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
 Source8:        %{name}.appdata.xml
+Source9:        SUSE-NVIDIA-GPU-rendering.txt
 Source99:       series
 # only rely on patch availibility, if python_36 is requested
 Patch0:         make_python_3.6_compatible.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
+BuildRequires:  OpenImageIO
 BuildRequires:  OpenImageIO-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  binutils-gold
@@ -180,7 +182,6 @@ Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
 Obsoletes:      %{name}-%{_suffix} < %{version}
-Recommends:     %{name}-lang
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -206,7 +207,9 @@ Summary:        Headers for cycles rendering
 #This package is for blender with cycles OSL
 License:        Apache-2.0
 Group:          Development/Sources
-Obsoletes:      blender-devel <= %{version}
+Obsoletes:      %{name}-devel <= %{version}
+Provides:       %{name}-%{_suffix} = %{version}
+Obsoletes:      %{name}-%{_suffix} < %{version}
 BuildArch:      noarch
 
 %description cycles-devel
@@ -351,6 +354,8 @@ cmake ../ \
       -DWITH_X11_XINPUT:BOOL=ON \
       -DWITH_X11_XF86VMODE:BOOL=ON \
       -DWITH_DOC_MANPAGE:BOOL=ON \
+      -DCYCLES_CUDA_BINARIES:BOOL=ON \
+      -DCYCLES_CUBIN_COMPILER:BOOL=OFF \
       -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75"
 
 make %{_smp_mflags}
@@ -374,10 +379,11 @@ rm -rf %{buildroot}%{_datadir}/doc/blender
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0755 %{SOURCE4} %{buildroot}%{_bindir}/
-
 # install appdata file
 mkdir -p %{buildroot}%{_datadir}/appdata/
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
+# GPU rendering text
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
 
 chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 

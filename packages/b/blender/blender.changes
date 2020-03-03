@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 29 15:50:02 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- remove lang recommends
+- provide/obsolete blender-282-devel
+
+-------------------------------------------------------------------
+Sun Feb 23 16:08:53 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add SUSE-NVIDIA-GPU-rendering.txt
+
+-------------------------------------------------------------------
+Wed Feb 19 22:39:08 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- improve cuda configuration
+
+-------------------------------------------------------------------
 Tue Feb 18 02:47:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.82:
