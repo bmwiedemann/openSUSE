@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.1):
+  * pluma-view: Avoid static gboolean variable.
+  * Avoid g_type_class_add_private.
+  * Fix build with GtkSourceView 3.22.
+  * gla11y: Use version 0.3 which already defaults to using python3.
+  * Avoid to make new GSettings variables.
+  * Use GSettings pluma_prefs_manager instead.
+  * Taglist: Load the local translation string from lang.mo file.
+  * Ignore comment element in xml file.
+  * Add translator hints.
+  * Migrate from intltool to gettext.
+  * window: Do not override GdkWindowState.
+  * pluma-document: Avoid garbage value in file_with_bom function.
+  * preferences: Change Draw to Show.
+  * smart-converter: Fix memory leaks.
+  * Add gbk encoding.
+  * build: Show compiler flags on configuration summary.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Fri Jul 19 08:00:21 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.1:
