@@ -166,4 +166,12 @@
     <comment>Makes the build green again :)</comment>
     <requestid>745164</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d6d194ccc5dcd26a08585e0af7e7ec06</srcmd5>
+    <version>1.24.0</version>
+    <time>1583226963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0.</comment>
+    <requestid>780515</requestid>
+  </revision>
 </revisionlist>
