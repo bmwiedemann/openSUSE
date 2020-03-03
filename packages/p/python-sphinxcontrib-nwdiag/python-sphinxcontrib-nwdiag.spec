@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-nwdiag
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-sphinxcontrib-nwdiag
-Version:        0.9.5
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx "nwdiag" extension
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/blockdiag/sphinxcontrib-nwdiag
+URL:            http://github.com/blockdiag/sphinxcontrib-nwdiag
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-nwdiag/sphinxcontrib-nwdiag-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
