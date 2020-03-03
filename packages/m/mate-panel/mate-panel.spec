@@ -19,13 +19,12 @@
 %define soname  libmate-panel-applet-4
 %define sover   1
 %define typelib typelib-1_0-MatePanelApplet-4_0
-%define _version 1.23
+%define _version 1.24
 Name:           mate-panel
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop Panel
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        %{name}-branding.gschema.override.in
@@ -34,8 +33,7 @@ Source2:        baselibs.conf
 Patch0:         mate-panel-layouts-suse.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  update-desktop-files
@@ -54,7 +52,7 @@ BuildRequires:  pkgconfig(mateweather) >= %{_version}
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr) >= 1.3
-Requires:       %{name}-branding >= %{version}
+Requires:       %{name}-branding >= %{_version}
 Requires:       gsettings-backend-dconf
 Requires:       gvfs-backends
 Recommends:     %{name}-lang
@@ -69,10 +67,9 @@ access to data.
 %package branding-upstream
 Summary:        Upstream default layout for the MATE desktop panel
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: Provides /usr/share/mate-panel/panel-default-layout.layout
@@ -91,7 +88,6 @@ This package contains the upstream default layout for MATE Panel.
 %package -n %{soname}-%{sover}
 Summary:        MATE Panel Applet Library -- matecomponent-based library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n %{soname}-%{sover}
 This package contains the MATE Desktop Panel. The panel is an
@@ -101,7 +97,6 @@ access to data.
 %package -n %{typelib}
 Summary:        Introspection bindings for the MATE panel applet library
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 
 %description -n %{typelib}
 This package contains the MATE Desktop Panel. The panel is an
@@ -111,7 +106,6 @@ access to data.
 %package devel
 Summary:        Development files for the MATE panel applet library
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/Other
 Requires:       %{soname}-%{sover} = %{version}
 Requires:       %{typelib} = %{version}
 
@@ -134,7 +128,7 @@ NOCONFIGURE=1 mate-autogen
   --disable-static                    \
   --enable-introspection              \
   --disable-scrollkeeper
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -154,24 +148,6 @@ install -pm 0644 zz-mate-panel-upream-branding.gschema.override \
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
 
 %postun -n %{soname}-%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-
-%post branding-upstream
-%glib2_gsettings_schema_post
-
-%postun branding-upstream
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
