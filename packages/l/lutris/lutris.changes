@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 20:44:31 UTC 2020 - Jacob W <jacob@jacobwinski.com>
+
+- Add lutris-0.5.4-sort_new_with_model_fix.patch adding support for renamed gtk attribute, fixing lutris crashing on startup. 
+
+-------------------------------------------------------------------
 Thu Feb  6 11:17:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - boo#1161650: Add lutris-0.5.4-boo1161650-remove-polkit.patch

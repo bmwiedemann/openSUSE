@@ -1,7 +1,7 @@
 #
 # spec file for package lutris
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://lutris.net
 Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
 # boo#1161650: Remove xboxdrv and polkit
 Patch0:         lutris-0.5.4-boo1161650-remove-polkit.patch
+Patch1:         lutris-0.5.4-sort_new_with_model_fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
@@ -61,6 +62,7 @@ or emulated console games and browser games.
 %setup -q -n %{name}
 # boo#1161650
 %patch0 -p1
+%patch1 -p1
 rm -rf share/polkit-1/
 
 %build
