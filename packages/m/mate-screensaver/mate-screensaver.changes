@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Set compiler debug flags / logging with MATE_DEBUG_CHECK.
+  * Use WARN_CFLAGS which are only set with
+    --enable-compiler-warnings.
+  * Add keywords key to .desktop files.
+  * Avoid g_type_class_add_private.
+  * Remove old HAL remnants.
+  * Ensure lock on suspend and unlock on resume.
+  * Use gresources for mate-screensaver-preferences.ui.
+  * lock-dialog: Add style_provider to current screen globally.
+  * Replace deprecated gtk_css_provider_get_default.
+  * Drop libXxf86 dependency.
+  * Avoid redundant redeclarations.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Remove drop-libXxf89-dependency.patch: fixed upstream.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 11:59:21 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

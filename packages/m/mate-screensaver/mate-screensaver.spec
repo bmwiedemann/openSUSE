@@ -1,7 +1,7 @@
 #
 # spec file for package mate-screensaver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,17 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-screensaver
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop screensaver
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE mate-screensaver-1.7.1-vendor_pam_integration.patch nmarques@mate-desktop.org -- PAM integration with SUSE.
 Patch0:         mate-screensaver-1.7.1-vendor_pam_integration.patch
-# PATCH-FIX-UPSTREAM drop-libXxf89-dependency.patch -- drop the dependency on libXxf89. Fixes boo#1139857
-Patch1:         drop-libXxf89-dependency.patch
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -40,8 +36,8 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libmate-menu) >= %{_version}
 BuildRequires:  pkgconfig(libmatekbdui)
 BuildRequires:  pkgconfig(libnotify)
@@ -64,7 +60,6 @@ the MATE desktop.
 
 %package devel
 Summary:        Development files for mate-screensaver
-Group:          Development/Sources
 Requires:       %{name} = %{version}
 
 %description devel
@@ -87,7 +82,7 @@ NOCONFIGURE=1 mate-autogen
   --with-systemd                      \
   --without-console-kit               \
   --disable-docbook-docs
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -98,16 +93,6 @@ for desktop in $(ls | grep \.desktop); do
     %suse_update_desktop_file %{buildroot}%{_datadir}/applications/$desktop
 done
 popd
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING COPYING.LIB
