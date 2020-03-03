@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb 28 03:09:46 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.009		2020-02-27	T. R. Wyant
+      Add new() argument index_locations which causes locations to be
+      indexed during the parse. This defaults based on whether a location
+      argument was provided, and whether the string being parsed is a
+      PPI::Element.
+  
+      Add method statement(), which returns the PPI statement containing
+      the string element, or nothing if none.
+  
+      Add PPI::Element location methods, to wit: location(),
+      column_number(), line_number(), logical_filename(),
+      logical_line_number(), and visual_column_number().
+  
+      Add PPIx::QuoteLike::Utils::is_ppi_quotelike_element() which returns
+      true if the argument is a PPI::Element of interest to us.
+  
+      All objects now have a variables() method inherited from
+      PPIx::QuoteLike::Token. This method returns nothing unless
+      overridden. It was added to eliminate $elem->can( 'variables' )
+      ad-hocery.
+  
+      Eliminate redirections in POD URL links
+
+-------------------------------------------------------------------
 Sat Aug 17 05:22:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.008

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-QuoteLike
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-PPIx-QuoteLike
-Version:        0.008
+Version:        0.009
 Release:        0
 %define cpan_name PPIx-QuoteLike
 Summary:        Parse Perl string literals and string-literal-like things
@@ -45,7 +45,7 @@ variables for Perl::Critic policies and similar code.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
