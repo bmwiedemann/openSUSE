@@ -264,4 +264,12 @@ Add required conflicts tags</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>719944</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a5f04b68463f4646e6f73a01125b2359</srcmd5>
+    <version>1.24.0</version>
+    <time>1583227041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0.</comment>
+    <requestid>780839</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package caja
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,28 @@
 
 %define lname libcaja-extension1
 %define typelib typelib-1_0-Caja-2_0
-%define _version 1.23
+%define _version 1.24
 Name:           caja
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        File manager for the MATE desktop
 License:        GPL-2.0-only AND LGPL-2.0-only
-Group:          System/GUI/Other
-Url:            https://mate-desktop.org/
+URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+# PATCH-FEATURE-OPENSUSE caja-glib-2.54.patch -- Restore GLib 2.54 support.
+Patch0:         %{name}-glib-2.54.patch
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(gail)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -62,7 +62,6 @@ desktop. It works on local and remote filesystems.
 
 %package devel
 Summary:        Caja development files
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 # mate-file-manager-devel was last used in openSUSE 13.1.
@@ -77,7 +76,6 @@ desktop. It works on local and remote filesystems.
 
 %package -n %{lname}
 Summary:        Caja shared libraries
-Group:          System/Libraries
 Requires:       %{name}-gschemas >= %{version}
 
 %description -n %{lname}
@@ -87,10 +85,8 @@ with them. It is also responsible for handling the icons on the MATE
 desktop. It works on local and remote filesystems.
 
 # Needed for using pluma as standalone from MATE.
-
 %package gschemas
 Summary:        Caja GSchemas
-Group:          System/Libraries
 Obsoletes:      mate-file-manager < %{version}
 # caja-gsettings-schemas was last used in openSUSE Leap 42.1.
 Obsoletes:      %{name}-gsettings-schemas < %{version}
@@ -107,7 +103,6 @@ This package provides the GSettings schemas for Caja.
 
 %package -n %{typelib}
 Summary:        MATE file manager typelib
-Group:          System/GUI/Other
 
 %description -n %{typelib}
 Caja is the official file manager for the MATE desktop. It allows to
@@ -116,18 +111,15 @@ with them. It is also responsible for handling the icons on the MATE
 desktop. It works on local and remote filesystems.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1500
-export CFLAGS="%{optflags} -std=gnu99"
-%endif
 NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-update-mimedb \
   --disable-static        \
   --enable-introspection
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -150,24 +142,6 @@ mkdir -p %{buildroot}%{_libdir}/caja/extensions-2.0/ \
 %post -n %{lname} -p /sbin/ldconfig
 
 %postun -n %{lname} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-
-%post gschemas
-%glib2_gsettings_schema_post
-
-%postun gschemas
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING COPYING.EXTENSIONS COPYING.LIB

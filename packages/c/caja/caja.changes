@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.1):
+  * caja-progress-info: Use NotifyNotification instead of
+    GNotification.
+  * Copy file and keep timestamps of original file including
+    remotes.
+  * Fix Caja crashes on file move in Korean.
+  * Support querying files by contained text.
+  * Use show icons option in views tab.
+  * Add preference option to hide icons in list view.
+  * fm-directory-view: Add icon to "empty trash" into "File" menu.
+  * gla11y: Use version 0.3 which already defaults to using
+    python3.
+  * caja-places-sidebar: Add icon to "empty trash".
+  * spatial-window: Replace geprecated gtk_menu_popup.
+  * property-browser: Replace deprecated gtk_drag_begin.
+  * fm-list-view: Replace deprecated gtk_drag_begin.
+  * Show thumbnails in list view.
+  * file-manager: Reduce the scope of some variables.
+  * preferences: Render extension icons as cairo_surfaces.
+  * preferences: Render media icons as cairo_surface.
+  * Replace gdkpixbuf with cairo_surfaces in a few more places.
+  * sidebar: Render info icon as vector.
+  * desktop: Add specific CSS for ContrastHigh and
+    ContrastHighInverse.
+  * desktop: Add specific CSS for HighContrast and
+    HighContrastInverse.
+  * Add support for loading theme-specific caja-desktop CSS.
+  * Refactor custom CSS loading into a separate function.
+  * Add support for checking .ui accessibility with gla11y.
+  * Render file-conflict icons as cairo_surface vectors.
+  * file-conflict-dialog: Don't scale icons twice on hidpi monitors.
+  * eel-string: Fix "make check".
+  * Restore transparent background on icon view labels.
+  * desktop icon view: Disconnect callback from correct GSettings
+    instance.
+  * Add scroll tabs with mouse wheel for File's properties and
+    caja's preferences windows.
+  * hidpi: Ensure all icons are properly scaled.
+  * Use GETTEXTDATADIRS replace GETTEXTDATADIR.
+  * Create msgstr for data/browser.xml.
+  * Add gettext ITS.
+  * Migrate intltool to gettext.
+  * fm-properties: Remove use of mate-desktop-thumbnail helper.
+  * Make device ejection notifications translatable.
+  * Keep path same when opening new window from an existing one.
+  * editable-label: Don't hyphenate filenames.
+  * libcaja-private/caja-file: Redundant condition.
+  * Avoid redundant redeclarations.
+  * canvas-item: Don't hyphenate filenames.
+  * change name from caja.{its,loc} to mimeinfo.{its,loc}.
+  * caja-window-slot: "folder-saved-search" icon instead
+    "text-x-generic".
+  * Let some strings be translatable.
+  * Add document for CajaWidgetViewProvider api.
+  * Add new interface.
+  * Add CajaWidgetViewProvider docs.
+  * Add new extension for widget view.
+  * Hide menu and toolbutton when view is only one.
+  * Set FmWidgetView is single view.
+  * Add new FmWidgetView object.
+  * Fix build error about autoptr clean.
+  * Use absolute path of binary on desktop files.
+  * build: Fix wrong executing dir in caja.desktop.
+  * Set a real title on the desktop window (as provided to ATK).
+  * Drop GLIB version check.
+  * build: Show compiler flags on configuration summary.
+  * Fix build using the -fno-common flag.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Add caja-glib-2.54.patch: restore GLib 2.54 support.
+
+-------------------------------------------------------------------
 Wed Jul 17 14:51:54 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.1 (changes since 1.22.1):
