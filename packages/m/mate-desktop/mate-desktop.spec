@@ -19,38 +19,35 @@
 %define soname  libmate-desktop-2
 %define sover   17
 %define typelib typelib-1_0-MateDesktop-2_0
-%define _version 1.23
+%define _version 1.24
 Name:           mate-desktop
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        user-dirs-update-mate.desktop
 BuildRequires:  docbook-xsl-stylesheets
-# set to %{version} when mate-common has an equal release to mate-desktop
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(dconf) >= 0.13.4
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.7
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires:  pkgconfig(xrandr) >= 1.3
+Requires:       xdg-user-dirs
+Recommends:     %{name}-lang
+Recommends:     mate-user-guide
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(dconf) >= 0.13.4
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.7
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(python)
-BuildRequires:  pkgconfig(xrandr) >= 1.3
-Requires:       xdg-user-dirs
-Recommends:     %{name}-lang
-Recommends:     mate-user-guide
 
 %description
 This package contains the library with common API for various
@@ -61,7 +58,6 @@ MATE modules.
 %package -n %{soname}-%{sover}
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          System/Libraries
 Requires:       %{name}-gschemas >= %{version}
 
 %description -n %{soname}-%{sover}
@@ -73,7 +69,6 @@ MATE modules.
 %package -n %{typelib}
 Summary:        Common API for various MATE modules typelib
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 
 %description -n %{typelib}
 This package contains the library with common API for various
@@ -82,8 +77,7 @@ MATE modules.
 %package gschemas
 Summary:        MATE Desktop GSchemas
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          System/Libraries
-Requires:       %{name}-gschemas-branding >= %{version}
+Requires:       %{name}-gschemas-branding >= %{_version}
 # mate-desktop-gsettings-schemas was last used in openSUSE Leap 42.1.
 Obsoletes:      %{name}-gsettings-schemas < %{version}
 Provides:       %{name}-gsettings-schemas = %{version}
@@ -96,10 +90,9 @@ MATE Desktop Environment.
 %package gschemas-branding-upstream
 Summary:        MATE Desktop GSchemas -- Upstream default settings
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       %{name}-gschemas = %{version}
-Supplements:    packageand(%{name}-gschemas:branding-upstream)
-Conflicts:      otherproviders(%{name}-gschemas-branding)
+Supplements:    (%{name}-gschemas and branding-upstream)
+Conflicts:      %{name}-gschemas-branding
 Provides:       %{name}-gschemas-branding = %{version}
 BuildArch:      noarch
 %glib2_gsettings_schema_requires
@@ -111,7 +104,6 @@ MATE Desktop GSchemas.
 %package devel
 Summary:        MATE module API library development files
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          Development/Libraries/Other
 Requires:       %{soname}-%{sover} = %{version}
 
 %description devel
@@ -124,7 +116,7 @@ This package contains the library with common API for various MATE modules.
 NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -136,34 +128,9 @@ install -Dpm 0644 %{SOURCE1} \
 %suse_update_desktop_file mate-about
 %suse_update_desktop_file mate-color-select
 
-# Remove conflicting with GNOME files.
-rm -rf %{buildroot}%{_datadir}/help/*/fdl
-rm -rf %{buildroot}%{_datadir}/help/*/gpl
-rm -rf %{buildroot}%{_datadir}/help/*/lgpl
-
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
 
 %postun -n %{soname}-%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
-%post gschemas
-%glib2_gsettings_schema_post
-
-%postun gschemas
-%glib2_gsettings_schema_postun
-
-%post gschemas-branding-upstream
-%glib2_gsettings_schema_post
-
-%postun gschemas-branding-upstream
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
@@ -193,6 +160,7 @@ rm -rf %{buildroot}%{_datadir}/help/*/lgpl
 %files gschemas-branding-upstream
 
 %files devel
+%{_datadir}/gtk-doc/html/%{name}/
 %{_includedir}/%{name}-2.0/
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{name}-2.0.pc

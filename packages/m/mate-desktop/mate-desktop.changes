@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.1):
+  * Move remaining peripheral schemas to mate-settings-daemon.
+  * schema: Move mouse schemas to mate-settings-daemon.
+  * Replace deprecated gtk_css_provider_get_default.
+  * mate-bg-crossfade: Replace tabs with spaces/
+  * Make "rsvg-convert" optional.
+  * mate-colorsel: Avoid deprecated gtk_hscale_new.
+  * gettext needs .gmo files to install .mo locale.
+  * thumbnail: Remove obsolete mate_desktop_thumbnail_md5().
+  * thumbnail: Remove obsolete pixbuf helper.
+  * thumbnail: Use an array to store the thumbnailer's cmdline.
+  * thumbnail: Use g_strcmp0() and remove a NULL check.
+  * thumbnail: Simplify system includes.
+  * thumbnail: Fix typo in optional.
+  * thumbnail: Remove unused constant SECONDS_BETWEEN_STATS.
+  * thumbnail: Remove unused #define GDK_PIXBUF_ENABLE_BACKEND.
+  * thumbnail: Remove reference to MateIconFactory.
+  * thumbnail: Simplify init_thumbnailers_dirs().
+  * Deprecate mate_desktop_thumbnail_scale_down_pixbuf().
+  * thumbnailer: Always prefer the backend provided preview.
+  * thumbnail: Always use external gdk-pixbuf thumbnailer.
+  * thumbnail: Demote a log message from WARNING to DEBUG.
+  * thumbnail factory: Disconnect signal handlers in finalize.
+  * thumbnail: Move thumbnail generation/saving to a few helper
+    functions.
+  * thumbnail: Clean up path generation code.
+  * thumbnailer: Try harder to create a failed thumbnail.
+  * Add missing cases to switch statement.
+  * lib: Add thumbnail test application.
+  * Increase the size of thumbnails to 256.
+  * Avoid redundant redeclarations
+  * desktop file: Add missing hints for translators.
+  * Treat time_t as gint64 to convert from/to string.
+  * build: Introduce RELEASE_YEAR variable for mate-about dialogue.
+  * build: Show warning flags on configure summary.
+  * build: Use warning flags.
+  * autoconf: AC_PROG_CC was called before AX_CHECK_ENABLE_DEBUG.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Mon Feb 24 18:17:51 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Fix macro expanding issue
