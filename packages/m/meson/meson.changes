@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:58:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.2:
+  + Various cmake related issues fixed.
+  + modules/python: Do not error out if positional args are passed.
+- Drop meson-6614.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Feb 18 14:07:46 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Add 6642.patch - allow skip python2 unittests

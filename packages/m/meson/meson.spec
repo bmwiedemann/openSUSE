@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.53.1
+Version:        0.53.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -51,8 +51,6 @@ Patch4:         meson-fix-gcc48.patch
 Patch5:         meson-distutils.patch
 # PATCH-FIX-UPSTREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
 Patch6:         meson-testsuite-boost.patch
-# PATCH-FIX-UPSTREAM meson-6614.patch dimstar@opensuse.org -- cmake: Fix crash when no C++ compiler is not installed
-Patch7:         meson-6614.patch
 # PATCH-FIX-UPSTREAM 6642.patch mimi.vx@gmail.com -- Fix skip python2 unittests
 Patch8:         6642.patch
 # PATCH-FIX-OPENSUSE meson-testsuite-boost2.patch mimi.vx@gmail.com -- disable libboost_python tests
@@ -186,7 +184,6 @@ This package provides support for meson.build files in Vim.
 (cd "test cases/frameworks/1 boost"
 %patch6 -p0
 )
-%patch7 -p1
 %patch8 -p1
 %if 0%{?suse_version} >= 1550
 (cd "test cases/frameworks/1 boost"
