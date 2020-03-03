@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:04:19 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.22.2:
+  + Canonicalize support-warning property name.
+  + Add snap packaging.
+  + GladeCommand: ignore special child types placeholders in add
+    command.
+  + GladeGtkWindow: mark titlebar placeholder as special child
+    type.
+  + Fix bug "Glade deletes all widgets when adding a Scrolled
+    Window parent, but doesn't show it."
+
+-------------------------------------------------------------------
 Sat Jan 25 14:08:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

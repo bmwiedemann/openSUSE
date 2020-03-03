@@ -17,7 +17,7 @@
 
 
 Name:           glade
-Version:        3.22.1
+Version:        3.22.2
 Release:        0
 Summary:        User Interface Builder for GTK+ 3
 License:        GPL-2.0-or-later
