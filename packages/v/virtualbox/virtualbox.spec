@@ -453,8 +453,9 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %endif
 %patch133 -p1
 %patch134 -p1
+%if 0%{?suse_version} > 1500
 %patch135 -p1
-
+%endif
 # make VB UI background colors look sane again
 %patch999 -p1
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 18:38:46 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Kernel 5.6.0-rc3 introduced some fixes for the Y2038 problem. File "fixes_for_5.6"
+  has been modified to handle these changes.
+
+-------------------------------------------------------------------
 Sat Feb 15 02:32:06 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update patches for v5.5 to handle errors in vboxvideo. boo#1163337.

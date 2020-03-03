@@ -35,3 +35,72 @@ Index: VirtualBox-6.1.2/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
              if (pMemLnx->Core.pv)
              {
                  /** @todo fix protection. */
+Index: VirtualBox-6.1.2/include/iprt/time.h
+===================================================================
+--- VirtualBox-6.1.2.orig/include/iprt/time.h
++++ VirtualBox-6.1.2/include/iprt/time.h
+@@ -32,6 +32,24 @@
+ #include <iprt/cdefs.h>
+ #include <iprt/types.h>
+ #include <iprt/assertcompile.h>
++#ifdef __KERNEL__
++/* This header is used for both kernel- and user-space code. Beginning
++ * with v5.6.0-rc3 as part of the Y2038 conversion, several of the
++ * time handling macros were hidden. Thus, user- and kernel-space
++ * names are different.
++ */
++#include <linux/time_types.h>
++#include <linux/version.h>
++#include <linux/time64.h>
++#include <linux/ktime.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
++#define timespec __kernel_old_timespec
++#define ktime_get_ts ktime_get_ts64
++#undef time_t
++#define time_t ktime_t
++#define timeval __kernel_old_timeval
++#endif /* kernel version >= 5.6.0 */
++#endif /* __KERNEL__ */
+ 
+ RT_C_DECLS_BEGIN
+ 
+@@ -433,12 +451,6 @@ DECLINLINE(PRTTIMESPEC) RTTimeSpecSetTim
+ }
+ 
+ 
+-# ifdef _LINUX_TIME64_H
+-DECLINLINE(PRTTIMESPEC) RTTimeSpecSetTimespec64(PRTTIMESPEC pTime, const struct timespec64 *pTimeval)
+-{
+-    return RTTimeSpecAddNano(RTTimeSpecSetSeconds(pTime, pTimeval->tv_sec), pTimeval->tv_nsec);
+-}
+-# endif
+ #endif /* various ways of detecting struct timespec */
+ 
+ 
+Index: VirtualBox-6.1.2/src/VBox/Runtime/r0drv/linux/time-r0drv-linux.c
+===================================================================
+--- VirtualBox-6.1.2.orig/src/VBox/Runtime/r0drv/linux/time-r0drv-linux.c
++++ VirtualBox-6.1.2/src/VBox/Runtime/r0drv/linux/time-r0drv-linux.c
+@@ -35,6 +35,10 @@
+ #include <iprt/asm.h>
+ 
+ 
++DECLINLINE(PRTTIMESPEC) RTTimeSpecSetTimespec64(PRTTIMESPEC pTime, const struct timespec64 *pTimeval)
++{
++    return RTTimeSpecAddNano(RTTimeSpecSetSeconds(pTime, pTimeval->tv_sec), pTimeval->tv_nsec);
++}
+ 
+ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
+ {
+@@ -43,7 +47,11 @@ DECLINLINE(uint64_t) rtTimeGetSystemNano
+      * Use ktime_get_ts, this is also what clock_gettime(CLOCK_MONOTONIC,) is using.
+      */
+     uint64_t u64;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
++    struct timespec64 Ts;
++#else
+     struct timespec Ts;
++#endif
+     ktime_get_ts(&Ts);
+     u64 = Ts.tv_sec * RT_NS_1SEC_64 + Ts.tv_nsec;
+     return u64;
