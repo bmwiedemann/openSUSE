@@ -1,7 +1,7 @@
 #
 # spec file for package mate-power-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,26 @@
 #
 
 
-%define _version 1.22
+%define _version 1.24
 Name:           mate-power-manager
-Version:        1.22.1
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop UPower policy management
 License:        GPL-2.0-only
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE mate-power-manager-gtk-3.20.patch -- Restore GLib 2.48 and GTK+ 3.20 support.
-Patch0:         mate-power-manager-gtk-3.20.patch
+# PATCH-FEATURE-OPENSUSE mate-power-manager-upower-0.99.7.patch -- Restore UPower 0.99.7 support.
+Patch0:         mate-power-manager-upower-0.99.7.patch
 BuildRequires:  fdupes
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
+BuildRequires:  polkit-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnome-keyring-1)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(libnotify)
@@ -65,24 +65,12 @@ responds with user-configurable actions.
 NOCONFIGURE=1 mate-autogen
 %configure \
   --libexecdir=%{_libexecdir}/%{name}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}/
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING

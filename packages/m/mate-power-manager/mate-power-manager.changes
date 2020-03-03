@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.22.1):
+  * Use --without-keyring for make distcheck.
+  * brightness-applet: Use GdkSeat operations.
+  * Set compiler debug flags using MATE_DEBUG_CHECK.
+  * Use WARN_CFLAGS which are only set with
+    --enable-compiler-warnings.
+  * Drop obsolete version checks for upower.
+  * Require upower-0.99.8.
+  * Use up_client_get_devices2().
+  * Use gresources for gpm-prefs.ui and gpm-statistics.ui.
+  * Avoid g_type_class_add_private.
+  * Simplify the installation process of the icons.
+  * Remove unused UI file.
+  * prefs: Fix mnemonic relationships.
+  * gpm-upower: Fix some build warnings.
+  * Add scroll interface tabs with mouse wheel.
+  * Migrate from intltool to gettext.
+  * icons: Add higher resolution icons.
+  * Aoid redundant redeclarations.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Remove mate-power-manager-gtk-3.20.patch.
+- Add mate-power-manager-upower-0.99.7.patch: Restore UPower 0.99.7
+  support.
+
+-------------------------------------------------------------------
 Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.22.1:
