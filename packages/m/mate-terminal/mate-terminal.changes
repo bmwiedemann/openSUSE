@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * configure: Fix a typo in versioning.
+  * terminal-window: Avoid making new GSettings in every new window.
+  * terminal-window: Fix a memory leak.
+  * terminal-screen: Fix a warning when closing a window.
+  * Avoid NULL pointer dereference in terminal_screen_child_exited.
+  * Migrate from intltool to gettext.
+  * Set debug & warning flags using new mate-common macros.
+  * build: Use ENABLE_SKEY for setting AC_CONFIG_FILES and
+    mate_terminal_LDADD.
+  * terminal-app: Remove -Wdiscarded-qualifiers warnings.
+  * terminal-window: Suppress GtkAction warnings.
+  * terminal-tabs-menu: Suppress GtkAction warnings.
+  * Avoid g_type_class_add_private.
+  * terminal-window: "utilities-terminal" icon with
+    "Open Terminal".
+  * terminal-encoding: Use settings_global variable.
+  * Fix build using the -fno-common flag.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 12:39:42 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:
