@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 14:01:12 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.1
+  * This release primarily addresses upcoming changes in
+    SameSite Set-Cookie behaviour in Chrome and Firefox
+
+-------------------------------------------------------------------
 Wed Oct 30 10:54:48 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to version 2.4.0.3

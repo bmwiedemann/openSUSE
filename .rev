@@ -72,4 +72,12 @@ Bugfixes
     (private mode); fixes #447 #441 (forwarded request 744137 from kstreitova)</comment>
     <requestid>744159</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a78f80808b9934975ae4c5f8a07ad8a</srcmd5>
+    <version>2.4.1</version>
+    <time>1583227061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780843</requestid>
+  </revision>
 </revisionlist>
