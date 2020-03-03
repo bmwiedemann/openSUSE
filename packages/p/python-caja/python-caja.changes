@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * configure: Get quieter output from make.
+  * Get rid of commons.
+  * Migrate from intltool to gettext.
+  * Drop Python 2 support.
+  * Make configure.ac cross compile safe.
+  * Remove trailing whitespaces.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Build for Python 3.
+- Rename the package back to python-caja as the library path is
+  undifferentiated.
+
+-------------------------------------------------------------------
 Thu Jul 18 13:53:42 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

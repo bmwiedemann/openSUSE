@@ -1,7 +1,7 @@
 #
 # spec file for package python-caja
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,71 +17,42 @@
 
 
 %define _name   caja-python
-%define _version 1.23
+%define _version 1.24
 Name:           python-caja
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Python bindings for Caja
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
 BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:  pkgconfig(python)
-%if 0%{?suse_version} < 1500
-Requires:       python-gobject
+BuildRequires:  pkgconfig(python3)
+Requires:       python3-gobject
 # We can't have automatic typelib() Requires here: it's C code: PyImport_ImportModule("gi.repository.Mate").
 Requires:       typelib(Caja)
 Recommends:     %{name}-lang
+# python2-caja was last used in openSUSE Leap 15.2.
+Obsoletes:      python2-caja < %{version}
 # python-mate-file-manager was last used in openSUSE 13.1.
 Provides:       python-mate-file-manager = %{version}
 Obsoletes:      python-mate-file-manager < %{version}
-%endif
 
 %description
 This package contains bindings to write Caja extensions with Python.
 It allows writing menu, property pages and column providers
 extensions, so that Caja functionality can be easily extended.
 
-%if 0%{?suse_version} >= 1500
-%package -n python2-caja
-Summary:        Python bindings for Caja
-Group:          System/GUI/Other
-Requires:       python2-gobject
-# We can't have automatic typelib() Requires here: it's C code: PyImport_ImportModule("gi.repository.Mate").
-Requires:       typelib(Caja)
-Recommends:     %{name}-lang
-Provides:       %{name} = %{version}
-# python-mate-file-manager was last used in openSUSE 13.1.
-Provides:       python-mate-file-manager = %{version}
-Obsoletes:      python-mate-file-manager < %{version}
-# python-caja was last used in openSUSE Leap 42.3.
-Provides:       python-caja = %{version}
-Obsoletes:      python-caja < %{version}
-
-%description -n python2-caja
-This package contains bindings to write Caja extensions with Python.
-It allows writing menu, property pages and column providers
-extensions, so that Caja functionality can be easily extended.
-%endif
-
 %lang_package
 
 %package devel
 Summary:        Python bindings for Caja - Development Files
+Requires:       %{name} = %{version}
 # python-mate-file-manager-devel was last used in openSUSE 13.1.
-Group:          Development/Libraries/Other
 Provides:       python-mate-file-manager-devel = %{version}
 Obsoletes:      python-mate-file-manager-devel < %{version}
-%if 0%{?suse_version} >= 1500
-Requires:       python2-caja = %{version}
-%else
-Requires:       %{name} = %{version}
-%endif
 
 %description devel
 Development files needed for writing Caja Python extensions.
@@ -95,10 +66,10 @@ extensions, so that Caja functionality can be easily extended.
 
 %build
 NOCONFIGURE=1 mate-autogen
-export PYTHON=python2
+export PYTHON=python3
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -111,11 +82,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_docdir}/
 mv -f %{buildroot}%{_datadir}/doc/%{name}/ %{buildroot}%{_docdir}/%{name}/
 
-%if 0%{?suse_version} >= 1500
-%files -n python2-caja
-%else
 %files
-%endif
 %license COPYING
 %doc AUTHORS NEWS README
 %doc %{_docdir}/%{name}/
@@ -123,9 +90,9 @@ mv -f %{buildroot}%{_datadir}/doc/%{name}/ %{buildroot}%{_docdir}/%{name}/
 %{_datadir}/caja/extensions/lib%{_name}.caja-extension
 %{_datadir}/%{_name}/
 
+%files lang -f %{name}.lang
+
 %files devel
 %{_libdir}/pkgconfig/%{_name}.pc
-
-%files lang -f %{name}.lang
 
 %changelog

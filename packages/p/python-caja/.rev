@@ -127,4 +127,12 @@ Please forward to 13.2</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>719973</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ab1e21f4e38c7e764fc9a72ccf2fb6bb</srcmd5>
+    <version>1.24.0</version>
+    <time>1583227037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0.</comment>
+    <requestid>780547</requestid>
+  </revision>
 </revisionlist>
