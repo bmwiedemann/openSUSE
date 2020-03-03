@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 26 11:59:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.43
+  * Recover from a lost sound device, do not crash of no sound
+    device is available. This fixes several problem with
+    DisplayPort and HDMI audio.
+  * Several small game logic fixes. This includes a fix for a
+    potential progress blocker in 'The Torture Chambers' introduced
+    in the last release.
+  * Add the 'gl1_particle_square' cvar, it forces square particles
+    in the GL1 renderer.
+  * The software renderer is no longer experimental.
+  * Add an option to configure the gun Z offset in the software
+    renderer.
+
+-------------------------------------------------------------------
 Sun Dec  1 09:10:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.42

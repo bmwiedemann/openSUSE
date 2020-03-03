@@ -1,7 +1,7 @@
 #
 # spec file for package yamagi-quake2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           yamagi-quake2
-Version:        7.42
+Version:        7.43
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Shoot
-Url:            http://www.yamagi.org/quake2/
+URL:            http://www.yamagi.org/quake2/
 Source:         http://deponie.yamagi.org/quake2/quake2-%{version}.tar.xz
 Source99:       %{name}.changes
 Source100:      yamagi-quake2.appdata.xml
