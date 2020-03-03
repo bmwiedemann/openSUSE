@@ -1,7 +1,7 @@
 #
 # spec file for package dc3dd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +75,7 @@ chmod +x configure
 %configure --enable-hpadco \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -89,5 +89,6 @@ make %{?_smp_mflags}
 %{_mandir}/man1/dc3dd.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%{_datadir}/locale
 
 %changelog
