@@ -16,9 +16,9 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           caja-extensions
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Set of extensions for Caja, the MATE file manager
 License:        GPL-2.0-or-later
@@ -26,21 +26,18 @@ URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE caja-extensions_use-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of a direct gksu call in caja-gksu.
 Patch0:         %{name}_use-xdgsu.patch
-# PATCH-FIX-OPENSUSE enable-gupnp-1.2.patch -- reported upstream as https://github.com/mate-desktop/caja-extensions/issues/52
-Patch1:         enable-gupnp-1.2.patch
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
+BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  pkgconfig(gupnp-1.2)
 %else
 BuildRequires:  pkgconfig(gupnp-1.0)
 %endif
-BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
-BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 
 %description
 Set of extensions for Caja, the MATE file manager.
@@ -204,6 +201,7 @@ Recommends:     caja-extension-xattr-tags-lang
 Caja-xattr-tags allows one to see tags stored on xattrs.
 
 %package common-lang
+# FIXME: consider using %%lang_package macro
 Summary:        Languages for Caja extensions
 Provides:       caja-extension-image-converter-lang = %{version}
 Provides:       caja-extension-open-terminal-lang = %{version}
@@ -217,11 +215,7 @@ BuildArch:      noarch
 Provides common translations shared by Caja file manager extensions.
 
 %prep
-%setup -q
-%patch0 -p1
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%patch1
-%endif
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -234,7 +228,7 @@ NOCONFIGURE=1 mate-autogen
   --enable-share         \
   --enable-sendto        \
   --enable-xattr-tags
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -243,20 +237,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %if !0%{?is_opensuse}
 rm %{buildroot}%{_libdir}/caja-sendto/plugins/libnstgajim.so
-%endif
-
-%if 0%{?suse_version} < 1500
-%post -n caja-extension-open-terminal
-%glib2_gsettings_schema_post
-
-%postun -n caja-extension-open-terminal
-%glib2_gsettings_schema_postun
-
-%post -n caja-extension-sendto
-%glib2_gsettings_schema_post
-
-%postun -n caja-extension-sendto
-%glib2_gsettings_schema_postun
 %endif
 
 %files -n caja-extension-gksu
@@ -284,7 +264,6 @@ rm %{buildroot}%{_libdir}/caja-sendto/plugins/libnstgajim.so
 %license COPYING
 %doc AUTHORS NEWS README
 %{_bindir}/caja-sendto
-%{_datadir}/caja-extensions/caja-sendto.ui
 %{_datadir}/caja/extensions/libcaja-sendto.caja-extension
 %{_datadir}/glib-2.0/schemas/org.mate.Caja.Sendto.gschema.xml
 %{_libdir}/caja/extensions-2.0/libcaja-sendto.so
