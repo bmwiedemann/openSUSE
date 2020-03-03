@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:52:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.9.7:
+* GH#381: Make notarization possible again on OS X when using wheels.
+    Thanks to Colin Atkinson.
+  * RSA OAEP decryption was not verifying that all ``PS`` bytes are zero.
+  * GH#372: fixed memory leak for operations that use memoryviews when `cffi` is not installed.
+  * Fixed wrong ASN.1 OID for HMAC-SHA512 in PBE2.
+  * GH#341: Prevent ``key_to_english`` from creating invalid data when fed with
+    keys of length not multiple of 8. Thanks to vstoykovbg.
+  * GH#347: Fix blocking RSA signing/decryption when key has very small factor.
+    Thanks to Martijn Pieters.
+  * GH#308: Align stack of functions using SSE2 intrinsics to avoid crashes,
+    when compiled with gcc on 32-bit x86 platforms.
+
+-------------------------------------------------------------------
 Mon Nov 11 11:21:53 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Use the pycryptodome tarball
