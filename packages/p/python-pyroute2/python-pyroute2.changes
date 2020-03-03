@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 28 23:04:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.9:
+  * ethtool: fix module setup
+  * ethtool: initial support <https://github.com/svinota/pyroute2/pull/675>
+  * tc: multimatch support <https://github.com/svinota/pyroute2/pull/674>
+  * tc: meta support <https://github.com/svinota/pyroute2/pull/671>
+  * tc: cake: add stats_app decoder <https://github.com/svinota/pyroute2/pull/662>
+  * conntrack: filter <https://github.com/svinota/pyroute2/pull/660>
+  * ndb.objects.interface: reload after setns
+  * ndb.objects.route: create() dst syntax
+  * ndb.objects.route: 'default' syntax
+  * wireguard: basic testing
+
+-------------------------------------------------------------------
 Sat Feb  8 19:40:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.7:

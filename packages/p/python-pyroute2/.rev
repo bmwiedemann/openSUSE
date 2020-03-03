@@ -118,4 +118,22 @@
     <comment></comment>
     <requestid>772462</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eba078828e4ca40b2d86860fb668151a</srcmd5>
+    <version>0.5.9</version>
+    <time>1583226941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.9:
+  * ethtool: fix module setup
+  * ethtool: initial support &lt;https://github.com/svinota/pyroute2/pull/675&gt;
+  * tc: multimatch support &lt;https://github.com/svinota/pyroute2/pull/674&gt;
+  * tc: meta support &lt;https://github.com/svinota/pyroute2/pull/671&gt;
+  * tc: cake: add stats_app decoder &lt;https://github.com/svinota/pyroute2/pull/662&gt;
+  * conntrack: filter &lt;https://github.com/svinota/pyroute2/pull/660&gt;
+  * ndb.objects.interface: reload after setns
+  * ndb.objects.route: create() dst syntax
+  * ndb.objects.route: 'default' syntax
+  * wireguard: basic testing</comment>
+    <requestid>780415</requestid>
+  </revision>
 </revisionlist>
