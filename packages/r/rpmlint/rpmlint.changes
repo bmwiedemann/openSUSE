@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 20 14:05:50 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
+
+- config: enable MixedFileOwnerships lint
+
+-------------------------------------------------------------------
+Thu Feb 20 10:57:35 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- config: add 'mktex' to StandardUsers (boo#1159740)
+
+-------------------------------------------------------------------
 Mon Feb 17 13:39:31 UTC 2020 - matthias.gerstner@suse.com
 
 - whitelist new mariadb pam module "pam_user_map.so" (bsc#1163362)

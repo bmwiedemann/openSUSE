@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 14:28:17 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 84.87+git20200221.3ea152b:
+  * pam1 test: adjust reference output to newly added badness in rpmlint-Factory
+
+-------------------------------------------------------------------
 Thu Feb 06 10:06:37 UTC 2020 - malte.kraus@suse.com
 
 - Update to version master:

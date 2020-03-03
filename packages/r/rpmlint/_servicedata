@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">https://github.com/openSUSE/rpmlint-tests.git</param>
-          <param name="changesrevision">c45a69ba2c917d23ef888b044bc8114ad3611f4d</param></service><service name="tar_scm">
+          <param name="changesrevision">3ea152ba41f080462891f99711fee3712c56c8c7</param></service><service name="tar_scm">
             <param name="url">https://github.com/openSUSE/rpmlint-checks.git</param>
           <param name="changesrevision">d26befa3c953dd4f96265bd58c6dad472a6ea512</param></service></servicedata>

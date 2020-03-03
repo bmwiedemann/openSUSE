@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-tests
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ BuildRequires:  rpmlint-Factory-strict
 BuildRequires:  rpmlint-mini
 
 Name:           rpmlint-tests
-Version:        84.87+git20200206.7e2b64f
+Version:        84.87+git20200221.3ea152b
 Release:        0
 Summary:        rpmlint regression tests
 License:        SUSE-Public-Domain

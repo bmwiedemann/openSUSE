@@ -2953,4 +2953,17 @@ will self heal once rpmlint-mini is rebuild
     <comment></comment>
     <requestid>774968</requestid>
   </revision>
+  <revision rev="331" vrev="20">
+    <srcmd5>41c21fdd75851e74ee9945aac1b3afa0</srcmd5>
+    <version>1.11</version>
+    <time>1583226833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200221.3ea152b:
+  * pam1 test: adjust reference output to newly added badness in rpmlint-Factory
+
+- config: enable MixedFileOwnerships lint
+
+- config: add 'mktex' to StandardUsers (boo#1159740)</comment>
+    <requestid>780341</requestid>
+  </revision>
 </revisionlist>

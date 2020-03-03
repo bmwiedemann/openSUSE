@@ -41,6 +41,7 @@ addCheck("CheckSystemdInstall")
 addCheck("TmpFilesCheck")
 addCheck("CheckSysVinitOnSystemd")
 addCheck("CheckCronJobs")
+addCheck("MixedFileOwnerships")
 
 # stuff autobuild takes care about
 addFilter('.*invalid-version.*')
@@ -375,6 +376,7 @@ setOption('StandardUsers', (
     'memcached',
     'messagebus',
     'minetest',
+    'mktex',
     'mpd',
     'mumble-server',
     'murano',
