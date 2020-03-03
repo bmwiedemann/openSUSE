@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.22.1):
+  * Avoid g_type_class_add_private.
+  * Use the same variable name for return value than elsewhere.
+  * Remove cppcheck warnings with better variables scope.
+  * Remove unused variable declaration in applet.c and task-list.c.
+  * Fix an unseen compilation warning.
+  * Add an option to disable the bold face of the window title in
+    applet.
+  * Make the "show-home-title" feature work again.
+  * Remove a bunch of compilation warning.
+  * Refactor the on_active_window_changed function.
+  * Remove a runtime error due to event->time sending buggy values.
+  * Change preference label for the window picker applet, and add a
+    tooltip.
+  * Add MSGID_BUGS_ADDRESS url.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Remove mate-netbook-gtk-3.20.patch.
+
+-------------------------------------------------------------------
 Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.22.1:
