@@ -1,7 +1,7 @@
 #
 # spec file for package mate-sensors-applet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define soname  libmate-sensors-applet-plugin
 %define sover   0
-%define _version 1.23
+%define _version 1.24
 Name:           mate-sensors-applet
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop panel applet to display sensor readings
 License:        GPL-2.0-or-later
@@ -32,15 +32,14 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool
 BuildRequires:  libsensors4-devel
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libatasmart)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(libnotify)
@@ -100,7 +99,7 @@ NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static                    \
   --libexecdir=%{_libexecdir}/%{name}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -111,14 +110,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post -n mate-applet-sensors
-%icon_theme_cache_post
-
-%postun -n mate-applet-sensors
-%icon_theme_cache_postun
-%endif
 
 %files -n mate-applet-sensors
 %license COPYING
