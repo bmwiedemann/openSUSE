@@ -1,7 +1,7 @@
 #
 # spec file for package marco
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 %define soname  libmarco-private
-%define sover   1
-%define _version 1.23
+%define sover   2
+%define _version 1.24
 Name:           marco
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        MATE window manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE marco-glib-2.54.patch -- Restore GLib 2.54 support.
+Patch0:         %{name}-glib-2.54.patch
 BuildRequires:  fdupes
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  zenity
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
@@ -59,7 +59,6 @@ developed mainly for the MATE Desktop.
 
 %package -n %{soname}%{sover}
 Summary:        MATE window manager shared libraries
-Group:          System/GUI/Other
 
 %description -n %{soname}%{sover}
 Marco is a small window manager, using GTK+ to do everything. It is
@@ -68,7 +67,6 @@ developed mainly for the MATE Desktop.
 %package themes
 Summary:        MATE window manager themes
 # mate-window-manager-themes was last used in openSUSE 13.1.
-Group:          System/GUI/Other
 Provides:       mate-window-manager-themes = %{version}
 Obsoletes:      mate-window-manager-themes < %{version}
 BuildArch:      noarch
@@ -79,7 +77,6 @@ developed mainly for the MATE Desktop.
 
 %package devel
 Summary:        MATE window manager development files
-Group:          Development/Libraries/Other
 Requires:       %{soname}%{sover} = %{version}
 # mate-window-manager-devel was last used in openSUSE 13.1.
 Provides:       mate-window-manager-devel = %{version}
@@ -92,7 +89,7 @@ developed mainly for the MATE Desktop.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -101,7 +98,7 @@ NOCONFIGURE=1 mate-autogen
   --disable-static                    \
   --disable-scrollkeeper              \
   --disable-schemas-install
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -115,16 +112,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
@@ -150,16 +137,21 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/mate-control-center/keybindings/
 
 %files themes
+%{_datadir}/themes/Atlanta/
 %{_datadir}/themes/ClearlooksRe/
 %{_datadir}/themes/Dopple-Left/
 %{_datadir}/themes/Dopple/
 %{_datadir}/themes/DustBlue/
+%{_datadir}/themes/eOS/
+%{_datadir}/themes/Esco/
+%{_datadir}/themes/Gorilla/
+%{_datadir}/themes/Motif/
+%{_datadir}/themes/Raleigh/
 %{_datadir}/themes/Spidey-Left/
 %{_datadir}/themes/Spidey/
 %{_datadir}/themes/Splint-Left/
 %{_datadir}/themes/Splint/
 %{_datadir}/themes/WinMe/
-%{_datadir}/themes/eOS/
 
 %files devel
 %{_includedir}/%{name}-1/
