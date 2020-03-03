@@ -1,7 +1,7 @@
 #
 # spec file for package mate-user-guide
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define _version 1.23
+%define _version 1.24
 Name:           mate-user-guide
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        User guide for the MATE desktop
 License:        GFDL-1.1-or-later
-Group:          Documentation/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
@@ -45,7 +44,7 @@ MATE Desktop Environment with general MATE applicability.
 %build
 NOCONFIGURE=1 mate-autogen
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0:
+  * Change language to refer to Classic Menu and Compact Menu.
+  * Sets the required version for gettext (0.19.8).
+  * Migrate from intltool to gettext.
+  * Update transaltions.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 13:04:02 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.1 (changes since 1.22.1):
