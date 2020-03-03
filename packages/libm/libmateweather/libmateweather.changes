@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0:
+  * build: Show compiler flags on configuration summary.
+  * Use the same translator comments for xgettext.
+  * Migrate from intltool to gettext.
+  * Regen po files for po-locations.
+  * Locations: Add Lleida–Alguaire Airport.
+  * Avoid deprecated soup_session_async_new.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Jul 17 14:12:05 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

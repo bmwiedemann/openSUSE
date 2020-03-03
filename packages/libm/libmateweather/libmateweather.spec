@@ -1,7 +1,7 @@
 #
 # spec file for package libmateweather
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 %define sover   1
-%define _version 1.23
+%define _version 1.24
 Name:           libmateweather
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Weather
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  timezone >= 2016g
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 %glib2_gsettings_schema_requires
@@ -45,7 +43,6 @@ online services for numerous locations.
 
 %package -n mateweather-common
 Summary:        MATE Weather common files
-Group:          System/GUI/Other
 BuildArch:      noarch
 
 %description -n mateweather-common
@@ -54,7 +51,6 @@ online services for numerous locations.
 
 %package devel
 Summary:        MATE Weather development files
-Group:          Development/Libraries/Other
 Requires:       %{name}%{sover} = %{version}
 Requires:       mateweather-common = %{version}
 
@@ -64,7 +60,6 @@ online services for numerous locations.
 
 %package -n %{name}%{sover}
 Summary:        MATE Weather shared libraries
-Group:          System/Libraries
 Requires:       mateweather-common
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
@@ -82,22 +77,12 @@ NOCONFIGURE=1 mate-autogen
 %configure \
   --enable-locations-compression \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
-
-%if 0%{?suse_version} < 1500
-%post -n mateweather-common
-%icon_theme_cache_post mate
-%glib2_gsettings_schema_post
-
-%postun -n mateweather-common
-%icon_theme_cache_postun mate
-%glib2_gsettings_schema_postun
-%endif
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 
