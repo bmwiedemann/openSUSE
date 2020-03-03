@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 06:30:30 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 1.3.3
+  * bump nuget version
+
+-------------------------------------------------------------------
 Tue May 2 00:00:00 UTC 2017 - fwdsbs.to.11df@xoxy.net
 
 - add fix-delay-sign.patch: check that dll installed to GAC is delay-signed and perform full-sign if so.

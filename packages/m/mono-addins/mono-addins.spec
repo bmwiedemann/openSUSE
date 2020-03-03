@@ -1,7 +1,7 @@
 #
 # spec file for package mono-addins
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mono-addins
-Version:        1.3
+Version:        1.3.3
 Release:        0
 Summary:        Mono Addins Framework
 License:        MIT
 Group:          Development/Languages/Mono
-Url:            https://github.com/mono/mono-addins
+URL:            https://github.com/mono/mono-addins
 Source:         https://github.com/mono/mono-addins/archive/%{name}-%{version}.tar.gz
 Patch0:         fix-delay-sign.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk-sharp-2.0)
 BuildRequires:  pkgconfig(mono)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -69,7 +68,7 @@ This package contains the pkgconfig files.
 %build
 ./autogen.sh
 %configure --libdir=%{_prefix}/lib
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} GACUTIL_FLAGS="/package mono-addins /root %{buildroot}%{_prefix}/lib"
@@ -77,7 +76,6 @@ mkdir -p %{buildroot}%{_datadir}/pkgconfig
 mv %{buildroot}%{_libexecdir}/pkgconfig/*.pc %{buildroot}%{_datadir}/pkgconfig
 
 %files
-%defattr(-, root, root)
 %{_bindir}/mautil
 %{_libexecdir}/mono/gac/*Mono.Addins
 %{_libexecdir}/mono/gac/*Mono.Addins.Cecil*
@@ -89,15 +87,13 @@ mv %{buildroot}%{_libexecdir}/pkgconfig/*.pc %{buildroot}%{_datadir}/pkgconfig
 %{_libexecdir}/mono/mono-addins/Mono.Addins.Cecil*
 %{_libexecdir}/mono/mono-addins/Mono.Addins.Gui*
 %{_libexecdir}/mono/mono-addins/Mono.Addins.Setup*
-%{_mandir}/man1/mautil.1%{ext_man}
+%{_mandir}/man1/mautil.1%{?ext_man}
 
 %files msbuild
-%defattr(-,root,root)
 %{_libexecdir}/mono/gac/*Mono.Addins.MSBuild*
 %{_libexecdir}/mono/mono-addins/*MSBuild*
 
 %files devel
-%defattr(-,root,root)
 %{_datadir}/pkgconfig/mono-addins.pc
 %{_datadir}/pkgconfig/mono-addins-gui.pc
 %{_datadir}/pkgconfig/mono-addins-setup.pc
