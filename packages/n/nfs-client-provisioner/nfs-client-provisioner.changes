@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 15:38:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust yaml files
+  - use openSUSE container images
+  - add kustomization.yaml file
+
+-------------------------------------------------------------------
 Fri Feb 21 17:50:20 UTC 2020 - kukuk@suse.com
 
 - Update to version 2.3.0+git20200220.a14bfd72:

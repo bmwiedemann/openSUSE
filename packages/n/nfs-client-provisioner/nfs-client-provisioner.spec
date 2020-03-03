@@ -1,5 +1,5 @@
 #
-# spec file for package openvino
+# spec file for package nfs-client-provisioner
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -20,11 +20,11 @@ Name:           nfs-client-provisioner
 Version:        2.3.0+git20200220.a14bfd72
 Release:        0
 Summary:        Automatic provisioner using an existing and already configured NFS server
-URL:            https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client
 License:        Apache-2.0
+URL:            https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client
 Source0:        nfs-client-provisioner-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) = 1.13
 
 %description
 nfs-client is an automatic provisioner that uses an existing and already configured NFS server to support dynamic provisioning of Kubernetes Persistent Volumes via Persistent Volume Claims. Persistent volumes are provisioned as ${namespace}-${pvcName}-${pvName}.
@@ -43,10 +43,16 @@ Yaml files to deploy the nfs-client-provisioner. nfs-client is an automatic prov
 go build -mod vendor -buildmode=pie -o nfs-client-provisioner ./cmd/nfs-client-provisioner
 
 %install
-mkdir -p %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner
 mkdir -p %{buildroot}%{_sbindir}
-cp -av deploy/*.yaml %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner
 cp -av nfs-client-provisioner %{buildroot}%{_sbindir}/
+mkdir -p %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/test
+cp -av deploy/*.yaml %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner
+mv %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/test-*.yaml %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/test/
+rm %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/deployment-arm.yaml
+sed -i -e 's|fuseim.pri/ifs|opensuse.org/nfs|g' %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/*.yaml
+sed -i -e 's|quay.io/external_storage/nfs-client-provisioner:latest|registry.opensuse.org/kubic/nfs-client-provisioner:latest|g' %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/deployment.yaml
+sed -i -e 's|gcr.io/google_containers/busybox:.*|registry.opensuse.org/opensuse/busybox:latest|g' %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/test/test-pod.yaml
+echo -e "resources:\n- class.yaml\n- deployment.yaml\n- rbac.yaml" > %{buildroot}%{_datadir}/k8s-yaml/nfs-client-provisioner/kustomization.yaml
 
 %files
 %{_sbindir}/nfs-client-provisioner
@@ -54,6 +60,8 @@ cp -av nfs-client-provisioner %{buildroot}%{_sbindir}/
 %files k8s-yaml
 %dir %{_datadir}/k8s-yaml
 %dir %{_datadir}/k8s-yaml/nfs-client-provisioner
+%dir %{_datadir}/k8s-yaml/nfs-client-provisioner/test
 %{_datadir}/k8s-yaml/nfs-client-provisioner/*.yaml
+%{_datadir}/k8s-yaml/nfs-client-provisioner/test/*.yaml
 
 %changelog
