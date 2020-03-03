@@ -1,7 +1,7 @@
 #
 # spec file for package php7-pear
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,6 +97,13 @@ php -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 
 	--man      %{_mandir} \
 	--metadata %{metadir} \
 	--www      %{peardir}/htdocs
+
+php -r '$filemap = unserialize(file_get_contents("%{buildroot}%{metadir}/.filemap"));
+	ksort($filemap);
+	foreach($filemap as &$value) {
+		ksort($value);
+	}
+	file_put_contents("%{buildroot}%{metadir}/.filemap", serialize($filemap));'
 
 pushd %{buildroot}%{peardir}
 patch -p1 < %{PATCH0}
