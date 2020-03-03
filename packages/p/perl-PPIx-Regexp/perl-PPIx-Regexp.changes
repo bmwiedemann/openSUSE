@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Feb 28 03:11:12 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.070
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.070		2020-02-27	T. R. Wyant
+      Add index_locations option to PPIx::Regexp->new(). This defaults to
+      true if the regexp is specified as a PPI::Element object. The
+      locations are consistent with the containing PPI::Document.
+  
+      Add methods location(), column_number(), line_number(),
+      logical_filename(), logical_line_number(), and
+      visual_column_number() to PPIx::Regexp::Element. All return undef if
+      the locations could not be determined.
+  
+      Add method statement() to PPIx::Regexp::Element. This returns the
+      PPI statement containing the regexp element, or nothing if none.
+  
+      Add method is_matcher() to PPIx::Regexp::Element. This classifies
+      objects as to whether they actually match something in the target
+      string. Possible returns are true (they do), false but defined (they
+      do not) and undef (no clue).
+  
+      Add methods first_token() and last_token() to PPIx::Regexp::Node.
+  
+      Add methods next_token() and previous_token() to
+      PPIx::Regexp::Element.
+
+-------------------------------------------------------------------
 Sun Feb  9 03:09:13 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.069
