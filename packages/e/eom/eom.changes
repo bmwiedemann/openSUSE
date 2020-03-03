@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Add translator hint.
+  * Migrate from intltool to gettext.
+  * Add missing format specifier for ngettext.
+  * egg_editable_toolbar: Avoid g_type_class_add_private.
+  * egg-toolbar-editor: Avoid g_type_class_add_private.
+  * egg-toolbars-model: Avoid g_type_class_add_private.
+  * remove warning: "HAVE_EXIF" is not defined, evaluates to 0.
+  * remove warnings: Incorrect usage of abs()
+  * remove warnings: Redundant redeclaration.
+  * Suppress GtkAction warnings.
+  * Allow colour correcting images with alpha channel.
+  * EomMetadataReaderPng: Use built-in SRGB profile for matching
+    cHRM/gAMA.
+  * EomMetadataReaderPNG: Only build profile from cHRM if gAMA is
+    present.
+  * Assume sRGB if no display profile is set
+  * EomImage: Check GdkPixbuf for an ICC profile before falling
+    back to sRGB.
+  * Assume sRGB when image doesn't have an ICC profile attached.
+  * Remove trailing whitespaces.
+  * thumbnail: Remove use of mate-desktop-thumbnail helper.
+  * Enable wayland support.
+  * EomPrintPreview: Fix preview thumbnail on HiDPI displays.
+  * thumbnailer: Add --with-gdk-pixbuf-thumbnailer option.
+  * Add eom-thumbnailer for webp files.
+  * autoconf: AC_PROG_CC was called before AX_CHECK_ENABLE_DEBUG.
+  * Fix preprocessing warning for file: src/eom-window.c.
+  * Fix preprocessing warning for file: src/eom-print.c.
+  * Update MIME types supported by commonly used pixbuf-loaders.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Thu Jul 18 11:22:45 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.23.0:

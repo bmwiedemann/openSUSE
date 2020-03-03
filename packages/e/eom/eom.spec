@@ -1,7 +1,7 @@
 #
 # spec file for package eom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,26 @@
 
 
 %define typelib typelib-1_0-Eom-1_0
-%define _version 1.23
+%define _version 1.24
 Name:           eom
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
-# set to _version when mate-common has an equal release
-BuildRequires:  mate-common >= 1.22
+BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
@@ -64,7 +62,6 @@ simplicity and standards compliance.
 
 %package devel
 Summary:        MATE Desktop graphics viewer development files
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 # mate-image-viewer-devel was last used in openSUSE 13.1.
 Provides:       mate-image-viewer-devel = %{version}
@@ -78,7 +75,6 @@ simplicity and standards compliance.
 
 %package -n %{typelib}
 Summary:        MATE Desktop graphics viewer typelib
-Group:          System/Libraries
 
 %description -n %{typelib}
 The Eye of MATE is a simple graphics viewer for the MATE Desktop
@@ -93,25 +89,13 @@ simplicity and standards compliance.
 NOCONFIGURE=1 mate-autogen
 %configure \
   --libexecdir=%{_libexecdir}/%{name}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file %{name}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
