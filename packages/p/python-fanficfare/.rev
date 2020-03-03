@@ -204,4 +204,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>767871</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3742baf3038017cf23b1b225a5efb62a</srcmd5>
+    <version>3.16.0</version>
+    <time>1583227130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 3.16.0:
+  - New Site: archive.hpfanfictalk.com (eFiction non-base)
+  - Reduce debug output in base_xenforoforum_adapter.
+  - Add replace_xbr_with_hr feature.
+  - Update translations.
+  - Fix for adapter_storiesonlinenet requiring 'v' from
+    login.php.
+  - Add more domains for AO3.
+  - Use storyUrl from metadata for checking library, for
+    those sites that make canonical storyUrl difficult, like
+    adapter_literotica. Closes #461. Plugin only.
+  - Optional EPUB 3.0 output</comment>
+    <requestid>781034</requestid>
+  </revision>
 </revisionlist>
