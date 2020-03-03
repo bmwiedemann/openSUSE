@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 28 08:27:04 UTC 2020 - maurizio.galli@gmail.com
+
+- Update to version 4.14+20200228:
+  * Use more appropriate xdg location for xfce-mimeapps.list
+
+-------------------------------------------------------------------
+Fri Feb 28 07:34:09 UTC 2020 - maurizio.galli@gmail.com
+
+- Update to version 4.14+20200228:
+  * Use the correct notifyd theme name
+  * Rename defaults.list to xfce-mimeapps.list
+  * Make Greybird-geeko default theme of xfce4-notifyd
+  * Systray to use 16px icons
+
+-------------------------------------------------------------------
 Sat Jan 18 13:35:43 UTC 2020 - maurizio.galli@gmail.com
 
 - Update to version 4.14+20200118:

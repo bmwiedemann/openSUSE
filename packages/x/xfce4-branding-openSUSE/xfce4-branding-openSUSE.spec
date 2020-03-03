@@ -33,7 +33,7 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.14+20200118
+Version:        4.14+20200228
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
@@ -47,9 +47,9 @@ BuildRequires:  %{libxfce4ui_gtk3_libname}
 BuildRequires:  fdupes
 BuildRequires:  libgarcon-data
 BuildRequires:  wallpaper-branding
-# owns %%{_datadir}/xfce/applications/defaults.list symlink target
+# owns %%{_datadir}/applications/xfce-mimeapps.list symlink target
 Requires:       libgio-2_0-0
-# for regenerating defaults.list
+# for regenerating xfce-mimeapps.list
 BuildRequires:  desktop-file-utils
 BuildRequires:  elementary-xfce-icon-theme
 BuildRequires:  gtk2-metatheme-greybird-geeko
@@ -102,11 +102,11 @@ This package provides the openSUSE look and feel for the Xfce Panel.
 
 %package -n xfce4-session-branding-openSUSE
 Summary:        openSUSE Branding of xfce4-session
-# owns %%{_datadir}/xfce/applications/defaults.list symlink target
+# owns %%{_datadir}/applications/xfce-mimeapps.list symlink target
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 Requires:       libgio-2_0-0
-# for regenerating defaults.list
+# for regenerating xfce-mimeapps.list
 Requires:       desktop-file-utils
 Requires:       elementary-xfce-icon-theme
 Requires:       gtk2-metatheme-greybird-geeko
@@ -308,9 +308,8 @@ done
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 %config %{_sysconfdir}/xfce_defaults.conf
-%dir %{_datadir}/xfce
-%dir %{_datadir}/xfce/applications
-%{_datadir}/xfce/applications/defaults.list
+%dir %{_datadir}/applications
+%{_datadir}/applications/xfce-mimeapps.list
 
 %files -n xfce4-settings-branding-openSUSE
 %license COPYING
