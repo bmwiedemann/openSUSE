@@ -535,4 +535,22 @@
     <comment></comment>
     <requestid>726003</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ad0f5224621f2038c657bb4a563a7621</srcmd5>
+    <version>4.2.9.7</version>
+    <time>1583226876</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.2.9.7
+  * Do not link jsonc if XKB is disabled
+  * Update Translation
+  * use /org/freedesktop/portal as dbus path for portal.
+  * use the right color for gtk2
+  * use a different way to suppress unused warning
+  * Revert &quot;[gtk] clean up unused variable.&quot; 
+  * iso code root should be 639-3.
+  * use iso-codes json file to parse the iso codes data.
+  * fix fall through warning
+  * clean up unused variable. (forwarded request 780500 from hillwood)</comment>
+    <requestid>780501</requestid>
+  </revision>
 </revisionlist>

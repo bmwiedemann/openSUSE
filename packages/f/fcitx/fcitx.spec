@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libver -4_2_9
 Name:           fcitx
-Version:        4.2.9.6
+Version:        4.2.9.7
 Release:        0
 Summary:        Flexible Context-aware Input Tool with eXtension
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ Source3:        xim.fcitx.suse.template
 Source8:        openSUSE-themes.tar.gz
 Source9:        macros.%{name}
 Source99:       baselibs.conf
+Source100:      https://download.fcitx-im.org/fcitx/%{name}-%{version}_dict.tar.xz.sig
 # PATCH-FIX-OPENSUSE fcitx-autostart-check-INPUT_METHOD.patch boo#947576
 Patch2:         fcitx-autostart-check-INPUT_METHOD.patch
 # PATCH-FIX-OPENSUSE downgrade cmake requirement to 3.1 again
@@ -61,6 +62,7 @@ BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 BuildRequires:  pkgconfig(xkbfile)
@@ -321,31 +323,29 @@ cd build
 
 # fix dlopen-ed library name
 cmake .. \
-		 -DCMAKE_C_FLAGS="%{optflags}" \
-		 -DCMAKE_CXX_FLAGS="%{optflags}" \
-		 -DCMAKE_VERBOSE_MAKEFILE=On \
-		 -DCMAKE_BUILD_TYPE=Release \
-		 -DOPENCC_LIBRARY_FILENAME=libopencc.so.2 \
-		 -DENCHANT_LIBRARY_FILENAME=libenchant.so.1 \
-		 -DPRESAGE_LIBRARY_FILENAME=libpresage.so.1 \
-                 -DENABLE_GTK3_IM_MODULE=On \
+        -DCMAKE_C_FLAGS="%{optflags}" \
+        -DCMAKE_CXX_FLAGS="%{optflags}" \
+        -DCMAKE_VERBOSE_MAKEFILE=On \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DOPENCC_LIBRARY_FILENAME=libopencc.so.2 \
+        -DENCHANT_LIBRARY_FILENAME=libenchant.so.1 \
+        -DPRESAGE_LIBRARY_FILENAME=libpresage.so.1 \
+        -DENABLE_GTK3_IM_MODULE=On \
 %if 0%{?sles_version} || 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-		 -DENABLE_QT=Off \
-		 -DENABLE_QT_IM_MODULE=off \
+        -DENABLE_QT=Off \
+        -DENABLE_QT_IM_MODULE=off \
 %endif
-                 -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-                 -DLIB_INSTALL_DIR=%{_libdir} \
-		 -DSYSCONFDIR=%{_sysconfdir} \
-                 -DENABLE_LUA=On
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DLIB_INSTALL_DIR=%{_libdir} \
+        -DSYSCONFDIR=%{_sysconfdir} \
+        -DENABLE_LUA=On
 
 # fix gobject-introspection build
 export SUSE_ASNEEDED=0
-make %{?_smp_mflags}
+%make_build
 
 %install
-cd build
-%make_install
-cd ..
+%cmake_install
 
 # install openSUSE skins
 tar -xzf %{SOURCE8}
