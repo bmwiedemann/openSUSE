@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:25:12 UTC 2020 - Stefan Weiberg <sweiberg@suse.com>
+
+- Change constraint to ssse3 to fix build issues on x86_64 and i586
+
+-------------------------------------------------------------------
 Tue Nov 19 15:45:29 UTC 2019 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Add version to the PMD driver directory to avoid loading previous

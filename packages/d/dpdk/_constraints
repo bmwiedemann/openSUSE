@@ -10,7 +10,7 @@
 				<flag>mmx</flag>
 				<flag>sse</flag>
 				<flag>sse2</flag>
-				<flag>sse3</flag>
+				<flag>ssse3</flag>
 				<!-- TODO add SSE4.2 before that need to fix obs, patch on the way -->
 			</cpu>
 		</hardware>
