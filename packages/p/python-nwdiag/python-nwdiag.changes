@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 22:58:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Drop python2 and python3.4 support
+  * Fix a bug
+    - #23: Crash in antialias mode
+
+-------------------------------------------------------------------
 Sun Nov 10 18:11:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add python-setuptools to Requires

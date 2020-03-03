@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>747322</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>760546f399652780ddd1ab0a84fe2c63</srcmd5>
+    <version>2.0.0</version>
+    <time>1583226936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Drop python2 and python3.4 support
+  * Fix a bug
+    - #23: Crash in antialias mode</comment>
+    <requestid>780412</requestid>
+  </revision>
 </revisionlist>
