@@ -1,7 +1,7 @@
 #
 # spec file for package mate-system-monitor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
-%define _version 1.22
+%define _version 1.24
 Name:           mate-system-monitor
-Version:        1.22.1
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop system monitor
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE mate-system-monitor-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of gksu.
-Patch0:         mate-system-monitor-xdgsu.patch
-# PATCH-FEATURE-OPENSUSE mate-system-monitor-gtk-3.20.patch -- Restore GLib 2.48 and GTK+ 3.20 support.
-Patch1:         mate-system-monitor-gtk-3.20.patch
+Patch0:         %{name}-xdgsu.patch
+# PATCH-FEATURE-OPENSUSE mate-system-monitor-glib-2.54.patch -- Restore GLib 2.54 support.
+Patch1:         %{name}-glib-2.54.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
-BuildRequires:  polkit
+BuildRequires:  polkit-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dconf)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.20
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
@@ -68,23 +67,13 @@ NOCONFIGURE=1 mate-autogen
   --disable-scrollkeeper              \
   --libexecdir=%{_libexecdir}/%{name} \
   --enable-systemd
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
 %fdupes %{buildroot}%{_datadir}/
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING

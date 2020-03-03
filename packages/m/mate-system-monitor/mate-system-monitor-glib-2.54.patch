@@ -1,0 +1,126 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,7 +29,7 @@ LT_PREREQ([2.2])
+ LT_INIT
+ 
+ # Package dependencies
+-GLIB_REQUIRED=2.56.0
++GLIB_REQUIRED=2.54.0
+ LIBGTOP_REQUIRED=2.37.2
+ GIOMM_REQUIRED=2.26.0
+ GLIBMM_REQUIRED=2.22
+--- a/src/load-graph.cpp
++++ b/src/load-graph.cpp
+@@ -136,7 +136,11 @@ static void draw_background(LoadGraph *g
+         if (graph->type == LOAD_GRAPH_NET) {
+             // operation orders matters so it's 0 if i == num_bars
+             guint64 rate = graph->net.max - (i * graph->net.max / num_bars);
++#if GLIB_CHECK_VERSION(2, 56, 0)
+             caption = g_format_size_full (network_in_bits ? rate*8 : rate, network_in_bits ? G_FORMAT_SIZE_BITS : G_FORMAT_SIZE_DEFAULT);
++#else
++            caption = g_format_size (rate);
++#endif
+             pango_layout_set_text (layout, caption, -1);
+             pango_layout_get_extents (layout, NULL, &extents);
+             cairo_move_to (cr, graph->indent - 1.0 * extents.width / PANGO_SCALE + 20, y - 1.0 * extents.height / PANGO_SCALE / 2);
+@@ -588,18 +592,34 @@ get_net (LoadGraph *graph)
+     bool network_in_bits = ProcData::get_instance()->config.network_in_bits;
+     g_autofree gchar *str=NULL, *formatted_str=NULL;
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+     str = g_format_size_full (network_in_bits ? din*8 : din, network_in_bits ? G_FORMAT_SIZE_BITS : G_FORMAT_SIZE_DEFAULT);
++#else
++    str = g_format_size (din);
++#endif
+     formatted_str = g_strdup_printf(_("%s/s"), str);
+     gtk_label_set_text (GTK_LABEL (graph->labels.net_in), formatted_str);
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+     str = g_format_size_full (network_in_bits ? in*8 : in, network_in_bits ? G_FORMAT_SIZE_BITS : G_FORMAT_SIZE_DEFAULT);
++#else
++    str = g_format_size (in);
++#endif
+     gtk_label_set_text (GTK_LABEL (graph->labels.net_in_total), str);
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+     str = g_format_size_full (network_in_bits ? dout*8 : dout, network_in_bits ? G_FORMAT_SIZE_BITS : G_FORMAT_SIZE_DEFAULT);
++#else
++    str = g_format_size (dout);
++#endif
+     formatted_str = g_strdup_printf(_("%s/s"), str);
+     gtk_label_set_text (GTK_LABEL (graph->labels.net_out), formatted_str);
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+     str = g_format_size_full (network_in_bits ? out*8 : out, network_in_bits ? G_FORMAT_SIZE_BITS : G_FORMAT_SIZE_DEFAULT);
++#else
++    str = g_format_size (out);
++#endif
+     gtk_label_set_text (GTK_LABEL (graph->labels.net_out_total), str);
+ }
+ 
+--- a/src/procdialogs.cpp
++++ b/src/procdialogs.cpp
+@@ -283,6 +283,7 @@ solaris_mode_toggled(GtkToggleButton *bu
+ }
+ 
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+ static void
+ network_in_bits_toggled(GtkToggleButton *button, gpointer data)
+ {
+@@ -292,6 +293,7 @@ network_in_bits_toggled(GtkToggleButton
+     toggled = gtk_toggle_button_get_active(button);
+     g_settings_set_boolean(settings, procman::settings::network_in_bits.c_str(), toggled);
+ }
++#endif
+ 
+ 
+ 
+@@ -709,6 +711,7 @@ procdialog_create_preferences_dialog (Pr
+     gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
+ 
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+     GtkWidget *bits_button;
+     bits_button = gtk_check_button_new_with_mnemonic(_("Show network speed in bits"));
+     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bits_button),
+@@ -718,6 +721,7 @@ procdialog_create_preferences_dialog (Pr
+     g_signal_connect(G_OBJECT(bits_button), "toggled",
+                      G_CALLBACK(network_in_bits_toggled), procdata);
+     gtk_box_pack_start(GTK_BOX(vbox2), bits_button, TRUE, TRUE, 0);
++#endif
+ 
+ 
+ 
+--- a/src/procman.cpp
++++ b/src/procman.cpp
+@@ -106,6 +106,7 @@ solaris_mode_changed_cb(GSettings *setti
+ }
+ 
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+ static void
+ network_in_bits_changed_cb(GSettings *settings, const gchar *key, gpointer data)
+ {
+@@ -114,6 +115,7 @@ network_in_bits_changed_cb(GSettings *se
+     procdata->config.network_in_bits = g_settings_get_boolean(settings, key);
+     procdata->net_graph->clear_background();
+ }
++#endif
+ 
+ 
+ 
+@@ -263,9 +265,13 @@ procman_data_new (GSettings *settings)
+     std::string detail_string("changed::" + procman::settings::solaris_mode);
+     g_signal_connect(G_OBJECT(settings), detail_string.c_str(), G_CALLBACK(solaris_mode_changed_cb), pd);
+ 
++#if GLIB_CHECK_VERSION(2, 56, 0)
+     pd->config.network_in_bits = g_settings_get_boolean(settings, procman::settings::network_in_bits.c_str());
+     detail_string = "changed::" + procman::settings::network_in_bits;
+     g_signal_connect(G_OBJECT(settings), detail_string.c_str(), G_CALLBACK(network_in_bits_changed_cb), pd);
++#else
++    pd->config.network_in_bits = FALSE;
++#endif
+ 
+     pd->config.show_kill_warning = g_settings_get_boolean (settings, "kill-dialog");
+     g_signal_connect (G_OBJECT(settings), "changed::kill-dialog", G_CALLBACK(warning_changed_cb), pd);

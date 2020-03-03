@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.22.1):
+  * Network History: Fix labels.
+  * Show GPU info on the System tab.
+  * Use g_format_size or g_format_size_full.
+  * Update some instructions after review.
+  * Update help with more information and some corrections.
+  * gsm_color_button: Avoid redundant redeclarations.
+  * Add translator notes for desktop file.
+  * Migrate from intltool to gettext.
+  * Use MATE_DEBUG_CHECK for setting compiler debug flags.
+  * Use MATE_COMPILE_WARNINGS and MATE_CXX_WARNINGS macros.
+  * Require GLib >= 2.56.0.
+  * Render icons as cairo surfaces for HiDPI support.
+  * Change url project's website.
+  * proctable: cppcheck: Local variable "column" shadows outer
+    variable.
+  * Add drive I/O info on usage and prefs section.
+  * Make SysInfo::get_os_type a static function.
+  * msm_execute_helper: Fix memory leak.
+  * sysinfo: Condition "markup" is always false.
+  * procman: Use G_VARIANT_TYPE ("ai") instead of
+    G_VARIANT_TYPE_ARRAY.
+  * smooth_refresh: Assigned value is garbage or undefined.
+  * Add drive IO on process info.
+  * filter-out conflictive c-format comments.
+  * Fix "msgstr" is not a valid C format string, unlike "msgid".
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Remove mate-system-monitor-gtk-3.20.patch.
+- Add mate-system-monitor-glib-2.54.patch: Restore GLib 2.54
+  support.
+
+-------------------------------------------------------------------
 Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.22.1:
