@@ -351,6 +351,59 @@ Tue May  1 17:19:49 UTC 2018 - ecsos@opensuse.org
 
 - drop patch wireshark-1.2.0-geoip.patch, because file to patch
   no more exists
+- accumulating fixes from previous versions:
+  * wireshark 2.4.16: 
+    - CVE-2019-13619: ASN.1 BER and related dissectors crash (bsc#1141980).
+  * wireshark 2.4.15 (bsc#1136021): 
+    - Wireshark dissection engine crash.
+  * wireshark 2.4.14 (bsc#1131945): 
+    - CVE-2019-10895: NetScaler file parser crash.
+    - CVE-2019-10899: SRVLOC dissector crash.
+    - CVE-2019-10894: GSS-API dissector crash.
+    - CVE-2019-10896: DOF dissector crash.
+    - CVE-2019-10901: LDSS dissector crash.
+    - CVE-2019-10903: DCERPC SPOOLSS dissector crash.
+  * wireshark 2.4.13:
+    - CVE-2019-9214: RPCAP dissector could crash (bsc#1127367)
+    - CVE-2019-9209: ASN.1 BER and related dissectors could crash (bsc#1127369)
+    - CVE-2019-9208: TCAP dissector could crash (bsc#1127370)
+  * wireshark 2.4.12:
+    - CVE-2019-5717: The P_MUL dissector could crash (bsc#1121232)
+    - CVE-2019-5718: The RTSE dissector and other dissectors could crash (bsc#1121233)
+    - CVE-2019-5719: The ISAKMP dissector could crash (bsc#1121234)
+    - CVE-2019-5721: The ENIP dissector could crash (bsc#1121235)
+  * wireshark 2.4.11 (bsc#1117740):
+    - CVE-2018-19625: The Wireshark dissection engine could crash
+    - CVE-2018-19626: The DCOM dissector could crash
+    - CVE-2018-19623: The LBMPDM dissector could crash
+    - CVE-2018-19622: The MMSE dissector could go into an infinite loop
+    - CVE-2018-19627: The IxVeriWave file parser could crash
+    - CVE-2018-19624: The PVFS dissector could crash
+  * wireshark 2.4.10 (bsc#1111647):
+    - CVE-2018-18227: MS-WSP dissector crash
+    - CVE-2018-12086: OpcUA dissector crash
+  * wireshark 2.4.9 (bsc#1106514):
+    - CVE-2018-16058: Bluetooth AVDTP dissector crash
+    - CVE-2018-16056: Bluetooth Attribute Protocol dissector crash
+    - CVE-2018-16057: Radiotap dissector crash
+  * wireshark 2.4.8:
+    - CVE-2018-14342: BGP dissector large loop (boo#1101777)
+    - CVE-2018-14344: ISMP dissector crash (boo#1101788)
+    - CVE-2018-14340: Multiple dissectors could crash (boo#1101804)
+    - CVE-2018-14343: ASN.1 BER dissector crash (boo#1101786)
+    - CVE-2018-14339: MMSE dissector infinite loop (boo#1101810)
+    - CVE-2018-14341: DICOM dissector crash (boo#1101776)
+    - CVE-2018-14368: Bazaar dissector infinite loop (boo#1101794)
+    - CVE-2018-14369: HTTP2 dissector crash (boo#1101800)
+    - CVE-2018-14367: CoAP dissector crash (boo#1101791)
+    - CVE-2018-14370: IEEE 802.11 dissector crash (boo#1101802)
+  * wireshark 2.4.7 (bsc#1094301):
+    - CVE-2018-11356: DNS dissector crash 
+    - CVE-2018-11357: Multiple dissectors could consume excessive memory 
+    - CVE-2018-11358: Q.931 dissector crash
+    - CVE-2018-11359: The RRC dissector and other dissectors could crash
+    - CVE-2018-11360: GSM A DTAP dissector crash 
+    - CVE-2018-11362: LDSS dissector crash 
 
 -------------------------------------------------------------------
 Wed Apr  4 20:20:16 UTC 2018 - astieger@suse.com
