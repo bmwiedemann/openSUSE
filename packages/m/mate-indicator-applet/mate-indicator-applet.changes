@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.22.0):
+  * Resize indicator icons to fit panel.
+  * Rename data/org*mate-panel-applet.desktop.in.in files.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Remove mate-indicator-applet-gtk-3.20.patch.
+
+-------------------------------------------------------------------
 Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
 
 - Update to version 1.22.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package mate-indicator-applet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,21 @@
 #
 
 
-%define _version 1.22
+%define _version 1.24
 Name:           mate-indicator-applet
-Version:        1.22.0
+Version:        1.24.0
 Release:        0
 Summary:        Information from applications consistently on the panel
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         http://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE mate-indicator-applet-gtk-3.20.patch -- Restore GTK+ 3.20 support.
-Patch0:         mate-indicator-applet-gtk-3.20.patch
+Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ayatana-indicator3-0.4)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libayatana-ido3-0.4)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(mate-settings-daemon) >= %{_version}
@@ -69,7 +67,6 @@ Battery Menu and Sound menu.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -78,19 +75,11 @@ NOCONFIGURE=1 mate-autogen
   --disable-scrollkeeper              \
   --with-ayatana-indicators           \
   --libexecdir=%{_libexecdir}/%{name}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
-
-%if 0%{?suse_version} < 1500
-%post -n mate-applet-indicator
-%glib2_gsettings_schema_post
-
-%postun -n mate-applet-indicator
-%glib2_gsettings_schema_postun
-%endif
 
 %files -n mate-applet-indicator
 %license COPYING COPYING.LGPL
@@ -100,9 +89,9 @@ make %{?_smp_mflags} V=1
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/mate-panel/
 %dir %{_datadir}/mate-panel/applets/
-%{_datadir}/mate-panel/applets/org.ayatana.panel.IndicatorApplet.mate-panel-applet
-%{_datadir}/mate-panel/applets/org.ayatana.panel.IndicatorAppletAppmenu.mate-panel-applet
-%{_datadir}/mate-panel/applets/org.ayatana.panel.IndicatorAppletComplete.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.Indicator.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.IndicatorAppmenu.mate-panel-applet
+%{_datadir}/mate-panel/applets/org.mate.applets.IndicatorComplete.mate-panel-applet
 
 %files -n mate-applet-indicator-lang -f %{name}.lang
 
