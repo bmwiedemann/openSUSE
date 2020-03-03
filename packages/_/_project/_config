@@ -394,6 +394,9 @@ Prefer: go
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python2-tornado python3-tornado -python3-tornado4
 
+# There are multiple PK backends available. Favor the openSUSE own zypp backend
+Prefer: PackageKit-backend-zypp
+
 # Fix for "Have choice for txt2tags: python2-txt2tags python3-txt2tags"; obviously, we prefer py3
 Prefer: python3-txt2tags
 
