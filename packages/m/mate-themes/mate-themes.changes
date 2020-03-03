@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.22.21 (changes since 3.22.18):
+  * TOK/TG: Fix menubar view for LibreOffice.
+  * Menta metacity: Synchronise frame_geometry.
+  * BlackMATE: Fix invisible checkboxes in Firefox content when
+    userChrome.css is used.
+  * Trad. and Menta themes: Fix menu accelerator.
+  * submarine: Fix font-color headerbar button.default.
+  * Trad. and GreenLaguna: Fix lightdm-gtk panel.
+  * GreenLaguna: Add selectable metacity theme with borders.
+  * BlackMATE: Restore 1px border metacity theme for the composited
+    case.
+  * BlackMATE: Add selectable metacity theme with borders.
+  * Submarine: Add metacity themes with huge borders.
+  * Menta: Add selectable metacity theme with borders.
+  * GreenSubmarine: Use menta icon theme.
+  * BlackMATE: Provide enough border to resize windows with recent
+    changes elsewhere.
+  * GreenLaguna: Add metacity-theme-3.xml version back.
+  * Include GtkStock icons directly in HCI.
+  * all themes: Adjustments for headerbars.
+  * Update mate-desktop icon for ContrastHigh theme.
+  * Remove unused icons.
+  * Menta: metacity-3, rounded corners for modal-dialogs.
+  * Menta: Improve GtkSwitch.
+  * Menta: Improve metacity-theme-3.
+  * Menta: GtkSwich, disable on/off characters.
+  * Rename gnome-power-manager.png to mate-power-manager.png.
+  * scrolledwindows: Remove applet border and background.
+  * Menta: Synch Menta with BlueMenta.
+  * Menta: Fix button.destructive-action:backdrop state.
+  * Menta themes: Set arrow colour for backdrop state.
+  * Menta themes: Fix atril text selection colour if focus.
+  * Menta themes: Override backdrop state for clock and menubar
+    applets.
+  * Menta Themes: Add backdrop state to scrollbars.
+  * Menta themes: Add a general backdrop state design.
+  * Menta themes: Add backdrop state to caja and mate-font-viewer.
+  * Menta themes: Add backdrop state settings to
+    other-applications.css.
+  * Menta themes: Fix backdrop borders for suggested-action and
+    default buttons.
+  * Menta themes: Add images for backdrop state.
+  * Menta themes: Add backdrop color definitions.
+  * Menta themes: Add backdrop support for nautilus.
+  * most themes: Drop index.theme files for metacity huge border
+    themes.
+  * Menta themes: Use high resolution window control assets.
+  * Menta metacity: Fix border size.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Drop support for old openSUSE versions.
+- Drop GTK 3.20 support.
+
+-------------------------------------------------------------------
 Thu Aug  9 12:01:37 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 3.22.18:

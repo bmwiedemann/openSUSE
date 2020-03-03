@@ -284,4 +284,12 @@
     <comment></comment>
     <requestid>628450</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4c3da988a65c878eb0051d3186baccd8</srcmd5>
+    <version>3.22.21</version>
+    <time>1583227024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.21.</comment>
+    <requestid>780542</requestid>
+  </revision>
 </revisionlist>
