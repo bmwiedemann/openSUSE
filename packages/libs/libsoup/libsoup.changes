@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 26 08:57:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.68.4:
+  + WebSockets:
+    - Ensure a new connection is created for WebSocket requests.
+    - Do not start the input source when IO is closing.
+  + build: Update glib requirement to 2.58.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:17:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libsoup
-Version:        2.68.3
+Version:        2.68.4
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -32,9 +32,9 @@ BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
-BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(gtk-doc) >= 1.20
 BuildRequires:  pkgconfig(krb5)
