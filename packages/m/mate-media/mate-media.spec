@@ -1,7 +1,7 @@
 #
 # spec file for package mate-media
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%define _version 1.22
+%define _version 1.24
 Name:           mate-media
-Version:        1.22.1
+Version:        1.24.0
 Release:        0
 Summary:        MATE Desktop multimedia stack
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE mate-media-gtk-3.20.patch -- Restore GLib 2.48 and GTK+ 3.20 support.
-Patch0:         mate-media-gtk-3.20.patch
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  mate-common >= %{_version}
@@ -34,8 +31,8 @@ BuildRequires:  mate-control-center-devel >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libmatemixer) >= %{_version}
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
@@ -49,7 +46,7 @@ This package provides the Multimedia stack used by the MATE Desktop.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -58,7 +55,7 @@ NOCONFIGURE=1 mate-autogen
   --libexecdir=%{_libexecdir}/%{name} \
   --disable-statusicon \
   --enable-profiles
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -66,16 +63,6 @@ make %{?_smp_mflags} V=1
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file mate-volume-control
 %fdupes %{buildroot}%{_datadir}/
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
