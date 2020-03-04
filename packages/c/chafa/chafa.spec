@@ -1,7 +1,7 @@
 #
 # spec file for package chafa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
@@ -91,13 +91,15 @@ rm -rf %{buildroot}%{_libdir}/libchafa.{a,la}
 %files -n libchafa0
 %license COPYING.LESSER
 %{_libdir}/lib%{name}.so.0
-%{_libdir}/lib%{name}.so.0.1.1
+%{_libdir}/lib%{name}.so.0.2.0
 
 %files devel
 %license COPYING.LESSER
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/lib%{name}.so
+%dir %{_libdir}/chafa/
+%{_libdir}/chafa/include/
 
 %files doc
 %doc AUTHORS
