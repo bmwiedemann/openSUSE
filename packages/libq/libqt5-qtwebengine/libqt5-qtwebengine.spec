@@ -70,6 +70,10 @@ Patch1:         armv6-ffmpeg-no-thumb.patch
 Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
 # PATCH-FIX-UPSTREAM 0001-fix-build-after-y2038-changes-in-glibc.patch
 Patch3:         0001-fix-build-after-y2038-changes-in-glibc.patch
+# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine/+/290321
+Patch4:         QTBUG-81574.patch
+# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/291216
+Patch5:         QTBUG-82186.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

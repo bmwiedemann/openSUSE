@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 21 13:36:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix a deadlock causing audio/video playback to fail (boo#1163744):
+  * QTBUG-82186.patch
+
+-------------------------------------------------------------------
+Fri Feb 21 09:25:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix an issue with selections breaking replying in KMail:
+  * QTBUG-81574.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 13:14:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.14.1:

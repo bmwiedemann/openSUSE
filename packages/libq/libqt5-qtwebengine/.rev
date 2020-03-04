@@ -550,4 +550,16 @@
     <comment>Update to 5.14.1</comment>
     <requestid>768137</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>54e502f090f81fc1583c0d1181de28f9</srcmd5>
+    <version>5.14.1</version>
+    <time>1583311097</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a deadlock causing audio/video playback to fail (boo#1163744):
+  * QTBUG-82186.patch
+
+- Fix an issue with selections breaking replying in KMail:
+  * QTBUG-81574.patch</comment>
+    <requestid>781141</requestid>
+  </revision>
 </revisionlist>
