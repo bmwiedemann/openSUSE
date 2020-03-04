@@ -35,7 +35,7 @@ Obsoletes:      gromacs-openmpi < %{version}
 %endif
 
 Name:           gromacs
-Version:        2019.5
+Version:        2019.6
 Release:        0
 %define uversion %{version}
 %define sover   4

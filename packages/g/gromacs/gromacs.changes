@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 28 18:14:42 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- - version bump to 2019.6 details here:
+  http://manual.gromacs.org/documentation/2019.6/release-notes/2019/2019.6.html
+  Hightlights:
+  - Actually fix PME forces with FE without perturbed q/LJ
+  - Avoid overzealous program abort with orientation restraints
+  - Calculate Coulomb and LJ reciprocal terms in rerun
+  - Added check for inconsistent input of distance restraint labels in gmx disre.
+  - Fix compiler errors with Intel compiler
+  - Avoid cryptic GPU detection errors when devices are unavailable or out of memory
+
+-------------------------------------------------------------------
 Mon Dec 23 18:17:04 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - version bump to 2019.5 details here:
