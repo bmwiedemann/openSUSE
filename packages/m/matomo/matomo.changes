@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 24 23:16:59 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update: 3.13.3
+  In this new release we’re solving a few regressions and making a 
+  few minor improvements. In terms of bugs, an issue in the Overlay
+  report causing sessions to logout has been fixed.
+  Other issues were fixed the Samesite cookies handling and session,
+  and a bug was fixed in the new Date comparison feature.
+  #15513 Loading Page Overlay fails and logs user out [by @diosmosis]
+  #15602 Fix session cookies for Matomo installed in subdirectory
+   [by @sgiehl, @tsteur]
+  #15605 Fix VisitorFrequency.get API for idsites=all [by @sgiehl]
+  #15553 piwik_ignore cookie is blocked on macOS and Chrome 80 [by @diosmosis]
+  #15561 Various fixes for Samesite handling in sessions,
+   iframes [by @diosmosis, @tsteur]
+  #15568 Support tracker js files from custom plugin directories [by @tsteur]
+  #15569 Fix non-numeric value encountered in session recording [by @tsteur]
+  #15576 Do not record the stack trace for user input errors [by @tsteur, @sgiehl]
+  #15577 During archive invalidation clear general cache less often [by @tsteur, @diosmosis]
+  #15590 Fallback to JSON renderer if no valid format is given [by @tsteur]
+  #15592 Try to determine the region iso code based on its name if
+   not available [by @sgiehl, @tsteur]
+
+-------------------------------------------------------------------
 Tue Feb 18 10:21:24 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update: 3.13.2

@@ -32,7 +32,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        3.13.2
+Version:        3.13.3
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -118,7 +118,7 @@ do
   sed -i "/\W\"${i}\"\W/d" config/manifest.inc.php
 done
 # Insert new hashes for chanded files
-for file in console 'vendor/leafo/lessphp/plessc' 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php'
+for file in console 'vendor/leafo/lessphp/plessc' 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php' 'core/CliMulti/Output.php'
 do
   size=$(ls -l $file | awk '{ print $5 }')
   checksum=$(md5sum $file  | awk '{ print $1 }')
