@@ -26,11 +26,14 @@ Summary:        Pathlib for changelogss
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell_changelogs
-Source:         https://github.com/dephell/%{modname}/archive/v.%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source0:        https://github.com/dephell/%{modname}/archive/v.%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# Temporary measure, until dephell in %%prep actually works
+Source1:        setup.py
 # PATCH-FIX-UPSTREAM add_network_markers.patch gh#dephell/dephell_changelogs#4 mcepl@suse.com
 # add markers for test cases requiring network connection
 Patch0:         add_network_markers.patch
 BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module dephell}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -49,12 +52,15 @@ Dephell library providing pathlib for changelogss.
 
 %prep
 %autosetup -p1 -n %{modname}-v.%{version}
+# Doesn’t work ATM
+# dephell deps convert --traceback --level=DEBUG --from pyproject.toml --to setup.py
+cp -p %{SOURCE1} .
 
 %build
-%pyproject_wheel
+%python_build
 
 %install
-%pyproject_install
+%python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +69,6 @@ Dephell library providing pathlib for changelogss.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}*
 
 %changelog

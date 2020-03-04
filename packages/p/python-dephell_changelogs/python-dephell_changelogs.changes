@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:45:38 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add generated setup.py to the tarball, until we have working
+  dephell in the system.
+
+-------------------------------------------------------------------
 Mon Mar  2 18:07:06 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Initial spec for v0.0.1
