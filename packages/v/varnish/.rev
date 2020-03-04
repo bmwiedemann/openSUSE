@@ -231,4 +231,12 @@
     <comment>- Update to release 6.3.0</comment>
     <requestid>731529</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2f275e816c6c2d38302a0504ab6a86c4</srcmd5>
+    <version>6.3.2</version>
+    <time>1583311181</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>781116</requestid>
+  </revision>
 </revisionlist>
