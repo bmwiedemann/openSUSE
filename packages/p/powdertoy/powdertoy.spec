@@ -17,7 +17,7 @@
 
 
 Name:           powdertoy
-Version:        94.1
+Version:        95.0
 Release:        0
 Summary:        Physics sandbox game
 License:        GPL-3.0-only
@@ -32,6 +32,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libbz2-devel
+BuildRequires:  libcurl-devel
 BuildRequires:  luajit-devel
 BuildRequires:  scons
 BuildRequires:  shared-mime-info

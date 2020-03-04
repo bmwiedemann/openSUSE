@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar  3 00:00:00 CET 2020 - dsterba@suse.cz
+
+- Update to version 95.0
+  * Add .life serialization support to lsns
+  * Add option to change menu selection from hovering to click
+  * Add option to control whether pressure is included in saves and stamps
+  * Add new sign types: {type}, {ctype}, {life}, {tmp}, {tmp2}
+  * Add Lua api to handle default element properties
+  * Add Lua apis to recieve callbacks on element creation or deletion
+  * Add Lua api to make https requests
+  * All web traffic to the TPT server now uses https. This prevents others from
+    intercepting or modifying network traffic
+  * Thumbnails (both local and online) now load significantly faster
+  * Use current render mode when rendering stamps
+  * Circle brush now has smooth edges (Toggleable option in settings)
+  * Make water equalization fill in areas slightly more naturally
+  * Search signs now drawn in purple instead of blue
+  * Forum thread signs now drawn in red instead of blue
+  * Smudge tool is now smudgier
+  * Fix stamp and local save thumbnails being stretched
+  * Fix potential stack overflow with water when water eqalization is enabled
+  * Fix replace mode not affecting energy particles
+  * Fix replace mode not working with Lua elements
+  * Fix pressure / ambient heat being saved as 0 instead of not at all when holding shift
+  * Fix GLAS, TUNG and QRTZ breaking on load when saved at high pressures
+  * Fix saving/loading window position on 2nd monitor
+  * Fix "Error loading save" stamps appearing when using tptmp
+  * For a more complete changelog, check the "Official Game Feedback" thread on the forums
+
+-------------------------------------------------------------------
 Mon Jan 13 09:25:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to python3 build
