@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Mar  3 01:12:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.13.0
+  + Support for kernel up to 5.5
+  + bindsnoop tool to track tcp/udp bind information
+  + added compile-once run-everywhere based libbpf-tools, currently
+    only runqslower is implemented.
+  + new map support: sockhash, sockmap, sk_storage, cgroup_storage
+  + enable to run github actions on the diff
+  + cgroupmap based cgroup filtering for opensnoop, execsnoop and
+    bindsnoop.
+  + lots of bug fixes.
+- Update libbpf to 0.0.7
+  + Major new features:
+    - BPF skeleton support;
+    - Kconfig extern variables support;
+    - STRUCT_OPS support;
+    - support for BPF program extensions;
+    - cgroup MULTI-mode support (bpf_prog_attach_xattr() API).
+    - bpf_send_signal_thread() BPF helper;
+  + Usability improvements:
+    - BPF CO-RE improvements (flexible array, LDX/ST/STX instructions,
+      improved conditional relocations);
+    - generic bpf_program__attach() API;
+    - SK_REUSEPORT program type support;
+    - bpf_link_disconnect();
+    - bpf_find_kernel_btf() API exposed;
+    - large instruction limit probing added;
+    - improved error message for RLIMIT_MEMLOCK.
+  + Fixes:
+    - fix perf_buffer handling of offline/missing CPUs;
+    - various other fixes and usability improvements.
+- Drop upstreamed fix: bcc-fix-test_map_in_map.patch 
+
+-------------------------------------------------------------------
 Mon Jan 20 12:32:51 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - drop python2 bindings

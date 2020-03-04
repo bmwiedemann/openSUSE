@@ -26,10 +26,10 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.0.6
+%define libbpf_version 0.0.7
 
 Name:           bcc
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -38,7 +38,6 @@ URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz
 Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz
 Patch1:         support-clang9.patch
-Patch2:         bcc-fix-test_map_in_map.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -135,7 +134,6 @@ Documentation on how to write programs with the BPF Compiler Collection.
 %if %{?pkg_vcmp:%pkg_vcmp llvm-devel >= 9.0}%{!?pkg_vcmp:0}
 %patch1 -p1
 %endif
-%patch2 -p1
 
 pushd src/cc/libbpf
 tar xf %{SOURCE1} --strip 1
@@ -196,6 +194,9 @@ rm -f %{buildroot}/%{_bindir}/bps
 %endif
 
 popd
+
+# Remove the static libraries
+rm -f %{buildroot}/%{_libdir}/libbcc*.a
 
 %post -n libbcc0 -p /sbin/ldconfig
 
