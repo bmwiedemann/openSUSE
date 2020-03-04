@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 11:32:19 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-gpio-names-overlay.dts so as to have a consistent way to access
+  GPIOs, as opposed to sysfs (bsc#1164722)
+
+-------------------------------------------------------------------
 Thu Feb 27 11:27:47 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Replace PCIE overlay rpi4-pcie-ib-size-fix-overlay.dts with patch
