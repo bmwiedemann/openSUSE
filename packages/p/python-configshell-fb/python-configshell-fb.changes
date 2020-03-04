@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 03 17:32:48 UTC 2020 - lduncan@suse.com
+
+- Update to version v1.1.27 from v1.1.26 (jre#SLE-9345):
+  * version 1.1.27
+  * Use pyparsing's locatedExpr instead of our custom helper
+  And updated the SPEC file, also adding a _service file.
+  Replacing configshell-fb-1.1.26.tar.gz with
+  python-configshell-fb-v1.1.27.tar.xz, and adding one
+  upstrem patch:
+  * Ensure-that-all-output-reaches-the-client-when-daemo.patch
+
+-------------------------------------------------------------------
 Mon Sep 16 17:27:49 UTC 2019 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream version 1.1.26. There were not very
