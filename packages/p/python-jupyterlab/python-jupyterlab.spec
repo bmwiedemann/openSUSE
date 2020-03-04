@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyterlab
-Version:        1.2.6
+Version:        2.0.0
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -100,8 +100,8 @@ cp -a %{SOURCE0} .
 %python_expand sed -i -e 's|^#!/usr/bin/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
 %python_expand chmod a+x %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
 %python_expand chmod a+x %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
-%python_expand %fdupes %{buildroot}%{$python_sitelib}}
-%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{_jupyter_prefix}
 
 cp %{buildroot}%{python3_sitelib}/jupyterlab-%{version}.dist-info/LICENSE .
 
@@ -109,13 +109,13 @@ cp %{buildroot}%{python3_sitelib}/jupyterlab-%{version}.dist-info/LICENSE .
 export PYTHONDONTWRITEBYTECODE=1
 # Disable build checks that pull in remote resources with npm
 %{pytest %{buildroot}%{$python_sitelib}/jupyterlab/ -k \
-    'not (test_build or test_clear or test_build_check or test_build_custom or test_uninstall_core_extension or test_install_and_uninstall_pinned or test_install_and_uninstall_pinned_folder)'
+    'not (test_build or test_clear or test_build_check or test_build_custom or test_uninstall_core_extension or test_install_and_uninstall_pinned or test_install_and_uninstall_pinned_folder or test_install_extension)'
 }
 
 %files %{python_files}
 %license %{python_sitelib}/jupyterlab-%{version}.dist-info/LICENSE
 %{python_sitelib}/jupyterlab/
-%{python_sitelib}/jupyterlab-%{version}.dist-info
+%{python_sitelib}/jupyterlab-%{version}.dist-info/
 
 %files -n jupyter-jupyterlab
 %license LICENSE
