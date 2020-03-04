@@ -374,4 +374,22 @@
   * Fix inverse handler registration logic for SNMP</comment>
     <requestid>755197</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7c4a6bbe7db708c4d0e21eb200c4126b</srcmd5>
+    <version>4.3.0</version>
+    <time>1583311228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * A relaxed form of QName Minimization as described in rfc7816bis-01.
+    This feature is enabled by default
+  * Dnstap support for outgoing queries to authoritative servers and
+    the corresponding replies.
+  * The recursor now processes a number of requests incoming over
+    a TCP connection simultaneously and will return results
+    (potentially) out-of-order.
+  * Newly Observed Domain (NOD) functionality
+  * For details see
+    https://blog.powerdns.com/2020/03/03/powerdns-recursor-4-3-0-released/</comment>
+    <requestid>781144</requestid>
+  </revision>
 </revisionlist>
