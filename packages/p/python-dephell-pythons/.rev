@@ -16,4 +16,22 @@
   * ship tests</comment>
     <requestid>730644</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae4de55b578148bacf6315bd415dacbf</srcmd5>
+    <version>0.1.14</version>
+    <time>1583311610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.14:
+  - carefully check access to everything
+  - sort all imports
+  - check read access for dir
+  - rename flag
+  - ignore pythonz
+  - fix typing
+  - Fix the code for Windows
+  - Remove redundant exception type
+  - Revert finder changes
+  - make python script fixture</comment>
+    <requestid>781257</requestid>
+  </revision>
 </revisionlist>
