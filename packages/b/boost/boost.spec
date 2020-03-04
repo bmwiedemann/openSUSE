@@ -169,7 +169,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le ia64 hppa
 %define base_name %{hpc_package_name %_ver}
 %define package_name %{hpc_package_name %_ver}
 %define package_python2_sitearch %hpc_python_sitearch
-%define package_python3_sitearch %{hpc_libdir}/python3.[0-9]/site-packages
+%define package_python3_sitearch %{_hpc_python_sysconfig_path /usr/bin/python3 platlib %{?hpc_prefix}}
 %else
 %define package_prefix %{_prefix}
 %define package_bindir %{_bindir}
@@ -1536,13 +1536,14 @@ install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
 %endif # ! hpc
 %endif # ! build_base
 
-%if %{build_base}
+%if %{build_base} || %{with hpc}
 mkdir -p %{buildroot}%{package_bindir}
 %if %{without hpc}
 install -m 755 b2 %{buildroot}%{package_bindir}/bjam
 ln -s bjam %{buildroot}%{package_bindir}/jam
 %endif
 
+%if %{build_base}
 # Remove exception library, but only if the symbols are not
 # actually used. For now, the only symbol that is linked is
 # should never be used as it's only available on Windows. So,
@@ -1554,16 +1555,17 @@ objdump -Ctj .text -Ctj .text %{buildroot}%{package_libdir}/libboost_exception.s
 rm %{buildroot}%{package_libdir}/libboost_exception.so
 rm %{buildroot}%{package_libdir}/libboost_exception.so.%{version}
 
+# not used or duplicated in boost-extra flavour
+rm -r %{buildroot}%{package_libdir}/cmake/boost_stacktrace_{backtrace,windbg}*
+rm -r %{buildroot}%{package_libdir}/cmake/boost_exception-*
+rm -r %{buildroot}%{package_libdir}/cmake/boost_graph_parallel-%{version}
+%endif
+
 %fdupes %{buildroot}%{package_includedir}/boost
 mkdir -p %{buildroot}%{my_docdir}
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
-
-# not used or duplicated in boost-extra flavour
-rm -r %{buildroot}%{package_libdir}/cmake/boost_stacktrace_{backtrace,windbg}*
-rm -r %{buildroot}%{package_libdir}/cmake/boost_exception-*
-rm -r %{buildroot}%{package_libdir}/cmake/boost_graph_parallel-%{version}
 %else  # ! build_base
 # duplicate from boost-base flavour
 rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake

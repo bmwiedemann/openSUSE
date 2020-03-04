@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 13:54:37 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix macro which defines the name of the HPC python3 library
+  directory (bsc#1165277).
+- Include headers and serial libs in the HPC MPI packages
+  (bsc#1165307).
+
+-------------------------------------------------------------------
 Mon Jan 13 10:42:07 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - removed hpc bjam package (boo#1160621)
