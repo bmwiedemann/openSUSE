@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar  4 06:30:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.3:
+  * Fixed loading of compression level (#2753)
+  * Fixed default value for Hex Side Length property
+  * Fixed hiding of status bar text for some tools
+  * Fixed removing of object labels when removing a group layer
+  * GmxPlugin: Fixed compatibility with GameMaker 1.4.9999
+  * Scripting: Made TextFile.commit and BinaryFile.commit close as well
+  * Scripting: Fixed crashes when modifying certain new objects (#2747)
+  * Scripting: Fixed potential crash in Asset.macro/undo/redo/isModified
+  * Scripting: Fixed potential crash when accessing Tool.preview
+  * Scripting: Fixed loading of images from extensions folder
+  * Scripting: Reload extensions also when files are added/removed
+  * Updated Bulgarian translation
+
+-------------------------------------------------------------------
 Wed Jan 22 13:58:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.2:
