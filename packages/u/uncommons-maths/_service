@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/dwdyer/uncommons-maths.git</param>
+		<param name="revision">Release-1.2.3</param>
+		<param name="versionformat">1.2.3</param>
+		<param name="exclude">lib/*</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
