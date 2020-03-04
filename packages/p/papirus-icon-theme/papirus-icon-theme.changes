@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  3 23:28:58 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200301
+  - Added 115 icons
+  - Updated icons:
+    * GNOME Music
+    * Kate #2064
+    * Marker #2072
+  - Changes and fixes:
+    * Add a few symlinks for packages in Fedora Flatpak repo
+
+-------------------------------------------------------------------
 Mon Feb  3 01:44:31 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200201
   - Added 74 icons
-  - Update icons:
+  - Updated icons:
     * Document Viewer #2055
     * MS Office #2056
 
@@ -11,12 +23,12 @@ Mon Feb  3 01:44:31 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 Tue Jan  7 09:19:38 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200102
-  - Highlights
+  - Highlights:
     * Added more Kali Linux related icons #2022
     * Added more icons for apps hosted on Flathub #2007
   - Added icons
   - Updated icons
-  - Changes and fixes
+  - Changes and fixes:
     * Fixed icon name for dhewm3 #1979
 
 -------------------------------------------------------------------
@@ -25,7 +37,7 @@ Thu Dec  5 01:38:05 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
 - update to version 20191201
   - Added icons
   - Updated icons
-  - Changes and fixes
+  - Changes and fixes:
     * Added a several icons for Kali Linux
     * Added missed folder-book to Papirus-Dark and ePapirus themes
     * Moved blockdevice icon from apps to devices
@@ -34,11 +46,11 @@ Thu Dec  5 01:38:05 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
 Fri Nov  8 01:37:34 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20191101
-  - Highlights
+  - Highlights:
     * Improved Inkscape icon theme #1949
   - Added icons
   - Updated icons
-  - Changes and fixes
+  - Changes and fixes:
     * Added 16 symlinks for Flatpak apps hosted on Flathub
     * Added nordic folder color that suitable to Nordic GTK theme #1870
 
@@ -55,7 +67,7 @@ Wed Oct  2 03:46:11 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
 - Update to version 20190919
   - Added icons
   - Updated icons
-  - Changes and fixes
+  - Changes and fixes:
     * Added symlinks for apps of MX Linux #1905
     * Fixed distribute-vertical-gaps Inkscape icon #1897
     * Make Delete icon different from Move to Trash #1892
