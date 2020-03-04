@@ -1,7 +1,7 @@
 #
 # spec file for package certbot-systemd-timer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source11:       certbot-renew-systemd.timer
 Source12:       certbot-sysconfig-certbot
 Source13:       README
 Source14:       LICENSE.txt
-Requires:       python-certbot >= 0.21.1
+Requires:       python3-certbot >= 0.21.1
 Requires(post): %fillup_prereq
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
