@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:27:44 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.7.0
+  + Additions
+    * Use qtpy as the shim layer for Python Qt bindings and remove our own shim.
+  + Changes
+    * Remove code to expand tabs to spaces.
+    * Skip history if it is the same as the input buffer.
+- Drop doc subpackage due to rapid changes in readthedocs download
+  urls.  This was a hold-over from when the tests were run in a
+  separate doc subpackage.
+
+-------------------------------------------------------------------
 Fri Nov 22 21:17:54 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 4.6.0

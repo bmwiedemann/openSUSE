@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtconsole
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        4.6.0
-%define doc_ver 4.6.0
+Version:        4.7.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/qtconsole
 Source0:        https://files.pythonhosted.org/packages/source/q/qtconsole/qtconsole-%{version}.tar.gz
-Source1:        https://media.readthedocs.org/pdf/qtconsole/%{doc_ver}/qtconsole.pdf
-Source2:        https://media.readthedocs.org/htmlzip/qtconsole/%{doc_ver}/qtconsole.zip
+Source100:      python-qtconsole-rpmlintrc
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  desktop-file-utils
@@ -38,6 +36,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+Requires:       python-QtPy
 Requires:       python-Pygments
 Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
@@ -51,6 +50,8 @@ Requires:       jupyter-qtconsole = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module QtPy}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.1}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
@@ -74,10 +75,17 @@ This package provides the python components.
 %package     -n jupyter-qtconsole
 Summary:        Jupyter Qt console
 Requires:       python3-qtconsole = %{version}
+Requires:       python3-jupyter-core
 Requires:       jupyter-ipykernel >= 4.1
 Requires:       jupyter-jupyter-client >= 4.1
 Requires:       jupyter-jupyter-core
 Conflicts:      python3-jupyter_qtconsole < 4.4.4
+Provides:       jupyter-qtconsole-doc = %{version}
+Obsoletes:      jupyter-qtconsole-doc < %{version}
+Provides:       python-qtconsole-doc = %{version}
+Provides:       %{python_module qtconsole-doc = %{version}}
+Provides:       %{python_module jupyter_qtconsole-doc = %{version}}
+Obsoletes:      %{python_module jupyter_qtconsole-doc < %{version}}
 
 %description -n jupyter-qtconsole
 A rich Qt-based console for working with Jupyter kernels,
@@ -85,23 +93,8 @@ supporting rich media output, session export, and more.
 
 This package provides the jupyter components.
 
-%package     -n jupyter-qtconsole-doc
-Summary:        Documentation for the Jupyter Qt console
-Group:          Documentation/Other
-Provides:       python-qtconsole-doc = %{version}
-Provides:       %{python_module qtconsole-doc = %{version}}
-Provides:       %{python_module jupyter_qtconsole-doc = %{version}}
-Obsoletes:      %{python_module jupyter_qtconsole-doc < %{version}}
-
-%description -n jupyter-qtconsole-doc
-Documentation and help files for Jupyter's Qt console.
-
 %prep
 %setup -q -n qtconsole-%{version}
-cp %{SOURCE1} .
-unzip %{SOURCE2} -d docs
-mv docs/qtconsole-* docs/html
-rm docs/html/.buildinfo
 
 %build
 %python_build
@@ -121,13 +114,6 @@ desktop-file-edit --set-icon="JupyterQtConsole" jupyter-qtconsole.desktop
 %suse_update_desktop_file -i -r jupyter-qtconsole "System;TerminalEmulator;"
 popd
 
-mkdir -p %{buildroot}%{_docdir}/jupyter-qtconsole
-
-cp %{SOURCE1} %{buildroot}%{_docdir}/jupyter-qtconsole/
-cp -r docs/html %{buildroot}%{_docdir}/jupyter-qtconsole/
-
-%fdupes %{buildroot}%{_docdir}/jupyter-qtconsole/
-
 %check
 export QT_QPA_PLATFORM="offscreen"
 %pytest
@@ -142,11 +128,5 @@ export QT_QPA_PLATFORM="offscreen"
 %{_bindir}/jupyter-qtconsole
 %{_datadir}/applications/jupyter-qtconsole.desktop
 %{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole.svg
-
-%files -n jupyter-qtconsole-doc
-%license LICENSE
-%dir %{_docdir}/jupyter-qtconsole/
-%{_docdir}/jupyter-qtconsole/qtconsole.pdf
-%{_docdir}/jupyter-qtconsole/html
 
 %changelog

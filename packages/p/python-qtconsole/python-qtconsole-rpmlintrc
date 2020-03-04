@@ -1,0 +1,2 @@
+# Note: this is provided by the python3-jupyter-core dependency
+addFilter("desktopfile-without-binary .*/jupyter-qtconsole.desktop jupyter")
