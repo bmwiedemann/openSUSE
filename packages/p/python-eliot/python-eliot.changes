@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  2 15:47:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.12.0
+  * Dask support now includes support for tracing logging of dask.persist(), 
+    via wrapper API eliot.dask.persist_with_trace().
+  * Dask edge cases that previously weren't handled correctly should work better.
+
+-------------------------------------------------------------------
 Sun Jan 12 10:16:42 UTC 2020 - ecsos@opensuse.org
 
 - Update to 1.11.0
