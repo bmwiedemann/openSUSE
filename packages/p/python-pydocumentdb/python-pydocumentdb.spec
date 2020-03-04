@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydocumentdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pydocumentdb
-Version:        2.3.3
+Version:        2.3.5
 Release:        0
 Summary:        Azure DocumentDB Python SDK
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-documentdb-python
 Source:         https://files.pythonhosted.org/packages/source/p/pydocumentdb/pydocumentdb-%{version}.tar.gz
+Patch:          p_disable-changelog-parsing.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,6 +46,7 @@ This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
 %setup -q -n pydocumentdb-%{version}
+%patch0 -p1
 
 %build
 %python_build

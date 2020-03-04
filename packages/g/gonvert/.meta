@@ -1,8 +1,0 @@
-<package name="gonvert" project="openSUSE:Factory">
-  <title>Unit Conversion Utility</title>
-  <description>gonvert is a conversion utility that allows conversion between many
-units, like CGS, Ancient, and Imperial, with many categories, such as
-length, mass, and numbers. All converted values are shown at once as
-you type. It is easy to add and change your own units.</description>
-  <devel project="Education" package="gonvert"/>
-</package>

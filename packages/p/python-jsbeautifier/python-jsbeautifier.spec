@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsbeautifier
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsbeautifier
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        JavaScript unobfuscator and beautifier
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://jsbeautifier.org
+URL:            https://jsbeautifier.org
 Source0:        https://files.pythonhosted.org/packages/source/j/jsbeautifier/jsbeautifier-%{version}.tar.gz
 # https://github.com/beautify-web/js-beautify/issues/1674
 Source1:        https://raw.githubusercontent.com/beautify-web/js-beautify/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-EditorConfig >= 0.12.0
+Requires:       python-EditorConfig >= 0.12.2
 Requires:       python-setuptools
-Requires:       python-six >= 1.6.1
+Requires:       python-six >= 1.13.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module EditorConfig >= 0.12.0}
+BuildRequires:  %{python_module EditorConfig >= 0.12.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.6.1}
+BuildRequires:  %{python_module six >= 1.13.0}
 # /SECTION
 %python_subpackages
 
@@ -56,7 +55,8 @@ cp %{SOURCE1} .
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
-%python_exec setup.py test
+%pytest jsbeautifier/tests/testindentation.py
+%pytest jsbeautifier/tests/generated/tests.py
 
 %files %{python_files}
 %license LICENSE

@@ -143,4 +143,15 @@
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738360</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6a11b92eab30c9d8bc51aca138531278</srcmd5>
+    <version>1.7.1</version>
+    <time>1583311525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1
+ * Bindings for kdf in libsodium
+ * Added extra key validation
+ * Add Crypto_box_easy</comment>
+    <requestid>781216</requestid>
+  </revision>
 </revisionlist>

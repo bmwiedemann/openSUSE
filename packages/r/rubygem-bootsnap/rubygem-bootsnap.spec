@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bootsnap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-bootsnap
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 %define mod_name bootsnap
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.0.0}
+BuildRequires:  %{rubydevel >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/Shopify/bootsnap
+URL:            https://github.com/Shopify/bootsnap
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Boot large ruby/rails apps faster

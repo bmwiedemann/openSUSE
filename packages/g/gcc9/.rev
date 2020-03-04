@@ -188,4 +188,17 @@ release expected in about a week.
   * Includes fix for [gcc#92692]</comment>
     <requestid>768061</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5e7aec65481c27a6722fb308c4ff208d</srcmd5>
+    <version>9.2.1+git1022</version>
+    <time>1583311908</time>
+    <user>dimstar_suse</user>
+    <comment>stage in openSUSE:Factory:Staging:N
+
+- Add libstdc++6-pp provides and conflicts to avoid file conflicts
+  with same minor version of libstdc++6-pp from gcc10.
+
+- Install go tool buildid for bootstrapping go</comment>
+    <requestid>779120</requestid>
+  </revision>
 </revisionlist>

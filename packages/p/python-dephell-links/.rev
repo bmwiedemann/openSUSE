@@ -16,4 +16,13 @@
   * ship tests</comment>
     <requestid>730647</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a578e78267f1f182e1d8dd2fd5c1b9c</srcmd5>
+    <version>0.1.5</version>
+    <time>1583311583</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.1.5:
+  - Fix path-like links for cygwin-like paths on Windows</comment>
+    <requestid>781229</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:12:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.7.1
+ * Bindings for kdf in libsodium
+ * Added extra key validation
+ * Add Crypto_box_easy
+
+-------------------------------------------------------------------
 Mon Oct 14 13:59:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

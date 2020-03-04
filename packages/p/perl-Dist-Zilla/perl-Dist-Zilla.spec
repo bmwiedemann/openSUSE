@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dist-Zilla
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Dist-Zilla
-Version:        6.012
+Version:        6.014
 Release:        0
 %define cpan_name Dist-Zilla
-Summary:        Distribution Builder; Installer Not Included!
+Summary:        Distribution builder; installer not included!
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Dist-Zilla/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -55,9 +55,8 @@ BuildRequires:  perl(Config::MVP::Section) >= 2.200009
 BuildRequires:  perl(Data::Section) >= 0.200002
 BuildRequires:  perl(DateTime) >= 0.44
 BuildRequires:  perl(ExtUtils::Manifest) >= 1.66
-BuildRequires:  perl(File::Copy::Recursive)
+BuildRequires:  perl(File::Copy::Recursive) >= 0.41
 BuildRequires:  perl(File::Find::Rule)
-BuildRequires:  perl(File::HomeDir)
 BuildRequires:  perl(File::ShareDir)
 BuildRequires:  perl(File::ShareDir::Install) >= 0.06
 BuildRequires:  perl(File::pushd)
@@ -80,8 +79,8 @@ BuildRequires:  perl(PPI::Document)
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Path::Tiny) >= 0.052
 BuildRequires:  perl(Perl::PrereqScanner) >= 1.016
-BuildRequires:  perl(Pod::Eventual) >= 0.091480
-BuildRequires:  perl(Software::License) >= 0.101370
+BuildRequires:  perl(Pod::Simple)
+BuildRequires:  perl(Software::License) >= 0.103014
 BuildRequires:  perl(Software::License::None)
 BuildRequires:  perl(Software::LicenseUtils)
 BuildRequires:  perl(String::Formatter) >= 0.100680
@@ -129,9 +128,8 @@ Requires:       perl(Config::MVP::Section) >= 2.200009
 Requires:       perl(Data::Section) >= 0.200002
 Requires:       perl(DateTime) >= 0.44
 Requires:       perl(ExtUtils::Manifest) >= 1.66
-Requires:       perl(File::Copy::Recursive)
+Requires:       perl(File::Copy::Recursive) >= 0.41
 Requires:       perl(File::Find::Rule)
-Requires:       perl(File::HomeDir)
 Requires:       perl(File::ShareDir)
 Requires:       perl(File::ShareDir::Install) >= 0.03
 Requires:       perl(File::pushd)
@@ -154,8 +152,8 @@ Requires:       perl(PPI::Document)
 Requires:       perl(Params::Util)
 Requires:       perl(Path::Tiny) >= 0.052
 Requires:       perl(Perl::PrereqScanner) >= 1.016
-Requires:       perl(Pod::Eventual) >= 0.091480
-Requires:       perl(Software::License) >= 0.101370
+Requires:       perl(Pod::Simple)
+Requires:       perl(Software::License) >= 0.103014
 Requires:       perl(Software::LicenseUtils)
 Requires:       perl(String::Formatter) >= 0.100680
 Requires:       perl(String::RewritePrefix) >= 0.006
@@ -198,11 +196,11 @@ tutorial at *at http://dzil.org/*. If not, try Dist::Zilla::Tutorial.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

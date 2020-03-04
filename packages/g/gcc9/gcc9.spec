@@ -455,7 +455,7 @@ Requires:       libunwind-devel
 %endif
 # Fallback for non-existing Supplements support
 %if %{suse_version} < 1500
-Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
+Requires:       libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
 %endif
 
 %description -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}
@@ -472,7 +472,7 @@ Requires:       libunwind-devel
 %endif
 # Fallback for non-existing Supplements support
 %if %{suse_version} < 1500
-Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix}-32bit = %{version}-%{release}
+Requires:       libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
 %endif
 
 %description -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit
@@ -489,7 +489,7 @@ Requires:       libunwind-devel
 %endif
 # Fallback for non-existing Supplements support
 %if %{suse_version} < 1500
-Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix}-64bit = %{version}-%{release}
+Requires:       libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
 %endif
 
 %description -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit
@@ -501,6 +501,10 @@ Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
+Provides:       libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp
 # packageand() does not work with versioned specifications so the fallback
 # is a Requires from libstdc++-devel to preserve previous behavior.
 %if %{suse_version} >= 1500
@@ -515,6 +519,10 @@ Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
+Provides:       libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-32bit
 # packageand() does not work with versioned specifications so the fallback
 # is a Requires from libstdc++-devel to preserve previous behavior.
 %if %{suse_version} >= 1500
@@ -529,6 +537,10 @@ Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
+Provides:       libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-64bit
 # packageand() does not work with versioned specifications so the fallback
 # is a Requires from libstdc++-devel to preserve previous behavior.
 %if %{suse_version} >= 1500
@@ -2384,7 +2396,6 @@ rm -f %{buildroot}/%{libsubdir}/liblto_plugin.la
 %if %{build_go}
 # gccgo.info isn't properly versioned
 rm %{buildroot}/%{_infodir}/gccgo.info*
-rm -f %{buildroot}/%{libsubdir}/buildid
 rm -f %{buildroot}/%{libsubdir}/test2json
 rm -f %{buildroot}/%{libsubdir}/vet
 %endif
@@ -3133,6 +3144,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc9-locale.lang
 %versmainlib libgo.so
 %versmainlib libgobegin.a
 %versmainlib libgolibbegin.a
+%versmainlibdir/buildid
 %versmainlibdir/cgo
 %dir %mainlibdir/go
 %dir %mainlibdir/go/%{gcc_dir_version}

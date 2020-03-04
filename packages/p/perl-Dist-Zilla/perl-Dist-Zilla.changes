@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar  2 03:07:51 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 6.014
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.014     2020-03-01 04:26:38-05:00 America/New_York
+          - some doc improvements by Shlomi Fish
+          - cope with E<...> in abstracts (thanks, Dave Lambley!)
+          - Respect jobs number in HARNESS_OPTIONS (thanks, Leon Timmermans!)
+          - Add --jobs argument to dzil release (thanks, Leon Timmermans!)
+          - replace uses of File::HomeDir with a simple glob (thanks, Karen
+            Etheridge!)
+          - fix interaction of TRIAL comment and BEGIN block in PkgVersion
+            (thanks, Michael Conrad and Felix Ostmann)
+          - fix documentation for default NextRelease format (thanks, Dan Book!)
+          - the build directory is also added to @INC when evaluating 'dzil
+            authordeps --missing' (thanks, Karen Etheridge!)
+          - add comments to generated CPANfile saying "don't edit me!"
+            (thanks Doug Bell)
+          - tests for [CPANFile] (thanks, Daniel Böhmer)
+
+-------------------------------------------------------------------
 Tue Apr 24 05:12:58 UTC 2018 - coolo@suse.com
 
 - updated to 6.012

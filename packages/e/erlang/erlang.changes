@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 13:48:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove conditions and support for openSUSE/SLE < 15
+- Remove not really needed service file _service
+- Convert the dependencies to pkgconfig style ones
+
+-------------------------------------------------------------------
 Wed Feb 19 14:06:40 UTC 2020 - g.santomaggio@gmail.com
 
 - Changes for 22.2.7:

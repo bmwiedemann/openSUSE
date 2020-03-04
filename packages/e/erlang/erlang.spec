@@ -1,7 +1,7 @@
 #
 # spec file for package erlang
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,20 @@
 #
 
 
+%{!?make_build:%{expand: %%global make_build %{make} %%{?_smp_mflags}}}
+%define epmd_home %{_var}/lib/epmd
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
-%if 0%{?rhel} >= 7
-%undefine _missing_build_ids_terminate_build
-%endif
-
-%{!?make_build:%{expand: %%global make_build %%{__make} %%{?_smp_mflags}}}
-
 Name:           erlang
 Version:        22.2.7
 Release:        0
-# not set up to be built with position independend executable support
-#!BuildIgnore:	gcc-PIE
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
-Group:          Development/Languages/Other
-Url:            http://www.erlang.org
+URL:            https://www.erlang.org
 Source0:        https://github.com/erlang/otp/archive/OTP-%{version}.tar.gz
 Source3:        %{name}-rpmlintrc
-Source4:        epmd.init
 Source5:        erlang.sysconfig
 Source6:        macros.erlang
 Source7:        epmd.service
@@ -48,56 +39,31 @@ Source9:        README.SUSE
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
-BuildRequires:  autoconf
-BuildRequires:  gcc-c++
-BuildRequires:  ncurses-devel
-BuildRequires:  openssh
-BuildRequires:  openssl-devel
-BuildRequires:  tcl-devel
-BuildRequires:  tk-devel
-BuildRequires:  unixODBC-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %fillup_prereq
-BuildRequires:  %insserv_prereq
 BuildRequires:  Mesa-devel
+BuildRequires:  autoconf
+BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  fop
-BuildRequires:  dejavu-fonts
+BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 1.6.0
-BuildRequires:  krb5-devel
+BuildRequires:  openssh
+BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
-%if 0%{?suse_version} >= 1220
-BuildRequires:  xsltproc
-%else
-BuildRequires:  libxslt
-%endif
-Requires:       erlang-epmd
-
-%if 0%{?suse_version} >= 1320
 BuildRequires:  wxWidgets-devel >= 3
-%else
-%if 0%{?suse_version} >= 1315
-BuildRequires:  wxWidgets-devel >= 2.8
-%define wx_requires_generator 1
-%else
-BuildRequires:  wxWidgets >= 2.8
-BuildRequires:  wxWidgets-wxcontainer-devel >= 2.8
-%define wx_requires_generator 1
-%endif
-%endif
-
-%if 0%{?wx_requires_generator}
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-%endif
-
-%if 0%{?suse_version} >=1230
+BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(systemd)
-%define have_systemd 1
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(odbc)
+BuildRequires:  pkgconfig(tcl)
+BuildRequires:  pkgconfig(tk)
+# not set up to be built with position independend executable support
+#!BuildIgnore:  gcc-PIE
+Requires:       erlang-epmd
+%if 0%{?rhel} >= 7
+%undefine _missing_build_ids_terminate_build
 %endif
-
-%define epmd_home %{_var}/lib/epmd
 
 %description
 Erlang is a general-purpose programming language and runtime
@@ -107,7 +73,6 @@ systems from Ericsson.
 
 %package debugger
 Summary:        A debugger for debugging and testing of Erlang programs
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-wx = %{version}
 
@@ -116,7 +81,6 @@ A debugger for debugging and testing of Erlang programs.
 
 %package dialyzer
 Summary:        A DIscrepany AnaLYZer for ERlang programs
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-wx = %{version}
 Requires:       graphviz
@@ -126,7 +90,6 @@ A DIscrepany AnaLYZer for ERlang programs.
 
 %package diameter
 Summary:        Main API of the Diameter application
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 
 %description diameter
@@ -136,30 +99,22 @@ RFC 6733.
 
 %package doc
 Summary:        Erlang documentation
-Group:          Development/Languages/Other
-%if 0%{?suse_version}
 Recommends:     %{name} = %{version}
-%endif
 
 %description doc
 Documentation for Erlang.
 
 %package epmd
 Summary:        Erlang Port Mapper daemon
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
-Requires(postun): %insserv_prereq
 Requires(post): %fillup_prereq
-%if 0%{?have_systemd}
 %{?systemd_requires}
-%endif
 
 %description epmd
 The Erlang Port Mapper daemon acts as a name server on all hosts involved in distributed Erlang computations.
 
 %package et
 Summary:        An event tracer for Erlang programs
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-wx = %{version}
 
@@ -168,7 +123,6 @@ An event tracer for Erlang programs.
 
 %package jinterface
 Summary:        Erlang Java Interface
-Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
 Requires:       java >= 1.6.0
 
@@ -177,7 +131,6 @@ JInterface module for accessing erlang from Java
 
 %package reltool
 Summary:        A release management tool
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-wx = %{version}
 
@@ -191,7 +144,6 @@ for generation of customized target systems.
 
 %package observer
 Summary:        A GUI tool for observing an erlang system
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-wx = %{version}
 
@@ -202,7 +154,6 @@ ets or mnesia tables and a frontend for tracing with ttb.
 
 %package src
 Summary:        Erlang/OTP applications sources
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 
 %description src
@@ -212,7 +163,6 @@ embedded systems.
 
 %package debugger-src
 Summary:        Erlang/OTP debugger application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-debugger = %{version}
 
 %description debugger-src
@@ -222,7 +172,6 @@ embedded systems.
 
 %package dialyzer-src
 Summary:        Erlang/OTP dialyzer application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-dialyzer = %{version}
 
 %description dialyzer-src
@@ -232,7 +181,6 @@ embedded systems.
 
 %package diameter-src
 Summary:        Erlang/OTP Diameter application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-diameter = %{version}
 
 %description diameter-src
@@ -242,7 +190,6 @@ embedded systems.
 
 %package et-src
 Summary:        Erlang/OTP et application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-et = %{version}
 
 %description et-src
@@ -252,7 +199,6 @@ embedded systems.
 
 %package jinterface-src
 Summary:        Erlang/OTP jinterface application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-jinterface = %{version}
 
 %description jinterface-src
@@ -262,7 +208,6 @@ embedded systems.
 
 %package reltool-src
 Summary:        Erlang/OTP reltool application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-reltool = %{version}
 
 %description reltool-src
@@ -272,7 +217,6 @@ embedded systems.
 
 %package observer-src
 Summary:        Erlang/OTP observer application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-observer = %{version}
 
 %description observer-src
@@ -281,7 +225,6 @@ They are useful for educational purpose and as a base for creating embedded syst
 
 %package wx-src
 Summary:        Erlang/OTP wx application sources
-Group:          Development/Languages/Other
 Requires:       %{name}-wx = %{version}
 
 %description wx-src
@@ -291,7 +234,6 @@ embedded systems.
 
 %package wx
 Summary:        A library for wxWidgets support in Erlang
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       wxWidgets >= 2.8
 
@@ -302,7 +244,7 @@ A Graphics System used to write platform independent user interfaces.
 %setup -q -n otp-OTP-%{version}
 %patch0 -p1 -b .rpath
 %patch4 -p1
-cp %{S:9} .
+cp %{SOURCE9} .
 
 ./otp_build autoconf
 # enable dynamic linking for ssl
@@ -315,22 +257,12 @@ sed -i 's|WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs`|WX_LIBS="`$WX_CONFIG_WITH_ARGS -
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-# we need build only 1.6 target for java
-# for SLE only
-%if 0%{?sles_version} >= 10 || 0%{?suse_version} >= 1110
-	export JAVAC="javac -source 1.6 -target 1.6"
-%endif
-%if 0%{?suse_version} == 1100 || 0%{?fedora_version} == 9
-export CFLAGS="-fno-strict-aliasing"
-%else
+export JAVAC="javac -source 1.6 -target 1.6"
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%endif
 export CXXFLAGS=$CFLAGS
 
 %configure \
-%if 0%{?have_systemd}
     --enable-systemd \
-%endif
     --with-ssl=%{_prefix} \
     --enable-threads \
     --enable-smp-support \
@@ -346,12 +278,7 @@ export CXXFLAGS=$CFLAGS
 PATH=$PWD/bin:$PATH %make_build docs
 
 %install
-%if 0%{?sles_version} >= 10
-    make DESTDIR=%{buildroot} install
-    make DESTDIR=%{buildroot} install-docs
-%else
-    %make_install install-docs
-%endif
+%make_install install-docs
 
 export TOOLS_VERSION=`ls %{buildroot}%{_libdir}/erlang/lib/ |grep ^tools- | sed "s|tools-||"`
 
@@ -399,49 +326,30 @@ find . -name "start_erl*" | xargs chmod 755
 
 install -d -m 0750        %{buildroot}%{epmd_home}
 install -d -m 0755        %{buildroot}%{_sbindir}
-%if 0%{?have_systemd}
-install -D -m 0644 %{S:7} %{buildroot}%{_unitdir}/epmd.service
-install -D -m 0644 %{S:8} %{buildroot}%{_unitdir}/epmd.socket
-ln -s   /sbin/service     %{buildroot}%{_sbindir}/rcepmd
-%else
-ln -s   /etc/init.d/epmd  %{buildroot}%{_sbindir}/rcepmd
-install -D -m 0755 %{S:4} %{buildroot}/etc/init.d/epmd
-install -D -m 0644 %{S:5} %{buildroot}%{_fillupdir}/sysconfig.erlang
-%endif
-install -D -m 0644 %{S:6} %{buildroot}%{_sysconfdir}/rpm/macros.erlang
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/epmd.service
+install -D -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/epmd.socket
+ln -s   service     %{buildroot}%{_sbindir}/rcepmd
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/rpm/macros.erlang
 
 %pre epmd
-getent group epmd || /usr/sbin/groupadd -r epmd || :
-getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port Mapper Daemon" -d %{epmd_home} epmd || :
-%if 0%{?have_systemd}
+getent group epmd || %{_sbindir}/groupadd -r epmd
+getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Port Mapper Daemon" -d %{epmd_home} epmd
 %service_add_pre epmd.service epmd.socket
-%endif
 
 %post epmd
 %fillup_only erlang
-%if 0%{?have_systemd}
 %service_add_post epmd.service epmd.socket
-%endif
 
 %preun epmd
-%if 0%{?have_systemd}
 %service_del_preun epmd.service epmd.socket
-%endif
-%stop_on_removal epmd
 
 %postun epmd
-%if 0%{?have_systemd}
 %service_del_postun epmd.service epmd.socket
-%endif
-%restart_on_update epmd
-%{insserv_cleanup}
 
 %files
 %license LICENSE.txt
 %doc AUTHORS README
-%if 0%{?have_systemd}
 %doc README.SUSE
-%endif
 %doc %{_libdir}/erlang/PR.template
 %doc %{_libdir}/erlang/README.md
 %doc %{_libdir}/erlang/COPYRIGHT
@@ -490,7 +398,7 @@ getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port
 %{_libdir}/erlang/lib/tools-*/
 %{_libdir}/erlang/lib/xmerl-*/
 %{_libdir}/erlang/man/
-%{_mandir}/man1/*.1.gz
+%{_mandir}/man1/*.1%{?ext_man}
 %{_libdir}/erlang/releases/
 %{_libdir}/erlang/usr/
 %{_libdir}/erlang/Install
@@ -498,12 +406,10 @@ getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port
 %config %{_sysconfdir}/rpm/macros.erlang
 
 %files debugger
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/debugger-*/
 %exclude %{_libdir}/erlang/lib/debugger-*/src
 
 %files dialyzer
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/dialyzer-*/
 %exclude %{_libdir}/erlang/lib/dialyzer-*/src
 %{_bindir}/dialyzer
@@ -511,7 +417,6 @@ getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port
 %{_libdir}/erlang/erts-*/bin/dialyzer
 
 %files diameter
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/diameter-*/
 %exclude %{_libdir}/erlang/lib/diameter-*/src
 
@@ -520,48 +425,36 @@ getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port
 %doc erlang_doc/*
 
 %files et
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/et-*/
 %exclude %{_libdir}/erlang/lib/et-*/src
 
 %files epmd
-%defattr(-,root,root)
 %{_bindir}/epmd
 %{_libdir}/erlang/bin/epmd
 %{_libdir}/erlang/erts-*/bin/epmd
 %dir %attr(-,epmd,epmd) %{epmd_home}
-%if 0%{?have_systemd}
 %{_unitdir}/epmd.service
 %{_unitdir}/epmd.socket
-%else
-/etc/init.d/epmd
-%{_fillupdir}/sysconfig.erlang
-%endif
 %{_sbindir}/rcepmd
 
 %files jinterface
-%defattr(-,root,root,-)
 %{_libdir}/erlang/lib/jinterface-*/
 %exclude %{_libdir}/erlang/lib/jinterface-*/java_src
 %{_javadir}/*
 
 %files reltool
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/reltool-*/
 %exclude %{_libdir}/erlang/lib/reltool-*/src
 
 %files observer
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/observer-*/
 %exclude %{_libdir}/erlang/lib/observer-*/src
 
 %files wx
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/wx-*/
 %exclude %{_libdir}/erlang/lib/wx-*/src
 
 %files src
-%defattr(-,root,root)
 %exclude %{_libdir}/erlang/lib/erl_interface-*/src/INSTALL
 %{_libdir}/erlang/lib/*/src
 %{_libdir}/erlang/lib/*/c_src
@@ -576,35 +469,27 @@ getent passwd epmd || /usr/sbin/useradd -g epmd -s /bin/false -r -c "Erlang Port
 %exclude %{_libdir}/erlang/lib/wx-*/src
 
 %files debugger-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/debugger-*/src
 
 %files dialyzer-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/dialyzer-*/src
 
 %files diameter-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/diameter-*/src
 
 %files et-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/et-*/src
 
 %files jinterface-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/jinterface-*/java_src
 
 %files reltool-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/reltool-*/src
 
 %files observer-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/observer-*/src
 
 %files wx-src
-%defattr(-,root,root)
 %{_libdir}/erlang/lib/wx-*/src
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 25 13:44:51 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add libstdc++6-pp provides and conflicts to avoid file conflicts
+  with same minor version of libstdc++6-pp from gcc10.
+
+-------------------------------------------------------------------
+Wed Feb 12 09:16:06 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Install go tool buildid for bootstrapping go
+
+-------------------------------------------------------------------
 Tue Jan 28 10:14:36 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to releases/gcc-9 head (83f65674e78d97d27537361de1a9d74067ff228d).
