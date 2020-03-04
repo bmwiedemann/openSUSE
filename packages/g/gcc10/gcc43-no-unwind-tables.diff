@@ -1,0 +1,13 @@
+Index: libgcc/Makefile.in
+===================================================================
+--- libgcc/Makefile.in.orig	2015-12-14 11:33:03.225790694 +0100
++++ libgcc/Makefile.in	2015-12-17 15:09:45.415136693 +0100
+@@ -301,7 +301,7 @@ CRTSTUFF_CFLAGS = -O2 $(GCC_CFLAGS) $(INCLUDES) $(MULTILIB_CFLAGS) -g0 \
+   $(NO_PIE_CFLAGS) -finhibit-size-directive -fno-inline -fno-exceptions \
+   -fno-zero-initialized-in-bss -fno-toplevel-reorder -fno-tree-vectorize \
+   -fbuilding-libgcc -fno-stack-protector $(FORCE_EXPLICIT_EH_REGISTRY) \
+-  $(INHIBIT_LIBC_CFLAGS) $(USE_TM_CLONE_REGISTRY)
++  $(INHIBIT_LIBC_CFLAGS) $(USE_TM_CLONE_REGISTRY) -fno-unwind-tables -fno-asynchronous-unwind-tables
+ 
+ # Extra flags to use when compiling crt{begin,end}.o.
+ CRTSTUFF_T_CFLAGS =

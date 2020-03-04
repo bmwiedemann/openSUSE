@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Tue Feb 25 13:43:17 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add libstdc++6-pp provides and conflicts to avoid file conflicts
+  with same minor version of libstdc++6-pp from gcc9.
+
+-------------------------------------------------------------------
+Fri Feb 21 09:58:21 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Disable zstd use for SLES15 and older.
+
+-------------------------------------------------------------------
+Tue Feb 18 15:37:52 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to rfa1160f6e50500aa38162fefb43bfb10c25e0363.
+
+-------------------------------------------------------------------
+Tue Feb 18 13:54:32 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to r33351ff9faa21c4c1af377d661a52ac0ce366db3.
+
+-------------------------------------------------------------------
+Wed Feb 12 08:02:18 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Adjust installed headers for arm and aarch64, enable link-mutex
+  for riscv64.
+
+-------------------------------------------------------------------
+Mon Feb 10 13:52:26 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Don't remove go tool buildid, needed for bootstrapping go
+- Increase disk constraint
+
+-------------------------------------------------------------------
+Thu Feb  6 15:04:02 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to rc940105cc17111be98d8d42ba48a413b0e63aebe.
+
+-------------------------------------------------------------------
+Thu Feb  6 08:30:38 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump libtool version of libgo.
+
+-------------------------------------------------------------------
+Wed Feb  5 15:25:01 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to r269e8130b77065452698ab97e5da77d132d00276.
+
+-------------------------------------------------------------------
+Fri Jan 17 12:01:09 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to r507de5ee23efdc8a16d6b0b6488e118055c711cd.
+
+-------------------------------------------------------------------
+Mon Aug 12 11:31:02 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add lto-dump to cross packages.
+
+-------------------------------------------------------------------
+Mon Aug 12 07:57:52 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- New package, inherits from gcc9
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with
+    earlier mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with
+    host gcc 4.3
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
