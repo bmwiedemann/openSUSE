@@ -1,7 +1,7 @@
 #
 # spec file for package foma
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %define libname	libfoma0
 Name:           foma
-Version:        0.9.18+git20180511.bad2f09
+Version:        0.9.18+git20200221.5e5521e
 Release:        0
 Summary:        Finite-state compiler and C library
 License:        Apache-2.0
-Group:          Productivity/Text/Utilities
 URL:            https://fomafst.github.io/
 # Source must be from git tarball has different license than git, no idea why
 Source0:        foma-%{version}.tar.xz
 Patch0:         foma-harden-build.patch
-Patch1:         foma-fix-sizeof.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
@@ -44,7 +42,6 @@ use of foma, it is sufficiently generic to use for a large number of purposes.
 
 %package -n %{libname}
 Summary:        Finite-state C library
-Group:          System/Libraries
 
 %description -n %{libname}
 The library contains efficient implementations of all classical
@@ -56,7 +53,6 @@ rules, etc.
 
 %package devel
 Summary:        Finite-state C library development files and headers
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -65,14 +61,13 @@ Finite-state C library development files and headers for %{name}.
 %prep
 %setup -q -n %{name}-%{version}/%{name}
 %patch0 -p2
-%patch1 -p2
-sed -i '/^CFLAGS/c\CFLAGS = %{optflags} -Wl,--as-needed -D_GNU_SOURCE -std=c99 -fvisibility=hidden -fPIC' Makefile
+sed -i '/^CFLAGS/c\CFLAGS = %{optflags} -fcommon -Wl,--as-needed -D_GNU_SOURCE -std=c99 -fvisibility=hidden -fPIC' Makefile
 sed -i '/^LDFLAGS/c\LDFLAGS = -lreadline -lz -lreadline -fpic' Makefile
 sed -i '/^FLOOKUPLDFLAGS/c\FLOOKUPLDFLAGS = libfoma.a -lz -fpic' Makefile
 
 %build
 # hand written Makefile that gets to be quite PITA
-make -j1
+%make_build -j1
 
 %install
 %make_install \

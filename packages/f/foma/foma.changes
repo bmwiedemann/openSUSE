@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 02 12:07:36 UTC 2020 - tchvatal@suse.com
+
+- Update to version 0.9.18+git20200221.5e5521e bsc#1160265:
+  * Ignore dylibs
+  * Removed dependency on six
+  * Bugfixes for Python
+  * Added Python 3 port of foma2js.perl
+  * Better py3 compatibility
+  * Add test for apply_down().
+  * Get apply_up() working.
+  * Add simple Python tests.
+  * Port FST.encode() to use correct types for Python 3.
+  * Add Python six 1.11.0 module.
+  * Added TextWrangler codeless language modules.
+  * add object files and many temp files to .gitignore
+  * remove SVN_REV var in Makefile
+- Remove upstream merged patch:
+  * foma-fix-sizeof.patch
+
+-------------------------------------------------------------------
 Thu Sep 27 09:00:24 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add foma-fix-sizeof.patch to fix segfault on 32-bit (boo#1109949)

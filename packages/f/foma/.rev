@@ -15,4 +15,27 @@
     <comment></comment>
     <requestid>638718</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e6b7e0f9a9e991f0b2c11ea5be5a458</srcmd5>
+    <version>0.9.18+git20200221.5e5521e</version>
+    <time>1583311121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.18+git20200221.5e5521e bsc#1160265:
+  * Ignore dylibs
+  * Removed dependency on six
+  * Bugfixes for Python
+  * Added Python 3 port of foma2js.perl
+  * Better py3 compatibility
+  * Add test for apply_down().
+  * Get apply_up() working.
+  * Add simple Python tests.
+  * Port FST.encode() to use correct types for Python 3.
+  * Add Python six 1.11.0 module.
+  * Added TextWrangler codeless language modules.
+  * add object files and many temp files to .gitignore
+  * remove SVN_REV var in Makefile
+- Remove upstream merged patch:
+  * foma-fix-sizeof.patch</comment>
+    <requestid>780929</requestid>
+  </revision>
 </revisionlist>
