@@ -1,7 +1,7 @@
 #
 # spec file for package python-libarchive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.4.7
 Release:        0
 Summary:        Python adapter for universal, libarchive-based archive access
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/dsoprea/PyEasyArchive
 Source:         https://files.pythonhosted.org/packages/source/l/libarchive/libarchive-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +52,8 @@ A ctypes-based adapter to libarchive.
 
 %check
 # https://github.com/dsoprea/PyEasyArchive/issues/33
-%python_expand nosetests-%{$python_bin_suffix} -e test_read_symlinks
+export LANG=en_US.UTF8
+%python_expand nosetests-%{$python_bin_suffix} -v -e test_read_symlinks
 
 %install
 %python_install
