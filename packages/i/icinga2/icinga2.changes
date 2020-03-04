@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 10:56:56 UTC 2020 - ecsos@opensuse.org
+
+- Update to 2.11.3
+  * Bugfixes
+    - Cluster
+      Fix JSON-RPC crashes (#7532) in large environments: #7846 #7848 #7849
+
+-------------------------------------------------------------------
 Mon Jan 13 14:49:05 UTC 2020 - ecsos@opensuse.org
 
 - Set minimum require boost version to 1.66

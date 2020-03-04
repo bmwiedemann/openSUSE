@@ -1,7 +1,7 @@
 #
 # spec file for package icinga2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,7 @@ Group:          System/Monitoring
 %else
 %endif # suse
 Name:           icinga2
-Version:        2.11.2
+Version:        2.11.3
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
@@ -629,7 +629,7 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
@@ -689,7 +689,8 @@ fi
 
 %files bin
 %defattr(-,root,root,-)
-%doc COPYING README.md NEWS AUTHORS CHANGELOG.md
+%license COPYING 
+%doc README.md NEWS AUTHORS CHANGELOG.md
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/sbin
 %{_libdir}/%{name}/sbin/%{name}
@@ -700,7 +701,8 @@ fi
 
 %files common
 %defattr(-,root,root,-)
-%doc COPYING README.md NEWS AUTHORS CHANGELOG.md tools/syntax
+%license COPYING 
+%doc README.md NEWS AUTHORS CHANGELOG.md tools/syntax
 %{_sysconfdir}/bash_completion.d/%{name}
 %attr(0750,%{icinga_user},%{icinga_group}) %dir %{_datadir}/%{name}/include
 %{_datadir}/%{name}/include/*
@@ -712,14 +714,16 @@ fi
 
 %files ido-mysql
 %defattr(-,root,root,-)
-%doc COPYING README.md NEWS AUTHORS CHANGELOG.md
+%license COPYING 
+%doc README.md NEWS AUTHORS CHANGELOG.md
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/%{name}/features-available/ido-mysql.conf
 %{_libdir}/%{name}/libmysql_shim*
 %{_datadir}/icinga2-ido-mysql
 
 %files ido-pgsql
 %defattr(-,root,root,-)
-%doc COPYING README.md NEWS AUTHORS CHANGELOG.md
+%license COPYING 
+%doc README.md NEWS AUTHORS CHANGELOG.md
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/%{name}/features-available/ido-pgsql.conf
 %{_libdir}/%{name}/libpgsql_shim*
 %{_datadir}/icinga2-ido-pgsql
