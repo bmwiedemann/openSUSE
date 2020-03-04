@@ -587,4 +587,18 @@
   * encourage admins to use the su directive in logrotate.8 man page (#236)</comment>
     <requestid>761751</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8fb8ab66014478ac092afd04fe46a5a5</srcmd5>
+    <version>3.16.0</version>
+    <time>1583311109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.16.0 bsc#1160281:
+  * fix compilation with gcc-10, which defaults to -fno-common (#288)
+  * reduce number of open() operations on state file (#282)
+  * validate user/group given to the su directive early (#276)
+  * add hardening options to systemd unit file in examples (#274, #291)
+  * fix crash of logrotate on invalid configuration with include (#271)
+  * fix heap buffer overflow on too long logfile extension (#270)</comment>
+    <requestid>780927</requestid>
+  </revision>
 </revisionlist>

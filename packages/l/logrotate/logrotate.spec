@@ -17,7 +17,7 @@
 
 
 Name:           logrotate
-Version:        3.15.1
+Version:        3.16.0
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:04:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.16.0 bsc#1160281:
+  * fix compilation with gcc-10, which defaults to -fno-common (#288)
+  * reduce number of open() operations on state file (#282)
+  * validate user/group given to the su directive early (#276)
+  * add hardening options to systemd unit file in examples (#274, #291)
+  * fix crash of logrotate on invalid configuration with include (#271)
+  * fix heap buffer overflow on too long logfile extension (#270)
+
+-------------------------------------------------------------------
 Wed Jan  8 08:28:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.15.1:
