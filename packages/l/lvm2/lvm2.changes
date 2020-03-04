@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 27 09:36:00 UTC 2020 - heming.zhao@suse.com
+
+- vgreduce --removemissing with cache devices will remove lvs (bsc#1157736)
+  + bug-1157736-add-suggestion-message-for-mirror-LVs.patch
+
+-------------------------------------------------------------------
 Thu Jan  9 10:00:30 UTC 2020 - ghe@suse.com
 
 - Update lvm.conf file (bsc#1159238)

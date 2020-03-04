@@ -92,6 +92,7 @@ Patch0034:      bug-1150021_03-label-Use-bcache_abort_fd-to-ensure-blocks-are-no
 Patch0035:      bug-1150021_04-bcache-add-unit-test.patch
 Patch0036:      bug-1150021_05-bcache-bcache_invalidate_fd-only-remove-prefixes-on.patch
 Patch0037:      bug-1150021_06-fix-dev_unset_last_byte-after-write-error.patch
+Patch0038:      bug-1157736-add-suggestion-message-for-mirror-LVs.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -182,6 +183,7 @@ Volume Manager.
 %patch0035 -p1
 %patch0036 -p1
 %patch0037 -p1
+%patch0038 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

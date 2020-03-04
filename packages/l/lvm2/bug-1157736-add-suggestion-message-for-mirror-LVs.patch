@@ -1,0 +1,30 @@
+From d53bfae273677975bd805bfaa3d7e7cd995aaa52 Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Wed, 15 Jan 2020 02:44:30 +0000
+Subject: [PATCH] add suggestion message for mirror LVs
+
+Currently the error messages are not clear. This very easy to
+guide user to execute "--removemissing --force", it is dangerous
+and will make the LVs to be destroied.
+
+Signed-off-by: Zhao Heming <heming.zhao@suse.com>
+---
+ tools/vgreduce.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/vgreduce.c b/tools/vgreduce.c
+index b001ccb..4a4202e 100644
+--- a/tools/vgreduce.c
++++ b/tools/vgreduce.c
+@@ -67,6 +67,8 @@ static int _consolidate_vg(struct cmd_context *cmd, struct volume_group *vg)
+ 		cmd->handles_missing_pvs = 1;
+ 		log_error("There are still partial LVs in VG %s.", vg->name);
+ 		log_error("To remove them unconditionally use: vgreduce --removemissing --force.");
++		log_error("To remove them unconditionally from mirror LVs use: vgreduce"
++				  " --removemissing --mirrorsonly --force.");
+ 		log_warn("WARNING: Proceeding to remove empty missing PVs.");
+ 	}
+ 
+-- 
+1.8.3.1
+
