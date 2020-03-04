@@ -17,7 +17,7 @@
 
 
 Name:           orion
-Version:        1.6.7+git~20200130
+Version:        1.6.7+git~20200218
 Release:        0
 Summary:        Twitch stream client using Qt
 License:        GPL-3.0-only
