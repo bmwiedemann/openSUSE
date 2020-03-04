@@ -1,7 +1,7 @@
 #
 # spec file for package fvwm2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -96,6 +96,9 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+
+# missed main manual page
+install -m 644 doc/fvwm/fvwm.1 %{buildroot}%{_mandir}/man1
 
 # default config
 install -d -m 755 %{buildroot}%{_sysconfdir}/X11/fvwm2
