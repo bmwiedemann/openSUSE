@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  2 16:39:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.8
+  * esptool.py image_info now prints a summary of segment memory types
+    (IRAM, DRAM, etc) based on the address range.
+  * esptool.py write_flash will warn if it looks like a bootloader binary 
+    is built for ESP32-S2 or another newer chip (support for flashing 
+    ESP32-S2 will be added in a future version.)
+  * few bugfixes
+
+-------------------------------------------------------------------
 Fri Sep 13 07:57:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.7:

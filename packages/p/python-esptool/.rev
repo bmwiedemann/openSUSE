@@ -35,4 +35,12 @@
     to the bootloader offset isn't a valid image file for the chip</comment>
     <requestid>730626</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a699cf672ba49957bc3bc0480e722cfb</srcmd5>
+    <version>2.8</version>
+    <time>1583311172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781109</requestid>
+  </revision>
 </revisionlist>
