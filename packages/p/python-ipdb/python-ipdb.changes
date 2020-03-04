@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:35:47 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.13.2
+  * Remove leftover debug code
+- Update to 0.13.1
+  * Fix when no configuration file
+- Update to 0.13.0
+  *  Add option to set context via environment variable or configuration file.
+
+-------------------------------------------------------------------
 Fri Jan  3 01:26:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.12.3
