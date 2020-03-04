@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/apache/commons-ognl.git</param>
+		<param name="revision">51cf8f4</param>
+		<param name="versionformat">51cf8f4</param>
+		<param name="filename">commons-ognl</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>
