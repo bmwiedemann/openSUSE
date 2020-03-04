@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:07:22 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add tcp_diag, needed by openslp
+
+-------------------------------------------------------------------
 Tue Feb 18 13:38:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add the brd module, used by the LTP testsuite and tiny

@@ -53,7 +53,7 @@ ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage
 %define networking \
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \
 ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
-nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.*
+nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.* tcp_diag
 
 %define modules %usb_modules %net_drivers %scsi_modules %block_drivers \
                 %hyperv_modules %virtio_modules %vmware_modules %xen_modules \
