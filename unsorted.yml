@@ -4724,7 +4724,6 @@ unsorted:
   - goldendict 
   - goldendict-lang 
   - gom-devel 
-  - gonvert 
   - goobox 
   - goobox-lang 
   - goocanvas-devel 
@@ -5837,7 +5836,6 @@ unsorted:
   - jansi-native-javadoc 
   - jarjar 
   - jarjar-javadoc 
-  - jasper 
   - jatl 
   - jatl-javadoc 
   - java-11-openj9: [x86_64] 
@@ -6158,7 +6156,6 @@ unsorted:
   - julia-debug 
   - julia-devel 
   - julia-doc 
-  - jumpnbump 
   - junit 
   - junit-javadoc 
   - junit-manual 
@@ -9703,9 +9700,6 @@ unsorted:
   - libjackserver0 
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
-  - libjasper-devel 
-  - libjasper4 
-  - libjasper4-32bit: [x86_64] 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjaylink 
   - libjaylink-devel 
