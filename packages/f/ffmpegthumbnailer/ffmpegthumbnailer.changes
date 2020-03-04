@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:23:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix cmake call
+
+-------------------------------------------------------------------
+Mon Mar  2 12:29:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use correct url for sources
+- Use modern cmake macro for building
+
+-------------------------------------------------------------------
+Sun Mar  1 21:40:35 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.2:
+  * Requires cmake >= 3.12.
+  * Removed unstable continuous thumbnail creation.
+- Add ffmpegthumbnailer-cmake-updates.patch: Update CMakeLists.txt
+  for new cmake version.
+- Changes from version 2.2.1: 
+  * CMake improvements: required CMake version is now 3.5 or newer.
+  * Fix anamorphic height.
+  * Fix libffmpegthumbnailer.pc to work with multilib systems.
+  * Fix rotation of 180° rotated videos.
+  * Fix prefer_embedded_metadata in c api.
+  * Fix crash when setting a log callback using the c api.
+  * Check for https as well when skipping stat call.
+  * Support specifying the size as string using the c api.
+  * Support raw rgb data as image type.
+  * Print warnings on stderr instead of stdout.
+  * Support for continuous thumbnail creation.
+
+-------------------------------------------------------------------
 Fri May 26 14:28:16 UTC 2017 - jengelh@inai.de
 
 - Trim filler wording from description.

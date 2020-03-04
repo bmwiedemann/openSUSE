@@ -1,6 +1,7 @@
 #
 # spec file for package ffmpegthumbnailer
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -13,20 +14,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.links2linux.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname  4
 Name:           ffmpegthumbnailer
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        Video thumbnailer that can be used by file managers
-License:        GPL-2.0+
-Group:          Productivity/Graphics/Viewers
-Url:            https://github.com/dirkvdb/ffmpegthumbnailer
+License:        GPL-2.0-or-later
+URL:            https://github.com/dirkvdb/ffmpegthumbnailer
 Source:         https://github.com/dirkvdb/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake >= 2.8
+#PATCH-FIX-UPSTREAM ffmpegthumbnailer-cmake-updates.patch dirk.vdb@gmail.com -- Update CMakeLists.txt for new cmake version.
+Patch0:         ffmpegthumbnailer-cmake-updates.patch
+BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -38,7 +40,6 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This video thumbnailer can be used to create thumbnails for
@@ -51,7 +52,6 @@ developers to generate thumbnails in their projects.
 
 %package -n lib%{name}%{soname}
 Summary:        Video thumbnail generator
-Group:          System/Libraries
 
 %description -n lib%{name}%{soname}
 Video thumbnailer that can be used by file managers.
@@ -61,7 +61,6 @@ files. The thumbnailer uses ffmpeg to decode frames from files.
 
 %package -n lib%{name}-devel
 Summary:        Development files for ffmpegthumbnailer
-Group:          Development/Languages/C and C++
 Requires:       libffmpegthumbnailer%{soname} = %{version}
 
 %description -n lib%{name}-devel
@@ -71,7 +70,7 @@ This video thumbnailer can be used to create thumbnails for video
 files. The thumbnailer uses ffmpeg to decode frames from files.
 
 %prep
-%setup -q
+%autosetup -p1
 chmod 644 AUTHORS README
 
 %build
@@ -79,7 +78,7 @@ chmod 644 AUTHORS README
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_GIO=ON \
   -DENABLE_THUMBNAILER=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -88,20 +87,18 @@ chmod 644 AUTHORS README
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
-%{_mandir}/man1/*.1%{ext_man}
+%license COPYING
+%doc AUTHORS ChangeLog README
+%{_mandir}/man1/*.1%{?ext_man}
 %{_bindir}/%{name}
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/%{name}.thumbnailer
 
 %files -n lib%{name}%{soname}
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so.%{soname}
 %{_libdir}/lib%{name}.so.%{soname}.*
 
 %files -n lib%{name}-devel
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so
 %dir %{_includedir}/lib%{name}
 %{_includedir}/lib%{name}/*.h

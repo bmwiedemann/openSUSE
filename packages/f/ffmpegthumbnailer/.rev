@@ -15,4 +15,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>509957</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d65202e61009bd69c7272178dac7b33f</srcmd5>
+    <version>2.2.2</version>
+    <time>1583311163</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix cmake call
+
+- Use correct url for sources
+- Use modern cmake macro for building
+
+- Updated to version 2.2.2:
+  * Requires cmake &gt;= 3.12.
+  * Removed unstable continuous thumbnail creation.
+- Add ffmpegthumbnailer-cmake-updates.patch: Update CMakeLists.txt
+  for new cmake version.
+- Changes from version 2.2.1: 
+  * CMake improvements: required CMake version is now 3.5 or newer.
+  * Fix anamorphic height.
+  * Fix libffmpegthumbnailer.pc to work with multilib systems.
+  * Fix rotation of 180° rotated videos.
+  * Fix prefer_embedded_metadata in c api.
+  * Fix crash when setting a log callback using the c api.
+  * Check for https as well when skipping stat call.
+  * Support specifying the size as string using the c api.
+  * Support raw rgb data as image type.
+  * Print warnings on stderr instead of stdout.
+  * Support for continuous thumbnail creation.</comment>
+    <requestid>781132</requestid>
+  </revision>
 </revisionlist>
