@@ -2532,4 +2532,22 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Corrected ellipse orientation when computing image moments.</comment>
     <requestid>778702</requestid>
   </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>52355171f74e35623ea68d647afcda21</srcmd5>
+    <version>7.0.9.27</version>
+    <time>1583311104</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.9.27
+  * Make sure we can grok this Fx expression: 1- -2.
+  * Do not advance when substituting a NULL string.
+  * Correct alpha for named colors in the Q32 non-HDRI build.
+  * Write Group4 compressed image as a single strip.
+  * No percent sign in lab() color.
+  * Introducing the -color-threshold command-line option.
+  * Handle out of range HDRI values for -statistic option (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=37589).
+  * Fix improper casting when computing image signature (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=37594).</comment>
+    <requestid>780915</requestid>
+  </revision>
 </revisionlist>
