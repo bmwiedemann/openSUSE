@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-html
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ansi2html
-Requires:       python-pytest >= 3.0
+Requires:       python-pytest >= 5.0
 Requires:       python-pytest-metadata
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ansi2html}
-BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module pytest-metadata}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
