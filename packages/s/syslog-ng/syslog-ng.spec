@@ -261,7 +261,7 @@ done
 %endif
 
 # fix python
-sed -i 's|^#!/usr/bin/env python|#!/usr/bin/python3|' lib/merge-grammar.py
+sed -i 's|^#\s*!/usr/bin/env python|#!%{_bindir}/python|' lib/merge-grammar.py
 
 %build
 ##
