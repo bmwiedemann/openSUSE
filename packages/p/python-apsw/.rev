@@ -56,4 +56,15 @@
  * Updated Connection.config() with all current SQLITE_DBCONFIG constants</comment>
     <requestid>770089</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>82afdeb46c50e96e36f0b7e8af9d79d0</srcmd5>
+    <version>3.31.1_r1</version>
+    <time>1583311186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the sqlite dependency
+- Update to 3.31.1:
+  * Fix deprecated universal newline use in shell (#283)
+  * Shell now uses pragma function_list to get list of functions for tab completion</comment>
+    <requestid>781138</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:44:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the sqlite dependency
+- Update to 3.31.1:
+  * Fix deprecated universal newline use in shell (#283)
+  * Shell now uses pragma function_list to get list of functions for tab completion
+
+-------------------------------------------------------------------
 Tue Feb  4 19:50:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.30.1-r1
@@ -6,7 +14,6 @@ Tue Feb  4 19:50:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
        0001-py3.8-avoid-invalid-escapes.patch
  * Updated hashing of SQL statements
  * Updated Connection.config() with all current SQLITE_DBCONFIG constants
-
 
 -------------------------------------------------------------------
 Tue Sep 10 13:32:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
