@@ -1,7 +1,7 @@
 #
 # spec file for package pgloader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,13 @@ License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            https://pgloader.io
 Source0:        https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
+# Fix compilation errors with sbcl 2.0.1
+Source1:        https://github.com/cffi/cffi/archive/v0.21.0.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sbcl
+BuildRequires:  pkgconfig(sqlite3)
 %if 0%{?leap_version} >= 430000 || 0%{?suse_version} > 4300
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libopenssl)
@@ -37,7 +40,6 @@ BuildRequires:  pkgconfig(zlib)
 %else
 BuildRequires:  libopenssl-devel
 %endif
-BuildRequires:  pkgconfig(sqlite3)
 
 %description
 pgloader imports data from different kind of sources and COPY it into
@@ -55,6 +57,10 @@ from the pgloader command directly.
 
 %prep
 %setup -q -n %{name}-bundle-%{version}
+# clean up old cffi
+rm -rf software/cffi_0.20.0
+# expand new cffi in place
+tar -C software -xf %{SOURCE1}
 
 %build
 export CCFLAGS="%{_optflags}"
