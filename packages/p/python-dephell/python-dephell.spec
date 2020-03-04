@@ -1,7 +1,7 @@
 #
 # spec file for package python-dephell
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-Name:           python-dephell
-Version:        0.7.9
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-dephell%{psuffix}
+Version:        0.8.1
 Release:        0
 Summary:        Dependency resolution for Python
 License:        MIT
@@ -31,13 +39,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Cerberus
+Requires:       python-Cerberus >= 1.3
 Requires:       python-Jinja2
 Requires:       python-aiohttp
 Requires:       python-appdirs
-Requires:       python-attrs
+Requires:       python-attrs >= 19.2.0
 Requires:       python-bowler
 Requires:       python-dephell-archive >= 0.1.5
+Requires:       python-dephell-argparse >= 0.1.1
 Requires:       python-dephell-discover >= 0.2.6
 Requires:       python-dephell-licenses >= 0.1.6
 Requires:       python-dephell-links >= 0.1.4
@@ -48,6 +57,7 @@ Requires:       python-dephell-shells >= 0.1.3
 Requires:       python-dephell-specifier >= 0.1.7
 Requires:       python-dephell-venvs >= 0.1.16
 Requires:       python-dephell-versioning
+Requires:       python-dephell_changelogs
 # Yeah, html5lib is required by dephell, and no, autodiscovery won’t find it.
 # rpmlint is stupid
 Requires:       python-docker
@@ -73,6 +83,7 @@ Suggests:       python-autopep8
 Suggests:       python-yapf
 BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Cerberus}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module aiohttp}
@@ -81,6 +92,7 @@ BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module bowler}
 BuildRequires:  %{python_module dephell-archive >= 0.1.5}
+BuildRequires:  %{python_module dephell-argparse >= 0.1.1}
 BuildRequires:  %{python_module dephell-discover >= 0.2.6}
 BuildRequires:  %{python_module dephell-licenses >= 0.1.6}
 BuildRequires:  %{python_module dephell-links >= 0.1.4}
@@ -91,10 +103,12 @@ BuildRequires:  %{python_module dephell-shells >= 0.1.3}
 BuildRequires:  %{python_module dephell-specifier >= 0.1.7}
 BuildRequires:  %{python_module dephell-venvs >= 0.1.16}
 BuildRequires:  %{python_module dephell-versioning}
+BuildRequires:  %{python_module dephell_changelogs}
 BuildRequires:  %{python_module dockerpty}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module fissix}
 BuildRequires:  %{python_module flatdict}
+BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module m2r}
 BuildRequires:  %{python_module packaging}
@@ -109,6 +123,8 @@ BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module tomlkit}
 BuildRequires:  %{python_module yaspin}
 BuildRequires:  git-core
+BuildRequires:  graphviz-gnome
+%endif
 # /SECTION
 %python_subpackages
 
@@ -126,19 +142,24 @@ find tests -type d -name __pycache__ | xargs rm -rf
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # Emulate Travis, which disables tests which expect a git repository
 export TRAVIS_OS_NAME=1
-# Failing tests dicsussed on gh#dephell/dephell_setuptools#4
-%pytest --no-network -k 'not (test_load or test_repository_preserve or test_idempotency or test_get_deps_auth or test_get_deps or test_extra or test_get_releases or test_info_from_files or test_deps_file or test_preserve_path or test_git_parsing or test_bump_command_with_placeholder_tag or test_inspect_venv_command)'
+%pytest --no-network
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc README.md README.rst
 %license LICENSE
 %python3_only %{_bindir}/dephell
 %{python_sitelib}/*
+%endif
 
 %changelog

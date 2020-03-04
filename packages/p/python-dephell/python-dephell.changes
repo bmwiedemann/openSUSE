@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar  2 15:11:12 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+Upgrade to 0.8.1:
+  - New commands: dephell package changelog, dephell package bug,
+    dephell jail show, dephell inspect versioning.
+  - Experimental Windows support. Test it and contribute! (#343).
+    Special thanks to @espdev who has done almost all the
+    migration.
+  - Lazy imports. About 10 dependencies were converted into
+    optional and will be installed by-demand. Installation with
+    curl -L dephell.org/install | python3 isn't affected. (#349)
+  - Support new pip (362) and lock older pip because a new one is
+    broken (#363)
+  - Rewritten installer (#365, #355)
+  - Meet dephell_argparse (#317).
+  - Meet DepHell-powered projects list (#339)
+  - Rename dephell autocomplete into dephell self autocomplete,
+    and dephell auth into dephell self auth (#321).
+  - Support allow-prereleases key from Poetry 1.0.0 (#323)
+  - From now DepHell will not be tested on Python 3.5
+    installation because nobody installs DepHell on Python 3.5
+    (#334).
+- Switch to the multibuild, separating testing run.
+- And now whole test suite passes. Yay!
+
+-------------------------------------------------------------------
 Wed Dec 18 15:16:28 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Don't remove the failing network tests, use --no-network.
