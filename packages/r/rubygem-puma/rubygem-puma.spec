@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-puma
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma
-Version:        4.3.1
+Version:        4.3.3
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,7 @@ BuildRequires:  %{rubydevel >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://puma.io
+URL:            http://puma.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-puma-rpmlintrc
 Source2:        gem2rpm.yml
