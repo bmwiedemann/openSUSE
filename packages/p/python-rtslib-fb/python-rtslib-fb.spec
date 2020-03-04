@@ -1,7 +1,7 @@
 #
 # spec file for package python-rtslib-fb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define dbdir %{_sysconfdir}/target
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rtslib-fb
-Version:        2.1.70
+Version:        2.1.71
 Release:        0%{?dist}
 Summary:        API for Linux kernel SCSI target (aka LIO)
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/open-iscsi/rtslib-fb.git
+URL:            https://github.com/open-iscsi/rtslib-fb.git
 Source:         %{name}-v%{version}.tar.xz
 Patch1:         rbd-support.patch
 BuildRequires:  %{python_module pyudev}
@@ -83,7 +83,8 @@ install -d -m755 %{buildroot}/%{dbdir}/alua
 %files %{python_files}
 %python_alternative %{_bindir}/targetctl
 %{python_sitelib}/*
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %doc %python_alternative %{_mandir}/man5/saveconfig.json.5.gz
 %doc %python_alternative %{_mandir}/man8/targetctl.8.gz
 %dir %{dbdir}

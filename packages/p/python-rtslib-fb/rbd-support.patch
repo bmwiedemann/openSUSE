@@ -8,12 +8,10 @@ https://marc.info/?l=ceph-devel&m=143816209010058
 
 Reviewed-by: David Disseldorp <ddiss@suse.de>
 ---
- rtslib/__init__.py |   1 +
- rtslib/tcm.py      | 103 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ rtslib/__init__.py |    1 
+ rtslib/tcm.py      |  103 +++++++++++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 104 insertions(+)
 
-diff --git a/rtslib/__init__.py b/rtslib/__init__.py
-index 568619e..1a5bee5 100644
 --- a/rtslib/__init__.py
 +++ b/rtslib/__init__.py
 @@ -32,6 +32,7 @@ from .fabric import FabricModule
@@ -24,11 +22,9 @@ index 568619e..1a5bee5 100644
  from .tcm import StorageObjectFactory
  
  from .alua import ALUATargetPortGroup
-diff --git a/rtslib/tcm.py b/rtslib/tcm.py
-index 1aeea23..17df8e9 100644
 --- a/rtslib/tcm.py
 +++ b/rtslib/tcm.py
-@@ -780,6 +780,107 @@ class BlockStorageObject(StorageObject):
+@@ -801,6 +801,107 @@ class BlockStorageObject(StorageObject):
          d['dev'] = self.udev_path
          return d
  
@@ -136,7 +132,7 @@ index 1aeea23..17df8e9 100644
  
  class UserBackedStorageObject(StorageObject):
      '''
-@@ -897,6 +998,7 @@ so_mapping = {
+@@ -940,6 +1041,7 @@ so_mapping = {
      "fileio": FileIOStorageObject,
      "iblock": BlockStorageObject,
      "block": BlockStorageObject,
@@ -144,7 +140,7 @@ index 1aeea23..17df8e9 100644
      "user": UserBackedStorageObject,
  }
  
-@@ -907,6 +1009,7 @@ bs_params = {
+@@ -950,6 +1052,7 @@ bs_params = {
      FileIOStorageObject: dict(name='fileio'),
      BlockStorageObject: dict(name='block', alt_dirprefix='iblock'),
      UserBackedStorageObject: dict(name='user'),
@@ -152,6 +148,3 @@ index 1aeea23..17df8e9 100644
      }
  
  bs_cache = {}
--- 
-2.13.6
-
