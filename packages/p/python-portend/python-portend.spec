@@ -1,7 +1,7 @@
 #
 # spec file for package python-portend
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/portend
 Source:         https://files.pythonhosted.org/packages/source/p/portend/portend-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tempora}
+BuildRequires:  %{python_module tempora >= 1.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-tempora
+Requires:       python-tempora >= 1.8
 BuildArch:      noarch
 %python_subpackages
 
