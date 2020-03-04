@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 06:50:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.7:
+  * Add Match Host support to ssh config
+
+-------------------------------------------------------------------
 Mon Feb 17 09:58:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0.6:
