@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  3 11:46:04 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 2.1.5
+  * [bugfix] reset bom flag on each checking call
+    (nkf-bug#34797)
+  * [bugfix] nkf32.dll: SetNkfOption can't correctly specify
+    options for multiple options
+  * [bugfix] add document about multiple options
+    (nkf-bug#32974)
+  * [bugfix] Split install into -main, -man, -man-ja
+    (nkf-bug#34250)
+  * [bugfix] add LDFLAGS (nkf-bug#32639)
+  * [bugfix] fix pod2man doesn't through non ASCII
+    (nkf-bug#32546)
+
+-------------------------------------------------------------------
 Fri Mar  6 10:12:37 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 2.1.3

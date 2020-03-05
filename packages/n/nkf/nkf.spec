@@ -1,7 +1,7 @@
 #
 # spec file for package nkf
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           nkf
-License:        BSD-3-Clause
-Group:          System/I18n/Japanese
 Requires:       perl = %{perl_version}
 Provides:       locale(ja)
-Version:        2.1.3
+Version:        2.1.5
 Release:        0
-Url:            http://sourceforge.jp/projects/nkf/
+URL:            http://sourceforge.jp/projects/nkf/
 #             http://www01.tcp-ip.or.jp/~furukawa/nkf_utf8/
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -48,6 +46,8 @@ Summary:        Network Kanji Code Conversion Filter
 #     Itaru ICHIKAWA <ichikawa@flab.fujitsu.co.jp>
 #     Akihiko Kuroe <a_kuroe@hoffman.cc.sophia.ac.jp>
 #     Shinji KONO  <kono@ie.u-ryukyu.ac.jp>
+License:        BSD-3-Clause
+Group:          System/I18n/Japanese
 
 %description
 Nkf is a yet another Kanji code converter among networks, hosts, and
@@ -64,10 +64,9 @@ detection, nkf assumes no X0201 kana in MS-Kanji. To accept X0201 in
 MS-Kanji, use -X, -x, or -S.
 
 %package -n perl-NKF
-License:        BSD-3-Clause
-Group:          Development/Libraries/Perl
-Requires:       perl >= 5.6.0
+Requires:       perl
 Summary:        Perl extension for nkf (Network Kanji Filter)
+Group:          Development/Libraries/Perl
 BuildRequires:  perl
 # Summary(ja):  Perl拡張モジュール版NKF
 # %description -n perl-NKF -l ja
