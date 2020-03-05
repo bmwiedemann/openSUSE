@@ -1,7 +1,7 @@
 #
 # spec file for package python-SoundFile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ URL:            https://github.com/bastibe/PySoundFile
 Source:         https://files.pythonhosted.org/packages/source/S/SoundFile/SoundFile-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 0.6}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libsndfile1

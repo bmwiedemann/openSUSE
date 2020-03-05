@@ -53,4 +53,12 @@
     <comment></comment>
     <requestid>752987</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>087dea74e67604e28861a929cfa9776c</srcmd5>
+    <version>0.10.3.post1</version>
+    <time>1583446824</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix pytest dependency</comment>
+    <requestid>781459</requestid>
+  </revision>
 </revisionlist>
