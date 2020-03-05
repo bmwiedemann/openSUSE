@@ -377,4 +377,13 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
    for the babel and lingua extensions</comment>
     <requestid>775305</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fd1e88a04fedd169754a9eb641e0b0a6</srcmd5>
+    <version>1.1.2</version>
+    <time>1583446585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2
+ * Added –output-file argument to the Mako command line runner</comment>
+    <requestid>780851</requestid>
+  </revision>
 </revisionlist>
