@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:42:43 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Don't use new systemd RPM macros for compatibility with older
+  releases.
+
+-------------------------------------------------------------------
 Thu Jan  9 13:57:27 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Add prevent-boot-cycle.conf to prevent a systemd reboot cycle if

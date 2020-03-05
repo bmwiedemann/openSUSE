@@ -119,7 +119,7 @@ if [ "$1" = 0 ] ; then
     sed -i -E '/^GRUB_CMDLINE_LINUX_DEFAULT="/s/(\\\$)?ignition[._][^[:space:]"]+ ?//g' %{_sysconfdir}/default/grub
     rm -f /boot/writable/ignition.firstboot
 fi
-%service_del_postun_without_restart ignition-firstboot-complete.service
+%service_del_postun -n ignition-firstboot-complete.service
 
 %posttrans
 %{?regenerate_initrd_posttrans}

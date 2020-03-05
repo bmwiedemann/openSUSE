@@ -124,4 +124,13 @@ Required to implement boo#1138725.</comment>
     <comment>- Add prevent-boot-cycle.conf to prevent a systemd reboot cycle if the files stage should be failing; this is a temporary workaround until [gh#coreos/ignition-dracut#115] is fixed.</comment>
     <requestid>762253</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9cde0afa16ef0bd619d4c7e593ff7e4b</srcmd5>
+    <version>0.0+git20200107.e490517</version>
+    <time>1583446793</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use new systemd RPM macros for compatibility with older releases.
+</comment>
+    <requestid>781537</requestid>
+  </revision>
 </revisionlist>
