@@ -1,7 +1,7 @@
 #
 # spec file for package python-wxPython
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,10 @@
 %define wx_args --gtk3 -v
 %endif
 Name:           python-wxPython
-Version:        4.0.7.post1
+Version:        4.0.7.post2
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/wxWidgets/Phoenix
 Source:         https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-%{version}.tar.gz
 Source1:        python-wxPython-rpmlintrc
@@ -43,13 +42,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  freeglut-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  libjbig-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  xorg-x11-server
 BuildRequires:  pkgconfig(cppunit)
-BuildRequires:  pkgconfig(freeglut)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libjpeg)
@@ -76,7 +75,6 @@ BuildRequires:  %{python_module six}
 Conflicts:      %{oldpython}-wxWidgets
 Provides:       %{oldpython}-wxWidgets = %{version}
 %endif
-
 %python_subpackages
 
 %description
@@ -90,10 +88,9 @@ platform specific code.
 %package lang
 # We cannot use %%lang_package here. Editra translations use noarch incompatible path.
 Summary:        Languages for package %{name}
-Group:          System/Localization
 Requires:       %{name} = %{version}
 Requires:       python-base
-Supplements:    packageand(bundle-lang-other:%{name})
+Supplements:    (bundle-lang-other and %{name})
 Provides:       %{name}-lang-all = %{version}
 
 %description lang
