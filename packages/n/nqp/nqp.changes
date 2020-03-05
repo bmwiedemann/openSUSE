@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:05:04 CET 2020 - nine@detonation.org
+
+- update to version 2020.02
+  * Fix for https://github.com/perl6/nqp/issues/559
+  * Only do assignment if nfa is not in the cache
+  * cache_add returns the value, so no assignment needed
+  * Completely disable NFA debugging (for now)
+  * Don't call non-existent panic method
+  * Consistently make the `.` in `<.[x]>` a no-op
+  * Recognize `chain` as an assoc
+
+-------------------------------------------------------------------
 Tue Jan 28 10:39:21 CET 2020 - nine@detonation.org
 
 - update to version 2020.01
