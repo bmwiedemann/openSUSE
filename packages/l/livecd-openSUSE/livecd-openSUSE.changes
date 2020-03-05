@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  4 10:53:06 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Ignore plasma5-desktop-emojier, too big (~42MiB!)
+
+-------------------------------------------------------------------
 Wed Feb 12 14:13:07 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use bgrt as plymouth theme for Leap (boo#1162535)

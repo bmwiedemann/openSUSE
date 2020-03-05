@@ -456,6 +456,8 @@
     <ignore name="oxygen5-icon-theme-large"/>
     <package name="aaa_base" replaces="gwenview5"/>
     <ignore name="gwenview5"/>
+    <package name="aaa_base" replaces="plasma5-desktop-emojier"/>
+    <ignore name="plasma5-desktop-emojier"/>
     <package name="plasma-nm5"/>
     <package name="phonon4qt5-backend-gstreamer"/>
     <package name="aaa_base" replaces="ispell"/>

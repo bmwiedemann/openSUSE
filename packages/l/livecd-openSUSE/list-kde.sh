@@ -29,6 +29,8 @@ source "$PWD/list-installer.sh"
 
 buildignore oxygen5-icon-theme-large
 buildignore gwenview5
+# Needs ibus data files and color emoji fonts, too big.
+buildignore plasma5-desktop-emojier
 
 # Resolve have-choice
 install plasma-nm5
