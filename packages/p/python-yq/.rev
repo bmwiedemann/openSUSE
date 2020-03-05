@@ -43,4 +43,18 @@
   * Test and release infrastructure updates</comment>
     <requestid>744155</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc1c5012b06901247ada041cd5ac7eac</srcmd5>
+    <version>2.10.0</version>
+    <time>1583446947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0:
+  * Add support for in-place editing (yq -yi)
+  * Add argcomplete integration
+  * Docs: Migrate from RTD to gh-pages
+  * Add -Y/--yaml-roundtrip for preserving YAML styles and tags
+- Add patch to work with new PyYAML:
+  * pyaml53.patch</comment>
+    <requestid>781772</requestid>
+  </revision>
 </revisionlist>

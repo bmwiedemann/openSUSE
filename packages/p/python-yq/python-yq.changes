@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:32:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.10.0:
+  * Add support for in-place editing (yq -yi)
+  * Add argcomplete integration
+  * Docs: Migrate from RTD to gh-pages
+  * Add -Y/--yaml-roundtrip for preserving YAML styles and tags
+- Add patch to work with new PyYAML:
+  * pyaml53.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 12:17:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.8.1:
