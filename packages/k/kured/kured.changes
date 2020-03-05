@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  2 14:26:38 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.3.0
+  - Update k8s client tools to 1.15.x
+  - Ad Slack channel name configuration
+  - Add reboot window
+- Obsoletes k8s-1.14.diff 
+- Remove kured-telemetrics.patch, chances that upstream accepts
+  any third party code are nearly zero.
+- Update vendor.tar.xz
+
+-------------------------------------------------------------------
 Mon Jun 24 15:31:30 CEST 2019 - kukuk@suse.de
 
 - k8s-1.14.diff: kubernetes 1.14.1 support from git

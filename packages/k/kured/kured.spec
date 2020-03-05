@@ -1,7 +1,7 @@
 #
 # spec file for package kured
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,18 @@
 # Project name when using go tooling.
 %define project github.com/weaveworks/kured
 # Project upstream commit.
-%define commit dcddbff
+%define commit 2a0ad53
 Name:           kured
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/weaveworks/kured
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
-Patch:          kured-telemetrics.patch
-Patch1:         k8s-1.14.diff
+Source1:        vendor.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.10
+BuildRequires:  go = 1.12
 BuildRequires:  go-go-md2man
 ExcludeArch:    s390
 
@@ -63,27 +61,15 @@ kured container in a kubernetes cluster.
 
 %prep
 %setup -qa1
-%patch -p1
-%patch1 -p1
 
 %build
-
-# We can't use symlinks here because go-list gets confused by symlinks, so we
-# have to copy the source to $HOME/go and then use that as the GOPATH.
-export GOPATH=$HOME/go
-mkdir -pv $HOME/go/src/%{project}
-rm -rf $HOME/go/src/%{project}/*
-cp -avr * $HOME/go/src/%{project}
-
 # Build the binary.
 export VERSION=%{version}
 export COMMIT=%{commit}
-export CGO_ENABLED=0
 go build \
-   -buildmode=pie \
+   -mod vendor -buildmode=pie \
    -ldflags "-s -w -X main.gitCommit=$COMMIT -X main.version=$VERSION" \
-   -o %{name} \
-   $HOME/go/src/%{project}/cmd/kured/*go
+   -o %{name} cmd/kured/*go
 
 %install
 # Install the binary.
