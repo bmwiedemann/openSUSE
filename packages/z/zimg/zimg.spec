@@ -18,7 +18,7 @@
 
 %define         sover 2
 Name:           zimg
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        Scaling, colorspace conversion, and dithering library
 License:        WTFPL

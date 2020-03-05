@@ -442,4 +442,13 @@
     <comment></comment>
     <requestid>754324</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b62abaeae8f7efdd5d6306b111b79eaf</srcmd5>
+    <version>2.9.3</version>
+    <time>1583446621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.3:
+  * resize: add spline64 filter</comment>
+    <requestid>780942</requestid>
+  </revision>
 </revisionlist>
