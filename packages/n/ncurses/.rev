@@ -2729,4 +2729,12 @@
       programs for explain.txt</comment>
     <requestid>774813</requestid>
   </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>c5a3c7e0bf8034ab554f59f9cf19e1d6</srcmd5>
+    <version>6.2</version>
+    <time>1583446590</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>780858</requestid>
+  </revision>
 </revisionlist>

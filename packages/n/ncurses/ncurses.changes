@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 24 08:56:07 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200222
+  + expanded note in ncurses.3x regarding automatically-included headers
+  + improve vt50h and vt52 based on DECScope manual -TD
+  + add/use vt52+keypad and vt52-basic -TD
+  + check/workaround for line-too-long in Ada95 generate utility when
+    building out-of-tree.
+  + improve/update HEADER_DEPS in */Makefile.in
+  + add "check" rule to include/Makefile, to demonstrate that the headers
+    include all of the required headers for the types used.
+
+-------------------------------------------------------------------
 Mon Feb 17 08:37:54 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200215
