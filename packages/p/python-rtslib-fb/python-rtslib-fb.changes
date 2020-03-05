@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Mar 03 15:46:53 UTC 2020 - lduncan@suse.com
 
-- Update to version v2.1.71 (jre#SLE-9345):
+- Update to version v2.1.71 (jre#SLE-7751):
   * version 2.1.71
   * restoreconfig: fix skipping of targets [re]loading
   Replacing python-rtslib-fb-v2.1.70.tar.xz with python-rtslib-fb-v2.1.71.tar.xz
