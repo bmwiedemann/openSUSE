@@ -1,7 +1,7 @@
 #
 # spec file for package catatonit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           catatonit
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        A signal-forwarding process manager for containers
 License:        GPL-3.0-or-later
 Group:          System/Management
-Url:            https://github.com/openSUSE/catatonit
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-%{version}.tar.xz.asc
+URL:            https://github.com/openSUSE/catatonit
+Source0:        https://github.com/openSUSE/catatonit/releases/download/v%{version}/%{name}.tar.xz#/%{name}-%{version}.tar.xz
+Source1:        https://github.com/openSUSE/catatonit/releases/download/v%{version}/%{name}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 BuildRequires:  autoconf
