@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-atk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           at-spi2-atk
-Version:        2.34.1
+Version:        2.34.2
 Release:        0
 Summary:        GTK+ module for the Assistive Technology Service Provider Interface
 License:        LGPL-2.1-or-later
