@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:40:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with GCC 10 bsc#1160391:
+  * gcc10.patch
+
+-------------------------------------------------------------------
+Thu Jan  9 08:04:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.2.1:
+  * Various fixes around the place that happened since last release
+- Fetch the glut manpages from web to point them somewhere
+
+-------------------------------------------------------------------
 Fri Mar 13 13:12:11 UTC 2015 - tchvatal@suse.com
 
 - Version bump to 3.0.0

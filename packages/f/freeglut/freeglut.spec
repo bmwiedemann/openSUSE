@@ -1,7 +1,7 @@
 #
 # spec file for package freeglut
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _libname libglut3
 Name:           freeglut
-Version:        3.0.0
+Version:        3.2.1
 Release:        0
 Summary:        Freely licensed alternative to the GLUT library
 License:        MIT
-Group:          System/Libraries
-Url:            http://freeglut.sourceforge.net/
+URL:            http://freeglut.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/freeglut/%{name}/%{version}/%{name}-%{version}.tar.gz
-Source1:        glutman.tar.bz2
+Source1:        https://downloads.sourceforge.net/openglut/openglut-0.6.3-doc.tar.gz
 Source2:        baselibs.conf
+Patch0:         gcc10.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(xxf86vm)
 Recommends:     Mesa-demo-x
 Provides:       mesaglut = 7.11
 Obsoletes:      mesaglut < 7.11
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Freeglut is a completely open source alternative to the OpenGL Utility
@@ -52,11 +51,10 @@ GLUT (and freeglut) allow the user to create and manage windows
 containing OpenGL contexts and also read the mouse, keyboard, and
 joystick functions on a wide range of platforms.
 
-%package -n %_libname
+%package -n %{_libname}
 Summary:        Freely licensed alternative to the GLUT library
-Group:          Development/Libraries/X11
 
-%description -n %_libname
+%description -n %{_libname}
 Freeglut is a completely open source alternative to the OpenGL Utility
 Toolkit (GLUT) library. GLUT was originally written by Mark Kilgard to
 support the sample programs in the second edition OpenGL Redbook. Since
@@ -69,8 +67,7 @@ joystick functions on a wide range of platforms.
 
 %package devel
 Summary:        Development libraries, includes and man pages for freeglut (GLUT Library)
-Group:          Development/Libraries/X11
-Requires:       %_libname = %{version}
+Requires:       %{_libname} = %{version}
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
 Provides:       mesaglut-devel = 7.11
@@ -95,7 +92,6 @@ joystick functions on a wide range of platforms.
 
 %package demo
 Summary:        Demonstration applications for the freeglut library
-Group:          System/X11/Utilities
 
 %description demo
 This package contains demonstration applications for the freeglut library.
@@ -111,12 +107,13 @@ containing OpenGL contexts and also read the mouse, keyboard, and
 joystick functions on a wide range of platforms.
 
 %prep
-%setup -q -b0 -b1
+%setup -q -a1
+%patch0 -p3
 
 %build
 %cmake \
     -DFREEGLUT_BUILD_STATIC_LIBS=OFF
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -129,30 +126,27 @@ for i in *; do
 done
 popd > /dev/null
 
-# old glut Manual Pages
+# glut manpages
 mkdir -p %{buildroot}/%{_mandir}/man3
-for i in ../glut-3.7/man/glut/glut*; do
-  install -m 644 $i %{buildroot}/%{_mandir}/man3/`basename $i man`3
-done
+install -p -m 644 doc/man/*.3 $RPM_BUILD_ROOT/%{_mandir}/man3
 
-%post -n %_libname -p /sbin/ldconfig
+%post -n %{_libname} -p /sbin/ldconfig
+%postun -n %{_libname} -p /sbin/ldconfig
 
-%postun -n %_libname -p /sbin/ldconfig
-
-%files -n %_libname
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
+%files -n %{_libname}
+%license COPYING
+%doc AUTHORS README
 %{_libdir}/libglut.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/GL
 %{_libdir}/libglut.so
-%{_libdir}/pkgconfig/freeglut.pc
+%{_libdir}/pkgconfig/glut.pc
+%dir %{_libdir}/cmake/FreeGLUT
+%{_libdir}/cmake/FreeGLUT/*
 %{_mandir}/man3/*
 
 %files demo
-%defattr(-,root,root)
 %{_libexecdir}/freeglut
 
 %changelog

@@ -292,4 +292,17 @@
 - Remove condition for sle11 build as it fails anyway</comment>
     <requestid>290642</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0f654ec298f19c50a3066848a7dc0556</srcmd5>
+    <version>3.2.1</version>
+    <time>1583446625</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC 10 bsc#1160391:
+  * gcc10.patch
+
+- Update to 3.2.1:
+  * Various fixes around the place that happened since last release
+- Fetch the glut manpages from web to point them somewhere</comment>
+    <requestid>780943</requestid>
+  </revision>
 </revisionlist>
