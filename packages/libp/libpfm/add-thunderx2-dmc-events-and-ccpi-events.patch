@@ -1,0 +1,366 @@
+From: Shay Gal-On <sgalon@cavium.com>
+Date: Mon Nov 25 12:00:15 2019 -0800
+Subject: Add ThunderX2 DMC events and CCPI events
+Git-commit: dc1da4573eb8d24bdf64b9bb5e04ed956075d712
+References: jsc#SLE-10000
+Signed-off-by: Tony Jones <tonyj@suse.de>
+X-Info: adjust for context, no 98218490 (CascadeLake X core PMU)
+
+    Add ThunderX2 DMC events and CCPI events
+    
+    This patch adds missing 2 DMC events for ThunderX2
+    and adds support for the Cross Core Complex Interconnect
+    (CCPI) PMU and events.
+    
+    The following PMU models are added:
+     - tx2_ccpi0, tx2_ccpi1
+     - tx2_dmc0, tx2_dmc1
+    
+    Signed-off-by: Shay Gal-On <sgalon@marvell.com>
+
+diff --git a/include/perfmon/pfmlib.h b/include/perfmon/pfmlib.h
+index 20d5feb..3f1d2f5 100644
+--- a/include/perfmon/pfmlib.h
++++ b/include/perfmon/pfmlib.h
+@@ -543,12 +543,14 @@ typedef enum {
+
+	PFM_PMU_INTEL_KNM_UNC_UBOX,	/* Intel Knights Mill Ubox uncore */
+	PFM_PMU_INTEL_KNM_UNC_M2PCIE,	/* Intel Knights Mill M2PCIe uncore */
+-	PFM_PMU_ARM_THUNDERX2,		/* Cavium ThunderX2 */
++	PFM_PMU_ARM_THUNDERX2,		/* Marvell ThunderX2 */
+ 
+-	PFM_PMU_ARM_THUNDERX2_DMC0,	/* Cavium ThunderX2 DMC unit 0 uncore */
+-	PFM_PMU_ARM_THUNDERX2_DMC1,	/* Cavium ThunderX2 DMC unit 1 uncore */
+-	PFM_PMU_ARM_THUNDERX2_LLC0,	/* Cavium ThunderX2 LLC unit 0 uncore */
+-	PFM_PMU_ARM_THUNDERX2_LLC1,	/* Cavium ThunderX2 LLC unit 1 uncore */
++	PFM_PMU_ARM_THUNDERX2_DMC0,	/* Marvell ThunderX2 DMC unit 0 uncore */
++	PFM_PMU_ARM_THUNDERX2_DMC1,	/* Marvell ThunderX2 DMC unit 1 uncore */
++	PFM_PMU_ARM_THUNDERX2_LLC0,	/* Marvell ThunderX2 LLC unit 0 uncore */
++	PFM_PMU_ARM_THUNDERX2_LLC1,	/* Marvell ThunderX2 LLC unit 1 uncore */
++	PFM_PMU_ARM_THUNDERX2_CCPI0,	/* Marvell ThunderX2 Cross-Socket Interconnect unit 0 uncore */
++	PFM_PMU_ARM_THUNDERX2_CCPI1,	/* Marvell ThunderX2 Cross-Socket Interconnect unit 1 uncore */
+ 	/* MUST ADD NEW PMU MODELS HERE */
+ 
+ 	PFM_PMU_MAX			/* end marker */
+diff --git a/lib/Makefile b/lib/Makefile
+index 686264b..4a4dc3b 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -177,7 +177,7 @@ SRCS += pfmlib_arm_perf_event.c
+ endif
+ 
+ INCARCH = $(INC_ARM)
+-SRCS   += pfmlib_arm.c pfmlib_arm_armv7_pmuv1.c pfmlib_arm_armv6.c pfmlib_arm_armv8.c
++SRCS   += pfmlib_arm.c pfmlib_arm_armv7_pmuv1.c pfmlib_arm_armv6.c pfmlib_arm_armv8.c pfmlib_tx2_unc_perf_event.c
+ CFLAGS += -DCONFIG_PFMLIB_ARCH_ARM
+ endif
+ 
+diff --git a/lib/events/arm_marvell_tx2_unc_events.h b/lib/events/arm_marvell_tx2_unc_events.h
+index 9b0a1b4..51e6b4d 100755
+--- a/lib/events/arm_marvell_tx2_unc_events.h
++++ b/lib/events/arm_marvell_tx2_unc_events.h
+@@ -44,6 +44,13 @@
+ #define DMC_EVENT_READ_TXNS             0xF
+ #define DMC_EVENT_MAX                   0x10
+ 
++/* CCPI event IDs */
++#define CCPI2_EVENT_REQ_PKT_SENT	0x3D
++#define CCPI2_EVENT_SNOOP_PKT_SENT	0x65
++#define CCPI2_EVENT_DATA_PKT_SENT	0x105
++#define CCPI2_EVENT_GIC_PKT_SENT	0x12D
++
++
+ static const arm_entry_t arm_thunderx2_unc_dmc_pe[]={
+ 	{.name = "UNC_DMC_READS",
+ 	 .modmsk = ARMV8_ATTRS,
+@@ -55,10 +62,45 @@ static const arm_entry_t arm_thunderx2_unc_dmc_pe[]={
+ 	 .code = DMC_EVENT_WRITE_TXNS,
+ 	 .desc = "Memory write transactions"
+ 	},
++	{.name = "UNC_DMC_DATA_TRANSFERS",
++	 .modmsk = ARMV8_ATTRS,
++	 .code = DMC_EVENT_DATA_TRANSFERS,
++	 .desc = "Memory data transfers"
++	},
++	{.name = "UNC_DMC_CYCLES",
++	 .modmsk = ARMV8_ATTRS,
++	 .code = DMC_EVENT_COUNT_CYCLES,
++	 .desc = "Clocks at the DMC clock rate"
++	}
+ };
+ 
+ #define ARM_TX2_CORE_DMC_COUNT	(sizeof(arm_thunderx2_unc_dmc_pe)/sizeof(arm_entry_t))
+ 
++static const arm_entry_t arm_thunderx2_unc_ccpi_pe[]={
++	{.name = "UNC_CCPI_REQ",
++	 .modmsk = ARMV8_ATTRS,
++	 .code = CCPI2_EVENT_REQ_PKT_SENT,
++	 .desc = "Request packets sent from this node"
++	},
++	{.name = "UNC_CCPI_SNOOP",
++	 .modmsk = ARMV8_ATTRS,
++	 .code = CCPI2_EVENT_SNOOP_PKT_SENT,
++	 .desc = "Snoop packets sent from this node"
++	},
++	{.name = "UNC_CCPI_DATA",
++	 .modmsk = ARMV8_ATTRS,
++	 .code = CCPI2_EVENT_DATA_PKT_SENT ,
++	 .desc = "Data packets sent from this node"
++	},
++	{.name = "UNC_CCPI_GIC",
++	 .modmsk = ARMV8_ATTRS,
++	 .code = CCPI2_EVENT_GIC_PKT_SENT,
++	 .desc = "Interrupt related packets sent from this node"
++	}
++};
++
++#define ARM_TX2_CORE_CCPI_COUNT	(sizeof(arm_thunderx2_unc_ccpi_pe)/sizeof(arm_entry_t))
++
+ static const arm_entry_t arm_thunderx2_unc_llc_pe[]={
+ 	{.name = "UNC_LLC_READ",
+ 	 .modmsk = ARMV8_ATTRS,
+diff --git a/lib/pfmlib_arm_armv8.c b/lib/pfmlib_arm_armv8.c
+index 291ac60..a252951 100644
+--- a/lib/pfmlib_arm_armv8.c
++++ b/lib/pfmlib_arm_armv8.c
+@@ -179,7 +179,7 @@ pfmlib_pmu_t arm_xgene_support={
+ 	.get_event_nattrs	= pfm_arm_get_event_nattrs,
+ };
+ 
+-/* Cavium ThunderX2 support */
++/* Marvell ThunderX2 support */
+ pfmlib_pmu_t arm_thunderx2_support={
+ 	.desc			= "Cavium ThunderX2",
+ 	.name			= "arm_thunderx2",
+@@ -208,7 +208,7 @@ pfmlib_pmu_t arm_thunderx2_support={
+ 
+ #define DEFINE_TX2_DMC(n) \
+ pfmlib_pmu_t arm_thunderx2_dmc##n##_support={ \
+-	.desc			= "Cavium ThunderX2 Node"#n" DMC", \
++	.desc			= "Marvell ThunderX2 Node"#n" DMC", \
+ 	.name			= "tx2_dmc"#n, \
+ 	.perf_name		= "uncore_dmc_"#n, \
+ 	.pmu			= PFM_PMU_ARM_THUNDERX2_DMC##n, \
+@@ -235,7 +235,7 @@ DEFINE_TX2_DMC(1);
+ 
+ #define DEFINE_TX2_LLC(n) \
+ pfmlib_pmu_t arm_thunderx2_llc##n##_support={ \
+-	.desc			= "Cavium ThunderX2 node "#n" LLC", \
++	.desc			= "Marvell ThunderX2 node "#n" LLC", \
+ 	.name			= "tx2_llc"#n, \
+ 	.perf_name		= "uncore_l3c_"#n, \
+ 	.pmu			= PFM_PMU_ARM_THUNDERX2_LLC##n, \
+@@ -259,3 +259,30 @@ pfmlib_pmu_t arm_thunderx2_llc##n##_support={ \
+ 
+ DEFINE_TX2_LLC(0);
+ DEFINE_TX2_LLC(1);
++
++#define DEFINE_TX2_CCPI(n) \
++pfmlib_pmu_t arm_thunderx2_ccpi##n##_support={ \
++	.desc			= "Marvell ThunderX2 node "#n" Cross-Socket Interconnect", \
++	.name			= "tx2_ccpi"#n, \
++	.perf_name		= "uncore_ccpi_"#n, \
++	.pmu			= PFM_PMU_ARM_THUNDERX2_CCPI##n, \
++	.pme_count		= LIBPFM_ARRAY_SIZE(arm_thunderx2_unc_ccpi_pe), \
++	.type			= PFM_PMU_TYPE_UNCORE, \
++	.pe			= arm_thunderx2_unc_ccpi_pe, \
++	.pmu_detect		= pfm_arm_detect_thunderx2, \
++	.max_encoding		= 1, \
++	.num_cntrs		= 4, \
++	.get_event_encoding[PFM_OS_NONE] = pfm_tx2_unc_get_event_encoding, \
++	 PFMLIB_ENCODE_PERF(pfm_tx2_unc_get_perf_encoding),		\
++	.get_event_first	= pfm_arm_get_event_first, \
++	.get_event_next		= pfm_arm_get_event_next,  \
++	.event_is_valid		= pfm_arm_event_is_valid,  \
++	.validate_table		= pfm_arm_validate_table,  \
++	.get_event_info		= pfm_arm_get_event_info,  \
++	.get_event_attr_info	= pfm_arm_get_event_attr_info,	\
++	 PFMLIB_VALID_PERF_PATTRS(pfm_arm_perf_validate_pattrs),\
++	.get_event_nattrs	= pfm_arm_get_event_nattrs, \
++};
++
++DEFINE_TX2_CCPI(0);
++DEFINE_TX2_CCPI(1);
+diff --git a/lib/pfmlib_common.c b/lib/pfmlib_common.c
+index 8314d4b..8cb8998 100644
+--- a/lib/pfmlib_common.c
++++ b/lib/pfmlib_common.c
+@@ -484,6 +484,12 @@ static pfmlib_pmu_t *pfmlib_pmus[]=
+ 	&arm_cortex_a53_support,
+ 	&arm_xgene_support,
+ 	&arm_thunderx2_support,
++	&arm_thunderx2_dmc0_support,
++	&arm_thunderx2_dmc1_support,
++	&arm_thunderx2_llc0_support,
++	&arm_thunderx2_llc1_support,
++	&arm_thunderx2_ccpi0_support,
++	&arm_thunderx2_ccpi1_support,
+ #endif
+ #ifdef CONFIG_PFMLIB_ARCH_ARM64
+ 	&arm_cortex_a57_support,
+@@ -494,6 +500,8 @@ static pfmlib_pmu_t *pfmlib_pmus[]=
+ 	&arm_thunderx2_dmc1_support,
+ 	&arm_thunderx2_llc0_support,
+ 	&arm_thunderx2_llc1_support,
++	&arm_thunderx2_ccpi0_support,
++	&arm_thunderx2_ccpi1_support,
+ #endif
+ 
+ #ifdef CONFIG_PFMLIB_ARCH_S390X
+diff --git a/lib/pfmlib_priv.h b/lib/pfmlib_priv.h
+index cb83f43..1340a6b 100644
+--- a/lib/pfmlib_priv.h
++++ b/lib/pfmlib_priv.h
+@@ -650,6 +650,8 @@ extern pfmlib_pmu_t arm_thunderx2_dmc0_support;
+ extern pfmlib_pmu_t arm_thunderx2_dmc1_support;
+ extern pfmlib_pmu_t arm_thunderx2_llc0_support;
+ extern pfmlib_pmu_t arm_thunderx2_llc1_support;
++extern pfmlib_pmu_t arm_thunderx2_ccpi0_support;
++extern pfmlib_pmu_t arm_thunderx2_ccpi1_support;
+ 
+ extern pfmlib_pmu_t mips_74k_support;
+ extern pfmlib_pmu_t s390x_cpum_cf_support;
+diff --git a/lib/pfmlib_tx2_unc_perf_event.c b/lib/pfmlib_tx2_unc_perf_event.c
+index 1a04e1d..7dc2372 100644
+--- a/lib/pfmlib_tx2_unc_perf_event.c
++++ b/lib/pfmlib_tx2_unc_perf_event.c
+@@ -27,11 +27,51 @@ typedef union {
+ } tx2_unc_data_t;
+ 
+ static void
+-display_reg(void *this, pfmlib_event_desc_t *e, tx2_unc_data_t reg);
++display_com(void *this, pfmlib_event_desc_t *e, void *val)
++{
++	const arm_entry_t *pe = this_pe(this);
++	tx2_unc_data_t *reg = val;
++
++	__pfm_vbprintf("[UNC=0x%"PRIx64"] %s\n",
++			reg->val,
++			pe[e->event].name);
++}
++
+ static void
+-display_com(void *this, pfmlib_event_desc_t *e, void *val);
++display_reg(void *this, pfmlib_event_desc_t *e, tx2_unc_data_t reg)
++{
++	pfmlib_pmu_t *pmu = this;
++	if (pmu->display_reg)
++		pmu->display_reg(this, e, &reg);
++	else
++		display_com(this, e, &reg);
++}
++
++
+ static int
+-find_pmu_type_by_name(const char *name);
++find_pmu_type_by_name(const char *name)
++{
++	char filename[PATH_MAX];
++	FILE *fp;
++	int ret, type;
++
++	if (!name)
++		return PFM_ERR_NOTSUPP;
++
++	sprintf(filename, "/sys/bus/event_source/devices/%s/type", name);
++
++	fp = fopen(filename, "r");
++	if (!fp)
++		return PFM_ERR_NOTSUPP;
++
++	ret = fscanf(fp, "%d", &type);
++	if (ret != 1)
++		type = PFM_ERR_NOTSUPP;
++
++	fclose(fp);
++
++	return type;
++}
+ 
+ int
+ pfm_tx2_unc_get_event_encoding(void *this, pfmlib_event_desc_t *e)
+@@ -82,58 +122,3 @@ pfm_tx2_unc_get_perf_encoding(void *this, pfmlib_event_desc_t *e)
+ 
+ 	return PFM_SUCCESS;
+ }
+-
+-
+-static void
+-display_reg(void *this, pfmlib_event_desc_t *e, tx2_unc_data_t reg)
+-{
+-	pfmlib_pmu_t *pmu = this;
+-	if (pmu->display_reg)
+-		pmu->display_reg(this, e, &reg);
+-	else
+-		display_com(this, e, &reg);
+-}
+-
+-static void
+-display_com(void *this, pfmlib_event_desc_t *e, void *val)
+-{
+-	const arm_entry_t *pe = this_pe(this);
+-	tx2_unc_data_t *reg = val;
+-
+-	__pfm_vbprintf("[UNC=0x%"PRIx64" event=0x%x umask=0x%x en=%d "
+-		       "inv=%d edge=%d thres=%d] %s\n",
+-			reg->val,
+-			reg->com.unc_event,
+-			reg->com.unc_umask,
+-			reg->com.unc_en,
+-			reg->com.unc_inv,
+-			reg->com.unc_edge,
+-			reg->com.unc_thres,
+-			pe[e->event].name);
+-}
+-
+-static int
+-find_pmu_type_by_name(const char *name)
+-{
+-	char filename[PATH_MAX];
+-	FILE *fp;
+-	int ret, type;
+-
+-	if (!name)
+-		return PFM_ERR_NOTSUPP;
+-
+-	sprintf(filename, "/sys/bus/event_source/devices/%s/type", name);
+-
+-	fp = fopen(filename, "r");
+-	if (!fp)
+-		return PFM_ERR_NOTSUPP;
+-
+-	ret = fscanf(fp, "%d", &type);
+-	if (ret != 1)
+-		type = PFM_ERR_NOTSUPP;
+-
+-	fclose(fp);
+-
+-	return type;
+-}
+-
+diff --git a/tests/validate_arm64.c b/tests/validate_arm64.c
+index 35eb6ef..5cb1966 100644
+--- a/tests/validate_arm64.c
++++ b/tests/validate_arm64.c
+@@ -182,6 +182,21 @@ static const test_event_t arm64_test_events[]={
+ 	  .ret  = PFM_SUCCESS,
+ 	  .count = 1,
+ 	  .codes[0] = 0xf,
++	  .fstr = "tx2_dmc1::UNC_DMC_READS",
++	},
++	{ SRC_LINE,
++	  .name = "tx2_ccpi0::UNC_CCPI_GIC",
++	  .ret  = PFM_SUCCESS,
++	  .count = 1,
++	  .codes[0] = 0x12d,
++	  .fstr = "tx2_ccpi0::UNC_CCPI_GIC",
++	},
++	{ SRC_LINE,
++	  .name = "tx2_llc0::UNC_LLC_READ",
++	  .ret  = PFM_SUCCESS,
++	  .count = 1,
++	  .codes[0] = 0xd,
++	  .fstr = "tx2_llc0::UNC_LLC_READ",
+ 	},
+ };
+ #define NUM_TEST_EVENTS (int)(sizeof(arm64_test_events)/sizeof(test_event_t))

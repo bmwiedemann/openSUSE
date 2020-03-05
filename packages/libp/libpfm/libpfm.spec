@@ -1,7 +1,7 @@
 #
 # spec file for package libpfm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,11 @@ Patch0:         0001-s390-cpumf-add-IBM-z14-ZR1-support.patch
 Patch1:         0001-s390-cpumf-add-support-for-counter-second-version-nu.patch
 Patch2:         0001-s390-cpumf-add-support-for-machine-type-8561.patch
 Patch3:         update-cavium-thunderx2-with-now-public-events.patch
+Patch4:         thunderx2-uncore-support.patch
+Patch5:         moved-tx2-uncore-event-to-separate-file.patch
+Patch6:         add-thunderx2-dmc-events-and-ccpi-events.patch
+Patch7:         removed-extra-fields-from-tx2_unc_data_t.patch
+
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

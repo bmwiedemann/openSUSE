@@ -1,0 +1,41 @@
+From: Shay Gal-On <sgalon@cavium.com>
+Date: Tue Dec 3 09:54:37 2019 -0800
+Subject: Removed extra fields from tx2_unc_data_t
+Git-commit: e401d29e89b92e999615e11ea17808e90eda93fd
+References: jsc#SLE-10000
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+
+    Removed extra fields from tx2_unc_data_t
+    
+    Removed useless fields from tx2_unc_data_t.
+    
+    Signed-off-by: Shay Gal-On <sgalon@marvell.com>
+
+diff --git a/lib/events/arm_marvell_tx2_unc_events.h b/lib/events/arm_marvell_tx2_unc_events.h
+old mode 100755
+new mode 100644
+diff --git a/lib/pfmlib_tx2_unc_perf_event.c b/lib/pfmlib_tx2_unc_perf_event.c
+index 7dc2372..154cb0a 100644
+--- a/lib/pfmlib_tx2_unc_perf_event.c
++++ b/lib/pfmlib_tx2_unc_perf_event.c
+@@ -13,17 +13,8 @@
+ typedef union {
+ 	uint64_t val;
+ 	struct {
+-		unsigned long unc_event:8;	/* event code */
+-		unsigned long unc_umask:8;	/* unit mask */
+-		unsigned long unc_res1:1;	/* reserved */
+-		unsigned long unc_rst:1;	/* reset */
+-		unsigned long unc_edge:1;	/* edge detect */
+-		unsigned long unc_res2:3;	/* reserved */
+-		unsigned long unc_en:1;		/* enable */
+-		unsigned long unc_inv:1;	/* invert counter mask */
+-		unsigned long unc_thres:8;	/* counter mask */
+-		unsigned long unc_res3:32;	/* reserved */
+-	} com; /* covers common fields for DMC/L3C */
++		unsigned long unc_res1:32;	/* reserved */
++	} com; /* reserved space for future extensions */
+ } tx2_unc_data_t;
+ 
+ static void
