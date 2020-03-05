@@ -347,6 +347,8 @@ products:
     - x86_64
   - opensuse-haproxy-image:
     - x86_64
+  - opensuse-mariadb-client-image:
+    - x86_64
   - opensuse-mariadb-image:
     - x86_64
   - opensuse-nginx-image:
