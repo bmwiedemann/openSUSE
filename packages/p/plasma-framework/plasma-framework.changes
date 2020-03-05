@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 11:14:42 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patch to fix wrong icon colors with dark desktop
+  themes if a fallback icon is used (boo#1157921, kde#417780)
+  * Try-to-apply-the-colorscheme-of-the-current-theme-to-QIcons.patch
+
+-------------------------------------------------------------------
 Sun Feb  2 18:07:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

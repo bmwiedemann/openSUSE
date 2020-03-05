@@ -831,4 +831,14 @@
     <comment>KDE Frameworks 5.67</comment>
     <requestid>773300</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>3125cdc3d6d4393d385b8ed67abd7b88</srcmd5>
+    <version>5.67.0</version>
+    <time>1583446613</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix wrong icon colors with dark desktop
+  themes if a fallback icon is used (boo#1157921, kde#417780)
+  * Try-to-apply-the-colorscheme-of-the-current-theme-to-QIcons.patch (forwarded request 780908 from wolfi323)</comment>
+    <requestid>780933</requestid>
+  </revision>
 </revisionlist>

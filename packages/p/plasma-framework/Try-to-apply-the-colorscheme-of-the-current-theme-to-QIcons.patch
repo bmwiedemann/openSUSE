@@ -1,0 +1,149 @@
+From b7fa6e0e916bd8856cbf85b2d3886bc1e7b0e278 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Mon, 24 Feb 2020 14:34:23 +0100
+Subject: Try to apply the colorscheme of the current theme to QIcons
+
+Summary:
+Before icons loaded internally with QIcon::fromTheme were being colored with the
+colors from the current global color scheme instead of the ones from the current
+Plasma Theme. Leading to visual bugs when the two differ. This happened because
+KIconLoader uses the global color scheme by default.
+A prominent case is the notification send by the network plasmoid when one
+successfully connected to a wireless network. It sets the icon
+"network-wireless-on" which is not included in Breeze icons (but is included in
+Breeze Plasma Theme). If the current icon theme is indeed Breeze, IconItem
+resorts to using QIcon::fromTheme and we end up with a wrong colored
+"network-wireless" icon.
+
+BUG: 417780
+
+Test Plan:
+{F8125752}
+
+{F8125753}
+
+Reviewers: #plasma, cblack, ngraham, mart
+
+Reviewed By: #plasma, cblack, ngraham, mart
+
+Subscribers: mart, wbauer, cblack, kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D27589
+---
+ src/declarativeimports/core/iconitem.cpp | 4 ++++
+ src/plasma/private/theme_p.cpp           | 2 ++
+ src/plasma/private/theme_p.h             | 1 +
+ src/plasma/theme.cpp                     | 6 ++++++
+ src/plasma/theme.h                       | 8 ++++++++
+ 5 files changed, 21 insertions(+)
+
+diff --git a/src/declarativeimports/core/iconitem.cpp b/src/declarativeimports/core/iconitem.cpp
+index 2beaccd..a65fa55 100644
+--- a/src/declarativeimports/core/iconitem.cpp
++++ b/src/declarativeimports/core/iconitem.cpp
+@@ -22,6 +22,7 @@
+ #include <QDebug>
+ #include <QPaintEngine>
+ #include <QPainter>
++#include <QPalette>
+ #include <QPropertyAnimation>
+ #include <QPixmap>
+ #include <QSGSimpleTextureNode>
+@@ -33,6 +34,7 @@
+ 
+ #include "fadingnode_p.h"
+ #include <QuickAddons/ManagedTextureNode>
++#include "theme.h"
+ #include "units.h"
+ 
+ IconItem::IconItem(QQuickItem *parent)
+@@ -595,7 +597,9 @@ void IconItem::loadPixmap()
+             result = m_svgIcon->pixmap();
+         }
+     } else if (!m_icon.isNull()) {
++        KIconLoader::global()->setCustomPalette(Plasma::Theme().palette());
+         result = m_icon.pixmap(QSize(size, size) * (window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
++        KIconLoader::global()->resetPalette();
+     } else if (!m_imageIcon.isNull()) {
+         result = QPixmap::fromImage(m_imageIcon);
+     } else {
+diff --git a/src/plasma/private/theme_p.cpp b/src/plasma/private/theme_p.cpp
+index b0731c8..5cd13c6 100644
+--- a/src/plasma/private/theme_p.cpp
++++ b/src/plasma/private/theme_p.cpp
+@@ -400,6 +400,7 @@ void ThemePrivate::colorsChanged()
+     buttonColorScheme = KColorScheme(QPalette::Active, KColorScheme::Button, colors);
+     viewColorScheme = KColorScheme(QPalette::Active, KColorScheme::View, colors);
+     selectionColorScheme = KColorScheme(QPalette::Active, KColorScheme::Selection, colors);
++    palette = KColorScheme::createApplicationPalette(colors);
+     scheduleThemeChangeNotification(PixmapCache | SvgElementsCache);
+     emit applicationPaletteChange();
+ }
+@@ -802,6 +803,7 @@ void ThemePrivate::setThemeName(const QString &tempThemeName, bool writeSettings
+     buttonColorScheme = KColorScheme(QPalette::Active, KColorScheme::Button, colors);
+     viewColorScheme = KColorScheme(QPalette::Active, KColorScheme::View, colors);
+     complementaryColorScheme = KColorScheme(QPalette::Active, KColorScheme::Complementary, colors);
++    palette = KColorScheme::createApplicationPalette(colors);
+     const QString wallpaperPath = QLatin1String(PLASMA_RELATIVE_DATA_INSTALL_DIR "/desktoptheme/") % theme % QLatin1String("/wallpapers/");
+     hasWallpapers = !QStandardPaths::locate(QStandardPaths::GenericDataLocation, wallpaperPath, QStandardPaths::LocateDirectory).isEmpty();
+ 
+diff --git a/src/plasma/private/theme_p.h b/src/plasma/private/theme_p.h
+index 0880532..b993767 100644
+--- a/src/plasma/private/theme_p.h
++++ b/src/plasma/private/theme_p.h
+@@ -119,6 +119,7 @@ public:
+     KColorScheme buttonColorScheme;
+     KColorScheme viewColorScheme;
+     KColorScheme complementaryColorScheme;
++    QPalette palette;
+     bool eventFilter(QObject *watched, QEvent *event) override;
+     KConfigGroup cfg;
+     QString defaultWallpaperTheme;
+diff --git a/src/plasma/theme.cpp b/src/plasma/theme.cpp
+index d581d5a..6d8e882 100644
+--- a/src/plasma/theme.cpp
++++ b/src/plasma/theme.cpp
+@@ -194,6 +194,12 @@ QString Theme::styleSheet(const QString &css) const
+     return d->processStyleSheet(css, Svg::Status::Normal);
+ }
+ 
++
++QPalette Theme::palette() const
++{
++    return d->palette;
++}
++
+ QString Theme::wallpaperPath(const QSize &size) const
+ {
+     QString fullPath;
+diff --git a/src/plasma/theme.h b/src/plasma/theme.h
+index 7b58220..13009c3 100644
+--- a/src/plasma/theme.h
++++ b/src/plasma/theme.h
+@@ -67,6 +67,8 @@ class PLASMA_EXPORT Theme : public QObject
+     // stylesheet
+     Q_PROPERTY(QString styleSheet READ styleSheet NOTIFY themeChanged)
+ 
++    Q_PROPERTY(QPalette palette READ palette NOTIFY themeChanged)
++
+ public:
+     enum ColorRole {
+         TextColor = 0, /**<  the text color to be used by items resting on the background */
+@@ -216,6 +218,12 @@ public:
+     QString styleSheet(const QString &css = QString()) const;
+ 
+     /**
++     * Returns a QPalette with the colors set as defined by the theme.
++     * @since 5.68
++     */
++    QPalette palette() const;
++
++    /**
+      * This is an overloaded member provided to check with file timestamp
+      * where cache is still valid.
+      *
+-- 
+cgit v1.1
+
