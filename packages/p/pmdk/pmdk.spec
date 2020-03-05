@@ -1,7 +1,7 @@
 #
 # spec file for package pmdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright 2016, Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,17 +22,19 @@
 %endif
 
 %define min_libfabric_ver 1.4.2
-%define min_ndctl_ver 60.1
+%define min_ndctl_ver 63.0
 
 Name:           pmdk
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://pmem.io/pmdk/
+URL:            http://pmem.io/pmdk/
 
 Source:         https://github.com/pmem/pmdk/archive/%version.tar.gz
+Source1:        pregen-doc.tgz
+Source99:       gen-doc.sh
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  man
@@ -53,7 +55,7 @@ BuildRequires:  libndctl-devel >= %{min_ndctl_ver}
 # a request for that, and if somebody provides the arch-specific
 # implementation of the low-level routines for flushing to persistent
 # memory.
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 ppc64le
 
 # Debug variants of the libraries should be filtered out of the provides.
 %global __provides_exclude_from ^%_libdir/pmdk_debug/.*\\.so.*$
@@ -172,55 +174,6 @@ providing memory allocation, transactions, and general facilities for
 persistent memory programming. Developers new to persistent memory
 probably want to start with this library.
 
-%package -n libvmem1
-Summary:        Volatile Memory Pool library
-Group:          System/Libraries
-
-%description -n libvmem1
-The libvmem library turns a pool of persistent memory into a volatile
-memory pool, similar to the system heap but kept separate and with
-its own malloc-style API.
-
-%package -n libvmem-devel
-Summary:        Development files for the Volatile Memory library
-Group:          Development/Libraries/C and C++
-Requires:       libvmem1 = %version
-
-%description -n libvmem-devel
-The libvmem library turns a pool of persistent memory into a volatile
-memory pool, similar to the system heap but kept separate and with
-its own malloc-style API.
-
-This subpackage contains libraries and header files for developing
-applications that want to make use of libvmem.
-
-%package -n libvmmalloc1
-Summary:        Dynamic to Persistent Memory allocation translation library
-Group:          System/Libraries
-
-%description -n libvmmalloc1
-The libvmmalloc library transparently converts all the dynamic memory
-allocations into persistent memory allocations. This allows the use
-of persistent memory as volatile memory without modifying the target
-application.
-
-The typical usage of libvmmalloc is to load it via the LD_PRELOAD
-environment variable.
-
-%package -n libvmmalloc-devel
-Summary:        Development files for the Dynamic-to-Persistent allocation library
-Group:          Development/Libraries/C and C++
-Requires:       libvmmalloc1 = %version
-
-%description -n libvmmalloc-devel
-The libvmmalloc library transparently converts all the dynamic memory
-allocations into persistent memory allocations. This allows the use
-of persistent memory as volatile memory without modifying the target
-application.
-
-This subpackage contains libraries and header files for developing
-applications that want to specifically make use of libvmmalloc.
-
 %package -n libpmempool1
 Summary:        Persistent Memory pool management library
 Group:          System/Libraries
@@ -284,6 +237,8 @@ Documentation for the pmem library interface.
 
 %prep
 %setup -q
+#Extract pre generated documentation
+tar xf %{S:1}
 
 %build
 %define _lto_cflags %{nil}
@@ -334,10 +289,6 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %postun -n libpmemlog1 -p /sbin/ldconfig
 %post   -n libpmemobj1 -p /sbin/ldconfig
 %postun -n libpmemobj1 -p /sbin/ldconfig
-%post   -n libvmem1 -p /sbin/ldconfig
-%postun -n libvmem1 -p /sbin/ldconfig
-%post   -n libvmmalloc1 -p /sbin/ldconfig
-%postun -n libvmmalloc1 -p /sbin/ldconfig
 %post   -n libpmempool1 -p /sbin/ldconfig
 %postun -n libpmempool1 -p /sbin/ldconfig
 %post   -n librpmem1 -p /sbin/ldconfig
@@ -410,30 +361,6 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %_libdir/pmdk_debug/libpmemobj.so*
 %_includedir/libpmemobj.h
 %_includedir/libpmemobj/
-
-%files -n libvmem1
-%defattr(-,root,root)
-%_libdir/libvmem.so.1*
-
-%files -n libvmem-devel
-%defattr(-,root,root)
-%_libdir/libvmem.so
-%_libdir/pkgconfig/libvmem.pc
-%dir %_libdir/pmdk_debug/
-%_libdir/pmdk_debug/libvmem.so*
-%_includedir/libvmem.h
-
-%files -n libvmmalloc1
-%defattr(-,root,root)
-%_libdir/libvmmalloc.so.1*
-
-%files -n libvmmalloc-devel
-%defattr(-,root,root)
-%_libdir/libvmmalloc.so
-%_libdir/pkgconfig/libvmmalloc.pc
-%dir %_libdir/pmdk_debug/
-%_libdir/pmdk_debug/libvmmalloc.so*
-%_includedir/libvmmalloc.h
 
 %files -n libpmempool1
 %defattr(-,root,root)

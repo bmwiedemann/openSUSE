@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Feb 13 08:49:37 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to PMDK 1.8
+  - Introduces new API in libpmemobj for user-assisted defragmentation
+    (see pmemobj_defrag man page for details).
+  - Introduces experimental support for PPC64LE architecture.
+  - Introduces new flag in libpmemobj for opting-out of transaction aborts on failure
+    (POBJ_TX_NO_ABORT), along with new variants of existing APIs that didn't accept
+    flags (pmemobj_tx_xfree, pmemobj_tx_xpublish,
+  - pmemobj_tx_xlock, pmemobj_tx_xlog_append_buffer, pmemobj_tx_xstrdup, pmemobj_tx_xwcsdup).
+  - Moves out libvmem and libvmmalloc to the new repository (https://github.com/pmem/vmem).
+  - obj: introduce new statistics useful for defrag
+  - obj: introduce transient/persistent statistics enabling
+  - obj: introduce pmemobj_tx_(set/get)_user_data funcs
+  - obj: introduce pmemobj_(set/get)_user_data funcs
+  - obj: disable workaround for offsetof() since VS 15.5 in public header
+  - common: drop support for libndctl < 63 on Linux
+  - pool: rename -N --no-exec to -d --dry-run
+- Add gen-doc.sh to pregenerate documentation in pregen-doc.tgz and avoid adding a
+  build dependency to pandoc
+
+
+-------------------------------------------------------------------
 Fri Oct 11 14:19:47 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to PMDK 1.7 (jsc#SLE-9886)
