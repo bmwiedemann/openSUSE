@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  2 16:33:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.2
+  * remove py34 support
+  * drop py35, add py38
+  * few docs and test fixes
+- Launch tests using multibuild
+
+-------------------------------------------------------------------
 Fri Aug 10 13:52:40 UTC 2018 - tchvatal@suse.com
 
 - Drop python-argparse dependency that is not needed

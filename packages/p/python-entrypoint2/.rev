@@ -91,4 +91,12 @@
     <comment>- Drop python-argparse dependency that is not needed</comment>
     <requestid>628638</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b7c3e6a61541bd3a603ebf140ae104c7</srcmd5>
+    <version>0.2</version>
+    <time>1583446816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781453</requestid>
+  </revision>
 </revisionlist>
