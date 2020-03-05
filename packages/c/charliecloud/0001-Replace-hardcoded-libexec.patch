@@ -1,0 +1,252 @@
+From 6cdc11664188551ee27f932a278e9adfc1a1e1e9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ana=20Guerrero=20L=C3=B3pez?= <aguerrero@suse.com>
+Date: Thu, 5 Mar 2020 13:56:30 +0100
+Subject: [PATCH] Replace hardcoded ../libexec/charliecloud
+
+All the resulting binaries and script will try to look for extra
+scripts in /usr/libexec/charliecloud while this path is not used
+in openSUSE and it should be /usr/lib/charliecloud
+---
+ bin/ch-build          | 2 +-
+ bin/ch-build2dir      | 2 +-
+ bin/ch-builder2squash | 2 +-
+ bin/ch-builder2tar    | 2 +-
+ bin/ch-dir2squash     | 2 +-
+ bin/ch-fromhost       | 2 +-
+ bin/ch-grow.py.in     | 2 +-
+ bin/ch-mount          | 2 +-
+ bin/ch-pull2dir       | 2 +-
+ bin/ch-pull2tar       | 2 +-
+ bin/ch-run-oci.py.in  | 2 +-
+ bin/ch-tar2dir        | 2 +-
+ bin/ch-tar2squash     | 2 +-
+ bin/ch-test           | 4 ++--
+ bin/ch-tug.py.in      | 2 +-
+ bin/ch-umount         | 2 +-
+ libexec/base.sh       | 2 +-
+ 17 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/bin/ch-build b/bin/ch-build
+index d6f3661..930d7f5 100755
+--- a/bin/ch-build
++++ b/bin/ch-build
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-build2dir b/bin/ch-build2dir
+index e2535d8..019cef7 100755
+--- a/bin/ch-build2dir
++++ b/bin/ch-build2dir
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-builder2squash b/bin/ch-builder2squash
+index c96dc8a..d5af5d5 100755
+--- a/bin/ch-builder2squash
++++ b/bin/ch-builder2squash
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-builder2tar b/bin/ch-builder2tar
+index 7717242..9d60059 100755
+--- a/bin/ch-builder2tar
++++ b/bin/ch-builder2tar
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-dir2squash b/bin/ch-dir2squash
+index e6380a5..ede8ee6 100755
+--- a/bin/ch-dir2squash
++++ b/bin/ch-dir2squash
+@@ -2,7 +2,7 @@
+ 
+ set -e
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-fromhost b/bin/ch-fromhost
+index c555505..81942e6 100755
+--- a/bin/ch-fromhost
++++ b/bin/ch-fromhost
+@@ -35,7 +35,7 @@
+ #   3. Here string, e.g. 'while IFS= read -r FILE; do ... done <<< "$FILES"'.
+ #      This is a bashism.
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ set -e
+diff --git a/bin/ch-grow.py.in b/bin/ch-grow.py.in
+index 2b234a7..2b97faa 100644
+--- a/bin/ch-grow.py.in
++++ b/bin/ch-grow.py.in
+@@ -17,7 +17,7 @@ import sys
+ import types
+ 
+ sys.path.insert(0, (  os.path.dirname(os.path.abspath(__file__))
+-                    + "/../libexec/charliecloud"))
++                    + "/../lib/charliecloud/"))
+ import charliecloud as ch
+ 
+ 
+diff --git a/bin/ch-mount b/bin/ch-mount
+index 4abef4b..50703f1 100755
+--- a/bin/ch-mount
++++ b/bin/ch-mount
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-pull2dir b/bin/ch-pull2dir
+index fbd7868..e794ead 100755
+--- a/bin/ch-pull2dir
++++ b/bin/ch-pull2dir
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ set -e
+diff --git a/bin/ch-pull2tar b/bin/ch-pull2tar
+index a5393cb..a20ac76 100755
+--- a/bin/ch-pull2tar
++++ b/bin/ch-pull2tar
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ set -e
+diff --git a/bin/ch-run-oci.py.in b/bin/ch-run-oci.py.in
+index 02802e1..7504133 100644
+--- a/bin/ch-run-oci.py.in
++++ b/bin/ch-run-oci.py.in
+@@ -14,7 +14,7 @@ import time
+ import types
+ 
+ sys.path.insert(0, (  os.path.dirname(os.path.abspath(__file__))
+-                    + "/../libexec/charliecloud"))
++                    + "/../lib/charliecloud/"))
+ import version
+ 
+ 
+diff --git a/bin/ch-tar2dir b/bin/ch-tar2dir
+index 41c53c2..f546a13 100755
+--- a/bin/ch-tar2dir
++++ b/bin/ch-tar2dir
+@@ -2,7 +2,7 @@
+ 
+ set -e
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-tar2squash b/bin/ch-tar2squash
+index 37f3806..2b1446e 100755
+--- a/bin/ch-tar2squash
++++ b/bin/ch-tar2squash
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/bin/ch-test b/bin/ch-test
+index 2d65d2f..32b41e9 100755
+--- a/bin/ch-test
++++ b/bin/ch-test
+@@ -13,7 +13,7 @@ warning () {
+     printf 'warning: %s\n' "$1" 1>&2
+ }
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ if [[ ! -f ${libexec}/base.sh ]]; then
+     fatal "install or build problem: not found: ${libexec}/base.sh"
+ fi
+@@ -606,7 +606,7 @@ if [[ -d ${ch_base}/share ]]; then
+     # installed
+     CHTEST_INSTALLED=yes
+     CHTEST_GITWD=
+-    CHTEST_DIR=${ch_base}/libexec/charliecloud/test
++    CHTEST_DIR=${ch_base}/lib/charliecloud//test
+     CHTEST_EXAMPLES_DIR=${ch_base}/share/doc/charliecloud/examples
+ else
+     # build dir
+diff --git a/bin/ch-tug.py.in b/bin/ch-tug.py.in
+index 3bb3d26..8d83070 100644
+--- a/bin/ch-tug.py.in
++++ b/bin/ch-tug.py.in
+@@ -5,7 +5,7 @@ import os
+ import sys
+ 
+ sys.path.insert(0, (  os.path.dirname(os.path.abspath(__file__))
+-                    + "/../libexec/charliecloud"))
++                    + "/../lib/charliecloud/"))
+ import charliecloud as ch
+ 
+ 
+diff --git a/bin/ch-umount b/bin/ch-umount
+index 2dd12fc..f401a73 100755
+--- a/bin/ch-umount
++++ b/bin/ch-umount
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-libexec=$(cd "$(dirname "$0")" && pwd)/../libexec/charliecloud
++libexec=$(cd "$(dirname "$0")" && pwd)/../lib/charliecloud/
+ . "${libexec}/base.sh"
+ 
+ # shellcheck disable=SC2034
+diff --git a/libexec/base.sh b/libexec/base.sh
+index c2e7228..ece1864 100644
+--- a/libexec/base.sh
++++ b/libexec/base.sh
+@@ -6,7 +6,7 @@ ch_bin="$(cd "$(dirname "$0")" && pwd)"
+ # shellcheck disable=SC2034
+ ch_base=${ch_bin%/*}
+ 
+-libexec="${ch_bin}/../libexec/charliecloud"
++libexec="${ch_bin}/../lib/charliecloud"
+ . "${libexec}/version.sh"
+ 
+ 
+-- 
+2.25.1
+

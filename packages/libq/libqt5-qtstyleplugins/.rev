@@ -79,4 +79,13 @@
     <comment>- Fix the license tag.</comment>
     <requestid>622049</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>37ffcdd81b834778e94cc3b64eedb0af</srcmd5>
+    <version>5.0.0+git20170311</version>
+    <time>1583447137</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build against Qt 5.15:
+  * fix-build-qt5.15.patch</comment>
+    <requestid>781891</requestid>
+  </revision>
 </revisionlist>

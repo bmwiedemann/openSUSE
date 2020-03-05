@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  4 15:07:57 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.14
+  -  the build system was rewritten and the layout of the source code 
+     and installed files were changed significantly 
+  - new binary ch-tug, to pull images from a remote repository 
+  - miscellaneous bug fixes and improvements
+- Patch the usage of /usr/libexec to use /usr/lib because upstream 
+  have harcoded the first path in its code.
+  * 0001-Replace-hardcoded-libexec.patch
+
+-------------------------------------------------------------------
 Tue Jan 21 13:27:46 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Switch to  python3-Sphinx for building the documentation
+- Switch to python3-Sphinx for building the documentation
 
 -------------------------------------------------------------------
 Thu Nov  7 10:18:04 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>

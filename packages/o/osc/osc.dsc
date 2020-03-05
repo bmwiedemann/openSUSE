@@ -1,8 +1,8 @@
 Format: 1.0
 Source: osc
-Version: 0.167.2
+Version: 0.168.0
 Binary: osc
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: any
 Standards-Version: 3.7.1
-Build-Depends: debhelper (>= 4.0.0), python-dev, python-setuptools
+Build-Depends: debhelper (>= 9), dh-python, python3-all, python3-setuptools

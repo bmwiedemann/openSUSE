@@ -43,7 +43,6 @@ Conflicts:      otherproviders(wine)
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  bison
-BuildRequires:  capi4linux-devel
 %ifarch aarch64
 BuildRequires:  clang >= 5
 %endif

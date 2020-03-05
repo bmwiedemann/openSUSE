@@ -17,7 +17,7 @@
 
 
 Name:           dmenu
-Version:        4.9
+Version:        4.8
 Release:        0
 Summary:        A generic and efficient menu for X
 License:        MIT
@@ -25,8 +25,6 @@ Group:          System/GUI/Other
 URL:            https://tools.suckless.org/dmenu/
 Source:         http://dl.suckless.org/tools/%{name}-%{version}.tar.gz
 Patch0:         dmenu-optflags.patch
-Patch1:         0001-Close-when-the-embedding-window-is-destroyed.patch
-Patch2:         0002-fix-crash-when-XOpenIM-returns-NULL.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(x11)

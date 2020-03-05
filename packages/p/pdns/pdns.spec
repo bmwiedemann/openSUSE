@@ -1,7 +1,7 @@
 #
 # spec file for package pdns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,8 +76,8 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  boost-devel
 %endif
 %if %{with pdns_geoip}
-BuildRequires:  GeoIP-devel
 BuildRequires:  yaml-cpp-devel
+BuildRequires:  pkgconfig(libmaxminddb)
 %endif
 %if %{with pdns_experimental_gss_tsig}
 BuildRequires:  pkgconfig(gss)

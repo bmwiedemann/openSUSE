@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 15:59:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.3
+  * Added KarMul and KarSqr for ZZ_pX (declared in ZZX.h and
+    implemented in ZZX.cpp). These are not a part of the
+    documented interface.
+
+-------------------------------------------------------------------
 Mon Nov  4 14:28:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.4.1

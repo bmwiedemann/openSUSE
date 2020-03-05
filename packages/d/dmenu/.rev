@@ -108,4 +108,17 @@ For newer release I take more care of the changelog</comment>
     <comment></comment>
     <requestid>779047</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0183e33464e50c322feb93e7e67515dc</srcmd5>
+    <version>4.8</version>
+    <time>1583447036</time>
+    <user>dimstar_suse</user>
+    <comment>- revert back to 4.8
+  Based on bnc#1164650, fixes in GIT and personal experience - reverting.
+- refresh dmenu-optflags again
+- remove patches:
+    0001-Close-when-the-embedding-window-is-destroyed.patch
+    0002-fix-crash-when-XOpenIM-returns-NULL.patch</comment>
+    <requestid>781863</requestid>
+  </revision>
 </revisionlist>

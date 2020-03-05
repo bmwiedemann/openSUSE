@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar  5 12:46:21 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.11.0
+  ## [1.11.0] - 2020-02-21
+  - Updated to GLFW 3.3.2
+  - Include support for both X11 and Wayland libraries in the wheel
+  
+  ## [1.10.1] - 2020-01-21
+  - Fixed default error callback name
+  
+  ## [1.10.0] - 2020-01-19
+  - Added more options to error reporting
+  
+  ## [1.9.1] - 2020-01-08
+  - Added conda search path for Windows
+  
+  ## [1.9.0] - 2019-12-30
+  - Added wrappers for native functions
+  
+  ## [1.8.7] - 2019-12-10
+  - Fixed glfwGetMonitorContentScale
+  
+  ## [1.8.6] - 2019-12-09
+  - Added macOS wheels
+  - Added Microsoft Visual C++ runtime libraries to Windows wheels
+  
+  ## [1.8.5] - 2019-11-28
+  - Added /usr/lib/aarch64-linux-gnu/ to library search paths
+  - Fix pointer types in get_window_content_scale
+
+-------------------------------------------------------------------
 Thu Sep 12 11:43:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.8.3:

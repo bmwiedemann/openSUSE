@@ -1,7 +1,7 @@
-osc (0.167.2) unstable; urgency=low
-  - Update to 0.161.1
+osc (0.168.0) unstable; urgency=low
+  - Package for Python3
 
- -- Marco Strigl <marco.strigl@suse.com>  Thu, 26 Oct 2017 14:42:00 +0200
+ -- Nick Brown <nick.brown@att.com>  Wed, 30 Jan 2020 14:49:30 +0000
 
 osc (0.161.0-0) unstable; urgency=low
   - Install bash completion

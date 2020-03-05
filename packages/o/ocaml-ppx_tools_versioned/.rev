@@ -65,4 +65,13 @@ The is a dependency of sedlex, which in turn is a dependency of the next version
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746709</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7f8e2b2fe59cfc4690d7541003e2fbc</srcmd5>
+    <version>5.3.0</version>
+    <time>1583447071</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (5.3.0)
+  * Support for OCaml 4.10</comment>
+    <requestid>781875</requestid>
+  </revision>
 </revisionlist>

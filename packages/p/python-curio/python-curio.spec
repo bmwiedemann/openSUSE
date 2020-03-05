@@ -19,16 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-curio
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Concurrent I/O library for Python 3
 License:        BSD-Source-Code
 URL:            https://github.com/dabeaz/curio
 Source:         https://github.com/dabeaz/curio/archive/%{version}.tar.gz#/curio-%{version}.tar.gz
-Patch0:         gh_313.patch
+Patch0:         make-tests-reproducible.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools} 
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  5 07:12:47 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- remove capi4linux BuildRequires, as isdn4linux is dropped
+
+-------------------------------------------------------------------
 Sat Feb 29 08:30:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.3 development release

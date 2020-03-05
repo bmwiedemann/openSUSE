@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  4 20:35:11 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.25
+  * Added missing OnlineResources URLs handling in WMS maps.
+  * A better WMS format parameter handling (partialy broken in
+    7.24)
+
+-------------------------------------------------------------------
+Sun Mar  1 15:21:52 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.24
+  * Multiple WMS maps fixes.
+
+-------------------------------------------------------------------
 Mon Feb 17 20:34:50 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.23

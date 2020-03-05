@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:33:14 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.14.1
+  - Configure the loky workers' environment to mitigate oversubsription with
+    nested multi-threaded code in the following case:
+    - allow for a suitable number of threads for numba (``NUMBA_NUM_THREADS``);
+    - enable Interprocess Communication for scheduler coordination when the
+      nested code uses Threading Building Blocks (TBB) (``ENABLE_IPC=1``)
+    https://github.com/joblib/joblib/pull/951
+  - Fix a regression where the loky backend was not reusing previously
+    spawned workers.
+    https://github.com/joblib/joblib/pull/968
+  - Revert https://github.com/joblib/joblib/pull/847 to avoid using
+    `pkg_resources` that introduced a performance regression under Windows:
+    https://github.com/joblib/joblib/issues/965
+  - Improved the load balancing between workers to avoid stranglers caused by an
+    excessively large batch size when the task duration is varying significantly
+    (because of the combined use of ``joblib.Parallel`` and ``joblib.Memory``
+    with a partially warmed cache for instance).
+    https://github.com/joblib/joblib/pull/899
+  - Add official support for Python 3.8: fixed protocol number in `Hasher`
+    and updated tests.
+  - Fix a deadlock when using the dask backend (when scattering large numpy
+    arrays).
+    https://github.com/joblib/joblib/pull/914
+  - Warn users that they should never use `joblib.load` with files from
+    untrusted sources. Fix security related API change introduced in numpy
+    1.6.3 that would prevent using joblib with recent numpy versions.
+    https://github.com/joblib/joblib/pull/879
+  - Upgrade to cloudpickle 1.1.1 that add supports for the upcoming
+    Python 3.8 release among other things.
+    https://github.com/joblib/joblib/pull/878
+  - Fix semaphore availability checker to avoid spawning resource trackers
+    on module import.
+    https://github.com/joblib/joblib/pull/893
+  - Fix the oversubscription protection to only protect against nested
+    `Parallel` calls. This allows `joblib` to be run in background threads.
+    https://github.com/joblib/joblib/pull/934
+  - Fix `ValueError` (negative dimensions) when pickling large numpy arrays on
+    Windows.
+    https://github.com/joblib/joblib/pull/920
+  - Upgrade to loky 2.6.0 that add supports for the setting environment variables
+    in child before loading any module.
+    https://github.com/joblib/joblib/pull/940
+  - Fix the oversubscription protection for native libraries using threadpools
+    (OpenBLAS, MKL, Blis and OpenMP runtimes).
+    The maximal number of threads is can now be set in children using the
+    ``inner_max_num_threads`` in ``parallel_backend``. It defaults to
+    ``cpu_count() // n_jobs``.
+    https://github.com/joblib/joblib/pull/940
+- deleted patches
+  - numpy16.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue May 28 10:34:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to %pytest

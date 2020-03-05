@@ -55,4 +55,12 @@
   * Updated the GLFW version in the wheels to 3.3</comment>
     <requestid>730384</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06640de2eacb1800cc9df99d35dc6a99</srcmd5>
+    <version>1.11.0</version>
+    <time>1583447059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781851</requestid>
+  </revision>
 </revisionlist>

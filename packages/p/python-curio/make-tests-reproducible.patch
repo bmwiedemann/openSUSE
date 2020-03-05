@@ -1,0 +1,52 @@
+Index: curio-1.1/tests/test_sync.py
+===================================================================
+--- curio-1.1.orig/tests/test_sync.py
++++ curio-1.1/tests/test_sync.py
+@@ -17,7 +17,6 @@ class TestEvent:
+     def test_event_get_wait(self, kernel):
+         results = []
+         async def event_setter(evt, seconds):
+-            results.append('sleep')
+             await sleep(seconds)
+             results.append('event_set')
+             await evt.set()
+@@ -42,7 +41,6 @@ class TestEvent:
+         assert results == [
+             'wait_start',
+             False,
+-            'sleep',
+             'event_set',
+             'wait_done',
+             True,
+@@ -699,7 +697,6 @@ class TestUniversalEvent:
+     def test_uevent_get_wait(self, kernel):
+         results = []
+         async def event_setter(evt, seconds):
+-            results.append('sleep')
+             await sleep(seconds)
+             results.append('event_set')
+             await evt.set()
+@@ -724,7 +721,6 @@ class TestUniversalEvent:
+         assert results == [
+             'wait_start',
+             False,
+-            'sleep',
+             'event_set',
+             'wait_done',
+             True,
+@@ -771,7 +767,6 @@ class TestUniversalEvent:
+     def test_uevent_get_asyncio_set(self, kernel):
+         results = []
+         async def event_setter(evt, seconds):
+-            results.append('sleep')
+             await asyncio.sleep(seconds)
+             results.append('event_set')
+             await evt.set()
+@@ -797,7 +792,6 @@ class TestUniversalEvent:
+         assert results == [
+             'wait_start',
+             False,
+-            'sleep',
+             'event_set',
+             'wait_done',
+             True,

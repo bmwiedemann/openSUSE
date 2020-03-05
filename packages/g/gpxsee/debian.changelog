@@ -1,3 +1,17 @@
+gpxsee (7.25) stable; urgency=low
+
+  * Added missing OnlineResources URLs handling in WMS maps.
+  * A better WMS format parameter handling (partialy broken in
+    7.24)
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 04 Mar 2020 20:40:00 +0100
+
+gpxsee (7.24) stable; urgency=low
+
+  * Multiple WMS maps fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 01 Mar 2020 15:24:38 +0100
+
 gpxsee (7.23) stable; urgency=low
 
   * Fixed various IMG maps rendering issues.

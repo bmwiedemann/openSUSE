@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:30:46 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- Spec:
+    * fix destination of fish completion file to /usr/share/fish/vendor_completions.d 
+
+-------------------------------------------------------------------
+Wed Mar  4 09:27:41 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.168.0
+  * MR creation honors orev now (bsc#1160446)
+  * allow "osc r --vertical" for projects
+  * several typo fixes
+  * cleanup old functions and remove python2.6 compat code
+  * support zstd arch linux files in local build
+  * fix deleterequest for repositories
+  * append --norootforbuild as default to build command
+  * fix decoding in interactive request mode
+  * use signdummy for product builds
+  * print release project when creating MR
+  * improve SSLError message for TLSv1 validation
+  * osc maintained --version prints the version of each maintained package
+  * print web url links after creating requests (New general bool option 'print_web_links' must be set in oscrc)
+  * fix checkout_no_colon on project level
+  * handle empty release number of rpm packages in build.py
+  * handle bytes vs. str error when parsing meta
+  * custom exception if importing m2crypto fails
+  * fix missing oscerr import in util.helper
+  * several fixes for keyring handling
+  * fix arch zst magic in util.packagequery
+
+-------------------------------------------------------------------
+Fri Feb 28 12:27:27 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Ship fish completion file.
+
+-------------------------------------------------------------------
+Tue Feb 11 16:39:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Spec:
+    * Recommend python3-keyring when using python3
+
+-------------------------------------------------------------------
 Tue Jan  7 10:54:25 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.167.2

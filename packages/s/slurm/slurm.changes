@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:05:07 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- slurm-plugins will now also require pmix not only libpmix 
+  (bsc#1164326)
+
+-------------------------------------------------------------------
 Fri Feb 28 17:27:43 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Removed autopatch as it doesn't work for the SLE-11-SP4 build.

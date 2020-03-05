@@ -3457,4 +3457,12 @@
 - update staging to 5.3 release</comment>
     <requestid>780477</requestid>
   </revision>
+  <revision rev="301" vrev="2">
+    <srcmd5>1c97b11b2328dcadf4f04e161c71ad0b</srcmd5>
+    <version>5.3</version>
+    <time>1583447001</time>
+    <user>dimstar_suse</user>
+    <comment>remove capi4linux BuildRequires, as isdn4linux will (hopefully soon) be dropped (forwarded request 781770 from seife)</comment>
+    <requestid>781783</requestid>
+  </revision>
 </revisionlist>

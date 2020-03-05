@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  5 14:10:29 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Build with libmaxminddb instead of the obsolete GeoIP (bsc#1156196)
+
+-------------------------------------------------------------------
 Mon Dec  2 14:57:44 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update to 4.2.1:

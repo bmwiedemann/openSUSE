@@ -28,6 +28,8 @@ License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://qt.io/
 Source:         %{_name}-opensource-src-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE (for now)
+Patch1:         fix-build-qt5.15.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{qt_version}
 BuildRequires:  libQt5Gui-private-headers-devel >= %{qt_version}
@@ -70,7 +72,7 @@ Requires:       %{name}-platformtheme-gtk2 = %{version}
 You need this package, if you want to compile programs with qtstyleplugins.
 
 %prep
-%setup -q -n %{_name}-opensource-src-%{version}
+%autosetup -p1 -n %{_name}-opensource-src-%{version}
 
 %build
 %qmake5

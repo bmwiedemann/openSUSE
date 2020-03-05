@@ -1,32 +1,35 @@
-diff -Pdru dmenu-4.9.orig/config.mk dmenu-4.9/config.mk
---- dmenu-4.9.orig/config.mk	2019-02-02 13:55:02.000000000 +0100
-+++ dmenu-4.9/config.mk	2020-01-23 12:44:45.733582828 +0100
-@@ -23,9 +23,9 @@
- LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS)
+Index: dmenu-4.8/config.mk
+===================================================================
+--- dmenu-4.8.orig/config.mk
++++ dmenu-4.8/config.mk
+@@ -23,9 +23,9 @@ INCS = -I${X11INC} -I${FREETYPEINC}
+ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS}
  
  # flags
--CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
--CFLAGS   = -std=c99 -pedantic -Wall -Os $(INCS) $(CPPFLAGS)
--LDFLAGS  = $(LIBS)
+-CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
+-CFLAGS   = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+-LDFLAGS  = -s ${LIBS}
 +CPPFLAGS += -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
 +CFLAGS   := $(CFLAGS) -Wall $(INCS) $(CPPFLAGS)
 +LDFLAGS  += $(LIBS)
  
  # compiler and linker
  CC = cc
-diff -Pdru dmenu-4.9.orig/Makefile dmenu-4.9/Makefile
---- dmenu-4.9.orig/Makefile	2019-02-02 13:55:02.000000000 +0100
-+++ dmenu-4.9/Makefile	2020-01-23 12:42:28.519144673 +0100
-@@ -23,10 +23,10 @@
- $(OBJ): arg.h config.h config.mk drw.h
+Index: dmenu-4.8/Makefile
+===================================================================
+--- dmenu-4.8.orig/Makefile
++++ dmenu-4.8/Makefile
+@@ -26,11 +26,11 @@ ${OBJ}: arg.h config.h config.mk drw.h
  
  dmenu: dmenu.o drw.o util.o
--	$(CC) -o $@ dmenu.o drw.o util.o $(LDFLAGS)
-+	$(CC) $(CFLAGS) -o $@ dmenu.o drw.o util.o $(LDFLAGS)
+ 	@echo CC -o $@
+-	@${CC} -o $@ dmenu.o drw.o util.o ${LDFLAGS}
++	@${CC} $(CFLAGS) -o $@ dmenu.o drw.o util.o ${LDFLAGS}
  
  stest: stest.o
--	$(CC) -o $@ stest.o $(LDFLAGS)
-+	$(CC) $(CFLAGS) -o $@ stest.o $(LDFLAGS)
+ 	@echo CC -o $@
+-	@${CC} -o $@ stest.o ${LDFLAGS}
++	@${CC} $(CFLAGS) -o $@ stest.o ${LDFLAGS}
  
  clean:
- 	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz
+ 	@echo cleaning

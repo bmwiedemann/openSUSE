@@ -359,6 +359,10 @@ Summary:        SLURM plugins (loadable shared objects)
 Group:          Productivity/Clustering/Computing
 %{?upgrade:Provides: %{pname}-plugins = %{version}}
 %{?upgrade:Conflicts: %{pname}-plugins}
+%if %{with pmix}
+Requires:       libpmix%{pmix_so}
+Requires:       pmix
+%endif
 
 %description plugins
 This package contains the SLURM plugins (loadable shared objects)
@@ -371,9 +375,6 @@ Requires:       perl-Switch
 Provides:       torque-client
 %{?upgrade:Provides: %{pname}-torque = %{version}}
 %{?upgrade:Conflicts: %{pname}-torque}
-%if %{with pmix}
-Requires:       libpmix%{pmix_so}
-%endif
 
 %description torque
 Wrapper scripts for aiding migration from Torque/PBS to SLURM.

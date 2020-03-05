@@ -653,4 +653,12 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
   * rfc2136, pdnsutil: somewhat improve duplicate record handling</comment>
     <requestid>752958</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>3d925366e82248293fb644f7480dfa6c</srcmd5>
+    <version>4.2.1</version>
+    <time>1583447111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781874</requestid>
+  </revision>
 </revisionlist>

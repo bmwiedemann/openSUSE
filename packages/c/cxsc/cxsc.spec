@@ -1,7 +1,7 @@
 #
 # spec file for package cxsc
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,17 +21,16 @@ Name:           cxsc
 Version:        2.5.4
 Release:        0
 Summary:        C++ library for Extended Scientific Computing (XSC)
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://www2.math.uni-wuppertal.de/~xsc/xsc/cxsc.html
+URL:            http://www2.math.uni-wuppertal.de/wrswt/xsc/cxsc_new.html
 
-Source:         http://www2.math.uni-wuppertal.de/~xsc/xsc/cxsc/cxsc-2-5-4.tar.gz
+Source:         http://www2.math.uni-wuppertal.de/wrswt/xsc/cxsc/cxsc-2-5-4.tar.gz
 Patch1:         cxsc-libversion.diff
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 C-XSC is a libary for the development of numerical algorithms that
@@ -81,25 +80,21 @@ autoreconf -fi
 make %{?_smp_mflags}
 
 %install
-b="%buildroot";
-make install DESTDIR="$b";
-rm -f "$b/%_libdir"/*.la;
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_libexecdir/%name/
 %doc docu/COPYING
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libcxsc.so.2
 %_libdir/libcxsc.so.%version
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/libcxsc.so
 

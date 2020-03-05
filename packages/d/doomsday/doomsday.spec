@@ -17,28 +17,22 @@
 
 
 Name:           doomsday
-Version:        2.2.1.1
+Version:        2.2.2
 Release:        0
 Summary:        The Doomsday Engine: DOOM/Hertic/Hexen port with pretty graphics
 License:        GPL-2.0-or-later AND GPL-2.0-only AND SUSE-GPL-2.0-with-linking-exception AND BSD-3-Clause AND LGPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            http://dengine.net/
 
-#Git-Web:	https://github.com/skyjake/Doomsday-Engine
-#Git-Clone:	git://github.com/skyjake/Doomsday-Engine
-Source:         Doomsday-Engine-%version.tar.xz
+Source:         http://downloads.sf.net/deng/doomsday-%version.tar.gz
 Source2:        %name-rpmlintrc
 Patch1:         doomsday-no-abs-icon.patch
 Patch2:         doomsday-libs.diff
 Patch3:         doomsday-notime.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc6-c++
-%else
 BuildRequires:  gcc-c++ >= 6
-%endif
+BuildRequires:  libcurl4
 BuildRequires:  libpng-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
@@ -61,11 +55,8 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zzip-zlib-config)
 # Doomsday uses a modified version of assimp, so no pkgconfig(assimp) here :-(
-Provides:       bundled(assimp) = 3.1.1
-
-%if 0%{?suse_version}
+Provides:       bundled(assimp) = 3.3.1
 Recommends:     timidity timidity-eawpats
-%endif
 Provides:       jdoom = %version-%release
 Provides:       jheretic = %version-%release
 Provides:       jhexen = %version-%release
@@ -83,15 +74,9 @@ Summary:        Graphical launcher for Doomsday
 Group:          Amusements/Games/3D/Shoot
 Requires:       %name = %version
 BuildRequires:  python
-%if 0%{?fedora_version}
-Requires:       wxPython
-%else
 %py_requires
 Requires:       python-wxWidgets
-%endif
-%if 0%{?suse_version} >= 1130 || 0%{?fedora_version}
 BuildArch:      noarch
-%endif
 
 %description launcher
 Snowberry is the official frontend of the Doomsday Engine. It is a
@@ -100,17 +85,10 @@ various types of games supported by Doomsday. It offers to save your
 settings for launching a particular game (e.g., Doom).
 
 %prep
-%autosetup -n Doomsday-Engine-%version -p1
+%autosetup -p1
 
 %build
 pushd doomsday
-cf="%optflags"
-%if 0%{?suse_version} > 1320
-cf="$cf -Wno-narrowing"
-%endif
-%if 0%{?suse_version} < 1500
-export CC=gcc-6 CXX=g++-6
-%endif
 %cmake
 make -O %{?_smp_mflags}
 

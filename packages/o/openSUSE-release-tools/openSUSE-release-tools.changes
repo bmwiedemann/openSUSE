@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 05 11:22:34 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200305.63aa406d:
+  * Let the rabbit monitors run for 3 hours instead of one
+  * Make rabbit-repoid more stable
+  * cleanup_rings: fix python3 bytes/string type error
+  * requestfinder: print all actions
+
+-------------------------------------------------------------------
 Tue Mar 03 11:56:09 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200303.fbc0a9e0:

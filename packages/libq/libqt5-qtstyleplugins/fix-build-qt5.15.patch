@@ -1,0 +1,35 @@
+From: Fabian Vogt <fvogt@suse.de>
+Subject: Fix build against Qt 5.15
+
+With 0a93db4d82c051164923a10e4382b12de9049b45
+("Unify application palette handling between QGuiApplication and QApplication")
+QApplicationPrivate::setSystemPalette is no longer used and necessary.
+
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtkstyle.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle.cpp
+@@ -440,7 +440,9 @@ void QGtkStyle::polish(QApplication *app
+     // not supported as these should be entirely determined by
+     // current Gtk settings
+     if (app->desktopSettingsAware() && d->isThemeAvailable()) {
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+         QApplicationPrivate::setSystemPalette(standardPalette());
++#endif
+         QApplicationPrivate::setSystemFont(d->getThemeFont());
+         d->applyCustomPaletteHash();
+         if (!d->isKDE4Session())
+Index: qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+===================================================================
+--- qtstyleplugins-opensource-src-5.0.0+git20170311.orig/src/plugins/styles/gtk2/qgtkstyle_p.cpp
++++ qtstyleplugins-opensource-src-5.0.0+git20170311/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+@@ -508,7 +508,9 @@ void QGtkStyleUpdateScheduler::updateThe
+       if (oldTheme != QGtkStylePrivate::getThemeName()) {
+           oldTheme = QGtkStylePrivate::getThemeName();
+           QPalette newPalette = qApp->style()->standardPalette();
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+           QApplicationPrivate::setSystemPalette(newPalette);
++#endif
+           QApplication::setPalette(newPalette);
+           if (!QGtkStylePrivate::instances.isEmpty()) {
+               QGtkStylePrivate::instances.last()->initGtkWidgets();

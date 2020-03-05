@@ -1,7 +1,7 @@
 #
 # spec file for package python-avro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-avro
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://avro.apache.org/
 Source:         https://files.pythonhosted.org/packages/source/a/avro/avro-%{version}.tar.gz
+BuildRequires:  %{python_module isort}
+BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

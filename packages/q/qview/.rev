@@ -33,4 +33,13 @@
 </comment>
     <requestid>764106</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c12713fdc38b978247a266e6388cb876</srcmd5>
+    <version>3.0</version>
+    <time>1583446965</time>
+    <user>dimstar_suse</user>
+    <comment>- fix download source link (bnc#1165355)
+</comment>
+    <requestid>781669</requestid>
+  </revision>
 </revisionlist>

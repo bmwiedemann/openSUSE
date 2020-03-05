@@ -1,7 +1,7 @@
 #
 # spec file for package python-branca
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-branca
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT
@@ -58,7 +59,7 @@ Generate HTML+JS pages with Python.
 %pytest -k 'not test_rendering_utf8_iframe' -v
 
 %files %{python_files}
-%doc CHANGES.txt README.rst
+%doc CHANGES.txt README.md
 %license LICENSE.txt
 %{python_sitelib}/*
 

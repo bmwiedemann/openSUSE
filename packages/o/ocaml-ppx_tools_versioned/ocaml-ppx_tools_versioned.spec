@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ppx_tools_versioned
-Version:        5.2.3
+Version:        5.3.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Tools for authors of ppx rewriters

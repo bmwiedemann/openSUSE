@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  5 12:44:25 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to make tests reproducible and not depend on a race condition:
+  * make-tests-reproducible.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 12:31:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.1
+- drop gh_313.patch
+ * Fixed a very subtle edge case involving epoll() and duplicated
+     file descriptors on Linux
+
+-------------------------------------------------------------------
 Mon Feb 24 16:03:10 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.0

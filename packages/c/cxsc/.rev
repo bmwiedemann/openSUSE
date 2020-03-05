@@ -22,4 +22,12 @@
     <comment>- Drop unnecessary xz buildtime dependency</comment>
     <requestid>255129</requestid>
   </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0e000532fa1a2227b0a821b795676537</srcmd5>
+    <version>2.5.4</version>
+    <time>1583447152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update homepage URL</comment>
+    <requestid>781906</requestid>
+  </revision>
 </revisionlist>

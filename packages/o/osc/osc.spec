@@ -27,18 +27,21 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.167.2
+%define version_unconverted 0.168.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 
 Name:           osc
-Version:        0.167.2
+Version:        0.168.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/osc
 Source:         %{name}-%{version}.tar.gz
+Source1:        debian.dirs 
+Source2:        debian.docs
+Source3:        debian.osc.links
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{use_python}-devel
 BuildRequires:  %{use_python}-setuptools
@@ -90,7 +93,11 @@ Conflicts:      build < 20200106
 %endif
 # needed for storing credentials in kwallet/gnome-keyring
 %if 0%{?suse_version} > 1000 || 0%{?mandriva_version} || 0%{?mdkversion}
+%if %{with python3}
+Recommends:     python3-keyring
+%else
 Recommends:     python-keyring
+%endif
 %endif
 %if 0%{?rhel_version} && 0%{?rhel_version} < 600
 BuildRequires:  python-elementtree
@@ -167,6 +174,8 @@ install -Dm0755 dist/osc.complete %{buildroot}%{_prefix}/lib/osc/complete
 install -Dm0755 dist/osc.complete %{buildroot}%{_libdir}/osc/complete
 %endif
 
+install -Dm0755 osc.fish %{buildroot}%{_datadir}/fish/completions/vendor_completions.d/osc.fish
+
 install -m644 %{macros_file} -D %{buildroot}%{_sysconfdir}/rpm/%{macros_file}
 
 %if 0%{?suse_version} >= 1500
@@ -202,6 +211,7 @@ rm -rf %{buildroot}
 %else
 %{_libdir}/osc
 %endif
+%{_datadir}/fish
 %dir %{osc_plugin_dir}
 
 %changelog

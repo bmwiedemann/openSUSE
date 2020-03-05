@@ -23,7 +23,7 @@ Summary:        Practical and minimal image viewer
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://interversehq.com/qview/
-Source:         https://github.com/jurplel/qView/archive/%{version}.tar.gz#/qView-%{version}.tar.gz
+Source:         https://github.com/jurplel/qView/releases/download/%{version}/qView-%{version}.tar.gz#/qView-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
 BuildRequires:  pkgconfig(Qt5Network) >= 5.9
@@ -34,7 +34,7 @@ qView is a Qt image viewer designed with minimalism and usability in mind.
 No cluttered interface, just your image and a titlebar.
 
 %prep
-%setup -q -n qView-%{version}
+%setup -q -n qView
 
 %build
 %qmake5

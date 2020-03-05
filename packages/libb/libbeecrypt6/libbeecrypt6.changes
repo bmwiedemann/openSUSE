@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  5 09:46:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Don't package static archive
+- Use %license
+
+-------------------------------------------------------------------
 Sat Jan 12 19:14:16 UTC 2013 - coolo@suse.com
 
 - remove suse_update_config

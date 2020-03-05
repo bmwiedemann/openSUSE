@@ -145,4 +145,13 @@
     <comment>- Add isAlive_failed_test.patch as a fix for gh#python-rope/rope#283</comment>
     <requestid>764326</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cbfcd0578e9baa38a3eee06a31c48f54</srcmd5>
+    <version>0.16.0</version>
+    <time>1583447043</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0
+ * new minor relase with bugfixes.</comment>
+    <requestid>781837</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:18:45 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
+
+- revert back to 4.8
+  Based on bnc#1164650, fixes in GIT and personal experience - reverting.
+- refresh dmenu-optflags again
+- remove patches:
+    0001-Close-when-the-embedding-window-is-destroyed.patch
+    0002-fix-crash-when-XOpenIM-returns-NULL.patch
+
+-------------------------------------------------------------------
 Mon Feb 24 13:16:36 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 
 - add 0001-Close-when-the-embedding-window-is-destroyed.patch

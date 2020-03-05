@@ -1294,4 +1294,40 @@ The actual python-keyring package is only available in the devel:languages:pytho
 sr#761596 needed for this.</comment>
     <requestid>761597</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>5334496e93c173e3307f002189eee54d</srcmd5>
+    <version>0.168.0</version>
+    <time>1583446981</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec:
+    * fix destination of fish completion file to /usr/share/fish/vendor_completions.d 
+
+- 0.168.0
+  * MR creation honors orev now (bsc#1160446)
+  * allow &quot;osc r --vertical&quot; for projects
+  * several typo fixes
+  * cleanup old functions and remove python2.6 compat code
+  * support zstd arch linux files in local build
+  * fix deleterequest for repositories
+  * append --norootforbuild as default to build command
+  * fix decoding in interactive request mode
+  * use signdummy for product builds
+  * print release project when creating MR
+  * improve SSLError message for TLSv1 validation
+  * osc maintained --version prints the version of each maintained package
+  * print web url links after creating requests (New general bool option 'print_web_links' must be set in oscrc)
+  * fix checkout_no_colon on project level
+  * handle empty release number of rpm packages in build.py
+  * handle bytes vs. str error when parsing meta
+  * custom exception if importing m2crypto fails
+  * fix missing oscerr import in util.helper
+  * several fixes for keyring handling
+  * fix arch zst magic in util.packagequery
+
+- Ship fish completion file.
+
+- Spec:
+    * Recommend python3-keyring when using python3</comment>
+    <requestid>781771</requestid>
+  </revision>
 </revisionlist>

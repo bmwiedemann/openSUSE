@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 21 08:38:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.4
+  * Adapt the formula and HA template to work with aws RA
+  * Make nfs share option configurable
+
+-------------------------------------------------------------------
 Tue Jan 28 10:34:19 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.2.3

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  5 09:12:06 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.4.0
+  - Dropped Python 2 support
+  - Store html content in a data-html attribute (#66)
+  - Colormap alpha #64
+  - Fix caption being propagated in scale functions #62
+  - Assert color type in color_brewer #52
+
+-------------------------------------------------------------------
 Thu Jun  6 08:25:54 UTC 2019 - pgajdos@suse.com
 
 - run the testsuite

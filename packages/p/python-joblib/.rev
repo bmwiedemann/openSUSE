@@ -104,4 +104,12 @@
   * numpy16.patch</comment>
     <requestid>706481</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>626472d4ee46b81b63c10a0c30605a5f</srcmd5>
+    <version>0.14.1</version>
+    <time>1583447083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781870</requestid>
+  </revision>
 </revisionlist>

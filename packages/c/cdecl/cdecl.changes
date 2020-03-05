@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 26 19:16:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.9
+  * The `cast` command now accepts `as` and `to` in addition
+    to `into`.
+  * Autocomplete was missing `explain-by-default;`.
+
+-------------------------------------------------------------------
 Thu Jan 23 23:13:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.8.2

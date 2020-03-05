@@ -545,4 +545,12 @@
   * reworded patch file Remove-rpath-from-build.patch to use %autopatch (forwarded request 780353 from eeich)</comment>
     <requestid>780356</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>1843ef0482e89d04a47d5ea231205669</srcmd5>
+    <version>20.02.0</version>
+    <time>1583447026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781815</requestid>
+  </revision>
 </revisionlist>

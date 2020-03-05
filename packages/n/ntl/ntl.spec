@@ -1,7 +1,7 @@
 #
 # spec file for package ntl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           ntl
-%define lname	libntl42
-Version:        11.4.1
+%define lname	libntl43
+Version:        11.4.3
 Release:        0
 Summary:        Library for Number Theory
 License:        LGPL-2.1-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 14:20:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add -lminizip to doomsday-libs.diff to cure a linker error.
+- Update to release 2.2.2
+  * Doomsday Script improvements, Heretic modding, weapon
+    field of view.
+
+-------------------------------------------------------------------
 Sun Jan 19 11:36:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.1.1

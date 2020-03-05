@@ -1,7 +1,7 @@
 #
 # spec file for package yate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2011, Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           yate
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Yet Another Telephony Engine
 License:        GPL-2.0-or-later
@@ -126,7 +126,8 @@ make #%%{?_smp_mflags} # Parallel build causes side-effects (compile errors)
 rm %{buildroot}%{_prefix}/lib/menu/yate-qt4.menu # Unused, causes lots of rpmlint warnings
 %endif
 mkdir -p %{buildroot}%{_docdir}/%{name} # We want docs in /usr/share/doc/packages/yate
-mv %{buildroot}%{_datadir}/doc/%{name}-%{version} %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}%{_datadir}/doc/%{name}-%{version}/* %{buildroot}%{_docdir}/%{name}
+rm -f %{buildroot}%{_docdir}/%{name}/COPYING
 
 %if 0%{?packman_bs}
 cat <<EOF >README.amrnb
@@ -152,8 +153,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 
 %files
 %license COPYING
-%doc ChangeLog README
-%doc %{_docdir}/%{name}/%{name}-%{version}/
+%doc %{_docdir}/%{name}
 %{_bindir}/%{name}
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %dir %{_datadir}/%{name}
@@ -174,6 +174,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %{_libdir}/%{name}/fileinfo.yate
 %{_libdir}/%{name}/filetransfer.yate
 %{_libdir}/%{name}/faxchan.yate
+%{_libdir}/%{name}/g722webrtc.yate
 %{_libdir}/%{name}/gvoice.yate
 %{_libdir}/%{name}/gsmcodec.yate
 %{_libdir}/%{name}/ilbccodec.yate
@@ -193,6 +194,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %{_libdir}/%{name}/speexcodec.yate
 %{_libdir}/%{name}/tonedetect.yate
 %{_libdir}/%{name}/tonegen.yate
+%{_libdir}/%{name}/wiresniff.yate
 %{_libdir}/%{name}/wavefile.yate
 %{_libdir}/%{name}/yiaxchan.yate
 %{_libdir}/%{name}/yjinglechan.yate
@@ -272,6 +274,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %config(noreplace) %{_sysconfdir}/%{name}/tdmcard.conf
 %config(noreplace) %{_sysconfdir}/%{name}/tonegen.conf
 %config(noreplace) %{_sysconfdir}/%{name}/users.conf
+%config(noreplace) %{_sysconfdir}/%{name}/wiresniff.conf
 %config(noreplace) %{_sysconfdir}/%{name}/wpcard.conf
 %config(noreplace) %{_sysconfdir}/%{name}/yate.conf
 %config(noreplace) %{_sysconfdir}/%{name}/ybladerf.conf

@@ -18,7 +18,7 @@ Index: Doomsday-Engine-2.1.1/doomsday/sdk/libgui/CMakeLists.txt
      # done for libassimp).
      get_property (assimpLibs TARGET libassimp PROPERTY INTERFACE_LINK_LIBRARIES)
 -    target_link_libraries (libgui PUBLIC ${assimpLibs})
-+    target_link_libraries (libgui PUBLIC ${assimpLibs} -lz)
++    target_link_libraries (libgui PUBLIC ${assimpLibs} -lz -lminizip)
  endif ()
  
  if (IOS)
