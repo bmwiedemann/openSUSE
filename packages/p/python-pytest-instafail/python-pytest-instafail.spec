@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-instafail
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Version:        0.4.1.post0
 Release:        0
 Summary:        Pytest Plugin to Show Failures Instantly
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jpvanhal/pytest-instafail
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-instafail/pytest-instafail-%{version}.tar.gz
+Patch0:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +42,7 @@ until the end of test session.
 
 %prep
 %setup -q -n pytest-instafail-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -52,7 +53,7 @@ until the end of test session.
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

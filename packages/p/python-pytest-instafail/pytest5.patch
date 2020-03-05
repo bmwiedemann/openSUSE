@@ -1,0 +1,13 @@
+Index: pytest-instafail-0.4.1.post0/test_instafail.py
+===================================================================
+--- pytest-instafail-0.4.1.post0.orig/test_instafail.py
++++ pytest-instafail-0.4.1.post0/test_instafail.py
+@@ -241,7 +241,7 @@ class TestInstafailingTerminalReporter(o
+         ])
+         if not option.quiet:
+             result.stdout.fnmatch_lines([
+-                "collected 0 items / 1 errors",
++                "collected 0 items / 1 error*",
+             ])
+ 
+     def test_print_stacktrace_once_with_pdb(self, testdir, request, option):

@@ -51,4 +51,13 @@
   * do not use py.test but mention pytest everywhere</comment>
     <requestid>749188</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3da23aa46bdef46a0914fcade77a1329</srcmd5>
+    <version>0.4.1.post0</version>
+    <time>1583446958</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fixing testing with new pytest:
+  * pytest5.patch</comment>
+    <requestid>781769</requestid>
+  </revision>
 </revisionlist>
