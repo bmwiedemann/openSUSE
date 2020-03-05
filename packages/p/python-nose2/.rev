@@ -59,4 +59,15 @@
   doctests.</comment>
     <requestid>747272</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>080de4039a2b903b1bdae6ce4b370879</srcmd5>
+    <version>0.9.2</version>
+    <time>1583446629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  * Add --junit-xml-path to the junit plugin argument list
+  * It is now possible to use the multiprocess and coverage plugins together, as long as all of the coverage config is put into the config file
+  * Minor changes to be compatible with newer pythons (3.8, 3.9)</comment>
+    <requestid>780971</requestid>
+  </revision>
 </revisionlist>
