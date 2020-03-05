@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 16:29:39 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add rpm-properties.xml for containment-rpm-pxe
+
+-------------------------------------------------------------------
 Wed Feb  5 09:53:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use systemctl enable instead of chkconfig on.

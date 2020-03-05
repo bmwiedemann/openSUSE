@@ -1,0 +1,13 @@
+<props>
+  <summary>OEM/PXE image for Yomi</summary>
+  <description>
+    OEM/PXE image for Yomi, generated with KIWI.  Containst the
+    salt-minion, and all the tools required during the installation.
+  </description>
+  <license>GPL-3.0-or-later</license>
+  <licensefile>LICENSE</licensefile>
+  <group>System/Management</group>
+  <url>https://build.opensuse.org/package/show/systemsmanagement:yomi/openSUSE-Tumbleweed-Yomi</url>
+  <targetboot>/srv/tftpboot/boot</targetboot>
+  <targetimage>/srv/tftpboot/image</targetimage>
+</props>
