@@ -15,4 +15,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>730073</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f64a7055aaf4a64e83b17bce75eb0adf</srcmd5>
+    <version>2.9.2</version>
+    <time>1583446723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.2:
+  * Bump to Clojure 1.10.1.
+  * Fix a bug where disabling implicit middleware disabled explicit ones.
+  * Add checksum check during self-install process.
+  * Include repository auth when verifying dependencies.
+  * Fix bugs in certain kinds of profile merging.
+  * Include :repositories from project.clj in pom.xml file.</comment>
+    <requestid>781388</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package leiningen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           leiningen
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        Automation for Clojure projects
 License:        EPL-1.0
@@ -61,6 +61,6 @@ install -m 0644 -D %{SOURCE4} %{buildroot}%{_mandir}/man1/lein.1
 %{_mandir}/man1/lein*
 %{_datadir}/bash-completion/completions/lein
 %{_sysconfdir}/zsh_completion.d
-%{_datadir}/java/leiningen-2.9.1-standalone.jar
+%{_datadir}/java/leiningen-%{version}-standalone.jar
 
 %changelog
