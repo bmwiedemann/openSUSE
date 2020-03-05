@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 15:04:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Ad at-spi2-core-async-session-register.patch: make bus-launcher
+  session registration more robust (boo#1154582).
+
+-------------------------------------------------------------------
 Mon Sep  9 15:08:37 CDT 2019 - mgorse@suse.com
 
 - Update to version 2.34.0:

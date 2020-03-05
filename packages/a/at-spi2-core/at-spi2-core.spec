@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
 Source0:        https://download.gnome.org/sources/at-spi2-core/2.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
+# PATCH-FIX-UPSTREAM at-spi2-core-async-session-register.patch boo#1154582 mgorse@suse.com -- make bus-launcher session registration more robust.
+Patch0:         at-spi2-core-async-session-register.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0

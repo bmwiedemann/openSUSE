@@ -1,0 +1,141 @@
+From 47496e0ff2571636db8f3ca8807ce11b50866130 Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@alum.wpi.edu>
+Date: Thu, 27 Feb 2020 08:43:16 -0600
+Subject: [PATCH] bus-launcher: Use async callback for RegisterClient
+
+This should make the process more robust, in combination with setting the
+timeout to G_MAXINT, rather than -1, which effectively defaults to 25
+seconds. Otherwise, it is possible for the session manager to be
+unresponsive, perhaps waiting for a synchronous call of its own to time out,
+and then the session manager will eventually process the RegisterClient, but
+at-spi-bus-launcher will have timed out, meaning that we successfully register
+with the session manager but don't ever set up our signal handler, meaning
+that, later, the session manager sends a QueryEndSession to us, but we don't
+see it.
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1154582
+---
+ bus/at-spi-bus-launcher.c | 78 +++++++++++++++++++++++----------------
+ 1 file changed, 46 insertions(+), 32 deletions(-)
+
+diff --git a/bus/at-spi-bus-launcher.c b/bus/at-spi-bus-launcher.c
+index b4f49b8..362fd05 100644
+--- a/bus/at-spi-bus-launcher.c
++++ b/bus/at-spi-bus-launcher.c
+@@ -69,6 +69,7 @@ typedef struct {
+   int pipefd[2];
+   int listenfd;
+   char *a11y_launch_error_message;
++  GDBusProxy *sm_proxy;
+ } A11yBusLauncher;
+ 
+ static A11yBusLauncher *_global_app = NULL;
+@@ -139,28 +140,61 @@ client_proxy_ready_cb (GObject      *source_object,
+                     G_CALLBACK (g_signal_cb), app);
+ }
+ 
++static void
++client_registered (GObject *source,
++                   GAsyncResult *result,
++                   gpointer user_data)
++{
++  A11yBusLauncher *app = user_data;
++  GError *error = NULL;
++  GVariant *variant;
++  gchar *object_path;
++  GDBusProxyFlags flags;
++
++  variant = g_dbus_proxy_call_finish (app->sm_proxy, result, &error);
++  if (!variant)
++    {
++      if (error != NULL)
++        {
++          g_warning ("Failed to register client: %s", error->message);
++          g_error_free (error);
++        }
++    }
++  else
++    {
++      g_variant_get (variant, "(o)", &object_path);
++      g_variant_unref (variant);
++
++      flags = G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES;
++      g_dbus_proxy_new_for_bus (G_BUS_TYPE_SESSION, flags, NULL,
++                                "org.gnome.SessionManager", object_path,
++                                "org.gnome.SessionManager.ClientPrivate",
++                                NULL, client_proxy_ready_cb, app);
++
++      g_free (object_path);
++    }
++  g_clear_object (&app->sm_proxy);
++}
++
+ static void
+ register_client (A11yBusLauncher *app)
+ {
+   GDBusProxyFlags flags;
+-  GDBusProxy *sm_proxy;
+   GError *error;
+   const gchar *app_id;
+   const gchar *autostart_id;
+   gchar *client_startup_id;
+   GVariant *parameters;
+-  GVariant *variant;
+-  gchar *object_path;
+ 
+   flags = G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES |
+           G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS;
+ 
+   error = NULL;
+-  sm_proxy = g_dbus_proxy_new_sync (app->session_bus, flags, NULL,
+-                                    "org.gnome.SessionManager",
+-                                    "/org/gnome/SessionManager",
+-                                    "org.gnome.SessionManager",
+-                                    NULL, &error);
++  app->sm_proxy = g_dbus_proxy_new_sync (app->session_bus, flags, NULL,
++                                         "org.gnome.SessionManager",
++                                         "/org/gnome/SessionManager",
++                                         "org.gnome.SessionManager",
++                                         NULL, &error);
+ 
+   if (error != NULL)
+     {
+@@ -187,31 +221,11 @@ register_client (A11yBusLauncher *app)
+   g_free (client_startup_id);
+ 
+   error = NULL;
+-  variant = g_dbus_proxy_call_sync (sm_proxy,
+-                                    "RegisterClient", parameters,
+-                                    G_DBUS_CALL_FLAGS_NONE,
+-                                    -1, NULL, &error);
+-
+-  g_object_unref (sm_proxy);
+-
+-  if (error != NULL)
+-    {
+-      g_warning ("Failed to register client: %s", error->message);
+-      g_error_free (error);
+-
+-      return;
+-    }
+-
+-  g_variant_get (variant, "(o)", &object_path);
+-  g_variant_unref (variant);
+-
+-  flags = G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES;
+-  g_dbus_proxy_new_for_bus (G_BUS_TYPE_SESSION, flags, NULL,
+-                            "org.gnome.SessionManager", object_path,
+-                            "org.gnome.SessionManager.ClientPrivate",
+-                            NULL, client_proxy_ready_cb, app);
++  g_dbus_proxy_call (app->sm_proxy,
++                     "RegisterClient", parameters,
++                     G_DBUS_CALL_FLAGS_NONE,
++                     G_MAXINT, NULL, client_registered, app);
+ 
+-  g_free (object_path);
+ }
+ 
+ static void
+-- 
+2.24.1
+
