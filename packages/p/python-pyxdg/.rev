@@ -70,4 +70,18 @@
     <comment></comment>
     <requestid>731156</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>de56de7210cdb0a50394891b45685ab6</srcmd5>
+    <version>0.26</version>
+    <time>1583446581</time>
+    <user>dimstar_suse</user>
+    <comment>- Add setuptools dependency
+- Use pytest to run tests rather than nose that will break with
+  python 3.10
+
+- Fix Menu.py using attributes that no longer exist
+  Patch from https://gitlab.freedesktop.org/xdg/pyxdg/-/merge_requests/2
+  * new-api.patch</comment>
+    <requestid>780849</requestid>
+  </revision>
 </revisionlist>

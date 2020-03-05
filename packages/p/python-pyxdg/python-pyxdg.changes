@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:27:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add setuptools dependency
+- Use pytest to run tests rather than nose that will break with
+  python 3.10
+
+-------------------------------------------------------------------
+Sun Mar  1 01:21:17 UTC 2020 - Mook <mook.moz+com.novell@gmail.com>
+
+- Fix Menu.py using attributes that no longer exist
+  Patch from https://gitlab.freedesktop.org/xdg/pyxdg/-/merge_requests/2
+  * new-api.patch
+
+-------------------------------------------------------------------
 Sun Sep 15 06:48:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix test data to use sys.executable
