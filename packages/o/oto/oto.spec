@@ -1,7 +1,7 @@
 #
 # spec file for package oto
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           oto
-Version:        0.4
+Version:        0.5
 Release:        0
-Url:            http://sourceforge.net/projects/oto/
+URL:            http://sourceforge.net/projects/oto/
 #Original source: http://prdownloads.sourceforge.net/oto/oto-0.4.tar.gz
-Source0:        http://prdownloads.sourceforge.net/oto/oto-%{version}.tar.bz2
-Patch0:         fix-implicit-declarations.patch
+Source0:        http://prdownloads.sourceforge.net/oto/oto-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Open Type Organizer
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 
 %description
@@ -50,7 +50,6 @@ Authors:
 
 %prep
 %setup0
-%patch0 -p1
 
 %build
 rm -f config.cache
@@ -70,7 +69,8 @@ rm -rf $RPM_BUILD_ROOT;
 
 %files
 %defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %{_bindir}/*
 /usr/share/*
 

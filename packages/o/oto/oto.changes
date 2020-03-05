@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:12:50 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to 0.5
+  * Minor fixes to get rid of warnings from gcc.
+- Removed patch fix-implicit-declarations.patch.
+
+-------------------------------------------------------------------
 Wed Dec 21 10:31:43 UTC 2011 - coolo@suse.com
 
 - remove call to suse_update_config (very old work around)
