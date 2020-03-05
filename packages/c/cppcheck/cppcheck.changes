@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:17:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use cmake macros
+
+-------------------------------------------------------------------
+Wed Mar  4 11:32:52 UTC 2020 - Danny Al-Gaaf <opensuse@bisect.de>
+
+- Update to version 1.90
+  * alias to vector element invalid after vector is changed
+  * improved value flow analysis for struct members
+  * improved value flow analysis for pointer alias
+  * CERT: Added ENV33-C: Do not call system()
+  * MISRA: added rules 2.7, 3.2, 4.2, 14.2, 21.1, 21.12
+
+- update to version 1.89
+  * The default warning message format was changed. The new format
+    is similar to GCC. If you want to get warnings in the old 
+    format, add --template=cppcheck1 to the command line.
+  * improved value flow analysis for pointer aliases
+  * improved checking for uninitialized variables/structs
+  * better checking of smart pointers
+  * better checking of global variables
+  * Added Cppcheck annotations cppcheck_low(VALUE) and 
+    cppcheck_high(VALUE)
+  * shadow variables; warn when argument is shadowed
+  * warn if local reference variable can be const
+  * Added API01-C: Avoid laying out strings in memory directly 
+    before sensitive data
+  * Added MSC24-C: Do not use deprecated or obsolescent functions
+  * Added STR11-C: Do not specify the bound of a character array
+    initialized with a string literal
+  * MISRA: added rules 17.2, 18.4, 18.7
+
+-------------------------------------------------------------------
 Mon Jul  1 08:22:46 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.88:

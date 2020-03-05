@@ -1,7 +1,7 @@
 #
 # spec file for package cppcheck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cppcheck
-Version:        1.88
+Version:        1.90
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
@@ -78,11 +78,11 @@ doesn't see.
   -DBUILD_GUI=ON \
   -DBUILD_TESTS=ON \
   -DHAVE_RULES=yes
-%make_jobs
+%cmake_build
 
 # does not work with CMake, directly call provided Makefile from source directory
 cd ..
-make man \
+%make_build man \
     DB2MAN=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
 
 # use python3 as interpreter
@@ -90,7 +90,7 @@ sed -i "s|env python|python3|g" htmlreport/cppcheck-htmlreport
 
 %check
 export CXXFLAGS="%{optflags}"
-%make_jobs check
+%ctest
 
 %install
 install -Dpm 0755 build/bin/cppcheck \
