@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.5
-%define patchversion 5.5.6
+%define patchversion 5.5.7
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.5.6
+Version:        5.5.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4a830b1
+Release:        <RELEASE>.g1004bce
 %else
 Release:        0
 %endif
@@ -174,10 +174,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-4a830b16604db6d70acd1ba41c4d0b0fe1b8acca
-Provides:       kernel-srchash-4a830b16604db6d70acd1ba41c4d0b0fe1b8acca
+Provides:       kernel-%build_flavor-base-srchash-1004bcee393f5a16b609a2710eb87323100d4608
+Provides:       kernel-srchash-1004bcee393f5a16b609a2710eb87323100d4608
 # END COMMON DEPS
-Provides:       %name-srchash-4a830b16604db6d70acd1ba41c4d0b0fe1b8acca
+Provides:       %name-srchash-1004bcee393f5a16b609a2710eb87323100d4608
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -1153,7 +1153,7 @@ Conflicts:      libc.so.6()(64bit)
 %description extra
 The standard kernel for both uniprocessor and multiprocessor systems.
 
-This package contains additional modules not supported by Novell.
+This package contains additional modules not supported by SUSE.
 
 
 %source_timestamp

@@ -5018,4 +5018,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5.6 &amp; fix some configs (mistake since 5.5)</comment>
     <requestid>778825</requestid>
   </revision>
+  <revision rev="532" vrev="1">
+    <srcmd5>8efefdbfa5803db2e498e1bd3de4b400</srcmd5>
+    <version>5.5.7</version>
+    <time>1583446610</time>
+    <user>dimstar_suse</user>
+    <comment>5.5.7 &amp; KVM CVE fix &amp; config fixes</comment>
+    <requestid>781096</requestid>
+  </revision>
 </revisionlist>

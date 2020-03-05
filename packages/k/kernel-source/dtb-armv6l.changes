@@ -1,4 +1,296 @@
 -------------------------------------------------------------------
+Sun Mar  1 20:28:06 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.7 (bnc#1012628).
+- iommu/qcom: Fix bogus detach logic (bnc#1012628).
+- iommu/vt-d: Add attach_deferred() helper (bnc#1012628).
+- iommu/vt-d: Move deferred device attachment into helper function
+  (bnc#1012628).
+- iommu/vt-d: Do deferred attachment in iommu_need_mapping()
+  (bnc#1012628).
+- iommu/vt-d: Remove deferred_attach_domain() (bnc#1012628).
+- iommu/vt-d: Simplify check in identity_mapping() (bnc#1012628).
+- ALSA: hda: Use scnprintf() for printing texts for sysfs/procfs
+  (bnc#1012628).
+- ALSA: hda/realtek - Apply quirk for MSI GP63, too (bnc#1012628).
+- ALSA: hda/realtek - Apply quirk for yet another MSI laptop
+  (bnc#1012628).
+- ASoC: codec2codec: avoid invalid/double-free of pcm runtime
+  (bnc#1012628).
+- ASoC: sun8i-codec: Fix setting DAI data format (bnc#1012628).
+- tpm: Revert tpm_tis_spi_mod.ko to tpm_tis_spi.ko (bnc#1012628).
+- tpm: Initialize crypto_id of allocated_banks to HASH_ALGO__LAST
+  (bnc#1012628).
+- ecryptfs: fix a memory leak bug in parse_tag_1_packet()
+  (bnc#1012628).
+- ecryptfs: fix a memory leak bug in ecryptfs_init_messaging()
+  (bnc#1012628).
+- Btrfs: fix race between shrinking truncate and fiemap
+  (bnc#1012628).
+- btrfs: don't set path->leave_spinning for truncate
+  (bnc#1012628).
+- btrfs: handle logged extent failure properly (bnc#1012628).
+- thunderbolt: Prevent crash if non-active NVMem file is read
+  (bnc#1012628).
+- USB: misc: iowarrior: add support for 2 OEMed devices
+  (bnc#1012628).
+- USB: misc: iowarrior: add support for the 28 and 28L devices
+  (bnc#1012628).
+- USB: misc: iowarrior: add support for the 100 device
+  (bnc#1012628).
+- floppy: check FDC index for errors before assigning it
+  (bnc#1012628).
+- USB: serial: ch341: fix receiver regression (bnc#1012628).
+- vt: fix scrollback flushing on background consoles
+  (bnc#1012628).
+- vt: vt_ioctl: fix race in VT_RESIZEX (bnc#1012628).
+- staging: android: ashmem: Disallow ashmem memory from being
+  remapped (bnc#1012628).
+- staging: vt6656: fix sign of rx_dbm to bb_pre_ed_rssi
+  (bnc#1012628).
+- xhci: Force Maximum Packet size for Full-speed bulk devices
+  to valid range (bnc#1012628).
+- xhci: fix runtime pm enabling for quirky Intel hosts
+  (bnc#1012628).
+- xhci: apply XHCI_PME_STUCK_QUIRK to Intel Comet Lake platforms
+  (bnc#1012628).
+- xhci: Fix memory leak when caching protocol extended capability
+  PSI tables - take 2 (bnc#1012628).
+- USB: core: add endpoint-blacklist quirk (bnc#1012628).
+- USB: quirks: blacklist duplicate ep on Sound Devices USBPre2
+  (bnc#1012628).
+- usb: uas: fix a plug & unplug racing (bnc#1012628).
+- USB: Fix novation SourceControl XL after suspend (bnc#1012628).
+- USB: hub: Don't record a connect-change event during
+  reset-resume (bnc#1012628).
+- USB: hub: Fix the broken detection of USB3 device in SMSC hub
+  (bnc#1012628).
+- usb: dwc2: Fix SET/CLEAR_FEATURE and GET_STATUS flows
+  (bnc#1012628).
+- usb: dwc3: gadget: Check for IOC/LST bit in TRB->ctrl fields
+  (bnc#1012628).
+- usb: dwc3: debug: fix string position formatting mixup with
+  ret and len (bnc#1012628).
+- scsi: Revert "target/core: Inline transport_lun_remove_cmd()"
+  (bnc#1012628).
+- staging: rtl8188eu: Fix potential security hole (bnc#1012628).
+- staging: rtl8188eu: Fix potential overuse of kernel memory
+  (bnc#1012628).
+- staging: rtl8723bs: Fix potential security hole (bnc#1012628).
+- staging: rtl8723bs: Fix potential overuse of kernel memory
+  (bnc#1012628).
+- hwmon: (acpi_power_meter) Fix lockdep splat (bnc#1012628).
+- drm/panfrost: perfcnt: Reserve/use the AS attached to the
+  perfcnt MMU context (bnc#1012628).
+- powerpc/8xx: Fix clearing of bits 20-23 in ITLB miss
+  (bnc#1012628).
+- powerpc/eeh: Fix deadlock handling dead PHB (bnc#1012628).
+- powerpc/tm: Fix clearing MSR[TS] in current when reclaiming
+  on signal delivery (bnc#1012628).
+- powerpc/entry: Fix an #if which should be an #ifdef in
+  entry_32.S (bnc#1012628).
+- powerpc/hugetlb: Fix 512k hugepages on 8xx with 16k page size
+  (bnc#1012628).
+- powerpc/hugetlb: Fix 8M hugepages on 8xx (bnc#1012628).
+- arm64: memory: Add missing brackets to untagged_addr() macro
+  (bnc#1012628).
+- jbd2: fix ocfs2 corrupt when clearing block group bits
+  (bnc#1012628).
+- x86/ima: use correct identifier for SetupMode variable
+  (bnc#1012628).
+- x86/mce/amd: Publish the bank pointer only after setup has
+  succeeded (bnc#1012628).
+- x86/mce/amd: Fix kobject lifetime (bnc#1012628).
+- x86/cpu/amd: Enable the fixed Instructions Retired counter
+  IRPERF (bnc#1012628).
+- MIPS: ingenic: DTS: Fix watchdog nodes (bnc#1012628).
+- serial: 8250: Check UPF_IRQ_SHARED in advance (bnc#1012628).
+- tty/serial: atmel: manage shutdown in case of RS485 or ISO7816
+  mode (bnc#1012628).
+- tty: serial: imx: setup the correct sg entry for tx dma
+  (bnc#1012628).
+- tty: serial: qcom_geni_serial: Fix RX cancel command failure
+  (bnc#1012628).
+- serdev: ttyport: restore client ops on deregistration
+  (bnc#1012628).
+- MAINTAINERS: Update drm/i915 bug filing URL (bnc#1012628).
+- fsi: aspeed: add unspecified HAS_IOMEM dependency (bnc#1012628).
+- ACPI: PM: s2idle: Check fixed wakeup events in
+  acpi_s2idle_wake() (bnc#1012628).
+- Revert "ipc,sem: remove uneeded sem_undo_list lock usage in
+  exit_sem()" (bnc#1012628).
+- mm/memcontrol.c: lost css_put in memcg_expand_shrinker_maps()
+  (bnc#1012628).
+- nvme-multipath: Fix memory leak with ana_log_buf (bnc#1012628).
+- genirq/irqdomain: Make sure all irq domain flags are distinct
+  (bnc#1012628).
+- mm/vmscan.c: don't round up scan size for online memory cgroup
+  (bnc#1012628).
+- mm/sparsemem: pfn_to_page is not valid yet on SPARSEMEM
+  (bnc#1012628).
+- lib/stackdepot.c: fix global out-of-bounds in stack_slabs
+  (bnc#1012628).
+- mm: Avoid creating virtual address aliases in
+  brk()/mmap()/mremap() (bnc#1012628).
+- drm/amdgpu/soc15: fix xclk for raven (bnc#1012628).
+- drm/amdgpu/gfx9: disable gfxoff when reading rlc clock
+  (bnc#1012628).
+- drm/amdgpu/gfx10: disable gfxoff when reading rlc clock
+  (bnc#1012628).
+- drm/nouveau/kms/gv100-: Re-set LUT after clearing for modesets
+  (bnc#1012628).
+- drm/i915: Wean off drm_pci_alloc/drm_pci_free (bnc#1012628).
+- drm/i915: Update drm/i915 bug filing URL (bnc#1012628).
+- sched/psi: Fix OOB write when writing 0 bytes to PSI files
+  (bnc#1012628).
+- KVM: x86: don't notify userspace IOAPIC on edge-triggered
+  interrupt EOI (bnc#1012628).
+- ext4: fix a data race in EXT4_I(inode)->i_disksize
+  (bnc#1012628).
+- ext4: add cond_resched() to __ext4_find_entry() (bnc#1012628).
+- ext4: fix potential race between online resizing and write
+  operations (bnc#1012628).
+- ext4: fix potential race between s_group_info online resizing
+  and access (bnc#1012628).
+- ext4: fix potential race between s_flex_groups online resizing
+  and access (bnc#1012628).
+- ext4: fix mount failure with quota configured as module
+  (bnc#1012628).
+- ext4: rename s_journal_flag_rwsem to s_writepages_rwsem
+  (bnc#1012628).
+- ext4: fix race between writepages and enabling EXT4_EXTENTS_FL
+  (bnc#1012628).
+- drm/i915/execlists: Always force a context reload when rewinding
+  RING_TAIL (bnc#1012628).
+- KVM: nVMX: clear PIN_BASED_POSTED_INTR from nested pinbased_ctls
+  only when apicv is globally disabled (bnc#1012628).
+- KVM: nVMX: handle nested posted interrupts when apicv is
+  disabled for L1 (bnc#1012628).
+- KVM: apic: avoid calculating pending eoi from an uninitialized
+  val (bnc#1012628).
+- crypto: chacha20poly1305 - prevent integer overflow on large
+  input (bnc#1012628).
+- btrfs: destroy qgroup extent records on transaction abort
+  (bnc#1012628).
+- btrfs: fix bytes_may_use underflow in prealloc error condtition
+  (bnc#1012628).
+- btrfs: reset fs_root to NULL on error in open_ctree
+  (bnc#1012628).
+- btrfs: do not check delayed items are empty for single
+  transaction cleanup (bnc#1012628).
+- Btrfs: fix btrfs_wait_ordered_range() so that it waits for
+  all ordered extents (bnc#1012628).
+- Btrfs: fix deadlock during fast fsync when logging prealloc
+  extents beyond eof (bnc#1012628).
+- Revert "dmaengine: imx-sdma: Fix memory leak" (bnc#1012628).
+- drm/i915/selftests: Add a mock i915_vma to the mock_ring
+  (bnc#1012628).
+- drm/i915/gvt: more locking for ppgtt mm LRU list (bnc#1012628).
+- drm/bridge: tc358767: fix poll timeouts (bnc#1012628).
+- drm/i915/gem: Require per-engine reset support for
+  non-persistent contexts (bnc#1012628).
+- drm/i915/gt: Protect defer_request() from new waiters
+  (bnc#1012628).
+- drm/i915/ehl: Update port clock voltage level requirements
+  (bnc#1012628).
+- drm/msm/dpu: fix BGR565 vs RGB565 confusion (bnc#1012628).
+- scsi: Revert "RDMA/isert: Fix a recently introduced regression
+  related to logout" (bnc#1012628).
+- scsi: Revert "target: iscsi: Wait for all commands to finish
+  before freeing a session" (bnc#1012628).
+- usb: gadget: composite: Fix bMaxPower for SuperSpeedPlus
+  (bnc#1012628).
+- usb: dwc2: Fix in ISOC request length checking (bnc#1012628).
+- staging: rtl8723bs: fix copy of overlapping memory
+  (bnc#1012628).
+- staging: greybus: use after free in
+  gb_audio_manager_remove_all() (bnc#1012628).
+- ASoC: atmel: fix atmel_ssc_set_audio link failure (bnc#1012628).
+- ASoC: fsl_sai: Fix exiting path on probing failure
+  (bnc#1012628).
+- ecryptfs: replace BUG_ON with error handling code (bnc#1012628).
+- iommu/vt-d: Fix compile warning from intel-svm.h (bnc#1012628).
+- crypto: rename sm3-256 to sm3 in hash_algo_name (bnc#1012628).
+- genirq/proc: Reject invalid affinity masks (again)
+  (bnc#1012628).
+- bpf, offload: Replace bitwise AND by logical AND in
+  bpf_prog_offload_info_fill (bnc#1012628).
+- scripts/get_maintainer.pl: deprioritize old Fixes: addresses
+  (bnc#1012628).
+- io_uring: prevent sq_thread from spinning when it should stop
+  (bnc#1012628).
+- io_uring: fix __io_iopoll_check deadlock in io_sq_thread
+  (bnc#1012628).
+- dma-direct: relax addressability checks in dma_direct_supported
+  (bnc#1012628).
+- ALSA: rawmidi: Avoid bit fields for state flags (bnc#1012628).
+- ALSA: seq: Avoid concurrent access to queue flags (bnc#1012628).
+- ALSA: seq: Fix concurrent access to queue current tick/time
+  (bnc#1012628).
+- netfilter: xt_hashlimit: limit the max size of hashtable
+  (bnc#1012628).
+- rxrpc: Fix call RCU cleanup using non-bh-safe locks
+  (bnc#1012628).
+- ata: ahci: Add shutdown to freeze hardware resources of ahci
+  (bnc#1012628).
+- xen: Enable interrupts when calling _cond_resched()
+  (bnc#1012628).
+- net/mlx5e: Reset RQ doorbell counter before moving RQ state
+  from RST to RDY (bnc#1012628).
+- net/mlx5: Fix sleep while atomic in mlx5_eswitch_get_vepa
+  (bnc#1012628).
+- net/mlx5e: Don't clear the whole vf config when switching modes
+  (bnc#1012628).
+- net/mlx5e: Fix crash in recovery flow without devlink reporter
+  (bnc#1012628).
+- s390/kaslr: Fix casts in get_random (bnc#1012628).
+- s390/mm: Explicitly compare PAGE_DEFAULT_KEY against zero in
+  storage_key_init_range (bnc#1012628).
+- bpf: Selftests build error in sockmap_basic.c (bnc#1012628).
+- ASoC: SOF: Intel: hda: Add iDisp4 DAI (bnc#1012628).
+- commit 1004bce
+
+-------------------------------------------------------------------
+Thu Feb 27 08:51:54 CET 2020 - jslaby@suse.cz
+
+- Revert "sign also s390x kernel images (bsc#1163524)"
+  This reverts commit b38b61155f0a2c3ebca06d4bb0c2e11a19a87f1f.
+  It breaks s390x build as we need pesign-obs-integration package updated
+  first.
+  Let's enable this later when everything is ready.
+- commit eca1eba
+
+-------------------------------------------------------------------
+Wed Feb 26 15:15:41 CET 2020 - msuchanek@suse.de
+
+- rpm/package-descriptions: garbege collection
+  remove old ARM and Xen flavors.
+- commit bda0360
+
+-------------------------------------------------------------------
+Tue Feb 25 11:49:29 CET 2020 - meissner@suse.de
+
+- sign also s390x kernel images (bsc#1163524)
+- commit b38b611
+
+-------------------------------------------------------------------
+Tue Feb 25 11:27:18 CET 2020 - jroedel@suse.de
+
+- KVM: nVMX: Check IO instruction VM-exit conditions
+  (CVE-2020-2732 bsc#1163971).
+- KVM: nVMX: Refactor IO bitmap checks into helper function
+  (CVE-2020-2732 bsc#1163971).
+- KVM: nVMX: Don't emulate instructions in guest mode
+  (CVE-2020-2732 bsc#1163971).
+- commit c225901
+
+-------------------------------------------------------------------
+Mon Feb 24 13:39:50 CET 2020 - msuchanek@suse.de
+
+- Enable CONFIG_BLK_DEV_SR_VENDOR (boo#1164632).
+- commit 517bced
+
+-------------------------------------------------------------------
 Mon Feb 24 10:02:29 CET 2020 - jslaby@suse.cz
 
 - arm64: lse: Fix LSE atomics with LLVM (git-fixes).
@@ -708,6 +1000,18 @@ Fri Feb 21 14:21:09 CET 2020 - mkubecek@suse.cz
   - CRYPTO_LIB_BLAKE2S=m
   - CRYPTO_LIB_CURVE25519=m
 - commit bfcbf21
+
+-------------------------------------------------------------------
+Fri Feb 21 10:10:49 CET 2020 - jslaby@suse.cz
+
+- Update config files (bnc#1163396).
+  Disable CONFIG_RESET_ATTACK_MITIGATION as we don't have the userspace
+  part and it causes problems during reboot. The config description
+  states:
+  This should only be enabled when userland is configured to clear the
+  MemoryOverwriteRequest flag on clean shutdown after secrets have been
+  evicted, since otherwise it will trigger even on clean reboots.
+- commit 32035c7
 
 -------------------------------------------------------------------
 Thu Feb 20 07:00:15 CET 2020 - jslaby@suse.cz
@@ -1744,6 +2048,12 @@ Fri Feb  7 09:49:28 CET 2020 - ykaukab@suse.de
 
 - config.conf: enable armv6 and armv7 configs
 - commit d355d69
+
+-------------------------------------------------------------------
+Thu Feb  6 13:48:48 CET 2020 - chrubis@suse.cz
+
+- rpm/kernel-binary.spec.in: Replace Novell with SUSE
+- commit 8719d69
 
 -------------------------------------------------------------------
 Wed Feb  5 07:24:59 CET 2020 - mkubecek@suse.cz
@@ -9382,6 +9692,12 @@ Wed Sep 25 11:53:05 CEST 2019 - fvogt@suse.com
 - CONFIG_USB_DWC2_DUAL_ROLE=y and CONFIG_USB_DWC3_DUAL_ROLE=y
 - Previously that was only enabled on armv6/armv7
 - commit 4940602
+
+-------------------------------------------------------------------
+Tue Sep 24 15:57:36 CEST 2019 - hare@suse.de
+
+- Compile nvme.ko as module (bsc#1150846, bsc#1150850, bsc#1161889)
+- commit 3e12ff1
 
 -------------------------------------------------------------------
 Sat Sep 21 15:21:27 CEST 2019 - jslaby@suse.cz
