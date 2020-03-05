@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Wed Mar  4 08:20:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing dependencies fixing failing tests
+- Update to 1.6.5:
+  * e87c572 port the topology bug fixing. (#49)
+  * 2ffbcad Support dynamic inputs for apply_slice (#48)
+  * 7185620 A better operator builder for ONNXConverter-Common (#46)
+  * c452903 Support dynamic pads for Pad opset 11 (#45)
+  * 9bc1744 Use axes for Squeeze/Unsqueeze (#44)
+  * 66f8887 Allow repeats be string type for apply_tile (#43)
+  * 47a6c35 Add apply_conv (#42)
+  * 98ee169 Add apply_squeeze (#40)
+  * 82f08ed Add apply_gather, apply_greater, apply_gru, etc (#39)
+  * 672c5f7 Reformat and clean up some codes.
+  * f684aeb Use coordinate_transformation_mode as default parameter (tf 2.0 will change it) (#38)
+  * 85e9bcf Add support for detecting if h2o is installed. (#37)
+  * b5f216b Handle dynamic shape in apply_reshape (#36)
+  * b9700d1 Handle case input_name is list for apply_reshape (#35)
+  * 511a071 Generate graph after optimizing onnx model (#34)
+
+-------------------------------------------------------------------
+Wed Mar  4 08:17:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename to onnxconverter-common to match up pypi name
+
+-------------------------------------------------------------------
+Mon Mar  2 14:29:06 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- inital commit of the onnx-convertet_common tools version 1.6.0
