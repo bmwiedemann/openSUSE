@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Mar 03 17:32:48 UTC 2020 - lduncan@suse.com
 
-- Update to version v1.1.27 from v1.1.26 (jre#SLE-9345):
+- Update to version v1.1.27 from v1.1.26 (jre#SLE-7751):
   * version 1.1.27
   * Use pyparsing's locatedExpr instead of our custom helper
   And updated the SPEC file, also adding a _service file.
