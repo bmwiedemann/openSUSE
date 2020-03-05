@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:41:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.7.post2:
+  * Bugfix to switch to AVFoundation instead of QTKit
+- Fix building with new glut (pc file changed)
+
+-------------------------------------------------------------------
 Tue Nov 12 04:15:41 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.7.post1
