@@ -1,7 +1,7 @@
 #
 # spec file for package totem-pl-parser
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   18
 
 Name:           totem-pl-parser
-Version:        3.26.4
+Version:        3.26.5
 Release:        0
 Summary:        A GObject-based library to parse playlist formats
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -116,7 +116,7 @@ translation-update-upstream
 
 %files
 %dir %{_libexecdir}/totem-pl-parser/
-%{_libexecdir}/totem-pl-parser/99-totem-pl-parser-videosite
+%{_libexecdir}/totem-pl-parser/99-totem-pl-parser-videosite-quvi
 
 %files -n libtotem-plparser%{sover}
 %license COPYING.LIB

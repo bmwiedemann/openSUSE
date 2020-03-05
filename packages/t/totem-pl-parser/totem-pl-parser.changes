@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 17:13:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.26.5:
+  + Add g_auto* cleanup support.
+  + Add asynchronous version of totem_pl_parser_save().
+  + Fixed parsing of some remote MP3 files.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:20:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
