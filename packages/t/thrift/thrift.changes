@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar  4 16:17:05 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- python3-backports.ssl_match_hostname should be recommended only
+  when python3 is older than 3.5, so use the python3 version, not
+  the python2 one.
+
+-------------------------------------------------------------------
+Wed Mar  4 12:28:25 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- The python3 subpackage now depends on python3 packages, not python2
+
+-------------------------------------------------------------------
 Thu Sep 12 11:51:24 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Add missing zlib build dependency which used to be pulled in

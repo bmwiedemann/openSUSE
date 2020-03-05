@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -179,11 +179,11 @@ Caml, and Haskell.
 %package -n python3-thrift
 Summary:        Python3 bindings for the Thrift software framework
 Group:          Development/Libraries/Python
-Requires:       python-six >= 1.7.2
-Suggests:       python-Twisted
-Suggests:       python-tornado >= 4.0
-%if %{python_version_nodots} <= 34
-Recommends:     python-backports.ssl_match_hostname >= 3.5
+Requires:       python3-six >= 1.7.2
+Suggests:       python3-Twisted
+Suggests:       python3-tornado >= 4.0
+%if %{python3_version_nodots} <= 34
+Recommends:     python3-backports.ssl_match_hostname >= 3.5
 %endif
 
 %description -n python3-thrift
