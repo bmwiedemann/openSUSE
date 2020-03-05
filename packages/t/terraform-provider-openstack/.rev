@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>765868</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c933510293e92de471cbc758ed96ab89</srcmd5>
+    <version>1.26.0</version>
+    <time>1583446881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.0:
+  * v1.26.0
+  * Upgrade terraform-plugin-sdk to 1.7.0 (#970)
+  * implement support for volume_type in block_device of openstack_compute_instance_v2 (#963)
+  * Add &quot;insert_headers&quot; argument for lb_listener_v2 (#959)
+  * Remove mitaka test job which use ubuntu-trusty (#964)
+  * LBaaS: Typo fixed in lbaas l7 policy documentation (#957)
+  * Key Manager V1: Introduce ACL resources for secrets and containers (#956)</comment>
+    <requestid>781480</requestid>
+  </revision>
 </revisionlist>

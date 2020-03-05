@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 04 12:33:09 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.26.0:
+  * v1.26.0
+  * Upgrade terraform-plugin-sdk to 1.7.0 (#970)
+  * implement support for volume_type in block_device of openstack_compute_instance_v2 (#963)
+  * Add "insert_headers" argument for lb_listener_v2 (#959)
+  * Remove mitaka test job which use ubuntu-trusty (#964)
+  * LBaaS: Typo fixed in lbaas l7 policy documentation (#957)
+  * Key Manager V1: Introduce ACL resources for secrets and containers (#956)
+
+-------------------------------------------------------------------
 Fri Jan 03 11:28:38 UTC 2020 - fbergmann@suse.com
 
 - Update to version 1.25.0:
