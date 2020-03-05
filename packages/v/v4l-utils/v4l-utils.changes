@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 12:14:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch for gcc 10 bsc#1160298:
+  * gcc10.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 09:02:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Refresh patch sysmacros.patch

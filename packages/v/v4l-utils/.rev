@@ -287,4 +287,13 @@
   * Various fixes all around</comment>
     <requestid>761770</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>71117f321ef8bc3aa5b673938976645d</srcmd5>
+    <version>1.18.0</version>
+    <time>1583446617</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch for gcc 10 bsc#1160298:
+  * gcc10.patch</comment>
+    <requestid>780940</requestid>
+  </revision>
 </revisionlist>

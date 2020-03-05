@@ -28,7 +28,6 @@ Version:        1.18.0
 Release:        0
 Summary:        Utilities for video4linux
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only
-Group:          Hardware/TV
 URL:            https://linuxtv.org/downloads/v4l-utils/
 Source0:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2
 Source1:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2.asc
@@ -37,6 +36,7 @@ Source100:      baselibs.conf
 Patch0:         sysmacros.patch
 Patch1:         use_system_v4l_for_qv4l.patch
 Patch2:         v4l-utils-32bitfix.patch
+Patch3:         gcc10.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -70,7 +70,6 @@ v4l-utils is a collection of various video4linux (V4L) utilities.
 %package devel-tools
 Summary:        Utilities for v4l2 / DVB driver development and debugging
 License:        GPL-2.0-or-later AND GPL-2.0-only
-Group:          Hardware/TV
 Requires:       libv4l = %{version}
 
 %description devel-tools
@@ -79,7 +78,6 @@ Utilities for v4l2 / DVB driver authors for development and debugging.
 %package -n dvb-utils
 Summary:        Utilities for DVB devices
 License:        GPL-2.0-only
-Group:          Hardware/TV
 Recommends:     dtv-scan-tables-v5
 
 %description -n dvb-utils
@@ -88,7 +86,6 @@ dvb-utils is a collection of various DVB utilities.
 %package -n libdvbv5-%{so_ver}
 Summary:        Library that provides access to DVB adapter cards
 License:        GPL-2.0-only
-Group:          System/Libraries
 
 %description -n libdvbv5-%{so_ver}
 libdvbv5 is a library meant to be used by digital TV applications that need to
@@ -99,7 +96,6 @@ This package contains shared lib for packages that use libdvbv5.
 %package -n libdvbv5-devel
 Summary:        Development files for libdvbv5
 License:        GPL-2.0-only
-Group:          Development/Libraries/C and C++
 Requires:       libdvbv5-%{so_ver} = %{version}
 
 %description -n libdvbv5-devel
@@ -109,7 +105,6 @@ developing applications that use libdvbv5.
 %package -n libv4l
 Summary:        Collection of video4linux support libraries
 License:        LGPL-2.1-or-later AND GPL-2.0-only
-Group:          System/Libraries
 
 %description -n libv4l
 libv4l is a collection of libraries which adds a thin abstraction layer on
@@ -120,7 +115,6 @@ having to write separate code for different devices in the same class.
 %package -n libv4l1-%{so_ver}
 Summary:        Video4linux support library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       libv4l
 
 %description -n libv4l1-%{so_ver}
@@ -133,7 +127,6 @@ This package contains shared lib for packages that use libv4l1.
 %package -n libv4l2-%{so_ver}
 Summary:        Video4linux support library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       libv4l
 
 %description -n libv4l2-%{so_ver}
@@ -145,7 +138,6 @@ This package contains shared lib for packages that use libv4l2.
 %package -n libv4l2rds%{so_ver}
 Summary:        Video4linux support library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       libv4l
 
 %description -n libv4l2rds%{so_ver}
@@ -157,7 +149,6 @@ This package contains shared lib for packages that use libv4l2rds.
 %package -n libv4lconvert%{so_ver}
 Summary:        Video4linux support library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       libv4l
 
 %description -n libv4lconvert%{so_ver}
@@ -169,7 +160,6 @@ This package contains shared lib for packages that use libv4lconvert.
 %package -n libv4l-devel
 Summary:        Development files for libv4l
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libv4l1-%{so_ver} = %{version}
 Requires:       libv4l2-%{so_ver} = %{version}
 Requires:       libv4l2rds%{so_ver} = %{version}
@@ -182,7 +172,6 @@ developing applications that use libv4l.
 %package -n     qv4l2
 Summary:        Video4linux test control and streaming test application
 License:        GPL-2.0-or-later
-Group:          Hardware/TV
 Requires:       libv4l = %{version}
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
@@ -197,6 +186,7 @@ qv4l2 is a test control and streaming test application for video4linux.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -vfi
