@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar  3 11:57:26 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to 2015.25
+  * [feature] Transparent editing of encrypted files.
+  * [feature] Enhanced auto-indentation, bullet list
+    and numbered list support. 
+  * [feature] Enhanced smart spaces/dashes/arrows/minus. 
+  * [feature] Revised flag menus and header line. 
+  * [feature] Configurable appearance of menu background
+  * [feature] CUPS printer selection. 
+  * [feature] Configurable character information in status line 
+  * [feature] Additional character transformation support for
+    Italian, East European, Tatar, Bashkir. 
+  * [feature] Character information includes Unicode named
+    sequences and spacing combined status. 
+  * [feature] Support for ISO 8859/EBCDIC Next Line character
+    (NL U+0085). 
+  * [feature] Option -E disables text encoding auto-detection,
+    using locale instead. 
+  * [bugfix] Fixed handling of interrupts while reading file. 
+  * [bugfix] Fixed new unnamed UTF-16 text to actually be saved
+    as UTF-16. 
+  * [bugfix] Fixed text encoding auto-detection on unsigned char
+    platforms (since 2000.14). 
+  * [bugfix] Fixed pasting invalid UTF-8 as digit '8' in
+    non-UTF-8 text.
+
+-------------------------------------------------------------------
 Wed Dec 17 20:44:07 UTC 2014 - dimstar@opensuse.org
 
 - On openSUSE > 13.2, xterm has been split into xterm-bin for the

@@ -1,7 +1,7 @@
 #
 # spec file for package mined
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mined
-Version:        2014.24.2
+Version:        2015.25
 Release:        0
 Summary:        Powerful Text Editor with Extensive Unicode and CJK Support
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Editors/Other
-Url:            http://towo.net/mined/
+URL:            http://towo.net/mined/
 Source:         http://towo.net/mined/download/mined-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
