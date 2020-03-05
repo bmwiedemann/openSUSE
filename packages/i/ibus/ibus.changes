@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 29 13:17:53 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Eable emoji support on armv6l and riscv64, nodejs-emojione is no longer
+  BuildRequires
+- Remove invalid build options
+- cleanup spec
+
+-------------------------------------------------------------------
 Mon Feb 24 14:27:11 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Fix dependency between ibus and ibus-dict-emoji

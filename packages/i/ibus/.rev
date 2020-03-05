@@ -853,4 +853,15 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     files (forwarded request 778826 from ftake)</comment>
     <requestid>779043</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>b9ddd42aa762f9c3c2903a7bbe61a940</srcmd5>
+    <version>1.5.22</version>
+    <time>1583446673</time>
+    <user>dimstar_suse</user>
+    <comment>- Eable emoji support on armv6l and riscv64, nodejs-emojione is no longer
+  BuildRequires
+- Remove invalid build options
+- cleanup spec (forwarded request 780499 from hillwood)</comment>
+    <requestid>781106</requestid>
+  </revision>
 </revisionlist>

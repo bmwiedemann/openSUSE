@@ -19,7 +19,7 @@
 %if 0%{?is_opensuse}
 %define with_wayland 1
 %define with_kde 1
-%ifarch armv6l armv6hl ppc riscv64
+%ifarch ppc
 %define with_emoji 0
 %else
 %define with_emoji 1
@@ -51,7 +51,7 @@ Patch4:         ibus-xim-fix-re-focus-after-lock.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
 # Select an IM engine at the first login
 Patch8:         im-engines-precede-xkb.patch
-# PATFH-FIX-OPENSUSE ibus-fix-Signal-does-not-exist.patch hillwood@opensuse.org
+# PATCH-FIX-OPENSUSE ibus-fix-Signal-does-not-exist.patch hillwood@opensuse.org
 # panel.vala: The name `Signal' does not exist in the context of `Posix' in Leap 15.1 and below
 Patch9:         ibus-fix-Signal-does-not-exist.patch
 # PATCH-FIX-SLE hide-setup-menu.patch bnc#899259  qzhao@suse.com
@@ -63,23 +63,23 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-BuildRequires:  dbus-1-glib-devel
-BuildRequires:  dconf-devel >= 0.7.5
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
-BuildRequires:  glib2-devel >= 2.34.0
 BuildRequires:  gobject-introspection-devel >= 0.9.6
 BuildRequires:  gtk-doc >= 1.9
-BuildRequires:  gtk2-devel
-BuildRequires:  iso-codes-devel
-BuildRequires:  libnotify-devel >= 0.7
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbus-python-devel
-BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
 BuildRequires:  unicode-ucd
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(dconf) >= 0.7.5
+BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(libnotify) >= 0.7
+BuildRequires:  pkgconfig(python3)
 # copy_deep method is supported since 0.31.1
 BuildRequires:  vala >= 0.31.1
 BuildRequires:  x11-tools
@@ -164,7 +164,7 @@ This package contains ibus im module for use by gtk2.
 %package gtk3
 Summary:        IBus input method support for gtk3 applications
 Group:          System/I18n/Chinese
-BuildRequires:  gtk3-devel
+BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       %{name} = %{version}
 Supplements:    packageand(ibus:gtk3)
 %{gtk3_immodule_requires}
@@ -229,14 +229,12 @@ autoreconf -fi
            --disable-python2 \
            --enable-python-library \
            --enable-introspection \
-           --disable-gconf \
            --enable-dconf \
            --enable-gtk-doc \
 %if %{with_wayland}
            --enable-wayland \
 %endif
            --enable-surrounding-text \
-           --enable-appindicator_engine_icon \
            --libexecdir=%{_libdir}/ibus
 
 make %{?_smp_mflags}
