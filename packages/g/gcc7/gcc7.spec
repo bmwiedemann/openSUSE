@@ -303,6 +303,10 @@ Patch18:        gcc7-bsc1146475.patch
 Patch19:        gcc7-pr85887.patch
 Patch20:        gcc7-bsc1160086.patch
 Patch21:        gcc7-pr92154.patch
+Patch22:        gcc7-pr93246.patch
+Patch23:        gcc7-pr92692.patch
+Patch24:        gcc48-bsc1161913.patch
+Patch25:        gcc7-pr93965.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1758,6 +1762,10 @@ ln -s nvptx-newlib/newlib .
 %patch19
 %patch20
 %patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
 %patch51
 %patch60
 %patch61

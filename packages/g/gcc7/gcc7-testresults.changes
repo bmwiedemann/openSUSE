@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 28 16:59:30 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add gcc7-pr93965.patch in order to fix binutils release
+  date detection issue.
+
+-------------------------------------------------------------------
+Wed Jan 29 09:56:19 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc48-bsc1161913.patch to fix register allocation issue with
+  exception handling code on s390x.  [bsc#1161913] 
+
+-------------------------------------------------------------------
+Wed Jan 22 17:25:50 UTC 2020 - matz@suse.com
+
+- Add gcc7-pr92692.patch: Backport PR target/92692 to fix 
+  miscompilation of some atomic code on aarch64. [bsc#1150164]
+
+-------------------------------------------------------------------
+Mon Jan 20 12:04:04 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr93246.patch: Backport PR middle-end/93246
+
+-------------------------------------------------------------------
 Thu Jan  9 14:26:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - gcc7-pr92154.patch: Backport PR sanitizer/92154
