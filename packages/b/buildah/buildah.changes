@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:43:36 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.14.2
+  * Search for local runtime per values in containers.conf
+  * Set correct ownership on working directory
+  * Improve remote manifest retrieval
+  * Correct a couple of incorrect format specifiers
+  * manifest push --format: force an image type, not a list type
+  * run: adjust the order in which elements are added to $
+  * getDateAndDigestAndSize(): handle creation time not being set
+  * Make the commit id clear like Docker
+  * Show error on copied file above context directory in build
+  * pull/from/commit/push: retry on most failures
+  * Repair buildah so it can use containers.conf on the server side
+  * Fixing formatting & build instructions
+  * Fix XDG_RUNTIME_DIR for authfile
+  * Show validation command-line
+
+-------------------------------------------------------------------
 Thu Feb 13 08:22:30 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.14.0
