@@ -1,0 +1,25 @@
+--- a/Makefile.orig	2020-03-04 10:14:17.209181344 +0100
++++ b/Makefile	2020-03-04 10:14:37.189282590 +0100
+@@ -33,9 +33,7 @@
+ data: \
+ 	$(BUILDDIR)/GeoIP.conf \
+ 	$(BUILDDIR)/GeoIP.conf.md \
+-	$(BUILDDIR)/geoipupdate.md \
+-	$(BUILDDIR)/GeoIP.conf.5 \
+-	$(BUILDDIR)/geoipupdate.1
++	$(BUILDDIR)/geoipupdate.md
+ 
+ $(BUILDDIR):
+ 	mkdir -p $(BUILDDIR)
+@@ -53,11 +51,6 @@
+ $(BUILDDIR)/geoipupdate.md: $(BUILDDIR) doc/geoipupdate.md
+ 	sed -e 's|CONFFILE|$(CONFFILE)|g' -e 's|DATADIR|$(DATADIR)|g' -e 's|$$|$(MAYBE_CR)|g' doc/geoipupdate.md > $(BUILDDIR)/geoipupdate.md
+ 
+-$(BUILDDIR)/GeoIP.conf.5: $(BUILDDIR)/GeoIP.conf.md  $(BUILDDIR)/geoipupdate.md
+-	dev-bin/make-man-pages.pl "$(BUILDDIR)"
+-
+-$(BUILDDIR)/geoipupdate.1: $(BUILDDIR)/GeoIP.conf.5
+-
+ clean:
+ 	rm -rf $(BUILDDIR)/GeoIP.conf \
+ 		   $(BUILDDIR)/GeoIP.conf.md \

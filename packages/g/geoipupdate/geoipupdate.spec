@@ -1,7 +1,7 @@
 #
 # spec file for package geoipupdate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,50 +16,55 @@
 #
 
 
+# Common info
 Name:           geoipupdate
-Version:        3.1.1
+Version:        4.2.2
 Release:        0
 Summary:        GeoIP update client code
 License:        GPL-2.0-only
-Group:          Productivity/Networking/System
-URL:            https://www.maxmind.com
-Source0:        https://github.com/maxmind/geoipupdate-legacy/archive/v%{version}/%{name}-legacy-%{version}.tar.gz
-Source1:        geoipupdate.timer
-Source2:        geoipupdate.service
-BuildRequires:  autoconf
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(zlib)
-Conflicts:      GeoIP < 1.6.0
-%{?systemd_requires}
+Group:          Productivity/Networking/Other
+URL:            https://github.com/maxmind/geoipupdate
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        geoipupdate.timer
+Source3:        geoipupdate.service
+Patch0:         disable-pandoc.patch
+# Build-time parameters
+BuildRequires:  go >= 1.10
+# Manpage
+BuildRequires:  perl%{?suse_version:-base}
 
 %description
-The GeoIP Update program performs automatic updates of GeoIP2 and GeoIP
-Legacy binary databases. Currently the program only supports Linux and
-other Unix- like systems.
+The GeoIP Update program performs automatic updates of GeoIP2 and GeoIP Legacy
+binary databases. Currently the program only supports Linux and other
+Unix-like systems.
 
+# Preparation step (unpackung and patching if necessary)
 %prep
-%setup -q -n %{name}-legacy-%{version}
+%setup -q -a1
+%patch0 -p1
 
 %build
-autoreconf --install
-%configure \
-  --datadir=%{_localstatedir}/lib
-make %{?_smp_mflags}
+export GOCACHE=$(pwd -P)/.gocache
+export GOTRACEBACK=crash
+export GOFLAGS='-a -mod=vendor -buildmode=pie -gcflags=all=-dwarf=false -ldflags=all=-s -ldflags=all=-w'
+%make_build \
+  CONFFILE=%{_sysconfdir}/GeoIP.conf \
+  DATADIR=%{_localstatedir}/lib/GeoIP \
+  VERSION=%{version}
 
 %install
-%make_install
-install -d %{buildroot}%{_localstatedir}/lib/GeoIP
-install -D -p -m 0644 conf/GeoIP.conf.default \
-  %{buildroot}%{_sysconfdir}/GeoIP.conf.default
-rm -rf %{buildroot}%{_datadir}/doc/geoipupdate
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.timer
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
-
-%check
-make %{?_smp_mflags} check
+install -D -m0644 %{SOURCE2}              %{buildroot}%{_unitdir}/geoipupdate.timer
+install -D -m0644 %{SOURCE3}              %{buildroot}%{_unitdir}/geoipupdate.service
+install -D -m0755 build/geoipupdate       %{buildroot}%{_bindir}/geoipupdate
+install -D -m0644 conf/GeoIP.conf.default %{buildroot}%{_sysconfdir}/GeoIP.conf
+install -d -m0755 %{buildroot}%{_localstatedir}/lib/GeoIP
+sed -ri \
+ -e '/^UserId\s*/     s|YOUR_USER_ID_HERE|999999|' \
+ -e '/^LicenseKey\s*/ s|YOUR_LICENSE_KEY_HERE|000000000000|' \
+ -e '/^ProductIds\s*/ s|^(\w+s*).+$|\1 GeoLite2-City GeoLite2-Country GeoLite-Legacy-IPv6-City GeoLite-Legacy-IPv6-Country 506 517 533|' \
+ -e '/^(#\s*)?DatabaseDirectory/ s|^(#\s*)?(\w+\s*).+$|\2%{_localstatedir}/lib/GeoIP|' \
+ %{buildroot}%{_sysconfdir}/GeoIP.conf
 
 %pre
 %service_add_pre %{name}.service
@@ -74,15 +79,12 @@ make %{?_smp_mflags} check
 %service_del_postun %{name}.service
 
 %files
-%license LICENSE
-%doc README.md ChangeLog.md
+%doc README.md build/geoipupdate.md build/GeoIP.conf.md
+%license LICENSE-*
 %config(noreplace) %{_sysconfdir}/GeoIP.conf
-%config %{_sysconfdir}/GeoIP.conf.default
-%dir %{_localstatedir}/lib/GeoIP
 %{_bindir}/geoipupdate
+%dir %{_localstatedir}/lib/GeoIP
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.timer
-%{_mandir}/man1/geoipupdate.1%{?ext_man}
-%{_mandir}/man5/GeoIP.conf.5%{?ext_man}
 
 %changelog
