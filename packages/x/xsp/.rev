@@ -371,4 +371,15 @@
     <comment></comment>
     <requestid>735635</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8a659df9ffb8eb04962e939a1466349f</srcmd5>
+    <version>4.7.1</version>
+    <time>1583446719</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 4.7.1
+  * drop .NET 2.0 support
+  * add Mono.WebServer.Fpm
+</comment>
+    <requestid>781341</requestid>
+  </revision>
 </revisionlist>
