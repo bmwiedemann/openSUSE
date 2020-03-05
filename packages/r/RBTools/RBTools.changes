@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Wed Mar  4 11:41:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file
+- Use modern macros
+
+-------------------------------------------------------------------
+Wed Mar  4 09:38:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.0.2
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/1.0.2/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/1.0.1/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/1.0/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.11/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.10/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.9/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.8/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.7/
+  + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.6/
+- Some of the changes include:
+  + rbt api-get can now be used outside of a checkout
+  + rbt post: Added a --field option for setting custom fields.
+  + Add the --tracking-branch option to rbt land
+  + rbt patch --print can now be run outside of a source tree.
+  + Added support for --diff-only on all repositories
+  + When running on Python 2, RBTools now requires Python 2.7.
+  + RBTools also now supports Python 3.5+.
+  + rbt alias is a new command for managing aliases defined in .reviewboardrc
+  + rbt land: Added recursive landing support.
+  + rbt post: Allow --submit-as to be used when updating existing review requests.
+  + Added the current review status to rbt status.
+  + The new rbt status-update command allows creating and updating status updates in Review Board 3.0.
+  + Reworked Two-Factor Authentication support for RBCommons.
+  + Added a --no-renames flag for removing rename information from Git diffs.
+- Change dependencies so rbtools now use python3 instead of python2
+
+-------------------------------------------------------------------
+Fri Jan  8 12:56:14 UTC 2016 - arichardson.kde@gmail.com
+
+- Update to version 0.7.5:
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.3/
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.4/
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.5/
+- Includes lots of bugfixes and the following changes:
+   + Users can now specify the search path for .reviewboardrc files.
+   + Added a --disable-ssl-verification option to all commands to disable verifying SSL
+   + Added new options for manipulating cache behavior.
+   + Added a --disable-cookie-storage option to prevent cookies from being written to disk.
+   + Added support for reverting patches with rbt patch.
+   + Added a -s/--stamp flag to auto-stamp the commit message with the review request URL when posting a change.
+   + Added support for perforce imported files.
+
+-------------------------------------------------------------------
+Tue Apr 14 17:25:51 UTC 2015 - arichardson.kde@gmail.com
+
+- Update to version 0.7.2:
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.6.2/
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.6.3/
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7/
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.1/
+   + See https://www.reviewboard.org/docs/releasenotes/rbtools/0.7.2/
+- Includes lots of bugfixes and the following major changes:
+   + User definable rbt subcommands (https://www.reviewboard.org/docs/rbtools/dev/rbt/configuration/users/#rbtools-aliases)
+   + A new rbt land command that allows pushing a change that has been reviewed on Review Board to the upstream repository
+   + A new rbt stamp command that will amend a commit message with a “Reviewed at <url>” line
+   + Support for posting pending changes for Team Foundation Server (TFVC) repositories
+   + Performance improvements
+   + A new rbt login command that will prompt the user for credentials, log in to Review Board, and store the session cookie
+   + A new rbt logout command that will end the session created by rbt login
+
+-------------------------------------------------------------------
+Fri Feb 20 21:16:57 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- Require: python-setuptools for needed pkg_resources module
+
+-------------------------------------------------------------------
+Tue Jun 17 09:53:37 UTC 2014 - speilicke@suse.com
+
+- Update to version 0.6.1:
+  + See http://www.reviewboard.org/docs/releasenotes/rbtools/0.6.1/
+- Use upstream tarball
+- Drop useless %py_requires macro
+- Add argparse dependecy and conditionalize simplejson (part of py27 as 'json'
+  module). No need for setuptools at runtime
+- Add COPYING and README for Factory compliance
+
+-------------------------------------------------------------------
+Sun Apr 27 17:02:54 UTC 2014 - arichardson.kde@gmail.com
+
+- Update to 0.6
+  * Easier posting of revisions: to specify a revision or a range of revisions, pass the native revision or revision range syntax for your type of repository on the command line
+  * rbt post and rbt diff now support -I (or --include) arguments to specify exactly which files should be included when posting or diffing the change.
+  * It’s no longer necessary to pass -g (or --guess-fields) to rbt post in order to automatically fill in the Summary and Description fields. This is now done automatically for brand new review requests.
+  * Better guessed fields in summary and description
+  * Improved Mercurial support
+  * Perforce shelved changes support
+  * Removed the old post-review command
+  * Removed --revision-range in favor of the new revision syntax.
+  * Various bugfixes: see https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.6.rst
+
+- Update to 0.5.6
+  * Various bugfixes: see https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.7.rst
+
+- Update to 0.5.6
+  * Various bugfixes: see https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.6.rst
+
+- Update to 0.5.5
+  * Various bugfixes: see https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.5.rst
+
+- Update to 0.5.4
+  * post-review is deprecated. It now shows a deprecation warning in order to remind me to use rbt post.
+  * Various bugfixes: see https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.4.rst
+
+- Update to 0.5.3
+  * Improved output of :command:rbt :option:--help
+  * Added support for RBCommons 2 factor authentication.
+  * Added new rbt setup-repo command for creating a .reviewboardrc file.
+  * rbt patch: Added a --print option for printing the patch instead of applying it to the tree.
+  * rbt patch: Added a --commit (or :option:-c) option to automaticaly create a commit on the local branch.
+  * rbt post: Added a -u option for automatically determining the review request to update.
+  * rbt post: On Git, posting with a dirty working directory now results in a warning.
+  * Various bugfixes: see https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.3.rst
+
+
+-------------------------------------------------------------------
+Mon Oct 21 14:40:06 UTC 2013 - kkaempf@suse.com
+
+- Update to 0.5.2
+  New Features
+  * Added support for posting Git changes to Bitbucket.
+  * Added :option:--help to :command:rbt and all commands.
+  * Added the :command:rbt get tool.
+  * Added git-p4 support to :command:rbt post.
+  * Improved error feedback when posting/updating a review request.
+  * Added an :option:--svn-show-copies-as-adds flag to :command:rbt post.
+  Plus bugfixes.
+  See https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.2.txt
+  for details.
+
+- Build with fdupes
+
+- Update to 0.5.1
+  New features
+  * Improved the readability of :command:rbt status output.
+  * Added a :option:--repository-type option to most commands.
+  * Added a :option:--list-repository-types option to
+    :command:post-review.
+  * Added a new :command:rbt list-repo-types command.
+  * Third-parties can now write new SCM support by creating Python
+    packages
+  API Client Changes
+  * Added an API Client method for retrieving resources from a path.
+  * Add a `get_or_create_draft` method to the API.
+  * Restructured the API Client internally.
+  Plus bugfixes.
+  See https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.1.txt
+  for details.
+
+- Update to 0.5.0
+  * A new Python API Client has been introduced for communication with
+    the Review Board Web API.
+  * New command line tool: rbt.
+  See https://github.com/reviewboard/rbtools/blob/master/docs/releasenotes/0.5.txt
+  for details.
+
+-------------------------------------------------------------------
+Wed Feb 20 13:18:57 UTC 2013 - arichardson.kde@gmail.com
+
+- Updated to 0.4.3
+- Notable changes since 0.3.2:
+  + Include file move information for nicer diffs on ReviewBoard
+  + Defaults for many parameters can now be specified in .reviewboardrc
+  + Added a --change-description option for setting the Change Description text on drafts
+  + Added --http-username and --http-password for providing defaults for Basic HTTP Authentication
+  + Support --repository-url for overriding the git origin URL
+-------------------------------------------------------------------
+Mon Mar 21 13:52:03 UTC 2011 - fcastelli@novell.com
+
+- Require python-setup-tools also at runtime
+
+-------------------------------------------------------------------
+Mon Mar 21 13:02:10 UTC 2011 - fcastelli@novell.com
+
+- Fixed build on x86_64
+
+-------------------------------------------------------------------
+Mon Mar 21 12:26:15 UTC 2011 - fcastelli@novell.com
+
+- Updated to 0.3.2
+- Made the package noarch
+
+-------------------------------------------------------------------
+Wed Sep 16 15:38:12 UTC 2009 - fcastelli@novell.com
+- initial import
+
