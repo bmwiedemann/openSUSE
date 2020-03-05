@@ -1,0 +1,11 @@
+--- akka-2.3.0/build.xml	2020-03-04 10:35:46.635916846 +0100
++++ akka-2.3.0/build.xml	2020-03-04 10:36:37.600162607 +0100
+@@ -382,7 +382,7 @@
+         includes="**/*.java"
+         debug="true"
+         classpathref="@{buildclasspath}"
+-        target="1.6" source="1.6">
++        target="1.6" source="1.6" encoding="utf-8">
+       </javac>
+     </sequential>
+   </macrodef>

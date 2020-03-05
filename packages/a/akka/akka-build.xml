@@ -1,0 +1,480 @@
+<!-- ant build script by gil -->
+<project
+  name="akka"
+  basedir="." default="build">
+
+  <property name="name"                     value="${ant.project.name}"/>
+  <property name="version"                  value="@VERSION@"/>
+
+  <property name="actor.dir"                value="${basedir}/${name}-actor"/>
+  <property name="actor.src.dir"            value="${actor.dir}/src/main"/>
+  <property name="actor.build.dir"          value="${actor.dir}/build/classes"/>
+  <property name="actor.resources.dir"      value="${actor.dir}/src/main/resources"/>
+
+  <property name="agent.dir"                value="${basedir}/${name}-agent"/>
+  <property name="agent.src.dir"            value="${agent.dir}/src/main"/>
+  <property name="agent.build.dir"          value="${agent.dir}/build/classes"/>
+  <property name="agent.resources.dir"      value="${agent.dir}/src/main/resources"/>
+
+  <property name="cluster.dir"              value="${basedir}/${name}-cluster"/>
+  <property name="cluster.src.dir"          value="${cluster.dir}/src/main"/>
+  <property name="cluster.build.dir"        value="${cluster.dir}/build/classes"/>
+  <property name="cluster.resources.dir"    value="${cluster.dir}/src/main/resources"/>
+  <property name="cluster.protobuf.dir"     value="${cluster.src.dir}/protobuf"/>
+
+  <property name="dataflow.dir"             value="${basedir}/${name}-dataflow"/>
+  <property name="dataflow.src.dir"         value="${dataflow.dir}/src/main"/>
+  <property name="dataflow.build.dir"       value="${dataflow.dir}/build/classes"/>
+
+  <property name="kernel.dir"               value="${basedir}/${name}-kernel"/>
+  <property name="kernel.src.dir"           value="${kernel.dir}/src/main"/>
+  <property name="kernel.build.dir"         value="${kernel.dir}/build/classes"/>
+
+  <property name="osgi.dir"                 value="${basedir}/${name}-osgi"/>
+  <property name="osgi.src.dir"             value="${osgi.dir}/src/main"/>
+  <property name="osgi.build.dir"           value="${osgi.dir}/build/classes"/>
+
+  <property name="remote.dir"               value="${basedir}/${name}-remote"/>
+  <property name="remote.src.dir"           value="${remote.dir}/src/main"/>
+  <property name="remote.build.dir"         value="${remote.dir}/build/classes"/>
+  <property name="remote.resources.dir"     value="${remote.dir}/src/main/resources"/>
+  <property name="remote.protobuf.dir"      value="${remote.src.dir}/protobuf"/>
+
+  <property name="slf4j.dir"                value="${basedir}/${name}-slf4j"/>
+  <property name="slf4j.src.dir"            value="${slf4j.dir}/src/main"/>
+  <property name="slf4j.build.dir"          value="${slf4j.dir}/build/classes"/>
+  <property name="slf4j.resources.dir"      value="${slf4j.dir}/src/main/resources"/>
+
+  <property name="transactor.dir"           value="${basedir}/${name}-transactor"/>
+  <property name="transactor.src.dir"       value="${transactor.dir}/src/main"/>
+  <property name="transactor.build.dir"     value="${transactor.dir}/build/classes"/>
+  <property name="transactor.resources.dir" value="${transactor.dir}/src/main/resources"/>
+  
+  <path id="scala.classpath">
+    <fileset dir="/usr/share/java" includes="scala/scala-compiler.jar"/>
+    <fileset dir="/usr/share/java" includes="scala/scala-library.jar"/>
+  </path>
+
+  <path id="actor.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+
+  <path id="agent.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${agent.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="/usr/share/java"   includes="scala-stm.jar"/>
+  </path>
+
+  <path id="cluster.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${cluster.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <pathelement location="${remote.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-remote.jar"/>
+    <fileset dir="/usr/share/java"   includes="protobuf.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+
+  <path id="dataflow.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${dataflow.build.dir}"/>
+  </path>
+
+  <path id="kernel.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${kernel.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+  
+  <path id="osgi.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${osgi.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="/usr/share/java"   includes="eclipse/osgi.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+
+  <path id="remote.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${remote.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="/usr/share/java"   includes="netty.jar"/>
+    <fileset dir="/usr/share/java"   includes="protobuf.jar"/>
+    <fileset dir="/usr/share/java"   includes="uncommons-maths.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+
+  <path id="slf4j.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${slf4j.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="/usr/share/java"   includes="slf4j/slf4j-api.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+
+  <path id="transactor.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${transactor.build.dir}"/>
+    <pathelement location="${actor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="/usr/share/java"   includes="scala-stm.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+  </path>
+
+  <path id="doc.classpath">
+    <path refid="scala.classpath"/>
+    <pathelement location="${actor.build.dir}"/>
+    <pathelement location="${agent.build.dir}"/>
+    <pathelement location="${cluster.build.dir}"/>
+    <pathelement location="${dataflow.build.dir}"/>
+    <pathelement location="${kernel.build.dir}"/>
+    <pathelement location="${osgi.build.dir}"/>
+    <pathelement location="${remote.build.dir}"/>
+    <pathelement location="${slf4j.build.dir}"/>
+    <pathelement location="${transactor.build.dir}"/>
+    <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-agent.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-cluster.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-dataflow.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-kernel.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-osgi.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-remote.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-slf4j.jar"/>
+    <fileset dir="${basedir}/target" includes="${name}-transactor.jar"/>
+    <fileset dir="/usr/share/java"   includes="scala/scala-library.jar"/>
+    <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
+    <fileset dir="/usr/share/java"   includes="eclipse/osgi.jar"/>
+    <fileset dir="/usr/share/java"   includes="netty.jar"/>
+    <fileset dir="/usr/share/java"   includes="protobuf.jar"/>
+    <fileset dir="/usr/share/java"   includes="uncommons-maths.jar"/>
+    <fileset dir="/usr/share/java"   includes="slf4j/slf4j-api.jar"/>
+    <fileset dir="/usr/share/java"   includes="scala-stm.jar"/>
+  </path>
+  
+  <taskdef resource="scala/tools/ant/antlib.xml" classpathref="scala.classpath"/>
+
+  <target name="init">
+    <mkdir dir="target"/>
+    <mkdir dir="target/apidocs"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="target"/>
+  </target>
+
+  <target name="clean-all" depends="clean">
+    <delete dir="project/build/target"/>
+    <delete dir="project/boot"/>
+  </target>
+
+  <target name="dist" depends="init,build"
+    description="generate the distribution" >
+  </target>
+
+  <!-- TODO  akka-camel akka-contrib akka-durable-mailboxes akka-persistence akka-samples akka-zeromq -->
+  <target name="build" 
+    depends="build.actor,build.kernel,build.agent,build.dataflow,build.osgi,build.remote,build.cluster,build.slf4j,build.transactor" 
+    description="Compile the sources">
+  </target>
+  
+  <target name="build.actor" description="Build Akka Actor">
+    <echo message="Build Akka Actor" />
+
+    <!--TODO create-bnd-file
+      destfile="actor"
+      bundlename="com.typesafe.akka.actor"
+      symbolicname="com.typesafe.akka.actor"
+      priv="reference.conf"/-->
+
+    <compile-mix-mode
+      buildclasspath="actor.classpath"
+      dirsrc="${actor.src.dir}"
+      destfile="${actor.build.dir}"/>
+
+    <copy todir="${actor.build.dir}" overwrite="true">
+      <fileset dir="${actor.resources.dir}" includes="**/*.conf"/>
+    </copy>
+
+    <create-jar
+      basedir="${actor.build.dir}"
+      destfile="actor"
+      paramvalue="target"/>
+    <!--TODO osgifi
+      destfile="actor"
+      basedir="${actor.build.dir}"
+      bndfile="${name}-actor.bnd"
+      paramvalue="target"/-->
+  </target>
+
+  <target name="build.agent" description="Build Akka Agent">
+    <echo message="Build Akka Agent" />
+    <compile-scala
+      buildclasspath="agent.classpath"
+      dirsrc="${agent.src.dir}"
+      destfile="${agent.build.dir}"/>
+
+    <copy todir="${agent.build.dir}" overwrite="true">
+      <fileset dir="${agent.resources.dir}" includes="**/*.conf"/>
+    </copy>
+
+    <create-jar
+      basedir="${agent.build.dir}"
+      destfile="agent"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.cluster" description="Build Akka Cluster">
+    <echo message="Build Akka Cluster" />
+
+    <path id="cluster.proto.path">
+      <fileset dir="${cluster.protobuf.dir}">
+        <include name="**/*.proto" />
+      </fileset>
+    </path>
+    <pathconvert pathsep=" " property="cluster.proto.files" refid="cluster.proto.path" />
+    <echo message="protoc --java_out=${cluster.src.dir}/java --proto_path=${cluster.protobuf.dir} ${cluster.proto.files}"/>
+    <exec executable="protoc" searchpath="true">
+      <arg value="--java_out=${cluster.src.dir}/java" />
+      <arg value="--proto_path=${cluster.protobuf.dir}" />
+      <arg line="${cluster.proto.files}" />
+    </exec>
+
+    <compile-mix-mode
+      buildclasspath="cluster.classpath"
+      dirsrc="${cluster.src.dir}"
+      destfile="${cluster.build.dir}"/>
+
+    <copy todir="${cluster.build.dir}" overwrite="true">
+      <fileset dir="${cluster.resources.dir}" includes="**/*.conf"/>
+    </copy>
+
+    <create-jar
+      basedir="${cluster.build.dir}"
+      destfile="cluster"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.dataflow" description="Build Akka Dataflow">
+    <echo message="Build Akka Dataflow" />
+    <compile-scala
+      buildclasspath="dataflow.classpath"
+      dirsrc="${dataflow.src.dir}"
+      destfile="${dataflow.build.dir}"/>
+
+    <create-jar
+      basedir="${dataflow.build.dir}"
+      destfile="dataflow"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.kernel" description="Build Akka Kernel">
+    <echo message="Build Akka Kernel" />
+    <compile-scala
+      buildclasspath="kernel.classpath"
+      dirsrc="${kernel.src.dir}"
+      destfile="${kernel.build.dir}"/>
+
+    <create-jar
+      basedir="${kernel.build.dir}"
+      destfile="kernel"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.osgi" description="Build Akka OSGi">
+    <echo message="Build Akka OSGi" />
+    <compile-scala
+      buildclasspath="osgi.classpath"
+      dirsrc="${osgi.src.dir}"
+      destfile="${osgi.build.dir}"/>
+
+    <create-jar
+      basedir="${osgi.build.dir}"
+      destfile="osgi"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.remote" description="Build Akka Remote">
+    <echo message="Build Akka Remote" />
+
+    <path id="remote.proto.path">
+      <fileset dir="${remote.protobuf.dir}">
+        <include name="**/*.proto" />
+      </fileset>
+    </path>
+    <pathconvert pathsep=" " property="remote.proto.files" refid="remote.proto.path" />
+    <echo message="protoc --java_out=${remote.src.dir}/java --proto_path=${remote.protobuf.dir} ${remote.proto.files}"/>
+    <exec executable="protoc" searchpath="true">
+      <arg value="--java_out=${remote.src.dir}/java" />
+      <arg value="--proto_path=${remote.protobuf.dir}" />
+      <arg line="${remote.proto.files}" />
+    </exec>
+
+    <compile-mix-mode
+      buildclasspath="remote.classpath"
+      dirsrc="${remote.src.dir}"
+      destfile="${remote.build.dir}"/>
+
+    <copy todir="${remote.build.dir}" overwrite="true">
+      <fileset dir="${remote.resources.dir}" includes="**/*.conf"/>
+    </copy>
+
+    <create-jar
+      basedir="${remote.build.dir}"
+      destfile="remote"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.slf4j" description="Build Akka slf4j">
+    <echo message="Build Akka slf4j" />
+    <compile-scala
+      buildclasspath="slf4j.classpath"
+      dirsrc="${slf4j.src.dir}"
+      destfile="${slf4j.build.dir}"/>
+
+    <create-jar
+      basedir="${slf4j.build.dir}"
+      destfile="slf4j"
+      paramvalue="target"/>
+  </target>
+
+  <target name="build.transactor" description="Build Akka transactor">
+    <echo message="Build Akka transactor" />
+    <compile-scala
+      buildclasspath="transactor.classpath"
+      dirsrc="${transactor.src.dir}"
+      destfile="${transactor.build.dir}"/>
+
+    <copy todir="${transactor.build.dir}" overwrite="true">
+      <fileset dir="${transactor.resources.dir}" includes="**/*.conf"/>
+    </copy>
+
+    <create-jar
+      basedir="${transactor.build.dir}"
+      destfile="transactor"
+      paramvalue="target"/>
+  </target>
+
+  <macrodef name="compile-mix-mode">
+    <attribute name="destfile"/>
+    <attribute name="dirsrc"/>
+    <attribute name="buildclasspath" default=""/>
+    <sequential>
+      <mkdir dir="@{destfile}"/>
+      <scalac
+        addParams="-deprecation"
+        srcdir="@{dirsrc}"
+        destdir="@{destfile}"
+        classpathref="@{buildclasspath}">
+      </scalac>
+      <javac
+        srcdir="@{dirsrc}"
+        destdir="@{destfile}"
+        includes="**/*.java"
+        debug="true"
+        classpathref="@{buildclasspath}"
+        target="1.6" source="1.6">
+      </javac>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="compile-scala">
+    <attribute name="destfile"/>
+    <attribute name="dirsrc"/>
+    <attribute name="buildclasspath" default=""/>
+    <sequential>
+      <mkdir dir="@{destfile}"/>
+      <scalac
+        addParams="-deprecation"
+        srcdir="@{dirsrc}"
+        destdir="@{destfile}"
+        classpathref="@{buildclasspath}">
+      </scalac>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="create-jar">
+    <attribute name="destfile"/>
+    <attribute name="basedir"/>
+    <attribute name="excludes" default=""/>
+    <attribute name="includes" default=""/>
+    <attribute name="resources" default=""/>
+    <attribute name="paramvalue" default=""/>
+    <sequential>
+      <jar destfile="@{paramvalue}/${name}-@{destfile}.jar"
+        basedir="@{basedir}"
+        excludes="@{excludes}"
+        includes="@{includes}">
+      </jar>
+    </sequential>
+  </macrodef>
+
+  <!-- TODO macrodef for generate OSGi manifest macrodef name="create-bnd-file">
+    <attribute name="destfile"/>
+    <attribute name="bundlename" default=""/>
+    <attribute name="symbolicname" default=""/>
+    <attribute name="priv" default=""/>
+    <sequential>
+      <echo file="${name}-@{destfile}.bnd"><![CDATA[
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: @{bundlename}
+Bundle-SymbolicName: @{symbolicname}
+Bundle-Version: ${version}
+Created-By: ${java.version} (${java.vendor})
+DynamicImport-Package: *
+Export-Package: *;version="${version}"
+Import-Package: *
+Private-Package: @{priv}
+      ]]></echo>
+    </sequential>
+  </macrodef>
+
+  <taskdef resource="aQute/bnd/ant/taskdef.properties" >
+    <classpath>
+     <fileset dir="/usr/share/java" includes="aqute-bnd.jar" />
+    </classpath>
+  </taskdef>
+
+  <macrodef name="osgifi">
+    <attribute name="destfile"/>
+    <attribute name="basedir"/>
+    <attribute name="bndfile" default=""/>
+    <attribute name="paramvalue" default=""/>
+    <sequential>
+      <bnd
+         classpath="@{basedir}"
+         failok="false"
+         exceptions="false"
+         files="@{bndfile}"
+         output="@{paramvalue}/${name}-@{destfile}.jar"/>
+    </sequential>
+  </macrodef-->
+
+  <!-- TODO  akka-camel akka-contrib akka-durable-mailboxes akka-persistence akka-samples akka-zeromq -->
+  <target name="doc" depends="init">
+    <copy todir="target/apidocs">
+      <fileset dir=".">
+        <include name="LICENSE"/>
+      </fileset>
+    </copy>
+    <scaladoc
+      srcdir="${actor.src.dir}:${agent.src.dir}:${kernel.src.dir}:${dataflow.src.dir}:${osgi.src.dir}:${remote.src.dir}:${cluster.src.dir}:${slf4j.src.dir}:${transactor.src.dir}"
+      destdir="target/apidocs"
+      doctitle="${name} ${version}"
+      classpathref="doc.classpath">
+      <include name="**/*.scala"/>
+      <include name="**/*.java"/>
+    </scaladoc>
+  </target>
+
+</project>

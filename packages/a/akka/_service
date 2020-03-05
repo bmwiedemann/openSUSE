@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/akka/akka.git</param>
+    <param name="revision">v2.3.16</param>
+    <param name="versionformat">2.3.16</param>
+    <param name="exclude">akka-camel</param>
+    <param name="exclude">akka-contrib</param>
+    <param name="exclude">akka-durable-mailboxes</param>
+    <param name="exclude">akka-persistence</param>
+    <param name="exclude">akka-samples</param>
+    <param name="exclude">akka-zeromq</param>
+    <param name="exclude">akka-kernel/src/main/dist</param>
+    <param name="exclude">project</param>
+    <param name="exclude">scripts</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
