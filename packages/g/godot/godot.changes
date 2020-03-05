@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Feb 12 12:00:00 UTC 2020 - cunix@mail.de
+
+- Added "linker_pie_flag.patch" in order to link with "-pie".
+    Replaces previous "fix-pie-warning.patch".
+
+- "project_certs_fallback.patch" renamed to "certs_fallback.patch".
+    Modified and adapted to Godot source code changes.
+
+- Bash completion files "godot", "godot-headless", "godot-runner"
+    and "godot-server" added.
+
+- Package "godot-bash-completion" added.
+
+- Location of documentation in man page adjusted.
+
+- godot-rpmlintrc deleted with filter "no-manual-page-for-binary"
+    because this warning doesn't seems to be thrown anymore.
+
+- Build option "faster_build" introduced to speed up build
+    during tests.
+
+-------------------------------------------------------------------
+Sat Feb  1 04:33:27 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Removed patch "fix-pie-warning.patch"
+- Removed export_presets.cfg file as games should supply this file
+
+- Update to v3.2
+
+  Added:
+  * Support for importing 3D scense using Assimp
+  * Support for high-level multiplayer API and NAT traversal for 
+    WebRTC
+  * Support for enabling / disabling parts of the editor or specific 
+    nodes
+  * Added language server for GDScript
+  * Added version control integration into the editor
+  * Added a network profiler
+  * Editor is now capped to 20FPS when the window is unfocused
+  * Added MSAA support in the GLES2 renderer
+  * Ability to define script templates on a per-project basis
+  * Ability to limit the minimum and maximum window size
+  * Minimap in the script editor
+  * CSV files can now be imported as non-translation files
+  * Multicast support in PacketPeerUDP
+  * WebSocket improvements.
+      * Support for SSL in WebSocketServer.
+      * WebSocketClient can now use custom SSL certificates 
+        (except on HTML5).
+      * WebSocketClient can now define custom headers.
+  * The editor now features a built-in Web server for testing HTML5 
+    projects
+  * Reimplemented support for embedding project data in the PCK file
+
+  Changed:
+  * Tabs and space indentation can no longer be mixed in the same 
+    GDScript file
+  * assert() in GDScript must now always be used with parentheses
+  * UDP broadcasting is now disabled by default and must be enabled 
+    by calling 
+    set_broadcast_enabled(true) on the PacketPeerUDP instance
+  * 3D collision shapes and RayCasts are now drawn in gray when disabled
+  * The SCons build system now automatically detects the host platform
+  * Exporting a project PCK or ZIP from the command line must now 
+    be done with the new --export-pack command-line argument
+  * Exported PCK files now contain the Godot patch version in their 
+    header
+  * "Set as Main Scene" context option for scenes in the FileSystem dock
+
+  Removed:
+
+  * Unused Panel panelf and panelnc styles.
+  * thekla_atlas dependency, as light baking now relies on xatlas 
+    for UV unwrapping.
+  * Rating icons in the Asset Library
+  * Some editor languages are no longer available due to missing 
+    support for RTL and text shaping in Godot.
+      * Arabic
+      * Bengali
+      * Persian
+      * Hebrew
+      * Hindi
+      * Malayalam
+      * Sinhalese
+      * Tamil
+      * Telugu
+      * Urdu
+  * Android: ARMv6 support.
+  * iOS: ARMv7 support.
+
+  Fixed:
+  * The Project Manager now remembers the sorting option that was 
+    previously set
+  * Fixed issues with PBR environment mapping
+  * Several fixes to the GLES2 renderer
+  * Fixed importing BMP images
+  * Exporting a project via the command-line now returns a non-zero 
+    exit code if an error occurred during exporting
+  * Fixed autocompletion in the script editor
+
+  And more:
+  https://github.com/godotengine/godot/blob/3.2/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Jan 13 16:00:00 UTC 2020 - cunix@mail.de
 
 - Sources replaced by upstream without version bump
