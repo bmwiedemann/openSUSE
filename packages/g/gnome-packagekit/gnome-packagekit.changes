@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 03:16:18 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Remove gnome-packagekit-upgrade-system.patch: Tumbleweed has been
+  handled in update-packages. This patch is no longer useful.
+
+-------------------------------------------------------------------
 Wed Nov 13 02:58:23 UTC 2019 - Jonathan Kang <sckang@suse.com>
 
 - Add gnome-packagekit-upgrade-system.patch: Call upgrade-system
