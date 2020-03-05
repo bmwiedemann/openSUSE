@@ -1,0 +1,82 @@
+From 93ecfacfb9f21ee027dbcfc7d5d47ddbbb253ba1 Mon Sep 17 00:00:00 2001
+From: Igor Poboiko <igor.poboiko@gmail.com>
+Date: Fri, 28 Feb 2020 16:49:38 +0300
+Subject: [PATCH] [resources/maildir] Don't save "file:" schema to the config
+
+Summary:
+`ConfigWidget` uses `KConfig` underneath, and utilizes `KUrlRequester` custom
+widget. The `USER` property of this widget (which is used by `KConfig`) is of
+type `QUrl`, and thus when dialog is accepted, the `path` config property
+gets overriden with `QUrl::toString()` value, which prepends `file:` schema
+(this is basically because `KCoreConfigSkeleton::ItemPath` is inherited from
+`ItemString`, and when someone calls `ItemString::setProperty`, it gets
+casted as `QVariant::toString`).
+
+Inside the `ConfigWidget::save` the code calls `setPath` method on
+`url.toLocalFile`, which drops the scheme. Because of that, the `pathItem`
+and `path` property of `mSettings` have different values, first has schema
+and the second hasn't. Eventually, the value stored by `pathItem` wins, and
+`mSettings->path()` returns URL with schema. However, `Maildir` doesn't expect
+it and misinterprets it as the relative path to current WORKDIR (which is home
+directory), thus creating `/home/user/file:/home/user/...` file structure.
+
+The proposed solution is to simply call `mSettings->save()`, which overrides
+`pathItem` value and drops schema from it.
+
+It also fixes the `AkoNotes` resource, which uses the same `ConfigWidget`.
+Funny enough, `Contacts` resource, which is somewhat similar, is not affected
+as it has the same `Settings->save()` call.
+
+Alternative approaches include:
+1) Teach `Maildir` to drop the schema (if it's there).
+2) Teach `KCoreConfigSkeleton::ItemPath` to work with `QUrl` and don't append
+schema (it makes sense, because `ItemPath` corresponds to local file. Although
+it's not documented that it shouldn't have schema, it seems from the tests that
+it was the original intent). This could save the headache of having such issue
+in the future, but it could mess up with other programs in funny ways (as
+currently `file:` sometimes gets prepended, and some code might implicitly rely
+on it)
+
+Additional note:
+There are `ui.kcfg_Path->url().isLocalFile()` checks around, which doesn't make
+sense to me, as `KUrlRequester` is used for local files and it seems like it
+always returns `QUrl` pointing to local file (i.e. have the `file:` schema).
+
+BUG: 408354
+BUG: 411269
+BUG: 413588
+
+Test Plan:
+1) Open `akonadiconsole -> Local Folders` properties, change the folder, save
+2) `cat ~/.config/akonadi_maildir_resource_0rc`. `file:` schema gets prepended
+2.1) `akonadictl restart`. `file:` folder gets created inside homedir
+3) Apply patch, repeat (1)-(2.1). `file:` schema is dropped.
+
+Reviewers: dvratil, mlaurent
+
+Reviewed By: dvratil
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D27722
+---
+ resources/maildir/configwidget.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/resources/maildir/configwidget.cpp b/resources/maildir/configwidget.cpp
+index 368233314..30b73a4cb 100644
+--- a/resources/maildir/configwidget.cpp
++++ b/resources/maildir/configwidget.cpp
+@@ -108,6 +108,7 @@ bool ConfigWidget::save() const
+     QString path = ui.kcfg_Path->url().isLocalFile() ? ui.kcfg_Path->url().toLocalFile() : ui.kcfg_Path->url().path();
+     mSettings->setPath(path);
+     mSettings->setTopLevelIsContainer(mToplevelIsContainer);
++    mSettings->save();
+ 
+     if (ui.kcfg_Path->url().isLocalFile()) {
+         QDir d(path);
+-- 
+2.25.1
+
