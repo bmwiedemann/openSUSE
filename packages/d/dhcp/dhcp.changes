@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 17:26:39 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Add -fcommon to CFLAGS to fix build with gcc10 (boo#1160262).
+
+-------------------------------------------------------------------
 Wed Jan 22 06:12:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Change remaining systemd requires to weak dependencies, too.

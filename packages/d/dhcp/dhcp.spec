@@ -220,7 +220,7 @@ popd
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-CFLAGS="%{optflags} -D_GNU_SOURCE -W -Wall -Wno-unused"
+CFLAGS="%{optflags} -D_GNU_SOURCE -W -Wall -Wno-unused -fcommon"
 %ifarch ppc ppc64 s390x
   # bugs 134590, 171532
   CFLAGS="$CFLAGS -fsigned-char"
