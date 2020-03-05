@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:55:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 5.2.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.2.0
+  * Include RedisSentinelTest.php in package.xml!
+  * Fix -Wmaybe-uninitialized warning.
+  * Fix improper destructor when zipping values and scores.
+  * Use php_rand instead of php_mt_rand for liveness challenge string.
+  * Initial support for RedisSentinel.
+  * Fix for ASK redirections.
+  * Create specific 'test skipped' exception.
+  * Fixed memory leaks in RedisCluster.
+  * Fixes for session lifetime values that underflow or overflow.
+  * Enables slot caching for Redis Cluster.
+  * Support TYPE argument for SCAN.
+  * Added challenge/response mechanism for persistent connections.
+
+-------------------------------------------------------------------
 Fri Nov 29 06:48:22 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 5.1.1
@@ -333,4 +351,3 @@ Tue Jan 10 14:18:38 UTC 2017 - jweberhofer@weberhofer.at
 Tue Mar  8 10:45:25 UTC 2016 - danimo@owncloud.com
 
 - Update build from php7 branch 
-
