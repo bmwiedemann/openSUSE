@@ -30,6 +30,8 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Only-link-to-Qt5WebChannel-if-Qt5WebEngineWidgets-av.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
@@ -49,6 +51,7 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Network) >= 5.4.0
 %ifnarch ppc ppc64 ppc64le s390 s390x riscv64
+BuildRequires:  cmake(Qt5WebChannel) >= 5.4.0
 BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.4.0
 %endif
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
