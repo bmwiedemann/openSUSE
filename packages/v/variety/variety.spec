@@ -1,8 +1,8 @@
 #
 # spec file for package variety
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2014-2018 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2014-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           variety
-Version:        0.7.1
+Version:        0.8.3
 Release:        0
 Summary:        Wallpaper changer
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Other
-Url:            https://launchpad.net/variety/
+URL:            https://launchpad.net/variety/
 Source0:        https://github.com/varietywalls/variety/archive/%{version}.tar.gz#/variety-%{version}.tar.gz
 Source1:        variety.desktop
 # Todo: Variety should follow FDO icon standards
@@ -91,7 +91,7 @@ rm -rf %{buildroot}%{_datadir}/doc/variety
 %files
 %defattr(-,root,root)
 %doc AUTHORS README.md
-%license COPYING
+%license LICENSE
 %{_bindir}/%{name}
 %{python3_sitelib}/jumble
 %{python3_sitelib}/%{name}

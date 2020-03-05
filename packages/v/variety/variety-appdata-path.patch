@@ -1,10 +1,12 @@
 diff -Naur a/setup.py b/setup.py
---- a/setup.py	2017-09-18 22:48:48.000000000 -0500
-+++ b/setup.py	2017-09-23 17:03:16.282567260 -0500
-@@ -85,5 +85,5 @@
- "deviantART or any other place are also supported.",
-     url='https://launchpad.net/variety',
-     cmdclass={'install': InstallAndUpdateDataDirectory},
--    data_files=[('share/metainfo', ['variety.appdata.xml'])]
-+    data_files=[('share/appdata', ['variety.appdata.xml'])]
+--- a/setup.py	2020-02-11 17:48:06.000000000 -0600
++++ b/setup.py	2020-03-03 06:34:38.520462488 -0600
+@@ -70,7 +70,7 @@
+ as well as options to layer quotes and a clock onto the background.""",
+     url="https://github.com/varietywalls/variety",
+     cmdclass={"install": InstallWithDataDirectory},
+-    data_files=[("share/metainfo", ["variety.appdata.xml"])],
++    data_files=[("share/appdata", ["variety.appdata.xml"])],
  )
+ 
+ # Remove this after we're done with the build

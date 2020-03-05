@@ -1,12 +1,12 @@
 diff -Naur a/variety_lib/varietyconfig.py b/variety_lib/varietyconfig.py
---- a/variety_lib/varietyconfig.py	2018-10-23 10:56:25.000000000 -0500
-+++ b/variety_lib/varietyconfig.py	2018-11-23 20:40:49.710196312 -0600
-@@ -27,7 +27,7 @@
- 
- # Where your project will look for your data (for instance, images and ui
- # files). By default, this is ../data, relative your trunk layout
--__variety_data_directory__ = '../data'
-+__variety_data_directory__ = '/usr/share/variety'
- __license__ = 'GPL-3'
- __version__ = '0.7.1'
+--- a/variety_lib/varietyconfig.py	2020-02-11 17:48:06.000000000 -0600
++++ b/variety_lib/varietyconfig.py	2020-03-03 06:36:00.791352623 -0600
+@@ -21,7 +21,7 @@
+ except ImportError:
+     # Variety's data directory. This is set by setup.py for permanent installations, but defaults to ../data
+     # for easy development / running from source.
+-    __variety_data_directory__ = "../data"
++    __variety_data_directory__ = "/usr/share/variety"
+ __license__ = "GPL-3"
+ __version__ = "0.8.3"
  

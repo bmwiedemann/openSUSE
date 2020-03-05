@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:31:46 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.3:
+  * Image sources are now plugins.
+  * Add support for sequential albums.
+  * Add support for multiple simultaneously running Variety
+    profiles (--profile command option).
+  * Add a Privacy Notice dialog.
+  * Add support for configurable Unsplash sources.
+  * Add two new sources (ChromeOS Wallpapers and Google Earth View
+    Wallpapers).
+  * Remove World Sunlight Map source.
+  * Added Urban Dictionary and UNIX fortune program as quote
+    sources.
+  * Download linked to wallpaper changing, not configured as a
+    separate interval.
+  * Add a dedicated --set/--set-wallpaper option.
+  * Make the thumbs display much faster.
+  * Fix bugs related to GTK threading usage.
+  * Mulitple bugfixes.
+  * Dev process: Use auformatting on all Python files (black,
+    isort).
+- Changes from version 0.7.2:
+  * Add support for Sway, bspwm.
+  * Enable AwesomeWM support by default.
+  * Fix crash on --help or --version if a Variety instance is
+    already running (gh#varietywalls/variety#148).
+  * Fix spurious "file not found" errors when checking for
+    animated GIFs (gh#varietywalls/variety#132).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Fri Nov 23 18:57:21 UTC 2018 - malcolmlewis@opensuse.org
 
 - Update to version 0.7.1:
