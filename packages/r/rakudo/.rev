@@ -485,4 +485,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment></comment>
     <requestid>768042</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>6f9b577ba074b678b1ebb9c422594859</srcmd5>
+    <version>2020.02</version>
+    <time>1583446811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781563</requestid>
+  </revision>
 </revisionlist>

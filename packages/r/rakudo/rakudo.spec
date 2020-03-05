@@ -1,7 +1,7 @@
 #
 # spec file for package rakudo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,23 @@
 
 
 Name:           rakudo
-Version:        2020.01
+Version:        2020.02
 Release:        2.1
-Summary:        Perl 6 implemenation that runs on MoarVM
+Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            http://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  moarvm-devel >= 2020.01
-BuildRequires:  nqp >= 2020.01
+BuildRequires:  moarvm-devel >= 2020.02
+BuildRequires:  nqp >= 2020.02
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2020.01
-Requires:       nqp >= 2020.01
+Requires:       moarvm >= 2020.02
+Requires:       nqp >= 2020.02
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Rakudo Perl 6, or just Rakudo, is an implementation of the Perl 6 
+Rakudo, is an implementation of the Raku (formerly Perl 6)
 specification that runs on the Moar virtual machine.
 
 %prep
@@ -55,6 +55,7 @@ RAKUDO_SKIP_TIMING_TESTS=1 make test
 mkdir -p "%{buildroot}/%{_datadir}/perl6/bin"
 cp tools/install-dist.p6 "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
 chmod +x "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
+sed -i -e '1s:!/usr/bin/env :!/usr/bin/:' "%{buildroot}/%{_datadir}/perl6/bin"/*
 rm "%{buildroot}/%{_bindir}/raku"
 rm "%{buildroot}/%{_bindir}/raku-debug"
 ln -s "rakudo %{buildroot}/%{_bindir}/raku"

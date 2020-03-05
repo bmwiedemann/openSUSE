@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:56:19 UTC 2020 - Stefan Seifert <nine@detonation.org>
+
+- Update description and summary to follow the rename of Perl 6 to Raku
+- Fix shebang lines in installed scripts
+
+-------------------------------------------------------------------
+Tue Mar  3 14:15:18 CET 2020 - nine@detonation.org
+
+- update to version 2020.02
+  + Remove deprecated support for implicit Distribution::Builder prefix
+  + throws-like sub from Test module now throws an exception on Bool:D matchers
+  + Supply.repeated now has unique rather than squish semantics
+  + Enable user-defined chaining operators to work
+  + Added prefix and suffix methods to Parameter class which return
+    textual prefix and suffix of the parameter
+  + Made an improperly typed default for an attribute a compile time error
+  + New methods: SetHash.set, SetHash.unset, BagHash.add and BagHash.remove, IterationBuffer.Seq,
+    Compiler.backend, Match.replace-with
+  + Str.contains now also can take a Regex
+  + Add :i(ignorecase) and :m(ignoremark) support to
+    index, starts-with, ends-with, contains, substr-eq, indices
+  + Cool.subst doesn't need a replacement string anymore
+  + Supply.first now also works without a matcher
+  + Properly show enums, subsets and routine return type in Pod::To::Text output
+  + Added iterator implementation for Junction (fixes e.g. calling ^name on a Junction)
+  + Fixed concurrency issue with re-checking a precomp file's dependencies
+  + Lock.protect now allows return of a container
+  + Work around spurious error in Lock::Async that could lead to crashing
+  + Fixed handle leak when chaining Proc::Async
+  + Lots of bug fixes and speedups
+
+-------------------------------------------------------------------
 Tue Jan 28 10:43:42 CET 2020 - nine@detonation.org
 
 - update to version 2020.01
