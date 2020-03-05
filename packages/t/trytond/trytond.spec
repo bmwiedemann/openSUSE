@@ -22,21 +22,17 @@
 Name:           trytond
 Version:        %{majorver}.18
 Release:        0
-
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
-URL:            http://www.tryton.org/
+URL:            https://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-#Patch0:       	trytond_get_login.patch
 Source1:        tryton-server.README.SUSE
 Source2:        trytond.conf.example
 Source3:        %{name}.conf
 Source4:        %{name}_log.conf
-#Source11:       %{name}.sysconfig
 Source20:       %{name}.service
-#Patch0:		%{name}_server.diff
-# List of additional build dependencies
+Patch0:         fix_werkzeug.patch	
 BuildRequires:  fdupes
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
@@ -65,9 +61,8 @@ Requires:       python3-relatorio >= 0.7.0
 Requires:       python3-simpleeval
 Requires:       python3-wrapt
 Requires:       unoconv
-Requires(pre): 	/usr/sbin/groupadd
-Requires(pre): 	/usr/sbin/useradd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 BuildArch:      noarch
 %{?systemd_requires}
 
@@ -79,25 +74,25 @@ database engine. Tryton provides modularity, scalability and
 security.
 
 %prep
-%setup -q 
-cp %{S:1} .
-cp %{S:2} .
-#%patch0 -p1
+%setup -q
+cp %{SOURCE1} .
+cp %{SOURCE2} .
+%patch0 -p1
 
 %build
 python3 setup.py build
 
 %install
-python3 setup.py install --prefix=%_prefix --root=%buildroot 
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 # only for systemd
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/%{base_name}
-install -p -m 640 %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/%{base_name}/%{name}.conf
-install -p -m 640 %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/%{base_name}/%{name}_log.conf
+mkdir -p %{buildroot}%{_sysconfdir}/%{base_name}
+install -p -m 640 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{base_name}/%{name}.conf
+install -p -m 640 %{SOURCE4} %{buildroot}%{_sysconfdir}/%{base_name}/%{name}_log.conf
 
-mkdir -p $RPM_BUILD_ROOT%{_unitdir}
-install -p -m 644 %{SOURCE20} $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
+mkdir -p %{buildroot}%{_unitdir}
+install -p -m 644 %{SOURCE20} %{buildroot}%{_unitdir}/%{name}.service
 
-mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/{lib,log}/%{base_name}
+mkdir -p %{buildroot}%{_localstatedir}/{lib,log}/%{base_name}
 %fdupes -s %{buildroot}
 
 %pre
@@ -116,10 +111,9 @@ getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
 %postun
 %service_del_postun trytond.service
 
-%files 
-#%files -f filelist
-%defattr(-,root,root)
-%doc README tryton-server.README.SUSE trytond.conf.example LICENSE doc/*
+%files
+%license LICENSE
+%doc README tryton-server.README.SUSE trytond.conf.example doc/*
 %{python3_sitelib}/*
 %dir %{_sysconfdir}/%{base_name}
 %{_bindir}/%{name}
