@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 10:56:45 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Clear do_purge_kernels with ExecStartPost rather than ExecStartPre (boo#1162163).
+
+-------------------------------------------------------------------
 Fri Jan 31 18:23:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix typo in Summary.
