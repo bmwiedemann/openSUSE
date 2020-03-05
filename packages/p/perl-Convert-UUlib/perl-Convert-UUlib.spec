@@ -17,7 +17,7 @@
 
 
 Name:           perl-Convert-UUlib
-Version:        1.62
+Version:        1.7
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Convert-UUlib
@@ -31,6 +31,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Canary::Stability)
+BuildRequires:  perl(common::sense) >= 3.74
+Requires:       perl(common::sense) >= 3.74
 %{perl_requires}
 # MANUAL BEGIN
 Provides:       p_conulb

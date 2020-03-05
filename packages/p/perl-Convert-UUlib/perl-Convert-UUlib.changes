@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar  1 03:09:16 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.7
+   see /usr/share/doc/packages/perl-Convert-UUlib/Changes
+
+  1.7  Sat Feb 29 22:07:54 CET 2020
+  	- new function: GetFileList.
+  	- experimental perlmulticore support (see manpage).
+          - Initialize is now a NOP and CleanUp automatically initializes again.
+          - updated example decoder and documentation a bit.
+  	- include ecb.h to deal with compiler builtins and endianness.
+  	- some further µ-optimisations in hot code, especially for yEnc.
+          - replace crc32 function by slice-by-16 version by Stephan Brumme,
+            which should speed up yEnc en-/decoding.
+          - yEnc: do not calculate two crcs per part, instead, combine
+            the part crcs together to form the file crc.
+          - yEnc: allow pcrc= in addition to pcrc32= for yenc trailers, as
+            some draft mentions both and it is actually in active use.
+          - yEnc: ignore crc32= on multiparts, except on the last part,
+            which avoids spurious corruption warnings.
+          - be more precise in documenting code licenses in COPYING.
+          - convert constant creation to the method I normally use.
+          - use common::sense.
+
+-------------------------------------------------------------------
 Tue Feb 18 03:07:17 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.62
