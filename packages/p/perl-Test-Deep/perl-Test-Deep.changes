@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  2 03:16:19 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.130
+   see /usr/share/doc/packages/perl-Test-Deep/Changes
+
+  1.130     2020-03-01
+          - no changes since 1.129
+  
+  1.129     2020-01-26 - TRIAL RELEASE
+          - documentation fixes (thanks, Daniel Böhmer!)
+          - allow NoTest to be used without breaking other Test::Deep
+            (thanks, Alexander Karelas!)
+          - added true/false optional imports (thanks, Denis Ibaev!)
+
+-------------------------------------------------------------------
 Fri Apr 20 06:03:00 UTC 2018 - coolo@suse.com
 
 - updated to 1.128
