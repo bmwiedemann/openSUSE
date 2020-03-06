@@ -92,7 +92,7 @@ else
     # TMPDIR=$(mktemp -d --tmpdir=$BASEDIR)  # does not work due to http://tracker.ceph.com/issues/39556
     TMPDIR=$(mktemp -d)
     echo "Created temporary temporary $TMPDIR"
-    git clone --branch $BRANCH $REPO $TMPDIR
+    git clone --progress --branch $BRANCH $REPO $TMPDIR
     CLONE="$TMPDIR"
 fi
 _check_ceph_clone "$CLONE"
@@ -104,6 +104,7 @@ if [ -z "$TMPDIR" ] ; then
     rm -rf *.bz2
 fi
 echo "Running make-dist inside clone"
+export DASHBOARD_FRONTEND_LANGS="ALL"
 ./make-dist
 popd
 

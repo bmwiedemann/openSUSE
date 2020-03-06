@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Mon Mar  2 14:19:37 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-1521-gcdf35413a0:
+  + rebase on tip of upstream master, SHA1 28c08615e5c27e5a0986e3191ca4427cdc32f538
+
+-------------------------------------------------------------------
+Tue Feb 25 12:55:29 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- significant changes since the last Factory SR:
+  + ceph-rpmlintrc: silence RPMLINT warnings and document ones that are in
+    the process of being fixed ("WIP")
+  + fix s390x build failure
+  + fix GCC 10 build failure (boo#1161086)
+  + spec:
+    * drop Python 2 support
+    * make Python 3 build work on CentOS 8
+    * globally change %_python_buildid macro to %_python3_pkgversion
+    * Use pkgconfig() style BuildRequires for udev/libudev-devel
+    * add cmake_verbose_logging bcond
+    * rename ceph-daemon subpackage to cephadm
+    * add scriptlets to cephadm subpackage 
+    * rename ceph-mgr-ssh subpackage to ceph-mgr-cephadm
+    * stop calling MGR modules "plugins"
+    * move "always-on" MGR modules into their own subpackage, ceph-mgr-modules-core
+    * make ceph-mgr-cephadm explicitly require openssh on SUSE
+
+-------------------------------------------------------------------
+Tue Feb 25 10:24:26 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-1207-g89308cc4c6:
+  + rebase on tip of upstream master, SHA1 0ffbe4a5ef73036309a3c6488be4dbb1b667a4c7
+  + drop temporary fix "cephadm: Don't call prepare-host from bootstrap"
+
+-------------------------------------------------------------------
+Fri Feb 21 07:46:56 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-951-g36f83482b6c:
+  + cephadm: Don't call prepare-host from bootstrap
+    (temporary fix to keep cephadm running on SUSE after upstream merged
+    932ac9342483141f10dbf99d1806d81a4d70a26a)
+
+-------------------------------------------------------------------
+Thu Feb 20 10:21:39 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-950-g0ba22d2e46:
+  + rebase on tip of upstream master, SHA1 e79e42467970c1be210d674e90dab21ce73e2872
+    * mgr/orch: resurrect ServiceDescription, 'orch ls'
+
+-------------------------------------------------------------------
+Mon Feb 17 16:08:29 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-818-g5f8ed0e957:
+  + rebase on tip of upstream master, SHA1 eb72aebb92f1bfce00aedaebf140789871eb943f
+    * includes "mgr/orch: new cli, phase 2" patches (PR#33244) needed
+      by latest ceph-bootstrap
+
+-------------------------------------------------------------------
+Thu Feb 13 13:45:52 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-636-g2280954009:
+  + rebase on tip of upstream master, SHA1 e36d47a8c3f4181d68a4cd680bdde72064dee910
+
+-------------------------------------------------------------------
+Mon Feb  3 14:59:02 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-168-gfda88e35c8:
+  + rebase on tip of upstream master, SHA1 80487f4a604da94778e65f666e1177a3ed84543e
+  + spec: Use pkgconfig() style BuildRequires for udev/libudev-devel
+
+-------------------------------------------------------------------
+Thu Jan 30 13:08:38 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-10092-gb5fd1b8250:
+  + rebase on tip of upstream master, SHA1 3913835a8f0b9b34ceffd4dc02e1e8203227be02
+
+-------------------------------------------------------------------
+Thu Jan 23 12:45:20 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-9544-gefdea72067:
+  + cmake: Improve test for 16-byte atomic support on IBM Z (bsc#1161688)
+
+-------------------------------------------------------------------
+Tue Jan 21 11:09:45 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-9543-g1c7fc80ba1:
+  + rebase on tip of upstream master, SHA1 089e97c27013612672099281fad76746f19290e3
+
+-------------------------------------------------------------------
+Mon Jan 20 16:03:16 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-9494-g22cdfe7b96:
+  + rebase on tip of upstream master, SHA1 26c66630bd98dfce113f66ab4e081e5a7b0216c0
+
+-------------------------------------------------------------------
+Tue Jan  7 17:49:34 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-9092-gd050bc3f0a:
+  + rebase on tip of upstream master, SHA1 dfd90da59c0b2eda9ca61fed1d508ddc2ab32a2b
+
+-------------------------------------------------------------------
+Thu Dec 19 13:09:54 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-8683-gb78b3635a5:
+  + rebase on tip of upstream master, SHA1 3e1e6a6694bb133c57e2b05a6316dcebae390815
+  + drop libxio Provides/Obsoletes (they are no longer necessary because libxio
+    is long gone)
+  + drop runtime dependency on gptfdisk (it was needed for ceph-disk,
+    which has since been removed)
+  + spec: drop "_python_buildid" macro (it was needed to support py2 builds,
+    which upstream is finally moving away from)
+
+-------------------------------------------------------------------
+Wed Dec 18 14:21:48 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-8588-g58b5b29433:
+  + spec, debian: cephadm requires lvm2 (bsc#1159466)
+
+-------------------------------------------------------------------
+Wed Dec 18 08:01:17 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- ceph-rpmlintrc: fix syntax error introduced by change mentioned
+  in previous changelog entry
+
+-------------------------------------------------------------------
+Tue Dec 17 16:08:38 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-8587-gf0521c1db5:
+  + rebase on tip of upstream master, SHA1 068aafb2ea3c71b5adda79467847ee03b77bb35e
+    * cephadm: do ceph-volume activate+deactivate as part of systemd unit
+
+-------------------------------------------------------------------
+Mon Dec 16 12:36:02 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-8442-g094a533242:
+  + spec:
+    * fix cephadm user/group creation
+    * cephadm subpackage: start summary with a capital letter
+  + ceph-rpmlintrc: silence some RPMLINT warnings
+
+-------------------------------------------------------------------
+Thu Dec 12 12:07:37 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-8370-gec9b27b5e0
+  + ceph-daemon is renamed to cephadm
+  + mgr/ssh is renamed to mgr/cephadm
+
+-------------------------------------------------------------------
+Tue Dec 10 15:39:59 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- increase disk space needs in _constraints for some architectures
+
+-------------------------------------------------------------------
+Mon Dec  2 11:51:18 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-7866-g639502405f: 
+  + rebase on tip of upstream master, SHA1 95dd54889a9c113f77dd6c2c7e77166335a59794
+
+-------------------------------------------------------------------
+Sun Nov 24 20:12:13 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.0.0-7686-g54042e1a06:
+  + rebase on tip of upstream master, SHA1 2c06beb5ec38c8b9f7bd84152da3f5708de8d0c0
+    * Revert "Merge pull request #16715 from adamemerson/wip-I-Object!" (bsc#1157443)
+    * spec: add explicit openssh dependency to ceph-mgr-ssh (bsc#1157527)
+
+-------------------------------------------------------------------
 Thu Nov 21 10:10:02 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 15.0.0-7456-ge089cead79: 
