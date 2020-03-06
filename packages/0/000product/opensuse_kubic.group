@@ -53,14 +53,10 @@
     <package name="libelf1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libexpat1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libffi7" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libhogweed5" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libjson-c4" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -70,11 +66,9 @@
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libnettle7" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -88,12 +82,9 @@
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libtasn1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
-    <package name="libunistring2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -297,6 +288,7 @@
     <package name="libesmtp6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libevent-2_1-7" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libext2fs2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libffi7" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfreebl3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -306,12 +298,15 @@
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgmodule-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libgomp1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
     <package name="libgpgme11" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libhavege1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libhogweed5" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libibverbs" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libimaevm1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
     <package name="libini_config5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -336,6 +331,7 @@
     <package name="libnetfilter_conntrack3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnetfilter_cthelper0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnetfilter_cttimeout1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libnettle7" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnfnetlink0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnfsidmap1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -346,6 +342,7 @@
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="liboath0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libopeniscsiusr0_2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libparted0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libpci3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -381,10 +378,13 @@
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libsss_nss_idmap0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="libtasn1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libtls19" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="libunistring2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libunwind" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubic_worker -->
     <package name="liburcu6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->

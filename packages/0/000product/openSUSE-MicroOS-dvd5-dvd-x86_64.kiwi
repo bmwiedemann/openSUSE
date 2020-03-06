@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200305" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200306" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200305</productvar>
+      <productvar name="VERSION">20200306</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200305,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200306,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200305/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200306/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -476,7 +476,7 @@
       <repopackage name="libfakekey0" arch="x86_64"/>
       <repopackage name="libfam0-gamin" arch="x86_64"/>
       <repopackage name="libfdisk1"/>
-      <repopackage name="libffi7"/>
+      <repopackage name="libffi7" arch="x86_64"/>
       <repopackage name="libfftw3-3" arch="x86_64"/>
       <repopackage name="libFLAC8" arch="x86_64"/>
       <repopackage name="libflatpak0" arch="x86_64"/>
@@ -523,7 +523,7 @@
       <repopackage name="libgnomekbd8" arch="x86_64"/>
       <repopackage name="libgnomesu" arch="x86_64"/>
       <repopackage name="libgnomesu0" arch="x86_64"/>
-      <repopackage name="libgnutls30"/>
+      <repopackage name="libgnutls30" arch="x86_64"/>
       <repopackage name="libgoa-1_0-0" arch="x86_64"/>
       <repopackage name="libgoa-backend-1_0-1" arch="x86_64"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
@@ -580,7 +580,7 @@
       <repopackage name="libharfbuzz-icu0" arch="x86_64"/>
       <repopackage name="libharfbuzz0" arch="x86_64"/>
       <repopackage name="libhavege1" arch="x86_64"/>
-      <repopackage name="libhogweed5"/>
+      <repopackage name="libhogweed5" arch="x86_64"/>
       <repopackage name="libhttp_parser2_7_1" arch="x86_64"/>
       <repopackage name="libhunspell-1_7-0" arch="x86_64"/>
       <repopackage name="libhyphen0" arch="x86_64"/>
@@ -589,7 +589,7 @@
       <repopackage name="libICE6" arch="x86_64"/>
       <repopackage name="libicu-suse65_1" arch="x86_64"/>
       <repopackage name="libicu65_1-ledata" arch="x86_64"/>
-      <repopackage name="libidn2-0"/>
+      <repopackage name="libidn2-0" arch="x86_64"/>
       <repopackage name="libIex-2_4-24" arch="x86_64"/>
       <repopackage name="libIlmImf-2_4-24" arch="x86_64"/>
       <repopackage name="libIlmThread-2_4-24" arch="x86_64"/>
@@ -740,7 +740,7 @@
       <repopackage name="libneon27" arch="x86_64"/>
       <repopackage name="libnetapi0" arch="x86_64"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
-      <repopackage name="libnettle7"/>
+      <repopackage name="libnettle7" arch="x86_64"/>
       <repopackage name="libnewt0_52" arch="x86_64"/>
       <repopackage name="libnfnetlink0" arch="x86_64"/>
       <repopackage name="libnftnl11" arch="x86_64"/>
@@ -769,7 +769,7 @@
       <repopackage name="libosinfo-1_0-0" arch="x86_64"/>
       <repopackage name="libostree" arch="x86_64"/>
       <repopackage name="libostree-1-1" arch="x86_64"/>
-      <repopackage name="libp11-kit0"/>
+      <repopackage name="libp11-kit0" arch="x86_64"/>
       <repopackage name="libpackagekit-glib2-18" arch="x86_64"/>
       <repopackage name="libpackagekitqt5-1" arch="x86_64"/>
       <repopackage name="libpango-1_0-0" arch="x86_64"/>
@@ -902,8 +902,8 @@
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag1" arch="x86_64"/>
       <repopackage name="libtalloc2" arch="x86_64"/>
-      <repopackage name="libtasn1"/>
-      <repopackage name="libtasn1-6"/>
+      <repopackage name="libtasn1" arch="x86_64"/>
+      <repopackage name="libtasn1-6" arch="x86_64"/>
       <repopackage name="libtdb1" arch="x86_64"/>
       <repopackage name="libteamdctl0" arch="x86_64"/>
       <repopackage name="libtelepathy-glib0" arch="x86_64"/>
@@ -931,7 +931,7 @@
       <repopackage name="libtwolame0" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0" arch="x86_64"/>
-      <repopackage name="libunistring2"/>
+      <repopackage name="libunistring2" arch="x86_64"/>
       <repopackage name="libunwind" arch="x86_64"/>
       <repopackage name="libupower-glib3" arch="x86_64"/>
       <repopackage name="liburcu6" arch="x86_64"/>
@@ -954,6 +954,7 @@
       <repopackage name="libvorbisfile3" arch="x86_64"/>
       <repopackage name="libvpx6" arch="x86_64"/>
       <repopackage name="libvte-2_91-0" arch="x86_64"/>
+      <repopackage name="libvulkan1" arch="x86_64"/>
       <repopackage name="libwacom-data" arch="x86_64"/>
       <repopackage name="libwacom2" arch="x86_64"/>
       <repopackage name="libwavpack1" arch="x86_64"/>

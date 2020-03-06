@@ -970,6 +970,7 @@
     <package name="ibus-mozc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-pinyin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="ibus-sunpinyin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-cangjie" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2920,6 +2921,7 @@
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvpx6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvulkan_intel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvulkan_radeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4242,40 +4244,32 @@
     <package name="ruby2.6-rubygem-abstract" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.6-rubygem-actioncable-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-actioncable-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actioncable-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actioncable-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionmailbox-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionmailer-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-actionmailer-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionmailer-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionmailer-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionpack-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-actionpack-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionpack-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actiontext-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionview-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-actionview-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionview-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activejob-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-activejob-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activejob-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activejob-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activemodel-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-activemodel-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activemodel-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activerecord-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-activerecord-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activerecord-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activerecord-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activerecord-deprecated_finders" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activestorage-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activestorage-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activesupport-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-activesupport-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activesupport-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4571,7 +4565,6 @@
     <package name="ruby2.6-rubygem-rack-ssl-1_3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rails-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rails-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rails-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rails-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rails-deprecated_sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4580,7 +4573,6 @@
     <package name="ruby2.6-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rails_stdout_logging" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-railties-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-railties-5_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-railties-5_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-rainbow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4876,6 +4868,7 @@
     <package name="system-user-wwwrun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="systemd-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5540,6 +5533,7 @@
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="MozillaFirefox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-translations-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
