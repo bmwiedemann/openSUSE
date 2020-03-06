@@ -389,7 +389,7 @@ Prefer: php5-zip
 Prefer: man
 
 # go exists in mutliple versions by now - we prefer the 'unversioned package'
-Prefer: go
+Prefer: go -go1.13
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python2-tornado python3-tornado -python3-tornado4
