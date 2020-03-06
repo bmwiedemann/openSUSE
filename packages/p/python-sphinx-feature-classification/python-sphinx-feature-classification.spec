@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-feature-classification
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-feature-classification
-Version:        0.4.1
+Version:        1.0.0
 Release:        0
 Summary:        Sphinx extension to generate a matrix of pluggable drivers
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://www.openstack.org/
+URL:            https://www.openstack.org/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-feature-classification/sphinx-feature-classification-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module oslotest}
