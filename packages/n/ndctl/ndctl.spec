@@ -34,6 +34,8 @@ Patch3:         %{name}-Use-the-same-align-value-as-original-namespace-on-reconf
 Patch4:         %{name}-ndctl-lib-Fix-duplicate-bus-detection.patch
 Patch5:         %{name}-namespace-Handle-create-namespace-in-label-less-mode.patch
 Patch6:         %{name}-dimm-Fix-init-labels-success-reporting.patch
+Patch7:         %{name}-namespace-Fix-enable-namespace-error-for-seed-.patch
+Patch8:         %{name}-test-Relax-dax_pmem_compat-requirement.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  keyutils-devel
@@ -95,6 +97,9 @@ Firmware Interface Table).
 %autopatch -p1
 
 %build
+%if 0%{?suse_version} > 1500
+export CFLAGS="%optflags -fcommon"
+%endif
 echo "%{version}" > version
 ./autogen.sh
 CONF_FLAGS="--disable-static"
@@ -105,6 +110,9 @@ CONF_FLAGS="$CONF_FLAGS --disable-asciidoctor"
 make %{?_smp_mflags}
 
 %install
+%if 0%{?suse_version} > 1500
+export CFLAGS="%optflags -fcommon"
+%endif
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sbindir}

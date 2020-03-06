@@ -1,0 +1,32 @@
+From 9ba17d4af1db5a6f97e2be991f5113bcedfd019f Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.com>
+Date: Tue, 3 Mar 2020 14:42:06 +0100
+Subject: [PATCH] ndctl/test: Relax dax_pmem_compat requirement
+
+References: bsc#1159523
+---
+ test/core.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/test/core.c b/test/core.c
+index 4b36b2d14d7b..3aed14241846 100644
+--- a/test/core.c
++++ b/test/core.c
+@@ -168,6 +168,14 @@ int nfit_test_init(struct kmod_ctx **ctx, struct kmod_module **mod,
+ 			continue;
+ retry:
+ 		rc = kmod_module_new_from_name(*ctx, name, mod);
++
++		/*
++		 * dax_pmem_compat is not required, missing is ok,
++		 * present-but-production is not ok.
++		 */
++		if (rc && strstr(name, "dax_pmem_compat"))
++			continue;
++
+ 		if (rc) {
+ 			log_err(&log_ctx, "%s.ko: missing\n", name);
+ 			break;
+-- 
+2.23.0
+

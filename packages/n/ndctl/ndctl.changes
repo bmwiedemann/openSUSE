@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  3 13:43:42 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- ndctl/test: Relax dax_pmem_compat requirement (bsc#1159523)
+  + ndctl-test-Relax-dax_pmem_compat-requirement.patch
+- Add -fcommon flag on Tumbleweed (boo#1160286).
+- Fix 'ndctl enable-namespace all' fails trying to enable idle namespaces
+  (bsc#1165509 ltc#182068).
+  + ndctl-namespace-Fix-enable-namespace-error-for-seed-.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 14:42:49 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
 
 - ndctl/dimm: Fix init-labels success reporting (bsc#1156308 ltc#181441).
