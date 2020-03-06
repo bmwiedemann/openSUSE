@@ -1,7 +1,7 @@
 #
 # spec file for package zinc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Incremental scala compiler
 License:        Apache-2.0
 URL:            https://github.com/typesafehub/zinc
 Source0:        https://github.com/typesafehub/zinc/archive/v%{version}.tar.gz
-Source1:        http://repo1.maven.org/maven2/com/typesafe/zinc/zinc/%{version}/zinc-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/com/typesafe/zinc/zinc/%{version}/zinc-%{version}.pom
 # ASL mandates that the licence file be included in redistributed source
 Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
 # Patch fixes compilation failure, which is probably caused by
@@ -36,6 +36,7 @@ BuildRequires:  mvn(com.martiansoftware:nailgun-server)
 BuildRequires:  mvn(org.scala-lang:scala-library) >= 2.10.7
 BuildRequires:  mvn(org.scala-sbt:incremental-compiler)
 #!BuildRequires: sbt
+Requires:       sbt
 BuildArch:      noarch
 
 %description
