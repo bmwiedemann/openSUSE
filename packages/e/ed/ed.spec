@@ -1,7 +1,7 @@
 #
 # spec file for package ed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ed
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        A line-oriented text editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Text/Editors
 URL:            http://www.gnu.org/software/ed/
-# This is just recompressed bellow in order to avoid pulling lzip to ring0
+# This is just recompressed below in order to avoid pulling lzip to ring0
 Source0:        ed-%{version}.tar.xz
 #Source0:        http://ftp.gnu.org/gnu/ed/ed-%{version}.tar.lz
 #Source1:        https://ftp.gnu.org/gnu/ed/ed-%{version}.tar.lz.sig
