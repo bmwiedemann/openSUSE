@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 27 18:08:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to meson buildsystem for tumbleweed.
+- Following the above, add pkgconfig(vulkan) BuildRequires and
+  tweak options passed to meson, as well as a cleanup in some
+  conditionals.
+
+-------------------------------------------------------------------
+Thu Feb 27 13:57:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gst-plugins-bad-wayland-headers.patch: Fix build when using
+  meson and having wayland-headers in non-default location
+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/1076.
+
+-------------------------------------------------------------------
 Fri Jan 31 23:09:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.

@@ -25,8 +25,12 @@
 %bcond_with faac
 %bcond_with faad
 
-# TODO: fix build failure and enable this for Tumbleweed
+# Enable for tumbleweed only for now
+%if 0%{?suse_version} >= 1550
+%define use_meson 1
+%else
 %define use_meson 0
+%endif
 
 Name:           gstreamer-plugins-bad
 Version:        1.16.2
@@ -42,6 +46,8 @@ Source99:       baselibs.conf
 Patch0:         gst-bad-interlace-fixes.patch
 # PATCH-FIX-UPSTREAM gst-bad-autoconvert-fix-lock-less.patch -- autoconvert: Fix lock-less exchange or free condition.
 Patch1:         gst-bad-autoconvert-fix-lock-less.patch
+# PATCH-FIX-UPSTREAM gst-plugins-bad-wayland-headers.patch -- Fix wayland headers discovery
+Patch2:         gst-plugins-bad-wayland-headers.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -108,6 +114,7 @@ BuildRequires:  pkgconfig(sndfile) >= 1.0.16
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(spandsp) >= 0.0.6
 BuildRequires:  pkgconfig(srt)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(webrtc-audio-processing) >= 0.2
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb) >= 1.10
@@ -146,11 +153,9 @@ BuildRequires:  pkgconfig(zvbi-0.2)
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.4.0
 %endif
 %endif
-%if 0%{?suse_version} >= 1550
 %ifarch x86_64
 BuildRequires:  pkgconfig(libmfx)
 BuildRequires:  pkgconfig(libva-drm)
-%endif
 %endif
 %if 0%{?BUILD_ORIG}
 %if %{with faac}
@@ -466,15 +471,7 @@ export PYTHON=%{_bindir}/python3
 %if ! 0%{?BUILD_ORIG}
 	-Dpackage-name='openSUSE GStreamer-plugins-bad package' \
 	-Dpackage-origin='http://download.opensuse.org' \
-	-Dresindvd=disabled \
-	-Dsiren=disabled \
 	-Ddts=disabled \
-	-Dlibde265=disabled \
-	-Dmodplug=disabled \
-	-Dvoaacenc=disabled \
-	-Dvoamrwbenc=disabled \
-	-Dopenh264=disabled \
-%endif
 %if %{without faac}
 	-Dfaac=disabled \
 %endif
@@ -483,29 +480,39 @@ export PYTHON=%{_bindir}/python3
 %endif
 %if %{without fdk_aac}
 	-Dfdkaac=disabled \
-	-Dopensles=disabled \
 %endif
+	-Dlibde265=disabled \
+	-Dmodplug=disabled \
+	-Dopenh264=disabled \
+	-Dresindvd=disabled \
+	-Drtmp=disabled \
+	-Dsiren=disabled \
+	-Dvoamrwbenc=disabled \
+	-Dvoaacenc=disabled \
+	-Dx265=disabled \
+%endif
+	-Ddirectfb=disabled \
 	-Dexamples=disabled \
 	-Dfestival=disabled \
 	-Dflite=disabled \
-	-Dwayland=enabled \
-	-Dintrospection=enabled \
-	-Dmsdk=disabled \
-	-Dopencv=disabled \
-	-Dtinyalsa=disabled \
-	-Dwasapi=disabled \
+	-Dhls-crypto=openssl \
+	-Diqa=disabled \
 	-Dnvdec=disabled \
 	-Dnvenc=disabled \
-	-Ddirectfb=disabled \
-	-Diqa=disabled \
+	-Dopencv=disabled \
 	-Dopenni2=disabled \
-	-Drtmp=disabled \
+	-Dopensles=disabled \
 	-Dsctp=disabled \
-	-Dvulkan=disabled \
+	-Dtinyalsa=disabled \
+	-Dvdpau=disabled \
+	-Dwasapi=disabled \
 	-Dwildmidi=disabled \
 	-Dwpe=disabled \
-	-Dx265=disabled \
-	-Dhls-crypto=openssl \
+%ifarch x86_64
+	-Dmsdk=enabled \
+%else
+	-Dmsdk=disabled \
+%endif
 	%{nil}
 %{meson_build}
 %else
@@ -663,10 +670,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegpsmux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtsmux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmplex.so
-%if 0%{?suse_version} >= 1550
 %ifarch x86_64
 %{_libdir}/gstreamer-%{gst_branch}/libgstmsdk.so
-%endif
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstmusepack.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmxf.so
@@ -702,6 +707,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideoparsersbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideosignal.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvmnc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstvulkan.so
 %if 0%{?suse_version} >= 1500
 %{_libdir}/gstreamer-%{gst_branch}/libgstlv2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenmpt.so
@@ -800,8 +806,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files doc
 %doc AUTHORS NEWS README RELEASE REQUIREMENTS
-%{_datadir}/gtk-doc/html/gst-plugins-bad-plugins-%{gst_branch}/
-%{_datadir}/gtk-doc/html/gst-plugins-bad-libs-%{gst_branch}/
+#%%{_datadir}/gtk-doc/html/gst-plugins-bad-plugins-%%{gst_branch}/
+#%%{_datadir}/gtk-doc/html/gst-plugins-bad-libs-%%{gst_branch}/
 
 %if 0%{?BUILD_ORIG}
 %if 0%{?BUILD_ORIG_ADDON}
