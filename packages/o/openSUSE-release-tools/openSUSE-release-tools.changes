@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 06 12:27:00 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200306.ef1064e7:
+  * Stop repo monitor earlier: 30 hours might be a little excessive
+
+-------------------------------------------------------------------
 Thu Mar 05 11:22:34 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200305.63aa406d:
