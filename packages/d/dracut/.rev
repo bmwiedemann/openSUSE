@@ -1630,4 +1630,14 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 01fips: Use correct kernel image name for more platforms (bsc#1164076)</comment>
     <requestid>778051</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>4c6a0c4f002e3c86e168db363efee8a2</srcmd5>
+    <version>049.1+git125.e2b2c9ef</version>
+    <time>1583526240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049.1+git125.e2b2c9ef:
+  * 01fips: handle SHA1 on machines without AVX (bsc#1160318)
+  * Update: 90kernel-modules: Add PCI host controller modules (boo#1162669)</comment>
+    <requestid>781231</requestid>
+  </revision>
 </revisionlist>

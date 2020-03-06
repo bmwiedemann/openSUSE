@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 03 14:19:26 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 049.1+git125.e2b2c9ef:
+  * 01fips: handle SHA1 on machines without AVX (bsc#1160318)
+  * Update: 90kernel-modules: Add PCI host controller modules (boo#1162669)
+
+-------------------------------------------------------------------
 Fri Feb 21 16:08:12 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 049.1+git124.70941b30:
