@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:29:31 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.0348, fixes the following problems
+  * Short name not set for terminal buffer.
+  * Build failure on HP-UX system.
+  * ex_getln.c code has insufficient test coverage.
+  * MSVC: _CRT_SECURE_NO_DEPRECATE not defined on DEBUG build.
+  * Vim9: types not sufficiently tested.
+  * File missing in distribution, comments outdated.
+  * No Haiku support.
+  * Vim9: ":execute" does not work yet.
+  * Vim9: error checks not tested.
+  * Vim9: calling a function that is defined later is slow.
+  * Text property not updated correctly when inserting/deleting.
+  * Ex_getln.c code not covered by tests.
+  * Compiler warning for using uninitialized variable. (Yegappan Lakshmanan)
+  * Crash when opening and closing two popup terminal windows.
+  * No redraw when leaving terminal-normal mode in a terminal popup window.
+  * Popup filter converts 0x80 bytes.
+  * Build error with popup window but without terminal.
+  * Internal error when using test_void() and test_unknown(). (Dominique Pelle)
+  * Some code in ex_getln.c not covered by tests.
+  * Terminal in popup test is flaky.
+  * Abort called when using test_void(). (Dominique Pelle)
+  * No completion for :disassemble.
+  * Vim9: insufficient test coverage for compiling.
+  * Build fails on a few systems.
+  * Build failure without the channel feature.
+  * Vim9: function return type may depend on arguments.
+  * Vim9: function and partial types not tested.
+  * Using ":for" in Vim9 script gives an error.
+  * Some code in ex_getln.c not covered by tests.
+  * Vim9: using wrong instruction, limited test coverage.
+  * ":def" not skipped properly.
+  * Compiler warning when building without the float feature.
+  * Vim9: finding common list type not tested.
+
+-------------------------------------------------------------------
 Tue Feb 25 12:51:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.0314, fixes the following problems

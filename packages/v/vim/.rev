@@ -4389,4 +4389,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Two placed signs in the same line are not combined.  E.g. in the terminal</comment>
     <requestid>779065</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>5f74892f33104394bdc095590276b7fb</srcmd5>
+    <version>8.2.0348</version>
+    <time>1583526232</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.0348, fixes the following problems
+  * Short name not set for terminal buffer.
+  * Build failure on HP-UX system.
+  * ex_getln.c code has insufficient test coverage.
+  * MSVC: _CRT_SECURE_NO_DEPRECATE not defined on DEBUG build.
+  * Vim9: types not sufficiently tested.
+  * File missing in distribution, comments outdated.
+  * No Haiku support.
+  * Vim9: &quot;:execute&quot; does not work yet.
+  * Vim9: error checks not tested.
+  * Vim9: calling a function that is defined later is slow.
+  * Text property not updated correctly when inserting/deleting.
+  * Ex_getln.c code not covered by tests.
+  * Compiler warning for using uninitialized variable. (Yegappan Lakshmanan)
+  * Crash when opening and closing two popup terminal windows.
+  * No redraw when leaving terminal-normal mode in a terminal popup window.
+  * Popup filter converts 0x80 bytes.
+  * Build error with popup window but without terminal.
+  * Internal error when using test_void() and test_unknown(). (Dominique Pelle)
+  * Some code in ex_getln.c not covered by tests.
+  * Terminal in popup test is flaky.
+  * Abort called when using test_void(). (Dominique Pelle)
+  * No completion for :disassemble.
+  * Vim9: insufficient test coverage for compiling.
+  * Build fails on a few systems.
+  * Build failure without the channel feature.
+  * Vim9: function return type may depend on arguments.
+  * Vim9: function and partial types not tested.
+  * Using &quot;:for&quot; in Vim9 script gives an error.
+  * Some code in ex_getln.c not covered by tests.</comment>
+    <requestid>781204</requestid>
+  </revision>
 </revisionlist>
