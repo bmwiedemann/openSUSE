@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  2 03:17:32 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-Test-utf8/CHANGES
+
+  1.02 Fix for 5.26 not including '.' in INC, which was breaking the
+       Module::Install stuff (thanks to preaction)
+  
+       Fix to link to the github repo (thanks to dsteinbrunner)
+
+-------------------------------------------------------------------
 Mon Sep 24 17:05:55 UTC 2018 - pmonrealgonzalez@suse.com
 
 - Fix build
