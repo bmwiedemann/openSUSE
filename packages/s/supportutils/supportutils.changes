@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:22:12 UTC 2020 - jason.record@suse.com
+
+- Addition to version 3.1.8
+  + Changes affecting getappcore
+    - Added -u for HTTPS and -f for FTPES uploads to SUSE FTP servers
+    - Replaced Novell with SUSE FTP servers (bsc#1165475)
+    - Uses /etc/getappcore.conf if present
+  + Changes affecting supportconfig
+    - Added missed Power collection per bsc#1162539
+    - Added zypper patterns output to updates.txt #66
+
+-------------------------------------------------------------------
+Mon Mar  2 16:12:12 UTC 2020 - jason.record@suse.com
+
+- Addition to version 3.1.7
+  + exclude /proc/pagetypeinfo as it can be an expensive operation on some systems (bsc#1162357)
+  + Readded LPM/DLPAR data for Power (bsc#1162539)
+
+-------------------------------------------------------------------
+Thu Nov 21 21:25:20 UTC 2019 - jason.record@suse.com
+
+- Addition to version 3.1.6
+  + Strip trailing commas from process names #64 (bsc#1156837)
+  + Dynamically select compression method (bsc#1145233)
+  + Updated detailed unit information fix in systemd.txt (bsc#1023308)
+  + Fixed supportconig.conf man page with order placement
+  + Include IPv6 routes (bsc#1089877)
+
+-------------------------------------------------------------------
+Fri Oct 18 13:57:37 UTC 2019 - jason.record@suse.com
+
+- Updated to version 3.1.5
+  + Removed root .snapshots directory from full file list (bsc#1154482)
+
+-------------------------------------------------------------------
+Wed Oct 16 01:22:04 UTC 2019 - jason.record@suse.com
+
+- Updated to version 3.1.4
+  + Removed LPM/DLPAR data for POWER (bsc#1111029)
+  + prevent running 'systool -vb memory' by default on systems with 16TB or more #57 (bsc#1127734)
+  + Tumbleweed support #50
+  + Added zypper orphaned packages check to updates.txt
+  + Cpuset listing #52
+  + Docker disunite #53 
+  + Added sed and gawk to spec requirements (bsc#1137336)
+  + Added nstat to network
+  + Add collection of livepatch information #63
+  + Check for missing ldap.conf file
+
+-------------------------------------------------------------------
+Thu May  9 14:52:29 UTC 2019 - jason.record@suse.com
+
+- Updated to version 3.1.3
+  + Uses SUSE FTP servers (bsc#1132865)
+  + btrfs quota #43
+  + supportconfig: open-files: add file flags #44
+  + Merged etc_info: Add support for .cfg files in /etc dir #46
+  + Silence warning in rpm backup db collection path #47
+  + Set files in tarball to 660 instead of 600 #48
+  + SUSE separation finalized (bsc#1125623)
+  + Default compression through xz, but -z forces bzip2
+  + Updated man pages (bsc#1088234)
+  + Changed VAR_OPTION_BIN_TIMEOUT_SEC from 300 to 120
+  + Avoids some IO delays (bsc#1100529)
+  + Corrected supported services help info for -U
+  + Collects iSCSI Target information (bsc#1133844)
+  + FTPES uses --ssl-reqd instead of depricated --ftp-ssl
+  + Defaults to https FTP server uploads (bsc#1134599)
+
+-------------------------------------------------------------------
+Mon Mar  4 17:37:56 UTC 2019 - jason.record@suse.com
+
+- Updated to version 3.1.2
+  + Fixed missing sapconf and log (bsc#1081326)
+  + Added timed_log_cmd to hwinfo and showmount commands (bsc#1120967)
+
+-------------------------------------------------------------------
 Fri Mar  1 11:15:15 UTC 2019 - jason.record@suse.com
 
 - Updated to version 3.1.1

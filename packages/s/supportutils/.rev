@@ -98,4 +98,12 @@
     <comment>update for 15 sp1</comment>
     <requestid>682306</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>871c3516fd686d6d9298e56060e0a07f</srcmd5>
+    <version>3.1.8</version>
+    <time>1583526252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781274</requestid>
+  </revision>
 </revisionlist>
