@@ -1,7 +1,7 @@
 #
 # spec file for package live-net-installer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Makes the installation available from a running system
 License:        BSD-3-Clause
 Group:          System/YaST
-Url:            https://build.opensuse.org/package/show/openSUSE:Factory:Live/live-net-installer
+URL:            https://build.opensuse.org/package/show/openSUSE:Factory:Live/live-net-installer
 Source1:        start-install.sh
 Source2:        installation.desktop
 Source3:        COPYING
@@ -39,6 +39,10 @@ BuildRequires:  yast2-installation
 Requires:       util-linux
 Requires:       xdg-utils
 Requires:       yast2-installation
+# yast2-installation should require this, but it doesn't
+Requires:       btrfsprogs
+Requires:       lvm2
+Requires:       snapper
 
 %description
 This package contains files that allow starting the installer from a
