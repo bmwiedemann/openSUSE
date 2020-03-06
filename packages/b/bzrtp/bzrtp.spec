@@ -1,7 +1,7 @@
 #
 # spec file for package bzrtp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        1.0.6
+Version:        4.3.1
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-2.0-or-later
 URL:            https://linphone.org/
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+Source:         https://github.com/BelledonneCommunications/bzrtp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bzrtp-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbzrtp.pc.
 Patch0:         bzrtp-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 0.6.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 
@@ -60,9 +60,7 @@ application which will use libbzrtp.
 %autosetup -p1
 
 %build
-%cmake \
-  -DENABLE_STATIC=OFF \
-  -DENABLE_STRICT=OFF
+%cmake -DENABLE_STATIC=OFF
 %cmake_build
 
 %install
