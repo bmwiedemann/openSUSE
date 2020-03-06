@@ -1,7 +1,7 @@
 #
 # spec file for package mediastreamer2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _name   mediastreamer
-%define sobase  libmediastreamer_base
-%define sovoip  libmediastreamer_voip
+%define sobase  libmediastreamer
 %define sover   10
-%bcond_without ffmpeg
 Name:           mediastreamer2
-Version:        2.16.1
+Version:        4.3.1
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2/overview
-Source:         https://linphone.org/releases/sources/%{_name}/%{_name}-%{version}.tar.gz
+Source:         https://github.com/BelledonneCommunications/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE mediastreamer2-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install mediastreamer.pc.
 Patch0:         mediastreamer2-fix-pkgconfig.patch
-# PATCH-FIX-OPENSUSE mediastreamer2-fix-xv.patch sor.alexei@meowr.ru -- Fix Xv by linking with Xext.
-Patch1:         mediastreamer2-fix-xv.patch
-# PATCH-FIX-UPSTREAM mediastreamer2-2.16.1-fix-no-git.patch -- Fix building out-of-git (commit de3a24b).
-Patch2:         mediastreamer2-2.16.1-fix-no-git.patch
 BuildRequires:  bcmatroska2-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -47,9 +39,11 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp-devel
 BuildRequires:  libv4l-devel
 BuildRequires:  libvpx-devel
+BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  spandsp-devel
+BuildRequires:  sqlite3-devel
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >= 0.6.0
@@ -65,16 +59,13 @@ BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
-Obsoletes:      %{name}-lang
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libjpeg-devel
 %endif
-%if %{with ffmpeg}
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
-%endif
 
 %description
 Mediastreamer2 is a GPL licensed library to make audio and video
@@ -90,21 +81,23 @@ Mediastreamer2 is a GPL licensed library to make audio and video
 real-time streaming and processing. Written in pure C, it is based
 upon the oRTP library.
 
-%package -n %{sovoip}%{sover}
-Summary:        Audio/video real-time streaming library, voip part
-Group:          System/Libraries
+%package doc
+Summary:        Documentation for the mediastreamer2 library
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
 
-%description -n %{sovoip}%{sover}
+%description doc
 Mediastreamer2 is a GPL licensed library to make audio and video
 real-time streaming and processing. Written in pure C, it is based
-upon the oRTP library.
+upon the ortp library.
+
+This package contains documentation files
 
 %package devel
-Summary:        Headers, libraries and docs for the mediastreamer2 library
+Summary:        Headers and libraries for the mediastreamer2 library
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       %{sobase}%{sover} = %{version}
-Requires:       %{sovoip}%{sover} = %{version}
 Requires:       bcmatroska2-devel
 
 %description devel
@@ -116,62 +109,46 @@ This package contains header files and development libraries needed to
 develop programs using the mediastreamer2 library.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-%cmake \
-%if %{with ffmpeg}
-  -DCMAKE_INCLUDE_PATH=%{_includedir}/ffmpeg \
-%else
-  -DENABLE_NON_FREE_CODECS=OFF \
-  -DENABLE_VIDEO=OFF           \
-%endif
-  -DENABLE_ZRTP=ON             \
-  -DENABLE_STRICT=OFF          \
-  -DENABLE_STATIC=OFF
-make %{?_smp_mflags} V=1
+%cmake -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
+    -DENABLE_STATIC=NO
+make 
 
 %install
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-4.3.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
 
 %postun -n %{sobase}%{sover} -p /sbin/ldconfig
 
-%post -n %{sovoip}%{sover} -p /sbin/ldconfig
-
-%postun -n %{sovoip}%{sover} -p /sbin/ldconfig
-
 %files
-%license COPYING
-%doc AUTHORS NEWS README.md
-%doc %{_docdir}/%{name}/
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120000
+%license LICENSE.txt 
 %{_bindir}/mediastream
 %{_bindir}/mkvstream
-%dir %{_datadir}/images/
-%{_datadir}/images/nowebcamCIF.jpg
-%endif
 
 %files -n %{sobase}%{sover}
 %{_libdir}/%{sobase}.so.%{sover}*
 
-%files -n %{sovoip}%{sover}
-%{_libdir}/%{sovoip}.so.%{sover}*
+%files doc
+%doc README.md
+%dir %{_docdir}/%{name}/
+%doc %{_docdir}/%{name}/*
+%dir %{_datadir}/images/
+%{_datadir}/images/nowebcamCIF.jpg
 
 %files devel
 %{_includedir}/mediastreamer2/
 %{_bindir}/mediastreamer2_tester
-%{_libdir}/libmediastreamer_*.so
+%{_libdir}/libmediastreamer.so
 %{_datadir}/mediastreamer2_tester/
 %{_datadir}/Mediastreamer2/
-%{_libdir}/pkgconfig/%{_name}.pc
+%{_libdir}/pkgconfig/mediastreamer.pc
 
 %changelog

@@ -1,17 +1,13 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -556,6 +556,27 @@ if(MEDIASTREAMER2_CPPFLAGS)
- 	add_definitions(${MEDIASTREAMER2_CPPFLAGS})
- endif()
+diff -urN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-02-12 08:32:20.000000000 +0100
++++ b/CMakeLists.txt	2020-03-04 14:54:53.220925208 +0100
+@@ -114,6 +114,21 @@
+ option(ENABLE_JPEG "Enable JPEG support" YES)
+ cmake_dependent_option(ENABLE_QRCODE "Enable QRCode support" YES "ENABLE_VIDEO" NO)
  
-+
 +set(MS_PUBLIC_PACKAGES "ortp bctoolbox")
-+if(ENABLE_ZRTP)
-+       set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libbzrtp")
-+endif()
-+if(ENABLE_FFMPEG)
-+       set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libavcodec libavutil libswscale")
-+endif()
++set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libbzrtp")
++set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libavcodec libavutil libswscale")
 +if(ENABLE_FIXED_POINT)
 +       set(MS_PUBLIC_CFLAGS "-DMS_FIXED_POINT")
 +else(ENABLE_FIXED_POINT)
@@ -24,13 +20,13 @@
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
 +install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 +
-+
- set(STRICT_OPTIONS_CPP )
- set(STRICT_OPTIONS_C )
- set(STRICT_OPTIONS_OBJC "-Wno-error")
---- a/mediastreamer.pc.in
-+++ b/mediastreamer.pc.in
-@@ -5,7 +5,8 @@ includedir=@includedir@
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_EXTENSIONS NO)
+ 
+diff -urN a/mediastreamer.pc.in b/mediastreamer.pc.in
+--- a/mediastreamer.pc.in	2020-02-12 08:32:20.000000000 +0100
++++ b/mediastreamer.pc.in	2020-03-04 14:57:06.385621735 +0100
+@@ -5,7 +5,8 @@
  
  Name: mediastreamer 
  Description: A mediastreaming library for telephony applications

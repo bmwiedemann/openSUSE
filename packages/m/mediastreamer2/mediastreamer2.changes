@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:36:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.3.1 (no changelog)
+- Remove mediastreamer2-fix-xv.patch
+- Remove mediastreamer2-2.16.1-fix-no-git.patch
+
+-------------------------------------------------------------------
 Wed Aug 15 14:36:31 UTC 2018 - sor.alexei@meowr.ru
 
 - Add mediastreamer2-2.16.1-fix-no-git.patch: Fix building
