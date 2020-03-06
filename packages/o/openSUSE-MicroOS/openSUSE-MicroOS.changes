@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  3 10:35:08 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Move kernel-default to the common section
+- Only use cloud-init on OpenStack-Cloud, it's still needed there
+  for meta-data like public ssh keys
+- Drop ignition on OpenStack-Cloud, conflicts with ignition
+- Drop drivers section, obsolete with dracut
+
+-------------------------------------------------------------------
 Thu Feb 20 15:08:44 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Enable back ignition using qemu fw_cfg on kvm images on aarch64.
