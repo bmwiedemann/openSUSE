@@ -342,6 +342,7 @@ Patch0:         6c1dddaf-libxl-shutdown-inhibit.patch
 Patch1:         849052ec-libxl-support-credit2.patch
 Patch2:         72ed254b-drop-exec-perms-bashcompletion.patch
 Patch3:         e092daac-prohib-parallel-tunneled-mig.patch
+Patch4:         ae9e6c2a-qemu-allow-cond-format-probe.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -879,6 +880,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1

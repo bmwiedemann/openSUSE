@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 23:22:42 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Allow format probing under special circumstances
+  ae9e6c2a-qemu-allow-cond-format-probe.patch
+  bsc#1165588
+
+-------------------------------------------------------------------
 Wed Feb  5 22:51:48 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - xen: Fix the list of supported ovmf firmwares
