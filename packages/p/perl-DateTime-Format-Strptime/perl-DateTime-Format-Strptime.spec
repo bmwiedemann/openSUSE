@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Strptime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-Format-Strptime
-Version:        1.76
+Version:        1.77
 Release:        0
 %define cpan_name DateTime-Format-Strptime
 Summary:        Parse and format strp and strf time patterns
@@ -84,7 +84,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc bench Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc azure-pipelines.yml bench Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 
 %changelog

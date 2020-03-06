@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar  1 03:14:01 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.77
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.77     2020-02-29
+  
+  * When the parsed string contained an invalid time zone offset (parsed with
+    "%z") like "-9999", the error handling set in the parser's constructor was
+    ignored and an exception was always thrown. Reported by x-qq. GH #25.
+
+-------------------------------------------------------------------
 Fri Feb  8 06:06:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.76
