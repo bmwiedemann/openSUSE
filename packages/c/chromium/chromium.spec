@@ -57,7 +57,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        80.0.3987.122
+Version:        80.0.3987.132
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -94,6 +94,7 @@ Patch19:        chromium-80-include.patch
 Patch20:        chromium-80-unbundle-libxml.patch
 Patch21:        chromium-fix-char_traits.patch
 Patch22:        gpu-timeout.patch
+Patch23:        webrtc-pulse.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches

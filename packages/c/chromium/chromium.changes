@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  5 18:15:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 80.0.3987.132 bsc#1165826:
+  * CVE-2020-6420: Insufficient policy enforcement in media.
+  * Various fixes from internal audits, fuzzing and other initiatives [2].
+
+-------------------------------------------------------------------
+Tue Mar  3 16:45:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch trying to fix pulse audio issues with webrtc:
+  * webrtc-pulse.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 12:25:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 80.0.3987.122 bsc#1164828:
