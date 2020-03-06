@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 09:48:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.3.1 (no changelog)
+- Add fix-cmakelists.patch file until upstream PR is merged
+
+-------------------------------------------------------------------
 Thu Jul 20 11:20:31 UTC 2017 - sor.alexei@meowr.ru
 
 - Update to version 1.0.2:

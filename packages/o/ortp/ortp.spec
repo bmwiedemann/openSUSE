@@ -1,7 +1,7 @@
 #
 # spec file for package ortp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,28 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname  libortp
-%define sover   13
+%define sover   14
+%define docver  4.3
 Name:           ortp
-Version:        1.0.2
+Version:        4.3.2
 Release:        0
 Summary:        Real-time Transport Protocol Stack
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
-Url:            https://linphone.org/technical-corner/ortp/overview
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+URL:            https://linphone.org/technical-corner/ortp/
+Source:         https://github.com/BelledonneCommunications/ortp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE deps.diff
 Patch0:         deps.diff
+Patch1:         fix-cmakelists.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 0.6.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.3.0
 
 %description
 oRTP is a LGPL licensed C library implementing the RTP protocol
@@ -64,24 +66,20 @@ This package contains header files and development libraries needed to
 develop programs using the oRTP library.
 
 %prep
-%setup -q -n %{name}-%{version}-0
+%setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
-%cmake \
-  -DENABLE_TESTS=ON   \
-  -DENABLE_STATIC=OFF \
-  -DENABLE_STRICT=OFF
-make %{?_smp_mflags} V=1
+%cmake -DENABLE_STATIC=OFF
+make %{?_smp_mflags} 
 
 %install
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docver}/ \
   %{buildroot}%{_docdir}/%{name}/
-
-sed -i "s|%{_prefix}/lib|%{_libdir}|g" %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 
@@ -89,22 +87,16 @@ sed -i "s|%{_prefix}/lib|%{_libdir}|g" %{buildroot}%{_libdir}/pkgconfig/%{name}.
 
 %files
 %doc %{_docdir}/%{name}/
-%{_bindir}/mrtprecv
-%{_bindir}/mrtpsend
-%{_bindir}/rtprecv
-%{_bindir}/rtpsend
-%{_bindir}/rtpsend_stupid
-%{_bindir}/test_timer
-%{_bindir}/tevrtprecv
-%{_bindir}/tevrtpsend
+%license %{_docdir}/%{name}/LICENSE.txt
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*
 
 %files devel
+%dir %{_libdir}/cmake/ortp
 %{_includedir}/%{name}/
 %{_libdir}/%{soname}.so
-%{_datadir}/oRTP/
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/ortp/*
 
 %changelog
