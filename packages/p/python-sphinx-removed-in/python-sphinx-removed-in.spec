@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-removed-in
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-removed-in
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Sphinx directives versionremoved and removed-in
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/MrSenko/sphinx-removed-in
+URL:            https://github.com/MrSenko/sphinx-removed-in
 Source:         https://github.com/MrSenko/sphinx-removed-in/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-testing}
-Requires:       python-Sphinx
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Sphinx
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,7 +50,7 @@ Sphinx Removed In Extension
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
