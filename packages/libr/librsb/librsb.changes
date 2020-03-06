@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  5 16:24:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0.8
+  * bugfix: rsb_spmv/rsb_spmm/BLAS_cusmv/BLAS_zusmv/BLAS_cusmm/
+    BLAS_zusmm could compute wrong values in transpose or
+    conjugated transpose on very sparse complex hermitian
+    matrices.
+
+-------------------------------------------------------------------
 Thu Jul 12 05:02:16 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch and set an explicit memory hierarchy

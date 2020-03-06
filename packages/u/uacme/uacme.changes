@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  5 14:48:20 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- default to /srv/www/htdocs instead of /var/www for web server path
+  Add patch:
+  * suse-www-path.patch
+
+-------------------------------------------------------------------
 Sun Feb  2 10:56:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.22

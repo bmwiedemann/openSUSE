@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  4 12:35:47 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.17.9
+  * https://nginx.org/en/CHANGES
+  * Now nginx does not allow several "Host" request header lines.
+  * nginx ignored additional "Transfer-Encoding" request header lines.
+  * Socket leak when using HTTP/2.
+  * A segmentation fault might occur in a worker process if OCSP
+    stapling was used.
+  * In the ngx_http_mp4_module.
+  * nginx used status code 494 instead of 400 if errors with code
+    494 were redirected with the "error_page" directive.
+  * Socket leak when using subrequests in the njs module and the
+    "aio" directive.
+
+-------------------------------------------------------------------
 Sun Feb  2 01:03:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.17.8
@@ -2158,4 +2174,3 @@ Tue Apr 12 16:10:00 UTC 2011 - mrueckert@suse.de
 Tue Apr 12 15:16:54 UTC 2011 - mrueckert@suse.de
 
 - start 1.0 branch package
-

@@ -207,27 +207,28 @@ Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc
 %else
 Provides:       python3-tensorflow
 %endif
+Provides:       tensorflow
 BuildRequires:  bazel = 0.29.1
 BuildRequires:  curl
 %if %{with cuda}
 BuildRequires:  cuda-compiler-10-1
-BuildRequires:  cuda-libraries-10-1
+BuildRequires:  cuda-cufft-dev-10-1
 BuildRequires:  cuda-cupti-10-1
 BuildRequires:  cuda-curand-dev-10-1
 BuildRequires:  cuda-cusolver-dev-10-1
 BuildRequires:  cuda-cusparse-dev-10-1
-BuildRequires:  cuda-cufft-dev-10-1
+BuildRequires:  cuda-libraries-10-1
 BuildRequires:  libcublas-devel
-BuildRequires:  libnccl2-devel
 BuildRequires:  libcudnn7-devel
+BuildRequires:  libnccl2-devel
 %endif
 %if %{with opencl}
 Requires:       Mesa-libOpenCL
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  opencl-headers
 %endif
-BuildRequires:  curl-devel
 BuildRequires:  boringssl-devel
+BuildRequires:  curl-devel
 BuildRequires:  double-conversion-devel >= 3.1.5
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -339,9 +340,9 @@ Requires:       %{package_name} = %{version}
 Provides:       %{package_name_provide}-devel
 %endif
 Conflicts:      %{package_name_conflict}-devel
-Requires:       libtensorflow_framework%{libmaj}%{?hpc_package_name_tail} = %{version}
-Requires:       libtensorflow_cc%{libmaj}%{?hpc_package_name_tail} = %{version}
 Requires:       libtensorflow%{libmaj}%{?hpc_package_name_tail} = %{version}
+Requires:       libtensorflow_cc%{libmaj}%{?hpc_package_name_tail} = %{version}
+Requires:       libtensorflow_framework%{libmaj}%{?hpc_package_name_tail} = %{version}
 
 %description  -n %{package_name}-devel
 This open source software library for numerical computation is used for data
@@ -453,7 +454,9 @@ mkdir -p %{bazeldir}
 %patch14 -p 1
 %patch15 -p 1
 %patch16 -p 1
+%if 0%{?suse_version} > 1500 
 %patch17 -p 1
+%endif
 
 %if %{is_lite}
 mkdir tensorflow/lite/tools/make/downloads/
@@ -499,8 +502,8 @@ module load gnu
 %if %{with mpi}
 module load %mpi_flavor
 export MPI_HOME=${MPI_HOME:-$MPI_DIR}
-%endif #mpi
-%endif #hpc
+%endif
+%endif
 #rm /home/abuild/rpmbuild/SOURCES/BAZEL/_bazel_abuild/bffdb097c5cf04768665f957f68c33f9/external/bazel_toolchains/repositories/repositories.bzl
 export TEST_TMPDIR=%{bazeldir}
 export PYTHON_LIB_PATH=%{python3_sitearch}
@@ -628,7 +631,7 @@ bazel build -c opt \
   --incompatible_no_support_tools_in_action_inputs=false \
 	%{?copts} --jobs %{?jobs} \
   //tensorflow:libtensorflow.so
- 
+
 bazel build -c opt \
   --repository_cache=%{bz_cachdir} \
   --ignore_unsupported_sandboxing \
@@ -641,7 +644,7 @@ bazel build -c opt \
   --incompatible_no_support_tools_in_action_inputs=false \
 	%{?copts} --jobs %{?jobs} \
   //tensorflow:libtensorflow_cc.so
- 
+
 bazel build -c opt \
   --repository_cache=%{bz_cachdir} \
   --ignore_unsupported_sandboxing \

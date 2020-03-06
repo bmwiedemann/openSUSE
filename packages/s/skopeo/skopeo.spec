@@ -24,7 +24,7 @@
 %define with_libostree 1
 %endif
 Name:           skopeo
-Version:        0.1.39
+Version:        0.1.41
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -32,11 +32,6 @@ Group:          System/Management
 URL:            https://github.com/containers/skopeo
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
-# SUSE-FEATURE: Implement the skopeo sync command
-#               (https://github.com/containers/skopeo/pull/524)
-Patch000:       bsc1115165-0001-Introduce-the-sync-command.patch
-# Add set of image options used only for docker transport (required by sync)
-Patch001:       0002-Add-set-of-image-options-used-only-for-docker-transp.patch
 Requires:       libcontainers-common
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel
@@ -58,10 +53,6 @@ storage mechanisms.
 
 %prep
 %setup -q
-# bsc#1115165
-%patch000 -p1
-# Add set of image options used only for docker transport (required by sync)
-%patch001 -p1
 
 %build
 mkdir -p .gopath/src/github.com/containers

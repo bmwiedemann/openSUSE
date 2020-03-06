@@ -288,4 +288,12 @@
     <comment>Fix for bsc#1159445 win2k9 detection</comment>
     <requestid>760479</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d3fcc30a1a9e64b6e800c8c6ee730a09</srcmd5>
+    <version>20200214</version>
+    <time>1583526387</time>
+    <user>dimstar_suse</user>
+    <comment>Add UEFI support for openSUSE and SLE (bsc#1165855)</comment>
+    <requestid>781944</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Mar  5 10:38:04 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated to 1.73.7
+- do not use git version anymore
+- added %systemd_requires
+- remove unneeded unzip BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 19 22:53:29 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- Initial version from git 20200219
+

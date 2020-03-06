@@ -156,4 +156,12 @@
     <comment>- Enable pthreads [boo#1142714]</comment>
     <requestid>725590</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>052292aef170a02f28a0b4f4cea1701d</srcmd5>
+    <version>2.11.3</version>
+    <time>1583526489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.11.3</comment>
+    <requestid>782011</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:56:45 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.69.0
+  * Changes:
+    - polarssl: removed
+    - smtp: add CURLOPT_MAIL_RCPT_ALLLOWFAILS and --mail-rcpt-allowfails
+    - wolfSSH: new SSH backend 
+  * Bugfixes:
+    - altsvc: improved header parser
+    - altsvc: keep a copy of the file name to survive handle reset
+    - altsvc: make saving the cache an atomic operation
+    - altsvc: use h3-27
+    - azure: disable brotli on the macos debug-builds
+    - build: remove all HAVE_OPENSSL_ENGINE_H defines
+    - cleanup: fix several comment typos
+    - cleanup: fix typos and wording in docs and comments
+    - cmake: add support for CMAKE_LTO option
+    - cmake: clean up and improve build procedures
+    - cmake: Show HTTPS-proxy in the features output
+    - cmake: use check_symbol_exists also for inet_pton
+    - configure.ac: fix comments about --with-quiche
+    - configure: disable metalink if mbedTLS is specified
+    - configure: disable metalink support for incompatible SSL/TLS
+    - conn: do not reuse connection if SOCKS proxy credentials differ
+    - conncache: removed unused Curl_conncache_bundle_size()
+    - connect: remove some spurious infof() calls
+    - connection reuse: respect the max_concurrent_streams limits
+    - cookie: check __Secure- and __Host- case sensitively
+    - cookies: make saving atomic with a rename
+    - create-dirs.d: mention the mode
+    - curl: avoid using strlen for testing if a string is empty
+    - curl: error on --alt-svc use w/o support
+    - curl: let -D merge headers in one file again
+    - curl: make #0 not output the full URL
+    - curl: make the -# spaceship bar not wrap the line
+    - curl: remove 'config' field from OutStruct
+    - curl:progressbarinit: ignore column width from terminals < 20
+    - curl_escape.3: add a link to curl_free
+    - curl_getenv.3: fix the memory handling description
+    - curl_global_init: assume the EINTR bit by default
+    - curl_global_init: move the IPv6 works status bool to multi handle
+    - CURLINFO_COOKIELIST.3: Fix example
+    - CURLOPT_ALTSVC_CTRL.3: fix the DEFAULT wording
+    - CURLOPT_PROXY_SSL_OPTIONS.3: Sync with CURLOPT_SSL_OPTIONS.3
+    - CURLOPT_REDIR_PROTOCOLS.3: update the DEFAULT section
+    - data.d: remove "Multiple files can also be specified"
+    - digest: do not quote algorithm in HTTP authorisation
+    - docs/HTTP3: add --enable-alt-svc to curl's configure
+    - docs/HTTP3: update the OpenSSL branch to use for ngtcp2
+    - docs: fix typo on CURLINFO_RETRY_AFTER
+    - easy: remove dead code
+    - form.d: fix two minor typos
+    - ftp: convert 'sock_accepted' to a plain boolean
+    - ftp: remove superfluous checking for crlf in user or pwd
+    - ftp: shrink temp buffers used for PORT
+    - github: Instructions to post "uname -a" on Unix systems in issues
+    - GnuTLS: always send client cert
+    - gtls: fixed compilation when using GnuTLS < 3.5.0
+    - hostip: move code to resolve IP address literals to 'Curl_resolv'
+    - HTTP-COOKIES: describe the cookie file format
+    - HTTP-COOKIES: mention that a trailing newline is required
+    - http2: make pausing/unpausing set/clear local stream window
+    - http2: now requires nghttp2 >= 1.12.0
+    - http: added 417 response treatment
+    - http: increase EXPECT_100_THRESHOLD to 1Mb
+    - http: mark POSTs with no body as "upload done" from the start
+    - http: move "oauth_bearer" from connectdata to Curl_easy
+    - include: remove non-curl prefixed defines
+    - KNOWN_BUGS: Multiple methods in a single WWW-Authenticate: header
+    - libssh2: add support for forcing a hostkey type
+    - libssh2: fix variable type
+    - libssh: improve known hosts handling
+    - llist: removed unused Curl_llist_move()
+    - location.d: the method change is from POST to GET only
+    - md4: fixed compilation issues when using GNU TLS gcrypt
+    - md4: use init/update/final functions in Secure Transport
+    - md5: added implementation for mbedTLS
+    - mk-ca-bundle: add support for CKA_NSS_SERVER_DISTRUST_AFTER
+    - multi: change curl_multi_wait/poll to error on negative timeout
+    - multi: fix outdated comment
+    - multi: if Curl_readwrite sets 'comeback' use expire, not loop
+    - multi_done: if multiplexed, make conn->data point to another transfer
+    - multi_wait: stop loop when sread() returns zero
+    - ngtcp2: add error code for QUIC connection errors
+    - ngtcp2: fixed to only use AF_INET6 when ENABLE_IPV6
+    - ngtcp2: update to git master and its draft-25 support
+    - ntlm: removed the dependency on the TLS libaries when using MD5
+    - ntlm_wb: use Curl_socketpair() for greater portability
+    - oauth2-bearer.d: works for HTTP too
+    - openssl: make CURLINFO_CERTINFO not truncate x509v3 fields
+    - openssl: remove redundant assignment
+    - os400: fixed the build
+    - pause: force-drain the transfer on unpause
+    - quiche: update to draft-25
+    - README: mention that the docs is in docs/
+    - runtests: make random seed fixed for a month
+    - runtests: restore the command log
+    - schannel_verify: Fix alt names manual verify for UNICODE builds
+    - sha256: use crypto implementations when available
+    - singleuse.pl: support new API functions, fix curl_dbg_ handling
+    - smtp: support the SMTPUTF8 extension
+    - smtp: support UTF-8 based host names in MAIL FROM
+    - SOCKS: make the connect phase non-blocking
+    - strcase: turn Curl_raw_tolower into static
+    - strerror: increase STRERROR_LEN 128 -> 256
+    - test1323: added missing 'unit test' feature requirement
+    - tests: add a unit test for MD4 digest generation
+    - tests: add a unit test for SHA256 digest generation
+    - tests: add a unit test for the HMAC hash generation
+    - tests: deduce the tool name from the test case for unit tests
+    - tests: fix Python 3 compatibility of smbserver.py
+    - tool_dirhie: allow directory traversal during creation
+    - tool_homedir: change GetEnv() to use libcurl's curl_getenv()
+    - url: include the failure reason when curl_win32_idn_to_ascii() fails
+    - urlapi: guess scheme properly with credentials given
+    - urldata: do string enums without #ifdefs for build scripts
+    - vtls: refactor Curl_multissl_version to make the code clearer
+- Refresh patches:
+  * curl-secure-getenv.patch
+  * libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 14:11:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Eliminate curl-mini: The reason for this to exist was that cmake

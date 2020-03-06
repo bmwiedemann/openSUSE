@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-faulthandler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-faulthandler
 Version:        1.6.0
@@ -28,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-faulthan
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-faulthandler
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest < 5
 BuildArch:      noarch
@@ -36,9 +36,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module pytest-mock >= 0.6}
 # /SECTION
-%ifpython2
-Requires:       python-faulthandler
-%endif
 %python_subpackages
 
 %description

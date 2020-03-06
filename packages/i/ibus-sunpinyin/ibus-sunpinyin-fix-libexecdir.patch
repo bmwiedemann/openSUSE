@@ -1,0 +1,12 @@
+diff -Nur sunpinyin-3.0.0-rc1/wrapper/ibus/SConstruct sunpinyin-3.0.0-rc1-new/wrapper/ibus/SConstruct
+--- sunpinyin-3.0.0-rc1/wrapper/ibus/SConstruct	2020-03-06 16:43:44.640899052 +0800
++++ sunpinyin-3.0.0-rc1-new/wrapper/ibus/SConstruct	2020-03-06 16:44:44.536512831 +0800
+@@ -71,7 +71,7 @@
+ 
+ data_dir = env['DATADIR'] + '/ibus-sunpinyin'
+ icons_dir = env['DATADIR'] + '/ibus-sunpinyin/icons'
+-bin_dir = env['LIBEXECDIR'] + '/ibus-sunpinyin'
++bin_dir = env['LIBEXECDIR'] + '/'
+ gettext_package = 'ibus-sunpinyin'
+ 
+ extra_cflags = ' -DIBUS_SUNPINYIN_LOCALEDIR=\'"%s"\'' % (env['DATADIR'] + '/locale')

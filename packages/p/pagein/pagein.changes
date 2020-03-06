@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar  6 14:26:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Align SLEap builds with TW Builds.
+
+-------------------------------------------------------------------
+Fri Feb 28 09:51:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Thu Feb 27 21:04:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.01.04
+  * Add bash command completion script
+  * Remove kthreads stat, add in total mappings stat
+  * Add unreadable skipped pages stats
+  * Expand pid field to 6 digits
+  * Manual: change example to Xorg as a process to page in
+  * Remove defunct command options -d, -t, -w
+
+-------------------------------------------------------------------
 Sat May 19 08:45:55 UTC 2018 - mardnh@gmx.de
 
 - Initial packge, version 0.01.00

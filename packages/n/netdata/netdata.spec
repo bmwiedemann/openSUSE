@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.14.1
+%define godplugin_version 0.15.0
 Name:           netdata
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -55,7 +55,7 @@ Recommends:     PyYAML
 Recommends:     curl
 Recommends:     iproute-tc
 Recommends:     lm_sensors
-Recommends:     nmap-ncat
+Recommends:     nmap-ncat curl openssl(cli)
 Recommends:     python
 Recommends:     python2-PyMySQL
 Recommends:     python2-psycopg2
@@ -75,6 +75,7 @@ using interactive web dashboards.
 %setup -q -n %{name}-v%{version}
 %patch0
 %patch2 -p1
+sed -i 's,/usr/bin/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
 %if 0%{?suse_version} > 1500
 tar xf %{S:1}
@@ -133,6 +134,10 @@ cp -r config/* %{buildroot}%{_libdir}/%{name}/conf.d
 install -m0755 -p bin/go.d.plugin %{buildroot}%{_libexecdir}/%{name}/plugins.d/go.d.plugin
 %endif
 
+install -m 755 -d %{buildroot}%{_localstatedir}/cache/%{name}
+install -m 755 -d %{buildroot}%{_localstatedir}/log/%{name}
+install -m 755 -d %{buildroot}%{_localstatedir}/lib/%{name}/registry
+
 %pre
 getent group %{netdata_group} >/dev/null || \
     %{_sbindir}/groupadd -r %{netdata_group}
@@ -165,6 +170,8 @@ getent passwd %{netdata_user} >/dev/null || \
 %{_libdir}/%{name}
 
 %{_sbindir}/%{name}
+%{_sbindir}/%{name}-claim.sh
+%{_sbindir}/%{name}cli
 %{_sbindir}/rc%{name}
 
 %attr(0750,%{netdata_user},root) %dir %{_localstatedir}/cache/%{name}

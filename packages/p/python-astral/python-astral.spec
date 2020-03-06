@@ -1,7 +1,7 @@
 #
 # spec file for package python-astral
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-astral
-Version:        1.10.1
+Version:        2.1
 Release:        0
 Summary:        Calculations for the position of the sun and moon
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/sffjunkie/astral
 Source:         https://files.pythonhosted.org/packages/source/a/astral/astral-%{version}.tar.gz
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
@@ -33,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytz
 Requires:       python-requests
+Recommends:     python-dataclasses
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,10 +55,13 @@ For documentation see the http://astral.readthedocs.io/en/latest/index.html
 
 %install
 %python_install
+# do not install bogus doc module
+%python_expand rm -r %{buildroot}/%{$python_sitelib}/doc
+%python_expand rm -r %{buildroot}/%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v -m "not webtest"
+%pytest -m "not webtest"
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  5 19:49:50 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on openSUSE 15.2
+  + wireguard-fix-leap152.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 12:28:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.20200215

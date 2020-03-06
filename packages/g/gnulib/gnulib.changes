@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Wed Feb 19 10:33:56 UTC 2020 - mliska@suse.cz
+
+- Update to version git.20200216.f4693b016:
+  * fchmodat: Make more future-proof.
+  * lchmod: Make more future-proof.
+  * lchmod: Fix buggy override on macOS, HP-UX (regression from 2020-02-08).
+  * xnanosleep: prefer pause, and get remaining time
+  * lchmod: Improve cross-compilation guess.
+  * fstrcmp: Add API to clean up resources.
+  * wctype-h: Fix compilation errors in C++ (regression from 2020-01-25).
+  * fchmodat, lchmod: port to buggy Linux filesystems
+  * autoupdate
+  * lchmod: pacify Coverity CID 1491216
+
+-------------------------------------------------------------------
+Thu Sep 17 13:56:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to commit 601d8f444dc927daf0fbefbc866b46bfaa44f59b
+  Fix build
+
+-------------------------------------------------------------------
+Tue Apr 21 16:31:08 UTC 2015 - p.drouand@gmail.com
+
+- Initial release (version 20150421)
+

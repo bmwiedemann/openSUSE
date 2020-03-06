@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:22:20 MST 2020 - carnold@suse.com
+
+- bsc#1165855 - Add UEFI support to the database for SLES and
+  openSUSE distros
+  5bbe30db-opensuse-add-info-about-UEFI-support.patch
+  SLE-add-info-about-UEFI-support.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 11:20:15 MST 2020 - carnold@suse.com
+
+- Update database to version 20200214
+  osinfo-db-20200214.tar.xz
+- Drop patch included in new tarball
+  add-sle12sp5-support.patch
+
+-------------------------------------------------------------------
+Wed Feb 26 15:12:25 MST 2020 - carnold@suse.com
+
+- Fix the length of string for the ISO volume id (bsc#1054986)
+  fix-sle15sp1-volume-id-string.patch
+  add-sle15sp2-support.patch
+- Fix release date of SLE12-SP5
+  add-sle12sp5-support.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 10:33:53 MST 2020 - carnold@suse.com
 
 - bsc#1159445 - [virt-manager] Detected the wrong win guest system

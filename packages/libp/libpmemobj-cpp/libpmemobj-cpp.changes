@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 13 09:14:33 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 1.9
+  - segment_vector has graduated out of experiment.
+  - new methods for pmem::obj::string (find() and its overloads)
+  - defragmentation feature as a separate class in pmem::obj namespace and
+    support for the defragmentation in containers: concurrent_hash_map,
+    vector, string
+  - removed template parameters from persistent_ptr_base class (make it
+    type agnostic) and moved to the public API
+  - new methods for pmem::obj::concurrent_hash_map (insert_or_assign and
+    its overloads)
+- Add Add-support-for-older-cmake.patch for compatibility with older cmake versions
+- Disable tests for older GCC with incomplete c++14 support
+
+-------------------------------------------------------------------
 Fri Oct 11 14:34:23 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 1.8 (jsc#SLE-9886)

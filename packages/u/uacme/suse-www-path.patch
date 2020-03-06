@@ -1,0 +1,83 @@
+diff -urN uacme-1.0.22.orig/docs/index.html uacme-1.0.22/docs/index.html
+--- uacme-1.0.22.orig/docs/index.html	2020-02-01 10:59:29.000000000 +0100
++++ uacme-1.0.22/docs/index.html	2020-03-05 15:45:34.891561889 +0100
+@@ -1150,11 +1150,11 @@
+ <div class="paragraph"><p>The <em>uacme.sh</em> hook script included in the distribution can be used
+ to automate the certificate issuance with <em>http-01</em> challenges,
+ provided a web server for the domain being validated runs on the
+-same machine, with webroot at /var/www</p></div>
++same machine, with webroot at /srv/www/htdocs</p></div>
+ <div class="literalblock">
+ <div class="content monospaced">
+ <pre>#!/bin/sh
+-CHALLENGE_PATH=/var/www/.well-known/acme-challenge
++CHALLENGE_PATH=/srv/www/htdocs/.well-known/acme-challenge
+ ARGS=5
+ E_BADARGS=85</pre>
+ </div></div>
+diff -urN uacme-1.0.22.orig/uacme.1 uacme-1.0.22/uacme.1
+--- uacme-1.0.22.orig/uacme.1	2020-02-01 10:59:29.000000000 +0100
++++ uacme-1.0.22/uacme.1	2020-03-05 15:47:13.224648098 +0100
+@@ -321,14 +321,14 @@
+ .RE
+ .SH "EXAMPLE HOOK SCRIPT"
+ .sp
+-The \fIuacme\&.sh\fR hook script included in the distribution can be used to automate the certificate issuance with \fIhttp\-01\fR challenges, provided a web server for the domain being validated runs on the same machine, with webroot at /var/www
++The \fIuacme\&.sh\fR hook script included in the distribution can be used to automate the certificate issuance with \fIhttp\-01\fR challenges, provided a web server for the domain being validated runs on the same machine, with webroot at /srv/www/htdocs
+ .sp
+ .if n \{\
+ .RS 4
+ .\}
+ .nf
+ #!/bin/sh
+-CHALLENGE_PATH=/var/www/\&.well\-known/acme\-challenge
++CHALLENGE_PATH=/srv/www/htdocs/\&.well\-known/acme\-challenge
+ ARGS=5
+ E_BADARGS=85
+ .fi
+diff -urN uacme-1.0.22.orig/uacme.1.html uacme-1.0.22/uacme.1.html
+--- uacme-1.0.22.orig/uacme.1.html	2020-02-01 10:59:29.000000000 +0100
++++ uacme-1.0.22/uacme.1.html	2020-03-05 15:47:35.641069566 +0100
+@@ -1150,11 +1150,11 @@
+ <div class="paragraph"><p>The <em>uacme.sh</em> hook script included in the distribution can be used
+ to automate the certificate issuance with <em>http-01</em> challenges,
+ provided a web server for the domain being validated runs on the
+-same machine, with webroot at /var/www</p></div>
++same machine, with webroot at /srv/www/htdocs</p></div>
+ <div class="literalblock">
+ <div class="content monospaced">
+ <pre>#!/bin/sh
+-CHALLENGE_PATH=/var/www/.well-known/acme-challenge
++CHALLENGE_PATH=/srv/www/htdocs/.well-known/acme-challenge
+ ARGS=5
+ E_BADARGS=85</pre>
+ </div></div>
+diff -urN uacme-1.0.22.orig/uacme.1.txt uacme-1.0.22/uacme.1.txt
+--- uacme-1.0.22.orig/uacme.1.txt	2020-02-01 10:59:29.000000000 +0100
++++ uacme-1.0.22/uacme.1.txt	2020-03-05 15:47:25.872885909 +0100
+@@ -192,11 +192,11 @@
+ The 'uacme.sh' hook script included in the distribution can be used
+ to automate the certificate issuance with 'http-01' challenges,
+ provided a web server for the domain being validated runs on the 
+-same machine, with webroot at /var/www
++same machine, with webroot at /srv/www/htdocs
+ 
+ 
+     #!/bin/sh
+-    CHALLENGE_PATH=/var/www/.well-known/acme-challenge
++    CHALLENGE_PATH=/srv/www/htdocs/.well-known/acme-challenge
+     ARGS=5
+     E_BADARGS=85
+     
+diff -urN uacme-1.0.22.orig/uacme.sh uacme-1.0.22/uacme.sh
+--- uacme-1.0.22.orig/uacme.sh	2020-02-01 10:59:29.000000000 +0100
++++ uacme-1.0.22/uacme.sh	2020-03-05 15:47:32.469009924 +0100
+@@ -16,7 +16,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-CHALLENGE_PATH="${UACME_CHALLENGE_PATH:-/var/www/.well-known/acme-challenge}"
++CHALLENGE_PATH="${UACME_CHALLENGE_PATH:-/srv/www/htdocs/.well-known/acme-challenge}"
+ ARGS=5
+ E_BADARGS=85
+ 

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/prometheus/prom2json.git</param>
+              <param name="changesrevision">befc2b38ea5ff17035d800e1fdd50fd51c7f9d5c</param></service></servicedata>

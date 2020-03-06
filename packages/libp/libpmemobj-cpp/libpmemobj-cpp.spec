@@ -1,7 +1,7 @@
 #
 # spec file for package libpmemobj-cpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,17 @@ Name:           libpmemobj-cpp
 Summary:        C++ bindings for libpmemobj
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.8
+Version:        1.9
 Release:        0
 URL:            http://pmem.io/pmdk/
 Source:         https://github.com/pmem/libpmemobj-cpp/archive/%{version}.tar.gz
+Patch0:         Add-support-for-older-cmake.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
+BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libpmemobj) >= 1.7
+BuildRequires:  pkgconfig(libpmemobj) >= 1.8
 ExclusiveArch:  x86_64
 
 %description
@@ -60,11 +62,12 @@ Example C++ programs (with source) on how to use libpmemobj++.
 
 %prep
 %setup -q
+%patch0
 
 %build
 %cmake \
 %if %{suse_version} < 1500
-	-DENABLE_ARRAY=OFF -DENABLE_VECTOR=OFF -DENABLE_STRING=OFF	\
+ -DTEST_ARRAY=OFF -DTEST_VECTOR=OFF -DTEST_STRING=OFF -DTEST_CONCURRENT_HASHMAP=OFF -DTEST_SEGMENT_VECTOR_ARRAY_EXPSIZE=OFF -DTEST_SEGMENT_VECTOR_VECTOR_EXPSIZE=OFF -DTEST_SEGMENT_VECTOR_VECTOR_FIXEDSIZE=OFF -DTEST_ENUMERABLE_THREAD_SPECIFIC=OFF \
 %endif
 	-DCMAKE_INSTALL_DOCDIR="%_docdir/%name"
 make %{?_smp_mflags}

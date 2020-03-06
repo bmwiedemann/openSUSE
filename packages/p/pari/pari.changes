@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 16:44:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.11.3
+  * Avoid division by zero in Flx_extresultant when one input is 0.
+  * Fix crashes executing "ispower(27,2^60)",
+    "issquare(non square t_FFELT, &x)",
+    "polcompositum(x^2+x/3+1,x^2+x/3+1)",
+    "polrootsreal(x+0.)", "qflllgram([2,2,3;4,5,6])",
+    or printf("%10.6f\n",2^-100).
+
+-------------------------------------------------------------------
 Fri Aug 23 13:49:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable pthreads [boo#1142714]

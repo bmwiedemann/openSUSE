@@ -20,7 +20,7 @@
 %endif
 
 Name:           sesdev
-Version:        1.1.5+1582717868.g68df753
+Version:        1.1.6+1583428626.ga138314
 Release:        1%{?dist}
 Summary:        CLI tool to deploy and manage SES clusters
 License:        MIT

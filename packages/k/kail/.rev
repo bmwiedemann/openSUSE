@@ -46,4 +46,14 @@
 - Update vendor.tar.gz</comment>
     <requestid>775119</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9aca6d25ef2b13fbc50000b006d97a2a</srcmd5>
+    <version>0.15.0</version>
+    <time>1583526379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.0
+  - Use kcache 0.4
+- Refresh vendor.tar.xz</comment>
+    <requestid>781572</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Feb  2 20:42:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove unused pwdutils buildrequires
+
+-------------------------------------------------------------------
+Thu Jan 30 09:04:04 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to samba 4.11.6
+  + pygpo: Use correct method flags; (bso#14209);
+  + Avoiding bad call flags with python 3.8, using METH_NOARGS
+    instead of zero; (bso#14209);
+  + source4/utils/oLschema2ldif: Include stdint.h before cmocka.h;
+    (bso#14218);
+  + docs-xml/winbindnssinfo: Clarify interaction with idmap_ad etc;
+    (bso#14122);
+  + smbd: Fix the build with clang; (bso#14251);
+  + upgradedns: Ensure lmdb lock files linked; (bso#14199);
+  + s3: VFS: glusterfs: Reset nlinks for symlink entries during
+    readdir; (bso#14182);
+  + smbc_stat() doesn't return the correct st_mode and also the
+    uid/gid is not filled (SMBv1) file; (bso#14101);
+  + librpc: Fix string length checking in ndr_pull_charset_to_null();
+    (bso#14219);
+  + ctdb-scripts: Strip square brackets when gathering connection info;
+    (bso#14227);
+
+-------------------------------------------------------------------
 Tue Jan 21 16:55:36 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix nmbstatus not reporting detailed information about workgroups;

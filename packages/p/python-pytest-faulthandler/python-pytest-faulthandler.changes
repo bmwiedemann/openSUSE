@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:53:25 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disable python2 support as is python-faulthandler dropped from distro 
+
+-------------------------------------------------------------------
 Thu Aug 22 08:53:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in pytest 5 as it is integral part of that

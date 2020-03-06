@@ -1,6 +1,8 @@
---- osinfo-db-20191125/os/microsoft.com/win-2k19.xml.orig	2020-01-02 10:26:41.198381885 -0700
-+++ osinfo-db-20191125/os/microsoft.com/win-2k19.xml	2020-01-02 10:31:53.274389322 -0700
-@@ -23,6 +23,23 @@
+Index: osinfo-db-20200214/os/microsoft.com/win-2k19.xml
+===================================================================
+--- osinfo-db-20200214.orig/os/microsoft.com/win-2k19.xml
++++ osinfo-db-20200214/os/microsoft.com/win-2k19.xml
+@@ -26,6 +26,23 @@
  
      <release-date>2018-10-02</release-date>
  

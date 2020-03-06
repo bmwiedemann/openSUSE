@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:24:18 UTC 2020 - mt@suse.com
+
+- version 0.6.63
+- spec: fix old libwicked package provides/obsoletes (bsc#1165180)
+- ipv6: support to apply stable secret ifsysctl (jsc#SLE-6960)
+
+-------------------------------------------------------------------
 Wed Feb 26 21:00:16 UTC 2020 - rtorreromarijnissen@suse.com
 
 - version 0.6.62

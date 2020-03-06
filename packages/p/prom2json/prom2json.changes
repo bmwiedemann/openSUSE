@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Feb 13 16:34:33 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix go build command to target project/name go package
+  * Update dependency to >=go1.13 as required by dependency
+
+-------------------------------------------------------------------
+Thu Feb 13 09:40:54 UTC 2020 - jkowalczyk@suse.com
+
+- New package prom2json version 1.3.0:
+  * Update dependencies
+  * Use DefaultTransport as baseline and set ResponseHeaderTimeout
+  * Close metric family channel in case of errors
+  * Bump github.com/prometheus/common to v0.7.0
+  * Fix go.mod and vendor/
+  * Bump Go version to 1.13
+  * makefile: update Makefile.common with newer version
+  * makefile: update Makefile.common with newer version
+  * Update beorn's e-mail and add GH handle

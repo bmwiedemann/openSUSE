@@ -50,4 +50,18 @@
 - Run tests</comment>
     <requestid>682135</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>073dfb0e33b912f18e8901d76dd65f6c</srcmd5>
+    <version>2.1</version>
+    <time>1583526457</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not install doc and test folders to sitelib
+
+- version update to 2.1
+  * v2.0 - Python 3 only
+  * Fix for documentation on PyPi
+  * Added python to code-block directives
+  * Fix for bug #44</comment>
+    <requestid>782231</requestid>
+  </revision>
 </revisionlist>

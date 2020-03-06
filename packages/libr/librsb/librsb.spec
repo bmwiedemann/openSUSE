@@ -1,7 +1,7 @@
 #
 # spec file for package librsb
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           librsb
 %define lname	librsb0
-%define rversion	1.2.0-rc7
-Version:        1.2.0~rc7
+Version:        1.2.0.8
 Release:        0
 Summary:        Shared memory parallel sparse matrix and sparse BLAS library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://librsb.sf.net/
+URL:            http://librsb.sf.net/
 
-Source:         http://downloads.sf.net/%name/%name-%rversion.tar.gz
+Source:         http://downloads.sf.net/%name/%name-%version.tar.gz
 Patch1:         pun.diff
 Patch2:         reproducible.patch
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  gsl-devel
+BuildRequires:  libtool
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 librsb is a library for sparse matrix computations featuring the
@@ -69,11 +69,10 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of librsb.
 
 %prep
-%setup -qn librsb-%rversion
-%patch -P 1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
+autoreconf -fi
 %configure --docdir="%_docdir/%name" --disable-static CFLAGS="%optflags -Wno-unused" \
     --with-memhinfo=L3:16/64/8192K,L2:16/64/2048K,L1:8/64/16K
 make %{?_smp_mflags}
@@ -87,16 +86,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/librsb.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/*
 %_bindir/rsbench
 %_bindir/librsb-config
 %_libdir/librsb.so
 %_docdir/%name/
-%doc COPYING
+%license COPYING
 
 %changelog

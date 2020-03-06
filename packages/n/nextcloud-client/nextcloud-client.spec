@@ -18,14 +18,14 @@
 
 %define soname  libnextcloudsync
 %define sover   0
+%define _name   nextcloud-desktop
 Name:           nextcloud-client
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
-Group:          Productivity/Networking/File-Sharing
 URL:            https://nextcloud.com/
-Source:         https://github.com/nextcloud/desktop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/nextcloud/desktop/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
 # PATCH-FIX-OPENSUSE nextcloud-client-fix-rpath.patch sor.alexei@meowr.ru -- Fix RPATH.
 Patch0:         nextcloud-client-fix-rpath.patch
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{soname}%{sover} = %{version}
 Recommends:     %{name}-lang
+Provides:       %{_name} = %{version}
 %if 0%{?is_opensuse}
 BuildRequires:  doxygen
 BuildRequires:  kio-devel
@@ -80,7 +81,6 @@ synchronisation client does the rest.
 %if 0%{?is_opensuse}
 %package doc
 Summary:        Documentation for nextcloud-client
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -92,14 +92,12 @@ This package contains the documentation.
 
 %package -n %{soname}%{sover}
 Summary:        The Nextcloud synchronisation library
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 The Nextcloud Desktop Client synchronisation library.
 
 %package -n %{soname}-devel
 Summary:        Development files for the Nextcloud synchronisation library
-Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 
 %description -n %{soname}-devel
@@ -108,11 +106,10 @@ library.
 
 %package -n nautilus-extension-nextcloud
 Summary:        Nautilus overlay icons
-Group:          Productivity/File utilities
 Requires:       %{name} = %{version}
 Requires:       nautilus
 Requires:       python3-nautilus
-Supplements:    packageand(%{name}:nautilus)
+Supplements:    (%{name} and nautilus)
 BuildArch:      noarch
 
 %description -n nautilus-extension-nextcloud
@@ -122,11 +119,10 @@ synchronisation state in the Nautilus file manager.
 %if 0%{?is_opensuse}
 %package -n caja-extension-nextcloud
 Summary:        Caja overlay icons
-Group:          Productivity/File utilities
 Requires:       %{name} = %{version}
 Requires:       caja
 Requires:       python-caja
-Supplements:    packageand(%{name}:caja)
+Supplements:    (%{name} and caja)
 BuildArch:      noarch
 
 %description -n caja-extension-nextcloud
@@ -135,11 +131,10 @@ synchronisation state in the Caja file manager.
 
 %package -n nemo-extension-nextcloud
 Summary:        Nemo overlay icons
-Group:          Productivity/File utilities
 Requires:       %{name} = %{version}
 Requires:       nemo
 Requires:       python-nemo
-Supplements:    packageand(%{name}:nemo)
+Supplements:    (%{name} and nemo)
 BuildArch:      noarch
 
 %description -n nemo-extension-nextcloud
@@ -148,10 +143,9 @@ synchronisation state in the Nemo file manager.
 
 %package -n %{name}-dolphin
 Summary:        Dolphin overlay icons
-Group:          Productivity/File utilities
 Requires:       %{name} = %{version}
 Requires:       dolphin
-Supplements:    packageand(%{name}:dolphin)
+Supplements:    (%{name} and dolphin)
 
 %description -n %{name}-dolphin
 This package provides the necessary plugin libraries for the

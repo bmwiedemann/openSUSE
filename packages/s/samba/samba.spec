@@ -100,7 +100,6 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  popt-devel
-BuildRequires:  pwdutils
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
@@ -164,7 +163,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.11.5+git.114.5685848b8fc
+Version:        4.11.6+git.120.e474a78db08
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}

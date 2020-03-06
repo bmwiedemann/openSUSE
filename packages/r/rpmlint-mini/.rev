@@ -782,4 +782,12 @@ undo bootstrap workaround</comment>
     <comment></comment>
     <requestid>761791</requestid>
   </revision>
+  <revision rev="98" vrev="15">
+    <srcmd5>ef7346837cde9385cdb4b825120994f3</srcmd5>
+    <version>1.10</version>
+    <time>1583526384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781857</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package osinfo-db
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20191125
+Version:        20200214
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1+ and GPL-2.0+
@@ -25,11 +25,13 @@ Group:          System/Management
 BuildArch:      noarch
 Url:            https://releases.pagure.org/libosinfo/
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
+Patch1:         5bbe30db-opensuse-add-info-about-UEFI-support.patch
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
-Patch23:        add-sle12sp5-support.patch
-Patch24:        add-sle15sp2-support.patch
-Patch25:        add-win-2k19-media-info.patch
+Patch23:        add-sle15sp2-support.patch
+Patch24:        add-win-2k19-media-info.patch
+Patch25:        fix-sle15sp1-volume-id-string.patch
+Patch26:        SLE-add-info-about-UEFI-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 
@@ -40,11 +42,13 @@ provisioning of new virtual machines
 
 %prep
 %setup -q
+%patch1 -p1
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
 %patch25 -p1
+%patch26 -p1
 
 %build
 cd %{_builddir}

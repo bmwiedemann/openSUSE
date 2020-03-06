@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Wed Mar  4 08:40:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove bundled tf2onnx
+- Make sure to run just the core tests
+
+-------------------------------------------------------------------
+Wed Mar  4 08:14:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing dependencies to the list so import actually works
+
+-------------------------------------------------------------------
+Wed Mar  4 08:10:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.5:
+  * The major update for this release is to support the tf.keras in
+    tensorflow 2.0/2.1, which enable some popular models conversion
+    like huggingface/transformers.
+
+-------------------------------------------------------------------
+Thu Feb 27 15:10:05 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- inital commit of python-keras2onnx version 1.6.0 which can be 
+  used to convert neuronal networks between formats of keras and onnx

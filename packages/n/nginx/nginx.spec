@@ -74,13 +74,13 @@
 %endif
 #
 Name:           nginx
-Version:        1.17.8
+Version:        1.17.9
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://nginx.org
-Source0:        https://nginx.org/download/nginx-%{version}.tar.gz
+Source0:        https://nginx.org/download/%{name}-%{version}.tar.gz
 Source1:        nginx.init
 Source2:        nginx.logrotate
 Source3:        nginx.service
@@ -89,7 +89,7 @@ Source5:        https://github.com/openresty/headers-more-nginx-module/archive/v
 Source6:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
 Source7:        https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}/%{nginx_rtmp_module_path}.tar.gz
 Source100:      nginx.rpmlintrc
-Source101:      https://nginx.org/download/nginx-%{version}.tar.gz.asc
+Source101:      https://nginx.org/download/%{name}-%{version}.tar.gz.asc
 Source102:      https://nginx.org/keys/mdounin.key#/%{name}.keyring
 # PATCH-FIX-UPSTREAM nginx-1.11.2-no_Werror.patch
 Patch0:         nginx-1.11.2-no_Werror.patch
@@ -260,7 +260,7 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
 %else
   --with-cc-opt="%{optflags}"
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

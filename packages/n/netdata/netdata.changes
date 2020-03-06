@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Wed Feb 26 15:37:44 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- Update to v1.20.0 (go.d.plugin v0.15.0)
+Breaking Changes:
+  * Removed deprecated bash collectors apache, cpu_apps, cpufreq,
+    exim, hddtemp, load_average, mem_apps, mysql, nginx, phpfpm,
+    postfix, squid, tomcat. If you were still using one of these
+    collectors with custom configurations, you can find the new
+    collector that replaces it in the supported collectors list.
+
+Improvements:
+  * Host labels:
+    + Added support for host labels
+    + Improved the monitored system information detection.
+      Added CPU freq & cores, RAM and disk space.
+    + Started distinguishing the monitored system's (host)
+      OS/Kernel etc. from those of the docker container's
+    + Started creating host labels from collected system info
+    + Started passing labels and container environment variables
+      via the streaming protocol
+    + Started sending host labels via exporting connectors
+    + Added label support to alarm definitions and started
+      recording them in alarm logs
+    + Added support for host labels to the API responses
+    + Added configurable host labels to netdata.conf
+    + Added kubernetes labels
+
+  * New collectors:
+    + eBPF kernel collector
+    + CockroachDB
+    + squidlog: squid access log parser
+
+  * Collector improvements:
+    + apps.plugin: Created dns group, improved database group,
+      improved ceph & samba groups
+    + varnish: Added SMF metrics (cache on disk)
+    + phpfpm: Fixed per process chart titles and readme
+    + python.d: Formatted the code in all modules
+    + node.d/snmp: - Added snmpv3 support, formatted the code in
+      snmp.node.js
+    + cgroups: Improved LXC monitoring by filtering out irrelevant
+      LXC cgroups
+    + litespeed: Added support for different .rtreport format
+    + proc.plugin: Added pressure stall information
+    + sensors: Improved collection logic
+    + proc: Started monitoring network interface speed, duplex,
+      operstate
+    + smartd_log: Fixed the setting in the reallocated sectors
+      count, by setting ATTR5 chart algorithm to absolute
+    + nvidia-smi: Allow executing nvidia-smi in normal instead of
+      loop mode
+    + wmi: collect logon metrics, collect logical_disk disk
+      latency metrics
+    + weblog: handle MKCOL, PROPFIND, MOVE, SEARCH http request
+      methods
+    + scaleio: storage pools and sdcs metrics
+
+  * Exporting engine:
+    + Implemented the main flow for the Exporting Engine
+
+  * Streaming:
+    + Add versioning to the streaming protocol
+
+  * Installation/Packages:
+    + Improved the systemd service files, by removing unecessary
+      ExecStartPre lines and moving global options to netdata.conf
+
+  * Privacy:
+    + Added support for opting out of telemetry via the
+      DO_NOT_TRACK environment variable (telemetry is disabled by
+      default on openSUSE)
+
+  * Other:
+    + Preparations for the next netdata cloud release. Added custom
+      libmosquitto, netdata-cli and other prerequisites.
+    + Applied linter fixes in shell scripts
+    + Started supporting -fno-common in CFLAGS
+    + Completely removed the unbound python collector (dead code)
+    + Added possibility to change badges' text font color
+    + Small updates to sample multi-host dashboard, dash.html
+    + Added missing quoting in shell scripts
+    + Bump handlebars from 4.2.0 to 4.5.3
+    + Reduce log level for uv_thread_set_name_np from error to info
+    + Set standard name to non-libnetdata threads (libuv, pthread)
+
+  * Bug fixes:
+    + Fixed problems reported by Coverity for eBPF collector plugin
+    + Fixed invalid literal for float\(\): NN.NNt error in the
+      elasticsearch python plugin, by adding terabyte unit parsing
+    + Fixed timeout failing in docker containers which broke some
+      python.d collectors
+    + Fixed problem with the httpcheck python collector not being
+      able to check URLs with the POST method, by adding body to
+      the URLService. Also record the new options in httpcheck.conf
+    + Fixed dbengine repeated global flushing errors and collectors
+      being blocked, by dropping dirty dbengine pages if the disk
+      cannot keep up
+    + Fixed issue with alarm notifications occasionally ignoring
+      the configured severity filter when the ROLE was set to root
+    + Fixed Netlink Connection Tracker charts in the nfacct plugin
+    + Fixed metric values sent via remote write to Prometheus
+      backends, when using average/sum
+    + Fixed unclosed brackets in softnet alarm
+    + Fixed SEGFAULT when localhost initialization failed
+    + Reduced the number of broken pipe error log entries,
+      after a SIGKILL
+    + Fixed Coverity errors by restoring support for protobuf 3.0
+    + Fixed inability to disable Prometheus remote API
+    + Fixed SEGFAULT from the cpuidle plugin
+    + Fixed samba collector not working, due to inability to run
+      sudo
+    + Fixed invalid css/js resource errors when URL for slave node
+      has no final / on streaming master
+    + Fixed keys_redis chart in the redis collector, by populating
+      keys at runtime
+    + Fixed UrlService bytes decoding and logger unicode encoding
+      in the python.d plugin
+    + Fixed a warning in the prometheus remote write backend
+    + Fixed not detecting more than one adapter in the hpssa
+      collector
+    + Fixed race conditions in dbengine
+    + Fixed race condition with the dbenging page cache descriptors
+    + Fixed dbengine dirty page flushing warning
+    + Fixed missing parenthesis on alarm softnet.conf
+    + Fixed "Master thread EXPORTING takes too long to exit.
+      Giving up" error, by cleaning up the main exporting engine
+      thread on exit
+    + Fixed rabbitmq error "update() unhandled exception: invalid
+      literal for int() with base 10"
+    + Fixed some LGTM alerts
+    + Fixed valgrind errors
+    + Fixed monit collector LGTM warnings
+    + Fixed the following go.d.plugin collector issues:
+      . mysql: panic in Cleanup (#326)
+      . unbound: gather metrics via unix socket (#319)
+      . logstash: pipelines chart (#317)
+      . unbound: configuration file parsing.
+      . Support include mechanism. (#298)
+      . logstash: pipelines metrics parsing (#293)
+      . phpfpm: processes metrics parsing (#297)
+
+-------------------------------------------------------------------
 Sun Jan 19 15:49:22 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Also package go.d.plugin (v0.14.1)

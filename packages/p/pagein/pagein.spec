@@ -1,6 +1,7 @@
 #
 # spec file for package pagein
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,30 +13,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pagein
-Version:        0.01.00
+Version:        0.01.04
 Release:        0
 Summary:        A tool to force swapped out pages back into memory
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            http://kernel.ubuntu.com/~cking/pagein/
-Source:         http://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
+URL:            https://kernel.ubuntu.com/~cking/pagein/
+Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
 
 %description
 Pagein is a tool that forces pages that are in swap to be paged in back
 to memory. The main usecase for pagein is to exercise the VM and swap
 subsystems for testing purposes.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (pagein and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -44,5 +56,8 @@ make %{?_smp_mflags}
 %license COPYING
 %{_bindir}/pagein
 %{_mandir}/man1/pagein.1%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog

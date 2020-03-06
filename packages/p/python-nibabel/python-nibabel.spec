@@ -1,7 +1,7 @@
 #
 # spec file for package python-nibabel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,32 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-nibabel
-Version:        2.5.1
+Version:        3.0.1
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.8
-Requires:       python-six >= 1.3
+Requires:       python-numpy >= 1.12
+Recommends:     python-Pillow
 Recommends:     python-dicom >= 0.9.9
+Recommends:     python-h5py
+Recommends:     python-scipy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose >= 0.10.1}
-BuildRequires:  %{python_module numpy >= 1.8}
-BuildRequires:  %{python_module six >= 1.3}
-BuildRequires:  python-bz2file
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module nose >= 0.11}
+BuildRequires:  %{python_module numpy >= 1.12}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 # /SECTION
-%ifpython2
-Requires:       python-bz2file
-%endif
 %python_subpackages
 
 %description
@@ -62,7 +64,7 @@ very limited support for DICOM.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} nibabel
+%python_expand nosetests-%{$python_bin_suffix} -v
 
 %files %{python_files}
 %doc AUTHOR Changelog README.rst

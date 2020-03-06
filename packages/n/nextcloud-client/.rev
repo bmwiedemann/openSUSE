@@ -185,4 +185,12 @@
     <comment></comment>
     <requestid>776231</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dfe81c0e2202c854c9c24cfe65482246</srcmd5>
+    <version>2.6.4</version>
+    <time>1583526490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.4.</comment>
+    <requestid>782042</requestid>
+  </revision>
 </revisionlist>

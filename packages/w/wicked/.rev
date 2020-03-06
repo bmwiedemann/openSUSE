@@ -1514,4 +1514,14 @@
 - corrections, use-after-free, missed initialization and format errors</comment>
     <requestid>779668</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>40cff1b60708125a842b34fc34314b36</srcmd5>
+    <version>0.6.63</version>
+    <time>1583526362</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.63
+- spec: fix old libwicked package provides/obsoletes (bsc#1165180)
+- ipv6: support to apply stable secret ifsysctl (jsc#SLE-6960)</comment>
+    <requestid>781526</requestid>
+  </revision>
 </revisionlist>

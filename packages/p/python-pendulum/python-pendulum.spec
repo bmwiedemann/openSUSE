@@ -1,7 +1,7 @@
 #
 # spec file for package python-pendulum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{mo
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytz >= 2018.3
 Requires:       python-python-dateutil >= 2.6
+Requires:       python-pytz >= 2018.3
+Requires:       python-pytzdata >= 2018.3
 Requires:       python-typing
 %python_subpackages
 

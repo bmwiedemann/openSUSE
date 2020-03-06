@@ -1,7 +1,7 @@
 #
 # spec file for package clustduct
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,10 +37,8 @@ BuildRequires:  dnsmasq
 BuildRequires:  lua
 BuildRequires:  lua-genders
 %if %{with pdfdoc}
-%if 0%{?is_opensuse}
 BuildRequires:  pandoc
 BuildRequires:  texlive-latex
-%endif
 %endif
 Requires:       bc
 Requires:       dnsmasq
@@ -72,7 +70,7 @@ can be managed in the PXE environment.
 %sanitize_dir  %{name}-%{version}
 
 %build
-%if %{with pdfdoc} && 0%{?is_opensuse}
+%if %{with pdfdoc}
 for file in *.md ; do 
 	pandoc -o ${file%%md}pdf $file
 done
@@ -86,7 +84,7 @@ autoreconf -i
 
 %files
 %defattr(-,root,root)
-%if %{with pdfdoc} && 0%{?is_opensuse}
+%if %{with pdfdoc}
 %doc *.pdf
 %endif
 %license COPYING

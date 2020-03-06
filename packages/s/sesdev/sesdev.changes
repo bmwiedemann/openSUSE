@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  5 17:17:12 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.6+1583428626.ga138314: 
+  + upstream 1.1.6 release (2020-03-05)
+    * sesdev: add --non-interactive option to "sesdev create" (PR #125)
+    * Implement "sesdev qa-test" command (PR #129)
+    * qa: assert "ceph versions" matches "ceph --version" (PR #131)
+    * seslib: correct downstream container for "sesdev create {ses7,octopus}" (PR #130)
+    * provision.sh: remove Python 2 so it doesn't pollute the environment (PR #133)
+    * Rename --ceph-container-image to --image-path (PR #115)
+    * provision: install "command-not-found", "supportutils", etc. in test environments (PR #123)
+    * Return with a non-zero exit code in a failure case (PR #127)
+    * seslib: rename --deploy-bootstrap to --cephadm-bootstrap (PR #137)
+
+-------------------------------------------------------------------
 Wed Feb 26 11:51:32 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.5+1582717868.g68df753:

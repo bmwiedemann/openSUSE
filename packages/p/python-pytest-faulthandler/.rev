@@ -34,4 +34,12 @@
   (yet we need it on py3 for pytest3 and pytest4)</comment>
     <requestid>725252</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>164c77ec6aaf473d00a698119c5db59a</srcmd5>
+    <version>1.6.0</version>
+    <time>1583526512</time>
+    <user>dimstar_suse</user>
+    <comment>- disable python2 support as is python-faulthandler dropped from distro</comment>
+    <requestid>782057</requestid>
+  </revision>
 </revisionlist>

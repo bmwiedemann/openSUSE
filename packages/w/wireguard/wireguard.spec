@@ -29,6 +29,7 @@ Source1:        https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-
 Source2:        wireguard-kmp-preamble
 Source99:       https://www.zx2c4.com/keys/AB9942E6D4A4CFC3412620A749FC7012A5DE03AE.asc#/WireGuard.keyring
 Patch2:         wireguard-fix-leap151.patch
+Patch3:         wireguard-fix-leap152.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 # disable flavors xen,desktop,pae,pv
 %kernel_module_package -p wireguard-kmp-preamble
@@ -46,6 +47,9 @@ many different circumstances. It runs over UDP.
 %setup -q -n wireguard-linux-compat-%{version}
 %if 0%{?sle_version} == 150100
 %patch2 -p1
+%endif
+%if 0%{?sle_version} == 150200
+%patch3 -p1
 %endif
 
 cd src

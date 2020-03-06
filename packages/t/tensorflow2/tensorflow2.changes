@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  5 16:49:47 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added Provides: tensorflow, so that Kerase works with this package
+  and fixed Leap 15.2 build
+
+-------------------------------------------------------------------
 Fri Feb 28 10:55:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix name for libtensorflow* sub-packages

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar  5 07:58:38 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.6.4:
+  * Fix Explorer pinning: Add fallbacks for Shell commands
+    (gh#nextcloud/desktop#1599).
+  * WebFlowCredentials: Make username comparison case-insensitive
+    (gh#nextcloud/desktop#1741).
+  * ActivityListModel: Show full date and time as a Tooltip only.
+  * Disable HTTP/2 for now due to a Qt bug, allow enabling it via
+    an environment variable.
+  * Fix Explorer integration re-save and hide option.
+  * l10n: Changes to improve source strings.
+  * Updater: Add query-parameter "updatesegment" to the update
+    check.
+- Provide nextcloud-desktop for possible discoverability.
+
+-------------------------------------------------------------------
 Tue Feb 18 09:10:31 UTC 2020 - Bjoern Voigt <bjoernv@arcor.de>
 
 - Update to 2.6.3

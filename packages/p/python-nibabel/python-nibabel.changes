@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:07:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.1:
+  * Test failed by using array method on tuple. (pr/860) (Ben Darwin, reviewed by CM)
+  * Validate ExpiredDeprecationErrors, promoted by 3.0 release from DeprecationWarnings. (pr/857) (CM)
+  * Improve testing of data scaling in ArrayProxy API (pr/847) (CM, reviewed by Alejandro de la Vega)
+  * Document SpatialImage.slicer interface (pr/846) (CM)
+  * get_fdata(dtype=np.float32) will attempt to avoid casting data to np.float64 when scaling parameters would otherwise promote the data type unnecessarily. (pr/833) (CM, reviewed by Ross Markello)
+  * ArraySequence now supports a large set of Python operators to combine or update in-place. (pr/811) (MC, reviewed by Serge Koudoro, Philippe Poulin, CM, MB)
+  * Warn, rather than fail, on DICOMs with unreadable Siemens CSA tags (pr/818) (Henry Braun, reviewed by CM)
+  * Improve clarity of coordinate system tutorial (pr/823) (Egor Panfilov, reviewed by MB)
+
+-------------------------------------------------------------------
 Tue Nov 19 20:41:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 2.5.1

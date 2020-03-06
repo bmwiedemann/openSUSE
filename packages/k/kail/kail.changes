@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 15:04:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.15.0
+  - Use kcache 0.4
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Tue Feb 18 10:02:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.14.2

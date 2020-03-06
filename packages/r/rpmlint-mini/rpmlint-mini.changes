@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 05 13:03:11 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * cron-whitelist: remove bad duplicate entry for texlive-filesystem
+  * verify.py: catch duplicate dictionary entries in JSON
+
+-------------------------------------------------------------------
+Wed Mar 04 09:37:44 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * cron-whitelist: add entry for sarg (bsc#1150554)
+
+-------------------------------------------------------------------
+Mon Mar 02 14:29:17 UTC 2020 - matthias.gerstner@suse.com
+
+rpmlint-security-whitelistings:
+  Update to version master:
+    * cron-whitelist: add opa-ff (bsc#1162255)
+    * cron-whitelist: add matomo (bsc#1150548)
+    * cron-whitelist: preliminary wildcard whitelisting for the notorious texlive-filesystem (bsc#1150556)
+    * cron-whitelist: whitelist new nextcloud cron job
+    * first round of whitelisting of safe cron jobs (bsc#1150175)
+
+-------------------------------------------------------------------
 Mon Dec 16 14:00:13 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
 
 - Extended rpmlint-mini.config to include the config file provided 
