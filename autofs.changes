@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Mar  3 17:08:03 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Upgrade to 5.1.6
+  - support strictexpire mount option.
+  - fix hesiod string check in master_parse().
+  - add NULL check for get_addr_string() return.
+  - use malloc(3) in spawn.c.
+  - add mount_verbose configuration option.
+  - optionally log mount requestor process info.
+  - log mount call arguments if mount_verbose is set.
+  - Fix NFS mount from IPv6 addresses.
+  - make expire remaining log level debug.
+  - allow period following macro in selector value.
+  - fix macro expansion in selector values.
+  - fix typing errors.
+  - Explain /etc/auto.master.d usage.
+  - plus map includes are only allowed in file sources.
+  - Update README.
+  - fix additional typing errors.
+  - update autofs(8) offset map entry update description.
+  - increase group buffer size geometrically.
+  - also use strictexpire for offsets.
+  - remove unused function has_fstab_option().
+  - remove unused function reverse_mnt_list().
+  - remove a couple of old debug messages.
+  - fix amd entry memory leak.
+  - fix unlink_mount_tree() not umounting mounts.
+  - use ignore option for offset mounts as well.
+  - add config option for "ignore" mount option
+  - use bit flags for autofs mount types in mnt_list.
+  - use mp instead of path in mnt_list entries.
+  - always use PROC_MOUNTS to make mount lists.
+  - add glibc getmntent_r().
+  - use local getmntent_r in table_is_mounted().
+  - refactor unlink_active_mounts() in direct.c.
+  - don't use tree_is_mounted() for mounted checks.
+  - use single unlink_umount_tree() for both direct and indirect mounts.
+  - move unlink_mount_tree() to lib/mounts.c.
+  - use local_getmntent_r() for unlink_mount_tree().
+  - use local getmntent_r() in get_mnt_list().
+  - use local getmntent_r() in tree_make_mnt_list().
+  - fix missing initialization of autofs_point flags.
+
+-------------------------------------------------------------------
+Fri Feb 28 15:03:30 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- NetworkManager-autofs: reload rather than restart autofs.service
+  * If complex network setups are being brought up, autofs.service 
+    may be restarted too quickly, causing systemd to consider the 
+    service failed. "reload" avoids that, and works just fine.
+
+-------------------------------------------------------------------
+Mon Feb 24 08:51:25 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix autofs restart when Networkmanager connection is brought up
+  * NetworkManager-autofs: /bin/systemctl has been removed in 
+    systemd-244
+
+-------------------------------------------------------------------
 Wed Jun 19 11:18:12 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

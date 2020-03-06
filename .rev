@@ -1015,4 +1015,41 @@ Update 5.0.6 upstream patches to 20111210 (bnc#741878)</comment>
     <comment></comment>
     <requestid>712075</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>9a34c664154ebef33b2ea57bdbfed26c</srcmd5>
+    <version>5.1.6</version>
+    <time>1583526356</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 5.1.6
+  - support strictexpire mount option.
+  - fix hesiod string check in master_parse().
+  - add NULL check for get_addr_string() return.
+  - use malloc(3) in spawn.c.
+  - add mount_verbose configuration option.
+  - optionally log mount requestor process info.
+  - log mount call arguments if mount_verbose is set.
+  - Fix NFS mount from IPv6 addresses.
+  - make expire remaining log level debug.
+  - allow period following macro in selector value.
+  - fix macro expansion in selector values.
+  - fix typing errors.
+  - Explain /etc/auto.master.d usage.
+  - plus map includes are only allowed in file sources.
+  - Update README.
+  - fix additional typing errors.
+  - update autofs(8) offset map entry update description.
+  - increase group buffer size geometrically.
+  - also use strictexpire for offsets.
+  - remove unused function has_fstab_option().
+  - remove unused function reverse_mnt_list().
+  - remove a couple of old debug messages.
+  - fix amd entry memory leak.
+  - fix unlink_mount_tree() not umounting mounts.
+  - use ignore option for offset mounts as well.
+  - add config option for &quot;ignore&quot; mount option
+  - use bit flags for autofs mount types in mnt_list.
+  - use mp instead of path in mnt_list entries.
+  - always use PROC_MOUNTS to make mount lists.</comment>
+    <requestid>781473</requestid>
+  </revision>
 </revisionlist>

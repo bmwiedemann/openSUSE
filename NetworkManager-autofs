@@ -6,8 +6,8 @@
 #
 case "$2" in
     up)
-        if test -x /bin/systemctl && systemctl -q is-enabled autofs.service; then
-                systemctl restart autofs.service
+        if test -x /usr/bin/systemctl && systemctl -q is-enabled autofs.service; then
+                systemctl reload autofs.service
         fi
         ;;
     *)

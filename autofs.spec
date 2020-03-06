@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           autofs
-Url:            http://www.kernel.org/pub/linux/daemons/autofs/v5/
+URL:            http://www.kernel.org/pub/linux/daemons/autofs/v5/
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -61,7 +61,7 @@ BuildRequires:  sssd
 BuildRequires:  pkgconfig(udisks2)
 %endif
 BuildRequires:  pkgconfig(libsystemd)
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        A Kernel-Based Automounter
 License:        GPL-2.0-or-later
