@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:05:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.03.06
+  * servus: added support for new URL schema
+  * youtube: fixed age-gated videos support without login
+
+-------------------------------------------------------------------
 Mon Mar  2 09:04:45 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to release 2020.03.01
