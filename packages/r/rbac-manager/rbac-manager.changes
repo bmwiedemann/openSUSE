@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:38:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.2
+  -  Fixes major bug which will cause deletion and re-creation of 
+     a service account
+
+-------------------------------------------------------------------
 Tue Feb 18 11:16:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.9.1

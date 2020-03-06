@@ -73,4 +73,14 @@
 - Remove unused vendor.tar.gz source</comment>
     <requestid>777391</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a68014d5054f2520e473ce832f93117f</srcmd5>
+    <version>0.9.2</version>
+    <time>1583526248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2
+  -  Fixes major bug which will cause deletion and re-creation of 
+     a service account</comment>
+    <requestid>781254</requestid>
+  </revision>
 </revisionlist>
