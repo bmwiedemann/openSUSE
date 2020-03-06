@@ -1,0 +1,78 @@
+From 98dd535f594bf43eb5f9ab6d27aa55b75d3ea4e5 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Fri, 8 Nov 2019 10:55:29 +0800
+Subject: [PATCH] zypp: pass an array of strings to pk_backend_job_files()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previous, a list of file strings were joined a single string with ";"
+inserted between each of them and the generated long string was passed
+to pk_backend_job_files().
+
+While pk_backend_job_files() expects an array of strings. Fix that by
+passing an array of string instread of a long string to
+pk_backend_job_files().
+
+https://github.com/hughsie/PackageKit/issues/351
+---
+ backends/zypp/pk-backend-zypp.cpp | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index 572c63e02..ffa8a2425 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -3351,7 +3351,7 @@ backend_get_files_thread (PkBackendJob *job, GVariant *params, gpointer user_dat
+ 	for (uint i = 0; package_ids[i]; i++) {
+ 		pk_backend_job_set_status (job, PK_STATUS_ENUM_QUERY);
+ 		sat::Solvable solvable = zypp_get_package_by_id (package_ids[i]);
+-		
++
+ 		if (zypp_is_no_solvable(solvable)) {
+ 			zypp_backend_finished_error (
+ 				job, PK_ERROR_ENUM_PACKAGE_NOT_FOUND,
+@@ -3359,15 +3359,18 @@ backend_get_files_thread (PkBackendJob *job, GVariant *params, gpointer user_dat
+ 			return;
+ 		}
+ 
+-		string temp;
++		g_auto(GStrv) strv = NULL;
++		g_autoptr(GPtrArray) pkg_files = NULL;
++
++		pkg_files = g_ptr_array_new ();
++
+ 		if (solvable.isSystem ()){
+ 			try {
+ 				target::rpm::RpmHeader::constPtr rpmHeader = zypp_get_rpmHeader (solvable.name (), solvable.edition ());
+ 				list<string> files = rpmHeader->tag_filenames ();
+ 
+ 				for (list<string>::iterator it = files.begin (); it != files.end (); ++it) {
+-					temp.append (*it);
+-					temp.append (";");
++					g_ptr_array_add (pkg_files, g_strdup (it->c_str ()));
+ 				}
+ 
+ 			} catch (const target::rpm::RpmException &ex) {
+@@ -3376,12 +3379,14 @@ backend_get_files_thread (PkBackendJob *job, GVariant *params, gpointer user_dat
+ 				return;
+ 			}
+ 		} else {
+-			temp = "Only available for installed packages";
++			g_ptr_array_add (pkg_files,
++					 g_strdup ("Only available for installed packages"));
+ 		}
+ 
+-		const gchar *to_strv[] = { NULL, NULL };
+-		to_strv[0] = temp.c_str ();
+-		pk_backend_job_files (job, package_ids[i], (gchar **) to_strv);	// file_list
++		/* Convert to GStrv. */
++		g_ptr_array_add (pkg_files, NULL);
++		strv = g_strdupv ((gchar **) pkg_files->pdata);
++		pk_backend_job_files (job, package_ids[i], strv);
+ 	}
+ }
+ 
+-- 
+2.23.0
+

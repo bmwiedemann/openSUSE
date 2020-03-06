@@ -1,0 +1,29 @@
+From d1b76c05ebb4c5643bcf0072f271bcd958812560 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Fri, 21 Dec 2018 16:17:34 +0800
+Subject: [PATCH] =?UTF-8?q?transaction:=20Return=20directly=20when=20its?=
+ =?UTF-8?q?=C2=A0state=20is=20going=20backwards?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We should return directly while failing to set transaction’s state
+because it’s going backwards. That’s exactly what Pk did previously.
+
+Fixes 2807cbf8
+---
+ src/pk-transaction.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: PackageKit-1.1.12/src/pk-transaction.c
+===================================================================
+--- PackageKit-1.1.12.orig/src/pk-transaction.c
++++ PackageKit-1.1.12/src/pk-transaction.c
+@@ -760,6 +760,7 @@ pk_transaction_set_state (PkTransaction
+ 		g_warning ("cannot set %s, as already %s",
+ 			   pk_transaction_state_to_string (state),
+ 			   pk_transaction_state_to_string (priv->state));
++		return;
+ 	}
+ 
+ 	g_debug ("transaction now %s", pk_transaction_state_to_string (state));

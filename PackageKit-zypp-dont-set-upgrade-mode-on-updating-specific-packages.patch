@@ -1,0 +1,34 @@
+From 44a2887864b7c0ac54d342126069b6a7ff3c5822 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Mon, 14 Oct 2019 15:17:34 +0800
+Subject: [PATCH] zypp: Don't set upgrade mode in update-packages
+
+update-packages does two things: 1. update the whole system. 2. update
+specific packages. setting upgrade mode to TRUE in update-packages can
+lead to inability to update specific packages, as the resolver always
+trys to upgrade the whole system in upgrade mode.
+
+Since calling "pkcon update" in Tumbleweed invokes get-updates where
+upgrade mode is set to TRUE, we don't have to set it in update-packages
+anymore. Besides, we should reset upgrade mode to FALSE at the end of
+update-packages to make sure not to block further actions.
+---
+ backends/zypp/pk-backend-zypp.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index 4885df6f5..fbaf5413e 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -3391,6 +3391,8 @@ backend_update_packages_thread (PkBackendJob *job, GVariant *params, gpointer us
+ 	}
+ 
+ 	zypp_perform_execution (job, zypp, UPDATE, FALSE, transaction_flags);
++
++	zypp->resolver()->setUpgradeMode(FALSE);
+ }
+ 
+ /**
+-- 
+2.21.0
+
