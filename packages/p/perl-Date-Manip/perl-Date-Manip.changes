@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  3 03:12:58 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 6.81
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.81  2020-03-01
+    -  Messed up the 6.80 package. This release fixes it.
+  
+  6.80  2020-03-01
+    -  Missed Changes entry for previous version.
+           Reported by Tina Muller (GitHub #31)
+  
+  6.79  2019-12-01
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2019c).
+
+-------------------------------------------------------------------
 Tue Dec  3 03:15:10 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.79
