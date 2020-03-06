@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:29:13 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Added nfs-ganesha-rados-urls to ceph_base
+
+-------------------------------------------------------------------
+Fri Dec 13 09:26:12 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- ceph-daemon was renamed to cephadm
+- ceph-mgr-ssh was renamed to ceph-mgr-cephadm
+
+-------------------------------------------------------------------
+Thu Nov 28 11:34:00 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Add missing dependencies to pattern
+
+-------------------------------------------------------------------
 Mon Jul 22 14:10:16 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Rename pattern according to the recomendations (replacing "-" with "_")

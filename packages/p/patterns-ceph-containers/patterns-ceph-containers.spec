@@ -35,23 +35,32 @@ not make sense.
 Summary:        Ceph base
 Group:          Metapackages
 Provides:       pattern() = ceph_base
+Provides:       pattern-icon() = yast-iscsi-client
 Provides:       pattern-category() = Containers
+Provides:       pattern-order() = 3000
 Provides:       pattern-visible()
 Requires:       ceph
+Requires:       ceph-base
 Requires:       ceph-common
 Requires:       ceph-fuse
+Requires:       cephadm
+Requires:       ceph-grafana-dashboards
 Requires:       ceph-mds
 Requires:       ceph-mgr
+Requires:       ceph-mgr-rook
+Requires:       ceph-mgr-cephadm
+Requires:       ceph-mgr-dashboard
+Requires:       ceph-mgr-diskprediction-local
 Requires:       ceph-mon
 Requires:       ceph-osd
+Requires:       ceph-prometheus-alerts
 Requires:       ceph-radosgw
-Requires:       ceph-mgr-dashboard
-Requires:       ceph-mgr-rook
-Requires:       ceph-mgr-diskprediction-local
+Requires:       ceph-iscsi
 Requires:       nfs-ganesha
 Requires:       nfs-ganesha-ceph
 Requires:       nfs-ganesha-rgw
 Requires:       nfs-ganesha-rados-grace
+Requires:       nfs-ganesha-rados-urls
 Requires:       rbd-mirror
 Requires:       rbd-nbd
 Requires:       ca-certificates
@@ -61,7 +70,7 @@ Requires:       lvm2
 Requires:       gptfdisk
 
 %description ceph_base
-This provides base for the Ceph, Rook, Ceph CSI driver packages.
+This provides the base for the Ceph, Rook, Ceph CSI driver packages and containers.
 
 %prep
 # empty on purpose
