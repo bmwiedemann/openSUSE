@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:25:41 UTC 2020 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 0.13.0
+  (full log https://github.com/apache/thrift/blob/0.13.0/CHANGES.md)
+  * Deprecated Languages:
+    + CSharp and Netcore targets (use NetStd instead) 
+  * Removed Languages:
+    + Cocoa
+  * Breaking changes:
+    + compiler: removed the plug-in mechanism
+    + cpp: C++03/C++98 support has been removed; also removed
+           boost as a runtime dependency
+    + cpp: BoostThreadFactory, PosixThreadFactory,
+           StdThreadFactory removed
+    + cpp: CMake build changed to use BUILD_SHARED_LIBS
+    + cpp: Removed Qt4 support
+    + cpp: Use std::chrono::duration for timeouts
+    + cpp: TTransport::getOrigin() is now const
+    + java: class org.apache.thrift.AutoExpandingBuffer is no
+            longer public
+    + java: changes to UTF-8 handling require JDK 1.7 at a minimum
+    + java: class org.apache.thrift.ShortStack is no longer public
+    + java: change return type signature of 'process' methods
+    + java: replaced TSaslTransportException with TTransportException
+    + java: TIOStreamTransport's "isOpen" now returns false after
+            "close" is called
+    + js: now uses node-int64 for 64 bit integer constants
+    + delphi: old THTTPTransport is now TMsxmlHTTPTransport
+    + rust: convert from try-from crate to rust stable (1.34+),
+            re-export ordered-float
+  * Known Issues (Blocker or Critical)
+    + C++: library doesn't work with HTTP (csharp server, cpp client)
+- Update keyring file from official KEYS file:
+  https://www.apache.org/dist/thrift/KEYS
+
+-------------------------------------------------------------------
 Wed Mar  4 16:17:05 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - python3-backports.ssl_match_hostname should be recommended only

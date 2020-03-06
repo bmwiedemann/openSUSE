@@ -1,3 +1,476 @@
+This file contains the PGP keys of various developers.
+
+Users: pgp < KEYS
+       gpg --import KEYS
+Developers:
+        pgp -kxa <your name> and append it to this file.
+        (pgpk -ll <your name> && pgpk -xa <your name>) >> this file.
+        (gpg --list-sigs <your name>
+             && gpg --armor --export <your name>) >> this file.
+
+************************************ PLEASE NOTE **********************************************************
+
+        Edit this file in SVN at
+        https://dist.apache.org/repos/dist/release/thrift/KEYS
+        
+        N.B. use a command such as the following to check it out without downloading everything:
+        svn co --depth=files https://dist.apache.org/repos/dist/release/thrift/
+
+************************************************************************************************************        
+
+pub   1024D/AEC77EAF 2001-02-21
+uid                  Todd Lipcon <tlipcon@mercea.net>
+sig          AEC77EAF 2001-02-21  Todd Lipcon <tlipcon@mercea.net>
+uid                  Todd Lipcon <todd@goldbarter.com>
+sig          AEC77EAF 2001-10-01  Todd Lipcon <tlipcon@mercea.net>
+uid                  Todd Lipcon <tlipcon@toad.mercea.net>
+sig          AEC77EAF 2001-10-01  Todd Lipcon <tlipcon@mercea.net>
+uid                  Todd Lipcon <todd@lipcon.org>
+sig 3        AEC77EAF 2003-08-22  Todd Lipcon <tlipcon@mercea.net>
+uid                  Todd Lipcon <tl@cs.brown.edu>
+sig 3        AEC77EAF 2006-08-25  Todd Lipcon <tlipcon@mercea.net>
+sub   2048g/4594ED1B 2001-02-21
+sig          AEC77EAF 2001-02-21  Todd Lipcon <tlipcon@mercea.net>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+mQGiBDqURJMRBADcTG10El7UX+8IrisvlCaAi99IiDzTR6+e/ZnJUDXS9W3bJk5Q
+ipYMcqm4ZgkHdGbQ35/di2HB5AIafEW2I6fmHtsoOrvHy9kXdQM3+w8Bt50DXarA
+7jApzsS4goGHycGTLZc+zaCCGfDyZvJhUeimJA4nlBGW91pXVWS59wuvqQCg/z76
+5wvi4vDVcYhKdlQtYdMeyXcEAJ6yZC4+/k74mAk7q3GhKIIPUUnajYrUwK82mJ7g
+c/aELIkFyKysyrYgOLPsjkJKGUEL2XX9ZkYVEPP4tgOv/X9eSSFhWyMwpZAOPQrB
+TW3Q7jn/qyPuiIgaWaq8fq4F9JGNwE3QML7+Mt52rsZZIrKnvAttyqh5UD3S8Uu9
+C3RJBAC7mJb7jFGm/6Ud/YEapoMo3XPwlB74uspLWgtwidqMMZxT95J5C0S7ulk8
+AzaJ5soTYjR6RO0EHoGpH5e/Oo58qRGQqgPE25em8JXPyKryCOR2dVAztGN4+7Yi
+A03ZpNauvBIRWMPtxJC1ASorQ3QmcvBMWSdLP3tQFuyYJDJByrQgVG9kZCBMaXBj
+b24gPHRsaXBjb25AbWVyY2VhLm5ldD6ITgQQEQIADgUCOpREkwQLAwIBAhkBAAoJ
+EF5Dyrmux36vyFAAn1L0WGwSJcB6i/QqfgeY61ubnMZ+AKCbiSbB5NDISjQFRmq+
+59I/5TdE47QhVG9kZCBMaXBjb24gPHRvZGRAZ29sZGJhcnRlci5jb20+iEsEEBEC
+AAsFAju31jgECwMCAQAKCRBeQ8q5rsd+r1sBAKDSt1qs/1HzPTwmMWPOqGAVcrd2
+HACfWSElO+SH5RdBOuxaaBSsATBCD5K0JVRvZGQgTGlwY29uIDx0bGlwY29uQHRv
+YWQubWVyY2VhLm5ldD6ISwQQEQIACwUCO7fWZwQLAwIBAAoJEF5Dyrmux36v/LkA
+oMb4Ve7iDlP/PFr4RgbcUzlH9tVuAKC0pyeZa9fcTCiy0XRPwUAY1EjRjLQdVG9k
+ZCBMaXBjb24gPHRvZGRAbGlwY29uLm9yZz6IXQQTEQIAHQUCP0ZuSwIbAwULBwMC
+AQMVAgMDFgIBAh4BAheAAAoJEF5Dyrmux36v18QAn2f1tmq/oIeirKlzleAb2oD4
+Bj6VAJ0b//nJdMLvhXt1R7Jy+NredbJI2rQdVG9kZCBMaXBjb24gPHRsQGNzLmJy
+b3duLmVkdT6IYAQTEQIAIAUCRO9rMgIbAwYLCQgHAwIEFQIIAwQWAgMBAh4BAheA
+AAoJEF5Dyrmux36v4CgAnipMq5N+cbFL/d1xApngkhUjq0HPAKDBfyRrKJnDd43W
+t2B3DmB7weiAq7kCDQQ6lESTEAgA9kJXtwh/CBdyorrWqULzBej5UxE5T7bxbrlL
+OCDaAadWoxTpj0BV89AHxstDqZSt90xkhkn4DIO9ZekX1KHTUPj1WV/cdlJPPT2N
+286Z4VeSWc39uK50T8X8dryDxUcwYc58yWb/Ffm7/ZFexwGq01uejaClcjrUGvC/
+RgBYK+X0iP1YTknbzSC0neSRBzZrM2w4DUUdD3yIsxx8Wy2O9vPJI8BD8KVbGI2O
+u1WMuF040zT9fBdXQ6MdGGzeMyEstSr/POGxKUAYEY18hKcKctaGxAMZyAcpesqV
+DNmWn6vQClCbAkbTCD1mpF1Bn5x8vYlLIhkmuquiXsNV6TILOwACAggAvJIAvP6M
+i5x2vjeeE34J8lR6Kt9MoBS0Ky2kdbaL5tR3SCHXfmPjHQv8U6cH8StwFrOkwxND
+J5REq66WIEpcRWtIElWMmYfgHfhmA3JeI/2a84V/V4H4oXj5gWITm0uPKjRpKCfA
+tSNG32wUCkScUUrhsEH8W5/JleyAyZyd/whM2KtevwAsCCZvJHV9oFvpI7tf+3Np
+OWVMDLcmcskqfyWSt76igsVigvrc727zNoZjr3Eew88BOfTvsJkKdl2bw6/1z5EO
+EAZ0ZeiCIpZ3iM3UITMR3Uteitf+W33bp+ZIh0zDF5OGfsI76eC0sj0mox68RYjG
+ZZuS4+/qoKzVx4hGBBgRAgAGBQI6lESTAAoJEF5Dyrmux36vuGoAoOcrPVfHj8H+
+KenND/ZpeiFz/GKoAKCF45BeUqH7DyMGYkvc/sNdI3/jpQ==
+=uu1Q
+-----END PGP PUBLIC KEY BLOCK-----
+
+pub  1024D/208F5064 2003-06-13            
+uid Joe Schaefer <joe@sunstarsys.com>
+sig  sig3  208F5064 2003-06-13 __________ __________ [selfsig]
+sig  sig3  208F5064 2003-06-13 __________ __________ [selfsig]
+sig  sig3  F43C2F92 2003-10-03 __________ __________ Bruno Lustosa <bruno@lustosa.net>
+sig  sig3  F43C2F92 2003-10-03 __________ __________ Bruno Lustosa <bruno@lustosa.net>
+sig  sig   E04F9A89 2006-10-13 __________ __________ Roy T. Fielding <fielding@gbiv.com>
+sig  sig   AB821FBC 2006-10-14 __________ __________ Andrew McIntyre <mcintyre.a@gmail.com>
+sig  sig   9992ADFC 2006-10-17 __________ __________ Jeff McAdams (General purpose key) <jeffm@iglou.com>
+sig  sig   5F7898A9 2006-10-17 __________ __________ William Glass-Husain <wglass@apache.org>
+sig  sig   BB550746 2006-10-17 __________ __________ J. Daniel Kulp <dkulp@progress.com>
+sig  sig   9BCFCE2F 2006-10-24 __________ __________ Garrett Rooney <rooneg@electricjellyfish.net>
+sig  sig   BFD0307C 2006-10-25 __________ __________ J Aaron Farr <farra@apache.org>
+sig  sig   D872E270 2006-10-26 __________ __________ Bozhong Lin <blin@iona.com>
+sig  sig   2C5E4EC0 2006-10-28 __________ __________ Henri Yandell (For signing ASF releases) <bayard@apache.org>
+sig  sig   329D80D2 2006-10-31 __________ __________ Sanka Samaranayake (Apache Software Foundation) <sanka@apache.org>
+sig  sig   665E0760 2006-12-15 __________ __________ Afkham Azeez (WSO2 Email) <azeez@wso2.com>
+sig  sig   665E0760 2006-12-15 __________ __________ Afkham Azeez (WSO2 Email) <azeez@wso2.com>
+sig  sig   E41EDC7E 2006-12-17 __________ __________ Carsten Ziegeler <cziegeler@apache.org>
+sig  sig   E41EDC7E 2006-12-17 __________ __________ Carsten Ziegeler <cziegeler@apache.org>
+sig  sig   9C85222B 2007-05-14 __________ __________ Henning Schmiedehausen <hps@intermeta.de>
+uid Joe Schaefer <joes@apache.org>
+sig  sig3  208F5064 2003-06-13 __________ __________ [selfsig]
+sig  sig3  F43C2F92 2003-10-03 __________ __________ Bruno Lustosa <bruno@lustosa.net>
+sig  sig   E04F9A89 2006-10-13 __________ __________ Roy T. Fielding <fielding@gbiv.com>
+sig  sig   AB821FBC 2006-10-14 __________ __________ Andrew McIntyre <mcintyre.a@gmail.com>
+sig  sig   9992ADFC 2006-10-17 __________ __________ Jeff McAdams (General purpose key) <jeffm@iglou.com>
+sig  sig   5F7898A9 2006-10-17 __________ __________ William Glass-Husain <wglass@apache.org>
+sig  sig   BB550746 2006-10-17 __________ __________ J. Daniel Kulp <dkulp@progress.com>
+sig  sig   9BCFCE2F 2006-10-24 __________ __________ Garrett Rooney <rooneg@electricjellyfish.net>
+sig  sig   9BCFCE2F 2006-10-24 __________ __________ Garrett Rooney <rooneg@electricjellyfish.net>
+sig  sig   BFD0307C 2006-10-25 __________ __________ J Aaron Farr <farra@apache.org>
+sig  sig   D872E270 2006-10-26 __________ __________ Bozhong Lin <blin@iona.com>
+sig  sig   2C5E4EC0 2006-10-28 __________ __________ Henri Yandell (For signing ASF releases) <bayard@apache.org>
+sig  sig   329D80D2 2006-10-31 __________ __________ Sanka Samaranayake (Apache Software Foundation) <sanka@apache.org>
+sig  sig   665E0760 2006-12-15 __________ __________ Afkham Azeez (WSO2 Email) <azeez@wso2.com>
+sig  sig   E41EDC7E 2006-12-17 __________ __________ Carsten Ziegeler <cziegeler@apache.org>
+sig  sig   9C85222B 2007-05-14 __________ __________ Henning Schmiedehausen <hps@intermeta.de>
+sub  1024g/ED4260B6 2003-06-13            
+sig sbind  208F5064 2003-06-13 __________ __________ []
+sub  1024D/F8B0462F 2003-06-13            
+sig sbind  208F5064 2003-06-13 __________ __________ []
+sig sbind  208F5064 2003-06-13 __________ 2005-06-12 []
+sig sbind  208F5064 2005-07-19 __________ 2007-07-19 []
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: SKS 1.1.0
+
+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
+=A7Ei
+-----END PGP PUBLIC KEY BLOCK-----
+
+pub   1024D/9A7B2398 2010-05-01
+uid                  Bryan Duxbury <bryanduxbury@apache.org>
+sig 3        9A7B2398 2010-08-13  Bryan Duxbury <bryanduxbury@apache.org>
+uid                  Bryan Duxbury <bryan.duxbury@gmail.com>
+sig 3        9A7B2398 2010-05-01  Bryan Duxbury <bryanduxbury@apache.org>
+sub   2048g/13B2C8C9 2010-05-01
+sig          9A7B2398 2010-05-01  Bryan Duxbury <bryanduxbury@apache.org>
+sub   2048D/EDF9D26A 2010-08-13
+sig          9A7B2398 2010-08-13  Bryan Duxbury <bryanduxbury@apache.org>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.10 (Darwin)
+
+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
+=KGXR
+-----END PGP PUBLIC KEY BLOCK-----
+
+
+
+pub   1024D/C9BBCAFB 2009-03-18
+uid                  Roger Meier <roger@bufferoverflow.ch>
+sig 3        C9BBCAFB 2010-10-08  Roger Meier <roger@bufferoverflow.ch>
+sig     P X  65D0FD58 2009-03-18  CA Cert Signing Authority (Root CA) <gpg@cacert.org>
+sig     P    65D0FD58 2010-10-08  CA Cert Signing Authority (Root CA) <gpg@cacert.org>
+sig 3        C9BBCAFB 2009-03-18  Roger Meier <roger@bufferoverflow.ch>
+sig     P    65D0FD58 2010-10-08  CA Cert Signing Authority (Root CA) <gpg@cacert.org>
+uid                  Roger Meier <roger@apache.org>
+sig 3        C9BBCAFB 2010-10-08  Roger Meier <roger@bufferoverflow.ch>
+sig     P    65D0FD58 2010-10-08  CA Cert Signing Authority (Root CA) <gpg@cacert.org>
+sig     P    65D0FD58 2010-10-08  CA Cert Signing Authority (Root CA) <gpg@cacert.org>
+sub   2048g/4EF7F927 2009-03-18
+sig          C9BBCAFB 2009-03-18  Roger Meier <roger@bufferoverflow.ch>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+mQGiBEnBSwYRBACIZMepmiwoXtJnk8fBGIlydDzKYeKnVmOBkrX5AUbhvg0rQjXa
+YDjsaQqtX5e738i8AxxBddnDu1U+gKiTqIm1csHw4yO6DVPpAF/jhG7ZdleyRvwF
+CaiynZZWOi5Fxywxjz61o4JooXzLRAlICGOxRBP+yY9hVT+EGsiEgHPpUwCglzdW
+wRxGW4pKbcHIikLRS3dOncED/iA3iMbRZbbxs68yz/iCMNG6RzHJFcprZDQNioUS
+uNHDt2eyTBFkRWelwJBTo1oNH/Ua0VsXZqB0h1nx1oousTIUsA33bmX805y15QI7
+acmsrYhjGyqFw6mO2MNoFe1wBK8IdxzFhiPz40s84ZhAHKyHpSIlwH5BsqPDsd8+
++Ok3A/9mSdoHgjh0lkq3WfyGSon4OUASXVlLLLB1YiFmwJ9UGSF6EBKOme6s+yt4
+XEv7Ok1CGNkVumYe03hD1GK3mycbbmbE2iClYU5Nl4HtYG4J/fUVYu94GN8VXIt0
+0pekCP4dvmr2UuPbKuACGsoc9o5aam0e15csbeOo2PIGfZLWKrQeUm9nZXIgTWVp
+ZXIgPHJvZ2VyQGFwYWNoZS5vcmc+iGAEExECACAFAkyvC5ECGwMGCwkIBwMCBBUC
+CAMEFgIDAQIeAQIXgAAKCRBm51GWybvK+6yZAJ4hTIgec2O+XwID8WtAGja8aqU9
+4ACfQ/rDVUVypwuOB1R55AKR/LDpysaIawQQEQIAKwUCTK8ObwWDAeKFAB4aaHR0
+cDovL3d3dy5jYWNlcnQub3JnL2Nwcy5waHAACgkQ0rsNAWXQ/VjPcACglhdCRxy6
+hR+hbe7hg47ShmSv0J8AnjQ2tg/E4BbTSYNtL7RLY2fO8KWWiGsEEBECACsFAkyv
+EkoFgwHihQAeGmh0dHA6Ly93d3cuY2FjZXJ0Lm9yZy9jcHMucGhwAAoJENK7DQFl
+0P1Ys2EAni09WZtuNfbYXdLhfPUL1fvuEXHiAJ9ie99v8jLxGhxvkW5Xxk/jr5KH
+ZrQlUm9nZXIgTWVpZXIgPHJvZ2VyQGJ1ZmZlcm92ZXJmbG93LmNoPohjBBMRAgAj
+AhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AFAkyvESkCGQEACgkQZudRlsm7yvuA
+EQCeNDItAvw4SDcjZXP1mps1+cMQwa0An0mzjBziUzySPqppnMtbexGEO6MmiGsE
+EBECACsFAknBSxAFgwHihQAeGmh0dHA6Ly93d3cuY2FjZXJ0Lm9yZy9jcHMucGhw
+AAoJENK7DQFl0P1Y1YcAnjvSIDjiah1iqTIQc5viqzw0S2SkAJwJocLjOckwA0ik
+S4Po4HVQYEbReohrBBARAgArBQJMrw5vBYMB4oUAHhpodHRwOi8vd3d3LmNhY2Vy
+dC5vcmcvY3BzLnBocAAKCRDSuw0BZdD9WGNtAJ41tkACs2UuNGwvNkXrDx2tKUNO
+jwCaAnV1ZemZ4X/oGdXSRuk/QlZTUyiIYAQTEQIAIAUCScFLBgIbAwYLCQgHAwIE
+FQIIAwQWAgMBAh4BAheAAAoJEGbnUZbJu8r7wvMAn0oZ03HMSVQwIFGGQvPAGQ5W
+AuB3AJ9FvaGoShMos9gNHO8iwnmgZomDFohrBBARAgArBQJMrxJKBYMB4oUAHhpo
+dHRwOi8vd3d3LmNhY2VydC5vcmcvY3BzLnBocAAKCRDSuw0BZdD9WD8lAKCX4eMQ
+RXS54ijjYIAOyk+t8uU7nwCfbQAoegljeCZCDiyrAGyHWwokeh25Ag0EScFLIRAI
+AKtRZZpzaeRu5XdCzbMOv/yMzUF3O/Hvr3y2VBskIl3oUcAE+rkV0ah6vo3UvqxZ
+gzjAx1rIG7/scc6vCr0jAFIIyhxRcQips27Hl3LtxXfRNbffTGkFdhMWKKWRSbSs
+lm0B514t4rHEtcQYtxaiXXfRL1EWvlUjyY8ZZra/pAZHYG3Dv+TXvnLV6DhhiucL
+lc8RmZ8ftKPyDFrS5QDsyc4Bnp8/TkCJWxdORjJZ1U+rFSx4b4mRxwoRC8Otn/GH
+8CV04rPnfnc4/B6b+QO1nlJmxJ1FgMnIr1G0rcc5aK+Dnaq5Htl9dg/Ab82L44ot
+C90UmxVopovet+tCYwajTucAAwcIAJWv8rs6iHvxbiWKoZCkdAQRaX1gZSSJchZq
+DQ1Hxw9J1YW0XMD2W8ewe+CSixeFFC2WP6UESh7I5tricIYT+o8MLnILzzsSICQf
+W3ngv1RZMa0zg6lnd18xfcr1sFS364PT+sXbWz/68ez10LxFOOqClwkdKkC3Oqii
+YEvhcrrU8b1ZNf8aXHcIerMK2xzTKgI8WH6JNwanc0UrHdgGVAm8fNu8TuC7K5ja
+vE9RyM3CxhVcU6lcpfHwMdQdxjHySxzY11N6IIT+ZEKEj3uEc6FDP+WqdlUTwDWl
+v44EmJOj6OkyaUCtW+KX7eYo5yinrSVYdxG92Z1w0BXY5LTGNFaISQQYEQIACQUC
+ScFLIQIbDAAKCRBm51GWybvK+3j0AJ9B52qdX1nR97X6Vb3ZTSJNBQzv1ACeMUQl
+VQVnX/b0+Yb2Oe3wuqWfm2Q=
+=XNeT
+-----END PGP PUBLIC KEY BLOCK-----
+
+pub   2048R/218B3A5B 2011-01-31
+uid                  T Jake Luciani <jake@apache.org>
+sig 3        218B3A5B 2011-01-31  T Jake Luciani <jake@apache.org>
+sub   2048R/A990BCD8 2011-01-31
+sig          218B3A5B 2011-01-31  T Jake Luciani <jake@apache.org>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.11 (Darwin)
+
+mQENBE1GHioBCACun7G2xBncMewsNVbLGF8shmVwoRfrg2hFaV50k+fQ19U/5ZG0
+Kdh/VCDED+jWfqUZhrdFfGK/xVBEfMBWOCNMtFB+qlWM2vS4CYxOJfIhpOM7tfoK
+O6iAM01q2l/BaA2S64Qa3AreYr8BYDvaadYRa4PMxt5Ag3W+fL2aLrxoprun148f
+eIO3CrKSX//eUTX06Nenh4RwaMt3hnmnqUI0NRnVPyUvf+Bk+CS46EDvXVoJzV2Z
+vXI9dSwOiD7OqnAcV35o4l6UWrpS699nu873xYCQy9ODDMfUNjRvHCft7Pga99EK
+DKrtttyIPdPDqNSDbbZ64TCdn9c/7s00Yxc7ABEBAAG0IFQgSmFrZSBMdWNpYW5p
+IDxqYWtlQGFwYWNoZS5vcmc+iQE4BBMBAgAiBQJNRh4qAhsDBgsJCAcDAgYVCAIJ
+CgsEFgIDAQIeAQIXgAAKCRBClJNNIYs6W8gfB/0UuZs0Sn0AF4VfIUepWsQIFhDD
+Bro3prGfr6IEZQzvB+OIg5Mwg+zF+00FL+AG6pDXQCUQ9PHEbqZOlQ6rCO9M9FqQ
+gN5wWu9cJp4Eyc0ZeSAEC7F4ayPCIqbrwo2VyR/aZHFB4/5AhsH2EAXOZDP8XNiX
+A0Vz1HBpNOhZ3ZWbHUrjbfa9aEcT0Z6NFvZCoXaEyLd73WjnZHMFMmV95fNVyDWq
+MgUECO0JRuVApbzIFq3sCtP1HKFMPGFIbpasbGcLSJGzThPhLzj4PnYuaz2tzywk
+oLM04a2JdQWkXw4hznYvSO2usKqN3ozLUY67cbFJYy9dDEXR/Aj03bKR+xituQEN
+BE1GHioBCADIpslvKqVOsCQPWzw3kljxYAzvt2VXu04Gkd12XaEsAEQEOVVC5a3u
+fYnD9MtKXA2zK7IS3G/EiixMvhp+yxcbQM/DUwPMALYJJhARtJrLFrPUzhqKgIs4
+LoZbjsC1Lkp15wvP7uohId2xF7GRfxYpE7h7bf5Iu5kH/nLLEd4Q3q3wbceuBOal
+/CU3ltSjcR+MORR5pZ3KZ2kHFJpjLyIkycrQaPqmf6YkQEg2GRlz2skTluBzcAOU
+XkjeuM5B25u5deYpGUlvcE7uWg9S+E+39K1ixb7DL8gU41kJf57pOW+X7EdOhgHh
+BFxcvTLe+v8wnC+pBubGHQz4vIOykquXABEBAAGJAR8EGAECAAkFAk1GHioCGwwA
+CgkQQpSTTSGLOlu96ggApSLbWrbo14Xk6ADMCF30YScCaG4NTymaUfvIzo0Pa8L3
+UHFK0Z8f0N3Tawex2ugkP/5Y2pF750q/ZFDh1K14IK8dwuKe9J7TCpcQHIOutywb
+h9vuEq4B8BwrVtVHRCwomrXGdXYQjQ7h+HN7tXAnmNRXg77nAJV/XcixaDfISY9l
+fz7PnULoupUnvh9y0LqiISQyq62AlDtfwMD88VzQkVwwct5hb4Sb7OcTL2pJWDcG
+ZgVqtmRdDmbON5V+FcOKeAsAfpzFrrPGo50Sg00v+MEv/UEJMFVPEA0CjBBwg1Hb
+NUCuObUg6mNYmu+MlOglcRNetWXRv5X1AtUXW7EB+g==
+=VBY/
+-----END PGP PUBLIC KEY BLOCK-----
+pub   2048D/66B778F9 2011-04-13
+uid                  Jake Farrell <jfarrell@apache.org>
+sig 3        66B778F9 2011-04-13  Jake Farrell <jfarrell@apache.org>
+sub   2048g/0099A2AD 2011-04-13
+sig          66B778F9 2011-04-13  Jake Farrell <jfarrell@apache.org>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.10 (Darwin)
+
+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
+GXyWtMaVRXblIJmign/QfUX/XIg=
+=1z2d
+-----END PGP PUBLIC KEY BLOCK-----
+
+
+pub   rsa3072 2012-11-19 [SCEA]
+      8CD87F186F06E958EFCA963D76BD340FC4B75865
+uid        [ ultimativ ] Jens Geyer <jensgeyer@hotmail.com>
+sig 3        76BD340FC4B75865 2012-11-19  Jens Geyer <jensgeyer@hotmail.com>
+sig          859967EFEB4422E1 2014-04-08  Jens Geyer (VSX) <jgx@vsx.net>
+uid        [ ultimativ ] Jens Geyer <jensg@apache.org>
+sig 3        76BD340FC4B75865 2012-11-19  Jens Geyer <jensgeyer@hotmail.com>
+sig          859967EFEB4422E1 2014-04-08  Jens Geyer (VSX) <jgx@vsx.net>
+
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+1cMINeutqg==
+=gTZV
+-----END PGP PUBLIC KEY BLOCK-----
+
+
+pub   rsa4096 2018-12-29 [SC]
+      9348 F036 9A20 8184 00F8  7140 C6F2 B11B EDD0 2683
+uid           [ultimate] James E. King III (CODE SIGNING KEY) <jking@apache.org>
+sub   rsa4096 2018-12-29 [E]
+
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBFwnlyYBEADDxCO7/oYsUZ/1iFy8laWuEqopZAMcc0d3L9uDpo2bYaDPCoCo
@@ -50,3 +523,4 @@ ICCQ1XQZyap3v4TBeGdw5fNPgnEF8FAxu23bpmqSuRC66WKAT3V6ga3FF3bKXCyx
 wfCRrAegC1IE/bvUhyYg9Aqk7w==
 =IebI
 -----END PGP PUBLIC KEY BLOCK-----
+

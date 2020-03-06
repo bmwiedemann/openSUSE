@@ -16,7 +16,7 @@
 #
 
 
-%define libversion 0_12_0
+%define libversion 0_13_0
 %define libgversion 0
 %bcond_without perl
 %bcond_without c
@@ -32,7 +32,7 @@
 %define skip_python3 1
 %endif
 Name:           thrift
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
@@ -254,7 +254,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libthrift_c_glib%{libgversion} -p /sbin/ldconfig
 
 %files
-%doc CHANGES
+%doc CHANGES.md
 %license LICENSE NOTICE
 %{_bindir}/thrift
 
