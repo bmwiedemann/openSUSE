@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  3 10:39:16 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.10.9
+
+  # Fixed
+
+  * [MRI] Raise an exception when Nokogiri detects a specific
+    libxml2 edge case involving blank Schema nodes wrapped
+    by Ruby objects that would cause a segfault. Currently no fix
+    is available upstream, so we're preventing a dangerous
+    operation and informing users to code around it if
+    possible. [#1985, #2001]
+  * [JRuby] Change NodeSet#to_a to return a RubyArray instead
+    of Object, for compilation under JRuby 9.2.9 and later.
+    [#1968, #1969] (Thanks, @headius!)
+
+-------------------------------------------------------------------
 Tue Feb 11 00:53:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 1.10.8
