@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-plantuml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-plantuml
-Version:        0.17.1
+Version:        0.18
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-contrib/plantuml/
 Source:         https://github.com/sphinx-contrib/plantuml/archive/%{version}.tar.gz#/sphinxcontrib-plantuml-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx >= 1.1}
 BuildRequires:  %{python_module Sphinx-latex}
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
@@ -35,7 +36,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-epstopdf
 BuildRequires:  tox
 Requires:       plantuml
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 1.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,7 +58,9 @@ will create a nice UML schema. WIth PlantUML, you can specify things like height
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH="." nosetests-%{$python_bin_suffix} -w tests
+# upstream knows: https://github.com/sphinx-contrib/plantuml/commit/e1b3f7e709eae0e95c70564a7e42279db08c8447
+# s/class="figure"/class="figure align-default"/ in test_functional.py
+%pytest -k 'not test_buildhtml_name'
 
 %files %{python_files}
 %doc README.rst
