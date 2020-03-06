@@ -434,4 +434,15 @@
   + gd-CVE-2019-11038.patch</comment>
     <requestid>715653</requestid>
   </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>52f68ea1fc9af9501a2c9164d2b16c24</srcmd5>
+    <version>2.2.5</version>
+    <time>1583526347</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2018-14553 [bsc#1165471], null pointer dereference in gdImageClone()
+  + gd-CVE-2018-14553.patch</comment>
+    <requestid>781431</requestid>
+  </revision>
 </revisionlist>

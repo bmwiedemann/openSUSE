@@ -1,7 +1,7 @@
 #
 # spec file for package gd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A Drawing Library for Programs That Use PNG and JPEG Output
 License:        MIT
 Group:          System/Libraries
-Url:            https://libgd.github.io/
+URL:            https://libgd.github.io/
 Source:         https://github.com/libgd/libgd/releases/download/%{name}-%{version}/%{prjname}-%{version}.tar.xz
 Source1:        baselibs.conf
 # might be upstreamed, but could be suse specific also (/usr/share/fonts/Type1 font dir)
@@ -40,6 +40,8 @@ Patch7:         gd-CVE-2019-6978.patch
 Patch8:         gd-CVE-2019-6977.patch
 # CVE-2019-11038 [bsc#1140118]
 Patch9:         gd-CVE-2019-11038.patch
+# CVE-2018-14553 [bsc#1165471], null pointer dereference in gdImageClone()
+Patch10:        gd-CVE-2018-14553.patch
 # needed for tests
 BuildRequires:  dejavu
 BuildRequires:  libjpeg-devel
@@ -96,6 +98,7 @@ the formats accepted for inline images by most browsers.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 chmod 644 COPYING
 
 %build
