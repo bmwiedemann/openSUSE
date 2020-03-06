@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  1 03:10:57 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.52   2020-02-29
+  
+  - Added a $dt->is_between($dt1, $dt2) method. Based on GH #97 by philip r
+    brenan.
+  
+  - Simplify the calculation of leap seconds in XS. This is a little more
+    efficient for most use cases (anything with future or recent past
+    datetimes). Contributed by Mark Overmeer. GH #91.
+
+-------------------------------------------------------------------
 Mon Apr 22 05:06:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.51

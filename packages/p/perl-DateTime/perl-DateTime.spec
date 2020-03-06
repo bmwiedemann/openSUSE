@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime
-Version:        1.51
+Version:        1.52
 Release:        0
 %define cpan_name DateTime
 Summary:        Date and time object for Perl
@@ -97,7 +97,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc appveyor.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS leaptab.txt README.md TODO
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS leaptab.txt README.md TODO
 %license LICENSE
 
 %changelog
