@@ -1,7 +1,7 @@
 #
 # spec file for package open-iscsi
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %define iscsi_minor_release 1
-%define iscsi_patch_release 0
+%define iscsi_patch_release 1
 %define iscsi_patch_release_suse %{iscsi_patch_release}-suse
 Name:           open-iscsi
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://www.open-iscsi.com
+URL:            http://www.open-iscsi.com
 Source:         %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}.tar.bz2
 Patch1:         %{name}-SUSE-latest.diff.bz2
 BuildRequires:  autoconf

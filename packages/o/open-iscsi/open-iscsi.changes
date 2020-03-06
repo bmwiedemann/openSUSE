@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  3 18:46:01 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Merged in latest upstream (2.1.1), which is mainly a bug-fix
+  release over 2.1.0, including changing the test suite from
+  shell-based to python3-based, replacing
+  open-iscsi.2.1.0-suse.tar.bz2 with open-iscsi-2.1.1-suse.tar.bz2
+  and resetting open-iscsi-SUSE-latest-diff.bz2
+
+-------------------------------------------------------------------
 Fri Jan 31 21:39:48 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Bug fixes, including addig support for "-fno-common"
