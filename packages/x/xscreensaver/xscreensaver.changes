@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar  3 17:24:50 CET 2020 - sbrabec@suse.com
+
+- Update to version 5.43:
+  * New hacks GravityWell, DeepStars, handsy.
+  * GLPlanet now supports the Mercator projection.
+  * Bouncing Cow has mathematically ideal cows.
+  * Foggy toasters.
+  * Unknown Pleasures can now use an image file as a clip mask.
+  * Updated webcollage for recent changes.
+  * Added some sample unlock dialog color schemes to the .ad file.
+  * On systemd systems, closing your laptop lid might actually lock
+    your screen now, maybe (boo#1101393).
+  * sonar can ping without being setuid by using setcap.
+  * Those new font-loading fallback heuristics work again. Oops.
+  * Fixed `noof' from displaying minimalistically.
+  * Rewrote `unknownpleasures' to be faster, and a true waterfall
+    graph.
+  * If the xscreensaver daemon is setuid, then we can implore the
+    kernel's out-of-memory killer to pretty please not unlock the
+    screen.
+- Drop xscreensaver-lock-after-fade.patch. Upstream has a different
+  fix (boo#1101393).
+- Refresh xscreensaver-default-screensaver.patch.
+- Update xscreensaver-data-extra.list and xscreensaver-data.list.
+
+-------------------------------------------------------------------
 Wed Jun 26 09:30:44 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer require Xxf86misc extension, which is no longer supported
@@ -8,7 +34,7 @@ Wed Jun 26 09:30:44 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Thu Nov 15 23:22:37 CET 2018 - sbrabec@suse.com
 
-- Update do version 5.40:
+- Update to version 5.40:
   * New hacks filmleader vfeedback glitchpeg, razzledazzle,
     peepers, crumbler, maze3d and esper.
   * webcollagenow works with ImageMagick.

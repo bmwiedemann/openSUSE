@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xscreensaver
-Version:        5.40
+Version:        5.43
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Amusements/Toys/Screensavers
-Url:            https://www.jwz.org/xscreensaver
+URL:            https://www.jwz.org/xscreensaver
 Source:         https://www.jwz.org/xscreensaver/%{name}-%{version}.tar.gz
 Source1:        xscreensaver.pamd
 Source2:        xscreensaver-data.list
@@ -44,8 +44,6 @@ Patch42:        xscreensaver-webcollage-dictpath.patch
 Patch43:        xscreensaver-disable-upgrade-nagging-message.patch
 # PATCH-FEATURE-OPENSUSE xscreensaver-bug-reports.patch bnc890595 sbrabec@suse.cz -- Ask reporters to upgrade before reporting bugs.
 Patch45:        xscreensaver-bug-reports.patch
-# PATCH-FEATURE-OPENSUSE xscreensaver-lock-after-fade.patch boo1101393 sbrabec@suse.cz -- Lock after completing fade.
-Patch46:        xscreensaver-lock-after-fade.patch
 BuildRequires:  automake
 BuildRequires:  bc
 BuildRequires:  gdmflexiserver
@@ -158,7 +156,6 @@ This packages contains additional graphics demos.
 %patch42
 %patch43 -p1
 %patch45 -p1
-%patch46 -p1
 # KDE, GNOME and MATE have there own screensavers:
 echo 'NotShowIn=KDE;GNOME;MATE;' >> driver/screensaver-properties.desktop.in
 cp -f %{SOURCE4} xscreensaver-desktops-generate
@@ -260,6 +257,7 @@ done
 %{_mandir}/man1/xscreensaver-command.*
 %{_mandir}/man1/xscreensaver-demo.*
 %{_mandir}/man6/xscreensaver-gl-helper.*
+%{_mandir}/man1/xscreensaver-systemd.*
 %dir %{_datadir}/X11/app-defaults/
 %{_datadir}/X11/app-defaults/XScreenSaver
 %config %{_sysconfdir}/pam.d/xscreensaver

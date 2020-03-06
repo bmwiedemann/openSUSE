@@ -2,13 +2,12 @@ Index: driver/XScreenSaver_ad.h
 ===================================================================
 --- driver/XScreenSaver_ad.h.orig
 +++ driver/XScreenSaver_ad.h
-@@ -1,38 +1,39 @@
+@@ -1,36 +1,36 @@
  "#error Do not run app-defaults files through xrdb!",
  "#error That does not do what you might expect.",
  "#error Put this file in /usr/lib/X11/app-defaults/XScreenSaver instead.",
 -"*mode:			random",
 +"*mode:			blank",
-+"*selected:			150",
  "*timeout:		0:10:00",
  "*cycle:			0:10:00",
  "*lockTimeout:		0:00:00",
@@ -42,21 +41,17 @@ Index: driver/XScreenSaver_ad.h
 -"*splash:		True",
 +"*splash:		False",
  "*splashDuration:	0:00:05",
--"*visualID:		default",
-+"*visualID:			default",
- "*captureStderr: 	True",
+ "*visualID:		default",
+ "*installColormap:	True",
 -"*ignoreUninstalledPrograms: False",
 +"*ignoreUninstalledPrograms: True",
  "*authWarningSlack:	20",
 -"*textMode:		file",
 +"*textMode:		date",
  "*textLiteral:		XScreenSaver",
--"*textFile:		",
-+"*textFile:			",
+ "*textFile:		",
  "*textProgram:		fortune",
- "*textURL:		https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss",
- "*overlayTextForeground:	#FFFF00",
-@@ -196,7 +197,7 @@
+@@ -235,7 +235,7 @@
    GL: 				gleidescope -root			    \\n\
    GL: 				glknots -root				    \\n\
    GL: 				glmatrix -root				    \\n\
@@ -106,9 +101,8 @@ Index: driver/XScreenSaver.ad.in
 +*splash:		False
  *splashDuration:	0:00:05
  *visualID:		default
--*captureStderr: 	True
+ *installColormap:	True
 -*ignoreUninstalledPrograms: False
-+*captureStderr: 	False
 +*ignoreUninstalledPrograms: True
  *authWarningSlack:	20
  
@@ -117,7 +111,18 @@ Index: driver/XScreenSaver.ad.in
  *textLiteral:		XScreenSaver
  *textFile:		@DEFAULT_TEXT_FILE@
  *textProgram:		fortune
-@@ -301,7 +301,7 @@ GetViewPortIsFullOfLies: False
+@@ -68,8 +68,8 @@
+ ! When a saver writes an error message to stdout/stderr, it can be printed
+ ! on the screen.
+ !
+-*captureStderr: 	True
+-*overlayStderr:		True
++*captureStderr: 	False
++*overlayStderr:		False
+ *overlayTextForeground:	#FFFF00
+ *overlayTextBackground:	#000000
+ *font:			*-medium-r-*-140-*-m-*
+@@ -486,7 +486,7 @@ XScreenSaver.bourneShell:		/bin/sh
  @GL_KLUDGE@ GL: 				gleidescope -root			    \n\
  @GL_KLUDGE@ GL: 				glknots -root				    \n\
  @GL_KLUDGE@ GL: 				glmatrix -root				    \n\
