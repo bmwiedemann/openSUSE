@@ -1,0 +1,22 @@
+--- hk2-utils/osgi.bundle	2015-05-06 01:03:38.000000000 +0200
++++ hk2-utils/osgi.bundle.tiger_types	2015-05-06 17:48:54.574401396 +0200
+@@ -44,5 +44,8 @@
+                org.glassfish.hk2.utilities.reflection; \
+                org.glassfish.hk2.utilities.reflection.internal; \
+                org.jvnet.hk2.component; \
+-               org.jvnet.tiger_types; \
+                version=${project.osgi.version}
++
++Import-Package: \
++               org.jvnet.tiger_types, \
++               *
+--- hk2-core/osgi.bundle	2016-01-05 19:52:26.000000000 +0000
++++ hk2-core/osgi.bundle.whitespace	2016-06-30 18:43:19.078427416 +0100
+@@ -48,5 +48,6 @@
+                             com.sun.enterprise.module.single; \
+                             com.sun.enterprise.module.impl; version=${project.osgi.version}
+ 
+-Import-Package: \           org.jvnet.hk2.config;resolution:=optional, \
++Import-Package: \
++                            org.jvnet.hk2.config;resolution:=optional, \
+                             *
