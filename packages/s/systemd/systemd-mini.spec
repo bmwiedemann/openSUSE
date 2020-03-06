@@ -178,6 +178,19 @@ maintains mount and automount points and implements an elaborate
 transactional dependency-based service control logic. It can work as a
 drop-in replacement for sysvinit.
 
+%if !0%{?bootstrap}
+%package doc
+Summary:        HTML documentation for systemd
+License:        LGPL-2.1-or-later
+Group:          Documentation/Other
+Supplements:    (systemd and patterns-base-documentation)
+
+%description doc
+The HTML documenation for systemd
+
+# /bootstrap
+%endif
+
 %package devel
 Summary:        Development headers for systemd
 License:        LGPL-2.1-or-later
@@ -1076,6 +1089,16 @@ fi
 %exclude %{_unitdir}/systemd-importd.service
 %exclude %{_unitdir}/dbus-org.freedesktop.import1.service
 %endif
+%if %{with networkd}
+%exclude %{_prefix}/lib/systemd/systemd-network-generator
+%exclude %{_prefix}/lib/systemd/systemd-networkd
+%exclude %{_prefix}/lib/systemd/systemd-networkd-wait-online
+%exclude %{_unitdir}/systemd-networkd.service
+%exclude %{_unitdir}/systemd-networkd.socket
+%exclude %{_unitdir}/systemd-networkd-wait-online.service
+%exclude %{_prefix}/lib/systemd/systemd-resolved
+%exclude %{_unitdir}/systemd-resolved.service
+%endif
 %if %{with portabled}
 %exclude %{_prefix}/lib/systemd/systemd-portabled
 %exclude %{_prefix}/lib/systemd/portable
@@ -1249,7 +1272,9 @@ fi
 %exclude %{_mandir}/man*/systemd-portabled*
 %endif
 %endif
+
 %{_docdir}/systemd
+%exclude %{_docdir}/systemd/html
 
 %{_udevrulesdir}/70-uaccess.rules
 %{_udevrulesdir}/71-seat.rules
@@ -1273,6 +1298,15 @@ fi
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/*
 %{_datadir}/pkgconfig/systemd.pc
+
+%if ! 0%{?bootstrap}
+%files doc
+%defattr(-,root,root,-)
+%dir %{_docdir}/systemd
+%{_docdir}/systemd/html
+
+# /bootstrap
+%endif
 
 %files devel
 %defattr(-,root,root,-)
@@ -1500,6 +1534,14 @@ fi
 %{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
 %{_prefix}/lib/systemd/network/*.network
 %{_prefix}/lib/systemd/network/*.network.example
+%{_prefix}/lib/systemd/systemd-network-generator
+%{_prefix}/lib/systemd/systemd-networkd
+%{_prefix}/lib/systemd/systemd-networkd-wait-online
+%{_unitdir}/systemd-networkd.service
+%{_unitdir}/systemd-networkd.socket
+%{_unitdir}/systemd-networkd-wait-online.service
+%{_prefix}/lib/systemd/systemd-resolved
+%{_unitdir}/systemd-resolved.service
 %endif
 %if %{with resolved}
 %{_bindir}/resolvectl
