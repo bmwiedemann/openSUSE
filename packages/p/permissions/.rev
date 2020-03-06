@@ -1143,4 +1143,41 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * Revert &quot;mariadb: settings for new auth_pam_tool (bsc#1160285)&quot;</comment>
     <requestid>774158</requestid>
   </revision>
+  <revision rev="132" vrev="12">
+    <srcmd5>6fd47b5ff5a7e9206e40e6a6a3656533</srcmd5>
+    <version>unknown</version>
+    <time>1583526201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200228:
+  * chkstat: fix readline() on platforms with unsigned char
+
+- Update to version 20200227:
+  * remove capability whitelisting for radosgw
+  * whitelist ceph log directory (bsc#1150366)
+  * adjust testsuite to post CVE-2020-8013 link handling
+  * testsuite: add option to not mount /proc
+  * do not follow symlinks that are the final path element: CVE-2020-8013
+  * add a test for symlinked directories
+  * fix relative symlink handling
+  * include cpp compat headers, not C headers
+  * Move permissions and permissions.* except .local to /usr/share/permissions
+  * regtest: fix the static PATH list which was missing /usr/bin
+  * regtest: also unshare the PID namespace to support /proc mounting
+  * regtest: bindMount(): explicitly reject read-only recursive mounts
+  * Makefile: force remove upon clean target to prevent bogus errors
+  * regtest: by default automatically (re)build chkstat before testing
+  * regtest: add test for symlink targets
+  * regtest: make capability setting tests optional
+  * regtest: fix capability assertion helper logic
+  * regtests: add another test case that catches set*id or caps in world-writable sub-trees
+  * regtest: add another test that catches when privilege bits are set for special files
+  * regtest: add test case for user owned symlinks
+  * regtest: employ subuid and subgid feature in user namespace
+  * regtest: add another test case that covers unknown user/group config
+  * regtest: add another test that checks rejection of insecure mixed-owner paths
+  * regtest: add test that checks for rejection of world-writable paths
+  * regtest: add test for detection of unexpected parent directory ownership
+  * regtest: add further helper functions, allow access to main instance (forwarded request 780264 from mkraus)</comment>
+    <requestid>780979</requestid>
+  </revision>
 </revisionlist>

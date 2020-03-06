@@ -16,32 +16,38 @@
 #
 
 
-%define VERSION 20200213
+%define VERSION_DATE 20200228
 
 Name:           permissions
-Version:        %{VERSION}
+Version:        %{VERSION_DATE}.%{suse_version}
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://github.com/openSUSE/permissions
-Source:         permissions-%{version}.tar.xz
+Source:         permissions-%{VERSION_DATE}.tar.xz
 Source1:        fix_version.sh
+BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
+BuildRequires:  libcap-progs
 Requires:       chkstat
 Requires:       permissions-config
 Recommends:     permissions-doc
-Provides:       aaa_base:%{_sysconfdir}/permissions
+Provides:       aaa_base:%{_datadir}/permissions
 
 %prep
-%setup -q
+%setup -q -n permissions-%{VERSION_DATE}
 
 %build
 make %{?_smp_mflags} CFLAGS="-W -Wall %{optflags}" FSCAPS_DEFAULT_ENABLED=0
 
 %install
 %make_install fillupdir=%{_fillupdir}
+
+# regression tests disabled for the moment, needs adjustment for the new /usr/share world
+#%check
+#tests/regtest.py
 
 %description
 Permission settings of files and directories depending on the local
@@ -55,11 +61,11 @@ This package does not contain files, it just requires the necessary packages.
 %package doc
 Summary:        SUSE Linux Default Permissions documentation
 Group:          Documentation/Man
-Version:        %{suse_version}_%{VERSION}
+Version:        %{suse_version}_%{VERSION_DATE}
 Release:        0
 
 %description doc
-Documentation for the permission files /etc/permissions*.
+Documentation for the permission files /usr/share/permissions/permissions*.
 
 %files doc
 %{_mandir}/man5/permissions.5%{ext_man}
@@ -67,7 +73,7 @@ Documentation for the permission files /etc/permissions*.
 %package config
 Summary:        SUSE Linux Default Permissions config files
 Group:          Productivity/Security
-Version:        %{suse_version}_%{VERSION}
+Version:        %{suse_version}_%{VERSION_DATE}
 Release:        0
 Requires(post): %fillup_prereq
 Requires(post): chkstat
@@ -75,13 +81,15 @@ Requires(post): chkstat
 Requires(pre):  group(trusted)
 
 %description config
-The actual permissions configuration files, /etc/permission.*.
+The actual permissions configuration files, /usr/share/permissions/permission.*.
 
 %files config
-%config %{_sysconfdir}/permissions
-%config %{_sysconfdir}/permissions.easy
-%config %{_sysconfdir}/permissions.secure
-%config %{_sysconfdir}/permissions.paranoid
+%defattr(644, root, root, 755)
+%dir %{_datadir}/permissions
+%{_datadir}/permissions/permissions
+%{_datadir}/permissions/permissions.easy
+%{_datadir}/permissions/permissions.secure
+%{_datadir}/permissions/permissions.paranoid
 %config(noreplace) %{_sysconfdir}/permissions.local
 %{_fillupdir}/sysconfig.security
 
@@ -93,7 +101,7 @@ The actual permissions configuration files, /etc/permission.*.
 %package -n chkstat
 Summary:        SUSE Linux Default Permissions tool
 Group:          Productivity/Security
-Version:        %{suse_version}_%{VERSION}
+Version:        %{suse_version}_%{VERSION_DATE}
 Release:        0
 
 %description -n chkstat
@@ -105,7 +113,7 @@ Tool to check and set file permissions.
 
 %package -n permissions-zypp-plugin
 BuildArch:      noarch
-Requires:       permissions = %{VERSION}
+Requires:       permissions = %{VERSION_DATE}.%{suse_version}
 Requires:       python3-zypp-plugin
 Requires:       libzypp(plugin:commit) = 1
 Summary:        A zypper commit plugin for calling chkstat

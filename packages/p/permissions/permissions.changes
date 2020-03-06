@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Feb 28 12:00:44 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200228:
+  * chkstat: fix readline() on platforms with unsigned char
+
+-------------------------------------------------------------------
+Thu Feb 27 12:29:29 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200227:
+  * remove capability whitelisting for radosgw
+  * whitelist ceph log directory (bsc#1150366)
+  * adjust testsuite to post CVE-2020-8013 link handling
+  * testsuite: add option to not mount /proc
+  * do not follow symlinks that are the final path element: CVE-2020-8013
+  * add a test for symlinked directories
+  * fix relative symlink handling
+  * include cpp compat headers, not C headers
+  * Move permissions and permissions.* except .local to /usr/share/permissions
+  * regtest: fix the static PATH list which was missing /usr/bin
+  * regtest: also unshare the PID namespace to support /proc mounting
+  * regtest: bindMount(): explicitly reject read-only recursive mounts
+  * Makefile: force remove upon clean target to prevent bogus errors
+  * regtest: by default automatically (re)build chkstat before testing
+  * regtest: add test for symlink targets
+  * regtest: make capability setting tests optional
+  * regtest: fix capability assertion helper logic
+  * regtests: add another test case that catches set*id or caps in world-writable sub-trees
+  * regtest: add another test that catches when privilege bits are set for special files
+  * regtest: add test case for user owned symlinks
+  * regtest: employ subuid and subgid feature in user namespace
+  * regtest: add another test case that covers unknown user/group config
+  * regtest: add another test that checks rejection of insecure mixed-owner paths
+  * regtest: add test that checks for rejection of world-writable paths
+  * regtest: add test for detection of unexpected parent directory ownership
+  * regtest: add further helper functions, allow access to main instance
+  * regtest: introduce some basic coloring support to improve readability
+  * regtest: sort imports, another piece of rationale
+  * regtest: add capability test case
+  * regtest: improve error flagging of test cases and introduce warnings
+  * regtest: support caps
+  * regtest: add a couple of command line parameter test cases
+  * regtest: add another test that checks whether the default profile works
+  * regtests: add tests for correct application of local profiles
+  * regtest: add further test cases that test correct profile application
+  * regtest: simplify test implementation and readability
+  * regtest: add helpers for permissions.d per package profiles
+  * regtest: support read-only bind mounts, also bind-mount permissions repo
+  * tests: introduce a regression test suite for chkstat
+  * Makefile: allow to build test version programmatically
+  * README.md: add basic readme file that explains the repository's purpose
+  * chkstat: change and harmonize coding style
+  * chkstat: switch to C++ compilation unit
+- add suse_version to end of permissions package version
+
+-------------------------------------------------------------------
 Thu Feb 13 12:10:41 UTC 2020 - malte.kraus@suse.com
 
 - Update to version 20200213:
