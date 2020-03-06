@@ -1,7 +1,7 @@
 #
 # spec file for package uacme
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/ndilieto/uacme
 Source:         https://github.com/ndilieto/uacme/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE suse-www-path.patch
+Patch1:         suse-www-path.patch
 BuildRequires:  asciidoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls) >= 3.3.30
@@ -40,6 +42,7 @@ certificate management functions, such as certificate revocation.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %configure
