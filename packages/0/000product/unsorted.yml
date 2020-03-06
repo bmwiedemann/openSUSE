@@ -161,7 +161,6 @@ unsorted:
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
   - PackageKit-Qt-devel 
-  - PackageKit-backend-dnf 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -374,8 +373,8 @@ unsorted:
   - aisleriot 
   - aisleriot-lang 
   - aisleriot-themes 
-  - akka: [x86_64] 
-  - akka-javadoc: [x86_64] 
+  - akka 
+  - akka-javadoc 
   - akonadi-calendar-devel 
   - akonadi-contact-devel 
   - akonadi-import-wizard-devel 
