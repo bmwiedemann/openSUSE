@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 15:41:17 CET 2020 - ro@suse.de
+
+- check_iostat: add reasons why state is warning or critical
+  to the output 
+
+-------------------------------------------------------------------
 Wed Dec 11 18:10:48 CET 2019 - ro@suse.de
 
 - check_iostat: sanitize dev name to properly match iostat output 
