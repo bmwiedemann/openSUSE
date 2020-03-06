@@ -220,6 +220,7 @@ unsorted:
   - R-tcltk 
   - R-tools 
   - R-utils 
+  - RBTools 
   - Regina-REXX 
   - Regina-REXX-devel 
   - Regina-REXX-doc 
@@ -373,6 +374,8 @@ unsorted:
   - aisleriot 
   - aisleriot-lang 
   - aisleriot-themes 
+  - akka: [x86_64] 
+  - akka-javadoc: [x86_64] 
   - akonadi-calendar-devel 
   - akonadi-contact-devel 
   - akonadi-import-wizard-devel 
@@ -4416,7 +4419,6 @@ unsorted:
   - git-crypt 
   - git-doc 
   - git-filter-repo 
-  - git-merge-changelog 
   - git-p4 
   - git-remote-gcrypt 
   - git-review 
@@ -9018,6 +9020,8 @@ unsorted:
   - libfparser-4_5_2 
   - libfpgad-api1: [x86_64] 
   - libfplll6 
+  - libfpm_helper-devel 
+  - libfpm_helper0 
   - libfpm_pb0 
   - libfprint-devel 
   - libfprint0-32bit: [x86_64] 
@@ -10499,7 +10503,7 @@ unsorted:
   - libntirpc-devel: [x86_64] 
   - libntirpc3_2: [x86_64] 
   - libntk1 
-  - libntl42 
+  - libntl43 
   - libntlm-devel 
   - libnuma-devel 
   - libnuma1-32bit: [x86_64] 
@@ -12304,12 +12308,8 @@ unsorted:
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
-  - libvmem-devel: [x86_64] # devel package of dvd:pmdk 
-  - libvmem1: [x86_64] 
   - libvmime-devel 
   - libvmime-kopano2 
-  - libvmmalloc-devel: [x86_64] # devel package of dvd:pmdk 
-  - libvmmalloc1: [x86_64] 
   - libvmtools-devel 
   - libvncserver1 
   - libvoikko-devel 
@@ -14302,6 +14302,8 @@ unsorted:
   - mxml 
   - mxml-devel 
   - mxml-doc 
+  - mybatis 
+  - mybatis-javadoc 
   - mybatis-parent 
   - mycroft-core 
   - mylvmbackup 
@@ -15564,6 +15566,13 @@ unsorted:
   - openmpi_3_1_4-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
+  - opennlp 
+  - opennlp-chunk-models 
+  - opennlp-maxent 
+  - opennlp-postag-models 
+  - opennlp-tokenize-models 
+  - opennlp-tools 
+  - opennlp-uima 
   - openobex-apps 
   - openobex-devel 
   - openocd 
@@ -17956,6 +17965,7 @@ unsorted:
   - python-djvulibre-doc 
   - python-doc 
   - python-doc-pdf 
+  - python-enum34 
   - python-fastcluster-doc 
   - python-faulthandler 
   - python-fedmsg-base 
@@ -17983,6 +17993,7 @@ unsorted:
   - python-ibus 
   - python-idle 
   - python-imobiledevice 
+  - python-ipaddress 
   - python-ipython-doc 
   - python-ipywidgets-doc 
   - python-ironicclient-doc 
@@ -18292,6 +18303,7 @@ unsorted:
   - python2-SQLAlchemy 
   - python2-SQLAlchemy-Utils 
   - python2-Scrapy 
+  - python2-SecretStorage 
   - python2-Send2Trash 
   - python2-Shapely 
   - python2-SimpleWebSocketServer 
@@ -18372,6 +18384,7 @@ unsorted:
   - python2-apache-libcloud 
   - python2-apicapi 
   - python2-apipkg 
+  - python2-appdirs 
   - python2-appindicator 
   - python2-application 
   - python2-applicationinsights 
@@ -18386,6 +18399,7 @@ unsorted:
   - python2-args 
   - python2-arrow 
   - python2-asciimatics 
+  - python2-asn1crypto 
   - python2-aspectlib 
   - python2-aspy.yaml 
   - python2-astor 
@@ -18643,7 +18657,6 @@ unsorted:
   - python2-botocore 
   - python2-bottle 
   - python2-bpython 
-  - python2-branca 
   - python2-brewer2mpl 
   - python2-brotlipy 
   - python2-bsddb3 
@@ -18698,6 +18711,7 @@ unsorted:
   - python2-certbot-nginx 
   - python2-certifi 
   - python2-certstream 
+  - python2-cffi 
   - python2-cfgv 
   - python2-cfn-lint 
   - python2-cfscrape 
@@ -18757,6 +18771,7 @@ unsorted:
   - python2-concurrentloghandler 
   - python2-configargparse 
   - python2-configobj 
+  - python2-configparser 
   - python2-configshell-fb 
   - python2-confluent-kafka 
   - python2-confusable-homoglyphs 
@@ -18787,6 +18802,7 @@ unsorted:
   - python2-croniter 
   - python2-crontab 
   - python2-crumbs 
+  - python2-cryptography 
   - python2-cryptography-vectors 
   - python2-css-parser 
   - python2-csscompressor 
@@ -18806,6 +18822,7 @@ unsorted:
   - python2-datrie 
   - python2-dbf 
   - python2-dbfread 
+  - python2-dbus-python 
   - python2-dbus-python-devel 
   - python2-ddt 
   - python2-deap 
@@ -18920,6 +18937,7 @@ unsorted:
   - python2-enaml 
   - python2-encore 
   - python2-entrypoint2 
+  - python2-entrypoints 
   - python2-environmental-override 
   - python2-enzyme 
   - python2-ephem 
@@ -19036,6 +19054,7 @@ unsorted:
   - python2-glob2 
   - python2-gmpy 
   - python2-gmpy2 
+  - python2-gobject 
   - python2-gobject-Dee 
   - python2-gobject-Gdk 
   - python2-gobject-cairo 
@@ -19116,6 +19135,7 @@ unsorted:
   - python2-i3ipc 
   - python2-icalendar 
   - python2-identify 
+  - python2-idna 
   - python2-ifaddr 
   - python2-ifconfig-parser 
   - python2-ijson 
@@ -19213,6 +19233,7 @@ unsorted:
   - python2-keepalive 
   - python2-kerberos 
   - python2-keyczar 
+  - python2-keyring 
   - python2-keyrings.alt 
   - python2-keystoneauth1 
   - python2-keystoneclient 
@@ -19292,7 +19313,6 @@ unsorted:
   - python2-lws 
   - python2-lxml 
   - python2-lxml-devel 
-  - python2-lz4 
   - python2-lzmaffi 
   - python2-m2r 
   - python2-macholib 
@@ -19306,7 +19326,6 @@ unsorted:
   - python2-manilaclient 
   - python2-manuel 
   - python2-manuel-doc 
-  - python2-marathon 
   - python2-markdown-math 
   - python2-markdown2 
   - python2-masakariclient 
@@ -19442,6 +19461,7 @@ unsorted:
   - python2-openstackdocstheme 
   - python2-openstacksdk 
   - python2-ordered-namespace 
+  - python2-ordered-set 
   - python2-orderedmultidict 
   - python2-os-api-ref 
   - python2-os-client-config 
@@ -19476,6 +19496,7 @@ unsorted:
   - python2-ovs 
   - python2-ovsdbapp 
   - python2-pa-ringbuffer 
+  - python2-packaging 
   - python2-paho-mqtt 
   - python2-pako 
   - python2-palettable 
@@ -19624,6 +19645,7 @@ unsorted:
   - python2-pyalsaaudio 
   - python2-pyaml 
   - python2-pyannotate 
+  - python2-pyasn1 
   - python2-pyasn1-modules 
   - python2-pybars3 
   - python2-pybeam 
@@ -19641,6 +19663,7 @@ unsorted:
   - python2-pychm 
   - python2-pycodestyle 
   - python2-pycountry 
+  - python2-pycparser 
   - python2-pycryptodome 
   - python2-pycryptodomex 
   - python2-pyct 
@@ -20043,6 +20066,7 @@ unsorted:
   - python2-serverfiles 
   - python2-service_identity 
   - python2-setproctitle 
+  - python2-setuptools 
   - python2-setuptools-git 
   - python2-setuptools_scm 
   - python2-setuptools_scm_git_archive 
@@ -20568,7 +20592,6 @@ unsorted:
   - python3-SPARQLWrapper 
   - python3-SQLAlchemy-Utils 
   - python3-Scrapy 
-  - python3-SecretStorage 
   - python3-Send2Trash 
   - python3-Shapely 
   - python3-SimpleWebSocketServer 
@@ -21334,7 +21357,6 @@ unsorted:
   - python3-enaml 
   - python3-encore 
   - python3-entrypoint2 
-  - python3-entrypoints 
   - python3-environmental-override 
   - python3-envisage 
   - python3-enzyme 
@@ -21701,7 +21723,6 @@ unsorted:
   - python3-keepalive 
   - python3-kerberos 
   - python3-keyczar 
-  - python3-keyring 
   - python3-keyrings.alt 
   - python3-keystoneauth1 
   - python3-keystoneclient 
@@ -22007,6 +22028,7 @@ unsorted:
   - python3-onionshare 
   - python3-onnx 
   - python3-onnx-devel 
+  - python3-onnxconverter-common 
   - python3-opcodes 
   - python3-openapi-core 
   - python3-openapi-spec-validator 
@@ -22867,6 +22889,7 @@ unsorted:
   - python3-textwrap3 
   - python3-thLib 
   - python3-thespian 
+  - python3-threadpoolctl 
   - python3-threevis 
   - python3-thrift 
   - python3-thriftpy2 
@@ -33357,6 +33380,8 @@ unsorted:
   - unifraktur-fonts 
   - unionfs-fuse 
   - unison 
+  - unit-api 
+  - unit-api-javadoc 
   - unittest-cpp-devel 
   - universal-ctags 
   - univocity-parsers 
@@ -33373,6 +33398,7 @@ unsorted:
   - unshield-devel 
   - unzip-rcc 
   - unzix 
+  - uom-parent 
   - upb-devel 
   - upb-source 
   - update-bootloader-rpm-macros 
@@ -34242,6 +34268,8 @@ unsorted:
   - xsetpointer 
   - xslide 
   - xsm 
+  - xsom 
+  - xsom-javadoc 
   - xsp 
   - xstdcmap 
   - xstereograph 
