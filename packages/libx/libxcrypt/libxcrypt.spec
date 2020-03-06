@@ -17,7 +17,7 @@
 
 
 Name:           libxcrypt
-Version:        4.4.12
+Version:        4.4.15
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain
@@ -116,12 +116,12 @@ find %{buildroot}%{_libdir} -name '*.la' -print -delete
 
 %files -n libcrypt1
 %license COPYING.LIB LICENSING
-%doc AUTHORS NEWS README THANKS
+%doc AUTHORS NEWS README README.md THANKS
 %{_libdir}/libcrypt.so.*
 %{_libdir}/libowcrypt.so.*
 
 %files devel
-%doc TODO
+%doc TODO TODO.md
 %{_libdir}/libcrypt.so
 %{_libdir}/libxcrypt.so
 %{_libdir}/libowcrypt.so

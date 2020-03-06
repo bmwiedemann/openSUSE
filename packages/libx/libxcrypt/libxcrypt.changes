@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  2 09:50:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.15
+  * The compatibility symbols crypt_gensalt_r, xcrypt, xcrypt_r,
+    xcrypt_gensalt, and xcrypt_gensalt_r are deprecated further
+  * Speed up ka-sunmd5 by skipping most of the test phrases
+- Package README.md and TODO.md (bsc#1165389)
+
+-------------------------------------------------------------------
 Thu Jan 30 13:34:00 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Update to version 4.4.12

@@ -55,4 +55,16 @@
   * Another fix for GCC v10.x, which occurs on s390 architectures only. (forwarded request 768745 from Andreas_Schwab)</comment>
     <requestid>768748</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3b11695d640118e787ac34006e15383</srcmd5>
+    <version>4.4.15</version>
+    <time>1583526198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.15
+  * The compatibility symbols crypt_gensalt_r, xcrypt, xcrypt_r,
+    xcrypt_gensalt, and xcrypt_gensalt_r are deprecated further
+  * Speed up ka-sunmd5 by skipping most of the test phrases
+- Package README.md and TODO.md (bsc#1165389) (forwarded request 780881 from Andreas_Schwab)</comment>
+    <requestid>780882</requestid>
+  </revision>
 </revisionlist>
