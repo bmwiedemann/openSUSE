@@ -207,7 +207,7 @@ BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %ifarch x86_64
 BuildRequires:  pkgconfig(libmfx)
 %endif
@@ -677,7 +677,7 @@ LDFLAGS="%_lto_cflags" \
 %if %{with lv2}
 	--enable-lv2 \
 %endif
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %ifarch x86_64
 	--enable-libmfx \
 %endif
