@@ -35,6 +35,7 @@ unsorted:
   - ComputeLibrary: [x86_64] 
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
+  - CoreFreq: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -4418,6 +4419,7 @@ unsorted:
   - git-crypt 
   - git-doc 
   - git-filter-repo 
+  - git-merge-changelog 
   - git-p4 
   - git-remote-gcrypt 
   - git-review 
@@ -4455,6 +4457,29 @@ unsorted:
   - glassfish-el 
   - glassfish-el-api 
   - glassfish-el-javadoc 
+  - glassfish-hk2 
+  - glassfish-hk2-api 
+  - glassfish-hk2-class-model 
+  - glassfish-hk2-configuration 
+  - glassfish-hk2-core 
+  - glassfish-hk2-extras 
+  - glassfish-hk2-hk2 
+  - glassfish-hk2-inhabitant-generator 
+  - glassfish-hk2-javadoc 
+  - glassfish-hk2-jmx 
+  - glassfish-hk2-locator 
+  - glassfish-hk2-locator-extras 
+  - glassfish-hk2-locator-no-proxies 
+  - glassfish-hk2-locator-no-proxies2 
+  - glassfish-hk2-maven 
+  - glassfish-hk2-maven-plugins 
+  - glassfish-hk2-metadata-generator 
+  - glassfish-hk2-osgi-resource-locator 
+  - glassfish-hk2-runlevel 
+  - glassfish-hk2-runlevel-extras 
+  - glassfish-hk2-testing 
+  - glassfish-hk2-testng 
+  - glassfish-hk2-utils 
   - glassfish-jax-rs-api 
   - glassfish-jax-rs-api-javadoc 
   - glassfish-jsp 
@@ -4692,6 +4717,8 @@ unsorted:
   - gnuhealth-client 
   - gnuhealth-orthanc 
   - gnuhealth-thalamus 
+  - gnulib-devel 
+  - gnulib-docs 
   - gnumeric 
   - gnumeric-devel 
   - gnumeric-doc 
@@ -10175,10 +10202,8 @@ unsorted:
   - libmediainfo-devel 
   - libmediainfo0 
   - libmediainfo0-32bit: [x86_64] 
-  - libmediastreamer_base10 
-  - libmediastreamer_base10-32bit: [x86_64] 
-  - libmediastreamer_voip10 
-  - libmediastreamer_voip10-32bit: [x86_64] 
+  - libmediastreamer10 
+  - libmediastreamer10-32bit: [x86_64] 
   - libmediawiki-devel 
   - libmedimport0: [x86_64] 
   - libmeep14 
@@ -10655,8 +10680,8 @@ unsorted:
   - liborigin-doc 
   - liborigin-tools 
   - liborigin3 
-  - libortp13 
-  - libortp13-32bit: [x86_64] 
+  - libortp14 
+  - libortp14-32bit: [x86_64] 
   - libosdCPU3_4_0 
   - libosinfo-devel 
   - liboslcomp1_10 
@@ -11989,11 +12014,11 @@ unsorted:
   - libtheora0-32bit: [x86_64] 
   - libtheoradec1-32bit: [x86_64] 
   - libtheoraenc1-32bit: [x86_64] 
-  - libthrift-0_12_0 
+  - libthrift-0_13_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_12_0 
-  - libthriftz-0_12_0 
+  - libthriftnb-0_13_0 
+  - libthriftz-0_13_0 
   - libtidy-devel 
   - libtidy5 
   - libtidyp-1_04-0 
@@ -12307,8 +12332,12 @@ unsorted:
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
+  - libvmem-devel: [x86_64] 
+  - libvmem1: [x86_64] 
   - libvmime-devel 
   - libvmime-kopano2 
+  - libvmmalloc-devel: [x86_64] 
+  - libvmmalloc1: [x86_64] 
   - libvmtools-devel 
   - libvncserver1 
   - libvoikko-devel 
@@ -12348,7 +12377,6 @@ unsorted:
   - libvtk1-openmpi1 
   - libvtk1-openmpi2 
   - libvtk1-openmpi3 
-  - libvulkan1 
   - libvulkan1-32bit: [x86_64] 
   - libvulkan_intel-32bit: [x86_64] 
   - libvulkan_radeon-32bit: [x86_64] 
@@ -13610,6 +13638,7 @@ unsorted:
   - mediainfo-gui 
   - mediastreamer2 
   - mediastreamer2-devel 
+  - mediastreamer2-doc 
   - medit 
   - medit-lang 
   - mednafen 
@@ -15803,6 +15832,7 @@ unsorted:
   - paexec 
   - paexec-examples 
   - pagein 
+  - pagein-bash-completion 
   - pagemon 
   - pagetools 
   - paglinawan-quicksand-fonts 
@@ -17733,6 +17763,7 @@ unsorted:
   - projectM-data 
   - projectM-devel 
   - projectlibre 
+  - prom2json 
   - prometheus-client-model-source 
   - prometheus-cpp-devel 
   - prometheus-ha_cluster_exporter: [x86_64] 
@@ -18402,7 +18433,6 @@ unsorted:
   - python2-aspectlib 
   - python2-aspy.yaml 
   - python2-astor 
-  - python2-astral 
   - python2-astroid 
   - python2-astunparse 
   - python2-asv 
@@ -19408,7 +19438,6 @@ unsorted:
   - python2-networkx-doc 
   - python2-neutronclient 
   - python2-newt 
-  - python2-nibabel 
   - python2-nine 
   - python2-nltk 
   - python2-nodeenv 
@@ -19660,6 +19689,7 @@ unsorted:
   - python2-pycdio 
   - python2-pycha 
   - python2-pychm 
+  - python2-pyclipper 
   - python2-pycodestyle 
   - python2-pycountry 
   - python2-pycparser 
@@ -19797,7 +19827,6 @@ unsorted:
   - python2-pytest-env 
   - python2-pytest-error-for-skips 
   - python2-pytest-expect 
-  - python2-pytest-faulthandler 
   - python2-pytest-fixture-config 
   - python2-pytest-flake8 
   - python2-pytest-flakes 
@@ -19911,6 +19940,7 @@ unsorted:
   - python2-pytoml 
   - python2-pytools 
   - python2-pytricia 
+  - python2-pytzdata 
   - python2-pyuca 
   - python2-pyudev 
   - python2-pyusb 
@@ -21717,9 +21747,11 @@ unsorted:
   - python3-k5test 
   - python3-kafka-python 
   - python3-kaitaistruct 
+  - python3-kasa 
   - python3-kazoo 
   - python3-kea 
   - python3-keepalive 
+  - python3-keras2onnx: [x86_64] 
   - python3-kerberos 
   - python3-keyczar 
   - python3-keyrings.alt 
@@ -22268,6 +22300,7 @@ unsorted:
   - python3-pycallgraph 
   - python3-pycdio 
   - python3-pycha 
+  - python3-pyclipper 
   - python3-pycodestyle 
   - python3-pycountry 
   - python3-pycryptodomex 
@@ -22555,6 +22588,7 @@ unsorted:
   - python3-pytoml 
   - python3-pytools 
   - python3-pytricia 
+  - python3-pytzdata 
   - python3-pyuca 
   - python3-pyusb 
   - python3-pyuv 
@@ -23611,39 +23645,31 @@ unsorted:
   - ruby2.6-rubygem-abstract-testsuite 
   - ruby2.6-rubygem-abstract_method-doc 
   - ruby2.6-rubygem-actioncable-doc-5.2 
-  - ruby2.6-rubygem-actioncable-doc-5_0 
   - ruby2.6-rubygem-actioncable-doc-5_1 
   - ruby2.6-rubygem-actioncable-doc-6.0 
   - ruby2.6-rubygem-actionmailbox-doc-6.0 
   - ruby2.6-rubygem-actionmailer-doc-5.2 
-  - ruby2.6-rubygem-actionmailer-doc-5_0 
   - ruby2.6-rubygem-actionmailer-doc-5_1 
   - ruby2.6-rubygem-actionmailer-doc-6.0 
   - ruby2.6-rubygem-actionpack-doc-5.2 
-  - ruby2.6-rubygem-actionpack-doc-5_0 
   - ruby2.6-rubygem-actionpack-doc-5_1 
   - ruby2.6-rubygem-actionpack-doc-6.0 
   - ruby2.6-rubygem-actiontext-doc-6.0 
   - ruby2.6-rubygem-actionview-doc-5.2 
-  - ruby2.6-rubygem-actionview-doc-5_0 
   - ruby2.6-rubygem-actionview-doc-5_1 
   - ruby2.6-rubygem-actionview-doc-6.0 
   - ruby2.6-rubygem-activejob-doc-5.2 
-  - ruby2.6-rubygem-activejob-doc-5_0 
   - ruby2.6-rubygem-activejob-doc-5_1 
   - ruby2.6-rubygem-activejob-doc-6.0 
   - ruby2.6-rubygem-activemodel-doc-5.2 
-  - ruby2.6-rubygem-activemodel-doc-5_0 
   - ruby2.6-rubygem-activemodel-doc-5_1 
   - ruby2.6-rubygem-activemodel-doc-6.0 
   - ruby2.6-rubygem-activerecord-deprecated_finders-doc 
   - ruby2.6-rubygem-activerecord-doc-5.2 
-  - ruby2.6-rubygem-activerecord-doc-5_0 
   - ruby2.6-rubygem-activerecord-doc-6.0 
   - ruby2.6-rubygem-activestorage-doc-5.2 
   - ruby2.6-rubygem-activestorage-doc-6.0 
   - ruby2.6-rubygem-activesupport-doc-5.2 
-  - ruby2.6-rubygem-activesupport-doc-5_0 
   - ruby2.6-rubygem-activesupport-doc-5_1 
   - ruby2.6-rubygem-activesupport-doc-6.0 
   - ruby2.6-rubygem-addressable-doc 
@@ -24116,7 +24142,6 @@ unsorted:
   - ruby2.6-rubygem-rails-deprecated_sanitizer-doc 
   - ruby2.6-rubygem-rails-deprecated_sanitizer-testsuite 
   - ruby2.6-rubygem-rails-doc-5.2 
-  - ruby2.6-rubygem-rails-doc-5_0 
   - ruby2.6-rubygem-rails-doc-5_1 
   - ruby2.6-rubygem-rails-doc-6.0 
   - ruby2.6-rubygem-rails-dom-testing-doc 
@@ -24127,7 +24152,6 @@ unsorted:
   - ruby2.6-rubygem-rails_stdout_logging-doc 
   - ruby2.6-rubygem-rails_stdout_logging-testsuite 
   - ruby2.6-rubygem-railties-doc-5.2 
-  - ruby2.6-rubygem-railties-doc-5_0 
   - ruby2.6-rubygem-railties-doc-5_1 
   - ruby2.6-rubygem-railties-doc-6.0 
   - ruby2.6-rubygem-rainbow-doc 
@@ -33397,6 +33421,10 @@ unsorted:
   - unshield-devel 
   - unzip-rcc 
   - unzix 
+  - uom-lib 
+  - uom-lib-assertj 
+  - uom-lib-common 
+  - uom-lib-javadoc 
   - uom-parent 
   - upb-devel 
   - upb-source 
@@ -34069,6 +34097,8 @@ unsorted:
   - xgalaga++ 
   - xgalaga-sdl 
   - xgamma 
+  - xgboost 
+  - xgboost-javadoc 
   - xgboost-predictor 
   - xgboost-predictor-javadoc 
   - xgc 

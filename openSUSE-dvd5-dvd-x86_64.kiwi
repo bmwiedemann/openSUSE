@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200305" schemaversion="4.1">
+<image name="OBS__openSUSE___20200306" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200305</productvar>
+      <productvar name="VERSION">20200306</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200305,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200306,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200305/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200306/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -339,6 +339,7 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
+      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -1003,6 +1004,7 @@
       <repopackage name="ibus-mozc"/>
       <repopackage name="ibus-mozc-candidate-window"/>
       <repopackage name="ibus-pinyin"/>
+      <repopackage name="ibus-sunpinyin"/>
       <repopackage name="ibus-table"/>
       <repopackage name="ibus-table-chinese-array"/>
       <repopackage name="ibus-table-chinese-cangjie"/>
@@ -3047,6 +3049,7 @@
       <repopackage name="libvorbisfile3-32bit" arch="x86_64"/>
       <repopackage name="libvpx6"/>
       <repopackage name="libvte-2_91-0"/>
+      <repopackage name="libvulkan1"/>
       <repopackage name="libvulkan_intel"/>
       <repopackage name="libvulkan_radeon"/>
       <repopackage name="libwacom-data"/>
@@ -4522,40 +4525,32 @@
       <repopackage name="ruby2.6-rubygem-abstract"/>
       <repopackage name="ruby2.6-rubygem-abstract_method"/>
       <repopackage name="ruby2.6-rubygem-actioncable-5.2"/>
-      <repopackage name="ruby2.6-rubygem-actioncable-5_0"/>
       <repopackage name="ruby2.6-rubygem-actioncable-5_1"/>
       <repopackage name="ruby2.6-rubygem-actioncable-6.0"/>
       <repopackage name="ruby2.6-rubygem-actionmailbox-6.0"/>
       <repopackage name="ruby2.6-rubygem-actionmailer-5.2"/>
-      <repopackage name="ruby2.6-rubygem-actionmailer-5_0"/>
       <repopackage name="ruby2.6-rubygem-actionmailer-5_1"/>
       <repopackage name="ruby2.6-rubygem-actionmailer-6.0"/>
       <repopackage name="ruby2.6-rubygem-actionpack-5.2"/>
-      <repopackage name="ruby2.6-rubygem-actionpack-5_0"/>
       <repopackage name="ruby2.6-rubygem-actionpack-5_1"/>
       <repopackage name="ruby2.6-rubygem-actionpack-6.0"/>
       <repopackage name="ruby2.6-rubygem-actiontext-6.0"/>
       <repopackage name="ruby2.6-rubygem-actionview-5.2"/>
-      <repopackage name="ruby2.6-rubygem-actionview-5_0"/>
       <repopackage name="ruby2.6-rubygem-actionview-5_1"/>
       <repopackage name="ruby2.6-rubygem-actionview-6.0"/>
       <repopackage name="ruby2.6-rubygem-activejob-5.2"/>
-      <repopackage name="ruby2.6-rubygem-activejob-5_0"/>
       <repopackage name="ruby2.6-rubygem-activejob-5_1"/>
       <repopackage name="ruby2.6-rubygem-activejob-6.0"/>
       <repopackage name="ruby2.6-rubygem-activemodel-5.2"/>
-      <repopackage name="ruby2.6-rubygem-activemodel-5_0"/>
       <repopackage name="ruby2.6-rubygem-activemodel-5_1"/>
       <repopackage name="ruby2.6-rubygem-activemodel-6.0"/>
       <repopackage name="ruby2.6-rubygem-activerecord-5.2"/>
-      <repopackage name="ruby2.6-rubygem-activerecord-5_0"/>
       <repopackage name="ruby2.6-rubygem-activerecord-5_1"/>
       <repopackage name="ruby2.6-rubygem-activerecord-6.0"/>
       <repopackage name="ruby2.6-rubygem-activerecord-deprecated_finders"/>
       <repopackage name="ruby2.6-rubygem-activestorage-5.2"/>
       <repopackage name="ruby2.6-rubygem-activestorage-6.0"/>
       <repopackage name="ruby2.6-rubygem-activesupport-5.2"/>
-      <repopackage name="ruby2.6-rubygem-activesupport-5_0"/>
       <repopackage name="ruby2.6-rubygem-activesupport-5_1"/>
       <repopackage name="ruby2.6-rubygem-activesupport-6.0"/>
       <repopackage name="ruby2.6-rubygem-addressable"/>
@@ -4851,7 +4846,6 @@
       <repopackage name="ruby2.6-rubygem-rack-ssl-1_3"/>
       <repopackage name="ruby2.6-rubygem-rack-test-0_6"/>
       <repopackage name="ruby2.6-rubygem-rails-5.2"/>
-      <repopackage name="ruby2.6-rubygem-rails-5_0"/>
       <repopackage name="ruby2.6-rubygem-rails-5_1"/>
       <repopackage name="ruby2.6-rubygem-rails-6.0"/>
       <repopackage name="ruby2.6-rubygem-rails-deprecated_sanitizer"/>
@@ -4860,7 +4854,6 @@
       <repopackage name="ruby2.6-rubygem-rails-i18n"/>
       <repopackage name="ruby2.6-rubygem-rails_stdout_logging"/>
       <repopackage name="ruby2.6-rubygem-railties-5.2"/>
-      <repopackage name="ruby2.6-rubygem-railties-5_0"/>
       <repopackage name="ruby2.6-rubygem-railties-5_1"/>
       <repopackage name="ruby2.6-rubygem-railties-6.0"/>
       <repopackage name="ruby2.6-rubygem-rainbow"/>
@@ -5166,6 +5159,7 @@
       <repopackage name="systemd"/>
       <repopackage name="systemd-32bit" arch="x86_64"/>
       <repopackage name="systemd-container"/>
+      <repopackage name="systemd-doc"/>
       <repopackage name="systemd-icon-branding-openSUSE"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-logger"/>
