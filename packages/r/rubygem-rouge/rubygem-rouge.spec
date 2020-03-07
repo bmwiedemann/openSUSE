@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rouge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rouge
-Version:        3.6.0
+Version:        3.15.0
 Release:        0
 %define mod_name rouge
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://rouge.jneen.net/
+URL:            http://rouge.jneen.net/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A pure-ruby colorizer based on pygments
