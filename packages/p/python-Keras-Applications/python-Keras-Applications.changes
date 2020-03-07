@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 25 15:02:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add python-Keras recommend only as we don't wanna have build cycle
+
+-------------------------------------------------------------------
+Tue Feb 25 11:24:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Match up exclude archs with tensorflow
+
+-------------------------------------------------------------------
+Mon Feb 24 13:57:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild and enable tests
+
+-------------------------------------------------------------------
 Fri Jan 17 10:33:54 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - updated to version 1.0.8 which adds following new models
