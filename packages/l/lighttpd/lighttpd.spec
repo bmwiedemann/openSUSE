@@ -43,7 +43,6 @@ Source5:        lighttpd.SuSEfirewall
 Source6:        lighttpd-ssl.SuSEfirewall
 Source7:        lighttpd.logrotate
 BuildRequires:  FastCGI-devel
-BuildRequires:  GeoIP-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gamin-devel
@@ -206,17 +205,6 @@ network bandwidth, machine-room temperature, server load average).
 This module feeds an rrdtool database with the traffic stats from
 lighttpd.
 
-%package mod_geoip
-Summary:        GeoIP legacy database support for Lighttp
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-
-%description mod_geoip
-This module supports fast ip/location lookups using the legacy
-MaxMind GeoIP / GeoCity databases. The databases were
-discontinued 2 January 2019 and this module is deprecated.
-See %{name}-mod_maxminddb which supports MaxMind GeoIP2.
-
 %package mod_maxminddb
 Summary:        MaxMind GeoIP2 database support for Lighttp
 Group:          Productivity/Networking/Web/Servers
@@ -312,7 +300,6 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
     --with-webdav-props         \
     --with-webdav-locks         \
     --with-fam                  \
-    --with-geoip                \
     --with-maxminddb            \
     --with-sasl                 \
     --with-attr
@@ -342,9 +329,9 @@ ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 perl -p -i.orig -e 's|^(server\.tag = ).*$|$1 "%{name} (%{version}/SuSE)"|' doc/config/lighttpd.conf
 diff -ur doc/config/lighttpd.conf{.orig,} ||:
 rm -vf doc/config/lighttpd.conf.orig ||:
+rm -vf doc/config/conf.d/geoip.conf ||:
 cp -rv doc/config/* %{buildroot}%{_sysconfdir}/%{name}/
-# as much as i would like to use -delete here. sles9 doesnt understand it.
-find %{buildroot}%{_sysconfdir}/%{name}/ -name Makefile\* -print0 | xargs -r0 rm -fv
+find %{buildroot}%{_sysconfdir}/%{name}/ -name Makefile\* -delete
 #
 # sysconfig template
 #
@@ -524,10 +511,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %doc doc/outdated/rrdtool.txt
 %doc doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_rrdtool.so
-
-%files mod_geoip
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/geoip.conf
-%{_libdir}/%{name}/mod_geoip.so
 
 %files mod_maxminddb
 %{_libdir}/%{name}/mod_maxminddb.so

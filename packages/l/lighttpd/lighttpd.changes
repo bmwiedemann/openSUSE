@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 12:49:37 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Remove deprecated GeoIP support (bsc#1156198)
+  * drop mod_geoip subpackage
+
+-------------------------------------------------------------------
 Sun Feb  2 18:43:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.55:
