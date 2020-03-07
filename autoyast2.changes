@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:18:51 CET 2020 - schubi@suse.de
+
+- Fixed crash while loading none existing AY file (bsc#1165464).
+- 4.2.29
+
+-------------------------------------------------------------------
 Wed Feb 26 16:19:57 CET 2020 - schubi@suse.de
 
 - Service for init scripts: Checking working network with
