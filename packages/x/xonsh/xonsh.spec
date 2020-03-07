@@ -1,7 +1,7 @@
 #
 # spec file for package xonsh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xonsh
-Version:        0.9.10
+Version:        0.9.14
 Release:        0
 Summary:        A general purpose, Python-ish shell
 License:        BSD-3-Clause AND BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://xonsh.org
+URL:            https://xonsh.org
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # SECTION docs
 BuildRequires:  python3-Sphinx

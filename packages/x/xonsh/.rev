@@ -687,4 +687,12 @@
     the default.</comment>
     <requestid>722839</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6974b7300ed9421b5396bdbe4eb1622b</srcmd5>
+    <version>0.9.14</version>
+    <time>1583613681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782247</requestid>
+  </revision>
 </revisionlist>
