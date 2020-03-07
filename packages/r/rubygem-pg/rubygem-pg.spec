@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pg
-Version:        1.1.4
+Version:        1.2.2
 Release:        0
 %define mod_name pg
 %define mod_full_name %{mod_name}-%{version}
@@ -33,11 +33,11 @@ BuildRequires:  openssl-devel
 BuildRequires:  postgresql-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.0.0}
+BuildRequires:  %{rubydevel >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://bitbucket.org/ged/ruby-pg
+URL:            https://github.com/ged/ruby-pg
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-pg-rpmlintrc
 Source2:        gem2rpm.yml
@@ -45,7 +45,7 @@ Source2:        gem2rpm.yml
 Patch0:         use-pkg-config.patch
 # /MANUAL
 Summary:        Pg is the Ruby interface to the PostgreSQL RDBMS
-License:        BSD-3-Clause
+License:        BSD-2-Clause
 Group:          Development/Languages/Ruby
 
 %description
