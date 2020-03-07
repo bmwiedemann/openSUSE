@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:49:45 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.18.1
+ see installed CHANGELOG.md
+
+  0.18.1 (2020-01-31)
+  ===================
+  
+  Small Bugfix release.
+  
+  ## Bugfixes
+  * Just putting `# :nocov:` on top of a file or having an uneven number of them in general works again and acts as if ignoring until the end of the file. See [#846](https://github.com/colszowka/simplecov/issues/846) and thanks [@DannyBen](https://github.com/DannyBen) for the report.
+  
+  0.18.0 (2020-01-28)
+  ===================
+  
+  Huge release! Highlights are support for branch coverage (Ruby 2.5+) and dropping support for EOL'ed Ruby versions (< 2.4).
+  Please also read the other beta patch notes.
+  
+  You can run with branch coverage by putting `enable_coverage :branch` into your SimpleCov configuration (like the `SimpleCov.start do .. end` block)
+  
+  ## Enhancements
+  * You can now define the minimum expected coverage by criterion like `minimum_coverage line: 90, branch: 80`
+  * Memoized some internal data structures that didn't change to reduce SimpleCov overhead
+  * Both `FileList` and `SourceFile` now have a `coverage` method that returns a hash that points from a coverage criterion to a `CoverageStatistics` object for uniform access to overall coverage statistics for both line and branch coverage
+  
+  ## Bugfixes
+  * we were losing precision by rounding the covered strength early, that has been removed. **For Formatters** this also means that you may need to round it yourself now.
+  * Removed an inconsistency in how we treat skipped vs. irrelevant lines (see [#565](https://github.com/colszowka/simplecov/issues/565)) - SimpleCov's definition of 100% is now "You covered everything that you could" so if coverage is 0/0 that's counted as a 100% no matter if the lines were irrelevant or ignored/skipped
+  
+  ## Noteworthy
+  * `FileList` stopped inheriting from Array, it includes Enumerable so if you didn't use Array specific methods on it in formatters you should be fine
+  
+  0.18.0.beta3 (2020-01-20)
+  ========================
+  
+  ## Enhancements
+  * Instead of ignoring old `.resultset.json`s that are inside the merge timeout, adapt and respect them
+  
+  ## Bugfixes
+  * Remove the constant warning printing if you still have a `.resultset.json` in pre 0.18 layout that is within your merge timeout
+  
+  0.18.0.beta2 (2020-01-19)
+  ===================
+  
+  ## Enhancements
+  * only turn on the requested coverage criteria (when activating branch coverage before SimpleCov would also instruct Ruby to take Method coverage)
+  * Change how branch coverage is displayed, now it's `branch_type: hit_count` which should be more self explanatory. See [#830](https://github.com/colszowka/simplecov/pull/830) for an example and feel free to give feedback!
+  * Allow early running exit tasks and avoid the `at_exit` hook through the `SimpleCov.run_exit_tasks!` method. (thanks [@macumber](https://github.com/macumber))
+  * Allow manual collation of result sets through the `SimpleCov.collate` entrypoint. See the README for more details (thanks [@ticky](https://github.com/ticky))
+  * Within `case`, even if there is no `else` branch declared show missing coverage for it (aka no branch of it). See [#825](https://github.com/colszowka/simplecov/pull/825)
+  * Stop symbolizing all keys when loading cache (should lead to be faster and consume less memory)
+  * Cache whether we can use/are using branch coverage (should be slightly faster)
+  
+  ## Bugfixes
+  * Fix a crash that happened when an old version of our internal cache file `.resultset.json` was still present
+  
+  0.18.0.beta1 (2020-01-05)
+  ===================
+  
+  This is a huge release highlighted by changing our support for ruby versions to 2.4+ (so things that aren't EOL'ed) and finally adding branch coverage support!
+  
+  This release is still beta because we'd love for you to test out branch coverage and get your feedback before doing a full release.
+  
+  On a personal note from [@PragTob](https://github.com/PragTob/) thanks to [ruby together](https://rubytogether.org/) for sponsoring this work on SimpleCov making it possible to deliver this and subsequent releases.
+  
+  ## Breaking
+  * Dropped support for all EOL'ed rubies meaning we only support 2.4+. Simplecov can no longer be installed on older rubies, but older simplecov releases should still work. (thanks [@deivid-rodriguez](https://github.com/deivid-rodriguez))
+  * Dropped the `rake simplecov` task that "magically" integreated with rails. It was always undocumented, caused some issues and [had some issues](https://github.com/colszowka/simplecov/issues/689#issuecomment-561572327). Use the integration as described in the README please :)
+  
+  ## Enhancements
+  
+  * Branch coverage is here! Please try it out and test it! You can activate it with `enable_coverage :branch`. See the README for more details. This is thanks to a bunch of people most notably [@som4ik](https://github.com/som4ik), [@tycooon](https://github.com/tycooon), [@stepozer](https://github.com/stepozer),  [@klyonrad](https://github.com/klyonrad) and your humble maintainers also contributed ;)
+  * If the minimum coverage is set to be greater than 100, a warning will be shown. See [#737](https://github.com/colszowka/simplecov/pull/737) (thanks [@belfazt](https://github.com/belfazt))
+  * Add a configuration option to disable the printing of non-successful exit statuses. See [#747](https://github.com/colszowka/simplecov/pull/746) (thanks [@JacobEvelyn](https://github.com/JacobEvelyn))
+  * Calculating 100% coverage is now stricter, so 100% means 100%. See [#680](https://github.com/colszowka/simplecov/pull/680) thanks [@gleseur](https://github.com/gleseur)
+  
+  ## Bugfixes
+  
+  * Add new instance of `Minitest` constant. The `MiniTest` constant (with the capital T) will be removed in the next major release of Minitest. See [#757](https://github.com/colszowka/simplecov/pull/757) (thanks [@adam12](https://github.com/adam12))
+  
+  0.17.1 (2019-09-16)
+  ===================
+  
+  Bugfix release for problems with ParallelTests.
+  
+  ## Bugfixes
+  
+  * Avoid hanging with parallel_tests. See [#746](https://github.com/colszowka/simplecov/pull/746) (thanks [@annaswims](https://github.com/annaswims))
+
+-------------------------------------------------------------------
 Fri Jul 19 09:37:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.17.0
