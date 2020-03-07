@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 08:24:20 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Propose to restart the http service as the default action when it
+  is running (bsc#1165638)
+- 4.2.7
+
+-------------------------------------------------------------------
 Mon Feb 17 17:37:21 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed user-visible messages (bsc#1084015)

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-http-server
-Version:        4.2.6
+Version:        4.2.7
 Release:        0
 Summary:        YaST2 - HTTP Server Configuration
 License:        GPL-2.0-only
@@ -38,7 +38,6 @@ BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-network
 BuildRequires:  yast2-packagemanager-devel
 BuildRequires:  yast2-perl-bindings
-BuildRequires:  yast2-testsuite
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 
 # Yast2::ServiceWidget
