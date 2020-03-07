@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-protection
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-protection
-Version:        2.0.5
+Version:        2.0.8.1
 Release:        0
 %define mod_name rack-protection
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://sinatrarb.com/protection/
+URL:            http://sinatrarb.com/protection/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Protect against typical web attacks, works with all Rack apps,
