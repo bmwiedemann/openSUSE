@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define package_version	1.1.7
+%define package_version	1.2.2
 #
 %define build_hwdep_loader	0
 %if 0%{?suse_version} >  1140
@@ -25,25 +25,24 @@
 %define have_gtk3	0
 %endif
 Name:           alsa-tools
-Version:        1.1.7
+Version:        1.2.2
 Release:        0
 Summary:        Various ALSA Tools
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.alsa-project.org/
+URL:            http://www.alsa-project.org/
 Source:         ftp://ftp.alsa-project.org/pub/tools/alsa-tools-%{package_version}.tar.bz2
 Source1:        README.SUSE
 Source2:        sbipatches.tar.bz2
 Source4:        rmedigicontrol.desktop
 Source7:        rmedigicontrol.png
-# upstream fixes
-Patch1:         0001-hdspmixer-Use-__u32-and-__u64-for-RMS-array-types.patch
 # build fixes
 Patch101:       alsa-tools-no_m4_dir.dif
 BuildRequires:  alsa-devel
 BuildRequires:  alsa-topology-devel
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
+BuildRequires:  gobject-introspection
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  update-desktop-files
@@ -214,7 +213,6 @@ Release:        0
 Summary:        GUI tool to set individual hardware stream volumes
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       pyalsa
-Requires:       python-gtk
 Provides:       alsa-tools-gui = 1.0.28
 Obsoletes:      alsa-tools-gui <= 1.0.28
 
@@ -301,11 +299,9 @@ Hammerfall DSP soundcard series.
 %prep
 %setup -q -a 2 -n %{name}-%{package_version}
 cp %{SOURCE1} .
-# upstream fixes
-%patch1 -p1
-# build fixes
-#patch100 -p1
 %patch101 -p1
+
+sed -i '1s@/usr/bin/env python@/usr/bin/python@' hwmixvolume/hwmixvolume
 
 ALL_PACKS="seq/sbiload hdsploader usx2yloader us428control as10k1 ld10k1 hwmixvolume hda-verb"
 %ifarch %ix86

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 25 14:36:44 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.2 (do not support Python 2 and PyGtk).
+- Remove
+  0001-hdspmixer-Use-__u32-and-__u64-for-RMS-array-types.patch
+  which was included upstream.
+
+-------------------------------------------------------------------
 Fri Dec 20 16:56:52 CET 2019 - tiwai@suse.de
 
 - Fix hdspmixer build error with the latest alsa-lib:
