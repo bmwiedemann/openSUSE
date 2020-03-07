@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby_parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,18 @@
 #
 
 Name:           rubygem-ruby_parser
-Version:        3.13.1
+Version:        3.14.2
 Release:        0
 %define mod_name ruby_parser
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby < 3}
+BuildRequires:  %{ruby => 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/seattlerb/ruby_parser
+URL:            https://github.com/seattlerb/ruby_parser
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        ruby_parser (RP) is a ruby parser written in pure ruby (utilizing
@@ -44,9 +45,9 @@ PreReq:         update-alternatives
 
 %description
 ruby_parser (RP) is a ruby parser written in pure ruby (utilizing
-racc--which does by default use a C extension). RP's output is
-the same as ParseTree's output: s-expressions using ruby's arrays and
-base types.
+racc--which does by default use a C extension). It outputs
+s-expressions which can be manipulated and converted back to ruby via
+the ruby2ruby gem.
 As an example:
 def conditional1 arg1
 return 1 if arg1 == 0
