@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:31:09 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.1.0
+ see installed History.txt
+
+  === 1.1.0 / 2012-12-25
+  
+  * Bugfixes:
+    * Fix a bug that JavaExtenstionTask can't build anything.
+      #163 [Reported by Kai Kuchenbecker]
+  
+  === 1.0.9 / 2012-12-23
+  
+  * Changes:
+    * Use "-Xlint" option for JRuby native extension by default.
+      #158 [Patch by Stephen George]
+  
+  * Enhancements:
+    * Make customizable compiler Xlint option for JRuby native extension.
+      #118 [Patch by Hiroshi Hatake]
+    * Add support for Ruby 2.7.
+      #161 [Reported by Masaki Hara]
+  
+  === 1.0.8 / 2019-09-21
+  
+  * Enhancements:
+    * Added Rake::JavaExtensionTask#encoding= to pass the -encoding option to
+      javac.
+      #157 [Patch by Tiago Dias]
+  
+  * Bugfixes:
+    * Drop EOL'd rubyforge_project directive from .gemspec.
+      #155 [Patch by Olle Jonsson]
+
+-------------------------------------------------------------------
 Mon Jan 14 13:54:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.0.7
