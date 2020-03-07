@@ -585,4 +585,15 @@
     <comment></comment>
     <requestid>758571</requestid>
   </revision>
+  <revision rev="78" vrev="21">
+    <srcmd5>5cd1b81116ec04baac392b24c304a3c4</srcmd5>
+    <version>unknown</version>
+    <time>1583613674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.2 (do not support Python 2 and PyGtk).
+- Remove
+  0001-hdspmixer-Use-__u32-and-__u64-for-RMS-array-types.patch
+  which was included upstream.</comment>
+    <requestid>782533</requestid>
+  </revision>
 </revisionlist>
