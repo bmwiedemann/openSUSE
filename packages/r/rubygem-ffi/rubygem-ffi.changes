@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:34:08 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.12.2
+ see installed CHANGELOG.md
+
+  1.12.2 / 2020-02-01
+  -------------------
+  
+  * Fix possible segfault at FFI::Struct#[] and []= after GC.compact . #742
+
+-------------------------------------------------------------------
 Mon Jan 27 12:31:26 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.12.1
