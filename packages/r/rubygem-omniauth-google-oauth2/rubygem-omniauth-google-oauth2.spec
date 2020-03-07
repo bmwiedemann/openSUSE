@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-omniauth-google-oauth2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-omniauth-google-oauth2
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 %define mod_name omniauth-google-oauth2
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.1}
+BuildRequires:  %{ruby >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/zquestz/omniauth-google-oauth2
+URL:            https://github.com/zquestz/omniauth-google-oauth2
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Google OAuth2 strategy for OmniAuth 1.x
