@@ -1,7 +1,7 @@
 #
 # spec file for package hub
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define ver %{version}
 Name:           hub
-Version:        2.14.1
+Version:        2.14.2
 Release:        0
 Summary:        Command-line wrapper for git and GitHub
 License:        MIT

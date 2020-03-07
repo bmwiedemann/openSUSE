@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  6 18:58:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.2
+  * Ensure man pages are shown at full width
+  * Fix subject in ci-status docs
+  * Indicate in docs that you can do plain git push after hub pr
+    checkout
+  * Fix using hub inside git worktree
+
+-------------------------------------------------------------------
 Wed Jan 22 11:19:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.14.1
