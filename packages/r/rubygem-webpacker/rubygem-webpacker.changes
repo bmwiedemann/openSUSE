@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:04:14 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.2.2
+ see installed CHANGELOG.md
+
+  ## [[4.2.2]](https://github.com/rails/webpacker/compare/v4.2.1...v4.2.2) - 2019-12-09
+  
+  - Fixed issue with webpack clean task for nested assets [#2391](https://github.com/rails/webpacker/pull/2391)
+  
+  ## [[4.2.1]](https://github.com/rails/webpacker/compare/v4.2.0...v4.2.1) - 2019-12-09
+  
+  - Fixed issue with webpack clean task [#2389](https://github.com/rails/webpacker/pull/2389)
+
+-------------------------------------------------------------------
 Mon Dec  2 23:46:03 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.2.0
