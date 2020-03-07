@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sshkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sshkit
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 %define mod_name sshkit
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/capistrano/sshkit
+URL:            http://github.com/capistrano/sshkit
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        SSHKit makes it easy to write structured, testable SSH commands in
