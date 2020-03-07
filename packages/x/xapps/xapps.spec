@@ -1,7 +1,7 @@
 #
 # spec file for package xapps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,14 @@ URL:            https://github.com/linuxmint/xapps
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE xapps-void-return-no-return.patch -- Satisfy rpmlint checks.
 Patch0:         xapps-void-return-no-return.patch
+# PATCH-FIX-UPSTREAM xapps-python3.patch -- python2 is gone
+Patch1:         xapps-python3.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-gobject
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.22.0
@@ -115,6 +118,7 @@ Mate status applet with HIDPI support
 %autosetup -p1
 
 %build
+python3 -c 'import gi;print(gi._overridesdir)'
 %meson \
   -Ddocs=true
 %meson_build
@@ -148,7 +152,7 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/XApp-1.0.typelib
-%{python_sitearch}/gi/overrides/XApp.py
+#%{python_sitearch}/gi/overrides/XApp.py
 %{python3_sitearch}/gi/overrides/XApp.py
 
 %files -n %{soname}-devel

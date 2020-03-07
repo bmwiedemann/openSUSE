@@ -1,0 +1,28 @@
+Index: xapps-1.6.10/pygobject/meson.build
+===================================================================
+--- xapps-1.6.10.orig/pygobject/meson.build
++++ xapps-1.6.10/pygobject/meson.build
+@@ -3,14 +3,14 @@ pygobject = dependency('pygobject-3.0',
+     required: true,
+ )
+ 
+-foreach exec : ['python2', 'python3']
+-    r = run_command(exec, '-c', 'import gi;print(gi._overridesdir)')
++r = run_command('python3', '-c', 'import gi;print(gi._overridesdir)')
++message('return code: @0@'.format(r.returncode()))
+ 
+-    if r.returncode() == 0
+-        override_dir = r.stdout().strip()
+-        install_data(['XApp.py'],
+-            install_dir: override_dir
+-        )
+-    endif
+-endforeach
++if r.returncode() == 0
++  override_dir = r.stdout().strip()
++  message('override_dir: @0@'.format(override_dir))
++  install_data(['XApp.py'],
++    install_dir: override_dir
++  )
++endif
+ 

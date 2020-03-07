@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  1 05:20:54 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- Add xapps-python3.patch, fix issues to build without python2 
+
+-------------------------------------------------------------------
 Fri Jan 17 15:38:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.6.10
