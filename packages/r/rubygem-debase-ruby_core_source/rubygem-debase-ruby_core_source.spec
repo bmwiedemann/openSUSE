@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-debase-ruby_core_source
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-debase-ruby_core_source
-Version:        0.10.7
+Version:        0.10.9
 Release:        0
 %define mod_name debase-ruby_core_source
 %define mod_full_name %{mod_name}-%{version}

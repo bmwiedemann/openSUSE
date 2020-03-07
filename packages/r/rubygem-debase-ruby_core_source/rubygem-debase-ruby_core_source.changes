@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:25:30 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.10.9
+ see installed CHANGELOG.md
+
+  ## [0.10.9](https://github.com/os97673/debase-ruby_core_source/compare/v0.10.8...v0.10.9)
+  
+  * ruby 2.7.0 added (contributed by [ViugiNick](https://github.com/ViugiNick))
+  
+  ## [0.10.8](https://github.com/os97673/debase-ruby_core_source/compare/v0.10.7...v0.10.8)
+  
+  * ruby 2.7.0-preview3 added (contributed by [ViugiNick](https://github.com/ViugiNick))
+
+-------------------------------------------------------------------
 Mon Dec  2 07:21:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.10.7
