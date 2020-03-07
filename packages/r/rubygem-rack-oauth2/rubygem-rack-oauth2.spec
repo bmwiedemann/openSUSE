@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-oauth2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-oauth2
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 %define mod_name rack-oauth2
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/nov/rack-oauth2
+URL:            http://github.com/nov/rack-oauth2
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        OAuth 2.0 Server & Client Library - Both Bearer and MAC token type
