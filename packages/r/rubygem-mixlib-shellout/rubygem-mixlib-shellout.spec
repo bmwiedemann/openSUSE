@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mixlib-shellout
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mixlib-shellout
-Version:        3.0.4
+Version:        3.0.9
 Release:        0
 %define mod_name mixlib-shellout
 %define mod_full_name %{mod_name}-%{version}

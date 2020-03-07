@@ -172,4 +172,12 @@ But we can test if chinese chars show correctly in emails :)
     <comment></comment>
     <requestid>749175</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5a393662265d2702f201117cf0118442</srcmd5>
+    <version>3.0.9</version>
+    <time>1583613539</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773792</requestid>
+  </revision>
 </revisionlist>
