@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sqlite3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sqlite3
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 %define mod_name sqlite3
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,7 @@ BuildRequires:  %{rubydevel >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/sparklemotion/sqlite3-ruby
+URL:            https://github.com/sparklemotion/sqlite3-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        This module allows Ruby programs to interface with the SQLite3
