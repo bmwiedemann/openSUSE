@@ -1,7 +1,7 @@
 #
 # spec file for package ntpsec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
@@ -208,8 +208,8 @@ exit 0
 %doc %{_docdir}/%{name}/html/*
 
 %files
-%license LICENSE
-%doc NEWS README
+%license LICENSE.adoc
+%doc NEWS.adoc README.adoc
 %config(noreplace) %{_sysconfdir}/ntp.conf
 %{_sbindir}/rcntpd
 %{_bindir}/ntpfrob

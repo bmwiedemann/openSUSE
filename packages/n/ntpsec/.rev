@@ -231,4 +231,14 @@
     <comment>- Update the unit install commands wrt bsc#1153841</comment>
     <requestid>738253</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3490fe538b735df68ab55a4a2318bee4</srcmd5>
+    <version>1.1.8</version>
+    <time>1583613651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.8:
+  * Fix bug in NTS-KE client so that NTP server names work.
+  * Fix/tweak several NTS logging messages.</comment>
+    <requestid>782532</requestid>
+  </revision>
 </revisionlist>
