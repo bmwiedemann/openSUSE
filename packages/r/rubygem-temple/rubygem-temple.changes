@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:54:46 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.8.2
+ see installed CHANGES
+
+  0.8.2
+  
+    * Support TruffleRuby in Temple::Filters::StaticAnalyzer (#127)
+    * Support TruffleRuby in Temple::Filters::StringSplitter (#127)
+
+-------------------------------------------------------------------
 Thu Mar 14 11:07:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.8.1
