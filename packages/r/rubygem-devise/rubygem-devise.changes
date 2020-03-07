@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:27:39 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.7.1
+ see installed CHANGELOG.md
+
+  ### 4.7.1 - 2019-09-06
+  
+  * bug fixes
+    * Fix an edge case where records with a blank `confirmation_token` could be confirmed (by @tegon)
+    * Fix typo inside `update_needs_confirmation` i18n key (by @lslm)
+  
+  ### 4.7.0 - 2019-08-19
+  
+  * enhancements
+    * Support Rails 6.0
+    * Update CI to rails 6.0.0.beta3 (by @tunnes)
+    * refactor method name to be more consistent (by @saiqulhaq)
+    * Fix rails 6.0.rc1 email uniqueness validation deprecation warning (by @Vasfed)
+  
+  * bug fixes
+    * Add `autocomplete="new-password"` to `password_confirmation` fields (by @ferrl)
+    * Fix rails_51_and_up? method for Rails 6.rc1 (by @igorkasyanchuk)
+
+-------------------------------------------------------------------
 Fri Mar 29 05:59:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 4.6.2
