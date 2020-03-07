@@ -99,4 +99,12 @@
   no changelog found</comment>
     <requestid>709790</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bc065cc05d07d47a7cbcf37ab131fe8b</srcmd5>
+    <version>0.34</version>
+    <time>1583613491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773764</requestid>
+  </revision>
 </revisionlist>
