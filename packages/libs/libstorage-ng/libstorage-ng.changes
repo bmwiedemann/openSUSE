@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Mar 5 11:44:31 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/libstorage-ng#708
+- merge gh#openSUSE/libstorage-ng#707
+- Translated using Weblate (Finnish) (bsc#1149754)
+- Add option for ignoring clustered LVM
+- Update lib version
+- Ignore clustered LVM
+- Revert "Add option for ignoring clustered LVM"
+- Revert "Update lib version"
+- Revert "Translated using Weblate (Finnish)" (bsc#1149754)
+- Sync branches (SLE-15-SP1)
+- 4.2.66
+
+--------------------------------------------------------------------
 Thu Feb 20 22:02:59 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Spanish) (bsc#1149754)
