@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-faraday
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-faraday
-Version:        0.15.4
+Version:        1.0.0
 Release:        0
 %define mod_name faraday
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9}
+BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/lostisland/faraday
+URL:            https://lostisland.github.io/faraday
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        HTTP/REST API client library
@@ -48,7 +48,7 @@ HTTP/REST API client library.
 
 %install
 %gem_install \
-  --doc-files="LICENSE.md README.md" \
+  --doc-files="CHANGELOG.md LICENSE.md README.md" \
   -f
 
 %gem_packages
