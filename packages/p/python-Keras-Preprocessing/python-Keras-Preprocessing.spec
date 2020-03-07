@@ -1,7 +1,7 @@
 #
 # spec file for package python-Keras-Preprocessing
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,39 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-Keras-Preprocessing
-Version:        1.0.5
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+%define skip_python2 1
+Name:           python-Keras-Preprocessing%{psuffix}
+Version:        1.1.0
 Release:        0
 Summary:        Data preprocessing and augmentation package for deep learning models
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/keras-team/keras-preprocessing
 Source0:        https://files.pythonhosted.org/packages/source/K/Keras_Preprocessing/Keras_Preprocessing-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/keras-team/keras-preprocessing/%{version}/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.9.1
 Requires:       python-six >= 1.9.0
-Recommends:     python-scipy >= 0.14
-BuildArch:      noarch
-# SECTION test requirements
+# It won't work without it but we don't want a build loop in OBS
+Recommends:     python-Keras
+# match up with tensorflow
+ExcludeArch:    %{ix86}
+%if %{with test}
+BuildRequires:  %{python_module Keras}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module numpy >= 1.9.1}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.9.0}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -49,18 +59,28 @@ working with image data, text data, and sequence data.
 
 %prep
 %setup -q -n Keras_Preprocessing-%{version}
-cp %{SOURCE10} .
+# do not add extra opts for pytest
+rm setup.cfg
 
 %build
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%check
+%if %{with test}
+%pytest
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/*
+%endif
 
 %changelog

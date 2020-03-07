@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 25 15:01:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add python-keras as a recommend only to not create cycle
+
+-------------------------------------------------------------------
+Tue Feb 25 11:24:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Match up exclude archs with tensorflow
+
+-------------------------------------------------------------------
+Mon Feb 24 13:50:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.0:
+  * Various fixes for new keras and tensorflow
+- Switch to multibuild and enable tests
+
+-------------------------------------------------------------------
 Wed Nov 14 21:56:48 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
