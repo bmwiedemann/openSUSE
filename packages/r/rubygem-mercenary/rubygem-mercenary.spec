@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mercenary
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,16 +24,16 @@
 #
 
 Name:           rubygem-mercenary
-Version:        0.3.6
+Version:        0.4.0
 Release:        0
 %define mod_name mercenary
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/jekyll/mercenary
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            https://github.com/jekyll/mercenary
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Lightweight and flexible library for writing command-line apps in
 License:        MIT
