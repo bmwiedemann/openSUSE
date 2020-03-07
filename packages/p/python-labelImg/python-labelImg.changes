@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Feb 25 09:19:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix package name
+- Convert to proper singlespec
+- Use normal release tarball
+- Enable tests
+- Fix dependencies
+- Update to 1.8.3:
+  * Various bugfixes
+- Remove no longer needed patch fix-resource-load.patch
+
+-------------------------------------------------------------------
+Tue Mar 12 15:26:13 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 1.8.1
+- some ugly hacks to fix startup crash not finding resources
+  * fix-resource-load.patch
