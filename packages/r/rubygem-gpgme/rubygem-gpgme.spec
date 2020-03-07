@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gpgme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gpgme
-Version:        2.0.18
+Version:        2.0.19
 Release:        0
 %define mod_name gpgme
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/ueno/ruby-gpgme
+URL:            http://github.com/ueno/ruby-gpgme
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-gpgme-rpmlintrc
 Source2:        gem2rpm.yml
