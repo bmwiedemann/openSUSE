@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  4 11:34:30 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- fix showing count of packages to install in slide show
+  (bsc#1161412)
+- 4.2.56
+
+-------------------------------------------------------------------
+Fri Feb 28 17:11:05 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- In the addon selector, display by default the information of the
+  first available product (related to bsc#1157780).
+- 4.2.55
+
+-------------------------------------------------------------------
 Fri Feb 28 16:53:10 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not crash when the list of preselected modules is not defined
