@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  7 12:14:54 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- fixed configuration to make the service start
+  https://docs.powerdns.com/recursor/upgrade.html#x-to-4-3-0-or-master
+
+-------------------------------------------------------------------
 Tue Mar  3 09:46:58 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.3.0:

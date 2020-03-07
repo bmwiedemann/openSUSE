@@ -80,7 +80,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %endif
 PreReq:         pdns-common
 #
-Url:            http://www.powerdns.com/
+URL:            http://www.powerdns.com/
 Source:         http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
 Source10:       http://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2.sig
 Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyring
@@ -115,7 +115,9 @@ ln effective_tld_names.dat effective_tld_list.dat
   --with-protobuf \
 %endif
   --with-lua                         \
-  --with-socketdir=%{_localstatedir}
+  --with-socketdir=%{_rundir}        \
+  --with-service-user=pdns           \
+  --with-service-group=pdns
 make %{?_smp_mflags}
 
 %install

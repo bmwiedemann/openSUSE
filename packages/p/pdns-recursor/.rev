@@ -392,4 +392,12 @@
     https://blog.powerdns.com/2020/03/03/powerdns-recursor-4-3-0-released/</comment>
     <requestid>781144</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>5e74b72396658a03b0475e7f1d7a16c0</srcmd5>
+    <version>4.3.0</version>
+    <time>1583613709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782531</requestid>
+  </revision>
 </revisionlist>
