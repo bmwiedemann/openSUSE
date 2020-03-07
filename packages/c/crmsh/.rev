@@ -1969,4 +1969,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>775026</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>dba3878a12f23e1326ec32347812feb3</srcmd5>
+    <version>4.2.0+git.1583246906.f09ab45e</version>
+    <time>1583613714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782541</requestid>
+  </revision>
 </revisionlist>
