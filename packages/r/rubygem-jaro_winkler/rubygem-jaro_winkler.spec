@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-jaro_winkler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-jaro_winkler
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 %define mod_name jaro_winkler
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/tonytonyjan/jaro_winkler
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/tonytonyjan/jaro_winkler
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        %{name}-rpmlintrc
 Source2:        gem2rpm.yml
@@ -51,6 +51,7 @@ support any kind of string encoding, such as UTF-8, EUC-JP, Big5, etc.
 
 %install
 %gem_install \
+  --doc-files="LICENSE.txt" \
   -f
 %gem_cleanup
 
