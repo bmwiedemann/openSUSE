@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Feb 25 09:09:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the links for the CPU code to be generated on all available
+  platforms
+
+-------------------------------------------------------------------
+Tue Feb 25 08:28:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2020.01:
+  * Added ability to translate from physical address to I/O region offset
+  * CEVA RISC-V C-Sky X86 CPU support
+  * update IRQ implementation
+  * bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 10 13:18:10 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch to stable release: 2018.04
+
+-------------------------------------------------------------------
+Mon Jul  9 16:28:58 UTC 2018 - agraf@suse.com
+
+- First version
