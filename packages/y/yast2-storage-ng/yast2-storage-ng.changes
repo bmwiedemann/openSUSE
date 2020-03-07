@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  5 10:23:24 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Fix unit tests for the progress dialog added in version 4.2.82
+  (related to bsc#1135366).
+- 4.2.93
+
+-------------------------------------------------------------------
+Tue Mar  3 12:56:34 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: export the 'disklabel' attribute for software RAID
+  devices.
+- AutoYaST: include a 'partitions' section when exporting an
+  unpartitioned software RAID which is not used as a filesystem
+  (bsc#1159201).
+- 4.2.92
+
+-------------------------------------------------------------------
+Fri Feb 28 17:05:15 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: allow to select APQNs when encrypting with pervasive
+  encryption (jsc#SLE-7376).
+- 4.2.91
+-------------------------------------------------------------------
 Thu Feb 20 16:02:54 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Add API methods to get preferred mount by option and the
