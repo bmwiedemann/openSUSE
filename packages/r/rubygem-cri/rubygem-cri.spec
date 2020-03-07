@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-cri
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-cri
-Version:        2.15.9
+Version:        2.15.10
 Release:        0
 %define mod_name cri
 %define mod_full_name %{mod_name}-%{version}
@@ -34,7 +34,7 @@ BuildRequires:  %{ruby => 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/ddfreyne/cri
+URL:            https://github.com/ddfreyne/cri
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        a library for building easy-to-use command-line tools
