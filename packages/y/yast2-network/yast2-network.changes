@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:01:33 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bsc#1164506
+  - fixed setting hostname in installer
+- bsc#1164587
+  - fixed setting hostname according to AY profile
+- 4.2.60
+
+-------------------------------------------------------------------
+Mon Mar  2 19:12:32 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not modify interface name when enslaving it (bsc#1165463)
+- 4.2.59
+
+-------------------------------------------------------------------
 Thu Feb 27 20:40:51 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not crash when running the network configuration client if
