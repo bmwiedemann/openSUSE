@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-devise-i18n
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-devise-i18n
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 %define mod_name devise-i18n
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/tigrish/devise-i18n
+URL:            http://github.com/tigrish/devise-i18n
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Translations for the devise gem
