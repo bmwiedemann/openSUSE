@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:41:56 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.9.2
+ see installed CHANGELOG.md
+
+  ## 2.9.2
+  
+  * Perform all checks before verifying endpoints.
+    [#126](https://github.com/openid/ruby-openid/pull/126)
+  
+  ## 2.9.1
+  
+  * Updated CHANGELOG.md
+  
+  ## 2.9.0
+  
+  * Remove deprecated `autorequire` from gemspec.
+    [#123](https://github.com/openid/ruby-openid/pull/123)
+  * Rescue from `Yadis::XRI::XRIHTTPError` on discovery.
+    [#106](https://github.com/openid/ruby-openid/pull/106)
+  * Avoid SSRF for claimed_id request.
+    [#121](https://github.com/openid/ruby-openid/pull/121)
+  * Updated documentation.
+    [#115](https://github.com/openid/ruby-openid/pull/115), [#116](https://github.com/openid/ruby-openid/pull/116), [#117](https://github.com/openid/ruby-openid/pull/117), [#118](https://github.com/openid/ruby-openid/pull/118)
+  * Reduce warnings output in test runs.
+    [#119](https://github.com/openid/ruby-openid/pull/119)
+  * Drop deprecated option from gemspec.
+    [#120](https://github.com/openid/ruby-openid/pull/120)
+  * Remove circular require.
+    [#113](https://github.com/openid/ruby-openid/pull/113)
+  * Updated Travis CI config with Ruby 2.6
+    [#114](https://github.com/openid/ruby-openid/pull/114)
+  * Simplify Bundler require; remove need for extra `:require`.
+    [#112](https://github.com/openid/ruby-openid/pull/112)
+  
+  ## 2.8.0
+  
+  * Fix `admin/mkassoc` script.
+    See https://github.com/openid/ruby-openid/pull/103
+  * Allow specifying timeout for `OpenID::StandardFetcher` in environment variables.
+    See https://github.com/openid/ruby-openid/pull/109
+  * Fixed some documentation.
+    See https://github.com/openid/ruby-openid/pull/111
+  * Fixed example server.
+    See https://github.com/openid/ruby-openid/pull/91
+  * Fixed tests.
+    See https://github.com/openid/ruby-openid/pull/86
+  * Misc. changes to the CI setup.
+    See
+    - https://github.com/openid/ruby-openid/pull/110
+    - https://github.com/openid/ruby-openid/pull/108
+    - https://github.com/openid/ruby-openid/pull/107
+
+-------------------------------------------------------------------
 Mon Feb  5 17:46:30 UTC 2018 - jmassaguerpla@suse.com
 
 - fix license to match spdx identifiers https://spdx.org/licenses/
