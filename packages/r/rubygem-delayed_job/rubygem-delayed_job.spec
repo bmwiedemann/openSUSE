@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-delayed_job
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-delayed_job
-Version:        4.1.7
+Version:        4.1.8
 Release:        0
 %define mod_name delayed_job
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/collectiveidea/delayed_job
+URL:            http://github.com/collectiveidea/delayed_job
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Database-backed asynchronous priority queue system -- Extracted from
