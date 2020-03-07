@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-1_6
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-1_6
-Version:        1.6.11
+Version:        1.6.13
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://rack.github.io/
+URL:            http://rack.github.io/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rack-1_6-rpmlintrc
 Source2:        gem2rpm.yml
