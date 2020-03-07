@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:51:34 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.22.0
+ see installed History.rdoc
+
+  === 2.22.0 / 2020-02-09
+  
+  * 4 minor enhancements:
+  
+    * Added metadate mapping for 'docs'.
+    * Added rdoc extension to the history and readme file finder globs.
+    * Extended readme parsing to more intelligently deal with markup sections.
+    * Refactored intuit_values to take the file content as an arg.
+  
+  * 2 bug fixes:
+  
+    * Fixed ordering of test_prelude vs framework in Minitest::TestTask. (flavorjones)
+    * Fixed wiring of test_prelude into Minitest::TestTask.create. (flavorjones)
+  
+  === 3.21.0 / 2020-01-11
+  
+  * 2 minor enhancements:
+  
+    * Added support for wiki_uri and mailing_list_uri. (JuanitoFatas)
+    * Load encrypted private key using ENV['GEM_PRIVATE_KEY_PASSPHRASE'] as passphrase. (larskanis)
+  
+  * 5 bug fixes:
+  
+    * Add require_ruby_version for 2.1+. (MSP-Greg)
+    * Fix a ruby 2.7 keyword arg deprecation. (anatol)
+    * Fix debug_gem task when you have a signing_key and broken rubygems (< 3.1.0).
+    * Fixed shadowed variable and json output for minitest's test:isolated task.
+    * Minor tweak to make hoe load when openssl isn't available.
+  
+  === 3.20.0 / 2019-11-09
+  
+  * 2 minor enhancements:
+  
+    * Added <test>:isolated task that runs tests in parallel. Replaces <test>:dep task.
+    * Bumped rake dependency to be < 15.
+  
+  === 3.19.0 / 2019-10-29
+  
+  * 4 minor enhancements:
+  
+    * Added deprecation to parse_urls for ancient url array form.
+    * Added support for gemspec metadata. (viraptor)
+    * Hoe#parse_urls now returns a hash no matter what
+    * Removed looong deprecated Hoe#url/url= methods.
+  
+  * 1 bug fix:
+  
+    * Fixed sow for ruby 2.6 deprecations in ERB. (felipec)
+  
+  === 3.18.1 / 2019-09-14
+  
+  * 1 minor enhancement:
+  
+    * Added deprecations to minitest/test_task: TESTOPTS, N (for #threads), FILTER.
+  
+  * 3 bug fixes:
+  
+    * Fixed one use of Array.prepend on ruby 2.3-2.4.
+    * Removed FILTER/N/X handling from hoe/test.rb in favor of minitest/test_task.rb.
+    * Sort globs before shuffling to normalize different file systems.
+
+-------------------------------------------------------------------
 Fri Jul 19 09:17:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 3.18.0
