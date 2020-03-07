@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.9
 %define lname   libmpv1
 Name:           mpv
-Version:        0.32.0+git.20200301T004003.e7bab0025f
+Version:        0.32.0+git.20200307T135520.28ea1ed296
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -76,7 +76,6 @@ BuildRequires:  pkgconfig(libva) >= 0.36.0
 BuildRequires:  pkgconfig(libva-x11) >= 0.36.0
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(rubberband)
-BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(vapoursynth)
 BuildRequires:  pkgconfig(vapoursynth-script)
@@ -207,7 +206,6 @@ python3 ./waf configure \
   --confdir="%{_sysconfdir}/%{name}" \
   --enable-cdda                      \
   --enable-dvdnav                    \
-  --enable-libsmbclient              \
   --enable-libmpv-shared             \
   --enable-manpage-build             \
   --enable-libarchive                \

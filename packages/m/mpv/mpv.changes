@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 07 14:53:06 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200307T135520.28ea1ed296:
+  * See https://github.com/mpv-player/mpv/compare/e7bab0025f..28ea1ed296
+    for the complete changelog.
+- Remove smbclient BR, samba support is now provided via ffmpeg
+
+-------------------------------------------------------------------
 Sun Mar 01 17:04:28 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200301T004003.e7bab0025f:
