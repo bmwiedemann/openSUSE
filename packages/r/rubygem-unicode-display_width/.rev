@@ -7,4 +7,12 @@
     <comment>Submission of rubygem-unicode-display_width, which is a dependency of rubocop.</comment>
     <requestid>737440</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>834727b3d1cadee919f98c0952224f82</srcmd5>
+    <version>1.6.1</version>
+    <time>1583613638</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773865</requestid>
+  </revision>
 </revisionlist>
