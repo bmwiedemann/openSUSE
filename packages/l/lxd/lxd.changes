@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar  7 14:49:16 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 3.22. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-22-has-been-released/7027
+  boo#1165976
+  + Resource limits for projects
+  + nftables backend for firewalling
+  + Container: Hugepages in unprivileged containers
+  + VM: Support for 9p disk devices
+  + VM: File templating support
+
+-------------------------------------------------------------------
 Fri Feb 14 07:27:24 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 3.21. The full upstream changelog is available from:
