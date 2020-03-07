@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:53:23 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.4.9
+ see installed CHANGELOG.md
+
+  ## 1.4.9 20191116
+  
+  * More debugging messages in netio.rb.
+  * Test workaround for Artemis-2289.
+  * New put and get examples.
+  * Fix issue #160.
+  * Address issue #155.
+  * Suppress SSL stacktrace to stdout.
+  * Example logger enhancements.
+  * Optional STOMP frame in examples.
+
+-------------------------------------------------------------------
 Mon Jan 14 13:59:23 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.4.8
