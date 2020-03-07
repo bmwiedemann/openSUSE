@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mini_magick
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-mini_magick
-Version:        4.9.5
+Version:        4.10.1
 Release:        0
 %define mod_name mini_magick
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/minimagick/minimagick
+URL:            https://github.com/minimagick/minimagick
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Manipulate images with minimal use of memory via ImageMagick /
