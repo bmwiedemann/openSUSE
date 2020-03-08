@@ -1,7 +1,7 @@
 #
 # spec file for package cpustat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           cpustat
-Version:        0.02.09
+Version:        0.02.10
 Release:        0
 Summary:        Periodic cpu utilization statistics
 License:        GPL-2.0-or-later
@@ -35,12 +35,23 @@ cpustat has been designed and optimized to use a minimal amount of CPU cycles
 to monitor a system hence it is a light weight alternative to traditional
 process monitoring tools such as top.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (cpustat and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -50,5 +61,8 @@ make %{?_smp_mflags}
 %doc README
 %{_sbindir}/cpustat
 %{_mandir}/man8/cpustat.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
