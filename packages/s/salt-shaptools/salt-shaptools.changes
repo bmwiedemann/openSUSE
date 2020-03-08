@@ -2,19 +2,20 @@
 Fri Jan 24 10:40:26 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.3.1
-  * Add the virtual_host_mask parameter (gcp uses 32 mask) 
+  * Add the virtual_host_mask parameter (gcp uses 32 mask)
+  (jsc#SLE-4031, jsc#SLE-4143, boo#1137989)
 
 -------------------------------------------------------------------
 Wed Jan 22 10:52:20 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 
 - Version 0.3.0
-  * Add first version of saptune module to apply specific solution 
+  * Add first version of saptune module to apply specific solution
 
 -------------------------------------------------------------------
 Thu Jan  9 15:28:29 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version 0.2.12
-  * Add module fn to update nw installation conf files 
+  * Add module fn to update nw installation conf files
 
 -------------------------------------------------------------------
 Wed Jan  8 16:45:18 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
@@ -26,7 +27,7 @@ Wed Jan  8 16:45:18 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 Wed Jan 08 10:16:53 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.2.10
-  Add crmsh --no-overwrite-sshkeys option 
+  Add crmsh --no-overwrite-sshkeys option
 
 -------------------------------------------------------------------
 Mon Dec 23 07:39:31 UTC 2019 - nick wang <nwang@suse.com>
@@ -45,7 +46,7 @@ Fri Dec 20 09:12:51 UTC 2019 - nick wang <nwang@suse.com>
 Mon Dec 16 09:31:18 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.2.7
-  * Add automatic cloud detection method to the salt module 
+  * Add automatic cloud detection method to the salt module
 
 -------------------------------------------------------------------
 Wed Dec 11 10:16:53 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
