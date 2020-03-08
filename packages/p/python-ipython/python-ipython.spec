@@ -16,11 +16,20 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %bcond_without  iptest
-Name:           python-ipython
-Version:        7.12.0
+Name:           python-ipython%{psuffix}
+Version:        7.13.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -31,11 +40,8 @@ Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtcons
 BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools >= 18.5}
-BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 Requires:       python-Pygments
 Requires:       python-backcall
 Requires:       python-base >= 3.5
@@ -47,8 +53,6 @@ Requires:       python-prompt_toolkit < 2.1
 Requires:       python-prompt_toolkit >= 2.0
 Requires:       python-simplegeneric > 0.8
 Requires:       python-traitlets >= 4.2
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     jupyter
 Recommends:     python-ipykernel
 Recommends:     python-ipyparallel
@@ -60,9 +64,28 @@ Obsoletes:      python-IPython < %{version}
 Provides:       python-jupyter_ipython = %{version}
 Obsoletes:      python-jupyter_ipython < %{version}
 Provides:       jupyter-ipython = %{version}
+Provides:       python-ipython-doc = %{version}
+Obsoletes:      python-ipython-doc < %{version}
+Provides:       python-jupyter_ipython-doc = %{version}
+Obsoletes:      python-jupyter_ipython-doc < %{version}
+Provides:       python-jupyter_ipython-doc-html = %{version}
+Obsoletes:      python-jupyter_ipython-doc-html < %{version}
+Provides:       python-jupyter_ipython-doc-pdf = %{version}
+Obsoletes:      python-jupyter_ipython-doc-pdf < %{version}
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module ipython-iptest = %{version}}
+BuildRequires:  %{python_module matplotlib}
+%endif
+%if !%{with test}
+BuildRequires:  desktop-file-utils
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  update-desktop-files
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %if %{with ico}
 BuildRequires:  icoutils
+%endif
 %endif
 %python_subpackages
 
@@ -120,14 +143,17 @@ testing software that uses %{name}.
 %build
 %python_build
 
+%if !%{with test}
 %if %{with ico}
 pushd scripts
 icotool -x ipython.ico
 icotool -x ipython_nb.ico
 popd
 %endif
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/ipython
 %python_clone -a %{buildroot}%{_mandir}/man1/ipython.1
@@ -179,7 +205,18 @@ ln -s %{_bindir}/ipython-%{python3_bin_suffix} %{buildroot}%{_bindir}/ipython3
 rm %{buildroot}%{_bindir}/iptest3
 ln -s %{_bindir}/iptest-%{python3_bin_suffix} %{buildroot}%{_bindir}/iptest3
 %endif
+%endif
 
+%if %{with test}
+%check
+export LANG="en_US.UTF-8"
+mkdir tester
+pushd tester
+%python_expand iptest-%{$python_bin_suffix}
+popd
+%endif
+
+%if !%{with test}
 %post
 %{python_install_alternative ipython ipython.1.gz}
 %desktop_database_post
@@ -195,7 +232,9 @@ ln -s %{_bindir}/iptest-%{python3_bin_suffix} %{buildroot}%{_bindir}/iptest3
 
 %postun iptest
 %python_uninstall_alternative iptest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license COPYING.rst
 %doc README.rst docs/source/about/license_and_copyright.rst
@@ -217,6 +256,7 @@ ln -s %{_bindir}/iptest-%{python3_bin_suffix} %{buildroot}%{_bindir}/iptest3
 %python_alternative %{_bindir}/iptest
 %python3_only %{_bindir}/iptest3
 
+%endif
 %endif
 
 %changelog
