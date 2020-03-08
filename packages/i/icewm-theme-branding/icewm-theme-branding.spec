@@ -1,7 +1,7 @@
 #
 # spec file for package icewm-theme-branding
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,15 +21,15 @@ Name:           icewm-theme-branding
 Version:        1.2.4
 Release:        0
 Summary:        Icewm theme branding for SLES or openSUSE
-License:        LGPL-2.1+ and GPL-3.0+
-Group:          System/GUI/Other
-Url:            https://github.com/openSUSE/icewm-config-openSUSE
+License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+URL:            https://github.com/openSUSE/icewm-config-openSUSE
 Source:         https://github.com/openSUSE/%{_name}/archive/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM add-adwaita-legacy-iconpath-to-preference.patch bsc#1157930 gh#openSUSE/icewm-config-openSUSE!8 yfjiang@suse.com -- Add the adwaita legacy path to the IconPath
+Patch0:         add-adwaita-legacy-iconpath-to-preference.patch
 Requires:       icewm
 Conflicts:      icewm < 1.3.11
-Conflicts:      otherproviders(icewm-configuration-files)
+Conflicts:      icewm-configuration-files
 Provides:       icewm-configuration-files = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -38,6 +38,7 @@ the system default theme,background etc.
 
 %prep
 %setup -q -n %{_name}-%{_name}-%{version}
+%patch0 -p1
 
 %build
 %if 0%{?is_opensuse}
@@ -51,8 +52,7 @@ mv %{buildroot}/%{_sysconfdir}/icewm/preferences \
    %{buildroot}/%{_sysconfdir}/icewm/prefoverride
 
 %files
-%defattr(-,root,root)
-%doc LICENSE.GPL-2.0 LICENSE.LGPL-2.1 LICENSE.MIT
+%license LICENSE.GPL-2.0 LICENSE.LGPL-2.1 LICENSE.MIT
 %dir %{_sysconfdir}/icewm
 %config %{_sysconfdir}/icewm/keys
 %config %{_sysconfdir}/icewm/menu

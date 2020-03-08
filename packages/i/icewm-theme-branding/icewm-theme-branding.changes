@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 02:46:24 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Add the adwaita legacy path to the IconPath in
+  preferences. adwaita-icon-theme has its main icon updated to
+  symbolic style, while icewm's style is more suitable for
+  legacy-style icons (eg. web-browser).  Without the update,
+  current icewm can not find default web-browser toolbar icon
+  (bsc#1157930).
+  * add-adwaita-legacy-iconpath-to-preference.patch
+
+-------------------------------------------------------------------
 Mon Mar 19 01:41:59 UTC 2018 - qzheng@suse.com
 
 - Version update to 1.2.4

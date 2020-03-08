@@ -51,4 +51,18 @@ icewm-theme-branding icewm-config-upstream</comment>
     <comment></comment>
     <requestid>588454</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>38acc3d963c2fe9cfb73314695fdc99e</srcmd5>
+    <version>1.2.4</version>
+    <time>1583702612</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the adwaita legacy path to the IconPath in
+  preferences. adwaita-icon-theme has its main icon updated to
+  symbolic style, while icewm's style is more suitable for
+  legacy-style icons (eg. web-browser).  Without the update,
+  current icewm can not find default web-browser toolbar icon
+  (bsc#1157930).
+  * add-adwaita-legacy-iconpath-to-preference.patch</comment>
+    <requestid>781773</requestid>
+  </revision>
 </revisionlist>
