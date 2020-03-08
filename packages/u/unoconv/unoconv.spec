@@ -1,7 +1,7 @@
 #
 # spec file for package unoconv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           unoconv
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Tool to convert between any document format supported by LibreOffice
 License:        GPL-2.0-only
 Group:          Productivity/File utilities
 URL:            http://dag.wieers.com/home-made/unoconv/
-Source:         https://github.com/dagwieers/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/unoconv/unoconv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Requires:       libreoffice-pyuno
 Requires:       python3
 BuildArch:      noarch

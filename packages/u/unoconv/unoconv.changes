@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  8 18:42:15 UTC 2020 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.9.0
+  * Much improved MacOS support
+  * Better support for newer LibreOffice versions
+  * Change default updateDocMode behavior and add new option to keep old behavior
+  * Longer timeout for LibreOffice to start on slow systems
+  * A fix in error()
+  * Add support for Writer EPUB export
+  * fix boo#1154818
+- update source url
+
+-------------------------------------------------------------------
 Thu Jan 10 09:07:10 UTC 2019 - mardnh@gmx.de
 
 - Update to version 0.8.2
