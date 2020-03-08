@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cluster-preflight-check
-Version:        0.0.33
+Version:        0.0.34
 Release:        0
 Summary:        Standardized Testing of Basic Cluster Functionality
 License:        BSD-3-Clause
