@@ -700,4 +700,18 @@ See LICENSES.TXT - test.py is GPL licensed (aggregation) (forwarded request 8071
     <comment></comment>
     <requestid>766341</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>bbd7aba38da523e80a04e4fa670a39e4</srcmd5>
+    <version>4.5.0</version>
+    <time>1583702540</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.0
+ * A new function indent() was added to insert tail whitespace
+    for pretty-printing an XML tree.
+ * LP#1857794 Tail text of nodes that get removed from a document
+     using item deletion disappeared silently instead of sticking with the node
+     that was removed.
+ * LP#1840234: The package version number is now available as lxml.__version__</comment>
+    <requestid>781843</requestid>
+  </revision>
 </revisionlist>

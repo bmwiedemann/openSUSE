@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 12:44:43 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.5.0
+ * A new function indent() was added to insert tail whitespace
+    for pretty-printing an XML tree.
+ * LP#1857794 Tail text of nodes that get removed from a document
+     using item deletion disappeared silently instead of sticking with the node
+     that was removed.
+ * LP#1840234: The package version number is now available as lxml.__version__
+
+-------------------------------------------------------------------
 Wed Jan 22 13:55:03 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 4.4.2:
