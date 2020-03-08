@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  7 17:13:26 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to 0.5.0
+  + Features:
+    * Add support for aix/ppc64. #151
+    * Fallback to git describe output if no VERSION. #130
+    * Make extldflags extensible by configuration. #125
+  + Enhancements:
+    * cmd/release: add --timeout option. #142
+    * cmd/release: create release in GitHub if none exists. #148
+    * Avoid bind-mounting to allow building with a remote docker engine #95
+  + Bug Fixes:
+    * cmd/tarball: restore --prefix flag. #133
+    * cmd/release: don't leak credentials in case of error. #136
+
+- Use obs-service-go_modules
+
+-------------------------------------------------------------------
 Fri Feb  8 11:05:48 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
 
 - Update to 0.2.0

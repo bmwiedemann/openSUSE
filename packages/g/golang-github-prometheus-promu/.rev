@@ -27,4 +27,12 @@
     * Fix git repository url parsing (forwarded request 672761 from jfajerski)</comment>
     <requestid>672862</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5026e88c847bdc9b43bf0836a17190b</srcmd5>
+    <version>0.5.0</version>
+    <time>1583702584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781606</requestid>
+  </revision>
 </revisionlist>

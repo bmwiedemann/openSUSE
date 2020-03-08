@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-promu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,16 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-promu
-Version:        0.2.0
+Version:        0.5.0
 Release:        0
 Summary:        Prometheus Utility Tool
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/prometheus/promu
-Source:         promu-%{version}.tar.xz
-BuildRequires:  go1.11
+URL:            https://github.com/prometheus/promu
+Source:         promu-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  go >= 1.11
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
 
@@ -37,13 +37,20 @@ The Prometheus Utility Tool is used by the Prometheus project to build other com
 
 %prep
 %setup -q -n promu-%{version}
+%setup -q -T -D -a 1 -n promu-%{version}
 
 %build
 %goprep github.com/prometheus/promu
-%gobuild
+export VERSION=%{version}
+export CGO_ENABLED=0
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags "-s -w -X main.version=$VERSION" \
+   -o promu ;
 
 %install
-%goinstall
+install -D -m 0755 promu "%{buildroot}/%{_bindir}/promu"
 %gosrc
 
 %gofilelist
