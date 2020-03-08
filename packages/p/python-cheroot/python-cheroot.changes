@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  7 14:09:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.3.0:
+  * cherrypy/cherrypy#910 via #243: Provide TLS-related
+    details via WSGI environment interface.
+  * #248: Fix parsing of the --bind CLI option
+    for abstract UNIX sockets.
+
+-------------------------------------------------------------------
 Wed Oct 23 13:38:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 8.2.1

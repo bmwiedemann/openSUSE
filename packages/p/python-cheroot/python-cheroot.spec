@@ -1,7 +1,7 @@
 #
 # spec file for package python-cheroot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pypi_name cheroot
 Name:           python-%{pypi_name}
-Version:        8.2.1
+Version:        8.3.0
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
-URL:            https://github.com/cherrypy/%{pypi_name}
+URL:            https://github.com/cherrypy/cheroot
 Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.functools}
+BuildRequires:  %{python_module jaraco.text >= 3.1}
 BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module pytest >= 2.8}
-BuildRequires:  %{python_module pytest-mock >= 1.10.4}
+BuildRequires:  %{python_module pytest >= 4.6}
+BuildRequires:  %{python_module pytest-mock >= 1.11.0}
 BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 34.4}
@@ -43,14 +44,14 @@ BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
 Requires:       python-six >= 1.11.0
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-%endif
 # the package and distribution name is lowercase-cheroot,
 # but PyPI claims the name is capital-Cheroot
 # *smacks head against desk*
 Provides:       python-Cheroot = %{version}
 BuildArch:      noarch
+%ifpython2
+Requires:       python-backports.functools_lru_cache
+%endif
 %ifpython2
 Requires:       python-backports.functools_lru_cache
 %endif
@@ -62,7 +63,7 @@ Cheroot is the pure-Python HTTP server used by CherryPy.
 %prep
 %autosetup -n cheroot-%{version} -p1
 # do not require cov/xdist/etc
-sed -i -e '/addopts/d' pytest.ini
+rm pytest.ini
 
 %build
 %python_build
