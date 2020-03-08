@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 22 18:37:35 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.43.0:
+  * fix notebook exceptions (#669 <- #650)
+    + set_description() when disable=True
+  * contrib.concurrent: avoid unnecessary len(iterable) (#893)
+  * update documentation
+    + clarify etymology (#895)
+    + fix minor typo (#890)
+    + update contributors and years
+  * update tests
+  * fix CI tests for PRs
+
+-------------------------------------------------------------------
 Sun Feb  9 16:54:35 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.42.1:
