@@ -110,4 +110,14 @@
  * del_stmt names are now considered as a definition (for name.is_definition())</comment>
     <requestid>769905</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f250ac628b0ca5e0991e3fbb758fe490</srcmd5>
+    <version>0.6.2</version>
+    <time>1583702556</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2
+ * Add Grammar.refactor (might still be subject to change until 0.7.0) 
+ * add py_38.patch - fix tests with py-3.8.2</comment>
+    <requestid>782049</requestid>
+  </revision>
 </revisionlist>

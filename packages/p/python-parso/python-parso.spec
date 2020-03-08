@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parso
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/parso
 Source0:        https://files.pythonhosted.org/packages/source/p/parso/parso-%{version}.tar.gz
+Patch0:         py_38.patch
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,6 +46,7 @@ tree.
 
 %prep
 %setup -q -n parso-%{version}
+%patch0 -p1
 
 %build
 %python_build

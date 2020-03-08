@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  5 12:25:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.2
+ * Add Grammar.refactor (might still be subject to change until 0.7.0) 
+ * add py_38.patch - fix tests with py-3.8.2
+
+-------------------------------------------------------------------
 Tue Feb  4 09:32:19 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.6.1
