@@ -1,7 +1,7 @@
 #
 # spec file for package health-check
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           health-check
-Version:        0.03.04
+Version:        0.03.06
 Release:        0
 Summary:        Process monitoring tool
 License:        GPL-2.0-or-later
@@ -36,12 +36,23 @@ of the monitoring it will display the CPU time used, wakeup
 events generated and I/O operations of the given processes.
 It can be used to diagnose unhealthy bad processes.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (health-check and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -50,5 +61,8 @@ make %{?_smp_mflags}
 %license COPYING
 %{_bindir}/health-check
 %{_mandir}/man8/health-check.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog

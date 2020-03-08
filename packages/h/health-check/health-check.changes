@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar  8 13:19:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Sun Mar  8 12:52:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop SLE12 compat ifdef
+
+-------------------------------------------------------------------
+Wed Feb 26 19:34:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.06
+  * Add bash completion script
+
+-------------------------------------------------------------------
+Mon Jan 13 21:17:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.05
+  * pid: sanity check for null return from basename call
+
+-------------------------------------------------------------------
 Tue Dec 17 19:35:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.03.04
