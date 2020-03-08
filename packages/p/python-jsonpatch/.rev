@@ -162,4 +162,13 @@
   * test with python 3.8</comment>
     <requestid>730151</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c3217c5e8cfe2890f9c67230c6f0bd42</srcmd5>
+    <version>1.25</version>
+    <time>1583702491</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25:
+  * bugfixes, 3.8 support</comment>
+    <requestid>780383</requestid>
+  </revision>
 </revisionlist>
