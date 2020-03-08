@@ -1,7 +1,7 @@
 #
 # spec file for package python-configparser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,6 @@
 #
 
 
-# inline the 38 with the Version (based on which python the config module is from)
-%if %{python3_version_nodots} >= 38
-%define skip_python3 1
-%endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"

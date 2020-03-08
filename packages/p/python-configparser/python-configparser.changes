@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 07:57:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Avoid the skip_python3 on 3.8 series, it is just useless package
+  there but the conditions confuse OBS solver with multibuild
+
+-------------------------------------------------------------------
 Fri Sep 13 10:42:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.0.2:

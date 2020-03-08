@@ -101,4 +101,13 @@
   * sync with upstream ptyhon releases</comment>
     <requestid>730675</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>45111ee4573fbff5f16e6e5d2da439ed</srcmd5>
+    <version>4.0.2</version>
+    <time>1583702451</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid the skip_python3 on 3.8 series, it is just useless package
+  there but the conditions confuse OBS solver with multibuild</comment>
+    <requestid>764538</requestid>
+  </revision>
 </revisionlist>
