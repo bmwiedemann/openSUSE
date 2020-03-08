@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar  5 09:11:09 UTC 2020 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Update to 1.27.2
+  * foomatic-rip: In some PostScript input files it was possible
+    that option settings did not get inserted or lines inserted
+    on the wron place (Issue #208, Pull request #210).
+  * foomatic-rip: For the PDF page count call Ghostscript in
+    sandbox mode and fix pointer arithmetics (Pull request
+    #212).
+  * foomatic-rip: Zero-page-job handling changes made the last
+    page of PostScript files not printed, also turning one-page
+    jobs into zero-page jobs (Issue #200, Issue #206, Issue
+    #208, Pull request #209, Pull request #210, Pull request
+    #211).
+    * cups-browsed: check_printer_with_option() function:
+    Initialize the value, add further checks, freeing memory and
+    stop allocating magic numbers (Pull request #204).
+  * cups-browsed: Additional checks against crashes in the
+    is_local_hostname() function (Ubuntu bug #1863716) 
+
+-------------------------------------------------------------------
 Wed Feb 19 18:46:12 UTC 2020 - Javier Llorente <javier@opensuse.org>
 
 - Update to 1.27.1
