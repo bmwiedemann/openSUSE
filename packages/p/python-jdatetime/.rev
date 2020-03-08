@@ -15,4 +15,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732666</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8126c28e575afe99de4adb7c52f0dec4</srcmd5>
+    <version>3.6.2</version>
+    <time>1583702523</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 3.6.2:
+   * Support for python 3.7 and 3.8
+   * Fixed %Y length in strptime</comment>
+    <requestid>780798</requestid>
+  </revision>
 </revisionlist>
