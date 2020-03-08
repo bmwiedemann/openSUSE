@@ -4,25 +4,26 @@ Fri Feb 21 08:38:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 - Version 0.2.4
   * Adapt the formula and HA template to work with aws RA
   * Make nfs share option configurable
+  (bsc#1165156, jsc#SLE-4143, boo#1137989)
 
 -------------------------------------------------------------------
 Tue Jan 28 10:34:19 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.2.3
-  * Adapt HA template to support gcp 
+  * Adapt HA template to support gcp
 
 -------------------------------------------------------------------
 Mon Jan 27 08:59:03 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.2.2
-  * Add the virtual_host_mask parameter to NW installation 
+  * Add the virtual_host_mask parameter to NW installation
 
 -------------------------------------------------------------------
 Fri Jan 24 08:10:20 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.2.1
   * Make the product_id parameter variable to provide the option
-    to install other SAP products than NW750 
+    to install other SAP products than NW750
 
 -------------------------------------------------------------------
 Thu Jan 23 13:17:27 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
@@ -34,14 +35,14 @@ Thu Jan 23 13:17:27 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 Mon Jan 20 13:48:38 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.1.9
-  * Improve the shared disk creation to avoid issues mounting and 
-    formatting the partitions (and later on with SAP instances) 
+  * Improve the shared disk creation to avoid issues mounting and
+    formatting the partitions (and later on with SAP instances)
 
 -------------------------------------------------------------------
 Thu Dec 19 12:19:23 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.1.8
-  * Update cloud provider data usage 
+  * Update cloud provider data usage
 
 -------------------------------------------------------------------
 Mon Dec  9 18:45:49 UTC 2019 - Simranpal Singh <simranpal.singh@suse.com>
@@ -54,7 +55,7 @@ Mon Dec  9 18:45:49 UTC 2019 - Simranpal Singh <simranpal.singh@suse.com>
 Thu Dec  5 10:44:24 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.1.6
-  * Adapt the formula to work with azure standards 
+  * Adapt the formula to work with azure standards
 
 -------------------------------------------------------------------
 Thu Nov 28 10:14:56 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
