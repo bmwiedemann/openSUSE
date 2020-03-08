@@ -101,4 +101,14 @@
   * Fall back to ascii when getfilesystemencoding returns None (see issue #59).</comment>
     <requestid>736050</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5394420be16c7c1b6ce09e00d94b1973</srcmd5>
+    <version>2.3.5</version>
+    <time>1583702463</time>
+    <user>dimstar_suse</user>
+    <comment>- Add multibuild in order to break cycle betwen python3 and mesa
+  * Caused by python3-testsuite that is part of the main python
+- Add devel dependency for the tests on python2 only</comment>
+    <requestid>769889</requestid>
+  </revision>
 </revisionlist>

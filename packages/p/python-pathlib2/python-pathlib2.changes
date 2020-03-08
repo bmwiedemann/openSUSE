@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:59:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add multibuild in order to break cycle betwen python3 and mesa
+  * Caused by python3-testsuite that is part of the main python
+- Add devel dependency for the tests on python2 only
+
+-------------------------------------------------------------------
 Tue Oct  8 09:44:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.3.5:

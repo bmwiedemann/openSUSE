@@ -1,7 +1,7 @@
 #
-# spec file for package python-pathlib2
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,18 @@
 #
 
 
-%if 0%{?suse_version} >= 1500
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
 %bcond_without test
 %else
-%bcond_with    test
+%define psuffix %{nil}
+%bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-Name:           python-pathlib2
+%bcond_without python2
+Name:           python-pathlib2%{?psuffix}
 Version:        2.3.5
 Release:        0
 Summary:        Object-oriented filesystem paths
@@ -32,23 +36,25 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mcmtroffaes/pathlib2
 Source:         https://files.pythonhosted.org/packages/source/p/pathlib2/pathlib2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-six
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module scandir}
 BuildRequires:  %{python_module six}
 BuildRequires:  python3-testsuite
+%if %{with python2}
+BuildRequires:  python-devel
 %endif
-BuildRequires:  python-rpm-macros
-Requires:       python-six
-%if %{python3_version_nodots} < 35
-Requires:       python-scandir
-%else
-Requires:       python2-scandir
 %endif
-BuildArch:      noarch
 %ifpython2
-Provides:       %oldpython-pathlib2 = %{version}
-Obsoletes:      %oldpython-pathlib2 <= %{version}
+Requires:       python-scandir
+%endif
+%ifpython2
+Provides:       %{oldpython}-pathlib2 = %{version}
+Obsoletes:      %{oldpython}-pathlib2 <= %{version}
 %endif
 %python_subpackages
 
@@ -66,19 +72,22 @@ used also on older Python versions.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
+%python_expand fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %if %{with test}
 %check
-# nothing provides test module in python2
-# test module is not available in SLE-12
 export PYTHONPATH="$PWD"
-python3 tests/test_pathlib2.py
+%python_exec tests/test_pathlib2.py
 %endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog
