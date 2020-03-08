@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-serializinghtml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-serializinghtml%{psuffix}
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Sphinx extension which outputs serialized HTML files
 License:        BSD-2-Clause
