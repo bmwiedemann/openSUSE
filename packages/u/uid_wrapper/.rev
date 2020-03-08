@@ -78,4 +78,15 @@
     <comment>Update BR and change to Recommends</comment>
     <requestid>724981</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a5f6651b7d7e458b628022d1eb631d15</srcmd5>
+    <version>1.2.8</version>
+    <time>1583702628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.8
+  * Fix path in pkgconfig module
+  * Fix path in cmake find module
+</comment>
+    <requestid>781890</requestid>
+  </revision>
 </revisionlist>
