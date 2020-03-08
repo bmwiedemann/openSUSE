@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  8 15:29:29 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to release 2020.03.08
+  * core
+    * utils: Add support for cookie files with spaces
+  * extractors
+    * pornhub: Add support for pornhubpremium.com (#24288)
+    * youtube: Remove outdated code and unnecessary requests
+    * youtube: Improve extraction in 429 HTTP error conditions
+      (#24283)
+    * nhk: Update API version (#24270)
+
+-------------------------------------------------------------------
 Fri Mar  6 08:05:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.03.06
