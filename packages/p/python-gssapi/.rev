@@ -34,4 +34,13 @@
  * Expose mechanisms in the high-level API</comment>
     <requestid>723074</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a5b62b87c5054a037b8f8fb1c04d84a0</srcmd5>
+    <version>1.6.2</version>
+    <time>1583702537</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2
+ * docu update</comment>
+    <requestid>781467</requestid>
+  </revision>
 </revisionlist>
