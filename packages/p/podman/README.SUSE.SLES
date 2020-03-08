@@ -1,0 +1,14 @@
+Support Status of podman on SUSE Linux Enterprise
+=================================================
+
+Starting with SLE15-SP2, podman is a supported container engine for SUSE Linux
+Enterprise Server. There are however a few selected features of podman that
+are currently excluded from support. These are:
+
+* The varlink remote API
+* rootless containers
+* support for cgroups v2
+* any CNI plugin other than default bridge plugin
+* The automatic generation of systemd units via "podman generate systemd"
+* pod management via "podman pod ..." and "podman play"
+* The "podman container diff" command

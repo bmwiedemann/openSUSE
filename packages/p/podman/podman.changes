@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 16:26:16 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Added SLE specific README.SUSE about current support status
+  (jsc#SLE-9112, jsc#CAASP-60)
+
+-------------------------------------------------------------------
+Thu Mar  5 15:40:12 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Configure br_netfilter for podman automatically (boo#1165738) 
+
+-------------------------------------------------------------------
 Thu Feb 20 15:57:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - The name of the cni-bridge in the default config changed from

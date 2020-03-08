@@ -29,8 +29,10 @@ License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/containers/libpod
 Source0:        %{name}-%{version}.tar.xz
+Source1:        podman.conf
 Source2:        libpod.conf
 Source3:        %{name}-rpmlintrc
+Source4:        README.SUSE.SLES
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -157,9 +159,21 @@ install -D -m 0644 contrib/varlink/podman.conf %{buildroot}/%{_tmpfilesdir}/podm
 install -D -m 0644 contrib/varlink/io.podman.service %{buildroot}%{_unitdir}/io.podman.service
 install -D -m 0644 contrib/varlink/io.podman.socket %{buildroot}%{_unitdir}/io.podman.socket
 
+# Add podman modprobe.d drop-in config
+mkdir -p %{buildroot}%{_libexecdir}/modules-load.d
+install -m 0644 -t %{buildroot}%{_libexecdir}/modules-load.d/ %{SOURCE1}
+
+# README.SUSE is SLES specifc currently
+%if !0%{?is_opensuse}
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
+%endif
+
 %fdupes %{buildroot}/%{_prefix}
 
 %files
+%if !0%{?is_opensuse}
+%doc %{_docdir}/%{name}
+%endif
 # Binaries
 %{_bindir}/podman
 %{_bindir}/podman-remote
@@ -170,6 +184,8 @@ install -D -m 0644 contrib/varlink/io.podman.socket %{buildroot}%{_unitdir}/io.p
 %config(noreplace) %{_sysconfdir}/containers/libpod.conf
 %dir %{_datadir}/containers
 %{_datadir}/containers/libpod.conf
+%dir %{_libexecdir}/modules-load.d
+%{_libexecdir}/modules-load.d/podman.conf
 # Completion
 %{_datadir}/bash-completion/completions/podman
 %{_sysconfdir}/zsh_completion.d/_podman
