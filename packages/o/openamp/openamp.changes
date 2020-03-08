@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed Feb 26 09:55:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to %cmake_build macro as %make_jobs is ambiguous and leads
+  to trouble
+
+-------------------------------------------------------------------
+Tue Feb 25 10:03:18 UTC 2020 - pgajdos@suse.com
+
+- version update to 2020.01
+  * Added virtio feature negotiation.
+  * update IRQ registration in apps
+  * bug fixes
+- added patches
+  fix https://github.com/OpenAMP/open-amp/pull/196
+  + openamp-fix-build-with-libmetal.patch
+  fix https://github.com/OpenAMP/open-amp/pull/197
+  + openamp-wait-when-no-more-buffer-avail.patch
+
+-------------------------------------------------------------------
+Mon Sep 10 14:08:54 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable examples build
+
+-------------------------------------------------------------------
+Mon Sep 10 14:03:46 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix building by allowing undefined reference in lib
+
+-------------------------------------------------------------------
+Mon Sep 10 13:21:13 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch to stable release: 2018.04
+
+-------------------------------------------------------------------
+Mon Jul  9 21:31:01 UTC 2018 - agraf@suse.com
+
+- Initial commit
