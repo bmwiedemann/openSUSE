@@ -923,4 +923,12 @@ This is a bug fix only release.
     <comment>without shift to nft</comment>
     <requestid>751072</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>4fa83abb4665e648765ff5ac4a6e95ed</srcmd5>
+    <version>0.7.2</version>
+    <time>1583702623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781833</requestid>
+  </revision>
 </revisionlist>

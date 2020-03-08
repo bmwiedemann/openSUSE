@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 20:49:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
 Sun Nov 24 17:36:31 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Replace incorrect usage of %_libexecdir with %_prefix/lib

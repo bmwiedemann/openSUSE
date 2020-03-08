@@ -56,7 +56,6 @@ Requires:       nftables
 Requires:       python3-firewall = %{version}
 Requires:       sysconfig
 Requires(post): %fillup_prereq
-Recommends:     %{name}-lang
 Suggests:       susefirewall2-to-firewalld
 BuildArch:      noarch
 %{?systemd_requires}
