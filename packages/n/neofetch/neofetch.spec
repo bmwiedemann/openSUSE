@@ -1,7 +1,7 @@
 #
 # spec file for package neofetch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           neofetch
-Version:        6.1.0
+Version:        7.0.0
 Release:        0
 Summary:        CLI system information tool written in BASH
 License:        MIT
 Group:          Productivity/Text/Utilities
-Url:            https://github.com/dylanaraps/neofetch
+URL:            https://github.com/dylanaraps/neofetch
 Source0:        https://github.com/dylanaraps/%{name}/archive/%{version}.tar.gz
 # PATCH-FIX-SUSE Fix E: env-script-interpreter
 Patch0:         fix-shebang.patch
@@ -52,7 +52,7 @@ function and friends which let you add your own custom info.
 %make_install
 
 %files
-%doc CHANGELOG.md README.md
+%doc README.md
 %license LICENSE.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

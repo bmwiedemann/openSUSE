@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar  8 15:03:04 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 7.0.0:
+  * Start of Neofetch code cleanup.
+  * ASCII: Added various new small logos.
+  * ASCII: Added various small logos from pfetch.
+  * ASCII: New Linux Mint logo.
+  * window manager: Fixed bugs in window manager detection.
+  * window manager: Added KWin Wayland detection.
+  * window manager: Added GNOME Wayland detection.
+  * desktop environment: Added support for showing DE version.
+  * desktop environment: Added Regolith linux support.
+  * image display: Fixed terminal size detection issues.
+  * terminal font: Added font detection for ConEmu.
+  * terminal font: Konsole fixes.
+  * uptime: Fixed Haiku uptime detection.
+  * song: Added support for Muine player.
+  * song: Added support for Elementary music player.
+  * song: Various fixes.
+  * theme: Fixed Plasma issues.
+  * theme: Fixed Openbox issues.
+  * color blocks: Added option to position color blocks
+    horizontally.
+  * wallpaper: Added Plasma desktop support.
+  * disk: Added '--disk_subtitle none'.
+  * disk: Added '--disk_percent'.
+  * resolution: Added TTY support.
+  * resolution: Added naive Wayland support.
+  * title: Added --title_fqdn.
+  * CPU: AMD fixes.
+  * packages: Appimage support.
+  * shell: Fixed yash support.
+- remove CHANGELOG.md file from %files section of spec file
+
+-------------------------------------------------------------------
 Mon Sep  2 12:06:27 UTC 2019 - mvetter@suse.com
 
 - Update to 6.1.0:
