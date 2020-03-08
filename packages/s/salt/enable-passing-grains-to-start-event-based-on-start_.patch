@@ -1,0 +1,132 @@
+From 79f566ba99f48d60e4948c9b8df9c6b6f497eced Mon Sep 17 00:00:00 2001
+From: Abid Mehmood <amehmood@suse.de>
+Date: Thu, 1 Aug 2019 13:14:22 +0200
+Subject: [PATCH] enable passing grains to start event based on
+ 'start_event_grains' configuration parameter
+
+unit tests
+---
+ conf/minion                      |  5 +++++
+ doc/ref/configuration/minion.rst | 15 +++++++++++++++
+ salt/config/__init__.py          |  1 +
+ salt/minion.py                   |  5 +++++
+ tests/unit/test_minion.py        | 32 ++++++++++++++++++++++++++++++++
+ 5 files changed, 58 insertions(+)
+
+diff --git a/conf/minion b/conf/minion
+index f2b6655932..cc7e962120 100644
+--- a/conf/minion
++++ b/conf/minion
+@@ -548,6 +548,11 @@
+ #  - edit.vim
+ #  - hyper
+ #
++# List of grains to pass in start event when minion starts up:
++#start_event_grains:
++#  - machine_id
++#  - uuid
++#
+ # Top file to execute if startup_states is 'top':
+ #top_file: ''
+ 
+diff --git a/doc/ref/configuration/minion.rst b/doc/ref/configuration/minion.rst
+index 30343ebd8e..fe556ef9ce 100644
+--- a/doc/ref/configuration/minion.rst
++++ b/doc/ref/configuration/minion.rst
+@@ -2000,6 +2000,21 @@ List of states to run when the minion starts up if ``startup_states`` is set to
+       - edit.vim
+       - hyper
+ 
++.. conf_minion:: start_event_grains
++
++``start_event_grains``
++----------------------
++
++Default: ``[]``
++
++List of grains to pass in start event when minion starts up.
++
++.. code-block:: yaml
++
++    start_event_grains:
++      - machine_id
++      - uuid
++
+ .. conf_minion:: top_file
+ 
+ ``top_file``
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index ee90eb3120..788128b903 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -1283,6 +1283,7 @@ DEFAULT_MINION_OPTS = {
+     'state_top_saltenv': None,
+     'startup_states': '',
+     'sls_list': [],
++    'start_event_grains': [],
+     'top_file': '',
+     'thoriumenv': None,
+     'thorium_top': 'top.sls',
+diff --git a/salt/minion.py b/salt/minion.py
+index 2c0a18604e..2b53da4f18 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -1456,6 +1456,11 @@ class Minion(MinionBase):
+         else:
+             return
+ 
++        if self.opts['start_event_grains']:
++            grains_to_add = dict(
++                [(k, v) for k, v in six.iteritems(self.opts.get('grains', {})) if k in self.opts['start_event_grains']])
++            load['grains'] = grains_to_add
++
+         if sync:
+             try:
+                 self._send_req_sync(load, timeout)
+diff --git a/tests/unit/test_minion.py b/tests/unit/test_minion.py
+index b78e0f6abd..83215151ee 100644
+--- a/tests/unit/test_minion.py
++++ b/tests/unit/test_minion.py
+@@ -305,6 +305,38 @@ class MinionTestCase(TestCase, AdaptedConfigurationTestCaseMixin):
+             finally:
+                 minion.destroy()
+ 
++    def test_when_passed_start_event_grains(self):
++        mock_opts = self.get_config('minion', from_scratch=True)
++        mock_opts['start_event_grains'] = ["os"]
++        io_loop = tornado.ioloop.IOLoop()
++        io_loop.make_current()
++        minion = salt.minion.Minion(mock_opts, io_loop=io_loop)
++        try:
++            minion.tok = MagicMock()
++            minion._send_req_sync = MagicMock()
++            minion._fire_master('Minion has started', 'minion_start')
++            load = minion._send_req_sync.call_args[0][0]
++
++            self.assertTrue('grains' in load)
++            self.assertTrue('os' in load['grains'])
++        finally:
++            minion.destroy()
++
++    def test_when_not_passed_start_event_grains(self):
++        mock_opts = self.get_config('minion', from_scratch=True)
++        io_loop = tornado.ioloop.IOLoop()
++        io_loop.make_current()
++        minion = salt.minion.Minion(mock_opts, io_loop=io_loop)
++        try:
++            minion.tok = MagicMock()
++            minion._send_req_sync = MagicMock()
++            minion._fire_master('Minion has started', 'minion_start')
++            load = minion._send_req_sync.call_args[0][0]
++
++            self.assertTrue('grains' not in load)
++        finally:
++            minion.destroy()
++
+     def test_minion_retry_dns_count(self):
+         '''
+         Tests that the resolve_dns will retry dns look ups for a maximum of
+-- 
+2.16.4
+
+

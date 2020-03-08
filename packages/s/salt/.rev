@@ -1268,4 +1268,41 @@ let build start it or we will get libvirt errors.
   * fix-virt-states-to-not-fail-on-vms-already-stopped.-.patch</comment>
     <requestid>764712</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>974188e42ecd1e142e699491887392e7</srcmd5>
+    <version>2019.2.3</version>
+    <time>1583702544</time>
+    <user>dimstar_suse</user>
+    <comment>- Use full option name instead of undocumented abbreviation for zypper
+- Requiring python3-distro only for openSUSE/SLE &gt;= 15
+- Added:
+  * use-full-option-name-instead-of-undocumented-abbrevi.patch
+
+- python-distro is only needed for &gt; Python 3.7. Removing it for Python 2
+
+- Avoid possible user escalation upgrading salt-master (bsc#1157465) (CVE-2019-18897)
+
+- Fix unit tests failures in test_batch_async tests
+- Added:
+  * fix-unit-tests-for-batch-async-after-refactor.patch
+
+- Batch Async: Handle exceptions, properly unregister and close instances
+  after running async batching to avoid CPU starvation of the MWorkers (bsc#1162327)
+- RHEL/CentOS 8 uses platform-python instead of python3
+- Enable build for Python 3.8
+- Added:
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * apply-patch-from-upstream-to-support-python-3.8.patch
+  * batch-async-catch-exceptions-and-safety-unregister-a.patch
+
+- Fix 'os_family' grain for Astra Linux Common Edition
+- Added:
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+
+- Update to Salt version 2019.2.3 (CVE-2019-17361) (bsc#1163981) (bsc#1162504)
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/2019.2.3.html
+- Modified:
+  * use-adler32-algorithm-to-compute-string-checksums.patch</comment>
+    <requestid>781848</requestid>
+  </revision>
 </revisionlist>

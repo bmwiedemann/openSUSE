@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Mar  5 12:12:35 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Use full option name instead of undocumented abbreviation for zypper
+- Requiring python3-distro only for openSUSE/SLE >= 15
+
+- Added:
+  * use-full-option-name-instead-of-undocumented-abbrevi.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 09:35:29 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- python-distro is only needed for > Python 3.7. Removing it for Python 2
+
+-------------------------------------------------------------------
+Wed Mar  4 16:51:34 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Avoid possible user escalation upgrading salt-master (bsc#1157465) (CVE-2019-18897)
+
+-------------------------------------------------------------------
+Wed Mar  4 10:29:13 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix unit tests failures in test_batch_async tests
+
+- Added:
+  * fix-unit-tests-for-batch-async-after-refactor.patch
+
+-------------------------------------------------------------------
+Mon Mar  2 10:49:09 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Batch Async: Handle exceptions, properly unregister and close instances
+  after running async batching to avoid CPU starvation of the MWorkers (bsc#1162327)
+- RHEL/CentOS 8 uses platform-python instead of python3
+- Enable build for Python 3.8
+
+- Added:
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * apply-patch-from-upstream-to-support-python-3.8.patch
+  * batch-async-catch-exceptions-and-safety-unregister-a.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 09:16:12 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix 'os_family' grain for Astra Linux Common Edition
+
+- Added:
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+
+-------------------------------------------------------------------
+Mon Feb  3 10:42:42 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Update to Salt version 2019.2.3 (CVE-2019-17361) (bsc#1163981) (bsc#1162504)
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/2019.2.3.html
+
+- Modified:
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+
+-------------------------------------------------------------------
+Wed Jan 29 15:38:36 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Enable passing grains to start event based on 'start_event_grains' configuration parameter
+
+- Added:
+  * restrict-the-start_event_grains-only-to-the-start-ev.patch
+  * enable-passing-grains-to-start-event-based-on-start_.patch
+
+-------------------------------------------------------------------
 Mon Jan 13 16:09:36 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Support for Btrfs and XFS in parted and mkfs added
@@ -104,7 +170,7 @@ Thu Nov 28 15:27:27 UTC 2019 - Mihai Dincă <mihai.dinca@suse.com>
 - Read repo info without using interpolation (bsc#1135656)
 - Requires vs BuildRequires
 - Limiting M2Crypto to >= SLE15
-- Replacing pycrypto with M2Crypto
+- Replacing pycrypto with M2Crypto (bsc#1165425)
 - Fix for log checking in x509 test
 - Update to 2019.2.2 release
 

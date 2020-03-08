@@ -1,0 +1,27 @@
+From fb82c59e6de2a31f60c9f8a23f1eed4e24009dcf Mon Sep 17 00:00:00 2001
+From: Michael Calmer <mc@suse.de>
+Date: Sun, 1 Mar 2020 16:22:54 +0100
+Subject: [PATCH] use full option name instead of undocumented
+ abbreviation
+
+---
+ salt/modules/zypperpkg.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 8c1e05c21c..19d1fd96c7 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -2494,7 +2494,7 @@ def list_products(all=False, refresh=False, root=None):
+         OEM_PATH = os.path.join(root, os.path.relpath(OEM_PATH, os.path.sep))
+     cmd = list()
+     if not all:
+-        cmd.append('--disable-repos')
++        cmd.append('--disable-repositories')
+     cmd.append('products')
+     if not all:
+         cmd.append('-i')
+-- 
+2.16.4
+
+

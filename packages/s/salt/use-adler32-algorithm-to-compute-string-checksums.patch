@@ -1,4 +1,4 @@
-From 815042712007e3bc9e5326b3a13b2880534630b9 Mon Sep 17 00:00:00 2001
+From c1e2410749479940275a217d598b22b24eef8758 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Sat, 28 Jul 2018 22:59:04 +0200
 Subject: [PATCH] Use Adler32 algorithm to compute string checksums
@@ -20,13 +20,13 @@ Add warning for Sodium.
  2 files changed, 41 insertions(+), 19 deletions(-)
 
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index b3dfc8e43d..ee90eb3120 100644
+index f4496f3a61..b272610fa4 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -1217,6 +1217,10 @@ VALID_OPTS = {
- 
-     # Thorium top file location
-     'thorium_top': six.string_types,
+@@ -1221,6 +1221,10 @@ VALID_OPTS = {
+     # Allow raw_shell option when using the ssh
+     # client via the Salt API
+     'netapi_allow_raw_shell': bool,
 +
 +    # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
 +    # Possible values are: False, adler32, crc32
@@ -34,7 +34,7 @@ index b3dfc8e43d..ee90eb3120 100644
  }
  
  # default configurations
-@@ -1525,7 +1529,8 @@ DEFAULT_MINION_OPTS = {
+@@ -1529,7 +1533,8 @@ DEFAULT_MINION_OPTS = {
      },
      'discovery': False,
      'schedule': {},

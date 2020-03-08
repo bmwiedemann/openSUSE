@@ -58,7 +58,7 @@
 %bcond_with    builddocs
 
 Name:           salt
-Version:        2019.2.2
+Version:        2019.2.3
 Release:        0
 Summary:        A parallel remote execution system
 License:        Apache-2.0
@@ -288,6 +288,22 @@ Patch102:      add-virt.network_get_xml-function.patch
 Patch103:      list_downloaded-for-apt-module.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/200
 Patch104:      support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/204
+Patch105:      enable-passing-grains-to-start-event-based-on-start_.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/205
+Patch106:      restrict-the-start_event_grains-only-to-the-start-ev.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56125
+Patch107:      add-astra-linux-common-edition-to-the-os-family-list.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/211
+Patch108:      apply-patch-from-upstream-to-support-python-3.8.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/217
+Patch109:      batch_async-avoid-using-fnmatch-to-match-event-217.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/8a23030d347b7487328c0395f5e30ef29daf1455
+Patch110:      batch-async-catch-exceptions-and-safety-unregister-a.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/a38adfa2efe40c2b1508b685af0b5d28a6bbcfc8
+Patch111:      fix-unit-tests-for-batch-async-after-refactor.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/218
+Patch112:      use-full-option-name-instead-of-undocumented-abbrevi.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -477,7 +493,11 @@ Summary:        python3 library for salt
 Group:          System/Management
 Requires:       %{name} = %{version}-%{release}
 BuildRequires:  python-rpm-macros
+%if 0%{?rhel} == 8
+BuildRequires:  platform-python
+%else
 BuildRequires:  python3
+%endif
 BuildRequires:  python3-devel
 # requirements/base.txt
 %if 0%{?rhel}
@@ -492,6 +512,7 @@ BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-msgpack-python > 0.3
 BuildRequires:  python3-pyzmq >= 2.2.0
 %if 0%{?suse_version} >= 1500
+BuildRequires:  python3-distro
 BuildRequires:  python3-M2Crypto
 %else
 BuildRequires:  python3-pycrypto >= 2.6.1
@@ -524,7 +545,11 @@ BuildRequires:  python3-xml
 %if %{with builddocs}
 BuildRequires:  python3-sphinx
 %endif
+%if 0%{?rhel} == 8
+Requires:       platform-python
+%else
 Requires:       python3
+%endif
 #
 %if ! 0%{?suse_version} > 1110
 Requires:       python3-certifi
@@ -548,6 +573,7 @@ Requires:       python3-Jinja2
 Requires:       python3-MarkupSafe
 Requires:       python3-msgpack-python > 0.3
 %if 0%{?suse_version} >= 1500
+Requires:       python3-distro
 Requires:       python3-M2Crypto
 %else
 Requires:       python3-pycrypto >= 2.6.1
@@ -801,7 +827,7 @@ This package adds the standalone configuration for the Salt master in order to m
 
 %prep
 # %setup -q -n salt-%{version}
-%setup -q -n salt-2019.2.2-suse
+%setup -q -n salt-2019.2.3-suse
 cp %{S:1} .
 cp %{S:5} ./.travis.yml
 %patch1 -p1
@@ -908,6 +934,14 @@ cp %{S:5} ./.travis.yml
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
+%patch105 -p1
+%patch106 -p1
+%patch107 -p1
+%patch108 -p1
+%patch109 -p1
+%patch110 -p1
+%patch111 -p1
+%patch112 -p1
 
 %build
 %if 0%{?build_py2}
@@ -1264,12 +1298,14 @@ if [ $1 -eq 2 ] ; then
   # version to actually work.  It seems a manual restart of salt-master may
   # still be required, but at least this will actually work given the file
   # ownership is correct.
+  # Symlinks are excluded to avoid possible user escalation (bsc#1157465) (CVE-2019-18897).
   for file in master.{pem,pub} ; do
-    [ -f /etc/salt/pki/master/$file ] && chown salt /etc/salt/pki/master/$file
+    [ -f /etc/salt/pki/master/$file ] && [ ! -L /etc/salt/pki/master/$file ] && chown --no-dereference salt /etc/salt/pki/master/$file
   done
   MASTER_CACHE_DIR="/var/cache/salt/master"
-  [ -d $MASTER_CACHE_DIR ] && chown -R salt:salt $MASTER_CACHE_DIR
-  [ -f $MASTER_CACHE_DIR/.root_key ] && chown root:root $MASTER_CACHE_DIR/.root_key
+  [ -d $MASTER_CACHE_DIR ] && find $MASTER_CACHE_DIR -type d | xargs -r chown --no-dereference salt:salt
+  [ -d $MASTER_CACHE_DIR ] && find $MASTER_CACHE_DIR -type f | xargs -r chown --no-dereference salt:salt
+  [ -f $MASTER_CACHE_DIR/.root_key ] && chown --no-dereference root:root $MASTER_CACHE_DIR/.root_key
   true
 fi
 %if %{with systemd}

@@ -1,0 +1,128 @@
+From 41a0d937511356dc75f4f041a08c1458b4e0ccf4 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 17 Feb 2020 15:34:00 +1100
+Subject: [PATCH] Apply patch from upstream to support Python 3.8
+
+Apply saltstack/salt#56031 to support Python 3.8, which removed a
+deprecated module and changed some behaviour. Add a {Build,}Requires on
+python-distro, since it is now required.
+---
+ pkg/suse/salt.spec              |  2 ++
+ salt/config/__init__.py         |  4 +++-
+ salt/grains/core.py             | 16 ++++++++--------
+ salt/renderers/stateconf.py     |  8 ++++----
+ tests/unit/modules/test_virt.py |  2 +-
+ 5 files changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/pkg/suse/salt.spec b/pkg/suse/salt.spec
+index e3e678af3b..0f6a9bc012 100644
+--- a/pkg/suse/salt.spec
++++ b/pkg/suse/salt.spec
+@@ -62,6 +62,7 @@ BuildRequires:  python-psutil
+ BuildRequires:  python-requests >= 1.0.0
+ BuildRequires:  python-tornado >= 4.2.1
+ BuildRequires:  python-yaml
++BuildRequires:  python-distro
+ # requirements/opt.txt (not all)
+ # BuildRequires:  python-MySQL-python
+ # BuildRequires:  python-timelib
+@@ -112,6 +113,7 @@ Requires:       python-psutil
+ Requires:       python-requests >= 1.0.0
+ Requires:       python-tornado >= 4.2.1
+ Requires:       python-yaml
++Requires:       python-distro
+ %if 0%{?suse_version}
+ # requirements/opt.txt (not all)
+ Recommends:     python-MySQL-python
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index 658128dac0..a372200892 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -3276,7 +3276,9 @@ def apply_cloud_providers_config(overrides, defaults=None):
+         # Merge provided extends
+         keep_looping = False
+         for alias, entries in six.iteritems(providers.copy()):
+-            for driver, details in six.iteritems(entries):
++            for driver in list(six.iterkeys(entries)):
++                # Don't use iteritems, because the values of the dictionary will be changed
++                details = entries[driver]
+ 
+                 if 'extends' not in details:
+                     # Extends resolved or non existing, continue!
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 67e263d37b..0017c0f472 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -40,20 +40,20 @@ except ImportError:
+ __proxyenabled__ = ['*']
+ __FQDN__ = None
+ 
+-# Extend the default list of supported distros. This will be used for the
+-# /etc/DISTRO-release checking that is part of linux_distribution()
+-from platform import _supported_dists
+-_supported_dists += ('arch', 'mageia', 'meego', 'vmware', 'bluewhite64',
+-                     'slamd64', 'ovs', 'system', 'mint', 'oracle', 'void')
+-
+ # linux_distribution deprecated in py3.7
+ try:
+     from platform import linux_distribution as _deprecated_linux_distribution
+ 
++    # Extend the default list of supported distros. This will be used for the
++    # /etc/DISTRO-release checking that is part of linux_distribution()
++    from platform import _supported_dists
++    _supported_dists += ('arch', 'mageia', 'meego', 'vmware', 'bluewhite64',
++                         'slamd64', 'ovs', 'system', 'mint', 'oracle', 'void')
++
+     def linux_distribution(**kwargs):
+         with warnings.catch_warnings():
+             warnings.simplefilter("ignore")
+-            return _deprecated_linux_distribution(**kwargs)
++            return _deprecated_linux_distribution(supported_dists=_supported_dists, **kwargs)
+ except ImportError:
+     from distro import linux_distribution
+ 
+@@ -1961,7 +1961,7 @@ def os_data():
+         )
+         (osname, osrelease, oscodename) = \
+             [x.strip('"').strip("'") for x in
+-             linux_distribution(supported_dists=_supported_dists)]
++             linux_distribution()]
+         # Try to assign these three names based on the lsb info, they tend to
+         # be more accurate than what python gets from /etc/DISTRO-release.
+         # It's worth noting that Ubuntu has patched their Python distribution
+diff --git a/salt/renderers/stateconf.py b/salt/renderers/stateconf.py
+index 8cd0235c99..2ce888d5f3 100644
+--- a/salt/renderers/stateconf.py
++++ b/salt/renderers/stateconf.py
+@@ -224,10 +224,10 @@ def render(input, saltenv='base', sls='', argline='', **kws):
+             tmplctx = STATE_CONF.copy()
+             if tmplctx:
+                 prefix = sls + '::'
+-                for k in six.iterkeys(tmplctx):  # iterate over a copy of keys
+-                    if k.startswith(prefix):
+-                        tmplctx[k[len(prefix):]] = tmplctx[k]
+-                        del tmplctx[k]
++                tmplctx = {
++                    k[len(prefix):] if k.startswith(prefix) else k: v
++                    for k, v in six.iteritems(tmplctx)
++                }
+         else:
+             tmplctx = {}
+ 
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index 719f97a724..3079657a9b 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -1256,7 +1256,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+                   <alias name='net1'/>
+                   <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x1'/>
+                 </interface>
+-                <graphics type='spice' port='5900' autoport='yes' listen='127.0.0.1'>
++                <graphics type='spice' listen='127.0.0.1' autoport='yes'>
+                   <listen type='address' address='127.0.0.1'/>
+                 </graphics>
+                 <video>
+-- 
+2.16.4
+
+
