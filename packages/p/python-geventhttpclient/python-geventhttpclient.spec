@@ -1,7 +1,7 @@
 #
 # spec file for package python-geventhttpclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/gwik/geventhttpclient
+URL:            https://github.com/gwik/geventhttpclient
 Source:         https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/gwik/geventhttpclient/master/LICENSE-MIT
 Patch0:         gevent-mark-tests.patch
@@ -66,7 +66,8 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=$PYTHONPATH:%{buildroot}%{$python_sitearch} $python -mpytest src/geventhttpclient/tests -m 'not online'
+# test_cookielib_compatibility https://github.com/gwik/geventhttpclient/issues/119
+%pytest_arch -m 'not online' -k 'not test_cookielib_compatibility'
 
 %files %{python_files}
 %license LICENSE-MIT

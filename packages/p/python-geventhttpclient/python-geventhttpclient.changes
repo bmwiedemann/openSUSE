@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:07:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- skip test test_cookielib_compatibility as it is borked upstream
+
+-------------------------------------------------------------------
 Fri Mar 22 10:03:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to skip online tests:
