@@ -152,4 +152,19 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659626</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a5b5eb044d581cf18e469f85c3f16891</srcmd5>
+    <version>0.22.0</version>
+    <time>1583702496</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.0:
+  - Add a six-enabled move for collections move imports:
+    https://github.com/pyudev/pyudev/pull/386
+  - Fix any newly introduced pylint errors
+  - Numerous improvements or updates to the test infrastructure
+  - A number of test updates
+  - Require yapf 0.21.0 for Python formatting
+  - Various documentation fixes and updates</comment>
+    <requestid>780386</requestid>
+  </revision>
 </revisionlist>
