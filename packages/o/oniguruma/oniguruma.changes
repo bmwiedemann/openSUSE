@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:23:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 6.9.4
+  - NEW API: RegSet (set of regexes)
+  - Fixed CVE-2019-19012 (boo# 1156984)
+  - Fixed CVE-2019-19203 (boo# 1164550) (Does not affect UTF-8,
+    UTF-16 and UTF-32 encodings)
+  - Fixed CVE-2019-19204 (boo# 1164569) (Affects only PosixBasic,
+    Emacs and Grep syntaxes)
+  - Fixed CVE-2019-19246 (boo# 1157805)
+  - Fixed some problems (found by libFuzzer test)
+- changes from 6.9.3
+  - Fixed CVE-2019-13224 (boo# 1142847)
+  - Fixed CVE-2019-13225 (boo# 1141157)
+  - Fixed many problems (found by libfuzzer programs)
+- changes from 6.9.2
+  - Update Unicode version 12.1.0
+  - NEW: Unicode Text Segment mode option (?y{g}) (?y{w}) g:
+    Extended Grapheme Cluster mode / w: Word mode
+  - Fix Issue #139
+- changes from 6.9.1
+  - Speed improvement (* especially UTF-8)
+- changes from 6.9.0
+  - Update Unicode version 11.0.0
+  - NEW: add Emoji properties
+- changes from 6.8.2
+  - Fix: #80 UChar in header causes issue
+  - NEW API: onig_set_callout_user_data_of_match_param() (*
+    omission in 6.8.0)
+  - add doc/CALLOUTS.API and doc/CALLOUTS.API.ja
+- changes from 6.8.1
+  - Update shared library version to 5.0.0 for API incompatible
+    changes from 6.7.1
+- changes from 6.8.0
+  - Retry-limit-in-match function enabled by default
+  - NEW: configure option --enable-posix-api=no (* enabled by
+    default)
+  - NEW API: onig_search_with_param(), onig_match_with_param()
+  - NEW: Callouts of contents (?{...contents...}) (?{...}[X<>])
+    (?{{....}})
+  - NEW: Callouts of name (*name) (*name[tag]{args...})
+  - NEW: Builtin callouts (*FAIL) (*MISMATCH) (*ERROR{n}) (*COUNT)
+    (*MAX{n}) etc..
+  - (* Callout function API is experimental level and isn't fixed
+    definitely yet. Undocumented now)
+- changes from 6.7.1
+  - NEW: Mechanism of try-in-match-limit (* disabled by default)
+  - #73: Update for automake 1.15.1
+
+-------------------------------------------------------------------
 Sat Dec 23 01:39:12 UTC 2017 - avindra@opensuse.org
 
 - Version 6.7.0

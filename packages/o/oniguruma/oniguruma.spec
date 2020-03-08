@@ -1,7 +1,7 @@
 #
 # spec file for package oniguruma
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define lib_name libonig4
+%define lib_name libonig5
 Name:           oniguruma
-Version:        6.7.0
+Version:        6.9.4
 Release:        0
 Summary:        Regex Library Supporting Different Character Encodings
 License:        BSD-2-Clause
 Group:          Development/Languages/C and C++
-Url:            https://github.com/kkos/oniguruma
+URL:            https://github.com/kkos/oniguruma
 Source:         https://github.com/kkos/oniguruma/releases/download/v%{version}/onig-%{version}.tar.gz
 BuildRequires:  pkgconfig
 
