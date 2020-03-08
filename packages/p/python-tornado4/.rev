@@ -34,4 +34,14 @@ This is the python-tornado version 4 package. This is will stop working with pyt
 - Reduce the conflicts even more</comment>
     <requestid>739041</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>967382a5065568d006ee851bcc17d3da</srcmd5>
+    <version>4.5.3</version>
+    <time>1583702461</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to work with python3.8 (kinda):
+  * py38-0001-test-silence-deprecation-warning.patch
+  * py38-0002-dont-log-CancelledError.patch</comment>
+    <requestid>769773</requestid>
+  </revision>
 </revisionlist>

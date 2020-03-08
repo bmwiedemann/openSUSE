@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if %{python3_version_nodots} >= 38
-%define         skip_python3 1
-%endif
 %define         oldpython python
 %bcond_without python2
 Name:           python-tornado4
@@ -34,10 +31,14 @@ Patch1:         tornado-testsuite_timeout.patch
 Patch2:         asyncio.patch
 Patch3:         openssl-cert-size.patch
 Patch4:         skip-failing-tests.patch
+# python 3.8 mashed from around
+Patch5:         py38-0001-test-silence-deprecation-warning.patch
+Patch6:         py38-0002-dont-log-CancelledError.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
@@ -102,10 +103,7 @@ thousands of clients, see The C10K problem.)
 %setup -q -n tornado-%{version}
 # Fix non-executable script rpmlint issue:
 find demos tornado -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autopatch -p1
 
 %pre
 # remove egg-info _file_, being replaced by an egg-info directory
