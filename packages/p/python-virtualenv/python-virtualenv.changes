@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 17:34:41 UTC 2020 - Tomáš Čech <sleep_walker@opensuse.org>
+
+- update to 16.7.10
+  * fix error printing in bailout for Python < 2.7
+
+-------------------------------------------------------------------
 Thu Feb  6 17:56:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 16.7.9

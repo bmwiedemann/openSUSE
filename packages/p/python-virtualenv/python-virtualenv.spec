@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-virtualenv%{psuffix}
-Version:        16.7.9
+Version:        16.7.10
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
