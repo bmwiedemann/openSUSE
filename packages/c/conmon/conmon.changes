@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:06:24 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.11
+  - log: reject --log-tag with k8s-file
+  - chmod std files pipes
+  - adjust score to -1000 to prevent conmon from ever being OOM
+    killed
+  - container OOM: verify cgroup hasn't been cleaned up before
+    reporting OOM
+
+-------------------------------------------------------------------
 Fri Feb 21 09:22:06 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to v2.0.10 (bsc#1160460, bsc#1164390, jsc#ECO-1048,
   jsc#SLE-11485, jsc#SLE-11331):
-  - journal logging: write to /dev/null instead of -1 
+  - journal logging: write to /dev/null instead of -1
 
 -------------------------------------------------------------------
 Tue Jan  7 12:20:08 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
