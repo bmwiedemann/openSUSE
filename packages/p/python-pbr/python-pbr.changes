@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:58:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.4.4:
+  * trivial: Use 'open' context manager
+  * Update to latest hacking
+  * Mark strings as raw
+
+-------------------------------------------------------------------
 Fri Oct 18 07:02:02 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.4.3

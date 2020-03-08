@@ -573,4 +573,15 @@
 - Remove buildignores on pyparsing as the cycle is now sorted</comment>
     <requestid>740979</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>4961b469d671f989b1dc328138adc94a</srcmd5>
+    <version>5.4.4</version>
+    <time>1583702500</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.4:
+  * trivial: Use 'open' context manager
+  * Update to latest hacking
+  * Mark strings as raw</comment>
+    <requestid>780397</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pbr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.4.3
+Version:        5.4.4
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
