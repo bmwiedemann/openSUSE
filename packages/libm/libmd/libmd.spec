@@ -1,7 +1,7 @@
 #
 # spec file for package libmd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ Digests supported: MD2/4/5, RIPEMD160, SHA1, SHA2-256/384/512.
   make %{?_smp_mflags} clean
   make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} %{addopts}
+  make %{?_smp_mflags}
 %endif
 
 %install
