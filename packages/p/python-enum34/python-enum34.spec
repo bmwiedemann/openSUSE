@@ -1,7 +1,7 @@
 #
 # spec file for package python-enum34
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           python-enum34
-Version:        1.1.6
+Version:        1.1.9
 Release:        0
-Url:            https://pypi.python.org/pypi/enum34
+URL:            https://pypi.python.org/pypi/enum34
 Summary:        Python 3.4 Enum backported to 3.3, 3.2, 3.1, 2.7, 2.6, 2.5, and 2.4
 License:        BSD-3-Clause
 Group:          Development/Languages/Python

@@ -51,4 +51,12 @@
 - Update to version 1.1.6</comment>
     <requestid>511736</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c1134a3b95caf05744777d10cbda099</srcmd5>
+    <version>1.1.9</version>
+    <time>1583702507</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.9</comment>
+    <requestid>780401</requestid>
+  </revision>
 </revisionlist>
