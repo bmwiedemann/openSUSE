@@ -64,4 +64,12 @@
     <comment>- Make RPi's EFI partition 64MB big (bsc#1164817)</comment>
     <requestid>779428</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>48d8626f39fdc4dc4937d348b777956e</srcmd5>
+    <version>84.87</version>
+    <time>1583702620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781820</requestid>
+  </revision>
 </revisionlist>

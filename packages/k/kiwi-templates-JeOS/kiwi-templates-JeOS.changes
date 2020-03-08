@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  4 14:09:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop drivers section, obsolete with dracut
+
+-------------------------------------------------------------------
 Wed Feb 26 11:25:53 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Make RPi's EFI partition 64MB big (bsc#1164817)

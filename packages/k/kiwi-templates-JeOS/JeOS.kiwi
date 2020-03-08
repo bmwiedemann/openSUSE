@@ -264,14 +264,6 @@
     <repository type="rpm-md" >
         <source path='obsrepositories:/'/>
     </repository>
-    <drivers profiles="kvm-and-xen,XEN">
-        <file name="drivers/xen/*" arch="x86_64"/>
-        <file name="drivers/block/xen-blkfront.ko" arch="x86_64"/>
-        <file name="drivers/net/xen-netfront.ko" arch="x86_64"/>
-        <file name="drivers/scsi/xen-scsifront.ko" arch="x86_64"/>
-        <file name="drivers/input/misc/xen-kbdfront.ko" arch="x86_64"/>
-        <file name="drivers/pci/xen-pcifront.ko" arch="x86_64"/>
-    </drivers>
     <packages type="image">
         <package name="patterns-base-minimal_base"/>
         <package name="aaa_base-extras"/> <!-- wouldn't be SUSE without that ;-) -->
