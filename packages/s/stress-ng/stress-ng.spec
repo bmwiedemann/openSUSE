@@ -48,10 +48,7 @@ Summary:        Bash Completion for %{name}
 Group:          System/Benchmark
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(stress-ng:bash)
-%if 0%{?sle_version} < 150000
-BuildRequires:  bash-completion
-%endif
+Supplements:    (stress-ng and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -62,7 +59,7 @@ Bash completion script for stress-ng.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -D -p -m 0755 stress-ng   \
@@ -76,7 +73,7 @@ install -D -p -m 0644 bash-completion/stress-ng \
 %license COPYING
 %doc README
 %{_bindir}/stress-ng
-%{_mandir}/man1/stress-ng.1%{ext_man}
+%{_mandir}/man1/stress-ng.1%{?ext_man}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}
