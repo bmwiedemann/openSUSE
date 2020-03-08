@@ -1,7 +1,7 @@
 #
 # spec file for package python-parver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parver
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Module to parse and manipulate version numbers
 License:        MIT
@@ -32,13 +32,13 @@ BuildRequires:  %{python_module Arpeggio >= 1.7}
 BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module hypothesis >= 3.56}
 BuildRequires:  %{python_module pretend >= 1.0}
-BuildRequires:  %{python_module pytest >= 3.5}
-BuildRequires:  %{python_module six >= 1.9}
+BuildRequires:  %{python_module pytest} 
+BuildRequires:  %{python_module six >= 1.13}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Arpeggio >= 1.7
 Requires:       python-attrs >= 17.4.0
-Requires:       python-six >= 1.9
+Requires:       python-six >= 1.13
 BuildArch:      noarch
 
 %python_subpackages
