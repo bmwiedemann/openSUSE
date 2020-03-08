@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  8 13:20:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Sun Mar  8 12:53:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop SLE12 compat ifdef
+
+-------------------------------------------------------------------
+Wed Feb 26 19:25:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.01.19
+  * Add bash completion script
+
+-------------------------------------------------------------------
 Tue Dec 17 19:39:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.01.18

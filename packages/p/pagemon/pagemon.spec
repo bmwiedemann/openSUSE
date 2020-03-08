@@ -1,7 +1,7 @@
 #
 # spec file for package pagemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pagemon
-Version:        0.01.18
+Version:        0.01.19
 Release:        0
 Summary:        Interactive memory/page monitoring tool
 License:        GPL-2.0-or-later
@@ -32,12 +32,23 @@ pagemon is a ncurses based interactive memory/page monitoring tool
 allowing one to browse the memory map of an active running process
 on Linux.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (pagemon and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -47,5 +58,8 @@ make %{?_smp_mflags}
 %doc README
 %{_sbindir}/pagemon
 %{_mandir}/man8/pagemon.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
