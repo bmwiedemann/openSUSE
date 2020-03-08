@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  8 03:36:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Swith to multibuild in order to avoid full python buildcycle
+
+-------------------------------------------------------------------
+Sat Mar  7 13:52:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.7.2:
+  * Various fixes for python 3.8
+
+-------------------------------------------------------------------
 Wed Dec 11 08:44:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Pull in the full python

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfakefs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,33 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-pyfakefs
-Version:        3.6.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-pyfakefs%{psuffix}
+Version:        3.7.2
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
 URL:            https://github.com/jmcgeheeiv/pyfakefs
-Source:         https://github.com/jmcgeheeiv/pyfakefs/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module pathlib2 >= 2.3.2}
-BuildRequires:  %{python_module pytest >= 2.8.6}
+Source:         https://github.com/jmcgeheeiv/pyfakefs/archive/v%{version}.tar.gz#/python-pyfakefs-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-scandir >= 1.8
 Requires:       python
 Requires:       python-pathlib2 >= 2.3.2
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module pathlib2 >= 2.3.2}
+BuildRequires:  %{python_module pytest >= 2.8.6}
+BuildRequires:  %{pythons}
+BuildRequires:  python2-scandir >= 1.8
+%endif
 %ifpython2
 Requires:       python-scandir >= 1.8
 %endif
@@ -52,17 +62,23 @@ no modification to work with pyfakefs.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/pyfakefs/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/pyfakefs/tests/
+%endif
 
 %check
+%if %{with test}
 export LANG=C.UTF-8
-%python_exec setup.py test
+%python_expand PYTHONPATH=$(pwd) $python -m pyfakefs.tests.all_tests
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGES* README*
 %license COPYING*
 %{python_sitelib}/*
+%endif
 
 %changelog
