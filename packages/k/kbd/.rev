@@ -769,4 +769,12 @@ Fix version typo:
     <comment></comment>
     <requestid>764374</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>2eaae5a7c7920ddff74ea6a270c4d295</srcmd5>
+    <version>2.2.0</version>
+    <time>1583702598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781687</requestid>
+  </revision>
 </revisionlist>

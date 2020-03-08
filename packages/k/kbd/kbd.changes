@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  3 02:25:10 CET 2020 - sbrabec@suse.com
+
+- Update to version 2.2.0:
+  * setfont: Add option -d to double size of font.
+  * kbd_mode: Add -f option and deny dangerous mode switches
+    without it.
+  * Data files updates.
+  * Fix gcc warnings and error with gcc-10 (boo#1160273).
+  * Other fixes.
+  * For a full list of changes see:
+    https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git/log/
+- Update home page.
+- Refresh patches: kbd-1.15.2-dumpkeys-C-opt.patch,
+  kbd-1.15.2-setfont-no-cruft.patch,
+  kbd-1.15.5-loadkeys-search-path.patch.
+
+-------------------------------------------------------------------
 Thu Jan  9 22:35:51 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use a UTF-8 capable locale, otherwise ckbcomp will not not able
