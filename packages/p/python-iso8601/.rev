@@ -142,4 +142,13 @@ https://build.opensuse.org/package/show?package=openstack-nova&amp;project=Virtu
 - Download the sources from pypi and run fdupes</comment>
     <requestid>689817</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>fa25e8ac916afe012dcd0ac908cc3877</srcmd5>
+    <version>0.1.12</version>
+    <time>1583702514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.12:
+  * Fix class reference for iso8601.Utc in module docstring</comment>
+    <requestid>780406</requestid>
+  </revision>
 </revisionlist>
