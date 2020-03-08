@@ -20,28 +20,37 @@
 %if %{python3_version_nodots} >= 38
 %define skip_python3 1
 %endif
-Name:           python-importlib-metadata
-Version:        1.4.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-importlib-metadata%{psuffix}
+Version:        1.5.0
 Release:        0
 Summary:        Tool to read metadata from Python packages
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://gitlab.com/python-devs/importlib_metadata
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module zipp >= 0.5}
 BuildRequires:  fdupes
-BuildRequires:  python-importlib_resources
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-configparser >= 3.5
-BuildRequires:  python2-contextlib2
 Requires:       python-zipp >= 0.5
 Provides:       python-importlib_metadata = %{version}
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyfakefs}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module zipp >= 0.5}
+BuildRequires:  python-importlib_resources
+BuildRequires:  python2-configparser >= 3.5
+BuildRequires:  python2-contextlib2
 %if %{?suse_version} <= 1500
 BuildRequires:  python3-importlib_resources
 %endif
@@ -49,6 +58,7 @@ BuildRequires:  python3-importlib_resources
 BuildRequires:  %{python_module pathlib2}
 %else
 BuildRequires:  python-pathlib2
+%endif
 %endif
 %ifpython2
 Requires:       python-configparser >= 3.5
@@ -68,15 +78,21 @@ package.  It is intended to be ported to Python 3.8.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-%python_exec -m unittest discover
+%if %{with test}
+%python_exec -m unittest discover -v
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
+%endif
 
 %changelog
