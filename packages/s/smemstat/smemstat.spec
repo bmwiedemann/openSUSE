@@ -1,7 +1,7 @@
 #
 # spec file for package smemstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           smemstat
-Version:        0.02.06
+Version:        0.02.07
 Release:        0
 Summary:        Memory usage monitoring tool
 License:        GPL-2.0-or-later
@@ -33,12 +33,23 @@ Smemstat reports the physical memory usage taking into consideration shared
 memory. The tool can either report a current snapshot of memory usage or
 periodically dump out any changes in memory.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (smemstat and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw) -fwhole-program"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -47,5 +58,8 @@ make %{?_smp_mflags}
 %license COPYING
 %{_bindir}/smemstat
 %{_mandir}/man8/smemstat.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
