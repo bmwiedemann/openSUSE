@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:36:01 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to the most current mono release, 6.8.0.96.
+  for changes, please refer to the commits log on github: https://github.com/mono/mono/commits/master 
+
+-------------------------------------------------------------------
+Fri Jan 17 12:16:41 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
+
+- enable btls for s390x
+- remove stale symlinks to prevent from brp-25-symlink errors
+
+-------------------------------------------------------------------
+Tue Dec  3 00:12:48 UTC 2019 - Philipp Seiler <p.seiler@linuxmail.org>
+
+- removed a few internal dependencies because rpms internal dependency
+  search accidently added those to the package
+
+-------------------------------------------------------------------
+Wed Nov 20 21:11:38 UTC 2019 - Philipp Seiler <p.seiler@linuxmail.org>
+
+- update to new version 6.4.0
+- removed libtest.patch because it was fixed upstream
+- New features and changes:
+ * Highlights
+    C# compiler support for C# 8 language version
+    .NET Standard 2.1 support
+    Updated libgdiplus to 6.0.2
+    Notarized macOS installer package
+
+* Hardened Runtime and Notarization support on macOS
+    The Mono binary installed by the .pkg for macOS is now using the Hardened Runtime capabilities and the package was notarized to comply with Apple’s new restrictions: https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution.
+    This allows the package to work on the upcoming macOS 10.15 Catalina without showing warning dialogs.
+
+* Interpreter improvements
+    The Mono interpreter was updated to support the Windows operating system.
+    We also completed a lot of groundwork for upcoming future optimizations in the interpreter, like constant folding.
+
+* Bitness independent AOT cross compiler
+    The Ahead-Of-Time (AOT) cross compiler was updated to no longer require being executed with the same bitness that it should generate code for. This means a 64bit Mono can now emit AOT code for 32bit targets.
+    
+    This work was mainly done to support executing the AOT cross compiler on macOS 10.15 Catalina (which is 64bit only) as we still need to generate code for 32bit targets like older iPhone and Apple Watch devices.
+
+* WebAssembly
+    We continue to work on making our WebAssembly support better. Various sets of issues with the debugger have been resolved in this release and general performance and feature work is happening as well.
+
+* LLVM improvements
+    We now leave it up to the LLVM framework to insert safepoints. Later optimizations can understand safepoints then which leads to better generated code. See https://github.com/mono/mono/pull/11789
+    The LLVM backend is also supported on the Windows operating system now.
+
+* PPC JIT optimizations
+    The PowerPC JIT received a bunch of optimization from community contributor Calvin Buckley (@NattyNarwhal).
+
+* Experimental build support for Fuchsia
+    A very minimal and experimental support for building Mono targeting the Fuchsia OS landed in the build system.
+
+* .NET Standard 2.1 support
+    We updated our class libraries to support the latest additions to .NET Standard. You can now run a library compiled against the .NET Standard 2.1 specification on Mono.
+
+* CoreFX integration
+    We continued to replace some of our classes with the implementation from CoreFX to improve performance and compatibility with .NET.
+
+* libgdiplus update to 6.0.2
+    The libgdiplus native library is used for implementing System.Drawing on Unix platforms. This release contains many important improvements from our community members.
+
+* System.Windows.Forms
+    More fixes and layout improvements for different controls made by external contributors have landed in this release .
+
+* C# 8 language version support in csc and msbuild
+    The C# compiler and msbuild tooling were updated to versions that support the final C# 8 language specification.
+    The Default Interface Methods (DIM) feature also received a few runtime enhancements.
+
+* NuGet
+    Bundled NuGet version has been upgraded to 5.2 RTM.
+
+- Resolved Issues
+   * gh#mono/mono#7377 - [Mono.Debugger.Soft] Connections are not properly closed
+   * gh#mono/mono#7452 - Download link for macOS is osbsolete (5.8 instead of 5.10)
+   * gh#mono/mono#7845 - Don’t install monograph
+   * gh#mono/mono#8360 - [System.Net.Sockets] flakey failures of SocketTest.TestSelect1 on Darwin systems
+   * gh#mono/mono#8486 - struct with 3 bytes not marshaled correctly with LLVM on watchOS
+   * gh#mono/mono#8747 - FileSystemWatcher calls event after it is Disposed
+   * gh#mono/mono#9267 - Release tarballs should be compressed with xz
+   * gh#mono/mono#9621 - 64 bit cross compilers targeting 32 bit platforms
+   * gh#mono/mono#9664 - DateTime.Now or Timezone information do not transition out of DST for all time zones
+   * gh#mono/mono#10101 - ref local of jagged array leads to InvalidProgramException
+   * gh#mono/mono#10277 - [Reflection] Event accessors don’t inherit ReflectedType
+   * gh#mono/mono#10645 - WebException is thrown when reading from WebException.Response.GetResponse() stream
+   * gh#mono/mono#11431 - Add Brotli compression to existing System.IO.Compression assembly
+   * gh#mono/mono#11489 - IronPython 2.7.9 strange issue on mono 5.16
+   * gh#mono/mono#11643 - mkbudle problem - Illegal byte sequence
+   * gh#mono/mono#12157 - new DriveInfo(Path.GetTempPath()) crashes on macOS
+   * gh#mono/mono#12182 - LLVM AOT caches require SSE4.1-capable CPU
+   * gh#mono/mono#12747 - System.Reflection.Emit.ParameterBuilder.SetCustomAttribute() throws undocumented ArgumentOutOfRangeException
+   * gh#mono/mono#12831 - [iOS] Generic sharing with long float arguments list
+   * gh#mono/mono#12839 - [Windows] block_guard_restore_aligment_on_exit.exe frequently times out on CI
+   * gh#mono/mono#12843 - Mono Android debugger crashes using HttpClient wrapped in Async Method
+   * gh#mono/mono#12871 - wasm var co = new System.Net.CookieContainer(); error System.DllNotFoundException: libc
+   * gh#mono/mono#12881 - MonoDevelop SDB regressions
+   * gh#mono/mono#12945 - corlib-xunit tests taking 10x longer in the coop configuration
+   * gh#mono/mono#12964 - [debugger][wasm] Assertion at mono/metadata/loader.c:2500, condition ‘' not met
+   * gh#mono/mono#12981 - [WASM] Transform.c:2856, condition `' not met
+   * gh#mono/mono#12988 - [WASM] LLVM failed for ‘ObservableCollectionExtensions.InternalUpdate’: incoming phi sreg1
+   * gh#mono/mono#12998 - [WASM] llvmonly-runtime.c:804, condition `' not met
+   * gh#mono/mono#13028 - FSharpType.IsUnion broken inside of F# Interactive due to missing System.Reflection.Emit.AssemblyBuilder.ReflectionOnly implementation
+   * gh#mono/mono#13030 - Directory.GetLogicalDrives () missing SystemNative_GetAllMountPoints pal function
+   * gh#mono/mono#13056 - AV inside mono_local_cprop+0x23f
+   * gh#mono/mono#13150 - [WinForms] Related Forms closing
+   * gh#mono/mono#13163 - Task: Use async DNS resolution in Socket and web stack code.
+   * gh#mono/mono#13195 - [wasm][ci] Intermittent failures with ChakraCore Tests
+   * gh#mono/mono#13224 - iOS SDKs test app build doesn’t work when not in sdks/ios directory
+   * gh#mono/mono#13231 - CGPattern causes “Attempting to JIT compile method” exception since VS 7.5
+   * gh#mono/mono#13250 - Setting CustomErrorsMode for RemotingConfiguration throws NotImplementedException
+   * gh#mono/mono#13261 - [sdb] StackOverflow when invoking many methods from client debugger
+   * gh#mono/mono#13282 - [SWF] Method OnClosed should pass FormClosedEventArgs type, instead of EventArgs
+   * gh#mono/mono#13284 - Checked ulong relational operation throws wrong OverflowException on armeabi-v7a
+   * gh#mono/mono#13297 - [WASM] decompose.c:1471, condition `cfg->cbb == first_bb’ not met
+   * gh#mono/mono#13311 - [sdb] Failure to suspend
+   * gh#mono/mono#13319 - Crash executing static methods on interfaces
+   * gh#mono/mono#13350 - MemberInfo.ReflectedType returns wrong reflected type for an event method
+   * gh#mono/mono#13374 - Crash executing default implemented property in interface
+   * gh#mono/mono#13412 - Bump netstandard.dll assembly version to 2.1
+   * gh#mono/mono#13445 - Fork regression in Mojave due to MAP_JIT
+   * gh#mono/mono#13452 - [Linux] Mono (5.18.0.268) crashes in String:IndexOf(char value, int startIndex)
+   * gh#mono/mono#13454 - watchOS apps crash on launch if built with LLVM
+   * gh#mono/mono#13455 - AOT crashes with “MVAR 0 (Ts) cannot be expanded with type 0x1e” when compiling monotouch_System.Core_xunit-test.dll
+   * gh#mono/mono#13460 - AOT crashes with “Instruction does not dominate all uses” when compiling monotouch_System.Core_xunit-test.dll
+   * gh#mono/mono#13463 - [WASM] Mixed Mode: function signature mismatch
+   * gh#mono/mono#13466 - Crash at runtime likely related to protected accessibility of a method declared in an interface.
+   * gh#mono/mono#13467 - Unexpected System.MethodAccessException is thrown for a protected method declared in an interface
+   * gh#mono/mono#13478 - Undefined symbol ___sync_lock_test_and_set_4 on armv7 in xamarin-macios 2019-02
+   * gh#mono/mono#13479 - System.Runtime.CompilerServices.UnsafeTests attempting to JIT compile on iOS devices
+   * gh#mono/mono#13508 - ILAsm: adds ‘virtual’ attribute to sealed default interface methods
+   * gh#mono/mono#13522 - AOT issue on WatchOS: “* Assertion at mini-llvm.c:9381, condition `fields [2 + i]’ not met “
+   * gh#mono/mono#13526 - The repl (monotouch_tv_runtime) assemblies don’t work for tvOS
+   * gh#mono/mono#13597 - Runtime Error when using span on LeetCode
+   * gh#mono/mono#13607 - Assertion in xamarin-macios link sdk test: “mini-generic-sharing.c:568, condition `is_ok (error)’ not met, function:inflate_info, Could not inflate generic type, due to MVAR 0 (T_ULONG) cannot be expanded with type 0x1e”
+   * gh#mono/mono#13610 - Returning tuple broken when enabling fullAOT+LLVM
+   * gh#mono/mono#13639 - mono-cil-strip crashes when called against the monotouch_Microsoft.CSharp_xunit-test.dll
+   * gh#mono/mono#13654 - Interpreter Crash When Doing Fancy Reflection
+   * gh#mono/mono#13672 - [2019-02] Xamarin.Android runtime tests crash on free
+   * gh#mono/mono#13714 - Exception during static constructor loading is not cleaned up
+   * gh#mono/mono#13775 - New Mono drop crashing in C# symbol tests
+   * gh#mono/mono#13787 - [wasm] Uint8ClampedArray.From(byte[]) invalid cast
+   * gh#mono/mono#13804 - [MacSDK] pkg-config is 32-bit only
+   * gh#mono/mono#13834 - Mac crash reports do not give the right SizeOfImage
+   * gh#mono/mono#13878 - System.Reflection.Emit.DynamicMethod:CreateDelegate (?) crashes XM apps when under hardened runtime
+   * gh#mono/mono#13888 - (FullAOT) Ran out of trampolines of type 3
+   * gh#mono/mono#13889 - [llvm] Bounds checks are not eliminated
+   * gh#mono/mono#13923 - [DIM] [CoreCLR Test] boring not working
+   * gh#mono/mono#13925 - [DIM] [CoreCLR Test] abstractcalls not working
+   * gh#mono/mono#13941 - Crash During AOT of ASP.NET Core Assemblies
+   * gh#mono/mono#13974 - mono: symbol lookup error: /usr/lib/libmono-llvm.so: undefined symbol: mono_class_get_generic_class
+   * gh#mono/mono#14005 - Method mono_type_is_generic_parameter is not exposed in shared libraries
+   * gh#mono/mono#14079 - Interpreter Crash on Reference Source System.Web.Extensions
+   * gh#mono/mono#14143 - Techempower Platform Plaintext Hangs on Every Request using LLVM JIT
+   * gh#mono/mono#14170 - “Fatal signal 11 (SIGSEGV), code 1 (SEGV_MAPERR)” after debugger pauses and then continues on nested exception
+   * gh#mono/mono#14181 - Pango modules.cache contains jenkins builder path
+   * gh#mono/mono#14195 - 5.20.1.19 configure fails if enable-cxx but no C++ compiler found
+   * gh#mono/mono#14214 - HttpClient.SendAsync() with > 2 GB response body.
+   * gh#mono/mono#14215 - Suggestion: switch to 7z native format instead of ZIP for Mono archives
+   * gh#mono/mono#14234 - SqliteMembershipProvider initialization bug (Failed to map path ‘/’).
+   * gh#mono/mono#14243 - [Wasm] Assertion at mini-llvm.c:2106, condition 'clause->flags == MONO_EXCEPTION_CLAUSE_NONE || clause->flags == MONO_EXCEPTION_CLAUSE_FINALLY || clause->flags == MONO_EXCEPTION_CLAUSE_FAULT' not met
+   * gh#mono/mono#14246 - Interpreter crashes when encountering build-in types
+   * gh#mono/mono#14247 - Assertion on 32-bit iOS device with thumb code
+   * gh#mono/mono#14255 - Copying from Mono port of Windows Forms doesn’t work in some programs on Linux
+   * gh#mono/mono#14261 - LLVM Generates Wrong IndexOf Span code
+   * gh#mono/mono#14290 - [ios] Non-public API usage when submitting app
+   * gh#mono/mono#14543 - Decoded custom attribute values leak the encoded value receiver
+   * gh#mono/mono#14551 - Result for EnumCompareTo differs from Core implementation
+   * gh#mono/mono#14585 - [tests] Don’t send HTTP requests to Google
+   * gh#mono/mono#14669 - mempool allocate bug?
+   * gh#mono/mono#14729 - interpreter tests fail on iOS and tvOS for mscorlib tests
+   * gh#mono/mono#14792 - [sdks][ios] Perform the appropriate cast of objc_msgSend and friends
+   * gh#mono/mono#14793 - Mono-Native not working on MacOS Catalina
+   * gh#mono/mono#14809 - Cannot box IsByRefLike type 'System.ReadOnlySpan'1' in Forms designer tests with 6.0
+   * gh#mono/mono#14839 - [xamarin] TimeZoneInfo.Local always returns “Local” name
+   * gh#mono/mono#14841 - opt: Unknown command line argument ‘-place-safepoints’ in XI 2019-06 integration
+   * gh#mono/mono#14871 - [wasm] System.Text.Json struct serialization fails (but works on CoreCLR)
+   * gh#mono/mono#14872 - System.Runtime.CompilerServices.UnsafeTests.ReadWriteDoublePointer test failure on devices in Xamarin.iOS
+   * gh#mono/mono#14972 - Xamarin.iOS: System.ExecutionEngineException: Attempting to JIT compile method ‘(wrapper delegate-begin-invoke) System.IAsyncResult System.Func`2<ExecutionEngineExceptionTest.AppDelegate, bool>:begin_invoke_IAsyncResult__this___T_AsyncCallback_object (ExecutionEngineExceptionTest.AppDelegate,System.AsyncCallback,object)’
+   * gh#mono/mono#14975 - Mono profiler crashes when running IDE leak tests for VSMac
+   * gh#mono/mono#15048 - [aot] Duplicate .fnstart Directive Compiler Error
+   * gh#mono/mono#15058 - [2019-06][iOS] Several tests on iOS fail on a 32b device
+   * gh#mono/mono#15261 - [iOS][Tests] There are a number of System.Numeric tests that fail on iOS 32b devices
+   * gh#mono/mono#15262 - [iOS][Tests] A number of linq tests fail on iOS 32b devices
+   * gh#mono/mono#15263 - [iOS][Tests] A number of tests from Microsoft.CSharp fail on iOS 32b devices.
+   * gh#mono/mono#15265 - [watchOS][Tests] The System_xunit-test.dll for watchOS includes tests that should be ignored
+   * gh#mono/mono#15307 - [iOS][Tests] Several corelib tests crash on iOS32b devices.
+   * gh#mono/mono#15328 - [MacOS][Tests] Several tests fail due to a System.IO exception
+   * gh#mono/mono#15329 - [MacOS Modern][Tests] System.IO.AnonymousPipe tests are included when they are not supported.
+   * gh#mono/mono#15330 - Runtime deadlock
+   * gh#mono/mono#15366 - StringBuilder marshalling bug
+   * gh#mono/mono#15441 - “pos undeclared” compilation error
+   * gh#mono/mono#15692 - Catching IndexOutOfRange doesn’t provide message
+   * gh#mono/mono#15751 - Memory leak in mono 6.0.0.313 for delegates with target that are passed to native code
+   * gh#mono/mono#15825 - DeflateStream leaks native memory if not explicitly disposed
+   * gh#mono/mono#15878 - Crash in mono_coop_mutex_lock while running VS for Mac
+   * gh#mono/mono#15887 - [regression] File.GetLastWriteTime fails with specific (GMT+8) timezone
+   * gh#mono/mono#15999 - [mini] run regression tests with fullaot+llvm
+   * gh#mono/mono#16010 - typeof(object).GetMember(“”) does not return an empty array
+   * gh#mono/mono#16024 - Native crash in ves_icall_System_Net_Sockets_Socket_Connect_internal
+   * gh#mono/mono#16032 - IOException: Sharing violation on path …
+   * gh#mono/mono#16122 - VS 16.2.0 regression: CopyToAsync from DeflateStream to GzipStream throws NotImplementedException
+   * gh#mono/mono#16486 - FileSystemEventArgs.FullPath throws ArgumentNullException
+   * gh#mono/mono#16712 - SIGSEGV in mono_class_setup_vtable_general
+
+-------------------------------------------------------------------
 Wed Apr 24 17:25:10 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1133266).

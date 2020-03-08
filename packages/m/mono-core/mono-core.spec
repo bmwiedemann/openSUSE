@@ -1,7 +1,9 @@
+
+
 #
 # spec file for package mono-core
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +14,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
 %{!?ext_man: %define ext_man .gz}
 %define llvm no
@@ -26,7 +27,7 @@
 %define boehm yes
 %endif
 
-%ifarch %ix86 x86_64 %{arm} aarch64 ppc64 ppc64le
+%ifarch %ix86 x86_64 %{arm} aarch64 ppc64 ppc64le s390x
 %define btls yes
 %else
 %define btls no
@@ -38,22 +39,20 @@
 %define roslyn no
 %endif
 
-%define version_suffix 19
+%define version_suffix 96
 
 Name:           mono-core
-Version:        5.20.1
+Version:        6.8.0
 Release:        0
 Summary:        Cross-platform, Open Source, .NET development framework
-License:        LGPL-2.1 and MIT and MS-PL
+License:        LGPL-2.1-only AND MIT AND MS-PL
 Group:          Development/Languages/Mono
 Url:            http://www.mono-project.com
-Source0:        http://download.mono-project.com/sources/mono/mono-%{version}.%{version_suffix}.tar.bz2
+Source0:        http://download.mono-project.com/sources/mono/mono-%{version}.%{version_suffix}.tar.xz
 Source1:        mono-core.rpmlintrc
 Source2:        gmcs
 # ppc build segfault so exclude it
 ExcludeArch:    ppc
-# PATCH-FIX-UPSTREAM
-Patch2:         libtest.patch
 # PATCH-FIX-OPENSUSE remove checks for libmono in mono-find-provides and mono-find-requires scripts
 Patch14:        find-deps-fix.patch
 # PATCH-FIX-OPENSUSE revert Microsoft.Build.Tasks library to use old mcs compiler. This will make xbuild to use old mcs instead of csc - patch is used when roslyn is unavailable for current platform (big-endian systems).
@@ -64,23 +63,23 @@ Patch16:        fix-dbg-headers.patch
 Patch20:        xbuild-use-roslyn-vbc.patch
 # PATCH-FIX-OPENSUSE fix 64bit-portability-issue at exceptions-ppc.c:799
 Patch21:        fix-ppc-64bit-portability-issue.patch
-BuildRequires:  cmake
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  ca-certificates
-BuildRequires:  which
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  timezone
+BuildRequires:  which
 BuildRequires:  pkgconfig(libgdiplus)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  python
 %ifnarch ia64 %arm s390
 BuildRequires:  pkgconfig(valgrind)
 %endif
@@ -109,52 +108,31 @@ Provides:       mono(I18N) = 2.0.0.0
 Provides:       mono(I18N.West) = 1.0.5000.0
 Provides:       mono(I18N.West) = 2.0.0.0
 Provides:       mono(ICSharpCode.SharpZipLib) = 0.6.0.0
-Provides:       mono(ICSharpCode.SharpZipLib) = 2.6.0.0
 Provides:       mono(ICSharpCode.SharpZipLib) = 0.84.0.0
+Provides:       mono(ICSharpCode.SharpZipLib) = 2.6.0.0
 Provides:       mono(ICSharpCode.SharpZipLib) = 2.84.0.0
 Provides:       mono(Mono.Cairo) = 1.0.5000.0
 Provides:       mono(Mono.Cairo) = 2.0.0.0
 Provides:       mono(Mono.CompilerServices.SymbolWriter) = 1.0.5000.0
 Provides:       mono(Mono.CompilerServices.SymbolWriter) = 2.0.0.0
+Provides:       mono(Mono.Configuration.Crypto) = 4.0.0.0
 Provides:       mono(Mono.Posix) = 1.0.5000.0
 Provides:       mono(Mono.Posix) = 2.0.0.0
 Provides:       mono(Mono.Security) = 1.0.5000.0
 Provides:       mono(Mono.Security) = 2.0.0.0
 Provides:       mono(System) = 1.0.5000.0
 Provides:       mono(System) = 2.0.0.0
+Provides:       mono(System.Collections) = 4.0.0.0
+Provides:       mono(System.Collections.Concurrent) = 4.0.0.0
+Provides:       mono(System.ComponentModel) = 4.0.0.0
+Provides:       mono(System.ComponentModel.Annotations) = 4.0.0.0
+Provides:       mono(System.ComponentModel.EventBasedAsync) = 4.0.0.0
 Provides:       mono(System.Configuration) = 1.0.5000.0
 Provides:       mono(System.Configuration) = 2.0.0.0
-Provides:       mono(System.Security) = 1.0.5000.0
-Provides:       mono(System.Security) = 2.0.0.0
-Provides:       mono(System.Xml) = 1.0.5000.0
-Provides:       mono(System.Xml) = 2.0.0.0
 Provides:       mono(System.Diagnostics.Contracts) = 4.0.0.0
 Provides:       mono(System.Diagnostics.Debug) = 4.0.0.0
 Provides:       mono(System.Diagnostics.Tools) = 4.0.0.0
 Provides:       mono(System.Diagnostics.Tracing) = 4.0.0.0
-Provides:       mono(System.Collections) = 4.0.0.0
-Provides:       mono(System.Collections.Concurrent) = 4.0.0.0
-Provides:       mono(System.Runtime) = 4.0.0.0
-Provides:       mono(System.Runtime.Extensions) = 4.0.0.0
-Provides:       mono(System.Runtime.InteropServices) = 4.0.0.0
-Provides:       mono(System.Runtime.InteropServices.WindowsRuntime) = 4.0.0.0
-Provides:       mono(System.Runtime.Numerics) = 4.0.0.0
-Provides:       mono(System.Runtime.Serialization.Json) = 4.0.0.0
-Provides:       mono(System.Runtime.Serialization.Primitives) = 4.0.0.0
-Provides:       mono(System.Runtime.Serialization.Xml) = 4.0.0.0
-Provides:       mono(System.Reflection) = 4.0.0.0
-Provides:       mono(System.Reflection.Emit) = 4.0.0.0
-Provides:       mono(System.Reflection.Emit.ILGeneration) = 4.0.0.0
-Provides:       mono(System.Reflection.Emit.Lightweight) = 4.0.0.0
-Provides:       mono(System.Reflection.Extensions) = 4.0.0.0
-Provides:       mono(System.Reflection.Primitives) = 4.0.0.0
-Provides:       mono(System.ObjectModel) = 4.0.0.0
-Provides:       mono(System.Xml.ReaderWriter) = 4.0.0.0
-Provides:       mono(System.Xml.XDocument) = 4.0.0.0
-Provides:       mono(System.Xml.XmlSerializer) = 4.0.0.0
-Provides:       mono(System.ComponentModel) = 4.0.0.0
-Provides:       mono(System.ComponentModel.Annotations) = 4.0.0.0
-Provides:       mono(System.ComponentModel.EventBasedAsync) = 4.0.0.0
 Provides:       mono(System.Dynamic.Runtime) = 4.0.0.0
 Provides:       mono(System.Globalization) = 4.0.0.0
 Provides:       mono(System.IO) = 4.0.0.0
@@ -165,7 +143,24 @@ Provides:       mono(System.Linq.Queryable) = 4.0.0.0
 Provides:       mono(System.Net.NetworkInformation) = 4.0.0.0
 Provides:       mono(System.Net.Primitives) = 4.0.0.0
 Provides:       mono(System.Net.Requests) = 4.0.0.0
+Provides:       mono(System.ObjectModel) = 4.0.0.0
+Provides:       mono(System.Reflection) = 4.0.0.0
+Provides:       mono(System.Reflection.Emit) = 4.0.0.0
+Provides:       mono(System.Reflection.Emit.ILGeneration) = 4.0.0.0
+Provides:       mono(System.Reflection.Emit.Lightweight) = 4.0.0.0
+Provides:       mono(System.Reflection.Extensions) = 4.0.0.0
+Provides:       mono(System.Reflection.Primitives) = 4.0.0.0
 Provides:       mono(System.Resources.ResourceManager) = 4.0.0.0
+Provides:       mono(System.Runtime) = 4.0.0.0
+Provides:       mono(System.Runtime.Extensions) = 4.0.0.0
+Provides:       mono(System.Runtime.InteropServices) = 4.0.0.0
+Provides:       mono(System.Runtime.InteropServices.WindowsRuntime) = 4.0.0.0
+Provides:       mono(System.Runtime.Numerics) = 4.0.0.0
+Provides:       mono(System.Runtime.Serialization.Json) = 4.0.0.0
+Provides:       mono(System.Runtime.Serialization.Primitives) = 4.0.0.0
+Provides:       mono(System.Runtime.Serialization.Xml) = 4.0.0.0
+Provides:       mono(System.Security) = 1.0.5000.0
+Provides:       mono(System.Security) = 2.0.0.0
 Provides:       mono(System.Security.Principal) = 4.0.0.0
 Provides:       mono(System.ServiceModel.Http) = 4.0.0.0
 Provides:       mono(System.ServiceModel.Primitives) = 4.0.0.0
@@ -177,10 +172,14 @@ Provides:       mono(System.Threading) = 4.0.0.0
 Provides:       mono(System.Threading.Tasks) = 4.0.0.0
 Provides:       mono(System.Threading.Tasks.Parallel) = 4.0.0.0
 Provides:       mono(System.Threading.Timer) = 4.0.0.0
+Provides:       mono(System.Xml) = 1.0.5000.0
+Provides:       mono(System.Xml) = 2.0.0.0
+Provides:       mono(System.Xml.ReaderWriter) = 4.0.0.0
+Provides:       mono(System.Xml.XDocument) = 4.0.0.0
+Provides:       mono(System.Xml.XmlSerializer) = 4.0.0.0
 Provides:       mono(mscorlib) = 1.0.5000.0
 Provides:       mono(mscorlib) = 2.0.0.0
 Provides:       mono(mscorlib) = 4.0.0.0
-Provides:       mono(Mono.Configuration.Crypto) = 4.0.0.0
 # mono-core provides System.DateTime functions, which rely on timezone information
 Requires:       timezone
 
@@ -194,7 +193,7 @@ Requires:       timezone
 %define extra_req_filters grep -vE "%{buildroot}%{_prefix}/lib/mono/.*-api/Mono.Debugger.Soft.dll"
 
 %define __find_provides env sh -c 'filelist=($(cat)) && { %{filtered_filelist} | /usr/lib/rpm/find-provides && %{filtered_filelist} | prefix=%{buildroot}%{_prefix} %{buildroot}%{_bindir}/mono-find-provides ; } | sort | uniq'
-%define __find_requires env sh -c 'filelist=($(cat)) && { %{filtered_filelist} | %{extra_req_filters} | /usr/lib/rpm/find-requires && %{filtered_filelist} | %{extra_req_filters} | prefix=%{buildroot}%{_prefix} %{buildroot}%{_bindir}/mono-find-requires ; } | sort | uniq'
+%define __find_requires env sh -c 'filelist=($(cat)) && { %{filtered_filelist} | %{extra_req_filters} | /usr/lib/rpm/find-requires && %{filtered_filelist} | %{extra_req_filters} | prefix=%{buildroot}%{_prefix} %{buildroot}%{_bindir}/mono-find-requires | grep -v "System.Numerics.Vectors" | grep -v "System.Buffers" | grep -v "Microsoft.Build.Framework" | grep -v "Microsoft.Build.Tasks.Core" | grep -v "Microsoft.Build.Utilities.Core" | grep -v "System.Runtime.Loader" | grep -v "System.Text.Encoding.CodePages" ; } | sort | uniq'
 
 %description
 The Mono Project is an open development initiative that is working to
@@ -205,7 +204,6 @@ technologies that have been submitted to the ECMA for standardization.
 
 %prep
 %setup -q -n mono-%{version}.%{version_suffix}
-%patch2 -p1
 %patch14 -p1
 %patch16 -p1
 %if %roslyn == no
@@ -349,6 +347,8 @@ rm -v %{buildroot}%{_bindir}/csc
 rm -v %{buildroot}%{_bindir}/csi
 rm -v %{buildroot}%{_bindir}/vbc
 rm -rfv %{msbuild_prefix}
+# also remove stale symlinks to prevent from brp-25-symlink errors:
+rm -v %{buildroot}%{_prefix}/lib/mono/msbuild/Current/bin/Roslyn/*
 %endif
 
 %fdupes %{buildroot}%{_prefix}
@@ -362,7 +362,8 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 
 %files -f mcs.lang
 %defattr(-, root, root)
-%doc COPYING.LIB LICENSE NEWS README.md
+%doc NEWS README.md
+%license COPYING.LIB LICENSE
 %config %{_sysconfdir}/mono/2.0/machine.config
 %config %{_sysconfdir}/mono/2.0/settings.map
 %config %{_sysconfdir}/mono/4.0/machine.config
@@ -372,7 +373,6 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %config %{_sysconfdir}/mono/config
 %dir %{_prefix}/lib/mono
 %dir %{_prefix}/lib/mono/4.5
-%dir %{_prefix}/lib/mono/4.5/dim/
 %dir %{_prefix}/lib/mono/4.5/Facades
 %dir %{_prefix}/lib/mono/gac
 %dir %{_sysconfdir}/mono
@@ -386,8 +386,6 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_bindir}/chktrust
 %{_bindir}/crlupdate
 %{_bindir}/csharp
-#csc-dim components still installed for non-roslyn builds, maybe this is a bug
-%{_bindir}/csc-dim
 %{_bindir}/dmcs
 %{_bindir}/gacutil
 %{_bindir}/gacutil2
@@ -395,6 +393,7 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_bindir}/ikdasm
 %{_bindir}/mcs
 %{_bindir}/mono
+%{_bindir}/mono-hang-watchdog
 %if %boehm == yes
 %{_bindir}/mono-boehm
 %endif
@@ -461,6 +460,7 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_prefix}/lib/mono/4.5/System.Dynamic.dll
 %{_prefix}/lib/mono/4.5/System.Json.dll
 %{_prefix}/lib/mono/4.5/System.Json.Microsoft.dll
+%{_prefix}/lib/mono/4.5/System.Memory.dll
 %{_prefix}/lib/mono/4.5/System.Net.dll
 %{_prefix}/lib/mono/4.5/System.Net.Http.dll
 %{_prefix}/lib/mono/4.5/System.Net.Http.Formatting.dll
@@ -468,8 +468,10 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_prefix}/lib/mono/4.5/System.Numerics.dll
 %{_prefix}/lib/mono/4.5/System.Numerics.Vectors.dll
 %{_prefix}/lib/mono/4.5/System.Reflection.Context.dll
+%{_prefix}/lib/mono/4.5/System.Runtime.CompilerServices.Unsafe.dll
 %{_prefix}/lib/mono/4.5/System.Security.dll
 %{_prefix}/lib/mono/4.5/System.Threading.Tasks.Dataflow.dll
+%{_prefix}/lib/mono/4.5/System.Threading.Tasks.Extensions.dll
 %{_prefix}/lib/mono/4.5/System.Web.Mobile.dll
 %{_prefix}/lib/mono/4.5/System.Web.RegularExpressions.dll
 %{_prefix}/lib/mono/4.5/System.Workflow.Activities.dll
@@ -485,7 +487,6 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_prefix}/lib/mono/4.5/Facades/System*
 %{_prefix}/lib/mono/4.5/Facades/Microsoft*
 %{_prefix}/lib/mono/4.5/Facades/netstandard*
-%{_prefix}/lib/mono/4.5/dim/*
 %{_prefix}/lib/mono/gac/Commons.Xml.Relaxng
 %{_prefix}/lib/mono/gac/CustomMarshalers
 %{_prefix}/lib/mono/gac/I18N
@@ -574,7 +575,7 @@ cert-sync /etc/ssl/ca-bundle.pem
 
 %package -n libmono-2_0-1
 Summary:        A Library for embedding Mono in your Application
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 %if %{sgen}
 Requires:       libmonosgen-2_0-1
@@ -601,7 +602,7 @@ A Library for embedding Mono in your Application.
 
 %package -n libmono-2_0-devel
 Summary:        Development files for libmono
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       libmono-2_0-1 = %{version}
 %if %{sgen}
@@ -631,7 +632,7 @@ Development files for libmono.
 %if %boehm == yes
 %package -n libmonoboehm-2_0-1
 Summary:        A Library for embedding Mono in your Application (Boehm GC)
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 
 %description -n libmonoboehm-2_0-1
@@ -654,7 +655,7 @@ Boehm garbage collector.
 
 %package -n libmonoboehm-2_0-devel
 Summary:        Development files for libmonoboehm
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       libmono-2_0-devel
 Requires:       libmonoboehm-2_0-1 = %{version}
@@ -677,7 +678,7 @@ Development files for libmonoboehm
 %if %sgen == yes
 %package -n libmonosgen-2_0-1
 Summary:        A Library for embedding Mono in your Application (SGen GC)
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 
 %description -n libmonosgen-2_0-1
@@ -700,7 +701,7 @@ garbage collector.
 
 %package -n libmonosgen-2_0-devel
 Summary:        Development files for libmonosgen
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       libmono-2_0-devel
 Requires:       libmonosgen-2_0-1 = %{version}
@@ -725,7 +726,7 @@ Development files for libmonosgen.
 %if %llvm == yes
 %package -n libmono-llvm0
 Summary:        Loadable LLVM libary for mono
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 
 %description -n libmono-llvm0
@@ -748,7 +749,7 @@ Loadable LLVM libary for mono.
 
 %package -n mono-locale-extras
 Summary:        Extra locale information
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Provides:       mono(I18N.CJK) = 1.0.5000.0
@@ -782,7 +783,7 @@ Extra locale information.
 
 %package -n mono-data
 Summary:        Database connectivity for Mono
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Provides:       mono-directory = %{version}
@@ -846,7 +847,7 @@ Database connectivity for Mono.
 
 %package -n mono-winforms
 Summary:        Mono's Windows Forms implementation
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Provides:       mono-window-forms = %{version}
@@ -887,7 +888,7 @@ Mono's Windows Forms implementation.
 
 %package -n ibm-data-db2
 Summary:        Database connectivity for DB2
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 
@@ -907,7 +908,7 @@ Database connectivity for DB2.
 
 %package -n mono-extras
 Summary:        Extra packages
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Provides:       mono-ms-extras = %{version}
@@ -972,7 +973,7 @@ Extra packages.
 
 %package -n mono-data-sqlite
 Summary:        Database connectivity for Mono
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Requires:       mono-data = %{version}
@@ -995,7 +996,7 @@ Database connectivity for Mono.
 
 %package -n mono-wcf
 Summary:        Mono implementation of WCF, Windows Communication Foundation
-License:        MIT and MS-PL
+License:        MIT AND MS-PL
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 
@@ -1041,7 +1042,7 @@ Mono implementation of WCF, Windows Communication Foundation
 
 %package -n mono-winfxcore
 Summary:        Mono implementation of core WinFX APIs
-License:        MIT and MS-PL
+License:        MIT AND MS-PL
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 
@@ -1063,7 +1064,7 @@ Mono implementation of core WinFX APIs
 
 %package -n mono-web
 Summary:        Mono implementation of ASP
-License:        MIT and MS-PL
+License:        MIT AND MS-PL
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Provides:       mono-remoting = %{version}
@@ -1169,7 +1170,7 @@ Mono implementation of ASP.NET, Remoting and Web Services.
 
 %package -n mono-mvc
 Summary:        Mono implementation of ASP
-License:        MIT and MS-PL
+License:        MIT AND MS-PL
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 
@@ -1200,7 +1201,7 @@ Mono implementation of ASP.NET MVC.
 
 %package -n mono-data-oracle
 Summary:        Database connectivity for Mono
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       mono-core = %{version}
 Requires:       mono-data = %{version}
@@ -1221,52 +1222,9 @@ Database connectivity for Mono.
 %{_prefix}/lib/mono/4.5/System.Data.OracleClient.dll
 %{_prefix}/lib/mono/gac/System.Data.OracleClient
 
-%package -n mono-nunit
-Summary:        NUnit Testing Framework
-License:        LGPL-2.1
-Group:          Development/Languages/Mono
-Requires:       mono-core = %{version}
-
-%description -n mono-nunit
-NUnit is a unit-testing framework for all .Net languages.  Initially
-ported from JUnit, the current release, version 2.2,  is the fourth
-major release of this  Unit based unit testing tool for Microsoft .NET.
-It is written entirely in C# and has been completely redesigned to
-take advantage of many .NET language features, for example custom
-attributes and other reflection related capabilities.
-
-NUnit brings xUnit to all .NET languages.
-
-%files -n mono-nunit
-%defattr(-, root, root)
-%{_libdir}/pkgconfig/mono-nunit.pc
-%{_bindir}/nunit-console
-%{_bindir}/nunit-console2
-%{_bindir}/nunit-console4
-%{_prefix}/lib/mono/4.5/nunit-console-runner.dll
-%{_prefix}/lib/mono/4.5/nunit-console.exe*
-%{_prefix}/lib/mono/4.5/nunit.core.dll
-%{_prefix}/lib/mono/4.5/nunit.core.extensions.dll
-%{_prefix}/lib/mono/4.5/nunit.core.interfaces.dll
-%{_prefix}/lib/mono/4.5/nunit.framework.dll
-%{_prefix}/lib/mono/4.5/nunit.framework.extensions.dll
-%{_prefix}/lib/mono/4.5/nunit.mocks.dll
-%{_prefix}/lib/mono/4.5/nunit.util.dll
-%{_prefix}/lib/mono/gac/nunit-console-runner
-%{_prefix}/lib/mono/gac/nunit.core
-%{_prefix}/lib/mono/gac/nunit.core.extensions
-%{_prefix}/lib/mono/gac/nunit.core.interfaces
-%{_prefix}/lib/mono/gac/nunit.framework
-%{_prefix}/lib/mono/gac/nunit.framework.extensions
-%{_prefix}/lib/mono/gac/nunit.mocks
-%{_prefix}/lib/mono/gac/nunit.util
-%if %roslyn == yes
-%{_prefix}/lib/mono/4.5/nunit-console.pdb
-%endif
-
 %package -n mono-devel
 Summary:        Mono development tools
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       libgdiplus-devel
 Requires:       mono-core = %{version}
@@ -1287,11 +1245,11 @@ Provides:       mono(PEAPI) = 2.0.0.0
 Provides:       mono(resgen) = 1.0.5000.0
 Provides:       mono(resgen) = 2.0.0.0
 #following 5 lines needed for a temporary build fix. According to https://github.com/mono/mono/commit/1f4133a06f252ec1b78637dd91e49f50836cf570, we shoud fix individual packages that rely on incorrect dependencies
-Provides:       mono(System.ServiceModel) = 3.0.0.0
-Provides:       mono(System.Core) = 3.5.0.0
 Provides:       mono(Mono.Posix) = 2.0.0.0
-Provides:       mono(System.Transactions) = 2.0.0.0
 Provides:       mono(System.Configuration.Install) = 2.0.0.0
+Provides:       mono(System.Core) = 3.5.0.0
+Provides:       mono(System.ServiceModel) = 3.0.0.0
+Provides:       mono(System.Transactions) = 2.0.0.0
 
 %description -n mono-devel
 The Mono Project is an open development initiative that is working to
@@ -1308,6 +1266,10 @@ Mono development tools.
 
 %files -n mono-devel
 %defattr(-, root, root)
+%{_bindir}/aprofutil
+%{_prefix}/lib/mono/4.5/aprofutil.exe
+%{_prefix}/lib/mono/4.5/aprofutil.pdb
+%{_mandir}/man1/aprofutil.1%ext_man
 %{_bindir}/caspol
 %{_bindir}/ccrewrite
 %{_bindir}/cccheck
@@ -1336,7 +1298,6 @@ Mono development tools.
 %{_bindir}/mono-xmltool
 %{_bindir}/monodis
 %{_bindir}/monolinker
-%{_bindir}/monograph
 %{_bindir}/monop
 %{_bindir}/monop2
 %{_bindir}/mprof-report
@@ -1397,6 +1358,7 @@ Mono development tools.
 %{_mandir}/man1/xbuild.1%ext_man
 %{_prefix}/lib/mono-source-libs
 %{_prefix}/lib/mono/4.0
+%{_prefix}/lib/mono/4.8-api
 %{_prefix}/lib/mono/4.7.2-api
 %{_prefix}/lib/mono/4.7.1-api
 %{_prefix}/lib/mono/4.7-api
@@ -1554,7 +1516,7 @@ Microsoft's Reactive Extensions.
 
 %package -n monodoc-core
 Summary:        Monodoc - Documentation tools for C# code
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Tools/Other
 Requires:       mono-core = %{version}
 # Added to uncompress and compare documentation used by build-compare
@@ -1603,7 +1565,7 @@ Monodoc-core contains documentation tools for C#.
 
 %package -n mono-complete
 Summary:        Install everything built from the mono source tree
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       ibm-data-db2 = %{version}
 Requires:       libmono-2_0-1 = %{version}
@@ -1627,7 +1589,6 @@ Requires:       mono-devel = %{version}
 Requires:       mono-extras = %{version}
 Requires:       mono-locale-extras = %{version}
 Requires:       mono-mvc = %{version}
-Requires:       mono-nunit = %{version}
 Requires:       mono-reactive = %{version}
 Requires:       mono-wcf = %{version}
 Requires:       mono-web = %{version}
@@ -1635,8 +1596,8 @@ Requires:       mono-winforms = %{version}
 Requires:       mono-winfxcore = %{version}
 Requires:       monodoc-core = %{version}
 
-Obsoletes:      mono-entityframework < 4.0.0
 Obsoletes:      mono-data-postgresql < 4.0.0
+Obsoletes:      mono-entityframework < 4.0.0
 
 %description -n mono-complete
 The Mono Project is an open development initiative that is working to
