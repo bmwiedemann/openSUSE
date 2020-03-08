@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-image
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,6 @@ BuildRequires:  %{python_module PyWavelets >= 0.4.0}
 BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module matplotlib >= 1.3.1}
 BuildRequires:  %{python_module networkx >= 1.8}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -89,7 +88,9 @@ It is available free of charge and free of restriction.
 %check
 export PYTHONDONTWRITEBYTECODE=1 # do not write unreproducible test_random_walker.cpython-37-PYTEST.pyc files (boo#1062303)
 mv skimage skimage_temp
-%pytest_arch -v %{buildroot}%{$python_sitearch}/skimage -n auto
+# test_wrap_around - fails randomly https://github.com/scikit-image/scikit-image/issues/3237
+# test_structural_similarity_dtype - also fails randomly on 32bit
+%pytest_arch -v %{buildroot}%{$python_sitearch}/skimage -n auto -k 'not (test_wrap_around or test_structural_similarity_dtype)'
 mv skimage_temp skimage
 
 %files %{python_files}

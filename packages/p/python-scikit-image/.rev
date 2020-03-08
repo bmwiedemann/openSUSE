@@ -116,4 +116,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>755837</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>5d96f8ee958dc6c9fac69af4ed55dfe3</srcmd5>
+    <version>0.16.2</version>
+    <time>1583702453</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip 2 failing tests on 32bit
+- Do not buildrequire nose</comment>
+    <requestid>765257</requestid>
+  </revision>
 </revisionlist>
