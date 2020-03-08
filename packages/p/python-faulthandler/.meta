@@ -1,6 +1,0 @@
-<package name="python-faulthandler" project="openSUSE:Factory">
-  <title>Display the Python traceback on a crash</title>
-  <description>Fault handler for SIGSEGV, SIGFPE, SIGABRT, SIGBUS and SIGILL signals: display the Python traceback and restore the previous handler. Allocate an alternate stack for this handler, if sigaltstack() is available, to be able to allocate memory on the stack, even on stack overflow (not available on Windows).
-Import the module and call faulthandler.enable() to enable the fault handler.</description>
-  <devel project="devel:languages:python" package="python-faulthandler"/>
-</package>
