@@ -180,4 +180,17 @@
     <comment></comment>
     <requestid>766375</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f143d159186075ee6321136f448e7ac</srcmd5>
+    <version>8.2.0</version>
+    <time>1583702492</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.2.0:
+   * The .pyi files for typing were updated. (thanks to blueyed and ilai-deutel)
+   * :func:`numeric_range` now behaves more like the built-in :func:`range`. (thanks to jferard)
+   * :func:`bucket` now allows for enumerating keys. (thanks to alexchandel)
+   * :func:`sliced` now should now work for numpy arrays. (thanks to sswingle)
+   * :func:`seekable` now has a ``maxlen`` parameter.</comment>
+    <requestid>780384</requestid>
+  </revision>
 </revisionlist>

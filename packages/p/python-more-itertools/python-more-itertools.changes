@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:37:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.2.0:
+   * The .pyi files for typing were updated. (thanks to blueyed and ilai-deutel)
+   * :func:`numeric_range` now behaves more like the built-in :func:`range`. (thanks to jferard)
+   * :func:`bucket` now allows for enumerating keys. (thanks to alexchandel)
+   * :func:`sliced` now should now work for numpy arrays. (thanks to sswingle)
+   * :func:`seekable` now has a ``maxlen`` parameter.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:56:53 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to 8.1.0:
