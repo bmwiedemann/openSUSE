@@ -1,7 +1,7 @@
 #
 # spec file for package python-dulwich
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dulwich
-Version:        0.19.13
+Version:        0.19.15
 Release:        0
 Summary:        Pure-Python Git Library
 License:        GPL-2.0-or-later OR Apache-2.0

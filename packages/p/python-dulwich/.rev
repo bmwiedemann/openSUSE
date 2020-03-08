@@ -286,4 +286,27 @@
   * Avoid ``PermissionError``, since it is Python3-specific.</comment>
     <requestid>730633</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d580d5f1a703817dff58c7e5f7bec99e</srcmd5>
+    <version>0.19.15</version>
+    <time>1583702489</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.15:
+   * Properly handle files that are just executable for the
+     current user. (Jelmer Vernooĳ, #734)
+   * Fix handling of stored encoding in
+     ``dulwich.porcelain.get_object_by_path`` on Python 3.
+     (Jelmer Vernooĳ)
+   * Support the include_trees and rename_detector arguments
+     at the same time when diffing trees.
+     (Jelmer Vernooĳ)
+   * Strip superfluous &lt;&gt; around email. (monnerat)
+   * Stop checking for ref validity client-side. Users can
+     still call check_wants manually. (Jelmer Vernooĳ)
+   * Switch over to Google-style docstrings.
+   * Add a ``dulwich.porcelain.active_branch`` function.
+   * Cleanup new directory if clone fails. (Jelmer Vernooĳ, #733)
+   * Expand &quot;~&quot; in global exclude path. (Jelmer Vernooĳ)</comment>
+    <requestid>780380</requestid>
+  </revision>
 </revisionlist>

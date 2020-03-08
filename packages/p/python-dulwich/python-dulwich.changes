@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:30:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.19.15:
+   * Properly handle files that are just executable for the
+     current user. (Jelmer Vernooĳ, #734)
+   * Fix handling of stored encoding in
+     ``dulwich.porcelain.get_object_by_path`` on Python 3.
+     (Jelmer Vernooĳ)
+   * Support the include_trees and rename_detector arguments
+     at the same time when diffing trees.
+     (Jelmer Vernooĳ)
+   * Strip superfluous <> around email. (monnerat)
+   * Stop checking for ref validity client-side. Users can
+     still call check_wants manually. (Jelmer Vernooĳ)
+   * Switch over to Google-style docstrings.
+   * Add a ``dulwich.porcelain.active_branch`` function.
+   * Cleanup new directory if clone fails. (Jelmer Vernooĳ, #733)
+   * Expand "~" in global exclude path. (Jelmer Vernooĳ)
+
+-------------------------------------------------------------------
 Fri Sep 13 08:37:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.19.13:
