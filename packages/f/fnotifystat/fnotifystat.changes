@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar  8 13:19:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Sun Mar  8 12:52:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop SLE12 compat ifdef
+
+-------------------------------------------------------------------
+Thu Feb 27 13:39:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.05
+  * Fix early return from loop on bad fstat
+  * Add device name information with -D and -I flags
+
+-------------------------------------------------------------------
+Wed Feb 26 14:08:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.04
+  * Add bash completions
+
+-------------------------------------------------------------------
+Tue Aug 27 09:43:09 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.03
+  * No funcional changes
+
+-------------------------------------------------------------------
+Sun Jul  7 18:39:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.02
+  * Manual: fix spelling mistakes
+  * Update copyright year
+  * Add travis yaml file
+
+-------------------------------------------------------------------
 Sun Jun 17 15:36:29 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.02.01
