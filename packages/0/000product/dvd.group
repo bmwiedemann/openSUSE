@@ -4463,6 +4463,7 @@
     <package name="ruby2.6-rubygem-liquid-3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-listen-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-listen-3_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-little-plugger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-log4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4639,7 +4640,6 @@
     <package name="ruby2.6-rubygem-simplecov" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-simplecov-html" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ruby2.6-rubygem-sinatra" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-slim" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-slop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-slop-3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

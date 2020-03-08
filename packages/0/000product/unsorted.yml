@@ -6624,7 +6624,6 @@ unsorted:
   - killbots 
   - killbots-lang 
   - killerd 
-  - killswitch-applet 
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
@@ -10219,6 +10218,8 @@ unsorted:
   - libmesode-devel 
   - libmesode0 
   - libmetacity1 
+  - libmetal-devel 
+  - libmetal0 
   - libmetalink-devel 
   - libmetis-gnu-hpc 
   - libmetis_5_1_0-gnu-hpc 
@@ -12828,7 +12829,6 @@ unsorted:
   - lighttpd-mod_authn_pam 
   - lighttpd-mod_authn_sasl 
   - lighttpd-mod_cml 
-  - lighttpd-mod_geoip 
   - lighttpd-mod_magnet 
   - lighttpd-mod_maxminddb 
   - lighttpd-mod_mysql_vhost 
@@ -13643,8 +13643,6 @@ unsorted:
   - mediastreamer2 
   - mediastreamer2-devel 
   - mediastreamer2-doc 
-  - medit 
-  - medit-lang 
   - mednafen 
   - mednafen-doc 
   - mednafen-lang 
@@ -18254,8 +18252,6 @@ unsorted:
   - python2-Js2Py 
   - python2-JsonWeb 
   - python2-Kajiki 
-  - python2-Keras-Applications 
-  - python2-Keras-Preprocessing 
   - python2-Kivy 
   - python2-Kivy-devel 
   - python2-LEPL 
@@ -20531,10 +20527,10 @@ unsorted:
   - python3-Js2Py 
   - python3-JsonWeb 
   - python3-Kajiki 
-  - python3-Keras 
-  - python3-Keras-Applications 
-  - python3-Keras-Preprocessing 
-  - python3-Keras-examples 
+  - python3-Keras: [x86_64] 
+  - python3-Keras-Applications: [x86_64] 
+  - python3-Keras-Preprocessing: [x86_64] 
+  - python3-Keras-examples: [x86_64] 
   - python3-Kivy 
   - python3-Kivy-devel 
   - python3-LEPL 
@@ -21773,6 +21769,7 @@ unsorted:
   - python3-kopano 
   - python3-kubernetes 
   - python3-l20n 
+  - python3-labelImg 
   - python3-labels 
   - python3-lancet-ioam 
   - python3-langdetect 
@@ -23846,6 +23843,7 @@ unsorted:
   - ruby2.6-rubygem-fake_ftp-testsuite-0_1 
   - ruby2.6-rubygem-faraday-doc 
   - ruby2.6-rubygem-faraday-doc-0_12 
+  - ruby2.6-rubygem-faraday-testsuite 
   - ruby2.6-rubygem-faraday_middleware-doc 
   - ruby2.6-rubygem-faraday_middleware-multi_json-doc 
   - ruby2.6-rubygem-faraday_middleware-multi_json-testsuite 
@@ -23981,6 +23979,7 @@ unsorted:
   - ruby2.6-rubygem-liquid-testsuite-3 
   - ruby2.6-rubygem-listen-doc 
   - ruby2.6-rubygem-listen-doc-3_0 
+  - ruby2.6-rubygem-listen-doc-3_1 
   - ruby2.6-rubygem-little-plugger-doc 
   - ruby2.6-rubygem-little-plugger-testsuite 
   - ruby2.6-rubygem-locale-doc 
@@ -24253,6 +24252,7 @@ unsorted:
   - ruby2.6-rubygem-simplecov-html-doc 
   - ruby2.6-rubygem-simplecov-html-testsuite 
   - ruby2.6-rubygem-simpleidn-doc 
+  - ruby2.6-rubygem-sinatra 
   - ruby2.6-rubygem-sinatra-doc 
   - ruby2.6-rubygem-slim-doc 
   - ruby2.6-rubygem-slim-testsuite 
