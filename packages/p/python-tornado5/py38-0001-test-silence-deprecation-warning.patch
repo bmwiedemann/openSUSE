@@ -1,0 +1,28 @@
+From 64308fbad38715afddc4f6b3c77e47f8606624b3 Mon Sep 17 00:00:00 2001
+From: Ben Darnell <ben@bendarnell.com>
+Date: Sun, 28 Apr 2019 19:31:52 -0400
+Subject: [PATCH] test: Silence a deprecation warning in py38+pycurl
+
+---
+ tornado/test/runtests.py | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- a/tornado/test/runtests.py
++++ b/tornado/test/runtests.py
+@@ -150,6 +150,16 @@
+         # would generate a warning.
+         warnings.filterwarnings("ignore", category=ResourceWarning,  # noqa: F821
+                                 module=r"asyncio\..*")
++    # This deprecation warning is introduced in Python 3.8 and is
++    # triggered by pycurl. Unforunately, because it is raised in the C
++    # layer it can't be filtered by module and we must match the
++    # message text instead (Tornado's C module uses PY_SSIZE_T_CLEAN
++    # so it's not at risk of running into this issue).
++    warnings.filterwarnings(
++        "ignore",
++        category=DeprecationWarning,
++        message="PY_SSIZE_T_CLEAN will be required",
++    )
+ 
+     logging.getLogger("tornado.access").setLevel(logging.CRITICAL)
+ 

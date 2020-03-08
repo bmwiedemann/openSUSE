@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  7 12:04:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patches to build with python 3.8:
+  * py38-0001-test-silence-deprecation-warning.patch
+  * py38-0002-dont-log-CancelledError.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 13:28:37 UTC 2019 - Andreas Schwab <schwab@suse.de>
 
 - Define TRAVIS to disable unreliable tests

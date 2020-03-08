@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Patch1:         tornado-testsuite_timeout.patch
 Patch2:         openssl-cert-size.patch
 Patch3:         skip-failing-tests.patch
+Patch4:         py38-0001-test-silence-deprecation-warning.patch
+Patch5:         py38-0002-dont-log-CancelledError.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
@@ -93,9 +95,7 @@ thousands of clients, see The C10K problem.)
 %setup -q -n tornado-%{version}
 # Fix non-executable script rpmlint issue:
 find demos tornado -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 %pre
 # remove egg-info _file_, being replaced by an egg-info directory
