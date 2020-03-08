@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,25 @@
 #
 
 
+# DON'T USE FOR SLE, USES BUNDLED VERSION OF LIBEV!!!
+%define use_bundled_libev 1
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modversion 1.5a3
+%define modname gevent
 Name:           python-gevent
-Version:        1.4.0
+Version:        1.5.0~a3
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://www.gevent.org/
-Source:         https://files.pythonhosted.org/packages/source/g/gevent/gevent-%{version}.tar.gz
+# Source:         https://files.pythonhosted.org/packages/source/g/gevent/gevent-%%{version}.tar.gz
+Source0:        https://github.com/gevent/%{modname}/archive/%{modversion}.tar.gz#/%{modname}-%{modversion}.tar.gz
 Source100:      %{name}-rpmlintrc
-Patch0:         remove-testCongestion.patch
 Patch1:         fix-tests.patch
 Patch2:         use-libev-cffi.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dnspython}
@@ -47,7 +53,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-testsuite
 BuildRequires:  pkgconfig(libcares)
+%if 0%{?use_bundled_libev}
 BuildRequires:  pkgconfig(libev)
+%endif
 BuildRequires:  pkgconfig(libuv)
 Requires:       python-cffi
 Requires:       python-dnspython
@@ -89,20 +97,19 @@ BuildArch:      noarch
 Documentation and examples for %{name}.
 
 %prep
-%setup -q -n gevent-%{version}
-%patch0 -p1
+%setup -q -n gevent-%{modversion}
 %patch1 -p1
 %patch2 -p1
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
 
 %build
-export LIBEV_EMBED=0
+export LIBEV_EMBED=%{use_bundled_libev}
 export CARES_EMBED=0
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
 
 %install
-export LIBEV_EMBED=0
+export LIBEV_EMBED=%{use_bundled_libev}
 export CARES_EMBED=0
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -112,19 +119,26 @@ export CARES_EMBED=0
 # test_ssl.py is fragile as it expect specific responses from ssl and
 #  does not account to our local changes
 # Also, gh#gevent/gevent#1390
+# Also, gh#gevent/gevent#1501
+# Test threading problems may be problem of bpo#36402, which has been
+# fixed in 3.7.5.
 cat <<'EOF' >> network_tests.txt
-test_urllib2net.py
-test__server.py
-test__server_pywsgi.py
-test__socket_ssl.py
-test___example_servers.py
-test__socket_dns.py
-test__getaddrinfo_import.py
+test__all__.py
+test___config.py
+test__doctests.py
 test__examples.py
-test_https.py
-test_urllib2_localnet.py
-test_ssl.py
+test__execmodules.py
+test__getaddrinfo_import.py
+test_httplib.py
+test__socket_dns.py
+test_socket.py
+test__socket_ssl.py
 test__ssl.py
+test_ssl.py
+test_threading.py
+test_urllib2_localnet.py
+test_urllib2net.py
+test_wsgiref.py
 EOF
 export GEVENT_RESOLVER=thread
 # Setting the TRAVIS environment variable makes some different configuration
@@ -139,7 +153,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc AUTHORS README.rst TODO CHANGES.rst CONTRIBUTING.rst
 %license LICENSE*
-%{python_sitearch}/gevent-%{version}-py*.egg-info
+%{python_sitearch}/gevent-%{modversion}-py*.egg-info
 %{python_sitearch}/gevent/
 
 %files -n python-gevent-doc
