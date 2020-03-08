@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-htmlhelp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-sphinxcontrib-htmlhelp%{psuffix}
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Sphinx contrib extension to generate html help files
 License:        BSD-2-Clause
@@ -52,7 +52,6 @@ Html help generating extension.
 
 %prep
 %setup -q -n sphinxcontrib-htmlhelp-%{version}
-rm -r tests/__pycache__
 
 %build
 %python_build

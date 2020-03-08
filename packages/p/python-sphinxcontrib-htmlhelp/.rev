@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>708144</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36c0401b54b24daac5427941b724b8e6</srcmd5>
+    <version>1.0.3</version>
+    <time>1583702503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * #6685: htmlhelp builder should generate HTML4 docs instead of HTML5</comment>
+    <requestid>780398</requestid>
+  </revision>
 </revisionlist>
