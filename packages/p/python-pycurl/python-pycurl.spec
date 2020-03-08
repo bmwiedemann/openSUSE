@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycurl
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,10 @@
 %bcond_with test
 %endif
 Name:           python-pycurl%{psuffix}
-Version:        7.43.0.3
+Version:        7.43.0.5
 Release:        0
 Summary:        PycURL -- cURL library module
 License:        LGPL-2.1-or-later AND MIT
-Group:          Development/Languages/Python
 URL:            http://pycurl.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE increase_test_timeout.diff -- Increase the timeout in a test so it doesn't fail when obs is overloaded
@@ -64,7 +63,6 @@ This module provides bindings for the cURL library.
 
 %package -n %{name}-doc
 Summary:        Documentation for python-curl
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Provides:       %{python_module pycurl-doc = %{version}}
 BuildArch:      noarch

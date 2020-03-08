@@ -256,4 +256,15 @@
   update the python-bottle package</comment>
     <requestid>749288</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>74a2810e1474cef1e45d22fc4f7c0487</srcmd5>
+    <version>7.43.0.5</version>
+    <time>1583702527</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.43.0.5
+- refresh python-pycurl-7.43.0-tls-backend.patch 
+ * added python 3.8 support
+ * officialy ended support for python 2</comment>
+    <requestid>781212</requestid>
+  </revision>
 </revisionlist>

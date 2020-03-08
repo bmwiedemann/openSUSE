@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:01:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 7.43.0.5
+- refresh python-pycurl-7.43.0-tls-backend.patch 
+ * added python 3.8 support
+ * officialy ended support for python 2
+
+-------------------------------------------------------------------
 Mon Nov 18 10:52:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip 4 tests that are tied to old bottle version so we can
