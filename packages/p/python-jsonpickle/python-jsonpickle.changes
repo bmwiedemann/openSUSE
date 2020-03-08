@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 28 18:31:13 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add PR292-Python38.patch to fix Python 3.8 incompatibilities
+  (gh#jsonpickle/jsonpickle#281).
+
+-------------------------------------------------------------------
 Thu Dec  5 18:13:07 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Exclude tests failing with python 3.8 (test_thing_with_fd,

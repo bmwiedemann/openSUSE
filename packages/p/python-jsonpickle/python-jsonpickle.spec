@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpickle
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname jsonpickle
 Name:           python-jsonpickle
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Python library for serializing any arbitrary object graph into JSON
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jsonpickle/jsonpickle
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpickle/jsonpickle-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PR292-Python38.patch gh#jsonpickle/jsonpickle#281 mcepl@suse.com
+# Fix Python 3.8 incompatibilities
+Patch01:        PR292-Python38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +61,7 @@ It can take almost any Python object and turn the object into JSON.
 Additionally, it can reconstitute the object back into Python.
 
 %prep
-%setup -q -n jsonpickle-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
@@ -67,8 +71,7 @@ Additionally, it can reconstitute the object back into Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Exclusions because of gh#jsonpickle/jsonpickle#281
-%pytest -k 'not (test_thing_with_fd or test_list_with_fd or test_dict_with_fd)'
+%pytest
 
 %files %{python_files}
 %doc README.rst docs/source/changelog.rst
