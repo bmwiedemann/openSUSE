@@ -1,7 +1,7 @@
 #
 # spec file for package mcstrans
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mcstrans
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/SELinuxProject/selinux/wiki
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
 Patch0:         %{name}-writepid.patch
 Patch1:         add_includes.patch
 BuildRequires:  aaa_base
@@ -89,6 +89,8 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_unitdir}/mcstrans*.service
 /sbin/mcstransd
 %{_sbindir}/rcmcstrans
+%{_mandir}/man5/*.5%{?ext_man}
+%{_mandir}/ru/man5/*.5%{?ext_man}
 %{_mandir}/man8/*.8%{?ext_man}
 %{_mandir}/ru/man8/*.8%{?ext_man}
 %dir %{_datadir}/doc/packages/%{name}
