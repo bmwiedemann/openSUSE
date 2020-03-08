@@ -1,7 +1,7 @@
 #
 # spec file for package yubioath-desktop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define binname yubioath
 Name:           yubioath-desktop
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Graphical interface for displaying OATH codes with a Yubikey
 License:        GPL-3.0-or-later
@@ -56,7 +56,7 @@ make %{?_smp_mflags}
 make install INSTALL_ROOT="%{buildroot}";
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-install -p -m 0644 resources/icons/%{binname}.png %{buildroot}%{_datadir}/pixmaps/
+install -p -m 0644 resources/icons/com.yubico.yubioath.png %{buildroot}%{_datadir}/pixmaps/
 
 mkdir -p %{buildroot}%{_datadir}/applications
 install -p -m 0644 resources/%{name}.desktop %{buildroot}%{_datadir}/applications/
@@ -68,6 +68,6 @@ install -p -m 0644 resources/%{name}.desktop %{buildroot}%{_datadir}/application
 %doc NEWS README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{binname}.png
+%{_datadir}/pixmaps/com.yubico.yubioath.png
 
 %changelog

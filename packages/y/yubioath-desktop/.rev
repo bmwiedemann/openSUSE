@@ -218,4 +218,12 @@ Version 3.0.0 (released 2016-06-09)
     <comment></comment>
     <requestid>760929</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44e84ea61a2774a88bc5e3dfc49bcce4</srcmd5>
+    <version>5.0.2</version>
+    <time>1583702661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782605</requestid>
+  </revision>
 </revisionlist>

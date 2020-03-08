@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  1 00:18:14 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Version 5.0.2 
+  - Allow spaces in secret key when adding accounts
+  - UI: Move favorite button to the credential card
+  - UI: Improved scrolling behaviour
+
+-------------------------------------------------------------------
 Fri Dec  6 07:53:09 UTC 2019 - Torsten Gruner <t.gruner@katodev.de>
 
 - Version 5.0.1 (released 2019-10-16)
