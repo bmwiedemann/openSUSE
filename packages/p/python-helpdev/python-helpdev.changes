@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  8 03:51:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use proper name for importlib-metadata
+
+-------------------------------------------------------------------
 Tue Jan 28 08:38:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github tarball to get tests and license

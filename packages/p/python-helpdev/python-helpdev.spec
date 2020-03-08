@@ -29,11 +29,11 @@ Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib_metadata
+Requires:       python-importlib-metadata
 Requires:       python-psutil >= 5.6
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module psutil >= 5.6}
 BuildRequires:  %{python_module pytest}
 # /SECTION
