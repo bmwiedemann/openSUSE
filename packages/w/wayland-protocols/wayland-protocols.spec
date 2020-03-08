@@ -1,7 +1,7 @@
 #
 # spec file for package wayland-protocols
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           wayland-protocols
-Version:        1.18
+Version:        1.20
 Release:        0
 Summary:        Wayland protocols that adds functionality not available in the core protocol
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://wayland.freedesktop.org/
+URL:            https://wayland.freedesktop.org/
 Source:         https://wayland.freedesktop.org/releases/%{name}-%{version}.tar.xz
 Source2:        https://wayland.freedesktop.org/releases/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
@@ -59,7 +59,7 @@ wayland-protocols.
 %make_install
 
 %files devel
-%doc README
+%doc README.md GOVERNANCE.md MEMBERS.md
 %license COPYING
 %{_datadir}/pkgconfig/%{name}.pc
 %{_datadir}/%{name}/
