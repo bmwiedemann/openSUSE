@@ -22,14 +22,16 @@
 %endif
 
 Name:           kbd
-Version:        2.0.4
+Version:        2.2.0
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
 License:        GPL-2.0-or-later
 Group:          System/Console
-URL:            ftp://ftp.altlinux.org/pub/people/legion/kbd/
-# ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%{version}.tar.xz repack_kbd.sh
+URL:            http://kbd-project.org/
+# repack_kbd.sh on ftp://ftp.altlinux.org/pub/people/legion/kbd/kbd-%{version}.tar.xz
+# or
+#  repack_kbd.sh on ftp://ftp.kernel.org/pub/linux/utils/kbd/kbd-%{version}.tar.xz
 Source:         %{name}-%{version}-repack.tar.xz
 Source1:        kbd_fonts.tar.bz2
 Source2:        suse-add.tar.bz2
@@ -120,7 +122,6 @@ cp -fp %{SOURCE22} .
 %patch3
 %patch4 -p1
 %patch5 -p1
-# TODO: no ideas how to port it.
 %patch6
 %patch9
 %patch10
@@ -143,7 +144,7 @@ pushd data/keymaps/i386
 	# bnc#435121
 	test -f olpc/es-olpc.map || mv olpc/es.map olpc/es-olpc.map
 	# Rename conflicting keymaps, as Fedora do
-	test -f dvorak/no.map || mv dvorak/no.map dvorak/no-dvorak.map
+	#test -f dvorak/no.map || mv dvorak/no.map dvorak/no-dvorak.map
 	test -f fgGIod/trf.map || mv fgGIod/trf.map fgGIod/trf-fgGIod.map
 	test -f olpc/pt.map || mv olpc/pt.map olpc/pt-olpc.map
 	test -f qwerty/cz.map || mv qwerty/cz.map qwerty/cz-qwerty.map

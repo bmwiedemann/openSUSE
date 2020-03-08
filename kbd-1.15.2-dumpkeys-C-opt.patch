@@ -27,16 +27,16 @@ Index: src/dumpkeys.c
 ===================================================================
 --- src/dumpkeys.c.orig
 +++ src/dumpkeys.c
-@@ -45,6 +45,8 @@ valid options are:\n\
- 	-t --funcs-only	    display only the function key strings\n\
- 	-k --keys-only	    display only key bindings\n\
- 	-d --compose-only   display only compose key combinations\n\
-+	-C <vc>\n\
-+	   --console=<vc>   Indicate the virtual console device to be used.\n\
- 	-c --charset="));
+@@ -41,6 +41,8 @@ usage(int rc)
+ 	"  -t, --funcs-only      display only the function key strings;\n"
+ 	"  -k, --keys-only       display only key bindings;\n"
+ 	"  -d, --compose-only    display only compose key combinations;\n"
++	"  -C <vc>\n"
++	"  --console=<vc>        Indicate the virtual console device to be used;\n"
+ 	"  -c, --charset="));
  	lk_list_charsets(stderr);
- 	fprintf(stderr, _("\
-@@ -60,7 +62,7 @@ valid options are:\n\
+ 	fprintf(stderr, _(
+@@ -55,7 +57,7 @@ usage(int rc)
  
  int main(int argc, char *argv[])
  {
@@ -45,7 +45,7 @@ Index: src/dumpkeys.c
  	const struct option long_opts[] = {
  		{ "help", no_argument, NULL, 'h' },
  		{ "short-info", no_argument, NULL, 'i' },
-@@ -73,6 +75,7 @@ int main(int argc, char *argv[])
+@@ -68,6 +70,7 @@ int main(int argc, char *argv[])
  		{ "keys-only", no_argument, NULL, 'k' },
  		{ "compose-only", no_argument, NULL, 'd' },
  		{ "charset", required_argument, NULL, 'c' },
@@ -53,7 +53,7 @@ Index: src/dumpkeys.c
  		{ "verbose", no_argument, NULL, 'v' },
  		{ "version", no_argument, NULL, 'V' },
  		{ NULL, 0, NULL, 0 }
-@@ -87,6 +90,7 @@ int main(int argc, char *argv[])
+@@ -82,6 +85,7 @@ int main(int argc, char *argv[])
  	char funcs_only      = 0;
  	char keys_only       = 0;
  	char diac_only       = 0;
@@ -61,7 +61,7 @@ Index: src/dumpkeys.c
  
  	struct lk_ctx *ctx;
  
-@@ -143,6 +147,9 @@ int main(int argc, char *argv[])
+@@ -135,6 +139,9 @@ int main(int argc, char *argv[])
  				}
  				printf("charset \"%s\"\n", optarg);
  				break;
@@ -70,10 +70,10 @@ Index: src/dumpkeys.c
 +				break;
  			case 'V':
  				print_version_and_exit();
- 			case 'h':
-@@ -154,7 +161,7 @@ int main(int argc, char *argv[])
+ 				break;
+@@ -150,7 +157,7 @@ int main(int argc, char *argv[])
  	if (optind < argc)
- 		usage();
+ 		usage(EX_USAGE);
  
 -	if ((fd = getfd(NULL)) < 0)
 +	if ((fd = getfd(console)) < 0)
