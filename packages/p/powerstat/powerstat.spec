@@ -1,7 +1,7 @@
 #
 # spec file for package powerstat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           powerstat
-Version:        0.02.21
+Version:        0.02.22
 Release:        0
 Summary:        Laptop power measuring tool
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            http://kernel.ubuntu.com/~cking/powerstat/
+URL:            https://kernel.ubuntu.com/~cking/powerstat/
 Source:         http://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
 
 %description
@@ -32,12 +32,23 @@ power source. The output is like vmstat but also shows power consumption
 statistics. At the end of a run, powerstat will calculate the average,
 standard deviation and min/max of the gathered data.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (powerstat and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -46,5 +57,8 @@ make %{?_smp_mflags}
 %license COPYING
 %{_bindir}/powerstat
 %{_mandir}/man8/powerstat.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
