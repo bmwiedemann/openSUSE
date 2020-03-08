@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:50:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.9
+  * Build against Lua 5.3 if available.
+  * GH#129: Fix Lua module loading in Python 3.x.
+  * GH#126: Fix build on Linux systems that install Lua as "lua52" package.
+
+-------------------------------------------------------------------
 Tue Dec 10 20:52:28 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Use pkgconf instead of directly defining required development
