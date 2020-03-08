@@ -34,9 +34,9 @@ subsequent commits.
 
 --- a/Doc/library/py_compile.rst
 +++ b/Doc/library/py_compile.rst
-@@ -82,6 +82,11 @@ byte-code cache files in the directory c
-       overrides the value of the *invalidation_mode* argument, and determines
-       its default value instead.
+@@ -92,6 +92,11 @@ byte-code cache files in the directory c
+    .. versionchanged:: 3.8
+       The *quiet* parameter was added.
  
 +   .. versionchanged:: 3.7.2
 +      The :envvar:`SOURCE_DATE_EPOCH` environment variable no longer
@@ -48,7 +48,7 @@ subsequent commits.
  
 --- a/Lib/test/test_compileall.py
 +++ b/Lib/test/test_compileall.py
-@@ -210,6 +210,21 @@ class CompileallTestsWithoutSourceEpoch(
+@@ -209,6 +209,21 @@ class CompileallTestsWithoutSourceEpoch(
      pass
  
  
@@ -70,7 +70,7 @@ subsequent commits.
  class EncodingTest(unittest.TestCase):
      """Issue 6716: compileall should escape source code when printing errors
      to stdout."""
-@@ -580,6 +595,21 @@ class CommandLineTestsBase:
+@@ -579,6 +594,21 @@ class CommandLineTestsBase:
  
  
  class CommmandLineTestsWithSourceEpoch(CommandLineTestsBase,
@@ -124,7 +124,7 @@ subsequent commits.
  
 --- a/Lib/test/test_py_compile.py
 +++ b/Lib/test/test_py_compile.py
-@@ -207,5 +207,19 @@ class PyCompileTestsWithoutSourceEpoch(P
+@@ -216,5 +216,19 @@ class PyCompileTestsWithoutSourceEpoch(P
      pass
  
  

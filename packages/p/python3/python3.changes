@@ -1,9 +1,319 @@
 -------------------------------------------------------------------
+Thu Mar  5 18:40:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.2:
+  - Complete list of changes is available at
+    https://docs.python.org/release/3.8.2/whatsnew/changelog.html#python-3-8-2-final,
+    but most of them are just bugfixes.
+  - Updated patches:
+    - F00102-lib64.patch
+    - OBS_dev-shm.patch
+    - SUSE-FEDORA-multilib.patch
+    - subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Sun Feb  9 00:14:24 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-8492-urllib-ReDoS.patch fixing the security bug
+  "Python urrlib allowed an HTTP server to conduct Regular
+  Expression Denial of Service (ReDoS)" (bsc#1162367)
+
+-------------------------------------------------------------------
+Sat Feb  8 22:21:10 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add Requires: libpython%{so_version} == %{version}-%{release}
+  to python3-base to keep both packages always synchronized
+  (bsc#1162224).
+
+-------------------------------------------------------------------
+Mon Feb  3 20:27:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in bluez in base again, explain the cycle,
+  it needs to be solved by bluez maintainer for us by providing
+  just the headers separately
+
+-------------------------------------------------------------------
+Mon Feb  3 19:54:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reame idle icons to idle3 in order to not conflict with python2
+  variant of the package
+  * renamed the icons
+  * renamed icon load in desktop file
+
+-------------------------------------------------------------------
+Thu Jan 16 09:50:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add importlib_resources provide/obsolete as it is integral
+  part of the lang since 3.7 release
+
+-------------------------------------------------------------------
+Mon Jan 13 11:10:47 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fno-semantic-interposition as it brings speed up:
+  https://fedoraproject.org/wiki/Changes/PythonNoSemanticInterpositionSpeedup
+
+-------------------------------------------------------------------
+Thu Dec 19 16:25:26 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.1:
+  - This is mainly bugfix release and no significant changes to
+    API are expected. The full changelog is available on
+    https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-1
+  - Remove bpo-38688_shutil.copytree_prevent-infinite-recursion.patch,
+    which is included in the upstream tarball.
+
+-------------------------------------------------------------------
+Thu Dec 19 14:57:32 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo-31046_ensurepip_honours_prefix.patch which makes
+  ensurepip to honour the value of $(prefix). Proposed fix for
+  bpo#31046..
+
+-------------------------------------------------------------------
+Tue Dec 10 11:07:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Move bluez-devel dependency to base as it is needed for
+  socket.AF_BLUETOOTH and otherwise does not work
+
+-------------------------------------------------------------------
+Mon Dec  2 16:52:32 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Reintroduce QtHelp with the help of the new BR
+  python-sphinxcontrib-qthelp.
+
+-------------------------------------------------------------------
+Mon Oct 21 18:51:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix SUSE-FEDORA-multilib.patch, the platform agnostic infix for
+  library installation is "lib", not "dir".
+
+-------------------------------------------------------------------
+Thu Oct 17 14:19:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Move idle subpackage build from python3-base to python3.
+  appstream-glib required for packaging introduces considerable
+  extra dependencies and a build loop via rust/librsvg.
+- Correct installation of idle IDE icons:
+  + idle.png is not the target directory
+  + non-GNOME-specific icons belong into icons/hicolor
+- Add required Name key to idle3 desktop file
+
+-------------------------------------------------------------------
+Tue Oct 15 16:39:12 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to the final release 3.8.0. .
+  - New Features:
+    - Assignment expressions
+    - Positional-only parameters
+    - Parallel filesystem cache for compiled bytecode files
+    - Debug build uses the same ABI as release build
+    - f-strings support = for self-documenting expressions and
+      debugging
+    - PEP 578: Python Runtime Audit Hooks
+    - PEP 587: Python Initialization Configuration
+    - Vectorcall: a fast calling protocol for CPython
+    - Pickle protocol 5 with out-of-band data buffers
+  - New modules:
+    - importlib.metadata
+  - Improved modules:
+    - ast asyncio, builtins, collections, curses, ctypes,
+      datetime, functools, gc, gettext, gzip, idelib and IDLE,
+      inspect, io, json.tool, math, mmap, multiprocessing, os,
+      os.path, pathlib, pickle, plistlib, py_compile, shlex,
+      shutil, socket, ssl, statistics, sys, tarfile, threading,
+      tokenize, tkinter, time, typing, unicodedata, unittest,
+      venv, weakref, xml
+  - C API improvements
+  - bdist_winnst command has been deprecated (use bdist_wheel)
+- https://docs.python.org/3.8/whatsnew/3.8.html remains rest of
+  changes including documentation on how to port your programs to
+  the current version of Python.
+
+-------------------------------------------------------------------
+Mon Oct 14 15:02:08 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add idle3.appdata.xml and idle3.desktop (originally from
+  Fedora) to make Idle3 full GUI desktop application.
+  (bsc#1153830)
+
+-------------------------------------------------------------------
+Wed Oct  9 19:09:16 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Drop intltool from BuildRequires. Doesn't appear to be used.
+
+-------------------------------------------------------------------
+Wed Oct  9 10:37:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add folder version to allow tarball downloads even for beta/rc
+  releases
+
+-------------------------------------------------------------------
+Tue Oct  8 14:53:54 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Revert patches from Fedora (F00102-lib64.patch and
+  F00251-change-user-install-location.patch) into their original
+  prisitine Fedora versions, SUSE-FEDORA-multilib.patch refreshed
+  accordingly.
+
+-------------------------------------------------------------------
+Mon Oct  7 14:33:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Correct quotation of platsubdir in Lib/distutils/command/install.py
+
+-------------------------------------------------------------------
+Thu Oct  3 13:59:57 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace python-3.6.0-multilib.patch with two patches from
+  Fedora (F00102-lib64.patch and
+  F00251-change-user-install-location.patch), and our own
+  SUSE-FEDORA-multilib.patch to allow better cooperation with
+  Fedora and better upstreaming.
+- Add OBS_dev-shm.patch fixing bpo#38377
+
+-------------------------------------------------------------------
+Thu Oct  3 08:39:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Pull in just gettext and let solver to sort out between:
+  gettext-runtime-mini and gettext-runtime
+
+-------------------------------------------------------------------
+Wed Oct  2 15:00:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0rc1. Overall changes from 3.7:
+  - PEP 572, Assignment expressions
+  - PEP 570, Positional-only arguments
+  - PEP 587, Python Initialization Configuration (improved
+    embedding)
+  - PEP 590, Vectorcall: a fast calling protocol for CPython
+  - PEP 578, Runtime audit hooks
+  - PEP 574, Pickle protocol 5 with out-of-band data
+  - Typing-related: PEP 591 (Final qualifier), PEP 586 (Literal
+    types), and PEP 589 (TypedDict)
+  - Parallel filesystem cache for compiled bytecode
+  - Debug builds share ABI as release builds, also the 'm' ABI
+    tag was removed (irrelevant since 3.4), bpo#36707
+  - f-strings support a handy = specifier for debugging
+  - continue is now legal in finally: blocks
+  - on Windows, the default asyncio event loop is now
+    ProactorEventLoop
+  - on macOS, the spawn start method is now used by default in
+    multiprocessing
+  - multiprocessing can now use shared memory segments to avoid
+    pickling costs between processes
+  - typed_ast is merged back to CPython
+  - LOAD_GLOBAL is now 40% faster
+  - pickle now uses Protocol 4 by default, improving performance
+- Refreshed patches:
+  -  CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  -  python-3.3.0b1-fix_date_time_compiler.patch
+  -  python-3.6.0-multilib.patch
+  -  subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Wed Sep 25 09:46:41 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add bpo36302-sort-module-sources.patch (boo#1041090)
+
+-------------------------------------------------------------------
+Tue Sep 10 13:43:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try harder obsoleting importlib-metadata
+
+-------------------------------------------------------------------
+Sat Aug 31 00:16:47 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b4:
+  Many bugfixes, full list on
+  https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-beta-4
+
+-------------------------------------------------------------------
+Thu Aug 29 06:28:15 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable test_threading on aarch64
+
+-------------------------------------------------------------------
+Sat Aug 17 13:21:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove xrpm from subpackage tk description
+
+-------------------------------------------------------------------
+Tue Aug  6 14:24:55 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b3:
+  Many bugfixes, full list on
+  https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-beta-3
+- Patches reapplied:
+  - python-3.3.0b1-fix_date_time_compiler.patch
+  - python-3.3.0b1-test-posix_fadvise.patch
+  - python-3.6.0-multilib.patch
+  - subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 13:20:49 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add Provides: python3-importlib-metadata
+
+-------------------------------------------------------------------
+Sun Jul  7 19:08:48 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b2:
+  Many bugfixes, full list on
+  https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-beta-2
+- Patches included in upstream:
+  - bpo-37169_PyObject_IsFreed.patch
+- Patches reapplied:
+  - 00251-change-user-install-location.patch
+  - distutils-reproducible-compile.patch
+  - python-3.3.0b1-localpath.patch
+  - python-3.6.0-multilib.patch
+
+-------------------------------------------------------------------
+Tue Jul  2 09:03:04 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update list of skipped tests for qemu linux-user build
+- Don't do profiling in qemu linux-user build
+
+-------------------------------------------------------------------
+Wed Jun  5 12:19:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0b1 (changes since 3.7.*):
+  - PEP 572, Assignment expressions
+  - PEP 570, Positional-only arguments
+  - PEP 587, Python Initialization Configuration (improved embedding)
+  - PEP 590, Vectorcall: a fast calling protocol for CPython
+  - PEP 578, Runtime audit hooks
+  - PEP 574, Pickle protocol 5 with out-of-band data
+  - Typing-related: PEP 591 (Final qualifier), PEP 586 (Literal
+    types), and PEP 589 (TypedDict)
+  - Parallel filesystem cache for compiled bytecode
+  - Debug builds share ABI as release builds
+  - f-strings support a handy = specifier for debugging
+  - continue is now legal in finally: blocks
+  - multiprocessing can now use shared memory segments to avoid
+    pickling costs between processes
+  - typed_ast is merged back to CPython
+  - LOAD_GLOBAL is now 40% faster
+  - pickle now uses Protocol 4 by default, improving performance 
+- Remove patches which were included in the upstream:
+  - 00251-change-user-install-location.patch
+  - 00316-mark-bdist_wininst-unsupported.patch
+  - CVE-2019-9947-no-ctrl-char-http.patch
+  - raise_SIGING_not_handled.patch
+
+-------------------------------------------------------------------
 Wed May 22 10:53:03 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Set _lto_cflags to nil as the package is using LTO via --enable-lto.
   That will prevent to propage LTO for Python modules that are
   built in a separate package.
+
+-------------------------------------------------------------------
+Sat May  4 21:29:20 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0.a3:
+  - PEP 572: Assignment Expressions.
+  - Other (mostly small) changes are on
+    https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-alpha-3
 
 -------------------------------------------------------------------
 Mon Apr 29 15:40:34 CEST 2019 - Matej Cepl <mcepl@suse.com>
@@ -41,7 +351,7 @@ Tue Apr  9 01:21:45 CEST 2019 - Matej Cepl <mcepl@suse.com>
     - python-3.6.0-multilib.patch
     - raise_SIGING_not_handled.patch
 
--------------------------------------------------------------------
+------------------------------------------------------------------
 Wed Mar 20 14:59:58 UTC 2019 - Matěj Cepl <mcepl@suse.com>
 
 - Remove building of Qt Develop help files.
@@ -53,9 +363,32 @@ Fri Mar 15 15:10:30 CET 2019 - Matej Cepl <mcepl@suse.com>
   missing (still unfinished bpo#29708).
 
 -------------------------------------------------------------------
+Mon Feb 25 23:30:56 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0a2:
+    * List of all (mostly small) changes are on
+      https://docs.python.org/3.8/whatsnew/changelog.html#python-3-8-0-alpha-2
+
+-------------------------------------------------------------------
 Tue Feb 12 10:25:52 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Build nis module again.
+
+-------------------------------------------------------------------
+Tue Feb 12 10:06:17 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0a1:
+    * The most visible change so far is probably the
+      implementation of PEP 572: Assignment Expressions. For
+      a detailed list of changes, see:
+      https://docs.python.org/3.8/whatsnew/changelog.html
+    * Recover building of nis module properly in python3 package
+- Update patches:
+    * CVE-2019-5010-null-defer-x509-cert-DOS.patch
+    * python-3.3.0b1-fix_date_time_compiler.patch
+    * python-3.3.0b1-test-posix_fadvise.patch
+    * python-3.6.0-multilib.patch
+    * raise_SIGING_not_handled.patch
 
 -------------------------------------------------------------------
 Wed Jan 30 18:07:49 CET 2019 - mcepl@suse.com

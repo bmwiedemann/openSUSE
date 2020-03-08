@@ -1098,4 +1098,40 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html</comment>
     <comment></comment>
     <requestid>704730</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>388f7c21b39fc6eb3454188819dac28d</srcmd5>
+    <version>3.8.2</version>
+    <time>1583702548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.2:
+  - Complete list of changes is available at
+    https://docs.python.org/release/3.8.2/whatsnew/changelog.html#python-3-8-2-final,
+    but most of them are just bugfixes.
+  - Updated patches:
+    - F00102-lib64.patch
+    - OBS_dev-shm.patch
+    - SUSE-FEDORA-multilib.patch
+    - subprocess-raise-timeout.patch
+
+- Add CVE-2020-8492-urllib-ReDoS.patch fixing the security bug
+  &quot;Python urrlib allowed an HTTP server to conduct Regular
+  Expression Denial of Service (ReDoS)&quot; (bsc#1162367)
+
+- Add Requires: libpython%{so_version} == %{version}-%{release}
+  to python3-base to keep both packages always synchronized
+  (bsc#1162224).
+
+- Do not pull in bluez in base again, explain the cycle,
+  it needs to be solved by bluez maintainer for us by providing
+  just the headers separately
+
+- Reame idle icons to idle3 in order to not conflict with python2
+  variant of the package
+  * renamed the icons
+  * renamed icon load in desktop file
+
+- Add importlib_resources provide/obsolete as it is integral
+  part of the lang since 3.7 release</comment>
+    <requestid>781953</requestid>
+  </revision>
 </revisionlist>

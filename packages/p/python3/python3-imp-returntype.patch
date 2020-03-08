@@ -24,7 +24,7 @@ Co-authored-by: Benjamin Peterson <benjamin@python.org>
 
 --- a/Lib/test/test_imp.py
 +++ b/Lib/test/test_imp.py
-@@ -365,6 +365,20 @@ class ImportTests(unittest.TestCase):
+@@ -376,6 +376,20 @@ class ImportTests(unittest.TestCase):
              mod = imp.load_module('mymod', file, path, description)
          self.assertEqual(mod.x, 42)
  

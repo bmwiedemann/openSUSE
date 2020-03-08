@@ -43,7 +43,7 @@ done
 
 
 # update baselibs
-sed -i -r 's/^libpython.*$/libpython'$python_version_soname'm1_0/' baselibs.conf
+sed -i -r 's/^libpython.*$/libpython'$python_version_soname'-1_0/' baselibs.conf
 
 
 # copy definition sections

@@ -1,7 +1,7 @@
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -761,11 +761,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
- 		$(MODOBJS) \
+@@ -746,11 +746,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
+ 		$(DTRACE_OBJS) \
  		$(srcdir)/Modules/getbuildinfo.c
  	$(CC) -c $(PY_CORE_CFLAGS) \
 +	      -DDATE="\"`date -u -r Makefile.pre.in +"%b %d %Y"`\"" \

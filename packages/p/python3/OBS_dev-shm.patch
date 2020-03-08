@@ -1,0 +1,25 @@
+--- a/Lib/test/test_asyncio/test_events.py
++++ b/Lib/test/test_asyncio/test_events.py
+@@ -13,6 +13,7 @@ try:
+     import ssl
+ except ImportError:
+     ssl = None
++import stat
+ import subprocess
+ import sys
+ import threading
+@@ -2633,7 +2634,8 @@ class GetEventLoopTestsMixin:
+             asyncio.get_event_loop = self.get_event_loop_saved
+ 
+     if sys.platform != 'win32':
+-
++        @unittest.skipUnless(os.path.exists("/dev/shm") and stat.S_IMODE(os.stat('/dev/shm').st_mode) >= 0o777,
++                             "Doesn't work without /dev/shm.")
+         def test_get_event_loop_new_process(self):
+             # Issue bpo-32126: The multiprocessing module used by
+             # ProcessPoolExecutor is not functional when the
+--- /dev/null
++++ b/Misc/NEWS.d/next/Tests/2019-10-05-15-50-24.bpo-38377.gKfVDt.rst
+@@ -0,0 +1,2 @@
++Skip test_get_event_loop_new_process on systems which don’t provide it
++(e.g., building environments of some Linux distributions).

@@ -1,6 +1,6 @@
 --- a/Lib/distutils/util.py
 +++ b/Lib/distutils/util.py
-@@ -421,7 +421,7 @@ byte_compile(files, optimize=%r, force=%
+@@ -432,7 +432,7 @@ byte_compile(files, optimize=%r, force=%
      else:
          from py_compile import compile
  

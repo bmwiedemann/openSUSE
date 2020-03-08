@@ -1,9 +1,7 @@
-Index: Lib/site.py
-===================================================================
---- Lib/site.py.orig
-+++ Lib/site.py
-@@ -75,7 +75,7 @@ import builtins
- import _sitebuiltins
+--- a/Lib/site.py
++++ b/Lib/site.py
+@@ -76,7 +76,7 @@ import _sitebuiltins
+ import io
  
  # Prefixes for site-packages; add additional prefixes like /usr/local here
 -PREFIXES = [sys.prefix, sys.exec_prefix]

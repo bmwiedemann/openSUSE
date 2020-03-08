@@ -82,7 +82,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
 
 --- a/Lib/test/_test_multiprocessing.py
 +++ b/Lib/test/_test_multiprocessing.py
-@@ -1437,6 +1437,7 @@ class _TestCondition(BaseTestCase):
+@@ -1521,6 +1521,7 @@ class _TestCondition(BaseTestCase):
                  success.value = True
  
      @unittest.skipUnless(HAS_SHAREDCTYPES, 'needs sharedctypes')
@@ -90,7 +90,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
      def test_waitfor_timeout(self):
          # based on test in test/lock_tests.py
          cond = self.Condition()
-@@ -2304,6 +2305,7 @@ class _TestPool(BaseTestCase):
+@@ -2411,6 +2412,7 @@ class _TestPool(BaseTestCase):
          self.assertEqual(get(), 49)
          self.assertTimingAlmostEqual(get.elapsed, TIMEOUT1)
  
@@ -98,7 +98,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
      def test_async_timeout(self):
          res = self.pool.apply_async(sqr, (6, TIMEOUT2 + 1.0))
          get = TimingWrapper(res.get)
-@@ -4039,6 +4041,7 @@ class TestWait(unittest.TestCase):
+@@ -4564,6 +4566,7 @@ class TestWait(unittest.TestCase):
          sem.release()
          time.sleep(period)
  
@@ -108,15 +108,15 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  
 --- a/Lib/test/test_asyncio/test_events.py
 +++ b/Lib/test/test_asyncio/test_events.py
-@@ -263,6 +263,7 @@ class EventLoopTestsMixin:
+@@ -266,6 +266,7 @@ class EventLoopTestsMixin:
      # Note: because of the default Windows timing granularity of
      # 15.6 msec, we use fairly long sleep times here (~100 msec).
  
 +    @unittest.skip("transient failure on PowerPC")
      def test_run_until_complete(self):
          t0 = self.loop.time()
-         self.loop.run_until_complete(asyncio.sleep(0.1, loop=self.loop))
-@@ -290,7 +291,7 @@ class EventLoopTestsMixin:
+         self.loop.run_until_complete(asyncio.sleep(0.1))
+@@ -293,7 +294,7 @@ class EventLoopTestsMixin:
          self.loop.run_forever()
          t1 = time.monotonic()
          self.assertEqual(results, ['hello world'])
@@ -125,7 +125,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  
      def test_call_soon(self):
          results = []
-@@ -576,6 +577,7 @@ class EventLoopTestsMixin:
+@@ -478,6 +479,7 @@ class EventLoopTestsMixin:
          self.assertEqual(caught, 1)
  
      @unittest.skipUnless(hasattr(signal, 'SIGALRM'), 'No SIGALRM')
@@ -135,7 +135,7 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
          caught = 0
 --- a/Lib/test/test_buffer.py
 +++ b/Lib/test/test_buffer.py
-@@ -2483,6 +2483,7 @@ class TestBufferProtocol(unittest.TestCa
+@@ -2504,6 +2504,7 @@ class TestBufferProtocol(unittest.TestCa
          a = ndarray(items, shape=[2, 2, 2], format="b")
          check(memoryview(a), vsize(base_struct + 3 * per_dim))
  
