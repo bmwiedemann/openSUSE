@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar  4 07:46:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0
+  * BREAKING CHANGE: The geoip2.record.* classes have been refactored to
+    improve performance. This refactoring may break classes that inherit from
+    them. The public API should otherwise be compatible.
+  * The network attribute was added to geoip2.record.Traits,
+    geoip2.model.AnonymousIP, geoip2.model.ASN,
+    geoip2.model.ConnectionType, geoip2.model.Domain,
+    and geoip2.model.ISP. This is an ipaddress.IPv4Network or an
+    ipaddress.IPv6Network. This is the largest network where all of the
+    fields besides ip_address have the same value. GitHub #79.
+  * Python 3.3 and 3.4 are no longer supported.
+  * Updated documentation of anonymizer attributes - is_anonymous_vpn and
+    is_hosting_provider - to be more descriptive.
+  * Added support for the user_count trait for the GeoIP2 Precision webservice.
+  * Added the static_ip_score attribute to geoip2.record.Traits for
+  * GeoIP2 Precision Insights. This is a float which indicates how static or dynamic
+    an IP address is.
+
+
+-------------------------------------------------------------------
 Mon Mar 11 07:07:04 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix minimum build dependency of maxminddb

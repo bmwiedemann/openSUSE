@@ -1,7 +1,7 @@
 #
 # spec file for package python-geoip2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-geoip2
-Version:        2.9.0
+Version:        3.0.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/maxmind/GeoIP2-python
-Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3 >= 1.25.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -36,6 +37,7 @@ BuildRequires:  %{python_module requests-mock >= 0.5}
 # /SECTION
 Requires:       python-maxminddb >= 1.4.0
 Requires:       python-requests >= 2.9
+Requires:       python-urllib3 >= 1.25.2
 BuildArch:      noarch
 %ifpython2
 Recommends:     python2-ipaddress
