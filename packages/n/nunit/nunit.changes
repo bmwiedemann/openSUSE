@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  4 16:25:07 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- fake nunit26, nunit-console2, nunit-console26 and nunit-console4 
+- install pkgconfig to libdir
+- fake mono-nunit.pc too
+
+-------------------------------------------------------------------
+Wed Mar  4 12:38:05 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- drop csc-delay-sign.patch, no longer working
+- add csc-pub-sign.patch
+  * https://github.com/mono/mono/pull/12725
+- provides mono-nunit since it was removed since mono-core 6.x 
+
+-------------------------------------------------------------------
 Tue May 2 00:00:00 UTC 2017 - fwdsbs.to.11df@xoxy.net
 
 - change pkgconfig-file generation logic - protect it from being broken by OBS source_validators

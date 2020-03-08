@@ -15,4 +15,19 @@
     <comment>1</comment>
     <requestid>494737</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2860761d4b5f879f1d8b1b65402d4632</srcmd5>
+    <version>2.6.4</version>
+    <time>1583702631</time>
+    <user>dimstar_suse</user>
+    <comment>- fake nunit26, nunit-console2, nunit-console26 and nunit-console4 
+- install pkgconfig to libdir
+- fake mono-nunit.pc too
+- drop csc-delay-sign.patch, no longer working
+- add csc-pub-sign.patch
+  * https://github.com/mono/mono/pull/12725
+- provides mono-nunit since it was removed since mono-core 6.x 
+</comment>
+    <requestid>781896</requestid>
+  </revision>
 </revisionlist>
