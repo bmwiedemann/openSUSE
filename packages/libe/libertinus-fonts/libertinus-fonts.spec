@@ -1,7 +1,7 @@
 #
 # spec file for package libertinus-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define fontname Libertinus
 Name:           libertinus-fonts
-Version:        6.10
+Version:        6.11
 Release:        0
 Summary:        Libertinus font family
 License:        OFL-1.1

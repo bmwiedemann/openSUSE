@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:34:52 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.11:
+  * Added turned capital F (U+2132) to Libertinus Serif Regular.
+  * Fix advance width for Serbian alternate U+0431 in Libertinus
+    Serif Semibold.
+  * Unify Cyrillic small letter ef (U+0444) shape in Libertinus
+    Serif SemiBold fonts.
+  * Add U+1D35, U+1D51, U+1D4B, U+1DA4, U+1DB6, U+2132,
+    U+A71C-A71D, and U+A78A-A78C to Libertinus Serif fonts.
+  * Add U+2982 and U+2A3E to Libertinus Math.
+  * Various cleanups to Libertinus Mono font, removing erroneous
+    glyphs and unsuitable features.
+  * Improve the metrics of math italic v, w, and y.
+  * Work around a bug in old versions of FreeType when rendering
+    Linertinus Sans Italic m.
+  * Fix alignment of multiplication sign in Libertinus Serif and
+    Mono Regular fonts.
+  * Make sizing of vertical and double vertical bar consistent
+    with other math delimiters.
+  * Improve spacing above and below fraction rule.
+  * Various fixes to combining marks placement.
+
+-------------------------------------------------------------------
 Thu Jul 18 22:00:17 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 6.10:
