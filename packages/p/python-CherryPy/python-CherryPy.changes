@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  7 14:07:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do remove pytest.ini to not mess with extra options completely
+- Skip test reliably crashing in cheroot codebase
+
+-------------------------------------------------------------------
 Mon Feb 24 12:40:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Export travis variable to skip more tests that can randomly

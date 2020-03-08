@@ -219,4 +219,13 @@
   fail</comment>
     <requestid>778740</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>5a0eb5fab3fc394e0dbfc58e18d45aa8</srcmd5>
+    <version>18.5.0</version>
+    <time>1583702577</time>
+    <user>dimstar_suse</user>
+    <comment>- Do remove pytest.ini to not mess with extra options completely
+- Skip test reliably crashing in cheroot codebase</comment>
+    <requestid>782540</requestid>
+  </revision>
 </revisionlist>

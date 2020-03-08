@@ -71,7 +71,7 @@ Oh, and most importantly: CherryPy is fun to work with :-)
 %prep
 %setup -q -n CherryPy-%{version}
 # do not require cov/xdist/etc
-sed -i -e '/addopts/d' pytest.ini
+rm pytest.ini
 
 %build
 %python_build
@@ -84,7 +84,8 @@ sed -i -e '/addopts/d' pytest.ini
 %check
 # skip all travis known fails as they would most likely fail in obs too
 export TRAVIS="true"
-%pytest
+# testCombinedTools fails with trace in cheroot tests
+%pytest -k 'not testCombinedTools'
 
 %post
 %python_install_alternative cherryd
