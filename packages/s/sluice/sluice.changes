@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar  8 13:22:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Sun Mar  8 12:54:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop SLE12 compat ifdef
+
+-------------------------------------------------------------------
+Wed Feb 26 18:59:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.11
+  * Add bash completion script
+
+-------------------------------------------------------------------
+Tue Aug 27 09:43:57 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.10
+  * No funcional changes
+
+-------------------------------------------------------------------
+Fri Jul 12 18:24:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.09
+  * Makefile: bump version
+  * Use DOUBLE_CMP to compare with zero
+  * Rename FLOAT_CMP to DOUBLE_CMP as it compares doubles
+  * Makefile: add .travis.yml to dist rule
+  * Update copyright year
+
+-------------------------------------------------------------------
 Sun Jun 17 15:29:31 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.02.08
