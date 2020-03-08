@@ -25,6 +25,12 @@ Source0:        pythonstart
 Source1:        LICENSE
 BuildRequires:  filesystem
 Supplements:    python(abi)
+Conflicts:      python3 < 3.8
+%if 0%{?suse_version} > 1200
+Conflicts:      (python2 without python2_split_startup)
+%else
+Conflicts:      python2 < 2.7.17
+%endif
 BuildArch:      noarch
 
 %description
