@@ -43,4 +43,14 @@
     <comment></comment>
     <requestid>685951</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>ee9ca5d487c323b2665f2cdd739cfb13</srcmd5>
+    <version>2.49.0</version>
+    <time>1583702447</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build under python3.8 by skipping more tests
+  that break with that release (upstream is dead so not worth
+  spending the time fixing them) (forwarded request 764241 from scarabeus_iv)</comment>
+    <requestid>764242</requestid>
+  </revision>
 </revisionlist>
