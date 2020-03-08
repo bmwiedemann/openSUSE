@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
-Url:            https://ice-wm.org/
+URL:            https://ice-wm.org/
 Source0:        https://github.com/ice-wm/%{name}/releases/download/%{version}/%{name}-%{version}.tar.lz
 # PATCH-FEATURE-SUSE icewm-susemenu.patch tyang@suse.com -- Add xdg-menu for SLED icewm
 Patch1:         icewm-susemenu.patch
@@ -53,14 +53,14 @@ BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xft)
-BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xrandr)
 Requires:       alsa-utils
 Requires:       desktop-data
 Requires:       icewm-bin

@@ -22,7 +22,7 @@ index dbf965e..94d8053 100644
  
  #  Icon search path (colon separated)
  # IconPath="/usr/share/icons/oxygen/base:/usr/share/icons/Adwaita:/usr/share/icons/hicolor:/usr/share/icons:/usr/share/pixmaps:/usr/local/share/icons/hicolor:"
-+IconPath="/usr/share/icons/Adwaita/16x16/apps:/usr/share/icons/hicolor:/usr/share/icons:/usr/share/pixmaps"
++IconPath="/usr/share/icons/Adwaita/16x16/legacy:/usr/share/icons/Adwaita/16x16/apps:/usr/share/icons/hicolor:/usr/share/icons:/usr/share/pixmaps"
  
  #  Mailbox path (use $MAIL instead)
  # MailBoxPath=""
