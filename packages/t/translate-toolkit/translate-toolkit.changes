@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 10:45:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- temporary disable TestYAMLResourceStore.test_empty_key because
+   ruamel.yaml has different behaviour on empty keys from version
+           0.16.6
+
+-------------------------------------------------------------------
 Wed Jan 22 09:12:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.0:
