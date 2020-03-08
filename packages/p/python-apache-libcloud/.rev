@@ -301,4 +301,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>778169</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7edea34c113f93c69db7fe98ca050a45</srcmd5>
+    <version>2.8.1</version>
+    <time>1583702554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782015</requestid>
+  </revision>
 </revisionlist>

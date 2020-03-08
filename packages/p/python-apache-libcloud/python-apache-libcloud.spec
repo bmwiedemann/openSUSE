@@ -16,9 +16,12 @@
 #
 
 
+# No longer build for python2
+%define skip_python2  1
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
@@ -41,7 +44,9 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-backports.ssl_match_hostname
 BuildRequires:  python-rpm-macros
+%if ! 0%{?skip_python2}
 BuildRequires:  python2
+%endif
 Requires:       python-lxml
 Requires:       python-requests
 Requires:       python-typing
@@ -78,8 +83,10 @@ find %{buildroot} -name '*.pem' -size 0 -delete
 
 %check
 # Skip ShellOutSSHClientTests tests which attempt to ssh to localhost
+%if ! 0%{?skip_python2}
 python2 -m pytest -k 'not ShellOutSSHClientTests and \
-   not ElasticContainerDriverTestCase'
+	not ElasticContainerDriverTestCase'
+%endif
 # Note these two extra py3 failures are undesirable and should be fixed
 python3 -m pytest -k \
   'not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and \

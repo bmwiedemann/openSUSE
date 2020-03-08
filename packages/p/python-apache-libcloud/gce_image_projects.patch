@@ -1,7 +1,7 @@
-Index: apache-libcloud-2.8.0/libcloud/compute/drivers/gce.py
+Index: apache-libcloud-2.8.1/libcloud/compute/drivers/gce.py
 ===================================================================
---- apache-libcloud-2.8.0.orig/libcloud/compute/drivers/gce.py
-+++ apache-libcloud-2.8.0/libcloud/compute/drivers/gce.py
+--- apache-libcloud-2.8.1.orig/libcloud/compute/drivers/gce.py
++++ apache-libcloud-2.8.1/libcloud/compute/drivers/gce.py
 @@ -1803,20 +1803,35 @@ class GCENodeDriver(NodeDriver):
              "rhel-8",
          ],
