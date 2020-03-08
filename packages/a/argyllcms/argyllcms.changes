@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Mar  5 02:49:25 CET 2020 - sbrabec@suse.com
+
+- Update to version 2.1.2:
+  * Added -d option to spotread to print out Density values.
+  * Many i1Pro2 fixes.
+  * Changed targen round down/up to 0%/100% to have a tighter
+    tollerance of 0.5% rather than 2%, so that -n values of
+    L* 1 and 99 are not rounded. 
+  * Fix bug in xicclu -v2 option when operating on a .cal file.
+  * Added -M option to ccxxmake.
+  * Added -Yk flag to spectro/dispread.
+  * Fixed bug in xicc/xmatrix.c when creating input profile from
+    XYZ input data.
+  * Modified txt2ti3 to cope with files that don't have
+    SampleName/SampleID fields.
+  * Added instrument ambient mode (-a flag) to dispcal, dispread
+    and ccxxmake.
+  * Fixed latent data sensitivity problem with i1Pro and Munki
+    Spectro high res-mode.
+  * Added spotread -rw option.
+  * Added check in dispwin for sanity of calibration curves.
+  * Added spectral support to namedc/cxf parser.
+  * Fixed profile/txt2ti3.c to properly handle i1profiler
+    SPECTRAL_NMXXX format.
+  * Changed dispcal ADJ_THRESH mode MIN_THRESH value to 0.25 from
+    0.05.
+- Fix build with with -fno-common, which is the default in gcc-10
+  (bsc#1160256, argyllcms--gcc--fno-common.patch).
+
+-------------------------------------------------------------------
 Sun Jan  5 02:53:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use pkgconfig(libpng) BuildRequires, the build system looks for

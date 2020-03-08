@@ -1,7 +1,7 @@
 #
 # spec file for package argyllcms
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define tarname Argyll
 
 Name:           argyllcms
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT
@@ -30,7 +30,8 @@ Source1:        19-color.fdi
 Source2:        color-device-file.policy
 Source3:        ajam-2.5.2-1.3.3.tgz
 Patch1:         ajam-include.patch
-
+# PATCH-FIX-OPENSUSE argyllcms--gcc--fno-common.patch boo1160256 sbrabec@suse.com -- Fix build with GCC 10.
+Patch2:         argyllcms--gcc--fno-common.patch
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
@@ -72,8 +73,8 @@ viewer.
 
 %package doc
 Summary:        Argyll CMS documentation
-Group:          System/X11/Utilities
 # Does not really make sense without Argyll CMS itself
+Group:          System/X11/Utilities
 Requires:       %{name} = %{version}
 
 %description doc
@@ -88,6 +89,7 @@ This package contains the Argyll color management system documentation.
 cd ajam-2.5.2-1.3.3
 %patch1 -p1 -b .include
 cd ..
+%patch2 -p1
 
 # remove unused source code
 rm -fr usb/{*.inf,*.rtf,*.inf,*.cat,*.vcproj,*.sys,*.dsw,*.sln,*.dsp,*template*,WinCo*,winsub*,*kext*,KDRIVER_LICENSE,README_MSVC.txt,msvc,*.cmd,bin,driver,binfiles.*}
