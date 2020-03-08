@@ -1,7 +1,7 @@
 #
 # spec file for package gtkpod
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://gtkpod.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/gtkpod/gtkpod/gtkpod-2.1.5/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE gtkpod-pref.patch -- Preferences to mountpoint and some tag preferences
 Patch0:         gtkpod-pref.patch
+# PATCH-FEATURE-UPSTREAM use-python3.patch -- Use python3
+Patch1:         use-python3.patch
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -98,6 +100,7 @@ write metadata function.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure --disable-static
@@ -135,7 +138,8 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 %postun -n libatomicparsley0 -p /sbin/ldconfig
 
 %files
-%doc README NEWS INSTALL COPYING ChangeLog AUTHORS
+%doc README NEWS INSTALL ChangeLog AUTHORS
+%license COPYING
 %{_bindir}/gtkpod
 %{_datadir}/gtkpod/
 %{_datadir}/icons/hicolor/*/*/*.png
