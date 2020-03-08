@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 28 21:47:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Add python 3.8 macOS and windows ci jobs
+  * Update test\_processor.py
+  * Update config\_file.py
+  * Update cli.py
+  * Remove 3.8 azure pipelines jobs
+  * Update stestr/scheduler.py
+  * Update to recent hacking version
+  * Add Python 3.8 support
+  * Add --pdb flag to stestr run
+  * Add unit tests around repo initialize
+  * Handle empty .stestr directory to initialize
+  * Update issue templates
+  * Escape Windows paths
+  * Stop encoding attachments text
+
+-------------------------------------------------------------------
 Sun Nov 17 17:19:01 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Create multibuild for testing in order to cope with a circular

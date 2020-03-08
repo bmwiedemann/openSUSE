@@ -184,4 +184,26 @@
 - Clean up spec file</comment>
     <requestid>749499</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd6a15573ed919e9eb48f7d52530ded8</srcmd5>
+    <version>2.6.0</version>
+    <time>1583702498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Add python 3.8 macOS and windows ci jobs
+  * Update test\_processor.py
+  * Update config\_file.py
+  * Update cli.py
+  * Remove 3.8 azure pipelines jobs
+  * Update stestr/scheduler.py
+  * Update to recent hacking version
+  * Add Python 3.8 support
+  * Add --pdb flag to stestr run
+  * Add unit tests around repo initialize
+  * Handle empty .stestr directory to initialize
+  * Update issue templates
+  * Escape Windows paths
+  * Stop encoding attachments text</comment>
+    <requestid>780391</requestid>
+  </revision>
 </revisionlist>

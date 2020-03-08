@@ -1,7 +1,7 @@
 #
-# spec file for package python-stestr
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-stestr%{psuffix}
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        A test runner runner similar to testrepository
 License:        Apache-2.0
