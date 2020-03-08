@@ -104,4 +104,12 @@
 </comment>
     <requestid>734543</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>c6343c75372d53e0965b4d68295a1dd8</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1583702638</time>
+    <user>dimstar_suse</user>
+    <comment>let us go wuth rev 24 first...getting the mono update ready. looking at mate stuff after that</comment>
+    <requestid>782246</requestid>
+  </revision>
 </revisionlist>

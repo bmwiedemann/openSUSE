@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  2 11:49:09 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Use the vanilla nunit for compatibility with newer Mono
+
+-------------------------------------------------------------------
 Tue Oct  1 10:57:51 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make sure the OBS spec file parser does not apply the gtk3 psuffix
