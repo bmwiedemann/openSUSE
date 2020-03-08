@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:05:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild in order to avoid cycle between Mesa and
+  python3
+
+-------------------------------------------------------------------
 Sun Jan 26 03:02:53 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid blocking builds on python3 package. OBS can not expand

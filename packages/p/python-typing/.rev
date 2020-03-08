@@ -98,4 +98,13 @@
     <comment></comment>
     <requestid>767571</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fd689ae2ccc8faa7b0beb18ec6192f51</srcmd5>
+    <version>3.7.4.1</version>
+    <time>1583702475</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild in order to avoid cycle between Mesa and
+  python3</comment>
+    <requestid>769892</requestid>
+  </revision>
 </revisionlist>

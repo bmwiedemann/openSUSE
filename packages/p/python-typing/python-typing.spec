@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,15 @@
 %if 0%{?suse_version} >= 1500 || %{python3_version_nodots} > 34
 %define skip_python3 1
 %endif
-Name:           python-typing
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-typing%{psuffix}
 Version:        3.7.4.1
 Release:        0
 Summary:        Type Hints for Python
@@ -32,7 +40,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-BuildRequires:  python3-testsuite
 %python_subpackages
 
 %description
@@ -47,16 +54,22 @@ ln -s src python_%{python3_bin_suffix}
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 %check
+%if %{with test}
 export PYTHONDONTWRITEBYTECODE=1
 %python_expand pushd python_%{$python_bin_suffix} ; $python -m unittest test_typing ; popd
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
+%endif
 
 %changelog
