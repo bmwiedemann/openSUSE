@@ -1,7 +1,7 @@
 #
 # spec file for package yubico-piv-tool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover  1
 Name:           yubico-piv-tool
-Version:        1.7.0
+Version:        2.0.0
 Release:        0
 Summary:        Yubico YubiKey NEO CCID Manager
 License:        BSD-2-Clause
@@ -79,7 +79,7 @@ Yubikey NEO PKCS#11 applet library.
 
 %build
 %configure --disable-static --with-backend=pcsc
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %install
 %make_install INSTALL="install -p"
@@ -97,12 +97,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/*
 
 %files -n libykpiv%{sover}
-%{_libdir}/libykpiv.so.%{sover}
-%{_libdir}/libykpiv.so.%{sover}.5.0
+%{_libdir}/libykpiv.so.%{sover}*
 
 %files -n libykcs11-%{sover}
-%{_libdir}/libykcs11.so.%{sover}
-%{_libdir}/libykcs11.so.%{sover}.5.0
+%{_libdir}/libykcs11.so.%{sover}*
 
 %files -n libykpiv-devel
 %dir %{_includedir}/ykpiv/
