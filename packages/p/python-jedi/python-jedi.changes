@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  6 11:55:48 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add typing.patch - fix test_sys_getwindowsversion with new parso 
+
+-------------------------------------------------------------------
 Tue Feb  4 09:38:03 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.16.0

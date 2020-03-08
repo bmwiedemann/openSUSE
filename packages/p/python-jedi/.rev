@@ -200,4 +200,12 @@
  * Removed settings.use_filesystem_cache and settings.additional_dynamic_modules, they have no usage anymore. Pretty much nobody was probably using them.</comment>
     <requestid>769953</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2a884d3a0a6a9e7f61b698c22132b453</srcmd5>
+    <version>0.16.0</version>
+    <time>1583702560</time>
+    <user>dimstar_suse</user>
+    <comment>- add typing.patch - fix test_sys_getwindowsversion with new parso</comment>
+    <requestid>782093</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,7 @@ URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Patch0:         unbundle.patch
 Patch1:         delete.patch
+Patch2:         typing.patch
 BuildRequires:  %{python_module parso >= 0.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -56,6 +57,7 @@ implementation as a VIM plugin which uses Jedi's autocompletion.
 %setup -q -n jedi-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 rm -Rf jedi/third_party
 
 %build

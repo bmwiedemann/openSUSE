@@ -1,0 +1,17 @@
+Index: jedi-0.16.0/test/test_inference/test_gradual/test_typeshed.py
+===================================================================
+--- jedi-0.16.0.orig/test/test_inference/test_gradual/test_typeshed.py
++++ jedi-0.16.0/test/test_inference/test_gradual/test_typeshed.py
+@@ -116,10 +116,10 @@ def test_sys_getwindowsversion(Script, e
+     # This should only exist on Windows, but type inference should happen
+     # everywhere.
+     definitions = Script('import sys; sys.getwindowsversion().major').infer()
++    def_, = definitions
+     if environment.version_info.major == 2:
+-        assert not definitions
++        assert def_.name == 'Any'
+     else:
+-        def_, = definitions
+         assert def_.name == 'int'
+ 
+ 
