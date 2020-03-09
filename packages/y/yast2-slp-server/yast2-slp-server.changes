@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:52:33 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not break when running the module without 'openslp-server'
+  package installed (bsc#1165638)
+- 4.2.1
+
+-------------------------------------------------------------------
 Fri May 31 12:39:29 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Add metainfo (fate#319035)
