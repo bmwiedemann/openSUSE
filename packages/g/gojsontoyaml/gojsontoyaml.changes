@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Wed Feb 19 21:30:45 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20191212.bf2969b:
+  * Allow reading from stdin when it isn't a pipe
+  * Enable Go modules by adding go.mod & go.sum files
+  * Add mode to convert yaml to json
+  * Add gojsontoyaml code
