@@ -1,7 +1,7 @@
 #
 # spec file for package python-M2Crypto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,9 @@ Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://gitlab.com/m2crypto/m2crypto
+URL:            https://gitlab.com/m2crypto/m2crypto
 Source:         https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
+Patch1:         001-fix-buffering-for-python38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
@@ -78,7 +79,9 @@ Documentation for the Crypto and SSL toolkit for Python
 
 %prep
 %setup -q -n M2Crypto-%{version}
-%autopatch -p1
+%if 0%{?suse_version} > 1500
+%patch1 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags}"

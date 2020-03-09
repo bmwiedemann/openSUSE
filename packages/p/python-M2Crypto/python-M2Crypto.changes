@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:56:49 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- in python3.8 the fp is wrapped in a Buffer. SSL.Connection.makefile 
+  returns a socketIO which is no buffer.
+  Added: 001-fix-buffering-for-python38.patch 
+
+-------------------------------------------------------------------
 Mon Jun 10 13:59:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to fix release 0.35.2 ... just fixing the test suite.

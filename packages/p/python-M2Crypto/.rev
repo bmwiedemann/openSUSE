@@ -316,4 +316,12 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
     <comment></comment>
     <requestid>708965</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>9014976aec19c5805affaafb9b63c4c6</srcmd5>
+    <version>0.35.2</version>
+    <time>1583749159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782871</requestid>
+  </revision>
 </revisionlist>
