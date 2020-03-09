@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pandoc-citeproc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name pandoc-citeproc
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.16.4.1
+Version:        0.17
 Release:        0
 Summary:        Supports using pandoc with citeproc
 License:        BSD-3-Clause

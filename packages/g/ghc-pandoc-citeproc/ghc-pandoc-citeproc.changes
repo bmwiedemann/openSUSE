@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:16:52 UTC 2020 - psimons@suse.com
+
+- Update pandoc-citeproc to version 0.17.
+  pandoc-citeproc (0.17)
+
+    * Only print labels if selected variable is non-empty (#437).
+    * Make reference-section-title work even when doc ends with header (#431).
+      Previously, setting `reference-section-title` wouldn't do anything
+      when the document ended with a header -- contrary to what the
+      documentation suggests.
+    * Use Text instead of String (#430, Albert Krewinkel).
+
+-------------------------------------------------------------------
 Mon Dec 23 21:13:47 UTC 2019 - psimons@suse.com
 
 - Update pandoc-citeproc to version 0.16.4.1.
