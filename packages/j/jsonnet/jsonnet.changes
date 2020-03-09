@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Mar  9 09:38:34 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop MthJax font, not used, requires log of space
+
+-------------------------------------------------------------------
+Fri Mar  6 11:56:23 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- jsonnet-0.15.0.dif: fix dependency of library (build and runtime)
+
+-------------------------------------------------------------------
+Tue Feb 18 14:56:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
