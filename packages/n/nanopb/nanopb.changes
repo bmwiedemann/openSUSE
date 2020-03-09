@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:00:49 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.4.1:
+  * Fix for CVE-2020-5235 - porential exploitable out of memory
+    condition.
+  * Fixes for AVR builds and tests.
+
+-------------------------------------------------------------------
 Thu Jan 30 13:39:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - As we download the tags directly no need for services and we

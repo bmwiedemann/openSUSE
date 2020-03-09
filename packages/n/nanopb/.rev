@@ -62,4 +62,15 @@
     <comment></comment>
     <requestid>770509</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>758030838d42a2582bc5b4a7eead311f</srcmd5>
+    <version>0.4.1</version>
+    <time>1583763782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+  * Fix for CVE-2020-5235 - porential exploitable out of memory
+    condition.
+  * Fixes for AVR builds and tests. (forwarded request 782945 from mrostecki)</comment>
+    <requestid>782946</requestid>
+  </revision>
 </revisionlist>
