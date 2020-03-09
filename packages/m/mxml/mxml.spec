@@ -1,7 +1,7 @@
 #
 # spec file for package mxml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define library_name libmxml1
 
 Name:           mxml
-Version:        2.11
+Version:        3.1
 Release:        0
 Summary:        Small XML Parsing Library
-License:        LGPL-2.1-or-later
+# The Mini-XML library is licensed under the Apache License Version 2.0 with an
+# exception to allow linking against GPL2/LGPL2-only software.
+License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.msweet.org/mxml
-Source:         https://github.com/michaelrsweet/mxml/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
+Source:         https://github.com/michaelrsweet/mxml/releases/download/v%{version}/mxml-%{version}.tar.gz
+Source1:        https://github.com/michaelrsweet/mxml/releases/download/v%{version}/mxml-%{version}.tar.gz.sig
+# key from https://www.msweet.org/pgp.html
+Source2:        mxml.keyring
+Source10:       baselibs.conf
 BuildRequires:  pkgconfig
 
 %description
@@ -33,8 +39,6 @@ and XML-like data files in your application without requiring large
 nonstandard libraries.
 
 This package holds the commandline tools for mxml.
-
-%define library_name libmxml1
 
 %package -n %{library_name}
 Summary:        Shared library for mxml
@@ -76,7 +80,7 @@ This package holds the HTML documentation for mxml.
 %setup -q
 
 %build
-%configure --enable-shared --with-docdir=%{_docdir}/%{name}
+%configure --enable-threads --enable-shared --with-docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
 
 %install
@@ -85,10 +89,6 @@ rm -v %{buildroot}%{_libdir}/libmxml.a
 
 %post   -n %{library_name} -p /sbin/ldconfig
 %postun -n %{library_name} -p /sbin/ldconfig
-
-%files
-%{_bindir}/mxmldoc
-%{_mandir}/man1/mxmldoc.1%{?ext_man}
 
 %files -n %{library_name}
 %{_libdir}/libmxml.so.1*
