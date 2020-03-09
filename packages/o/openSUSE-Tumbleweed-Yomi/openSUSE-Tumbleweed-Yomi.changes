@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:16:55 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Set JEOS_EULA_ALREADY_AGREED for the image
+
+-------------------------------------------------------------------
 Wed Feb 26 16:29:39 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add rpm-properties.xml for containment-rpm-pxe
