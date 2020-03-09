@@ -1,7 +1,7 @@
 #
 # spec file for package flashfocus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           flashfocus
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Focus animations for tiling window managers
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/fennerm/flashfocus
-Source:         https://github.com/fennerm/flashfocus/archive/v%{version}.tar.gz
+Source:         https://github.com/fennerm/flashfocus/archive/%{version}.tar.gz
 Patch0:         flashfocus-2.0.3-no-i3ipc.patch
 BuildRequires:  fdupes
 BuildRequires:  libffi-devel

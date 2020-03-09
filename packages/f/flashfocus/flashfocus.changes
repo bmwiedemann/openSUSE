@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:50:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.2:
+  * (Hopefully) fixed: #43 - Error when setting rules in config
+  * Add support for Click 7.0
+
+-------------------------------------------------------------------
 Mon Sep 30 08:48:24 UTC 2019 - mvetter@suse.com
 
 - Update to 2.1.1:
