@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
+
+- Require current ocaml-rpm-macros
+- Use _service file
+- Build with dune
+
+-------------------------------------------------------------------
 Wed Apr 18 12:56:32 UTC 2018 - jengelh@inai.de
 
 - Update summaries

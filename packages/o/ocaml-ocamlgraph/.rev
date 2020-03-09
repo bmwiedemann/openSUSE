@@ -17,4 +17,14 @@ It is a dependency of opam.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620957</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c999a075fa63bd6e4c381ba59b87073e</srcmd5>
+    <version>1.8.8</version>
+    <time>1583759624</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Use _service file
+- Build with dune</comment>
+    <requestid>778058</requestid>
+  </revision>
 </revisionlist>

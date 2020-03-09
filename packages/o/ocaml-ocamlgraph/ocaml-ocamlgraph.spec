@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,17 +23,11 @@ Release:        0
 Summary:        Graph library for OCaml
 License:        LGPL-2.1
 Group:          Development/Languages/OCaml
-Url:            http://ocamlgraph.lri.fr
-Source:         http://ocamlgraph.lri.fr/download/ocamlgraph-%{version}.tar.gz
+Url:            https://github.com/backtracking/ocamlgraph
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
-BuildRequires:  ocamlfind(lablgl)
-BuildRequires:  ocamlfind(lablgtk2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%global __requires_exclude ocaml\\\(Sig\\\)
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20200220
 
 %description
 OCamlgraph is a graph library for Objective Caml.
@@ -49,42 +43,23 @@ OCamlgraph is a graph library for Objective Caml.
 This package contains development files for %{name}.
 
 %prep
-%setup -q -n ocamlgraph-%{version}
+%autosetup -p1
 
 %build
-%configure
-make  %{?_smp_mflags}
+dune_release_pkgs='ocamlgraph'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%makeinstall
-find %{buildroot} -ls
-find %{buildroot} -name "*o" -print -delete
-install -m0644 META %{buildroot}%{_libdir}/ocaml/ocamlgraph
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root)
-%doc CHANGES COPYING CREDITS FAQ
-%license LICENSE
-%{_bindir}/*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%check
+%ocaml_dune_test
 
-%files devel
-%defattr(-,root,root,-)
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files -f %{name}.files
+%doc README.adoc
+
+%files devel -f %{name}.files.devel
 
 %changelog
