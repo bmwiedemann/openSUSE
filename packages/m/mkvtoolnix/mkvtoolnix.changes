@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:19:36 UTC 2020 - aloisio@gmx.com
+
+- Update to version 44.0.0
+  New features and enhancements:
+  * MKVToolNix GUI: header editor: the attachments can now be
+    reordered via drag & drop. Implements #2753.
+  Bug fixes:
+  * mkvmerge: Matroska reader: when encountering certain errors
+    in the track headers such as the codec ID not being present
+    mkvmerge will simply skip those tracks instead of exiting
+    with an error. Fixes #2737.
+  * MKVToolNix GUI: multiplexer: the "ask before overwriting"
+    functionality did not look for the correct file names when
+    splitting was active. Fixes #2741.
+
+-------------------------------------------------------------------
 Mon Jan 27 17:01:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 43.0.0
