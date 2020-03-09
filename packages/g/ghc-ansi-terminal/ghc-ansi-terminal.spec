@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ansi-terminal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name ansi-terminal
 Name:           ghc-%{pkg_name}
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Simple ANSI terminal support, with Windows compatibility
 License:        BSD-3-Clause

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:17:50 UTC 2020 - psimons@suse.com
+
+- Update ansi-terminal to version 0.10.3.
+  Version 0.10.3
+  --------------
+  * Add `getCursorPosition` as a synonym of `getCursorPosition0` and deprecate the
+    latter.
+
+-------------------------------------------------------------------
 Thu Nov 21 03:01:38 UTC 2019 - psimons@suse.com
 
 - Update ansi-terminal to version 0.10.2.
