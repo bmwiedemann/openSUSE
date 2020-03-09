@@ -194,4 +194,14 @@
   python3 as interpreter. (forwarded request 544622 from dimstar)</comment>
     <requestid>545146</requestid>
   </revision>
+  <revision rev="29" vrev="15">
+    <srcmd5>b7a2141ce99d180b46648212a7c2fcc2</srcmd5>
+    <version>0.7.6</version>
+    <time>1583750496</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libcwiid-devel BuildRequires: cwiid is deprecated and no
+  longer maintained in openSUSE.
+</comment>
+    <requestid>782789</requestid>
+  </revision>
 </revisionlist>

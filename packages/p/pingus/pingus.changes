@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  6 13:08:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libcwiid-devel BuildRequires: cwiid is deprecated and no
+  longer maintained in openSUSE.
+
+-------------------------------------------------------------------
 Thu Nov 23 13:42:07 UTC 2017 - dimstar@opensuse.org
 
 - Add pingus-scons-on-py3.patch: Fix build with scons using

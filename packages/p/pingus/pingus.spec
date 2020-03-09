@@ -1,7 +1,7 @@
 #
 # spec file for package pingus
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,14 +21,13 @@
 %else
 %define with_wiimote True
 %endif
-
 Name:           pingus
 Version:        0.7.6
 Release:        0
 Summary:        Free Lemmings-like puzzle game
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
-Url:            http://pingus.seul.org/
+URL:            https://pingus.seul.org/
 # Downloaded from https://code.google.com/p/pingus/source/checkout
 # Packed as tar.bz2
 Source0:        %{name}-%{version}+git-6a1153a.tar.bz2
@@ -40,26 +39,25 @@ Patch1:         %{name}-%{version}-Makefile.patch
 Patch2:         %{name}-%{version}-SConscript.patch
 # PATCH-FIX-UPSTREAM pingus-scons-on-py3.patch dimstar@opensuse.org -- Fix build with scons using python3 as interpreter
 Patch3:         pingus-scons-on-py3.patch
+BuildRequires:  bluez-devel
+BuildRequires:  dos2unix
+BuildRequires:  gcc-c++
+BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig
+BuildRequires:  scons
+BuildRequires:  pkgconfig(SDL_image)
+BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(xi)
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 %endif
-BuildRequires:  bluez-devel
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  dos2unix
-BuildRequires:  gcc-c++
-BuildRequires:  libcwiid-devel
-BuildRequires:  libpng-devel
-BuildRequires:  scons
-BuildRequires:  pkgconfig(SDL_image)
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(xi)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Pingus is a free Lemmings-like puzzle game covered under the GNU GPL.
@@ -73,12 +71,11 @@ And start with
 
     pingus --language de
 
-
 If you wish to play the other levels
 
-    pingus /usr/share/pingus/levels/playable/some-level
-    pingus /usr/share/pingus/levels/incoming/some-level
-    pingus /usr/share/pingus/levels/wip/some-level
+    pingus %{_datadir}/pingus/levels/playable/some-level
+    pingus %{_datadir}/pingus/levels/incoming/some-level
+    pingus %{_datadir}/pingus/levels/wip/some-level
 
 The other, probably more userfriendly, way is to simply load them into
 the level editor and then click the play button.
@@ -126,7 +123,7 @@ install -Dm 0644 data/images/icons/pingus-icon.png %{buildroot}/%{_datadir}/icon
 install -Dm 0644 data/images/icons/pingus.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.png
 
 # install Desktop file
-install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}
@@ -134,10 +131,10 @@ install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS NEWS README TODO
 %{_bindir}/%{name}
-%{_mandir}/man6/%{name}.6%{ext_man}
+%{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
 %{_datadir}/%{name}
