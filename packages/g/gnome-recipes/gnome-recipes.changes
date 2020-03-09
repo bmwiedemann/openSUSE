@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:15:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.4
+  * Fix a few crasher bugs
+  * Fix an issue where the chef dialog wouldn't reopen
+    when closed using Esc key
+  * Fix the Flatpak build and the CI build
+  * Fix the build dependencies known to meson (make gio-unix-2.0 explicit)
+  * Update the AppStream data
+    (add OARS data, fix the SPDX license identifier, etc.)
+  * Update the bug reporting URL to GNOME GitLab
+  * Add a label for Halal recipes
+  * Fix the labels on "White fish for people who don't like fish"
+    so it doesn't claim to be vegetarian
+  * Tweak the wording on two recipes in the Vegetarian category,
+    now called "Gravy" and "Marinade"
+
+-------------------------------------------------------------------
 Sat Jan 25 14:11:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

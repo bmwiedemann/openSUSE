@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-recipes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-recipes
-Version:        2.0.2+97
+Version:        2.0.4
 Release:        0
 Summary:        A recipe app for GNOME
 License:        GPL-3.0-or-later
