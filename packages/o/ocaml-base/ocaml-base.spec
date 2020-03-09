@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-base
-Version:        0.12.2
+Version:        0.13.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Standard library for OCaml
 License:        MIT
 Group:          Development/Languages/OCaml
-Url:            https://github.com/janestreet/base
+Url:            https://opam.ocaml.org/packages/base
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(compiler-libs.bytecomp)
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(dune.configurator)

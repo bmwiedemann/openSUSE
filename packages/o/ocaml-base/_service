@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/janestreet/base.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">0.12.2</param>
-    <param name="revision">v0.12.2</param>
     <param name="filename">ocaml-base</param>
+    <param name="revision">9f1001c0024257d3a63940a47efd11058300bcfa</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/janestreet/base.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
