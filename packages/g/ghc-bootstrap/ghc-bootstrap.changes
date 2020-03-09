@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:50:52 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
+
+- Relax LLVM requirement on ARM and Aarch64
+
+-------------------------------------------------------------------
 Mon Jan 27 15:04:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop llvm6-devel requirement for ARM
