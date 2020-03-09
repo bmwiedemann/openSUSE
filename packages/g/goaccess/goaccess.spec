@@ -2,7 +2,7 @@
 #
 # spec file for package goaccess
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,7 +14,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,7 +30,7 @@ Patch0:         bin2c.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
-BuildRequires:  libGeoIP-devel
+BuildRequires:  libmaxminddb-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 Recommends:     %{name}-lang
@@ -47,7 +47,7 @@ for system administrators that require a visual report on the fly.
 
 %build
 %configure \
-    --enable-geoip=legacy \
+    --enable-geoip \
     --enable-utf8
 
 make %{?_smp_mflags}

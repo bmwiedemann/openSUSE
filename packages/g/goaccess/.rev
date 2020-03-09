@@ -286,4 +286,12 @@
   which lead to garbage in HTML reports</comment>
     <requestid>726410</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f3553b3a985aa3343016811c8461d29b</srcmd5>
+    <version>1.3</version>
+    <time>1583775260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783006</requestid>
+  </revision>
 </revisionlist>
