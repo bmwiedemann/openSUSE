@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-neat-interpolation
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,24 @@
 %global pkg_name neat-interpolation
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.2.5
+Version:        0.5.1
 Release:        0
 Summary:        A quasiquoter for neat and simple multiline text interpolation
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-base-prelude-devel
 BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 %if %{with tests}
-BuildRequires:  ghc-HTF-devel
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-quickcheck-instances-devel
+BuildRequires:  ghc-rerebase-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
@@ -73,5 +77,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md
 
 %changelog
