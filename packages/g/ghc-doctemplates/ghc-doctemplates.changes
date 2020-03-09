@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 27 16:05:49 UTC 2020 - psimons@suse.com
+
+- Update doctemplates to version 0.8.1.
+  ## 0.8.1
+
+    * Depend on doclayout 0.3, which adds an additional method
+      on the HasChars class.  This fixes some stack overflows
+      in rendering very long lines.
+
+-------------------------------------------------------------------
 Mon Dec 23 17:45:39 UTC 2019 - psimons@suse.com
 
 - Update doctemplates to version 0.8.
