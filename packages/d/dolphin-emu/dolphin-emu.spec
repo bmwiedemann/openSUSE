@@ -22,7 +22,7 @@
 %define _revision_description 5.0-11688
 
 Name:           dolphin-emu
-Version:        5.0+git.1582525609.25d5f0d9ef
+Version:        5.0+git.1583642222.c507370ba2
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later

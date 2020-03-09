@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 09 13:02:27 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1583642222.c507370ba2:
+  * AudioPane: Do not enable Dolby Pro Logic II quality slider if DPLII is disabled
+  * Resources: Make dolphin_logo.png square
+  * Source/Core/Core/DSP/DSPTables.cpp: include <cstdio> for sprintf
+  * Source/Core/Common/StringUtil.h: include <limits> for std::numeric_limits
+  * Used whole path instead of relative path
+  * Add path to File Name column of game grid Fixes https://bugs.dolphin-emu.org/issues/10567
+
+-------------------------------------------------------------------
+Mon Mar 02 14:38:11 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1582988926.1add30994b:
+  * Translation resources sync with Transifex
+  * HW/WiimoteEmu: Fix Classic Controller triggers.
+  * Qt: Re-enable Dark Mode support
+  * DolphinQt: Tweak indicator raw-input/input-shape color for better contrast in some dark themes.
+  * DolphinQt: Eliminiate redundant swing indicator logic.
+  * DolphinQt: Clean up mapping indicator code and draw lines on "pixel centers".
+  * DolphinQt: Eliminate redundant cursor indicator logic.
+  * DolphinQt: Break mapping indicators into separate classes. Ensure "state lock" is held on redraw.
+  * InputCommon: Remove racy UpdateInput call in DetectInput.
+  * InputCommon: Mark GetStateLock with [[nodiscard]] and fix discarding calls.
+
+-------------------------------------------------------------------
 Mon Feb 24 11:20:37 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1582525609.25d5f0d9ef:
