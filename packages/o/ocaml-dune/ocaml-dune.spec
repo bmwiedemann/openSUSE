@@ -17,21 +17,18 @@
 
 
 Name:           ocaml-dune
-Version:        1.11.4
+Version:        2.4.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
 License:        MIT
 Group:          Development/Languages/OCaml
-Url:            https://dune.build/
-Conflicts:      ocaml-jbuilder
-Conflicts:      ocaml-jbuilder-debuginfo
-Conflicts:      ocaml-jbuilder-debugsource
+Url:            https://opam.ocaml.org/packages/dune
 Source:         %{name}-%{version}.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml(ocaml_base_version) < 4.06
+BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 
 %description
 A composable build system for OCaml
@@ -49,20 +46,23 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-ocaml configure.ml --libdir=$(ocamlc -where)
-%make_build
+ocaml configure.ml '--libdir=%{ocaml_standard_library}' '--mandir=%{_mandir}'
+ocaml bootstrap.ml
+rm -rfv        '%{_tmppath}/%{name}-%{release}'
+mkdir -vm 0700 '%{_tmppath}/%{name}-%{release}'
+mkdir -vm 0700 '%{_tmppath}/%{name}-%{release}/bin'
+test -x "$PWD/dune.exe"
+ln -vs "$_"    '%{_tmppath}/%{name}-%{release}/bin/dune'
+export    "PATH=%{_tmppath}/%{name}-%{release}/bin:$PATH"
+dune_release_pkgs='dune,dune-action-plugin,dune-build-info,dune-configurator,dune-glob,dune-private-libs'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-#make_install PREFIX='%{_prefix}' LIBDIR="$(ocamlc -where)"
-if pushd _boot/default/bin/main
-then
-  ln -svb main_dune.exe dune
-  export PATH="`readlink -f \"$PWD\"`:$PATH"
-  popd
-fi
-OCAML_DUNE_INSTALL_ARGS='dune --build-dir _boot'
+export    "PATH=%{_tmppath}/%{name}-%{release}/bin:$PATH"
 %ocaml_dune_install
 %ocaml_create_file_list
+rm -rfv        '%{_tmppath}/%{name}-%{release}'
 
 %files -f %{name}.files
 %doc CHANGES.md README.md

@@ -202,4 +202,13 @@ I will submit the packages one by one once this is accepted.</comment>
     <comment>- Add compiler-libs-devel to BuildRequires and Requires (bsc#1156934)</comment>
     <requestid>750770</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9b938e4011964e7c421e86cf997e24d2</srcmd5>
+    <version>2.4.0</version>
+    <time>1583759653</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 2.4.0
+  see included CHANGES.md for details</comment>
+    <requestid>782576</requestid>
+  </revision>
 </revisionlist>
