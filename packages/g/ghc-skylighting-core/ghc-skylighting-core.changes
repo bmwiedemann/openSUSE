@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 25 10:23:01 UTC 2020 - psimons@suse.com
+
+- Update skylighting-core to version 0.8.3.2.
+  ## 0.8.3.2 -- 2020-01-21
+
+   * This fixes a packaging error in 0.8.3.1, which didn't include
+     the results of the bootsrap step and hence didn't update the
+     syntax modules.
+
+  ## 0.8.3.1 -- 2020-01-21
+
+   * Escape `<` and `>` in latex to avoid ligatures (#91).
+
+   * Fix and extend Idris keywords (Denis Buzdalov).
+
+   * Update XML syntax definitions for javascript-react, qml,
+     typescript, javascript, cmake, cofee, latex, perl, python,
+     rest.
+
+   * Fixed bug with context shifts using `##` syntax for foreign context.
+     Previously we only handled these in IncludeRules, but
+     starting with the current batches of xml files they can occur
+     elsewhere too.
+
+-------------------------------------------------------------------
 Wed Nov 27 03:00:51 UTC 2019 - psimons@suse.com
 
 - Update skylighting-core to version 0.8.3.
