@@ -30,4 +30,12 @@
     with connect_and_authenticate() as connection:</comment>
     <requestid>780407</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>735f9695977e2032846ad69838c72865</srcmd5>
+    <version>0.4.3</version>
+    <time>1583775263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783023</requestid>
+  </revision>
 </revisionlist>
