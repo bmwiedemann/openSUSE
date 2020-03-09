@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-managed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name managed
 Name:           ghc-%{pkg_name}
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        A monad for managed values
 License:        BSD-3-Clause
