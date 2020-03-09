@@ -1,5 +1,0 @@
-<package name="python-pip-tools" project="openSUSE:Factory">
-  <title>python-pip-tools</title>
-  <description>Keep your pinned dependencies fresh</description>
-  <devel project="devel:languages:python" package="python-pip-tools"/>
-</package>
