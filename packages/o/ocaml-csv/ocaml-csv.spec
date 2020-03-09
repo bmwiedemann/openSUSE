@@ -12,12 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%bcond_with     ocaml_lwt
+
 Name:           ocaml-csv
-Version:        1.7
+Version:        2.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml library for reading and writing CSV files
@@ -25,12 +27,17 @@ License:        LGPL-2.0+
 Group:          Development/Languages/OCaml
 Url:            https://github.com/Chris00/ocaml-csv
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  ocaml >= 4.00.1
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(bytes)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocamlfind(str)
+BuildRequires:  ocamlfind(unix)
+BuildRequires:  ocamlfind(uutf)
+%if %{with ocaml_lwt}
+BuildRequires:  ocamlfind(lwt)
+BuildRequires:  ocamlfind(lwt.unix)
+%endif
 
 %description
 This OCaml library can read and write CSV files, including all
@@ -50,47 +57,26 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-rm -fv setup.ml myocamlbuild.ml META* _tags */_* */META*
-sed -i '/^Library csv_lwt/,/^$/d' _oasis
-%oasis_setup
-%ocaml_oasis_configure --enable-docs --disable-tests
-%ocaml_oasis_build
-%ocaml_oasis_doc
+dune_release_pkgs='csv,csvtool'
+%if %{with ocaml_lwt}
+dune_release_pkgs="${dune_release_pkgs},csv-lwt"
+%endif
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
+%ocaml_create_file_list
 
 %check
-%ocaml_oasis_test
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
-%doc AUTHORS.txt LICENSE.txt README.txt
-%{_bindir}/csvtool
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
+%files -f %{name}.files
+%{_bindir}/*
 
-%files devel
-%defattr(-,root,root,-)
-%doc LICENSE.txt
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*.cmxs
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog

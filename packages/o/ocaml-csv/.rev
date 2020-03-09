@@ -26,4 +26,23 @@
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>517014</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9d65b4a15d234e2d6812a06657f0f14a</srcmd5>
+    <version>2.4</version>
+    <time>1583759603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4
+  Fixes the build on Windows with CRLF checkout.
+- Require current ocaml-rpm-macros
+- Build conditionally with ocaml-lwt
+
+- Require current dune macros
+- Update to 2.3
+  Use UTF-8 to determine column widths for the &quot;readable&quot; format.
+  Add deprecation attributes.
+  Fix alignment in csvtool usage message.
+  Improve the documentation of Csv.Rows.load and of_in_obj.
+  Split the package into csv and csv-lwt.</comment>
+    <requestid>777967</requestid>
+  </revision>
 </revisionlist>
