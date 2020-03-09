@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Mar  7 13:14:37 UTC 2020 - Adam Majer <amajer@suse.com>
+
+- Add keyring
+- Fix source URLs to point to actual releases
+
+-------------------------------------------------------------------
+Thu Mar  5 23:39:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.1
+  - The mxmlLoad* functions now print an error when the XML does
+    not start with < and no parent node is supplied (Issue #256,
+    Issue #259)
+  - Fixed an issue with “make install” trying to install old files
+    (Issue #257)
+  - Fixed some DSO installation issues on Linux.
+- Changes from 3.0
+  - Changed the license to Apache 2.0 with exceptions (Issue #239)
+  - All of the internal node structures are now moved out of the
+    public header (Issue #240)
+  - Fixed a potential buffer overflow when writing floating point
+    data (Issue #233)
+  - Moved mxmldoc to a new codedoc project whose focus is on
+    generating code documentation (Issue #235, Issue #236, Issue
+    #237)
+  - Error messages now include the line number of the error (Issue
+    #230)
+  - The mxmlSetCDATA, mxmlSetElement, mxmlSetOpaque,
+    mxmlSetOpaquef, mxmlSetText, and mxmlSetTextf functions caused
+    a use-after-free bug if the value came from the same node
+    (Issue #241)
+  - The mxmlSetOpaquef and mxmlSetTextf functions did not work
+    (Issue #244)
+  - The _mxml_strdupf function did not work on Windows (Issue #245)
+- Changes from 2.12
+  - Added yet more documentation about using MXML_OPAQUE_CALLBACK
+    when you want to get full strings for inline text instead of
+    separated words (Issue #190)
+  - No longer build documentation sets on macOS since Xcode no
+    longer supports them (Issue #198)
+  - Updated the va_copy macro for use with BCC (Issue #211)
+  - The mxmlNewCDATA and mxmlSetCDATA functions incorrectly added
+    the XML trailer “]]” to the string (Issue #216)
+  - Cross-compiling failed on install (Issue #218)
+  - Fixed a crash bug in the mxmlWrite functions (Issue #228)
+  - The mxmlWrite functions no longer write the siblings of the
+    passed node (Issue #228)
+  - Updated the markdown and ZIP container libraries used for
+    mxmldoc.
+- remove mxmldoc binaries and man pages
+- enable threading support
+
+-------------------------------------------------------------------
 Sun Jul 15 13:11:50 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 2.11:
