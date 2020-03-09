@@ -12,9 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_with     ocaml_alcotest
 
 Name:           ocaml-qcheck
 Version:        0.10
@@ -29,10 +31,13 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20190930
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(unix)
+%if %{with ocaml_alcotest}
+BuildRequires:  ocamlfind(alcotest)
+%endif
 
 %description
 This module allows to check invariants (properties of some types) over
@@ -53,16 +58,14 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-# do not build alcotest support since it is not packaged yet
-args='--for-release-of-packages=qcheck,qcheck-core,qcheck-ounit'
-OCAML_DUNE_INSTALLED_LIBRARIES_ARGS=''
-OCAML_DUNE_EXTERNAL_LIB_DEPS_ARGS="${args}"
-OCAML_DUNE_BUILD_INSTALL_ARGS="${args}"
+dune_release_pkgs='qcheck,qcheck-core,qcheck-ounit'
+%if %{with ocaml_alcotest}
+dune_release_pkgs="${dune_release_pkgs},qcheck-alcotest"
+%endif
 %ocaml_dune_setup
 %ocaml_dune_build
 
 %install
-OCAML_DUNE_INSTALL_ARGS='qcheck qcheck-core qcheck-ounit'
 %ocaml_dune_install
 %ocaml_create_file_list
 
@@ -70,7 +73,6 @@ OCAML_DUNE_INSTALL_ARGS='qcheck qcheck-core qcheck-ounit'
 %ocaml_dune_test
 
 %files -f %{name}.files
-%license LICENSE
 %doc README.adoc
 
 %files devel -f %{name}.files.devel

@@ -40,4 +40,13 @@ It is a dependency of the next version of Haxe (4.0.0).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>735917</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d2ac32d3c57c6198fa2dc71f1a87a1b6</srcmd5>
+    <version>0.10</version>
+    <time>1583763770</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current dune macros
+- Build conditionally with ocaml-alcotest</comment>
+    <requestid>777979</requestid>
+  </revision>
 </revisionlist>
