@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocaml-menhir
-Version:        20170712
+Version:        20200211
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        LR(1) parser generator for the OCaml programming language
 License:        LGPL-2.0
 Group:          Development/Languages/OCaml
-Url:            http://gallium.inria.fr/~fpottier/menhir/
-Source:         http://gallium.inria.fr/~fpottier/menhir/menhir-%{version}.tar.gz
+Url:            https://opam.ocaml.org/packages/menhir
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  time
 BuildRequires:  ocaml
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ocamlbuild
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.02.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-dune >= 2.0
+BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocamlfind(unix)
 
 %description
 LR(1) parser generator
@@ -45,61 +44,29 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n menhir-%{version}
+%autosetup -p1
 
 %build
-o=
-make \
-%if 0%{?ocaml_native_compiler}
-	TARGET=native \
-%else
-	TARGET=byte \
-%endif
-	PREFIX=${o}%{_prefix} \
-	%{?_smp_mflags} \
-	-j 1
+dune_release_pkgs='menhir,menhirLib,menhirSdk'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-o=%{buildroot}
-OCAMLFIND_DESTDIR=%{buildroot}`ocamlc -where`
-mkdir -vp ${OCAMLFIND_DESTDIR}
-make \
-	install \
-%if 0%{?ocaml_native_compiler}
-	TARGET=native \
+%ocaml_dune_install
+%ocaml_create_file_list
+
+%check
+%ifarch x86_64
 %else
-	TARGET=byte \
+dune_test_tolerate_fail='dune_test_tolerate_fail bitsize'
 %endif
-	PREFIX=${o}%{_prefix} \
-	OCAMLFIND_DESTDIR=${OCAMLFIND_DESTDIR} \
-	%{?_smp_mflags} \
-	-j 1
-rm -rfv %{buildroot}/usr/share/doc
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root)
-%doc CHANGES.md LICENSE manual.pdf
+%files -f %{name}.files
+%doc CHANGES.md
 %{_bindir}/*
-%{_datadir}/menhir
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/META
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.o
-%endif
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmo
-
-%files devel
-%defattr(-,root,root,-)
-%doc LICENSE
 %{_mandir}/*/*
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmx
-%endif
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/*.ml
+
+%files devel -f %{name}.files.devel
 
 %changelog

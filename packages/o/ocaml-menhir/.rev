@@ -22,4 +22,13 @@ ocaml 4.03 (fate#320836)</comment>
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>512533</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad30967344600c8496acc3b19970a048</srcmd5>
+    <version>20200211</version>
+    <time>1583759640</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 20200211, with _service file
+- Require dune 2.0+</comment>
+    <requestid>780711</requestid>
+  </revision>
 </revisionlist>

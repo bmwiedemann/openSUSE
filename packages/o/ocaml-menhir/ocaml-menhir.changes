@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 29 20:20:20 UTC 2020 - ohering@suse.de
+
+- update version 20200211, with _service file
+- Require dune 2.0+
+
+-------------------------------------------------------------------
 Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
 
 - Use Group: Development/Languages/OCaml
