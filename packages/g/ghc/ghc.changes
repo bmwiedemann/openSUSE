@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 27 08:47:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 8.8.3
+ * a compiler panic due to over-zealous eta reduction
+ * the ability to bootstrap with earlier 8.8 releases has been restored
+ * the directory submodule has been updated
+ * the process submodule has been updated
+
+-------------------------------------------------------------------
 Mon Feb 17 16:43:22 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Increase memory limit for qemu user-space builds

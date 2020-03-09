@@ -29,11 +29,11 @@
 %global unregisterised_archs s390 s390x riscv64
 
 Name:           ghc
-Version:        8.8.2
+Version:        8.8.3
 Release:        0
 URL:            https://www.haskell.org/ghc/
-Source:         https://downloads.haskell.org/~ghc/8.8.2/ghc-%{version}-src.tar.xz
-Source1:        https://downloads.haskell.org/~ghc/8.8.2/ghc-%{version}-src.tar.xz.sig
+Source:         https://downloads.haskell.org/~ghc/8.8.3/ghc-%{version}-src.tar.xz
+Source1:        https://downloads.haskell.org/~ghc/8.8.3/ghc-%{version}-src.tar.xz.sig
 Source2:        ghc-rpmlintrc
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
@@ -166,7 +166,7 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d bytestring-0.10.10.0
 %ghc_lib_subpackage -d containers-0.6.2.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
-%ghc_lib_subpackage -d directory-1.3.4.0
+%ghc_lib_subpackage -d directory-1.3.6.0
 %ghc_lib_subpackage -d filepath-1.4.2.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-%{ghc_version_override}
@@ -180,7 +180,7 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d mtl-2.2.2
 %ghc_lib_subpackage -d parsec-3.1.14.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.7.0
+%ghc_lib_subpackage -d process-1.6.8.0
 %ghc_lib_subpackage -d stm-2.5.0.0
 %ghc_lib_subpackage -d template-haskell-2.15.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4
@@ -281,6 +281,7 @@ make %{?_smp_mflags}
 %else 
 make -j 2
 %endif
+
 
 %install
 %if 0%{?suse_version} <= 1320
