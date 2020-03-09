@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynamodb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pynamodb
-Version:        3.3.1
+Version:        4.3.1
 Release:        0
-License:        MIT
 Summary:        Python Interface to DynamoDB
-Url:            http://jlafon.io/pynamodb.html
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/pynamodb/PynamoDB
 Source0:        https://files.pythonhosted.org/packages/source/p/pynamodb/pynamodb-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/pynamodb/PynamoDB/%{version}/LICENSE
-# PATCH-FIX-UPSTREAM no_vendored_requests.patch -- use system requests since we remove the vendored version -- https://github.com/pynamodb/PynamoDB/pull/566
-Patch0:         no_vendored_requests.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-# SECTION test requirements
-BuildRequires:  %{python_module botocore >= 1.2.0}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
-# /SECTION
-Requires:       python-botocore >= 1.2.0
+BuildRequires:  python-rpm-macros
+Requires:       python-botocore >= 1.2.54
 Requires:       python-python-dateutil >= 2.1
-Requires:       python-requests
 Requires:       python-six
 Recommends:     python-blinker >= 1.3
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module blinker >= 1.3}
+BuildRequires:  %{python_module botocore >= 1.2.54}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.1}
+BuildRequires:  %{python_module six}
+# /SECTION
 %python_subpackages
 
 %description
@@ -53,8 +48,6 @@ A Python interface for Amazon's DynamoDB.
 
 %prep
 %setup -q -n pynamodb-%{version}
-cp %{SOURCE10} .
-%patch0 -p1
 
 %build
 %python_build
@@ -64,7 +57,10 @@ cp %{SOURCE10} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+export AWS_SECRET_ACCESS_KEY=fake_key
+export AWS_ACCESS_KEY_ID=fake_id
+# Sadly the tests since 4.x series require local dynamdb running on the local machine instead of mocking
+#%%pytest
 
 %files %{python_files}
 %doc README.rst
