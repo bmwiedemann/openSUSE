@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 09 16:12:01 UTC 2020 - okurz@suse.com
+
+- Update to version 1.17.0:
+  * Add python 3.8 to testing as in openSUSE Tumbleweed
+  * Add error message for failed ssl connections
+  * Simplify generation code of 'skipped' section
+
+-------------------------------------------------------------------
 Mon Jan 27 08:52:34 UTC 2020 - okurz@suse.com
 
 - Update to version 1.16.0:
