@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vector
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name vector
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.0.3
+Version:        0.12.1.2
 Release:        0
 Summary:        Efficient Arrays
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-primitive-devel
@@ -35,10 +34,11 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-semigroups-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-quickcheck2-devel
 BuildRequires:  ghc-transformers-devel
 %endif
 
@@ -77,7 +77,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -98,6 +97,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.md changelog
+%doc README.md changelog.md
 
 %changelog
