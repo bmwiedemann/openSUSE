@@ -16,7 +16,7 @@
 #
 
 
-%bcond_with ocaml_do_dune_runtest
+%bcond_with ocaml_alcotest
 Name:           ocaml-calendar
 Version:        2.04
 Release:        0
@@ -28,10 +28,10 @@ Url:            https://github.com/ocaml-community/calendar
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(re)
 BuildRequires:  ocamlfind(unix)
-%if %{with ocaml_do_dune_runtest}
+%if %{with ocaml_alcotest}
 BuildRequires:  ocamlfind(alcotest)
 %endif
 
@@ -61,10 +61,9 @@ dune_release_pkgs='calendar'
 %ocaml_dune_install
 %ocaml_create_file_list
 
-%if %{with ocaml_do_dune_runtest}
 %check
+dune_test_tolerate_fail='dune_test_tolerate_fail'
 %ocaml_dune_test
-%endif
 
 %files -f %{name}.files
 

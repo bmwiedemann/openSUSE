@@ -30,4 +30,13 @@
   ocaml-calendar-buildcompare.patch</comment>
     <requestid>748357</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bb922a2d11eeb73a70c6a3879675d933</srcmd5>
+    <version>2.04</version>
+    <time>1583759621</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Build conditionally with ocaml-alcotest</comment>
+    <requestid>777990</requestid>
+  </revision>
 </revisionlist>
