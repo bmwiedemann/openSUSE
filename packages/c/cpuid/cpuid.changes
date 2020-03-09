@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:24:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200211
+  * Zhaoxin decoding
+  * Name enhancements for models from AMD, VIA, Intel, NSC
+  * Added SEV cpuid bit.
+
+-------------------------------------------------------------------
 Fri Jan 17 13:06:18 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to release 20200116
