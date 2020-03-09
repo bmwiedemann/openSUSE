@@ -19,7 +19,7 @@
 Version:        2.18.10
 Release:        0
 %{?ocaml_preserve_bytecode}
-%global __ocaml_requires_opts -i GtkSourceView_types -i GtkSourceView2_types
+%global __ocaml_requires_opts -i GtkSourceView2_types
 Name:           ocaml-lablgtk2
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  gtk2-devel
@@ -31,7 +31,7 @@ BuildRequires:  librsvg-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-lablgl-devel
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  xorg-x11
 BuildRequires:  zlib-devel
 Requires:       ocaml
@@ -93,20 +93,16 @@ popd
 %install
 %makeinstall
 # Remove ld.conf (part of main OCaml dist).
-rm $RPM_BUILD_ROOT%{_libdir}/ocaml/ld.conf
+rm $RPM_BUILD_ROOT%{ocaml_standard_library}/ld.conf
 #
 %ocaml_create_file_list
-
-%post   -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
 
 %files -f %{name}.files
 %doc CHANGES README
 %{_bindir}/*
 
 %files devel -f %{name}.files.devel
-%{_libdir}/ocaml/*/propcc
-%{_libdir}/ocaml/*/varcc
+%{ocaml_standard_library}/*/propcc
+%{ocaml_standard_library}/*/varcc
 
 %changelog
