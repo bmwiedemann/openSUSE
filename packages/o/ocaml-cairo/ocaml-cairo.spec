@@ -24,9 +24,10 @@ License:        LGPL-3.0+
 Group:          Development/Languages/OCaml
 Url:            https://github.com/Chris00/ocaml-cairo
 Source:         %{name}-%{version}.tar.xz
+Patch0:         ocaml-cairo.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(lablgtk2)
@@ -63,6 +64,7 @@ dune_release_pkgs='cairo2,cairo2-pango,cairo2-gtk'
 %ocaml_create_file_list
 
 %check
+dune_test_tolerate_fail='dune_test_tolerate_fail issue#19'
 %ocaml_dune_test
 
 %files -f %{name}.files
