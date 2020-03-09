@@ -19,7 +19,7 @@
 %global pkg_name tls
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        TLS/SSL protocol native implementation (Server and Client)
 License:        BSD-3-Clause
