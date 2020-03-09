@@ -42,4 +42,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746692</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>574b277d8136295935fee9772f0c77b7</srcmd5>
+    <version>1.0.2</version>
+    <time>1583759598</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Remove zh__PINYIN locale in bytecode-only builds
+  code generator fails in bytecode with overflow</comment>
+    <requestid>777966</requestid>
+  </revision>
 </revisionlist>

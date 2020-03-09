@@ -30,7 +30,7 @@ Url:            https://github.com/yoriyuki/Camomile/wiki
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
@@ -63,6 +63,23 @@ applications that use %{name}.
 %autosetup -p1
 
 %build
+if test -z "$(type -P ocaml.opt)"
+then
+  rm -fv Camomile/locales/zh__PINYIN.txt
+  for i in Camomile/locales/*.txt
+  do
+    grep zh__PINYIN $i || continue
+    sed -i~ '
+    /zh__PINYIN/ d
+    ' $i
+    diff -u "$_"~ "$_" && exit 1
+  done
+  if pushd 'Camomile/locales'
+  then
+    ocaml dune_gen.ml > dune.inc
+    popd
+  fi
+fi
 dune_release_pkgs='camomile'
 %ocaml_dune_setup
 %ocaml_dune_build

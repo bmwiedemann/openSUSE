@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
+
+- Require current ocaml-rpm-macros
+- Remove zh__PINYIN locale in bytecode-only builds
+  code generator fails in bytecode with overflow
+
+-------------------------------------------------------------------
 Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
 
 - Require current dune macros
