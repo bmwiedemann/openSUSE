@@ -280,4 +280,12 @@
 - Require lablgtk2 &gt; 2.18.5</comment>
     <requestid>748254</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9349896869e1ecb92de6a89f28ed0810</srcmd5>
+    <version>2.51.2</version>
+    <time>1583775239</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782743</requestid>
+  </revision>
 </revisionlist>
