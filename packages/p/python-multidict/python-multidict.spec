@@ -1,7 +1,7 @@
 #
 # spec file for package python-multidict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-multidict
-Version:        4.5.2
+Version:        4.7.5
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/multidict
 Source:         https://files.pythonhosted.org/packages/source/m/multidict/multidict-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -50,10 +47,13 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand rm -f %{buildroot}%{$python_sitearch}/multidict/*.c
+%python_expand rm %{buildroot}%{$python_sitearch}/multidict/*.c
+%python_expand fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+# remove the extra pytest opts
+rm setup.cfg
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE

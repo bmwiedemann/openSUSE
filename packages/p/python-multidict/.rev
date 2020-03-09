@@ -91,4 +91,12 @@
     <comment></comment>
     <requestid>706296</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa6d3dda3dfd5476e6d592a43840a98d</srcmd5>
+    <version>4.7.5</version>
+    <time>1583775264</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783026</requestid>
+  </revision>
 </revisionlist>
