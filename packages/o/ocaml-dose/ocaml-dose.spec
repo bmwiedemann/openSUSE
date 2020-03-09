@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dose
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:            ocaml-dose
-Version:         5.0.1
-Release:         0
+Name:           ocaml-dose
+Version:        5.0.1
+Release:        0
 %{?ocaml_preserve_bytecode}
-Summary:         An OCaml dependency toolkit
-License:         LGPL-3.0+
-Group:           Development/Languages/OCaml
-Url:             https://github.com/IRILL/dose3
-Source0:         %{name}-%{version}.tar.xz
-Patch0:          %{name}.patch
-BuildRequires:   ocaml
-BuildRequires:   ocaml-cppo
-BuildRequires:   ocaml-findlib
-BuildRequires:   ocaml-ocamlbuild
-BuildRequires:   ocaml-rpm-macros >= 20191009
-BuildRequires:   ocamlfind(ocamlgraph)
-BuildRequires:   ocamlfind(cudf)
-BuildRequires:   ocamlfind(re)
+Summary:        An OCaml dependency toolkit
+License:        LGPL-3.0-or-later
+URL:            https://opam.ocaml.org/packages/dose3
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  ocaml
+BuildRequires:  ocaml-cppo
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocamlfind(bz2)
+BuildRequires:  ocamlfind(cudf)
+BuildRequires:  ocamlfind(extlib)
+BuildRequires:  ocamlfind(minisat)
+BuildRequires:  ocamlfind(ocamlgraph)
+BuildRequires:  ocamlfind(re.pcre)
+BuildRequires:  ocamlfind(zip)
 
 %description
 Dose3 is a framework made of several OCaml libraries for managing distribution
@@ -58,38 +59,18 @@ This package contains development files for package %{name}.
 %autosetup -p1
 
 %build
-# Fix name of these manpages
-mv doc/manpages/{debcoinstall,deb-coinstall}.pod
-mv doc/manpages/{strongdeps,strong-deps}.pod
-
-%configure
-make
+dune_release_pkgs='dose-algo,dose-common'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%make_install
-
-# Edit links that points to buildroot
-ln -sf distcheck %{buildroot}%{_bindir}/debcheck
-ln -sf distcheck %{buildroot}%{_bindir}/eclipsecheck
-ln -sf distcheck %{buildroot}%{_bindir}/rpmcheck
-
-# Install man pages
-install -d %{buildroot}%{_mandir}/man{1,5,8}
-for section in {1,5,8} ; do
-  install -m0644 doc/manpages/*.${section} %{buildroot}%{_mandir}/man${section}
-done
-
+%ocaml_dune_install
 %ocaml_create_file_list
 
 %check
-make testlib
+%ocaml_dune_test
 
 %files -f %{name}.files
-%doc CHANGES CREDITS README.architecture
-%{_bindir}/*
-%{_mandir}/man1/*.1%{ext_man}
-%{_mandir}/man5/*.5%{ext_man}
-%{_mandir}/man8/*.8%{ext_man}
 
 %files devel -f %{name}.files.devel
 
