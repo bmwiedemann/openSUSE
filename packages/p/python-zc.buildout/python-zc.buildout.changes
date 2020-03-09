@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:03:13 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.13.3
+  - Fix DeprecationWarning about MutableMapping.
+  (`#484 <https://github.com/buildout/buildout/issues/484>`_)
+
+-------------------------------------------------------------------
 Sat Jul  6 15:44:32 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Uodate to version 2.13.2:
