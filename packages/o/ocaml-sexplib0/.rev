@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746713</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b58b967eea7671b163277ac7a4d625fc</srcmd5>
+    <version>0.13.0</version>
+    <time>1583759615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0
+- Require current ocaml-rpm-macros</comment>
+    <requestid>777981</requestid>
+  </revision>
 </revisionlist>

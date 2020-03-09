@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-sexplib0
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library containing the definition of S-expressions and some base converters
 License:        MIT
 Group:          Development/Languages/OCaml
-Url:            https://github.com/janestreet/sexplib0
+Url:            https://opam.ocaml.org/packages/sexplib0
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  ocaml
+BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 
 %description
 Library containing the definition of S-expressions and some base converters.
