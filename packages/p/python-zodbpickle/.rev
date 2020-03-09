@@ -36,4 +36,12 @@
   * Fix pickle corruption under certain conditions. See pull request 47.</comment>
     <requestid>710333</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef4426f208e9f313473aced32309816b</srcmd5>
+    <version>2.0.0</version>
+    <time>1583759883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782902</requestid>
+  </revision>
 </revisionlist>
