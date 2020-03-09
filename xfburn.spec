@@ -1,7 +1,7 @@
 #
 # spec file for package xfburn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           xfburn
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Simple CD/DVD Burning Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-URL:            https://goodies.xfce.org/projects/applications/xfburn
+URL:            https://docs.xfce.org/applications/xfburn
 Source:         https://archive.xfce.org/src/apps/xfburn/0.6/%{name}-%{version}.tar.bz2
+BuildRequires:  appstream-glib
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exo-2)
@@ -57,6 +58,8 @@ compositions of data to either CD or DVD.
 
 %find_lang %{name} %{?no_lang_C}
 
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
+
 %files
 %license COPYING
 %doc README AUTHORS NEWS TODO
@@ -68,7 +71,7 @@ compositions of data to either CD or DVD.
 %dir %{_datadir}/Thunar
 %dir %{_datadir}/Thunar/sendto
 %{_datadir}/Thunar/sendto/thunar-sendto-xfburn.desktop
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/*.appdata.xml
 
 %files lang -f %{name}.lang
 
