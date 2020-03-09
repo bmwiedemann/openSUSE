@@ -29,8 +29,7 @@ Url:            https://github.com/ocaml-community/cppo
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
-BuildRequires:  ocamlfind(ocamlbuild)
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
 
@@ -60,7 +59,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-dune_release_pkgs='cppo,cppo_ocamlbuild'
+dune_release_pkgs='cppo'
 %ocaml_dune_setup
 %ocaml_dune_build
 

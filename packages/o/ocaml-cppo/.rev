@@ -64,4 +64,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746694</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f8838865271ef99b8b927a484d1d8d5d</srcmd5>
+    <version>1.6.6</version>
+    <time>1583759630</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Remove cppo_ocamlbuild in preparation of ocamlbuild removal</comment>
+    <requestid>778548</requestid>
+  </revision>
 </revisionlist>
