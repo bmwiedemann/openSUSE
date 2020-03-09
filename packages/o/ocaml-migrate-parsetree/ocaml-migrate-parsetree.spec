@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-migrate-parsetree
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library for conversion between different OCaml parsetrees versions
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-URL:            https://github.com/ocaml-ppx/ocaml-migrate-parsetree
+URL:            https://opam.ocaml.org/packages/ocaml-migrate-parsetree
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(result)

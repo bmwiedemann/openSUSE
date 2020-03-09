@@ -102,4 +102,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750761</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>80ced62da201c05a44e6ef744f408860</srcmd5>
+    <version>1.6.0</version>
+    <time>1583759635</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 1.6.0, for ocaml-4.10
+
+- Require current ocaml-rpm-macros</comment>
+    <requestid>780710</requestid>
+  </revision>
 </revisionlist>
