@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Feb  8 03:06:14 UTC 2020 - psimons@suse.com
+
+- Update persistent-template to version 2.8.2.3.
+  ## 2.8.2.3
+
+  * Require extensions in a more friendly manner. [#1030](https://github.com/yesodweb/persistent/pull/1030)
+  * Specify a strategy for all deriving clauses, which avoids the `-Wmissing-deriving-strategy` warning introduced in GHC 8.8.2. [#1030](https://github.com/yesodweb/persistent/pull/1030)
+
+  ## 2.8.2.2
+
+  * Fix the `mkPersist` function to not require importing the classes explicitly. [#1027](https://github.com/yesodweb/persistent/pull/1027)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:06:51 UTC 2020 - psimons@suse.com
+
+- Update persistent-template to version 2.8.2.1.
+  ## 2.8.2.1
+
+  * Fix the test-suite for persistent-template. [#1023](https://github.com/yesodweb/persistent/pull/1023)
+
+-------------------------------------------------------------------
+Wed Jan 29 03:01:47 UTC 2020 - psimons@suse.com
+
+- Update persistent-template to version 2.8.2.
+  ## 2.8.2
+
+  * Add `fieldError` to the export list of `Database.Persist.TH` [#1008](https://github.com/yesodweb/persistent/pull/1008)
+
+  ## 2.8.1
+
+  * Let the user pass instances that will be derived for record and for key types (https://github.com/yesodweb/persistent/pull/990
+
+-------------------------------------------------------------------
 Tue Jan 14 03:03:07 UTC 2020 - psimons@suse.com
 
 - Update persistent-template to version 2.8.0.1.

@@ -19,7 +19,7 @@
 %global pkg_name persistent-template
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.8.0.1
+Version:        2.8.2.3
 Release:        0
 Summary:        Type-safe, non-relational, multi-backend persistence
 License:        MIT
