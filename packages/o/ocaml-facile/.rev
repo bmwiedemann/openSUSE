@@ -149,4 +149,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>747159</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c4822e55af8d7d3ac52b760d48c3a3aa</srcmd5>
+    <version>1.1.4</version>
+    <time>1583759627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.4
+  build with dune
+- Refresh ocaml-4.patch
+- Require current ocaml-rpm-macros</comment>
+    <requestid>778545</requestid>
+  </revision>
 </revisionlist>
