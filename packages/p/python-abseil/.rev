@@ -34,4 +34,12 @@
   * few bugfixes</comment>
     <requestid>729894</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eb4455a759329c04aaaf3aeafc274c1e</srcmd5>
+    <version>0.9.0</version>
+    <time>1583750519</time>
+    <user>dimstar_suse</user>
+    <comment>py38</comment>
+    <requestid>782812</requestid>
+  </revision>
 </revisionlist>
