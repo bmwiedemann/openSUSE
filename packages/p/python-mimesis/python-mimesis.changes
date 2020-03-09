@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:57:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test test_port as it fails on py3.8+
+
+-------------------------------------------------------------------
 Thu Jan  9 09:04:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test test_cpf_with_666_prefix as it fails with new
