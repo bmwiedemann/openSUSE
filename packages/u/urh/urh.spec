@@ -18,7 +18,7 @@
 
 
 Name:           urh
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Tool for investigating unknown wireless protocols
 License:        GPL-3.0-only

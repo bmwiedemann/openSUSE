@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  7 19:20:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.4
+  * fix message break plugin
+  * Close old project only when new project acknowledged
+  * build sequentially in pyinstaller_helper.py
+  * UI: Updated capitalization of GNU Radio
+  * make include path in rebuild configurable
+  * make combobox for device selection editable
+
+-------------------------------------------------------------------
 Wed Feb 26 11:39:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.3
