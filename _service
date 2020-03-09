@@ -1,13 +1,14 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/bcpierce00/unison.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">2.48.15</param>
-    <!-- v2.48.15v4 -->
-    <param name="revision">add890624885445558d9bf079f36dffaaa36c7b4</param>
     <param name="filename">unison</param>
-    <param name="submodules">disable</param>
+    <param name="revision">0176188107aa9fb82657ed9fcd92081f5a61c76a</param>
+    <param name="scm">git</param>
     <param name="subdir">src</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/bcpierce00/unison.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

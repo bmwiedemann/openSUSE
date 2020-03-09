@@ -17,7 +17,7 @@
 
 
 Name:           unison
-Version:        2.48.15
+Version:        2.51.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
@@ -31,10 +31,13 @@ Source2:        %{name}.desktop
 Source3:        %{name}.png
 Patch0:         Compatibility-with-OCaml-4.08.patch
 Patch1:         Fix-for-lablgtk-2.18.6.patch
+Patch2:         Fix-warnings-raised-by-OCaml-4.08.1.patch
+Patch3:         Compile-without-unsafe-string.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocaml-lablgtk2-devel > 2.18.5
-BuildRequires:  ocaml-rpm-macros >= 4.03.0
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  update-desktop-files
 
 %description
