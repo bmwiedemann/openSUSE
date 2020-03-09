@@ -1,7 +1,7 @@
 #
 # spec file for package i3-gaps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           i3-gaps
-Version:        4.17.1
+Version:        4.18
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ export YAJL_LIBS="-lyajl" YAJL_CFLAGS="-I/usr/include/yajl"
 %endif
 %configure
 sed -i 's/(TEST_LOGS:/(TEST_LOGS):/' Makefile
-make %{?_smp_mflags} V=1 -C *-suse-linux-gnu*
+%make_build -C *-suse-linux-gnu*
 
 %install
 %make_install
