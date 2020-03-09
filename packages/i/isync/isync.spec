@@ -1,7 +1,7 @@
 #
 # spec file for package isync
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           isync
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Utilities
-Url:            http://isync.sf.net/
+URL:            http://isync.sf.net/
 Source:         http://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz
-Source2:        http://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz.asc
-Source3:        isync.keyring
 BuildRequires:  db-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsasl2)
@@ -56,7 +54,8 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} docdir=%{_docdir}/%{name} install
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING README AUTHORS ChangeLog
+%license COPYING
+%doc README AUTHORS ChangeLog
 %{_bindir}/mbsync-get-cert
 %{_bindir}/isync
 %{_bindir}/mbsync

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 26 07:21:40 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- drop sources signature as there is no published key to verify them
+
+-------------------------------------------------------------------
+Thu Jan 16 10:57:17 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Update to version 1.3.1
+  - SSL now uses SNI, which for example GMail requires
+  - fixed fallbacks for missing UIDPLUS extension (with e.g. DavMail)
+  - fixed UIDVALIDITY recovery with really long Message-id headers
+  - fixed GSSAPI authentication with Kerberos
+  - fixed support for IMAP servers which do not sort search results (e.g.,
+    poczta.o2.pl)
+  - fixed CopyArrivalDate on platforms without glibc
+  - fixed useless SASL warnings with certain plugins
+  - the perl 5.14 requirement is now made explicit
+  - improved OpenBSD support
+  - fixed a bunch of compiler warnings
+
+-------------------------------------------------------------------
 Fri Dec 29 15:39:41 UTC 2017 - crrodriguez@opensuse.org
 
 - Update to version 1.3.0, fixes build against openSSL 
