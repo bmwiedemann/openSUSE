@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:16:53 UTC 2020 - psimons@suse.com
+
+- Update rio to version 0.1.14.0.
+  ## 0.1.14.0
+
+  * Addition of `mkSimpleApp`
+  * Addition of `lookupEnvFromContext`
+
+-------------------------------------------------------------------
 Sat Jan 18 10:34:21 UTC 2020 - psimons@suse.com
 
 - Update rio to version 0.1.13.0.
