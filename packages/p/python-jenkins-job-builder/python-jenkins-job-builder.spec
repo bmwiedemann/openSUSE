@@ -1,7 +1,7 @@
 #
 # spec file for package python-jenkins-job-builder
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jenkins-job-builder
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Program for configuring Jenkins jobs with YAML
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://opendev.org/jjb/jenkins-job-builder
 Source:         https://files.pythonhosted.org/packages/source/j/jenkins-job-builder/jenkins-job-builder-%{version}.tar.gz
-Source1:        https://tarballs.openstack.org/jenkins-job-builder/jenkins-job-builder-%{version}.tar.gz.asc
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML >= 3.10.0}
 BuildRequires:  %{python_module configparser}

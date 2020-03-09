@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  9 16:44:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.3.0
+  * Add support for become in ansible playbook
+  * Adding view for the Delivery Pipeline Plugin
+  * Fix authorization property issue
+  * Experimental support for filterChecks trait
+  * Add support for opsgenie notification plugin
+
+-------------------------------------------------------------------
 Wed Jan  8 16:02:23 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
 
 - BuildRequire python configparser to make tests work on Python 2
