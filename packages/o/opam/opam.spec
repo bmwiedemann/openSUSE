@@ -1,7 +1,7 @@
 #
 # spec file for package opam
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,17 +24,19 @@ License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          System/Packages
 URL:            https://opam.ocaml.org/
 Source:         %{name}-%{version}.tar.xz
+Patch0:         opam.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
-BuildRequires:  ocamlfind(dose3.algo)
+BuildRequires:  ocamlfind(dose-algo)
+BuildRequires:  ocamlfind(dose-common)
 BuildRequires:  ocamlfind(mccs)
 BuildRequires:  ocamlfind(ocamlgraph)
 BuildRequires:  ocamlfind(opam-file-format)

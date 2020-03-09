@@ -48,4 +48,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>766645</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>169b40933c1eb4ac6e4f9e763576c94a</srcmd5>
+    <version>2.0.6</version>
+    <time>1583763777</time>
+    <user>dimstar_suse</user>
+    <comment>- use opam.patch to make opam compatible with the dose3 dune branch</comment>
+    <requestid>780714</requestid>
+  </revision>
 </revisionlist>
