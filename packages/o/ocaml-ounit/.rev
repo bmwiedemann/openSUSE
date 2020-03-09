@@ -19,4 +19,22 @@
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>512537</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a47192a09830b945acc1a3484371f5a</srcmd5>
+    <version>2.2.2</version>
+    <time>1583759898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2
+  Don't follow symlink in bracket_tmpdir removal code
+- Remove ounit-strict-formats.diff
+- Require current ocaml-rpm-macros
+- Build conditionally with ocaml-lwt
+
+- Require current dune macros
+
+- use dune macros from ocaml-rpm-macros
+
+- Update to version 2.2.1</comment>
+    <requestid>777975</requestid>
+  </revision>
 </revisionlist>

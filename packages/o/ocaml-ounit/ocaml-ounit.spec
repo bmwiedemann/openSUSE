@@ -12,25 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%bcond_with     ocaml_lwt
+
 Name:           ocaml-ounit
-Version:        2.0.0
+Version:        2.2.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml OUnit test framework
 License:        MIT
 Group:          Development/Languages/OCaml
-Url:            http://ounit.forge.ocamlcore.org/
-Source0:        ounit-%{version}.tar.gz
-Patch0:         ounit-strict-formats.diff
+Url:            https://github.com/gildor478/ounit
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocamlfind(stdlib-shims)
+BuildRequires:  ocamlfind(str)
+BuildRequires:  ocamlfind(threads)
+BuildRequires:  ocamlfind(unix)
+%if %{with ocaml_lwt}
+BuildRequires:  ocamlfind(lwt)
+BuildRequires:  ocamlfind(lwt.unix)
+%endif
 
 %description
 OUnit is a unit test framework for OCaml. It allows one to easily
@@ -47,44 +55,28 @@ Requires:       %{name} = %{version}
 Development files needed for application based on %{name}.
 
 %prep
-%setup -q -n ounit-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
-%oasis_setup
-%ocaml_oasis_configure --enable-docs
-%ocaml_oasis_build
-%ocaml_oasis_doc
+dune_release_pkgs='ounit,ounit2'
+%if %{with ocaml_lwt}
+dune_release_pkgs="${dune_release_pkgs},ounit-lwt,ounit2-lwt"
+%endif
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
+mkdir %{buildroot}$(ocamlc -where)/oUnit
+cp -avt "$_" src/lib/oUnit/META
+%ocaml_create_file_list
 
-%files
-%defattr(-,root,root,-)
-%doc LICENSE.txt
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%check
+%ocaml_dune_test
 
-%files devel
-%defattr(-,root,root,-)
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files -f %{name}.files
+%doc README.md
+
+%files devel -f %{name}.files.devel
 
 %changelog
