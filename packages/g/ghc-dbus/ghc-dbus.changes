@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 28 08:35:46 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Update Cabal build information for more accurate dependencies.
+
+-------------------------------------------------------------------
 Sun Dec 29 10:27:38 UTC 2019 - psimons@suse.com
 
 - Update dbus to version 1.2.11.

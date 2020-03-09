@@ -95,4 +95,12 @@
     <comment>version update</comment>
     <requestid>760281</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>35cb9e6f9b2ec718e8d48afff75bd5fc</srcmd5>
+    <version>1.2.11</version>
+    <time>1583759841</time>
+    <user>dimstar_suse</user>
+    <comment>missing version updates for openSUSE:Factory:Staging:adi:22</comment>
+    <requestid>780173</requestid>
+  </revision>
 </revisionlist>
