@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Fri Mar  6 12:35:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable weave-net support in kubic.jsonnet
+
+-------------------------------------------------------------------
+Thu Mar 05 12:39:06 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.3.0+git20200305.66c625d:
+  * doc: add note related to example.jsonnet
+  * Fix the grafana dashboard link
+  * Weave Net name consistencies resolved
+  * doc: update release version in customizing section
+  * Example with option to modify alert thresholds
+  * manifests: Regenerate kube-state-metrics deployment
+  * jsonnet/kube-prometheus/kube-state-metrics: Remove probes
+  * Added weavenet monitoring setup using kube-prometheus
+  * update prometheus-operator to v0.37.0
+  * manifests: Generate files
+  * jsonnet/kube-prometheus/../kube-state-metrics.libsonnet: Bump to 1.9.5
+  * jsonnetfile.lock.json: Bump kube-state-metrics to 1.9.5
+  * Makefile: Force jsonnet-bundler to be at v0.2.0
+  * manifests: Regenerate kube-state-metrics files
+  * jsonnet/kube-prometheus: Add back kube-rbac-proxy containers to
+  * Regenerate
+  * Adjust threshold for the SpaceFillingUp alert
+  * Makefile: lock jsonnet-bundler version
+  * chore(README): updating to latest k8s version in minikube start
+
+-------------------------------------------------------------------
+Fri Feb 28 20:47:33 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use persistent storage for grafana config
+
+-------------------------------------------------------------------
+Wed Feb 26 11:35:23 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add "source" package to build own manifests
+
+-------------------------------------------------------------------
+Wed Feb 19 21:20:54 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.3.0+git20200219.953c546:
+  * regenerate
+  * Adjust Alertmanager inhibit conditions
+
+-------------------------------------------------------------------
+Tue Feb 18 08:53:55 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.3.0+git20200218.3f3d4e2:
+  * regenerate
+  * Change deprecated BaseImage to Image
+
+-------------------------------------------------------------------
+Mon Feb 17 09:32:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
