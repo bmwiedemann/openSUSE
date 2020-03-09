@@ -22,6 +22,7 @@ Version:        4.2.2
 Release:        0
 Summary:        Python cross-version byte-code disassembler and marshal routines
 License:        GPL-2.0-only
+Patch0:         py382.patch
 URL:            https://github.com/rocky/python-xdis/
 Source:         https://github.com/rocky/python-xdis/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -39,6 +40,7 @@ Python cross-version byte-code disassembler and marshal routines.
 
 %prep
 %setup -q
+%patch0 -p1
 # test fails for weird order reasons
 rm pytest/test_disasm.py
 

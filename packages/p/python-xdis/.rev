@@ -70,4 +70,12 @@
     <comment></comment>
     <requestid>770565</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b73031a2a6f925bc827593a0ddadca85</srcmd5>
+    <version>4.2.2</version>
+    <time>1583775270</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783027</requestid>
+  </revision>
 </revisionlist>

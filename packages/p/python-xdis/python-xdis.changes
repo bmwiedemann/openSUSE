@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 16:45:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with 3.8.2:
+  * py382.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 12:27:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.2.2
