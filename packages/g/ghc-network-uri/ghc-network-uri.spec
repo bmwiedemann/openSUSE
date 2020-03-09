@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network-uri
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name network-uri
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.6.1.0
+Version:        2.7.0.0
 Release:        0
 Summary:        URI manipulation
 License:        BSD-3-Clause
@@ -30,8 +30,10 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
+BuildRequires:  ghc-criterion-devel
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-test-framework-quickcheck2-devel
@@ -97,5 +99,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md README.md
 
 %changelog
