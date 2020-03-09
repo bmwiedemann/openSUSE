@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  9 07:09:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- Update to 4.15.0
+ * Added support for shadow accounts (i.e. accounts without database).
+ * Shadow accounts which don't cause message acceptance can be used to
+   automatically download message lists.
+ * Data-box contact lists can be sorted.
+ * Fixed failing tests when no ISDS login credentials are supplied.
+ * Using 'identification number' (IČO) instead of 'subject ID' (IČ).
+ * Displaying leading zeros in identification numbers in account info page.
+ * Windows application can be compiled and bundled with OpenSSL-1.1.1. Actual
+   version of OpenSSL is determined by the version of the used Qt libraries.
+ * Modified code about which the compiler has been giving deprecation warnings
+   when compiling with Qt-5.14.
+ * Implemented the upload_account_status records management service. The
+   service sends brief reports about the account status containing summaries
+   about the number of messages in different states in the data box. The
+   summaries are generated when a records management service is used.
+
+-------------------------------------------------------------------
 Thu Nov 28 12:34:08 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - Update to 4.14.1
