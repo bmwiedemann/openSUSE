@@ -12,37 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 Name:           ocaml-ptmap
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Maps over integers implemented as Patricia trees
 License:        LGPL-2.1-or-later WITH OCaml-linking-exception
 Group:          Development/Languages/OCaml
-
 URL:            https://github.com/backtracking/ptmap
-Source0:        https://github.com/backtracking/ptmap/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-# https://github.com/backtracking/ptmap/pull/9
-Patch0:         https://github.com/backtracking/ptmap/commit/97849cd31363ac80306d714915d76dc5a06672cb.patch
-
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-obuild
-BuildRequires:  ocaml-ounit-devel
-BuildRequires:  ocaml-qcheck-devel
-BuildRequires:  ocaml-qtest
-BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(oUnit)
+BuildRequires:  ocamlfind(qcheck)
+BuildRequires:  ocamlfind(qtest)
+BuildRequires:  ocamlfind(seq)
+BuildRequires:  ocamlfind(stdlib-shims)
 
 %description
 OCaml implementation of an efficient maps over integers,
 from a paper by Chris Okasaki.
-
 
 %package        devel
 Summary:        Development files for %{name}
@@ -54,51 +47,23 @@ Requires:       %{name} = %{version}
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
-%setup -q -n ptmap-%{version}
-%patch0 -p1
-
+%autosetup -p1
 
 %build
-obuild configure
-obuild build
-obuild build lib-ptmap
-make doc
-
+dune_release_pkgs='ptmap'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-export DESTDIR=$RPM_BUILD_ROOT
-export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
-mkdir -p $OCAMLFIND_DESTDIR
-obuild install --destdir $OCAMLFIND_DESTDIR
+%ocaml_dune_install
+%ocaml_create_file_list
 
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root,-)
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
+%files -f %{name}.files
 
-%files devel
-%defattr(-,root,root,-)
-%doc doc/*
-%license LICENSE
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog
-
