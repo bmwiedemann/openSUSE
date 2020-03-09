@@ -1,0 +1,17 @@
+-- Checkstyle DTD catalog --
+-- JPackage Project <http://www.jpackage.org/> --
+
+PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+       configuration_1_2.dtd
+
+PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
+       configuration_1_1.dtd
+
+PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.0//EN
+       configuration_1_0.dtd
+
+PUBLIC "-//Puppy Crawl//DTD Package Names 1.0//EN"
+       packages_1_0.dtd
+
+PUBLIC "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+       suppressions_1_0.dtd
