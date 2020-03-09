@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 27 14:17:45 UTC 2020 - psimons@suse.com
+
+- Update profunctors to version 5.5.2.
+  5.5.2 [2020.02.13]
+  ------------------
+  * Add `Cochoice`, `Costrong`, `Closed`, `Traversing`, and `Mapping` instances
+    for `Cayley`.
+  * Add `Mapping` and `Traversing` instances for `Tannen`.
+
+-------------------------------------------------------------------
 Wed Nov 27 03:00:49 UTC 2019 - psimons@suse.com
 
 - Update profunctors to version 5.5.1.
