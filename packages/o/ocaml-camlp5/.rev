@@ -39,4 +39,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773385</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6481d85872b53072a72fe09736378f71</srcmd5>
+    <version>7.11</version>
+    <time>1583759632</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Remove bogus Requires/Provides override</comment>
+    <requestid>778947</requestid>
+  </revision>
 </revisionlist>
