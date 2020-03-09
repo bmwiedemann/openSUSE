@@ -16,8 +16,6 @@
 #
 
 
-%global __ocaml_requires_opts -i Asttypes -i Parsetree -i Pa_extend
-%global __ocaml_provides_opts -i Dynlink -i Dynlinkaux -i Pa_extend
 Name:           ocaml-camlp5
 Version:        7.11
 Release:        0
@@ -28,7 +26,7 @@ Group:          Development/Languages/OCaml
 URL:            https://camlp5.github.io/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(compiler-libs)
 
 %description
@@ -58,7 +56,7 @@ make %{?_smp_mflags} world.opt
 
 %install
 %make_install
-cp -Lavit %{buildroot}%{_libdir}/ocaml/camlp5 etc/META
+cp -Lavit %{buildroot}%{ocaml_standard_library}/camlp5 etc/META
 %ocaml_create_file_list
 
 %files -f %{name}.files
