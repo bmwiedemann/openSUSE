@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:14:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Spec: temporary disable tests as they explode under python 3.8
+  * Needs to compare xml using testtools.matchers.MatchesStructure
+
+-------------------------------------------------------------------
 Thu Mar  5 08:30:46 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - Spec:

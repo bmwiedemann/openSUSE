@@ -1330,4 +1330,12 @@ sr#761596 needed for this.</comment>
     * Recommend python3-keyring when using python3</comment>
     <requestid>781771</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>f83e9e803171e7871926749d4c852cb2</srcmd5>
+    <version>0.168.0</version>
+    <time>1583750586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782863</requestid>
+  </revision>
 </revisionlist>
