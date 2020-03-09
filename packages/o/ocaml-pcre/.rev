@@ -19,4 +19,17 @@
 - Remove autodeps for pre openSUSE 12.1 releases</comment>
     <requestid>512539</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96d0e6e97fe219b5dc2d07bbccbfdeef</srcmd5>
+    <version>7.4.3</version>
+    <time>1583759643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.4.3
+  See included CHANGES.md
+
+- Update to version 7.4.1
+- Require current ocaml-rpm-macros
+- Remove ocaml-pcre-warnings.patch</comment>
+    <requestid>780712</requestid>
+  </revision>
 </revisionlist>

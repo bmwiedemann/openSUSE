@@ -13,36 +13,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocaml-pcre
-Version:        7.2.3
+Version:        7.4.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Perl compatibility regular expressions (PCRE) for OCaml
 License:        LGPL-2.0
 Group:          Development/Languages/OCaml
-
-Url:            http://mmottl.github.io/pcre-ocaml/
-# https://github.com/mmottl/pcre-ocaml/releases/download/v%{version}/pcre-ocaml-%{version}.tar.gz
-Source0:        pcre-ocaml-%{version}.tar.xz
-Patch0:         ocaml-pcre-warnings.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-BuildRequires:  gawk
-BuildRequires:  ocaml >= 3.10.2
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+Url:            https://opam.ocaml.org/packages/pcre
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocamlfind(base)
+BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  pkg-config
-BuildRequires:  ocamlfind(bytes)
 BuildRequires:  pkgconfig(libpcre)
 
 %description
 Perl compatibile regular expressions (PCRE) for OCaml.
-
 
 %package        devel
 Summary:        Development files for %{name}
@@ -54,65 +47,24 @@ Requires:       pcre-devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
-%setup -q -n pcre-ocaml-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
-sed -i~ "
-s@\(.*\)\(CCOpt:\)\(.*\)\$@\1\2 %{optflags} -fPIC `pkg-config --cflags libpcre`@
-s@\(.*\)\(CCLib:\)\(.*\)\$@\1\2 `pkg-config --libs libpcre`@
-" _oasis
-if diff -u _oasis~ _oasis
-then
-  exit 1
-fi
-%oasis_setup
-%ocaml_oasis_configure --enable-docs
-%ocaml_oasis_build
-%ocaml_oasis_doc
+dune_release_pkgs='pcre'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
-#
-mkdir -vp %{buildroot}/etc/ld.so.conf.d/
-tee %{buildroot}/etc/ld.so.conf.d/%{name}.conf <<_EOF_
-%{_libdir}/ocaml/pcre
-_EOF_
-#
+%ocaml_dune_install
+%ocaml_create_file_list
 
-%post   -p /sbin/ldconfig
+%check
+%ocaml_dune_test
 
-%postun -p /sbin/ldconfig
+%files -f %{name}.files
 
-%files
-%defattr(-,root,root,-)
-%doc COPYING.txt README.md
-/etc/ld.so.conf.d/*.conf
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%endif
-%{_libdir}/ocaml/*/*.so
-
-%files devel
-%defattr(-,root,root,-)
-%{oasis_docdir_html}
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*
-%{_libdir}/ocaml/*/*.a
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/*.annot
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
+%doc README.md
 
 %changelog
