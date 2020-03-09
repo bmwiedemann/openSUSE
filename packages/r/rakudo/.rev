@@ -493,4 +493,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment></comment>
     <requestid>781563</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>3de21674b68222c1c5fda3629d4f0d0c</srcmd5>
+    <version>2020.02</version>
+    <time>1583750547</time>
+    <user>dimstar_suse</user>
+    <comment>Added missing .changes entry for latest fix</comment>
+    <requestid>782827</requestid>
+  </revision>
 </revisionlist>

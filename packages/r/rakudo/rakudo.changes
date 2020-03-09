@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:34:11 UTC 2020 - Stefan Seifert <nine@detonation.org>
+
+- Fix /usr/bin/raku missing due to quoting error in call to ln
+
+-------------------------------------------------------------------
 Wed Mar  4 09:56:19 UTC 2020 - Stefan Seifert <nine@detonation.org>
 
 - Update description and summary to follow the rename of Perl 6 to Raku

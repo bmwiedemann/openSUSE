@@ -58,8 +58,8 @@ chmod +x "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
 sed -i -e '1s:!/usr/bin/env :!/usr/bin/:' "%{buildroot}/%{_datadir}/perl6/bin"/*
 rm "%{buildroot}/%{_bindir}/raku"
 rm "%{buildroot}/%{_bindir}/raku-debug"
-ln -s "rakudo %{buildroot}/%{_bindir}/raku"
-ln -s "rakudo-debug %{buildroot}/%{_bindir}/raku-debug"
+ln -s rakudo "%{buildroot}/%{_bindir}/raku"
+ln -s rakudo-debug "%{buildroot}/%{_bindir}/raku-debug"
 %fdupes %{buildroot}/%{_bindir}
 %fdupes %{buildroot}/%{_datadir}/perl6/runtime
 
