@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pony
-Version:        0.7.10
+Version:        0.7.13
 Release:        0
 Summary:        Pony Object-Relational Mapper
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://ponyorm.com
 Source:         https://files.pythonhosted.org/packages/source/p/pony/pony-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -50,6 +49,7 @@ dos2unix README.md
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/pony/*/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
