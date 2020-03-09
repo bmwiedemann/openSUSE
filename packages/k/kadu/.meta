@@ -1,9 +1,0 @@
-<package name="kadu" project="openSUSE:Factory">
-  <title>Gadu-Gadu protocol client for online messaging</title>
-  <description>Kadu is a dynamically evolving instant messenger compatible with the
-Gadu-Gadu and XMPP protocol. It can be run on all platforms supported
-by the Qt toolkit.
-
-### External Modules ###</description>
-  <devel project="network" package="kadu"/>
-</package>
