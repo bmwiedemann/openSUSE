@@ -16,7 +16,6 @@
 #
 
 
-%global __ocaml_requires_opts -i OASISAstTypes -i MainGettext
 Name:           ocaml-oasis
 Version:        0.4.10
 Release:        0
@@ -28,13 +27,12 @@ Group:          Development/Languages/OCaml
 Url:            http://oasis.forge.ocamlcore.org/
 Source0:        oasis-%{version}.tar.xz
 Patch0:         ocaml-oasis.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       ocamlfind(findlib)
 Requires:       ocamlfind(ocamlbuild)
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlify
 BuildRequires:  ocamlmod
 BuildRequires:  ocamlfind(dynlink)
@@ -69,7 +67,6 @@ developing applications that use %{name}.
 %ocaml_oasis_findlib_install
 
 %files
-%defattr(-,root,root,-)
 %doc COPYING.txt CHANGES.txt
 %{_bindir}/*
 %dir %{_libdir}/ocaml
@@ -79,7 +76,6 @@ developing applications that use %{name}.
 %endif
 
 %files devel
-%defattr(-,root,root,-)
 %{oasis_docdir_html}
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/*

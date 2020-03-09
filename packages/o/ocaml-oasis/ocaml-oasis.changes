@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
+
+- Require current ocaml-rpm-macros
+- Remove bogus Requires/Provides override
+
+-------------------------------------------------------------------
 Tue Dec 19 12:34:37 UTC 2017 - ohering@suse.de
 
 - Update to version 0.4.10
