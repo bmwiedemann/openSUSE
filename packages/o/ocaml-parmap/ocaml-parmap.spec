@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-parmap
-Version:        20191021.1b17a5d
+Version:        20200124.526acc4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
@@ -27,7 +27,7 @@ URL:            http://rdicosmo.github.io/parmap/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(graphics)
@@ -76,7 +76,6 @@ export nProcs=2
 %ocaml_dune_test
 
 %files -f %{name}.files
-%{_bindir}/*
 
 %files devel -f %{name}.files.devel
 

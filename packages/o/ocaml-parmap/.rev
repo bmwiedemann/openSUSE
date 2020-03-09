@@ -68,4 +68,14 @@ ocaml 4.03 (fate#320836)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>749848</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b7fc9da3cc8347813a994d2fab46d24</srcmd5>
+    <version>20200124.526acc4</version>
+    <time>1583759611</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Update to version 20200124.526acc4 (1.1.1)
+  merged our changes for dune and recent ocaml versions</comment>
+    <requestid>777976</requestid>
+  </revision>
 </revisionlist>
