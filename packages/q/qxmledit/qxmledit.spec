@@ -1,7 +1,7 @@
 #
 # spec file for package qxmledit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define major   0
 Name:           qxmledit
-Version:        0.9.14
+Version:        0.9.15
 Release:        0
 Summary:        XML Editor and XSD Viewer
 License:        LGPL-2.0-or-later AND LGPL-3.0-or-later

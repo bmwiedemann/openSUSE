@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:28:21 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.9.15
+  * Fixed an issue in fragment extraction with scripts enabled.
+  * Optionally use the text edit panel for attribute values.
+  * Issue #69, compilation error.
+  * Configuration option to disable TODO functions.
+  * Text panel full screen if text length greater than a
+    threshold.
+  * Find in edit text panel.
+  * Issue #66, removed references to QtScript.
+
+-------------------------------------------------------------------
 Wed Dec 25 09:11:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.14
