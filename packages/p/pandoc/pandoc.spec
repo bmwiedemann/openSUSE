@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.9.1.1
+Version:        2.9.2
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -105,13 +105,13 @@ and a command-line tool that uses this library. It can read several dialects of
 Markdown and (subsets of) HTML, reStructuredText, LaTeX, DocBook, JATS,
 MediaWiki markup, DokuWiki markup, TWiki markup, TikiWiki markup, Jira markup,
 Creole 1.0, Haddock markup, OPML, Emacs Org-Mode, Emacs Muse, txt2tags, ipynb
-(Jupyter notebooks), Vimwiki, Word Docx, ODT, EPUB, FictionBook2, roff man, and
-Textile, and it can write Markdown, reStructuredText, XHTML, HTML 5, LaTeX,
-ConTeXt, DocBook, JATS, OPML, TEI, OpenDocument, ODT, Word docx, PowerPoint
-pptx, RTF, MediaWiki, DokuWiki, XWiki, ZimWiki, Textile, Jira, roff man, roff
-ms, plain text, Emacs Org-Mode, AsciiDoc, Haddock markup, EPUB (v2 and v3),
-ipynb, FictionBook2, InDesign ICML, Muse, LaTeX beamer slides, and several
-kinds of HTML/JavaScript slide shows (S5, Slidy, Slideous, DZSlides,
+(Jupyter notebooks), Vimwiki, Word Docx, ODT, EPUB, FictionBook2, roff man,
+Textile, and CSV, and it can write Markdown, reStructuredText, XHTML, HTML 5,
+LaTeX, ConTeXt, DocBook, JATS, OPML, TEI, OpenDocument, ODT, Word docx,
+PowerPoint pptx, RTF, MediaWiki, DokuWiki, XWiki, ZimWiki, Textile, Jira, roff
+man, roff ms, plain text, Emacs Org-Mode, AsciiDoc, Haddock markup, EPUB (v2
+and v3), ipynb, FictionBook2, InDesign ICML, Muse, LaTeX beamer slides, and
+several kinds of HTML/JavaScript slide shows (S5, Slidy, Slideous, DZSlides,
 reveal.js).
 
 In contrast to most existing tools for converting Markdown to HTML, pandoc has
@@ -138,6 +138,7 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
+cabal-tweak-dep-ver network-uri '< 2.7' '< 3'
 
 %build
 %ghc_lib_build
@@ -278,6 +279,7 @@ This package provides the Haskell %{name} library development files.
 %{_datadir}/%{name}-%{version}/data/pptx/ppt/theme/theme2.xml
 %{_datadir}/%{name}-%{version}/data/pptx/ppt/viewProps.xml
 %{_datadir}/%{name}-%{version}/data/sample.lua
+%{_datadir}/%{name}-%{version}/data/templates/article.jats_publishing
 %{_datadir}/%{name}-%{version}/data/templates/default.asciidoc
 %{_datadir}/%{name}-%{version}/data/templates/default.asciidoctor
 %{_datadir}/%{name}-%{version}/data/templates/default.commonmark
@@ -292,7 +294,9 @@ This package provides the Haskell %{name} library development files.
 %{_datadir}/%{name}-%{version}/data/templates/default.html4
 %{_datadir}/%{name}-%{version}/data/templates/default.html5
 %{_datadir}/%{name}-%{version}/data/templates/default.icml
-%{_datadir}/%{name}-%{version}/data/templates/default.jats
+%{_datadir}/%{name}-%{version}/data/templates/default.jats_archiving
+%{_datadir}/%{name}-%{version}/data/templates/default.jats_articleauthoring
+%{_datadir}/%{name}-%{version}/data/templates/default.jats_publishing
 %{_datadir}/%{name}-%{version}/data/templates/default.jira
 %{_datadir}/%{name}-%{version}/data/templates/default.latex
 %{_datadir}/%{name}-%{version}/data/templates/default.man
