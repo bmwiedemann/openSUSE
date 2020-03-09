@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/ocaml-community/sedlex.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">2.1</param>
+    <!-- v2.1 -->
+    <param name="revision">82175adf61d604b1ebbf5ce4136cb6bba6ecf6cb</param>
+    <param name="filename">ocaml-sedlex</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

@@ -23,23 +23,15 @@ Release:        0
 Summary:        Unicode-friendly lexer generator
 License:        MIT
 Group:          Development/Languages/OCaml
-
-URL:            https://github.com/alainfrisch/sedlex
-Source0:        https://github.com/alainfrisch/sedlex/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-# Use unicode data files from unicode-ucd
-Patch0:         unicode-data.diff
-
+URL:            https://github.com/ocaml-community/sedlex
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-gen-devel
-BuildRequires:  ocaml-migrate-parsetree-devel
-BuildRequires:  ocaml-ppx_tools_versioned-devel
-BuildRequires:  ocaml-result-devel
-BuildRequires:  ocaml-rpm-macros >= 20190930
-BuildRequires:  unicode-ucd
+BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocamlfind(gen)
+BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
+BuildRequires:  ocamlfind(ppx_tools_versioned.metaquot_405)
+BuildRequires:  ocamlfind(uchar)
 
 %description
 A lexer generator for OCaml, similar to ocamllex, but supporting Unicode.
@@ -56,12 +48,11 @@ Requires:       %{name} = %{version}
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
-%setup -q -n sedlex-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
+dune_release_pkgs='sedlex'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -73,8 +64,7 @@ developing applications that use %{name}.
 %ocaml_dune_test
 
 %files -f %{name}.files
-%doc README.md CHANGES
-%license LICENSE
+%doc README.md
 
 %files devel -f %{name}.files.devel
 
