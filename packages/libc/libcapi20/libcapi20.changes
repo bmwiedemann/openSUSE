@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sun Mar  8 18:32:26 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- provide/obsolete capi4linux in the correct version
+
+-------------------------------------------------------------------
+Sat Mar  7 17:54:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions
+- Modernize build procedure
+
+-------------------------------------------------------------------
+Sat Mar  7 17:01:05 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- move *.so files to -devel package
+- drop static libs
+
+-------------------------------------------------------------------
+Sat Mar  7 15:14:00 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- standalone build to satisfy dependencies of capi4hylafax
+  sources used are the same as debian uses
