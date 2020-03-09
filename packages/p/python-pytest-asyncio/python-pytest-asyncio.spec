@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-asyncio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.10.0
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#./pytest-asyncio-%{version}.tar.gz
 BuildRequires:  %{python_module async_generator >= 1.3}
@@ -55,7 +54,9 @@ sed -ie '1i# -*- coding: utf-8 -*-' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+# remove pytest config to not error out on deprecations
+rm setup.cfg
+%pytest
 
 %files %{python_files}
 %doc README.rst

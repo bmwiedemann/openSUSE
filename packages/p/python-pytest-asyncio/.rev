@@ -29,4 +29,12 @@ required by mycroft-core</comment>
   * support for pytest 4+</comment>
     <requestid>674560</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f09e7670951d453ba413bd212b6893a1</srcmd5>
+    <version>0.10.0</version>
+    <time>1583750557</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782858</requestid>
+  </revision>
 </revisionlist>
