@@ -1,7 +1,7 @@
 #
 # spec file for package texmath
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name texmath
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12
+Version:        0.12.0.1
 Release:        0
 Summary:        Conversion between formats used to represent mathematics
 License:        GPL-2.0-or-later
