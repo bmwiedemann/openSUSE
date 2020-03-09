@@ -688,6 +688,8 @@ Ignore: rpm:suse-build-key,build-key
 Ignore: cloud-init:cloud-init-config
 # python-pyudev requires libudev1 in normal situations
 Ignore: python-pyudev:libudev1
+Ignore: python2-pyudev:libudev1
+Ignore: python3-pyudev:libudev1
 Ignore: python-SPARQLWrapper:python-rdflib
 Ignore: python3-SPARQLWrapper:python3-rdflib
 Ignore: bind-utils:bind-libs
