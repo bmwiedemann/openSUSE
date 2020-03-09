@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-constraints
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name constraints
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.2
+Version:        0.12
 Release:        0
 Summary:        Constraint manipulation
 License:        BSD-2-Clause
