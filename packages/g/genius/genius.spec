@@ -1,7 +1,7 @@
 #
 # spec file for package genius
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,30 @@
 
 
 Name:           genius
-Version:        1.0.24
+Version:        1.0.25
 Release:        0
 Summary:        General purpose calculator and mathematics tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://www.jirka.org/genius.html
-Source:         http://download.gnome.org/sources/genius/1.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/genius/1.0/%{name}-%{version}.tar.xz
+
 BuildRequires:  fdupes
 BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  intltool
 BuildRequires:  mpfr-devel >= 2.3.0
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(amtk-5)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.41.1
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.20.0
-BuildRequires:  pkgconfig(gtksourceview-2.0) >= 0.3.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.21.4
+BuildRequires:  pkgconfig(gtksourceview-4) >= 3.99.7
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(pango) >= 1.22.0
+BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -79,8 +82,8 @@ mimics how mathematics is usually written.
 %build
 export CFLAGS="%{optflags} -fstack-protector"
 %configure \
-        --libexec=%{_libexecdir}/genius \
-        --disable-update-mimedb
+	--libexec=%{_libexecdir}/genius \
+	--disable-update-mimedb
 %make_build
 
 %install

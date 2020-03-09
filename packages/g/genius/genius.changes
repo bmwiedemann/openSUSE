@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  6 18:51:12 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.0.25:
+  + Port to gtk-3.0.
+  + Various bugfixes across the board.
+- Replace ncurses-devel, pkgconfig(gtk+-2.0) and
+  pkgconfig(gtksourceview-2.0) with pkgconfig(ncurses),
+  pkgconfig(gtk+-3.0) and pkgconfig(gtksourceview-4) BuildRequires.
+  Add pkgconfig(amtk-5) and pkgconfig(vte-2.91) BuildRequires: New
+  dependencies.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:10:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
