@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-statusnotifier-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,13 +21,13 @@
 %define plugin statusnotifier
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.2.1
-Release:        100
+Version:        0.2.2
+Release:        0
 Summary:        Status Notifier Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            http://goodies.xfce.org/projects/panel-plugins/%{name}
-Source0:        http://archive.xfce.org/src/panel-plugins/%{name}/0.2/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/panel-plugins/xfce4-statusnotifier-plugin
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.2/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
