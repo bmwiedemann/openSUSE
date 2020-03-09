@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-lens
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name lens
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.18.1
+Version:        4.19.1
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause
@@ -53,7 +53,6 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-type-equality-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 %if %{with tests}
