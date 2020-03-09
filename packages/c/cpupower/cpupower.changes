@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 09:45:02 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Do not show 0 boost states if boost states are supported, but could
+  not be read from PCI registers.
+  bsc#1165712, bsc#1164983
+A amd_do_not_show_amount_of_boost_states_if_zero.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 13:25:05 UTC 2020 - trenn@suse.de
 
 - Add mainline patch with proper patch header and filename:

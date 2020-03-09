@@ -44,6 +44,7 @@ Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
 Patch4:         cpupower-Revert-library-ABI-changes-from-commit-ae2917093fb60bdc1ed3e.patch
 Patch5:         Correction-to-manpage-of-cpupower.patch
+Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 
 #turbostat patches
 Patch22:        turbostat_makefile_fix_asm_header.patch
@@ -98,6 +99,7 @@ powersave module.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 cd ../turbostat-%{tsversion}
 %patch22 -p1

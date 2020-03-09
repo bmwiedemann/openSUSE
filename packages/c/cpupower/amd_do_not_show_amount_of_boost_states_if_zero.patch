@@ -1,0 +1,17 @@
+---
+ utils/cpufreq-info.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/utils/cpufreq-info.c
++++ b/utils/cpufreq-info.c
+@@ -191,7 +191,9 @@
+ 		if (ret)
+ 			return ret;
+ 
+-		printf(_("    Boost States: %d\n"), b_states);
++		if (b_states != 0)
++			printf(_("    Boost States: %d\n"), b_states);
++
+ 		printf(_("    Total States: %d\n"), pstate_no);
+ 		for (i = 0; i < pstate_no; i++) {
+ 			if (!pstates[i])
