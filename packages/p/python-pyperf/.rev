@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>738178</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06f94724e7164bf85e02dfb459136752</srcmd5>
+    <version>1.7.0</version>
+    <time>1583759877</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782891</requestid>
+  </revision>
 </revisionlist>

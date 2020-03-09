@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyperf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyperf
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
-License:        MIT
 Summary:        Python module to run and analyze benchmarks
-Url:            https://github.com/vstinner/pyperf
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/vstinner/pyperf
 Source:         https://files.pythonhosted.org/packages/source/p/pyperf/pyperf-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Patch0:         python38.patch
+Patch1:         python-retcode.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-six
+Recommends:     python-psutil
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
@@ -35,15 +41,10 @@ BuildRequires:  python2-contextlib2
 BuildRequires:  python2-statistics
 BuildRequires:  python2-unittest2
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-six
-Recommends:     python-psutil
 %ifpython2
 Requires:       python2-contextlib2
 Requires:       python2-statistics
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,6 +52,7 @@ Python module to run and analyze benchmarks.
 
 %prep
 %setup -q -n pyperf-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -60,8 +62,7 @@ Python module to run and analyze benchmarks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# See https://github.com/vstinner/pyperf/issues/58 for test_collect_metadata failure
-%pytest -k 'not test_collect_metadata'
+%pytest
 
 %files %{python_files}
 %doc README.rst
