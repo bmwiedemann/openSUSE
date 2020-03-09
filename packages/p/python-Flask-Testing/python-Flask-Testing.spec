@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Testing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Testing
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
-License:        BSD-3-Clause
 Summary:        Unit testing for Flask
-Url:            https://github.com/jarus/flask-testing
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/jarus/flask-testing
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Testing/Flask-Testing-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Flask
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module blinker}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Flask
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -58,6 +58,7 @@ sed -i "s/twill[^']*/setuptools/" setup.py
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flask_testing
+%{python_sitelib}/Flask_Testing-%{version}-py*.egg-info
 
 %changelog
