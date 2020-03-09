@@ -88,8 +88,10 @@ files.
 cp -p %{SOURCE1} %{pkg_name}.cabal
 %patch01 -p1
 cabal-tweak-dep-ver base '< 4.13' '< 5'
+cabal-tweak-dep-ver network-uri '< 2.7' '< 3'
 
 %build
+%define cabal_configure_options -fbase48 -fuse-network-uri
 %ghc_lib_build
 
 %install
