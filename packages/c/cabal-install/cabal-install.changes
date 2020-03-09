@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 12:39:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax constraints on network-uri
+
+-------------------------------------------------------------------
 Sun Dec 29 10:27:26 UTC 2019 - psimons@suse.com
 
 - Update cabal-install to version 3.0.0.0.

@@ -63,6 +63,7 @@ installation of Haskell libraries and programs.
 %prep
 %setup -q
 cabal-tweak-dep-ver base '< 4.13' '< 5'
+cabal-tweak-dep-ver network-uri '< 2.7' '< 3'
 
 %build
 %ghc_bin_build
