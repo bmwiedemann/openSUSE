@@ -201,4 +201,16 @@
     <comment></comment>
     <requestid>731153</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>14155b79ac1a7c39b0ac4505b407b57a</srcmd5>
+    <version>1.1.10</version>
+    <time>1583843160</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch use-pkg-config.patch as we don't need to tweak
+  this stuff at all
+
+- Update use-pkg-config.patch to use the embedded profile, to build
+  against Python 3.8.</comment>
+    <requestid>783354</requestid>
+  </revision>
 </revisionlist>
