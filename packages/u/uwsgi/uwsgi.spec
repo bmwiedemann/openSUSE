@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,6 @@ BuildRequires:  glusterfs-devel
 #BuildRequires:  go
 BuildRequires:  java-devel
 #BuildRequires:  krb5-devel
-BuildRequires:  libGeoIP-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcurl-devel
@@ -204,18 +203,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains an emperor plugin allowing for configuration of
 applications (vassals) via ZeroMQ.
-
-
-%package geoip
-Summary:        GeoIP Plugin for uWSGI
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-Requires:       %{name}-python = %{version}
-
-%description geoip
-uWSGI is a self-healing application container server coded in pure C.
-
-This package contains support for GeoIP routing.
 
 
 %package gevent
@@ -493,6 +480,9 @@ excluded_plugins="$excluded_plugins libtcc"
 # matheval is deprecated
 excluded_plugins="$excluded_plugins matheval"
 
+# bsc#1156199 - python-txtorcon: GeoIP support is discontinued 
+excluded_plugins="$excluded_plugins geoip"
+
 # V8 is not yet available on all platforms and is broken in the v8 versions in
 # 13.1+
 %ifarch %{ix86} x86_64 %{arm} aarch64 ppc ppc64 ppc64le
@@ -682,10 +672,6 @@ ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rcuwsgi
 %files emperor_zeromq
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/emperor_zeromq_plugin.so
-
-%files geoip
-%defattr(-,root,root,-)
-%{_libdir}/uwsgi/geoip_plugin.so
 
 %files gevent
 %defattr(-,root,root,-)
