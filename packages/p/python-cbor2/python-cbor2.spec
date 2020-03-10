@@ -22,15 +22,14 @@ Version:        5.0.1
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/cbor2
 Source:         https://files.pythonhosted.org/packages/source/c/cbor2/cbor2-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,11 +51,16 @@ export LANG=en_US.UTF8
 
 %check
 export LANG=en_US.UTF8
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
+%ifpython2
 %{python_sitelib}/*
+%endif
+%ifpython3
+%{python_sitearch}/*
+%endif
 
 %changelog
