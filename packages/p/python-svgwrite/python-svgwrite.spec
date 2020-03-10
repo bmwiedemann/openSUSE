@@ -1,7 +1,7 @@
 #
 # spec file for package python-svgwrite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.3.1
 Release:        0
 Summary:        Python module for creating SVG drawings
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mozman/svgwrite
 Source:         https://files.pythonhosted.org/packages/source/s/svgwrite/svgwrite-%{version}.zip
 BuildRequires:  %{python_module setuptools}
@@ -54,7 +53,8 @@ sed -i 's/\r$//' LICENSE.TXT NEWS.rst README.rst
 
 %check
 # test_embed_google_web_font - asks google for data
-%pytest -k 'not test_embed_google_web_font'
+# test_pretty_print - fails on python 3.8 because xml output is now ordering tags
+%pytest -k 'not test_embed_google_web_font and not test_pretty_print'
 
 %files %{python_files}
 %doc NEWS.rst README.rst
