@@ -73,4 +73,12 @@
   * no upstream changelog</comment>
     <requestid>717833</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6506e8122b382fdbf07010dd8dc5c52b</srcmd5>
+    <version>1.4.2</version>
+    <time>1583833795</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783230</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydicom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-pydicom
-Version:        1.3.0
+Version:        1.4.2
 Release:        0
 Summary:        Pure python package for DICOM medical file reading and writing
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/darcymason/pydicom
 Source:         https://files.pythonhosted.org/packages/source/p/pydicom/pydicom-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
