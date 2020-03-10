@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftfy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ftfy
-Version:        5.6
+Version:        5.7
 Release:        0
 Summary:        Python module for repairing mis-decoded Unicode text
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/LuminosoInsight/python-ftfy
 Source:         https://github.com/LuminosoInsight/python-ftfy/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -32,7 +31,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth}
 # /SECTION
