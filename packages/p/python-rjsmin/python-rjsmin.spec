@@ -1,7 +1,7 @@
 #
 # spec file for package python-rjsmin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Version:        1.1.0
 Release:        0
 Summary:        A JavaScript minifier written in Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            http://opensource.perlig.de/rjsmin/
 Source:         https://github.com/ndparker/rjsmin/archive/%{release_sha}.tar.gz#/%{mod_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- build without profiling
