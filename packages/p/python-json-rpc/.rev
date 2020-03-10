@@ -28,4 +28,12 @@
     the same time.</comment>
     <requestid>688769</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>514748be52cbdb030955efd5c9b9871f</srcmd5>
+    <version>1.13.0</version>
+    <time>1583830275</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782831</requestid>
+  </revision>
 </revisionlist>
