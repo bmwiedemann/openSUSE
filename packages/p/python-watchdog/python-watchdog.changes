@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:24:35 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.10.2
+  - Fixed the ``build_ext`` command on macOS Catalina (`#628 <https://github.com/gorakhargosh/watchdog/pull/628>`__)
+  - Fixed the installation of macOS requirements on non-macOS OSes (`#635 <https://github.com/gorakhargosh/watchdog/pull/635>`__)
+  - Refactored ``dispatch()`` method of ``FileSystemEventHandler``,
+    ``PatternMatchingEventHandler`` and ``RegexMatchingEventHandler``
+  - [bsd] Improved tests support on non Windows/Linux platforms (`#633 <https://github.com/gorakhargosh/watchdog/pull/633>`__, `#639 <https://github.com/gorakhargosh/watchdog/pull/639>`__)
+  - [bsd] Added FreeBSD CI support (`#532 <https://github.com/gorakhargosh/watchdog/pull/532>`__)
+  - [bsd] Restored full support (`#638 <https://github.com/gorakhargosh/watchdog/pull/638>`__, `#641 <https://github.com/gorakhargosh/watchdog/pull/641>`__)
+- deleted patches
+  - add-missing-conftest.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Nov  6 13:42:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in Brownie as it is not needed

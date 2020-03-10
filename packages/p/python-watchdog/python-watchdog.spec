@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-watchdog
-Version:        0.9.0
+Version:        0.10.2
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
 URL:            https://github.com/gorakhargosh/watchdog
 Source:         https://files.pythonhosted.org/packages/source/w/watchdog/watchdog-%{version}.tar.gz
-Patch0:         add-missing-conftest.patch
-BuildRequires:  %{python_module pathtools}
+BuildRequires:  %{python_module pathtools >= 0.1.1}
 BuildRequires:  %{python_module pytest-timeout >= 0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -34,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 Requires:       python-PyYAML
 Requires:       python-argh
-Requires:       python-pathtools
+Requires:       python-pathtools >= 0.1.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,7 +48,6 @@ This package contains documentation and examples for %{name}.
 
 %prep
 %setup -q -n watchdog-%{version}
-%patch0 -p1
 chmod -x README.rst
 # Remove all shebangs
 find src -name "*.py" | xargs sed -i -e '/^#!\//, 1d'
@@ -63,6 +61,8 @@ cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Bui
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i '/--cov/d' setup.cfg
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}

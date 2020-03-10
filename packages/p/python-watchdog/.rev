@@ -40,4 +40,12 @@
     <comment>- Do not pull in Brownie as it is not needed</comment>
     <requestid>746007</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02f4dbafe03a2e9a98cc6f0ce5922752</srcmd5>
+    <version>0.10.2</version>
+    <time>1583843162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783317</requestid>
+  </revision>
 </revisionlist>
