@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar  6 14:50:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.10.3
+  * Fixed ``TypeError`` (or wrong rendered class name) when an annotation is a generic class that has
+    a ``name`` property
+  * Fixed inner classes missing their parent class name(s) when rendered
+  * Fixed ``KeyError`` when encountering mocked annotations (``autodoc_mock_imports``)
+  * Rewrote the annotation formatting logic (fixes Python 3.5.2 compatibility regressions and an
+    ``AttributeError`` regression introduced in v1.9.0)
+  * Fixed decorator classes not being processed as classes
+  * Added support for typing_extensions_
+  * Added the ``typehints_document_rtype`` option (PR by Simon-Martin Schröder)
+  * Fixed metaclasses as annotations causing ``TypeError``
+  * Fixed rendering of ``typing.Literal``
+  * Fixed OSError when generating docs for SQLAlchemy mapped classes
+  * Fixed unparametrized generic classes being rendered with their type parameters
+    (e.g. ``Dict[~KT, ~VT]``)
+- added patches
+  fix use object.inv which comes with python-doc
+  + python-sphinx-autodoc-typehints-system-object.inv.patch
+
+-------------------------------------------------------------------
 Mon Sep 16 13:38:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.8.0:

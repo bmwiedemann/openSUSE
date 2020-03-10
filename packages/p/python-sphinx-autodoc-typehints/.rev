@@ -46,4 +46,12 @@
   * Use the native AST parser for type comment support on Python 3.8+</comment>
     <requestid>731298</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6f8bc96435488570a2e26552599a27d</srcmd5>
+    <version>1.10.3</version>
+    <time>1583845552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782837</requestid>
+  </revision>
 </revisionlist>

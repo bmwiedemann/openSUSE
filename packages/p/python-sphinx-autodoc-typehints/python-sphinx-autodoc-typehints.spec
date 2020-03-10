@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-autodoc-typehints
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinx-autodoc-typehints
-Version:        1.8.0
+Version:        1.10.3
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/sphinx-autodoc-typehints
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-autodoc-typehints/sphinx-autodoc-typehints-%{version}.tar.gz
+# use object.inv which comes with python-doc; TODO more elegant solution
+Patch0:         python-sphinx-autodoc-typehints-system-object.inv.patch
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  fdupes
@@ -35,8 +37,10 @@ Requires:       python-typing_extensions
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module Sphinx >= 1.7}
+BuildRequires:  %{python_module doc}
 BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sphobjinv}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 %python_subpackages
@@ -47,6 +51,7 @@ and return value types of functions.
 
 %prep
 %setup -q -n sphinx-autodoc-typehints-%{version}
+%patch0 -p1
 
 %build
 %python_build
