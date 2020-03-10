@@ -1,7 +1,7 @@
 #
 # spec file for package python-yacron
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yacron
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Docker-friendly Cron replacement
 License:        MIT
@@ -34,8 +34,8 @@ Requires:       python-Jinja2
 Requires:       python-aiohttp
 Requires:       python-aiosmtplib
 Requires:       python-crontab
-Requires:       python-raven
-Requires:       python-raven-aiohttp
+Requires:       python-sentry-sdk
+Requires:       python-setuptools
 Requires:       python-strictyaml >= 0.7.2
 BuildArch:      noarch
 # SECTION test requirements
@@ -44,8 +44,7 @@ BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module aiosmtplib}
 BuildRequires:  %{python_module crontab}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module raven-aiohttp}
-BuildRequires:  %{python_module raven}
+BuildRequires:  %{python_module sentry-sdk}
 BuildRequires:  %{python_module strictyaml >= 0.7.2}
 # /SECTION
 %python_subpackages
@@ -55,7 +54,7 @@ A modern Cron replacement that is Docker-friendly.
 
 %prep
 %setup -q -n yacron-%{version}
-sed -i '/pytest-runner/d;/pytest-cov/d' setup.py
+sed -i 's/pytest-runner//;/pytest-cov/d' setup.py
 
 %build
 export LANG=en_US.UTF-8
