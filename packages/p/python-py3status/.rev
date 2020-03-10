@@ -49,4 +49,12 @@
     <comment></comment>
     <requestid>741421</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eaa68323106298cb4def8e7e9f3a41b9</srcmd5>
+    <version>3.27</version>
+    <time>1583833144</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783224</requestid>
+  </revision>
 </revisionlist>
