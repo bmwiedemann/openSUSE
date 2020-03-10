@@ -168,4 +168,14 @@
     <comment>fix bashism in setupconffile (faxaddmodem.capi_dia) script (forwarded request 266524 from Ledest)</comment>
     <requestid>266562</requestid>
   </revision>
+  <revision rev="24" vrev="177">
+    <srcmd5>651620b28bda491de780a4dc9959d89a</srcmd5>
+    <version>01.03.00</version>
+    <time>1583835678</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to BuildReqires: pkgconfig(capi20) to allow building
+  against standalone libcapi-devel instead of i4l-base
+</comment>
+    <requestid>783062</requestid>
+  </revision>
 </revisionlist>

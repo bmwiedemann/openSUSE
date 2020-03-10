@@ -1,7 +1,7 @@
 #
 # spec file for package capi4hylafax
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           capi4hylafax
 Version:        01.03.00
 Release:        0
 Summary:        Adds a faxcapi modem for hylafax
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Fax
-Url:            http://www.avm.de
+URL:            http://www.avm.de
 
 Source:         ftp://ftp.avm.de/tools/capi4hylafax.linux/%name-%version.tar.gz
 Patch0:         capi4hylafax-suse.diff
@@ -32,13 +32,12 @@ Patch3:         capi4hylafax-configure.diff
 Patch4:         capi4hylafax-gcc48.diff
 Patch5:         capi4hylafax-01.03.00-fix-bashisms.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  capi4linux
-BuildRequires:  capi4linux-devel
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript-library
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pwdutils
+BuildRequires:  pkgconfig(capi20)
 Requires:       a2ps
 Requires:       gs_lib
 Requires:       hylafax

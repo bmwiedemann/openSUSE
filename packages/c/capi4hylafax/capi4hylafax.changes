@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  7 15:50:28 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- switch to BuildReqires: pkgconfig(capi20) to allow building
+  against standalone libcapi-devel instead of i4l-base
+
+-------------------------------------------------------------------
 Sat Dec 27 18:22:00 UTC 2014 - Led <ledest@gmail.com>
 
 - fix bashism in setupconffile (faxaddmodem.capi_dia) script
