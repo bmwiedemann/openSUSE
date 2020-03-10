@@ -1,7 +1,7 @@
 #
 # spec file for package python-immutables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-immutables
-Version:        0.9
+Version:        0.11
 Release:        0
 Summary:        Immutable collections for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
+Patch0:         py38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,6 +37,7 @@ Immutable collections for Python.
 
 %prep
 %setup -q -n immutables-%{version}
+%patch0 -p1
 sed -i 's/\.system//' setup.py
 
 %build

@@ -16,4 +16,12 @@
     <comment>- Format with spec-cleaner</comment>
     <requestid>729899</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c29b1650d4b6cdf28a074646f92b30c2</srcmd5>
+    <version>0.11</version>
+    <time>1583830272</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782830</requestid>
+  </revision>
 </revisionlist>
