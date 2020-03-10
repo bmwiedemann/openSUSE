@@ -483,7 +483,6 @@ unsorted:
   - ant-junit 
   - ant-junit5 
   - ant-manual 
-  - ant-phone 
   - ant-proguard 
   - ant-scala 
   - ant-scripts 
@@ -1046,6 +1045,7 @@ unsorted:
   - bazel-rules-go-source 
   - bazel-rules-java-source 
   - bazel-rules-proto-source 
+  - bazel-rules-python-source 
   - bazel-rules-swift-source 
   - bazel-skylib-source 
   - bazel-toolchains-source 
@@ -1168,8 +1168,6 @@ unsorted:
   - blogbench 
   - blogc 
   - blosc-devel 
-  - blueberry 
-  - blueberry-lang 
   - bluefish 
   - blueman 
   - blueman-lang 
@@ -1182,7 +1180,6 @@ unsorted:
   - bluez-devel-32bit: [x86_64] 
   - bluez-qt-devel 
   - bluez-test 
-  - bluez-tools 
   - bmake 
   - bmon 
   - bnd-maven-plugin 
@@ -1473,10 +1470,6 @@ unsorted:
   - cantor-lang 
   - canutils 
   - canutils-pengutronix 
-  - capi4linux 
-  - capi4linux-32bit: [x86_64] 
-  - capi4linux-devel 
-  - capi4linux-devel-32bit: [x86_64] 
   - capnet-assist 
   - capnet-assist-lang 
   - capnproto 
@@ -5580,9 +5573,6 @@ unsorted:
   - i3lock 
   - i3lock-xlock-compat 
   - i3status 
-  - i4l-base 
-  - i4l-vbox 
-  - i4lfirm 
   - ibacm 
   - ibm-data-db2 
   - ibmswtpm2 
@@ -8365,9 +8355,6 @@ unsorted:
   - libcap1-32bit: [x86_64] 
   - libcap2-32bit: [x86_64] 
   - libcapi20 
-  - libcapi20-2 
-  - libcapi20-2-32bit: [x86_64] 
-  - libcapi20-3-32bit: [x86_64] 
   - libcapi20-devel 
   - libcapnp-0_7 
   - libcapnp-devel 
@@ -17735,7 +17722,6 @@ unsorted:
   - poxml-lang 
   - ppp-devel 
   - ppp-modem 
-  - ppp-userpass 
   - pps-tools 
   - pps-tools-devel 
   - ppsspp 
@@ -18153,6 +18139,7 @@ unsorted:
   - python-pymisp-doc 
   - python-pymod2pkg-doc 
   - python-pynag 
+  - python-pyotherside 
   - python-pyqtgraph-doc 
   - python-pyramid-debugtoolbar-doc 
   - python-pyrrd-docs 
@@ -18887,7 +18874,6 @@ unsorted:
   - python2-debian 
   - python2-debtcollector 
   - python2-decorator 
-  - python2-deepdiff 
   - python2-defusedxml 
   - python2-delegator 
   - python2-delegator.py 
@@ -19082,6 +19068,7 @@ unsorted:
   - python2-future 
   - python2-futures 
   - python2-futurist 
+  - python2-fuzzywuzzy 
   - python2-fysom 
   - python2-gTTS 
   - python2-gTTS-token 
@@ -19208,7 +19195,6 @@ unsorted:
   - python2-infinity 
   - python2-inflect 
   - python2-inflection 
-  - python2-influxdb 
   - python2-inifile 
   - python2-iniparse 
   - python2-inspect2 
@@ -19768,7 +19754,6 @@ unsorted:
   - python2-pygments-style-railscasts 
   - python2-pygraphviz 
   - python2-pyinotify 
-  - python2-pyinsane2 
   - python2-pyjavaproperties 
   - python2-pyjokes 
   - python2-pyjsparser 
@@ -19984,7 +19969,6 @@ unsorted:
   - python2-pyviz-comms 
   - python2-pyvmomi 
   - python2-pywinrm 
-  - python2-pyxb 
   - python2-pyxdg 
   - python2-pyzmq 
   - python2-pyzmq-devel 
@@ -20277,7 +20261,6 @@ unsorted:
   - python2-thriftpy2 
   - python2-tinydb 
   - python2-tinyrecord 
-  - python2-tinyrpc 
   - python2-titlecase 
   - python2-tkreadonly 
   - python2-tldextract 
@@ -20361,8 +20344,6 @@ unsorted:
   - python2-vcs 
   - python2-vcversioner 
   - python2-vega_datasets 
-  - python2-venusian 
-  - python2-venusian-doc 
   - python2-verboselogs 
   - python2-versioneer 
   - python2-versiontools 
@@ -21304,6 +21285,7 @@ unsorted:
   - python3-django-braces 
   - python3-django-ckeditor 
   - python3-django-classy-tags 
+  - python3-django-collectd-rest 
   - python3-django-compressor 
   - python3-django-contrib-comments 
   - python3-django-cors-headers 
@@ -21525,6 +21507,7 @@ unsorted:
   - python3-fusepy 
   - python3-future 
   - python3-futurist 
+  - python3-fuzzywuzzy 
   - python3-fysom 
   - python3-gTTS 
   - python3-gTTS-token 
@@ -22386,7 +22369,6 @@ unsorted:
   - python3-pygraphviz: [i586] 
   - python3-pyhibp 
   - python3-pyinotify 
-  - python3-pyinsane2 
   - python3-pyjavaproperties 
   - python3-pyjokes 
   - python3-pyjsparser 
@@ -22424,7 +22406,6 @@ unsorted:
   - python3-pyocr 
   - python3-pyodbc 
   - python3-pyosf 
-  - python3-pyotherside 
   - python3-pyotp 
   - python3-pyowm 
   - python3-pyparallel 
@@ -22635,7 +22616,6 @@ unsorted:
   - python3-pyvmomi 
   - python3-pywinrm 
   - python3-pyxattr 
-  - python3-pyxb 
   - python3-pyzmq-devel 
   - python3-pyzo 
   - python3-q 
@@ -22783,7 +22763,6 @@ unsorted:
   - python3-serpy 
   - python3-serverfiles 
   - python3-setools: [i586] 
-  - python3-setproctitle 
   - python3-setuptools-git 
   - python3-setuptools_scm 
   - python3-setuptools_scm_git_archive 
@@ -22869,6 +22848,7 @@ unsorted:
   - python3-sphinxcontrib-seqdiag 
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
+  - python3-sphobjinv 
   - python3-spidev 
   - python3-splinter 
   - python3-spotipy 
@@ -33347,7 +33327,6 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
-  - typelib-1_0-XApp-1_0 
   - typelib-1_0-Xkl-1_0 
   - typelib-1_0-Xmlb-1_0 
   - typelib-1_0-XplayerPlParser-1_0 
@@ -33535,7 +33514,6 @@ unsorted:
   - uwsgi 
   - uwsgi-emperor_pg 
   - uwsgi-emperor_zeromq 
-  - uwsgi-geoip 
   - uwsgi-gevent 
   - uwsgi-glusterfs 
   - uwsgi-greenlet 
