@@ -1,0 +1,32 @@
+From 3f1ba96c2de855f96bda04cff8250f8c5a6095ed Mon Sep 17 00:00:00 2001
+From: Florian Bruhin <me@the-compiler.org>
+Date: Wed, 20 Nov 2019 22:19:18 +0100
+Subject: [PATCH] Fix gherkin terminal reporter test flakiness (#340)
+
+The test compares the output of two different reporters and tries to account for
+the different runtime being printed. However, the output format changed with
+pytest v5.1.0:
+
+https://docs.pytest.org/en/latest/changelog.html#id76
+
+This changes the regex to be a bit more permissive.
+---
+ tests/feature/test_gherkin_terminal_reporter.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: pytest-bdd-3.2.1/tests/feature/test_gherkin_terminal_reporter.py
+===================================================================
+--- pytest-bdd-3.2.1.orig/tests/feature/test_gherkin_terminal_reporter.py
++++ pytest-bdd-3.2.1/tests/feature/test_gherkin_terminal_reporter.py
+@@ -166,9 +166,9 @@ def output_must_be_the_same_as_regular_r
+     assert ghe.ret == 0
+     #  last line can be different because of test execution time is printed
+     reg_lines = reg.stdout.lines if reg.stdout.lines[-1] else reg.stdout.lines[:-2]
+-    reg_lines[-1] = re.sub(r' \d+\.\d+ ', ' X ', reg_lines[-1])
++    reg_lines[-1] = re.sub(r" in [^=]*", " in X ", reg_lines[-1])
+     ghe_lines = ghe.stdout.lines if ghe.stdout.lines[-1] else ghe.stdout.lines[:-2]
+-    ghe_lines[-1] = re.sub(r' \d+\.\d+ ', ' X ', ghe_lines[-1])
++    ghe_lines[-1] = re.sub(r" in [^=]*", " in X ", ghe_lines[-1])
+     for l1, l2 in zip(reg_lines, ghe_lines):
+         assert l1 == l2
+ 

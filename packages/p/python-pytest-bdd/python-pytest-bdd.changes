@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:40:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- use %pytest macro 
+- add test_flaky.patch to fix gerkhin reporter test flakinness
+
+-------------------------------------------------------------------
 Mon Sep  9 14:09:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.2.1:

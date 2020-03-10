@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-bdd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-bdd
 Source:         https://github.com/pytest-dev/pytest-bdd/archive/%{version}.tar.gz#/pytest-bdd-%{version}.tar.gz
+Patch0:         test_flaky.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -74,6 +75,7 @@ containing the side effects of the Gherkin imperative declarations.
 
 %prep
 %setup -q -n pytest-bdd-%{version}
+%patch0 -p1
 sed -i '/tox/d' setup.py
 
 %build
@@ -86,7 +88,7 @@ sed -i '/tox/d' setup.py
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py pytest
+%pytest
 
 %post
 %python_install_alternative pytest-bdd
