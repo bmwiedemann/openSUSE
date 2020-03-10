@@ -1,7 +1,7 @@
 #
 # spec file for package python-venusian
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-venusian
-Version:        1.2.0
+Version:        3.0.0
 Release:        0
 Summary:        A library for deferring decorator actions
 License:        SUSE-Repoze AND ZPL-2.1
@@ -66,14 +67,14 @@ rm -rf venusian.egg-info
 
 %build
 %python_build
-python3 setup.py build_sphinx && rm -v build/sphinx/html/{.buildinfo,objects.inv}
+PYTHONPATH=src python3 setup.py build_sphinx && rm -v build/sphinx/html/{.buildinfo,objects.inv}
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest venusian
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

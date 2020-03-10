@@ -135,4 +135,12 @@ New dependency of python-Pyramid</comment>
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738421</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0d331505a3488fe37e154c7b44efda6</srcmd5>
+    <version>3.0.0</version>
+    <time>1583845550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783371</requestid>
+  </revision>
 </revisionlist>

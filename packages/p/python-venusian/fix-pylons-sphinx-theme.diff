@@ -1,31 +1,33 @@
-Index: b/docs/conf.py
+Index: venusian-3.0.0/docs/conf.py
 ===================================================================
---- a/docs/conf.py
-+++ b/docs/conf.py
-@@ -17,38 +17,10 @@ import os
+--- venusian-3.0.0.orig/docs/conf.py	2020-03-10 12:14:58.987113508 +0100
++++ venusian-3.0.0/docs/conf.py	2020-03-10 12:21:03.213085906 +0100
+@@ -16,40 +16,10 @@ import sys
+ import os
  import datetime
  import pkg_resources
- 
--# Add and use Pylons theme
--if 'sphinx-build' in ' '.join(sys.argv): # protect against dumb importers
--    from subprocess import call, Popen, PIPE
 +import pylons_sphinx_themes
  
--    p = Popen('which git', shell=True, stdout=PIPE)
+-# Add and use Pylons theme
+-if "sphinx-build" in " ".join(sys.argv):  # protect against dumb importers
+-    from subprocess import call, Popen, PIPE
+-
+-    p = Popen("which git", shell=True, stdout=PIPE)
 -    git = p.stdout.read().strip()
 -    cwd = os.getcwd()
--    _themes = os.path.join(cwd, '_themes')
+-    _themes = os.path.join(cwd, "_themes")
 -
 -    if not os.path.isdir(_themes):
--        call([git, 'clone', 'git://github.com/Pylons/pylons_sphinx_theme.git',
--                '_themes'])
+-        call(
+-            [git, "clone", "git://github.com/Pylons/pylons_sphinx_theme.git", "_themes"]
+-        )
 -    else:
 -        os.chdir(_themes)
--        call([git, 'checkout', 'master'])
--        call([git, 'pull'])
+-        call([git, "checkout", "master"])
+-        call([git, "pull"])
 -        os.chdir(cwd)
 -
--    sys.path.append(os.path.abspath('_themes'))
+-    sys.path.append(os.path.abspath("_themes"))
 -
 -    parent = os.path.dirname(os.path.dirname(__file__))
 -    sys.path.append(os.path.abspath(parent))
@@ -36,10 +38,10 @@ Index: b/docs/conf.py
 -# Options for HTML output
 -# -----------------------
 -
--sys.path.append(os.path.abspath('_themes'))
--html_theme_path = ['_themes']
- html_theme = 'pylons'
+-sys.path.append(os.path.abspath("_themes"))
+-html_theme_path = ["_themes"]
+ html_theme = "pylons"
 +html_theme_path = pylons_sphinx_themes.get_html_themes_path()
- html_theme_options = dict(github_url='https://github.com/Pylons/venusian')
+ html_theme_options = dict(github_url="https://github.com/Pylons/venusian")
  
  # If your extensions are in another directory, add it here. If the
