@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:33:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with python3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
 Thu Jun 27 13:14:57 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - back to sitelib 

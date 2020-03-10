@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-build
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@ Version:        0.10.0
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit-build-%{version}.tar.gz
+Patch0:         python38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools >= 28.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-distro
 Requires:       python-packaging
 Requires:       python-setuptools >= 28.0.0
 Requires:       python-wheel >= 0.29.0
@@ -36,6 +37,7 @@ Requires:       python-wheel >= 0.29.0
 BuildRequires:  %{python_module Cython >= 0.25.1}
 BuildRequires:  %{python_module codecov >= 2.0.5}
 BuildRequires:  %{python_module coverage >= 4.2}
+BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module flake8 >= 3.0.4}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module path.py >= 11.5.0}
@@ -61,6 +63,7 @@ Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 %prep
 %setup -q -n scikit-build-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -68,7 +71,6 @@ Improved build system generator for Python C/C++/Fortran/Cython extensions
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 
 %check
 # setup.py install, develop, etc default to writing to /usr .
