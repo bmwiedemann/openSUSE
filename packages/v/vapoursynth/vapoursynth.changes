@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 04:29:02 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch python38-compile.patch to build against Python 3.8, from
+  upstream.
+
+-------------------------------------------------------------------
 Thu Jan  2 10:05:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing libarchive dependency.

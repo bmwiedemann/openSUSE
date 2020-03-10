@@ -27,6 +27,8 @@ Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.t
 # PATCH-FIX-OPENSUSE vapoursynth-version.patch -- makes sure that we have
 # some sort of version for othervise unversioned .so files
 Patch1:         vapoursynth-version.patch
+# Upstream commit a53ed4dd, can be dropped when updating to R49
+Patch2:         python38-compile.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -178,6 +180,7 @@ Plugin with subtitles support for VapourSynth.
 %prep
 %setup -q -n %{name}-R%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -fiv
