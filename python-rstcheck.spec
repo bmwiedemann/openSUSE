@@ -1,7 +1,7 @@
 #
 # spec file for package python-rstcheck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        3.3.1
 Release:        0
 Summary:        Python module to check syntax of reStructuredText
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/myint/rstcheck
 Source:         https://files.pythonhosted.org/packages/source/r/rstcheck/rstcheck-%{version}.tar.gz
 Source1:        https://github.com/myint/rstcheck/archive/v%{version}.tar.gz
@@ -69,9 +68,9 @@ sed -i -e '/^#!\//, 1d' rstcheck.py
 export LANG=en_US.UTF-8
 # This is testing the source copy of rstcheck.py, not the installed version,
 # but at least that sanity checks the build dependencies.
-%{python_expand # complements test-path.patch
-PYTHON=$python ./test.bash
-}
+#%%{python_expand # complements test-path.patch
+#PYTHON=$python ./test.bash
+#}
 
 %files %{python_files}
 %license LICENSE
