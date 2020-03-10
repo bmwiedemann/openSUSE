@@ -1,7 +1,7 @@
 #
 # spec file for package python-leveldb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,9 @@ Release:        0
 Summary:        Python bindings for leveldb database library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://code.google.com/p/py-leveldb/
+URL:            http://code.google.com/p/py-leveldb/
 Source:         https://files.pythonhosted.org/packages/source/l/leveldb/leveldb-%{version}.tar.gz
+Patch0:         python_38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,6 +39,7 @@ Python bindings for leveldb database library.
 
 %prep
 %setup -q -n leveldb-%{version}
+%patch0 -p1
 chmod -x README
 
 %build

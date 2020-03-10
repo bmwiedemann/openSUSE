@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:28:58 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add python_38.patch to fix python3.8 build 
+
+-------------------------------------------------------------------
 Thu Mar 28 15:35:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Execute testsuite
