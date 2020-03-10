@@ -34,8 +34,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tornado5}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
-BuildRequires:  nodejs
-BuildRequires:  npm >= 5
+BuildRequires:  nodejs >= 10
+BuildRequires:  npm >= 10
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-jupyter-core
@@ -70,8 +70,8 @@ Requires:       jupyter-jupyter-core
 Requires:       jupyter-jupyterlab-filesystem
 Requires:       jupyter-jupyterlab-server >= 1.0.0
 Requires:       jupyter-notebook >= 4.3.1
-Requires:       nodejs
-Requires:       npm >= 5
+Requires:       nodejs >= 10
+Requires:       npm >= 10
 Requires:       python3-jupyterlab = %{version}
 Provides:       jupyter-jupyterlab-discovery = 6
 Obsoletes:      jupyter-jupyterlab-discovery < 6
