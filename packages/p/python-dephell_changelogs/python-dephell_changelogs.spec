@@ -24,7 +24,6 @@ Version:        0.0.1
 Release:        0
 Summary:        Pathlib for changelogss
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell_changelogs
 Source0:        https://github.com/dephell/%{modname}/archive/v.%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 # Temporary measure, until dephell in %%prep actually works
@@ -33,7 +32,6 @@ Source1:        setup.py
 # add markers for test cases requiring network connection
 Patch0:         add_network_markers.patch
 BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module dephell}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}

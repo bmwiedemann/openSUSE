@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:29:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix self-dependency cycle by removing BR on dephell
+
+-------------------------------------------------------------------
 Tue Mar  3 13:45:38 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add generated setup.py to the tarball, until we have working
