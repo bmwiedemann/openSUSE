@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:25:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball for tests
+- Run tests
+- Skip python2 build as the 1.0.4 is no longer py2 compatible
+
+-------------------------------------------------------------------
 Fri Feb 28 21:43:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.4:

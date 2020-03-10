@@ -63,4 +63,14 @@
   * Tinyrpc now supports the MSGPACK RPC protocol in addition to JSON-RPC.</comment>
     <requestid>780389</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9bba4a44a9396160ed57257bb52b1b47</srcmd5>
+    <version>1.0.4</version>
+    <time>1583840018</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball for tests
+- Run tests
+- Skip python2 build as the 1.0.4 is no longer py2 compatible</comment>
+    <requestid>783287</requestid>
+  </revision>
 </revisionlist>

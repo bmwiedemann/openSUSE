@@ -17,14 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-tinyrpc
 Version:        1.0.4
 Release:        0
 Summary:        A modular transport and protocol neutral RPC library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mbr/tinyrpc
-Source:         https://files.pythonhosted.org/packages/source/t/tinyrpc/tinyrpc-%{version}.tar.gz
+Source:         https://github.com/mbr/tinyrpc/archive/%{version}.tar.gz
+BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -52,6 +57,10 @@ WebSockets or ZeroMQ).
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# test_batch_dispatch - needs old pytest syntax, skip
+%pytest -k 'not test_batch_dispatch'
 
 %files %{python_files}
 %license LICENSE
