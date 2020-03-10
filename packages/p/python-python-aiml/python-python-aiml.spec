@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-aiml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-aiml
-Version:        0.9.1
+Version:        0.9.3
 Release:        0
 Summary:        An interpreter package for AIML, the Artificial Intelligence Markup Language
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/paulovn/python-aiml
+URL:            https://github.com/paulovn/python-aiml
 Source:         https://files.pythonhosted.org/packages/source/p/python-aiml/python-aiml-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Obsoletes:      python-aiml < 0.9.0
 Requires:       python-setuptools
+Obsoletes:      python-aiml < 0.9.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

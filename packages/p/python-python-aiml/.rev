@@ -15,4 +15,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659607</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97e2bd7ad3cde4b738ba9c9516639815</srcmd5>
+    <version>0.9.3</version>
+    <time>1583833150</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782859</requestid>
+  </revision>
 </revisionlist>

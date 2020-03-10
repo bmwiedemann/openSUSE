@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:38:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.3:
+  * various python compatiblity fixes
+
+-------------------------------------------------------------------
 Tue Dec  4 12:52:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
