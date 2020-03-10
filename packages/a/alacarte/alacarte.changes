@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar  5 18:44:30 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Require Python 3.2+.
+
+-------------------------------------------------------------------
+Fri Feb 14 10:46:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Fix bad command validation.
+  + Require Python 3.0+.
+  + Support Python 3.8+.
+- Drop fix-bad-command-validation.patch and alacarte-python3.patch:
+  fixed upstream.
+- Drop autoconf and automake BuildRequires, and no longer call
+  autoreconf: no patch touches the build system.
+- Rebase alacarte-trans.patch.
+- Drop deprecated use of %desktop_database_post/postun and
+ -%icon_theme_cache_post/postun macros.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:05:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

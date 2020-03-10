@@ -1,7 +1,7 @@
 #
 # spec file for package alacarte
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,15 @@
 
 
 Name:           alacarte
-Version:        3.11.91
+Version:        3.36.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.realistanew.com/projects/alacarte
-Source:         http://download.gnome.org/sources/alacarte/3.11/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/alacarte/3.36/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE alacarte-trans.patch bnc#947793 qzhao@suse.org -- Fix untranslated messages
 Patch0:         alacarte-trans.patch
-# PATCH-FIX-UPSTREAM fix-bad-command-validation.patch bsc#1057908 bgo#728372 qzheng@suse.com -- Fix bad command validation
-Patch1:         fix-bad-command-validation.patch
-# PATCH-FIX-UPSTREAM alacarte-python3.patch bsc#1075771 bgo#787490 mgorse@suse.com -- Support python 3.
-Patch2:         alacarte-python3.patch
-# Needed for Patch2
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 # Needed for the typelib() dependency parser
@@ -41,7 +34,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3 >= 3.2
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -60,12 +53,8 @@ type to edit, add, and delete any menu entry.
 %setup -q
 translation-update-upstream
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-# needed for Patch2
-autoreconf -fi
 %configure
 make %{?_smp_mflags}
 
@@ -74,14 +63,6 @@ make %{?_smp_mflags}
 %suse_update_desktop_file -r alacarte GNOME Utility DesktopUtility X-GNOME-PersonalSettings
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license COPYING

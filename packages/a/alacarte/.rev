@@ -479,4 +479,25 @@
     <comment>Eliminate the -lang recommends (forwarded request 767095 from dimstar)</comment>
     <requestid>767336</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ac1c30de3dedcc40d8f5c850b481aa93</srcmd5>
+    <version>3.36.0</version>
+    <time>1583852110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.0:
+  + Require Python 3.2+.
+- Update to version 3.35.91:
+  + Fix bad command validation.
+  + Require Python 3.0+.
+  + Support Python 3.8+.
+- Drop fix-bad-command-validation.patch and alacarte-python3.patch:
+  fixed upstream.
+- Drop autoconf and automake BuildRequires, and no longer call
+  autoreconf: no patch touches the build system.
+- Rebase alacarte-trans.patch.
+- Drop deprecated use of %desktop_database_post/postun and
+ -%icon_theme_cache_post/postun macros.
+</comment>
+    <requestid>783422</requestid>
+  </revision>
 </revisionlist>
