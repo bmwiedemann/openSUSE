@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:54:00 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add assertEquals.patch, obsolete_escape_strings.patch, and
+  Python38-compatibility.patch to deal with various deprecated
+  warnings.
+- Switch off three tests to make the test suite pass under Python
+  3.8.
+
+-------------------------------------------------------------------
 Thu Mar  5 12:18:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.16.0

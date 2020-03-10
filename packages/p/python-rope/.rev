@@ -154,4 +154,12 @@
  * new minor relase with bugfixes.</comment>
     <requestid>781837</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8de773bccb6fd3e5a8f5fd62ce39c1fc</srcmd5>
+    <version>0.16.0</version>
+    <time>1583837709</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783265</requestid>
+  </revision>
 </revisionlist>

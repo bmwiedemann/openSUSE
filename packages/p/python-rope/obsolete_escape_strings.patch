@@ -1,0 +1,263 @@
+--- a/rope/base/change.py
++++ b/rope/base/change.py
+@@ -116,10 +116,10 @@ class ChangeSet(Change):
+ 
+ 
+ def _handle_job_set(function):
+-    """A decorator for handling `taskhandle.JobSet`\s
++    """A decorator for handling `taskhandle.JobSet`
+ 
+-    A decorator for handling `taskhandle.JobSet`\s for `do` and `undo`
+-    methods of `Change`\s.
++    A decorator for handling `taskhandle.JobSet` for `do` and `undo`
++    methods of `Change`.
+     """
+     def call(self, job_set=taskhandle.NullJobSet()):
+         job_set.started_job(str(self))
+--- a/rope/base/oi/__init__.py
++++ b/rope/base/oi/__init__.py
+@@ -32,7 +32,7 @@ into play.  It analyzes function body an
+ that is returned from it (we usually need the returned value for the
+ given parameter objects).
+ 
+-Rope might collect and store information for other `PyName`\s, too.
++Rope might collect and store information for other `PyName`, too.
+ For instance rope stores the object builtin containers hold.
+ 
+ """
+--- a/rope/base/oi/soi.py
++++ b/rope/base/oi/soi.py
+@@ -40,7 +40,7 @@ def infer_returned_object(pyfunction, ar
+ 
+ @_ignore_inferred
+ def infer_parameter_objects(pyfunction):
+-    """Infer the `PyObject`\s of parameters of this `PyFunction`"""
++    """Infer the `PyObject` of parameters of this `PyFunction`"""
+     object_info = pyfunction.pycore.object_info
+     result = object_info.get_parameter_objects(pyfunction)
+     if result is None:
+--- a/rope/base/oi/transform.py
++++ b/rope/base/oi/transform.py
+@@ -1,4 +1,4 @@
+-"""Provides classes for persisting `PyObject`\s"""
++"""Provides classes for persisting `PyObject`"""
+ import os
+ import re
+ 
+--- a/rope/base/project.py
++++ b/rope/base/project.py
+@@ -33,7 +33,7 @@ class _Project(object):
+         folder address is an empty string.  If the resource does not
+         exist a `exceptions.ResourceNotFound` exception would be
+         raised.  Use `get_file()` and `get_folder()` when you need to
+-        get nonexistent `Resource`\s.
++        get nonexistent `Resource`.
+ 
+         """
+         path = self._get_resource_path(resource_name)
+--- a/rope/base/pynames.py
++++ b/rope/base/pynames.py
+@@ -3,7 +3,7 @@ from rope.base import exceptions, utils
+ 
+ 
+ class PyName(object):
+-    """References to `PyObject`\s inside python programs"""
++    """References to `PyObject` inside python programs"""
+ 
+     def get_object(self):
+         """Return the `PyObject` object referenced by this `PyName`"""
+--- a/rope/base/pyobjects.py
++++ b/rope/base/pyobjects.py
+@@ -32,7 +32,7 @@ class PyObject(object):
+         return key in self.get_attributes()
+ 
+     def __eq__(self, obj):
+-        """Check the equality of two `PyObject`\s
++        """Check the equality of two `PyObject`
+ 
+         Currently it is assumed that instances (the direct instances
+         of `PyObject`, not the instances of its subclasses) are equal
+--- a/rope/base/resourceobserver.py
++++ b/rope/base/resourceobserver.py
+@@ -4,9 +4,9 @@ import os
+ class ResourceObserver(object):
+     """Provides the interface for observing resources
+ 
+-    `ResourceObserver`\s can be registered using `Project.
++    `ResourceObserver` can be registered using `Project.
+     add_observer()`.  But most of the time `FilteredResourceObserver`
+-    should be used.  `ResourceObserver`\s report all changes passed
++    should be used.  `ResourceObserver` report all changes passed
+     to them and they don't report changes to all resources.  For
+     example if a folder is removed, it only calls `removed()` for that
+     folder and not its contents.  You can use
+--- a/rope/base/resources.py
++++ b/rope/base/resources.py
+@@ -214,7 +214,7 @@ class _ResourceMatcher(object):
+     def set_patterns(self, patterns):
+         """Specify which resources to match
+ 
+-        `patterns` is a `list` of `str`\s that can contain ``*`` and
++        `patterns` is a `list` of `str` that can contain ``*`` and
+         ``?`` signs for matching resource names.
+ 
+         """
+--- a/rope/contrib/autoimport.py
++++ b/rope/contrib/autoimport.py
+@@ -90,7 +90,7 @@ class AutoImport(object):
+                        task_handle=taskhandle.NullTaskHandle()):
+         """Generate global name cache for project files
+ 
+-        If `resources` is a list of `rope.base.resource.File`\s, only
++        If `resources` is a list of `rope.base.resource.File`, only
+         those files are searched; otherwise all python modules in the
+         project are cached.
+ 
+--- a/rope/contrib/codeassist.py
++++ b/rope/contrib/codeassist.py
+@@ -19,7 +19,7 @@ from rope.refactor import functionutils
+ 
+ def code_assist(project, source_code, offset, resource=None,
+                 templates=None, maxfixes=1, later_locals=True):
+-    """Return python code completions as a list of `CodeAssistProposal`\s
++    """Return python code completions as a list of `CodeAssistProposal`
+ 
+     `resource` is a `rope.base.resources.Resource` object.  If
+     provided, relative imports are handled.
+@@ -317,7 +317,7 @@ class NamedParamProposal(CompletionPropo
+ def sorted_proposals(proposals, scopepref=None, typepref=None):
+     """Sort a list of proposals
+ 
+-    Return a sorted list of the given `CodeAssistProposal`\s.
++    Return a sorted list of the given `CodeAssistProposal`.
+ 
+     `scopepref` can be a list of proposal scopes.  Defaults to
+     ``['parameter_keyword', 'local', 'global', 'imported',
+--- a/rope/contrib/finderrors.py
++++ b/rope/contrib/finderrors.py
+@@ -29,7 +29,7 @@ from rope.base import ast, evaluate, pyo
+ def find_errors(project, resource):
+     """Find possible bad name and attribute accesses
+ 
+-    It returns a list of `Error`\s.
++    It returns a list of `Error`.
+     """
+     pymodule = project.get_pymodule(resource)
+     finder = _BadAccessFinder(pymodule)
+--- a/rope/contrib/findit.py
++++ b/rope/contrib/findit.py
+@@ -9,11 +9,11 @@ from rope.refactor import occurrences
+ def find_occurrences(project, resource, offset, unsure=False, resources=None,
+                      in_hierarchy=False,
+                      task_handle=taskhandle.NullTaskHandle()):
+-    """Return a list of `Location`\s
++    """Return a list of `Location`
+ 
+     If `unsure` is `True`, possible matches are returned, too.  You
+     can use `Location.unsure` to see which are unsure occurrences.
+-    `resources` can be a list of `rope.base.resource.File`\s that
++    `resources` can be a list of `rope.base.resource.File` that
+     should be searched for occurrences; if `None` all python files
+     in the project are searched.
+ 
+@@ -40,7 +40,7 @@ def find_implementations(project, resour
+     """Find the places a given method is overridden.
+ 
+     Finds the places a method is implemented.  Returns a list of
+-    `Location`\s.
++    `Location`.
+     """
+     name = worder.get_name_at(resource, offset)
+     this_pymodule = project.get_pymodule(resource)
+--- a/rope/refactor/change_signature.py
++++ b/rope/refactor/change_signature.py
+@@ -127,10 +127,10 @@ class ChangeSignature(object):
+                     task_handle=taskhandle.NullTaskHandle()):
+         """Get changes caused by this refactoring
+ 
+-        `changers` is a list of `_ArgumentChanger`\s.  If `in_hierarchy`
++        `changers` is a list of `_ArgumentChanger`.  If `in_hierarchy`
+         is `True` the changers are applyed to all matching methods in
+         the class hierarchy.
+-        `resources` can be a list of `rope.base.resource.File`\s that
++        `resources` can be a list of `rope.base.resource.File` that
+         should be searched for occurrences; if `None` all python files
+         in the project are searched.
+ 
+--- a/rope/refactor/encapsulate_field.py
++++ b/rope/refactor/encapsulate_field.py
+@@ -30,7 +30,7 @@ class EncapsulateField(object):
+         same is true for `setter` and if it is None set_${field_name} is
+         used.
+ 
+-        `resources` can be a list of `rope.base.resource.File`\s that
++        `resources` can be a list of `rope.base.resource.File` that
+         the refactoring should be applied on; if `None` all python
+         files in the project are searched.
+ 
+--- a/rope/refactor/importutils/__init__.py
++++ b/rope/refactor/importutils/__init__.py
+@@ -261,7 +261,7 @@ class ImportTools(object):
+ 
+ 
+ def get_imports(project, pydefined):
+-    """A shortcut for getting the `ImportInfo`\s used in a scope"""
++    """A shortcut for getting the `ImportInfo` used in a scope"""
+     pymodule = pydefined.get_module()
+     module = module_imports.ModuleImports(project, pymodule)
+     if pymodule == pydefined:
+--- a/rope/refactor/importutils/actions.py
++++ b/rope/refactor/importutils/actions.py
+@@ -126,7 +126,7 @@ class RemovingVisitor(ImportInfoVisitor)
+ class AddingVisitor(ImportInfoVisitor):
+     """A class for adding imports
+ 
+-    Given a list of `ImportInfo`\s, it tries to add each import to the
++    Given a list of `ImportInfo`, it tries to add each import to the
+     module and returns `True` and gives up when an import can be added
+     to older ones.
+ 
+--- a/rope/refactor/introduce_factory.py
++++ b/rope/refactor/introduce_factory.py
+@@ -31,7 +31,7 @@ class IntroduceFactory(object):
+         be added.  If `global_factory` is `True` the factory will be
+         global otherwise a static method is added to the class.
+ 
+-        `resources` can be a list of `rope.base.resource.File`\s that
++        `resources` can be a list of `rope.base.resource.File` that
+         this refactoring should be applied on; if `None` all python
+         files in the project are searched.
+ 
+--- a/rope/refactor/move.py
++++ b/rope/refactor/move.py
+@@ -67,7 +67,7 @@ class MoveMethod(object):
+         - `dest_attr`: the name of the destination attribute
+         - `new_name`: the name of the new method; if `None` uses
+           the old name
+-        - `resources` can be a list of `rope.base.resources.File`\s to
++        - `resources` can be a list of `rope.base.resources.File` to
+           apply this refactoring on.  If `None`, the restructuring
+           will be applied to all python files.
+ 
+--- a/rope/refactor/rename.py
++++ b/rope/refactor/rename.py
+@@ -59,7 +59,7 @@ class Rename(object):
+           called with an instance of `occurrence.Occurrence` as
+           parameter.  If it returns `True`, the occurrence is
+           considered to be a match.
+-        - `resources` can be a list of `rope.base.resources.File`\s to
++        - `resources` can be a list of `rope.base.resources.File` to
+           apply this refactoring on.  If `None`, the restructuring
+           will be applied to all python files.
+         - `in_file`: this argument has been deprecated; use
+--- a/rope/refactor/restructure.py
++++ b/rope/refactor/restructure.py
+@@ -95,7 +95,7 @@ class Restructure(object):
+                     task_handle=taskhandle.NullTaskHandle()):
+         """Get the changes needed by this restructuring
+ 
+-        `resources` can be a list of `rope.base.resources.File`\s to
++        `resources` can be a list of `rope.base.resources.File` to
+         apply the restructuring on.  If `None`, the restructuring will
+         be applied to all python files.
+ 
