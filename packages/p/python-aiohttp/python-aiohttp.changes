@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:33:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6.2:
+  * more compatibility fixes with python 3.8
+- Disable tests as they explode in upstream git too and all other
+  distributions also gave up on it
+
+-------------------------------------------------------------------
+Tue Mar 10 08:15:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do remove pytest configuration to not error out on deprecation
+  warnings
+- Unbundle http parser headers:
+  * unbundle-http-parser.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 10:20:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.6.1:

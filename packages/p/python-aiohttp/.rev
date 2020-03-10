@@ -138,4 +138,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>734269</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0dd6d44cb39ae7f3374f74c8149d10db</srcmd5>
+    <version>3.6.2</version>
+    <time>1583831529</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783182</requestid>
+  </revision>
 </revisionlist>
