@@ -1,7 +1,7 @@
 #
 # spec file for package python-simpleeval
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +20,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname simpleeval
 Name:           python-%{modname}
-Version:        0.9.8
+Version:        0.9.10
 Release:        0
 Summary:        A simple, safe single expression evaluator library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/danthedeckie/simpleeval
 Source0:        https://files.pythonhosted.org/packages/source/s/simpleeval/%{modname}-%{version}.tar.gz
-# https://github.com/danthedeckie/simpleeval/issues/55
-Source1:        https://raw.githubusercontent.com/danthedeckie/simpleeval/master/LICENCE
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
@@ -48,16 +46,13 @@ to give full eval() access, or don’t want to run in javascript on the client s
 
 %prep
 %setup -q -n %{modname}-%{version}
-rm -f %{modname}.egg-info/*.orig
-cp %{SOURCE1} .
 
 %build
 %python_build
 
 %install
 %python_install
-rm -rf %{buildroot}%{python_sitelib}/%{mod2nam}/tests # Don't install tests
-rm -rf %{buildroot}%{python_sitelib}/%{mod2nam}/*.exe # Remove unneeded files
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest

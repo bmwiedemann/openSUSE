@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>697758</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>737cad82fd2304d0e59748893f52a35f</srcmd5>
+    <version>0.9.10</version>
+    <time>1583840030</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783300</requestid>
+  </revision>
 </revisionlist>
