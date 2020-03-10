@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sat Mar  7 07:50:02 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.2.1.1
+- Skip python2 support
+
+-------------------------------------------------------------------
+Mon Feb 19 16:11:43 UTC 2018 - matwey.kornilov@gmail.com
+
+- Version 0.2.0
+  - Reimplement collectd_rest.rrd in pure C
+
+-------------------------------------------------------------------
+Fri Jan 19 09:44:25 UTC 2018 - matwey.kornilov@gmail.com
+
+- Version 0.1.11
+  - Support Cache-Control response headers
+
+-------------------------------------------------------------------
+Sun Dec 24 10:19:18 UTC 2017 - matwey.kornilov@gmail.com
+
+- BuildRequire: %{pythons}
+  We need sqlite3 module from standard library for tests.
+
+-------------------------------------------------------------------
+Sun Dec 24 09:51:50 UTC 2017 - matwey.kornilov@gmail.com
+
+- Use fdupes to fix rpmlint warnings
+
+-------------------------------------------------------------------
+Sat Dec 23 16:56:05 UTC 2017 - matwey.kornilov@gmail.com
+
+- Version 0.1.10
+  - Support Django 2.0
+
+-------------------------------------------------------------------
+Sat Dec 23 15:26:07 UTC 2017 - matwey.kornilov@gmail.com
+
+- Follow openSUSE Python Singlespec 
+
+-------------------------------------------------------------------
+Sat Apr  2 14:03:44 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 0.1.9.1
+  - Add migrations module to better support Djangp 1.9
+
+-------------------------------------------------------------------
+Tue Feb 23 13:37:04 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 0.1.8
+  - Fix support Django >= 1.8
+
+-------------------------------------------------------------------
+Sun Jan 18 18:58:35 UTC 2015 - matwey.kornilov@gmail.com
+
+- Version 0.1.7
+
+-------------------------------------------------------------------
+Fri Dec  5 08:18:27 UTC 2014 - matwey.kornilov@gmail.com
+
+- Initial version
+
