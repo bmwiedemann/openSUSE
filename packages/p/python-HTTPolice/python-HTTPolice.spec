@@ -1,7 +1,7 @@
 #
 # spec file for package python-HTTPolice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module bitstring >= 3.1.4}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module dominate >= 2.2.0}
 BuildRequires:  %{python_module lxml >= 4.1.0}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -51,6 +50,7 @@ problems in your HTTP server or client.
 
 %prep
 %setup -q -n HTTPolice-%{version}
+rm pytest.ini
 
 %build
 export LANG=en_US.UTF-8
