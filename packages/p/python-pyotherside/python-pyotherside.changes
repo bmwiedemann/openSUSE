@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 09:15:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.9:
+  * New version to support python 3.8+
+
+-------------------------------------------------------------------
 Fri May 10 11:47:54 UTC 2019 - t.gruner@katodev.de
 
 - update to version 1.5.4git (commit ebe2845 on 8 Feb 2019)
