@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:08:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.1:
+  * Compatibility fix for Python 3.8 (issue #125)
+  * Fix memory leak in case of failed validation (issue 126)
+
+-------------------------------------------------------------------
 Mon Oct  7 08:29:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call to run on sitearch not sitelib

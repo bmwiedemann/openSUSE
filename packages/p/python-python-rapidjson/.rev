@@ -40,4 +40,12 @@
     <comment>- Fix fdupes call to run on sitearch not sitelib</comment>
     <requestid>735631</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7fbca32faad4a1cc8c37b7b65a7eb1cb</srcmd5>
+    <version>0.9.1</version>
+    <time>1583837728</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783263</requestid>
+  </revision>
 </revisionlist>
