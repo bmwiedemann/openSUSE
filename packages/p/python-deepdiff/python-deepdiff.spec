@@ -1,7 +1,7 @@
 #
 # spec file for package python-deepdiff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-deepdiff
-Version:        3.3.0
+Version:        4.2.0
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
 URL:            https://github.com/seperman/deepdiff
-Source:         https://github.com/seperman/deepdiff/archive/v%{version}.tar.gz
+Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module ordered-set}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonpickle
+Requires:       python-ordered-set
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,11 +54,12 @@ within other objects, and hash any object based on their content.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover
+# murmur3 is optional, deepdiff uses sha256 instead
+%pytest -k 'not TestDeepHashMurmur3'
 
 %files %{python_files}
 %license LICENSE
-%doc README.txt
+%doc README.md AUTHORS
 %{python_sitelib}/*
 
 %changelog

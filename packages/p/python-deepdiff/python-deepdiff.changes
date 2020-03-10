@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:07:40 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.2.0
+  - v4-2-0: .json property is finally removed. Fix for Py3.10. Dropping support for EOL Python 3.4. Ignoring private keys when calculating hashes. For example __init__ is not a part of hash calculation anymore. Fix for #166 Problem with comparing lists, with an boolean as element.
+  - v4-0-9: Fixing the bug for hashing custom unhashable objects
+  - v4-0-8: Adding ignore_nan_inequality for float('nan')
+  - v4-0-7: Hashing of the number 1 vs. True
+  - v4-0-6: found a tiny bug in Python formatting of numbers in scientific notation. Added a workaround.
+  - v4-0-5: Fixing number diffing. Adding number_format_notation and number_to_string_func.
+  - v4-0-4: Adding ignore_string_case and ignore_type_subclasses
+  - v4-0-3: Adding versionbump tool for release
+  - v4-0-2: Fixing installation issue where rst files are missing.
+  - v4-0-1: Fixing installation Tarball missing requirements.txt . DeepDiff v4+ should not show up as pip installable for Py2. Making Murmur3 installation optional.
+  - v4-0-0: Ending Python 2 support, Adding more functionalities and documentation for DeepHash. Switching to Pytest for testing. Switching to Murmur3 128bit for hashing. Fixing classes which inherit from classes with slots didn't have all of their slots compared. Renaming ContentHash to DeepHash. Adding exclude by path and regex path to DeepHash. Adding ignore_type_in_groups. Adding match_string to DeepSearch. Adding Timedelta object diffing.
+  - v3-5-0: Exclude regex path
+  
+-------------------------------------------------------------------
 Fri Oct  4 08:10:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use proper sentences in descriptions.
