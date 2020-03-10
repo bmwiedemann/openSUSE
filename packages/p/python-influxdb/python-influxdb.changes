@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:37:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- skip python 2.x build (pandas went py3 only)
+
+-------------------------------------------------------------------
 Wed Sep 11 14:50:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.2.3:

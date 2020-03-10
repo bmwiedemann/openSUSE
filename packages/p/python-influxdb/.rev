@@ -78,4 +78,12 @@
   * python-influxdb-d5d1249.patch</comment>
     <requestid>730200</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d8fec36acdcdf10706986900a33441a3</srcmd5>
+    <version>5.2.3</version>
+    <time>1583831531</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 2.x build (pandas went py3 only)</comment>
+    <requestid>783186</requestid>
+  </revision>
 </revisionlist>
