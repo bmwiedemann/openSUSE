@@ -241,12 +241,15 @@
       <repopackage name="blinken"/>
       <repopackage name="blinken-lang"/>
       <repopackage name="blog"/>
+      <repopackage name="blueberry"/>
+      <repopackage name="blueberry-lang"/>
       <repopackage name="bluedevil5"/>
       <repopackage name="bluedevil5-lang"/>
       <repopackage name="bluez"/>
       <repopackage name="bluez-firmware"/>
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bluez-qt-udev"/>
+      <repopackage name="bluez-tools"/>
       <repopackage name="bogofilter-common"/>
       <repopackage name="bogofilter-db"/>
       <repopackage name="bolt"/>
@@ -983,7 +986,6 @@
       <repopackage name="hylafax+"/>
       <repopackage name="hylafax+-client"/>
       <repopackage name="hyper-v"/>
-      <repopackage name="i4l-isdnlog"/>
       <repopackage name="iagno"/>
       <repopackage name="iagno-lang"/>
       <repopackage name="ibus"/>
@@ -4375,6 +4377,7 @@
       <repopackage name="python3-semanage" arch="x86_64"/>
       <repopackage name="python3-service_identity"/>
       <repopackage name="python3-setools" arch="x86_64"/>
+      <repopackage name="python3-setproctitle"/>
       <repopackage name="python3-setuptools"/>
       <repopackage name="python3-simplejson"/>
       <repopackage name="python3-sip"/>
@@ -5317,6 +5320,7 @@
       <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
+      <repopackage name="typelib-1_0-XApp-1_0"/>
       <repopackage name="typelib-1_0-Zpj-0_0"/>
       <repopackage name="ucode-amd"/>
       <repopackage name="ucode-intel"/>
