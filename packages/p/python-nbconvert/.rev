@@ -26,4 +26,12 @@
     <comment></comment>
     <requestid>747936</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9dabf880b09d880466ae140ef1a302f4</srcmd5>
+    <version>5.6.1</version>
+    <time>1583829638</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783178</requestid>
+  </revision>
 </revisionlist>
