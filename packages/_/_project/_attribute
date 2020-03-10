@@ -251,7 +251,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Virtualization:WSL server:monitoring:zabbix network:vpn:wireguard KDE:Qt:5.14 KDE:Qt:5.15 network:messaging:kafka  devel:languages:python:mailman X11:LXQt:Other security:OpenVAS:STABLE security:idm
+devel-whitelist = KDE:Qt:5.14 KDE:Qt:5.15 Cloud:Seafile
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
