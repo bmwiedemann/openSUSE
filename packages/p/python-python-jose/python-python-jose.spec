@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jose
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,26 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-jose
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        JOSE implementation in Python
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/mpdavis/python-jose
+URL:            https://github.com/mpdavis/python-jose
 Source:         https://github.com/mpdavis/python-jose/archive/%{version}.tar.gz#/python-jose-%{version}.tar.gz
 Patch0:         unpin-deps.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ecdsa
-Requires:       python-rsa
 Requires:       python-six
 Recommends:     python-cryptography
+Recommends:     python-pyasn1
 Recommends:     python-pycryptodome >= 3.3.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module ecdsa}
+BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pycryptodome >= 3.3.1}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module rsa}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
@@ -52,7 +49,8 @@ implementation in Python.
 %prep
 %setup -q -n python-jose-%{version}
 %patch0 -p1
-sed -i '/addopts/d' setup.cfg
+sed -i -e '/addopts/d' setup.cfg
+sed -i -e '/pytest-runner/d' setup.py
 
 %build
 %python_build
@@ -62,7 +60,7 @@ sed -i '/addopts/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst

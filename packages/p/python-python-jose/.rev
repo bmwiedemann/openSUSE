@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>693149</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa30c3b42d9d00641bea063104711aa6</srcmd5>
+    <version>3.1.0</version>
+    <time>1583837725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Improve JWT.decode() #76 (fixes #75)
+  * ort headers when serializing to allow for headless JWT #136 (fixes #80)
+  * djust dependency handling
+  * se PyCryptodome instead of PyCrypto #83
+  * pdate package dependencies #124 (fixes #158)
+  * void using deprecated methods #85
+  * upport X509 certificates #107
+  * solate and flesh out cryptographic backends to enable independent operation #129 (fixes #114)
+  * emove pyca/cryptography backend's dependency on python-ecdsa #117
+  * Remove pycrypto/dome backends' dependency on python-rsa #121
+  * Make pyca/cryptography backend the preferred backend if multiple backends are present #122
+- Rebase patch unpin-deps.patch</comment>
+    <requestid>783261</requestid>
+  </revision>
 </revisionlist>

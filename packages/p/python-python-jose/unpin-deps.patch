@@ -1,29 +1,20 @@
-Index: python-jose-3.0.1/setup.py
+Index: python-jose-3.1.0/setup.py
 ===================================================================
---- python-jose-3.0.1.orig/setup.py
-+++ python-jose-3.0.1/setup.py
-@@ -23,8 +23,8 @@ def get_packages(package):
- 
+--- python-jose-3.1.0.orig/setup.py
++++ python-jose-3.1.0/setup.py
+@@ -35,11 +35,11 @@ def _cryptography_version():
+ pyasn1 = ['pyasn1']
  extras_require = {
-     'cryptography': ['cryptography'],
--    'pycrypto': ['pycrypto >=2.6.0, <2.7.0'],
--    'pycryptodome': ['pycryptodome >=3.3.1, <4.0.0'],
-+    'pycrypto': ['pycrypto >=2.6.0'],
-+    'pycryptodome': ['pycryptodome >=3.3.1'],
+     'cryptography': [_cryptography_version()],
+-    'pycrypto': ['pycrypto >=2.6.0, <2.7.0'] + pyasn1,
+-    'pycryptodome': ['pycryptodome >=3.3.1, <4.0.0'] + pyasn1,
++    'pycrypto': ['pycrypto >=2.6.0'] + pyasn1,
++    'pycryptodome': ['pycryptodome >=3.3.1'] + pyasn1,
  }
+-legacy_backend_requires = ['ecdsa <1.0', 'rsa'] + pyasn1
+-install_requires = ['six <2.0']
++legacy_backend_requires = ['ecdsa', 'rsa'] + pyasn1
++install_requires = ['six']
  
- 
-@@ -58,12 +58,10 @@ setup(
-     setup_requires=['pytest-runner'],
-     tests_require=[
-         'six',
--        'future',
-         'ecdsa',
-         'pytest',
--        'pytest-cov',
-         'pytest-runner',
-         'cryptography',
-     ],
--    install_requires=['six <2.0', 'ecdsa <1.0', 'rsa', 'future <1.0']
-+    install_requires=['six', 'ecdsa', 'rsa']
- )
+ # TODO: work this into the extras selection instead.
+ install_requires += legacy_backend_requires
