@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  4 09:44:06 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Add gdm-disable-wayland-on-mgag200-chipsets.patch: disable wayland
+  on mgag200 chipsets, this patch used to be part of 
+  gdm-disable-wayland-on-unsupported-chipsets.patch which was dropped,
+  however the mgag200 part is still not fixed by upstream. So we should
+  keep this part to make sure GNOME works properly on mgag200 chipsets
+  (bsc#1162888, glgo#GNOME/mutter#57).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:08:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

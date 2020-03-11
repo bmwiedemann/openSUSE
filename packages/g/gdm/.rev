@@ -1679,4 +1679,18 @@
     <comment>Eliminate the -lang recommends (forwarded request 767120 from dimstar)</comment>
     <requestid>767388</requestid>
   </revision>
+  <revision rev="224" vrev="7">
+    <srcmd5>35c4a21e9dc21d6d18e7775a1a4ca5b0</srcmd5>
+    <version>3.34.1</version>
+    <time>1583947964</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gdm-disable-wayland-on-mgag200-chipsets.patch: disable wayland
+  on mgag200 chipsets, this patch used to be part of 
+  gdm-disable-wayland-on-unsupported-chipsets.patch which was dropped,
+  however the mgag200 part is still not fixed by upstream. So we should
+  keep this part to make sure GNOME works properly on mgag200 chipsets
+  (bsc#1162888, glgo#GNOME/mutter#57).
+</comment>
+    <requestid>782593</requestid>
+  </revision>
 </revisionlist>

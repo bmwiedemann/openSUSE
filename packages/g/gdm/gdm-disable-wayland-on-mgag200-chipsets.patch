@@ -1,0 +1,17 @@
+diff --git a/data/61-gdm.rules.in b/data/61-gdm.rules.in
+index ad5b87d..f964259 100644
+--- a/data/61-gdm.rules.in
++++ b/data/61-gdm.rules.in
+@@ -4,3 +4,12 @@ ATTR{vendor}=="0x1013", ATTR{device}=="0x00b8", ATTR{subsystem_vendor}=="0x1af4"
+ ATTR{vendor}=="0x19e5", ATTR{device}=="0x1711", RUN+="@libexecdir@/gdm-disable-wayland"
+ # disable Wayland when using the proprietary nvidia driver
+ DRIVER=="nvidia", RUN+="@libexecdir@/gdm-disable-wayland"
++# disable Wayland on Matrox Electronics Systems Ltd. MGA G200 server engines
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0524", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0530", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0532", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0533", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0534", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0536", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0538", RUN+="@libexecdir@/gdm-disable-wayland"

@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,8 @@ Patch9:         gdm-initial-setup-hardening.patch
 Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
 # PATCH-FIX-UPSTREAM gdm-switch-user-tty7.patch bsc#1155408 glgo#GNOME#gdm#532 xwang@suse.com -- Switch to tty7 when switch user
 Patch14:        gdm-switch-user-tty7.patch
+# PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
+Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
@@ -218,6 +220,7 @@ cp %{SOURCE8} .
 %patch13 -p1
 %endif
 %patch14 -p1
+%patch15 -p1
 
 # SLE-only patches start at 1000
 %if !0%{?is_opensuse}
