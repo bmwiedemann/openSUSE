@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:39:31 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to 59d8515
+
+  * Update travis ruby versions
+  * Fix tabs in README
+  * Add license accept through config file
+  * Try to introduce chef license configs
+
+  Add: 0001-Add-shebangs-to-scripts-in-acceptance-support-skelet.patch
+
+  Run %fdupes in %install
+
+-------------------------------------------------------------------
 Thu Apr 25 20:54:16 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Make packaging compatible with Factory rules

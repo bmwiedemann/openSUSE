@@ -71,11 +71,13 @@
 # ## used by gem2rpm
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
-# :preamble: |-
-#   BuildRequires: foobar
+:preamble: |-
+  BuildRequires: fdupes
 #   Requires: foobar
 # ## used by gem2rpm
-# :patches:
+:patches:
+  # https://github.com/hashicorp/vagrant-spec/pull/32
+  0001-Add-shebangs-to-scripts-in-acceptance-support-skelet.patch: -p1
 # ## used by gem2rpm
 :sources:
 # - foo.desktop
@@ -89,6 +91,7 @@
 # ## used by gem2rpm
 :post_install: |-
   find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml \) | xargs rm
+  %fdupes %{buildroot}/%{_libdir}/ruby/gems
 #   # delete custom files here or do other fancy stuff
 #   install -D -m 0644 %{S:1} %{buildroot}%{_bindir}/gem2rpm-opensuse
 # ## used by gem2rpm
