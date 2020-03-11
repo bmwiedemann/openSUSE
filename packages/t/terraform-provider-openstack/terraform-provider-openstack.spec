@@ -65,7 +65,7 @@ This is a terraform provider that lets you provision servers on an OpenStack pla
 export GO111MODULE=off
 export GOPROXY=off
 %if 0%{?suse_version}
-%goprep github.com/terraform-providers/terraform-provider-openstack
+%goprep github.com/terraform-providers/%{name}
 %gobuild
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?ubuntu_version}
@@ -75,6 +75,7 @@ export GOPATH=$(pwd)/_build
 cd _build/src/github.com/terraform-providers/terraform-provider-openstack
 go build .
 %endif
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
 export GO111MODULE=off
@@ -104,5 +105,6 @@ cd $curr
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_bindir}/%{name}_v%{version}
 
 %changelog
