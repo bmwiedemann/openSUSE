@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar  9 17:10:27 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- Simplified the conditional around systemd_ordering to just use
+  suse_version >= 1500.
+
+-------------------------------------------------------------------
+Fri Mar  6 22:46:16 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.0.5 (build 15389592) (boo#1165955)
+  + DNS server is reported incorrectly as '127.0.0.53' when using
+    systemd-resolved. DNS server is reported incorrectly in GuestInfo as
+    '127.0.0.53' , when the OS uses systemd-resolved. This issue is fixed
+    in this release.
+- Conditionalized the use of systemd_ordering.  Use systemd_ordering
+  for factory, openSUSE >= 15, and SLE >= 15.  Use systemd_requires
+  for older openSUSE and SLE releases.
+- Conditionalize out the use of %license COPYING for SLE 12 SP2 and older.
+- Added patches
+  + gcc10-warning.patch (boo#1160408)
+  + diskinfo-debug-logging-1162435.patch (boo#1162435 and bsc#1162119)
+    - Changed g_warning to g_debug
+  + app_info_plugin.patch (boo#1165955)
+- Drop unnecessary patch:
+  - fix-leaks-Aliases-MappedAliases.patch
+
+-------------------------------------------------------------------
 Fri Jan 24 14:55:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to

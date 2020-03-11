@@ -64,8 +64,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  14549434
-Version:        11.0.0
+%define bldnum  15389592
+Version:        11.0.5
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -161,10 +161,16 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64
 #Upstream patches
-Patch0:         fix-leaks-Aliases-MappedAliases.patch
-Patch1:         gcc9-static-inline.patch
+Patch0:         gcc9-static-inline.patch
+Patch1:         gcc10-warning.patch
+Patch2:         diskinfo-debug-logging-1162435.patch
+Patch3:         app_info_plugin.patch
 
+%if 0%{?suse_version } >= 1500
 %systemd_ordering
+%else
+%systemd_requires
+%endif
 
 %description
 Open Virtual Machine Tools (open-vm-tools) are the open source
@@ -231,6 +237,8 @@ sed -i -e "s/\r//" README
 #Upstream patches
 %patch0 -p2
 %patch1 -p2
+%patch2 -p2
+%patch3 -p2
 
 %build
 %if %{with_X}
@@ -395,8 +403,12 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
+%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse} 
+%doc AUTHORS COPYING ChangeLog NEWS README
+%else
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
+%endif
 %{_bindir}/vmtoolsd
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
@@ -408,6 +420,7 @@ rm -rf %{buildroot}
 %{_libdir}/%{name}/plugins/vmsvc/libresolutionKMS.so
 %{_libdir}/%{name}/plugins/vmsvc/libtimeSync.so
 %{_libdir}/%{name}/plugins/vmsvc/libvmbackup.so
+%{_libdir}/%{name}/plugins/vmsvc/libappInfo.so
 %{_libdir}/%{name}/plugins/common/libhgfsServer.so
 %{_libdir}/%{name}/plugins/common/libvix.so
 %{_bindir}/vmhgfs-fuse

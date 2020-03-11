@@ -1,0 +1,40 @@
+--- a/open-vm-tools/lib/user/utilBacktrace.c
++++ b/open-vm-tools/lib/user/utilBacktrace.c
+@@ -510,13 +510,16 @@
+    options.bugNumber = bugNr;
+    CoreDump_LogFullBacktraceToFunc(&options, outFunc, outFuncData);
+ #else
+-   uintptr_t *x = (uintptr_t *) &bugNr;
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Warray-bounds"
++   uintptr_t *x = ((uintptr_t *) &bugNr) - 2;
++#pragma GCC diagnostic pop
+ 
+    if (bugNr == 0) {
+       outFunc(outFuncData, "Backtrace:\n");
+    } else {
+       outFunc(outFuncData, "Backtrace for bugNr=%d\n",bugNr);
+    }
+-   Util_BacktraceFromPointerWithFunc(&x[-2], outFunc, outFuncData);
++   Util_BacktraceFromPointerWithFunc(x, outFunc, outFuncData);
+ #endif
+ }
+--- a/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp
++++ b/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp
+@@ -94,15 +94,15 @@
+  * This is for V1 text copy paste only!
+  */
+ #ifndef GDK_SELECTION_CLIPBOARD
+-GdkAtom GDK_SELECTION_CLIPBOARD;
++extern GdkAtom GDK_SELECTION_CLIPBOARD;
+ #endif
+ 
+ #ifndef GDK_SELECTION_TYPE_TIMESTAMP
+-GdkAtom GDK_SELECTION_TYPE_TIMESTAMP;
++extern GdkAtom GDK_SELECTION_TYPE_TIMESTAMP;
+ #endif
+ 
+ #ifndef GDK_SELECTION_TYPE_UTF8_STRING
+-GdkAtom GDK_SELECTION_TYPE_UTF8_STRING;
++extern GdkAtom GDK_SELECTION_TYPE_UTF8_STRING;
+ #endif
