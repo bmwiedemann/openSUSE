@@ -245,4 +245,12 @@
     <comment>- Use %requires_eq for cilium-proxy. (forwarded request 779897 from mrostecki)</comment>
     <requestid>779898</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>31e97290701d8f18dd07a89a5f0abcdf</srcmd5>
+    <version>1.7.0</version>
+    <time>1583948033</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove cilium-init package. (forwarded request 783749 from mrostecki)</comment>
+    <requestid>783750</requestid>
+  </revision>
 </revisionlist>

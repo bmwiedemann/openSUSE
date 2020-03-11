@@ -71,6 +71,7 @@ BuildRequires:  unzip
 BuildRequires:  golang(API) = 1.13
 Requires:       awk
 Requires:       binutils
+Requires:       bpftool
 %requires_eq    cilium-proxy
 # clang is needed as runtime dependency for compiling BPF programs by cilium
 Requires:       clang
@@ -129,19 +130,6 @@ services deployed using Linux container management platforms like Docker and
 Kubernetes.
 
 This package provides a Docker libnetwork plugin for Cilium.
-
-%package init
-Summary:        Script for the Cilium init container
-
-%description init
-Cilium is a software for providing, and transparently securing, network
-connectivity, and for load-balancing between application containers and
-services deployed using Linux container management platforms like Docker and
-Kubernetes.
-
-This package provides a script for the Cilium init container which cleans BPF
-maps states which should be executed before launching Cilium in Kubernetes
-clusters.
 
 %package operator
 Summary:        Kubernetes operator for Cilium
@@ -259,7 +247,6 @@ sed -i \
 sed -i \
     -e 's|cniInstallScript: /cni-install.sh|cilium-cni-install|' \
     -e 's|cniUninstallScript: /cni-uninstall.sh|cilium-cni-uninstall|' \
-    -e 's|initImage: cilium|initImage: cilium-init|' \
     -e 's|initScript: /init-container.sh|initScript: cilium-init|' \
     %{buildroot}%{_datadir}/k8s-helm/cilium/charts/agent/values.yaml
 sed -i \
@@ -317,6 +304,7 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_bindir}/cilium-bugtool
 %{_bindir}/cilium-health
 %{_bindir}/cilium-health-responder
+%{_bindir}/cilium-init
 %{_bindir}/cilium-map-migrate
 %{_bindir}/cilium-node-monitor
 %{_bindir}/maptool
@@ -335,9 +323,6 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_unitdir}/cilium-docker.service
 %{_sbindir}/rccilium-docker
 %{_bindir}/cilium-docker
-
-%files init
-%{_bindir}/cilium-init
 
 %files operator
 %{_bindir}/cilium-operator

@@ -1,4 +1,4 @@
-From 74e791429bb4483c9039a4c93ba0b398991bb73b Mon Sep 17 00:00:00 2001
+From 6f533168004d9bdc7be259e0b0860bc6b4792936 Mon Sep 17 00:00:00 2001
 From: Michal Rostecki <mrostecki@opensuse.org>
 Date: Mon, 24 Feb 2020 19:57:31 +0100
 Subject: [PATCH 4/4] helm: Allow variables for compatibility with openSUSE
@@ -16,18 +16,15 @@ possible to use them with images from registry.opensuse.org:
 - cniUninstallScript - path or command of the script which uninstalls
   CNI plugin (default: /cni-uninstall.sh; openSUSE:
   cilium-cni-uninstall)
-- initImage - name of the image used for the init container
-  (default: cilium; openSUSE: cilium-init)
 - initScript - path or command of the init container script
   (default: /init-container.sh; openSUSE: cilium-init)
 
-There are two motivations behind those values:
-- openSUSE images use only RPM packages, RPM packages have strict rules
-  where files can be installed. It's against openSUSE policies to
-  install scipts in the / directory, they have to be installed in
-  /usr/bin. Having ".sh" in names of installed scripts is discouraged.
-- openSUSE ships a separate container image for the init container
-  script, which has its own dedicated RPM package.
+Reason behind those changes is that openSUSE images use only RPM
+packages as the source of any files. rpmlint has strict rules where
+files can be installed. It's against rpmlintrc rules and openSUSE
+policies to install scripts in the / directory, they have to be
+installed in /usr/bin. Having ".sh" extensions in names of installed
+scripts is discouraged.
 
 After this commit, generating YAML manifest using openSUSE images can be
 done with:
@@ -39,7 +36,6 @@ done with:
       --set global.tag=1.6.5 \
       --set agent.cniInstallScript=cilium-cni-install \
       --set agent.cniUninstallScript=cilium-cni-uninstall \
-      --set agent.initImage=cilium-init \
       --set agent.initScript=cilium-init \
       --set operator.image=cilium-operator > opensuse.yaml
 
@@ -48,8 +44,8 @@ For the upstream Cilium images, default values do not bring any changes.
 Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
 ---
  .../charts/agent/templates/daemonset.yaml      | 18 +++++++++---------
- .../kubernetes/cilium/charts/agent/values.yaml |  4 ++++
- 2 files changed, 13 insertions(+), 9 deletions(-)
+ .../kubernetes/cilium/charts/agent/values.yaml |  3 +++
+ 2 files changed, 12 insertions(+), 9 deletions(-)
 
 diff --git a/install/kubernetes/cilium/charts/agent/templates/daemonset.yaml b/install/kubernetes/cilium/charts/agent/templates/daemonset.yaml
 index fe99c9e53..de24ad7c4 100644
@@ -108,14 +104,13 @@ index fe99c9e53..de24ad7c4 100644
          imagePullPolicy: {{ .Values.global.pullPolicy }}
          name: clean-cilium-state
 diff --git a/install/kubernetes/cilium/charts/agent/values.yaml b/install/kubernetes/cilium/charts/agent/values.yaml
-index 233d3e068..d534de3d2 100644
+index 233d3e068..788bde816 100644
 --- a/install/kubernetes/cilium/charts/agent/values.yaml
 +++ b/install/kubernetes/cilium/charts/agent/values.yaml
-@@ -1,4 +1,8 @@
+@@ -1,4 +1,7 @@
 +cniInstallScript: /cni-install.sh
 +cniUninstallScript: /cni-uninstall.sh
  image: cilium
-+initImage: cilium
 +initScript: /init-container.sh
  
  # Specifies the maximum number of Pods that can be unavailable during the
