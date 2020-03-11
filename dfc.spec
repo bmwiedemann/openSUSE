@@ -1,7 +1,7 @@
 #
 # spec file for package dfc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,10 +23,9 @@ Release:        0
 Summary:        Display file system space usage using graphs and colors
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
-Url:            http://projects.gw-computing.net/projects/dfc/
+URL:            https://projects.gw-computing.net/projects/dfc/
 Source0:        http://projects.gw-computing.net/attachments/download/615/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-Recommends:     %{name}-lang
 
 %description
 dfc is a simple tool that displays file system space usage using graphs and
@@ -41,18 +40,20 @@ colors.
 %cmake \
   -DSYSCONFDIR=%{_sysconfdir} \
   -DDFC_DOC_PATH=%{_docdir}/%{name}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
+rm -rf %{buildroot}%{_docdir}/%{name}/LICENSE
 %find_lang %{name} --with-man
 
 %files
-%doc AUTHORS.md CHANGELOG.md README.md LICENSE HACKING.md TRANSLATORS.md
+%license LICENSE
+%doc AUTHORS.md CHANGELOG.md README.md HACKING.md TRANSLATORS.md
 %dir %{_sysconfdir}/xdg/dfc/
 %config(noreplace) %{_sysconfdir}/xdg/dfc/dfcrc
 %{_bindir}/dfc
-%{_mandir}/man1/dfc.1%{ext_man}
+%{_mandir}/man1/dfc.1%{?ext_man}
 
 %files lang -f %{name}.lang
 %dir %{_sysconfdir}/xdg/dfc/
