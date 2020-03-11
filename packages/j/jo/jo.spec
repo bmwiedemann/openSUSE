@@ -1,7 +1,7 @@
 #
 # spec file for package jo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,12 +38,11 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Text/Utilities
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(jo:bash)
+Supplements:    (jo and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
 Bash completion script for %{name}.
-
 
 %prep
 %setup -q
@@ -52,13 +51,13 @@ Bash completion script for %{name}.
 autoreconf -fiv
 export bashcompdir=%{_datadir}/bash-completion/completions/
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license COPYING
