@@ -302,4 +302,24 @@
   * Update to sync with mongodb 4.2</comment>
     <requestid>729840</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>62de161b85278607e0a695e06443b118</srcmd5>
+    <version>3.10.1</version>
+    <time>1583948719</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.1:
+  - Support for Client-Side Field Level Encryption with MongoDB 4.2. See
+    :doc:`examples/encryption` for examples.
+  - Support for Python 3.8.
+  - Added :attr:`pymongo.client_session.ClientSession.in_transaction`.
+  - Do not hold the Topology lock while creating connections in a MongoClient's
+    background thread. This change fixes a bug where application operations would
+    block while the background thread ensures that all server pools have
+    minPoolSize connections.
+  - Fix a UnicodeDecodeError bug when coercing a PyMongoError with a non-ascii
+    error message to unicode on Python 2.
+  - Fix an edge case bug where PyMongo could exceed the server's
+    maxMessageSizeBytes when generating a compressed bulk write command.</comment>
+    <requestid>783016</requestid>
+  </revision>
 </revisionlist>
