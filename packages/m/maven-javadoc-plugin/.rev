@@ -31,4 +31,12 @@
     <comment>3.1.1</comment>
     <requestid>750844</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e3601c68b125483716849c49bfde6304</srcmd5>
+    <version>3.1.1</version>
+    <time>1583949259</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade doxia/doxia-sitetools</comment>
+    <requestid>783796</requestid>
+  </revision>
 </revisionlist>
