@@ -622,4 +622,26 @@
     <comment></comment>
     <requestid>765638</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>f787ce0ebbb4d2240f02a431ced25f8d</srcmd5>
+    <version>1.8.12</version>
+    <time>1583947979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.12:
+  + The auth helper in external UI mode can now be run without a
+    display server. Future nmcli version will utilize this for
+    handling the secrets without a graphical desktop.
+  + libnm-glib compatibility (NetworkManager &lt; 1.0) is disabled by
+    default. It can be enabled by passing --with-libnm-glib to
+    configure script. Nobody should need it by now. Users that
+    still use this are encouraged to let us know before the
+    libnm-glib support is removed for good.
+  + Add support for the following OpenVPN options: tls-version-min,
+    tls-version-max, compress.
+  + Support inline CRL blobs during import.
+  + Allow option mssfix to be set to zero.
+  + Updated translations.
+</comment>
+    <requestid>782596</requestid>
+  </revision>
 </revisionlist>

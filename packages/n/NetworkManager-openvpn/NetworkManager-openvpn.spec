@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.8.10
+Version:        1.8.12
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
@@ -89,7 +89,7 @@ exit 0
 %dir %{_libexecdir}/NetworkManager
 %dir %{_libexecdir}/NetworkManager/VPN
 %{_libexecdir}/NetworkManager/VPN/nm-openvpn-service.name
-%config %{_sysconfdir}/dbus-1/system.d/nm-openvpn-service.conf
+%{_datadir}/dbus-1/system.d/nm-openvpn-service.conf
 
 %files gnome
 %{_datadir}/appdata/network-manager-openvpn.metainfo.xml
