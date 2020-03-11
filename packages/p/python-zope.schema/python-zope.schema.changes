@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:24:34 UTC 2020 - pgajdos@suse.com
+
+- update to version 5.0.1
+  - Fix: add ``Text.unicode_normalization = 'NFC'`` as default, because some are
+    persisting schema fields. Setting that attribute only in ``__init__``
+    breaks loading old objects.
+  - Set ``IDecimal`` attributes ``min``, ``max`` and ``default`` as ``Decimal``
+    type instead of ``Number``.
+    See `issue 88 <https://github.com/zopefoundation/zope.schema/issues/88>`_.
+  - Enable unicode normalization for ``Text`` fields.
+    The default is NFC normalization. Valid forms are 'NFC', 'NFKC', 'NFD', and
+    'NFKD'. To disable normalization, set ``unicode_normalization`` to ``False``
+    or ``None`` when calling ``__init__`` of the ``Text`` field.
+    See `issue 86 <https://github.com/zopefoundation/zope.schema/issues/86>`_.
+
+-------------------------------------------------------------------
 Mon Oct 14 14:51:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
