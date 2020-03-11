@@ -1,0 +1,26 @@
+From b870cecd8070974e85db99b082e9bb0e9a903fe0 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 11 Mar 2020 11:28:38 +0100
+Subject: [PATCH] Use a local qthelper.cpp copy
+
+mpv >= 0.33 no longer provides this header and suggests copying this header locally.
+---
+ src/videoplayerplugins/mpv/mpvbackend.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/videoplayerplugins/mpv/mpvbackend.h b/src/videoplayerplugins/mpv/mpvbackend.h
+index d0edf2e..036ac5e 100644
+--- a/src/videoplayerplugins/mpv/mpvbackend.h
++++ b/src/videoplayerplugins/mpv/mpvbackend.h
+@@ -23,7 +23,7 @@
+ 
+ #include "videoplayer/playerbackend.h"
+ 
+-#include <mpv/qthelper.hpp>
++#include "qthelper.hpp"
+ 
+ #include <QWidget>
+ #include <QString>
+-- 
+2.25.1
+

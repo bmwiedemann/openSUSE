@@ -1,7 +1,7 @@
 #
 # spec file for package subtitlecomposer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/maxrd2/subtitlecomposer/
 Source0:        https://github.com/maxrd2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+# No longer part of mpv >= 0.33
+Source1:        https://raw.githubusercontent.com/mpv-player/mpv/v0.32.0/libmpv/qthelper.hpp
+# PATCH-FIX-UPSTREAM use a local qthelper.hpp copy
+Patch0:         0001-Use-a-local-qthelper.cpp-copy.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kauth-devel
@@ -70,6 +74,9 @@ has speech Recognition using PocketSphinx.
 
 %prep
 %setup -q -n SubtitleComposer-%{version}
+%patch0 -p1
+
+cp %{SOURCE1} src/videoplayerplugins/mpv/
 
 # Fix permissions
 chmod 644 ChangeLog

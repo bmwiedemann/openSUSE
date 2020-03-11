@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>712547</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b3cc13536dbdce35d2601302f0834e8e</srcmd5>
+    <version>0.7.0</version>
+    <time>1583949340</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a local qthelper.cpp copy. mpv &gt;= 0.33 doesn't provide this
+  header anymore and suggest keeping a local copy until using a
+  better wrapper.
+- Add 0001-Use-a-local-qthelper.cpp-copy.patch</comment>
+    <requestid>783883</requestid>
+  </revision>
 </revisionlist>
