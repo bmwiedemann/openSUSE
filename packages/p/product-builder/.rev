@@ -288,4 +288,12 @@ as requested by Michel</comment>
   * Fix SLE wrapper for new Package DVD name.</comment>
     <requestid>770240</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2ecd4b9ca3fe3b98eefb7ca31730bd6d</srcmd5>
+    <version>1.2.9</version>
+    <time>1583947926</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782084</requestid>
+  </revision>
 </revisionlist>
