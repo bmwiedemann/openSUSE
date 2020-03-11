@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:40:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.3.0
+  * Don't verify the existing certificate in HTTP01Response.simple_verify, for
+    compatibility with the real-world ACME challenge checks.
+  * Fix acme module warnings when response Content-Type includes params (e.g. charset).
+
+-------------------------------------------------------------------
 Fri Feb 21 15:26:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.2.0
