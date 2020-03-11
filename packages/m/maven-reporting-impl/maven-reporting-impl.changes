@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 11:43:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build against newer doxia that requires html5 module
+
+-------------------------------------------------------------------
 Fri Mar 29 13:44:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-reporting-impl 3.0.0
