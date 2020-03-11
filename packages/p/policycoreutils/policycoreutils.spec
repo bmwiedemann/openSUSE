@@ -1,7 +1,7 @@
 #
 # spec file for package policycoreutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     2.9
-%define libsemanage_ver  2.9
-%define libselinux_ver   2.9
+%define libsepol_ver     3.0
+%define libsemanage_ver  3.0
+%define libselinux_ver   3.0
 %define setools_ver      4.1.1
-%define tstamp           20190315
+%define tstamp           20191204
 Name:           policycoreutils
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ Source5:        system-config-selinux.console
 Source6:        selinux-polgengui.desktop
 Source7:        selinux-polgengui.console
 Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{tstamp}/semodule-utils-%{version}.tar.gz
+Source9:        newrole.pam
 Patch0:         make_targets.patch
 Patch1:         run_init_use_pam_keyinit.patch
 Patch2:         chcat_join.patch
@@ -59,6 +60,7 @@ BuildRequires:  pam-devel
 BuildRequires:  polkit
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-setools >= %{setools_ver}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
@@ -76,7 +78,6 @@ Requires:       util-linux
 Requires(post): selinux-tools
 Requires(pre):  %fillup_prereq
 Requires(pre):  permissions
-Recommends:     %{name}-lang
 Obsoletes:      policycoreutils-python
 %{?systemd_requires}
 
@@ -190,6 +191,7 @@ ln -sf consolehelper %{buildroot}%{_bindir}/selinux-polgengui
 mkdir -p %{buildroot}%{_fillupdir}/
 mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
 mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
+cp %{python3_sitearch}/setools/perm_map %{buildroot}%{_localstatedir}/lib/sepolgen
 mv %{buildroot}%{_prefix}/libexec/selinux/hll/pp %{buildroot}%{_libexecdir}/selinux/hll/pp
 %suse_update_desktop_file -i system-config-selinux System Security Settings
 %suse_update_desktop_file -i selinux-polgengui System Security Settings
@@ -207,6 +209,7 @@ rm %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui \
    %{buildroot}%{_datadir}/applications/system-config-selinux.desktop \
    %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
 %endif
+cp -f %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/newrole
 
 %post -n python3-%{name}
 selinuxenabled && [ -f %{_datadir}/selinux/devel/include/build.conf ] && %{_bindir}/sepolgen-ifgen 2>/dev/null
