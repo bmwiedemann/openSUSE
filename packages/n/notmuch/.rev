@@ -227,4 +227,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>761660</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>300b5194cbd344e0ec6ed6fdaffc2d19</srcmd5>
+    <version>0.29.3</version>
+    <time>1583949215</time>
+    <user>dimstar_suse</user>
+    <comment>Improve Python 3.8 workaround</comment>
+    <requestid>783703</requestid>
+  </revision>
 </revisionlist>

@@ -222,6 +222,15 @@ export NOTMUCH_SKIP_TESTS="T600-named-queries"
 export NOTMUCH_SKIP_TESTS="T357-index-decryption ${NOTMUCH_SKIP_TESTS}"
 %endif # Leap 15.x
 
+# FIXME: these two tests use gdb which prints warnings with gdb <= 8 and
+# python 3.8 thereby breaking the diff
+# We silence the python warnings for now:
+# https://docs.python.org/3/using/cmdline.html#envvar-PYTHONWARNINGS
+# until we get a more recent version of gdb
+%if 0%{?suse_version} > 1500
+export PYTHONWARNINGS=ignore
+%endif
+
 # can only run the testsuite when debugging symbols are available (boo#1152451)
 if echo "%{optflags}"|grep -q '\-g'; then
     make %{?_smp_mflags} check

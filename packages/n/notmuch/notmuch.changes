@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:13:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Improve Python 3.8 workaround:
+  silence python warnings emitted by gdb instead of skipping tests
+
+-------------------------------------------------------------------
+Tue Mar 10 15:57:03 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add workaround for Python 3.8 + GDB 8
+
+-------------------------------------------------------------------
 Mon Jan  6 22:49:12 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - drop python2 subpackages
