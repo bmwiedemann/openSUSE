@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:28:06 UTC 2020 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Fixup stunnel.conf handling:
+  * Remove old static openSUSE provided stunnel.conf.
+  * Use upstream stunnel.conf and tailor it for openSUSE using sed.
+  * Don't show README.openSUSE when installing.
+
+-------------------------------------------------------------------
+Thu Feb 27 10:14:30 UTC 2020 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- enable /etc/stunnel/conf.d
+- re-enable openssl.cnf
+
+-------------------------------------------------------------------
 Mon Feb  3 16:32:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

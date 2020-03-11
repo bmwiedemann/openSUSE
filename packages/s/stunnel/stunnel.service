@@ -1,5 +1,5 @@
 [Unit]
-Description=SSL tunnel for network daemons
+Description=TLS tunnel for network daemons
 Wants=network-online.target
 After=syslog.target network-online.target
 

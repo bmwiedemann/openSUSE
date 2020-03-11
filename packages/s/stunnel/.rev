@@ -139,4 +139,18 @@
     <comment></comment>
     <requestid>769756</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>092d50537d402ceb5953a3208637d52f</srcmd5>
+    <version>5.55</version>
+    <time>1583949333</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup stunnel.conf handling:
+  * Remove old static openSUSE provided stunnel.conf.
+  * Use upstream stunnel.conf and tailor it for openSUSE using sed.
+  * Don't show README.openSUSE when installing.
+- enable /etc/stunnel/conf.d
+- re-enable openssl.cnf
+</comment>
+    <requestid>783872</requestid>
+  </revision>
 </revisionlist>

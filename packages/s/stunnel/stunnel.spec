@@ -40,9 +40,10 @@ Requires(pre):  /usr/sbin/useradd
 Name:           stunnel
 Version:        5.55
 Release:        0
-Summary:        Universal SSL Tunnel
+Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
+Recommends:     stunnel-doc = %version
 URL:            http://www.stunnel.org/
 Source:         https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
 Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
@@ -50,7 +51,6 @@ Source2:        stunnel.keyring
 Source3:        sysconfig.syslog-stunnel
 Source4:        stunnel.rc
 Source5:        stunnel.service
-Source6:        stunnel.conf
 Source7:        stunnel.README
 BuildRequires:  libopenssl-devel
 BuildRequires:  tcpd-devel
@@ -64,16 +64,12 @@ Requires(pre):  group(nogroup)
 %endif
 
 %description
-The stunnel program is designed to work as an SSL encryption wrapper
-between remote clients and local (inetd-startable) or remote
-servers. The concept is that, while having non-SSL aware daemons running on
-your system, you can set them to communicate with clients over a
-secure SSL channels. Stunnel can be used to add SSL functionality to
-commonly used inetd daemons, such as POP-2, POP-3, and IMAP servers
-without any changes to the program code.
+Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without
+any changes in the programs' code. Its architecture is optimized for security, portability, and 
+scalability (including load-balancing), making it suitable for large deployments.
 
 %package doc
-Summary:        Documentation for the universal SSL Tunnel
+Summary:        Documentation for the universal TLS Tunnel
 Group:          Documentation/Other
 Requires:       stunnel = %{version}
 %if 0%{?suse_version} >= 1210
@@ -89,14 +85,14 @@ chmod -x %{_builddir}/stunnel-%{version}/tools/ca.*
 chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
 
 %build
-sed -i 's/-m 1770 -g nogroup//g' tools/Makefile.in
+sed -i 's/-m 1770//g' tools/Makefile.in
 %configure \
 %if 0%{?suse_version} == 1110
 	--disable-fips \
 %endif
 	--disable-static \
 	--bindir=%{_sbindir}
-make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro"
+make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro,-z,now"
 
 # connot do checks with 5.49, checks depend on ncat and network interaction
 #%check
@@ -109,8 +105,9 @@ make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro"
   make install DESTDIR=$RPM_BUILD_ROOT
 %endif
 
-cp -p %{SOURCE1} tools/stunnel.conf-sample.%{VENDORAFFIX}
-cp -p %{SOURCE7} README.%{VENDORAFFIX}
+mkdir -p %{buildroot}%{_docdir}
+mv %{buildroot}%{_datadir}/doc/stunnel %{buildroot}%{_docdir}/
+mkdir -p %{buildroot}%{_docdir}/stunnel/tools
 mkdir -p %{buildroot}%{_fillupdir}
 cp -p %{SOURCE3} %{buildroot}%{_fillupdir}/
 %if 0%{?has_systemd}
@@ -121,14 +118,23 @@ mkdir -p %{buildroot}%{_initddir}/
 install -m 744 %{_sourcedir}/stunnel.rc %{buildroot}/%{_initddir}/stunnel
 ln -s ../..%{_initddir}/stunnel %{buildroot}%{_sbindir}/rcstunnel
 %endif
-mv %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample tools/stunnel.conf-sample
+sed -i "s/^;setuid = nobody/setuid = stunnel/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
+sed -i "s/^;setgid =/setgid =/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
+sed -i "s/^;include =/include =/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
+sed -i '/gmail-pop3/,+25 s/^./;&/' %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
+sed -i "s/; Sample stunnel/# Sample stunnel/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
+sed -i "s/^;/#/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample 
+mv %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf
+
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL
 rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.WCE
 rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.W32
-rm -rf %{buildroot}%{_docdir}/stunnel/tools/stunnel.cnf
-rm -rf %{buildroot}%{_datadir}/doc/stunnel
+rm -rf %{buildroot}%{_docdir}/stunnel/ca-certs.pem
+rm -rf %{buildroot}%{_docdir}/stunnel/plugins/
+
 mkdir -p %{buildroot}%{_localstatedir}/lib/stunnel/{bin,etc,dev,%{_lib},sbin,var/run}
+install -d %{buildroot}%{_sysconfdir}/%{name}/conf.d
 
 %pre
 if ! %{_bindir}/getent passwd stunnel >/dev/null; then
@@ -147,14 +153,6 @@ fi
 %{fillup_and_insserv -f}
 %endif
 %{fillup_only -ans syslog stunnel}
-if ! test -s etc/stunnel/stunnel.conf; then
-        cp -p usr/share/doc/packages/stunnel/stunnel.conf-sample etc/stunnel/stunnel.conf
-        echo copying default config file to %{_sysconfdir}/stunnel/stunnel.conf
-fi
-# first installation?
-if [ $1 = 1 ] && [ ! -f etc/stunnel/stunnel.pem ]; then
-        cat usr/share/doc/packages/stunnel/README.%{VENDORAFFIX}
-fi
 
 %preun
 %if 0%{?has_systemd}
@@ -173,15 +171,12 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc COPYING COPYRIGHT.GPL CREDITS
-%doc README.%{VENDORAFFIX}
-%doc tools/ca.*
-%doc tools/importCA.*
-%doc tools/stunnel.conf-sample
 %{_sbindir}/*
-%{_libdir}/stunnel
+%{_libdir}/%{name}/
 %{_mandir}/man8/*
-%dir %attr(700,root,root) %{_sysconfdir}/stunnel
+%dir %attr(700,root,root) %{_sysconfdir}/%{name}/
+%dir %attr(700,root,root) %{_sysconfdir}/%{name}//conf.d
+%config %{_sysconfdir}/%{name}/stunnel.conf
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel/bin
 %dir %attr(755,root,root) %{_localstatedir}/lib/stunnel%{_sysconfdir}
@@ -199,11 +194,6 @@ fi
 
 %files doc
 %defattr(-,root,root)
-%doc AUTHORS BUGS COPYING COPYRIGHT.GPL CREDITS ChangeLog NEWS PORTS
-%doc README TODO
-%doc doc/stunnel.html
-%doc doc/stunnel.*.html
-%doc doc/en/*
-%doc doc/pl
+%doc %{_docdir}/%{name}
 
 %changelog
