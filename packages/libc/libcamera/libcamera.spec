@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,24 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse1
-Version:        0~699.8a92e6f
+%define lname   libcamera-suse2
+Version:        0~1118.4de31cc
 Release:        0
 Summary:        A complex camera support library in C++
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://git.linuxtv.org/libcamera.git/
+URL:            http://libcamera.org/
+
 Source:         %name-%version.tar.xz
 Patch1:         vers.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch2:         noforcedsize.diff
 BuildRequires:  c++_compiler
-BuildRequires:  meson >= 0.40
+BuildRequires:  meson >= 0.47
 BuildRequires:  pkg-config
+BuildRequires:  python3-PyYAML
 BuildRequires:  xz
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libudev)
 
 %description
@@ -74,6 +78,14 @@ libcamera is an experimental camera user-space API.
 limited and only supports listing cameras in the system and selecting a camera
 to interact with.
 
+%package -n gstreamer-plugins-libcamera
+Summary:        GStreamer plugins from libcamera
+Group:          Productivity/Multimedia/Other
+
+%description -n gstreamer-plugins-libcamera
+libcamera is an experimental camera user-space API.
+This is its integration plugin for gstreamer.
+
 %prep
 %autosetup -p1
 
@@ -103,5 +115,8 @@ perl -i -pe 's{-lcamera-suse}{-lcamera}' "%buildroot/%_libdir/pkgconfig"/*.pc
 %_bindir/cam
 %_libexecdir/libcamera/
 %_libdir/libcamera/
+
+%files -n gstreamer-plugins-libcamera
+%_libdir/gstreamer-1.0/
 
 %changelog
