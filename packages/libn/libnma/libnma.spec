@@ -1,7 +1,7 @@
 #
 # spec file for package libnma
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define base_ver 1.8
 
 Name:           libnma
-Version:        1.8.26
+Version:        1.8.28
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnm) >= 1.7
 BuildRequires:  pkgconfig(mobile-broadband-provider-info)
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 Shared library for NetworkManager-applet.
@@ -47,8 +48,11 @@ Shared library for NetworkManager-applet.
 Summary:        Shared library for NetworkManager-applet
 # Make lang package installable.
 Provides:       %{name}
-# nma-data provides the org.gnome.nm-applet gsettings schema
-Requires:       nma-data
+# Since version 1.8.28
+Obsoletes:      nma-data < %{version}
+Provides:       nma-data = %{version}
+Obsoletes:      libnma-data < %{version}
+Provides:       libnma-data = %{version}
 
 %description -n %{name}%{sover}
 Shared library for NetworkManager-applet.
@@ -88,6 +92,7 @@ Development Files for %{name}.
 %license COPYING
 %doc NEWS
 %{_libdir}/%{name}.so.*
+%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
 %files -n typelib-1_0-NMA-1_0
 %{_libdir}/girepository-1.0/NMA-1.0.typelib
@@ -99,6 +104,8 @@ Development Files for %{name}.
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/NMA-1.0.gir
+%{_datadir}/vala/vapi/libnma.deps
+%{_datadir}/vala/vapi/libnma.vapi
 
 %files lang -f %{name}.lang
 

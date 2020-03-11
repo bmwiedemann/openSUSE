@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar  6 19:15:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.28:
+  + Turned the wireless-security library to a public API.
+  + "org.gnome.nm-applet.gschema.xml" is now part of libnma.
+    Previously, on distributions like Fedora it was packaged as
+    part of nm-connection-editor package. But the schema is used by
+    wireless-security library, gnome-control-center and
+    nm-a/nm-c-e.
+  + Clear key/password input fields when selecting a different
+    certificate in NMACertChooser.
+  + Generate vapi files.
+- Add pkgconfig(vapigen) BuildRequires: New dependency.
+- Drop nma-data Requires: No longer needed. Add nma-data and
+  libnma-data Provides and Obsoletes, make upgrades problemfree
+  for our end-users.
+
+-------------------------------------------------------------------
 Mon Dec  9 09:02:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require nma-data by libnma0: the library references the
