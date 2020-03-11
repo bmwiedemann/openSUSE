@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:10:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-compute >= 11.1.0
+  + python-azure-mgmt-rdbms >= 2.0.0
+  + python-azure-mgmt-storage >= 9.0.0
+
+-------------------------------------------------------------------
 Mon Feb 24 12:41:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires

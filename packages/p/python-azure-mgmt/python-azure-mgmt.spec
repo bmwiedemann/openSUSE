@@ -60,8 +60,8 @@ Requires:       python-azure-mgmt-cognitiveservices < 6.0.0
 Requires:       python-azure-mgmt-cognitiveservices >= 5.0.0
 Requires:       python-azure-mgmt-commerce < 2.0.0
 Requires:       python-azure-mgmt-commerce >= 1.0.1
-Requires:       python-azure-mgmt-compute < 11.0.0
-Requires:       python-azure-mgmt-compute >= 10.0.0
+Requires:       python-azure-mgmt-compute < 12.0.0
+Requires:       python-azure-mgmt-compute >= 11.1.0
 Requires:       python-azure-mgmt-consumption < 4.0.0
 Requires:       python-azure-mgmt-consumption >= 3.0.0
 Requires:       python-azure-mgmt-containerinstance < 2.0.0
@@ -162,8 +162,8 @@ Requires:       python-azure-mgmt-powerbiembedded < 3.0.0
 Requires:       python-azure-mgmt-powerbiembedded >= 2.0.0
 Requires:       python-azure-mgmt-privatedns < 1.0.0
 Requires:       python-azure-mgmt-privatedns >= 0.1.0
-Requires:       python-azure-mgmt-rdbms < 2.0.0
-Requires:       python-azure-mgmt-rdbms >= 1.7.0
+Requires:       python-azure-mgmt-rdbms < 3.0.0
+Requires:       python-azure-mgmt-rdbms >= 2.0.0
 Requires:       python-azure-mgmt-recoveryservices < 1.0.0
 Requires:       python-azure-mgmt-recoveryservices >= 0.3.0
 Requires:       python-azure-mgmt-recoveryservicesbackup < 1.0.0
@@ -198,8 +198,8 @@ Requires:       python-azure-mgmt-sql < 1.0.0
 Requires:       python-azure-mgmt-sql >= 0.16.0
 Requires:       python-azure-mgmt-sqlvirtualmachine < 1.0.0
 Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.5.0
-Requires:       python-azure-mgmt-storage < 8.0.0
-Requires:       python-azure-mgmt-storage >= 7.2.0
+Requires:       python-azure-mgmt-storage < 9.0.0
+Requires:       python-azure-mgmt-storage >= 8.0.0
 Requires:       python-azure-mgmt-storagecache < 1.0.0
 Requires:       python-azure-mgmt-storagecache >= 0.2.0
 Requires:       python-azure-mgmt-storagesync < 1.0.0
