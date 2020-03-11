@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 07:52:20 UTC 2020 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update xrdp-avahi.diff: Fix implicit definitions errors.
+
+-------------------------------------------------------------------
 Sat Feb  8 01:39:00 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Build with --enable-vsock so xrdp can be used with hyper-v
