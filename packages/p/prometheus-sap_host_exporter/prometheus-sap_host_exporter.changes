@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Mar 11 15:49:53 2020 UTC - shap-staff@suse.de
+
+- Release 0.1.0
+
+  ## Added
+  - Implement the SAP Start Service collector (#6)
+  - Implement the SAP Enqueue Server collector (#10)
+  - Implement the SAP AS Dispatcher collector (#13)
+  - Systemd unit (#8)
+  - Metrics documentation (#10)
+  - Design documentation (#10)
+
+  ## Changed
+  - Improved README and development notes (#7, a4dda15)
+
+  ## Fixed
+  - Better explain the `--sap-control-url` CLI flag (#14)
+  - Typo in the example config (#12)
+
+-------------------------------------------------------------------
+Fri Feb 28 11:43:48 2020 UTC - shap-staff@suse.de
+
+- Release 0.0.1
+
+  ## Added
+  - Copied boilerplate from [ClusterLabs/ha_cluster_exporter](//github.com/ClusterLabs/ha_cluster_exporter) (#2)
+
