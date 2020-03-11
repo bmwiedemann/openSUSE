@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:48:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.3
+  * Restrict slot count code to ALPS devices only due to
+    side effects on other devices.
+
+-------------------------------------------------------------------
 Thu Feb 20 09:01:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.15.2

@@ -740,4 +740,12 @@ Peter Hutterer (3):
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>779863</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>790325a2041cb5021069eb4e375387e9</srcmd5>
+    <version>1.15.3</version>
+    <time>1583947908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.15.3</comment>
+    <requestid>782036</requestid>
+  </revision>
 </revisionlist>
