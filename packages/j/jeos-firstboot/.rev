@@ -348,4 +348,13 @@
 </comment>
     <requestid>779535</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0e107cd9017415cecb538677f04afdf6</srcmd5>
+    <version>0.0+git20200309.b23a6ef</version>
+    <time>1583948668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200309.b23a6ef:
+  * Add JEOS_EULA_ALREADY_AGREED option</comment>
+    <requestid>782986</requestid>
+  </revision>
 </revisionlist>
