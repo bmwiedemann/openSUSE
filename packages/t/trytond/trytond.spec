@@ -20,7 +20,7 @@
 %define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.18
+Version:        %{majorver}.19
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ Source3:        %{name}.conf
 Source4:        %{name}_log.conf
 Source20:       %{name}.service
 Patch0:         fix_werkzeug.patch	
+Patch1:         revert_werkzeug_setup.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
@@ -78,6 +79,7 @@ security.
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 %patch0 -p1
+%patch1 -p1
 
 %build
 python3 setup.py build
