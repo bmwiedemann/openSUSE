@@ -1,7 +1,7 @@
 #
 # spec file for package minigalaxy
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minigalaxy
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A GOG client for Linux that lets you download and play your GOG Linux games
 License:        GPL-3.0-only
@@ -44,6 +44,8 @@ A GOG client for Linux that lets you download and play your GOG Linux games.
 
 %install
 %python3_install
+
+rm -rf %{buildroot}%{python3_sitelib}/tests/
 
 %files
 %doc README.md
