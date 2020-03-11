@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>628816</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6339ccda7343474b382fa68ead06f609</srcmd5>
+    <version>0.9.2</version>
+    <time>1583948659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2:
+  * No upstream changelog available
+- Drop no longer needed patches:
+  * codec2-licensed-stuff.patch</comment>
+    <requestid>782984</requestid>
+  </revision>
 </revisionlist>

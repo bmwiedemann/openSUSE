@@ -1,10 +1,10 @@
-Index: codec2-0.8.1/src/gp_interleaver.c
+Index: codec2-0.9.2/src/gp_interleaver.c
 ===================================================================
---- codec2-0.8.1.orig/src/gp_interleaver.c
-+++ codec2-0.8.1/src/gp_interleaver.c
-@@ -74,6 +74,7 @@ int choose_interleaver_b(int Nbits)
-     /* if we get it means a Nbits we dont have in our table so choke */
+--- codec2-0.9.2.orig/src/gp_interleaver.c
++++ codec2-0.9.2/src/gp_interleaver.c
+@@ -80,6 +80,7 @@ int choose_interleaver_b(int Nbits)
      
+     fprintf(stderr, "Nbits: %d, b not found!\n", Nbits);
      assert(0);
 +    return(0);
  }
