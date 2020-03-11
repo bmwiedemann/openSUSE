@@ -1,0 +1,873 @@
+commit 11c01ad586bbf242ab9b929cb3beabb4783da4ee
+Author: Stefan Raspl <raspl@linux.ibm.com>
+Date:   Sat Feb 22 14:04:12 2020 -0700
+
+    Add new attributes in support of secure boot in all final layers
+    
+    Per a request from SUSE, adding the two attributes that will indicate
+    whether secure boot is available and in use. SUSE was actually only asking
+    for one of the attributes, but figured it really makes sense to have both.
+    Note that we will ever get the values for the final layer, as documented in
+    the README entry. Otherwise, we would need to have the values provided via
+    e.g. STHYI for further layers - which is currently not architectured.
+    Might lead to some confusion, when the topmost layer indicates support,
+    but the lower layers have no info available. Was thinking about post-
+    processing the data into lower layers, but that won't work at all: In case
+    secure boot is available but not set, we cannot know at which of the lower
+    layers things broke.
+    
+    Signed-off-by: Stefan Raspl <raspl@linux.ibm.com>
+
+diff --git a/Makefile b/Makefile
+index cff31899..376a5a51 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,8 +7,8 @@ VERSION = 2.0.x
+ VERSION = 2.0.1
+ VERM    = $(shell echo $(VERSION) | cut -d '.' -f 1)
+ CFLAGS ?= -g -Wall -O2
+-CFILES  = query_capacity.c query_capacity_data.c query_capacity_sysinfo.c query_capacity_ocf.c \
+-          query_capacity_hypfs.c query_capacity_sthyi.c
++CFILES  = query_capacity.c query_capacity_data.c query_capacity_sysinfo.c \
++          query_capacity_sysfs.c query_capacity_hypfs.c query_capacity_sthyi.c
+ OBJECTS = $(patsubst %.c,%.o,$(CFILES))
+ .SUFFIXES: .o .c
+ 
+diff --git a/README b/README
+index 2521d604..49d6fec2 100644
+--- a/README
++++ b/README
+@@ -27,9 +27,9 @@ by:
+     Instruction'.
+   * hypfs file system - for more information, refer to 'Device Drivers,
+     Features, and Commands', chapter 'S/390 hypervisor file system'.
+-  * Firmware interface /sys/firmware/ocf - for more information, refer to
+-    'Device Drivers, Features, and Commands', chapter 'Identifying the z
+-    Systems hardware'.
++  * Firmware and other interfaces as made available through sysfs. For more
++    information, refer to 'Device Drivers, Features, and Commands', chapter
++    'Identifying the z Systems hardware'.
+ 
+ Please refer to:
+    http://www.ibm.com/developerworks/linux/linux390/qclib.html
+diff --git a/qc_test.c b/qc_test.c
+index 8a1db825..a83ae199 100644
+--- a/qc_test.c
++++ b/qc_test.c
+@@ -77,6 +77,8 @@ const char *attr2char(enum qc_attr_id id) {
+ 	case qc_capping: return "qc_capping";
+ 	case qc_capping_num: return "qc_capping_num";
+ 	case qc_mobility_enabled: return "qc_mobility_enabled";
++	case qc_has_secure: return "qc_has_secure";
++	case qc_secure: return "qc_secure";
+ 	case qc_has_multiple_cpu_types: return "qc_has_multiple_cpu_types";
+ 	case qc_cp_dispatch_limithard: return "qc_cp_dispatch_limithard";
+ 	case qc_ifl_dispatch_limithard: return "qc_ifl_dispatch_limithard";
+@@ -476,7 +478,7 @@ void print_cec_information(void *hdl, int layer, int indent) {
+ 	print_string_attr(hdl, qc_layer_category, "n/a", layer, indent);
+ 	print_int_attr(hdl, qc_layer_type_num, "n/a", layer, indent);
+ 	print_int_attr(hdl, qc_layer_category_num, "n/a", layer, indent);
+-	print_string_attr(hdl, qc_layer_name, "O V", layer, indent);
++	print_string_attr(hdl, qc_layer_name, "F V", layer, indent);
+ 	print_string_attr(hdl, qc_manufacturer, "S V", layer, indent);
+ 	print_string_attr(hdl, qc_type, "S V", layer, indent);
+ 	print_string_attr(hdl, qc_type_name, "S  ", layer, indent);
+@@ -551,6 +553,8 @@ void print_lpar_information(void *hdl, int layer, int indent) {
+ 	print_string_attr(hdl, qc_partition_char, "S  ", layer, indent);
+ 	print_int_attr(hdl, qc_partition_char_num, "S  ", layer, indent);
+ 	print_int_attr(hdl, qc_adjustment, "S  ", layer, indent);
++	print_int_attr(hdl, qc_has_secure, "F  ", layer, indent);
++	print_int_attr(hdl, qc_secure, "F  ", layer, indent);
+ 
+ 	print_break();
+ 	print_int_attr(hdl, qc_num_core_total, "S  ", layer, indent);
+@@ -717,6 +721,8 @@ void print_zoszcxserver_information(void *hdl, int layer, int indent) {
+ 	print_string_attr(hdl, qc_layer_name, "S V", layer, indent);
+ 	print_string_attr(hdl, qc_capping, " H ", layer, indent);
+ 	print_int_attr(hdl, qc_capping_num, " H ", layer, indent);
++	print_int_attr(hdl, qc_has_secure, "F  ", layer, indent);
++	print_int_attr(hdl, qc_secure, "F  ", layer, indent);
+ 
+ 	print_break();
+ 	print_int_attr(hdl, qc_num_cpu_total, "S V", layer, indent);
+@@ -759,6 +765,9 @@ void print_zvmguest_information(void *hdl, int layer, int indent) {
+ 	print_string_attr(hdl, qc_layer_name, "S V", layer, indent);
+ 	print_string_attr(hdl, qc_capping, " H ", layer, indent);
+ 	print_int_attr(hdl, qc_capping_num, " H ", layer, indent);
++	print_int_attr(hdl, qc_mobility_enabled, "  V", layer, indent);
++	print_int_attr(hdl, qc_has_secure, "F  ", layer, indent);
++	print_int_attr(hdl, qc_secure, "F  ", layer, indent);
+ 
+ 	print_break();
+ 	print_int_attr(hdl, qc_num_cpu_total, "S V", layer, indent);
+@@ -791,7 +800,6 @@ void print_zvmguest_information(void *hdl, int layer, int indent) {
+ 	print_int_attr(hdl, qc_ziip_capped_capacity, "  V", layer, indent);
+ 
+ 	print_break();
+-	print_int_attr(hdl, qc_mobility_enabled, "  V", layer, indent);
+ 	print_int_attr(hdl, qc_has_multiple_cpu_types, "  V", layer, indent);
+ 
+ 	// check an attribute that only exists at a different layer
+@@ -835,6 +843,8 @@ void print_kvmguest_information(void *hdl, int layer, int indent) {
+ 	print_string_attr(hdl, qc_layer_name, "S  ", layer, indent);
+ 	print_string_attr(hdl, qc_layer_extended_name, "S  ", layer, indent);
+ 	print_string_attr(hdl, qc_layer_uuid, "S  ", layer, indent);
++	print_int_attr(hdl, qc_has_secure, "F  ", layer, indent);
++	print_int_attr(hdl, qc_secure, "F  ", layer, indent);
+ 
+ 	print_break();
+ 	print_int_attr(hdl, qc_num_cpu_total, "S  ", layer, indent);
+diff --git a/query_capacity.c b/query_capacity.c
+index 3a109520..644508da 100644
+--- a/query_capacity.c
++++ b/query_capacity.c
+@@ -679,7 +679,8 @@ fail:
+ 
+ static void *_qc_open(struct qc_handle *hdl, int *rc) {
+ 	// sysinfo needs to be handled first, or our LGM check later on will have loopholes
+-	struct qc_data_src *src, *sources[] = {&sysinfo, &ocf, &hypfs, &sthyi, NULL};
++	// sysfs needs to be handled last, as part of the attributes apply to top-most layer only
++	struct qc_data_src *src, *sources[] = {&sysinfo, &hypfs, &sthyi, &sysfs, NULL};
+ 	struct qc_handle *lparhdl;
+ 	int i;
+ 
+@@ -907,7 +908,7 @@ static struct qc_handle *qc_get_layer_handle(void *config, int layer) {
+ }
+ 
+ static int qc_is_attr_id_valid(enum qc_attr_id id) {
+-	return id <= qc_num_ziip_threads;
++	return id <= qc_secure;
+ }
+ 
+ int qc_get_attribute_string(void *cfg, enum qc_attr_id id, int layer, const char **value) {
+diff --git a/query_capacity.h b/query_capacity.h
+index 5786a9b2..69d71d6e 100644
+--- a/query_capacity.h
++++ b/query_capacity.h
+@@ -21,7 +21,7 @@
+  * what layers. The letter encoding in the '\c Src' column describes how the
+  * value is gained:
+  *   - **S**: Provided by \c /proc/sysinfo, which is present in all Linux on z flavors.
+- *   - **O**: Provided by \c /sys/firmware/ocf. Available in Linux kernel 3.0 or higher.
++ *   - **F**: Provided by firmware as made available through the \c sysfs filesystem.
+  *   - **H**: Provided by hypfs, which is (preferably) available through \c debugfs at
+  *            \c /sys/kernel/debug/s390_hypfs, or \c s390_hypfs (typically mounted at
+  *            \c /sys/hypervisor/s390).
+@@ -86,11 +86,11 @@
+  * #qc_layer_category_num              | int  |     | Hardcoded to \c #QC_LAYER_CAT_HOST
+  * #qc_layer_type                      |string|     | Hardcoded to \c "CEC"
+  * #qc_layer_category                  |string|     | Hardcoded to \c "HOST"
+- * #qc_layer_name                      |string|<CODE>O&nbsp;V</CODE>| CPC name of machine
++ * #qc_layer_name                      |string|<CODE>F&nbsp;V</CODE>| CPC name of machine. Available in Linux kernel 3.0 or higher.
+  * #qc_manufacturer                    |string|<CODE>S&nbsp;V</CODE>| \n
+  * #qc_type                            |string|<CODE>S&nbsp;V</CODE>| \n
+  * #qc_type_name                       |string|<CODE>S&nbsp;&nbsp;</CODE>| \n
+- * #qc_type_family                    | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
++ * #qc_type_family                     | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_model_capacity                  |string|<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_model                           |string|<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_sequence_code                   |string|<CODE>S&nbsp;V</CODE>| \n
+@@ -143,6 +143,8 @@
+  * #qc_partition_char                  |string|<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_partition_char_num              | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_adjustment                      | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
++ * #qc_has_secure                      | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
++ * #qc_secure                          | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_core_total                  | int  |<CODE>S</CODE>| Total number of CPs and IFLs configured in the LPARs activation profile
+  * #qc_num_core_configured             | int  |<CODE>S&nbsp;&nbsp;</CODE>| <b>Note</b>: \b [5]
+  * #qc_num_core_standby                | int  |<CODE>S&nbsp;&nbsp;</CODE>| Operational cores that require add'l configuration within the LPAR image to become usable<br><b>Note</b>: \b [5]
+@@ -225,6 +227,9 @@
+  * #qc_layer_name                      |string|<CODE>S&nbsp;V</CODE>| Userid of guest
+  * #qc_capping                         |string|<CODE>&nbsp;H</CODE>| \n
+  * #qc_capping_num                     | int  |<CODE>&nbsp;H</CODE>| \n
++ * #qc_mobility_enabled                | int  |<CODE>&nbsp;&nbsp;V</CODE>| \n
++ * #qc_has_secure                      | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
++ * #qc_secure                          | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_cpu_total                   | int  |<CODE>S&nbsp;V</CODE>| Sum of #qc_num_cpu_configured, #qc_num_cpu_standby and #qc_num_cpu_reserved, or #qc_num_cpu_dedicated and #qc_num_cpu_shared
+  * #qc_num_cpu_configured              | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_cpu_standby                 | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+@@ -240,7 +245,6 @@
+  * #qc_num_ziip_total                  | int  |<CODE>&nbsp;&nbsp;V</CODE>| Sum of #qc_num_ziip_dedicated and #qc_num_ziip_shared<br>Reported in unit of CPUs
+  * #qc_num_ziip_dedicated              | int  |<CODE>&nbsp;&nbsp;V</CODE>| Reported in unit of CPUs
+  * #qc_num_ziip_shared                 | int  |<CODE>&nbsp;&nbsp;V</CODE>| Reported in unit of CPUs
+- * #qc_mobility_enabled                | int  |<CODE>&nbsp;&nbsp;V</CODE>| \n
+  * #qc_has_multiple_cpu_types          | int  |<CODE>&nbsp;&nbsp;V</CODE>| \n
+  * #qc_cp_dispatch_limithard           | int  |<CODE>&nbsp;&nbsp;V</CODE>| \n
+  * #qc_cp_dispatch_type                | int  |<CODE>&nbsp;&nbsp;V</CODE>| Only set in presence of CPs
+@@ -300,6 +304,8 @@
+  * #qc_layer_name                      |string|<CODE>S&nbsp;V</CODE>| Userid of guest
+  * #qc_capping                         |string|<CODE>&nbsp;H</CODE>| \n
+  * #qc_capping_num                     | int  |<CODE>&nbsp;H</CODE>| \n
++ * #qc_has_secure                      | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
++ * #qc_secure                          | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_cpu_total                   | int  |<CODE>S&nbsp;V</CODE>| Sum of #qc_num_cpu_configured, #qc_num_cpu_standby and #qc_num_cpu_reserved, or #qc_num_cpu_dedicated and #qc_num_cpu_shared
+  * #qc_num_cpu_configured              | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_cpu_standby                 | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+@@ -349,6 +355,8 @@
+  * #qc_layer_name                      |string|<CODE>S&nbsp;&nbsp;</CODE>| Guest name truncated to 8 characters<br><b>Note</b>: \b [1]
+  * #qc_layer_extended_name             |string|<CODE>S&nbsp;&nbsp;</CODE>| Guest name with up to 256 characters<br><b>Note</b>: Requires Linux kernel 3.19 or higher, [1]
+  * #qc_layer_uuid                      |string|<CODE>S&nbsp;&nbsp;</CODE>| <b>Note</b>: Requires Linux kernel 3.19 or higher
++ * #qc_has_secure                      | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
++ * #qc_secure                          | int  |<CODE>F&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_cpu_total                   | int  |<CODE>S&nbsp;&nbsp;</CODE>| Sum of #qc_num_cpu_configured, #qc_num_cpu_standby and #qc_num_cpu_reserved, or #qc_num_cpu_dedicated and #qc_num_cpu_shared
+  * #qc_num_cpu_configured              | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+  * #qc_num_cpu_standby                 | int  |<CODE>S&nbsp;&nbsp;</CODE>| \n
+@@ -533,6 +541,14 @@ enum qc_attr_id {
+ 	/** Deprecated, see #qc_mobility_enabled */
+ 	qc_mobility_eligible = 32,
+ #endif
++	/** Indicates whether secure boot is available to the entity.
++	    Requires Linux kernel 5.3 or later.
++	    Note: This attribute is only ever available for the topmost layer. */
++	qc_has_secure = 77,
++	/** Indicates whether entity was booted using the secure boot feature
++	    Requires Linux kernel 5.3 or later.
++	    Note: This attribute is only ever available for the topmost layer. */
++	qc_secure = 78,
+ 	/** Model identifier, see \c STSI instruction in [2] */
+ 	qc_model = 33,
+ 	/** Model capacity of machine, see \c STSI instruction in [2] */
+diff --git a/query_capacity_data.c b/query_capacity_data.c
+index 9147703f..afc2b5f6 100644
+--- a/query_capacity_data.c
++++ b/query_capacity_data.c
+@@ -122,6 +122,8 @@ struct qc_lpar {
+ 	char layer_extended_name[QC_LEN_LAYER_EXTENDED_NAME];
+ 	char layer_uuid[QC_LEN_LAYER_UUID];
+ 	int adjustment;
++        int has_secure;
++        int secure;
+ 	int num_core_total;
+ 	int num_core_configured;
+ 	int num_core_standby;
+@@ -201,6 +203,9 @@ struct qc_zvm_guest {
+ 	char layer_name[QC_LEN_LAYER_NAME];
+ 	char capping[QC_LEN_CAPPING];
+ 	int capping_num;
++        int mobility_enabled;
++        int has_secure;
++        int secure;
+ 	int num_cpu_total;
+ 	int num_cpu_configured;
+ 	int num_cpu_standby;
+@@ -216,7 +221,6 @@ struct qc_zvm_guest {
+ 	int num_ziip_total;
+ 	int num_ziip_dedicated;
+ 	int num_ziip_shared;
+-	int mobility_enabled;
+ 	int has_multiple_cpu_types;
+ 	int cp_dispatch_limithard;
+ 	int cp_dispatch_type;
+@@ -273,6 +277,8 @@ struct qc_zos_zcx_server {
+ 	char layer_name[QC_LEN_LAYER_NAME];
+ 	char capping[QC_LEN_CAPPING];
+ 	int capping_num;
++        int has_secure;
++        int secure;
+ 	int num_cpu_total;
+ 	int num_cpu_configured;
+ 	int num_cpu_standby;
+@@ -320,6 +326,8 @@ struct qc_kvm_guest {
+ 	char layer_name[QC_LEN_LAYER_NAME];
+ 	char layer_extended_name[QC_LEN_LAYER_EXTENDED_NAME];
+ 	char layer_uuid[QC_LEN_LAYER_UUID];
++        int has_secure;
++        int secure;
+ 	int num_cpu_total;
+ 	int num_cpu_configured;
+ 	int num_cpu_standby;
+@@ -408,6 +416,8 @@ static struct qc_attr lpar_attrs[] = {
+ 	{qc_layer_extended_name, string, offsetof(struct qc_lpar, layer_extended_name)},
+ 	{qc_layer_uuid, string, offsetof(struct qc_lpar, layer_uuid)},
+ 	{qc_adjustment, integer, offsetof(struct qc_lpar, adjustment)},
++        {qc_has_secure, integer, offsetof(struct qc_lpar, has_secure)},
++        {qc_secure, integer, offsetof(struct qc_lpar, secure)},
+ 	{qc_num_core_total, integer, offsetof(struct qc_lpar, num_core_total)},
+ 	{qc_num_core_configured, integer, offsetof(struct qc_lpar, num_core_configured)},
+ 	{qc_num_core_standby, integer, offsetof(struct qc_lpar, num_core_standby)},
+@@ -547,6 +557,9 @@ static struct qc_attr zvm_guest_attrs[] = {
+ 	{qc_layer_name, string, offsetof(struct qc_zvm_guest, layer_name)},
+ 	{qc_capping, string, offsetof(struct qc_zvm_guest, capping)},
+ 	{qc_capping_num, integer, offsetof(struct qc_zvm_guest, capping_num)},
++        {qc_mobility_enabled, integer, offsetof(struct qc_zvm_guest, mobility_enabled)},
++        {qc_has_secure, integer, offsetof(struct qc_zvm_guest, has_secure)},
++        {qc_secure, integer, offsetof(struct qc_zvm_guest, secure)},
+ 	{qc_num_cpu_total, integer, offsetof(struct qc_zvm_guest, num_cpu_total)},
+ 	{qc_num_cpu_configured, integer, offsetof(struct qc_zvm_guest, num_cpu_configured)},
+ 	{qc_num_cpu_standby, integer, offsetof(struct qc_zvm_guest, num_cpu_standby)},
+@@ -562,7 +575,6 @@ static struct qc_attr zvm_guest_attrs[] = {
+ 	{qc_num_ziip_total, integer, offsetof(struct qc_zvm_guest, num_ziip_total)},
+ 	{qc_num_ziip_dedicated, integer, offsetof(struct qc_zvm_guest, num_ziip_dedicated)},
+ 	{qc_num_ziip_shared, integer, offsetof(struct qc_zvm_guest, num_ziip_shared)},
+-	{qc_mobility_enabled, integer, offsetof(struct qc_zvm_guest, mobility_enabled)},
+ 	{qc_has_multiple_cpu_types, integer, offsetof(struct qc_zvm_guest, has_multiple_cpu_types)},
+ 	{qc_cp_dispatch_limithard, integer, offsetof(struct qc_zvm_guest, cp_dispatch_limithard)},
+ 	{qc_cp_capped_capacity, integer, offsetof(struct qc_zvm_guest, cp_capped_capacity)},
+@@ -584,6 +596,8 @@ static struct qc_attr zos_zcx_server_attrs[] = {
+ 	{qc_layer_name, string, offsetof(struct qc_zos_zcx_server, layer_name)},
+ 	{qc_capping, string, offsetof(struct qc_zos_zcx_server, capping)},
+ 	{qc_capping_num, integer, offsetof(struct qc_zos_zcx_server, capping_num)},
++        {qc_has_secure, integer, offsetof(struct qc_zos_zcx_server, has_secure)},
++        {qc_secure, integer, offsetof(struct qc_zos_zcx_server, secure)},
+ 	{qc_num_cpu_total, integer, offsetof(struct qc_zos_zcx_server, num_cpu_total)},
+ 	{qc_num_cpu_configured, integer, offsetof(struct qc_zos_zcx_server, num_cpu_configured)},
+ 	{qc_num_cpu_standby, integer, offsetof(struct qc_zos_zcx_server, num_cpu_standby)},
+@@ -614,6 +628,8 @@ static struct qc_attr kvm_guest_attrs[] = {
+ 	{qc_layer_name, string, offsetof(struct qc_kvm_guest, layer_name)},
+ 	{qc_layer_extended_name, string, offsetof(struct qc_kvm_guest, layer_extended_name)},
+ 	{qc_layer_uuid, string, offsetof(struct qc_kvm_guest, layer_uuid)},
++        {qc_has_secure, integer, offsetof(struct qc_kvm_guest, has_secure)},
++        {qc_secure, integer, offsetof(struct qc_kvm_guest, secure)},
+ 	{qc_num_cpu_total, integer, offsetof(struct qc_kvm_guest, num_cpu_total)},
+ 	{qc_num_cpu_configured, integer, offsetof(struct qc_kvm_guest, num_cpu_configured)},
+ 	{qc_num_cpu_standby, integer, offsetof(struct qc_kvm_guest, num_cpu_standby)},
+@@ -681,6 +697,8 @@ const char *qc_attr_id_to_char(struct qc_handle *hdl, enum qc_attr_id id) {
+ 	case qc_capping: return "capping";
+ 	case qc_capping_num: return "capping_num";
+ 	case qc_mobility_enabled: return "mobility_enabled";
++        case qc_has_secure: return "has_secure";
++        case qc_secure: return "secure";
+ 	case qc_has_multiple_cpu_types: return "has_multiple_cpu_types";
+ 	case qc_cp_dispatch_limithard: return "cp_dispatch_limithard";
+ 	case qc_ifl_dispatch_limithard: return "ifl_dispatch_limithard";
+@@ -1073,6 +1091,12 @@ struct qc_handle *qc_get_root_handle(struct qc_handle *hdl) {
+ 	return hdl ? hdl->root : NULL;
+ }
+ 
++struct qc_handle *qc_get_top_handle(struct qc_handle *hdl) {
++	for (; hdl->next != NULL; hdl = hdl->next);
++
++	return hdl;
++}
++
+ struct qc_handle *qc_get_prev_handle(struct qc_handle *hdl) {
+ 	struct qc_handle *prev_hdl = NULL;
+ 
+diff --git a/query_capacity_int.h b/query_capacity_int.h
+index 6e11c103..f2109916 100644
+--- a/query_capacity_int.h
++++ b/query_capacity_int.h
+@@ -21,7 +21,7 @@
+ #define STR_BUF_SIZE		257
+ 
+ #define ATTR_SRC_SYSINFO	'S'
+-#define ATTR_SRC_OCF		'O'
++#define ATTR_SRC_SYSFS		'F'
+ #define ATTR_SRC_HYPFS		'H'
+ #define ATTR_SRC_STHYI		'V'
+ #define ATTR_SRC_POSTPROC	'P'	// Note: Post-processed attributes can have multiple origins - would be
+@@ -60,7 +60,7 @@ struct qc_data_src {
+ 	char *priv;
+ };
+ 
+-extern struct qc_data_src sysinfo, ocf, hypfs, sthyi;
++extern struct qc_data_src sysinfo, sysfs, hypfs, sthyi;
+ 
+ /* Utility functions */
+ int qc_ebcdic_to_ascii(struct qc_handle *hdl, char *inbuf, size_t insz);
+@@ -74,6 +74,7 @@ struct qc_handle *qc_get_cec_handle(struct qc_handle *hdl);
+ struct qc_handle *qc_get_lpar_handle(struct qc_handle *hdl);
+ struct qc_handle *qc_get_root_handle(struct qc_handle *hdl);
+ struct qc_handle *qc_get_prev_handle(struct qc_handle *hdl);
++struct qc_handle *qc_get_top_handle(struct qc_handle *hdl);
+ 
+ /* Debugging-related functions and variables */
+ extern long  qc_dbg_level;
+diff --git a/query_capacity_ocf.c b/query_capacity_ocf.c
+deleted file mode 100644
+index 3f5d2a12..00000000
+--- a/query_capacity_ocf.c
++++ /dev/null
+@@ -1,135 +0,0 @@
+-/* Copyright IBM Corp. 2016 */
+-
+-#define _GNU_SOURCE
+-#include <fcntl.h>
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-
+-#include "query_capacity_data.h"
+-
+-
+-#define FILE_CPC_NAME		"/sys/firmware/ocf/cpc_name"
+-
+-
+-static void qc_ocf_dump(struct qc_handle *hdl, char *data) {
+-	char *path = NULL;
+-	FILE *fp;
+-	int rc;
+-
+-	qc_debug(hdl, "Dump ocf\n");
+-	qc_debug_indent_inc();
+-	if (!data)
+-		goto out;
+-	if (asprintf(&path, "%s/ocf", qc_dbg_dump_dir) == -1) {
+-		qc_debug(hdl, "Error: Mem alloc failure, cannot dump sysinfo\n");
+-		goto out_err;
+-	}
+-	if (mkdir(path, 0700) == -1) {
+-		qc_debug(hdl, "Error: Could not create directory for ocf dump: %s\n", strerror(errno));
+-		goto out_err;
+-	}
+-	free(path);
+-	if (asprintf(&path, "%s/ocf/cpc_name", qc_dbg_dump_dir) == -1) {
+-		qc_debug(hdl, "Error: Mem alloc failure, cannot dump sysinfo\n");
+-		goto out_err;
+-	}
+-	if ((fp = fopen(path, "w")) == NULL) {
+-		qc_debug(hdl, "Error: Failed to open %s to write ocf dump\n", path);
+-		goto out_err;
+-	}
+-	rc = fprintf(fp, "%s", data);
+-	fclose(fp);
+-	if (rc < 0) {
+-		qc_debug(hdl, "Error: Failed to write dump to '%s'\n", path);
+-		goto out_err;
+-	}
+-	goto out;
+-
+-out_err:
+-	qc_mark_dump_incomplete(hdl, "ocf");
+-out:
+-	free(path);
+-	qc_debug_indent_dec();
+-
+-	return;
+-}
+-
+-static int qc_ocf_open(struct qc_handle *hdl, char **data) {
+-	char *fname = NULL;
+-	int rc = 0;
+-	size_t n;
+-	FILE *fp;
+-
+-	qc_debug(hdl, "Retrieve ocf data\n");
+-	qc_debug_indent_inc();
+-	*data = NULL;
+-	if (qc_dbg_use_dump) {
+-		qc_debug(hdl, "Read ocf from dump\n");
+-		if (asprintf(&fname, "%s/ocf/cpc_name", qc_dbg_use_dump) == -1) {
+-			qc_debug(hdl, "Error: Mem alloc failed, cannot open dump\n");
+-			rc = -1;
+-			goto out;
+-		}
+-	} else
+-		qc_debug(hdl, "Read ocf from " FILE_CPC_NAME "\n");
+-
+-	if (access(fname ? fname : FILE_CPC_NAME, F_OK)) {
+-		qc_debug(hdl, "No ocf data available\n");
+-		goto out;
+-	}
+-	fp = fopen(fname ? fname : FILE_CPC_NAME, "r");
+-	if (!fp) {
+-		qc_debug(hdl, "Error: Failed to open file '%s': %s\n",
+-			 fname ? fname : FILE_CPC_NAME, strerror(errno));
+-		rc = -2;
+-		goto out;
+-	}
+-	rc = getline(data, &n, fp);
+-	fclose(fp);
+-	if (rc == -1) {
+-		qc_debug(hdl, "Error: Failed to read content: %s\n", strerror(errno));
+-		*data = NULL;
+-		rc = -3;
+-		goto out;
+-	}
+-	rc = 0;
+-	if (strcmp(*data, "\n") == 0 || **data == '\0') {
+-		qc_debug(hdl, FILE_CPC_NAME " contains no data, discarding\n");
+-		free(*data);
+-		*data = NULL;
+-		goto out;
+-	}
+-
+-out:
+-	free(fname);
+-	qc_debug(hdl, "Done reading ocf data\n");
+-	qc_debug_indent_dec();
+-
+-	return rc;
+-}
+-
+-static void qc_ocf_close(struct qc_handle *hdl, char *data) {
+-	free(data);
+-}
+-
+-static int qc_ocf_process(struct qc_handle *hdl, char *data) {
+-	qc_debug(hdl, "Process ocf\n");
+-	qc_debug_indent_inc();
+-	if (!data) {
+-		qc_debug(hdl, "No ocf data, skipping\n");
+-		goto out;
+-	}
+-	if (qc_set_attr_string(hdl->root, qc_layer_name, data, ATTR_SRC_OCF))
+-		qc_debug(hdl, "Error: Failed to set CEC name to %s\n", data);
+-out:
+-	qc_debug_indent_dec();
+-
+-	return 0;
+-}
+-
+-struct qc_data_src ocf = {qc_ocf_open,
+-			  qc_ocf_process,
+-			  qc_ocf_dump,
+-			  qc_ocf_close,
+-			  NULL,
+-			  NULL};
+diff --git a/query_capacity_sysfs.c b/query_capacity_sysfs.c
+new file mode 100644
+index 00000000..8594d950
+--- /dev/null
++++ b/query_capacity_sysfs.c
+@@ -0,0 +1,351 @@
++/* Copyright IBM Corp. 2020 */
++
++#define _GNU_SOURCE
++#include <fcntl.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++
++#include "query_capacity_data.h"
++
++
++#define SYSFS_NA		0
++#define SYSFS_AVAILABLE		1
++
++#define FILE_CPC_NAME		"/sys/firmware/ocf/cpc_name"
++#define FILE_SEC_IPL_HAS_SEC	"/sys/firmware/ipl/has_secure"
++#define FILE_SEC_IPL_SEC	"/sys/firmware/ipl/secure"
++
++static const char *sysfs_dirs[] = {"/sys",
++				   "/sys/firmware",
++				   "/sys/firmware/ocf",
++				   "/sys/firmware/ipl",
++				   NULL
++				  };
++
++struct sysfs_priv {
++	int		avail;
++	char	       *cpc_name;	// NULL if n/a
++	int 		has_secure;	// <0 if n/a
++	int		secure;		// <0 if n/a
++};
++
++static int qc_sysfs_mkpath(struct qc_handle *hdl, const char *a, const char *b, char **path) {
++	free(*path);
++	*path = NULL;
++
++	if (asprintf(path, "%s/%s", a, b) == -1) {
++		qc_debug(hdl, "Error: Mem alloc failed\n");
++		return -1;
++	}
++
++	return 0;
++}
++
++/** Create directory structure that we need for our dumps - if we don't have any content later on,
++    then there simply won't be any files in there */
++static int qc_sysfs_create_dump_dirs(struct qc_handle *hdl) {
++	char *path = NULL;
++	int rc = -1, i;
++
++	for (i = 0; sysfs_dirs[i]; ++i) {
++		if (qc_sysfs_mkpath(hdl, qc_dbg_dump_dir, sysfs_dirs[i], &path))
++			goto out;
++		if (mkdir(path, 0700) == -1) {
++			qc_debug(hdl, "Error: Could not create directory %s for sysfs dump: %s\n", path, strerror(errno));
++			goto out;
++		}
++	}
++	rc = 0;
++
++out:
++	free(path);
++
++	return rc;
++}
++
++static FILE *qc_sysfs_open_dump_file(struct qc_handle *hdl, const char* file) {
++	char *path = NULL;
++	FILE *fp = NULL;
++
++	if (qc_sysfs_mkpath(hdl, qc_dbg_dump_dir, file, &path))
++		goto out;
++	if ((fp = fopen(path, "w")) == NULL) {
++		qc_debug(hdl, "Error: Failed to open '%s' to write sysfs dump\n", path);
++		goto out;
++	}
++
++out:
++	free(path);
++
++	return fp;
++}
++
++static int qc_sysfs_dump_file_char(struct qc_handle *hdl, const char* file, const char *val) {
++	FILE *fp;
++	int rc;
++
++	if (!val) {
++		qc_debug(hdl, "No data for '%s', skipping\n", file);
++		return 0;
++	}
++	fp = qc_sysfs_open_dump_file(hdl, file);
++	if (!fp)
++		return -1;
++	rc = fprintf(fp, "%s", val);
++	fclose(fp);
++	if (rc < 0) {
++		qc_debug(hdl, "Error: Failed to write dump to '%s'\n", file);
++		return -1;
++	}
++
++	return 0;
++}
++
++static int qc_sysfs_dump_file_int(struct qc_handle *hdl, const char* file, int val) {
++	FILE *fp;
++	int rc;
++
++	if (val < 0) {
++		qc_debug(hdl, "No data for '%s', skipping\n", file);
++		return 0;
++	}
++	fp = qc_sysfs_open_dump_file(hdl, file);
++	if (!fp)
++		return -1;
++	rc = fprintf(fp, "%d", val);
++	fclose(fp);
++	if (rc < 0) {
++		qc_debug(hdl, "Error: Failed to write dump to '%s'\n", file);
++		return -1;
++	}
++
++	return 0;
++}
++
++static void qc_sysfs_dump(struct qc_handle *hdl, char *data) {
++	struct sysfs_priv *p;
++
++	qc_debug(hdl, "Dump sysfs\n");
++	qc_debug_indent_inc();
++	if (!data)
++		goto out;
++	p = (struct sysfs_priv *)data;
++	if (qc_sysfs_create_dump_dirs(hdl)) {
++		qc_debug(hdl, "Error: Failed to create directory structure\n");
++		goto out_err;
++	}
++	if (qc_sysfs_dump_file_char(hdl, FILE_CPC_NAME, p->cpc_name) ||
++	    qc_sysfs_dump_file_int(hdl, FILE_SEC_IPL_HAS_SEC, p->has_secure) ||
++	    qc_sysfs_dump_file_int(hdl, FILE_SEC_IPL_SEC, p->secure))
++	    	goto out_err;
++	qc_debug(hdl, "sysfs data dumped to '%s%s'\n", qc_dbg_dump_dir, *sysfs_dirs);
++	goto out;
++
++out_err:
++	qc_mark_dump_incomplete(hdl, "sysfs");
++out:
++	qc_debug_indent_dec();
++
++	return;
++}
++
++static int qc_sysfs_is_old_dump_format(struct qc_handle *hdl) {
++	char *fname = NULL;
++	int rc = -1;
++
++	if (qc_sysfs_mkpath(hdl, qc_dbg_use_dump, "ocf", &fname))
++		goto out;
++	if (access(fname, F_OK) == 0) {
++		qc_debug(hdl, "Old ocf-based dump format\n");
++		rc = 1;
++		goto out;
++	}
++	rc = 0;
++out:
++	free(fname);
++
++	return rc;
++}
++
++/** On success, returns 0 on success and filles data with respective file content.
++    Returns >0 if file is not available, and <0 on error. */
++static int qc_sysfs_get_file_content(struct qc_handle *hdl, char *file, char **content) {
++	FILE *fp = NULL;
++	size_t n;
++	int rc;
++
++	if (access(file, F_OK)) {
++		qc_debug(hdl, "File '%s' not available\n", file);
++		*content = NULL;
++		return 1;
++	}
++	fp = fopen(file, "r");
++	if (!fp) {
++		qc_debug(hdl, "Error: Failed to open file '%s': %s\n", file, strerror(errno));
++		return -1;
++	}
++	rc = getline(content, &n, fp);
++	fclose(fp);
++	if (rc == -1) {
++		qc_debug(hdl, "Error: Failed to read content of '%s': %s\n", file, strerror(errno));
++		*content = NULL;
++		return -2;
++	}
++	rc = 0;
++	if (strcmp(*content, "\n") == 0 || **content == '\0') {
++		qc_debug(hdl, "'%s' contains no data, discarding\n", file);
++		free(*content);
++		*content = NULL;
++		return 2;
++	}
++	qc_debug(hdl, "Read file %s\n", file);
++
++	return 0;
++}
++
++/** Handle numeric attributes */
++static int qc_sysfs_num_attr(struct qc_handle *hdl, char *file, int *attr) {
++	char *content = NULL;
++	int rc;
++
++	rc = qc_sysfs_get_file_content(hdl, file, &content);
++	if (rc) {
++		*attr = -1;
++		if (rc > 0)
++			rc = 0;
++		goto out;
++	}
++	*attr = atoi(content);
++	if (*attr < 0) {
++		// we're not prepared to handle negative values (yet)
++		qc_debug(hdl, "Negative content for '%s': %s\n", file, content);
++		rc = -1;
++	}
++
++out:
++	free(content);
++
++	return rc;
++}
++
++static struct sysfs_priv *qc_sysfs_init_data(struct qc_handle *hdl, char **data) {
++	struct sysfs_priv *p;
++
++	if ((*data = malloc(sizeof(struct sysfs_priv))) == NULL) {
++		qc_debug(hdl, "Error: Failed to allocate private data for sysfs\n");
++		return NULL;
++	}
++	p = (struct sysfs_priv *)*data;
++	memset(p, 0, sizeof(struct sysfs_priv));
++	p->avail = SYSFS_NA;
++	p->has_secure = -1;
++	p->secure = -1;
++
++	return p;
++}
++
++static int qc_sysfs_open(struct qc_handle *hdl, char **data) {
++	struct sysfs_priv *p;
++	char *path = NULL;
++	int rc = 0, lrc;
++
++	qc_debug(hdl, "Retrieve sysfs data\n");
++	qc_debug_indent_inc();
++	p = qc_sysfs_init_data(hdl, data);
++	if (!p) {
++		rc = -1;
++		goto out;
++	}
++	if (qc_dbg_use_dump) {
++		qc_debug(hdl, "Read sysfs from dump\n");
++		if (qc_sysfs_is_old_dump_format(hdl)) {
++			// Note: previously, we had a directory called 'ocf' where only one piece of data was
++			//       residing. But we have switched over to a more general sys directory instead.
++			qc_debug(hdl, "Old, ocf-based format\n");
++			if (qc_sysfs_mkpath(hdl, qc_dbg_use_dump, "ocf/cpc_name", &path)) {
++				rc = -1;
++				goto out;
++			}
++			lrc = qc_sysfs_get_file_content(hdl, path, &p->cpc_name);
++			if (lrc != 0) {
++				rc = (lrc < 0 ? -1 : 0);
++				goto out;
++			}
++			p->avail = SYSFS_AVAILABLE;
++		} else {
++			qc_debug(hdl, "New, sysfs-based format\n");
++			if (qc_sysfs_mkpath(hdl, qc_dbg_use_dump, FILE_CPC_NAME, &path) ||
++			    qc_sysfs_get_file_content(hdl, path, &p->cpc_name) < 0 ||
++			    qc_sysfs_mkpath(hdl, qc_dbg_use_dump, FILE_SEC_IPL_HAS_SEC, &path) ||
++			    qc_sysfs_num_attr(hdl, path, &p->has_secure) ||
++			    qc_sysfs_mkpath(hdl, qc_dbg_use_dump, FILE_SEC_IPL_SEC, &path) ||
++			    qc_sysfs_num_attr(hdl, path, &p->secure))
++				rc = -1;
++			else
++				p->avail = SYSFS_AVAILABLE;
++		}
++	} else {
++		qc_debug(hdl, "Read sysfs from system\n");
++		if (qc_sysfs_get_file_content(hdl, FILE_CPC_NAME, &p->cpc_name) < 0 ||
++		    qc_sysfs_num_attr(hdl, FILE_SEC_IPL_HAS_SEC, &p->has_secure) ||
++		    qc_sysfs_num_attr(hdl, FILE_SEC_IPL_SEC, &p->secure))
++		    	rc = -1;
++		else
++			p->avail = SYSFS_AVAILABLE;
++	}
++
++out:
++	qc_debug(hdl, "Done reading sysfs data\n");
++	qc_debug_indent_dec();
++	free(path);
++
++	return rc;
++}
++
++static void qc_sysfs_close(struct qc_handle *hdl, char *data) {
++	struct sysfs_priv *p = (struct sysfs_priv *)data;
++
++	if (p) {
++		free(p->cpc_name);
++		free(data);
++	}
++}
++
++static int qc_sysfs_process(struct qc_handle *hdl, char *data) {
++	struct sysfs_priv *p = (struct sysfs_priv *)data;
++	int rc = 0;
++
++	qc_debug(hdl, "Process sysfs\n");
++	qc_debug_indent_inc();
++	if (!p) {
++		qc_debug(hdl, "No sysfs data, skipping\n");
++		goto out;
++	}
++
++	// Set CEC layer attribute
++	if ((p->cpc_name && qc_set_attr_string(hdl->root, qc_layer_name, p->cpc_name, ATTR_SRC_SYSFS))) {
++		rc = -1;
++		goto out;
++	}
++
++	// Set top layer attributes.
++	// Note: This implies that all top layers must feature these attributes!
++	hdl = qc_get_top_handle(hdl);
++	if ((p->has_secure >= 0 && qc_set_attr_int(hdl, qc_has_secure, p->has_secure, ATTR_SRC_SYSFS)) ||
++	    (p->secure >= 0 && qc_set_attr_int(hdl, qc_secure, p->secure, ATTR_SRC_SYSFS))) {
++		rc = -1;
++		goto out;
++	}
++
++out:
++	qc_debug_indent_dec();
++
++	return rc;
++}
++
++struct qc_data_src sysfs = {qc_sysfs_open,
++			    qc_sysfs_process,
++			    qc_sysfs_dump,
++			    qc_sysfs_close,
++			    NULL,
++			    NULL};

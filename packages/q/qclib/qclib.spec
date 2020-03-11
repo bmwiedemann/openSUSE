@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://www.ibm.com/developerworks/linux/linux390/qclib.html
 Source:         %{name}-%{version}.tgz
 Source1:        %{name}-rpmlintrc
 Patch1:         qclib.makefile.libdir.patch
+Patch2:         qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x

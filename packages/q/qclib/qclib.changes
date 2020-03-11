@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 19:38:58 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch
+  Add an attribute in qclib so that we can programmatically detect
+  if secure boot is available and active in the current LPAR. (bsc#1165018).
+
+-------------------------------------------------------------------
 Wed Jan 22 16:01:05 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Make building more verbose
