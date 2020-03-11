@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:35:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * Move ecm_generate_pri_file below the definition of the target
+  * Rename library/target to KF5::DAV
+
+-------------------------------------------------------------------
 Fri Feb  7 08:37:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
