@@ -73,4 +73,12 @@
 - Skip python2 build as the 1.0.4 is no longer py2 compatible</comment>
     <requestid>783287</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>421057f5e4d4b874a1d3c840c72b832c</srcmd5>
+    <version>1.0.4</version>
+    <time>1583949136</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missed dependency on requests in tests</comment>
+    <requestid>783617</requestid>
+  </revision>
 </revisionlist>

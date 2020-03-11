@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 07:27:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missed dependency on requests in tests
+
+-------------------------------------------------------------------
 Tue Mar 10 10:25:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github tarball for tests

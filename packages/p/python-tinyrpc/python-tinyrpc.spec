@@ -30,6 +30,7 @@ BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
