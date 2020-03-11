@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 17:54:21 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 4.4
+  * fix man page by adding missing command line option
+  * smaller changes to the integrated web server
+  * only start example systemd web server service after udev rules are assigned
+
+-------------------------------------------------------------------
 Fri Feb 14 09:18:35 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Add patch to change the udev group to dialout
