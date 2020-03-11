@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:11:21 UTC 2020 - thardeck@suse.com
+
+- update to version 6.50.0
+  - The cf CLI will now only negotiate TLS 1.2 connections. The cipher suites are restricted to those recommended by the Mozilla SSL Configuration Generator story
+  - The cf CLI now streams logs from Log Cache instead of the soon to be deprecated Traffic Controller, Log Cache provides more stability to larger foundations, as well as reduced IAAS costs story
+  - The cf CLI will now properly warn users when using an incompatible CC API version (anything less than cf-deployment 7.0.0) story
+
+-------------------------------------------------------------------
 Mon Jan 13 08:30:51 UTC 2020 - thardeck@suse.com
 
 - update to version 6.49.0

@@ -1,7 +1,7 @@
 #
 # spec file for package cf
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,19 +35,19 @@
 
 %define         short_name cf-cli
 Name:           %{short_name}%{?name_ext}
-Version:        6.49.0
+Version:        6.50.0
 Release:        0
 Summary:        Cloud Foundry command line client
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/cloudfoundry/cli
+URL:            https://github.com/cloudfoundry/cli
 Source:         v%{version}.tar.gz
 Source1:        README
 Source2:        cf-cli-rpmlintrc
 %if 0%{?_test}
 BuildRequires:  %{short_name} = %{version}
 %else
-BuildRequires:  go >= 1.13.0
+BuildRequires:  go1.13
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
