@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-ObjectDriver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Data-ObjectDriver
-Version:        0.18
+Version:        0.19
 Release:        0
 %define cpan_name Data-ObjectDriver
 Summary:        Simple, transparent data interface, with caching
@@ -57,6 +57,7 @@ where the data is stored.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
