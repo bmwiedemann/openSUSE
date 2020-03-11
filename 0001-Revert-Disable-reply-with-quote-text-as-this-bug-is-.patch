@@ -1,0 +1,35 @@
+From a544f12d22c3afeb7c4980ed82e6fc762078fb3a Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Thu, 5 Mar 2020 08:11:38 +0100
+Subject: [PATCH] Revert "Disable reply with quote text as this bug is back in
+ qt5.14.x"
+
+This reverts commit 22482e3299e3f6a7e5f4e7f995183054044500ba.
+
+The version check was added as a workaround for QTBUG-81574, but
+openSUSE's QtWebEngine package contains the fix already.
+
+References: boo#1163369, kde#394784, QTBUG-81574
+---
+ messagecomposer/src/helper/messagefactoryreplyjob.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/messagecomposer/src/helper/messagefactoryreplyjob.cpp b/messagecomposer/src/helper/messagefactoryreplyjob.cpp
+index 6f1b051d..a3b4d9c7 100644
+--- a/messagecomposer/src/helper/messagefactoryreplyjob.cpp
++++ b/messagecomposer/src/helper/messagefactoryreplyjob.cpp
+@@ -40,11 +40,9 @@ void MessageFactoryReplyJob::start()
+     parser->setIdentityManager(mIdentityManager);
+     parser->setCharsets(MessageComposerSettings::self()->preferredCharsets());
+     parser->setWordWrap(MessageComposerSettings::wordWrap(), MessageComposerSettings::lineWrapWidth());
+-#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+     if (MessageComposer::MessageComposerSettings::quoteSelectionOnly()) {
+         parser->setSelection(mSelection);
+     }
+-#endif
+     parser->setAllowDecryption(true);
+     if (!mTemplate.isEmpty()) {
+         parser->process(mTemplate, mOrigMsg);
+-- 
+2.16.4
+
