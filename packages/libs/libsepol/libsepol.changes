@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:17:04 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Update to version 3.0
+  * cil: Allow validatetrans rules to be resolved
+  * cil: Report disabling an optional block only at high verbose levels
+  * cil: do not dereference perm_value_to_cil when it has not been allocated
+  * cil: fix mlsconstrain segfault
+  * Further improve binary policy optimization
+  * Make an unknown permission an error in CIL
+  * Remove cil_mem_error_handler() function pointer
+  * Use LIBSEPOL_3.0 and fix sepol_policydb_optimize symbol mapping
+  * Add a function to optimize kernel policy
+  * Add ebitmap_for_each_set_bit macro
+
+  Dropped fnocommon.patch as it's included upstream
+
+-------------------------------------------------------------------
 Thu Jan 30 14:11:56 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Add fnocommon.patch to prevent build failures on gcc10 and

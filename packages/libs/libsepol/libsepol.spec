@@ -1,7 +1,7 @@
 #
 # spec file for package libsepol
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           libsepol
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
+URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch0:         fnocommon.patch
 Patch1:         remove_cil_mem_error_handler.patch
 BuildRequires:  flex
 BuildRequires:  pkgconfig
@@ -88,7 +87,6 @@ policies.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
 %build
