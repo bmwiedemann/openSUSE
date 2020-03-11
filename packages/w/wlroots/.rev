@@ -151,4 +151,16 @@
   * Code cleanups and bug fixes</comment>
     <requestid>766500</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4fbcc161cf3eecdc906d24d07c6d6dc1</srcmd5>
+    <version>0.10.1</version>
+    <time>1583949141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  * xdg-shell: fix popups rendered outside of the screen
+  * meson: Fix protocol includes for compositor examples
+  * examples: Fix compositor-examples
+  * xwayland: ignore pointer focus changes</comment>
+    <requestid>783681</requestid>
+  </revision>
 </revisionlist>
