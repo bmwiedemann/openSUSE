@@ -1,7 +1,7 @@
 #
 # spec file for package python-textX
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-textX
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://textx.github.io/textX/stable/
+URL:            https://textx.github.io/textX/stable/
 Source:         https://github.com/igordejanovic/textX/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-
 %python_subpackages
 
 %description
@@ -115,6 +114,6 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %{python_sitelib}/*
 %python3_only %{_bindir}/textx
 %license LICENSE.txt
-%doc AUTHORS.md CHANGELOG.md README.rst
+%doc AUTHORS.md CHANGELOG.md README.md
 
 %changelog
