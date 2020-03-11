@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-Libxml2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Libxml2
-Version:        0.12
+Version:        0.14
 Release:        0
 %define cpan_name Alien-Libxml2
 Summary:        Install the C libxml2 library on your system
@@ -29,15 +29,16 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Alien::Base) >= 0.73
-BuildRequires:  perl(Alien::Build) >= 1.60
-BuildRequires:  perl(Alien::Build::MM) >= 1.60
+BuildRequires:  perl(Alien::Base) >= 2.12
+BuildRequires:  perl(Alien::Build) >= 2.12
+BuildRequires:  perl(Alien::Build::MM) >= 2.12
 BuildRequires:  perl(Alien::Build::Plugin::Build::SearchDep) >= 0.35
 BuildRequires:  perl(Alien::Build::Plugin::Prefer::BadVersion) >= 1.05
+BuildRequires:  perl(Alien::Build::Plugin::Probe::Vcpkg)
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(Test2::V0) >= 0.000060
 BuildRequires:  perl(Test::Alien)
-Requires:       perl(Alien::Base) >= 0.73
+Requires:       perl(Alien::Base) >= 2.12
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl-URI
