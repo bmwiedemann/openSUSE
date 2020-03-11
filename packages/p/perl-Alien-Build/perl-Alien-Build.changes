@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 10 03:07:16 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.12
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.12      2020-03-09 10:02:37 -0600
+    - Fixed bug where Probe::Vcpkg plugin doesn't set version probe hook
+      property (gh#178)
+  
+  2.11      2020-03-09 03:04:49 -0600
+    - Production release identical to 2.10
+  
+  2.10_01   2020-03-08 17:13:05 -0600
+    - Probe::Vcpkg plugin defaults to name property (gh#177)
+  
+  2.09_01   2020-03-08 09:58:17 -0600
+    - Added Alien::Build::Plugin::Probe::Vcpkg (gh#3, gh#175)
+
+-------------------------------------------------------------------
 Sun Feb 16 03:07:20 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.08
