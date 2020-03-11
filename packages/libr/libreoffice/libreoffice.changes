@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:56:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.2.1:
+  * 6.4.2 RC1 release
+- Remove merged patch:
+  * soffice.sh_Avoid-exporting-empty-LC_ALL.patch
+
+-------------------------------------------------------------------
 Wed Feb 19 11:46:11 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - fix_old_boost_spirit_namespace.patch: fixes build with older

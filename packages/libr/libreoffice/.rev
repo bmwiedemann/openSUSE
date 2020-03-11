@@ -2663,4 +2663,15 @@ Petr</comment>
     <comment></comment>
     <requestid>777623</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>694bbde6cf89f630ccab5fe54745c280</srcmd5>
+    <version>6.4.2.1</version>
+    <time>1583948681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.4.2.1:
+  * 6.4.2 RC1 release
+- Remove merged patch:
+  * soffice.sh_Avoid-exporting-empty-LC_ALL.patch</comment>
+    <requestid>783013</requestid>
+  </revision>
 </revisionlist>
