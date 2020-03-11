@@ -17,7 +17,7 @@
 
 
 Name:           signify
-Version:        28
+Version:        29
 Release:        0
 Summary:        OpenBSD tool to sign and verify signatures on files (portable version)
 License:        BSD-3-Clause
@@ -38,7 +38,7 @@ See http://www.tedunangst.com/flak/post/signify for more information.
 %build
 export EXTRA_CFLAGS="%{optflags} -D_GNU_SOURCE"
 export PREFIX="%{_prefix}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 export EXTRA_CFLAGS="%{optflags} -D_GNU_SOURCE"
@@ -46,6 +46,7 @@ export PREFIX="%{_prefix}"
 %make_install
 
 %files
+%license COPYING
 %doc README.md CHANGELOG.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
