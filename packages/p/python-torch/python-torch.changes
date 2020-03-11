@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Feb 26 13:07:14 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Exclude i586 builds for now, they fail with a cryptic return
+  code of 1 from cmake from python.
+
+-------------------------------------------------------------------
+Fri Feb 21 14:15:00 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to stable release 1.4.0, which has as Highlights:
+  * Distributed Model Parallel Training
+  * Pruning functionalities have been added to PyTorch 
+- New Features:
+  * torch.optim.lr_scheduler now support “chaining.”
+  * torch.distributed.rpc is a newly introduced package
+- full Changelog listed in relases file or under
+  https://github.com/pytorch/pytorch/releases
+  and in the releases.hml file
+- added files: 
+  * skip-third-party-check.patch which is a patch to skip
+    the check of disabled dependencies
+  * QNNPACK-7d2a4e9931a82adc3814275b6219a03e24e36b4c.tar.gz
+    which is part of pytorch but developed in different repo
+  * releases.html which is the downloaded releases file
+- removed patch files:
+  * fix-build-options.patch
+  * honor-PSIMD-env.patch
+  * removed-some-tests.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 13:01:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires python-PeachPy on x86_64 only, as it is optional
+  and available on x86_64 only
+
+-------------------------------------------------------------------
+Wed Jan  8 10:47:18 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated the requirement for examples and converters
+
+-------------------------------------------------------------------
+Wed Jun 12 11:17:34 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- Updated to stable version 1.1.0, which needed also updates of
+  following dependend sources:
+  * onnx-1.4.1.tar.gz ->
+    onnx-22662bfd4dcc6baebf29e3b823a051676f991001.tar.gz
+- Removed following sources:
+  * FBGEMM-f65f0ebe54f0512d8f42ee10025b596e3f42e0b8.tar.gz
+- Added following sources:
+  * foxi-8f74bc4df3a4cfc69b1a3eadf62aa29d9961c72d.tar.gz
+- Changed patch 
+  * fix-build-options.patch to work with new buid system and
+    exclude FBGEMM
+- Added patch:
+  * honor-PSIMD-env.patch, which makes depend sources of pytorch
+    to use the source of psimd
+
+-------------------------------------------------------------------
+Tue Mar 26 09:33:11 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- Inital commit of pytorch/caffe2 which is an opensource 
+  machineleraning platform. This is the stable release 1.0.1 
+  including like other tools a lot of third party sources, 
+  which could not be used from the base system due to messy 
+  build system. Additional sources are
+  * gloo, a communitcation library for GPUs as
+    gloo-670b4d4aa46886cc66874e2a4dc846f5cfc2a285.tar.gz
+  * fbgemm, a low precission, high peformance matrix lib
+    FBGEMM-f65f0ebe54f0512d8f42ee10025b596e3f42e0b8.tar.gz
+  * cpuinfo, a cross platform cpu information tool
+    cpuinfo-89fe1695edf9ee14c22f815f24bac45577a4f135.tar.gz
+  * sleef, a function for elementary functions
+    sleef-191f655caa25526ae226cf88dd2529265176014a.tar.gz
+  * pytbind11, which exposes C/C++ headers to pythob, but
+    the source code of this library is deeply integrated into
+    pytorch, so we need
+    pybind11-25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17.tar.gz
+  * onnx, which is an format for exchaning neural networks as
+    onnx-1.4.1.tar.gz
+  * pthreadpool, a pthread based thread tool implementation, which 
+    can be used when omp is not available
+    pthreadpool-13da0b4c21d17f94150713366420baaf1b5a46f4.tar.gz
+  * FXdiv, a Header-only library for division via fixed-point 
+    multiplication by inverse, which has no stable API atm, so
+    FXdiv-b742d1143724d646cd0f914646f1240eacf5bd73.tar.gz
+  * psimd, portable 128-bit SIMD intrinsics
+    psimd-90a938f30ba414ada2f4b00674ee9631d7d85e19.tar.gz
+  * fp16, a numeric conversion library
+    FP16-febbb1c163726b5db24bed55cc9dc42529068997.tar.gz
+  * gemmlowp, self-contained low-precision GEMM library as
+    gemmlowp-8416bab644641a5c0a81ecf91a5cda804af0aee1.tar.gz
+  * fix-build-options.patch, which points pytorch to system libs
+  * removed-peachpy-depedency.patch, which forces to use system 
+    peachpy
+   

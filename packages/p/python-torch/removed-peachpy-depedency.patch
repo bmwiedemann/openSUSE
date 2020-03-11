@@ -1,0 +1,24 @@
+From f8d67af7a466d878581579af5a77848e552ffdfd Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Wed, 3 Apr 2019 12:04:10 +0200
+Subject: [PATCH] removed peachpy depedency
+
+---
+ cmake/External/nnpack.cmake | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/cmake/External/nnpack.cmake b/cmake/External/nnpack.cmake
+index 2cd9efc..6e16257 100644
+--- a/cmake/External/nnpack.cmake
++++ b/cmake/External/nnpack.cmake
+@@ -47,7 +47,6 @@ if (ANDROID OR IOS OR ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" OR ${CMAKE_SYSTEM_NA
+   # Directories for NNPACK dependencies submoduled in Caffe2
+   set(PYTHON_SIX_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/python-six" CACHE STRING "six (Python package) source directory")
+   set(PYTHON_ENUM_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/python-enum" CACHE STRING "enum34 (Python package) source directory")
+-  set(PYTHON_PEACHPY_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/python-peachpy" CACHE STRING "PeachPy (Python package) source directory")
+   if (NOT DEFINED CPUINFO_SOURCE_DIR)
+     set(CPUINFO_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/cpuinfo" CACHE STRING "cpuinfo source directory")
+   endif()
+-- 
+2.16.4
+
