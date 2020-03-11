@@ -15,4 +15,12 @@
     <comment>Build against log4j12</comment>
     <requestid>734293</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>210264956ebd08de6d7c452d2423407a</srcmd5>
+    <version>1.9.1</version>
+    <time>1583949253</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade doxia/doxia-sitetools</comment>
+    <requestid>783792</requestid>
+  </revision>
 </revisionlist>

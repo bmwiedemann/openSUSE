@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,22 @@
 
 
 Name:           maven-doxia
-Version:        1.7
+Version:        1.9.1
 Release:        0
 Summary:        Content generation framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/doxia/
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/doxia/doxia/%{version}/doxia-%{version}-source-release.zip
+URL:            https://maven.apache.org/doxia/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia/%{version}/doxia-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 # Build against iText 2.x
 # https://issues.apache.org/jira/browse/DOXIA-53
 Patch1:         0001-Fix-itext-dependency.patch
-# Accepted upstream: DOXIA-504, https://issues.apache.org/jira/browse/DOXIA-504
-Patch2:         0002-Update-to-Plexus-Container-1.5.5.patch
-# Don't run bad tests which rely on ordering in set (they fail with Java 8)
-Patch3:         0003-Disable-tests-which-rely-on-ordering-in-set.patch
-# Not upstreamable due to higher Java version of fop's dependencies
-Patch4:         0004-Port-to-fop-2.0.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-configuration
-BuildRequires:  apache-commons-lang
+BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  guava20
 BuildRequires:  httpcomponents-client
@@ -122,11 +116,11 @@ Group:          Development/Libraries/Java
 %description module-fo
 This package provides %{summary}.
 
-%package module-markdown
-Summary:        Markdown module for %{name}
+%package module-xhtml5
+Summary:        XHTML5 module for %{name}
 Group:          Development/Libraries/Java
 
-%description module-markdown
+%description module-xhtml5
 This package provides %{summary}.
 
 %package module-latex
@@ -188,9 +182,6 @@ API documentation for %{name}.
 %prep
 %setup -q -n doxia-%{version} -a1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 # we don't have clirr-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:clirr-maven-plugin pom.xml
@@ -206,9 +197,6 @@ API documentation for %{name}.
 # requires network
 rm doxia-core/src/test/java/org/apache/maven/doxia/util/XmlValidatorTest.java
 
-# FIXME fails
-rm doxia-modules/doxia-module-markdown/src/test/java/org/apache/maven/doxia/module/markdown/MarkdownParserTest.java
-
 %pom_disable_module doxia-module-itext doxia-modules
 
 %{mvn_package} :doxia __noinstall
@@ -218,6 +206,7 @@ rm doxia-modules/doxia-module-markdown/src/test/java/org/apache/maven/doxia/modu
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+	apache-commons-lang3 \
 	apache-commons-lang \
 	commons-cli \
 	commons-configuration \
@@ -239,24 +228,24 @@ build-jar-repository -s lib \
 	xmlgraphics-commons \
 	xmlgraphics-fop
 
-%ant -Dtest.skip=true \
+%{ant} -Dtest.skip=true \
     package javadoc
 
 mkdir -p target/site/apidocs
 
-%mvn_artifact pom.xml
+%{mvn_artifact} pom.xml
 for i in \
     doxia-logging-api \
     doxia-sink-api \
     doxia-test-docs \
     doxia-core; do
-  %mvn_artifact ${i}/pom.xml ${i}/target/${i}-%{version}.jar
+  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
   if [ -d ${i}/target/site/apidocs ]; then
     cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
   fi
 done
 
-%mvn_artifact doxia-modules/pom.xml
+%{mvn_artifact} doxia-modules/pom.xml
 for i in \
     doxia-module-apt \
     doxia-module-confluence \
@@ -268,8 +257,8 @@ for i in \
     doxia-module-twiki \
     doxia-module-xdoc \
     doxia-module-xhtml \
-    doxia-module-markdown; do
-  %mvn_artifact doxia-modules/${i}/pom.xml doxia-modules/${i}/target/${i}-%{version}.jar
+    doxia-module-xhtml5; do
+  %{mvn_artifact} doxia-modules/${i}/pom.xml doxia-modules/${i}/target/${i}-%{version}.jar
   if [ -d doxia-modules/${i}/target/site/apidocs ]; then
     cp -r doxia-modules/${i}/target/site/apidocs target/site/apidocs/${i}
   fi
@@ -295,7 +284,7 @@ done
 
 %files module-fo -f .mfiles-doxia-module-fo
 
-%files module-markdown -f .mfiles-doxia-module-markdown
+%files module-xhtml5 -f .mfiles-doxia-module-xhtml5
 
 %files module-latex -f .mfiles-doxia-module-latex
 
