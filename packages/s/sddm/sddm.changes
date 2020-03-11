@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 11 11:55:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't add sddm to the video group, it's not necessary (see later
+  comments on boo#1165987)
+
+-------------------------------------------------------------------
+Fri Mar  6 10:33:37 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add user sddm to group video to allow e.g. to use devices for
+  Nvidia X server (boo#1165987)
+- Add (pre)requires for systemd macros, video group, the getent
+  (currently in glibc), and the groupadd (currently in shadow)
+
+-------------------------------------------------------------------
 Mon Oct 14 15:58:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Pickup UID_MIN/UID_MAX default values from the new %_distconfdir

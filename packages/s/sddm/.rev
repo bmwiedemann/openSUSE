@@ -555,4 +555,18 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>738464</requestid>
   </revision>
+  <revision rev="47" vrev="10">
+    <srcmd5>cbd0515eb409f6159919a3440d8d178b</srcmd5>
+    <version>0.18.0</version>
+    <time>1583948537</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't add sddm to the video group, it's not necessary (see later
+  comments on boo#1165987)
+
+- Add user sddm to group video to allow e.g. to use devices for
+  Nvidia X server (boo#1165987)
+- Add (pre)requires for systemd macros, video group, the getent
+  (currently in glibc), and the groupadd (currently in shadow)</comment>
+    <requestid>783801</requestid>
+  </revision>
 </revisionlist>

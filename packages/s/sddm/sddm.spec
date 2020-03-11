@@ -73,7 +73,11 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb-xkb)
+%systemd_requires
 Requires(post): diffutils
+Requires(pre):  %{_bindir}/getent
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 Requires:       sddm-branding = %{version}
 Requires:       xdm
 # Merged the -lang package back into the main package
