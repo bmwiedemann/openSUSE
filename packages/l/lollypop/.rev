@@ -1280,4 +1280,14 @@
   * Code refactoring.</comment>
     <requestid>783529</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>3af40d956436cc93f572bf0f049b18b2</srcmd5>
+    <version>1.2.25</version>
+    <time>1583960636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.25:
+  * Fix an issue with new &quot;open with&quot; dialog on Ubuntu
+    (glgo#World/lollypop#287).</comment>
+    <requestid>784059</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 19:26:28 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.25:
+  * Fix an issue with new "open with" dialog on Ubuntu
+    (glgo#World/lollypop#287).
+
+-------------------------------------------------------------------
 Tue Mar 10 19:28:50 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.24:
