@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Mar 10 13:37:34 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.0.1
+  Added
+    Include license file in manifest (#288) @kszucs
+    added "static" to C functions, where possible (#238) @WGH-
+    bring back benchmark introduction (#234) @rdpate
+    Add syntax highlighting to README (#255) @adamchainz
+    Test on new Travis CPUs (#350) @hugovk
+    Test on GitHub Actions (#348) @hugovk
+    Test on Python 3.9-dev to avoid surprises (#349) @hugovk
+    Use Release Drafter to draft releases (#365) @hugovk
+    Deploy from GitHub Actions instead of Travis CI (#364) @hugovk
+    Autodeploy to PyPI from Travis CI (#357) @hugovk
+    Lint with pre-commit: Black, isort, Flake8 (#354) @hugovk
+  Changed
+    Use Google's double-conversion lib to fix floating-point precision when converting doubles to and from strings, improves double encoding by 4-5x (eb7d894) @Jahaja
+    Reduce default buffer on stack size (#281) @ncopa
+    Update ultrajsondec.c (#260) @markpiekarz
+    Indent dict values (#217) @orivej
+    Test with pytest (#363) @hugovk
+    Less Travis (#361) @hugovk
+    Update links (#356) @hugovk
+    Tests: Remove unused, unmaintained blist (#362) @hugovk
+    Only deploy sdist from Travis CI (#359) @hugovk
+  Removed
+    Drop EOL Python 2.5-2.6, 3.2-3.4 and add 3.7-3.8 (#298) @hugovk
+    Remove serialization of date/datetime objects (50181f0) @Jahaja
+    Remove double_precision encoding option and precise_float decoding option (eb7d894) @Jahaja
+    Remove generic serialization of objects/iterables (53f85b1) @Jahaja
+    Remove support for __json__ method on str (5f98f01) @Jahaja
+    Remove blist tests (3a6ba52) @Jahaja
+  Fixed
+    Fix for sort_keys bug and a typo (870ee48) @Jahaja
+    Fix for overflowing long causing invalid JSON (409c6d4) @Jahaja
+    Following std JSON handling of None dict key (ac4637f)
+    Fix for incorrect order when using OrderedDict (c9f8318) @Jahaja
+    Fix reference counting bug for dict values (#353) @richafrank
+    Fix a couple of memory leaks. (#257) @borman
+    Correct JSON decoding implementation to die on trailing commas in Objects (#323) @timdawborn
+    fixup dconv_wrapper linkage (#312) @tclh123
+    Fix Warning: 'classifiers' should be a list, got type 'filter' (#351) @hugovk
+    Remove redundant license parameter (#341) @blag
+    do not forcefully remove the build directory manually (fix #179) (#207) @anthraxx
+    Merged pull request to fix memory leak. (#1) @Adriandorr
+    http -> https (#299) @hugovk
+- added patches
+  fix unbundle double-conversion
+  + python-ujson-system-double-conversion.patch
+- deleted patches
+  - do_not_remove_build_directory_manually.patch (upstreamed)
+  - no-unittest2.patch (upstreamed)
+  - ujson-1.35-fix-for-overflowing-long.patch (upstreamed)
+  - ujson-1.35-fix-ordering-of-orderdict.patch (upstreamed)
+  - ujson-1.35-sort_keys-segfault.patch (upstreamed)
+  - ujson-1.35-standard-handling-of-none.patch (upstreamed)
+  - ujson-1.35-test-depricationwarning.patch (upstreamed)
+  - ujson-1.35-use-static-where-possible.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sun May 12 13:09:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Apply six patches from Gentoo:

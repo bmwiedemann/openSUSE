@@ -1,7 +1,7 @@
 #
 # spec file for package python-ujson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,27 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-ujson
-Version:        1.35
+Version:        2.0.1
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/esnme/ultrajson
 Source:         https://files.pythonhosted.org/packages/source/u/ujson/ujson-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- do_not_remove_build_directory_manually.patch -- https://github.com/esnme/ultrajson/issues/179
-Patch0:         do_not_remove_build_directory_manually.patch
-Patch1:         no-unittest2.patch
-Patch2:         ujson-1.35-fix-for-overflowing-long.patch
-Patch3:         ujson-1.35-fix-ordering-of-orderdict.patch
-Patch4:         ujson-1.35-sort_keys-segfault.patch
-Patch5:         ujson-1.35-standard-handling-of-none.patch
-Patch6:         ujson-1.35-test-depricationwarning.patch
-Patch7:         ujson-1.35-use-static-where-possible.patch
+# unbundle double-conversion (https://github.com/ultrajson/ultrajson/issues/375)
+Patch0:         python-ujson-system-double-conversion.patch
 BuildRequires:  %{python_module blist}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -53,6 +51,7 @@ decoder experience please checkout ujson4c_, based on UltraJSON.
 %autopatch -p1
 
 %build
+rm -r deps
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
 
@@ -61,10 +60,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-pushd tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python tests.py
-}
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
