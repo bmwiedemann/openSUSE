@@ -1,7 +1,7 @@
 #
 # spec file for package python-semanage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        Python bindings for SELinux's policy management library
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
-Url:            https://github.com/SELinuxProject/selinux
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20190315/libsemanage-%{version}.tar.gz
+URL:            https://github.com/SELinuxProject/selinux
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/libsemanage-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         suse_path.patch
 BuildRequires:  %{python_module devel}

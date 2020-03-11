@@ -1,7 +1,7 @@
 #
 # spec file for package libsemanage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libsemanage
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        SELinux policy management library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
+URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        semanage.conf
 Patch0:         suse_path.patch
