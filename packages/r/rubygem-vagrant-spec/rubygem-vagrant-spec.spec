@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-vagrant-spec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define mod_name vagrant-spec
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-vagrant-spec
-Version:        0.0.1.abfc344.git
+Version:        0.0.1.59d8515.git
 Release:        0
-%define mod_name vagrant-spec
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  update-alternatives
-Url:            https://github.com/mitchellh/vagrant-spec
-# MANUALLY modified:
-Source:         %{mod_full_name}.gem
-Source1:        gem2rpm.yml
 Summary:        Tool and library for testing Vagrant plugins
 License:        MPL-2.0
 Group:          Development/Languages/Ruby
+URL:            https://github.com/mitchellh/vagrant-spec
+# MANUALLY modified:
+Source:         %{mod_full_name}.gem
+Source1:        gem2rpm.yml
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+BuildRequires:  update-alternatives
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         update-alternatives
+# MANUAL
+BuildRequires:  fdupes
+# /MANUAL
+# MANUAL
+Patch0:         0001-Add-shebangs-to-scripts-in-acceptance-support-skelet.patch
+# /MANUAL
 
 %description
 vagrant-spec is a both a specification of how Vagrant and its various
@@ -52,7 +57,12 @@ expectations to help you both unit test and acceptance test Vagrant
 components. The RSpec components are built on top of the helper methods so
 that the test library can be used with your test framework of choice, but the
 entire tool is geared very heavily towards RSpec.
+
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{SOURCE0}
+%{gem_build}
 
 %build
 
@@ -63,8 +73,8 @@ entire tool is geared very heavily towards RSpec.
   -f
 # MANUAL
 find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml \) | xargs rm
+%fdupes %{buildroot}/%{_libdir}/ruby/gems
 # /MANUAL
-
 
 %gem_packages
 
