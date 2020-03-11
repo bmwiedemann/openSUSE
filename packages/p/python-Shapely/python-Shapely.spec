@@ -1,7 +1,7 @@
 #
 # spec file for package python-Shapely
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%bcond_without test
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%bcond_without test
 Name:           python-Shapely
-Version:        1.6.4.post2
+Version:        1.7.0
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
-Url:            https://github.com/Toblerity/Shapely
+URL:            https://github.com/Toblerity/Shapely
 Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel}
@@ -35,6 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  geos-devel >= 3.3
 BuildRequires:  python-rpm-macros
+Requires:       geos >= 3.3
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -42,7 +41,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module matplotlib}
 %endif
 # /SECTION
-Requires:       geos >= 3.3
 %ifpython2
 Obsoletes:      %{oldpython}-shapely < %{version}
 Provides:       %{oldpython}-shapely = %{version}
@@ -51,7 +49,6 @@ Provides:       %{oldpython}-shapely = %{version}
 Obsoletes:      python3-shapely < %{version}
 Provides:       python3-shapely = %{version}
 %endif
-
 %python_subpackages
 
 %description
@@ -84,8 +81,8 @@ mv shapely shapely_temp
 mv shapely_temp shapely
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CREDITS.txt LICENSE.txt README.rst docs/*
+%license LICENSE.txt
+%doc CREDITS.txt README.rst docs/*
 %{python_sitearch}/*
 
 %changelog

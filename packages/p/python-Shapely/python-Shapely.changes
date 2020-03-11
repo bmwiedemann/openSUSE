@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 11 12:51:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop fix-build-with-geos-3.8.0.patch
+- update to 1.7.0
+ * the buffer operation can now be single-sides
+ * Nearest neighbor search has been added to STRtree
+ * Removed vendorized `functools`
+ * Disallow sequences of MultiPolygons as arguments to the MultiPolygon constructor
+ * Added a new `EmptyGeometry` class to support GeoPandas
+ * Added new `shapely.ops.substring` function 
+ * Added new `shapely.ops.clip_by_rect` function 
+ * shapely.wkb.dumps` now accepts an `srid` integer keyword argument 
+
+-------------------------------------------------------------------
+Tue Mar 10 15:08:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build with upstream patch:
+  * fix-build-with-geos-3.8.0.patch
+
+-------------------------------------------------------------------
 Thu Jun 13 16:01:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Run full unit tests
