@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlparse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sqlparse
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Non-validating SQL parser
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/andialbrecht/sqlparse
+URL:            https://github.com/andialbrecht/sqlparse
 Source:         https://files.pythonhosted.org/packages/source/s/sqlparse/sqlparse-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

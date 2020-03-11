@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar  9 16:22:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to v0.3.1:
+  * Add HQL keywords (pr475, by matwalk).
+  * Add support for time zone casts (issue489).
+  * Enhance formatting of AS keyword (issue507, by john-bodley).
+  * Stabilize grouping engine when parsing invalid SQL statements.
+  * Fix splitting of SQL with multiple statements inside
+    parentheses (issue485, pr486 by win39).
+  * Correctly identify NULLS FIRST / NULLS LAST as keywords (issue487).
+  * Fix splitting of SQL statements that contain dollar signs in
+    identifiers (issue491).
+  * Remove support for parsing double slash comments introduced in
+    0.3.0 (issue456) as it had some side-effects with other dialects and
+    doesn't seem to be widely used (issue476).
+  * Restrict detection of alias names to objects that acutally could
+    have an alias (issue455, adopted some parts of pr509 by john-bodley).
+  * Fix parsing of date/time literals (issue438, by vashek).
+  * Fix initialization of TokenList (issue499, pr505 by john-bodley).
+  * Fix parsing of LIKE (issue493, pr525 by dbczumar).
+  * Improve parsing of identifiers (pr527 by liulk).
+
+-------------------------------------------------------------------
 Wed Apr 17 12:00:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use %pytest macro
