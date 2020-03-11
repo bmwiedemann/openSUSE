@@ -1,7 +1,7 @@
 #
 # spec file for package twilio-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright 2013 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,13 @@
 %define defaultconf %{_sysconfdir}/twilio.conf
 
 Name:           twilio-utils
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Command line utilities for Twilio users
 License:        Apache-2.0
 Group:          Productivity/Text/Utilities
 Source:         %{name}-%{version}.tar.gz
-Url:            http://twilio-utils.googlecode.com/
+URL:            http://twilio-utils.googlecode.com/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  curl
 BuildRequires:  gcc
@@ -52,10 +52,12 @@ Requires:       util-linux-systemd
 The twilio-utils project contains a few UNIX command-line utilities
 that are handy when working with Twilio:
 
-* sendsms - Send an outbound SMS message via Twilio
-* smslen  - Calculate SMS payload length
-* twilog  - Download Twilio notifications into syslog 
-* twiping - Send a text message "ping" and wait for response
+* twimsg - Send an outbound SMS message via Twilio
+* twils - List SMS messages from Twilio log
+* twirm - Delete SMS messages from Twilio log
+* twilog - Download Twilio [notifications into syslog
+* twiping - Send SMS ping containing test code
+* smslen - Calculate SMS payload length
 
 %prep
 %setup -q

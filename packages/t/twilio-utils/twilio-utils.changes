@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 21:31:13 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.2.0
+  + Added new twils(1) and twirm(1) utilities
+  + Added "-S" and "-v" command line flags to twimsg(1)
+
+-------------------------------------------------------------------
 Wed Oct  2 21:01:07 UTC 2019 -  <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.1.0
