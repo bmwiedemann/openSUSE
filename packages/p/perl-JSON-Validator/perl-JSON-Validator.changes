@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  4 03:09:18 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.24
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  3.24 2020-03-03T15:46:39+0900
+    - Optimize checksum generation #202
+      Contributor: Ere Maijala
+    - Improved "type":[...] error messages #199
+      Contributor: Karen Etheridge
+    - Fix handle validation of true, false schemas in oneOf #201 #203
+      Contributor: Karen Etheridge
+    - Fix guessing type:object if "dependencies" is present #206
+
+-------------------------------------------------------------------
 Wed Feb 19 03:10:52 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.23

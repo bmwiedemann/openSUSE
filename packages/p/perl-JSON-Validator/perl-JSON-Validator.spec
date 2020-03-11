@@ -17,7 +17,7 @@
 
 
 Name:           perl-JSON-Validator
-Version:        3.23
+Version:        3.24
 Release:        0
 %define cpan_name JSON-Validator
 Summary:        Validate data against a JSON schema
@@ -34,8 +34,10 @@ BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Mojolicious) >= 7.28
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 1.30
+BuildRequires:  perl(YAML::XS) >= 0.80
 Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Mojolicious) >= 7.28
+Requires:       perl(YAML::XS) >= 0.80
 %{perl_requires}
 
 %description
