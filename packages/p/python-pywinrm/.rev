@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>745108</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>601688985d972c5fd01bad69cb41025a</srcmd5>
+    <version>0.4.1</version>
+    <time>1583949152</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1:
+  * python 3.8</comment>
+    <requestid>783702</requestid>
+  </revision>
 </revisionlist>
