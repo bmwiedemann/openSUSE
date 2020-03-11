@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Mar 6 12:13:38 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#216
+- fix rescue system setup (bsc#1160378)
+- 7.0.11
+
+--------------------------------------------------------------------
 Tue Feb 18 15:10:56 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#213
