@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 08 07:44:02 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200302 (git commit 0148cfefcbf9):
+  * check_whence: python3/utf-8 support
+  * Makefile: improve `make check` usefulness
+  * mediatek: Remove in-tree symlinks
+  * qca: Fix blueooth firmware name for QCA6174
+  * mediatek: move MT8173 VPU FW to subfolder
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * qca: Add firmware files for BT chip wcn3991.
+  * nvidia: add TU116/117 signed firmware
+  * drm/amdgpu: update to latest 19.50 firmware for raven
+  * mediatek: update MT8173 VPU firmware to v1.1.4
+
+-------------------------------------------------------------------
 Fri Feb 07 15:37:30 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200207 (git commit 6f89735800fe):
