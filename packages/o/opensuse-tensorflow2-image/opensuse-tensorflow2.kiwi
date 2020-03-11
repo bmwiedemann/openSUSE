@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OBS-ExclusiveArch: x86_64 -->
+<image schemaversion="6.5" name="opensuse-tensorflow2-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Marco Varlese</author>
+    <contact>mvarlese@suse.com</contact>
+    <specification>Tensorflow v2</specification>
+  </description>
+
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
+      <containerconfig
+        name="opensuse/tensorflow2" tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%">
+         <labels>
+          <!-- See https://en.opensuse.org/Building_derived_containers#Labels -->
+          <suse_label_helper:add_prefix prefix="org.opensuse.tensorflow2">
+            <label name="org.opencontainers.image.title" value="openSUSE Tensorflow %PKG_VERSION%"/>
+            <label name="org.opencontainers.image.description" value="Image for Tensorflow %PKG_VERSION%"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="Marco Varlese"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/tensorflow2:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Marco Varlese &lt;mvarlese@suse.com&gt;">openSUSE Tensorflow v2 container</history>
+       </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>false</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+    <hwclock>utc</hwclock>
+  </preferences>
+
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="image" patternType="onlyRequired">
+    <package name="tensorflow2"/>
+    <package name="python3-jupyterlab"/>
+  </packages>
+</image>
