@@ -1,7 +1,7 @@
 #
-# spec file for package maven
+# spec file for package maven-doxia-sitetools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global parent maven-doxia
 %global subproj sitetools
 Name:           %{parent}-%{subproj}
-Version:        1.7.5
+Version:        1.9.2
 Release:        0
 Summary:        Doxia content generation framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/doxia/
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/doxia/doxia-sitetools/%{version}/doxia-%{subproj}-%{version}-source-release.zip
+URL:            https://maven.apache.org/doxia/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-sitetools/%{version}/doxia-%{subproj}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 Patch0:         0001-Port-to-plexus-utils-3.0.24.patch
 Patch1:         0002-Remove-dependency-on-velocity-tools.patch
@@ -68,8 +68,8 @@ BuildRequires:  xmvn-resolve
 BuildRequires:  xz
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-apt)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-fml)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-markdown)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-xdoc)
+BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-xhtml5)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 
@@ -113,6 +113,8 @@ API documentation for %{name}.
 rm -rf $(find -type d -name itext)
 %pom_remove_dep -r :doxia-module-itext
 
+%pom_remove_dep -r :doxia-module-markdown
+
 %{mvn_alias} :doxia-integration-tools org.apache.maven.shared:maven-doxia-tools
 
 %build
@@ -128,6 +130,7 @@ build-jar-repository -s lib \
 	maven-doxia/doxia-logging-api \
 	maven-doxia/doxia-module-fo \
 	maven-doxia/doxia-module-xhtml \
+	maven-doxia/doxia-module-xhtml5 \
 	maven-doxia/doxia-sink-api \
 	maven/maven-artifact \
 	maven/maven-artifact-2.0.2 \
