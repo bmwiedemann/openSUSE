@@ -1,7 +1,7 @@
 #
 # spec file for package python-translation-finder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname translation-finder
 Name:           python-translation-finder
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later
