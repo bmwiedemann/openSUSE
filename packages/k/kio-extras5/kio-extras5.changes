@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Too many changes since 19.12.2, only listing bugfixes:
+  * smb: enable anonymous and domain extra field in authinfo (kde#327484)
+  * smb: disable mode bits getting forwarded to KIO (kde#414482)
+  * smb: map ECONNABORTED to ERR_CONNECTION_BROKEN (kde#415436)
+  * smb: install smb as both smb:// and cifs:// (kde#327295)
+  * smb: do not map uid and gid (kde#212801)
+  * smb: fix free space calculation (kde#298801)
+  * smb: support more advanced hidden file flag (kde#307353)
+  * smb: call smb_cutime on the correct url to actually set mtime properly (kde#356651)
+  * smb: retain atime properly (kde#410624)
+
+-------------------------------------------------------------------
 Wed Feb 12 20:28:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add cmake(KF5ActivitiesStats) for the recentlyused:/ protocol
