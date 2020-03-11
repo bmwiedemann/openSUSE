@@ -207,7 +207,9 @@ Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc
 %else
 Provides:       python3-tensorflow
 %endif
+%if !%{is_lite}
 Provides:       tensorflow
+%endif
 BuildRequires:  bazel = 0.29.1
 BuildRequires:  curl
 %if %{with cuda}

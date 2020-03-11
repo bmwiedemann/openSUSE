@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:22:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lite flavor should not provide "tensorflow", otherwise 
+  tensorlfow2-devel and tensorlfow2-lite-devel conflict and break
+  armnn
+
+-------------------------------------------------------------------
 Thu Mar  5 16:49:47 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added Provides: tensorflow, so that Kerase works with this package
