@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:59:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.9.3
+  * Removed outdated warning message
+  * Internal removal of old API usage
+
+-------------------------------------------------------------------
 Wed Jan 22 09:32:08 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 1.9.2:
