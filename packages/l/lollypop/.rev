@@ -1270,4 +1270,14 @@
     glgo#World/lollypop#2205).</comment>
     <requestid>778451</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a9312ca7e91de18b71f7f63798899612</srcmd5>
+    <version>1.2.24</version>
+    <time>1583949058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.24:
+  * Faster search.
+  * Code refactoring.</comment>
+    <requestid>783529</requestid>
+  </revision>
 </revisionlist>
