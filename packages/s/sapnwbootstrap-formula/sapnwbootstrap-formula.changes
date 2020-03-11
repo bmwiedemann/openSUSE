@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:55:49 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.5
+  * Fix "stonith-action" parameter usage in the HA cluster
+    template for aws
+    (jsc#SLE-4143, boo#1137989)
+
+-------------------------------------------------------------------
 Fri Feb 21 08:38:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.2.4
