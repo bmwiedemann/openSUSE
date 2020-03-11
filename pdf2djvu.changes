@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:40:12 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.9.17.
+  * Fix build failure with Poppler ≥ 0.86.
+  * Drop support for Poppler < 0.35.
+
+-------------------------------------------------------------------
 Mon Feb 24 19:22:54 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.9.16.

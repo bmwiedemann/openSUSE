@@ -17,7 +17,7 @@
 
 
 Name:           pdf2djvu
-Version:        0.9.16
+Version:        0.9.17
 Release:        0
 Summary:        PDF to DjVu Converter
 License:        GPL-2.0-only
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.25
 BuildRequires:  pkgconfig(exiv2)
-BuildRequires:  pkgconfig(poppler) >= 0.24
+BuildRequires:  pkgconfig(poppler) >= 0.35
 BuildRequires:  pkgconfig(uuid)
 Requires:       djvulibre
 Recommends:     %{name}-lang
