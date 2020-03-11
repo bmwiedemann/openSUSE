@@ -1,7 +1,7 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,7 @@ Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
 Group:          Productivity/Archiving/Backup
-Url:            https://github.com/borgbackup/borg
+URL:            https://github.com/borgbackup/borg
 Source0:        https://github.com/borgbackup/borg/releases/download/%{version}/borgbackup-%{version}.tar.gz
 Source1:        https://github.com/borgbackup/borg/releases/download/%{version}/borgbackup-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -164,7 +164,7 @@ sed -i 's|test_sparse_file|non_sparse_file|' src/borg/testsuite/archiver.py
 
 %build
 CFLAGS="%{optflags}" python3 setup.py build
-pyvenv --system-site-packages --without-pip borg-env
+python3 -m venv --system-site-packages --without-pip borg-env
 source borg-env/bin/activate
 python3 setup.py install
 PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
@@ -186,7 +186,7 @@ install -D -m 0644 scripts/shell_completions/fish/borg.fish %{buildroot}/%{_data
 # it to behave in our build system (offline mode, use site packages). OTOH, without the
 # venv, we face problems with setuptools (borg uses pkg_resources to locate the installed
 # package), while py.test relies on the usual module handling. <hpj@urpla.net>
-pyvenv --system-site-packages --without-pip borg-env
+python3 -m venv --system-site-packages --without-pip borg-env
 source borg-env/bin/activate
 python3 setup.py install
 cd build/lib.linux-$(uname -m)-%{py3_ver}

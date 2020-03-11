@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 17:52:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- fix building with python3 
+
+-------------------------------------------------------------------
 Thu Oct 31 11:20:34 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require python3-setuptools since it's needed when running borg
