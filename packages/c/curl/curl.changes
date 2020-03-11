@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 12:54:08 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- ignore_runtests_failure.patch: remove, no longer needed
+
+-------------------------------------------------------------------
 Wed Mar  4 08:56:45 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.69.0

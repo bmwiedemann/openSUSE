@@ -33,7 +33,6 @@ Source4:        https://daniel.haxx.se/mykey.asc#/curl.keyring
 Patch0:         libcurl-ocloexec.patch
 Patch1:         dont-mess-with-rpmoptflags.diff
 Patch2:         curl-secure-getenv.patch
-Patch3:         ignore_runtests_failure.patch
 # PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch4:         curl-disabled-redirect-protocol-message.patch
 Patch5:         curl-use_OPENSSL_config.patch
@@ -94,9 +93,6 @@ user interaction or any kind of interactivity.
 %patch0 -p1
 %patch1
 %patch2
-%ifarch ppc ppc64 ppc64le
-%patch3 -p1
-%endif
 %patch4 -p1
 %patch5 -p1
 
