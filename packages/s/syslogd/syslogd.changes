@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 27 18:10:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Removed create option from logrotate.syslog to let logrotate
+  preserve file system ACLs
+
+-------------------------------------------------------------------
 Tue Dec 11 02:04:18 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Set /bin/bash as scriptlet interpreter where needed.

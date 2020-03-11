@@ -23,7 +23,6 @@
     missingok
     notifempty
     size +4096k
-    create 640 root root
     sharedscripts
     postrotate
         /usr/bin/systemctl reload syslog.service > /dev/null

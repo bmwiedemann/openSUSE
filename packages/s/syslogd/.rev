@@ -746,4 +746,13 @@
     <comment></comment>
     <requestid>657062</requestid>
   </revision>
+  <revision rev="92" vrev="791">
+    <srcmd5>a7d1ecb426d1a71ff848a15c1ca1639b</srcmd5>
+    <version>unknown</version>
+    <time>1583948673</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed create option from logrotate.syslog to let logrotate
+  preserve file system ACLs (forwarded request 780003 from stroeder)</comment>
+    <requestid>782991</requestid>
+  </revision>
 </revisionlist>
