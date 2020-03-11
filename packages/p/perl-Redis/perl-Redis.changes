@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  6 03:10:55 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.996
+   see /usr/share/doc/packages/perl-Redis/Changes
+
+  1.996     2020-03-05 16:17:21+01:00 Europe/Paris
+  
+  1.996     2020-03-05 11:56:11+01:00 Europe/Paris
+    * #139: Fix for "Unexpected error condition 104/linux"
+
+-------------------------------------------------------------------
 Tue Jul 23 05:29:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.995
