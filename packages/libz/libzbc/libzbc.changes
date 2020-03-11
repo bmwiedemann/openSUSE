@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  9 12:49:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.8.5
+  * Fix potential IO error for large IO requests with a buffer
+    not page aligned.
+  * Modifications to the block backens driver to support the new
+    ioctl() commands introduced in kernel 5.5 (zone open, close
+    and finish ioctls).
+
+-------------------------------------------------------------------
 Sat Jan 25 08:32:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.8.4

@@ -17,8 +17,8 @@
 
 
 Name:           libzbc
-%define lname   libzbc-5_8_4
-Version:        5.8.4
+%define lname   libzbc-5_8_5
+Version:        5.8.5
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -26,6 +26,7 @@ Group:          Hardware/Other
 URL:            https://github.com/hgst/libzbc
 
 Source:         https://github.com/hgst/libzbc/archive/v%version.tar.gz
+BuildRequires:  autoconf-archive
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -99,14 +100,14 @@ make -C obj check %{?_smp_mflags}
 
 %files tools
 %_bindir/zbc_*
-%doc COPYING.LESSER
+%license COPYING.LESSER
 
 %files gui
 %_bindir/gz*
 
 %files -n %lname
 %_libdir/libzbc-*.so
-%doc COPYING
+%license COPYING.BSD
 
 %files devel
 %_includedir/%name/
