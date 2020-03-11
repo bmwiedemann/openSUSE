@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:38:10 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Remove stack-protector option addition, it's already in $optflags.
+
+-------------------------------------------------------------------
 Mon Feb 17 05:18:47 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 5.8

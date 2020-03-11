@@ -883,4 +883,12 @@
   * Fixes CVE-2019-20044 bsc#1163882</comment>
     <requestid>774851</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>d48e23bf442bc279d2cdc9243a1921c8</srcmd5>
+    <version>5.8</version>
+    <time>1583948753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783235</requestid>
+  </revision>
 </revisionlist>

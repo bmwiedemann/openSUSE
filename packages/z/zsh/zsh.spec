@@ -108,15 +108,10 @@ perl -p -i -e 's|%{_prefix}/local/bin|%{_bindir}|' \
 
 %build
 
-%define _stack_protector "-fstack-protector-strong"
-%if 0%{?suse_version} <= 1315
-%define _stack_protector "-fstack-protector"
-%endif
-
 %configure \
 %if 0%{?suse_version}
     --with-term-lib="ncursesw" \
-    --enable-cflags="%{optflags} -fPIE %{_stack_protector} %(ncursesw6-config --cflags)" \
+    --enable-cflags="%{optflags} -fPIE %(ncursesw6-config --cflags)" \
     --enable-ldflags="%(ncursesw6-config --libs) -pie -Wl,-z,relro" \
 %endif
     --enable-fndir=%{_datadir}/%{name}/${version}/functions \
