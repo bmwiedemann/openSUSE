@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:19:02 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add bazel-rules-python as a build dependency.
+
+-------------------------------------------------------------------
 Mon Feb 24 23:46:41 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Fix the version string - mention OpenSSL instead of BoringSSL.

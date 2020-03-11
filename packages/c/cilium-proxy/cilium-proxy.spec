@@ -36,6 +36,7 @@ BuildRequires:  bazel-rules-foreign-cc-source
 BuildRequires:  bazel-rules-go-source
 BuildRequires:  bazel-rules-java-source
 BuildRequires:  bazel-rules-proto-source
+BuildRequires:  bazel-rules-python-source
 BuildRequires:  bazel-rules-swift-source
 BuildRequires:  bazel-skylib-source
 BuildRequires:  bazel-toolchains-source
@@ -151,6 +152,8 @@ bazel build \
     --cxxopt="-Wno-error=old-style-cast" \
     --copt="-Wno-unused-parameter" \
     --cxxopt="-Wno-unused-parameter" \
+    --copt="-Wno-deprecated-declarations" \
+    --cxxopt="-Wno-deprecated-declarations" \
     --curses=no \
     --host_force_python=PY3 \
     --incompatible_bzl_disallow_load_after_statement=false \
@@ -208,6 +211,7 @@ bazel build \
     --override_repository="rules_foreign_cc=/usr/src/bazel-rules-foreign-cc" \
     --override_repository="rules_java=/usr/src/bazel-rules-java" \
     --override_repository="rules_proto=/usr/src/bazel-rules-proto" \
+    --override_repository="rules_python=/usr/src/bazel-rules-python" \
     --override_repository="upb=/usr/src/upb" \
     --override_repository="zlib=%{_datadir}/bazel-workspaces/zlib" \
     --strip=never \
