@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 28 11:02:19 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.9
+  * fix "multiple kiwi files" error for Full media
+
+-------------------------------------------------------------------
+Wed Feb 26 13:23:16 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.8
+  * keep kwd file in SLE Full media wrapper (bsc#1164670)
+
+-------------------------------------------------------------------
 Wed Feb  5 12:06:04 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.2.7
