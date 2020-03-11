@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:25:45 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Do not run bitcoind in daemon mode. Running it not as a
+  background process makes it working properly with journald
+  (instead of writing logs in /var/log).
+
+-------------------------------------------------------------------
+Mon Mar  9 20:31:46 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.19.1:
+  * Wallet
+    * Fix origfee return for bumpfee with feerate arg
+    * Fix unique_ptr usage in boost::signals2
+    * Fix issue with conflicted mempool tx in listsinceblock
+    * Bug: IsUsedDestination shouldn't use key id as script id for
+      ScriptHash
+    * IsUsedDestination should count any known single-key address
+    * Reset reused transactions cache
+  * RPC and other APIs
+    * cli: Fix fatal leveldb error when specifying
+      -blockfilterindex=basic twice
+    * require second argument only for scantxoutset start action
+    * zmq: Fix due to invalid argument and multiple notifiers
+    * psbt: handle unspendable psbts
+    * psbt: check that various indexes and amounts are within
+      bounds
+  * GUI
+    * Fix missing qRegisterMetaType for size_t
+    * disable File->CreateWallet during startup
+    * Fix comparison function signature
+    * Fix unintialized WalletView::progressDialog
+  * Tests and QA
+    * Appveyor improvement - text file for vcpkg package list
+    * fix "bitcoind already running" warnings on macOS
+    * add missing #include to fix compiler errors
+  * Platform support
+    * Update msvc build for Visual Studio 2019 v16.4
+    * Updates to appveyor config for VS2019 and Qt5.9.8 + msvc
+      project fixes
+    * bug-fix macos: give free bytes to F_PREALLOCATE
+  * Miscellaneous
+    * init: Stop indexes on shutdown after ChainStateFlushed
+      callback
+    * util: Add missing headers to util/fees.cpp
+    * Unbreak build with Boost 1.72.0
+    * scripts: Fix symbol-check & security-check argument passing
+    * Log to net category for exceptions in ProcessMessages
+    * Update univalue subtree
+
+-------------------------------------------------------------------
 Wed Dec  4 23:57:17 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Update to version 0.19.0.1:

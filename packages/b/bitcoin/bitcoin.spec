@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %define consensus 1
 %define is_base 1
 Name:           bitcoin
-Version:        0.19.0.1
+Version:        0.19.1
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
