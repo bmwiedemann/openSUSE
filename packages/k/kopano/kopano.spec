@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 10.0.1
+%define version_unconverted 10.0.2
 
 Name:           kopano
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
@@ -887,7 +887,6 @@ fi
 %files dagent
 %defattr(-,root,root)
 %_sbindir/kopano-dagent
-%_sbindir/kopano-autorespond
 %_prefix/lib/systemd/system/kopano-dagent.service
 %if "%_repository" == "RHEL_7_PHP_56" || "%_repository" == "RHEL_7_PHP_70" || "%_repository" == "RHEL_7_PHP_71"
 %_prefix/lib/systemd/system/kopano-dagent.service.d/
@@ -898,7 +897,6 @@ fi
 %attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
 %dir %_docdir/kopano/
 %dir %_docdir/kopano/example-config/
-%_docdir/kopano/example-config/autorespond
 %_docdir/kopano/example-config/dagent.cfg
 %dir %_docdir/kopano/example-config/apparmor.d/
 %_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-dagent
