@@ -4033,4 +4033,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   clang-devel, similar to llvm-devel.</comment>
     <requestid>780325</requestid>
   </revision>
+  <revision rev="373" vrev="245">
+    <srcmd5>c9568d4a9dcfab9a34a34b5e6f0cc329</srcmd5>
+    <version>unknown</version>
+    <time>1583948019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.1
+  * bugfix release 
+
+- cleanup in specfile: get rid of is_opensuse macro, which is no
+  longer needed at all (jira#PM-1623)</comment>
+    <requestid>783007</requestid>
+  </revision>
 </revisionlist>

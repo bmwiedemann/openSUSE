@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:15:52 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to Mesa 20.0.1
+  * bugfix release 
+
+-------------------------------------------------------------------
+Fri Mar  6 10:27:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- cleanup in specfile: get rid of is_opensuse macro, which is no
+  longer needed at all (jira#PM-1623)
+
+-------------------------------------------------------------------
 Fri Feb 28 15:25:41 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Loosen dependencies to allow building with newer versions of

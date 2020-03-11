@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.0.0
+%define _version 20.0.1
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -110,7 +110,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        20.0.0
+Version:        20.0.1
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -203,11 +203,9 @@ BuildRequires:  libelf-devel
 %endif
 %endif
 # Requirements for wayland bumped up from 17.0
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(wayland-client) >= 1.11
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
-%endif
 %if 0%{with_llvm}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  llvm-devel >= 9.0.0
@@ -217,7 +215,7 @@ BuildRequires:  llvm9-devel
 %endif
 
 %if 0%{with_opencl}
-%if 0%{?is_opensuse}
+%if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel >= 9.0.0
 %else
 BuildRequires:  clang9-devel
@@ -764,11 +762,7 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
 %endif
 
 %build
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 egl_platforms=x11,drm,surfaceless,wayland
-%else
-egl_platforms=x11,drm,surfaceless
-%endif
 
 %meson \
             --auto-features=disabled \
