@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:06:06 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 5.3.2:
+  * Changes;
+    + Remove deprecated GtkAction/GtkUIManager for rep_balance.
+  * Bugfixes;
+    + Edit menu was not disable for closed account.
+    + Statistics show legend toolbutton was state inverted.
+    + #1861337 transactions from closed accounts not
+      showing > Transactions > Show All.
+    + #1861008 after changing values in the budget, the save button
+      is not enabled.
+    + #1860356 transaction List wrong preset status dropdown.
+    + #1860309 preference "Keep the last date" not working after
+      creating a new transaction
+    + #1860232 crash when deleting multiple transactions from
+      "Show All" view.
+    + #1859476 budget "Dec" not included in total.
+    + #1859386 unable to save Split Transaction in 5.3.1 after
+      initially working.
+    + #1859346 restore backup should be available anytime.
+    + #1859344 missing texts under icons in top menu.
+    + #1859275 budget table view balance sometimes empty + no edit.
+- Changes from version 5.3.1:
+  * Bugfixes;
+    + #1859279 toggling from category to subcategory level on
+      Statistics Report doubles the amount .
+    + #1859117 split transaction not displaying Split in Category
+      after edit txn.
+    + #1859088 crash may occur if you enable 'show confirmation
+      text' in preference.
+    + #1859077 no more pre-filled account when single account.
+    + #1858945 keep last date preference no more working.
+    + #1858682 add buttons disabled while adding or inherit a
+      transfer.
+    + #1858507 some menu/toolbar tooltip text remains in English.
+- Changes from version 5.3:
+  * New;
+    + Transaction dialog shows weekdays and account currency.
+    + Transaction type created expense/income and transfer.
+    + Added a clear menu for recent opened file.
+    + Added delete key shortcut to delete transaction.
+    + Added budget pin icon to category forced to be displayed.
+    + Filter dialog added select all/none/invert for payment.
+    + Added account budget icon to show if account is part of the
+      budget.
+  * Changes;
+    + Xhb data file format (v1.4).
+    + Account dialog layout change.
+    + Budget dialog layout change.
+    + Assign dialog layout change.
+    + Filter dialog layout change.
+    + Transaction dialog layout change.
+    + Merged transaction and template dialog.
+    + Internal transfer payment mode removed (in profit to transfer
+      type).
+    + Transfer payment mode was renamed to bank transfer.
+    + Button add/edit/merge/delete to icon button into toolbar
+      under listview.
+    + Rewritten menus and toobars to drop usage of deprecated
+      GtkAction/GtkUIManager.
+    + Dropped significant g_list_append to gain in performance.
+    + Replaced the 'remove' text to more accurate 'delete'.
+    + Reworked the ui design of release candidate warning message.
+    + Lighten stack usage for dialog.
+  * Wish;
+    + #1851449 Add a transaction very very slooow with many account
+      numbers.
+    + #1848604 rely on type exp/inc also for split line input.
+    + #1845388 remind the apply of assignment between import.
+    + #1844892 detect/skip UTF-8 BOM (Excel CSV files).
+    + #1842897 color trailing spaces in assignments.
+    + #1842758 your accounts list keep state after open/close
+      register.
+    + #1840100 updates when use multiple account window.
+    + #1831975 optional visible/audible confirmation of transaction
+      entered.
+    + #1831372 add nett Budget value to 'Manage Budget' screen.
+    + #1818320 add "void" status to transactions.
+    + #1818052 copy/paste one/multiple transaction(s).
+    + #1813474 "Info" field for scheduled/template transactions.
+    + #1812630 multiple edit enable change to internal transfer.
+    + #1812598 calculate "Remind" transactions into balance (as
+      configuration option?).
+    + #1810299 bold lowest balance for future date in register.
+    + #1792279 configurable backup directory.
+    + #1756681 ease debit/credit/transfer transaction seizure.
+    + #1749457 change order of same day transactions.
+    + #1740368 expense & Income type available at sub-category
+      level.
+    + #1719184 table view for budget setup (contribution code).
+    + #1708974 allow for transfer on mismatched days.
+    + #1504348 improve control of assignments.
+    + #1460666 features for scheduled transactions dialog.
+    + #1173135 statistics report to show all items (pay, cate,
+      acc...) over time.
+    + #1095160 account: more type and created group.
+  * Bugfixes;
+    + #1854953 Direct Debit type ignored during OFX import.
+    + #1853531 show 'Uncleared' transactions displays uncleared and
+      Reconciled.
+    + #1845841 check point and remainder on splits gone since 5.2.
+    + #1847645 number of backups exceeds preference settings.
+    + #1845839 updating a transaction from the Remind screen
+      doesn't always update the account summary.
+    + #1844881 internal xfer of budget account "this needs a
+      category".
+    + #1829927 when inherit a txn, the Add button faulty keep the
+      data.
+- Changes from version 5.2.8:
+  * New;
+    + Import: auto assigment is now optional.
+    + Payee dialog: added a payment icon column to ease management.
+    + Add help and donate toolbar buttons.
+  * Changes;
+    + Payee popover: improved the dimension of the popover to larger one.
+  * Wish;
+    + #1843184 reorganize accelerator for txn dialog.
+    + #1841462 shortcuts for register view.
+    + #1828914 mark "Today" for calendar widget.
+    + #1826211 csv import to assign category from payee choice.
+    + #1673902 add a visual marker for uncategorized txn of budget
+      account.
+  * Bugfixes;
+    + Fixed compile fail with GTK < 3.22 and gtk_popover_popdown.
+    + Accelerator key was not working for date widget.
+    + #1843648 info gets empty after editing a txn with paymode
+      cheque and positive amount.
+    + #1842935 can't save file after OFX import with long unicode
+      strings.
+    + #1842292 windows: language change KO if install path as utf-8
+      char (é, ç, à, etc).
+    + #1840998 transaction Screen only shows 3 weeks in advance.
+    + #1840393 import qfx similar transaction dialog amount show
+      $0.00.
+    + #1839851 balance report details view all show amount 0.00.
+- Changes from version 5.2.7:
+  * New;
+    + Dropped usage of comboboxentry in profit of a popover list
+      for tags.
+    + Payee column shows >account or <account for internal
+      transfer.
+    + Transaction tooltip were clarified.
+  * Wish;
+    + #1828732 add expand/collapse all for categories in edit
+      filter.
+  * Bugfixes;
+    + Filter payment click on label was not working.
+    + Tags add from manager was allowing input space in name.
+    + Tags were not freed from archives.
+    + #1837838 create an account in new file wizard allows trailing
+      space in account name.
+    + #1836380 vehicle cost report show bad km stats in some case.
+    + #1835588 toggle future transactions button is faulty always
+      showed.
+    + #1832982 typo in src/dsp-account.c.
+    + #1832216 win: open payee menu crash on libcairo, and is slow.
+    + #1830880 changing a transaction in the future screen doesn't
+      activate the save button.
+    + #1830710 tag list is slow with lots of items and too wide.
+    + #1830707 no warning for "amount and category sign don't
+      match" if internal transfer.
+    + #1830656 Payee and Memo colums on scheduled screen sometimes
+      revert to minimum width.
+    + #1830523 future/remind txn main panel list shows 0.00 amount.
+    + #1792277 not all columns auto-size to contents.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:14:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
