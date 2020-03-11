@@ -139,4 +139,26 @@
     <comment></comment>
     <requestid>657456</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5d57988243afe4fbfb96d3431307b609</srcmd5>
+    <version>0.2.8+30</version>
+    <time>1583947976</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to git-checkout via source services, commit 092d884d.
+- Following the above: Drop autoconf, automake and
+  pkgconfig(pygobject-2.0) BuildRequires. Add gtk-doc and libtool.
+  Pass autogen.sh inst of autoreconf, and add --enable-gtk-doc and
+  --enable-introspection to configure. Modernize spec.
+- Drop farstream-0.2.8-rtpbitrateadapter-no-adaptation.patch: Fixed
+  upstream.
+- Add farstream-fix-build-gst116.patch: Fix build with gstreamer
+  1.16.x  (glfdo#farstream/farstream!3).
+- Add farstream-add-check-for-glib-mkenums.patch: Fix autoconf
+  build failure for glib-mkenums (glfdo#farstream/farstream!2).
+- Add farstream-fix-make43.patch: autotools: Fix build with
+  make-4.3 (glfdo#farstream/farstream#17).
+- Disable LTO via define, as it currently fails when set to auto.
+</comment>
+    <requestid>782595</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,29 @@
+From 59b20c54317b4b934ef193863602e4965bb6e343 Mon Sep 17 00:00:00 2001
+From: Jakub Adam <jakub.adam@collabora.com>
+Date: Wed, 15 Jan 2020 15:01:51 +0100
+Subject: [PATCH] Fix build with GStreamer 1.16
+
+gst_clear_mini_object() macro introduced in GStreamer 1.16 references
+g_clear_pointer() defined in GLib 2.34. Bump GLIB_VERSION_MAX_ALLOWED
+accordingly to avoid FTBFS when compiling with -Werror.
+---
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 31be2770..9bf5646f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -242,7 +242,8 @@ dnl *** checks for dependency libraries ***
+ dnl GLib is required
+ AG_GST_GLIB_CHECK([2.32])
+ AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_32, [Ignore post 2.32 deprecations])
+-AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_32, [Prevent post 2.32 APIs])
++dnl 2.34 APIs needed due to g_clear_pointer referenced in GStreamer headers since 1.16
++AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_34, [Prevent post 2.34 APIs])
+ 
+ 
+ PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= 2.32, [HAVE_GIO_UNIX=true],[HAVE_GIO_UNIX=false])
+-- 
+2.24.1
+

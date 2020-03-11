@@ -1,0 +1,60 @@
+From aa9603c6ca6055499fa5b3dcd8eb9c6cb060c86e Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 22 Jan 2020 12:42:57 +0100
+Subject: [PATCH] autotools: Fix build with make-4.3
+
+make-4.3 introduced an incompatible change where \# is no longer necessary
+inside of macro references in order to get a literal hash character.
+
+The provided fix keeps compatibility with both make-4.3 and older make
+releases
+
+Gentoo-bug: https://bugs.gentoo.org/706080
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ common-modified/gst-glib-gen.mak | 4 +++-
+ farstream/Makefile.am            | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/common-modified/gst-glib-gen.mak b/common-modified/gst-glib-gen.mak
+index 14f1ba37..69ef0273 100644
+--- a/common-modified/gst-glib-gen.mak
++++ b/common-modified/gst-glib-gen.mak
+@@ -1,12 +1,14 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+ #glib_gen_basename=colorbalance
+ 
+-enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers=$(foreach h,$(glib_enum_headers),\n$(H)include \"$(h)\")
+ 
+ # these are all the rules generating the relevant files
+ $(glib_gen_basename)-enumtypes.h: $(glib_enum_headers)
+diff --git a/farstream/Makefile.am b/farstream/Makefile.am
+index e6b509c1..ddf03a0b 100644
+--- a/farstream/Makefile.am
++++ b/farstream/Makefile.am
+@@ -69,11 +69,13 @@ public_headers = fs-candidate.h \
+ 		fs-conference.h \
+ 		fs-utils.h
+ 
++H := \#
++
+ glib_enum_headers=$(public_headers)
+ glib_enum_define=FS
+ glib_gen_prefix=_fs
+ glib_gen_basename=fs
+-glib_gen_decl_include=\#include <glib-object.h>
++glib_gen_decl_include=$(H)include <glib-object.h>
+ 
+ include $(top_srcdir)/common-modified/gst-glib-gen.mak
+ 
+-- 
+2.25.0
+

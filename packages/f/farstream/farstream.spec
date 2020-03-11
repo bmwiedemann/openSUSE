@@ -1,7 +1,7 @@
 #
 # spec file for package farstream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define gst_pluginsdir %(pkg-config --variable pluginsdir gstreamer-1.0)
 Name:           farstream
-Version:        0.2.8
+Version:        0.2.8+30
 Release:        0
 # License note: the only GPL-2.0+ files are farstream-0.1.1/common/coverage/*
 # and common/gstdoc-scangobj; those are just used during the build and do not
@@ -27,25 +27,30 @@ Summary:        GStreamer modules and libraries for videoconferencing
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://farsight.freedesktop.org/
-Source:         http://freedesktop.org/software/farstream/releases/farstream/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+
 # PATCH-FEATURE-OPENSUSE farstream-plugin-path.patch fcrozat@suse.com -- Use library policy compliant path for plugin
 Patch0:         farstream-plugin-path.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         farstream-0.2.8-rtpbitrateadapter-no-adaptation.patch
-#needed by patch0
-BuildRequires:  autoconf
-BuildRequires:  automake
+# PATCH-FIX-UPSTREAM farstream-fix-build-gst116.patch -- Fix build with gstreamer 1.16.x
+Patch1:         farstream-fix-build-gst116.patch
+# PATCH-FIX-UPSTREAM farstream-add-check-for-glib-mkenums.patch -- Fix autoconf build failure for glib-mkenums
+Patch2:         farstream-add-check-for-glib-mkenums.patch
+# PATCH-FIX-UPSTREAM farstream-fix-make43.patch -- Fix build with make-4.3
+Patch3:         farstream-fix-make43.patch
+
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.32
 BuildRequires:  gobject-introspection-devel >= 0.10.1
 BuildRequires:  gstreamer-devel >= 1.4
+BuildRequires:  gtk-doc
+#needed by patch0
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.16
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.4
 BuildRequires:  pkgconfig(gupnp-igd-1.0) >= 0.2
 BuildRequires:  pkgconfig(nice) >= 0.1.8
-BuildRequires:  pkgconfig(pygobject-2.0) >= 2.16.0
 
 %description
 Farstream is a collection of GStreamer modules and libraries for
@@ -79,8 +84,8 @@ This package provides the GObject Introspection bindings for Farstream.
 Summary:        GStreamer Plug-Ins for videoconferencing
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Requires:       gstreamer-plugins-bad >= 0.11
-Requires:       gstreamer-plugins-good >= 0.11
+Requires:       gstreamer-plugins-bad >= 1.4
+Requires:       gstreamer-plugins-good >= 1.4
 # Unfortunately, the gstreamer elements have the same name; since we're
 # dropping farsight, let's Obsolete the old package for a smooth transition
 Obsoletes:      libgstfarsight-0_10-0
@@ -114,17 +119,19 @@ Farstream is a collection of GStreamer modules and libraries for
 videoconferencing.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
-#needed by patch0
-autoreconf -f
+%define _lto_cflags %{nil}
+# Needed as we are using a git checkout and patching it.
+NOCONFIGURE=1 ./autogen.sh
 
 %configure \
-        --disable-static
-make %{?_smp_mflags}
+	--disable-static \
+	--enable-gtk-doc \
+	--enable-introspection \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -136,7 +143,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libfarstream-0_2-5
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %{_libdir}/libfarstream-0.2.so.*
 %dir %{_libdir}/farstream-0.2-5/
 %{_libdir}/farstream-0.2-5/libmulticast-transmitter.so
@@ -148,7 +155,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/Farstream-0.2.typelib
 
 %files -n gstreamer-plugins-farstream
-%{gst_pluginsdir}/libfsmsnconference.so
 %{gst_pluginsdir}/libfsrawconference.so
 %{gst_pluginsdir}/libfsrtpconference.so
 %{gst_pluginsdir}/libfsrtpxdata.so
