@@ -1,7 +1,7 @@
 #
 # spec file for package rpcbind
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,23 +31,24 @@ URL:            http://rpcbind.sourceforge.net
 Source:         https://downloads.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source2:        sysconfig.rpcbind
 Source4:        pmap_set.c
+Source5:        rpc-user.conf
 Patch1:         0001-systemd-unit-files.patch
 Patch2:         0001-change-lockingdir-to-run.patch
 Patch31:        0031-rpcbind-manpage.patch
 BuildRequires:  libtirpc-devel >= 1.0.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
 Requires(post): %fillup_prereq
-Requires(pre):  shadow
 Provides:       portmap
-%{?systemd_requires}
+%{?systemd_ordering}
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libnsl-devel
-Requires(pre):  group(nobody)
 %endif
+%sysusers_requires
 
 %description
 Rpcbind is a replacement for portmap. Whereas portmap supports only UDP
@@ -79,12 +80,16 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 
 make %{?_smp_mflags}
 gcc -I/usr/include/tirpc -pie -fpie -fwhole-program -Wl,-z,relro,-z,now %{optflags} pmap_set.c -o pmap_set -ltirpc
+%sysusers_generate_pre %{SOURCE5} rpc
 
 %install
 %make_install
 # fillup template
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/
+# sysusers.d config
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 #
 install -m 755 pmap_set %{buildroot}/sbin/pmap_set2
 # create symlink for rcrpcbind
@@ -92,12 +97,8 @@ mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}/%{_sbindir}/rc%{name}
 ln -s /bin/rpcinfo %{buildroot}/sbin/rpcinfo
 
-%pre
+%pre -f rpc.pre
 %service_add_pre %{name}.service %{name}.socket
-
-# Add "rpc" user
-getent passwd rpc >/dev/null || %{_sbindir}/useradd -r -g nobody -d %{_localstatedir}/lib/empty -s /sbin/nologin -c "user for rpcbind" rpc
-exit 0
 
 %preun
 %service_del_preun %{name}.service %{name}.socket
@@ -119,6 +120,7 @@ exit 0
 %{_sbindir}/rc%{name}
 %{_mandir}/*/*
 %{_fillupdir}/sysconfig.%{name}
+%{_sysusersdir}/rpc-user.conf
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.socket
 
