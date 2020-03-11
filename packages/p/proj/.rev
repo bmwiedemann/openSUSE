@@ -209,4 +209,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>746051</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3af442c2729b9647188c4ff9df744293</srcmd5>
+    <version>6.3.1</version>
+    <time>1583948880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783220</requestid>
+  </revision>
 </revisionlist>

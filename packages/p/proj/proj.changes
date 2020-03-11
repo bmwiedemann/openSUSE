@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:42:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 6.3.1:
+  * Updates
+    - Update the EPSG database to version 9.8.6
+    - Database: add mapping for gg10_smv2.mnt and gg10_sbv2.mnt French grids
+    - Database: add mapping for TOR27CSv1.GSB
+  * Bug fixes
+    - Fix wrong use of derivingConversionRef() that caused issues with use of
+      +init=epsg:XXXX by GDAL (affecting R spatial libraries) or in MapServer
+    - fix exporting CoordinateSystem to PROJ JSON with ID
+    - projinfo: use No. abbreviation instead of UTF-8 character (#1828)
+    - CompoundCRS::identify(): avoid exception when horiz/vertical part is a
+      BoundCRS
+    - createOperations(): fix dealing with projected 3D CRS whose Z units != metre
+    - WKT1_GDAL export: limit datum name massaging to names matching EPSG (#1835)
+    - unitconvert with mjd time format: avoid potential integer overflow
+      (ossfuzz 20072)
+    - ProjectedCRS::identify(): fix wrong identification of some ESRI WKT linked
+      to units
+    - Database: add a geoid_like value for proj_method column of grid_alternatives,
+      fix related entries and simplify/robustify logic to deal with EPSG
+      'Geographic3D to GravityRelatedHeight' methods
+    - Fix ingestion of +proj=cea with +k_0 (#1881)
+    - Fix performance issue, affecting PROJ.4 string generation of EPSG:7842
+      (#1913)
+    - Fix identification of ESRI-style datum names starting with D_ but without
+      alias (#1911)
+    - cart: Avoid discontinuity at poles in the inverse case (#1906)
+    - Various updates to make regression test suite pass with gcc on i386 (#1906)
+- Changleog from 6.3.0:
+  * Updates
+    - Database: tune accuracy of Canadian NTv1 file w.r.t NTv2 (#1812)
+    - Modify verbosity level of some debug/trace messages (#1811)
+    - projinfo: no longer call createBoundCRSToWGS84IfPossible() for WKT1:GDAL
+      (#1810)
+    - proj_trans: add retry logic to select other transformation if the best one
+      fails. (#1809)
+    - BoundCRS::identify(): improvements to discard CRS that aren't relevant
+      (#1802)
+    - Database: update to IGNF v3.1.0 (#1785)
+    - Build: Only export symbols if building DLL (#1773)
+    - Database: update ESRI entries with ArcGIS Desktop version 10.8.0 database
+      (#1762)
+    - createOperations(): chain operations whose middle CRSs are not identical but
+      have the same datum (#1734)
+    - import/export PROJJSON: support a interpolation_crs key to geoid_model
+      (#1732)
+    - Database: update to EPSG v9.8.4 (#1725)
+    - Build: require SQLite 3.11 (#1721)
+    - Add support for GEOIDMODEL (#1710)
+    - Better filtering based on extent and performance improvements (#1709)
+  * Bug fixes
+    - Horizontal grid shift: fix issue on iterative inverse computation when
+      switching between (sub)grids (#1797)
+    - createOperations(): make filtering out of 'uninteresting' operations less
+      aggressive (#1788)
+    - Make EPSG:102100 resolve to ESRI:102100 (#1786)
+    - ob_tran: restore traditional handling of +to_meter with pj_transform() and
+      proj utility (#1783)
+    - CRS identification: use case insensitive comparison for authority name
+      (#1780)
+    - normalizeForVisualization() and other methods applying on a ProjectedCRS: do
+      not mess the derivingConversion object of the original object (#1746)
+    - createOperations(): fix transformation computation from/to a CRS with
+      +geoidgrids and +vunits != m (#1731)
+    - Fix proj_assign_context()/pj_set_ctx() with pipelines and alternative coord
+      operations (#1726)
+    - Database: add an auxiliary concatenated_operation_step table to allow
+      arbitrary number of steps (#1696)
+    - Fix errors running gie-based tests in Debug mode on Windows (#1688)
+
+-------------------------------------------------------------------
 Tue Nov 05 14:00:00 UTC 2019 - Angelos Tzotsos <tzotsos@opensuse.org>
 
 - Update to version 6.2.1:

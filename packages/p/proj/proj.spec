@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   15
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        6.2.1
+Version:        6.3.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -32,11 +32,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(sqlite3) >= 3.11
+Provides:       libproj = %{version}
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(gtest)
 %endif
-BuildRequires:  pkgconfig(sqlite3) >= 3.7
-Provides:       libproj = %{version}
 
 %description
 This package offers the commandline tools for performing respective
@@ -115,7 +115,6 @@ make %{?_smp_mflags} check
 %files devel
 %{_includedir}/*.h
 %{_includedir}/proj
-%{_includedir}/proj_json_streaming_writer.hpp
 %{_libdir}/libproj.so
 %{_libdir}/pkgconfig/proj.pc
 %{_mandir}/man3/geodesic.3%{?ext_man}
