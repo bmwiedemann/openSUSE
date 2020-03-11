@@ -1,7 +1,7 @@
 #
 # spec file for package python-tri.declarative
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tri.declarative
-Version:        3.1.0
+Version:        5.2.0
 Release:        0
-License:        BSD-3-Clause
 Summary:        Python class decorators in the style of Django model classes
-Url:            https://github.com/TriOptima/tri.declarative
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/TriOptima/tri.declarative
 Source:         https://github.com/TriOptima/tri.declarative/archive/%{version}.tar.gz#/tri.declarative-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 # Tests are incomptaible with pytest 5
 # https://github.com/TriOptima/tri.declarative/issues/9
