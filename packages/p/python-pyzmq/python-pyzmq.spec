@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Disable tests, they are so slow that OBS thinks the build died.
 %bcond_with tests
 Name:           python-pyzmq
-Version:        18.1.1
+Version:        19.0.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        LGPL-3.0-or-later AND BSD-3-Clause
