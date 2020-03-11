@@ -17,14 +17,14 @@
 
 
 Name:           fontawesome-fonts
-Version:        4.7.0
+Version:        5.12.1
 Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            http://fontawesome.io/
-Source0:        http://fontawesome.io/assets/font-awesome-%{version}.zip
-Source1:        README-Trademarks.txt
+Source0:        https://github.com/FortAwesome/Font-Awesome/releases/download/5.12.1/fontawesome-free-%{version}-desktop.zip
+Source1:        LICENSE.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -42,34 +42,36 @@ are in the range U+F000..U+F23A.)
 Summary:        Web files for font-awesome
 License:        MIT
 Group:          System/X11/Fonts
+Source2:        https://github.com/FortAwesome/Font-Awesome/releases/download/5.12.1/fontawesome-free-%{version}-web.zip
 
 %description web
 Web files (css, less, scss, etc) for font-awesome.
 
 %prep
-%setup -q -n font-awesome-%{version}
+%setup -c -q -n %{name}-%{version}
+%setup -T -D -a 2
 cp -p %{SOURCE1} .
 
 %build
 
 %install
 install -m 0755 -d %{buildroot}%{_ttfontsdir}
-install -p -m 0644 fonts/*.ttf fonts/*.otf fonts/*.woff %{buildroot}%{_ttfontsdir}
+install -p -m 0644 */otfs/*.otf %{buildroot}%{_ttfontsdir}
 
-install -m 0755 -d %{buildroot}%{_datadir}/font-awesome-web/fonts
-install -p -m 0644 fonts/*.{ttf,woff,woff2,svg} %{buildroot}%{_datadir}/font-awesome-web/fonts
-cp -r css less scss %{buildroot}%{_datadir}/font-awesome-web/
+install -m 0755 -d %{buildroot}%{_datadir}/fontawesome-web/fonts
+install -p -m 0644 */webfonts/*.{ttf,woff,woff2,svg,eot} %{buildroot}%{_datadir}/fontawesome-web/fonts
+cp -r */css */less */scss %{buildroot}%{_datadir}/fontawesome-web/
 
 %reconfigure_fonts_scriptlets
 
 %files
 %defattr(-, root,root)
-%doc README-Trademarks.txt
+%doc LICENSE.txt
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
 
 %files web
 %defattr(-, root,root)
-%{_datadir}/font-awesome-web/
+%{_datadir}/fontawesome-web/
 
 %changelog

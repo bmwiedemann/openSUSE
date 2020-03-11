@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:20:22 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update to version 5.12.1:
+  * Added
+    + user-unlock icon #13280
+    + mixer brand icon #11242
+    + coffin-cross icon #15646
+    + instagram-square icon #9223
+    + shopify icon #3850
+    + dailymotion icon #3890
+
+  * Changed
+    + Do not separate web fonts files for Free Kits
+    + The .fab CSS class now has explicit weight of 400 instead of inheriting 'normal'
+    + Balance the plus symbol in file-plus and folder-plus #16004
+    + Removed cross from coffin (new coffin-cross still available) #15646
+    + Updated edge brand icon #15771
+    + Updated clock hands #15779
+- changed sources to github release
+- README-Trademarks.txt replaced with LICENSE.txt
+
+-------------------------------------------------------------------
 Wed Feb 12 10:38:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - default font path for the web fonts is "../fonts" so we need to install the
