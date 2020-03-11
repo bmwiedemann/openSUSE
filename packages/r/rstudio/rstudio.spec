@@ -27,7 +27,6 @@
 %global rstudio_version_patch 5033
 # commit of the tag belonging to %%{version}
 %global rstudio_git_revision_hash 330255ddec489e7a147ace3e8a9a3e4157d8d5ad
-
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -64,6 +63,7 @@ Patch6:         0007-Remove-PauseChanged-related-handler-from-DownloadHel.patch
 # shorten the installation time a bit by not installing mathjax
 Patch7:         0008-Don-t-install-pandoc-and-mathjax.patch
 Patch8:         0009-Fix-rstudio-exec-path.patch
+Patch9:         0010-fix-STL-access-undefined-behaviour.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
 BuildRequires:  ant
@@ -97,9 +97,8 @@ BuildRequires:  pam-devel
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  unzip
-%{?systemd_requires}
 BuildRequires:  sysuser-tools
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -135,6 +134,7 @@ Suggests:       rstudio-desktop
 Suggests:       rstudio-server
 Provides:       bundled(gin) = %{bundled_gin_version}
 Provides:       bundled(gwt) = %{bundled_gwt_version}
+%{?systemd_requires}
 
 %description
 This package provides the common files of RStudio Desktop and RStudio server.
@@ -177,6 +177,7 @@ on a server has a number of benefits, including:
 %patch3 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 # TW & Leap 15.2 specific patches
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150200
@@ -199,6 +200,10 @@ mv src/gwt/lib/gwt/gwt-%{bundled_gwt_version} src/gwt/lib/gwt/%{bundled_gwt_vers
 mkdir -p src/gwt/lib/gin/%{bundled_gin_version}
 unzip -d src/gwt/lib/gin/%{bundled_gin_version} %{SOURCE3}
 
+# don't include gwt_build in ALL to avoid recompilation, but then we must build
+# it manually
+sed -i 's@gwt_build ALL@gwt_build@g' src/gwt/CMakeLists.txt
+
 %build
 %sysusers_generate_pre %{SOURCE4} %{name}-server
 
@@ -215,20 +220,10 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
     -DBOOST_ROOT=%{_prefix} -DBOOST_LIBRARYDIR=%{_lib}                              \
     -DQT_QMAKE_EXECUTABLE=%{_bindir}/qmake-qt5
 
-# dirty hack:
-# gwtc compilation runs via make -> ant -> java and something in that chain
-# starts a lot of threads that can OOM the worker. Unfortunately, the
-# parallelism cannot be turned off...
-#
-# So we just build everything that doesn't require gwt first and then start a
-# single make task (in %%install) and cross our fingers hoping that gwt itself
-# is not enough to OOM the machine. We don't add an addional make call here,
-# because the gwt compilation is *always* re-run on make (i.e. it will run again
-# in %%cmake_install), so adding that would be a waste of resources.
-%make_build rstudio rsession rpostback rstudio-core rstudio-monitor rstudio-r rstudio-session-workers diagnostics rserver rserver-pam
+%make_build
+%make_build gwt_build
 
 %install
-# fun fact: this recompiles gwt…
 %cmake_install
 
 # sysuser for rstudio-server
