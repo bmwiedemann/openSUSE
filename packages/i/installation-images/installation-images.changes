@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Mon Mar 9 10:33:04 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#363
+- adapt system-user-* and system-group-* package handling
+  (bsc#1163938)
+- 14.461
+
+--------------------------------------------------------------------
+Fri Mar 6 12:16:11 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#362
+- fix rescue system setup (bsc#1160378)
+- 14.460
+
+-------------------------------------------------------------------
+Sat Feb 29 10:05:05 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Pull the correct distribution-logos per distribution theme
+
+--------------------------------------------------------------------
 Wed Feb 26 10:46:23 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#361

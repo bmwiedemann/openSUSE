@@ -143,6 +143,11 @@ ExclusiveArch:  do_not_build
 %define branding_gfxboot  openSUSE
 BuildRequires:  openSUSE-release
 BuildRequires:  adobe-sourcesanspro-fonts
+%if 0%{?is_opensuse} && !0%{?sle_version}
+BuildRequires:  distribution-logos-openSUSE-Tumbleweed
+%else
+BuildRequires:  distribution-logos-openSUSE-Leap
+%endif
 %endif
 
 %if "%theme" == "Kubic"
@@ -156,6 +161,7 @@ BuildRequires:  adobe-sourcesanspro-fonts
 %define config_bootmenu_no_upgrade 1
 BuildRequires:  openSUSE-MicroOS-release
 BuildRequires:  adobe-sourcesanspro-fonts
+BuildRequires:  distribution-logos-openSUSE-Kubic
 
 # Kubic is based on MicroOS but we don't want this to show
 # note: keep this in sync with the Kubic settings in etc/config
@@ -173,6 +179,7 @@ BuildRequires:  adobe-sourcesanspro-fonts
 %define config_bootmenu_no_upgrade 1
 BuildRequires:  openSUSE-MicroOS-release
 BuildRequires:  adobe-sourcesanspro-fonts
+BuildRequires:  distribution-logos-openSUSE-MicroOS
 %endif
 
 %if "%theme" == "SLED"
@@ -610,7 +617,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.459
+Version:        14.461
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
