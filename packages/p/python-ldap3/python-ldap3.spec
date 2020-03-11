@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldap3
-Version:        2.6.1
+Version:        2.7
 Release:        0
 Summary:        A strictly RFC 4511 conforming LDAP V3 pure Python client
 License:        LGPL-3.0-only
