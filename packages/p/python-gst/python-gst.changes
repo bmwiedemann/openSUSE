@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:08:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use the singlespec again to properly generate py2 and py3 pkg
+
+-------------------------------------------------------------------
+Tue Mar 10 11:01:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add python-gst-fix-py38-build.patch: Fix build with py 3.8.
+  Further switch to meson buildsystem, patch only fixes it for
+  this, and not autotools. Add c++_compiler and meson BuildRequires
+  and meson macros. Drop all python build macros, and add explicit
+  pkgconfig(python3) BuildRequires.
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Mon Feb 17 08:13:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Own %%{python_sitearch}/gi dir, needed now after changes
