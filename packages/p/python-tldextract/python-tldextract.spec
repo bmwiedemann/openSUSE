@@ -1,7 +1,7 @@
 #
 # spec file for package python-tldextract
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tldextract
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/john-kurkowski/tldextract
+URL:            https://github.com/john-kurkowski/tldextract
 Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tldextract-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # No internet connection on OBS build hosts; skip suffix list snapshot diff
-Patch:          tldextract-tests-offline.patch
+Patch0:         tldextract-tests-offline.patch
 ### BEGIN test requirements
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -41,9 +41,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.1.0
 Requires:       python-requests >= 2.1.0
 Requires:       python-requests-file >= 1.4
+Requires:       python-setuptools
 Obsoletes:      python-tldextract <= 2.0.1
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -58,6 +58,7 @@ as well.
 %autopatch -p1
 
 %build
+sed -i 's:--pylint::' pytest.ini
 %python_build
 
 %install
@@ -66,7 +67,7 @@ as well.
 
 %check
 %python_exec setup.py develop --user
-%python_exec -m pytest -v tests
+%pytest tests
 
 %files %{python_files}
 %license LICENSE
