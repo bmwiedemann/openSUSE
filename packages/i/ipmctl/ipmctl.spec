@@ -16,16 +16,14 @@
 #
 
 
-%define abi     3
+%define abi     4
 #define vgit    .1547861714.b7a59da
 %define vgit    %{nil}
-%define vSafeC  3.3.v03032018+git7.59eba324
-%bcond_with     precompiledSafeC
 
 Name:           ipmctl
-Version:        01.00.00.3497
+Version:        02.00.00.3733
 Release:        0
-Summary:        Utility for managing Intel Optane DC persistent memory modules
+Summary:        Utility for managing Intel Optane persistent memory modules
 License:        BSD-3-Clause
 Group:          System/Management
 URL:            https://github.com/intel/ipmctl
@@ -36,9 +34,6 @@ Source:         %{name}-%{version}%{vgit}.tar.gz
 %endif
 Source1:        ChangeLog.xz
 Source2:        %{name}-rpmlintrc
-Source10:       safeclib-%{vSafeC}.tar.xz
-Source11:       mkSafeC
-Source12:       safeclib-patches.tar
 Patch1:         ipmctl-python3.patch
 
 Recommends:     logrotate
@@ -53,11 +48,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libndctl) >= 58.2
 BuildRequires:  pkgconfig(systemd)
-# for SafeC
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gcc
-BuildRequires:  libtool
+# required for documentation
+BuildRequires:  rubygem(asciidoctor)
 
 # no 'Conflicts' for 'zypper patch'
 Obsoletes:      lib%{name}2
@@ -76,24 +68,15 @@ Obsoletes:      libixpdimm-core < 01.00.00.3000
 ExclusiveArch:  x86_64
 
 %description
-Utility for managing Intel Optane DC persistent memory modules
+Utility for managing Intel Optane persistent memory modules (PMem module)
 Supports functionality to:
-* Discover PMMs on the platform.
-* Provision the platform memory configuration.
-* View and update the firmware on PMMs.
-* Configure data-at-rest security on PMMs.
-* Monitor PMM health.
-* Track performance of PMMs.
-* Debug and troubleshoot PMMs.
-
-%package monitor
-Summary:        Daemon for monitoring the status of Intel PMM
-Group:          System/Monitoring
-%{?systemd_requires}
-Obsoletes:      ixpdimm-monitor < 01.00.00.3000
-
-%description monitor
-A monitor daemon for monitoring the health and status of Intel Optane DC persistent memory modules
+- Discover PMem modules on the platform.
+- Provision the platform memory configuration.
+- View and update the firmware on PMem modules.
+- Configure data-at-rest security on PMem modules.
+- Monitor PMem module health.
+- Track performance of PMem modules.
+- Debug and troubleshoot PMem modules.
 
 %package devel
 Summary:        Development packages for %{name}
@@ -103,21 +86,22 @@ Obsoletes:      ixpdimm-devel < 01.00.00.3000
 Obsoletes:      ixpdimm_sw-devel < 01.00.00.3000
 
 %description devel
-API for development of Intel Optane DC persistent memory management utilities.
+API for development of Intel Optane persistent memory management utilities.
 
 %prep
-%setup -q -n %{name}-%{version}%{vgit} -a 10
+%setup -q -n %{name}-%{version}%{vgit}
 %patch1 -p1
+
+perl -pi.00 -e '
+  s[(CMAKE_INSTALL_)DATAROOT(DIR\})/ipmctl][${1}SYSCONF${2}];
+  s[(INI_INSTALL_FILEPATH "\$\{CMAKE_INSTALL_)DATAROOT(DIR\}")][${1}SYSCONF${2}];
+  s[(-DINI_INSTALL_FILEPATH="\$\{INI_INSTALL_FILEPATH\})/ipmctl][${1}];
+' CMakeLists.txt
+diff -u CMakeLists.txt{.00,} || sleep 4
 
 ! grep -lri 'INTEL CONFIDENTIAL' || exit 1
 
-%if %{with precompiledSafeC}
-  tar xfJ ../../SOURCES/safeclib-prebuild.tar.xz || sleep 5
-%endif
-
 %build
-/bin/bash -ex "%{SOURCE11}" "%{SOURCE12}" "%{?_smp_mflags}"
-export PKG_CONFIG_PATH=$PWD/contrib/lib/pkgconfig
 %cmake -DBUILDNUM=%{version} -DCMAKE_INSTALL_PREFIX=/ \
     -DLINUX_PRODUCT_NAME=%{name} \
     -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
@@ -135,7 +119,6 @@ export PKG_CONFIG_PATH=$PWD/contrib/lib/pkgconfig
 %install
 %cmake_install
 mkdir -p %{buildroot}%{_sbindir}
-ln -sf service %{buildroot}%{_sbindir}/rc%{name}-monitor
 rm -f %{buildroot}%{_datadir}/doc/ipmctl/ipmctl_default.conf
 rm -f %{buildroot}%{_libdir}/*.so.%{abi}
 install -m 444 -p "%{SOURCE1}" .
@@ -144,24 +127,13 @@ install -m 444 -p "%{SOURCE1}" .
 
 %postun -p /sbin/ldconfig
 
-%pre monitor
-%service_add_pre ipmctl-monitor.service
-
-%post monitor
-%service_add_post ipmctl-monitor.service
-
-%preun monitor
-%service_del_preun ipmctl-monitor.service
-
-%postun monitor
-%service_del_postun ipmctl-monitor.service
-
 %files
 %defattr(-,root,root)
-%license LICENSE contrib/COPYING.*
-%doc README.md CONTRIBUTING.md Documentation/ipmctl/ipmctl.txt
+%license LICENSE
+%doc README.md CONTRIBUTING.md
 %doc ChangeLog.xz
 %{_bindir}/%{name}
+%{_mandir}/man1/*
 
 #files data
 %doc output/release/%{name}_default.conf
@@ -170,13 +142,6 @@ install -m 444 -p "%{SOURCE1}" .
 %dir %{_localstatedir}/log/%{name}
 #files -n lib%%{name}%%{abi}
 %{_libdir}/lib%{name}.so.%{abi}.*
-
-%files monitor
-%defattr(-,root,root)
-%license LICENSE
-%{_bindir}/%{name}-monitor
-%{_sbindir}/rc%{name}-monitor
-%{_unitdir}/%{name}-monitor.service
 
 %files devel
 %defattr(-,root,root)

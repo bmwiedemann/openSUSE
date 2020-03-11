@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:06:35 UTC 2020 - rw@suse.com
+
+- Update to version 02.00.00.3733
+  - Sidestep feature process, hardware enablement via bugzilla.
+    [bsc#1162844]
+  (For detailed changes see 'ChangeLog.xz')
+
+-------------------------------------------------------------------
+Wed Feb 26 15:25:31 UTC 2020 - rw@suse.com
+
+- Fix creation (and packaging) of man-pages.  [bsc#1158619]
+- Improve spec-file for upcoming update.
+
+-------------------------------------------------------------------
 Tue Feb 18 15:28:47 UTC 2020 - rw@suse.com
 
 - Update to version 01.00.00.3497
