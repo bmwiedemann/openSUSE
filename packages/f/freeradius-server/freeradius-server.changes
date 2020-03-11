@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:18:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Enable memcached driver on SLE15
+
+-------------------------------------------------------------------
 Mon Dec 23 15:06:54 UTC 2019 - Johannes Engel <jcnengel@gmail.com>
 
 - Add missing BuildRequire on samba-core-devel required for windbind

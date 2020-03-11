@@ -758,4 +758,12 @@
   support in rlm_mschap.</comment>
     <requestid>759001</requestid>
   </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>a7bf67b39cff6012b535649ae9f947c0</srcmd5>
+    <version>3.0.19</version>
+    <time>1583949326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783861</requestid>
+  </revision>
 </revisionlist>
