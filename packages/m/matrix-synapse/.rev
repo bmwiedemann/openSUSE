@@ -123,4 +123,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>777960</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>33fa880de5f6eefe7daa7ee32157c2bd</srcmd5>
+    <version>1.11.1</version>
+    <time>1583949082</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>783556</requestid>
+  </revision>
 </revisionlist>

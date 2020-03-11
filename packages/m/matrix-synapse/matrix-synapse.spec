@@ -46,7 +46,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -57,6 +57,10 @@ Source48:       README.SUSE
 Source49:       matrix-synapse.tmpfiles.d
 Source50:       %{pkgname}.service
 Source51:       matrix-synapse-generate-config.sh
+# track series file so we can easily use quilt
+# cd synapse ; ln -s .. patches ; quilt push -a
+# to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
+Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module psutil >= 2.0.0}
