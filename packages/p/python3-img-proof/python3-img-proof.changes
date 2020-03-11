@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:34:29 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v4.8.1 (2020-03-10)
+  + Fix bug and check both CLI output versions for single and
+    double quote.
+
+-------------------------------------------------------------------
+Tue Mar 10 21:04:25 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v4.8.0 (2020-03-10)
+  + Attempt to cleanup instance if error during launch.
+  + Add distro refresh option.
+  + Use systemctl to check guestregister status.
+  + Log only to base logger.
+  + Handle HPC on-demand repos.
+  + Add timestamp to file log handler.
+
+-------------------------------------------------------------------
 Tue Feb 18 22:23:21 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v4.7.0 (2020-02-18)
