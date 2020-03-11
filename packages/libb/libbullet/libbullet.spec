@@ -33,9 +33,9 @@ Patch2:         use-system-libs.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(freeglut)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(tinyxml2)
 
