@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>692572</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f60900ae28e6944c369dc261ed8c37c</srcmd5>
+    <version>1.1.0</version>
+    <time>1583950115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 783986 from awissu)</comment>
+    <requestid>783987</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package agenda
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,19 @@
 
 
 Name:           agenda
-Version:        1.0.12
+Version:        1.1.0
 Release:        0
 Summary:        Task Manager for Elementary
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://github.com/dahenson/agenda
 Source:         https://github.com/dahenson/agenda/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-build.patch
-BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  intltool
+BuildRequires:  meson >= 0.40.
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(granite) >= 0.5
+BuildRequires:  pkgconfig(granite) >= 5.3.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen) >= 0.26.0
@@ -47,25 +44,37 @@ A task manager for Elementary OS.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%cmake -DGSETTINGS_COMPILE=OFF
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 %suse_update_desktop_file -r com.github.dahenson.agenda GTK Office ProjectManagement
-%find_lang %{name}
-%fdupes %{buildroot}%{_datadir}
+%find_lang com.github.dahenson.agenda %{name}.lang
+%fdupes %{buildroot}/%{_datadir}
 
-%files
+# dirlist HiDPI icons (see: hicolor/index.theme)
+touch $PWD/dir.lst
+_dirlist=$PWD/dir.lst
+pushd %{buildroot}
+find ./ | while read _list; do
+    echo $_list | grep '[0-9]\@[0-9]' || continue
+    _path=$(echo $_list | sed 's/[^/]//')
+    if ! ls ${_path%/*}; then
+        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
+    fi
+done
+popd
+
+%files -f dir.lst
 %license LICENSE
 %doc README.md
 %{_bindir}/com.github.dahenson.agenda
 %{_datadir}/applications/com.github.dahenson.agenda.desktop
 %{_datadir}/glib-2.0/schemas/com.github.dahenson.agenda.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.dahenson.agenda.??g
+%{_datadir}/icons/hicolor/*/*/com.github.dahenson.agenda.??g
 %{_datadir}/metainfo/com.github.dahenson.agenda.appdata.xml
 
 %files lang -f agenda.lang

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Mar 11 16:43:24 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.0:
+  * Merge pull request #115 from dahenson/develop
+  * Merge pull request #114 from dahenson/prepare-for-release
+  * Set node version to 10.17.0 for travis
+  * Update copyright year on appdata
+  * Update appdata with new version info
+  * Bump version number
+  * Update copyright years
+  * Merge pull request #113 from dahenson/run-vala-lint
+  * Update src/Window.vala
+  * Fix formatting issues in the code
+  * Merge pull request #110 from dahenson/fix-click-to-deselect
+  * Merge pull request #111 from ryonakano/l10n-update
+  * Add css fixes to hide focused checks
+  * Update POTFILES
+  * Merge pull request #109 from dahenson/css-fixes
+  * Listen for button press event
+  * Small updates to fix the treeview entry
+  * Only use the stylesheet if it runs on elementary
+  * Merge pull request #106 from ryonakano/improve-meson
+  * Use 4 spaces instead of a tab
+  * Merge branch 'develop' into improve-meson
+  * Address suggested changes
+  * Merge branch 'master' into develop
+  * Merge pull request #107 from
+    ryonakano/give-first-time-value-meaning
+  * Fix the GSettings value 'first-time' has no meaning
+  * README: Update installation instructions to Meson
+  * Remove stale INSTALL
+  * Remove no longer used pot
+  * Unify the number of indentation to 4
+  * Remove unnecessary constants
+  * Merge pull request #103 from meisenzahl/master
+  * Downgrade Node.js to fix builds on Travis CI
+  * Remove cache from travis.yml
+  * Merge pull request #99 from dahenson/undo-feature
+  * Add ability to undo reordering to TaskList
+  * ...
+- Drop fix-build.patch
+- Switch to meson
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Mon Apr  8 19:52:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add fix-build.patch. With recent vala versions, --thread is 
