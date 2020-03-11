@@ -20,7 +20,7 @@
 %global crate_name cbindgen
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 Name:           rust-%{crate_name}
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A tool for generating C bindings from Rust code
 License:        MPL-2.0
@@ -63,7 +63,7 @@ export RUSTFLAGS="%{rustflags}"
 # will try to download source deps and rebuild
 export CARGO_HOME=`pwd`/cargo-home/
 # cargo install appends /bin to the path
-cargo install --root=%{buildroot}%{_prefix}
+cargo install --root=%{buildroot}%{_prefix} --path .
 # remove spurious file
 rm %{buildroot}%{_prefix}/.crates.toml
 

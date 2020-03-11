@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar  7 09:05:08 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.13.0
+  * https://docs.rs/crate/cbindgen/0.13.0/source/CHANGES
+- required for Firefox >= 74
+
+-------------------------------------------------------------------
 Sun Feb  9 07:54:07 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Update to version 0.12.0
