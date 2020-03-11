@@ -1,7 +1,7 @@
 #
 # spec file for package python-testflo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,30 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testflo
-Version:        1.3.4
+Version:        1.4.1
 Release:        0
 Summary:        A flow-based testing framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/OpenMDAO/testflo
+URL:            https://github.com/OpenMDAO/testflo
 Source:         https://files.pythonhosted.org/packages/source/t/testflo/testflo-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE use_setuptools.patch -- some of the optional features we want need setuptools
-Patch0:         use_setuptools.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
+Requires:       python-six
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+Recommends:     python-coverage
+Recommends:     python-mpi4py
+Recommends:     python-psutil
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module psutil}
 # /SECTION
-Requires:       python-six
-Recommends:     python-coverage
-Recommends:     python-mpi4py
-Recommends:     python-psutil
-BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(preun):  update-alternatives
-
 %python_subpackages
 
 %description
@@ -55,7 +53,6 @@ using unittest.TestCase objects that they are familiar with.
 
 %prep
 %setup -q -n testflo-%{version}
-%patch0 -p1
 
 %build
 %python_build
