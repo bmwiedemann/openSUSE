@@ -1,8 +1,7 @@
-
 #
 # spec file for package spice-html5
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           spice-html5
-Version:        0.1.7
+Version:        0.2.2
 Release:        0
 Summary:        Pure Javascript SPICE client
+License:        LGPL-3.0-only
 Group:          Productivity/Other
 
-License:        LGPL-3.0
-URL:            http://www.spice-space.org
-Source0:        https://people.freedesktop.org/~jwhite/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.spice-space.org
+Source0:        https://gitlab.freedesktop.org/spice/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -34,22 +34,16 @@ page to initiate a session, and the client itself.  It includes a configuration
 file for Apache, but should work with any web server.
 
 %prep
-%setup -q
-
+%setup -q -n %{name}-%{name}-%{version}
 
 %build
 
 %install
 %make_install
 
-
 %files
 %{_datadir}/%{name}
-%doc README TODO apache.conf.sample
-%if 0%{?suse_version} > 1320 || 0%{?leap_version} >= 420200
 %license COPYING COPYING.LESSER
-%else
-%doc COPYING COPYING.LESSER
-%endif
+%doc README TODO apache.conf.sample
 
 %changelog
