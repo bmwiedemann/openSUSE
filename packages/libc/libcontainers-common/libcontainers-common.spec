@@ -16,16 +16,16 @@
 #
 
 # libpodver - version from containers/libpod
-%define libpodver 1.6.3
+%define libpodver 1.8.0
 
 # storagever - version from containers/storage
-%define storagever 1.15.3
+%define storagever 1.16.1
 
 # imagever - version from containers/image
-%define imagever 5.0.0
+%define imagever 5.2.1
 
 Name:           libcontainers-common
-Version:        20191211
+Version:        20200306
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0 and GPL-3.0+
@@ -84,6 +84,7 @@ rename '.md' '.1' docs/*
 cd ..
 # compile subset of containers/libpod manpages
 cd libpod-%{libpodver}
+go-md2man -in docs/source/markdown/containers-mounts.conf.5.md -out docs/source/markdown/containers-mounts.conf.5 
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
 cd ..
 
@@ -119,6 +120,7 @@ install -D -m 0644 image-%{imagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 storage-%{storagever}/docs/*.1 %{buildroot}/%{_mandir}/man1/
 install -D -m 0644 storage-%{storagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 libpod-%{libpodver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%{_mandir}/man5/
+install -D -m 0644 libpod-%{libpodver}/docs/source/markdown/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
 
 %post
 # If installing, check if /var/lib/containers (or /var/lib in its defect) is btrfs and set driver

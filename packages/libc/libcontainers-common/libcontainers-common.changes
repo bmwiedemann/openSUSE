@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  6 11:14:24 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- New snaphot (bsc#1165917)
+- Update to image 5.2.1
+  * Add documentation about rewriting docker.io registries
+  * Add registries warning to registries.conf
+- Update to libpod 1.8.0
+  * Fixed some spelling errors in oci-hooks documentations
+  * include containers-mounts.conf(5) man-page into the package
+- Update to storage 1.16.1
+  * Add `rootless_storage_path` directive to storage.conf
+  * Add better documentation for the mount_program in overlay driver
+
+-------------------------------------------------------------------
 Wed Dec 11 16:13:32 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Update to image 5.0.0
