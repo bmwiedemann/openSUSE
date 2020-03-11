@@ -963,4 +963,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Applications 19.12.2</comment>
     <requestid>771787</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>2a3980afa92580726903096081ce4686</srcmd5>
+    <version>19.12.3</version>
+    <time>1583948518</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.3</comment>
+    <requestid>782500</requestid>
+  </revision>
 </revisionlist>

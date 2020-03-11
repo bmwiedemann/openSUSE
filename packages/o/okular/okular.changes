@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * Fix re-rendering of images when using partial updates (kde#418086)
+  * appdata: use canonical cdn screenshot location
+  * Fix rendering of stamps with non 100% opacity
+
+-------------------------------------------------------------------
 Fri Feb  7 08:38:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
