@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:35:47 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * Unbreak the Accounts KCM (kde#415267)
+  * [CreateAccount job] Never set an empty name when creating an account (kde#414219)
+
+-------------------------------------------------------------------
 Fri Feb  7 08:37:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
