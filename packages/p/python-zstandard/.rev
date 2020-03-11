@@ -28,4 +28,12 @@
   * Switched to pytest for running tests (from nose).</comment>
     <requestid>732155</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9c4dc81c9731ef1777ed9f5bc381b58</srcmd5>
+    <version>0.13.0</version>
+    <time>1583948597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782875</requestid>
+  </revision>
 </revisionlist>
