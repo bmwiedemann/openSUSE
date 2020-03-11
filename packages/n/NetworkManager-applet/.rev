@@ -253,4 +253,21 @@
     <comment>Eliminate the -lang recommends (forwarded request 767084 from dimstar)</comment>
     <requestid>767323</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>abbeedd7e44282deff6fc77897bf3840</srcmd5>
+    <version>1.16.0</version>
+    <time>1583948630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.0:
+  + Turned libnma into an external dependency and move to
+    &quot;https://gitlab.gnome.org/GNOME/libnma&quot;. To build,
+    libnma-1.8.28 or newer is required.
+  + The libnm-gtk, the deprecated libnm-glib compatibility library
+    was removed. Everybody should be using libnma by now.
+  + Improve applet icons for hidpi.
+  + Fix transparent dialog borders.
+  + Updated translations.
+- Drop nma-data sub-package. (forwarded request 782917 from iznogood)</comment>
+    <requestid>782944</requestid>
+  </revision>
 </revisionlist>

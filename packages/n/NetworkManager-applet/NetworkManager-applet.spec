@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-applet
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           NetworkManager-applet
-Version:        1.8.25+20
+Version:        1.16.0
 Release:        0
 Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(jansson) >= 2.3
 BuildRequires:  pkgconfig(libnm) >= 1.7
-BuildRequires:  pkgconfig(libnma)
+BuildRequires:  pkgconfig(libnma) >= 1.8.28
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(mm-glib)
@@ -91,16 +91,6 @@ Group:          System/GUI/GNOME
 NetworkManager Configuration tool - take control over your
 connection settings.
 
-%package -n nma-data
-Summary:        NetworkManager UI dialogs
-Group:          System/Libraries
-Obsoletes:      libnma-data < %{version}
-Provides:       libnma-data = %{version}
-BuildArch:      noarch
-
-%description -n nma-data
-This package provides GTK+ dialogs for NetworkManager integration.
-
 %lang_package
 
 %prep
@@ -136,6 +126,7 @@ translation-update-upstream po nm-applet
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/*/apps/*.svg
 %{_mandir}/man1/nm-applet.1%{?ext_man}
+%{_datadir}/GConf/gsettings/nm-applet.convert
 
 %files lang -f nm-applet.lang
 
@@ -144,9 +135,5 @@ translation-update-upstream po nm-applet
 %{_datadir}/applications/nm-connection-editor.desktop
 %{_datadir}/metainfo/nm-connection-editor.appdata.xml
 %{_mandir}/man1/nm-connection-editor.1%{?ext_man}
-
-%files -n nma-data
-%{_datadir}/GConf/gsettings/nm-applet.convert
-%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
 %changelog

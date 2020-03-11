@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 07 18:04:24 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.16.0:
+  + Turned libnma into an external dependency and move to
+    "https://gitlab.gnome.org/GNOME/libnma". To build,
+    libnma-1.8.28 or newer is required.
+  + The libnm-gtk, the deprecated libnm-glib compatibility library
+    was removed. Everybody should be using libnma by now.
+  + Improve applet icons for hidpi.
+  + Fix transparent dialog borders.
+  + Updated translations.
+- Drop nma-data sub-package.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:04:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

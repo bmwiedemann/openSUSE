@@ -3,8 +3,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://gitlab.gnome.org/GNOME/network-manager-applet.git</param>
     <param name="scm">git</param>
-    <param name="revision">74183667</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="revision">1.16.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">(.*)dev</param>
     <param name="changesgenerate">enable</param>
   </service>
