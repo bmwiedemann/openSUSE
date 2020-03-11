@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  5 03:11:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.32
+   see /usr/share/doc/packages/perl-TimeDate/ChangeLog
+
+  2.32 -- Wed Mar 04 14:41:00 MT 2020
+  
+   * Fix t/date.t to run on leap years [arc]
+
+-------------------------------------------------------------------
 Fri Jan 17 10:33:12 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Remove patch perl-TimeDate-getdate.patch (source was fixed)

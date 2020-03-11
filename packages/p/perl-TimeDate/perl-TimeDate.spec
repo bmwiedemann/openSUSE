@@ -17,7 +17,7 @@
 
 
 Name:           perl-TimeDate
-Version:        2.31
+Version:        2.32
 Release:        0
 %define cpan_name TimeDate
 Summary:        TimeDate Perl module
