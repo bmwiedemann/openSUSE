@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:41:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on Leap 15.2
+
+-------------------------------------------------------------------
+Mon Mar  9 17:47:42 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.02
+  * Drop upstream patch:
+    - armnn-fix_include.patch
+  * Refresh patch:
+    - 0006-armnn-mobilenet-test-example.patch
+  * Replace downstream patch:
+    - 0007-enable-use-of-arm-compute-shared-library.patch
+    by upstream patch:
+    - armnn-enable-use-of-arm-compute-shared-library.patch
+  * Add 'vim' as BuildRequires since it needs 'xxd' tool
+- Use TensorFlow 2 also on Leap 15.2 / SLE15SP2
+
+-------------------------------------------------------------------
 Mon Feb 10 13:01:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use Tensorflow 2.x only for Tumbleweed, as TensorFlow2 is not

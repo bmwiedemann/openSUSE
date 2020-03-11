@@ -6,6 +6,7 @@ Subject: [PATCH] add armnn mobilenet test example
 Upstream-Status: Inappropriate [TI only test code]
 Signed-off-by: Qin Su <qsu@ti.com>
 Signed-off-by: Djordje Senicic <x0157990@ti.com>
+[Guillaume's update: Add boost_log dep]
 ---
  tests/CMakeLists.txt | 41 +++++++++++++++++++++++++++++++++++++++++
  1 file changed, 41 insertions(+)
@@ -21,7 +22,7 @@ index dfcf4b48..5a78d3a6 100644
  # UnitTests
  include(CheckIncludeFiles)
  
-@@ -348,3 +351,41 @@ if(BUILD_ARMNN_QUANTIZER)
+@@ -348,3 +351,42 @@ if(BUILD_ARMNN_QUANTIZER)
      add_executable_ex(ImageCSVFileGenerator ${ImageCSVFileGenerator_sources})
      ImageTensorExecutor(ImageCSVFileGenerator)
  endif()
@@ -57,6 +58,7 @@ index dfcf4b48..5a78d3a6 100644
 +    endif()
 +
 +    target_link_libraries(ArmnnExamples
++        ${Boost_LOG_LIBRARY}
 +        ${Boost_SYSTEM_LIBRARY}
 +        ${Boost_FILESYSTEM_LIBRARY}
 +        ${Boost_PROGRAM_OPTIONS_LIBRARY}

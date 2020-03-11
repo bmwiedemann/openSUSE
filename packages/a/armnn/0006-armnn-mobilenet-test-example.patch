@@ -5,6 +5,10 @@ Subject: [PATCH] armnn mobilenet test example
 
 Upstream-Status: Inappropriate [TI only test code]
 Signed-off-by: Qin Su <qsu@ti.com>
+
+[Guillaume's update: s#Logging.hpp#armnn/Logging.hpp#]
+[Guillaume's update: Add #include <boost/log/trivial.hpp>]
+[Guillaume's update: Drop armnnUtils::ConfigureLogging(...)]
 ---
  tests/ArmnnExamples/ArmnnExamples.cpp | 654 ++++++++++++++++++++++++++++++++++
  1 file changed, 654 insertions(+)
@@ -47,6 +51,7 @@ index 0000000..53a11cc
 +// See LICENSE file in the project root for full license information.
 +//
 +#include <armnn/ArmNN.hpp>
++#include <boost/log/trivial.hpp>
 +
 +#include <utility>
 +#include <armnn/TypesUtils.hpp>
@@ -65,7 +70,7 @@ index 0000000..53a11cc
 +#endif
 +#include "CsvReader.hpp"
 +#include "../InferenceTest.hpp"
-+#include <Logging.hpp>
++#include <armnn/Logging.hpp>
 +#include <Profiling.hpp>
 +
 +#include <boost/algorithm/string/trim.hpp>
@@ -583,7 +588,6 @@ index 0000000..53a11cc
 +  armnn::LogSeverity level = armnn::LogSeverity::Debug;
 +#endif
 +  armnn::ConfigureLogging(true, true, level);
-+  armnnUtils::ConfigureLogging(boost::log::core::get().get(), true, true, level);
 +
 +  std::string testCasesFile;
 +

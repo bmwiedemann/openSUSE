@@ -18,17 +18,12 @@
 
 # Disable LTO until UnitTests passes with LTO enabled - https://github.com/ARM-software/armnn/issues/341
 %define _lto_cflags %{nil}
-
 %define target @BUILD_FLAVOR@%{nil}
 %if "%{target}" != ""
 %define package_suffix -%{target}
 %endif
-# Use Tensorflow 2 for Tumbleweed only
-%if 0%{?suse_version} > 1500 
+# Use Tensorflow version 2
 %define tf_version_2 1
-%else
-%define tf_version_2 0
-%endif
 # Compute library has neon enabled for aarch64 only
 %ifarch aarch64
 %bcond_without compute_neon
@@ -58,8 +53,8 @@
 %else
 %bcond_with armnn_flatbuffers
 %endif
-# Enable TensorFlow only on TW aarch64 and x86_64 (TF fails to build on Leap 15.x and on armv7 TW)
-%if 0%{?suse_version} > 1500
+# Enable TensorFlow on TW and Leap 15.2/SLE15SP2 for aarch64 and x86_64 (TF fails to build on armv7)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %ifarch aarch64 x86_64
 %bcond_without armnn_tf
 %else
@@ -74,8 +69,8 @@
 %else
 %bcond_with armnn_onnx
 %endif
-%define version_major 19
-%define version_minor 11
+%define version_major 20
+%define version_minor 02
 # Do not package ArmnnConverter and ArmnnQuantizer, by default
 %bcond_with armnn_tools
 # Enable CAFFE
@@ -89,10 +84,8 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/311
-Patch1:         armnn-fix_include.patch
-# Patch: http://arago-project.org/git/?p=meta-arago.git;a=blob;f=meta-arago-extras/recipes-support/armnn/armnn/0007-enable-use-of-arm-compute-shared-library.patch;hb=master
-Patch2:         0007-enable-use-of-arm-compute-shared-library.patch
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/commit/6445cfff7519effd1df04eac88ae17d6e4e6693b
+Patch1:         armnn-enable-use-of-arm-compute-shared-library.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -100,15 +93,16 @@ Patch202:       0006-armnn-mobilenet-test-example.patch
 Patch203:       0009-command-line-options-for-video-port-selection.patch
 Patch204:       0010-armnnexamples-update-for-19.08-modifications.patch
 Patch205:       armnn-fix_find_opencv.patch
-BuildRequires:  ComputeLibrary-devel >= 19.08
+BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  valgrind-devel
+BuildRequires:  vim
 # Make armnn-opencl pulls lib*-opencl, and armnn pulls non opencl libs
 Requires:       libarmnn%{version_major}%{?package_suffix} = %{version}
 ExcludeArch:    %ix86
-BuildRequires:  valgrind-devel
 %if 0%{?suse_version} < 1330
 BuildRequires:  boost-devel >= 1.59
 %else
@@ -363,7 +357,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 %prep
 %setup -q -n armnn-%{version}
 %patch1 -p1
-%patch2 -p1
 %patch200 -p1
 %patch201 -p1
 %patch202 -p1
@@ -371,11 +364,8 @@ This package contains the libarmnnOnnxParser library from armnn.
 %patch204 -p1
 %patch205 -p1
 # Boost fixes for dynamic linking
-sed -i 's/add_definitions("-DBOOST_ALL_NO_LIB")/add_definitions("-DBOOST_ALL_DYN_LINK")/'  ./cmake/GlobalConfig.cmake
-sed -i 's/set(Boost_USE_STATIC_LIBS ON)/set(Boost_USE_STATIC_LIBS OFF)/' ./cmake/GlobalConfig.cmake
-sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log thread program_options)/' ./cmake/GlobalConfig.cmake
-# Build fix
-sed -i 's/-Wsign-conversion//' ./cmake/GlobalConfig.cmake
+sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log thread program_options)/' ./cmake/GlobalConfig.cmake
+
 
 %build
 %if %{with armnn_onnx}
@@ -383,8 +373,22 @@ mkdir onnx_deps
 PROTO=$(find %{_libdir} -name onnx.proto)
 protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname $(find %{_libdir} -name onnx)) --cpp_out=./onnx_deps
 %endif
+%if 0%{?suse_version} > 1500
+export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=deprecated-copy"
+%endif
+%if 0%{?sle_version} == 150200
+%if %{with armnn_tf}
+%if %{tf_version_2}
+# TensorFlow2 in Leap 15.2 shows erros on major/minor due to '-Werror' option:
+#   /usr/lib/python3.6/site-packages/tensorflow_core/include/tensorflow/core/protobuf/autotuning.pb.cc:930:13: error: In the GNU C Library, "major" is defined by <sys/sysmacros.h>.
+#   For historical compatibility, it is currently defined by <sys/types.h> as well, but we plan to remove this soon. To use "major", include <sys/sysmacros.h> directly.
+sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
+%endif
+%endif
+%endif
 %cmake \
-  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread" \
+  -DSHARED_BOOST=1 \
+  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread $CXX_ADDITIONAL_FLAGS -Wno-error=implicit-fallthrough -Wno-error=unused-parameter" \
   -DBOOST_LIBRARYDIR=%{_libdir} \
 %if %{with armnn_caffe}
   -DBUILD_CAFFE_PARSER=ON \
@@ -592,6 +596,15 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %defattr(-,root,root)
 %dir %{_includedir}/armnn/
 %{_includedir}/armnn/*.hpp
+%dir %{_includedir}/armnn/backends
+%{_includedir}/armnn/backends/CMakeLists.txt
+%{_includedir}/armnn/backends/*.hpp
+%dir %{_includedir}/armnn/backends/profiling
+%{_includedir}/armnn/backends/profiling/*.hpp
+%dir %{_includedir}/armnn/profiling
+%{_includedir}/armnn/profiling/*.hpp
+%dir %{_includedir}/armnnUtils
+%{_includedir}/armnnUtils/*.hpp
 %dir %{_includedir}/armnnCaffeParser/
 %{_includedir}/armnnCaffeParser/ICaffeParser.hpp
 %dir %{_includedir}/armnnOnnxParser/
