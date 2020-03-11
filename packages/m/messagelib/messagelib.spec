@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        19.12.2
+Version:        19.12.3
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -35,6 +35,8 @@ Source2:        applications.keyring
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
 Patch1:         0002-Initialize-variable.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Revert-Disable-reply-with-quote-text-as-this-bug-is-.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem

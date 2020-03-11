@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * Fix setting translation domain on the Grantlee localizer
+  * Fix using "Qt" in search line. Test flag was incorrect before
+  * initialize value in header class
+  * Fix pri file generation
+  * Replace \n by '_' in filename. otherwise mail will be broken
+
+-------------------------------------------------------------------
+Thu Mar  5 07:25:12 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add patch to reenable the "Only quote selected text when
+  replying" feature, openSUSE's QtWebEngine package includes the
+  fix for QTBUG-81574 meanwhile (boo#1163369, kde#394784)
+  * 0001-Revert-Disable-reply-with-quote-text-as-this-bug-is-.patch
+
+-------------------------------------------------------------------
 Fri Feb  7 08:38:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
