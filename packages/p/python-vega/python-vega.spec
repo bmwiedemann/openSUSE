@@ -1,7 +1,7 @@
 #
 # spec file for package python-vega
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-vega
-Version:        2.6.0
+Version:        3.1.0
 Release:        0
 Summary:        An IPython/Jupyter widget for Vega 3 and Vega-Lite 2
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/vega/ipyvega/
-Source:         https://files.pythonhosted.org/packages/source/v/vega/vega-%{version}.tar.gz
+URL:            https://github.com/vega/ipyvega/
+Source:         https://files.pythonhosted.org/packages/py3/v/vega/vega-%{version}-py3-none-any.whl
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module jupyter-client >= 4.2}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
@@ -54,6 +55,7 @@ This package provides the python interface.
 
 %package     -n jupyter-vega
 Summary:        An IPython/Jupyter widget for Vega 3 and Vega-Lite 2
+Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 Requires:       python3-vega = %{version}
 Conflicts:      python3-jupyter_vega < 2.1.0
@@ -66,34 +68,34 @@ can be viewed on github and nbviewer.
 This package provides the jupyter notebook extension.
 
 %prep
-%setup -q -n vega-%{version}
-rm -rf vega/.ipynb_checkpoints
+%setup -q -c -T
 
 %build
-%python_build
+# Not Needed
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+cp -a %{SOURCE0} .
+%pyproject_install
 
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
-%{jupyter_move_config}
-
+# %%jupyter_move_config
+cp %{buildroot}%{python3_sitelib}/vega-%{version}.dist-info/LICENSE .
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
 
+# Don't package files with generic names
+rm -rf %{buildroot}%{_bindir}/test
+
 %check
-%pytest vega
+export PYTHONDONTWRITEBYTECODE=1
+%pytest %{buildroot}%{$python_sitelib}/vega/
 
 %files %{python_files}
-%doc README.md
-%license LICENSE
 %{python_sitelib}/vega/
-%{python_sitelib}/vega-%{version}-py*.egg-info
+%{python_sitelib}/vega-%{version}.dist-info/
+%license %{python_sitelib}/vega-%{version}.dist-info/LICENSE
 
 %files -n jupyter-vega
 %license LICENSE
-%{_jupyter_nbextension_dir}/jupyter-vega/
-%config %{_jupyter_nb_notebook_confdir}/vega.json
+# %%{_jupyter_nbextension_dir}/jupyter-vega/
+# %%config %%{_jupyter_nb_notebook_confdir}/vega.json
 
 %changelog
-}
