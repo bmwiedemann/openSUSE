@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar  6 07:20:04 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.0
+  * New ARM64 optimizations for the 10/12bit depth:
+    + mc_avg, mc_w_avg, mc_mask
+    + mc_put/mc_prep 8tap/bilin
+    + mc_warp_8x8
+    + mc_w_mask
+    + mc_blend
+    + wiener
+    + SGR
+    + loopfilter
+    + cdef
+  * New AVX-512 optimizations for prep_bilin, prep_8tap,
+    cdef_filter, mc_avg/w_avg/mask
+  * New SSSE3 optimizations for film grain
+  * New AVX2 optimizations for msac_adapt16
+  * Fix rare mismatches against the reference decoder, notably
+    because of clipping
+  * Improvements on ARM64 on msac, cdef and looprestoration
+    optimizations
+  * Improvements on AVX2 optimizations for cdef_filter
+  * Improvements in the C version for itxfm, cdef_filter
+
+- Bump sover to 4
+
+-------------------------------------------------------------------
 Wed Dec  4 19:03:37 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.5.2

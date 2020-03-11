@@ -1,7 +1,7 @@
 #
 # spec file for package dav1d
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover   3
+%define sover   4
 Name:           dav1d
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ URL:            https://code.videolan.org/videolan/dav1d
 Source0:        https://code.videolan.org/videolan/dav1d/-/archive/%{version}/dav1d-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  meson >= 0.47.0
-BuildRequires:  nasm
+BuildRequires:  nasm >= 2.14
 BuildRequires:  pkgconfig
 # necessary to meson
 BuildRequires:  rpm >= 4.14
