@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Thu Mar  5 14:04:27 UTC 2020 - pgajdos@suse.com
-
-- version update to 3.0.2
-    Drops support for Python 2 (although some dead code remains for future removal)
-    Adds streams support thanks to the hard work of @tSed
-    Fixes a performance bug with the frame bindings - thanks to @bjonen for the careful report and reproducer
-    Adds Python 3.8 support
-
--------------------------------------------------------------------
 Mon Jun 17 11:57:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.10:
