@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kate
-Version:        19.12.2
+Version:        19.12.3
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -115,10 +115,14 @@ plugins and data files for Kate and KWrite editors.
 %dir %{_kf5_htmldir}/en
 %dir %{_kf5_iconsdir}/hicolor/150x150/
 %dir %{_kf5_iconsdir}/hicolor/150x150/apps
+%dir %{_kf5_iconsdir}/hicolor/256x256/
+%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_iconsdir}/hicolor/310x310/
 %dir %{_kf5_iconsdir}/hicolor/310x310/apps
 %dir %{_kf5_iconsdir}/hicolor/44x44/
 %dir %{_kf5_iconsdir}/hicolor/44x44/apps
+%dir %{_kf5_iconsdir}/hicolor/512x512/
+%dir %{_kf5_iconsdir}/hicolor/512x512/apps
 %doc %lang(en) %{_kf5_htmldir}/en/kate/
 %doc %lang(en) %{_kf5_htmldir}/en/katepart/
 %doc %{_kf5_mandir}/man1/kate.*
