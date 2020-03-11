@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Mar 10 16:10:44 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 1.4+git.1583782740.e7cf7ca:
+  * Add value_separator option to specify how JSON values are being split
+  * Add boundary check for SubArrayElement function
+  * Add unittest for argsparse
+  * Add test case for key_value_list_unknown
+  * Add and format some doc_strings
+  * Use Python3 in GitHub Action
+  * Add CI Badge to README
+  * Add Coverage report
+  * Add GitHub Action for Unit Test
+  * Move test to separat file
+
+-------------------------------------------------------------------
+Tue Mar 10 16:59:36 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort
