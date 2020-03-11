@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:47:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Support for syntax color customization, with separate settings
+    for light and dark backgrounds.
+  * Color value of whitespaces can be customized, in case they're shown.
+  * Allow dash and some other characters in URLs.
+  * Considered extra cases of valid ampersands in HTML.
+  * Yet smarter Shift+Enter with alphabetical lists.
+  * Removed QCoreApplication::processEvents() to prevent a rare crash.
+  * Remember cursor's horizontal pixel position before Backspace/Enter
+    and restore it after Down/Up.
+  * A few fixes.
+
+-------------------------------------------------------------------
 Mon Jan 13 12:18:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.1:

@@ -211,4 +211,23 @@
     horizontal scrollbars of Qt 5.14.0.</comment>
     <requestid>763940</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>69577c94621d123a61768e73446f672d</srcmd5>
+    <version>0.13.0</version>
+    <time>1583948855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Support for syntax color customization, with separate settings
+    for light and dark backgrounds.
+  * Color value of whitespaces can be customized, in case they're shown.
+  * Allow dash and some other characters in URLs.
+  * Considered extra cases of valid ampersands in HTML.
+  * Yet smarter Shift+Enter with alphabetical lists.
+  * Removed QCoreApplication::processEvents() to prevent a rare crash.
+  * Remember cursor's horizontal pixel position before Backspace/Enter
+    and restore it after Down/Up.
+  * A few fixes.
+</comment>
+    <requestid>783168</requestid>
+  </revision>
 </revisionlist>
