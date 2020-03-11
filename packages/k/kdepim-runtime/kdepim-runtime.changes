@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- No code change since 19.12.2
+
+-------------------------------------------------------------------
 Mon Mar  2 06:17:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Add upstream patch to fix issues with "file:/" being prepended
