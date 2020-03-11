@@ -53,7 +53,7 @@ BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
 BuildRequires:  pkg-config
 # needed for /lib/udev
-BuildRequires:  udev
+BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} > 1320
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools

@@ -19,6 +19,12 @@ Wed Feb 12 19:30:42 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
     issue by extracting the new entries properly.
 
 -------------------------------------------------------------------
+Fri Jan 24 14:49:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
+  shortcut through the -mini flavor.
+
+-------------------------------------------------------------------
 Fri Jan 17 18:55:41 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-no-tempnet-oci.patch (bsc#1161132, bsc#1161133)
