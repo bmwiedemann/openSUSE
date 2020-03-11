@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-containerregistry
-Version:        3.0.0rc8
+Version:        3.0.0rc9
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library
 License:        MIT
@@ -72,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/containerregistry
 %{python_sitelib}/azure_mgmt_containerregistry-*.egg-info
