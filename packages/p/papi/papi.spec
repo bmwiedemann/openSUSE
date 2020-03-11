@@ -1,7 +1,7 @@
 #
 # spec file for package papi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname papi
-%define ver 5.7.0
-%define _ver 5_7_0
+%define ver 6.0.0
+%define _ver 6_0_0
 
 %bcond_with ringdisabled
 
@@ -71,10 +71,9 @@ Release:        0
 Summary:        Performance Application Programming Interface
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://icl.cs.utk.edu/papi/index.html
+URL:            http://icl.cs.utk.edu/papi/index.html
 Source:         http://icl.cs.utk.edu/projects/papi/downloads/%{pname}-%{version}.tar.gz
 Source1:        %{pname}-rpmlintrc
-Patch1:         papi-fix-ldflags.patch
 
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
@@ -157,7 +156,6 @@ This package contains the PAPI runtime library.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch1 -p1
 
 # Create baselibs.conf dynamically (non-HPC build only).
 %if %{without hpc}
@@ -171,21 +169,9 @@ EOF
 
 %build
 %define _lto_cflags %{nil}
-#export SUSE_ASNEEDED=0
 cd src
+mv configure.in configure.ac
 autoreconf -fi
-for c in lmsensors; do
-    cd components/$c
-    autoconf
-%if %{without hpc}
-    %configure \
-%else
-    %hpc_configure \
-%endif
-	--with-sensors_incdir=%{_includedir}/sensors \
-        --with-sensors_libdir=%{_libdir}
-    cd -
-done
 export CFLAGS="%{optflags} -Wno-unused-parameter"
 
 %if %{without hpc}
@@ -193,18 +179,19 @@ export CFLAGS="%{optflags} -Wno-unused-parameter"
 %else
     %hpc_configure \
 %endif
-	--with-components="appio lmsensors coretemp example net" \
-	--with-perf-events --with-shared-lib=yes \
-	--with-shlib --with-pthread-mutexes  \
-	--with-pfm-incdir=%{_includedir} \
-	--with-pfm-libdir=%{_libdir}
+	--with-perf-events --with-pthread-mutexes  \
+	--with-shared-lib=yes --with-shlib \
+	--with-pfm-incdir=%{_includedir} --with-pfm-libdir=%{_libdir}
 
-#DBG workaround to make sure libpfm just uses the normal CFLAGS
-DBG="" make DOCDIR=%{_defaultdocdir}/%{pname} %{?_smp_mflags}
+make DOCDIR=%{_defaultdocdir}/%{pname} %{?_smp_mflags}
 
 %install
+# for some reason this isn't being created by install before cp of
+# papi_hl_output_writer.py occurs, which results in %{p_bindir} as regular file
+mkdir -p %{buildroot}/%{p_bindir}
 cd src
 make DESTDIR=%{buildroot} install %{?_smp_mflags} DOCDIR=%{_defaultdocdir}/%{pname} LDCONFIG=/bin/true
+ls -lR %{buildroot}
 chrpath --delete %{buildroot}%{p_libdir}/*.so*
 %if %{with hpc}
 %{hpc_compress_man 3}
@@ -274,9 +261,10 @@ EOF
 %{p_bindir}/papi_component_avail
 %{p_bindir}/papi_error_codes
 %{p_bindir}/papi_multiplex_cost
+%{p_bindir}/papi_hl_output_writer.py
 %{p_datadir}/%{pname}
 %{p_bindir}/papi_avail
-%doc ChangeLog*.txt LICENSE.txt README RELEASENOTES.txt
+%doc ChangeLog*.txt LICENSE.txt README.md RELEASENOTES.txt
 
 %files devel
 %defattr(-,root,root)

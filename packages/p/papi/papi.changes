@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Mar  4 18:55:04 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Update to PAPI v6.0
+  - Major Changes:
+   * Added the rocm component to support performance counters on AMD GPUs.
+   * Added the rocm_smi component; SMI is System Management Interface to 
+     monitor power usage on AMD GPUs, which is also writeable by the user, 
+     e.g. to reduce power consumption on non-critical operations.
+    * Added 'io' component to expose I/O statistics exported by the Linux 
+      kernel (/proc/self/io).
+    * Added 'SDE' component, Software Defined Events, which allows HPC software
+      layers to expose internal performance-critical behavior via Software 
+      Defined Events (SDEs) through the PAPI interface.
+    * Added 'SDE API' to register performance-critical events that originate 
+      from HPC software layers, and which are recognized as 'PAPI counters' 
+      and, thus, can be monitored with the standard PAPI interface.
+    * Added powercap_ppc component to support monitoring and capping of power 
+      usage on IBM PowerPC architectures (Power9 and later) using the powercap 
+      interface exposed through the Linux kernel.
+    * Added 'sensors_ppc' component to support monitoring of system metrics on 
+      IBM PowerPC architectures (Power9 and later) using the opal/exports sysfs
+      interface.
+    * Retired infiniband_umad component, it is superseded by infiniband.
+    * Revived PAPI's 'high-level API' to make it more intuitive and effective 
+      for novice users and quick event reporting.
+    * Added 'counter_analysis_toolkit' sub-directory (CAT): A tool to assist 
+      with native performance counter disambiguation through micro-benchmarks, 
+      which are used to probe different important aspects of modern CPUs, to 
+      aid the classification of native performance events.
+    * Other Changes include:
+    * Standardized our environment variables and implemented a simplified, 
+      unified approach for specifying libraries necessary for components, with 
+      overrides possible for special circumstances. Eliminated component level 
+      'configure' requirements.
+    * Corrected TLS issues (Thread Local Storage) and race conditions.
+    * Several bug fixes, documentation fixes and enhancements, improvements to 
+      README files for user instruction and code comments.
+
+  - Other Changes:
+    * Standardized our environment variables and implemented a simplified, 
+      unified approach for specifying libraries necessary for components, with 
+      overrides possible for special circumstances. Eliminated component level 
+      'configure' requirements.
+    * Corrected TLS issues (Thread Local Storage) and race conditions.
+    * Several bug fixes, documentation fixes and enhancements, improvements to 
+      README files for user instruction and code comments.
+
+  - Drop patch: papi-fix-ldflags.patch (upstream)
+  - Clean up spec file, remove unnecessary portions.
+
+-------------------------------------------------------------------
 Thu Nov 28 17:06:04 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Add master package for library in HPC build (boo#1158048).
