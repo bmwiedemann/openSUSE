@@ -419,4 +419,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Applications 19.12.2</comment>
     <requestid>771639</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6aa97b1e5fa2a71b20b9c4cf746fdf56</srcmd5>
+    <version>19.12.3</version>
+    <time>1583948214</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.3</comment>
+    <requestid>782370</requestid>
+  </revision>
 </revisionlist>
