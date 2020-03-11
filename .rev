@@ -457,4 +457,16 @@
 </comment>
     <requestid>779347</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e6fc210e0295129a6bd854be62007e25</srcmd5>
+    <version>2.20.3</version>
+    <time>1583947922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.3
+  - Reintroduce compatibility with RPM &lt; 4.15 for inclusion in
+    SLE / Leap 15.2
+  - Prepare for removal of /var/lib/alternatives [jsc#SLE-9101]
+</comment>
+    <requestid>782051</requestid>
+  </revision>
 </revisionlist>
