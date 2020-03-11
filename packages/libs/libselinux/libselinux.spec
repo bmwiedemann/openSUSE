@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%define libsepol_ver 2.9
+%define libsepol_ver 3.0
 Name:           libselinux
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20190315/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
 Source1:        selinux-ready
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
-Patch5:         Use-Python-distutils-to-install-SELinux.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  pcre-devel
@@ -96,7 +95,6 @@ necessary to develop your own software using libselinux.
 %prep
 %setup -q
 %patch4 -p1
-%patch5 -p2
 
 %build
 %define _lto_cflags %{nil}
@@ -121,6 +119,8 @@ rm -f %{buildroot}%{_sbindir}/selinuxconfig
 rm -f %{buildroot}%{_sbindir}/selinuxdisable
 rm -f %{buildroot}%{_sbindir}/getseuser
 rm -f %{buildroot}%{_sbindir}/selinux_check_securetty_context
+rm -f %{buildroot}%{_sbindir}/selabel_get_digests_all_partial_matches
+rm -f %{buildroot}%{_sbindir}/validatetrans
 mv %{buildroot}%{_sbindir}/getdefaultcon %{buildroot}%{_sbindir}/selinuxdefcon
 mv %{buildroot}%{_sbindir}/getconlist %{buildroot}%{_sbindir}/selinuxconlist
 install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}/selinux-ready
