@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:44:05 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.0.19
+  revert_werkzeug_setup.patch added to remove dependency on werkzeug < 1.0 
+
+-------------------------------------------------------------------
 Wed Mar  4 12:48:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add fix_werkzeug.patch to fix boo#1164970
