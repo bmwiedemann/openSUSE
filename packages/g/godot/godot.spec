@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.2
+Version:        3.2.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -137,6 +137,7 @@ Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
 ## Need to update in Factory ##
+# Possibility to unbundle disabled in 3.2.1
 Provides:       bundled(assimp)
 
 %if 0%{?suse_version} > 1500
@@ -144,7 +145,7 @@ Provides:       bundled(assimp)
 Provides:       bundled(bullet) = 2.89
 Provides:       bundled(libzstd)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.16.4
+Provides:       bundled(mbedtls) = 2.16.5
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -201,11 +202,10 @@ Summary:        Godot command line completion for Bash
 Group:          Amusements/Games/Other
 BuildArch:      noarch
 Requires:       bash-completion
-Supplements:    bash-completion
-Supplements:    %{name}
-Enhances:       %{name}-headless
-Enhances:       %{name}-runner
-Enhances:       %{name}-server
+Supplements:    (%{name} and bash-completion)
+Enhances:       (%{name}-headless and bash-completion)
+Enhances:       (%{name}-runner and bash-completion)
+Enhances:       (%{name}-server and bash-completion)
 
 %description bash-completion
 Bash command line completion support for %{name}, %{name}-headless,

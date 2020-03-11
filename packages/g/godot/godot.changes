@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 10 16:00:00 UTC 2020 - cunix@mail.de
+
+- Update to 3.2.1
+
+  Fixed:
+  * Bullet: Fix detection of concave shape in Area.
+  * Camera2D: Fix inverted use of Camera2D offset_v.
+  * Debugger: Fix crash inspecting freed objects.
+  * Expression: Fix parsing integers as 32-bit.
+  * Particles: Fix undefined behavior with atan in GPU Particles.
+  * TileSet: Hide TileSet properties from Inspector, fixing
+    OOM crash on huge tilesets.
+  * Video: Workaround WebM playback bug after AudioServer latency fixes.
+
+  Added:
+  * Skin: Add support for named binds.
+  * API documentation updates.
+  * Editor translation updates.
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.1/Godot_v3.2.1-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" adjusted.
+
+-------------------------------------------------------------------
 Wed Feb 12 12:00:00 UTC 2020 - cunix@mail.de
 
 - Added "linker_pie_flag.patch" in order to link with "-pie".
