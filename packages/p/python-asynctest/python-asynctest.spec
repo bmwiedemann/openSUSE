@@ -1,7 +1,7 @@
 #
 # spec file for package python-asynctest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@ Version:        0.13.0
 Release:        0
 Summary:        Enhancement for the unittest with features from asyncio libraries
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Martiusweb/asynctest/
 Source:         https://files.pythonhosted.org/packages/source/a/asynctest/asynctest-%{version}.tar.gz
 Patch0:         asynctest-skip-permstest.patch
+Patch1:         py38.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +40,7 @@ testing asyncio libraries.
 
 %prep
 %setup -q -n asynctest-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
@@ -50,7 +50,9 @@ testing asyncio libraries.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest test
+# Tests failing with py3.8 https://github.com/Martiusweb/asynctest/issues/132
+# test_basic - it is not supposed to be launched by pytest
+%pytest -k 'not (test_basic or test_create_autospec_on_coroutine_and_using_assert_methods or test_awaited_from_autospec_mock or test_patch_coroutine_with_multiple_scopes or test_multiple_patches_on_coroutine or test_patch_coroutine_only_when_running)'
 
 %files %{python_files}
 %license LICENSE.md
