@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:35:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * Fix compilation with Qt 5.15
+
+-------------------------------------------------------------------
 Fri Feb  7 08:37:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
