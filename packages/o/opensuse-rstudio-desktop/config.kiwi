@@ -8,7 +8,7 @@
   </description>
   <preferences>
     <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
-      <containerconfig name="opensuse-rstudio-desktop" tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%">
+      <containerconfig name="opensuse/rstudio-desktop" tag="latest" additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%">
         <subcommand execute="/usr/lib/rstudio/bin/rstudio"/>
         <labels>
           <!-- See https://en.opensuse.org/Building_derived_containers#Labels -->

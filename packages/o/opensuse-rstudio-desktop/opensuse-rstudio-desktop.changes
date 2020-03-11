@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:36:07 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
+
+- Added missing LICENSE file
+
+-------------------------------------------------------------------
+Tue Mar 10 10:30:49 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix container name
+
+-------------------------------------------------------------------
 Fri Feb 28 13:03:32 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
 
 - First container image for RStudio Desktop (v.1.2.5033)
