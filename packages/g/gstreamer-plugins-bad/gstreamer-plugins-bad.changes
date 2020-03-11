@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  7 18:27:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix conditionals passed to meson for 3'rd party building.
+
+-------------------------------------------------------------------
 Thu Feb 27 18:08:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to meson buildsystem for tumbleweed.

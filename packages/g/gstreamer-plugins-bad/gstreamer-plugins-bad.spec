@@ -472,15 +472,6 @@ export PYTHON=%{_bindir}/python3
 	-Dpackage-name='openSUSE GStreamer-plugins-bad package' \
 	-Dpackage-origin='http://download.opensuse.org' \
 	-Ddts=disabled \
-%if %{without faac}
-	-Dfaac=disabled \
-%endif
-%if %{without faad}
-	-Dfaad=disabled \
-%endif
-%if %{without fdk_aac}
-	-Dfdkaac=disabled \
-%endif
 	-Dlibde265=disabled \
 	-Dmodplug=disabled \
 	-Dopenh264=disabled \
@@ -490,6 +481,15 @@ export PYTHON=%{_bindir}/python3
 	-Dvoamrwbenc=disabled \
 	-Dvoaacenc=disabled \
 	-Dx265=disabled \
+%endif
+%if %{without faac}
+	-Dfaac=disabled \
+%endif
+%if %{without faad}
+	-Dfaad=disabled \
+%endif
+%if %{without fdk_aac}
+	-Dfdkaac=disabled \
 %endif
 	-Ddirectfb=disabled \
 	-Dexamples=disabled \
