@@ -1,8 +1,94 @@
 -------------------------------------------------------------------
+Wed Mar 11 18:21:55 UTC 2020 - ecsos@opensuse.org
+
+- Update to 18.0.2
+  - No changelog from upstream at this time.
+
+-------------------------------------------------------------------
 Wed Feb 12 19:42:37 UTC 2020 - ecsos@opensuse.org
 
 - Update to 18.0.1
-  - No changelog from upstream at this time.
+  * Changes
+    - [stable18] Fix cursor on disabled contenteditable divs (server#18961)
+    - Bump style-loader from 1.1.2 to 1.1.3 (server#18982)
+    - [stable18] Increase the timeout for app downloads (server#19025)
+    - [stable18] Fix loaded controller check (server#19060)
+    - [stable18] Allow to await the sidebar (server#19089)
+    - [stable18] expose Argon2 options (as we did for bcrypt) (server#19094)
+    - [stable18] fix multiselect actions for files (server#19108)
+    - [stable18] Adjust filelist color handling to new dark theme value (server#19117)
+    - [stable18] Reduce legacy event log level to debug (server#19118)
+    - [stable18] New file menu needs to be above the filelist header (server#19119)
+    - [stable18] Do not invert avatar colors when dark theme is enabled (server#19121)
+    - [stable18] Use the target for file notifications (server#19149)
+    - [stable18] Use correct appid for talk (server#19150)
+    - [stable18] add hub bundle for easy installation on upgraded instances (server#19153)
+    - [stable18] apps can have polyamorous relationships with bundles (server#19166)
+    - [stable18] Use themed favicon-fb (server#19189)
+    - [stable18] Fix "Call to undefined method 
+      OCA\\WorkflowEngine\\Entity\\File::t()" (server#19190)
+    - [stable18] Fix query selector for inverted icons (server#19206)
+    - [stable18] Do not encode contacts menu mailto links (server#19207)
+    - [stable18] Give the sharing tab a unique id so it also opens properly
+      on other languages (server#19212)
+    - [stable18] WebcalRefreshJob: Fix reading refresh rate (server#19228)
+    - [stable18] Make sure to catch php errors during job execution (server#19269)
+    - [stable18] Center Buttons (server#19271)
+    - [stable18] Use the l10n from settings (server#19277)
+    - [stable18] Use proper andwhere clause (server#19278)
+    - [stable18] Add move (and firstlogin) option to transferownership 
+      service (server#19279)
+    - [stable18] for the DB ot pick an index specify the object_type (server#19283)
+    - [stable18] owner transfer multiselect fixes (server#19291)
+    - [stable18] Allow respecting PASSWORD_DEFAULT (server#19292)
+    - [stable18] Keep the modification time during decryptFile (server#19297)
+    - [stable18] Fix data Apache2 .htaccess typo (server#19302)
+    - [stable18] Fix display of DTEND for multi-day all-day event (server#19308)
+    - [stable18] do not overwrite global user auth credentials with
+      empty values (server#19315)
+    - [stable18] Fix occ maintenance:install database connect failure (server#19326)
+    - [stable18] Fix event type (server#19330)
+    - [stable18] Array access on int will fail on php7.4 (server#19332)
+    - [stable18] Make sure the default share provider does not execute 
+      for other things (server#19334)
+    - [stable18] Disable link shares of disabled users (server#19340)
+    - [stable18] Prevent archieved download on secure view (server#19360)
+    - [stable18] Log Flow activity (server#19396)
+    - [stable18] Allow to serve static webm directly (server#19420)
+    - 18.0.1 final (server#19422)
+    - [stable18] Allow to serve static mp4 directly (server#19428)
+    - [stable18] Update master php testing versions (activity#417)
+    - Update stable18 target versions (activity#418)
+    - [stable18] Update master php testing versions (files_pdfviewer#164)
+    - Update stable18 target versions (files_pdfviewer#165)
+    - Update stable18 target versions (files_texteditor#194)
+    - Update stable18 target versions (firstrunwizard#274)
+    - Update stable18 target versions (logreader#313)
+    - [stable18] Update master php testing versions (nextcloud_announcements#64)
+    - Update stable18 target versions (nextcloud_announcements#65)
+    - Update stable18 target versions (notifications#547)
+    - [stable18] Add linting via github actions (notifications#555)
+    - [stable18] Support Strict VoIP push notifications for 
+      iOS 13 SDK (notifications#565)
+    - [stable18] Update master php testing versions (password_policy#93)
+    - Update stable18 target versions (password_policy#94)
+    - [stable18] Lint with github actions (photos#153)
+    - [stable18] No more drone. Do it all on github actions (photos#158)
+    - [stable18] Respect .noimage and .nomedia files (photos#160)
+    - [stable18] added headers for your photos and favs (photos#172)
+    - [stable18] Fix/actions (photos#174)
+    - [stable18] Fix url escaping (photos#175)
+    - [stable18] Use actions from tutorial (photos#181)
+    - Update stable18 target versions (privacy#323)
+    - Update stable18 target versions (recommendations#182)
+    - Update stable18 target versions (serverinfo#170)
+    - [stable18] Update master php testing versions (survey_client#104)
+    - Update stable18 target versions (survey_client#105)
+    - [stable18] GitHub actions/lint (viewer#368)
+    - Fix url escaping (viewer#370)
+    - [stable18] Adjust tests syntax & formatting (viewer#379)
+    - [stable18] Use actions from tutorial (viewer#385)
+    - [stable18] Revert "Fix url escaping" (viewer#396)
 
 -------------------------------------------------------------------
 Fri Jan 17 18:37:04 UTC 2020 - ecsos@opensuse.org
