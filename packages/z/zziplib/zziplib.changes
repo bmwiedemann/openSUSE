@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:08:13 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Corrected control flow in zzip_mem_entry_make() to
+  gain correct exit status.
+  [bsc#1154002, bsc1154002-prevent-unnecessary-perror.patch]
+
+-------------------------------------------------------------------
 Fri Dec 13 12:28:30 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
 
 - Make an unconditional error message conditional by checking

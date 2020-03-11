@@ -2,12 +2,12 @@ Index: zziplib-0.13.69/bins/unzip-mem.c
 ===================================================================
 --- zziplib-0.13.69.orig/bins/unzip-mem.c
 +++ zziplib-0.13.69/bins/unzip-mem.c
-@@ -93,7 +93,7 @@ static void zzip_mem_entry_make(ZZIP_MEM
+@@ -92,7 +92,7 @@ static void zzip_mem_entry_make(ZZIP_MEM
+ 				ZZIP_MEM_ENTRY* entry)
  {
      FILE* file = fopen (entry->zz_name, "wb");
-     if (file) { zzip_mem_entry_pipe (disk, entry, file); fclose (file); }
--    perror (entry->zz_name);
-+    else perror (entry->zz_name);
+-    if (file) { zzip_mem_entry_pipe (disk, entry, file); fclose (file); }
++    if (file) { zzip_mem_entry_pipe (disk, entry, file); fclose (file); return; }
+     perror (entry->zz_name);
      if (status < EXIT_WARNINGS) status = EXIT_WARNINGS;
  }
- 
