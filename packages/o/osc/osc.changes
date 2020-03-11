@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 16:00:14 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Fix support for python38, osc#763
+
+-------------------------------------------------------------------
 Mon Mar  9 08:14:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Spec: temporary disable tests as they explode under python 3.8

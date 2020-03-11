@@ -1338,4 +1338,12 @@ sr#761596 needed for this.</comment>
     <comment></comment>
     <requestid>782863</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>8b5704cc8986043deaaa37ceffb2730e</srcmd5>
+    <version>0.168.1</version>
+    <time>1583949372</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix support for python38, osc#763</comment>
+    <requestid>783959</requestid>
+  </revision>
 </revisionlist>
