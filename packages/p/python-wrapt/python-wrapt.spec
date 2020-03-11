@@ -1,7 +1,7 @@
 #
 # spec file for package python-wrapt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wrapt
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        A Python module for decorators, wrappers and monkey patching
 License:        BSD-2-Clause
