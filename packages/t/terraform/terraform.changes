@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar  6 11:01:48 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Update to 0.12.23
+  BUG FIXES:
+   * cli: Fix wrong version returned by `terraform version`
+- Update to 0.12.22
+  ENHANCEMENTS:
+   * registry: Add configurable retries for module and provider discovery requests to the remote registry ([#24260](https://github.com/hashicorp/terraform/pull/24260))
+   * registry: Add configurable request timeout for the remote registry client ([#24259](https://github.com/hashicorp/terraform/pull/24259))
+  BUG FIXES:
+   * cli: Fix terraform state mv to correctly set the resource each mode based on the target address ([#24254](https://github.com/hashicorp/terraform/issues/24254))
+   * cli: The `terraform plan` command (and the implied plan run by `terraform apply` with no arguments) will now print any warnings that were generated even if there are no changes to be made. ([#24095](https://github.com/hashicorp/terraform/issues/24095))
+
+-------------------------------------------------------------------
 Wed Feb 19 18:30:17 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Update to 0.12.21
