@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 15:20:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- The contents of libcaca-prevent-overflow.patch
+  have been moved to Bug1120502-add_cast_to_prevent_overflow.patch
+  and libcaca-variable-type.patch
+  [libcaca-prevent-overflow.patch]
+
+-------------------------------------------------------------------
 Wed Feb 26 16:47:50 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner.
