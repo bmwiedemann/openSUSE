@@ -19,16 +19,14 @@
 %define libgpiod_soversion 2
 %define libgpiodcxx_soversion 1
 %define libgpiomockup_soversion 0
-
 # Tests are only available for kernel 5.1+ (so TW only)
 %if 0%{?suse_version} > 1500
 %bcond_without libgpiod_tests
 %else
 %bcond_with libgpiod_tests
 %endif
-
 Name:           libgpiod
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
@@ -40,16 +38,16 @@ BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  libkmod-devel
+BuildRequires:  libtool
+BuildRequires:  make
+BuildRequires:  python3-devel
 %if %{with libgpiod_tests}
 BuildRequires:  kernel-devel >= 5.1
 BuildRequires:  pkgconfig(libudev)
 %else
 BuildRequires:  kernel-devel >= 4.8
 %endif
-BuildRequires:  libkmod-devel
-BuildRequires:  libtool
-BuildRequires:  make
-BuildRequires:  python3-devel
 
 %description
 The libgpiod library encapsulates the ioctl calls and data structures
@@ -95,9 +93,12 @@ GPIO mockup library part.
 %package devel
 Summary:        Devel files for libgpiod
 Group:          Development/Languages/C and C++
-Requires:       %{name}
+Requires:       %{name} = %{version}
 Requires:       libgpiod%{libgpiod_soversion} = %{version}
 Requires:       libgpiodcxx%{libgpiodcxx_soversion} = %{version}
+%if %{with libgpiod_tests}
+Requires:       libgpiomockup%{libgpiomockup_soversion} = %{version}
+%endif
 
 %description devel
 The libgpiod library encapsulates the ioctl calls and data structures
@@ -130,7 +131,7 @@ Python binding part.
 %endif
 	--enable-tools=yes \
 	--enable-bindings-python \
-	--enable-bindings-cxx 
+	--enable-bindings-cxx
 make
 
 %install
@@ -139,9 +140,14 @@ rm -rf %{buildroot}%{_libdir}/*.{a,la}
 rm -rf %{buildroot}%{python3_sitearch}/*.{a,la}
 
 %post -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
-%postun	-n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
+%postun -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
 %post -n libgpiodcxx%{libgpiodcxx_soversion} -p /sbin/ldconfig
-%postun	-n libgpiodcxx%{libgpiodcxx_soversion} -p /sbin/ldconfig
+%postun -n libgpiodcxx%{libgpiodcxx_soversion} -p /sbin/ldconfig
+
+%if %{with libgpiod_tests}
+%post -n libgpiomockup%{libgpiomockup_soversion} -p /sbin/ldconfig
+%postun -n libgpiomockup%{libgpiomockup_soversion} -p /sbin/ldconfig
+%endif
 
 %files
 %{_bindir}/gpio*
