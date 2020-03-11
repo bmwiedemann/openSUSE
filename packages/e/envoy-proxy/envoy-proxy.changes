@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 11:05:17 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add bazel-rules-python as a build requirement.
+
+-------------------------------------------------------------------
 Tue Feb  4 14:18:09 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Remove nanopb from requirements.
