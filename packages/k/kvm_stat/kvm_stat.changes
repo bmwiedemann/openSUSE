@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Mar 11 19:12:26 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Remove legacy compatability patching, since that usage no longer
+  needs to be single sourced with this current package. Python3 is
+  now assumed. Also get rid of the final patch based on running
+  2to3, since those changes are not really needed: the kvm_stat now
+  in the current kernel source is good python3 code
+  Patches removed:
+  0001-tools-kvm_stat-fix-event-counts-display-for-interrup.patch
+  0002-tools-kvm_stat-fix-undue-use-of-initial-sleeptime.patch
+  0003-tools-kvm_stat-remove-unnecessary-header-redraws.patch
+  0004-tools-kvm_stat-simplify-line-print-logic.patch
+  0005-tools-kvm_stat-remove-extra-statement.patch
+  0006-tools-kvm_stat-simplify-initializers.patch
+  0007-tools-kvm_stat-move-functions-to-corresponding-class.patch
+  0008-tools-kvm_stat-show-cursor-in-selection-screens.patch
+  0009-tools-kvm_stat-display-message-indicating-lack-of-ev.patch
+  0010-tools-kvm_stat-make-heading-look-a-bit-more-like-top.patch
+  0011-tools-kvm_stat-rename-Current-column-to-CurAvg-s.patch
+  0012-tools-kvm_stat-add-new-interactive-command-h.patch
+  0013-tools-kvm_stat-add-new-interactive-command-s.patch
+  0014-tools-kvm_stat-add-new-interactive-command-o.patch
+  0015-tools-kvm_stat-display-guest-list-in-pid-guest-selec.patch
+  0016-tools-kvm_stat-fix-error-on-interactive-command-g.patch
+  0017-tools-kvm_stat-add-new-command-line-switch-i.patch
+  0018-tools-kvm_stat-add-new-interactive-command-b.patch
+  0019-tools-kvm_stat-add-f-help-to-get-the-available-event.patch
+  0020-tools-kvm_stat-Add-Python-3-support-to-kvm_stat.patch
+  0021-tools-kvm_stat-fix-command-line-option-g.patch
+  0022-tools-kvm_stat-fix-drilldown-in-events-by-guests-mod.patch
+  0023-tools-kvm_stat-fix-missing-field-update-after-filter.patch
+  0024-tools-kvm_stat-fix-extra-handling-of-help-with-field.patch
+  0025-tools-kvm_stat-add-hint-on-f-help-to-man-page.patch
+  0026-tools-kvm_stat-fix-child-trace-events-accounting.patch
+  0027-tools-kvm_stat-handle-invalid-regular-expressions.patch
+  0028-tools-kvm_stat-suppress-usage-information-on-command.patch
+  0029-tools-kvm_stat-stop-ignoring-unhandled-arguments.patch
+  0030-tools-kvm_stat-add-line-for-totals.patch
+  0031-tools-kvm_stat-sort-f-help-output.patch
+  0032-tools-kvm_stat-simplify-the-sortkey-function.patch
+  0033-tools-kvm_stat-use-a-namedtuple-for-storing-the-valu.patch
+  0034-tools-kvm_stat-use-a-more-pythonic-way-to-iterate-ov.patch
+  0035-tools-kvm_stat-avoid-is-for-equality-checks.patch
+  0036-tools-kvm_stat-fix-crash-when-filtering-out-all-non-.patch
+  0037-tools-kvm_stat-print-error-on-invalid-regex.patch
+  0038-tools-kvm_stat-fix-debugfs-handling.patch
+  0039-tools-kvm_stat-mark-private-methods-as-such.patch
+  0040-tools-kvm_stat-eliminate-extra-guest-pid-selection-d.patch
+  0041-tools-kvm_stat-separate-drilldown-and-fields-filteri.patch
+  0042-tools-kvm_stat-group-child-events-indented-after-par.patch
+  0043-tools-kvm_stat-print-Total-line-for-multiple-events-.patch
+  0044-tools-kvm_stat-Don-t-use-deprecated-file.patch
+  0045-tools-kvm_stat-fix-python3-issues.patch
+  0046-tools-kvm_stat-apply-python-2to3-fixes-to-kvm_stat.patch
+  0047-tools-kvm_stat-apply-python-2to3-fixes-to-kvm_stat2.patch
+  0048-tools-kvm_stat-apply-python-2to3-fixes-to-kvm_stat3.patch
+  0049-tools-kvm_stat-switch-python-reference-to-be-explici.patch
+  0050-tools-kvm_stat-switch-python-reference-again.patch
+  Patches added:
+  tools-kvm_stat-explicitly-reference-python3.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 14:40:53 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Fix our patching for Leap 15.1 (boo#1140899)
