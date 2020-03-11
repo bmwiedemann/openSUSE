@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  3 12:28:15 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Update to version 3.0
+  * Do not link against libpcre
+  * Fix redundant console log output error
+  * Use /run instead of /var/run
+  Dropped r_opts_global.patch
+
+-------------------------------------------------------------------
 Wed Jan 15 10:11:33 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Added r_opts_global.patch to fix build problems with gcc due to 
