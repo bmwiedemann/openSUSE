@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:08:02 UTC 2020 - tux93@opensuse.org
+
+- Update to version 0.14+git28.4be98dc7:
+  * Fix home icon in darker theme
+
+-------------------------------------------------------------------
+Tue Mar 10 06:49:38 UTC 2020 - tux93@opensuse.org
+
+- Update to version 0.14+git26.b207ac07:
+  * Fix icon for Gnome Software Center (Issue #181)
+  * Fix Bluetooth Manager icon in application menu (Issue #129)
+
+-------------------------------------------------------------------
 Fri Mar 06 09:17:47 UTC 2020 - tux93@opensuse.org
 
 - Update to version 0.14+git23.0db3af45:

@@ -202,4 +202,17 @@
     <comment></comment>
     <requestid>782068</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>11a93fc2fa0778a51895c64d8f853cc1</srcmd5>
+    <version>0.14+git28.4be98dc7</version>
+    <time>1583949042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14+git28.4be98dc7:
+  * Fix home icon in darker theme
+- Update to version 0.14+git26.b207ac07:
+  * Fix icon for Gnome Software Center (Issue #181)
+  * Fix Bluetooth Manager icon in application menu (Issue #129)
+</comment>
+    <requestid>783943</requestid>
+  </revision>
 </revisionlist>
