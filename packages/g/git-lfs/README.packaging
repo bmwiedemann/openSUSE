@@ -1,0 +1,22 @@
+1. unpack upstream tarball
+# (setup osc working directory for git-lfs package)
+# mkdir -p ~/go/src/github.com/git-lfs/git-lfs-2.10.0/
+# tar xvzf git-lfs-v2.10.0.tar.gz --strip-components=1 -C ~/go/src/github.com/git-lfs/git-lfs-2.10.0/
+# cd ~/go/src/github.com/git-lfs/git-lfs-2.10.0/
+
+
+3. Obtain vendor dependencies
+
+remove go.mod file
+
+# rm go.mod
+# go mod init
+# go mod download
+# go mod verify
+# go mod vendor
+
+4. Create archive
+
+# cd ..
+# tar -zcf git-lfs-v2.10.0.tar.gz git-lfs-2.10.0
+# (copy newly created archive to obs working directory)
