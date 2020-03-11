@@ -22,6 +22,14 @@
 %else
 %bcond_without offline_updates
 %endif
+
+# Only make DNF backend available on openSUSE flavors
+%if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550) && 0%{?is_opensuse}
+%bcond_without dnf
+%else
+%bcond_with dnf
+%endif
+
 # $ pkcon search file /usr/bin/anjuta
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -29,7 +37,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -41,33 +49,24 @@ Source2:        baselibs.conf
 Source3:        PackageKit.tmpfiles
 Source99:       PackageKit.keyring
 
-# PATCH-FIX-UPSTREAM PackageKit-return-on-transactions-going-backwards.patch gh#hughsie/PackageKit#301, bsc#1038425 sckang@suse.com -- transaction: Return directly when its state is going backwards
-Patch1:         PackageKit-return-on-transactions-going-backwards.patch
-# PATCH-FIX-UPSTREAM PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch gh#hughsie/PackageKit#303, bsc#1038425 sckang@suse.com -- Remove pk_is_thread_default() check in pk_backend_is_eula_valid
-Patch2:         PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch
 # PATCH-FEATURE-OPENSUSE PackageKit-systemd-timers.patch bsc#1115410 sckang@suse.com -- Migrate from cron to systemd timers
-Patch3:         PackageKit-systemd-timers.patch
+Patch1:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
-Patch4:         PackageKit-remove-polkit-rules.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-newest-filter.patch bsc#1137019 gh#hughsie/PackageKit#329 sckang@suse.com -- zypp: Emit installed package for newest filter
-Patch5:         PackageKit-zypp-fix-newest-filter.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-what-provides-newest-filter.patch bsc#984865, gh#hughsie/PackageKit#335 sckang@suse.com -- zypp: Add support for newest filter in what-provides
-Patch6:         PackageKit-zypp-fix-what-provides-newest-filter.patch
+Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-UPSTREAM PackageKit-drop-gtk2.patch gh#/hughsie/PackageKit#333 - Port away from gtk2 dependency
-Patch7:         PackageKit-drop-gtk2.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-get-updates-dup-or-up.patch gh#hughsie/PackageKit#343 sckang@suse.com -- zypp: Fix get-updates in Tumbleweed
-Patch8:         PackageKit-zypp-get-updates-dup-or-up.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch gh#hughsie/PackageKit#345 sckang@suse.com -- zypp: Don't set upgrade mode in update-packages
-Patch9:         PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch
-Patch10:        zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-upgrade-system.patch bsc#1155638, bsc#1154973, gh#hughsie/PackageKit/commit/d060dd24 sckang@suse.com -- zypp: implement upgrade-system method
-Patch11:        PackageKit-zypp-upgrade-system.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-get-files-string-array.patch gh#hughsie/PackageKit#351 sckang@suse.com -- zypp: pass an array of strings to pk_backend_job_files()
-Patch12:        PackageKit-zypp-get-files-string-array.patch
+Patch3:         PackageKit-drop-gtk2.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-update-packages-in-all-openSUSE.patch sckang@suse.com -- Handle Tumbleweed upgrade in update-packages as well so that it doesn't break other components.
-Patch13:        PackageKit-zypp-update-packages-in-all-openSUSE.patch
+Patch4:         PackageKit-zypp-update-packages-in-all-openSUSE.patch
+# PATCH-FIX-OPENSUSE PackageKit-zypp-revert-fail-on-already-installed.patch boo#1155624 ngompa13@gmail.com -- Stop PK from erroring on already installed files
+Patch5:         PackageKit-zypp-revert-fail-on-already-installed.patch
+# PATCH-FIX-OPENSUSE PackageKit-dnf-Add-openSUSE-vendor.patch ngompa13@gmail.com -- Add openSUSE vendor
+Patch1001:      PackageKit-dnf-Add-openSUSE-vendor.patch
+# PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
+Patch1002:      PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 
+BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -78,6 +77,10 @@ BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libarchive-devel
 BuildRequires:  libcppunit-devel
+%if %{with dnf}
+BuildRequires:  appstream-glib-devel
+BuildRequires:  libdnf-devel >= 0.22.0
+%endif
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  libtool
 BuildRequires:  libzypp-devel
@@ -95,8 +98,8 @@ BuildRequires:  pkgconfig(systemd)
 # We really want a working backend (likely zypp)
 Requires:       %{name}-backend
 Requires:       %{name}-branding = %{version}
+Suggests:       %{name}-backend-zypp
 Requires(post): %fillup_prereq
-Recommends:     %{name}-lang
 %if 0%{suse_version} < 1500
 Suggests:       cron
 %endif
@@ -123,6 +126,8 @@ License:        GPL-2.0-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 Provides:       %{name}-backend = %{version}
+Conflicts:      %{name}-backend
+Supplements:    (%{name} and libzypp)
 
 %description backend-zypp
 PackageKit is a system designed to make installing and updating
@@ -131,6 +136,26 @@ all the software graphical tools used in different distributions, and
 use some of the latest technology like PolicyKit to make the process
 suck less.
 
+%if %{with dnf}
+%package backend-dnf
+Summary:        DNF backend for the PackageKit installation management software
+License:        GPL-2.0-or-later
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Provides:       %{name}-backend = %{version}
+Conflicts:      %{name}-backend
+Supplements:    (%{name} and dnf-conf and rpm-repos-openSUSE)
+# Stricter dependency to keep things sane
+%requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf.so)")
+
+%description backend-dnf
+PackageKit is a system designed to make installing and updating
+software on your computer easier.  The primary design goal is to unify
+all the software graphical tools used in different distributions, and
+use some of the latest technology like PolicyKit to make the process
+suck less.
+%endif
+
 %package gstreamer-plugin
 Summary:        GStreamer plugin for the PackageKit installation management software
 License:        GPL-2.0-or-later
@@ -138,7 +163,7 @@ Group:          Productivity/Multimedia/Other
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{name} = %{version}
-Supplements:    packageand(%{name}:gstreamer-plugins-base)
+Supplements:    (%{name} and gstreamer-plugins-base)
 
 %description gstreamer-plugin
 PackageKit is a system designed to make installing and updating
@@ -152,7 +177,7 @@ Summary:        GTK3 backend for the PackageKit installation management software
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 Recommends:     %{name} = %{version}
-Supplements:    packageand(%{name}:gtk3)
+Supplements:    (%{name} and gtk3)
 %glib2_gsettings_schema_requires
 
 %description gtk3-module
@@ -226,7 +251,7 @@ Summary:        Upstream configuration for the PackageKit installation managemen
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -248,6 +273,9 @@ This package provides the upstream default configuration for PackageKit.
 %autosetup -p1
 translation-update-upstream
 
+# Due to DNF patches, need to regen configure...
+autoreconf -fiv
+
 %build
 NOCONFIGURE=1 ./autogen.sh
 %if !0%{?is_opensuse}
@@ -255,6 +283,8 @@ export CFLAGS="%{optflags} -DSLE"
 %endif
 %configure \
 	--disable-static \
+	%{?with_dnf:--enable-dnf} \
+	%{?with_dnf:--with-dnf-vendor=opensuse} \
 	--enable-zypp \
 	--enable-gstreamer-plugin \
 %if ! %{BUILD_CNF}
@@ -433,6 +463,11 @@ fi
 
 %files backend-zypp
 %{_libdir}/packagekit-backend/libpk_backend_zypp.so
+
+%if %{with dnf}
+%files backend-dnf
+%{_libdir}/packagekit-backend/libpk_backend_dnf.so
+%endif
 
 %files gstreamer-plugin
 %ghost %{_sysconfdir}/alternatives/gst-install-plugins-helper
