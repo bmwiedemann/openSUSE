@@ -48,4 +48,12 @@
   * no upstream changelog</comment>
     <requestid>730060</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1bee2fb34a4648054b3bb271a36cd190</srcmd5>
+    <version>1.15.0</version>
+    <time>1583949345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783951</requestid>
+  </revision>
 </revisionlist>

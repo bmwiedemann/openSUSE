@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 15:18:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.15.0
+  * Several bugs with parsing hex, bin and oct numbers.
+  * Handle fortran formatted float number, Bug fix & test case.
+  * Handle comparison of FixedTzOffset with other types of object 
+
+-------------------------------------------------------------------
 Wed Sep 11 08:31:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.12.1:
