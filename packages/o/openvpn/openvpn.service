@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenVPN tunneling daemon instance using /etc/openvpn/%I.conf
+Description=OpenVPN tunneling daemon instance using /etc/openvpn/%i.conf
 After=network.target
 PartOf=openvpn.target
 

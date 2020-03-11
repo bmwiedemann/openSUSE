@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  4 07:30:38 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix inconsistency in openvpn.service:
+  * It uses the unescape instance name as config file basename,
+    so use that in the description as well
+
+-------------------------------------------------------------------
 Fri Jan 24 11:22:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
