@@ -185,4 +185,13 @@
 </comment>
     <requestid>778205</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>731858764985b32281b238f1a365697b</srcmd5>
+    <version>2.4.1</version>
+    <time>1583948841</time>
+    <user>dimstar_suse</user>
+    <comment>- Add correct-path-saved-lyrics.patch to fix saving lyrics
+</comment>
+    <requestid>783103</requestid>
+  </revision>
 </revisionlist>
