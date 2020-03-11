@@ -1,7 +1,7 @@
 #
 # spec file for package python-junit-xml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-junit-xml
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Module that creates JUnit XML test result documents
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/kyrus/python-junit-xml
-Source:         https://files.pythonhosted.org/packages/source/j/junit-xml/junit-xml-%{version}.tar.gz
+URL:            https://github.com/kyrus/python-junit-xml
+# 1.9 source not published on pypi
+#Source:         https://files.pythonhosted.org/packages/source/j/junit-xml/junit-xml-%{version}.tar.gz
+Source:         junit-xml-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
