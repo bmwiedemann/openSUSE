@@ -32,6 +32,7 @@ Patch1:         p_handle-no-return-in-nonvoid-function.patch
 Patch2:         p_add-zlo-to-cmake-include-path-suffixes.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
+BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
@@ -54,7 +55,6 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(freeglut)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(liblz4)
