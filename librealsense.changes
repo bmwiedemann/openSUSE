@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:38:06 UTC 2020 - christophe@krop.fr
+
+- Update to version 2.33.1+git20200305.ge0b160f01:
+  * Promote D4xx firmware version to 5.12.3.0
+  * Comment on the wrappers
+  * Rectify license of the INF file
+  * Reverting merge mistake
+  * Bump version to v2.33.1
+  * Fix memory leak in v4l2 backend on kernel 5.3
+  * lines reordered in rder to log before exception throw
+  * using log instead of LOGGER_ERROR because of linkage correction in windows
+  * minor changes from code review
+  * fw update crash fix
+  * revert void*->char* change to preserve backwards compat
+  * and much more...
+
+-------------------------------------------------------------------
+Wed Mar 11 09:26:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require freeglut-devel instead of pkgconfig(freeglut).
+  The pkgconfig name changed in Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Feb  7 07:14:03 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - drop src/win* files as they contain weird license
