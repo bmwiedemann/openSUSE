@@ -28,7 +28,7 @@ URL:            http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-Version:        201911
+Version:        202002
 Release:        0
 Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
@@ -49,9 +49,6 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         %{name}-bsc1163959-PiDxeS3BootScriptLib-fix-numeric-truncation.patch
-Patch7:         %{name}-bsc1163969-fix-DxeImageVerificationHandler.patch
-Patch8:         %{name}-bsc1163927-fix-ip4dxe-and-arpdxe.patch
 Patch100:       openssl-fix-syntax-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
@@ -175,9 +172,6 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

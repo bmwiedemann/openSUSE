@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Fri Mar  6 03:11:48 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable202002
+  + UefiCpuPkg/MpInitLib: Skip reading PlatformId on AMD processors.
+  + BaseTools: Remove invalid leading space before !INCLUDE in Makefile
+  + OvmfPkg/QemuVideoDxe: unbreak "secondary-vga" and "bochs-display" support
+  + NetworkPkg/ArpDxe: Recycle invalid ARP packets (CVE-2019-14559)
+  + ShellPkg: acpiview: Prevent infinite loop if structure length is 0
+  + CryptoPkg/BaseHashApiLib: Change PcdHashApiLibPolicy type to FixedAtBuild
+  + CryptoPkg/BaseHashApiLib: Align BaseHashApiLib with TPM 2.0 Implementation
+  + MdeModulePkg: Make retval in UninstallMultipleProtocol follow Spec
+  + SecurityPkg/DxeImageVerificationLib: change IsCertHashFoundInDatabase
+    name (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: Differentiate error/search
+    result (2) (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: plug Data leak in
+    IsForbiddenByDbx() (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: tighten default result
+    (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: Differentiate error/search
+    result (1) (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: refactor db/dbx fetching
+    code (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: avoid bypass in fetching
+    dbx (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: fix wrong fetch dbx in
+    IsAllowedByDb (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: reject
+    CertStack.CertNumber==0 per DBX (CVE-2019-14575)
+  + SecurityPkg/DxeImageVerificationLib: Fix memory leaks
+    (CVE-2019-14575)
+  + NetworkPkg/Ip4Dxe: Check the received package length
+    (CVE-2019-14559).
+  + ShellPkg: acpiview: Validate ACPI table 'Length' field
+  + ShellPkg: acpiview: Remove duplicate ACPI structure size definitions
+  + UefiCpuPkg RegisterCpuFeaturesLib: Match data type and format specifier
+  + MdeModulePkg/SdMmcPciHcDxe: Fix double PciIo Unmap in TRB creation
+    (CVE-2019-14587)
+  + MdeModulePkg/DisplayEngine: Zero memory before free (CVE-2019-14558)
+  + MdeModulePkg/String.c: Zero memory before free (CVE-2019-14558)
+  + MdeModulePkg/HiiDB: Remove configuration table when it's freed
+    (CVE-2019-14586)
+  + MdePkg: Remove FIT table industry standard header file.
+  + UefiCpuPkg: Remove FIT based microcode shadow logic from MpInitLib.
+  + UefiCpuPkg/CpuFeature: Introduce First to indicate 1st unit.
+  + UefiCpuPkg/RegisterCpuFeaturesLib: Rename [Before|After]FeatureBitMask
+  + UefiCpuPkg/RegisterCpuFeaturesLib: Delete CPU_FEATURE_[BEFORE|AFTER]
+  + MdePkg: Add PCCT table signature definition
+  + BaseTools: Fixed build failure when using python38
+  + BaseTools:fix Ecc tool issue for check StructPcd
+  + BaseTools: Remove caret in NASM_INC macro
+  + BaseTools: Rationalise makefile generation
+  + MdePkg: Add PCI Express 5.0 Header File
+  + MdePkg: Disable EBC for unit tests in MdePkg.dsc
+  + MdePkg/SmBios.h: Add two additional DWORD for smbios 3.3.0 type17
+  + UefiCpuPkg/MpInitLib: Not pass microcode info between archs in CPU_MP_DATA
+  + Revert UefiCpuPkg/MpInitLib: Relocate microcode patch fields in CPU_MP_DATA
+  + ShellPkg: acpiview: Validate global pointers before use
+  + ShellPkg: acpiview: Validate System Locality count
+  + ShellPkg: acpiview: Set ItemPtr to NULL for unprocessed table fields
+  + ShellPkg: Document UpdateArgcArgv returns EFI_INVALID_PARAMETER
+  + ShellPkg: Document ParseCommandLineToArgs returns EFI_INVALID_PARAMETER
+  + ShellPkg/UefiShellAcpiViewCommandLib: Fix FADT Parser
+  + SecurityPkg: Fix incorrect return value when File is NULL
+  + BaseTools: Fixed a Incremental build issue
+  + CryptoPkg/CryptoPkg.dsc: Add build of Crypto libraries/modules
+  + CryptoPkg/Library: Add BaseCryptLibOnProtocolPpi instances
+  + CryptoPkg/Driver: Add Crypto PEIM, DXE, and SMM modules
+  + CryptoPkg: Add EDK II Crypto Protocols/PPIs/PCDs
+  + CryptoPkg/BaseCryptLib: Add X509ConstructCertificateStackV().
+  + MdeModulePkg/PiDxeS3BootScriptLib: Fix potential numeric truncation
+    (CVE-2019-14563)
+  + MdeModulePkg/Capsule: Remove RT restriction in UpdateCapsule service.
+  + SecurityPkg/TcgPhysicalPresenceLib: Replace the ASSERT with error code
+  + BaseTools/PcdValueCommon: Fix 64-bit host compiler error
+  + BaseTools/Build: Do not use Common.lib in Structured PCD app
+  + MdeModulePkg/BaseSerialPortLib16550: Fix Serial Port Ready
+  + BaseTools: Script for converting .aml to .hex
+  + MdeModulePkg: Perform test only if not ignore memory test
+  + UefiCpuPkg/MpInitLib: Always get CPUID & PlatformID in MicrocodeDetect()
+  + OvmfPkg/PlatformPei: detect SMRAM at default SMBASE (for real)
+  + OvmfPkg: introduce PcdCsmEnable feature flag
+  + OvmfPkg/SmmAccess: close and lock SMRAM at default SMBASE
+  + OvmfPkg/SEV: don't manage the lifecycle of the SMRAM at the default SMBASE
+  + OvmfPkg/PlatformPei: reserve the SMRAM at the default SMBASE, if it exists
+  + OvmfPkg/PlatformPei: assert there's no permanent PEI RAM at default SMBASE
+  + OvmfPkg/PlatformPei: detect SMRAM at default SMBASE (skeleton)
+  + OvmfPkg/PlatformPei: factor out Q35BoardVerification()
+  + OvmfPkg/IndustryStandard: add MCH_DEFAULT_SMBASE* register macros
+  + OvmfPkg/IndustryStandard: increase vertical whitespace in Q35 macro defs
+  + OvmfPkg: introduce PcdQ35SmramAtDefaultSmbase
+  + CryptoPkg/BaseCryptLibNull: Add missing HkdfSha256ExtractAndExpand()
+  + BaseTools/DscBuildData: Fix PCD autogen include file conflict
+  + CryptoPkg/BaseHashApiLib: Implement Unified Hash Calculation API
+  + CryptoPkg: Add CryptoPkg Token Space GUID
+  + BaseTools/Conf/gitattributes: fix "--function-context" for C source code
+  + SecurityPkg/DxeImageVerificationHandler: fix "defer" vs. "deny" policies
+  + SecurityPkg/DxeImageVerificationHandler: fix imgexec info on memalloc fail
+  + SecurityPkg/DxeImageVerificationHandler: fix retval for (FileBuffer==NULL)
+  + SecurityPkg/DxeImageVerificationHandler: eliminate "Status" variable
+  + SecurityPkg/DxeImageVerificationHandler: unnest AddImageExeInfo() call
+  + SecurityPkg/DxeImageVerificationHandler: remove superfluous Status setting
+  + SecurityPkg/DxeImageVerificationHandler: fix retval on memalloc failure
+  + SecurityPkg/DxeImageVerificationHandler: narrow down PE/COFF hash status
+  + SecurityPkg/DxeImageVerificationHandler: keep PE/COFF info status internal
+  + SecurityPkg/DxeImageVerificationHandler: remove "else" after return/break
+  + SecurityPkg/DxeImageVerificationHandler: simplify "VerifyStatus"
+  + OvmfPkg/PlatformPei: rewrite MaxCpuCountInitialization() for CPU hotplug
+  + OvmfPkg/IndustryStandard: define macros for QEMU's CPU hotplug registers
+  + OvmfPkg/OvmfXen.dsc: remove PcdCpu* dynamic defaults
+  + CryptoPkg/BaseCryptLib: remove HmacXxxGetContextSize interface
+  + CryptoPkg/BaseCryptLib: replace HmacXxxInit API with HmacXxxSetKey
+  + BaseTools: Fixed a incremental build bug
+  + UefiCpuPkg/MpInitLib: Fix possible uninitialized 'InitFlag' field
+  + FmdDevicePkg/FmpDxe: Support Fmp Capsule Dependency.
+  + MdeModulePkg/CapsuleApp: Enhance CapsuleApp for Fmp Capsule Dependency
+  + MdePkg: Add definition for Fmp Capsule Dependency.
+  + MdeModulePkg/SdMmcPciHcDxe: Add retries for async commands
+  + MdeModulePkg/SdMmcPciHcDxe: Add retries for sync commands
+  + MdeModulePkg/SdMmcPciHcDxe: Refactor command error detection
+  + MdeModulePkg/SdMmcPciHcDxe: Fix DAT lane SW reset
+  + UefiCpuPkg/PiSmmCpuDxeSmm: fix 2M->4K page splitting regression for PDEs
+  + MdeModulePkg/Variable: Fix VarErrorFlag RT cache offset calculation
+  + MdePkg Base.h: Use correct style to check the defined macro
+  + ShellPkg: acpiview: Update SRAT parser to ACPI 6.3
+  + BaseTools/Capsule: Add capsule dependency support
+  + MdeModulePkg/Setup: Update opcode number variable type to UINTN
+  + ArmPlatformPkg/PrePeiCore: enable VFP at startup
+  + ArmPkg/ArmSmcPsciResetSystemLib: remove EnterS3WithImmediateWake ()
+  + NetworkPkg/HttpDxe: fix 32-bit truncation in HTTPS download
+  + MdeModulePkg/UefiBootManagerLib: log reserved mem allocation failure
+  + BaseTools/Scripts/PatchCheck: Address false error conditions
+  + BaseTools:Fix GenFds issue for BuildOption replace GenFdsOption
+  + BaseTools:Change the case rules for ECC check pointer names
+  + MdeModulePkg/SdMmcPciHcDxe: Fix unknown doxygen tag error
+  + ArmVirtPkg: remove EnterS3WithImmediateWake () from ResetSystemLib
+  + OvmfPkg: remove EnterS3WithImmediateWake () from ResetSystemLib
+  + UefiPayloadPkg: remove EnterS3WithImmediateWake () from ResetSystemLib
+  + PcAtChipsetPkg: remove EnterS3WithImmediateWake () from ResetSystemLib
+  + MdeModulePkg: remove EnterS3WithImmediateWake () from ResetSystemLib
+  + UefiCpuPkg: Shadow microcode patch according to FIT microcode entry.
+  + MdePkg: Add header file for Firmware Interface Table specification.
+  + UefiCpuPkg/CpuCommonFeaturesLib: SMXE bit of CR4 should set
+  + MdePkg BaseLib.h: Update IA32_CR4 strut to include all public fields
+  + MdePkg: Do not use CreateEventEx unless required
+  + UefiCpuPkg/PiSmmCpuDxeSmm: Add missed comments for parameter.
+  + OvmfPkg: use HII type PCDs for TPM2 config related variables
+  + OvmfPkg: reorganize TPM2 support in DSC/FDF files
+  + BaseTools/PatchCheck.py: Ignore CR and LF characters in subject length
+  + MdeModulePkg: Add EDK2 Platform Boot Manager Protocol
+  + CryptoPkg: Support for SHA384 & SHA512 RSA signing schemes
+  + UefiCpuPkg: Always load microcode patch on AP processor.
+  + UefiCpuPkg: Remove alignment check when calculate microcode size.
+  + Revert "UefiCpuPkg/PiSmmCpuDxeSmm: Fix buffer overflow issue."
+  + MdeModulePkg/UsbMouseAbsolutePointer: Fix endpoint selection
+  + MdeModulePkg/Usb/UsbMouse: Fix endpoint selection
+  + MdeModulePkg/Usb/EfiKey: Fix endpoint selection
+  + SecurityPkg/Tcg2Pei: Add TCG PFP 105 support.
+  + MdeModulePkg/Smbios: Add TCG PFP rev 105 support.
+  + MdeModulePkg/dec: add PcdTcgPfpMeasurementRevision PCD
+  + MdeModulePkg/Smbios: Done measure Smbios multiple times.
+  + SecurityPkg/Tcg2Dxe: Add Tcg2Dxe to support 800-155 event.
+  + SecurityPkg/Guid: Add TCG 800-155 event GUID definition.
+  + MdeModulePkg/SdMmcPciHcDxe: Add function to start SD clock
+  + MdeModulePkg/SdMmcPciHcDxe: Hook SwitchClockFreq after SD clock start
+  + UefiCpuPkg/PiSmmCpuDxeSmm: Pre-allocate PROCEDURE_TOKEN buffer
+  + UefiPayloadPkg/BootManager: Add PS2 keyboard support
+  + UefiCpuPkg/MpInitLib: Remove redundant microcode fields in CPU_MP_DATA
+  + UefiCpuPkg/MpInitLib: Relocate microcode patch fields in CPU_MP_DATA
+  + UefiCpuPkg/MpInitLib: Produce EDKII microcode patch HOB
+  + UefiCpuPkg: Add definitions for EDKII microcode patch HOB
+  + UefiCpuPkg/MpInitLib: Reduce the size when loading microcode patches
+  + UefiCpuPkg/MpInitLib: Collect processors' CPUID & Platform ID info
+  + BaseTools/Scripts: Add sendemail.transferEncoding to SetupGit.py
+  + UefiCpuPkg/PiSmmCpuDxeSmm: Fix buffer overflow issue.
+  + UefiCpuPkg/PiSmmCpuDxeSmm: Remove dependence between APs
+  + edksetup.bat stuck on unicode locale Windows
+  + MdePkg/Tcg: Add new definition in TCG PFP spec.
+  + MdePkg: Use __builtin_offset with CLANGPDB toolchain
+  + MdePkg PciExpress21: PCI_REG_PCIE_DEVICE_CONTROL2 struct has 17 bits
+  + ShellPkg/ShellProtocol: Return error code while fail parsing cmd-line
+  + MdePkg/Spdm: fix Nonce structure error.
+  + BaseTools: Resolve a issue of Incremental build
+  + Maintainers.txt: Update email address and role
+  + BaseTools:replaces the two offending quotes by ascii quotes
+  + BaseTools: Fix build failure when multiple build targets given
+  + MdePkg/Include: Add DCC and BCM2835 SPCR UART types
+  + ArmPkg/MmCommunicationDxe: relay architected PI events to MM context
+  + SecurityPkg/Tcg2Smm: Measure the table before patch.
+  + BaseTools: Remove redundant binary cache file
+  + BaseTools: Leverage compiler output to optimize binary cache
+  + BaseTools: enhance the CacheCopyFile method arg names
+  + BaseTools: store more complete output files in binary cache
+  + BaseTools: Enhance Basetool for incremental build
+  + BaseTools: Update build_rule.txt to generate dependent files.
+  + BaseTools: Generate dependent files for ASL and ASM files
+  + BaseTools: Add build option for dependency file generation
+  + UefiCpuPkg/PiSmmCpuDxeSmm: Avoid allocate Token every time
+  + BaseTools: Avoid "is" with a literal Python 3.8 warnings
+  + ArmPkg: Dispatch deferred images after EndOfDxe
+  + ShellPkg/UefiHandleParsingLib: Fix error allocate pool
+  + ShellPkg/edit: typo "%d Lines Wrote"
+  + ShellPkg: acpiview: IORT Spec Rev D updates
+  + ShellPkg: acpiview: Add support for parsing FACS
+  + MdeModulePkg: Add ARM/Aarch64 support which were missing
+  + MdeModulePkg: LzmaCustomDecompressLib.inf don't support EBC anymore
+  + BaseTools:Enhance the way to handling included dsc file
+  + UefiCpuPkg/UefiCpuPkg.uni: Add missing strings for PCD
+  + NetworkPkg/NetworkPkg.uni: Add missing strings for PCD
+  + MdeModulePkg/MdeModulePkg.uni: Add missing strings for PCD
+  + NetworkPkg: Fixes to static code analysis hits
+  + CryptoPkg/OpensslLib.inf: list OpenSSL local header "ms/uplink.h"
+  + CryptoPkg/OpensslLib: improve INF file consistency
+  + MdeModulePkg/VariableSmmRuntimeDxe.inf: list local header "Variable.h"
+- Drop upstreamed fixes
+  + ovmf-bsc1163927-fix-ip4dxe-and-arpdxe.patch
+  + ovmf-bsc1163959-PiDxeS3BootScriptLib-fix-numeric-truncation.patch
+  + ovmf-bsc1163969-fix-DxeImageVerificationHandler.patch
+- Refresh ovmf-gdb-symbols.patch
+
+-------------------------------------------------------------------
 Mon Feb 24 04:00:24 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1163969-fix-DxeImageVerificationHandler.patch to fix
