@@ -1,7 +1,7 @@
 #
 # spec file for package flameshot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,6 @@ URL:            https://github.com/lupoDharkael/flameshot#flameshot
 Source0:        https://github.com/lupoDharkael/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         desktop-files.patch
 Patch2:         0001-utils-confighandler.cpp-Enable-Pin-and-Text-tool-by-.patch
-%if 0%{?suse_version} >= 1500
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase
@@ -43,6 +37,12 @@ BuildRequires:  pkgconfig(Qt5Gui) >= 5
 BuildRequires:  pkgconfig(Qt5Network) >= 5
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5
+%if 0%{?suse_version} >= 1500
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%endif
 
 %description
 A program to capture screenshots.
@@ -53,7 +53,7 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Graphics/Other
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(flameshot:bash)
+Supplements:    (flameshot and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
