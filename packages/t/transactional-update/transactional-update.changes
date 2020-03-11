@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  3 16:34:26 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.3
+  - Reintroduce compatibility with RPM < 4.15 for inclusion in
+    SLE / Leap 15.2
+  - Prepare for removal of /var/lib/alternatives [jsc#SLE-9101]
+
+-------------------------------------------------------------------
 Wed Feb 26 09:58:23 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.20.2
