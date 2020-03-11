@@ -1,0 +1,61 @@
+---
+#description_paragraphs: 1
+description: |-
+ *DBD::MariaDB* is the Perl5 Database Interface driver for MariaDB and MySQL
+ databases. In other words: DBD::MariaDB is an interface between the Perl
+ programming language and the MariaDB/MySQL programming API that comes with
+ the MariaDB/MySQL relational database management system. Most functions
+ provided by this programming API are supported. Some rarely used functions
+ are missing, mainly because no-one ever requested them.
+#summary: override summary from CPAN
+#no_testing: broken upstream
+sources:
+ Source2:        test-setup.sh
+ Source3:        test-clean.sh
+preamble: |-
+ BuildRequires:  libmariadb-devel
+ BuildRequires:  mariadb
+ BuildRequires:  zlib-devel
+ BuildRequires:  perl(B)
+ BuildRequires:  perl(CPAN::Meta::YAML)
+ BuildRequires:  perl(Config)
+ BuildRequires:  perl(Data::Dumper)
+ BuildRequires:  perl(Encode)
+ BuildRequires:  perl(ExtUtils::MakeMaker)
+ BuildRequires:  perl(File::Spec)
+ BuildRequires:  perl(File::Temp)
+ BuildRequires:  perl(FindBin)
+ BuildRequires:  perl(Getopt::Long)
+ BuildRequires:  perl(Net::SSLeay)
+ BuildRequires:  perl(Proc::ProcessTable)
+ BuildRequires:  perl(Storable)
+ BuildRequires:  perl(TAP::Harness)
+ BuildRequires:  perl(Test::Pod) >= 1.41
+ BuildRequires:  perl(Time::HiRes)
+ BuildRequires:  perl(bigint)
+ BuildRequires:  perl(lib)
+ BuildRequires:  perl(strict)
+ BuildRequires:  perl(utf8)
+ BuildRequires:  perl(vars)
+ BuildRequires:  perl(warnings)
+ Requires:       perl(DynaLoader)
+ Requires:       perl(strict)
+ Requires:       perl(warnings)
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+custom_test: |-
+ # Setup environment and start database
+ . %{SOURCE2}
+ HARNESS_OPTIONS=j4 make %{?_smp_mflags} test
+ # Stop database
+ . %{SOURCE3}
+#ignore_requires: Bizarre::Module

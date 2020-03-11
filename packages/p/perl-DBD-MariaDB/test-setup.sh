@@ -32,9 +32,9 @@ while ! /usr/bin/mysqladmin --user=root --socket=${MYSQL_UNIX_PORT} ping 2>&1 ; 
     fi
 done
 
-mysql --user=root --socket=${MYSQL_UNIX_PORT} --execute "CREATE USER '${DBD_MARIADB_TESTUSER}'@'localhost';" 2>&1
-mysql --user=root --socket=${MYSQL_UNIX_PORT} --execute "CREATE DATABASE IF NOT EXISTS ${DBD_MARIADB_TESTDB} CHARACTER SET='utf8mb4';" 2>&1
-mysql --user=root --socket=${MYSQL_UNIX_PORT} --execute "GRANT ALL PRIVILEGES ON ${DBD_MARIADB_TESTDB}.* TO '${DBD_MARIADB_TESTUSER}'@'localhost' IDENTIFIED BY '${DBD_MARIADB_TESTPASSWORD}';" 2>&1
+mysql --socket=${MYSQL_UNIX_PORT} --execute "CREATE USER '${DBD_MARIADB_TESTUSER}'@'localhost';" 2>&1
+mysql --socket=${MYSQL_UNIX_PORT} --execute "CREATE DATABASE IF NOT EXISTS ${DBD_MARIADB_TESTDB} CHARACTER SET='utf8mb4';" 2>&1
+mysql --socket=${MYSQL_UNIX_PORT} --execute "GRANT ALL PRIVILEGES ON ${DBD_MARIADB_TESTDB}.* TO '${DBD_MARIADB_TESTUSER}'@'localhost' IDENTIFIED BY '${DBD_MARIADB_TESTPASSWORD}';" 2>&1
 
 if ! /usr/bin/mysqladmin --user=${DBD_MARIADB_TESTUSER} --password=${DBD_MARIADB_TESTPASSWORD} --socket=${DBD_MARIADB_TESTSOCKET} ping 2>&1; then
     echo "skipping test, cannot connect to server with test user"

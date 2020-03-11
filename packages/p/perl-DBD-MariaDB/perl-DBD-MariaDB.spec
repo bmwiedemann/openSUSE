@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-MariaDB
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,33 +25,47 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{version}.tar.gz
-Source1:        test-setup.sh
-Source2:        test-clean.sh
+Source1:        cpanspec.yml
+# MANUAL BEGIN
+Source2:        test-setup.sh
+Source3:        test-clean.sh
 BuildRequires:  libmariadb-devel
 BuildRequires:  mariadb
-BuildRequires:  perl
-BuildRequires:  perl-macros
 BuildRequires:  zlib-devel
+BuildRequires:  perl(B)
+BuildRequires:  perl(CPAN::Meta::YAML)
 BuildRequires:  perl(Config)
-BuildRequires:  perl(DBI) >= 1.608
-BuildRequires:  perl(DBI::Const::GetInfoType)
 BuildRequires:  perl(Data::Dumper)
-BuildRequires:  perl(Devel::CheckLib) >= 1.12
+BuildRequires:  perl(Encode)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Spec)
+BuildRequires:  perl(File::Temp)
+BuildRequires:  perl(FindBin)
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  perl(Net::SSLeay)
 BuildRequires:  perl(Proc::ProcessTable)
-BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::More) >= 0.90
+BuildRequires:  perl(Storable)
+BuildRequires:  perl(TAP::Harness)
 BuildRequires:  perl(Test::Pod) >= 1.41
+BuildRequires:  perl(Time::HiRes)
+BuildRequires:  perl(bigint)
+BuildRequires:  perl(lib)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(utf8)
+BuildRequires:  perl(vars)
 BuildRequires:  perl(warnings)
-Requires:       perl(DBI) >= 1.608
 Requires:       perl(DynaLoader)
 Requires:       perl(strict)
 Requires:       perl(warnings)
+# MANUAL END
+BuildRequires:  perl
+BuildRequires:  perl-macros
+BuildRequires:  perl(DBI) >= 1.608
+BuildRequires:  perl(DBI::Const::GetInfoType)
+BuildRequires:  perl(Devel::CheckLib) >= 1.12
+BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(Test::More) >= 0.90
+Requires:       perl(DBI) >= 1.608
 %{perl_requires}
 
 %description
@@ -70,11 +84,13 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
+# MANUAL BEGIN
 # Setup environment and start database
-. %{SOURCE1}
-make %{?_smp_mflags} test
-# Stop database
 . %{SOURCE2}
+HARNESS_OPTIONS=j4 make %{?_smp_mflags} test
+# Stop database
+. %{SOURCE3}
+# MANUAL END
 
 %install
 %perl_make_install
