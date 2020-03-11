@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Tue Mar 10 13:44:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- change package name to libsearpc and improve spec file 
+
+-------------------------------------------------------------------
+Mon Dec  9 14:44:00 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use latest master which brings a fix for a memory leak 
+
+-------------------------------------------------------------------
+Fri Nov 15 13:37:08 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- run spec-cleaner 
+
+-------------------------------------------------------------------
+Tue Nov 12 09:46:48 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0 
+
+-------------------------------------------------------------------
+Fri Jan 18 20:11:25 UTC 2019 - Pierre Bonamy <flyos@mailoo.org>
+
+- Update to latest version of 3.1
+- As upstream did not increment version, added date in version
+
+-------------------------------------------------------------------
+Wed Mar 28 09:04:04 UTC 2018 - christoph@stop.pe
+
+- Fixed build errors on CentOS 7
+
+-------------------------------------------------------------------
+Sat Feb 25 12:02:14 UTC 2017 - christoph@stop.pe
+
+- Updated source link to official github.com release page
+
+-------------------------------------------------------------------
+Sat Sep 24 20:02:24 UTC 2016 - christoph@stop.pe
+
+- Moved code generation script to devel package
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:05 UTC 2016 - christoph@stop.pe
+
+- Fix and added libsearpc.pc to devel package
+
+-------------------------------------------------------------------
+Sat Sep 24 13:43:30 UTC 2016 - christoph@stop.pe
+
+- Initial packaging
+

@@ -1,0 +1,12 @@
+Index: libsearpc-3.1/demo/searpc-demo-packet.h
+===================================================================
+--- libsearpc-3.1.orig/demo/searpc-demo-packet.h
++++ libsearpc-3.1/demo/searpc-demo-packet.h
+@@ -5,6 +5,7 @@
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <errno.h>
++#include <unistd.h>
+ 
+ #ifdef WIN32
+     #include <windows.h>
