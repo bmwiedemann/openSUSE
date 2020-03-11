@@ -41,4 +41,12 @@
   * Patch: 0001-doc-move-manpages-for-plugins-to-dnf-PLUGIN-RhBug-17.patch</comment>
     <requestid>779947</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d68f850fcf99a2f7a81d73d1823d84b2</srcmd5>
+    <version>4.0.9</version>
+    <time>1583949335</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a Supplements to snapper plugin to auto-install when snapper and dnf are installed</comment>
+    <requestid>783870</requestid>
+  </revision>
 </revisionlist>

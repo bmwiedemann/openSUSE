@@ -123,6 +123,7 @@ Requires:       python3-dbus-python
 Requires:       snapper
 Provides:       %{name}-snapper = %{version}-%{release}
 Provides:       dnf-plugin-snapper = %{version}-%{release}
+Supplements:    (dnf and snapper)
 Provides:       python3-%{name}-snapper = %{version}-%{release}
 Conflicts:      python2-dnf-plugin-snapper < %{version}-%{release}
 Obsoletes:      python3-%{name}-snapper < %{dnf_plugins_extra_obsolete}

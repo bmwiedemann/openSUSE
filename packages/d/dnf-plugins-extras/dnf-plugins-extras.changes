@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:11:37 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add a Supplements to snapper plugin to auto-install when snapper and dnf are installed
+
+-------------------------------------------------------------------
 Thu Feb 27 14:21:01 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.9
