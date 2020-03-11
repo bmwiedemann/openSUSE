@@ -1,6 +1,7 @@
 #
 # spec file for package nmap-parse-output
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +38,7 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Networking/Diagnostic
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(nmap-parse-output:bash)
+Supplements:    (nmap-parse-output and bash-completion)
 
 %description bash-completion
 Bash completion script for %{name}.
