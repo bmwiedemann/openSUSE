@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-compute
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-compute
-Version:        10.0.0
+Version:        11.1.0
 Release:        0
 Summary:        Microsoft Azure Compute Management Client Library
 License:        MIT
@@ -72,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/compute
 %{python_sitelib}/azure_mgmt_compute-*.egg-info
