@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:05:22 UTC 2020 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to version 3.11.4; notable changes since 3.9.2:
+  * C++: Make serialization method naming consistent
+  * C++: Moved ShutdownProtobufLibrary() to message_lite.h. For
+         backward compatibility a declaration is still available
+         in stubs/common.h, but users should prefer message_lite.h
+  * C++: Removed non-namespace macro EXPECT_OK()
+  * C++: Removed mathlimits.h from stubs in favor of using
+         std::numeric_limits from C++11
+  * C++: Support direct pickling of nested messages
+  * C++: Disable extension code gen for C#
+  * C++: Switch the proto parser to the faster MOMI parser
+  * C++: Unused imports of files defining descriptor extensions
+         will now be reported
+  * C++: Add proto2::util::RemoveSubranges to remove multiple
+         subranges in linear time
+  * C++: Support 32 bit values for ProtoStreamObjectWriter to Struct
+  * C++: Removed the internal-only header coded_stream_inl.h and
+         the internal-only methods defined there
+  * C++: Enforced no SWIG wrapping of descriptor_database.h
+         (other headers already had this restriction)
+  * C++: Implementation of the equivalent of the MOMI parser for
+         serialization. This removes one of the two serialization
+         routines, by making the fast array serialization routine
+         completely general. SerializeToCodedStream can now be
+         implemented in terms of the much much faster array
+         serialization. The array serialization regresses slightly,
+         but when array serialization is not possible this wins big
+  * C++: Add move constructor for Reflection's SetString
+  * Java: Remove the usage of MethodHandle, so that Android users
+          prior to API version 26 can use protobuf-java
+  * Java: Publish ProGuard config for javalite
+  * Java: Include unknown fields when merging proto3 messages in
+          Java lite builders
+  * Java: Have oneof enums implement a separate interface (other
+          than EnumLite) for clarity
+  * Java: Opensource Android Memory Accessors
+  * Java: Change ProtobufArrayList to use Object[] instead of
+          ArrayList for 5-10% faster parsing
+  * Java: Make a copy of JsonFormat.TypeRegistry at the protobuf
+          top level package. This will eventually replace
+          JsonFormat.TypeRegistry
+  * Java: Add Automatic-Module-Name entries to the Manifest
+  * Python: Add float_precision option in json format printer
+  * Python: Optionally print bytes fields as messages in unknown
+            fields, if possible
+  * Python: Experimental code gen (fast import protobuf module)
+            which only work with cpp generated code linked in
+  * Python: Add descriptor methods in descriptor_pool are deprecated
+  * Python: Added delitem for Python extension dict
+  * JavaScript: Remove guard for Symbol iterator for jspb.Map
+  * JavaScript: Remove deprecated boolean option to getResultBase64String()
+  * JavaScript: Change the parameter types of binaryReaderFn in
+                ExtensionFieldBinaryInfo to (number, ?, ?)
+  * JavaScript: Create dates.ts and time_of_days.ts to mirror Java
+                versions. This is a near-identical conversion of
+                c.g.type.util.{Dates,TimeOfDays} respectively
+  * JavaScript: Migrate moneys to TypeScript
+  * PHP: Increase php7.4 compatibility
+  * PHP: Implement lazy loading of php class for proto messages
+  * Ruby: Support hashes for struct initializers
+  * C#: Experimental proto2 support is now officially available
+  * C#: Change _Extensions property to normal body rather than expression
+  * Objective C: Remove OSReadLittle* due to alignment requirements
+  * Other: Override CocoaPods module to lowercase
+  * further bugfixes and optimisations
+
+-------------------------------------------------------------------
 Fri Dec 20 09:04:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Use tarball provided by upstream
