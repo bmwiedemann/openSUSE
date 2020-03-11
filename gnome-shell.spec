@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.34.4
+Version:        3.34.4+4
 Release:        0
 Summary:        GNOME Shell
 License:        GPL-2.0-or-later
@@ -35,8 +35,6 @@ Source2:        sle-background.png
 Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
 Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
-# PATCH-FIX-UPSTREAM gnome-shell-Avoid-loginDialog-grab-focus-when-locked.patch bsc#1058521 bgo#788169 xwang@suse.com -- Avoid login dialog grabs focus when screen locked
-Patch3:         gnome-shell-Avoid-loginDialog-grab-focus-when-locked.patch
 # PATCH-FEATURE-OPENSUSE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- make GDM background image configurable
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-FEATURE-OPENSUSE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
@@ -169,7 +167,6 @@ into GNOME Shell calendar.
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 
