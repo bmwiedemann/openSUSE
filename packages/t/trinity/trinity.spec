@@ -17,12 +17,12 @@
 
 
 Name:           trinity
-Version:        1.9+git.20200130
+Version:        1.9+git.20200228
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            http://codemonkey.org.uk/projects/trinity/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls
@@ -31,18 +31,18 @@ done many times before on Linux, and on other operating systems.  Where
 Trinity differs is that the arguments it passes are not purely random.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"
 # Not autotools configure
 ./configure
 # disable -Werror by setting DEVEL to 0
-make %{?_smp_mflags} DEVEL=0 V=1
+%make_build DEVEL=0
 
 %install
-make DESTDIR=%{buildroot}%{_prefix} install
-install -D -p -m 0644 trinity.1 \
+%make_install DESTDIR=%{buildroot}%{_prefix}
+install -Dpm 0644 trinity.1 \
   %{buildroot}%{_mandir}/man1/trinity.1
 
 %files

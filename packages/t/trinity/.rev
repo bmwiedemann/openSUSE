@@ -634,4 +634,15 @@
   * update TCP setsockopts</comment>
     <requestid>774848</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>e07c2af8b37f545a2fd5cd7cd8716091</srcmd5>
+    <version>1.9+git.20200228</version>
+    <time>1583948910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20200228:
+  * new io_uring_register opcodes
+- Change compression to gz form faster builds
+- Small package cleanup</comment>
+    <requestid>783355</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:05:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20200228:
+  * new io_uring_register opcodes
+- Change compression to gz form faster builds
+- Small package cleanup
+
+-------------------------------------------------------------------
 Mon Feb 17 12:03:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20200130:
