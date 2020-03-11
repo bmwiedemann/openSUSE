@@ -20,8 +20,12 @@
 %define gst_branch 1.0
 %define gstreamer_plugins_base_req %(xzgrep --text "^GST[_A-Z]*_REQ.*=" %{SOURCE0} | sort -u | sed 's/GST_REQ=/gstreamer >= /')
 
-# Disable for now. Plugin docs aren't being generated
+# Enable for tumbleweed only for now
+%if 0%{?suse_version} >= 1550
+%define use_meson 1
+%else
 %define use_meson 0
+%endif
 
 Name:           gstreamer-plugins-base
 Version:        1.16.2
@@ -39,6 +43,8 @@ Patch0:         gst-base-playbin-handle-error.patch
 Patch1:         gst-base-audioencoder-fix-leak.patch
 # PATCH-FIX-UPSTREAM gst-base-fft-update-kiss-version.patch -- fft: Update our kiss fft version
 Patch2:         gst-base-fft-update-kiss-version.patch
+# PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
+Patch3:         gstreamer-plugins-base-gl-deps.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
