@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libver 2
 
 Name:           librealsense
-Version:        2.32.1+git20200123.g83f952a4b
+Version:        2.33.1+git20200305.ge0b160f01
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -27,13 +28,13 @@ URL:            https://github.com/IntelRealSense/librealsense
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  cmake
-BuildRequires:  cmake(glfw3) >= 3.3
 BuildRequires:  fdupes
+BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libglvnd-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(freeglut)
+BuildRequires:  cmake(glfw3) >= 3.3
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(x11)
