@@ -1,7 +1,7 @@
 #
 # spec file for package python-txZMQ
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with test
 Name:           python-txZMQ
-Version:        0.8.0
+Version:        0.8.2
 Release:        0
 Summary:        Twisted bindings for ZeroMQ
 License:        GPL-2.0-only
@@ -29,7 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/t/txZMQ/txZMQ-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Twisted >= 10.0
+Requires:       python-pyzmq >= 13
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module Twisted >= 10.0}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyzmq >= 13}
+# /SECTION
 %python_subpackages
 
 %description
@@ -45,10 +51,9 @@ It supports both CPython and PyPy, and ZeroMQ library versions 2.2.x or 3.2.x.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%if %{with test}
+
 %check
-%python_exec setup.py test
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
