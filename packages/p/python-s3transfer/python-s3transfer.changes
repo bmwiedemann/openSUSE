@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:45:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test failing on python 3.8, it is race condition that needs
+  to be fixed in tests
+
+-------------------------------------------------------------------
+Thu Feb 27 08:21:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.3:
+  * bugfix:dependency: Updated botocore version range
+- Drop patch hide_py_pckgmgmt.patch it should not be needed
+  * we updated setuptools on SLE 12 to handle complex dependencies
+- Use pytest for test execution:
+  * the nose is used by upstream but really not needed and it
+    will get borked with python 3.10
+
+-------------------------------------------------------------------
 Mon Jan 27 16:10:36 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.3.2

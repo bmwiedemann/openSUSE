@@ -18,18 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-s3transfer
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/boto/s3transfer
 Source0:        https://files.pythonhosted.org/packages/source/s/s3transfer/s3transfer-%{version}.tar.gz
-Patch0:         hide_py_pckgmgmt.patch
 Patch1:         no-bundled-packages.patch
 BuildRequires:  %{python_module botocore >= 1.12.36}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
@@ -51,9 +50,8 @@ A transfer manager for Amazon Web Services S3
 
 %prep
 %setup -q -n s3transfer-%{version}
-%patch0 -p1
 %patch1 -p1
-# remove integration tests that need running s3 :)
+# remove integration tests that need running s3
 rm -rf tests/integration
 
 %build
@@ -64,10 +62,8 @@ rm -rf tests/integration
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# on 32bit the tests fail on OOM and various other funny things
-%ifarch x86_64
-%python_expand nosetests-%{$python_bin_suffix}
-%endif
+# test_download_futures_fail_triggers_shutdown - https://github.com/boto/s3transfer/pull/162
+%pytest -k 'not test_download_futures_fail_triggers_shutdown'
 
 %files %{python_files}
 %license LICENSE.txt

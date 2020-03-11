@@ -123,4 +123,21 @@
     <comment></comment>
     <requestid>768868</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a9fd0f0cc42f1e791c2d38ca0a70ded7</srcmd5>
+    <version>0.3.3</version>
+    <time>1583948762</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test failing on python 3.8, it is race condition that needs
+  to be fixed in tests
+
+- Update to 0.3.3:
+  * bugfix:dependency: Updated botocore version range
+- Drop patch hide_py_pckgmgmt.patch it should not be needed
+  * we updated setuptools on SLE 12 to handle complex dependencies
+- Use pytest for test execution:
+  * the nose is used by upstream but really not needed and it
+    will get borked with python 3.10</comment>
+    <requestid>783247</requestid>
+  </revision>
 </revisionlist>
