@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -48,7 +48,7 @@ Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
-Url:            http://leechcraft.org
+URL:            http://leechcraft.org
 
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
@@ -112,9 +112,6 @@ BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.9
 BuildRequires:  pkgconfig(bzip2)
 %if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
 BuildRequires:  pkgconfig(ddjvuapi)
-%endif
-%ifarch %ix86 x86_64 %arm ppc64le
-BuildRequires:  pkgconfig(geoip)
 %endif
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(hunspell)
@@ -2431,7 +2428,6 @@ cmake ../src \
         -DENABLE_TEXTOGROOSE=True \
 %ifarch %ix86 x86_64 %arm ppc64le
         -DENABLE_TORRENT=True \
-                -DENABLE_BITTORRENT_GEOIP=True \
 %else
         -DENABLE_TORRENT=False \
 %endif

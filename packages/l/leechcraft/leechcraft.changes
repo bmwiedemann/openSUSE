@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 15:24:09 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Drop support for GeoIP in BitTorrent, GeoIP is obsolete (bsc#1156208)
+
+-------------------------------------------------------------------
 Mon Feb  3 10:34:39 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-13588-g98cf733e94 snapshot:
