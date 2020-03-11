@@ -88,4 +88,12 @@ fix build with ortp 0.27</comment>
     <comment>- Update to new upstream release 0.8.0</comment>
     <requestid>761539</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>40c1fb41b30716513d0791591d4fecce</srcmd5>
+    <version>0.8.1</version>
+    <time>1583948959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.8.1</comment>
+    <requestid>783421</requestid>
+  </revision>
 </revisionlist>

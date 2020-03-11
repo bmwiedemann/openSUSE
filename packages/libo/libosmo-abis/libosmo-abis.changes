@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 20:24:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.8.1
+  * ortp: disable SO_REUSEADDR + SO_REUSEPORT
+  * Add rtp_test to show the double-bind bug of OS#4444
+- Update patch:
+  * osmo-talloc.diff
+
+-------------------------------------------------------------------
 Sun Jan  5 10:47:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 0.8.0
