@@ -133,7 +133,7 @@ Requires:       which
 Requires:       systemd-coredump
 %endif
 # Support multiversion(kernel) (jsc#SLE-10162, jsc#SLE-10465)
-# Requires:       purge-kernels-service
+Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     bash-completion
@@ -192,11 +192,6 @@ Provides:       pattern() = basic_desktop
 Provides:       pattern-icon() = pattern-desktop
 Provides:       pattern-order() = 1802
 Provides:       pattern-visible()
-# We want SLES-15 systems to install this pattern on upgrade to SLES-16
-# XXX 2019-08-28 this package still exists so an obsolete is wrong here
-%if !0%{?is_opensuse}
-Obsoletes:      patterns-base-x11 < %{version}
-%endif
 Requires:       pattern() = x11
 
 # choose icewm-default if you have a choice
@@ -509,7 +504,6 @@ Recommends:     setserial
 Recommends:     sharutils
 Recommends:     spax
 Recommends:     strace
-Recommends:     telnet
 Recommends:     terminfo
 Recommends:     vlan
 Recommends:     wol
@@ -615,33 +609,6 @@ This is the minimal SLE runtime system. It is really a minimal system, you can l
 
 ################################################################################
 
-%package transactional_base
-%pattern_basetechnologies
-Summary:        Transactional Base System
-Group:          Metapackages
-Provides:       pattern() = transactional_base
-Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 1050
-Requires:       pattern() = base
-
-Requires:       man
-Requires:       read-only-root-fs
-Requires:       rebootmgr
-Requires:       systemd-presets-branding-transactional-server
-Requires:       transactional-update
-Requires:       transactional-update-zypp-config
-Recommends:     pattern() = enhanced_base
-Suggests:       health-checker
-
-%description transactional_base
-This is the base system for a host updated by Transactional Updates. Includes Tools for systems with a read-only root filesystem.
-
-%files transactional_base
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/transactional_base.txt
-
-################################################################################
-
 %package sw_management
 %pattern_basetechnologies
 Summary:        Software Management
@@ -666,6 +633,33 @@ This pattern provides a graphical application and a command line tool for keepin
 %files sw_management
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/sw_management.txt
+
+################################################################################
+
+%package transactional_base
+%pattern_basetechnologies
+Summary:        Transactional Base System
+Group:          Metapackages
+Provides:       pattern() = transactional_base
+Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-order() = 1050
+Requires:       pattern() = base
+
+Requires:       man
+Requires:       read-only-root-fs
+Requires:       rebootmgr
+Requires:       systemd-presets-branding-transactional-server
+Requires:       transactional-update
+Requires:       transactional-update-zypp-config
+Recommends:     pattern() = enhanced_base
+Suggests:       health-checker
+
+%description transactional_base
+This is the base system for a host updated by Transactional Updates. Includes Tools for systems with a read-only root filesystem.
+
+%files transactional_base
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/transactional_base.txt
 
 ################################################################################
 
@@ -713,6 +707,9 @@ Provides:       pattern-visible()
 Requires:       pattern() = base
 %if 0%{?is_opensuse}
 Recommends:     pattern() = x11_enhanced
+%else
+# Upgrade path for SLE 15 SP1 and older
+Recommends:     pattern() = basic_desktop
 %endif
 
 Requires:       xorg-x11-fonts-core
@@ -958,7 +955,7 @@ mkdir -p %{buildroot}%{_docdir}/patterns
 for i in apparmor base enhanced_base minimal_base \
      sw_management x11 x11_enhanced; do
 %else
-for i in apparmor base basic_desktop enhanced_base  minimal_base sw_management x11 x11_enhanced; do
+for i in apparmor base enhanced_base  minimal_base sw_management x11 x11_enhanced; do
 %endif
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i.txt"

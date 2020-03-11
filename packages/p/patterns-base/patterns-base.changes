@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  5 10:50:15 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
+
+- drop telnet from enhanced_base recommendations
+
+-------------------------------------------------------------------
+Fri Jan 24 01:59:33 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Fix basic_desktop upgrade path for SLE-15 SP2 and later
+- Put transactional_base in alphabetical order
+- Fix SLE bug in generation of txt files for basic_desktop
+
+-------------------------------------------------------------------
 Mon Jan 20 16:06:02 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Re-enable purge-kernels-service dependency: dracut dropped the service.
+  (boo#1161620,boo#1161780)
 
 -------------------------------------------------------------------
 Tue Dec 24 08:21:37 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
