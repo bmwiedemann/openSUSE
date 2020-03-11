@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:58:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file
+- Do not use source url as it is no longer available
+
+-------------------------------------------------------------------
 Sun Apr 12 13:18:56 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.4.0

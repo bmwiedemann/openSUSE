@@ -1,7 +1,7 @@
 #
 # spec file for package unzix
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,11 @@ Release:        0
 Summary:        Command-Line Program to Extract WinZix Archives
 License:        BSD-3-Clause
 Group:          Productivity/Archiving/Compression
-Url:            http://banu.com/unzix/
-Source:         https://download.banu.com/unzix/0.4/%{name}-%{version}.tar.gz
+URL:            http://banu.com/unzix/
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -35,19 +34,19 @@ Unzix is a small command-line program for extracting files from the new WinZix
 archive format.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS LICENSE NEWS README
+%license LICENSE
+%doc AUTHORS NEWS README
 %{_bindir}/unzix
-%doc %{_mandir}/man1/unzix.1*
+%{_mandir}/man1/unzix.1%{?ext_man}
 
 %changelog
