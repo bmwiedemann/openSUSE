@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:13:07 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Propose to restart the targetcli service as the default action
+  when it is active (bsc#1165638)
+- 4.2.2
+
+-------------------------------------------------------------------
 Fri Jan 31 16:21:06 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Improve internationalization support (bsc#1162378).
