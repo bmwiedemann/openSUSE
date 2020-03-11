@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar  7 03:12:24 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.034
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.034     2020-03-06 04:22:25Z
+            - fix t/10-request-args-network.t under EXTENDED_TESTING=1 where the
+              test URL was returning random content for each request and
+              therefore failing a comparison check
+
+-------------------------------------------------------------------
 Thu May 18 06:48:29 UTC 2017 - coolo@suse.com
 
 - updated to 0.033

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-LWP-UserAgent
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Test-LWP-UserAgent
-Version:        0.033
+Version:        0.034
 Release:        0
-#Upstream: Artistic-1.0 or GPL-1.0+
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 %define cpan_name Test-LWP-UserAgent
 Summary:        LWP::UserAgent suitable for simulating and testing network calls
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-LWP-UserAgent/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -69,7 +69,7 @@ Requires:       perl(parent)
 This module is a subclass of LWP::UserAgent which overrides a few key
 low-level methods that are concerned with actually sending your request
 over the network, allowing an interception of that request and simulating a
-particular response. This greatly facilitates testing of client networking
+particular response. This greatly facilitates testing of networking client
 code where the server follows a known protocol.
 
 The synopsis describes a typical case where you want to test how your
@@ -118,11 +118,11 @@ or:
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -131,6 +131,7 @@ or:
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING docs examples LICENCE README
+%doc Changes CONTRIBUTING docs examples README
+%license LICENCE
 
 %changelog
