@@ -31,4 +31,12 @@
     <comment>- Drop chown calls from scriptlets [boo#1154309]</comment>
     <requestid>775251</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f964a7fca5291e95c3f106fba2552cab</srcmd5>
+    <version>10.0.2</version>
+    <time>1583960610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10.0.2</comment>
+    <requestid>783989</requestid>
+  </revision>
 </revisionlist>

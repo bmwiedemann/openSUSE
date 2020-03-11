@@ -18,10 +18,10 @@
 
 
 # Kopano OBS: And if you add new %%package(s), update core:*:dist too
-%define version_unconverted 9.0.2
+%define version_unconverted 10.0.2
 
 Name:           kopano-python-services
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        Python services for Kopano Groupware Core
 License:        AGPL-3.0-only
@@ -89,21 +89,6 @@ Requires:       python3-kopano = %version
 kopano-migration-pst is a utility to import PST files into Kopano. As PST
 files are basically MAPI dumps, and Kopano also uses MAPI internally, there
 should be practically no data loss, even including calendar data.
-
-%package -n kopano-presence
-Summary:        Kopano Core Presence Daemon
-Group:          Productivity/Networking/Email/Servers
-Requires(pre):  kopano-common >= 8.7.0
-Requires:       python3-kopano = %version
-
-%description -n kopano-presence
-A daemon for collecting and exporting user presence information
-across multiple protocols in a unified way. Supports XMPP and Spreed.
-Clients can both query the daemon with presence information (for
-example, the user is 'available' for XMPP and 'away' for Spreed) and
-update presence information (for example, make a user 'available' on
-Spreed). Queries and updates are performed with simple GET and PUT
-requests, respectively, using a simple (and identical) JSON format.
 
 %package -n kopano-python-utils
 Summary:        Additional Python-based command-line utils for Kopano Core
@@ -190,7 +175,7 @@ make V=1 %{?_smp_mflags}
 %install
 b="%buildroot"
 %make_install
-for i in kopano_backup kopano_cli kopano_migration_pst kopano_presence \
+for i in kopano_backup kopano_cli kopano_migration_pst \
     kopano_search kopano_spamd kopano_utils; do
     rm -Rf "$b/%python_sitelib/$i"*
 done
@@ -223,37 +208,6 @@ if [ ! -e "%_sysconfdir/kopano/migration-pst.cfg" -a \
     mv -v "%_sysconfdir/kopano/migration-pst.cfg.rpmsave" \
         "%_sysconfdir/kopano/migration-pst.cfg"
 fi
-
-%pre -n kopano-presence
-%{?_unitdir:%{?suse_version:%service_add_pre kopano-presence.service}}
-
-%post -n kopano-presence
-%{?_unitdir:%{?suse_version:%service_add_post kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_post kopano-presence.service}}
-
-%preun -n kopano-presence
-%{?_unitdir:%{?suse_version:%service_del_preun kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_preun kopano-presence.service}}
-%{!?_unitdir:%stop_on_removal kopano-presence}
-
-%postun -n kopano-presence
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-presence.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-presence}
-
-%triggerpostun -n kopano-presence -- kopano-presence
-if [ "$1" -ne 2 ]; then exit 0; fi
-# putback previously existing cfgs after they get untracked once
-if [ ! -e "%_sysconfdir/kopano/presence.cfg" -a \
-     -e "%_sysconfdir/kopano/presence.cfg.rpmsave" ]; then
-    mv -v "%_sysconfdir/kopano/presence.cfg.rpmsave" \
-        "%_sysconfdir/kopano/presence.cfg"
-fi
-%{?_unitdir:%{?suse_version:%service_del_postun kopano-presence.service}}
-%{?_unitdir:%{!?suse_version:%systemd_postun_with_restart kopano-presence.service}}
-%{!?_unitdir:%insserv_cleanup}
-%{!?_unitdir:%restart_on_update kopano-presence}
 
 %pre -n kopano-search
 %{?_unitdir:%{?suse_version:%service_add_pre kopano-search.service}}
@@ -308,8 +262,8 @@ fi
 %defattr(-,root,root)
 %_sbindir/kopano-backup
 %attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/backup.cfg
 %_mandir/man*/kopano-backup.*
 %python3_sitelib/kopano_backup/
@@ -323,11 +277,11 @@ fi
 %_mandir/man*/kopano-mr-accept.*
 %_mandir/man*/kopano-mr-process.*
 %_datadir/kopano-dagent/
-%_datadir/kopano-spooler
+%_datadir/kopano-spooler/
 %attr(0750,kopano,kopano) %_localstatedir/lib/kopano/dagent/
 %attr(0750,kopano,kopano) %_localstatedir/lib/kopano/spooler/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/autorespond.cfg
 %python3_sitelib/kopano_utils/
 %python3_sitelib/kopano_utils-*.egg-info
@@ -336,25 +290,12 @@ fi
 %defattr(-,root,root)
 %_sbindir/kopano-migration-pst
 %attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/migration-pst.cfg
 %_mandir/man*/kopano-migration-pst.*
 %python3_sitelib/kopano_migration_pst/
 %python3_sitelib/kopano_migration_pst-*.egg-info
-
-%files -n kopano-presence
-%defattr(-,root,root)
-%_sbindir/kopano-presence
-%dir %_prefix/lib/systemd
-%dir %_prefix/lib/systemd/system
-%_prefix/lib/systemd/system/kopano-presence.service
-%attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
-%_docdir/kopano/example-config/presence.cfg
-%python3_sitelib/kopano_presence/
-%python3_sitelib/kopano_presence-*.egg-info
 
 %files -n kopano-python-utils
 %defattr(-,root,root)
@@ -377,8 +318,8 @@ fi
 
 %files -n kopano-search
 %defattr(-,root,root)
-%dir %_sysconfdir/kopano
-%dir %_sysconfdir/kopano/searchscripts
+%dir %_sysconfdir/kopano/
+%dir %_sysconfdir/kopano/searchscripts/
 %config(noreplace) %attr(0640,root,kopano) %_sysconfdir/kopano/searchscripts/*.db
 %config(noreplace) %attr(-,root,kopano) %_sysconfdir/kopano/searchscripts/*.xslt
 %config(noreplace) %attr(-,root,kopano) %_sysconfdir/kopano/searchscripts/attachments_parser
@@ -390,8 +331,8 @@ fi
 %attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
 %attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/search/
 %attr(0750,kopano,kopano) %dir %_localstatedir/log/kopano/
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/search.cfg
 %dir %_docdir/kopano/example-config/apparmor.d/
 %_docdir/kopano/example-config/apparmor.d/usr.sbin.kopano-search
@@ -405,8 +346,8 @@ fi
 %attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/
 %attr(0750,kopano,kopano) %dir %_localstatedir/lib/kopano/spamd/
 %_mandir/man*/kopano-spamd.*
-%dir %_docdir/kopano
-%dir %_docdir/kopano/example-config
+%dir %_docdir/kopano/
+%dir %_docdir/kopano/example-config/
 %_docdir/kopano/example-config/spamd.cfg
 %python3_sitelib/kopano_spamd/
 %python3_sitelib/kopano_spamd*.egg-info

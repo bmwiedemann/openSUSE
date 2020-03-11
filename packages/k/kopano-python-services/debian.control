@@ -59,20 +59,6 @@ Description: Utility to import PST files
  files are basically MAPI dumps, and Kopano also uses MAPI internally, there
  should be practically no data loss, even including calendar data.
 
-Package: kopano-presence
-Architecture: any
-Depends: ${shlibs:Depends}, kopano-common-uv (= ${source:Upstream-Version}),
- python3-kopano-presence (= ${binary:Version})
-Breaks: kopano-server (<< 8.6.80.621)
-Description: kopano presence daemon
- A daemon for collecting and exporting user presence information
- across multiple protocols in a unified way. Supports XMPP and Spreed.
- Clients can both query the daemon with presence information (for
- example, the user is 'available' for XMPP and 'away' for Spreed) and
- update presence information (for example, make a user 'available' on
- Spreed). Queries and updates are performed with simple GET and PUT
- requests, respectively, using a simple (and identical) JSON format.
-
 Package: kopano-python-utils
 Architecture: any
 Depends: ${shlibs:Depends}, ${python3:Depends},
@@ -127,17 +113,6 @@ Replaces: kopano-dagent (<< 8.6.81.496)
 Breaks: kopano-dagent (<< 8.6.81.496)
 Description: Kopano utils modules for Python 3
  Python 3 utility helpers for Kopano Groupware Core.
-
-Package: python3-kopano-presence
-Architecture: all
-Section: python
-Depends: ${shlibs:Depends},
- python3-kopano (= ${binary:Version})
-Suggests: python3-sleekxmpp
-Replaces: kopano-presence (<< 8.6.81.496)
-Breaks: kopano-presence (<< 8.6.81.496)
-Description: Kopano presence module for Python 3
- Python 3 module for Kopano Presence.
 
 Package: python3-kopano-search
 Architecture: all

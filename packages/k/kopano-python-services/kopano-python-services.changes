@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:31:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.2
+  * Sync up with kopanocore-10.0.2.
+  * Remove kopano-presence.
+
+-------------------------------------------------------------------
 Tue Feb 18 15:17:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop chown calls from scriptlets [boo#1154309]
