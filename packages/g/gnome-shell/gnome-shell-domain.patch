@@ -1,7 +1,8 @@
-Index: gnome-shell-3.34.1+7/js/gdm/domain.js
-===================================================================
+diff --git a/js/gdm/domain.js b/js/gdm/domain.js
+new file mode 100644
+index 0000000..2452696
 --- /dev/null
-+++ gnome-shell-3.34.1+7/js/gdm/domain.js
++++ b/js/gdm/domain.js
 @@ -0,0 +1,243 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +/*
@@ -246,11 +247,11 @@ Index: gnome-shell-3.34.1+7/js/gdm/domain.js
 +    }
 +});
 +Signals.addSignalMethods(DomainMenuButton.prototype);
-Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
-===================================================================
---- gnome-shell-3.34.1+7.orig/js/gdm/loginDialog.js
-+++ gnome-shell-3.34.1+7/js/gdm/loginDialog.js
-@@ -22,6 +22,7 @@ const { AccountsService, Atk, Clutter, G
+diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
+index c3f90dc..9546921 100644
+--- a/js/gdm/loginDialog.js
++++ b/js/gdm/loginDialog.js
+@@ -22,6 +22,7 @@ const { AccountsService, Atk, Clutter, Gdm, Gio,
  const Signals = imports.signals;
  
  const AuthPrompt = imports.gdm.authPrompt;
@@ -258,7 +259,7 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
  const Batch = imports.gdm.batch;
  const BoxPointer = imports.ui.boxpointer;
  const CtrlAltTab = imports.ui.ctrlAltTab;
-@@ -437,6 +438,14 @@ var LoginDialog = GObject.registerClass(
+@@ -437,6 +438,14 @@ var LoginDialog = GObject.registerClass({
          this._authPrompt.hide();
          this.add_child(this._authPrompt.actor);
  
@@ -273,7 +274,7 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
          // translators: this message is shown below the user list on the
          // login screen. It can be activated to reveal an entry for
          // manually entering the username.
-@@ -454,10 +463,24 @@ var LoginDialog = GObject.registerClass(
+@@ -454,10 +463,24 @@ var LoginDialog = GObject.registerClass({
  
          this._notListedButton.hide();
  
@@ -300,7 +301,7 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
  
          this._bannerView = new St.ScrollView({ style_class: 'login-dialog-banner-view',
                                                 opacity: 0,
-@@ -942,6 +965,37 @@ var LoginDialog = GObject.registerClass(
+@@ -942,6 +965,37 @@ var LoginDialog = GObject.registerClass({
              });
      }
  
@@ -338,7 +339,7 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
      _startSession(serviceName) {
          this._bindOpacity();
          this.ease({
-@@ -1099,6 +1153,11 @@ var LoginDialog = GObject.registerClass(
+@@ -1099,6 +1153,11 @@ var LoginDialog = GObject.registerClass({
          this._askForUsernameAndBeginVerification();
      }
  
@@ -350,20 +351,20 @@ Index: gnome-shell-3.34.1+7/js/gdm/loginDialog.js
      _hideUserListAndBeginVerification() {
          this._hideUserList();
          this._authPrompt.begin();
-@@ -1111,6 +1170,9 @@ var LoginDialog = GObject.registerClass(
+@@ -1111,6 +1170,9 @@ var LoginDialog = GObject.registerClass({
          this._sessionMenuButton.close();
          this._setUserListExpanded(true);
          this._notListedButton.show();
 +        if (this._domainMenuButton.domain_enabled)
 +            this._domainMenuButton.actor.show();
 +        this._userLayout.show();
-         if (!Main.screenShield.locked)
-             this._userList.actor.grab_key_focus();
+         this._userList.actor.grab_key_focus();
      }
-Index: gnome-shell-3.34.1+7/js/js-resources.gresource.xml
-===================================================================
---- gnome-shell-3.34.1+7.orig/js/js-resources.gresource.xml
-+++ gnome-shell-3.34.1+7/js/js-resources.gresource.xml
+ 
+diff --git a/js/js-resources.gresource.xml b/js/js-resources.gresource.xml
+index b5348dd..7d48828 100644
+--- a/js/js-resources.gresource.xml
++++ b/js/js-resources.gresource.xml
 @@ -2,6 +2,7 @@
  <gresources>
    <gresource prefix="/org/gnome/shell">
@@ -372,10 +373,10 @@ Index: gnome-shell-3.34.1+7/js/js-resources.gresource.xml
      <file>gdm/batch.js</file>
      <file>gdm/fingerprint.js</file>
      <file>gdm/loginDialog.js</file>
-Index: gnome-shell-3.34.1+7/po/POTFILES.in
-===================================================================
---- gnome-shell-3.34.1+7.orig/po/POTFILES.in
-+++ gnome-shell-3.34.1+7/po/POTFILES.in
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 33be57b..29bbd3c 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
 @@ -7,6 +7,7 @@ data/org.gnome.shell.gschema.xml.in
  data/org.gnome.Shell.PortalHelper.desktop.in.in
  js/extensionPrefs/main.js
@@ -384,3 +385,6 @@ Index: gnome-shell-3.34.1+7/po/POTFILES.in
  js/gdm/loginDialog.js
  js/gdm/util.js
  js/misc/systemActions.js
+-- 
+2.25.1
+

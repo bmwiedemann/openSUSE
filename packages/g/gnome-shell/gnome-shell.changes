@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  9 07:56:45 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Drop gnome-shell-Avoid-loginDialog-grab-focus-when-locked.patch:
+  This patch will steal the mouse focus of the gdm greeter, drop
+  it to be aligned with upstream, let the first/only user entry of
+  gdm to be selected by default, and the bug the patch fixed can not
+  be reproduced in GNOME3.34 (bsc#1164856).
+- Rebase gs-fate318433-prevent-same-account-multi-logins.patch and
+  gnome-shell-domain.patch.
+
+-------------------------------------------------------------------
+Thu Feb 27 16:52:09 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.34.4+4:
+  * shell: fix typo in comment
+  * global: force fsync() to worker thread when saving state
+  * overview: Hide the overview on session mode hasOverview changes
+  * closeDialog: Make dialog inactive while fading out
+
+-------------------------------------------------------------------
 Sun Feb 16 17:08:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.4:
