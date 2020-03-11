@@ -6,7 +6,7 @@
     <param name="revision">master</param>
     <param name="changesgenerate">disable</param>
     <param name="filename">graphviz</param>
-    <param name="versionformat">2.40.1+git%cd.%h</param>
+    <param name="versionformat">2.42.3</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

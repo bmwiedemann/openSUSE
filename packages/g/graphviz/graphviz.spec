@@ -1,7 +1,7 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,11 +35,7 @@
 %define php_version 5
 %endif
 
-%if 0%{?suse_version} > 1510
-%define ruby_version 2.6
-%else
-%define ruby_version 2.5
-%endif
+%define ruby_version $(pkg-config --variable=RUBY_API_VERSION %{_libdir}/pkgconfig/ruby-*.pc)
 
 # No pkgconfig(gts) in sle12 GA or SPx, but in sle15
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
@@ -48,7 +44,7 @@
 %define sle12 0
 %endif
 Name:           graphviz
-Version:        2.42.1
+Version:        2.42.3
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0

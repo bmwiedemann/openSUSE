@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:59:55 UTC 2020 - Christian Vögl <cvoegl@suse.de>
+
+- Update to new release 2.42.3
+  - tidy gvedit about dialog strings
+  - check for mmap failure in plugin code
+  - fix broken symlinks to _gv.so with Python
+  - fix out of source build with LIBGD
+  - some minor bugfixes
+- Fix changelog of last update:
+  - Accidentally had both CVE entries mashed together.
+
+
+
+-------------------------------------------------------------------
 Wed Sep  4 11:56:02 UTC 2019 - Christian Vögl <christian.voegl@suse.com>
 
 - Switch from github master to new release 2.42.1
-  - Fixes CVE-2018-10196 (bsc#1132091)
+  - Fixes CVE-2019-11023 (bsc#1132091)
+  - Fixes CVE-2018-10196 (bsc#1093447)
   - Fixes quite a few bugs
 
 - Removed graphviz-fix-ruby-version.patch (fixed in upstream)
