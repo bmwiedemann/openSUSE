@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:10:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build dependencies boo#1120300
+
+-------------------------------------------------------------------
 Wed Mar  7 11:44:06 UTC 2018 - mpluskal@suse.com
 
 - Clean up spec file with spec-clener

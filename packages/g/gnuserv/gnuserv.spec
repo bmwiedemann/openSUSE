@@ -1,7 +1,7 @@
 #
 # spec file for package gnuserv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,8 +27,8 @@ Source1:        %{name}-README.SUSE
 Patch0:         gnuserv-3.12.6.diff
 BuildRequires:  autoconf
 BuildRequires:  emacs-nox
-Provides:       fgnuserv
-Obsoletes:      fgnuserv
+BuildRequires:  libX11-devel
+BuildRequires:  libXau-devel
 
 %description
 This package is not required for XEmacs, because the tools included
@@ -42,14 +42,15 @@ application loads an editor.
 Find hints at %{_docdir}/gnuserv/README.SUSE.
 
 %prep
-%setup -q
+%autosetup -p1
 cp -p %{SOURCE1} README.SUSE
-%patch0 -p1
 
 %build
 autoreconf -fiv
-%configure
-make %{?_smp_mflags} all gnuserv.elc
+%configure \
+  --x-includes=%{_includedir} \
+  --x-libraries=%{_libdir}
+%make_build all gnuserv.elc
 
 %install
 install -d -m755 \
