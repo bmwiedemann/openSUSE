@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 10 17:50:16 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.30.0:
+  * Single threaded SAM
+  * Experimental support of ECIES-X25519-AEAD-Ratchet crypto type
+  * Minimal MTU size is 1280 for ipv6
+  * Use unordered_map instead map for destination's sessions and
+    tags list
+  * Use std::shuffle instead std::random_shuffle
+  * SAM is single threaded by default
+  * Reseeds list
+  * Correct termination of streaming destination
+  * Extra ',' in RouterInfo response in I2PControl
+  * SAM crash on session termination
+  * Storage for Android 10
+
+-------------------------------------------------------------------
 Tue Oct 22 16:05:12 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.29.0:
