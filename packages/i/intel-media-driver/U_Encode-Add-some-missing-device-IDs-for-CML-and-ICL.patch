@@ -1,0 +1,57 @@
+From dfdffc0fee2b29071c48d674a6d61acc8765d438 Mon Sep 17 00:00:00 2001
+From: TianhaoLiu <tianhao.liu@intel.com>
+Date: Mon, 16 Dec 2019 14:47:27 +0800
+Subject: [PATCH] [Encode] Add some missing device IDs for CML and ICL
+
+Add some missing device IDs for CML and ICL to support
+more hardwares
+
+Change-Id: I9c168bc14358690cfb6c9708542ff9214b1b0af6
+---
+ media_driver/linux/gen11/ddi/media_sysinfo_g11.cpp |  3 +++
+ media_driver/linux/gen9/ddi/media_sysinfo_g9.cpp   | 14 ++++++++++++++
+ 2 files changed, 17 insertions(+)
+
+diff --git a/media_driver/linux/gen11/ddi/media_sysinfo_g11.cpp b/media_driver/linux/gen11/ddi/media_sysinfo_g11.cpp
+index 5025df06..40408338 100644
+--- a/media_driver/linux/gen11/ddi/media_sysinfo_g11.cpp
++++ b/media_driver/linux/gen11/ddi/media_sysinfo_g11.cpp
+@@ -351,6 +351,9 @@ static bool icllpDevice8a52 = DeviceInfoFactory<GfxDeviceInfo>::
+ static bool icllpDevice8a53 = DeviceInfoFactory<GfxDeviceInfo>::
+     RegisterDevice(0x8a53, &icllpGt2Info);
+ 
++static bool icllpDevice8a54 = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x8a54, &icllpGt1Info);
++
+ static bool icllpDevice8a56 = DeviceInfoFactory<GfxDeviceInfo>::
+     RegisterDevice(0x8a56, &icllpGt1Info);
+ 
+diff -u -r -p a/media_driver.old/linux/gen9/ddi/media_sysinfo_g9.cpp b/media_driver/linux/gen9/ddi/media_sysinfo_g9.cpp
+--- a/media_driver.old/linux/gen9/ddi/media_sysinfo_g9.cpp	2020-01-16 16:23:45.981748492 +0000
++++ b/media_driver/linux/gen9/ddi/media_sysinfo_g9.cpp	2020-01-16 16:29:51.540777037 +0000
+@@ -894,9 +894,25 @@ static bool cmlDevice9bc0 = DeviceInfoFa
+     RegisterDevice(0x9bc0, &cflGt2Info);
+ static bool cmlDevice9bc5 = DeviceInfoFactory<GfxDeviceInfo>::
+     RegisterDevice(0x9bc5, &cflGt2Info);
++static bool cmlDevice9bc6 = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x9bc6, &cflGt2Info);
+ static bool cmlDevice9bc8 = DeviceInfoFactory<GfxDeviceInfo>::
+     RegisterDevice(0x9bc8, &cflGt2Info);
+ static bool cmlDevice9bc4 = DeviceInfoFactory<GfxDeviceInfo>::
+     RegisterDevice(0x9bc4, &cflGt2Info);
+ static bool cmlDevice9bc2 = DeviceInfoFactory<GfxDeviceInfo>::
+     RegisterDevice(0x9bc2, &cflGt2Info);
++static bool cmlDevice9be6 = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x9be6, &cflGt2Info);
++static bool cmlDevice9bf6 = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x9bf6, &cflGt2Info);
++
++/* AML/KBL Y GT2 */
++static bool cmlDevice591c = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x591C, &cflGt2Info);
++static bool cmlDevice87C0 = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x87C0, &cflGt2Info);
++
++/* AML/CFL Y GT2 */
++static bool cmlDevice87ca = DeviceInfoFactory<GfxDeviceInfo>::
++    RegisterDevice(0x87ca, &cflGt2Info);

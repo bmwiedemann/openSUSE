@@ -80,4 +80,13 @@ versions of libva(2)</comment>
   (boo#1164851)</comment>
     <requestid>779122</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>87802863e59ec1aa7f833258f7e8197b</srcmd5>
+    <version>19.2.1</version>
+    <time>1583949261</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Encode-Add-some-missing-device-IDs-for-CML-and-ICL.patch
+  * add support for support AML-Y (bsc#1160967)</comment>
+    <requestid>783779</requestid>
+  </revision>
 </revisionlist>

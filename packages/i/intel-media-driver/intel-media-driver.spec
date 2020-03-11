@@ -29,6 +29,7 @@ Source:         https://github.com/intel/media-driver/archive/intel-media-%{vers
 Source1:        generate-supplements.sh
 Patch0:         Werror-implicit-function-not-valid-for-C++.patch
 Patch1:         Werror-initialize-in-right-order.patch
+Patch2:         U_Encode-Add-some-missing-device-IDs-for-CML-and-ICL.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -207,6 +208,7 @@ chmod -x media-driver/*.md
 pushd media-driver
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 popd
 
 %define __sourcedir media-driver
