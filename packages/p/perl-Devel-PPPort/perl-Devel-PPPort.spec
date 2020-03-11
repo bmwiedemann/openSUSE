@@ -17,7 +17,7 @@
 
 
 Name:           perl-Devel-PPPort
-Version:        3.57
+Version:        3.58
 Release:        0
 %define cpan_name Devel-PPPort
 Summary:        Perl/Pollution/Portability

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 03:10:25 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.58
+   see /usr/share/doc/packages/perl-Devel-PPPort/Changes
+
+   3.58 - 2020-03-09
+  
+   * Safer definition of UVCHR_SKIP
+   * Make sure WIDEST_UTYPE is unsigned
+   * Avoid Pax Header in tarballs
+
+-------------------------------------------------------------------
 Sat Feb  1 03:15:06 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.57
