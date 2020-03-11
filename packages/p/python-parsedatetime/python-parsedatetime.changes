@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 11 15:45:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update version to 2.5
+  * Fix to sanitize abbreviated months from icu
+  * typo in RU locale in abbreviation for January
+  * Fix lint errors for flake8 v3.5.0
+  * Add a constant for start hour
+  * Add 'secs' and 'mins' into base units
+  * Remove unused dependency on future
+
+-------------------------------------------------------------------
 Thu Mar  7 11:11:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call
