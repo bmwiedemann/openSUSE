@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -33,7 +33,8 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-nspkg
 Requires:       azure-cli-telemetry
 Requires:       python3-PyJWT
-Requires:       python3-PyYAML
+Requires:       python3-PyYAML < 6.0
+Requires:       python3-PyYAML >= 5.2
 Requires:       python3-adal < 2.0
 Requires:       python3-adal >= 1.2
 Requires:       python3-argcomplete < 2.0
@@ -53,6 +54,7 @@ Requires:       python3-paramiko < 3.0.0
 Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-pip
 Requires:       python3-pyOpenSSL >= 17.1.0
+Requires:       python3-requests < 3.0.0
 Requires:       python3-requests >= 2.20.0
 Requires:       python3-six < 2.0.0
 Requires:       python3-six >= 1.12
