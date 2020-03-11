@@ -1,7 +1,7 @@
 #
 # spec file for package virt-viewer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define gtk_arg --with-gtk=3.0
-
 Name:           virt-viewer
 Summary:        Virtual Machine Viewer
 License:        GPL-2.0-or-later
@@ -26,6 +24,10 @@ Version:        8.0
 Release:        0
 Url:            http://www.virt-manager.org
 Source:         https://virt-manager.org/download/sources/virt-viewer/%name-%version.tar.gz
+Patch1:         c2dabf07-Fix-a-regression-when-initial-connection-fails.patch
+Patch2:         a13173ae-remote-viewer-fix-free-on-dangling-pointer.patch
+Patch3:         a724dff8-remote-viewer-add-handler-for-SIGINT-signal.patch
+Patch4:         e4bacb8f-remote-viewer-add-a-default-extension-to-screenshot-filenames.patch
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
@@ -38,6 +40,7 @@ BuildRequires:  libglade2-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  spice-gtk-devel
+BuildRequires:  vte-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-vnc-2.0)
 BuildRequires:  pkgconfig(libvirt) >= 0.10.0
@@ -52,12 +55,16 @@ the display, and libvirt for looking up VNC server details.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 %patch50 -p1
 %patch51 -p1
 %patch52 -p1
 
 %build
-%configure --with-spice-gtk %{gtk_arg} --disable-update-mimedb
+%configure --with-spice-gtk --disable-update-mimedb
 make %{?_smp_mflags}
 
 %install

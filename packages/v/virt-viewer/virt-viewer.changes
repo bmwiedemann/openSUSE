@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:06:56 MDT 2020 - carnold@suse.com
+
+- bsc#1166288 - Enable vte in remote-viewer build to support
+  multiple spice displays (eg: qemu-kvm -display spice-app)
+  virt-viewer.spec
+
+-------------------------------------------------------------------
+Mon Mar  9 15:10:19 MDT 2020 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1166289)
+  c2dabf07-Fix-a-regression-when-initial-connection-fails.patch
+  a13173ae-remote-viewer-fix-free-on-dangling-pointer.patch
+  a724dff8-remote-viewer-add-handler-for-SIGINT-signal.patch
+  e4bacb8f-remote-viewer-add-a-default-extension-to-screenshot-filenames.patch
+
+-------------------------------------------------------------------
 Thu Mar 14 07:15:15 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.0:
