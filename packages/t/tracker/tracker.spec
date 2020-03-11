@@ -1,7 +1,7 @@
 #
 # spec file for package tracker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/2.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM tracker-fix-segfault-in-writeback.patch bsc#1165357 glgo#GNOME/tracker!192 alynx.zhou@suse.com -- Fix tracker segmentation fault in writeback
+Patch0:         tracker-fix-segfault-in-writeback.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

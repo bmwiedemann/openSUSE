@@ -1,0 +1,33 @@
+diff --git a/src/tracker-store/tracker-main.vala b/src/tracker-store/tracker-main.vala
+index 1e8d1ddd2..0db9b6653 100644
+--- a/src/tracker-store/tracker-main.vala
++++ b/src/tracker-store/tracker-main.vala
+@@ -368,12 +368,12 @@ License which can be viewed at:
+ 
+ 		message ("Cleaning up");
+ 
++		data_manager = null;
++		connection = null;
++
+ 		/* Shutdown major subsystems */
+ 		Tracker.Writeback.shutdown ();
+ 		Tracker.Events.shutdown ();
+-
+-		data_manager = null;
+-		connection = null;
+ 		Tracker.DBus.shutdown ();
+ 		Tracker.Log.shutdown ();
+ 
+diff --git a/src/tracker-store/tracker-writeback.c b/src/tracker-store/tracker-writeback.c
+index 32517d553..fde45afc0 100644
+--- a/src/tracker-store/tracker-writeback.c
++++ b/src/tracker-store/tracker-writeback.c
+@@ -200,6 +200,8 @@ tracker_writeback_transact (void)
+ 	GHashTableIter iter;
+ 	gpointer key, value;
+ 
++	g_return_if_fail (private == NULL);
++
+ 	if (!private->pending_events)
+ 		return;
+ 

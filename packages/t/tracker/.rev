@@ -1044,4 +1044,16 @@
     <comment></comment>
     <requestid>777063</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>8d389397613f25ddb15e5a7c12f1fa85</srcmd5>
+    <version>2.3.2</version>
+    <time>1583947973</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tracker-fix-segfault-in-writeback.patch: Check if argument is
+  NULL before using it and dispose connection and data_manager
+  before shutting down writeback and events to prevent segmentation
+  fault (bsc#1165357, glgo#GNOME/tracker!192).
+</comment>
+    <requestid>782594</requestid>
+  </revision>
 </revisionlist>

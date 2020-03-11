@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar  5 02:41:37 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add tracker-fix-segfault-in-writeback.patch: Check if argument is
+  NULL before using it and dispose connection and data_manager
+  before shutting down writeback and events to prevent segmentation
+  fault (bsc#1165357, glgo#GNOME/tracker!192).
+
+-------------------------------------------------------------------
 Tue Feb 18 23:39:08 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.3.2:
