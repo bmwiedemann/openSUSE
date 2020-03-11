@@ -22,7 +22,6 @@ Version:        4.2.1
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/File-Sharing
 URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
@@ -33,6 +32,7 @@ BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_system-devel
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -45,8 +45,6 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.1.13
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
-# For geolocalisation.
-Requires:       GeoIP
 # For search engines.
 Recommends:     python3
 
@@ -59,7 +57,6 @@ files, supports Unicode and has a bandwith scheduler.
 
 %package nox
 Summary:        A BitTorrent client in Qt, CLI version
-Group:          Productivity/Networking/File-Sharing
 %{?systemd_requires}
 
 %description nox
@@ -77,8 +74,8 @@ for ui in nox gui; do
       $ui_opt      \
       -DSYSTEMD=ON \
       -DSystemd_SERVICES_INSTALL_DIR=%{_unitdir}
-# override because this needs absurd amounts of RAM to build
-    %make_jobs -j1
+    # Override as this needs absurd amounts of RAM to build.
+    %cmake_build -j1
     cd ..
     mv build build.$ui
 done

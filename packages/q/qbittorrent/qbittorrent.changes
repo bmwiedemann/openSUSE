@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 22:30:22 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Remove an unnecessary since qBittorrent 3.3.0 GeoIP1 dependency:
+  qBittorrent now downloads GeoLite2 by itself.
+
+-------------------------------------------------------------------
 Fri Jan 10 14:55:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Removed apparently superfluous %requires_ge libtorrent-rasterbar9
   requirement. This should also fix installability issues on
   Tumbleweed
-
 - Removed python recommendation
 
 -------------------------------------------------------------------
