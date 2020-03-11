@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 18:20:43 UTC 2020 - cloud-devel@suse.de
+
+- update to version 6.11.2
+  - Update .gitreview for stable/train
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Ensure option groups don't change during logging
+
+-------------------------------------------------------------------
 Wed Oct  9 12:25:30 UTC 2019 - cloud-devel@suse.de
 
 - update to version 6.11.1

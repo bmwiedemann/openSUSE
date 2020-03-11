@@ -707,4 +707,15 @@ all changed Requires/Buildrequires seem to be available
   - Bump the openstackdocstheme extension to 1.20</comment>
     <requestid>774910</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c3b3c3eb523074560118208aa3eba8f9</srcmd5>
+    <version>6.11.2</version>
+    <time>1583949054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.11.2
+  - Update .gitreview for stable/train
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Ensure option groups don't change during logging</comment>
+    <requestid>783515</requestid>
+  </revision>
 </revisionlist>
