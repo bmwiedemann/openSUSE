@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  5 09:41:22 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Build requries postgresql-server-devel on Leap 15.2/SLE15 SP2
+
+-------------------------------------------------------------------
 Tue Feb  4 03:09:09 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.10.4
