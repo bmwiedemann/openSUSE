@@ -1,7 +1,7 @@
 #
 # spec file for package virt-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -47,6 +47,7 @@ Patch12:        ae19d6d6-fix-resizing-of-spice-clients-with-guest-resizing-enabl
 Patch13:        51d84c54-connection-Avoid-repeated-default-pool-creation-attempts.patch
 Patch14:        d934d6f2-domcaps-Fix-check-for-uncached-security-features.patch
 Patch15:        29f9f5f2-virt-xml-fix-defined_xml_is_unchanged.patch
+Patch16:        15a9502b-Fix-showing-the-firmware-type-in-case-of-firmware-auto-selection.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -193,6 +194,7 @@ machine).
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

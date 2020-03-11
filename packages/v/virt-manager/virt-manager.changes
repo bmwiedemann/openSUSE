@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:46:48 MDT 2020 - carnold@suse.com
+
+- Upstream bug fix (bsc#1027942)
+  15a9502b-Fix-showing-the-firmware-type-in-case-of-firmware-auto-selection.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 14:03:00 MST 2019 - carnold@suse.com
 
 - bsc#1157144 - [s390][virt-manager] There was the black screen
