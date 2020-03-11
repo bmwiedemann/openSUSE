@@ -36,6 +36,7 @@ Patch3:         fence-after-pacemaker-down.patch
 # PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
+Patch6:         crm-fence-peer-pacemaker2.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -86,6 +87,7 @@ raid 1. It is a building block for setting up clusters.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1

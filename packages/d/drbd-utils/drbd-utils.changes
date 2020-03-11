@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:10:40 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1166200 ,fix crm-fence-peer regex issue with pacemaker 2.
+- Add patch crm-fence-peer-pacemaker2.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 06:18:56 UTC 2020 - nick wang <nwang@suse.com>
 
 - Update to 9.12.0
