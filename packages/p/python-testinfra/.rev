@@ -110,4 +110,12 @@
  * Fix Process module when working with long strings (username, ...)</comment>
     <requestid>770550</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7e1a40d5c7c4c5c33cdad98fdbb96a5d</srcmd5>
+    <version>5.0.0</version>
+    <time>1583949274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783800</requestid>
+  </revision>
 </revisionlist>

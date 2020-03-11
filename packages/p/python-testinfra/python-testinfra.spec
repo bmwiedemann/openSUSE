@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testinfra
-Version:        4.0.0
+Version:        5.0.0
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
