@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Glances
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -27,8 +27,6 @@ Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Patch0:         adjust-data-files.patch
 Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
-#PATCH-FIX-UPSTREAM https://github.com/nicolargo/glances/commit/793552ea864c9220a578ee5e610ebb85c05728c9 Correct unitest
-Patch3:         fix-unittest.patch
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module psutil >= 5.6.3}
