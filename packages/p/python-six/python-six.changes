@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:53:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not cause buildcycle with previous change but rather
+  install the egg-info prepared metadata from the tarball
+
+-------------------------------------------------------------------
+Mon Mar  9 20:54:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- use setuptools for building to support pip 10.x (bsc#1166139)
+
+-------------------------------------------------------------------
 Tue Jan 21 11:17:01 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.14.0

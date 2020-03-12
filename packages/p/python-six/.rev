@@ -366,4 +366,15 @@
  * `six.wraps` now ignores missing attributes</comment>
     <requestid>766053</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>9a94e7008c4c03c0fcf8d0adae832dc1</srcmd5>
+    <version>1.14.0</version>
+    <time>1584050304</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not cause buildcycle with previous change but rather
+  install the egg-info prepared metadata from the tarball
+
+- use setuptools for building to support pip 10.x (bsc#1166139)</comment>
+    <requestid>783174</requestid>
+  </revision>
 </revisionlist>

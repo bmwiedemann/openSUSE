@@ -27,6 +27,7 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
+Name:           python-six%{psuffix}
 Version:        1.14.0
 Release:        0
 Summary:        Python 2 and 3 compatibility utilities
@@ -38,7 +39,6 @@ BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Name:           python-six%{psuffix}
 %if %{with test}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
@@ -80,6 +80,11 @@ cd documentation && make html && rm _build/html/.buildinfo
 %if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# add the setuptools egg-info directory
+%{python_expand rm %{buildroot}%{$python_sitelib}/six-%{version}-py%{$python_version}.egg-info
+mkdir -p %{buildroot}%{$python_sitelib}/six-%{version}-py%{$python_version}.egg-info/
+cp six.egg-info/* %{buildroot}%{$python_sitelib}/six-%{version}-py%{$python_version}.egg-info/
+}
 %endif
 
 %check
@@ -88,10 +93,9 @@ cd documentation && make html && rm _build/html/.buildinfo
 %endif
 
 %pre
-# boo#1123064 - change back to pre scriptlet - if needed as pretrans, write in lua
-# bsc#1057496 - egg-info changed from directory to file
-if [ -d %{python_sitelib}/six-*-py%{python_version}.egg-info ]; then
-    rm -rf %{python_sitelib}/six-*-py%{python_version}.egg-info
+# handle distutils (file) to setuptools transition (directory)
+if [ -f %{python_sitelib}/six-*-py%{python_version}.egg-info ]; then
+    rm -vf %{python_sitelib}/six-*-py%{python_version}.egg-info
 fi
 
 %if !%{with test}
