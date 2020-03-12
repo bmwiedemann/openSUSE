@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:29:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust patch to make EFI detection a runtime decision (bsc#1164385):
+  * grub2-SUSE-Add-the-t-hotkey.patch
+
+-------------------------------------------------------------------
+Fri Feb 28 16:36:57 UTC 2020 - rw@suse.com
+
+- Add secure boot support for s390x.  (jsc#SLE-9425)
+  * grub2-s390x-11-secureboot.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 08:43:30 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Fix grub hangs after loading rogue image without valid signature for uefi

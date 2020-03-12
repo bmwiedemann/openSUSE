@@ -11,18 +11,21 @@ allow them to get their boot menu on the serial console, let's add a new
 hidden option "t" that switches the output device back to the firmware default.
 
 Signed-off-by: Alexander Graf <agraf@suse.de>
-
 ---
 
 v1 -> v2
 
   - use hiddenentry instead of --hidden
 
-diff --git a/Makefile.util.def b/Makefile.util.def
-index f9caccb..d94de92 100644
---- a/Makefile.util.def
-+++ b/Makefile.util.def
-@@ -504,6 +504,12 @@ script = {
+v2 -> v3 (by fvogt@suse.de)
+
+  - make it a runtime decision (bsc#1164385)
+
+Index: grub-2.04/Makefile.util.def
+===================================================================
+--- grub-2.04.orig/Makefile.util.def
++++ grub-2.04/Makefile.util.def
+@@ -525,6 +525,12 @@ script = {
    installdir = grubconf;
  };
  
@@ -35,34 +38,35 @@ index f9caccb..d94de92 100644
  program = {
    mansection = 1;
    name = grub-mkrescue;
-diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 93a9023..b6ec7e2 100644
---- a/util/grub.d/00_header.in
-+++ b/util/grub.d/00_header.in
-@@ -184,6 +184,9 @@ EOF
- 	    fi
+Index: grub-2.04/util/grub.d/00_header.in
+===================================================================
+--- grub-2.04.orig/util/grub.d/00_header.in
++++ grub-2.04/util/grub.d/00_header.in
+@@ -240,6 +240,10 @@ EOF
  	fi
  
-+    if [ -d /sys/firmware/efi ]; then
-+      echo 'echo "Please press 't' to show the boot menu on this console"'
-+    fi
      cat << EOF
++  if [ "\${grub_platform}" = "efi" ]; then
++    echo "Please press 't' to show the boot menu on this console"
++  fi
++
    set gfxmode=${GRUB_GFXMODE}
    load_video
-diff --git a/util/grub.d/95_textmode.in b/util/grub.d/95_textmode.in
-new file mode 100644
-index 0000000..fa48cf9
+   insmod gfxterm
+Index: grub-2.04/util/grub.d/95_textmode.in
+===================================================================
 --- /dev/null
-+++ b/util/grub.d/95_textmode.in
-@@ -0,0 +1,11 @@
++++ grub-2.04/util/grub.d/95_textmode.in
+@@ -0,0 +1,12 @@
 +#!/bin/sh
 +
-+if [ -d /sys/firmware/efi ]; then
-+    echo "
-+    # On EFI systems we can only have graphics *or* serial, so allow the user
-+    # to switch between the two
-+    hiddenentry 'Text mode' --hotkey 't' {
-+	set textmode=true
-+	terminal_output console
-+    }"
++cat <<EOF
++if [ "\${grub_platform}" = "efi" ]; then
++  # On EFI systems we can only have graphics *or* serial, so allow the user
++  # to switch between the two
++  hiddenentry 'Text mode' --hotkey 't' {
++    set textmode=true
++    terminal_output console
++  }
 +fi
++EOF

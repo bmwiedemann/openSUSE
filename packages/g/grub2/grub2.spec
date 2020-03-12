@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,7 +153,7 @@ Release:        0
 Summary:        Bootloader with support for Linux, Multiboot and more
 License:        GPL-3.0-or-later
 Group:          System/Boot
-Url:            http://www.gnu.org/software/grub/
+URL:            http://www.gnu.org/software/grub/
 Source0:        https://ftp.gnu.org/gnu/grub/grub-%{version}.tar.xz
 Source1:        90_persistent
 Source2:        grub.default
@@ -279,6 +279,7 @@ Patch421:       0002-AUDIT-0-http-boot-tracker-bug.patch
 # and/or use fallback entry if default kernel entry removed (bsc#1065349)
 Patch430:       grub2-mkconfig-default-entry-correction.patch
 Patch431:       grub2-s390x-10-keep-network-at-kexec.patch
+Patch432:       grub2-s390x-11-secureboot.patch
 # Support for UEFI Secure Boot on AArch64 (FATE#326541)
 Patch450:       grub2-secureboot-install-signed-grub.patch
 Patch501:       grub2-btrfs-help-on-snapper-rollback.patch
@@ -553,6 +554,7 @@ swap partition while in resuming
 %patch421 -p1
 %patch430 -p1
 %patch431 -p1
+%patch432 -p1
 %patch450 -p1
 %patch501 -p1
 %patch510 -p1
