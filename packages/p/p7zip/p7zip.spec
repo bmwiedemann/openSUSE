@@ -1,7 +1,7 @@
 #
 # spec file for package p7zip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        7-zip file compression program
 License:        LGPL-2.1-or-later
 Group:          Productivity/Archiving/Compression
-Url:            http://p7zip.sourceforge.net/
+URL:            http://p7zip.sourceforge.net/
 # Update note: RAR sources need to be removed from the package because of the incompatible licence
 # Run the following commands after each package update to remove them
 # export VERSION=16.02
@@ -151,9 +151,9 @@ mv DOC/License.txt DOC/copying.txt .
 pushd CPP/7zip/CMAKE/
 ./generate.sh
 popd
-make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -Wl,-z,now -fPIC -pie" all3 7zG
+%make_build OPTFLAGS="%{optflags} -fno-strict-aliasing -Wl,-z,now -fPIC -pie -Wno-error=narrowing" all3 7zG
 %else
-make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -Wl,-z,now -fPIC -pie" all3
+%make_build OPTFLAGS="%{optflags} -fno-strict-aliasing -Wl,-z,now -fPIC -pie -Wno-error=narrowing" all3
 %endif
 
 %install
@@ -190,9 +190,9 @@ rmdir %{buildroot}%{_defaultdocdir}/%{name}/DOC/
 
 %check
 %if ! 0%{?qemu_user_space_build}
-make %{?_smp_mflags} test
-make %{?_smp_mflags} test_7z
-make %{?_smp_mflags} test_7zr
+%make_build test
+%make_build test_7z
+%make_build test_7zr
 %endif
 
 %if %{with buildgui}

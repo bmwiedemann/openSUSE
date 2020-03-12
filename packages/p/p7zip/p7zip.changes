@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:08:28 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -Wno-error=narrowing in order to fix boo#1158195.
+- Use %make_build.
+
+-------------------------------------------------------------------
 Tue Oct 15 10:30:49 UTC 2019 - Yifan Jiang <yfjiang@suse.com>
 
 - Update the Source1 and Source2 links to the latest upstream URL.
