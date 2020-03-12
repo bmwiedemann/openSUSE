@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200309" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200311" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200309</productvar>
+      <productvar name="VERSION">20200311</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200309,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200311,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200309/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200311/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -414,7 +414,7 @@
       <repopackage name="libclutter-1_0-0" arch="x86_64"/>
       <repopackage name="libclutter-gst-3_0-0" arch="x86_64"/>
       <repopackage name="libclutter-gtk-1_0-0" arch="x86_64"/>
-      <repopackage name="libcodec2-0_8" arch="x86_64"/>
+      <repopackage name="libcodec2-0_9" arch="x86_64"/>
       <repopackage name="libcogl-pango20" arch="x86_64"/>
       <repopackage name="libcogl20" arch="x86_64"/>
       <repopackage name="libcollection4" arch="x86_64"/>
@@ -434,7 +434,7 @@
       <repopackage name="libcurl4" arch="x86_64"/>
       <repopackage name="libdaemon0" arch="x86_64"/>
       <repopackage name="libdatrie1" arch="x86_64"/>
-      <repopackage name="libdav1d3" arch="x86_64"/>
+      <repopackage name="libdav1d4" arch="x86_64"/>
       <repopackage name="libdb-4_8"/>
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbusmenu-glib4" arch="x86_64"/>
@@ -1089,7 +1089,6 @@
       <repopackage name="NetworkManager" arch="x86_64"/>
       <repopackage name="NetworkManager-applet" arch="x86_64"/>
       <repopackage name="NetworkManager-branding-openSUSE" arch="x86_64"/>
-      <repopackage name="nma-data" arch="x86_64"/>
       <repopackage name="noto-coloremoji-fonts" arch="x86_64"/>
       <repopackage name="noto-sans-fonts" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
@@ -1202,6 +1201,7 @@
       <repopackage name="pulseaudio-module-x11" arch="x86_64"/>
       <repopackage name="pulseaudio-module-zeroconf" arch="x86_64"/>
       <repopackage name="pulseaudio-utils" arch="x86_64"/>
+      <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="python-rpm-macros" arch="x86_64"/>
       <repopackage name="python3" arch="x86_64"/>

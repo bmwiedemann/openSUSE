@@ -786,7 +786,6 @@
     <package name="gnome-weather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnomekbd-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnu-unifont-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="godot-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="google-arimo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="google-cousine-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1875,7 +1874,7 @@
     <package name="libclutter-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcmap4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcmis-0_5-5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libcodec2-0_8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libcodec2-0_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcogl-pango20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcogl20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcolamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1906,7 +1905,7 @@
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdar5000" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libdav1d3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libdav1d4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdazzle-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdb-4_8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdb-4_8-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
@@ -2556,8 +2555,8 @@
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libprotobuf20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libprotobuf-lite22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libprotobuf22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3268,7 +3267,6 @@
     <package name="nfs-kernel-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nkf" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="nma-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="nodejs-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="notification-daemon" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3914,6 +3912,7 @@
     <package name="pulseaudio-module-zeroconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="purpose-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pwgen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4865,7 +4864,6 @@
     <package name="telepathy-logger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="telepathy-mission-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="telepathy-mission-control-plugin-goa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="telnet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="template-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->

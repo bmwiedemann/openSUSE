@@ -101,7 +101,6 @@ unsorted:
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
-  - MotionBox 
   - MozillaFirefox: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - MozillaFirefox-branding-openSUSE: [i586] 
   - MozillaFirefox-branding-upstream 
@@ -162,6 +161,7 @@ unsorted:
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
   - PackageKit-Qt-devel 
+  - PackageKit-backend-dnf 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -1630,7 +1630,6 @@ unsorted:
   - cilium-devel: [x86_64] # devel package of opensuse_kubic:cilium-k8s-yaml 
   - cilium-docker: [x86_64] 
   - cilium-etcd-operator 
-  - cilium-init: [x86_64] 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cimple 
@@ -4420,6 +4419,7 @@ unsorted:
   - git-crypt 
   - git-doc 
   - git-filter-repo 
+  - git-lfs 
   - git-merge-changelog 
   - git-p4 
   - git-remote-gcrypt 
@@ -4777,6 +4777,7 @@ unsorted:
   - gocr 
   - gocr-gui 
   - godot 
+  - godot-bash-completion 
   - godot-headless 
   - godot-rpm-macros 
   - godot-runner 
@@ -5063,6 +5064,7 @@ unsorted:
   - gstreamer-plugins-good-jack-32bit: [x86_64] 
   - gstreamer-plugins-libav-32bit: [x86_64] 
   - gstreamer-plugins-libav-doc 
+  - gstreamer-plugins-libcamera 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-ugly-doc 
   - gstreamer-plugins-vaapi 
@@ -5819,7 +5821,6 @@ unsorted:
   - iperf-devel 
   - ipmctl: [x86_64] 
   - ipmctl-devel: [x86_64] 
-  - ipmctl-monitor: [x86_64] 
   - ipmitool 
   - ipmitool-bmc-snmp-proxy 
   - ipmiutil 
@@ -6757,7 +6758,6 @@ unsorted:
   - kopano-migration-imap 
   - kopano-migration-pst 
   - kopano-monitor 
-  - kopano-presence 
   - kopano-python-utils 
   - kopano-search 
   - kopano-server 
@@ -7935,7 +7935,7 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute17: [x86_64] 
+  - libarm_compute18: [x86_64] 
   - libarmadillo9 
   - libarmadillo9-32bit: [x86_64] 
   - libarmnn19: [x86_64] 
@@ -8334,7 +8334,7 @@ unsorted:
   - libcamd-doc 
   - libcamel-1_2-62-32bit: [x86_64] 
   - libcamera-devel 
-  - libcamera-suse1 
+  - libcamera-suse2 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -8492,7 +8492,7 @@ unsorted:
   - libcnotify1 
   - libcob-devel 
   - libcob4 
-  - libcodec2-0_8-32bit: [x86_64] 
+  - libcodec2-0_9-32bit: [x86_64] 
   - libcogl-gles2-20 
   - libcogl-pango20-32bit: [x86_64] 
   - libcogl20-32bit: [x86_64] 
@@ -8633,7 +8633,7 @@ unsorted:
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
   - libdatrie-devel 
-  - libdav1d3-32bit: [x86_64] 
+  - libdav1d4-32bit: [x86_64] 
   - libdavix0 
   - libdazzle-devel 
   - libdb-4_8-devel-32bit: [x86_64] 
@@ -10809,7 +10809,7 @@ unsorted:
   - libpapi 
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
-  - libpapi_5_7_0-hpc 
+  - libpapi_6_0_0-hpc 
   - libparaview5_8 
   - libpari-gmp-tls6 
   - libparlatype-devel 
@@ -11005,13 +11005,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite20-32bit: [x86_64] 
+  - libprotobuf-lite22-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf20-32bit: [x86_64] 
-  - libprotoc20 
-  - libprotoc20-32bit: [x86_64] 
+  - libprotobuf22-32bit: [x86_64] 
+  - libprotoc22 
+  - libprotoc22-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -11657,6 +11657,8 @@ unsorted:
   - libscintilla-devel 
   - libscintilla3 
   - libscotch0 
+  - libsearpc-devel 
+  - libsearpc1 
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit: [x86_64] 
@@ -12069,6 +12071,7 @@ unsorted:
   - libtommath1-32bit: [x86_64] 
   - libtomoe-gtk0 
   - libtool-32bit: [x86_64] 
+  - libtorch: [x86_64] 
   - libtorrent-devel 
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
@@ -12771,7 +12774,7 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_8_4 
+  - libzbc-5_8_5 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
@@ -13465,11 +13468,11 @@ unsorted:
   - maven-doxia-module-fml 
   - maven-doxia-module-fo 
   - maven-doxia-module-latex 
-  - maven-doxia-module-markdown 
   - maven-doxia-module-rtf 
   - maven-doxia-module-twiki 
   - maven-doxia-module-xdoc 
   - maven-doxia-module-xhtml 
+  - maven-doxia-module-xhtml5 
   - maven-doxia-sink-api 
   - maven-doxia-sitetools 
   - maven-doxia-sitetools-javadoc 
@@ -13992,14 +13995,11 @@ unsorted:
   - mono-data 
   - mono-data-oracle 
   - mono-data-sqlite 
-  - mono-debugger 
   - mono-devel 
   - mono-extras 
   - mono-libkolabxml1 
   - mono-locale-extras 
   - mono-mvc 
-  - mono-nat 
-  - mono-nat-devel 
   - mono-reactive 
   - mono-uia 
   - mono-uia-devel 
@@ -15936,9 +15936,9 @@ unsorted:
   - papi-devel-static 
   - papi-hpc 
   - papi-hpc-devel 
-  - papi_5_7_0-hpc 
-  - papi_5_7_0-hpc-devel 
-  - papi_5_7_0-hpc-devel-static 
+  - papi_6_0_0-hpc 
+  - papi_6_0_0-hpc-devel 
+  - papi_6_0_0-hpc-devel-static 
   - papirus-icon-theme 
   - paps 
   - par2cmdline 
@@ -17784,6 +17784,7 @@ unsorted:
   - prometheus-client-model-source 
   - prometheus-cpp-devel 
   - prometheus-ha_cluster_exporter: [x86_64] 
+  - prometheus-sap_host_exporter: [x86_64] 
   - prometheus-simpleclient-java 
   - prometheus-simpleclient-java-common 
   - prometheus-simpleclient-java-graphite_bridge 
@@ -17923,7 +17924,6 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
-  - purge-kernels-service 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -18518,6 +18518,7 @@ unsorted:
   - python2-azure-cognitiveservices-vision-nspkg 
   - python2-azure-common 
   - python2-azure-core 
+  - python2-azure-core-tracing-opencensus 
   - python2-azure-cosmos 
   - python2-azure-datalake-store 
   - python2-azure-devops 
@@ -19357,6 +19358,7 @@ unsorted:
   - python2-lws 
   - python2-lxml 
   - python2-lxml-devel 
+  - python2-lz4 
   - python2-lzmaffi 
   - python2-m2r 
   - python2-macholib 
@@ -19496,6 +19498,10 @@ unsorted:
   - python2-olefile: [i586] 
   - python2-opcodes 
   - python2-openapi-spec-validator 
+  - python2-opencensus 
+  - python2-opencensus-context 
+  - python2-opencensus-ext-azure 
+  - python2-opencensus-ext-threading 
   - python2-opencv 
   - python2-opencv3 
   - python2-opengl 
@@ -19623,6 +19629,7 @@ unsorted:
   - python2-ply 
   - python2-plyvel 
   - python2-pmw 
+  - python2-pname 
   - python2-pocketsphinx 
   - python2-pocketsphinx-python 
   - python2-podcastparser 
@@ -19850,6 +19857,7 @@ unsorted:
   - python2-pytest-flakes 
   - python2-pytest-flask 
   - python2-pytest-forked 
+  - python2-pytest-freezegun 
   - python2-pytest-helpers-namespace 
   - python2-pytest-httpbin 
   - python2-pytest-instafail 
@@ -20292,7 +20300,6 @@ unsorted:
   - python2-transitions 
   - python2-translation-finder 
   - python2-translationstring 
-  - python2-translitcodec 
   - python2-treq 
   - python2-tri.struct 
   - python2-trustme 
@@ -20315,7 +20322,6 @@ unsorted:
   - python2-ua-parser 
   - python2-uamqp 
   - python2-ucsmsdk 
-  - python2-ujson 
   - python2-unbound 
   - python2-uncertainties 
   - python2-uncompyle6 
@@ -20847,6 +20853,7 @@ unsorted:
   - python3-azure-cognitiveservices-vision-nspkg 
   - python3-azure-common 
   - python3-azure-core 
+  - python3-azure-core-tracing-opencensus 
   - python3-azure-cosmos 
   - python3-azure-datalake-store 
   - python3-azure-devops 
@@ -21991,6 +21998,7 @@ unsorted:
   - python3-mutt-ics 
   - python3-mygpoclient 
   - python3-mysql-connector-python 
+  - python3-nagios-http-json 
   - python3-nagiosplugin 
   - python3-napalm 
   - python3-napalm-ansible 
@@ -22086,6 +22094,10 @@ unsorted:
   - python3-opcodes 
   - python3-openapi-core 
   - python3-openapi-spec-validator 
+  - python3-opencensus 
+  - python3-opencensus-context 
+  - python3-opencensus-ext-azure 
+  - python3-opencensus-ext-threading 
   - python3-opencv 
   - python3-opencv3 
   - python3-opengl 
@@ -22099,6 +22111,7 @@ unsorted:
   - python3-openstackclient 
   - python3-openstackdocstheme 
   - python3-openstacksdk 
+  - python3-opentelemetry-api 
   - python3-openwsman 
   - python3-opt-einsum 
   - python3-orange-canvas-core 
@@ -22233,6 +22246,7 @@ unsorted:
   - python3-plumbum 
   - python3-plyvel 
   - python3-pmw 
+  - python3-pname 
   - python3-pocketsphinx-python 
   - python3-podcastparser 
   - python3-podman 
@@ -22436,6 +22450,7 @@ unsorted:
   - python3-pyrsistent: [i586] 
   - python3-pysaml2 
   - python3-pyscard 
+  - python3-pysearpc 
   - python3-pysendfile 
   - python3-pyshark 
   - python3-pyshould 
@@ -22485,6 +22500,7 @@ unsorted:
   - python3-pytest-flakes 
   - python3-pytest-flask 
   - python3-pytest-forked 
+  - python3-pytest-freezegun 
   - python3-pytest-git 
   - python3-pytest-helpers-namespace 
   - python3-pytest-html 
@@ -22962,6 +22978,8 @@ unsorted:
   - python3-toolz 
   - python3-tooz 
   - python3-topy 
+  - python3-torch: [x86_64] 
+  - python3-torch-devel: [x86_64] 
   - python3-tornado 
   - python3-tornado5 
   - python3-tornado6 
@@ -23184,6 +23202,8 @@ unsorted:
   - python3-zstandard 
   - python3-zstd 
   - python3-zxcvbn 
+  - pytorch-converters: [x86_64] 
+  - pytorch-examples: [x86_64] 
   - pyzo 
   - pyzy-devel 
   - q4wine 
@@ -25425,6 +25445,7 @@ unsorted:
   - telepathy-sipe 
   - tellico 
   - tellico-lang 
+  - telnet 
   - telnet-server 
   - template-glib-devel 
   - template-resolver 
