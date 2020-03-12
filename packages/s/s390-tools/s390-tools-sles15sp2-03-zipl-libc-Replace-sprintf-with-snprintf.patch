@@ -1,0 +1,236 @@
+Subject: [PATCH] [BZ 184060] zipl/libc: Replace sprintf with snprintf
+From: Philipp Rudo <prudo@linux.ibm.com>
+
+Description:   zipl/libc: Fix potential buffer overflow in printf
+Symptom:       Crash of the zipl boot loader during boot.
+Problem:       The zipl boot loaders have their own minimalistic libc
+               implementation. In it printf and sprintf use vsprintf for string
+               formatting. Per definition vsprintf assumes that the buffer it
+               writes to is large enough to contain the formatted string and
+               performs no size checks. This is problematic for the boot
+               loaders because the buffer they use are often allocated on the
+               stack. Thus even small changes to the string format can
+               potentially cause buffer overflows on the stack.
+Solution:      Implement vsnprintf and make use of it.
+Reproduction:  Use printf to print a string with >81 characters (exact number
+               depends on the stack layout/compiler used).
+Upstream-ID:   f7430027b41d5ad6220e962a179c2a5213330a44
+Problem-ID:    184060
+
+Upstream-Description:
+
+              zipl/libc: Replace sprintf with snprintf
+
+              The use of sprintf can easily result in buffer overflows as it assumes
+              that the buffer it writes to is large enough to contain the formatted
+              string. Thus replace sprintf by snprintf and update its users.
+
+              This removes the last user of vsprintf. Thus also remove vsprintf and
+              its dependencies.
+
+              Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+              Reviewed-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+              Reviewed-by: Stefan Haberland <sth@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+---
+ zipl/boot/libc.c      |  132 +-------------------------------------------------
+ zipl/boot/libc.h      |    3 -
+ zipl/boot/menu.c      |    2 
+ zipl/boot/tape2dump.c |    2 
+ 4 files changed, 6 insertions(+), 133 deletions(-)
+
+--- a/zipl/boot/libc.c
++++ b/zipl/boot/libc.c
+@@ -126,81 +126,6 @@ int strncmp(const char *s1, const char *
+ }
+ 
+ /*
+- * Convert number to string
+- *
+- * Parameters:
+- *
+- * - buf:   Output buffer
+- * - base:  Base used for formatting (e.g. 10 or 16)
+- * - val:   Number to format
+- * - zero:  If > 0, fill with leading zeros, otherwise use blanks
+- * - count: Minimum number of characters used for output string
+- */
+-static int num_to_str(char *buf, int base, unsigned long val, int zero,
+-		      unsigned long count)
+-{
+-	static const char conv_vec[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+-					'8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+-	unsigned long num = 0, val_work = val, in_number = 1;
+-	int i;
+-
+-	/* Count number of characters needed for number */
+-	do {
+-		num++;
+-		val_work /= base;
+-	} while (val_work);
+-	/* Real character number overwrites count */
+-	if (count < num)
+-		count = num;
+-	/* Format number */
+-	for (i = count - 1; i >= 0; i--) {
+-		if (in_number) {
+-			buf[i] = conv_vec[val % base];
+-			val /= base;
+-			in_number = val ? 1 : 0;
+-		} else {
+-			buf[i] = zero ? '0' : ' ';
+-		}
+-	}
+-	buf[count] = 0;
+-	return count;
+-}
+-
+-/*
+- * Convert string to string with indentation
+- */
+-static int str_to_str(char *buf, const char *str, unsigned long count)
+-{
+-	unsigned long size;
+-
+-	size = strlen(str);
+-	if (count < size)
+-		count = size;
+-	else
+-		memset(buf, ' ', count - size);
+-	strcpy(buf + (count - size), str);
+-	return count;
+-}
+-
+-/*
+- * Convert string to number with given base
+- */
+-unsigned long strtoul(const char *nptr, char **endptr, int base)
+-{
+-	unsigned long val = 0;
+-
+-	while (isdigit(*nptr)) {
+-		if (val != 0)
+-			val *= base;
+-		val += *nptr - '0';
+-		nptr++;
+-	}
+-	if (endptr)
+-		*endptr = (char *) nptr;
+-	return val;
+-}
+-
+-/*
+  * Convert ebcdic string to number with given base
+  */
+ unsigned long ebcstrtoul(char *nptr, char **endptr, int base)
+@@ -467,65 +392,14 @@ static int vsnprintf(char *buf, unsigned
+ }
+ 
+ /*
+- * Convert string to number with given base
+- */
+-static int sprintf_fmt(char type, char *buf, unsigned long val, int zero,
+-		       int count)
+-{
+-	switch (type) {
+-	case 's':
+-		return str_to_str(buf, (const char *) val, count);
+-	case 'x':
+-		return num_to_str(buf, 16, val, zero, count);
+-	case 'u':
+-		return num_to_str(buf, 10, val, zero, count);
+-	default:
+-		libc_stop(EINTERNAL);
+-	}
+-	return 0;
+-}
+-
+-/*
+- * Print formated string (va version)
+- */
+-static void vsprintf(char *str, const char *fmt, va_list va)
+-{
+-	unsigned long val, zero, count;
+-	char *fmt_next;
+-
+-	do {
+-		if (*fmt == '%') {
+-			fmt++;
+-			if (*fmt == '0') {
+-				zero = 1;
+-				fmt++;
+-			} else {
+-				zero = 0;
+-			}
+-			/* No number found by strtoul: count=0 fmt_next=fmt */
+-			count = strtoul(fmt, &fmt_next, 10);
+-			fmt = fmt_next;
+-			if (*fmt == 'l')
+-				fmt++;
+-			val = va_arg(va, unsigned long);
+-			str += sprintf_fmt(*fmt, str, val, zero, count);
+-			fmt++;
+-		} else {
+-			*str++ = *fmt++;
+-		}
+-	} while (*fmt);
+-	*str = 0;
+-}
+-
+-/*
+- * Write formated string to string
++ * Write formatted string to buffer
+  */
+-void sprintf(char *str, const char *fmt, ...)
++void snprintf(char *buf, unsigned long size, const char *fmt, ...)
+ {
+ 	va_list va;
+ 
+ 	va_start(va, fmt);
+-	vsprintf(str, fmt, va);
++	vsnprintf(buf, size, fmt, va);
+ 	va_end(va);
+ }
+ 
+--- a/zipl/boot/libc.h
++++ b/zipl/boot/libc.h
+@@ -47,13 +47,12 @@ typedef unsigned short uint16_t;
+ typedef unsigned char uint8_t;
+ 
+ void printf(const char *, ...);
+-void sprintf(char *, const char *, ...);
++void snprintf(char *buf, unsigned long size, const char *fmt, ...);
+ void *memcpy(void *, const void *, unsigned long);
+ void *memmove(void *, const void *, unsigned long);
+ void *memset(void *, int c, unsigned long);
+ char *strcat(char *, const char *);
+ int strncmp(const char *, const char *, unsigned long);
+-unsigned long strtoul(const char *, char **, int);
+ unsigned long ebcstrtoul(char *, char **, int);
+ int strlen(const char *);
+ char *strcpy(char *, const char *);
+--- a/zipl/boot/menu.c
++++ b/zipl/boot/menu.c
+@@ -189,7 +189,7 @@ boot:
+ 			(void *)&__stage2_params + TEXT_OFFSET));
+ 
+ 	/* append 'BOOT_IMAGE=<num>' to parmline */
+-	sprintf(endstring, " BOOT_IMAGE=%u", value);
++	snprintf(endstring, sizeof(endstring), " BOOT_IMAGE=%u", value);
+ 	if ((strlen(cmd_line_extra) + strlen(endstring)) < COMMAND_LINE_SIZE)
+ 		strcat(cmd_line_extra, endstring);
+ 
+--- a/zipl/boot/tape2dump.c
++++ b/zipl/boot/tape2dump.c
+@@ -186,7 +186,7 @@ static void progress_print_disp(unsigned
+ 
+ 	if (addr % (1024 * 1024 * 16) != 0)
+ 		return;
+-	sprintf(msg, "%08u", addr >> 20);
++	snprintf(msg, sizeof(msg), "%08u", addr >> 20);
+ 	ccw_load_display(msg);
+ }
+ 

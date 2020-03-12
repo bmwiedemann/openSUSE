@@ -1,0 +1,51 @@
+Subject: [PATCH] [BZ 184174] zpcictl: Rename misleading sysfs_write_data
+From: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+Description:   zpcictl: Initiate recover after reset
+Symptom:       If a PCI function is reset using zpcictl --reset, the function
+               is in an error state.
+Problem:       zpcictl --reset only issues a SCLP reset and leaves the PCI
+               function in an error state.
+Solution:      Initiate an OS level recovery by calling
+               /sys/bus/devices/<dev>/recover after the SCLP reset.
+Reproduction:  Call zpcictl --reset <dev>
+               Under z/VM check the state of the function with 'vmcp q pcif'
+Upstream-ID:   d77234ddb68719819c7e8380c71dbebc555539ab
+Problem-ID:    184174
+
+Upstream-Description:
+
+              zpcictl: Rename misleading sysfs_write_data
+
+              To sysfs_report_error as it only writes to the report_error attribute.
+
+              Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+              Reviewed-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+---
+ zpcictl/zpcictl.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/zpcictl/zpcictl.c
++++ b/zpcictl/zpcictl.c
+@@ -183,7 +183,7 @@ static void sysfs_write_value(struct zpc
+ 	free(path);
+ }
+ 
+-static void sysfs_write_data(struct zpci_report_error *report, char *slot)
++static void sysfs_report_error(struct zpci_report_error *report, char *slot)
+ {
+ 	size_t r_size;
+ 	char *path;
+@@ -308,7 +308,7 @@ static void sclp_issue_action(struct zpc
+ 			     sizeof(report.data.log_data));
+ 		free(sdata);
+ 	}
+-	sysfs_write_data(&report, pdev->slot);
++	sysfs_report_error(&report, pdev->slot);
+ }
+ 
+ /*

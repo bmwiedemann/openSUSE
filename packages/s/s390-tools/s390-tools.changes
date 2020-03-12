@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 10 18:25:51 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches for bsc#1165978.
+  zpcictl --reset only issues a SCLP reset and leaves the PCI function
+  in an error state.
+  Initiate an OS level recovery by calling /sys/bus/devices/<dev>/recover
+  after the SCLP reset.
+  * s390-tools-sles15sp2-01-zpcictl-Initiate-recover-after-reset.patch
+  * s390-tools-sles15sp2-02-zpcictl-Rename-misleading-sysfs_write_data.patch
+  * s390-tools-sles15sp2-03-zpcitctl-Exit-on-error-in-sysfs_report_error.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 22:11:44 UTC 2020 - Mark Post <mpost@suse.com>
+
+- The zipl boot loader may crash during boot. The solution is to
+  implement vsnprintf and make use of it. (bsc#1165317)
+  * s390-tools-sles15sp2-01-zipl-libc-Introduce-vsnprintf.patch
+  * s390-tools-sles15sp2-02-zipl-libc-Fix-potential-buffer-overflow-in-printf.patch
+  * s390-tools-sles15sp2-03-zipl-libc-Replace-sprintf-with-snprintf.patch
+  * s390-tools-sles15sp2-04-zipl-libc-Indicate-truncated-lines-in-printf-with.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 20:10:50 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp2-zkey-Fix-display-of-XTS-attribute-for-validate-comma.patch

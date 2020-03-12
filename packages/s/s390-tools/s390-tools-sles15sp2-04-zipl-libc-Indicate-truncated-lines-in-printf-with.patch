@@ -1,0 +1,82 @@
+Subject: [PATCH] [BZ 184060] zipl/libc: Indicate truncated lines in printf with '...'
+From: Philipp Rudo <prudo@linux.ibm.com>
+
+Description:   zipl/libc: Fix potential buffer overflow in printf
+Symptom:       Crash of the zipl boot loader during boot.
+Problem:       The zipl boot loaders have their own minimalistic libc
+               implementation. In it printf and sprintf use vsprintf for string
+               formatting. Per definition vsprintf assumes that the buffer it
+               writes to is large enough to contain the formatted string and
+               performs no size checks. This is problematic for the boot
+               loaders because the buffer they use are often allocated on the
+               stack. Thus even small changes to the string format can
+               potentially cause buffer overflows on the stack.
+Solution:      Implement vsnprintf and make use of it.
+Reproduction:  Use printf to print a string with >81 characters (exact number
+               depends on the stack layout/compiler used).
+Upstream-ID:   36fed0e6c6590631c4ce1707c8fe3c3397bcce4d
+Problem-ID:    184060
+
+Upstream-Description:
+
+              zipl/libc: Indicate truncated lines in printf with '...'
+
+              Append '...' to lines exceeding the maximum line length instead of
+              silently truncating them.
+
+              Suggested-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+              Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+              Reviewed-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+              Reviewed-by: Stefan Haberland <sth@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+---
+ zipl/boot/libc.c |   10 ++++++++--
+ zipl/boot/libc.h |    1 +
+ zipl/boot/menu.h |    1 -
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+--- a/zipl/boot/libc.c
++++ b/zipl/boot/libc.c
+@@ -408,11 +408,17 @@ void snprintf(char *buf, unsigned long s
+  */
+ void printf(const char *fmt, ...)
+ {
+-	char buf[81];
++	char buf[LINE_LENGTH + 1];
++	int len;
+ 	va_list va;
+ 
+ 	va_start(va, fmt);
+-	vsnprintf(buf, sizeof(buf), fmt, va);
++	len = vsnprintf(buf, sizeof(buf), fmt, va);
++	if (len > LINE_LENGTH) {
++		buf[LINE_LENGTH - 1] = '.';
++		buf[LINE_LENGTH - 2] = '.';
++		buf[LINE_LENGTH - 3] = '.';
++	}
+ 	sclp_print(buf);
+ 	va_end(va);
+ }
+--- a/zipl/boot/libc.h
++++ b/zipl/boot/libc.h
+@@ -40,6 +40,7 @@
+ #define ENOTTY		25	/* Not a typewriter */
+ 
+ #define MIB	(1024ULL * 1024)
++#define LINE_LENGTH 80 /* max line length printed by printf */
+ 
+ typedef unsigned long long uint64_t;
+ typedef unsigned int uint32_t;
+--- a/zipl/boot/menu.h
++++ b/zipl/boot/menu.h
+@@ -20,7 +20,6 @@
+ /* max command line length */
+ #define COMMAND_LINE_SIZE	        896
+ #define BOOT_MENU_ENTRIES		63
+-#define LINE_LENGTH                     80
+ #define PARAM_SIZE                      8
+ #define TEXT_OFFSET                     4
+ 

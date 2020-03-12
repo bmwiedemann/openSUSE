@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2009-2020 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2001-2020 SUSE LLC, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,6 +128,13 @@ Patch38:        s390-tools-sles15sp2-zkey-Fix-listing-of-keys-on-file-systems-re
 Patch39:        s390-tools-sles15sp2-zkey-Fix-display-of-clear-key-size-for-XTS-keys.patch
 Patch40:        s390-tools-sles15sp2-zkey-Fix-display-of-XTS-attribute-for-validate-comma.patch
 Patch41:        s390-tools-sles15sp2-zkey-Fix-display-of-clear-key-size-for-CCA-AESCIPHER.patch
+Patch42:        s390-tools-sles15sp2-01-zipl-libc-Introduce-vsnprintf.patch
+Patch43:        s390-tools-sles15sp2-02-zipl-libc-Fix-potential-buffer-overflow-in-printf.patch
+Patch44:        s390-tools-sles15sp2-03-zipl-libc-Replace-sprintf-with-snprintf.patch
+Patch45:        s390-tools-sles15sp2-04-zipl-libc-Indicate-truncated-lines-in-printf-with.patch
+Patch46:        s390-tools-sles15sp2-01-zpcictl-Initiate-recover-after-reset.patch
+Patch47:        s390-tools-sles15sp2-02-zpcictl-Rename-misleading-sysfs_write_data.patch
+Patch48:        s390-tools-sles15sp2-03-zpcitctl-Exit-on-error-in-sysfs_report_error.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch

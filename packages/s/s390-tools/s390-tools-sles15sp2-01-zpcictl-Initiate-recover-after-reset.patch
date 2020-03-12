@@ -1,0 +1,70 @@
+Subject: [PATCH] [BZ 184174] zpcictl: Initiate recover after reset
+From: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+Description:   zpcictl: Initiate recover after reset
+Symptom:       If a PCI function is reset using zpcictl --reset, the function
+               is in an error state.
+Problem:       zpcictl --reset only issues a SCLP reset and leaves the PCI
+               function in an error state.
+Solution:      Initiate an OS level recovery by calling
+               /sys/bus/devices/<dev>/recover after the SCLP reset.
+Reproduction:  Call zpcictl --reset <dev>
+               Under z/VM check the state of the function with 'vmcp q pcif'
+Upstream-ID:   bc0d40c5803d4c5426b17b6d59aa0f1e46a2aacc
+Problem-ID:    184174
+
+Upstream-Description:
+
+              zpcictl: Initiate recover after reset
+
+              After a zpcitctl --reset the PCI function is currently left in an error
+              state. This seems unexpected, so follow the SCLP reset with an OS level
+              recovery using /sys/bus/devices/<dev>/recover.
+
+              Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+              Reviewed-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+---
+ zpcictl/zpcictl.c |   21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+--- a/zpcictl/zpcictl.c
++++ b/zpcictl/zpcictl.c
+@@ -163,6 +163,26 @@ static unsigned int sysfs_read_value(str
+ 	return val;
+ }
+ 
++static void sysfs_write_value(struct zpci_device *pdev, const char *attr,
++				unsigned int val)
++{
++	char *path;
++	FILE *fp;
++
++	path = util_path_sysfs("bus/pci/devices/%s/%s", pdev->slot, attr);
++	fp = fopen(path, "w");
++	if (!fp)
++		fopen_err(path);
++	if (fprintf(fp, "%x", val) < 0) {
++		fclose(fp);
++		warnx("Could not write to file %s: %s", path, strerror(errno));
++		free(path);
++		exit(EXIT_FAILURE);
++	}
++	fclose(fp);
++	free(path);
++}
++
+ static void sysfs_write_data(struct zpci_report_error *report, char *slot)
+ {
+ 	size_t r_size;
+@@ -297,6 +317,7 @@ static void sclp_issue_action(struct zpc
+ static void sclp_reset_device(struct zpci_device *pdev)
+ {
+ 	sclp_issue_action(pdev, SCLP_ERRNOTIFY_AQ_RESET);
++	sysfs_write_value(pdev, "recover", 1);
+ }
+ 
+ /*

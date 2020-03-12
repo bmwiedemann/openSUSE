@@ -1,0 +1,63 @@
+Subject: [PATCH] [BZ 184060] zipl/libc: Fix potential buffer overflow in printf
+From: Philipp Rudo <prudo@linux.ibm.com>
+
+Description:   zipl/libc: Fix potential buffer overflow in printf
+Symptom:       Crash of the zipl boot loader during boot.
+Problem:       The zipl boot loaders have their own minimalistic libc
+               implementation. In it printf and sprintf use vsprintf for string
+               formatting. Per definition vsprintf assumes that the buffer it
+               writes to is large enough to contain the formatted string and
+               performs no size checks. This is problematic for the boot
+               loaders because the buffer they use are often allocated on the
+               stack. Thus even small changes to the string format can
+               potentially cause buffer overflows on the stack.
+Solution:      Implement vsnprintf and make use of it.
+Reproduction:  Use printf to print a string with >81 characters (exact number
+               depends on the stack layout/compiler used).
+Upstream-ID:   8874b908254c47c8a6fd7a1aca2c7371c11035c4
+Problem-ID:    184060
+
+Upstream-Description:
+
+              zipl/libc: Fix potential buffer overflow in printf
+
+              Per definition vsprint assumes that the provided buffer it writes to is
+              large enough to contain the formatted string. As printf uses a fixed
+              sized buffer (81 bytes) and has no size checks the use of vsprintf can
+              easily cause buffer overflows. Protect against these buffer overflows by
+              using vsnprintf instead.
+
+              While at it fix a typo in the comment.
+
+              Reported-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+              Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+              Reviewed-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+              Reviewed-by: Stefan Haberland <sth@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Philipp Rudo <prudo@linux.ibm.com>
+---
+ zipl/boot/libc.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/zipl/boot/libc.c
++++ b/zipl/boot/libc.c
+@@ -530,7 +530,7 @@ void sprintf(char *str, const char *fmt,
+ }
+ 
+ /*
+- * Print formated string
++ * Print formatted string to console
+  */
+ void printf(const char *fmt, ...)
+ {
+@@ -538,7 +538,7 @@ void printf(const char *fmt, ...)
+ 	va_list va;
+ 
+ 	va_start(va, fmt);
+-	vsprintf(buf, fmt, va);
++	vsnprintf(buf, sizeof(buf), fmt, va);
+ 	sclp_print(buf);
+ 	va_end(va);
+ }
