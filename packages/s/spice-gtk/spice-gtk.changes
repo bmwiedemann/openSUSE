@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:44:45 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Clean up some spec file conditionals that are no longer helpful
+- Do other spec file clean up which has been pending for a while
+
+-------------------------------------------------------------------
 Tue Oct  8 16:25:13 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - added "BuildRequires: pkgconfig(libdrm)" in order to fix build

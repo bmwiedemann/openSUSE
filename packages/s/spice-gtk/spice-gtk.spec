@@ -1,7 +1,7 @@
 #
 # spec file for package spice-gtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-# FIXME: /usr/bin/spice-client-glib-usb-acl-helper should be installed u+s, see bnc#744251.
-# FIXME: Once phodav is packaged and available in openSUSE, enable pkgconfig(libphodav-2.0)
 Name:           spice-gtk
 Version:        0.37
 Release:        0
@@ -59,7 +57,7 @@ BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gudev-1.0)
-#BuildRequires:  pkgconfig(libphodav-2.0)
+BuildRequires:  pkgconfig(libphodav-2.0)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.49.91
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.16
@@ -74,10 +72,8 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.12.15
 Requires(pre):  permissions
 Recommends:     %{name}-lang
-%if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
-%endif
 
 %description
 A Gtk client and libraries for SPICE remote desktop servers, (Linux and Windows)
@@ -146,10 +142,8 @@ export PYTHON=/usr/bin/python3
 %configure \
     --disable-static \
     --enable-vala \
-%if 0%{?is_opensuse} == 0
-    --disable-lz4 \
-    --disable-smartcard \
-%endif
+    --enable-lz4 \
+    --enable-smartcard \
     --disable-silent-rules \
     --with-usb-ids-path=/usr/share/hwdata/usb.ids \
     %{nil}
@@ -184,11 +178,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libspice-client-glib-2.0.so.*
 
 %files -n libspice-client-glib-helper
-%if 0%{?suse_version} >= 1500
 %verify(not mode) %attr(4750,root,kvm) %{_bindir}/spice-client-glib-usb-acl-helper
-%else
-%attr(755,root,root) %{_bindir}/spice-client-glib-usb-acl-helper
-%endif
 %{_datadir}/polkit-1/actions/org.spice-space.lowlevelusbaccess.policy
 
 %files -n libspice-client-gtk-3_0-5

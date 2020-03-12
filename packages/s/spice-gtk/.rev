@@ -425,4 +425,12 @@ a new setuid binary.
     <comment></comment>
     <requestid>736273</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>277ece227067dcdbe3cf219ee1602624</srcmd5>
+    <version>0.37</version>
+    <time>1584050286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783118</requestid>
+  </revision>
 </revisionlist>
