@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:08:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.1.1
+  * Change of *skip* validation mode with errors filtering in decode() or encode()
+  * Extension of location hints by argument to imported/included schemas
+  * Fixed lazy validation with identity constraints
+  * Fixed many W3C instance tests (remain ~100 over 15344 tests)
+
+-------------------------------------------------------------------
 Thu Feb  6 11:47:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.1.0

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
