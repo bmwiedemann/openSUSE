@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 19:35:56 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.14.1
+  + Introduce VD_AGENT_CAP_CLIPBOARD_GRAB_SERIAL
+  + Introduce VD_AGENT_CAP_CLIPBOARD_NO_RELEASE_ON_REGRAB
+  + Deprecate foreign-menui_prot.h and controller_prot.h interfaces
+  + Remove VD_AGENT_CLIPBOARD_MAX_SIZE_[DEFAULT ENV]
+  + Define Quality Indicator messages and enums
+  + Fix alignment for QXLReleaseInfo
+  + Other misc fixes
+
+-------------------------------------------------------------------
 Tue Apr 16 20:21:17 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.14.0:
