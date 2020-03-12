@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 11 15:45:38 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix usability issues in global tab (bsc#1127505)
+- Fix crash when clicking Edit on empty table
+- 4.2.3
+
+-------------------------------------------------------------------
 Wed Mar 11 09:13:07 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Propose to restart the targetcli service as the default action
