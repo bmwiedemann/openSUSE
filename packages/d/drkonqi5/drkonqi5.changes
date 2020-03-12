@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:55:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.3.php
+- Changes since 5.18.2:
+  * fix windows compilation, QString.sprintf() is deprecated
+  * focus email input line by default (kde#418309)
+
+-------------------------------------------------------------------
 Tue Feb 25 14:07:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.2
