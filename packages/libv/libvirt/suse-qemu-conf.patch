@@ -7,10 +7,10 @@ suse-qemu-conf-secdriver.patch, suse-qemu-conf-lockmgr.patch,
 etc.), but for now they are all lumped together in this
 single patch.
 
-Index: libvirt-6.0.0/src/qemu/qemu.conf
+Index: libvirt-6.1.0/src/qemu/qemu.conf
 ===================================================================
---- libvirt-6.0.0.orig/src/qemu/qemu.conf
-+++ libvirt-6.0.0/src/qemu/qemu.conf
+--- libvirt-6.1.0.orig/src/qemu/qemu.conf
++++ libvirt-6.1.0/src/qemu/qemu.conf
 @@ -420,10 +420,19 @@
  # isolation, but it cannot appear in a list of drivers.
  #
@@ -60,11 +60,11 @@ Index: libvirt-6.0.0/src/qemu/qemu.conf
  #
  #lock_manager = "lockd"
  
-Index: libvirt-6.0.0/src/qemu/qemu_conf.c
+Index: libvirt-6.1.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-6.0.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-6.0.0/src/qemu/qemu_conf.c
-@@ -229,7 +229,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
+--- libvirt-6.1.0.orig/src/qemu/qemu_conf.c
++++ libvirt-6.1.0/src/qemu/qemu_conf.c
+@@ -263,7 +263,7 @@ virQEMUDriverConfigPtr virQEMUDriverConf
      cfg->prHelperName = g_strdup(QEMU_PR_HELPER);
      cfg->slirpHelperName = g_strdup(QEMU_SLIRP_HELPER);
  

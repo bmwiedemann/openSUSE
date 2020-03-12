@@ -185,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -257,7 +257,7 @@ BuildRequires:  pkgconfig(libudev) >= 145
 BuildRequires:  sanlock-devel >= 2.4
 %endif
 BuildRequires:  libnl3-devel
-BuildRequires:  libpcap-devel
+BuildRequires:  libpcap-devel >= 1.5.0
 BuildRequires:  libselinux-devel
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libtirpc-devel
@@ -338,11 +338,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         6c1dddaf-libxl-shutdown-inhibit.patch
-Patch1:         849052ec-libxl-support-credit2.patch
-Patch2:         72ed254b-drop-exec-perms-bashcompletion.patch
-Patch3:         e092daac-prohib-parallel-tunneled-mig.patch
-Patch4:         ae9e6c2a-qemu-allow-cond-format-probe.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -876,11 +871,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1731,6 +1721,8 @@ fi
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/%{name}/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/%{name}/qemu/
+%{_bindir}/virt-qemu-run
+%{_mandir}/man1/virt-qemu-run.1*
 %endif
 
 %if %{with_lxc}

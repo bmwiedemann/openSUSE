@@ -1,9 +1,9 @@
 Adjust libvirt-guests service to conform to SUSE standards
 
-Index: libvirt-6.0.0/tools/libvirt-guests.sh.in
+Index: libvirt-6.1.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-6.0.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-6.0.0/tools/libvirt-guests.sh.in
+--- libvirt-6.1.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-6.1.0/tools/libvirt-guests.sh.in
 @@ -16,14 +16,13 @@
  # License along with this library.  If not, see
  # <http://www.gnu.org/licenses/>.
@@ -163,10 +163,10 @@ Index: libvirt-6.0.0/tools/libvirt-guests.sh.in
  esac
 -exit $RETVAL
 +rc_exit
-Index: libvirt-6.0.0/tools/libvirt-guests.sysconf
+Index: libvirt-6.1.0/tools/libvirt-guests.sysconf
 ===================================================================
---- libvirt-6.0.0.orig/tools/libvirt-guests.sysconf
-+++ libvirt-6.0.0/tools/libvirt-guests.sysconf
+--- libvirt-6.1.0.orig/tools/libvirt-guests.sysconf
++++ libvirt-6.1.0/tools/libvirt-guests.sysconf
 @@ -1,19 +1,29 @@
 +## Path: System/Virtualization/libvirt-guests
 +

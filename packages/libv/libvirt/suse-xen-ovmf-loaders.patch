@@ -5,13 +5,13 @@ upstream support for firmware autoselection in the xen driver. Sadly, the
 upstream efforts to improve firmware handling in the qemu driver broke
 the firmware handling in the xen driver.
 
-Index: libvirt-6.0.0/src/libxl/libxl_conf.c
+Index: libvirt-6.1.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-6.0.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-6.0.0/src/libxl/libxl_conf.c
-@@ -1776,6 +1776,15 @@ libxlDriverConfigNew(void)
-         goto error;
-     }
+--- libvirt-6.1.0.orig/src/libxl/libxl_conf.c
++++ libvirt-6.1.0/src/libxl/libxl_conf.c
+@@ -1738,6 +1738,15 @@ libxlDriverConfigNew(void)
+     cfg->autoDumpDir = g_strdup(LIBXL_DUMP_DIR);
+     cfg->channelDir = g_strdup(LIBXL_CHANNEL_DIR);
  
 +    /* Begin hack ---
 +     * bsc#1159793: Until there is time to work on proper upstream support for
