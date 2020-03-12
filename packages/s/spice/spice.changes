@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:40:53 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Clean up some spec file conditionals that are no longer helpful
+
+-------------------------------------------------------------------
 Fri Feb 28 19:05:21 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to v0.14.3 release

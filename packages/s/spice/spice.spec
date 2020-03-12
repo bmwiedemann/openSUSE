@@ -16,19 +16,11 @@
 #
 
 
-%define libname libspice-server1
-%if 0%{?suse_version} >=1330 || 0%{?is_opensuse}
-%bcond_without libcard
-%if 0%{?suse_version} < 1330
-%bcond_with lz4
-%else
 %bcond_without lz4
-%endif
-%else
-%bcond_with libcard
-%bcond_with lz4
-%endif
+%bcond_without libcard
 %bcond_with celt051
+
+%define libname libspice-server1
 Name:           spice
 Version:        0.14.3
 Release:        0
@@ -42,8 +34,11 @@ Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-plugins-good
+BuildRequires:  gstreamer-plugins-libav
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-pyparsing
+BuildRequires:  python3-six
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -63,17 +58,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     gstreamer-plugins-good
-%if 0%{?suse_version} < 1500
-BuildRequires:  python-pyparsing
-BuildRequires:  python-six
-%else
-BuildRequires:  python3-pyparsing
-BuildRequires:  python3-six
-%if 0%{?is_opensuse}
-BuildRequires:  gstreamer-plugins-libav
 Recommends:     gstreamer-plugins-libav
-%endif
-%endif
 %if %{with celt051}
 BuildRequires:  pkgconfig(celt051)
 %endif
