@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * appdata: use canonical docs.kde.org help location
+  * Homescreen: Fix Layout of Lesson Locked Notice
+
+-------------------------------------------------------------------
 Fri Feb  7 08:38:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
