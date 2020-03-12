@@ -18,9 +18,11 @@
 
 %define kf5_version 5.58.0
 
+%global have_ibus_dict_emoji_pkg (0%{?suse_version} > 1500)
+
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.18.2
+Version:        5.18.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -178,6 +180,9 @@ Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 # Other color fonts don't really work that well
 Recommends:     noto-coloremoji-fonts
+%if %{have_ibus_dict_emoji_pkg}
+Requires:       ibus-dict-emoji
+%endif
 
 %description emojier
 Press Meta+. to open an emoji selection window.
@@ -191,8 +196,10 @@ Press Meta+. to open an emoji selection window.
 sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/package/metadata.desktop
 
 %build
+%if !%{have_ibus_dict_emoji_pkg}
   # Reference the local copy (see the comment in the install section)
   sed -i"" 's#ibus/dicts/#plasma/ibus-emoji-dicts/#g' applets/kimpanel/backend/ibus/emojier/emojier.cpp
+%endif
 
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
@@ -217,11 +224,13 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   # remove this once kpackagetool5 is fixed
   find %{buildroot}%{_kf5_appstreamdir} -type f -size 0 -print -delete
 
+%if !%{have_ibus_dict_emoji_pkg}
   # The emojier needs .dict files from ibus, which are part of the ibus package.
   # That's a huge dep tree and is also known to break things such as keyboard layout selection.
   # So until that is fixed (boo#1161584) install the files as part of the package.
   mkdir -p %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
   cp %{_datadir}/ibus/dicts/emoji-*.dict %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
+%endif
 
   # no devel files needed here
   rm -rfv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
@@ -312,7 +321,9 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_applicationsdir}/org.kde.plasma.emojier.desktop
 %dir %{_kf5_sharedir}/kglobalaccel
 %{_kf5_sharedir}/kglobalaccel/org.kde.plasma.emojier.desktop
+%if !%{have_ibus_dict_emoji_pkg}
 %{_kf5_plasmadir}/ibus-emoji-dicts/
+%endif
 
 %if %{with lang}
 %files lang -f %{name}.lang
