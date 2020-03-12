@@ -68,6 +68,7 @@ Source2:        %{name}.keyring
 Source4:        README.debug
 Source5:        suse-test-run
 Source7:        README.install
+Source12:       mysql-user.conf
 Source14:       my.ini
 Source15:       mariadb.service
 Source16:       mariadb.target
@@ -114,7 +115,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  procps
 # Some tests and myrocks_hotbackup script need python3
 BuildRequires:  python3
-BuildRequires:  shadow
 BuildRequires:  sqlite
 BuildRequires:  tcpd-devel
 # Tests requires time and ps and some perl modules
@@ -137,6 +137,12 @@ BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
 # Do not ever switch away from BuildRequires: pkgconfig(libsystemd); BuildRequires systemd/systemd-devel causes build cycles
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+# Require mysql user
+Requires(pre):  user(mysql)
+Requires:       user(mysql)
+#!BuildIgnore:  user(mysql)
 # Required by rcmysql
 Requires:       %{name}-client
 Requires:       %{name}-errormessages = %{version}
@@ -147,7 +153,6 @@ Requires:       perl-base
 # myrocks_hotbackup needs MySQLdb - if we want to use it under python3, we need python3-mysqlclient
 Requires:       python3-mysqlclient
 Requires(post): permissions
-Requires(pre):  shadow
 Recommends:     logrotate
 Conflicts:      mariadb-server
 Conflicts:      mysql
@@ -234,10 +239,10 @@ Group:          Productivity/Databases/Clients
 Requires:       %{name}-errormessages = %{version}
 # Explicit requires to pull in charsets for errormessages
 Requires:       libmariadb3 >= 3.0
-Requires(pre):  shadow
 Conflicts:      mysql-client
 Provides:       mysql-client = %{version}
 Obsoletes:      mysql-client < %{version}
+%sysusers_requires
 
 %description client
 This package contains the standard clients for MariaDB.
@@ -470,6 +475,8 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -Wno-dev "$@" ..
 make %{?_smp_mflags}
 nm --numeric-sort sql/mysqld > sql/mysqld.sym
+cd ..
+%sysusers_generate_pre %{SOURCE12} mysql
 
 %install
 # Helper function to generate filelist for binaries and their manpages
@@ -690,6 +697,10 @@ mkdir -p %{buildroot}/%{_lib}/security
 mv %{buildroot}/lib/security/pam_user_map.so %{buildroot}/%{_lib}/security/
 %endif
 
+# Install sysusers.d file
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
+
 %check
 cd build
 
@@ -719,23 +730,9 @@ cd mysql-test
 %endif
 
 # client does not require server and needs the user too
-%pre client
-getent group mysql >/dev/null || groupadd -r mysql
-getent passwd mysql >/dev/null || useradd -r -o -g mysql -u 60 -c "MySQL database admin" \
-                  -s /bin/false -d %{_localstatedir}/lib/mysql mysql
-# if mysql user is not in mysql group or if mysql user doesn't have '/bin/false' shell set, do so
-id -Gn mysql | grep '\bmysql\b' &>/dev/null || usermod -g mysql mysql
-getent passwd mysql | cut -d: -f7 | grep '\b/bin/false\b' &>/dev/null || usermod -s /bin/false mysql
-exit 0
+%pre client -f mysql.pre
 
 %pre
-getent group mysql >/dev/null || groupadd -r mysql
-getent passwd mysql >/dev/null || useradd -r -o -g mysql -u 60 -c "MySQL database admin" \
-                  -s /bin/false -d %{_localstatedir}/lib/mysql mysql
-# if mysql user is not in mysql group or if mysql user doesn't have '/bin/false' shell set, do so
-id -Gn mysql | grep '\bmysql\b' &>/dev/null || usermod -g mysql mysql
-getent passwd mysql | cut -d: -f7 | grep '\b/bin/false\b' &>/dev/null || usermod -s /bin/false mysql
-
 %service_add_pre mariadb.service
 
 %post
@@ -893,6 +890,7 @@ exit 0
 %dir %{_libdir}/mysql
 %dir %{_libdir}/mysql/plugin
 %{_libdir}/mysql/plugin/dialog_examples.so
+%{_sysusersdir}/mysql-user.conf
 
 %files galera -f mariadb-galera.files
 %doc Docs/README.wsrep

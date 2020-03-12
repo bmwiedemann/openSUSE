@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 26 16:25:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Cleanup mysql user creation/handling and use sysusers.d
+
+-------------------------------------------------------------------
 Tue Feb 25 19:40:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Bump disk constraint to 18Gb
