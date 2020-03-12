@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 02:08:52 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix argyllcms--gcc--fno-common.patch according to the upstream
+  (bsc#1160256#c5).
+
+-------------------------------------------------------------------
 Thu Mar  5 02:49:25 CET 2020 - sbrabec@suse.com
 
 - Update to version 2.1.2:
