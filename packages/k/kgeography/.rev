@@ -923,4 +923,12 @@
     <comment>KDE Applications 19.12.2</comment>
     <requestid>771654</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>4f3e21c5e546ac8b37354960bd5a4779</srcmd5>
+    <version>19.12.3</version>
+    <time>1584050560</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 19.12.3</comment>
+    <requestid>782385</requestid>
+  </revision>
 </revisionlist>
