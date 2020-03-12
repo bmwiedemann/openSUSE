@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:39:11 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- ceph: orchestrator cli name change
+  * Add orchestrator-cli-rename.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 12:36:38 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - ceph: populate CSI configmap for external cluster

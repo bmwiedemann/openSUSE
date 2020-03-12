@@ -40,6 +40,8 @@ Patch0:         csi-dummy-images.patch
 Patch1:         csi-template-paths.patch
 # Change the default FlexVolume dir path to support Kubic.
 Patch2:         flexvolume-dir.patch
+# Orchestrator CLI renamed from orchestrator -> orch
+Patch3:         orchestrator-cli-rename.patch
 
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
@@ -137,6 +139,7 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
