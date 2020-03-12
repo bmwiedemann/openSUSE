@@ -336,4 +336,15 @@
     https://github.com/Pylons/webob/pull/379</comment>
     <requestid>663312</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dc9bb1553f750c4f262ae46d24e06ec5</srcmd5>
+    <version>1.8.6</version>
+    <time>1584050336</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.6:
+  - The SameSite value now includes a new option named &quot;None&quot;, this is a new
+   change that was introduced in
+   https://tools.ietf.org/html/draft-west-cookie-incrementalism-00</comment>
+    <requestid>783693</requestid>
+  </revision>
 </revisionlist>

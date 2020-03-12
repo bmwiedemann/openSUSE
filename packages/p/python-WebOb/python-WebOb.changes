@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 08:52:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.8.6:
+  - The SameSite value now includes a new option named "None", this is a new
+   change that was introduced in
+   https://tools.ietf.org/html/draft-west-cookie-incrementalism-00
+
+-------------------------------------------------------------------
 Mon Jan  7 09:55:07 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 update to 1.8.5:
