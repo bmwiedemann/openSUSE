@@ -1,7 +1,7 @@
 #
 # spec file for package python-websocket-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,16 @@
 %else
 %define ssl_match_hostname python-backports.ssl_match_hostname
 %endif
+%bcond_without python2
 Name:           python-websocket-client
-Version:        0.56.0
+Version:        0.57.0
 Release:        0
 Summary:        WebSocket client implementation
 License:        LGPL-2.1-only
-Group:          Development/Languages/Python
 URL:            https://github.com/liris/websocket-client/releases
 Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket_client-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{ssl_match_hostname}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
@@ -42,6 +41,9 @@ Requires(postun): update-alternatives
 Provides:       python-websocket-client-test = %{version}
 Obsoletes:      python-websocket-client-test < %{version}
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  %{ssl_match_hostname}
+%endif
 %ifpython2
 Requires:       %{ssl_match_hostname}
 %endif

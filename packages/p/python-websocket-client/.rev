@@ -133,4 +133,21 @@
   * Retry connect on &quot;Interrupted system call&quot; (#528)</comment>
     <requestid>694795</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cec8ffc4ca4c5385048f4a5f4727bb7c</srcmd5>
+    <version>0.57.0</version>
+    <time>1584050337</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2
+
+- update to 0.57.0
+  * wsdump: Fix --headers option
+  * Fix getting 400 bad request with long proxy authorization string
+  * Create dummy `ssl` object
+  * Show compressed text messages in wsdump.py
+  * Expose http connection header to user
+  * fix the compatible issue with gevent+dnspython
+  * _handshake: hasattr checks on six before accessing the values</comment>
+    <requestid>784164</requestid>
+  </revision>
 </revisionlist>
