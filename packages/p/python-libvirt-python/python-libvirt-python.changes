@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 01:53:51 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to 6.1.0
+  - Add all new APIs and constants in libvirt 6.1.0
+
+-------------------------------------------------------------------
+Thu Feb  6 23:16:01 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Stop building for python2
+  Dropped patches: revert-b22e4f24.patch
+
+-------------------------------------------------------------------
 Wed Jan 15 19:33:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to 6.0.0

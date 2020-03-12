@@ -307,4 +307,16 @@ file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
     revert-b22e4f24.patch</comment>
     <requestid>765097</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d09e1a1d4d195fa08194b835f524c796</srcmd5>
+    <version>6.1.0</version>
+    <time>1584050329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.0
+  - Add all new APIs and constants in libvirt 6.1.0
+
+- Stop building for python2
+  Dropped patches: revert-b22e4f24.patch</comment>
+    <requestid>783429</requestid>
+  </revision>
 </revisionlist>

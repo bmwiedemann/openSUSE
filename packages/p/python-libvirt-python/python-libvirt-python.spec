@@ -1,7 +1,7 @@
 #
 # spec file for package python-libvirt-python
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,14 @@
 #
 
 
+# No longer build for python2. Support was dropped upstream in the 6.0.0 release
+%define skip_python2  1
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define srcname libvirt-python
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -28,7 +31,6 @@ Group:          Development/Languages/Python
 Source0:        %{srcname}-%{version}.tar.gz
 Source1:        %{srcname}-%{version}.tar.gz.asc
 Source2:        python-libvirt-python.keyring
-Patch0:         revert-b22e4f24.patch
 BuildRequires:  fdupes
 BuildRequires:  libvirt-devel = %{version}
 BuildRequires:  python-rpm-macros
@@ -50,7 +52,6 @@ of recent versions of Linux (v2.6.20+).
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch0 -p1
 
 # Unset execute bit for example scripts; it can introduce spurious
 # RPM dependencies, like /usr/bin/python which can pull in python2
