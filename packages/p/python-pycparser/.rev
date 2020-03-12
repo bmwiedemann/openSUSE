@@ -102,4 +102,23 @@
     <comment></comment>
     <requestid>664444</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>245caac125c72c501d04829158e2f8f7</srcmd5>
+    <version>2.20</version>
+    <time>1584050279</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.20:
+    - #61: Fix slow backtracking when parsing strings.
+    - #99: Parser for FuncDecl incorrectly sets declname attribute on return type.
+    - #310: Fix crash when file starts with a semicolon.
+    - #313: Fix array type generation.
+    - #314: Fix failed parsing of unnamed function parameters with array dim
+      qualifiers.
+    - #315: Fix pointer type generation.
+    - #324: Fixes for u/l constant integer suffix.
+    - #346: Fix error transforming an empty switch.
+    - #350: Recognize integer multicharacter constants like 'ABCD'.
+    - #363: Fix incorrect AST when parsing offsetof.</comment>
+    <requestid>783100</requestid>
+  </revision>
 </revisionlist>
