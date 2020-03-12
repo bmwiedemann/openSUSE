@@ -1,7 +1,7 @@
 #
 # spec file for package lsb-release
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lsb-release
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Linux Standard Base Release Tools
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Fhs
-Url:            https://github.com/thkukuk/lsb-release_os-release
-Source:         lsb-release-3.0.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/thkukuk/lsb-release_os-release
+Source:         lsb-release-%{version}.tar.gz
 BuildArch:      noarch
 
 %description
@@ -34,19 +33,14 @@ Tools from the Linux Standard Base project to determine the used distribution
 %setup -q
 
 %build
-# for openSUSE, the distributor is the openSUSE project
-%if 0%{?is_opensuse}
-sed -e 's/^MSG_DISTRIBUTOR=".*"/MSG_DISTRIBUTOR="openSUSE"/' -i lsb_release
-%endif
 make
 
 %install
 make install INSTALL_ROOT=%{buildroot}%{_prefix}
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/lsb?release
-%{_mandir}/man1/lsb?release.1%{ext_man}
+%{_mandir}/man1/lsb?release.1%{?ext_man}
 
 %changelog

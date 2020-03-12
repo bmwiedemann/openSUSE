@@ -137,4 +137,13 @@ Sourcing /etc/os-release instead of parsing /etc/SuSE-release and extracting the
     <comment>1</comment>
     <requestid>517632</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f4873a6009cadebe71fddd7b2ec81cb3</srcmd5>
+    <version>3.1</version>
+    <time>1584050331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1
+  - Define Distribution ID based on PRETTY_NAME (forwarded request 783516 from kukuk)</comment>
+    <requestid>783517</requestid>
+  </revision>
 </revisionlist>

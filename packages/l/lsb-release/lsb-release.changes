@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 18:41:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.1
+  - Define Distribution ID based on PRETTY_NAME
+
+-------------------------------------------------------------------
 Tue Aug 15 11:23:34 CEST 2017 - kukuk@suse.de
 
 - Update to lsb-release 3.0
