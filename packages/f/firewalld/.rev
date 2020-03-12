@@ -931,4 +931,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>781833</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>96f3ed060d88541a7968228140bb2bfe</srcmd5>
+    <version>0.7.3</version>
+    <time>1584050276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783096</requestid>
+  </revision>
 </revisionlist>

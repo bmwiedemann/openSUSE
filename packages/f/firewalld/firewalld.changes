@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Mar 08 17:20:42 UTC 2020 - hpj@urpla.net
+
+- Update to version 0.7.3:
+  * release: v0.7.3
+  * chore: update translations
+  * doc: README: add note about integration tests
+  * test: check-container: also run check-integration
+  * test: integration: NM zone overrides interface on reload
+  * test: build: support integration tests
+  * test: functions: add macro NMCLI_CHECK
+  * test: functions: new macros for starting/stopping NetworkManager
+  * fix: test: leave "cleanup" for tests cases
+  * test: check-container: add support for fedora rawhide
+  * test: check-container: add support for debian sid
+  * test: build: add support for running in containers
+  * fix: test/functions: FWD_END_TEST: improve grep for errors/warnings
+  * fix: test: direct passthrough: no need to check for dummy module
+  * fix: test: CHECK_NAT_COEXISTENCE: only check for kernel version
+  * fix: reload: let NM interface assignments override permanent config
+  * chore: tests: rename IF_IPV6_SUPPORTED to IF_HOST_SUPPORTS_IPV6_RULES
+  * fix: tests: convert host ipv6 checks to runtime
+  * fix: tests: convert ip6tables checks to runtime
+  * fix: tests: convert probe of nft numeric args to runtime
+  * fix: tests: convert nftables fib checks to runtime
+  * fix: build: distribute testsuite
+  * fix: don't probe for available kernel modules
+  * fix: failure to load modules no longer fatal
+  * fix: tests/functions: canonicalize XML output
+  * chore: doc: update authors
+  * fix: test: use debug output based on autotest variable
+  * fix: src/tests/Makefile: distclean should clean atconfig
+
+-------------------------------------------------------------------
 Tue Feb  4 20:49:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
