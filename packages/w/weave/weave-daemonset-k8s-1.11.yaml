@@ -5,15 +5,6 @@ items:
     kind: ServiceAccount
     metadata:
       name: weave-net
-      annotations:
-        cloud.weave.works/launcher-info: |-
-          {
-            "original-request": {
-              "url": "/k8s/v1.10/net.yaml
-              "date": "Sat Nov 02 2019 19:09:03 GMT+0000 (UTC)"
-            },
-            "email-address": "support@weave.works"
-          }
       labels:
         name: weave-net
       namespace: kube-system
@@ -21,15 +12,6 @@ items:
     kind: ClusterRole
     metadata:
       name: weave-net
-      annotations:
-        cloud.weave.works/launcher-info: |-
-          {
-            "original-request": {
-              "url": "/k8s/v1.10/net.yaml
-              "date": "Sat Nov 02 2019 19:09:03 GMT+0000 (UTC)"
-            },
-            "email-address": "support@weave.works"
-          }
       labels:
         name: weave-net
     rules:
@@ -44,7 +26,7 @@ items:
           - list
           - watch
       - apiGroups:
-          - networking.k8s.io
+          - extensions
         resources:
           - networkpolicies
         verbs:
@@ -52,25 +34,24 @@ items:
           - list
           - watch
       - apiGroups:
-          - ''
+          - 'networking.k8s.io'
         resources:
-          - nodes/status
+          - networkpolicies
         verbs:
-          - patch
-          - update
+          - get
+          - list
+          - watch
+      - apiGroups:
+        - ''
+        resources:
+        - nodes/status
+        verbs:
+        - patch
+        - update
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
       name: weave-net
-      annotations:
-        cloud.weave.works/launcher-info: |-
-          {
-            "original-request": {
-              "url": "/k8s/v1.10/net.yaml
-              "date": "Sat Nov 02 2019 19:09:03 GMT+0000 (UTC)"
-            },
-            "email-address": "support@weave.works"
-          }
       labels:
         name: weave-net
     roleRef:
@@ -85,25 +66,16 @@ items:
     kind: Role
     metadata:
       name: weave-net
-      annotations:
-        cloud.weave.works/launcher-info: |-
-          {
-            "original-request": {
-              "url": "/k8s/v1.10/net.yaml
-              "date": "Sat Nov 02 2019 19:09:03 GMT+0000 (UTC)"
-            },
-            "email-address": "support@weave.works"
-          }
+      namespace: kube-system
       labels:
         name: weave-net
-      namespace: kube-system
     rules:
       - apiGroups:
           - ''
-        resourceNames:
-          - weave-net
         resources:
           - configmaps
+        resourceNames:
+          - weave-net
         verbs:
           - get
           - update
@@ -117,18 +89,9 @@ items:
     kind: RoleBinding
     metadata:
       name: weave-net
-      annotations:
-        cloud.weave.works/launcher-info: |-
-          {
-            "original-request": {
-              "url": "/k8s/v1.10/net.yaml
-              "date": "Sat Nov 02 2019 19:09:03 GMT+0000 (UTC)"
-            },
-            "email-address": "support@weave.works"
-          }
+      namespace: kube-system
       labels:
         name: weave-net
-      namespace: kube-system
     roleRef:
       kind: Role
       name: weave-net
@@ -141,23 +104,15 @@ items:
     kind: DaemonSet
     metadata:
       name: weave-net
-      annotations:
-        cloud.weave.works/launcher-info: |-
-          {
-            "original-request": {
-              "url": "/k8s/v1.10/net.yaml
-              "date": "Sat Nov 02 2019 19:09:03 GMT+0000 (UTC)"
-            },
-            "email-address": "support@weave.works"
-          }
       labels:
         name: weave-net
       namespace: kube-system
     spec:
-      minReadySeconds: 5
+      # Wait 5 seconds to let pod connect before rolling next pod
       selector:
         matchLabels:
           name: weave-net
+      minReadySeconds: 5
       template:
         metadata:
           labels:
@@ -173,7 +128,7 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: 'registry.opensuse.org/kubic/weave-kube:2.6.0'
+              image: 'weaveworks/weave-kube:2.6.1'
               readinessProbe:
                 httpGet:
                   host: 127.0.0.1
@@ -181,7 +136,7 @@ items:
                   port: 6784
               resources:
                 requests:
-                  cpu: 10m
+                  cpu: 50m
               securityContext:
                 privileged: true
               volumeMounts:
@@ -199,6 +154,7 @@ items:
                   mountPath: /lib/modules
                 - name: xtables-lock
                   mountPath: /run/xtables.lock
+                  readOnly: false
             - name: weave-npc
               env:
                 - name: HOSTNAME
@@ -206,16 +162,19 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: 'registry.opensuse.org/kubic/weave-npc:2.6.0'
+              image: 'weaveworks/weave-npc:2.6.1'
+#npc-args
               resources:
                 requests:
-                  cpu: 10m
+                  cpu: 50m
               securityContext:
                 privileged: true
               volumeMounts:
                 - name: xtables-lock
                   mountPath: /run/xtables.lock
+                  readOnly: false
           hostNetwork: true
+          dnsPolicy: ClusterFirstWithHostNet
           hostPID: true
           restartPolicy: Always
           securityContext:
@@ -223,6 +182,8 @@ items:
           serviceAccountName: weave-net
           tolerations:
             - effect: NoSchedule
+              operator: Exists
+            - effect: NoExecute
               operator: Exists
           volumes:
             - name: weavedb
@@ -247,5 +208,6 @@ items:
               hostPath:
                 path: /run/xtables.lock
                 type: FileOrCreate
+          priorityClassName: system-node-critical
       updateStrategy:
         type: RollingUpdate

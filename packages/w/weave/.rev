@@ -42,4 +42,18 @@
 - Update weave.yaml for kubernetes 1.16</comment>
     <requestid>746153</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d2732cd76a2c8f1f52342a777b24911</srcmd5>
+    <version>2.6.1</version>
+    <time>1584050324</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in url
+
+- weave-kubic needs modprobe
+
+- Update weave to 2.6.1
+  - Fix possible deadlock
+  - disable-iptables-setup.patch</comment>
+    <requestid>783369</requestid>
+  </revision>
 </revisionlist>

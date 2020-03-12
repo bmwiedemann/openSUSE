@@ -1,7 +1,7 @@
 #
 # spec file for package weave
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           weave
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Pod Network Add-On
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/weaveworks/weave
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
-Source2:        weave-k8s-1.16.yaml
+Source1:        vendor.tar.xz
+Source2:        weave-daemonset-k8s-1.11.yaml
 # This package contains the content of a container image, so yes,
 # this includes the home directory and the database.
 Source3:        weave-rpmlintrc
 Patch0:         Makefile.diff
-#BuildRequires:  golang-packaging
+Patch1:         disable-iptables-setup.patch
 BuildRequires:  binutils-gold
 BuildRequires:  libpcap-devel
 BuildRequires:  golang(API) >= 1.12
@@ -55,6 +55,7 @@ Requires:       curl
 Requires:       iproute2
 Requires:       ipset
 Requires:       iptables
+Requires:       kmod-compat
 
 %description kube
 Weave Net creates a virtual network that connects containers across multiple
@@ -103,6 +104,7 @@ container runtimes.
 rm -rf vendor
 tar xf %{SOURCE1}
 %patch0 -p1
+%patch1 -p1
 
 %build
 make %{?_smp_mflags} exes WEAVE_VERSION=%{version}
@@ -126,6 +128,7 @@ install -m 0644 prog/weave-npc/ulogd.conf %{buildroot}%{_sysconfdir}/ulogd.conf.
 
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/weave
 install -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/k8s-yaml/weave/weave.yaml
+sed -i -e 's|weaveworks/weave-|registry.opensuse.org/kubic/weave-|g' %{buildroot}%{_datadir}/k8s-yaml/weave/weave.yaml
 
 %files kube
 %license LICENSE

@@ -1,0 +1,22 @@
+--- a/prog/weave-kube/launch.sh
++++ b/prog/weave-kube/launch.sh	2020/03/09 14:39:53
+@@ -52,7 +52,7 @@
+     [ -z "$NOT_EXIST" ] || (echo "\"xt_set\" does not exist" >&2 && return 1)
+ }
+ 
+-setup_iptables_backend
++#setup_iptables_backend
+ 
+ # Default if not supplied - same as weave net default
+ IPALLOC_RANGE=${IPALLOC_RANGE:-10.32.0.0/12}
+--- a/prog/weave-npc/launch.sh
++++ b/prog/weave-npc/launch.sh	2020/03/09 14:40:07
+@@ -30,7 +30,7 @@
+     fi
+ }
+ 
+-setup_iptables_backend
++#setup_iptables_backend
+ 
+ # Start weave-npc with any flags specified in $EXTRA_ARGS as well as any flags passed to this container (for backwards compatibility)
+ exec /usr/bin/weave-npc $EXTRA_ARGS $@
