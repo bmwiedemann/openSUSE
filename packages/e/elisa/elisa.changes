@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:35:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * appdata: use canonical docs.kde.org help location
+  * set TextInput::selectByMouse to true to fix text selection
+  * limit the rate with which progress is sent via MPRIS (kde#416179)
+
+-------------------------------------------------------------------
 Fri Feb  7 08:36:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
