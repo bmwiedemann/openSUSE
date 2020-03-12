@@ -34,6 +34,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell
 Source:         https://files.pythonhosted.org/packages/source/d/dephell/dephell-%{version}.tar.gz
+Patch0:         never-pin-deps.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  bash
@@ -135,6 +136,7 @@ test, build graph, show outdated, audit. Manage venvs, build package, bump versi
 
 %prep
 %setup -q -n dephell-%{version}
+%patch0 -p1
 
 find tests -type d -name __pycache__ | xargs rm -rf
 

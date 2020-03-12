@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:17:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove -DVTK_PYTHON_SITE_PACKAGES_SUFFIX silently added with the
+  last change. As it specifies the path relative to the install
+  prefix, setting it to the absolute python_sitearch is obviously
+  wrong. As VTK figures out the correct path by itself, it is
+  completely unnecessary.
+
+-------------------------------------------------------------------
+Tue Mar 10 14:06:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building with python 3.8:
+  * python38.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 22:45:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add openmpi3 flavor.

@@ -103,4 +103,14 @@
 - And now whole test suite passes. Yay!</comment>
     <requestid>781261</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dc445947344ba9a11c852334362920bd</srcmd5>
+    <version>0.8.1</version>
+    <time>1584050933</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not pin deps, do not remove as it is generated
+  by upsream from toml but always refresh as needed:
+  * never-pin-deps.patch</comment>
+    <requestid>784351</requestid>
+  </revision>
 </revisionlist>

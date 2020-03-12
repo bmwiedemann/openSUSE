@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,10 @@ manager for Wayland.
 
 %build
 export CFLAGS="%{optflags}"
-%meson
+%meson \
+%if 0%{?suse_version} < 1550
+  -Dtray=disabled
+%endif
 
 %meson_build
 

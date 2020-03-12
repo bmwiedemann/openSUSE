@@ -1,0 +1,76 @@
+From ef4aaff92087fa708c47fa4df44caee77a7c3508 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Wed, 4 Mar 2020 18:47:55 +0100
+Subject: [PATCH] ARM: dts: bcm2711: Move emmc2 into its own bus
+
+Depending on bcm2711's revision its emmc2 controller might have
+different DMA constraints. Raspberry Pi 4's firmware will take care of
+updating those, but only if a certain alias is found in the device tree.
+So, move emmc2 into its own bus, so as not to pollute other devices with
+dma-ranges changes and create the emmc2bus alias.
+
+Based in Phil ELwell's downstream implementation.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts |  1 +
+ arch/arm/boot/dts/bcm2711.dtsi        | 25 ++++++++++++++++++++-----
+ 2 files changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+index e5978243aa9c..2814c0904e6b 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -19,6 +19,7 @@ memory@0 {
+ 	};
+ 
+ 	aliases {
++		emmc2bus = &emmc2bus;
+ 		ethernet0 = &genet;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/bcm2711.dtsi b/arch/arm/boot/dts/bcm2711.dtsi
+index e2f6ffb00aa9..3dd55936819b 100644
+--- a/arch/arm/boot/dts/bcm2711.dtsi
++++ b/arch/arm/boot/dts/bcm2711.dtsi
+@@ -252,17 +252,32 @@ pwm1: pwm@7e20c800 {
+ 			status = "disabled";
+ 		};
+ 
++		hvs@7e400000 {
++			interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
++		};
++	};
++
++	/*
++	* emmc2 has different DMA constraints based on SoC revisions. It was
++	* moved into its own bus, so as for RPi4's firmware to update them.
++	* The firmware will find whether the emmc2bus alias is defined, and if
++	* so, it'll edit the dma-ranges property below accordingly.
++	*/
++	emmc2bus: emmc2bus {
++		compatible = "simple-bus";
++		#address-cells = <2>;
++		#size-cells = <1>;
++
++		ranges = <0x0 0x7e000000  0x0 0xfe000000  0x01800000>;
++		dma-ranges = <0x0 0xc0000000  0x0 0x00000000  0x40000000>;
++
+ 		emmc2: emmc2@7e340000 {
+ 			compatible = "brcm,bcm2711-emmc2";
+-			reg = <0x7e340000 0x100>;
++			reg = <0x0 0x7e340000 0x100>;
+ 			interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&clocks BCM2711_CLOCK_EMMC2>;
+ 			status = "disabled";
+ 		};
+-
+-		hvs@7e400000 {
+-			interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
+-		};
+ 	};
+ 
+ 	arm-pmu {
+-- 
+2.25.1
+

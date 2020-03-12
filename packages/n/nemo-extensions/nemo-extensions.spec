@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@
 %define __requires_exclude typelib\\((Vte))\ =
 %define _version 4.0.0
 Name:           nemo-extensions
-Version:        4.2.0
+Version:        4.4.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
@@ -36,10 +36,10 @@ Patch1:         nemo-dropbox_no-dropbox-bin.patch
 Patch3:         nemo-gtkhash_openssl-1.1.patch
 # PATCH-FIX-UPSTREAM nemo-share-prevent-privilege-escalation.patch bsc#1084703 -- Prevent unprivileged users from adding other users to sambashare (commit a831e7b).
 Patch4:         nemo-share-prevent-privilege-escalation.patch
+BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  gnome-common
 BuildRequires:  intltool
-BuildRequires:  fdupes
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
@@ -49,9 +49,8 @@ BuildRequires:  meson
 BuildRequires:  mhash-devel
 BuildRequires:  nemo-devel
 BuildRequires:  openssl-devel
+BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  python-gtk-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(cjs-1.0)
@@ -64,7 +63,8 @@ BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  pkgconfig(libnotify)
@@ -75,10 +75,12 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xreader-document-1.5)
 BuildRequires:  pkgconfig(xreader-view-1.5)
 %if 0%{?suse_version} >= 1500
+BuildRequires:  python3-devel
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-docutils
 BuildRequires:  python3-setuptools
 %else
+BuildRequires:  python-devel
 BuildRequires:  python-distutils-extra
 BuildRequires:  python-docutils
 BuildRequires:  python-setuptools
@@ -88,7 +90,7 @@ BuildRequires:  python-setuptools
 Set of extensions for Nemo, the Cinnamon file manager.
 
 %if 0%{?suse_version} >= 1500
-%package -n python2-nemo
+%package -n python3-nemo
 %else
 %package -n python-nemo
 %endif
@@ -99,13 +101,17 @@ Requires:       nemo >= %{_version}
 # nemo-python was last used in openSUSE 13.2.
 Provides:       nemo-python = %{version}
 Obsoletes:      nemo-python < %{version}
+
 %if 0%{?suse_version} >= 1500
-Provides:       python2-nemo-devel = %{version}
+Provides:       python3-nemo-devel = %{version}
+Obsoletes:      python2-nemo-devel < %{version}
+Provides:       python2-nemo = %{version}
+Obsoletes:      python2-nemo < %{version}
 # python-nemo was last used in openSUSE Leap 42.3.
 Provides:       python-nemo = %{version}
 Obsoletes:      python-nemo < %{version}
 
-%description -n python2-nemo
+%description -n python3-nemo
 %else
 Provides:       python-nemo-devel = %{version}
 
@@ -121,8 +127,8 @@ Requires:       nemo >= %{_version}
 Recommends:     %{name}-lang
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
-Requires:       python2-mutagen
-Requires:       python2-nemo = %{version}
+Requires:       python3-mutagen
+Requires:       python3-nemo = %{version}
 %else
 Requires:       python-mutagen
 Requires:       python-nemo = %{version}
@@ -144,9 +150,9 @@ Provides:       nemo-compare = %{version}
 Obsoletes:      nemo-compare < %{version}
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
-Requires:       python2-gobject
-Requires:       python2-nemo = %{version}
-Requires:       python2-pyxdg
+Requires:       python3-gobject
+Requires:       python3-nemo = %{version}
+Requires:       python3-pyxdg
 %else
 Requires:       python-gobject
 Requires:       python-nemo = %{version}
@@ -167,7 +173,7 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 Requires:       dropbox
 Requires:       nemo >= %{_version}
-Supplements:    packageand(dropbox:nemo)
+Supplements:    (dropbox and nemo)
 # nemo-dropbox was last used in openSUSE 13.2.
 Provides:       nemo-dropbox = %{version}
 Obsoletes:      nemo-dropbox < %{version}
@@ -186,8 +192,8 @@ Provides:       nemo-emblems = %{version}
 Obsoletes:      nemo-emblems < %{version}
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
-Requires:       python2-gobject
-Requires:       python2-gobject-Gdk
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 %else
 Requires:       python-gobject
 Requires:       python-gobject-Gdk
@@ -204,7 +210,7 @@ Group:          System/GUI/Other
 Requires:       file-roller
 Requires:       nemo >= %{_version}
 Recommends:     %{name}-lang
-Supplements:    packageand(nemo:file-roller)
+Supplements:    (nemo and file-roller)
 # nemo-fileroller was last used in openSUSE 13.2.
 Provides:       nemo-fileroller = %{version}
 Obsoletes:      nemo-fileroller < %{version}
@@ -258,9 +264,9 @@ Obsoletes:      nemo-pastebin < %{version}
 BuildArch:      noarch
 %glib2_gsettings_schema_requires
 %if 0%{?suse_version} >= 1500
-Requires:       python2-gobject
-Requires:       python2-gobject-Gdk
-Requires:       python2-pyxdg
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-pyxdg
 %else
 Requires:       python-gobject
 Requires:       python-gobject-Gdk
@@ -313,7 +319,7 @@ Group:          System/GUI/Other
 Requires:       nautilus-extension-seahorse >= 3.0
 Requires:       nemo >= %{_version}
 Recommends:     %{name}-lang
-Supplements:    packageand(nemo:seahorse)
+Supplements:    (nemo and seahorse)
 # nemo-seahorse was last used in openSUSE 13.2.
 Provides:       nemo-seahorse = %{version}
 Obsoletes:      nemo-seahorse < %{version}
@@ -329,7 +335,7 @@ Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
 Recommends:     %{name}-lang
 Recommends:     samba
-Supplements:    packageand(nemo:samba)
+Supplements:    (nemo and samba)
 # nemo-share was last used in openSUSE 13.2.
 Provides:       nemo-share = %{version}
 Obsoletes:      nemo-share < %{version}
@@ -348,9 +354,9 @@ Provides:       nemo-terminal = %{version}
 Obsoletes:      nemo-terminal < %{version}
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
-Requires:       python2-gobject
-Requires:       python2-gobject-Gdk
-Requires:       python2-nemo = %{version}
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-nemo = %{version}
 %else
 Requires:       python-gobject
 Requires:       python-gobject-Gdk
@@ -365,77 +371,78 @@ directory in Nemo.
 
 %prep
 %autosetup -p1
- 
+find -name COPYING.GPL3 -exec chmod -x '{}' \;
+
 %build
 pushd nemo-pastebin
 %py3_build
 popd
- 
+
 pushd nemo-fileroller
 NOCONFIGURE=1 ./autogen.sh
 %configure
-%make_build V=1
+%make_build
 popd
- 
+
 pushd nemo-python
 %meson
 %meson_build
 popd
- 
+
 pushd nemo-terminal
 %py3_build
 popd
- 
+
 pushd nemo-preview
 NOCONFIGURE=1 ./autogen.sh
 intltoolize -f
 %configure
-%make_build V=1
+%make_build
 popd
- 
+
 pushd nemo-emblems
 %py3_build
 popd
- 
+
 pushd nemo-image-converter
 NOCONFIGURE=1 gnome-autogen.sh
 %configure
-%make_build V=1
+%make_build
 popd
- 
+
 pushd nemo-compare
 %py3_build
 popd
- 
+
 %install
 pushd nemo-pastebin
 %py3_install
 popd
- 
+
 pushd nemo-fileroller
 %make_install
 popd
- 
+
 pushd nemo-python
 %meson_install
 popd
- 
+
 pushd nemo-terminal
 %py3_install
 popd
- 
+
 pushd nemo-preview
 %make_install
 popd
- 
+
 pushd nemo-emblems
 %py3_install
 popd
- 
+
 pushd nemo-image-converter
 %make_install
 popd
- 
+
 pushd nemo-compare
 %py3_install
 popd
@@ -446,41 +453,26 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}/%{_prefix}
 
 %if 0%{?suse_version} >= 1500
-%post -n python2-nemo -p /sbin/ldconfig
-
-%postun -n python2-nemo -p /sbin/ldconfig
+%post -n python3-nemo -p /sbin/ldconfig
+%postun -n python3-nemo -p /sbin/ldconfig
 %else
 %post -n python-nemo -p /sbin/ldconfig
-
 %postun -n python-nemo -p /sbin/ldconfig
 %endif
 
 %post -n nemo-extension-dropbox -p /sbin/ldconfig
-
 %postun -n nemo-extension-dropbox -p /sbin/ldconfig
-
 %post -n nemo-extension-fileroller -p /sbin/ldconfig
-
 %postun -n nemo-extension-fileroller -p /sbin/ldconfig
-
 %post -n nemo-extension-image-converter -p /sbin/ldconfig
-
 %postun -n nemo-extension-image-converter -p /sbin/ldconfig
-
 %post -n nemo-extension-preview -p /sbin/ldconfig
-
 %postun -n nemo-extension-preview -p /sbin/ldconfig
-
 %post -n nemo-extension-seahorse -p /sbin/ldconfig
-
 %postun -n nemo-extension-seahorse -p /sbin/ldconfig
-
 %post -n nemo-extension-repairer -p /sbin/ldconfig
-
 %postun -n nemo-extension-repairer -p /sbin/ldconfig
-
 %post -n nemo-extension-share -p /sbin/ldconfig
-
 %postun -n nemo-extension-share -p /sbin/ldconfig
 
 %if 0%{?suse_version} < 1500
@@ -506,7 +498,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %if 0%{?suse_version} >= 1500
-%files -n python2-nemo
+%files -n python3-nemo
 %else
 %files -n python-nemo
 %endif

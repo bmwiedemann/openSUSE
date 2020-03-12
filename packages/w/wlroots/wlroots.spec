@@ -93,8 +93,12 @@ Pluggable, composable modules for building a Wayland compositor.
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \
   %{?with_libcap:-Denable-libcap=true} \
+%if 0%{?suse_version} >= 1550
   %{?with_systemd:-Denable-systemd=true} \
   %{?with_elogind:-Denable-elogind=true} \
+%else
+  -Dlogind=disabled \
+%endif
   %{?with_x11_backend:-Denable-x11_backend=true} \
   %{?with_xwayland:-Denable-xwayland=true} \
   %{?with_xcb_errors:-Denable-xcb_errors=true}

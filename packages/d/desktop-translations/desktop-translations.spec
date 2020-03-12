@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-translations
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           desktop-translations
-Version:        84.87.20190924.7050555c
+Version:        84.87.20200312.febbb097
 Release:        0
 Summary:        Desktop Files Translations
 License:        MIT
 Group:          System/GUI/Other
-Url:            https://github.com/openSUSE/desktop-file-translations
+URL:            https://github.com/openSUSE/desktop-file-translations
 Source0:        desktop-file-translations-%{version}.tar.xz
 Supplements:    bundle-lang-other
 Supplements:    gtk2
@@ -31,7 +31,7 @@ Supplements:    kdelibs3
 Supplements:    libkde4
 Supplements:    plasma5-desktop
 Supplements:    yast2-control-center
-Provides:       locale(af;ar;bg;be;bn;bs;ca;cs;cy;da;de;el;en_GB;en_US;eo;es;et;fi;fr;gl;gu;he;hi;hr;hu;id;it;ja;ka;kab;km;ko;lo;lt;mk;mr;nb;nl;pa;pl;pt;ro;ru;si;sk;sl;sr;sr@Latn;sv;ta;tr;uk;vi;wa;xh;zh_CN;zh_TW;zu)
+Provides:       locale(af;ar;bg;be;bn;bs;ca;cs;cy;da;de;el;en_GB;eo;es;et;fi;fr;gl;gu;he;hi;hr;hu;id;it;ja;ka;kab;km;ko;lo;lt;mk;mr;nb;nl;pa;pl;pt;ro;ru;si;sk;sl;sr;sr@Latn;sv;ta;tr;uk;vi;wa;xh;zh_CN;zh_TW;zu)
 BuildRequires:  gettext-runtime
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

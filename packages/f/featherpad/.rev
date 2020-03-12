@@ -230,4 +230,14 @@
 </comment>
     <requestid>783168</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf32c384c4590c78a641a7e85ec01567</srcmd5>
+    <version>0.13.1</version>
+    <time>1584050838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Don't suggest the last file extension when saving a
+    newly created doc</comment>
+    <requestid>784233</requestid>
+  </revision>
 </revisionlist>

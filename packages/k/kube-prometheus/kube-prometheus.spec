@@ -26,6 +26,7 @@ Source0:        kube-prometheus-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        update-vendor.sh
 Source3:        kubic.jsonnet
+Patch0:         448.patch
 BuildRequires:  gojsontoyaml
 BuildRequires:  jsonnet
 BuildArch:      noarch
@@ -61,6 +62,7 @@ run "./build.sh <name>.jsonnet".
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 %build
 cp %{SOURCE3} kubic.jsonnet

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- No code change since 19.12.2
+
+-------------------------------------------------------------------
 Wed Feb 19 20:46:57 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Extend the conditional for "BuildRequires: rsvg-convert" to cover

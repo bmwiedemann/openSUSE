@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 17:17:54 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add uboot-bcm2835-pl011-overlay.dts which fixes booting in RPi, RPi2, RPi0 (bsc#1166414)
+
+-------------------------------------------------------------------
+Wed Mar  4 18:13:12 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add emmc2bus.patch needed for 32bit DMA support on newer bcm2711 revisions (bsc#1165143)
+
+-------------------------------------------------------------------
 Fri Feb 28 11:32:19 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add rpi4-gpio-names-overlay.dts so as to have a consistent way to access

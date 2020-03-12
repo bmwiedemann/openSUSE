@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 11 16:51:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add torbrowser-launcher-apparmor-fixes.patch Fix apparmor file
+  so that it doesn't hinder actually running the browser, patch
+  taken from upstream commits
+  (gh#micahflee/torbrowser-launcher#443, boo#1162284).
+- Use %autosetup to set up build directory.
+
+-------------------------------------------------------------------
 Fri Feb 28 09:20:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch Parsley and PySocks requires to python3 versions.

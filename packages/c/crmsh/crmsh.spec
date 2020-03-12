@@ -1,7 +1,7 @@
 #
 # spec file for package crmsh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        4.2.0+git.1583246906.f09ab45e
+Version:        4.2.0+git.1584013187.b45cfcb6
 Release:        0
 Url:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
@@ -106,7 +106,7 @@ Requires:       crmsh
 Requires(post):  mailx
 Requires(post):  procps
 Requires(post):  python3-python-dateutil
-Requires(post):  python3-nose
+Requires(post):  python3-tox
 Requires(post):  python3-parallax
 Requires(post):  pacemaker
 %if 0%{?suse_version} > 1110
@@ -160,7 +160,7 @@ find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python[3]?]
 make %{_smp_mflags} VERSION="%{version}" sysconfdir=%{_sysconfdir} localstatedir=%{_var}
 
 %if %{with regression_tests}
-./test/run --quiet
+tox
 if [ ! $? ]; then
     echo "Unit tests failed."
     exit 1
@@ -169,7 +169,7 @@ fi
 
 %install
 make DESTDIR=%{buildroot} docdir=%{crmsh_docdir} install
-install -Dm0644 contrib/bash_completion.sh %{buildroot}%{_datadir}/bash-completion/completions/crm.sh
+install -Dm0644 contrib/bash_completion.sh %{buildroot}%{_datadir}/bash-completion/completions/crm
 if [ -f %{buildroot}%{_bindir}/crm ]; then
 	install -Dm0755 %{buildroot}%{_bindir}/crm %{buildroot}%{_sbindir}/crm
 	rm %{buildroot}%{_bindir}/crm
@@ -182,7 +182,7 @@ fi
 # Run regression tests after installing the package
 # NB: this is called twice by OBS, that's why we touch the file
 %post test
-testfile=/tmp/.crmsh_regression_tests_ran
+testfile=`mktemp -t .crmsh_regression_tests_ran_XXXXXX`
 # check if time in file is less than 2 minutes ago
 if [ -e $testfile ] && [ "$(( $(date +%s) - $(cat $testfile) ))" -lt 120 ]; then
 	echo "Skipping regression tests..."
@@ -226,7 +226,7 @@ result2=$?
 %dir %{crmsh_docdir}
 %dir %{crmsh_docdir}/contrib
 %dir %attr (770, %{uname}, %{gname}) %{_var}/cache/crm
-%{_datadir}/bash-completion/completions/crm.sh
+%{_datadir}/bash-completion/completions/crm
 
 %files scripts
 %defattr(-,root,root)

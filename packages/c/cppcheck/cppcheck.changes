@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:54:24 UTC 2020 - Vladislav Savic <vladisav@gmx.com>
+
+- Since cppcheck version 1.89 CFGDIR is replaced by FILESDIR and
+  cfg files are no longer kept in FILESDIR but in subfolder FILESDIR/cfg.
+
+-------------------------------------------------------------------
 Wed Mar  4 12:17:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Use cmake macros

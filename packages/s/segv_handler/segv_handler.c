@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -18,14 +19,16 @@ static int segv_handler(int sig)
 	p = strrchr(progname, '/');
 	*p = 0;
 	
-	snprintf(cmd, sizeof(cmd), "backtrace %d > /tmp/segv_%s.%d.out 2>&1", 
+	snprintf(cmd, sizeof(cmd), "backtrace %d > /var/log/segv/segv_%s.%d.out 2>&1", 
 		 (int)getpid(), p+1, (int)getpid());
 	system(cmd);
 	signal(SIGSEGV, SIG_DFL);
 	return 0;
 }
 
-void _init(void)
+static void segv_init() __attribute__((constructor));
+void segv_init(void)
 {
-	signal(SIGSEGV, segv_handler);
+	signal(SIGSEGV, (sighandler_t) segv_handler);
+	signal(SIGBUS, (sighandler_t) segv_handler);
 }

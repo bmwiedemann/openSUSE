@@ -34,6 +34,12 @@ dtoverlay=upstream
 # overscan is only needed on old TV sets and if analog gear is in the chain (e.g. DPI)
 disable_overscan=1
 
+# u-boot expects RPi's UART to have a compatible string not supported anymore in
+# linux upstream, while this is fixed, make sure the name shows up in the
+# device-tree. This is only needed for RPi, RPi2 and RPi0, but applied
+# generally so as to avoid complexity.
+dtoverlay=uboot-bcm2835-pl011
+
 [pi1]
 
 # Max ARM freq (default 700 MHz)

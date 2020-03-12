@@ -26,6 +26,8 @@ URL:            https://github.com/micahflee/torbrowser-launcher
 Source:         https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE pythontorbrowser-launcher-fix-distro-name.patch badshah400@gmail.com -- Use the correct distribution name (the setup.py code gives "SuSE" instead of "openSUSE")
 Patch0:         torbrowser-launcher-fix-distro-name.patch
+# PATCH-FIX-UPSTREAM torbrowser-launcher-apparmor-fixes.patch gh#micahflee/torbrowser-launcher#443 boo#1162284 badshah400@gmail.com -- Fix apparmor file so that it doesn't hinder actually running the browser, patch taken from upstream commits
+Patch1:         torbrowser-launcher-apparmor-fixes.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  python3-PySocks
@@ -75,8 +77,7 @@ a Tor network compromise.
 
 %lang_package
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 python3 setup.py build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 09:33:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * Don't suggest the last file extension when saving a
+    newly created doc
+
+-------------------------------------------------------------------
 Tue Mar 10 06:47:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:

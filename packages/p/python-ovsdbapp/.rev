@@ -85,4 +85,12 @@
   - Change the order of parameters for lsp_bind method</comment>
     <requestid>774926</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fe72d2875d52fde01f3a3df844ba62f8</srcmd5>
+    <version>0.17.0</version>
+    <time>1584050876</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only client</comment>
+    <requestid>784197</requestid>
+  </revision>
 </revisionlist>

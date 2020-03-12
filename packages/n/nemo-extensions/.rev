@@ -103,4 +103,23 @@
     <comment></comment>
     <requestid>713820</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f6b1d7b175d4ab1a1fea168750cab06</srcmd5>
+    <version>4.4.0</version>
+    <time>1584050777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the version 4.4.0:
+  - nemo-share: Fix string which should not be translated
+  - nemo-python-object.c: Fix a memory leak PyObject_GetAttrString()
+  - bump-versions: Add support for meson
+  - nemo-image-converter: Fix wrong icon names
+  - nemo-dropbox: Minor README change (#333)
+  - l10n: update msgids in nemo-compare
+  - nemo-share: Make it explicit that firewall rules are added
+  - l10: Update POT
+  - nemo-fileroller.c: Remove check for obsolete settings key.
+- Do not support Python 2 anymore.
+</comment>
+    <requestid>784105</requestid>
+  </revision>
 </revisionlist>

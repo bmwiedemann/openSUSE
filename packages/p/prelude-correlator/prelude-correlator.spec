@@ -1,7 +1,7 @@
 #
 # spec file for package prelude-correlator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Real time correlator of events received by Prelude Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            https://www.prelude-siem.org
+URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}-tmpfiles.conf
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 BuildArch:      noarch
 Obsoletes:      %{name}-core < %{version}-%{release}
 Provides:       %{name}-core = %{version}-%{release}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ovsdbapp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define with_tests 0
+%define with_tests 1
 Name:           python-ovsdbapp
 Version:        0.17.0
 Release:        0
@@ -26,29 +26,31 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/ovsdbapp
 Source0:        https://files.pythonhosted.org/packages/source/o/ovsdbapp/ovsdbapp-0.17.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-fixtures >= 3.0.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-ovs >= 2.8.0
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-fixtures >= 3.0.0
+BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-ovs >= 2.8.0
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-fixtures >= 3.0.0
-Requires:       python-netaddr >= 0.7.18
-Requires:       python-ovs >= 2.8.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
+The ovdsbapp library is useful for creating applications that communicate via
+Open_vSwitchs OVSDB protocol (https://tools.ietf.org/html/rfc7047). It wraps
+the Python 'ovs' and adds an event loop and friendly transactions.
+
+%package -n python3-ovsdbapp
+Summary:        A library for creating OVSDB applications
+Group:          Development/Languages/Python
+Requires:       python3-fixtures >= 3.0.0
+Requires:       python3-netaddr >= 0.7.18
+Requires:       python3-ovs >= 2.8.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-ovsdbapp
 The ovdsbapp library is useful for creating applications that communicate via
 Open_vSwitchs OVSDB protocol (https://tools.ietf.org/html/rfc7047). It wraps
 the Python 'ovs' and adds an event loop and friendly transactions.
@@ -56,8 +58,8 @@ the Python 'ovs' and adds an event loop and friendly transactions.
 %package -n python-ovsdbapp-doc
 Summary:        Documentation for OpenStack log library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-ovsdbapp-doc
 Documentation for the ovsdbap library.
@@ -67,26 +69,26 @@ Documentation for the ovsdbap library.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
 PBR_VERSION=0.17.0 PYTHONPATH=. \
-    sphinx-build -b html doc/source doc/build/html
+    %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %if 0%{?with_tests}
 %check
-%python_exec -m stestr.cli run
+OS_TEST_PATH=./ovsdbapp/tests/unit python3 -m stestr.cli run
 %endif
 
-%files %{python_files}
+%files -n python3-ovsdbapp
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/ovsdbapp
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/ovsdbapp
+%{python3_sitelib}/*.egg-info
 
 %files -n python-ovsdbapp-doc
 %license LICENSE

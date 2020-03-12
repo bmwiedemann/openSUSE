@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar  8 19:04:45 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.12.0:
+  * Update TaskGroup remove logic (GH#3557) James Bourbeau
+  * Fix-up CuPy sparse serialization (GH#3556) John Kirkham
+  * API docs for LocalCluster and SpecCluster (GH#3548) Tom Augspurger
+  * Serialize sparse arrays (GH#3545) John Kirkham
+  * Allow tasks with restrictions to be stolen (GH#3069) Stan Seibert
+  * Use UCX default configuration instead of raising (GH#3544) Peter
+    Andreas Entschev
+  * Support using other serializers with register_generic (GH#3536)
+    John Kirkham
+  * DOC: update to async await (GH#3543) Tom Augspurger
+  * Use pytest.raises in test_ucx_config.py (GH#3541) John Kirkham
+  * Fix/more ucx config options (GH#3539) Benjamin Zaitlen
+  * Update heartbeat CommClosedError error handling (GH#3529) James
+    Bourbeau
+  * Use makedirs when constructing local_directory (GH#3538) John
+    Kirkham
+  * Mark None as MessagePack serializable (GH#3537) John Kirkham
+  * Mark bool as MessagePack serializable (GH#3535) John Kirkham
+  * Use ‘temporary-directory’ from dask.config for Nanny’s directory
+    (GH#3531) John Kirkham
+  * Add try-except around getting source code in performance report
+    (GH#3505) Matthew Rocklin
+  * Fix typo in docstring (GH#3528) Davis Bennett
+  * Make work stealing callback time configurable (GH#3523) Lucas
+    Rademaker
+  * RMM/UCX Config Flags (GH#3515) Benjamin Zaitlen
+  * Revise develop-docs: conda env example (GH#3406) Darren Weber
+  * Remove import ucp from the top of ucx.py (GH#3510) Peter Andreas
+    Entschev
+  * Rename logs to get_logs (GH#3473) Jacob Tomlinson
+  * Stop keep alives when worker reconnecting to the scheduler
+    (GH#3493) Jacob Tomlinson
+
+-------------------------------------------------------------------
 Sat Feb 22 18:57:41 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.11.0:

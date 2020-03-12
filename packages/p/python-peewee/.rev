@@ -135,4 +135,12 @@
     <comment>- Pull in the full python for sqlite</comment>
     <requestid>755739</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d1a56044847308ed7d7fd32d3cf69f7</srcmd5>
+    <version>3.13.1</version>
+    <time>1584050903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784338</requestid>
+  </revision>
 </revisionlist>

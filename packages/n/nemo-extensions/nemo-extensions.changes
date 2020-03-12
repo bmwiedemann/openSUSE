@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 27 23:35:10 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to the version 4.4.0:
+  - nemo-share: Fix string which should not be translated
+  - nemo-python-object.c: Fix a memory leak PyObject_GetAttrString()
+  - bump-versions: Add support for meson
+  - nemo-image-converter: Fix wrong icon names
+  - nemo-dropbox: Minor README change (#333)
+  - l10n: update msgids in nemo-compare
+  - nemo-share: Make it explicit that firewall rules are added
+  - l10: Update POT
+  - nemo-fileroller.c: Remove check for obsolete settings key.
+- Do not support Python 2 anymore.
+
+-------------------------------------------------------------------
 Mon Jul  1 04:01:05 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 4.2.0:

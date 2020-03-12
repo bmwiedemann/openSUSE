@@ -1,7 +1,7 @@
 #
 # spec file for package python-panflute
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-panflute
-Version:        1.11.2
+Version:        1.12.5
 Release:        0
-License:        BSD-3-Clause
 Summary:        Pandoc filters package for Python
-Url:            https://github.com/sergiocorreia/panflute
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/sergiocorreia/panflute
 Source:         https://files.pythonhosted.org/packages/source/p/panflute/panflute-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -31,8 +32,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  python-configparser
 BuildRequires:  python-shutilwhich
 # /SECTION
@@ -61,7 +62,7 @@ Panflute is a Python package for writing Pandoc filters.
 sed -i 's|shutilwhich||' %{buildroot}%{python3_sitelib}/panflute-*.egg-info/requires.txt
 
 %files %{python_files}
-%doc README.md README.rst
+%doc README.md
 %license LICENSE
 %python3_only %{_bindir}/panflute
 %python3_only %{_bindir}/panfl

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 12 16:02:50 UTC 2020 - ecsos@opensuse.org
+
+- Update to 3.47.2.1
+  * Bugfixes and minor changes:
+    - macOS: Potential fix for clipped text labels on a few systems
+    - SFTP: Backported selected fixes from developement versions of
+      PuTTY
+    - Fixed value range for directional transfer limits
+    - Fixed layout issues if changing to/from comparative search
+- Changes from 3.47.1
+  * Bugfixes and minor changes:
+    - Fixed regression loading advanced site parameters
+- Changes from 3.47.0
+  * Bugfixes and minor changes:
+    - Fix visual glitches adding/removing filter rows
+    - MSW: Limit amount of text that can be entered in spin
+      controls
+
+-------------------------------------------------------------------
 Fri Feb  7 11:22:42 UTC 2020 - ecsos@opensuse.org
 
 - Update to 3.46.3

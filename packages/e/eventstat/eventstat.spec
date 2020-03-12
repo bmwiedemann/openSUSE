@@ -1,7 +1,7 @@
 #
 # spec file for package eventstat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           eventstat
-Version:        0.04.08
+Version:        0.04.09
 Release:        0
 Summary:        Kernel event states monitoring tool
 License:        GPL-2.0-or-later
@@ -33,12 +33,24 @@ of current events and outputs the change in events on each output update.
 The tool requires sudo to run since it needs to write to /proc/timer_stats to
 start and stop the event monitoring.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Benchmark
+BuildRequires:  bash-completion
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (eventstat and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
 %prep
 %setup -q
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -47,5 +59,8 @@ make %{?_smp_mflags}
 %license COPYING
 %{_bindir}/eventstat
 %{_mandir}/man8/eventstat.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog

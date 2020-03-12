@@ -18,7 +18,7 @@
 
 %bcond_without grass
 Name:           qgis
-Version:        3.10.2
+Version:        3.12.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -102,11 +102,16 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(expat) >= 1.95
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# Use gdal 3 where possible because of bugs with gdal 2 - https://github.com/qgis/QGIS/issues/34933
+BuildRequires:  pkgconfig(gdal) >= 3
+%else
 BuildRequires:  pkgconfig(gdal) >= 2.1
+%endif
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkgconfig(proj) >= 6.0
+BuildRequires:  pkgconfig(proj) >= 6.3.1
 BuildRequires:  pkgconfig(python3) >= 3.4
 BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0

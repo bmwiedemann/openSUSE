@@ -1,7 +1,7 @@
 #
 # spec file for package python-peewee
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-peewee
-Version:        3.11.2
+Version:        3.13.1
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module apsw}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module mysql-connector-python}
+BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}

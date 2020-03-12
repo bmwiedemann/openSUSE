@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar  5 20:36:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.3
+- Changes since 19.12.2:
+  * Use the global xml catalog to replace external docbook.xsl uri
+  * Use a more reliable way on Windows to find the application's installation root
+  * Fix finding docbook stylesheet by using xml catalog support
+  * Fixed error message 'Can't save an empty diagram' with Docbook and Xhtml export (kde#417784)
+  * Correction of the path setting for the Docbook and Xhtml export
+  * Fix KF5 issue 'Exporter searches for XSLT file in nonexistent directory' (kde#417520)
+  * Fix '404 on help for settings in Umbrello (kde#410906)
+  * cmake: remove annoying suggest-override warning
+  * Fix using wrong name for slotInterfaceRequired() in class WorkToolBar
+
+-------------------------------------------------------------------
 Fri Feb  7 08:36:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 11 15:56:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.13.1
+  * This will be a notable release as it adds support for CockroachDB, 
+    a distributed, horizontally-scalable SQL database.
+  * Allow FOR UPDATE clause to specify one or more tables (FOR UPDATE OF...).
+  * Support for Postgres LATERAL join.
+  * Fix non-deterministic join ordering issue when using the filter() 
+    API across several tables
+  * Bulk insert (insert_many() and insert_from()) will now return 
+    the row count instead of the last insert ID.
+  * Migration extension now supports altering a column's data-type, 
+    via the new alter_column_type() method.
+  * Added BloomFilter.from_buffer() method for populating a bloom-filter 
+    from the output of a previous call to the to_buffer() method.
+
+-------------------------------------------------------------------
 Wed Dec 11 08:07:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Pull in the full python for sqlite

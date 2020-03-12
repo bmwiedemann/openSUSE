@@ -108,6 +108,8 @@ Patch4:         bundled_exodusii_add_missing_libpthread.patch
 Patch5:         0001-Add-libogg-to-IOMovie-target-link-libraries.patch
 # PATCH-FIX-UPSTREAM -- Compatibility for proj4 5.x and 6.0, https://gitlab.kitware.com/vtk/vtk/issues/17554
 Patch6:         0001-Make-code-calling-proj4-compatible-with-proj4-5.0-an.patch
+# PATCH-FIX-UPSTREAM -- Support for python3.8
+Patch7:         python38.patch
 BuildRequires:  R-base-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.4
@@ -349,6 +351,7 @@ languages.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -399,7 +402,6 @@ export CXXFLAGS="%{optflags}"
     -DVTK_INSTALL_LIBRARY_DIR:PATH=%{_lib} \
     -DVTK_INSTALL_PACKAGE_DIR:PATH=%{_lib}/cmake/%{pkgname} \
     -DVTK_INSTALL_QT_DIR:STRING=%{_lib}/qt5/plugins/designer \
-    -DVTK_INSTALL_PYTHON_MODULE_DIR:PATH=%{python3_sitearch} \
     -DVTK_PYTHON_VERSION=3 \
     -DVTK_QT_VERSION=5 \
     -DVTK_USE_OGGTHEORA_ENCODER:BOOL=ON \

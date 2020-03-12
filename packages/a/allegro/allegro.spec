@@ -1,7 +1,7 @@
 #
 # spec file for package allegro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,12 @@ developers are free to design and structure the program as desired.
 %define allegro_so_nr 5_2
 %define dot_allegro_so_nr %(echo %{allegro_so_nr} | sed s/_/./)
 Name:           allegro
-Version:        5.2.5.0
+Version:        5.2.6.0
 Release:        0
 Summary:        A game programming library
 License:        Zlib AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://liballeg.org
+URL:            https://liballeg.org
 Source0:        https://github.com/liballeg/allegro5/releases/download/%{version}/allegro-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -277,7 +277,7 @@ Allegro HTML documentation and man pages.
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DWANT_EXAMPLES=NO \
       -DWANT_DEMO=NO ..
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 %cmake_install
@@ -316,7 +316,8 @@ cp -r docs/html/refman/* %{buildroot}%{_datadir}/doc/%{name}
 %postun -n liballegro_video%{allegro_so_nr} -p /sbin/ldconfig
 
 %files -n liballegro%{allegro_so_nr}
-%doc CHANGES-5.?.txt CONTRIBUTORS.txt LICENSE.txt README.txt
+%license LICENSE.txt
+%doc CHANGES-5.?.txt CONTRIBUTORS.txt README.txt
 %{_libdir}/liballegro.so.%{dot_allegro_so_nr}*
 %config(noreplace) %{_sysconfdir}/allegro5rc
 

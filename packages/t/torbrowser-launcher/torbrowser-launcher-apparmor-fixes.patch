@@ -1,0 +1,30 @@
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index f782f35..1266476 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -63,6 +63,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   owner @{torbrowser_home_dir}/firefox rix,
+   owner @{torbrowser_home_dir}/{,TorBrowser/UpdateInfo/}updates/[0-9]*/* rw,
+   owner @{torbrowser_home_dir}/{,TorBrowser/UpdateInfo/}updates/[0-9]*/{,MozUpdater/bgupdate/}updater ix,
++  owner @{torbrowser_home_dir}/updater ix,
+   owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/.parentwritetest rw,
+   owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profiles.ini r,
+   owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/{,**} rwk,
+@@ -73,7 +74,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/*.so.* mr,
+ 
+   # parent Firefox process when restarting after upgrade, Web Content processes
+-  owner @{torbrowser_firefox_executable} ixmr -> torbrowser_firefox,
++  owner @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,
+ 
+   /etc/mailcap r,
+   /etc/mime.types r,
+@@ -105,6 +106,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+ 
+   # Required for multiprocess Firefox (aka Electrolysis, i.e. e10s)
+   owner /{dev,run}/shm/org.chromium.* rw,
++  owner /dev/shm/org.mozilla.ipc.[0-9]*.[0-9]* rw, # for Chromium IPC
+ 
+   # Deny access to DRM nodes, that's granted by the X abstraction, which is
+   # sourced by the gnome abstraction, that we include.
+

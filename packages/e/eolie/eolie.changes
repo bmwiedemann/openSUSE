@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 19:53:08 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Disable Python WebExtension support: It does not build with
+  Python 3.8 and it will be replaced in a future release.
+
+-------------------------------------------------------------------
 Wed Feb 19 20:18:28 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Explicitly require pkgconfig(python3) at build time: It's needed

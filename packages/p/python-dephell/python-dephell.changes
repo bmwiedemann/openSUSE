@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:28:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not pin deps, do not remove as it is generated
+  by upsream from toml but always refresh as needed:
+  * never-pin-deps.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 15:11:12 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 Upgrade to 0.8.1:

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 12 15:58:21 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.20.2
+  * New features:
+    - Add encrypt_key and decrypt_key to fz::symmetric key
+  * Bugfixes and minor changes:
+    - fz::datetime::set_rfc822 now parses the zone offset
+    - Removed unneeded asserts from format.hpp
+- Changes from 0.20.1
+  * Bugfixes and minor changes:
+    - Fix potential crash after removing the last speed limit 
+      bucket
+    - TLS: Fix reported key exchange algorithm and improve details
+- Changes from 0.20.0
+  * New features:
+    - Added fz::symmetric_key
+    - Added itertions parameter to fz::private_key::from_password
+    - Added fz::base32_encode and fz::base32_decode
+    - Unified all decode functions to always return a vector, added
+      alternatives returning string with a _s suffix in the 
+      function name
+    - Changed equal_insensitive_ascii to take (w)string_view
+
+-------------------------------------------------------------------
 Fri Feb  7 11:16:30 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.19.3

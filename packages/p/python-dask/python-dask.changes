@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Mar  8 19:03:37 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.12.0:
+  * Array
+    + Improve reuse of temporaries with numpy (:pr:`5933`) Bruce Merry
+    + Make map_blocks with block_info produce a Blockwise (:pr:`5896`)
+      Bruce Merry
+    + Optimize make_blockwise_graph (:pr:`5940`) Bruce Merry
+    + Fix axes ordering in da.tensordot (:pr:`5975`) Gil Forsyth
+    + Adds empty mode to array.pad (:pr:`5931`) Thomas J Fan
+  * Core
+    + Remove toolz.memoize dependency in dask.utils (:pr:`5978`) Ryan
+      Grout
+    + Close pool leaking subprocess (:pr:`5979`) Tom Augspurger
+    + Pin numpydoc to 0.8.0 (fix double autoescape) (:pr:`5961`) Gil
+      Forsyth
+    + Register deterministic tokenization for range objects
+      (:pr:`5947`) James Bourbeau
+    + Unpin msgpack in CI (:pr:`5930`) JAmes Bourbeau
+    + Ensure dot results are placed in unique files. (:pr:`5937`)
+      Elliott Sales de Andrade
+    + Add remaining optional dependencies to Travis 3.8 CI build
+      environment (:pr:`5920`) James Bourbeau
+  * DataFrame
+    + Skip parquet getitem optimization for some keys (:pr:`5917`) Tom
+      Augspurger
+    + Add ignore_index argument to rearrange_by_column code path
+      (:pr:`5973`) Richard J Zamora
+    + Add DataFrame and Series memory_usage_per_partition methods
+      (:pr:`5971`) James Bourbeau
+    + xfail test_describe when using Pandas 0.24.2 (:pr:`5948`) James
+      Bourbeau
+    + Implement dask.dataframe.to_numeric (:pr:`5929`) Julia Signell
+    + Add new error message content when columns are in a different
+      order (:pr:`5927`) Julia Signell
+    + Use shallow copy for assign operations when possible
+      (:pr:`5740`) Richard J Zamora
+  * Documentation
+    + Changed above to below in dask.array.triu docs (:pr:`5984`)
+      Henrik Andersson
+    + Array slicing: fix typo in slice_with_int_dask_array error
+      message (:pr:`5981`) Gabe Joseph
+    + Grammar and formatting updates to docstrings (:pr:`5963`) James
+      Lamb
+    + Update develop doc with conda option (:pr:`5939`) Ray Bell
+    + Update title of DataFrame extension docs (:pr:`5954`) James
+      Bourbeau
+    + Fixed typos in documentation (:pr:`5962`) James Lamb
+    + Add original class or module as a kwarg on _bind_* methods
+      (:pr:`5946`) Julia Signell
+    + Add collect list example (:pr:`5938`) Ray Bell
+    + Update optimization doc for python 3 (:pr:`5926`) Julia Signell
+
+-------------------------------------------------------------------
 Sat Feb 22 18:54:54 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

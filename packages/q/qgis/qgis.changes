@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 12 13:47:26 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use gdal 3 where possible because of bugs with gdal 2
+  https://github.com/qgis/QGIS/issues/34933
+
+-------------------------------------------------------------------
+Mon Mar  9 13:06:49 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.12.0, changes are documented at
+  https://changelog.qgis.org/en/qgis/version/3.12/
+
+-------------------------------------------------------------------
 Mon Feb 24 10:54:31 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Bump disk constraints to 18Gb

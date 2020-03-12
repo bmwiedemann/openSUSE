@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 18:19:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Own %%{_datadir}/sane, needed now due to changes elsewhere in the
+  stack.
+
+-------------------------------------------------------------------
 Fri Jul 21 12:27:31 UTC 2017 - tchvatal@suse.com
 
 - Rebase patches to include rh/gentoo/debian ones:

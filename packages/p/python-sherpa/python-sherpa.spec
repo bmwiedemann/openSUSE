@@ -1,7 +1,7 @@
 #
 # spec file for package python-sherpa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sher
 # PATCH-FIX-UPSTREAM config_with_build.patch -- https://github.com/sherpa/sherpa/pull/714
 Patch0:         config_with_build.patch
 Patch1:         reproducible.patch
+# PATCH-FIX-UPSTREAM python-sherpa-python3.8.patch gh#sherpa/sherpa#696 badshah400@gmail.com -- Fix building with python3.8; taken from upstream commit
+Patch2:         python-sherpa-python3.8.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
@@ -74,7 +76,14 @@ sed -i 's|group-location=.*|group-location=build/%{_lib}/python%{$python_version
 }
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+# REMOVE HASHBANGS FROM NON-EXEC FILES
+%{python_expand sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/optmethods/ncoresde.py
+sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/optmethods/ncoresnm.py
+sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/optmethods/opt.py
+}
+
 %check
+export PYTHONDONTWRITEBYTECODE=x
 mv sherpa sherpa_temp
 %python_expand ls -l %{buildroot}%{$python_sitearch}/sherpa/utils/
 ls -l *build*/*/*/

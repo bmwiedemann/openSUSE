@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 12 03:42:44 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20200312.febbb097:
+  * Add two TODO notes to generate_and_merge_pos.sh
+  * Drop en_US (boo#1139962, bsc#1163437).
+  * README.md: Document the process of update
+  * Translated using Weblate (Belarusian)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Turkish)
+  * Translated using Weblate (Vietnamese)
+  * Update strings from Leap 15.2.
+
+-------------------------------------------------------------------
 Tue Sep 24 10:00:12 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20190924.7050555c:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:41:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use new kiwi feature to set /var partition noCoW
+
+-------------------------------------------------------------------
 Tue Mar  3 10:35:08 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Move kernel-default to the common section

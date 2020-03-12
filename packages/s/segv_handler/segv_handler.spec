@@ -1,7 +1,7 @@
 #
 # spec file for package segv_handler
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           segv_handler
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
-Url:            http://samba.org/ftp/unpacked/junkcode/segv_handler/
 Summary:        System wide segv handler to produces a backtrace
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Source:         http://samba.org/ftp/unpacked/junkcode/segv_handler/backtrace
-Source1:        http://samba.org/ftp/unpacked/junkcode/segv_handler/Makefile
-Source2:        http://samba.org/ftp/unpacked/junkcode/segv_handler/README
-Source3:        http://samba.org/ftp/unpacked/junkcode/segv_handler/segv_handler.c
-Source4:        http://samba.org/ftp/unpacked/junkcode/segv_handler/testprog.c
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://samba.org/ftp/unpacked/junkcode/segv_handler/
+Source:         https://samba.org/ftp/unpacked/junkcode/segv_handler/backtrace
+Source1:        https://samba.org/ftp/unpacked/junkcode/segv_handler/Makefile
+Source2:        https://samba.org/ftp/unpacked/junkcode/segv_handler/README
+Source3:        https://samba.org/ftp/unpacked/junkcode/segv_handler/segv_handler.c
+Source4:        https://samba.org/ftp/unpacked/junkcode/segv_handler/testprog.c
 
 %description
 This is a useful utility for installing a system-wide segv handler that
@@ -36,35 +35,23 @@ produces a backtrace on any program that gets a SEGV signal. It is
 installed as a preload, so you don't need to modify the target
 programs.
 
-
-
-Authors:
---------
-    Andrew Tridgell <tridge at Samba dot org>
-
 %prep
-cp -p %{S:1} %{S:2} %{S:3} %{S:4} ${RPM_BUILD_DIR}
+export CFLAGS="%{optflags}"
+%setup -q -c -T
+cp -p %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} ./
 
 %build
-export CFLAGS=$RPM_OPT_FLAGS
-make
-rm -f /tmp/segv_testprog.*
-%ifnarch %arm
-make test
-%endif
+%make_build
 
 %install
-mkdir -p \
-	${RPM_BUILD_ROOT}/%{_bindir} \
-	${RPM_BUILD_ROOT}/%{_libdir} \
-	${RPM_BUILD_ROOT}/%{_docdir}/%{name}
-install -m 0755 %{S:0} ${RPM_BUILD_ROOT}/%{_bindir}
-install -m 0755 ${RPM_BUILD_DIR}/segv_handler.so ${RPM_BUILD_ROOT}/%{_libdir}
+install -Dpm 0755 %{SOURCE0} \
+  %{buildroot}%{_bindir}/backtrace
+install -Dpm 0755 segv_handler.so \
+  %{buildroot}%{_libdir}/segv_handler.so
 
 %files
-%defattr(-,root,root)
+%doc README
 %{_bindir}/backtrace
 %{_libdir}/segv_handler.so
-%doc README
 
 %changelog

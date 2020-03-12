@@ -33,8 +33,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0)
 Requires:       python3-cairo
 Requires:       python3-dateutil
 Requires:       python3-gobject
@@ -46,6 +44,7 @@ Recommends:     python3-requests-hawk
 # Eolie can use git to retrieve more adblock rules from
 # https://gitlab.gnome.org/gnumdk/eolie-adblock.git.
 Suggests:       git
+BuildArch:      noarch
 
 %description
 Eolie is a Web browser for the GNOME Desktop. It provides:
@@ -68,6 +67,9 @@ search results from the Eolie Web browser.
 
 %prep
 %autosetup
+# Skip WebExtension code since it does not build with Python 3.8
+sed -i 's/subdir('"'"python-webextension"'"')//g' meson.build
+rm -r python-webextension
 
 %build
 %meson
@@ -86,7 +88,6 @@ search results from the Eolie Web browser.
 %{_datadir}/glib-2.0/schemas/org.gnome.Eolie.gschema.xml
 %{_datadir}/icons/hicolor/*/*/org.gnome.Eolie*
 %{_datadir}/%{name}
-%{_libdir}/%{name}
 %{python3_sitelib}/%{name}
 
 %files -n gnome-shell-search-provider-eolie

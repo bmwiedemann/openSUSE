@@ -74,7 +74,8 @@ doesn't see.
 
 %build
 %cmake \
-  -DCMAKE_CXX_FLAGS="-DNDEBUG %{optflags} -UCFGDIR -DCFGDIR=\\\"%{_datadir}/%{name}\\\"" \
+  -DCMAKE_CXX_FLAGS="-DNDEBUG %{optflags}" \
+  -DFILESDIR="%{_datadir}/%{name}" \
   -DBUILD_GUI=ON \
   -DBUILD_TESTS=ON \
   -DHAVE_RULES=yes
@@ -101,8 +102,8 @@ install -Dpm 0755 build/bin/cppcheck-gui \
   %{buildroot}%{_bindir}/cppcheck-gui
 install -Dpm 0644  cppcheck.1 \
   %{buildroot}%{_mandir}/man1/cppcheck.1
-install -d %{buildroot}%{_datadir}/%{name}
-install -pm 0644 cfg/*.cfg %{buildroot}%{_datadir}/%{name}
+install -d %{buildroot}%{_datadir}/%{name}/cfg
+install -pm 0644 cfg/*.cfg %{buildroot}%{_datadir}/%{name}/cfg
 
 %files
 %doc AUTHORS

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 17:21:42 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add uboot-bcm2835-pl011 overlay, which fixes the serial port compatible name
+  as expected by u-boot, relevant for RPi, RPi2 and RPi0 families (bsc#1166414)
+
+-------------------------------------------------------------------
 Fri Feb 28 11:36:39 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add rpi4-gpio-names overlay so as to have a consistent way to access GPIOs (bsc#1164722)

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 12 11:45:23 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0beta8
+
+  ## Changed
+  - Reduced log verbosity of collect cycles to `DEBUG` level. (#137)
+  - Moved OBS related files to `packaging/obs`. (#139)
+
+  ## Fixed
+  - Pacemaker CIB parsing errors with some time values. (#138)
+  - Regression in CI changelog generator. (#136)
+
+-------------------------------------------------------------------
 Fri Feb 28 15:13:01 2020 UTC - shap-staff@suse.de
 
 - Release 1.0.0beta7

@@ -163,4 +163,12 @@
   * xwayland: ignore pointer focus changes</comment>
     <requestid>783681</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e1d252af04147c7e4bc8c8f61b15d498</srcmd5>
+    <version>0.10.1</version>
+    <time>1584050781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784165</requestid>
+  </revision>
 </revisionlist>

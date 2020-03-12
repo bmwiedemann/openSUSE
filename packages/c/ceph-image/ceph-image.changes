@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:34:16 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Set ceph=True label (SES-1589)
+
+-------------------------------------------------------------------
 Tue Feb 18 13:55:04 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Set io.ceph.version label (SES-1126)

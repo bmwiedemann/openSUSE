@@ -15,4 +15,12 @@
     <comment>1</comment>
     <requestid>293247</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a2cc919957f2109695687a9ab7835330</srcmd5>
+    <version>105</version>
+    <time>1584050953</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>784350</requestid>
+  </revision>
 </revisionlist>

@@ -20,15 +20,15 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nagios-http-json
-Version:        1.4+git.1583782740.e7cf7ca
+Version:        1.4+git.1584019054.4f1d29d
 Release:        0
 Summary:        Plugin for Nagios which checks json values from a given HTTP endpoint
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/drewkerrigan/nagios-http-json
 Source:         %{modname}-%{version}.tar.xz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

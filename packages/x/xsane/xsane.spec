@@ -103,6 +103,7 @@ ln -sf %{_bindir}/xsane %{buildroot}%{_libdir}/gimp/2.0/plug-ins/xsane
 %files -f %{name}.lang
 %doc xsane.[A-HJ-VX-Z]*
 %{_bindir}/xsane
+%dir %{_datadir}/sane
 %{_datadir}/sane/xsane
 %{_mandir}/man1/xsane.1*
 %dir %{_libdir}/gimp/

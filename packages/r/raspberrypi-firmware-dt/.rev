@@ -153,4 +153,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>781313</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c28eb5fac3b339cb24194aad6d671bd5</srcmd5>
+    <version>2020.02.03</version>
+    <time>1584050799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784294</requestid>
+  </revision>
 </revisionlist>
