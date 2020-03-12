@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:55:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.3.php
+- Changes since 5.18.2:
+  * Linux/cpuinfo.c: grow buffer size as needed for 12+ core CPUs (kde#384515)
+  * Only deprecate up to target frameworks
+
+-------------------------------------------------------------------
 Tue Feb 25 14:07:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.2
