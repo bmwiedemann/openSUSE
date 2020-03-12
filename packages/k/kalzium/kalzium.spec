@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        19.12.2
+Version:        19.12.3
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ Recommends:     %{name}-lang
 # currently in DOESNOTBUILD (2008-07-03)
 %ifnarch ppc ppc64 s390 s390x
 BuildRequires:  ocaml
-BuildRequires:  ocaml(Facile)
+BuildRequires:  ocaml-facile-devel
 %endif
 
 %description
