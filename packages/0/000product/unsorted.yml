@@ -2790,6 +2790,7 @@ unsorted:
   - evemu 
   - evemu-devel 
   - eventstat 
+  - eventstat-bash-completion 
   - eventviews-devel 
   - evieproto-devel 
   - evince-devel 
@@ -8996,7 +8997,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla3 
+  - libfilezilla4 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -10650,7 +10651,7 @@ unsorted:
   - libopenscap25 
   - libopenscap_sce25 
   - libopenshot-audio-devel 
-  - libopenshot-audio6 
+  - libopenshot-audio7 
   - libopenshot-devel 
   - libopenshot17 
   - libopenslide-devel 
@@ -10896,7 +10897,6 @@ unsorted:
   - libpgm-5_2-0-32bit: [x86_64] 
   - libphobos2-0_87 
   - libphobos2-ldc86 
-  - libphodav-2_0-0 
   - libphonenumber-devel 
   - libphonon4qt5-32bit: [x86_64] 
   - libphysfs-devel 
@@ -19333,7 +19333,6 @@ unsorted:
   - python2-libunity 
   - python2-libusb1 
   - python2-libvhdi 
-  - python2-libvirt-python 
   - python2-libvmdk 
   - python2-libvshadow 
   - python2-libvslvm 
@@ -19447,7 +19446,6 @@ unsorted:
   - python2-nbxmpp-doc 
   - python2-ncclient 
   - python2-ndg-httpsclient 
-  - python2-nemo 
   - python2-neovim 
   - python2-net-snmp 
   - python2-netCDF4 
@@ -19547,7 +19545,6 @@ unsorted:
   - python2-outcome 
   - python2-ovirt-engine-sdk 
   - python2-ovs 
-  - python2-ovsdbapp 
   - python2-pa-ringbuffer 
   - python2-packaging 
   - python2-paho-mqtt 
@@ -22022,6 +22019,7 @@ unsorted:
   - python3-nbxmpp-doc 
   - python3-ncclient 
   - python3-ndg-httpsclient 
+  - python3-nemo 
   - python3-neovim 
   - python3-neovim-remote 
   - python3-net-snmp 
@@ -24683,6 +24681,7 @@ unsorted:
   - scummvm 
   - scummvm-extra 
   - scummvm-tools 
+  - sd-mux-ctrl 
   - sdcc 
   - sdcc-doc 
   - sdcc-libc-sources 
@@ -25516,6 +25515,7 @@ unsorted:
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
   - terraform-provider-openstack 
+  - terraform-provider-vsphere 
   - teseq 
   - tesla-polyglot 
   - tesla-polyglot-atom 
