@@ -1346,4 +1346,14 @@ sr#761596 needed for this.</comment>
     <comment>- Fix support for python38, osc#763</comment>
     <requestid>783959</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>10a819c0fad679b1106f789d775091e7</srcmd5>
+    <version>0.168.2</version>
+    <time>1584132970</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.168.2
+  *  use helper method _html_escape to enable python3.8 and python2.*
+     compatibility (boo#1166537)</comment>
+    <requestid>784534</requestid>
+  </revision>
 </revisionlist>

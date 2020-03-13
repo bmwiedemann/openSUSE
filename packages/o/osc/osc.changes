@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:49:27 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.168.2
+  *  use helper method _html_escape to enable python3.8 and python2.*
+     compatibility (boo#1166537)
+
+-------------------------------------------------------------------
 Wed Mar 11 16:00:14 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Fix support for python38, osc#763
