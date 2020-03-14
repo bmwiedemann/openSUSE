@@ -48,9 +48,6 @@ ExclusiveArch:  do_not_build
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
 %define upgrade 1
 %endif
-%if !0%{?is_opensuse} && 0%{!?upgrade:1} && 0%{?sle_version} < 150200
-%define legacy_cray 1
-%endif
 
 # Build with PMIx only for SLE >= 15.2 and TW
 %if 0%{?sle_version} >= 150200 || 0%{suse_version} >= 1550
@@ -1146,19 +1143,6 @@ exit 0
 %{_libdir}/slurm/acct_gather_profile_influxdb.so
 %{_libdir}/slurm/ext_sensors_rrd.so
 %{_libdir}/slurm/jobcomp_elasticsearch.so
-%if 0%{?legacy_cray}
-%{_libdir}/slurm/acct_gather_energy_cray_aries.so
-%{_libdir}/slurm/core_spec_cray_aries.so
-%{_libdir}/slurm/job_submit_cray_aries.so
-%{_libdir}/slurm/select_cray_aries.so
-%{_libdir}/slurm/switch_cray_aries.so
-%{_libdir}/slurm/task_cray_aries.so
-%{_libdir}/slurm/mpi_cray_shasta.so
- %if 0%{?have_json_c}
-%{_libdir}/slurm/node_features_knl_cray.so
-%{_libdir}/slurm/power_cray_aries.so
- %endif
-%endif
 
 %files lua
 %{?comp_at}
@@ -1247,8 +1231,8 @@ exit 0
 %{_mandir}/man1/sh5util.1.gz
 %endif
 
-%if !0%{?legacy_cray}
 %files cray
+%{?comp_at}
 # do not remove cray sepcific packages from SLES update
 %{_libdir}/slurm/acct_gather_energy_cray_aries.so
 %{_libdir}/slurm/core_spec_cray_aries.so
@@ -1257,10 +1241,9 @@ exit 0
 %{_libdir}/slurm/switch_cray_aries.so
 %{_libdir}/slurm/task_cray_aries.so
 %{_libdir}/slurm/mpi_cray_shasta.so
- %if 0%{?have_json_c}
+%if 0%{?have_json_c}
 %{_libdir}/slurm/node_features_knl_cray.so
 %{_libdir}/slurm/power_cray_aries.so
- %endif
 %endif
 
 %changelog

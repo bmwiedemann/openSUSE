@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  8 15:43:25 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Remove legacy_cray: with 20.02 the special treatment for
+  cray-specific plugins on SLE version prior to 15SP2 is
+  no longer required.
+
+-------------------------------------------------------------------
 Wed Mar  4 13:05:07 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - slurm-plugins will now also require pmix not only libpmix 
