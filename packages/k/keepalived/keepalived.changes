@@ -129,7 +129,7 @@ Tue Apr 16 19:01:38 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
   - Remove inappropriate function const attributes They were
     causing iptables/ipsets not to be initialised.
   - Stop warning: function might be candidate for attribute
-    â€˜constâ€™ Depending on what configure options are selected,
+    "const" Depending on what configure options are selected,
     gcc can output the above warning for
     initialise_debug_options().  This commit ensures that the
     warning is not produced.
