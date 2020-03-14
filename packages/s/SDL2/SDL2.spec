@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.10
+Version:        2.0.12
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -33,8 +33,7 @@ Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 Patch2:         SDL2-endian.patch
-Patch3:         CVE-2019-13616.patch
-Patch4:         sdl2-khronos.patch
+Patch3:         sdl2-khronos.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

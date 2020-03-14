@@ -1,8 +1,12 @@
-Index: SDL2-2.0.8/include/SDL_endian.h
+---
+ include/SDL_endian.h |  155 ++-------------------------------------------------
+ 1 file changed, 7 insertions(+), 148 deletions(-)
+
+Index: SDL2-2.0.12/include/SDL_endian.h
 ===================================================================
---- SDL2-2.0.8.orig/include/SDL_endian.h
-+++ SDL2-2.0.8/include/SDL_endian.h
-@@ -34,29 +34,17 @@
+--- SDL2-2.0.12.orig/include/SDL_endian.h
++++ SDL2-2.0.12/include/SDL_endian.h
+@@ -34,32 +34,17 @@
   *  \name The two types of endianness
   */
  /* @{ */
@@ -16,10 +20,13 @@ Index: SDL2-2.0.8/include/SDL_endian.h
 -#ifdef __linux__
 -#include <endian.h>
 -#define SDL_BYTEORDER  __BYTE_ORDER
--#else /* __linux__ */
+-#elif defined(__OpenBSD__)
+-#include <endian.h>
+-#define SDL_BYTEORDER  BYTE_ORDER
+-#else
 -#if defined(__hppa__) || \
 -    defined(__m68k__) || defined(mc68000) || defined(_M_M68K) || \
--    (defined(__MIPS__) && defined(__MISPEB__)) || \
+-    (defined(__MIPS__) && defined(__MIPSEB__)) || \
 -    defined(__ppc__) || defined(__POWERPC__) || defined(_M_PPC) || \
 -    defined(__sparc__)
 -#define SDL_BYTEORDER   SDL_BIG_ENDIAN
@@ -36,7 +43,7 @@ Index: SDL2-2.0.8/include/SDL_endian.h
  /* Set up for C function definitions, even when using C++ */
  #ifdef __cplusplus
  extern "C" {
-@@ -65,149 +53,23 @@ extern "C" {
+@@ -68,149 +53,23 @@ extern "C" {
  /**
   *  \file SDL_endian.h
   */

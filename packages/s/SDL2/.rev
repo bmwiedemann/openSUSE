@@ -232,4 +232,12 @@
     <comment>- Temporarily work around -fno-common build failure [boo#1160382].</comment>
     <requestid>763728</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a0e2f5fb37dd2c52eeebf2d9e5e2a7a7</srcmd5>
+    <version>2.0.12</version>
+    <time>1584176054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.12</comment>
+    <requestid>783748</requestid>
+  </revision>
 </revisionlist>

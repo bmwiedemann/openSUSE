@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:23:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.12
+  * Support for the Google Stadia controller and other game
+    controllers
+  * A new video driver for offscreen rendering
+  * ARM NEON optimizations
+- Drop CVE-2019-13616.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sun Jan 12 22:53:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Temporarily work around -fno-common build failure [boo#1160382].
