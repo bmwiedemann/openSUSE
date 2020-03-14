@@ -110,4 +110,28 @@
   build with glibc 2.31.</comment>
     <requestid>770860</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>39483291808cebd86b8c6d4c750f2e21</srcmd5>
+    <version>9.0.1</version>
+    <time>1584176066</time>
+    <user>dimstar_suse</user>
+    <comment>- Move all clang-related scripts (including those originally in
+  clangX-checker), hmaptool and clang-doc into a common
+  unversioned subpackage clang-tools, like python3-clang.
+  The scripts reference the unversioned executables, so allowing
+  multiple versions via update-alternatives would be misleading.
+  The clang-doc executable will come with assets in Clang 10, so
+  we have to take it out of update-alternatives as well.
+  This should be the proper solution to boo#1161873.
+- Include run-find-all-symbols script in clang-tools.
+- Remove metadata for clangX-include-fixer subpackage that never
+  had any files and thus wasn't released as rpm. There are so many
+  clang binaries that packaging them separately doesn't scale.
+- Fix lldb version string, adapt lldb-cmake.patch (boo#1165517).
+- Remove unneccesary libtool dependency.
+- Don't let clang depend on libc++, we link it with libstdc++.
+- Recommend gold plugin if clang and gold are installed.
+- Require clang-tools for clangX-devel.</comment>
+    <requestid>784085</requestid>
+  </revision>
 </revisionlist>

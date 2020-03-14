@@ -67,7 +67,7 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without pyclang
+%bcond_without clang_scripts
 %bcond_without polly
 %bcond_without lld
 
@@ -141,7 +141,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
-BuildRequires:  libtool
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -233,59 +232,50 @@ Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     clang%{_sonum}-checker
+Recommends:     clang-tools
 Recommends:     clang%{_sonum}-doc
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
-Provides:       llvm%{_sonum}-emacs-plugins
-Conflicts:      emacs-llvm < %{version}
-Provides:       emacs-llvm = %{version}
-Conflicts:      vim-plugin-llvm < %{version}
-%if %{with libcxx}
-Requires:       libc++%{_socxx}
-%endif
 
 %description -n clang%{_sonum}
 This package contains the clang (C language) frontend for LLVM.
 
-%package -n clang%{_sonum}-checker
-Summary:        Static code analyzer for CLANG
+%package -n clang-tools
+Summary:        Tools for Clang
 Group:          Development/Languages/C and C++
 URL:            https://clang-analyzer.llvm.org/
 # Avoid multiple provider errors
-Requires:       libclang%{_sonum}
-# Due to a packaging error in clang3_8 we have to conflict.
-Conflicts:      clang3_8
+Requires:       clang%{_sonum}
+# Some binaries used to be in the clang package.
+Conflicts:      clang5
+Conflicts:      clang6
+Conflicts:      clang7
+Conflicts:      clang8
+# hmaptool used to be contained in the llvm package.
+Conflicts:      llvm5
+Conflicts:      llvm6
+Conflicts:      llvm7
+Conflicts:      llvm8
+Provides:       clang%{_sonum}-checker
 Conflicts:      scan-build < %{version}
 Conflicts:      scan-view < %{version}
+Provides:       llvm%{_sonum}-emacs-plugins
 Provides:       scan-build = %{version}
 Provides:       scan-view = %{version}
+Conflicts:      emacs-llvm < %{version}
+Provides:       emacs-llvm = %{version}
+Conflicts:      vim-plugin-llvm < %{version}
 
-%description -n clang%{_sonum}-checker
-This package contains scan-build and scan-view, command line
-static code analyzers for CLANG.
-
-%package -n clang%{_sonum}-include-fixer
-Summary:        Automatically add missing includes
-# Avoid multiple provider errors
-Group:          Development/Languages/C and C++
-Requires:       libclang%{_sonum} = %{version}
-Conflicts:      clang-include-fixer < %{version}
-Conflicts:      find-all-symbols < %{version}
-Provides:       clang-include-fixer = %{version}
-Provides:       find-all-symbols = %{version}
-
-%description -n clang%{_sonum}-include-fixer
-One of the major nuisances of C++ compared to other languages
-is the manual management of include directives in any file.
-clang-include-fixer addresses one aspect of this problem by
-providing an automated way of adding include directives for
-missing symbols in one translation unit.
-
-While inserting missing includes, clang-include-fixer adds
-missing namespace qualifiers to all instances of an
-unidentified symbol if the symbol is missing some prefix
-namespace qualifiers.
+%description -n clang-tools
+This package contains tools and scripts for using Clang, including:
+* bash completions for clang,
+* the clang-doc tool,
+* plugins for using clang-format, clang-rename, clang-include-fixer
+  in vim and emacs.
+* scripts for using clang-format: git-clang-format and clang-format-diff,
+* scripts for using clang-tidy: run-clang-tidy and clang-tidy-diff,
+* scripts for using the Clang static analyzer: scan-build and scan-view,
+* a script for using find-all-symbols: run-find-all-symbols.
 
 %package -n libclang%{_sonum}
 Summary:        Library files needed for clang
@@ -301,6 +291,7 @@ Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       clang%{_sonum} = %{version}
+Requires:       clang-tools = %{version}
 Conflicts:      cmake(Clang)
 
 %description -n clang%{_sonum}-devel
@@ -351,6 +342,7 @@ Group:          Development/Tools/Building
 Requires:       libLLVM%{_sonum}
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
+Supplements:    packageand(clang%{_sonum}:binutils-gold)
 
 %description gold
 This package contains the Gold linker plugin for LLVM.
@@ -606,8 +598,6 @@ popd
 pushd lldb-%{version}.src
 %patch11 -p1
 %patch12 -p2
-# Set LLDB revision
-sed -i s,LLDB_REVISION,\"%{_llvm_revision}\",g source/lldb.cpp #"
 popd
 %endif
 
@@ -878,7 +868,7 @@ popd
 # install python bindings
 # The python bindings use the unversioned libclang.so,
 # so it doesn't make sense to have multiple versions of it
-%if %{with pyclang}
+%if %{with clang_scripts}
 install -d %{buildroot}%{python3_sitelib}/clang
 pushd tools/clang/bindings/python
 cp clang/*.py %{buildroot}%{python3_sitelib}/clang
@@ -903,6 +893,7 @@ mv %{buildroot}%{_prefix}/libexec/{c++,ccc}-analyzer %{buildroot}%{_bindir}
 mv %{buildroot}%{_datadir}/clang/clang-format-diff.py %{buildroot}%{_bindir}/clang-format-diff
 mv %{buildroot}%{_datadir}/clang/clang-tidy-diff.py %{buildroot}%{_bindir}/clang-tidy-diff
 mv %{buildroot}%{_datadir}/clang/run-clang-tidy.py %{buildroot}%{_bindir}/run-clang-tidy
+mv %{buildroot}%{_datadir}/clang/run-find-all-symbols.py %{buildroot}%{_bindir}/run-find-all-symbols
 
 install -d %{buildroot}%{python3_sitelib}
 mv %{buildroot}%{_datadir}/opt-viewer/opt-diff.py %{buildroot}%{_bindir}/opt-diff
@@ -911,10 +902,8 @@ mv %{buildroot}%{_datadir}/opt-viewer/opt-viewer.py %{buildroot}%{_bindir}/opt-v
 mv %{buildroot}%{_datadir}/opt-viewer/optpmap.py %{buildroot}%{python3_sitelib}/optpmap.py
 mv %{buildroot}%{_datadir}/opt-viewer/optrecord.py %{buildroot}%{python3_sitelib}/optrecord.py
 
-mkdir -p %{buildroot}%{_libdir}/clang/%{_relver}
-mv %{buildroot}%{_datadir}/clang/bash-autocomplete.sh %{buildroot}%{_libdir}/clang/%{_relver}/bash-autocomplete.sh
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-ln -s %{_sysconfdir}/alternatives/clang-bash-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/clang.sh
+mv %{buildroot}%{_datadir}/clang/bash-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/clang
 
 mv %{buildroot}%{_mandir}/man1/{,llvm-}tblgen.1
 rm %{buildroot}%{_mandir}/man1/FileCheck.1
@@ -945,12 +934,9 @@ rm  %{buildroot}%{_libdir}/libiomp*.so
 rm %{buildroot}%{_datadir}/clang/*.applescript
 rm %{buildroot}%{_datadir}/clang/clang-format-sublime.py
 
-# XXX: FIXME we should put these in a sub-package
-rm %{buildroot}%{_datadir}/clang/run-find-all-symbols.py
-
 # Prepare for update-alternatives usage
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-binfiles=( bugpoint dsymutil hmaptool llc lli \
+binfiles=( bugpoint dsymutil llc lli \
            llvm-addr2line llvm-ar llvm-as llvm-bcanalyzer llvm-c-test llvm-cat llvm-cfi-verify
            llvm-cov llvm-cxxdump llvm-cxxfilt llvm-cxxmap llvm-cvtres llvm-diff llvm-dis \
            llvm-dlltool llvm-dwarfdump llvm-dwp llvm-elfabi llvm-exegesis llvm-extract \
@@ -961,11 +947,10 @@ binfiles=( bugpoint dsymutil hmaptool llc lli \
            llvm-symbolizer llvm-tblgen llvm-undname llvm-xray obj2yaml opt sancov \
            sanstats verify-uselistorder yaml2obj \
            c-index-test clang clangd clang++ clang-apply-replacements \
-           clang-change-namespace clang-check clang-cl clang-doc clang-extdef-mapping clang-format \
-           clang-import-test clang-include-fixer clang-format-diff \
+           clang-change-namespace clang-check clang-cl clang-extdef-mapping clang-format \
+           clang-import-test clang-include-fixer \
            clang-offload-bundler clang-query clang-refactor clang-scan-deps clang-rename \
-           clang-reorder-fields clang-tidy clang-tidy-diff diagtool find-all-symbols \
-           git-clang-format modularize run-clang-tidy \
+           clang-reorder-fields clang-tidy diagtool find-all-symbols modularize \
 %if %{with lldb}
            lldb lldb-argdumper lldb-instr lldb-mi lldb-server lldb-vscode \
 %endif
@@ -1025,13 +1010,13 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 %_llvm_with_ffi %{with ffi}
 %_llvm_with_oprofile %{with oprofile}
 %_llvm_with_valgrind %{with valgrind}
-%_llvm_with_pyclang %{with pyclang}
+%_llvm_with_clang_scripts %{with clang_scripts}
 %_llvm_with_lldb %{with lldb}
 EOF
 
 # Don't use env in shebangs, and prefer python3. (https://www.python.org/dev/peps/pep-0394/#for-python-runtime-distributors)
-for script in %{buildroot}%{_bindir}/{{clang-{format,tidy}-diff,git-clang-format,\
-hmaptool,run-clang-tidy}-%{_relver},{ccc,c++}-analyzer,scan-{build,view},opt-{diff,stats,viewer}} \
+for script in %{buildroot}%{_bindir}/{clang-{format,tidy}-diff,git-clang-format,\
+hmaptool,run-{clang-tidy,find-all-symbols},scan-{build,view},opt-{diff,stats,viewer}} \
         %{buildroot}%{python3_sitelib}/optrecord.py; do
     sed -i '1s|/usr/bin/env *|%{_bindir}/|;1s|/usr/bin/python$|%{_bindir}/python3|' $script
 done
@@ -1039,9 +1024,20 @@ done
 # Remove executable bit where not needed.
 chmod -x \
   %{buildroot}%{python3_sitelib}/optpmap.py \
-  %{buildroot}%{_libdir}/clang/%{_relver}/bash-autocomplete.sh \
+  %{buildroot}%{_datadir}/bash-completion/completions/clang \
   %{buildroot}%{_datadir}/clang/clang-{format,include-fixer,rename}.{el,py} \
   %{buildroot}%{_datadir}/opt-viewer/style.css
+
+%if !%{with clang_scripts}
+rm %{buildroot}%{_bindir}/{{c++,ccc}-analyzer
+rm %{buildroot}%{_bindir}/clang-{doc,format-diff,tidy-diff}
+rm %{buildroot}%{_bindir}/git-clang-format
+rm %{buildroot}%{_bindir}/run-{clang-tidy,find-all-symbols}
+rm %{buildroot}%{_bindir}/scan-{build,view}
+rm %{buildroot}%{_datadir}/bash-completion/completions/clang
+rm -r %{buildroot}%{_datadir}/{clang,scan-build,scan-view}/
+rm %{buildroot}%{_mandir}/man1/scan-build.1%{ext_man}
+%endif
 
 # Remove documentation sources.
 rm -r %{buildroot}%{_docdir}/llvm{,-clang}/html/_sources
@@ -1139,7 +1135,6 @@ rm -rf ./stage1 ./build
    --install %{_bindir}/llvm-ar llvm-ar %{_bindir}/llvm-ar-%{_relver} %{_uaver} \
    --slave %{_bindir}/bugpoint bugpoint %{_bindir}/bugpoint-%{_relver} \
    --slave %{_bindir}/dsymutil dsymutil %{_bindir}/dsymutil-%{_relver} \
-   --slave %{_bindir}/hmaptool hmaptool %{_bindir}/hmaptool-%{_relver} \
    --slave %{_bindir}/llc llc %{_bindir}/llc-%{_relver} \
    --slave %{_bindir}/lli lli %{_bindir}/lli-%{_relver} \
    --slave %{_bindir}/llvm-addr2line llvm-addr2line %{_bindir}/llvm-addr2line-%{_relver} \
@@ -1249,10 +1244,8 @@ fi
    --slave %{_bindir}/clang-change-namespace clang-change-namespace %{_bindir}/clang-change-namespace-%{_relver} \
    --slave %{_bindir}/clang-check clang-check %{_bindir}/clang-check-%{_relver} \
    --slave %{_bindir}/clang-cl clang-cl %{_bindir}/clang-cl-%{_relver} \
-   --slave %{_bindir}/clang-doc clang-doc %{_bindir}/clang-doc-%{_relver} \
    --slave %{_bindir}/clang-extdef-mapping clang-extdef-mapping %{_bindir}/clang-extdef-mapping-%{_relver} \
    --slave %{_bindir}/clang-format clang-format %{_bindir}/clang-format-%{_relver} \
-   --slave %{_bindir}/clang-format-diff clang-format-diff %{_bindir}/clang-format-diff-%{_relver} \
    --slave %{_bindir}/clang-import-test clang-import-test %{_bindir}/clang-import-test-%{_relver} \
    --slave %{_bindir}/clang-include-fixer clang-include-fixer %{_bindir}/clang-include-fixer-%{_relver} \
    --slave %{_bindir}/clang-offload-bundler clang-offload-bundler %{_bindir}/clang-offload-bundler-%{_relver} \
@@ -1262,15 +1255,11 @@ fi
    --slave %{_bindir}/clang-reorder-fields clang-reorder-fields %{_bindir}/clang-reorder-fields-%{_relver} \
    --slave %{_bindir}/clang-scan-deps clang-scan-deps %{_bindir}/clang-scan-deps-%{_relver} \
    --slave %{_bindir}/clang-tidy clang-tidy %{_bindir}/clang-tidy-%{_relver} \
-   --slave %{_bindir}/clang-tidy-diff clang-tidy-diff %{_bindir}/clang-tidy-diff-%{_relver} \
    --slave %{_bindir}/diagtool diagtool %{_bindir}/diagtool-%{_relver} \
    --slave %{_bindir}/find-all-symbols find-all-symbols %{_bindir}/find-all-symbols-%{_relver} \
-   --slave %{_bindir}/git-clang-format git-clang-format %{_bindir}/git-clang-format-%{_relver} \
    --slave %{_bindir}/modularize modularize %{_bindir}/modularize-%{_relver} \
-   --slave %{_bindir}/run-clang-tidy run-clang-tidy %{_bindir}/run-clang-tidy-%{_relver} \
    --slave %{_mandir}/man1/clang.1%{ext_man} clang.1%{ext_man} %{_mandir}/man1/clang-%{_relver}.1%{ext_man} \
-   --slave %{_mandir}/man1/diagtool.1%{ext_man} diagtool.1%{ext_man} %{_mandir}/man1/diagtool-%{_relver}.1%{ext_man} \
-   --slave %{_datadir}/bash-completion/completions/clang.sh clang-bash-autocomplete.sh %{_libdir}/clang/%{_relver}/bash-autocomplete.sh
+   --slave %{_mandir}/man1/diagtool.1%{ext_man} diagtool.1%{ext_man} %{_mandir}/man1/diagtool-%{_relver}.1%{ext_man}
 
 %postun -n clang%{_sonum}
 if [ ! -f %{_bindir}/clang-%{_relver} ] ; then
@@ -1313,7 +1302,6 @@ fi
 
 %{_bindir}/bugpoint
 %{_bindir}/dsymutil
-%{_bindir}/hmaptool
 %{_bindir}/llc
 %{_bindir}/lli
 %{_bindir}/llvm-addr2line
@@ -1375,7 +1363,6 @@ fi
 
 %{_bindir}/bugpoint-%{_relver}
 %{_bindir}/dsymutil-%{_relver}
-%{_bindir}/hmaptool-%{_relver}
 %{_bindir}/llc-%{_relver}
 %{_bindir}/lli-%{_relver}
 %{_bindir}/llvm-addr2line-%{_relver}
@@ -1437,7 +1424,6 @@ fi
 
 %ghost %{_sysconfdir}/alternatives/bugpoint
 %ghost %{_sysconfdir}/alternatives/dsymutil
-%ghost %{_sysconfdir}/alternatives/hmaptool
 %ghost %{_sysconfdir}/alternatives/llc
 %ghost %{_sysconfdir}/alternatives/lli
 %ghost %{_sysconfdir}/alternatives/llvm-addr2line
@@ -1621,10 +1607,8 @@ fi
 %{_bindir}/clang-check
 %{_bindir}/clang-cl
 %{_bindir}/clang-cpp
-%{_bindir}/clang-doc
 %{_bindir}/clang-extdef-mapping
 %{_bindir}/clang-format
-%{_bindir}/clang-format-diff
 %{_bindir}/clang-import-test
 %{_bindir}/clang-include-fixer
 %{_bindir}/clang-offload-bundler
@@ -1634,12 +1618,9 @@ fi
 %{_bindir}/clang-reorder-fields
 %{_bindir}/clang-scan-deps
 %{_bindir}/clang-tidy
-%{_bindir}/clang-tidy-diff
 %{_bindir}/diagtool
 %{_bindir}/find-all-symbols
-%{_bindir}/git-clang-format
 %{_bindir}/modularize
-%{_bindir}/run-clang-tidy
 %{_bindir}/c-index-test-%{_relver}
 %{_bindir}/clang-%{_relver}
 %{_bindir}/clangd-%{_relver}
@@ -1648,10 +1629,8 @@ fi
 %{_bindir}/clang-change-namespace-%{_relver}
 %{_bindir}/clang-check-%{_relver}
 %{_bindir}/clang-cl-%{_relver}
-%{_bindir}/clang-doc-%{_relver}
 %{_bindir}/clang-extdef-mapping-%{_relver}
 %{_bindir}/clang-format-%{_relver}
-%{_bindir}/clang-format-diff-%{_relver}
 %{_bindir}/clang-import-test-%{_relver}
 %{_bindir}/clang-include-fixer-%{_relver}
 %{_bindir}/clang-offload-bundler-%{_relver}
@@ -1661,12 +1640,9 @@ fi
 %{_bindir}/clang-reorder-fields-%{_relver}
 %{_bindir}/clang-scan-deps-%{_relver}
 %{_bindir}/clang-tidy-%{_relver}
-%{_bindir}/clang-tidy-diff-%{_relver}
 %{_bindir}/diagtool-%{_relver}
 %{_bindir}/find-all-symbols-%{_relver}
-%{_bindir}/git-clang-format-%{_relver}
 %{_bindir}/modularize-%{_relver}
-%{_bindir}/run-clang-tidy-%{_relver}
 %ghost %{_sysconfdir}/alternatives/c-index-test
 %ghost %{_sysconfdir}/alternatives/clang
 %ghost %{_sysconfdir}/alternatives/clangd
@@ -1675,10 +1651,8 @@ fi
 %ghost %{_sysconfdir}/alternatives/clang-change-namespace
 %ghost %{_sysconfdir}/alternatives/clang-check
 %ghost %{_sysconfdir}/alternatives/clang-cl
-%ghost %{_sysconfdir}/alternatives/clang-doc
 %ghost %{_sysconfdir}/alternatives/clang-extdef-mapping
 %ghost %{_sysconfdir}/alternatives/clang-format
-%ghost %{_sysconfdir}/alternatives/clang-format-diff
 %ghost %{_sysconfdir}/alternatives/clang-import-test
 %ghost %{_sysconfdir}/alternatives/clang-include-fixer
 %ghost %{_sysconfdir}/alternatives/clang-offload-bundler
@@ -1688,13 +1662,9 @@ fi
 %ghost %{_sysconfdir}/alternatives/clang-reorder-fields
 %ghost %{_sysconfdir}/alternatives/clang-scan-deps
 %ghost %{_sysconfdir}/alternatives/clang-tidy
-%ghost %{_sysconfdir}/alternatives/clang-tidy-diff
 %ghost %{_sysconfdir}/alternatives/diagtool
 %ghost %{_sysconfdir}/alternatives/find-all-symbols
-%ghost %{_sysconfdir}/alternatives/git-clang-format
 %ghost %{_sysconfdir}/alternatives/modularize
-%ghost %{_sysconfdir}/alternatives/run-clang-tidy
-%ghost %{_sysconfdir}/alternatives/clang-bash-autocomplete.sh
 %{_mandir}/man1/clang.1%{ext_man}
 %{_mandir}/man1/diagtool.1%{ext_man}
 %{_mandir}/man1/clang-%{_relver}.1%{ext_man}
@@ -1703,7 +1673,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/diagtool.1%{ext_man}
 %dir %{_libdir}/clang/
 %dir %{_libdir}/clang/%{_relver}/
-%{_libdir}/clang/%{_relver}/bash-autocomplete.sh
 # The sanitizer runtime is not available for ppc.
 %ifnarch ppc
 %{_libdir}/clang/%{_relver}/lib
@@ -1711,18 +1680,27 @@ fi
 %{_libdir}/clang/%{_relver}/share
 %endif
 %endif
-%{_datadir}/bash-completion/completions/clang.sh
-%{_datadir}/clang/
 
-%files -n clang%{_sonum}-checker
+%if %{with clang_scripts}
+%files -n clang-tools
 %license CREDITS.TXT LICENSE.TXT
 %{_bindir}/c++-analyzer
 %{_bindir}/ccc-analyzer
+%{_bindir}/clang-doc
+%{_bindir}/clang-format-diff
+%{_bindir}/clang-tidy-diff
+%{_bindir}/git-clang-format
+%{_bindir}/hmaptool
+%{_bindir}/run-clang-tidy
+%{_bindir}/run-find-all-symbols
 %{_bindir}/scan-build
 %{_bindir}/scan-view
+%{_datadir}/bash-completion/completions/clang
+%{_datadir}/clang/
 %{_datadir}/scan-build/
 %{_datadir}/scan-view/
 %{_mandir}/man1/scan-build.1%{ext_man}
+%endif
 
 %files opt-viewer
 %license CREDITS.TXT LICENSE.TXT
@@ -1817,7 +1795,7 @@ fi
 %doc utils/vim/README.vim
 %{_datadir}/vim/
 
-%if %{with pyclang}
+%if %{with clang_scripts}
 %files -n python3-clang
 %license CREDITS.TXT LICENSE.TXT
 %{python3_sitelib}/clang/

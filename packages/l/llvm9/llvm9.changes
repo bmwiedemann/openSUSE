@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 11 22:58:26 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require clang-tools for clangX-devel.
+
+-------------------------------------------------------------------
+Sat Mar  7 22:41:55 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Move all clang-related scripts (including those originally in
+  clangX-checker), hmaptool and clang-doc into a common
+  unversioned subpackage clang-tools, like python3-clang.
+  The scripts reference the unversioned executables, so allowing
+  multiple versions via update-alternatives would be misleading.
+  The clang-doc executable will come with assets in Clang 10, so
+  we have to take it out of update-alternatives as well.
+  This should be the proper solution to boo#1161873.
+- Include run-find-all-symbols script in clang-tools.
+- Remove metadata for clangX-include-fixer subpackage that never
+  had any files and thus wasn't released as rpm. There are so many
+  clang binaries that packaging them separately doesn't scale.
+- Fix lldb version string, adapt lldb-cmake.patch (boo#1165517).
+- Remove unneccesary libtool dependency.
+- Don't let clang depend on libc++, we link it with libstdc++.
+- Recommend gold plugin if clang and gold are installed.
+
+-------------------------------------------------------------------
 Fri Feb  7 10:29:11 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add vim-plugin-llvm Conflicts to clang subpackage which now
