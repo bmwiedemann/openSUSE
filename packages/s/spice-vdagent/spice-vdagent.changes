@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:19:18 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to 0.20.0
+  * Add gio-unix and gobject dependency >= 2.50
+  * Bump gtk+ >= 3.22 (optional dependency)
+  * Last release with gtk+ being optional
+  * !4 - Race fixes between client and guest clipboard
+  * !2 - Fix session lookup for new GNOME versions
+  * !3 - Now using GMainLoop and GIO to handle I/O of messages
+  * Several minor covscan fixes
+- Discovered GLib dependency is now >= 2.58
+- Patch dropped (contained in update):
+  vdagentd-Fix-session-lookup-for-new-GNOME-versions.patch
+
+-------------------------------------------------------------------
 Thu Dec 19 15:18:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

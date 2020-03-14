@@ -18,7 +18,7 @@
 
 
 Name:           spice-vdagent
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Agent for Spice guests
 License:        GPL-3.0-or-later
@@ -27,20 +27,21 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
-Patch0:         vdagentd-Fix-session-lookup-for-new-GNOME-versions.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
-BuildRequires:  glib2-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libXinerama-devel
-BuildRequires:  libXrandr-devel
-BuildRequires:  libdrm-devel
-BuildRequires:  libpciaccess-devel
+BuildRequires:  libXrandr-devel >= 1.3
+BuildRequires:  libpciaccess-devel >= 0.10
 BuildRequires:  libtool
-BuildRequires:  spice-protocol-devel >= 0.12.8
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.34
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.50
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
@@ -60,7 +61,6 @@ Features:
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \
