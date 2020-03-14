@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  3 14:44:11 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Add pam_keyinit to /etc/pam.d/ppp (bsc#1144055).
+
+-------------------------------------------------------------------
 Fri Feb  7 14:30:35 UTC 2020 - Reinhard Max <max@suse.com>
 
 - CVE-2020-8597, bsc#1162610, ppp-CVE-2020-8597.patch: rhostname

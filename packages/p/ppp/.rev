@@ -294,4 +294,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
   buffer overflow in the  eap_request and eap_response functions.</comment>
     <requestid>772130</requestid>
   </revision>
+  <revision rev="40" vrev="13">
+    <srcmd5>93d905b051d8b1703d7dfcd3d7c5647c</srcmd5>
+    <version>2.4.7</version>
+    <time>1584176028</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>783453</requestid>
+  </revision>
 </revisionlist>
