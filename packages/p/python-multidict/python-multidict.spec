@@ -48,7 +48,7 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand rm %{buildroot}%{$python_sitearch}/multidict/*.c
-%python_expand fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # remove the extra pytest opts

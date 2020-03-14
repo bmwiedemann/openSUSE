@@ -99,4 +99,12 @@
     <comment>py38 fix</comment>
     <requestid>783026</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>61628b406f9b6d57deb05550717d6735</srcmd5>
+    <version>4.7.5</version>
+    <time>1584176118</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>784574</requestid>
+  </revision>
 </revisionlist>
