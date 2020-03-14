@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  2 15:39:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add nfs-client-provisioner-k8s-yaml to kubeadm pattern
+
+-------------------------------------------------------------------
 Wed Feb 26 15:37:12 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Prevent building of kubic-specific patterns in SLE/Leap 

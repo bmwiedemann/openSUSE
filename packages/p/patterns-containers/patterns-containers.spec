@@ -60,6 +60,7 @@ Requires:       kured-k8s-yaml
 Requires:       lvm2
 Requires:       metallb-k8s-yaml
 Requires:       nfs-client
+Requires:       nfs-client-provisioner-k8s-yaml
 Requires:       rook-k8s-yaml
 Requires:       rpcbind
 Requires:       weave-k8s-yaml
