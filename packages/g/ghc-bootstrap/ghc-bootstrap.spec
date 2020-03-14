@@ -88,13 +88,8 @@ Requires:       libnuma-devel
 %ifarch aarch64 %{arm}
 BuildRequires:  binutils-gold
 Requires:       binutils-gold
-%if 0%{?suse_version} >= 1550
-BuildRequires:  llvm6
-Requires:       llvm6
-%else
 BuildRequires:  llvm
 Requires:       llvm
-%endif
 %endif
 
 %ifarch s390x riscv64

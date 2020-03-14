@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 20:33:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix previous commit, do not require llvm6 for Tumbleweed
+  since it has been dropped from Factory.
+
+-------------------------------------------------------------------
 Tue Feb  4 08:50:52 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
 
 - Relax LLVM requirement on ARM and Aarch64
