@@ -16,19 +16,14 @@
 #
 
 
-%if 0%{?is_opensuse}
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150200
 %define with_wayland 1
-%define with_kde 1
-%ifarch ppc
-%define with_emoji 0
-%else
 %define with_emoji 1
-%endif
 %else
 %define with_wayland 0
-%define with_kde 0
 %define with_emoji 0
 %endif
+
 Name:           ibus
 Version:        1.5.22
 Release:        0
@@ -63,6 +58,8 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
+# PATCH-FIX-UPSTREAM alarrosa@suse.com -- Remove unnecessary qt5 dependency https://github.com/ibus/ibus/pull/2194
+Patch13:        0001-Replace-the-Qt-check-for-appindicator-engine-icon-wi.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -102,9 +99,6 @@ Requires:       python3-gobject-Gdk
 Requires:       typelib-1_0-Gtk-3_0
 Provides:       locale(ja;ko;zh)
 Obsoletes:      ibus-gnome-shell
-%if %{with_kde}
-BuildRequires:  libqt5-qtbase-devel
-%endif
 %if %{with_wayland}
 BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
 %endif
@@ -209,6 +203,7 @@ cp -r %{SOURCE11} .
 %patch11 -p1
 %patch12 -p1
 %endif
+%patch13 -p1
 
 %build
 autoreconf -fi
@@ -220,11 +215,7 @@ autoreconf -fi
 %else
            --disable-emoji-dict \
 %endif
-%if %{with_kde}
            --enable-appindicator \
-%else
-           --disable-appindicator \
-%endif
            --with-python=python3 \
            --disable-python2 \
            --enable-python-library \

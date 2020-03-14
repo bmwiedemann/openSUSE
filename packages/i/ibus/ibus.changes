@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:56:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable wayland and emoji features in SLE 15 SP2 (boo#1165844,
+  SLE-11652)
+- Remove the with_kde option in the spec file and add a patch
+  to remove an unneeded qt5 dependency
+  * 0001-Replace-the-Qt-check-for-appindicator-engine-icon-wi.patch
+
+-------------------------------------------------------------------
+Mon Mar  9 11:42:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable emoji also on ppc
+
+-------------------------------------------------------------------
 Sat Feb 29 13:17:53 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
-- Eable emoji support on armv6l and riscv64, nodejs-emojione is no longer
+- Enable emoji support on armv6l and riscv64, nodejs-emojione is no longer
   BuildRequires
 - Remove invalid build options
 - cleanup spec
