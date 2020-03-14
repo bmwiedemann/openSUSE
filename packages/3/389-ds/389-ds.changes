@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 03:48:34 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Change systemd_requires to systemd_ordering based on packaging
+  advice.
+- Change 389-ds to use sysusers.d for user/group addition of dirsrv
+  instead of manual calls to useradd/groupadd.
+
+-------------------------------------------------------------------
 Mon Feb 17 03:45:13 UTC 2020 - 389-ds-maintainer@suse.de
 
 - Add requirement on openssl for rust-openssl as part of ldaptokens

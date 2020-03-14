@@ -64,6 +64,7 @@ Source2:        LICENSE.openldap
 Source3:        vendor.tar.gz
 %endif
 Source9:        %{name}-rpmlintrc
+Source10:       %{user_group}-user.conf
 %if %{with rust}
 Patch1:         0001-fix-cargo-build.patch
 %endif
@@ -84,6 +85,7 @@ BuildRequires:  libevent-devel
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
 BuildRequires:  libtool
+BuildRequires:  sysuser-tools
 # net-snmp-devel is needed to build the snmp ldap-agent
 BuildRequires:  net-snmp-devel >= 5.1.2
 BuildRequires:  openldap2-devel
@@ -141,6 +143,7 @@ Requires:       perl(Socket6)
 %endif
 # Needed for creating the ccache and some GSSAPI steps in sasl
 Requires:       krb5
+%sysusers_requires
 # 389-ds does not directly require gssapi, but it is needed for
 # ldap gssapi auth, so we recommend it.
 # This used to be a requirement, but it's actually optional.
@@ -155,7 +158,7 @@ Requires(pre):  shadow
 PreReq:         permissions
 Obsoletes:      389-ds-base < %{version}-%{release}
 Provides:       389-ds-base = %{version}-%{release}
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 389 Directory Server is a full-featured LDAPv3 compliant server. In
@@ -257,6 +260,7 @@ uses the facilities provided by NSS.
 %patch1 -p1
 
 %build
+%sysusers_generate_pre %{SOURCE10} %{user_group}
 # Make sure python3 is used in shebangs
 # FIX ME!!  This should be fixed in the source code !!!
 sed -r -i '1s|^#!\s*%{_bindir}.*python.*|#!%{_bindir}/%{use_python}|' ldap/admin/src/scripts/{*.py,ds-replcheck} src/lib389/cli/ds*
@@ -322,6 +326,7 @@ install -D -d -m 0750 %{buildroot}%{homedir}
 mkdir -p %{buildroot}%{logdir}
 mkdir -p %{buildroot}%{homedir}
 mkdir -p %{buildroot}%{lockdir}
+mkdir -p %{buildroot}%{_sysusersdir}
 
 #remove libtool archives and static libs
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -341,14 +346,9 @@ rm -rv %{buildroot}/usr/share/cockpit/
 rm -rv %{buildroot}/usr/share/metainfo/389-console/
 mv src/svrcore/README{,.svrcore}
 mv src/svrcore/LICENSE{,.svrcore}
+install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 
-%pre
-if ! getent group %{user_group} >/dev/null; then
-  %{_sbindir}/groupadd -f -r %{user_group}
-fi
-if ! getent passwd %{user_group} >/dev/null; then
-  %{_sbindir}/useradd  -r -g %{user_group} -s /sbin/nologin -r -d %{homedir} -c "User for 389 directory server" %{user_group}
-fi
+%pre -f %{user_group}.pre
 
 %post
 %fillup_only -n dirsrv
@@ -389,6 +389,7 @@ exit 0
 %defattr(-,root,root)
 %doc README*
 %license LICENSE LICENSE.openldap
+%{_sysusersdir}/%{user_group}-user.conf
 %dir %attr(-,%{user_group},%{user_group}) %{homedir}
 %dir %attr(-,%{user_group},%{user_group}) %{logdir}
 %config(noreplace) %{_sysconfdir}/dirsrv/config/*
