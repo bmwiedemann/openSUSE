@@ -301,4 +301,12 @@
     <comment></comment>
     <requestid>568219</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4527bf528c1296d276fde0ad3d914e65</srcmd5>
+    <version>1.9.5</version>
+    <time>1584176033</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.9.5 (forwarded request 782244 from seijikun)</comment>
+    <requestid>783493</requestid>
+  </revision>
 </revisionlist>

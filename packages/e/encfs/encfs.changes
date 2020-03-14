@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 06 20:23:14 UTC 2020 - Markus Ebner<info@ebner-markus.de>
+
+- update to 1.9.5
+  * Correct a int/off_t buffer overflow in getSize()
+  * Correct a possible write crash
+  * Correct encfsctl cat and add encfsctl --reverse cat
+  * Add -c & -u cmdline options
+  * Add --noattrcache & --nodatacache cmdline options
+  * Ignore .encfs6.xml file in reverse mode
+  * Do not count usage on root path (to avoid resetting the --idle option)
+  * Use stderr instead of stdout for error messages
+  * Add the ability to disable data encryption (absolutely discouraged)
+  * Add Cygwin support
+- update to 1.9.4
+  * Fix packaging error leading to wrong version output
+  * Fix shared lib compilation (cmake -DBUILD_SHARED_LIBS=ON ..)
+- update to 1.9.3
+  * Fix compilation with "-std=c++11"
+  * Fix a gid permission issue with allow_other
+  * Fix operations on symlinks
+  * Fix a race in idle unmount
+  * Add --reversewrite cli option
+  * Add PID to syslog logging
+  * Deep code sanity check
+  * Modernize coding style
+  * Make codebase warnings & clang-tidy clean
+  * Bump FUSE_USE_VERSION to 29
+  * Ensure compatibility with LibreSSL
+  * Switch to vendored lib tinyxml2 & easylogging
+  * Reorganize man page and add missing options
+  * Add gtest and micro benchmarks
+
+-------------------------------------------------------------------
 Wed Jan 17 15:13:10 UTC 2018 - fvogt@suse.com
 
 - Fix combination of os_has_tinyxml and use_cmake_macro
