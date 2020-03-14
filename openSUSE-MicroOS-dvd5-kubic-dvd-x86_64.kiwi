@@ -428,6 +428,7 @@
       <repopackage name="net-tools" arch="x86_64"/>
       <repopackage name="netcfg"/>
       <repopackage name="nfs-client" arch="x86_64"/>
+      <repopackage name="nfs-client-provisioner-k8s-yaml" arch="x86_64"/>
       <repopackage name="oath-toolkit-xml" arch="x86_64"/>
       <repopackage name="open-iscsi" arch="x86_64"/>
       <repopackage name="open-lldp" arch="x86_64"/>
