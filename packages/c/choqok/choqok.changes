@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 14 00:45:38 UTC 2020 - wbauer@tmo.at
+
+- Add upstream patches to fix problems that still were present in
+  the 1.7.0 release:
+  * Fix-retrieving-Twitter-conversations.patch (kde#417193)
+  * Link-to-the-original-post-for-retweets.patch
+  * twitter-Dont-overwrite-contents-of-retweets.patch (kde#370260)
+
+-------------------------------------------------------------------
 Thu Feb  6 07:31:07 UTC 2020 - wbauer@tmo.at
 
 - Update to 1.7.0:

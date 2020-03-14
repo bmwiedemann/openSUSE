@@ -24,6 +24,10 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://choqok.kde.org
 Source:         https://download.kde.org/stable/%{name}/1.7/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-retrieving-Twitter-conversations.patch
+Patch1:         Link-to-the-original-post-for-retweets.patch
+Patch2:         twitter-Dont-overwrite-contents-of-retweets.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -72,6 +76,7 @@ It currently supports twitter.com and identi.ca services.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build

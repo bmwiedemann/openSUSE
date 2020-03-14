@@ -1,0 +1,32 @@
+From 073d93b6036f5c034fee48f335efa089310f6109 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Thu, 6 Feb 2020 08:05:46 +0100
+Subject: Link to the original post for retweets
+
+When clicking on a retweet link, go to the original post which shows the full context, conversation and replies instead of using the retweet Id which shows a 140-character cut version of the tweet.
+
+Differential Revision: https://phabricator.kde.org/D27175
+---
+ microblogs/twitter/twittermicroblog.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/microblogs/twitter/twittermicroblog.cpp b/microblogs/twitter/twittermicroblog.cpp
+index 749dabe..6a9f8c9 100644
+--- a/microblogs/twitter/twittermicroblog.cpp
++++ b/microblogs/twitter/twittermicroblog.cpp
+@@ -473,7 +473,11 @@ Choqok::Post *TwitterMicroBlog::readPost(Choqok::Account *account, const QVarian
+     }
+ 
+     //postId is changed, regenerate link url
+-    post->link = postUrl(account, post->author.userName, post->postId);
++    if (!post->repeatedPostId.isEmpty()) {
++        post->link = postUrl(account, post->author.userName, post->repeatedPostId);
++    } else {
++        post->link = postUrl(account, post->author.userName, post->postId);
++    }
+ 
+     QVariantMap userMap = var[QLatin1String("user")].toMap();
+     post->author.userId = userMap[QLatin1String("id_str")].toString();
+-- 
+cgit v1.1
+
