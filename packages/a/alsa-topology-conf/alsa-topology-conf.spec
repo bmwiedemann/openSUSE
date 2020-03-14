@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-topology-conf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           alsa-topology-conf
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        ALSA topology configurations
 License:        BSD-3-Clause
@@ -29,7 +30,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 This package contains the configuration files for ALSA topology support.
 
 %prep
-%setup -q -c -a0
+%setup -q
 
 %build
 
