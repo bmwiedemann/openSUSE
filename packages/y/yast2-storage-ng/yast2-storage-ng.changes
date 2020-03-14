@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:02:15 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- write nocow attribute correctly into YAML
+- 4.2.97
+
+-------------------------------------------------------------------
+Thu Mar 12 11:51:13 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: report the user when conflicting attributes are set
+  in a partition section (i.e., mount, raid_name, lvm_group,
+  btrfs_name, bcache_backing_for and bcache_caching_for)
+  (bsc#1165907).
+- 4.2.96
+
+-------------------------------------------------------------------
+Wed Mar 11 12:53:13 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Usability improvements when asking the user to install packages
+  during the probing phase (related to bsc#1140040).
+- More flexible API for PackageHandler and related classes
+- More libstorage-ng "storage features" now recognized and handled
+  if needed: UF_DASD, UF_BITLOCKER, UF_JFS, UF_F2FS, UF_EXFAT.
+- Partitioner: better error reporting when the installation of
+  needed packages fails.
+- 4.2.95
+
+-------------------------------------------------------------------
+Mon Mar  9 09:53:50 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: show an error when no suitable physical volumes are
+  found for a given volume group (bsc#1162043).
+- 4.2.94
+
+-------------------------------------------------------------------
 Thu Mar  5 10:23:24 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Fix unit tests for the progress dialog added in version 4.2.82
