@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  3 21:13:38 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.50
+  * Verified primitives from HACL* were updated, bringing performance
+    improvements for several platforms.
+    Note that Intel processors with SSE4 but without AVX are currently
+    unable to use the improved ChaCha20/Poly1305 due to a build issue;
+    such platforms will fall-back to less optimized algorithms.
+    See bmo#1609569 for details
+  * Updated DTLS 1.3 implementation to Draft-30.
+    See bmo#1599514 for details.
+  * Added NIST SP800-108 KBKDF - PKCS#11 implementation.
+    See bmo#1599603 for details.
+  * Several bugfixes and minor changes
+
+-------------------------------------------------------------------
 Thu Feb 27 13:52:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Package also the cmac.h needed by blapi.h
