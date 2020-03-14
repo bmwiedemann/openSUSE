@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 16:38:54 CET 2020 - schubi@suse.de
+
+- Supporting more than one ntp server in the time setting module.
+  (bsc#1164547)
+- 4.2.9
+
+-------------------------------------------------------------------
 Wed Feb 19 13:24:06 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Rely on the new Y2Network::NtpServer class (jsc#SLE-7188).
