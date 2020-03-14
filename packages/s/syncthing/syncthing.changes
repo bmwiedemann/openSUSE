@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 19:28:00 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Change the Go build requirement to a more flexible
+  "golang(API) >= 1.12".
+
+-------------------------------------------------------------------
 Thu Feb  6 16:36:41 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
 
 - Disable automatic updates (which do not work anyways unless you
