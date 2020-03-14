@@ -1,7 +1,7 @@
 #
 # spec file for package cldr-emoji-annotation
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,20 @@ Name:           cldr-emoji-annotation
 Version:        32.0.0_1
 Release:        0
 Summary:        Emoji annotation files in CLDR
-License:        LGPL-2.0+ and Unicode
+License:        LGPL-2.0-or-later AND Unicode
 Group:          System/I18n/Chinese
-Url:            https://github.com/fujiwarat/cldr-emoji-annotation
+URL:            https://github.com/fujiwarat/cldr-emoji-annotation
 Source:         https://github.com/fujiwarat/cldr-emoji-annotation/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
+BuildRequires:  libtool
+BuildRequires:  pkg-config
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-This package contains the pkg-config files for development when building 
+This package contains the pkg-config files for development when building
 programs that use cldr-annotations.
 
 %package devel
