@@ -38,7 +38,7 @@ BuildRequires:  update-desktop-files
 Summary:        Sound File Editor
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        20.1
+Version:        20.2
 Release:        0
 Requires:       ladspa
 Source:         ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-%{version}.tar.gz
