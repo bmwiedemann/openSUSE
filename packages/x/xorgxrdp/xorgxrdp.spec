@@ -17,7 +17,7 @@
 
 
 Name:           xorgxrdp
-Version:        0.2.12
+Version:        0.2.13
 Release:        0
 Summary:        Xorg drivers for xrdp
 License:        X11
