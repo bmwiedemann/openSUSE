@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Mon Sep  9 12:11:54 UTC 2013 - pgajdos@suse.com
+
+- updated to 1.19:
+  * unit test fix
+  * POD
+  * no use integer
+  * optimize _copy_array
+
+-------------------------------------------------------------------
+Thu Nov 11 13:04:28 CET 2010 - pgajdos@suse.cz
+
+- updated to 1.16:
+  * unit test fix for Perl 5.6.2 on x86_64
+
+-------------------------------------------------------------------
+Mon Nov  8 11:04:37 CET 2010 - pgajdos@suse.cz
+
+- updated to 1.15:
+  * added span_ord() method
+
+-------------------------------------------------------------------
+Thu Aug 19 08:54:01 CEST 2010 - pgajdos@suse.cz
+
+- updated to 1.14:
+  * added ord() method
+
+-------------------------------------------------------------------
+Thu Jan 17 13:50:04 CET 2008 - pgajdos@suse.cz
+
+- updated to 1.13:
+  * recoded member(), insert(), and remove() to use a binary search
+  * added support for spans in constructors
+
+
+-------------------------------------------------------------------
+Fri Jul 27 15:01:17 CEST 2007 - pgajdos@suse.cz
+
+- package moved from OBS, version 1.11
+
+-------------------------------------------------------------------
+Thu Jun 21 21:52:00 CEST 2007 - sierkb@gmx.de
+
+- Update to version 1.11
+- Optimize packlist handling
+
+-------------------------------------------------------------------
+Mon Nov 13 00:00:00 CET 2006 - sierkb@gmx.de
+
+- Rebuild for openSUSE
+- Spec file cleanup: removed # neededforbuild
+
+-------------------------------------------------------------------
+Wed Jun 22 00:00:00 CEST 2006 - sierkb@gmx.de
+
+- Update to version 1.09
+
+-------------------------------------------------------------------
+Thu Jun 15 00:00:00 CEST 2006 - sierkb@gmx.de
+
+- Rebuild for SUSE Linux 10.1
+
+-------------------------------------------------------------------
+Tue Nov 15 00:00:00 CET 2005 - sierkb@gmx.de
+
+- Rebuild for SUSE Linux 10.0 OSS
+
+-------------------------------------------------------------------
+Fri Jun 10 00:00:00 CEST 2005 - sierkb@gmx.de
+
+- Initial build for SuSE Linux
+
