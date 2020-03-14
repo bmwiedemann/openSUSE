@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -213,11 +214,9 @@ rm -f %{buildroot}%{_libdir}/*.la
 rm -rf %{buildroot}%{_docdir}/*
 #remove init scripts for corosync, corosync-qdevice, corosync-qnetd
 rm -rf init/corosync init/corosync-qnetd init/corosync-qdevice
-mkdir -p  %{buildroot}/usr/lib/tmpfiles.d/
 mkdir -p  %{buildroot}/usr/share/doc/packages/corosync/
 mkdir -p  %{buildroot}%{_fillupdir}/
 mkdir -p  %{buildroot}%{_sysconfdir}/init.d/
-install -m 0644 tools/corosync-notifyd.sysconfig.example  %{buildroot}/usr/lib/tmpfiles.d/corosync-notifyd
 install -m 0644 conf/corosync.conf.example* %{buildroot}/usr/share/doc/packages/corosync/
 mkdir -p %{buildroot}/usr/lib/corosync
 install -m 0755 init/upgrade.sh %{buildroot}/usr/lib/corosync
@@ -226,6 +225,8 @@ rm -rf %{buildroot}/etc/logrotate.d/
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
 install -m 644 init/corosync.sysconfig.example \
    %{buildroot}%{_fillupdir}/sysconfig.corosync
+install -m 0644 tools/corosync-notifyd.sysconfig.example \
+   %{buildroot}%{_fillupdir}/sysconfig.corosync-notifyd
 rm -rf %{buildroot}%{localstatedir}/run/
 %if %{with qdevices}
 install -m 644 init/corosync-qdevice.sysconfig.example \
@@ -256,6 +257,7 @@ APIs and libraries, default configuration files, and an init script.
 %post
 /usr/lib/corosync/upgrade.sh
 %{fillup_only -n corosync}
+%{fillup_only -n corosync-notifyd}
 # Upgrade
 if [ $1 -eq 2 ]; then
     # restore configured /etc/sysconfig/corosync(bsc#1155792)
@@ -311,7 +313,7 @@ fi
 /usr/lib/corosync/upgrade.sh
 %config(noreplace) /usr/share/doc/packages/corosync/corosync.conf.example
 %config(noreplace) /usr/share/doc/packages/corosync/corosync.conf.example.udpu
-%config(noreplace) /usr/lib/tmpfiles.d/corosync-notifyd
+%config(noreplace) %{_fillupdir}/sysconfig.corosync-notifyd
 %config(noreplace) %{_fillupdir}/sysconfig.corosync
 
 %if %{with dbus}
