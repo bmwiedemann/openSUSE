@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 13 09:26:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Add Abort confirmation for inst_welcome client used in firstboot
+  (bsc#1163347)
+- 4.2.37
+
+-------------------------------------------------------------------
+Thu Feb 27 15:03:36 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Make sure to show release notes for add-on products (bsc#1158287)
+- 4.2.36
+
+-------------------------------------------------------------------
+Fri Feb 21 09:45:10 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "yupdate" script to simplify patching the installer
+  (bsc#1163691)
+- 4.2.35
+
+-------------------------------------------------------------------
+Thu Feb 20 15:12:39 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Rely on the new Y2Network::NtpServer class (jsc#SLE-7188).
+- 4.2.34
+
+-------------------------------------------------------------------
+Thu Feb 20 11:24:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow to modify the control file at installation time using a
+  skelcd-* package (bsc#1164468).
+- 4.2.33
+
+-------------------------------------------------------------------
+Wed Feb 19 09:40:45 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- don't start getty on hvc0 & ttyAMA0 before Yast2-Firstboot (bsc#1157233)
+- 4.2.32
+
+-------------------------------------------------------------------
+Mon Feb 17 17:44:48 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed user-visible messages (bsc#1084015)
+- 4.2.31
+
+-------------------------------------------------------------------
+Wed Jan 29 13:52:29 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Reimplemented the "Previously Used Repositories" dialog
+  (inst_upgrade_urls.rb) to properly evaluate the new and the old
+  system repositories (bsc#1159433)
+- 4.2.30
+
+-------------------------------------------------------------------
 Thu Jan 23 12:53:29 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - don't use /bin/systemctl compat symlink (bsc#1160890)

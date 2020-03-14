@@ -3,6 +3,7 @@ Description=YaST2 Second Stage
 After=apparmor.service local-fs.target plymouth-start.service
 Conflicts=plymouth-start.service
 Before=getty@tty1.service serial-getty@ttyS0.service serial-getty@ttyS1.service serial-getty@ttyS2.service
+Before=serial-getty@hvc0.service serial-getty@ttyAMA0.service
 Before=display-manager.service
 ConditionPathExists=/var/lib/YaST2/runme_at_boot
 
