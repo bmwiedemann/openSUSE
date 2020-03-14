@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 19:36:17 UTC 2020 - mgorse@suse.com
+
+- Update to version 2.3.4:
+  + Brown paper bag release, fix NULL check.
+  + Changes in version 2.3.3:
+  + Fix race condition during tracker-store shutdown maybe leading
+    to warnings and missed writeback events.
+  + Made fts:offsets stronger against corrupt FTS tables.
+  + Updated translations.
+- Drop tracker-fix-segfault-in-writeback.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Mar  5 02:41:37 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add tracker-fix-segfault-in-writeback.patch: Check if argument is
