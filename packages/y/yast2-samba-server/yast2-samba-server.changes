@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:00:37 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix check of connected users when proposing the default service
+  action (bsc#1166303)
+- 4.2.4
+
+-------------------------------------------------------------------
+Thu Mar  5 13:59:38 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Propose to restart samba services by default when writing the
+  configuration with services already running. Reload is still used
+  if some user is connected to the samba server (bsc#1165638)
+- 4.2.3
+
+-------------------------------------------------------------------
 Thu Nov 28 14:35:11 UTC 2019 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix failing Samba.GetServiceStatus old testsuite forcing and
