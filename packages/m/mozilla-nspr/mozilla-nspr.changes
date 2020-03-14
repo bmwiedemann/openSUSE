@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  3 21:11:34 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.25
+  * fixed reading files larger than 4 GB on Win32
+  * added support for Xtensa architecture
+
+-------------------------------------------------------------------
 Tue Jan  7 08:17:40 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.24

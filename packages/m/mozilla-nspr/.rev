@@ -634,4 +634,12 @@ require it nevertheless
   * added support for Nios-II, Nds32 and Microblaze architectures</comment>
     <requestid>761943</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2f6f964838a50110691833b072f121db</srcmd5>
+    <version>4.25</version>
+    <time>1584176038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>783554</requestid>
+  </revision>
 </revisionlist>

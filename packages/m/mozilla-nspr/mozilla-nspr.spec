@@ -2,7 +2,7 @@
 # spec file for package mozilla-nspr
 #
 # Copyright (c) 2020 SUSE LLC
-#               2006-2019 Wolfgang Rosenauer
+#               2006-2020 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           mozilla-nspr
-Version:        4.24
+Version:        4.25
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
