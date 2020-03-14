@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 10 16:50:03 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove baselibs.conf
+
+-------------------------------------------------------------------
+Wed Feb 26 13:08:04 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.3.0
+  * Qt5 is the only supported Qt series now
+  * OpenSSL <= 1.1.0 is no longer supported
+  * Various botan bugfixes
+  * More dynamic test coverage of backend capabilities
+  * no longer tries to setuid when the effective uid is not root
+- Rename qca-2.2.1-fixDSA.patch to qca-2.3.0-fixDSA.patch and
+  rebase it
+- Update minimum required Qt5 and cmake versions
+
+-------------------------------------------------------------------
 Mon Sep  9 12:17:50 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the obsolete libqca2 package.

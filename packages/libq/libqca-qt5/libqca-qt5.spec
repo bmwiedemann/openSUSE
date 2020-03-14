@@ -1,7 +1,7 @@
 #
 # spec file for package libqca-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,18 @@
 %define _so 2
 %bcond_without pkcs11
 Name:           libqca-qt5
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://userbase.kde.org/QCA
 Source:         https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
-Source1:        baselibs.conf
 Source99:       libqca-qt5-rpmlintrc
 # PATCH-FIX-OPENSUSE
-Patch0:         qca-2.2.1-fixDSA.patch
+Patch0:         qca-2.3.0-fixDSA.patch
 BuildRequires:  ca-certificates
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.4
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gpg2
 BuildRequires:  libdrm-devel
@@ -40,8 +39,8 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.2.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5Network) >= 5.6.0
 BuildRequires:  pkgconfig(openssl)
 Requires:       gpg2 >= 2.0.0
 Recommends:     %{name}-plugins
@@ -64,8 +63,8 @@ SASL support.
 Summary:        Development files for the Qt Cryptographic Architecture 2
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       pkgconfig(Qt5Core) >= 5.2.0
-Requires:       pkgconfig(Qt5Network) >= 5.2.0
+Requires:       pkgconfig(Qt5Core) >= 5.6.0
+Requires:       pkgconfig(Qt5Network) >= 5.6.0
 
 %description devel
 This package provides a generic Qt cryptographic architecture,
@@ -91,7 +90,6 @@ SASL support.
 
 %build
 %cmake \
-      -DQT4_BUILD=OFF \
       -DBUILD_TESTS=OFF \
       -DQCA_INSTALL_IN_QT_PREFIX=ON \
       -DWITH_botan_PLUGIN=OFF \
