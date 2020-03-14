@@ -1,7 +1,7 @@
 #
 # spec file for package python-sounddevice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        0.3.14
 Release:        0
 Summary:        Module to play and record sound with Python
 License:        MIT
-Group:          Development/Languages/Python
-Url:            http://python-sounddevice.readthedocs.io/
+URL:            https://python-sounddevice.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/s/sounddevice/sounddevice-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0}
 BuildRequires:  %{python_module numpy}
@@ -35,13 +34,11 @@ Requires:       portaudio
 Requires:       python-cffi >= 1.0
 Recommends:     python-numpy
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 This Python module provides bindings for the PortAudio library and a few
 convenience functions to play and record NumPy arrays containing audio signals.
-
 
 %prep
 %setup -q -n sounddevice-%{version}
@@ -52,7 +49,7 @@ chmod 644 examples/*
 
 %install
 %python_install
-%python_expand fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc NEWS.rst README.rst examples
