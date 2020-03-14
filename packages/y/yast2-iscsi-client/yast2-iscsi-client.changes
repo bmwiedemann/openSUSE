@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:29:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Handle the iscsi service status (restart, start...) change after
+  the iscsid and the iscsiuio sockets (bsc#1160606)
+- 4.2.5
+
+-------------------------------------------------------------------
 Fri Jan 17 10:17:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - fix calling iscsiadm on interface (bsc#1158443)
