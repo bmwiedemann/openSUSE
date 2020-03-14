@@ -31,7 +31,7 @@
 %endif
 
 Name:           borgbackup
-Version:        1.1.10
+Version:        1.1.11
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -50,6 +50,7 @@ BuildRequires:  bash
 %if 0%{?suse_version} == 1320 || 0%{?sle_version} == 120200
 BuildRequires:  bash-completion
 %endif
+BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
@@ -178,6 +179,11 @@ find %{buildroot}/%{python3_sitearch}/ -iname *.h -delete
 install -D -m 0644 scripts/shell_completions/bash/borg %{buildroot}/%{_datadir}/bash-completion/completions/borg
 install -D -m 0644 scripts/shell_completions/zsh/_borg %{buildroot}/%{_datadir}/zsh/site-functions/_borg
 install -D -m 0644 scripts/shell_completions/fish/borg.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/borg.fish
+# remove duplicate file
+%fdupes %{buildroot}/%{python3_sitearch}/borgbackup-%{version}-py%{py3_ver}.egg-info/
+# fix wrong-file-end-of-line-encoding
+sed -i 's/\r$//' docs/_build/html/_static/fonts/open-sans/stylesheet.css
+sed -i 's/\r$//' docs/_build/html/_static/fonts/source-serif-pro/LICENSE.txt
 
 %if %{with borg_test}
 %check
