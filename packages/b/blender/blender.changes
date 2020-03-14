@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 13 16:54:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.82a:
+  * Move 2.82a from beta to release
+  * Fix shader build error
+  * Fix T74425: Cannot texture paint an images sequence anymore
+  * Fix T73369: corner pin & sun-beam nodes gizmos are too big
+  * Fix T63892: Tools cannot be registered into some contexts (e.g. PAINT_TEXTURE)
+  * Fix T74225: Image (from sequence) cannot be loaded
+  * Fix Vertex weight gradient tool show wrong weight/strength values in the UI
+  * Fix bone envelopes displaying wrong when armature is scaled
+  * Fix T72028: Crash switching to vertex paint
+  * Keymap: Add front/back Alt-MMB absolute view axis switching
+- Use git scm service to fetch the source
+
+-------------------------------------------------------------------
 Sat Feb 29 15:50:02 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - remove lang recommends

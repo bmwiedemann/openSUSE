@@ -46,15 +46,15 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.82
+Version:        2.82a
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
-# http://download.blender.org/source/
-Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
-Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
+# http://git.blender.org/
+Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-%{version}.tar.xz.md5sum
 Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
@@ -373,8 +373,8 @@ find %{buildroot} -name "*.py" -perm 0644 -print0 | \
 	xargs -0r grep -l '#!' | xargs -d'\n' chmod -f 0755;
 # Copy text files to correct place.
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -rv %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
-rm -rf %{buildroot}%{_datadir}/doc/blender
+mv -v %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
+rmdir %{buildroot}%{_datadir}/doc/blender
 # install blender sample.
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_docdir}/%{name}/
