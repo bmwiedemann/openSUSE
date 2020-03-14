@@ -17,15 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
+%define modname python-jsonrpc-server
 Name:           python-python-jsonrpc-server
 Version:        0.3.4
 Release:        0
 Summary:        JSON RPC 2.0 server library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/palantir/python-jsonrpc-server
-Source:         https://files.pythonhosted.org/packages/source/p/python-jsonrpc-server/python-jsonrpc-server-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove_testing_warnings.patch gh#palantir/python-jsonrpc-serveri#34 mcepl@suse.com
+# remove warnings about deprecated method logging.Logger.warn
+Patch0:         remove_testing_warnings.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -34,14 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ujson
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-future >= 0.14.0
-BuildRequires:  python-futures
-%endif
-%ifpython2
-Requires:       python-future >= 0.14.0
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description
@@ -49,7 +44,8 @@ A Python 2.7 and 3.4+ server implementation of the JSON RPC 2.0 protocol.
 This library has been pulled out of the Python Language Server project.
 
 %prep
-%setup -q -n python-jsonrpc-server-%{version}
+%autosetup -p1 -n %{modname}-%{version}
+
 sed -i 's/ujson<=1.35;/ujson;/' setup.py
 
 %build
@@ -62,7 +58,8 @@ sed -i 's/ujson<=1.35;/ujson;/' setup.py
 %check
 # Remove pytest addopts
 rm setup.cfg
-%pytest
+# gh#palantir/python-jsonrpc-server#33
+%pytest -k 'not (test_request_error or test_request_cancel or test_writer_bad_message)'
 
 %files %{python_files}
 %doc README.rst

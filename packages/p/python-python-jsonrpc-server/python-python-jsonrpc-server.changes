@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in py2 dependencies at all since we disabled the
+  python2 build
+
+-------------------------------------------------------------------
+Sat Mar 14 07:21:48 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch off python2 build, broken dependencies.
+
+-------------------------------------------------------------------
+Fri Mar 13 09:11:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_testing_warnings.patch to remove some warnings
+  in the test suite run log (gh#palantir/python-jsonrpc-serveri#34).
+- Switch off some tests which fail with Python 3.8
+  (gh#palantir/python-jsonrpc-server#33)
+
+-------------------------------------------------------------------
 Fri Feb 21 15:27:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix py2/py3 dependencies
