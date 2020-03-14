@@ -2880,4 +2880,12 @@
     <comment>submit new version 4.2.56</comment>
     <requestid>781502</requestid>
   </revision>
+  <revision rev="389" vrev="1">
+    <srcmd5>2e92c4b2b0f25482b1b4e2e559f2eeb3</srcmd5>
+    <version>4.2.58</version>
+    <time>1584176076</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.58</comment>
+    <requestid>783489</requestid>
+  </revision>
 </revisionlist>

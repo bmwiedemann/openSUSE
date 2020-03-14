@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  6 09:11:15 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Avoid unselecting the base product (related to bsc#1165501)
+- 4.2.58
+
+-------------------------------------------------------------------
+Thu Mar  5 16:21:35 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Avoid to abort the installer when the user decides to not fix a
+  repository url (bsc#1163015).
+- 4.2.57
+
+-------------------------------------------------------------------
 Wed Mar  4 11:34:30 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - fix showing count of packages to install in slide show
