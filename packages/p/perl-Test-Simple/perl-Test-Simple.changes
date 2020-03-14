@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 10 03:28:19 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.302172
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302172  2020-03-08 15:21:25-07:00 America/Los_Angeles
+  
+      - Fix transition doc
+      - Fix warnings from info / debug tap
+
+-------------------------------------------------------------------
 Sat Jan 18 03:11:43 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.302171
