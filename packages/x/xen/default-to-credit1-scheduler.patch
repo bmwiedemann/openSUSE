@@ -1,0 +1,30 @@
+References: bsc#1165206, bsc#1134506
+
+Switch the default scheduler back to the original credit
+scheduler. This action reverses the commit referenced below.
+
+From: George Dunlap george.dunlap@citrix.com Mon Oct 29 14:51:51 2018 +0000
+Subject: Make credit2 the default scheduler
+Date: Mon Oct 29 14:58:34 2018 +0000:
+Git: dafd936dddbd7978d4131275ad1112f64457bf64
+
+--- xen-4.13.0-testing.orig/xen/common/Kconfig
++++ xen-4.13.0-testing/xen/common/Kconfig
+@@ -319,7 +319,7 @@ config SCHED_NULL
+ 
+ choice
+ 	prompt "Default Scheduler?"
+-	default SCHED_CREDIT2_DEFAULT
++	default SCHED_CREDIT_DEFAULT
+ 
+ 	config SCHED_CREDIT_DEFAULT
+ 		bool "Credit Scheduler" if SCHED_CREDIT
+@@ -340,7 +340,7 @@ config SCHED_DEFAULT
+ 	default "rtds" if SCHED_RTDS_DEFAULT
+ 	default "arinc653" if SCHED_ARINC653_DEFAULT
+ 	default "null" if SCHED_NULL_DEFAULT
+-	default "credit2"
++	default "credit"
+ 
+ endmenu
+ 

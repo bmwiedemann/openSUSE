@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_08
+Version:        4.13.0_10
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -194,10 +194,12 @@ Patch406:       suse-xendomains-service.patch
 Patch407:       replace-obsolete-network-configuration-commands-in-s.patch
 Patch408:       disable-building-pv-shim.patch
 Patch409:       xenstore-launch.patch
+Patch410:       default-to-credit1-scheduler.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch422:       stubdom-have-iovec.patch
 Patch423:       vif-route.patch
+Patch424:       gcc10-fixes.patch
 # Other bug fixes or features
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
@@ -435,10 +437,12 @@ Authors:
 %patch407 -p1
 %patch408 -p1
 %patch409 -p1
+%patch410 -p1
 # Needs to go upstream
 %patch420 -p1
 %patch422 -p1
 %patch423 -p1
+%patch424 -p1
 # Other bug fixes or features
 %patch451 -p1
 %patch452 -p1

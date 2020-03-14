@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:41:34 MDT 2020 - carnold@suse.com
+
+- bsc#1158414 - GCC 10: xen build fails
+  gcc10-fixes.patch
+
+-------------------------------------------------------------------
+Wed Mar  4 13:28:17 MST 2020 - carnold@suse.com
+
+- bsc#1165206 - Xen 4.12 DomU hang / freeze / stall / NMI watchdog
+  bug soft lockup CPU #0 stuck under high load / upstream with
+  workaround. See also bsc#1134506
+  default-to-credit1-scheduler.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 08:18:37 MST 2020 - carnold@suse.com
 
 - bsc#1160932 - VUL-0: xen: XSA-312 v1: arm: a CPU may speculate

@@ -2411,4 +2411,12 @@
     <comment>Maintenance update with a few bug fixes.</comment>
     <requestid>777747</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>0745337db9c4465e5cd5d302fbbaa1b2</srcmd5>
+    <version>4.13.0_10</version>
+    <time>1584176035</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for compiling with gcc10 and scheduler bug bsc#1165206</comment>
+    <requestid>783535</requestid>
+  </revision>
 </revisionlist>
