@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 17
+%define sover 19
 
 Name:           libopenshot
-Version:        0.2.3+333
+Version:        0.2.5+11
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 # Disabled as cmake does not detect it
-#BuildRequires:  pkgconfig(Magick++)
+BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
@@ -132,6 +132,6 @@ export CXXFLAGS="%{optflags} -Wno-return-type"
 %{_libdir}/ruby/vendor_ruby/*/*-linux-gnu/openshot.so
 
 %files -n python3-openshot
-%{_prefix}/lib/python*/site-packages/*openshot*
+%{python3_sitearch}/*openshot*
 
 %changelog

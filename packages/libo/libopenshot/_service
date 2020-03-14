@@ -5,6 +5,7 @@
     <param name="revision">develop</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service mode="disabled" name="set_version" />
 

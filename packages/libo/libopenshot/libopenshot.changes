@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:22:10 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 0.2.5+11:
+  * ReaderBase_Tests: 100% internal coverage (#462)
+  * Updating auto-stale conditions (90 days warning, 10 days to respond, only issues, ignore assigned issues)
+  * Adding support for proper absolute/canonical path detection and replacement
+  * Adding stale bot for github issue management
+  * Adding ability for a Clip to auto-detect and instantiate a Timeline Reader from the *.osp file type. Added new Timeline constructor, to auto load UTF-8 JSON file, and regex convert all paths to absolute. Fixed a dead lock issue when a Timeline loads another Timeline.
+  * Bump version to -dev2 (merge master back to develop)
+  * Fixing abs -> fabs regression. Not sure how this worked before.
+  * Fix ColorShift classname in EffectInfo::CreateEffect
+  * Release branch for 0.2.5 (SO 19)
+
+- enable Magick++ again
+
+-------------------------------------------------------------------
 Sun Aug 18 08:31:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to current master (devel) branch, fixes build for Factory.
