@@ -313,8 +313,8 @@
     <package name="circuslinux" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ckermit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clang9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="clang9-checker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clang9-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
@@ -5558,9 +5558,9 @@
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libbz2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libc++-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libc++1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libc++1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libc++abi-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libc++abi1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libc++abi1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcairo2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra-gtk0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

@@ -1673,7 +1673,6 @@ unsorted:
   - clamtk-lang 
   - clamz 
   - clang 
-  - clang-checker 
   - clang-devel 
   - clang7 
   - clang7-checker 
@@ -4564,10 +4563,6 @@ unsorted:
   - gmusicbrowser 
   - gmusicbrowser-lang 
   - gn 
-  - gnokii 
-  - gnokii-devel 
-  - gnokii-lang 
-  - gnokii-smsd 
   - gnome-2048 
   - gnome-2048-lang 
   - gnome-autoar-devel 
@@ -10616,10 +10611,12 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_8-gnu-hpc 
-  - libopenblas-pthreads_0_3_8-gnu-hpc-devel 
-  - libopenblas_0_3_8-gnu-hpc 
-  - libopenblas_0_3_8-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_9-gnu-hpc 
+  - libopenblas-pthreads_0_3_9-gnu-hpc-devel 
+  - libopenblas_0_3_8-gnu-hpc: [i586] 
+  - libopenblas_0_3_8-gnu-hpc-devel: [i586] 
+  - libopenblas_0_3_9-gnu-hpc: [x86_64] 
+  - libopenblas_0_3_9-gnu-hpc-devel: [x86_64] 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -10653,7 +10650,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio7 
   - libopenshot-devel 
-  - libopenshot17 
+  - libopenshot19 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -11075,10 +11072,7 @@ unsorted:
   - libqb-tests 
   - libqb-tools 
   - libqb20-32bit: [x86_64] 
-  - libqca-qt5-32bit: [x86_64] 
   - libqca-qt5-devel 
-  - libqca-qt5-devel-32bit: [x86_64] 
-  - libqca-qt5-plugins-32bit: [x86_64] 
   - libqcow-devel 
   - libqcow-tools 
   - libqcow1 
@@ -14711,7 +14705,7 @@ unsorted:
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
-  - nfs-client-provisioner-k8s-yaml 
+  - nfs-client-provisioner-k8s-yaml: [i586] 
   - nfs-ganesha: [x86_64] 
   - nfs-ganesha-ceph: [x86_64] 
   - nfs-ganesha-mount-9P: [x86_64] 
@@ -15471,8 +15465,9 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_8-gnu-hpc-devel-static 
-  - openblas_0_3_8-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_9-gnu-hpc-devel-static 
+  - openblas_0_3_8-gnu-hpc-devel-static: [i586] 
+  - openblas_0_3_9-gnu-hpc-devel-static: [x86_64] 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -16560,6 +16555,7 @@ unsorted:
   - perl-Gnome2-VFS 
   - perl-Gnome2-Wnck 
   - perl-GnuPG-Interface 
+  - perl-GooCanvas2 
   - perl-Graph 
   - perl-GraphViz 
   - perl-Graphics-ColorUtils 
@@ -16570,6 +16566,7 @@ unsorted:
   - perl-Gtk2-ImageView 
   - perl-Gtk2-Unique 
   - perl-Gtk3 
+  - perl-Gtk3-SimpleList 
   - perl-HTML-Element-Extended 
   - perl-HTML-Encoding 
   - perl-HTML-Form 
@@ -16932,6 +16929,7 @@ unsorted:
   - perl-Sereal 
   - perl-Sereal-Decoder 
   - perl-Sereal-Encoder 
+  - perl-Set-IntSpan 
   - perl-Smart-Comments 
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
@@ -19922,7 +19920,6 @@ unsorted:
   - python2-python-jenkins 
   - python2-python-jose 
   - python2-python-json-logger 
-  - python2-python-jsonrpc-server 
   - python2-python-jsonschema-objects 
   - python2-python-language-server 
   - python2-python-lzo 
@@ -22072,6 +22069,7 @@ unsorted:
   - python3-numpydoc 
   - python3-nwdiag 
   - python3-nxapi-plumbing 
+  - python3-o2sclpy 
   - python3-oauth2 
   - python3-oauth2client 
   - python3-oauth2client-flask 
@@ -34139,7 +34137,6 @@ unsorted:
   - xgboost-predictor 
   - xgboost-predictor-javadoc 
   - xgc 
-  - xgnokii 
   - xgrabsc 
   - xhfsutil 
   - xhtml-dtd 
