@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:40:33 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.26.2:
+  + Fix build exporting all the symbols.
+  + Allow GIR generation when cross-compiling.
+  + Allow unknown parameters inside geo: URL.
+
+-------------------------------------------------------------------
 Thu Mar 14 13:53:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.26.1:
