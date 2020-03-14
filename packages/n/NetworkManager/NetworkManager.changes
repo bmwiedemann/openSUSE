@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 15:48:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.10:
+  + core: periodically cleanup stale device state files from /run.
+  + dhcp: fix crash in nettools client.
+  + bond: fixed the validation of the miimon option.
+  + Various minor bug fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Mar 11 08:24:26 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Modify nfs script (boo#1164642)
+  * Also mount nfs4 shares
+  * Ignore nfs or nfs4 shares in case if the noauto option is set
+
+-------------------------------------------------------------------
 Tue Feb 18 18:21:13 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.8:

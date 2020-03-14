@@ -59,10 +59,15 @@ case "$COMMAND" in
         # Check with systemd if nfs service is enabled
         if /usr/bin/systemctl is-enabled nfs-client.target >/dev/null 2>&1; then
             printf %s "$NET_MOUNTS" | while IFS= read -r line; do
+                MOUNT_OPTIONS=$(echo $line | cut -f4 -d" ")
                 MOUNT_POINT=$(echo $line | cut -f2 -d" ")
                 FS_TYPE=$(echo $line | cut -f3 -d" ")
-                # Only mount it when the type is nfs
-                if [ "$FS_TYPE" == "nfs" ]; then
+                # Only mount it if not "noauto "set in options
+                case ",${MOUNT_OPTIONS}," in
+                    *,noauto,*) continue ;;
+                esac
+                # Only mount it when the type is nfs or nfs4
+                if [ "$FS_TYPE" == "nfs" -o "$FS_TYPE" == "nfs4" ]; then
                     net_mount "$MOUNT_POINT"
                 fi
             done
@@ -77,8 +82,8 @@ case "$COMMAND" in
             if other_reaches $HOST; then
                 echo >&2 "Other network interfaces reach $HOST for $MOUNT_POINT."
             else
-                # Only unmount it when the type is nfs
-                if [ "$FS_TYPE" == "nfs" ]; then
+                # Only unmount it when the type is nfs or nfs4
+                if [ "$FS_TYPE" == "nfs" -o "$FS_TYPE" == "nfs4" ]; then
                     net_umount "$MOUNT_POINT"
                 fi
             fi
