@@ -734,4 +734,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Eliminate the -lang recommends (forwarded request 767125 from dimstar)</comment>
     <requestid>767393</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>a74fba63d09cd88356e54b1eeeec4dd5</srcmd5>
+    <version>3.34.1</version>
+    <time>1584176065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784039</requestid>
+  </revision>
 </revisionlist>
