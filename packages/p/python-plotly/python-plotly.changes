@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:40:58 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.5.4:
+  * Updated
+    + The documentation of the API
+      https://plot.ly/python-api-reference/ now documents the full API
+      #2243
+    + New documentation examples for facets #2235, legend #2227,
+      subplots #2226, axes #2234 and histograms #2242. Thanks to
+      @SylwiaOliwia2 for all these great examples!
+  * Fixed
+    + Jupyterlab extension now compatible with both Jupyterlab 1.2 and
+      2.0 #2261 with thanks to @consideRatio for the contribution!
+    + Fixed a bug when using boolean values for the color argument of
+      px functions #2127
+    + Corrected import bug which was occuring with old versions of
+      ipywidgets #2265
+    + Fixed python 3.8 syntax warning #2262, with thanks to @sgn for
+      the contribution!
+
+- changes from version 4.5.3:
+  * Updated
+    + Removed development dependency on nose testing framework #2217
+  * Fixed
+    + JupyterLab extension now compatible with JupyterLab 2.0 #2245
+      with thanks to @consideRatio for the contribution!
+
+- changes from version 4.5.2:
+  * Fixed
+    + Fix build errors in JupyterLab extension by pinning version of
+      @types/plotly.js #2223
+
+-------------------------------------------------------------------
 Sat Feb 22 18:54:15 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.5.1:

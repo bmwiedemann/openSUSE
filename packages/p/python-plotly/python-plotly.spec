@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        4.5.1
+Version:        4.5.4
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -66,9 +66,6 @@ Requires:       python-ipython
 Requires:       python-ipywidgets
 Requires:       python-nbformat >= 4.2
 Requires:       python-notebook
-%ifpython2
-Requires:       python3-plotly-jupyter = %{version}
-%endif
 
 %description    jupyter
 Use this package to make collaborative, interactive,
