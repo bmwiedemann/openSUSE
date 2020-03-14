@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Mar 13 01:54:58 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- CWM::MultiStatusSelector minor improvements (related to
+  bsc#1157780).
+- 4.2.73
+
+-------------------------------------------------------------------
+Thu Mar 12 09:14:16 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Add the new CWM::MultiStatusSelector custom widget (related to
+  bsc#1157780, bsc#1161308, bsc#1161200).
+- 4.2.72
+
+-------------------------------------------------------------------
+Thu Mar 12 08:26:12 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not remove the installation repositories in the "Previously
+  Used Repositories" step (bsc#1163081)
+- 4.2.71
+
+-------------------------------------------------------------------
+Fri Mar  6 13:26:57 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Allow to restore the vertical scroll of a CWM::RichText
+  (related to bsc#1049965)
+- 4.2.70
+
+-------------------------------------------------------------------
+Fri Mar  6 12:00:43 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Read the list of network service properly, no matter where
+  it is stored (bsc#1162853).
+- 4.2.69
+
+-------------------------------------------------------------------
+Fri Mar  6 08:58:24 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Skip repository reloading at installation to avoid unselecting
+  products to install (bsc#1165501)
+- 4.2.68
+
+-------------------------------------------------------------------
 Wed Feb 26 10:42:42 CET 2020 - schubi@suse.de
 
 - Updated docu for SysctlConfig class (bsc#1151649).
