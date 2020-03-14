@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:52:36 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not remove the installation repositories in the "Previously
+  Used Repositories" step (bsc#1163081)
+- 4.2.18
+
+-------------------------------------------------------------------
+Fri Feb 21 09:06:01 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed repository loading to not remove the initial installation
+  repository (bsc#1163081)
+- 4.2.17
+
+-------------------------------------------------------------------
+Wed Feb 19 14:43:22 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Switch from Autotools based build to Rake
+
+-------------------------------------------------------------------
+Wed Feb 19 09:57:26 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed user-visible messages (bsc#1084015)
+- 4.2.16
+
+-------------------------------------------------------------------
+Mon Feb 17 15:43:57 CET 2020 - mls@suse.de
+
+- Also accept Packages.db as valid rpm database (bsc#1162485)
+- 4.2.15
+
+-------------------------------------------------------------------
+Tue Jan 28 10:23:51 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Store the original repository setup early in the upgrade workflow
+  so YaST can easily differ between the old and new repositories
+  (bsc#1159433)
+- 4.2.14
+
+-------------------------------------------------------------------
 Fri Jan  3 14:51:57 CET 2020 - schubi@suse.de
 
 - Aborting upgrade: Restoring old settings e.g. RPM database
