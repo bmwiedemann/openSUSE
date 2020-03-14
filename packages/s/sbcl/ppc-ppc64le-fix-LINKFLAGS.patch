@@ -1,0 +1,24 @@
+diff -Nru sbcl-2.0.2.orig/src/runtime/Config.ppc64-linux sbcl-2.0.2/src/runtime/Config.ppc64-linux
+--- sbcl-2.0.2.orig/src/runtime/Config.ppc64-linux	2020-02-29 21:25:50.000000000 +0100
++++ sbcl-2.0.2/src/runtime/Config.ppc64-linux	2020-03-13 15:20:42.148527131 +0100
+@@ -10,7 +10,7 @@
+ # files for more information.
+ 
+ CFLAGS += -m64
+-LINKFLAGS += -rdynamic -m64
++LINKFLAGS += -rdynamic -m64 -Wl,-no-as-needed
+ NM = ./linux-nm
+ 
+ ASSEM_SRC = ppc64-assem.S
+diff -Nru sbcl-2.0.2.orig/src/runtime/Config.ppc-linux sbcl-2.0.2/src/runtime/Config.ppc-linux
+--- sbcl-2.0.2.orig/src/runtime/Config.ppc-linux	2020-02-29 21:25:50.000000000 +0100
++++ sbcl-2.0.2/src/runtime/Config.ppc-linux	2020-03-13 15:18:48.903522685 +0100
+@@ -10,7 +10,7 @@
+ # files for more information.
+ 
+ CFLAGS += -m32
+-LINKFLAGS += -rdynamic -m32
++LINKFLAGS += -rdynamic -m32 -Wl,-no-as-needed
+ NM = ./linux-nm
+ 
+ ASSEM_SRC = ppc-assem.S

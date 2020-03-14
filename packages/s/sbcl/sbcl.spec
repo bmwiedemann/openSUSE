@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
@@ -95,6 +95,8 @@ Patch1:         disable-localport-bsd-sockets-test.patch
 Patch2:         fix-tests.patch
 # PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
 Patch3:         strip-arm-CFLAGS.patch
+# PATCH-FIX-UPSTREAM  fix ppc and ppc64le LINKFLAGS
+Patch4:         ppc-ppc64le-fix-LINKFLAGS.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    ppc64 s390x
 
@@ -115,6 +117,7 @@ ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %patch1 -p1 -b sockets
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 cp %{S:1} .
 cp %{S:2} .

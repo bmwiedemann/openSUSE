@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 13 21:16:28 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.2
+  * new feature: CMUCL-style block compilation support has been added,
+    allowing whole program optimization. It has been documented in a new
+    section of the manual entitled "Advanced Compiler Use and Efficiency
+    Hints". In particular, users of block compilation will find a large
+    speedup for numerical code, as functions which call or return floating
+    point values will keep everything unboxed.
+  * bug fix: in CHANGE-CLASS, handle non-standard slot-value-using-class for
+    :INSTANCE and :CLASS slots better.  (reported by Shinmera on #sbcl)
+  * bug fix: REMHASH in an EQUAL or EQUALP hash-table works correctly on a
+    key for which EQUAL (respectively EQUALP) is reduced to EQ.  (lp#1865094)
+  * bug fix: do not emit a warning for DEFCLASS slots with mismatched :TYPE
+    and :INITFORM when the class has a non-standard metaclass.
+  * bug fix: DISASSEMBLE on SPARC is less likely to spuriously annotate code
+    sequences as error traps.
+- Add patch to add missing linker flags to LINKFLAGS on ppc and ppc64el
+  + ppc-ppc64le-fix-LINKFLAGS.patch
+- Refresh patches for new version
+  + strip-arm-CFLAGS.patch
+
+-------------------------------------------------------------------
 Sun Feb  2 15:39:58 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.0.1
