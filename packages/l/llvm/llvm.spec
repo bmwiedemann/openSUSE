@@ -111,22 +111,6 @@ This package is a dummy package that depends on the version of
 clang that openSUSE currently supports.  Packages that
 don't require a specific Clang version should depend on this.
 
-%package -n clang-checker
-Summary:        Static code analyzer for CLANG
-Group:          Development/Languages/C and C++
-URL:            https://clang-analyzer.llvm.org/
-Requires:       clang%{_sonum}-checker = %{version}
-Provides:       llvm-clang-checker = %{version}
-Obsoletes:      llvm-clang-checker < %{version}
-
-%description -n clang-checker
-This package contains scan-build and scan-view, command line
-static code analyzers for CLANG.
-
-This package is a dummy package that depends on the version of
-clang-checker that openSUSE currently supports.  Packages that
-don't require a specific Clang version should depend on this.
-
 %package -n clang-devel
 Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
@@ -261,9 +245,6 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %doc README
 
 %files -n clang
-%doc README
-
-%files -n clang-checker
 %doc README
 
 %files gold

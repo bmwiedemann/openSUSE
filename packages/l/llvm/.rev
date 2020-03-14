@@ -1292,4 +1292,12 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment>Move clang-{format,include-fixer,rename}.{el,py} from llvm-*-plugins to clang, drop empty llvm-emacs-plugins. (forwarded request 768749 from aaronpuchert)</comment>
     <requestid>768763</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>7146eb0bb8521feffb6809745f2b17f9</srcmd5>
+    <version>9.0.1</version>
+    <time>1584176050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783713</requestid>
+  </revision>
 </revisionlist>

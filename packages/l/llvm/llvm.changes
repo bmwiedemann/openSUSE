@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar  7 22:41:55 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop clang-checker meta package, we now provide this as
+  unversioned clang-tools coming from the versioned llvmX package.
+- Update build conditions mentioned in README.packaging.
+
+-------------------------------------------------------------------
 Wed Jan 29 22:33:02 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Drop llvm-emacs-plugins since its content has moved to clang.

@@ -143,8 +143,8 @@ needs to be modified.
       %bcond_without/%bcond_with libcxx in llvmX.spec
       and make it always %bcond_with.  If the .so numbers
       have changed, these can be left-as-is.
-   3. Change "%bcond_without pyclang" to 
-      "%bcond_with pyclang" in llvmX.spec.
+   3. Change "%bcond_without clang_scripts" to
+      "%bcond_with clang_scripts" in llvmX.spec.
    4. Confirm everything builds successfully and there are
       no new rpmlint issues.
    5. Update the llvmX.changes file.
