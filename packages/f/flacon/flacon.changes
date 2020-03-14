@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 15:39:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Recommend faac
+- Remove obsolete -lang Recommends
+
+-------------------------------------------------------------------
 Sun Feb 23 20:04:37 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Fix runtime dependencies: doesn't require shntool.

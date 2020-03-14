@@ -34,7 +34,7 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(uchardet)
-Recommends:     %{name}-lang = %{version}
+Recommends:     faac
 Recommends:     flac
 Recommends:     lame
 Recommends:     mac
