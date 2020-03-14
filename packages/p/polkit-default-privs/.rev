@@ -1616,4 +1616,14 @@ for 12.3</comment>
     <comment></comment>
     <requestid>780221</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>cd7ccc95ee1407e23cbcf9db94eddcd8</srcmd5>
+    <version>1550+20200310.cdde967</version>
+    <time>1584176027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20200310.cdde967:
+  * profiles: whitelist new timeshift pkexec actions (bsc#1165436)
+  * polkit profile: remove trailing '###' lines</comment>
+    <requestid>783415</requestid>
+  </revision>
 </revisionlist>
