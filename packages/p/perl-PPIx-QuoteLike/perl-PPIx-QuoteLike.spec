@@ -17,7 +17,7 @@
 
 
 Name:           perl-PPIx-QuoteLike
-Version:        0.009
+Version:        0.010
 Release:        0
 %define cpan_name PPIx-QuoteLike
 Summary:        Parse Perl string literals and string-literal-like things

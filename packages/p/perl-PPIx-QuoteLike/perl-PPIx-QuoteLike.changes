@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 10 03:25:57 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.010		2020-03-09	T. R. Wyant
+      Remove redundant and poorly-performing code introduced in version
+      0.009.
+
+-------------------------------------------------------------------
 Fri Feb 28 03:09:46 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.009
