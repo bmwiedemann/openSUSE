@@ -1,7 +1,7 @@
 #
 # spec file for package netcontrol
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,8 +20,6 @@ Name:           netcontrol
 Version:        0.3.1
 Release:        0
 Summary:        A network configuration library
-License:        LGPL-2.1+
-Group:          Productivity/Networking/System
 #
 # License note:
 # libnetcontrol contains source code which is based on wicked.
@@ -29,8 +27,15 @@ Group:          Productivity/Networking/System
 # granted by the authors of wicked to use the code derived from
 # wicked under the LGPL-2.1+ in libnetcontrol.
 #
+License:        LGPL-2.1-or-later
+Group:          Productivity/Networking/System
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+Patch1:         0001-virsh-iface-list-not-working-as-expected-bsc-1029201.patch
+Patch2:         0002-Fix-invalid-check-in-route-creation-bsc-1148646.patch
+Patch3:         0003-sysconfig-fix-segfault-on-missed-end-quote-bsc-10277.patch
+Patch4:         0004-udev-use-correct-udev-rule-write-lock-directory.patch
+Patch5:         0005-bonding-don-t-complain-about-unknown-options.1132794.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1310
 BuildRequires:  autoconf
@@ -102,6 +107,11 @@ Authors:
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 export CFLAGS="-W -Wall $RPM_OPT_FLAGS"

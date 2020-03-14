@@ -160,4 +160,22 @@
     <comment></comment>
     <requestid>693125</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>51dd52d65b2a6af4d2200dea228a2c98</srcmd5>
+    <version>0.3.1</version>
+    <time>1584176071</time>
+    <user>dimstar_suse</user>
+    <comment>- bonding: don't complain about unknown options (bsc#1132794)
+  [+ 0005-bonding-don-t-complain-about-unknown-options.1132794.patch]
+
+- udev: use correct udev rule (write) lock directory
+  [+ 0004-udev-use-correct-udev-rule-write-lock-directory.patch]
+- sysconfig: fix segfault on missed end-quote (bsc#1027736)
+  [+ 0003-sysconfig-fix-segfault-on-missed-end-quote-bsc-10277.patch]
+- fix segfault on invalid check in route creation (bsc#1148646)
+  [+ 0002-Fix-invalid-check-in-route-creation-bsc-1148646.patch]
+- fix virsh iface-list not working as expected (bsc#1029201)
+  [+ 0001-virsh-iface-list-not-working-as-expected-bsc-1029201.patch]</comment>
+    <requestid>784086</requestid>
+  </revision>
 </revisionlist>
