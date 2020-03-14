@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.2.29
+Version:        4.2.31
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -54,8 +54,8 @@ BuildRequires:  yast2-update >= 3.3.0
 BuildRequires:  yast2-xml
 # Required for test suite testing one time sync
 BuildRequires:  yast2-ntp-client >= 4.0.1
-# Y2Storage::AutoinstProposal constructor receives a ProposalSettings object
-BuildRequires:  yast2-storage-ng >= 4.2.55
+# New API for Y2Storage::PackageHandler and storage features
+BuildRequires:  yast2-storage-ng >= 4.2.95
 # %%{_unitdir} macro definition is in a separate package since 13.1
 %if 0%{?suse_version} >= 1310
 BuildRequires:  systemd-rpm-macros
@@ -76,9 +76,9 @@ Requires:       yast2-schema >= 4.0.6
 Requires:       yast2-security >= 4.1.1
 Requires:       yast2-transfer >= 2.21.0
 Requires:       yast2-xml
-# Y2Storage::AutoinstProposal constructor receives a ProposalSettings object
+# New API for Y2Storage::PackageHandler and storage features
 Requires:       yast2-ruby-bindings >= 1.0.0
-Requires:       yast2-storage-ng >= 4.2.55
+Requires:       yast2-storage-ng >= 4.2.95
 
 Conflicts:      yast2-installation < 3.1.166
 
@@ -108,8 +108,8 @@ installation sources.
 Summary:        YaST2 - Auto Installation Modules
 Group:          System/YaST
 
-# Y2Storage::AutoinstIssues containing section information
-BuildRequires:  yast2-storage-ng >= 4.0.15
+# New API for Y2Storage::PackageHandler and storage features
+BuildRequires:  yast2-storage-ng >= 4.2.95
 
 # API for Disabled Modules (ProductControl)
 Requires:       yast2 >= 2.16.36
