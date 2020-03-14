@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 10 19:37:06 UTC 2020 - mgorse@suse.com
+
+- Update to version 2.3.3:
+  + The secure sandbox for tracker-extract now permits
+    clock_nanosleep() calls, fixing crashes on some systems.
+  + Miners now set nice/scheduler priorities in a way that placates
+    glib. The sched_setscheduler syscall is as a side effect also
+    allowed by the tracker-extract sandbox.
+  + Updated translations.
+- Drop tracker-miners-set-cpu-io-nice.patch and
+  tracker-miners-allow-settatr.patch: fixed upstream.
+- Add tracker-miners-bsc1165635-crawl-timestamp.patch: properly set
+  crawl timestamp (bsc#1165635 glgo#GNOME/tracker-miners!159).
+
+-------------------------------------------------------------------
 Sat Feb 22 10:23:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patches:
-  + tracker-miners-set-cpu-io-nice.patches
+  + tracker-miners-set-cpu-io-nice.patch
   + tracker-miners-allow-settatr.patch
 
 -------------------------------------------------------------------
