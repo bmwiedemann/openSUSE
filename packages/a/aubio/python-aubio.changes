@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 08:42:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
 Tue Feb  4 11:55:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip two tests that fail to pass on 32bit machines

@@ -201,4 +201,12 @@
 - Run fdupes during install</comment>
     <requestid>769954</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ec705a2075df160e69e1318a1f00b992</srcmd5>
+    <version>0.4.9</version>
+    <time>1584176120</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>784575</requestid>
+  </revision>
 </revisionlist>

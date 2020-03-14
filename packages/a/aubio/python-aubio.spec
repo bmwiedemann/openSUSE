@@ -52,7 +52,7 @@ Its features include segmenting a sound file before each of its attacks, perform
 
 %install
 %python_install
-%python_expand fdupes %{buildroot}/%{python_sitearch}
+%python_expand %fdupes %{buildroot}/%{python_sitearch}
 %python_clone -a %{buildroot}/%{_bindir}/aubio
 %python_clone -a %{buildroot}/%{_bindir}/aubiocut
 
