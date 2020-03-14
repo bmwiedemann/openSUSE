@@ -297,4 +297,12 @@
     <comment>- Add support for gcc8/9 building (jsc#SLE-8604). (forwarded request 779439 from eeich)</comment>
     <requestid>779513</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>031e18f5353f0505b66011c0178b6fbe</srcmd5>
+    <version>0.3.9</version>
+    <time>1584176047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783595</requestid>
+  </revision>
 </revisionlist>

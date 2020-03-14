@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar  2 08:19:23 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.3.9
+  common:
+  * Fixed a miscompilation of the GETRF functions with CMAKE
+    The size of the memory buffer used for splitting GEMM tasks across
+    multiple threads can now be configured in the build system.
+    Imported bugfix 390 from LAPACK (missing NaN propagation in xCOMBSSQ)
+  POWER:
+  * fixed several compilation problems related to endianness and
+    ELF version support on POWER8 and POWER9.
+  * fixed misuse of the absolute value IAMIN/IAMAX in place of IMIN/IMAX
+  * fixed a race condition in the level3 blas code
+  MIPS64:
+  * fixed misuse of the absolute value IAMIN/IAMAX in place of IMIN/IMAX
+  ARMV7:
+  * fixed a race condition in the level3 blas code
+  * fixed a compilation problem on Android
+  ARMV8:
+  * Added support for Ampere EMAG8180
+  * Added support for Neoverse N1
+    improved performance of the blas_lock function
+    fixed a race condition in the level3 blas code
+  * Fixed a performance regression on TSV110 servers
+  x86_64:
+  * Fixed a long-standing error with undeclared register clobbers in
+    the DSCAL microkernel for Haswell,SkylakeX and Zen exposed by gcc9.2
+  *  Fixed a long-standing bug in the SSE implementation of the IAMAX functions
+  *  Fixed a cmake build failure with DYNAMIC_ARCH on x86_64
+  *  Fixed an oversight in the cpu detection code for Intel Goldmont+,
+     Cannon Lake and Ice Lake
+  * Fixed compile failure on OSX when the compiler name contains a dash
+    (e.g. gcc-9)
+  * Fixed compilation with MinGW on SkylakeX
+  * Improved speed of the AVX512 GEMM3M code, added an AVX512 kernel for
+  * STRMM and improved performance of the AVX2 GEMM kernels
+  IBM Z:
+  * fixed compilation of the DYNAMIC_ARCH code
+
+-------------------------------------------------------------------
 Wed Feb 26 12:22:00 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add support for gcc8/9 building (jsc#SLE-8604).
