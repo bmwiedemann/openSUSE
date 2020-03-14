@@ -2737,4 +2737,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>780858</requestid>
   </revision>
+  <revision rev="168" vrev="3">
+    <srcmd5>bed240f65c26d2e29fa6548cc295073a</srcmd5>
+    <version>6.2</version>
+    <time>1584176022</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20200308
+  + update copyright notices in test-packages.
+  + modify tracemunch to guard against errors in its known_p1 table.
+  + add several --with-xxx-libname options, to help with pkgsrc (prompted
+    by discussion with Thomas Klausner).
+
+- Add ncurses patch 20200301
+  + modify wbkgd() and wbkgrnd() to avoid storing a null in the
+    background character, because it may be used in cases where the
+    corresponding 0x80 is not treated as a null (report by Marc Rechte,
+    cf: 20181208).
+
+- Add ncurses patch 20200229
+  + modify CF_NCURSES_CONFIG to work around xcode's c99 &quot;-W&quot; option,
+    which conflicts with conventional use for passing linker options.
+  &gt; fixes for building with Visual Studio C++ and msys2 (patches by
+    &quot;Maarten Anonymous&quot;):
+  + check for pcre2posix.h instead of pcre2-posix.h
+  + add case in CF_SHARED_OPTS for msys2 + msvc
+  + add fallback definition for STDIN_FILENO in progs.priv.h
+  + modify win_driver.c to use _alloca() rather than gcc's variable
+    length array feature.
+  + add NCURSES_IMPEXP to ncurses wrapped-variable declarations
+  + remove NCURSES_IMPEXP from class variables in c++/cursslk.h
+  + remove fallback prototype for exit() from c++/etip.h.in
+  + use configured check for &lt;sys/time.h&gt; in a couple of places
+  + conditionally include winsock.h in ncurses/win32con/gettimeofday.c,
+    because Visual Studio needs this for the timestruct declaration.
+  + adjust syntax in a couple of files using the NCURSES_API symbol.</comment>
+    <requestid>782927</requestid>
+  </revision>
 </revisionlist>
