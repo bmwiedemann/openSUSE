@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 11 21:00:20 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1583960405.4e3dec50:
+  * Add power function to spvm backend
+  * Fix git hash not being able to compute when no git is available
+  * Switch to a hash for args of generalhw commands
+  * Add optional args to GENERAL_HW_POWERON_CMD and GENERAL_HW_POWEROFF_CMD
+  * Add support to checkout git refspec in existing working copies
+
+-------------------------------------------------------------------
 Fri Mar 06 11:15:59 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1583493337.35921fbf:
