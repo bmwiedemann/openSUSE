@@ -17,28 +17,32 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-clikit
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Helper to build testable command line interfaces
 License:        MIT
 URL:            https://github.com/sdispater/clikit
 Source:         https://github.com/sdispater/clikit/archive/%{version}.tar.gz#/clikit-%{version}.tar.gz
-BuildRequires:  %{python_module pastel}
-BuildRequires:  %{python_module pylev}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pastel >= 0.2.0}
+BuildRequires:  %{python_module pylev >= 1.3}
+BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing}
+BuildRequires:  %{python_module typing >= 3.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
 BuildRequires:  python3-dephell
-Requires:       python-pastel
-Requires:       python-pylev
-Requires:       python-typing
+Requires:       python-pastel >= 0.2.0
+Requires:       python-pylev >= 1.3
+Requires:       python-typing >= 3.6
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34 >= 1.1
+%endif
 %ifpython2
-Requires:       python2-enum34
+Requires:       python-enum34 >= 1.1
 %endif
 %python_subpackages
 

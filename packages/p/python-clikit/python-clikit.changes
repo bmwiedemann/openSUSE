@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 15 10:12:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.2:
+  * Fixed the terminal width being set to 0 in some circumstances (#15).
+  * Fixed the comptibility with the latest version of pastel (#10).
+
+-------------------------------------------------------------------
 Tue Jan 14 10:18:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.1:

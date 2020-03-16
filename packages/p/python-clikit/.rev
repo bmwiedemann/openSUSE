@@ -35,4 +35,14 @@
   * minor fixes</comment>
     <requestid>764231</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07f4690700c1be9ffd7424061bb36b3f</srcmd5>
+    <version>0.4.2</version>
+    <time>1584350402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Fixed the terminal width being set to 0 in some circumstances (#15).
+  * Fixed the comptibility with the latest version of pastel (#10).</comment>
+    <requestid>785249</requestid>
+  </revision>
 </revisionlist>
