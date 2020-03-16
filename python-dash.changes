@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 14 16:02:04 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in files section
+
+- update to version 1.9.1:
+  * #1133 Allow the compress config variable to be set with an
+     environment variable with DASH_COMPRESS=FALSE
+
+-------------------------------------------------------------------
 Mon Feb 10 15:30:22 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 1.9.0
