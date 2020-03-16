@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 10:39:09 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Split dirmngr into a subpackage to avoid a hard dependency of
+  gpg2 on libgnutls
+
+-------------------------------------------------------------------
 Wed Feb 19 08:48:34 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix build with GCC-10: [bsc#1160394]

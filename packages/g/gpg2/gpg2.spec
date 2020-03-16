@@ -65,8 +65,7 @@ Requires:       libgcrypt20 >= 1.7.0
 Requires:       libksba >= 1.3.4
 Requires:       pinentry
 Requires(post): %{install_info_prereq}
-Obsoletes:      dirmngr < 2.1.0
-Provides:       dirmngr = %{version}
+Recommends:     dirmngr = %{version}
 Provides:       gnupg = %{version}
 Provides:       gpg = 1.4.9
 Provides:       newpg
@@ -80,6 +79,18 @@ of symmetric-key and public-key cryptography to encrypt/decrypt
 messages and/or to sign and verify them.
 
 gpg2 provides GPGSM, gpg-agent, and a keybox library.
+
+%package -n dirmngr
+Summary:        Keyserver, CRL, and OCSP access for GnuPG
+Group:          Productivity/Networking/Security
+
+%description -n dirmngr
+Since version  2.1 of GnuPG, dirmngr takes care of accessing the OpenPGP
+keyservers. As with previous versions it is also used as a server for managing
+and downloading certificate
+revocation lists (CRLs) for X.509 certificates, downloading X.509 certificates,
+and providing access to OCSP providers.  Dirmngr is invoked internally by gpg,
+gpgsm, or via the gpg-connect-agent tool.
 
 %lang_package
 
@@ -167,10 +178,13 @@ install -m 755 tools/gpg-zip %{buildroot}/%{_bindir}
 
 %files
 %{_infodir}/gnupg*
+%exclude %{_mandir}/*/dirmngr*%{ext_man}
 %{_mandir}/*/*%{ext_man}
 %license COPYING*
 %doc AUTHORS ChangeLog NEWS THANKS TODO doc/FAQ
+%exclude %{_docdir}/%{name}/examples/systemd-user/dirmngr.*
 %doc %{_docdir}/%{name}
+%exclude %{_bindir}/dirmngr*
 %{_bindir}/*
 %{_libdir}/[^d]*
 %{_sbindir}/addgnupghome
@@ -180,5 +194,11 @@ install -m 755 tools/gpg-zip %{buildroot}/%{_bindir}
 %{_datadir}/gnupg
 %dir %{_sysconfdir}/gnupg
 %config(noreplace) %{_sysconfdir}/gnupg/gpgconf.conf
+
+%files -n dirmngr
+%license COPYING*
+%{_mandir}/*/dirmngr*%{ext_man}
+%{_docdir}/%{name}/examples/systemd-user/dirmngr.*
+%{_bindir}/dirmngr*
 
 %changelog
