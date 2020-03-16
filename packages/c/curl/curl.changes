@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar 12 22:07:26 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.69.1
+  * Bugfixes:
+    - ares: store dns parameters for duphandle
+    - cirrus-ci: disable the FreeBSD 13 builds
+    - curl_share_setopt.3: Note sharing cookies doesn't enable the engine
+    - lib1564: reduce number of mid-wait wakeup calls
+    - libssh: Fix matching user-specified MD5 hex key
+    - MANUAL: update a dict-using command line
+    - mime: do not perform more than one read in a row
+    - mime: fix the binary encoder to handle large data properly
+    - mime: latch last read callback status
+    - multi: skip EINTR check on wakeup socket if it was closed
+    - pause: bail out on bad input
+    - pause: force a connection recheck after unpausing (take 2)
+    - pause: return early for calls that don't change pause state
+    - runtests.1: rephrase how to specify what tests to run
+    - runtests: fix missing use of exe_ext helper function
+    - seek: fix fall back for missing ftruncate on Windows
+    - sftp: fix segfault regression introduced by #4747 in 7.69.0
+    - sha256: Added SecureTransport implementation
+    - sha256: Added WinCrypt implementation
+    - socks4: fix host resolve regression
+    - socks5: host name resolv regression fix
+    - tests/server: fix missing use of exe_ext helper function
+    - tests: fix static ip:port instead of dynamic values being used
+    - tests: make sleeping portable by avoiding select
+    - unit1612: fix the inclusion and compilation of the HMAC unit test
+    - urldata: remove the 'stream_was_rewound' connectdata struct member
+    - version: make curl_version* thread-safe without using global context 
+
+-------------------------------------------------------------------
 Mon Mar  9 12:54:08 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - ignore_runtests_failure.patch: remove, no longer needed
