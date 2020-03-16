@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:21:56 UTC 2020 - hpj@urpla.net
+
+- Update to version 2.5.1:
+  * json_data: Correct for lost slashes, pre-repair
+  * Release branch for 2.5.1 (min libopenshot version 0.2.5)
+  * Fix formatting of repaired JSON data (#3262)
+  * Add thumbnail to the audio only clip (#3249)
+  * Updating release date and appdata.xml entry
+  * Bumping version to 2.5.1-dev (for upcoming release)
+  * classes/updates: Add pending_acton tracking
+  * classes/updates: Code style, unused imports
+  * Protect filter() against damaged projects
+
+- clean up spec
+- relocated app data
+
+-------------------------------------------------------------------
 Fri May  3 08:14:07 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - update to version 2.4.4

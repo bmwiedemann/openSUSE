@@ -1,7 +1,7 @@
 #
 # spec file for package openshot-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,15 @@
 #
 
 
+%define appname org.openshot.OpenShot
+
 Name:           openshot-qt
-Version:        2.4.4
+Version:        2.5.1
 Release:        0
 Summary:        Non-linear video editor with broad format support
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            http://openshot.org/
+URL:            https://openshot.org/
 Source:         openshot-qt-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -66,10 +68,7 @@ python3 setup.py build
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-%suse_update_desktop_file -r %{name} AudioVideo AudioVideoEditing
-# fix broken symlink
-ln -sf "color shift.png" \
-       %buildroot%{python3_sitelib}/openshot_qt/effects/icons/shift.png
+%suse_update_desktop_file -r %{appname} AudioVideo AudioVideoEditing
 %fdupes -s %{buildroot}%{python3_sitelib}
 
 %files
@@ -80,9 +79,9 @@ ln -sf "color shift.png" \
 %dir /usr/share/icons/hicolor/*
 %{_bindir}/%{name}
 %{python3_sitelib}/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/metainfo/openshot-qt.appdata.xml
-%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/applications/%{appname}.desktop
+%{_datadir}/metainfo/%{appname}.appdata.xml
+%{_datadir}/mime/packages/%{appname}.xml
 %{_datadir}/icons/hicolor/*/*/%{name}.??g
 
 %changelog

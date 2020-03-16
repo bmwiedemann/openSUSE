@@ -2,8 +2,9 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/OpenShot/openshot-qt.git</param>
     <param name="scm">git</param>
-    <param name="revision">v2.4.4</param>
-    <param name="version">2.4.4</param>
+    <param name="revision">v2.5.1</param>
+    <param name="version">2.5.1</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>
 
