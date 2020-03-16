@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar  9 19:40:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-03-R1
+  Bugfix release
+  * RTL433 changing command line arguments
+  * Extreme memory use compiling bluetooth_ids code
+  * Fixes to kismetexternal python code used by rtladsb and rtlamr
+  * Fixes to handling “weird” rtl433 serial numbers, like 000000001
+  * Fixes for ubertooth remote cap
+  * Updates to the kw41z capture code
+  * Support for multiple phys on a single interface
+  * Fix for buffer size calculation which could impact gps handling
+  * Smarter error handling with channel tuning failures
+  * Support for CORS cross-side negotiation for running Kismet
+    behind a proxy
+- Introduce new subpackages
+  * kismet-capture-ti-cc-2531
+    + TICC2531 802.15.4 Zigbee Sniffer capture helper
+  * kismet-capture-nrf-nxp-kw41z
+    + NXP KW41Z BTLE and Zigbee Sniffer capture helper
+
+-------------------------------------------------------------------
 Sun Jan  5 19:43:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2019-12-R2

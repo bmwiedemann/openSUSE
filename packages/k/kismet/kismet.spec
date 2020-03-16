@@ -1,7 +1,7 @@
 #
 # spec file for package kismet
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2019-12-R2
+%define realver 2020-03-R1
 Name:           kismet
-Version:        2019_12_R2
+Version:        2020_03_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -189,6 +189,19 @@ tool, and WIDS (wireless intrusion detection) framework.
 This subpackage contains the Texas Instruments CC2540 BTLE capture
 helper.
 
+
+%package capture-ti-cc-2531
+Summary:        Kismet TICC2531 802.15.4 Zigbee Sniffer capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-ti-cc-2531
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Texas Instruments  TICC2531 802.15.4
+Zigbee Sniffer capture helper.
+
+
 %package capture-nrf-51822 
 Summary:        Kismet nRF 51822 (BTLE) capture helper
 Group:          Productivity/Networking/Diagnostic
@@ -198,6 +211,18 @@ Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the nRF 51822 BTLE capture helper.
+
+
+%package capture-nrf-nxp-kw41z 
+Summary:        Kismet NXP KW41Z BTLE and Zigbee Sniffer capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-nrf-nxp-kw41z
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the NXP KW41Z BTLE and Zigbee Sniffer capture
+helper.
 
 %if 0%{with ubertooth}
 %package capture-ubertooth-one
@@ -316,8 +341,14 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files capture-ti-cc2540
 %{_bindir}/kismet_cap_ti_cc_2540
 
+%files  capture-ti-cc-2531
+%{_bindir}/kismet_cap_ti_cc_2531
+
 %files capture-nrf-51822
 %{_bindir}/kismet_cap_nrf_51822
+
+%files capture-nrf-nxp-kw41z
+%{_bindir}/kismet_cap_nxp_kw41z
 
 %if 0%{with ubertooth}
 %files capture-ubertooth-one
