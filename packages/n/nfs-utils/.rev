@@ -1405,4 +1405,13 @@
    Removed osd_login (dropped in upstream in 2.3.4 rc1) (forwarded request 773318 from pevik)</comment>
     <requestid>773539</requestid>
   </revision>
+  <revision rev="152" vrev="13">
+    <srcmd5>1ed9efb396252b10e69c33b804dbe73d</srcmd5>
+    <version>unknown</version>
+    <time>1584350161</time>
+    <user>dimstar_suse</user>
+    <comment>- statd-user.conf: create user via sysusers.d template
+- Use ordering for systemd instead of hard requires (forwarded request 782892 from kukuk)</comment>
+    <requestid>784479</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:04:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- statd-user.conf: create user via sysusers.d template
+- Use ordering for systemd instead of hard requires
+
+-------------------------------------------------------------------
 Mon Feb 10 18:58:59 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 -  Update to version 2.4.3

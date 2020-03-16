@@ -35,6 +35,7 @@ Source1:        nfs.doc.tar.bz2
 Source4:        sysconfig.nfs
 Source6:        README.NFSv4
 Source11:       idmapd.conf
+Source12:       statd-user.conf
 Source13:       nfs-utils.rpmlintrc
 Source20:       nfs-mountd.options.conf
 Source21:       nfs-server.options.conf
@@ -52,7 +53,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  rpcgen
-BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(kdb)
@@ -63,7 +65,7 @@ BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(sqlite3)
 Suggests:       python-base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 This package contains the NFS utilities. You can tune the number of
@@ -78,11 +80,11 @@ Requires:       netcfg
 Requires:       rpcbind
 Requires(post): %fillup_prereq
 Requires(pre):  permissions
-Requires(pre):  shadow
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
 %endif
 Obsoletes:      nfs-utils < 1.1.0
+%sysusers_requires
 
 %description -n nfs-client
 This package contains common NFS utilities which are needed for client
@@ -162,6 +164,7 @@ export LDFLAGS="-pie"
 	--with-pluginpath=%{_libdir}/libnfsidmap-1.0.0 \
 	--enable-mountconfig
 make %{?_smp_mflags}
+%sysusers_generate_pre %{SOURCE12} statd
 cd nfs
 for i in *.html ; do
 sed -i \
@@ -200,8 +203,11 @@ install -m 644 utils/mount/nfsmount.conf %{buildroot}%{_sysconfdir}/nfsmount.con
 #
 # hack to avoid automatic python dependency
 chmod 644 %{buildroot}%{_sbindir}/{mountstats,nfsiostat}
+# Install sysusers.d template
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
-%pre -n nfs-client
+%pre -n nfs-client -f statd.pre
 /usr/bin/getent passwd statd >/dev/null || \
 	/usr/sbin/useradd -r -c 'NFS statd daemon' \
 	-s /sbin/nologin -d %{_localstatedir}/lib/nfs -g nogroup statd
@@ -344,6 +350,7 @@ fi
 %{_mandir}/man8/blkmapd.8%{ext_man}
 %{_mandir}/man8/rpc.svcgssd.8%{ext_man}
 %{_fillupdir}/sysconfig.nfs
+%{_sysusersdir}/statd-user.conf
 %dir %{_localstatedir}/lib/nfs
 %dir %{_localstatedir}/lib/nfs/rpc_pipefs
 %dir %{_localstatedir}/lib/nfs/v4recovery
