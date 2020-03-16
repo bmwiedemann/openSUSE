@@ -13,12 +13,12 @@ In order to use CMake to find path, we'll use a FindCoin.cmake module.
  2 files changed, 97 insertions(+), 6 deletions(-)
  create mode 100644 FindCoin.cmake
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 76d0d06..8473d8e 100644
+Index: b/CMakeLists.txt
+===================================================================
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,17 +1,18 @@
--project(pivy_cmake_setup NONE)
+@@ -1,17 +1,19 @@
+ project(pivy_cmake_setup NONE)
 +# libraries cannot be found if the project is 'NONE')
 +project(pivy_cmake_setup)
  cmake_minimum_required(VERSION 3.5)
@@ -30,30 +30,29 @@ index 76d0d06..8473d8e 100644
 -
 -if (Coin_INCLUDE_DIR)
 +if (Coin_INCLUDE_DIRS)
-     MESSAGE(STATUS "COIN_FOUND: " true)
+     MESSAGE(STATUS "COIN_FOUND: true")
  else()
-     MESSAGE(STATUS "COIN_FOUND: " false)
+     MESSAGE(STATUS "COIN_FOUND: false")
  endif()
  
--MESSAGE(STATUS "COIN_INCLUDE_DIR: " ${Coin_INCLUDE_DIR})
--MESSAGE(STATUS "COIN_LIB_DIR: " ${Coin_LIB_DIR})
-+MESSAGE(STATUS "COIN_INCLUDE_DIR: " ${Coin_INCLUDE_DIRS})
-+MESSAGE(STATUS "COIN_LIB_DIR: " ${PC_Coin_LIBDIR})
- MESSAGE(STATUS "COIN_VERSION: " ${Coin_VERSION})
+-MESSAGE(STATUS "COIN_INCLUDE_DIR: ${Coin_INCLUDE_DIR}")
+-MESSAGE(STATUS "COIN_LIB_DIR: ${Coin_LIB_DIR}")
++MESSAGE(STATUS "COIN_INCLUDE_DIR: ${Coin_INCLUDE_DIRS}")
++MESSAGE(STATUS "COIN_LIB_DIR: ${PC_Coin_LIBDIR}")
+ MESSAGE(STATUS "COIN_VERSION: ${Coin_VERSION}")
  
  
-@@ -23,6 +24,8 @@ if (SoQt_INCLUDE_DIRS)
+@@ -23,6 +25,8 @@ if (SoQt_INCLUDE_DIRS)
  else()
-     MESSAGE(STATUS "SOQT_FOUND: " false)
+     MESSAGE(STATUS "SOQT_FOUND: false")
  endif()
 +# python is confused if the include directories contain more than one path
 +list(REMOVE_DUPLICATES SoQt_INCLUDE_DIRS)
  
- MESSAGE(STATUS "SOQT_INCLUDE_DIR: " ${SoQt_INCLUDE_DIRS})
- MESSAGE(STATUS "SOQT_LIB_DIR: " ${SoQt_LIBRARY_DIRS})
-diff --git a/FindCoin.cmake b/FindCoin.cmake
-new file mode 100644
-index 0000000..3c6762a
+ MESSAGE(STATUS "SOQT_INCLUDE_DIR: ${SoQt_INCLUDE_DIRS}")
+ MESSAGE(STATUS "SOQT_LIB_DIR: ${SoQt_LIBRARY_DIRS}")
+Index: b/FindCoin.cmake
+===================================================================
 --- /dev/null
 +++ b/FindCoin.cmake
 @@ -0,0 +1,88 @@
@@ -145,6 +144,3 @@ index 0000000..3c6762a
 +endif()
 +
 +mark_as_advanced(Coin_LIBRARIES Coin_INCLUDE_DIRS Coin_VERSION)
--- 
-2.21.0
-

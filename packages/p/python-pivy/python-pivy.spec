@@ -1,7 +1,7 @@
 #
 # spec file for package python-pivy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pivy
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Coin Binding for Python
 License:        ISC AND GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/FreeCAD/pivy
-Source0:        https://github.com/FreeCAD/pivy/archive/%{version}.tar.gz#/Pivy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/pivy/issues/39
-Patch0:         Fix-issue-39-PyUnicode_AsUTF8-returns-const-char.patch
+Source0:        https://github.com/FreeCAD/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE 0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch -- Use CMake to find Coin and SoQt
 Patch1:         0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch
 # PATCH-FIX-OPENSUSE 0002-Fix-the-qmake-executable-name.patch -- Fix the qmake executable name

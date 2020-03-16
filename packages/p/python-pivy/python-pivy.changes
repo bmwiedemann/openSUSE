@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 14 17:04:32 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 0.6.5
+  - Unifying release for merge of FreeCAD/pivy and
+    bitbucket.org/coin3d/pivy repos
+  - change pivy.graphics API to follow pep8 naming scheme
+    suggestion.
+  - workaround for beveled text
+  - swig4.0 fix
+  - update to latest coin (additional fakeheaders)
+  - example Complex3dText: add license and shebang
+    this was unintentional removed at some point
+- Remove Fix-issue-39-PyUnicode_AsUTF8-returns-const-char.patch
+  applied upstream
+- 0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch
+  adjusted
+
+-------------------------------------------------------------------
 Mon May 13 10:17:38 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add 0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch
