@@ -54,6 +54,6 @@ before it is used to format the string.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/colorlog
-%{python_sitelib}/colorlog-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/colorlog-%{version}-py%{python_version}.egg-info
 
 %changelog
