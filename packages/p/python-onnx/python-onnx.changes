@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:55:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with new protobuf:
+  * protobuf.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 13:57:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missing dependencies and enable testsuite

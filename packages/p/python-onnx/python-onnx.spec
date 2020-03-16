@@ -26,6 +26,7 @@ License:        MIT
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+Patch0:         protobuf.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module protobuf}
@@ -60,6 +61,7 @@ The headers and other files needed for the development.
 %setup -q -n onnx-%{version}
 # avoid bundles
 rm -rf third_party
+%patch0 -p1
 # say that the cmake was already built (we used our macros)
 sed -i -e 's:built = False:built = True:g' setup.py
 # do not require extra pytest modules
