@@ -2,7 +2,7 @@ From: Cathy Zhang <cathy.zhang@intel.com>
 Date: Tue, 22 Oct 2019 15:35:26 +0800
 Subject: i386: Add MSR feature bit for MDS-NO
 
-Git commit: 77b168d221191156c47fcd8d1c47329dfdb9439e
+Git-commit: 77b168d221191156c47fcd8d1c47329dfdb9439e
 References: jsc#SLE-7923
 
 Define MSR_ARCH_CAP_MDS_NO in the IA32_ARCH_CAPABILITIES MSR to allow

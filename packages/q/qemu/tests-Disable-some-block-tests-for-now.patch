@@ -22,7 +22,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/tests/qemu-iotests/group b/tests/qemu-iotests/group
-index 6b10a6a762143ec0d079b7fd6df2..150800ce1cbdde74b76e9f43e1c7 100644
+index 1c1b69f0581c9a0043376b440600..d293735679e23235092c614e2206 100644
 --- a/tests/qemu-iotests/group
 +++ b/tests/qemu-iotests/group
 @@ -86,7 +86,7 @@

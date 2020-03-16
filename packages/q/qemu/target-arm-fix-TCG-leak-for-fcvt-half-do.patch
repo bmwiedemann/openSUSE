@@ -1,0 +1,46 @@
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Date: Fri, 31 Jan 2020 15:34:39 +0000
+Subject: target/arm: fix TCG leak for fcvt half->double
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: aeab8e5eb220cc5ff84b0b68b9afccc611bf0fcd
+
+When support for the AHP flag was added we inexplicably only freed the
+new temps in one of the two legs. Move those tcg_temp_free to the same
+level as the allocation to fix that leak.
+
+Fixes: 486624fcd3eac
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-id: 20200131153439.26027-1-alex.bennee@linaro.org
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/arm/translate-a64.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index d4bebbe62958ed2264e8db880bac..045da9266717203d85258110ed10 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -5778,8 +5778,6 @@ static void handle_fp_fcvt(DisasContext *s, int opcode,
+             TCGv_i32 tcg_rd = tcg_temp_new_i32();
+             gen_helper_vfp_fcvt_f16_to_f32(tcg_rd, tcg_rn, tcg_fpst, tcg_ahp);
+             write_fp_sreg(s, rd, tcg_rd);
+-            tcg_temp_free_ptr(tcg_fpst);
+-            tcg_temp_free_i32(tcg_ahp);
+             tcg_temp_free_i32(tcg_rd);
+         } else {
+             /* Half to double */
+@@ -5789,6 +5787,8 @@ static void handle_fp_fcvt(DisasContext *s, int opcode,
+             tcg_temp_free_i64(tcg_rd);
+         }
+         tcg_temp_free_i32(tcg_rn);
++        tcg_temp_free_ptr(tcg_fpst);
++        tcg_temp_free_i32(tcg_ahp);
+         break;
+     }
+     default:

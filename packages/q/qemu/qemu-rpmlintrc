@@ -2,4 +2,5 @@
 from Config import *
 
 addFilter("arch-dependent-file-in-usr-share")
+addFilter("obsolete-not-provided")
 addFilter("summary-not-capitalized")

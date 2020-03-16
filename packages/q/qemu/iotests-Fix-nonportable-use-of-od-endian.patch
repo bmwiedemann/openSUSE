@@ -1,0 +1,61 @@
+From: Eric Blake <eblake@redhat.com>
+Date: Wed, 26 Feb 2020 06:54:24 -0600
+Subject: iotests: Fix nonportable use of od --endian
+
+Git-commit: 69135eb30b9c3fca583737a96df015174dc8e6dd
+
+Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
+--endian was not added until coreutils 8.23.  Fix this by manually
+constructing the final value one byte at a time.
+
+Fixes: fc8ba423
+Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Message-Id: <20200226125424.481840-1-eblake@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
+ 1 file changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+index 555c45391157d58534f0702094bc..315a9a8a4690d68abc0eb5fa83fd 100644
+--- a/tests/qemu-iotests/common.rc
++++ b/tests/qemu-iotests/common.rc
+@@ -56,18 +56,30 @@ poke_file()
+ # peek_file_le 'test.img' 512 2 => 65534
+ peek_file_le()
+ {
+-    # Wrap in echo $() to strip spaces
+-    echo $(od -j"$2" -N"$3" --endian=little -An -vtu"$3" "$1")
++    local val=0 shift=0 byte
++
++    # coreutils' od --endian is not portable, so manually assemble bytes.
++    for byte in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
++        val=$(( val | (byte << shift) ))
++        shift=$((shift + 8))
++    done
++    printf %llu $val
+ }
+ 
+ # peek_file_be 'test.img' 512 2 => 65279
+ peek_file_be()
+ {
+-    # Wrap in echo $() to strip spaces
+-    echo $(od -j"$2" -N"$3" --endian=big -An -vtu"$3" "$1")
++    local val=0 byte
++
++    # coreutils' od --endian is not portable, so manually assemble bytes.
++    for byte in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
++        val=$(( (val << 8) | byte ))
++    done
++    printf %llu $val
+ }
+ 
+-# peek_file_raw 'test.img' 512 2 => '\xff\xfe'
++# peek_file_raw 'test.img' 512 2 => '\xff\xfe'. Do not use if the raw data
++# is likely to contain \0 or trailing \n.
+ peek_file_raw()
+ {
+     dd if="$1" bs=1 skip="$2" count="$3" status=none

@@ -1,0 +1,73 @@
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Mon, 2 Mar 2020 18:09:30 +0300
+Subject: block/qcow2-threads: fix qcow2_decompress
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: e7266570f2cf7b3ca2a156c677ee0a59d563458b
+
+On success path we return what inflate() returns instead of 0. And it
+most probably works for Z_STREAM_END as it is positive, but is
+definitely broken for Z_BUF_ERROR.
+
+While being here, switch to errno return code, to be closer to
+qcow2_compress API (and usual expectations).
+
+Revert condition in if to be more positive. Drop dead initialization of
+ret.
+
+Cc: qemu-stable@nongnu.org # v4.0
+Fixes: 341926ab83e2b
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-Id: <20200302150930.16218-1-vsementsov@virtuozzo.com>
+Reviewed-by: Alberto Garcia <berto@igalia.com>
+Reviewed-by: Ján Tomko <jtomko@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/qcow2-threads.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/block/qcow2-threads.c b/block/qcow2-threads.c
+index 8f5a0d1ebe7182151ba99d9aeeff..0d193d16147cf2fc6a8dac23d885 100644
+--- a/block/qcow2-threads.c
++++ b/block/qcow2-threads.c
+@@ -128,12 +128,12 @@ static ssize_t qcow2_compress(void *dest, size_t dest_size,
+  * @src - source buffer, @src_size bytes
+  *
+  * Returns: 0 on success
+- *          -1 on fail
++ *          -EIO on fail
+  */
+ static ssize_t qcow2_decompress(void *dest, size_t dest_size,
+                                 const void *src, size_t src_size)
+ {
+-    int ret = 0;
++    int ret;
+     z_stream strm;
+ 
+     memset(&strm, 0, sizeof(strm));
+@@ -144,17 +144,19 @@ static ssize_t qcow2_decompress(void *dest, size_t dest_size,
+ 
+     ret = inflateInit2(&strm, -12);
+     if (ret != Z_OK) {
+-        return -1;
++        return -EIO;
+     }
+ 
+     ret = inflate(&strm, Z_FINISH);
+-    if ((ret != Z_STREAM_END && ret != Z_BUF_ERROR) || strm.avail_out != 0) {
++    if ((ret == Z_STREAM_END || ret == Z_BUF_ERROR) && strm.avail_out == 0) {
+         /*
+          * We approve Z_BUF_ERROR because we need @dest buffer to be filled, but
+          * @src buffer may be processed partly (because in qcow2 we know size of
+          * compressed data with precision of one sector)
+          */
+-        ret = -1;
++        ret = 0;
++    } else {
++        ret = -EIO;
+     }
+ 
+     inflateEnd(&strm);

@@ -1,0 +1,39 @@
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 14 Feb 2020 17:51:11 +0000
+Subject: target/arm: Correct definition of PMCRDP
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: a1ed04dd79aabb9dbeeb5fa7d49f1a3de0357553
+
+The PMCR_EL0.DP bit is bit 5, which is 0x20, not 0x10.  0x10 is 'X'.
+Correct our #define of PMCRDP and add the missing PMCRX.
+
+We do have the correct behaviour for handling the DP bit being
+set, so this fixes a guest-visible bug.
+
+Fixes: 033614c47de
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Message-id: 20200214175116.9164-17-peter.maydell@linaro.org
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/arm/helper.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0bf8f53d4b8d80ba1edb69c2c759..886ffaba82d36da9acc36f1596f5 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1016,7 +1016,8 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+ #define PMCRN_MASK  0xf800
+ #define PMCRN_SHIFT 11
+ #define PMCRLC  0x40
+-#define PMCRDP  0x10
++#define PMCRDP  0x20
++#define PMCRX   0x10
+ #define PMCRD   0x8
+ #define PMCRC   0x4
+ #define PMCRP   0x2

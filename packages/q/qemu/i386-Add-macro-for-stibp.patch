@@ -2,7 +2,7 @@ From: Cathy Zhang <cathy.zhang@intel.com>
 Date: Tue, 22 Oct 2019 15:35:27 +0800
 Subject: i386: Add macro for stibp
 
-Git commit: 5af514d0cb314f43bc53f2aefb437f6451d64d0c
+Git-commit: 5af514d0cb314f43bc53f2aefb437f6451d64d0c
 References: jsc#SLE-7923
 
 stibp feature is already added through the following commit.

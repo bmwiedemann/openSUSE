@@ -1,0 +1,58 @@
+From: Zenghui Yu <yuzenghui@huawei.com>
+Date: Thu, 30 Jan 2020 16:02:05 +0000
+Subject: hw/intc/arm_gicv3_kvm: Stop wrongly programming GICR_PENDBASER.PTZ
+ bit
+
+Git-commit: 618bacabd3c8c3360be795cd8763bacdf5bec101
+
+If LPIs are disabled, KVM will just ignore the GICR_PENDBASER.PTZ bit when
+restoring GICR_CTLR.  Setting PTZ here makes littlt sense in "reduce GIC
+initialization time".
+
+And what's worse, PTZ is generally programmed by guest to indicate to the
+Redistributor whether the LPI Pending table is zero when enabling LPIs.
+If migration is triggered when the PTZ has just been cleared by guest (and
+before enabling LPIs), we will see PTZ==1 on the destination side, which
+is not as expected.  Let's just drop this hackish userspace behavior.
+
+Also take this chance to refine the comment a bit.
+
+Fixes: 367b9f527bec ("hw/intc/arm_gicv3_kvm: Implement get/put functions")
+Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+Message-id: 20200119133051.642-1-yuzenghui@huawei.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/intc/arm_gicv3_kvm.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 9c7f4ab8711cd7ba780727089a1c..49304ca589d1f016cdfb217bf719 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -336,7 +336,10 @@ static void kvm_arm_gicv3_put(GICv3State *s)
+     kvm_gicd_access(s, GICD_CTLR, &reg, true);
+ 
+     if (redist_typer & GICR_TYPER_PLPIS) {
+-        /* Set base addresses before LPIs are enabled by GICR_CTLR write */
++        /*
++         * Restore base addresses before LPIs are potentially enabled by
++         * GICR_CTLR write
++         */
+         for (ncpu = 0; ncpu < s->num_cpu; ncpu++) {
+             GICv3CPUState *c = &s->cpu[ncpu];
+ 
+@@ -347,12 +350,6 @@ static void kvm_arm_gicv3_put(GICv3State *s)
+             kvm_gicr_access(s, GICR_PROPBASER + 4, ncpu, &regh, true);
+ 
+             reg64 = c->gicr_pendbaser;
+-            if (!(c->gicr_ctlr & GICR_CTLR_ENABLE_LPIS)) {
+-                /* Setting PTZ is advised if LPIs are disabled, to reduce
+-                 * GIC initialization time.
+-                 */
+-                reg64 |= GICR_PENDBASER_PTZ;
+-            }
+             regl = (uint32_t)reg64;
+             kvm_gicr_access(s, GICR_PENDBASER, ncpu, &regl, true);
+             regh = (uint32_t)(reg64 >> 32);

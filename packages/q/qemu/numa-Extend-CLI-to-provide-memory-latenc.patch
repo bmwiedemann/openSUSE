@@ -2,7 +2,7 @@ From: Liu Jingqi <jingqi.liu@intel.com>
 Date: Fri, 13 Dec 2019 09:19:23 +0800
 Subject: numa: Extend CLI to provide memory latency and bandwidth information
 
-Git commit: 9b12dfa03a94d7f7a4b54eb67229a31e58193384
+Git-commit: 9b12dfa03a94d7f7a4b54eb67229a31e58193384
 References: jsc#SLE-8897
 
 Add -numa hmat-lb option to provide System Locality Latency and

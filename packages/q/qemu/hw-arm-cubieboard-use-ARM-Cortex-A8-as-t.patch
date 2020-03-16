@@ -1,0 +1,51 @@
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Thu, 5 Mar 2020 16:09:19 +0000
+Subject: hw/arm/cubieboard: use ARM Cortex-A8 as the default CPU in machine
+ definition
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 2104df2a1fbf44b2564427aa72fd58d66ce290a7
+
+The Cubieboard is a singleboard computer with an Allwinner A10 System-on-Chip [1].
+As documented in the Allwinner A10 User Manual V1.5 [2], the SoC has an ARM
+Cortex-A8 processor. Currently the Cubieboard machine definition specifies the
+ARM Cortex-A9 in its description and as the default CPU.
+
+This patch corrects the Cubieboard machine definition to use the ARM Cortex-A8.
+
+The only user-visible effect is that our textual description of the
+machine was wrong, because hw/arm/allwinner-a10.c always creates a
+Cortex-A8 CPU regardless of the default value in the MachineClass struct.
+
+ [1] http://docs.cubieboard.org/products/start#cubieboard1
+ [2] https://linux-sunxi.org/File:Allwinner_A10_User_manual_V1.5.pdf
+
+Fixes: 8a863c8120994981a099
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Message-id: 20200227220149.6845-2-nieklinnenbank@gmail.com
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+[note in commit message that the bug didn't have much visible effect]
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/arm/cubieboard.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index 6dc2f1d6b6f6c87e5241c6bb7718..d8e8919e796d43c9a8a2ca6aa836 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -78,8 +78,8 @@ static void cubieboard_init(MachineState *machine)
+ 
+ static void cubieboard_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "cubietech cubieboard (Cortex-A9)";
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
++    mc->desc = "cubietech cubieboard (Cortex-A8)";
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a8");
+     mc->init = cubieboard_init;
+     mc->block_default_type = IF_IDE;
+     mc->units_per_default_bus = 1;

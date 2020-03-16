@@ -1,0 +1,66 @@
+From: Pan Nengyuan <pannengyuan@huawei.com>
+Date: Mon, 24 Feb 2020 12:13:35 +0800
+Subject: vhost-user-blk: delete virtioqueues in unrealize to fix memleaks
+
+Git-commit: 13e5468127111bf44c5dc314d1dd2ec5a65dfec4
+
+virtio queues forgot to delete in unrealize, and aslo error path in
+realize, this patch fix these memleaks, the leak stack is as follow:
+
+Direct leak of 114688 byte(s) in 16 object(s) allocated from:
+    #0 0x7f24024fdbf0 in calloc (/lib64/libasan.so.3+0xcabf0)
+    #1 0x7f2401642015 in g_malloc0 (/lib64/libglib-2.0.so.0+0x50015)
+    #2 0x55ad175a6447 in virtio_add_queue /mnt/sdb/qemu/hw/virtio/virtio.c:2327
+    #3 0x55ad17570cf9 in vhost_user_blk_device_realize /mnt/sdb/qemu/hw/block/vhost-user-blk.c:419
+    #4 0x55ad175a3707 in virtio_device_realize /mnt/sdb/qemu/hw/virtio/virtio.c:3509
+    #5 0x55ad176ad0d1 in device_set_realized /mnt/sdb/qemu/hw/core/qdev.c:876
+    #6 0x55ad1781ff9d in property_set_bool /mnt/sdb/qemu/qom/object.c:2080
+    #7 0x55ad178245ae in object_property_set_qobject /mnt/sdb/qemu/qom/qom-qobject.c:26
+    #8 0x55ad17821eb4 in object_property_set_bool /mnt/sdb/qemu/qom/object.c:1338
+    #9 0x55ad177aeed7 in virtio_pci_realize /mnt/sdb/qemu/hw/virtio/virtio-pci.c:1801
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20200224041336.30790-2-pannengyuan@huawei.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/block/vhost-user-blk.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index 63da9bb619ccb30d63fa548d3078..2e59cbaa0da1e05842a62d6daf14 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -455,6 +455,9 @@ reconnect:
+ virtio_err:
+     g_free(s->vqs);
+     g_free(s->inflight);
++    for (i = 0; i < s->num_queues; i++) {
++        virtio_del_queue(vdev, i);
++    }
+     virtio_cleanup(vdev);
+     vhost_user_cleanup(&s->vhost_user);
+ }
+@@ -463,6 +466,7 @@ static void vhost_user_blk_device_unrealize(DeviceState *dev, Error **errp)
+ {
+     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+     VHostUserBlk *s = VHOST_USER_BLK(dev);
++    int i;
+ 
+     virtio_set_status(vdev, 0);
+     qemu_chr_fe_set_handlers(&s->chardev,  NULL, NULL, NULL,
+@@ -471,6 +475,10 @@ static void vhost_user_blk_device_unrealize(DeviceState *dev, Error **errp)
+     vhost_dev_free_inflight(s->inflight);
+     g_free(s->vqs);
+     g_free(s->inflight);
++
++    for (i = 0; i < s->num_queues; i++) {
++        virtio_del_queue(vdev, i);
++    }
+     virtio_cleanup(vdev);
+     vhost_user_cleanup(&s->vhost_user);
+ }

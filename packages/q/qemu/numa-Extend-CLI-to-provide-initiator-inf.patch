@@ -2,7 +2,7 @@ From: Tao Xu <tao3.xu@intel.com>
 Date: Fri, 13 Dec 2019 09:19:22 +0800
 Subject: numa: Extend CLI to provide initiator information for numa nodes
 
-Git commit: 244b3f4485a07c7ce4b7123d6ce9d8c6012756e8
+Git-commit: 244b3f4485a07c7ce4b7123d6ce9d8c6012756e8
 References: jsc#SLE-8897
 
 In ACPI 6.3 chapter 5.2.27 Heterogeneous Memory Attribute Table (HMAT),

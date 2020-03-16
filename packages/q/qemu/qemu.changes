@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Mar 12 16:27:03 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  audio-oss-fix-buffer-pos-calculation.patch
+  blkdebug-Allow-taking-unsharing-permissi.patch
+  block-Add-bdrv_qapi_perm_to_blk_perm.patch
+  block-backup-top-fix-failure-path.patch
+  block-block-copy-fix-progress-calculatio.patch
+  block-fix-crash-on-zero-length-unaligned.patch
+  block-fix-memleaks-in-bdrv_refresh_filen.patch
+  block-Fix-VM-size-field-width-in-snapsho.patch
+  block-nbd-extract-the-common-cleanup-cod.patch
+  block-nbd-fix-memory-leak-in-nbd_open.patch
+  block-qcow2-threads-fix-qcow2_decompress.patch
+  hw-arm-cubieboard-use-ARM-Cortex-A8-as-t.patch
+  hw-intc-arm_gicv3_kvm-Stop-wrongly-progr.patch
+  iotests-add-test-for-backup-top-failure-.patch
+  iotests-Fix-nonportable-use-of-od-endian.patch
+  job-refactor-progress-to-separate-object.patch
+  target-arm-Correct-definition-of-PMCRDP.patch
+  target-arm-fix-TCG-leak-for-fcvt-half-do.patch
+  tpm-ppi-page-align-PPI-RAM.patch
+  vhost-user-blk-delete-virtioqueues-in-un.patch
+  virtio-add-ability-to-delete-vq-through-.patch
+  virtio-crypto-do-delete-ctrl_vq-in-virti.patch
+  virtio-pmem-do-delete-rq_vq-in-virtio_pm.patch
+
+-------------------------------------------------------------------
+Thu Feb 20 18:55:15 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Add Obsoletes directive for qemu-audio-sdl and qemu-ui-sdl since
+  for a qemu package upgrade from SLE12-SP5, support for SDL is
+  dropped
+
+-------------------------------------------------------------------
 Wed Feb 19 18:48:47 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix xenfv migration from xen host with pre-v4.0 qemu. We had

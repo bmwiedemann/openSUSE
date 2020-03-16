@@ -1,0 +1,62 @@
+From: "Michael S. Tsirkin" <mst@redhat.com>
+Date: Mon, 9 Dec 2019 11:46:13 -0500
+Subject: virtio: add ability to delete vq through a pointer
+
+Git-commit: 722f8c51d8af223751dfb1d02de40043e8ba067e
+
+Devices tend to maintain vq pointers, allow deleting them trough a vq pointer.
+
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/virtio/virtio.c         | 15 ++++++++++-----
+ include/hw/virtio/virtio.h |  2 ++
+ 2 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 04716b5f6ce1ccfb3f21a5b81b77..31dd140990f784884b541b293105 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -2330,17 +2330,22 @@ VirtQueue *virtio_add_queue(VirtIODevice *vdev, int queue_size,
+     return &vdev->vq[i];
+ }
+ 
++void virtio_delete_queue(VirtQueue *vq)
++{
++    vq->vring.num = 0;
++    vq->vring.num_default = 0;
++    vq->handle_output = NULL;
++    vq->handle_aio_output = NULL;
++    g_free(vq->used_elems);
++}
++
+ void virtio_del_queue(VirtIODevice *vdev, int n)
+ {
+     if (n < 0 || n >= VIRTIO_QUEUE_MAX) {
+         abort();
+     }
+ 
+-    vdev->vq[n].vring.num = 0;
+-    vdev->vq[n].vring.num_default = 0;
+-    vdev->vq[n].handle_output = NULL;
+-    vdev->vq[n].handle_aio_output = NULL;
+-    g_free(vdev->vq[n].used_elems);
++    virtio_delete_queue(&vdev->vq[n]);
+ }
+ 
+ static void virtio_set_isr(VirtIODevice *vdev, int value)
+diff --git a/include/hw/virtio/virtio.h b/include/hw/virtio/virtio.h
+index c32a815303730700e60c2ddd06c4..e18756d50d21259dda81bf1d1b1d 100644
+--- a/include/hw/virtio/virtio.h
++++ b/include/hw/virtio/virtio.h
+@@ -183,6 +183,8 @@ VirtQueue *virtio_add_queue(VirtIODevice *vdev, int queue_size,
+ 
+ void virtio_del_queue(VirtIODevice *vdev, int n);
+ 
++void virtio_delete_queue(VirtQueue *vq);
++
+ void virtqueue_push(VirtQueue *vq, const VirtQueueElement *elem,
+                     unsigned int len);
+ void virtqueue_flush(VirtQueue *vq, unsigned int count);

@@ -1,0 +1,37 @@
+From: Pan Nengyuan <pannengyuan@huawei.com>
+Date: Tue, 25 Feb 2020 15:55:53 +0800
+Subject: virtio-pmem: do delete rq_vq in virtio_pmem_unrealize
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 9861546e1dae05c5152de7d3bd14e341ecadc972
+
+Similar to other virtio-devices, rq_vq forgot to delete in
+virtio_pmem_unrealize, this patch fix it.  This device has already
+maintained a vq pointer, thus we use the new virtio_delete_queue
+function directly to do the cleanup.
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Message-Id: <20200225075554.10835-4-pannengyuan@huawei.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/virtio/virtio-pmem.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index c0c9395e559cf8b01878549b9f45..cad44fe0fc6231316e86c2317965 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -130,6 +130,7 @@ static void virtio_pmem_unrealize(DeviceState *dev, Error **errp)
+     VirtIOPMEM *pmem = VIRTIO_PMEM(dev);
+ 
+     host_memory_backend_set_mapped(pmem->memdev, false);
++    virtio_delete_queue(pmem->rq_vq);
+     virtio_cleanup(vdev);
+ }
+ 

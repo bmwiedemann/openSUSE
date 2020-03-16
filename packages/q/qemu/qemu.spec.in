@@ -337,6 +337,9 @@ Recommends:     qemu-ui-curses
 Recommends:     qemu-ui-gtk
 %if 0%{?is_opensuse}
 Recommends:     qemu-ui-sdl
+%else
+Obsoletes:      qemu-audio-sdl <= %{qemuver}
+Obsoletes:      qemu-ui-sdl    <= %{qemuver}
 %endif
 Recommends:     qemu-ui-spice-app
 Recommends:     qemu-x86

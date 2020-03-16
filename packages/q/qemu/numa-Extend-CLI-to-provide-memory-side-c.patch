@@ -2,7 +2,7 @@ From: Liu Jingqi <jingqi.liu@intel.com>
 Date: Fri, 13 Dec 2019 09:19:24 +0800
 Subject: numa: Extend CLI to provide memory side cache information
 
-Git commit: c412a48d4d91e8f8b89aae02de0f44f1f0b729e5
+Git-commit: c412a48d4d91e8f8b89aae02de0f44f1f0b729e5
 References: jsc#SLE-8897
 
 Add -numa hmat-cache option to provide Memory Side Cache Information.

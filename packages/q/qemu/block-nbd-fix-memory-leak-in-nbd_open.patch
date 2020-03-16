@@ -1,0 +1,70 @@
+From: Pan Nengyuan <pannengyuan@huawei.com>
+Date: Thu, 5 Dec 2019 11:45:28 +0800
+Subject: block/nbd: fix memory leak in nbd_open()
+
+Git-commit: 8198cf5ef0ef98118b4176970d1cd998d93ec849
+
+In currently implementation there will be a memory leak when
+nbd_client_connect() returns error status. Here is an easy way to
+reproduce:
+
+1. run qemu-iotests as follow and check the result with asan:
+    ./check -raw 143
+
+Following is the asan output backtrack:
+Direct leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7f629688a560 in calloc (/usr/lib64/libasan.so.3+0xc7560)
+    #1 0x7f6295e7e015 in g_malloc0  (/usr/lib64/libglib-2.0.so.0+0x50015)
+    #2 0x56281dab4642 in qobject_input_start_struct  /mnt/sdb/qemu-4.2.0-rc0/qapi/qobject-input-visitor.c:295
+    #3 0x56281dab1a04 in visit_start_struct  /mnt/sdb/qemu-4.2.0-rc0/qapi/qapi-visit-core.c:49
+    #4 0x56281dad1827 in visit_type_SocketAddress  qapi/qapi-visit-sockets.c:386
+    #5 0x56281da8062f in nbd_config   /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1716
+    #6 0x56281da8062f in nbd_process_options /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1829
+    #7 0x56281da8062f in nbd_open /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1873
+
+Direct leak of 15 byte(s) in 1 object(s) allocated from:
+    #0 0x7f629688a3a0 in malloc (/usr/lib64/libasan.so.3+0xc73a0)
+    #1 0x7f6295e7dfbd in g_malloc (/usr/lib64/libglib-2.0.so.0+0x4ffbd)
+    #2 0x7f6295e96ace in g_strdup (/usr/lib64/libglib-2.0.so.0+0x68ace)
+    #3 0x56281da804ac in nbd_process_options /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1834
+    #4 0x56281da804ac in nbd_open /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1873
+
+Indirect leak of 24 byte(s) in 1 object(s) allocated from:
+    #0 0x7f629688a3a0 in malloc (/usr/lib64/libasan.so.3+0xc73a0)
+    #1 0x7f6295e7dfbd in g_malloc (/usr/lib64/libglib-2.0.so.0+0x4ffbd)
+    #2 0x7f6295e96ace in g_strdup (/usr/lib64/libglib-2.0.so.0+0x68ace)
+    #3 0x56281dab41a3 in qobject_input_type_str_keyval /mnt/sdb/qemu-4.2.0-rc0/qapi/qobject-input-visitor.c:536
+    #4 0x56281dab2ee9 in visit_type_str /mnt/sdb/qemu-4.2.0-rc0/qapi/qapi-visit-core.c:297
+    #5 0x56281dad0fa1 in visit_type_UnixSocketAddress_members qapi/qapi-visit-sockets.c:141
+    #6 0x56281dad17b6 in visit_type_SocketAddress_members qapi/qapi-visit-sockets.c:366
+    #7 0x56281dad186a in visit_type_SocketAddress qapi/qapi-visit-sockets.c:393
+    #8 0x56281da8062f in nbd_config /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1716
+    #9 0x56281da8062f in nbd_process_options /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1829
+    #10 0x56281da8062f in nbd_open /mnt/sdb/qemu-4.2.0-rc0/block/nbd.c:1873
+
+Fixes: 8f071c9db506e03ab
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Cc: qemu-stable <qemu-stable@nongnu.org>
+Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-Id: <1575517528-44312-3-git-send-email-pannengyuan@huawei.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/nbd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/block/nbd.c b/block/nbd.c
+index 6bb67152864954bb0e7b6f0145de..3d369fc8eb79df642bfd22cd8e88 100644
+--- a/block/nbd.c
++++ b/block/nbd.c
+@@ -1900,6 +1900,7 @@ static int nbd_open(BlockDriverState *bs, QDict *options, int flags,
+ 
+     ret = nbd_client_connect(bs, errp);
+     if (ret < 0) {
++        nbd_clear_bdrvstate(s);
+         return ret;
+     }
+     /* successfully connected */

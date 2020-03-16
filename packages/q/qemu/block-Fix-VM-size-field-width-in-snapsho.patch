@@ -1,0 +1,50 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Fri, 17 Jan 2020 11:58:58 +0100
+Subject: block: Fix VM size field width in snapshot dump
+
+Git-commit: 804359b8b90f76d9d8fbe8d85a6544b68f107f10
+
+When printing the snapshot list (e.g. with qemu-img snapshot -l), the VM
+size field is only seven characters wide.  As of de38b5005e9, this is
+not necessarily sufficient: We generally print three digits, and this
+may require a decimal point.  Also, the unit field grew from something
+as plain as "M" to " MiB".  This means that number and unit may take up
+eight characters in total; but we also want spaces in front.
+
+Considering previously the maximum width was four characters and the
+field width was chosen to be three characters wider, let us adjust the
+field width to be eleven now.
+
+Fixes: de38b5005e946aa3714963ea4c501e279e7d3666
+Buglink: https://bugs.launchpad.net/qemu/+bug/1859989
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-Id: <20200117105859.241818-2-mreitz@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/qapi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/block/qapi.c b/block/qapi.c
+index 9a5d0c9b27d85d77f3c6d49dcd0e..ffa539250dc8f0d01374517e8e5b 100644
+--- a/block/qapi.c
++++ b/block/qapi.c
+@@ -657,7 +657,7 @@ void bdrv_snapshot_dump(QEMUSnapshotInfo *sn)
+     char *sizing = NULL;
+ 
+     if (!sn) {
+-        qemu_printf("%-10s%-20s%7s%20s%15s",
++        qemu_printf("%-10s%-20s%11s%20s%15s",
+                     "ID", "TAG", "VM SIZE", "DATE", "VM CLOCK");
+     } else {
+         ti = sn->date_sec;
+@@ -672,7 +672,7 @@ void bdrv_snapshot_dump(QEMUSnapshotInfo *sn)
+                  (int)(secs % 60),
+                  (int)((sn->vm_clock_nsec / 1000000) % 1000));
+         sizing = size_to_str(sn->vm_state_size);
+-        qemu_printf("%-10s%-20s%7s%20s%15s",
++        qemu_printf("%-10s%-20s%11s%20s%15s",
+                     sn->id_str, sn->name,
+                     sizing,
+                     date_buf,

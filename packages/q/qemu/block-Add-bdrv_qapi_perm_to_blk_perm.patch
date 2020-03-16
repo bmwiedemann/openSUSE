@@ -1,0 +1,79 @@
+From: Max Reitz <mreitz@redhat.com>
+Date: Fri, 8 Nov 2019 13:34:51 +0100
+Subject: block: Add bdrv_qapi_perm_to_blk_perm()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 7b1d9c4df0603fbc526226a9c5ef91118aa6c957
+
+We need some way to correlate QAPI BlockPermission values with
+BLK_PERM_* flags.  We could:
+
+(1) have the same order in the QAPI definition as the the BLK_PERM_*
+    flags are in LSb-first order.  However, then there is no guarantee
+    that they actually match (e.g. when someone modifies the QAPI schema
+    without thinking of the BLK_PERM_* definitions).
+    We could add static assertions, but these would break what’s good
+    about this solution, namely its simplicity.
+
+(2) define the BLK_PERM_* flags based on the BlockPermission values.
+    But this way whenever someone were to modify the QAPI order
+    (perfectly sensible in theory), the BLK_PERM_* values would change.
+    Because these values are used for file locking, this might break
+    file locking between different qemu versions.
+
+Therefore, go the slightly more cumbersome way: Add a function to
+translate from the QAPI constants to the BLK_PERM_* flags.
+
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Message-id: 20191108123455.39445-2-mreitz@redhat.com
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block.c               | 18 ++++++++++++++++++
+ include/block/block.h |  1 +
+ 2 files changed, 19 insertions(+)
+
+diff --git a/block.c b/block.c
+index 2e5e8b639a88d430e52ef40973c7..2cc16f99b352623272491c1cf254 100644
+--- a/block.c
++++ b/block.c
+@@ -2227,6 +2227,24 @@ void bdrv_format_default_perms(BlockDriverState *bs, BdrvChild *c,
+     *nshared = shared;
+ }
+ 
++uint64_t bdrv_qapi_perm_to_blk_perm(BlockPermission qapi_perm)
++{
++    static const uint64_t permissions[] = {
++        [BLOCK_PERMISSION_CONSISTENT_READ]  = BLK_PERM_CONSISTENT_READ,
++        [BLOCK_PERMISSION_WRITE]            = BLK_PERM_WRITE,
++        [BLOCK_PERMISSION_WRITE_UNCHANGED]  = BLK_PERM_WRITE_UNCHANGED,
++        [BLOCK_PERMISSION_RESIZE]           = BLK_PERM_RESIZE,
++        [BLOCK_PERMISSION_GRAPH_MOD]        = BLK_PERM_GRAPH_MOD,
++    };
++
++    QEMU_BUILD_BUG_ON(ARRAY_SIZE(permissions) != BLOCK_PERMISSION__MAX);
++    QEMU_BUILD_BUG_ON(1UL << ARRAY_SIZE(permissions) != BLK_PERM_ALL + 1);
++
++    assert(qapi_perm < BLOCK_PERMISSION__MAX);
++
++    return permissions[qapi_perm];
++}
++
+ static void bdrv_replace_child_noperm(BdrvChild *child,
+                                       BlockDriverState *new_bs)
+ {
+diff --git a/include/block/block.h b/include/block/block.h
+index 1df9848e7436eec47e6251118a2f..e9dcfef7fa463e7655b4ec4a0d7c 100644
+--- a/include/block/block.h
++++ b/include/block/block.h
+@@ -280,6 +280,7 @@ enum {
+ };
+ 
+ char *bdrv_perm_names(uint64_t perm);
++uint64_t bdrv_qapi_perm_to_blk_perm(BlockPermission qapi_perm);
+ 
+ /* disk I/O throttling */
+ void bdrv_init(void);

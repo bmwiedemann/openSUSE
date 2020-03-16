@@ -2,7 +2,7 @@ From: Liu Jingqi <jingqi.liu@intel.com>
 Date: Fri, 13 Dec 2019 09:19:25 +0800
 Subject: hmat acpi: Build Memory Proximity Domain Attributes Structure(s)
 
-Git commit: e6f123c3b81241be33f1b763d0ff8b36d1ae9c1e
+Git-commit: e6f123c3b81241be33f1b763d0ff8b36d1ae9c1e
 References: jsc#SLE-8897
 
 HMAT is defined in ACPI 6.3: 5.2.27 Heterogeneous Memory Attribute Table

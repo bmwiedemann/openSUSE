@@ -3,7 +3,7 @@ Date: Fri, 13 Dec 2019 09:19:26 +0800
 Subject: hmat acpi: Build System Locality Latency and Bandwidth Information
  Structure(s)
 
-Git commit: 4586a2cb833f80b19c80ebe364a005ac2fa0974a
+Git-commit: 4586a2cb833f80b19c80ebe364a005ac2fa0974a
 References: jsc#SLE-8897
 
 This structure describes the memory access latency and bandwidth

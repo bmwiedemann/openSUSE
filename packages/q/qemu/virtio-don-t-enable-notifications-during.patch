@@ -97,7 +97,7 @@ index e8b2b64d09fb185404fa83882ba9..f080545f48e6a3e411caf641b935 100644
  
      QTAILQ_FOREACH_SAFE(req, &reqs, next, next) {
 diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-index 04716b5f6ce1ccfb3f21a5b81b77..3211135bc8beb0856e100bcbda58 100644
+index 31dd140990f784884b541b293105..d63a3691bf00e9d7951b2c85ef5f 100644
 --- a/hw/virtio/virtio.c
 +++ b/hw/virtio/virtio.c
 @@ -432,6 +432,11 @@ static void virtio_queue_packed_set_notification(VirtQueue *vq, int enable)
@@ -112,7 +112,7 @@ index 04716b5f6ce1ccfb3f21a5b81b77..3211135bc8beb0856e100bcbda58 100644
  void virtio_queue_set_notification(VirtQueue *vq, int enable)
  {
      vq->notification = enable;
-@@ -3384,17 +3389,12 @@ static bool virtio_queue_host_notifier_aio_poll(void *opaque)
+@@ -3389,17 +3394,12 @@ static bool virtio_queue_host_notifier_aio_poll(void *opaque)
  {
      EventNotifier *n = opaque;
      VirtQueue *vq = container_of(n, VirtQueue, host_notifier);
@@ -132,10 +132,10 @@ index 04716b5f6ce1ccfb3f21a5b81b77..3211135bc8beb0856e100bcbda58 100644
  
  static void virtio_queue_host_notifier_aio_poll_end(EventNotifier *n)
 diff --git a/include/hw/virtio/virtio.h b/include/hw/virtio/virtio.h
-index c32a815303730700e60c2ddd06c4..6a2044246d63ba8a3f932086f9e8 100644
+index e18756d50d21259dda81bf1d1b1d..91167f609aca8f50948b1b28fdf2 100644
 --- a/include/hw/virtio/virtio.h
 +++ b/include/hw/virtio/virtio.h
-@@ -224,6 +224,7 @@ int virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id);
+@@ -226,6 +226,7 @@ int virtio_load(VirtIODevice *vdev, QEMUFile *f, int version_id);
  
  void virtio_notify_config(VirtIODevice *vdev);
  

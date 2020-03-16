@@ -2,7 +2,7 @@ From: Liu Jingqi <jingqi.liu@intel.com>
 Date: Fri, 13 Dec 2019 09:19:27 +0800
 Subject: hmat acpi: Build Memory Side Cache Information Structure(s)
 
-Git commit: a9c2b841af002db6e21e1297c9026b63fc22c875
+Git-commit: a9c2b841af002db6e21e1297c9026b63fc22c875
 References: jsc#SLE-8897
 
 This structure describes memory side cache information for memory

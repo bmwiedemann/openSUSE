@@ -1,0 +1,195 @@
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Wed, 11 Mar 2020 13:29:57 +0300
+Subject: block/block-copy: fix progress calculation
+
+Git-commit: d0ebeca14a585f352938062ef8ddde47fe4d39f9
+
+Assume we have two regions, A and B, and region B is in-flight now,
+region A is not yet touched, but it is unallocated and should be
+skipped.
+
+Correspondingly, as progress we have
+
+  total = A + B
+  current = 0
+
+If we reset unallocated region A and call progress_reset_callback,
+it will calculate 0 bytes dirty in the bitmap and call
+job_progress_set_remaining, which will set
+
+   total = current + 0 = 0 + 0 = 0
+
+So, B bytes are actually removed from total accounting. When job
+finishes we'll have
+
+   total = 0
+   current = B
+
+, which doesn't sound good.
+
+This is because we didn't considered in-flight bytes, actually when
+calculating remaining, we should have set (in_flight + dirty_bytes)
+as remaining, not only dirty_bytes.
+
+To fix it, let's refactor progress calculation, moving it to block-copy
+itself instead of fixing callback. And, of course, track in_flight
+bytes count.
+
+We still have to keep one callback, to maintain backup job bytes_read
+calculation, but it will go on soon, when we turn the whole backup
+process into one block_copy call.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Reviewed-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
+Message-Id: <20200311103004.7649-3-vsementsov@virtuozzo.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/backup.c             | 13 ++-----------
+ block/block-copy.c         | 16 ++++++++++++----
+ include/block/block-copy.h | 15 +++++----------
+ 3 files changed, 19 insertions(+), 25 deletions(-)
+
+diff --git a/block/backup.c b/block/backup.c
+index cf62b1a38ceacaa6785f0ec0d197..5f3bd2415a125e845441deafe3b5 100644
+--- a/block/backup.c
++++ b/block/backup.c
+@@ -57,15 +57,6 @@ static void backup_progress_bytes_callback(int64_t bytes, void *opaque)
+     BackupBlockJob *s = opaque;
+ 
+     s->bytes_read += bytes;
+-    job_progress_update(&s->common.job, bytes);
+-}
+-
+-static void backup_progress_reset_callback(void *opaque)
+-{
+-    BackupBlockJob *s = opaque;
+-    uint64_t estimate = bdrv_get_dirty_count(s->bcs->copy_bitmap);
+-
+-    job_progress_set_remaining(&s->common.job, estimate);
+ }
+ 
+ static int coroutine_fn backup_do_cow(BackupBlockJob *job,
+@@ -461,8 +452,8 @@ BlockJob *backup_job_create(const char *job_id, BlockDriverState *bs,
+     job->cluster_size = cluster_size;
+     job->len = len;
+ 
+-    block_copy_set_callbacks(bcs, backup_progress_bytes_callback,
+-                             backup_progress_reset_callback, job);
++    block_copy_set_progress_callback(bcs, backup_progress_bytes_callback, job);
++    block_copy_set_progress_meter(bcs, &job->common.job.progress);
+ 
+     /* Required permissions are already taken by backup-top target */
+     block_job_add_bdrv(&job->common, "target", target, 0, BLK_PERM_ALL,
+diff --git a/block/block-copy.c b/block/block-copy.c
+index 79798a1567b10d8b59b6bb045ca4..e2d7b3b887198b40a12a42073ac9 100644
+--- a/block/block-copy.c
++++ b/block/block-copy.c
+@@ -127,17 +127,20 @@ BlockCopyState *block_copy_state_new(BdrvChild *source, BdrvChild *target,
+     return s;
+ }
+ 
+-void block_copy_set_callbacks(
++void block_copy_set_progress_callback(
+         BlockCopyState *s,
+         ProgressBytesCallbackFunc progress_bytes_callback,
+-        ProgressResetCallbackFunc progress_reset_callback,
+         void *progress_opaque)
+ {
+     s->progress_bytes_callback = progress_bytes_callback;
+-    s->progress_reset_callback = progress_reset_callback;
+     s->progress_opaque = progress_opaque;
+ }
+ 
++void block_copy_set_progress_meter(BlockCopyState *s, ProgressMeter *pm)
++{
++    s->progress = pm;
++}
++
+ /*
+  * block_copy_do_copy
+  *
+@@ -269,7 +272,9 @@ int64_t block_copy_reset_unallocated(BlockCopyState *s,
+ 
+     if (!ret) {
+         bdrv_reset_dirty_bitmap(s->copy_bitmap, offset, bytes);
+-        s->progress_reset_callback(s->progress_opaque);
++        progress_set_remaining(s->progress,
++                               bdrv_get_dirty_count(s->copy_bitmap) +
++                               s->in_flight_bytes);
+     }
+ 
+     *count = bytes;
+@@ -331,15 +336,18 @@ int coroutine_fn block_copy(BlockCopyState *s,
+         trace_block_copy_process(s, start);
+ 
+         bdrv_reset_dirty_bitmap(s->copy_bitmap, start, chunk_end - start);
++        s->in_flight_bytes += chunk_end - start;
+ 
+         co_get_from_shres(s->mem, chunk_end - start);
+         ret = block_copy_do_copy(s, start, chunk_end, error_is_read);
+         co_put_to_shres(s->mem, chunk_end - start);
++        s->in_flight_bytes -= chunk_end - start;
+         if (ret < 0) {
+             bdrv_set_dirty_bitmap(s->copy_bitmap, start, chunk_end - start);
+             break;
+         }
+ 
++        progress_work_done(s->progress, chunk_end - start);
+         s->progress_bytes_callback(chunk_end - start, s->progress_opaque);
+         start = chunk_end;
+         ret = 0;
+diff --git a/include/block/block-copy.h b/include/block/block-copy.h
+index 0a161724d77bddbb2e8bcfd0e913..9def00068c5ad12044cae0331853 100644
+--- a/include/block/block-copy.h
++++ b/include/block/block-copy.h
+@@ -26,7 +26,6 @@ typedef struct BlockCopyInFlightReq {
+ } BlockCopyInFlightReq;
+ 
+ typedef void (*ProgressBytesCallbackFunc)(int64_t bytes, void *opaque);
+-typedef void (*ProgressResetCallbackFunc)(void *opaque);
+ typedef struct BlockCopyState {
+     /*
+      * BdrvChild objects are not owned or managed by block-copy. They are
+@@ -36,6 +35,7 @@ typedef struct BlockCopyState {
+     BdrvChild *source;
+     BdrvChild *target;
+     BdrvDirtyBitmap *copy_bitmap;
++    int64_t in_flight_bytes;
+     int64_t cluster_size;
+     bool use_copy_range;
+     int64_t copy_size;
+@@ -60,15 +60,9 @@ typedef struct BlockCopyState {
+      */
+     bool skip_unallocated;
+ 
++    ProgressMeter *progress;
+     /* progress_bytes_callback: called when some copying progress is done. */
+     ProgressBytesCallbackFunc progress_bytes_callback;
+-
+-    /*
+-     * progress_reset_callback: called when some bytes reset from copy_bitmap
+-     * (see @skip_unallocated above). The callee is assumed to recalculate how
+-     * many bytes remain based on the dirty bit count of copy_bitmap.
+-     */
+-    ProgressResetCallbackFunc progress_reset_callback;
+     void *progress_opaque;
+ 
+     SharedResource *mem;
+@@ -79,12 +73,13 @@ BlockCopyState *block_copy_state_new(BdrvChild *source, BdrvChild *target,
+                                      BdrvRequestFlags write_flags,
+                                      Error **errp);
+ 
+-void block_copy_set_callbacks(
++void block_copy_set_progress_callback(
+         BlockCopyState *s,
+         ProgressBytesCallbackFunc progress_bytes_callback,
+-        ProgressResetCallbackFunc progress_reset_callback,
+         void *progress_opaque);
+ 
++void block_copy_set_progress_meter(BlockCopyState *s, ProgressMeter *pm);
++
+ void block_copy_state_free(BlockCopyState *s);
+ 
+ int64_t block_copy_reset_unallocated(BlockCopyState *s,

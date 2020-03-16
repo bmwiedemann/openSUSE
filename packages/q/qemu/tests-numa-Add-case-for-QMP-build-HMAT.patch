@@ -2,7 +2,7 @@ From: Tao Xu <tao3.xu@intel.com>
 Date: Fri, 13 Dec 2019 09:19:28 +0800
 Subject: tests/numa: Add case for QMP build HMAT
 
-Git commit: d00817c944ed15fbe4a61d44fe7f9fe166c7df88
+Git-commit: d00817c944ed15fbe4a61d44fe7f9fe166c7df88
 References: jsc#SLE-8897
 
 Check configuring HMAT usecase
