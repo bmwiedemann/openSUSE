@@ -34,12 +34,8 @@ BuildRequires:  %{python_module urllib3 >= 1.11.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
-BuildArch:      noarch
-%if 0%{?_no_weakdeps}
-Requires:       python-requests >= 2.0.1
-%else
 Recommends:     python-requests >= 2.0.1
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -57,7 +53,7 @@ can avoid spawning multiple processes or threads to test your Web app.
 
 %install
 %python_install
-rm -r %{buildroot}%{python_sitelib}/wsgi_intercept/tests
+%python_expand rm -r %{buildroot}%{$python_sitelib}/wsgi_intercept/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,7 +61,9 @@ export WSGI_INTERCEPT_SKIP_NETWORK=true
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/wsgi_intercept-%{version}-py%{py_ver}.egg-info
+%doc README
+%license LICENSE
+%{python_sitelib}/wsgi_intercept-%{version}-*.egg-info
 %{python_sitelib}/wsgi_intercept
 
 %changelog

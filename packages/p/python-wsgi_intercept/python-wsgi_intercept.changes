@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:33:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Feb  6 12:42:53 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.9.2
