@@ -797,4 +797,12 @@
   * pulse: Add DEVICE parameter</comment>
     <requestid>750713</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>c83ccfefc7f98f005c9ff10b4ebffba8</srcmd5>
+    <version>1.2.2</version>
+    <time>1584350189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784672</requestid>
+  </revision>
 </revisionlist>

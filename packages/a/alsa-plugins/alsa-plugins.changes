@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:55:59 CET 2020 - tiwai@suse.de
+
+- Update to alsa-plugins 1.2.2:
+  * upmix plugin code refactoring, m4 file update
+
+-------------------------------------------------------------------
 Fri Nov 15 17:43:37 CET 2019 - tiwai@suse.de
 
 - Update to alsa-plugins 1.2.1:
