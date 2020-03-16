@@ -25,8 +25,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/r1chardj0n3s/parse
 Source0:        https://files.pythonhosted.org/packages/source/p/parse/parse-%{version}.tar.gz
-# https://github.com/r1chardj0n3s/parse/issues/82
-Source1:        https://raw.githubusercontent.com/r1chardj0n3s/parse/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +37,6 @@ Parse strings using a specification based on the Python format() syntax.
 %prep
 %setup -q -n parse-%{version}
 chmod a-x README.rst
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -49,7 +46,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test -v
+%python_exec -m unittest discover -v
 
 %files %{python_files}
 %license LICENSE

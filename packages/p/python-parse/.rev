@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>783951</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3ce74df5fdabcf4f101c2dafc766dfea</srcmd5>
+    <version>1.15.0</version>
+    <time>1584350384</time>
+    <user>dimstar_suse</user>
+    <comment>- No need to fetch license anymore, it is in the tarball</comment>
+    <requestid>785242</requestid>
+  </revision>
 </revisionlist>
