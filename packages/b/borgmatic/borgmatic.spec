@@ -107,10 +107,11 @@ ln -s /usr/sbin/service %{buildroot}/usr/sbin/rcborgmatic
 # it to behave in our build system (offline mode, use site packages). OTOH, without the
 # venv, we face problems with setuptools (borg uses pkg_resources to locate the installed
 # package), while py.test relies on the usual module handling. <hpj@urpla.net>
-pyvenv --system-site-packages --without-pip borgmatic-env
+export LANG=en_US.UTF-8
+python3 -m venv --system-site-packages --without-pip borgmatic-env
 source borgmatic-env/bin/activate
 python3 setup.py install
-LANG=en_US.UTF-8 PYTHONPATH=$(pwd) py.test -v --pyargs borgmatic tests
+PYTHONPATH=$(pwd) py.test -v --pyargs borgmatic tests
 
 %post
 %service_add_post borgmatic.service

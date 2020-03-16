@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 14 09:59:41 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use `python3 -m venv` instead of invoking pyvenv which doesn't seem
+  to exist anymore with python 3.8.
+
+-------------------------------------------------------------------
 Sun Feb 23 19:17:52 UTC 2020 - simmphonie@opensuse.org
 
 - Fix execution path in borgmatic.service
