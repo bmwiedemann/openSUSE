@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 16:18:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add kubernetes pause binary
+
+-------------------------------------------------------------------
 Thu Aug 22 14:29:49 CEST 2019 - kukuk@suse.de
 
 - Use busybox-container, much smaller

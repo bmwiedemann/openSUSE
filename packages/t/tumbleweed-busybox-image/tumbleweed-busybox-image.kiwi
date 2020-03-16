@@ -38,5 +38,6 @@
   </repository>
   <packages type="bootstrap">
     <package name="busybox-container"/>
+    <package name="kubernetes-pause"/>
   </packages>
 </image>

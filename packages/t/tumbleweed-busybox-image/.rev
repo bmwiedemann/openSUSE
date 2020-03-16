@@ -45,4 +45,13 @@
     <comment></comment>
     <requestid>729421</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>07fcddf8dad4f03d26c38573413e10c4</srcmd5>
+    <version>1.0.0</version>
+    <time>1584350208</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kubernetes pause binary
+</comment>
+    <requestid>784705</requestid>
+  </revision>
 </revisionlist>
