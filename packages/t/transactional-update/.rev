@@ -469,4 +469,13 @@
 </comment>
     <requestid>782051</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>dab74b73390e4280e90f917244bc62a7</srcmd5>
+    <version>2.20.3</version>
+    <time>1584350170</time>
+    <user>dimstar_suse</user>
+    <comment>Add dependencies to btrfsprogs, zypper and snapper - most of the functionality is not usable if those applications are not installed. [boo#1166502]
+</comment>
+    <requestid>784620</requestid>
+  </revision>
 </revisionlist>

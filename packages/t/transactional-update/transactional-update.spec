@@ -36,11 +36,14 @@ BuildRequires:  rpm-devel
 BuildRequires:  suse-module-tools
 Requires:       attr
 Requires:       bc
+Requires:       btrfsprogs
 Requires:       logrotate
 Requires:       lsof
 # psmisc is needed because of fuser
 Requires:       psmisc
 Requires:       rsync
+Requires:       snapper
+Requires:       zypper
 Recommends:     rebootmgr
 
 %description
