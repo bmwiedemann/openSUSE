@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dash
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -27,18 +27,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/plotly/dash
 Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Flask >= 0.12
+Requires:       python-Flask-Compress
+Requires:       python-plotly
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 0.12}
 BuildRequires:  %{python_module Flask-Compress}
 BuildRequires:  %{python_module plotly}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Flask >= 0.12
-Requires:       python-Flask-Compress
-Requires:       python-plotly
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -65,6 +64,7 @@ sed -i -e '/^#!\//, 1d' dash/extract-meta.js
 %license LICENSE
 %python3_only %{_bindir}/dash-generate-components
 %python3_only %{_bindir}/renderer
-%{python_sitelib}/*
+%{python_sitelib}/dash
+%{python_sitelib}/dash-%{version}-py*.egg-info
 
 %changelog
