@@ -41,16 +41,19 @@ Source2:        FreeCADCmd.sh
 Source3:        FreeCAD_shared_mimeinfo
 # PATCH-FIX-UPSTREAM 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch -- Fix build with shiboken2/pyside2 >= 5.12.1
 Patch1:         0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
-# PATCH-FIX-UPSTREAM 0002-fix-compile.patch
-Patch2:         0002-fix-compile.patch
 # PATCH-FIX-OPENSUSE qt-5.14.patch
 Patch3:         0003-qt-5.14.patch
+# PATCH-FIX-UPSTREAM https://github.com/FreeCAD/FreeCAD/commit/6eacb17b3e03d200.patch
+Patch4:         update-swigpyrunin-for-python-3.8.patch
+# PATCH-FIX-UPSTREAM https://github.com/FreeCAD/FreeCAD/pull/2899
+Patch5:         0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
+# PATCH-FIX-OPENSUSE Use correct import for Python 3 tkinter
+Patch6:         fix_unittestgui_tkinter_py3.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
 
 BuildRequires:  Coin-devel
-%if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_filesystem-devel >= 1.55
 BuildRequires:  libboost_graph-devel >= 1.55
 BuildRequires:  libboost_program_options-devel >= 1.55
@@ -61,9 +64,6 @@ BuildRequires:  libboost_signals-devel >= 1.55
 %endif
 BuildRequires:  libboost_system-devel >= 1.55
 BuildRequires:  libboost_thread-devel >= 1.55
-%else
-BuildRequires:  boost-devel >= 1.55
-%endif
 
 BuildRequires:  cmake
 BuildRequires:  dos2unix
@@ -78,6 +78,7 @@ BuildRequires:  git
 BuildRequires:  glew-devel
 BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
+BuildRequires:  hicolor-icon-theme
 # We use the internal smesh version with fixes atm
 #BuildRequires:  smesh-devel
 BuildRequires:  libXerces-c-devel
@@ -88,10 +89,9 @@ BuildRequires:  make
 BuildRequires:  netgen-devel
 # we use upstream OpenCASCADE instead of oce-devel atm
 BuildRequires:  occt-devel
-BuildRequires:  opencv-devel
 BuildRequires:  pkg-config
 
-%if 0%{?suse_version} >= 1330
+%if 0%{?suse_version}
 # Qt5 & python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
@@ -120,7 +120,8 @@ Conflicts:      python-pyside
 # reported to break FreeCAD here
 # https://forum.freecadweb.org/viewtopic.php?t=24610
 Conflicts:      python-pivy
-%else
+%endif
+%if 0%{?fedora} > 18
 BuildRequires:  libshiboken-devel
 BuildRequires:  python-CXX-devel
 BuildRequires:  python-devel
@@ -130,13 +131,6 @@ BuildRequires:  python-pyside-tools
 BuildRequires:  pkgconfig(QtWebKit)
 Requires:       python-numpy
 Requires:       python-pyside
-%if 0%{?suse_version} > 0
-# Qt4 & python2
-BuildRequires:  libqt4-devel
-BuildRequires:  python-xml
-%endif
-%endif
-%if 0%{?fedora} > 18
 BuildRequires:  qt5-qtbase-devel
 %endif
 
@@ -176,9 +170,9 @@ mv %_sourcedir/%name-%version %_builddir/%name-%version
 %autopatch -p1
 
 # fix env-script-interpreter
-sed -i '1c#!%{__python2}' \
+sed -i '1c#!%{__python3}' \
         src/Mod/Test/testmakeWireString.py \
-        src/Mod/Test/unittestgui.py
+        src/Mod/Robot/MovieTool.py
 
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' ChangeLog.txt
@@ -194,7 +188,7 @@ rm src/3rdparty/Pivy-0.5 -fr
 %build
 mkdir build && cd build
 # cmake macro would set standard libdir
-# it needs an older specific zipios version  -DFREECAD_USE_EXTERNAL_ZIPIOS=TRUE 
+# it needs an older specific zipios version  -DFREECAD_USE_EXTERNAL_ZIPIOS=TRUE
 
 printenv
 cmake \
@@ -207,12 +201,10 @@ cmake \
   -DRESOURCEDIR=%{_datadir}/%{name} \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_CXX_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" \
-%if 0%{?suse_version} >= 1330
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
   -DBUILD_QT5=ON \
-%endif
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
   -DBUILD_MESH_PART:BOOL=ON \
   -DBUILD_OPENSCAD:BOOL=ON \
@@ -258,8 +250,15 @@ chmod 755 %{buildroot}%{x_prefix}/Mod/Robot/MovieTool.py \
           %{buildroot}%{x_prefix}/Mod/Test/unittestgui.py
 
 # Move desktop icon in the correct location
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-mv %{buildroot}%{_datadir}/%{name}/freecad.xpm %{buildroot}%{_datadir}/pixmaps/freecad.xpm
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable
+for size in 64 48 32 16; do
+    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/
+    mv %{buildroot}%{_datadir}/%{name}/freecad-icon-${size}.png \
+       %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/freecad.png
+done
+mv %{buildroot}%{_datadir}/%{name}/freecad.svg %{buildroot}%{_datadir}/icons/hicolor/scalable
+mv %{buildroot}%{_datadir}/%{name}/freecad-doc.png %{buildroot}%{_datadir}/icons/hicolor/64x64/
+rm %{buildroot}%{_datadir}/%{name}/freecad.xpm
 
 %suse_update_desktop_file -c %{name} "%{name}" "3D CAD Modeler" %{name} "freecad" Education Engineering
 
@@ -297,13 +296,9 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 
 %fdupes -s %{buildroot}
 
-%post
-/sbin/ldconfig
-%mime_database_post
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
-%mime_database_postun
+%postun -p /sbin/ldconfig
 
 %files
 %license LICENSE
@@ -313,7 +308,7 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 %{_libdir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/pixmaps/freecad.xpm
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/freecad*.{png,svg}
 
 %changelog

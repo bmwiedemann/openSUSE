@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:13:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix runtime errors with Python 3.8:
+  * 0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
+- Fix last python2 she-bang remainders, fix imports:
+  * fix_unittestgui_tkinter_py3.patch
+- Remove unnecessary opencv build dependency
+- update to current 0.18 branch:
+  * Fem: fix segmentation fault when opening contraint transform
+    panel. Fix Python code
+  * Part: the number of domains returned by TopoShape::getDomains
+    must match with number of faces
+  * apply fixes from master when building with occt 7.4
+    + Drop 0002-fix-compile.patch
+
+-------------------------------------------------------------------
+Sat Mar 14 15:12:29 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Python 3.8:
+  Add update-swigpyrunin-for-python-3.8.patch
+- Spec file cleanup
+  * Drop xpm FreeCAD icon
+  * Install PNGs/SVG icons in correct paths
+  * Remove obsolete update_mime_database calls in %post
+  * Remove obsolete conditionals for Leap 42.x
+
+-------------------------------------------------------------------
 Sat Jan 25 11:03:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - make 0003-qt-5.14.patch do what it is advertising
@@ -8,17 +35,21 @@ Sat Jan 25 11:03:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 Fri Jan 24 09:02:08 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - update to current 0.18 branch:
-  * fixes #0004182: Segfault when clicking constraints from a different viewport [skip ci]
-  * See discussion https://forum.freecadweb.org/viewtopic.php?f=3&t=41879
-  * fixes #0004233: Access violation and file corruption on undo duplicate sketch
+  * fixes #0004182: Segfault when clicking constraints from a
+    different viewport [skip ci]
+  * [Draft] ImportDXF 0.18 Bug upgrading from 0.16. See discussion
+    https://forum.freecadweb.org/viewtopic.php?f=3&t=41879
+  * fixes #0004233: Access violation and file corruption on undo
+    duplicate sketch
   * FEM: py3 fix in selection widget
   * FEM: selection widgets, add some error prints
   * FEM: equations, fix reset edit mode
-  * [AddonManager] 0.18 Improve Non GitPython Error..
-  * ...Handling. Previous output when clicking Macros tab caused errors in Report View with no Macros loaded at all.
-  * fix encoding problem when clicking a link on StartPage if application is installed into a directory with non-ASCII characters
+  * [AddonManager] 0.18 Improve Non GitPython Error Handling.
+    Previous output when clicking Macros tab caused errors in
+    Report View with no Macros loaded at all.
+  * fix encoding problem when clicking a link on StartPage if
+    application is installed into a directory with non-ASCII characters
   * [Arch] ArchMaterial 0.18 Fix Crash
-
 
 -------------------------------------------------------------------
 Thu Jan 23 16:41:29 UTC 2020 - Adrian Schröter <adrian@suse.de>
