@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 15 10:11:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip one more failing test as it is flaky on OBS
+
+-------------------------------------------------------------------
 Mon Mar  2 15:47:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.12.0

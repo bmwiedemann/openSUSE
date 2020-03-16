@@ -23,7 +23,6 @@ Version:        1.12.0
 Release:        0
 Summary:        A logging system that tells the user why something happened
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/itamarst/eliot/
 Source0:        https://github.com/itamarst/eliot/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
@@ -79,7 +78,8 @@ export LC_CTYPE=en_US.UTF-8
 
 %check
 # skip prettyprint as it needs the binary to execute
-%python_expand PYTHONPATH=%%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v eliot/tests -k 'not prettyprint'
+# test_parse_stream is too slow in obs
+%pytest eliot/tests -k 'not (prettyprint or test_parse_stream)'
 
 %files %{python_files}
 %license LICENSE
