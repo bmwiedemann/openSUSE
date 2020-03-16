@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:44:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2:
+  + Fix build failures with EGL implementations which do not
+    provide an EGL/eglmesaext.h header.
+
+-------------------------------------------------------------------
 Tue Feb 25 13:00:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.1 (boo#1164688):
