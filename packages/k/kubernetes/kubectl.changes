@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Mar 13 10:27:10 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.17.4:
+  * Removing kubectl get output e2e test
+  * Adding a temporary fix for kubectl get output e2e test
+  * /readyz should start returning failure on shutdown initiation
+  * test: don't use hardcoded pod count for memory limit test
+  * Fixed in the GCE/PD in-tree volume logic to expose the max number of persistent-disks for each instance type correctly.
+  * Honor status.podIP over status.podIPs, node.spec.podCIDR over node.spec.podCIDRs
+  * fix: corrupted mount point in csi driver
+  * fix: azure file mount timeout issue
+  * fix behaviour of aws-load-balancer-security-groups annotation
+  * fix: add remediation in azure disk attach/detach
+  * Update to golang@1.13.8
+  * build: Enable kube-cross push/pull from K8s Infra GCR
+  * build: Add justaugustus as reviewer
+  * build: Add OWNERS on build-image/
+  * fix get-kube authorization headers
+  * update golang.org/x/crypto
+  * kube-proxy filter Load Balancer Status ingress
+  * kube-proxy unit test FilterIncorrectIPVersion
+  * add delays between goroutines for vm instance update
+  * Updated test cos image to include runc-1.0.0-rc10
+  * Fix gce-cos-master-reboot test
+  * Fix route conflicted operations when updating multiple routes together
+  * fix: get azure disk lun timeout issue
+  * Set up connection onClose prior to adding to connection map
+  * fix: add azure disk migration support for CSINode
+  * Add annotation annealing for migration for PVs and PVCs during syncVolume and syncClaim. This allows external-provisioners to pick up and delete volumes when they have been rolled up from previous kubernetes versions.
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.3
+  * Limit number of instances in single update to GCE target pool
+  * Enable selinux tags in make targets
+
+-------------------------------------------------------------------
+Thu Mar 12 17:26:28 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.17.3:
+  * Add code to fix kubelet/metrics memory issue.
+  * Remove Error log for nil StartTime
+  * CHANGELOG: Move changelogs into a subdir to delegate releng approvals
+  * Fix pending_pods, schedule_attempts_total was not recorded
+  * Fixing Potential Race Condition in EndpointSlice Controller.
+  * Restore statefulset conversion that populates apiVersion/kind in volume templates
+  * Use standard default storage media type in local-up-cluster
+  * changelog: clarify 1.17 upgrade requirements
+  * Fix back off when scheduling cycle is delayed
+  * blank out value for unbounded client label
+  * update gopkg.in/yaml.v2 to v2.2.8
+  * set nil cache entry based on old cache
+  * Revert "It fixes a bug where AAD token obtained by kubectl is incompatible with on-behalf-of flow and oidc."
+  * Fix issue with GCE scripts assuming Python2.
+  * Add/Update CHANGELOG-1.17.md for v1.17.2.
+  * Update to golang@1.13.6
+  * Fix the bug PIP's DNS is deleted if no DNS label service annotation is set.
+  * kubenet: replace gateway with cni result
+  * Fixes unnecessary creation of default SG and trying to delete non-provisioned SG by k8s system when annotation [service.beta.kubernetes.io/aws-load-balancer-security-groups] is present
+  * Ensure a provider ID is set on a node if expected
+  * Bind metrics-server containers to linux nodes to avoid Windows scheduling on kubernetes cluster includes linux nodes and windows nodes
+
+-------------------------------------------------------------------
 Tue Feb 04 15:04:34 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.17.2:

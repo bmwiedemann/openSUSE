@@ -17,19 +17,36 @@
 
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
-# baseversion - version of kubernetes for this package
-%define baseversion 1.17
+# CaaSP uses a package named kubelet, openSUSE has a kubelet-common for multi-version support
+%if !0%{?is_opensuse}
+%define kubeletpkgname kubelet
+%else
+%define kubeletpkgname kubelet-common
+%endif
+
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
 %define maxcriversion 1.18
+# baseversion - version of kubernetes for this package
+%define baseversion 1.17
+# prebaseversion - release of kubernetes for the previous supported kubelet version
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##%define prebaseversion 1.16
+# preversion - version of kubernetes for the previous supported kubelet version
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##%define preversion %{prebaseversion}.3
+
 Name:           kubernetes
-Version:        %{baseversion}.2
+Version:        1.17.4
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://kubernetes.io
 Source:         %{name}-%{version}.tar.xz
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##Source1:        %{name}-%{preversion}.tar.xz
 Source2:        genmanpages.sh
+Source3:        kubelet.sh
 #systemd services
 Source10:       kube-apiserver.service
 Source11:       kube-controller-manager.service
@@ -37,6 +54,7 @@ Source12:       kubelet.service
 Source13:       kube-proxy.service
 Source14:       kube-scheduler.service
 #config files
+Source22:       sysconfig.kubelet-kubernetes
 Source23:       kubeadm.conf
 Source24:       50-kubeadm.conf
 Source25:       10-kubeadm.conf
@@ -62,8 +80,11 @@ BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
 ExcludeArch:    %{ix86} s390 ppc64
+# openSUSE uses a few golang-packaging macros as possible
+%if !0%{?is_opensuse}
 %{go_nostrip}
 %{go_provides}
+%endif
 
 %description
 Kubernetes is a system for automating deployment, scaling, and
@@ -151,21 +172,52 @@ Conflicts:      kubernetes-node
 %description proxy
 This subpackage contains the kube-proxy binary for Kubic images
 
-%endif
-
-%package kubelet
+%package kubelet%{baseversion}
 Summary:        Kubernetes kubelet daemon
 Group:          System/Management
 Requires:       cri-runtime
-%if !0%{?is_opensuse}
-Requires:       kubernetes-common = %{version}-%{release}
-%endif
+Requires:       kubernetes-kubelet-common
+Provides:       kubernetes-kubelet = %{version}-%{release}
 # if master is installed with node, version and release must be the same
 Conflicts:      kubernetes-master < %{version}-%{release}
 Conflicts:      kubernetes-master > %{version}-%{release}
 %{?systemd_requires}
 
-%description kubelet
+%description kubelet%{baseversion}
+Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
+kubelet daemon (current version)
+
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##%package kubelet%{prebaseversion}
+##Summary:        Kubernetes kubelet daemon
+##Group:          System/Management
+##Requires:       cri-runtime
+##Requires:       kubernetes-kubelet-common
+##Provides:       kubernetes-kubelet = %{preversion}
+##%{?systemd_requires}
+##
+##%description kubelet%{prebaseversion}
+##Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
+##kubelet daemon (previous version for upgrades)
+
+%endif
+
+%package %{kubeletpkgname}
+Summary:        Kubernetes kubelet daemon
+Group:          System/Management
+Requires:       cri-runtime
+%if 0%{?is_opensuse}
+Requires:       kubernetes-kubelet
+%endif
+%if !0%{?is_opensuse}
+Requires:       kubernetes-common = %{version}-%{release}
+# if master is installed with node, version and release must be the same
+Conflicts:      kubernetes-master < %{version}-%{release}
+Conflicts:      kubernetes-master > %{version}-%{release}
+%{?systemd_requires}
+%endif
+
+%description %{kubeletpkgname}
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubelet daemon
 
@@ -178,13 +230,22 @@ Requires:       cri-tools >= 1.14.0
 Requires:       ebtables
 Requires:       ethtool
 Requires:       kubernetes-kubeadm-criconfig
+Requires:       socat
+Requires(pre):  shadow
+%if !0%{?is_opensuse}
+# CaaSP style of upgrade handling
 # Kubeadm 1.15.2 requires kubernetes-kubelet from 1.14.0 to 1.15.2
 # kubeadm accepts the previous version. This is important for performing upgrades
 # because we can update kubeadm first, and then kubelet.
 Requires:       kubernetes-kubelet >= 1.14.0
-Requires:       socat
-Requires(pre):  shadow
 Conflicts:      kubernetes-kubelet > %{version}-%{release}
+%else
+# openSUSE style of upgrade handling
+# Kubeadm requires current kubelet version and previous
+Requires:       kubernetes-kubelet = %{version}-%release
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##Requires:       kubernetes-kubelet = %{preversion}
+%endif
 Conflicts:      cri-tools >= %{maxcriversion}
 # if master is installed with node, version and release must be the same
 Conflicts:      kubernetes-master < %{version}-%{release}
@@ -244,13 +305,19 @@ This subpackage contains Kubernetes extra resources: cluster
 providers, demos, testsuite...
 
 %prep
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##%if 0%{?is_opensuse}
+##%setup -q -T -D -b 1 -n %{name}-%{preversion}
+##%endif
 %setup -q
 %if 0%{?is_opensuse}
 %patch2 -p0
 %patch3 -p1
 %patch4 -p0
 %endif
+%if !0%{?is_opensuse}
 %{goprep} github.com/kubernetes/kubernetes
+%endif
 
 %build
 # This is fixing bug bsc#1065972
@@ -285,6 +352,16 @@ cp %{SOURCE2} genmanpages.sh
 bash genmanpages.sh
 popd
 
+# Make previous version of kubelet for migration aiding
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##%if 0%{?is_opensuse}
+##echo "+++ BUILDING Previous kubelet version"
+##export KUBE_GIT_VERSION=v%{preversion}
+##pushd %{_builddir}/%{name}-%{preversion}
+##make %{?_smp_mflags} WHAT="cmd/kubelet"
+##popd
+##%endif
+
 %install
 
 %ifarch ppc64le aarch64
@@ -305,6 +382,22 @@ for bin in "${binaries[@]}"; do
   install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/${bin}
 done
 
+echo "+++ RENAMING kubelet to kubelet%{baseversion}"
+mv %{buildroot}%{_bindir}/kubelet %{buildroot}%{_bindir}/kubelet%{baseversion}
+
+echo "+++ INSTALLING kubelet multi-version loader"
+install -p -m 755 %{SOURCE3} %{buildroot}%{_bindir}/kubelet
+
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##echo "+++ INSTALLING kubelet%{prebaseversion}"
+##mv %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
+##install -p -m 755 -t %{buildroot}%{_bindir} %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
+
+# create sysconfig.kubelet-kubernetes in fullupdir
+sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
+install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kubernetes
+
+
 %else
 echo "+++ INSTALLING hyperkube"
 install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/hyperkube
@@ -318,6 +411,9 @@ done
 # install the bash completion
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
 %{buildroot}%{_bindir}/kubectl completion bash > %{buildroot}%{_datadir}/bash-completion/completions/kubectl
+
+# move CHANGELOG-%{baseversion}.md to old location
+mv CHANGELOG/CHANGELOG-%{baseversion}.md . 
 
 # cleanup before copying dirs...
 rm -f hack/.linted_packages
@@ -406,10 +502,13 @@ chgrp -R kube %{_localstatedir}/lib/kubernetes
 %postun master
 %service_del_postun kube-apiserver.service kube-controller-manager.service kube-scheduler.service
 
-%pre kubelet
+%pre %{kubeletpkgname}
 %service_add_pre kubelet.service
 
-%post kubelet
+%post %{kubeletpkgname}
+%if 0%{?is_opensuse}
+%fillup_only -an kubelet
+%endif
 %service_add_post kubelet.service
 %if 0%{?suse_version} < 1500
 # create some subvolumes needed by CNI
@@ -421,10 +520,10 @@ fi
 %endif
 %tmpfiles_create %{_tmpfilesdir}/kubelet.conf
 
-%preun kubelet
+%preun %{kubeletpkgname}
 %service_del_preun kubelet.service
 
-%postun kubelet
+%postun %{kubeletpkgname}
 %service_del_postun kubelet.service
 
 %pre node
@@ -463,8 +562,24 @@ fi
 %dir %{_sysconfdir}/%{name}
 %{_tmpfilesdir}/kubernetes.conf
 
-
+%files %{kubeletpkgname}
+%doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
+%license LICENSE
+%{_mandir}/man1/kubelet.1%{?ext_man}
+%{_bindir}/kubelet
+%{_unitdir}/kubelet.service
+%dir %{_unitdir}/kubelet.service.d
+%{_sbindir}/rckubelet
+%dir %{_localstatedir}/lib/kubelet
+%dir %{_sysconfdir}/%{name}
+%dir %{_sysconfdir}/%{name}/manifests
+%{_tmpfilesdir}/kubelet.conf
+%attr(0750,root,root) %dir %ghost %{_rundir}/%{name}
+%dir %{volume_plugin_dir}
 %if 0%{?is_opensuse}
+# only openSUSE uses sysconfig.kubelet-kubernetes
+%{_fillupdir}/sysconfig.kubelet-kubernetes
+
 # openSUSE is using kubeadm with containerizied control plane, we
 # only need the binaries
 
@@ -484,22 +599,16 @@ fi
 %license LICENSE
 %{_bindir}/kube-proxy
 
-%endif
-
-%files kubelet
-%doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
+%files kubelet%{baseversion}
 %license LICENSE
-%{_mandir}/man1/kubelet.1%{?ext_man}
-%{_bindir}/kubelet
-%{_unitdir}/kubelet.service
-%dir %{_unitdir}/kubelet.service.d
-%{_sbindir}/rckubelet
-%dir %{_localstatedir}/lib/kubelet
-%dir %{_sysconfdir}/%{name}
-%dir %{_sysconfdir}/%{name}/manifests
-%{_tmpfilesdir}/kubelet.conf
-%attr(0750,root,root) %dir %ghost %{_rundir}/%{name}
-%dir %{volume_plugin_dir}
+%{_bindir}/kubelet%{baseversion}
+
+## DISABLED - To be re-enabled for 1.18 expected in April 2020
+##%files kubelet%{prebaseversion}
+##%license LICENSE
+##%{_bindir}/kubelet%{baseversion}
+
+%endif
 
 %files kubeadm
 %doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
