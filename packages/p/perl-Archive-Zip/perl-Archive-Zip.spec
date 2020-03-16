@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Zip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Archive-Zip
-Version:        1.67
+Version:        1.68
 Release:        0
 %define cpan_name Archive-Zip
 Summary:        Provide an interface to ZIP archive files
@@ -31,7 +31,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Raw::Zlib) >= 2.017
-BuildRequires:  perl(Test::MockModule)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Compress::Raw::Zlib) >= 2.017
 %{perl_requires}
@@ -59,7 +58,7 @@ as if they were files.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
