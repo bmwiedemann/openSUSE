@@ -377,4 +377,13 @@
 - use setuptools for building to support pip 10.x (bsc#1166139)</comment>
     <requestid>783174</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>fa7851838e3203d060bc26c53c1c9dff</srcmd5>
+    <version>1.14.0</version>
+    <time>1584350196</time>
+    <user>dimstar_suse</user>
+    <comment>- Change %pretrans back to %pre to fix bootstrap issue
+  boo#1123064 bsc#1143893</comment>
+    <requestid>785216</requestid>
+  </revision>
 </revisionlist>
