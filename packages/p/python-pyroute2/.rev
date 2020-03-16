@@ -136,4 +136,22 @@
   * wireguard: basic testing</comment>
     <requestid>780415</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4bab4f2e7f0edb374d65d59857229877</srcmd5>
+    <version>0.5.10</version>
+    <time>1584350316</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.10:
+  * general: don't use pkg_resources &lt;https://github.com/svinota/pyroute2/issues/677&gt;
+  * iproute: fix Windows support
+  * netlink: provide the target field
+  * ndb: use the target field from the netlink header
+  * ndb: multiple SQL fixes, transactions fixed with the PostgreSQL backend
+  * ndb: multiple object cache fixes &lt;https://github.com/svinota/pyroute2/issues/683&gt;
+  * ndb.schema: drop DB triggers
+  * ndb.objects: fix object management within a netns &lt;https://github.com/svinota/pyroute2/issues/628&gt;
+  * ndb.objects.route: support route metrics
+  * ndb.objects.route: fix default route syntax</comment>
+    <requestid>785076</requestid>
+  </revision>
 </revisionlist>
