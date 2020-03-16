@@ -1,7 +1,7 @@
 #
 # spec file for package python-EditorConfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,7 @@ Version:        0.12.2
 Release:        0
 Summary:        File Locator and Interpreter for Python
 License:        Python-2.0 AND BSD-2-Clause
-Group:          Development/Languages/Python
-URL:            http://editorconfig.org
+URL:            https://editorconfig.org
 Source0:        https://files.pythonhosted.org/packages/source/E/EditorConfig/EditorConfig-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -52,6 +51,6 @@ rm -rf %{buildroot}%{_bindir}
 %license LICENSE.* COPYING
 %doc README.rst
 %{python_sitelib}/editorconfig
-%{python_sitelib}/EditorConfig-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/EditorConfig-%{version}-py%{python_version}.egg-info
 
 %changelog
