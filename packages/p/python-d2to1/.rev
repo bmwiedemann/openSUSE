@@ -85,4 +85,12 @@
   * no obvious changelog</comment>
     <requestid>730665</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>04266e9a30d6c6e8dc509a6eec5d2542</srcmd5>
+    <version>0.2.12.post1</version>
+    <time>1584350281</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784870</requestid>
+  </revision>
 </revisionlist>
