@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:35:07 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Request confirmation for aborting in the dialog for setting the
+  root password (bsc#1165506)
+- 4.2.10
+
+-------------------------------------------------------------------
 Tue Feb  4 14:14:31 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Mark users as WSL capable module (bsc#1162650) 
