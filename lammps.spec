@@ -1,7 +1,7 @@
 #
 # spec file for package lammps
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017-2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Build with OpenMPI
 %if 0%{?sle_version} == 0
@@ -32,35 +33,33 @@
 %endif
 
 Name:           lammps
-Version:        20180807
-%define         uversion stable_7Aug2019
+Version:        20200303
 Release:        0
+%define         uversion stable_3Mar2020
 Summary:        Molecular Dynamics Simulator
-License:        GPL-2.0 and GPL-3.0+
+License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
-Url:            http://lammps.sandia.gov
+URL:            https://lammps.sandia.gov
 Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-%define         tversion d0394a77fa2b4b2d545a73ea092cf6de7616aac8
-Source1:        https://github.com/lammps/lammps-testing/archive/%{tversion}.tar.gz#/%{name}-testing-%{tversion}.tar.gz
+Source1:        https://github.com/lammps/lammps-testing/archive/%{uversion}.tar.gz#/%{name}-testing-%{uversion}.tar.gz
+BuildRequires:  %{mpiver}
+BuildRequires:  %{mpiver}-devel
+BuildRequires:  cmake
+BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  libpng-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  %{mpiver}
-BuildRequires:  %{mpiver}-devel
-BuildRequires:  python-devel
-BuildRequires:  fftw3-devel
-BuildRequires:  voro++-devel
-BuildRequires:  zlib-devel
 BuildRequires:  gsl-devel
 BuildRequires:  kim-api-devel >= 2.1
-BuildRequires:  cmake
-BuildRequires:  opencl-headers
+BuildRequires:  libjpeg-devel
+BuildRequires:  libpng-devel
 BuildRequires:  ocl-icd-devel
+BuildRequires:  opencl-headers
+BuildRequires:  python-devel
+BuildRequires:  voro++-devel
+BuildRequires:  zlib-devel
 Requires:       %{name}-data
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 
 %description
 LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
@@ -95,10 +94,10 @@ designed to be easy to modify or extend with new functionality.
 This package contains the library of LAMMPS package.
 
 %package devel
-Summary:    Development headers and libraries for LAMMPS
-Group:      Development/Libraries/C and C++
-Requires:   liblammps0 = %{version}
-Requires:   %{name} = %{version}
+Summary:        Development headers and libraries for LAMMPS
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Requires:       liblammps0 = %{version}
 
 %description devel
 LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
@@ -116,9 +115,9 @@ designed to be easy to modify or extend with new functionality.
 This package contains development headers and libraries for LAMMPS.
 
 %package -n python-%{name}
-Summary:    LAMMPS python module
-Group:      Development/Languages/Python
-Requires:   liblammps0 = %{version}
+Summary:        LAMMPS python module
+Group:          Development/Languages/Python
+Requires:       liblammps0 = %{version}
 
 %description -n python-%{name}
 LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
@@ -136,9 +135,9 @@ designed to be easy to modify or extend with new functionality.
 This subpackage contains LAMMPS's Python module.
 
 %package data
-Summary:    LAMMPS data
-Group:      Productivity/Scientific/Chemistry
-BuildArch:  noarch
+Summary:        LAMMPS data
+Group:          Productivity/Scientific/Chemistry
+BuildArch:      noarch
 
 %description data
 LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
@@ -194,6 +193,7 @@ LD_LIBRARY_PATH='%{buildroot}/%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' m
 %{_bindir}/msi2lmp
 %{_mandir}/man1/msi2lmp.1.*
 %{_bindir}/binary2txt
+%{_bindir}/chain.x
 
 %files -n liblammps0
 %defattr(-,root,root,-)

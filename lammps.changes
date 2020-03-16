@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Mar  4 21:56:52 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- bump versoin to 20200303 (stable)
+  * General changes
+   * The documentation file format has been changed from the custom txt2html markup to using reStructuredText (rst). 
+   * Many file read operations are now monitored for read errors and thus allowing to detect damaged or incomplete files like potential parameter files and restart files
+   * Updates and improvements to the CMake build system to more closely match all the functionality provided by the conventional make based build system
+   * Support for threaded FFTs from FFTW and MKL, support for cuFFT and KISSFFT on the GPU with KOKKOS
+   * Expose neighbor lists to the library interface and the Python wrapper
+   * Documentation of installing LAMMPS via conda
+   * Many small improvements or bugfixes
+ * Updates and new commands or styles
+   * new dump_modify options to embed ITEM: UNITS and ITEM: TIME with information about units and accumulated simulation time
+   * new pair styles cosine/squared, local/density, mesocnt
+   * new fix styles wall/reflect/stochastic, propel/self, 'npt/cauchy`
+   * new compute gyration/shape/chunk
+   * new compute hma for fast, high-precision computation of certain thermodynamic properties of solids
+   * new compute style centroid/stress/atom for computing per atom stress in a way allowing for more accurate heat flux computations with interactions involving more than two atoms
+   * new third_order command, a companion command to dynamical_matrix, for computing the third order force tensor from finite differences
+   * new options ratio and subset for create_atoms and similarly new options type/ratio and type/subset to the set command
+   * new tool for post-processing parallel tempering trajectories
+   * multiple updates, bugfixes, and improvements to fix bond/react
+   * improved implementation of minimization style fire
+   * support to run NWChem along with LAMMPS in client/server mode
+ * Updates for packages
+   * KOKKOS now supports minimization (limited to minimization styles cg and quadratic), updates to the KOKKOS library, general improvements and bugfixes, more styles ported to KOKKOS
+   * several new SNAP potentials
+   * tweaks to USER-INTEL to compile correctly with too aggressively optimizing compilers, corrections and improvements
+   * bugfixes and improvements for the GRANULAR package
+   * several new SNAP potentials and a new compute snap for training SNAP potentials
+   * bugfixes and improvements to the KIM package, new command kim_param for accessing KIM model parameters
+   * updates to the USER-COLVARS package with updates to the included Lepton library
+   * updates to the USER-PLUMED package with bugfixes and support for recent releases
+   * updates to the USER-CGDNA package including a new coarse grained RNA model (oxRNA2)
+   * improvements and updates to the SPIN package, L-BFGS minimizer added
+   * updates, extensions, and improvements to the USER-MEAMC package
+   * memory leaks fixed when using styles from the GPU with multiple run commands, new pair style lj/cut/tip4p/long/gpu
+   * updates to fix rigid variants to add gravity to rigid objects with overlapping (granular) particles
+   * support for rerun and read_dump with USER-ADIOS
+ * Backward compatibility notices
+   * building the USER-COLVARS package with all features enabled now requires a C++-11 compatible compiler
+  * due to changes in the random number generator initialization, results when using fix pour, fix deposit, fix evaporate or create_atoms random will not match with previous versions of LAMMPS. see PR #1569
+  * the gjf keyword for fix langevin no longer supports the option yes. Instead you have to use either vhalf or vfull
+  * the FIRE minimizer has been replaced with an improved implementation. The previous implementation is available as fire/old.
+  * new documentation has to be written in reStructuredText format
+  
+-------------------------------------------------------------------
 Fri Nov  1 02:45:27 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - generify used mpi version
