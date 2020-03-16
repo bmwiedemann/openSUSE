@@ -1,5 +1,5 @@
 #
-# spec file for package Srain.spec
+# spec file for package Srain
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           Srain
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
@@ -27,8 +27,8 @@ Source:         https://github.com/SrainApp/srain/archive/%{version}.tar.gz#/%{n
 Patch2:         Srain-implicit_declarations.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48.2
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libconfig) >= 1.7

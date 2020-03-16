@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:22:06 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.0.1
+  Features:
+  * Auto rename to original nick when ghost quit (#198)
+  * Add hackint IRC network (#201), thanks to @kpcyrd
+  * Add Dutch translation (#215), thanks to @Vistaus
+  * Add two FAQs to documentation (#217)
+  Changes:
+  * Make header bar buttons repect default belief (#205, #218)
+  Bug fixes:
+  * Fix case sensitivity issue for IRC messages (#202), thanks 
+    to @hhirtz
+  * Fix invalid changelog section of appdata file (#214)
+  * Fix missing dependences in documentation (#216), thanks to 
+    @avoidr
+
+-------------------------------------------------------------------
 Mon Feb 24 17:10:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.0
