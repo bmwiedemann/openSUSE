@@ -867,4 +867,12 @@
     <comment></comment>
     <requestid>767521</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>4a0bc1f7974353f74735a5e795f2a4a9</srcmd5>
+    <version>5.2.0</version>
+    <time>1584350301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.0. No changelog.</comment>
+    <requestid>785001</requestid>
+  </revision>
 </revisionlist>

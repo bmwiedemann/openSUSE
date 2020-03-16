@@ -18,13 +18,13 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.1
+%define devrelease 5.2
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -47,6 +47,7 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
@@ -113,20 +114,20 @@ some often needed functions (for example, for handling and parsing of
 configuration files, reading and writing of XML files, and interprocess
 communication).
 
-%package -n libgwengui-cpp0
+%package -n libgwengui-cpp%{libversion}
 Summary:        C++ interface for Gwenhywfar
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n libgwengui-cpp0
+%description -n libgwengui-cpp%{libversion}
 This package contains the C++ GUI interface for Gwenhywfar.
 
-%package -n libgwengui-gtk2-0
+%package -n libgwengui-gtk2-%{libversion}
 Summary:        GTK+ 2 UI backend for Gwenhywfar
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n libgwengui-gtk2-0
+%description -n libgwengui-gtk2-%{libversion}
 Gwenhywfar is a base library used to provide OS abstraction functions
 for Linux, FreeBSD, OpenBSD, NetBSD, and Windows. It also includes
 some often needed functions (for example, for handling and parsing of
@@ -135,12 +136,12 @@ communication).
 
 This package provides the GTK+ 2 implementation of the generic UI toolkit.
 
-%package -n libgwengui-gtk3-0
+%package -n libgwengui-gtk3-%{libversion}
 Summary:        GTK+ 3 UI backend for Gwenhywfar
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n libgwengui-gtk3-0
+%description -n libgwengui-gtk3-%{libversion}
 Gwenhywfar is a base library used to provide OS abstraction functions
 for Linux, FreeBSD, OpenBSD, NetBSD, and Windows. It also includes
 some often needed functions (for example, for handling and parsing of
@@ -149,14 +150,14 @@ communication).
 
 This package provides the GTK+ 3 implementation of the generic UI toolkit.
 
-%package -n libgwengui-qt5-0
+%package -n libgwengui-qt5-%{libversion}
 Summary:        Qt5 UI backend for the gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Provides:       libgwengui-qt4-0 = %{version}
 Obsoletes:      libgwengui-qt4-0 < %{version}
 
-%description -n libgwengui-qt5-0
+%description -n libgwengui-qt5-%{libversion}
 Gwenhywfar is a base library used to provide OS abstraction functions
 for Linux, FreeBSD, OpenBSD, NetBSD, and Windows. It also includes
 some often needed functions (for example, for handling and parsing of
@@ -165,12 +166,12 @@ communication).
 
 This package provides the Qt5 implementation of the generic UI toolkit.
 
-%package -n libgwengui-fox16-0
+%package -n libgwengui-fox16-%{libversion}
 Summary:        FOX interface for Gwenhywfar
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n libgwengui-fox16-0
+%description -n libgwengui-fox16-%{libversion}
 This package contains the interface to the FOX toolkit
 for Gwenhywfar.
 
@@ -179,10 +180,10 @@ Summary:        Header files for the Gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libgwengui-fox16-0 >= %{version}
-Requires:       libgwengui-gtk2-0 >= %{version}
-Requires:       libgwengui-gtk3-0 >= %{version}
-Requires:       libgwengui-qt5-0 >= %{version}
+Requires:       libgwengui-fox16-%{libversion} >= %{version}
+Requires:       libgwengui-gtk2-%{libversion} >= %{version}
+Requires:       libgwengui-gtk3-%{libversion} >= %{version}
+Requires:       libgwengui-qt5-%{libversion} >= %{version}
 Requires:       libgwenhywfar%{libversion} = %{version}
 
 %description devel
@@ -233,16 +234,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libgwenhywfar%{libversion} -p /sbin/ldconfig
 %postun -n libgwenhywfar%{libversion} -p /sbin/ldconfig
-%post   -n libgwengui-cpp0 -p /sbin/ldconfig
-%postun -n libgwengui-cpp0 -p /sbin/ldconfig
-%post   -n libgwengui-gtk2-0 -p /sbin/ldconfig
-%postun -n libgwengui-gtk2-0 -p /sbin/ldconfig
-%post   -n libgwengui-gtk3-0 -p /sbin/ldconfig
-%postun -n libgwengui-gtk3-0 -p /sbin/ldconfig
-%post -n libgwengui-qt5-0 -p /sbin/ldconfig
-%postun -n libgwengui-qt5-0 -p /sbin/ldconfig
-%post -n libgwengui-fox16-0 -p /sbin/ldconfig
-%postun -n libgwengui-fox16-0 -p /sbin/ldconfig
+%post   -n libgwengui-cpp%{libversion} -p /sbin/ldconfig
+%postun -n libgwengui-cpp%{libversion} -p /sbin/ldconfig
+%post   -n libgwengui-gtk2-%{libversion} -p /sbin/ldconfig
+%postun -n libgwengui-gtk2-%{libversion} -p /sbin/ldconfig
+%post   -n libgwengui-gtk3-%{libversion} -p /sbin/ldconfig
+%postun -n libgwengui-gtk3-%{libversion} -p /sbin/ldconfig
+%post -n libgwengui-qt5-%{libversion} -p /sbin/ldconfig
+%postun -n libgwengui-qt5-%{libversion} -p /sbin/ldconfig
+%post -n libgwengui-fox16-%{libversion} -p /sbin/ldconfig
+%postun -n libgwengui-fox16-%{libversion} -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -270,19 +271,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgwenhywfar%{libversion}
 %{_libdir}/lib%{_name}.so.*
 
-%files -n libgwengui-cpp0
+%files -n libgwengui-cpp%{libversion}
 %{_libdir}/libgwengui-cpp.so.*
 
-%files -n libgwengui-gtk2-0
+%files -n libgwengui-gtk2-%{libversion}
 %{_libdir}/libgwengui-gtk2.so.*
 
-%files -n libgwengui-gtk3-0
+%files -n libgwengui-gtk3-%{libversion}
 %{_libdir}/libgwengui-gtk3.so.*
 
-%files -n libgwengui-qt5-0
+%files -n libgwengui-qt5-%{libversion}
 %{_libdir}/libgwengui-qt5.so.*
 
-%files -n libgwengui-fox16-0
+%files -n libgwengui-fox16-%{libversion}
 %{_libdir}/libgwengui-fox16.so.*
 
 %files devel
