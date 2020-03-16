@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:04:55 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1584172463.88254ac92:
+  * Rename the JobTemplates module to YAML
+  * Slightly simplify code WebAPI::Controller::API::V1::Job and Worker::WebUIConnection
+  * Mark uncoverage subroutine in OpenQA::Worker::WebUIConnection
+  * t: Slighty simplify t/24-worker-webui-connection.t
+  * t: Add explicit to stabilize test coverage for OpenQA::Worker::WebUIConnection
+  * t: Fix warning '"my" variable %job_info masks earlier declaration'
+  * Fix perlcritic issue
+  * Fix t/40-script_openqa-clone-custom-git-refspec.t failing when github auth token defined
+  * Fix use lib in script/*
+  * Fix ARRAY in loaded job template settings
+  * Split YAML out of JobTemplate API tests
+  * Job templates test: update check for error message
+  * Add explicit test coverage for OpenQA::Scheduler::Model::Jobs::_pick_siblings_of_running
+  * Make parameters for splitting screenshot cleanup configurable
+  * Add worker name to reason when stale job detection incompletes job
+  * Fix the bug that only dereference the symlink needle in one page
+  * Validate parameters passed to job template route consistently
+  * Add test for re-scheduling only on 2nd idle status
+  * Improve test coverage of worker
+  * Enable scalability test in CI
+  * worker: Avoid rejecting jobs when already working on them
+  * Improve test coverage of the worker command handler
+  * Format test of the worker's web UI connection in a more compact way
+  * Revert condition for job-specific web socket messages
+  * Add test for handling the quit message from the worker
+  * Prevent race condition when assigning and sending jobs to a worker
+  * Enhance scalability test
+  * Have openqa-clone-custom-git-refspec parse PR for test URLs
+  * Prevent scalability test from using port which is already in use
+  * Use service_port for web socket server redirection
+  * Add fullstack test for scalability
+  * Tweak result upload of worker
+  * Optimize _optimize_image
+
+-------------------------------------------------------------------
 Thu Mar 05 12:01:40 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1583409674.75be31485:
