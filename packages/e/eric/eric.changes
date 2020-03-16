@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:26:08 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 20.3:
+  - bug fixes
+  - Debugger
+    -- added debugging support for QRunable
+  - Mercurial Interface
+    -- added support for the '--secure' flag of hg import as of 
+       Mercurial 5.3
+  - Syntax Checker
+    -- updated pyflakes to repository as of 2020-02-03
+  - Third Party packages
+    -- updated coverage.py to 5.0.3
+
+-------------------------------------------------------------------
 Mon Feb  3 09:12:10 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 20.2:
