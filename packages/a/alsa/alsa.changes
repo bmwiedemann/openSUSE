@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:37:03 CET 2020 - tiwai@suse.de
+
+- Update to alsa-lib 1.2.2:
+  including previous fixes
+- Backport recent upstream fixes:
+  conf updates, PCM ordering fix, configure fix;
+  0001-conf-change-the-order-of-PCM-devices-in-alsa.conf.patch
+  0002-conf-namehint-add-omit_noargs-to-the-hint-section.patch
+  0003-Change-PCM-device-number-of-Asus-Xonar-U5.patch
+  0004-configure-add-embed-for-python3-config-python-3.8.patch
+  0005-conf-USB-Audio-Add-C-Media-USB-Headphone-Set-to-the-.patch
+- Drop obsoleted patches:
+  0001-ucm-Use-strncmp-to-avoid-access-out-of-boundary.patch
+  0002-ucm-return-always-at-least-NULL-if-no-list-is-availa.patch
+  0003-ucm-add-_identifiers-list.patch
+  0004-namehint-correct-the-args-check.patch
+  0005-namehint-improve-the-previous-patch-check-the-return.patch
+  0006-ucm-docs-allow-spaces-in-device-names-for-JackHWMute.patch
+  0007-use-case-docs-add-PlaybackMixerCopy-and-CaptureMixer.patch
+  0008-ucm-docs-add-JackCTL-rearrange-JackControl-and-JackD.patch
+  0009-ucm-Do-not-fail-to-parse-configs-on-cards-with-an-em.patch
+  0010-src-ucm-main.c-fix-build-without-mixer.patch
+  0011-alsa.m4-another-try-to-fix-the-libatopology-detectio.patch
+  0012-ucm-docs-add-Mic-DigitalMic-and-multiple-devices-com.patch
+  0013-ucm-docs-remove-DigitalMic-it-does-not-have-sense.patch
+  0014-ucm-docs-change-the-Mic-description-to-simple-Microp.patch
+  0015-ucm-docs-add-note-about-the-sequences-and-device-spl.patch
+  0016-ucm-docs-remove-MixerCopy-values-add-Priority-for-ve.patch
+  0017-ucm-setup-conf_format-after-getting-ALSA_CONFIG_UCM_.patch
+  0018-alsa-lib-fix-the-array-parser-unique-compound-keys.patch
+  0019-topology-remove-vendor_fd-name-from-snd_tplg-structu.patch
+  0020-topology-file-position-and-size-cleanups.patch
+  0021-topology-use-an-array-describing-blocks-for-the-main.patch
+  0022-topology-use-size_t-for-calc_block_size.patch
+  0023-topology-merge-write_block-to-tplg_write_data.patch
+  0024-topology-make-vebose-output-more-nice.patch
+  0025-topology-use-list_insert-macro-in-tplg_elem_insert.patch
+  0026-topology-dapm-coding-fixes.patch
+  0027-topology-dapm-merge-identical-index-blocks-like-for-.patch
+  0028-topology-more-coding-fixes.patch
+  0029-Fix-alsa-sound-.h-for-external-programs.patch
+  0030-type_compat-Add-missing-__s64-and-__u64-definitions-.patch
+  0031-uapi-Move-typedefs-from-uapi-to-sound.patch
+  0032-Update-the-attributes.m4-macro-file-from-xine.patch
+  0033-topology-avoid-to-use-the-atoi-directly-when-expecte.patch
+  0034-topology-use-snd_config_get_bool-instead-own-impleme.patch
+  0035-topology-fix-tplg_get_integer-handle-errno-ERANGE.patch
+  0036-topology-add-tplg_get_unsigned-function.patch
+  0037-topology-convert-builder-to-use-the-mallocated-memor.patch
+  0038-topology-add-binary-output-from-the-builder.patch
+  0039-topology-parser-recode-tplg_parse_config.patch
+  0040-topology-add-snd_tplg_load-remove-snd_tplg_build_bin.patch
+  0041-topology-move-the-topology-element-table-from-builde.patch
+  0042-topology-add-parser-to-the-tplg_table.patch
+  0043-topology-add-snd_tplg_save.patch
+  0044-topology-add-snd_tplg_create-with-flags.patch
+  0045-topology-add-snd_tplg_version-function.patch
+  0046-topology-cleanup-the-SNDERR-calls.patch
+  0047-topology-dapm-fix-the-SNDERR-Undefined.patch
+  0048-topology-fix-the-unitialized-tuples.patch
+  0049-topology-implement-shorter-hexa-uuid-00-00-parser.patch
+  0050-topology-fix-the-TPLG_DEBUG-compilation.patch
+  0051-topology-fix-the-ops-parser-accept-integer-hexa-valu.patch
+  0052-topology-fix-the-wrong-memory-access-object-realloc.patch
+  0053-topology-implement-snd_tplg_decode.patch
+  0054-topology-move-the-elem-list-delete-to-tplg_elem_free.patch
+  0055-topology-unify-the-log-mechanism.patch
+  0056-topology-tplg_dbg-cleanups.patch
+  0057-topology-cosmetic-changes-functions.patch
+  0058-mixer-Fix-memory-leak-for-more-than-16-file-descript.patch
+  0059-Quote-strings-containing-or-when-saving-an-alsa-conf.patch
+  0060-ucm-fix-the-configuration-directory-longname-for-ucm.patch
+  0061-ucm-split-conf_file_name-and-conf_dir_name.patch
+  0062-ucm-remove-MAX_FILE-definition-and-use-correct-PATH_.patch
+  0063-topology-remove-MAX_FILE-definition-and-use-correct-.patch
+  0064-ucm-parser-cosmetic-fixes-in-the-comments.patch
+  0065-configure.ac-remove-an-unnecessary-libtool-fix.patch
+  0066-ucm-parser-use-correct-filename-in-parser_master_fil.patch
+  0067-ucm-the-ucm2-subdirectory-is-driver-name-based.patch
+  0068-ucm-implement-RenameDevice-and-RemoveDevice-verb-man.patch
+  0069-ucm-fill-missing-device-entries-conflicting-supporte.patch
+  0070-control-Remove-access-to-the-deprecated-dimen-fields.patch
+  0071-topology-Drop-SNDRV_CTL_ELEM_ACCESS_TIMESTAMP-access.patch
+  0072-uapi-Sync-with-5.6-kernel-ABI.patch
+  0073-ucm-parser-add-error-message-to-verb_dev_list_add.patch
+  0074-do-not-set-close-on-exec-flag-on-descriptor-if-it-wa.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 20:36:56 CET 2020 - tiwai@suse.de
 
 - Backport upstream fixes:
