@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 13:15:39 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- remember the keyboard selection in the keyboard language dialog
+  when the language is selected after the keyboard (bsc#1160164)
+- 4.2.12
+
+-------------------------------------------------------------------
 Wed Feb 26 13:28:25 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix disabled finish button (bsc#1163100)
