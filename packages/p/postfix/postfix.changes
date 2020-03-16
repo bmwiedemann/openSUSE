@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:29:32 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.4.10:
+  * Bug (introduced: Postfix 2.3): Postfix Milter client state
+    was not properly reset after one Milter in a multi-Milter
+    configuration failed during MAIL FROM, resulting in a Postfix
+    Milter client panic during the next MAIL FROM command in the
+    same SMTP session.
+
+-------------------------------------------------------------------
 Fri Feb  7 17:07:39 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
 - bsc#1162891 server:mail/postfix: cond_slp bug on TW after 

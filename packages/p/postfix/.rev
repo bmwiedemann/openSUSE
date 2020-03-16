@@ -1693,4 +1693,12 @@
     warnings about malformed UTF8. Found during code maintenance.</comment>
     <requestid>772195</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>36a776cd63d0b08cb5889ab4c785e53d</srcmd5>
+    <version>3.4.10</version>
+    <time>1584350191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784682</requestid>
+  </revision>
 </revisionlist>
