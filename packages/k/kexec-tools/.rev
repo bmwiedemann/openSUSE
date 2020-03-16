@@ -955,4 +955,16 @@ installer uses kexec to boot into second stage..
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>770156</requestid>
   </revision>
+  <revision rev="134" vrev="4">
+    <srcmd5>a301b82b017eb12602bb81fbc068d2d1</srcmd5>
+    <version>2.0.20</version>
+    <time>1584350231</time>
+    <user>dimstar_suse</user>
+    <comment>- kexec-tools-reset-getopt-before-falling-back-to-legacy.patch:
+  Reset getopt before falling back to legacy syscall (bsc#1166105).
+- kexec-tools-fix-kexec_file_load-error-handling.patch: Fix the
+  error handling if kexec_file_load() fails (bsc#1166105).
+</comment>
+    <requestid>784674</requestid>
+  </revision>
 </revisionlist>

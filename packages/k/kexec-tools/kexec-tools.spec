@@ -36,6 +36,8 @@ Patch7:         %{name}-arm64-kdump-deal-with-resource-entries-in-proc-iomem.pat
 Patch8:         %{name}-build-multiboot2-for-i386.patch
 Patch9:         %{name}-video-capability.patch
 Patch10:        %{name}-SYS_getrandom.patch
+Patch11:        %{name}-fix-kexec_file_load-error-handling.patch
+Patch12:        %{name}-reset-getopt-before-falling-back-to-legacy.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -68,6 +70,8 @@ the loaded kernel after it panics.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %build
 autoreconf -fvi

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:11:55 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- kexec-tools-reset-getopt-before-falling-back-to-legacy.patch:
+  Reset getopt before falling back to legacy syscall (bsc#1166105).
+
+-------------------------------------------------------------------
+Fri Mar 13 08:37:58 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- kexec-tools-fix-kexec_file_load-error-handling.patch: Fix the
+  error handling if kexec_file_load() fails (bsc#1166105).
+
+-------------------------------------------------------------------
 Wed Jan 29 07:35:18 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Fix build errors on old distributions
