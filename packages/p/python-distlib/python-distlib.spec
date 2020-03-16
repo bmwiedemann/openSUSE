@@ -1,7 +1,7 @@
 #
 # spec file for package python-distlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distlib
-Version:        0.2.9.post0
+Version:        0.3.0
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://bitbucket.org/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.zip
 Patch0:         remove-backports.patch
-# PATCH-FIX-UPSTREAM correct_large_version_number.patch bt#pypa/distlib#129 mcepl@suse.com
-# Change Python version handling to cope with a version like 3.10
-Patch1:         correct_large_version_number.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

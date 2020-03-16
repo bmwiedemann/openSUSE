@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 13 08:37:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.0:
+  * small bugfixes
+- Remove patch merged upstream:
+  * correct_large_version_number.patch
+
+-------------------------------------------------------------------
 Fri Oct 25 07:14:15 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add correct_large_version_number.patch fixing bt#pypa/distlib#129
