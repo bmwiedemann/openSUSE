@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 15 09:48:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 18.0.0:
+  * Require Python 3.6 or later.
+
+-------------------------------------------------------------------
 Tue Apr 30 09:17:40 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop test .pyc files from doc dir to make package build reproducible

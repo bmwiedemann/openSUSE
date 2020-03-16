@@ -265,4 +265,13 @@ Dependencies:
     <comment></comment>
     <requestid>699681</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>83f64306327fd0a92822d4b7d7c1bc75</srcmd5>
+    <version>18.0.0</version>
+    <time>1584350389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.0:
+  * Require Python 3.6 or later.</comment>
+    <requestid>785245</requestid>
+  </revision>
 </revisionlist>

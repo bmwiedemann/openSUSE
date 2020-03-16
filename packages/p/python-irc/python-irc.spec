@@ -1,7 +1,7 @@
 #
 # spec file for package python-irc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-irc
-Version:        17.1
+Version:        18.0.0
 Release:        0
 Summary:        A set of Python modules for IRC support
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://github.com/jaraco/irc
 Source:         https://files.pythonhosted.org/packages/source/i/irc/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jaraco.collections}
-BuildRequires:  %{python_module jaraco.functools >= 1.10}
-BuildRequires:  %{python_module jaraco.itertools >= 1.8}
+BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module jaraco.logging}
+BuildRequires:  %{python_module jaraco.stream}
 BuildRequires:  %{python_module jaraco.text}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
@@ -43,7 +42,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-jaraco.collections
 Requires:       python-jaraco.functools >= 1.20
-Requires:       python-jaraco.itertools >= 1.8
 Requires:       python-jaraco.logging
 Requires:       python-jaraco.stream
 Requires:       python-jaraco.text
@@ -54,9 +52,6 @@ Provides:       python-irclib = %{version}
 Obsoletes:      %{name}-doc
 Obsoletes:      python-irclib < %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module jaraco.stream}
-%endif
 %python_subpackages
 
 %description
@@ -68,7 +63,7 @@ connections.
 %prep
 %setup -q -n %{modname}-%{version}
 sed -i -e '1s!/env python!/python!' scripts/testbot.py
-sed -i 's/--flake8//' pytest.ini
+rm pytest.ini
 
 %build
 %python_build
@@ -77,11 +72,10 @@ sed -i 's/--flake8//' pytest.ini
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if 0%{?suse_version} > 1500
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%pytest
-%endif
+# test_privmsg_sends_msg https://github.com/jaraco/irc/issues/165
+%pytest -k 'not test_privmsg_sends_msg'
 
 %files %{python_files}
 %license LICENSE
