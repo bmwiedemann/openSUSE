@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 12 01:47:44 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-ignore-already-installed-packages.patch,
+  remove PackageKit-zypp-revert-fail-on-already-installed.patch:
+  zypp: Ignore already installed package when installing
+  (bsc#1155624, gh#/hughsie/PackageKit/commit/d9233011).
+
+-------------------------------------------------------------------
+Tue Mar 10 03:04:40 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Fix source URL in the spec file.
+
+-------------------------------------------------------------------
 Sat Mar  7 15:34:03 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Add patch to stop zypp backend failing on already installed packages (boo#1155624)
