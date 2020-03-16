@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Fri Mar 13 12:48:25 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#711
+- increase minor so version
+- 4.2.68
+
+--------------------------------------------------------------------
+Fri Mar 13 09:57:52 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#709
+- add adjust_block_size() method to Region class (bsc#1164295)
+- track device block size when creating an Md RAID (bsc#1164295)
+- add tests for adjust_block_size()
+- add block_size check for Md::add_device()
+- 4.2.67
+
+--------------------------------------------------------------------
 Thu Mar 5 11:44:31 UTC 2020 - jlopez@suse.com
 
 - merge gh#openSUSE/libstorage-ng#708
