@@ -1,7 +1,7 @@
 #
 # spec file for package pg_comparator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Aldemir Akpinar <aldemir.akpinar@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,13 +28,13 @@ Summary:        A tool to compare and sync tables in different locations
 License:        BSD-3-Clause
 Group:          Development/Libraries
 
-Url:            http://pgfoundry.org/projects/pg-comparator/
+URL:            http://pgfoundry.org/projects/pg-comparator/
 Source:         http://pgfoundry.org/frs/download.php/3661/pg_comparator-%{version}.tgz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  postgresql-devel
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 Requires:       perl
