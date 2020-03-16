@@ -1,6 +1,7 @@
 #
 # spec file for package python-simplekml
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,9 +22,8 @@ Name:           python-simplekml
 Version:        1.3.1
 Release:        0
 Summary:        A Simple KML creator
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 #HG-Clone:      https://bitbucket.org/KyleLancaster/simplekml
+License:        LGPL-3.0-or-later
 URL:            http://readthedocs.org/projects/simplekml/
 Source:         https://files.pythonhosted.org/packages/source/s/simplekml/simplekml-%{version}.tar.gz
 Source1:        https://bitbucket.org/KyleLancaster/simplekml/raw/76ac20169865b793aa0ed574f12651e96562570d/LICENSE.txt
@@ -43,7 +44,7 @@ is easy to run with and create usable KML.
 %setup -q -n simplekml-%{version}
 sed -i 's/\r$//' README.txt
 cp %{SOURCE1} .
- 
+
 %build
 %python_build
 
@@ -58,6 +59,6 @@ cp %{SOURCE1} .
 %license LICENSE.txt
 %doc README.txt
 %{python_sitelib}/simplekml
-%{python_sitelib}/simplekml-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/simplekml-%{version}-py%{python_version}.egg-info
 
 %changelog
