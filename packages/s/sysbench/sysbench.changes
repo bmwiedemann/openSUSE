@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 15 02:29:55 UTC 2020 - Max Lin <mlin@suse.com>
+
+- BuildRequires postgresql-server-devel on Leap >= 15.2 as well
+
+-------------------------------------------------------------------
 Thu Feb  6 12:15:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.19:

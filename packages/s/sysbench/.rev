@@ -307,4 +307,12 @@
   * regression tests: compatibility fix for PostgreSQL 12</comment>
     <requestid>770551</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a67f9d5e79a6a7f456cefa49b5def327</srcmd5>
+    <version>1.0.19</version>
+    <time>1584350372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785231</requestid>
+  </revision>
 </revisionlist>

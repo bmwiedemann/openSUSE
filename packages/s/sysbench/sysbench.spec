@@ -36,7 +36,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 %if 0%{?is_opensuse}
