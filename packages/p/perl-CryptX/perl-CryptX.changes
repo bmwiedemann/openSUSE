@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 11 03:08:07 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.068
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.068   2020-03-10
+          - fix #60 Test failues on macOS Catalina
+
+-------------------------------------------------------------------
 Sun Feb  2 03:08:55 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.067

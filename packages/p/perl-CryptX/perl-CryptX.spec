@@ -17,7 +17,7 @@
 
 
 Name:           perl-CryptX
-Version:        0.067
+Version:        0.068
 Release:        0
 %define cpan_name CryptX
 Summary:        Cryptographic toolkit
