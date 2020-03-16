@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-idle
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,11 @@ Release:        0
 Summary:        IRC support for Telepathy
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
+URL:            https://gitlab.freedesktop.org/telepathy/telepathy-idle
 Source:         http://telepathy.freedesktop.org/releases/telepathy-idle/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM telepathy-idle-dont-bling-non-bling.patch --
+Patch:          telepathy-idle-dont-bling-non-bling.patch
+
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  python-xml
@@ -33,11 +37,13 @@ BuildRequires:  pkgconfig(telepathy-glib) >= 0.21
 Telepathy-idle provides IRC support for Telepathy.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --libexecdir=%{_prefix}/lib/%{name}
-make %{?_smp_mflags}
+%configure \
+	--libexecdir=%{_prefix}/lib/%{name} \
+	%{nil}
+%make_build
 
 %install
 %make_install

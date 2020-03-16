@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 22 13:28:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add telepathy-idle-dont-bling-non-bling.patch: ctcp: Don't bling
+  the non-bling.
+- Modernize spec, add upstream URL.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:40:11 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
