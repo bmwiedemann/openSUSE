@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysnmp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,7 +78,7 @@ chmod -x docs/net-snmptrapd.conf docs/net-snmpd.conf
 %license LICENSE.rst
 %doc CHANGES.txt README.md THANKS.txt TODO.txt docs examples
 %{python_sitelib}/pysnmp/
-%{python_sitelib}/pysnmp-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/pysnmp-%{version}-py%{python_version}.egg-info
 
 %files -n python-pysnmp-doc
 %license LICENSE.rst
