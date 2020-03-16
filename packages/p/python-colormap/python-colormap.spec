@@ -1,7 +1,7 @@
 #
 # spec file for package python-colormap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colormap
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Utilities to manipulate matplotlib colormaps and color codecs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/cokelaer/colormap
+URL:            https://github.com/cokelaer/colormap
 Source:         https://files.pythonhosted.org/packages/source/c/colormap/colormap-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-easydev
+Requires:       python-matplotlib
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module easydev}
@@ -35,10 +38,6 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nose-cov}
 BuildRequires:  %{python_module nose}
 # /SECTION
-Requires:       python-easydev
-Requires:       python-matplotlib
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -61,6 +60,7 @@ the test_colormap can be used to visually test a new colormap.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/colormap
+%{python_sitelib}/colormap-%{version}-py*.egg-info
 
 %changelog
