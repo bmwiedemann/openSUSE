@@ -1,7 +1,7 @@
 #
 # spec file for package urlwatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,19 +22,18 @@ Release:        0
 Summary:        A tool for monitoring webpages for updates
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://thp.io/2008/urlwatch/
+URL:            https://thp.io/2008/urlwatch/
 Source0:        https://github.com/thp/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-futures
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-Requires:       python-keyring
 Requires:       python3-PyYAML
 Requires:       python3-appdirs
+Requires:       python3-cssselect
 Requires:       python3-lxml
 Requires:       python3-minidb
 Requires:       python3-requests
+Recommends:     python3-keyring
 BuildArch:      noarch
-Requires:       python-futures
 
 %description
 urlwatch is intended to help you watch changes in webpages and get
