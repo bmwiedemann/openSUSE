@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit-core
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.1.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/takluyver/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
@@ -41,7 +40,7 @@ Flit is a simple way to put Python packages and modules on PyPI.
 
 %prep
 %setup -q -n flit_core-%{version}
-dephell convert --from-format pyproject --from-path pyproject.toml --to setup.py
+dephell deps convert --from pyproject.toml --to setup.py
 
 %build
 %python_build
