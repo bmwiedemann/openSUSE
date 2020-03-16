@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-mission-control
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           telepathy-mission-control
-Version:        5.16.3
+Version:        5.16.5
 Release:        0
 Summary:        Telepathy Mission Control instant messaging connection manager
 License:        LGPL-2.1-only
 Group:          System/Libraries
 URL:            http://mission-control.sourceforge.net/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-mission-control/%{name}-%{version}.tar.gz
-# PATCH-NEEDS-REBASE lockdown-protocols.patch fdo21699 vuntz@novell.com -- Sent upstream for discussion, it will need a rewrite for MC5 WAS: PATCH-FEATURE-UPSTREAM
-Patch1:         lockdown-protocols.patch
-BuildRequires:  dbus-1-glib-devel >= 0.73
+# PATCH-FIX-UPSTREAM tp-mc-fix-prop-name.patch -- account: Fix property name
+Patch:          tp-mc-fix-prop-name.patch
+
 BuildRequires:  fdupes
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-xml
-BuildRequires:  telepathy-glib-devel >= 0.19.0
-Requires:       dbus-1-glib >= 0.73
-%glib2_gsettings_schema_requires
+BuildRequires:  pkgconfig(dbus-1) >= 0.95
+BuildRequires:  pkgconfig(dbus-glib-1) >= 0.82
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.46
+BuildRequires:  pkgconfig(gmodule-no-export-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libnm)
+BuildRequires:  pkgconfig(telepathy-glib) >= 0.23.1
 
 %description
 Mission Control, or MC, is a Telepathy component providing a way for
@@ -71,13 +76,14 @@ account definitions and credentials, to manage channel handling/request
 and to manage presence statuses.
 
 %prep
-%setup -q
-# NEEDS REBASE
-# %patch1
+%autosetup -p1
 
 %build
-%configure --disable-static --with-pic
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--with-pic \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -90,12 +96,6 @@ install -d %{buildroot}${PLUGINDIR}
 %fdupes -s %{buildroot}%{_mandir}
 # create hardlinks for the rest
 %fdupes %{buildroot}
-
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
 
 %post -n libmission-control-plugins0 -p /sbin/ldconfig
 %postun -n libmission-control-plugins0 -p /sbin/ldconfig

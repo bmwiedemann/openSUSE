@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Feb 20 20:37:47 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.16.5:
+  + Fix memory leak in get_parameter_of_known_type().
+  + Fix autoconnection of accounts with always_dispatch=true.
+  + Fix crash on any of the active connection managers disappears
+    from dbus.
+- Changes from version 5.16.4:
+  + Exit gracefully at startup if the D-Bus connection fails.
+  + Fix some warnings when building with clang.
+  + Fix unit tests to work with GLib >= 2.46.
+  + mc-wait-for-name now shows readable output on the command line
+    on exotic locales.
+  + UPower support is now disabled by default if UPower is >= 0.99.
+    The features needed have now moved to logind, which is
+    supported in MC since 5.15.1.
+  + Fix some memory leaks and a potential crash.
+  + Dependencies:
+    - GLib 2.46 is now required.
+    - NetworkManager support was ported to use libnm instead of the
+      deprecated libnm-glib.
+- Add pkgconfig(libnm) BuildRequires, build NetworkManager support
+  again.
+- Drop lockdown-protocols.patch: Disabled for a long time, and no
+  hope in sight for it to be applied.
+- Add tp-mc-fix-prop-name.patch: account: Fix property name.
+- Modernize spec slightly, drop old and obsolete macros.
+- Switch to pkgconfig BuildRequires where possible:
+  + Replace dbus-1-glib-devel and telepathy-glib-devel with their
+    pkgconfig equivalents.
+  + Drop python-xml BuildRequires and dbus-1-glib Requires: No
+    longer needed.
+  + Add pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0),
+    pkgconfig(glib-2.0), pkgconfig(gmodule-no-export-2.0),
+    and pkgconfig(gobject-2.0), configure checks for them.
+
+-------------------------------------------------------------------
 Sun Apr 15 10:16:28 UTC 2018 - bjorn.lie@gmail.com
 
 - Drop upstream deprecated pkgconfig(libnm-glib) BuildRequires.

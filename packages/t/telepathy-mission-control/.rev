@@ -404,4 +404,12 @@ stable release and what we have in G:F, so submitting here. (forwarded request 2
     <comment> (forwarded request 597420 from dimstar)</comment>
     <requestid>601525</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>76fc0191c7c071887ce743c9803a9417</srcmd5>
+    <version>5.16.5</version>
+    <time>1584350148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784409</requestid>
+  </revision>
 </revisionlist>
