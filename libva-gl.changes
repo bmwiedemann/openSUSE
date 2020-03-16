@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  6 12:08:04 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- cleanup in specfile: get rid of is_opensuse macro, which is no
+  longer needed at all since sle15/Leap15, where we always enable
+  wayland support (jira#PM-1623)
+
+-------------------------------------------------------------------
 Wed Feb 26 11:49:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.6.1
