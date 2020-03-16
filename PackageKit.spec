@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-URL:            https://www.freedesktop.org/software/PackageKit/
+URL:            https://www.freedesktop.org/software/PackageKit
 Source0:        %{url}/releases/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{name}-%{version}.tar.xz.asc
 Source2:        baselibs.conf
@@ -57,8 +57,8 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 Patch3:         PackageKit-drop-gtk2.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-update-packages-in-all-openSUSE.patch sckang@suse.com -- Handle Tumbleweed upgrade in update-packages as well so that it doesn't break other components.
 Patch4:         PackageKit-zypp-update-packages-in-all-openSUSE.patch
-# PATCH-FIX-OPENSUSE PackageKit-zypp-revert-fail-on-already-installed.patch boo#1155624 ngompa13@gmail.com -- Stop PK from erroring on already installed files
-Patch5:         PackageKit-zypp-revert-fail-on-already-installed.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-ignore-already-installed-packages.patch bsc#1155624, gh#/hughsie/PackageKit/commit/d9233011 songchuan.kang@suse.com -- zypp: Ignore already installed package when installing.
+Patch5:         PackageKit-zypp-ignore-already-installed-packages.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-openSUSE-vendor.patch ngompa13@gmail.com -- Add openSUSE vendor
 Patch1001:      PackageKit-dnf-Add-openSUSE-vendor.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
