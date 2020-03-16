@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 13 13:29:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2:
+  * ioping: add -r, -rate-limit
+  * ioping: option -J|-json for printing JSON
+  * ioping: add option -a|-warmup
+  * ioping: add long options
+  * ioping: print filesystem size for file or directory target
+  * ioping.1: raw statisitics in nanoseconds
+
+-------------------------------------------------------------------
 Fri Mar 24 18:16:05 UTC 2017 - mpluskal@suse.com
 
 - Update to version 1.0:

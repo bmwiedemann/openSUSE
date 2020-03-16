@@ -1,7 +1,7 @@
 #
 # spec file for package ioping
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ioping
-Version:        1.0
+Version:        1.2
 Release:        0
 Summary:        A tool to monitor I/O latency in real time
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Benchmark
-Url:            https://github.com/koct9i/ioping
+URL:            https://github.com/koct9i/ioping
 Source:         https://github.com/koct9i/ioping/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
@@ -33,7 +33,7 @@ same way as ping shows network latency.
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -std=gnu99"
+%make_build CFLAGS="%{optflags} -std=gnu99"
 
 %install
 install -D -p -m 0755 %{name} \
@@ -42,9 +42,9 @@ install -D -p -m 0644 %{name}.1 \
   %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%defattr(-,root,root,-)
-%doc LICENSE README.md changelog
+%license LICENSE
+%doc README.md changelog
 %{_bindir}/ioping
-%{_mandir}/man1/ioping.1%{ext_man}
+%{_mandir}/man1/ioping.1%{?ext_man}
 
 %changelog
