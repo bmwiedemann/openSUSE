@@ -1,8 +1,8 @@
-diff --git a/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp b/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp
-index a380a25fa4b..d96d23bce2e 100644
---- a/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp
-+++ b/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp
-@@ -114,7 +114,7 @@ void WebProcessPool::platformInitializeWebProcess(const WebProcessProxy& process
+Index: webkitgtk-2.27.90/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp
+===================================================================
+--- webkitgtk-2.27.90.orig/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp
++++ webkitgtk-2.27.90/Source/WebKit/UIProcess/glib/WebProcessPoolGLib.cpp
+@@ -115,7 +115,7 @@ void WebProcessPool::platformInitializeW
  #if PLATFORM(WAYLAND)
      if (WebCore::PlatformDisplay::sharedDisplay().type() == WebCore::PlatformDisplay::Type::Wayland) {
  #if USE(WPE_RENDERER)

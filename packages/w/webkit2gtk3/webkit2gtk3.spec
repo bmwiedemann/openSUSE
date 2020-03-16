@@ -31,22 +31,20 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.26.4
+Version:        2.28.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://webkitgtk.org/
+URL:            https://webkitgtk.org
 Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE webkit2gtk3-fdo-soname.patch mgorse@suse.com -- don't call dlopen with an unversioned soname.
 Patch0:         webkit2gtk3-fdo-soname.patch
-# PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
+# PATCH-NEEDS-REBASE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary. WAS PATCH-FIX-OPENSUSE
 Patch1:         webkit-process.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-ppc-build-fix.patch webkit#207906 mgorse@suse.com -- fix the build on ppc64le.
-Patch2:         webkit2gtk3-ppc-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -274,9 +272,9 @@ A small test browswer from webkit, useful for testing features.
 %setup -n webkitgtk-%{version}
 %patch0 -p1
 %if 0%{?suse_version} <= 1500
-%patch1 -p1
+# Needs rebase or dropping + it should not be applied for Leap 15.2
+#%%patch1 -p1
 %endif
-%patch2 -p1
 
 %build
 %define _lto_cflags %{nil}

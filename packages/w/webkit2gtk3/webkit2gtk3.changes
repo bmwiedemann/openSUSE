@@ -1,8 +1,111 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:10:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.28.0:
+  + Add API to enable Process Swap on (Cross-site) Navigation.
+  + Add user messages API for the communication with the web
+    extension.
+  + Add support for same-site cookies.
+  + Service workers are enabled by default.
+  + Add support for Pointer Lock API.
+  + Add flatpak sandbox support.
+  + Make ondemand hardware acceleration policy never leave
+    accelerated compositing mode.
+  + Always use a light theme for rendering form controls.
+  + Add about:gpu to show information about the graphics stack.
+- Drop webkit2gtk3-ppc-build-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb 28 09:19:47 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable webkit-process.patch: Needs rebase, and furthermore it
+  should not be applied for Leap 15.2 as it is today.
+
+-------------------------------------------------------------------
+Thu Feb 27 19:14:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.27.91:
+  + Update user agent quirks to fix the unsupported browser message
+    in several google services.
+  + Fix several compile warnings with GCC 10.
+  + Fix the build with GCC 10.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Feb 18 21:31:17 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-ppc-build-fix.patch: fix ppc64le build failure on
   SLE 15.
+
+-------------------------------------------------------------------
+Fri Feb 14 11:10:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.27.90:
+  + Add support for same-site cookies.
+  + Add flatpak sandbox support.
+  + Enable WebAudio and WebGL by default in WebKitSettings.
+  + Add a setting to disallow top level navigation to a data URI.
+  + Add support for the -webkit-font-smoothing CSS property.
+  + Always use a light theme for rendering form controls.
+  + Stop making the Web Inspector windows transient.
+  + Ensure mouse cursor is hidden during fullscreen video playback.
+  + Add support for inspecting service workers to the remote
+    inspector.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.27.4:
+  + Add API for input methods.
+  + Add API to serialize/deserialize a JSCValue to/from a JSON
+    string.
+  + Add support for strict secure cookies.
+  + Add support for saving data from remote inspector.
+  + Make ondemand hardware acceleration policy never leave
+    accelerated compositing mode.
+  + Fix rendering of conic gradients in high resolution displays.
+  + Fix special combination characters not respecting the keystroke
+    order when high CPU load.
+  + Honor the IndexedDB directory set in WebsiteDataManager.
+  + Fix rendering of text when there’s an initial advance in the
+    text run.
+  + Fix web process crash when displaying a KaTeX formula.
+  + Fix network process crash with PSON enabled.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.27.3:
+  + Add support for Pointer Lock API.
+  + Improve performance when falling back to system fonts.
+  + Stop using DBus for the remote inspector implementation to
+    improve the performance of both WebDriver and remote inspector.
+  + Implement support for new ARIA roles: code, strong, emphasis,
+    generic.
+  + Fix handling of content type with new custom protocols
+    implementation.
+  + Make image decoders fully thread safe.
+  + Add support for get page source command in WebDriver.
+  + Add support for network proxy capabilities in WebDriver.
+  + Add support for new window command in WebDriver.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Changes from version 2.27.2:
+  + Add user messages API for the communication with the web
+    extension.
+  + Enable service workers by default.
+  + Add support for saving data in Web Inspector.
+  + More navigation gesture improvement.
+  + Fix the build with WebDriver disabled.
+  + Show also client EGL extensions in about:gpu.
+  + Disable accelerated compositing when we fail to initialize the
+    EGL dispaly under Wayland.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.27.1:
+  + Enable async scrolling when accelerating compositing policy is
+    ‘always’.
+  + Add about:gpu to show information about the graphics stack.
+  + Add API to enable Process Swap on (Cross-site) Navigation, that
+    is now disabled by default.
+  + Add WebKitWebView:page-id property.
+  + Improve swipe navigation gesture style.
+  + Fix several crashes and rendering issues.
+- Rebase webkit2gtk3-fdo-soname.patch. 
 
 -------------------------------------------------------------------
 Fri Feb 14 11:10:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
