@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-translations
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.0.0
 Release:        0
 Summary:        Plugin for testing gettext, .po and .mo files
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Thermondo/pytest-translations
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-translations/pytest-translations-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
@@ -66,7 +65,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%{python_sitelib}/pytest_translations-%{version}-py%{py_ver}.egg-info/
+%{python_sitelib}/pytest_translations-%{version}-py%{python_version}.egg-info/
 %{python_sitelib}/pytest_translations
 
 %changelog
