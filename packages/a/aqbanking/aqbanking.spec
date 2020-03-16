@@ -17,7 +17,7 @@
 #
 
 
-%define          cmake_config_version 6.0
+%define          cmake_config_version 6.1
 %define          build_ofx 1
 %define          _name aqbanking
 %define          aq_plugindir   %{_libdir}/aqbanking/plugins/44
@@ -28,17 +28,14 @@
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 Name:           aqbanking
-Version:        6.0.1
+Version:        6.1.2
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
-Source:         %{_name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        aqbanking6-handbook-20190221.pdf
-# 6.0.1 is not signed:
-#Source2:       %%{name}-%%{_version}.tar.gz.asc
-Source3:        %{_name}.keyring
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -51,11 +48,6 @@ BuildRequires:  libltdl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xmlsec1-gnutls-devel
 Recommends:     %{name}-lang
-%if !0%{?sles_version}
-BuildRequires:  pkgconfig(gtk+-2.0)
-%else
-BuildRequires:  gtk2-devel
-%endif
 %if %{build_ofx}
 BuildRequires:  libofx-devel
 %endif

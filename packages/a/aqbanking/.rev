@@ -1022,4 +1022,21 @@ Added SUSE-Free-Art-1.3 to the spreadsheet linked at license.opensuse.org (forwa
 - Run spec-cleaner</comment>
     <requestid>766501</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>47bbdbbb0d8089d7213ec10d6ed9914f</srcmd5>
+    <version>6.1.2</version>
+    <time>1584350303</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.2
+  * OFXDC: Fixed a bug concerning calls to AO_V2_SendAndReceive().
+  * XML: Fixed warnings.
+  * aqhbci: Fix order of startDate and fromDate in DKKKU
+  * aqhbci: Set transaction type for credit card transactions
+  * AqOfxConnect: Check for type of server response and invoke
+    corresponding importer.
+  * Fixed a bug in SWIFT parser.
+  * Remove the gtk2 dependency
+- Check the ChangeLog file for the complete list of changes.</comment>
+    <requestid>785002</requestid>
+  </revision>
 </revisionlist>

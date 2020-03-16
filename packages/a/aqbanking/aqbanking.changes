@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:43:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.2
+  * OFXDC: Fixed a bug concerning calls to AO_V2_SendAndReceive().
+  * XML: Fixed warnings.
+  * aqhbci: Fix order of startDate and fromDate in DKKKU
+  * aqhbci: Set transaction type for credit card transactions
+  * AqOfxConnect: Check for type of server response and invoke
+    corresponding importer.
+  * Fixed a bug in SWIFT parser.
+  * Remove the gtk2 dependency
+- Check the ChangeLog file for the complete list of changes.
+
+-------------------------------------------------------------------
 Wed Jan 22 09:15:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.0.1. Check the ChangeLog file for the list of changes.
