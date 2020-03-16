@@ -1,7 +1,7 @@
 #
 # spec file for package python-gphoto2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gphoto2
-Version:        2.0.0
+Version:        2.2.1
 Release:        0
 Summary:        Python interface to libgphoto2
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/jim-easterbrook/python-gphoto2
 Source0:        https://files.pythonhosted.org/packages/source/g/gphoto2/gphoto2-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE python-gphoto2-do_not_install_data.patch

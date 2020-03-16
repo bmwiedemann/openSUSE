@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:30:36 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.2.1
+  * Reinstated Context.camera_autodetect method removed in 2.2.0.
+  version 2.2.0:
+  * COMPATIBILITY CHANGE: Removed Context.camera_autodetect
+    method.
+  * COMPATIBILITY CHANGE: Removed deprecated widget get/set
+    functions.
+  * Python3 log messages are now str instead of bytes.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
+Sat Jan 25 17:06:18 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  * COMPATIBILITY CHANGE: gp_file_set_data_and_size and
+    gp_file_append now take a single buffer parameter (such as
+    a bytes string) instead of a string and length.
+  * Fixed memory double free bug in gp_file_set_data_and_size.
+  * Removed support for libgphoto2 v2.4.
+
+-------------------------------------------------------------------
 Mon Apr 22 11:09:09 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.0
