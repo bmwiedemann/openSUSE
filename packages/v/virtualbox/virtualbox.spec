@@ -47,7 +47,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 %define _udevrulesdir /usr/lib/udev/rules.d
 Name:           virtualbox
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
-Version:        6.1.2
+Version:        6.1.4
 Release:        0
 Summary:        VirtualBox is an Emulator
 License:        GPL-2.0-or-later
@@ -147,7 +147,7 @@ Patch130:       fixes_for_Leap42.3.patch
 Patch132:       fixes_for_qt5.13.patch
 # Fixes for openSUSE Leap 15.2
 Patch133:       fixes_for_leap15.2.patch
-# Fixes for API changes in kernel 5.5
+# Fixes for API changes in kernel 5.6
 Patch134:       fixes_for_5.5.patch
 # Fixes for API changes in kernel 5.6
 Patch135:       fixes_for_5.6.patch

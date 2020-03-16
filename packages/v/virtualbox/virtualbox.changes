@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 11 20:10:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.4 (released February 19 2020 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  Virtualization core: Fixed a rare issue with ICEBP instruction causing guru meditations on Intel hosts (6.1.0 regression; bug #19171)
+  Virtualization core: Fixed macOS Catalina guests failing to boot after upgrading to 10.15.2 onwards (bug #19188)
+  GUI: recent NLS integration and bug fixes for GUI and Qt translation tags
+  USB: Fix isochronous transfers to the VM for xHCI
+  Serial: Fix buffer handling, avoiding receiving stale data when the receive queue is flushed (bug #18671)
+  Serial: Improve host serial port passthrough handling on Windows host
+  VBoxManage: Restore old --clipboard option for modifyvm command
+  Linux guest: Support Linux 5.5 (bug #19145)
+  Linux guest: Shared folder fix for loopback mounting of images
+  BIOS: Always report non-ATA disks as ready
+  BIOS: Report EFI support through DMI table (bug 19144)
+  VGA BIOS: Reduce stack space usage for INT 10h handlers
+
+-------------------------------------------------------------------
 Thu Feb 27 18:38:46 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Kernel 5.6.0-rc3 introduced some fixes for the Y2038 problem. File "fixes_for_5.6"
