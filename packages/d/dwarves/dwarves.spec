@@ -1,7 +1,7 @@
 #
 # spec file for package dwarves
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -29,11 +29,12 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 BuildRequires:  cmake
-BuildRequires:  libdw-devel >= 0.142
+BuildRequires:  libdw-devel >= 0.170
+%if 0%{?suse_version} < 1550
 BuildRequires:  libebl-devel
+%endif
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Also known by its most prominent tool
 Provides:       pahole = %version-%release
 
@@ -80,7 +81,7 @@ This package contains the development files for libdwarves, a library
 for processing DWARF, a debugging data format for ELF files.
 
 %prep
-%setup -cq
+%autosetup -p1
 
 %build
 %cmake
