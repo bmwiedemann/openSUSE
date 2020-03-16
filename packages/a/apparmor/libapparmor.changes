@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:30:19 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.4
+  - fix log parsing for logs with an embedded newline
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.4
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
 Tue Jun 18 20:50:19 UTC 2019 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 2.13.1

@@ -35,7 +35,7 @@
 %define apache_module_path %(/usr/sbin/apxs2 -q LIBEXECDIR)
 
 Name:           apparmor
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -65,19 +65,7 @@ Patch4:         apparmor-lessopen-profile.patch
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
-# allow /etc/krb5.conf.d/ for kerberos client (submitted upstream 2019-09-28 https://gitlab.com/apparmor/apparmor/merge_requests/425)
-Patch6:         apparmor-krb5-conf-d.diff
-
-# add certbot paths to abstractions/ssl_keys and abstractions/ssl_certs (from upstream https://gitlab.com/apparmor/apparmor/merge_requests/398, merged 2019-06-30)
-Patch7:         abstractions-ssl-certbot-paths.diff
-
-# allow reading /usr/etc/pam.d/* and some other authentification-related files (submitted upstream 2019-10-07 https://gitlab.com/apparmor/apparmor/merge_requests/426)
-Patch8:         usr-etc-abstractions-authentification.diff
-
-# fix building libapparmor python bindings with python 3.8. Based on https://gitlab.com/apparmor/apparmor/merge_requests/430 but patching configure directly to avoid needing BuildRequires: aclocal
-Patch9:         libapparmor-python3.8.diff
-
-# update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447)
+# update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447, only merged to master, not 2.13.x)
 Patch10:        ./usr-etc-abstractions-base-nameservice.diff
 
 PreReq:         sed
@@ -368,10 +356,6 @@ SubDomain.
 %patch3 -p1
 %patch4
 %patch5
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 %patch10 -p1
 
 %build

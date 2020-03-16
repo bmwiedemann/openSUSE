@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:55:06 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.4
+  - several abstraction updates (including boo#1153162)
+  - disallow writing to fontconfig cache in abstractions/fonts
+  - some bugfixes in the aa-* tools
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.4
+    for the detailed upstream changelog
+- drop upstreamed patches:
+  - abstractions-ssl-certbot-paths.diff
+  - apparmor-krb5-conf-d.diff
+  - libapparmor-python3.8.diff
+  - usr-etc-abstractions-authentification.diff
+- refresh usr-etc-abstractions-authentification.diff
+
+-------------------------------------------------------------------
 Sat Jan 25 18:51:17 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - add usr-etc-abstractions-base-nameservice.diff to adjust

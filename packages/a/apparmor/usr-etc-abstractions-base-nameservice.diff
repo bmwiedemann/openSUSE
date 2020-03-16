@@ -10,10 +10,10 @@ diff --git a/profiles/apparmor.d/abstractions/base b/profiles/apparmor.d/abstrac
 index cecb126f..6288da76 100644
 --- a/profiles/apparmor.d/abstractions/base
 +++ b/profiles/apparmor.d/abstractions/base
-@@ -23,9 +23,9 @@
-   /dev/log                       w,
-   /dev/random                    r,
-   /dev/urandom                   r,
+@@ -27,9 +27,9 @@
+   # time and getrandom()/{,u}random and, when available, runs under an
+   # unprivilged, dedicated user).
+   /run/uuidd/request             r,
 -  /etc/locale/**                 r,
 -  /etc/locale.alias              r,
 -  /etc/localtime                 r,
@@ -23,7 +23,7 @@ index cecb126f..6288da76 100644
    /usr/share/locale-bundle/**    r,
    /usr/share/locale-langpack/**  r,
    /usr/share/locale/**           r,
-@@ -48,14 +48,14 @@
+@@ -52,14 +52,14 @@
    /usr/lib/@{multiarch}/gconv/gconv-modules* mr,
  
    # used by glibc when binding to ephemeral ports

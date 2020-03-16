@@ -18,7 +18,7 @@
 
 
 Name:           libapparmor
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later

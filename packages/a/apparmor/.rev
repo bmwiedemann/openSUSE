@@ -1824,4 +1824,29 @@ Note: the build with python 3.8 will still fail because of boo#1155839 - but at 
   abstractions/base and nameservice for /usr/etc/ (boo#1161756) (forwarded request 767252 from cboltz)</comment>
     <requestid>767253</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>b61663d0bb018c2816e1f87281959b20</srcmd5>
+    <version>2.13.4</version>
+    <time>1584350158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 2.13.4
+  - several abstraction updates (including boo#1153162)
+  - disallow writing to fontconfig cache in abstractions/fonts
+  - some bugfixes in the aa-* tools
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.4
+    for the detailed upstream changelog
+- drop upstreamed patches:
+  - abstractions-ssl-certbot-paths.diff
+  - apparmor-krb5-conf-d.diff
+  - libapparmor-python3.8.diff
+  - usr-etc-abstractions-authentification.diff
+- refresh usr-etc-abstractions-authentification.diff
+
+libapparmor:
+- update to AppArmor 2.13.4
+  - fix log parsing for logs with an embedded newline
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.4
+    for the detailed upstream changelog</comment>
+    <requestid>784421</requestid>
+  </revision>
 </revisionlist>
