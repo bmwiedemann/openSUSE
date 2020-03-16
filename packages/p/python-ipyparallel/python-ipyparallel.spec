@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyparallel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
+%define gitversion 6.3.0.dev0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyparallel
-Version:        6.2.4
-%define doc_ver 6.2.3
+Version:        6.3.0~git.20191010T150914.ce996ae
 Release:        0
+%define doc_ver 6.2.3
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
-Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
+Source:         ipyparallel-%{version}.tar.xz
 Source1:        https://media.readthedocs.org/pdf/ipyparallel/%{doc_ver}/ipyparallel.pdf
 Source2:        https://media.readthedocs.org/htmlzip/ipyparallel/%{doc_ver}/ipyparallel.zip
 BuildRequires:  %{python_module notebook}
@@ -81,6 +83,7 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyparallel
 Summary:        Interactive parallel computing library for IPython
+Group:          Development/Languages/Python
 Requires:       jupyter-jupyter-core
 Requires:       jupyter-notebook
 Requires:       python3-ipyparallel = %{version}
@@ -162,7 +165,7 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-ipyparallel/
 %python_alternative %{_bindir}/ipcluster
 %python_alternative %{_bindir}/ipcontroller
 %python_alternative %{_bindir}/ipengine
-%{python_sitelib}/ipyparallel-%{version}-py*.egg-info
+%{python_sitelib}/ipyparallel-%{gitversion}-py*.egg-info
 %{python_sitelib}/ipyparallel/
 
 %files -n jupyter-ipyparallel

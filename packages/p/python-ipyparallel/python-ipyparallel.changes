@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 12 20:08:58 UTC 2020 - hpj@urpla.net
+
+- Switch to git scm service
+- Update to version 6.3.0~git.20191010T150914.ce996ae:
+  * fix maybe_future
+  * only yield Futures
+  * pytest captures output
+  * importing joblib can raise TypeError on py38
+  * unpin tornado
+  * update dask api
+  * update mocking for latest ipykernel
+  * Use unittest.mock if available
+
+-------------------------------------------------------------------
 Tue Nov 12 17:38:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 support due to python-notebook dropping python2 support
