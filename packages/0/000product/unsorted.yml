@@ -6654,6 +6654,8 @@ unsorted:
   - kirigami-gallery-lang 
   - kirigami-lang 
   - kirigami2-devel 
+  - kismet-capture-nrf-nxp-kw41z 
+  - kismet-capture-ti-cc-2531 
   - kismet-devel 
   - kitemmodels-devel 
   - kitemmodels-devel-32bit: [x86_64] 
@@ -7990,7 +7992,6 @@ unsorted:
   - libatomic1-gcc9-32bit: [x86_64] 
   - libatomic_ops-devel 
   - libatomicparsley0 
-  - libatopology2 
   - libatopology2-32bit: [x86_64] 
   - libatrildocument3 
   - libatrilview3 
@@ -8028,7 +8029,7 @@ unsorted:
   - libavformat58-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif0 
+  - libavif2 
   - libavrdude1 
   - libavresample4-32bit: [x86_64] 
   - libavtp-devel 
@@ -9483,11 +9484,11 @@ unsorted:
   - libgvncpulse-1_0-0 
   - libgweather-3-16-32bit: [x86_64] 
   - libgweather-devel 
-  - libgwengui-cpp0 
-  - libgwengui-fox16-0 
-  - libgwengui-gtk2-0 
-  - libgwengui-gtk3-0 
-  - libgwengui-qt5-0 
+  - libgwengui-cpp79 
+  - libgwengui-fox16-79 
+  - libgwengui-gtk2-79 
+  - libgwengui-gtk3-79 
+  - libgwengui-qt5-79 
   - libgwenhywfar79 
   - libgwenhywfar79-plugins 
   - libgxps-devel 
@@ -14756,12 +14757,6 @@ unsorted:
   - nmon 
   - nnn 
   - no-more-secrets 
-  - nodejs-emojione 
-  - nodejs-emojione-awesome 
-  - nodejs-emojione-demo 
-  - nodejs-emojione-meteor 
-  - nodejs-emojione-python 
-  - nodejs-emojione-swift 
   - nodejs-packaging 
   - nodejs-underscore 
   - nodejs10: [x86_64] 
@@ -19802,7 +19797,6 @@ unsorted:
   - python2-pyqtgraph 
   - python2-pyquery 
   - python2-pyrad 
-  - python2-pyramid 
   - python2-pyramid-chameleon 
   - python2-pyramid-debugtoolbar 
   - python2-pyramid-mako 
@@ -19812,7 +19806,7 @@ unsorted:
   - python2-pyroute2 
   - python2-pyrrd 
   - python2-pyrsistent 
-  - python2-pysaml2 
+  - python2-pysaml2: [i586] 
   - python2-pyscard 
   - python2-pysendfile 
   - python2-pyserial 
@@ -22624,6 +22618,7 @@ unsorted:
   - python3-pyusb 
   - python3-pyuv 
   - python3-pyux 
+  - python3-pyvdr 
   - python3-pyviz-comms 
   - python3-pyvmomi 
   - python3-pywinrm 
@@ -23154,6 +23149,7 @@ unsorted:
   - python3-xsge_tmx 
   - python3-xvfbwrapper 
   - python3-xxhash 
+  - python3-xyzpy: [x86_64] 
   - python3-yacron 
   - python3-yafe 
   - python3-yamldoc 

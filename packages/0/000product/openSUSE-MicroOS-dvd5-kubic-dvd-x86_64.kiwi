@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200314" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200316" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200314</productvar>
+      <productvar name="VERSION">20200316</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200314,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200316,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200314/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200316/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -208,7 +208,8 @@
       <repopackage name="kubectl-who-can" arch="x86_64"/>
       <repopackage name="kubernetes-client" arch="x86_64"/>
       <repopackage name="kubernetes-kubeadm" arch="x86_64"/>
-      <repopackage name="kubernetes-kubelet" arch="x86_64"/>
+      <repopackage name="kubernetes-kubelet-common" arch="x86_64"/>
+      <repopackage name="kubernetes-kubelet1.17" arch="x86_64"/>
       <repopackage name="kubic-haproxycfg" arch="x86_64"/>
       <repopackage name="kubic-locale-archive" arch="x86_64"/>
       <repopackage name="kubicctl" arch="x86_64"/>
@@ -275,13 +276,11 @@
       <repopackage name="libglib-2_0-0" arch="x86_64"/>
       <repopackage name="libgmodule-2_0-0" arch="x86_64"/>
       <repopackage name="libgmp10"/>
-      <repopackage name="libgnutls30" arch="x86_64"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
       <repopackage name="libgomp1" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libhavege1" arch="x86_64"/>
-      <repopackage name="libhogweed5" arch="x86_64"/>
       <repopackage name="libibverbs" arch="x86_64"/>
       <repopackage name="libibverbs1" arch="x86_64"/>
       <repopackage name="libidn2-0" arch="x86_64"/>
@@ -318,7 +317,6 @@
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
       <repopackage name="libnetfilter_cthelper0" arch="x86_64"/>
       <repopackage name="libnetfilter_cttimeout1" arch="x86_64"/>
-      <repopackage name="libnettle7" arch="x86_64"/>
       <repopackage name="libnfnetlink0" arch="x86_64"/>
       <repopackage name="libnfsidmap1" arch="x86_64"/>
       <repopackage name="libnftnl11" arch="x86_64"/>
