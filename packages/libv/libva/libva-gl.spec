@@ -18,12 +18,6 @@
 
 #
 
-%if 0%{?suse_version} <= 1315 && !0%{?is_opensuse}
-%bcond_with wayland
-%else
-%bcond_without wayland
-%endif
-
 %define build_gl 1
 %define sover 2
 
@@ -51,10 +45,8 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
 %if %{build_gl}
 BuildRequires:  pkgconfig(gl)
-%if %{with wayland}
 BuildRequires:  pkgconfig(wayland-client) >= 1.11.0
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.11.0
-%endif
 %endif
 
 %description
@@ -86,9 +78,7 @@ Group:          Development/Languages/C and C++
 %if 0%{?build_gl}
 BuildRequires:  libva-devel = %{version}
 Requires:       libva-glx%{sover} = %{version}
-%if %{with wayland}
 Requires:       libva-wayland%{sover} = %{version}
-%endif
 Requires:       pkgconfig(gl)
 %else
 Requires:       libva%{sover} = %{version}
@@ -150,9 +140,7 @@ This is the VA/X11 runtime library.
 #   osc service run source_validator
 #
 # fails on sle
-%if %{with wayland}
 echo libva-wayland%{sover} >> $RPM_SOURCE_DIR/baselibs.conf
-%endif
 
 %build
 [ -d m4 ]  || mkdir m4
@@ -160,11 +148,7 @@ autoreconf -v --install
 %configure \
 %if %{build_gl}
            --enable-glx \
-%if %{with wayland}
            --enable-wayland \
-%else
-           --disable-wayland \
-%endif
 %endif
            --with-drivers-path=%{_libdir}/dri
 make %{?_smp_mflags}
@@ -204,19 +188,15 @@ rm -rf `find %{buildroot}%{_libdir}/pkgconfig/libva*.pc | grep -v "glx\|wayland"
 %files -n libva-glx%{sover}
 %{_libdir}/libva-glx.so.%{sover}*
 
-%if %{with wayland}
 %files -n libva-wayland%{sover}
 %{_libdir}/libva-wayland.so.%{sover}*
-%endif
 
 %files devel
 %{_libdir}/libva-glx.so
 %{_includedir}/va
 %{_libdir}/pkgconfig/libva-glx.pc
-%if %{with wayland}
 %{_libdir}/pkgconfig/libva-wayland.pc
 %{_libdir}/libva-wayland.so
-%endif
 
 %else
 
