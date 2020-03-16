@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:42:51 CET 2020 - tiwai@suse.de
+
+- Update to alsa-ucm-conf 1.2.2:
+  including previous fixes
+- Backport recent upstream fixes: SOF, BDW-rt5677 and jack fixes;
+  0001-sof-bdw-rt5677-initial-port-to-UCM2.patch
+  0002-ucm2-treewide-JackHWMute-fixes.patch
+  0003-sof-hda-dsp-Support-systems-without-integrated-graph.patch
+- Drop obsoleted patches:
+  0001-sof-hda-dsp-Fix-the-Dmic0-CaptureMixerElem-for-v1.4..patch
+  0002-sof-hda-dsp-Use-more-strict-names-according-latest-u.patch
+  0003-README-remove-topologies-note.patch
+  0004-bytcht-es8316-Fix-missing-including-of-HeadPhones.co.patch
+  0005-ucm2-fix-the-verb-path-in-chtrt5645-chtrt5645-dmic2..patch
+  0006-broadwell-rt286-add-support-for-hardware-volume-conf.patch
+  0007-broxton-rt298-corrections-cleanups.patch
+  0008-bytcr-rt5640-cleanups-and-corrections.patch
+  0009-bytcr-rt5651-cleanups-and-corrections.patch
+  0010-bytcht-cx2072x-cleanups-and-corrections.patch
+  0011-bytcht-es8316-cleanups-and-corrections.patch
+  0012-DAISY-I2S-added-back-PCM-devices.patch
+  0013-DB410c-cleanups-and-corrections.patch
+  0014-DB820c-cleanups-and-corrections.patch
+  0015-Dell-WD15-Dock-cleaups-and-corrections.patch
+  0016-HDA-Intel-HiFi-dual-fixes-and-corrections.patch
+  0017-cht-bsw-rt5672-fixes-and-corrections.patch
+  0018-chtnau8824-fixes-and-corrections.patch
+  0019-skylake-rt286-fixes-and-corrections.patch
+  0020-SDP4430-corrections-and-fixes.patch
+  0021-sof-hda-dsp-fix-typo-PlaybackMixerMaster-PlaybackMas.patch
+  0022-broadwell-rt286-add-correct-prefix-to-Priority-field.patch
+  0023-GoogleNyan-comment-CaptureControl-what-is-this.patch
+  0024-VEYRON-I2S-corrections-and-fixes.patch
+  0025-SDP4430-corrections-and-fixes.patch
+  0026-chtrt5645-corrections-and-fixes.patch
+  0027-GoogleNyan-corrections-and-fixes.patch
+  0028-PAZ00-corrections-and-fixes.patch
+  0029-SDP4430-corrections-and-fixes.patch
+  0030-PandaBoard-corrections-and-fixes.patch
+  0031-PandaBoardES-corrections-and-fixes.patch
+  0032-kblrt5660-corrections-and-fixes.patch
+  0033-bytcr-rt5640-corrections-and-fixes.patch
+  0034-bytcht-es8316-corrections-and-fixes.patch
+  0035-sof-hda-dsp-corrections-and-fixes.patch
+  0036-ucm2-treewide-remove-Playback-and-Capture-channels-2.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 20:42:40 CET 2020 - tiwai@suse.de
 
 - Backport upstream fixes: cleanup and correctsion for ucm2:
