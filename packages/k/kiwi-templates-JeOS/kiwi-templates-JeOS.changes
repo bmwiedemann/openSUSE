@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:14:03 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop XEN flavor, identical to kvm-and-xen meanwhile (boo#1166474)
+- Remove obsolete and redundant parts from config.sh
+- Remove indefinitely commented out sections in JeOS.kiwi
+- Remove invalid vga="normal"
+- Add condition to make config.sh suitable for both openSUSE and SLE
+
+-------------------------------------------------------------------
 Wed Mar  4 14:09:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop drivers section, obsolete with dracut

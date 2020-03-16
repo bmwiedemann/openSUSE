@@ -10,7 +10,6 @@
     </description>
     <profiles>
         <profile name="kvm-and-xen" description="JeOS for KVM and HVM Xen" arch="x86_64"/>
-        <profile name="XEN" description="JeOS for PV Xen" arch="x86_64"/>
         <profile name="VMware" description="JeOS for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="x86_64"/>
         <profile name="OpenStack-Cloud" description="JeOS for OpenStack Cloud" arch="x86_64"/>
@@ -21,12 +20,6 @@
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
-    <!-- those settings are applied by suseConfig in config.sh
-        <locale>en_US</locale>
-        <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
-        <hwclock>utc</hwclock>
-    -->
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
             image="vmx"
@@ -57,64 +50,11 @@
         </type>
     </preferences>
 
-    <preferences profiles="XEN">
-        <version>15.1.0</version>
-        <packagemanager>zypper</packagemanager>
-        <bootsplash-theme>openSUSE</bootsplash-theme>
-        <bootloader-theme>openSUSE</bootloader-theme>
-    <!-- those settings are applied by suseConfig in config.sh
-        <locale>en_US</locale>
-        <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
-        <hwclock>utc</hwclock>
-    -->
-        <rpm-excludedocs>true</rpm-excludedocs>
-        <type
-            image="vmx"
-            filesystem="btrfs"
-            bootprofile="xen"
-            firmware="uefi"
-            efipartsize="33"
-            format="qcow2"
-            bootloader="grub2"
-            kernelcmdline="quiet plymouth.enable=0 console=tty0"
-            bootpartition="false"
-            bootkernel="custom"
-            devicepersistency="by-uuid"
-            btrfs_quota_groups="true"
-            btrfs_root_is_snapshot="true"
-        >
-            <systemdisk>
-                <volume name="home"/>
-                <volume name="root"/>
-                <volume name="tmp"/>
-                <volume name="opt"/>
-                <volume name="srv"/>
-                <volume name="boot/grub2/i386-pc"/>
-                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
-                <volume name="usr/local"/>
-                <volume name="var" copy_on_write="false"/>
-            </systemdisk>
-            <size unit="G">24</size>
-            <machine domain="domU">
-                <!-- creation of hvmloader Xen config file is not supported -->
-                <!-- thus just provide mandatory setup indicating there is a disk -->
-                <vmdisk id="0"/>
-            </machine>
-        </type>
-    </preferences>
-
     <preferences profiles="VMware">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
-    <!-- those settings are applied by suseConfig in config.sh
-        <locale>en_US</locale>
-        <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
-        <hwclock>utc</hwclock>
-    -->
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
             image="vmx"
@@ -151,18 +91,11 @@
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
-    <!-- those settings are applied by suseConfig in config.sh
-        <locale>en_US</locale>
-        <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
-        <hwclock>utc</hwclock>
-    -->
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
             image="vmx"
             filesystem="xfs"
             format="qcow2"
-            vga="normal"
             boottimeout="1"
             bootloader="grub2"
             firmware="uefi"
@@ -179,12 +112,6 @@
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
-    <!-- those settings are applied by suseConfig in config.sh
-        <locale>en_US</locale>
-        <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
-        <hwclock>utc</hwclock>
-    -->
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
             image="vmx"
@@ -221,12 +148,6 @@
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>openSUSE</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
-    <!-- those settings are applied by suseConfig in config.sh
-        <locale>en_US</locale>
-        <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
-        <hwclock>utc</hwclock>
-    -->
         <rpm-excludedocs>true</rpm-excludedocs>
         <type
             image="oem"
@@ -300,7 +221,7 @@
     </packages>
 
     <!-- Not needed in OpenStack as it uses XFS and cloud-init -->
-    <packages type="image" profiles="kvm-and-xen,XEN,VMware,MS-HyperV,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,RaspberryPi">
         <!-- Only for btrfs -->
         <package name="btrfsprogs"/>
         <package name="btrfsmaintenance"/>
@@ -316,10 +237,8 @@
         <package name="firewalld"/>
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,XEN">
-        <!-- XEN specific packages -->
+    <packages type="image" profiles="kvm-and-xen">
         <package name="xen-tools-domU" arch="x86_64"/>
-        <package name="grub2-x86_64-xen" arch="x86_64"/>
         <package name="xen-libs" arch="x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
@@ -328,15 +247,14 @@
         <package name="kernel-default-base"/>
     </packages>
     <packages type="image" profiles="OpenStack-Cloud">
-        <package name="cloud-init" />
+        <package name="cloud-init"/>
         <package name="cloud-init-config-suse" />
-        <package name="xfsprogs" />
+        <package name="xfsprogs"/>
         <package name="kernel-default-base"/>
     </packages>
     <packages type="image" profiles="MS-HyperV">
-        <package name="hyper-v" arch="x86_64"/>
+        <package name="hyper-v"/>
         <package name="kernel-default-base"/>
-        <!--<package name="python-azure-agent"/> disabled until bsc#1061584 is fixed -->
     </packages>
     <packages type="image" profiles="RaspberryPi">
         <package name="raspberrypi-firmware" arch="aarch64"/>
@@ -352,7 +270,7 @@
     </packages>
 
 <!-- TW does not have those release packages
-    <packages type="image" profiles="kvm-and-xen,XEN">
+    <packages type="image" profiles="kvm-and-xen">
         <package name="openSUSE-release-appliance-kvm"/>
     </packages>
     <packages type="image" profiles="OpenStack-Cloud">

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2015 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,6 @@ test -f /.profile && . /.profile
 
 set -euxo pipefail
 
-mkdir /var/lib/misc/reconfig_system
-
 #======================================
 # Greeting...
 #--------------------------------------
@@ -37,7 +35,8 @@ echo "Configure image: [$kiwi_iname]-[$kiwi_profiles]..."
 #======================================
 # add missing fonts
 #--------------------------------------
-CONSOLE_FONT="eurlatgr.psfu"
+# Systemd controls the console font now
+echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 
 #======================================
 # prepare for setting root pw, timezone
@@ -50,26 +49,12 @@ rm -f /etc/machine-id \
       /var/lib/dbus/machine-id
 
 #======================================
-# SuSEconfig
+# Specify default systemd target
 #--------------------------------------
-echo "** Running suseConfig..."
-suseConfig
-
-echo "** Running ldconfig..."
-/sbin/ldconfig
+baseSetRunlevel multi-user.target
 
 #======================================
-# Setup baseproduct link
-#--------------------------------------
-suseSetupProduct
-
-#======================================
-# Specify default runlevel
-#--------------------------------------
-baseSetRunlevel 3
-
-#======================================
-# Add missing gpg keys to rpm
+# Import trusted rpm keys
 #--------------------------------------
 suseImportBuildKey
 
@@ -104,35 +89,13 @@ fi
 sed -Ei"" "s/#?GRUB_TERMINAL=.+$/GRUB_TERMINAL=gfxterm/g" /etc/default/grub
 sed -Ei"" "s/#?GRUB_GFXMODE=.+$/GRUB_GFXMODE=auto/g" /etc/default/grub
 
-# Systemd controls the console font now
-echo FONT="$CONSOLE_FONT" >> /etc/vconsole.conf
-
-#======================================
-# SSL Certificates Configuration
-#--------------------------------------
-echo '** Rehashing SSL Certificates...'
-update-ca-certificates
-
-if [ ! -s /var/log/zypper.log ]; then
-	> /var/log/zypper.log
-fi
-
-#======================================
-# Import trusted rpm keys
-#--------------------------------------
-for i in /usr/lib/rpm/gnupg/keys/gpg-pubkey*asc; do
-    # importing can fail if it already exists
-    rpm --import $i || true
-done
-
 #======================================
 # Add repos from control.xml
 #--------------------------------------
-add-yast-repos
-zypper --non-interactive rm -u live-add-yast-repos
-
-# only for debugging
-#systemctl enable debug-shell.service
+if grep -q opensuse /usr/lib/os-release; then
+	add-yast-repos
+	zypper --non-interactive rm -u live-add-yast-repos
+fi
 
 #=====================================
 # Configure snapper
@@ -140,7 +103,7 @@ zypper --non-interactive rm -u live-add-yast-repos
 if [ "${kiwi_btrfs_root_is_snapshot-false}" = 'true' ]; then
         echo "creating initial snapper config ..."
         # we can't call snapper here as the .snapshots subvolume
-        # already exists and snapper create-config doens't like
+        # already exists and snapper create-config doesn't like
         # that.
         cp /etc/snapper/config-templates/default /etc/snapper/configs/root
         # Change configuration to match SLES12-SP1 values
