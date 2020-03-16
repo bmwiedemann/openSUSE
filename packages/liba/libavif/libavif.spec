@@ -18,25 +18,28 @@
 
 %bcond_with aom
 
-%define lib_name libavif0
+%define lib_name libavif2
 
 Name:           libavif
-Version:        0.5.5
+Version:        0.6.2
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/AOMediaCodec/libavif
+#
 Source:         https://github.com/AOMediaCodec/libavif/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch:          https://github.com/cryptomilk/libavif/commit/cbcf62c2200be83b85b48059c819ae708216ccec.patch
+#
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
 BuildRequires:  pkgconfig(dav1d)
-%if %{with aom}
-BuildRequires:  pkgconfig(aom)
-%endif
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(rav1e)
+
+%if %{with aom}
+BuildRequires:  pkgconfig(aom) >= 1.1.0
+%endif
 
 %description
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -114,6 +117,7 @@ make %{?_smp_mflags}
 %{_libdir}/libavif.so
 %{_includedir}/avif/
 %{_libdir}/cmake/libavif/
+%{_libdir}/pkgconfig/libavif.pc
 
 %files -n avif-tools
 %doc *.md

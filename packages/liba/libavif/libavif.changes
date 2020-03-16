@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 11 06:51:01 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.6.2
+  https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Mar 11 06:10:27 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- If we want to build with aom, require version >= 1.1.0
+- Removed cbcf62c2200be83b85b48059c819ae708216ccec.patch
+
+-------------------------------------------------------------------
+Wed Mar  4 15:09:24 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.5.7
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.7
+
+-------------------------------------------------------------------
 Sun Feb 16 19:03:03 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.5.5
