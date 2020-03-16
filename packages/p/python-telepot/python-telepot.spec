@@ -1,7 +1,7 @@
 #
 # spec file for package python-telepot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,6 @@ Telepot helps you build applications for Telegram Bot API. It works on Python 2.
 %doc CHANGELOG.md README.md
 %license LICENSE.md
 %{python_sitelib}/%{pyname}/
-%{python_sitelib}/%{pyname}-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info
 
 %changelog
