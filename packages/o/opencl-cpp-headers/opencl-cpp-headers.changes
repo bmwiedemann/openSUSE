@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 17:17:59 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.0.11.
+
+-------------------------------------------------------------------
 Sun Nov 19 13:07:42 UTC 2017 - aaronpuchert@alice-dsl.net
 
 - Added conflict with opencl-headers-1_2. The C++ headers were

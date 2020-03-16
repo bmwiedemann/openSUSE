@@ -1,7 +1,8 @@
 #
 # spec file for package opencl-cpp-headers
 #
-# Copyright (c) 2017 Aaron Puchert.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +13,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           opencl-cpp-headers
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        OpenCL C++ headers
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://www.khronos.org/registry/OpenCL/
+URL:            https://www.khronos.org/registry/OpenCL/
 Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  findutils
-BuildRequires:  python
 Conflicts:      opencl-headers-1_2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires:       opencl-headers
 
@@ -45,18 +44,14 @@ around the C headers.
 
 %build
 # Fix line endings
-find -type f -print0 | xargs -0 dos2unix
-
-# Build cl.hpp from input_cl.hpp
-./gen_cl_hpp.py
+find -type f -exec dos2unix {} \;
 
 %install
 install -d -m 0755 %{buildroot}%{_includedir}/CL
-install -p -m 0644 cl.hpp %{buildroot}%{_includedir}/CL
-install -p -m 0644 input_cl2.hpp %{buildroot}%{_includedir}/CL/cl2.hpp
+install -p -m 0644 include/CL/cl.hpp %{buildroot}%{_includedir}/CL
+install -p -m 0644 include/CL/cl2.hpp %{buildroot}%{_includedir}/CL
 
 %files
-%defattr(-,root,root)
 %dir %{_includedir}/CL
 %{_includedir}/CL/*.hpp
 
