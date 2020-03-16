@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:10:02 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Add dependencies to btrfsprogs, zypper and snapper - most of the
+  functionality is not usable if those applications are not
+  installed. [boo#1166502]
+
+-------------------------------------------------------------------
 Tue Mar  3 16:34:26 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.20.3
