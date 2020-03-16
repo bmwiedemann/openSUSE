@@ -1,0 +1,13 @@
+Index: libayatana-indicator-0.6.2/tools/Makefile.am
+===================================================================
+--- libayatana-indicator-0.6.2.orig/tools/Makefile.am
++++ libayatana-indicator-0.6.2/tools/Makefile.am
+@@ -13,7 +13,7 @@ ayatana_indicator_loader_SOURCES = \
+ 	indicator-loader.c
+ 
+ ayatana_indicator_loader_CFLAGS = \
+-	-Wall -Werror \
++	-Wall -Werror -Wno-error=deprecated-declarations \
+ 	$(LIBINDICATOR_CFLAGS) -I$(top_srcdir) \
+ 	-DBUILD_DIR="\"$(builddir)\""
+ 

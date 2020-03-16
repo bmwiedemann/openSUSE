@@ -1,7 +1,7 @@
 #
 # spec file for package libayatana-indicator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/AyatanaIndicators/libayatana-indicator
 Source:         https://github.com/AyatanaIndicators/libayatana-indicator/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE libayatana-indicator-disable-werror.patch hrvoje.senjan@gmail.com -- Disable -Werror.
-Patch0:         libayatana-indicator-disable-werror.patch
+# PATCH-FIX-UPSTREAM fix G_ADD_PRIVATE error
+Patch0:         libayatana-indicator-glib-2.58.patch
 # PATCH-FIX-UPSTREAM libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
 Patch1:         libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
+# PATCH-FIX-UPSTREAM libayatana-indicator-Wno-error-deprecated-declarations.patch
+Patch2:         libayatana-indicator-Wno-error-deprecated-declarations.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
