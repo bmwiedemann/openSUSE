@@ -1,6 +1,7 @@
 #
 # spec file for package python-ctypescrypto
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ctypescrypto
 Version:        0.5
 Release:        0
-License:        MIT
 Summary:        CTypes-based interface for some OpenSSL libcrypto features
-Url:            https://github.com/vbwagner/ctypescrypto
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/vbwagner/ctypescrypto
 Source:         https://files.pythonhosted.org/packages/source/c/ctypescrypto/ctypescrypto-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  libopenssl-devel
-BuildRequires:  openssl
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  libopenssl-devel
+BuildRequires:  openssl
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,6 +66,6 @@ rm tests/testpkey.py
 %license LICENSE
 %doc README.md
 %{python_sitelib}/ctypescrypto
-%{python_sitelib}/ctypescrypto-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/ctypescrypto-%{version}-py%{python_version}.egg-info
 
 %changelog
