@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-postgresql
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           orthanc-postgresql
 Summary:        Database plugin for Orthanc
@@ -22,14 +23,14 @@ License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
 Version:        3.2
 Release:        0
-Url:            https://orthanc-server.com
+URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-postgresql/OrthancPostgreSQL-%{version}.tar.gz
 Source1:        orthanc-postgresql-readme.SUSE
 Source2:        postgresql.json
 Patch0:         psql114.patch
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -42,8 +43,8 @@ BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 BuildRequires:  postgresql-devel
-#Tumbleweed
-%if 0%{?suse_version} >= 1550
+#Tumbleweed and Leap >= 15.2
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  unzip
@@ -53,7 +54,7 @@ BuildRequires:  zlib-devel
 Requires:       orthanc
 Requires:       postgresql-server
 
-BuildRoot:      OrthancPostgreSQL-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 PostgreSQL Database plugin for Orthanc, replaces SQLite database
@@ -72,7 +73,7 @@ PostgreSQL Database plugin for Orthanc, replaces SQLite database
        -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
        -DBoost_NO_BOOST_CMAKE=ON \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
-                      
+
 %cmake_build %{?_smp_mflags}
 
 %install
@@ -90,7 +91,7 @@ mv %{buildroot}%{_prefix}/share/orthanc/plugins/*.so* %{buildroot}%{_libdir}/sha
 #Link from lib64 to orthanc plugin-directory, where it is expected
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancPostgreSQLIndex.so.%{version} \
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancPostgreSQLIndex.so
-      
+
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancPostgreSQLStorage.so.%{version} \
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancPostgreSQLStorage.so
 
