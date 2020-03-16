@@ -124,7 +124,8 @@ BuildRequires:  pkgconfig(libdrm) >= 2.4.62
 BuildRequires:  pkgconfig(libinput) >= 1.9
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-egl)
-Requires:       xorg-x11-server-wayland
+# xorg-x11-server-wayland is required by plasma5-session-wayland and kwin5 can run with just X11
+Recommends:     xorg-x11-server-wayland
 %endif
 # new default decoration
 Requires:       breeze5-decoration >= %{_plasma5_version}

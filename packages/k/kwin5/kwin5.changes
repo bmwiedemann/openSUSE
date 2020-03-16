@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 10:28:38 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace the Requires: xorg-x11-server-wayland dependency with a
+  Recommends so we can install kwin5 in X11 only systems.
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3
