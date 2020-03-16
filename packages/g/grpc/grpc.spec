@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %define lver 8
 %define lverp 1
 %define src_install_dir /usr/src/%name
+%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           grpc
 Version:        1.25.0
@@ -96,7 +97,6 @@ This subpackage contains source code of the gRPC reference implementation.
 Summary:        Python language bindings for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Libraries/Python
 Requires:       libgrpc%lver = %version-%release
-Requires:       python = %python2_version
 
 %description -n python2-grpcio
 This subpackage contains the python2 bindings.
@@ -105,7 +105,6 @@ This subpackage contains the python2 bindings.
 Summary:        Python language bindings for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Libraries/Python
 Requires:       libgrpc%lver = %version-%release
-Requires:       python = %python3_version
 
 %description -n python3-grpcio
 This subpackage contains the python3 bindings.
@@ -179,8 +178,10 @@ cp -r * "%buildroot/%src_install_dir"
 %files source
 %src_install_dir
 
+%if %{with python2}
 %files -n python2-grpcio
 %python2_sitearch/grpc*
+%endif
 
 %files -n python3-grpcio
 %python3_sitearch/grpc*
