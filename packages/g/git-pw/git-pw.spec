@@ -1,7 +1,7 @@
 #
 # spec file for package git-pw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,30 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           git-pw
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
-Group:          Development/Tools/Version Control
 URL:            https://github.com/getpatchwork/%{name}
 Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module arrow}
-BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module arrow >= 0.10}
+BuildRequires:  %{python_module click >= 6.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module requests > 2.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tabulate}
+BuildRequires:  %{python_module six >= 1.12}
+BuildRequires:  %{python_module tabulate >= 0.8}
+BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       git-core
-Requires:       python-arrow
-Requires:       python-click
-Requires:       python-requests
-Requires:       python-tabulate
+Requires:       python-arrow >= 0.10
+Requires:       python-click >= 6.0
+Requires:       python-requests > 2.0
+Requires:       python-six >= 1.12
+Requires:       python-tabulate >= 0.8
 %python_subpackages
 
 %description
@@ -54,16 +56,17 @@ tracking system.
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LC_ALL=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %python3_only %{_bindir}/git-pw
 %{python_sitelib}/git_pw
-%{python_sitelib}/git_pw-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/git_pw-%{version}-py%{python_version}.egg-info
 
 %changelog
