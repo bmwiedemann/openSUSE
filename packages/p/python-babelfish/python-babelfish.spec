@@ -1,7 +1,7 @@
 #
 # spec file for package python-babelfish
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,6 +52,6 @@ BabelFish is a Python library to work with countries and languages.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/babelfish
-%{python_sitelib}/babelfish-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/babelfish-%{version}-py%{python_version}.egg-info
 
 %changelog
