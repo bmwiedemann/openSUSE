@@ -1,7 +1,7 @@
 #
 # spec file for package python-parse_type
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,26 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-parse_type
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Extension to the parse module
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jenisys/parse_type
-Source:         https://files.pythonhosted.org/packages/source/p/parse_type/parse_type-%{version}.tar.gz
-Patch0:         testsuite-fix.patch
-BuildRequires:  %{python_module devel}
+Source:         https://github.com/jenisys/parse_type/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 Requires:       python-parse >= 1.12.0
 Requires:       python-six >= 1.11
-Suggests:       python-coverage
-Suggests:       python-enum34
-Suggests:       python-ordereddict
-Suggests:       python-pytest >= 3.0
-Suggests:       python-pytest-cov
-Suggests:       python-sphinx >= 1.2
-Suggests:       python-tox
+%ifpython2
+Recommends:     python-enum34
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module parse >= 1.12.0}
@@ -62,10 +59,12 @@ the following features:
 
 %prep
 %setup -q -n parse_type-%{version}
-%patch0 -p1
 
+# no extra pytest options are needed
+rm pytest.ini
 # Remove bundled parse.py
-rm -fv parse_type/parse.py
+rm parse_type/parse.py
+rm tests/test_parse.py
 
 %build
 %python_build
@@ -75,7 +74,7 @@ rm -fv parse_type/parse.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not (test_parse_with_many0_and_unnamed_fields or test_parse_with_many_and_unnamed_fields or test_parse_with_optional_and_unnamed_fields or test_pm_overflow_issue16)'
+%pytest
 
 %files %{python_files}
 %license LICENSE
