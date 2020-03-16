@@ -1,7 +1,7 @@
 #
 # spec file for package python-wtf-peewee
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,23 +22,17 @@ Version:        3.0.0
 Release:        0
 Summary:        WTForms integration for peewee models
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/coleifer/wtf-peewee/
+URL:            https://github.com/coleifer/wtf-peewee/
 Source:         https://files.pythonhosted.org/packages/source/w/wtf-peewee/wtf-peewee-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-%if %{suse_version} < 1500
-BuildRequires:  python2
-%endif
-BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module peewee >= 3.0.0}
-# /SECTION
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-WTForms
 Requires:       python-peewee >= 3.0.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,12 +50,12 @@ model fields to form fields.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/wtfpeewee/
-%{python_sitelib}/wtf_peewee-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/wtf_peewee-%{version}-py*.egg-info
 
 %changelog
