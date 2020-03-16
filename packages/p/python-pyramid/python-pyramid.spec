@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014-2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
+%define skip_python2 1
 Name:           python-pyramid
 Version:        1.10.4
 Release:        0
 Summary:        The Pyramid web application development framework
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 Group:          Development/Languages/Python
-Url:            http://pylonsproject.org
+URL:            http://pylonsproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-%{version}.tar.gz
 BuildRequires:  %{python_module PasteDeploy} >= 1.5.0
 BuildRequires:  %{python_module WebOb} >= 1.7.0
