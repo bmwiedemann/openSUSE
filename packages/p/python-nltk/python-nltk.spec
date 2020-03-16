@@ -1,7 +1,7 @@
 #
 # spec file for package python-nltk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %{!?python_module:%define python_module() python-%{**} python3-%{**}}
 %define interps python python3
 %define pyname nltk
+%bcond_without python2
 Name:           python-nltk
 Version:        3.4.5
 Release:        0
@@ -31,7 +32,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-singledispatch
 BuildRequires:  unzip
 Requires:       python-six
 Recommends:     python-gensim
@@ -44,11 +44,11 @@ Recommends:     python-scikit-learn
 Recommends:     python-scipy
 Recommends:     python-twython
 BuildArch:      noarch
-%ifpython2
-Requires:       python-singledispatch
+%if %{with python2}
+BuildRequires:  python-singledispatch
 %endif
 %ifpython2
-Requires:       python2-singledispatch
+Requires:       python-singledispatch
 %endif
 %python_subpackages
 
@@ -84,6 +84,6 @@ chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/%{pyname}/
-%{python_sitelib}/%{pyname}-%{version}-py%{py_ver}.egg-info/
+%{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
 
 %changelog
