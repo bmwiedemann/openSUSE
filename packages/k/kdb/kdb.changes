@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 04:01:16 UTC 2020 - Max Lin <mlin@suse.com>
+
+- BuildRequires postgresql-server-devel on Leap version >= 15.2
+
+-------------------------------------------------------------------
 Thu Jan 30 13:44:41 UTC 2020 - wbauer@tmo.at
 
 - Add Fix-build-with-PostgreSQL-12.patch to fix build in Tumbleweed
