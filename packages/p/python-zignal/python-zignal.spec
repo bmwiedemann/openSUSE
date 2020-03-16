@@ -1,7 +1,7 @@
 #
 # spec file for package python-zignal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-zignal
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Audio signal processing library
 License:        MIT
@@ -57,7 +57,8 @@ This is a python audio signal processing library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} zignal/tests
+# https://github.com/ronnyandersson/zignal/issues/8
+%python_expand nosetests-%{$python_bin_suffix} -v zignal/tests -e 'test_set_duration_and_samples'
 
 %files %{python_files}
 %license LICENSE.txt
