@@ -1,7 +1,7 @@
 #
 # spec file for package libmediaart
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libmediaart
 Version:        1.9.4
 Release:        0
-# License note: src.rpm contains GPL-2.0+ (tests) and LGPL-2.1+ code
 Summary:        Media Art extraction library
+# License note: src.rpm contains GPL-2.0+ (tests) and LGPL-2.1+ code
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Other
-Url:            https://download.gnome.org/sources/libmediaart
-Source:         http://download.gnome.org/sources/libmediaart/1.9/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/libmediaart
+Source0:        https://download.gnome.org/sources/libmediaart/1.9/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM meson-Introspection-fix.patch bgo#792272 robert.munteanu@gmail.com -- meson: Introspection fix
 Patch1:         meson-Introspection-fix.patch
@@ -78,8 +78,7 @@ The libmediaart library is the foundation for media art caching,
 extraction and lookup for applications on the desktop.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %meson \
@@ -96,7 +95,6 @@ extraction and lookup for applications on the desktop.
 
 %files -n libmediaart-2_0-0
 %license COPYING.LESSER
-
 %{_libdir}/libmediaart-2.0.so.*
 
 %files -n typelib-1_0-MediaArt-2_0
