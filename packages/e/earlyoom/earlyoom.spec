@@ -20,7 +20,7 @@
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT
@@ -51,7 +51,7 @@ sed -ri '/LDFLAGS/ s|$| -lrt|' Makefile
 
 %build
 CFLAGS='%{optflags} -DVERSION=\"%{version}\" -std=gnu99'
-%make_build CFLAGS="$CFLAGS"
+%make_build CFLAGS="$CFLAGS" PREFIX=%{_prefix}
 
 %install
 %make_install PREFIX=%{_prefix} SYSTEMDUNITDIR=%{_unitdir}
