@@ -68,7 +68,7 @@ BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  postgresql-devel
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  shared-mime-info
