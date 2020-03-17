@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           fish
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
 Group:          System/Shells
-Url:            https://fishshell.com/
+URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
@@ -56,17 +57,21 @@ This package contains development files for the fish shell.
 find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
 
 %build
-%configure \
-  --without-included-pcre2
-make %{?_smp_mflags}
+%cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+    -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir}
 
 %install
-%make_install
+%cmake_install
 
 %find_lang %{name}
 
 # Drop the curl completions, the curl packages provide a better version
 rm %{buildroot}/%{_datadir}/fish/completions/curl.fish
+
+rm %{buildroot}/%{_datadir}/doc/fish/.buildinfo
+rm -r %{buildroot}/%{_datadir}/%{name}/man
 
 %post
 # Add fish to the list of allowed shells in /etc/shells

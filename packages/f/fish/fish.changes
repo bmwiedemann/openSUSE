@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:09:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.0
+* A new $pipestatus variable contains a list of exit statuses
+  of the previous job, for each of the separate commands in a pipeline
+* fish no longer buffers pipes to the last function in a pipeline,
+  improving many cases where pipes appeared to block or hang
+* cd now always looks for its argument in the current directory as a 
+  last resort, even if the CDPATH variable does not include it or "."
+* fish's debugging arguments have been significantly improved
+* new builtin command, time, which allows timing of fish functions
+  and builtins as well as external commands 
+* Brace expansion now only takes place if the braces include a "," or
+  a variable expansion, meaning common commands such as
+  git reset HEAD@{0} do not require escaping
+* many other fixes and improvements
+
+-------------------------------------------------------------------
 Wed Apr 10 00:03:00 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - Drop the curl compilations, the curl package now provides a
