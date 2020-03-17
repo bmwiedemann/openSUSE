@@ -1,7 +1,7 @@
 #
 # spec file for package pgadmin4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 Name:           pgadmin4
-Version:        4.14
+Version:        4.19
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -34,6 +34,7 @@ Source6:        %{name}.qt.conf.in
 Source7:        README.SUSE
 Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
+Patch2:         fix-python-lib.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -127,6 +128,9 @@ This package contains the documentation for pgadmin4.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%if %{?pkg_vcmp:%{pkg_vcmp python3-devel >= 3.8}}%{!?pkg_vcmp:0}
+%patch2 -p1
+%endif
 cp %{S:7} .
 # rpmlint
 chmod -x docs/en_US/theme/pgadmin4/static/style.css
@@ -135,6 +139,7 @@ chmod -x docs/en_US/theme/pgadmin4/theme.conf
 %build
 cd runtime
 export PYTHON_CONFIG=%{_bindir}/python3-config
+export PYTHON_VERSION=%{python3_version}
 export CFLAGS=%{RPM_OPT_FLAGS}
 qmake-qt5 -o Makefile pgAdmin4.pro
 make %{?_smp_mflags} VERBOSE=1
@@ -199,6 +204,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpgadmin4
 %service_del_postun %{name}.service
 
 %files
+%defattr(-,root,root,-)
 %doc README README.SUSE
 %license LICENSE
 %{_bindir}/pgAdmin4
@@ -207,6 +213,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpgadmin4
 %config %{_sysconfdir}/xdg/pgadmin/pgadmin4.conf
 
 %files web
+%defattr(-,root,root,-)
 %dir %{python3_sitelib}/%{name}-web/
 %{python3_sitelib}/%{name}-web/*
 %dir %{_sysconfdir}/apache2
@@ -218,6 +225,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpgadmin4
 %ghost %dir %{_rundir}/%{name}
 
 %files doc
+%defattr(-,root,root,-)
 %dir %{_docdir}/%{name}-docs
 %doc %{_docdir}/%{name}-docs/*
 

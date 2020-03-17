@@ -1,4 +1,274 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:34:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.19 (boo#1166681)
+  - New features
+    * Added accessibility support in AlertifyJS.
+    * Added Czech language support.
+    * Added Python 3.8 support.
+  - Housekeeping
+    * Improve code coverage and API test cases for the Event Trigger module.
+    * Improvements in the UI for both default and dark themes.
+    * Enhance logging by tracking stdout and stderr of subprocess when
+      log level set to DEBUG.
+    * Added option to override the class name of a label tag for select2
+      control.
+  - Bug fixes
+    * Changed the color of selected and hovered item for Select2 dropdown.
+    * Improve the style of the highlighted code after query execution for
+      Dark mode.
+    * Ensure that AlertifyJS should not be visible as a title for alert
+      dialog.
+    * Changed background pattern for geometry viewer to use #fff for all
+      themes.
+    * Fix an issue where debugger not showing all arguments anymore after
+      hitting SQL error while debugging.
+    * Set proper focus on tab navigation for file manager dialog.
+    * Fix an issue where command and statements were parsed incorrectly
+      for Rules.
+    * Ensure that all the transactions should be canceled before closing
+      the connections when a server is disconnected using pgAdmin.
+    * Fixed Firefox monospaced issue by updating the font to the latest
+      version.
+    * Update Flask-SQLAlchemy and SQLAlchemy package which is not working
+      on Windows with Python 3.8.
+    * Fix syntax error when changing the event type for the existing rule.
+
+- Update to 4.18
+  - New features
+    * Added support for a multi-level partitioned table.
+    * Added a Schema Diff tool to compare two schemas and generate a diff
+      script.
+    * Allow screen-reader to read label & description of non-textable
+      elements.
+    * Allow screen-reader to identify the alert errors.
+    * Added labels and titles after parsing and validating all the pgAdmin4
+      web pages for accessibility.
+    * Set input controls as read-only instead of disabled will allow tab
+      navigation in the properties tab and also allow screen readers to
+      read it.
+  - Housekeeping
+    * Improve code coverage and API test cases for the CAST module.
+    * Improve code coverage and API test cases for the LANGUAGE module.
+    * Improve the test framework to run for multiple classes defined in a
+      single file.
+    * Updated wcDocker package which includes aria-label accessibility
+      improvements.
+    * Replace node-sass with sass for SCSS compilation.
+  - Bug fixes
+    * Ensure that path file name should not disappear when changing ext from
+      the dropdown in file explorer dialog.
+    * Fixed an issue while editing char[] or character varying[] column from
+      View/Edit data throwing an error.
+    * Fixed an issue where Grant wizard unable to handle multiple objects when
+      the query string parameter exceeds its limit.
+    * Added tab navigation on close buttons for all the panels and
+      create/properties dialog.
+    * Fix column resizable issue in the file explorer dialog.
+    * Logout the pgAdmin session when no user activity of mouse move, click
+      or keypress.
+    * Fix an issue where setting STORAGE_DIR to empty should show all
+      the volumes on Windows in server mode.
+    * Updated the incorrect icon used for the cast node on refresh.
+    * Fix an issue where refreshing a package results in the change in
+      the object completely.
+    * Fix an issue where select, insert and update scripts on tables throwing
+      an error.
+    * Ensure Postfix starts in the container, now it runs as non-root
+      by default.
+    * Fixed an issue where Save Password control disappears after clicking
+      on it while creating a server.
+
+- Update to 4.17
+  - New features
+    * Allow screen-reader to read relationship attributes in nested elements.
+    * Ensure all binaries are securely signed and linked with the hardened
+      runtime in the macOS bundle
+  - Housekeeping
+    * Refactored SQL of Table’s and it’s child nodes.
+    * Refactored SQL of Views and Materialized Views.
+    * Refactored SQL of Functions and Procedures.
+    * Added support for on-demand loading of items in Select2.
+    * Added code coverage tool for pgAdmin.
+  - Bug fixes
+    * Fix syntax highlighting in code mirror for backslash and escape constant.
+    * Fix an issue where clicking on an empty textbox like fill factor or
+      comments, considers it as change and enabled the save button.
+    * Added support to view multilevel partitioned tables.
+    * Ensure that constraints, indexes, rules, triggers, and compound triggers
+      should be created on partitions.
+    * Added more information to the ‘Database connected/disconnected’ message.
+    * Ensure that the user should be able to select/modify tablespace for the
+      partitioned table on v12 and above.
+    * Rename some internal environment variables that could conflict with
+      Kubernetes.
+    * Fix vulnerability issues reported by ‘yarn audit’. Replace the
+      deprecated uglifyjs-webpack-plugin with a terser-webpack-plugin.
+    * Ensure that the error message should not be displayed if Tablespace is
+      not selected while creating the index.
+    * Fix an issue where operator, access method and operator class is
+      not visible for exclusion constraints.
+    * Add a note to the documentation about the use of non-privileged ports
+      on filesystems that don’t support extended attributes when running
+      the container.
+    * Added tab navigation for tabs under explain panel in query tool.
+    * Fix an issue where the table is not created with autovacuum_enabled
+      and toast.autovacuum_enabled for PG/EPAS 12.
+
+- Update to 4.16
+  - New features
+    * Warn the user on changing the definition of Materialized View about
+      the loss of data and its dependent objects.
+    * Allow drag and drop functionality for all the nodes under the database
+      node, excluding collection nodes.
+    * Use a ‘play’ icon for the Execute Query button in the Query Tool for
+      greater consistency with other applications.
+    * Added aria-label to provide an invisible label where a visible label
+      cannot be used.
+    * Added role=”status” attribute to all the status messages for
+      accessibility.
+    * Run pgAdmin in the container as a non-root user (pgadmin, UID: 5050)
+    * Allow Gunicorn logs in the container to be directed to a file specified
+      through GUNICORN_ACCESS_LOGFILE.
+    * Changed the open query tool and data filter icons.
+  - Housekeeping
+    * Add Reverse Engineered and Modified SQL tests for Materialized Views.
+    * Refactored code of table and it’s child nodes.
+    * Refactored code of columns node.
+  - Bug fixes
+    * Fix issue where the Reset button does not get enabled till all
+      the mandatory fields are provided in the dialog.
+    * Fix scrolling issue in ‘Users’ dialog.
+    * Remove the sorting of table headers with no labels.
+    * Updated documentation for default privileges to clarify more on the
+      grantor.
+    * Fix query tool launch error if user name contains HTML characters.
+      It’s a regression.
+    * Fix network disconnect issue while establishing the connection via
+      SSH Tunnel and it impossible to expand the Servers node.
+    * Fix an issue where the wrong type is displayed when changing the
+      datatype from timestamp with time zone to timestamp without time zone.
+    * Ensure that the superuser should be able to create database, as the
+      superuser overrides all the access restrictions.
+    * Fix server connection drops out issue in query tool.
+    * Updated the json file name from ‘servers.json’ to
+      ‘pgadmin4/servers.json’ in the container deployment section of
+      the documentation.
+    * Ensure that the superuser should be able to create role, as the
+      superuser overrides all the access restrictions.
+    * Fix reverse engineering SQL issue for partitions when specifying
+      digits as comments.
+    * Enhance the logic to change the label from ‘Delete/Drop’ to
+      ‘Remove’ for the server and server group node.
+    * Shown some text on process watcher till the initial logs are loaded.
+    * Fix VPN network disconnect issue where pgAdmin4 hangs on expanding
+      the Servers node.
+    * Fix main window tab navigation accessibility issue.
+    * Ensure that the Servers collection node should expand independently
+      of server connections.
+    * Fix the help button link on the User Management dialog.
+    * Fix accessibility issues.
+    * Fix XSS issue in explain and explain analyze for table and type which
+      contain HTML.
+    * Fix an issue of retrieving properties for Compound Triggers.
+      It’s a regression.
+    * Fix an issue where pgAdmin4 unable to retrieve table node if the
+      trigger is already disabled and the user clicks on Enable All.
+    * Fix reverse engineering SQL issue for triggers when passed a single
+      argument to trigger function.
+    * Fix an issue where length and precision are not removed from
+      table/column dialog.
+    * Fix an issue where the Interval data type is not displayed in the
+      properties dialog of table/column.
+    * Fix ‘Could not find the object on the server.’ error while
+      refreshing the check constraint.
+    * Fix issue where the user can not switch the UI language. It’s a
+      regression.
+    * Fix reverse engineering SQL issue where when clause is not visible
+      for PG/EPAS 12.
+    * Fix pgAdmin4 failed to start issue after upgrading to version 4.15.
+    * Added statistics and storage information in reverse engineering SQL
+      of table/column.
+    * Fix an issue where the inherited table name with quotes did not escape
+      correctly.
+    * Fix an issue where context menu is open along with submenu and
+      the focus is not on context menu or submenu.
+
+- Update to 4.15
+  - New features
+    * Added encrypted password in reverse engineered SQL for roles.
+    * Added Dark(Beta) UI Theme option.
+    * Support Enable Always and Enable Replica on triggers.
+    * Add an option to request confirmation before cancelling/resetting
+      changes on a Properties dialog.
+    * Added support for custom theme creation and selection.
+  - Bug fixes
+    * Ensure create new object dialog should be opened when alt+shift+n key
+      is pressed on the collection node.
+    * Fixed issue where Drop and Disconnect connection menu points are
+      too close to each other.
+    * Ensure context menus never get hidden below the menu bar.
+    * Rename the context menu from ‘Drop Server’ to ‘Remove Server’.
+    * Ensure the correct “running at” agent is shown when a pgAgent job
+      is executing.
+    * Fix an issue in the Query Tool where shortcut keys could be ignored
+      following a query error.
+    * Fix the toggle case shortcut key combination.
+    * Fix an issue where a black arrow-kind image is displaying at the
+      background of browser tree images.
+    * Ensure comments are shown in reverse engineered SQL for table
+      partitions.
+    * Handle NULL values appropriately when sorting backgrid tables.
+    * Give appropriate error messages when the user tries to use an
+      blank master password.
+    * Remove arbitrary (and incorrect) requirement that composite types
+      must have at least two members.
+    * Don’t quote bigints when copying them from the Query Tool results
+      grid.
+    * Ensure compression level is passed to pg_dump when backing up in
+      directory format.
+    * Ensure the number of jobs can be specified when backing up in
+      directory format.
+    * Ensure Javascript errors during Query Tool execution are reported
+      as such and not as Ajax errors.
+    * Suppress Enter key presses in Alertify dialogues when the come from
+      Select2 controls to allow item selection with Enter.
+    * Ensure that units are respected when sorting by file size in the
+      File dialog.
+    * Ensure all messages are retained in the Query Tool from long running
+      queries.
+    * Updated documentation for the delete row button that only strikeout
+      the row instead of deleting it.
+    * Updated documentation for the query tool toolbar buttons.
+    * Fixed an issue where psql of v12 throwing “symbol not found” error
+      while running Maintenance and Import/Export.
+    * Fixed potential error in the properties dialog for the Code tab.
+    * Fixed an issue where Datetimepicker control opens when clicking on
+      the label.
+    * Fixed potential issue in reset function for nested objects.
+    * Fixed an issue where escape key not working to close the open/save
+      file dialog.
+    * Fixed an issue where keyboard shortcut for context menu is not working
+      when using Firefox on CentOS7.
+    * Fixed docker container exit issue occurs due to change in Gunicorn’s
+      latest version.
+
+- Rebase patches:
+  * use-os-makedirs.patch
+- Add patch to fix command to link to the python library
+  * fix-python-lib.patch
+
+-------------------------------------------------------------------
+Wed Oct 23 20:49:56 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh use-os-makedirs.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Wed Oct 23 20:40:47 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- add back defattr to fix sle12 build
+
+-------------------------------------------------------------------
 Mon Oct 21 15:38:51 UTC 2019 - ecsos@opensuse.org
 
 - Update to 4.14
