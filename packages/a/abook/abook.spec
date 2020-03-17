@@ -1,7 +1,7 @@
 #
 # spec file for package abook
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           abook
+Version:        0.6.1
+Release:        0
+Summary:        Text-based addressbook program
+License:        GPL-2.0-or-later
+Group:          Productivity/Other
+URL:            http://abook.sourceforge.net/
+Source0:        http://abook.sourceforge.net/devel/%{name}-%{version}.tar.gz
+Source1:        http://abook.sourceforge.net/devel/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  coreutils
 BuildRequires:  gettext
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 Recommends:     %{name}-lang
-Summary:        Text-based addressbook program
-License:        GPL-2.0-or-later
-Group:          Productivity/Other
-Version:        0.6.1
-Release:        0
-Source0:        http://abook.sourceforge.net/devel/%{name}-%{version}.tar.gz
-Source1:        http://abook.sourceforge.net/devel/%{name}-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
-Url:            http://abook.sourceforge.net/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Abook is a text-based addressbook program designed to
@@ -41,20 +41,19 @@ use with mutt mail client.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 autoreconf -fiv
 export CFLAGS="%{optflags} -fgnu89-inline"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS BUGS ChangeLog FAQ NEWS README THANKS TODO sample.abookrc
 %license COPYING
 %{_bindir}/abook
@@ -62,6 +61,6 @@ make %{?_smp_mflags}
 %{_mandir}/man5/abookrc.*
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
+%dir %{_datadir}/locale/*/LC_TIME
 
 %changelog
