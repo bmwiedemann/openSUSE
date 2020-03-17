@@ -1,7 +1,7 @@
 #
 # spec file for package hexchat
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  intltool
 BuildRequires:  lua-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.5
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  perl(ExtUtils::Embed)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.34.0
@@ -114,7 +114,7 @@ The HexChat plugin providing the Python 3 scripting interface.
     -Dwith-fishlim=true \
     -Dwith-lua=lua \
     -Dwith-perl=perl \
-    -Dwith-python=python3 \
+    -Dwith-python=python3-embed \
     -Dwith-sysinfo=true
 %meson_build
 
