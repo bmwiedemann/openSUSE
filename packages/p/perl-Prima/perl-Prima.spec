@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Prima
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Prima
-Version:        1.57
+Version:        1.58
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name Prima
