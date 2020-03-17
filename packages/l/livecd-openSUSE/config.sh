@@ -69,8 +69,8 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 # Some packages really exaggerate here
 rm -rf /usr/share/doc/packages/*
 
-# Save 50 MiB by removing this, not very useful for lives
-rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl}
+# Save more than 200 MiB by removing this, not very useful for lives
+rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom}
 
 # Add repos from /etc/YaST2/control.xml
 add-yast-repos

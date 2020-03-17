@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:15:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Remove more unnecessary firmware to not exceed size constraints
+
+-------------------------------------------------------------------
 Wed Mar  4 10:53:06 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - list-kde: Ignore plasma5-desktop-emojier, too big (~42MiB!)
