@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:29:54 UTC 2020 - suse@geigi.de
+
+- Update to 0.6.15
+  * Fix: Files with missing tags failed to import
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Mar  1 16:39:55 UTC 2020 - suse@geigi.de
 
 - Update to 0.6.14
