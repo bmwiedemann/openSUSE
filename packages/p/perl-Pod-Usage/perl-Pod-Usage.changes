@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 16 03:10:28 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.70
+   see /usr/share/doc/packages/perl-Pod-Usage/CHANGES
+
+  1.70 (marekr)
+  - CPAN#115847: pod2usage exits with error when using "-verbose 3" with STDIN
+    Addressed in pod2usage script, and updated POD
+  - CPAN#122941: Pod::Usage::pod2usage() problem with $Config{scriptdir}
+    Should be fixed by 1.69 already; reviewed code
+  - CPAN#121489: I<> not emphasized when used with Pod::Text::Termcap
+    Added specific support of ::Termcap
+  - CPAN#114697: Sample code syntax error in documentation for Pod-Usage
+    Fixed. Well spotted!
+  - CPAN#125337: Typo in pod
+    Fixed. Well spotted, too!
+  - CPAN#130418: Fix parent directory in pod2usage auxiliary script
+    Patch accepted, thanks!
+  - CPAN#131845: $Config{pager} string can have arguments
+    fixed by changing the system() command from using the array form to
+    string form, and escape/quote the file path to protect any metacharacters
+    in the file path
+  - CPAN#131844: preferring PAGER to $Config{pager}
+    Fixed with the above CPAN#131845
+
+-------------------------------------------------------------------
 Tue May 31 10:57:19 UTC 2016 - coolo@suse.com
 
 - updated to 1.69
