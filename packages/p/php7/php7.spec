@@ -927,7 +927,6 @@ if test "x${vzend}" != "x%{zendver}"; then
 fi
 
 %build
-%define _lto_cflags %{nil}
 # aclocal workaround - to be improved
 cat `aclocal --print-ac-dir`/{libtool,ltoptions,ltsugar,ltversion,lt~obsolete}.m4 >>aclocal.m4
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:47:27 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it works now (boo#1133275).
+
+-------------------------------------------------------------------
 Wed Feb 19 09:11:21 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.3: This is a security release which also contains
