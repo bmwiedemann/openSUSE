@@ -1640,4 +1640,19 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * Update: 90kernel-modules: Add PCI host controller modules (boo#1162669)</comment>
     <requestid>781231</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>cb3afc8f4127a91470a3e8cfef4ee5aa</srcmd5>
+    <version>049.1+git135.46dceb02</version>
+    <time>1584446752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049.1+git135.46dceb02:
+  * 40network: Do not require hostname binary
+  * suse.spec: add new modules 90nvdimm and 99suse-initrd
+  * 95fcoe: default rd.nofcoe to false (bsc#1163343)
+  * Add module &quot;99suse-initrd&quot; for parsing &quot;SUSE INITRD&quot; lines (bsc#1161343) 
+    Dependent commits:
+    * Add module &quot;90nvdimm&quot; for NVDIMM support
+    * 90kernel-modules: remove nfit from static module list (forwarded request 784045 from dmolkentin)</comment>
+    <requestid>784046</requestid>
+  </revision>
 </revisionlist>

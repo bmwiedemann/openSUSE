@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 11 18:50:53 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 049.1+git135.46dceb02:
+  * 40network: Do not require hostname binary
+  * suse.spec: add new modules 90nvdimm and 99suse-initrd
+  * 95fcoe: default rd.nofcoe to false (bsc#1163343)
+  * Add module "99suse-initrd" for parsing "SUSE INITRD" lines (bsc#1161343) 
+    Dependent commits:
+    * Add module "90nvdimm" for NVDIMM support
+    * 90kernel-modules: remove nfit from static module list
+
+-------------------------------------------------------------------
+Tue Mar 10 16:23:56 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 049.1+git129.0f19bbfd:
+  * 35network-legacy: dhclient is optional (bsc#1166188)
+  * suse.spec: Create -extra package (bsc#1166188)
+  * suse.spec: Remove obsolete permission fixups
+  * 00warpclock: Fix permissions in warpclock.sh
+
+-------------------------------------------------------------------
 Tue Mar 03 14:19:26 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 049.1+git125.e2b2c9ef:
