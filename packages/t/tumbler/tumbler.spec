@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://docs.xfce.org/xfce/thunar/tumbler
 Source:         https://archive.xfce.org/src/xfce/%{name}/0.2/%{name}-%{version}.tar.bz2
+Source1:        custom_thumbnailers.tar.gz
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26.0
@@ -63,6 +64,8 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       %libname = %{version}
+Recommends:     %{name}-folder-thumbnailer = %{version}
+Recommends:     %{name}-webp-thumbnailer = %{version}
 
 %description
 Tumbler is a D-Bus service for applications to request thumbnails for various
@@ -70,6 +73,23 @@ URI schemes and MIME types. It is an implementation of the thumbnail management
 D-Bus specification described on http://live.gnome.org/ThumbnailerSpec and
 extensible through a plugin interface or via specialized thumbnailer services
 implemented in accordance to the thumbnail management D-Bus specification.
+
+%package -n %{name}-folder-thumbnailer
+Summary:        Thumbnailer for folders
+Group:          Productivity/Graphics/Other
+Requires:       ImageMagick
+Requires:       thunar >= 1.8.2
+
+%description -n %{name}-folder-thumbnailer
+A thumbnailer to show custom folder thumbnails in Thunar
+
+%package -n %{name}-webp-thumbnailer
+Summary:        Thumbnailer for WebP images
+Group:          Productivity/Graphics/Other
+Requires:       ImageMagick
+
+%description -n %{name}-webp-thumbnailer
+A thumbnailer for WebP images
 
 %package -n %{libname}
 Summary:        Tumbler Library
@@ -112,6 +132,8 @@ Provides translations to the package %{name}
 %autosetup
 sed -i "s/libopenraw-gnome-1.0/libopenraw-gnome-0.1/g" acinclude.m4
 
+tar -xzf %SOURCE1
+
 %build
 %if %{with git}
 NOCONFIGURE=1 ./autogen.sh
@@ -130,6 +152,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %find_lang %{name} %{?no_lang_C}
+
+mkdir %{buildroot}%{_datadir}/thumbnailers
+mv custom_thumbnailers/*.thumbnailer %{buildroot}%{_datadir}/thumbnailers/
+mkdir %{buildroot}%{_bindir}
+mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 
 %post -n %{libname} -p /sbin/ldconfig
 
@@ -161,6 +188,14 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
 %{_datadir}/dbus-1/services/*.service
+%dir %{_datadir}/thumbnailers
+
+%files -n %{name}-folder-thumbnailer
+%{_bindir}/folder-thumbnailer
+%{_datadir}/thumbnailers/folder.thumbnailer
+
+%files -n %{name}-webp-thumbnailer
+%{_datadir}/thumbnailers/webp.thumbnailer
 
 %files -n %{libname}
 %license COPYING
