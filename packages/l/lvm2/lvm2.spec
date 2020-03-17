@@ -1,7 +1,7 @@
 #
 # spec file for package lvm2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ Patch0008:      bug-1154655_udev-remove-unsupported-OPTIONS-event_timeout-rule.p
 Patch0009:      bug-1158628_01-tests-replaces-grep-q-usage.patch
 Patch0010:      bug-1158628_02-tests-fix-ra-checking.patch
 Patch0011:      bug-1158628_03-tests-simplify-some-var-settings.patch
-Patch0012:      bug-1158628-04-pvmove-correcting-read_ahead-setting.patch
+Patch0012:      bug-1158628_04-pvmove-correcting-read_ahead-setting.patch
 Patch0013:      bug-1158628_05-activation-add-synchronization-point.patch
 Patch0014:      bug-1158628_06-pvmove-add-missing-synchronization.patch
 Patch0015:      bug-1158628_07-activation-extend-handling-of-pending_delete.patch

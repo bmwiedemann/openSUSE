@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 09:53:00 UTC 2020 - heming.zhao@suse.com
+
+- fix patch name typo
+  - bug-1158628-04-pvmove-correcting-read_ahead-setting.patch
+  + bug-1158628_04-pvmove-correcting-read_ahead-setting.patch
+
+-------------------------------------------------------------------
 Mon Feb 27 09:36:00 UTC 2020 - heming.zhao@suse.com
 
 - vgreduce --removemissing with cache devices will remove lvs (bsc#1157736)
