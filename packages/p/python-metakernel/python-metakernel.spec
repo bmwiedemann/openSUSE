@@ -1,7 +1,7 @@
 #
 # spec file for package python-metakernel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipyparallel}
 BuildRequires:  %{python_module pexpect >= 4.2}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  coreutils-doc
 BuildRequires:  man
 # /SECTION
 Requires:       python-ipykernel

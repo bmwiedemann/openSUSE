@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 20:35:48 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add coreutils-doc as build dependency, testing calls man sleep
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2
