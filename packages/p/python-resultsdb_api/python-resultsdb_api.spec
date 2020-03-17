@@ -1,7 +1,7 @@
 #
 # spec file for package python-resultsdb_api
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-resultsdb_api
-Version:        2.0.0
+Version:        2.1.3
 Release:        0
 Summary:        Library for simplifying the communication with ResultsDB
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
-URL:            https://fedorahosted.org/ResultsDB/
-Source:         https://files.pythonhosted.org/packages/source/r/resultsdb_api/resultsdb_api-%{version}.zip
-BuildRequires:  %{python_module devel}
+URL:            https://pagure.io/taskotron/resultsdb_api
+Source:         https://files.pythonhosted.org/packages/source/r/resultsdb_api/resultsdb_api-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-Requires:       python-requests
-Requires:       python-simplejson
+Requires:       python-requests >= 2.2.1
+Requires:       python-simplejson >= 3.5.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{python_module pytest >= 2.4.2}
+BuildRequires:  %{python_module requests >= 2.2.1}
+BuildRequires:  %{python_module simplejson >= 3.5.3}
 # /SECTION
 %python_subpackages
 
@@ -44,7 +42,6 @@ The ResultsDB API module provides a Python API for using ResultsDB's
 JSON/REST interface in a more pythonic way. It has functions which match
 the JSON/REST methods, but allow the common goodies as named parameters,
 and parameters skipping.
-
 
 %prep
 %setup -q -n resultsdb_api-%{version}
@@ -56,7 +53,14 @@ and parameters skipping.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# https://pagure.io/taskotron/resultsdb_api/issue/1
+# It has tests but they don't work...
+#%%pytest
+
 %files %{python_files}
+%doc README.md
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog
