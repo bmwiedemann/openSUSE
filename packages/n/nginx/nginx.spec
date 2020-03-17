@@ -42,6 +42,8 @@
 %define nginx_upstream_check_module_path nginx_upstream_check_module-%{nginx_upstream_check_version}
 %define nginx_rtmp_version 1.2.1
 %define nginx_rtmp_module_path nginx-rtmp-module-%{nginx_rtmp_version}
+%define nginx_geoip2_version 3.3
+%define nginx_geoip2_module_path ngx_http_geoip2_module-%{nginx_geoip2_version}
 %define src_install_dir %{_prefix}/src/%{name}
 %if 0%{?is_opensuse}
 %bcond_without extra_modules
@@ -88,6 +90,8 @@ Source4:        https://github.com/aperezdc/ngx-fancyindex/archive/v%{ngx_fancyi
 Source5:        https://github.com/openresty/headers-more-nginx-module/archive/v%{headers_more_nginx_version}/%{headers_more_nginx_module_path}.tar.gz
 Source6:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
 Source7:        https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}/%{nginx_rtmp_module_path}.tar.gz
+Source8:        https://github.com/leev/ngx_http_geoip2_module/archive/%{nginx_geoip2_version}.tar.gz#/%{nginx_geoip2_module_path}.tar.gz
+
 Source100:      nginx.rpmlintrc
 Source101:      https://nginx.org/download/%{name}-%{version}.tar.gz.asc
 Source102:      https://nginx.org/keys/mdounin.key#/%{name}.keyring
@@ -106,13 +110,13 @@ Patch5:         check_1.9.2+.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
 #
-BuildRequires:  libGeoIP-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  vim
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libmaxminddb)
 %requires_eq    perl
 Requires(pre):  shadow
 Recommends:     logrotate
@@ -164,7 +168,7 @@ BuildArch:      noarch
 The source of nginx [engine x] HTTP server and IMAP/POP3 proxy server.
 
 %prep
-%setup -q -n %{pkg_name}-%{version} -a 4 -a 5 -a 6 -a 7
+%setup -q -n %{pkg_name}-%{version} -a 4 -a 5 -a 6 -a 7 -a 8
 %patch0 -p1
 %patch1 -p1
 %patch2
@@ -212,7 +216,6 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
   --with-http_addition_module                  \
   --with-http_xslt_module=dynamic              \
   --with-http_image_filter_module=dynamic      \
-  --with-http_geoip_module=dynamic             \
   --with-http_sub_module                       \
   --with-http_dav_module                       \
   --with-http_flv_module                       \
@@ -232,7 +235,6 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
   --with-stream=dynamic                        \
   --with-stream_ssl_module                     \
   --with-stream_realip_module                  \
-  --with-stream_geoip_module=dynamic           \
   --with-stream_ssl_preread_module             \
   --with-pcre                                  \
   %if %{with pcre_jit}
@@ -254,6 +256,7 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
   --add-dynamic-module=%{headers_more_nginx_module_path} \
   --add-dynamic-module=%{nginx_rtmp_module_path} \
   %endif
+  --add-dynamic-module=%{nginx_geoip2_module_path} \
 %if 0%{?suse_version} > 1220
   --with-cc-opt="%{optflags} -fPIC -D_GNU_SOURCE" \
   --with-ld-opt="-Wl,-z,relro,-z,now -pie"
@@ -374,13 +377,13 @@ copydocs %{nginx_rtmp_module_path} \
 %{ngx_sbin_path}
 %dir %{_libdir}/nginx/
 %dir %{ngx_module_dir}/
-%{ngx_module_dir}/ngx_http_geoip_module.so
+%{ngx_module_dir}/ngx_http_geoip2_module.so
 %{ngx_module_dir}/ngx_http_image_filter_module.so
 %{ngx_module_dir}/ngx_http_perl_module.so
 %{ngx_module_dir}/ngx_http_xslt_filter_module.so
 %{ngx_module_dir}/ngx_mail_module.so
 %{ngx_module_dir}/ngx_stream_module.so
-%{ngx_module_dir}/ngx_stream_geoip_module.so
+%{ngx_module_dir}/ngx_stream_geoip2_module.so
 # external modules
 %if %{with extra_modules}
 %{ngx_module_dir}/ngx_http_fancyindex_module.so

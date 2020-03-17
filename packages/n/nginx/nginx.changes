@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:49:35 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Replace obsolete GeoIP module with MaxMinDB-based GeoIP2
+  (bsc#1156202)
+
+-------------------------------------------------------------------
 Wed Mar  4 12:35:47 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.17.9
