@@ -18,7 +18,7 @@
 
 
 Name:           lshw
-Version:        B.02.18+git.20190613
+Version:        B.02.18+git.20191228
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
@@ -29,9 +29,8 @@ Source1:        lshw.desktop.in
 Source2:        lshw.png
 # PATCH-FIX-UPSTREAM lshw-display-latest-version.patch lshw-help-man.patch lshw-modified-time.patch bsc##1130818
 Patch1:         lshw-display-latest-version.patch
-Patch2:         lshw-help-man.patch
-Patch3:         lshw-modified-time.patch
 Patch4:         lshw-add-notime-option-to-manpage.patch
+Patch5:         lshw-nvme.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel

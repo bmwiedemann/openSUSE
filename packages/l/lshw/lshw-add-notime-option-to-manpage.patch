@@ -13,20 +13,20 @@ Signed-off-by: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
  src/lshw.1 | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/src/lshw.1 b/src/lshw.1
-index 79c3619..31ff77f 100644
---- a/src/lshw.1
-+++ b/src/lshw.1
+Index: lshw-B.02.18+git.20191228/src/lshw.1
+===================================================================
+--- lshw-B.02.18+git.20191228.orig/src/lshw.1
++++ lshw-B.02.18+git.20191228/src/lshw.1
 @@ -10,7 +10,7 @@ lshw \- list hardware
  .sp
  \fBlshw\fR [ \fB-X\fR ] 
  .sp
 -\fBlshw\fR [ \fB [ -html ]  [ -short ]  [ -xml ]  [ -json ]  [ -businfo ] \fR ]  [ \fB-dump \fIfilename\fB\fR ]  [ \fB-class \fIclass\fB\fR\fI...\fR ]  [ \fB-disable \fItest\fB\fR\fI...\fR ]  [ \fB-enable \fItest\fB\fR\fI...\fR ]  [ \fB-sanitize\fR ]  [ \fB-numeric\fR ]  [ \fB-quiet\fR ] 
-+\fBlshw\fR [ \fB [ -html ]  [ -short ]  [ -xml ]  [ -json ]  [ -businfo ] \fR ]  [ \fB-dump \fIfilename\fB\fR ]  [ \fB-class \fIclass\fB\fR\fI...\fR ]  [ \fB-disable \fItest\fB\fR\fI...\fR ]  [ \fB-enable \fItest\fB\fR\fI...\fR ]  [ \fB-sanitize\fR ]  [ \fB-numeric\fR ]  [ \fB-notime\fR ]  [ \fB-quiet\fR ] 
++\fBlshw\fR [ \fB [ -html ]  [ -short ]  [ -xml ]  [ -json ]  [ -businfo ] \fR ]  [ \fB-dump \fIfilename\fB\fR ]  [ \fB-class \fIclass\fB\fR\fI...\fR ]  [ \fB-disable \fItest\fB\fR\fI...\fR ]  [ \fB-enable \fItest\fB\fR\fI...\fR ]  [ \fB-sanitize\fR ]  [ \fB-numeric\fR ]  [ \fB-notime\fR ]  [ \fB-quiet\fR ]
  .SH "DESCRIPTION"
  .PP
  
-@@ -74,6 +74,8 @@ Remove potentially sensitive information from output (IP addresses, serial numbe
+@@ -74,6 +74,8 @@ Remove potentially sensitive information
  .TP
  \fB-numeric\fR
  Also display numeric IDs (for PCI and USB devices).
@@ -35,5 +35,3 @@ index 79c3619..31ff77f 100644
  .SH "BUGS"
  .PP
  \fBlshw\fR currently does not detect 
--- 
-2.18.1

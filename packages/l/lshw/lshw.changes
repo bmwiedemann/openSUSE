@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:14:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.18+git.20191228:
+  * fix #755: handle invalid FAT
+  * code clean-up
+  * volumes: Add support for detecting Apple APFS fstype
+  * partitions: Add Apple APFS GUID
+  * specfile: Fix version issue
+  * Do not show modified time with -notime option
+  * Update help message and man page
+- Drop upstreamed patches:
+  * lshw-help-man.patch
+  * lshw-modified-time.patch
+- Add lshw-nvme.patch to support nvme devices bsc#1161323
+
+-------------------------------------------------------------------
 Thu Feb 20 08:15:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Disable LTO as it causes random build failures on some

@@ -130,4 +130,23 @@ factory)</comment>
   architectures (bsc#1164297)</comment>
     <requestid>777588</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b79abd0d60b8d5289fe2da58eba79176</srcmd5>
+    <version>B.02.18+git.20191228</version>
+    <time>1584446974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.18+git.20191228:
+  * fix #755: handle invalid FAT
+  * code clean-up
+  * volumes: Add support for detecting Apple APFS fstype
+  * partitions: Add Apple APFS GUID
+  * specfile: Fix version issue
+  * Do not show modified time with -notime option
+  * Update help message and man page
+- Drop upstreamed patches:
+  * lshw-help-man.patch
+  * lshw-modified-time.patch
+- Add lshw-nvme.patch to support nvme devices bsc#1161323</comment>
+    <requestid>785615</requestid>
+  </revision>
 </revisionlist>
