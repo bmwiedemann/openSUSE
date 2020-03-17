@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 20:08:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.3
+  * Code cleanup only, no functional changes
+
+-------------------------------------------------------------------
 Sun Mar  8 13:22:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Supplement against bash-completion, not bash
