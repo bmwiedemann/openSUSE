@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:51:11 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.4.0
+  * power helper - Try to use logind, then fallback to using
+    consolekit, instead of using a gsettings key to decide
+  * csd-input-helper.c: Use correct error_trap_pop function
+  * mouse manager: set the 'disable touchpad with mouse' on
+    devices at startup
+  * mouse manager: Simplify previous commit - get/set
+    properties here already check for support, there's no
+    need to pre-check
+  * mouse manager: Expose libinput option to disable the
+    touchpad when an external mouse is attached
+  * automount: Add autorun dialog tester
+
+-------------------------------------------------------------------
 Sun Jul 28 04:42:55 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update to version 4.2.2
