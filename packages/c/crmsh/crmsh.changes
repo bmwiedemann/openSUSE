@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:10:14 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1584360067.097e3790:
+  * Dev: unittest: unit test for changed function csync2_update
+  * Dev: behave: functional test for scenarios of bsc#1166684
+  * Fix: bootstrap: use csync2 '-f' option correctly(bsc#1166684)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:48:43 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1584013187.b45cfcb6:

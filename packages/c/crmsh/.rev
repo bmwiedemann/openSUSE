@@ -1985,4 +1985,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>784339</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>2190df8a67eb433b50786d2f1e8a15f9</srcmd5>
+    <version>4.2.0+git.1584360067.097e3790</version>
+    <time>1584446967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785611</requestid>
+  </revision>
 </revisionlist>
