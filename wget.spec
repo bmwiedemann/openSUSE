@@ -1,7 +1,7 @@
 #
 # spec file for package wget
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://www.gnu.org/software/wget/
+URL:            https://www.gnu.org/software/wget/
 Source:         https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=wget&download=1#/wget.keyring
@@ -33,6 +33,7 @@ Patch6:         wget-1.14-no-ssl-comp.patch
 # PATCH-FIX-OPENSUSE fix pod syntax for perl 5.18 coolo@suse.de
 Patch7:         wget-fix-pod-syntax.diff
 Patch8:         wget-errno-clobber.patch
+Patch9:         remove-env-from-shebang.patch
 BuildRequires:  automake
 BuildRequires:  gpgme-devel >= 0.4.2
 BuildRequires:  libcares-devel
@@ -68,6 +69,8 @@ BuildRequires:  perl-IO-Socket-SSL
 Wget enables you to retrieve WWW documents or FTP files from a server.
 This can be done in script files or via the command line.
 
+%lang_package
+
 %prep
 %setup -q
 %patch0 -p1
@@ -77,6 +80,7 @@ This can be done in script files or via the command line.
 %patch6
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %if 0%{?suse_version} > 1110
@@ -87,16 +91,17 @@ autoreconf --force
 	--with-ssl=openssl \
 	--with-cares \
 	--with-metalink
-make %{?_smp_mflags} V=1
+%make_build
+sed -i 's/\/usr\/bin\/env perl -w/\/usr\/bin\/perl -w/' util/rmold.pl
 
 %check
 %if %{with regression_tests}
-make %{?_smp_mflags} -C tests/ check
+%make_build -C tests/ check
 %endif
 
 %install
 %make_install
-%find_lang %{name}
+%find_lang %{name} %{?no_lang_C}
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -104,7 +109,7 @@ make %{?_smp_mflags} -C tests/ check
 %postun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
-%files -f %{name}.lang
+%files 
 %license COPYING
 %doc AUTHORS NEWS README MAILING-LIST
 %doc doc/sample.wgetrc util/rmold.pl
@@ -112,5 +117,7 @@ make %{?_smp_mflags} -C tests/ check
 %{_infodir}/wget*
 %config(noreplace) %{_sysconfdir}/wgetrc
 %{_bindir}/*
+
+%files lang -f %{name}.lang
 
 %changelog
