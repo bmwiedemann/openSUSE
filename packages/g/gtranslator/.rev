@@ -310,4 +310,12 @@
     <comment>Removal of -lang recommends (forwarded request 768618 from dimstar)</comment>
     <requestid>768682</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ebee72964d82d04cc6708b711b386e39</srcmd5>
+    <version>3.34.0</version>
+    <time>1584446969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785626</requestid>
+  </revision>
 </revisionlist>
