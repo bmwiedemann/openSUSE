@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 10 18:46:58 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add 1.14.5-master.patch containing among many other things fix
+  allowing running ``man -w`` to get manpath.
+  (gh#neovim/neovim#11794)
+
+-------------------------------------------------------------------
 Fri Jan 31 21:50:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Conflict also groff-full

@@ -24,6 +24,9 @@ License:        ISC
 Group:          Productivity/Publishing/Troff
 URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM empty_w-manpath.patch gh#neovim/neovim#11794 mcepl@suse.com
+# Add man -w producing manpath (among many other things)
+Patch0:         1.14.5-master.patch
 BuildRequires:  zlib-devel
 Provides:       man = %{version}
 Conflicts:      man
@@ -42,6 +45,7 @@ For general information, see <http://mandoc.bsd.lv/>.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %{?!make_build:%define make_build make %{?_smp_mflags} V=1 VERBOSE=1}
