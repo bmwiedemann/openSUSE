@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 08:14:09 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add thunarx-python-py3.8.diff to add missing "--embed" flag to
+  python3-config
+
+-------------------------------------------------------------------
 Mon Feb 24 17:11:18 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - port reproducible.patch to python 3

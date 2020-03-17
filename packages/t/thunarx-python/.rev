@@ -55,4 +55,12 @@
     <comment>port reproducible.patch to python 3</comment>
     <requestid>778859</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>7ffb97fee30f5334da359b1274aa50e5</srcmd5>
+    <version>0.5.1</version>
+    <time>1584447100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785860</requestid>
+  </revision>
 </revisionlist>

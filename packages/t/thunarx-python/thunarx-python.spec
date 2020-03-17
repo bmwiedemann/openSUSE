@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 URL:            https://goodies.xfce.org/projects/bindings/thunarx-python
 Source:         http://archive.xfce.org/src/bindings/%{name}/0.5/%{name}-%{version}.tar.bz2
 Patch0:         reproducible.patch
+Patch1:         thunarx-python-py3.8.diff
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
