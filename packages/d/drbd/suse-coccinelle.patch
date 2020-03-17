@@ -1,60 +1,73 @@
-diff -Naur drbd-9.0.20~1+git.7dce3c8b.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.20~1+git.7dce3c8b/drbd/drbd-kernel-compat/gen_compat_patch.sh
---- drbd-9.0.20~1+git.7dce3c8b.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2020-01-09 13:38:00.998984586 +0800
-+++ drbd-9.0.20~1+git.7dce3c8b/drbd/drbd-kernel-compat/gen_compat_patch.sh	2020-01-09 13:38:10.407036976 +0800
-@@ -41,6 +41,15 @@
+diff -Naur drbd-9.0.21~1+git.449d6bf2.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.21~1+git.449d6bf2/drbd/drbd-kernel-compat/gen_compat_patch.sh
+--- drbd-9.0.21~1+git.449d6bf2.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-12-16 14:42:10.832866579 +0800
++++ drbd-9.0.21~1+git.449d6bf2/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-12-16 15:11:08.209750606 +0800
+@@ -56,29 +56,49 @@
  		< drbd-kernel-compat/cocci/debugfs_compat_template.cocci.in \
- 		>> $incdir/.compat.cocci;
-     done;
+ 		>> $incdir/.compat.cocci
+     done
 +
 +    echo "  APPLIED_COCCI_FILES   ";
 +    cat $incdir/applied_cocci_files.txt;
++
 +    coccilibpath=$(rpm -ql coccinelle|grep standard.h|xargs dirname);
 +    echo "  SPATCH_SOURCES: "$*;
 +    echo "  COCCI_LIBPATH: "$coccilibpath;
-+    echo "  GENCOCCIRULES .compat.cocci";
-+    cat $incdir/.compat.cocci;
 +
-     echo "  SPATCH   $chksum  "$K;
-     # Note: $* (or $@) is NOT make magic variable now, this is a shell script
-     # make $@, the target file, was passed as $1, and is now $compat_patch
-@@ -49,7 +58,8 @@
-     # argument away this is shell $@ respectively $* now.
-     # we know we don't have white-space in the argument list
- 
--    command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
-+    command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
-+    echo "  SPATCH COMMAND $command  ";
- 
-     if test -t 0; then
- 	$SHELL -c "$command"
-@@ -59,6 +69,14 @@
- 	# They may ignore INT and TERM; if you have to, use HUP.
- 	</dev/null &> /dev/null script --append $incdir/.spatch.tty.out --return --quiet --command "$command"
-     fi
+     if [ -e $incdir/.compat.cocci ]; then
+-	echo "  SPATCH   $chksum  "$K
+-	# Note: $* (or $@) is NOT make magic variable now, this is a shell script
+-	# make $@, the target file, was passed as $1, and is now $compat_patch
+-	# make $^, the source (and header) files spatch should operate on,
+-	# are "the rest of the shell argument array", so after shifting the first
+-	# argument away this is shell $@ respectively $* now.
+-	# we know we don't have white-space in the argument list
+-
+-	command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
+-
+-	if test -t 0; then
+-	    $SHELL -c "$command"
+-	else
+-	    # spatch is broken in a way: it "requires" a tty.
+-	    # provide a tty using "script", so I can have several spatch in parallel.
+-	    # They may ignore INT and TERM; if you have to, use HUP.
+-	    </dev/null &> /dev/null script --append $incdir/.spatch.tty.out --return --quiet --command "$command"
+-	fi
++    	echo "  GENCOCCIRULES .compat.cocci";
++    	cat $incdir/.compat.cocci;
++
++		echo "  SPATCH   $chksum  "$K
++		# Note: $* (or $@) is NOT make magic variable now, this is a shell script
++		# make $@, the target file, was passed as $1, and is now $compat_patch
++		# make $^, the source (and header) files spatch should operate on,
++		# are "the rest of the shell argument array", so after shifting the first
++		# argument away this is shell $@ respectively $* now.
++		# we know we don't have white-space in the argument list
++
++    	command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"                                           
++    	echo "  SPATCH COMMAND $command  ";
++
++		if test -t 0; then
++		    $SHELL -c "$command"
++		else
++		    # spatch is broken in a way: it "requires" a tty.
++		    # provide a tty using "script", so I can have several spatch in parallel.
++		    # They may ignore INT and TERM; if you have to, use HUP.
++		    </dev/null &> /dev/null script --append $incdir/.spatch.tty.out --return --quiet --command "$command"
++		fi
+     else
+-	echo "  SPATCH   $chksum  "$K" - nothing to do"
+-	touch $compat_patch.tmp
++		echo "  SPATCH   $chksum  "$K" - nothing to do"
++		touch $compat_patch.tmp
++    fi
 +
 +    echo "  GENSPATCHFILE $compat_patch.tmp  ";
 +    cat $compat_patch.tmp;
 +    if [ -e $incdir/.spatch.stderr ]; then
 +        echo "  GENSPATCHERR .spatch.stderr";
 +        cat $incdir/.spatch.stderr;
-+    fi
+     fi
 +
      if [ -e $incdir/.compat.patch ]; then
- 	cat $incdir/.compat.patch >> $compat_patch.tmp;
-     fi;
-diff -Naur drbd-9.0.20~1+git.7dce3c8b.orig/Makefile drbd-9.0.20~1+git.7dce3c8b/Makefile
---- drbd-9.0.20~1+git.7dce3c8b.orig/Makefile	2020-01-09 13:38:00.994984563 +0800
-+++ drbd-9.0.20~1+git.7dce3c8b/Makefile	2020-01-09 13:41:50.512262670 +0800
-@@ -310,9 +310,11 @@
- endif
- 
- coccicheck: coccinelle/*.cocci
-+	$(eval coccilibpath := $(shell rpm -ql coccinelle|grep standard.h|xargs dirname))
- 	@for file in $^ ; do \
- 		echo "  COCCICHECK $$(basename $${file} .cocci)"; \
--		spatch --very-quiet drbd/drbd_*.c -D $(MODE) --sp-file $${file}; \
-+		spatch drbd/drbd_*.c --macro-file-builtins $(coccilibpath)/standard.h \
-+	        --iso-file $(coccilibpath)/standard.iso -D $(MODE) --sp-file $${file}; \
- 	done
- 
- Makefile: ;
+ 	cat $incdir/.compat.patch >> $compat_patch.tmp
+     fi

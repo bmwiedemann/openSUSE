@@ -23,7 +23,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.0.20~1+git.7dce3c8b
+Version:        9.0.22~1+git.fe2b5983
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -36,12 +36,11 @@ Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
 Patch2:         rely-on-sb-handlers.patch
 Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
-Patch4:         drbd-update-resync-target-s-dagtag.patch
 #In 61ff72f401680(v5.5-rc2), pr_warning is removed
-Patch5:         without_pr_warning.patch
-Patch6:         suse-coccinelle.patch
+Patch4:         without_pr_warning.patch
+Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
-BuildRequires:  coccinelle
+BuildRequires:  coccinelle >= 1.0.8
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
@@ -76,8 +75,7 @@ installed kernel.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch99 -p1
 
 mkdir source
 cp -a drbd/. source/. || :
@@ -97,8 +95,8 @@ export SPAAS='false'
 
 for flavor in %{flavors_to_build}; do
     rm -rf $flavor
-    cp -r source $flavor
-    cp %{_sourcedir}/Module.supported $flavor
+    cp -a -r source $flavor
+    cp -a %{_sourcedir}/Module.supported $flavor
     export DRBDSRC="$PWD/obj/$flavor"
     # bsc#1160194, check the coccicheck work.
     #make coccicheck
