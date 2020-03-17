@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb  6 11:01:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.8
+  * Fix pseries::evalf(), broken since 1.7.0.
+  * Fix a corner-case bug in H_evalf().
+- Changes from version 1.7.4 to 1.7.7: See
+  %{_docdir}/ginac-devel/NEWS file.
+- Use python3 instead of python(2) for building.
+- Add ginac-check-for-python3.patch to check for python3 during
+  configure; requires running autoreconf before configure.
+- Rename devel file to ginac-devel, instead of libginac-devel,
+  according to recommended naming guidelines.
+- Build and package API documentation and examples in html format;
+  add BuildRequires necessary for this.
+- Use Requires(post) and Requires(preun) instead of PreReq.
+
+-------------------------------------------------------------------
 Fri Apr  6 10:53:23 UTC 2018 - dimstar@opensuse.org
 
 - Drop baselibs.conf completely: This was introdcued two years ago
