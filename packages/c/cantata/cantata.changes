@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:02:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Correctly-handle-changing-Basic-mode-music-folder.patch
+    (gh#CDrummond/cantata#1575)
+- Use %cmake_build
+- Drop obsolete conditions
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Tue Mar  3 08:08:53 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Add correct-path-saved-lyrics.patch to fix saving lyrics

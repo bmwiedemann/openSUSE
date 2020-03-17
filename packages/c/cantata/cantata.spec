@@ -29,8 +29,11 @@ Patch0:         fix-translations-with-qt5.diff
 # PATCH-FIX-UPSTREAM: [PATCH] Correctly set 'storeLyricsInMpdDir' config item, UI was
 # setting wrong config item. Cantatan issue #1576
 Patch1:         correct-path-saved-lyrics.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Correctly-handle-changing-Basic-mode-music-folder.patch
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -56,15 +59,13 @@ BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(zlib)
-Requires(post):    hicolor-icon-theme
-Requires(post):    update-desktop-files
-Requires(postun):  hicolor-icon-theme
-Requires(postun):  update-desktop-files
 Requires:       media-player-info
-Recommends:     mpd
+Requires(post): hicolor-icon-theme
+Requires(post): update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 Recommends:     %{name}-lang = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+Recommends:     mpd
 %lang_package
 
 %description
@@ -97,35 +98,23 @@ interface) is now very different to that of QtMPC. For more detailed
 information, please refer to the main README.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake -DENABLE_REMOTE_DEVICES=OFF \
     -DENABLE_CATEGORIZED_VIEW=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 %suse_update_desktop_file %{name}
 
-%find_lang %name --without-kde --with-qt --all-name --without-mo
+%find_lang %{name} --without-kde --with-qt --all-name --without-mo
 
 %fdupes %{buildroot}
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%defattr(-,root,root)
+%license LICENSE
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/
 %{_datadir}/%{name}
@@ -133,14 +122,8 @@ information, please refer to the main README.
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
 %doc AUTHORS ChangeLog README README.md TODO
-%if 0%{?suse_version} < 1500
-%doc LICENSE
-%else
-%license LICENSE
-%endif
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 %dir %{_datadir}/%{name}/translations
 
 %changelog
