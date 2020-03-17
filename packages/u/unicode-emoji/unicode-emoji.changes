@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 12 03:33:18 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Move copyright.html to %license
+
+-------------------------------------------------------------------
+Wed Mar 11 19:18:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to unicode 13 version files. Upstream did not provide changelog
+
+-------------------------------------------------------------------
 Sat Nov 18 14:36:21 UTC 2017 - hillwood@opensuse.org
 
-- Initial package. 
+- Initial package for version 6.0
