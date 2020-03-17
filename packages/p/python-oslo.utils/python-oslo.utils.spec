@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,23 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.utils
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-3.41.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Babel
-BuildRequires:  python2-ddt
-BuildRequires:  python2-debtcollector >= 1.2.0
-BuildRequires:  python2-eventlet
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-iso8601 >= 0.1.11
-BuildRequires:  python2-mock
-BuildRequires:  python2-monotonic >= 0.6
-BuildRequires:  python2-netaddr >= 0.7.18
-BuildRequires:  python2-netifaces >= 0.10.4
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-pyparsing >= 2.1.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -49,6 +32,7 @@ BuildRequires:  python3-eventlet
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-mock
+BuildRequires:  python3-monotonic >= 0.6
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-netifaces >= 0.10.4
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -58,23 +42,29 @@ BuildRequires:  python3-pyparsing >= 2.1.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-iso8601 >= 0.1.11
-Requires:       python-netaddr >= 0.7.18
-Requires:       python-netifaces >= 0.10.4
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-pyparsing >= 2.1.0
-Requires:       python-pytz >= 2013.6
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-monotonic >= 0.6
-%endif
-%python_subpackages
 
 %description
 The oslo.utils library provides support for common utility type functions,
 such as encoding, exception handling, string manipulation, and time handling.
+
+%package -n python3-oslo.utils
+Summary:        OpenStack Utils Library
+Group:          Development/Languages/Python
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-iso8601 >= 0.1.11
+Requires:       python3-netaddr >= 0.7.18
+Requires:       python3-netifaces >= 0.10.4
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-pyparsing >= 2.1.0
+Requires:       python3-pytz >= 2013.6
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-oslo.utils
+The oslo.utils library provides support for common utility type functions,
+such as encoding, exception handling, string manipulation, and time handling.
+
+This package contains the Python 3.x module.
 
 %package -n python-oslo.utils-doc
 Summary:        Documentation for OpenStack utils library
@@ -91,10 +81,10 @@ Documentation for OpenStack utils library.
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 
 %install
-%python_install
+%py3_install
 
 # generate html docs
 PBR_VERSION=3.41.1 %sphinx_build -b html doc/source doc/build/html
@@ -102,13 +92,14 @@ PBR_VERSION=3.41.1 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-%python_exec -m stestr.cli run
+rm -v oslo_utils/tests/test_reflection.py
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.utils
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/oslo_utils
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/oslo_utils
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.utils-doc
 %doc doc/build/html

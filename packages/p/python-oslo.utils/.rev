@@ -386,4 +386,12 @@
   - Mask encryption_key_id</comment>
     <requestid>774923</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a5a4c9c491f5373bab51c0f4f610ac5b</srcmd5>
+    <version>3.41.1</version>
+    <time>1584446977</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only client</comment>
+    <requestid>785569</requestid>
+  </revision>
 </revisionlist>
