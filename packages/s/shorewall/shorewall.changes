@@ -1,8 +1,47 @@
 -------------------------------------------------------------------
+Sun Mar 15 19:34:02 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add version to requires in -lite version 
+
+-------------------------------------------------------------------
+Wed Mar 11 13:53:14 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to minor bugfix version 5.2.3.7
+  + When DOCKER=Yes, if both the DOCKER-ISOLATE and
+    DOCKER-ISOLATE-STAGE-1 existed then the DOCKER-ISOLATE-STAGE-*
+    chains were not preserved through shorewall state changes.
+    That has been corrected so that both chains are preserved if
+    present.
+  + Previously, the compiler always detected the OLD_CONNTRACK_MATCH
+    capability as being available in IPv6. When OLD_CONNTRACK_MATCH
+    was available, the compiler also mishandled inversion ('!') in the
+    ORIGDEST columns, leading to an assertion failure.
+    Both the incorrect capability detection and the mishandled
+    inversion have been corrected.
+  + During 'enable' processing, if address variables associated with
+    the interface have values different than those when the firewall
+    was last started/restarted/reloaded, then a 'reload' is performed
+    rather than a simple 'enable'. The logic that checks for those
+    changes was incorrect in some configurations, leading to unneeded
+    reload operations. That has been corrected.
+  + When MANGLE_ENABLED=No in shorewall[6].conf, some features
+    requiring use of the mangle table can be allowed, even though the
+    mangle table is not updated. That has been corrected such that use
+    of such features will raise an error.
+  + When the IfEvent(...,reset) action was invoked, the compiler
+    previously emitted a spurious "Resetting..." message. That message
+    has been suppressed.
+- Packaging
+  + Do not provide anymore unsused notrack file
+  + Introduce define conf_need_update to track when we activate the
+  post update warning for users when there's minor or major version
+  update of shorewall bnc#1166114
+
+-------------------------------------------------------------------
 Mon Feb 17 12:09:31 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix minor 5.2.3.6
-  + Fix for possible start failure when both Docker containers 
+  + Fix for possible start failure when both Docker containers
     and Libvirt VMs were in use.
 
 -------------------------------------------------------------------
@@ -43,7 +82,7 @@ Wed Sep  4 16:35:45 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
   + Correct handling of multi-queue NFQUEUE as a macro parameter.
   + Make 'AUTOMAKE=No' the update default.
   + Correct the description of the 'bypass' NFQUEUE option in
-    shorewall-rules(5). 
+    shorewall-rules(5).
 
 -------------------------------------------------------------------
 Mon Apr 15 08:41:56 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
@@ -58,7 +97,7 @@ Mon Apr 15 08:41:56 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
   automatic update, such that the following error message was issued:
    Use of uninitialized value $Shorewall::Nat::raw::currentline in
    pattern match (m//) at /usr/share/shorewall/Shorewall/Nat.pm
-   line 511, <$currentfile> line nnn. and the generated 'masq' 
+   line 511, <$currentfile> line nnn. and the generated 'masq'
   file contains only initial comments. That has been corrected.
 
 -------------------------------------------------------------------
@@ -70,7 +109,7 @@ Wed Feb 27 15:52:39 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
     if more than one zone was excluded then the following error was
     raised:
         ERROR: 'all' is not allowed in a source zone list
-                etc/shorewall/policy (line ...) 
+                etc/shorewall/policy (line ...)
 
 -------------------------------------------------------------------
 Sat Feb 23 09:46:07 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>

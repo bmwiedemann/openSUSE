@@ -19,12 +19,14 @@
 %define have_systemd 1
 %define dmaj 5.2
 %define dmin 5.2.3
+# Warn users for upgrading configuration but only on major or minor version changes
+%define conf_need_update 0
 #2017+ New fillup location
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.3.6
+Version:        5.2.3.7
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only
@@ -71,7 +73,7 @@ Summary:        Shoreline Firewall Lite is an iptables-based firewall for Linux 
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 Requires:       %{_sbindir}/service
-Requires:       %{name}-core
+Requires:       %{name}-core = %{version}-%{release}
 Requires:       bc
 Requires:       iproute2
 Requires:       iptables
@@ -110,7 +112,7 @@ Summary:        Shoreline Firewall 6 Lite is an ip6tables-based firewall for Lin
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 Requires:       %{_sbindir}/service
-Requires:       %{name}-core
+Requires:       %{name}-core = %{version}-%{release}
 Requires:       logrotate
 PreReq:         %fillup_prereq
 Provides:       shoreline_firewall = %{version}-%{release}
@@ -193,7 +195,7 @@ cp %{SOURCE8} %{name}-%version/.
 
 %install
 
-# find the systemd version inorder to install correct service files
+# find the systemd version in order to install correct service files
 %define systemd_version \
 systemd --version | awk '/^systemd/ {print $2}'
 
@@ -245,7 +247,6 @@ for i in $targets; do
     popd
 done
 
-# FIXME linkto /usr/sbin/service should follow usr_move thing
 rctargets="shorewall shorewall-lite shorewall6 shorewall6-lite shorewall-init"
 mkdir -p %buildroot/%{_sbindir}
 for i in $rctargets; do
@@ -257,18 +258,16 @@ rm -rf %buildroot%_initddir
 
 # Since 5.12 we need to remove them again
 rm -f %{buildroot}/%{_sysconfdir}/sysconfig/%{name}*
-touch %{buildroot}%{_sysconfdir}/%{name}/notrack
-touch %{buildroot}%{_sysconfdir}/%{name}6/notrack
 
 %pretrans
-# Warn users for upgrading configuration but only on all version changes
-# @TODO test and organize smooth automatic update
+%if %conf_need_update
 echo "upgrade configuration" > /run/%{name}_upgrade
+%endif
 
 %pretrans -n %{name}6
-# Warn users for upgrading configuration but only on all version changes
-# @TODO test and organize smooth automatic update
+%if %conf_need_update
 echo "upgrade configuration" > /run/%{name}6_upgrade
+%endif
 
 %pre
 %service_add_pre shorewall.service
