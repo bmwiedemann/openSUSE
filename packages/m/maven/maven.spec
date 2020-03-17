@@ -28,7 +28,7 @@ Summary:        Java project management and project comprehension tool
 # bundled slf4j is MIT
 License:        Apache-2.0 AND MIT
 Group:          Development/Tools/Building
-URL:            http://maven.apache.org/
+URL:            https://maven.apache.org/
 Source0:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
@@ -162,6 +162,10 @@ Requires:       slf4j
 # patch (using a script written in Groovy), compile and package as
 # maven-slf4j-provider.jar, together with Maven-specific additions.
 Provides:       bundled(slf4j) = %{bundled_slf4j_version}
+# This package might be installed on a system, since it used to be
+# produced by the binary maven repackaging in some repositories.
+# This Obsoletes will allow a clean upgrade.
+Obsoletes:      %{name}-jansi
 # If XMvn is part of the same RPM transaction then it should be
 # installed first to avoid triggering rhbz#1014355.
 OrderWithRequires: xmvn-minimal
@@ -255,7 +259,7 @@ build-jar-repository -s lib \
     slf4j/simple \
     xbean/xbean-reflect
 ln -s $(build-classpath slf4j/slf4j-simple-sources) lib/
-%ant \
+%{ant} \
   -Dtest.skip=true \
   package javadoc
 
@@ -290,7 +294,7 @@ install -d -m 755 %{buildroot}%{_datadir}/bash-completion/completions/
 cp -a apache-maven/src/{bin,conf,lib} %{buildroot}%{homedir}/
 chmod +x %{buildroot}%{homedir}/bin/*
 unix2dos %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
-chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf 
+chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 
 # Transitive deps of wagon-http, missing because of unshading
 build-jar-repository -p %{buildroot}%{homedir}/lib \

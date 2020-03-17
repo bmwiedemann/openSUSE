@@ -23,4 +23,12 @@
     <comment>Upgrade to 3.6.3</comment>
     <requestid>774808</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fd6164805a487ce91bbeebdd571d293c</srcmd5>
+    <version>3.6.3</version>
+    <time>1584446998</time>
+    <user>dimstar_suse</user>
+    <comment>Obsolete maven-jansi package that once existed</comment>
+    <requestid>785656</requestid>
+  </revision>
 </revisionlist>
