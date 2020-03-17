@@ -17,7 +17,7 @@
 
 
 Name:           perl-XML-LibXML
-Version:        2.0202
+Version:        2.0203
 Release:        0
 %define cpan_name XML-LibXML
 Summary:        Perl Binding for libxml2
@@ -29,6 +29,7 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Alien::Base::Wrapper)
 BuildRequires:  perl(Alien::Libxml2)
 BuildRequires:  perl(XML::NamespaceSupport) >= 1.07
 BuildRequires:  perl(XML::SAX) >= 0.11

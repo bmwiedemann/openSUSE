@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 12 03:13:24 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.0203
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0203  2020-03-11
+      - Use Alien::Base::Wrapper for better portability.
+          - https://github.com/shlomif/perl-XML-LibXML/pull/45
+          - Thanks to @plicease
+
+-------------------------------------------------------------------
 Tue Jan 14 03:16:35 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.0202
