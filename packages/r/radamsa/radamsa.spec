@@ -1,7 +1,7 @@
 #
 # spec file for package radamsa
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,10 @@ Release:        0
 Summary:        A test case generator for robustness testing, aka a fuzzer
 License:        MIT
 Group:          Development/Tools/Other
-Url:            https://www.ee.oulu.fi/research/ouspg/Radamsa
-Source0:        http://haltp.org/download/%{name}-%{version}.tar.gz
-Source1:        http://haltp.org/download/%{name}-%{version}.tar.gz.asc
+URL:            https://www.ee.oulu.fi/research/ouspg/Radamsa
+Source0:        %{name}-%{version}.tar.gz
+Source1:        %{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Radamsa is a test case generator for robustness testing, aka a fuzzer. It
@@ -41,15 +40,15 @@ of bugs in programs that actually matter.
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc LICENCE readme.txt
+%license LICENCE
+%doc readme.txt
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

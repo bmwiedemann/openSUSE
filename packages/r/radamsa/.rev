@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>383202</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>aa34d9bc5d01bbcfd1ebff4f025c1665</srcmd5>
+    <version>0.4</version>
+    <time>1584447105</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop no longer working downlaod url</comment>
+    <requestid>785861</requestid>
+  </revision>
 </revisionlist>
