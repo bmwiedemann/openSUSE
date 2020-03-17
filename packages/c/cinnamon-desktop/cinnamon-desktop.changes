@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:42:30 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.4.1
+  * Clock: Fix date format when LC_TIME and LANGUAGE are the same,
+    or LC_TIME is NULL
+- changes in 4.4.0
+  * org.cinnamon.desktop.session schema: Remove logind/consolekit
+    settings
+  * Fetch clock formats using LC_TIME (as opposed to LANGUAGE)
+  * Fix unused GIR transfer notation on integer values
+
+-------------------------------------------------------------------
 Sun Jul 21 05:22:22 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update to version 4.2.0
