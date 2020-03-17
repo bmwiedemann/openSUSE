@@ -43,4 +43,13 @@
 - Disable failing test</comment>
     <requestid>749177</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b6c0b94f08c7b0cedabfce6ff2917a5b</srcmd5>
+    <version>1.1.0</version>
+    <time>1584447127</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip also test test_aiohttp that fails on Leap due to http error
+  (it tries to resolve stuff that fails)</comment>
+    <requestid>785883</requestid>
+  </revision>
 </revisionlist>

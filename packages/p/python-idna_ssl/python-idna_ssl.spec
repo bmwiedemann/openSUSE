@@ -1,7 +1,7 @@
 #
-# spec file for package python-idna_ssl
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Version:        1.1.0
 Release:        0
 Summary:        Library that patches sslmatch_hostname for Unicode/IDNA domain support
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/idna_ssl
 Source:         https://github.com/aio-libs/idna-ssl/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module idna >= 2.0}
@@ -69,7 +68,7 @@ sed -i -e '/addopts/d' setup.cfg
 
 %check
 %if %{with test}
-%pytest -k "not test_aiohttp_py370"
+%pytest -k "not test_aiohttp_py370 and not test_aiohttp"
 %endif
 
 %if ! %{with test}
