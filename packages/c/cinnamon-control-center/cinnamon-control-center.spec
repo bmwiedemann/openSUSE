@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-control-center
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libcinnamon-control-center
 %define sover   1
 Name:           cinnamon-control-center
-Version:        4.2.2
+Version:        4.4.0
 Release:        0
 Summary:        Utilities to configure the Cinnamon desktop
 License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
