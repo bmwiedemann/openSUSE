@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 13:13:18 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.6.4
+  * The main focus in this release was fix some of the more glaring
+    problems creapt in from the last release due to that refactor.
+  * See ChangeLog for details.
+
+-------------------------------------------------------------------
 Fri Feb  7 16:32:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.6.3

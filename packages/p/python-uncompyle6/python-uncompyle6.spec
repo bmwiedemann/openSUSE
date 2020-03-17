@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uncompyle6
-Version:        3.6.3
+Version:        3.6.4
 Release:        0
 Summary:        Python cross-version byte-code decompiler
 License:        GPL-3.0-only
@@ -26,18 +26,19 @@ Group:          Development/Languages/Python
 URL:            https://github.com/rocky/python-uncompyle6/
 Source:         https://files.pythonhosted.org/packages/source/u/uncompyle6/uncompyle6-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-hypothesis >= 2.0.0
+Requires:       python-setuptools
+Requires:       python-spark_parser >= 1.8.7
+Requires:       python-xdis >= 4.2.2
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module spark_parser >= 1.8.7}
 BuildRequires:  %{python_module xdis >= 4.2.2}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-spark_parser >= 1.8.7
-Requires:       python-xdis >= 4.2.2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
