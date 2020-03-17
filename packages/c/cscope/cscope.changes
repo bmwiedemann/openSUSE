@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:29:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix download url
+- Clean up spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Mar 13 07:55:40 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- Update to 15.9
+ * Fix coverity scan warnings
+ * cscope: Add ( and | as metachars in regex search
+ * Adding chek on return code of search() in linemode
+ * Fix DOS style line endings in one file; enable system C extensions,
+   if available
+
+-------------------------------------------------------------------
 Thu Mar 23 15:14:36 UTC 2017 - kstreitova@suse.com
 
 - cleanup with spec-cleaner

@@ -1,7 +1,7 @@
 #
 # spec file for package cscope
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cscope
-Version:        15.8b
+Version:        15.9
 Release:        0
 Summary:        Interactive Tool for Browsing C Source Code
 License:        BSD-3-Clause
 Group:          Development/Tools/Navigators
-Url:            http://cscope.sourceforge.net/
-Source:         http://sourceforge.net/projects/cscope/files/cscope/%{version}/%{name}-%{version}.tar.gz
+URL:            http://cscope.sourceforge.net/
+Source:         http://sourceforge.net/projects/cscope/files/cscope/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         cscope-null.patch
 Patch2:         cscope-15.7-gcc-warnings.patch
 Patch3:         cscope-15.7-vpath.patch
@@ -35,7 +35,6 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Cscope is an interactive, screen-oriented tool that allows the user to
@@ -53,24 +52,25 @@ browse through C source code files for specified elements of code.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_mandir}/man1
-install -m 755 src/cscope %{buildroot}%{_bindir}/cscope
-install -m 644 doc/cscope.1 %{buildroot}%{_mandir}/man1/cscope.1
-install -m 755 contrib/xcscope/cscope-indexer %{buildroot}%{_bindir}/cscope-indexer
+install -Dpm 0755 src/cscope \
+  %{buildroot}%{_bindir}/cscope
+install -Dpm 0644 doc/cscope.1 \
+  %{buildroot}%{_mandir}/man1/cscope.1
+install -Dpm 0755 contrib/xcscope/cscope-indexer \
+  %{buildroot}%{_bindir}/cscope-indexer
 pushd contrib
 %make_install
 popd
 
 %files
-%defattr(-,root,root)
-%doc TODO COPYING ChangeLog AUTHORS README NEWS
-%{_mandir}/man1/cscope.1%{ext_man}
+%license COPYING
+%doc TODO ChangeLog AUTHORS README NEWS
 %{_bindir}/cscope
 %{_bindir}/ocs
 %{_bindir}/cscope-indexer
+%{_mandir}/man1/cscope.1%{?ext_man}
 
 %changelog
