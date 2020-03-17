@@ -28,16 +28,28 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        geoipupdate.timer
 Source3:        geoipupdate.service
+Source4:        geoipupdate-legacy
 Patch0:         disable-pandoc.patch
+%if 0%{?suse_version} >= 1500
 # Build-time parameters
 BuildRequires:  go >= 1.10
 # Manpage
 BuildRequires:  perl%{?suse_version:-base}
+%endif
 
 %description
 The GeoIP Update program performs automatic updates of GeoIP2 and GeoIP Legacy
 binary databases. Currently the program only supports Linux and other
 Unix-like systems.
+
+%package legacy
+Summary:        GeoIP Lagacy Format Updater
+Group:          Productivity/Networking/Other
+Requires:       geoipupdate
+Requires:       geolite2legacy
+
+%description legacy
+Script for updating data in GeoIP Legacy format.
 
 # Preparation step (unpackung and patching if necessary)
 %prep
@@ -45,6 +57,7 @@ Unix-like systems.
 %patch0 -p1
 
 %build
+%if 0%{?suse_version} >= 1500
 export GOCACHE=$(pwd -P)/.gocache
 export GOTRACEBACK=crash
 export GOFLAGS='-a -mod=vendor -buildmode=pie -gcflags=all=-dwarf=false -ldflags=all=-s -ldflags=all=-w'
@@ -52,20 +65,24 @@ export GOFLAGS='-a -mod=vendor -buildmode=pie -gcflags=all=-dwarf=false -ldflags
   CONFFILE=%{_sysconfdir}/GeoIP.conf \
   DATADIR=%{_localstatedir}/lib/GeoIP \
   VERSION=%{version}
+%endif
 
 %install
+%if 0%{?suse_version} >= 1500
 install -D -m0644 %{SOURCE2}              %{buildroot}%{_unitdir}/geoipupdate.timer
 install -D -m0644 %{SOURCE3}              %{buildroot}%{_unitdir}/geoipupdate.service
 install -D -m0755 build/geoipupdate       %{buildroot}%{_bindir}/geoipupdate
+%endif
+install -D -m0755 %{SOURCE4}              %{buildroot}%{_bindir}/geoipupdate-legacy
 install -D -m0644 conf/GeoIP.conf.default %{buildroot}%{_sysconfdir}/GeoIP.conf
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/GeoIP
 sed -ri \
- -e '/^UserId\s*/     s|YOUR_USER_ID_HERE|999999|' \
- -e '/^LicenseKey\s*/ s|YOUR_LICENSE_KEY_HERE|000000000000|' \
- -e '/^ProductIds\s*/ s|^(\w+s*).+$|\1 GeoLite2-City GeoLite2-Country GeoLite-Legacy-IPv6-City GeoLite-Legacy-IPv6-Country 506 517 533|' \
+ -e 's|YOUR_ACCOUNT_ID_HERE|999999|' \
+ -e 's|YOUR_LICENSE_KEY_HERE|000000000000|' \
  -e '/^(#\s*)?DatabaseDirectory/ s|^(#\s*)?(\w+\s*).+$|\2%{_localstatedir}/lib/GeoIP|' \
  %{buildroot}%{_sysconfdir}/GeoIP.conf
 
+%if 0%{?suse_version} >= 1500
 %pre
 %service_add_pre %{name}.service
 
@@ -77,14 +94,20 @@ sed -ri \
 
 %postun
 %service_del_postun %{name}.service
+%endif
 
 %files
-%doc README.md build/geoipupdate.md build/GeoIP.conf.md
 %license LICENSE-*
 %config(noreplace) %{_sysconfdir}/GeoIP.conf
-%{_bindir}/geoipupdate
 %dir %{_localstatedir}/lib/GeoIP
+%if 0%{?suse_version} >= 1500
+%doc README.md build/geoipupdate.md build/GeoIP.conf.md
+%{_bindir}/geoipupdate
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.timer
+%endif
+
+%files legacy
+%{_bindir}/geoipupdate-legacy
 
 %changelog

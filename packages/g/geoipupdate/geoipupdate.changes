@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 10:40:08 UTC 2020 - pgajdos@suse.com
+
+- introduce geoipupdate-legacy script [bsc#1156194]
+- added sources
+  + geoipupdate-legacy
+
+-------------------------------------------------------------------
 Wed Mar 04 07:24:45 UTC 2020 - info@paolostivanin.com
 
 - Update to version 4.2.2:
