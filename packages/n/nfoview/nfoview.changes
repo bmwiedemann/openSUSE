@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:04:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.27:
+  * New app icon, as full-color and symbolic SVGs.
+  * Use the reverse domain name "io.otsaloma.nfoview" for desktop
+    file, appdata file and icons.
+- Changes from version 1.26.1:
+  * Updated translations.
+- Modernize spec, use autosetup and python macros.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Drop -lang Recommends: No longer needed, supplements in place.
+- Drop hicolor-icon-theme and update-desktop-files
+  Requires(post(un)) and macros: No longer needed.
+- Add nfoview-fix-css-font-abnormal-weight.patch: Fix CSS error
+  with the abnormal weight of the Unscii font.
+
+-------------------------------------------------------------------
 Wed Jan 23 20:24:30 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 1.26:

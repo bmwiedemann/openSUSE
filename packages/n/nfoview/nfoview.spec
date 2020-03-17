@@ -1,7 +1,7 @@
 #
 # spec file for package nfoview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,22 @@
 
 
 Name:           nfoview
-Version:        1.26
+Version:        1.27
 Release:        0
 Summary:        Simple Viewer for NFO Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            http://otsaloma.io/nfoview/
+URL:            https://otsaloma.io/nfoview/
 Source:         https://github.com/otsaloma/nfoview/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nfoview-fix-css-font-abnormal-weight.patch -- Fix CSS error with the abnormal weight of the Unscii font
+Patch:          nfoview-fix-css-font-abnormal-weight.patch
+
+BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
-Recommends:     %{name}-lang
 Recommends:     terminus-font
 BuildArch:      noarch
 
@@ -46,42 +45,29 @@ clickable hyperlinks.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
-
-%suse_update_desktop_file -r %{name} Office Viewer
-
+%python3_install
+%suse_update_desktop_file -r io.otsaloma.nfoview Office Viewer
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/%{name}
 %find_lang %{name}
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS.md COPYING NEWS.md README.md
+%doc AUTHORS.md NEWS.md README.md
+%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/*/%{name}.*
+%{_datadir}/metainfo/io.otsaloma.nfoview.appdata.xml
+%{_datadir}/applications/io.otsaloma.nfoview.desktop
+%{_datadir}/icons/hicolor/*/apps/io.otsaloma.nfoview*.svg
 %{_mandir}/man?/*
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/*.egg-info
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog
