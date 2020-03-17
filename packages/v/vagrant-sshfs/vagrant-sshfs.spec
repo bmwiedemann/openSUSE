@@ -22,7 +22,7 @@
 %define mod_name %{vagrant_plugin_name}
 %define mod_full_name %{vagrant_plugin_name}-%{version}
 Name:           %{vagrant_plugin_name}
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        SSHFS synced folder implementation for Vagrant
 License:        GPL-2.0-only
