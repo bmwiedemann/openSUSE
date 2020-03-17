@@ -18,50 +18,54 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
+%if %{?suse_version} > 1500
 %define skip_python2 1
+%bcond_with python2
+%else
+%bcond_without python2
+%endif
+%bcond_without python2
 Name:           python-pyramid
 Version:        1.10.4
 Release:        0
 Summary:        The Pyramid web application development framework
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
-Group:          Development/Languages/Python
-URL:            http://pylonsproject.org
+URL:            https://pylonsproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-%{version}.tar.gz
-BuildRequires:  %{python_module PasteDeploy} >= 1.5.0
-BuildRequires:  %{python_module WebOb} >= 1.7.0
-BuildRequires:  %{python_module repoze.lru} >= 0.4
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module translationstring} >= 0.4
-BuildRequires:  %{python_module venusian} >= 1.0
-BuildRequires:  %{python_module zope.deprecation} >= 3.5.0
-BuildRequires:  %{python_module zope.interface} >= 3.8.0
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module WebTest} >= 1.3.1
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module hupper}
+BuildRequires:  %{python_module PasteDeploy >= 1.5.0}
+BuildRequires:  %{python_module WebOb >= 1.8.3}
+BuildRequires:  %{python_module WebTest >= 1.3.1}
+BuildRequires:  %{python_module hupper >= 1.5}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
-BuildRequires:  %{python_module zope.component} >= 4.0
-%endif
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module translationstring >= 0.4}
+BuildRequires:  %{python_module venusian >= 1.0}
+BuildRequires:  %{python_module zope.component >= 4.0}
+BuildRequires:  %{python_module zope.deprecation >= 3.5.0}
+BuildRequires:  %{python_module zope.interface >= 3.8.0}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-PasteDeploy >= 1.5.0
-Requires:       python-WebOb >= 1.7.0
-Requires:       python-hupper
+Requires:       python-WebOb >= 1.8.3
+Requires:       python-hupper >= 1.5
 Requires:       python-plaster
 Requires:       python-plaster-pastedeploy
-Requires:       python-repoze.lru >= 0.4
 Requires:       python-setuptools
 Requires:       python-translationstring >= 0.4
 Requires:       python-venusian >= 1.0
 Requires:       python-zope.deprecation >= 3.5.0
 Requires:       python-zope.interface >= 3.8.0
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-repoze.lru >= 0.4
+%endif
+%ifpython2
+Requires:       python-repoze.lru >= 0.4
+%endif
 %python_subpackages
 
 %description
@@ -77,25 +81,18 @@ It was previously known as repoze.bfg (http://bfg.repoze.org).
 
 %build
 %python_build
-%{_python_use_flavor python3}
 
 %install
 %python_install
-%{python_expand rm -rf %{buildroot}%{$python_sitelib}/pyramid/tests
-  %fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 for p in pcreate pdistreport prequest proutes pserve pshell ptweens pviews; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
-%if %{with test}
 %check
 export LANG=en_US.UTF-8
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-  $python setup.py nosetests --with-coverage -vvv
-}
-%endif
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
 
 %post
 %python_install_alternative pcreate pdistreport prequest proutes pserve pshell ptweens pviews
@@ -104,8 +101,8 @@ export LANG=en_US.UTF-8
 %python_uninstall_alternative pcreate
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc *.txt *.rst
+%license LICENSE.txt
+%doc *.rst
 %python_alternative %{_bindir}/pcreate
 %python_alternative %{_bindir}/pdistreport
 %python_alternative %{_bindir}/prequest
