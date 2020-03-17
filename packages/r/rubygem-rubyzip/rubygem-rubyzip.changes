@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:06:26 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.3.0
+
+  * Fix frozen string literal error
+    [#431](https://github.com/rubyzip/rubyzip/pull/431)
+  * Set `OutputStream.write_buffer`'s buffer to binmode
+    [#439](https://github.com/rubyzip/rubyzip/pull/439)
+  * Upgrade rubocop and fix various linting complaints
+    [#437](https://github.com/rubyzip/rubyzip/pull/437)
+  * [#440](https://github.com/rubyzip/rubyzip/pull/440)
+
+  Tooling:
+
+  * Add a `bin/console` script for development
+    [#420](https://github.com/rubyzip/rubyzip/pull/420)
+  * Update rake requirement (development dependency only) to fix a security
+    alert.
+
+-------------------------------------------------------------------
 Fri Feb 28 09:21:54 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - Fix rpmlint complains (removing rubygem-rubyzip.rpmlintrc)

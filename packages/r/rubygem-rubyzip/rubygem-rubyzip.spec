@@ -16,28 +16,26 @@
 #
 
 
+%define mod_name rubyzip
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-rubyzip
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
-%define mod_name rubyzip
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.4}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/rubyzip/rubyzip
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
 Summary:        Ruby module for reading and writing zip files
 License:        BSD-2-Clause
 Group:          Development/Languages/Ruby
+URL:            https://github.com/rubyzip/rubyzip
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+BuildRequires:  %{ruby >= 2.4}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 
 %description
 rubyzip is a ruby module for reading and writing zip files.

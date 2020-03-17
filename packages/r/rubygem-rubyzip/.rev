@@ -161,4 +161,12 @@
   - Move CI to xenial and include jruby on JDK11</comment>
     <requestid>780191</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8cc0835df10eedf052f4442eb120a0db</srcmd5>
+    <version>2.3.0</version>
+    <time>1584446991</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 2.3.0 (forwarded request 785608 from dancermak)</comment>
+    <requestid>785649</requestid>
+  </revision>
 </revisionlist>
