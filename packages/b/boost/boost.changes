@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 10:18:33 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Fix packaging errors in cases where python2 is disabled and
+  unavailable.
+
+-------------------------------------------------------------------
 Fri Feb 28 13:54:37 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Fix macro which defines the name of the HPC python3 library

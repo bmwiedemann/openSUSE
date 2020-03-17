@@ -1574,9 +1574,9 @@ rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/mpi-%{version}
 
-rm -r %{buildroot}%{package_libdir}/libboost_numpy.so{,.%{version}}
-rm -r %{buildroot}%{package_libdir}/libboost_mpi_python.so.%{version}
-rm -r %{buildroot}%{package_libdir}/libboost_python.so.%{version}
+rm -rf %{buildroot}%{package_libdir}/libboost_numpy.so{,.%{version}}
+rm -rf %{buildroot}%{package_libdir}/libboost_mpi_python.so.%{version}
+rm -rf %{buildroot}%{package_libdir}/libboost_python.so.%{version}
 
 rm -r %{buildroot}%{package_includedir}/boost
 rm %{buildroot}%{package_libdir}/libboost_{w,}serialization*
@@ -1975,8 +1975,10 @@ EOF
 %{package_libdir}/libboost_mpi_python-py3.so.%{version}
 
 %files -n libboost_mpi_python-py3-%{library_version}-devel
-##%dir %{package_libdir}/cmake/boost_mpi_python-%{version}
-##%{package_libdir}/cmake/boost_mpi_python-%{version}/*
+%if ! %{with python2}
+%dir %{package_libdir}/cmake/boost_mpi_python-%{version}
+%{package_libdir}/cmake/boost_mpi_python-%{version}/*
+%endif
 %{package_libdir}/libboost_mpi_python-py3.so
 
 %files -n python3-boost_parallel_mpi%{library_version}
