@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8243
+%define ver 8244
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.243
+Version:        8.244
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
@@ -165,20 +165,8 @@ do
   rm %{buildroot}%{_docdir}/%{name}/${i}
 done
 
-# REMOVE BUILDROOT FROM INSTALLED FILES
-sed -i "s|%{buildroot}||g" %{buildroot}%{_bindir}/pythia8-config
-sed -i "s|%{buildroot}||g" %{buildroot}%{_docdir}/%{name}/examples/Makefile.inc
-
-# REMOVE SPURIOUS EXECUTABLE PERMISSIONS
-chmod -x %{buildroot}%{_docdir}/%{name}/xmldoc/GKG18_DPDF_Fit*.dat
-
 # FIX env BASED HASHBANG
-sed -E -i "s|%{_bindir}/env bash|/bin/bash|" %{buildroot}%{_bindir}/pythia8-config
-
-# REMOVE UNNECESSARY HIDDEN FILES
-rm %{buildroot}%{_includedir}/Pythia8/._*.h
-rm %{buildroot}%{_includedir}/Pythia8Plugins/._*.h
-find %{buildroot}%{_docdir}/%{name}/ -name "._*" -delete -print
+sed -E -i "s|/usr/bin/env bash|/bin/bash|" %{buildroot}%{_bindir}/pythia8-config
 
 %fdupes -s %{buildroot}%{_docdir}/%{name}/
 
