@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 09:39:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Explicitely disable rpath to fix Leap builds
+
+-------------------------------------------------------------------
 Mon Mar  2 12:40:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with GCC 10 bsc#1160391:

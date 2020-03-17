@@ -112,6 +112,7 @@ joystick functions on a wide range of platforms.
 
 %build
 %cmake \
+    -DCMAKE_SKIP_RPATH=ON \
     -DFREEGLUT_BUILD_STATIC_LIBS=OFF
 %cmake_build
 
