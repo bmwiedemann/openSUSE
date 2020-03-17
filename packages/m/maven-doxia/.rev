@@ -23,4 +23,12 @@
     <comment>upgrade doxia/doxia-sitetools</comment>
     <requestid>783792</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>737b28edb6d78e7661c3322645380692</srcmd5>
+    <version>1.9.1</version>
+    <time>1584447000</time>
+    <user>dimstar_suse</user>
+    <comment>Set obsoletes to make upgrades easier</comment>
+    <requestid>785657</requestid>
+  </revision>
 </revisionlist>

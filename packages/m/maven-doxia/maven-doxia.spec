@@ -70,6 +70,8 @@ generation systems like blogs, wikis and content management systems.
 %package core
 Summary:        Core module for %{name}
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}-module-itext
+Obsoletes:      %{name}-module-markdown
 
 %description core
 This package provides %{summary}.
@@ -116,13 +118,6 @@ Group:          Development/Libraries/Java
 %description module-fo
 This package provides %{summary}.
 
-%package module-xhtml5
-Summary:        XHTML5 module for %{name}
-Group:          Development/Libraries/Java
-
-%description module-xhtml5
-This package provides %{summary}.
-
 %package module-latex
 Summary:        Latex module for %{name}
 Group:          Development/Libraries/Java
@@ -156,6 +151,13 @@ Summary:        XHTML module for %{name}
 Group:          Development/Libraries/Java
 
 %description module-xhtml
+This package provides %{summary}.
+
+%package module-xhtml5
+Summary:        XHTML5 module for %{name}
+Group:          Development/Libraries/Java
+
+%description module-xhtml5
 This package provides %{summary}.
 
 %package sink-api
@@ -198,6 +200,7 @@ API documentation for %{name}.
 rm doxia-core/src/test/java/org/apache/maven/doxia/util/XmlValidatorTest.java
 
 %pom_disable_module doxia-module-itext doxia-modules
+%pom_disable_module doxia-module-markdown doxia-modules
 
 %{mvn_package} :doxia __noinstall
 %{mvn_package} :doxia-modules __noinstall
@@ -284,8 +287,6 @@ done
 
 %files module-fo -f .mfiles-doxia-module-fo
 
-%files module-xhtml5 -f .mfiles-doxia-module-xhtml5
-
 %files module-latex -f .mfiles-doxia-module-latex
 
 %files module-rtf -f .mfiles-doxia-module-rtf
@@ -295,6 +296,8 @@ done
 %files module-xdoc -f .mfiles-doxia-module-xdoc
 
 %files module-xhtml -f .mfiles-doxia-module-xhtml
+
+%files module-xhtml5 -f .mfiles-doxia-module-xhtml5
 
 %files sink-api -f .mfiles-doxia-sink-api
 
