@@ -17,7 +17,7 @@
 
 
 Name:           leiningen
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        Automation for Clojure projects
 License:        EPL-1.0

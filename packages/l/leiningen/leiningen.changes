@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 04:58:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.3:
+  * Fix a bug where deploying would fail to send signature checksums.
+  * Memoize application of project middleware.
+  * Fix a bug where checksum verification failed on non-GNU systems.
+
+-------------------------------------------------------------------
 Wed Mar  4 06:47:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.2:

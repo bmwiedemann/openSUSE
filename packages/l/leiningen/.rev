@@ -29,4 +29,15 @@
   * Include :repositories from project.clj in pom.xml file.</comment>
     <requestid>781388</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1492d76e955a15db4eafe8331e464ee7</srcmd5>
+    <version>2.9.3</version>
+    <time>1584447069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.3:
+  * Fix a bug where deploying would fail to send signature checksums.
+  * Memoize application of project middleware.
+  * Fix a bug where checksum verification failed on non-GNU systems.</comment>
+    <requestid>785773</requestid>
+  </revision>
 </revisionlist>
