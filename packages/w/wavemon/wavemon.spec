@@ -1,7 +1,7 @@
 #
 # spec file for package wavemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        An ncurses monitoring application for wireless network devices
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            https://github.com/uoaerg/wavemon
+URL:            https://github.com/uoaerg/wavemon
 Source:         https://github.com/uoaerg/wavemon/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libcap-devel
 BuildRequires:  ncurses-devel
@@ -42,13 +42,10 @@ devices supported by the wireless kernel extensions by Jean Tourrilhes.
 %setup -q
 
 %build
-if [ -n "$SOURCE_DATE_EPOCH" ] ; then
-  export BUILD_DATE=`date -d@$SOURCE_DATE_EPOCH`
-fi
 export CFLAGS="%{optflags} `pkg-config --cflags libnl-3.0` -D_REENTRANT -pthread"
 %configure \
   --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -56,10 +53,11 @@ mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/%{name} %{buildroot}%{_docdir}/
 
 %files
-%defattr(-,root,root,-)
+%license COPYING
+%doc README.md
 %{_bindir}/wavemon
-%{_mandir}/man1/wavemon.1%{ext_man}
-%{_mandir}/man5/wavemonrc.5%{ext_man}
+%{_mandir}/man1/wavemon.1%{?ext_man}
+%{_mandir}/man5/wavemonrc.5%{?ext_man}
 %{_docdir}/%{name}
 
 %changelog
