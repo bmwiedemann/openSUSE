@@ -57,7 +57,12 @@ Requires:       lua-luaposix
 Requires:       lua-luaterm
 Requires:       tcl
 Conflicts:      Modules
+%if 0%{suse_version} >= 1550
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-Sphinx-latex
+%else
 BuildRequires:  python-Sphinx
+%endif
 Provides:       lua-lmod-man = %{version}-%{release}
 %if 0%{?build_pdf:1}
 BuildRequires:  texlive
