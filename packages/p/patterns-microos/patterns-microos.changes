@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 21:17:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop NetworkManager-applet Requires: We do not need this at all
+  inside gnome-shell, we have had built-in tools for a long time.
+
+-------------------------------------------------------------------
 Wed Feb 12 15:04:18 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Move fcoe-utils and irqbalance to hardware pattern, not useful

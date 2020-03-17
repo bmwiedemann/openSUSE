@@ -362,7 +362,6 @@ Requires:       yelp
 %if 0%{is_opensuse}
 # bnc#430161
 Requires:       NetworkManager
-Requires:       NetworkManager-applet
 %endif
 %if 0%{is_opensuse}
 Requires:       canberra-gtk-play
