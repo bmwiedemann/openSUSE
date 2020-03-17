@@ -743,4 +743,12 @@
     <comment>- Fix build on openSUSE Leap 15.x.</comment>
     <requestid>784427</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>98490550d954e87fe16746457dfa53e8</srcmd5>
+    <version>1.4.0</version>
+    <time>1584447096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785843</requestid>
+  </revision>
 </revisionlist>

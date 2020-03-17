@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 17 08:20:16 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 1.4.0:
+  - Important changes:
+    - New config option maxConcurrentIncomingRequestKiB
+    - Replace config option maxConcurrentScans with
+      maxFolderConcurrency
+    - Improve database schema
+  - Bugfixes:
+    - #4774: Doesn't react to Ctrl-C when run in a subshell
+      with -no-restart (Linux)
+    - #5952: panic: Should never get a deleted file as needed when
+      we don't have it
+    - #6281: Progress emitter uses 100% CPU
+    - #6300: lib/ignore: panic: runtime error: index out of range
+      [0] with length 0
+    - #6304: Syncing issues, database missing sequence entries
+    - #6335: Crash or hard shutdown can case database
+      inconsistency, out of sync
+  - Enhancements:
+    - #5786: Consider always running the monitor process
+    - #5898: Database performance: reduce duplication
+    - #5914: Limit folder concurrency to improve performance
+    - #6302: Avoid thundering herd issue by global request limiter
+
+-------------------------------------------------------------------
 Tue Mar 10 19:28:00 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Change the Go build requirement to a more flexible
