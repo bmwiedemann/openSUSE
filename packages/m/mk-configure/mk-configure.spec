@@ -17,10 +17,10 @@
 
 
 Name:           mk-configure
-Version:        0.32.1
+Version:        0.34.0
 Release:        0
 Summary:        A build system on top of bmake
-License:        BSD-2-Clause AND BSD-2-Clause AND MIT AND ISC
+License:        BSD-2-Clause AND MIT AND ISC
 Group:          Development/Tools/Building
 Url:            http://sourceforge.net/projects/mk-configure/
 Source:         http://prdownloads.sf.net/%{name}/%{name}-%{version}.tar.gz
@@ -31,6 +31,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  bmake
+BuildRequires:  clang
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -41,6 +42,7 @@ BuildRequires:  lua-devel
 BuildRequires:  makedepend
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
+BuildRequires:  zlib-devel
 Requires:       bmake
 Recommends:     %{name}-doc
 Provides:       %{name}-rpm-macros
@@ -52,7 +54,7 @@ NetBSD make) and a number of executables. It is intended to aid cross-platform
 development and software building.
 
 %package doc
-Summary:        MK-C' documentation
+Summary:        Mk-configure documentation
 Group:          Documentation/Other
 Requires:       %{name}
 
@@ -64,6 +66,12 @@ Mk-configure package: examples and presentation.
 
 %define env \
         unset MAKEFLAGS \
+        export USE_NM=/usr/bin/nm \
+        export USE_INSTALL=/usr/bin/install \
+        export USE_AWK=/usr/bin/awk \
+        export USE_ID=/usr/bin/id \
+        export USE_CC_COMPILERS='gcc clang' \
+        export USE_CXX_COMPILERS='g++ clang++' \
         export PREFIX=%{_prefix} \
         export MANDIR=%{_mandir}
 
@@ -80,9 +88,8 @@ bmake all
 bmake install DESTDIR=%{buildroot}
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 # E: wrong-script-interpreter (Badness: 533)
-chmod -x examples/hello_lua/foobar.in
-chmod -x examples/hello_scripts/hello_world3.in
-chmod -x examples/hello_subdirs/prog1/prog1.awk.in
+chmod -x examples/*/*.in
+chmod -x examples/*/*/*.in
 # HACK vs. duplicates after %%doc macro.
 mkdir -p %{buildroot}%{_docdir}/%{name}-doc
 cp -r examples %{buildroot}%{_docdir}/%{name}-doc
@@ -92,15 +99,9 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_sysconfdir}/rpm/macros.mkcmake
 
 %check
 unset MAKEFLAGS
-env \
-    LEXLIB=-lfl \
-    NOSUBDIR='hello_lex hello_superfs hello_progs subprojects hello_lua hello_lua2 hello_lua3 hello_yacc hello_calc2 tools hello_dictd hello_libdeps mkshlib mkstaticlib mkpiclib mkprofilelib mkdll hello_cxx hello_cxxlib' \
-    bmake \
-    test
+env bmake test
 bmake cleandir-examples
 bmake cleandir-tests
-# E: suse-filelist-forbidden-backup-file
-rm -rf examples/*/*/*~
 
 %files
 %defattr(-,root,root)
@@ -108,7 +109,6 @@ rm -rf examples/*/*/*~
 %license doc/LICENSE
 %{_bindir}/mkc*
 %{_datadir}/mk-configure/
-%{_datadir}/mkc-mk/
 %{_mandir}/man1/*
 %{_mandir}/man7/*
 %config %{_sysconfdir}/rpm/macros.mkcmake
