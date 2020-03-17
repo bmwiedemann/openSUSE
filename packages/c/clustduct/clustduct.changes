@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:24:37 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed last remaing %is_opensuse (jsc#SLE-11639) 
+
+-------------------------------------------------------------------
 Thu Mar  5 18:11:18 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - removed is_opensuse form the pdf creation, as pdfs are not

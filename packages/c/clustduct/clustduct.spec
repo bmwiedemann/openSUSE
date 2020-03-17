@@ -95,10 +95,6 @@ autoreconf -i
 %config %{_sysconfdir}/clustduct.d/
 %config %{_sysconfdir}/clustduct.conf
 %{_datadir}/doc/%{name}
-%if !%{is_opensuse}
-%exclude %{_datadir}/doc/%{name}/kiwi-descriptions/openSUSE/
-%endif 
-%exclude %{_datadir}/doc/%{name}/COPYING
 %{_libdir}/lua
 
 %changelog
