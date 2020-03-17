@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 16 18:29:49 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.14:
+  * Add HEIF/HEIC support.
+  * Add metadata filtering.
+  * Reduce start-up time.
+  * Bug fixes.
+- Remove nomacs-3.12-fix-DkImageStorage.patch,
+  Fix-build-with-GCC9.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sun Feb 23 19:28:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add nomacs-3.12-fix-DkImageStorage.patch: Fix DkImageStorage

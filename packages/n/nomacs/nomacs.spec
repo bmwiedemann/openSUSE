@@ -17,17 +17,13 @@
 
 
 Name:           nomacs
-Version:        3.12
+Version:        3.14
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://nomacs.org/
 Source:         https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nomacs-3.12-fix-DkImageStorage.patch arojas@archlinux.org -- Fix DkImageStorage (commits e4d0c079, 7779c75b).
-Patch0:         nomacs-3.12-fix-DkImageStorage.patch
-# PATCH-FIX-UPSTREAM Fix-build-with-GCC9.patch kensington@gentoo.org -- Fix build with GCC9 (commit 37805e3b).
-Patch1:         Fix-build-with-GCC9.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -59,8 +55,7 @@ differences (e.g. schemes of architects to show the progress).
 %lang_package
 
 %prep
-%autosetup -p1
-
+%setup -q
 sed -i 's/\r$//g' ImageLounge/Readme/*
 
 %build

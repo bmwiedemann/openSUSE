@@ -175,4 +175,12 @@
     <comment>- Fix build.</comment>
     <requestid>778633</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ed6a67f8b104f4dec0bb76a5da09fc9</srcmd5>
+    <version>3.14</version>
+    <time>1584447031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.14.</comment>
+    <requestid>785740</requestid>
+  </revision>
 </revisionlist>
