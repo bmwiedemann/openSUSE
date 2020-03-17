@@ -688,7 +688,6 @@ unsorted:
   - arprec-devel 
   - arptables 
   - arpwatch-ethercodes-build 
-  - artha 
   - artifacts 
   - artifacts-validator 
   - artikulate 
@@ -1181,6 +1180,7 @@ unsorted:
   - bluez-qt-devel 
   - bluez-test 
   - bmake 
+  - bmkdep 
   - bmon 
   - bnd-maven-plugin 
   - bnd-maven-plugin-javadoc 
@@ -2233,6 +2233,7 @@ unsorted:
   - dbus-1-devel 
   - dbus-1-devel-32bit: [x86_64] 
   - dbus-1-devel-doc 
+  - dbus-1-glib-32bit: [x86_64] 
   - dbus-1-glib-devel 
   - dbus-1-glib-devel-32bit: [x86_64] 
   - dbus-1-glib-doc 
@@ -2483,6 +2484,7 @@ unsorted:
   - dpkg 
   - dpkg-devel 
   - dpkg-lang 
+  - dracut-extra 
   - dracut-fips 
   - dracut-ima: [i586] 
   - dracut-kiwi-lib 
@@ -3186,7 +3188,11 @@ unsorted:
   - fping 
   - fplll 
   - fplll-devel 
+  - fprintd 
   - fprintd-devel 
+  - fprintd-lang 
+  - fprintd-pam 
+  - fprintd-pam-32bit: [x86_64] 
   - fractal 
   - fractal-lang 
   - frame 
@@ -3667,6 +3673,7 @@ unsorted:
   - geoclue2-devel 
   - geocode-glib-devel 
   - geoipupdate 
+  - geoipupdate-legacy 
   - geolite2legacy 
   - geos-devel 
   - geotiff 
@@ -4405,6 +4412,7 @@ unsorted:
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
   - ginac 
+  - ginac-devel 
   - gio-branding-upstream 
   - gio-sharp 
   - gio-sharp-devel 
@@ -9050,8 +9058,10 @@ unsorted:
   - libfpm_helper-devel 
   - libfpm_helper0 
   - libfpm_pb0 
+  - libfprint-2-2 
+  - libfprint-2-2-32bit: [x86_64] 
   - libfprint-devel 
-  - libfprint0-32bit: [x86_64] 
+  - libfprint-doc 
   - libframe6 
   - libframe6-32bit: [x86_64] 
   - libfreebl3-32bit: [x86_64] 
@@ -9221,7 +9231,6 @@ unsorted:
   - libgig9 
   - libgimp-2_0-0-32bit: [x86_64] 
   - libgimpui-2_0-0-32bit: [x86_64] 
-  - libginac-devel 
   - libginac6 
   - libgio-fam 
   - libgio-fam-32bit: [x86_64] 
@@ -11994,8 +12003,8 @@ unsorted:
   - libtelepathy-qt5-0-32bit: [x86_64] 
   - libtelepathy-qt5-farstream0 
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
-  - libtelepathy-qt5-service0 
-  - libtelepathy-qt5-service0-32bit: [x86_64] 
+  - libtelepathy-qt5-service1 
+  - libtelepathy-qt5-service1-32bit: [x86_64] 
   - libtensorflow2: [x86_64] 
   - libtensorflow2-gnu-hpc: [x86_64] 
   - libtensorflow2-gnu-mvapich2-hpc: [x86_64] 
@@ -19000,7 +19009,6 @@ unsorted:
   - python2-factory_boy 
   - python2-fake-useragent 
   - python2-fakeredis 
-  - python2-falcon 
   - python2-fann2 
   - python2-fastcluster 
   - python2-fasteners 
@@ -20417,7 +20425,6 @@ unsorted:
   - python2-yamllint 
   - python2-yamlloader 
   - python2-yapf 
-  - python2-yappi 
   - python2-yaql 
   - python2-yara 
   - python2-yarb 
@@ -21489,6 +21496,7 @@ unsorted:
   - python3-freetype-py 
   - python3-freezegun 
   - python3-freezerclient 
+  - python3-fritzconnection 
   - python3-frozendict 
   - python3-fs 
   - python3-fsspec 
@@ -23140,6 +23148,7 @@ unsorted:
   - python3-xmlschema 
   - python3-xmlsec 
   - python3-xmltodict 
+  - python3-xonsh 
   - python3-xpybutil 
   - python3-xsge_gui 
   - python3-xsge_lighting 
@@ -33211,6 +33220,7 @@ unsorted:
   - typelib-1_0-Eek-0_90 
   - typelib-1_0-Entangle-0_1 
   - typelib-1_0-Eom-1_0 
+  - typelib-1_0-FPrint-2_0 
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-Fcitx-1_0 
   - typelib-1_0-Folks-0_6 
