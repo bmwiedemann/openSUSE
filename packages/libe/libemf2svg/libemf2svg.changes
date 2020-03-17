@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:18:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable RPATH for building libemf2svg.
+- Spec cleanup.
+
+-------------------------------------------------------------------
 Mon Apr  2 18:51:26 UTC 2018 - stefan.bruens@rwth-aachen.de
 
 - Fix grammatical error in description

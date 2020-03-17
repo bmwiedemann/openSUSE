@@ -1,7 +1,7 @@
 #
 # spec file for package libemf2svg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soversion 1
 
+%define soversion 1
 Name:           libemf2svg
 Version:        1.1.0
 Release:        0
-License:        GPL-2.0
 Summary:        EMF (Enhanced Metafile) to SVG conversion library
-Url:            https://github.com/kakwa/libemf2svg
+License:        GPL-2.0-only
 Group:          Productivity/Graphics/Convertors
+URL:            https://github.com/kakwa/libemf2svg
 Source:         https://github.com/kakwa/libemf2svg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
-BuildRequires:  cmake
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library for converting Enhanced Metafile (EMF and EMF+) files to the
@@ -69,29 +68,25 @@ Tool to convert files in EMF format to SVG
 %setup -q
 
 %build
-%cmake
-make %{?_smp_mflags}
+%cmake -DCMAKE_SKIP_RPATH=TRUE
+%cmake_build
 
 %install
 %cmake_install
 
 %post -n %{name}%{soversion} -p /sbin/ldconfig
-
 %postun -n %{name}%{soversion} -p /sbin/ldconfig
 
 %files -n %{name}%{soversion}
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_libdir}/libemf2svg*so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libemf2svg*so
 %{_includedir}/*.h
 
 %files -n emf2svg-conv
-%defattr(-,root,root)
 %{_bindir}/emf2svg-conv
 
 %changelog
