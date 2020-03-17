@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:05:31 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.4.1
+  * main.c: Add a setting to run the session with
+    GDK_SYNCHRONIZE=1, which allows XErrors to be
+    backtraced
+  * csm-presence.c: Don't start cinnamon-screensaver
+    during construction
+  * Clean-up remaining dbus-glib references after removal
+    in #125
+  * csm-systemd.c: Restore old check for logind
+- change in 4.4.0
+  * csm-system: Check for logind and fall back to consolekit,
+    instead of using a gsettings key to determine which to use.
+
+-------------------------------------------------------------------
 Mon Sep 30 04:24:52 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - drop cinnamon-session-qt-5.7-styleoverride.patch
