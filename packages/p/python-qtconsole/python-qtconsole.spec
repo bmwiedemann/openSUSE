@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -36,8 +36,9 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-Requires:       python-QtPy
+Requires:       jupyter-qtconsole = %{version}
 Requires:       python-Pygments
+Requires:       python-QtPy
 Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
@@ -46,7 +47,6 @@ Requires:       python-sip
 Requires:       python-traitlets
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
-Requires:       jupyter-qtconsole = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
@@ -57,13 +57,12 @@ BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pexpect}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module sip}
 BuildRequires:  %{python_module traitlets}
 # /SECTION
-
 %python_subpackages
 
 %description
@@ -74,17 +73,18 @@ This package provides the python components.
 
 %package     -n jupyter-qtconsole
 Summary:        Jupyter Qt console
-Requires:       python3-qtconsole = %{version}
-Requires:       python3-jupyter-core
+Group:          Development/Languages/Python
 Requires:       jupyter-ipykernel >= 4.1
 Requires:       jupyter-jupyter-client >= 4.1
 Requires:       jupyter-jupyter-core
+Requires:       python3-jupyter-core
+Requires:       python3-qtconsole = %{version}
 Conflicts:      python3-jupyter_qtconsole < 4.4.4
 Provides:       jupyter-qtconsole-doc = %{version}
 Obsoletes:      jupyter-qtconsole-doc < %{version}
-Provides:       python-qtconsole-doc = %{version}
-Provides:       %{python_module qtconsole-doc = %{version}}
 Provides:       %{python_module jupyter_qtconsole-doc = %{version}}
+Provides:       %{python_module qtconsole-doc = %{version}}
+Provides:       python-qtconsole-doc = %{version}
 Obsoletes:      %{python_module jupyter_qtconsole-doc < %{version}}
 
 %description -n jupyter-qtconsole

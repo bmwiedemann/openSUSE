@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 19:40:04 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.7.1:
+  * Remove common prefix from path completions.
+  * Use QtWidgets instead of QtGui to create QMenu instances.
+
+-------------------------------------------------------------------
 Tue Mar  3 14:27:44 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 4.7.0
