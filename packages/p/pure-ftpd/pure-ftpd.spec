@@ -1,7 +1,7 @@
 #
 # spec file for package pure-ftpd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ BuildRequires:  postgresql-devel
 Requires(pre):  coreutils
 Provides:       ftp-server
 Provides:       pureftpd = %{version}-%{release}
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  pkgconfig(systemd)
