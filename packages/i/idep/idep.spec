@@ -1,7 +1,7 @@
 #
 # spec file for package idep
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           idep
 Version:        0.5
 Release:        0
 Summary:        Track the Dependencies in your C or C++ Code
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Languages/C and C++
-Url:            http://www.stolk.org
+URL:            https://www.stolk.org
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-configure.diff
 Patch1:         idep-C_headers.patch
@@ -33,7 +33,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Idep can be used for checking the dependencies of C++ include files. It
@@ -48,23 +47,17 @@ offers these features:
 - Detects inclusions that could be pruned
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-rm -f NEWS
+%autosetup -p0
 
 %build
-autoreconf -fi
+autoreconf -fiv
 %configure
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog README
 %{_bindir}/idep
 

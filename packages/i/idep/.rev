@@ -129,4 +129,13 @@
     <comment>1</comment>
     <requestid>305464</requestid>
   </revision>
+  <revision rev="20" vrev="164">
+    <srcmd5>67e74ac63d0f65cd10778a09d7893f8e</srcmd5>
+    <version>0.5</version>
+    <time>1584447103</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Actually build in build phase</comment>
+    <requestid>785857</requestid>
+  </revision>
 </revisionlist>
