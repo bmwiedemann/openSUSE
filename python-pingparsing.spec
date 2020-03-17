@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pingparsing
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        CLI-tool/Python-library for parsing ping command output
 License:        MIT
@@ -27,7 +27,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/pingparsing
 Source:         https://github.com/thombashi/pingparsing/archive/v%{version}.tar.gz#/pingparsing-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-humanreadable >= 0.0.7
+Requires:       python-loguru >= 0.4.1
+Requires:       python-pyparsing >= 2.0.3
+Requires:       python-setuptools >= 38.3.0
+Requires:       python-six >= 1.10.0
+Requires:       python-subprocrunner >= 0.17.0
+Requires:       python-typepy >= 0.6.3
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Logbook >= 0.12.3}
 BuildRequires:  %{python_module humanreadable >= 0.0.7}
@@ -38,15 +47,6 @@ BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module subprocrunner >= 0.17.0}
 BuildRequires:  %{python_module typepy >= 0.6.3}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-humanreadable >= 0.0.7
-Requires:       python-loguru >= 0.4.1
-Requires:       python-pyparsing >= 2.0.3
-Requires:       python-setuptools >= 38.3.0
-Requires:       python-six >= 1.10.0
-Requires:       python-subprocrunner >= 0.17.0
-Requires:       python-typepy >= 0.6.3
-BuildArch:      noarch
 %python_subpackages
 
 %description
