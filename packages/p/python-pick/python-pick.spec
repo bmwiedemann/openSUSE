@@ -17,7 +17,7 @@
 
 
 Name:           python-pick
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Curses-based interactive selection list module
 License:        MIT
@@ -27,11 +27,11 @@ Source0:        https://github.com/wong2/pick/archive/v%{version}.tar.gz#/pick-%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
