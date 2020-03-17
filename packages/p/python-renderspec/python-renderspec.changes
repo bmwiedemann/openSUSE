@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:50:15 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.0.0
+  - Set ignore_basepython_conflict in tox
+  - Add Python 3 Train unit tests
+  - Drop py27 support
+  - Fix urllib.urlopen for python3
+  - Drop use of unittest2
+  - Remove usage of platform.linux_distribution
+
+-------------------------------------------------------------------
 Fri Sep 20 07:49:13 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - add conflict for the impossible to workaround staging failures

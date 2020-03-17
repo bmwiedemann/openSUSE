@@ -120,4 +120,18 @@
   - import zuul job settings from project-config</comment>
     <requestid>732093</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65ba875afa6e3f0d144d16f87c900ab5</srcmd5>
+    <version>2.0.0</version>
+    <time>1584447099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.0
+  - Set ignore_basepython_conflict in tox
+  - Add Python 3 Train unit tests
+  - Drop py27 support
+  - Fix urllib.urlopen for python3
+  - Drop use of unittest2
+  - Remove usage of platform.linux_distribution</comment>
+    <requestid>785863</requestid>
+  </revision>
 </revisionlist>
