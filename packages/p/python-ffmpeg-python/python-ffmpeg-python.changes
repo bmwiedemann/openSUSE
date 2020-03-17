@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:00:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add missing runtime dependency on python-future
+
+-------------------------------------------------------------------
 Tue Jan 14 15:06:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.0
