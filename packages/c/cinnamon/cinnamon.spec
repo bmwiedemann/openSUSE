@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon
-Version:        4.2.3
+Version:        4.4.8
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -41,8 +41,8 @@ Patch6:         %{name}-fix-cogl.patch
 Patch7:         %{name}-fallback-icewm.patch
 # PATCH-FIX-OPENSUSE cinnamon-fix-typelib-false-positive.patch sor.alexei@meowr.ru -- remove false typelib(Webkit) dependency
 Patch8:         %{name}-fix-typelib-false-positive.patch
-# PATCH-FIx-UPSTREAM cinnamon-settings-4.2.3-tinycss2.patch
-Patch9:         %{name}-settings-4.2.3-tinycss2.patch
+# PATCH-FIX-UPSTREAM cinnamon-settings-4.4.8-tinycss2.patch marguerite@opensuse.org - port deprecated tinycss to tinycss2
+Patch9:         %{name}-settings-4.4.8-tinycss2.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
