@@ -1,7 +1,7 @@
 #
 # spec file for package python-typepy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-typepy
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
-License:        MIT
 Summary:        Python library for run time variable type checker 
-Url:            https://github.com/thombashi/typepy
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/thombashi/typepy
 Source:         https://files.pythonhosted.org/packages/source/t/typepy/typepy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mbstrdecoder >= 0.8.3}
 BuildRequires:  %{python_module pytest-runner}
@@ -45,8 +46,8 @@ Suggests:       python-pytz >= 2018.9
 Suggests:       python-path.py
 Suggests:       python-termcolor
 %ifpython2
-Requires:       python-ipaddress
 Requires:       python-enum34
+Requires:       python-ipaddress
 %endif
 BuildArch:      noarch
 
