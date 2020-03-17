@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 21:45:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.10
+  * Add y_set_date_format, closes #17
+  * Remove generated doc from source package
+
+-------------------------------------------------------------------
 Sun Jan 19 14:25:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versin 1.4.9
