@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:36:52 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update podman to v1.8.1:
+  * Features
+    - Many networking-related flags have been added to podman pod
+      create to enable customization of pod networks, including
+      --add-host, --dns, --dns-opt, --dns-search, --ip,
+      --mac-address, --network, and --no-hosts
+    - The podman ps --format=json command now includes the ID of
+      the image containers were created with
+    - The podman run and podman create commands now feature an
+      --rmi flag to remove the image the container was using after
+      it exits (if no other containers are using said image)
+      ([#4628](https://github.com/containers/libpod/issues/4628))
+    - The podman create and podman run commands now support the
+      --device-cgroup-rule flag (#4876)
+    - While the HTTP API remains in alpha, many fixes and additions
+      have landed. These are documented in a separate subsection
+      below
+    - The podman create and podman run commands now feature a
+      --no-healthcheck flag to disable healthchecks for a container
+      (#5299)
+    - Containers now recognize the io.containers.capabilities
+      label, which specifies a list of capabilities required by the
+      image to run. These capabilities will be used as long as they
+      are more restrictive than the default capabilities used
+    - YAML produced by the podman generate kube command now
+      includes SELinux configuration passed into the container via
+      --security-opt label=... (#4950)
+  * Bugfixes
+    - Fixed CVE-2020-1726, a security issue where volumes manually
+      populated before first being mounted into a container could
+      have those contents overwritten on first being mounted into a
+      container
+    - Fixed a bug where Podman containers with user namespaces in
+      CNI networks with the DNS plugin enabled would not have the
+      DNS plugin's nameserver added to their resolv.conf
+      ([#5256](https://github.com/containers/libpod/issues/5256))
+    - Fixed a bug where trailing / characters in image volume
+      definitions could cause them to not be overridden by a
+      user-specified mount at the same location
+      ([#5219](https://github.com/containers/libpod/issues/5219))
+    - Fixed a bug where the label option in libpod.conf, used to
+      disable SELinux by default, was not being respected (#5087)
+    - Fixed a bug where the podman login and podman logout commands
+      required the registry to log into be specified (#5146)
+    - Fixed a bug where detached rootless Podman containers could
+      not forward ports (#5167)
+    - Fixed a bug where rootless Podman could fail to run if the
+      pause process had died
+    - Fixed a bug where Podman ignored labels that were specified
+      with only a key and no value (#3854)
+    - Fixed a bug where Podman would fail to create named volumes
+      when the backing filesystem did not support SELinux labelling
+      (#5200)
+    - Fixed a bug where --detach-keys="" would not disable
+      detaching from a container (#5166)
+    - Fixed a bug where the podman ps command was too aggressive
+      when filtering containers and would force --all on in too
+      many situations
+    - Fixed a bug where the podman play kube command was ignoring
+      image configuration, including volumes, working directory,
+      labels, and stop signal (#5174)
+    - Fixed a bug where the Created and CreatedTime fields in
+      podman images --format=json were misnamed, which also broke
+      Go template output for those fields
+      ([#5110](https://github.com/containers/libpod/issues/5110))
+    - Fixed a bug where rootless Podman containers with ports
+      forwarded could hang when started (#5182)
+    - Fixed a bug where podman pull could fail to parse registry
+      names including port numbers
+    - Fixed a bug where Podman would incorrectly attempt to
+      validate image OS and architecture when starting containers
+    - Fixed a bug where Bash completion for podman build -f would
+      not list available files that could be built (#3878)
+    - Fixed a bug where podman commit --change would perform
+      incorrect validation, resulting in valid changes being
+      rejected (#5148)
+    - Fixed a bug where podman logs --tail could take large amounts
+      of memory when the log file for a container was large (#5131)
+    - Fixed a bug where Podman would sometimes incorrectly generate
+      firewall rules on systems using firewalld
+    - Fixed a bug where the podman inspect command would not
+      display network information for containers properly if a
+      container joined multiple CNI networks
+      ([#4907](https://github.com/containers/libpod/issues/4907))
+    - Fixed a bug where the --uts flag to podman create and podman
+      run would only allow specifying containers by full ID (#5289)
+    - Fixed a bug where rootless Podman could segfault when passed
+      a large number of file descriptors
+    - Fixed a bug where the podman port command was incorrectly
+      interpreting additional arguments as container names, instead
+      of port numbers
+    - Fixed a bug where units created by podman generate systemd
+      did not depend on network targets, and so could start before
+      the system network was ready (#4130)
+    - Fixed a bug where exec sessions in containers which did not
+      specify a user would not inherit supplemental groups added to
+      the container via --group-add
+    - Fixed a bug where Podman would not respect the $TMPDIR
+      environment variable for placing large temporary files during
+      some operations (e.g. podman pull)
+      ([#5411](https://github.com/containers/libpod/issues/5411))
+  * HTTP API
+    - Initial support for secure connections to servers via SSH
+      tunneling has been added
+    - Initial support for the libpod create and logs endpoints for
+      containers has been added
+    - Added a /swagger/ endpoint to serve API documentation
+    - The json endpoint for containers has received many fixes
+    - Filtering images and containers has been greatly improved,
+      with many bugs fixed and documentation improved
+    - Image creation endpoints (commit, pull, etc) have seen many
+      fixes
+    - Server timeout has been fixed so that long operations will no
+      longer trigger the timeout and shut the server down
+    - The stats endpoint for containers has seen major fixes and
+      now provides accurate output
+    - Handling the HTTP 304 status code has been fixed for all
+      endpoints
+    - Many fixes have been made to API documentation to ensure it
+      matches the code
+  * Misc
+    - Updated vendored Buildah to v1.14.2
+    - Updated vendored containers/storage to v1.16.2
+    - The Created field to podman images --format=json has been
+      renamed to CreatedSince as part of the fix for (#5110). Go
+      templates using the old name shou ld still work
+    - The CreatedTime field to podman images --format=json has been
+      renamed to CreatedAt as part of the fix for (#5110). Go
+      templates using the old name should still work
+    - The before filter to podman images has been renamed to since
+      for Docker compatibility. Using before will still work, but
+        documentation has been changed to use the new since filter
+    - Using the --password flag to podman login now warns that
+      passwords are being passed in plaintext
+    - Some common cases where Podman would deadlock have been fixed
+      to warn the user that podman system renumber must be run to
+      resolve the deadlock
+
+-------------------------------------------------------------------
 Thu Mar  5 16:26:16 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Added SLE specific README.SUSE about current support status
@@ -7,7 +148,7 @@ Thu Mar  5 16:26:16 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 -------------------------------------------------------------------
 Thu Mar  5 15:40:12 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Configure br_netfilter for podman automatically (boo#1165738) 
+- Configure br_netfilter for podman automatically (boo#1165738)
 
 -------------------------------------------------------------------
 Thu Feb 20 15:57:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
@@ -15,7 +156,7 @@ Thu Feb 20 15:57:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 - The name of the cni-bridge in the default config changed from
   "cni0" to "podman-cni0" with podman-1.6.0. Add a %trigger to
   rename the bridge in the system to the new default if it exists.
-  The trigger is only excuted when updating podman-cni-config 
+  The trigger is only excuted when updating podman-cni-config
   from something older than 1.6.0. This is mainly needed for SLE
   where we're updating from 1.4.4 to 1.8.0 (bsc#1160460).
 
@@ -60,7 +201,7 @@ Fri Feb  7 14:18:16 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
       container could be paused while copying
     - Fixed a bug where the podman container prune --force command
       could possible remove running containers if they were started
-      while the command was running 
+      while the command was running
     - Fixed a bug where Podman, when run as root, would not
       properly configure slirp4netns networking when requested
     - Fixed a bug where podman run --userns=keep-id did not work
