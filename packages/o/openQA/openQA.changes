@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 16 18:48:22 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1584377052.a1f8cccba:
+  * Prevent flooding PostgreSQL logs with errors when inserting job modules
+  * Remove DBIx hooks for updating job module statistics of jobs table
+  * Improve checks in test for creating custom job module
+  * Improve bug cleanup test to collect coverage and use helper to run job
+  * Remove unused and uncovered helpers
+  * Refactor job status update to avoid uncoverable branch
+  * Mark handling for database errors which are hard to test as uncoverable
+  * Remove support for old workers relying on redirection for ws route
+  * Remove unused and uncovered part_of_important_build function
+
+-------------------------------------------------------------------
 Sat Mar 14 08:04:55 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1584172463.88254ac92:
