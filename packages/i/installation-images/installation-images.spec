@@ -597,7 +597,7 @@ BuildRequires:  grub2-arm64-efi
 BuildRequires:  raspberrypi-firmware
 BuildRequires:  raspberrypi-firmware-config
 BuildRequires:  raspberrypi-firmware-dt
-BuildRequires:  u-boot-rpi3
+BuildRequires:  u-boot-rpiarm64
 %endif
 # inst-sys module for libstoragemgmt
 BuildRequires:  libstoragemgmt-netapp-plugin
@@ -617,7 +617,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.461
+Version:        14.462
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
