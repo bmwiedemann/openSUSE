@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thespian
-Version:        3.9.11
+Version:        3.10.0
 Release:        0
 Summary:        Python Actor concurrency library
 License:        MIT
@@ -68,6 +68,9 @@ sed -i -e '1{\@^#!%{_bindir}/.*python@d}' thespian/{director,shell}.py
 %{python_expand mv %{buildroot}%{$python_sitelib}/{contrib,thespian}
 %fdupes %{buildroot}%{$python_sitelib}
 }
+
+%check
+# neverending story
 
 %files %{python_files}
 %license LICENSE.txt
