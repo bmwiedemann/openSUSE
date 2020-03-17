@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:39:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.10.2
+  * Fixed an issue where pages added from a foreign PDF were added as references
+    rather than copies.
+  * Documentation updates.
+
+-------------------------------------------------------------------
 Fri Feb 14 07:50:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.10.1
