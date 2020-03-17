@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 15 12:47:29 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.90.1
+    * Library:
+     * Add early report mechanism for verify and identify (API CHANGE!)
+     * Add support to run tests in gdb/valgrind
+     * Allow testing on all architectures
+     * Avoid image device AWAIT_FINGER_ON to deactivate state transitions
+     * Fix verify/identify error propagation to library user
+     * Correctly read image device information from class data
+     * Continue enroll after an image driver reported a retry error
+     * Change external API to allow reporting match results early
+     * A lot of new unit tests and integration tests have been added
+    * Drivers API:
+     * Added API for early report of matching results or retry errors
+     * Verify and identification completion functions have been simplified
+     * Support variadic arguments in error functions
+     * Various re-definitions of ownership handling
+     * Add convenience API to change state after a timeout
+     * Add unit tests for all the drivers API
+    * Drivers:
+     * elan: Ensure correct deactivation of device
+     * uru4000: Fix IRQ handler registration and internal state handling
+     * uru4000: Fix control transfer request type
+     * synaptics:
+       Ensure errors are only reported after finger removal
+       Use early report mechanism
+- Enable documents build
+
+-------------------------------------------------------------------
 Fri Nov 29 13:28:20 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.0:

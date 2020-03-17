@@ -1,7 +1,7 @@
 #
 # spec file for package libfprint
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,27 @@
 #
 
 
+%define commit 662cd834e76c02c4d74ad01c50412759
+%define apiver 2
+
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
+
 Name:           libfprint
-Version:        1.0
+Version:        1.90.1
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/fprint
-Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/uploads/aff93e9921d1cff53d7c070944952ff9/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/uploads/%{commit}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
 BuildRequires:  gcc-c++
+BuildRequires:  gobject-introspection
+BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.46.1
 BuildRequires:  pkgconfig
-BuildRequires:  xz
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pixman-1)
@@ -43,13 +48,13 @@ Requires(pre):  %fillup_prereq
 The fprint project aims to plug a gap in the Linux desktop: support for
 consumer fingerprint reader devices.
 
-%package -n libfprint0
+%package -n libfprint-%{apiver}-%{apiver}
 Summary:        Library for fingerprint reader support
 Group:          Development/Libraries/C and C++
 Provides:       %{name} = %{version}
 Obsoletes:      libfprint-examples
 
-%description -n libfprint0
+%description -n libfprint-%{apiver}-%{apiver}
 The fprint project aims to plug a gap in the Linux desktop: support for
 consumer fingerprint reader devices.
 
@@ -58,7 +63,7 @@ Summary:        Library for fingerprint reader support (developer files)
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       glibc-devel
-Requires:       libfprint0 = %{version}
+Requires:       libfprint-%{apiver}-%{apiver} = %{version}
 
 %description devel
 This package contains the header files, static libraries and
@@ -75,6 +80,22 @@ This package contains the header files, static libraries and
 development documentation for libfprint. If you like to develop
 programs using libfprint, you will need to install this package.
 
+%package doc
+Summary:        Development documents of libfprint
+Group:          Documentation/Development
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description doc
+This package contains Development documents for libfprint
+
+%package -n typelib-1_0-FPrint-2_0
+Summary:        Introspection bindings for libfprint
+Group:          System/Libraries
+
+%description -n typelib-1_0-FPrint-2_0
+This package contains the introspection bindings for the libfprint.
+
 %prep
 %autosetup -p1
 
@@ -82,27 +103,33 @@ programs using libfprint, you will need to install this package.
 %meson \
 	-Dx11-examples=false \
 	-Dgtk-examples=false \
-	-Ddoc=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 
-%post -n libfprint0
+%post -n libfprint-%{apiver}-%{apiver}
 /sbin/ldconfig
 %{?udev_rules_update:%udev_rules_update}
 
-%postun -n libfprint0 -p /sbin/ldconfig
+%postun -n libfprint-%{apiver}-%{apiver} -p /sbin/ldconfig
 
-%files -n libfprint0
-%{_libdir}/%{name}.so.*
-%{_udevrulesdir}/60-fprint-autosuspend.rules
+%files -n libfprint-%{apiver}-%{apiver}
+%{_libdir}/%{name}-%{apiver}.so.*
+%{_udevrulesdir}/60-%{name}-%{apiver}-autosuspend.rules
+
+%files -n typelib-1_0-FPrint-2_0
+%{_libdir}/girepository-1.0/*.typelib
+
+%files doc
+%{_datadir}/gtk-doc/html/%{name}-%{apiver}
 
 %files devel
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/fprint.h
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
+%dir %{_includedir}/%{name}-%{apiver}
+%{_includedir}/%{name}-%{apiver}/*.h
+%{_libdir}/%{name}-%{apiver}.so
+%{_libdir}/pkgconfig/%{name}-%{apiver}.pc
+%{_datadir}/gir-1.0/*.gir
 
 %changelog

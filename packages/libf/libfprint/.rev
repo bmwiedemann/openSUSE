@@ -324,4 +324,12 @@ No LGPL-2.1 &quot;only&quot; licenses found in the package (forwarded request 13
     <comment>fixed the download url</comment>
     <requestid>761270</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b9caf6f6192c5c802c10144a29620e17</srcmd5>
+    <version>1.90.1</version>
+    <time>1584446954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785591</requestid>
+  </revision>
 </revisionlist>
