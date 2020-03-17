@@ -19536,7 +19536,6 @@ unsorted:
   - python2-oslo.rootwrap 
   - python2-oslo.serialization 
   - python2-oslo.service 
-  - python2-oslo.utils 
   - python2-oslo.versionedobjects 
   - python2-oslo.vmware 
   - python2-oslosphinx 
@@ -20011,7 +20010,6 @@ unsorted:
   - python2-releases 
   - python2-remoto 
   - python2-rencode 
-  - python2-renderspec 
   - python2-reno 
   - python2-reportlab 
   - python2-repoze.lru 
@@ -22461,6 +22459,7 @@ unsorted:
   - python3-pysndfile 
   - python3-pysnmp 
   - python3-pysofaconventions 
+  - python3-pysol-cards 
   - python3-pysolr 
   - python3-pysrt 
   - python3-pyssim 
