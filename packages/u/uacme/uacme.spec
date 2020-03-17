@@ -18,7 +18,7 @@
 
 
 Name:           uacme
-Version:        1.0.22
+Version:        1.1.2
 Release:        0
 Summary:        A minimal ACMEv2 client
 License:        GPL-3.0-or-later
@@ -26,8 +26,10 @@ Group:          Productivity/Networking/Other
 URL:            https://github.com/ndilieto/uacme
 Source:         https://github.com/ndilieto/uacme/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE suse-www-path.patch
+# find . -type f -exec sed -i 's|/var/www|/srv/www/htdocs|g' {} \;
 Patch1:         suse-www-path.patch
 BuildRequires:  asciidoc
+BuildRequires:  libev-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls) >= 3.3.30
 BuildRequires:  pkgconfig(libcurl) >= 7.38.0
@@ -50,14 +52,18 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-mv %{buildroot}/%{_datadir}/doc/uacme/uacme.1.html .
+mv %{buildroot}/%{_datadir}/doc/uacme/*.html .
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README README.md THANKS uacme.1.html
+%doc AUTHORS ChangeLog NEWS README README.md THANKS
+%doc uacme.html ualpn.html
 %{_bindir}/uacme
+%{_bindir}/ualpn
 %{_mandir}/man1/uacme.1%{?ext_man}
+%{_mandir}/man1/ualpn.1%{?ext_man}
 %dir %{_datadir}/uacme
 %{_datadir}/uacme/uacme.sh
+%{_datadir}/uacme/ualpn.sh
 
 %changelog

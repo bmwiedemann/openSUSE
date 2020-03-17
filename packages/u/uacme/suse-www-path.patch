@@ -1,7 +1,8 @@
-diff -urN uacme-1.0.22.orig/docs/index.html uacme-1.0.22/docs/index.html
---- uacme-1.0.22.orig/docs/index.html	2020-02-01 10:59:29.000000000 +0100
-+++ uacme-1.0.22/docs/index.html	2020-03-05 15:45:34.891561889 +0100
-@@ -1150,11 +1150,11 @@
+diff --git a/docs/uacme.html b/docs/uacme.html
+index 1ade1ed..0d7a8d7 100644
+--- a/docs/uacme.html
++++ b/docs/uacme.html
+@@ -1153,11 +1153,11 @@ The key authorization (for <strong>dns-01</strong> and <strong>tls-alpn-01</stro
  <div class="paragraph"><p>The <em>uacme.sh</em> hook script included in the distribution can be used
  to automate the certificate issuance with <em>http-01</em> challenges,
  provided a web server for the domain being validated runs on the
@@ -15,10 +16,11 @@ diff -urN uacme-1.0.22.orig/docs/index.html uacme-1.0.22/docs/index.html
  ARGS=5
  E_BADARGS=85</pre>
  </div></div>
-diff -urN uacme-1.0.22.orig/uacme.1 uacme-1.0.22/uacme.1
---- uacme-1.0.22.orig/uacme.1	2020-02-01 10:59:29.000000000 +0100
-+++ uacme-1.0.22/uacme.1	2020-03-05 15:47:13.224648098 +0100
-@@ -321,14 +321,14 @@
+diff --git a/uacme.1 b/uacme.1
+index ee91327..c9211c4 100644
+--- a/uacme.1
++++ b/uacme.1
+@@ -322,14 +322,14 @@ Failure (syntax or usage error; configuration error; processing failure; unexpec
  .RE
  .SH "EXAMPLE HOOK SCRIPT"
  .sp
@@ -35,33 +37,16 @@ diff -urN uacme-1.0.22.orig/uacme.1 uacme-1.0.22/uacme.1
  ARGS=5
  E_BADARGS=85
  .fi
-diff -urN uacme-1.0.22.orig/uacme.1.html uacme-1.0.22/uacme.1.html
---- uacme-1.0.22.orig/uacme.1.html	2020-02-01 10:59:29.000000000 +0100
-+++ uacme-1.0.22/uacme.1.html	2020-03-05 15:47:35.641069566 +0100
-@@ -1150,11 +1150,11 @@
- <div class="paragraph"><p>The <em>uacme.sh</em> hook script included in the distribution can be used
- to automate the certificate issuance with <em>http-01</em> challenges,
- provided a web server for the domain being validated runs on the
--same machine, with webroot at /var/www</p></div>
-+same machine, with webroot at /srv/www/htdocs</p></div>
- <div class="literalblock">
- <div class="content monospaced">
- <pre>#!/bin/sh
--CHALLENGE_PATH=/var/www/.well-known/acme-challenge
-+CHALLENGE_PATH=/srv/www/htdocs/.well-known/acme-challenge
- ARGS=5
- E_BADARGS=85</pre>
- </div></div>
-diff -urN uacme-1.0.22.orig/uacme.1.txt uacme-1.0.22/uacme.1.txt
---- uacme-1.0.22.orig/uacme.1.txt	2020-02-01 10:59:29.000000000 +0100
-+++ uacme-1.0.22/uacme.1.txt	2020-03-05 15:47:25.872885909 +0100
-@@ -192,11 +192,11 @@
+diff --git a/uacme.1.txt b/uacme.1.txt
+index 03b0af0..08bd2b1 100644
+--- a/uacme.1.txt
++++ b/uacme.1.txt
+@@ -195,10 +195,10 @@ EXAMPLE HOOK SCRIPT
  The 'uacme.sh' hook script included in the distribution can be used
  to automate the certificate issuance with 'http-01' challenges,
  provided a web server for the domain being validated runs on the 
 -same machine, with webroot at /var/www
 +same machine, with webroot at /srv/www/htdocs
- 
  
      #!/bin/sh
 -    CHALLENGE_PATH=/var/www/.well-known/acme-challenge
@@ -69,9 +54,10 @@ diff -urN uacme-1.0.22.orig/uacme.1.txt uacme-1.0.22/uacme.1.txt
      ARGS=5
      E_BADARGS=85
      
-diff -urN uacme-1.0.22.orig/uacme.sh uacme-1.0.22/uacme.sh
---- uacme-1.0.22.orig/uacme.sh	2020-02-01 10:59:29.000000000 +0100
-+++ uacme-1.0.22/uacme.sh	2020-03-05 15:47:32.469009924 +0100
+diff --git a/uacme.sh b/uacme.sh
+index cf65d32..478824e 100755
+--- a/uacme.sh
++++ b/uacme.sh
 @@ -16,7 +16,7 @@
  # You should have received a copy of the GNU General Public License
  # along with this program.  If not, see <http://www.gnu.org/licenses/>.

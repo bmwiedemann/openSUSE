@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 13 18:15:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.2
+  * fix configure.ac typo affecting LDFLAGS
+- Update to version 1.1.1
+  * fix typo breaking build without HAVE_SPLICE
+  * fix addr_t name collision on s390x
+- Update to version 1.1
+  * added IP identifier support (RFC8738)
+  * added tls-alpn-01 (RFC8737) challenge responder (ualpn)
+- Update patch:
+  * suse-www-path.patch
+- With version 1.1 a new binary named "ualpn" was added.
+  "ualpn" can be used as a proxying ACMEv2 tls-alpn-01 responder
+- Add libev-devel to BuildRequires (needed by ualpn)
+
+-------------------------------------------------------------------
 Thu Mar  5 14:48:20 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - default to /srv/www/htdocs instead of /var/www for web server path
