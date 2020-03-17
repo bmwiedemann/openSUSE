@@ -383,8 +383,6 @@ products:
     - x86_64
   - kiwi-templates-JeOS:VMware:
     - x86_64
-  - kiwi-templates-JeOS:XEN:
-    - x86_64
   - kiwi-templates-JeOS:kvm-and-xen:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-kvm-and-xen:
@@ -449,7 +447,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20200314'
 publishing: '20200314'
-testing: '20200314'
+testing: '20200316'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
