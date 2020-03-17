@@ -1,10 +1,12 @@
-# spec file for PSPP 1.2.0
-
+#
+# spec file for package pspp
+#
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2008 Matj Cepl <mcepl@redhat.com>
 # Copyright (c) 2008 D. Steuer <steuer@hsuhh.de>
 # Copyright (c) 2018 <astieger@suse.com>
 # Copyright (c) 2010-2019 <opensuse.lietuviu.kalba@gmail.com>
-
+#
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
@@ -14,23 +16,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Usable with currently supported openSUSE releases
-# 42.3, 15.0, TW
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %if 0%{?mandriva_version}
 %define _disable_ld_no_undefined 1
 #Next line is needed for Mandriva build
 %define _disable_ld_as_needed 1
 %endif
-
 Name:           pspp
 Version:        1.2.0
 Release:        0
 Summary:        A program for statistical analysis of sampled data
-
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-License:        GPL-3.0+
-URL:            http://www.gnu.org/software/pspp/
+URL:            https://www.gnu.org/software/pspp/
 Source0:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
@@ -40,40 +41,6 @@ Patch0:         CVE-2018-20230.patch
 Patch1:         CVE-2019-9211.patch
 # Fix build with Texinfo 4.13 for openSUSE Leap 42.*
 Patch2:         avoid_old_Texinfo_4.13.patch
-
-BuildRoot:      %{_tmppath}/pspp-root
-%if 0%{?centos_version}
-BuildRequires:  perl
-BuildRequires:  perl-ExtUtils-MakeMaker
-BuildRequires:  pkgconfig
-BuildRequires:  gtksourceview3-devel
-%endif
-%if 0%{?fedora}
-BuildRequires:  atlas
-BuildRequires:  perl
-BuildRequires:  perl-ExtUtils-MakeMaker
-BuildRequires:  pkgconfig
-BuildRequires:  gtksourceview3-devel
-%endif
-%if 0%{?mandriva_version}
-BuildRequires:  perl
-BuildRequires:  pkgconfig
-BuildRequires:  gtksourceview-devel
-%endif
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-BuildRequires:  perl-base
-BuildRequires:  pkg-config
-BuildRequires:  update-desktop-files
-PreReq:         %install_info_prereq
-%endif
-%if  0%{?suse_version}
-BuildRequires:  gtksourceview-devel >= 3.18.0
-%endif
-%if 0%{?suse_version}
-#Next package only for "make check"
-BuildRequires:  free-ttf-fonts
-%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
@@ -86,19 +53,52 @@ BuildRequires:  libxml2-devel
 BuildRequires:  m4
 BuildRequires:  pango-devel
 BuildRequires:  postgresql-devel
+BuildRequires:  readline-devel
+BuildRequires:  spread-sheet-widget-devel >= 0.3
+BuildRequires:  texinfo
+BuildRequires:  zlib-devel
+Requires:       yelp
+%if 0%{?centos_version}
+BuildRequires:  gtksourceview3-devel
+BuildRequires:  perl
+BuildRequires:  perl-ExtUtils-MakeMaker
+BuildRequires:  pkgconfig
+%endif
+%if 0%{?fedora}
+BuildRequires:  atlas
+BuildRequires:  gtksourceview3-devel
+BuildRequires:  perl
+BuildRequires:  perl-ExtUtils-MakeMaker
+BuildRequires:  pkgconfig
+%endif
+%if 0%{?mandriva_version}
+BuildRequires:  gtksourceview-devel
+BuildRequires:  perl
+BuildRequires:  pkgconfig
+%endif
+%if 0%{?suse_version}
+BuildRequires:  fdupes
+BuildRequires:  perl-base
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+# FIXME: use proper Requires(pre/post/preun/...)
+PreReq:         %{install_info_prereq}
+%endif
+%if  0%{?suse_version}
+BuildRequires:  gtksourceview-devel >= 3.18.0
+%endif
+%if 0%{?suse_version}
+#Next package only for "make check"
+BuildRequires:  free-ttf-fonts
+%endif
 %if  0%{?suse_version} <= 1310
 BuildRequires:  postgresql-libs
 %else
 # BuildRequires:  postgresql93-libs
 %endif
-BuildRequires:  readline-devel
-BuildRequires:  spread-sheet-widget-devel >= 0.3
-BuildRequires:  texinfo
-BuildRequires:  zlib-devel
 %if 0%{?suse_version} <= 1320
 BuildRequires:  libtool
 %endif
-Requires:       yelp
 
 %description
 PSPP is a program for statistical analysis of sampled data. It
@@ -109,11 +109,10 @@ SPSS's syntax. Its statistical procedure support is currently
 limited, but growing. At your option, PSPP will produce statistical
 reports in ASCII, PostScript, PDF, HTML, SVG, or OpenDocument formats.
 
-
 %package devel
 Summary:        Development files for pspp, a statistical analysis program
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-License:        LGPL-2.1+
 Requires:       glibc-devel
 Requires:       gsl-devel
 Requires:       libxml2-devel
@@ -131,7 +130,7 @@ applications that want to build pspp plugins.
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?mandriva_version}
 %setup -q -n pspp-%{version}
 %else
-%setup -n pspp-%{version}
+%setup -q -n pspp-%{version}
 %endif
 
 %patch0 -p1
@@ -151,7 +150,7 @@ autoreconf -f -i
              --enable-debug --without-libreadline-prefix
 
 #Fix "File is compiled without RPM_OPT_FLAGS"
-make
+%make_build
 
 %install
 %make_install
@@ -167,22 +166,22 @@ rm %{buildroot}/%{_infodir}/dir
 %endif
 
 #Config for ld
-mkdir -p %{buildroot}/etc/ld.so.conf.d
-cat >%{buildroot}/etc/ld.so.conf.d/pspp.conf <<EOF
+mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
+cat >%{buildroot}%{_sysconfdir}/ld.so.conf.d/pspp.conf <<EOF
 %if 0%{?suse_version} > 1120
 %{_libdir}/pspp
 %endif
 EOF
 
 %if 0%{?suse_version}
-%fdupes -s %{buildroot}/%_datadir
+%fdupes -s %{buildroot}/%{_datadir}
 %endif
 
 # localization
 %find_lang pspp
 
 %check
-#make check || cat ./tests/testsuite.log
+%make_build check || /bin/true
 
 %post
 /sbin/ldconfig
@@ -203,10 +202,9 @@ fi
 %endif
 
 %files -f pspp.lang
-%defattr(-,root,root,-)
-%doc README COPYING THANKS AUTHORS
-# tests/testsuite.log
-%config(noreplace) /etc/ld.so.conf.d/pspp.conf
+%license COPYING
+%doc README THANKS AUTHORS
+%config(noreplace) %{_sysconfdir}/ld.so.conf.d/pspp.conf
 %{_bindir}/pspp
 %{_bindir}/psppire
 %{_bindir}/pspp-dump-sav
@@ -250,24 +248,22 @@ fi
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-zsav.png
 %{_datadir}/applications/pspp.desktop
 %if 0%{?mandriva_version}
-%doc %{_mandir}/man1/pspp.1.xz
-%doc %{_mandir}/man1/psppire.1.xz
-%doc %{_mandir}/man1/pspp-dump-sav.1.xz
-%doc %{_mandir}/man1/pspp-convert.1.xz
+%{_mandir}/man1/pspp.1.xz
+%{_mandir}/man1/psppire.1.xz
+%{_mandir}/man1/pspp-dump-sav.1.xz
+%{_mandir}/man1/pspp-convert.1.xz
 %else
-%doc %{_mandir}/man1/pspp.1.gz
-%doc %{_mandir}/man1/psppire.1.gz
-%doc %{_mandir}/man1/pspp-dump-sav.1.gz
-%doc %{_mandir}/man1/pspp-convert.1.gz
+%{_mandir}/man1/pspp.1%{?ext_man}
+%{_mandir}/man1/psppire.1%{?ext_man}
+%{_mandir}/man1/pspp-dump-sav.1%{?ext_man}
+%{_mandir}/man1/pspp-convert.1%{?ext_man}
 %endif
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/pspp.appdata.xml
 
 %files devel
-%defattr(-, root, root)
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/libpspp-core.la
 %{_libdir}/pspp/libpspp.la
 
 %changelog
-
