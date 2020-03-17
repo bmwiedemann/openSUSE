@@ -1,7 +1,7 @@
 #
 # spec file for package python-MechanicalSoup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.12.0
 Release:        0
 Summary:        A Python library for automating interaction with websites
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hickford/MechanicalSoup
 Source:         https://files.pythonhosted.org/packages/source/M/MechanicalSoup/MechanicalSoup-%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4 >= 4.4}
@@ -71,7 +70,8 @@ sed -i -e '/addopts/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+# https://github.com/MechanicalSoup/MechanicalSoup/issues/299 test_enctype_and_file_submit
+%pytest -k 'not test_enctype_and_file_submit'
 
 %files %{python_files}
 %doc README.rst
