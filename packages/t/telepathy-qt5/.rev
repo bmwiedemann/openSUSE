@@ -123,4 +123,28 @@
     <comment>1</comment>
     <requestid>424512</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f00afc7d8c9dbd6f5feb276b5be5a074</srcmd5>
+    <version>0.9.8</version>
+    <time>1584446771</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the unneeded dbus-python build dependency.
+
+- Update to 0.9.8:
+  * Python3 port
+  * Improved the documentation generation
+  * Reworked exported CMake targets
+  * GNUInstallDirs used to simplify packaging
+  * Added constructor from initializer_list to generated Telepathy types
+  * Added a getter for 'silent' Message flag
+  * Adjusted BaseChannelTextType API
+  * Added BaseConnectionContactGroupsInterface
+  * Fixed BaseDebug API
+  * Added BaseConnection::getExistingChannel()
+  * Fixed work with threaded QtDBus
+  * Omit parts with non-empty 'interface' key value for Message::text()
+  * A lot of fixes in tests
+  * fd.o #40008: Fix dependencies lookup (we used to prefer system-wide libs)</comment>
+    <requestid>784232</requestid>
+  </revision>
 </revisionlist>

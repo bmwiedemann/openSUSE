@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 12 09:14:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded dbus-python build dependency.
+
+-------------------------------------------------------------------
+Sun Jan 19 08:01:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9.8:
+  * Python3 port
+  * Improved the documentation generation
+  * Reworked exported CMake targets
+  * GNUInstallDirs used to simplify packaging
+  * Added constructor from initializer_list to generated Telepathy types
+  * Added a getter for 'silent' Message flag
+  * Adjusted BaseChannelTextType API
+  * Added BaseConnectionContactGroupsInterface
+  * Fixed BaseDebug API
+  * Added BaseConnection::getExistingChannel()
+  * Fixed work with threaded QtDBus
+  * Omit parts with non-empty 'interface' key value for Message::text()
+  * A lot of fixes in tests
+  * fd.o #40008: Fix dependencies lookup (we used to prefer system-wide libs)
+
+-------------------------------------------------------------------
 Fri Sep  2 15:30:31 UTC 2016 - buschmann23@opensuse.org
 
 - add libtelepathy-qt5-service0 to baselibs.conf
