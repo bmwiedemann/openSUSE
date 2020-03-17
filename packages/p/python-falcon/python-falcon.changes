@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 17 04:47:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- No longer build for Python 2 given not all dependencies build for it.
+
+-------------------------------------------------------------------
 Tue Jun 11 10:02:39 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Drop python-mujson BuildRequires
