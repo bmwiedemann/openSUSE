@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>783259</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eea20ba33c41d546cc58961175f0642b</srcmd5>
+    <version>1.2.3</version>
+    <time>1584446890</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two flaky tests</comment>
+    <requestid>785238</requestid>
+  </revision>
 </revisionlist>
