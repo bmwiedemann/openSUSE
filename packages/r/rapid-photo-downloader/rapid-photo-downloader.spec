@@ -1,7 +1,7 @@
 #
 # spec file for package rapid-photo-downloader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 # Copyright (c) 2009-2011 Pascal Blesser pascal.bleser@opensuse.org
 #
@@ -20,12 +20,12 @@
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.17
+Version:        0.9.18
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            https://damonlynch.net/rapid/
+URL:            https://damonlynch.net/rapid/
 Source:         https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz
 Source1:        https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz.asc
 # PATCH-FEATURE-OPENSUSE disable-version-check.patch
