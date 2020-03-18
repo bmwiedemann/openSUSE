@@ -41,7 +41,6 @@ An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 
 %package -n %{lname}
 Summary:        Support for Internationalized Domain Names (IDN)
-Recommends:     %{name}-lang = %{version}
 # for lang package
 Provides:       %{name} = %{version}
 

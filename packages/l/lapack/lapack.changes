@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 14:58:33 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -std=legacy in order to fix boo#1166619.
+
+-------------------------------------------------------------------
 Fri Aug  2 07:03:54 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.

@@ -404,4 +404,12 @@ rpmlint, rpmlint-Factory and rpmlint-tests need to go in together</comment>
   (bsc#1150178).</comment>
     <requestid>769033</requestid>
   </revision>
+  <revision rev="53" vrev="98">
+    <srcmd5>5e686a015890eb156f468ddfa3ea3583</srcmd5>
+    <version>1.0</version>
+    <time>1584530758</time>
+    <user>dimstar_suse</user>
+    <comment>- Add also badness for unauthorized set*id bits on directories (bsc#1150189). (forwarded request 784329 from mgerstner)</comment>
+    <requestid>784615</requestid>
+  </revision>
 </revisionlist>

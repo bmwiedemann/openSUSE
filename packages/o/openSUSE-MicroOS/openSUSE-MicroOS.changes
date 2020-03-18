@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:47:11 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Make check for kubelet in config.sh more generic to work after
+  the package rename
+
+-------------------------------------------------------------------
 Wed Mar 11 13:41:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use new kiwi feature to set /var partition noCoW

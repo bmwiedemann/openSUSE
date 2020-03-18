@@ -26,4 +26,12 @@
   * BUG: issue #72. Now setitem uses schema.</comment>
     <requestid>736798</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ba1594edc8f292f00672be73e9e0832</srcmd5>
+    <version>1.0.6</version>
+    <time>1584531602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785938</requestid>
+  </revision>
 </revisionlist>

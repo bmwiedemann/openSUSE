@@ -1,7 +1,7 @@
 #
 # spec file for package lapack-man
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Manpages for LAPACK
 License:        BSD-3-Clause
 Group:          Documentation/HTML
-Url:            http://www.netlib.org/lapack/
+URL:            http://www.netlib.org/lapack/
 Source0:        http://www.netlib.org/lapack/%{_name}-%{version}.tgz
 BuildRequires:  doxygen >= 1.7
 Provides:       lapack-manpages = %{version}

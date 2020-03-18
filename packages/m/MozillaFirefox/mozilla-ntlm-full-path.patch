@@ -1,7 +1,7 @@
 # HG changeset patch
 # User Petr Cerny <pcerny@novell.com>
 # Parent 7308e4a7c1f769f4bbbc90870b849cadd99495a6
-# Parent  6ab277cf616dc2748e9855101100a97a6cec10a6
+# Parent  2361c5db1e70e358b2158325e07fa15bb4569c2c
 Bug 634334 - call to the ntlm_auth helper fails
 
 diff --git a/extensions/auth/nsAuthSambaNTLM.cpp b/extensions/auth/nsAuthSambaNTLM.cpp

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 08:29:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.1:
+  - Add Python 3 support. (#22)
+- Enable tests
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

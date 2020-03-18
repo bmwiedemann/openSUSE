@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 15 07:58:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Dec 19 10:56:27 UTC 2017 - badshah400@gmail.com
 
 - Correct License: Includes software licensed as BSD-3-Clause,

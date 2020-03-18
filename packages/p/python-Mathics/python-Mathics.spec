@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pyname Mathics
@@ -22,28 +23,26 @@ Version:        1.0
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
-License:        GPL-3.0 and BSD-3-Clause and MIT and Apache-2.0
-Group:          Development/Languages/Python
-Url:            https://mathics.github.io/
+License:        GPL-3.0-only AND BSD-3-Clause AND MIT AND Apache-2.0
+URL:            https://mathics.github.io/
 Source:         https://github.com/mathics/Mathics/archive/v%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module mpmath >= 0.19}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10}
 BuildRequires:  %{python_module sympy}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.8
 Requires:       python-mpmath >= 0.19
 Requires:       python-python-dateutil
 Requires:       python-six >= 1.10
 Requires:       python-sympy
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %python_subpackages
 
 %description
@@ -51,6 +50,7 @@ Mathics is a general-purpose computer algebra system (CAS). It is meant to be a 
 
 %prep
 %setup -q -n %{pyname}-%{version}
+%autopatch -p1
 
 # FIX SPURIOUS EXEC PERMISSIONS
 find ./mathics/web/media/js -name "*.js" -exec chmod -x '{}' \;
@@ -73,18 +73,17 @@ popd
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#FIXME: Errors with check
-#%%check
+%check
+# Tests fail with new sympy, probably worth fixing upstream
 #%%python_exec setup.py test
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/
-
-%files %python_files
-%defattr(-,root,root)
-%doc README.rst COPYING.txt AUTHORS.txt
+%files %{python_files}
+%license COPYING.txt
+%doc README.rst AUTHORS.txt
 %{python_sitelib}/mathics/
-%{python_sitelib}/%{pyname}-%{version}-py%{py_ver}.egg-info/
+%{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
 %python3_only %{_bindir}/mathicsscript
 %python3_only %{_bindir}/mathicsserver
 %python3_only %{_bindir}/mathics

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 17 14:29:19 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.8.5
+  ## [5.8.5] - 2012-01-29
+  -  #1195 Fixed an issue with `slcli vs dns-sync --ptr`. Added `slcli hw dns-sync`
+  -  #1199 Fix File Storage failback and failover.
+  -  #1198 Fix issue where the summary command fails due to None being provided as the datacenter name.
+  -  #1208 Added The following commands:
+      - `slcli block volume-limits`
+      - `slcli file  volume-limits`
+  - #1209  Add testing/CI for python 3.8.
+  - #1212 Fix vs detail erroring on servers pending cancellation.
+  - #1210 support subnet ACL management through cli
+      + `slcli block subnets-list`
+      + `slcli block subnets-assign`
+      + `slcli block subnets-remove`
+  - #1215 Added documentation for all SLCLI commands.
+  ## [5.8.4] - 2019-12-20
+  - #1199 Fix block storage failback and failover.
+  - #1202 Order a virtual server private.
+  ## [5.8.3] - 2019-12-11
+  - #771 Fixed unicode errors in image list (for windows)
+  - #1191 Fixed ordering virtual server dedicated from the CLI
+  - #1155 Fixed capacity restriction when ordering storage quotes
+  - #1192 Fixed hardware detail bandwidth allocation errors.
+  ## [5.8.2] - 2019-11-15
+  + #1186 Fixed a unit test that could fail if the test took too long to run.
+  + #1183 Added a check to ensure subnet and vlan options are properly added to the order for virtual servers.
+  + #1184 Fixed a readme misspelling.
+  + #1182 Fixed vs reboot unable to resolve vs names.
+  + #1095 Handle missing Fixtures better for unit tests.
+  + #1169 Drop python 2.7 support
+  + #1170 Added CS# to ticket listing
+  + #1162 Fixed issue looking up OS keyName instead of referenceCode
+  + #627 Autoscale support
+      * slcli autoscale detail
+      * slcli autoscale edit
+      * slcli autoscale list
+      * slcli autoscale logs
+      * slcli autoscale scale
+      * slcli autoscale tag
+
+-------------------------------------------------------------------
 Tue Sep 10 10:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Bump to 5.8.0:

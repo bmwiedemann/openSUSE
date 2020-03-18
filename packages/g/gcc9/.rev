@@ -201,4 +201,16 @@ release expected in about a week.
 - Install go tool buildid for bootstrapping go</comment>
     <requestid>779120</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d8f26e866776c426566f9c63a745bacb</srcmd5>
+    <version>9.2.1+git1192</version>
+    <time>1584530691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to releases/gcc-9 head (c5edde44f5b17b4891f17a63517f355b).
+  * Includes GCC 9.3.0 RC1
+
+- Update to releases/gcc-9 head (eaaee438bf836c2c1ed3424ecbf85de3ed941e87).
+  * Includes fix for binutils version parsing [gcc#93965]</comment>
+    <requestid>783281</requestid>
+  </revision>
 </revisionlist>

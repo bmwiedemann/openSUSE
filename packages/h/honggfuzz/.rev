@@ -64,4 +64,25 @@
 - Update project url</comment>
     <requestid>584450</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>59ee3f24a15a32d1b8702e7873008956</srcmd5>
+    <version>2.1</version>
+    <time>1584531580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1:
+  * string/int comparison enabled for targets built with *SAN, but
+    w/o hfuzz-cc
+  * Parallel work made faster by using faster ATOMIC constructs
+    (check first, then update)
+  * Implement --experimental_const_feedback - const string/integer
+    feedback (used as an additional dictionary)
+  * Sanitizer report files are &quot;better&quot;-deleted (i.e. based on PID
+    and not TID)
+  * New patches for fuzzing added (e.g. for bind-9.16.0/9.15.7)
+    * Buffered output enabled in display.c
+    * Some functions moved from per-arch arch.c to common subproc.c
+    * Added suport for bfd/binutils-2.33
+  - And more from previous releases - see provided CHANGELOG</comment>
+    <requestid>785933</requestid>
+  </revision>
 </revisionlist>

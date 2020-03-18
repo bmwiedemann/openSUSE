@@ -1,12 +1,17 @@
 # HG changeset patch
-# Parent  e5858dc7ab007042436496f7cfb9a5abf10f5082
+# Parent  e42a036a5533ea6a60ebc22fd2a150c384d42fda
 This fixes a broken build for gcc < 9 on ppc64le.
 This patch can be removed for newer gcc-versions.
 
-diff -r e5858dc7ab00 -r 5d3469aabe61 js/xpconnect/src/XPCWrappedNative.cpp
---- a/js/xpconnect/src/XPCWrappedNative.cpp	Thu Nov 29 10:07:29 2018 +0100
-+++ b/js/xpconnect/src/XPCWrappedNative.cpp	Tue Sep 10 12:42:13 2019 +0200
-@@ -1092,7 +1092,11 @@
+diff --git a/js/xpconnect/src/XPCWrappedNative.cpp b/js/xpconnect/src/XPCWrappedNative.cpp
+--- a/js/xpconnect/src/XPCWrappedNative.cpp
++++ b/js/xpconnect/src/XPCWrappedNative.cpp
+@@ -1080,17 +1080,21 @@ class MOZ_STACK_CLASS CallMethodHelper f
+                                                uint32_t* result);
+ 
+   MOZ_ALWAYS_INLINE bool GetInterfaceTypeFromParam(const nsXPTType& type,
+                                                    nsID* result) const;
+ 
    MOZ_ALWAYS_INLINE bool GetOutParamSource(uint8_t paramIndex,
                                             MutableHandleValue srcp) const;
  
@@ -19,7 +24,17 @@ diff -r e5858dc7ab00 -r 5d3469aabe61 js/xpconnect/src/XPCWrappedNative.cpp
  
    MOZ_ALWAYS_INLINE bool QueryInterfaceFastPath();
  
-@@ -1139,7 +1143,11 @@
+   nsXPTCVariant* GetDispatchParam(uint8_t paramIndex) {
+     if (paramIndex >= mJSContextIndex) {
+       paramIndex += 1;
+     }
+     if (paramIndex >= mOptArgcIndex) {
+@@ -1127,17 +1131,21 @@ class MOZ_STACK_CLASS CallMethodHelper f
+ 
+   {
+     // Success checked later.
+     mIFaceInfo->GetMethodInfo(mVTableIndex, &mMethodInfo);
+   }
  
    ~CallMethodHelper();
  
@@ -32,3 +47,8 @@ diff -r e5858dc7ab00 -r 5d3469aabe61 js/xpconnect/src/XPCWrappedNative.cpp
  
    // Trace implementation so we can put our CallMethodHelper in a Rooted<T>.
    void trace(JSTracer* aTrc);
+ };
+ 
+ // static
+ bool XPCWrappedNative::CallMethod(XPCCallContext& ccx,
+                                   CallMode mode /*= CALL_METHOD */) {

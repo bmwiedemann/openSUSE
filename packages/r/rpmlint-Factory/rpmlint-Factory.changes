@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:57:19 UTC 2020 - matthias.gerstner@suse.com
+
+- Add also badness for unauthorized set*id bits on directories (bsc#1150189).
+
+-------------------------------------------------------------------
+Tue Mar  3 09:25:51 UTC 2020 - matthias.gerstner@suse.com
+
+- Add badness for unauthorized or changed cron job files (bsc#1150175).
+
+-------------------------------------------------------------------
 Fri Jan 31 10:38:21 UTC 2020 - matthias.gerstner@suse.com
 
 - Add badness for unauthorized PAM modules that didn't receive a review

@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-emf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/modeling/emf/
 Source0:        http://git.eclipse.org/c/emf/org.eclipse.emf.git/snapshot/org.eclipse.emf-%{emf_tag}.tar.xz
 Source1:        http://git.eclipse.org/c/xsd/org.eclipse.xsd.git/snapshot/org.eclipse.xsd-%{xsd_tag}.tar.xz
-# Avoid hard build-time dep on nebula (not in Fedora)
+# Avoid hard build-time dep on nebula
 Patch0:         remove-nebula-dep.patch
 # Remove test that requires internet connection
 Patch1:         remove-network-tests.patch
@@ -41,6 +41,7 @@ Patch1:         remove-network-tests.patch
 Patch2:         remove-timezone-test.patch
 # Remove unnecessary imports of JRE packages that are supplied by the system bundle
 Patch3:         remove-unnecessary-imports.patch
+BuildRequires:  fdupes
 BuildRequires:  tycho-extras
 BuildRequires:  xz
 BuildConflicts: java-devel >= 9
@@ -49,11 +50,9 @@ Name:           eclipse-emf-bootstrap
 %else
 Name:           eclipse-emf
 %endif
-BuildRequires:  fdupes
 %if %{without bootstrap}
-BuildRequires:  eclipse-ecf-core
-BuildRequires:  eclipse-emf-core
-BuildRequires:  eclipse-emf-core-sdk
+BuildRequires:  eclipse-ecf-core-bootstrap
+BuildRequires:  eclipse-emf-core-bootstrap
 BuildRequires:  eclipse-pde-bootstrap
 BuildRequires:  eclipse-platform-bootstrap
 BuildRequires:  jgit-bootstrap
@@ -73,25 +72,22 @@ BuildRequires:  tycho-bootstrap
 The Eclipse Modeling Framework (EMF) and XML Schema Definition (XSD) plug-ins.
 
 %if %{with bootstrap}
-
-%package   -n eclipse-emf-core
+%package   -n eclipse-emf-core-bootstrap
+%else
+%package   core
+Obsoletes:      eclipse-emf-core-bootstrap
+%endif
 Summary:        Eclipse EMF Core Bundles
 Group:          Development/Libraries/Java
 
-%description -n eclipse-emf-core
-Core EMF bundles required by the Eclipse platform.
-
-%package   -n eclipse-emf-core-sdk
-Summary:        Eclipse EMF Core Bundles (Sources and source features)
-Group:          Development/Libraries/Java
-BuildArch:      noarch
-
-%description -n eclipse-emf-core-sdk
-Core EMF bundles required by the Eclipse platform.
-This package contains the corresponding sources and source features
-
+%if %{with bootstrap}
+%description -n eclipse-emf-core-bootstrap
 %else
+%description core
+%endif
+Core EMF bundles required by the Eclipse platform.
 
+%if %{without bootstrap}
 %package   runtime
 Summary:        Eclipse Modeling Framework (EMF) Eclipse plug-in
 Group:          Development/Libraries/Java
@@ -119,12 +115,12 @@ representation of XML Schema as a series of XML documents.
 %package   sdk
 Summary:        Eclipse EMF and XSD SDK
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}-core-sdk
 BuildArch:      noarch
 
 %description sdk
 Documentation and developer resources for the Eclipse Modeling Framework
 (EMF) plug-in and XML Schema Definition (XSD) plug-in.
-
 %endif
 
 %prep
@@ -183,14 +179,6 @@ sed -i -e '/<module>.*examples/d' releng/org.eclipse.emf.parent/plugins/pom.xml
 <module>../../../plugins/org.eclipse.emf.ecore.xmi</module>
 <module>../../../plugins/org.eclipse.emf.ecore</module>
 </modules>" releng/org.eclipse.emf.parent/plugins
-%else
-%pom_disable_module ../../../features/org.eclipse.emf.base-feature releng/org.eclipse.emf.parent/features
-%pom_disable_module ../../../features/org.eclipse.emf.common-feature releng/org.eclipse.emf.parent/features
-%pom_disable_module ../../../features/org.eclipse.emf.ecore-feature releng/org.eclipse.emf.parent/features
-%pom_disable_module ../../../plugins/org.eclipse.emf.common releng/org.eclipse.emf.parent/plugins
-%pom_disable_module ../../../plugins/org.eclipse.emf.ecore.change releng/org.eclipse.emf.parent/plugins
-%pom_disable_module ../../../plugins/org.eclipse.emf.ecore.xmi releng/org.eclipse.emf.parent/plugins
-%pom_disable_module ../../../plugins/org.eclipse.emf.ecore releng/org.eclipse.emf.parent/plugins
 %endif
 
 popd
@@ -203,7 +191,11 @@ popd
 %{mvn_package} ":org.eclipse.emf.tests" __noinstall
 %{mvn_package} ":org.eclipse.emf.test.*" __noinstall
 
+%if %{with bootstrap}
+%{mvn_package} ":::{sources,sources-feature}:" __noinstall
+%else
 %{mvn_package} ":::{sources,sources-feature}:" sdk
+%endif
 %{mvn_package} ":org.eclipse.emf.{sdk,doc,cheatsheets,example.installer}" sdk
 %{mvn_package} ":org.eclipse.xsd.{sdk,doc,cheatsheets,example.installer}" sdk
 %{mvn_package} "org.eclipse.emf.features:org.eclipse.emf.{base,common,ecore}"
@@ -220,8 +212,6 @@ QUALIFIER=$(date -u -d"$(stat --format=%y %{SOURCE0})" +v%Y%m%d-%H%M)
 %install
 %mvn_install
 
-%if %{with bootstrap}
-
 # Move to libdir due to being part of core platform
 install -d -m 755 %{buildroot}%{_eclipsedir}
 mv %{buildroot}%{_datadir}/eclipse/droplets/emf/{plugins,features} %{buildroot}%{_eclipsedir}
@@ -233,8 +223,6 @@ sed -i -e 's|%{_datadir}/eclipse/droplets/emf/features/|%{_eclipsedir}/features/
        -e 's|%{_datadir}/eclipse/droplets/emf/plugins/|%{_eclipsedir}/plugins/|' .mfiles
 sed -i -e '/droplets/d' .mfiles
 
-%endif
-
 # Remove any symlinks that might be created during bootstrapping due to missing platform bundles
 for del in $( (cd %{buildroot}%{_eclipsedir}/plugins && ls | grep -v -e '^org\.eclipse\.emf' ) ) ; do
 rm %{buildroot}%{_eclipsedir}/plugins/$del
@@ -245,20 +233,18 @@ done
 %fdupes -s %{buildroot}%{_datadir}/eclipse
 
 %if %{with bootstrap}
-
-%files -n eclipse-emf-core -f .mfiles
+%files -n eclipse-emf-core-bootstrap -f .mfiles
+%else
+%files core -f .mfiles
+%endif
 %license org.eclipse.emf/features/org.eclipse.emf.license-feature/*.html
 
-%files -n eclipse-emf-core-sdk -f .mfiles-sdk
-
-%else
-
+%if %{without bootstrap}
 %files runtime -f .mfiles-runtime
 
 %files xsd -f .mfiles-xsd
 
 %files sdk -f .mfiles-sdk
-
 %endif
 
 %changelog

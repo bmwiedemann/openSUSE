@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 17 16:49:37 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.1:
+  * glib-genmarshal: Replace deprecated tokens NONE and BOOL.
+  * Read authors (updated) from mate-power-manager.about.
+  * Use gtk_show_about_dialog to show about dialogue.
+  * Remove the CPU wakeups feature.
+  * Update copyright year in the About dialogue.
+  * Generate missing gpm-* PNGs from new SVGs.
+  * Add missing gpm-phone SVGs.
+  * Add missing gpm-keboard SVGs.
+  * Add missing gpm-mouse SVGs.
+  * Update translations.
+- Rebase mate-power-manager-upower-0.99.7.patch.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.22.1):

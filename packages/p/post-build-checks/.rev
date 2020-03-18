@@ -786,4 +786,13 @@
   * 99-check-remove-rpms: preserve libgomp variants</comment>
     <requestid>762807</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>6ebeb17276dfbfcb08660885fe76a7ed</srcmd5>
+    <version>84.87+git20200305.61b5cdf</version>
+    <time>1584530672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200305.61b5cdf:
+  * Fix ghost logic</comment>
+    <requestid>781792</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 17 13:01:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.4
+  * Update documentation
+  * Replace Jenkins and Travis CI with Drone CI
+  * Add new copy() function to Hash() and PseudoHash() class
+  * Add new attributes to Hash() and PseudoHash() class
+    * name
+    * block_size
+
+-------------------------------------------------------------------
 Thu Aug  2 13:38:48 UTC 2018 - sebix+novell.com@sebix.at
 
 - initial package for version 3.3

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar 17 13:57:10 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.9.0
+  * Support `position_ms` optional parameter in `start_playback`
+  * Add `requests_timeout` parameter to authentication methods
+  * Make cache optional in `get_access_token`
+  * Support for `playlist_cover_image`
+  * Support `after` and `before` parameter in `current_user_recently_played`
+  * CI for unit tests
+  * Automatic `token` refresh
+  * `auth_manager` and `oauth_manager` optional parameters added to `Spotify`'s init.
+  * Optional `username` parameter to be passed to `SpotifyOAuth`, to infer a `cache_path` automatically
+  * Optional `as_dict` parameter to control `SpotifyOAuth`'s `get_access_token` output type. However, this is going to be deprecated in the future, and the method will always return a token string
+  * Optional `show_dialog` parameter to be passed to `SpotifyOAuth`
+  * Both `SpotifyClientCredentials` and `SpotifyOAuth` inherit from a common `SpotifyAuthBase` which handles common parameters and logics.
+  * Support for `playlist_tracks`
+  * Support for `playlist_upload_cover_image`
+  * `user_playlist_tracks` doesn't require a user anymore (accepts `None`)
+  * Deprecated `user_playlist` and `user_playlist_tracks`
+  * Fixed broken examples in README, examples and doc
+  * Allow session keepalive
+  * Bump requests to 2.20.0
+  * Fixed inconsistent behaviour with some API methods when
+   a full HTTP URL is passed.
+  * Fixed invalid calls to logging warn method
+  * Support for `playlist` to get a playlist without specifying a user
+  * Support for `current_user_saved_albums_delete`
+  * Support for `current_user_saved_albums_contains`
+  * Support for `user_unfollow_artists`
+  * Support for `user_unfollow_users`
+  * Added follow and player endpoints
+
+-------------------------------------------------------------------
 Wed Dec 19 16:22:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions.

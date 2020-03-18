@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  6 08:58:58 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to releases/gcc-9 head (c5edde44f5b17b4891f17a63517f355b).
+  * Includes GCC 9.3.0 RC1
+
+-------------------------------------------------------------------
+Mon Mar  2 08:33:11 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to releases/gcc-9 head (eaaee438bf836c2c1ed3424ecbf85de3ed941e87).
+  * Includes fix for binutils version parsing [gcc#93965]
+
+-------------------------------------------------------------------
 Tue Feb 25 13:44:51 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add libstdc++6-pp provides and conflicts to avoid file conflicts

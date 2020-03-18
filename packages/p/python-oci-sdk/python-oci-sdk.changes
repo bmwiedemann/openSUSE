@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:41:25 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.11.0
+  + Support for Events service integration with alerts in the Budgets service
+  + The parameters sort_by and lifecycle_state type from Budgets
+    service are changed from str to enum
+- from version 2.10.7
+  + Support for updating the shape of a Database System in the Database service
+  + Support for generating CPE configurations for download in the Networking service
+  + Support for private IPs and fault domains of cluster nodes in the Container
+    Engine for Kubernetes service
+  + Support for calling Oracle Cloud Infrastructure services in the ca-montreal-1 region
+  + Fixed missed parameter when invoking request signing for delegation token
+- from version 2.10.6
+  + Support for restarting autonomous databases in the Database service
+  + Support for private endpoints on autonomous databases in the Database service
+  + Support for IP-based policies in the Identity service
+  + Support for management of OAuth 2.0 client credentials in the Identity service
+  + Support for OCI Functions as a subscription protocol in the Notifications service
+- from version 2.10.5
+  + Support for the NoSQL Database service
+  + Support for filtering database versions by storage management
+    type in the Database service
+  + Support for specifying paid listing types within pricing models
+    in the Marketplace service
+  + Support for primary and non-primary instance types in the
+    Content and Experience service
+- from version 2.10.4
+  + Support for listing supported database versions for Autonomous Database Serverless,
+    and selecting a version at provisioning time in the Database service
+  + Support for TCP proxy protocol versions on listener connection
+    configurations in the Load Balancer service
+  + Support for calling the Notifications service in alternate realms
+  + Support for calling Oracle Cloud Infrastructure services in the
+    eu-amsterdam-1 and me-jeddah-1 regions
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Fri Feb  7 12:02:15 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.10.3

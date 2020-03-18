@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 14:52:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libqt5-qtgraphicaleffects and libqt5-qtquickcontrols2
+  dependencies: those Qt5 extensions are required to start the
+  application.
+- Drop update-alternatives dependencies: u-a is not used at all
+  here.
+
+-------------------------------------------------------------------
 Tue Jan 28 16:37:45 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 4.2.6

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 14 09:18:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in python deps except interpreter, the bundles
+  are patched anwyays
+
+-------------------------------------------------------------------
 Thu Mar  5 18:15:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 80.0.3987.132 bsc#1165826:

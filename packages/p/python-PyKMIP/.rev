@@ -85,4 +85,31 @@
     <comment></comment>
     <requestid>718536</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c334c5256ec7ff315542f9ada3e99990</srcmd5>
+    <version>0.10.0</version>
+    <time>1584530827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0
+  * Add server debug logging for message encodings
+  * Add server Locate filtering for all currently supported attributes
+  * Add server Locate filtering using offset and maximum item constraints
+  * Add server cryptography engine support for AES GCM mode
+  * Add server support for the SplitKey object
+  * Add client/server support for the ApplicationSpecificInformation attribute
+  * Add client/server support for the ObjectGroup and Sensitive attributes
+  * Add client/server support for the DeleteAttribute operation
+  * Add client/server support for the SetAttribute operation
+  * Add client/server support for the ModifyAttribute operation
+  * Add a variety of unit and integration tests to cover all new functionality
+  * Add new ProxyKmipClient demo scripts to show how to use the new operations
+  * Add pending deprecation warnings for Python 2.7 and 3.4 due to their EOL
+  * Update server Locate filtering to return results sorted by creation date
+  * Update encoding support for SplitKey objects
+  * Update the Travis CI configuration to better support default Python versions
+  * Update library and testing dependencies to maintain Python 3.4 support
+  * Update the library documentation to reflect new features and security details
+  * Fix a bug with how key pair names are handled by the client for KMIP 2.0</comment>
+    <requestid>785582</requestid>
+  </revision>
 </revisionlist>

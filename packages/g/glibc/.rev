@@ -2288,4 +2288,15 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   the group setting (bsc#1164075) (forwarded request 775213 from Andreas_Schwab)</comment>
     <requestid>775215</requestid>
   </revision>
+  <revision rev="236" vrev="3">
+    <srcmd5>3b7fe5bc2034da15a9fe49c10181302e</srcmd5>
+    <version>2.31</version>
+    <time>1584530269</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-syscall-clobber.patch: riscv: Avoid clobbering register parameters
+  in syscall
+- ldbl-96-rem-pio2l.patch: Avoid ldbl-96 stack corruption from range
+  reduction of pseudo-zero (CVE-2020-10029, bsc#1165784, BZ #25487) (forwarded request 784366 from Andreas_Schwab)</comment>
+    <requestid>784367</requestid>
+  </revision>
 </revisionlist>

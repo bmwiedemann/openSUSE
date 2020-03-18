@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  a25cebecb02d5460b8ad757fe9cb4a9c8d1d7658
+# Parent  38d48db62539afe61d542c9d21e32d57d4b00a73
 Eliminate startup error message:
 JavaScript error: , line 0: Error: Type error for platformInfo value (Error processing arch: Invalid enumeration value "s390x") for runtime.getPlatformInfo.
 
@@ -8,10 +8,15 @@ Reported here: https://bugzilla.mozilla.org/show_bug.cgi?id=1554971
 Uncertain if this is causing real problems or not. Also uncertain if the fix actually fixes anything.
 No response from upstream yet.
 
-diff -r a25cebecb02d -r 378b81b00e73 toolkit/components/extensions/schemas/runtime.json
---- a/toolkit/components/extensions/schemas/runtime.json	Fri Jul 05 12:42:44 2019 +0200
-+++ b/toolkit/components/extensions/schemas/runtime.json	Fri Jul 19 13:19:30 2019 +0200
-@@ -64,7 +64,7 @@
+diff --git a/toolkit/components/extensions/schemas/runtime.json b/toolkit/components/extensions/schemas/runtime.json
+--- a/toolkit/components/extensions/schemas/runtime.json
++++ b/toolkit/components/extensions/schemas/runtime.json
+@@ -59,17 +59,17 @@
+         "type": "string",
+         "allowedContexts": ["content", "devtools"],
+         "description": "The operating system the browser is running on.",
+         "enum": ["mac", "win", "android", "cros", "linux", "openbsd"]
+       },
        {
          "id": "PlatformArch",
          "type": "string",
@@ -20,3 +25,8 @@ diff -r a25cebecb02d -r 378b81b00e73 toolkit/components/extensions/schemas/runti
          "allowedContexts": ["content", "devtools"],
          "description": "The machine's processor architecture."
        },
+       {
+         "id": "PlatformInfo",
+         "type": "object",
+         "allowedContexts": ["content", "devtools"],
+         "description": "An object containing information about the current platform.",

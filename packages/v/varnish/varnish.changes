@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 17 12:59:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.4.0
+  * The MAIN.sess_drop counter is gone.
+  * backend "none" was added for "no backend".
+  * The hash algorithm of the hash director was changed, so
+    backend selection will change once only when upgrading.
+  * It is now possible for VMOD authors to customize the
+    connection pooling of a dynamic backend.
+  * For more, see changes.rst.
+
+-------------------------------------------------------------------
 Tue Feb 25 08:39:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.3.2

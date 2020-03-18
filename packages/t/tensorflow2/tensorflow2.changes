@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 13 15:25:38 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed sources of bazel sources and replaced them by internal packages
+ * rules-cc.zip removed
+ * bazel-toolchains.tar.gz removed
+ * bazel-skylib.0.8.0.tar.gz removed
+
+-------------------------------------------------------------------
 Mon Mar  9 21:22:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Lite flavor should not provide "tensorflow", otherwise 

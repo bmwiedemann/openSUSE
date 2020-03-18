@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:00:51 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed mpi and hpc builds, added file 
+  * fix-mpi-build.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 10:50:38 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Fixed python3.8 build and logging with the the two patches
+  * Fix-build-failures-for-python-3.8.patch which fixes the build
+  * Fix-TensorFlow-on-Python-3.8-logger-issue.patch which fixes the logging
+
+-------------------------------------------------------------------
+Wed Mar 11 10:12:39 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to latest stable v1 version 1.15.2 which fixes 
+  CVE-2019-16778 (bsc#1159338)
+- Highlights of this version are:
+  * MKL-DNN contraction kernels on by default
+  * Fixes a security vulnerability where converting a Python string 
+    to a tf.float16 value produces a segmentation fault (CVE-2020-5215)
+  see RELEASE.md for full changelog
+- updated following sources:
+  * tensorflow-1.15.2.tar.gz
+  * bazel-toolchains.tar.gz
+  * eigen.tar.gz
+  * gemmlowp.zip
+  * google-cloud-cpp.tar.gz
+  * license.rst.txt
+  * rules_closure.tar.gz
+- added following patches:
+ * removed-docker-tools.patch to remove docker build during package build
+ * right-json-location.patch to make syslibs point to json
+ * tensorflow-make_aws_sdk_work_on_aarch64.patch
+ * fix-lite.patch
+ * json-feature-name.patch
+- removed follwing sources
+ * abseil-pypi-v0.2.2.tar.gz
+ * aws-sdk-cpp-1.3.15.tar.gz
+ * boring_ssl.tar.gz
+ * double_conversion.zip
+ * fft.tgz
+ * flatbuffers_v1.9.0.tar.gz
+ * gast-0.2.0.tar.gz
+ * google-flatbuffers-1.10.0~pre.tar.gz
+ * google-nsync-1.20.1.tar.gz
+ * python-license.txt
+ * unicode-org-icu.tar.gz
+- removed following patches:
+ * fix_mvapich_mpi_bzl.patch
+ * grpc-namespace-corrections.patch
+ * remove-keras.patch
+ * tensorflow-fix_lite.patch
+ * support-new-bazel.patch
+
+
+-------------------------------------------------------------------
 Thu Feb 13 19:36:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add 'Provides' only for hpc flavors, otherwise it matches the

@@ -20,7 +20,7 @@
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.18
+Version:        0.9.19
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
@@ -86,6 +86,8 @@ Requires:       python3-scandir
 BuildRequires:  python3-typing
 Requires:       python3-typing
 %endif
+# For heif support. we can not package the libraries in the distro but if e.g. packman provides the package we should pull it.
+Recommends:     python3-pyheif
 
 %description
 Rapid Photo Downloader downloads images in parallel from multiple devices,
@@ -122,13 +124,13 @@ python3 setup.py install \
 %doc README.rst CHANGES.rst
 %{_bindir}/analyze-pv-structure
 %{_bindir}/%{name}
-%{_datadir}/appdata/net.damonlynch.%{name}.appdata.xml
-%{_datadir}/applications/net.damonlynch.%{name}.desktop
+%{_datadir}/metainfo/net.damonlynch.rapid_photo_downloader.metainfo.xml
+%{_datadir}/applications/net.damonlynch.rapid_photo_downloader.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %dir %{_datadir}/solid
 %dir %{_datadir}/solid/actions
-%{_datadir}/solid/actions/net.damonlynch.%{name}.desktop
+%{_datadir}/solid/actions/net.damonlynch.rapid_photo_downloader.desktop
 %{_mandir}/man1/analyze-pv-structure.1%{ext_man}
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{python3_sitelib}/raphodo

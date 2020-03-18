@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 17 03:18:01 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.010001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010001	2020-03-16
+  
+   [ Documentation ]
+   - MooX::Pression mentions in documentation now refer to Zydeco.
+  
+   [ Test Suite ]
+   - Test suite passes in cperl, albeit with warnings.
+
+-------------------------------------------------------------------
 Thu Feb 20 03:14:06 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.010000

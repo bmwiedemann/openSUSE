@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:55:11 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Change the way the bootstrap/non-bootstrap packages are built in
+  order to have a working eclipse as a final product (bsc#1166426)
+
+-------------------------------------------------------------------
 Mon Nov 11 12:12:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of eclipse-emf 2.15.0~gitd1e5fdd as _multibuild

@@ -37,4 +37,13 @@
   * Small cleanups</comment>
     <requestid>717596</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05ee4a9709a7202d9a57e597ad59564e</srcmd5>
+    <version>0.12.0</version>
+    <time>1584531959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * various fixes</comment>
+    <requestid>786117</requestid>
+  </revision>
 </revisionlist>

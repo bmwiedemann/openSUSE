@@ -17,7 +17,7 @@
 
 
 Name:           perl-Type-Tiny
-Version:        1.010000
+Version:        1.010001
 Release:        0
 %define cpan_name Type-Tiny
 Summary:        Tiny, yet Moo(se)-compatible type constraint

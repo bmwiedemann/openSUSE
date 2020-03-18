@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:22:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable functional tests as it takes ages and basic checks
+  are okay with unittests
+
+-------------------------------------------------------------------
+Tue Mar 10 09:31:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use xdist for test execution as otherwise it takes ages
+
+-------------------------------------------------------------------
 Fri Jan 17 13:33:04 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Requires python-devel, as `pyinstaller` cannot be used without it

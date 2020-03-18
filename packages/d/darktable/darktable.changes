@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 16:28:28 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.0.1
+  * https://github.com/darktable-org/darktable/releases/tag/release-3.0.1
+- added https://github.com/darktable-org/darktable/commit/8bceae80bd8459f4ec5929df75d6ec0471c3d26c.patch
+  to fix regression in the basic adjustment module.
+
+-------------------------------------------------------------------
 Wed Feb 12 15:15:45 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update the documentation to 3.0

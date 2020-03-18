@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-unittest-xml-reporting
-Version:        2.5.2
+Version:        3.0.2
 Release:        0
 Summary:        PyUnit-based test runner with JUnit like XML reporting
 License:        LGPL-3.0-or-later
@@ -33,9 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.4.0
 Provides:       python-xmlrunner = %{version}
 BuildArch:      noarch
-%ifpython2
-BuildRequires:  python2-mock
-%endif
 %python_subpackages
 
 %description

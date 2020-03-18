@@ -1,7 +1,7 @@
 #
 # spec file for package tycho
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,6 +141,8 @@ BuildRequires:  %{name}-bootstrap
 BuildRequires:  eclipse-platform-bootstrap >= 4.8.0
 Requires:       eclipse-platform >= 4.8.0
 Obsoletes:      %{name}-bootstrap
+#!BuildRequires: eclipse-emf-core-bootstrap
+#!BuildRequires: eclipse-ecf-core-bootstrap
 %else
 # For bootstrapping, we just need the dependencies of the Eclipse bundles we use
 BuildRequires:  osgi(com.ibm.icu)

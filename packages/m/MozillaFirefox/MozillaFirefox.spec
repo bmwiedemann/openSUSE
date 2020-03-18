@@ -18,9 +18,9 @@
 
 
 # changed with every update
-%define major          73
-%define mainver        %major.0.1
-%define orig_version   73.0.1
+%define major          74
+%define mainver        %major.0
+%define orig_version   74.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -83,15 +83,15 @@ BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.24
-BuildRequires:  mozilla-nss-devel >= 3.49.2
+BuildRequires:  mozilla-nspr-devel >= 4.25
+BuildRequires:  mozilla-nss-devel >= 3.50
 BuildRequires:  nasm >= 2.13
 BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
 BuildRequires:  rust >= 1.39
-BuildRequires:  rust-cbindgen >= 0.12.0
+BuildRequires:  rust-cbindgen >= 0.13.0
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -169,7 +169,6 @@ Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch5:         mozilla-bmo1463035.patch
-Patch6:         mozilla-cubeb-noreturn.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
@@ -186,7 +185,7 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-bmo1610814.patch
+Patch23:        mozilla-bmo1609538.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -303,7 +302,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
@@ -327,14 +325,8 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch101 -p1
 %patch102 -p1
 %endif # only_print_mozconfig
-# Save config.sub to restore it (for aarch64/ppc64le) later, as it is checked with a checksum
-cp ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub.save
-cp ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess.save
 
 %build
-# Restore config.sub file
-mv ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub.save ./third_party/rust/backtrace-sys/src/libbacktrace/config.sub
-mv ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess.save ./third_party/rust/backtrace-sys/src/libbacktrace/config.guess
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"

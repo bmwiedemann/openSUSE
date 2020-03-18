@@ -1,7 +1,7 @@
 #
 # spec file for package pfstools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ BuildRequires:  cmake >= 3.9.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
+BuildRequires:  freeglut-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack
 BuildRequires:  libnetpbm-devel
@@ -51,7 +52,6 @@ BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(freeglut)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libexif)

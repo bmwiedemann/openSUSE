@@ -297,4 +297,12 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>755229</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c4ae6c53b56c72757165296ffb14827c</srcmd5>
+    <version>4.2.2</version>
+    <time>1584531670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785964</requestid>
+  </revision>
 </revisionlist>

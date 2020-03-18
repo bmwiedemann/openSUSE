@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_2_0
+%define so_version 4_2_2
 Name:           wt
-Version:        4.2.0
+Version:        4.2.2
 Release:        0
 #
 #

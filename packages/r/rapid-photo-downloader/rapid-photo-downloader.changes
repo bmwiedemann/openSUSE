@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Mar 17 16:20:27 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.9.19 
+  - Fixed errors in appstream metainfo file.
+  - To better conform to appstream metadata requirements, renamed
+    destktop and metadata files to
+    net.damonlynch.rapid_photo_downloader.desktop and
+    net.damonlynch.rapid_photo_downloader.metainfo.xml. The
+    metainfo file is now installed in share/metainfo/, not
+    share/appdata/.
+  - Added Zorin OS to install.py script.
+  - Only install symlinks to the program in a bin directory the
+    users's home directory (i.e. ~/bin) if necessary. On recent
+    installations of Debian / Ubuntu / LinuxMint etc. with a
+    default profile setup, this is no longer necessary.
+  - When uninstalling the program that was previously installed
+    with install.py script, remove any symlinks to it created in
+    ~/bin.
+  - Removed setup.cfg configuration file.
+  - Removed notification informing the Timeline or provisional
+    download folders was rebuilt.
+  - Updated Dutch, Hungarian, Russian, Spanish, Russian, and
+    Turkish translations.
+  - Improved fix for a bug where thumbnails would not be able to
+    have their checkmark set on or off with the mouse on recent
+    versions of Qt. The fix in 0.9.19b2 did not always work. The
+    environment variable RPD_THUMBNAIL_MARK_FIX introduced in
+    0.9.19b2 is no longer needed, and will be ignored.
+  - Fixed bug #1842060: Wrong value saved for stored number.
+  - Updated Czech, Dutch, French, and Spanish translations.
+  - Fixed a bug where thumbnails would not be able to have their
+    checkmark set on or off with the mouse on recent versions of
+    Qt. See the release notes for details.
+  - Improved visual appearance on high DPI screens.
+  - Added HEIF / HEIC support. See the Release Notes for details.
+  - Added support for CentOS 8 to installer script. Dropped support
+    for Fedora 29 and older. Installer script no longer installs
+    PyQt5 from PyPI on KDE Neon, because KDE Neon PyQt5 package is
+    always up-to-date.
+  - Added '__MACOSX' and to list of paths to ignore while scanning
+    a device for photos and videos, and if the list of ignored
+    paths is customized, add it and 'THMBNL' to the existing list
+    of ignored paths.
+  - No longer look for photos or videos in any directory on a
+    camera or phone that contains a '.nomedia' file.
+  - Made Timeline and thumbnails render more quickly and accurately
+    on displays with fractional scaling.
+  - Fixed bug #1861591: install.py should handle cases with no LANG
+    variable set.
+  - Fixed bug #1833525: when using the filename and subfolder name
+    preference editor, under some desktop styles the example file
+    and subfolder names would shrink to the extent they would be
+    truncated.
+  - Fixed bug where Rapid Photo Downloader would crash when the
+    Preferences dialog window was closed with the escape key.
+  - Fixed bug where under some desktop styles the right side panel
+    would always be open even if it had been closed when Rapid
+    Photo Downloader last exited.
+  - Improved support for high DPI screens. Requires Qt5.6 or newer.
+    Please report any remaining problems when running on high DPI
+    screens. For now, if you change the desktop's screen scaling
+    while Rapid Photo Downloader is running, please restart it.
+- add recommends for python3-pyheif
+
+-------------------------------------------------------------------
 Mon Mar 16 23:26:52 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.9.18

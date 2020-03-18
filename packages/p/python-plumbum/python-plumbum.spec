@@ -1,7 +1,7 @@
 #
 # spec file for package python-plumbum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plumbum
-Version:        1.6.7
+Version:        1.6.8
 Release:        0
 Summary:        Shell combinators library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/tomerfiliba/plumbum
+URL:            https://github.com/tomerfiliba/plumbum
 Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module psutil}
@@ -37,8 +38,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  openssh
 BuildRequires:  sudo
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

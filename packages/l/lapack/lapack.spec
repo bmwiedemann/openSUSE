@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Linear Algebra Package
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-Url:            http://www.netlib.org/lapack/
+URL:            http://www.netlib.org/lapack/
 Source0:        http://www.netlib.org/lapack/%{name}-%{version}.tar.gz
 Source1:        lapack_testing.py
 Source99:       baselibs.conf
@@ -176,6 +176,7 @@ LAPACKE development files  - static libraries.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global optflags %{optflags} -std=legacy
 case "$RPM_ARCH" in
     i[0-9]86) PRECFLAGS="-ffloat-store" ;;
     *)        PRECFLAGS="" ;;

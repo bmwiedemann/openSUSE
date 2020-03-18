@@ -1,7 +1,7 @@
 #
 # spec file for package python-ssdeep
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ssdeep
-Version:        3.3
+Version:        3.4
 Release:        0
-License:        LGPL-3.0+
 Summary:        Python wrapper for the ssdeep library
-Url:            http://github.com/DinoTools/python-ssdeep
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/DinoTools/python-ssdeep
 #Source:         https://files.pythonhosted.org/packages/source/s/ssdeep/ssdeep-%%{version}.tar.gz # no docs here, see https://github.com/DinoTools/python-ssdeep/issues/37
 Source:         https://github.com/DinoTools/python-ssdeep/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module cffi >= 0.8.6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module cffi >= 0.8.6}
+BuildRequires:  fdupes
+BuildRequires:  libfuzzy-devel
+BuildRequires:  python-rpm-macros
+Requires:       python-cffi
+Requires:       ssdeep
 # SECTION tests
 BuildRequires:  %{python_module pytest-runner}
 # /SECTION
 # SECTION docs
-BuildRequires:  python-sphinx
 BuildRequires:  python-mock
+BuildRequires:  python-sphinx
 # /SECTION
-BuildRequires:  libfuzzy-devel
-BuildRequires:  fdupes
-Requires:       ssdeep
-
 %python_subpackages
 
 %description
@@ -53,7 +54,7 @@ content and length.
 %build
 %python_build
 pushd docs
-make html
+%make_build html
 rm build/html/.buildinfo
 popd
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:46:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to new upstream release 4.2.2:
+  * ensure that tooltips are always on top, even inside of a dialog
+  * fixed text format being reset when the text of a WAnchor is cleared
+  * fixed panning not working properly for a WCartesianChart with plain tooltips
+  * fixed JavaScript memory leak related to deferred or HTML tooltips
+  * and lots of other fixes (https://webtoolkit.eu/wt/doc/reference/html/Releasenotes.html)
+
+-------------------------------------------------------------------
 Sun Dec  8 22:24:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.2.0

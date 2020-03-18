@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  9 10:51:00 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.0.0
+  * Create CONTRIBUTING.md (:pr:`28`) Jacob Tomlinson
+  * Import ABC from collections.abc instead of collections for Python 3.9 compatibility (:pr:`31`) Karthikeyan Singaravelan
+  * Drop Python 2 / 3.5 and add Python 3.7 / 3.8 support (:pr:`34`) James Bourbeau
+  * Duplicate keys fast slow (:pr:`32`) fjetter
+  * Fix dask cuda worker's race condition failure (:pr:`33`) Pradipta Ghosh
+  * Changed default lmdb encoding to utf-8 (:pr:`36`) Alex Davies
+  * Add code linting and style check (:pr:`35`) James Bourbeau
+
+-------------------------------------------------------------------
 Mon Jul 22 11:31:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.0:

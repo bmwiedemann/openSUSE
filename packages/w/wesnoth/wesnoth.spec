@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define boost_min_version 1.56
 Name:           wesnoth
-Version:        1.15.1
+Version:        1.15.3
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        GPL-2.0-or-later AND EPL-1.0
@@ -149,7 +149,7 @@ done
 
 %files data -f %{name}.lang
 %license COPYING copyright
-%doc changelog.md CONTRIBUTING.md README.md
+%doc changelog.md README.md
 %{_datadir}/wesnoth/
 %{_docdir}/wesnoth/
 

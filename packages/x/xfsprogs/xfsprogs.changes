@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 11:15:39 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
+
+- update to v5.5.0:
+  * xfsprogs: actually check that writes succeeded
+  * mkfs.xfs: check root inode location
+  * mkfs.xfs: efficient block zeroing
+  * xfs_repair: fix broken unit conv. in dir invalidation
+  * xfs_repair: fix bad next_unlinked field
+  * xfs_repair: don't corrupt attr fork clearing forw/back
+  * xfs_repair: check root dir pointer before trashing it
+  * xfs_repair: try to fix sb_unit value from secondaries
+  * libxfs changes merged from kernel 5.5
+
+-------------------------------------------------------------------
 Tue Jan 14 15:37:43 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
 
 - split xfs scrubbing scripts and service files into a separate optional

@@ -3,7 +3,7 @@
 # Date 1558452418 -7200
 #      Tue May 21 17:26:58 2019 +0200
 # Node ID 6cd963b6c82ea6629aaf4050851789b78f310338
-# Parent  010a35335b4e45e222b9efdbda24fd1963202ecf
+# Parent  74d44a14979d4ed1431d8291e20775339a5a6510
 imported patch mozilla-ppc-altivec_static_inline.patch
 
 diff --git a/gfx/qcms/transform-altivec.cpp b/gfx/qcms/transform-altivec.cpp

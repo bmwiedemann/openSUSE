@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dotenv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-dotenv
-Version:        0.10.3
+Version:        0.12.0
 Release:        0
 Summary:        Python library for .env support
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/theskumar/python-dotenv
+URL:            https://github.com/theskumar/python-dotenv
 Source:         https://github.com/theskumar/python-dotenv/archive/v%{version}.tar.gz#/python-dotenv-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0}
 BuildRequires:  %{python_module jupyter_ipython}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sh >= 1.09}

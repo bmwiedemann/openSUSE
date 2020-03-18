@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20200126
+Version:        20200310
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(libHX) >= 3.17
 BuildRequires:  pkgconfig(libpci) >= 3
 BuildRequires:  pkgconfig(mount) >= 2.20
 BuildRequires:  pkgconfig(xcb) >= 1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       %name-scripts = %version
 Recommends:     %name-man = %version
 Recommends:     hardlink
@@ -51,12 +50,9 @@ Requires:       sysinfo = %version
 %description
 A collection of various tools. Some of the important ones:
 
-* declone(1) — break hardlinks
 * fd0ssh(1) — pipe for password-over-stdin support to ssh
 * ofl(1) — open file lister (replaces fuser and lsof -m)
 * tailhex(1) — hex dumper with tail-following support
-* utmp_register(1) — make entries in the utmp/wtmp database
-* vfontas(1) — Bitmap font transformation utility
 
 %package scripts
 Summary:        Collection of day-to-day tools (scripts)
@@ -156,6 +152,16 @@ directories or files in specific locations in use. It differs from
 lsof/fuser in that it can scan recursively and won't bluntly look at
 an entire mount.
 
+%package -n vfontas
+Summary:        Bitmap font file transformation utility
+Group:          System/Console
+Provides:       hxtools:/usr/bin/vfontas
+
+%description -n vfontas
+vfontas (originally "VGA font file assembler") can transform raster
+font files in various ways - scaling, moving, row-filling, convert
+between formats (bdf/clt/pbm/psf/raw) and vector export to sfd/ttf.
+
 %prep
 %setup -q
 
@@ -169,7 +175,6 @@ b="%buildroot"
 mv "$b/%_bindir"/extract_* "$b/%_libexecdir/%name/"
 mv "$b/%_bindir/rot13" "$b/%_libexecdir/%name/"
 install -dm0755 "$b/%_datadir/mc/syntax"
-install -pm0644 cooledit/*.syntax "$b/%_datadir/mc/syntax/"
 install -dm0755 "$b/%_sysconfdir/openldap/schema"
 ln -s "%_datadir/hxtools/rfc2307bis-utf8.schema" \
 	"$b/%_sysconfdir/openldap/schema/"
@@ -186,8 +191,7 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %fdupes %buildroot/%_prefix
 
 %files
-%defattr(-,root,root)
-%doc LICENSE*
+%license LICENSE*
 %_bindir/bin2c
 %_bindir/bsvplay
 %_bindir/declone
@@ -198,7 +202,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %_bindir/proc_stat_parse
 %_bindir/qplay
 %_bindir/tailhex
-%_bindir/vfontas
 %_bindir/xcp
 %dir %hldir
 %hldir/cctypeinfo
@@ -208,7 +211,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %hldir/utmp_register
 
 %files scripts
-%defattr(-,root,root)
 %_bindir/aumeta
 %_bindir/checkbrack
 %_bindir/cwdiff
@@ -240,13 +242,13 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %hldir/vcsaview
 
 %files man
-%defattr(-,root,root)
 %doc %_mandir/man*/*
 %exclude %_mandir/man*/fd0ssh.1*
 %exclude %_mandir/man*/ofl.1*
+%exclude %_mandir/man1/sysinfo.1*
+%exclude %_mandir/man*/vfontas.1*
 
 %files data
-%defattr(-,root,root)
 %dir %_sysconfdir/openldap
 %dir %_sysconfdir/openldap/schema
 %config %_sysconfdir/openldap/schema/*
@@ -257,7 +259,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %if 0%{?build_profile}
 
 %files profile
-%defattr(-,root,root)
 %config %_sysconfdir/hxloginpref.conf
 %dir %_sysconfdir/bashrc.d
 %config %_sysconfdir/bashrc.d/*
@@ -265,13 +266,11 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %endif
 
 %files -n fd0ssh
-%defattr(-,root,root)
 %dir %hldir
 %hldir/fd0ssh
 %_mandir/man1/fd0ssh.1*
 
 %files -n ofl
-%defattr(-,root,root)
 %_bindir/ofl
 %_mandir/man1/ofl.1*
 
@@ -279,10 +278,15 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %defattr(-,root,root)
 %_bindir/pmap_dirty
 %_bindir/sysinfo
+%_mandir/man1/sysinfo.1*
 %dir %hldir
 %hldir/clock_info
 %hldir/hxnetload
 %hldir/paddrspacesize
 %hldir/proc_stat_signal_decode
+
+%files -n vfontas
+%_bindir/vfontas
+%_mandir/man1/vfontas.1*
 
 %changelog

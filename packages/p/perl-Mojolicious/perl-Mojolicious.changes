@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 17 03:14:21 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 8.34
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.34  2020-03-16
+    - Removed experimental status from proxy->get_p, proxy->post_p and
+      proxy->start_p helpers in Mojolicious::Plugin::DefaultHelpers.
+    - Removed experimental status from compress and min_compress_size attributes
+      in Mojolicious::Renderer.
+    - Removed experimental status from high_water_mark attribute in
+      Mojo::IOLoop::Stream.
+    - Removed experimental status from respond method in Mojolicious::Renderer.
+    - Removed experimental status from bytes_waiting and can_write methods in
+      Mojo::IOLoop::Stream.
+    - Removed experimental status from dehop method in Mojo::Headers.
+    - Removed experimental status from scope_guard function in Mojo::Util.
+    - Improved size check in Mojolicious::Validator to only require one argument.
+    - Fixed Mojolicious::Validator to also validate empty string values instead of
+      ignoring them. This behaviour had caused a lot of confusion in the past.
+    - Fixed plugin generator not to use an __END__ section.
+
+-------------------------------------------------------------------
 Wed Feb 12 03:11:47 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 8.33

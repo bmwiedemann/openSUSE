@@ -70,4 +70,29 @@
   * aarch64.patch (forwarded request 738187 from Guillaume_G)</comment>
     <requestid>738228</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>228c813ad22d9ce36af5352120e07f91</srcmd5>
+    <version>3.3.git30</version>
+    <time>1584530745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to commit b844a9c7f1ca based on libffi 3.3 with the
+  following changes:
+        Add RISC-V support.
+        New API in support of GO closures.
+        Add IEEE754 binary128 long double support for 64-bit Power
+        Default to Microsoft's 64 bit long double ABI with Visual C++.
+        GNU compiler uses 80 bits (128 in memory) FFI_GNUW64 ABI.
+        Add Windows on ARM64 (WOA) support.
+        Add Windows 32-bit ARM support.
+        Raw java (gcj) API deprecated.
+        Add pre-built PDF documentation to source distribution.
+        Many new test cases and bug fixes.
+- SONAME change to libffi.so.8
+- stdcall.patch is now upstream
+- Adjust baselibs.conf for SONAME change
+- Adjust aarch64.patch for upstream changes
+- Drop gccbug.patch XFAILing testcases that now PASS with fixed
+  GCC 9.3</comment>
+    <requestid>783284</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,12 @@
 
 %define soname  libmetacity
 %define sover   1
-%define _version 3.35
+%define _version 3.36
 Name:           metacity
-Version:        3.35.1
+Version:        3.36.0
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
-Group:          System/Libraries
 URL:            https://wiki.gnome.org/Projects/Metacity
 Source:         https://download.gnome.org/sources/metacity/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
@@ -36,9 +35,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  zenity
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.3.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
@@ -62,28 +61,26 @@ BuildRequires:  pkgconfig(vulkan)
 %endif
 
 %description
-Metacity is a small window manager, using GTK+ to do everything.
+Metacity is a small window manager, using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 %lang_package
 
 %package -n %{soname}%{sover}
 Summary:        Window Manager for the MATE Desktop -- Library to render themes
-Group:          System/Libraries
 
 %description -n %{soname}%{sover}
-Metacity is a small window manager, using GTK+ to do everything.
+Metacity is a small window manager, using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 This package contains a library to render themes.
 
 %package tools
 Summary:        Window Manager for the MATE Desktop -- Tools
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 
 %description tools
-Metacity is a small window manager, using GTK+ to do everything.
+Metacity is a small window manager, using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 This package contains tools related to metacity, including an
@@ -92,11 +89,10 @@ managers.
 
 %package devel
 Summary:        Window Manager for the MATE Desktop -- Development Files
-Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
-Metacity is a small window manager, using GTK+ to do everything.
+Metacity is a small window manager, using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 This package contains all necessary include files and libraries

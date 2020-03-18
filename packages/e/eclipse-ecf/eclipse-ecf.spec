@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-ecf
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ Name:           eclipse-ecf-bootstrap
 Name:           eclipse-ecf
 %endif
 %if %{without bootstrap}
-BuildRequires:  eclipse-ecf-core
+BuildRequires:  eclipse-ecf-core-bootstrap
 BuildRequires:  eclipse-emf-core
 BuildRequires:  eclipse-emf-runtime
 BuildRequires:  eclipse-pde-bootstrap
@@ -86,19 +86,25 @@ services. It provides a lightweight, modular, transport-independent, fully
 compliant implementation of the OSGi Remote Services standard.
 
 %if %{with bootstrap}
-
-%package -n eclipse-ecf-core
+%package   -n eclipse-ecf-core-bootstrap
+%else
+%package   core
+Obsoletes:      eclipse-ecf-core-bootstrap
+%endif
 Summary:        Eclipse ECF Core
 Group:          Development/Libraries/Java
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 
-%description -n eclipse-ecf-core
+%if %{with bootstrap}
+%description -n eclipse-ecf-core-bootstrap
+%else
+%description core
+%endif
 ECF bundles required by eclipse-platform.
 
-%else
-
-%package runtime
+%if %{without bootstrap}
+%package   runtime
 Summary:        Eclipse Communication Framework (ECF) Eclipse plug-in
 Group:          Development/Libraries/Java
 BuildArch:      noarch
@@ -108,7 +114,7 @@ ECF is a set of frameworks for building communications into applications and
 services. It provides a lightweight, modular, transport-independent, fully
 compliant implementation of the OSGi Remote Services standard.
 
-%package sdk
+%package   sdk
 Summary:        Eclipse ECF SDK
 Group:          Development/Libraries/Java
 BuildArch:      noarch
@@ -116,7 +122,6 @@ BuildArch:      noarch
 %description sdk
 Documentation and developer resources for the Eclipse Communication Framework
 (ECF) plug-in.
-
 %endif
 
 %prep
@@ -210,21 +215,6 @@ echo "Eclipse-BundleShape: dir" >> providers/bundles/org.eclipse.ecf.provider.ir
 <module>providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4.ssl</module>
 <module>providers/bundles/org.eclipse.ecf.provider.filetransfer.ssl</module>
 </modules>"
-%else
-%pom_disable_module releng/features/org.eclipse.ecf.core.feature
-%pom_disable_module releng/features/org.eclipse.ecf.core.ssl.feature
-%pom_disable_module releng/features/org.eclipse.ecf.filetransfer.feature
-%pom_disable_module releng/features/org.eclipse.ecf.filetransfer.httpclient4.feature
-%pom_disable_module releng/features/org.eclipse.ecf.filetransfer.httpclient4.ssl.feature
-%pom_disable_module releng/features/org.eclipse.ecf.filetransfer.ssl.feature
-%pom_disable_module framework/bundles/org.eclipse.ecf
-%pom_disable_module framework/bundles/org.eclipse.ecf.identity
-%pom_disable_module framework/bundles/org.eclipse.ecf.filetransfer
-%pom_disable_module framework/bundles/org.eclipse.ecf.ssl
-%pom_disable_module providers/bundles/org.eclipse.ecf.provider.filetransfer
-%pom_disable_module providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4
-%pom_disable_module providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4.ssl
-%pom_disable_module providers/bundles/org.eclipse.ecf.provider.filetransfer.ssl
 %endif
 
 # TODO: Figure out why this is necessary....
@@ -260,7 +250,6 @@ QUALIFIER=$(date -u -d"$(stat --format=%y %{SOURCE0})" +v%Y%m%d-%H%M)
 %install
 %mvn_install
 
-%if %{with bootstap}
 # Move to libdir due to being part of core platform
 install -d -m 755 %{buildroot}%{_eclipsedir}
 mv %{buildroot}%{_datadir}/eclipse/droplets/ecf/{plugins,features} %{buildroot}%{_eclipsedir}
@@ -271,7 +260,6 @@ sed -i -e 's|%{_datadir}/eclipse/droplets/ecf|%{_eclipsedir}|' %{buildroot}%{_da
 sed -i -e 's|%{_datadir}/eclipse/droplets/ecf/features/|%{_eclipsedir}/features/|' \
        -e 's|%{_datadir}/eclipse/droplets/ecf/plugins/|%{_eclipsedir}/plugins/|' .mfiles
 sed -i -e '/droplets/d' .mfiles
-%endif
 
 # Remove any symlinks that might be created during bootstrapping due to missing platform bundles
 for del in $( (cd %{buildroot}%{_eclipsedir}/plugins && ls | grep -v -e '^org\.eclipse\.ecf' ) ) ; do
@@ -308,16 +296,16 @@ popd
 %fdupes -s %{buildroot}
 
 %if %{with bootstrap}
-
-%files -n eclipse-ecf-core -f .mfiles
+%files -n eclipse-ecf-core-bootstrap -f .mfiles
+%else
+%files core -f .mfiles
+%endif
 %{_javadir}/eclipse
 
-%else
-
+%if %{without bootstrap}
 %files runtime -f .mfiles-runtime
 
 %files sdk -f .mfiles-sdk
-
 %endif
 
 %changelog

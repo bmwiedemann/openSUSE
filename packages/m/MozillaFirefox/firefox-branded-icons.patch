@@ -1,6 +1,6 @@
 # HG changeset patch
 # Parent e0751ad74e835e80041a61ea00c2a63bf6fbe2de
-# Parent  127964dc93cc35715852bc811dcc67016d918628
+# Parent  91064bb25b378c1fdcc2d99a89aeaf5e821b1689
 
 diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/branding-common.mozbuild
 --- a/browser/branding/branding-common.mozbuild
@@ -24,7 +24,7 @@ diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/brandi
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -246,20 +246,23 @@
+@@ -249,20 +249,23 @@
  @RESPATH@/browser/chrome/pdfjs.manifest
  @RESPATH@/browser/chrome/pdfjs/*
  @RESPATH@/chrome/toolkit@JAREXT@

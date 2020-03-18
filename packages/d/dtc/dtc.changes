@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:03:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6.0 (no changelog)
+- Removed dtc-no-common-conflict.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 12:54:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add dtc-no-common-conflict.patch (bsc#1160388)

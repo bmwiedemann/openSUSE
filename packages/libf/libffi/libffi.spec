@@ -1,7 +1,7 @@
 #
 # spec file for package libffi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define libffi_sover 7
+%define libffi_sover 8
 
 Name:           libffi
-Version:        3.2.1.git505
+Version:        3.3.git30
 Release:        0
 Summary:        Foreign Function Interface Library
 License:        MIT
 Group:          Development/Languages/C and C++
-Url:            https://github.com/libffi/
+URL:            https://github.com/libffi/
 Source:         %name-%version.tar.xz
 Source99:       baselibs.conf
-Patch1:         gccbug.patch
-Patch2:         stdcall.patch
 # Workaround from https://github.com/libffi/libffi/issues/498
 Patch3:         aarch64.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -82,8 +80,6 @@ time.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 %build

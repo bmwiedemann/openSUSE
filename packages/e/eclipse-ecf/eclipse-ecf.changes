@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:19:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Change the way the bootstrap/non-bootstrap packages are built in
+  order to have a working eclipse as a final product (bsc#1166426)
+
+-------------------------------------------------------------------
 Thu Nov 28 08:35:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

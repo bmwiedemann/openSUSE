@@ -1,0 +1,191 @@
+# HG changeset patch
+# Parent  047fa9d20b78759029e87c48f0d64f819e889e4c
+
+diff --git a/widget/gtk/mozcontainer.cpp b/widget/gtk/mozcontainer.cpp
+--- a/widget/gtk/mozcontainer.cpp
++++ b/widget/gtk/mozcontainer.cpp
+@@ -159,23 +159,25 @@ void moz_container_move(MozContainer* co
+ 
+   // Wayland subsurface is not created yet.
+   if (!container->subsurface) {
+     return;
+   }
+ 
+   // wl_subsurface_set_position is actually property of parent surface
+   // which is effective when parent surface is commited.
+-  wl_surface* parent_surface =
+-      moz_gtk_widget_get_wl_surface(GTK_WIDGET(container));
+-  if (parent_surface) {
+-    wl_subsurface_set_position(container->subsurface, container->subsurface_dx,
+-                               container->subsurface_dy);
+-    wl_surface_commit(parent_surface);
+-    container->surface_position_needs_update = false;
++  wl_subsurface_set_position(container->subsurface, container->subsurface_dx,
++                             container->subsurface_dy);
++  container->surface_position_needs_update = false;
++
++  GdkWindow* window = gtk_widget_get_window(GTK_WIDGET(container));
++  if (window) {
++    GdkRectangle rect = (GdkRectangle){0, 0, gdk_window_get_width(window),
++                                       gdk_window_get_height(window)};
++    gdk_window_invalidate_rect(window, &rect, false);
+   }
+ }
+ 
+ // This is called from layout/compositor code only with
+ // size equal to GL rendering context. Otherwise there are
+ // rendering artifacts as wl_egl_window size does not match
+ // GL rendering pipeline setup.
+ void moz_container_egl_window_set_size(MozContainer* container, int width,
+@@ -217,16 +219,17 @@ void moz_container_init(MozContainer* co
+   container->subsurface = nullptr;
+   container->eglwindow = nullptr;
+   container->frame_callback_handler = nullptr;
+   container->frame_callback_handler_surface_id = -1;
+   // We can draw to x11 window any time.
+   container->ready_to_draw = gfxPlatformGtk::GetPlatform()->IsX11Display();
+   container->opaque_region_needs_update = false;
+   container->opaque_region_subtract_corners = false;
++  container->opaque_region_fullscreen = false;
+   container->surface_needs_clear = true;
+   container->subsurface_dx = 0;
+   container->subsurface_dy = 0;
+   container->surface_position_needs_update = 0;
+   container->initial_draw_cbs.clear();
+ #endif
+ 
+   LOG(("%s [%p]\n", __FUNCTION__, (void*)container));
+@@ -569,22 +572,26 @@ static void moz_container_add(GtkContain
+   moz_container_put(MOZ_CONTAINER(container), widget, 0, 0);
+ }
+ 
+ #ifdef MOZ_WAYLAND
+ static void moz_container_set_opaque_region(MozContainer* container) {
+   GtkAllocation allocation;
+   gtk_widget_get_allocation(GTK_WIDGET(container), &allocation);
+ 
+-  // Set region to mozcontainer which does not have any offset
+-  wl_region* region =
+-      CreateOpaqueRegionWayland(0, 0, allocation.width, allocation.height,
+-                                container->opaque_region_subtract_corners);
+-  wl_surface_set_opaque_region(container->surface, region);
+-  wl_region_destroy(region);
++  // Set region to mozcontainer for normal state only
++  if (!container->opaque_region_fullscreen) {
++    wl_region* region =
++        CreateOpaqueRegionWayland(0, 0, allocation.width, allocation.height,
++                                  container->opaque_region_subtract_corners);
++    wl_surface_set_opaque_region(container->surface, region);
++    wl_region_destroy(region);
++  } else {
++    wl_surface_set_opaque_region(container->surface, nullptr);
++  }
+ }
+ 
+ struct wl_surface* moz_container_get_wl_surface(MozContainer* container) {
+   LOGWAYLAND(("%s [%p] surface %p ready_to_draw %d\n", __FUNCTION__,
+               (void*)container, (void*)container->surface,
+               container->ready_to_draw));
+ 
+   if (!container->surface) {
+@@ -670,17 +677,19 @@ gboolean moz_container_has_wl_egl_window
+ 
+ gboolean moz_container_surface_needs_clear(MozContainer* container) {
+   int ret = container->surface_needs_clear;
+   container->surface_needs_clear = false;
+   return ret;
+ }
+ 
+ void moz_container_update_opaque_region(MozContainer* container,
+-                                        bool aSubtractCorners) {
++                                        bool aSubtractCorners,
++                                        bool aFullScreen) {
+   container->opaque_region_needs_update = true;
+   container->opaque_region_subtract_corners = aSubtractCorners;
++  container->opaque_region_fullscreen = aFullScreen;
+ }
+ #endif
+ 
+ void moz_container_force_default_visual(MozContainer* container) {
+   container->force_default_visual = true;
+ }
+diff --git a/widget/gtk/mozcontainer.h b/widget/gtk/mozcontainer.h
+--- a/widget/gtk/mozcontainer.h
++++ b/widget/gtk/mozcontainer.h
+@@ -77,16 +77,17 @@ struct _MozContainer {
+   struct wl_surface* surface;
+   struct wl_subsurface* subsurface;
+   int subsurface_dx, subsurface_dy;
+   struct wl_egl_window* eglwindow;
+   struct wl_callback* frame_callback_handler;
+   int frame_callback_handler_surface_id;
+   gboolean opaque_region_needs_update;
+   gboolean opaque_region_subtract_corners;
++  gboolean opaque_region_fullscreen;
+   gboolean surface_position_needs_update;
+   gboolean surface_needs_clear;
+   gboolean ready_to_draw;
+   std::vector<std::function<void(void)>> initial_draw_cbs;
+ #endif
+   gboolean force_default_visual;
+ };
+ 
+@@ -112,12 +113,13 @@ void moz_container_move_resize(MozContai
+ void moz_container_egl_window_set_size(MozContainer* container, int width,
+                                        int height);
+ void moz_container_scale_changed(MozContainer* container,
+                                  GtkAllocation* aAllocation);
+ void moz_container_add_initial_draw_callback(
+     MozContainer* container, const std::function<void(void)>& initial_draw_cb);
+ wl_surface* moz_gtk_widget_get_wl_surface(GtkWidget* aWidget);
+ void moz_container_update_opaque_region(MozContainer* container,
+-                                        bool aSubtractCorners);
++                                        bool aSubtractCorners,
++                                        bool aFullScreen);
+ #endif
+ 
+ #endif /* __MOZ_CONTAINER_H__ */
+diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
+--- a/widget/gtk/nsWindow.cpp
++++ b/widget/gtk/nsWindow.cpp
+@@ -4860,27 +4860,34 @@ void nsWindow::UpdateTopLevelOpaqueRegio
+   int width = DevicePixelsToGdkCoordRoundDown(mBounds.width);
+   int height = DevicePixelsToGdkCoordRoundDown(mBounds.height);
+ 
+   GdkRectangle rect = {x, y, width, height};
+   if (!mToplevelOpaqueRegionState.NeedsUpdate(rect, aSubtractCorners)) {
+     return;
+   }
+ 
+-  wl_region* region =
+-      CreateOpaqueRegionWayland(x, y, width, height, aSubtractCorners);
+-  wl_surface_set_opaque_region(surface, region);
+-  wl_region_destroy(region);
+-
++  // Set opaque region to toplevel window only in fullscreen mode.
++  bool fullScreen = mSizeState != nsSizeMode_Normal && !mIsTiled;
++  if (fullScreen) {
++    wl_region* region =
++        CreateOpaqueRegionWayland(x, y, width, height, aSubtractCorners);
++    wl_surface_set_opaque_region(surface, region);
++    wl_region_destroy(region);
++  } else {
++    wl_surface_set_opaque_region(surface, nullptr);
++  }
++
++  // TODO -> create a function for it
+   GdkWindow* window = gtk_widget_get_window(mShell);
+   if (window) {
+     gdk_window_invalidate_rect(window, &rect, false);
+   }
+ 
+-  moz_container_update_opaque_region(mContainer, aSubtractCorners);
++  moz_container_update_opaque_region(mContainer, aSubtractCorners, fullScreen);
+ }
+ #endif
+ 
+ static void GdkWindowSetOpaqueRegion(GdkWindow* aGdkWindow,
+                                      cairo_region_t* aRegion) {
+   // Available as of GTK 3.10+
+   static auto sGdkWindowSetOpaqueRegion =
+       (void (*)(GdkWindow*, cairo_region_t*))dlsym(

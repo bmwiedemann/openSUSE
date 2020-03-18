@@ -1,7 +1,7 @@
 #
 # spec file for package bless
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           bless
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        Gtk#-based Hex-editor written in C#
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            http://home.gna.org/bless
-Source:         http://download.gna.org/bless/%{name}-%{version}.tar.gz
-Source1:        http://download.gna.org/bless/bless-0.6.0.tar.gz.sig
-Source2:        http://gna.org/people/viewgpg.php?user_id=1269#/alf82-key.gpg
+URL:            https://github.com/afrantzis/bless
+Source:         https://github.com/afrantzis/bless/archive/v%{version}/%{name}-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM jbicha@debian.org - build without scrollkeeper/rarian
-Patch:          dont-require-rarian.patch
+Patch0:         dont-require-rarian.patch
+#PATCH-FIX-UPSTREAM Fix building error CS0104: 'Range' is an ambiguous reference
+Patch1:         bless-0.6.2-Range-ambiguous-reference.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -36,7 +36,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glade-sharp-2.0)
 BuildRequires:  pkgconfig(gtk-sharp-2.0)
 BuildRequires:  pkgconfig(mono)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Bless is a hex editor written in Mono/Gtk#. It features:
@@ -62,15 +61,18 @@ Bless is a hex editor.
 This package contains the documentation.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -p1
+%patch1 -p1
+./autogen.sh
 # Fix Build for Mono 4.0
-sed -i 's/gmcs/mcs/' configure{,.ac} builder/ModuleBuilder.cs
-autoreconf -fi
+sed -i 's/gmcs/mcs/' configure builder/ModuleBuilder.cs
+#autoreconf -fi
 
 %build
 %configure --without-scrollkeeper
 sed -i 's/$(MKDIR_P)/mkdir -p/' po/Makefile
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -85,8 +87,8 @@ rm %{buildroot}%{_datadir}/doc/bless/INSTALL
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/bless
 %{_libdir}/bless
 %{_datadir}/applications/bless.desktop
@@ -94,7 +96,6 @@ rm %{buildroot}%{_datadir}/doc/bless/INSTALL
 %{_datadir}/pixmaps/*
 
 %files doc
-%defattr(-,root,root)
 %{_datadir}/doc/bless/
 %{_datadir}/doc/bless/user/
 %{_datadir}/doc/bless/user/figures/

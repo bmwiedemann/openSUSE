@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 12 10:21:15 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv-syscall-clobber.patch: riscv: Avoid clobbering register parameters
+  in syscall
+- ldbl-96-rem-pio2l.patch: Avoid ldbl-96 stack corruption from range
+  reduction of pseudo-zero (CVE-2020-10029, bsc#1165784, BZ #25487)
+
+-------------------------------------------------------------------
 Tue Feb 18 12:41:56 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - nsswitch.conf: comment out initgroups setting, so that it defaults to

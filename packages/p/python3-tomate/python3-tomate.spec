@@ -1,7 +1,7 @@
 #
-# spec file for package python-tomate
+# spec file for package python3-tomate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://github.com/eliostvs/tomate
 Source:         tomate-%{version}.tar.gz
+# PATCH-FIX-UPSTEAM fix-tests.patch -- https://github.com/eliostvs/tomate/issues/19 https://github.com/eliostvs/tomate/pull/20
+Patch0:         fix-tests.patch
 BuildRequires:  python3-setuptools
 Requires:       /usr/bin/aplay
 Requires:       dbus-1-python3
@@ -56,7 +58,8 @@ BuildRequires:  python3-yapsy
 Provides the library for tomate, a Pomodoro timer.
 
 %prep
-%autosetup -n tomate-%{version}
+%setup -q -n tomate-%{version}
+%patch0 -p1
 touch tests/__init__.py
 
 %build

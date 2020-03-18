@@ -57,16 +57,14 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
 BuildRequires:  flex
-BuildRequires:  libdb-4_8-devel
 BuildRequires:  libtool
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 Recommends:     login_defs-support-for-pam >= 1.3.1
 Requires(post): permissions
-%if 0%{?suse_version} > 1320
-BuildRequires:  libdb-4_8-devel
 BuildRequires:  xz
+%if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
@@ -312,7 +310,6 @@ done
 /%{_lib}/security/pam_unix_auth.so
 /%{_lib}/security/pam_unix_passwd.so
 /%{_lib}/security/pam_unix_session.so
-/%{_lib}/security/pam_userdb.so
 /%{_lib}/security/pam_warn.so
 /%{_lib}/security/pam_wheel.so
 /%{_lib}/security/pam_xauth.so

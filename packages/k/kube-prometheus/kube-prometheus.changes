@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 18 06:25:32 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.3.0+git20200317.502f81b:
+  * manifests: regenerate
+  * jsonnet/prometheus-adapter: use irate for CPU queries
+  * Updated the doc as grafana deployment needs modifications
+  * Fixed the port name for weave-net metrics endpoint
+  * Fixed the label for weave net selector
+  * fix invalid Usage section reference
+  - Includes 448.patch
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Thu Mar 12 10:58:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - 448.patch: fix weave-net selector and metrics port

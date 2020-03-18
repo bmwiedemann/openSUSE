@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:57:24 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to commit b844a9c7f1ca based on libffi 3.3 with the
+  following changes:
+
+        Add RISC-V support.
+        New API in support of GO closures.
+        Add IEEE754 binary128 long double support for 64-bit Power
+        Default to Microsoft's 64 bit long double ABI with Visual C++.
+        GNU compiler uses 80 bits (128 in memory) FFI_GNUW64 ABI.
+        Add Windows on ARM64 (WOA) support.
+        Add Windows 32-bit ARM support.
+        Raw java (gcj) API deprecated.
+        Add pre-built PDF documentation to source distribution.
+        Many new test cases and bug fixes.
+
+- SONAME change to libffi.so.8
+- stdcall.patch is now upstream
+- Adjust baselibs.conf for SONAME change
+- Adjust aarch64.patch for upstream changes
+- Drop gccbug.patch XFAILing testcases that now PASS with fixed
+  GCC 9.3
+
+-------------------------------------------------------------------
 Fri Oct 11 07:27:45 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Workaround aarch64 bug (boo#1153573) with upstream patch

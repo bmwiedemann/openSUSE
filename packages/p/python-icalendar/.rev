@@ -256,4 +256,13 @@
     <comment>- Fix fdupes and pytest calls</comment>
     <requestid>725101</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>40fd940881e72e5509617454e6d8563b</srcmd5>
+    <version>4.0.4</version>
+    <time>1584530874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.4:
+  - Reduce Hypothesis iterations to speed up testing, allowing PRs to pass</comment>
+    <requestid>785585</requestid>
+  </revision>
 </revisionlist>

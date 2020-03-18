@@ -120,4 +120,13 @@
     <comment></comment>
     <requestid>774233</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7f994f0e5835e2a0f8f48f51a212c167</srcmd5>
+    <version>1.15.2</version>
+    <time>1584531184</time>
+    <user>dimstar_suse</user>
+    <comment>* json-feature-name.patch
+ * support-new-bazel.patch (forwarded request 785854 from mslacken)</comment>
+    <requestid>785855</requestid>
+  </revision>
 </revisionlist>

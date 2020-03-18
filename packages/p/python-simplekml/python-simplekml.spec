@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-simplekml
-Version:        1.3.1
+Version:        1.3.3
 Release:        0
 Summary:        A Simple KML creator
 #HG-Clone:      https://bitbucket.org/KyleLancaster/simplekml

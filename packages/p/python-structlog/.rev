@@ -62,4 +62,12 @@
     have been made pickelable. Please report if you need any another class fixed. #126</comment>
     <requestid>739016</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>32cf456e8e844aba672d45fde0269e24</srcmd5>
+    <version>20.1.0</version>
+    <time>1584531377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785923</requestid>
+  </revision>
 </revisionlist>

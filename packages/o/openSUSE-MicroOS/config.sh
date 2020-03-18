@@ -117,7 +117,7 @@ fi
 #======================================
 # Enable kubelet if installed
 #--------------------------------------
-if rpm -q kubernetes-kubelet >/dev/null; then
+if [ -e /usr/lib/systemd/system/kubelet.service ]; then
 	suseInsertService kubelet
 fi
 

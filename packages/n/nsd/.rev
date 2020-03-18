@@ -172,4 +172,12 @@ BUG FIXES:
   set for minimal-responses, round-robin and log-time-ascii.</comment>
     <requestid>756107</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>711e4510d5a46833f6d9c87069d818d8</srcmd5>
+    <version>4.3.0</version>
+    <time>1584532036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786102</requestid>
+  </revision>
 </revisionlist>

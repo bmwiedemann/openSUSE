@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Mar  7 08:51:06 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 74.0
+  * https://www.mozilla.org/en-US/firefox/74.0/releasenotes/
+  MFSA 2020-08 (bsc#1166238)
+  * CVE-2020-6805 (bmo#1610880)
+    Use-after-free when removing data about origins
+  * CVE-2020-6806 (bmo#1612308)
+    BodyStream::OnInputStreamReady was missing protections against
+    state confusion
+  * CVE-2020-6807 (bmo#1614971)
+    Use-after-free in cubeb during stream destruction
+  * CVE-2020-6808 (bmo#1247968)
+    URL Spoofing via javascript: URL
+  * CVE-2020-6809 (bmo#1420296)
+    Web Extensions with the all-urls permission could access local
+    files
+  * CVE-2020-6810 (bmo#1432856)
+    Focusing a popup while in fullscreen could have obscured the
+    fullscreen notification
+  * CVE-2020-6811 (bmo#1607742)
+    Devtools' 'Copy as cURL' feature did not fully escape
+    website-controlled data, potentially leading to command injection
+  * CVE-2019-20503 (bmo#1613765)
+    Out of bounds reads in sctp_load_addresses_from_init
+  * CVE-2020-6812 (bmo#1616661)
+    The names of AirPods with personally identifiable information
+    were exposed to websites with camera or microphone permission
+  * CVE-2020-6813 (bmo#1605814)
+    @import statements in CSS could bypass the Content Security
+    Policy nonce feature
+  * CVE-2020-6814 (bmo#1592078,bmo#1604847,bmo#1608256,bmo#1612636,
+    bmo#1614339)
+    Memory safety bugs fixed in Firefox 74 and Firefox ESR 68.6
+  * CVE-2020-6815 (bmo#1181957,bmo#1557732,bmo#1557739,bmo#1611457,
+    bmo#1612431)
+    Memory and script safety bugs fixed in Firefox 74
+- requires
+  * NSPR 4.25
+  * NSS 3.50
+  * rust-cbindgen 0.13.0
+- removed obsolete patches
+  mozilla-bmo1610814.patch
+  mozilla-cubeb-noreturn.patch
+- add mozilla-bmo1609538.patch to fix wayland issues with mutter 3.36
+  (bmo#1609538, boo#1166471)
+
+-------------------------------------------------------------------
 Wed Feb 26 08:12:00 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - big endian fixes

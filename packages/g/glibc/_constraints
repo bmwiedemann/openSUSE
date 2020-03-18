@@ -2,12 +2,15 @@
 <constraints>
   <overwrite>
     <conditions>
-      <package>glibc-testsuite</package>
+      <package>glibc:testsuite</package>
     </conditions>
     <hardware>
       <memory>
 	<size unit="M">1500</size>
       </memory>
+      <disk>
+        <size unit="M">5600</size>
+      </disk>
     </hardware>
     <sandbox exclude="true">xen</sandbox>
   </overwrite>

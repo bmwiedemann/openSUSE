@@ -3,17 +3,22 @@
 # Date 1558442915 -7200
 #      Tue May 21 14:48:35 2019 +0200
 # Node ID 6bcf2dfebc1ea2aa34e5cc61152709fc8e409dc5
-# Parent  4c434d19d03d5461e54fa22dfb82eaed4cd6631b
+# Parent  dc1684693eed684bdafeff0ad78d4f6d288fcae1
 Do not use gconf for proxy settings if not running within Gnome
 Index: toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 ===================================================================
 RCS file: /cvsroot/mozilla/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp,v
 retrieving revision 1.1
 
-diff -r 4c434d19d03d -r 6bcf2dfebc1e toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
---- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp	Wed Jun 12 17:43:18 2019 +0000
-+++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp	Tue May 21 14:48:35 2019 +0200
-@@ -55,11 +55,14 @@
+diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
+--- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
++++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
+@@ -49,21 +49,24 @@ NS_IMETHODIMP
+ nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
+   // dbus prevents us from being threadsafe, but this routine should not block
+   // anyhow
+   *aMainThreadOnly = true;
+   return NS_OK;
  }
  
  void nsUnixSystemProxySettings::Init() {
@@ -33,3 +38,8 @@ diff -r 4c434d19d03d -r 6bcf2dfebc1e toolkit/system/unixproxy/nsUnixSystemProxyS
    }
  }
  
+ nsresult nsUnixSystemProxySettings::GetPACURI(nsACString& aResult) {
+   if (mProxySettings) {
+     nsCString proxyMode;
+     // Check if mode is auto
+     nsresult rv =

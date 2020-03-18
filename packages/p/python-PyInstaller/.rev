@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>765353</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>333a30d63f30d90b8a98d7a6cb4eea0e</srcmd5>
+    <version>3.6</version>
+    <time>1584531885</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable functional tests as it takes ages and basic checks
+  are okay with unittests
+
+- Use xdist for test execution as otherwise it takes ages</comment>
+    <requestid>786082</requestid>
+  </revision>
 </revisionlist>

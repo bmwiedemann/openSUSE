@@ -17,7 +17,7 @@
 
 
 Name:           perl-Convert-UUlib
-Version:        1.7
+Version:        1.71
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Convert-UUlib

@@ -151,18 +151,12 @@ Source30:       http://www.kurims.kyoto-u.ac.jp/~ooura/fft.tgz#/fft.tar.gz
 Source34:       https://github.com/edenhill/librdkafka/archive/v0.11.5.tar.gz#/kafka-v0.11.5.tar.gz
 # License35: Apache-2.0
 Source35:       https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v0.4.0.tar.gz#/google-cloud-cpp.tar.gz
-# License36: Apache-2.0
-Source36:       https://github.com/bazelbuild/bazel-toolchains/archive/92dd8a7a518a2fb7ba992d47c8b38299fe0be825.tar.gz#/bazel-toolchains.tar.gz
 # License37: Apache-2.0
 Source37:       https://github.com/bazelbuild/rules_docker/archive/a9bb1dab84cdf46e34d1b34b53a17bda129b5eba.tar.gz#/rules_docker.tar.gz
 # License44: BSD like
 Source44:       https://github.com/nanopb/nanopb/archive/f8ac463766281625ad710900479130c7fcb4d63b.tar.gz#/nanopb.tar.gz
 # License45: Python license itself, do need as sha256b have to match so could not use system one
 Source45:       https://storage.googleapis.com/mirror.tensorflow.org/docs.python.org/2.7/_sources/license.rst.txt#/python-license.txt
-# License50: Apache-2.0
-Source50:       https://github.com/bazelbuild/bazel-skylib/releases/download/0.8.0/bazel-skylib.0.8.0.tar.gz
-# License51: Apache-2.0
-Source51:       https://github.com/bazelbuild/rules_cc/archive/0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip#/rules_cc.zip
 # License52:
 Source52:       https://github.com/pybind/pybind11/archive/v2.3.0.tar.gz#/pybind11-v2.3.0.tar.gz
 # Deps sources for Tensorflow-Lite (use same eigen, gemmlowp and abseil_cpp packages as non lite version)
@@ -207,10 +201,11 @@ Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc
 %else
 Provides:       python3-tensorflow
 %endif
-%if !%{is_lite}
 Provides:       tensorflow
-%endif
 BuildRequires:  bazel = 0.29.1
+BuildRequires:  bazel-rules-cc-source
+BuildRequires:  bazel-skylib-source
+BuildRequires:  bazel-toolchains-source
 BuildRequires:  curl
 %if %{with cuda}
 BuildRequires:  cuda-compiler-10-1
@@ -434,12 +429,9 @@ mkdir -p %{bazeldir}
 %makebazelcache %{SOURCE30}
 %makebazelcache %{SOURCE34}
 %makebazelcache %{SOURCE35}
-%makebazelcache %{SOURCE36}
 %makebazelcache %{SOURCE37}
 %makebazelcache %{SOURCE44}
 %makebazelcache %{SOURCE45}
-%makebazelcache %{SOURCE50}
-%makebazelcache %{SOURCE51}
 %makebazelcache %{SOURCE52}
 %makebazelcache %{SOURCE53}
 %makebazelcache %{SOURCE54}
@@ -596,18 +588,26 @@ cd -
 #  --repository_cache=%{bz_cachdir} \
 #  'attr(visibility, "//visibility:public", //tensorflow:*)'
 ./configure
-bazel build \
-  --repository_cache=%{bz_cachdir} \
-  --ignore_unsupported_sandboxing \
-	--verbose_failures \
-  --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" \
-  --config=v2 \
-  --config=noaws \
-  --define=build_with_mkl_dnn_only=true \
-  --define=tensorflow_mkldnn_contraction_kernel=0 \
-  --incompatible_no_support_tools_in_action_inputs=false \
-	%{?copts} --jobs %{?jobs} \
-	//tensorflow/tools/pip_package:build_pip_package
+
+%define bazelopts \\\
+  -c opt \\\
+  --repository_cache=%{bz_cachdir} \\\
+  --ignore_unsupported_sandboxing \\\
+  --verbose_failures \\\
+  --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" \\\
+  --config=v2 \\\
+  --config=noaws \\\
+  --define=build_with_mkl_dnn_only=true \\\
+  --define=tensorflow_mkldnn_contraction_kernel=0 \\\
+  --incompatible_no_support_tools_in_action_inputs=false \\\
+  --override_repository="rules_cc=/usr/src/bazel-rules-cc" \\\
+  --override_repository="bazel_skylib=/usr/src/bazel-skylib"\\\
+  --override_repository="rules_toolchains=/usr/src/bazel-rules-toolchains" \\\
+  %{?copts} \\\
+  --jobs %{?jobs} \\\
+%{nil}
+
+bazel build %{bazelopts} tensorflow/tools/pip_package:build_pip_package
 
 bazel-bin/tensorflow/tools/pip_package/build_pip_package %{_topdir}/%{name}-%{version}
 
@@ -621,43 +621,16 @@ for i in `find -name *.proto`; do
       --cpp_out=$OUTPUT_DIR
 done
 
-bazel build -c opt \
-  --repository_cache=%{bz_cachdir} \
-  --ignore_unsupported_sandboxing \
-	--verbose_failures \
-  --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1"\
-  --config=v2 \
-  --config=noaws \
-  --define=build_with_mkl_dnn_only=true \
-  --define=tensorflow_mkldnn_contraction_kernel=0 \
-  --incompatible_no_support_tools_in_action_inputs=false \
-	%{?copts} --jobs %{?jobs} \
+bazel build \
+  %bazelopts \
   //tensorflow:libtensorflow.so
 
-bazel build -c opt \
-  --repository_cache=%{bz_cachdir} \
-  --ignore_unsupported_sandboxing \
-	--verbose_failures \
-  --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1"\
-  --config=v2 \
-  --config=noaws \
-  --define=build_with_mkl_dnn_only=true \
-  --define=tensorflow_mkldnn_contraction_kernel=0 \
-  --incompatible_no_support_tools_in_action_inputs=false \
-	%{?copts} --jobs %{?jobs} \
+bazel build \
+  %bazelopts \
   //tensorflow:libtensorflow_cc.so
 
-bazel build -c opt \
-  --repository_cache=%{bz_cachdir} \
-  --ignore_unsupported_sandboxing \
-	--verbose_failures \
-  --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1"\
-  --config=v2 \
-  --config=noaws \
-  --define=build_with_mkl_dnn_only=true \
-  --define=tensorflow_mkldnn_contraction_kernel=0 \
-  --incompatible_no_support_tools_in_action_inputs=false \
-	%{?copts} --jobs %{?jobs} \
+bazel build \
+ %bazelopts \
  //tensorflow:libtensorflow_framework.so
 %endif # it_lite
 

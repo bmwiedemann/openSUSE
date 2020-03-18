@@ -1,7 +1,7 @@
 #
 # spec file for package libvisio2svg
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soversion 0
 
+%define soversion 0
 Name:           libvisio2svg
 Version:        0.5.5
 Release:        0
-License:        GPL-2.0
 Summary:        Library to convert Visio Documents and Stencils (VSS and VSD) to SVG
-Url:            https://github.com/kakwa/libvisio2svg
+License:        GPL-2.0-only
 Group:          Productivity/Graphics/Convertors
+URL:            https://github.com/kakwa/libvisio2svg
 Source0:        https://github.com/kakwa/libvisio2svg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  freetype2-devel
 %if 0%{?suse_version} > 1320
 BuildRequires:  gcc-c++
 %else
-# Leap 42.2+ / SLE12SP2Backports
+# SLE12
 BuildRequires:  gcc7-c++
 #!Buildignore:  libgcc_s1
 %endif
@@ -39,7 +39,6 @@ BuildRequires:  librevenge-devel
 BuildRequires:  libvisio-devel
 BuildRequires:  libwmf-devel
 BuildRequires:  libxml2-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library for conversion of Visio Documents and Stencils (VSS and VSD) to SVG.
@@ -81,32 +80,28 @@ Tools to convert Visio Documents (VSD) or Stencils (VSS) to SVG.
 %build
 test -x "$(type -p gcc-7)" && export CC=gcc-7
 test -x "$(type -p g++-7)" && export CXX=g++-7
-%cmake
-make %{?_smp_mflags}
+%cmake -DCMAKE_SKIP_RPATH=TRUE
+%cmake_build
 
 %install
 %cmake_install
 
 %post -n %{name}%{soversion} -p /sbin/ldconfig
-
 %postun -n %{name}%{soversion} -p /sbin/ldconfig
 
 %files -n %{name}%{soversion}
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_libdir}/libTitleGenerator.*so.*
 %{_libdir}/libVisio2Svg.*so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libTitleGenerator.*so
 %{_libdir}/libVisio2Svg.*so
 %dir %{_includedir}/visio2svg/
 %{_includedir}/visio2svg/*.h
 
 %files -n visio2svg-conv
-%defattr(-,root,root)
 %{_bindir}/vss2svg-conv
 %{_bindir}/vsd2svg-conv
 

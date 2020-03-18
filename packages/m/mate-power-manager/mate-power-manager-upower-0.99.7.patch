@@ -41,10 +41,10 @@
  		g_object_get (device,
 --- a/src/gpm-statistics.c
 +++ b/src/gpm-statistics.c
-@@ -1764,7 +1764,12 @@ main (int argc, char *argv[])
+@@ -1407,7 +1407,12 @@ main (int argc, char *argv[])
  
- 	wakeups = up_wakeups_new ();
- 	g_signal_connect (wakeups, "data-changed", G_CALLBACK (gpm_stats_data_changed_cb), NULL);
+ 	client = up_client_new ();
+ 
 +#if UP_CHECK_VERSION(0, 99, 8)
  	devices = up_client_get_devices2 (client);
 +#else

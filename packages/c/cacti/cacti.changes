@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 15 16:44:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- cacti 1.2.10:
+  * CVE-2020-8813: when guest users have access to realtime graphs,
+    remote code could be executed
+  * When using User Domains, global template user is used instead of
+    the configured domain template user
+  * Unix timestamps after Sep 13 2020 are rejected as graph start/end
+    arguments
+  * many bug fixes
+
+-------------------------------------------------------------------
 Sat Feb 15 18:46:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.9:

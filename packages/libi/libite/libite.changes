@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 17 08:53:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 2.2.0
+  Changes
+  * Add support for systemf(), formatted string system() replacement
+  * Add support for fmkpath(), formatted string mkpath()
+  * Add support for fopenf(), formatted string fopen() replacement
+  Fixes
+  * Fix possible memory leak in rsync(), found by Coverity Scan
+  * Check return value of fstat() to prevent bogus destination file
+    times when using copyfile(), found by Coverity Scan
+
+-------------------------------------------------------------------
 Tue Aug 27 10:10:20 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0

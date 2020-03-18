@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  48866e4a200fb5299b94af4d9841e38336cff9f4
+# Parent  d942febc5733911d795d1cec027fb4f3c0a6e53b
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -91,7 +91,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -113,16 +113,20 @@ EXPORTS.mozilla += [
+@@ -114,16 +114,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(['!' + g for g in gen_h])
  
@@ -157,7 +157,7 @@ diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpac
 diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloads/moz.build
 --- a/toolkit/components/downloads/moz.build
 +++ b/toolkit/components/downloads/moz.build
-@@ -41,10 +41,14 @@ XPCOM_MANIFESTS += [
+@@ -46,10 +46,14 @@ XPCOM_MANIFESTS += [
  
  if CONFIG['MOZ_PLACES']:
      EXTRA_JS_MODULES += [
@@ -175,7 +175,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1195,36 +1195,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1209,36 +1209,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()

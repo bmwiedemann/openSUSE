@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://github.com/dgibson/dtc
 Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.gz
 Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.sign
 Source2:        baselibs.conf
-Patch0:         dtc-no-common-conflict.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
@@ -72,7 +71,6 @@ Python binding part.
 
 %prep
 %setup -q
-%patch0
 
 %build
 export EXTRA_CFLAGS="%{optflags}"
@@ -107,7 +105,7 @@ export EXTRA_CFLAGS="%{optflags}"
 %postun -n libfdt%{sover} -p /sbin/ldconfig
 
 %files -n libfdt%{sover}
-%{_libdir}/libfdt-1.5.0.so
+%{_libdir}/libfdt-1.6.0.so
 %{_libdir}/libfdt.so.*
 
 %files -n libfdt-devel

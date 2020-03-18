@@ -25,8 +25,10 @@ Summary:        Yet Another Python Profiler
 License:        MIT
 URL:            https://github.com/sumerc/yappi
 Source:         https://files.pythonhosted.org/packages/source/y/yappi/yappi-%{version}.tar.gz
+BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -52,7 +54,12 @@ export CFLAGS="%{optflags}"
 export PYTHONPATH="tests/"
 export PATH="$PATH:%{buildroot}/%{_bindir}"
 # Skip two flaky tests
-%pytest_arch -k 'not (test_basic_old_style or test_basic)'
+skip_tests="not test_basic_old_style and not test_basic"
+%if %{python3_version_nodots} < 37
+    # this test relies on asyncio.run method
+    skip_tests="$skip_tests and not test_asyncio_context_vars" 
+%endif
+%pytest_arch -k "$skip_tests"
 
 %files %{python_files}
 %doc README.md

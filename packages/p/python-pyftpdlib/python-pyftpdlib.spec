@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyftpdlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 # Tests randomly fail: https://github.com/giampaolo/pyftpdlib/issues/386
 %bcond_with     test
 Name:           python-pyftpdlib
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Asynchronous FTP server library for Python
 License:        MIT
@@ -57,6 +57,7 @@ write very asynchronous FTP servers with Python.
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/pyftpdlib/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}

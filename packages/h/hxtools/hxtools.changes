@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 10 12:15:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200310
+  * vfontas: add new N1 vectorizer
+  * vfontas: new -saven1 command to use N1
+  * vfontas: remove -xbrz scaler
+
+-------------------------------------------------------------------
 Sun Jan 26 14:39:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200126

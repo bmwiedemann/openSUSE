@@ -131,6 +131,7 @@ BuildRequires:  nodejs >= 8.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
+BuildRequires:  python-xml
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
@@ -241,10 +242,6 @@ BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 %endif
 %if !%{with sle_bundles}
-BuildRequires:  python-beautifulsoup4
-BuildRequires:  python-html5lib
-BuildRequires:  python-simplejson
-BuildRequires:  python-xml
 BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(opus) >= 1.3.1
@@ -340,8 +337,6 @@ keeplibs=(
     third_party/catapult
     third_party/catapult/common/py_vulcanize/third_party/rcssmin
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
-    third_party/catapult/third_party/beautifulsoup4
-    third_party/catapult/third_party/html5lib-python
     third_party/catapult/third_party/beautifulsoup4
     third_party/catapult/third_party/html5lib-python
     third_party/catapult/third_party/polymer
@@ -488,9 +483,6 @@ keeplibs+=(
     third_party/opus
     third_party/yasm
     third_party/simplejson
-    third_party/catapult/third_party/beautifulsoup4
-    third_party/catapult/third_party/html5lib-python
-    third_party/catapult/third_party/six
     third_party/zlib
 )
 %endif

@@ -28,7 +28,7 @@ Summary:        Command line utilities for Twilio users
 License:        Apache-2.0
 Group:          Productivity/Text/Utilities
 Source:         %{name}-%{version}.tar.gz
-URL:            http://twilio-utils.googlecode.com/
+URL:            https://github.com/archiecobbs/twilio-utils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  curl
 BuildRequires:  gcc

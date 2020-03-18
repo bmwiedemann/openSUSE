@@ -24,7 +24,6 @@ Version:        3.6
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://www.pyinstaller.org
 Source:         https://files.pythonhosted.org/packages/source/P/PyInstaller/PyInstaller-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -53,13 +52,14 @@ BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pefile >= 2017.8.1}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pycountry}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  upx
 %if %{with python2}
 BuildRequires:  python-dis3
 %endif
-BuildRequires:  upx
 %endif
 %ifpython2
 Requires:       python-dis3
@@ -103,7 +103,8 @@ fi
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%pytest_arch tests/unit tests/functional --ignore=tests/functional/test_libraries.py --ignore=tests/functional/test_hooks -k 'not test_find_module and not test_egg and not test_nspkg1'
+# test_get_co_using_ctypes, test_get_co_using_ctypes_from_extension, test_replace_paths_in_code broken with python 3.8 on PyInstall 3.6
+%pytest_arch -n auto tests/unit -k 'not (test_find_module or test_egg and not test_nspkg1 or test_get_co_using_ctypes or test_get_co_using_ctypes_from_extension or test_replace_paths_in_code)'
 %endif
 
 %post

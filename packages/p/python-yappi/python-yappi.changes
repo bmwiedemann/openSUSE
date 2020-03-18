@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 23:52:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add more testing requirements
+- disable a test, that relies on asyncio.run for py < 3.7
+
+-------------------------------------------------------------------
 Sun Mar 15 09:13:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip two flaky tests

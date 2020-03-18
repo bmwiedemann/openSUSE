@@ -77,4 +77,15 @@
     <comment>- Do not remove tests, other packages import them</comment>
     <requestid>705885</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>194bc4d5c2b7d3c5bfda3691081f9445</srcmd5>
+    <version>1.5.6</version>
+    <time>1584531967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.6:
+  - #467: added pre-fork concurrency model, spawn()ing worker processes to split
+    load.
+  - #520: directory LISTing is now 3.7x times faster.</comment>
+    <requestid>786119</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package noson-app
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            http://janbar.github.io/noson-app/index.html
+URL:            https://janbar.github.io/noson-app/index.html
 Source0:        https://github.com/janbar/noson-app/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -40,8 +40,8 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(noson) = 2.3.0
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires:       libqt5-qtgraphicaleffects
+Requires:       libqt5-qtquickcontrols2
 
 %description
 A controller for SONOS devices. It allows for browsing the music

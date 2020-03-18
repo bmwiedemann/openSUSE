@@ -15,4 +15,14 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659644</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73367cfab1dd7d0fa10d9e8dc03226aa</srcmd5>
+    <version>1.0.1</version>
+    <time>1584531943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  - Add Python 3 support. (#22)
+- Enable tests</comment>
+    <requestid>786095</requestid>
+  </revision>
 </revisionlist>

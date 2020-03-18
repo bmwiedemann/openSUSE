@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 12 16:01:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Removed pam_userdb from this package and moved to pam-modules.
+  This removed the requirement for libdb.
+  Also made "xz" required for all releases.
+  Remove limits for nproc from /etc/security/limits.conf
+  [bsc#1164562, bsc#1166510, bsc#1110700, pam.spec]
+
+-------------------------------------------------------------------
 Wed Feb 19 10:04:09 CET 2020 - kukuk@suse.de
 
 - Recommend login.defs only (no hard requirement)

@@ -257,6 +257,10 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
+# PATCH-FIX-UPSTREAM riscv: Avoid clobbering register parameters in syscall
+Patch1000:      riscv-syscall-clobber.patch
+# PATCH-FIX-UPSTREAM Avoid ldbl-96 stack corruption from range reduction of pseudo-zero (CVE-2020-10029, BZ #25487)
+Patch1001:      ldbl-96-rem-pio2l.patch
 
 ### 
 # Patches awaiting upstream approval
@@ -463,6 +467,9 @@ makedb: A program to create a database for nss
 
 %patch304 -p1
 %patch306 -p1
+
+%patch1000 -p1
+%patch1001 -p1
 
 %patch2000 -p1
 %patch2001 -p1

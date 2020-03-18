@@ -1,7 +1,7 @@
 #
 # spec file for package python-spotipy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spotipy
-Version:        2.4.4
+Version:        2.9.0
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://spotipy.readthedocs.org/
-Source:         https://files.pythonhosted.org/packages/source/s/spotipy/spotipy-%{version}.tar.gz
+URL:            https://spotipy.readthedocs.org/
+# https://github.com/plamere/spotipy/issues/454
+Source:         https://github.com/plamere/spotipy/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module requests >= 1.0}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 1.0
+Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module mock >= 2.0.0}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.20.0}
+BuildRequires:  %{python_module six >= 1.10.0}
+# /SECTION
 %python_subpackages
 
 %description
@@ -55,9 +59,12 @@ https://spotipy.readthedocs.io/
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest tests/unit/
+
 %files %{python_files}
-%license LICENSE.txt
-%doc CHANGES.txt
+%license LICENSE.md
+%doc CHANGELOG.md
 %{python_sitelib}/*
 
 %changelog

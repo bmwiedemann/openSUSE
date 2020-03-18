@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent  9db312f823881c04c5c16a7623df08cf6aef371d
+# Parent  b5471d23321d16a0bacc25b7afd27d2e16adba1a
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
-@@ -131,18 +131,17 @@ static IntRect CalculateSurfaceBounds(co
+@@ -130,18 +130,17 @@ static IntRect CalculateSurfaceBounds(co
    Rect sampledBounds = inverse.TransformBounds(*aBounds);
    if (!sampledBounds.ToIntRect(&bounds)) {
      return surfaceBounds;
@@ -28,7 +28,7 @@ diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
-@@ -82,25 +82,18 @@ enum class SurfaceFormat : int8_t {
+@@ -84,25 +84,18 @@ enum class SurfaceFormat : int8_t {
    Depth,
  
    // This represents the unknown format.

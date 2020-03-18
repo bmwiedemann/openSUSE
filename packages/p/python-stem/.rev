@@ -24,4 +24,15 @@
     <comment>- Require full python for sqlite module</comment>
     <requestid>755743</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c00c0b16e33b800fe28a2f44c8af269</srcmd5>
+    <version>1.8.0</version>
+    <time>1584531635</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.8.0
+  * many changes, see
+    https://stem.torproject.org/change_log.html#version-1-8
+- Drop merged python38.patch</comment>
+    <requestid>785941</requestid>
+  </revision>
 </revisionlist>

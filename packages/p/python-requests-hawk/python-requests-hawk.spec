@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-hawk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +18,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with test
 Name:           python-requests-hawk
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Hawk authentication strategy for the requests python library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/mozilla-services/requests-hawk
 Source:         https://files.pythonhosted.org/packages/source/r/requests-hawk/requests-hawk-%{version}.tar.gz
+BuildRequires:  %{python_module mohawk}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mohawk
 Requires:       python-requests
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module mohawk}
-BuildRequires:  %{python_module requests}
-%endif
 %python_subpackages
 
 %description
@@ -57,10 +53,8 @@ across mozilla services projects.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %python_exec setup.py test
-%endif
 
 %files %{python_files}
 %license LICENSE.txt

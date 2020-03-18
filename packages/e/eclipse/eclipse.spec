@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -144,8 +144,6 @@ BuildRequires:  batik-css >= 1.10
 BuildRequires:  cbi-plugins
 BuildRequires:  desktop-file-utils
 BuildRequires:  easymock
-BuildRequires:  eclipse-ecf-core >= 3.14.1
-BuildRequires:  eclipse-emf-core > 2.14.99
 BuildRequires:  eclipse-license2
 BuildRequires:  gcc
 BuildRequires:  glassfish-el > 3.0.0
@@ -221,18 +219,25 @@ Name:           eclipse
 # Build deps that are excluded when bootstrapping
 %if %{without bootstrap}
 # For contributor tools
+BuildRequires:  eclipse-ecf-core >= 3.14.1
 BuildRequires:  eclipse-egit
+BuildRequires:  eclipse-emf-core > 2.14.99
 BuildRequires:  eclipse-emf-runtime
 BuildRequires:  eclipse-pde-bootstrap
 BuildRequires:  eclipse-platform-bootstrap
 BuildRequires:  jgit
 BuildRequires:  tycho
+#!BuildIgnore:  eclipse-ecf-core-bootstrap
+#!BuildIgnore:  eclipse-emf-core-bootstrap
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  jgit-bootstrap
 #!BuildIgnore:  tycho-bootstrap
 %else
+BuildRequires:  eclipse-ecf-core-bootstrap
+BuildRequires:  eclipse-emf-core-bootstrap
 BuildRequires:  jgit-bootstrap
 BuildRequires:  tycho-bootstrap
+#!BuildIgnore:  eclipse-ecf-core
 #!BuildIgnore:  eclipse-emf-core
 #!BuildIgnore:  jgit
 #!BuildIgnore:  tycho

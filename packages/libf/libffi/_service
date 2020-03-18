@@ -4,8 +4,8 @@
 		<param name="url">https://github.com/libffi/libffi</param>
 		<param name="revision">master</param>
 		<param name="filename">libffi</param>
-		<param name="parent-tag">v3.2.1</param>
-		<param name="versionformat">3.2.1.git@TAG_OFFSET@</param>
+		<param name="parent-tag">v3.3</param>
+		<param name="versionformat">3.3.git@TAG_OFFSET@</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

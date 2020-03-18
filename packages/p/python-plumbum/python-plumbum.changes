@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:29:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.6.8
+  * Exceptions: Changed ProcessExecutionError's formatting to be more user-friendly
+  * Commands: support for per-line timeout with iter_lines
+  * Commands: support for piping stdout/stderr to a logger
+  * Commands: execute local/remote commands via a magic .cmd attribute
+  * Paths: support composing paths using subscription operations
+  * CLI: Improved 'Set' validator to allow non-string types, and CSV params
+  * TypedEnv: Facility for modeling environment-variables into python data types
+
+-------------------------------------------------------------------
 Mon Jun  3 10:34:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.6.7:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 03:10:13 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.71
+   see /usr/share/doc/packages/perl-Convert-UUlib/Changes
+
+  1.71 Tue Mar 17 00:54:06 CET 2020
+  	- backport to c89 (patch by Paul Howarth).
+
+-------------------------------------------------------------------
 Sun Mar  1 03:09:16 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.7

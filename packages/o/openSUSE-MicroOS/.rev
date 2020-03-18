@@ -253,4 +253,13 @@
     <comment></comment>
     <requestid>784349</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>d4cd45ce95323df9324c3b88362987c4</srcmd5>
+    <version>16.0.0</version>
+    <time>1584532112</time>
+    <user>dimstar_suse</user>
+    <comment>- Make check for kubelet in config.sh more generic to work after
+  the package rename</comment>
+    <requestid>786124</requestid>
+  </revision>
 </revisionlist>

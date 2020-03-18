@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:25:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20.2.26:
+  - Add support for passing `--system-site-packages` during venv creation - PR: #80
+  - Add ability to create partial `.ptrconfig` files - PR: #83
+  - Use native recursive file search for black and flake8 - PR: #81
+  - Fix documentation for some new arguments - Thanks @omikader
+  - Windows now defaults to updating pip + setuptools
+  - Rely on setting current working directory with subprocess and remove coverage file environment setting
+  - f-string everything via [flynt](https://pypi.org/project/flynt/) now we're >= 3.6
+  - Enable pyre for Python 3.8 now it's fully supported
+
+-------------------------------------------------------------------
 Thu Jan  2 07:38:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Conflict with pytest-runner as we provide same file on the disk
