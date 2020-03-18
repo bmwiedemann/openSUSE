@@ -1,7 +1,7 @@
 #
 # spec file for package python-pook
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pook
-Version:        0.2.6
+Version:        0.2.8
 Release:        0
-License:        MIT
 Summary:        HTTP traffic mocking and expectations
-Url:            https://github.com/h2non/pook
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/h2non/pook
 Source:         https://files.pythonhosted.org/packages/source/p/pook/pook-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module furl >= 0.5.6}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
-BuildRequires:  %{python_module xmltodict >= 0.10.2}
 BuildRequires:  %{python_module mocket >= 1.6.0}
-BuildRequires:  %{python_module nose >= 1.3.7}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module nose >= 1.3.7}
 BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module urllib3 >= 1.19.1}
+BuildRequires:  %{python_module xmltodict >= 0.10.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-furl >= 0.5.6
