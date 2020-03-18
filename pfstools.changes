@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:32:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require freeglut-devel instead of pkgconfig(freeglut).
+  The pkgconfig name changed in Tumbleweed.
+
+-------------------------------------------------------------------
 Wed Jan 23 23:50:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Correct pfstools-fix-libpfs-linkage.patch
