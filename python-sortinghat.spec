@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sortinghat
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/grimoirelab/sortinghat
 Source0:        https://files.pythonhosted.org/packages/source/s/sortinghat/sortinghat-%{version}.tar.gz
-# https://github.com/chaoss/grimoirelab-sortinghat/issues/207#issuecomment-534094890
-Source1:        tests.tar.bz2
 # workaround for https://github.com/chaoss/grimoirelab-sortinghat/issues/121
 # reverting https://github.com/chaoss/grimoirelab-sortinghat/commit/5f69ed899c94584de17d47b37152098f64012e10
 # plus, test_is_top_domain_invalid_type and test_is_bot_invalid_type tests exception thrown from
@@ -87,9 +85,9 @@ to store the identities obtained into its database, and later merge them
 into unique identities (and maybe affiliate them).
 
 %prep
-%setup -q -a1 -n sortinghat-%{version}
+%setup -q -n sortinghat-%{version}
 %patch0 -p1
-sed -i "s/\('pandoc'\|'wheel',\)//" setup.py
+sed -i -e "s/\('pandoc'\|'wheel',\)//" -e 's/==/>=/' setup.py
 
 %build
 %python_build
@@ -111,10 +109,15 @@ run_dir=/tmp/mysql
 #
 # running the test
 #
-cp tests/tests.conf.sample tests/tests.conf
-sed -i -e "s/3306/$port/" \
-       -e "s/\(user=\)/\1$user/" \
-       -e "s/\(password=\)/\1$pass/" tests/tests.conf
+cat << EOF > tests/tests.conf
+[Database]
+name=testhat
+host=127.0.0.1
+port=$port
+user=$user
+password=$pass
+create=False
+EOF
 sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
 %{python_expand $python setup.py test || exit_code=1}
 #
