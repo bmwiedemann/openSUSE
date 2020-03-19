@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:35:25 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- virt._get_domain: don't raise an exception if there is no VM
+
+- Added:
+  * virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 13:40:30 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Adds test for zypper abbreviation fix
+- Improved storage pool or network handling
+- Better import cache handline
+
+- Added:
+  * loader-invalidate-the-import-cachefor-extra-modules.patch
+  * open-suse-2019.2.3-virt-defined-states-219.patch
+
+- Modified:
+  * use-full-option-name-instead-of-undocumented-abbrevi.patch
+
+-------------------------------------------------------------------
 Thu Mar  5 12:12:35 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Use full option name instead of undocumented abbreviation for zypper

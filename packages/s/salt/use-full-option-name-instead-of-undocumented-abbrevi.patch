@@ -1,12 +1,13 @@
-From fb82c59e6de2a31f60c9f8a23f1eed4e24009dcf Mon Sep 17 00:00:00 2001
+From b06d2882f4e89011b1f5eeb442620b4543694140 Mon Sep 17 00:00:00 2001
 From: Michael Calmer <mc@suse.de>
 Date: Sun, 1 Mar 2020 16:22:54 +0100
 Subject: [PATCH] use full option name instead of undocumented
  abbreviation
 
 ---
- salt/modules/zypperpkg.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ salt/modules/zypperpkg.py            |  2 +-
+ tests/unit/modules/test_zypperpkg.py | 14 +++++++++++++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
 index 8c1e05c21c..19d1fd96c7 100644
@@ -21,6 +22,38 @@ index 8c1e05c21c..19d1fd96c7 100644
      cmd.append('products')
      if not all:
          cmd.append('-i')
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 7617113401..ae85152d30 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -241,7 +241,18 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                     'stdout': get_test_data(filename)
+             }
+ 
+-            with patch.dict(zypper.__salt__, {'cmd.run_all': MagicMock(return_value=ref_out)}):
++            cmd_run_all = MagicMock(return_value=ref_out)
++            mock_call = call(['zypper',
++                              '--non-interactive',
++                              '--xmlout',
++                              '--no-refresh',
++                              '--disable-repositories',
++                              'products', u'-i'],
++                              env={'ZYPP_READONLY_HACK': '1'},
++                              output_loglevel='trace',
++                              python_shell=False)
++
++            with patch.dict(zypper.__salt__, {'cmd.run_all': cmd_run_all}):
+                 products = zypper.list_products()
+                 self.assertEqual(len(products), 7)
+                 self.assertIn(test_data['vendor'], [product['vendor'] for product in products])
+@@ -250,6 +261,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                         self.assertCountEqual(test_data[kwd], [prod.get(kwd) for prod in products])
+                     else:
+                         self.assertEqual(test_data[kwd], sorted([prod.get(kwd) for prod in products]))
++                cmd_run_all.assert_has_calls([mock_call])
+ 
+     def test_refresh_db(self):
+         '''
 -- 
 2.16.4
 
