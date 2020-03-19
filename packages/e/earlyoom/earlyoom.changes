@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:50:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- earlyoom.sysconfig: Fix sddm, add kwin_wayland
+
+-------------------------------------------------------------------
 Wed Mar  4 17:40:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Add PREFIX=%{_prefix} to %make_build macro for correct ExecStart.
