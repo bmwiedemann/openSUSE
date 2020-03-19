@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Fix clicking thumb-only delegate (kde#418368)
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::. + they reverted error() -> networkError()
+  * Fix scrolling on the EntryDetails page (kde#418191)
+  * Don't double delete CommentsModel (kde#417802)
+  * Make it compile against last qt5.15 without deprecated method. QProcess::execute(QString) is deprecated
+  * Cover also the qtquick plugin in the installed categories file
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * Use the right translation catalog to show translations
+  * Fix the KNSQuick Dialog's close title and basic layout (kde#415606)
+
+-------------------------------------------------------------------
 Sun Feb  2 18:07:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
