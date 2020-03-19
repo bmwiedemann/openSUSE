@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:09:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.03.11
+  * Bourne Shell: set -m now works in scripts as well. Before,
+    bosh did never call startjobs() when the shell startup was
+    done with a shell script.
+  * Bourne Shell: The shell now supports the alternate ;& switch
+    command limiter in addition to ;; where ;& implements a
+    fallthrough to the next command list regardless on thether
+    there is a match or not.
+
+-------------------------------------------------------------------
 Wed Feb 12 15:08:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.02.11
