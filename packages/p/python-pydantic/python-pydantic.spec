@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        0.32.2
+Version:        1.4
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -55,7 +55,7 @@ Data validation and settings management using Python type hinting.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst HISTORY.rst
+%doc README.md HISTORY.md
 %{python_sitelib}/*
 
 %changelog

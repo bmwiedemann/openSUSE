@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 19 13:25:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.4
+  * rename Schema to Field, make it a function to placate mypy
+  * Implement root_validator and rename root errors from __obj__ to __root__
+  * Added initvars support to post_init_post_parse
+  * complete rewrite of URL parsing logic
+  * BaseSettings now uses the special env settings to define which 
+    environment variables to read, not aliases
+  * add support for assert statements inside validators
+  * Change the precedence of aliases so child model aliases override 
+    parent aliases, including using alias_generator
+  * Add a mypy plugin for type checking BaseModel.__init__ and more
+  * Add support for typing.Literal for Python 3.8
+  * Add a ByteSize type for converting byte string (1GB) to plain bytes
+  * Add support for required Optional with name: Optional[AnyType] = Field(...) 
+    and refactor ModelField creation to preserve required parameter value
+  * Add __eq__ to SecretStr and SecretBytes to allow "value equals"
+  * Add support for nested generic models
+  * alias precedence logic changed so aliases on a field always take 
+    priority over an alias from alias_generator
+  * many more fixes and improvements
+
+-------------------------------------------------------------------
 Fri Sep 20 09:56:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner
