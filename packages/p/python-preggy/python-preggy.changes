@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:56:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.4.4
+  * TypeError: __init__() got an unexpected keyword argument 'encoding'
+  * Added LICENSE file (not distributed in the PyPI tarball, though)
+  * SyntaxWarning: is with a literal. Did you mean ==?
+
+-------------------------------------------------------------------
 Thu Feb 21 11:53:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use the upstream tarball from pypi

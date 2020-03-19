@@ -1,7 +1,8 @@
-diff -Nru preggy-1.4.2-orig/LICENSE preggy-1.4.2/LICENSE
---- preggy-1.4.2-orig/LICENSE	1970-01-01 07:00:00.000000000 +0700
-+++ preggy-1.4.2/LICENSE	2019-02-21 18:41:15.876505357 +0700
-@@ -0,0 +1,21 @@
+Index: preggy-1.4.4/LICENSE
+===================================================================
+--- /dev/null
++++ preggy-1.4.4/LICENSE
+@@ -0,0 +1,22 @@
 +The MIT License (MIT)
 +
 +Copyright (c) 2013 Bernardo Heynemann <heynemann@gmail.com>
@@ -23,10 +24,12 @@ diff -Nru preggy-1.4.2-orig/LICENSE preggy-1.4.2/LICENSE
 +LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
-diff -Nru preggy-1.4.2-orig/README.md preggy-1.4.2/README.md
---- preggy-1.4.2-orig/README.md	2018-01-10 04:25:30.000000000 +0700
-+++ preggy-1.4.2/README.md	2019-02-21 18:41:41.844674859 +0700
-@@ -258,34 +258,3 @@
++
+Index: preggy-1.4.4/README.md
+===================================================================
+--- preggy-1.4.4.orig/README.md
++++ preggy-1.4.4/README.md
+@@ -258,34 +258,3 @@ expect(6).not_to_be_null().to_equal(6)
  # a more *sensible* example:
  expect(foo).not_to_be_null().to_equal(expected.get('foo'))
  ```
@@ -34,7 +37,7 @@ diff -Nru preggy-1.4.2-orig/README.md preggy-1.4.2/README.md
 -
 -Contributing
 -============
--See [CONTRIBUTING.md].
+-See [CONTRIBUTING](CONTRIBUTING.md).
 -
 -
 -License
