@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pulsectl
-Version:        20.1.2 
+Version:        20.2.4 
 Release:        0
 Summary:        Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)
 License:        MIT
