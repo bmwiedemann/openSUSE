@@ -54,4 +54,12 @@
   * Known issue with 3.8 for CodeType parameters (may drop Python2 support first)</comment>
     <requestid>729790</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f5c6129e9135f35bd0bde7d04a01b32a</srcmd5>
+    <version>4.1.4</version>
+    <time>1584643848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786356</requestid>
+  </revision>
 </revisionlist>

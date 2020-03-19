@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpyc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-rpyc%{psuffix}
-Version:        4.1.1
+Version:        4.1.4
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT
@@ -36,14 +36,14 @@ Source:         https://github.com/tomerfiliba/rpyc/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-plumbum
+Requires:       python-plumbum >= 1.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module plumbum}
+BuildRequires:  %{python_module plumbum >= 1.2}
 BuildRequires:  %{python_module rpyc = %{version}}
 %endif
 %python_subpackages
@@ -76,7 +76,7 @@ mv %{buildroot}%{_bindir}/rpyc_registry.py %{buildroot}%{_bindir}/rpyc_registry
 
 %if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v -I test_deploy -I test_gevent_server -I test_ssh -I test_registry
+%python_expand nosetests-%{$python_bin_suffix} -v -I test_deploy -I test_gevent_server -I test_ssh -I test_registry -I test_win32pipes
 %endif
 
 %if !%{with test}
