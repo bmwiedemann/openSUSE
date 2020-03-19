@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.67
+%define _tar_path 5.68
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5
-Version:        5.67.0
+Version:        5.68.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -35,10 +35,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/baloo-%{
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch:          Sync-IndexerConfig-on-exit.patch
-# PATCH-FIX-UPSTREAM -- Fix scheduler being stuck in Suspended state
-Patch1:         0001-FileIndexScheduler-Force-evaluation-of-indexerState-.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libattr-devel
@@ -150,7 +146,6 @@ package contains aditional command line utilities. Development files.
 
 %prep
 %setup -q -n baloo-%{version}
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

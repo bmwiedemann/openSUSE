@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * [FileContentIndexer] Remove duplicate condition check for loop break
+  * [ModifiedFileIndexer] Correct time checks for new files
+  * [ModifiedFileIndexer] Omit BasicIndexingJob run when not required
+  * [tools] Clean up messed up whitespace
+  * Fix minor EBN issues (http->https)
+  * Extract messages from header file as well
+  * Sync IndexerConfig on exit (kde#417127)
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * [FileIndexScheduler] Force evaluation of indexerState after suspend/resume
+- Drop upstream patches:
+  * 0001-FileIndexScheduler-Force-evaluation-of-indexerState-.patch
+  * Sync-IndexerConfig-on-exit.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 15:53:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix FileIndexScheduler being stuck after suspending it:
