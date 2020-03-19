@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:29:15 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.1
+  * Use README as the long description on PyPI. [Stavros Korokithakis]
+  * Drop support for Python before 3.5. [Stavros Korokithakis]
+  * Add simple command-line interface (#43) [Éric Araujo]
+  * Make encode and decode MSB-first (#36) [Keane Nguyen]
+  * Make the URL check more robust (fixes #32) [Stavros Korokithakis]
+- deleted patches
+  - shortuuid-no-pep8.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Sep 26 09:13:16 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to not depend on pep8 linter, also reported upstream

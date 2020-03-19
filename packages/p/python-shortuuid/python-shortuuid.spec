@@ -1,7 +1,7 @@
 #
 # spec file for package python-shortuuid
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-shortuuid
-Version:        0.5.0
+Version:        1.0.1
 Release:        0
 Summary:        A generator library for concise, unambiguous and URL-safe UUIDs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/stochastic-technologies/shortuuid/
 Source:         https://files.pythonhosted.org/packages/source/s/shortuuid/shortuuid-%{version}.tar.gz
-# https://github.com/skorokithakis/shortuuid/issues/38
-Patch0:         shortuuid-no-pep8.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +40,6 @@ similar-looking letters and numbers.
 
 %prep
 %setup -q -n shortuuid-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -50,7 +49,7 @@ similar-looking letters and numbers.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest shortuuid/tests.py
 
 %files %{python_files}
 %doc README.rst
