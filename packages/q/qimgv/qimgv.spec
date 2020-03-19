@@ -27,6 +27,8 @@ Source0:        https://github.com/easymodo/qimgv/archive/v%{version}.tar.gz#/%{
 Patch0:         qimgv-nosharedlib.patch
 # PATCH-FEATURE-OPENSUSE qimgv-PIE.patch # aloisio@gmx.com add PIE flags
 Patch1:         qimgv-PIE.patch
+# PATCH-FIX-UPSTREAM mpv-qthelper.patch
+Patch2:         mpv-qthelper.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
