@@ -25,6 +25,7 @@ Source:         purge-kernels.service
 Conflicts:      dracut < 049+git118
 Requires:       zypper(purge-kernels)
 BuildRequires:  systemd-rpm-macros
+BuildArch:      noarch
 
 %description
 This service runs zypper purge-kernels on boot after a kernel package was installed.
