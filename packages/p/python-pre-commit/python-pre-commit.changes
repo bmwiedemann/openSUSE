@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:26:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.2.0
+  * Add conda as a new language. 
+  * Remove python2 / python3.5 support. Note that pre-commit still 
+    supports running hooks written in python2, but pre-commit itself 
+    requires python 3.6+.
+  * Removed pcre language, use pygrep instead. 
+  * Don't filter GIT_SSL_NO_VERIFY from environment when cloning.
+  * Replace aspy.yaml with sort_keys=False. 
+  * Add support for perl. 
+  * Fix python healthy() check when python executable goes missing. 
+  * Many more fixes and improvements, see upstream changelog
+
+-------------------------------------------------------------------
 Fri Nov  1 14:44:33 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.20.0:
