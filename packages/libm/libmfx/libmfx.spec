@@ -26,6 +26,7 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/Intel-Media-SDK/MediaSDK
 Source0:        https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-%{version}.tar.gz
 Patch0:         cmake-sle12.patch
+Patch1:         u_buildfix-for-gcc10.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
@@ -68,6 +69,7 @@ the Intel Media SDK.
 %if 0%{?suse_version} < 1500
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 mkdir -p build 

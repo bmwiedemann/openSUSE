@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>781210</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2ff6133142fe88bfc066c21770c89c7e</srcmd5>
+    <version>19.4.0</version>
+    <time>1584643578</time>
+    <user>dimstar_suse</user>
+    <comment>- u_buildfix-for-gcc10.patch
+  * fixes build against gcc10 (boo#1166609)</comment>
+    <requestid>785623</requestid>
+  </revision>
 </revisionlist>
