@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Support NDK r20 and Qt 5.14
+  * Load QM files from assets: URLs on Android
+  * Add ecm_qt_install_logging_categories & ecm_qt_export_logging_category
+  * ECMGeneratePriFile: unbreak for usages with LIB_NAME not a target name
+  * ECMGeneratePriFile: Fix static configurations
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

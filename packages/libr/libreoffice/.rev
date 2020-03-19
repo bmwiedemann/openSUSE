@@ -2674,4 +2674,13 @@ Petr</comment>
   * soffice.sh_Avoid-exporting-empty-LC_ALL.patch</comment>
     <requestid>783013</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>b69dc0f7aea8455f4d5fe4d4c9df2b76</srcmd5>
+    <version>6.4.2.2</version>
+    <time>1584643243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.4.2.2:
+  * 6.4.2 RC2 release</comment>
+    <requestid>785229</requestid>
+  </revision>
 </revisionlist>
