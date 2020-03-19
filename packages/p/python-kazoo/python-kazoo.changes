@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:49:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.7.0:
+ **core:**
+ *  run SASL Kerberos tests as part of build
+ *  Add create2 support
+ *  closed states instead of lost states (#573)
+ **recipe:**  add support for curator SharedCount recipe (#559)
+ **core:**
+ *  allow requests to be queued in CONNECTING state (#374) (#588)
+ *  when connection fails, close the ConnectionHandler (#577) (#579)
+ **tests:**
+ *  Disable JAAS isInitiator for Server
+ *  deactivate TCP port that was enabled by default.
+ *  capitalize the default_domain value
+ *  prefix with toxinidir variable with a / to ensure path to ensure-zookeeper-env.sh is correct
+ *  specify -Dfile.encoding=UTF-8 when starting the ZK JVM
+
+-------------------------------------------------------------------
 Mon Apr  8 12:20:18 UTC 2019 - pgajdos@suse.com
 
 - version update to 2.5.1
