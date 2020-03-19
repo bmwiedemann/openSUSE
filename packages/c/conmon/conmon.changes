@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:10:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to v2.0.12
+  - oom: fix potential race between verification steps
+
+-------------------------------------------------------------------
 Thu Mar  5 08:06:24 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v2.0.11
