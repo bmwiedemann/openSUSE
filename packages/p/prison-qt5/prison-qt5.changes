@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:18:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Remove empty/unused private classes on internal types
+  * Fix pri file to not fail with CamelCase includes
+  * Fix pri file to have qmake name of QtGui as dependency
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * Prison: Convert license statements to SPDX identifiers
+
+-------------------------------------------------------------------
 Sun Feb  2 18:07:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
