@@ -253,6 +253,7 @@
     <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="keyutils" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kpartx" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="kube-prometheus-k8s-yaml" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kubectl-who-can" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubernetes_utilities -->
     <package name="kubernetes-client" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="kubernetes-kubeadm" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
