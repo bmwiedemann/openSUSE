@@ -17,9 +17,9 @@
 
 
 %define         _name Mojave-gtk-theme
-%define         _version 2020-02-20
+%define         _version 2020-03-19
 Name:           mojave-gtk-theme
-Version:        20200220
+Version:        20200319
 Release:        0
 Summary:        MacOS Mojave like theme for GTK 3, Gnome-Shell and others
 License:        GPL-3.0-only
@@ -28,6 +28,11 @@ URL:            https://github.com/vinceliuice/Mojave-gtk-theme
 Source:         https://github.com/vinceliuice/Mojave-gtk-theme/archive/%{_version}.tar.gz
 Source1:        mojave-gtk-theme-rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  inkscape
+BuildRequires:  optipng
+BuildRequires:  sassc
+# FOR glib-compile-resources
+BuildRequires:  glib2-devel
 # for gtk2 only
 Recommends:     gtk2-engine-murrine
 BuildArch:      noarch

@@ -49,4 +49,13 @@
   * Fix thunar and tilix issues</comment>
     <requestid>779052</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>69e0d2aeaf143c46104a34503773a639</srcmd5>
+    <version>20200319</version>
+    <time>1584643891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20200319:
+  * Fix gnome-shell 3.36 issues</comment>
+    <requestid>786381</requestid>
+  </revision>
 </revisionlist>
