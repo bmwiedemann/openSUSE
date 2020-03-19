@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Too many changes since 5.67.0, only listing bugfixes:
+  * Icon: fix rendering of image: urls on High DPI (kde#417647)
+  * Do not crash when icon's width or height is 0 (kde#417844)
+  * properly sync size hints with state machine (kde#417351)
+- Drop 0001-make-headerParent-correctly-alignedwhen-there-is-a-s.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 21:33:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch 0001-make-headerParent-correctly-alignedwhen-there-is-a-s.patch
