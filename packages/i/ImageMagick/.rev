@@ -2550,4 +2550,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=37594).</comment>
     <requestid>780915</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>8590408e19afe57a7aa89bcb31d6d292</srcmd5>
+    <version>7.0.10.0</version>
+    <time>1584643553</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>785503</requestid>
+  </revision>
 </revisionlist>
