@@ -43,6 +43,7 @@ Source99:       %{name}-rpmlintrc
 Patch1:         %{name}-override-libtinfo.patch
 Patch2:         %{name}-ppc64-VA-range-SUSE.patch
 Patch3:         %{name}-PN_XNUM.patch
+Patch4:         %{name}-arm64-VA-range-SUSE.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
@@ -69,9 +70,7 @@ via gdb or crash utility.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"

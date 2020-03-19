@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:45:23 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- makedumpfile-arm64-VA-range-SUSE.patch: Fix error processing core files on
+  arm64 (bsc#1142715).
+
+-------------------------------------------------------------------
 Wed Jan 29 11:51:27 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - makedumpfile-PN_XNUM.patch: Define PN_XNUM if missing.
