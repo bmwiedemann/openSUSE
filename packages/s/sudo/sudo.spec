@@ -23,7 +23,7 @@
 %endif
 
 Name:           sudo
-Version:        1.8.31
+Version:        1.8.31p1
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC

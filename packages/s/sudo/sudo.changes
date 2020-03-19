@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 17 07:46:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.31p1
+  * Sudo once again ignores a failure to restore the RLIMIT_CORE
+    resource limit, as it did prior to version 1.8.29.
+    Linux containers don't allow RLIMIT_CORE to be set back to
+    RLIM_INFINITY if we set the limit to zero, even for root,
+    which resulted in a warning from sudo.
+
+-------------------------------------------------------------------
 Thu Feb  6 19:21:23 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.8.31
