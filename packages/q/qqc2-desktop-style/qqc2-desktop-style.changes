@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:18:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * ScrollView: Use scrollbar height as bottom padding, not width
+- Drop 0001-ScrollView-Use-scrollbar-height-as-bottom-padding-no.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 21:34:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch 0001-ScrollView-Use-scrollbar-height-as-bottom-padding-no.patch
