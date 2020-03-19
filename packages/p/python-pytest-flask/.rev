@@ -16,4 +16,15 @@
   * Fix ImportError with Werkzeug 1.0.0rc1 (#105).</comment>
     <requestid>777572</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1a7ae9837049ef4cc5d3a6d2f407af63</srcmd5>
+    <version>1.0.0</version>
+    <time>1584643699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * live_server is now session-scoped by default.
+  * pytest 5.2 or later is now required.
+  * Python 2.7 and 3.4 are no longer supported.</comment>
+    <requestid>785476</requestid>
+  </revision>
 </revisionlist>

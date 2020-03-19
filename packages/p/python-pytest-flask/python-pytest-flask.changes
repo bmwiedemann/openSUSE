@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:31:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.0:
+  * live_server is now session-scoped by default.
+  * pytest 5.2 or later is now required.
+  * Python 2.7 and 3.4 are no longer supported.
+
+-------------------------------------------------------------------
 Thu Feb 20 07:18:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.15.1:

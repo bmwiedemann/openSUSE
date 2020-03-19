@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-flask
-Version:        0.15.1
+Version:        1.0.0
 Release:        0
 Summary:        A set of py.test fixtures to test Flask applications
 License:        MIT
@@ -27,14 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-flask/py
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug >= 0.7}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest >= 3.6}
+BuildRequires:  %{python_module pytest >= 5.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask
 Requires:       python-Werkzeug >= 0.7
-Requires:       python-pytest >= 3.6
+Requires:       python-pytest >= 5.2
 BuildArch:      noarch
 %python_subpackages
 
