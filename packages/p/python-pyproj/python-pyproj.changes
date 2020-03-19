@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:58:08 UTC 2020 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 2.6.0
+  * ENH: Added pyproj.proj.Proj.get_factors (issue #503)
+  * ENH: Added type hints (issue #369)
+  * BUG: Don't use CRS classes for defaults in CRS child class init
+    signatures (issue #554)
+  * ENH: Updated :pyproj.crs.CRS.axis_info to pull all relevant axis
+    information from CRS (issue #557)
+  * ENH: Added pyproj.transformer.Transform.__eq__ (issue #559)
+  * ENH: Added pyproj.crs.CRS.utm_zone (issue #561)
+  * BUG: Modify CRS dict test to accomodate numpy bool types.
+    (issue #564)
+  * BUG: Fix pipeline transformations to match cct (issue #565)
+  * BUG: Don't silently ignore kwargs when projparams are
+    specified (Proj & CRS) (issue #565)
+
+-------------------------------------------------------------------
 Mon Feb 24 15:25:55 UTC 2020 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to 2.5.0
