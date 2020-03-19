@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %define		libgps libgps%{sover}
 %define		libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
+%bcond_without python2
 Name:           gpsd
 Version:        3.19
 Release:        0
@@ -55,7 +56,9 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libusb-1.0)
+%if %{with python2}
 BuildRequires:  pkgconfig(python2)
+%endif
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
 Requires:       udev
@@ -187,13 +190,15 @@ sed -i 's|ExecStart=.*/gpsd|ExecStart=%{_sbindir}/gpsd|' python*/%{name}-%{versi
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
-
-pyversions=( python2 python3 )
-pylibdir=( %{python2_sitearch} %{python3_sitearch} )
-
-for i in 0 1
-do
-    pushd %{name}-%{version}/${pyversions[i]}/%{name}-%{version}
+pyversions=( "python3" )
+pylibdir=( "%{python3_sitearch}" )
+%if %{with python2}
+pyversions+=( "python2" )
+pylibdir+=( "%{python2_sitearch}")
+%endif
+cnt=0
+for i in "${pyversions[@]}"; do
+    pushd %{name}-%{version}/${i}/%{name}-%{version}
 
     # breaks with %{?_smp_mflags}
     scons \
@@ -213,15 +218,16 @@ do
         docdir=%{_docdir} \
         pkgconfigdir=%{_libdir}/pkgconfig \
         udevdir=$(dirname %{_udevrulesdir}) \
-        target_python=${pyversions[i]} \
-        python_libdir=${pylibdir[i]} \
+        target_python=${i} \
+        python_libdir=${pylibdir[$cnt]} \
         build
 
     # Fix python interpreter path.
-    sed -e "s,#!%{_bindir}/\(python[23]\?\|env \+python[23]\?\),#!%{_bindir}/${pyversions[i]},g" -i \
+    sed -e "s,#!%{_bindir}/\(python[23]\?\|env \+python[23]\?\),#!%{_bindir}/${i},g" -i \
         gegps gpscat gpsfake xgps xgpsspeed gpsprof ubxtool zerk gps/*.py
 
     popd
+    cnt=`expr $cnt + 1`
 done
 
 %install
@@ -230,6 +236,7 @@ export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
 # Install python2 first
+%if %{with python2}
 pushd %{name}-%{version}/python2/%{name}-%{version}
 
 DESTDIR=%{buildroot} scons nostrip=True install
@@ -238,6 +245,7 @@ DESTDIR=%{buildroot} scons nostrip=True install
 find %{buildroot} \( -not -type d -a -not -path "*/python2.*/*" \) -delete
 
 popd
+%endif
 pushd %{name}-%{version}/python3/%{name}-%{version}
 
 DESTDIR=%{buildroot} scons nostrip=True install
@@ -333,9 +341,11 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_libdir}/pkgconfig/Qgpsmm.pc
 %{_mandir}/man?/libQgps*
 
+%if %{with python2}
 %files -n python2-gpsd
 %{python_sitearch}/gps/
 %{python_sitearch}/gps-%{version}.*
+%endif
 
 %files -n python3-gpsd
 %{python3_sitearch}/gps/
