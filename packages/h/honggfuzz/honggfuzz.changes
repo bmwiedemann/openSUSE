@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 18 22:57:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix the i586 build:
+  * 0001-fix-some-m32-compilation-issues-type-casting.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 13:07:16 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1:
