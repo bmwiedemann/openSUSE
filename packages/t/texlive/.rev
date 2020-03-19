@@ -753,4 +753,12 @@
     <comment>- Switch also to user mktex in fmtutil script (boo#1159740)</comment>
     <requestid>777662</requestid>
   </revision>
+  <revision rev="64" vrev="67">
+    <srcmd5>b5504ee0874345fdd670b0dee2e377de</srcmd5>
+    <version>unknown</version>
+    <time>1584643330</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786224</requestid>
+  </revision>
 </revisionlist>
