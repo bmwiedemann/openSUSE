@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 17 03:07:15 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.15
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.15      2020-03-16 06:53:31 -0600
+    - Tests on Windows will use the system temp directory rather than
+      a temp directory under the install directory. A temp directory
+      under the install directory was used to work around typically
+      Linux systems that have noexec set on /tmp.  Since this is less
+      normal on Windows, and can cause mkpath errors if the install
+      directory is too deep we will use the windows system temp directory.
+      (gh#181, gh#182)
+
+-------------------------------------------------------------------
+Mon Mar 16 03:07:16 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.14
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.14      2020-03-15 12:49:17 -0600
+    - Added ffi_name property to Probe::Vcpkg plugin (gh#179)
+    - Documentation fixes (gh#180)
+
+-------------------------------------------------------------------
 Tue Mar 10 03:07:16 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.12
