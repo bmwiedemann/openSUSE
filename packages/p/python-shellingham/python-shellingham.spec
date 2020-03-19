@@ -1,7 +1,7 @@
 #
 # spec file for package python-shellingham
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-shellingham
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Library to detect surrounding shell
 License:        ISC
@@ -38,9 +38,17 @@ Python library to detect surrounding shell.
 
 %prep
 %setup -q -n shellingham-%{version}
-rm -r tasks
 
 %build
+if [ -f setup.py ]; then
+  echo 'remove setup.py creation in %%build'
+  exit 1
+fi
+# https://github.com/sarugaku/shellingham/blob/master/setup.py
+cat << EOF > setup.py
+from setuptools import setup
+setup()
+EOF
 %python_build
 
 %install
@@ -48,7 +56,7 @@ rm -r tasks
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst
