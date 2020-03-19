@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 10.0.2
+%define version_unconverted 10.0.3
 
 Name:           kopano
-Version:        10.0.2
+Version:        10.0.3
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only

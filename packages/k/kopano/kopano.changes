@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:28:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.3
+  * server: new config directive request_log_method and
+    request_log_file.
+  * server: The log_level=0x100000 bit (SOAP) no longer has a
+    meaning; use the request_log_file mechanism instead.
+
+-------------------------------------------------------------------
 Wed Mar 11 13:29:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.2
