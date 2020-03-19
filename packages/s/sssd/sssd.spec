@@ -32,6 +32,7 @@ Source5:        %name.keyring
 Patch1:         krb-noversion.diff
 Patch2:         sssd-gpo_host_security_filter-2.2.2.patch
 Patch3:         0001-Resolve-computer-lookup-failure-when-sam-cn.patch
+Patch4:         0001-AD-use-getaddrinfo-with-AI_CANONNAME-to-find-the-FQD.patch
 BuildRoot:      %_tmppath/%name-%version-build
 
 %define servicename	sssd

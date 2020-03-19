@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 16:44:23 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix dynamic DNS updates not using FQDN (bsc#1160587); Add
+  0001-AD-use-getaddrinfo-with-AI_CANONNAME-to-find-the-FQD.patch
+
+-------------------------------------------------------------------
 Sun Jan 19 23:54:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove leftover python2 build dependencies
