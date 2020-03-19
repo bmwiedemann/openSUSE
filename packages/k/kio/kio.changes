@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Too many changes since 5.67.0, only listing bugfixes:
+  * [KFileFilterCombo] Don't add invalid QMimeType to mimes filter (kde#417355)
+  * Fix running konsole on Wayland (kde#408497)
+  * KIO::iconNameForUrl: fix searching for kde protocol icons (kde#417922)
+  * Change "AutoSkip" to "Skip All" (kde#416964)
+  * [KOpenWithDialog] Automatically select the result if the model filter has only one match (kde#400725)
+
+-------------------------------------------------------------------
 Sun Feb  2 18:07:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
