@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:01:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce bit to match up the packaging standards
+- Trim long descriptions
+- Use pkgconfig to state dependencies
+
+-------------------------------------------------------------------
 Thu Nov 23 13:38:26 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 
