@@ -16,6 +16,8 @@
 #
 
 
+%define moonjit_version %(rpm -q --qf '%%{VERSION}' moonjit)
+%define moonjit_shortver %(cut -d . -f 1 <<< %{moonjit_version}).%(cut -d . -f 2 <<< %{moonjit_version})
 %define src_install_dir /usr/src/%{name}
 
 Name:           envoy-proxy
@@ -185,7 +187,7 @@ sed -i \
     envoy/bazel/repositories.bzl
 
 # Bump the version of luajit.
-sed -i "s|luajit-2.1|luajit-5_1-2.1|g" envoy/source/extensions/filters/common/lua/lua.h
+sed -i "s|luajit-2.1|moonjit-%{moonjit_shortver}|g" envoy/source/extensions/filters/common/lua/lua.h
 
 # Fix includes of sqlparser headers.
 find . -type f "(" -name "*.cc" -o -name "*.h" ")" -exec sed -i -e "s|include/sqlparser|sqlparser|" {} +

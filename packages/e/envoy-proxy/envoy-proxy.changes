@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 16:49:33 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fix the include dir of moonjit.
+
+-------------------------------------------------------------------
 Mon Mar  9 11:05:17 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Add bazel-rules-python as a build requirement.
