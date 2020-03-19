@@ -451,4 +451,12 @@
   * resize: add spline64 filter</comment>
     <requestid>780942</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>59f24369265b2b745a57c1c9502b601f</srcmd5>
+    <version>2.9.3</version>
+    <time>1584643672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786109</requestid>
+  </revision>
 </revisionlist>

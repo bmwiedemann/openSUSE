@@ -27,6 +27,8 @@ URL:            https://github.com/sekrit-twc/zimg
 Source0:        zimg-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         update-matrix3.cpp.patch
+Patch1:         colorspace-fix-assertion.patch
+Patch2:         colorspace-fix-assertion-part2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -57,6 +59,8 @@ developing applications that use libzimg%{sover}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -fiv

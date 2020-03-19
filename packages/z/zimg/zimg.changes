@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 18 08:15:32 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add colorspace-fix-assertion-part2.patch in order to address
+  gh#sekrit-twc/zimg#123.
+
+-------------------------------------------------------------------
+Tue Mar 17 07:58:45 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add colorspace-fix-assertion.patch in order to fix
+  build with GCC10. See gh#sekrit-twc/zimg#122.
+
+-------------------------------------------------------------------
 Mon Mar  2 12:32:52 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 2.9.3:
