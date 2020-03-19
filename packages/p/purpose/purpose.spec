@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.67
+%define _tar_path 5.68
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           purpose
-Version:        5.67.0
+Version:        5.68.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -137,7 +137,6 @@ This package contains development files needed to build applications which rely 
   %find_lang purpose_phabricator %{name}.lang
   %find_lang purpose_reviewboard %{name}.lang
   %find_lang purpose_saveas %{name}.lang
-  %find_lang purpose_twitter %{name}.lang
   %find_lang purpose_youtube %{name}.lang
 %endif
 
@@ -165,7 +164,6 @@ This package contains development files needed to build applications which rely 
 %{_kf5_libdir}/libReviewboardHelpers.so.*
 %{_kf5_libexecdir}/
 %{_kf5_sharedir}/purpose/
-%{_kf5_sharedir}/kpackage/
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_iconsdir}/hicolor/*/actions/kipiplugin_youtube.*
