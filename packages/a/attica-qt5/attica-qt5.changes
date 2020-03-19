@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Make it compile against qt5.15. They reverted change error() to socketError
+  * Attica: Convert license statements to SPDX markers
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * Add a default provider (as per documentation)
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
