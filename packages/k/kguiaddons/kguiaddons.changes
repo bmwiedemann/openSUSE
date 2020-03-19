@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * [UrlHandler] Handle opening the online docs for KCM modules
+  * KGuiAddons: Convert license headers to SPDX statements
+  * [KColorUtils] Change getHcy() hue range to [0.0, 1.0)
+  * [KColorUtils] Add hue(), chroma(), hcyColor() and update documentation
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
