@@ -1,7 +1,7 @@
 #
 # spec file for package python-rethinkdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rethinkdb
-Version:        2.4.3.post1
+Version:        2.4.5
 Release:        0
 Summary:        Python driver library for the RethinkDB database server
 License:        Apache-2.0
