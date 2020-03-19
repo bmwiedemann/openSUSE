@@ -18,10 +18,10 @@
 
 
 # Kopano OBS: And if you add new %%package(s), update core:*:dist too
-%define version_unconverted 10.0.2
+%define version_unconverted 10.0.3
 
 Name:           kopano-python-services
-Version:        10.0.2
+Version:        10.0.3
 Release:        0
 Summary:        Python services for Kopano Groupware Core
 License:        AGPL-3.0-only
