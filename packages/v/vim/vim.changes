@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 15 20:19:21 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- apparmor.vim: fix typo in setfcap capability (taken from AppArmor 2.13.4)
+
+-------------------------------------------------------------------
 Tue Mar  3 12:29:31 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.0348, fixes the following problems

@@ -4426,4 +4426,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Some code in ex_getln.c not covered by tests.</comment>
     <requestid>781204</requestid>
   </revision>
+  <revision rev="254" vrev="2">
+    <srcmd5>032e58a85d105aa571c7b3320eb703f3</srcmd5>
+    <version>8.2.0348</version>
+    <time>1584643492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785458</requestid>
+  </revision>
 </revisionlist>
