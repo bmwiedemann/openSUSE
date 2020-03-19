@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * KHolidays: Convert license statements to SPDX expressions
+  * Update Japanese holidays
+  * holiday_jp_ja - fix spelling for National Foundation Day (kde#417498)
+  * Fix compile: no target named KF5KHolidays
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
