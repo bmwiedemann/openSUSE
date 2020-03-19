@@ -51,7 +51,7 @@ Index: icu/source/tools/toolutil/writesrc.cpp
  #include <time.h>
  #include "unicode/utypes.h"
  #include "unicode/putil.h"
-@@ -64,8 +66,8 @@ usrc_createWithHeader(const char *path,
+@@ -65,8 +67,8 @@ usrc_createWithHeader(const char *path,
      } else {
          fprintf(
              stderr,

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 15 17:52:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop icu-versioning.diff, icu-susevers.diff [boo#1159131]
+
+-------------------------------------------------------------------
+Sun Mar 15 17:17:11 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 66.1
+  * Unicode 13 support
+  * Fix uses of u8"literals" broken by C++20 introduction of
+    incompatible char8_t type. (ICU-20972)
+
+-------------------------------------------------------------------
 Tue Feb 25 10:29:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add locale.diff [boo#1162882]

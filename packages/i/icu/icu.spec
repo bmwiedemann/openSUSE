@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu-suse65_1
-%define amajor   65
-%define aversion 65_1
+%define lname	libicu66
+%define amajor   66
+%define aversion 66
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,7 +26,7 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        65.1
+Version:        66.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
@@ -34,14 +34,12 @@ Group:          Development/Libraries/C and C++
 URL:            http://icu-project.org/
 
 #Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-docs.zip.asc
 Source5:        %name.keyring
 Source100:      baselibs.conf
-Patch2:         icu-versioning.diff
-Patch3:         icu-susevers.diff
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
@@ -60,7 +58,7 @@ sensitive collation, date and time formatting, support for many locales,
 message catalogs and resources, message formatting, normalization, number and
 currency formatting, time zone support, transliteration, and word, line, and
 sentence breaking.
-
+/
 This subpackage contains the runtime programs for interacting with ICU.
 
 %package -n %lname

@@ -580,4 +580,13 @@ Jan added the patch name of all changed patches.</comment>
     <comment>- Add locale.diff [boo#1162882]</comment>
     <requestid>779018</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>ae73d76e37d9d1c069e4724458eb2ba7</srcmd5>
+    <version>66.1</version>
+    <time>1584643474</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop icu-versioning.diff, icu-susevers.diff [boo#1159131]
+- Update to version 66.1</comment>
+    <requestid>785383</requestid>
+  </revision>
 </revisionlist>
