@@ -28,13 +28,15 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        minitube.1
 # PATCH-FIX-OPENSUSE minitube-no-update-check.patch sur5r@sur5r.net -- Disable update check.
 Patch0:         %{name}-no-update-check.patch
+# PATCH-FIX-UPSTREAM minitube-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch
+Patch1:         %{name}-fix-for-upstream-missing-qthelper.hpp-in-newer-mpv-version.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.10
+BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Script)
@@ -58,6 +60,7 @@ it strives to create a new TV-like experience.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
@@ -73,6 +76,10 @@ make %{?_smp_mflags} V=1
 %qmake5_install
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 %suse_update_desktop_file -r %{name} AudioVideo Video Player
+# symlink for german translation file de_DE -> de
+pushd %{buildroot}%{_datadir}/%{name}/locale
+%{__ln_s} de_DE.qm de.qm
+popd
 %fdupes %{buildroot}%{_datadir}/
 
 %files
