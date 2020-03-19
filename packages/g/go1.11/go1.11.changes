@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:50:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- %arm requires binutils-gold to build with go1.4
+
+-------------------------------------------------------------------
 Thu Nov 28 12:37:35 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Make use of gcc9-go for Tumbleweed since gcc8 has been dropped
