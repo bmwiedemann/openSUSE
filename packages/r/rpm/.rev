@@ -2146,4 +2146,12 @@ Note that this will require adding `Preinstall: libzstd1` to the `openSUSE:Facto
     <comment>- update to rpm-4.15.1</comment>
     <requestid>755878</requestid>
   </revision>
+  <revision rev="277" vrev="2">
+    <srcmd5>c0d13fdbad36ccbed7219fbb541a46d5</srcmd5>
+    <version>4.15.1</version>
+    <time>1584643205</time>
+    <user>dimstar_suse</user>
+    <comment>Use libgcrypt as crypto library, switch to ndb database</comment>
+    <requestid>769573</requestid>
+  </revision>
 </revisionlist>

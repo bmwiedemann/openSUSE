@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %{?!_fillupdir:%define _fillupdir /var/adm/fillup-templates}
 
 %global librpmsover 9
+%global without_bdb 1
 
 Name:           rpm
 BuildRequires:  binutils
@@ -35,6 +36,7 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
+BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
@@ -66,14 +68,11 @@ Source1:        RPM-HOWTO.tar.bz2
 Source5:        rpmsort
 Source8:        rpmconfigcheck
 Source9:        sysconfig.services-rpm
-Source10:       beecrypt-4.1.2.tar.bz2
 Source11:       db-4.8.30.tar.bz2
 Source12:       baselibs.conf
 Source13:       rpmconfigcheck.service
-Patch1:         beecrypt-4.1.2.diff
 Patch2:         db.diff
 Patch3:         rpm-4.12.0.1-fix-bashisms.patch
-Patch4:         beecrypt-4.1.2-build.diff
 Patch5:         usr-lib-sysimage-rpm.patch
 # quilt patches start here
 Patch11:        debugedit.diff
@@ -127,6 +126,11 @@ Patch102:       emptymanifest.diff
 Patch103:       find-lang-qt-qm.patch
 Patch109:       pythondistdeps.diff
 Patch117:       findsupplements.diff
+Patch118:       db_ops_name.diff
+Patch119:       bdb_ro.diff
+Patch120:       disable_bdb.diff
+Patch121:       ndb_backport.diff
+Patch122:       db_conversion.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -212,19 +216,17 @@ and requires some packages that are usually required.
 %prep
 %setup -q -n rpm-%{version}
 rm -rf sqlite
-rm -rf beecrypt
-tar xjf %{SOURCE10}
+%if 0%{?!without_bdb:1}
 tar xjf %{SOURCE11}
 ln -s db-4.8.30 db
 cd db
 %patch2 -p1
 cd ..
-ln -s beecrypt-4.1.2 beecrypt
 chmod -R u+w db/*
 rm -f rpmdb/db.h
-%patch -P 1
+cp config.guess config.sub db/dist/
+%endif
 %patch3 -p1
-%patch -P 4
 %patch5 -p1
 %patch       -P 11 -P 12 -P 13       -P 15 -P 16       -P 18
 %patch -P 20 -P 21             -P 24 -P 25 -P 26 -P 27       -P 29
@@ -237,13 +239,12 @@ rm -f rpmdb/db.h
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103                            
 %patch -P 109                                           -P 117
+%patch -P 118 -P 119 -P 120 -P 121 -P 122
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
 %endif
 
-cp config.guess config.sub db/dist/
-cp config.guess config.sub beecrypt/
 tar -xjvf %{SOURCE1}
 rm -f m4/libtool.m4
 rm -f m4/lt*.m4
@@ -261,13 +262,6 @@ BUILDTARGET="--build=%{_target_cpu}-suse-linux-gnueabi"
 BUILDTARGET="--build=%{_target_cpu}-suse-linux"
 %endif
 
-#cp -p /usr/share/gettext/config.rpath .
-cp autogen.sh beecrypt
-pushd beecrypt
-./autogen.sh --disable-dependency-tracking --with-pic --without-python $BUILDTARGET
-make %{?_smp_mflags}
-popd
-
 autoreconf -fi
 ./configure --disable-dependency-tracking --prefix=%{_prefix} --mandir=%{_mandir} --infodir=%{_infodir} \
 --libdir=%{_libdir} --sysconfdir=/etc --localstatedir=/var --sharedstatedir=/var/lib \
@@ -276,11 +270,16 @@ autoreconf -fi
 --with-rundir=/run \
 --without-archive \
 --with-selinux \
---with-internal-beecrypt \
+--with-crypto=libgcrypt \
 --with-acl \
 --with-cap \
+--enable-shared \
+--enable-ndb \
+--enable-bdb-ro \
 --enable-zstd \
---enable-shared %{?with_python: --enable-python} $BUILDTARGET
+%{?without_bdb: --enable-bdb=no} \
+%{?with_python: --enable-python} \
+$BUILDTARGET
 
 rm po/de.gmo
 make %{?_smp_mflags}
@@ -292,7 +291,9 @@ ln -s ../share/locale %{buildroot}/usr/lib/locale
 %make_install
 mkdir -p %{buildroot}/bin
 ln -s /usr/bin/rpm %{buildroot}/bin/rpm
+%if 0%{?!without_bdb:1}
 install -m 644 db3/db.h %{buildroot}/usr/include/rpm
+%endif
 # remove .la file and the static variant of libpopt
 # have to remove the dependency from other .la files as well
 for f in %{buildroot}/%{_libdir}/*.la; do
@@ -362,17 +363,24 @@ sh %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
 # so we need to enforce the platform here.
 echo -n "%{_target_cpu}-suse-linux-gnueabi" > %{buildroot}/etc/rpm/platform
 %endif
+%if 0%{?without_bdb:1}
+# make ndb the default database backend
+echo "setting the default database backend to 'ndb'"
+sed -i -e '/_db_backend/s/bdb/ndb/' %{buildroot}/usr/lib/rpm/macros
+%endif
 
 %post
 %{fillup_only -an services}
 
 # var/lib/rpm migration: set forwards compatible symlink for /usr/lib/sysimage/rpm so scriptlets in same transaction will still work
-if test ! -L var/lib/rpm -a -f var/lib/rpm/Packages -a ! -f usr/lib/sysimage/rpm/Packages ; then
-  rmdir usr/lib/sysimage/rpm
-  ln -s ../../../var/lib/rpm usr/lib/sysimage/rpm
+if test ! -L var/lib/rpm -a ! -f usr/lib/sysimage/rpm/Packages -a ! -f usr/lib/sysimage/rpm/Packages.db ; then
+  if test -f var/lib/rpm/Packages -o -f var/lib/rpm/Packages.db ; then
+    rmdir usr/lib/sysimage/rpm
+    ln -s ../../../var/lib/rpm usr/lib/sysimage/rpm
+  fi
 fi
 
-test -f usr/lib/sysimage/rpm/Packages || rpmdb --initdb
+test -f usr/lib/sysimage/rpm/Packages -o -f usr/lib/sysimage/rpm/Packages.db || rpmdb --initdb
 test -e var/lib/rpm || ln -s ../../usr/lib/sysimage/rpm var/lib/rpm
 
 %posttrans
@@ -381,7 +389,7 @@ if test ! -L var/lib/rpm ; then
   # delete no longer maintained databases
   rm -f var/lib/rpm/Filemd5s var/lib/rpm/Filedigests var/lib/rpm/Requireversion var/lib/rpm/Provideversion
 
-  if test -f var/lib/rpm/Packages ; then
+  if test -f var/lib/rpm/Packages -o -f var/lib/rpm/Packages.db ; then
     echo "migrating rpmdb from /var/lib/rpm to /usr/lib/sysimage/rpm..."
 
     # remove forwards compatible symlink

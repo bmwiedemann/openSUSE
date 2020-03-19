@@ -50,9 +50,9 @@
 +
 +.SH AUTHOR
 +Michael Schroeder <mls@suse.de>
---- ./rpmqpack.c.orig	2017-12-01 15:04:13.398003904 +0000
-+++ ./rpmqpack.c	2017-12-01 15:04:13.398003904 +0000
-@@ -0,0 +1,59 @@
+--- ./rpmqpack.c.orig	2019-12-06 10:14:03.989178873 +0000
++++ ./rpmqpack.c	2019-12-06 10:32:16.430275015 +0000
+@@ -0,0 +1,60 @@
 +#include <sys/types.h>
 +#include <limits.h>
 +#include <fcntl.h>
@@ -60,55 +60,56 @@
 +#include <stdlib.h>
 +#include <string.h>
 +
-+#include <db.h>
-+
-+DBT key;
-+DBT data;
++#include <rpm/rpmts.h>
++#include <rpm/rpmdb.h>
++#include <rpm/rpmmacro.h>
 +
 +int
 +main(int argc, char **argv)
 +{
-+  DB *db = 0;
-+  DBC *dbc = 0;
 +  int ret = 0;
++  rpmts ts;
 +
-+  if (db_create(&db, 0, 0))
++  rpmDefineMacro(NULL, "_dbpath /var/lib/rpm", 0);
++  ts = rpmtsCreate();
++  if (!ts)
 +    {
-+      perror("db_create");
++      fprintf(stderr, "rpmtsCreate failed\n");
 +      exit(1);
 +    }
-+  if (db->open(db, 0, "/var/lib/rpm/Name", 0, DB_UNKNOWN, DB_RDONLY, 0664))
++  if (rpmtsOpenDB(ts, O_RDONLY))
 +    {
-+      perror("db->open");
++      perror("rpmtsOpenDB");
 +      exit(1);
 +    }
-+  if (argc == 1)
++  if (argc <= 1)
 +    {
-+      if (db->cursor(db, NULL, &dbc, 0))
++      rpmdbIndexIterator ii;
++      ii = rpmdbIndexIteratorInit(rpmtsGetRdb(ts), RPMDBI_NAME);
++      if (ii)
 +	{
-+	  perror("db->cursor");
-+	  exit(1);
++	  const void *key = 0;
++          size_t keylen = 0;
++	  while ((rpmdbIndexIteratorNext(ii, &key, &keylen)) == 0)
++	    printf("%*.*s\n", (int)keylen, (int)keylen, (char *)key);
 +	}
-+      while (dbc->c_get(dbc, &key, &data, DB_NEXT) == 0)
-+	printf("%*.*s\n", (int)key.size, (int)key.size, (char *)key.data);
-+      dbc->c_close(dbc);
++      rpmdbIndexIteratorFree(ii);
 +    }
 +  else
 +    {
 +      argc--;
 +      while (argc--)
 +	{
++          rpmdbMatchIterator mi;
 +	  argv++;
-+	  key.data = (void *)*argv;
-+	  key.size = strlen(*argv);
-+	  data.data = NULL;
-+	  data.size = 0;
-+	  if (db->get(db, 0, &key, &data, 0) == 0)
++          mi = rpmdbInitIterator(rpmtsGetRdb(ts), RPMDBI_NAME, (void *)*argv, strlen(*argv));
++	  if (mi && rpmdbGetIteratorCount(mi))
 +	    printf("%s\n", *argv);
-+	  else
++          else
 +	    ret = 1;
-+	}
++	  rpmdbFreeIterator(mi);
++        }
 +    }
-+  db->close(db, 0);
++  rpmtsFree(ts);
 +  return ret;
 +}

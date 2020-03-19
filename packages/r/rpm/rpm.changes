@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 17 11:27:17 CET 2020 - mls@suse.de
+
+- Use libgcrypt as crypto library instead of beecrypt
+  * dropped patch: beecrypt-4.1.2-build.diff
+  * dropped patch: beecrypt-4.1.2.diff
+- Rewrite rpmqpack to use rpm's database interface
+  modified patch: rpmqpack.diff
+- Backport database detection code from upstream
+  new patch: db_ops_name.diff
+- Backport read-only BerkeleyDB code
+  new patch: bdb_ro.diff
+- Enable ndb backend
+- Backport bdb disabling fix
+  new patch: disable_bdb.diff
+- Backport ndb improvements
+  new patch: ndb_backport.diff
+- Backport automatic db conversion
+  new patch: db_conversion.diff
+- Disable the BerkeleyDB backend and switch over to 'ndb'
+
+-------------------------------------------------------------------
 Fri Dec  6 15:30:48 CET 2019 - mls@suse.de
 
 - disable pythondist requires generator for now

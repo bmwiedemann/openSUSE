@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,7 @@ BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libelf-devel
+BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
