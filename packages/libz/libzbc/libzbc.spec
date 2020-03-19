@@ -26,6 +26,7 @@ Group:          Hardware/Other
 URL:            https://github.com/hgst/libzbc
 
 Source:         https://github.com/hgst/libzbc/archive/v%version.tar.gz
+Patch1:         0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
@@ -84,7 +85,7 @@ autoreconf -fi
 mkdir obj
 pushd obj/
 %define _configure ../configure
-%configure --disable-static --includedir="%_includedir/%name"
+%configure --disable-static --includedir="%_includedir/%name" CFLAGS="%optflags -fno-common"
 make %{?_smp_mflags}
 popd
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 07:20:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch
+  [boo#1166503]
+
+-------------------------------------------------------------------
 Mon Mar  9 12:49:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.8.5

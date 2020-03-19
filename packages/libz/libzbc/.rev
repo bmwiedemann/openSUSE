@@ -119,4 +119,12 @@
     <comment>- Update to release 5.8.5</comment>
     <requestid>782983</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f8fa8bd930e75eb3288e3e323dc6cf4c</srcmd5>
+    <version>5.8.5</version>
+    <time>1584643499</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-avoid-double-definition-of-zbc_log_drv-etc.patch [boo#1166503]</comment>
+    <requestid>785464</requestid>
+  </revision>
 </revisionlist>
