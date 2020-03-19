@@ -1,6 +1,7 @@
 #
 # spec file for package python-redfish
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redfish
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/DMTF/python-redfish-library
 Source:         https://github.com/DMTF/python-redfish-library/archive/%{version}.tar.gz#/redfish-%{version}.tar.gz
-Patch0:         0001-remove-urlparse2-dependncy.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +49,6 @@ the Engine of Application State) Redfish architecture.
 
 %prep
 %setup -q -n %{name}-library-%{version}
-%patch0 -p1
 
 %build
 %python_build
