@@ -74,6 +74,8 @@ Patch302:       hp_ipp.h-add-missing-prototypes.patch
 Patch303:       photocard-fix-import-error-for-pcardext.patch
 # bsc#1159240, lp#1859179
 Patch304:       hp-sendfax-avoid-crash-if-python-reportlab-is-missin.patch
+# bsc#1166623, hp-toolbox crashes without python3-distro module
+Patch305:       Use-lsb_release-fallback-code-if-import-distro-fails.patch
 # PATCH-FIX-SUSE: Remove references to the closed-source ImageProcessor
 Patch400:       hplip-remove-imageprocessor.diff
 # Let a function return NULL instead of nothing
@@ -313,6 +315,7 @@ This sub-package is only required by developers.
 %patch302 -p1 -b .hp_ipp_missing_prototypes
 %patch303 -p1 -b .photocard_import
 %patch304 -p1
+%patch305 -p1
 %patch400 -p1
 %patch401 -p1
 %patch402 -p1
