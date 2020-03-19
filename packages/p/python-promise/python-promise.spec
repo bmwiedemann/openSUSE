@@ -1,7 +1,7 @@
 #
 # spec file for package python-promise
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,28 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
+%bcond_without python3
 Name:           python-promise
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Promises/A+ implementation for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/syrusakbary/promise
-Source:         https://files.pythonhosted.org/packages/source/p/promise/promise-%{version}.tar.gz
+Source:         https://github.com/syrusakbary/promise/archive/v%{version}.tar.gz#/promise-%{version}.tar.gz
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+%if %{with python2}
+BuildRequires:  python2-futures
+BuildRequires:  python2-typing
+%endif
+%if %{with python3}
+BuildRequires:  python3-pytest-asyncio
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
@@ -47,6 +59,9 @@ This is an implementation of Promises in Python
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
