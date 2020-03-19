@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           nss_wrapper
-Version:        1.1.8
+Version:        1.1.10
 Release:        0
 
 Summary:        A wrapper for the user, group and hosts NSS API

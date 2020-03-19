@@ -96,4 +96,17 @@
 </comment>
     <requestid>774824</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1b13545100a2716073d2e36de9bdbfdc</srcmd5>
+    <version>1.1.10</version>
+    <time>1584643677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.10
+  * Fixed crash bug in OpenLDAP libraries with gethostbyname_r()
+  * Code cleanup in gethostbyname(2)(_r) functions
+- Update to version 1.1.9
+  * Fixed log spam when loading modules
+</comment>
+    <requestid>786394</requestid>
+  </revision>
 </revisionlist>
