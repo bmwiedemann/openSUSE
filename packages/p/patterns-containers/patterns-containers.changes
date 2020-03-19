@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:20:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add kube-prometheus-k8s-yaml to kubeadm pattern
+
+-------------------------------------------------------------------
 Mon Mar  2 15:39:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add nfs-client-provisioner-k8s-yaml to kubeadm pattern

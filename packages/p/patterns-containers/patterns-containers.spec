@@ -52,6 +52,7 @@ Requires:       flannel-k8s-yaml
 Requires:       health-checker-plugins-kubic
 Requires:       hello-kubic-k8s-yaml
 Requires:       helm
+Requires:       kube-prometheus-k8s-yaml
 Requires:       kubernetes-client
 Requires:       kubernetes-kubeadm
 Requires:       kubernetes-kubeadm-criconfig

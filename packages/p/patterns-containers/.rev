@@ -161,4 +161,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>783011</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>a6872bf40eaa3b30c912c163f1817556</srcmd5>
+    <version>5.0</version>
+    <time>1584643568</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kube-prometheus-k8s-yaml to kubeadm pattern</comment>
+    <requestid>785535</requestid>
+  </revision>
 </revisionlist>
