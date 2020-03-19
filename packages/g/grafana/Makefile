@@ -8,7 +8,7 @@ verify-deps:
 	@which grunt >/dev/null 2>&1 || ( echo "grunt not found; run \`sudo npm install -g grunt-cli\`" && false )
 
 clean:
-	rm -f $(NAME)-*.tar $(NAME)-*.tar.xz
+	rm -f $(NAME)-*.tar $(NAME)-*.tar.gz
 
 tar:
 	osc service disabledrun
@@ -18,6 +18,7 @@ tar:
 	tar=$$basename.tar && \
 	tmpdir=$$(mktemp -d -p .) && \
 	cd $$tmpdir && \
+        gunzip ../$$tar.gz && \
 	tar -xf ../$$tar && \
 	cd $$basename && \
 	# exclude the phantomjs-prebuilt binary module from the webpack \
@@ -32,8 +33,6 @@ tar:
 	cd .. && \
 	echo "Updating $$basename/tools $$basename/public in tarball..." && \
 	tar -rf ../$$tar $$basename/tools $$basename/public && \
-	# remove go.mod and go.sum as we build exclusively using vendor deps \
-	tar -f ../$$tar --delete $$basename/go.mod $$basename/go.sum && \
 	cd .. && \
-	xz $$tar && \
+	gzip $$tar && \
 	rm -rf $$tmpdir

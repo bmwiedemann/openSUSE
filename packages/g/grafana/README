@@ -17,7 +17,9 @@ we have a Makefile which does the following:
 In order for this to work you need to have npm >= 6, < 12, yarn and
 grunt installed.  To get set up, run:
 
-  # zypper in npm10
+  # zypper in npm12
+  # zypper in obs-service-download_files obs-service-go_modules \
+        obs-service-obs_scm
   # npm install -g yarn
   # npm install -g grunt-cli
 

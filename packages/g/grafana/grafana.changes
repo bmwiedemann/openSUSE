@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Mar 06 06:20:34 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.6.2:
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Fri Mar 06 06:15:10 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.6.1:
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Thu Mar 05 21:21:34 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.6.0:
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Thu Mar 05 21:08:39 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.5.3:
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Thu Mar 05 20:59:13 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.5.2:
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Thu Mar 05 20:54:08 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.5.1:
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Thu Mar 05 20:38:10 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.5.0
+  (see installed changelog for the full list of changes)
+
+-------------------------------------------------------------------
+Thu Mar 05 20:29:16 UTC 2020 - kastl@b1-systems.de
+
+- Update to version 6.4.5:
+  * Create version 6.4.5
+  * CloudWatch: Fix high CPU load (#20579)
+
+-------------------------------------------------------------------
+Thu Mar 05 20:22:10 UTC 2020 - kastl@b1-systems.de
+
+- add obs-service-go_modules to download required modules into vendor.tar.gz
+- adjusted spec file to use vendor.tar.gz
+- adjusted Makefile to work with new filenames
+- BuildRequire go1.14
+- Update to version 6.4.4:
+  * DataLinks: Fix blur issues. #19883, @aocenas
+  * Docker: Makes it possible to parse timezones in the docker image. #20081, @xlson
+  * LDAP: All LDAP servers should be tried even if one of them returns a connection error. #20077, @jongyllen
+  * LDAP: No longer shows incorrectly matching groups based on role in debug page. #20018, @xlson
+  * Singlestat: Fix no data / null value mapping . #19951, @ryantxu
+
+-------------------------------------------------------------------
 Tue Dec 03 15:09:41 UTC 2019 - witold.bedyk@suse.com
 
 - Revert the spec file and make script

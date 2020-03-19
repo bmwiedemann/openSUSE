@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,23 +26,24 @@
 %endif
 
 Name:           grafana
-Version:        6.4.3
+Version:        6.6.2
 Release:        0
 Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            http://grafana.org/
-Source:         %{name}-%{version}.tar.xz
-Source1:        %{name}-rpmlintrc
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        %{name}-rpmlintrc
 # Instructions on the build process
-Source2:        README
+Source3:        README
 # Makefile to automate build process
-Source3:        Makefile
+Source4:        Makefile
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.11
+BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
-Requires(post): %insserv_prereq
+BuildRequires:  ( go >= 1.14 with go < 1.15 )
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -54,6 +55,7 @@ dashboards and data with teams.
 
 %prep
 %setup -q -n grafana-%{version}
+%setup -q -T -D -a 1 -n grafana-%{version}
 
 %build
 %goprep github.com/grafana/grafana
@@ -64,7 +66,7 @@ dashboards and data with teams.
 # (The %%gobuild macro can't take quoted strings; they get split up when
 # expanded to $extra_flags in process_build() in /usr/lib/rpm/golang.sh.)
 export IMPORTPATH="github.com/grafana/grafana"
-export BUILDFLAGS="-v -p 4 -x -buildmode=pie"
+export BUILDFLAGS="-v -p 4 -x -buildmode=pie -mod=vendor"
 export GOPATH=%{_builddir}/go:%{_builddir}/contrib
 export GOBIN=%{_builddir}/go/bin
 go install $BUILDFLAGS -ldflags '-X main.version=%{version}' $IMPORTPATH/pkg/cmd/...
