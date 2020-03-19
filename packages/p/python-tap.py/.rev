@@ -17,4 +17,12 @@
   * Fix to work with new releases of more-itertools</comment>
     <requestid>731649</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>930c75409ecbeeb82a18bd2867dc29d5</srcmd5>
+    <version>3.0</version>
+    <time>1584643757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786183</requestid>
+  </revision>
 </revisionlist>
