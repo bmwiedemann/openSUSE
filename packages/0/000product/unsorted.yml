@@ -2571,11 +2571,12 @@ unsorted:
   - eclipse-contributor-tools 
   - eclipse-contributor-tools-bootstrap 
   - eclipse-ecf-core 
+  - eclipse-ecf-core-bootstrap 
   - eclipse-ecf-runtime 
   - eclipse-ecf-sdk 
   - eclipse-egit 
   - eclipse-emf-core 
-  - eclipse-emf-core-sdk 
+  - eclipse-emf-core-bootstrap 
   - eclipse-emf-runtime 
   - eclipse-emf-sdk 
   - eclipse-emf-xsd 
@@ -3260,7 +3261,6 @@ unsorted:
   - frink 
   - fritzing 
   - fritzing-parts 
-  - froxlor 
   - frozen-bubble 
   - frozen-bubble-lang 
   - frozen-bubble-server 
@@ -8641,6 +8641,7 @@ unsorted:
   - libdav1d4-32bit: [x86_64] 
   - libdavix0 
   - libdazzle-devel 
+  - libdb-4_8-32bit: [x86_64] 
   - libdb-4_8-devel-32bit: [x86_64] 
   - libdb_java-4_8 
   - libdb_java-4_8-devel 
@@ -12005,14 +12006,17 @@ unsorted:
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service1 
   - libtelepathy-qt5-service1-32bit: [x86_64] 
+  - libtensorflow1: [x86_64] 
   - libtensorflow2: [x86_64] 
   - libtensorflow2-gnu-hpc: [x86_64] 
   - libtensorflow2-gnu-mvapich2-hpc: [x86_64] 
   - libtensorflow2-gnu-openmpi2-hpc: [x86_64] 
+  - libtensorflow_cc1: [x86_64] 
   - libtensorflow_cc2: [x86_64] 
   - libtensorflow_cc2-gnu-hpc: [x86_64] 
   - libtensorflow_cc2-gnu-mvapich2-hpc: [x86_64] 
   - libtensorflow_cc2-gnu-openmpi2-hpc: [x86_64] 
+  - libtensorflow_framework1: [x86_64] 
   - libtensorflow_framework2: [x86_64] 
   - libtensorflow_framework2-gnu-hpc: [x86_64] 
   - libtensorflow_framework2-gnu-mvapich2-hpc: [x86_64] 
@@ -12479,9 +12483,9 @@ unsorted:
   - libwsman3 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwtdbo4_2_0 
-  - libwtdbomysql4_2_0 
-  - libwtdbopostgres4_2_0 
+  - libwtdbo4_2_2 
+  - libwtdbomysql4_2_2 
+  - libwtdbopostgres4_2_2 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_baseu-suse3_0_4 
@@ -19611,7 +19615,6 @@ unsorted:
   - python2-pilkit 
   - python2-pip 
   - python2-pip-api 
-  - python2-pip-licenses 
   - python2-pip-shims 
   - python2-pipdeptree 
   - python2-pipreqs 
@@ -20155,7 +20158,6 @@ unsorted:
   - python2-social-auth-app-django 
   - python2-social-auth-core 
   - python2-socketpool 
-  - python2-softlayer 
   - python2-sortedcollections 
   - python2-sortedcontainers 
   - python2-soundcloud 
@@ -20212,7 +20214,6 @@ unsorted:
   - python2-straight-plugin 
   - python2-strict-rfc3339 
   - python2-strictyaml 
-  - python2-structlog 
   - python2-subgrab 
   - python2-subliminal 
   - python2-subprocess32: [i586] 
@@ -20325,7 +20326,6 @@ unsorted:
   - python2-unify 
   - python2-uniseg 
   - python2-unittest-mixins 
-  - python2-unittest-xml-reporting 
   - python2-unittest2 
   - python2-unpaddedbase64 
   - python2-untokenize 
@@ -20438,7 +20438,6 @@ unsorted:
   - python2-zeep 
   - python2-zetup 
   - python2-zhon 
-  - python2-zict 
   - python2-zipp 
   - python2-zipstream 
   - python2-zodbpickle 
@@ -25453,18 +25452,6 @@ unsorted:
   - template-resolver-javadoc 
   - tennebon-dynamic-wallpaper 
   - tensorflow: [x86_64] 
-  - tensorflow-avx2-gnu-hpc: [x86_64] 
-  - tensorflow-avx2-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow-avx2-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-hpc-devel: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-hpc-doc: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-mvapich2-hpc-devel: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-mvapich2-hpc-doc: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow-avx2_1_13_2-gnu-openmpi2-hpc-doc: [x86_64] 
   - tensorflow-devel: [x86_64] 
   - tensorflow-doc: [x86_64] 
   - tensorflow-gnu-hpc: [x86_64] 
@@ -25489,15 +25476,12 @@ unsorted:
   - tensorflow2_2_1_0-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2_2_1_0-gnu-openmpi2-hpc-devel: [x86_64] 
   - tensorflow2_2_1_0-gnu-openmpi2-hpc-doc: [x86_64] 
-  - tensorflow_1_13_2-gnu-hpc: [x86_64] 
-  - tensorflow_1_13_2-gnu-hpc-devel: [x86_64] 
-  - tensorflow_1_13_2-gnu-hpc-doc: [x86_64] 
-  - tensorflow_1_13_2-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow_1_13_2-gnu-mvapich2-hpc-devel: [x86_64] 
-  - tensorflow_1_13_2-gnu-mvapich2-hpc-doc: [x86_64] 
-  - tensorflow_1_13_2-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow_1_13_2-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow_1_13_2-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow_1_15_2-gnu-hpc: [x86_64] 
+  - tensorflow_1_15_2-gnu-hpc-devel: [x86_64] 
+  - tensorflow_1_15_2-gnu-mvapich2-hpc: [x86_64] 
+  - tensorflow_1_15_2-gnu-mvapich2-hpc-devel: [x86_64] 
+  - tensorflow_1_15_2-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow_1_15_2-gnu-openmpi2-hpc-devel: [x86_64] 
   - tepl-4-lang 
   - tepl-devel 
   - termcap 
@@ -33641,6 +33625,7 @@ unsorted:
   - verilator-doc-pdf 
   - verilator-examples 
   - veusz: [x86_64] 
+  - vfontas 
   - vgrep 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
