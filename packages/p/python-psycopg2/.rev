@@ -288,4 +288,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
   - Wheel package compiled against OpenSSL 1.1.1d and PostgreSQL at least 11.4.</comment>
     <requestid>780392</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7b22ece91a06b6bebac8ca294b23eb0f</srcmd5>
+    <version>2.8.4</version>
+    <time>1584643903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786407</requestid>
+  </revision>
 </revisionlist>
