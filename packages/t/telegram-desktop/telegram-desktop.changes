@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:44:28 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.9.21
+  * Mark new messages as read while scrolling down through them.
+  * Improved spellchecking on Windows 7 and Linux.
+  * Fix crash in shared links search.
+  * Fix blurred thumbnails in albums with video files.
+  * Fix a possible crash in animated stickers rendering.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
 Tue Feb 18 19:50:09 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 1.9.14
