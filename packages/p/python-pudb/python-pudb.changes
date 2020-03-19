@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:40:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2019.2
+  * Show the value of numpy scalars when using the safe stringifier
+  * Support Py3.8
+  * Bug fixes
+
+-------------------------------------------------------------------
 Wed Aug 14 18:26:11 UTC 2019 - <eyecreate@gmail.com>
 
 - Added package runtime requirements.
