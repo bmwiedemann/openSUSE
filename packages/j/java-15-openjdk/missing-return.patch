@@ -1,0 +1,30 @@
+--- jdk11/src/hotspot/os_cpu/bsd_zero/os_bsd_zero.cpp	2018-06-20 19:57:38.000000000 +0200
++++ jdk11/src/hotspot/os_cpu/bsd_zero/os_bsd_zero.cpp	2018-06-22 07:55:03.696856365 +0200
+@@ -456,6 +456,7 @@
+     long long unsigned int oldval,
+     long long unsigned int newval) {
+     ShouldNotCallThis();
++    return 0;
+   }
+ };
+ #endif // !_LP64
+--- jdk11/src/hotspot/os_cpu/linux_zero/os_linux_zero.cpp	2018-06-20 19:57:38.000000000 +0200
++++ jdk11/src/hotspot/os_cpu/linux_zero/os_linux_zero.cpp	2018-06-22 07:55:03.696856365 +0200
+@@ -500,6 +500,7 @@
+     long long unsigned int oldval,
+     long long unsigned int newval) {
+     ShouldNotCallThis();
++    return 0;
+   }
+ };
+ #endif // !_LP64
+--- jdk11/src/hotspot/cpu/zero/cppInterpreter_zero.cpp      Sun Jun 24 16:25:47 2018 +0100
++++ jdk11/src/hotspot/cpu/zero/cppInterpreter_zero.cpp      Sun Jun 24 20:53:26 2018 +0200
+@@ -102,6 +102,7 @@
+       return result;
+     default  : ShouldNotReachHere();
+   }
++  return result;
+ }
+ 
+ 
