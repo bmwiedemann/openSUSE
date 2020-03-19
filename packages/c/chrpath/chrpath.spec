@@ -1,7 +1,7 @@
 #
 # spec file for package chrpath
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,10 @@ Name:           chrpath
 Version:        0.16
 Release:        0
 Summary:        Modifies the dynamic library load path of compiled programs and libraries
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            https://alioth.debian.org/projects/chrpath/
+URL:            https://alioth.debian.org/projects/chrpath/
 Source:         https://alioth.debian.org/frs/download.php/file/3979/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Chrpath allows you to modify the dynamic library load path (rpath and
@@ -36,15 +35,15 @@ rpath is supported. It cannot extend or add an rpath.
 
 %build
 %configure
-make %{?_smp_mflags} CC="gcc %{optflags}"
+%make_build
 
 %install
-make %{?_smp_mflags} install DESTDIR=%{buildroot} doc_DATA=""
+%make_install doc_DATA=""
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS README
+%license COPYING AUTHORS
+%doc ChangeLog NEWS README
 %{_bindir}/chrpath
-%{_mandir}/man1/chrpath.1%{ext_man}
+%{_mandir}/man1/chrpath.1%{?ext_man}
 
 %changelog
