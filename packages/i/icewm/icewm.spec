@@ -74,7 +74,7 @@ Recommends:     icewm-lang = %{version}
 # For locking you need xscreensaver
 Recommends:     xscreensaver
 Recommends:     xclock
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 Recommends:     polkit-gnome
 %endif
 Provides:       icewm-gnome = %{version}
@@ -188,17 +188,15 @@ make %{?_smp_mflags} clean
   --enable-menus-fdo                 \
   --enable-i18n
 make %{?_smp_mflags}
+%if !0%{?sle_version}
 # Patch generated lib/preferences file.
 patch -p1 -i %{PATCH99}
 # And use proper branding
-%if 0%{?is_opensuse}
 wallpaper="openSUSEdefault"
-%else
-wallpaper="SLEdefault"
-%endif
 sed -i \
     -e "s:BRANDING_PICTURE:%{_datadir}/wallpapers/$wallpaper/contents/images/1920x1080.jpg:" \
     src/preferences
+%endif
 
 %install
 %make_install

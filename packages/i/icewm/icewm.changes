@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 16 03:45:48 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Improve build tag consistency between SLE and Leap.
+  * Recommend polkit-gnome to both Leap and SLE. 
+  * Disable icewm-preferences.patch for Leap. The patch makes sense
+    to icewm-config-upstream while Leap uses icewm-theme-branding
+    the provide the theme.
+
+-------------------------------------------------------------------
 Thu Mar  5 02:46:24 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - icewm-preferences.patch: Add the adwaita legacy path to the
