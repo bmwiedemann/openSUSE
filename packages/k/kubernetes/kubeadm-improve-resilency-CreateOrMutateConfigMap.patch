@@ -1,0 +1,97 @@
+From 14fe7225c1499e20d5c0734f4c9d7e250a2b476c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rafael=20Fern=C3=A1ndez=20L=C3=B3pez?=
+ <ereslibre@ereslibre.es>
+Date: Sat, 30 Nov 2019 13:19:38 +0100
+Subject: [PATCH] kubeadm: Improve resiliency in CreateOrMutateConfigMap
+
+CreateOrMutateConfigMap was not resilient when it was trying to Create
+the ConfigMap. If this operation returned an unknown error the whole
+operation would fail, because it was strict in what error it was
+expecting right afterwards: if the error returned by the Create call
+was a IsAlreadyExists error, it would work fine. However, if an
+unexpected error (such as an EOF) happened, this call would fail.
+
+We are seeing this error specially when running control plane node
+joins in an automated fashion, where things happen at a relatively
+high speed pace.
+
+It was specially easy to reproduce with kind, with several control
+plane instances. E.g.:
+
+```
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+I1130 11:43:42.788952     887 round_trippers.go:443] POST https://172.17.0.2:6443/api/v1/namespaces/kube-system/configmaps?timeout=10s  in 1013 milliseconds
+Post https://172.17.0.2:6443/api/v1/namespaces/kube-system/configmaps?timeout=10s: unexpected EOF
+unable to create ConfigMap
+k8s.io/kubernetes/cmd/kubeadm/app/util/apiclient.CreateOrMutateConfigMap
+	/go/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/cmd/kubeadm/app/util/apiclient/idempotency.go:65
+```
+
+This change makes this logic more resilient to unknown errors. It will
+retry on the light of unknown errors until some of the expected error
+happens: either `IsAlreadyExists`, in which case we will mutate the
+ConfigMap, or no error, in which case the ConfigMap has been created.
+---
+ cmd/kubeadm/app/util/apiclient/idempotency.go | 30 ++++++++++++++-----
+ 1 file changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/cmd/kubeadm/app/util/apiclient/idempotency.go b/cmd/kubeadm/app/util/apiclient/idempotency.go
+index 4ae951db3c5d0..1729611367cdb 100644
+--- a/cmd/kubeadm/app/util/apiclient/idempotency.go
++++ b/cmd/kubeadm/app/util/apiclient/idempotency.go
+@@ -45,11 +45,11 @@ type ConfigMapMutator func(*v1.ConfigMap) error
+ func CreateOrUpdateConfigMap(client clientset.Interface, cm *v1.ConfigMap) error {
+ 	if _, err := client.CoreV1().ConfigMaps(cm.ObjectMeta.Namespace).Create(cm); err != nil {
+ 		if !apierrors.IsAlreadyExists(err) {
+-			return errors.Wrap(err, "unable to create configmap")
++			return errors.Wrap(err, "unable to create ConfigMap")
+ 		}
+
+ 		if _, err := client.CoreV1().ConfigMaps(cm.ObjectMeta.Namespace).Update(cm); err != nil {
+-			return errors.Wrap(err, "unable to update configmap")
++			return errors.Wrap(err, "unable to update ConfigMap")
+ 		}
+ 	}
+ 	return nil
+@@ -60,13 +60,27 @@ func CreateOrUpdateConfigMap(client clientset.Interface, cm *v1.ConfigMap) error
+ // to conflicts, and a retry will be issued if the ConfigMap was modified on the server between the refresh and the update (while the mutation was
+ // taking place)
+ func CreateOrMutateConfigMap(client clientset.Interface, cm *v1.ConfigMap, mutator ConfigMapMutator) error {
+-	if _, err := client.CoreV1().ConfigMaps(cm.ObjectMeta.Namespace).Create(cm); err != nil {
+-		if !apierrors.IsAlreadyExists(err) {
+-			return errors.Wrap(err, "unable to create ConfigMap")
++	var lastError error
++	err := wait.ExponentialBackoff(wait.Backoff{
++		Steps:    20,
++		Duration: 500 * time.Millisecond,
++		Factor:   1.0,
++		Jitter:   0.1,
++	}, func() (bool, error) {
++		if _, err := client.CoreV1().ConfigMaps(cm.ObjectMeta.Namespace).Create(cm); err != nil {
++			lastError = err
++			if apierrors.IsAlreadyExists(err) {
++				lastError = MutateConfigMap(client, metav1.ObjectMeta{Namespace: cm.ObjectMeta.Namespace, Name: cm.ObjectMeta.Name}, mutator)
++				return lastError == nil, nil
++			}
++			return false, nil
+ 		}
+-		return MutateConfigMap(client, metav1.ObjectMeta{Namespace: cm.ObjectMeta.Namespace, Name: cm.ObjectMeta.Name}, mutator)
++		return true, nil
++	})
++	if err == nil {
++		return nil
+ 	}
+-	return nil
++	return lastError
+ }
+
+ // MutateConfigMap takes a ConfigMap Object Meta (namespace and name), retrieves the resource from the server and tries to mutate it
+@@ -100,7 +114,7 @@ func CreateOrRetainConfigMap(client clientset.Interface, cm *v1.ConfigMap, confi
+ 		}
+ 		if _, err := client.CoreV1().ConfigMaps(cm.ObjectMeta.Namespace).Create(cm); err != nil {
+ 			if !apierrors.IsAlreadyExists(err) {
+-				return errors.Wrap(err, "unable to create configmap")
++				return errors.Wrap(err, "unable to create ConfigMap")
+ 			}
+ 		}
+ 	}

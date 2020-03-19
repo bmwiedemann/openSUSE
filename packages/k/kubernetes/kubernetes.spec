@@ -68,6 +68,8 @@ Patch2:         kubeadm-opensuse-registry.patch
 Patch3:         opensuse-version-checks.patch
 # Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
 Patch4:         kubeadm-opensuse-flexvolume.patch
+# https://github.com/kubernetes/kubernetes/pull/85763 - Drop this patch in 1.18 as its already in
+Patch5:         kubeadm-improve-resilency-CreateOrMutateConfigMap.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -315,6 +317,10 @@ providers, demos, testsuite...
 %patch3 -p1
 %patch4 -p0
 %endif
+# from 1.18, kubeadm already has the patch
+%if "%{baseversion}" == "1.16" || "%{baseversion}" == "1.17"
+%patch5 -p1
+%endif
 %if !0%{?is_opensuse}
 %{goprep} github.com/kubernetes/kubernetes
 %endif
@@ -462,8 +468,15 @@ install -D -m 0644 %{SOURCE27} %{buildroot}/%{_tmpfilesdir}/kubelet.conf
 # install the place the kubelet defaults to put volumes
 install -d %{buildroot}%{_localstatedir}/lib/kubelet
 
-# install VolumePluginDir (bsc#1084766)
+# install VolumePluginDir (bsc#1084766, bsc#1162093)
+# FIXME: CaaSP 4 defines the volume_plugin_dir in a directory that is not writeable 
+# on transactional-systems. This is ok but will be an issue when willing to support
+# CaaSP on transactional-systems.
+%if !0%{?is_opensuse}
+%define volume_plugin_dir %{_libexecdir}/kubernetes/kubelet-plugins/volume/exec
+%else
 %define volume_plugin_dir %{_localstatedir}/lib/kubelet/volume-plugin
+%endif
 install -d %{buildroot}/%{volume_plugin_dir}
 
 # Remove dangling symlink (breaks post-build scripts)
