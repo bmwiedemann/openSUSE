@@ -615,4 +615,12 @@
   opening Kontact's settings (kde#417396) (forwarded request 774714 from wolfi323)</comment>
     <requestid>774735</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5c59155e51c4d6d4acf9609b2bbd253e</srcmd5>
+    <version>5.68.0</version>
+    <time>1584643308</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.68</comment>
+    <requestid>785302</requestid>
+  </revision>
 </revisionlist>
