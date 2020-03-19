@@ -71,7 +71,7 @@ from clients, and in clients to authenticate against servers.
 %setup -q
 
 %build
-%configure --disable-static --with-pic
+%configure --disable-static --with-pic --with-gssapi-impl=mit
 make %{?_smp_mflags}
 
 %install
