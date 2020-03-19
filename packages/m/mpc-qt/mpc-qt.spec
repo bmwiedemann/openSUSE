@@ -1,7 +1,7 @@
 #
 # spec file for package mpc-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@ Version:        18.08+git20190618
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/cmdrkotori/mpc-qt
 # the original cvs at https://github.com/cmdrkotori/mpc-qt.git is gone
 # this is a dump of the reconstructed tree at https://gitlab.com/lbaldoni/mpc-qt.git
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.changes
+# PATCH-FIX-UPSTREAM mpv-qthelper.patch including header removed from mpv-devel
+Patch0:         mpv-qthelper.patch
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Core)
@@ -46,14 +47,8 @@ BuildRequires:  gcc7-c++
 A clone of Media Player Classic reimplemented in Qt.
 
 %prep
-%setup -q
+%autosetup -p1
 rm -rf mpv-dev
-# fix builddate info
-# Remove build time references so build-compare can do its work
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE1} '+%%H:%%M:%%S')
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE1} '+%%b %%e %%Y')
-sed -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" -i mainwindow.cpp
-sed -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -i mainwindow.cpp
 
 %build
 export CC=gcc
