@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Update link in docs
+
+-------------------------------------------------------------------
 Tue Feb  4 18:00:08 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop build dependencies for plugin bundles dropped in KF 5.62.
