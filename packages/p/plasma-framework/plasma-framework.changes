@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:18:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Too many changes since 5.67.0, only listing bugfixes:
+  * Try to apply the colorscheme of the current theme to QIcons (kde#417780)
+  * Remove hardcoded colors (kde#417511)
+  * Construct NullEngine with KPluginMetaData() (kde#417548)
+  * Don't warn for invalid plugin metata (kde#412464)
+- Drop Try-to-apply-the-colorscheme-of-the-current-theme-to-QIcons.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 11:14:42 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patch to fix wrong icon colors with dark desktop
