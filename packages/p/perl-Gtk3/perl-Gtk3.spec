@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Gtk3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Gtk3
-Version:        0.036
+Version:        0.037
 Release:        0
 %define cpan_name Gtk3
 Summary:        Perl interface to the 3.x series of the gtk+ toolkit
