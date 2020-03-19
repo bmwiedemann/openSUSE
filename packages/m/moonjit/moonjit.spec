@@ -1,7 +1,7 @@
 #
 # spec file for package moonjit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,14 @@
 %define lua_suffix 5_1
 %define lib_suffix 2
 Name:           moonjit
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT
 URL:            https://github.com/moonjit/moonjit
 Source0:        https://github.com/moonjit/moonjit/archive/%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         luajit-lua-versioned.patch
 BuildRequires:  pkgconfig
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Conflicts:      luajit
 Provides:       lua51-luajit
 Provides:       luajit = %{version}
@@ -56,13 +53,12 @@ Devel files for luajit package
 
 %prep
 %setup -q -n moonjit-%{version}
-%autopatch -p1
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile
 
 %build
-CFLAGS="%{optflags}" \
+export CFLAGS="%{optflags} -DLUAJIT_ENABLE_LUA52COMPAT"
 make %{?_smp_mflags} \
 	Q= \
 	DYNAMIC_CC="cc -fPIC" \
@@ -83,14 +79,8 @@ make DESTDIR=%{buildroot} install \
 rm %{buildroot}/%{_libdir}/*.a
 
 # Beta version make install does not do this
-ln -sf luajit-%{lua_suffix}-%{version} %{buildroot}/%{_bindir}/luajit-%{lua_suffix}
-
-# update-alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-touch %{buildroot}%{_sysconfdir}/alternatives/luajit
-touch %{buildroot}%{_sysconfdir}/alternatives/luajit.1%{ext_man}
-ln -sf %{_sysconfdir}/alternatives/luajit %{buildroot}%{_bindir}/luajit
-ln -sf %{_sysconfdir}/alternatives/luajit.1%{ext_man} %{buildroot}%{_mandir}/man1/luajit.1%{ext_man}
+ln -sf moonjit-%{version} %{buildroot}/%{_bindir}/moonjit
+ln -sf moonjit-%{version} %{buildroot}/%{_bindir}/luajit
 
 %check
 %ifarch %arm ppc ppc64 ppc64le
@@ -99,33 +89,21 @@ make %{?_smp_mflags} check || { echo -e "WARNING: ignore check error for\narm*: 
 make %{?_smp_mflags} check
 %endif
 
-%post
-%{_sbindir}/update-alternatives --install %{_bindir}/luajit luajit %{_bindir}/luajit-%{lua_suffix}-%{version} 60 \
-	--slave %{_mandir}/man1/luajit.1%{ext_man} luajit.1%{ext_man} %{_mandir}/man1/luajit-%{lua_suffix}.1%{ext_man}
-
-%preun
-if [ "$1" = 0 ] ; then
-	%{_sbindir}/update-alternatives --remove luajit %{_bindir}/luajit-%{lua_suffix}-%{version}
-fi
-
 %post -n libluajit-%{lua_suffix}-%{lib_suffix} -p /sbin/ldconfig
 %postun -n libluajit-%{lua_suffix}-%{lib_suffix} -p /sbin/ldconfig
 
 %files
-%ghost %{_sysconfdir}/alternatives/luajit
-%ghost %{_sysconfdir}/alternatives/luajit.1%{ext_man}
 %{_bindir}/luajit
-%{_bindir}/luajit-%{lua_suffix}
-%{_bindir}/luajit-%{lua_suffix}-%{version}
+%{_bindir}/moonjit
+%{_bindir}/moonjit-%{version}
 %{_mandir}/man1/luajit.1%{?ext_man}
-%{_mandir}/man1/luajit-%{lua_suffix}.1%{?ext_man}
-%{_datadir}/luajit-%{lua_suffix}-%{version}/
+%{_datadir}/moonjit-%{version}/
 
 %files -n libluajit-%{lua_suffix}-%{lib_suffix}
 %{_libdir}/libluajit-5.1.so.*
 
 %files devel
-%{_includedir}/luajit-%{lua_suffix}-2.1/
+%{_includedir}/moonjit-2.2/
 %{_libdir}/libluajit-5.1.so
 %{_libdir}/pkgconfig/luajit.pc
 
