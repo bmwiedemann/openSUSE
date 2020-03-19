@@ -1,7 +1,7 @@
 #
 # spec file for package python-publicsuffixlist
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-publicsuffixlist
-Version:        0.6.11
+Version:        0.6.13
 Release:        0
 Summary:        Public suffix list implementaion in Python
 License:        MPL-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/ko-zu/psl
+URL:            https://github.com/ko-zu/psl
 Source:         https://files.pythonhosted.org/packages/source/p/publicsuffixlist/publicsuffixlist-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE change_psl_location.patch -- use list from publicsuffix package
 Patch0:         change_psl_location.patch
