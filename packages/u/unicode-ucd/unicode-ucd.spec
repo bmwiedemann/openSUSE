@@ -1,7 +1,7 @@
 #
 # spec file for package unicode-ucd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # For other future directories from http://www.unicode.org/Public
 %global unicodedir %{_datadir}/unicode
 %global ucddir %{unicodedir}/ucd
+
 Name:           unicode-ucd
-Version:        10.0.0
+Version:        12.0.0
 Release:        0
 Summary:        Unicode Character Database
-License:        Unicode-TOU
 # FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+License:        Unicode-TOU
 Group:          System/I18n
 URL:            http://www.unicode.org/ucd/
 Source0:        http://www.unicode.org/Public/zipped/%{version}/UCD.zip
 # http://www.unicode.org/terms_of_use.html referenced in ReadMe.txt redirects to:
 Source1:        COPYING
 Source2:        http://www.unicode.org/Public/zipped/%{version}/Unihan.zip
+Source3:        http://www.unicode.org/Public/zipped/%{version}/ReadMe.txt
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -63,9 +65,10 @@ mkdir -p %{buildroot}%{ucddir}
 cp -ar . %{buildroot}%{ucddir}
 cp -p %{SOURCE2} %{buildroot}%{ucddir}
 
-cp -p %{SOURCE1} .
+cp -p %{SOURCE1} %{SOURCE3} .
 
 %files
+%doc ReadMe.txt
 %license COPYING
 %dir %{unicodedir}
 %{ucddir}

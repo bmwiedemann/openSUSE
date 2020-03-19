@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>648805</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>707fbad717c5ae4f51e0e46e6a76a17a</srcmd5>
+    <version>12.0.0</version>
+    <time>1584643276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 12.0.0. Upstream did not provide changelog. (forwarded request 785287 from hillwood)</comment>
+    <requestid>785288</requestid>
+  </revision>
 </revisionlist>
