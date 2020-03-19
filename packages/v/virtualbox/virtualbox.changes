@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:32:05 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- A fix for boo #1166782 ("VirtualBox Guest 6.1.4 for OpenSUSE 15.1 constant
+  segfault in libX11.so.6.3 every 5 seconds") is fixed.
+  File "VirtualBox-6.1.4-VBoxClient-vmsvga-x11-crash.patch", published in
+  https://www.virtualbox.org/ticket/19357, fixes the problem.
+
+-------------------------------------------------------------------
 Wed Mar 11 20:10:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.4 (released February 19 2020 by Oracle)

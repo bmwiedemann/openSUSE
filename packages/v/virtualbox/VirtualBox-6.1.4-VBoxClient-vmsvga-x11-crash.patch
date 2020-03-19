@@ -1,0 +1,23 @@
+diff -up VirtualBox-6.1.4/src/VBox/Additions/x11/VBoxClient/display-svga-x11.cpp~ VirtualBox-6.1.4/src/VBox/Additions/x11/VBoxClient/display-svga-x11.cpp
+--- VirtualBox-6.1.4/src/VBox/Additions/x11/VBoxClient/display-svga-x11.cpp~	2020-02-18 18:13:08.000000000 +0100
++++ VirtualBox-6.1.4/src/VBox/Additions/x11/VBoxClient/display-svga-x11.cpp	2020-03-03 16:27:49.947341705 +0100
+@@ -100,16 +100,19 @@ static void x11Connect(struct X11CONTEXT
+     {
+         XCloseDisplay(pContext->pDisplay);
+         pContext->pDisplay = NULL;
++        return;
+     }
+     if (!XRRQueryExtension(pContext->pDisplay, &pContext->hRandREventBase, &pContext->hRandRErrorBase))
+     {
+         XCloseDisplay(pContext->pDisplay);
+         pContext->pDisplay = NULL;
++        return;
+     }
+     if (!XRRQueryVersion(pContext->pDisplay, &pContext->hRandRMajor, &pContext->hRandRMinor))
+     {
+         XCloseDisplay(pContext->pDisplay);
+         pContext->pDisplay = NULL;
++        return;
+     }
+     pContext->rootWindow = DefaultRootWindow(pContext->pDisplay);
+ }
