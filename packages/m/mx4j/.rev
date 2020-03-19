@@ -230,4 +230,12 @@
     <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
     <requestid>767574</requestid>
   </revision>
+  <revision rev="33" vrev="34">
+    <srcmd5>f4355ebe93c1487cf968526bbff857f8</srcmd5>
+    <version>3.0.2</version>
+    <time>1584643603</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid build cycles with other jaf providers</comment>
+    <requestid>785654</requestid>
+  </revision>
 </revisionlist>

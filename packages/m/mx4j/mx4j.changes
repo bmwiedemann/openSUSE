@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:31:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Require for build gnu-jaf instead of a virtual jaf provider in
+  order to avoid build cycles
+
+-------------------------------------------------------------------
 Mon Jan 27 06:24:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - On supported platforms, avoid building with OpenJ9, in order to

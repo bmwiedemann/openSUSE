@@ -47,7 +47,7 @@ BuildRequires:  axis
 BuildRequires:  bcel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_3
-BuildRequires:  jaf
+BuildRequires:  gnu-jaf
 BuildRequires:  java-devel >= 1.6
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
