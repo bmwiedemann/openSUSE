@@ -1,7 +1,7 @@
 #
 # spec file for package libpreludedb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Summary:        Framework to easy access to the Prelude database
 # libmissing/test is GPL-3.0+
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Security
-Url:            https://www.prelude-siem.org
+URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
 # Fix undefined non weak symbol
 Patch0:         libpreludedb-undefined_non_weak_symbol.patch
@@ -42,7 +42,7 @@ BuildRequires:  libprelude-devel
 BuildRequires:  mysql-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  python3-devel
@@ -279,6 +279,7 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %files doc
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}-%{version}
-%doc ChangeLog README NEWS COPYING LICENSE.README HACKING.README
+%license COPYING LICENSE.README
+%doc ChangeLog README NEWS HACKING.README
 
 %changelog
