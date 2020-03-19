@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>783733</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>15526f8ae73bb8758c73286781d585a5</srcmd5>
+    <version>36.12.120191002_0</version>
+    <time>1584643571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 36.12.120191002_0
+  * No changelog provided by upstream (forwarded request 785616 from alarrosa)</comment>
+    <requestid>785619</requestid>
+  </revision>
 </revisionlist>

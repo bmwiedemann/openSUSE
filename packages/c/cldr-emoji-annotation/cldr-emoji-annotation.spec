@@ -17,7 +17,7 @@
 
 
 Name:           cldr-emoji-annotation
-Version:        32.0.0_1
+Version:        36.12.120191002_0
 Release:        0
 Summary:        Emoji annotation files in CLDR
 License:        LGPL-2.0-or-later AND Unicode
