@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:03:33 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 4.4.2
+  * meta-window-actor.c: Make sure to remove any existing desaturate effect when the window no longer has a shadow.
+  * src/ui/theme.c: Use a simpler method for getting an image file's dimensions before scaling it for hidpi.
+  * meta-window-actor.c: Detach after redirecting, not before unredirecting.
+  * MetaWindow: clear the cached window icon when _NET_WM_ICON changes, to force a regen the next time the icon is requested for the window.
+
+
+
+-------------------------------------------------------------------
 Sun Nov 24 17:24:05 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 4.4.1
