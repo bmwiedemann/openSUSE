@@ -1,0 +1,235 @@
+From 36c233672e252132db78dfad4c9ec527eef9741a Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Thu, 12 Mar 2020 19:52:00 +0100
+Subject: Switch from freedb.org to gnudb.org
+
+BUGS: 418421
+---
+ kcmcddb/cddbconfigwidget.ui   | 2 +-
+ kcmcddb/doc/index.docbook     | 4 ++--
+ libkcddb/libkcddb5.kcfg       | 6 +++---
+ libkcddb/sites.cpp            | 2 +-
+ tests/asynccddblookuptest.cpp | 6 +++---
+ tests/asynchttplookuptest.cpp | 6 +++---
+ tests/asyncsmtpsubmittest.cpp | 2 +-
+ tests/synccddblookuptest.cpp  | 4 ++--
+ tests/synchttplookuptest.cpp  | 4 ++--
+ tests/syncsmtpsubmittest.cpp  | 2 +-
+ tests/utf8test.cpp            | 4 ++--
+ 11 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/kcmcddb/cddbconfigwidget.ui b/kcmcddb/cddbconfigwidget.ui
+index 756e1f7..617225a 100644
+--- a/kcmcddb/cddbconfigwidget.ui
++++ b/kcmcddb/cddbconfigwidget.ui
+@@ -64,7 +64,7 @@
+                <string>Name of CDDB server which will be used to look up CD information.</string>
+               </property>
+               <property name="text">
+-               <string>freedb.freedb.org</string>
++               <string>gnudb.gnudb.org</string>
+               </property>
+              </widget>
+             </item>
+diff --git a/kcmcddb/doc/index.docbook b/kcmcddb/doc/index.docbook
+index 19ac32b..5774c2f 100644
+--- a/kcmcddb/doc/index.docbook
++++ b/kcmcddb/doc/index.docbook
+@@ -264,8 +264,8 @@ additional information you provide may be added to the existing entry.</para>
+ categories are installed in <filename class="directory">$HOME/.cddb</filename>. You can create as
+ many category subfolders as you like. However, when uploading, only the
+ official <acronym>CDDB</acronym> categories are displayed. The default upload
+-address is <email>freedb-submit@freedb.org</email>. For more information about
+-<abbrev>freedb</abbrev> visit the <abbrev>freedb</abbrev> homepage.</para>
++address is <email>gnudb-submit@gnudb.org</email>. For more information about
++<abbrev>gnudb</abbrev> visit the <abbrev>gnudb</abbrev> homepage.</para>
+ 
+ <para>The local <acronym>CDDB</acronym> entry for a particular &CD; is stored in
+ the file <filename><replaceable>category name</replaceable>/<replaceable>disc
+diff --git a/libkcddb/libkcddb5.kcfg b/libkcddb/libkcddb5.kcfg
+index 26649ac..5fdb69c 100644
+--- a/libkcddb/libkcddb5.kcfg
++++ b/libkcddb/libkcddb5.kcfg
+@@ -7,7 +7,7 @@
+   <kcfgfile name="kcmcddbrc"/>
+   <group name="Lookup">
+     <entry name="hostname" type="String">
+-      <default>freedb.freedb.org</default>
++      <default>gnudb.gnudb.org</default>
+     </entry>
+     <entry name="port" type="Int">
+       <default>80</default>
+@@ -43,7 +43,7 @@
+     <entry name="emailAddress" type="String">
+     </entry>
+     <entry name="httpSubmitServer" type="String">
+-      <default>freedb.freedb.org</default>
++      <default>gnudb.gnudb.org</default>
+     </entry>
+     <entry name="httpSubmitPort" type="Int">
+       <default>80</default>
+@@ -61,7 +61,7 @@
+     <entry name="smtpHostname" type="String">
+     </entry>
+     <entry name="submitAddress" type="String">
+-      <default>freedb-submit@freedb.org</default>
++      <default>gnudb-submit@gnudb.org</default>
+     </entry>
+   </group>
+ </kcfg>
+diff --git a/libkcddb/sites.cpp b/libkcddb/sites.cpp
+index 305c56a..94fcebe 100644
+--- a/libkcddb/sites.cpp
++++ b/libkcddb/sites.cpp
+@@ -38,7 +38,7 @@ namespace KCDDB
+   {
+     QUrl url;
+     url.setScheme( QLatin1String( "http" ) );
+-    url.setHost( QLatin1String( "freedb.freedb.org" ) );
++    url.setHost( QLatin1String( "gnudb.gnudb.org" ) );
+     url.setPort( 80 );
+     url.setPath( QLatin1String( "/~cddb/cddb.cgi" ) );
+ 
+diff --git a/tests/asynccddblookuptest.cpp b/tests/asynccddblookuptest.cpp
+index 929b478..804e3db 100644
+--- a/tests/asynccddblookuptest.cpp
++++ b/tests/asynccddblookuptest.cpp
+@@ -27,7 +27,7 @@ void AsyncCDDBLookupTest::testLookup()
+   using namespace KCDDB;
+ 
+   client_ = new Client;
+-  client_->config().setHostname(QString::fromUtf8("freedb.freedb.org"));
++  client_->config().setHostname(QString::fromUtf8("gnudb.gnudb.org"));
+   client_->config().setPort(8880);
+   client_->config().setCacheLookupEnabled(false);
+   client_->config().setFreedbLookupEnabled(true);
+@@ -62,8 +62,8 @@ void AsyncCDDBLookupTest::testLookup()
+   QVERIFY(m_result == Success);
+ 
+   // If revision doesn't match, test probably needs to be updated
+-  // See: http://www.freedb.org/freedb/jazz/a1107d0a for updated data
+-  QCOMPARE(m_info.get(QString::fromUtf8("revision")).toInt(), 8);
++  // See: http://www.gnudb.org/gnudb/jazz/a1107d0a for updated data
++  QCOMPARE(m_info.get(QString::fromUtf8("revision")).toInt(), 7);
+ 
+   QCOMPARE(m_info.get(Artist).toString(),QString::fromUtf8("Kruder & Dorfmeister"));
+   QCOMPARE(m_info.get(Title).toString(),QString::fromUtf8("The K&D Sessions (Part One)"));
+diff --git a/tests/asynchttplookuptest.cpp b/tests/asynchttplookuptest.cpp
+index 955db31..802868b 100644
+--- a/tests/asynchttplookuptest.cpp
++++ b/tests/asynchttplookuptest.cpp
+@@ -28,7 +28,7 @@ void AsyncHTTPLookupTest::testLookup()
+   using namespace KCDDB;
+ 
+   client_ = new Client;
+-  client_->config().setHostname(QString::fromUtf8("freedb.freedb.org"));
++  client_->config().setHostname(QString::fromUtf8("gnudb.gnudb.org"));
+   client_->config().setPort(80);
+   client_->config().setCacheLookupEnabled(false);
+   client_->config().setFreedbLookupEnabled(true);
+@@ -63,8 +63,8 @@ void AsyncHTTPLookupTest::testLookup()
+   QVERIFY(m_result == Success);
+ 
+   // If revision doesn't match, test probably needs to be updated
+-  // See: http://www.freedb.org/freedb/jazz/a1107d0a for updated data
+-  QCOMPARE(m_info.get(QString::fromUtf8("revision")).toInt(), 8);
++  // See: http://www.gnudb.org/gnudb/jazz/a1107d0a for updated data
++  QCOMPARE(m_info.get(QString::fromUtf8("revision")).toInt(), 7);
+ 
+   QCOMPARE(m_info.get(Artist).toString(),QString::fromUtf8("Kruder & Dorfmeister"));
+   QCOMPARE(m_info.get(Title).toString(),QString::fromUtf8("The K&D Sessions (Part One)"));
+diff --git a/tests/asyncsmtpsubmittest.cpp b/tests/asyncsmtpsubmittest.cpp
+index d15569e..944b030 100644
+--- a/tests/asyncsmtpsubmittest.cpp
++++ b/tests/asyncsmtpsubmittest.cpp
+@@ -30,7 +30,7 @@ AsyncSMTPSubmitTest::AsyncSMTPSubmitTest(QCoreApplication& app)
+ 
+   client_ = new Client;
+   client_->config().setFreedbSubmitTransport(Submit::SMTP);
+-  client_->config().setSubmitAddress(QString::fromUtf8("test-submit@freedb.org"));
++  client_->config().setSubmitAddress(QString::fromUtf8("test-submit@gnudb.org"));
+   client_->setBlockingMode( false );
+ 
+   TrackOffsetList list;
+diff --git a/tests/synccddblookuptest.cpp b/tests/synccddblookuptest.cpp
+index bdaf648..3c15ce3 100644
+--- a/tests/synccddblookuptest.cpp
++++ b/tests/synccddblookuptest.cpp
+@@ -28,7 +28,7 @@ void SyncCDDBLookupTest::testLookup()
+   using namespace KCDDB;
+ 
+   Client c;
+-  c.config().setHostname(QString::fromUtf8("freedb.freedb.org"));
++  c.config().setHostname(QString::fromUtf8("gnudb.gnudb.org"));
+   c.config().setPort(8880);
+   c.config().setCacheLookupEnabled(false);
+   c.config().setFreedbLookupEnabled(true);
+@@ -62,7 +62,7 @@ void SyncCDDBLookupTest::testLookup()
+     if (i.get(QString::fromUtf8("discid")) == QString::fromUtf8("3e0c3a05") && i.get(Category) == QString::fromUtf8("misc"))
+     {
+       // If revision doesn't match, test probably needs to be updated
+-      // See: http://www.freedb.org/freedb/misc/3e0c3a05 for updated data
++      // See: http://www.gnudb.org/gnudb/misc/3e0c3a05 for updated data
+       QCOMPARE(i.get(QString::fromUtf8("revision")).toInt(), 17);
+ 
+       QCOMPARE(i.get(Artist).toString(),QString::fromUtf8("Pink Floyd"));
+diff --git a/tests/synchttplookuptest.cpp b/tests/synchttplookuptest.cpp
+index a46a9e7..0819a81 100644
+--- a/tests/synchttplookuptest.cpp
++++ b/tests/synchttplookuptest.cpp
+@@ -28,7 +28,7 @@ void SyncHTTPLookupTest::testLookup()
+   using namespace KCDDB;
+ 
+   Client c;
+-  c.config().setHostname(QString::fromUtf8("freedb.freedb.org"));
++  c.config().setHostname(QString::fromUtf8("gnudb.gnudb.org"));
+   c.config().setPort(80);
+   c.config().setCacheLookupEnabled(false);
+   c.config().setFreedbLookupEnabled(true);
+@@ -62,7 +62,7 @@ void SyncHTTPLookupTest::testLookup()
+     if (i.get(QString::fromUtf8("discid")) == QString::fromUtf8("3e0c3a05") && i.get(Category) == QString::fromUtf8("misc"))
+     {
+       // If revision doesn't match, test probably needs to be updated
+-      // See: http://www.freedb.org/freedb/misc/3e0c3a05 for updated data
++      // See: http://www.gnudb.org/gnudb/misc/3e0c3a05 for updated data
+       QCOMPARE(i.get(QString::fromUtf8("revision")).toInt(), 17);
+ 
+       QCOMPARE(i.get(Artist).toString(),QString::fromUtf8("Pink Floyd"));
+diff --git a/tests/syncsmtpsubmittest.cpp b/tests/syncsmtpsubmittest.cpp
+index 1aa4765..983d3af 100644
+--- a/tests/syncsmtpsubmittest.cpp
++++ b/tests/syncsmtpsubmittest.cpp
+@@ -61,7 +61,7 @@ main(int argc, char ** argv)
+ 
+   Client c;
+   c.config().setFreedbSubmitTransport(Submit::SMTP);
+-  c.config().setSubmitAddress(QString::fromUtf8("test-submit@freedb.org"));
++  c.config().setSubmitAddress(QString::fromUtf8("test-submit@gnudb.org"));
+ 
+   c.setBlockingMode( true );
+ 
+diff --git a/tests/utf8test.cpp b/tests/utf8test.cpp
+index a4f1a99..2b7d9c4 100644
+--- a/tests/utf8test.cpp
++++ b/tests/utf8test.cpp
+@@ -28,7 +28,7 @@ void Utf8Test::testLookup()
+   using namespace KCDDB;
+ 
+   Client c;
+-  c.config().setHostname(QString::fromUtf8("freedb.freedb.org"));
++  c.config().setHostname(QString::fromUtf8("gnudb.gnudb.org"));
+   c.config().setPort(80);
+   c.config().setCacheLookupEnabled(false);
+   c.config().setFreedbLookupEnabled(true);
+@@ -57,7 +57,7 @@ void Utf8Test::testLookup()
+     if (i.get(QString::fromUtf8("discid")) == QString::fromUtf8("13093f02") && i.get(Category) == QString::fromUtf8("blues"))
+     {
+       // If revision doesn't match, test probably needs to be updated
+-      // See: http://www.freedb.org/freedb/blues/13093f02 for updated data
++      // See: http://www.gnudb.org/gnudb/blues/13093f02 for updated data
+       QCOMPARE(i.get(QString::fromUtf8("revision")).toInt(), 3);
+ 
+       QString artist = QString::fromUtf8("神城麻郁(浪川大輔)/宮藤深衣奈(中原麻衣)/小野寺樺恋(清水愛)/織部椿(根谷美智子)/島崎康生(鈴村健一)/風見みずほ(井上喜久子)/森野苺(田村ゆかり)/四道跨(三浦祥朗)/四道晴子(新谷良子)/佐川秋那(浅野真澄)/真下双葉(佐久間紅美)/菊池浩美(進藤尚美)/草薙桂(保志総一郎)/縁川小石(川澄綾子)/間雲漂介(岩田光央)/水澄楓(大原さやか)/まりえ(金田朋子)/山田政臣(杉田智和)神城麻郁(浪川大輔)/宮藤深衣奈(中原麻衣)/小野寺樺恋(清水愛)/織部椿(根谷美智子)/島崎康生(鈴村健一)/風見みずほ(井上喜久子)/森野苺(田村ゆかり)/四道跨(三Y祥朗)/四道晴子(新谷良子)/佐川秋那(浅野真澄)/真下双葉(佐久間紅美)/菊池浩美(進藤尚美)/草薙桂(保志総一郎)/縁川小石(川澄綾子)/間雲漂介(岩田光央)/水澄楓(大原さやか)/まりえ(金田朋子)/山田政臣(杉田智和)");
+-- 
+cgit v1.1
+

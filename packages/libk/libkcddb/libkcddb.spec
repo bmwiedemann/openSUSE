@@ -32,6 +32,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch:          Switch-from-freedb.org-to-gnudb.org.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libmusicbrainz5-devel
 BuildRequires:  xz
@@ -90,6 +92,7 @@ information over the Internet.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build

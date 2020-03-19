@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:21:09 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Switch-from-freedb.org-to-gnudb.org.patch to use gnudb.org by
+  default, freedb.org will be shutdown at the end of March
+  (kde#418421)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
