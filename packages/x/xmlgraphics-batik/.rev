@@ -153,4 +153,12 @@
     <comment>Upgrade to 1.10 + OSGi manifests + Maven artifacts</comment>
     <requestid>667381</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d519ee946f0f5e278448b0b734449609</srcmd5>
+    <version>1.10</version>
+    <time>1584643595</time>
+    <user>dimstar_suse</user>
+    <comment>Extend bundle manifest to be usable for eclipse</comment>
+    <requestid>785640</requestid>
+  </revision>
 </revisionlist>

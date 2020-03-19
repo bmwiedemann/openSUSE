@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:43:43 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Mofified patch:
+  * xmlgraphics-batik-manifests.patch
+    + Extend the bundle manifest so that it is useful for eclipse
+
+-------------------------------------------------------------------
 Sun Jan 20 20:35:14 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.10
