@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysql-connector-python
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mysql-connector-python
-Version:        2.1.7
+Version:        8.0.19
 Release:        0
 Summary:        MySQL driver written in Python
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Development/Languages/Python
 URL:            http://dev.mysql.com/doc/connector-python/en/index.html
-Source:         http://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-%{version}.tar.gz
+Source:         https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
