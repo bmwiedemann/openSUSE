@@ -18,7 +18,7 @@
 
 %define sonum   6
 %define _libname KF5BluezQt
-%define _tar_path 5.67
+%define _tar_path 5.68
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           bluez-qt
-Version:        5.67.0
+Version:        5.68.0
 Release:        0
 Summary:        Async Bluez wrapper library
 License:        LGPL-2.1-or-later
@@ -108,7 +108,7 @@ Development files for QBluez Async Bluez wrapper library.
 %license COPYING.LIB
 %doc README*
 %{_libqt5_libdir}/lib%{_libname}*.so.*
-%{_kf5_debugdir}/bluez.categories
+%{_kf5_debugdir}/bluezqt.categories
 
 %files imports
 %license COPYING.LIB
