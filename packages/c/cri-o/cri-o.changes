@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 16 16:24:00 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.17.1:
+  * Drop conmonmon
+  * Update docs and completions for crio wipe --force
+  * wipe: Add a force flag for skipping version check
+  * Restore sandbox selinux labels directly from config.json
+  * klog: don't write to /tmp
+  * Pass down the integer value of the stop signal
+  * exec: Close pipe fds to prevent hangs
+  * Unwrap errors from label.Relabel() before checking for ENOTSUP
+  * oci: Handle timeouts correctly for probes
+
+-------------------------------------------------------------------
 Mon Feb 10 14:59:52 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Put default configuration in /etc/crio/crio.conf.d/00-default.conf
