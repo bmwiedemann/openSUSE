@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Warnings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-Warnings
-Version:        0.028
+Version:        0.029
 Release:        0
 %define cpan_name Test-Warnings
 Summary:        Test for warnings and the lack of them

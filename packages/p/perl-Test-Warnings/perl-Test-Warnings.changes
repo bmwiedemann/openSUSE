@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 15 03:15:09 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.029     2020-03-14 05:27:59Z
+            - new :report_warnings feature, for printing all of the (unexpected)
+              warning content when had_no_warnings() is called (Tina Mueller, PR#10)
+
+-------------------------------------------------------------------
 Sun Dec 22 03:12:43 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.028
