@@ -26,9 +26,9 @@ URL:            https://github.com/coleifer/peewee
 Source:         https://github.com/coleifer/peewee/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module PyMySQL}
 BuildRequires:  %{python_module apsw}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module mysql-connector-python}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       python
 %python_subpackages
 
 %description
