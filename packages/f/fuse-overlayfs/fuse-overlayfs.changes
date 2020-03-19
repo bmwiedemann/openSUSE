@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 16:04:37 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v0.7.8
+  - report correctly the number of links for a directory also for
+    subsequent stat calls
+  - stop looking up the ino in the lower layers if the file could
+    not be opened
+
+-------------------------------------------------------------------
 Wed Mar  4 10:58:45 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v0.7.7
