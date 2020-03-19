@@ -65,4 +65,12 @@ icewm-theme-branding icewm-config-upstream</comment>
   * add-adwaita-legacy-iconpath-to-preference.patch</comment>
     <requestid>781773</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c0338a14426a64e8254fdba19d05c9b3</srcmd5>
+    <version>1.2.4</version>
+    <time>1584643501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785467</requestid>
+  </revision>
 </revisionlist>

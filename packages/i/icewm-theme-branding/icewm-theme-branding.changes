@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:46:30 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Improve build tag consistency between SLE and Leap.
+  * Build the branding package separately for openSUSE and SLE,
+    like most of other branding packages did.
+
+-------------------------------------------------------------------
 Thu Mar  5 02:46:24 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Add the adwaita legacy path to the IconPath in

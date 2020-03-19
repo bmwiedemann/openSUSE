@@ -17,6 +17,24 @@
 
 
 %define _name   icewm-config-openSUSE
+
+%define flavor @BUILD_FLAVOR@
+%if "%{flavor}" == ""
+ExclusiveArch:  %{nil}
+%else
+%define branding_name %{flavor}
+%if "%{flavor}" == "SLE"
+%define build_SLE 1
+%else
+%define build_openSUSE 1
+%endif
+%endif
+
+%if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
+# Don't build SLE branding on openSUSE and vice-versa
+ExclusiveArch:  %{nil}
+%endif
+
 Name:           icewm-theme-branding
 Version:        1.2.4
 Release:        0
@@ -41,7 +59,7 @@ the system default theme,background etc.
 %patch0 -p1
 
 %build
-%if 0%{?is_opensuse}
+%if 0%{?build_openSUSE}
 sed -i -e 's:SLEdefault:openSUSEdefault:g' preferences
 %endif
 
