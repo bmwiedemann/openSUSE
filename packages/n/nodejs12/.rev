@@ -197,4 +197,12 @@
     + exceptions in the HTTP parser were not emitting as an uncaughtException</comment>
     <requestid>777344</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cdf1466dea81a40ed75fdfe8bfacbae1</srcmd5>
+    <version>12.16.1</version>
+    <time>1584643917</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786455</requestid>
+  </revision>
 </revisionlist>

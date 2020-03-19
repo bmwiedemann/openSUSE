@@ -146,6 +146,7 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
 Patch107:       wasi_compile_flags.patch
+Patch108:       openssl_rand_regression.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -353,6 +354,7 @@ tar Jxvf %{SOURCE11}
 %patch104 -p1
 %patch106 -p1
 %patch107 -p1
+%patch108 -p1
 %patch120 -p1
 %patch200 -p1
 

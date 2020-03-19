@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  2 09:43:10 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- openssl_rand_regression.patch: Add getrandom syscall definition
+  for all Linux platforms. This fixes a runtime error in SLE-12
+  (bnc#1162117)
+
+-------------------------------------------------------------------
 Wed Feb 19 13:41:50 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS release 12.16.1:
