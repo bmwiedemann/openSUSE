@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-publicsuffix
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Public Suffix List
 License:        MIT
