@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-hpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Source Package for HPC Patterns
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 Source1:        library-inc.txt
 Source2:        devel-inc.txt
@@ -61,9 +61,7 @@ Recommends:     less
 Recommends:     pdsh
 Recommends:     mrsh
 Recommends:     mrsh-server
-%if 0%{?is_opensuse}
 Recommends:     nss_ldap
-%endif
 # python 2.7 deps
 Recommends:     ganglia-gmond
 Recommends:     genders
@@ -111,16 +109,11 @@ Provides:       pattern-order() = 2040
 Provides:       pattern-visible()
 Requires:       pattern() = hpc_compute_node
 Requires:       pattern() = hpc_libraries
-%if 0%{?is_opensuse}
-Requires:       pattern() = devel_C_C++
-Requires:       pattern() = devel_basis
-Requires:       pattern() = devel_perl
-Requires:       pattern() = devel_python3
-%else
-Requires:       pattern() = devel_basis
-Recommends:     python3
+Recommends:     pattern() = devel_C_C++
+Recommends:     pattern() = devel_basis
+Recommends:     pattern() = devel_perl
+Recommends:     pattern() = devel_python3
 Recommends:     python3-devel
-%endif
 Requires:       gnu-compilers-hpc-devel
 Requires:       lua-lmod
 

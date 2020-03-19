@@ -103,4 +103,13 @@
     <comment>- added missing packages (bsc#1130814). (forwarded request 689322 from mslacken)</comment>
     <requestid>689323</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>efe6cd7d4d642631997f5398e44238c3</srcmd5>
+    <version>20190218</version>
+    <time>1584643828</time>
+    <user>dimstar_suse</user>
+    <comment>- removed is_opensuse which was used to mark packages wiich are not
+  in SLES. They are now Recommended and not Required (jsc#SLE-12109)</comment>
+    <requestid>786221</requestid>
+  </revision>
 </revisionlist>

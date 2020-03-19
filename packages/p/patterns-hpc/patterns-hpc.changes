@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 18 16:40:46 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- removed is_opensuse which was used to mark packages wiich are not
+  in SLES. They are now Recommended and not Required (jsc#SLE-12109)
+
+-------------------------------------------------------------------
 Thu Mar 28 11:10:04 UTC 2019 - Christian Goll <cgoll@suse.com>
 
 - added missing packages (bsc#1130814).
