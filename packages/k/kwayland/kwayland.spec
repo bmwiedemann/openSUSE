@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.67
+%define _tar_path 5.68
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kwayland
-Version:        5.67.0
+Version:        5.68.0
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later
