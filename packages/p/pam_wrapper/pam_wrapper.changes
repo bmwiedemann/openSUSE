@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:07:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix crash when testing fprintd:
+  * fix-pam-module-output-crash.patch
+- Fix build without python2 that is atm being removed from Tumbleweed
+- Use cmake macros for build
+
+-------------------------------------------------------------------
 Mon Dec  9 15:11:23 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix pam_wrapper with Linux-PAM master

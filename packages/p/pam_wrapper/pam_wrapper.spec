@@ -1,7 +1,7 @@
 #
 # spec file for package pam_wrapper
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,31 +22,29 @@
 # Do NOT create library package or a devel package!
 #
 ############################# NOTE ##################################
-
+%bcond_without python2
 Name:           pam_wrapper
 Version:        1.0.7
 Release:        0
-
 Summary:        A tool to test PAM applications and PAM modules
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-URL:            http://cwrap.org/
-
+URL:            https://cwrap.org/
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-
 Patch0:         pam_wrapper-1.0.8-fix_with_latest_pam.patch
-
+Patch1:         fix-pam-module-output-crash.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libcmocka-devel
 BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
-
-Recommends:     pkg-config
 Recommends:     cmake
+Recommends:     pkgconfig
+%if %{with python2}
+BuildRequires:  pkgconfig(python2)
+%endif
 
 %description
 This component of cwrap allows you to either test your PAM (Linux-PAM
@@ -63,7 +61,6 @@ development/testing.
 
 %package -n libpamtest0
 Summary:        A tool to test PAM applications and PAM modules
-Group:          Development/Libraries/C and C++
 Requires:       pam_wrapper = %{version}-%{release}
 
 %description -n libpamtest0
@@ -72,12 +69,10 @@ testing of modules.
 
 %package -n libpamtest-devel
 Summary:        A tool to test PAM applications and PAM modules
-Group:          Development/Libraries/C and C++
 Requires:       libpamtest0 = %{version}-%{release}
 Requires:       pam_wrapper = %{version}-%{release}
-
-Recommends:     pkg-config
 Recommends:     cmake
+Recommends:     pkgconfig
 
 %description -n libpamtest-devel
 If you plan to develop tests for a PAM module, you can use this library,
@@ -86,14 +81,12 @@ files for libpamtest
 
 %package -n libpamtest-devel-doc
 Summary:        The libpamtest API documentation
-Group:          Development/Libraries/C and C++
 
 %description -n libpamtest-devel-doc
 Documentation for libpamtest development.
 
 %package -n python2-libpamtest
 Summary:        A python wrapper for libpamtest
-Group:          Development/Libraries/C and C++
 Requires:       libpamtest0 = %{version}-%{release}
 Requires:       pam_wrapper = %{version}-%{release}
 
@@ -104,7 +97,6 @@ the header files for libpamtest
 
 %package -n python3-libpamtest
 Summary:        A python wrapper for libpamtest
-Group:          Development/Libraries/C and C++
 Requires:       libpamtest0 = %{version}-%{release}
 Requires:       pam_wrapper = %{version}-%{release}
 
@@ -121,9 +113,8 @@ the header files for libpamtest
 %cmake \
   -DUNIT_TESTING=ON \
   -DCMAKE_SKIP_RPATH:BOOL=OFF
-
-make %{?_smp_mflags} VERBOSE=1
-make %{?_smp_mflags} doc
+%cmake_build
+%cmake_build doc
 
 %install
 %cmake_install
@@ -132,15 +123,11 @@ make %{?_smp_mflags} doc
 %ctest
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
-
 %post -n libpamtest0 -p /sbin/ldconfig
-
 %postun -n libpamtest0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README ChangeLog
 %license LICENSE
 %{_libdir}/libpam_wrapper.so*
@@ -150,19 +137,18 @@ make %{?_smp_mflags} doc
 %{_libdir}/cmake/pam_wrapper/pam_wrapper-config.cmake
 %dir %{_libdir}/pam_wrapper
 %{_libdir}/pam_wrapper/pam_matrix.so
+%{_libdir}/pam_wrapper/pam_chatty.so
 %{_libdir}/pam_wrapper/pam_get_items.so
 %{_libdir}/pam_wrapper/pam_set_items.so
-%{_mandir}/man1/pam_wrapper.1*
-%{_mandir}/man8/pam_matrix.8*
-%{_mandir}/man8/pam_get_items.8*
-%{_mandir}/man8/pam_set_items.8*
+%{_mandir}/man1/pam_wrapper.1%{?ext_man}
+%{_mandir}/man8/pam_matrix.8%{?ext_man}
+%{_mandir}/man8/pam_get_items.8%{?ext_man}
+%{_mandir}/man8/pam_set_items.8%{?ext_man}
 
 %files -n libpamtest0
-%defattr(-,root,root,-)
 %{_libdir}/libpamtest.so.*
 
 %files -n libpamtest-devel
-%defattr(-,root,root,-)
 %{_libdir}/libpamtest.so
 %{_libdir}/pkgconfig/libpamtest.pc
 %dir %{_libdir}/cmake/libpamtest
@@ -171,11 +157,12 @@ make %{?_smp_mflags} doc
 %{_includedir}/libpamtest.h
 
 %files -n libpamtest-devel-doc
-%defattr(-,root,root)
 %doc build/doc/html
 
+%if %{with python2}
 %files -n python2-libpamtest
 %{python2_sitearch}/pypamtest.so
+%endif
 
 %files -n python3-libpamtest
 %{python3_sitearch}/pypamtest.so
