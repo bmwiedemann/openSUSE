@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * KRearrangeColumnsProxyModel: temporarily disable assert due to QTreeView bug
+  * Add missing license header in previous commit
+  * KRearrangeColumnsProxyModel: reset in setSourceColumns()
+  * KItemModels: Convert license headers to SPDX markers
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * Revert early return on setFilterRole
+  * Move Plasma's SortFilterProxyModel into KItemModel's QML plugin
+
+-------------------------------------------------------------------
 Sun Feb  2 18:07:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.

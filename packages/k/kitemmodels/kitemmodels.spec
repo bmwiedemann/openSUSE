@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ItemModels5
-%define _tar_path 5.67
+%define _tar_path 5.68
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kitemmodels
-Version:        5.67.0
+Version:        5.68.0
 Release:        0
 Summary:        Set of item models extending the Qt model-view framework
 License:        LGPL-2.1-or-later
@@ -43,6 +43,7 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Qml) >= 5.12.0
 %if %{with python}
 BuildRequires:  python3-clang
 BuildRequires:  python3-devel
@@ -61,6 +62,15 @@ Group:          System/GUI/KDE
 
 %description -n %{lname}
 KItemModels provides a set of item models extending the Qt model-view framework.
+
+%package imports
+Summary:        Set of item models extending the Qt model-view framework
+Group:          System/GUI/KDE
+Requires:       %{lname} = %{version}
+
+%description imports
+KItemModels provides a set of item models extending the Qt model-view framework. This package
+provides support to use KItemModels with the QtQuick framework.
 
 %package devel
 Summary:        Set of item models extending the Qt model-view framework
@@ -110,6 +120,14 @@ Python bindings.
 %{_kf5_libdir}/cmake/KF5ItemModels/
 %{_kf5_includedir}/
 %{_kf5_mkspecsdir}/qt_KItemModels.pri
+
+%files imports
+%license COPYING*
+%dir %{_kf5_qmldir}/org
+%dir %{_kf5_qmldir}/org/kde
+%dir %{_kf5_qmldir}/org/kde/kitemmodels
+%{_kf5_qmldir}/org/kde/kitemmodels/libitemmodelsplugin.so
+%{_kf5_qmldir}/org/kde/kitemmodels/qmldir
 
 %if %{with python}
 %files -n python-%{name}
