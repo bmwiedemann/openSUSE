@@ -1,7 +1,7 @@
 #
 # spec file for package python-shijian
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,28 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-shijian
-Version:        2018.6.2.1644
+Version:        2020.1.29.1857
 Release:        0
 Summary:        Python utility functions relating to time and filenames
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/wdbm/shijian
+URL:            https://github.com/wdbm/shijian
 Source0:        https://files.pythonhosted.org/packages/source/s/shijian/shijian-%{version}.tar.gz
 Source100:      python-shijian-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module scikit-learn}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module seaborn}
-BuildRequires:  %{python_module technicolor}
-# /SECTION
 Requires:       python-matplotlib
 Requires:       python-numpy
 Requires:       python-pandas
@@ -49,13 +38,9 @@ Requires:       python-scikit-learn
 Requires:       python-scipy
 Requires:       python-seaborn
 Requires:       python-technicolor
-%ifpython2
-Requires:       python-subprocess32
-%endif
 Recommends:     python-ipywidgets
 Recommends:     python-pyprel
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -73,10 +58,12 @@ sequences.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# no upstream tests
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/shijian
 %{python_sitelib}/*
 
 %changelog
