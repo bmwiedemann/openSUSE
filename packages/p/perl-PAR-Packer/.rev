@@ -168,4 +168,12 @@
     <user>dimstar_suse</user>
     <comment>Emergency fix by Factory maintainer - Recover with new createrepo_c</comment>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c0bb9a2af979a5197c19182322471242</srcmd5>
+    <version>1.050</version>
+    <time>1584643995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786469</requestid>
+  </revision>
 </revisionlist>
