@@ -79,4 +79,17 @@
     <comment>- Raise minimal pytest version</comment>
     <requestid>781139</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9636c22877f14876cf799c6275b0afc</srcmd5>
+    <version>2.1.0</version>
+    <time>1584643695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Added support for MP4 video format. (#260)
+  * Added support for sorting metadata by key. (#245)
+  * Added support for rendering reports collapsed (#239)
+  * Added extra fixture (#269)
+  * Added ability to change report title using hook (#270)</comment>
+    <requestid>785474</requestid>
+  </revision>
 </revisionlist>

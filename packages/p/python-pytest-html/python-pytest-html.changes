@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:28:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  * Added support for MP4 video format. (#260)
+  * Added support for sorting metadata by key. (#245)
+  * Added support for rendering reports collapsed (#239)
+  * Added extra fixture (#269)
+  * Added ability to change report title using hook (#270)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:51:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Raise minimal pytest version
