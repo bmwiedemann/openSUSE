@@ -1993,4 +1993,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>785611</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>dc7c6cdba292599e30bd8d7a581d5c22</srcmd5>
+    <version>4.2.0+git.1584623405.d39158a2</version>
+    <time>1584643742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786479</requestid>
+  </revision>
 </revisionlist>
