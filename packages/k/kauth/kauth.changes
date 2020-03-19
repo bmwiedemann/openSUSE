@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar  8 09:17:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * [KAuth] Add support for action details in Polkit1 backend.
+  * Use ecm_qt_install_logging_categories over manual categories file
+  * [policy-gen] Fix the code to actually use the correct capture group
+  * Drop Policykit backend
+  * [polkit-1] Simplify Polkit1Backend action exists lookup
+  * [polkit-1] Return an error status in actionStatus if there is an error
+  * Calculate KAuthAction::isValid on demand
+  * Be more helpfully verbose when we can't start an action
+
+-------------------------------------------------------------------
 Sun Feb  2 18:06:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %make_jobs with %cmake_build.
