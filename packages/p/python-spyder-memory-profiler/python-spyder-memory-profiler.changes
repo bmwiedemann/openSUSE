@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 21:11:27 UTC 2020 - code@bnavigator.de
+
+- update to 0.2.0
+- move to pytest-xvfb
+
+-------------------------------------------------------------------
 Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Disable python2 support since dependencies dropped python2

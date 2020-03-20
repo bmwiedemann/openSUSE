@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-memory-profiler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define         X_display         ":98"
 Name:           python-spyder-memory-profiler
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        Memory profiler plugin for the Spyder IDE
 License:        MIT
@@ -34,12 +33,11 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  python-mock
 BuildRequires:  spyder3 >= 3
 BuildRequires:  spyder3-lang >= 3
-BuildRequires:  xauth
-BuildRequires:  xorg-x11-server
 # /SECTION
 %python_subpackages
 
@@ -78,16 +76,12 @@ sed -i -e '/^#!\//, 1d' spyder_memory_profiler/example/subdir/*.py
 
 %check
 export QT_HASH_SEED=0
-export DISPLAY=%{X_display}
 export PYTHONDONTWRITEBYTECODE=1
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 10
-%pytest spyder_memory_profiler
+%pytest
 
 %files -n spyder3-memory-profiler
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%{python3_sitelib}/*
+%{python_sitelib}/*
 
 %changelog
