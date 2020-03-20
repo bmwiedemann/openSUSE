@@ -41,4 +41,12 @@ If this SR looks good to you, please accept it together with:
     <comment>- revert aarch64 build workarounds, underlying problem has been fixed (bsc#1138529)</comment>
     <requestid>751259</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ab08e896b20a46906f559dde79cec951</srcmd5>
+    <version>0.24.1</version>
+    <time>1584745051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786778</requestid>
+  </revision>
 </revisionlist>

@@ -41,7 +41,7 @@ Requires(post):	update-alternatives
 Requires(postun): update-alternatives
 Requires:       java-1_8_0-openjdk-devel
 Provides:       bazel = %{version}
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 armv7l armv7hl
 
 %description
 Tool for the automation of building and testing of software. It supports Java,
