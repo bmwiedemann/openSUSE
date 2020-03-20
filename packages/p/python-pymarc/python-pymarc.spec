@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymarc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pymarc
-Version:        3.1.13
+Version:        4.0.0
 Release:        0
 Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause
@@ -26,14 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/edsu/pymarc
 Source:         https://files.pythonhosted.org/packages/source/p/pymarc/pymarc-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/edsu/pymarc/master/LICENSE
-Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.9.0
+Requires:       python-pytest
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module six >= 1.9.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -46,7 +46,6 @@ saner representation.
 
 %prep
 %setup -q -n pymarc-%{version}
-%patch0 -p1
 cp %{SOURCE1} .
 
 %build
@@ -57,7 +56,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.md
