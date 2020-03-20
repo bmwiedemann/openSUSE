@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Mar 13 11:02:12 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.8+1584097308.ga30c06e:
+  + upstream 1.1.8 release (2020-03-13)
+    * seslib: remove host's virtual networks on destroy (PR #102)
+    * Jenkinsfile.integration for PR testing (PR #118, PR #154) 
+    * prometheus and alertmanager tunnels (PR #148)
+    * tests: enable unit testing via tox (PR #151)
+    * seslib: stop printing misleading device names (PR #150)
+    * seslib: Set admin roles for octopus (PR #158)
+    * Change "admin" role semantics and make roles configurable (PR #161)
+    * Allow user to override parts of OS_REPOS, VERSION_OS_REPO_MAPPING, and
+      IMAGE_PATHS (PR #146)
+
+-------------------------------------------------------------------
+Mon Mar  9 15:18:42 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.7+1583767117.gc963107:
+  + upstream 1.1.7 release (2020-03-09)
+    * all PRs mentioned in this changelog since 1.1.6, plus
+    * spec: always install sesdev-qa RPM along with sesdev (PR #144)
+
+-------------------------------------------------------------------
+Mon Mar  9 12:04:36 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.6+1583755459.gda48565:
+  + spec: disable RH/Fedora Python dependendency generator (PR #140)
+  + ceph_salt_deployment: honor --no-deploy-osds option (PR #143)
+  + Let --debug run "vagrant up/destroy" in debug mode (PR #89)
+
+-------------------------------------------------------------------
+Fri Mar  6 09:50:57 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.6+1583488232.gfdcc651:
+  + qa: fix path to qa scripts for RPM case (PR #141)
+  + ceph_salt_deployment: run "ceph-salt status" after "ceph-salt config ls"
+    (PR #138)
+
+-------------------------------------------------------------------
 Thu Mar  5 17:17:12 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.6+1583428626.ga138314: 
