@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-utils
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/WoLpH/python-utils
+URL:            https://github.com/WoLpH/python-utils
 Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python-utils-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
