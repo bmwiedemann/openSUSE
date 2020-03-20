@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:07:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 3.2.1
+  * Fix regression calling `get_recent_tracks` with `limit=None` (#320) @hugovk
+  * Support for Python 3.8
+  * Store album art URLs when you call `GetTopAlbums` ([#307])
+  * Retry paging through results on exception ([#297])
+  * Respect `get_recent_tracks`' limit when there's a now playing track ([#310])
+  * Remove Python 2 warnings, `python_requires` should be enough ([#312])
+  * Use setuptools_scm to simplify versioning during release ([#316])
+  * Extract username from session via new
+  * Drop support for Python 2.7 ([#265])
+
+-------------------------------------------------------------------
 Mon Oct 14 14:15:02 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

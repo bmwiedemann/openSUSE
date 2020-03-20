@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylast
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pylast
-Version:        3.1.0
+Version:        3.2.1
 Release:        0
 Summary:        A python interface to Last.fm
 License:        Apache-2.0
 URL:            https://github.com/pylast/pylast
 Source0:        https://files.pythonhosted.org/packages/source/p/pylast/pylast-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -69,7 +70,7 @@ Features:
 # every test file has:
 # Integration (not unit) tests for pylast.py
 # almost all skipped, need internet access
-# %%pytest
+%pytest
 
 %files %{python_files}
 %doc README.md
