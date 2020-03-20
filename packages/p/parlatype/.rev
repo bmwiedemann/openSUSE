@@ -33,4 +33,26 @@
 * Add and update translations</comment>
     <requestid>727961</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a83e8885b036d567257ac8d522f067f</srcmd5>
+    <version>2.0</version>
+    <time>1584745151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0:
+  * New: Waveform is loaded on-the-fly, there is no blocking progress
+    dialog. This brings an API bump in libparlatype.
+  * New: Waveform can be changed continuously instead of in bumps.
+  * New: Application ID has been changed to org.parlatype.Parlatype and the
+    homepage moved to https://www.parlatype.org.
+  * New: LibreOffice helpers (macros) have been split from the main
+    repository and turned into a LibreOffice extension.
+    The extension is released at
+    https://github.com/gkarsay/parlatype-libreoffice-extension/releases/tag/v2.0
+  * New: New D-Bus method GetURI to get currently playing file's URI.
+  * New: Internal modularization (PtController objects control Parlatype).
+  * New: Event handling is more compatible with GTK 4.
+  * New: Parlatype builds on Windows, there is no feature parity though.
+- Add parlatype-2.0-asr.patch: Fix regression in the ASR assistant dialog.</comment>
+    <requestid>786824</requestid>
+  </revision>
 </revisionlist>

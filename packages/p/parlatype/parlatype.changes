@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 20 09:22:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0:
+  * New: Waveform is loaded on-the-fly, there is no blocking progress
+    dialog. This brings an API bump in libparlatype.
+  * New: Waveform can be changed continuously instead of in bumps.
+  * New: Application ID has been changed to org.parlatype.Parlatype and the
+    homepage moved to https://www.parlatype.org.
+  * New: LibreOffice helpers (macros) have been split from the main
+    repository and turned into a LibreOffice extension.
+    The extension is released at
+    https://github.com/gkarsay/parlatype-libreoffice-extension/releases/tag/v2.0
+  * New: New D-Bus method GetURI to get currently playing file's URI.
+  * New: Internal modularization (PtController objects control Parlatype).
+  * New: Event handling is more compatible with GTK 4.
+  * New: Parlatype builds on Windows, there is no feature parity though.
+- Add parlatype-2.0-asr.patch: Fix regression in the ASR assistant dialog.
+
+-------------------------------------------------------------------
 Mon Sep  2 07:37:21 UTC 2019 - mvetter@suse.com
 
 - Update to 1.6.2:

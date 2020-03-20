@@ -1,7 +1,7 @@
 #
 # spec file for package parlatype
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define c_lib   libparlatype2
+%define c_lib   libparlatype3
 Name:           parlatype
-Version:        1.6.2
+Version:        2.0
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://gkarsay.github.io/parlatype/
 Source:         https://github.com/gkarsay/parlatype/releases/download/v%{version}/parlatype-%{version}.tar.gz
+# https://github.com/gkarsay/parlatype/commit/7d22ead13ef7578f99d24146663cc1bdb7d8c2a9
+Patch0:         parlatype-2.0-asr.patch
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
 BuildRequires:  gobject-introspection-devel
@@ -64,6 +66,7 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson -Dasr=false
@@ -83,17 +86,12 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %doc NEWS README.md
 %{_bindir}/parlatype
 %{_mandir}/man1/parlatype.1%{?ext_man}
-%{_datadir}/applications/com.github.gkarsay.parlatype.desktop
-%{_datadir}/metainfo/com.github.gkarsay.parlatype.appdata.xml
-%{_datadir}/metainfo/com.github.gkarsay.parlatype.libreoffice_helpers.metainfo.xml
 %{_datadir}/help/
 %{_datadir}/icons/hicolor/
-%{_datadir}/dbus-1/services/com.github.gkarsay.parlatype.service
-%{_datadir}/glib-2.0/schemas/com.github.gkarsay.parlatype.gschema.xml
-%dir %{_prefix}/lib/libreoffice/
-%dir %{_prefix}/lib/libreoffice/share
-%dir %{_prefix}/lib/libreoffice/share/Scripts
-%{_prefix}/lib/libreoffice/share/Scripts/python/
+%{_datadir}/applications/org.parlatype.Parlatype.desktop
+%{_datadir}/dbus-1/services/org.parlatype.Parlatype.service
+%{_datadir}/glib-2.0/schemas/org.parlatype.Parlatype.gschema.xml
+%{_datadir}/metainfo/org.parlatype.Parlatype.appdata.xml
 
 %files -n libparlatype-devel
 %{_libdir}/libparlatype.so
