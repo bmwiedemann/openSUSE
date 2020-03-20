@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:56:02 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 20200320:
+  * Bug Fixes
+    - Fix COLUMNS env var
+    - Fix sync after delete
+    - Fix crash in notmuch
+    - Fix sidebar indent
+    - Fix emptying trash
+    - Fix command line sending
+    - Fix reading large address lists
+    - Resolve symlinks only when necessary
+  * Translations
+    - lithuania 100% Lithuanian
+    - es 96% Spanish
+  * Docs
+    - Include OpenSSL/LibreSSL/GnuTLS version in neomutt -v output
+    - Fix case of GPGME and SQLite
+  * Build
+    - Create libcompress (lz4, zlib, zstd)
+    - Create libhistory
+    - Create libbcache
+    - Move zstrm to libconn
+  * Code
+    - Add more test coverage
+    - Rename magic to type
+    - Use mutt_file_fopen() on config variables
+    - Change commands to use intptr_t for data
+
+-------------------------------------------------------------------
 Fri Mar 13 19:01:50 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 20200313:
