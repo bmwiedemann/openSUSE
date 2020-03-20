@@ -171,46 +171,46 @@ close (IOSTAT);
 
 my $msg = "OK";
 my $status = 0;
-my @reasons;
+my %reasons;
 
 # Comparing the result and setting the correct level:
 if ($tps >= $warn_tps || $kbread >= $warn_read || $kbwritten >= $warn_written) {
    $msg = "WARNING";
-   push @reasons, "throughput";
+   $reasons{'throughput'} = 1;
    $status = 1;
 }
 
 if ($warn_iowait && $iowait >= $warn_iowait) {
    $msg = "WARNING";
-   push @reasons, "iowait";
+   $reasons{'iowait'} = 1;
    $status = 1;
 }
 
 if ($warn_util && $util >= $warn_util) {
    $msg = "WARNING";
-   push @reasons, "util";
+   $reasons{'util'} = 1;
    $status = 1;
 }
 
 if ($tps >= $crit_tps || $kbread >= $crit_read || $kbwritten >= $crit_written) {
    $msg = "CRITICAL";
-   push @reasons, "throughput";
+   $reasons{'throughput'} = 2;
    $status = 2;
 }
 
 if ($crit_iowait && $iowait >= $crit_iowait) {
    $msg = "CRITICAL";
-   push @reasons, "iowait";
+   $reasons{'iowait'} = 2;
    $status = 2;
 }
 
 if ($crit_util && $util >= $crit_util) {
    $msg = "CRITICAL";
-   push @reasons, "util";
+   $reasons{'util'} = 2;
    $status = 2;
 }
 
-$msg .= " (".join(",",@reasons).")";
+$msg .= " (".join(",",keys(%reasons)).")" if $status != 0;
 
 my $p_tps = $tps;
 if ($warn_tps) {

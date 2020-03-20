@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 00:42:48 CET 2020 - ro@suse.de
+
+- update apparmor profile usr.lib.nagios.plugins.check_iostat
+  to allow reading / and /proc/$pid/mountinfo 
+
+-------------------------------------------------------------------
 Fri Feb 28 15:41:17 CET 2020 - ro@suse.de
 
 - check_iostat: add reasons why state is warning or critical

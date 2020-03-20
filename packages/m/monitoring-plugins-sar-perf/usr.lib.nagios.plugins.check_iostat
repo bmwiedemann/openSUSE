@@ -10,8 +10,10 @@
    /sys/devices/system/cpu/ r,
    /proc/meminfo r,
    @{PROC}/[0-9]*/mounts r,
+   @{PROC}/[0-9]*/mountinfo r,
    /proc/diskstats r,
    /proc/uptime r,
+   / r,
    /etc/sysstat/sysstat.ioconf r,
 }
 
