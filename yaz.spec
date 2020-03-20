@@ -1,7 +1,7 @@
 #
 # spec file for package yaz
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.8.1
+Version:        5.29.0
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.indexdata.dk/yaz/
+URL:            http://www.indexdata.dk/yaz/
 Source:         %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM initialize variables properly
-Patch0:         yaz-5.1.2-codecleanup.diff
-# PATCH-FIX-UPSTREAM initialize variables properly
-Patch1:         yaz-4.1.7-client.diff
-# PATCH-FIX-UPSTREAM add needed ctype header
-Patch2:         yaz-4.2.47-implicit_definitions.patch
+BuildRequires:  gnutls-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libxslt-devel
@@ -86,9 +81,6 @@ using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
 %prep
 %setup -q
-%patch0 -p 1
-%patch1 -p 1
-%patch2 -p 1
 
 %build
 #  --with-dsssl=/usr/share/sgml/docbook/dsssl-stylesheets \
@@ -97,6 +89,7 @@ using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 		   --enable-tcpd \
 		   --with-xslt \
            --with-openssl \
+           --with-gnutls \
            --with-icu \
 		   --disable-static \
 		   --with-pic
@@ -112,7 +105,7 @@ cp -a doc/*.html html
 # cp doc/*pdf .
 ln -sf introduction.html html/index.html
 # yaz.pdf
-%define DOCFILES README LICENSE NEWS
+%define DOCFILES README.md LICENSE NEWS
 {
   echo "<html><head><title>%{name} documentation directory</title></head>"
   echo "<body><ul>"
@@ -145,6 +138,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/yaz-ztest*
 %{_bindir}/zoomsh
 %{_bindir}/yaz-json-parse
+%{_bindir}/yaz-record-conv
 %{_mandir}/*/yaz.*
 %{_mandir}/*/yaz-illclient.*
 %{_mandir}/*/yaz-client.*
@@ -156,6 +150,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/*/yaz-ztest.*
 %{_mandir}/*/yaz-marcdump.*
 %{_mandir}/*/yaz-json-parse.*
+%{_mandir}/*/yaz-record-conv.*
 %{_mandir}/*/bib1-attr.*
 %dir %{_datadir}/yaz
 %{_datadir}/yaz/etc
@@ -180,5 +175,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/yaz-config.*
 %{_mandir}/man1/yaz-asncomp.*
 %{_libdir}/pkgconfig/yaz.pc
+%{_libdir}/pkgconfig/yaz-icu.pc
+%{_libdir}/pkgconfig/yaz-server.pc
 
 %changelog
