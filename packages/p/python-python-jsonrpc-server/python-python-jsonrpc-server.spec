@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define modname python-jsonrpc-server
+%bcond_without python2
 Name:           python-python-jsonrpc-server
 Version:        0.3.4
 Release:        0
@@ -26,7 +26,7 @@ Summary:        JSON RPC 2.0 server library
 License:        MIT
 URL:            https://github.com/palantir/python-jsonrpc-server
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_testing_warnings.patch gh#palantir/python-jsonrpc-serveri#34 mcepl@suse.com
+# PATCH-FIX-UPSTREAM remove_testing_warnings.patch gh#palantir/python-jsonrpc-server#34 mcepl@suse.com
 # remove warnings about deprecated method logging.Logger.warn
 Patch0:         remove_testing_warnings.patch
 BuildRequires:  %{python_module mock}
@@ -36,7 +36,14 @@ BuildRequires:  %{python_module ujson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ujson
-BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-future >= 0.14.0
+BuildRequires:  python2-futures
+%endif
+%ifpython2
+Requires:       python2-future >= 0.14.0
+Requires:       python2-futures
+%endif
 %python_subpackages
 
 %description
@@ -64,6 +71,7 @@ rm setup.cfg
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pyls_jsonrpc
+%{python_sitelib}/python_jsonrpc_server-%{version}-*.egg-info
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 15 20:08:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- reactivate python2 build 
+
+-------------------------------------------------------------------
 Sat Mar 14 07:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in py2 dependencies at all since we disabled the
