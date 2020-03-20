@@ -811,4 +811,12 @@
     <comment></comment>
     <requestid>730191</requestid>
   </revision>
+  <revision rev="69" vrev="11">
+    <srcmd5>975aa14d7ca1ce7d881618aed0f207ae</srcmd5>
+    <version>1.38.0</version>
+    <time>1584744890</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1161169 and bsc#1167131</comment>
+    <requestid>786530</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libguestfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 # needsbinariesforbuild
 
@@ -147,6 +147,8 @@ Patch1:         0a55098f-builder-repository-fix-compute_short_id-for-sles-X.0.pa
 Patch2:         fd43730e-error-with-uninstall-option-on-SUSE.patch
 Patch3:         70407cd622-inspection-Parse-os-release-opensuse-leap-as-opensus.patch
 Patch4:         28bd06227b-inspect-handle-os-release-opensuse-tumbleweed-as-ope.patch
+Patch5:         500acb15-v2v-linux-fix-kernel-detection-when-split-in-different-packages.patch
+
 # Pending upstram review
 Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
 Patch51:        0002-common-extract-UTF-8-conversion-function.patch
@@ -566,6 +568,7 @@ It can import a variety of guest operating systems from libvirt-managed hosts.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 %patch50 -p1
 %patch51 -p1
 %patch52 -p1
