@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-python-language-server
 Version:        0.31.8
 Release:        0
@@ -25,6 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/palantir/python-language-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-language-server/python-language-server-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE use_newer_ujson.patch mcepl@suse.com
+# Use system python3-ujson without regards which version it is
+Patch0:         use_newer_ujson.patch
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
 BuildRequires:  %{python_module flake8}
@@ -61,8 +65,10 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jsonrpc-server >= 0.3.2}
+%if %{with python2}
 BuildRequires:  python2-backports.functools_lru_cache
 BuildRequires:  python2-configparser
+%endif
 # /SECTION
 %ifpython2
 Requires:       python2-backports.functools_lru_cache
@@ -74,7 +80,7 @@ Requires:       python2-future >= 0.14.0
 %description
 Python Language Server for the Language Server Protocol.
 
-If the respective dependencies are found, the following optional providers
+If the respective recommended packages are installed, the following optional providers
 will be enabled:
 
 - Rope for Completions and renaming
@@ -87,6 +93,7 @@ will be enabled:
 
 %prep
 %setup -q -n python-language-server-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -100,8 +107,10 @@ will be enabled:
 # # Remove pytest addopts
 # rm setup.cfg
 # # One test failure on Leap 15.1 due to different pylint version
-# SKIP_TESTS='test_syntax_error_pylint_py3'
-# %%pytest -k "not $SKIP_TESTS"
+# %%if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
+# %%define skip_tests -k not 'test_syntax_error_pylint_py3'
+# %%endif
+# %%pytest %{?skip_tests}
 
 %files %{python_files}
 %doc README.rst
