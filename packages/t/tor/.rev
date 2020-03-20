@@ -721,4 +721,12 @@ expose the tor-related ports.</comment>
     about mismatched magic numbers</comment>
     <requestid>769011</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>0cc75edd886c0592d3e8517c00b7bf6a</srcmd5>
+    <version>0.4.2.7</version>
+    <time>1584745098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786716</requestid>
+  </revision>
 </revisionlist>
