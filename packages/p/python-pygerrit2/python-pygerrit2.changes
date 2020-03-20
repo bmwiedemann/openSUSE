@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 20 08:26:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.0.10
+  * Support explicit anonymous access
+  * Remove unnecessary string concatenation
+  * Explicitly install importlib_metadata for Python < 3.8.0
+  * Travis: Add build for Python 3.8
+
+-------------------------------------------------------------------
 Thu May 23 07:50:13 UTC 2019 - pgajdos@suse.com
 
 - version update to 2.0.9
