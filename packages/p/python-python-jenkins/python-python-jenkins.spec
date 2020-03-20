@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jenkins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,17 +19,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-jenkins
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        Python bindings for the remote Jenkins API
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://opendev.org/jjb/python-jenkins
+URL:            https://opendev.org/jjb/python-jenkins
 Source:         https://files.pythonhosted.org/packages/source/p/python-jenkins/python-jenkins-%{version}.tar.gz
 BuildRequires:  %{python_module cmd2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module multi_key_dict}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pbr >= 0.8.2}
 BuildRequires:  %{python_module requests-mock >= 1.4}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module stestr >= 2.0}
