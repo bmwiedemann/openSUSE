@@ -1,7 +1,7 @@
 #
 # spec file for package crawl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Sascha Peilicke <sasch.pe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,28 +13,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define major_ver 0.23
+%define major_ver 0.24
 %define about Crawl is a fun game in the grand tradition of games like Rogue, Hack, and Moria.\
 Your objective is to travel deep into a subterranean cave complex and retrieve the Orb of Zot, \
 which is guarded by many horrible and hideous creatures.
 Name:           crawl
-Version:        %{major_ver}.2
+Version:        %{major_ver}.0
 Release:        0
 Summary:        Roguelike dungeon exploration game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/RPG
-Url:            https://crawl.develz.org/
+URL:            https://crawl.develz.org/
 Source:         https://crawl.develz.org/release/%{major_ver}/stone_soup-%{version}-nodeps.tar.xz
-# PATCH-FIX-OPENSUSE for reproducible builds
-Patch0:         %{name}-0.17.1-datetime.patch
 # PATCH-FIX-UPSTREAM https://github.com/crawl/crawl/pull/464
-Patch1:         desktop.patch
-Patch2:         icon.patch
-Patch3:         appdata.patch
+Patch0:         desktop.patch
+Patch1:         icon.patch
+Patch2:         appdata.patch
 BuildRequires:  dejavu-fonts
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -45,14 +43,14 @@ BuildRequires:  lua51-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pngcrush
+BuildRequires:  python
+BuildRequires:  python-PyYAML
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  python
-BuildRequires:  python-PyYAML
 Requires:       %{name}-data = %{version}
 %if 0%{?suse_version} >= 1330
 Requires:       group(games)
@@ -93,10 +91,9 @@ These are the data files for Dungeon Crawl Stone Soup.
 
 %prep
 %setup -q -n stone_soup-%{version}
-%patch0 -p1
+%patch0 -p2
 %patch1 -p2
 %patch2 -p2
-%patch3 -p2
 
 %build
 cd source

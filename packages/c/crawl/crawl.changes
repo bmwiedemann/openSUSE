@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:54:41 UTC 2020 - Jon Brightwell <jon@moozaad.co.uk>
+
+- Update to version 0.24.0
+  * Vampire species simplified
+  * Thrown weapons streamlined
+  * Fedhas reimagined
+  * Sif Muna reworked
+- removed crawl-0.17.1-datetime.patch as fixed upstream
+
+-------------------------------------------------------------------
 Sun Jul 21 16:44:16 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
 
 - Update to version 0.23.2
