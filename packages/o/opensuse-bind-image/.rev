@@ -16,4 +16,14 @@
 </comment>
     <requestid>758114</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2f6f2f8fd9eae2179c86fdb231cdcbd</srcmd5>
+    <version>1.0.0</version>
+    <time>1584745201</time>
+    <user>dimstar_suse</user>
+    <comment>- Create and handle rndc.key in entrypoint script
+- Drop config.sh, fixed in busybox container
+</comment>
+    <requestid>786960</requestid>
+  </revision>
 </revisionlist>
