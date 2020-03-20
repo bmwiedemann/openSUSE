@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 13 06:10:44 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 0.9.4
+  * Remove Python 2 compatibility
+- Update to version 0.9.3
+  * Cycle through opening links with webbrowser module, xdg-open or --run argument
+  * Add option to copy to primary selection or clipboard. Fix #87
+  * Generate new config file using command line switch instead of keybinding
+  * Allow remapping a key to open url in addition to space and enter
+  * Show help menu with F1 and show dynamic keybindings
+  * Allow editing key bindings in config.json. Fix #72.
+- Set python flavour spec file macro to get the rpm pythin macros defined
+- Remove egg information tree as we require python3-urwid
+
+-------------------------------------------------------------------
 Thu Feb  7 07:46:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 0.9.2
