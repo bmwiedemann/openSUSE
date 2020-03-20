@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,26 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytools
-Version:        2019.1.1
+Version:        2020.1
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pytools
 Source0:        https://files.pythonhosted.org/packages/source/p/pytools/pytools-%{version}.tar.gz
-BuildRequires:  %{python_module appdirs} >= 1.4.0
+BuildRequires:  %{python_module appdirs >= 1.4.0}
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module decorator} >= 3.2.0
-BuildRequires:  %{python_module numpy} >= 1.6.0
+BuildRequires:  %{python_module decorator >= 3.2.0}
+BuildRequires:  %{python_module numpy >= 1.6.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six} >= 1.8.0
+BuildRequires:  %{python_module six >= 1.8.0}
 BuildRequires:  fdupes
+BuildRequires:  python-appdirs >= 1.4.0
+BuildRequires:  python-decorator >= 3.2.0
+BuildRequires:  python-numpy >= 1.6.0
 BuildRequires:  python-rpm-macros
+BuildRequires:  python-six >= 1.8.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,13 +62,10 @@ nonetheless, here's what's on offer:
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The tests are successful when run only with python2.
-# When run with python3, the tests require mpi4py and all the
-# necessary libraries and configuration that comes with MPI.
-python2 setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE

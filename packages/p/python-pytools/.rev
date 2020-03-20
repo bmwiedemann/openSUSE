@@ -65,4 +65,15 @@
     <comment></comment>
     <requestid>702957</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f07f07d020ccd2817a39411bef652b8d</srcmd5>
+    <version>2020.1</version>
+    <time>1584745134</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2020.1
+  + No upstream changelog available
+ 
+</comment>
+    <requestid>786808</requestid>
+  </revision>
 </revisionlist>
