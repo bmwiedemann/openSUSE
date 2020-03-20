@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-APScheduler
 Version:        3.6.3
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/apscheduler
 Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-%{version}.tar.gz
 BuildRequires:  %{python_module SQLAlchemy >= 0.8}
@@ -39,26 +39,28 @@ BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module tzlocal >= 1.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-funcsigs
-BuildRequires:  python2-futures
-BuildRequires:  python2-mock
-BuildRequires:  python2-trollius
 BuildRequires:  python3-pytest-asyncio
 Requires:       python-pytz
 Requires:       python-six >= 1.4.0
 Requires:       python-tzlocal >= 1.2
 Recommends:     python-SQLAlchemy >= 0.8
-Recommends:     python-gevent
 Recommends:     python-Twisted
+Recommends:     python-gevent
 Suggests:       python-kazoo
 Suggests:       python-pymongo >= 2.8
 Suggests:       python-redis
 Suggests:       python-tornado >= 4.3
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-funcsigs
+BuildRequires:  python-futures
+BuildRequires:  python-mock
+BuildRequires:  python-trollius
+%endif
 %ifpython2
-Requires:       python2-funcsigs
-Requires:       python2-futures
-Requires:       python2-trollius
+Requires:       python-funcsigs
+Requires:       python-futures
+Requires:       python-trollius
 %endif
 %python_subpackages
 

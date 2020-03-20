@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:32:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build wihtout python2
+
+-------------------------------------------------------------------
 Mon Jan 13 14:12:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 3.6.3

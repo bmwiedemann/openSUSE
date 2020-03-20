@@ -121,4 +121,12 @@
     <comment></comment>
     <requestid>764025</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d471d9d6a9463ca4e95581bbb81999dc</srcmd5>
+    <version>3.6.3</version>
+    <time>1584744843</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I py2 fix</comment>
+    <requestid>785446</requestid>
+  </revision>
 </revisionlist>
