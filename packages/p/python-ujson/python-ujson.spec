@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-ujson
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
@@ -42,9 +41,8 @@ BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
-UltraJSON is a JSON encoder and decoder written in pure C with
-bindings for Python 2.5+ and 3. For a different C/C++ JSON
-decoder experience please checkout ujson4c_, based on UltraJSON.
+An ultrafast JSON encoder and decoder written in pure C with
+bindings for Python 2.7 and 3.5+
 
 %prep
 %setup -q -n ujson-%{version}
