@@ -51,4 +51,41 @@
     <comment></comment>
     <requestid>694212</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>59d4ac420c11e85b634a9bdfbf565a15</srcmd5>
+    <version>1.13</version>
+    <time>1584745162</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not really needed nose dependency
+
+- version update to 1.13
+  * Add modules for the following number formats:
+    - ESR, ISR, QR-reference (reference number on Swiss payment slips)
+      (thanks Kurt Keller)
+    - ID number (South African Identity Document number)
+  * Add format function for ISO 11649 numbers (thanks Kurt Keller)
+  * Add support for Python 3.8 (thanks Sergi Almacellas Abellana)
+  * Clarify that the Italian Codice Fiscale can also be the IVA for companies
+    (thanks Nicholas Fiorentini)
+  * Support the new Dutch btw-identificatienummer (thanks Cas Vissers,
+    Jeroen van Heiningen, Jerome Hanke, Nicolas Martinelli, Ronald Portier and
+    Tim Muller)
+  * Extend test for Argentinian CUIT to check first two digits
+  * Add more country codes to ISIN (thanks nocluebutalotofit, Anwar Baroudi and
+    alexbond73)
+  * Add modules for the following number formats:
+    - NRT (Número de Registre Tributari, Andorra tax number)
+      (thanks Leandro Regueiro)
+    - CPF (Cédula de Persona Física, Costa Rica physical person ID number)
+      (thanks Leandro Regueiro)
+    - CPJ (Cédula de Persona Jurídica, Costa Rica tax number)
+      (thanks Leandro Regueiro)
+    - CR (Cédula de Residencia, Costa Rica foreigners ID number)
+      (thanks Leandro Regueiro)
+    - NIT (Número de Identificación Tributaria, Guatemala tax number)
+      (thanks Leandro Regueiro)
+    - Identity Number (Mispar Zehut, מספר זהות, Israeli identity number)
+    - CN (法人番号, hōjin bangō, Japanese Corporate Number)</comment>
+    <requestid>786833</requestid>
+  </revision>
 </revisionlist>

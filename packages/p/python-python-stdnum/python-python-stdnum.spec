@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-stdnum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define modname python-stdnum
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        1.11
+Version:        1.13
 Release:        0
 Summary:        Python module to handle standardized numbers and codes
 License:        LGPL-2.0-or-later
-Group:          Development/Languages/Python
-URL:            http://arthurdejong.org/python-stdnum/
+URL:            https://arthurdejong.org/python-stdnum/
 Source:         https://files.pythonhosted.org/packages/source/p/python-stdnum/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,7 +53,7 @@ parsing, validation, formatting or conversion functions.
 
 %check
 export LANG=en_US.UTF-8
-%python_exec -m nose
+%pytest
 
 %files %{python_files}
 %license COPYING

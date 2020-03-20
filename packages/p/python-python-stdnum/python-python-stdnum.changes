@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:34:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop not really needed nose dependency
+
+-------------------------------------------------------------------
+Fri Mar 20 11:04:16 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.13
+  * Add modules for the following number formats:
+    - ESR, ISR, QR-reference (reference number on Swiss payment slips)
+      (thanks Kurt Keller)
+    - ID number (South African Identity Document number)
+  * Add format function for ISO 11649 numbers (thanks Kurt Keller)
+  * Add support for Python 3.8 (thanks Sergi Almacellas Abellana)
+  * Clarify that the Italian Codice Fiscale can also be the IVA for companies
+    (thanks Nicholas Fiorentini)
+  * Support the new Dutch btw-identificatienummer (thanks Cas Vissers,
+    Jeroen van Heiningen, Jerome Hanke, Nicolas Martinelli, Ronald Portier and
+    Tim Muller)
+  * Extend test for Argentinian CUIT to check first two digits
+  * Add more country codes to ISIN (thanks nocluebutalotofit, Anwar Baroudi and
+    alexbond73)
+  * Add modules for the following number formats:
+    - NRT (Número de Registre Tributari, Andorra tax number)
+      (thanks Leandro Regueiro)
+    - CPF (Cédula de Persona Física, Costa Rica physical person ID number)
+      (thanks Leandro Regueiro)
+    - CPJ (Cédula de Persona Jurídica, Costa Rica tax number)
+      (thanks Leandro Regueiro)
+    - CR (Cédula de Residencia, Costa Rica foreigners ID number)
+      (thanks Leandro Regueiro)
+    - NIT (Número de Identificación Tributaria, Guatemala tax number)
+      (thanks Leandro Regueiro)
+    - Identity Number (Mispar Zehut, מספר זהות, Israeli identity number)
+    - CN (法人番号, hōjin bangō, Japanese Corporate Number)
+      (thanks Alan Hettinger)
+    - RRN (South Korean resident registration number)
+      (thanks Dimitri Papadopoulos)
+    - IRD number (New Zealand Inland Revenue Department (Te Tari Tāke) number)
+      (thanks Leandro Regueiro)
+    - CUI (Cédula Única de Identidad, Peruvian identity number)
+    - RUC (Registro Único de Contribuyentes, Peruvian company tax number)
+    - RUC number (Registro Único de Contribuyentes, Paraguay tax number)
+      (thanks Leandro Regueiro)
+    - VKN (Vergi Kimlik Numarası, Turkish tax identification number)
+      (thanks Leandro Regueiro)
+    - RUT (Registro Único Tributario, Uruguay tax number)
+      (Leandro Regueiro)
+    - RIF (Registro de Identificación Fiscal, Venezuelan VAT number)
+      (thanks Kevin Kaiser)
+    - TIN (South African Tax Identification Number) (thanks Leandro Regueiro)
+  * Support GTIN (EAN-14) validation as part of EAN
+    (thanks Sergi Almacellas Abellana)
+  * Support Dominican Republic e-CF within NCF (thanks Jeffry Jesus De La Rosa)
+  * Fix Dominican Republic DGII lookups of NCF (thanks Jeffry Jesus De La Rosa)
+  * Fix German Handelsregisternummer to not confuse Hamburg with Homburg and to
+    accept shorter numbers (thanks Kevin Kaiser)
+  * Support lookups of German Handelsregisternummer in OffeneRegister.de web
+    service
+  * Handle - and + sign correctly in Swedish Personnummer
+    (thanks Amin Solhizadeh)
+  * Provide various personalid and vat aliases for existing numbers
+    (thanks Andreas Häber)
+  * Improve descriptions of Spanish codes (thanks Gerard Dalmau)
+  * Fix handling and normalisation of various Unicode digit representations
+    (thanks Helge Munk Jacobsen)
+
+-------------------------------------------------------------------
 Fri Apr 12 14:00:38 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.11
