@@ -1290,4 +1290,25 @@
     (glgo#World/lollypop#287).</comment>
     <requestid>784059</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>9f766eb0c9606bb7ed2b6ba7a9ba7767</srcmd5>
+    <version>1.2.29</version>
+    <time>1584745093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.29:
+  * Fix an issue with crossfading (glgo#World/lollypop#2251).
+- Changes from version 1.2.28:
+  * Fix an issue with keyboard shortcuts in search view
+    (glgo#World/lollypop#2216).
+
+- Update to version 1.2.27:
+  * Fix an issue between &quot;Open With&quot; and Dolphin
+    (glgo#World/lollypop#2248).
+
+- Update to version 1.2.26:
+  * Fix a crash on drag and drop (glgo#World/lollypop#2247).
+  * Rework lyrics layout (glgo#World/lollypop#2239).
+  * Fix a crash in About dialog (glgo#World/lollypop#2238).</comment>
+    <requestid>786993</requestid>
+  </revision>
 </revisionlist>
