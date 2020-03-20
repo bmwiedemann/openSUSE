@@ -202,4 +202,37 @@
 - Drop no-hardcoded-dep.patch, no longer required</comment>
     <requestid>775083</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c0ba858b06b7dbd5d1ad8d88ae2f42c7</srcmd5>
+    <version>1.47</version>
+    <time>1584744849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.47
+  + Bug Fixes &amp; Improvements
+    * Add support to edit and delete a project (#1434) (f11f739)
+    * Add method for fetching pull requests associated with a commit (#1433) (0c55381)
+    * Add &quot;get_repo_permission&quot; to Team class (#1416) (219bde5)
+    * Add list projects support, update tests (#1431) (e44d11d)
+    * Don't transform completely in PullRequest.*assignees (#1428) (b1c3549)
+    * Add create_project support, add tests (#1429) (bf62f75)
+    * Add draft attribute, update test (bd28524)
+    * Docstring for Repository.create_git_tag_and_release (#1425) (bfeacde)
+    * Create a tox docs environment (#1426) (b30c09a)
+    * Add Deployments API (#1424) (3d93ee1)
+    * Add support for editing project cards (#1418) (425280c)
+    * Add draft flag parameter, update tests (bd0211e)
+    * Switch to using pytest (#1423) (c822dd1)
+    * Fix GitMembership with a hammer (#1420) (f2939eb)
+    * Add support to reply to a Pull request comment (#1374) (1c82573)
+    * PullRequest.update_branch(): allow expected_head_sha to be empty (#1412) (806130e)
+    * Implement ProjectCard.delete() (#1417) (aeb27b7)
+    * Add pre-commit plugin for black/isort/flake8 (#1398) (08b1c47)
+    * Add tox (#1388) (125536f)
+    * Open file in text mode in scripts/add_attribute.py (#1396) (0396a49)
+    * Silence most ResourceWarnings (#1393) (dd31a70)
+    * Assert more attributes in Membership (#1391) (d6dee01)
+    * Assert on changed Repository attributes (#1390) (6e3ceb1)
+    * Add reset to the repr for Rate (#1389) (0829af8)</comment>
+    <requestid>785457</requestid>
+  </revision>
 </revisionlist>
