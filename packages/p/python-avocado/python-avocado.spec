@@ -18,7 +18,6 @@
 
 # No longer build for python2
 %define skip_python2  1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         pkgname avocado
 Name:           python-avocado
@@ -78,6 +77,7 @@ framework) to perform automated testing.
 %package  -n    %{pkgname}-common
 Summary:        Avocado Test Framework
 Group:          Development/Languages/Python
+Conflicts:      avocado < %{version}
 
 %description   -n  %{pkgname}-common
 Avocado is a set of tools and libraries (what people call these days a

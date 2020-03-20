@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>777873</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>40cd8484722712e389fd5745fbcc15a2</srcmd5>
+    <version>69.0</version>
+    <time>1584745040</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflict with old avocado for migration</comment>
+    <requestid>786773</requestid>
+  </revision>
 </revisionlist>
