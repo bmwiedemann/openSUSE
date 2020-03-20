@@ -1,7 +1,7 @@
 #
 # spec file for package goldendict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright 2013 Tvangeste <i.4m.l33t@yandex.ru>
 # Copyright 2011-2018 <opensuse.lietuviu.kalba@gmail.com>
 # Copyright 2008-2009 Buschmann <buschmann23@opensuse.org>
@@ -24,7 +24,7 @@ Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Dictionary
 Url:            http://goldendict.org/
-Version:        1.5.0~rc2+git.20190215T001516
+Version:        1.5.0~rc2+git.20200319T123945
 Release:        0
 Source0:        goldendict-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -157,11 +157,13 @@ Author:
 %defattr(644,root,root,755)
 %license LICENSE.txt
 %defattr(755,root,root,755)
-%_bindir/%{name}
+%{_bindir}/%{name}
 %defattr(644,root,root,755)
-%_datadir/applications/%{name}.desktop
-%_datadir/pixmaps/%{name}.png
-%_datadir/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/%{name}
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/%{name}.appdata.xml
 %exclude %{_datadir}/%{name}/locale/
 
 %files lang

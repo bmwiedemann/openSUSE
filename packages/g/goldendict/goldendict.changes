@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:56:14 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update source to goldendict-1.5.0~rc2+git.20200319T123945 
+  (i.e. db93bd19d335c60cdf1ae9095709d03423e0f2b2).
+- Remove RPM source files for Debian build.
+- Fix some crashes under Qt 5.12.
+- Added a desktop action as a workaround to crashes on Wayland.
+- Normalize whitespaces while translate on clipboard change.
+- appdata.xml: Pass appstream-util validation.
+- Fix some data races.
+- Fix Qt5-specific crash after Ctrl+Tab when tabs navigation in 
+  MRU order is turned on in preferences.
+- FFmpeg player: Fix some crashes on broken files.
+- Add ".webp", ".mpa", ".mp2" and ".opus" as known media.
+- DSL: Trim spaces in "s" and "url" tags.
+- DSL: Fix expanding of round brackets while full-text search.
+- DSL: Strip tags "<<" and ">>" while full-text search.
+- DSL: Fix handling of dsl "@" subcard in first line of card.
+- DSL: Change of tags handling while full-text search.
+- DSL: Fix sound saving from preferred dictionary.
+- DSL: Fix {(...)} case handling in insided cards.
+- Fix "file://" urls correction for case of launch portable GD 
+  via network.
+- Increase limit of node elements while build index.
+- SLOB: Some optimization for indexing of a large files.
+- SLOB: Fix detection of article duplicates.
+- SLOB: Add class "slobdict" to slob headword.
+- SLOB: Add support for uncompressed articles.
+- Allow dictionaries groups combobox standard hotkeys from FTS and 
+  Headwords dialogs.
+- Fix empty menu if program compiled with qt5.
+- XDXF: A little more handling for <ex> tag.
+- XDXF: Fix indexing of the dictionaries with empty "abbreviation"
+  field.
+- Support "[!a-x]" like construction while handling wildcards 
+  via QRegularExpression.
+- Use QRegularExpression instead of QRegExp in dictionary headwords
+  dialog under Qt 5.12 and later.
+- Fix save/restore geometry for some dialogs under Qt 5.12.
+- Added AppData manifest file for modern package managers.
+- Add Hindi, Lojban translations.
+- Update Bulgarian, German, Lithuanian, Swedish, Turkish translations.
+
+-------------------------------------------------------------------
 Wed Aug  7 14:36:34 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Split -lang package 
