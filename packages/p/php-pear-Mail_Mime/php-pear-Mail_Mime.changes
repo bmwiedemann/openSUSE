@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 19:07:14 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- new upstream release 1.10.7
+  * Fix invalid Content-Type for messages with only html part and
+    inline images
+
+-------------------------------------------------------------------
 Wed Feb  5 07:20:32 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - new upstream release 1.10.6
