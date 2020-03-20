@@ -1,7 +1,7 @@
 #
 # spec file for package logwarn
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (C) 2010-2011 Archie L. Cobbs. All rights reserved.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           logwarn
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        Utility for finding interesting messages in log files
 License:        Apache-2.0
 Group:          System/Monitoring
 Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
-Url:            https://github.com/archiecobbs/%{name}/
+URL:            https://github.com/archiecobbs/%{name}/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc
 BuildRequires:  make
