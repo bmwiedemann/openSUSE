@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-slugify
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-slugify
-Version:        3.0.3
+Version:        4.0.0
 Release:        0
 Summary:        Slugify application that handles Unicode
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/un33k/python-slugify
+URL:            https://github.com/un33k/python-slugify
 Source:         https://files.pythonhosted.org/packages/source/p/python-slugify/python-slugify-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module text-unidecode >= 1.2}
+BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
+Requires:       python-text-unidecode >= 1.3
+Suggests:       python-Unidecode >= 1.1.1
 Conflicts:      python-awesome-slugify
-Requires:       python-text-unidecode >= 1.2
-Suggests:       python-Unidecode >= 1.0.23
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
