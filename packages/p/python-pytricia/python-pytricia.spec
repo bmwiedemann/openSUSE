@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytricia
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytricia
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A library for IP address lookup in Python
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/jsommers/pytricia
+URL:            https://github.com/jsommers/pytricia
 Source:         https://files.pythonhosted.org/packages/source/p/pytricia/pytricia-%{version}.tar.gz
 # https://github.com/jsommers/pytricia/issues/25
-Source1:        https://raw.githubusercontent.com/jsommers/pytricia/master/COPYING.LESSER
-# shorthened https://raw.githubusercontent.com/jsommers/pytricia/master/test.py
-# see https://github.com/jsommers/pytricia/issues/26
-Source2:        test.py
+Source2:        https://raw.githubusercontent.com/jsommers/pytricia/master/test.py
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,7 +40,6 @@ to recommend it over related modules (including py-radix and SubnetTree).
 
 %prep
 %setup -q -n pytricia-%{version}
-cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %build
@@ -53,7 +50,7 @@ export CFLAGS="%{optflags}"
 %python_install
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover
+%pytest_arch test.py
 
 %files %{python_files}
 %license COPYING.LESSER

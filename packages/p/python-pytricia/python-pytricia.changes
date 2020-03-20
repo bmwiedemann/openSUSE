@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 20 08:48:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.1
+  * no upstream changelog
+- modified sources
+  % test.py (downloaded newer version)
+- deleted sources
+  - COPYING.LESSER (included in tarball)
+
+-------------------------------------------------------------------
 Tue Jun  4 07:37:32 UTC 2019 - pgajdos@suse.com
 
 - shortened test.py, https://github.com/jsommers/pytricia/issues/26
