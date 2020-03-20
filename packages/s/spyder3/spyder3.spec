@@ -16,12 +16,12 @@
 #
 
 
-%define         X_display         ":98"
 %ifarch x86_64 aarch64 ppc64le %{arm} %{ix86} %{ppc}
 %bcond_without  test
 %else
 %bcond_with     test
 %endif
+%define skip_python2 1
 Name:           spyder3
 Version:        4.0.1
 Release:        0
@@ -99,6 +99,11 @@ Requires:       python3-spyder-kernels >= 1.8.1
 Requires:       python3-watchdog
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
+Recommends:     %{name}-line-profiler
+Recommends:     %{name}-memory-profiler
+Recommends:     %{name}-notebook
+Recommends:     %{name}-terminal
+Recommends:     %{name}-unittest
 Recommends:     python3-Pillow
 Recommends:     python3-matplotlib >= 1.0
 Recommends:     python3-numpy
@@ -131,7 +136,7 @@ BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-scipy
 BuildRequires:  python3-spyder-kernels >= 1.8.1
 BuildRequires:  python3-sympy
-BuildRequires:  xvfb-run
+BuildRequires:  xdpyinfo
 %endif
 
 %description
@@ -226,6 +231,8 @@ sed -i -e '/^#!\//, 1d' spyder/app/restart.py
 sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
 %patch0 -p1
 %patch1 -p1
+# remove specific jedi dependency, as it triggers an annoying warning on startup
+sed -i "s|JEDI_REQVER = '=0.14.1'|JEDI_REQVER = None|" spyder/dependencies.py
 
 %build
 %python3_build
@@ -281,8 +288,13 @@ skiptests="$skiptests or test_mpl_backend_change"
 # tests not suitable for CIs or OBS as evident from the last assert which fails here
 skiptests="$skiptests or test_connection_dialog_remembers_input_with_ssh_passphrase"
 skiptests="$skiptests or test_connection_dialog_remembers_input_with_password"
-
-xvfb-run -a python3 -B -m pytest -vvvv spyder -k "not ($skiptests)"
+# test relies on IPythonConsole behaving well on OBS (which does not..)
+skiptests="$skiptests or test_dbg_input"
+# same for the whole ipythonconsole plugin
+ipythonplugin="spyder/plugins/ipythonconsole"
+ignoretestfiles="--ignore=$ipythonplugin/tests/test_ipythonconsole.py
+                 --ignore=$ipythonplugin/comms/tests/test_comms.py"
+%pytest -k "not ($skiptests)" $ignoretestfiles
 %endif
 
 %files

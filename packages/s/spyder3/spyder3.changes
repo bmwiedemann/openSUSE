@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 18 10:36:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- disable ipythonconsole plugin tests completely. OBS really does
+  not behave well here -- lots of timeout errors.
+- move to pytest-xvfb 
+
+-------------------------------------------------------------------
+Fri Mar 13 10:33:46 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- disable test_dbg_input (relies on IPythonConsole behaving well in OBS)
+- recommend auxiliary spider modules
+- fix specific jedi =0.14.1 dependency removal, that triggers a warn dialog
+
+-------------------------------------------------------------------
 Tue Feb 18 19:55:19 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - run spec-cleaner
