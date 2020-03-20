@@ -79,4 +79,15 @@
   + Fixes bug where `-T' suppressed everything when used with `-p'</comment>
     <requestid>404510</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26de54ca83b583e35f62a92e49a21e98</srcmd5>
+    <version>1.0.15</version>
+    <time>1584745107</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.0.15
+  + Added &quot;-C&quot; flag to Nagios plugin (issue #28).
+  + Allow &quot;-T X/Y&quot; flag as the final command line argument
+</comment>
+    <requestid>786611</requestid>
+  </revision>
 </revisionlist>

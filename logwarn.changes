@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 19 22:01:44 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.0.15
+  + Added "-C" flag to Nagios plugin (issue #28).
+  + Allow "-T X/Y" flag as the final command line argument
+
+-------------------------------------------------------------------
 Fri Jun 24 14:27:12 UTC 2016 - archie.cobbs@gmail.com
 
 - Upgrade to release 1.0.14
