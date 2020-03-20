@@ -355,4 +355,41 @@
 - small specfile cleanup</comment>
     <requestid>281395</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>67e0a82ea5067dc3f72a7f26a5664f76</srcmd5>
+    <version>5.29.0</version>
+    <time>1584745197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.29.0:
+  + Several fixes for danmarc(2) charset encoding and decoding.
+    YAZ-923 YAZ-924
+  + Fix yaz-marcdump silently creates MARC-records with an 
+    invalid director YAZ-926
+  + Add pkg-config templates for YAZ ICU and YAZ server YAZ-925
+  5.28.0 2019/11/28
+  + Element-set is case sensitive for yaz_retrieval. The element-set
+  name should be case insensitive, and thus, the name property
+  is matched in a case-insensive mannner. YAZ-922
+  5.27.2 2019/10/07
+  + Fix hitting directory for docpath results in malloc failure YAZ-921
+  + Fix attempt to write HTTP to a non-listening socket loops YAZ-919
+  + Fix yaz-ztest SSL does not work when forking YAZ-918
+  5.27.1 2018/12/03
+  + Use pkg-config to detect ICU . Closes #41
+  + Describe ZOOM option timeout
+  + Fix typos in yaz-client man page and other typos
+  5.27.0 2018/10/08
+  + GFS: Allow External type TaskPackage response YAZ-915
+  + zoomsh: fset command YAZ-916
+  + Improve logging of extended service task type YAZ-914
+  + yaz-client: document the third arg to the show command #37
+  5.26.1 2018/07/11
+  + Fix segv with element-set=null and split YAZ-913
+  5.26.0 2018/07/09
+  + Allow suffix split for retrieval element-set names YAZ-912
+  + cql2ccl: case sensitive comparisons for ops etc YAZ-911
+  5.25.0 2018/05/04
+  + ZOOM C: return extended services diagnostics separately YAZ-908</comment>
+    <requestid>786938</requestid>
+  </revision>
 </revisionlist>
