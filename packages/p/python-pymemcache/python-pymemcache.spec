@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymemcache
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymemcache
-Version:        2.2.2
+Version:        3.0.0
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0

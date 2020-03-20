@@ -69,4 +69,12 @@
   * Fix setup.py dependency on six already being installed.</comment>
     <requestid>729846</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>881df9732cc1343efe3599a63b6e5bf9</srcmd5>
+    <version>3.0.0</version>
+    <time>1584745178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786856</requestid>
+  </revision>
 </revisionlist>
