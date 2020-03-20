@@ -23,4 +23,12 @@
   * Update defusexml dependency</comment>
     <requestid>717586</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28e7621689feb1146d45c99ae0d2f563</srcmd5>
+    <version>1.9.0</version>
+    <time>1584745139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786816</requestid>
+  </revision>
 </revisionlist>

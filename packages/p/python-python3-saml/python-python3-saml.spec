@@ -1,7 +1,7 @@
 #
 # spec file for package python-python3-saml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python3-saml
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Python SAML support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/onelogin/python3-saml
-Source:         https://github.com/onelogin/python3-saml/archive/v.%{version}.tar.gz#/python3-saml-%{version}.tar.gz
+Source:         https://github.com/onelogin/python3-saml/archive/v%{version}.tar.gz#/python3-saml-%{version}.tar.gz
 Patch0:         bug-testDecryptElement.patch
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module freezegun >= 0.3.11}
@@ -50,7 +50,7 @@ SAML is an XML-based standard for web browser single sign-on and is
 defined by the OASIS Security Services Technical Committee.
 
 %prep
-%setup -q -n python3-saml-v.%{version}
+%setup -q -n python3-saml-%{version}
 %patch0 -p1
 sed -i 's/==/>=/;/dependency_links/d' setup.py
 
