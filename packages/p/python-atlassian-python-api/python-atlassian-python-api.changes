@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 20 01:07:09 UTC 2020 - steven.kowalik@suse.com
+
+- Update to 1.15.6:
+  * Bamboo examples and Confluence fix of params (#464)
+  * Added parameter for user() method: (#465)
+  * Check for if an element is a valid email (#466)
+  * Ability of adding reviewers when opening a PR (#470)
+  * Util method to convert a nested dictionary into an HTML table with header
+    row and header column (#473)
+  * Bamboo examples (#474)
+  * Add ability of deleting a pull request (#472)
+
+-------------------------------------------------------------------
 Mon Mar  2 04:12:51 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.15.4

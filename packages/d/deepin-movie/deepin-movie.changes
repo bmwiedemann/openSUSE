@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 20 03:02:04 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add deepin-movie-add-qthelper.patch.
+  qthelper.hpp was removed from mpv project, move this api in this project
+
+-------------------------------------------------------------------
+Sun Aug  4 12:02:41 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.2.24.3
+  * Fix dtk-settings tool path
+  * Update translations
+  * Support Qt 5.13.0, drop Fix-build-on-Qt-5_13_0.patch
+  * fix no-return-in-nonvoid-function check, drop 
+    no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
 Tue Jul  9 14:10:21 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.2.24
@@ -13,7 +29,7 @@ Tue Jul  9 14:10:21 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
   * Fix can not toggle mini mode when window maximized
   * Fix don't sleep while playing
   * New subtitle font style
-- Fix fix build on Qt 5.13.0, add Fix-build-on-Qt-5_13_0.patch
+- Fix build on Qt 5.13.0, add Fix-build-on-Qt-5_13_0.patch
 - Add OpenSSL license
 
 -------------------------------------------------------------------

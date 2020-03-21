@@ -1,0 +1,11 @@
+diff -Nur dtkwm-2.0.11/src/src.pro dtkwm-2.0.11-new/src/src.pro
+--- dtkwm-2.0.11/src/src.pro	2019-04-24 14:34:54.000000000 +0800
++++ dtkwm-2.0.11-new/src/src.pro	2019-08-07 10:40:21.880388645 +0800
+@@ -8,6 +8,7 @@
+ 
+ TEMPLATE = lib
+ TARGET = dtkwm
++DTK_MODULE_NAME = dtkwm
+ DEFINES += LIBDTKWM_LIBRARY
+ 
+ load(dtk_build)

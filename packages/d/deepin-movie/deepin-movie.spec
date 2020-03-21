@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-movie
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        3.2.24
+Version:        3.2.24.3
 Release:        0
 Summary:        Deepin Video Players
 License:        GPL-3.0-or-later AND OpenSSL
 Group:          Productivity/Multimedia/Video/Players
-Url:            https://github.com/linuxdeepin/deepin-movie-reborn
+URL:            https://github.com/linuxdeepin/deepin-movie-reborn
 Source:         https://github.com/linuxdeepin/deepin-movie-reborn/archive/%{version}/%{name}-reborn-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM deepin-movie-reborn-add-pkgconfig-check.patch hillwood@opensuse.org - fix lost pkgconfig check
 Patch0:         deepin-movie-reborn-add-pkgconfig-check.patch
-# PATCH-FIX-UPSTEAM no-return-in-nonvoid-function.patch hillwood@opensuse.org - fix lost return function
-Patch1:         no-return-in-nonvoid-function.patch
-# PATCH-FIX-UPSTEAM no-return-in-nonvoid-function.patch hillwood@opensuse.org - fix build on Qt 5.13.0
-Patch2:         Fix-build-on-Qt-5_13_0.patch
+# PATCH-FIX-UPSTEAM deepin-movie-add-qthelper.patch hillwood@opensuse.org
+# qthelper.hpp was removed from mpv project, move this api in this project.
+Patch1:         deepin-movie-add-qthelper.patch
 BuildRequires:  dtkcore
 BuildRequires:  fdupes
+BuildRequires:  glslang-devel
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -93,7 +93,6 @@ deepin movie.
 %setup -q -n %{name}-reborn-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 sed -i 's,/usr/lib/dtk2/dtk-settings-tool,/usr/bin/dtk-settings-tool,g' src/CMakeLists.txt
 
 %build

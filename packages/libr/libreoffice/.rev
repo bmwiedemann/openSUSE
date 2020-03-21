@@ -2683,4 +2683,13 @@ Petr</comment>
   * 6.4.2 RC2 release</comment>
     <requestid>785229</requestid>
   </revision>
+  <revision rev="199" vrev="2">
+    <srcmd5>220675cb84732cc4ea535607d41be5ae</srcmd5>
+    <version>6.4.2.2</version>
+    <time>1584744915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.4.2.2 jsc#SLE-11174 jsc#SLE-11175 jsc#SLE-11176
+  bsc#1167223:</comment>
+    <requestid>786793</requestid>
+  </revision>
 </revisionlist>

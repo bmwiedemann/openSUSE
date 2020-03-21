@@ -24,4 +24,13 @@
 </comment>
     <requestid>762894</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1689bc384c676bd758bdd0f86e9197cc</srcmd5>
+    <version>1.0</version>
+    <time>1584744938</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boo#1167232: use the virtio driver on aarch64 for the mouse
+</comment>
+    <requestid>786922</requestid>
+  </revision>
 </revisionlist>

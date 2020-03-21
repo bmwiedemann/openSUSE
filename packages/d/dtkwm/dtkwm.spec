@@ -19,13 +19,15 @@
 %define sover 2
 
 Name:           dtkwm
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 Summary:        Deepin graphical user interface library
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dtkwm
 Source0:        https://github.com/linuxdeepin/dtkwm/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM set-DTK_MODULE_NAME.patch hillwood@opensuse.org - Fix build on new dtkcore
+Patch0:         set-DTK_MODULE_NAME.patch
 BuildRequires:  libQt5PlatformSupport-devel-static
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -64,6 +66,7 @@ Header files and libraries for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %qmake5 PREFIX=%{_prefix} \

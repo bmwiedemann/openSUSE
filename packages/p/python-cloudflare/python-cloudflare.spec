@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudflare
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cloudflare
-Version:        2.3.0
+Version:        2.6.3
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT

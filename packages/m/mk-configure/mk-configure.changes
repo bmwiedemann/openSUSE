@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 19 16:44:23 UTC 2020 - vle@gmx.net
+
+- Fix MKC_SYSCONFDIR (/usr/etc). Now it is /etc
+
+-------------------------------------------------------------------
+Tue Mar 17 00:51:23 UTC 2020 - vle@gmx.net
+
+- Use "bmkdep" as a default "build dependencies" tool
+  instead of "makedepend".
+
+-------------------------------------------------------------------
 Fri Mar 13 16:51:23 UTC 2020 - vle@gmx.net
 
 - Update to 0.34.0:

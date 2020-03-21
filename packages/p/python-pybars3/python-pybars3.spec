@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybars3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %define base_name pybars3
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{base_name}
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
-License:        LGPL-3.0
 Summary:        Handlebarsjs templating for Python 3 and 2
-Url:            https://github.com/wbond/%{base_name}
+License:        LGPL-3.0-only
 Group:          Development/Languages/Python
+URL:            https://github.com/wbond/%{base_name}
 Source:         https://github.com/wbond/%{base_name}/archive/%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module PyMeta3 >= 0.5.1}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-PyMeta3 >= 0.5.1
 BuildArch:      noarch
 

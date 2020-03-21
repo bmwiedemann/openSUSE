@@ -141,4 +141,23 @@
     <comment></comment>
     <requestid>717230</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d9d7b60b9a1956ff0ec5cea6da5aa59</srcmd5>
+    <version>2.1.1</version>
+    <time>1584745001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.1.1
+  * Update translations.
+  * Fix crashes dock in Qt5.11.3
+  * Add ThemeType for DThemeManager 
+  * Add DPalette and DFontSizeManager
+  * Reset tx config file
+  * Use the DWIDGET_TRANSLATIONS_DIR
+  * Add dbackgroundgroup
+  * DSwitchButton send checked on mouse release
+  * Update style after apply dtk stylesheet
+  * Fix FramelessWindowHint caused qss won't apply
+- Slit language package. (forwarded request 786659 from hillwood)</comment>
+    <requestid>786660</requestid>
+  </revision>
 </revisionlist>

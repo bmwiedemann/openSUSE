@@ -452,7 +452,7 @@ export HOSTNAME=OBS
 %endif
            --disable-silent-rules \
            --enable-mpirun-prefix-by-default \
-           --with-package-string="Open MPI Distribution for %{?is_opensuse:openSUSE}%{!?is_opensuse:SLE}"  \
+           --with-package-string="Open MPI Distribution for SUSE"  \
            --disable-wrapper-runpath
 make %{?_smp_mflags}
 

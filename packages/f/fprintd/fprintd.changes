@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:00:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Few minor spec-cleaner tweaks
+
+-------------------------------------------------------------------
+Sun Mar 15 12:54:49 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.90.1
+  * Add support for prints saved on the fingerprint device itself
+  * Add integration tests using the virtual image driver, and further tests for the utilities
+  * Port build system to meson
+  * Loads of build warnings and memory leak fixes
+  * PAM module:
+    Port PAM module to sd-bus from dbus-glib
+    Use systemd to not ask for a fingerprint scan on remote logins
+    Add man page for PAM module
+    Add tests
+- Split doc package
+
+-------------------------------------------------------------------
 Mon Dec  2 07:35:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the download url

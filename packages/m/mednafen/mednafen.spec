@@ -1,7 +1,7 @@
 #
 # spec file for package mednafen
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           mednafen
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
-Group:          System/Emulators/Other
 URL:            https://mednafen.github.io
-Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}-UNSTABLE.tar.xz
+Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}.tar.xz
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  gcc-c++

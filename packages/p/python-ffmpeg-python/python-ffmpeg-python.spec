@@ -23,12 +23,14 @@ Version:        0.2.0
 Release:        0
 Summary:        Python bindings for FFmpeg
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/kkroening/ffmpeg-python
 Source:         https://github.com/kkroening/ffmpeg-python/archive/%{version}.tar.gz#/ffmpeg-python-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-future
+Recommends:     ffmpeg
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest-mock}
@@ -36,9 +38,6 @@ BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  ffmpeg
 # /SECTION
-Requires:       python-future
-Recommends:     ffmpeg
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -55,8 +54,9 @@ Python bindings for FFmpeg - with complex filtering support
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# skip some tests since we do not have ffmpeg with mp4-support on the public OBS instance
-%pytest -k 'not (test__run or test__run__multi_output)'
+# skip some tests since we do not have FFmpeg with mp4-support on the public OBS instance
+# test_pipe - fails on Leap due to too old FFmpeg
+%pytest -k 'not (test__run or test__run__multi_output or test_pipe)'
 
 %files %{python_files}
 %license LICENSE

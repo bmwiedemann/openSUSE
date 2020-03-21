@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:57:46 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix boo#1167232: use the virtio driver on aarch64 for the mouse
+
+-------------------------------------------------------------------
 Fri Jan 10 16:24:17 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Drop required package ifplugd

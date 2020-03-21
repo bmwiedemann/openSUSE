@@ -118,4 +118,15 @@
     <comment></comment>
     <requestid>717231</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73cd0e2b3c04e199c23a959dd42d4732</srcmd5>
+    <version>2.1.1</version>
+    <time>1584744996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.1.1
+  * Fix the pkg-config &quot;Requires&quot; values
+  * Adjust responsibility of the prf files
+  * Fix dtk-settings binary location for libdtkcore-bin package</comment>
+    <requestid>786658</requestid>
+  </revision>
 </revisionlist>

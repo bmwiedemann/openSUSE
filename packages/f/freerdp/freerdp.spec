@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch aarch64 %arm
+%define _lto_cflags %{nil}
+%endif
 
 %define major_version 2
 %define uwac_version 0

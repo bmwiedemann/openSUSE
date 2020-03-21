@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 02:43:41 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.12
+  * Use data from QX11Info
+- Fix build on new version dtkcore, add set-DTK_MODULE_NAME.patch 
+
+-------------------------------------------------------------------
 Wed Jul 17 06:29:13 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2.0.11

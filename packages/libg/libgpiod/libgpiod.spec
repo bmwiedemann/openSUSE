@@ -28,7 +28,7 @@
 Name:           libgpiod
 Version:        1.4.2
 Release:        0
-Summary:        Tools for interacting with the linux GPIO character device
+Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
@@ -53,6 +53,19 @@ BuildRequires:  kernel-devel >= 4.8
 The libgpiod library encapsulates the ioctl calls and data structures
 of the GPIO character devices, the latter of which superseded the
 GPIO sysfs interface in Linux 4.8.
+
+%package utils
+Summary:        Tools for interacting with the linux GPIO character device
+Group:          Development/Libraries/C and C++
+Provides:       libgpiod = %{version}-%{release}
+Obsoletes:      libgpiod < %{version}-%{release}
+
+%description utils
+The libgpiod library encapsulates the ioctl calls and data structures
+of the GPIO character devices, the latter of which superseded the
+GPIO sysfs interface in Linux 4.8.
+
+Command-line tools part.
 
 %package -n libgpiod%{libgpiod_soversion}
 Summary:        C library for interacting with the linux GPIO character device
@@ -132,7 +145,7 @@ Python binding part.
 	--enable-tools=yes \
 	--enable-bindings-python \
 	--enable-bindings-cxx
-make
+make %{?_smp_mflags}
 
 %install
 %make_install
@@ -149,7 +162,7 @@ rm -rf %{buildroot}%{python3_sitearch}/*.{a,la}
 %postun -n libgpiomockup%{libgpiomockup_soversion} -p /sbin/ldconfig
 %endif
 
-%files
+%files utils
 %{_bindir}/gpio*
 
 %files -n libgpiod%{libgpiod_soversion}

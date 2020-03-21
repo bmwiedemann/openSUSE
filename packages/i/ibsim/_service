@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">ibsim(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">aa3c4458c48877e65f909bb1a9ac9c859d01efde</param>
+    <param name="revision">7c2a604ec49a772edbff5381f056c8ab8245a19d</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*ibsim*.tar</param>

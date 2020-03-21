@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,31 @@
 #
 
 
-%define gitlabhash 9dec4b63d1f00e637070be1477ce63c0
+%define gitlabhash a47c31c844e23e070665a8a85dae0144
 Name:           fprintd
-Version:        0.9.0
+Version:        1.90.1
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
-Group:          Productivity/Security
 URL:            https://fprint.freedesktop.org/
 Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/uploads/%{gitlabhash}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Source2:        README.SUSE
 BuildRequires:  gtk-doc >= 1.3
 BuildRequires:  intltool
+BuildRequires:  meson >= 0.46.1
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xz
+BuildRequires:  python3-cairo
+BuildRequires:  python3-dbusmock
+BuildRequires:  python3-gobject
+BuildRequires:  python3-libpamtest
+BuildRequires:  python3-pydbus
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libfprint) > 0.1.0
+BuildRequires:  pkgconfig(libfprint-2) >= 1.90.1
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(pam_wrapper)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 Recommends:     %{name}-lang
@@ -47,13 +53,11 @@ D-Bus service to access fingerprint readers.
 %package pam
 Summary:        PAM module for fingerprint authentication
 License:        GPL-2.0-or-later
-Group:          Productivity/Security
 Requires:       %{name} = %{version}
 Requires(postun): coreutils
 Requires(postun): pam
 Requires(postun): pam-config
 # on biarch platforms we need to have it before the call of pam-config
-Recommends:     yast2-fingerprint-reader
 Supplements:    modalias(usb:v045Ep00BBd*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v045Ep00BCd*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v045Ep00BDd*dc*dsc*dp*ic*isc*ip*)
@@ -81,7 +85,6 @@ authentication.
 %package devel
 Summary:        Development files for %{name}
 License:        GFDL-1.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       gtk-doc
 BuildArch:      noarch
@@ -90,25 +93,38 @@ BuildArch:      noarch
 Development documentation for fprintd, the D-Bus service for
 fingerprint readers access.
 
+%package doc
+Summary:        Development documents of fprintd
+License:        GPL-2.0-or-later
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description doc
+This package contains Development documents for fprintd
+
 %lang_package
 
 %prep
 %autosetup -p1
+cp %{SOURCE2} .
 
 %build
-cp %{SOURCE2} .
-%configure \
-    --libdir=/%{_lib}/ \
-    --disable-static \
-    --enable-gtk-doc \
-    --enable-pam
-make %{?_smp_mflags}
+%meson \
+  -Dgtk_doc=true \
+  %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
+
+install -d %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_localstatedir}/lib/fprint
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %pre
 %service_add_pre fprintd.service
@@ -130,26 +146,29 @@ fi
 %files
 %license COPYING
 %doc README AUTHORS TODO
+%doc README.SUSE
+%{_sbindir}/rc%{name}
 %{_bindir}/fprintd-*
 %{_libexecdir}/fprintd
-# FIXME This file should be marked as config when it does something useful
-%{_sysconfdir}/fprintd.conf
-%{_sysconfdir}/dbus-1/system.d/net.reactivated.Fprint.conf
+%config %{_sysconfdir}/fprintd.conf
+%{_datadir}/dbus-1/system.d/net.reactivated.Fprint.conf
 %{_datadir}/dbus-1/system-services/net.reactivated.Fprint.service
 %{_datadir}/polkit-1/actions/net.reactivated.fprint.device.policy
 %{_localstatedir}/lib/fprint
 %{_mandir}/man1/fprintd.1%{?ext_man}
 %{_unitdir}/fprintd.service
-%doc README.SUSE
 
 %files lang -f %{name}.lang
 
 %files pam
 %doc pam/README
 /%{_lib}/security/pam_fprintd.so
+%{_mandir}/man8/pam_fprintd.8%{?ext_man}
+
+%files doc
+%{_datadir}/gtk-doc/html/%{name}
 
 %files devel
-%{_datadir}/gtk-doc/html/fprintd
 %{_datadir}/dbus-1/interfaces/net.reactivated.Fprint.Device.xml
 %{_datadir}/dbus-1/interfaces/net.reactivated.Fprint.Manager.xml
 

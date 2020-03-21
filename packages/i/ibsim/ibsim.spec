@@ -1,7 +1,7 @@
 #
 # spec file for package ibsim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-%define git_ver .0.aa3c4458c488
+%define git_ver .0.7c2a604ec49a
 
 Summary:        InfiniBand fabric simulator for management
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 
 Name:           ibsim
-Version:        0.8
+Version:        0.9
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         ibsim-%{version}%{git_ver}.tar.gz
 Patch1:         ibsim-fix_type_punning.patch
-Patch2:         umad2sim-Do-not-use-umad.h-deprecated-functions.patch
-Patch3:         umad2sim-define-UMAD_DEV_DIR-if-not-set.patch
-Url:            https://github.com/linux-rdma/ibsim
+URL:            https://github.com/linux-rdma/ibsim
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibumad-devel
 BuildRequires:  make
@@ -43,8 +41,6 @@ OpenSM, diagnostic and management tools.
 %prep
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
-%patch2
-%patch3
 
 %build
 export CFLAGS="${CFLAGS:-%{optflags}}"
@@ -61,6 +57,7 @@ make DESTDIR=%{buildroot} prefix=%_prefix libpath=%_libdir binpath=%_bindir inst
 %dir %{_libdir}/umad2sim
 %{_libdir}/umad2sim/libumad2sim*.so*
 %{_bindir}/ibsim
-%doc README COPYING TODO net-examples scripts
+%doc README TODO net-examples scripts
+%license COPYING
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-Sane
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Perl extension for the SANE (Scanner Access Now Easy)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,6 +39,9 @@ Requires:       perl(Exception::Class)
 Requires:       perl(Readonly)
 %{perl_requires}
 # MANUAL BEGIN
+BuildRequires:  ImageMagick
+BuildRequires:  sane-backends
+BuildRequires:  perl(Test::Pod)
 BuildRequires:  pkgconfig(sane-backends)
 # MANUAL END
 

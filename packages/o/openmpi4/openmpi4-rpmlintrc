@@ -1,0 +1,8 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("openmpi.*-config.* useless-provides")
+addFilter("openmpi.*-devel.* shared-lib-calls-exit")
+addFilter("openmpi.*-libs.* rpath-in-buildconfig")
+addFilter("openmpi.*-libs.* shared-lib-calls-exit")
+addFilter("openmpi.*-libs.* useless-provides")

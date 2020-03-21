@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Mar 19 22:19:23 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.12:
+  + Merged in translation updates.
+  + Fixed bug #1867742 - TypeError: fsdecode() takes 1 positional
+    argument but 2 were given with PCA backend.
+  + Fixed bug #1867529 - UnicodeDecodeError: 'ascii' codec can't
+    decode byte 0x85 in position 0: ordinal not in range(128) with
+    PCA.
+  + Fixed bug #1867468 - UnboundLocalError (local + variable
+    'ch_err' referenced before assignment) + in
+    ssh_paramiko_backend.py.
+  + Fixed bug #1867435 - TypeError: must be str, not bytes using
+    PCA backend.
+  + Fixed bug #1867444 - UnicodeDecodeError: 'ascii' codec can't
+    decode byte 0x85 in position 0: ordinal not in range(128)
+    using PCA backend.
+  + Cleaned up some setup issues where the man pages + and
+    snapcraft.yaml were not getting versioned.
+  + Fixed bug #1755955 - best order is unclear, of
+    exclude-if-present and exclude-device-files.
+  + Fixed bug #1769267 - [enhancement] please consider using
+    rclone as backend.
+  + Fixed bug #1865648 - module 'multiprocessing.dummy' has no
+    attribute 'cpu_count'.
+  + Fixed a couple of file history bugs:
+    - #1044715 Provide a file history feature
+      . removed neutering done between series.
+    - #1526557 --file-changed does not work
+      . fixed str/bytes issue finding filename.
+
+-------------------------------------------------------------------
 Wed Feb 26 15:14:17 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Fix source URI. 

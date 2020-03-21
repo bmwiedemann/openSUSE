@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  4 09:13:32 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.1.1
+  * Update translations.
+  * Fix crashes dock in Qt5.11.3
+  * Add ThemeType for DThemeManager 
+  * Add DPalette and DFontSizeManager
+  * Reset tx config file
+  * Use the DWIDGET_TRANSLATIONS_DIR
+  * Add dbackgroundgroup
+  * DSwitchButton send checked on mouse release
+  * Update style after apply dtk stylesheet
+  * Fix FramelessWindowHint caused qss won't apply
+- Slit language package.
+
+-------------------------------------------------------------------
 Tue Jul 16 14:32:05 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2.0.16.1

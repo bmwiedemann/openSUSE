@@ -18,7 +18,7 @@
 
 %define _name elementary-xfce
 Name:           elementary-xfce-icon-theme
-Version:        0.14+git28.4be98dc7
+Version:        0.14+git30.e40a2684
 Release:        0
 Summary:        Icon theme inspired by Tango and Elementary
 License:        GPL-2.0-only

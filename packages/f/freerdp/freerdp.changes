@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:09:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on aarch64 and %arm to fix build
+
+-------------------------------------------------------------------
 Mon Oct 28 08:03:35 UTC 2019 - Felix Zhang <fezhang@suse.com>
 
 - Add freerdp-Fix-realloc-return-handling.patch: Fix realloc return

@@ -1,7 +1,7 @@
 #
 # spec file for package openmpi1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -114,7 +114,7 @@ Release:        0
 Summary:        A powerful implementation of MPI
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-Url:            http://www.open-mpi.org/
+URL:            http://www.open-mpi.org/
 Source0:        openmpi-%{version}%{git_ver}.tar.bz2
 Source1:        mpivars.sh
 Source2:        mpivars.csh
@@ -447,7 +447,7 @@ chmod 644 NEWS
     	   --with-threads \
            --disable-silent-rules \
            --enable-mpirun-prefix-by-default \
-           --with-package-string="Open MPI Distribution for %{?is_opensuse:openSUSE}%{!?is_opensuse:SLE}" 
+           --with-package-string="Open MPI Distribution for SUSE" 
 
 make %{?_smp_mflags}
 

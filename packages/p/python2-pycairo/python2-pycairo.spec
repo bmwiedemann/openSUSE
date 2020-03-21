@@ -53,9 +53,9 @@ packages that depen on Pycairo.
 %package     -n python-pycairo-common-devel
 Summary:        Headers for the Cairo Python bindings
 Requires:       cairo-devel
-Provides:       %{python_module cairo-common-devel = %{version}}
-Provides:       %{python_module pycairo-common-devel = %{version}}
-Obsoletes:      %{python_module cairo-common-devel < %{version}}
+Provides:       python2-cairo-common-devel = %{version}
+Provides:       python2-pycairo-common-devel = %{version}
+Obsoletes:      python2-cairo-common-devel < %{version}
 Provides:       python-cairo-common-devel = %{version}
 Obsoletes:      python-cairo-common-devel < %{version}
 

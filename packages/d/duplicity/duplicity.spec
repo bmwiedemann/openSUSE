@@ -16,8 +16,8 @@
 #
 
 
-%define version_base 0.8.11
-%define bzr_rev 1596
+%define version_base 0.8.12
+%define bzr_rev 1612
 Name:           duplicity
 Version:        %{version_base}.%{bzr_rev}
 Release:        0

@@ -57,4 +57,20 @@
   * Polishes.</comment>
     <requestid>780799</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>29f25dead0b5e63cc9fc959133aced61</srcmd5>
+    <version>1.15.6</version>
+    <time>1584745020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.6:
+  * Bamboo examples and Confluence fix of params (#464)
+  * Added parameter for user() method: (#465)
+  * Check for if an element is a valid email (#466)
+  * Ability of adding reviewers when opening a PR (#470)
+  * Util method to convert a nested dictionary into an HTML table with header
+    row and header column (#473)
+  * Bamboo examples (#474)
+  * Add ability of deleting a pull request (#472)</comment>
+    <requestid>786623</requestid>
+  </revision>
 </revisionlist>

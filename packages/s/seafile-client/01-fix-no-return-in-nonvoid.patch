@@ -1,0 +1,31 @@
+Index: seafile-client-6.0.4/src/ui/event-details-tree.cpp
+===================================================================
+--- seafile-client-6.0.4.orig/src/ui/event-details-tree.cpp
++++ seafile-client-6.0.4/src/ui/event-details-tree.cpp
+@@ -137,6 +137,8 @@ QString EventDetailsFileItem::etype_desc
+       case DIR_DELETED:
+         return QObject::tr("Deleted");
+     };
++
++    return NULL;
+ }
+ 
+ QIcon EventDetailsFileItem::etype_icon() const
+@@ -155,6 +157,8 @@ QIcon EventDetailsFileItem::etype_icon()
+       case DIR_DELETED:
+         return awesome->icon(icon_minus, QColor("#BD2C00"));
+     };
++
++    return awesome->icon(icon_minus, QColor("#000000"));
+ }
+ 
+ const char* EventDetailsFileItem::etype_color() const
+@@ -173,6 +177,8 @@ const char* EventDetailsFileItem::etype_
+       case DIR_DELETED:
+         return "#BD2C00";
+     };
++
++    return NULL;
+ }
+ 
+ bool EventDetailsFileItem::isFileOpenable() const

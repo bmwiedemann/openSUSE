@@ -20,7 +20,7 @@
 %define libver 2
 
 Name:           dtkwidget
-Version:        2.0.16.1
+Version:        2.1.1
 Release:        0
 Summary:        Deepin graphical user interface library
 License:        GPL-3.0-or-later
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
+Recommends:     %{name}-lang = %{name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -69,6 +70,8 @@ Requires:       lib%{name}%{libver} = %{version}
 %description devel
 The dtkwidget-devel package contains the header files and developer
 docs for dtkcore.
+
+%lang_package
 
 %prep
 %setup -q
@@ -97,10 +100,7 @@ rm -rf %{buildroot}/usr/tests
 %defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
 %license LICENSE
-%dir %{_datadir}/dtkwidget
-%{_datadir}/dtkwidget/translations
-%dir %{_libexecdir}/dtk2
-%{_libexecdir}/dtk2/dtk-svgc
+%{_libdir}/libdtk-2.0.6
 
 %files -n lib%{name}%{libver}
 %defattr(-,root,root,-)
@@ -117,5 +117,9 @@ rm -rf %{buildroot}/usr/tests
 %dir %{_libdir}/qt5
 %dir %{_libdir}/qt5/mkspecs
 %{_libdir}/qt5/mkspecs/modules
+
+%files lang
+%defattr(-,root,root,-)
+%{_datadir}//libdtk-2.0.6
 
 %changelog

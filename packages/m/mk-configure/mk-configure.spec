@@ -31,6 +31,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  bmake
+BuildRequires:  bmkdep
 BuildRequires:  clang
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -39,11 +40,11 @@ BuildRequires:  glib2-devel
 BuildRequires:  groff
 BuildRequires:  info
 BuildRequires:  lua-devel
-BuildRequires:  makedepend
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 Requires:       bmake
+Requires:       bmkdep
 Recommends:     %{name}-doc
 Provides:       %{name}-rpm-macros
 BuildArch:      noarch
@@ -73,6 +74,7 @@ Mk-configure package: examples and presentation.
         export USE_CC_COMPILERS='gcc clang' \
         export USE_CXX_COMPILERS='g++ clang++' \
         export PREFIX=%{_prefix} \
+        export SYSCONFDIR=%{_sysconfdir} \
         export MANDIR=%{_mandir}
 
 # examples are built and tested either,

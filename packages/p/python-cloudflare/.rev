@@ -25,4 +25,13 @@
     <comment></comment>
     <requestid>718775</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec18e4c8cc08a1ab02e497701bfca717</srcmd5>
+    <version>2.6.3</version>
+    <time>1584745027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.3:
+  * No upstream changelog</comment>
+    <requestid>786624</requestid>
+  </revision>
 </revisionlist>

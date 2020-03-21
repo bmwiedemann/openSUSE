@@ -28,4 +28,22 @@
 - Add OpenSSL license (forwarded request 714324 from hillwood)</comment>
     <requestid>714327</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f571a3de94d9e533af87c4c97a2d4c3</srcmd5>
+    <version>3.2.24.3</version>
+    <time>1584744988</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deepin-movie-add-qthelper.patch.
+  qthelper.hpp was removed from mpv project, move this api in this project
+
+- Update version to 3.2.24.3
+  * Fix dtk-settings tool path
+  * Update translations
+  * Support Qt 5.13.0, drop Fix-build-on-Qt-5_13_0.patch
+  * fix no-return-in-nonvoid-function check, drop 
+    no-return-in-nonvoid-function.patch
+
+- Fix build on Qt 5.13.0, add Fix-build-on-Qt-5_13_0.patch (forwarded request 786652 from hillwood)</comment>
+    <requestid>786653</requestid>
+  </revision>
 </revisionlist>

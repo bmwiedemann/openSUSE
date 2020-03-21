@@ -20,7 +20,7 @@
 %define libver 2
 
 Name:           dtkcore
-Version:        2.0.16.1
+Version:        2.1.1
 Release:        0
 Summary:        Deepin Tool Kit Core
 License:        GPL-3.0-or-later
@@ -85,8 +85,8 @@ rm -rf %{buildroot}/usr/tests
 %defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
 %license LICENSE
-%dir %{_libexecdir}/dtk2
-%{_libexecdir}/dtk2/*
+# %dir %{_libexecdir}/dtk2
+# %{_libexecdir}/dtk2/*
 %{_libdir}/libdtk-2.0.6
 
 %files -n lib%{name}%{libver}

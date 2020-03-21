@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 20 08:06:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build with py2 build disabled in singlespec
+
+-------------------------------------------------------------------
 Mon Mar 16 09:38:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Rename to python2-pycairo, as we still need python-gtk for
