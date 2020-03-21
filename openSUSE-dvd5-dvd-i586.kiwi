@@ -560,6 +560,9 @@
       <repopackage name="fontconfig-lang"/>
       <repopackage name="fonts-config"/>
       <repopackage name="fonts-KanjiStrokeOrders"/>
+      <repopackage name="fprintd"/>
+      <repopackage name="fprintd-lang"/>
+      <repopackage name="fprintd-pam"/>
       <repopackage name="frameworkintegration-plugin"/>
       <repopackage name="freecell-solver-presets"/>
       <repopackage name="freeipmi"/>
@@ -1743,6 +1746,7 @@
       <repopackage name="libfontenc1"/>
       <repopackage name="libfonts"/>
       <repopackage name="libformula"/>
+      <repopackage name="libfprint-2-2"/>
       <repopackage name="libfreebl3"/>
       <repopackage name="libfreebl3-hmac"/>
       <repopackage name="libfreecell-solver0"/>
