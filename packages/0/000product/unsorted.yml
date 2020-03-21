@@ -2513,6 +2513,7 @@ unsorted:
   - dtkcore-devel 
   - dtkwidget 
   - dtkwidget-devel 
+  - dtkwidget-lang 
   - dtkwm-devel 
   - dtv-scan-tables 
   - dtv-scan-tables-v5 
@@ -3187,11 +3188,8 @@ unsorted:
   - fping 
   - fplll 
   - fplll-devel 
-  - fprintd 
   - fprintd-devel 
-  - fprintd-lang 
-  - fprintd-pam 
-  - fprintd-pam-32bit: [x86_64] 
+  - fprintd-doc 
   - fractal 
   - fractal-lang 
   - frame 
@@ -3678,6 +3676,7 @@ unsorted:
   - geotiff-devel 
   - gerbv 
   - gerbv-devel 
+  - german-pos-dict 
   - geronimo-annotation-1_0-api 
   - geronimo-commonj-1_1-apis 
   - geronimo-corba-1_0-apis 
@@ -6959,6 +6958,13 @@ unsorted:
   - kuserfeedback-devel 
   - kuserfeedback-server 
   - kuserfeedback-tools 
+  - kvantum-doc 
+  - kvantum-manager 
+  - kvantum-manager-lang 
+  - kvantum-openbox-themes 
+  - kvantum-qt5 
+  - kvantum-qt5-32bit: [x86_64] 
+  - kvantum-themes 
   - kvirc 
   - kwallet-devel 
   - kwallet-devel-32bit: [x86_64] 
@@ -8571,6 +8577,8 @@ unsorted:
   - libcorosync_common4-32bit: [x86_64] 
   - libcorrect-devel 
   - libcorrect0_0_0 
+  - libcotp-devel 
+  - libcotp12 
   - libcourier-unicode4 
   - libcpath-devel 
   - libcpath1 
@@ -9095,7 +9103,6 @@ unsorted:
   - libfpm_helper-devel 
   - libfpm_helper0 
   - libfpm_pb0 
-  - libfprint-2-2 
   - libfprint-2-2-32bit: [x86_64] 
   - libfprint-devel 
   - libfprint-doc 
@@ -9386,8 +9393,8 @@ unsorted:
   - libgphoto2-devel-32bit: [x86_64] 
   - libgphoto2-devel-doc 
   - libgphoto2-doc 
-  - libgpiod 
   - libgpiod-devel 
+  - libgpiod-utils 
   - libgpiod2 
   - libgpiodcxx1 
   - libgpiomockup0 
@@ -10682,9 +10689,11 @@ unsorted:
   - libopenmpi1-gnu-hpc 
   - libopenmpi2-gnu-hpc 
   - libopenmpi3-gnu-hpc 
+  - libopenmpi4-gnu-hpc 
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_4-gnu-hpc 
+  - libopenmpi_4_0_2-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt0-32bit: [x86_64] 
   - libopenmpt_modplug1 
@@ -10858,7 +10867,7 @@ unsorted:
   - libparaview5_8 
   - libpari-gmp-tls6 
   - libparlatype-devel 
-  - libparlatype2 
+  - libparlatype3 
   - libparpack2-openmpi1 
   - libparpack2-openmpi1-32bit: [x86_64] 
   - libparpack2-openmpi2 
@@ -15635,6 +15644,19 @@ unsorted:
   - openmpi3-libs-32bit: [x86_64] 
   - openmpi3-macros-devel 
   - openmpi3-testsuite 
+  - openmpi4 
+  - openmpi4-config 
+  - openmpi4-devel 
+  - openmpi4-docs 
+  - openmpi4-gnu-hpc 
+  - openmpi4-gnu-hpc-devel 
+  - openmpi4-gnu-hpc-devel-static 
+  - openmpi4-gnu-hpc-docs 
+  - openmpi4-gnu-hpc-macros-devel 
+  - openmpi4-libs 
+  - openmpi4-libs-32bit: [x86_64] 
+  - openmpi4-macros-devel 
+  - openmpi4-testsuite 
   - openmpi_1_10_7-gnu-hpc 
   - openmpi_1_10_7-gnu-hpc-devel 
   - openmpi_1_10_7-gnu-hpc-devel-static 
@@ -15653,6 +15675,12 @@ unsorted:
   - openmpi_3_1_4-gnu-hpc-docs 
   - openmpi_3_1_4-gnu-hpc-macros-devel 
   - openmpi_3_1_4-gnu-hpc-testsuite 
+  - openmpi_4_0_2-gnu-hpc 
+  - openmpi_4_0_2-gnu-hpc-devel 
+  - openmpi_4_0_2-gnu-hpc-devel-static 
+  - openmpi_4_0_2-gnu-hpc-docs 
+  - openmpi_4_0_2-gnu-hpc-macros-devel 
+  - openmpi_4_0_2-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -19824,7 +19852,6 @@ unsorted:
   - python2-pymacaroons 
   - python2-pymacaroons-pynacl 
   - python2-pymad 
-  - python2-pymarc 
   - python2-pymavlink 
   - python2-pymediainfo 
   - python2-pymemcache 
@@ -19966,7 +19993,7 @@ unsorted:
   - python2-python-jenkins 
   - python2-python-jose 
   - python2-python-json-logger 
-  - python2-python-jsonschema-objects 
+  - python2-python-jsonrpc-server 
   - python2-python-language-server 
   - python2-python-lzo 
   - python2-python-magic 
@@ -20355,6 +20382,7 @@ unsorted:
   - python2-ua-parser 
   - python2-uamqp 
   - python2-ucsmsdk 
+  - python2-ujson 
   - python2-unbound 
   - python2-uncertainties 
   - python2-uncompyle6 
@@ -24735,6 +24763,7 @@ unsorted:
   - sdlscavenger 
   - sdparm 
   - seafile 
+  - seafile-client 
   - seafile-devel 
   - seccheck 
   - sedutil: [x86_64] 
@@ -25096,7 +25125,6 @@ unsorted:
   - spotify-easyrpm 
   - spread-sheet-widget-devel 
   - spyder-notebook 
-  - spyder-terminal 
   - spyder-unittest 
   - spyder3 
   - spyder3-breakpoints 

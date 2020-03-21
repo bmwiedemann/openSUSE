@@ -558,6 +558,9 @@
     <package name="fontconfig-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="fonts-KanjiStrokeOrders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="fonts-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="fprintd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="fprintd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="fprintd-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="frameworkintegration-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="freecell-solver-presets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="freeipmi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2023,6 +2026,7 @@
     <package name="libfontenc1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libformula" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libfprint-2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libfreebl3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreebl3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5515,6 +5519,7 @@
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="fipscheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
+    <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="gnome-keyring-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
