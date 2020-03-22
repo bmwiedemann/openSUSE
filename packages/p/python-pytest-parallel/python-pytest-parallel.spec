@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-parallel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-parallel
-Version:        0.0.9
+Version:        0.0.10
 Release:        0
-License:        MIT
 Summary:        Pytest plugin for parallel and concurrent testing
-Url:            https://github.com/browsertron/pytest-parallel
-Group:          Development/Languages/Python
-Source:         https://github.com/browsertron/pytest-parallel/archive/0.0.9.tar.gz#/pytest-parallel-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+License:        MIT
+URL:            https://github.com/browsertron/pytest-parallel
+Source:         https://github.com/browsertron/pytest-parallel/archive/%{version}.tar.gz#/pytest-parallel-%{version}.tar.gz
+Patch0:         pytest-parallel-pr63-tblib-pickling.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-pytest >= 3.0.0
+Requires:       python-tblib
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module pytest-html}
+BuildRequires:  %{python_module tblib}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-pytest >= 3.0.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -42,6 +44,7 @@ A pytest plugin for parallel and concurrent testing.
 
 %prep
 %setup -q -n pytest-parallel-%{version}
+%patch0 -p1
 
 %build
 %python_build
