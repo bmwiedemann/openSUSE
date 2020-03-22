@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 17:13:55 CEST 2020 - rbrown@suse.de
+
+- Remove microos_apparmor from default system role [boo#1166857]
+- 20200317
+
+-------------------------------------------------------------------
 Wed Feb 12 10:35:11 CEST 2020 - rbrown@suse.de
 
 - Add microos-gnome- and -kde-desktop roles [boo#1163453]
