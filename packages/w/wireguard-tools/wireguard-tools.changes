@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 21 13:57:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200319
+  * netlink: initialize mostly unused field
+  * curve25519: squelch warnings on clang
+  * man: fix grammar in wg(8) and wg-quick(8)
+  * man: backlink wg-quick(8) in wg(8)
+  * man: add a warning to the SaveConfig description
+  * wincompat: use string_list instead of inflatable_buffer
+
+-------------------------------------------------------------------
 Thu Feb  6 20:44:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20200206
