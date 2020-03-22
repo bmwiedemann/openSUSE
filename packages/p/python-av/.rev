@@ -42,4 +42,12 @@
      * Use AVCodecParameters so FFmpeg doesn't complain. (:issue:`222`)</comment>
     <requestid>778637</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c1b5fe3ffc79d01200d9a06aa2ec2f9c</srcmd5>
+    <version>7.0.1</version>
+    <time>1584883055</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787081</requestid>
+  </revision>
 </revisionlist>

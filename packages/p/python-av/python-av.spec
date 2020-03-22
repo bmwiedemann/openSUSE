@@ -61,6 +61,6 @@ Pythonic bindings for FFmpeg's libraries.
 %doc README.md
 %python3_only %{_bindir}/pyav
 %{python_sitearch}/av
-%{python_sitearch}/av-%{version}-py%{py_ver}.egg-info
+%{python_sitearch}/av-%{version}-py%{python_version}.egg-info
 
 %changelog

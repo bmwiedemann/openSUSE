@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:45:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without py2 available
+
+-------------------------------------------------------------------
 Mon Feb 24 01:48:27 UTC 2020 - steven.kowalik@suse.com
 
 - Update version to 7.0.1:
