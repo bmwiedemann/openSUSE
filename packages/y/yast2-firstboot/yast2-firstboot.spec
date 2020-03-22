@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.2.12
+Version:        4.2.13
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
+BuildRequires:  ruby
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 
@@ -61,12 +62,33 @@ created to personalize the system.
 
 %build
 %yast_build
+# enable registration by default on SLE (bsc#1162846)
+%if !0%{?is_opensuse}
+# lets explain this sed. At first it is address which match line with name
+# registration and +1 for next line and then here change false to true
+sed -i '/<name>registration/,+1s/false/true/' control/firstboot.xml
+%endif
 
 %install
 %yast_install
 %yast_metainfo
 
 mkdir -p $RPM_BUILD_ROOT/usr/share/firstboot/scripts
+
+%check
+# verify defaults for registration
+ruby -r rexml/document -e '
+  %if !0%{?is_opensuse}
+    expected = "true"
+  %else
+    expected = "false"
+  %endif
+  document = REXML::Document.new(File.new("control/firstboot.xml"))
+  # get value of enabled element in registration module in control.xml to verify it has expected value
+  if document.root.elements["//module[name[text()=\"registration\"]]"].elements["enabled"].get_text != expected
+    STDERR.puts "Wrong default for registration module"
+    exit 1
+  end'
 
 %post
 %{fillup_only -n firstboot}
