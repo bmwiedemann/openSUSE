@@ -3610,4 +3610,12 @@
     <comment>submit new version 4.2.73</comment>
     <requestid>784611</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>cd948d8d11aaae0710d256b93ba8d4a7</srcmd5>
+    <version>4.2.74</version>
+    <time>1584882972</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.74</comment>
+    <requestid>786092</requestid>
+  </revision>
 </revisionlist>
