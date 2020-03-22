@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 21 10:15:36 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.3.0+git20200320.a5e2783:
+  * fix kube-state-metrics namespace override
+  * Add version and image source as config parameters.
+  * adding security context to kube-rbac-proxy (#450)
+
+-------------------------------------------------------------------
 Wed Mar 18 06:25:32 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.3.0+git20200317.502f81b:

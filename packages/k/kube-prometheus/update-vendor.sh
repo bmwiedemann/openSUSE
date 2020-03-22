@@ -11,3 +11,4 @@ ln -sf ../jsonnet/kube-prometheus .
 cd ..
 tar --owner root --group root -cJf ../vendor.tar.xz jsonnetfile.lock.json vendor
 cd ..
+rm -rf kube-prometheus
