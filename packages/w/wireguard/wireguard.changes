@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 21 13:55:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.20200318
+  * compat: RHEL 7 backported skb_ensure_writable()
+  * compat: RHEL 8.2 backported ipv6_dst_lookup_flow
+  * curve25519-x86_64: avoid use of r12
+  * wireguard: queueing: account for skb->protocol==0
+  * receive: remove dead code from default packet type case
+  * noise: error out precomputed DH during handshake rather than
+    config
+  * send: use normaler alignment formula from upstream
+
+-------------------------------------------------------------------
 Thu Mar  5 19:49:50 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix build on openSUSE 15.2
