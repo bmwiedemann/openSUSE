@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 15:44:25 CET 2020 - schubi@suse.de
+
+- NTP-server-configuration/Time-setting-module in a running
+  system: Do not show check-boxes for saving configuration and
+  starting the deamon (follow up of bsc#1164547).
+- 4.2.10
+
+-------------------------------------------------------------------
 Tue Mar  3 16:38:54 CET 2020 - schubi@suse.de
 
 - Supporting more than one ntp server in the time setting module.
