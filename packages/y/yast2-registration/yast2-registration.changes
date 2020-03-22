@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 18 15:25:57 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improves online search UX (bsc#1165913 and bsc#1166038):
+  - Make clear how to select/unselect packages in the Qt version.
+  - Improve overall performance.
+  - Properly clear the package details when there are not results.
+  - Add the missing help in the "changes summary".
+  - Extend the help for the search dialog, including more details
+    about how to use it.
+  - Display the "changes summary" when a module/extension is going
+    to be activated, even if no packages will be installed.
+  - Include information about the amount of packages found.
+  - Ignore spaces around the search term.
+- 4.2.37
+
+-------------------------------------------------------------------
+Thu Mar 12 14:11:54 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Improves the addons selection dialog:
+  - Avoid the scroll reset after (un)selecting and addon
+    (bsc#1049965).
+  - Avoid the need to(un)select an addon to see its description
+    (bsc#1161200).
+- 4.2.36
+
+-------------------------------------------------------------------
 Tue Feb 18 16:34:38 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not catch exceptions when getting the updates list from the
