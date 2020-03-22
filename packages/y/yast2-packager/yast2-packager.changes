@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 23:24:18 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Improve the product selection dialog (related to bsc#1157780).
+- 4.2.59
+
+-------------------------------------------------------------------
 Fri Mar  6 09:11:15 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Avoid unselecting the base product (related to bsc#1165501)
