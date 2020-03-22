@@ -167,4 +167,26 @@
     <comment></comment>
     <requestid>780968</requestid>
   </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>6f1bfbdd6babae5946445a49bd642e3c</srcmd5>
+    <version>7.0.1</version>
+    <time>1584883025</time>
+    <user>dimstar_suse</user>
+    <comment>- Move all clang-related scripts (including those originally in
+  clangX-checker) and hmaptool into a common unversioned
+  subpackage clang-tools, like python3-clang.
+  The scripts reference the unversioned executables, so allowing
+  multiple versions via update-alternatives would be misleading.
+  This should be the proper solution to boo#1161873.
+- Include run-find-all-symbols script in clang-tools.
+- Drop the now empty llvm-emacs-plugins package.
+- Remove metadata for clangX-include-fixer subpackage that never
+  had any files and thus wasn't released as rpm. There are so many
+  clang binaries that packaging them separately doesn't scale.
+- Remove unneccesary libtool dependency.
+- Don't let clang depend on libc++, we link it with libstdc++.
+- Recommend gold plugin if clang and gold are installed.
+- Require clang-tools for clangX-devel.</comment>
+    <requestid>786948</requestid>
+  </revision>
 </revisionlist>
