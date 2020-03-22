@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:00:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lite flavor should not provide python3-tensorflow nor tensorflow
+
+-------------------------------------------------------------------
 Fri Mar 13 15:25:38 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - removed sources of bazel sources and replaced them by internal packages

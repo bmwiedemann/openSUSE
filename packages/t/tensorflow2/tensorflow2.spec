@@ -196,12 +196,14 @@ Requires:       python3-numpy-%{compiler_family}%{?c_f_ver}-hpc
 Requires:       python3-numpy
 %endif
 Requires:       python3-pip
+%if !%{is_lite}
 %if %{with hpc}
 Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc
 %else
 Provides:       python3-tensorflow
 %endif
 Provides:       tensorflow
+%endif
 BuildRequires:  bazel = 0.29.1
 BuildRequires:  bazel-rules-cc-source
 BuildRequires:  bazel-skylib-source
