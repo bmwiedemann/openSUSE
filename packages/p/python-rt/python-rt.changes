@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 15 10:43:52 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.0:
+ - Drop Python2 support
+ - Adjust Travis tests for Python3-only, and add v3.8
+ - Add inline typing
+ - Remove "debug_mode" parameter
+ - Add "logging" support (basically replacing "debug_mode" and the various "print"s)
+ - Fix "no-else-after-return" and "no-else-after-raise"
+ - Fix "startswitch" typos / bugs
+ - Removed deprecated "basic_auth" and "digest_auth" paramters. The same functionality is given by specifying the
+   "http_auth" with an instance of either object. This allows for more flexibility with various other alternative
+   authentication methods.
+- update to version 1.0.13:
+ - Add deprecation warning for in the next major release unsupported parameters (basic_auth, digest_auth).
+   They are now replaced with http_auth.
+ - Fix problematic default method parameters ("{}" and "[]").
+
+-------------------------------------------------------------------
 Tue Nov 26 14:36:32 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.0.12:
