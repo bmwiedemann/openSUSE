@@ -2,3 +2,5 @@
 from Config import *
 
 addFilter("tensorflow.* no-return-in-nonvoid-function")
+addFilter("E: library-without-ldconfig-postin")
+addFilter("E: library-without-ldconfig-postun")

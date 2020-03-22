@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:29:31 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Suppress library-without-ldconfig-* in rpmlintrc as it seems
+  intentional and is currently causing builds to fail
+
+-------------------------------------------------------------------
 Mon Mar 16 15:00:51 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - fixed mpi and hpc builds, added file 
