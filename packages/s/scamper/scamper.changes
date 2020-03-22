@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 14 16:50:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20191102b:
+ - scamper:
+  * do not dereference a null pointer when converting a tracelb node
+    with no IP address to a string, when generating json output.
+ - sc_bdrmap:
+  * allow the source IP address to be specified when probing with the
+    -S parameter.
+ - sc_wartsfilter:
+  * a new utility to select specific records from a warts file
+
+-------------------------------------------------------------------
 Mon Jan  6 19:30:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 -update to version 20191102:
