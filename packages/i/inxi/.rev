@@ -103,4 +103,12 @@
     <comment>- Update to version 3.0.32.</comment>
     <requestid>676919</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>00fe5f1c78cde48f039d8c44e605c2ab</srcmd5>
+    <version>3.0.38</version>
+    <time>1584883038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.38.</comment>
+    <requestid>786967</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package inxi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011-2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,12 @@
 #
 
 
-%define _version 3.0.32-1
+%define _version 3.0.38-1
 Name:           inxi
-Version:        3.0.32
+Version:        3.0.38
 Release:        0
 Summary:        A system information script
 License:        GPL-3.0-or-later
-Group:          System/Console
 URL:            https://github.com/smxi/inxi
 Source:         https://github.com/smxi/inxi/archive/%{_version}.tar.gz#/%{name}-%{_version}.tar.gz
 Requires:       pciutils
@@ -44,15 +43,11 @@ Suggests:       curl
 Suggests:       freeipmi
 Suggests:       hddtemp
 Suggests:       sudo
-Supplements:    packageand(wmctrl:xorg-x11-server)
-Supplements:    packageand(xdpyinfo:xorg-x11-server)
-Supplements:    packageand(xprop:xorg-x11-server)
-Supplements:    packageand(xrandr:xorg-x11-server)
-%if 0%{?suse_version} >= 1120
+Supplements:    (wmctrl and xorg-x11-server)
+Supplements:    (xdpyinfo and xorg-x11-server)
+Supplements:    (xprop and xorg-x11-server)
+Supplements:    (xrandr and xorg-x11-server)
 BuildArch:      noarch
-%else
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 
 %description
 inxi is a command line system information tool. It was forked from
@@ -71,12 +66,7 @@ install -Dpm 0755 %{name} %{buildroot}%{_bindir}/%{name}
 install -Dpm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%if 0%{?suse_version} >= 1500 && 0%{?sle_version} >= 120300
 %license LICENSE.txt
-%else
-%defattr(-,root,root)
-%doc LICENSE.txt
-%endif
 %doc inxi.changelog README.txt
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

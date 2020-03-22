@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 17:18:37 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.0.38:
+  * See /usr/share/doc/packages/inxi/inxi.changelog
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Mon Feb 18 04:29:24 UTC 2019 - sor.alexei@meowr.ru
 
 - Update to version 3.0.32:
