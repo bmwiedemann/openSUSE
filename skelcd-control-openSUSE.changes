@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 08:23:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update external link for non-x86 on Leap (bsc#1120938)
+- 20200320
+
+-------------------------------------------------------------------
 Thu Mar 12 16:16:57 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add /boot/grub2/arm64-efi subvolume for all roles (bsc#1162320).
