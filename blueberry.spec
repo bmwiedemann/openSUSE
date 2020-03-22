@@ -18,7 +18,7 @@
 
 %define __requires_exclude typelib\\((St)\\)
 Name:           blueberry
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        A configuration tool for Bluetooth
 License:        GPL-3.0-or-later
