@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar 20 04:31:14 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.1 (released 2020-03-19) includes fixes to the go command,
+  tools, and the runtime.
+  Refs boo#1164903 go1.14 release tracking
+  * go#37905 cmd/compile: -d=checkptr should not reject unaligned pointers to non-pointer data
+  * go#37833 runtime: sometimes 100% CPU spin during init phase in Go 1.14 with preemptive scheduler
+  * go#37822 cmd/go: module's "go" version should be included in cache key
+  * go#37807 runtime: mlock of signal stack failed: 12
+  * go#37782 runtime: crash on 1.14 with unexpected return pc, fatal error: unknown caller pc
+  * go#37721 reflect: MakeMap() and not native map type wrong behavior
+  * go#37671 cmd/go: tests that panic or exit are marked as passing when -json flag is used
+  * go#37667 runtime: asyncPreempt should not try to save floating-point context for softfloat MIPS targets
+  * go#37630 doc: missing documentation of quoting the URL of url.Errors in go1.14 release notes
+  * go#37613 runtime: Go 1.14.rc1 3-5% performance regression from 1.13 during protobuf marshalling
+  * go#37494 time: racy Timer access should either work or throw, not panic
+  * go#37478 SIGILL: illegal instruction on any go tool under macOS
+  * go#37447 runtime/pprof: inline frames may not use combined location
+  * go#37343 cmd/trace: requires HTML imports, which doesn't work on any major browser anymore
+
+-------------------------------------------------------------------
+Tue Mar  3 00:09:02 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging sync accumulated changes from go1.12
+  Refs boo#1164903 go1.14 release tracking
+- Use gcc9 by default by updating define gcc_go_version 9 (was 8)
+  * drop unneeded patch gcc8-go.patch
+- Fix broken go_api evaluation (1.12 < 1.5, when evaluated as floats),
+  let RPM evaluate the expression, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb.
+- Add %ifarch %arm aarch64 BuildRequires: binutils-gold to fix
+  /usr/lib64/go/{version}/pkg/tool/linux_arm64/link: running gcc failed: exit status 1
+  collect2: fatal error: cannot find 'ld'-
+
+-------------------------------------------------------------------
 Tue Feb 25 21:54:49 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14 (released 2020-02-25) is a major release of Go.
