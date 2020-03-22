@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 15:49:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * Call memset() to set all fontData struct fields to zero
+  * Use the ternary operator to simplify character attributes
+    assignments
+
+-------------------------------------------------------------------
 Mon Feb 17 19:29:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.0
