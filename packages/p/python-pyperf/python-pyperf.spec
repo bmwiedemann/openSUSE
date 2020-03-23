@@ -17,34 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyperf
-Version:        1.7.0
+Version:        2.0.0
 Release:        0
 Summary:        Python module to run and analyze benchmarks
 License:        MIT
 URL:            https://github.com/vstinner/pyperf
 Source:         https://files.pythonhosted.org/packages/source/p/pyperf/pyperf-%{version}.tar.gz
-Patch0:         python38.patch
-Patch1:         python-retcode.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Recommends:     python-psutil
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
-BuildRequires:  python2-contextlib2
-BuildRequires:  python2-statistics
-BuildRequires:  python2-unittest2
 # /SECTION
-%ifpython2
-Requires:       python2-contextlib2
-Requires:       python2-statistics
-%endif
 %python_subpackages
 
 %description
@@ -52,7 +42,6 @@ Python module to run and analyze benchmarks.
 
 %prep
 %setup -q -n pyperf-%{version}
-%autopatch -p1
 
 %build
 %python_build

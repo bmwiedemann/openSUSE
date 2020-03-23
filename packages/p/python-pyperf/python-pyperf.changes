@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:42:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.0.0
+  * Drop Python 2 support. Use pyperf 1.7.1 if you still need Python 2.7
+    support.
+  * Remove ``python_unicode`` metadata.
+  * pyperf.perf_counter() is now deprecated: use time.perf_counter() directly.
+  * Support Python 3.8: ``time.clock()`` no longer exists.
+- Drop no longer needed patches python-retcode.patch and python38.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 10:35:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patches to work with py3.8:
