@@ -67,4 +67,14 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>744001</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5d503329c3d8c1b62644d0346694b8d9</srcmd5>
+    <version>1.10.0</version>
+    <time>1584964167</time>
+    <user>dimstar_suse</user>
+    <comment>- Include in SLE-12 (fate#326950, bsc#1122668, jsc#PM-1447)
+
+  bsc#1167207</comment>
+    <requestid>786751</requestid>
+  </revision>
 </revisionlist>
