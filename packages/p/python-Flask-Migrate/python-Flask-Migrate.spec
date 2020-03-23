@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Migrate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Flask-Migrate
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        SQLAlchemy database migrations for Flask applications using Alembic
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/miguelgrinberg/flask-migrate/
+URL:            https://github.com/miguelgrinberg/flask-migrate/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Migrate/Flask-Migrate-%{version}.tar.gz
-Patch0:         pr_290.patch
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 1.0}
 BuildRequires:  %{python_module Flask-Script >= 0.6}
 BuildRequires:  %{python_module alembic >= 0.7}
 BuildRequires:  %{python_module setuptools}
+%if %{with python2}
+BuildRequires:  python-pathlib
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.9
@@ -47,7 +49,6 @@ as command line arguments for Flask-Script.
 
 %prep
 %setup -q -n Flask-Migrate-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -58,7 +59,8 @@ as command line arguments for Flask-Script.
 
 %check
 export LC_CTYPE=en_US.UTF-8
-%python_exec setup.py test
+export PYTHONDONTWRITEBYTECODE=1
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
 
 %files %{python_files}
 %doc README.md
