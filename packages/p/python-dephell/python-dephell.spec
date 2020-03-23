@@ -34,6 +34,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell
 Source:         https://files.pythonhosted.org/packages/source/d/dephell/dephell-%{version}.tar.gz
+Source1:        macros.py-dephell
 Patch0:         never-pin-deps.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
@@ -147,6 +148,9 @@ find tests -type d -name __pycache__ | xargs rm -rf
 %if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Install macros.lua for rpm to have centralized place to
+# manage dephell_genspec macro
+install -D -m 644 %{SOURCE1} %{buildroot}%{_libexecdir}/rpm/macros.d/macros.py-dephell
 %endif
 
 %check
@@ -161,6 +165,8 @@ export TRAVIS_OS_NAME=1
 %doc README.md README.rst
 %license LICENSE
 %python3_only %{_bindir}/dephell
+%python3_only %dir %{_libexecdir}/rpm/macros.d
+%python3_only %{_libexecdir}/rpm/macros.d/macros.py-dephell
 %{python_sitelib}/*
 %endif
 

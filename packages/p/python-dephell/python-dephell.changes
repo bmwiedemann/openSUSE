@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 07:48:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add new source of macros.py-dephell so that we can manage
+  dephell_genspec macro in this package.
+
+-------------------------------------------------------------------
 Thu Mar 12 14:28:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to not pin deps, do not remove as it is generated

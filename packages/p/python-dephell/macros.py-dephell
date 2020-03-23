@@ -1,0 +1,2 @@
+# Provide the macro so that we can change it with any changes upstream
+%dephell_gensetup dephell deps convert --from pyproject.toml --to setup.py

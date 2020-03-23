@@ -113,4 +113,13 @@
   * never-pin-deps.patch</comment>
     <requestid>784351</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0ad25451b1af3a6dcb6891a8ab265bad</srcmd5>
+    <version>0.8.1</version>
+    <time>1584964283</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new source of macros.py-dephell so that we can manage
+  dephell_genspec macro in this package.</comment>
+    <requestid>787363</requestid>
+  </revision>
 </revisionlist>
