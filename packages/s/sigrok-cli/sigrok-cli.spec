@@ -1,7 +1,7 @@
 #
 # spec file for package sigrok-cli
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Summary:        Logic Analyzer Command Line Tool
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 
 Name:           sigrok-cli
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
-Url:            http://sigrok.org
+URL:            https://sigrok.org
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  glib2-devel
 BuildRequires:  libsigrok-devel >= 0.4.0
 BuildRequires:  libsigrokdecode-devel >= 0.4.0
 BuildRequires:  libtool
-Source0:        http://sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        https://sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
 
 %description
 The sigrok project aims at creating a portable, cross-platform,
@@ -56,9 +55,15 @@ make %{?smp_mflags}
 %make_install
 
 %files
-%defattr(-,root,root,-)
-%doc NEWS README COPYING
+%license COPYING
+%doc NEWS README
 %doc %_mandir/*/*
 %_bindir/*
+%dir %{_datadir}/applications/
+%{_datadir}/applications/org.sigrok.sigrok-cli.desktop
+%dir %{_datadir}/icons/hicolor/
+%dir %{_datadir}/icons/hicolor/scalable/
+%dir %{_datadir}/icons/hicolor/scalable/apps/
+%{_datadir}/icons/hicolor/scalable/apps/sigrok-cli.svg
 
 %changelog
