@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
-Thu Oct 17 13:53:24 UTC 2019 - Richard Brown <rbrown@suse.com>
+Sun Mar 22 19:26:07 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
-- Remove obsolete Groups tag (fate#326485)
+- Update to version 4.0:
+  * See https://audacious-media-player.org/news/45-audacious-4-0-released
+- Add audacious-plugins-qtglspectrum-qt-opengles-workaround.patch:
+  Workaround Qt including OpenGLES headers in qtglspectrum
+  (commit a51aa5fc).
+- Disable building the deprecated GTK UI.
+- Build with Meson.
 
 -------------------------------------------------------------------
 Wed Dec 26 20:08:39 UTC 2018 - sor.alexei@meowr.ru

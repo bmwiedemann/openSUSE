@@ -1,7 +1,7 @@
 #
 # spec file for package audacious-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,41 +17,35 @@
 
 
 %define __provides_exclude_from ^%{_libdir}/audacious/*/.*.so$
-%define aud_ver_min 3.10.1
-%define aud_ver_max 3.10.99
+%define aud_ver_min 4.0
+%define aud_ver_max 4.0.99
 %bcond_with faad
 Name:           audacious-plugins
-Version:        3.10.1
+Version:        4.0
 Release:        0
 Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
-Url:            https://audacious-media-player.org/
+URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
+# PATCH-FIX-UPSTREAM audacious-plugins-qtglspectrum-qt-opengles-workaround.patch ariadne@dereferenced.org -- Workaround Qt including OpenGLES headers in qtglspectrum (commit a51aa5fc).
+Patch0:         %{name}-qtglspectrum-qt-opengles-workaround.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.5
 BuildRequires:  libmp3lame-devel
 BuildRequires:  lirc-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.2
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa) >= 1.0.16
 BuildRequires:  pkgconfig(audacious) >= %{aud_ver_min}
-BuildRequires:  pkgconfig(dbus-1) >= 0.60
-BuildRequires:  pkgconfig(dbus-glib-1) >= 0.60
 BuildRequires:  pkgconfig(flac) >= 1.2.1
 BuildRequires:  pkgconfig(fluidsynth) >= 1.0.6
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.26
-BuildRequires:  pkgconfig(gdk-x11-3.0)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.32
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32
-BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.7
 BuildRequires:  pkgconfig(libavcodec) >= 53.40.0
 BuildRequires:  pkgconfig(libavformat) >= 53.25.0
@@ -103,27 +97,21 @@ Requires:       %{name} = %{version}
 Extra plugins for the Audacious audio player.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --enable-qt       \
-  --enable-gtk      \
-%ifarch %arm aarch64
-  --disable-glspectrum \
-  --disable-qtglspectrum \
-%endif
+%meson \
+  -Dqt=true     \
 %if %{with faad}
-  --enable-aac     \
+  -Dfaad=true   \
 %else
-  --disable-aac    \
+  -Dfaad=false  \
 %endif
-  --enable-mpg123
-make %{?_smp_mflags} V=1
+  -Dmpg123=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
@@ -133,7 +121,7 @@ make %{?_smp_mflags} V=1
 %if %{with faad}
 %exclude %{_libdir}/audacious/Input/aac-raw.so
 %endif
-%exclude %{_libdir}/audacious/Output/filewriter.so
+%exclude %{_libdir}/audacious/Output/libfilewriter.so
 %{_datadir}/audacious/
 
 %files lang -f %{name}.lang
@@ -142,6 +130,6 @@ make %{?_smp_mflags} V=1
 %if %{with faad}
 %{_libdir}/audacious/Input/aac-raw.so
 %endif
-%{_libdir}/audacious/Output/filewriter.so
+%{_libdir}/audacious/Output/libfilewriter.so
 
 %changelog
