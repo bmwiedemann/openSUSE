@@ -28,4 +28,12 @@
   * Fixing deepcopy not copying box options (thanks to Nikolay Stanishev)</comment>
     <requestid>729831</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b09edb666ce9877cf6b84fe9e7eeda83</srcmd5>
+    <version>4.2.2</version>
+    <time>1584964210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786925</requestid>
+  </revision>
 </revisionlist>

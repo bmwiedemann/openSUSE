@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-box
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,37 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# python_requires='>=3.6'
+%define skip_python2 1
 Name:           python-python-box
-Version:        3.4.3
+Version:        4.2.2
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cdgriffith/Box
-Source:         https://files.pythonhosted.org/packages/source/p/python-box/python-box-%{version}.tar.gz
+Source:         https://github.com/cdgriffith/Box/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pathlib}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module ruamel.yaml}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module toml}
+# /SECTION
+Requires:       python-ruamel.yaml
+Requires:       python-toml
 %python_subpackages
 
 %description
 Advanced Python dictionaries with dot notation access
 
 %prep
-%setup -q -n python-box-%{version}
+%setup -q -n Box-%{version}
 
 %build
 %python_build
@@ -46,13 +57,12 @@ Advanced Python dictionaries with dot notation access
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# upstream does not distribute the data nor provides all tags
-#%%pytest
+export PYTHONPATH='.'
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/box.py
 %{python_sitelib}/*
 
 %changelog
