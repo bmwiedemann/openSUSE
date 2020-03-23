@@ -93,4 +93,12 @@
     <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
     <requestid>767556</requestid>
   </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>6ab10119d5aebf179ad9b410718e05a4</srcmd5>
+    <version>2.6</version>
+    <time>1584964301</time>
+    <user>dimstar_suse</user>
+    <comment>Add bundle manifest</comment>
+    <requestid>787372</requestid>
+  </revision>
 </revisionlist>

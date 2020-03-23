@@ -29,6 +29,7 @@ URL:            http://commons.apache.org/%{base_name}
 Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Patch0:         fix_StopWatchTest_for_slow_systems.patch
 Patch1:         0002-Fix-FastDateFormat-for-Java-7-behaviour.patch
+Patch2:         commons-lang-bundle-manifest.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
@@ -68,6 +69,7 @@ Javadoc for %{name}.
 %setup -q -n %{short_name}-%{version}-src
 %patch0
 %patch1 -p1
+%patch2 -p1
 sed -i 's/\r//' *.txt *.html
 
 %pom_remove_parent .

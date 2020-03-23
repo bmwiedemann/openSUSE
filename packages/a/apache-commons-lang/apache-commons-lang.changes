@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:59:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * commons-lang-bundle-manifest.patch
+    + Add bundle manifest to make usable from eclipse
+
+-------------------------------------------------------------------
 Mon Jan 27 06:21:47 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - On supported platforms, avoid building with OpenJ9 in order to
