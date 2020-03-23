@@ -40,4 +40,15 @@
     working in environments without it</comment>
     <requestid>753967</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5141a03378e02c3d6cf96f35961ba67c</srcmd5>
+    <version>9.0</version>
+    <time>1584964318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.0:
+  * Add support for pytest 5.4.
+  * Add support for Python 3.8.
+  * Drop support for python 2.7</comment>
+    <requestid>787374</requestid>
+  </revision>
 </revisionlist>
