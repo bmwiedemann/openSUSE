@@ -89,4 +89,12 @@
   * add support for issue.related_merge_requests 90a3631, closes #794</comment>
     <requestid>729828</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b54d5c3ad641ba4da671d2d8d737f36</srcmd5>
+    <version>2.1.2</version>
+    <time>1584964307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787370</requestid>
+  </revision>
 </revisionlist>

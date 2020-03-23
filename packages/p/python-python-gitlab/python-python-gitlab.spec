@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gitlab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-python-gitlab
-Version:        1.11.0
+Version:        2.1.2
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
@@ -28,14 +29,18 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-gitlab/p
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 2.4.2
+Requires:       python-PyYAML >= 5.2
+Requires:       python-argcomplete >= 1.10.0
+Requires:       python-requests >= 2.22.0
 Requires:       python-setuptools
 Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module configparser}
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module requests >= 2.4.2}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
@@ -60,7 +65,7 @@ sed -i -e '/^#!\//, 1d' gitlab/v4/cli.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc AUTHORS ChangeLog.rst README.rst
