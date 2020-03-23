@@ -321,4 +321,13 @@
 </comment>
     <requestid>769257</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d7c98f3a0ee851681e52dd4d7c80a30</srcmd5>
+    <version>1.9.0</version>
+    <time>1584964236</time>
+    <user>dimstar_suse</user>
+    <comment>- remove fix-tests-ipython-7.10.patch, already included upstream
+- update to version 1.9.0:</comment>
+    <requestid>787271</requestid>
+  </revision>
 </revisionlist>

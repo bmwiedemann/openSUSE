@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-kernels
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -27,8 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source:         https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix compat with IPython 7.10+
-Patch:          https://github.com/spyder-ide/spyder-kernels/commit/ced5246e8f46e0e9f879026b016d2dbf8b206b33.patch#/fix-tests-ipython-7.10.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -70,7 +68,6 @@ all inside the IDE.
 
 %prep
 %setup -q -n spyder-kernels-%{version}
-%patch0 -p1
 
 %build
 %python_build
