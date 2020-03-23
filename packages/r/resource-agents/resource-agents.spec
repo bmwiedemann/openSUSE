@@ -37,6 +37,8 @@ Patch3:         0003-ldirectord-don-t-create-subsys-lock.patch
 Patch4:         0004-Revert-Low-build-Move-binaries-in-usr-lib-heartbeat-.patch
 # PATCH-FIX-OPENSUSE: Revert ocf_log: use same log format at pacemaker
 Patch6:         0006-Revert-ocf_log-use-same-log-format-as-pacemaker.patch
+# PATCH-FIX-OPENSUSE:
+Patch7:         0007-Request-to-add-gcp-vpc-move-route.patch	
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -110,6 +112,7 @@ pages of individual nagios plugins.
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
+%patch7 -p0
 
 %build
 autoreconf -fvi
