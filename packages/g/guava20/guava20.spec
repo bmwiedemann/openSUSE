@@ -1,7 +1,7 @@
 #
 # spec file for package guava20
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ License:        Apache-2.0 AND CC0-1.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/google/guava
 Source0:        https://github.com/google/guava/archive/v%{version}.tar.gz
+Source1:        osgi-manifest.txt
 Patch0:         0001-Avoid-presizing-arrays.patch
 Patch1:         guava20-java8compat.patch
 BuildRequires:  fdupes
@@ -64,6 +65,7 @@ guava-testlib provides additional functionality for conveninent unit testing
 
 %prep
 %setup -q -n guava-%{version}
+cat %{SOURCE1} | sed 's#@BNDVRSN@#%{version}.0#g' >manifest.txt
 
 %patch0 -p1
 %patch1 -p1
@@ -110,7 +112,7 @@ javac -d guava/build/classes \
   -cp $(build-classpath jsr-305) \
   -source 6 -target 6 -encoding utf8 \
   $(find guava/src/ -name \*.java | xargs)
-jar cf guava/build/guava-%{version}.jar -C guava/build/classes .
+jar cfm guava/build/guava-%{version}.jar manifest.txt -C guava/build/classes .
 
 mkdir -p guava-testlib/build/classes
 javac \

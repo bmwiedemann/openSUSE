@@ -25,4 +25,12 @@
     <comment>Remove reference to parent from pom files</comment>
     <requestid>735433</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>eade8729fdd9f4b7c09add2cf26656c8</srcmd5>
+    <version>20.0</version>
+    <time>1584964334</time>
+    <user>dimstar_suse</user>
+    <comment>Add bundle manifest</comment>
+    <requestid>787384</requestid>
+  </revision>
 </revisionlist>
