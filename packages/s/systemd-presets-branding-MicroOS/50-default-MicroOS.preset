@@ -9,6 +9,7 @@ enable cloud-final.service
 enable cloud-init-local.service
 enable cloud-init.service
 enable health-checker.service
+enable kubelet.service
 disable purge-kernels.service
 # optional packages
 enable man-db-create.service

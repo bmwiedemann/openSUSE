@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-presets-branding-MicroOS
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define generic_name systemd-presets-branding
 
 Name:           systemd-presets-branding-MicroOS
-Version:        20190219
+Version:        20200323
 Release:        0
 Summary:        Systemd default presets for openSUSE MicroOS
 License:        MIT
 Group:          System/Base
 Source0:        50-default-MicroOS.preset
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-presets-branding-openSUSE
+BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  systemd-presets-branding
 Requires:       systemd-presets-common-SUSE
 PreReq:         coreutils
