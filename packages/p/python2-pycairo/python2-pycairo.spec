@@ -50,16 +50,16 @@ Pycairo is a Python module providing bindings for the cairo graphics library.
 This package provides the development files needed to build
 packages that depen on Pycairo.
 
-%package     -n python-pycairo-common-devel
+%package     -n python2-pycairo-common-devel
 Summary:        Headers for the Cairo Python bindings
 Requires:       cairo-devel
+Provides:       python-pycairo-common-devel = %{version}
 Provides:       python2-cairo-common-devel = %{version}
-Provides:       python2-pycairo-common-devel = %{version}
 Obsoletes:      python2-cairo-common-devel < %{version}
 Provides:       python-cairo-common-devel = %{version}
 Obsoletes:      python-cairo-common-devel < %{version}
 
-%description -n python-pycairo-common-devel
+%description -n python2-pycairo-common-devel
 Pycairo is a Python module providing bindings for the cairo graphics library.
 
 This package provides the headers and development files needed to build
@@ -88,7 +88,7 @@ sed -i -e 's:include/pycairo:include/pycairo-py2:g' %{buildroot}%{_libdir}/pkgco
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 %{_libdir}/pkgconfig/pycairo.pc
 
-%files -n python-pycairo-common-devel
+%files -n python2-pycairo-common-devel
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 %{_includedir}/pycairo-py2/
 
