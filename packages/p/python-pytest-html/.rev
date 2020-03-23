@@ -92,4 +92,13 @@
   * Added ability to change report title using hook (#270)</comment>
     <requestid>785474</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d2d34fe2159f913ce68372aa469d3038</srcmd5>
+    <version>2.1.1</version>
+    <time>1584964330</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * Fix issue with funcargs causing failures. (#282)</comment>
+    <requestid>787378</requestid>
+  </revision>
 </revisionlist>
