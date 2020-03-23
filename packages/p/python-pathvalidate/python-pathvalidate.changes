@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:48:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  * Fix to include py.typed to the package
+
+-------------------------------------------------------------------
 Sun Feb 16 09:54:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.0
