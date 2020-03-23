@@ -31,14 +31,14 @@
 %define pkg_name          php7
 %define extension_dir     %{_libdir}/%{pkg_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{pkg_name}
-%define build_firebird 0%{?is_opensuse}
+%define build_firebird 1
 %define build_sodium 1
 %define build_argon2 0
 %if %{?suse_version} >= 1500
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.3
+Version:        7.4.4
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
