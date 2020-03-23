@@ -1,7 +1,7 @@
 #
 # spec file for package openmpi2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -133,7 +133,7 @@ Release:        0
 Summary:        An implementation of MPI/SHMEM
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
-Url:            http://www.open-mpi.org/
+URL:            http://www.open-mpi.org/
 Source0:        openmpi-%{version}%{git_ver}.tar.bz2
 Source2:        openmpi2-rpmlintrc
 Source3:        macros.hpc-openmpi
@@ -454,7 +454,7 @@ export HOSTNAME=OBS
 %endif
            --disable-silent-rules \
            --enable-mpirun-prefix-by-default \
-           --with-package-string="Open MPI Distribution for %{?is_opensuse:openSUSE}%{!?is_opensuse:SLE}"  \
+           --with-package-string="Open MPI Distribution for SUSE"  \
            --disable-wrapper-rpath
 make %{?_smp_mflags}
 
