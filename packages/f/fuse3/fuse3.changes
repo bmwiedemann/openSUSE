@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 20 06:15:34 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.9.1
+  * Fixed memory leak in fuse_session_new().
+  * Fixed an issue with the linker version script.
+  * Make ioctl prototype conditional on FUSE_USE_VERSION.
+    Define FUSE_USE_VERSION < 35 to get old ioctl prototype with
+    int commands; define FUSE_USE_VERSION >= 35 to get new ioctl
+    prototype with unsigned int commands.
+  * Various small bugfixes.
+
+-------------------------------------------------------------------
 Sat Dec 14 12:47:41 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.9.0
