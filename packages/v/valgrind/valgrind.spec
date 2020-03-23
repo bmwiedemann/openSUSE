@@ -44,6 +44,10 @@ Patch2:         armv6-support.diff
 Patch3:         0001-Add-newer-constants-for-prctl-syscall.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0002-Add-support-for-PR_CAPBSET_READ-and-_DROP-syscalls.patch
+Patch5:         0001-Fix-makefile-consistency-check.patch
+Patch6:         0001-s390x-Add-models-z14-and-z14-ZR1.patch
+Patch7:         0001-s390x-Clean-up-s390-check-opcodes.pl.patch
+Patch8:         0001-s390x-Add-CPU-model-for-z15.patch
 %if "%{flavor}" == ""
 %if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
@@ -156,6 +160,10 @@ but it has been successfully used to optimize several KDE applications.
 %patch2
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
 %if "%{flavor}" == ""

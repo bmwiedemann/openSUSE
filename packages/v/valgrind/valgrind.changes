@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:56:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add 0001-Fix-makefile-consistency-check.patch
+  0001-s390x-Add-models-z14-and-z14-ZR1.patch
+  0001-s390x-Clean-up-s390-check-opcodes.pl.patch
+  0001-s390x-Add-CPU-model-for-z15.patch (bsc#1165834)
+
+-------------------------------------------------------------------
 Tue Jan 28 14:02:04 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable %check on %arm as it never passed - boo#1130395
