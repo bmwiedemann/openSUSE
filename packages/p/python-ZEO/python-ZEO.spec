@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
+%bcond_without python2
 Name:           python-ZEO
 Version:        5.2.1
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/ZEO
 Source:         https://files.pythonhosted.org/packages/source/Z/ZEO/ZEO-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
@@ -44,9 +43,7 @@ BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-trollius
 Requires:       python-ZConfig
 Requires:       python-ZODB >= 5.5.1
 Requires:       python-persistent >= 4.1.0
@@ -58,8 +55,12 @@ Requires:       python-zope.interface
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+BuildRequires:  python-trollius
+%endif
 %ifpython2
-Requires:       %{oldpython}-trollius
+Requires:       python-trollius
 %endif
 %python_subpackages
 
@@ -68,7 +69,6 @@ ZEO provides a client-server storage implementation for ZODB.
 
 %package     -n %{name}-doc
 Summary:        Client-Server storage implementation for ZODB
-Group:          Development/Languages/Python
 Provides:       %{python_module ZEO-doc = %{version}}
 
 %description -n %{name}-doc

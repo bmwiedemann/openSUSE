@@ -101,4 +101,12 @@
     <comment>- Remove msgpack restriction to &lt; 0.6 release</comment>
     <requestid>689778</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>43baac8b35e614a98ff009b61d8909fc</srcmd5>
+    <version>5.2.1</version>
+    <time>1584964244</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787348</requestid>
+  </revision>
 </revisionlist>
