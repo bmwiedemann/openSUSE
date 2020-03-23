@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2001-2020 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2001-2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,58 @@ Patch45:        s390-tools-sles15sp2-04-zipl-libc-Indicate-truncated-lines-in-pr
 Patch46:        s390-tools-sles15sp2-01-zpcictl-Initiate-recover-after-reset.patch
 Patch47:        s390-tools-sles15sp2-02-zpcictl-Rename-misleading-sysfs_write_data.patch
 Patch48:        s390-tools-sles15sp2-03-zpcitctl-Exit-on-error-in-sysfs_report_error.patch
+Patch49:        s390-tools-sles15sp2-01-zipl-fix-Wdiscarded-qualifiers.patch
+Patch50:        s390-tools-sles15sp2-02-zipl-fix-Waddress-of-packed-member.patch
+Patch51:        s390-tools-sles15sp2-03-zipl-remove-some-useless-__packed___-attributes.patch
+Patch52:        s390-tools-sles15sp2-04-zipl-Fix-entry-point-for-stand-alone-kdump.patch
+Patch53:        s390-tools-sles15sp2-05-zipl-Fix-dependency-generation-in-zipl-boot.patch
+Patch54:        s390-tools-sles15sp2-06-zipl-Make-use-of-__packed-macro.patch
+Patch55:        s390-tools-sles15sp2-07-zipl-define-__section-macro-and-make-use-of-it.patch
+Patch56:        s390-tools-sles15sp2-08-zipl-Make-use-of-__noreturn-macro.patch
+Patch57:        s390-tools-sles15sp2-09-zipl-Define-__noinline-macro-and-make-use-of-it.patch
+Patch58:        s390-tools-sles15sp2-10-zipl-stage3-Mark-start_kernel-__noreturn.patch
+Patch59:        s390-tools-sles15sp2-11-zipl-sclp-Remove-duplicate-macros.patch
+Patch60:        s390-tools-sles15sp2-12-zipl-Make-address-size-mask-macros-UL.patch
+Patch61:        s390-tools-sles15sp2-13-zipl-libc-Use-stdint.h-instead-of-self-defined-macro.patch
+Patch62:        s390-tools-sles15sp2-14-zipl-Consolidate-IMAGE-macros.patch
+Patch63:        s390-tools-sles15sp2-15-zipl-Consolidate-STAGE-2-3-macros.patch
+Patch64:        s390-tools-sles15sp2-16-zipl-stfle-use-uint64_t-instead-of-u64.patch
+Patch65:        s390-tools-sles15sp2-17-zipl-boot-fix-comment-in-stage3.lds.patch
+Patch66:        s390-tools-sles15sp2-18-lib-zt_common-add-STATIC_ASSERT-macro.patch
+Patch67:        s390-tools-sles15sp2-19-zipl-use-STATIC_ASSERT-macro-for-no-padding-verifica.patch
+Patch68:        s390-tools-sles15sp2-20-Support-lib-zt_common.h-to-be-used-in-assembler-and-.patch
+Patch69:        s390-tools-sles15sp2-21-zipl-move-IPL-related-definitions-into-separate-head.patch
+Patch70:        s390-tools-sles15sp2-22-zipl-move-SIGP-related-functions-and-definitions-int.patch
+Patch71:        s390-tools-sles15sp2-23-zipl-add-SIGP_SET_ARCHITECTURE-to-sigp.h-and-use-it.patch
+Patch72:        s390-tools-sles15sp2-24-zipl-stage3-make-IPL_DEVICE-definition-consistent-wi.patch
+Patch73:        s390-tools-sles15sp2-25-zipl-move-Linux-layout-definitions-into-separate-hea.patch
+Patch74:        s390-tools-sles15sp2-26-zipl-tape0-use-constants-defined-in-linux_layout.h.patch
+Patch75:        s390-tools-sles15sp2-27-zipl-use-STAGE3_ENTRY-for-STAGE3_LOAD_ADDRESS.patch
+Patch76:        s390-tools-sles15sp2-28-zipl-move-loaders-layout-definitions-into-separate-h.patch
+Patch77:        s390-tools-sles15sp2-29-zipl-s390.h-rename-inline-macro-into-__always_inline.patch
+Patch78:        s390-tools-sles15sp2-30-zipl-move-__always_inline-barrier-__pa32-pa-to-zt_co.patch
+Patch79:        s390-tools-sles15sp2-31-zipl-make-BLK_PWRT-unsigned-int.patch
+Patch80:        s390-tools-sles15sp2-32-Consolidate-MIN-and-MAX-macros.patch
+Patch81:        s390-tools-sles15sp2-33-zipl-remove-libc.h-include-in-s390.h.patch
+Patch82:        s390-tools-sles15sp2-34-zipl-move-s390.h-to-include-boot-s390.h.patch
+Patch83:        s390-tools-sles15sp2-35-zipl-libc-include-s390.h.patch
+Patch84:        s390-tools-sles15sp2-36-include-boot-s390.h-move-panic-and-panic_notify-to-l.patch
+Patch85:        s390-tools-sles15sp2-37-include-boot-s390.h-fixes-for-Werror-sign-conversion.patch
+Patch86:        s390-tools-sles15sp2-38-zipl-refactor-all-EBCDIC-code-into-separate-files.patch
+Patch87:        s390-tools-sles15sp2-39-zipl-sclp-add-macros-for-the-control-program-masks.patch
+Patch88:        s390-tools-sles15sp2-40-zipl-sclp-add-sclp_print_ascii.patch
+Patch89:        s390-tools-sles15sp2-41-zipl-libc-printf-print-on-linemode-and-ASCII-console.patch
+Patch90:        s390-tools-sles15sp2-42-Consolidate-ALIGN-__ALIGN_MASK-ARRAY_SIZE-macros.patch
+Patch91:        s390-tools-sles15sp2-43-genprotimg-boot-initial-bootloader-support.patch
+Patch92:        s390-tools-sles15sp2-44-genprotimg-boot-use-C-pre-processor-for-linker-scrip.patch
+Patch93:        s390-tools-sles15sp2-45-genprotimg-add-relocator-for-stage3b.patch
+Patch94:        s390-tools-sles15sp2-46-README.md-remove-useless-empty-line.patch
+Patch95:        s390-tools-sles15sp2-47-include-boot-s390.h-add-guard-for-struct-__vector128.patch
+Patch96:        s390-tools-sles15sp2-48-genprotimg-introduce-new-tool-for-the-creation-of-PV.patch
+Patch97:        s390-tools-sles15sp2-01-zipl-Add-missing-options-to-help-output.patch
+Patch98:        s390-tools-sles15sp2-02-zipl-allow-stand-alone-secure-option-on-command-l.patch
+Patch99:        s390-tools-sles15sp2-03-zipl-correct-secure-boot-config-handling.patch
+Patch100:       s390-tools-sles15sp2-04-zipl-fix-zipl.conf-man-page-example-for-secure-boot.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
@@ -156,6 +208,7 @@ BuildRequires:  dracut
 BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
+BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel-static
 BuildRequires:  kernel-zfcpdump
 BuildRequires:  libcryptsetup-devel > 2.0.3
@@ -270,7 +323,7 @@ install -m 755 read_values %{buildroot}/%{_bindir}/
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
 
 export ROOT_BUILD_DIR="%{_builddir}/%{name}-%{version}/zfcpdump/kernel"
-install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump_part.image
+install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
 
 install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
 install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/udev/rules.d/40-z90crypt.rules
@@ -528,6 +581,7 @@ fi
 %dir %{_datadir}/s390-tools
 %dir %{_datadir}/s390-tools/cpumf
 %dir %{_datadir}/s390-tools/netboot
+%dir %{_datadir}/s390-tools/genprotimg
 %dir %{_prefix}/lib/dracut/modules.d/95zdev
 %dir /boot/zipl
 %dir /lib/s390-tools/

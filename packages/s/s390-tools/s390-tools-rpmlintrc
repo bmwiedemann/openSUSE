@@ -1,3 +1,4 @@
+addFilter("/var/log/ts-shell")
 addFilter("statically-linked-binary /usr/lib/s390-tools/.*")
 addFilter("statically-linked-binary /usr/bin/read_values")
 addFilter("systemd-service-without-service_.* *@.service")

@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Mar 19 19:22:19 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches for bsc#1166850
+  zipl: fix secure boot config handling:
+  * s390-tools-sles15sp2-01-zipl-Add-missing-options-to-help-output.patch
+  * s390-tools-sles15sp2-02-zipl-allow-stand-alone-secure-option-on-command-l.patch
+  * s390-tools-sles15sp2-03-zipl-correct-secure-boot-config-handling.patch
+  * s390-tools-sles15sp2-04-zipl-fix-zipl.conf-man-page-example-for-secure-boot.patch
+- Modified the spec file so that the kernel used for the SCSI dump
+  tool is named zfcpdump-image instead of zfcpdump_part.image. This
+  is to match the new version of zipl that expects this new file name.
+  (bsc#1166851)
+
+-------------------------------------------------------------------
+Wed Mar 18 17:58:57 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches to implement jsc#SLE-7471, Enhanced
+  tooling for kvm guest images (bsc#1165549):
+  * s390-tools-sles15sp2-01-zipl-fix-Wdiscarded-qualifiers.patch
+  * s390-tools-sles15sp2-02-zipl-fix-Waddress-of-packed-member.patch
+  * s390-tools-sles15sp2-03-zipl-remove-some-useless-__packed___-attributes.patch
+  * s390-tools-sles15sp2-04-zipl-Fix-entry-point-for-stand-alone-kdump.patch
+  * s390-tools-sles15sp2-05-zipl-Fix-dependency-generation-in-zipl-boot.patch
+  * s390-tools-sles15sp2-06-zipl-Make-use-of-__packed-macro.patch
+  * s390-tools-sles15sp2-07-zipl-define-__section-macro-and-make-use-of-it.patch
+  * s390-tools-sles15sp2-08-zipl-Make-use-of-__noreturn-macro.patch
+  * s390-tools-sles15sp2-09-zipl-Define-__noinline-macro-and-make-use-of-it.patch
+  * s390-tools-sles15sp2-10-zipl-stage3-Mark-start_kernel-__noreturn.patch
+  * s390-tools-sles15sp2-11-zipl-sclp-Remove-duplicate-macros.patch
+  * s390-tools-sles15sp2-12-zipl-Make-address-size-mask-macros-UL.patch
+  * s390-tools-sles15sp2-13-zipl-libc-Use-stdint.h-instead-of-self-defined-macro.patch
+  * s390-tools-sles15sp2-14-zipl-Consolidate-IMAGE-macros.patch
+  * s390-tools-sles15sp2-15-zipl-Consolidate-STAGE-2-3-macros.patch
+  * s390-tools-sles15sp2-16-zipl-stfle-use-uint64_t-instead-of-u64.patch
+  * s390-tools-sles15sp2-17-zipl-boot-fix-comment-in-stage3.lds.patch
+  * s390-tools-sles15sp2-18-lib-zt_common-add-STATIC_ASSERT-macro.patch
+  * s390-tools-sles15sp2-19-zipl-use-STATIC_ASSERT-macro-for-no-padding-verifica.patch
+  * s390-tools-sles15sp2-20-Support-lib-zt_common.h-to-be-used-in-assembler-and-.patch
+  * s390-tools-sles15sp2-21-zipl-move-IPL-related-definitions-into-separate-head.patch
+  * s390-tools-sles15sp2-22-zipl-move-SIGP-related-functions-and-definitions-int.patch
+  * s390-tools-sles15sp2-23-zipl-add-SIGP_SET_ARCHITECTURE-to-sigp.h-and-use-it.patch
+  * s390-tools-sles15sp2-24-zipl-stage3-make-IPL_DEVICE-definition-consistent-wi.patch
+  * s390-tools-sles15sp2-25-zipl-move-Linux-layout-definitions-into-separate-hea.patch
+  * s390-tools-sles15sp2-26-zipl-tape0-use-constants-defined-in-linux_layout.h.patch
+  * s390-tools-sles15sp2-27-zipl-use-STAGE3_ENTRY-for-STAGE3_LOAD_ADDRESS.patch
+  * s390-tools-sles15sp2-28-zipl-move-loaders-layout-definitions-into-separate-h.patch
+  * s390-tools-sles15sp2-29-zipl-s390.h-rename-inline-macro-into-__always_inline.patch
+  * s390-tools-sles15sp2-30-zipl-move-__always_inline-barrier-__pa32-pa-to-zt_co.patch
+  * s390-tools-sles15sp2-31-zipl-make-BLK_PWRT-unsigned-int.patch
+  * s390-tools-sles15sp2-32-Consolidate-MIN-and-MAX-macros.patch
+  * s390-tools-sles15sp2-33-zipl-remove-libc.h-include-in-s390.h.patch
+  * s390-tools-sles15sp2-34-zipl-move-s390.h-to-include-boot-s390.h.patch
+  * s390-tools-sles15sp2-35-zipl-libc-include-s390.h.patch
+  * s390-tools-sles15sp2-36-include-boot-s390.h-move-panic-and-panic_notify-to-l.patch
+  * s390-tools-sles15sp2-37-include-boot-s390.h-fixes-for-Werror-sign-conversion.patch
+  * s390-tools-sles15sp2-38-zipl-refactor-all-EBCDIC-code-into-separate-files.patch
+  * s390-tools-sles15sp2-39-zipl-sclp-add-macros-for-the-control-program-masks.patch
+  * s390-tools-sles15sp2-40-zipl-sclp-add-sclp_print_ascii.patch
+  * s390-tools-sles15sp2-41-zipl-libc-printf-print-on-linemode-and-ASCII-console.patch
+  * s390-tools-sles15sp2-42-Consolidate-ALIGN-__ALIGN_MASK-ARRAY_SIZE-macros.patch
+  * s390-tools-sles15sp2-43-genprotimg-boot-initial-bootloader-support.patch
+  * s390-tools-sles15sp2-44-genprotimg-boot-use-C-pre-processor-for-linker-scrip.patch
+  * s390-tools-sles15sp2-45-genprotimg-add-relocator-for-stage3b.patch
+  * s390-tools-sles15sp2-46-README.md-remove-useless-empty-line.patch
+  * s390-tools-sles15sp2-47-include-boot-s390.h-add-guard-for-struct-__vector128.patch
+  * s390-tools-sles15sp2-48-genprotimg-introduce-new-tool-for-the-creation-of-PV.patch
+- Added a BuildRequires for glib2-devel to support the new feature.
+- Added a %dir entry for /usr/share/s390-tools/genprotimg
+
+-------------------------------------------------------------------
 Tue Mar 10 18:25:51 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Added the following patches for bsc#1165978.
