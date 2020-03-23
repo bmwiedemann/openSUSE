@@ -4174,7 +4174,6 @@
     <package name="rebootmgr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="redis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="reiserfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="release-notes-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="remmina" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-plugin-rdp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
