@@ -2558,4 +2558,21 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>785503</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>0ce828db6a4d0a95ea1f66967d62dd00</srcmd5>
+    <version>7.0.10.1</version>
+    <time>1584964172</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.1
+  * Add support for returning the convex hull of an image with the
+    %[canvas-hull] property.
+  * Added option to specify the preferred version when writing a PDF file with
+    -define pdf:version=version (e.g. 1.7).
+  * Do not throw exception on empty draw path (reference
+    https://github.com/ImageMagick/ImageMagick/issues/974).
+  * Fix possible buffer overflow in ComplexImages().
+  * SVG to MVG requires transforms to appear before clipping paths (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1860).</comment>
+    <requestid>786802</requestid>
+  </revision>
 </revisionlist>
