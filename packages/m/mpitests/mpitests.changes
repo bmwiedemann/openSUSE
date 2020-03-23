@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:12:17 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update OSU micro benchmark to 5.6.2
+- Update Intel MPI Benchmarks to v2019.5
+
+-------------------------------------------------------------------
+Thu Mar 19 08:47:09 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add build for openmpi4
+
+-------------------------------------------------------------------
 Fri Jan 24 10:27:20 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix syntax error in SLE version checks for openmpi3, sle_version

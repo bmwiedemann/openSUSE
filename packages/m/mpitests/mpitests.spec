@@ -38,11 +38,15 @@
 
 %endif
 
-%define osu_ver  5.4
-%define imb_ver  2018.1
+%define osu_ver  5.6.2
+%define imb_ver  2019.5
+%define imb_dir  mpi-benchmarks-IMB-v%{imb_ver}
+%define osu_dir  osu-micro-benchmarks-%{osu_ver}
+
 %define mpi_home %{hpc_mpi_home %flavor}
 %define implem_list_dir %{_datadir}/mpitests/implem.d/
 %define sles_pre_15 (0%{?sle_version} > 120000 && 0%{?sle_version} < 150000)
+%define sles_pre_or_15 (0%{?sle_version} > 120000 && 0%{?sle_version} <= 150000)
 
 Name:           mpitests%{pack_suff}
 %if "%{flavor}" == ""
@@ -58,7 +62,7 @@ Version:        3.2
 Release:        0
 URL:            http://www.openfabrics.org/downloads.htm
 Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-%{osu_ver}.tar.gz
-Source1:        https://github.com/intel/mpi-benchmarks/archive/v%{imb_ver}.tar.gz#/IMB_2018_Update1.tgz
+Source1:        https://github.com/intel/mpi-benchmarks/archive/IMB-v%{imb_ver}.tar.gz
 Source3:        mpitests-runtests.sh
 Source4:        mpitests-run.sh
 Source100:      mpitests-rpmlintrc
@@ -161,6 +165,15 @@ ExclusiveArch:  do_not_build
 ExcludeArch:    ppc64
 %endif
 
+%if "%{flavor}" == "openmpi4" || "%{flavor}" == "openmpi4-gnu-hpc"
+%if %{sles_pre_or_15}
+# Disable openmpi4 builds for SLES up to (including) 15
+ExclusiveArch:  do_not_build
+%else
+ExcludeArch:    ppc64
+%endif
+%endif
+
 # Disable mpich builds for SLE12 as it is not available
 %if "%{flavor}" == "mpich-ofi" || "%{flavor}" == "mpich" || "%{flavor}" == "mpich-ofi-gnu-hpc" || "%{flavor}" == "mpich-gnu-hpc"
 %if %{sles_pre_15}
@@ -181,20 +194,20 @@ echo echo %{mpi_home}
 . %{mpi_home}/bin/mpivars.sh
 
 # IMB Build
-make CC=%{mpi_home}/bin/mpicc -C mpi-benchmarks-%{imb_ver}/src all
+make %{?_smp_mflags} CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx -C %{imb_dir}/ all
 
 # OSU Build
-( cd osu-micro-benchmarks-%{osu_ver} && \
+( cd %{osu_dir} && \
   ./configure CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx &&
-  make  all )
+  make %{?_smp_mflags} all )
 
 %install
 # IMB
 for imb_test in IMB-EXT IMB-IO IMB-MPI1 IMB-NBC IMB-RMA; do \
-	install -D -m0755  mpi-benchmarks-%{imb_ver}/src/$imb_test %{buildroot}%{mpi_home}/tests/IMB/$imb_test;\
+	install -D -m0755  %{imb_dir}/$imb_test %{buildroot}%{mpi_home}/tests/IMB/$imb_test;\
 done
 # OSU
-make -C osu-micro-benchmarks-%{osu_ver} install prefix=%{buildroot}/usr libexecdir=%{buildroot}%{mpi_home}/tests
+make -C %{osu_dir} install prefix=%{buildroot}/usr libexecdir=%{buildroot}%{mpi_home}/tests
 
 # Run script
 sed -e s/@IMPLEM@/%{flavor}/g -e 's&@MPI_HOME@&%{mpi_home}&g' %{S:3}  > %{buildroot}%{mpi_home}/tests/runtests.sh
@@ -230,9 +243,9 @@ mkdir -p %{buildroot}%{_datadir}/mpitests/implem.d/
 %if "%{flavor}" == ""
 %{_datadir}/%{name}/runtests.sh
 %else
-%doc mpi-benchmarks-%{imb_ver}/license/license.txt
-%doc mpi-benchmarks-%{imb_ver}/license/use-of-trademark-license.txt
-%doc osu-micro-benchmarks-%{osu_ver}/COPYRIGHT
+%doc %{imb_dir}/license/license.txt
+%doc %{imb_dir}/license/use-of-trademark-license.txt
+%doc %{osu_dir}/COPYRIGHT
 %{mpi_home}/tests
 %{_datadir}/mpitests/implem.d/%{flavor}
 %endif
