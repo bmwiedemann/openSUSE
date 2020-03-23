@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 19 07:57:04 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200316 (git commit 8eb0b281511d):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * amdgpu: update vega20 firmware from 19.50
+  * amdgpu: update vega12 firmware from 19.50
+  * amdgpu: update vega10 firmware from 19.50
+  * rtl_bt: Add firmware and configuration files for RTL8822C BT UART chip
+  * i915: Add DMC firmware v2.06 for TGL
+  * i915: add HuC firmware v7.0.12 for TGL
+
+-------------------------------------------------------------------
 Sun Mar 08 07:44:02 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200302 (git commit 0148cfefcbf9):
