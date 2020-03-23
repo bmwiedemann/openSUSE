@@ -37,4 +37,12 @@
   * Add support for the Command API</comment>
     <requestid>729838</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6e62b945205c0c9062fa728e8ffa847</srcmd5>
+    <version>2.1.0</version>
+    <time>1584964204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786903</requestid>
+  </revision>
 </revisionlist>

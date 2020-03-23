@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypuppetdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pypuppetdb
-Version:        1.1.0
+Version:        2.1.0
 Release:        0
 Summary:        Library to work with PuppetDB's REST API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/nedap/pypuppetdb
 Source:         https://github.com/voxpupuli/pypuppetdb/archive/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Fix requirements in generated egg-info
+Patch0:         loosen-requirements.patch
 BuildRequires:  %{python_module httpretty >= 0.9.6}
 BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest >= 3.0.1}
 BuildRequires:  %{python_module pytest-cov >= 2.2.1}
 BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.12.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-httpretty >= 0.9.6
 Requires:       python-requests >= 2.22.0
-Requires:       python-six >= 1.12.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,6 +46,7 @@ More information: https://github.com/nedap/pypuppetdb
 
 %prep
 %setup -q -n pypuppetdb-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -56,6 +57,8 @@ More information: https://github.com/nedap/pypuppetdb
 
 %check
 %pytest
+# requirements-test.txt packages oddly
+rm %{buildroot}/usr/requirements_for_tests/requirements-test.txt
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
