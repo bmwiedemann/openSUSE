@@ -1,4 +1,373 @@
 -------------------------------------------------------------------
+Sat Mar 21 12:10:56 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.11 (bnc#1012628).
+- ipv4: ensure rcu_read_lock() in cipso_v4_error() (bnc#1012628).
+- ARM: 8961/2: Fix Kbuild issue caused by per-task stack protector
+  GCC plugin (bnc#1012628).
+- HID: add ALWAYS_POLL quirk to lenovo pixart mouse (bnc#1012628).
+- HID: google: add moonball USB id (bnc#1012628).
+- mm: slub: add missing TID bump in kmem_cache_alloc_bulk()
+  (bnc#1012628).
+- ARM: 8958/1: rename missed uaccess .fixup section (bnc#1012628).
+- ARM: 8957/1: VDSO: Match ARMv8 timer in cntvct_functional()
+  (bnc#1012628).
+- blk-mq: insert flush request to the front of dispatch queue
+  (bnc#1012628).
+- jbd2: fix data races at struct journal_head (bnc#1012628).
+- net: dsa: mv88e6xxx: Fix masking of egress port (bnc#1012628).
+- mlxsw: pci: Wait longer before accessing the device after reset
+  (bnc#1012628).
+- sfc: fix timestamp reconstruction at 16-bit rollover points
+  (bnc#1012628).
+- net: rmnet: fix packet forwarding in rmnet bridge mode
+  (bnc#1012628).
+- net: rmnet: fix bridge mode bugs (bnc#1012628).
+- net: rmnet: use upper/lower device infrastructure (bnc#1012628).
+- net: rmnet: do not allow to change mux id if mux id is
+  duplicated (bnc#1012628).
+- net: rmnet: remove rcu_read_lock in
+  rmnet_force_unassociate_device() (bnc#1012628).
+- net: rmnet: fix suspicious RCU usage (bnc#1012628).
+- net: rmnet: fix NULL pointer dereference in rmnet_changelink()
+  (bnc#1012628).
+- net: rmnet: fix NULL pointer dereference in rmnet_newlink()
+  (bnc#1012628).
+- hinic: fix a bug of rss configuration (bnc#1012628).
+- hinic: fix a bug of setting hw_ioctxt (bnc#1012628).
+- hinic: fix a irq affinity bug (bnc#1012628).
+- net: phy: mscc: fix firmware paths (bnc#1012628).
+- slip: not call free_netdev before rtnl_unlock in slip_open
+  (bnc#1012628).
+- net: bcmgenet: Clear ID_MODE_DIS in EXT_RGMII_OOB_CTRL when
+  not needed (bnc#1012628).
+- signal: avoid double atomic counter increments for user
+  accounting (bnc#1012628).
+- kbuild: add dt_binding_check to PHONY in a correct place
+  (bnc#1012628).
+- kbuild: add dtbs_check to PHONY (bnc#1012628).
+- io_uring: pick up link work on submit reference drop
+  (bnc#1012628).
+- drm/amdgpu: fix memory leak during TDR test(v2) (bnc#1012628).
+- io_uring: fix poll_list race for SETUP_IOPOLL|SETUP_SQPOLL
+  (bnc#1012628).
+- blk-mq: insert passthrough request into hctx->dispatch directly
+  (bnc#1012628).
+- net: ll_temac: Handle DMA halt condition caused by buffer
+  underrun (bnc#1012628).
+- net: ll_temac: Fix RX buffer descriptor handling on GFP_ATOMIC
+  pressure (bnc#1012628).
+- net: ll_temac: Add more error handling of dma_map_single()
+  calls (bnc#1012628).
+- net: ll_temac: Fix race condition causing TX hang (bnc#1012628).
+- mac80211: rx: avoid RCU list traversal under mutex
+  (bnc#1012628).
+- net: ks8851-ml: Fix IRQ handling and locking (bnc#1012628).
+- net: usb: qmi_wwan: restore mtu min/max values after raw_ip
+  switch (bnc#1012628).
+- scsi: libfc: free response frame from GPN_ID (bnc#1012628).
+- cfg80211: check reg_rule for NULL in handle_channel_custom()
+  (bnc#1012628).
+- tracing: Fix number printing bug in print_synth_event()
+  (bnc#1012628).
+- selftests/rseq: Fix out-of-tree compilation (bnc#1012628).
+- kunit: run kunit_tool from any directory (bnc#1012628).
+- riscv: set pmp configuration if kernel is running in M-mode
+  (bnc#1012628).
+- HID: hid-bigbenff: fix race condition for scheduled work during
+  removal (bnc#1012628).
+- HID: hid-bigbenff: call hid_hw_stop() in case of error
+  (bnc#1012628).
+- HID: hid-bigbenff: fix general protection fault caused by
+  double kfree (bnc#1012628).
+- HID: i2c-hid: add Trekstor Surfbook E11B to descriptor override
+  (bnc#1012628).
+- ACPI: watchdog: Set default timeout in probe (bnc#1012628).
+- HID: apple: Add support for recent firmware on Magic Keyboards
+  (bnc#1012628).
+- ACPI: watchdog: Allow disabling WDAT at boot (bnc#1012628).
+- pinctrl: qcom: ssbi-gpio: Fix fwspec parsing bug (bnc#1012628).
+- commit 794b2e9
+
+-------------------------------------------------------------------
+Wed Mar 18 09:53:55 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.10 (bnc#1012628).
+- virtio_balloon: Adjust label in virtballoon_probe (bnc#1012628).
+- ALSA: hda/realtek - More constifications (bnc#1012628).
+- ALSA: hda/realtek - Add Headset Mic supported for HP cPC
+  (bnc#1012628).
+- ALSA: hda/realtek - Fixed one of HP ALC671 platform Headset
+  Mic supported (bnc#1012628).
+- cgroup, netclassid: periodically release file_lock on classid
+  updating (bnc#1012628).
+- cxgb4: fix checks for max queues to allocate (bnc#1012628).
+- gre: fix uninit-value in __iptunnel_pull_header (bnc#1012628).
+- inet_diag: return classid for all socket types (bnc#1012628).
+- ipv6/addrconf: call ipv6_mc_up() for non-Ethernet interface
+  (bnc#1012628).
+- ipvlan: add cond_resched_rcu() while processing muticast backlog
+  (bnc#1012628).
+- ipvlan: do not add hardware address of master to its unicast
+  filter list (bnc#1012628).
+- ipvlan: do not use cond_resched_rcu() in
+  ipvlan_process_multicast() (bnc#1012628).
+- ipvlan: don't deref eth hdr before checking it's set
+  (bnc#1012628).
+- macvlan: add cond_resched() during multicast processing
+  (bnc#1012628).
+- net: dsa: fix phylink_start()/phylink_stop() calls
+  (bnc#1012628).
+- net: dsa: mv88e6xxx: fix lockup on warm boot (bnc#1012628).
+- net: fec: validate the new settings in fec_enet_set_coalesce()
+  (bnc#1012628).
+- net: hns3: fix a not link up issue when fibre port supports
+  autoneg (bnc#1012628).
+- net/ipv6: use configured metric when add peer route
+  (bnc#1012628).
+- netlink: Use netlink header as base to calculate bad attribute
+  offset (bnc#1012628).
+- net: macsec: update SCI upon MAC address change (bnc#1012628).
+- net: mscc: ocelot: properly account for VLAN header length
+  when setting MRU (bnc#1012628).
+- net: nfc: fix bounds checking bugs on "pipe" (bnc#1012628).
+- net/packet: tpacket_rcv: do not increment ring index on drop
+  (bnc#1012628).
+- net: phy: bcm63xx: fix OOPS due to missing driver name
+  (bnc#1012628).
+- net/smc: cancel event worker during device removal
+  (bnc#1012628).
+- net: stmmac: dwmac1000: Disable ACS if enhanced descs are not
+  used (bnc#1012628).
+- net: systemport: fix index check to avoid an array out of
+  bounds access (bnc#1012628).
+- r8152: check disconnect status after long sleep (bnc#1012628).
+- sfc: detach from cb_page in efx_copy_channel() (bnc#1012628).
+- slip: make slhc_compress() more robust against malicious packets
+  (bnc#1012628).
+- taprio: Fix sending packets without dequeueing them
+  (bnc#1012628).
+- bonding/alb: make sure arp header is pulled before accessing it
+  (bnc#1012628).
+- bnxt_en: reinitialize IRQs when MTU is modified (bnc#1012628).
+- bnxt_en: fix error handling when flashing from file
+  (bnc#1012628).
+- cgroup: memcg: net: do not associate sock with unrelated cgroup
+  (bnc#1012628).
+- net: memcg: late association of sock to memcg (bnc#1012628).
+- net: memcg: fix lockdep splat in inet_csk_accept()
+  (bnc#1012628).
+- dt-bindings: net: FMan erratum A050385 (bnc#1012628).
+- arm64: dts: ls1043a: FMan erratum A050385 (bnc#1012628).
+- fsl/fman: detect FMan erratum A050385 (bnc#1012628).
+- dpaa_eth: FMan erratum A050385 workaround (bnc#1012628).
+- net: hns3: fix "tc qdisc del" failed issue (bnc#1012628).
+- net: hns3: fix RMW issue for VLAN filter switch (bnc#1012628).
+- net: hns3: clear port base VLAN when unload PF (bnc#1012628).
+- devlink: validate length of param values (bnc#1012628).
+- devlink: validate length of region addr/len (bnc#1012628).
+- fib: add missing attribute validation for tun_id (bnc#1012628).
+- nl802154: add missing attribute validation (bnc#1012628).
+- nl802154: add missing attribute validation for dev_type
+  (bnc#1012628).
+- can: add missing attribute validation for termination
+  (bnc#1012628).
+- macsec: add missing attribute validation for port (bnc#1012628).
+- openvswitch: add missing attribute validation for hash
+  (bnc#1012628).
+- net: fq: add missing attribute validation for orphan mask
+  (bnc#1012628).
+- net: taprio: add missing attribute validation for txtime delay
+  (bnc#1012628).
+- team: add missing attribute validation for port ifindex
+  (bnc#1012628).
+- team: add missing attribute validation for array index
+  (bnc#1012628).
+- tipc: add missing attribute validation for MTU property
+  (bnc#1012628).
+- nfc: add missing attribute validation for SE API (bnc#1012628).
+- nfc: add missing attribute validation for deactivate target
+  (bnc#1012628).
+- nfc: add missing attribute validation for vendor subcommand
+  (bnc#1012628).
+- net: phy: avoid clearing PHY interrupts twice in irq handler
+  (bnc#1012628).
+- net: phy: fix MDIO bus PM PHY resuming (bnc#1012628).
+- net/ipv6: need update peer route when modify metric
+  (bnc#1012628).
+- net/ipv6: remove the old peer route if change it to a new one
+  (bnc#1012628).
+- selftests/net/fib_tests: update addr_metric_test for peer
+  route testing (bnc#1012628).
+- s390/qeth: don't reset default_out_queue (bnc#1012628).
+- s390/qeth: handle error when backing RX buffer (bnc#1012628).
+- net: dsa: Don't instantiate phylink for CPU/DSA ports unless
+  needed (bnc#1012628).
+- net: dsa: mv88e6xxx: Add missing mask of ATU occupancy register
+  (bnc#1012628).
+- net: phy: Avoid multiple suspends (bnc#1012628).
+- cgroup: fix psi_show() crash on 32bit ino archs (bnc#1012628).
+- cgroup: cgroup_procs_next should increase position index
+  (bnc#1012628).
+- cgroup: Iterate tasks that did not finish do_exit()
+  (bnc#1012628).
+- netfilter: nf_tables: fix infinite loop when expr is not
+  available (bnc#1012628).
+- virtio-blk: fix hw_queue stopped on arbitrary error
+  (bnc#1012628).
+- iommu/vt-d: quirk_ioat_snb_local_iommu: replace WARN_TAINT
+  with pr_warn + add_taint (bnc#1012628).
+- netfilter: nf_conntrack: ct_cpu_seq_next should increase
+  position index (bnc#1012628).
+- netfilter: synproxy: synproxy_cpu_seq_next should increase
+  position index (bnc#1012628).
+- netfilter: xt_recent: recent_seq_next should increase position
+  index (bnc#1012628).
+- netfilter: x_tables: xt_mttg_seq_next should increase position
+  index (bnc#1012628).
+- workqueue: don't use wq_select_unbound_cpu() for bound works
+  (bnc#1012628).
+- drm/amd/display: remove duplicated assignment to grph_obj_type
+  (bnc#1012628).
+- drm/i915: Actually emit the await_start (bnc#1012628).
+- drm/i915: Return early for await_start on same timeline
+  (bnc#1012628).
+- drm/i915: be more solid in checking the alignment (bnc#1012628).
+- drm/i915: Defer semaphore priority bumping to a workqueue
+  (bnc#1012628).
+- drm/i915/gt: Close race between cacheline_retire and free
+  (bnc#1012628).
+- drm/i915/execlists: Enable timeslice on partial virtual engine
+  dequeue (bnc#1012628).
+- mmc: sdhci-pci-gli: Enable MSI interrupt for GL975x
+  (bnc#1012628).
+- pinctrl: falcon: fix syntax error (bnc#1012628).
+- pinctrl: qcom: Assign irq_eoi conditionally (bnc#1012628).
+- ktest: Add timeout for ssh sync testing (bnc#1012628).
+- block: Fix partition support for host aware zoned block devices
+  (bnc#1012628).
+- cifs_atomic_open(): fix double-put on late allocation failure
+  (bnc#1012628).
+- gfs2_atomic_open(): fix O_EXCL|O_CREAT handling on cold dcache
+  (bnc#1012628).
+- KVM: x86: clear stale x86_emulate_ctxt->intercept value
+  (bnc#1012628).
+- KVM: nVMX: avoid NULL pointer dereference with incorrect EVMCS
+  GPAs (bnc#1012628).
+- ARC: define __ALIGN_STR and __ALIGN symbols for ARC
+  (bnc#1012628).
+- fuse: fix stack use after return (bnc#1012628).
+- MIPS: DTS: CI20: fix PMU definitions for ACT8600 (bnc#1012628).
+- MIPS: DTS: CI20: fix interrupt for pcf8563 RTC (bnc#1012628).
+- MIPS: Fix CONFIG_MIPS_CMDLINE_DTB_EXTEND handling (bnc#1012628).
+- s390/dasd: fix data corruption for thin provisioned devices
+  (bnc#1012628).
+- ftrace: Return the first found result in lookup_rec()
+  (bnc#1012628).
+- blk-iocost: fix incorrect vtime comparison in iocg_is_idle()
+  (bnc#1012628).
+- fscrypt: don't evict dirty inodes after removing key
+  (bnc#1012628).
+- pid: Fix error return value in some cases (bnc#1012628).
+- macintosh: windfarm: fix MODINFO regression (bnc#1012628).
+- x86/ioremap: Map EFI runtime services data as encrypted for SEV
+  (bnc#1012628).
+- efi: Fix a race and a buffer overflow while reading efivars
+  via sysfs (bnc#1012628).
+- efi: Add a sanity check to efivar_store_raw() (bnc#1012628).
+- i2c: designware-pci: Fix BUG_ON during device removal
+  (bnc#1012628).
+- mt76: fix array overflow on receiving too many fragments for
+  a packet (bnc#1012628).
+- perf/amd/uncore: Replace manual sampling check with
+  CAP_NO_INTERRUPT flag (bnc#1012628).
+- x86/mce: Fix logic and comments around MSR_PPIN_CTL
+  (bnc#1012628).
+- iommu/dma: Fix MSI reservation allocation (bnc#1012628).
+- iommu/vt-d: dmar: replace WARN_TAINT with pr_warn + add_taint
+  (bnc#1012628).
+- iommu/vt-d: dmar_parse_one_rmrr: replace WARN_TAINT with
+  pr_warn + add_taint (bnc#1012628).
+- iommu/vt-d: Fix RCU list debugging warnings (bnc#1012628).
+- iommu/vt-d: Fix a bug in intel_iommu_iova_to_phys() for huge
+  page (bnc#1012628).
+- batman-adv: Don't schedule OGM for disabled interface
+  (bnc#1012628).
+- clk: imx8mn: Fix incorrect clock defines (bnc#1012628).
+- pinctrl: meson-gxl: fix GPIOX sdio pins (bnc#1012628).
+- pinctrl: imx: scu: Align imx sc msg structs to 4 (bnc#1012628).
+- virtio_ring: Fix mem leak with vring_new_virtqueue()
+  (bnc#1012628).
+- x86/mce/therm_throt: Undo thermal polling properly on CPU
+  offline (bnc#1012628).
+- drm/i915/gvt: Fix dma-buf display blur issue on CFL
+  (bnc#1012628).
+- pinctrl: core: Remove extra kref_get which blocks hogs being
+  freed (bnc#1012628).
+- drm/i915/gvt: Fix unnecessary schedule timer when no vGPU exits
+  (bnc#1012628).
+- driver code: clarify and fix platform device DMA mask allocation
+  (bnc#1012628).
+- iommu/vt-d: Fix RCU-list bugs in intel_iommu_init()
+  (bnc#1012628).
+- i2c: gpio: suppress error on probe defer (bnc#1012628).
+- nl80211: add missing attribute validation for critical protocol
+  indication (bnc#1012628).
+- nl80211: add missing attribute validation for beacon report
+  scanning (bnc#1012628).
+- nl80211: add missing attribute validation for channel switch
+  (bnc#1012628).
+- perf bench futex-wake: Restore thread count default to online
+  CPU count (bnc#1012628).
+- netfilter: nf_tables: free flowtable hooks on hook register
+  error (bnc#1012628).
+- netfilter: cthelper: add missing attribute validation for
+  cthelper (bnc#1012628).
+- netfilter: nft_payload: add missing attribute validation for
+  payload csum flags (bnc#1012628).
+- netfilter: nft_tunnel: add missing attribute validation for
+  tunnels (bnc#1012628).
+- netfilter: nf_tables: dump NFTA_CHAIN_FLAGS attribute
+  (bnc#1012628).
+- netfilter: nft_chain_nat: inet family is missing module
+  ownership (bnc#1012628).
+- iommu/vt-d: Fix the wrong printing in RHSA parsing
+  (bnc#1012628).
+- iommu/vt-d: Ignore devices with out-of-spec domain number
+  (bnc#1012628).
+- i2c: acpi: put device when verifying client fails (bnc#1012628).
+- iommu/amd: Fix IOMMU AVIC not properly update the is_run bit
+  in IRTE (bnc#1012628).
+- ipv6: restrict IPV6_ADDRFORM operation (bnc#1012628).
+- net/smc: check for valid ib_client_data (bnc#1012628).
+- Update config files.
+- commit 3925fb5
+
+-------------------------------------------------------------------
+Fri Mar 13 11:28:05 CET 2020 - nsaenzjulienne@suse.de
+
+- mmc: sdhci: iproc: Add custom set_power() callback for bcm2711
+  (bsc#1165954).
+- mmc: sdhci: Introduce sdhci_set_power_and_bus_voltage()
+  (bsc#1165954).
+- commit e9e359d
+
+-------------------------------------------------------------------
+Thu Mar 12 14:33:05 CET 2020 - tiwai@suse.de
+
+- Update config files: disable CONFIG_OABI_COMPAT for 32bit Arm (bsc#1165462)
+  It enables CONFIG_SECCOMP_FILTER.
+- commit 32fb233
+
+-------------------------------------------------------------------
+Thu Mar 12 14:21:25 CET 2020 - tiwai@suse.de
+
+- Update config files: enable CONFIG_EROFS_FS_ZIP=y
+  Requested for supporting EROFS compressed files:
+  https://lists.opensuse.org/opensuse-kernel/2020-02/msg00007.html
+- commit 2b67ee5
+
+-------------------------------------------------------------------
 Thu Mar 12 07:33:05 CET 2020 - jslaby@suse.cz
 
 - Linux 5.5.9 (bnc#1012628).
