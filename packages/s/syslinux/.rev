@@ -499,4 +499,14 @@
     <comment>- syslinux-4.04-lzo.diff: fix lzo memory aliasing issue (bsc#1125616)</comment>
     <requestid>677142</requestid>
   </revision>
+  <revision rev="67" vrev="46">
+    <srcmd5>b1cfaabd1d4a78a4477c526a4eeb81d5</srcmd5>
+    <version>4.04</version>
+    <time>1584964135</time>
+    <user>dimstar_suse</user>
+    <comment>- syslinux-4.04-gcc10.diff: fix gcc10 related issues (bsc#1166605)
+  * -fno-common is now the default
+  * provide missing strlen() implementation</comment>
+    <requestid>786496</requestid>
+  </revision>
 </revisionlist>
