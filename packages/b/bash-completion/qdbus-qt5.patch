@@ -1,0 +1,17 @@
+From: Fabian Vogt <fvogt@suse.de>
+Subject: Add completion for qdbus-qt5
+
+qdbus is the Qt 4 variant, also complete for the Qt 5 version.
+
+Index: bash-completion-2.10/completions/qdbus
+===================================================================
+--- bash-completion-2.10.orig/completions/qdbus
++++ bash-completion-2.10/completions/qdbus
+@@ -9,6 +9,6 @@ _qdbus()
+     COMPREPLY=( $(compgen -W '$(command ${words[@]} 2>/dev/null | \
+         command sed "s/(.*)//")' -- "$cur") )
+ } &&
+-complete -F _qdbus qdbus dcop
++complete -F _qdbus qdbus qdbus-qt5 dcop
+ 
+ # ex: filetype=sh

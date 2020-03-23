@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 13 09:34:01 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to also complete qdbus-qt5:
+  * qdbus-qt5.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 09:56:00 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Remove _adb as it seems to be broken anyway (boo#1161136) 

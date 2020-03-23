@@ -38,6 +38,8 @@ Patch2:         PS1-completion-boo903362.patch
 Patch3:         FOO-dir-completion-boo905348.patch
 # PATCH-FIX-SUSE boo#889319
 Patch5:         ls-completion-boo889319.patch
+# PATCH-FIX-SUSE
+Patch4:         qdbus-qt5.patch
 # PATCH-FIX-SUSE boo#940835
 Patch6:         backtick-completion-boo940835.patch
 # PATCH-FIX-SUSE bsc#946875
@@ -66,6 +68,7 @@ package bash-completion.
 %patch1 -b .p1
 %patch2 -b .p2
 %patch3 -b .p3
+%patch4 -b .p4 -p1
 %patch5 -b .p5
 %patch6 -b .p6
 %patch7 -b .p7 -p1
