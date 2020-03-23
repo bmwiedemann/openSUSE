@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 19 10:36:07 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to release 20200106
+  * Added an ioctl to retrieve the global device number
+
+-------------------------------------------------------------------
+Thu Oct 17 10:02:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20190831
+  * Don't try to unload module from running kernel.
+  * Add support for multiple SCSI channels.
+  * Add proper support for scatterlist chaining.
+
+-------------------------------------------------------------------
 Mon Jul  1 13:45:02 UTC 2019 - Aaron Stern <ukbeast89@ptotonmail.com>
 
 -Update to new upstream release 20190410 
