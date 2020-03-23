@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crfsuite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-python-crfsuite
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Python binding for CRFsuite
 License:        MIT
@@ -27,13 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/python-crfsuite
 Source:         https://files.pythonhosted.org/packages/source/p/python-crfsuite/python-crfsuite-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-%endif
 %python_subpackages
 
 %description
@@ -50,12 +47,10 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-py.test-%{$python_bin_suffix} tests/
-}
-%endif
+mv pycrfsuite bak
+%pytest_arch
+mv bak pycrfsuite
 
 %files %{python_files}
 %license LICENSE.txt
