@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-screensaver
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only

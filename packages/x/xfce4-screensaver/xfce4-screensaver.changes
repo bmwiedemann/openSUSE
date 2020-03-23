@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 23 00:40:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.0
+  * Replace deprecated GTimeVal usage
+  * Rebuild windows on monitor reconfiguration
+  * Draw overlays during window reconstruction to protect screen
+  * Do not activate DPMS when screensaver is inactive (bxo#16327)
+  * Better handling of multi-monitor and lid-close events (bxo#16102)
+  * Update LINGUAS (bxo#15949)
+  * Fix decimal properties when running through atof
+  * Return 1 on lock command failure (bxo#15945)
+  * Rename 'Pictures folder' to 'Slideshow' (bxo#15589)
+  * Raise NameError and TypeError (bxo#15830)
+  * Fix float parsing error (bxo#16295)
+  * Fix inhibitor proxying (bxo#16356)
+  * Fix inhibitor listing in xfce4-screensaver-command (bxo#16355)
+  * Add systemd sleep inhibitor (bxo#15929)
+  * Fix dbus inhibition (bxo#16365)
+  * dbus: Prevent overzealous activation (bxo#16365)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Sep  5 10:04:26 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Prevent parallel installation of xscreensaver by dropping
