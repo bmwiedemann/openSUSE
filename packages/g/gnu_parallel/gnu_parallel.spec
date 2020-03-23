@@ -1,7 +1,7 @@
 #
 # spec file for package gnu_parallel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           gnu_parallel
-Version:        20191022
+Version:        20200322
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            http://www.gnu.org/software/parallel/
+URL:            https://www.gnu.org/software/parallel/
 #DL-URL: 	http://ftp.gnu.org/gnu/parallel/
-Source:         http://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2
-Source2:        http://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2.sig
+Source:         https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2
+Source2:        https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2.sig
 Source3:        %name.keyring
+Source9:        %name-rpmlintrc
 Patch0:         parallel-remove-nag-screen.patch
 BuildArch:      noarch
 
@@ -50,8 +51,7 @@ or more computers.
 This subpackage contains the documentation for Parallel.
 
 %prep
-%setup -q -n parallel-%version
-%patch0 -p1
+%autosetup -n parallel-%version -p1
 
 %build
 %configure --docdir="%_docdir/%name"
@@ -60,6 +60,11 @@ make %{?_smp_mflags}
 %install
 %make_install
 cp -a CITATION NEWS README cc-by-sa.txt fdl.txt "%buildroot/%_docdir/%name/"
+
+# fix shebang to to not use env & preserve the time stamps
+sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!%__perl:" "%buildroot/%_bindir/parallel"
+touch -r "%buildroot/%_bindir/parallel.orig" "%buildroot/%_bindir/parallel"
+rm "%buildroot/%_bindir/parallel.orig"
 
 %files
 %license COPYING

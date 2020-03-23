@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:23:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200322
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:36:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200222
+  * --blocktimeout dur - Time out for reading block when using
+    --pipe. If it takes longer than dur to read a full block, use
+    the partial block read so far.
+
+-------------------------------------------------------------------
+Fri Jan 10 09:56:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20191222
+  * No new functionality was introduced.
+
+-------------------------------------------------------------------
+Thu Jan  9 11:14:31 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Remove /usr/bin/env rpmlint errors:
+  * fix shebang in %{_bindir}/parallel
+  * add rpmlint filters for env_parallel.* and parset, as these are not intended
+    to be executed
+- Change URLs to use https instead of http
+
+-------------------------------------------------------------------
 Mon Oct 28 12:51:56 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to new release 20191022

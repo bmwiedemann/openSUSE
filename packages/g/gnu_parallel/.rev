@@ -445,4 +445,12 @@
     <comment></comment>
     <requestid>743849</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>352162ced7ef0f705abbec2e927a6daa</srcmd5>
+    <version>20200322</version>
+    <time>1584964354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20200322</comment>
+    <requestid>787400</requestid>
+  </revision>
 </revisionlist>
