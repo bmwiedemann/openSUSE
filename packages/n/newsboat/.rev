@@ -470,4 +470,41 @@ run -osc service localrun format_spec_file to fix copyright
 - Remove newsboat-no-git-hash.patch</comment>
     <requestid>759910</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa749ea89ffaa3b10c64d90f6b0d9487</srcmd5>
+    <version>2.19</version>
+    <time>1584964322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.19:
+  Added:
+  * contrib/urls-maintenance.sh: a script that converts HTTP to HTTPS, updates
+    URLs according to HTTP redirects etc. (velaja)
+  * `delete-played-files` setting (#669) (Dennis van der Schagt)
+  * `%K` format for  `podlist-format`. This format specifier is replaced by the
+    human readable download speed (automatically switches between KB/s, MB/s, and
+    GB/s) (Dennis van der Schagt)
+  * Docs on how to synchronize with Bazqux (Jonathan Siddle, Alexander Batischev)
+  * Document that regexes use POSIX extended regular expressions
+  * Document that regexes in filter language are case-insensitive
+  Changed:
+  * Dependency: we now use Asciidoctor instead of Asciidoc
+  *  Dependency on Rust: we now have a schedule for bumping the minimum supported
+     Rust version (#709)
+  * Update vendored version of Catch2 to 2.11.3
+  * Display `&lt;audio&gt;` and `&lt;video&gt;` tags in article view (Ignacio Losiggio)
+  * Update translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Russian, Ukrainian (Alexander Batischev)
+  * `podlist-format` now uses `%K` instead of `%k` by default (shows human
+    readable speed instead of always using KB/s) (#727) (Dennis van der Schagt)
+  * contrib/pinboard.pl: save description of the article (Donald Merand)
+  * The EOT markers (&quot;~&quot; characters below blocks of text) no longer inherit their
+    style (colors + attributes) from the &quot;article&quot; style. Instead, they can be
+    configured separately, allowing to hide them without hiding the article text
+    (example config line: `color end-of-text-marker default default invis`) (#507)
+    (Dennis van der Schagt)
+  Fixed:
+  * **Breaking change**: `bind-key` context `podbeuter` renamed to `podboat`
+    (Alexander Batischev) (Kudos to Marcos Cruz)</comment>
+    <requestid>787373</requestid>
+  </revision>
 </revisionlist>

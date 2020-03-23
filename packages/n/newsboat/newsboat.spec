@@ -1,7 +1,7 @@
 #
 # spec file for package newsboat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -29,7 +29,6 @@ Source2:        https://newsboat.org/newsboat.pgp#/%{name}.keyring
 Source3:        vendor.tar.xz
 # pbleser: introduce OPTFLAGS make variable, instead of hard-coded -ggdb
 Patch0:         newsbeuter-makefile.patch
-BuildRequires:  asciidoc
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -44,6 +43,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.25.0
 BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
+BuildRequires:  rubygem(asciidoctor)
 Recommends:     %{name}-lang
 Recommends:     web_browser
 Provides:       newsbeuter = %{version}
@@ -74,7 +74,7 @@ sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl
 export CARGO_HOME=`pwd`/cargo-home/
 ./config.sh
 
-make %{?_smp_mflags} \
+%make_build \
     	  OPTFLAGS="%{optflags}"
 
 %install
@@ -94,7 +94,6 @@ done
 %{_bindir}/podboat
 %dir %{_docdir}/%{name}/examples
 %{_docdir}/%{name}/examples
-%{_docdir}/%{name}/docbook-xsl.css
 %{_docdir}/%{name}/faq.html
 %{_docdir}/%{name}/%{name}.html
 %{_docdir}/%{name}/contrib/
