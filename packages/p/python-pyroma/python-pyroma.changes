@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 20 14:10:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.6
+  * Ran flake8 and black on the code, better formatting for 
+    classifiers.py generation.
+  * Support for PEP 517, setup.cfg-only packages. [Max Tyulin]
+  * Adds support for Markdown long_descriptions, if you set
+    long_description_content_type to 'text/markdown'
+  * Installs Pygments to avoid an error message of you have
+    syntax highlighted code in the long_description.
+
+-------------------------------------------------------------------
 Mon Jun  3 10:17:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5:

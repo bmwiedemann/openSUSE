@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroma
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroma
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Program to test a Python project's adherence to packaging guidelines
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/regebro/pyroma
 Source:         https://files.pythonhosted.org/packages/source/p/pyroma/pyroma-%{version}.tar.gz
+BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Pygments
 Requires:       python-docutils
 Requires:       python-setuptools
 BuildArch:      noarch
