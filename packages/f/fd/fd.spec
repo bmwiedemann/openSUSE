@@ -1,7 +1,7 @@
 #
 # spec file for package fd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        7.1.0
+Version:        7.4.0
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        MIT AND Apache-2.0
@@ -44,7 +44,7 @@ fd is an alternative to GNU find. It features:
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -53,7 +53,7 @@ The official bash completion script for fd, generated during the build.
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
 Group:          System/Shells
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -62,7 +62,7 @@ The official zsh completion script for fd, generated during the build.
 %package fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -86,10 +86,9 @@ cargo build --release %{?_smp_mflags}
 
 %install
 export CARGO_HOME=$PWD/cargo-home
-cargo install --root=%{buildroot}%{_prefix}
-
-# remove residue crate file
-rm %{buildroot}%{_prefix}/.crates.toml
+cargo install --path . --root=build
+mkdir -p %{buildroot}%{_bindir}
+install -Dm0755 build/bin/fd %{buildroot}%{_bindir}/fd
 
 # install man page and completions
 install -Dm644 target/release/build/fd-find-*/out/fd.bash %{buildroot}%{_datadir}/bash-completion/completions/fd

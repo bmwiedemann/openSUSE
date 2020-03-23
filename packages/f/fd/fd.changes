@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:47:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.4.0
+  * Added a new --path-separator <sep> option
+  * When fd is run with the --exec-batch/-X option, it now exposes
+    the exit status of the command that was run
+  * Added a new -g/--glob option to switch to glob-based searches 
+  * Use jemalloc by default, improving the performance for almost all searches
+  * Reduce number of stat syscalls, improving the performance for searches
+    where file metadata is required
+  * Added support for filtering by file modification time by adding
+    two new options --changed-before <date|duration> and --changed-within <..>.
+    For more details, see the --help text, the man page,
+    the relevant issue #165 and the PR #339 (@kimsnj)
+  * Added --show-errors option to enable the display of filesystem error messages
+    such as "permission denied", see #311 (@psinghal20 and @majecty)
+  * Added --maxdepth as a (hidden) alias for --max-depth, see #323 (@mqudsi)
+  * Added --search-path option which can be supplied to replace
+    the positional path argument at any position.
+  * New --exec-batch <cmd>/-X <cmd> option for batch execution of commands
+  * Support for 24-bit color codes
+
+-------------------------------------------------------------------
 Sun Sep 16 18:11:33 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 7.1.0
