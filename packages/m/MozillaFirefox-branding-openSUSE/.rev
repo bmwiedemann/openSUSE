@@ -498,4 +498,12 @@
   * Use local favicon for all bookmarks (Firefox 45+)</comment>
     <requestid>735346</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>6888e7edfcbabeff0f971796911c38d5</srcmd5>
+    <version>68</version>
+    <time>1584964149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786604</requestid>
+  </revision>
 </revisionlist>
