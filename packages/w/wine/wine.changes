@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:21:37 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.4 development release
+  - Unicode data updated to Unicode version 13.
+  - Builtin programs use the new UCRTBase C runtime.
+  - More correct support for Internationalized Domain Names.
+  - Support for painting rounded rectangles in Direct2D.
+  - Text drawing in D3DX9.
+  - Various bug fixes.
+- update staging to 5.4 release
+
+-------------------------------------------------------------------
 Thu Mar  5 07:12:47 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - remove capi4linux BuildRequires, as isdn4linux is dropped

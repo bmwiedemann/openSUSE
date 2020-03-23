@@ -3465,4 +3465,12 @@
     <comment>remove capi4linux BuildRequires, as isdn4linux will (hopefully soon) be dropped (forwarded request 781770 from seife)</comment>
     <requestid>781783</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>af271eeba52da834a67b82f48c9e9717</srcmd5>
+    <version>5.4</version>
+    <time>1584964222</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787136</requestid>
+  </revision>
 </revisionlist>

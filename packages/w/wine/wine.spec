@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.3
-Version:        5.3
+%define realver 5.4
+Version:        5.4
 Release:        0
 
 %if "%{flavor}" != ""
@@ -156,7 +156,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc %arm aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.3
+%define staging_version 5.4
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -444,6 +444,7 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wine64-preloader
 %endif
 %{_libdir}/wine/*.so
+%if 0%{?suse_version} >= 1550
 %{_libdir}/wine/*.acm
 %{_libdir}/wine/*.com
 %{_libdir}/wine/*.cpl
@@ -459,6 +460,7 @@ chmod 755 %winedir/my-find-requires.sh
 %{_libdir}/wine/*.exe
 %{_libdir}/wine/*.ocx
 %{_libdir}/wine/*.sys
+%endif
 %{_libdir}/wine/*.tlb
 %{_libdir}/lib*.so.*
 %dir %{_libdir}/wine
