@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytesseract
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,30 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytesseract
-Version:        0.3.0
+Version:        0.3.3
 Release:        0
 Summary:        Python wrapper for Google's Tesseract-OCR
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/madmaze/python-tesseract
-Source:         https://files.pythonhosted.org/packages/source/p/pytesseract/pytesseract-%{version}.tar.gz
+# https://github.com/madmaze/pytesseract/issues/262
+Source:         https://github.com/madmaze/pytesseract/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
+Requires:       python-setuptools
 Requires:       tesseract-traineddata-deu
 Requires:       tesseract-traineddata-eng
 Requires:       pkgconfig(tesseract)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
 BuildRequires:  tesseract-traineddata-deu
 BuildRequires:  tesseract-traineddata-eng
+BuildRequires:  tesseract-traineddata-fra
 BuildRequires:  pkgconfig(tesseract)
 # /SECTION
 %python_subpackages
@@ -63,6 +68,9 @@ sed -i -e '/^#!\//, 1d' src/pytesseract.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
