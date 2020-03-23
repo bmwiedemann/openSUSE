@@ -1673,11 +1673,9 @@ unsorted:
   - clang 
   - clang-devel 
   - clang7 
-  - clang7-checker 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
   - clang8 
-  - clang8-checker 
   - clang8-devel 
   - clang8-devel-32bit: [x86_64] 
   - clang9-devel 
@@ -3090,6 +3088,7 @@ unsorted:
   - fkwnn-devel 
   - flac-devel 
   - flac-devel-32bit: [x86_64] 
+  - flac2all 
   - flacon 
   - flacon-lang 
   - flamerobin 
@@ -12991,7 +12990,6 @@ unsorted:
   - llvm7-LTO-devel-32bit: [x86_64] 
   - llvm7-devel 
   - llvm7-devel-32bit: [x86_64] 
-  - llvm7-emacs-plugins 
   - llvm7-gold 
   - llvm7-opt-viewer 
   - llvm7-polly 
@@ -13002,7 +13000,6 @@ unsorted:
   - llvm8-LTO-devel-32bit: [x86_64] 
   - llvm8-devel 
   - llvm8-devel-32bit: [x86_64] 
-  - llvm8-emacs-plugins 
   - llvm8-gold 
   - llvm8-opt-viewer 
   - llvm8-polly 
@@ -19937,6 +19934,7 @@ unsorted:
   - python2-pytest-mock 
   - python2-pytest-mpl 
   - python2-pytest-openfiles 
+  - python2-pytest-ordering 
   - python2-pytest-profiling 
   - python2-pytest-pyramid-server 
   - python2-pytest-pythonpath 
@@ -22579,6 +22577,7 @@ unsorted:
   - python3-pytest-mock 
   - python3-pytest-mpl 
   - python3-pytest-openfiles 
+  - python3-pytest-ordering 
   - python3-pytest-parallel 
   - python3-pytest-profiling 
   - python3-pytest-pyramid-server 
@@ -23547,6 +23546,7 @@ unsorted:
   - relaxngDatatype 
   - relaxngcc 
   - relaxngcc-javadoc 
+  - release-notes-openSUSE 
   - remake 
   - remake-lang 
   - remind 
