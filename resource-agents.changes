@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 26 14:26:23 UTC 2020 - Peter Varkoly <varkoly@suse.com>
+
+- Request to add "gcp-vpc-move-route" resource agent to SLE12 and SLE15 
+  (bsc#1161898) Add patch: 
+  0007-Request-to-add-gcp-vpc-move-route.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 11:25:24 UTC 2020 - varkoly@suse.com
 
 - Update to version 4.4.0+git57.70549516:
@@ -42,6 +49,7 @@ Wed Feb 26 11:25:24 UTC 2020 - varkoly@suse.com
   * gcp-pd-move: add parameter stackdriver_logging (#1412)
   * aws-vpc-route53: Improvements and fixes (#1409)
   * LVM-activate: move pvscan --cache to validate
+  Fixes to bugs bsc#1151833, bsc#1154465 are included in this update.
 
 -------------------------------------------------------------------
 Mon Sep 30 13:08:03 UTC 2019 - dakechi@suse.com
