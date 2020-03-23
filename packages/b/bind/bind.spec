@@ -20,19 +20,23 @@
 # Note that the sonums are LIBINTERFACE - LIBAGE
 %define bind9_sonum 1600
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1600
+%define dns_sonum 1601
 %define libdns libdns%{dns_sonum}
 %define irs_sonum 1600
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1600
+%define isc_sonum 1601
 %define libisc libisc%{isc_sonum}
 %define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
 %define isccfg_sonum 1600
 %define libisccfg libisccfg%{isccfg_sonum}
-%define libns_sonum 1600
+%define libns_sonum 1601
 
 %define	VENDOR SUSE
+%if 0%{?suse_version} >= 1500
+%define with_systemd 1
+%else
+%define with_systemd 0
 # Defines for user and group add
 %define	NAMED_UID 44
 %define	NAMED_UID_NAME named
@@ -44,10 +48,6 @@
 %define	GROUPADD_NAMED getent group %{NAMED_GID_NAME} >/dev/null || %{_sbindir}/groupadd -g %{NAMED_GID} -o -r %{NAMED_GID_NAME}
 %define	USERADD_NAMED getent passwd %{NAMED_UID_NAME} >/dev/null || %{_sbindir}/useradd -r -o -g %{NAMED_GID_NAME} -u %{NAMED_UID} -s %{NAMED_SHELL} -c "%{NAMED_COMMENT}" -d %{NAMED_HOMEDIR} %{NAMED_UID_NAME}
 %define	USERMOD_NAMED getent passwd %{NAMED_UID_NAME} >/dev/null || %{_sbindir}/usermod -s %{NAMED_SHELL} -d  %{NAMED_HOMEDIR} %{NAMED_UID_NAME}
-%if 0%{?suse_version} >= 1500
-%define with_systemd 1
-%else
-%define with_systemd 0
 %endif
 %if 0%{?suse_version} < 1315
 %define with_sfw2 1
@@ -60,7 +60,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.0
+Version:        9.16.1
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -78,6 +78,7 @@ Source60:       dlz-schema.txt
 # configuation files for systemd-tmpfiles
 Source70:       bind.conf
 Source71:       bind-chrootenv.conf
+Source72:       named.conf
 Patch1:         Makefile.in.diff
 Patch51:        pie_compile.diff
 Patch52:        named-bootconf.diff
@@ -102,8 +103,6 @@ Requires:       %{name}-chrootenv
 Requires:       %{name}-utils
 Requires(post): %fillup_prereq
 Requires(post): bind-utils
-Requires(post): coreutils
-Requires(pre):  shadow
 Provides:       bind8 = %{version}
 Provides:       bind9 = %{version}
 Provides:       dns_daemon
@@ -111,11 +110,15 @@ Obsoletes:      bind8 < %{version}
 Obsoletes:      bind9 < %{version}
 %if %{with_systemd}
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
+%sysusers_requires
 %else
 Requires(post): %insserv_prereq
+Requires(pre):  shadow
 %endif
 
 %description
@@ -204,8 +207,9 @@ This BIND library contains the configuration file parser.
 
 %package chrootenv
 Summary:        Chroot environment for BIND named
+# We need the named user and group, have only one authoritative place
 Group:          Productivity/Networking/DNS/Servers
-Requires(pre):  shadow
+Requires(pre):  %{name}
 
 %description chrootenv
 This package contains all directories and files which are common to the
@@ -331,6 +335,9 @@ sed -i '
   s|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g
 ' libtool
 make %{?_smp_mflags}
+%if %{with_systemd}
+%sysusers_generate_pre %{SOURCE72} named
+%endif
 
 %install
 mkdir -p \
@@ -355,6 +362,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 # install errno2result.h, some dynamic DB plugins could use it.
 install -m 0755 -d %{buildroot}%{_includedir}/isc/
 install -m 0644 lib/isc/unix/errno2result.h %{buildroot}%{_includedir}/isc/
+install -m 0644 .clang-format.headers %{buildroot}/%{_defaultdocdir}/bind
 
 # remove useless .la files
 rm -f %{buildroot}/%{_libdir}/lib*.{la,a}
@@ -416,14 +424,20 @@ for file in CHANGES COPYRIGHT README version contrib doc/{arm,misc} vendor-files
 done
 # ---------------------------------------------------------------------------
 install -m 0644 bind.keys %{buildroot}%{_localstatedir}/lib/named/named.root.key
+%if %{with_systemd}
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
+%endif
 
+%if %{with_systemd}
+%pre -f named.pre
+%service_add_pre named.service
+%else
 %pre
 %{GROUPADD_NAMED}
 %{USERADD_NAMED}
 # Might be an update.
 %{USERMOD_NAMED}
-%if %{with_systemd}
-%service_add_pre named.service
 %endif
 
 %preun
@@ -469,18 +483,12 @@ fi
 %postun -n %{libisccc} -p /sbin/ldconfig
 %post   -n %{libisccfg} -p /sbin/ldconfig
 %postun -n %{libisccfg} -p /sbin/ldconfig
-%pre chrootenv
-%{GROUPADD_NAMED}
-%{USERADD_NAMED}
-
 %post chrootenv
 %{fillup_only -nsa named common}
 %{fillup_only -nsa syslog named}
 %if %{with_systemd}
 %tmpfiles_create bind-chrootenv.conf
 %endif
-
-%post utils
 
 %files
 %license LICENSE
@@ -492,6 +500,7 @@ fi
 %config %{_unitdir}/named.service
 %{_sbindir}/named.init
 %{_prefix}/lib/tmpfiles.d/bind.conf
+%{_sysusersdir}/named.conf
 %{_datadir}/factory
 %else
 %config /%{_sysconfdir}/init.d/named
@@ -626,6 +635,7 @@ fi
 %{_sbindir}/tsig-keygen
 %dir %doc %{_defaultdocdir}/bind
 %{_defaultdocdir}/bind/README.%{VENDOR}
+%{_defaultdocdir}/bind/.clang-format.headers
 %{_mandir}/man1/arpaname.1%{ext_man}
 %{_mandir}/man1/delv.1%{ext_man}
 %{_mandir}/man1/dig.1%{ext_man}

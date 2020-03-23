@@ -1421,4 +1421,12 @@ New Features
   [bind-9.16.0.tar.xz]</comment>
     <requestid>778175</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>2129668c33083bbb9b5bf63ddc8fb516</srcmd5>
+    <version>9.16.1</version>
+    <time>1584964176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787354</requestid>
+  </revision>
 </revisionlist>
