@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,43 +16,35 @@
 #
 
 
-%define aud_plugin_ver_min 3.10
-%define aud_plugin_ver_max 3.10.99
+%define aud_plugin_ver_min 4.0
+%define aud_plugin_ver_max 4.0.99
 %define core_soname 5
 %define qt_soname 2
-%define gui_soname 5
 %define tag_soname 3
 Name:           audacious
-Version:        3.10.1
+Version:        4.0
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.5
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2
-BuildRequires:  pkgconfig(dbus-1) >= 1.0.2
-BuildRequires:  pkgconfig(dbus-glib-1) >= 0.88
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libguess) >= 1.2
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(glib-2.0)
 Requires:       %{name}-plugins%{?_isa} <= %{aud_plugin_ver_max}
 Requires:       %{name}-plugins%{?_isa} >= %{aud_plugin_ver_min}
 Recommends:     %{name}-lang
 Recommends:     %{name}-plugins-extra >= %{aud_plugin_ver_min}
 
 %description
-Audacious is an audio player. It is based on GTK+ and supports a wide
+Audacious is an audio player. It is based on Qt and supports a wide
 range of audio codecs. It still features an alternative skinned user
 interface (based on Winamp 2.x skins). Historically, it started as a
 fork of a fork of XMMS.
@@ -67,17 +59,10 @@ Provides:       libaudcore%{?_isa} = %{version}
 Library from the Audacious audio player.
 
 %package -n libaudqt%{qt_soname}
-Summary:        QT GUI implementation of Audacious
+Summary:        Qt GUI implementation of Audacious
 Requires:       libaudcore%{core_soname} >= %{version}
 
 %description -n libaudqt%{qt_soname}
-Library from the Audacious audio player.
-
-%package -n libaudgui%{gui_soname}
-Summary:        GTK GUI implementation of Audacious
-Requires:       libaudcore%{core_soname} >= %{version}
-
-%description -n libaudgui%{gui_soname}
 Library from the Audacious audio player.
 
 %package -n libaudtag%{tag_soname}
@@ -90,7 +75,6 @@ Library from the Audacious audio player.
 %package devel
 Summary:        Development files for Audacious
 Requires:       libaudcore%{core_soname} = %{version}
-Requires:       libaudgui%{gui_soname} = %{version}
 Requires:       libaudqt%{qt_soname} = %{version}
 Requires:       libaudtag%{tag_soname} = %{version}
 
@@ -101,15 +85,11 @@ Development files for Audacious audio player.
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --enable-qt     \
-  --enable-gtk    \
-  --disable-rpath
-make %{?_smp_mflags} V=1
+%meson -Dqt=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 install -Dpm 0644 contrib/%{name}.appdata.xml \
   %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
@@ -125,23 +105,9 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 
 %postun -n libaudqt%{qt_soname} -p /sbin/ldconfig
 
-%post -n libaudgui%{gui_soname} -p /sbin/ldconfig
-
-%postun -n libaudgui%{gui_soname} -p /sbin/ldconfig
-
 %post -n libaudtag%{tag_soname} -p /sbin/ldconfig
 
 %postun -n libaudtag%{tag_soname} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING
@@ -164,9 +130,6 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 %files -n libaudqt%{qt_soname}
 %{_libdir}/libaudqt.so.%{qt_soname}*
 
-%files -n libaudgui%{gui_soname}
-%{_libdir}/libaudgui.so.%{gui_soname}*
-
 %files -n libaudtag%{tag_soname}
 %{_libdir}/libaudtag.so.%{tag_soname}*
 
@@ -176,8 +139,6 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 %{_libdir}/libaudcore.so
 %{_includedir}/libaudqt/
 %{_libdir}/libaudqt.so
-%{_includedir}/libaudgui/
-%{_libdir}/libaudgui.so
 %{_libdir}/libaudtag.so
 %{_libdir}/pkgconfig/%{name}.pc
 
