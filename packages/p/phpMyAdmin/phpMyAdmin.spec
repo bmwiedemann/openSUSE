@@ -30,7 +30,7 @@
 %define ap_grp nogroup
 %endif
 Name:           phpMyAdmin
-Version:        4.9.4
+Version:        4.9.5
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later

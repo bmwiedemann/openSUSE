@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:40:08 UTC 2020 - ecsos@opensuse.org
+
+- Update to 4.9.5
+  This is a security release containing several bug fixes.
+  * PMASA-2020-2 SQL injection vulnerability in the user accounts
+    page, particularly when changing a password
+  * PMASA-2020-3 SQL injection vulnerability relating to the search
+    feature
+  * PMASA-2020-4 SQL injection and XSS having to do with displaying
+    results
+  * Removing of the "options" field for the external
+    transformation.
+  
+-------------------------------------------------------------------
 Tue Jan 21 21:24:30 UTC 2020 - chris@computersalat.de
 
 - fix for boo#1092345
