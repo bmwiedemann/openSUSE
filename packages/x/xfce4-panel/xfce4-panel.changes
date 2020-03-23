@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 22 12:10:12 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added systray-symbolic-icons.patch. Backport to enable symbolic 
+  icons in systray
+
+-------------------------------------------------------------------
 Mon Jan 13 06:46:01 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to 4.14.3

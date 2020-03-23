@@ -31,6 +31,8 @@ Source0:        https://archive.xfce.org/src/xfce/%{name}/4.14/%{name}-%{version
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}-restore-defaults
 Source3:        %{name}-restore-defaults.desktop
+# PATCH-FIX-UPSTREAM systray-symbolic-icons.patch maurizio.galli@gmail.com -- Backport to enable symbolic icons in systray
+Patch0:         systray-symbolic-icons.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  ed
 BuildRequires:  fdupes
@@ -130,7 +132,7 @@ A desktop file and application launcher is provided.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with git}
