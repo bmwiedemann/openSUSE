@@ -39,4 +39,12 @@
     <comment>- Update to snapshot 1.7~git84</comment>
     <requestid>725404</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cfd0cbf9ce05941a4ef062f400ad7c4d</srcmd5>
+    <version>1.7</version>
+    <time>1584964246</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787311</requestid>
+  </revision>
 </revisionlist>
