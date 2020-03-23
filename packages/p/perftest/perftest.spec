@@ -1,7 +1,7 @@
 #
 # spec file for package perftest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define extra_version -0.8
+%define extra_version -0.11
 
 Name:           perftest
 Summary:        IB Performance tests
@@ -26,7 +26,7 @@ Version:        4.4
 Release:        0
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
 Patch4:         perftest-armv6.patch
-Url:            https://github.com/linux-rdma/perftest
+URL:            https://github.com/linux-rdma/perftest
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # For transition to rdma-core make sure the new packages are selected
 # Once the transition is made the version check can be removed
