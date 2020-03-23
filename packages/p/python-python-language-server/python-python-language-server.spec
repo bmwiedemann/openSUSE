@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-language-server
-Version:        0.31.8
+Version:        0.31.9
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -50,6 +50,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-jedi >= 0.14.1
 Requires:       python-pluggy
 Requires:       python-python-jsonrpc-server >= 0.3.2
+Requires:       python-setuptools
 Recommends:     python-autopep8
 Recommends:     python-flake8
 Recommends:     python-mccabe
