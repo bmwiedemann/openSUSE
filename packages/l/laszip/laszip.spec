@@ -1,7 +1,7 @@
 #
 # spec file for package laszip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Bruno Friedmann, Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Compression library supporting ASPRS LAS format data
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://laszip.org/
+URL:            https://laszip.org/
 Source0:        https://github.com/LASzip/LASzip/releases/download/%{version}/laszip-src-%{version}.tar.gz
 Source1:        https://github.com/LASzip/LASzip/releases/download/%{version}/laszip-src-%{version}.tar.gz.sha256sum
 BuildRequires:  cmake
@@ -84,13 +84,14 @@ data.
 %build
 # laszip need dlopen,dlsym,dlclose
 %cmake \
+    -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DCMAKE_C_FLAGS="%{optflags} -fno-strict-aliasing -fPIC" \
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="%{optflags} -fno-strict-aliasing -fPIC" \
     -DCMAKE_CXX_FLAGS="%{optflags} -fno-strict-aliasing -fPIC" \
     -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="%{optflags} -fno-strict-aliasing -fPIC" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -Wl,--no-as-needed -ldl"
 
-make V=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -110,7 +111,8 @@ rm -rf %{buildroot}/usr/lib/debug/
 
 %files devel
 %defattr(-,root,root)
-%doc ChangeLog AUTHORS COPYING
+%license COPYING
+%doc ChangeLog AUTHORS
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/%{name}_api_version.h
 %{_includedir}/%{name}/%{name}_api.h
