@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Tue Mar 24 15:31:22 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 3.0.21
+
+
+Feature Improvements
+
+  * New stored procedure for allocating IPs with PostgreSQL
+    Rates of 1500 IPs per second are now possible
+    See raddb/mods-config/sql/ippool/postgresql/procedure.sql
+  * Add SQL IP pool support for Microsoft SQL Server
+    See raddb/mods-config/sql/ippool/mssql/
+  * Added RCNTEC dictionary. Closes #3168.
+  * Added Pica8 dictionary. Closes #3179.
+  * Add TLS-Client-Cert-Valid-Since attribute holding not
+    Before date Patch from Boris Lytochkin. Fixes #3157.
+  * Generate attributes containing unknown OIDs See raddb/sites-available/tls
+  * Update the WiMAX dictionary.
+  * Added ability to rlm_python(Python2) show a stacktrace
+    from errors. #2979.
+  * Add WiFi Alliance Policy OIDs.
+    See raddb/certs/xpextensions
+  * radmin now shows coa stats, too.
+  * Sample schema extensions for summarizing data in SQL
+    See mods-config/sql/main/*/process-radacct.sql
+  * Update dictionary.aerohive, dictionary.fortinet,
+    dictionary.arista and dictionary.erx.
+  * Added VAS Experts dictionary.
+  * Many updates to RPM and jenkins builds from Matthew Newton.
+  * Added %C (time now in seconds) and %c (microsecond component of now)
+    back-ported from the "master" branch.
+  * Add reload capability to systemd unit file in Debian and RedHat.
+  * Increase timestamp precision in postauth to maximum supported by each
+    database and simplify (and make more consistent between drivers)
+    the timestamps in SQL queries by using expansions.
+  * Option to set dictionary path in raduat script.
+
+Bug Fixes
+
+  * Various fixes found by PVS-Studio.
+  * Set permissions of certificates in bootstrap shell script Fixes #3132.
+  * Increase the 'nasportid' SQL field for 'varchar(32)'. #3141.
+  * Skip processing proxy reply if there are no home servers available.
+  * Update SQLite IPPool queries. Fixes #3177
+  * rlm_sql_unixodbc fixes. Fixes #2822.
+  * Fixes when building with LibreSSL.
+  * Fix the rlm_python3 build. Note that this module is experimental. #3183.
+  * The rlm_python should append the 'python_path' paths in 'sys.path'.
+    It fixes the expected behavior to use the existing Python modules
+    Fixes #3180.
+  * Fix rlm_python to print the script errors properly.
+  * Bound total query time for PostgreSQL. Fixes #3253.
+  * Many fixes to Oracle sqlippool. It now does 500 IPs per second
+    without any tuning. Fixes #3270.
+  * Reference sqlippool by it's correct name. Fixes #3272.
+  * Revert 3.0.20 patch which caused crashes on duplicate clients.
+  * Update WiMAX-MSK attribute. Fixes #3280.
+  * Fix crash when trying to access non-existant regex capture group.
+  * Use timestamps (request or server) rather than SQL NOW()
+    in accounting queries so that these are stable when replayed
+    from a file buffer.
+
+- freeradius-python3_patches.patch: upstreamed
+
+-------------------------------------------------------------------
+Tue Mar 17 13:42:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 3.0.20
+
+Feature Improvements
+  * Added Force10 dictionary.
+  * Update dictionary.hp with new attributes. #2690.
+  * Update dictionary.aruba with new attributes. #2696.
+  * Fix side-channel leak in EAP-PWD (bsc#1166858, CVE-2019-20510)
+  * Relax OpenSSL version checks, now that their API is both public, and stable.
+  * Note that tls_min_version/tls_max_version also support "1.3"
+    Since there is no standard yet for EAP with TLS 1.3, it will not work.
+  * Added tripplite dictionary from #2760.
+  * Switch to the async interface for rlm_sql_postgresql so that
+    we can enforce query_timeout.
+  * Added new LDAP option 'allow_dangling_group_ref'.
+  * Updated documentation and functionality for EAP session caching
+    See "cache" section of mods-available/eap.
+  * Tighten systemd unit file security. Fixes #2637.
+  * Disable TLS 1.0 and TLS 1.1 support in the default configuration
+    We STRONGLY recommend doing this for all installations.
+  * Add expansions for *outgoing* Radsec connections
+    "%{proxy_listen:TLS-...}" for TLS-Client-Cert-* and
+    TLS-Cert-* attributes. Fixes #2839.
+  * Add %{listen:tls} which returns "yes" or "no" for
+    TLS or non-TLS connections.
+  * Update dictionary.lancom with new attributes. #2847.
+  * Added rlm_sql_mongo. See raddb/mods-available/sql.
+    Note that this module is experimental.
+  * Added more documentation in sites-available/robust-proxy-accounting.
+  * sqlippool now re-allocates unexpired leases, to prevent IP pool
+    exhaustion when clients perform multiple reauthentication attempts
+  * Add support to radmin keep the history in ~/.radmin_history.
+  * Add support for ENV and LD_PRELOAD in radiusd.conf.
+    See the new ENV sub-section of radiusd.conf.
+  * Update dictionary.aptilo. #3002.
+  * Update dictionary.airespace. #3039.
+  * Add sites-available/coa-relay, which makes CoA easier #3045.
+  * Add example stored procedure for IP Pools in MySQL
+    See mods-config/sql/ippool/mysql/procedure.sql
+  * Update dictionary.dhcp dictionary with the recent hardware types.
+  * Add experimental rlm_python3. This should largely work
+    the same as rlm_python, which was Python2 only.
+  * Add Dockerfiles for Debian10 and CentOS8.
+  * Add RPM spec file compatibility for RHEL/CentOS 8.
+  * Notes on certificate constraints. See raddb/certs/server.cnf.
+  * Add NAIRealm example to raddb/certs/server.cnf, for RFC 7585.
+
+Bug Fixes
+
+  * Allow listen.ipaddr to reference an IPv6-only host. Fixes #2627
+  * ERX-Acct-Request-Reason is "integer". Closes #2635.
+  * Fix a slow memory leak in the file management code.
+  * Try to fix file permissions if they get modified while
+    the server is running
+  * Fix slow memory leak with clients.
+  * Fix request and connection timeouts in rlm_rest.
+  * Fix systemd issues.
+  * Fixes from clang analyzer.
+  * Fix missing include for the dictionaries:
+    alcatel.esam, altiga,alvarion.wimax.v2_2,aptis,asn,
+    audiocodes,avaya,bristol, columbia_university,freedhcp,garderos,
+    infoblox,motorola.illegal, starent.vsa1, telkom, wimax.wichorus.
+  * Fix internal sanity check when running with "-Xx".
+  * Allow "inner-tunnel" virtual servers to work better
+    with "accept" and "reject" policies.
+  * Fix dictionary.huawei data types for
+    Huawei-DNS-Server-IPv6-address and Huawei-Framed-IPv6-Address.
+  * Framed-Interface-ID in postgresql/queries.conf is string,
+    not inet Fixes #2817.
+  * Fix rlm_cache to complain on unknown attributes in the "update"
+    section of its configuration.
+  * Add configure checks for -latomic. This helps on armel,
+    mips and mipsel. Fixes #2828.
+  * Add support to Oracle 19 and 18. Via #2857.
+  * Add support for decoding tags in rlm_rest. Fixes #2848.
+  * Use correct passwords when updating CRLs in raddb/certs/.
+  * Properly separate "originate-coa" packets when accounting
+    packets are read from the detail file reader.
+  * Use the correct virtual server for pre/post-proxy.
+  * radsqlrelay fixes backported from "master" branch
+  * Fix DoS issues due to multithreaded BN_CTX access
+    (bsc#1166847, CVE-2019-17185)
+
+- disable python2 for SLE15 and Factory
+- freeradius-server-enable-python3.patch: enable Python3 module
+- freeradius-python3_patches.patch: backport python3 fixes from upstream
+- freeradius-server-opensslversion.patch: updated
+
+-------------------------------------------------------------------
 Wed Mar 11 13:18:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Enable memcached driver on SLE15

@@ -766,4 +766,41 @@
     <comment></comment>
     <requestid>783861</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c9a2e2d32552d3f60d1bba59d508e5aa</srcmd5>
+    <version>3.0.21</version>
+    <time>1585085850</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.21
+Feature Improvements
+  * New stored procedure for allocating IPs with PostgreSQL
+    Rates of 1500 IPs per second are now possible
+    See raddb/mods-config/sql/ippool/postgresql/procedure.sql
+  * Add SQL IP pool support for Microsoft SQL Server
+    See raddb/mods-config/sql/ippool/mssql/
+  * Added RCNTEC dictionary. Closes #3168.
+  * Added Pica8 dictionary. Closes #3179.
+  * Add TLS-Client-Cert-Valid-Since attribute holding not
+    Before date Patch from Boris Lytochkin. Fixes #3157.
+  * Generate attributes containing unknown OIDs See raddb/sites-available/tls
+  * Update the WiMAX dictionary.
+  * Added ability to rlm_python(Python2) show a stacktrace
+    from errors. #2979.
+  * Add WiFi Alliance Policy OIDs.
+    See raddb/certs/xpextensions
+  * radmin now shows coa stats, too.
+  * Sample schema extensions for summarizing data in SQL
+    See mods-config/sql/main/*/process-radacct.sql
+  * Update dictionary.aerohive, dictionary.fortinet,
+    dictionary.arista and dictionary.erx.
+  * Added VAS Experts dictionary.
+  * Many updates to RPM and jenkins builds from Matthew Newton.
+  * Added %C (time now in seconds) and %c (microsecond component of now)
+    back-ported from the &quot;master&quot; branch.
+  * Add reload capability to systemd unit file in Debian and RedHat.
+  * Increase timestamp precision in postauth to maximum supported by each
+    database and simplify (and make more consistent between drivers)
+    the timestamps in SQL queries by using expansions.</comment>
+    <requestid>787864</requestid>
+  </revision>
 </revisionlist>
