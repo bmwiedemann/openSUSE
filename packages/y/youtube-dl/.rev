@@ -1217,4 +1217,12 @@
     <comment></comment>
     <requestid>782708</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>071ce5fe93241c24cc3d2d3fc965a67e</srcmd5>
+    <version>2020.03.24</version>
+    <time>1585085750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.03.24</comment>
+    <requestid>787673</requestid>
+  </revision>
 </revisionlist>
