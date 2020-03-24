@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytaglib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytaglib
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Metadata "tagging" library based on TagLib
 License:        GPL-3.0-only OR MIT
 URL:            https://github.com/supermihi/pytaglib
 Source:         https://github.com/supermihi/pytaglib/archive/v%{version}.tar.gz
-# https://github.com/supermihi/pytaglib/issues/63
-# fix  'LocalPath'object has no attribute 'endswith' for python2
-Patch0:         python-pytaglib-python2-localpath.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-runner}
@@ -35,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtag-devel
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 %python_subpackages
 
 %description
@@ -43,32 +41,37 @@ It relies on the TagLib C++ library.
 
 %prep
 %setup -q -n "pytaglib-%{version}"
-%patch0 -p1
 # Remove pre-generated source
 rm -vf src/taglib.cpp
 sed -i -e "1d" src/pyprinttags.py
 
 %build
-%python_build "--cython"
+sed -i "s:\(script_name =\).*:\1 'pyprinttags':" setup.py
+export PYTAGLIB_CYTHONIZE=1
+%python_build
 
 %install
 %python_install
-mv %{buildroot}%{_bindir}/pyprinttags3 %{buildroot}/%{_bindir}/pyprinttags
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-# https://github.com/supermihi/pytaglib/issues/62
-mkdir -p %{buildroot}%{python3_sitelib}
-install -m 644 src/pyprinttags.py %{buildroot}%{python3_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/pyprinttags
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest_arch
+
+%post
+%python_install_alternative pyprinttags
+
+%postun
+%python_uninstall_alternative pyprinttags
 
 %files %{python_files}
 %license COPYING
 %doc README.md
-%python3_only %{_bindir}/pyprinttags
-%python3_only %{python3_sitelib}/pyprinttags.py
 %{python_sitearch}/taglib*.so
+%{python_sitearch}/pyprinttags.*
 %{python_sitearch}/pytaglib-%{version}-py%{python_version}.egg-info/
+%pycache_only %{python_sitearch}/__pycache__/pyprinttags.*
+%python_alternative %{_bindir}/pyprinttags
 
 %changelog
