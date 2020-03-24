@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 18 20:56:50 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.41.5
+  - Fix regex to correctly recognize scientific notation with QemuImgInfo
+
+-------------------------------------------------------------------
+Tue Mar 17 19:18:18 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.41.4
+  - Update .gitreview for stable/train
+  - Support "qemu-img info" virtual size in QEMU 4.1 and later
+  - Make mask_password case insensitive, and add new patterns
+  - Verify the sanitize keys are lowered
+  - Make mask_dict_password case insensitive and add new patterns
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+
+-------------------------------------------------------------------
 Thu Mar 12 08:34:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only client

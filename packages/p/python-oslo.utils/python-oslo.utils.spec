@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.utils
-Version:        3.41.1
+Version:        3.41.5
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.utils
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-3.41.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.utils/oslo.utils-3.41.5.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -76,7 +76,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for OpenStack utils library.
 
 %prep
-%autosetup -p1 -n oslo.utils-3.41.1
+%autosetup -p1 -n oslo.utils-3.41.5
 
 %py_req_cleanup
 
@@ -87,11 +87,12 @@ Documentation for OpenStack utils library.
 %py3_install
 
 # generate html docs
-PBR_VERSION=3.41.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.41.5 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
+# tests fail with python 3.8
 rm -v oslo_utils/tests/test_reflection.py
 python3 -m stestr.cli run
 

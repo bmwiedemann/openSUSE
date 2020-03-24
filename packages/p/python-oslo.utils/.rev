@@ -394,4 +394,21 @@
     <comment>- switch to python 3.x only client</comment>
     <requestid>785569</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>013c320c3d96290013d1032c4ae038f2</srcmd5>
+    <version>3.41.5</version>
+    <time>1585085556</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.41.5
+  - Fix regex to correctly recognize scientific notation with QemuImgInfo
+
+- update to version 3.41.4
+  - Update .gitreview for stable/train
+  - Support &quot;qemu-img info&quot; virtual size in QEMU 4.1 and later
+  - Make mask_password case insensitive, and add new patterns
+  - Verify the sanitize keys are lowered
+  - Make mask_dict_password case insensitive and add new patterns
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train</comment>
+    <requestid>786268</requestid>
+  </revision>
 </revisionlist>
