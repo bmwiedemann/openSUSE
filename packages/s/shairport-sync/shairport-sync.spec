@@ -17,7 +17,7 @@
 
 
 Name:           shairport-sync
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only
@@ -78,7 +78,7 @@ autoreconf -i -f
            --with-metadata \
            --with-configfiles \
            --with-convolution
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 23 13:21:55 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.3.6
+  * Resampling has been added for the Jack Audio backend. This can be 
+    used to up-sample to 192kHz.
+  * Fix bugs. Please refer to 
+    https://github.com/mikebrady/shairport-sync/blob/master/RELEASENOTES.md#version-336
+
+-------------------------------------------------------------------
 Sun Jan 19 03:06:01 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.3.5
