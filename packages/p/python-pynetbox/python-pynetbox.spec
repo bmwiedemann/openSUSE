@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pynetbox
-Version:        4.2.5
+Version:        4.3.0
 Release:        0
 Summary:        NetBox API client library
 License:        Apache-2.0
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-netaddr
-Requires:       python-requests
+Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
 %python_subpackages
 
