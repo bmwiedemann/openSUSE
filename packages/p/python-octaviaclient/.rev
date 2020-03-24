@@ -87,4 +87,12 @@
   - Adds &quot;unset&quot; action to the healthmonitor command</comment>
     <requestid>736666</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3251ade9085b2b0ae9bb54e3b0690271</srcmd5>
+    <version>1.10.0</version>
+    <time>1585085526</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only build</comment>
+    <requestid>783979</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-octaviaclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,43 +25,38 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-octaviaclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-1.10.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-mock
-BuildRequires:  python2-openstackclient >= 3.12.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient >= 3.12.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
-Requires:       python-Babel >= 2.3.4
-Requires:       python-cliff >= 2.8.0
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-netifaces >= 0.10.4
-Requires:       python-neutronclient >= 6.7.0
-Requires:       python-openstackclient >= 3.12.0
-Requires:       python-osc-lib >= 1.8.0
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 The Python Octavia Client (python-octaviaclient) is a command-line client for
 the OpenStack Load Balancing service.
+
+%package -n python3-octaviaclient
+Summary:        Octavia Plugin for the OpenStack Command-line Client
+Group:          Development/Languages/Python
+Requires:       python3-Babel >= 2.3.4
+Requires:       python3-cliff >= 2.8.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-netifaces >= 0.10.4
+Requires:       python3-neutronclient >= 6.7.0
+Requires:       python3-openstackclient >= 3.12.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-octaviaclient
+The Python Octavia Client (python-octaviaclient) is a command-line client for
+the OpenStack Load Balancing service.
+
+This package contains the Python 3.x module.
 
 %package -n python-octaviaclient-doc
 Summary:        Documentation for OpenStack Octavia API Client
@@ -80,23 +75,23 @@ This package contains auto-generated documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 PBR_VERSION=1.10.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-octaviaclient
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/octaviaclient
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/octaviaclient
+%{python3_sitelib}/*.egg-info
 
 %files -n python-octaviaclient-doc
 %license LICENSE
