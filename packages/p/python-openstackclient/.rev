@@ -467,4 +467,16 @@ update to version 3.1.0
   - Format aggregate command fields and de-race functional tests</comment>
     <requestid>736667</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>73dac6f055bb0ebf15e58f8cb7299a8a</srcmd5>
+    <version>4.0.0</version>
+    <time>1585085611</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- remove nonsensical update-alternatives, which leaves an empty file behind 
+
+- switch to python 3.x only package</comment>
+    <requestid>787716</requestid>
+  </revision>
 </revisionlist>
