@@ -18,7 +18,7 @@
 
 %define _name elementary-xfce
 Name:           elementary-xfce-icon-theme
-Version:        0.14+git30.e40a2684
+Version:        0.15+git0.6fc555d6
 Release:        0
 Summary:        Icon theme inspired by Tango and Elementary
 License:        GPL-2.0-only
@@ -26,8 +26,11 @@ Group:          System/GUI/Other
 URL:            https://github.com/shimmerproject/elementary-xfce
 Source:         %{_name}-%{version}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  gtk3-tools
+BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  optipng
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       adwaita-icon-theme
 Requires:       gtk3-tools
 Requires:       hicolor-icon-theme
@@ -42,25 +45,22 @@ drop a lot of desktop-specific symlinks.
 
 %prep
 %setup -q -n %{_name}-%{version}
-# cleanup unecessary doc files
-rm %{_name}-darker/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
-rm %{_name}-dark/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
-rm %{_name}/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
 
 %build
-# Nothing to build
+%configure
+%make_build
 
 %install
-mkdir -p  %{buildroot}%{_datadir}/icons
-cp -a %{_name}  %{buildroot}%{_datadir}/icons
-cp -a %{_name}-dark  %{buildroot}%{_datadir}/icons
-cp -a %{_name}-darker  %{buildroot}%{_datadir}/icons
-chmod 0644  %{buildroot}%{_datadir}/icons/%{_name}/index.theme
-chmod 0644  %{buildroot}%{_datadir}/icons/%{_name}-dark/index.theme
-chmod 0644  %{buildroot}%{_datadir}/icons/%{_name}-darker/index.theme
+%make_install
+
+# Cleanup unused docs
+rm %{buildroot}%{_datadir}/icons/%{_name}{,-dark,-darker}/{CONTRIBUTORS,AUTHORS,README.md,LICENSE}
+
+# We don't want to install Darkest as it's not very useful
+rm -rf %{buildroot}%{_datadir}/icons/%{_name}-darkest/
 
 # fix duplicate files
-%fdupes -s %{buildroot}/%{_datadir}/icons/
+%fdupes -s %{buildroot}%{_datadir}/icons/
 
 %files
 %doc AUTHORS CONTRIBUTORS README.md
