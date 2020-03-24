@@ -100,4 +100,21 @@
   - import zuul job settings from project-config</comment>
     <requestid>692820</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9fb43625e1e1bbece9546e40e5d36e33</srcmd5>
+    <version>1.13.0</version>
+    <time>1585085519</time>
+    <user>dimstar_suse</user>
+    <comment>- build against python 3.x only
+
+- update to version 1.13.0
+  - Switch python3 versions of test jobs to match Train PTI
+  - add releasenotes tox env and commands
+  - Cap sphinx for py2 to match global requirements
+  - OpenDev Migration Patch
+  - Dropping the py35 testing
+  - add python 3.7 unit test job
+  - Changes for url transition to OpenDev</comment>
+    <requestid>783827</requestid>
+  </revision>
 </revisionlist>
