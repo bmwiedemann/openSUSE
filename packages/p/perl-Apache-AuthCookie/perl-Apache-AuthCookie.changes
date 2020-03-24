@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 23 03:07:11 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.29
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.29  2020-03-22
+     - Add optional support for enforcing a local destination, like so:
+  
+          PerlSetVar MyAuthEnforceLocalDestination 1
+  
+     - Add optional support for specifying a default destination when the login
+       form's destination argument is unspecified or invalid (including
+       non-local if local destinations are enforced), like this:
+  
+          PerlSetVar MyAuthDefaultDestination /protected/user/
+
+-------------------------------------------------------------------
 Wed Nov 20 09:14:14 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.28
