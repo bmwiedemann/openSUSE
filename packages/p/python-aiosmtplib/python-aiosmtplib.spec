@@ -47,6 +47,7 @@ Python asyncio SMTP client.
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/{tests,docs}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
