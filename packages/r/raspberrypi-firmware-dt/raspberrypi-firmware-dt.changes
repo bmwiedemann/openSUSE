@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:58:19 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-firware-dma-ranges-overlay.dts which fixes touch input on the
+  official 7" display (bsc#1167147)
+
+-------------------------------------------------------------------
+Fri Mar 13 11:13:45 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Get rid of remove-vmmc-emmc2.patch now that the kernel supports it (bsc#1165954)
+
+-------------------------------------------------------------------
 Wed Mar 11 17:17:54 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add uboot-bcm2835-pl011-overlay.dts which fixes booting in RPi, RPi2, RPi0 (bsc#1166414)
