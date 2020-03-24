@@ -25,4 +25,20 @@
   * CI integration fixes</comment>
     <requestid>705390</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2bc3d64699f2a30b1997f861a66d1ae</srcmd5>
+    <version>0.11.0</version>
+    <time>1585085657</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove tests folder that was installed in sitelib
+
+- version update to 0.11.0
+  * Added basic support for multiline text.
+  * Dropped lots of older compat-only code and other cleanups.
+  * Fixed a bug in the API when combining certain barcodes and writers.
+  * Published documentation again and updated all project references.
+  * Fix python_barcode.get mixups between options as writer_options. Previously, some writer/barcode combinations worked fine, while others failed. Now all work consistently.
+  * The cli tool has been fixed and should now work as expected again.</comment>
+    <requestid>787472</requestid>
+  </revision>
 </revisionlist>

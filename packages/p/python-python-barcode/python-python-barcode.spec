@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-barcode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define base_name python-barcode
 Name:           python-%{base_name}
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Library to create Barcodes with Python
 License:        MIT
@@ -30,6 +30,7 @@ URL:            https://github.com/WhyNotHugo/python-barcode
 Source:         https://files.pythonhosted.org/packages/source/p/%{base_name}/%{base_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pathlib}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dejavu-fonts
@@ -49,20 +50,22 @@ Library to create standard barcodes with Python. No external modules needed (opt
 # Fix rpmlint warning about too many +x perms when these files get installed later.
 find . -type f -exec chmod a-x {} +
 # doc buildscripts we don't wanna ship
-rm docs/{Makefile,make.bat}
+rm docs/Makefile
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 find "%{buildroot}" -type f -name "*.ttf" | while read i; do
 	ln -fs "%{_datadir}/fonts/truetype/${i##*/}" "$i"
 done
 
 %check
-%python_exec test.py
+sed -i '/cov/d' setup.cfg
+%pytest
 
 %files %{python_files}
 %doc docs/*
