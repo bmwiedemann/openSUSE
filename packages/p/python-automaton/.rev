@@ -183,4 +183,12 @@
   - Sync Sphinx requirement</comment>
     <requestid>736637</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5db5f6c695009324dba7811ff2e50a12</srcmd5>
+    <version>1.17.0</version>
+    <time>1585085535</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only build</comment>
+    <requestid>784077</requestid>
+  </revision>
 </revisionlist>

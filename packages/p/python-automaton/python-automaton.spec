@@ -1,7 +1,7 @@
 #
 # spec file for package python-automaton
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,26 +25,28 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/automaton
 Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-1.17.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
-BuildRequires:  python2-PrettyTable >= 0.7.2
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testtools
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-devel
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
-Requires:       python-PrettyTable >= 0.7.2
-Requires:       python-pbr >= 2.0.0
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Friendly state machines for python.
+
+%package -n python3-automaton
+Summary:        Friendly state machines for python
+Group:          Development/Languages/Python
+Requires:       python3-PrettyTable >= 0.7.2
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-automaton
+Friendly state machines for python.
+
+This package contains the Python 3.x module.
 
 %package -n python-automaton-doc
 Summary:        Documentation for the Automaton Library
@@ -60,7 +62,7 @@ Documentation for the Automaton library.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -68,16 +70,16 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-automaton
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/automaton
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/automaton
+%{python3_sitelib}/*.egg-info
 
 %files -n python-automaton-doc
 %license LICENSE
