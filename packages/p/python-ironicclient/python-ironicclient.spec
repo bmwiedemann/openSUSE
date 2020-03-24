@@ -1,7 +1,7 @@
 #
 # spec file for package python-ironicclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,14 @@
 
 
 Name:           python-ironicclient
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-3.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-3.1.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Babel
-BuildRequires:  python2-PyYAML >= 3.12
-BuildRequires:  python2-appdirs >= 1.3.0
-BuildRequires:  python2-dogpile.cache >= 0.6.2
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-jsonschema >= 2.6.0
-BuildRequires:  python2-mock
-BuildRequires:  python2-openstackclient
-BuildRequires:  python2-osc-lib >= 1.10.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-requests >= 2.14.2
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testtools
 BuildRequires:  python3-Babel
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-appdirs >= 1.3.0
@@ -61,27 +43,38 @@ BuildRequires:  python3-requests >= 2.14.2
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
-Requires:       python-PyYAML >= 3.12
-Requires:       python-appdirs >= 1.3.0
-Requires:       python-dogpile.cache >= 0.6.2
-Requires:       python-jsonschema >= 2.6.0
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-openstackclient
-Requires:       python-osc-lib >= 1.10.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 OpenStack Bare Metal Provisioning API Client Library
 
 This is a client for the OpenStack Ironic API. It provides a Python API (the
 ironicclient module) and a command-line interface (ironic).
+
+%package -n python3-ironicclient
+Summary:        Python API and CLI for OpenStack Ironic
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-appdirs >= 1.3.0
+Requires:       python3-dogpile.cache >= 0.6.2
+Requires:       python3-jsonschema >= 2.6.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-openstackclient
+Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-ironicclient
+OpenStack Bare Metal Provisioning API Client Library.
+
+This is a client for the OpenStack Ironic API. It provides a Python API (the
+ironicclient module) and a command-line interface (ironic).
+
+This package contains the Python 3.x module.
 
 %package -n python-ironicclient-doc
 Summary:        Documentation for OpenStack Ironic API Client
@@ -98,27 +91,27 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-3.1.0
+%autosetup -p1 -n python-ironicclient-3.1.1
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
-PBR_VERSION=3.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.1.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-ironicclient
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/ironicclient
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/ironicclient
+%{python3_sitelib}/*.egg-info
 
 %files -n python-ironicclient-doc
 %license LICENSE
