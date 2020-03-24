@@ -299,4 +299,12 @@
   - Stop using pbr to build docs</comment>
     <requestid>774922</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>27ac6d303d35369244d87b0044c1dd54</srcmd5>
+    <version>1.40.2</version>
+    <time>1585085537</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only client</comment>
+    <requestid>784193</requestid>
+  </revision>
 </revisionlist>

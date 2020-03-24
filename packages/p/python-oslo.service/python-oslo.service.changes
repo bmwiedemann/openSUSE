@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:32:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only client
+
+-------------------------------------------------------------------
 Wed Oct  9 12:29:46 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.40.2

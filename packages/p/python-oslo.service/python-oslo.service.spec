@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.service
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,25 +29,6 @@ URL:            https://launchpad.net/oslo.service
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-1.40.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  procps
-BuildRequires:  python2-Paste >= 2.0.2
-BuildRequires:  python2-PasteDeploy >= 1.5.0
-BuildRequires:  python2-Routes >= 2.3.1
-BuildRequires:  python2-WebOb >= 1.7.1
-BuildRequires:  python2-eventlet >= 0.18.2
-BuildRequires:  python2-fixtures >= 3.0.0
-BuildRequires:  python2-greenlet >= 0.4.10
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.concurrency >= 3.25.0
-BuildRequires:  python2-oslo.config >= 5.1.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.log >= 3.36.0
-BuildRequires:  python2-oslo.utils >= 3.40.2
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr
-BuildRequires:  python2-requests
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-yappi
 BuildRequires:  python3-Paste >= 2.0.2
 BuildRequires:  python3-PasteDeploy >= 1.5.0
 BuildRequires:  python3-Routes >= 2.3.1
@@ -67,25 +48,34 @@ BuildRequires:  python3-requests
 BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-yappi
-Requires:       python-Paste >= 2.0.2
-Requires:       python-PasteDeploy >= 1.5.0
-Requires:       python-Routes >= 2.3.1
-Requires:       python-WebOb >= 1.7.1
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-eventlet >= 0.18.2
-Requires:       python-fixtures >= 3.0.0
-Requires:       python-greenlet >= 0.4.10
-Requires:       python-oslo.concurrency >= 3.25.0
-Requires:       python-oslo.config >= 5.1.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.log >= 3.36.0
-Requires:       python-oslo.utils >= 3.40.2
-Requires:       python-six >= 1.10.0
-Requires:       python-yappi
 BuildArch:      noarch
-%python_subpackages
 
 %description
+oslo.service provides a framework for defining new long-running services using
+the patterns established by other OpenStack applications. It also includes
+utilities long-running applications might need for working with SSL or WSGI,
+performing periodic operations, interacting with systemd, etc.
+
+%package -n python3-oslo.service
+Summary:        OpenStack oslo.service library
+Group:          Development/Languages/Python
+Requires:       python3-Paste >= 2.0.2
+Requires:       python3-PasteDeploy >= 1.5.0
+Requires:       python3-Routes >= 2.3.1
+Requires:       python3-WebOb >= 1.7.1
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-eventlet >= 0.18.2
+Requires:       python3-fixtures >= 3.0.0
+Requires:       python3-greenlet >= 0.4.10
+Requires:       python3-oslo.concurrency >= 3.25.0
+Requires:       python3-oslo.config >= 5.1.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.log >= 3.36.0
+Requires:       python3-oslo.utils >= 3.40.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-yappi
+
+%description -n python3-oslo.service
 oslo.service provides a framework for defining new long-running services using
 the patterns established by other OpenStack applications. It also includes
 utilities long-running applications might need for working with SSL or WSGI,
@@ -109,7 +99,7 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
 PYTHONPATH=. PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -117,16 +107,16 @@ PYTHONPATH=. PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/h
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.service
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/oslo_service
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/oslo_service
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.service-doc
 %license LICENSE
