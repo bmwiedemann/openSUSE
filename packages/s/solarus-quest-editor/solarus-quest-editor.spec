@@ -1,7 +1,7 @@
 #
 # spec file for package solarus-quest-editor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Graphics/Other
 URL:            https://www.solarus-games.org/
 Source:         https://gitlab.com/solarus-games/solarus-quest-editor/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Use-pkg-config-to-get-more-search-paths.patch
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -61,6 +63,7 @@ This package contains assets for the Solarus Quest Editor.
 
 %prep
 %setup -q -n %{name}-v%{version}
+%patch0 -p1
 
 %build
 %cmake
