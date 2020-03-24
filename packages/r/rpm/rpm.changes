@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 24 22:16:22 CET 2020 - mls@suse.de
+
+- Follow one level of symlink indirection when converting the rpm
+  database [bnc#1167537]
+  * modified patch: db_conversion.diff
+
+-------------------------------------------------------------------
+Mon Mar 23 16:11:34 UTC 2020 - Sergio Lindo Mansilla <slindomansilla@suse.com>
+
+- Add macro for supported ARM 64bit processors
+
+-------------------------------------------------------------------
 Fri Jan 17 11:27:17 CET 2020 - mls@suse.de
 
 - Use libgcrypt as crypto library instead of beecrypt

@@ -121,7 +121,7 @@
  %_host_cpu		@host_cpu@
  %_host_vendor		@host_vendor@
  %_host_os		@host_os@
-@@ -1119,7 +1139,9 @@ package or when debugging this package.\
+@@ -1119,7 +1139,10 @@ package or when debugging this package.\
  
  #------------------------------------------------------------------------------
  # arch macro for all supported ARM processors
@@ -129,6 +129,7 @@
 +%arm    armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
 +%arml   armv3l armv4l armv5l armv5tel armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
 +%armb   armv4b armv5b armv5teb
++%arm64  aarch64
  
  #------------------------------------------------------------------------------
  # arch macro for 32-bit MIPS processors

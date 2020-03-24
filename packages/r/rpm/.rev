@@ -2154,4 +2154,16 @@ Note that this will require adding `Preinstall: libzstd1` to the `openSUSE:Facto
     <comment>Use libgcrypt as crypto library, switch to ndb database</comment>
     <requestid>769573</requestid>
   </revision>
+  <revision rev="278" vrev="3">
+    <srcmd5>ea8dce331335f96146f22a2043985d35</srcmd5>
+    <version>4.15.1</version>
+    <time>1585087642</time>
+    <user>dimstar_suse</user>
+    <comment>Follow one level of symlink indirection when converting the rpm database [bnc#1167537]
+
+Note that this is IMPORTANT and should go into Factory fast: without
+it, updates to Tumbleweed may end up with a broken rpm database.
+See bugzilla 1167537 for the gory details.</comment>
+    <requestid>787932</requestid>
+  </revision>
 </revisionlist>
