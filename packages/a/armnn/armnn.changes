@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 24 14:01:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-Wno-error=deprecated-declarations' to fix build with latest
+  protobuf 3.11.x (Tumbleweed)
+  https://github.com/ARM-software/armnn/issues/366
+- Use python-onnx package instead of python-onnx-devel, since it
+  is now a single package.
+
+-------------------------------------------------------------------
 Wed Mar 11 08:41:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on Leap 15.2

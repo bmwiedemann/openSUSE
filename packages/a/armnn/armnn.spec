@@ -138,7 +138,7 @@ BuildRequires:  opencv-devel
 %endif
 %endif
 %if %{with armnn_onnx}
-BuildRequires:  python3-onnx-devel
+BuildRequires:  python3-onnx
 %endif
 %if %{with armnn_tests}
 BuildRequires:  stb-devel
@@ -366,7 +366,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 # Boost fixes for dynamic linking
 sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework system filesystem log thread program_options)/' ./cmake/GlobalConfig.cmake
 
-
 %build
 %if %{with armnn_onnx}
 mkdir onnx_deps
@@ -374,7 +373,7 @@ PROTO=$(find %{_libdir} -name onnx.proto)
 protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname $(find %{_libdir} -name onnx)) --cpp_out=./onnx_deps
 %endif
 %if 0%{?suse_version} > 1500
-export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=deprecated-copy"
+export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=deprecated-copy -Wno-error=deprecated-declarations"
 %endif
 %if 0%{?sle_version} == 150200
 %if %{with armnn_tf}
