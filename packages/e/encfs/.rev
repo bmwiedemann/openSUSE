@@ -309,4 +309,12 @@
     <comment>update to 1.9.5 (forwarded request 782244 from seijikun)</comment>
     <requestid>783493</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c8758c8b6ea4b5e0c7419074b1d02fc9</srcmd5>
+    <version>1.9.5</version>
+    <time>1585085397</time>
+    <user>dimstar_suse</user>
+    <comment>disable RPATH for building, the bit has been removed from macros.cmake (forwarded request 787677 from mlin7442)</comment>
+    <requestid>787679</requestid>
+  </revision>
 </revisionlist>

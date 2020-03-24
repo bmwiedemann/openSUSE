@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 24 06:58:25 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Disable RPATH for building
+
+-------------------------------------------------------------------
 Fri Mar 06 20:23:14 UTC 2020 - Markus Ebner<info@ebner-markus.de>
 
 - update to 1.9.5

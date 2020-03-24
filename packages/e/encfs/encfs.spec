@@ -1,7 +1,7 @@
 #
 # spec file for package encfs
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,9 +49,9 @@ Name:           encfs
 Version:        1.9.5
 Release:        0
 Summary:        Userspace Encrypted File System
-License:        GPL-2.0+ and GPL-3.0+
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Filesystems
-Url:            https://vgough.github.io/encfs/
+URL:            https://vgough.github.io/encfs/
 Source:         https://github.com/vgough/encfs/releases/download/v%{version}/encfs-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fuse-devel
@@ -112,7 +112,7 @@ application using fuse (FUSE (Filesystem in USErspace)).
 
 %build
 %if %{use_cmake_macro}
-%cmake \
+%cmake -DCMAKE_SKIP_RPATH:BOOL=ON \
 %if %{os_has_tinyxml2}
  -DUSE_INTERNAL_TINYXML:BOOL=OFF
 %else
@@ -151,7 +151,11 @@ cd build
 %endif
 %endif
 
+%if %{use_cmake_macro}
+%cmake_build
+%else
 make %{?_smp_mflags} VERBOSE=1
+%endif
 
 %install
 %cmake_install
@@ -176,7 +180,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/build:
 
 %files 
 %defattr(-,root,root)
-%doc AUTHORS COPYING* ChangeLog DESIGN.md PERFORMANCE.md README*
+%license COPYING*
+%doc AUTHORS ChangeLog DESIGN.md PERFORMANCE.md README*
 %{_mandir}/man?/*
 %{_bindir}/encfs*
 %{_libdir}/libencfs.so.*
