@@ -42,4 +42,13 @@
     <comment></comment>
     <requestid>761084</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d667ed5dc0d11062bfd53c5bc30524e7</srcmd5>
+    <version>8.10</version>
+    <time>1585085745</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up spec file with spec-cleaner
+- Update names of python bindings for rpm</comment>
+    <requestid>787684</requestid>
+  </revision>
 </revisionlist>

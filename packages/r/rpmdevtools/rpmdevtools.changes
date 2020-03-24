@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:31:07 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Clean up spec file with spec-cleaner
+- Update names of python bindings for rpm
+
+-------------------------------------------------------------------
 Sun Jan  5 16:33:45 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Refreshed suse-specfile.patch to reflect current spec-cleaner

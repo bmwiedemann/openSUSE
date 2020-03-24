@@ -33,8 +33,7 @@ Patch0:         suse-specfile.patch
 Patch1:         dont-drop-Groups.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
-BuildRequires:  rpm-python
-BuildRequires:  xz
+BuildRequires:  python2-rpm
 BuildRequires:  pkgconfig(bash-completion)
 # Required for bash-completion
 Requires:       bash-completion
@@ -44,8 +43,7 @@ Requires:       curl
 # Minimal RPM build requirements
 Requires:       distribution-release
 Requires:       fakeroot
-Requires:       python
-Requires:       rpm-python
+Requires:       python2-rpm
 BuildArch:      noarch
 
 %description
@@ -66,9 +64,7 @@ rpmdev-bumpspec     Bump revision in specfile
 ...and many more.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 cp -a %{SOURCE1} template.init
 
 # Use the "rpmdev-" prefix for spectool that conflicts with Redhat spectool
@@ -76,7 +72,7 @@ sed -i "s/spectool/rpmdev-spectool/g" rpmdevtools.bash-completion.in spectool.in
 
 %build
 %configure --libdir=%{_libexecdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
