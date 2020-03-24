@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 20 14:18:24 UTC 2020 - Sumit Jamgade <sjamgade@suse.com>
+
+- Update to v1.4.0
+- Use files from the dist folders
+  this is precomiled version to javscript from upstream
+- Include README in the dist folder to show up on grafana UI
+
+-------------------------------------------------------------------
 Thu Jan  2 13:38:09 UTC 2020 - Jan Fajerski <jan.fajerski@suse.com>
 
 - Add BuildRequires: grafana so grafana user and group are present

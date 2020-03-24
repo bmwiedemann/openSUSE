@@ -1,7 +1,7 @@
 #
 # spec file for package grafana-piechart-panel
 #
-# Copyright (c) 2019 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           grafana-piechart-panel
-Version:        1.3.9
+Version:        1.4.0
 Release:        0
 Summary:        Grafana Piechart panel
 License:        MIT
@@ -42,22 +42,21 @@ Pie chart panel for grafana
 %install
 %define grafana_plugin_dir %{_localstatedir}/lib/grafana/plugins
 %define plugin_subdir grafana-piechart-panel
-install -Dd -m0755 %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src/img
-install -Dd -m0755 %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src/lib
-install -Dd -m0755 %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src/styles
-install -D -m0644 package.json %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/
-install -D -m0644 yarn.lock %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/
-install -D -m0644 tsconfig.json %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/
-install -D -m0644 src/editor.html %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/legend.ts %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/module.html %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/module.ts %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/plugin.json %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/piechart_ctrl.ts %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/rendering.ts %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src
-install -D -m0644 src/img/*.png %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src/img
-install -D -m0644 src/lib/*.js %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src/lib
-install -D -m0644 src/styles/*.scss %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/src/styles
+%define destination %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/dist
+
+install -Dd -m0755 %{destination}/img/
+install -Dd -m0755 %{destination}/styles/
+install -D -m0644 dist/img/*.png %{destination}/img/
+install -D -m0644 dist/styles/*.css %{destination}/styles/
+install -D -m0644 dist/dark.js %{destination}/
+install -D -m0644 dist/light.js %{destination}/
+install -D -m0644 dist/editor.html %{destination}/
+install -D -m0644 dist/module.html %{destination}/
+install -D -m0644 dist/module.js %{destination}/
+install -D -m0644 dist/plugin.json %{destination}/
+
+install -D -m0644 README.md %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/dist
+install -D -m0644 LICENSE %{buildroot}%{grafana_plugin_dir}/%{plugin_subdir}/
 
 %files
 %attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana
@@ -66,22 +65,18 @@ install -D -m0644 src/styles/*.scss %{buildroot}%{grafana_plugin_dir}/%{plugin_s
 %doc README.md
 %license LICENSE
 %dir %{grafana_plugin_dir}/%{plugin_subdir}
-%dir %{grafana_plugin_dir}/%{plugin_subdir}/src
-%dir %{grafana_plugin_dir}/%{plugin_subdir}/src/img
-%dir %{grafana_plugin_dir}/%{plugin_subdir}/src/lib
-%dir %{grafana_plugin_dir}/%{plugin_subdir}/src/styles
-%{grafana_plugin_dir}/%{plugin_subdir}/package.json
-%{grafana_plugin_dir}/%{plugin_subdir}/yarn.lock
-%{grafana_plugin_dir}/%{plugin_subdir}/tsconfig.json
-%{grafana_plugin_dir}/%{plugin_subdir}/src/editor.html
-%{grafana_plugin_dir}/%{plugin_subdir}/src/module.html
-%{grafana_plugin_dir}/%{plugin_subdir}/src/legend.ts
-%{grafana_plugin_dir}/%{plugin_subdir}/src/module.ts
-%{grafana_plugin_dir}/%{plugin_subdir}/src/rendering.ts
-%{grafana_plugin_dir}/%{plugin_subdir}/src/plugin.json
-%{grafana_plugin_dir}/%{plugin_subdir}/src/piechart_ctrl.ts
-%{grafana_plugin_dir}/%{plugin_subdir}/src/img/*.png
-%{grafana_plugin_dir}/%{plugin_subdir}/src/lib/*.js
-%{grafana_plugin_dir}/%{plugin_subdir}/src/styles/*.scss
+%dir %{grafana_plugin_dir}/%{plugin_subdir}/dist
+%dir %{grafana_plugin_dir}/%{plugin_subdir}/dist/img
+%dir %{grafana_plugin_dir}/%{plugin_subdir}/dist/styles
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/editor.html
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/module.html
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/module.js
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/plugin.json
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/dark.js
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/light.js
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/img/*.png
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/styles/*.css
+%{grafana_plugin_dir}/%{plugin_subdir}/LICENSE
+%{grafana_plugin_dir}/%{plugin_subdir}/dist/README.md
 
 %changelog
