@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 24 10:16:11 UTC 2020 - Michael Calmer <mc@suse.com>
+
+- fix macro to fix build on openSUSE Leap 15.2
+
+-------------------------------------------------------------------
 Thu Jun 29 08:58:41 UTC 2017 - mlin@suse.com
 
 - Compile with libpcap-devel-static if Leap
