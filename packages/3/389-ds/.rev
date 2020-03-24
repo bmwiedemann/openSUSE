@@ -320,4 +320,12 @@
     <comment></comment>
     <requestid>784733</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e179091aa9719369a531cf9002323998</srcmd5>
+    <version>1.4.3.4~git0.3422d6574</version>
+    <time>1585085748</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787619</requestid>
+  </revision>
 </revisionlist>

@@ -51,7 +51,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.3.3~git0.776c6edf5
+Version:        1.4.3.4~git0.3422d6574
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -65,9 +65,6 @@ Source3:        vendor.tar.gz
 %endif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
-%if %{with rust}
-Patch1:         0001-fix-cargo-build.patch
-%endif
 # 389-ds does not support i686
 ExcludeArch:    %ix86
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -257,7 +254,6 @@ uses the facilities provided by NSS.
 %if %{with rust}
 %setup -q -n %{name}-base-%{version} -D -T -a 3
 %endif
-%patch1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE10} %{user_group}

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 17 00:42:30 UTC 2020 - 389-ds-maintainer@suse.de
+
+- Remove 0001-fix-cargo-build.patch as it has been included upstream
+- Update to version 1.4.3.4~git0.3422d6574:
+  * Bump version to 1.4.3.4
+  * Issue 50954 - Port buildnum.pl to python(part 2)
+  * Issue 50955 - Fix memory leaks in chaining plugin
+  * Issue 50954 - Port buildnum.pl to python
+  * Ticket 50947 - change 00core.ldif objectClasses for openldap migration
+  * Ticket: 50755 - setting nsslapd-db-home-directory is overriding db_directory
+  * Issue 50937 - Update CLI for new backend split configuration
+  * Issue: 50860 - Port Password Policy test cases from TET to python3 pwp.sh
+  * Ticket 50945 - givenname alias of gn from openldap
+  * Ticket 50935 - systemd override in lib389 for dscontainer
+  * Issue 50499 - Fix npm audit issues
+  * Issue 49761 - Fix CI test suite issues
+  * Ticket 50618 - clean compiler warning and log level
+  * Ticket 50889 - fix compiler issues
+  * Issue 50884 -  Health check tool DSEldif check fails
+  * Issue 50926 - Remove dual spinner and other UI fixes
+  * Issue 50928 - Unable to create a suffix with countryName
+  * Issue 50758 - Only Recommend bash-completion, not Require
+  * Issue 50923 - Fix a test regression
+  * Issue 50904 - Connect All React Components And Refactor the Main Navigation Tab Code
+  * Issue 50920 - cl-dump exit code is 0 even if command fails with invalid arguments
+  * Issue 50923 - Add test - dsctl fails to remove instances with dashes in the name
+  * Issue 50919 - Backend delete fails using dsconf
+  * Issue 50872 - dsconf can't create GSSAPI replication agreements
+  * Issue 50912 - RFE - add password policy attribute pwdReset
+  * Ticket 50914 - No error returned when adding an entry matching filters for a non existing automember group
+  * Ticket 50889 - Extract pem files into a private namespace
+  * Issue 50909 - nsDS5ReplicaId cant be set to the old value it had before
+  * Issue: 50686 - Port fractional replication test cases from TET to python3 final
+  * Issue 49845 - Remove pkgconfig check for libasan
+  * Issue:50860 - Port Password Policy test cases from TET to python3 bug624080
+  * Issue:50860 - Port Password Policy test cases from TET to python3 series of bugs
+  * Ticket 50786 - connection table freelist
+  * Ticket 50618 - support cgroupv2
+  * Ticket 50900 - Fix cargo offline build
+  * Ticket 50898 - ldclt core dumped when run with -e genldif option
+
+-------------------------------------------------------------------
 Mon Mar  9 03:48:34 UTC 2020 - William Brown <william.brown@suse.com>
 
 - Change systemd_requires to systemd_ordering based on packaging
