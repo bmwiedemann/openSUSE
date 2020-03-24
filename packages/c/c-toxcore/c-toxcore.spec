@@ -1,7 +1,7 @@
 #
 # spec file for package c-toxcore
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Markus Kolb, Innsbruck, Austria.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,12 +20,12 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 %define _soversion 2
 Name:           c-toxcore
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        Secure decentralized instant messaging application
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://tox.chat/
+URL:            https://tox.chat/
 Source0:        https://github.com/TokTok/c-toxcore/archive/v%{version}.tar.gz#./%{name}-%{version}.tar.gz
 Source1:        %{name}.tmpfiles.d
 Source2:        https://github.com/TokTok/c-toxcore/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:49:05 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 0.2.11
+  * #1403 Install libsodium from apt instead of from source.
+  * #1402 Remove bazel build from Travis.
+  * #1400 Disable bazel remote cache on CI.
+  * #1399 Periodically try to send direct packets when connected by TCP.
+  * #1398 Minor cleanup: use assoc_timeout function where possible.
+  * #1397 Check that LOGGER macros are only called with string literals.
+  * #1396 Make function defns match their decls regarding storage class.
+  * #1395 Mark file-local function definitions as static.
+  * #1394 Enable remote cache for bazel builds.
+  * #1393 Add another bootstrap node to the bootstrap test.
+  * #1392 Clear out old conference connections.
+  * #1391 Minor cleanups in network code.
+  * #1390 Avoid casting back and forth between void-ptr.
+  * #1389 Standardise on having a comma at the end of enums.
+  * #1388 Fix up comments a bit to start being more uniform.
+  * #1387 Use rules_cc instead of native cc_library rules.
+  * #1386 Use spdx license identifier instead of GPL blurb.
+  * #1383 Pass packet ID to custom packet handlers.
+  * #1382 Add a mutex lock/unlock inside every public API function.
+  * #1381 Use net_pack instead of casting bytes to ints.
+  * #1380 Disable FreeBSD travis build until it is fixed.
+  * #1379 Update and fix FreeBSD setup on Travis-CI
+  * #1378 Use ninja build system for the cmake-linux build.
+  * #1376 Remove testing/av_test.c.
+  * #1375 Add "cimple_test" to the bazel build.
+  * #1374 Handle invite to existing conference
+  * #1372 Upgrade bazel to 2.1.1.
+  * #1371 Bump to astyle-3.1 in travis build.
+  * #1370 use -1 rather than ~0 in unsigned integer types
+  * #1362 Workaround for message number saving
+  * #1358 Allow Bazel to rerun tests marked as flaky
+  * #1352 Update tests to use a working bootstrap node
+  * #1349 Fix tox-bootstrapd's README and update Dockerfile
+  * #1347 Fix pthread_mutex_destroy getting too many arguments
+  * #1346 Fix most TSAN failures
+  * #1345 fix concurrency issues in mono_time
+  * #1343 Fix TSAN failures in tests
+  * #1334 fix missing group title length check
+  * #1330 Force IPv4 for cirrus-ci tests
+  * #1329 bump libsodium version in appveyor.yml
+  * #1322 Clean-up of group.c code
+  * #1321 Some small fixes to groups.
+  * #1299 Add VScode folder to .gitignore
+  * #1297 Use net_pack/unpack instead of host_to_net.
+  * #1373 handle crashes after group invites
+  * #1368 Are tox clients also open source
+  * #1366 Generate a link for websites (Friendship and proxy)
+  * #1354 Unstable Tests
+  * #1316 Documentation claims toxav_iteration_interval is threadsafe but it's not
+  * #1274 build error
+  * #850 GPG App Usage
+
+-------------------------------------------------------------------
 Wed Jun 26 10:56:31 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 0.2.10
