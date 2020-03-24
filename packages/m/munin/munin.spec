@@ -36,6 +36,7 @@ Source2:        munin-node.rc
 Source3:        munin.cron.d
 Source4:        munin.logrotate
 Source5:        munin-node.logrotate
+Source6:        munin-node.xml
 Source7:        plugins.conf
 Source8:        munin-node.tmpfiles
 Source9:        munin-node.service
@@ -48,6 +49,7 @@ Source13:       gsa-munin.zip
 Source14:       munin-cron.timer
 Source15:       munin-cron.service
 Patch1:         perl526.patch
+BuildRequires:  firewall-macros
 BuildRequires:  html2text
 BuildRequires:  perl-HTML-Template
 BuildRequires:  perl-Log-Log4perl
@@ -198,6 +200,9 @@ ln nginx-munin-master/README.org README.nginx
 %__install -m0755 munin-gsa-master/snmp_* %{buildroot}/%{plugindir}
 ln munin-gsa-master/README.md README.gsa
 
+# firewalld
+install -D -m 644 %{SOURCE6} %{buildroot}%{_libexecdir}/firewalld/services/munin-node.xml
+
 %clean
 %{__rm} -rf %{buildroot}
 
@@ -265,6 +270,7 @@ chown root:root %{logdir}/munin-node.log*
 chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %tmpfiles_create /usr/lib/tmpfiles.d/munin-node.conf
 %service_add_post munin-node.service
+%firewalld_reload
 
 %preun node
 %service_del_preun munin-node.service
@@ -436,5 +442,8 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %attr(0755, munin, munin) %dir %{dbdir}
 %attr(0775, nobody, nobody) %dir %{dbdir}/plugin-state
 %ghost /run/munin
+%dir %{_libexecdir}/firewalld
+%dir %{_libexecdir}/firewalld/services
+%{_libexecdir}/firewalld/services/munin-node.xml
 
 %changelog

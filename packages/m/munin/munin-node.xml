@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>munin-node</short>
+  <description>munin-node listens on that port for incoming queries from the munin monitoring instance.</description>
+  <port protocol="tcp" port="4949"/>
+</service>
+
