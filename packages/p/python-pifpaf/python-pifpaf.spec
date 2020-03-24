@@ -1,7 +1,7 @@
 #
 # spec file for package python-pifpaf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pifpaf
-Version:        2.2.2
+Version:        2.4.0
 Release:        0
 Summary:        Suite of tools and fixtures to manage daemons for testing
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/jd/pifpaf
+URL:            https://github.com/jd/pifpaf
 Source:         https://pypi.io/packages/source/p/pifpaf/pifpaf-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  fdupes
@@ -70,6 +70,9 @@ export LC_ALL=en_US.utf8
 
 %postun
 %python_uninstall_alternative pifpaf
+
+%check
+# rather integration tests
 
 %files %{python_files}
 %license LICENSE
