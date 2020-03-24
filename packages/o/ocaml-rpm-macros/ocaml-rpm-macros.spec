@@ -16,7 +16,7 @@
 #
 
 Name:           ocaml-rpm-macros
-Version:        20200220
+Version:        20200321
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -413,16 +413,34 @@ ocaml setup.ml -configure \\\
 		| awk '/^-[[:blank:]]/{ printf "BuildRequires:  ocamlfind(%%s)\\n", $2}' | sort -u ; \
 	%%{nil}
 %%ocaml_dune_build \
+	if test -z "${_smp_mflags}" ;\
+	then \
+		_smp_mflags='%%{?_smp_mflags}' ;\
+		case "$(ocamlc --version)" in \\\
+		4.08*) _smp_mflags='-j1' ;;\\\
+		4.09*) _smp_mflags='-j1' ;;\\\
+		4.10*) _smp_mflags='-j1' ;;\\\
+		esac ;\
+	fi ;\
 	dune build \\\
 		--verbose \\\
 		${dune_for_release} \\\
-		%%{?_smp_mflags} \\\
+		${_smp_mflags} \\\
 		'@install' \\\
 		$OCAML_DUNE_BUILD_INSTALL_ARGS
 %%ocaml_dune_install \
 %ifarch ppc64 ppc64le
 	ulimit -s $((1024 * 64)) ; \
 %endif
+	if test -z "${_smp_mflags}" ;\
+	then \
+		_smp_mflags='%%{?_smp_mflags}' ;\
+		case "$(ocamlc --version)" in \\\
+		4.08*) _smp_mflags='-j1' ;;\\\
+		4.09*) _smp_mflags='-j1' ;;\\\
+		4.10*) _smp_mflags='-j1' ;;\\\
+		esac ;\
+	fi ;\
 	dune_for_release= ;\
 	if test -f dune_release_pkgs-%%{name}-%%{version}-%%{release} ; \
 	then \
@@ -432,7 +450,7 @@ ocaml setup.ml -configure \\\
 	dune install \\\
 		--verbose \\\
 		${dune_for_release} \\\
-		%%{?_smp_mflags} \\\
+		${_smp_mflags} \\\
 		--prefix=%%{_prefix} \\\
 		--libdir=%%{ocaml_standard_library} \\\
 		--destdir=%%{buildroot} \\\
