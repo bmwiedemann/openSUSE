@@ -1,0 +1,44 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Tue, 6 Aug 2019 15:40:05 +0200
+Subject: s390x: protvirt: Handle SIGP store status correctly
+
+References: bsc#1167075
+
+For protected VMs status storing is not done by QEMU anymore.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+(cherry picked from commit 398fc6874438c320407449d1c9560925aba2280b)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/s390x/helper.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+index 6808dfda01f42acbaa1d36ef787b..36b6d3d9d1bca9db90aac1c7bec6 100644
+--- a/target/s390x/helper.c
++++ b/target/s390x/helper.c
+@@ -25,6 +25,7 @@
+ #include "qemu/timer.h"
+ #include "qemu/qemu-print.h"
+ #include "hw/s390x/ioinst.h"
++#include "hw/s390x/pv.h"
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/runstate.h"
+ #ifndef CONFIG_USER_ONLY
+@@ -246,6 +247,11 @@ int s390_store_status(S390CPU *cpu, hwaddr addr, bool store_arch)
+     hwaddr len = sizeof(*sa);
+     int i;
+ 
++    /* For PVMs storing will occur when this cpu enters SIE again */
++    if (s390_is_pv()) {
++        return 0;
++    }
++
+     sa = cpu_physical_memory_map(addr, &len, 1);
+     if (!sa) {
+         return -EFAULT;

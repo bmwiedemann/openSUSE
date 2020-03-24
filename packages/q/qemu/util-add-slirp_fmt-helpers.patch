@@ -1,0 +1,125 @@
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Mon, 27 Jan 2020 10:24:09 +0100
+Subject: util: add slirp_fmt() helpers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 30648c03b27fb8d9611b723184216cd3174b6775
+References: bsc#1163018, CVE-2020-8608
+
+Various calls to snprintf() in libslirp assume that snprintf() returns
+"only" the number of bytes written (excluding terminating NUL).
+
+https://pubs.opengroup.org/onlinepubs/9699919799/functions/snprintf.html#tag_16_159_04
+
+"Upon successful completion, the snprintf() function shall return the
+number of bytes that would be written to s had n been sufficiently
+large excluding the terminating null byte."
+
+Introduce slirp_fmt() that handles several pathological cases the
+way libslirp usually expect:
+
+- treat error as fatal (instead of silently returning -1)
+
+- fmt0() will always \0 end
+
+- return the number of bytes actually written (instead of what would
+have been written, which would usually result in OOB later), including
+the ending \0 for fmt0()
+
+- warn if truncation happened (instead of ignoring)
+
+Other less common cases can still be handled with strcpy/snprintf() etc.
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Message-Id: <20200127092414.169796-2-marcandre.lureau@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/util.c | 62 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/util.h |  3 +++
+ 2 files changed, 65 insertions(+)
+
+diff --git a/slirp/src/util.c b/slirp/src/util.c
+index e5960871554e37ab67a640d2cd9b..e3b625717b0f5ef6e54756045a17 100644
+--- a/slirp/src/util.c
++++ b/slirp/src/util.c
+@@ -364,3 +364,65 @@ void slirp_pstrcpy(char *buf, int buf_size, const char *str)
+     }
+     *q = '\0';
+ }
++
++static int slirp_vsnprintf(char *str, size_t size,
++                           const char *format, va_list args)
++{
++    int rv = vsnprintf(str, size, format, args);
++
++    if (rv < 0) {
++        g_error("vsnprintf() failed: %s", g_strerror(errno));
++    }
++
++    return rv;
++}
++
++/*
++ * A snprintf()-like function that:
++ * - returns the number of bytes written (excluding optional \0-ending)
++ * - dies on error
++ * - warn on truncation
++ */
++int slirp_fmt(char *str, size_t size, const char *format, ...)
++{
++    va_list args;
++    int rv;
++
++    va_start(args, format);
++    rv = slirp_vsnprintf(str, size, format, args);
++    va_end(args);
++
++    if (rv > size) {
++        g_critical("vsnprintf() truncation");
++    }
++
++    return MIN(rv, size);
++}
++
++/*
++ * A snprintf()-like function that:
++ * - always \0-end (unless size == 0)
++ * - returns the number of bytes actually written, including \0 ending
++ * - dies on error
++ * - warn on truncation
++ */
++int slirp_fmt0(char *str, size_t size, const char *format, ...)
++{
++    va_list args;
++    int rv;
++
++    va_start(args, format);
++    rv = slirp_vsnprintf(str, size, format, args);
++    va_end(args);
++
++    if (rv >= size) {
++        g_critical("vsnprintf() truncation");
++        if (size > 0)
++            str[size - 1] = '\0';
++        rv = size;
++    } else {
++        rv += 1; /* include \0 */
++    }
++
++    return rv;
++}
+diff --git a/slirp/src/util.h b/slirp/src/util.h
+index 3c6223cecd9d881ca1a3f2d37af2..0558dfc222ec7d7b43beb2d18161 100644
+--- a/slirp/src/util.h
++++ b/slirp/src/util.h
+@@ -177,4 +177,7 @@ static inline int slirp_socket_set_fast_reuse(int fd)
+ 
+ void slirp_pstrcpy(char *buf, int buf_size, const char *str);
+ 
++int slirp_fmt(char *str, size_t size, const char *format, ...);
++int slirp_fmt0(char *str, size_t size, const char *format, ...);
++
+ #endif

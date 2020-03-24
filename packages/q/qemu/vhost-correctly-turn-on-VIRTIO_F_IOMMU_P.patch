@@ -1,0 +1,56 @@
+From: Jason Wang <jasowang@redhat.com>
+Date: Mon, 2 Mar 2020 12:24:54 +0800
+Subject: vhost: correctly turn on VIRTIO_F_IOMMU_PLATFORM
+
+References: bsc#1167075
+
+We turn on device IOTLB via VIRTIO_F_IOMMU_PLATFORM unconditionally on
+platform without IOMMU support. This can lead unnecessary IOTLB
+transactions which will damage the performance.
+
+Fixing this by check whether the device is backed by IOMMU and disable
+device IOTLB.
+
+Reported-by: Halil Pasic <pasic@linux.ibm.com>
+Tested-by: Halil Pasic <pasic@linux.ibm.com>
+Reviewed-by: Halil Pasic <pasic@linux.ibm.com>
+Signed-off-by: Jason Wang <jasowang@redhat.com>
+Message-Id: <20200302042454.24814-1-jasowang@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+(cherry picked from commit f7ef7e6e3ba6e994e070cc609eb154339d1c4a11)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/virtio/vhost.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index 4da0d5a6c5867325cb8cacab4894..554e76434ffaf2dc9ada0d4bdd7a 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -290,7 +290,14 @@ static int vhost_dev_has_iommu(struct vhost_dev *dev)
+ {
+     VirtIODevice *vdev = dev->vdev;
+ 
+-    return virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
++    /*
++     * For vhost, VIRTIO_F_IOMMU_PLATFORM means the backend support
++     * incremental memory mapping API via IOTLB API. For platform that
++     * does not have IOMMU, there's no need to enable this feature
++     * which may cause unnecessary IOTLB miss/update trnasactions.
++     */
++    return vdev->dma_as != &address_space_memory &&
++           virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM);
+ }
+ 
+ static void *vhost_memory_map(struct vhost_dev *dev, hwaddr addr,
+@@ -762,6 +769,9 @@ static int vhost_dev_set_features(struct vhost_dev *dev,
+     if (enable_log) {
+         features |= 0x1ULL << VHOST_F_LOG_ALL;
+     }
++    if (!vhost_dev_has_iommu(dev)) {
++        features &= ~(0x1ULL << VIRTIO_F_IOMMU_PLATFORM);
++    }
+     r = dev->vhost_ops->vhost_set_features(dev, features);
+     if (r < 0) {
+         VHOST_OPS_DEBUG("vhost_set_features failed");

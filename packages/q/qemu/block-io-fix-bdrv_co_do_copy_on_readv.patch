@@ -1,0 +1,38 @@
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Thu, 12 Mar 2020 11:19:49 +0300
+Subject: block/io: fix bdrv_co_do_copy_on_readv
+
+Git-commit: 4ab78b19189a81038e744728ed949d09aa477550
+
+Prior to 1143ec5ebf4 it was OK to qemu_iovec_from_buf() from aligned-up
+buffer to original qiov, as qemu_iovec_from_buf() will stop at qiov end
+anyway.
+
+But after 1143ec5ebf4 we assume that bdrv_co_do_copy_on_readv works on
+part of original qiov, defined by qiov_offset and bytes. So we must not
+touch qiov behind qiov_offset+bytes bound. Fix it.
+
+Cc: qemu-stable@nongnu.org # v4.2
+Fixes: 1143ec5ebf4
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Message-id: 20200312081949.5350-1-vsementsov@virtuozzo.com
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/io.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/block/io.c b/block/io.c
+index d1f1ee9138c7af82352e9277f22b..c2c3aab9ee3d1d4d494ce98a6d8b 100644
+--- a/block/io.c
++++ b/block/io.c
+@@ -1395,7 +1395,7 @@ static int coroutine_fn bdrv_co_do_copy_on_readv(BdrvChild *child,
+             if (!(flags & BDRV_REQ_PREFETCH)) {
+                 qemu_iovec_from_buf(qiov, qiov_offset + progress,
+                                     bounce_buffer + skip_bytes,
+-                                    pnum - skip_bytes);
++                                    MIN(pnum - skip_bytes, bytes - progress));
+             }
+         } else if (!(flags & BDRV_REQ_PREFETCH)) {
+             /* Read directly into the destination */

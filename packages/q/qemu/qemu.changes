@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Mar 20 17:27:29 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  block-io-fix-bdrv_co_do_copy_on_readv.patch
+  compat-disable-edid-on-correct-virtio-gp.patch
+  target-ppc-Fix-rlwinm-on-ppc64.patch
+  vhost-correctly-turn-on-VIRTIO_F_IOMMU_P.patch
+- s390x Protected Virtualization support - start and control guest
+  in secure mode. (note: binary patch from patch series dropped since
+  for s390x we rebuild the patched binary anyways) (bsc#1167075
+  jsc#SLE-7407)
+  s390-sclp-improve-special-wait-psw-logic.patch
+  s390x-Add-missing-vcpu-reset-functions.patch
+  s390x-Add-SIDA-memory-ops.patch
+  s390x-Add-unpack-facility-feature-to-GA1.patch
+  s390x-Beautify-diag308-handling.patch
+  s390x-Don-t-do-a-normal-reset-on-the-ini.patch
+  s390x-ipl-Consolidate-iplb-validity-chec.patch
+  s390x-kvm-Make-kvm_sclp_service_call-voi.patch
+  s390x-Move-clear-reset.patch
+  s390x-Move-diagnose-308-subcodes-and-rcs.patch
+  s390x-Move-initial-reset.patch
+  s390x-Move-reset-normal-to-shared-reset-.patch
+  s390x-protvirt-Add-migration-blocker.patch
+  s390x-protvirt-Disable-address-checks-fo.patch
+  s390x-protvirt-Handle-SIGP-store-status-.patch
+  s390x-protvirt-Inhibit-balloon-when-swit.patch
+  s390x-protvirt-KVM-intercept-changes.patch
+  s390x-protvirt-Move-diag-308-data-over-S.patch
+  s390x-protvirt-Move-IO-control-structure.patch
+  s390x-protvirt-Move-STSI-data-over-SIDAD.patch
+  s390x-protvirt-SCLP-interpretation.patch
+  s390x-protvirt-Set-guest-IPL-PSW.patch
+  s390x-protvirt-Support-unpack-facility.patch
+  Sync-pv.patch
+
+-------------------------------------------------------------------
+Fri Mar 20 15:28:35 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Fix the issue that s390x could not read IPL channel program when using
+  dasd as boot device (bsc#1163140)
+  pc-bios-s390x-Save-iplb-location-in-lowc.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 19:58:35 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix potential OOB accesses in slirp (CVE-2020-8608 bsc#1163018
+  bsc#1161066 CVE-2020-7039)
+  slirp-use-correct-size-while-emulating-c.patch
+  slirp-use-correct-size-while-emulating-I.patch
+  tcp_emu-Fix-oob-access.patch
+  tcp_emu-fix-unsafe-snprintf-usages.patch
+  util-add-slirp_fmt-helpers.patch
+- Replace this patch with upstream version
+  target-arm-monitor-query-cpu-model-expan.patch
+
+-------------------------------------------------------------------
 Thu Mar 12 16:27:03 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Include upstream patches targeted for the next stable release

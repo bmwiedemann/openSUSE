@@ -1652,4 +1652,12 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>784402</requestid>
   </revision>
+  <revision rev="171" vrev="7">
+    <srcmd5>a06b33457caadc9f8e46babaf8587dcb</srcmd5>
+    <version>4.2.0</version>
+    <time>1585085371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787001</requestid>
+  </revision>
 </revisionlist>

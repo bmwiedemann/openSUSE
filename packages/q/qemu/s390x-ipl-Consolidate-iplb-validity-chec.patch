@@ -1,0 +1,64 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Tue, 10 Mar 2020 05:09:50 -0400
+Subject: s390x: ipl: Consolidate iplb validity check into one function
+
+References: bsc#1167075
+
+It's nicer to just call one function than calling a function for each
+possible iplb type.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Message-Id: <20200310090950.61172-1-frankja@linux.ibm.com>
+Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Signed-off-by: Christian Borntraeger <borntraeger@de.ibm.com>
+(cherry picked from commit 94c21436e5a89143f8b9cb4d089d1a2f3f4fd377)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/s390x/ipl.h      | 18 +++++++++---------
+ target/s390x/diag.c |  2 +-
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/hw/s390x/ipl.h b/hw/s390x/ipl.h
+index d4813105db33253fd1eba53cd7e3..3e44abe1c651d8a01f4708c2801c 100644
+--- a/hw/s390x/ipl.h
++++ b/hw/s390x/ipl.h
+@@ -173,16 +173,16 @@ static inline bool iplb_valid_len(IplParameterBlock *iplb)
+     return be32_to_cpu(iplb->len) <= sizeof(IplParameterBlock);
+ }
+ 
+-static inline bool iplb_valid_ccw(IplParameterBlock *iplb)
++static inline bool iplb_valid(IplParameterBlock *iplb)
+ {
+-    return be32_to_cpu(iplb->len) >= S390_IPLB_MIN_CCW_LEN &&
+-           iplb->pbt == S390_IPL_TYPE_CCW;
+-}
+-
+-static inline bool iplb_valid_fcp(IplParameterBlock *iplb)
+-{
+-    return be32_to_cpu(iplb->len) >= S390_IPLB_MIN_FCP_LEN &&
+-           iplb->pbt == S390_IPL_TYPE_FCP;
++    switch (iplb->pbt) {
++    case S390_IPL_TYPE_FCP:
++        return be32_to_cpu(iplb->len) >= S390_IPLB_MIN_FCP_LEN;
++    case S390_IPL_TYPE_CCW:
++        return be32_to_cpu(iplb->len) >= S390_IPLB_MIN_CCW_LEN;
++    default:
++        return false;
++    }
+ }
+ 
+ #endif
+diff --git a/target/s390x/diag.c b/target/s390x/diag.c
+index 53c2f81f2a1aad58d417bc3dc79c..0c81d8e1efbfe37a384199488a72 100644
+--- a/target/s390x/diag.c
++++ b/target/s390x/diag.c
+@@ -100,7 +100,7 @@ void handle_diag_308(CPUS390XState *env, uint64_t r1, uint64_t r3, uintptr_t ra)
+ 
+         cpu_physical_memory_read(addr, iplb, be32_to_cpu(iplb->len));
+ 
+-        if (!iplb_valid_ccw(iplb) && !iplb_valid_fcp(iplb)) {
++        if (!iplb_valid(iplb)) {
+             env->regs[r1 + 1] = DIAG_308_RC_INVALID;
+             goto out;
+         }

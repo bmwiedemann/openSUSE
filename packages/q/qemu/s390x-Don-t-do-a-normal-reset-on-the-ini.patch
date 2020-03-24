@@ -1,0 +1,35 @@
+From: Janosch Frank <frankja@linux.ibm.com>
+Date: Wed, 27 Nov 2019 12:50:41 -0500
+Subject: s390x: Don't do a normal reset on the initial cpu
+
+References: bsc#1167075
+
+The initiating cpu needs to be reset with an initial reset. While
+doing a normal reset followed by a initial reset is not wrong per se,
+the Ultravisor will only allow the correct reset to be performed.
+
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Message-Id: <20191127175046.4911-2-frankja@linux.ibm.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+(cherry picked from commit ec9227339fce99412830d44a37eb0bd2fadd5f75)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/s390x/s390-virtio-ccw.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index d3edeef0ad924af160eb83ea6724..c1d1440272a42eef86eb14724f52 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -348,6 +348,9 @@ static void s390_machine_reset(MachineState *machine)
+         break;
+     case S390_RESET_LOAD_NORMAL:
+         CPU_FOREACH(t) {
++            if (t == cs) {
++                continue;
++            }
+             run_on_cpu(t, s390_do_cpu_reset, RUN_ON_CPU_NULL);
+         }
+         subsystem_reset();

@@ -1,0 +1,61 @@
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Date: Tue, 25 Feb 2020 06:28:51 -0500
+Subject: s390x: Add unpack facility feature to GA1
+
+References: bsc#1167075
+
+The unpack facility is an indication that diagnose 308 subcodes 8-10
+are available to the guest. That means, that the guest can put itself
+into protected mode.
+
+Once it is in protected mode, the hardware stops any attempt of VM
+introspection by the hypervisor.
+
+Some features are currently not supported in protected mode:
+     * vfio devices
+     * Migration
+     * Huge page backings
+
+Signed-off-by: Christian Borntraeger <borntraeger@de.ibm.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Janosch Frank <frankja@linux.ibm.com>
+(cherry picked from commit 3034eaac3b2970ba85a1d77814ceef1352d05357)
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/s390x/gen-features.c | 1 +
+ target/s390x/kvm.c          | 8 ++++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/target/s390x/gen-features.c b/target/s390x/gen-features.c
+index 6278845b12b8dee84c086413c60a..8ddeebc54419a3e2481e21916389 100644
+--- a/target/s390x/gen-features.c
++++ b/target/s390x/gen-features.c
+@@ -562,6 +562,7 @@ static uint16_t full_GEN15_GA1[] = {
+     S390_FEAT_GROUP_MSA_EXT_9,
+     S390_FEAT_GROUP_MSA_EXT_9_PCKMO,
+     S390_FEAT_ETOKEN,
++    S390_FEAT_UNPACK,
+ };
+ 
+ /* Default features (in order of release)
+diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
+index d94b915da419c3ad0a1f9622ca13..8b82e4c93dfa7e89127bce74cde7 100644
+--- a/target/s390x/kvm.c
++++ b/target/s390x/kvm.c
+@@ -2407,6 +2407,14 @@ void kvm_s390_get_host_cpu_model(S390CPUModel *model, Error **errp)
+         clear_bit(S390_FEAT_BPB, model->features);
+     }
+ 
++    /*
++     * If we have support for protected virtualization, indicate
++     * the protected virtualization IPL unpack facility.
++     */
++    if (cap_protected) {
++        set_bit(S390_FEAT_UNPACK, model->features);
++    }
++
+     /* We emulate a zPCI bus and AEN, therefore we don't need HW support */
+     set_bit(S390_FEAT_ZPCI, model->features);
+     set_bit(S390_FEAT_ADAPTER_EVENT_NOTIFICATION, model->features);

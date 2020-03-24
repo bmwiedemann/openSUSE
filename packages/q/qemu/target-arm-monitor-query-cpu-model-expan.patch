@@ -1,8 +1,9 @@
 From: Liang Yan <lyan@suse.com>
-Date: Fri, 31 Jan 2020 14:54:06 -0500
+Date: Fri, 7 Feb 2020 14:04:21 +0000
 Subject: target/arm/monitor: query-cpu-model-expansion crashed qemu when using
  machine type none
 
+Git-commit: 0999a4ba8718aa96105b978d3567fc7e90244c7e
 References: bsc#1159443
 
 Commit e19afd566781 mentioned that target-arm only supports queryable
@@ -15,8 +16,12 @@ So We add a check above it.
 
 This won't affect i386 and s390x since they do not use current_cpu.
 
-[LY: patch only queued in upstream, will update commit id later]
 Signed-off-by: Liang Yan <lyan@suse.com>
+Message-id: 20200203134251.12986-1-lyan@suse.com
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+Tested-by: Andrew Jones <drjones@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
  target/arm/monitor.c | 15 +++++++++------
  1 file changed, 9 insertions(+), 6 deletions(-)

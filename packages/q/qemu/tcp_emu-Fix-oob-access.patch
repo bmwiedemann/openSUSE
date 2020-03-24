@@ -1,0 +1,40 @@
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Wed, 8 Jan 2020 00:58:48 +0100
+Subject: tcp_emu: Fix oob access
+
+Git-commit: 2655fffed7a9e765bcb4701dd876e9dab975f289
+References: bsc#1161066, CVE2020-7039, bsc#1161066, CVS-2020-7039
+
+The main loop only checks for one available byte, while we sometimes
+need two bytes.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/tcp_subr.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/slirp/src/tcp_subr.c b/slirp/src/tcp_subr.c
+index 6cd181c9f2875528adab3f636aec..cedbfb28686604dbb7e8e5b35dd1 100644
+--- a/slirp/src/tcp_subr.c
++++ b/slirp/src/tcp_subr.c
+@@ -887,6 +887,9 @@ int tcp_emu(struct socket *so, struct mbuf *m)
+                 break;
+ 
+             case 5:
++                if (bptr == m->m_data + m->m_len - 1)
++                        return 1; /* We need two bytes */
++
+                 /*
+                  * The difference between versions 1.0 and
+                  * 2.0 is here. For future versions of
+@@ -902,6 +905,10 @@ int tcp_emu(struct socket *so, struct mbuf *m)
+                 /* This is the field containing the port
+                  * number that RA-player is listening to.
+                  */
++
++                if (bptr == m->m_data + m->m_len - 1)
++                        return 1; /* We need two bytes */
++
+                 lport = (((uint8_t *)bptr)[0] << 8) + ((uint8_t *)bptr)[1];
+                 if (lport < 6970)
+                     lport += 256; /* don't know why */
