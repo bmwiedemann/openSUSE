@@ -1,8 +1,8 @@
-Index: b/sesman/startwm.sh
-===================================================================
---- a/sesman/startwm.sh	2018-03-28 12:58:02.408758661 +0800
-+++ b/sesman/startwm.sh	2018-03-28 12:59:03.058439975 +0800
-@@ -7,34 +7,63 @@
+diff --git a/sesman/startwm.sh b/sesman/startwm.sh
+index ad06010..2330775 100755
+--- a/sesman/startwm.sh
++++ b/sesman/startwm.sh
+@@ -7,34 +7,66 @@
  # exec xterm
  
  
@@ -26,18 +26,21 @@ Index: b/sesman/startwm.sh
 +wm_start()
 +{
 +  #Customize your preferred session mode here
-+  SESSION="sle"
++  #The default session is gnome(GNOME Session)
++  #sle means SLE-Classic Session
++  SESSION="gnome"
 +
 +  case $SESSION in
 +    sle)
 +      if [ -r /usr/bin/gnome-session ]; then
-+        export GNOME_SHELL_SESSION_MODE=classic
-+        export SLE_CLASSIC_MODE=1
++        export XDG_SESSION_TYPE=x11
++        export GNOME_SHELL_SESSION_MODE=sle-classic
 +        /usr/bin/gnome-session --session gnome-classic
 +      fi
 +      ;;
 +    gnome)
 +      if [ -r /usr/bin/gnome-session ]; then
++        export XDG_SESSION_TYPE=x11
 +        /usr/bin/gnome-session
 +      fi
 +      ;;
@@ -86,7 +89,7 @@ Index: b/sesman/startwm.sh
          . ~/.profile
        fi
      fi
-@@ -42,56 +71,20 @@
+@@ -42,56 +74,20 @@ pre_start()
    return 0
  }
  
@@ -150,7 +153,7 @@ Index: b/sesman/startwm.sh
  #. /etc/environment
  #export PATH=$PATH
  #export LANG=$LANG
-@@ -106,6 +99,8 @@
+@@ -106,6 +102,8 @@ wm_start()
  # includes
  # auth       required     pam_env.so readenv=1
  
