@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 24 13:24:05 UTC 2020 - pgajdos@suse.com
+
+- version update to 20.1.0
+  - Carriage returns (``\r``) are now stripped before hashing ``pem`` objects to provide consistent hashes across platforms.
+    `#40 <https://github.com/hynek/pem/issues/40>`_
+  - Python 3.4 is not supported anymore.
+    It has been unsupported by the Python core team for a while now and its PyPI downloads are negligible.
+  - Added support for ``pem.OpenSSHPrivateKey`` (``OPENSSH PRIVATE KEY``).
+    OpenSSH added a new ``BEGIN`` label when it switched to a proprietary key encoding.
+    `#39 <https://github.com/hynek/pem/pull/39>`_
+
+-------------------------------------------------------------------
 Wed Sep 11 08:15:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.2.0:
