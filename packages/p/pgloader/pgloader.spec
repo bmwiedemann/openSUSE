@@ -17,15 +17,13 @@
 
 
 Name:           pgloader
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Fast data loader for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            https://pgloader.io
-Source0:        https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
-# Fix compilation errors with sbcl 2.0.1
-Source1:        https://github.com/cffi/cffi/archive/v0.21.0.tar.gz
+Source:         https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
@@ -57,14 +55,10 @@ from the pgloader command directly.
 
 %prep
 %setup -q -n %{name}-bundle-%{version}
-# clean up old cffi
-rm -rf software/cffi_0.20.0
-# expand new cffi in place
-tar -C software -xf %{SOURCE1}
 
 %build
-export CCFLAGS="%{_optflags}"
-export CCXFLAGS="%{_optflags}"
+export CCFLAGS="%{optflags}"
+export CCXFLAGS="%{optflags}"
 export DYNSIZE=""
 echo "Arch is : %{_arch}"
 %if "%{_arch}" == "i386" || "%{_arch}" == "arm"
