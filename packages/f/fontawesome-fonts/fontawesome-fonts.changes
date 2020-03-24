@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:06:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.13.0:
+  * Added new icons related to COVID-19.
+  * Fixed font family name to be 'Font Awesome 5 Free' for free
+    kits when using pseudo-elements.
+  * Added the ability to specify mask ID and title ID for SVG with
+    JS which allows snapshot testing tools to get a predictable
+    result when executing tests.
+  * Corrected version 4 font face shim src attribute declaration
+    that was warning of incorrect font file format.
+  * Explicitly set font-display to block which supresses warnings
+    of font-display in tools like Lighthouse.
+
+-------------------------------------------------------------------
 Tue Mar 10 12:20:22 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Update to version 5.12.1:

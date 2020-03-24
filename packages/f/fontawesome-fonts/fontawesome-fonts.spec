@@ -17,17 +17,17 @@
 
 
 Name:           fontawesome-fonts
-Version:        5.12.1
+Version:        5.13.0
 Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            http://fontawesome.io/
-Source0:        https://github.com/FortAwesome/Font-Awesome/releases/download/5.12.1/fontawesome-free-%{version}-desktop.zip
-Source1:        LICENSE.txt
+Source0:        https://github.com/FortAwesome/Font-Awesome/releases/download/%{version}/fontawesome-free-%{version}-desktop.zip
+Source1:        https://github.com/FortAwesome/Font-Awesome/releases/download/%{version}/fontawesome-free-%{version}-web.zip
+Source2:        LICENSE.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
@@ -42,15 +42,14 @@ are in the range U+F000..U+F23A.)
 Summary:        Web files for font-awesome
 License:        MIT
 Group:          System/X11/Fonts
-Source2:        https://github.com/FortAwesome/Font-Awesome/releases/download/5.12.1/fontawesome-free-%{version}-web.zip
 
 %description web
 Web files (css, less, scss, etc) for font-awesome.
 
 %prep
-%setup -c -q -n %{name}-%{version}
-%setup -T -D -a 2
-cp -p %{SOURCE1} .
+%setup -q -c
+%setup -q -T -D -a 1
+cp -p %{SOURCE2} .
 
 %build
 
@@ -66,7 +65,7 @@ cp -r */css */less */scss %{buildroot}%{_datadir}/fontawesome-web/
 
 %files
 %defattr(-, root,root)
-%doc LICENSE.txt
+%license LICENSE.txt
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
 
