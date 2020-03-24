@@ -63,6 +63,7 @@ dtoverlay=disable-vc4
 dtoverlay=rpi4-cma
 dtoverlay=rpi4-thermal
 dtoverlay=rpi4-gpio-names
+dtoverlay=rpi4-firmware-dma-ranges
 
 [all]
 
