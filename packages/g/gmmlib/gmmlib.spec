@@ -1,7 +1,7 @@
 #
 # spec file for package gmmlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,75 +15,67 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define so_ver	11
-
+%global somajor 11
+%global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        19.3.3
+Version:        19.4.1
 Release:        0
-Summary:        Intel Graphics Memory Management Library
+Summary:        Intel(R) Graphics Memory Management Library Package
 License:        MIT
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/gmmlib
-Source:         https://github.com/intel/gmmlib/archive/intel-gmmlib-%{version}.tar.gz
+Source0:        https://github.com/intel/gmmlib/archive/intel-gmmlib-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 ExclusiveArch:  x86_64
 
 %description
-The Intel Graphics Memory Management Library provides device specific and
-buffer management for the Intel Graphics Compute Runtime for OpenCL and
-the Intel Media Driver for VAAPI.
+The Intel(R) Graphics Memory Management Library provides device specific
+and buffer management for the Intel(R) Graphics Compute Runtime for
+OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
 
-%package -n libigdgmm%{so_ver}
-Summary:        Intel Graphics Memory Management Library
-Group:          System/Libraries
+%package -n %{libname}
+Summary:        Intel(R) Graphics Memory Management Library development package
 
-%description -n libigdgmm%{so_ver}
-The Intel Graphics Memory Management Library provides device specific and
-buffer management for the Intel Graphics Compute Runtime for OpenCL and
-the Intel Media Driver for VAAPI.
+%description -n %{libname}
+The Intel(R) Graphics Memory Management Library provides device specific
+and buffer management for the Intel(R) Graphics Compute Runtime for
+OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
 
-%package -n libigdgmm-devel
-Summary:        Development files for Intel Graphics Memory Management Library
-Group:          Development/Libraries/C and C++
-Requires:       libigdgmm%{so_ver} = %{version}
-Provides:       gmmlib-devel
+This package contains shared library.
 
-%description -n libigdgmm-devel
-The Intel Graphics Memory Management Library provides device specific and
-buffer management for the Intel Graphics Compute Runtime for OpenCL and
-the Intel Media Driver for VAAPI.
+%package    devel
+Summary:        Intel(R) Graphics Memory Management Library development package
+Requires:       %{libname} = %{version}
+Provides:       libigdgmm-devel = %{version}
+Obsoletes:      libigdgmm-devel < %{version}
 
-This package contains the development headers for the library found in
-libigdgmm%{so_ver}.
+%description   devel
+The Intel(R) Graphics Memory Management Library provides device specific
+and buffer management for the Intel(R) Graphics Compute Runtime for
+OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
+
+This package provides development files.
 
 %prep
-%setup -q -c -a 0
-mv gmmlib-intel-gmmlib-* gmmlib
-chmod -x gmmlib/*.md gmmlib/*.rst
-
-%define __sourcedir gmmlib
+%autosetup -n %{name}-intel-%{name}-%{version}
 
 %build
-srcroot=`pwd`
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-rm -f %{buildroot}%{_libdir}/*.a
 
-%post -n libigdgmm%{so_ver} -p /sbin/ldconfig
-%postun -n libigdgmm%{so_ver} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n libigdgmm%{so_ver}
-%doc gmmlib/README.rst
-%license gmmlib/LICENSE.md
-%{_libdir}/libigdgmm.so.*
+%files -n %{libname}
+%license LICENSE.md
+%{_libdir}/libigdgmm.so.%{somajor}*
 
-%files -n libigdgmm-devel
+%files devel
 %{_includedir}/igdgmm
 %{_libdir}/libigdgmm.so
 %{_libdir}/pkgconfig/igdgmm.pc
