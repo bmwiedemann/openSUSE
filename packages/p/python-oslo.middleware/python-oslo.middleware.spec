@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.middleware
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,24 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.middleware
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-3.38.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
-BuildRequires:  python2-Jinja2 >= 2.10
-BuildRequires:  python2-WebOb >= 1.8.0
-BuildRequires:  python2-debtcollector >= 1.2.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.config >= 5.2.0
-BuildRequires:  python2-oslo.context >= 2.19.2
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.serialization
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-statsd >= 3.2.1
-BuildRequires:  python2-stestr
-BuildRequires:  python2-stevedore >= 1.20.0
-BuildRequires:  python2-testtools
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-WebOb >= 1.8.0
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -61,19 +43,7 @@ BuildRequires:  python3-statsd >= 3.2.1
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testtools
-Requires:       python-Jinja2 >= 2.10
-Requires:       python-WebOb >= 1.8.0
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-oslo.config >= 5.2.0
-Requires:       python-oslo.context >= 2.19.2
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.serialization
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-six >= 1.10.0
-Requires:       python-statsd >= 3.2.1
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Oslo middleware library includes components that can be injected into wsgi
@@ -81,13 +51,36 @@ pipelines to intercept request/response flows. The base class can be enhanced
 with functionality like add/delete/modification of http headers and support
 for limiting size/connection etc.
 
-%package -n python-oslo-middleware-doc
+%package -n python3-oslo.middleware
+Summary:        OpenStack oslo.middleware library
+Group:          Development/Languages/Python
+Requires:       python3-Jinja2 >= 2.10
+Requires:       python3-WebOb >= 1.8.0
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.context >= 2.19.2
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.serialization
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-six >= 1.10.0
+Requires:       python3-statsd >= 3.2.1
+Requires:       python3-stevedore >= 1.20.0
+
+%description -n python3-oslo.middleware
+Oslo middleware library includes components that can be injected into wsgi
+pipelines to intercept request/response flows. The base class can be enhanced
+with functionality like add/delete/modification of http headers and support
+for limiting size/connection etc.
+
+This package contains the Python 3.x module.
+
+%package -n python3-oslo.middleware-doc
 Summary:        Documentation for OpenStack middleware library
 Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
-%description -n python-oslo-middleware-doc
+%description -n python3-oslo.middleware-doc
 Oslo middleware library includes components that can be injected into wsgi
 pipelines to intercept request/response flows. The base class can be enhanced
 with functionality like add/delete/modification of http headers and support
@@ -99,7 +92,7 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%py3_build
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -107,18 +100,18 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%py3_install
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.middleware
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/oslo_middleware
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/oslo_middleware
+%{python3_sitelib}/*.egg-info
 
-%files -n python-oslo-middleware-doc
+%files -n python3-oslo.middleware-doc
 %license LICENSE
 %doc doc/build/html
 
