@@ -174,4 +174,16 @@
   - Reno for SIGHUP fix</comment>
     <requestid>774918</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a72f0dfaa1aaf26b2ba3cdf29110adbc</srcmd5>
+    <version>1.33.3</version>
+    <time>1585085568</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- added 0001-Disable-logger-validation-during-unit-testing.patch
+
+- switch to python 3.x only build</comment>
+    <requestid>787446</requestid>
+  </revision>
 </revisionlist>

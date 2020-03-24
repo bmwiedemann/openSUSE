@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:20:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add obsoletes
+
+-------------------------------------------------------------------
+Tue Mar 17 17:19:31 UTC 2020 - cloud-devel@suse.de
+
+- added 0001-Disable-logger-validation-during-unit-testing.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 08:47:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only build
+
+-------------------------------------------------------------------
 Wed Oct  9 12:28:01 UTC 2019 - cloud-devel@suse.de
 
 - update to version 1.33.3
