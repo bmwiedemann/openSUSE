@@ -264,4 +264,19 @@ update to version 2.12.0
   - add support for auth_receipts and multi-method auth</comment>
     <requestid>736641</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc7b2f05175b425a389f955bac2aecc7</srcmd5>
+    <version>3.17.2</version>
+    <time>1585085554</time>
+    <user>dimstar_suse</user>
+    <comment>- fix doc requirements
+
+- switch to python 3.x only build
+
+- update to 3.17.2:
+  * Make tests pass in 2020
+  * Update TOX/UPPER\_CONSTRAINTS\_FILE for stable/train
+  * Update .gitreview for stable/train</comment>
+    <requestid>786267</requestid>
+  </revision>
 </revisionlist>
