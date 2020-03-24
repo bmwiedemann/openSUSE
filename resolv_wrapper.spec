@@ -1,7 +1,7 @@
 #
 # spec file for package resolv_wrapper
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,16 +24,17 @@
 ############################# NOTE ##################################
 
 Name:           resolv_wrapper
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 
 Summary:        A wrapper for DNS name resolving or DNS faking
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://cwrap.org/
+URL:            http://cwrap.org/
 
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}-rpmlintrc
 
 BuildRequires:  cmake
 BuildRequires:  glibc-devel
@@ -66,17 +67,15 @@ make %{?_smp_mflags} VERBOSE=1
 %cmake_install
 
 %check
-pushd build
-make %{?_smp_mflags} test || cat $(find Testing -name "*.log")
-popd
+%ctest
 
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog COPYING
+%doc AUTHORS README.md CHANGELOG
+%license LICENSE
 %{_libdir}/libresolv_wrapper.so*
 %dir %{_libdir}/cmake/resolv_wrapper
 %{_libdir}/cmake/resolv_wrapper/resolv_wrapper-config-version.cmake
