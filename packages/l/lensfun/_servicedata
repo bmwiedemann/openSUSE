@@ -1,0 +1,6 @@
+<servicedata>
+    <service name="tar_scm">
+        <param name="url">git://github.com/lensfun/lensfun.git</param>
+        <param name="changesrevision">4877512696c72072065dbee74c77f66f895a5d2e</param>
+    </service>
+</servicedata>

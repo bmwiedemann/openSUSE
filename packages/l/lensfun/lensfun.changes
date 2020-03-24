@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:38:17 UTC 2020 - info@paolostivanin.com
+
+- Update to version v0.3.95.1584325617.48775126:
+  * add support for lots of new cameras
+  * add support for lots of new lenses
+  * lots of bug fixes
+- Remove 0060-Various-CMake-patches-from-the-mailing-list.patch
+- Remove lensfun-respect-DESTDIR.patch
+- Remove lensfun-test-database.patch
+- Remove lensfun_fix_memory_leak.patch
+
+-------------------------------------------------------------------
+Mon Jan 13 10:59:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the package URLs
+
+-------------------------------------------------------------------
 Thu Nov 30 14:21:55 UTC 2017 - dimstar@opensuse.org
 
 - Pass -DPYTHON_EXECUTABLE=%{_bindir}/python3 to cmake: ensure the
