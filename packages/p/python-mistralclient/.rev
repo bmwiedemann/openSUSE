@@ -224,4 +224,12 @@
   - Rename the test class so it will be PyCharm friendly</comment>
     <requestid>743548</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>57a2870582ca38f1f9cc21da4e5e8fa5</srcmd5>
+    <version>3.10.0</version>
+    <time>1585085532</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>784068</requestid>
+  </revision>
 </revisionlist>
