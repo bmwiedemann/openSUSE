@@ -140,6 +140,7 @@ Group:          System/Monitoring
 # This version not strictly required: virt-manager should work with older,
 # however varying amounts of functionality will not be enabled.
 Requires:       libosinfo >= 0.2.10
+Requires:       python3-gobject
 Requires:       python3-ipaddr
 Requires:       python3-libvirt-python >= 0.7.0
 Requires:       python3-libxml2-python

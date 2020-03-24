@@ -14,7 +14,7 @@ Index: virt-manager-2.2.1/virtinst/install/installer.py
 +        if guest.devices.disk:
 +            target_disk = guest.devices.disk[0]
 +            saved_cache = target_disk.driver_cache
-+            if target_disk.type != DeviceDisk.TYPE_BLOCK:
++            if target_disk.type != DeviceDisk.TYPE_BLOCK and target_disk.driver_io != "native":
 +                target_disk.driver_cache = DeviceDisk.CACHE_MODE_UNSAFE
 +
          data = self._prepare_get_install_xml(guest)

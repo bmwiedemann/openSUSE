@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 24 14:00:39 MDT 2020 - carnold@suse.com
+
+- bsc#1167569 - SLES 15 SP2 RC1 - virt-install: cache=none is
+  ignored (kvm)
+  virtinst-set-cache-mode-unsafe-for-install.patch
+
+-------------------------------------------------------------------
+Fri Mar 20 15:03:40 MDT 2020 - carnold@suse.com
+
+- bsc#1167202 - SLES 15 SP2 Snapshot8 - virt-install misses module
+  gi
+  virt-manager.spec
+
+-------------------------------------------------------------------
 Mon Mar  9 13:46:48 MDT 2020 - carnold@suse.com
 
 - Upstream bug fix (bsc#1027942)
