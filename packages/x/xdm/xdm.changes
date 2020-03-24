@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 21 12:44:02 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- README.security: fixed and improved documentation about how to
+  enable xdmcp for xdm (boo#1167293)
+
+-------------------------------------------------------------------
 Tue Jan 28 08:14:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require insserv-compat: /usr/lib/X11/display-manager sources
