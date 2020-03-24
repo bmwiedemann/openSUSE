@@ -92,4 +92,23 @@
     <comment></comment>
     <requestid>786397</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>918cabff44b36ae8cf52dbab5420e490</srcmd5>
+    <version>1.1.2</version>
+    <time>1585085820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+- Update to version 1.1.1
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+- Update to version 1.1.0
+  * Added support for pam_start_confdir()
+  * Added pam_chatty module
+  * Added gitlab CI support
+  * Fixed crash when a PAM module outputs too much data
+- Removed pam_wrapper-1.0.8-fix_with_latest_pam.patch
+- Removed fix-pam-module-output-crash.patch
+</comment>
+    <requestid>787816</requestid>
+  </revision>
 </revisionlist>

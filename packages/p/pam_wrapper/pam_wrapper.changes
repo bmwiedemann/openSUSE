@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 24 13:51:58 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.2
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+
+-------------------------------------------------------------------
+Tue Mar 24 13:21:09 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.1
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+
+-------------------------------------------------------------------
+Fri Mar 20 14:13:05 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.0
+  * Added support for pam_start_confdir()
+  * Added pam_chatty module
+  * Added gitlab CI support
+  * Fixed crash when a PAM module outputs too much data
+- Removed pam_wrapper-1.0.8-fix_with_latest_pam.patch
+- Removed fix-pam-module-output-crash.patch
+
+-------------------------------------------------------------------
 Thu Mar 19 08:07:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix crash when testing fprintd:

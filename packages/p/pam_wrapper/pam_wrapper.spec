@@ -24,15 +24,14 @@
 ############################# NOTE ##################################
 %bcond_without python2
 Name:           pam_wrapper
-Version:        1.0.7
+Version:        1.1.2
 Release:        0
 Summary:        A tool to test PAM applications and PAM modules
 License:        GPL-3.0-or-later
 URL:            https://cwrap.org/
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
-Patch0:         pam_wrapper-1.0.8-fix_with_latest_pam.patch
-Patch1:         fix-pam-module-output-crash.patch
+Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libcmocka-devel
@@ -128,7 +127,7 @@ the header files for libpamtest
 %postun -n libpamtest0 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS README ChangeLog
+%doc AUTHORS README.md CHANGELOG
 %license LICENSE
 %{_libdir}/libpam_wrapper.so*
 %{_libdir}/pkgconfig/pam_wrapper.pc
@@ -141,6 +140,7 @@ the header files for libpamtest
 %{_libdir}/pam_wrapper/pam_get_items.so
 %{_libdir}/pam_wrapper/pam_set_items.so
 %{_mandir}/man1/pam_wrapper.1%{?ext_man}
+%{_mandir}/man8/pam_chatty.8%{?ext_man}
 %{_mandir}/man8/pam_matrix.8%{?ext_man}
 %{_mandir}/man8/pam_get_items.8%{?ext_man}
 %{_mandir}/man8/pam_set_items.8%{?ext_man}
@@ -151,9 +151,10 @@ the header files for libpamtest
 %files -n libpamtest-devel
 %{_libdir}/libpamtest.so
 %{_libdir}/pkgconfig/libpamtest.pc
-%dir %{_libdir}/cmake/libpamtest
-%{_libdir}/cmake/libpamtest/libpamtest-config-version.cmake
-%{_libdir}/cmake/libpamtest/libpamtest-config.cmake
+%dir %{_libdir}/cmake/pamtest
+%{_libdir}/cmake/pamtest/pamtest-config-version.cmake
+%{_libdir}/cmake/pamtest/pamtest-config-relwithdebinfo.cmake
+%{_libdir}/cmake/pamtest/pamtest-config.cmake
 %{_includedir}/libpamtest.h
 
 %files -n libpamtest-devel-doc
