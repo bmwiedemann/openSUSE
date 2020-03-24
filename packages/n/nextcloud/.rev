@@ -398,4 +398,15 @@
     <comment></comment>
     <requestid>784058</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>52eafdb1acc8fd3c2034536d92896d65</srcmd5>
+    <version>18.0.3</version>
+    <time>1585085874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.3
+  - Security update
+  
+</comment>
+    <requestid>787928</requestid>
+  </revision>
 </revisionlist>
