@@ -16,9 +16,9 @@
 #
 
 
-%define git_version	2.18.1
+%define git_version	2.25.1
 Name:           cgit
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        A web frontend for git repositories
 License:        GPL-2.0
