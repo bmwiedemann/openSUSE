@@ -23,4 +23,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>774744</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1677681cd3e7c5eea47df3893302de1</srcmd5>
+    <version>1.2.0</version>
+    <time>1585085765</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0
+  https://github.com/maxmind/mod_maxminddb/releases/tag/1.2.0 (forwarded request 787616 from darix)</comment>
+    <requestid>787707</requestid>
+  </revision>
 </revisionlist>
