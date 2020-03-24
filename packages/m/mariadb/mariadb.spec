@@ -84,6 +84,7 @@ Patch8:         mariadb-10.2.4-fortify-and-O.patch
 Patch9:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
 Patch10:        mariadb-10.4.12-harden_setuid.patch
 Patch11:        mariadb-10.4.12-fix-install-db.patch
+Patch12:        mariadb-10.5-fix-prevent-optimizing-out-buf-argument-in-ch.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -370,6 +371,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 cp %{_sourcedir}/suse-test-run .
 

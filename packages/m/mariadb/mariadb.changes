@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 05:46:49 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add mariadb-10.5-fix-prevent-optimizing-out-buf-argument-in-ch.patch
+  in order to fix boo#1158405 (MDEV-21248).
+
+-------------------------------------------------------------------
 Wed Feb 26 16:25:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Cleanup mysql user creation/handling and use sysusers.d
