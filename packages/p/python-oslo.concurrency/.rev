@@ -256,4 +256,14 @@
   - Follow the new PTI for document build</comment>
     <requestid>774909</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>477df26f9c97f3c2c85d91afa5248412</srcmd5>
+    <version>3.30.0</version>
+    <time>1585085565</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only builds</comment>
+    <requestid>787443</requestid>
+  </revision>
 </revisionlist>

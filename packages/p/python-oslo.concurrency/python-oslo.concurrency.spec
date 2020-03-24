@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.concurrency
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,21 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.concurrency
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.concurrency/oslo.concurrency-3.30.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python-devel
-BuildRequires:  python2-enum34 >= 1.0.4
-BuildRequires:  python2-eventlet
-BuildRequires:  python2-fasteners >= 0.7.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-futures
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.config >= 5.2.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-fasteners >= 0.7.0
 BuildRequires:  python3-fixtures
@@ -52,29 +37,31 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-fasteners >= 0.7.0
-Requires:       python-oslo.config >= 5.2.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34 >= 1.0.4
-%endif
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 The oslo.concurrency library has utilities for safely running multi-thread,
 multi-process applications using locking mechanisms and for running
 external processes.
+
+%package -n python3-oslo.concurrency
+Summary:        OpenStack oslo.concurrency library
+Group:          Development/Languages/Python
+Requires:       python3-fasteners >= 0.7.0
+Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-six >= 1.10.0
+%if 0%{?suse_version}
+Obsoletes:      python2-oslo.concurrency < 4.0.0
+%endif
+
+%description -n python3-oslo.concurrency
+The oslo.concurrency library has utilities for safely running multi-thread,
+multi-process applications using locking mechanisms and for running
+external processes.
+
+This package contains the Python 3.x module.
 
 %package -n python-oslo.concurrency-doc
 Summary:        Documentation for OpenStack concurrency library
@@ -94,7 +81,7 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -102,26 +89,17 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/lockutils-wrapper
-
-%post
-%python_install_alternative lockutils-wrapper
-
-%postun
-%python_uninstall_alternative lockutils-wrapper
+%{py3_install}
 
 %check
-if [ "%_lib" = "lib64" ]; then
-%python_exec -m stestr.cli run
-fi
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.concurrency
 %license LICENSE
 %doc README.rst ChangeLog
-%python_alternative %{_bindir}/lockutils-wrapper
-%{python_sitelib}/oslo_concurrency
-%{python_sitelib}/*.egg-info
+%{_bindir}/lockutils-wrapper
+%{python3_sitelib}/oslo_concurrency
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.concurrency-doc
 %license LICENSE
