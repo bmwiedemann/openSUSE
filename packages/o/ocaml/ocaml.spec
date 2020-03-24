@@ -165,7 +165,7 @@ bash -x autogen
 %configure \
 	${configure_target} \
 	--libdir=%{ocaml_standard_library}
-%make_build
+%make_build -j1
 #
 pushd testsuite
 tee checker.sh <<'_EOF_'

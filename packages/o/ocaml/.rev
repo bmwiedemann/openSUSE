@@ -685,4 +685,14 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
 - Remove obsolete ocamldoc-man-th.patch</comment>
     <requestid>780709</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>84c20f88a4f6e8d5d3ecfe01b8ae40ca</srcmd5>
+    <version>4.10.0</version>
+    <time>1585085499</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable parallel build to get reproducible cma archives (issue#9307)
+
+- update to version 4.10.0, with _service file (bsc#1149330)</comment>
+    <requestid>787223</requestid>
+  </revision>
 </revisionlist>

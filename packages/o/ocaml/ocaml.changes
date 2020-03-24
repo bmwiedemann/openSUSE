@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 21 12:34:56 UTC 2020 - ohering@suse.de
+
+- Disable parallel build to get reproducible cma archives (issue#9307)
+
+-------------------------------------------------------------------
 Sat Feb 29 20:20:20 UTC 2020 - ohering@suse.de
 
-- update version 4.10.0, with _service file
+- update to version 4.10.0, with _service file (bsc#1149330)
   See included Changes for benefits and breaking changes
 - Drop x11 sub package, moved to ocaml-graphics
 - Adjust ocaml-configure-Allow-user-defined-C-compiler-flags.patch
