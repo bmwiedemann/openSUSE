@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 12:09:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Switched back to the smmap package name on PyPI and fixed the smmap2 mirror package (#44)
+  * Fixed setup.py long_description rendering (#40)
+- remove delete_platform_specific_test.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Dec  4 12:54:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

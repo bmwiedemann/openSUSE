@@ -1,7 +1,7 @@
 #
 # spec file for package python-smmap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-smmap
-Version:        0.9.0
+Version:        3.0.1
 Release:        0
 Summary:        A pure git implementation of a sliding window memory map manager
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/gitpython-developers/smmap
+URL:            https://github.com/gitpython-developers/smmap
 Source:         https://files.pythonhosted.org/packages/source/s/smmap/smmap-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE delete_platform_specific_test.patch -- fix tests on powerpc
-Patch0:         delete_platform_specific_test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -56,7 +54,6 @@ The documentation can be found here: http://packages.python.org/smmap
 
 %prep
 %setup -q -n smmap-%{version}
-%patch0 -p1
 
 %build
 %python_build
