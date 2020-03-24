@@ -1,5 +1,6 @@
 #!/bin/bash
 export QT_NO_KDE_INTEGRATION=1
+
 # make certain that the user/group combination is valid
 /usr/bin/id -nG | grep -v -e "root" -e "vboxusers" >/dev/null && /usr/lib/virtualbox/VBoxPermissionMessage && exit
 #
@@ -22,6 +23,7 @@ devrules()
 	rm -f ~/.vbox/enable
     fi
 }
+
 # Start of main routine
 #
 # Ensure that ~/.vbox exists
@@ -54,6 +56,8 @@ if [ -f ~/.vbox/disable ] ; then
 	fi
     fi
 fi
+# Check if extpack needs to be updated
+/usr/bin/update-extpack.sh
 # Check that /usr/lib/virtualbox/VirtualBoxVM has SUID permissions
 PERM=$(ls -l /usr/lib/virtualbox/VirtualBoxVM | grep rwsr)
 if [ -z "$PERM" ]

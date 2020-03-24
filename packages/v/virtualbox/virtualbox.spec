@@ -67,6 +67,7 @@ Source3:        %{name}-60-vboxguest.rules
 Source4:        %{name}-default.virtualbox
 Source5:        %{name}-kmp-files
 Source7:        %{name}-kmp-preamble
+Source8:        update-extpack.sh
 Source9:        %{name}-wrapper.sh
 Source10:       %{name}-LocalConfig.kmk
 Source11:       %{name}-60-vboxdrv.rules
@@ -717,7 +718,7 @@ install -m 644 out/linux.*/release/bin/VBox.png %{buildroot}%{_datadir}/pixmaps/
 install -m 644 %{SOURCE4}			%{buildroot}%{_sysconfdir}/default/virtualbox
 #install wrapper script
 install -m 644 %{SOURCE9}			%{buildroot}%{_bindir}/VirtualBox
-
+install -m 644 %{SOURCE8}			%{buildroot}%{_bindir}/update-extpack.sh
 # Service files to load kernel modules on boot
 install -m 0644 %{SOURCE14}			%{buildroot}%{_unitdir}/vboxdrv.service
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
@@ -1004,6 +1005,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VirtualBox
 #wrapper script is in bindir
 %attr(0755,root,root) %{_bindir}/VirtualBox
+%attr(0755,root,root) %{_bindir}/update-extpack.sh
 #rules fixing script is in /sbin
 %attr(0755,root,root) /sbin/vbox-fix-usb-rules.sh
 #ldd shows libQt* dependency

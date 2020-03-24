@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 24 01:51:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- With version 6.1.4 of VB, the bidirectional clipboard part of VBoxClient
+  for guest systems is failing. A patch is provided at
+  https://www.virtualbox.org/ticket/19336. These changes have been added
+  to file "VirtualBox-6.1.4-VBoxClient-vmsvga-x11-crash.patch". This
+  fixes boo #1167403 "VBoxClient --clipboard dies".
+
+-------------------------------------------------------------------
+Sun Mar 22 20:36:40 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update the wrapper that starts the UI for VirtualBox to check the
+  version of the extpack that is installed. If no pack is installed
+  or if the license is not current, the new code does nothing. If there
+  is a current license and the installed pack does not match the
+  running version of VB, then the script downloads and installs the
+  new version. File "update-extpack.sh" is added.
+
+-------------------------------------------------------------------
 Mon Mar 16 21:32:05 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - A fix for boo #1166782 ("VirtualBox Guest 6.1.4 for OpenSUSE 15.1 constant
