@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-phonenumbers
-Version:        8.11.5
+Version:        8.12.0
 Release:        0
 Summary:        Python version of Google's common library for international phone numbers
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/daviddrysdale/python-phonenumbers
 Source:         https://files.pythonhosted.org/packages/source/p/phonenumbers/phonenumbers-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +47,7 @@ and validating international phone numbers.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest tests/examplenumberstest.py
 
 %files %{python_files}
 %license LICENSE
