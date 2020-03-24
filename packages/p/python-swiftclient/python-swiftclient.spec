@@ -1,7 +1,7 @@
 #
 # spec file for package python-swiftclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,38 +25,32 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-swiftclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-3.8.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-futures >= 3.0.0
-BuildRequires:  python2-keystoneclient
-BuildRequires:  python2-mock
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
-Requires:       python-requests >= 1.1.0
-Requires:       python-six >= 1.9.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-futures >= 3.0.0
-%endif
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 This is a python client for the Swift API. There's a Python API (the
 swiftclient module), and a command-line script (swift).
+
+%package -n python3-swiftclient
+Summary:        OpenStack Object Storage API Client Library
+Group:          Development/Languages/Python
+Requires:       python3-requests >= 1.1.0
+Requires:       python3-six >= 1.9.0
+%if 0%{?suse_version}
+Obsoletes:      python2-swiftclient < 3.9.0
+%endif
+
+%description -n python3-swiftclient
+This is a python client for the Swift API. There's a Python API (the
+swiftclient module), and a command-line script (swift).
+
+This package contains the Python 3.x module.
 
 %package -n python-swiftclient-doc
 Summary:        %{summary} - Documentation
@@ -75,31 +69,23 @@ This package contains documentation files for %{name}.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/swift
-%python_clone -a %{buildroot}%{_mandir}/man1/swift.1
-
-%post
-%{python_install_alternative swift swift.1}
-
-%postun
-%python_uninstall_alternative swift
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-swiftclient
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/swiftclient
-%{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/swift
-%python_alternative %{_mandir}/man1/swift.1
+%{python3_sitelib}/swiftclient
+%{python3_sitelib}/*.egg-info
+%{_bindir}/swift
+%{_mandir}/man1/swift.1*
 
 %files -n python-swiftclient-doc
 %license LICENSE
