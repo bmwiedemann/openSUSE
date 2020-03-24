@@ -45,6 +45,8 @@ Patch2:         log4j-mx4j-tools.patch
 Patch3:         log4j-reproducible.patch
 # PATCH-FIX-UPSTREAM bsc#1159646 CVE-2019-17571 deserialization of untrusted data in SocketServer
 Patch4:         log4j-CVE-2019-17571.patch
+# PATCH-FIX-OPENSUSE -- add bundle manifest
+Patch5:         log4j12-bundle_manifest.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -83,6 +85,8 @@ variety of output targets.
 %if %{without bootstrap}
 %package        manual
 Summary:        Java logging tool (Manual)
+# Manual's api directory is a symlink to javadoc
+Requires:       %{name}-javadoc
 
 %description    manual
 Documentation manual for Java logging tool log4j.
@@ -101,6 +105,9 @@ Documentation javadoc for Java logging tool log4j.
 %patch2
 %patch3 -p1
 %patch4 -p1
+%if %{without bootstrap}
+%patch5 -p1
+%endif
 
 sed -i 's/\r//g' LICENSE NOTICE src/site/resources/css/*.css
 

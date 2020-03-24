@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:58:03 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * log4j12-bundle_manifest.patch
+    + Add a bundle manifest to the log4j12 package so that it can
+      be used by eclipse
+
+-------------------------------------------------------------------
 Tue Jan  7 13:15:50 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Security fix: [bsc#1159646, CVE-2019-17571]

@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>761601</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5637670b455047199c116522e8481763</srcmd5>
+    <version>1.2.17</version>
+    <time>1585085359</time>
+    <user>dimstar_suse</user>
+    <comment>Add bundle manifest to make usable from eclipse</comment>
+    <requestid>786883</requestid>
+  </revision>
 </revisionlist>
