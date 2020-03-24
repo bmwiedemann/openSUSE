@@ -790,4 +790,12 @@ undo bootstrap workaround</comment>
     <comment></comment>
     <requestid>781857</requestid>
   </revision>
+  <revision rev="99" vrev="16">
+    <srcmd5>9ed01c919788ab0dceb6662fe013f365</srcmd5>
+    <version>1.10</version>
+    <time>1585085367</time>
+    <user>dimstar_suse</user>
+    <comment>- fix typo in codec setting (bsc#1165110)</comment>
+    <requestid>786997</requestid>
+  </revision>
 </revisionlist>
