@@ -266,4 +266,28 @@
   - Switch cloud layer to use proxy for DNS</comment>
     <requestid>744521</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81443eda5d55bf663ce8b405ce7e985b</srcmd5>
+    <version>0.36.2</version>
+    <time>1585085604</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- update to version 0.36.2
+  - Fix error handling in network trunks operations
+  - Handle HTTP errors in add/remove router interface calls
+  - Consistent normalization of Machine objects in the cloud layer
+  - Fix error handling on add/remove router iface calls
+  - Include &quot;fields&quot; to &quot;SecurityGroup&quot; query parameters
+  - Use has_service in functional test's require_service
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Fix microversion negotiation in some bare metal node call
+  - Keep connection backrefs with weakref.proxy
+  - Update .gitreview for stable/train
+  - Fix server for later microversion
+  - baremetal node: 'error' is a failed state
+
+- switch to python 3.x only builds</comment>
+    <requestid>787565</requestid>
+  </revision>
 </revisionlist>

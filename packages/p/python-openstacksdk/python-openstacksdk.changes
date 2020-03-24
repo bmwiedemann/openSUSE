@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar 23 17:21:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add obsoletes
+
+-------------------------------------------------------------------
+Mon Mar 23 17:21:31 UTC 2020 - cloud-devel@suse.de
+
+- update to version 0.36.2
+  - Fix error handling in network trunks operations
+  - Handle HTTP errors in add/remove router interface calls
+  - Consistent normalization of Machine objects in the cloud layer
+  - Fix error handling on add/remove router iface calls
+  - Include "fields" to "SecurityGroup" query parameters
+  - Use has_service in functional test's require_service
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Fix microversion negotiation in some bare metal node call
+  - Keep connection backrefs with weakref.proxy
+  - Update .gitreview for stable/train
+  - Fix server for later microversion
+  - baremetal node: 'error' is a failed state
+
+-------------------------------------------------------------------
+Sat Mar 14 15:37:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only builds
+
+-------------------------------------------------------------------
 Thu Oct 31 15:29:11 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Add 0001-Increase-test-timeout-for-2-tests-in-TestImageProxy-.patch
