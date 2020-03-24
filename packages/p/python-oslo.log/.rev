@@ -322,4 +322,14 @@
   - Modify the constraints url in tox.</comment>
     <requestid>774914</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>02e90941199840e48db19c79e73aeae9</srcmd5>
+    <version>3.44.1</version>
+    <time>1585085600</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only builds</comment>
+    <requestid>787564</requestid>
+  </revision>
 </revisionlist>
