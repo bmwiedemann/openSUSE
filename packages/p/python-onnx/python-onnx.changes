@@ -1,8 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 23 15:08:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do also provide/obsolete for the devel to support migration
+
+-------------------------------------------------------------------
+Wed Mar 18 09:45:36 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- provide also python-onnx-devel for backcompat 
+
+-------------------------------------------------------------------
 Sun Mar 15 08:55:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new protobuf:
   * protobuf.patch
+
+-------------------------------------------------------------------
+Wed Mar  4 09:44:15 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- created just one package, as other packages require the 
+  source file within the package
 
 -------------------------------------------------------------------
 Tue Feb 25 13:57:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

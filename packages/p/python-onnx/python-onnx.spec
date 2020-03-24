@@ -45,17 +45,15 @@ Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-six
 Requires:       python-typing_extensions >= 3.6.2.1
+Provides:       python-onnx-devel = %{version}-%{release}
+Obsoletes:      python-onnx-devel < %{version}-%{release}
 %python_subpackages
 
 %description
-Open format to represent deep learning models. With ONNX, AI developers can more easily move models between state-of-the-art tools and choose the combination that is best for them. ONNX is developed and supported by a community of partners.
-
-%package devel
-Summary:        C/C++ - header files which are used for development
-Requires:       %{name} = %{version}
-
-%description devel
-The headers and other files needed for the development.
+Open format to represent deep learning models. With ONNX, AI developers can
+more easily move models between state-of-the-art tools and choose the
+combination that is best for them. ONNX is developed and supported by a
+community of partners.
 
 %prep
 %setup -q -n onnx-%{version}
@@ -108,18 +106,6 @@ cp %{__builddir}/*cpp2py* ./onnx/
 %python3_only %{_bindir}/check-model
 %python3_only %{_bindir}/check-node
 %python3_only %{_bindir}/backend-test-tools
-%{python_sitearch}/*
-%exclude %{python_sitearch}/onnx/*.[hc]
-%exclude %{python_sitearch}/onnx/common
-%exclude %{python_sitearch}/onnx/optimizer
-%exclude %{python_sitearch}/onnx/version_converter
-%exclude %{python_sitearch}/onnx/shape_inference
-
-%files %{python_files devel}
-%{python_sitearch}/onnx/*.[hc]
-%{python_sitearch}/onnx/common
-%{python_sitearch}/onnx/optimizer
-%{python_sitearch}/onnx/version_converter
-%{python_sitearch}/onnx/shape_inference
+%{python_sitearch}/onnx*
 
 %changelog
