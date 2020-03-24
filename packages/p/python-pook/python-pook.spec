@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# requires python-aiohttp
+%define skip_python2 1
 Name:           python-pook
-Version:        0.2.8
+Version:        1.0.0
 Release:        0
 Summary:        HTTP traffic mocking and expectations
 License:        MIT
@@ -26,8 +28,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/h2non/pook
 Source:         https://files.pythonhosted.org/packages/source/p/pook/pook-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-aiohttp
+Requires:       python-furl >= 0.5.6
+Requires:       python-jsonschema >= 2.5.1
+Requires:       python-xmltodict >= 0.11.0
+Suggests:       python-mock >= 2.0.0
+BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module furl >= 0.5.6}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module mocket >= 1.6.0}
@@ -38,13 +48,6 @@ BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module urllib3 >= 1.19.1}
 BuildRequires:  %{python_module xmltodict >= 0.10.2}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-furl >= 0.5.6
-Requires:       python-jsonschema >= 2.5.1
-Requires:       python-xmltodict >= 0.10.2
-Suggests:       python-mock >= 2.0.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
