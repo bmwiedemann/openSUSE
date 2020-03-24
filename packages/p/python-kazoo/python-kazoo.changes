@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 13:00:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add dependency on pure-sasl, move python 2.x deps inside a conditional
+
+-------------------------------------------------------------------
 Mon Mar 16 10:49:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.7.0:

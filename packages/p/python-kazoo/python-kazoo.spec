@@ -29,12 +29,16 @@ BuildRequires:  %{python_module eventlet >= 0.17.1}
 BuildRequires:  %{python_module gevent >= 1.2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pure-sasl}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%ifpython2
 Requires:       python-eventlet >= 0.17.1
 Requires:       python-gevent >= 1.2
+%endif
+Requires:       python-pure-sasl
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
