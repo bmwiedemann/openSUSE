@@ -1,5 +1,5 @@
---- lucene-7.1.0/analysis/common/build.xml	2019-10-11 13:17:41.552060592 +0200
-+++ lucene-7.1.0/analysis/common/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/analysis/common/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/common/build.xml	2020-03-23 10:54:26.609388906 +0100
 @@ -136,4 +136,24 @@
        </replaceregexp>
        <fixcrlf srcdir="${snowball.programs.dir}" includes="*Stemmer.java" tab="remove" tablength="2" encoding="UTF-8" javafiles="yes" fixlast="yes"/>
@@ -25,8 +25,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/analysis/icu/build.xml	2019-10-11 13:17:41.556060614 +0200
-+++ lucene-7.1.0/analysis/icu/build.xml	2019-10-11 13:34:16.329842090 +0200
+--- lucene-7.1.0/analysis/icu/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/icu/build.xml	2020-03-23 10:54:26.713389469 +0100
 @@ -115,4 +115,22 @@
  
    <target name="regenerate" depends="gen-utr30-data-files,gennorm2,genrbbi"/>
@@ -50,8 +50,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/analysis/kuromoji/build.xml	2019-10-11 13:17:41.556060614 +0200
-+++ lucene-7.1.0/analysis/kuromoji/build.xml	2019-10-11 13:34:08.593797050 +0200
+--- lucene-7.1.0/analysis/kuromoji/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/kuromoji/build.xml	2020-03-23 10:54:26.717389490 +0100
 @@ -141,4 +141,22 @@
  
    <target name="regenerate" depends="build-dict"/>
@@ -75,8 +75,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/analysis/morfologik/build.xml	2019-10-11 13:17:41.576060731 +0200
-+++ lucene-7.1.0/analysis/morfologik/build.xml	2019-10-11 13:37:06.726834152 +0200
+--- lucene-7.1.0/analysis/morfologik/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/morfologik/build.xml	2020-03-23 10:54:26.725389533 +0100
 @@ -37,4 +37,23 @@
    </path>
  
@@ -101,8 +101,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/analysis/phonetic/build.xml	2019-10-11 13:17:41.576060731 +0200
-+++ lucene-7.1.0/analysis/phonetic/build.xml	2019-10-11 13:39:55.891819039 +0200
+--- lucene-7.1.0/analysis/phonetic/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/phonetic/build.xml	2020-03-23 10:54:26.729389555 +0100
 @@ -32,4 +32,23 @@
    </path>
  
@@ -127,8 +127,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/analysis/smartcn/build.xml	2019-10-11 13:17:41.580060753 +0200
-+++ lucene-7.1.0/analysis/smartcn/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/analysis/smartcn/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/smartcn/build.xml	2020-03-23 10:54:26.729389555 +0100
 @@ -31,4 +31,23 @@
    </path>
  
@@ -153,8 +153,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/analysis/stempel/build.xml	2019-10-11 13:17:41.596060847 +0200
-+++ lucene-7.1.0/analysis/stempel/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/analysis/stempel/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/stempel/build.xml	2020-03-23 10:54:26.733389577 +0100
 @@ -30,5 +30,23 @@
      <path refid="base.classpath"/>
    </path>
@@ -179,8 +179,8 @@
 +
    <target name="compile-core" depends="jar-analyzers-common, common.compile-core"/>
  </project>
---- lucene-7.1.0/analysis/uima/build.xml	2019-10-11 13:17:41.600060869 +0200
-+++ lucene-7.1.0/analysis/uima/build.xml	2019-10-11 14:54:54.677934836 +0200
+--- lucene-7.1.0/analysis/uima/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/analysis/uima/build.xml	2020-03-23 10:54:26.737389598 +0100
 @@ -47,4 +47,23 @@
    </path>
  
@@ -205,8 +205,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/backward-codecs/build.xml	2019-10-11 13:17:41.608060915 +0200
-+++ lucene-7.1.0/backward-codecs/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/backward-codecs/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/backward-codecs/build.xml	2020-03-23 10:54:26.741389620 +0100
 @@ -23,4 +23,22 @@
  
    <import file="../module-build.xml"/>
@@ -230,8 +230,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/benchmark/build.xml	2019-10-11 13:17:42.944068654 +0200
-+++ lucene-7.1.0/benchmark/build.xml	2019-10-11 13:43:51.021196813 +0200
+--- lucene-7.1.0/benchmark/build.xml	2020-03-23 12:25:15.584631906 +0100
++++ lucene-7.1.0/benchmark/build.xml	2020-03-23 10:54:26.745389642 +0100
 @@ -285,4 +285,24 @@
          <fileset dir="conf"/>
        </copy>
@@ -257,8 +257,8 @@
 +
 +
  </project>
---- lucene-7.1.0/classification/build.xml	2019-10-11 13:17:43.108069604 +0200
-+++ lucene-7.1.0/classification/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/classification/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/classification/build.xml	2020-03-23 10:54:26.753389685 +0100
 @@ -39,7 +39,23 @@
  
    <target name="compile-core" depends="jar-grouping,jar-queries,jar-analyzers-common,common.compile-core" />
@@ -284,8 +284,8 @@
  
    <target name="javadocs" depends="javadocs-grouping,compile-core,check-javadocs-uptodate"
            unless="javadocs-uptodate-${name}">
---- lucene-7.1.0/common-build.xml	2019-10-11 13:17:41.612060939 +0200
-+++ lucene-7.1.0/common-build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/common-build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/common-build.xml	2020-03-23 10:54:26.609388906 +0100
 @@ -162,6 +162,7 @@
    <property name="javac.deprecation" value="off"/>
    <property name="javac.debug" value="on"/>
@@ -303,8 +303,8 @@
          <attribute name="Implementation-Vendor"
                     value="The Apache Software Foundation"/>
          <attribute name="X-Compile-Source-JDK" value="${javac.release}"/>
---- lucene-7.1.0/core/build.xml	2019-10-11 13:17:43.200070137 +0200
-+++ lucene-7.1.0/core/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/core/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/core/build.xml	2020-03-23 10:54:26.757389707 +0100
 @@ -186,6 +186,24 @@
      </sequential>
    </macrodef>
@@ -330,8 +330,8 @@
    <condition property="-ignore-test-lock-factory">
      <or>
        <!-- We ignore our ant-based lock factory test, if user applies test filtering: -->
---- lucene-7.1.0/demo/build.xml	2019-10-11 13:17:43.256070461 +0200
-+++ lucene-7.1.0/demo/build.xml	2019-10-11 13:46:33.122147776 +0200
+--- lucene-7.1.0/demo/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/demo/build.xml	2020-03-23 10:54:26.793389901 +0100
 @@ -78,4 +78,22 @@
      </war>
    </target>
@@ -355,8 +355,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/expressions/build.xml	2019-10-11 13:17:43.260070484 +0200
-+++ lucene-7.1.0/expressions/build.xml	2019-10-11 13:50:13.371439883 +0200
+--- lucene-7.1.0/expressions/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/expressions/build.xml	2020-03-23 10:54:26.909390529 +0100
 @@ -117,4 +117,23 @@
        </fixcrlf>
      </sequential>
@@ -381,8 +381,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/facet/build.xml	2019-10-11 13:17:43.264070508 +0200
-+++ lucene-7.1.0/facet/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/facet/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/facet/build.xml	2020-03-23 10:54:26.909390529 +0100
 @@ -48,4 +48,22 @@
      </java>
    </target>
@@ -406,8 +406,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/grouping/build.xml	2019-10-11 13:17:43.268070531 +0200
-+++ lucene-7.1.0/grouping/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/grouping/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/grouping/build.xml	2020-03-23 10:54:26.913390550 +0100
 @@ -46,4 +46,22 @@
        </invoke-module-javadoc>
      </target>
@@ -431,8 +431,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/highlighter/build.xml	2019-10-11 13:17:43.272070555 +0200
-+++ lucene-7.1.0/highlighter/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/highlighter/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/highlighter/build.xml	2020-03-23 10:54:26.913390550 +0100
 @@ -38,6 +38,24 @@
  
    <target name="compile-core" depends="jar-memory,jar-queries,jar-join,jar-analyzers-common,common.compile-core" />
@@ -458,8 +458,8 @@
    <target name="javadocs" depends="javadocs-memory,compile-core,check-javadocs-uptodate"
            unless="javadocs-uptodate-${name}">
      <invoke-module-javadoc>
---- lucene-7.1.0/join/build.xml	2019-10-11 13:17:43.272070555 +0200
-+++ lucene-7.1.0/join/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/join/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/join/build.xml	2020-03-23 10:54:26.917390572 +0100
 @@ -24,4 +24,22 @@
  
    <import file="../module-build.xml"/>
@@ -483,8 +483,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/memory/build.xml	2019-10-11 13:17:43.276070577 +0200
-+++ lucene-7.1.0/memory/build.xml	2019-10-11 13:18:07.948213493 +0200
+--- lucene-7.1.0/memory/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/memory/build.xml	2020-03-23 10:54:26.921390594 +0100
 @@ -31,4 +31,23 @@
    </path>
  
@@ -509,8 +509,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/misc/build.xml	2019-10-11 13:17:43.276070577 +0200
-+++ lucene-7.1.0/misc/build.xml	2019-10-11 13:18:07.952213517 +0200
+--- lucene-7.1.0/misc/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/misc/build.xml	2020-03-23 10:54:26.921390594 +0100
 @@ -49,4 +49,23 @@
      </cc>
    </target>
@@ -535,8 +535,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/queries/build.xml	2019-10-11 13:17:43.280070600 +0200
-+++ lucene-7.1.0/queries/build.xml	2019-10-11 13:18:07.952213517 +0200
+--- lucene-7.1.0/queries/build.xml	2020-03-23 12:25:15.588631926 +0100
++++ lucene-7.1.0/queries/build.xml	2020-03-23 10:54:26.925390615 +0100
 @@ -21,4 +21,23 @@
    </description>
  
@@ -561,8 +561,33 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/replicator/build.xml	2019-10-11 13:17:43.292070671 +0200
-+++ lucene-7.1.0/replicator/build.xml	2019-10-11 13:53:19.508531933 +0200
+--- lucene-7.1.0/queryparser/build.xml	2020-03-23 10:54:18.485344987 +0100
++++ lucene-7.1.0/queryparser/build.xml	2020-03-23 12:30:54.954371601 +0100
+@@ -175,4 +175,22 @@
+ 
+   <target name="regenerate" depends="javacc"/>
+ 
++  <target name="jar-core" depends="compile-core">
++    <jarify>
++	  <jarify-additional-manifest-attributes>
++		<attribute name="Bundle-Description" value="Lucene QueryParsers module"/>
++		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
++		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
++		<attribute name="Bundle-ManifestVersion" value="2"/>
++		<attribute name="Bundle-Name" value="Lucene QueryParsers"/>
++		<attribute name="Bundle-SymbolicName" value="org.apache.lucene.queryparser"/>
++		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
++		<attribute name="Bundle-Version" value="${version}"/>
++		<attribute name="Export-Package" value="org.apache.lucene.queryparser.classic;version=&quot;${version}&quot;,org.apache.lucene.queryparser.complexPhrase;version=&quot;${version}&quot;,org.apache.lucene.queryparser.ext;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.builders;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.config;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.messages;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.nodes;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.parser;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.processors;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.core.util;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.messages;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.precedence;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.precedence.processors;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.standard;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.standard.builders;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.standard.config;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.standard.nodes;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.standard.parser;version=&quot;${version}&quot;,org.apache.lucene.queryparser.flexible.standard.processors;version=&quot;${version}&quot;,org.apache.lucene.queryparser.simple;version=&quot;${version}&quot;,org.apache.lucene.queryparser.surround.parser;version=&quot;${version}&quot;,org.apache.lucene.queryparser.surround.query;version=&quot;${version}&quot;,org.apache.lucene.queryparser.xml;version=&quot;${version}&quot;,org.apache.lucene.queryparser.xml.builders;version=&quot;${version}&quot;"/>
++		<attribute name="Import-Package" value="javax.xml.parsers,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.stream,org.apache.lucene.analysis,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.queries,org.apache.lucene.queries.mlt,org.apache.lucene.queries.payloads,org.apache.lucene.queryparser.classic,org.apache.lucene.queryparser.flexible.core,org.apache.lucene.queryparser.flexible.core.builders,org.apache.lucene.queryparser.flexible.core.config,org.apache.lucene.queryparser.flexible.core.messages,org.apache.lucene.queryparser.flexible.core.nodes,org.apache.lucene.queryparser.flexible.core.parser,org.apache.lucene.queryparser.flexible.core.processors,org.apache.lucene.queryparser.flexible.core.util,org.apache.lucene.queryparser.flexible.messages,org.apache.lucene.queryparser.flexible.precedence.processors,org.apache.lucene.queryparser.flexible.standard,org.apache.lucene.queryparser.flexible.standard.builders,org.apache.lucene.queryparser.flexible.standard.config,org.apache.lucene.queryparser.flexible.standard.nodes,org.apache.lucene.queryparser.flexible.standard.parser,org.apache.lucene.queryparser.flexible.standard.processors,org.apache.lucene.queryparser.surround.query,org.apache.lucene.queryparser.xml,org.apache.lucene.queryparser.xml.builders,org.apache.lucene.sandbox.queries,org.apache.lucene.search,org.apache.lucene.search.spans,org.apache.lucene.util,org.w3c.dom,org.xml.sax"/>
++		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
++	  </jarify-additional-manifest-attributes>
++	</jarify>
++  </target>
++
+ </project>
+--- lucene-7.1.0/replicator/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/replicator/build.xml	2020-03-23 10:54:26.937390680 +0100
 @@ -50,4 +50,22 @@
      </invoke-module-javadoc>
    </target>
@@ -586,8 +611,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/sandbox/build.xml	2019-10-11 13:17:43.292070671 +0200
-+++ lucene-7.1.0/sandbox/build.xml	2019-10-11 13:18:07.952213517 +0200
+--- lucene-7.1.0/sandbox/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/sandbox/build.xml	2020-03-23 10:54:26.937390680 +0100
 @@ -23,4 +23,22 @@
  
    <import file="../module-build.xml"/>
@@ -611,8 +636,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/spatial/build.xml	2019-10-11 13:17:43.296070693 +0200
-+++ lucene-7.1.0/spatial/build.xml	2019-10-11 13:18:07.952213517 +0200
+--- lucene-7.1.0/spatial/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/spatial/build.xml	2020-03-23 10:54:26.941390702 +0100
 @@ -24,4 +24,22 @@
  
    <import file="../module-build.xml"/>
@@ -636,8 +661,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/spatial3d/build.xml	2019-10-11 13:17:43.304070739 +0200
-+++ lucene-7.1.0/spatial3d/build.xml	2019-10-11 13:18:07.952213517 +0200
+--- lucene-7.1.0/spatial3d/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/spatial3d/build.xml	2020-03-23 10:54:26.949390745 +0100
 @@ -27,4 +27,23 @@
    <path id="classpath">
      <path refid="base.classpath"/>
@@ -662,8 +687,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/spatial-extras/build.xml	2019-10-11 13:17:43.304070739 +0200
-+++ lucene-7.1.0/spatial-extras/build.xml	2019-10-11 14:00:29.143045788 +0200
+--- lucene-7.1.0/spatial-extras/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/spatial-extras/build.xml	2020-03-23 10:54:26.941390702 +0100
 @@ -59,4 +59,23 @@
        </links>
      </invoke-module-javadoc>
@@ -688,8 +713,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/suggest/build.xml	2019-10-11 13:17:43.308070763 +0200
-+++ lucene-7.1.0/suggest/build.xml	2019-10-11 14:46:36.795063032 +0200
+--- lucene-7.1.0/suggest/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/suggest/build.xml	2020-03-23 10:54:26.953390767 +0100
 @@ -44,4 +44,22 @@
  
    <target name="compile-core" depends="jar-expressions, jar-analyzers-common, common.compile-core" />
@@ -713,8 +738,8 @@
 +  </target>
 +
  </project>
---- lucene-7.1.0/test-framework/build.xml	2019-10-11 13:17:43.320070832 +0200
-+++ lucene-7.1.0/test-framework/build.xml	2019-10-11 14:50:06.456266335 +0200
+--- lucene-7.1.0/test-framework/build.xml	2020-03-23 12:25:15.592631947 +0100
++++ lucene-7.1.0/test-framework/build.xml	2020-03-23 10:54:26.957390788 +0100
 @@ -80,4 +80,23 @@
                title="Lucene Search Engine: Test Framework" />
      </sequential>

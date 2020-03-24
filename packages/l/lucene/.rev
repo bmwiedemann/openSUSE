@@ -211,4 +211,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>741223</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>d2063602c72524bfdc60289c3969e2e9</srcmd5>
+    <version>7.1.0</version>
+    <time>1585085620</time>
+    <user>dimstar_suse</user>
+    <comment>Fix missing OSGi manifest in lucene-queryparser jar</comment>
+    <requestid>787467</requestid>
+  </revision>
 </revisionlist>
