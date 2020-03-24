@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.vmware
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,26 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.vmware
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-2.34.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Babel
-BuildRequires:  python2-ddt
-BuildRequires:  python2-eventlet >= 0.18.2
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-lxml >= 3.4.1
-BuildRequires:  python2-mock
-BuildRequires:  python2-mox3
-BuildRequires:  python2-netaddr >= 0.7.18
-BuildRequires:  python2-oslo.concurrency >= 3.26.0
-BuildRequires:  python2-oslo.context >= 2.19.2
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-requests >= 2.14.2
-BuildRequires:  python2-stestr
-BuildRequires:  python2-suds-jurko >= 0.6
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
-BuildRequires:  python2-urllib3 >= 1.21.1
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
 BuildRequires:  python3-eventlet >= 0.18.2
@@ -65,24 +45,7 @@ BuildRequires:  python3-suds-jurko >= 0.6
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-urllib3 >= 1.21.1
-Requires:       python-PyYAML >= 3.12
-Requires:       python-eventlet >= 0.18.2
-Requires:       python-lxml >= 3.4.1
-Requires:       python-netaddr >= 0.7.18
-Requires:       python-oslo.concurrency >= 3.26.0
-Requires:       python-oslo.context >= 2.19.2
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
-Requires:       python-suds-jurko >= 0.6
-Requires:       python-urllib3 >= 1.21.1
 BuildArch:      noarch
-%ifpython3
-BuildRequires:  python3-dbm
-%endif
-%python_subpackages
 
 %description
 The Oslo project intends to produce a python library containing infrastructure
@@ -91,6 +54,33 @@ high quality, stable, consistent and generally useful.
 
 The Oslo VMware library offers session and API call management for VMware ESX/VC
 server.
+
+%package -n python3-oslo.vmware
+Summary:        Oslo VMware library for OpenStack projects
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-eventlet >= 0.18.2
+Requires:       python3-lxml >= 3.4.1
+Requires:       python3-netaddr >= 0.7.18
+Requires:       python3-oslo.concurrency >= 3.26.0
+Requires:       python3-oslo.context >= 2.19.2
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+Requires:       python3-suds-jurko >= 0.6
+Requires:       python3-urllib3 >= 1.21.1
+
+%description -n python3-oslo.vmware
+The Oslo project intends to produce a python library containing infrastructure
+code shared by OpenStack projects. The APIs provided by the project should be
+high quality, stable, consistent and generally useful.
+
+The Oslo VMware library offers session and API call management for VMware ESX/VC
+server.
+
+This package contains the Python 3.x module.
 
 %package        -n python-oslo.vmware-doc
 Summary:        Documentation for OpenStack common VMware library
@@ -107,7 +97,7 @@ Documentation for OpenStack common VMware library.
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -115,16 +105,16 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%python_install
+%py3_install
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.vmware
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/oslo_vmware
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/oslo_vmware
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.vmware-doc
 %doc doc/build/html
