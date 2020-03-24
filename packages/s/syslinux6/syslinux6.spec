@@ -50,6 +50,8 @@ Patch15:        15_fix_keywords_path.diff
 Patch16:        16_add_install_all_target.diff
 Patch17:        17_remove_gnu_note.diff
 Patch18:        18_lzo.diff
+# PATCH-FIX-UPSTREAM
+Patch19:        reproducible.patch
 Conflicts:      syslinux < %{version}
 
 %description
@@ -75,6 +77,7 @@ Authors:
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
 
 %build
 cp %{SOURCE2} .
