@@ -23,11 +23,11 @@ BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel >= 1.33.1
 %endif
-BuildRequires:  cmake >= 2.4.6
-BuildRequires:  gcc-c++ >= 4.7
+BuildRequires:  cmake >= 3.1
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  libxml2-devel
-BuildRequires:  libzypp-devel >= 17.16.1
+BuildRequires:  libzypp-devel >= 17.23.2
 BuildRequires:  readline-devel >= 5.1
 Requires:       procps
 %if 0%{?suse_version}
@@ -50,7 +50,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.34
+Version:        1.14.35
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
@@ -95,9 +95,6 @@ Summary:        aptitude compatibility with zypper
 Group:          System/Packages
 Requires:       perl
 Requires:       zypper
-%if 0%{?suse_version}
-Supplements:    zypper
-%endif
 BuildArch:      noarch
 
 %description aptitude
@@ -130,7 +127,17 @@ Authors:
 mkdir -p build
 cd build
 
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+CMAKE_FLAGS=
+
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150100
+  # Fixed in 1.14.34: Do not allow the abbreviation of cli arguments (bsc#1164543)
+  # On SLE15/Leap 15.0 and 15.1 we will stay bug-compatible and accept the
+  # abbreviations in order not to break tools. In 15.2 they must be fixed.
+  CMAKE_FLAGS="$CMAKE_FLAGS -DLEGACY_ENABLE_LONGOPT_ABBREV=1"
+%endif
+
+cmake $CMAKE_FLAGS \
+      -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DSYSCONFDIR=%{_sysconfdir} \
       -DMANDIR=%{_mandir} \
       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
