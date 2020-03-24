@@ -18,9 +18,8 @@
 #
 
 
-%global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.19
+Version:        0.9.20
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
@@ -46,6 +45,8 @@ BuildRequires:  python3-arrow >= 0.9.0
 Requires:       python3-arrow >= 0.9.0
 BuildRequires:  python3-cairo >= 1.11.1
 Requires:       python3-cairo >= 1.11.1
+BuildRequires:  python3-Babel
+Requires:       python3-Babel
 BuildRequires:  python3-colorlog
 Requires:       python3-colorlog
 BuildRequires:  python3-colour
@@ -78,6 +79,9 @@ BuildRequires:  python3-tornado
 Requires:       python3-tornado
 BuildRequires:  python3-tenacity
 Requires:       python3-tenacity
+# needed since 0.9.20 for SVG assets
+BuildRequires:  libQt5Svg5
+Requires:       libQt5Svg5
 
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500

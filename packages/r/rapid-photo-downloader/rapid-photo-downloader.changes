@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 23 14:15:10 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- removed all manual typelib requires again as we fixed the
+  underlying problem in libdbusmenu 
+
+-------------------------------------------------------------------
+Sun Mar 22 20:59:08 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.9.20 
+  - Added support for program icon progress bars and badge counts
+    on any desktop that supports the Unity LauncherEntry API, not
+    just Ubuntu Unity or Gnome running under Ubuntu. (The Unity
+    LauncherEntry API is used by desktops other than Unity and
+    Ubuntu Gnome, e.g. KDE, Dash to Panel.)
+  - Added missing property StartupWMClass to the program's desktop
+    file. It's now possible to add the Rapid Photo Downloader
+    launcher as a Favorite to the Gnome Shell dock and not have it
+    appear as a duplicate entry when the program runs. This fix
+    also enables program icon progress bars and badge counts under
+    Gnome Shell extensions that support them.
+  - Implemented feature request in bug #1810102: cannot change
+    language in program preferences. You can now specify the
+    language you want the user interface to display in regardless
+    of the system locale setting.
+  - Fixed problems in setup.py. Made requirements.txt more
+    conformant.
+  - Better handle missing ExifTool on startup.
+- refreshed disable-version-check.patch
+- remove the typelib requires exclude as rpd now shows the progress
+  with libunity
+- add requires for new dependencies:
+  - python3-Babel
+  - libQt5Svg5
+  - typelib(Unity) = 7.0
+  - typelib(UnityExtras) = 7.0
+- add temporary requires that should be pulled by typelib(Unity)
+  - typelib(Dbusmenu) = 0.4
+  - typelib(Dee) = 1.0
+
+-------------------------------------------------------------------
 Tue Mar 17 16:20:27 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.9.19 
