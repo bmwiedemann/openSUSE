@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crontab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-crontab
-Version:        2.3.8
+Version:        2.4.0
 Release:        0
 Summary:        Python Crontab API
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/doctormo/python-crontab/
-Source:         https://gitlab.com/doctormo/python-crontab/-/archive/v2.3.8/python-crontab-v%{version}.tar.gz#/python-crontab-%{version}.tar.gz
+# https://gitlab.com/doctormo/python-crontab/-/issues/69
+Source:         https://gitlab.com/doctormo/python-crontab/-/archive/v%{version}/python-crontab-v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,8 +61,7 @@ accessing the system cron automatically using an API.
 
 %check
 export LANG=en_US.UTF-8
-# Bug in tests https://gitlab.com/doctormo/python-crontab/issues/55
-%pytest -k 'not test_06_backwards and not test_04_schedule_ten'
+%pytest
 
 %files %{python_files}
 %doc README.rst
