@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 21 10:13:40 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.2
+  - Dramatically reduce dead node detection time when using Layer 2 mode.
+  - Allow kustomize to change namespace MetalLB runs.
+  - Fix layer2 not sending ARP messages when IP changes.
+  - Fix to properly expose address_total Prometheus metric.
+  - Support older devices that might not support RFC4893.
+
+-------------------------------------------------------------------
 Wed Nov  6 17:10:37 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.8.3

@@ -1,7 +1,7 @@
 #
 # spec file for package metallb
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           metallb
-Version:        0.8.3
+Version:        0.9.2
 Release:        0
 Summary:        Load Balancer for bare metal Kubernetes clusters
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/google/metallb
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.12
+Source1:        vendor.tar.xz
+BuildRequires:  golang(API) >= 1.13
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
