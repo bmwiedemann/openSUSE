@@ -1,7 +1,7 @@
 #
 # spec file for package python-designateclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,15 @@
 #
 
 
-%global sname python-designateclient
 Name:           python-designateclient
 Version:        3.0.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/p/%{sname}/%{sname}-%{version}.tar.gz
+URL:            https://launchpad.net/python-designateclient
+Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-3.0.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-jsonschema >= 2.6.0
-BuildRequires:  python2-keystoneauth1 >= 3.4.0
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
 BuildRequires:  python3-jsonschema >= 2.6.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-mock
@@ -44,21 +34,29 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
-Requires:       python-cliff >= 2.8.0
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-jsonschema >= 2.6.0
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-osc-lib >= 1.8.0
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 OpenStack DNS as a Service - Client
+
+%package -n python3-designateclient
+Summary:        OpenStack DNS as a Service - Client
+Group:          Development/Languages/Python
+Requires:       python3-cliff >= 2.8.0
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-jsonschema >= 2.6.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+
+%description -n python3-designateclient
+OpenStack DNS as a Service - Client
+
+This package contains the Python 3.x module.
 
 %package -n python-designateclient-doc
 Summary:        Documentation for the OpenStack DNS as a Service - Client
@@ -70,11 +68,11 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the OpenStack DNS as a Service - Client.
 
 %prep
-%autosetup -n %{sname}-%{version}
+%autosetup -p1 -n python-designateclient-3.0.0
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 
 # generate docs
 PYTHONPATH=. PBR_VERSION=3.0.0 %sphinx_build -b html doc/source doc/build/html
@@ -82,16 +80,16 @@ PYTHONPATH=. PBR_VERSION=3.0.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%python_install
+%py3_install
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-designateclient
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/designateclient
-%{python_sitelib}/python_designateclient-%{version}-*.egg-info
+%{python3_sitelib}/designateclient
+%{python3_sitelib}/python_designateclient-%{version}-*.egg-info
 
 %files -n python-designateclient-doc
 %license LICENSE
