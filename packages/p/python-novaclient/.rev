@@ -629,4 +629,14 @@ update to version 5.1.0
   - Set the lower limit of api_version for volume_type</comment>
     <requestid>736665</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>2f3a19480c5a6d831ffa9bfc6699354e</srcmd5>
+    <version>15.1.0</version>
+    <time>1585085597</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only builds</comment>
+    <requestid>787461</requestid>
+  </revision>
 </revisionlist>
