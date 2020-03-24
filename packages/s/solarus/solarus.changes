@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 18:38:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to find moonjit:
+  * 0001-Use-pkg-config-to-get-more-search-paths.patch
+
+-------------------------------------------------------------------
 Sun Sep  1 10:01:01 UTC 2019 - antoine.belvire@opensuse.org
 
 - Fix translation loading:

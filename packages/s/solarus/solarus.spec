@@ -1,7 +1,7 @@
 #
 # spec file for package solarus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://www.solarus-games.org/
 Source0:        %{name}-%{version}.tar.bz2
 # PATCH-FEATURE-UPSTREAM -- https://gitlab.com/solarus-games/solarus/merge_requests/1311
 Patch0:         solarus-1.6.2-install-gui-translations.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-pkg-config-to-get-more-search-paths.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -92,8 +94,7 @@ Development files for Solarus, including header files.
 %lang_package -n solarus-gui
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake

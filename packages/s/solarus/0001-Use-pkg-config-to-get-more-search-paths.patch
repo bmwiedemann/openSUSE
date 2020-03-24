@@ -1,0 +1,41 @@
+From c50c1938588b6f11e081744a8658135141c41948 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 24 Mar 2020 19:37:32 +0100
+Subject: [PATCH] Use pkg-config to get more search paths.
+
+Solarus can be built using moonjit. If a pkgconfig file is available,
+we'll use the known include and library dirs.
+---
+ cmake/modules/FindLuaJit.cmake | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/cmake/modules/FindLuaJit.cmake b/cmake/modules/FindLuaJit.cmake
+index 4edb6e3..25712d0 100644
+--- a/cmake/modules/FindLuaJit.cmake
++++ b/cmake/modules/FindLuaJit.cmake
+@@ -7,9 +7,14 @@
+ #
+ # This module is similar to FindLua51.cmake except that it finds LuaJit instead.
+ 
++FIND_PACKAGE(PkgConfig QUIET)
++
++PKG_CHECK_MODULES(PKG_LUAJIT QUIET luajit)
++
+ FIND_PATH(LUA_INCLUDE_DIR luajit.h
+   HINTS
+   $ENV{LUA_DIR}
++  ${PKG_LUAJIT_INCLUDE_DIRS}
+   PATH_SUFFIXES include/luajit-2.1 include/luajit-2.0 include/luajit-5_1-2.0 include/luajit-5_1-2.1 include
+   PATHS
+   ~/Library/Frameworks
+@@ -24,6 +29,7 @@ FIND_LIBRARY(LUA_LIBRARY
+   NAMES luajit-5.1 luajit-2.0 luajit-2.1
+   HINTS
+   $ENV{LUA_DIR}
++  ${PKG_LUAJIT_LIBRARY_DIRS}
+   PATH_SUFFIXES lib64 lib
+   PATHS
+   ~/Library/Frameworks
+-- 
+2.25.1
+
