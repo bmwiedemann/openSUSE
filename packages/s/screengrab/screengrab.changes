@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:03:55 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Disable RPATH for building
+
+-------------------------------------------------------------------
 Thu Jan 23 08:31:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.0:

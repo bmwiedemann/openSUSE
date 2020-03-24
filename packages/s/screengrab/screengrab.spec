@@ -1,7 +1,7 @@
 #
 # spec file for package screengrab
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ Screenshot taker with the ability to publish them via hosting services.
 
 %build
 %cmake \
+    -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DSG_DBUS_NOTIFY=ON \
     -DSG_EXT_EDIT=OFF \
     -DSG_EXT_UPLOADS=OFF \
