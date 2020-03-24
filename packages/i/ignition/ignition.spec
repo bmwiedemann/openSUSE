@@ -17,16 +17,27 @@
 
 
 Name:           ignition
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
-Patch1:         0001-Throw-error-if-SSH-keys-could-not-be-written.patch
+Patch1:         0001-Support-more-architectures.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Requires:       dracut
+Recommends:     /sbin/mkfs.btrfs
+Recommends:     /sbin/mkfs.ext4
+Recommends:     /sbin/mkfs.vfat
+Recommends:     /sbin/mkfs.xfs
+Recommends:     /sbin/mkswap
+Recommends:     /sbin/udevadm
+Recommends:     /usr/sbin/groupadd
+Recommends:     /usr/sbin/sgdisk
+Recommends:     /usr/sbin/useradd
+Recommends:     /usr/sbin/usermod
+Suggests:       /sbin/mdadm
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  golang(API) >= 1.12
