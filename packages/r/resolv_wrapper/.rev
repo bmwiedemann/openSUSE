@@ -31,4 +31,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>400385</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d658aa14c7921cd02309ac6ca726cb11</srcmd5>
+    <version>1.1.6</version>
+    <time>1585085746</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gpg armor file as source
+- Update to version 1.1.4 
+  * Added support for running with Sanitizers
+  * Added fake resolving of TXT records
+  * Improved logging support
+  * Fixed resolv.conf support on FreeBSD
+  * Fixed alignment issues on FreeBSD
+  * Fixed using IPv6 address with old glibc versions
+  * Added support for faking PTR entries
+  * Added support for faking URI entries
+</comment>
+    <requestid>787703</requestid>
+  </revision>
 </revisionlist>
