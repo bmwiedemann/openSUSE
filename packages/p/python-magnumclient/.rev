@@ -157,4 +157,14 @@
   - Support network, subnet and FIP when creating cluster</comment>
     <requestid>736657</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bf4851e9205e5fda0a7b8c50c41c2f1c</srcmd5>
+    <version>2.15.0</version>
+    <time>1585085591</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only</comment>
+    <requestid>787455</requestid>
+  </revision>
 </revisionlist>

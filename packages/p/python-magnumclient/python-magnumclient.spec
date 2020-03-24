@@ -1,7 +1,7 @@
 #
 # spec file for package python-magnumclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,26 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-magnumclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-2.15.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PrettyTable >= 0.7.2
-BuildRequires:  python2-cryptography >= 2.1
-BuildRequires:  python2-decorator >= 3.4.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-keystoneauth1 >= 3.4.0
-BuildRequires:  python2-mock
-BuildRequires:  python2-openstackclient
-BuildRequires:  python2-os-client-config >= 1.28.0
-BuildRequires:  python2-osc-lib >= 1.8.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-osprofiler
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-cryptography >= 2.1
 BuildRequires:  python3-decorator >= 3.4.0
@@ -65,35 +45,39 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-Babel >= 2.3.4
-Requires:       python-PrettyTable >= 0.7.2
-Requires:       python-cryptography >= 2.1
-Requires:       python-decorator >= 3.4.0
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-os-client-config >= 1.28.0
-Requires:       python-osc-lib >= 1.8.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.log >= 3.36.0
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 Client library for Magnum built on the Magnum API. It provides a Python API
 (the magnumclient module) and a command-line tool (magnum).
+
+%package -n python3-magnumclient
+Summary:        Python API and CLI for OpenStack Magnum
+Group:          Development/Languages/Python
+Requires:       python3-Babel >= 2.3.4
+Requires:       python3-PrettyTable >= 0.7.2
+Requires:       python3-cryptography >= 2.1
+Requires:       python3-decorator >= 3.4.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-os-client-config >= 1.28.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.log >= 3.36.0
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+%if 0%{?suse_version}
+Obsoletes:      python2-magnumclient < 2.17.0
+%endif
+
+%description -n python3-magnumclient
+Client library for Magnum built on the Magnum API. It provides a Python API
+(the magnumclient module) and a command-line tool (magnum).
+
+This package contains the Python 3.x module.
 
 %package -n python-magnumclient-doc
 Summary:        Documentation for OpenStack Magnum API client libary
@@ -111,7 +95,7 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # Build HTML docs and man page
 PBR_VERSION=2.15.0 %sphinx_build -b html doc/source doc/build/html
@@ -119,31 +103,22 @@ PBR_VERSION=2.15.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 # man page
 install -p -D -m 644 doc/build/man/python-magnumclient.1 %{buildroot}%{_mandir}/man1/magnum.1
 # Install bash completion
 install -p -D -m 644 tools/magnum.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/magnum.bash_completion
-%python_clone -a %{buildroot}%{_bindir}/magnum
-%python_clone -a %{buildroot}%{_mandir}/man1/magnum.1
-%python_clone -a %{buildroot}%{_sysconfdir}/bash_completion.d/magnum.bash_completion
-
-%post
-%{python_install_alternative magnum magnum.1 %{_sysconfdir}/bash_completion.d/magnum.bash_completion}
-
-%postun
-%python_uninstall_alternative magnum
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-magnumclient
 %license LICENSE
-%{python_sitelib}/magnumclient
-%{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/magnum
-%python_alternative %{_mandir}/man1/magnum.1
-%python_alternative %{_sysconfdir}/bash_completion.d/magnum.bash_completion
+%{python3_sitelib}/magnumclient
+%{python3_sitelib}/*.egg-info
+%{_bindir}/magnum
+%{_mandir}/man1/magnum.1.*
+%{_sysconfdir}/bash_completion.d/magnum.bash_completion
 
 %files -n python-magnumclient-doc
 %doc README.rst doc/build/html
