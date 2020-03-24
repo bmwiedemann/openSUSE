@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 14 13:16:23 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.6.0
+  MFSA 2020-10 (bsc#1166238)
+  * CVE-2020-6805 (bmo#1610880)
+    Use-after-free when removing data about origins
+  * CVE-2020-6806 (bmo#1612308)
+    BodyStream::OnInputStreamReady was missing protections against
+    state confusion
+  * CVE-2020-6807 (bmo#1614971)
+    Use-after-free in cubeb during stream destruction
+  * CVE-2020-6811 (bmo#1607742)
+    Devtools' 'Copy as cURL' feature did not fully escape
+    website-controlled data, potentially leading to command injection
+  * CVE-2019-20503 (bmo#1613765)
+    Out of bounds reads in sctp_load_addresses_from_init
+  * CVE-2020-6812 (bmo#1616661)
+    The names of AirPods with personally identifiable information
+    were exposed to websites with camera or microphone permission
+  * CVE-2020-6814 (bmo#1592078, bmo#1604847, bmo#1608256, bmo#1612636,
+    bmo#1614339)
+    Memory safety bugs fixed in Thunderbird 68.6
+- requires NSS >= 3.44.3
+
+-------------------------------------------------------------------
 Mon Feb 10 21:55:19 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.5.0

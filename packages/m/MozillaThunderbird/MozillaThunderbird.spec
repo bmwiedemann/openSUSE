@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major           68
-%define mainver         %major.5.0
-%define orig_version    68.5.0
+%define mainver         %major.6.0
+%define orig_version    68.6.0
 %define orig_suffix     %{nil}
 %define update_channel  release
 %define source_prefix   thunderbird-%{mainver}
@@ -77,7 +77,7 @@ BuildRequires:  libidl-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  memory-constraints
 BuildRequires:  mozilla-nspr-devel >= 4.21
-BuildRequires:  mozilla-nss-devel >= 3.44.1
+BuildRequires:  mozilla-nss-devel >= 3.44.3
 BuildRequires:  nasm >= 2.13
 BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
