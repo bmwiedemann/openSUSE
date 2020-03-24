@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 09:20:50 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * fix(aiohttp): use latest version, allow Python 3.5+ for async http client
+- drop python2 support, python-aiohttp required
+
+-------------------------------------------------------------------
 Wed Mar 18 08:39:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.2.8
