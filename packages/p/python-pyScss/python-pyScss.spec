@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyScss
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,29 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyScss
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        pyScss, a Scss compiler for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/Kronuz/pyScss
+URL:            https://github.com/Kronuz/pyScss
 Source:         https://files.pythonhosted.org/packages/source/p/pyScss/pyScss-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  pcre-devel
 BuildRequires:  python-rpm-macros
-%ifpython2
-Requires:       python-enum34
-%endif
+Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%ifpython2
+Requires:       python-enum34
+%endif
 %python_subpackages
 
 %description
@@ -74,7 +75,6 @@ export CFLAGS="%{optflags}"
 %python_uninstall_alternative less2scss
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/*
