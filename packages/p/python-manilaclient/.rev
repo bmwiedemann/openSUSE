@@ -336,4 +336,14 @@ update to version 1.10.0
   - Add PDF documentation build</comment>
     <requestid>736658</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>eb349febdd2b8b4b2849a3b4ec4866eb</srcmd5>
+    <version>1.29.0</version>
+    <time>1585085589</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only</comment>
+    <requestid>787454</requestid>
+  </revision>
 </revisionlist>
