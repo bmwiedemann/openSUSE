@@ -1,7 +1,7 @@
 #
 # spec file for package python-masakariclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
 Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-5.5.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PrettyTable
-BuildRequires:  python2-ddt
-BuildRequires:  python2-nose
-BuildRequires:  python2-openstacksdk >= 0.13.0
-BuildRequires:  python2-osc-lib >= 1.8.0
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslo.utils
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-testrepository
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-ddt
 BuildRequires:  python3-nose
@@ -52,26 +39,27 @@ BuildRequires:  python3-requests-mock
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-openstacksdk >= 0.13.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils
-Requires:       python-pbr >= 2.0.0
-Conflicts:      %oldpython-masakariclient < %version
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 Client library for Masakari built on the Masakari API. It provides a Python API
 (the masakariclient module) and a command-line tool (masakari).
+
+%package -n python3-masakariclient
+Summary:        Python API and CLI for OpenStack Masakari
+Group:          Development/Languages/Python
+Requires:       python3-openstacksdk >= 0.13.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils
+Requires:       python3-pbr >= 2.0.0
+Conflicts:      %oldpython-masakariclient < %version
+
+%description -n python3-masakariclient
+Client library for Masakari built on the Masakari API. It provides a Python API
+(the masakariclient module) and a command-line tool (masakari).
+
+This package contains the Python 3.x module.
 
 %package -n python-masakariclient-doc
 Summary:        Documentation for OpenStack Masakari API client libary
@@ -92,7 +80,7 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # Build HTML docs and man page
 PBR_VERSION=5.5.0 %sphinx_build -b html doc/source doc/build/html
@@ -100,26 +88,23 @@ PBR_VERSION=5.5.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/masakari
+%{py3_install}
 # man pages
 install -p -D -m 644 doc/build/man/python-masakariclient.1 %{buildroot}%{_mandir}/man1/python-masakariclient.1
 
 %check
 find . -type f -name *.pyc -delete
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_version} masakariclient/tests/unit
+%if 0%{?suse_version}
+PYTHONPATH=%{buildroot}%{python3_sitelib} nosetests masakariclient/tests/unit
+%else
+PYTHONPATH=%{buildroot}%{python3_sitelib} nosetests-3 masakariclient/tests/unit
+%endif
 
-%post
-%python_install_alternative masakari
-
-%postun
-%python_uninstall_alternative masakari
-
-%files %python_files
+%files -n python3-masakariclient
 %license LICENSE
-%{python_sitelib}/masakariclient
-%{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/masakari
+%{python3_sitelib}/masakariclient
+%{python3_sitelib}/*.egg-info
+%{_bindir}/masakari
 
 %files -n python-masakariclient-doc
 %license LICENSE
