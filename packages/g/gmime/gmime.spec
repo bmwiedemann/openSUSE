@@ -22,7 +22,7 @@
 # NOTE - also update baselibs.conf when bumping this
 %define so_ver 3_0
 Name:           gmime
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        MIME Parser and Utility Library
 License:        LGPL-2.1-or-later
