@@ -7,4 +7,13 @@
     <comment>add to factory for use by Wine</comment>
     <requestid>681104</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0fb6f9dbab49803775a41a33a920c2b</srcmd5>
+    <version>20.03</version>
+    <time>1585085769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.03. No changelog
+- Update faudio-older-sdl2.patch. (forwarded request 787711 from cgiboudeaux)</comment>
+    <requestid>787712</requestid>
+  </revision>
 </revisionlist>

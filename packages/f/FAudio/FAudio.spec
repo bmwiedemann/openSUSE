@@ -1,7 +1,7 @@
 #
-# spec file for package openal-soft
+# spec file for package FAudio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define realver 2003
 Name:           FAudio
-%define realver 1903
-Version:        19.03
+Version:        20.03
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
 Group:          Development/Libraries/C and C++
-URL:            https://fna-xna.github.io/
-Source0:        http://fna.flibitijibibo.com/archive/FNA-%realver.zip
+URL:            https://fna-xna.github.io
+Source0:        http://fna.flibitijibibo.com/archive/FNA-%{realver}.zip
 Source1:        baselibs.conf
-Patch0:		faudio-older-sdl2.patch
-BuildRequires:  unzip
+Patch0:         faudio-older-sdl2.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  SDL2-devel
+BuildRequires:  pkgconfig
+BuildRequires:  unzip
+BuildRequires:  cmake(sdl2)
 
 %description
 FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
@@ -42,7 +43,6 @@ Group:          System/Libraries
 %description -n libFAudio0
 FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
 
-
 %package devel
 Summary:        FAudio Development Libraries
 Group:          Development/Languages/C and C++
@@ -51,16 +51,18 @@ Requires:       libFAudio0 = %{version}
 %description devel
 FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
 
-
 %prep
 %setup -q -n FNA
+%if 0%{?suse_version} < 1550
 %patch0 -p1
+%endif
 
 %build
 cd lib/FAudio
 %cmake \
-  -DCMAKE_BUILD_TYPE=Release 
-make %{?_smp_mflags}
+  -DCMAKE_BUILD_TYPE=Release
+
+%cmake_build
 
 %install
 cd lib/FAudio
