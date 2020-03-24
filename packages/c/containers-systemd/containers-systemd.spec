@@ -17,10 +17,10 @@
 
 
 %define containers bind dhcp-server haproxy mariadb nginx
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service container-image-prune.timer
 
 Name:           containers-systemd
-Version:        0.0+git20200219.a6acfd1
+Version:        0.0+git20200324.5f4ae65
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -53,6 +53,8 @@ for i in %{containers}; do
 done
 install -m 644 container-dhcp6-server.service %{buildroot}%{_unitdir}/
 ln -s /sbin/service %{buildroot}%{_sbindir}/rccontainer-dhcp6-server
+install -m 644 container-image-prune.service %{buildroot}%{_unitdir}/
+install -m 644 container-image-prune.timer %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_sysconfdir}/mariadb-secrets
 for i in MYSQL_ROOT_PASSWORD MYSQL_ROOT_HOST MYSQL_DATABASE MYSQL_USER MYSQL_PASSWORD; do
   touch %{buildroot}%{_sysconfdir}/mariadb-secrets/$i
@@ -105,5 +107,7 @@ done
 %{_fillupdir}/sysconfig.container-nginx
 %{_sbindir}/rccontainer-nginx
 %ghost %dir /srv/nginx
+%{_unitdir}/container-image-prune.service
+%{_unitdir}/container-image-prune.timer
 
 %changelog

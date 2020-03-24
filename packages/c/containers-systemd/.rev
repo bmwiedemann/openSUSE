@@ -70,4 +70,13 @@
   * Fix comment</comment>
     <requestid>777380</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b6092dbc5ed15ca502bbfb7684e13834</srcmd5>
+    <version>0.0+git20200324.5f4ae65</version>
+    <time>1585085808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200324.5f4ae65:
+  * Add timer to prune unnamed images</comment>
+    <requestid>787810</requestid>
+  </revision>
 </revisionlist>
