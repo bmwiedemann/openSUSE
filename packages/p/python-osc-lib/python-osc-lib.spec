@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-lib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,23 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
 Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-1.14.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Babel >= 2.3.4
-BuildRequires:  python2-cliff >= 2.8.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-keystoneauth1 >= 3.7.0
-BuildRequires:  python2-mock
-BuildRequires:  python2-openstacksdk >= 0.15.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-osprofiler
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-simplejson >= 3.5.1
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-stevedore >= 1.20.0
-BuildRequires:  python2-testtools
 BuildRequires:  python3-Babel >= 2.3.4
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-fixtures
@@ -59,22 +42,31 @@ BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testtools
-Requires:       python-Babel >= 2.3.4
-Requires:       python-cliff >= 2.8.0
-Requires:       python-keystoneauth1 >= 3.7.0
-Requires:       python-openstacksdk >= 0.15.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-simplejson >= 3.5.1
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 OpenStackClient (aka OSC) is a command-line client for OpenStack.  osc-lib
 is a package of common support modules for writing OSC plugins.
+
+%package -n python3-osc-lib
+Summary:        OpenStackClient Library
+Group:          Development/Languages/Python
+Requires:       python3-Babel >= 2.3.4
+Requires:       python3-cliff >= 2.8.0
+Requires:       python3-keystoneauth1 >= 3.7.0
+Requires:       python3-openstacksdk >= 0.15.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-simplejson >= 3.5.1
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+
+%description -n python3-osc-lib
+OpenStackClient (aka OSC) is a command-line client for OpenStack.  osc-lib
+is a package of common support modules for writing OSC plugins.
+
+This package contains the Python 3.x module.
 
 %package -n python-osc-lib-doc
 Summary:        Documentation for the OpenStack client library
@@ -92,10 +84,10 @@ Documentation for the OpenStack client library.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 %install
-%{python_install}
+%{py3_install}
 
 # generate html docs
 PBR_VERSION=%{version} PYTHONPATH=. %sphinx_build -a -E -d doc/build/doctrees -b html doc/source doc/build/html
@@ -103,13 +95,13 @@ PBR_VERSION=%{version} PYTHONPATH=. %sphinx_build -a -E -d doc/build/doctrees -b
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-osc-lib
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/osc_lib
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/osc_lib
+%{python3_sitelib}/*.egg-info
 
 %files -n python-osc-lib-doc
 %license LICENSE
