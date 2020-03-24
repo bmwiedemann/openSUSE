@@ -225,4 +225,12 @@
   - Add py37 and API v2 jobs (scenario, tempest)</comment>
     <requestid>736668</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4cb101c847d0c32933b89ed475222135</srcmd5>
+    <version>2.3.0</version>
+    <time>1585085504</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only</comment>
+    <requestid>783808</requestid>
+  </revision>
 </revisionlist>
