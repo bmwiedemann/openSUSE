@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 24 10:35:57 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.10
+  * Faster formant computation.
+  * More LPC queries.
+  version 6.1.09
+  * Accept some more kinds of broken WAV files.
+  * Improved box plot drawing.
+  * More Network commands.
+  version 6.1.08
+  * Repaired a bug with automatic alignment for TextGrids
+    (introduced in 6.1.07).
+
+- Refreshed praat-use_system_libs.patch
+
+-------------------------------------------------------------------
 Fri Nov 29 20:03:54 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.07
