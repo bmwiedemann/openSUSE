@@ -740,4 +740,14 @@
   - Add custom CA support for get_server_version</comment>
     <requestid>736648</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>f4728cae7ea61383ab817bebf7bc3db1</srcmd5>
+    <version>5.0.0</version>
+    <time>1585085579</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only build</comment>
+    <requestid>787450</requestid>
+  </revision>
 </revisionlist>
