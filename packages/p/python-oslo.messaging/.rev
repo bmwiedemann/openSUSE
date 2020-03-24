@@ -441,4 +441,14 @@
   - Add the mandatory flag for direct send</comment>
     <requestid>774915</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e25187accd7a691e9d6d02ca99b94266</srcmd5>
+    <version>10.2.0</version>
+    <time>1585085567</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only builds</comment>
+    <requestid>787445</requestid>
+  </revision>
 </revisionlist>

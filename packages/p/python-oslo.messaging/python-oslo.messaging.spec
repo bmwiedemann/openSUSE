@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.messaging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,35 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.messaging
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-10.2.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PyYAML >= 3.12
-BuildRequires:  python2-WebOb >= 1.7.1
-BuildRequires:  python2-amqp >= 2.4.1
-BuildRequires:  python2-cachetools >= 2.0.0
-BuildRequires:  python2-confluent-kafka
-BuildRequires:  python2-debtcollector >= 1.2.0
-BuildRequires:  python2-eventlet
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-futurist >= 1.2.0
-BuildRequires:  python2-greenlet
-BuildRequires:  python2-kombu >= 4.6.1
-BuildRequires:  python2-mock
-BuildRequires:  python2-monotonic >= 0.6
-BuildRequires:  python2-oslo.config >= 5.2.0
-BuildRequires:  python2-oslo.i18n
-BuildRequires:  python2-oslo.log >= 3.36.0
-BuildRequires:  python2-oslo.middleware >= 3.31.0
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslo.service >= 1.24.0
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-pifpaf
-BuildRequires:  python2-pyngus
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-stevedore >= 1.20.0
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-amqp >= 2.4.1
@@ -66,6 +37,7 @@ BuildRequires:  python3-futurist >= 1.2.0
 BuildRequires:  python3-greenlet
 BuildRequires:  python3-kombu >= 4.6.1
 BuildRequires:  python3-mock
+BuildRequires:  python3-monotonic >= 0.6
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n
 BuildRequires:  python3-oslo.log >= 3.36.0
@@ -75,55 +47,55 @@ BuildRequires:  python3-oslo.service >= 1.24.0
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-pifpaf
 BuildRequires:  python3-pyngus
 BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-PyYAML >= 3.12
-Requires:       python-WebOb >= 1.7.1
-Requires:       python-amqp >= 2.4.1
-Requires:       python-cachetools >= 2.0.0
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-futurist >= 1.2.0
-Requires:       python-greenlet
-Requires:       python-kombu >= 4.6.1
-Requires:       python-oslo.config >= 5.2.0
-Requires:       python-oslo.i18n
-Requires:       python-oslo.log >= 3.36.0
-Requires:       python-oslo.middleware >= 3.31.0
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.service >= 1.24.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-monotonic >= 0.6
-%endif
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 The Oslo messaging API supports RPC and notifications over a number
 of different messaging transports.
 
-%package -n python-oslo.messaging-doc
+%package -n python3-oslo.messaging
+Summary:        OpenStack oslo.messaging library
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-WebOb >= 1.7.1
+Requires:       python3-amqp >= 2.4.1
+Requires:       python3-cachetools >= 2.0.0
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-futurist >= 1.2.0
+Requires:       python3-greenlet
+Requires:       python3-kombu >= 4.6.1
+Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.i18n
+Requires:       python3-oslo.log >= 3.36.0
+Requires:       python3-oslo.middleware >= 3.31.0
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.service >= 1.24.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+%if 0%{?suse_version}
+Obsoletes:      python2-oslo.messaging < 12.0.0
+%endif
+
+%description -n python3-oslo.messaging
+The Oslo messaging API supports RPC and notifications over a number
+of different messaging transports.
+
+This package contains the Python 3.x module.
+
+%package -n python3-oslo.messaging-doc
 Summary:        Documentation for OpenStack messaging library
 Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
-%description -n python-oslo.messaging-doc
+%description -n python3-oslo.messaging-doc
 The Oslo messaging API supports RPC and notifications over a number
 of different messaging transports.
 This package contains the documentation.
@@ -140,7 +112,7 @@ rm -f oslo_messaging/tests/drivers/test_amqp_driver.py
 %endif
 
 %build
-%{python_build}
+%py3_build
 
 # generate html docs
 PYTHONPATH=. PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -148,26 +120,21 @@ PYTHONPATH=. PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/h
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/oslo-messaging-send-notification
-
-%post
-%python_install_alternative oslo-messaging-send-notification
-
-%postun
-%python_uninstall_alternative oslo-messaging-send-notification
+%py3_install
 
 %check
-%python_exec -m stestr.cli run
+# NOTE(jpena): we do not want to run functional tests, just unit tests
+rm -rf oslo_messaging/tests/functional
+python3 -m stestr.cli run
 
-%files %python_files
+%files -n python3-oslo.messaging
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/oslo_messaging
-%{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/oslo-messaging-send-notification
+%{python3_sitelib}/oslo_messaging
+%{python3_sitelib}/*.egg-info
+%{_bindir}/oslo-messaging-send-notification
 
-%files -n python-oslo.messaging-doc
+%files -n python3-oslo.messaging-doc
 %license LICENSE
 %doc doc/build/html
 
