@@ -1,7 +1,7 @@
 #
 # spec file for package python-monascaclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,22 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-monascaclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-monascaclient/python-monascaclient-1.16.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PrettyTable >= 0.7.2
-BuildRequires:  python2-PyYAML >= 3.12
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-mock
-BuildRequires:  python2-mox3
-BuildRequires:  python2-openstackdocstheme
-BuildRequires:  python2-osc-lib >= 1.8.0
-BuildRequires:  python2-oslo.concurrency
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-fixtures
@@ -57,28 +41,31 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-Babel >= 2.3.4
-Requires:       python-PrettyTable >= 0.7.2
-Requires:       python-PyYAML >= 3.12
-Requires:       python-iso8601 >= 0.1.11
-Requires:       python-osc-lib >= 1.8.0
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-requests
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
+This is a client library for Monasca built to interface with the Monasca API. It
+provides a Python API (the ``monascaclient`` module) and a command-line tool
+(``monasca``).
+
+%package -n python3-monascaclient
+Summary:        Python API and CLI for OpenStack Monasca
+Group:          Development/Languages/Python
+Requires:       python3-Babel >= 2.3.4
+Requires:       python3-PrettyTable >= 0.7.2
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-iso8601 >= 0.1.11
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-requests
+Requires:       python3-six >= 1.10.0
+%if 0%{?suse_version}
+Obsoletes:      python2-monascaclient < 2.0.0
+%endif
+
+%description -n python3-monascaclient
 This is a client library for Monasca built to interface with the Monasca API. It
 provides a Python API (the ``monascaclient`` module) and a command-line tool
 (``monasca``).
@@ -90,26 +77,19 @@ The Monasca Client was written using the OpenStack Heat Python client as a frame
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/monasca
-
-%post
-%python_install_alternative monasca
-
-%postun
-%python_uninstall_alternative monasca
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-monascaclient
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/monascaclient
-%{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/monasca
+%{python3_sitelib}/monascaclient
+%{python3_sitelib}/*.egg-info
+%{_bindir}/monasca
 
 %changelog

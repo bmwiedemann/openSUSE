@@ -143,4 +143,14 @@
   - Add Python 3 Train unit tests</comment>
     <requestid>736661</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>20a58336e1df578aff4421f5bb0e7477</srcmd5>
+    <version>1.16.0</version>
+    <time>1585085593</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only</comment>
+    <requestid>787458</requestid>
+  </revision>
 </revisionlist>
