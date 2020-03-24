@@ -633,4 +633,12 @@
   - Fix unit tests broken by requests-mock</comment>
     <requestid>736656</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>ba26a86c63c66ce456083df855be2f3e</srcmd5>
+    <version>3.21.0</version>
+    <time>1585085558</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>786383</requestid>
+  </revision>
 </revisionlist>

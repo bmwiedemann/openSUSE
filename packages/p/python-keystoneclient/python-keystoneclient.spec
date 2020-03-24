@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystoneclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,21 +26,6 @@ URL:            https://launchpad.net/python-keystoneclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-3.21.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
-BuildRequires:  python2-debtcollector >= 1.2.0
-BuildRequires:  python2-keystoneauth1 >= 3.4.0
-BuildRequires:  python2-lxml
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.config >= 5.2.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testresources
-BuildRequires:  python2-testscenarios
 BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-lxml
@@ -56,19 +41,25 @@ BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testresources
 BuildRequires:  python3-testscenarios
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-oslo.config >= 5.2.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
+Client library for interacting with Openstack Identity API.
+
+%package -n python3-keystoneclient
+Summary:        Client library for OpenStack Identity API
+Group:          Development/Languages/Python
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+
+%description -n python3-keystoneclient
 Client library for interacting with Openstack Identity API.
 
 %package -n python-keystoneclient-doc
@@ -88,28 +79,25 @@ Identity API.
 echo "intersphinx_mapping = {}" >> doc/source/conf.py
 
 %build
-%{python_build}
+%{py3_build}
 
 # Build HTML docs and man page
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 
 %install
-%{python_install}
-
-# Delete tests
-rm -fr %{buildroot}%{python2_sitelib}/tests
+%{py3_install}
 
 # Fix hidden-file-or-dir warnings
 rm -fr html/.doctrees html/.buildinfo
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-keystoneclient
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/keystoneclient
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/keystoneclient
+%{python3_sitelib}/*.egg-info
 
 %files -n python-keystoneclient-doc
 %doc doc/build/html
