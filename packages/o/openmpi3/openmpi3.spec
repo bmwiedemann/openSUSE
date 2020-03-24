@@ -42,8 +42,8 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define vers 3.1.4
-%define _vers 3_1_4
+%define vers 3.1.6
+%define _vers 3_1_6
 %define m_f_ver 3
 %bcond_with ringdisabled
 
@@ -115,7 +115,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.57629e7cffb0
+%define git_ver .0.ea348728b4c8
 
 #############################################################################
 #
@@ -137,7 +137,7 @@ Source4:        mpivars.sh
 Source5:        mpivars.csh
 Patch0:         Build-warning-stringop-overflow-in.patch
 Patch1:         reproducible.patch
-Patch2:         add-gen-p5-chip-pci-id-to-ini-file.patch
+Patch2:         memory-patcher-fix-compiler-warning.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
