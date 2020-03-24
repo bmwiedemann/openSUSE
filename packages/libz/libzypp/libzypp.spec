@@ -25,7 +25,7 @@
 %bcond_without mediabackend_tests
 
 Name:           libzypp
-Version:        17.23.1
+Version:        17.23.2
 Release:        0
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
@@ -51,7 +51,7 @@ Recommends:     logrotate
 # lsof is used for 'zypper ps':
 Recommends:     lsof
 %endif
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.1
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} >= 1330
@@ -64,7 +64,7 @@ BuildRequires:  boost-devel
 %endif
 BuildRequires:  dejagnu
 BuildRequires:  doxygen
-BuildRequires:  gcc-c++ >= 4.6
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel
 BuildRequires:  graphviz
 BuildRequires:  libxml2-devel
