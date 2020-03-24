@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 24 04:16:57 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use pip install --no-compile (boo#1094323)
+
+-------------------------------------------------------------------
 Fri Mar 20 07:00:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Lite flavor should not provide python3-tensorflow nor tensorflow
