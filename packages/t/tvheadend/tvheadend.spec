@@ -1,7 +1,7 @@
 #
 # spec file for package tvheadend
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,6 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 %define htsgroup video
 %define htsuser hts
 %define homedir %{_localstatedir}/lib/tvheadend
@@ -34,7 +29,7 @@ Summary:        A TV Streaming Server
 # rest of code seems to be GPL-3.0+
 License:        GPL-3.0-or-later AND LGPL-2.1-only
 Group:          Productivity/Multimedia/Other
-Url:            https://tvheadend.org/
+URL:            https://tvheadend.org/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        %{name}_super
@@ -47,7 +42,7 @@ Patch3:         fix_configure_checks_with_LTO.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libavcodec)
@@ -60,7 +55,7 @@ BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(liburiparser)
 BuildRequires:  pkgconfig(zlib)
 Requires(pre):  group(%{htsgroup})
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 A TV streaming server supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, IPTV,
@@ -85,12 +80,13 @@ echo %{version} > rpm/version
 %build
 export CFLAGS_NO_WERROR="yes"
 %configure \
+  --python=%{_bindir}/python3 \
   --disable-ffmpeg_static \
   --disable-hdhomerun_static
 mkdir -p data/dvb-scan
 tar -C data/dvb-scan -xvf %{SOURCE4}
 touch data/dvb-scan/.stamp
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -124,7 +120,7 @@ EOM
 
 %pre
 %service_add_pre %{name}.service
-getent passwd %htsuser >/dev/null || %{_sbindir}/useradd -g %{htsgroup} -m -d %{homedir} -r -s /bin/false %{htsuser} -c "Tvheadend TV server"
+getent passwd %{htsuser} >/dev/null || %{_sbindir}/useradd -g %{htsgroup} -m -d %{homedir} -r -s /bin/false %{htsuser} -c "Tvheadend TV server"
 
 %preun
 %service_del_preun %{name}.service
