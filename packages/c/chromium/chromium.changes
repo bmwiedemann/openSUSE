@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 19 11:13:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 80.0.3987.149:
+  * High CVE-2020-6422: Use after free in WebGL. 
+  * High CVE-2020-6424: Use after free in media. 
+  * High CVE-2020-6425: Insufficient policy enforcement in extensions. 
+  * High CVE-2020-6426: Inappropriate implementation in V8. 
+  * High CVE-2020-6427: Use after free in audio. 
+  * High CVE-2020-6428: Use after free in audio. 
+  * High CVE-2020-6429: Use after free in audio. 
+  * High CVE-2019-20503: Out of bounds read in usersctplib.
+  * High CVE-2020-6449: Use after free in audio. 
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Sat Mar 14 09:18:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in python deps except interpreter, the bundles

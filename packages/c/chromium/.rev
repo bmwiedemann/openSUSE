@@ -2800,4 +2800,22 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   are patched anwyays</comment>
     <requestid>784928</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>9f7374529b91b51604fc4b003e342ce6</srcmd5>
+    <version>80.0.3987.149</version>
+    <time>1585085398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 80.0.3987.149:
+  * High CVE-2020-6422: Use after free in WebGL. 
+  * High CVE-2020-6424: Use after free in media. 
+  * High CVE-2020-6425: Insufficient policy enforcement in extensions. 
+  * High CVE-2020-6426: Inappropriate implementation in V8. 
+  * High CVE-2020-6427: Use after free in audio. 
+  * High CVE-2020-6428: Use after free in audio. 
+  * High CVE-2020-6429: Use after free in audio. 
+  * High CVE-2019-20503: Out of bounds read in usersctplib.
+  * High CVE-2020-6449: Use after free in audio. 
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>786439</requestid>
+  </revision>
 </revisionlist>
