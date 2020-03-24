@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycadf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%global oldpython python
 Name:           python-pycadf
 Version:        2.10.0
 Release:        0
@@ -26,15 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/pycadf
 Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-2.10.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-oslo.config >= 5.2.0
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -44,23 +34,31 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       %{oldpython}-pycadf-common
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-oslo.config >= 5.2.0
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-pytz >= 2013.6
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 DMTF Cloud Audit (CADF) data model
 
+%package -n python3-pycadf
+Summary:        DMTF Cloud Audit (CADF) data model
+Group:          Development/Languages/Python
+Requires:       python-pycadf-common
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-pytz >= 2013.6
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-pycadf
+DMTF Cloud Audit (CADF) data model
+
+This package contains the Python 3.x module.
+
 %package -n python-pycadf-doc
 Summary:        Documentation for the DMTF Cloud Audit (CADF) data model
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-pycadf-doc
 Documentation for the DMTF Cloud Audit (CADF) data model.
@@ -74,31 +72,30 @@ Configuration files for the DMTF Cloud Audit (CADF) data model.
 
 %prep
 %autosetup -n pycadf-2.10.0
-sed -i 's/^warning-is-error.*/warning-is-error = 0/g' setup.cfg
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx
+PBR_VERSION=2.10.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 # FIXME: pbr/wheel bug installing onfiguration files in /usr/etc
 mkdir -p %{buildroot}/%{_sysconfdir}
 mv %{buildroot}%{_prefix}%{_sysconfdir}/pycadf %{buildroot}/%{_sysconfdir}/
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-pycadf
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pycadf
-%{python_sitelib}/pycadf-*-py?.?.egg-info
+%{python3_sitelib}/pycadf
+%{python3_sitelib}/pycadf-*-py?.?.egg-info
 
 %files -n python-pycadf-common
 %license LICENSE
