@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 23 20:23:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.6.2
+  + Permit compilation with sbcl 2+ (module cffi updated to 0.21.0
+  + Big improvement in DBF module 
+- Packaging
+  + Remove merged related fixes (cffi)
+
+-------------------------------------------------------------------
 Tue Mar  3 10:55:28 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Add module cffi to version 0.21.0 in the bundle to fix compilation
