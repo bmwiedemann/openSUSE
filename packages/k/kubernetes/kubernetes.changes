@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 14:44:24 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Remove unused kubernetes-extra subpackage (for sources, use zypper si kubernetes-kubeadm with Source Repo enabled) 
+
+-------------------------------------------------------------------
+Thu Mar 19 13:17:36 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Tweak GOFLAGS for openSUSE, add -buildmode=pie
+
+-------------------------------------------------------------------
+Tue Mar 17 14:12:14 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Increase _constraints to require 9GB of HDD storage 
+
+-------------------------------------------------------------------
 Fri Mar 13 10:27:10 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.17.4:
