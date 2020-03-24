@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-server
-Version:        20180718
+Version:        20200312
 Release:        0
 Summary:        Patterns for Installation (server patterns)
 License:        MIT
@@ -217,8 +217,9 @@ Requires:       qemu-ppc
 %ifarch s390x
 Requires:       qemu-s390
 %endif
-%ifarch %arm
+%ifarch %arm aarch64 armv7hl
 Requires:       qemu-arm
+Requires:       qemu-ipxe
 %endif
 
 %description kvm_server
