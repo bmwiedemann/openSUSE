@@ -33,7 +33,7 @@
 # SLE15 or Leap 15.x
 %define gcc_go_version 7
 %else
-%define gcc_go_version 8
+%define gcc_go_version 9
 %endif
 %endif
 
@@ -78,8 +78,7 @@
 %define go_api 1.13
 
 # shared library support
-%define shared_supported %(echo "%{go_api} >= 1.5" | bc -l)
-%if %{shared_supported}
+%if "%{rpm_vercmp %{go_api} 1.5}" > "0"
 %if %{with gccgo}
 %define with_shared 1
 %else
@@ -119,7 +118,7 @@
 %endif
 
 Name:           go1.13
-Version:        1.13.8
+Version:        1.13.9
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -136,7 +135,6 @@ Patch5:         tools-packaging.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
-Patch10:        gcc8-go.patch
 Patch11:        gcc9-rsp-clobber.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
@@ -150,17 +148,18 @@ BuildRequires:  gcc%{gcc_go_version}-go
 BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(systemd)
 Recommends:     %{name}-doc = %{version}
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
 BuildRequires:  gcc-c++
 %endif
 #BNC#818502 debug edit tool of rpm fails on i586 builds
-BuildRequires:  bc
 BuildRequires:  rpm >= 4.11.1
-# for go.gdbinit, directory ownership
-BuildRequires:  gdb
+# Needed on arm aarch64 to avoid
+# collect2: fatal error: cannot find 'ld'-
+%ifarch %arm aarch64
+BuildRequires:  binutils-gold
+%endif
 Requires(post):	update-alternatives
 Requires(postun):	update-alternatives
 Requires:       gcc
@@ -220,9 +219,6 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %endif
 %if 0%{?gcc_go_version} == 7
 %patch9 -p1
-%endif
-%if 0%{?gcc_go_version} == 8
-%patch10 -p1
 %endif
 %endif
 
@@ -359,6 +355,7 @@ fi
 %{_libdir}/go/%{go_api}
 %dir %{_datadir}/go
 %{_datadir}/go/%{go_api}
+%dir %{_sysconfdir}/gdbinit.d/
 %config %{_sysconfdir}/gdbinit.d/go.gdb
 %ghost %{_sysconfdir}/alternatives/go
 %ghost %{_sysconfdir}/alternatives/gofmt
