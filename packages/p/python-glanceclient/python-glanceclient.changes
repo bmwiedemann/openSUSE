@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:25:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add obsoletes
+
+-------------------------------------------------------------------
+Wed Mar 11 17:07:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only build
+
+-------------------------------------------------------------------
 Wed Oct  9 12:59:17 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.17.0

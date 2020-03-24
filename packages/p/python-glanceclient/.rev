@@ -549,4 +549,14 @@ update to version 2.3.0
   - Modify the url of upper_constraints_file</comment>
     <requestid>776218</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>d34bbc5fdd7fe0442948011001b03785</srcmd5>
+    <version>2.17.0</version>
+    <time>1585085580</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only build</comment>
+    <requestid>787452</requestid>
+  </revision>
 </revisionlist>
