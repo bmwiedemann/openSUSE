@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 21 20:27:49 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1584822453.7eb772a7:
+  * Add support for cloning and checking out a single git commit through CASEDIR
+  * Simplify automatic coverage analysis with just statement coverage
+
+-------------------------------------------------------------------
 Wed Mar 11 21:00:20 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1583960405.4e3dec50:
