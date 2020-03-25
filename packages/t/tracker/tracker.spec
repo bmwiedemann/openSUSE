@@ -232,8 +232,10 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 %fdupes %{buildroot}%{_datadir}/gtk-doc
 rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
 
+%ifnarch %arm
 %check
 %meson_test
+%endif
 
 %post -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 %postun -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig

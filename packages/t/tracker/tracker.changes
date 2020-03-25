@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 07:42:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable tests on %arm as they fail in OBS but succeed in a
+  local osc build
+
+-------------------------------------------------------------------
 Tue Mar 10 19:36:17 UTC 2020 - mgorse@suse.com
 
 - Update to version 2.3.4:
