@@ -35,6 +35,7 @@ BuildRequires:  harfbuzz-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libcgal-devel
 BuildRequires:  libqscintilla-qt5-devel
 BuildRequires:  libspnav-devel
