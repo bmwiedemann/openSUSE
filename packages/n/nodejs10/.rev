@@ -293,4 +293,12 @@
   * enabled stricter HTTP header parsing by default.</comment>
     <requestid>774097</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>99619b78bf0da542dbdb374b22594dca</srcmd5>
+    <version>10.19.0</version>
+    <time>1585176134</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786454</requestid>
+  </revision>
 </revisionlist>

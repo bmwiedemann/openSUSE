@@ -147,6 +147,7 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 Patch104:       npm_search_paths.patch
 Patch105:       skip_test_on_lowmem.patch
 Patch106:       skip_no_console.patch
+Patch108:       openssl_rand_regression.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -197,6 +198,7 @@ BuildRequires:  xz
 BuildRequires:  zlib-devel
 
 %if %node_version_number > 12
+BuildRequires:  netcfg
 BuildRequires:  python3
 %else
 %if 0%{?suse_version} >= 1500
@@ -354,6 +356,7 @@ tar Jxvf %{SOURCE11}
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
+%patch108 -p1
 %patch120 -p1
 %patch200 -p1
 
