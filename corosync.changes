@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 20 14:07:26 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Fix bsc#1163460 Corosync does not support link-local IPv6 addresses
+  Added: bug-1163460-totemip-Add-support-for-sin6_scope_id.patch 
+
+-------------------------------------------------------------------
+Wed Mar 18 02:47:13 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Fix bsc#1166899, return value of "corosync-quorumtool -s" was not correct
+  Added: bug-1166899-quorumtool-Fix-exit-status-codes.patch
+
+-------------------------------------------------------------------
 Fri Jan  3 11:30:41 UTC 2020 - matthias.gerstner@suse.com
 
 - Don't package sysconfig file in tmpfiles.d, it's a bug. Instead correctly
