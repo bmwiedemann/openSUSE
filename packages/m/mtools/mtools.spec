@@ -1,7 +1,7 @@
 #
 # spec file for package mtools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
-Url:            http://mtools.linux.lu/
+URL:            http://mtools.linux.lu/
 Source0:        http://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2
 Source1:        http://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
@@ -35,7 +35,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 Requires(pre):  %{install_info_prereq}
-Requires:       glibc-locale
+Requires:       glibc-locale-base
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  makeinfo
 BuildRequires:  texinfo

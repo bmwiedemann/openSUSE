@@ -424,4 +424,13 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
   % mtools-prototypes.diff</comment>
     <requestid>661853</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>571ad2dc8ef263edf9fba2e9c410dcb9</srcmd5>
+    <version>4.0.23</version>
+    <time>1585176094</time>
+    <user>dimstar_suse</user>
+    <comment>- require glibc-locale-base instead o glibc-locale [bsc#1165837]
+  [bsc#957007]</comment>
+    <requestid>786127</requestid>
+  </revision>
 </revisionlist>
