@@ -2575,4 +2575,18 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/issues/1860).</comment>
     <requestid>786802</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>7eaeb043dc8e990bcdd22a6542792565</srcmd5>
+    <version>7.0.10.2</version>
+    <time>1585176260</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.2
+  * Fixed another sizing issue with the label coder when pointsize is set.
+  * Respect explicit image filename modified (e.g. png24:im.png) (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1835).
+  * Add support for returning the minimum bounding box of an image with the
+    %[minimum-bounding-box] property.
+  * Stroked dash array render properly again.</comment>
+    <requestid>788060</requestid>
+  </revision>
 </revisionlist>

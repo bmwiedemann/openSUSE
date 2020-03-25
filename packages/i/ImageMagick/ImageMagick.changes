@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 25 07:50:13 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.2
+  * Fixed another sizing issue with the label coder when pointsize is set.
+  * Respect explicit image filename modified (e.g. png24:im.png) (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1835).
+  * Add support for returning the minimum bounding box of an image with the
+    %[minimum-bounding-box] property.
+  * Stroked dash array render properly again.
+
+-------------------------------------------------------------------
 Fri Mar 20 08:30:41 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.1
