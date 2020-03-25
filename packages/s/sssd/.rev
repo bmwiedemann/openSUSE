@@ -911,4 +911,13 @@
     <comment></comment>
     <requestid>785703</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>cc24d1578a139416f3c9b64680f42a90</srcmd5>
+    <version>2.2.3</version>
+    <time>1585176243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3
+- Add 0001-Fix-build-failure-against-samba-4.12.0rc1.patch</comment>
+    <requestid>787787</requestid>
+  </revision>
 </revisionlist>

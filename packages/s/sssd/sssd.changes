@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 10:49:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2.2.3
+  * New features:
+  * allow_missing_name now treats empty strings the same as
+    missing names.
+  * "soft_ocsp" and "soft_crl" options have been added to make
+    the checks for revoked certificates more flexible if the
+    system is offline.
+  * Smart card authentication in polkit is now allowed by default.
+  * Fixes:
+  * Handling of FreeIPA users and groups containing ‘@’ sign now
+    works.
+  * SSSD was unable to hande ldap_uri containing URIs with
+    different port numbers, which has been rectified.
+- Add 0001-Fix-build-failure-against-samba-4.12.0rc1.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 16:44:23 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix dynamic DNS updates not using FQDN (bsc#1160587); Add

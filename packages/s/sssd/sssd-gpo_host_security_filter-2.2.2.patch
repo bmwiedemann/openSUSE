@@ -11,20 +11,26 @@ creates the need for sub-OU's, each with its own
 GPO, otherwise one OU with an assigned GPO would
 be sufficient.
 ---
- Makefile.am                   |   2 +
- src/db/sysdb_computer.c       | 164 ++++++++++++++++++++++++++++
- src/db/sysdb_computer.h       |  49 +++++++++
- src/providers/ad/ad_gpo.c     | 196 ++++++++++++++++++++++++++++++++--
- src/providers/ad/ad_gpo_ndr.c |   2 +-
- 5 files changed, 403 insertions(+), 10 deletions(-)
+ Makefile.am                    |    2 
+ src/confdb/confdb.c            |   11 ++
+ src/confdb/confdb.h            |    2 
+ src/config/cfg_rules.ini       |    1 
+ src/db/sysdb_computer.c        |  185 ++++++++++++++++++++++++++++++++++++
+ src/db/sysdb_computer.h        |   51 ++++++++++
+ src/man/sssd-ad.5.xml          |    7 -
+ src/man/sssd.conf.5.xml        |   13 ++
+ src/providers/ad/ad_gpo.c      |  208 +++++++++++++++++++++++++++++++++++++++--
+ src/providers/ad/ad_gpo_ndr.c  |    2 
+ src/tests/cmocka/test_ad_gpo.c |   33 +++++-
+ 11 files changed, 495 insertions(+), 20 deletions(-)
  create mode 100644 src/db/sysdb_computer.c
  create mode 100644 src/db/sysdb_computer.h
 
-diff --git a/Makefile.am b/Makefile.am
-index c78f45bdf..8327d82ff 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -778,6 +778,7 @@ dist_noinst_HEADERS = \
+Index: sssd-2.2.3/Makefile.am
+===================================================================
+--- sssd-2.2.3.orig/Makefile.am
++++ sssd-2.2.3/Makefile.am
+@@ -781,6 +781,7 @@ dist_noinst_HEADERS = \
      src/db/sysdb_services.h \
      src/db/sysdb_ssh.h \
      src/db/sysdb_domain_resolution_order.h \
@@ -32,7 +38,7 @@ index c78f45bdf..8327d82ff 100644
      src/confdb/confdb.h \
      src/confdb/confdb_private.h \
      src/confdb/confdb_setup.h \
-@@ -1242,6 +1243,7 @@ libsss_util_la_SOURCES = \
+@@ -1247,6 +1248,7 @@ libsss_util_la_SOURCES = \
      src/db/sysdb_certmap.c \
      src/db/sysdb_domain_resolution_order.c \
      src/util/sss_pam_data.c \
@@ -40,12 +46,65 @@ index c78f45bdf..8327d82ff 100644
      src/util/util.c \
      src/util/util_ext.c \
      src/util/util_preauth.c \
-diff --git a/src/db/sysdb_computer.c b/src/db/sysdb_computer.c
-new file mode 100644
-index 000000000..e3db01ac6
+Index: sssd-2.2.3/src/confdb/confdb.c
+===================================================================
+--- sssd-2.2.3.orig/src/confdb/confdb.c
++++ sssd-2.2.3/src/confdb/confdb.c
+@@ -1228,6 +1228,17 @@ static int confdb_get_domain_internal(st
+         goto done;
+     }
+ 
++    /* Override the computer timeout, if specified */
++    ret = get_entry_as_uint32(res->msgs[0], &domain->computer_timeout,
++                              CONFDB_DOMAIN_COMPUTER_CACHE_TIMEOUT,
++                              entry_cache_timeout);
++    if (ret != EOK) {
++        DEBUG(SSSDBG_FATAL_FAILURE,
++              "Invalid value for [%s]\n",
++              CONFDB_DOMAIN_COMPUTER_CACHE_TIMEOUT);
++        goto done;
++    }
++
+     /* Set refresh_expired_interval, if specified */
+     ret = get_entry_as_uint32(res->msgs[0], &domain->refresh_expired_interval,
+                               CONFDB_DOMAIN_REFRESH_EXPIRED_INTERVAL,
+Index: sssd-2.2.3/src/confdb/confdb.h
+===================================================================
+--- sssd-2.2.3.orig/src/confdb/confdb.h
++++ sssd-2.2.3/src/confdb/confdb.h
+@@ -230,6 +230,7 @@
+ #define CONFDB_DOMAIN_AUTOFS_CACHE_TIMEOUT "entry_cache_autofs_timeout"
+ #define CONFDB_DOMAIN_SUDO_CACHE_TIMEOUT "entry_cache_sudo_timeout"
+ #define CONFDB_DOMAIN_SSH_HOST_CACHE_TIMEOUT "entry_cache_ssh_host_timeout"
++#define CONFDB_DOMAIN_COMPUTER_CACHE_TIMEOUT "entry_cache_computer_timeout"
+ #define CONFDB_DOMAIN_PWD_EXPIRATION_WARNING "pwd_expiration_warning"
+ #define CONFDB_DOMAIN_REFRESH_EXPIRED_INTERVAL "refresh_expired_interval"
+ #define CONFDB_DOMAIN_OFFLINE_TIMEOUT "offline_timeout"
+@@ -373,6 +374,7 @@ struct sss_domain_info {
+     uint32_t autofsmap_timeout;
+     uint32_t sudo_timeout;
+     uint32_t ssh_host_timeout;
++    uint32_t computer_timeout;
+ 
+     uint32_t refresh_expired_interval;
+     uint32_t subdomain_refresh_interval;
+Index: sssd-2.2.3/src/config/cfg_rules.ini
+===================================================================
+--- sssd-2.2.3.orig/src/config/cfg_rules.ini
++++ sssd-2.2.3/src/config/cfg_rules.ini
+@@ -403,6 +403,7 @@ option = entry_cache_service_timeout
+ option = entry_cache_autofs_timeout
+ option = entry_cache_sudo_timeout
+ option = entry_cache_ssh_host_timeout
++option = entry_cache_computer_timeout
+ option = refresh_expired_interval
+ 
+ # Dynamic DNS updates
+Index: sssd-2.2.3/src/db/sysdb_computer.c
+===================================================================
 --- /dev/null
-+++ b/src/db/sysdb_computer.c
-@@ -0,0 +1,164 @@
++++ sssd-2.2.3/src/db/sysdb_computer.c
+@@ -0,0 +1,185 @@
 +/*
 +    SSSD
 +
@@ -168,7 +227,9 @@ index 000000000..e3db01ac6
 +sysdb_set_computer(TALLOC_CTX *mem_ctx,
 +                   struct sss_domain_info *domain,
 +                   const char *computer_name,
-+                   const char *sid_str)
++                   const char *sid_str,
++                   int cache_timeout,
++                   time_t now)
 +{
 +    TALLOC_CTX *tmp_ctx;
 +    int ret;
@@ -195,13 +256,32 @@ index 000000000..e3db01ac6
 +    if (ret) goto done;
 +
 +    /* creation time */
-+    ret = sysdb_attrs_add_time_t(attrs, SYSDB_CREATE_TIME, time(NULL));
++    ret = sysdb_attrs_add_time_t(attrs, SYSDB_CREATE_TIME, now);
 +    if (ret) goto done;
++
++    /* Set a cache expire time. There is a periodic task that cleans up
++     * expired entries from the cache even when enumeration is disabled */
++    ret = sysdb_attrs_add_time_t(attrs, SYSDB_CACHE_EXPIRE,
++                                 cache_timeout ? (now + cache_timeout) : 0);
++    if (ret != EOK) {
++        DEBUG(SSSDBG_OP_FAILURE, "Could not set sysdb cache expire [%d]: %s\n",
++              ret, strerror(ret));
++        goto done;
++    }
 +
 +    ret = sysdb_store_custom(domain, computer_name, COMPUTERS_SUBDIR, attrs);
 +    if (ret) goto done;
 +
-+
++    /* FIXME As a future improvement we have to extend domain enumeration.
++     * When 'enumerate = true' for a domain, sssd starts a periodic task
++     * that brings all users and groups to the cache, cleaning up
++     * stale objects after each run. If enumeration is disabled, the cleanup
++     * task for expired entries is started instead.
++     *
++     * We have to extend the enumeration task to fetch 'computer'
++     * objects as well (see ad_id_enumeration_send, the entry point of the
++     * enumeration task for the  id provider).
++     */
 +done:
 +    if (ret) {
 +        DEBUG(SSSDBG_TRACE_FUNC, "Error: %d (%s)\n", ret, strerror(ret));
@@ -210,12 +290,11 @@ index 000000000..e3db01ac6
 +
 +    return ret;
 +}
-diff --git a/src/db/sysdb_computer.h b/src/db/sysdb_computer.h
-new file mode 100644
-index 000000000..7c937003d
+Index: sssd-2.2.3/src/db/sysdb_computer.h
+===================================================================
 --- /dev/null
-+++ b/src/db/sysdb_computer.h
-@@ -0,0 +1,49 @@
++++ sssd-2.2.3/src/db/sysdb_computer.h
+@@ -0,0 +1,51 @@
 +/*
 +    SSSD
 +
@@ -262,13 +341,57 @@ index 000000000..7c937003d
 +sysdb_set_computer(TALLOC_CTX *mem_ctx,
 +                   struct sss_domain_info *domain,
 +                   const char *computer_name,
-+                   const char *sid_str);
++                   const char *sid_str,
++                   int cache_timeout,
++                   time_t now);
 +
 +#endif /* SYSDB_COMPUTERS_H_ */
-diff --git a/src/providers/ad/ad_gpo.c b/src/providers/ad/ad_gpo.c
-index 7442f27cc..224841db3 100644
---- a/src/providers/ad/ad_gpo.c
-+++ b/src/providers/ad/ad_gpo.c
+Index: sssd-2.2.3/src/man/sssd-ad.5.xml
+===================================================================
+--- sssd-2.2.3.orig/src/man/sssd-ad.5.xml
++++ sssd-2.2.3/src/man/sssd-ad.5.xml
+@@ -407,13 +407,6 @@ DOM:dom1:(memberOf:1.2.840.113556.1.4.19
+                             always apply also to the user.
+                         </para>
+                         <para>
+-                            NOTE: The current version of SSSD does not support
+-                            host (computer) entries in the GPO 'Security
+-                            Filtering' list. Only user and group entries are
+-                            supported. Host entries in the list have no
+-                            effect.
+-                        </para>
+-                        <para>
+                             NOTE: If the operation mode is set to enforcing, it
+                             is possible that users that were previously allowed
+                             logon access will now be denied logon access (as
+Index: sssd-2.2.3/src/man/sssd.conf.5.xml
+===================================================================
+--- sssd-2.2.3.orig/src/man/sssd.conf.5.xml
++++ sssd-2.2.3/src/man/sssd.conf.5.xml
+@@ -2244,6 +2244,19 @@ p11_uri = library-description=OpenSC%20s
+                 </varlistentry>
+ 
+                 <varlistentry>
++                    <term>entry_cache_computer_timeout (integer)</term>
++                    <listitem>
++                        <para>
++                            How many seconds to keep the local computer
++                            entry before asking the backend again
++                        </para>
++                        <para>
++                            Default: entry_cache_timeout
++                        </para>
++                    </listitem>
++                </varlistentry>
++
++                <varlistentry>
+                     <term>refresh_expired_interval (integer)</term>
+                     <listitem>
+                         <para>
+Index: sssd-2.2.3/src/providers/ad/ad_gpo.c
+===================================================================
+--- sssd-2.2.3.orig/src/providers/ad/ad_gpo.c
++++ sssd-2.2.3/src/providers/ad/ad_gpo.c
 @@ -51,6 +51,7 @@
  #include "util/util_sss_idmap.h"
  #include <ndr.h>
@@ -285,51 +408,7 @@ index 7442f27cc..224841db3 100644
  
  #define UAC_WORKSTATION_TRUST_ACCOUNT 0x00001000
  #define UAC_SERVER_TRUST_ACCOUNT 0x00002000
-@@ -573,8 +575,10 @@ ad_gpo_dom_sid_equal(const struct dom_sid *sid1, const struct dom_sid *sid2)
- static errno_t
- ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
-                 const char *user,
-+                const char *ad_hostname,
-                 struct sss_domain_info *domain,
-                 const char **_user_sid,
-+                const char **_host_sid,
-                 const char ***_group_sids,
-                 int *_group_size)
- {
-@@ -584,6 +588,7 @@ ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
-     int i = 0;
-     int num_group_sids = 0;
-     const char *user_sid = NULL;
-+    const char *host_sid = NULL;
-     const char *group_sid = NULL;
-     const char **group_sids = NULL;
- 
-@@ -641,6 +646,24 @@ ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
-     *_group_size = num_group_sids + 1;
-     *_group_sids = talloc_steal(mem_ctx, group_sids);
-     *_user_sid = talloc_steal(mem_ctx, user_sid);
-+
-+    /* Get the cached computer object by computer name */
-+    if (ad_hostname != NULL) {
-+        static const char *host_attrs[] = { SYSDB_SID_STR, NULL };
-+        struct ldb_message *msg;
-+        ret = sysdb_get_computer(tmp_ctx, domain, ad_hostname, host_attrs, &msg);
-+        if (ret != EOK) {
-+            DEBUG(SSSDBG_OP_FAILURE,
-+                  "sysdb_get_computer failed: [%d](%s)\n",
-+                  ret, sss_strerror(ret));
-+            goto done;
-+        }
-+
-+        /* Get the computer SID from the cached entry */
-+        host_sid = ldb_msg_find_attr_as_string(msg, SYSDB_SID_STR, NULL);
-+        *_host_sid = talloc_steal(mem_ctx, host_sid);
-+    }
-+
-     ret = EOK;
- 
-  done:
-@@ -654,6 +677,7 @@ ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
+@@ -654,6 +656,7 @@ ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
   */
  static errno_t
  ad_gpo_ace_includes_client_sid(const char *user_sid,
@@ -337,7 +416,7 @@ index 7442f27cc..224841db3 100644
                                 const char **group_sids,
                                 int group_size,
                                 struct dom_sid ace_dom_sid,
-@@ -662,6 +686,7 @@ ad_gpo_ace_includes_client_sid(const char *user_sid,
+@@ -662,6 +665,7 @@ ad_gpo_ace_includes_client_sid(const cha
  {
      int i = 0;
      struct dom_sid *user_dom_sid;
@@ -345,7 +424,7 @@ index 7442f27cc..224841db3 100644
      struct dom_sid *group_dom_sid;
      enum idmap_error_code err;
      bool included = false;
-@@ -679,6 +704,19 @@ ad_gpo_ace_includes_client_sid(const char *user_sid,
+@@ -679,6 +683,19 @@ ad_gpo_ace_includes_client_sid(const cha
          return EOK;
      }
  
@@ -365,7 +444,7 @@ index 7442f27cc..224841db3 100644
      for (i = 0; i < group_size; i++) {
          err = sss_idmap_sid_to_smb_sid(idmap_ctx, group_sids[i], &group_dom_sid);
          if (err != IDMAP_SUCCESS) {
-@@ -728,6 +766,7 @@ ad_gpo_ace_includes_client_sid(const char *user_sid,
+@@ -728,6 +745,7 @@ ad_gpo_ace_includes_client_sid(const cha
  static enum ace_eval_status ad_gpo_evaluate_ace(struct security_ace *ace,
                                                  struct sss_idmap_ctx *idmap_ctx,
                                                  const char *user_sid,
@@ -373,7 +452,7 @@ index 7442f27cc..224841db3 100644
                                                  const char **group_sids,
                                                  int group_size)
  {
-@@ -741,8 +780,9 @@ static enum ace_eval_status ad_gpo_evaluate_ace(struct security_ace *ace,
+@@ -741,8 +759,9 @@ static enum ace_eval_status ad_gpo_evalu
          return AD_GPO_ACE_NEUTRAL;
      }
  
@@ -385,7 +464,7 @@ index 7442f27cc..224841db3 100644
  
      if (ret != EOK) {
          return AD_GPO_ACE_DENIED;
-@@ -786,6 +826,7 @@ static enum ace_eval_status ad_gpo_evaluate_ace(struct security_ace *ace,
+@@ -786,6 +805,7 @@ static enum ace_eval_status ad_gpo_evalu
  static errno_t ad_gpo_evaluate_dacl(struct security_acl *dacl,
                                      struct sss_idmap_ctx *idmap_ctx,
                                      const char *user_sid,
@@ -393,7 +472,7 @@ index 7442f27cc..224841db3 100644
                                      const char **group_sids,
                                      int group_size,
                                      bool *_dacl_access_allowed)
-@@ -810,7 +851,7 @@ static errno_t ad_gpo_evaluate_dacl(struct security_acl *dacl,
+@@ -810,7 +830,7 @@ static errno_t ad_gpo_evaluate_dacl(stru
      for (i = 0; i < dacl->num_aces; i ++) {
          ace = &dacl->aces[i];
  
@@ -402,34 +481,15 @@ index 7442f27cc..224841db3 100644
                                           group_sids, group_size);
  
          switch (ace_status) {
-@@ -838,6 +879,7 @@ static errno_t ad_gpo_evaluate_dacl(struct security_acl *dacl,
+@@ -838,6 +858,7 @@ static errno_t ad_gpo_evaluate_dacl(stru
  static errno_t
  ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
                             const char *user,
-+                           const char *ad_hostname,
++                           const char *host_sid,
                             struct sss_domain_info *domain,
                             struct sss_idmap_ctx *idmap_ctx,
                             struct gp_gpo **candidate_gpos,
-@@ -852,6 +894,7 @@ ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
-     struct security_descriptor *sd = NULL;
-     struct security_acl *dacl = NULL;
-     const char *user_sid = NULL;
-+    const char *host_sid = NULL;
-     const char **group_sids = NULL;
-     int group_size = 0;
-     int gpo_dn_idx = 0;
-@@ -864,8 +907,8 @@ ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
-         goto done;
-     }
- 
--    ret = ad_gpo_get_sids(tmp_ctx, user, domain, &user_sid,
--                          &group_sids, &group_size);
-+    ret = ad_gpo_get_sids(tmp_ctx, user, ad_hostname, domain, &user_sid,
-+                          &host_sid, &group_sids, &group_size);
-     if (ret != EOK) {
-         ret = ERR_NO_SIDS;
-         DEBUG(SSSDBG_OP_FAILURE,
-@@ -927,8 +970,8 @@ ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
+@@ -927,8 +948,8 @@ ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *m
              break;
          }
  
@@ -440,16 +500,15 @@ index 7442f27cc..224841db3 100644
          if (ret != EOK) {
              DEBUG(SSSDBG_MINOR_FAILURE, "Could not determine if GPO is applicable\n");
              continue;
-@@ -1388,7 +1431,7 @@ ad_gpo_access_check(TALLOC_CTX *mem_ctx,
-         DEBUG(SSSDBG_TRACE_FUNC, " denied_sids[%d] = %s\n", j, denied_sids[j]);
-     }
- 
--    ret = ad_gpo_get_sids(mem_ctx, user, domain, &user_sid,
-+    ret = ad_gpo_get_sids(mem_ctx, user, NULL, domain, &user_sid, NULL,
-                           &group_sids, &group_size);
-     if (ret != EOK) {
-         ret = ERR_NO_SIDS;
-@@ -1617,6 +1660,7 @@ static void ad_gpo_process_gpo_done(struct tevent_req *subreq);
+@@ -1602,6 +1623,7 @@ struct ad_gpo_access_state {
+     const char *user;
+     int gpo_timeout_option;
+     const char *ad_hostname;
++    const char *host_sid;
+     const char *target_dn;
+     struct gp_gpo **dacl_filtered_gpos;
+     int num_dacl_filtered_gpos;
+@@ -1617,6 +1639,7 @@ static void ad_gpo_process_gpo_done(stru
  
  static errno_t ad_gpo_cse_step(struct tevent_req *req);
  static void ad_gpo_cse_done(struct tevent_req *subreq);
@@ -457,50 +516,86 @@ index 7442f27cc..224841db3 100644
  
  struct tevent_req *
  ad_gpo_access_send(TALLOC_CTX *mem_ctx,
-@@ -1924,6 +1968,9 @@ ad_gpo_target_dn_retrieval_done(struct tevent_req *subreq)
+@@ -1924,6 +1947,11 @@ ad_gpo_target_dn_retrieval_done(struct t
      struct sysdb_attrs **reply;
      const char *target_dn = NULL;
      uint32_t uac;
 +    char *filter = NULL;
 +    char *domain_dn;
 +    const char *attrs[] = {AD_AT_SID, NULL};
++    struct ldb_message *msg;
++    static const char *host_attrs[] = { SYSDB_SID_STR, NULL };
  
      req = tevent_req_callback_data(subreq, struct tevent_req);
      state = tevent_req_data(req, struct ad_gpo_access_state);
-@@ -2008,6 +2055,136 @@ ad_gpo_target_dn_retrieval_done(struct tevent_req *subreq)
+@@ -2008,6 +2036,173 @@ ad_gpo_target_dn_retrieval_done(struct t
          goto done;
      }
  
-+    /* Convert the domain name into domain DN */
-+    ret = domain_to_basedn(state, state->host_domain->name, &domain_dn);
-+    if (ret != EOK) {
-+        DEBUG(SSSDBG_OP_FAILURE,
-+              "Cannot convert domain name [%s] to base DN [%d]: %s\n",
-+               state->host_domain->name, ret, sss_strerror(ret));
++    /* Check if computer exists in cache */
++    ret = sysdb_get_computer(state, state->user_domain, state->ad_hostname,
++                             host_attrs, &msg);
++    if (ret == ENOENT) {
++        /* The computer is not in cache so query LDAP server */
++        /* Convert the domain name into domain DN */
++        ret = domain_to_basedn(state, state->host_domain->name, &domain_dn);
++        if (ret != EOK) {
++            DEBUG(SSSDBG_OP_FAILURE,
++                  "Cannot convert domain name [%s] to base DN [%d]: %s\n",
++                   state->host_domain->name, ret, sss_strerror(ret));
++            goto done;
++        }
++
++        filter = talloc_asprintf(subreq, SYSDB_COMP_FILTER, state->ad_hostname);
++        if (!filter) {
++            ret = ENOMEM;
++            goto done;
++        }
++
++        subreq = sdap_get_generic_send(state, state->ev, state->opts,
++                                       sdap_id_op_handle(state->sdap_op),
++                                       domain_dn, LDAP_SCOPE_SUBTREE,
++                                       filter, attrs, NULL, 0,
++                                       state->timeout,
++                                       false);
++
++        if (subreq == NULL) {
++            DEBUG(SSSDBG_OP_FAILURE, "sdap_get_generic_send failed.\n");
++            ret = ENOMEM;
++            goto done;
++        }
++
++        tevent_req_set_callback(subreq, ad_gpo_get_host_sid_retrieval_done, req);
++        return;
++    } else if (ret != EOK) {
++        ret = sdap_id_op_done(state->sdap_op, ret, &dp_error);
 +        goto done;
 +    }
 +
-+    /* Query the computer sid from LDAP, if computer does not exist in cache */
-+    filter = talloc_asprintf(subreq, SYSDB_COMP_FILTER, state->ad_hostname);
-+    if (!filter) {
++    /* The computer exists in the cache, there is no need to query LDAP.
++     * Store the retrieved host sid from cache in the state to avoid querying
++     * the cache again in ad_gpo_get_sids.
++     */
++    state->host_sid = ldb_msg_find_attr_as_string(msg, SYSDB_SID_STR, NULL);
++    talloc_steal(state, state->host_sid);
++
++    subreq = ad_gpo_process_som_send(state,
++                                     state->ev,
++                                     state->conn,
++                                     state->ldb_ctx,
++                                     state->sdap_op,
++                                     state->opts,
++                                     state->access_ctx->ad_options,
++                                     state->timeout,
++                                     state->target_dn,
++                                     state->host_domain->name);
++    if (subreq == NULL) {
 +        ret = ENOMEM;
 +        goto done;
 +    }
 +
-+    subreq = sdap_get_generic_send(state, state->ev, state->opts,
-+                                   sdap_id_op_handle(state->sdap_op),
-+                                   domain_dn, LDAP_SCOPE_SUBTREE,
-+                                   filter, attrs, NULL, 0,
-+                                   state->timeout,
-+                                   false);
++    tevent_req_set_callback(subreq, ad_gpo_process_som_done, req);
 +
-+    if (subreq == NULL) {
-+        DEBUG(SSSDBG_OP_FAILURE, "sdap_get_generic_send failed.\n");
-+        ret = EIO;
-+        goto done;
-+    }
-+
-+    tevent_req_set_callback(subreq, ad_gpo_get_host_sid_retrieval_done, req);
 +    ret = EOK;
 +
 + done:
@@ -590,10 +685,13 @@ index 7442f27cc..224841db3 100644
 +               ret, sss_strerror(ret));
 +        goto done;
 +    }
++    state->host_sid = talloc_steal(state, sid_str);
 +
 +    /* Put the sid string in the sysdb */
 +    ret = sysdb_set_computer(subreq, state->user_domain,
-+                             state->ad_hostname, sid_str);
++                             state->ad_hostname, state->host_sid,
++                             state->user_domain->computer_timeout,
++                             time(NULL));
 +    if (ret != EOK) {
 +        DEBUG(SSSDBG_OP_FAILURE,
 +              "sysdb_set_computer failed: [%d](%s)\n",
@@ -604,21 +702,21 @@ index 7442f27cc..224841db3 100644
      subreq = ad_gpo_process_som_send(state,
                                       state->ev,
                                       state->conn,
-@@ -2143,7 +2320,8 @@ ad_gpo_process_gpo_done(struct tevent_req *subreq)
+@@ -2143,7 +2338,8 @@ ad_gpo_process_gpo_done(struct tevent_re
          goto done;
      }
  
 -    ret = ad_gpo_filter_gpos_by_dacl(state, state->user, state->user_domain,
-+    ret = ad_gpo_filter_gpos_by_dacl(state, state->user, state->ad_hostname,
++    ret = ad_gpo_filter_gpos_by_dacl(state, state->user, state->host_sid,
 +                                     state->user_domain,
                                       state->opts->idmap_ctx->map,
                                       candidate_gpos, num_candidate_gpos,
                                       &state->dacl_filtered_gpos,
-diff --git a/src/providers/ad/ad_gpo_ndr.c b/src/providers/ad/ad_gpo_ndr.c
-index 101701cd5..d57303349 100644
---- a/src/providers/ad/ad_gpo_ndr.c
-+++ b/src/providers/ad/ad_gpo_ndr.c
-@@ -248,7 +248,7 @@ ndr_pull_security_ace_object_ctr(struct ndr_pull *ndr,
+Index: sssd-2.2.3/src/providers/ad/ad_gpo_ndr.c
+===================================================================
+--- sssd-2.2.3.orig/src/providers/ad/ad_gpo_ndr.c
++++ sssd-2.2.3/src/providers/ad/ad_gpo_ndr.c
+@@ -248,7 +248,7 @@ ndr_pull_security_ace_object_ctr(struct
      return NDR_ERR_SUCCESS;
  }
  
@@ -627,26 +725,11 @@ index 101701cd5..d57303349 100644
  ndr_pull_dom_sid(struct ndr_pull *ndr,
                   int ndr_flags,
                   struct dom_sid *r)
--- 
-2.24.0
-
-
-From 503393bc83454f2dce9fe38f6a9980b20ecfc6bf Mon Sep 17 00:00:00 2001
-From: David Mulder <dmulder@suse.com>
-Date: Fri, 4 Oct 2019 21:14:39 +0000
-Subject: [PATCH 2/5] Test the host sid checking
-References: jsc#SLE-9298
-Upstream: submitted
-
----
- src/tests/cmocka/test_ad_gpo.c | 33 +++++++++++++++++++++++++++------
- 1 file changed, 27 insertions(+), 6 deletions(-)
-
-diff --git a/src/tests/cmocka/test_ad_gpo.c b/src/tests/cmocka/test_ad_gpo.c
-index 0589adcc3..97f70408a 100644
---- a/src/tests/cmocka/test_ad_gpo.c
-+++ b/src/tests/cmocka/test_ad_gpo.c
-@@ -267,6 +267,7 @@ void test_populate_gplink_list_malformed(void **state)
+Index: sssd-2.2.3/src/tests/cmocka/test_ad_gpo.c
+===================================================================
+--- sssd-2.2.3.orig/src/tests/cmocka/test_ad_gpo.c
++++ sssd-2.2.3/src/tests/cmocka/test_ad_gpo.c
+@@ -267,6 +267,7 @@ void test_populate_gplink_list_malformed
   * Test SID-matching logic
   */
  static void test_ad_gpo_ace_includes_client_sid(const char *user_sid,
@@ -654,7 +737,7 @@ index 0589adcc3..97f70408a 100644
                                                  const char **group_sids,
                                                  int group_size,
                                                  struct dom_sid ace_dom_sid,
-@@ -286,8 +287,8 @@ static void test_ad_gpo_ace_includes_client_sid(const char *user_sid,
+@@ -286,8 +287,8 @@ static void test_ad_gpo_ace_includes_cli
                           &idmap_ctx);
      assert_int_equal(err, IDMAP_SUCCESS);
  
@@ -665,7 +748,7 @@ index 0589adcc3..97f70408a 100644
                                           &includes_client_sid);
      talloc_free(idmap_ctx);
  
-@@ -305,13 +306,14 @@ void test_ad_gpo_ace_includes_client_sid_true(void **state)
+@@ -305,13 +306,14 @@ void test_ad_gpo_ace_includes_client_sid
      struct dom_sid ace_dom_sid = {1, 4, {0, 0, 0, 0, 0, 5}, {21, 2, 3, 4}};
  
      const char *user_sid = "S-1-5-21-1175337206-4250576914-2321192831-1103";
@@ -682,7 +765,7 @@ index 0589adcc3..97f70408a 100644
  }
  
  void test_ad_gpo_ace_includes_client_sid_false(void **state)
-@@ -320,13 +322,29 @@ void test_ad_gpo_ace_includes_client_sid_false(void **state)
+@@ -320,13 +322,29 @@ void test_ad_gpo_ace_includes_client_sid
      struct dom_sid ace_dom_sid = {1, 4, {0, 0, 0, 0, 0, 5}, {21, 2, 3, 4}};
  
      const char *user_sid = "S-1-5-21-1175337206-4250576914-2321192831-1103";
@@ -724,464 +807,3 @@ index 0589adcc3..97f70408a 100644
      };
  
      /* Set debug level to invalid value so we can decide if -d 0 was used. */
--- 
-2.24.0
-
-
-From cfcdb0d7333164ee13b43abab0648c67681b9b9f Mon Sep 17 00:00:00 2001
-From: Samuel Cabrero <scabrero@suse.de>
-Date: Tue, 5 Nov 2019 19:05:36 +0100
-Subject: [PATCH 3/5] AD: Improve host SID retrieval
-References: jsc#SLE-9298
-Upstream: submitted
-
-Set the entry expire time for cached computers and avoid querying twice
-the cache by passing the host SID in the processing state if it is found
-the first time.
-
-Signed-off-by: Samuel Cabrero <scabrero@suse.de>
----
- src/db/sysdb_computer.c   |  27 ++++++++-
- src/db/sysdb_computer.h   |   4 +-
- src/providers/ad/ad_gpo.c | 119 ++++++++++++++++++++++----------------
- 3 files changed, 97 insertions(+), 53 deletions(-)
-
-diff --git a/src/db/sysdb_computer.c b/src/db/sysdb_computer.c
-index e3db01ac6..9fcaf5a7c 100644
---- a/src/db/sysdb_computer.c
-+++ b/src/db/sysdb_computer.c
-@@ -120,7 +120,9 @@ int
- sysdb_set_computer(TALLOC_CTX *mem_ctx,
-                    struct sss_domain_info *domain,
-                    const char *computer_name,
--                   const char *sid_str)
-+                   const char *sid_str,
-+                   int cache_timeout,
-+                   time_t now)
- {
-     TALLOC_CTX *tmp_ctx;
-     int ret;
-@@ -147,13 +149,32 @@ sysdb_set_computer(TALLOC_CTX *mem_ctx,
-     if (ret) goto done;
- 
-     /* creation time */
--    ret = sysdb_attrs_add_time_t(attrs, SYSDB_CREATE_TIME, time(NULL));
-+    ret = sysdb_attrs_add_time_t(attrs, SYSDB_CREATE_TIME, now);
-     if (ret) goto done;
- 
-+    /* Set a cache expire time. There is a periodic task that cleans up
-+     * expired entries from the cache even when enumeration is disabled */
-+    ret = sysdb_attrs_add_time_t(attrs, SYSDB_CACHE_EXPIRE,
-+                                 cache_timeout ? (now + cache_timeout) : 0);
-+    if (ret != EOK) {
-+        DEBUG(SSSDBG_OP_FAILURE, "Could not set sysdb cache expire [%d]: %s\n",
-+              ret, strerror(ret));
-+        goto done;
-+    }
-+
-     ret = sysdb_store_custom(domain, computer_name, COMPUTERS_SUBDIR, attrs);
-     if (ret) goto done;
- 
--
-+    /* FIXME As a future improvement we have to extend domain enumeration.
-+     * When 'enumerate = true' for a domain, sssd starts a periodic task
-+     * that brings all users and groups to the cache, cleaning up
-+     * stale objects after each run. If enumeration is disabled, the cleanup
-+     * task for expired entries is started instead.
-+     *
-+     * We have to extend the enumeration task to fetch 'computer'
-+     * objects as well (see ad_id_enumeration_send, the entry point of the
-+     * enumeration task for the  id provider).
-+     */
- done:
-     if (ret) {
-         DEBUG(SSSDBG_TRACE_FUNC, "Error: %d (%s)\n", ret, strerror(ret));
-diff --git a/src/db/sysdb_computer.h b/src/db/sysdb_computer.h
-index 7c937003d..4be67fdf5 100644
---- a/src/db/sysdb_computer.h
-+++ b/src/db/sysdb_computer.h
-@@ -44,6 +44,8 @@ int
- sysdb_set_computer(TALLOC_CTX *mem_ctx,
-                    struct sss_domain_info *domain,
-                    const char *computer_name,
--                   const char *sid_str);
-+                   const char *sid_str,
-+                   int cache_timeout,
-+                   time_t now);
- 
- #endif /* SYSDB_COMPUTERS_H_ */
-diff --git a/src/providers/ad/ad_gpo.c b/src/providers/ad/ad_gpo.c
-index 224841db3..6441e69a6 100644
---- a/src/providers/ad/ad_gpo.c
-+++ b/src/providers/ad/ad_gpo.c
-@@ -575,10 +575,8 @@ ad_gpo_dom_sid_equal(const struct dom_sid *sid1, const struct dom_sid *sid2)
- static errno_t
- ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
-                 const char *user,
--                const char *ad_hostname,
-                 struct sss_domain_info *domain,
-                 const char **_user_sid,
--                const char **_host_sid,
-                 const char ***_group_sids,
-                 int *_group_size)
- {
-@@ -588,7 +586,6 @@ ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
-     int i = 0;
-     int num_group_sids = 0;
-     const char *user_sid = NULL;
--    const char *host_sid = NULL;
-     const char *group_sid = NULL;
-     const char **group_sids = NULL;
- 
-@@ -646,24 +643,6 @@ ad_gpo_get_sids(TALLOC_CTX *mem_ctx,
-     *_group_size = num_group_sids + 1;
-     *_group_sids = talloc_steal(mem_ctx, group_sids);
-     *_user_sid = talloc_steal(mem_ctx, user_sid);
--
--    /* Get the cached computer object by computer name */
--    if (ad_hostname != NULL) {
--        static const char *host_attrs[] = { SYSDB_SID_STR, NULL };
--        struct ldb_message *msg;
--        ret = sysdb_get_computer(tmp_ctx, domain, ad_hostname, host_attrs, &msg);
--        if (ret != EOK) {
--            DEBUG(SSSDBG_OP_FAILURE,
--                  "sysdb_get_computer failed: [%d](%s)\n",
--                  ret, sss_strerror(ret));
--            goto done;
--        }
--
--        /* Get the computer SID from the cached entry */
--        host_sid = ldb_msg_find_attr_as_string(msg, SYSDB_SID_STR, NULL);
--        *_host_sid = talloc_steal(mem_ctx, host_sid);
--    }
--
-     ret = EOK;
- 
-  done:
-@@ -879,7 +858,7 @@ static errno_t ad_gpo_evaluate_dacl(struct security_acl *dacl,
- static errno_t
- ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
-                            const char *user,
--                           const char *ad_hostname,
-+                           const char *host_sid,
-                            struct sss_domain_info *domain,
-                            struct sss_idmap_ctx *idmap_ctx,
-                            struct gp_gpo **candidate_gpos,
-@@ -894,7 +873,6 @@ ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
-     struct security_descriptor *sd = NULL;
-     struct security_acl *dacl = NULL;
-     const char *user_sid = NULL;
--    const char *host_sid = NULL;
-     const char **group_sids = NULL;
-     int group_size = 0;
-     int gpo_dn_idx = 0;
-@@ -907,8 +885,8 @@ ad_gpo_filter_gpos_by_dacl(TALLOC_CTX *mem_ctx,
-         goto done;
-     }
- 
--    ret = ad_gpo_get_sids(tmp_ctx, user, ad_hostname, domain, &user_sid,
--                          &host_sid, &group_sids, &group_size);
-+    ret = ad_gpo_get_sids(tmp_ctx, user, domain, &user_sid,
-+                          &group_sids, &group_size);
-     if (ret != EOK) {
-         ret = ERR_NO_SIDS;
-         DEBUG(SSSDBG_OP_FAILURE,
-@@ -1431,7 +1409,7 @@ ad_gpo_access_check(TALLOC_CTX *mem_ctx,
-         DEBUG(SSSDBG_TRACE_FUNC, " denied_sids[%d] = %s\n", j, denied_sids[j]);
-     }
- 
--    ret = ad_gpo_get_sids(mem_ctx, user, NULL, domain, &user_sid, NULL,
-+    ret = ad_gpo_get_sids(mem_ctx, user, domain, &user_sid,
-                           &group_sids, &group_size);
-     if (ret != EOK) {
-         ret = ERR_NO_SIDS;
-@@ -1645,6 +1623,7 @@ struct ad_gpo_access_state {
-     const char *user;
-     int gpo_timeout_option;
-     const char *ad_hostname;
-+    const char *host_sid;
-     const char *target_dn;
-     struct gp_gpo **dacl_filtered_gpos;
-     int num_dacl_filtered_gpos;
-@@ -1971,6 +1950,8 @@ ad_gpo_target_dn_retrieval_done(struct tevent_req *subreq)
-     char *filter = NULL;
-     char *domain_dn;
-     const char *attrs[] = {AD_AT_SID, NULL};
-+    struct ldb_message *msg;
-+    static const char *host_attrs[] = { SYSDB_SID_STR, NULL };
- 
-     req = tevent_req_callback_data(subreq, struct tevent_req);
-     state = tevent_req_data(req, struct ad_gpo_access_state);
-@@ -2055,36 +2036,70 @@ ad_gpo_target_dn_retrieval_done(struct tevent_req *subreq)
-         goto done;
-     }
- 
--    /* Convert the domain name into domain DN */
--    ret = domain_to_basedn(state, state->host_domain->name, &domain_dn);
--    if (ret != EOK) {
--        DEBUG(SSSDBG_OP_FAILURE,
--              "Cannot convert domain name [%s] to base DN [%d]: %s\n",
--               state->host_domain->name, ret, sss_strerror(ret));
--        goto done;
--    }
-+    /* Check if computer exists in cache */
-+    ret = sysdb_get_computer(state, state->user_domain, state->ad_hostname,
-+                             host_attrs, &msg);
-+    if (ret == ENOENT) {
-+        /* The computer is not in cache so query LDAP server */
-+        /* Convert the domain name into domain DN */
-+        ret = domain_to_basedn(state, state->host_domain->name, &domain_dn);
-+        if (ret != EOK) {
-+            DEBUG(SSSDBG_OP_FAILURE,
-+                  "Cannot convert domain name [%s] to base DN [%d]: %s\n",
-+                   state->host_domain->name, ret, sss_strerror(ret));
-+            goto done;
-+        }
- 
--    /* Query the computer sid from LDAP, if computer does not exist in cache */
--    filter = talloc_asprintf(subreq, SYSDB_COMP_FILTER, state->ad_hostname);
--    if (!filter) {
--        ret = ENOMEM;
-+        filter = talloc_asprintf(subreq, SYSDB_COMP_FILTER, state->ad_hostname);
-+        if (!filter) {
-+            ret = ENOMEM;
-+            goto done;
-+        }
-+
-+        subreq = sdap_get_generic_send(state, state->ev, state->opts,
-+                                       sdap_id_op_handle(state->sdap_op),
-+                                       domain_dn, LDAP_SCOPE_SUBTREE,
-+                                       filter, attrs, NULL, 0,
-+                                       state->timeout,
-+                                       false);
-+
-+        if (subreq == NULL) {
-+            DEBUG(SSSDBG_OP_FAILURE, "sdap_get_generic_send failed.\n");
-+            ret = ENOMEM;
-+            goto done;
-+        }
-+
-+        tevent_req_set_callback(subreq, ad_gpo_get_host_sid_retrieval_done, req);
-+        return;
-+    } else if (ret != EOK) {
-+        ret = sdap_id_op_done(state->sdap_op, ret, &dp_error);
-         goto done;
-     }
- 
--    subreq = sdap_get_generic_send(state, state->ev, state->opts,
--                                   sdap_id_op_handle(state->sdap_op),
--                                   domain_dn, LDAP_SCOPE_SUBTREE,
--                                   filter, attrs, NULL, 0,
--                                   state->timeout,
--                                   false);
-+    /* The computer exists in the cache, there is no need to query LDAP.
-+     * Store the retrieved host sid from cache in the state to avoid querying
-+     * the cache again in ad_gpo_get_sids.
-+     */
-+    state->host_sid = ldb_msg_find_attr_as_string(msg, SYSDB_SID_STR, NULL);
-+    talloc_steal(state, state->host_sid);
- 
-+    subreq = ad_gpo_process_som_send(state,
-+                                     state->ev,
-+                                     state->conn,
-+                                     state->ldb_ctx,
-+                                     state->sdap_op,
-+                                     state->opts,
-+                                     state->access_ctx->ad_options,
-+                                     state->timeout,
-+                                     state->target_dn,
-+                                     state->host_domain->name);
-     if (subreq == NULL) {
--        DEBUG(SSSDBG_OP_FAILURE, "sdap_get_generic_send failed.\n");
--        ret = EIO;
-+        ret = ENOMEM;
-         goto done;
-     }
- 
--    tevent_req_set_callback(subreq, ad_gpo_get_host_sid_retrieval_done, req);
-+    tevent_req_set_callback(subreq, ad_gpo_process_som_done, req);
-+
-     ret = EOK;
- 
-  done:
-@@ -2174,10 +2189,16 @@ static void ad_gpo_get_host_sid_retrieval_done(struct tevent_req *subreq)
-                ret, sss_strerror(ret));
-         goto done;
-     }
-+    state->host_sid = talloc_steal(state, sid_str);
- 
-     /* Put the sid string in the sysdb */
-+    /* FIXME Using the same timeout as user cache objects. We should create
-+     * a specific setting, check autofsmap_timeout or ssh_host_timeout for
-+     * example */
-     ret = sysdb_set_computer(subreq, state->user_domain,
--                             state->ad_hostname, sid_str);
-+                             state->ad_hostname, state->host_sid,
-+                             state->user_domain->user_timeout,
-+                             time(NULL));
-     if (ret != EOK) {
-         DEBUG(SSSDBG_OP_FAILURE,
-               "sysdb_set_computer failed: [%d](%s)\n",
-@@ -2320,7 +2341,7 @@ ad_gpo_process_gpo_done(struct tevent_req *subreq)
-         goto done;
-     }
- 
--    ret = ad_gpo_filter_gpos_by_dacl(state, state->user, state->ad_hostname,
-+    ret = ad_gpo_filter_gpos_by_dacl(state, state->user, state->host_sid,
-                                      state->user_domain,
-                                      state->opts->idmap_ctx->map,
-                                      candidate_gpos, num_candidate_gpos,
--- 
-2.24.0
-
-
-From 88b47b7ca8ae4870221a6dfb2ed8459429bb0f4a Mon Sep 17 00:00:00 2001
-From: David Mulder <dmulder@suse.com>
-Date: Wed, 4 Dec 2019 17:54:13 +0000
-Subject: [PATCH 4/5] Remove sssd Security Filtering host comment from man
-References: jsc#SLE-9298
-Upstream: submitted
-
-Remove the sssd-ad man page comment explaining
-that host entries in GPO Security Filtering is
-not supported.
----
- src/man/sssd-ad.5.xml | 7 -------
- 1 file changed, 7 deletions(-)
-
-diff --git a/src/man/sssd-ad.5.xml b/src/man/sssd-ad.5.xml
-index 5c51e8050..1d389d32a 100644
---- a/src/man/sssd-ad.5.xml
-+++ b/src/man/sssd-ad.5.xml
-@@ -361,13 +361,6 @@ DOM:dom1:(memberOf:1.2.840.113556.1.4.1941:=cn=nestedgroup,ou=groups,dc=example,
-                             particular user is allowed to logon to a particular
-                             host.
-                         </para>
--                        <para>
--                            NOTE: The current version of SSSD does not support
--                            host (computer) entries in the GPO 'Security
--                            Filtering' list. Only user and group entries are
--                            supported. Host entries in the list have no
--                            effect.
--                        </para>
-                         <para>
-                             NOTE: If the operation mode is set to enforcing, it
-                             is possible that users that were previously allowed
--- 
-2.24.0
-
-
-From 7c0e71175b55f7e887bf300d95751f0b1032276c Mon Sep 17 00:00:00 2001
-From: David Mulder <dmulder@suse.com>
-Date: Thu, 5 Dec 2019 16:01:56 +0000
-Subject: [PATCH 5/5] Create a computer_timeout for caching GPO security filter
-References: jsc#SLE-9298
-Upstream: submitted
-
----
- src/confdb/confdb.c       | 11 +++++++++++
- src/confdb/confdb.h       |  2 ++
- src/config/cfg_rules.ini  |  1 +
- src/man/sssd.conf.5.xml   | 13 +++++++++++++
- src/providers/ad/ad_gpo.c |  5 +----
- 5 files changed, 28 insertions(+), 4 deletions(-)
-
-diff --git a/src/confdb/confdb.c b/src/confdb/confdb.c
-index be65310dc..6ec09116d 100644
---- a/src/confdb/confdb.c
-+++ b/src/confdb/confdb.c
-@@ -1228,6 +1228,17 @@ static int confdb_get_domain_internal(struct confdb_ctx *cdb,
-         goto done;
-     }
- 
-+    /* Override the computer timeout, if specified */
-+    ret = get_entry_as_uint32(res->msgs[0], &domain->computer_timeout,
-+                              CONFDB_DOMAIN_COMPUTER_CACHE_TIMEOUT,
-+                              entry_cache_timeout);
-+    if (ret != EOK) {
-+        DEBUG(SSSDBG_FATAL_FAILURE,
-+              "Invalid value for [%s]\n",
-+              CONFDB_DOMAIN_COMPUTER_CACHE_TIMEOUT);
-+        goto done;
-+    }
-+
-     /* Set refresh_expired_interval, if specified */
-     ret = get_entry_as_uint32(res->msgs[0], &domain->refresh_expired_interval,
-                               CONFDB_DOMAIN_REFRESH_EXPIRED_INTERVAL,
-diff --git a/src/confdb/confdb.h b/src/confdb/confdb.h
-index 727841659..fd86d5040 100644
---- a/src/confdb/confdb.h
-+++ b/src/confdb/confdb.h
-@@ -225,6 +225,7 @@
- #define CONFDB_DOMAIN_AUTOFS_CACHE_TIMEOUT "entry_cache_autofs_timeout"
- #define CONFDB_DOMAIN_SUDO_CACHE_TIMEOUT "entry_cache_sudo_timeout"
- #define CONFDB_DOMAIN_SSH_HOST_CACHE_TIMEOUT "entry_cache_ssh_host_timeout"
-+#define CONFDB_DOMAIN_COMPUTER_CACHE_TIMEOUT "entry_cache_computer_timeout"
- #define CONFDB_DOMAIN_PWD_EXPIRATION_WARNING "pwd_expiration_warning"
- #define CONFDB_DOMAIN_REFRESH_EXPIRED_INTERVAL "refresh_expired_interval"
- #define CONFDB_DOMAIN_OFFLINE_TIMEOUT "offline_timeout"
-@@ -368,6 +369,7 @@ struct sss_domain_info {
-     uint32_t autofsmap_timeout;
-     uint32_t sudo_timeout;
-     uint32_t ssh_host_timeout;
-+    uint32_t computer_timeout;
- 
-     uint32_t refresh_expired_interval;
-     uint32_t subdomain_refresh_interval;
-diff --git a/src/config/cfg_rules.ini b/src/config/cfg_rules.ini
-index 59d6cc512..b975985f4 100644
---- a/src/config/cfg_rules.ini
-+++ b/src/config/cfg_rules.ini
-@@ -400,6 +400,7 @@ option = entry_cache_service_timeout
- option = entry_cache_autofs_timeout
- option = entry_cache_sudo_timeout
- option = entry_cache_ssh_host_timeout
-+option = entry_cache_computer_timeout
- option = refresh_expired_interval
- 
- # Dynamic DNS updates
-diff --git a/src/man/sssd.conf.5.xml b/src/man/sssd.conf.5.xml
-index c81012357..ddd979be2 100644
---- a/src/man/sssd.conf.5.xml
-+++ b/src/man/sssd.conf.5.xml
-@@ -2180,6 +2180,19 @@ p11_uri = library-description=OpenSC%20smartcard%20framework;slot-id=2
-                     </listitem>
-                 </varlistentry>
- 
-+                <varlistentry>
-+                    <term>entry_cache_computer_timeout (integer)</term>
-+                    <listitem>
-+                        <para>
-+                            How many seconds to keep the local computer
-+                            entry before asking the backend again
-+                        </para>
-+                        <para>
-+                            Default: entry_cache_timeout
-+                        </para>
-+                    </listitem>
-+                </varlistentry>
-+
-                 <varlistentry>
-                     <term>refresh_expired_interval (integer)</term>
-                     <listitem>
-diff --git a/src/providers/ad/ad_gpo.c b/src/providers/ad/ad_gpo.c
-index 6441e69a6..90e1909f8 100644
---- a/src/providers/ad/ad_gpo.c
-+++ b/src/providers/ad/ad_gpo.c
-@@ -2192,12 +2192,9 @@ static void ad_gpo_get_host_sid_retrieval_done(struct tevent_req *subreq)
-     state->host_sid = talloc_steal(state, sid_str);
- 
-     /* Put the sid string in the sysdb */
--    /* FIXME Using the same timeout as user cache objects. We should create
--     * a specific setting, check autofsmap_timeout or ssh_host_timeout for
--     * example */
-     ret = sysdb_set_computer(subreq, state->user_domain,
-                              state->ad_hostname, state->host_sid,
--                             state->user_domain->user_timeout,
-+                             state->user_domain->computer_timeout,
-                              time(NULL));
-     if (ret != EOK) {
-         DEBUG(SSSDBG_OP_FAILURE,
--- 
-2.24.0
-

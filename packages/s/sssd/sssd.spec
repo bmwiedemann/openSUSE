@@ -18,7 +18,7 @@
 %define _buildshell /bin/bash
 
 Name:           sssd
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
@@ -33,7 +33,7 @@ Patch1:         krb-noversion.diff
 Patch2:         sssd-gpo_host_security_filter-2.2.2.patch
 Patch3:         0001-Resolve-computer-lookup-failure-when-sam-cn.patch
 Patch4:         0001-AD-use-getaddrinfo-with-AI_CANONNAME-to-find-the-FQD.patch
-BuildRoot:      %_tmppath/%name-%version-build
+Patch5:         0001-Fix-build-failure-against-samba-4.12.0rc1.patch
 
 %define servicename	sssd
 %define sssdstatedir	%_localstatedir/lib/sss
@@ -527,6 +527,7 @@ rm -f /var/lib/sss/db/*.ldb
 %_mandir/??/man5/sss-certmap.5.gz
 %_mandir/??/man5/sssd-ad.5.gz
 %_mandir/??/man5/sssd-files.5*
+%_mandir/??/man5/sssd-ldap-attributes.5*
 %_mandir/??/man5/sssd-secrets.5.gz
 %_mandir/??/man5/sssd-session-recording.5.gz
 %_mandir/??/man5/sssd-simple.5*
@@ -540,6 +541,7 @@ rm -f /var/lib/sss/db/*.ldb
 %_mandir/man1/sss_ssh_*
 %_mandir/man5/sss-certmap.5.gz
 %_mandir/man5/sssd-files.5*
+%_mandir/man5/sssd-ldap-attributes.5*
 %_mandir/man5/sssd-session-recording.5.gz
 %_mandir/man5/sssd-simple.5*
 %_mandir/man5/sssd-sudo.5*
