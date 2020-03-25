@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Libxml2
-Version:        0.14
+Version:        0.15
 Release:        0
 %define cpan_name Alien-Libxml2
 Summary:        Install the C libxml2 library on your system
@@ -48,9 +48,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 # MANUAL END
 
 %description
-This module provides libxml2 for other modules to use. There was an already
-existing Alien::LibXML, but it uses the older Alien::Build::ModuleBuild and
-has not been actively maintained for a while.
+This module provides 'libxml2' for other modules to use.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}

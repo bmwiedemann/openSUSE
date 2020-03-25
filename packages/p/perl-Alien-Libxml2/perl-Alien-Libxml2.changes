@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 20 03:07:29 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Alien-Libxml2/Changes
+
+  0.15      2020-03-18 23:16:56 -0600
+    - Updated documentation to use Alien::Base::Wrapper
+    - Updated documentation refrences to Alien::LibXML (gh#18, gh#19)
+
+-------------------------------------------------------------------
 Tue Mar 10 03:08:28 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.14
