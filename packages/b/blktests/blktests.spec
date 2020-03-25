@@ -1,7 +1,7 @@
 #
 # spec file for package blktests
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,22 @@
 #
 
 
-%define version_unconverted 0+git.20181114
 Name:           blktests
-Version:        0+git.20181114
+Version:        0+20200307.cd11d00
 Release:        0
 Summary:        Linux kernel block layer testing framework
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        GPL-2.0-or-later
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          System/Benchmark
 URL:            https://github.com/osandov/blktests
-Source:         blktests-0+git.20181114.tar.xz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
+Requires:       fio
+Requires:       gawk
 Requires:       gcc
 Requires:       make
-Requires:       gawk
-Requires:       fio
-Recommends:     multipath-tools
-Recommends:     nvme-cli
 Recommends:     device-mapper
 Recommends:     e2fsprogs
+Recommends:     multipath-tools
+Recommends:     nvme-cli
 Recommends:     xfsprogs
 
 %description
@@ -53,7 +49,8 @@ make %{?_smp_mflags} V=1
 %make_install prefix="%{_prefix}/lib"
 
 %files
-%license LICENSES/GPL-2.0
+%doc README.md
+%license LICENSES/GPL-2.0 LICENSES/GPL-3.0
 %{_prefix}/lib/blktests
 
 %changelog
