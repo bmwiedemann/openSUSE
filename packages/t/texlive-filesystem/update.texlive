@@ -56,7 +56,7 @@ export LANG MKTEXLSR UPDMAPSYNC
 #
 # Sanity check
 #
-size=$(find /etc/texmf/ls-R  -follow -printf '%s')
+size=$(find /etc/texmf/ls-R  -follow -printf '%s' || echo 0)
 test $size -lt 80 && > /var/run/texlive/run-mktexlsr
 
 rotator ()

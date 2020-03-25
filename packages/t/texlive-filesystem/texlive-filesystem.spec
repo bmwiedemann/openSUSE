@@ -15305,13 +15305,13 @@ popd
 	%{_texmfvardir}/fonts/dvips/	root:root	1755
 	%{_texmfvardir}/fonts/pdftex/	root:root	1755
 	%{_texmfcache}/			root:root	1755
-	%{_fontcache}/		   %{texusr}:%{texgrp}	1775
-	%{_fontcache}/pk/	   %{texusr}:%{texgrp}	1775
-	%{_fontcache}/source/	   %{texusr}:%{texgrp}	1775
-	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/		   %{texusr}:%{texgrp}	3775
+	%{_fontcache}/pk/	   %{texusr}:%{texgrp}	3775
+	%{_fontcache}/source/	   %{texusr}:%{texgrp}	3775
+	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	3775
 	EOF
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive) <<-EOF
-	%{_libexecdir}/mktex/public	root:%{texgrp}	0755
+	%{_libexecdir}/mktex/public	root:%{texgrp}	2755
 	%{_texmfconfdir}/ls-R		root:%{texgrp}	0664
 	%{_fontcache}/ls-R	   %{texusr}:%{texgrp}	0664
 	%{_texmfvardir}/ls-R		root:%{texgrp}	0664
@@ -15325,10 +15325,10 @@ popd
 	%{_texmfvardir}/fonts/dvips/	root:root	1755
 	%{_texmfvardir}/fonts/pdftex/	root:root	1755
 	%{_texmfcache}/			root:root	1755
-	%{_fontcache}/		   %{texusr}:%{texgrp}	1775
-	%{_fontcache}/pk/	   %{texusr}:%{texgrp}	1775
-	%{_fontcache}/source/	   %{texusr}:%{texgrp}	1775
-	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	1775
+	%{_fontcache}/		   %{texusr}:%{texgrp}	3775
+	%{_fontcache}/pk/	   %{texusr}:%{texgrp}	3775
+	%{_fontcache}/source/	   %{texusr}:%{texgrp}	3775
+	%{_fontcache}/tfm/	   %{texusr}:%{texgrp}	3775
 	EOF
 
 %if %{with zypper_posttrans}
@@ -15388,55 +15388,32 @@ popd
 %{_bindir}/getent group  %{texgrp} > /dev/null 2>&1 || %{_sbindir}/groupadd -r %{?texgid:-g %texgid} %{texgrp}
 %{_bindir}/getent passwd %{texusr} > /dev/null 2>&1 || %{_sbindir}/useradd  -r %{?texuid:-u %texuid} -g %{texgrp} -d %{_fontcache} -s /bin/false %{texusr}
 # the ls-R file on update
-error=0
 for dir in	%{_texmfconfdir}	\
+		%{_fontcache}		\
 		%{_texmfvardir}		\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
-    test ! -h ${dir}/ls-R || rm -vf ${dir}/ls-R
-    test -e ${dir}/ls-R || continue
-    test "$(stat --format '%U:%G' ${dir}/ls-R)" != root:%{texgrp}  || continue
-    chown root:%{texgrp} ${dir}/ls-R || error=1
+    rm -f ${dir}/ls-R
 done
-for dir in	%{_fontcache}
-do
-    test ! -h ${dir}/ls-R || rm -vf ${dir}/ls-R
-    test -e ${dir}/ls-R || continue
-    test "$(stat --format '%U:%G' ${dir}/ls-R)" != %{texusr}:%{texgrp}  || continue
-    chown %{texusr}:%{texgrp} ${dir}/ls-R || error=1
-done
-test $error = 0 || exit 1
 
 %post
 %fillup_only -n texlive
 # the ls-R file (empty at package time)
 error=0
+user=
 for dir in	%{_texmfconfdir}	\
+		%{_fontcache}		\
 		%{_texmfvardir}		\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
-    test ! -e ${dir}/ls-R -o -h ${dir}/ls-R || continue
-    tmp=$(setpriv --reuid root --regid mktex --init-groups mktemp ${dir}/ls-R.XXXXXX) || error=1
-    test $error = 0 || continue
-    setpriv --reuid root --regid mktex --init-groups mv ${tmp} ${dir}/ls-R || error=1
-    test $error = 0 || continue
-    chmod 0664 ${dir}/ls-R || error=1
-    test $error = 0 || continue
-    echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \
-    ${dir}/ls-R
-done
-for dir in	%{_fontcache}
-do
-    test ! -e ${dir}/ls-R -o -h ${dir}/ls-R || continue
-    tmp=$(setpriv --reuid mktex --regid mktex --init-groups mktemp ${dir}/ls-R.XXXXXX) || error=1
-    test $error = 0 || continue
-    setpriv --reuid mktex --regid mktex --init-groups mv ${tmp} ${dir}/ls-R || error=1
-    test $error = 0 || continue
-    chmod 0664 ${dir}/ls-R || error=1
-    echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \
-    ${dir}/ls-R
+    test "$dir" = %{_fontcache} && user=%{texusr} || user=root
+    setpriv --reuid $user --regid mktex --init-groups /bin/sh -ec "
+	tmp=\$(mktemp ${dir}/ls-R.XXXXXX)
+	chmod 0664 \${tmp}
+	echo '%% ls-R -- filename database for kpathsea; do not change this line.' > \${tmp}
+	mv \${tmp} ${dir}/ls-R" || error=1
 done
 %if %{defined set_permissions}
 %set_permissions %{_texmfconfdir}/ls-R
@@ -26892,10 +26869,10 @@ rm -f /var/run/texlive/run-update
 %dir %attr(1755,root,root) %{_texmfvardir}/web2c/tex
 %dir %attr(1755,root,root) %{_texmfvardir}/web2c/xetex
 %dir %attr(1755,root,root) %{_texmfcache}
-%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}
-%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/pk
-%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/source
-%dir %attr(1775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/tfm
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/pk
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/source
+%dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/tfm
 %dir %{_texmfvardir}/md5
 %verify(link) %{_texmfmaindir}/ls-R
 %verify(link) %{_texmfdistdir}/ls-R

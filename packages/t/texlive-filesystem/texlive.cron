@@ -14,46 +14,63 @@ type -f -p xargs     >& /dev/null || exit 0
 type -f -p setpriv   >& /dev/null || exit 0
 type -f -p sort      >& /dev/null || exit 0
 type -f -p rm        >& /dev/null || exit 0
+type -f -p seq       >& /dev/null || exit 0
+type -f -p getent    >& /dev/null || exit 0
 test -r /etc/sysconfig/texlive && . /etc/sysconfig/texlive
 
 OLDIFS=$IFS; IFS=':;'
 VARTEXFONTS="$(kpsewhich --expand-var '$VARTEXFONTS' 2> /dev/null)"
 IFS=$OLDIFS
 
-uids=$(find $VARTEXFONTS/ \( -not -type d \) -printf '%U\n' | sort -u)
+if test -n "$VARTEXFONTS" -a "$HAVE_MKTEX_MEMBERS" = yes
+then
+    IFS=:
+    users=($(getent group mktex))
+    IFS=$OLDIFS
+    typeset -i i
+    typeset -i u=${#users[*]}
+    let u--
+    for p in $VARTEXFONTS
+    do
+	test -d $p || continue
+	for i in $(seq 3 $u)
+	do
+	    find -P $p \( \( -type f -and -not -type l \) -and -user ${users[$i]} \) -print0 | \
+	    xargs -r -L100 -0 -- setpriv --reuid ${users[$i]} --regid mktex --init-groups chmod g+rw
+	    find -P $p \( \( -type d -and -not -type l \) -and -user ${users[$i]} \) -print0 | \
+	    xargs -r -L100 -0 -- setpriv --reuid ${users[$i]} --regid mktex --init-groups chmod g+rwsx
+	done
+    done
+    unset i u
+fi
 
 if test "$CLEAR_TEXMF_FONTS" = "yes" -a -n "$VARTEXFONTS"
 then
-    for uid in ${uids[@]}
+    for p in $VARTEXFONTS
     do
-	for p in $VARTEXFONTS
-	do
-	    test -d $p/pk/	&& find $p/pk/	   \( -not -type d -and -atime +20 -and -uid $uid \) -print0
-	    test -d $p/tfm/	&& find $p/tfm/	   \( -not -type d -and -atime +60 -and -uid $uid \) -print0
-	    test -d $p/source/  && find $p/source/ \( -not -type d -and -atime +60 -and -uid $uid \) -print0
-    	done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid $uid --regid mktex --init-groups rm -f)
-    done
+	test -d $p/pk		&& find -P $p/pk	\( -not -type d -and -atime +20 \) -print0
+	test -d $p/tfm		&& find -P $p/tfm	\( -not -type d -and -atime +60 \) -print0
+	test -d $p/source	&& find -P $p/source	\( -not -type d -and -atime +60 \) -print0
+    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex --init-groups rm -f)
 fi
 if test -n "$VARTEXFONTS"
 then
-    for uid in ${uids[@]}
+    for p in $VARTEXFONTS
     do
-	for p in $VARTEXFONTS
-	do
-	    test -d $p/pk/	&& find $p/pk/	   \( -not -type d -and -not -name '*.*pk' -uid $uid \) -print0
-	    test -d $p/tfm/	&& find $p/tfm/	   \( -not -type d -and -not -name '*.tfm' -uid $uid \) -print0
-	    test -d $p/source/  && find $p/source/ \( -not -type d -and -not -name '*.mf'  -uid $uid \) -print0
-	    test -d $p/	        && find $p/	   \( -not -type d -and -path '*/[^[:alnum:]]*' -uid $uid \) -print0
-	done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid $uid --regid mktex --init-groups rm -vf)
-	for p in $VARTEXFONTS
-	do
-	    test -d $p/ && find $p/ -depth \( -type d -and -path '*/[^[:alnum:]]*' -and -uid $uid \) -print0
-	done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid $uid --regid mktex --init-groups rm -vfr)
-    done
+	test -d $p/pk		&& find -P $p/pk	\( -not -type d -and -not -name '*.*pk' \) -print0
+	test -d $p/tfm		&& find -P $p/tfm	\( -not -type d -and -not -name '*.tfm' \) -print0
+	test -d $p/source	&& find -P $p/source	\( -not -type d -and -not -name '*.mf'  \) -print0
+	test -d $p		&& find -P $p		\( -not -type d -and -path '*/[^[:alnum:]]*' \) -print0
+    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex --init-groups rm -vf)
+    for p in $VARTEXFONTS
+    do
+	test -d $p && find -P $p -depth \( -type d -and -path '*/[^[:alnum:]]*' \) -print0
+    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex --init-groups rm -vfr)
 fi
 
 #
 # Update the ls-R's
+# Note that this is done as user mktex
 #
 mktexlsr > /dev/null
 

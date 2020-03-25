@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:18:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add new configuration variable HAVE_MKTEX_MEMBERS to texlive
+  sysconfig file to control the behaviour of the cron job.
+- Change the cron job to clear data of other users which are
+  member of the group mktex
+
+-------------------------------------------------------------------
+Wed Mar 11 16:03:20 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Use CVE numbers 
+
+-------------------------------------------------------------------
 Thu Feb 20 11:01:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Use setpriv to create ls-R files, below /var/cache/texmf/fonts
-  use uid mktex for this (boo#1159740) 
+  use uid mktex for this (boo#1159740, CVE-2020-8016)
 
 -------------------------------------------------------------------
 Wed Feb  5 06:56:24 UTC 2020 - Dr. Werner Fink <werner@suse.de>
@@ -13,7 +26,7 @@ Wed Feb  5 06:56:24 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 Tue Feb  4 12:20:03 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Again use setpriv but now switch to every single owner for clearing
-  the files of this owner (boo#1159740) 
+  the files of this owner (boo#1159740, CVE-2020-8016)
 
 -------------------------------------------------------------------
 Fri Jan 31 12:32:25 UTC 2020 - Dr. Werner Fink <werner@suse.de>
@@ -35,9 +48,9 @@ Thu Jan 16 12:02:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 Fri Jan 10 12:35:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Set default user for ls-R files and font cache directories
-  to user nobody (bsc#1159740) 
+  to user nobody (bsc#1159740, CVE-2020-8016)
 - Use setpriv to switch to nobody:mktex before clearing
-  font cache directories (bsc#1158910)
+  font cache directories (bsc#1158910, CVE-2020-8017)
 
 -------------------------------------------------------------------
 Thu Dec 19 08:04:39 UTC 2019 - Dr. Werner Fink <werner@suse.de>

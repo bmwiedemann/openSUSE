@@ -427,4 +427,22 @@
   use uid mktex for this (boo#1159740)</comment>
     <requestid>777663</requestid>
   </revision>
+  <revision rev="44" vrev="47">
+    <srcmd5>d89ccd630b6b75b571f024c287b25adf</srcmd5>
+    <version>unknown</version>
+    <time>1585176167</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new configuration variable HAVE_MKTEX_MEMBERS to texlive
+  sysconfig file to control the behaviour of the cron job.
+- Change the cron job to clear data of other users which are
+  member of the group mktex
+
+- Use CVE numbers 
+
+  use uid mktex for this (boo#1159740, CVE-2020-8016)
+  the files of this owner (boo#1159740, CVE-2020-8016)
+  to user nobody (bsc#1159740, CVE-2020-8016)
+  font cache directories (bsc#1158910, CVE-2020-8017)</comment>
+    <requestid>787537</requestid>
+  </revision>
 </revisionlist>
