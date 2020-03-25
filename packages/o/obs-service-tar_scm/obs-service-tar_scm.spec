@@ -90,8 +90,8 @@ Recommends:     obs-service-download_files                      \
 ######## END OF MACROS AND FUN ###################################
 
 Name:           obs-service-tar_scm
-%define version_unconverted 0.10.11.1579870213.888e79c
-Version:        0.10.11.1579870213.888e79c
+%define version_unconverted 0.10.14.1584463383.06b0455
+Version:        0.10.14.1584463383.06b0455
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -203,6 +203,18 @@ Provides:       obs-service-tar_scm:/usr/lib/obs/service/snapcraft.service
 Experimental snapcraft support: This parses snapcraft.yaml files for SCM
 resources and packages them.
 
+%if 0%{?enable_gbp}
+%package -n     obs-service-gbp
+Summary:        Creates Debian source artefacts from a Git repository
+Group:          Development/Tools/Building
+Requires:       git-buildpackage >= 0.6.0
+Requires:       obs-service-obs_scm-common = %version-%release
+Provides:       obs-service-tar_scm:/usr/lib/obs/service/obs_gbp.service
+
+%description -n obs-service-gbp
+Debian git-buildpackage workflow support: uses gbp to create Debian
+source artefacts (.dsc, .origin.tar.gz and .debian.tar.gz if non-native).
+%endif
 
 %prep
 %setup -q -n obs-service-tar_scm-%version
@@ -233,6 +245,7 @@ make %{use_test}
 %{_prefix}/lib/obs/service/tar_scm
 %dir %{_sysconfdir}/obs
 %dir %{_sysconfdir}/obs/services
+%attr(-,obsservicerun,obsrun) %dir %{_sysconfdir}/obs/services/tar_scm.d
 %config(noreplace) %{_sysconfdir}/obs/services/*
 
 %files -n obs-service-tar
@@ -252,5 +265,11 @@ make %{use_test}
 %files -n obs-service-snapcraft
 %defattr(-,root,root)
 %{_prefix}/lib/obs/service/snapcraft*
+
+%if 0%{?enable_gbp}
+%files -n obs-service-gbp
+%defattr(-,root,root)
+%{_prefix}/lib/obs/service/obs_gbp*
+%endif
 
 %changelog

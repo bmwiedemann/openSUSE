@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Mar 17 16:44:31 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.14.1584435160.d912143:
+  * [dist] don't install gbp files by default
+  * [dist] remove python-keyring* from dependcies
+  * [dist] make gbp switchable in spec file
+
+-------------------------------------------------------------------
+Tue Mar 10 15:22:18 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.14.1583853599.ccbb399:
+  * support server side credentials for SCM repos
+
+-------------------------------------------------------------------
+Fri Feb 28 14:50:17 UTC 2020 - adrian@suse.de
+
+- Update to version 0.10.12.1582901608.a1c02c1:
+  * simplify osc git update case a lot
+  * fixing revision usage on a commit hash
+
+-------------------------------------------------------------------
+Wed Feb 26 09:45:28 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.12.1582709176.d82a692:
+  * fix lost commits on local run
+  * fix breakage when working on a specific tag/commit
+  * git-lfs should not be mandatory as tar_scm will never use it
+  * Allow use of git-lfs only when running obs_scm
+  * Document _none_ special version in .service
+  * Version cleanup: don't strip hyphen when building Debian packages
+  * Add new archive option for Debian: git-buildpackage
+  * call git stash with LANG=C
+  * improved comment for method get_changesrevision
+  * Add debian package dep to git-lfs
+  * Implement git LFS blobs retrieval
+
+-------------------------------------------------------------------
 Fri Jan 24 15:46:08 UTC 2020 - FSchreiner@suse.com
 
 - Update to version 0.10.11.1579870213.888e79c:

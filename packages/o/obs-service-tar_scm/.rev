@@ -1225,4 +1225,33 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>769085</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ff8fba901d53fe01abe33b1570c89820</srcmd5>
+    <version>0.10.14.1584463383.06b0455</version>
+    <time>1585176088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.14.1584435160.d912143:
+  * [dist] don't install gbp files by default
+  * [dist] remove python-keyring* from dependcies
+  * [dist] make gbp switchable in spec file
+- Update to version 0.10.14.1583853599.ccbb399:
+  * support server side credentials for SCM repos
+- Update to version 0.10.12.1582901608.a1c02c1:
+  * simplify osc git update case a lot
+  * fixing revision usage on a commit hash
+- Update to version 0.10.12.1582709176.d82a692:
+  * fix lost commits on local run
+  * fix breakage when working on a specific tag/commit
+  * git-lfs should not be mandatory as tar_scm will never use it
+  * Allow use of git-lfs only when running obs_scm
+  * Document _none_ special version in .service
+  * Version cleanup: don't strip hyphen when building Debian packages
+  * Add new archive option for Debian: git-buildpackage
+  * call git stash with LANG=C
+  * improved comment for method get_changesrevision
+  * Add debian package dep to git-lfs
+  * Implement git LFS blobs retrieval
+</comment>
+    <requestid>786001</requestid>
+  </revision>
 </revisionlist>
