@@ -22,7 +22,6 @@ Version:        0.5.10
 Release:        0
 Summary:        Python Netlink library
 License:        GPL-2.0-or-later OR Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/svinota/pyroute2
 Source:         https://files.pythonhosted.org/packages/source/p/pyroute2/pyroute2-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
