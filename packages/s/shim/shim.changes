@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:42:34 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-fix-gnu-efi-3.0.11.patch to fix the build error caused
+  by the upgrade of gnu-efi
+
+-------------------------------------------------------------------
 Wed Nov 27 06:23:11 UTC 2019 - Michael Chang <mchang@suse.com>
 
 - shim-install: add check for btrfs is used as root file system to enable

@@ -1,7 +1,7 @@
 #
 # spec file for package shim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Url:            https://github.com/rhboot/shim
+URL:            https://github.com/rhboot/shim
 Source:         %{name}-%{version}.tar.bz2
 # run "extract_signature.sh shim.efi" where shim.efi is the binary
 # with the signature from the UEFI signing service.
@@ -73,6 +73,8 @@ Patch4:         shim-always-mirror-mok-variables.patch
 Patch5:         shim-correct-license-in-headers.patch
 # PATCH-FIX-UPSTREAM gcc9-fix-warnings.patch mliska@suse.cz -- MokManager: Use CompareMem on MokListNode.Type instead of CompareGuid 
 Patch6:         gcc9-fix-warnings.patch
+# PATCH-FIX-OPENSUSE shim-fix-gnu-efi-3.0.11.patch glin@suse.com -- Fix the build error caused by the typo fix in gnu-efi 3.0.11
+Patch7:         shim-fix-gnu-efi-3.0.11.patch
 # PATCH-FIX-OPENSUSE shim-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:       shim-opensuse-cert-prompt.patch
 BuildRequires:  gnu-efi >= 3.0.3
@@ -120,6 +122,7 @@ The source code of UEFI shim loader
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 %if 0%{?is_opensuse} == 1
 %patch100 -p1
 %endif
