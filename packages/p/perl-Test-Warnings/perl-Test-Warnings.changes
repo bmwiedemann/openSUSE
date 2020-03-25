@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 22 03:11:38 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.030
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.030     2020-03-21 16:56:30Z
+            - fix tests that can fail when there is already an installed module
+              named Foo::Bar::Baz (RT#132140)
+
+-------------------------------------------------------------------
 Sun Mar 15 03:15:09 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.029

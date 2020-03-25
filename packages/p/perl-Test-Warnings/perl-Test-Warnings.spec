@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-Warnings
-Version:        0.029
+Version:        0.030
 Release:        0
 %define cpan_name Test-Warnings
 Summary:        Test for warnings and the lack of them
