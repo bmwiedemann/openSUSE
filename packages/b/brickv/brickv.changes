@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 25 09:01:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to new upstream version 2.4.12:
+  - make build reproducible (boo#1041090)
+  - Fix Server Monitoring support for Ambient Light 3.0 and IO-4 Bricklet 2.0
+  - Fix WIFI Extension 2.0 no-encryption configuration
+  - Add checkbox for setting the WIFI Extension 2.0 mesh password, old password is
+    not shown anymore
+  - Improve firmware update error handling
+  - Fix RS485 Bricklet Modbus slave logic for write-multiple-registers function
+  - Improve RS485 Bricklet input field history handling
+  - Fix Data Logger support for Color Bricklet 2.0
+  - Improve corner case handling in enumerate callback logic
+  - Fix error handling for RED Brick file upload
+  - Fix maximum number of LEDs for LED Strip Bricklet 2.0
+  - Show milliseconds in GPS Bricklet 2.0 timestamp
+
+-------------------------------------------------------------------
 Sun Jan  5 11:00:43 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.11:
