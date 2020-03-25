@@ -1,0 +1,32 @@
+From 1657e72f5bd6cdb9c35cbeb394c1d4329f8f024b Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 5 Mar 2020 16:52:18 -0500
+Subject: [PATCH] datetime: Enable the datetime module for the emu platform
+
+Fixes a build failure:
+
+  grub-core/commands/date.c:49: undefined reference to `grub_get_weekday_name'
+  grub-core/commands/ls.c:155: undefined reference to `grub_unixtime2datetime'
+
+Bug: https://bugs.gentoo.org/711512
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
+Tested-by: Javier Martinez Canillas <javierm@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/Makefile.core.def | 1 -
+ 1 file changed, 1 deletion(-)
+
+Index: grub-2.04/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.04.orig/grub-core/Makefile.core.def
++++ grub-2.04/grub-core/Makefile.core.def
+@@ -1670,7 +1670,6 @@ module = {
+   i386_xen_pvh = lib/xen/datetime.c;
+ 
+   mips_arc = lib/arc/datetime.c;
+-  enable = noemu;
+ };
+ 
+ module = {

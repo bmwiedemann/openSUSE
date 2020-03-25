@@ -1,0 +1,65 @@
+From 8c2c35dcc027a77aee48de89093d8770de0a8cf8 Mon Sep 17 00:00:00 2001
+From: Paulo Flabiano Smorigo <pfsmorigo@br.ibm.com>
+Date: Wed, 22 Jan 2020 12:01:52 +0100
+Subject: [PATCH] kern: Add %X option to printf functions
+
+The printf(3) function has support for the %X format specifier, to output
+an unsigned hexadecimal integer in uppercase.
+
+This can be achived in GRUB using the %x format specifier in grub_printf()
+and calling grub_toupper(), but it is more convenient if there is support
+for %X in grub_printf().
+
+Signed-off-by: Paulo Flabiano Smorigo <pfsmorigo@br.ibm.com>
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/kern/misc.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+Index: grub-2.04/grub-core/kern/misc.c
+===================================================================
+--- grub-2.04.orig/grub-core/kern/misc.c
++++ grub-2.04/grub-core/kern/misc.c
+@@ -588,7 +588,7 @@ grub_divmod64 (grub_uint64_t n, grub_uin
+ static inline char *
+ grub_lltoa (char *str, int c, unsigned long long n)
+ {
+-  unsigned base = (c == 'x') ? 16 : 10;
++  unsigned base = ((c == 'x') || (c == 'X')) ? 16 : 10;
+   char *p;
+ 
+   if ((long long) n < 0 && c == 'd')
+@@ -603,7 +603,7 @@ grub_lltoa (char *str, int c, unsigned l
+     do
+       {
+ 	unsigned d = (unsigned) (n & 0xf);
+-	*p++ = (d > 9) ? d + 'a' - 10 : d + '0';
++	*p++ = (d > 9) ? d + ((c == 'x') ? 'a' : 'A') - 10 : d + '0';
+       }
+     while (n >>= 4);
+   else
+@@ -676,6 +676,7 @@ parse_printf_args (const char *fmt0, str
+ 	{
+ 	case 'p':
+ 	case 'x':
++	case 'X':
+ 	case 'u':
+ 	case 'd':
+ 	case 'c':
+@@ -762,6 +763,7 @@ parse_printf_args (const char *fmt0, str
+       switch (c)
+ 	{
+ 	case 'x':
++	case 'X':
+ 	case 'u':
+ 	  args->ptr[curn].type = UNSIGNED_INT + longfmt;
+ 	  break;
+@@ -900,6 +902,7 @@ grub_vsnprintf_real (char *str, grub_siz
+ 	  c = 'x';
+ 	  /* Fall through. */
+ 	case 'x':
++	case 'X':
+ 	case 'u':
+ 	case 'd':
+ 	  {

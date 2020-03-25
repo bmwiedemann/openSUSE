@@ -1,8 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 20 10:36:54 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Backport to support searching for specific config files for netboot
+  (bsc#1166409)
+  * 0001-normal-Move-common-datetime-functions-out-of-the-nor.patch
+  * 0002-kern-Add-X-option-to-printf-functions.patch
+  * 0003-normal-main-Search-for-specific-config-files-for-net.patch
+  * 0004-datetime-Enable-the-datetime-module-for-the-emu-plat.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 11:42:08 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- move *.module files to separate -debug subpackage (boo#1166578)
+
+-------------------------------------------------------------------
 Thu Mar 12 08:29:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
-- Adjust patch to make EFI detection a runtime decision (bsc#1164385):
+- Fix EFI console detection to make it a runtime decision (bsc#1164385)
   * grub2-SUSE-Add-the-t-hotkey.patch
+
+-------------------------------------------------------------------
+Tue Mar 10 11:59:23 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Downgrade mtools to Suggests for consistency with xorriso (boo#1165839)
+- remove info requirements, file triggers are used now (boo#1152105)
 
 -------------------------------------------------------------------
 Fri Feb 28 16:36:57 UTC 2020 - rw@suse.com

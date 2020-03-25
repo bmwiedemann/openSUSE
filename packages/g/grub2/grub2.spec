@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -291,6 +291,12 @@ Patch511:       grub2-gfxmenu-support-scrolling-menu-entry-s-text.patch
 Patch601:       risc-v-fix-computation-of-pc-relative-relocation-offset.patch
 Patch602:       risc-v-add-clzdi2-symbol.patch
 Patch603:       grub-install-define-default-platform-for-risc-v.patch
+# bsc#1166409 - Grub netbooting does not search for grub.cfg files with mac
+# address or ip address in filename
+Patch700:       0001-normal-Move-common-datetime-functions-out-of-the-nor.patch
+Patch701:       0002-kern-Add-X-option-to-printf-functions.patch
+Patch702:       0003-normal-main-Search-for-specific-config-files-for-net.patch
+Patch703:       0004-datetime-Enable-the-datetime-module-for-the-emu-plat.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -300,10 +306,8 @@ Recommends:     os-prober
 # xorriso not available using grub2-mkrescue (bnc#812681)
 # downgrade to suggest as minimal system can't afford pulling in tcl/tk and half of the x11 stack (bsc#1102515)
 Suggests:       libburnia-tools
-Recommends:     mtools
+Suggests:       mtools
 %endif
-Requires(post): /sbin/install-info
-Requires(preun):/sbin/install-info
 %if ! 0%{?only_efi:1}
 Requires:       grub2-%{grubarch} = %{version}-%{release}
 %endif
@@ -378,6 +382,20 @@ bootloader with modular architecture.  It supports rich variety of kernel format
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for %{platform} systems.
 
+%package %{grubarch}-debug
+Summary:        Debug symbols for %{grubarch}
+Group:          System/Boot
+%if %{platform} != emu
+BuildArch:      noarch
+%endif
+Requires:       %{name}-%{grubarch} = %{version}
+
+%description %{grubarch}-debug
+Debug information for %{name}-%{grubarch}
+
+Information on how to debug grub can be found online:
+https://www.cnblogs.com/coryxie/archive/2013/03/12/2956807.html
+
 %endif
 
 %ifarch %{efi}
@@ -407,6 +425,20 @@ The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
 bootloader with modular architecture.  It supports rich variety of kernel formats,
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for EFI systems.
+
+%package %{grubefiarch}-debug
+Summary:        Debug symbols for %{grubefiarch}
+Group:          System/Boot
+%if %{platform} != emu
+BuildArch:      noarch
+%endif
+Requires:       %{name}-%{grubefiarch} = %{version}
+
+%description %{grubefiarch}-debug
+Debug symbols for %{name}-%{grubefiarch}
+
+Information on how to debug grub can be found online:
+https://www.cnblogs.com/coryxie/archive/2013/03/12/2956807.html
 
 %endif
 
@@ -562,6 +594,10 @@ swap partition while in resuming
 %patch601 -p1
 %patch602 -p1
 %patch603 -p1
+%patch700 -p1
+%patch701 -p1
+%patch702 -p1
+%patch703 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
@@ -901,8 +937,6 @@ perl -ni -e '
 
 %post
 %service_add_post grub2-once.service
-/sbin/install-info %{_infodir}/grub-dev.info %{_infodir}/dir || :
-/sbin/install-info %{_infodir}/%{name}.info %{_infodir}/dir || :
 
 %if ! 0%{?only_efi:1}
 
@@ -1001,14 +1035,11 @@ exit 0
 
 %preun
 %service_del_preun grub2-once.service
-if [ $1 = 0 ]; then
-  /sbin/install-info --delete %{_infodir}/grub-dev.info %{_infodir}/dir || :
-  /sbin/install-info --delete %{_infodir}/%{name}.info %{_infodir}/dir || :
-
 # We did not add core.img to grub1 menu.lst in new update-bootloader macro as what
 # the old %%post ever did, then the %%preun counterpart which removed the added core.img
 # entry from old %%post can be skipped entirely if having new macro in use.
 %if ! 0%{?update_bootloader_posttrans:1}%{?only_efi:1}
+if [ $1 = 0 ]; then
   # To check by current loader settings
   if [ -f %{_sysconfdir}/sysconfig/bootloader ]; then
     . %{_sysconfdir}/sysconfig/bootloader
@@ -1036,8 +1067,8 @@ if [ $1 = 0 ]; then
     # we have no idea what's been installed. (And a blind remove is dangerous
     # to remove user's or other package's file accidently ..)
   fi
-%endif
 fi
+%endif
 
 %postun
 %service_del_postun grub2-once.service
@@ -1175,14 +1206,18 @@ fi
 %{_datadir}/%{name}/%{grubarch}/*.img
 %{_datadir}/%{name}/%{grubarch}/*.lst
 %{_datadir}/%{name}/%{grubarch}/*.mod
-%{_datadir}/%{name}/%{grubarch}/*.module
 %ifarch x86_64
 %{_datadir}/%{name}/%{grubarch}/efiemu*.o
 %endif
-%{_datadir}/%{name}/%{grubarch}/gdb_grub
-%{_datadir}/%{name}/%{grubarch}/gmodule.pl
 %{_datadir}/%{name}/%{grubarch}/kernel.exec
 %{_datadir}/%{name}/%{grubarch}/modinfo.sh
+
+%files %{grubarch}-debug
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/%{grubarch}/gdb_grub
+%{_datadir}/%{name}/%{grubarch}/gmodule.pl
+%{_datadir}/%{name}/%{grubarch}/*.module
+
 %endif
 
 %ifarch %{efi}
@@ -1197,9 +1232,6 @@ fi
 %{_datadir}/%{name}/%{grubefiarch}/*.img
 %{_datadir}/%{name}/%{grubefiarch}/*.lst
 %{_datadir}/%{name}/%{grubefiarch}/*.mod
-%{_datadir}/%{name}/%{grubefiarch}/*.module
-%{_datadir}/%{name}/%{grubefiarch}/gdb_grub
-%{_datadir}/%{name}/%{grubefiarch}/gmodule.pl
 %{_datadir}/%{name}/%{grubefiarch}/kernel.exec
 %{_datadir}/%{name}/%{grubefiarch}/modinfo.sh
 %dir %{sysefibasedir}
@@ -1219,6 +1251,13 @@ fi
 %{sysefidir}/grub.der
 %endif
 %endif
+
+%files %{grubefiarch}-debug
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/%{grubefiarch}/gdb_grub
+%{_datadir}/%{name}/%{grubefiarch}/gmodule.pl
+%{_datadir}/%{name}/%{grubefiarch}/*.module
+
 %endif
 
 %files snapper-plugin

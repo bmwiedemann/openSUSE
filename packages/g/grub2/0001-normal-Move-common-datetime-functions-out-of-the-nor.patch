@@ -1,0 +1,311 @@
+From aa096037ae013c553acf52f9e3aa3a49c91f3c57 Mon Sep 17 00:00:00 2001
+From: Javier Martinez Canillas <javierm@redhat.com>
+Date: Fri, 14 Feb 2020 12:44:14 +0100
+Subject: [PATCH] normal: Move common datetime functions out of the normal
+ module
+
+The common datetime helper functions are currently included in the normal
+module, but this makes any other module that calls these functions to have
+a dependency with the normal module only for this reason.
+
+Since the normal module does a lot of stuff, it calls functions from other
+modules. But since other modules may depend on it for calling the datetime
+helpers, this could lead to circular dependencies between modules.
+
+As an example, when platform == xen the grub_get_datetime() function from
+the datetime module calls to the grub_unixtime2datetime() helper function
+from the normal module. Which leads to the following module dependency:
+
+    datetime -> normal
+
+and send_dhcp_packet() from the net module calls the grub_get_datetime()
+function, which leads to the following module dependency:
+
+    net -> datetime -> normal
+
+but that means that the normal module is not allowed to depend on net or
+any other module that depends on it due the transitive dependency caused
+by datetime. A recent patch attempted to add support to fetch the config
+file over the network, which leads to the following circular dependency:
+
+    normal -> net -> datetime -> normal
+
+So having the datetime helpers in the normal module makes it quite fragile
+and easy to add circular dependencies like these, that break the build due
+the genmoddep.awk script catching the issues.
+
+Fix this by taking the datetime helper functions out of the normal module
+and instead add them to the datetime module itself. Besides fixing these
+issues, it makes more sense to have these helper functions there anyways.
+
+Reported-by: Daniel Kiper <daniel.kiper@oracle.com>
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ Makefile.util.def                    | 2 +-
+ grub-core/Makefile.core.def          | 2 +-
+ grub-core/{normal => lib}/datetime.c | 0
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+ rename grub-core/{normal => lib}/datetime.c (100%)
+
+Index: grub-2.04/Makefile.util.def
+===================================================================
+--- grub-2.04.orig/Makefile.util.def
++++ grub-2.04/Makefile.util.def
+@@ -139,7 +139,7 @@ library = {
+   common = grub-core/lib/crc.c;
+   common = grub-core/lib/adler32.c;
+   common = grub-core/lib/crc64.c;
+-  common = grub-core/normal/datetime.c;
++  common = grub-core/lib/datetime.c;
+   common = grub-core/normal/misc.c;
+   common = grub-core/partmap/acorn.c;
+   common = grub-core/partmap/amiga.c;
+Index: grub-2.04/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.04.orig/grub-core/Makefile.core.def
++++ grub-2.04/grub-core/Makefile.core.def
+@@ -1657,6 +1657,7 @@ module = {
+ 
+ module = {
+   name = datetime;
++  common = lib/datetime.c;
+   cmos = lib/cmos_datetime.c;
+   efi = lib/efi/datetime.c;
+   uboot = lib/dummy/datetime.c;
+@@ -1903,7 +1904,6 @@ module = {
+   common = normal/autofs.c;
+   common = normal/color.c;
+   common = normal/completion.c;
+-  common = normal/datetime.c;
+   common = normal/menu.c;
+   common = normal/menu_entry.c;
+   common = normal/menu_text.c;
+Index: grub-2.04/grub-core/lib/datetime.c
+===================================================================
+--- /dev/null
++++ grub-2.04/grub-core/lib/datetime.c
+@@ -0,0 +1,109 @@
++/* datetime.c - Module for common datetime function.  */
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2008  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <grub/datetime.h>
++#include <grub/i18n.h>
++
++static const char *const grub_weekday_names[] =
++{
++  N_("Sunday"),
++  N_("Monday"),
++  N_("Tuesday"),
++  N_("Wednesday"),
++  N_("Thursday"),
++  N_("Friday"),
++  N_("Saturday"),
++};
++
++int
++grub_get_weekday (struct grub_datetime *datetime)
++{
++  unsigned a, y, m;
++
++  if (datetime->month <= 2)
++    a = 1;
++  else
++    a = 0;
++  y = datetime->year - a;
++  m = datetime->month + 12 * a - 2;
++
++  return (datetime->day + y + y / 4 - y / 100 + y / 400 + (31 * m / 12)) % 7;
++}
++
++const char *
++grub_get_weekday_name (struct grub_datetime *datetime)
++{
++  return _ (grub_weekday_names[grub_get_weekday (datetime)]);
++}
++
++#define SECPERMIN 60
++#define SECPERHOUR (60*SECPERMIN)
++#define SECPERDAY (24*SECPERHOUR)
++#define DAYSPERYEAR 365
++#define DAYSPER4YEARS (4*DAYSPERYEAR+1)
++
++
++void
++grub_unixtime2datetime (grub_int32_t nix, struct grub_datetime *datetime)
++{
++  int i;
++  grub_uint8_t months[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
++  /* In the period of validity of unixtime all years divisible by 4
++     are bissextile*/
++  /* Convenience: let's have 3 consecutive non-bissextile years
++     at the beginning of the counting date. So count from 1901. */
++  int days_epoch;
++  /* Number of days since 1st Januar, 1901.  */
++  unsigned days;
++  /* Seconds into current day.  */
++  unsigned secs_in_day;
++  /* Transform C divisions and modulos to mathematical ones */
++  if (nix < 0)
++    days_epoch = -(((unsigned) (SECPERDAY-nix-1)) / SECPERDAY);
++  else
++    days_epoch = ((unsigned) nix) / SECPERDAY;
++  secs_in_day = nix - days_epoch * SECPERDAY;
++  days = days_epoch + 69 * DAYSPERYEAR + 17;
++
++  datetime->year = 1901 + 4 * (days / DAYSPER4YEARS);
++  days %= DAYSPER4YEARS;
++  /* On 31st December of bissextile years 365 days from the beginning
++     of the year elapsed but year isn't finished yet */
++  if (days / DAYSPERYEAR == 4)
++    {
++      datetime->year += 3;
++      days -= 3*DAYSPERYEAR;
++    }
++  else
++    {
++      datetime->year += days / DAYSPERYEAR;
++      days %= DAYSPERYEAR;
++    }
++  for (i = 0; i < 12
++	 && days >= (i==1 && datetime->year % 4 == 0
++		      ? 29 : months[i]); i++)
++    days -= (i==1 && datetime->year % 4 == 0
++			    ? 29 : months[i]);
++  datetime->month = i + 1;
++  datetime->day = 1 + days;
++  datetime->hour = (secs_in_day / SECPERHOUR);
++  secs_in_day %= SECPERHOUR;
++  datetime->minute = secs_in_day / SECPERMIN;
++  datetime->second = secs_in_day % SECPERMIN;
++}
+Index: grub-2.04/grub-core/normal/datetime.c
+===================================================================
+--- grub-2.04.orig/grub-core/normal/datetime.c
++++ /dev/null
+@@ -1,109 +0,0 @@
+-/* datetime.c - Module for common datetime function.  */
+-/*
+- *  GRUB  --  GRand Unified Bootloader
+- *  Copyright (C) 2008  Free Software Foundation, Inc.
+- *
+- *  GRUB is free software: you can redistribute it and/or modify
+- *  it under the terms of the GNU General Public License as published by
+- *  the Free Software Foundation, either version 3 of the License, or
+- *  (at your option) any later version.
+- *
+- *  GRUB is distributed in the hope that it will be useful,
+- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *  GNU General Public License for more details.
+- *
+- *  You should have received a copy of the GNU General Public License
+- *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#include <grub/datetime.h>
+-#include <grub/i18n.h>
+-
+-static const char *const grub_weekday_names[] =
+-{
+-  N_("Sunday"),
+-  N_("Monday"),
+-  N_("Tuesday"),
+-  N_("Wednesday"),
+-  N_("Thursday"),
+-  N_("Friday"),
+-  N_("Saturday"),
+-};
+-
+-int
+-grub_get_weekday (struct grub_datetime *datetime)
+-{
+-  unsigned a, y, m;
+-
+-  if (datetime->month <= 2)
+-    a = 1;
+-  else
+-    a = 0;
+-  y = datetime->year - a;
+-  m = datetime->month + 12 * a - 2;
+-
+-  return (datetime->day + y + y / 4 - y / 100 + y / 400 + (31 * m / 12)) % 7;
+-}
+-
+-const char *
+-grub_get_weekday_name (struct grub_datetime *datetime)
+-{
+-  return _ (grub_weekday_names[grub_get_weekday (datetime)]);
+-}
+-
+-#define SECPERMIN 60
+-#define SECPERHOUR (60*SECPERMIN)
+-#define SECPERDAY (24*SECPERHOUR)
+-#define DAYSPERYEAR 365
+-#define DAYSPER4YEARS (4*DAYSPERYEAR+1)
+-
+-
+-void
+-grub_unixtime2datetime (grub_int32_t nix, struct grub_datetime *datetime)
+-{
+-  int i;
+-  grub_uint8_t months[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+-  /* In the period of validity of unixtime all years divisible by 4
+-     are bissextile*/
+-  /* Convenience: let's have 3 consecutive non-bissextile years
+-     at the beginning of the counting date. So count from 1901. */
+-  int days_epoch;
+-  /* Number of days since 1st Januar, 1901.  */
+-  unsigned days;
+-  /* Seconds into current day.  */
+-  unsigned secs_in_day;
+-  /* Transform C divisions and modulos to mathematical ones */
+-  if (nix < 0)
+-    days_epoch = -(((unsigned) (SECPERDAY-nix-1)) / SECPERDAY);
+-  else
+-    days_epoch = ((unsigned) nix) / SECPERDAY;
+-  secs_in_day = nix - days_epoch * SECPERDAY;
+-  days = days_epoch + 69 * DAYSPERYEAR + 17;
+-
+-  datetime->year = 1901 + 4 * (days / DAYSPER4YEARS);
+-  days %= DAYSPER4YEARS;
+-  /* On 31st December of bissextile years 365 days from the beginning
+-     of the year elapsed but year isn't finished yet */
+-  if (days / DAYSPERYEAR == 4)
+-    {
+-      datetime->year += 3;
+-      days -= 3*DAYSPERYEAR;
+-    }
+-  else
+-    {
+-      datetime->year += days / DAYSPERYEAR;
+-      days %= DAYSPERYEAR;
+-    }
+-  for (i = 0; i < 12
+-	 && days >= (i==1 && datetime->year % 4 == 0
+-		      ? 29 : months[i]); i++)
+-    days -= (i==1 && datetime->year % 4 == 0
+-			    ? 29 : months[i]);
+-  datetime->month = i + 1;
+-  datetime->day = 1 + days;
+-  datetime->hour = (secs_in_day / SECPERHOUR);
+-  secs_in_day %= SECPERHOUR;
+-  datetime->minute = secs_in_day / SECPERMIN;
+-  datetime->second = secs_in_day % SECPERMIN;
+-}
