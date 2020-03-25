@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:48:44 UTC 2020 - g.santomaggio@gmail.com
+
+- Changes for 22.3:
+  * compiler: A 'receive' with an 'after 0' clause would prevent
+    the optimization that can avoid scanning the entire receive
+    queue when matching on a newly created reference.
+  * compiler: HiPE can again handle modules with catch and try
+    constructs.
+  * compiler: Fixed a bug in bit-syntax optimization that could
+    crash the compiler.
+  * crypto: Fixed potential memory leaks involving calls to the
+    crypto ng_api.
+  * common_test: Document incl_apps cover option
+  * common_test: The ct_property_test has now a report function for
+    results of stateful testing.
+  * common_test: Don't hide error reasons from user
+  * stdlib: Fix type specification for uri_string:normalize/2 that
+    may also return error().
+  * stdlib: Improve error handling in uri_string:normalize/2. This
+    change fixes a crash when the input URI has faulty percent-
+    encoding.
+  * stdlib: Fix minor bugs in the Erlang pretty printer (erl_pp).
+  * stdlib: Fix the Erlang parser regarding consecutive unary
+    operators.
+  * stdlib: Let calendar:rfc3339_to_system_time() crash when the
+    time offset is missing.
+  * stdlib: Implement uri_string:resolve/{2,3} that can be used to
+    resolve a URI reference against a base URI.
+  * stdlib: In gen_statem it is now possible to change the callback
+    module for a running server. See gen_statem's documentation for
+    change_callback_module, push_callback_module, and
+    pop_callback_module.
+  * ssl: Correct handling of TLS record limit in TLS-1.3. The max
+    value differs from previous versions. Also the payload data max
+    record check was broken, that is record overflow problems could
+    occur if user sent large amounts of data.
+  * ssl: Correct close handling for DTLS
+  * ssl: Fix ssl:getstat/1-2 to also work for DTLS sockets
+  * ssl: Correct internal handling och socket active mode to avoid
+    reviving TCP data aimed for a downgraded TLS socket.
+  * ssl: When using the host name as fallback for SNI (server name
+    indication) strip a possible trailing dot that is allowed in a
+    host name but not in the SNI. Also if the server receives a SNI
+    with a trailing dot send an UNRECOGNIZED_NAME alert.
+  * ssl: Immediately remove session entries if handshake is
+    abruptly closed at transport level.
+  * ssl: Implementation of the key and initialization vector update
+    feature, and general hardening of TLS 1.3. There are
+    cryptographic limits on the amount of plaintext which can be
+    safely encrypted under a given set of keys. This change
+    enforces those limits by triggering automatic key updates on
+    TLS 1.3 connections.
+  * ssl: Add support for TLS 1.3 Session Tickets (stateful and
+    stateless). This allows session resumption using keying
+    material from a previous successful handshake.
+  * ssl: Add support for key exchange with Edward curves and PSS-
+    RSA padding in signature verification.
+  * megaco: The documented function
+    megaco:get_sdp_record_from_PropertGroup/2 was a wrapper for
+    megaco_sdp:get_sdp_record_from_PropertGroup/2 but did not
+    actually exist. This has now been fixed.
+  * megaco: Test suite completely reworked. Add (timestamp) utility
+    functions for debugging and testing.
+  * erl_interface: Fix link error "multiple definition of
+    `ei_default_socket_callbacks'" for gcc version 10 or when built
+    with gcc option -fno-common. Error exists since OTP-21.3.
+  * asn1: Fix 'DEFAULT' with 'OCTET STRING' and 'SEQUENCE OF
+    CHOICE' with extensions.
+  * erts: gen_udp:recv(S, N, 0) corrupted the internal state for
+    the socket so after receive with {active, once} it always
+    returned {error, timeout}, and wasted the received UDP packets.
+    This bug has now been fixed. Reported and pinpointed by
+    Alexander Petrovsky.
+  * erts: The atom esock_atom_user and esock_atom_kernel was never
+    actually created. This has now been corrected.
+  * erts: Fixed bug in socket module that could potentially lead to
+    scheduler deadlocks.
+  * erts: Fix bug causing VM crash if down or stop callback of a
+    NIF resource is called after the NIF module has been purged.
+    The fix will postpone unloading until all such resource objects
+    have been garbage collected.
+  * erts: Fixed bug in ets:update_counter/4, when called with an
+    invalid UpdateOp and a Key that does not exist, causing
+    ets:info(T,size) to return incorrect values. Bug exists since
+    OTP-19.0.2.
+  * erts: Fix potential heap corrupting bugs when a process calls a
+    BIF that blocks other normal schedulers and then writes to its
+    own heap without the main process lock. A NIF running on a
+    dirty scheduler trying to interact with such a process could
+    corrupt its heap. The fixed BIFs were related to code loading
+    and tracing.
+  * erts: Fixed bug in erlang:list_to_ref/1 when called with a
+    reference created by a remote note. Function list_to_ref/1 is
+    intended for debugging and not to be used in application
+    programs. Bug exist since OTP 20.0.
+  * erts: The prim_net nif (net/kernel) made use of an undefined
+    atom, notsup. This has now been corrected.
+  * erts: Corrected the valid range of the erl command line
+    argument +SDio <NumberOfDirtyIoSchedulers> from 0..1024 to
+    1..1024. +SDio 0 was erroneously allowed which just caused the
+    VM to crash on the first dirty I/O job scheduled.
+  * erts: Fix a crash when attempting to log faults when loading
+    files during early boot.
+  * erts: For socket, not all send and receive flags are supported
+    on all platforms. In order to (at least) simplify testing, the
+    socket:supports/0,1,2,3 functions has been extended with
+    send_flags and recv_flags items, which indicates what the
+    current platform can manage.
+  * erts: Add a "full featured" version of getifaddrs in the net
+    module.
+  * erts: The options busy_limits_port and busy_limits_msgq have
+    been added to the BIF erlang:open_port/2. The busy_limits_port
+    option can be used for controlling the busy state of a port
+    executing the spawn_driver or the fd_driver. The
+    busy_limits_msgq option can be used for controlling the busy
+    state of the port message queue.
+  * erts: A socket "registry" has been added making it possible to
+    list current open sockets.
+  * erts: The counters managed by the socket nif has been extended.
+    Their "size" has been increased from 32 bit to 64. Two max
+    package size (for read and write) has been added. And four
+    accept counters has been added.
+  * erts: Add gcc option -fno-common to detect accidental name
+    clashes of global variables.
+  * erts: New dynamic lock checker that verifies locking orders and
+    detects potential deadlock bugs in drivers and NIFs. Enabled
+    together with the old static lock checker (for ERTS internal
+    locks) in emulator started with -emu_type debug or built with
+    configuration option --enable-lock-checking.
+  * snmp: A simple supervision of the snmp manager net-if process
+    has been added. Also, a way to forcibly restart the net-if
+    process has been added. This could be useful if the net-if
+    process hangs for some reason.
+  * snmp: Misc documentation corrections
+  * mnesia: Fixed a timing issue in uninstall fallback
+    functionality.
+  * eunit: Backport of PR-2316: Strip control codes from
+    eunit_surefire output to avoid generation of invalid xml
+  * ssh: Unicode problems for ssh_sftp:write fixed.
+  * ssh: Changes to the internal api of the experimental ssh_dbg
+    tool.
+  * ssh: The new functions ssh:set_sock_opts/2 and
+    ssh:get_sock_opts/2 sets and reads option values for the
+    underlying TCP stream.
+  * hipe: HiPE can again handle modules with catch and try
+    constructs.
+  * hipe: When the return value for try/catch was ignored, the
+    native code compiler could crash.
+  * public_key: Add support for key exchange with Edward curves and
+    PSS-RSA padding in signature verification.
+  * diameter: Add the 'first' tuple to type diameter:peer_filter/0.
+    The filter was added in OTP-17.5.6.8 and OTP-18.3, but neither
+    release updated the type specification.
+  * tools: An Emacs warning due to lacking type in defcustom
+    declaration has been fixed.
+  * tools: Improve emacs indentation.
+  * tools: The cover tool could generate instrumented code for a
+    module that would cause warnings to be issued.
+  * tools: Fixed generated fprof analysis format to also handle
+    data in maps.
+  * sasl: A socket "registry" has been added making it possible to
+    list current open sockets.
+  * kernel: The DNS resolver `inet_res` has been fixed to return
+    the last intermediate error when subsequent requests times out.
+  * kernel: The prim_net nif (net/kernel) made use of an undefined
+    atom, notsup. This has now been corrected.
+  * kernel: Fix a crash when attempting to log faults when loading
+    files during early boot.
+  * kernel: Fix crash in logger when logging to a remote node
+    during boot.
+  * kernel: Improved net_kernel debug functionality.
+- Changes for 22.2.8:
+  * diameter: The possibility of choosing a handler process for an
+    incoming Diameter request with a configured MFA was documented
+    in OTP 20.0, but counters (with {traffic_counters, true}) were
+    not incremented when this process was on a remote node.
+    Counters are now incremented on the node that configures the
+    transport in question. Introduced in OTP 21.3.
+  * diameter: Transport options differing from those passed to
+    diameter:add_transport/2 were used in several situations: when
+    starting a transport process after connect_timer expiry after
+    an initial connection attempt has failed, when starting a
+    transport process after a connection has been accepted, when
+    sending events, when returning options in
+    diameter:service_info/2, and possibly more. In particular, the
+    following configuration options to diameter:add_transport/2
+    were dropped: avp_dictionaries, incoming_maxlen, spawn_opt,
+    strict_mbit. Moreover, any service options mistakenly passed to
+    diameter:add_transport/2 were interpreted as such, instead of
+    being ignored as the documentation states, with the consequence
+    that outgoing and incoming requests saw different values of
+    some options, some were always taken from transport options,
+    and others from service options. diameter:add_transport/2 must
+    be called in new code for the fix to have effect. Introduced in
+    OTP 20.1.
+
+-------------------------------------------------------------------
 Mon Mar  2 13:48:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove conditions and support for openSUSE/SLE < 15
