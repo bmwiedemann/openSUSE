@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:45:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.26.0:
+  * "git rebase" now uses a different backend that is based on the
+    'merge' machinery by default. The 'rebase.backend' configuration
+     variable reverts to old behaviour when set to  'apply'
+  * Improved handling of sparse checkouts
+  * Improvements to many commands and internal features
+
+-------------------------------------------------------------------
+Thu Mar 19 12:22:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.25.2:
+  * bug fixes to various subcommands in specific operations
+
+-------------------------------------------------------------------
 Mon Feb 17 09:53:55 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.25.1:
