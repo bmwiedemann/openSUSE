@@ -42,4 +42,41 @@ Add reproducibledate.patch to not add current time to man-pages to fix build-com
     <comment></comment>
     <requestid>756878</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d06b66f627dc3bfd87a218f08ae65819</srcmd5>
+    <version>1.1.5</version>
+    <time>1585176255</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.1.5:
+  - Fix invocation of ansi_cprng in FIPS mode during testing
+  - Fix testing on kernels &gt;= 5.0
+  - Add virtualization test for kernel 5.1
+  - Fix the limit between vmsplice() and sendmsg() by Christophe Leroy
+  - Fix remove code duplication by Ondrej MosnÃ¡Äek
+  - Fix potential memleak in speed-test
+- updated to 1.1.4:
+  - Fix: use sendmsg when processing more than 1&lt;&lt;16 bytes input data which improves performance on some architectures
+- updated to 1.1.3:
+  - Fix: default location of FIPS 140-2 HMAC control file is .&lt;orig file&gt;.hmac (was accidentally moved to &lt;orig file&gt;.hmac with 1.1.0)
+- updated to 1.1.2:
+  - Fix: Bug fixes for GCC 8.1.0 regarding string length checks by Krzysztof Kozlowski
+  - Enhancement: ensure that tests execute on architectures other than X86 by Ondrej MosnÃ¡Äek
+  - Fix: Bug fix to initialize FDs at the correct time in kcapi-kernel-if.c by Ondrej MosnÃ¡Äek
+  - Test fix: Support test execution outside build environment by Ondrej MosnÃ¡Äek
+- updated to 1.1.1:
+  - Fix: Bug fixes for kcapi_hasher by Ondrej MosnÃ¡Äek
+- updated to 1.1.0:
+  - API Enhancement: Addition of kcapi_handle_reinit
+  - Fix: simplify code by removing the internal *_fd functions from kcapi-kernel-if.c
+  - Test enhancement: add IIV speed testing
+  - Fix: add a loop around the read system call to always obtain all generated data
+  - Fix: use host compiler for compiling docproc (reported by Christophe LEROY, fixed by BjÃ¶rn Esser)
+  - Fix: make error handling of hashing applications consistent with coreutils applications (reported by Christophe LEROY)
+  - Fix: support for zero length files (patched by Ondrej MosnÃ¡Äek)
+  - Fix: support for zero message hashes on kernels &lt;= 4.9 (patched by Ondrej MosnÃ¡Äek)
+  - Fix: Add Travis CI test system provided by Ondrej MosnÃ¡Äek
+  - Fix: Add several fixes to kcapi-hasher by Ondrej MosnÃ¡Äek
+  - Fix: Add additional tests for kcapi-hasher by Ondrej MosnÃ¡Äek</comment>
+    <requestid>788020</requestid>
+  </revision>
 </revisionlist>
