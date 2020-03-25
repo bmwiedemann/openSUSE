@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:16:25 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update sysfsutils-fix-compiler-issues.patch in order to
+  fix boo#1166612.
+
+-------------------------------------------------------------------
 Fri Feb 21 18:05:28 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Fix compiler issues for this package, which hasn't been touched

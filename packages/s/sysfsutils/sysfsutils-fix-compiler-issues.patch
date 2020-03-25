@@ -110,7 +110,7 @@ diff -aurp sysfsutils-2.1.0.orig/cmd/systool.c sysfsutils-2.1.0/cmd/systool.c
  
 -#define safestrcpy(to, from)	strncpy(to, from, sizeof(to)-1)
 -#define safestrcat(to, from)	strncat(to, from, sizeof(to) - strlen(to)-1)
-+inline void my_strncpy(char *to, const char *from, size_t max)
++static inline void my_strncpy(char *to, const char *from, size_t max)
 +{
 +	size_t i;
  
@@ -15907,7 +15907,7 @@ diff -aurp sysfsutils-2.1.0.orig/lib/sysfs.h sysfsutils-2.1.0/lib/sysfs.h
  
 -#define safestrcpy(to, from)	strncpy(to, from, sizeof(to)-1)
 -#define safestrcat(to, from)	strncat(to, from, sizeof(to) - strlen(to)-1)
-+inline void my_strncpy(char *to, const char *from, size_t max)
++static inline void my_strncpy(char *to, const char *from, size_t max)
 +{
 +	size_t i;
  
