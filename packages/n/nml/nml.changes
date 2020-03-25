@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 17:28:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix the python 3.8 compatibility:
+  * 0001-Fix-52-time.clock-has-been-removed-in-python-3.8-53.patch
+
+
+-------------------------------------------------------------------
 Mon May 27 14:41:43 UTC 2019 - Jon Brightwell <jon@moozaad.co.uk>
 
 - Removed nml-python341.diff - python bug, fixed python upstream (3.4.2rc1).

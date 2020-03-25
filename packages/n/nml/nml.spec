@@ -1,7 +1,7 @@
 #
 # spec file for package nml
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,15 @@ Name:           nml
 Version:        0.4.5
 Release:        0
 Summary:        NewGRF Meta Language
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            http://dev.openttdcoop.org/projects/nml
+URL:            http://dev.openttdcoop.org/projects/nml
 Source:         http://bundles.openttdcoop.org/nml/releases/%{version}/%{name}-%{version}.tar.gz
 Source99:       nml-rpmlintrc
 #PATCH-FIX-UPSTREAM Pillow changed it's version string https://github.com/OpenTTD/nml/pull/29
-Patch0:			python-pillow-version.patch
+Patch0:         python-pillow-version.patch
+# PATCH-FIX-UPSTREAM time.clock() is gone in python 3.8
+Patch1:         0001-Fix-52-time.clock-has-been-removed-in-python-3.8-53.patch
 BuildRequires:  gcc
 BuildRequires:  python3-devel
 # We need the required packages also on building for regression tests:
@@ -44,7 +46,7 @@ A tool to compile nml files to grf or nfo files, making newgrf coding easier.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 make
