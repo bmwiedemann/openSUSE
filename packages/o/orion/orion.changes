@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 23 20:18:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with recent mpv versions:
+  * 0001-Add-a-local-qthelper.hpp-copy.patch (gh#alamminsalo/orion/296)
+- Spec cleanup
+- Remove obsolete post macros.
+- Remove obsolete sed calls.
+
+-------------------------------------------------------------------
 Tue Feb 25 16:35:20 UTC 2020 - pousaduarte@gmail.com
 
 - Update to version 1.6.7+git~20200218:
