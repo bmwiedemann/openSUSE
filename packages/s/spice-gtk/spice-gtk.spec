@@ -18,20 +18,19 @@
 
 
 Name:           spice-gtk
-Version:        0.37
+Version:        0.38
 Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://spice-space.org
-Source0:        http://spice-space.org/download/gtk/%{name}-%{version}.tar.bz2
-Source1:        http://spice-space.org/download/gtk/%{name}-%{version}.tar.bz2.sig
+Source0:        http://spice-space.org/download/gtk/%{name}-%{version}.tar.xz
+Source1:        http://spice-space.org/download/gtk/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch1:         Remove-celt-support.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gstreamer-plugins-bad
 BuildRequires:  gstreamer-plugins-good
@@ -40,6 +39,7 @@ BuildRequires:  json-glib-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  python3-six
@@ -56,20 +56,21 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libphodav-2.0)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.49.91
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.16
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
 BuildRequires:  pkgconfig(libusbredirhost) >= 0.7.1
 BuildRequires:  pkgconfig(libusbredirparser-0.5) >= 0.4
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(openssl) >= 1.0.0
+BuildRequires:  pkgconfig(opus) >= 0.9.14
 BuildRequires:  pkgconfig(pixman-1) >= 0.17.7
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.96
 # spice-protocol is bundled, but we still need the system-wide .pc file for the pkgconfig() requires magic
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(spice-protocol) >= 0.12.15
+BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
 Requires(pre):  permissions
 Recommends:     %{name}-lang
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
@@ -133,25 +134,15 @@ A Gtk client and libraries for SPICE remote desktop servers, (Linux and Windows)
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 cp %{SOURCE3} .
 
 %build
-autoreconf -fi
-
-export PYTHON=/usr/bin/python3
-%configure \
-    --disable-static \
-    --enable-vala \
-    --enable-lz4 \
-    --enable-smartcard \
-    --disable-silent-rules \
-    --with-usb-ids-path=/usr/share/hwdata/usb.ids \
-    %{nil}
-make %{?_smp_mflags}
+%meson -Dvapi=enabled -Dlz4=enabled -Dsmartcard=enabled -Dusb-ids-path=/usr/share/hwdata/usb.ids
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}
 
 %post -n libspice-client-glib-helper

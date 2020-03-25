@@ -433,4 +433,38 @@ a new setuid binary.
     <comment></comment>
     <requestid>783118</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e340dcc4f927ce1ffab370031569af3c</srcmd5>
+    <version>0.38</version>
+    <time>1585176115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38:
+- #108 - Add CD/DVD redirection, to allow mounting ISO images from client.
+- #99 - Fix display scaling with EGL and HiDPI monitors
+- #19 - Fix display corruption on HiDPI
+- #82 - Various clipboard fixes &amp; improvements, related to host/guest races &amp;
+  cltipboard managers
+- [rhbz#1720532] - Fix buffer overflow on sending data with shared-folders
+- [rhbz#1695618] - Fix hang over failed migration
+- API: add spice_display_channel_change_preferred_video_codec_types()
+- Several usbredir related fixes and code improvements
+- Several video stream related fixes and code improvements
+- Several shared-folder related fixes and code improvements
+- file-xfer: fix stuck transfer while transfering multiple big files at once
+- file-xfer: fix possible crash on Windows
+- Migration: Fix metadata swap of channels
+- build-sys: remove autotools (transition to meson completed)
+- Require spice-protocol &gt;= 0.14.1
+- Require libusb &gt;= 1.0.21
+- Translations:
+ - Update Italian
+ - Add Russian
+- Use meson build system
+- Include a post release patch to compensate for an issue where the
+  build does need to find celt resources even though we build
+  without Celt support.
+  Remove-celt-support.patch
+</comment>
+    <requestid>786276</requestid>
+  </revision>
 </revisionlist>
