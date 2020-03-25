@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 00:53:09 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1585096577.f3257c89:
+  * Dev: behave: Functional test for user case master survive
+  * Dev: unittest: unittest for qdevice improvement
+  * Dev: behave: functional test for qdevice imporvement
+  * Low: corosync: Improve qdevice configure process
+
+-------------------------------------------------------------------
 Thu Mar 19 13:19:38 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1584623405.d39158a2:
