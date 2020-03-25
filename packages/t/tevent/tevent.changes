@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar  7 00:20:55 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to version 0.10.2
+  + Upgrade waf to version 2.0.18 to fix a cross-compilation issue;
+    (bso#13846).
+
+-------------------------------------------------------------------
 Tue Nov 26 21:52:29 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.10.1 ... make build with Python 3.8 working again

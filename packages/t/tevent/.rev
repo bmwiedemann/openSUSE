@@ -360,4 +360,12 @@ Disable rpath-install and silent-rules while configure.</comment>
     <comment></comment>
     <requestid>760689</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ca770db7b07956479efadca749d8ff3a</srcmd5>
+    <version>0.10.2</version>
+    <time>1585176225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786214</requestid>
+  </revision>
 </revisionlist>
