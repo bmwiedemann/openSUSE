@@ -419,4 +419,13 @@ Documentation
     parse.lac (as yacc.c does).</comment>
     <requestid>775252</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1e54af7ba818feecfe625805b920fc64</srcmd5>
+    <version>3.5.3</version>
+    <time>1585176108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.3
+  * minor fixes</comment>
+    <requestid>786167</requestid>
+  </revision>
 </revisionlist>
