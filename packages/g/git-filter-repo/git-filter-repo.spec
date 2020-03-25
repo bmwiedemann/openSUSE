@@ -1,7 +1,7 @@
 #
 # spec file for package git-filter-repo
 #
-# Copyright (c) 2019 SUSE, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
@@ -21,19 +22,19 @@
 %global gitexecdir %{_libexecdir}/git
 
 Name:           git-filter-repo
-Version:        2.24.0
+Version:        2.26.0
 Release:        0
 Summary:        Quickly rewrite git repository history (git-filter-branch replacement)
-License:        MIT or GPL-2.0-only
+License:        MIT OR GPL-2.0-only
 Group:          Development/Tools/Version Control
-Url:            https://github.com/newren/git-filter-repo
+URL:            https://github.com/newren/git-filter-repo
 #
 Source0:        https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
 #
 BuildArch:      noarch
 #
-BuildRequires:  git
 BuildRequires:  %{python_module devel}
+BuildRequires:  git
 #
 Requires:       git
 
