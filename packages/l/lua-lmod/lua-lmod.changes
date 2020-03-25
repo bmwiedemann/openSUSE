@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:42:13 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.3.6:
+  * Create findExec shell function to locate commands like ps.
+  * Bugfixes.
+
+-------------------------------------------------------------------
 Wed Mar 11 15:14:58 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - python3 based Sphinx
