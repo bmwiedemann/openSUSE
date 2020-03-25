@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.4.0+git57.70549516
+Version:        4.5.0+git2.32821fe4
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -38,7 +38,7 @@ Patch4:         0004-Revert-Low-build-Move-binaries-in-usr-lib-heartbeat-.patch
 # PATCH-FIX-OPENSUSE: Revert ocf_log: use same log format at pacemaker
 Patch6:         0006-Revert-ocf_log-use-same-log-format-as-pacemaker.patch
 # PATCH-FIX-OPENSUSE:
-Patch7:         0007-Request-to-add-gcp-vpc-move-route.patch	
+Patch7:		0007-Request-to-add-gcp-vpc-move-route.patch	
 
 BuildRequires:  autoconf
 BuildRequires:  automake
