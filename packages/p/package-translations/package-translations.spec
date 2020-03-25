@@ -1,7 +1,7 @@
 #
 # spec file for package package-translations
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           package-translations
-Version:        84.87.20190506.9674f864
+Version:        84.87.20200314.d01661e1
 Release:        0
 Summary:        Summary and Descriptions Translations
 License:        BSD-3-Clause
@@ -25,7 +25,7 @@ Group:          System/GUI/Other
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
-Url:            https://github.com/openSUSE/packages-i18n/
+URL:            https://github.com/openSUSE/packages-i18n/
 
 %define build_languages cs de es fr hu it ja lt nl nn ru uk zh_CN
 

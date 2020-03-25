@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:58:58 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20200314.d01661e1:
+  * Bump urls for 15.2
+  * Manually fix rpm-groups.pot
+  * README.md: Document package update, improve format
+  * README.md: Document standard use case
+  * Added Occidental
+  * Update translations.
+
+-------------------------------------------------------------------
 Mon May 13 08:13:14 UTC 2019 - Karl Eichwalder <ke@suse.de>
 
 - Update to version 84.87.20190506.9674f864:
