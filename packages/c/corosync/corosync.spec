@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Clustering/HA
 Version:        2.4.5
 Release:        0
-Url:            http://corosync.github.io/corosync/
+URL:            http://corosync.github.io/corosync/
 # source should be Souce code.tar.gz, https://github.com/corosync/corosync/archive/vX.X.X.tar.gz
 Source0:        %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
@@ -65,6 +65,8 @@ Patch6:         bug-1001164_corosync.conf-example.patch
 Patch7:         corosync-2.3.4-fix-bashisms.patch
 Patch8:         corosync-init-lockfile-path-error.patch
 Patch9:         corosync-start-stop-level.patch
+Patch10:        bug-1166899-quorumtool-Fix-exit-status-codes.patch
+Patch11:        bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # openais is indeed gone and should be uninstalled. Yes, we do not
@@ -139,6 +141,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 %if %{with runautogen}
