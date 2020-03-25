@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-efi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnu-efi
-Version:        3.0.8
+Version:        3.0.11
 Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/Other
-Url:            http://sourceforge.net/projects/gnu-efi
+URL:            http://sourceforge.net/projects/gnu-efi
 Source:         http://sourceforge.net/projects/gnu-efi/files/gnu-efi-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
-Patch1:         %{name}-fix-strncpy-stpncpy-strncat.patch
 BuildRequires:  kernel-source
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm
@@ -37,7 +36,6 @@ environment.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 ##########################
