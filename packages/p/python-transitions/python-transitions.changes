@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:51:54 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.8.0
+  - Feature: `HierarchicalMachine` has been rewritten to support parallel states. Please have a look at the ReadMe.md to check what has changed.
+    + The previous version can be found in `transitions.extensions.nesting_legacy` for now
+  - Feature: Introduced `AsyncMachine` (see discussion #259); note that async HSMs are not yet supported
+  - Feature #390: String callbacks can now point to properties and attributes (thanks @jsenecal)
+  - Bugfix: Auto transitions are added multiple times when add_states is called more than once
+  - Bugfix: Convert state._name from `Enum` into strings in `MarkupMachine` when necessary
+  - Bugfix #392: Allow `Machine.add_ordered_transitions` to be called without the initial state (thanks @mkaranki and @facundofc)
+  - `GraphMachine` now attempts to fall back to `graphviz` when importing `pygraphviz` fails
+  - Not implemented/tested so far (contributions are welcome!):
+    + Proper Graphviz support of parallel states
+    + AsyncHierachicalMachine
+
+-------------------------------------------------------------------
 Fri Jan 10 19:57:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.2
