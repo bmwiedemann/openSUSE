@@ -1,7 +1,7 @@
 #
 # spec file for package pagure
 #
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 
 Name:               pagure
-Version:            5.8.1
+Version:            5.9.0
 Release:            0
 Summary:            A git-centered forge
 Group:              Development/Tools/Version Control
