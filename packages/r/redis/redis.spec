@@ -20,11 +20,10 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        5.0.7
+Version:        5.0.8
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
-Group:          Productivity/Databases/Servers
 URL:            https://redis.io
 Source0:        http://download.redis.io/releases/redis-%{version}.tar.gz
 Source1:        %{name}.logrotate
@@ -68,7 +67,7 @@ different kind of sorting abilities.
 
 %build
 export HOST=OBS # for reproducible builds
-make %{?_smp_mflags} CFLAGS="%{optflags}" V=1
+%make_build CFLAGS="%{optflags}"
 %sysusers_generate_pre %{SOURCE9} redis
 
 %install
@@ -100,7 +99,7 @@ install -Dm 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysctl.d/00-%{name}.conf
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.target
 install -Dm 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}@.service
-install -Dm 0644 %{SOURCE4} %{buildroot}%{_libexecdir}/tmpfiles.d/%{name}.conf
+install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dm 0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{name}-sentinel@.service
 install -Dm 0644 %{SOURCE8} %{buildroot}%{_unitdir}/%{name}-sentinel.target
 
@@ -118,14 +117,14 @@ The test suite often fails to start a server, with
 'child process exited abnormally' -- sometimes it works.
 ---------------------------------------------------
 EOF
-make %{?_smp_mflags} test || true
+%make_build test || true
 %endif
 
 %pre -f redis.pre
 %service_add_pre redis.target redis@.service redis-sentinel.target redis-sentinel@.service
 
 %post
-systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/%{name}.conf || true
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post redis.target redis@.service redis-sentinel.target redis-sentinel@.service
 echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
@@ -143,7 +142,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{_bindir}/%{name}-*
 %{_sbindir}/%{name}-*
 %{_sbindir}/rc%{name}
-%{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/redis-user.conf
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}.target

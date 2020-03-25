@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Mar 24 19:04:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use the tmpfiles macros instead of calling systemd-tempfiles
+  direct and build wrong macro paths.
+
+-------------------------------------------------------------------
+Wed Mar 18 02:18:24 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+- Refresh spec-file with spec-cleaner and manual optimizations
+  * Remove Group tag.
+  * Replace make by %make_build macros.
+- Update to 5.0.8
+  * https://raw.githubusercontent.com/antirez/redis/5.0.8/00-RELEASENOTES
+  * Fix Pi building needing -latomic, backport.
+  * Fix impl of aof-child whitelist SIGUSR1 feature.
+  * Fix ThreadSafeContext lock/unlock function names.
+  * XREADGROUP should propagate XCALIM/SETID in MULTI/EXEC.
+  * Fix client flags to be int64 in module.c.
+  * Fix small bugs related to replica and monitor ambiguity.
+  * Fix lua related memory leak.
+  * Simplify #6379 changes.
+  * Free allocated sds in pfdebugCommand() to avoid memory leak.
+  * Jump to right label on AOF parsing error.
+  * Free fakeclient argv on AOF error.
+  * Fix potential memory leak of rioWriteBulkStreamID().
+  * Fix potential memory leak of clusterLoadConfig().
+  * Fix bug on KEYS command where pattern starts with * followed by \x00.
+  * Blocking XREAD[GROUP] should always reply with valid data.
+  * XCLAIM: Create the consumer only on successful claims.
+  * Stream: Handle streamID-related edge cases.
+  * Fix ip and missing mode in RM_GetClusterNodeInfo().
+  * Inline protocol: handle empty strings well.
+  * Mark extern definition of SDS_NOINIT in sds.h.
+  * Fix revisit CVE-2015-8080 vulnerability.
+  * Avoid sentinel changes promoted_slave to be its own replica.
+
+-------------------------------------------------------------------
 Sat Feb  8 15:40:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - print instance name in the from the service files
@@ -1249,4 +1285,3 @@ Fri Mar  5 06:12:24 EST 2010 - pzb@suse.de
 Thu Jan 21 16:32:45 UTC 2010 - prusnak@suse.cz
 
 - created package
-
