@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 24 18:13:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.5
+  * Beautify LFSR implementation
+  * Fix decoding UI
+  * Overhaul GNU Radio backend (ready for gr 3.8)
+  * improve waiting in unittests
+
+-------------------------------------------------------------------
 Sat Mar  7 19:20:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.4
