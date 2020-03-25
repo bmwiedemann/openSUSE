@@ -1,7 +1,7 @@
 #
 # spec file for package python-transip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-transip
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        TransIP API Connector
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/benkonrath/transip-api
-Source:         https://github.com/benkonrath/transip-api/archive/v%{version}.tar.gz
+Source:         https://github.com/benkonrath/transip-api/archive/%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module suds-jurko}
@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 Requires:       python-requests
+Requires:       python-setuptools
 Requires:       python-suds-jurko
 BuildArch:      noarch
 %python_subpackages
@@ -54,7 +55,7 @@ This library implements part of the TransIP API in Python.
 
 %check
 # testConstructor needs network connection
-%python_expand nosetests-%{$python_bin_suffix} -e "test_constructor" -e "testConstructor"
+%pytest -k 'not (test_constructor or testConstructor)'
 
 %files %{python_files}
 %license LICENSE
