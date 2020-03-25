@@ -138,3 +138,4 @@ if __name__ == '__main__':
         test_simple()
         test_dict()
         test_dir()
+

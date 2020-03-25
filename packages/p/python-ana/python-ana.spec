@@ -1,7 +1,7 @@
 #
 # spec file for package python-ana
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,19 @@ Release:        0
 Summary:        The Python "ana" module
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/zardus/ana
+URL:            https://github.com/zardus/ana
 Source:         https://files.pythonhosted.org/packages/source/a/ana/ana-%{version}.tar.gz
 # https://github.com/zardus/ana/issues/13
 Source2:        https://raw.githubusercontent.com/zardus/ana/master/test.py
 Source3:        https://raw.githubusercontent.com/zardus/ana/master/test_pickle.p
+# https://github.com/zardus/ana/pull/14
+Patch0:         use_unittest.patch
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-future
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,6 +45,7 @@ A Python module that provides an undocumented data layer for Python objects.
 %setup -q -n ana-%{version}
 [ -e test.py ] || cp %{SOURCE2} test.py
 [ -e test_pickle.p ] || cp %{SOURCE3} test_pickle.p
+%patch0
 
 %build
 %python_build
@@ -55,10 +55,9 @@ A Python module that provides an undocumented data layer for Python objects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v
+%python_exec -m unittest discover
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.md
 %{python_sitelib}/*
