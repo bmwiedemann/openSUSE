@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 22 03:09:07 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 8.35
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.35  2020-03-20
+    - Added not_empty filter to Mojolicious::Validator.
+
+-------------------------------------------------------------------
 Tue Mar 17 03:14:21 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 8.34
