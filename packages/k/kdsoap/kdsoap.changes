@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Mar  4 22:30:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Use a service to generate a tarball with no non-free unit
+  test data (neither used nor installed; gh#KDSoap#207)
+
+-------------------------------------------------------------------
+Thu Feb 27 13:37:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add a note to mention that "no modification" files are not used
+  nor installed (gh#KDSoap#207)
+
+-------------------------------------------------------------------
+Sat Feb 22 13:29:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package
