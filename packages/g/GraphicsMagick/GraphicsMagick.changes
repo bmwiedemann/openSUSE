@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:17:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.3.35
+  Special Issues:
+  * It has been discovered that the 'ICU' library (a perhaps 30MB C++
+    library) which is now often a libxml2 dependendency causes huge
+    process initialization overhead.  This is noticed as unexpected
+    slowness when GraphicsMagick utilities are used to process small to
+    medium sized files.  The time to initialize the 'ICU' library is
+    often longer than the time that GraphicsMagick would otherwise
+    require to read the input file, process the image, and write the
+    output file.  If the 'ICU' dependency can not be avoided, then make
+    sure to use the modules build so there is only impact for file
+    formats which require libxml2.  Please lobby the 'ICU' library
+    developers to change their implementation to avoid long start-up
+    times due to merely linking with the library.
+  Security Fixes:
+  * GraphicsMagick is now participating in Google's oss-fuzz project due
+    to the contributions and assistance of Alex Gaynor. Since February 4
+    2018, 398 issues have been opened by oss-fuzz (some of which were
+    benign build issues) and 11 issues remain open.
+    The issues list is available at
+    https://bugs.chromium.org/p/oss-fuzz/issues/list under search term
+    "graphicsmagick".  Issues are available for anyone to view and
+    duplicate if they have been in "Verified" status for 30 days, or if
+    they have been in "New" status for 90 days.  There are too many
+    fixes to list here.  Please consult the GraphicsMagick ChangeLog
+    file, Mercurial repository commit log, and the oss-fuzz issues list
+    for details.
+  Bug fixes:
+  * Fix broken definition of ResourceInfinity which resulted in that
+    GetMagickResource() would return -1 rather than the maximum range
+    value for the return type as documented. (problem added by the
+    1.3.32 release).
+  * ModifyCache(): Re-open the pixel cache if the cache rows/columns do
+    not match the owning image rows/columns.
+  * Fix DisplayImages() return status.  The return status was inverted.
+  * HISTOGRAM: Histogram once again includes the histogram as a text
+    comment.  This became broken by previous security fixes.
+  * PICT: Fixed heap buffer overuns reported multiple sources.
+  * JNG: Detect when JPEG encoder has failed and throw an exception.
+  * MVG/DrawImage(): Performs even more parsing validations.
+  * Clang static analyzer fixes: A great many fixes were made based on
+    problem reports by the Clang static analyzer.
+  * Visual Studio static analyzer fixes: A great many fixes were made
+    based on problem reports by the Visual Studio 2019 static analyzer.
+    Many of these may improve the robustness of 64-bit code.
+  New Features:
+  * GRADIENT/GradientImage(): Improved accuracy of gradient levels as
+    well as dramaticaly improving performance.  Output PseudoClass
+    images if we can.  Add support for using the image 'gravity'
+    attribute as well as the "gradient:direction" definition to produce
+    gradient vector directions corresponding to SouthGravity (the
+    previously-existing default), NorthGravity, WestGravity,
+    EastGravity, NorthWestGravity, NorthEastGravity, SouthWestGravity,
+    and SouthEastGravity.
+  API Updates:
+  * InitializeMagickEx(): New function which may be used in place of
+    InitializeMagick() to initialize GraphicsMagick.  This
+    initialization function returns an error status value, may update a
+    passed ExceptionInfo structure with error information, and provides
+    an options parameter which supports simple bit-flags to tailor
+    initialization.  The signal handler registrations are skipped if the
+    MAGICK_OPT_NO_SIGNAL_HANDER flag is set in the options.
+  Feature improvements:
+  * Replace use of non-reentrant legacy POSIX functions with reentrant
+    equivalents.
+  * Timing of image reads should now be very accurate.  The timer was
+    sometimes not stopped as soon as it should be.
+  * PICT: The PICT reader is working pretty good now.  It handles all
+    the PICT image files I have available to me.
+  Behavior Changes:
+  * POSIX Signals: Use the normal termination signal handler for SIGXCPU
+    and SIGXFSZ so that ulimit or setrlimit(2) may be used to apply CPU
+    (RLIMIT_CPU) and output file size (RLIMIT_FSIZE) limits with the
+    normal cleanup, and without dumping core. Note that any output files
+    currently being written may be truncated and files being written by
+    external programs (e.g. Ghostscript) might be left behind unless
+    they are to a temporary file assigned by GraphicsMagick.
+  * Some private string and integer constants were removed from the
+    apparent library ABI.  Some private functions were marked static and
+    removed from the apparent library ABI.  This is mentioned because
+    someone is sure to notice and be concerned about it.
+  * The remaining private content in installed header files was moved
+    into -private.h header files which are not installed.  This should
+    not be cause for concern but is mentiond because someone is sure to
+    notice and be concerned about it.
+
+-------------------------------------------------------------------
 Mon Jan  6 22:29:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove xorg-x11-fonts runtime Requires, gm display no longer
