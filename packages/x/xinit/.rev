@@ -268,4 +268,14 @@
     to the program and improves the man pages.</comment>
     <requestid>681296</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>791b5e526bcb5f11cd7eed88b9f772ea</srcmd5>
+    <version>1.4.1</version>
+    <time>1585176198</time>
+    <user>dimstar_suse</user>
+    <comment>- /etc/X11/xinit/xinitrc.common  
+  * prevent gnome-session from failing by setting 
+    XDG_SESSION_TYPE to 'x11' (boo#1163262)</comment>
+    <requestid>787767</requestid>
+  </revision>
 </revisionlist>
