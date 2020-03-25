@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.2.4+git9.gd747507e
+Version:        1.2.6+git0.g99024013
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -101,6 +101,23 @@ This package contains the yaml files required to deploy and run the
 Rook-Ceph operator and Ceph clusters in a Kubernetes cluster.
 
 ################################################################################
+# Rook ceph operator helm charts
+################################################################################
+%package ceph-helm-charts
+Summary:        Rook Ceph operator helm charts
+Group:          System/Management
+BuildArch:      noarch
+
+%description ceph-helm-charts
+Helm helps manage Kubernetes applications. Helm Charts define,
+install, and upgrade Kubernetes applications. Rook is a
+cloud-native storage orchestrator for Kubernetes, providing
+the platform, framework, and support for a diverse set of storage
+solutions to integrate with cloud-native environments.
+
+This package contains Helm Charts for Rook.
+
+################################################################################
 # Rook integration test binary metadata
 ################################################################################
 %package integration
@@ -143,7 +160,7 @@ argument to [-test.run]. All Ceph test suites can be run with the argument
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service
-%global rook_container_version 1.2.4.9  # this is updated by update-tarball.sh
+%global rook_container_version 1.2.6.0  # this is updated by update-tarball.sh
 %if 0%{?is_opensuse}
 %global rook_image     registry.opensuse.org/opensuse/rook/ceph:%{rook_container_version}.%{release}
 %global ceph_image     registry.opensuse.org/opensuse/ceph/ceph:%CEPH_VERSION%
@@ -252,6 +269,11 @@ sed -i -e "s|image: .*|image: %{ceph_image}|g" %{buildroot}%{_datadir}/k8s-yaml/
 sed -i -e "s|image: .*|image: %{rook_image}|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/toolbox*
 sed -i -e "s|/usr/local/bin/toolbox.sh|%{_bindir}/toolbox.sh|g" %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/toolbox*
 
+# Install the helm charts
+mkdir -p %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator
+cp -pr cluster/charts/rook-ceph/* %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator
+sed -i -e "s|\".*/cephcsi/cephcsi:.*|\"%{ceph_csi_image}\"|g" %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator/values.yaml
+
 # For the integration test tooling, store files with the current Rook and Ceph image names
 # These files can be cat'ed to get these without needing to do special processing
 %define rook_integration_dir %{buildroot}%{_datadir}/rook-integration
@@ -280,6 +302,10 @@ for f in %{rook_integration_dir}/*; do cat "$f"; done
 %dir %{_datarootdir}/k8s-yaml/rook
 %dir %{_datarootdir}/k8s-yaml/rook/ceph
 %{_datadir}/k8s-yaml/rook/ceph/
+
+%files ceph-helm-charts
+%doc %{_datadir}/%{name}-ceph-helm-charts/operator/README.md
+%{_datadir}/%{name}-ceph-helm-charts
 
 # rook-integration-version-build.arch.rpm
 %files integration

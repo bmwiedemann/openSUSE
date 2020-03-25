@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 18 14:27:07 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.6:
+  * Update default Ceph version to v14.2.8 (#4960)
+  * Fix for OSDs on PVCs that were crashing on Ceph v14.2.8 (#4960)
+  * Mount /udev so the osds can discover device info (#5001)
+  * Query for the topology.kubernetes.io labels in K8s 1.17 or newer for the CRUSH hierarchy (#4989)
+  * Log a warning when useAllNodes is true, but nodes are defined in the cluster CR ([commit](https://github.com/rook/rook/pull/4974/commits/69c9ed4206f47644687733396d87022e93d312a3))
+
+-------------------------------------------------------------------
 Tue Mar 10 10:39:11 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - ceph: orchestrator cli name change
@@ -20,6 +30,11 @@ Tue Feb 18 11:08:04 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
   * Sort flexvolume docs and update for kubespray (#4747)
   * Add OpenShift common issues documentation (#4764)
   * Improved integration test when cleaning devices (#4796)
+
+-------------------------------------------------------------------
+Mon Jan 27 14:04:35 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Package helm charts for the rook operator for ceph (SES-799)
 
 -------------------------------------------------------------------
 Mon Jan 27 13:52:34 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
