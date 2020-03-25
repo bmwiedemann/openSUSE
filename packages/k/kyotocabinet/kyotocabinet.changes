@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 12 11:45:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.77:
+  * kcthread.cc (CondVar::wait): a bug on Win32 was fixed.
+  * kcdbext.h (IndexDB::set, IndexDB::replace): a bug of updating
+    existing records was fixed.
+  * kcdb.h (DB::check): new function.
+- Drop no longer needed gcc6-fix-errors.patch
+- Modernise spec file
+
+-------------------------------------------------------------------
 Wed Jan  3 12:18:07 UTC 2018 - dimstar@opensuse.org
 
 - Add baselibs.conf: Produce libkyotocabinet16-32bit, dependency to

@@ -1,7 +1,7 @@
-Index: kyotocabinet-1.2.52/Makefile.in
+Index: kyotocabinet-1.2.77/Makefile.in
 ===================================================================
---- kyotocabinet-1.2.52.orig/Makefile.in
-+++ kyotocabinet-1.2.52/Makefile.in
+--- kyotocabinet-1.2.77.orig/Makefile.in
++++ kyotocabinet-1.2.77/Makefile.in
 @@ -56,7 +56,7 @@ LDFLAGS = @MYLDFLAGS@
  CMDLDFLAGS = @MYCMDLDFLAGS@
  CMDLIBS = @MYCMDLIBS@
@@ -9,15 +9,15 @@ Index: kyotocabinet-1.2.52/Makefile.in
 -RUNENV = @MYLDLIBPATHENV@=@MYLDLIBPATH@
 +RUNENV = @MYLDLIBPATHENV@=.:$(LIBDIR)
  POSTCMD = @MYPOSTCMD@
-
-
-Index: kyotocabinet-1.2.52/configure.in
+ 
+ 
+Index: kyotocabinet-1.2.77/configure.in
 ===================================================================
---- kyotocabinet-1.2.52.orig/configure.in
-+++ kyotocabinet-1.2.52/configure.in
+--- kyotocabinet-1.2.77.orig/configure.in
++++ kyotocabinet-1.2.77/configure.in
 @@ -35,27 +35,18 @@ MYDOCUMENTFILES="COPYING FOSSEXCEPTION C
  MYPCFILES="kyotocabinet.pc"
-
+ 
  # Building flags
 -MYCFLAGS="-Wall -ansi -pedantic -fPIC -fsigned-char -g0 -O2"
 +MYCFLAGS="-Wall -ansi -pedantic -fPIC -fsigned-char -g0"
@@ -33,7 +33,7 @@ Index: kyotocabinet-1.2.52/configure.in
  MYLDLIBPATH=""
  MYLDLIBPATHENV="LD_LIBRARY_PATH"
  MYPOSTCMD="true"
-
+ 
 -# Building paths
 -PATH=".:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
 -CPATH=".:/usr/local/include:$CPATH"
@@ -43,6 +43,6 @@ Index: kyotocabinet-1.2.52/configure.in
 -export PATH CPATH LIBRARY_PATH LD_LIBRARY_PATH PKG_CONFIG_PATH
 -
 -
-
+ 
  #================================================================
  # Options

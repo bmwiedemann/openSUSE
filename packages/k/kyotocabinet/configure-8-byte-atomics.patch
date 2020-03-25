@@ -10,11 +10,11 @@ as is the case with all ARM targets currently
  configure.in |   19 ++++++++++++++++---
  2 files changed, 29 insertions(+), 19 deletions(-)
 
-diff --git a/configure b/configure
-index a07063d..bfc6df0 100755
---- a/configure
-+++ b/configure
-@@ -4012,25 +4012,22 @@ fi
+Index: kyotocabinet-1.2.77/configure
+===================================================================
+--- kyotocabinet-1.2.77.orig/configure
++++ kyotocabinet-1.2.77/configure
+@@ -4041,25 +4041,22 @@ fi
  # Atomic operations
  if test "$enable_atomic" != "no"
  then
@@ -53,11 +53,11 @@ index a07063d..bfc6df0 100755
    then
      MYCPPFLAGS="$MYCPPFLAGS -D_MYGCCATOMIC"
      printf 'yes\n'
-diff --git a/configure.in b/configure.in
-index 7808806..b5f5ac0 100644
---- a/configure.in
-+++ b/configure.in
-@@ -238,9 +238,22 @@ fi
+Index: kyotocabinet-1.2.77/configure.in
+===================================================================
+--- kyotocabinet-1.2.77.orig/configure.in
++++ kyotocabinet-1.2.77/configure.in
+@@ -229,9 +229,22 @@ fi
  # Atomic operations
  if test "$enable_atomic" != "no"
  then
@@ -83,5 +83,3 @@ index 7808806..b5f5ac0 100644
    then
      MYCPPFLAGS="$MYCPPFLAGS -D_MYGCCATOMIC"
      printf 'yes\n'
--- 
-1.7.9.5

@@ -1,7 +1,7 @@
 #
 # spec file for package kyotocabinet
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           kyotocabinet
-Version:        1.2.76
-Release:        0
 %define soname 16
+Name:           kyotocabinet
+Version:        1.2.77
+Release:        0
 Summary:        A straightforward implementation of DBM
 License:        SUSE-GPL-3.0-with-FLOSS-exception
 Group:          Productivity/Databases/Tools
-Url:            http://fallabs.com/kyotocabinet/
-Source:         http://fallabs.com/kyotocabinet/pkg/kyotocabinet-%{version}.tar.gz
+URL:            https://fallabs.com/kyotocabinet/
+Source:         https://fallabs.com/kyotocabinet/pkg/kyotocabinet-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         %{name}-fix_rpath.patch
-Patch2:         configure-8-byte-atomics.patch 
-# PATCH-FIX-OPENSUSE gcc6-fix-errors.patch -- Fix errors seen by GCC6/GCC7.
-Patch3:         gcc6-fix-errors.patch
-# PATCH-FIX-OPENSUSE gcc6-fix-errors.patch -- Do not supress debuginfo
+Patch2:         configure-8-byte-atomics.patch
 Patch4:         kyotocabinet-fix-debuginfo.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -40,10 +37,9 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if "%_target_cpu" == "i386"
+%if "%{_target_cpu}" == "i386"
 # kyotocabinet uses __sync_* primitives and requires at least 586
-BuildArch:      i586
+ExclusiveArch:  i586
 %endif
 
 %description
@@ -109,26 +105,18 @@ On the other hand, a commercial license is also provided. If you use
 Kyoto Cabinet within a proprietary software, the commercial license is required.
 
 %prep
-%setup -q
-%patch1 -p 1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-sed -ie "/ldconfig/d" Makefile.in
-sed -ie "/DOCDIR/d" Makefile.in
+%autosetup -p1
 
 %build
+sed -ie "/ldconfig/d" Makefile.in
+sed -ie "/DOCDIR/d" Makefile.in
 sed -ri 's/-march=native/-O2 -g3/g' configure.in
-autoreconf -iv
-export CFLAGS="%optflags";
-export CXXFLAGS="%optflags";
-export CFLAGS="${CFLAGS//-march=i386/-march=i586}";
-export CXXFLAGS="${CXXFLAGS//-march=i386/-march=i586}";
+autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -rf %{buildroot}%{_datadir}/kyotocabinet
 rm -rf %{buildroot}%{_libdir}/libkyotocabinet.a
 
@@ -136,26 +124,24 @@ rm -rf %{buildroot}%{_libdir}/libkyotocabinet.a
 # make check
 
 %post   -n libkyotocabinet%{soname} -p /sbin/ldconfig
-
 %postun -n libkyotocabinet%{soname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING
+%license COPYING
+%doc ChangeLog
 %doc doc/*
 %doc *.idl
 %{_bindir}/*
-%doc %{_mandir}/man1/*
+%{_mandir}/man1/*
 
 %files -n libkyotocabinet-devel
-%defattr(-,root,root)
 %{_includedir}/*.h
 %{_libdir}/libkyotocabinet.so
 %{_libdir}/pkgconfig/kyotocabinet.pc
 
 %files -n libkyotocabinet%{soname}
-%defattr(-,root,root)
-%doc ChangeLog COPYING
+%license COPYING
+%doc ChangeLog
 %{_libdir}/libkyotocabinet.so.%{soname}*
 
 %changelog
