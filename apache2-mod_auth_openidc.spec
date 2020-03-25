@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_auth_openidc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define apxs %{_sbindir}/apxs2
 %define apache_libexecdir %(%{apxs} -q LIBEXECDIR)
 Name:           apache2-mod_auth_openidc
-Version:        2.4.1
+Version:        2.4.2.1
 Release:        0
 Summary:        Apache2.x module for an OpenID Connect enabled Identity Provider
 License:        Apache-2.0

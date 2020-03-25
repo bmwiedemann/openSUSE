@@ -80,4 +80,29 @@ Bugfixes
     <comment></comment>
     <requestid>780843</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cda24846cde829cbb09fc2436f2ddd11</srcmd5>
+    <version>2.4.2.1</version>
+    <time>1585176446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.2.1
+  Changes since 2.4.1:
+  * oops: fix json_deep_copy of claims
+  * fix memory leak in OAuth 2.0 JWT validation
+  * fix configured private/public key cleanup on process exit
+  * allow for expressions in Require statements, see #469
+  * always refresh keys from jwks_uri when there is no kid in the
+    JWT header
+  * destroy shared memory segments only in parent process; see #458
+  * fix memory leaks introduced by #457
+  * if content was already returned via html/http send then don't
+    return 500 but send 200 to avoid extraneous internal error
+    document text to be sent on some Apache 2.4.x versions
+  * if OIDCPublicKeyFiles contains a certificate, the corresponding
+    x5c, x5t and x5t#256 parameters will be added to the generated
+    jwkset available at &quot;&amp;lt;redirect_uri&amp;gt;?jwks=rsa&quot;
+  - fix: also add SameSite=None to by-value session cookies
+  - try to fix graceful restart crash; see #458 (forwarded request 788227 from mnhauke)</comment>
+    <requestid>788232</requestid>
+  </revision>
 </revisionlist>
