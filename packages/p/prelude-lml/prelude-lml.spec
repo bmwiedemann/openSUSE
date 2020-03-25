@@ -1,7 +1,7 @@
 #
 # spec file for package prelude-lml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        The prelude log analyzer
 # libmissing/test is GPL-3.0+
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-or-later
 Group:          System/Daemons
-Url:            https://www.prelude-siem.org
+URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}-tmpfiles.conf
@@ -38,8 +38,8 @@ Patch2:         %{name}-fix_etc_perms.patch
 BuildRequires:  gamin-devel
 BuildRequires:  libprelude-devel
 BuildRequires:  pcre-devel
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 
 %description
 Prelude-LML is a log analyser that allows Prelude to collect and
