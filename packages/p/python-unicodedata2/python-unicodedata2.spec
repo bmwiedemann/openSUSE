@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unicodedata2
-Version:        12.1.0
+Version:        13.0.0
 Release:        0
 Summary:        Python unicodedata backport
 License:        Apache-2.0 AND Python-2.0
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mikekap/unicodedata2
 Source:         https://github.com/mikekap/unicodedata2/archive/%{version}.tar.gz#/unicodedata2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +47,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %doc README.md

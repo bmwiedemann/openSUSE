@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:37:21 UTC 2020 - pgajdos@suse.com
+
+- version update to 13.0.0
+  * Upgrade to Unicode 13.0.0 (#34).
+  * Build wheels for Python 3.8.
+
+-------------------------------------------------------------------
 Fri Feb  7 16:20:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 12.1.0
