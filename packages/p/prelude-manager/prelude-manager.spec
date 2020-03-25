@@ -1,7 +1,7 @@
 #
 # spec file for package prelude-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Bus communication for all Prelude modules
 # libmissing/test is GPL-3.0+
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Security
-Url:            https://www.prelude-siem.org
+URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
 Source1:        prelude-manager.service
 Source2:        prelude-manager-tmpfiles.conf
@@ -38,9 +38,9 @@ BuildRequires:  libprelude-devel
 BuildRequires:  libpreludedb-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  systemd
 BuildRequires:  tcpd-devel
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 
 %description
 Prelude Manager is a high availability server that
