@@ -26,7 +26,7 @@ Summary:        Pathlib for changelogss
 License:        MIT
 URL:            https://github.com/dephell/dephell_changelogs
 Source0:        https://github.com/dephell/%{modname}/archive/v.%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# Temporary measure, until dephell in %%prep actually works
+# Temporary measure, until dephell in %%prep actually works gh#dephell/dephell_changelogs#5
 Source1:        setup.py
 # PATCH-FIX-UPSTREAM add_network_markers.patch gh#dephell/dephell_changelogs#4 mcepl@suse.com
 # add markers for test cases requiring network connection
@@ -37,10 +37,12 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -50,8 +52,10 @@ Dephell library providing pathlib for changelogss.
 
 %prep
 %autosetup -p1 -n %{modname}-v.%{version}
-# Doesn’t work ATM
-# dephell deps convert --traceback --level=DEBUG --from pyproject.toml --to setup.py
+
+%define dephell_loglevel DEBUG
+# Temporarily switched off because of gh#dephell/dephell_changelogs#5
+# %%dephell_gensetup
 cp -p %{SOURCE1} .
 
 %build
