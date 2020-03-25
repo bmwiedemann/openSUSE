@@ -29,4 +29,13 @@
   * Handle arguments with 'getopt'</comment>
     <requestid>774805</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee142ce964b69c9d44405d7d23f2a614</srcmd5>
+    <version>1.0+git20200324.dd047bc</version>
+    <time>1585176291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200324.dd047bc:
+  * fix entering a toolbox if something changed in /dev since creation</comment>
+    <requestid>788121</requestid>
+  </revision>
 </revisionlist>
