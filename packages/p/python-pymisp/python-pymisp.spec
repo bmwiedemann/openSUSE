@@ -19,15 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pymisp
-Version:        2.4.121.1
+Version:        2.4.123
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/MISP/PyMISP
-Source:         https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-%{version}.tar.gz
-# Internal script for generating changelog
-Source1:        changelog.sh
+Source0:        https://github.com/MISP/PyMISP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# github tarball misses the misp-objects subproject data
+Source1:        https://github.com/MISP/misp-objects/archive/7ef9a2ba56efc6553a720d6df27c9ee547e24242.tar.gz#/misp-objects.tar.gz
+# pypi tarball missing some files: https://github.com/MISP/PyMISP/issues/554
+#Source:         https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-%%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -76,7 +78,10 @@ PyMISP allows you to fetch events, add or update events/attributes, add or updat
 Examples and HTML documentation for %{name}.
 
 %prep
-%setup -q -n pymisp-%{version}
+%setup -q -n PyMISP-%{version}
+#%%setup -q -n pymisp-%%{version}
+%setup -T -D -b 1 -n PyMISP-%{version}
+mv ../misp-objects-*/* pymisp/data/misp-objects/
 find pymisp examples -name "*.py" -type f -exec sed -i '1s/^#!.*//' '{}' \+
 
 %build
@@ -92,6 +97,7 @@ popd
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
+export LANG=en_US.UTF-8
 %python_exec setup.py test
 
 %files %{python_files}
