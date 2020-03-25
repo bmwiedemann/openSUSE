@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 21:52:09 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.2
+  * A scalable (.svg) icon version has been added.
+  * Make man page compression reproducible (after request
+    by Jelle van der Waa, while on the Vee-Ones, thanks).
+  * Ditching deprecated QTime methods for QElapsedTimer's
+    (in compliance to Qt >= 5.14.0).
+  * Bumped copyright headers into the New Year (2020).
+
+-------------------------------------------------------------------
 Mon Dec 23 10:13:08 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.1

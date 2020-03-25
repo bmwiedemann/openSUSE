@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -64,6 +64,7 @@ toolkit using Qt Designer.
 %{_bindir}/qsynth
 %{_datadir}/applications/qsynth.desktop
 %{_datadir}/icons/*/*/apps/qsynth.png
+%{_datadir}/icons/hicolor/scalable/apps/qsynth.svg
 %{_datadir}/metainfo
 %{_datadir}/qsynth
 %exclude %{_datadir}/qsynth/translations
