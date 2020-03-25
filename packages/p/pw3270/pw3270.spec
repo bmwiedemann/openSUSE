@@ -39,6 +39,7 @@ Group:          System/X11/Terminals
 Url:            https://portal.softwarepublico.gov.br/social/pw3270/
 
 Source:         pw3270-%{version}.tar.xz
+Patch0:         reproducible.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -198,6 +199,7 @@ This package contains the development files for %{name}.
 %prep
 
 %setup -q -n pw3270-%{version}
+%patch0 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
