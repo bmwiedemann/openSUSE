@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:25:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Install the fake egg-info folder to work with pip and friends
+
+-------------------------------------------------------------------
 Mon Mar 23 09:54:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Rename the common-devel to be prefixed with python2 in order

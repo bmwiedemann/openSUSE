@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/pygobject/pycairo
 Source:         https://github.com/pygobject/pycairo/releases/download/v%{version}/pycairo-%{version}.tar.gz
 BuildRequires:  cairo-devel >= 1.13.1
+BuildRequires:  fdupes
 BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
 Provides:       python2-cairo = %{version}
@@ -73,10 +74,16 @@ packages that depen on Pycairo.
 
 %install
 %python2_install
+%fdupes %{buildroot}%{python2_sitearch}
 
 # move headers to not conflict with newer ones from py3
 mv %{buildroot}%{_includedir}/pycairo/ %{buildroot}%{_includedir}/pycairo-py2/
 sed -i -e 's:include/pycairo:include/pycairo-py2:g' %{buildroot}%{_libdir}/pkgconfig/pycairo.pc
+
+# add the setuptools egg-info directory
+rm %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python_version}.egg-info
+mkdir -p %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python_version}.egg-info/
+cp pycairo.egg-info/* %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python_version}.egg-info/
 
 %files
 %doc NEWS docs
