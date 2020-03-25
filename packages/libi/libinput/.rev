@@ -748,4 +748,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.15.3</comment>
     <requestid>782036</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c9bf6af2509c2faccb299c994f40923b</srcmd5>
+    <version>1.15.4</version>
+    <time>1585176090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.15.4</comment>
+    <requestid>786086</requestid>
+  </revision>
 </revisionlist>
