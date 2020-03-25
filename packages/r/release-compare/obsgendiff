@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Copyright (c) 2020 Adrian Schröter <adrian@suse.de>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Library General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# This library  is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Library General Public License for more details.
+#
+# You should have received a copy of the GNU Library General Public
+# License along with this library; see the file COPYING.LIB. If not,
+# write to the Free Software Foundation, Inc., 59 Temple Place,
+# Suite 330, Boston, MA  02111-1307, USA
+
+#
+# This just basic demo code for now, to be rewritten/completed later
+#
+
+
+out=/.build.packages/obsgendiff
+outreleased=/.build.packages/obsgendiff.released
+
+echo "Running obsgendiff data differ..."
+
+# extract released obsgendiff aggregates
+for obsgendiff in /.build.packages/SOURCES/*.obsgendiff; do
+  [ -e "$obsgendiff" ] || continue
+  mkdir -p "${outreleased}"
+  tar xfv "$obsgendiff" -C "${outreleased}"
+done
+
+# create changelogs based on the packaged rpms
+mkdir -p $out/{changelogs,disturl}
+for packages in /.build.packages/KIWI/*.packages; do
+  cat "$packages" | while read line; do
+    IFS='|' read -r -a a <<< "$line"
+    name="${a[0]}"
+    rpm="${name}.rpm"
+
+    # only the worker knows where it was downloaded from....
+    file=`find /.build.packages/SOURCES/repos/ -name $rpm`
+    rpm -qp "$file" --changelog 2>/dev/null > $out/changelogs/${name}
+    rpm -qp "$file" --qf '%{DISTURL}\n' 2>/dev/null > $out/disturl/${name}
+  done
+
+  # create archive
+  cd $out
+  gendiff=${packages%.packages}.obsgendiff
+  tar cfJ /.build.packages/OTHER/${gendiff##*/} *
+  cd -
+done
+
+# create diff to released archive
+# NOTE: it had to be published or it won't exist
+if [ -d "${outreleased}" ]; then
+  diff -urN "${outreleased}/" "$out/" > /.build.packages/OTHER/changelog.diff
+fi
+
+exit 0
+
