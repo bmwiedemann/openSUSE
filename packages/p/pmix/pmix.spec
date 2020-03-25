@@ -19,7 +19,7 @@
 #
 
 Name:           pmix
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Process Management Interface for MPI
 License:        BSD-3-Clause
