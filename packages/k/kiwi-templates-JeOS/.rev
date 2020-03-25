@@ -80,4 +80,14 @@
     <comment></comment>
     <requestid>784614</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>b46ba57a8f2113ee108cdc148f3fa423</srcmd5>
+    <version>84.87</version>
+    <time>1585176194</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the choice of systemd-logger for openSUSE explicit (bsc#1160657)
+
+- Add lsof for zypper ps (bsc#1167553)</comment>
+    <requestid>787750</requestid>
+  </revision>
 </revisionlist>

@@ -210,14 +210,16 @@
         <package name="openSUSE-build-key"/>
         <package name="systemd"/>
         <package name="systemd-sysvinit"/>
-        <package name="systemd-logger"/> <!-- To have a persistent journal -->
         <package name="timezone"/>
         <package name="wicked"/>
         <package name="iproute2"/> 
         <package name="openssh"/>
         <package name="rsync"/>
         <package name="dosfstools"/> <!-- For fscking /boot/efi -->
+        <package name="lsof"/> <!-- For zypper ps (bsc#1167553) -->
         <package name="live-add-yast-repos"/>
+        <!-- <package name="rsyslog"/> for SLE -->
+        <package name="systemd-logger"/> <!-- for openSUSE -->
     </packages>
 
     <!-- Not needed in OpenStack as it uses XFS and cloud-init -->

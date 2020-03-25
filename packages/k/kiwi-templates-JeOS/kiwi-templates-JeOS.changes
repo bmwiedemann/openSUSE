@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 24 11:00:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Make the choice of systemd-logger for openSUSE explicit (bsc#1160657)
+
+-------------------------------------------------------------------
+Tue Mar 24 10:49:38 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add lsof for zypper ps (bsc#1167553)
+
+-------------------------------------------------------------------
 Thu Mar 12 14:14:03 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop XEN flavor, identical to kvm-and-xen meanwhile (boo#1166474)
