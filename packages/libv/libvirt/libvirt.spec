@@ -59,8 +59,8 @@
 
 # Set the OS / architecture specific special cases
 
-# Xen is available only on x86_64, armv7 and aarch64
-%ifnarch x86_64 armv7hl aarch64
+# Xen is available only on x86_64 and aarch64
+%ifnarch x86_64 aarch64
     %define with_libxl     0
 %endif
 
@@ -338,6 +338,8 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         a30078cb-qemu-create-mp-target.patch
+Patch1:         aeb909bf-qemu-multipath-fix.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -365,6 +367,7 @@ Patch211:       libvirt-suse-netcontrol.patch
 Patch212:       lxc-wait-after-eth-del.patch
 Patch213:       suse-libxl-disable-autoballoon.patch
 Patch214:       suse-xen-ovmf-loaders.patch
+Patch215:       suse-bump-xen-version.patch
 # SLES-Only patches
 %if ! 0%{?is_opensuse}
 Patch400:       virt-create-rootfs.patch
@@ -871,6 +874,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -895,6 +900,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch212 -p1
 %patch213 -p1
 %patch214 -p1
+%patch215 -p1
 %if ! 0%{?is_opensuse}
 %patch400 -p1
 %endif

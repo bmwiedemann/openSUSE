@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 19 22:59:45 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Bump minimum supported Xen version to 4.9, allowing use
+  of newer libxl APIs for retrieving memory statistics
+  suse-bump-xen-version.patch
+  bsc#1157490, bsc#1167007
+
+-------------------------------------------------------------------
+Tue Mar 17 19:50:01 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Create multipath targets for PRs
+  a30078cb-qemu-create-mp-target.patch,
+  aeb909bf-qemu-multipath-fix.patch
+  bsc#1161883
+
+-------------------------------------------------------------------
+Mon Mar 16 08:42:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Xen is not built for armv7 anymore, so do not use it for armv7
+
+-------------------------------------------------------------------
 Thu Mar  5 04:09:43 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 6.1.0

@@ -3519,4 +3519,12 @@ StandardGroups in rpmlint package.
     ae9e6c2a-qemu-allow-cond-format-probe.patch</comment>
     <requestid>783128</requestid>
   </revision>
+  <revision rev="302" vrev="2">
+    <srcmd5>b5f991dade6c8cae9b3930bf5b134d6a</srcmd5>
+    <version>6.1.0</version>
+    <time>1585176209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787956</requestid>
+  </revision>
 </revisionlist>

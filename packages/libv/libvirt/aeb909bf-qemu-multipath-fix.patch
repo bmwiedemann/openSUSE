@@ -1,0 +1,71 @@
+commit aeb909bf9b4c3fa48d017475545df94f7c5d3b3a
+Author: Michal Prívozník <mprivozn@redhat.com>
+Date:   Thu Mar 19 12:51:55 2020 +0100
+
+    qemu: Don't crash when getting targets for a multipath
+    
+    In one of my previous commits I've introduced code that creates
+    all devices for given (possible) multipath target. But I've made
+    a mistake there - the code accesses 'next->path' without checking
+    if the disk source is local. Note that the 'next->path' is
+    NULL/doesn't make sense for VIR_STORAGE_TYPE_NVME.
+    
+    Fixes: a30078cb832646177defd256e77c632905f1e6d0
+    Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1814947
+    
+    Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+    Reviewed-by: Peter Krempa <pkrempa@redhat.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-6.1.0/src/qemu/qemu_domain.c
+===================================================================
+--- libvirt-6.1.0.orig/src/qemu/qemu_domain.c
++++ libvirt-6.1.0/src/qemu/qemu_domain.c
+@@ -15550,7 +15550,6 @@ qemuDomainNamespaceSetupDisk(virDomainOb
+     bool hasNVMe = false;
+ 
+     for (next = src; virStorageSourceIsBacking(next); next = next->backingStore) {
+-        VIR_AUTOSTRINGLIST targetPaths = NULL;
+         g_autofree char *tmpPath = NULL;
+ 
+         if (next->type == VIR_STORAGE_TYPE_NVME) {
+@@ -15559,6 +15558,8 @@ qemuDomainNamespaceSetupDisk(virDomainOb
+             if (!(tmpPath = virPCIDeviceAddressGetIOMMUGroupDev(&next->nvme->pciAddr)))
+                 return -1;
+         } else {
++            VIR_AUTOSTRINGLIST targetPaths = NULL;
++
+             if (virStorageSourceIsEmpty(next) ||
+                 !virStorageSourceIsLocalStorage(next)) {
+                 /* Not creating device. Just continue. */
+@@ -15566,20 +15567,20 @@ qemuDomainNamespaceSetupDisk(virDomainOb
+             }
+ 
+             tmpPath = g_strdup(next->path);
+-        }
+ 
+-        if (virStringListAdd(&paths, tmpPath) < 0)
+-            return -1;
++            if (virDevMapperGetTargets(next->path, &targetPaths) < 0 &&
++                errno != ENOSYS && errno != EBADF) {
++                virReportSystemError(errno,
++                                     _("Unable to get devmapper targets for %s"),
++                                     next->path);
++                return -1;
++            }
+ 
+-        if (virDevMapperGetTargets(next->path, &targetPaths) < 0 &&
+-            errno != ENOSYS && errno != EBADF) {
+-            virReportSystemError(errno,
+-                                 _("Unable to get devmapper targets for %s"),
+-                                 next->path);
+-            return -1;
++            if (virStringListMerge(&paths, &targetPaths) < 0)
++                return -1;
+         }
+ 
+-        if (virStringListMerge(&paths, &targetPaths) < 0)
++        if (virStringListAdd(&paths, tmpPath) < 0)
+             return -1;
+     }
+ 
