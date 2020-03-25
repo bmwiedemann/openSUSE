@@ -1,7 +1,7 @@
 #
 # spec file for package semantik
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           semantik
-Version:        1.2.1
+Version:        1.2.4
 Release:        0
 Summary:        A mindmapping-like tool
 License:        GPL-3.0-only AND GPL-2.0-only
 Group:          Productivity/Office/Other
-Url:            https://waf.io/semantik.html
+URL:            https://waf.io/semantik.html
 Source0:        https://waf.io/%{name}-%{version}.tar.bz2
 Source1:        %{name}.1
 BuildRequires:  ImageMagick
@@ -97,6 +97,7 @@ install -D -m644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
+%license LICENSE
 %doc ChangeLog README
 %{_bindir}/semantik*
 %{_libdir}/lib*.so*

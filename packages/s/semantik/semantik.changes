@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:29:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.2.4
+  * Eliminate drawing artifacts
+  * Eliminate grid alignment issues on diagrams
+  * Improve label positioning on diagrams
+  * Italian translations
+  * Fix stale connections when disconnecting multiple references
+  * Fix broken flags #98
+  * Fix shortcuts configurability #96
+  * Fix diagram thumbnail display on item selection
+  * Add 'nocaption' to disable picture captions in LaTeX
+  * Add 'disable_row_header' and 'disable_col_header' to improve
+    table exports
+  * Add 'disable_slide' to limit extra Beamer slides
+  * Paint long branches with a lighter color
+
+-------------------------------------------------------------------
 Wed Feb  6 03:57:31 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - set _service to disabled, it's a factory package
