@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 25 17:38:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the manual typelib() Requires. Add gobject-introspection
+  BuildRequires instead and let the system do the magic for us.
+- Replace /usr/bin/env shebang of cdemu.
+- Drop the empty NEWS file from the files.
+
+-------------------------------------------------------------------
 Thu Oct 17 10:29:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.3

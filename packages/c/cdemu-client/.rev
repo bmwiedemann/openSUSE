@@ -116,4 +116,12 @@
     <comment>- Update to release 3.2.3</comment>
     <requestid>742537</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1ba65748d63bb2b274551c4cd4e6f857</srcmd5>
+    <version>3.2.3</version>
+    <time>1585176606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788323</requestid>
+  </revision>
 </revisionlist>

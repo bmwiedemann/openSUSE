@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,14 +28,13 @@ URL:            https://cdemu.sf.net/about/client/
 Source:         http://downloads.sf.net/cdemu/%name-%version.tar.bz2
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  gettext-tools >= 0.15
+BuildRequires:  gobject-introspection
 BuildRequires:  intltool >= 0.21
 BuildRequires:  python3 >= 3.4
 BuildRequires:  pkgconfig(bash-completion)
 Requires:       python3 >= 3.4
 Requires:       python3-dbus-python
 Requires:       python3-gobject
-Requires:       typelib(GLib)
-Requires:       typelib(Gio)
 BuildArch:      noarch
 
 %description
@@ -49,6 +48,7 @@ devices' status and retrieving/setting their debug masks.
 
 %prep
 %setup -q
+sed -i "s|/usr/bin/env python3|%{_bindir}/python3|" src/cdemu
 
 %build
 cmake . \
@@ -61,7 +61,7 @@ make %{?_smp_mflags}
 %find_lang cdemu
 
 %files
-%doc AUTHORS COPYING NEWS README
+%doc AUTHORS COPYING README
 %_bindir/cdemu
 %_datadir/applications/%name.desktop
 %_datadir/pixmaps/%name.svg
