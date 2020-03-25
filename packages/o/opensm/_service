@@ -6,9 +6,9 @@
     <param name="exclude">.git</param>
     <param name="filename">opensm</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
-    <param name="versionrewrite-pattern">opensm(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">24d2f346ad8e54fcbf9c4fa3b2d087ad821dd148</param>
+    <param name="versionrewrite-pattern">(opensm-)?(.*)</param>
+    <param name="versionrewrite-replacement">\2</param>
+    <param name="revision">d35a20f3be113e03316ca6c3afb7d19975772d8d</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*opensm*.tar</param>

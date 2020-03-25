@@ -1,7 +1,7 @@
 #
 # spec file for package opensm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define         git_ver .0.24d2f346ad8e
+%define         git_ver .0.d35a20f3be11
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -30,7 +30,7 @@ Name:           opensm
 Summary:        Infiniband Subnet Manager
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/System
-Version:        3.3.22
+Version:        3.3.23
 Release:        0
 Source:         opensm-%{version}%{git_ver}.tar.gz
 Source1:        conf.sysconfig
@@ -38,7 +38,7 @@ Source2:        %{name}.launch
 Source3:        opensm.service
 Source4:        baselibs.conf
 Patch1:         opensm-remove-date-time.patch
-Url:            https://github.com/linux-rdma/opensm
+URL:            https://github.com/linux-rdma/opensm
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

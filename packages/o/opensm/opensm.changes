@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:30:37 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 3.3.23
+  - Add support for registering an opensm plugin as a new routing engine
+  - Internal improvements and bug fixes
+
+-------------------------------------------------------------------
 Thu Apr 18 07:56:14 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 3.3.22
