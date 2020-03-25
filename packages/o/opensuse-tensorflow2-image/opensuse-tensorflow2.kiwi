@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- OBS-ExclusiveArch: x86_64 -->
+<!-- OBS-ExclusiveArch: x86_64 aarch64 -->
 <image schemaversion="6.5" name="opensuse-tensorflow2-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
     <author>Marco Varlese</author>
