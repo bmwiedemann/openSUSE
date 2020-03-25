@@ -32,6 +32,7 @@ BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing >= 3.6}
 BuildRequires:  fdupes
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-dephell
 Requires:       python-pastel >= 0.2.0
@@ -52,7 +53,7 @@ command line interfaces.
 
 %prep
 %setup -q -n clikit-%{version}
-dephell deps convert --from pyproject.toml --to setup.py
+%dephell_gensetup
 
 %build
 %python_build
