@@ -2,7 +2,7 @@ Index: b/Makefile.am
 ===================================================================
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -481,7 +481,8 @@ unit_test_lib_SOURCES = unit/test-lib.c
+@@ -497,7 +497,8 @@ unit_test_lib_SOURCES = unit/test-lib.c
  unit_test_lib_LDADD = src/libshared-glib.la \
  				lib/libbluetooth-internal.la $(GLIB_LIBS)
  
@@ -12,7 +12,7 @@ Index: b/Makefile.am
  
  unit_test_gatt_SOURCES = unit/test-gatt.c
  unit_test_gatt_LDADD = src/libshared-glib.la \
-@@ -511,7 +512,8 @@ unit_test_gattrib_LDADD = lib/libbluetoo
+@@ -527,7 +528,8 @@ unit_test_gattrib_LDADD = lib/libbluetoo
  			$(GLIB_LIBS) $(DBUS_LIBS) -ldl -lrt
  
  if MIDI
@@ -22,7 +22,7 @@ Index: b/Makefile.am
  unit_test_midi_CPPFLAGS = $(AM_CPPFLAGS) $(ALSA_CFLAGS) -DMIDI_TEST
  unit_test_midi_SOURCES = unit/test-midi.c \
  			profiles/midi/libmidi.h \
-@@ -521,7 +523,7 @@ unit_test_midi_LDADD = src/libshared-gli
+@@ -537,7 +539,7 @@ unit_test_midi_LDADD = src/libshared-gli
  endif
  
  if MESH
@@ -30,4 +30,4 @@ Index: b/Makefile.am
 +#unit_tests += unit/test-mesh-crypto
  unit_test_mesh_crypto_CPPFLAGS = $(ell_cflags)
  unit_test_mesh_crypto_SOURCES = unit/test-mesh-crypto.c \
- 				mesh/crypto.h ell/internal ell/ell.h \
+ 				mesh/crypto.h ell/internal ell/ell.h

@@ -2,7 +2,7 @@
 # spec file for package bluez
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2010-2019 B1 Systems GmbH, Vohburg, Germany
+# Copyright (c) 2010-2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 # contributions via pull requests are welcome!
 #
 Name:           bluez
-Version:        5.52
+Version:        5.54
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -57,6 +57,9 @@ Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
 Patch101:       CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 Patch102:       CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
+# PATCH-FIX-UPSTREAM: bsc#1166751 CVE-2020-0556
+Patch105:       input-hog-Attempt-to-set-security-level-if-not-bonde.patch
+Patch106:       input-Add-LEAutoSecurity-setting-to-input.conf.patch
 
 BuildRequires:  automake
 BuildRequires:  flex
@@ -188,6 +191,8 @@ to use the modern tools instead.
 %patch10 -p1
 %patch101 -p1
 %patch102 -p1
+%patch105 -p1
+%patch106 -p1
 mkdir dbus-apis
 cp -a doc/*.txt dbus-apis/
 # FIXME: Change the dbus service to be a real service, not systemd launched
@@ -349,6 +354,7 @@ make check V=0
 %{_bindir}/btmon
 %if %{with mesh}
 %{_bindir}/meshctl
+%{_bindir}/mesh-cfgclient
 %endif
 %{_bindir}/bccmd
 %{_prefix}/lib/udev/

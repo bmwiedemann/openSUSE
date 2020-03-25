@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar 20 17:04:10 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to bluez-5.54:
+  * Fix issue with HOGP to accept data only from bonded devices.
+  * Fix issue with A2DP sessions being connected at the same time.
+  * Fix issue with class UUID matches before connecting profile.
+  * Add support for handling MTU auto-tuning option for AVDTP.
+  * Add support for new policy for Just-Works repairing.
+  * Add support for Enhanced ATT bearer (EATT).
+- bluez-5.53:
+  * Fix issue with handling unregistration for advertisment.
+  * Fix issue with A2DP and handling recovering process.
+  * Fix issue with udpating input device information.
+  * Add support for loading blocked keys.
+- remove obsolete upstreamed patches:
+  * HOGP-must-only-accept-data-from-bonded-devices.patch
+  * HID-accepts-bonded-device-connections-only.patch
+- refresh other patches
+
+-------------------------------------------------------------------
+Wed Mar 18 08:29:49 UTC 2020 - Al Cho <acho@suse.com>
+
+- Add
+  HOGP-must-only-accept-data-from-bonded-devices.patch
+  HOGP 1.0 Section 6.1 establishes that the HOGP must require
+  bonding.(bsc#1166751)(CVE-2020-0556)
+  HID-accepts-bonded-device-connections-only.patch
+  This change adds a configuration for platforms to choose a more
+  secure posture for the HID profile.(bsc#1166751)(CVE-2020-0556)
+  input-hog-Attempt-to-set-security-level-if-not-bonde.patch
+  Attempt to set security level if not bonded.
+  (bsc#1166751)(CVE-2020-0556)
+  input-Add-LEAutoSecurity-setting-to-input.conf.patch
+  Add LEAutoSecurity setting to input.conf.
+  (bsc#1166751)(CVE-2020-0556)
+
+-------------------------------------------------------------------
 Mon Feb 10 10:05:33 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix path to systemctl in %post script 

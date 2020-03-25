@@ -2,7 +2,7 @@ Index: b/Makefile.in
 ===================================================================
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -3439,7 +3439,7 @@ unit_tests = $(am__append_54) unit/test-
+@@ -3548,7 +3548,7 @@ unit_tests = $(am__append_54) unit/test-
  @DEPRECATED_TRUE@@READLINE_TRUE@attrib_gatttool_LDADD = lib/libbluetooth-internal.la \
  @DEPRECATED_TRUE@@READLINE_TRUE@			src/libshared-glib.la $(GLIB_LIBS) -lreadline
  
@@ -15,7 +15,7 @@ Index: b/Makefile.tools
 ===================================================================
 --- a/Makefile.tools
 +++ b/Makefile.tools
-@@ -441,7 +441,7 @@ endif
+@@ -463,7 +463,7 @@ endif
  endif
  
  if CUPS

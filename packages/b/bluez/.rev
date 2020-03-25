@@ -1309,4 +1309,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment></comment>
     <requestid>773528</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>132cb0fc9e18d011e30b22f74fda692f</srcmd5>
+    <version>5.54</version>
+    <time>1585176151</time>
+    <user>dimstar_suse</user>
+    <comment>update to bluez-5.54 (forwarded request 787079 from seife)</comment>
+    <requestid>787080</requestid>
+  </revision>
 </revisionlist>
