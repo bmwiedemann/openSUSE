@@ -1,7 +1,7 @@
 #
 # spec file for package tdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ BuildRequires:  doxygen
 BuildRequires:  libxslt
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
-Url:            https://tdb.samba.org/
-Version:        1.4.2
+URL:            https://tdb.samba.org/
+Version:        1.4.3
 Release:        0
 Summary:        Samba Trivial Database
 License:        LGPL-3.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  6 17:02:55 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to version 1.4.3
+  + Upgrade waf to version 2.0.18 to fix a cross-compilation issue;
+    (bso#13846).
+  + lib/tdb/docs/tracing.txt: typo fixes
+
+-------------------------------------------------------------------
 Thu Oct 03 21:55:29 UTC 2019 - James McDonough <jmcdonough@suse.com>
 
 - Update to version 1.4.2
