@@ -1,0 +1,142 @@
+Index: pocketsphinx-0.8/python/Makefile.am
+===================================================================
+--- pocketsphinx-0.8.orig/python/Makefile.am
++++ pocketsphinx-0.8/python/Makefile.am
+@@ -40,5 +40,5 @@ endif
+ 
+ if BUILD_CYTHON
+ $(srcdir)/pocketsphinx.c: $(srcdir)/pocketsphinx.pyx $(srcdir)/pocketsphinx.pxd
+-	cython -o $@ $< $(CPPFLAGS) -I$(sphinxbase)/python
++	cython -3 -o $@ $< $(CPPFLAGS) -I$(sphinxbase)/python
+ endif
+Index: pocketsphinx-0.8/python/Makefile.in
+===================================================================
+--- pocketsphinx-0.8.orig/python/Makefile.in
++++ pocketsphinx-0.8/python/Makefile.in
+@@ -505,7 +505,7 @@ uninstall-am: uninstall-local uninstall-
+ @BUILD_PYTHON_TRUE@	touch $@
+ 
+ @BUILD_CYTHON_TRUE@$(srcdir)/pocketsphinx.c: $(srcdir)/pocketsphinx.pyx $(srcdir)/pocketsphinx.pxd
+-@BUILD_CYTHON_TRUE@	cython -o $@ $< $(CPPFLAGS) -I$(sphinxbase)/python
++@BUILD_CYTHON_TRUE@	cython -3 -o $@ $< $(CPPFLAGS) -I$(sphinxbase)/python
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+Index: pocketsphinx-0.8/python/pocketsphinx.pyx
+===================================================================
+--- pocketsphinx-0.8.orig/python/pocketsphinx.pyx
++++ pocketsphinx-0.8/python/pocketsphinx.pyx
+@@ -265,7 +265,7 @@ cdef class Lattice:
+             self.dag = ps_lattice_read(NULL, latfile)
+         self.n_frames = ps_lattice_n_frames(self.dag)
+         if self.dag == NULL:
+-            raise RuntimeError, "Failed to read lattice from %s" % latfile
++            raise RuntimeError("Failed to read lattice from %s" % latfile)
+         
+     cdef set_dag(Lattice self, ps_lattice_t *dag):
+         ps_lattice_retain(dag)
+@@ -366,7 +366,7 @@ cdef class Lattice:
+ 
+         rv = ps_lattice_write(self.dag, outfile)
+         if rv < 0:
+-            raise RuntimeError, "Failed to write lattice to %s" % outfile
++            raise RuntimeError("Failed to write lattice to %s" % outfile)
+ 
+ 
+ cdef class Segment:
+@@ -469,11 +469,11 @@ cdef class Decoder:
+             i = i + 2
+         config = sb.cmd_ln_parse_r(NULL, ps_args(), self.argc, self.argv, 0)
+         if config == NULL:
+-            raise RuntimeError, "Failed to parse argument list"
++            raise RuntimeError("Failed to parse argument list")
+         self.ps = ps_init(config)
+         sb.cmd_ln_free_r(config)
+         if self.ps == NULL:
+-            raise RuntimeError, "Failed to initialize PocketSphinx"
++            raise RuntimeError("Failed to initialize PocketSphinx")
+ 
+     cdef set_boxed(Decoder self, box):
+         cdef ps_decoder_t *ps
+@@ -571,15 +571,15 @@ cdef class Decoder:
+         
+         PyString_AsStringAndSize(data, &strdata, &len)
+         cdata = strdata
+-        if ps_process_raw(self.ps, cdata, len / 2, no_search, full_utt) < 0:
+-            raise RuntimeError, "Failed to process %d samples of audio data" % len / 2
++        if ps_process_raw(self.ps, cdata, len // 2, no_search, full_utt) < 0:
++            raise RuntimeError("Failed to process %d samples of audio data" % len // 2)
+ 
+     def end_utt(self):
+         """
+         Finish processing an utterance.
+         """
+         if ps_end_utt(self.ps) < 0:
+-            raise RuntimeError, "Failed to stop utterance processing"
++            raise RuntimeError("Failed to stop utterance processing")
+ 
+     def get_hyp(self):
+         """
+@@ -633,7 +633,7 @@ cdef class Decoder:
+ 
+         dag = ps_get_lattice(self.ps)
+         if dag == NULL:
+-            raise RuntimeError, "Failed to create word lattice"
++            raise RuntimeError("Failed to create word lattice")
+         lat = Lattice()
+         lat.set_dag(dag)
+         return lat
+@@ -726,7 +726,7 @@ cdef class Decoder:
+         cdef SegmentIterator itor
+         first_seg = ps_seg_iter(self.ps, &score)
+         if first_seg == NULL:
+-            raise RuntimeError, "Failed to create best path word segment iterator"
++            raise RuntimeError("Failed to create best path word segment iterator")
+         itor = SegmentIterator()
+         itor.set_iter(first_seg)
+         return (itor, score)
+Index: pocketsphinx-0.8/python/setup.py.in
+===================================================================
+--- pocketsphinx-0.8.orig/python/setup.py.in	2012-11-12 14:56:58.000000000 +0100
++++ pocketsphinx-0.8/python/setup.py.in	2020-01-15 12:46:21.842830046 +0100
+@@ -5,7 +5,7 @@
+ 
+ import distutils.command.install
+ import os
+-import commands
++import subprocess
+ import sys
+ 
+ class bogus_uninstall(distutils.command.install.install):
+@@ -29,7 +29,7 @@
+             if os.path.isdir(f):
+                 dirs[f] = 1
+                 continue
+-            print "Trying to remove file", f
++            print("Trying to remove file", f)
+             try:
+                 os.unlink(f)
+             except:
+@@ -38,11 +38,11 @@
+         # This is really not guaranteed to work!!!
+         for d in dirs:
+             while d != self.prefix:
+-                print "Trying to remove dir", d
++                print("Trying to remove dir", d)
+                 try:
+                     if d.endswith(".egg-info"):
+                         files=[os.path.join(d,f) for f in os.listdir(d)]
+-                        print "Trying to remove:", " ".join(files)
++                        print("Trying to remove:", " ".join(files))
+                         for f in files: os.unlink(f)
+                     os.rmdir(d)
+                 except:
+@@ -51,7 +51,7 @@
+ 
+ def pkgconfig(*packages, **kw):
+     flag_map = {'-I': 'include_dirs', '-L': 'library_dirs', '-l': 'libraries'}
+-    for token in commands.getoutput("pkg-config --libs --cflags %s" % ' '.join(packages)).split():
++    for token in subprocess.getoutput("pkg-config --libs --cflags %s" % ' '.join(packages)).split():
+         kw.setdefault(flag_map.get(token[:2]), []).append(token[2:])
+     return kw
+ 
