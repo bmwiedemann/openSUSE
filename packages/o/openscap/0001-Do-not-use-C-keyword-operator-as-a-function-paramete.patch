@@ -1,0 +1,41 @@
+From 0ba7c9423f64a88ceef50318f1a382059484f737 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20=C4=8Cern=C3=BD?= <jcerny@redhat.com>
+Date: Wed, 15 Jan 2020 13:54:45 +0100
+Subject: [PATCH] Do not use C++ keyword operator as a function parameter name
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes SCAP Workbench build.
+
+Addressing:
+[ 37%] Building CXX object CMakeFiles/scap-workbench.dir/scap-workbench_autogen/mocs_compilation.cpp.o
+In file included from /usr/local/include/openscap/xccdf_policy.h:39,
+                 from /home/jcerny/work/git/scap-workbench/include/TailoringDockWidgets.h:31,
+                 from /home/jcerny/work/git/scap-workbench/build/scap-workbench_autogen/6YEA5652QU/moc_TailoringDockWidgets.cpp:10,
+                 from /home/jcerny/work/git/scap-workbench/build/scap-workbench_autogen/mocs_compilation.cpp:18:
+/usr/local/include/openscap/oval_definitions.h:1676:117: error: declaration of ‘operator,’ as parameter
+ 1676 | restriction *oval_variable_possible_restriction_new(oval_operator_t operator, const char *hint);
+      |                                                                             ^
+
+Fixes: #1462
+---
+ src/OVAL/public/oval_definitions.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/OVAL/public/oval_definitions.h b/src/OVAL/public/oval_definitions.h
+index ea9d3aaf8..b5fe77154 100644
+--- a/src/OVAL/public/oval_definitions.h
++++ b/src/OVAL/public/oval_definitions.h
+@@ -1669,7 +1669,7 @@ OSCAP_API void oval_variable_possible_value_iterator_free(struct oval_variable_p
+  * @param hint A short description of what the value means or represents.
+  * @memberof oval_variable_possible_restriction
+  */
+-OSCAP_API struct oval_variable_possible_restriction *oval_variable_possible_restriction_new(oval_operator_t operator, const char *hint);
++OSCAP_API struct oval_variable_possible_restriction *oval_variable_possible_restriction_new(oval_operator_t, const char *);
+ 
+ 
+ /**
+-- 
+2.25.1
+

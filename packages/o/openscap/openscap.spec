@@ -39,7 +39,9 @@ Source4:        scap-yast2sec-oval.xml
 Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
 Patch0:         openscap-new-suse.patch
-Url:            http://www.open-scap.org/
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Do-not-use-C-keyword-operator-as-a-function-paramete.patch
+Url:            https://www.open-scap.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  doxygen
@@ -172,6 +174,7 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if 0%{?with_bindings}

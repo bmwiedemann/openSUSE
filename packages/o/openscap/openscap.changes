@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:53:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix the scap-workbench build:
+  * 0001-Do-not-use-C-keyword-operator-as-a-function-paramete.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 13:43:11 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - switch back to official release
