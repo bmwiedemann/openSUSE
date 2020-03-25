@@ -1,7 +1,7 @@
 #
 # spec file for package mockito
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        MIT
 Group:          Development/Libraries/Java
 URL:            http://%{name}.org
 Source0:        %{name}-%{version}.tar.xz
-Source1:        make-%{name}-sourcetarball.sh
 Patch0:         fixup-ant-script.patch
 Patch1:         fix-bnd-config.patch
 Patch2:         %{name}-matcher.patch
@@ -37,6 +36,7 @@ Patch6:         %{name}-hamcrest.patch
 BuildRequires:  ant
 BuildRequires:  aqute-bnd
 BuildRequires:  cglib
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  hamcrest
 BuildRequires:  javapackages-local
@@ -62,6 +62,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+dos2unix `find -name *.java`
 %patch0
 %patch1
 %patch2 -p1
@@ -72,7 +73,7 @@ This package contains the API documentation for %{name}.
 
 %pom_add_dep net.sf.cglib:cglib:3.1 maven/mockito-core.pom
 find . -name "*.java" -exec sed -i "s|org\.%{name}\.cglib|net\.sf\.cglib|g" {} +
-mkdir -p lib/compile
+mkdir -p lib/compile lib/build lib/run lib/repackaged
 
 %pom_xpath_remove 'target[@name="javadoc"]/copy' build.xml
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 11:45:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service instead of script
+
+-------------------------------------------------------------------
 Fri Nov 29 10:37:08 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
