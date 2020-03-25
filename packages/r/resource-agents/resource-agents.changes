@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:27:56 UTC 2020 - dakechi@suse.com
+
+- Update to version 4.5.0+git2.32821fe4:
+  * Filesystem: Add lustre as networked filesystem
+  * build: update ChangeLog for 4.5.0
+  * aws-vpc-move-ip: add routing_table_role parameter to metadata
+  * iSCSILogicalUnit: fix default value for OCF_RESKEY_liot_bstype
+  * build: update ChangeLog for 4.5.0-rc1
+  * lvmlockd: remove locking_type parameter from lvm.conf for LVM > v2.03
+  * Allow user to specify role with which to query/update route table
+
+-------------------------------------------------------------------
 Wed Feb 26 14:26:23 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
 - Request to add "gcp-vpc-move-route" resource agent to SLE12 and SLE15 
@@ -49,7 +61,6 @@ Wed Feb 26 11:25:24 UTC 2020 - varkoly@suse.com
   * gcp-pd-move: add parameter stackdriver_logging (#1412)
   * aws-vpc-route53: Improvements and fixes (#1409)
   * LVM-activate: move pvscan --cache to validate
-  Fixes to bugs bsc#1151833, bsc#1154465 are included in this update.
 
 -------------------------------------------------------------------
 Mon Sep 30 13:08:03 UTC 2019 - dakechi@suse.com
