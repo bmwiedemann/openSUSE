@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 18 03:14:39 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.0204
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0204  2020-03-17
+      - Require a recent Alien::Libxml2.
+          - https://rt.cpan.org/Public/Bug/Display.html?id=132129
+          - Thanks to SREZIC
+
+-------------------------------------------------------------------
 Thu Mar 12 03:13:24 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.0203
