@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 22 19:23:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use. Also add a
+  explicit %%{name] = %%{version} Provides to aid supplements to do
+  the right thing. We will lose the lang package Recommends for the
+  compat package, but normally nobody will have only the compat
+  package installed without the current package.
+
+-------------------------------------------------------------------
 Mon Jan 20 16:59:59 UTC 2020 - pgajdos@suse.com
 
 - added patches

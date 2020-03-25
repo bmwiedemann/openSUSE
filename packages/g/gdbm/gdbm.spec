@@ -56,10 +56,11 @@ a database.
 Summary:        GNU dbm key/data database
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
 # O/P added in 12.2
 Obsoletes:      gdbm < %{version}-%{release}
 Provides:       gdbm = %{version}-%{release}
+# For lang package
+Provides:       %{name} = %{version}
 
 %description -n %{lname}
 GNU dbm is a library of database functions that use extensible
@@ -79,7 +80,6 @@ a database.
 Summary:        GNU dbm key/data database compat wrapper
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-Recommends:     %{name}-lang = %{version}
 # Was provided in older sonames
 Conflicts:      libgdbm3
 
