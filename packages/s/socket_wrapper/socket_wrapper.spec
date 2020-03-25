@@ -1,7 +1,7 @@
 #
 # spec file for package socket_wrapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 ############################# NOTE ##################################
 
 Name:           socket_wrapper
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        A library passing all socket communications trough Unix sockets
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://cwrap.org/
+URL:            https://cwrap.org/
 #
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
@@ -77,7 +77,7 @@ make %{?_smp_mflags} VERBOSE=1
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS README.md ChangeLog
+%doc AUTHORS README.md CHANGELOG
 %license LICENSE
 %{_libdir}/libsocket_wrapper.so.*
 %{_mandir}/man1/socket_wrapper.1*
