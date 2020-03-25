@@ -1,2 +1,9 @@
 # Provide the macro so that we can change it with any changes upstream
-%dephell_gensetup dephell deps convert --from pyproject.toml --to setup.py
+# logging level can be changed with different RPM SPEC macros dephell_loglevel,
+# possilbe levels are DEBUG, INFO, WARNING, ERROR, and EXCEPTION
+# names of files can be modified with dephell_tomlfile and dephell_setupfile macros
+# respectively.
+%dephell_gensetup LANG=en_US.utf8 dephell deps convert --traceback \\\
+    --level=%{?dephell_loglevel}%{!?dephell_loglevel:INFO} \\\
+    --from %{?dephell_tomlfile}%{!?dephell_tomlfile:pyproject.toml} \\\
+    --to %{?dephell_setupfile}%{!?dephell_setupfile:setup.py}

@@ -122,4 +122,16 @@
   dephell_genspec macro in this package.</comment>
     <requestid>787363</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>03fa0605e452c19fa78e2ca550b92a82</srcmd5>
+    <version>0.8.1</version>
+    <time>1585176307</time>
+    <user>dimstar_suse</user>
+    <comment>- dephell deps convert should always run UTF-8 locale.
+
+- Separate python-dephell-rpm-macros subpackage.
+- Add Provides: python-dephell to make it independent on the
+  particular version of Python used.</comment>
+    <requestid>788257</requestid>
+  </revision>
 </revisionlist>

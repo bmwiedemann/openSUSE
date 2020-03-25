@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:41:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- dephell deps convert should always run UTF-8 locale.
+
+-------------------------------------------------------------------
+Mon Mar 23 15:13:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Separate python-dephell-rpm-macros subpackage.
+- Add Provides: python-dephell to make it independent on the
+  particular version of Python used.
+
+-------------------------------------------------------------------
 Mon Mar 23 07:48:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add new source of macros.py-dephell so that we can manage
