@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 18:23:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend more modules that rails would want to download for app
+  development (boo#1153514).
+
+-------------------------------------------------------------------
 Fri Dec 20 04:25:17 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.2.1
