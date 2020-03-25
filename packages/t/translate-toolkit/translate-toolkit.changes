@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 18 20:34:15 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- test-mo-endian.patch: tell msgfmt to use correct endianness
+
+-------------------------------------------------------------------
 Tue Mar  3 10:45:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - temporary disable TestYAMLResourceStore.test_empty_key because

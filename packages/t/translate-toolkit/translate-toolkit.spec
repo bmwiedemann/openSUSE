@@ -29,6 +29,7 @@ Source:         https://github.com/translate/translate/releases/download/%{versi
 Source1:        sphinx-themes.tar.xz
 Patch0:         sphinx-intersphinx.patch
 Patch2:         xliff-xsd-no-network.patch
+Patch3:         test-mo-endian.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  git-core
